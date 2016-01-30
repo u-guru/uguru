@@ -2134,12 +2134,16 @@
 				// }
 			}
 		}
-
+		
 		// BECOME A GURU
+		.become-guru-button {
+			@include opacity(0);
+		}
 		&#become-guru {
 			> header {
 				background: $charcoal!important;
 				h1 {
+					@include opacity(0);
 					color: white!important;
 				}
 			}
@@ -2179,12 +2183,112 @@
 				.main {
 					ul {
 						li {
+							position: relative!important;
+							.tape {
+								@include opacity(0);
+							}
+							&:nth-child(1) {
+								-webkit-transform: rotate(7deg) translate(0, 20px);
+								-moz-transform: rotate(7deg) translate(0, 20px);
+								-ms-transform: rotate(7deg) translate(0, 20px);
+								-o-transform: rotate(7deg) translate(0, 20px);
+								transform: rotate(7deg) translate(0, 20px);
+								&.bounceInLeft {
+									@include animation-name(bounceInLeft-bg-1);
+								}
+								.tape {
+									&:nth-child(1) {
+										display: none;
+									}
+									&:nth-child(2) {
+										@include rotate(90);
+										top: -50px;
+										left: 50%;
+										margin-left: -20px;
+									}
+									&.animate {
+										&:nth-child(2) {
+											@include animation-name(tape-3);
+											@include animation-delay(.5s);
+										}
+									}
+								}
+								.postit {
+									> div {
+										background: lighten($cerise, 15%);
+										&:before {
+											background: $cerise;
+										}
+										svg {
+											circle, path {
+												stroke: $cerise;
+											}
+											*[opacity="0.5"], *[fill-opacity="0.5"]{
+												fill: $cerise;
+											}
+										}
+									}
+								}
+							}
+							&:nth-child(2) {
+								-webkit-transform: rotate(-7deg) translate(-25px, 60px);
+								-moz-transform: rotate(-7deg) translate(-25px, 60px);
+								-ms-transform: rotate(-7deg) translate(-25px, 60px);
+								-o-transform: rotate(-7deg) translate(-25px, 60px);
+								transform: rotate(-7deg) translate(-25px, 60px);
+								&.bounceInRight {
+									@include animation-name(bounceInRight-bg-2);
+								}
+								.tape {
+									&:nth-child(1) {
+										@include rotate(45);
+										left: 30px;
+										top: -20px;
+									}
+									&:nth-child(2) {
+										@include rotate(-45);
+										top: -20px;
+										right: 30px;
+									}
+									&.animate {
+										&:nth-child(1) {
+											@include animation-name(tape-1);
+										}
+										&:nth-child(2) {
+											@include animation-name(tape-2);
+											@include animation-delay(.25s);
+										}
+									}
+								}
+								.postit {
+									> div {
+										background: lighten($eggplant, 15%);
+										&:before {
+											background: $eggplant;
+										}
+										svg {
+											circle, path {
+												stroke: $eggplant;
+											}
+											path[fill="#69B3A5"] {
+												fill: $eggplant;
+											}
+											*[opacity="0.5"], *[fill-opacity="0.5"]{
+												fill: $eggplant;
+											}
+										}
+									}
+								}
+							}
 							&:nth-child(3) {
 								-webkit-transform: rotate(5deg) translate(30px, 20px);
 								-moz-transform: rotate(5deg) translate(30px, 20px);
 								-ms-transform: rotate(5deg) translate(30px, 20px);
 								-o-transform: rotate(5deg) translate(30px, 20px);
 								transform: rotate(5deg) translate(30px, 20px);
+								&.bounceInUp {
+									@include animation-name(bounceInUp-bg-3);
+								}
 								.tape {
 									display: none;
 								}
@@ -2208,119 +2312,15 @@
 									}
 								}
 							}
-							&:nth-child(2) {
-								-webkit-transform: rotate(-7deg) translate(-25px, 60px);
-								-moz-transform: rotate(-7deg) translate(-25px, 60px);
-								-ms-transform: rotate(-7deg) translate(-25px, 60px);
-								-o-transform: rotate(-7deg) translate(-25px, 60px);
-								transform: rotate(-7deg) translate(-25px, 60px);
-								.tape {
-									&:nth-child(1) {
-										@include rotate(45);
-										left: 30px;
-										top: -20px;
-									}
-									&:nth-child(2) {
-										@include rotate(-45);
-										top: -20px;
-										right: 30px;
-									}
-								}
-								.postit {
-									> div {
-										background: lighten($eggplant, 15%);
-										&:before {
-											background: $eggplant;
-										}
-										svg {
-											circle, path {
-												stroke: $eggplant;
-											}
-											path[fill="#69B3A5"] {
-												fill: $eggplant;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $eggplant;
-											}
-										}
-									}
-								}
-							}
-							&:nth-child(1) {
-								-webkit-transform: rotate(7deg) translate(0, 20px);
-								-moz-transform: rotate(7deg) translate(0, 20px);
-								-ms-transform: rotate(7deg) translate(0, 20px);
-								-o-transform: rotate(7deg) translate(0, 20px);
-								transform: rotate(7deg) translate(0, 20px);
-								.tape {
-									&:nth-child(1) {
-										display: none;
-									}
-									&:nth-child(2) {
-										@include rotate(90);
-										top: -50px;
-										left: 50%;
-										margin-left: -20px;
-									}
-								}
-								.postit {
-									> div {
-										background: lighten($cerise, 15%);
-										&:before {
-											background: $cerise;
-										}
-										svg {
-											circle, path {
-												stroke: $cerise;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cerise;
-											}
-										}
-									}
-								}
-							}
-							&:nth-child(6) {
-								-webkit-transform: rotate(-2deg) translate(-20px, 15px);
-								-moz-transform: rotate(-2deg) translate(-20px, 15px);
-								-ms-transform: rotate(-2deg) translate(-20px, 15px);
-								-o-transform: rotate(-2deg) translate(-20px, 15px);
-								transform: rotate(-2deg) translate(-20px, 15px);
-								.tape {
-									&:nth-child(1) {
-										@include rotate(45);
-										left: 30px;
-										top: -20px;
-									}
-									&:nth-child(2) {
-										@include rotate(45);
-										bottom: -20px;
-										right: 30px;
-									}
-								}
-								.postit {
-									> div {
-										background: lighten($azure, 15%);
-										&:before {
-											background: $azure;
-										}
-										svg {
-											circle, path {
-												stroke: $azure;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $azure;
-											}
-										}
-									}
-								}
-							}
 							&:nth-child(4) {
-								-webkit-transform: rotate(20deg) translate(-10px,-10px);
-								-moz-transform: rotate(20deg) translate(-10px,-10px);
-								-ms-transform: rotate(20deg) translate(-10px,-10px);
-								-o-transform: rotate(20deg) translate(-10px,-10px);
-								transform: rotate(20deg) translate(-10px,-10px);
+								-webkit-transform: rotate(20deg) translate(-10px, -10px);
+								-moz-transform: rotate(20deg) translate(-10px, -10px);
+								-ms-transform: rotate(20deg) translate(-10px, -10px);
+								-o-transform: rotate(20deg) translate(-10px, -10px);
+								transform: rotate(20deg) translate(-10px, -10px);
+								&.bounceInLeft {
+									@include animation-name(bounceInLeft-bg-4);
+								}
 								.tape {
 									display: none;
 								}
@@ -2350,6 +2350,9 @@
 								-ms-transform: rotate(5deg);
 								-o-transform: rotate(5deg);
 								transform: rotate(5deg);
+								&.bounceInUp {
+									@include animation-name(bounceInUp-bg-5);
+								}
 								.tape {
 									display: none;
 								}
@@ -2375,6 +2378,54 @@
 													fill: none!important;
 													stroke: $moola;
 												}
+											}
+										}
+									}
+								}
+							}
+							&:nth-child(6) {
+								-webkit-transform: rotate(-2deg) translate(-20px, 15px);
+								-moz-transform: rotate(-2deg) translate(-20px, 15px);
+								-ms-transform: rotate(-2deg) translate(-20px, 15px);
+								-o-transform: rotate(-2deg) translate(-20px, 15px);
+								transform: rotate(-2deg) translate(-20px, 15px);
+								&.bounceInRight {
+									@include animation-name(bounceInRight-bg-6);
+								}
+								.tape {
+									&:nth-child(1) {
+										@include rotate(45);
+										left: 30px;
+										top: -20px;
+									}
+									&:nth-child(2) {
+										@include rotate(45);
+										bottom: -20px;
+										right: 30px;
+									}
+									&.animate {
+										&:nth-child(1) {
+											@include animation-name(tape-1);
+											@include animation-delay(.5s);
+										}
+										&:nth-child(2) {
+											@include animation-name(tape-4);
+											@include animation-delay(.75s);
+										}
+									}
+								}
+								.postit {
+									> div {
+										background: lighten($azure, 15%);
+										&:before {
+											background: $azure;
+										}
+										svg {
+											circle, path {
+												stroke: $azure;
+											}
+											*[opacity="0.5"], *[fill-opacity="0.5"]{
+												fill: $azure;
 											}
 										}
 									}
@@ -2855,10 +2906,32 @@
 					}
 				}
 			}
+			// HOW IT WORKS
+			.how-it-works-button {
+				@include opacity(0);
+			}
 			&#how-it-works, #how-it-works {
 				background: $smoke!important;
-				header {
+				> header {
+					@include flex;
+					@include flex-center;
+					color: $slate;
 					background: $smoke!important;
+					h1 {
+						@include opacity(0);
+						padding-top: 15px;
+						text-align: center;
+					}
+				}
+				@media screen and (min-width: 768px) {
+					> header {
+						height: 25%!important;
+						h1 {
+							font-size: 36px;
+							font-weight: 600;
+							text-transform: none!important;
+						}
+					}
 				}
 				.postit {
 					> div {

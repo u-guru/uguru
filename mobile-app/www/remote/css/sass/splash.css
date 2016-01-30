@@ -2893,11 +2893,18 @@
   background: #40484B;
 }
 
+.splash-landing > section .become-guru-button {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
 .splash-landing > section#become-guru > header {
   background: #2B3234 !important;
 }
 
 .splash-landing > section#become-guru > header h1 {
+  filter: alpha(opacity=0);
+  opacity: 0;
   color: white !important;
 }
 
@@ -2931,30 +2938,60 @@
 }
 
 @media screen and (min-width: 768px) {
-  .splash-landing > section#become-guru .main ul li:nth-child(3) {
-    -webkit-transform: rotate(5deg) translate(30px, 20px);
-    -moz-transform: rotate(5deg) translate(30px, 20px);
-    -ms-transform: rotate(5deg) translate(30px, 20px);
-    -o-transform: rotate(5deg) translate(30px, 20px);
-    transform: rotate(5deg) translate(30px, 20px);
+  .splash-landing > section#become-guru .main ul li {
+    position: relative !important;
   }
-  .splash-landing > section#become-guru .main ul li:nth-child(3) .tape {
+  .splash-landing > section#become-guru .main ul li .tape {
+    filter: alpha(opacity=0);
+    opacity: 0;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(1) {
+    -webkit-transform: rotate(7deg) translate(0, 20px);
+    -moz-transform: rotate(7deg) translate(0, 20px);
+    -ms-transform: rotate(7deg) translate(0, 20px);
+    -o-transform: rotate(7deg) translate(0, 20px);
+    transform: rotate(7deg) translate(0, 20px);
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(1).bounceInLeft {
+    -webkit-animation-name: bounceInLeft-bg-1;
+    -moz-animation-name: bounceInLeft-bg-1;
+    -o-animation-name: bounceInLeft-bg-1;
+    animation-name: bounceInLeft-bg-1;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(1) .tape:nth-child(1) {
     display: none;
   }
-  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div {
-    background: #b5b2f0;
+  .splash-landing > section#become-guru .main ul li:nth-child(1) .tape:nth-child(2) {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    top: -50px;
+    left: 50%;
+    margin-left: -20px;
   }
-  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div:before {
-    background: #7872e3;
+  .splash-landing > section#become-guru .main ul li:nth-child(1) .tape.animate:nth-child(2) {
+    -webkit-animation-name: tape-3;
+    -moz-animation-name: tape-3;
+    -o-animation-name: tape-3;
+    animation-name: tape-3;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
   }
-  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg path {
-    stroke: #7872e3;
+  .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div {
+    background: #ef7cbd;
   }
-  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg rect[fill="#69B3A5"] {
-    fill: #7872e3;
+  .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div:before {
+    background: #e6389b;
   }
-  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg *[fill-opacity="0.5"] {
-    fill: #7872e3;
+  .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg path {
+    stroke: #e6389b;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #e6389b;
   }
   .splash-landing > section#become-guru .main ul li:nth-child(2) {
     -webkit-transform: rotate(-7deg) translate(-25px, 60px);
@@ -2962,6 +2999,12 @@
     -ms-transform: rotate(-7deg) translate(-25px, 60px);
     -o-transform: rotate(-7deg) translate(-25px, 60px);
     transform: rotate(-7deg) translate(-25px, 60px);
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(2).bounceInRight {
+    -webkit-animation-name: bounceInRight-bg-2;
+    -moz-animation-name: bounceInRight-bg-2;
+    -o-animation-name: bounceInRight-bg-2;
+    animation-name: bounceInRight-bg-2;
   }
   .splash-landing > section#become-guru .main ul li:nth-child(2) .tape:nth-child(1) {
     -webkit-transform: rotate(45deg);
@@ -2981,6 +3024,22 @@
     top: -20px;
     right: 30px;
   }
+  .splash-landing > section#become-guru .main ul li:nth-child(2) .tape.animate:nth-child(1) {
+    -webkit-animation-name: tape-1;
+    -moz-animation-name: tape-1;
+    -o-animation-name: tape-1;
+    animation-name: tape-1;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(2) .tape.animate:nth-child(2) {
+    -webkit-animation-name: tape-2;
+    -moz-animation-name: tape-2;
+    -o-animation-name: tape-2;
+    animation-name: tape-2;
+    -webkit-animation-delay: 0.25s;
+    -moz-animation-delay: 0.25s;
+    -o-animation-delay: 0.25s;
+    animation-delay: 0.25s;
+  }
   .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div {
     background: #bd94d9;
   }
@@ -2996,74 +3055,36 @@
   .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg *[fill-opacity="0.5"] {
     fill: #9A5BC5;
   }
-  .splash-landing > section#become-guru .main ul li:nth-child(1) {
-    -webkit-transform: rotate(7deg) translate(0, 20px);
-    -moz-transform: rotate(7deg) translate(0, 20px);
-    -ms-transform: rotate(7deg) translate(0, 20px);
-    -o-transform: rotate(7deg) translate(0, 20px);
-    transform: rotate(7deg) translate(0, 20px);
+  .splash-landing > section#become-guru .main ul li:nth-child(3) {
+    -webkit-transform: rotate(5deg) translate(30px, 20px);
+    -moz-transform: rotate(5deg) translate(30px, 20px);
+    -ms-transform: rotate(5deg) translate(30px, 20px);
+    -o-transform: rotate(5deg) translate(30px, 20px);
+    transform: rotate(5deg) translate(30px, 20px);
   }
-  .splash-landing > section#become-guru .main ul li:nth-child(1) .tape:nth-child(1) {
+  .splash-landing > section#become-guru .main ul li:nth-child(3).bounceInUp {
+    -webkit-animation-name: bounceInUp-bg-3;
+    -moz-animation-name: bounceInUp-bg-3;
+    -o-animation-name: bounceInUp-bg-3;
+    animation-name: bounceInUp-bg-3;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(3) .tape {
     display: none;
   }
-  .splash-landing > section#become-guru .main ul li:nth-child(1) .tape:nth-child(2) {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    transform: rotate(90deg);
-    top: -50px;
-    left: 50%;
-    margin-left: -20px;
+  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div {
+    background: #b5b2f0;
   }
-  .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div {
-    background: #ef7cbd;
+  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div:before {
+    background: #7872e3;
   }
-  .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div:before {
-    background: #e6389b;
+  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg path {
+    stroke: #7872e3;
   }
-  .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg path {
-    stroke: #e6389b;
+  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg rect[fill="#69B3A5"] {
+    fill: #7872e3;
   }
-  .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg *[fill-opacity="0.5"] {
-    fill: #e6389b;
-  }
-  .splash-landing > section#become-guru .main ul li:nth-child(6) {
-    -webkit-transform: rotate(-2deg) translate(-20px, 15px);
-    -moz-transform: rotate(-2deg) translate(-20px, 15px);
-    -ms-transform: rotate(-2deg) translate(-20px, 15px);
-    -o-transform: rotate(-2deg) translate(-20px, 15px);
-    transform: rotate(-2deg) translate(-20px, 15px);
-  }
-  .splash-landing > section#become-guru .main ul li:nth-child(6) .tape:nth-child(1) {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-    left: 30px;
-    top: -20px;
-  }
-  .splash-landing > section#become-guru .main ul li:nth-child(6) .tape:nth-child(2) {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-    bottom: -20px;
-    right: 30px;
-  }
-  .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div {
-    background: #8bc1ce;
-  }
-  .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div:before {
-    background: #55A4B7;
-  }
-  .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg path {
-    stroke: #55A4B7;
-  }
-  .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg *[fill-opacity="0.5"] {
-    fill: #55A4B7;
+  .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #7872e3;
   }
   .splash-landing > section#become-guru .main ul li:nth-child(4) {
     -webkit-transform: rotate(20deg) translate(-10px, -10px);
@@ -3071,6 +3092,12 @@
     -ms-transform: rotate(20deg) translate(-10px, -10px);
     -o-transform: rotate(20deg) translate(-10px, -10px);
     transform: rotate(20deg) translate(-10px, -10px);
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(4).bounceInLeft {
+    -webkit-animation-name: bounceInLeft-bg-4;
+    -moz-animation-name: bounceInLeft-bg-4;
+    -o-animation-name: bounceInLeft-bg-4;
+    animation-name: bounceInLeft-bg-4;
   }
   .splash-landing > section#become-guru .main ul li:nth-child(4) .tape {
     display: none;
@@ -3097,6 +3124,12 @@
     -o-transform: rotate(5deg);
     transform: rotate(5deg);
   }
+  .splash-landing > section#become-guru .main ul li:nth-child(5).bounceInUp {
+    -webkit-animation-name: bounceInUp-bg-5;
+    -moz-animation-name: bounceInUp-bg-5;
+    -o-animation-name: bounceInUp-bg-5;
+    animation-name: bounceInUp-bg-5;
+  }
   .splash-landing > section#become-guru .main ul li:nth-child(5) .tape {
     display: none;
   }
@@ -3119,6 +3152,69 @@
   .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg path:nth-child(3) {
     fill: none !important;
     stroke: #81B566;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) {
+    -webkit-transform: rotate(-2deg) translate(-20px, 15px);
+    -moz-transform: rotate(-2deg) translate(-20px, 15px);
+    -ms-transform: rotate(-2deg) translate(-20px, 15px);
+    -o-transform: rotate(-2deg) translate(-20px, 15px);
+    transform: rotate(-2deg) translate(-20px, 15px);
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6).bounceInRight {
+    -webkit-animation-name: bounceInRight-bg-6;
+    -moz-animation-name: bounceInRight-bg-6;
+    -o-animation-name: bounceInRight-bg-6;
+    animation-name: bounceInRight-bg-6;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) .tape:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    left: 30px;
+    top: -20px;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) .tape:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    bottom: -20px;
+    right: 30px;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) .tape.animate:nth-child(1) {
+    -webkit-animation-name: tape-1;
+    -moz-animation-name: tape-1;
+    -o-animation-name: tape-1;
+    animation-name: tape-1;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) .tape.animate:nth-child(2) {
+    -webkit-animation-name: tape-4;
+    -moz-animation-name: tape-4;
+    -o-animation-name: tape-4;
+    animation-name: tape-4;
+    -webkit-animation-delay: 0.75s;
+    -moz-animation-delay: 0.75s;
+    -o-animation-delay: 0.75s;
+    animation-delay: 0.75s;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div {
+    background: #8bc1ce;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div:before {
+    background: #55A4B7;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg path {
+    stroke: #55A4B7;
+  }
+  .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg *[fill-opacity="0.5"] {
+    fill: #55A4B7;
   }
 }
 
@@ -3770,12 +3866,51 @@
   border-top-color: white;
 }
 
+.splash-landing#home-splash > section .how-it-works-button {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
 .splash-landing#home-splash > section#how-it-works, .splash-landing#home-splash > section #how-it-works {
   background: #F1F1F1 !important;
 }
 
-.splash-landing#home-splash > section#how-it-works header, .splash-landing#home-splash > section #how-it-works header {
+.splash-landing#home-splash > section#how-it-works > header, .splash-landing#home-splash > section #how-it-works > header {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  color: #40484B;
   background: #F1F1F1 !important;
+}
+
+.splash-landing#home-splash > section#how-it-works > header h1, .splash-landing#home-splash > section #how-it-works > header h1 {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  padding-top: 15px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing#home-splash > section#how-it-works > header, .splash-landing#home-splash > section #how-it-works > header {
+    height: 25% !important;
+  }
+  .splash-landing#home-splash > section#how-it-works > header h1, .splash-landing#home-splash > section #how-it-works > header h1 {
+    font-size: 36px;
+    font-weight: 600;
+    text-transform: none !important;
+  }
 }
 
 .splash-landing#home-splash > section#how-it-works .postit > div, .splash-landing#home-splash > section #how-it-works .postit > div {

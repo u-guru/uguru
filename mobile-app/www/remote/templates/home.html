@@ -55,15 +55,15 @@
 
 		<div class="splash-sub-header tab-bar slide" id='splash-hiw-nav'>
 			<div>
-				<a ng-click='activeBrowseTabIndex = 0' class="ng-class:{'active':activeBrowseTabIndex===0}">
+				<a ng-click='switchToTabIndex(0)' class="ng-class:{'active':activeBrowseTabIndex===0}">
 					<span>How It </span>
 					<span>Works</span>
 				</a>
-				<a ng-click='activeBrowseTabIndex = 1' class="ng-class:{'active':activeBrowseTabIndex===1}">
+				<a ng-click='switchToTabIndex(1)' class="ng-class:{'active':activeBrowseTabIndex===1}">
 					<span>Student-Run </span>
 					<span>Shops</span>
 				</a>
-				<a ng-click='activeBrowseTabIndex = 2;' class="ng-class:{'active':activeBrowseTabIndex===2}">
+				<a ng-click='switchToTabIndex(2)' class="ng-class:{'active':activeBrowseTabIndex===2}">
 					<span>Guru </span>
 					<span>Profiles</span>
 				</a>
@@ -314,6 +314,9 @@
 
 		<section class='splash-categories' id='splash-browse'>
 			<div id='how-it-works' class="main splash-postit ng-class:{'active':activeBrowseTabIndex===0}">
+				<header>
+					<h1 class="how-it-works-header">{{how_it_works.header}}</h1>
+				</header>
 				<div class='main relative'>
 					<!--Mobile mode, hacked css @595-611, samir.scss -->
 					<div class="full-xy" ng-if='!desktopMode'>
@@ -404,7 +407,7 @@
 								</div>
 							</li>
 						</ul>
-						<button ng-if='desktopMode' ng-click='scrollToSection("#splash-university")' class="bg-university">Join Your University</button>
+						<button class="how-it-works-button" ng-if='desktopMode' ng-click='scrollToSection("#splash-university")'>Join Your University</button>
 					</div>
 				</div>
 			</div>
@@ -429,36 +432,38 @@
 							<li>
 								<div style='background-image :url({{categories_img_base + categories[0].background_url}})'>
 									<span class='bg-more' ng-click='launchCategoryModal(category)'>
-                                            <div>
+                                        <div>
+											<span class="card-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+											<span class="card-label">More Coming Soon!</span>
+										</div>
+									</span>
+								</div>
+							</li>
+							<li class="card-button">
+								<button ng-click='goToSignup()'>Start Your Shop</button>
+							</li>
+						</ul>
+						<div class='subcategory-card-list sub-{{category.hex_color}} ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in ::categories'>
+							<ul class="category-card-list">
+								<li ng-repeat='subcategory in ::category.subcategories'>
+									<div class="bg-{{::category.hex_color}}">
+										<span class='bg-{{::category.hex_color}}'>
+											<div>
 												<span class="card-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
-									<span class="card-label">More Coming Soon!</span>
-								</div>
-								</span>
+												<span class="card-label txt-slate">{{subcategory.name}}</span>
+											</div>
+										</span>
+										<span class="card-price bg-{{category.hex_color}}">Free - $10/hr Avg</span>
+									</div>
+								</li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ul>
+							<button ng-click='hideCategorySkillsModal()'>Back</button>
+						</div>
 					</div>
-					</li>
-					<li class="card-button">
-						<button ng-click='goToSignup()'>Start Your Shop</button>
-					</li>
-					</ul>
-					<div class='subcategory-card-list sub-{{category.hex_color}} ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in ::categories'>
-						<ul class="category-card-list">
-							<li ng-repeat='subcategory in ::category.subcategories'>
-								<div class="bg-{{::category.hex_color}}">
-									<span class='bg-{{::category.hex_color}}'>
-												<div>
-													<span class="card-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
-									<span class="card-label txt-slate">{{subcategory.name}}</span>
-								</div>
-								</span>
-								<span class="card-price bg-{{category.hex_color}}">Free - $10/hr Avg</span>
-					</div>
-					</li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					</ul>
-					<button ng-click='hideCategorySkillsModal()'>Back</button>
 				</div>
 			</div>
 			<div id="splash-gurus" class="main ng-class:{'active':activeBrowseTabIndex===2}">
@@ -490,11 +495,11 @@
 									</div>
 									<div class="pf-card-main">
 										<h1 class="verified">
-                								<span class="inline">{{::sampleMiniProfilesDict[category.hex_color].name}}</span>
-                								<span class="inline">
-                									<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
-                								</span>
-                							</h1>
+            								<span class="inline">{{::sampleMiniProfilesDict[category.hex_color].name}}</span>
+            								<span class="inline">
+            									<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
+            								</span>
+                						</h1>
 										<h2 class="pf-school">{{::sampleMiniProfilesDict[category.hex_color].university_name}}</h2>
 										<ul class="pf-rating" data-rating="{{::sampleMiniProfilesDict[category.hex_color].rating.whole_stars}}" data-half="{{::sampleMiniProfilesDict[category.hex_color].rating.has_half_star}}" ng-include="img_base + 'templates/svg/rating.html'"></ul>
 										<span class="pf-review-amt">{{::sampleMiniProfilesDict[category.hex_color].rating.count}} Reviews</span>
@@ -512,7 +517,7 @@
 
 		<section id='become-guru' class="splash-postit ng-class:{'hide':!page.load.sections.five.display}">
 			<header>
-				<h1>{{become_guru.header}}</h1>
+				<h1 class="become-guru-header">{{become_guru.header}}</h1>
 			</header>
 			<div class='main bg-charcoal relative full-x'>
 				<!--Mobile mode, hacked css @595-611, samir.scss -->
@@ -602,7 +607,7 @@
 							</div>
 						</li>
 					</ul>
-					<button ng-click='scrollToSection("#splash-university")' class='capitalize'>Become a University Guru</button>
+					<button ng-click='scrollToSection("#splash-university")' class='capitalize become-guru-button'>Become a University Guru</button>
 				</div>
 			</div>
 			<footer>

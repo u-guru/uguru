@@ -58,6 +58,9 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	}
 
 	 function activateSectionAnimations(elements, css_arr, delay_arr) {
+        if (!elements || !elements.length) {
+        	return;
+        }
         for (var i = 0; i < elements.length; i ++) {
           animateIn(elements[i], css_arr[i], delay_arr[i]);
         }
