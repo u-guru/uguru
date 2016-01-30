@@ -857,7 +857,7 @@ function ContentService(Category) {
 
 	var generateUniversitySpecificBecomeGuruText = function(university) {
 		return {
-			header: "A Part-Time Job where U Come First",
+			header: "A Part-Time Job where U Come 1st",
 			top_half: [{
 				icon_src: "splash/profile.html",
 				header: "Full Stack Profile",
