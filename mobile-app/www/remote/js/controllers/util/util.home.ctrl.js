@@ -587,13 +587,13 @@ angular.module('uguru.util.controllers')
 
 			var scrollUniversityCallback = function(direction, element, scrollTop) {
 				if (direction === 'down') {
-					homeNavHeader.classList.add('bg-charcoal');
+					homeNavHeader.classList.add('bg-slate');
 					$scope.page.scroll.section_index = 1;
 				} else {
-					homeNavHeader.classList.remove('bg-charcoal');
+					homeNavHeader.classList.remove('bg-slate');
 					$scope.page.scroll.section_index = 0;
 				}
-				// $scope.page.header.showOnScrollNav = 'bg-charcoal'
+				// $scope.page.header.showOnScrollNav = 'bg-slate'
 				//@GABRIELLE-NOTE -- add more, feel free to discuss what other things you want to add to make navbar transition feel more fluid
 			}
 

@@ -3651,9 +3651,24 @@
 }
 
 .splash-landing#home-splash > .splash-header:before {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
   filter: alpha(opacity=75);
   opacity: 0.75;
   background: #69B3A5;
+}
+
+.splash-landing#home-splash > .splash-header.bg-slate {
+  background: none !important;
+}
+
+.splash-landing#home-splash > .splash-header.bg-slate:before {
+  filter: alpha(opacity=95);
+  opacity: 0.95;
+  background: #637074;
 }
 
 .splash-landing#home-splash > section.splash-hero .backpack .backpack-color, .splash-landing#home-splash > section.splash-hero .support .support-color {

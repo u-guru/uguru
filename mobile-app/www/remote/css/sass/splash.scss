@@ -229,7 +229,6 @@
 		top: 0;
 		right: 0;
 		width: 100%;
-
 		&:before {
 			@include opacity(.9);
 			content: "";
@@ -2744,8 +2743,16 @@
 		}
 		> .splash-header {
 			&:before {
+				@include transition(.15s ease-in-out);
 				@include opacity(.75);
 				background: $shamrock;
+			}
+			&.bg-slate {
+				background: none!important;
+				&:before {
+					@include opacity(.95);
+					background: lighten($slate, 15%);
+				}
 			}
 		}
 		> section {
