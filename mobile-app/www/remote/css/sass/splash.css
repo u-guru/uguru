@@ -2226,6 +2226,19 @@
   padding: 15px;
 }
 
+.splash-landing > section.splash-categories > .main .pf-card-group > li .pf-card .pf-card-top .user-icon {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+  margin-left: -48px;
+  width: 96px;
+  height: 96px;
+  bottom: -60px;
+  border-width: 3px;
+}
+
 .splash-landing > section.splash-categories > .main#splash-gurus > div {
   display: block;
 }

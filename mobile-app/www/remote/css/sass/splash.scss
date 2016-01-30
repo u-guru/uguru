@@ -1603,6 +1603,18 @@
 					padding: 15px;
 					> li {
 						padding: 15px;
+						.pf-card {
+							.pf-card-top {
+								.user-icon {
+									@include translate-x(0);
+									margin-left: -48px;
+									width: 96px;
+									height: 96px;
+									bottom: -60px;
+									border-width: 3px;
+								}
+							}
+						}
 					}
 				}
 				&#splash-gurus {

@@ -414,8 +414,8 @@
 			<div id="splash-categories" class="main ng-class:{'active':activeBrowseTabIndex===1}" ng-controller="CategoriesController">
 				<div>
 					<div>
-						<h1>Browse Sample Guru Categories</h1>
-						<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
+						<h1 class="splash-categories-header opacity-0">Browse Sample Guru Categories</h1>
+						<h2 class="splash-categories-subheader opacity-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
 					</div>
 					<div>
 						<ul class='category-card-list'>
@@ -423,8 +423,8 @@
 								<div style='background-image :url({{categories_img_base + category.background_url}})'>
 									<a class='bg-{{category.hex_color}}' ng-click='launchCategoryModal(category)'>
 										<div>
-											<span class="card-icon" ng-include="img_base + 'templates/svg/' + category.hex_color + '.html'"></span>
-											<span class="card-label">{{category.name}}</span>
+											<span class="card-icon opacity-0" ng-include="img_base + 'templates/svg/' + category.hex_color + '.html'"></span>
+											<span class="card-label opacity-0">{{category.name}}</span>
 										</div>
 									</a>
 								</div>
@@ -433,13 +433,13 @@
 								<div style='background-image :url({{categories_img_base + categories[0].background_url}})'>
 									<span class='bg-more' ng-click='launchCategoryModal(category)'>
                                         <div>
-											<span class="card-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
-											<span class="card-label">More Coming Soon!</span>
+											<span class="card-icon opacity-0" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+											<span class="card-label opacity-0">More Coming Soon!</span>
 										</div>
 									</span>
 								</div>
 							</li>
-							<li class="card-button">
+							<li class="card-button opacity-0">
 								<button ng-click='goToSignup()'>Start Your Shop</button>
 							</li>
 						</ul>
@@ -468,8 +468,8 @@
 			</div>
 			<div id="splash-gurus" class="main ng-class:{'active':activeBrowseTabIndex===2}">
 				<div>
-					<h1>Browse Sample Guru Profiles</h1>
-					<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
+					<h1 class="splash-gurus-header opacity-0">Browse Sample Guru Profiles</h1>
+					<h2 class="splash-gurus-subheader opacity-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
 					<div>
 						<ul class="pf-card-group-mobile" ng-if='!desktopMode'>
 							<li ng-repeat='category in ::categories' ng-if='category.is_active'>
@@ -481,28 +481,59 @@
 							</li>
 						</ul>
 						<ul class="pf-card-group" ng-if='desktopMode'>
-							<li ng-repeat='category in ::categories' ng-if='category.is_active'>
+							<li class="pf-card-li opacity-0" ng-repeat='category in ::categories' ng-if='category.is_active'>
 								<a class="pf-card pf-card-{{::category.hex_color}} bg-{{::category.hex_color}}" id='cta-box-{{::category.hex_color}}'>
 									<span class="pf-hover">View Profile</span>
 									<div class="pf-card-top">
 										<ul>
 											<li>{{category.hex_color}}</li>
-											<li>
+											<li class="pf-card-ribbon opacity-0">
 												<span>{{sampleMiniProfilesDict[category.hex_color].percentile}}&nbsp;percentile</span>
 											</li>
 										</ul>
-										<span class="user-icon" style="background-image: url({{::sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
+										<span class="user-icon opacity-0" style="background-image: url({{::sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
 									</div>
 									<div class="pf-card-main">
-										<h1 class="verified">
-            								<span class="inline">{{::sampleMiniProfilesDict[category.hex_color].name}}</span>
-            								<span class="inline">
+										<h1 class="pf-card-name verified">
+            								<span class="pf-card-name-span inline opacity-0">{{::sampleMiniProfilesDict[category.hex_color].name}}</span>
+            								<span class="pf-card-verified inline opacity-0">
             									<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
             								</span>
                 						</h1>
-										<h2 class="pf-school">{{::sampleMiniProfilesDict[category.hex_color].university_name}}</h2>
-										<ul class="pf-rating" data-rating="{{::sampleMiniProfilesDict[category.hex_color].rating.whole_stars}}" data-half="{{::sampleMiniProfilesDict[category.hex_color].rating.has_half_star}}" ng-include="img_base + 'templates/svg/rating.html'"></ul>
-										<span class="pf-review-amt">{{::sampleMiniProfilesDict[category.hex_color].rating.count}} Reviews</span>
+										<h2 class="pf-school opacity-0">{{::sampleMiniProfilesDict[category.hex_color].university_name}}</h2>
+										<ul class="pf-rating" data-rating="{{::sampleMiniProfilesDict[category.hex_color].rating.whole_stars}}" data-half="{{::sampleMiniProfilesDict[category.hex_color].rating.has_half_star}}">
+											<li class="opacity-0">
+												<svg viewBox="0 0 100 100">
+													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+												</svg>
+											</li>
+											<li class="opacity-0">
+												<svg viewBox="0 0 100 100">
+													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+												</svg>
+											</li>
+											<li class="opacity-0">
+												<svg viewBox="0 0 100 100">
+													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+												</svg>
+											</li>
+											<li class="opacity-0">
+												<svg viewBox="0 0 100 100">
+													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+												</svg>
+											</li>
+											<li class="opacity-0">
+												<svg viewBox="0 0 100 100">
+													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+												</svg>
+											</li>
+										</ul>
+										<span class="pf-review-amt opacity-0">{{::sampleMiniProfilesDict[category.hex_color].rating.count}} Reviews</span>
 									</div>
 								</a>
 							</li>
