@@ -4,6 +4,8 @@
 .splash-landing {
 	background: white;
 	overflow-x: hidden;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 	button:not([class*="btn-ghost"]) {
 		padding-left: 0!important;
 		padding-right: 0!important;
@@ -13,12 +15,19 @@
 	}
 	// SIDEBAR
 	.splash-sidebar {
+		@include opacity(0);
+		@include translate-x(-100%);
+		@include transition(.15s ease-in-out);
 		position: absolute;
 		top: 0;
 		left: 0;
 		z-index: 999999;
 		width: 100%;
 		height: 100%;
+		&.show {
+			@include opacity(1);
+			@include translate-x(0);
+		}
 		&:before {
 			@include opacity(.95);
 			content: "";
@@ -222,7 +231,6 @@
 		top: 0;
 		right: 0;
 		width: 100%;
-
 		&:before {
 			@include opacity(.9);
 			content: "";
@@ -1596,6 +1604,18 @@
 					padding: 15px;
 					> li {
 						padding: 15px;
+						.pf-card {
+							.pf-card-top {
+								.user-icon {
+									@include translate-x(0);
+									margin-left: -48px;
+									width: 96px;
+									height: 96px;
+									bottom: -60px;
+									border-width: 3px;
+								}
+							}
+						}
 					}
 				}
 				&#splash-gurus {
@@ -2129,10 +2149,14 @@
 		}
 
 		// BECOME A GURU
+		.become-guru-button {
+			@include opacity(0);
+		}
 		&#become-guru {
 			> header {
 				background: $charcoal!important;
 				h1 {
+					@include opacity(0);
 					color: white!important;
 				}
 			}
@@ -2172,30 +2196,48 @@
 				.main {
 					ul {
 						li {
-							&:nth-child(3) {
-								-webkit-transform: rotate(5deg) translate(30px, 20px);
-								-moz-transform: rotate(5deg) translate(30px, 20px);
-								-ms-transform: rotate(5deg) translate(30px, 20px);
-								-o-transform: rotate(5deg) translate(30px, 20px);
-								transform: rotate(5deg) translate(30px, 20px);
+							position: relative!important;
+							.tape {
+								@include opacity(0);
+							}
+							&:nth-child(1) {
+								-webkit-transform: rotate(7deg) translate(0, 20px);
+								-moz-transform: rotate(7deg) translate(0, 20px);
+								-ms-transform: rotate(7deg) translate(0, 20px);
+								-o-transform: rotate(7deg) translate(0, 20px);
+								transform: rotate(7deg) translate(0, 20px);
+								&.bounceInLeft {
+									@include animation-name(bounceInLeft-bg-1);
+								}
 								.tape {
-									display: none;
+									&:nth-child(1) {
+										display: none;
+									}
+									&:nth-child(2) {
+										@include rotate(90);
+										top: -50px;
+										left: 50%;
+										margin-left: -20px;
+									}
+									&.animate {
+										&:nth-child(2) {
+											@include animation-name(tape-3);
+											@include animation-delay(.5s);
+										}
+									}
 								}
 								.postit {
 									> div {
-										background: lighten($cobalt, 15%);
+										background: lighten($cerise, 15%);
 										&:before {
-											background: $cobalt;
+											background: $cerise;
 										}
 										svg {
 											circle, path {
-												stroke: $cobalt;
-											}
-											rect[fill="#69B3A5"] {
-												fill: $cobalt;
+												stroke: $cerise;
 											}
 											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cobalt;
+												fill: $cerise;
 											}
 										}
 									}
@@ -2207,6 +2249,9 @@
 								-ms-transform: rotate(-7deg) translate(-25px, 60px);
 								-o-transform: rotate(-7deg) translate(-25px, 60px);
 								transform: rotate(-7deg) translate(-25px, 60px);
+								&.bounceInRight {
+									@include animation-name(bounceInRight-bg-2);
+								}
 								.tape {
 									&:nth-child(1) {
 										@include rotate(45);
@@ -2224,6 +2269,7 @@
 										}
 										&:nth-child(2) {
 											@include animation-name(tape-2);
+											@include animation-delay(.25s);
 										}
 									}
 								}
@@ -2247,94 +2293,47 @@
 									}
 								}
 							}
-							&:nth-child(1) {
-								-webkit-transform: rotate(7deg) translate(0, 20px);
-								-moz-transform: rotate(7deg) translate(0, 20px);
-								-ms-transform: rotate(7deg) translate(0, 20px);
-								-o-transform: rotate(7deg) translate(0, 20px);
-								transform: rotate(7deg) translate(0, 20px);
+							&:nth-child(3) {
+								-webkit-transform: rotate(5deg) translate(30px, 20px);
+								-moz-transform: rotate(5deg) translate(30px, 20px);
+								-ms-transform: rotate(5deg) translate(30px, 20px);
+								-o-transform: rotate(5deg) translate(30px, 20px);
+								transform: rotate(5deg) translate(30px, 20px);
+								&.bounceInUp {
+									@include animation-name(bounceInUp-bg-3);
+								}
 								.tape {
-									&:nth-child(1) {
-										display: none;
-									}
-									&:nth-child(2) {
-										@include rotate(90);
-										top: -50px;
-										left: 50%;
-										margin-left: -20px;
-									}
-									&.animate {
-										&:nth-child(2) {
-											@include animation-name(tape-3);
-										}
-									}
+									display: none;
 								}
 								.postit {
 									> div {
-										background: lighten($cerise, 15%);
+										background: lighten($cobalt, 15%);
 										&:before {
-											background: $cerise;
+											background: $cobalt;
 										}
 										svg {
 											circle, path {
-												stroke: $cerise;
+												stroke: $cobalt;
+											}
+											rect[fill="#69B3A5"] {
+												fill: $cobalt;
 											}
 											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cerise;
-											}
-										}
-									}
-								}
-							}
-							&:nth-child(6) {
-								-webkit-transform: rotate(-2deg) translate(-20px, 15px);
-								-moz-transform: rotate(-2deg) translate(-20px, 15px);
-								-ms-transform: rotate(-2deg) translate(-20px, 15px);
-								-o-transform: rotate(-2deg) translate(-20px, 15px);
-								transform: rotate(-2deg) translate(-20px, 15px);
-								.tape {
-									&:nth-child(1) {
-										@include rotate(45);
-										left: 30px;
-										top: -20px;
-									}
-									&:nth-child(2) {
-										@include rotate(45);
-										bottom: -20px;
-										right: 30px;
-									}
-									&.animate {
-										&:nth-child(1) {
-											@include animation-name(tape-1);
-										}
-										&:nth-child(2) {
-											@include animation-name(tape-4);
-										}
-									}
-								}
-								.postit {
-									> div {
-										background: lighten($azure, 15%);
-										&:before {
-											background: $azure;
-										}
-										svg {
-											circle, path {
-												stroke: $azure;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $azure;
+												fill: $cobalt;
 											}
 										}
 									}
 								}
 							}
 							&:nth-child(4) {
-								-webkit-transform: rotate(20deg) translate(-10px,-10px);
-								-moz-transform: rotate(20deg) translate(-10px,-10px);
-								-ms-transform: rotate(20deg) translate(-10px,-10px);
-								-o-transform: rotate(20deg) translate(-10px,-10px);
-								transform: rotate(20deg) translate(-10px,-10px);
+								-webkit-transform: rotate(20deg) translate(-10px, -10px);
+								-moz-transform: rotate(20deg) translate(-10px, -10px);
+								-ms-transform: rotate(20deg) translate(-10px, -10px);
+								-o-transform: rotate(20deg) translate(-10px, -10px);
+								transform: rotate(20deg) translate(-10px, -10px);
+								&.bounceInLeft {
+									@include animation-name(bounceInLeft-bg-4);
+								}
 								.tape {
 									display: none;
 								}
@@ -2364,6 +2363,9 @@
 								-ms-transform: rotate(5deg);
 								-o-transform: rotate(5deg);
 								transform: rotate(5deg);
+								&.bounceInUp {
+									@include animation-name(bounceInUp-bg-5);
+								}
 								.tape {
 									display: none;
 								}
@@ -2394,81 +2396,102 @@
 									}
 								}
 							}
+							&:nth-child(6) {
+								-webkit-transform: rotate(-2deg) translate(-20px, 15px);
+								-moz-transform: rotate(-2deg) translate(-20px, 15px);
+								-ms-transform: rotate(-2deg) translate(-20px, 15px);
+								-o-transform: rotate(-2deg) translate(-20px, 15px);
+								transform: rotate(-2deg) translate(-20px, 15px);
+								&.bounceInRight {
+									@include animation-name(bounceInRight-bg-6);
+								}
+								.tape {
+									&:nth-child(1) {
+										@include rotate(45);
+										left: 30px;
+										top: -20px;
+									}
+									&:nth-child(2) {
+										@include rotate(45);
+										bottom: -20px;
+										right: 30px;
+									}
+									&.animate {
+										&:nth-child(1) {
+											@include animation-name(tape-1);
+											@include animation-delay(.5s);
+										}
+										&:nth-child(2) {
+											@include animation-name(tape-4);
+											@include animation-delay(.75s);
+										}
+									}
+								}
+								.postit {
+									> div {
+										background: lighten($azure, 15%);
+										&:before {
+											background: $azure;
+										}
+										svg {
+											circle, path {
+												stroke: $azure;
+											}
+											*[opacity="0.5"], *[fill-opacity="0.5"]{
+												fill: $azure;
+											}
+										}
+									}
+								}
+							}
 						}
 					}
 				}
 			}
 			> footer {
 				.border {
-					background: $shamrock!important;
+					background: $slate!important;
 					&:before {
 						border-top-color: $charcoal!important;
 					}
 				}
 			}
 		}
-		&#splash-start {
-			background: $shamrock;
-			text-align: center;
-			> div {
-				padding-bottom: 64px;
-			}
-			h1, h2 {
-				padding: 0 15px;
-				font-weight: 600;
-			}
-			h1 {
-				font-size: 28px;
-			}
-			h2 {
-				font-size: 20px;
-			}
-			@media screen and (min-width: 768px) {
-				h1 {
-					font-size: 36px;
-				}
-				h2 {
-					font-size: 24px;
-				}
-			}
+		&#splash-footer {
+			background: $slate;
+			padding: 36px 0 72px;
 			ul {
-				@include listless;
 				@include flex;
-				@include flex-wrap;
 				@include flex-center;
-				max-width: 900px;
-				margin: 0 auto;
-				padding: 7.5px;
 				li {
-					width: 100%;
-					padding: 7.5px;
-					button {
-						display: block;
-						width: 100%;
-						max-width: none;
-						background: none;
-						font-size: 22px;
-						letter-spacing: 0;
-						text-transform: none;
-						&:hover, &:focus {
-							background: white;
-							color: $shamrock;
+					position: relative;
+					font-size: 36px;
+					font-weight: 600;
+					&:first-child, &:last-child {
+						z-index: 2;
+					}
+					&:nth-child(2) {
+						@include flex;
+						@include flex-center;
+						z-index: 1;
+						width: 84px;
+						height: 84px;
+					}
+					svg {
+						@include transition(1.2s ease-in-out);
+						@include animation-name(pulse-heart);
+						@include animation-duration(1.2s);
+						@include animation-iteration-count(infinite);
+						@include transform-origin(center);
+						width: 72px;
+						height: 72px;
+						path {
+							stroke: mix($cerise, $auburn);
+							fill: mix($cerise, $auburn);
 						}
 					}
-				}
-			}
-			@media screen and (min-width: 768px) {
-				> div {
-					padding-bottom: 0;
-				}
-				ul {
-					padding: 15px;
-					li {
-						width: 50%;
-						padding: 15px;
-						button {
-							font-size: 24px;
-						}
+					span:last-child svg {
+						@include animation-delay(.6s);
 					}
 				}
 			}
@@ -2722,8 +2745,16 @@
 		}
 		> .splash-header {
 			&:before {
+				@include transition(.15s ease-in-out);
 				@include opacity(.75);
 				background: $shamrock;
+			}
+			&.bg-slate {
+				background: none!important;
+				&:before {
+					@include opacity(.95);
+					background: lighten($slate, 15%);
+				}
 			}
 		}
 		> section {
@@ -2896,10 +2927,32 @@
 					}
 				}
 			}
+			// HOW IT WORKS
+			.how-it-works-button {
+				@include opacity(0);
+			}
 			&#how-it-works, #how-it-works {
 				background: $smoke!important;
-				header {
+				> header {
+					@include flex;
+					@include flex-center;
+					color: $slate;
 					background: $smoke!important;
+					h1 {
+						@include opacity(0);
+						padding-top: 15px;
+						text-align: center;
+					}
+				}
+				@media screen and (min-width: 768px) {
+					> header {
+						height: 25%!important;
+						h1 {
+							font-size: 36px;
+							font-weight: 600;
+							text-transform: none!important;
+						}
+					}
 				}
 				.postit {
 					> div {
@@ -2936,6 +2989,10 @@
 					.main {
 						ul {
 							li {
+								position: relative!important;
+								.tape {
+									@include opacity(0);
+								}
 								.postit {
 									> div {
 										background: white;
@@ -2948,6 +3005,9 @@
 									-ms-transform: rotate(5deg) translate(30px, 20px);
 									-o-transform: rotate(5deg) translate(30px, 20px);
 									transform: rotate(5deg) translate(30px, 20px);
+									&.bounceInLeft {
+										@include animation-name(bounceInLeft-hiw-1);
+									}
 									.tape {
 										display: none;
 									}
@@ -2975,6 +3035,9 @@
 									-ms-transform: rotate(-7deg) translate(-25px, 60px);
 									-o-transform: rotate(-7deg) translate(-25px, 60px);
 									transform: rotate(-7deg) translate(-25px, 60px);
+									&.bounceInDown {
+										@include animation-name(bounceInDown-hiw-2);
+									}
 									.tape {
 										&:nth-child(1) {
 											@include rotate(45);
@@ -2985,6 +3048,15 @@
 											@include rotate(-45);
 										    top: -20px;
 										    right: 30px;
+										}
+										&.animate {
+											&:nth-child(1) {
+												@include animation-name(tape-1);
+											}
+											&:nth-child(2) {
+												@include animation-name(tape-2);
+												@include animation-delay(.25s);
+											}
 										}
 									}
 									.postit {
@@ -3009,6 +3081,9 @@
 									-ms-transform: rotate(7deg) translate(0, 20px);
 									-o-transform: rotate(7deg) translate(0, 20px);
 									transform: rotate(7deg) translate(0, 20px);
+									&.bounceInRight {
+										@include animation-name(bounceInRight-hiw-3);
+									}
 									.tape {
 										&:nth-child(1) {
 											display: none;
@@ -3018,6 +3093,12 @@
 										    top: -50px;
 											left: 50%;
 										    margin-left: -20px;
+										}
+										&.animate {
+											&:nth-child(2) {
+												@include animation-name(tape-3);
+												@include animation-delay(.5s);
+											}
 										}
 									}
 									.postit {
@@ -3042,6 +3123,9 @@
 									-ms-transform: rotate(-2deg) translate(-20px, 15px);
 									-o-transform: rotate(-2deg) translate(-20px, 15px);
 									transform: rotate(-2deg) translate(-20px, 15px);
+									&.bounceInLeft {
+										@include animation-name(bounceInLeft-hiw-4);
+									}
 									.tape {
 										&:nth-child(1) {
 											@include rotate(45);
@@ -3052,6 +3136,16 @@
 											@include rotate(45);
 										    bottom: -20px;
 										    right: 30px;
+										}
+										&.animate {
+											&:nth-child(1) {
+												@include animation-name(tape-1);
+												@include animation-delay(.5s);
+											}
+											&:nth-child(2) {
+												@include animation-name(tape-4);
+												@include animation-delay(.75s);
+											}
 										}
 									}
 									.postit {
@@ -3071,11 +3165,14 @@
 									}
 								}
 								&:nth-child(5) {
-									-webkit-transform: rotate(20deg) translate(-10px,-10px);
-									-moz-transform: rotate(20deg) translate(-10px,-10px);
-									-ms-transform: rotate(20deg) translate(-10px,-10px);
-									-o-transform: rotate(20deg) translate(-10px,-10px);
-									transform: rotate(20deg) translate(-10px,-10px);
+									-webkit-transform: rotate(20deg) translate(-10px, -10px);
+									-moz-transform: rotate(20deg) translate(-10px, -10px);
+									-ms-transform: rotate(20deg) translate(-10px, -10px);
+									-o-transform: rotate(20deg) translate(-10px, -10px);
+									transform: rotate(20deg) translate(-10px, -10px);
+									&.bounceInUp {
+										@include animation-name(bounceInUp-hiw-5);
+									}
 									.tape {
 										display: none;
 									}
@@ -3101,6 +3198,9 @@
 									-ms-transform: rotate(-5deg);
 									-o-transform: rotate(-5deg);
 									transform: rotate(-5deg);
+									&.bounceInRight {
+										@include animation-name(bounceInRight-hiw-6);
+									}
 									.tape {
 										display: none;
 									}
@@ -3145,10 +3245,6 @@
 			}
 		}
 	}
-}
-@include keyframes(blink) {
-	0% { @include opacity(0); }
-	100% { @include opacity(1); }
 }
 
 
@@ -3198,123 +3294,6 @@
 		}
 	}
 }
-// .gm-style {
-// 	font-family: $font;
-// }
-// .gm-style-iw {
-// 	@include translate-x(-50%);
-// 	position: absolute!important;
-// 	top: auto!important;
-// 	bottom: 0!important;
-// 	left: 50%!important;
-// 	width: 300px!important;
-// 	height: 280px!important;
-// 	> div {
-// 		display: block!important;
-// 		max-width: none!important;
-// 		max-height: none!important;
-// 		overflow: visible!important;
-// 		height: 100%;
-// 		> div {
-// 			height: calc(100% - 50px);
-// 			> header, > div {
-// 				height: 50%;
-// 			}
-// 			> header {
-// 				@include flex-center;
-// 				background-color: $slate;
-// 				background-size: cover;
-// 				background-position: center;
-// 				h1 {
-// 					@include center-xy;
-// 					width: 100%;
-// 					color: white;
-// 					font-family: $font;
-// 					font-size: 24px;
-// 					line-height: 1.2;
-// 					text-align: center;
-// 					text-transform: none!important;
-// 				}
-// 				div {
-// 					@include opacity(.7);
-// 					content: "";
-// 					display: block;
-// 					position: absolute;
-// 					top: 0;
-// 					left: 0;
-// 					width: 100%;
-// 					height: 100%;
-// 					background-color: $shamrock;
-// 				}
-// 			}
-// 			> div {
-// 				@include flex;
-// 				@include flex-center;
-// 				@include flex-wrap;
-// 				position: relative;
-// 				width: 100%;
-// 				background: white;
-// 				&:after {
-// 					@include center-x;
-// 					content: "";
-// 					display: block;
-// 					bottom: -50px;
-// 					width: 0;
-// 					height: 0;
-// 					border: 25px solid transparent;
-// 					border-top-color: white;
-// 				}
-// 			}
-// 			ul {
-// 				@include flex;
-// 				@include flex-center;
-// 				width: 100%;
-// 				text-align: center;
-// 				li {
-// 					width: calc(100% / 3);
-// 					h2, span {
-// 						font-family: $font;
-// 						text-transform: uppercase;
-// 					}
-// 					h2 {
-// 						color: lighten($slate, 25%);
-// 						font-size: 18px;
-// 						font-weight: 600;
-// 					}
-// 					span {
-// 						color: $slate;
-// 						font-size: 16px;
-// 						font-weight: 700;
-// 					}
-// 				}
-// 			}
-// 			button:not([class*="btn-ghost"]) {
-// 				margin-top: 10px;
-// 				padding: 10px;
-// 				padding-left: 15px!important;
-// 				padding-right: 15px!important;
-// 				height: auto!important;
-// 				width: auto!important;
-// 				background: $shamrock;
-// 				color: white;
-// 				font-size: 18px;
-// 				text-transform: uppercase;
-// 				&:hover, &:focus {
-// 					background: lighten($slate, 15%)!important;
-// 				}
-// 				&:active {
-// 					background: lighten($shamrock, 15%)!important;
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-// .gm-style-iw ~ * {
-// 	@include opacity-important(0);
-// 	display: none!important;
-// 	visibility: hidden!important;
-// 	z-index: -999999!important;
-// }
 
 @include keyframes(opacity-pulse) {
 	0% { @include opacity(.5); }
@@ -3403,4 +3382,122 @@
 		-o-transform: rotate(-45deg) scale(1);
 		transform: rotate(-45deg) scale(1);
 	}
+}
+
+.gm-style {
+	font-family: $font;
+}
+.gm-style-iw {
+	@include translate-x(-50%);
+	position: absolute!important;
+	top: auto!important;
+	bottom: 0!important;
+	left: 50%!important;
+	width: 300px!important;
+	height: 280px!important;
+	> div {
+		display: block!important;
+		max-width: none!important;
+		max-height: none!important;
+		overflow: visible!important;
+		height: 100%;
+		> div {
+			height: calc(100% - 50px);
+			> header, > div {
+				height: 50%;
+			}
+			> header {
+				@include flex-center;
+				background-color: $slate;
+				background-size: cover;
+				background-position: center;
+				h1 {
+					@include center-xy;
+					width: 100%;
+					color: white;
+					font-family: $font;
+					font-size: 24px;
+					line-height: 1.2;
+					text-align: center;
+					text-transform: none!important;
+				}
+				div {
+					@include opacity(.7);
+					content: "";
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: $shamrock;
+				}
+			}
+			> div {
+				@include flex;
+				@include flex-center;
+				@include flex-wrap;
+				position: relative;
+				width: 100%;
+				background: white;
+				&:after {
+					@include center-x;
+					content: "";
+					display: block;
+					bottom: -50px;
+					width: 0;
+					height: 0;
+					border: 25px solid transparent;
+					border-top-color: white;
+				}
+			}
+			ul {
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				text-align: center;
+				li {
+					width: calc(100% / 3);
+					h2, span {
+						font-family: $font;
+						text-transform: uppercase;
+					}
+					h2 {
+						color: lighten($slate, 25%);
+						font-size: 18px;
+						font-weight: 600;
+					}
+					span {
+						color: $slate;
+						font-size: 16px;
+						font-weight: 700;
+					}
+				}
+			}
+			button:not([class*="btn-ghost"]) {
+				margin-top: 10px;
+				padding: 10px;
+				padding-left: 15px!important;
+				padding-right: 15px!important;
+				height: auto!important;
+				width: auto!important;
+				background: $shamrock;
+				color: white;
+				font-size: 18px;
+				text-transform: uppercase;
+				&:hover, &:focus {
+					background: lighten($slate, 15%)!important;
+				}
+				&:active {
+					background: lighten($shamrock, 15%)!important;
+				}
+			}
+		}
+	}
+}
+.gm-style-iw ~ * {
+	@include opacity-important(0);
+	display: none!important;
+	visibility: hidden!important;
+	z-index: -999999!important;
 }

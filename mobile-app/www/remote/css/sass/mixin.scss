@@ -208,6 +208,13 @@
 	margin: 0;
 	padding: 0;
 }
+@mixin transform($transform) {
+	-webkit-transform: $transform;
+	-moz-transform: $transform;
+	-ms-transform: $transform;
+	-o-transform: $transform;
+	transform: $transform;
+}
 @mixin translate($xpos, $ypos) {
 	-webkit-transform: translate($xpos,$ypos);
 	-moz-transform: translate($xpos,$ypos);
@@ -309,6 +316,12 @@
 	}
 }
 
+@mixin animation-timing-function($timing) {
+	-webkit-timing-function: $timing;
+	-moz-timing-function: $timing;
+	-o-timing-function: $timing;
+	timing-function: $timing;
+}
 @mixin animation-duration($duration) {
 	-webkit-animation-duration: $duration;
 	-moz-animation-duration: $duration;

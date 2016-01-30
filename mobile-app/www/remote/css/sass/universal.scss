@@ -176,21 +176,6 @@
 	z-index: auto!important;
 }
 
-@include keyframes(toast-pop) {
-	0% {
-		@include opacity(0);
-		@include translate-y(-10%);
-	}
-	80% {
-		@include opacity(1);
-		@include translate-y(5%);
-	}
-	100% {
-		@include opacity(1);
-		@include translate-y(0);
-	}
-}
-
 // TICKET STUB
 .ticket-container {
 	background: $smoke;

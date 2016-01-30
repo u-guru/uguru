@@ -2638,50 +2638,6 @@ input[type=range] {
 	@include animation-iteration-count(1);
 	@include animation-name(checkmark-opacity);
 }
-@include keyframes(checkmark-one) {
-	0% {
-		@include opacity(0);
-		stroke-dashoffset: 20.8;
-	}
-	5% {
-		@include opacity(1);
-	}
-	95% {
-		stroke-dashoffset: 0;
-	}
-	100% {
-		stroke-dashoffset: 0;
-	}
-}
-@include keyframes(checkmark-two) {
-	0% {
-		@include opacity(0);
-		stroke-dashoffset: 49.91;
-	}
-	5% {
-		@include opacity(1);
-	}
-	95% {
-		stroke-dashoffset: 0;
-	}
-	100% {
-		stroke-dashoffset: 0;
-	}
-}
-@include keyframes(checkmark-opacity) {
-	0% {
-		@include opacity(0);
-	}
-	1% {
-		@include opacity(1);
-	}
-	98% {
-		@include opacity(1);
-	}
-	100% {
-		@include opacity(0);
-	}
-}
 #tour-guru {
 	g {
 		@include animation-delay(1.5s);
@@ -2705,86 +2661,7 @@ input[type=range] {
 		@include animation-name(tour-guru-eyes-up);
 	}
 }
-@include keyframes(tour-guru-eyes-center) {
-	0% {
-		@include opacity(1);
-	}
-	14% {
-		@include opacity(1);
-	}
-	15% {
-		@include opacity(0);
-	}
-	29% {
-		@include opacity(0);
-	}
-	30% {
-		@include opacity(1);
-	}
-	44% {
-		@include opacity(1);
-	}
-	45% {
-		@include opacity(0);
-	}
-	100% {
-		@include opacity(0);
-	}
-}
-@include keyframes(tour-guru-eyes-moon) {
-	0% {
-		@include opacity(0);
-	}
-	59% {
-		@include opacity(0);
-	}
-	60% {
-		@include opacity(1);
-	}
-	100% {
-		@include opacity(1);
-	}
-}
-@include keyframes(tour-guru-eyes-side) {
-	0% {
-		@include opacity(0);
-	}
-	14% {
-		@include opacity(0);
-	}
-	15% {
-		@include opacity(1);
-	}
-	29% {
-		@include opacity(1);
-	}
-	30% {
-		@include opacity(0);
-	}
-	100% {
-		@include opacity(0);
-	}
-}
-@include keyframes(tour-guru-eyes-up) {
-	0% {
-		@include opacity(0);
-	}
-	44% {
-		@include opacity(0);
-	}
-	45% {
-		@include opacity(1);
-	}
-	59% {
-		@include opacity(1);
-	}
-	60% {
-		@include opacity(0);
-	}
-	100% {
-		@include opacity(0);
-	}
-}
+
 // USER ICON
 .user-icon,
 .user-icon-64,
@@ -5486,33 +5363,5 @@ input[type=range] {
 		label.active {
 			font-size: 20px!important;
 		}
-	}
-}
-@include keyframes(courses-pop) {
-	0% {
-		@include opacity(0);
-		@include translate-y(-8%);
-	}
-	80% {
-		@include opacity(1);
-		@include translate-y(2%);
-	}
-	100% {
-		@include opacity(1);
-		@include translate-y(0);
-	}
-}
-@include keyframes(url-pop) {
-	0% {
-		@include opacity(0);
-		@include translate-y(50%);
-	}
-	90% {
-		@include opacity(1);
-		@include translate-y(-5%);
-	}
-	100% {
-		@include opacity(1);
-		@include translate-y(0);
 	}
 }

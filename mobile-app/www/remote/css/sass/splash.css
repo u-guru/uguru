@@ -1,7 +1,9 @@
 /* ---------- SPLASH PAGES */
 .splash-landing {
   background: white;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
   .splash-landing button:not([class*="btn-ghost"]) {
     padding-left: 0 !important;
     padding-right: 0 !important; }
@@ -9,12 +11,32 @@
       .splash-landing button:not([class*="btn-ghost"]) {
         font-size: 22px !important; } }
   .splash-landing .splash-sidebar {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+    -ms-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 999999;
     width: 100%;
     height: 100%; }
+    .splash-landing .splash-sidebar.show {
+      filter: alpha(opacity=100);
+      opacity: 1;
+      -webkit-transform: translateX(0);
+      -moz-transform: translateX(0);
+      -ms-transform: translateX(0);
+      -o-transform: translateX(0);
+      transform: translateX(0); }
     .splash-landing .splash-sidebar:before {
       filter: alpha(opacity=95);
       opacity: 0.95;
@@ -1602,6 +1624,17 @@
         padding: 15px; }
         .splash-landing > section.splash-categories > .main .pf-card-group > li {
           padding: 15px; }
+          .splash-landing > section.splash-categories > .main .pf-card-group > li .pf-card .pf-card-top .user-icon {
+            -webkit-transform: translateX(0);
+            -moz-transform: translateX(0);
+            -ms-transform: translateX(0);
+            -o-transform: translateX(0);
+            transform: translateX(0);
+            margin-left: -48px;
+            width: 96px;
+            height: 96px;
+            bottom: -60px;
+            border-width: 3px; }
       .splash-landing > section.splash-categories > .main#splash-gurus > div {
         display: block; }
       .splash-landing > section.splash-categories > .main form {
@@ -2108,9 +2141,14 @@
         width: 100%;
         height: 100%;
         background: #40484B; }
+    .splash-landing > section .become-guru-button {
+      filter: alpha(opacity=0);
+      opacity: 0; }
     .splash-landing > section#become-guru > header {
       background: #2B3234 !important; }
       .splash-landing > section#become-guru > header h1 {
+        filter: alpha(opacity=0);
+        opacity: 0;
         color: white !important; }
     .splash-landing > section#become-guru .postit > div, .splash-landing > section#become-guru .postit > span {
       background: #637074;
@@ -2134,201 +2172,235 @@
         -o-transform: rotate(5deg) translate(10px, 10px);
         transform: rotate(5deg) translate(10px, 10px); } }
     @media screen and (min-width: 768px) {
-      .splash-landing > section#become-guru .main ul li:nth-child(3) {
-        -webkit-transform: rotate(5deg) translate(30px, 20px);
-        -moz-transform: rotate(5deg) translate(30px, 20px);
-        -ms-transform: rotate(5deg) translate(30px, 20px);
-        -o-transform: rotate(5deg) translate(30px, 20px);
-        transform: rotate(5deg) translate(30px, 20px); }
-        .splash-landing > section#become-guru .main ul li:nth-child(3) .tape {
-          display: none; }
-        .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div {
-          background: #b5b2f0; }
-          .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div:before {
-            background: #7872e3; }
-          .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg path {
-            stroke: #7872e3; }
-          .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg rect[fill="#69B3A5"] {
-            fill: #7872e3; }
-          .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg *[fill-opacity="0.5"] {
-            fill: #7872e3; }
-      .splash-landing > section#become-guru .main ul li:nth-child(2) {
-        -webkit-transform: rotate(-7deg) translate(-25px, 60px);
-        -moz-transform: rotate(-7deg) translate(-25px, 60px);
-        -ms-transform: rotate(-7deg) translate(-25px, 60px);
-        -o-transform: rotate(-7deg) translate(-25px, 60px);
-        transform: rotate(-7deg) translate(-25px, 60px); }
-        .splash-landing > section#become-guru .main ul li:nth-child(2) .tape:nth-child(1) {
-          -webkit-transform: rotate(45deg);
-          -moz-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          -o-transform: rotate(45deg);
-          transform: rotate(45deg);
-          left: 30px;
-          top: -20px; }
-        .splash-landing > section#become-guru .main ul li:nth-child(2) .tape:nth-child(2) {
-          -webkit-transform: rotate(-45deg);
-          -moz-transform: rotate(-45deg);
-          -ms-transform: rotate(-45deg);
-          -o-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-          top: -20px;
-          right: 30px; }
-        .splash-landing > section#become-guru .main ul li:nth-child(2) .tape.animate:nth-child(1) {
-          -webkit-animation-name: tape-1;
-          -moz-animation-name: tape-1;
-          -o-animation-name: tape-1;
-          animation-name: tape-1; }
-        .splash-landing > section#become-guru .main ul li:nth-child(2) .tape.animate:nth-child(2) {
-          -webkit-animation-name: tape-2;
-          -moz-animation-name: tape-2;
-          -o-animation-name: tape-2;
-          animation-name: tape-2; }
-        .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div {
-          background: #bd94d9; }
-          .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div:before {
-            background: #9A5BC5; }
-          .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg path {
-            stroke: #9A5BC5; }
-          .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg path[fill="#69B3A5"] {
-            fill: #9A5BC5; }
-          .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg *[fill-opacity="0.5"] {
-            fill: #9A5BC5; }
-      .splash-landing > section#become-guru .main ul li:nth-child(1) {
-        -webkit-transform: rotate(7deg) translate(0, 20px);
-        -moz-transform: rotate(7deg) translate(0, 20px);
-        -ms-transform: rotate(7deg) translate(0, 20px);
-        -o-transform: rotate(7deg) translate(0, 20px);
-        transform: rotate(7deg) translate(0, 20px); }
-        .splash-landing > section#become-guru .main ul li:nth-child(1) .tape:nth-child(1) {
-          display: none; }
-        .splash-landing > section#become-guru .main ul li:nth-child(1) .tape:nth-child(2) {
-          -webkit-transform: rotate(90deg);
-          -moz-transform: rotate(90deg);
-          -ms-transform: rotate(90deg);
-          -o-transform: rotate(90deg);
-          transform: rotate(90deg);
-          top: -50px;
-          left: 50%;
-          margin-left: -20px; }
-        .splash-landing > section#become-guru .main ul li:nth-child(1) .tape.animate:nth-child(2) {
-          -webkit-animation-name: tape-3;
-          -moz-animation-name: tape-3;
-          -o-animation-name: tape-3;
-          animation-name: tape-3; }
-        .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div {
-          background: #ef7cbd; }
-          .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div:before {
-            background: #e6389b; }
-          .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg path {
-            stroke: #e6389b; }
-          .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg *[fill-opacity="0.5"] {
-            fill: #e6389b; }
-      .splash-landing > section#become-guru .main ul li:nth-child(6) {
-        -webkit-transform: rotate(-2deg) translate(-20px, 15px);
-        -moz-transform: rotate(-2deg) translate(-20px, 15px);
-        -ms-transform: rotate(-2deg) translate(-20px, 15px);
-        -o-transform: rotate(-2deg) translate(-20px, 15px);
-        transform: rotate(-2deg) translate(-20px, 15px); }
-        .splash-landing > section#become-guru .main ul li:nth-child(6) .tape:nth-child(1) {
-          -webkit-transform: rotate(45deg);
-          -moz-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          -o-transform: rotate(45deg);
-          transform: rotate(45deg);
-          left: 30px;
-          top: -20px; }
-        .splash-landing > section#become-guru .main ul li:nth-child(6) .tape:nth-child(2) {
-          -webkit-transform: rotate(45deg);
-          -moz-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          -o-transform: rotate(45deg);
-          transform: rotate(45deg);
-          bottom: -20px;
-          right: 30px; }
-        .splash-landing > section#become-guru .main ul li:nth-child(6) .tape.animate:nth-child(1) {
-          -webkit-animation-name: tape-1;
-          -moz-animation-name: tape-1;
-          -o-animation-name: tape-1;
-          animation-name: tape-1; }
-        .splash-landing > section#become-guru .main ul li:nth-child(6) .tape.animate:nth-child(2) {
-          -webkit-animation-name: tape-4;
-          -moz-animation-name: tape-4;
-          -o-animation-name: tape-4;
-          animation-name: tape-4; }
-        .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div {
-          background: #8bc1ce; }
-          .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div:before {
-            background: #55A4B7; }
-          .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg path {
-            stroke: #55A4B7; }
-          .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg *[fill-opacity="0.5"] {
-            fill: #55A4B7; }
-      .splash-landing > section#become-guru .main ul li:nth-child(4) {
-        -webkit-transform: rotate(20deg) translate(-10px, -10px);
-        -moz-transform: rotate(20deg) translate(-10px, -10px);
-        -ms-transform: rotate(20deg) translate(-10px, -10px);
-        -o-transform: rotate(20deg) translate(-10px, -10px);
-        transform: rotate(20deg) translate(-10px, -10px); }
-        .splash-landing > section#become-guru .main ul li:nth-child(4) .tape {
-          display: none; }
-        .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div {
-          background: #eea580; }
-          .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div:before {
-            background: #E5753C; }
-          .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg path {
-            stroke: #E5753C; }
-          .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg circle[fill="#69B3A5"] {
-            fill: #E5753C !important; }
-          .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg *[fill-opacity="0.5"] {
-            fill: #E5753C; }
-      .splash-landing > section#become-guru .main ul li:nth-child(5) {
-        -webkit-transform: rotate(5deg);
-        -moz-transform: rotate(5deg);
-        -ms-transform: rotate(5deg);
-        -o-transform: rotate(5deg);
-        transform: rotate(5deg); }
-        .splash-landing > section#become-guru .main ul li:nth-child(5) .tape {
-          display: none; }
-        .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div {
-          background: #abce9a; }
-          .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div:before {
-            background: #81B566; }
-          .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg path {
-            stroke: #81B566; }
-          .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg *[fill-opacity="0.5"] {
-            fill: #81B566; }
-          .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg path:nth-child(2) {
-            fill: none !important;
-            stroke: white; }
-          .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg path:nth-child(3) {
-            fill: none !important;
-            stroke: #81B566; } }
+      .splash-landing > section#become-guru .main ul li {
+        position: relative !important; }
+        .splash-landing > section#become-guru .main ul li .tape {
+          filter: alpha(opacity=0);
+          opacity: 0; }
+        .splash-landing > section#become-guru .main ul li:nth-child(1) {
+          -webkit-transform: rotate(7deg) translate(0, 20px);
+          -moz-transform: rotate(7deg) translate(0, 20px);
+          -ms-transform: rotate(7deg) translate(0, 20px);
+          -o-transform: rotate(7deg) translate(0, 20px);
+          transform: rotate(7deg) translate(0, 20px); }
+          .splash-landing > section#become-guru .main ul li:nth-child(1).bounceInLeft {
+            -webkit-animation-name: bounceInLeft-bg-1;
+            -moz-animation-name: bounceInLeft-bg-1;
+            -o-animation-name: bounceInLeft-bg-1;
+            animation-name: bounceInLeft-bg-1; }
+          .splash-landing > section#become-guru .main ul li:nth-child(1) .tape:nth-child(1) {
+            display: none; }
+          .splash-landing > section#become-guru .main ul li:nth-child(1) .tape:nth-child(2) {
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            transform: rotate(90deg);
+            top: -50px;
+            left: 50%;
+            margin-left: -20px; }
+          .splash-landing > section#become-guru .main ul li:nth-child(1) .tape.animate:nth-child(2) {
+            -webkit-animation-name: tape-3;
+            -moz-animation-name: tape-3;
+            -o-animation-name: tape-3;
+            animation-name: tape-3;
+            -webkit-animation-delay: 0.5s;
+            -moz-animation-delay: 0.5s;
+            -o-animation-delay: 0.5s;
+            animation-delay: 0.5s; }
+          .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div {
+            background: #ef7cbd; }
+            .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div:before {
+              background: #e6389b; }
+            .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg path {
+              stroke: #e6389b; }
+            .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(1) .postit > div svg *[fill-opacity="0.5"] {
+              fill: #e6389b; }
+        .splash-landing > section#become-guru .main ul li:nth-child(2) {
+          -webkit-transform: rotate(-7deg) translate(-25px, 60px);
+          -moz-transform: rotate(-7deg) translate(-25px, 60px);
+          -ms-transform: rotate(-7deg) translate(-25px, 60px);
+          -o-transform: rotate(-7deg) translate(-25px, 60px);
+          transform: rotate(-7deg) translate(-25px, 60px); }
+          .splash-landing > section#become-guru .main ul li:nth-child(2).bounceInRight {
+            -webkit-animation-name: bounceInRight-bg-2;
+            -moz-animation-name: bounceInRight-bg-2;
+            -o-animation-name: bounceInRight-bg-2;
+            animation-name: bounceInRight-bg-2; }
+          .splash-landing > section#become-guru .main ul li:nth-child(2) .tape:nth-child(1) {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            left: 30px;
+            top: -20px; }
+          .splash-landing > section#become-guru .main ul li:nth-child(2) .tape:nth-child(2) {
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            top: -20px;
+            right: 30px; }
+          .splash-landing > section#become-guru .main ul li:nth-child(2) .tape.animate:nth-child(1) {
+            -webkit-animation-name: tape-1;
+            -moz-animation-name: tape-1;
+            -o-animation-name: tape-1;
+            animation-name: tape-1; }
+          .splash-landing > section#become-guru .main ul li:nth-child(2) .tape.animate:nth-child(2) {
+            -webkit-animation-name: tape-2;
+            -moz-animation-name: tape-2;
+            -o-animation-name: tape-2;
+            animation-name: tape-2;
+            -webkit-animation-delay: 0.25s;
+            -moz-animation-delay: 0.25s;
+            -o-animation-delay: 0.25s;
+            animation-delay: 0.25s; }
+          .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div {
+            background: #bd94d9; }
+            .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div:before {
+              background: #9A5BC5; }
+            .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg path {
+              stroke: #9A5BC5; }
+            .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg path[fill="#69B3A5"] {
+              fill: #9A5BC5; }
+            .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(2) .postit > div svg *[fill-opacity="0.5"] {
+              fill: #9A5BC5; }
+        .splash-landing > section#become-guru .main ul li:nth-child(3) {
+          -webkit-transform: rotate(5deg) translate(30px, 20px);
+          -moz-transform: rotate(5deg) translate(30px, 20px);
+          -ms-transform: rotate(5deg) translate(30px, 20px);
+          -o-transform: rotate(5deg) translate(30px, 20px);
+          transform: rotate(5deg) translate(30px, 20px); }
+          .splash-landing > section#become-guru .main ul li:nth-child(3).bounceInUp {
+            -webkit-animation-name: bounceInUp-bg-3;
+            -moz-animation-name: bounceInUp-bg-3;
+            -o-animation-name: bounceInUp-bg-3;
+            animation-name: bounceInUp-bg-3; }
+          .splash-landing > section#become-guru .main ul li:nth-child(3) .tape {
+            display: none; }
+          .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div {
+            background: #b5b2f0; }
+            .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div:before {
+              background: #7872e3; }
+            .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg path {
+              stroke: #7872e3; }
+            .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg rect[fill="#69B3A5"] {
+              fill: #7872e3; }
+            .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(3) .postit > div svg *[fill-opacity="0.5"] {
+              fill: #7872e3; }
+        .splash-landing > section#become-guru .main ul li:nth-child(4) {
+          -webkit-transform: rotate(20deg) translate(-10px, -10px);
+          -moz-transform: rotate(20deg) translate(-10px, -10px);
+          -ms-transform: rotate(20deg) translate(-10px, -10px);
+          -o-transform: rotate(20deg) translate(-10px, -10px);
+          transform: rotate(20deg) translate(-10px, -10px); }
+          .splash-landing > section#become-guru .main ul li:nth-child(4).bounceInLeft {
+            -webkit-animation-name: bounceInLeft-bg-4;
+            -moz-animation-name: bounceInLeft-bg-4;
+            -o-animation-name: bounceInLeft-bg-4;
+            animation-name: bounceInLeft-bg-4; }
+          .splash-landing > section#become-guru .main ul li:nth-child(4) .tape {
+            display: none; }
+          .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div {
+            background: #eea580; }
+            .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div:before {
+              background: #E5753C; }
+            .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg path {
+              stroke: #E5753C; }
+            .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg circle[fill="#69B3A5"] {
+              fill: #E5753C !important; }
+            .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(4) .postit > div svg *[fill-opacity="0.5"] {
+              fill: #E5753C; }
+        .splash-landing > section#become-guru .main ul li:nth-child(5) {
+          -webkit-transform: rotate(5deg);
+          -moz-transform: rotate(5deg);
+          -ms-transform: rotate(5deg);
+          -o-transform: rotate(5deg);
+          transform: rotate(5deg); }
+          .splash-landing > section#become-guru .main ul li:nth-child(5).bounceInUp {
+            -webkit-animation-name: bounceInUp-bg-5;
+            -moz-animation-name: bounceInUp-bg-5;
+            -o-animation-name: bounceInUp-bg-5;
+            animation-name: bounceInUp-bg-5; }
+          .splash-landing > section#become-guru .main ul li:nth-child(5) .tape {
+            display: none; }
+          .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div {
+            background: #abce9a; }
+            .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div:before {
+              background: #81B566; }
+            .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg path {
+              stroke: #81B566; }
+            .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg *[fill-opacity="0.5"] {
+              fill: #81B566; }
+            .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg path:nth-child(2) {
+              fill: none !important;
+              stroke: white; }
+            .splash-landing > section#become-guru .main ul li:nth-child(5) .postit > div svg path:nth-child(3) {
+              fill: none !important;
+              stroke: #81B566; }
+        .splash-landing > section#become-guru .main ul li:nth-child(6) {
+          -webkit-transform: rotate(-2deg) translate(-20px, 15px);
+          -moz-transform: rotate(-2deg) translate(-20px, 15px);
+          -ms-transform: rotate(-2deg) translate(-20px, 15px);
+          -o-transform: rotate(-2deg) translate(-20px, 15px);
+          transform: rotate(-2deg) translate(-20px, 15px); }
+          .splash-landing > section#become-guru .main ul li:nth-child(6).bounceInRight {
+            -webkit-animation-name: bounceInRight-bg-6;
+            -moz-animation-name: bounceInRight-bg-6;
+            -o-animation-name: bounceInRight-bg-6;
+            animation-name: bounceInRight-bg-6; }
+          .splash-landing > section#become-guru .main ul li:nth-child(6) .tape:nth-child(1) {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            left: 30px;
+            top: -20px; }
+          .splash-landing > section#become-guru .main ul li:nth-child(6) .tape:nth-child(2) {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            bottom: -20px;
+            right: 30px; }
+          .splash-landing > section#become-guru .main ul li:nth-child(6) .tape.animate:nth-child(1) {
+            -webkit-animation-name: tape-1;
+            -moz-animation-name: tape-1;
+            -o-animation-name: tape-1;
+            animation-name: tape-1;
+            -webkit-animation-delay: 0.5s;
+            -moz-animation-delay: 0.5s;
+            -o-animation-delay: 0.5s;
+            animation-delay: 0.5s; }
+          .splash-landing > section#become-guru .main ul li:nth-child(6) .tape.animate:nth-child(2) {
+            -webkit-animation-name: tape-4;
+            -moz-animation-name: tape-4;
+            -o-animation-name: tape-4;
+            animation-name: tape-4;
+            -webkit-animation-delay: 0.75s;
+            -moz-animation-delay: 0.75s;
+            -o-animation-delay: 0.75s;
+            animation-delay: 0.75s; }
+          .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div {
+            background: #8bc1ce; }
+            .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div:before {
+              background: #55A4B7; }
+            .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg circle, .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg path {
+              stroke: #55A4B7; }
+            .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg *[opacity="0.5"], .splash-landing > section#become-guru .main ul li:nth-child(6) .postit > div svg *[fill-opacity="0.5"] {
+              fill: #55A4B7; } }
     .splash-landing > section#become-guru > footer .border {
-      background: #69B3A5 !important; }
+      background: #40484B !important; }
       .splash-landing > section#become-guru > footer .border:before {
         border-top-color: #2B3234 !important; }
-    .splash-landing > section#splash-start {
-      background: #69B3A5;
-      text-align: center; }
-      .splash-landing > section#splash-start > div {
-        padding-bottom: 64px; }
-      .splash-landing > section#splash-start h1, .splash-landing > section#splash-start h2 {
-        padding: 0 15px;
-        font-weight: 600; }
-      .splash-landing > section#splash-start h1 {
-        font-size: 28px; }
-      .splash-landing > section#splash-start h2 {
-        font-size: 20px; }
-      @media screen and (min-width: 768px) {
-        .splash-landing > section#splash-start h1 {
-          font-size: 36px; }
-        .splash-landing > section#splash-start h2 {
-          font-size: 24px; } }
-      .splash-landing > section#splash-start ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+    .splash-landing > section#splash-footer {
+      background: #40484B;
+      padding: 36px 0 72px; }
+      .splash-landing > section#splash-footer ul {
         -ms-box-orient: horizontal;
         display: -webkit-box;
         display: -moz-box;
@@ -2336,9 +2408,6 @@
         display: -moz-flex;
         display: -webkit-flex;
         display: flex;
-        -ms-flex-flow: row wrap;
-        -webkit-flex-flow: row wrap;
-        flex-flow: row wrap;
         -webkit-flex-direction: row;
         flex-direction: row;
         -webkit-align-items: center;
@@ -2346,34 +2415,65 @@
         -webkit-align-content: center;
         align-content: center;
         -webkit-justify-content: center;
-        justify-content: center;
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 7.5px; }
-        .splash-landing > section#splash-start ul li {
-          width: 100%;
-          padding: 7.5px; }
-          .splash-landing > section#splash-start ul li button {
-            display: block;
-            width: 100%;
-            max-width: none;
-            background: none;
-            font-size: 22px;
-            letter-spacing: 0;
-            text-transform: none; }
-            .splash-landing > section#splash-start ul li button:hover, .splash-landing > section#splash-start ul li button:focus {
-              background: white;
-              color: #69B3A5; }
-      @media screen and (min-width: 768px) {
-        .splash-landing > section#splash-start > div {
-          padding-bottom: 0; }
-        .splash-landing > section#splash-start ul {
-          padding: 15px; }
-          .splash-landing > section#splash-start ul li {
-            width: 50%;
-            padding: 15px; }
-            .splash-landing > section#splash-start ul li button {
-              font-size: 24px; } }
+        justify-content: center; }
+        .splash-landing > section#splash-footer ul li {
+          position: relative;
+          font-size: 36px;
+          font-weight: 600; }
+          .splash-landing > section#splash-footer ul li:first-child, .splash-landing > section#splash-footer ul li:last-child {
+            z-index: 2; }
+          .splash-landing > section#splash-footer ul li:nth-child(2) {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            z-index: 1;
+            width: 84px;
+            height: 84px; }
+          .splash-landing > section#splash-footer ul li svg {
+            -webkit-transition: all 1.2s ease-in-out;
+            -o-transition: all 1.2s ease-in-out;
+            -ms-transition: all 1.2s ease-in-out;
+            -moz-transition: all 1.2s ease-in-out;
+            transition: all 1.2s ease-in-out;
+            -webkit-animation-name: pulse-heart;
+            -moz-animation-name: pulse-heart;
+            -o-animation-name: pulse-heart;
+            animation-name: pulse-heart;
+            -webkit-animation-duration: 1.2s;
+            -moz-animation-duration: 1.2s;
+            -o-animation-duration: 1.2s;
+            animation-duration: 1.2s;
+            -webkit-animation-iteration-count: infinite;
+            -moz-animation-iteration-count: infinite;
+            -o-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            -webkit-transform-origin: center;
+            -moz-transform-origin: center;
+            -ms-transform-origin: center;
+            -o-transform-origin: center;
+            transform-origin: center;
+            width: 72px;
+            height: 72px; }
+            .splash-landing > section#splash-footer ul li svg path {
+              stroke: #eb4478;
+              fill: #eb4478; }
+          .splash-landing > section#splash-footer ul li span:last-child svg {
+            -webkit-animation-delay: 0.6s;
+            -moz-animation-delay: 0.6s;
+            -o-animation-delay: 0.6s;
+            animation-delay: 0.6s; }
     .splash-landing > section.essay-pricing .main {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -2609,9 +2709,20 @@
   .splash-landing#home-splash > .splash-toast a.header-close svg path {
     stroke: #40484B !important; }
   .splash-landing#home-splash > .splash-header:before {
+    -webkit-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+    -ms-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
     filter: alpha(opacity=75);
     opacity: 0.75;
     background: #69B3A5; }
+  .splash-landing#home-splash > .splash-header.bg-slate {
+    background: none !important; }
+    .splash-landing#home-splash > .splash-header.bg-slate:before {
+      filter: alpha(opacity=95);
+      opacity: 0.95;
+      background: #637074; }
   .splash-landing#home-splash > section.splash-hero .backpack .backpack-color, .splash-landing#home-splash > section.splash-hero .support .support-color {
     fill: #69B3A5 !important; }
   .splash-landing#home-splash > section.splash-hero .backpack *, .splash-landing#home-splash > section.splash-hero .support * {
@@ -2762,10 +2873,41 @@
       background: #F1F1F1 !important; }
       .splash-landing#home-splash > section.splash-school-search > footer .border:before {
         border-top-color: white; }
+  .splash-landing#home-splash > section .how-it-works-button {
+    filter: alpha(opacity=0);
+    opacity: 0; }
   .splash-landing#home-splash > section#how-it-works, .splash-landing#home-splash > section #how-it-works {
     background: #F1F1F1 !important; }
-    .splash-landing#home-splash > section#how-it-works header, .splash-landing#home-splash > section #how-it-works header {
+    .splash-landing#home-splash > section#how-it-works > header, .splash-landing#home-splash > section #how-it-works > header {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      color: #40484B;
       background: #F1F1F1 !important; }
+      .splash-landing#home-splash > section#how-it-works > header h1, .splash-landing#home-splash > section #how-it-works > header h1 {
+        filter: alpha(opacity=0);
+        opacity: 0;
+        padding-top: 15px;
+        text-align: center; }
+    @media screen and (min-width: 768px) {
+      .splash-landing#home-splash > section#how-it-works > header, .splash-landing#home-splash > section #how-it-works > header {
+        height: 25% !important; }
+        .splash-landing#home-splash > section#how-it-works > header h1, .splash-landing#home-splash > section #how-it-works > header h1 {
+          font-size: 36px;
+          font-weight: 600;
+          text-transform: none !important; } }
     .splash-landing#home-splash > section#how-it-works .postit > div, .splash-landing#home-splash > section #how-it-works .postit > div {
       background: white;
       color: #637074; }
@@ -2787,132 +2929,208 @@
         -o-transform: rotate(5deg) translate(-20px, -10px);
         transform: rotate(5deg) translate(-20px, -10px); } }
     @media screen and (min-width: 768px) {
-      .splash-landing#home-splash > section#how-it-works .main ul li .postit > div, .splash-landing#home-splash > section #how-it-works .main ul li .postit > div {
-        background: white;
-        color: #637074; }
-      .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1) {
-        -webkit-transform: rotate(5deg) translate(30px, 20px);
-        -moz-transform: rotate(5deg) translate(30px, 20px);
-        -ms-transform: rotate(5deg) translate(30px, 20px);
-        -o-transform: rotate(5deg) translate(30px, 20px);
-        transform: rotate(5deg) translate(30px, 20px); }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .tape, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1) .tape {
-          display: none; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1) .postit > div:before {
-          background: #7872e3; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div svg path, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1) .postit > div svg circle, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1) .postit > div svg path {
-          stroke: #7872e3; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div svg *[fill-opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1) .postit > div svg *[fill-opacity="0.5"] {
-          fill: #7872e3; }
-      .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) {
-        position: relative;
-        z-index: 10;
-        -webkit-transform: rotate(-7deg) translate(-25px, 60px);
-        -moz-transform: rotate(-7deg) translate(-25px, 60px);
-        -ms-transform: rotate(-7deg) translate(-25px, 60px);
-        -o-transform: rotate(-7deg) translate(-25px, 60px);
-        transform: rotate(-7deg) translate(-25px, 60px); }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .tape:nth-child(1), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .tape:nth-child(1) {
-          -webkit-transform: rotate(45deg);
-          -moz-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          -o-transform: rotate(45deg);
-          transform: rotate(45deg);
-          left: 30px;
-          top: -20px; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .tape:nth-child(2), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .tape:nth-child(2) {
-          -webkit-transform: rotate(-45deg);
-          -moz-transform: rotate(-45deg);
-          -ms-transform: rotate(-45deg);
-          -o-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-          top: -20px;
-          right: 30px; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .postit > div:before {
-          background: #9A5BC5; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div svg path, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .postit > div svg circle, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .postit > div svg path {
-          stroke: #9A5BC5; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div svg *[fill-opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .postit > div svg *[fill-opacity="0.5"] {
-          fill: #9A5BC5; }
-      .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) {
-        -webkit-transform: rotate(7deg) translate(0, 20px);
-        -moz-transform: rotate(7deg) translate(0, 20px);
-        -ms-transform: rotate(7deg) translate(0, 20px);
-        -o-transform: rotate(7deg) translate(0, 20px);
-        transform: rotate(7deg) translate(0, 20px); }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .tape:nth-child(1), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .tape:nth-child(1) {
-          display: none; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .tape:nth-child(2), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .tape:nth-child(2) {
-          -webkit-transform: rotate(90deg);
-          -moz-transform: rotate(90deg);
-          -ms-transform: rotate(90deg);
-          -o-transform: rotate(90deg);
-          transform: rotate(90deg);
-          top: -50px;
-          left: 50%;
-          margin-left: -20px; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .postit > div:before {
-          background: #e6389b; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div svg path, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .postit > div svg circle, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .postit > div svg path {
-          stroke: #e6389b; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div svg *[fill-opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .postit > div svg *[fill-opacity="0.5"] {
-          fill: #e6389b; }
-      .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) {
-        -webkit-transform: rotate(-2deg) translate(-20px, 15px);
-        -moz-transform: rotate(-2deg) translate(-20px, 15px);
-        -ms-transform: rotate(-2deg) translate(-20px, 15px);
-        -o-transform: rotate(-2deg) translate(-20px, 15px);
-        transform: rotate(-2deg) translate(-20px, 15px); }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .tape:nth-child(1), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .tape:nth-child(1) {
-          -webkit-transform: rotate(45deg);
-          -moz-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          -o-transform: rotate(45deg);
-          transform: rotate(45deg);
-          left: 30px;
-          top: -20px; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .tape:nth-child(2), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .tape:nth-child(2) {
-          -webkit-transform: rotate(45deg);
-          -moz-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          -o-transform: rotate(45deg);
-          transform: rotate(45deg);
-          bottom: -20px;
-          right: 30px; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .postit > div:before {
-          background: #55A4B7; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div svg path, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .postit > div svg circle, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .postit > div svg path {
-          stroke: #55A4B7; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div svg *[fill-opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .postit > div svg *[fill-opacity="0.5"] {
-          fill: #55A4B7; }
-      .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5) {
-        -webkit-transform: rotate(20deg) translate(-10px, -10px);
-        -moz-transform: rotate(20deg) translate(-10px, -10px);
-        -ms-transform: rotate(20deg) translate(-10px, -10px);
-        -o-transform: rotate(20deg) translate(-10px, -10px);
-        transform: rotate(20deg) translate(-10px, -10px); }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .tape, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5) .tape {
-          display: none; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5) .postit > div:before {
-          background: #E5753C; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div svg path, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5) .postit > div svg circle, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5) .postit > div svg path {
-          stroke: #E5753C; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div svg *[fill-opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5) .postit > div svg *[fill-opacity="0.5"] {
-          fill: #E5753C; }
-      .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6) {
-        -webkit-transform: rotate(-5deg);
-        -moz-transform: rotate(-5deg);
-        -ms-transform: rotate(-5deg);
-        -o-transform: rotate(-5deg);
-        transform: rotate(-5deg); }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .tape, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6) .tape {
-          display: none; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6) .postit > div:before {
-          background: #81B566; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div svg path, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6) .postit > div svg circle, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6) .postit > div svg path {
-          stroke: #81B566; }
-        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div svg *[fill-opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6) .postit > div svg *[fill-opacity="0.5"] {
-          fill: #81B566; } }
+      .splash-landing#home-splash > section#how-it-works .main ul li, .splash-landing#home-splash > section #how-it-works .main ul li {
+        position: relative !important; }
+        .splash-landing#home-splash > section#how-it-works .main ul li .tape, .splash-landing#home-splash > section #how-it-works .main ul li .tape {
+          filter: alpha(opacity=0);
+          opacity: 0; }
+        .splash-landing#home-splash > section#how-it-works .main ul li .postit > div, .splash-landing#home-splash > section #how-it-works .main ul li .postit > div {
+          background: white;
+          color: #637074; }
+        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1) {
+          -webkit-transform: rotate(5deg) translate(30px, 20px);
+          -moz-transform: rotate(5deg) translate(30px, 20px);
+          -ms-transform: rotate(5deg) translate(30px, 20px);
+          -o-transform: rotate(5deg) translate(30px, 20px);
+          transform: rotate(5deg) translate(30px, 20px); }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1).bounceInLeft, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1).bounceInLeft {
+            -webkit-animation-name: bounceInLeft-hiw-1;
+            -moz-animation-name: bounceInLeft-hiw-1;
+            -o-animation-name: bounceInLeft-hiw-1;
+            animation-name: bounceInLeft-hiw-1; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .tape, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1) .tape {
+            display: none; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1) .postit > div:before {
+            background: #7872e3; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div svg path, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1) .postit > div svg circle, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1) .postit > div svg path {
+            stroke: #7872e3; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(1) .postit > div svg *[fill-opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(1) .postit > div svg *[fill-opacity="0.5"] {
+            fill: #7872e3; }
+        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) {
+          position: relative;
+          z-index: 10;
+          -webkit-transform: rotate(-7deg) translate(-25px, 60px);
+          -moz-transform: rotate(-7deg) translate(-25px, 60px);
+          -ms-transform: rotate(-7deg) translate(-25px, 60px);
+          -o-transform: rotate(-7deg) translate(-25px, 60px);
+          transform: rotate(-7deg) translate(-25px, 60px); }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2).bounceInDown, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2).bounceInDown {
+            -webkit-animation-name: bounceInDown-hiw-2;
+            -moz-animation-name: bounceInDown-hiw-2;
+            -o-animation-name: bounceInDown-hiw-2;
+            animation-name: bounceInDown-hiw-2; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .tape:nth-child(1), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .tape:nth-child(1) {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            left: 30px;
+            top: -20px; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .tape:nth-child(2), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .tape:nth-child(2) {
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            top: -20px;
+            right: 30px; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .tape.animate:nth-child(1), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .tape.animate:nth-child(1) {
+            -webkit-animation-name: tape-1;
+            -moz-animation-name: tape-1;
+            -o-animation-name: tape-1;
+            animation-name: tape-1; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .tape.animate:nth-child(2), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .tape.animate:nth-child(2) {
+            -webkit-animation-name: tape-2;
+            -moz-animation-name: tape-2;
+            -o-animation-name: tape-2;
+            animation-name: tape-2;
+            -webkit-animation-delay: 0.25s;
+            -moz-animation-delay: 0.25s;
+            -o-animation-delay: 0.25s;
+            animation-delay: 0.25s; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .postit > div:before {
+            background: #9A5BC5; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div svg path, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .postit > div svg circle, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .postit > div svg path {
+            stroke: #9A5BC5; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(2) .postit > div svg *[fill-opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(2) .postit > div svg *[fill-opacity="0.5"] {
+            fill: #9A5BC5; }
+        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) {
+          -webkit-transform: rotate(7deg) translate(0, 20px);
+          -moz-transform: rotate(7deg) translate(0, 20px);
+          -ms-transform: rotate(7deg) translate(0, 20px);
+          -o-transform: rotate(7deg) translate(0, 20px);
+          transform: rotate(7deg) translate(0, 20px); }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3).bounceInRight, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3).bounceInRight {
+            -webkit-animation-name: bounceInRight-hiw-3;
+            -moz-animation-name: bounceInRight-hiw-3;
+            -o-animation-name: bounceInRight-hiw-3;
+            animation-name: bounceInRight-hiw-3; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .tape:nth-child(1), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .tape:nth-child(1) {
+            display: none; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .tape:nth-child(2), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .tape:nth-child(2) {
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            transform: rotate(90deg);
+            top: -50px;
+            left: 50%;
+            margin-left: -20px; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .tape.animate:nth-child(2), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .tape.animate:nth-child(2) {
+            -webkit-animation-name: tape-3;
+            -moz-animation-name: tape-3;
+            -o-animation-name: tape-3;
+            animation-name: tape-3;
+            -webkit-animation-delay: 0.5s;
+            -moz-animation-delay: 0.5s;
+            -o-animation-delay: 0.5s;
+            animation-delay: 0.5s; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .postit > div:before {
+            background: #e6389b; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div svg path, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .postit > div svg circle, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .postit > div svg path {
+            stroke: #e6389b; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(3) .postit > div svg *[fill-opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(3) .postit > div svg *[fill-opacity="0.5"] {
+            fill: #e6389b; }
+        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) {
+          -webkit-transform: rotate(-2deg) translate(-20px, 15px);
+          -moz-transform: rotate(-2deg) translate(-20px, 15px);
+          -ms-transform: rotate(-2deg) translate(-20px, 15px);
+          -o-transform: rotate(-2deg) translate(-20px, 15px);
+          transform: rotate(-2deg) translate(-20px, 15px); }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4).bounceInLeft, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4).bounceInLeft {
+            -webkit-animation-name: bounceInLeft-hiw-4;
+            -moz-animation-name: bounceInLeft-hiw-4;
+            -o-animation-name: bounceInLeft-hiw-4;
+            animation-name: bounceInLeft-hiw-4; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .tape:nth-child(1), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .tape:nth-child(1) {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            left: 30px;
+            top: -20px; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .tape:nth-child(2), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .tape:nth-child(2) {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            bottom: -20px;
+            right: 30px; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .tape.animate:nth-child(1), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .tape.animate:nth-child(1) {
+            -webkit-animation-name: tape-1;
+            -moz-animation-name: tape-1;
+            -o-animation-name: tape-1;
+            animation-name: tape-1;
+            -webkit-animation-delay: 0.5s;
+            -moz-animation-delay: 0.5s;
+            -o-animation-delay: 0.5s;
+            animation-delay: 0.5s; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .tape.animate:nth-child(2), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .tape.animate:nth-child(2) {
+            -webkit-animation-name: tape-4;
+            -moz-animation-name: tape-4;
+            -o-animation-name: tape-4;
+            animation-name: tape-4;
+            -webkit-animation-delay: 0.75s;
+            -moz-animation-delay: 0.75s;
+            -o-animation-delay: 0.75s;
+            animation-delay: 0.75s; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .postit > div:before {
+            background: #55A4B7; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div svg path, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .postit > div svg circle, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .postit > div svg path {
+            stroke: #55A4B7; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(4) .postit > div svg *[fill-opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(4) .postit > div svg *[fill-opacity="0.5"] {
+            fill: #55A4B7; }
+        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5) {
+          -webkit-transform: rotate(20deg) translate(-10px, -10px);
+          -moz-transform: rotate(20deg) translate(-10px, -10px);
+          -ms-transform: rotate(20deg) translate(-10px, -10px);
+          -o-transform: rotate(20deg) translate(-10px, -10px);
+          transform: rotate(20deg) translate(-10px, -10px); }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5).bounceInUp, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5).bounceInUp {
+            -webkit-animation-name: bounceInUp-hiw-5;
+            -moz-animation-name: bounceInUp-hiw-5;
+            -o-animation-name: bounceInUp-hiw-5;
+            animation-name: bounceInUp-hiw-5; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .tape, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5) .tape {
+            display: none; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5) .postit > div:before {
+            background: #E5753C; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div svg path, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5) .postit > div svg circle, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5) .postit > div svg path {
+            stroke: #E5753C; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(5) .postit > div svg *[fill-opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(5) .postit > div svg *[fill-opacity="0.5"] {
+            fill: #E5753C; }
+        .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6), .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6) {
+          -webkit-transform: rotate(-5deg);
+          -moz-transform: rotate(-5deg);
+          -ms-transform: rotate(-5deg);
+          -o-transform: rotate(-5deg);
+          transform: rotate(-5deg); }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6).bounceInRight, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6).bounceInRight {
+            -webkit-animation-name: bounceInRight-hiw-6;
+            -moz-animation-name: bounceInRight-hiw-6;
+            -o-animation-name: bounceInRight-hiw-6;
+            animation-name: bounceInRight-hiw-6; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .tape, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6) .tape {
+            display: none; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div:before, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6) .postit > div:before {
+            background: #81B566; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div svg circle, .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div svg path, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6) .postit > div svg circle, .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6) .postit > div svg path {
+            stroke: #81B566; }
+          .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section#how-it-works .main ul li:nth-child(6) .postit > div svg *[fill-opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6) .postit > div svg *[opacity="0.5"], .splash-landing#home-splash > section #how-it-works .main ul li:nth-child(6) .postit > div svg *[fill-opacity="0.5"] {
+            fill: #81B566; } }
     .splash-landing#home-splash > section#how-it-works button, .splash-landing#home-splash > section #how-it-works button {
       background: #69B3A5 !important;
       color: white !important; }
@@ -2925,34 +3143,6 @@
       .splash-landing#home-splash > section#how-it-works > footer .border:before, .splash-landing#home-splash > section #how-it-works > footer .border:before {
         border-top-color: white !important; }
 
-@-webkit-keyframes blink {
-  0% {
-    filter: alpha(opacity=0);
-    opacity: 0; }
-  100% {
-    filter: alpha(opacity=100);
-    opacity: 1; } }
-@-moz-keyframes blink {
-  0% {
-    filter: alpha(opacity=0);
-    opacity: 0; }
-  100% {
-    filter: alpha(opacity=100);
-    opacity: 1; } }
-@-ms-keyframes blink {
-  0% {
-    filter: alpha(opacity=0);
-    opacity: 0; }
-  100% {
-    filter: alpha(opacity=100);
-    opacity: 1; } }
-@keyframes blink {
-  0% {
-    filter: alpha(opacity=0);
-    opacity: 0; }
-  100% {
-    filter: alpha(opacity=100);
-    opacity: 1; } }
 .university-svg-icon {
   filter: alpha(opacity=100) !important;
   opacity: 1 !important;
@@ -3411,5 +3601,159 @@
     -ms-transform: rotate(-45deg) scale(1);
     -o-transform: rotate(-45deg) scale(1);
     transform: rotate(-45deg) scale(1); } }
+.gm-style {
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+
+.gm-style-iw {
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  position: absolute !important;
+  top: auto !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  width: 300px !important;
+  height: 280px !important; }
+  .gm-style-iw > div {
+    display: block !important;
+    max-width: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+    height: 100%; }
+    .gm-style-iw > div > div {
+      height: calc(100% - 50px); }
+      .gm-style-iw > div > div > header, .gm-style-iw > div > div > div {
+        height: 50%; }
+      .gm-style-iw > div > div > header {
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        background-color: #40484B;
+        background-size: cover;
+        background-position: center; }
+        .gm-style-iw > div > div > header h1 {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          width: 100%;
+          color: white;
+          font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+          font-size: 24px;
+          line-height: 1.2;
+          text-align: center;
+          text-transform: none !important; }
+        .gm-style-iw > div > div > header div {
+          filter: alpha(opacity=70);
+          opacity: 0.7;
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #69B3A5; }
+      .gm-style-iw > div > div > div {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        position: relative;
+        width: 100%;
+        background: white; }
+        .gm-style-iw > div > div > div:after {
+          position: absolute;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+          content: "";
+          display: block;
+          bottom: -50px;
+          width: 0;
+          height: 0;
+          border: 25px solid transparent;
+          border-top-color: white; }
+      .gm-style-iw > div > div ul {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        width: 100%;
+        text-align: center; }
+        .gm-style-iw > div > div ul li {
+          width: calc(100% / 3); }
+          .gm-style-iw > div > div ul li h2, .gm-style-iw > div > div ul li span {
+            font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+            text-transform: uppercase; }
+          .gm-style-iw > div > div ul li h2 {
+            color: #7c8a8f;
+            font-size: 18px;
+            font-weight: 600; }
+          .gm-style-iw > div > div ul li span {
+            color: #40484B;
+            font-size: 16px;
+            font-weight: 700; }
+      .gm-style-iw > div > div button:not([class*="btn-ghost"]) {
+        margin-top: 10px;
+        padding: 10px;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        height: auto !important;
+        width: auto !important;
+        background: #69B3A5;
+        color: white;
+        font-size: 18px;
+        text-transform: uppercase; }
+        .gm-style-iw > div > div button:not([class*="btn-ghost"]):hover, .gm-style-iw > div > div button:not([class*="btn-ghost"]):focus {
+          background: #637074 !important; }
+        .gm-style-iw > div > div button:not([class*="btn-ghost"]):active {
+          background: #9ccdc3 !important; }
+
+.gm-style-iw ~ * {
+  filter: alpha(opacity=0) !important;
+  opacity: 0 !important;
+  display: none !important;
+  visibility: hidden !important;
+  z-index: -999999 !important; }
 
 /*# sourceMappingURL=splash.css.map */

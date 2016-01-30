@@ -511,4 +511,8 @@ ul#guru-courses-user-profile {
   filter: alpha(opacity=0);
   opacity: 0; }
 
+.platform-ios #home-splash {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
+
 /*# sourceMappingURL=samir.css.map */
