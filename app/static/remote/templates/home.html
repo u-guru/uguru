@@ -1,10 +1,9 @@
 <!-- <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view>  -->
 
-
-<!-- <ion-content on-scroll='checkPosition()' scroll-event-interval="5" zooming="false"> -->
-<!-- <div class='bg-smoke' cache-view="false" > -->
-<div>
-	<main id='home-splash' class='splash-landing hs-view full-xy'>
+<!-- <ion-view> -->
+	<!-- <ion-content overflow-scroll='true' class='full-xy'> -->
+<div style='overflow-y:scroll; -webkit-overflow-scrolling:touch;'>
+	<div id='home-splash' class='splash-landing hs-view full-xy' style='height:calc(100% + 1px);'>
 		<!-- START Home Page CTAs -->
 
 		<aside id='cta-modal-sidebar' class='splash-sidebar hide ng-class:{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}' ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
@@ -55,15 +54,15 @@
 
 		<div class="splash-sub-header tab-bar slide" id='splash-hiw-nav'>
 			<div>
-				<a ng-click='activeBrowseTabIndex = 0' class="ng-class:{'active':activeBrowseTabIndex===0}">
+				<a ng-click='switchToTabIndex(0)' class="ng-class:{'active':activeBrowseTabIndex===0}">
 					<span>How It </span>
 					<span>Works</span>
 				</a>
-				<a ng-click='activeBrowseTabIndex = 1' class="ng-class:{'active':activeBrowseTabIndex===1}">
+				<a ng-click='switchToTabIndex(1)' class="ng-class:{'active':activeBrowseTabIndex===1}">
 					<span>Student-Run </span>
 					<span>Shops</span>
 				</a>
-				<a ng-click='activeBrowseTabIndex = 2;' class="ng-class:{'active':activeBrowseTabIndex===2}">
+				<a ng-click='switchToTabIndex(2)' class="ng-class:{'active':activeBrowseTabIndex===2}">
 					<span>Guru </span>
 					<span>Profiles</span>
 				</a>
@@ -90,7 +89,7 @@
 			</div>
 		</header>
 
-		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' on-drag-up="scrollNextSection()" bg-image="{{page.css.bg_banner}}" bg-image-has-loaded="page.load.sections.one.ready()">
+		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' bg-image="{{page.css.bg_banner}}" bg-image-has-loaded="page.load.sections.one.ready()">
 			<a id="splash-footer-support" class="splash-footer-link" ng-click='launchSupportOverlay()'>
 				<svg class="splash-footer-icon" viewBox="0 0 100 100">
 					<path d="M30,24.8677175 C31.8923771,21.0254081 34.4778855,18.8636487 37.7985936,16.9181834 C41.1193017,14.9727181 44.7586089,14 48.7166246,14 C54.6871906,14 59.802346,16.1299172 64.0622442,20.3898154 C68.3221425,24.6497136 70.4520596,29.664243 70.4520596,35.433554 C70.4520596,41.202865 68.5904785,46.1503104 64.8672604,50.2760386 C61.1440422,54.4017668 54.4442042,56.7664779 49.0103183,57.370243 L49.0103183,68.1373335 C49.0103183,68.8081837 49.015108,70.6862599 49.015108,70.6862599 M49.0289795,82.817968 L49.0289795,83.8786453"></path>
@@ -183,7 +182,7 @@
 			</footer>
 		</section>
 
-		<section id='splash-university' on-drag-up="scrollUpSection()" on-drag-down="scrollNextSection()" class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'>
+		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'>
 			<header>
 				<h1>Find Your University</h1>
 			</header>
@@ -250,11 +249,11 @@
 					</ul>
 				</div>
 				<!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
-				<div style='height:500px !important; width:calc(100%);' class='full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}'>
+				<div style='height:500px !important; width:calc(100%);' class='full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}' ng-if='false'>
 					<ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom">
-						<ui-gmap-markers models="map.markers" coords="'self'" options="'options'" icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
+						<ui-gmap-markers models="map.markers" coords="'self'" options="'options'" fit="true" icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
 						</ui-gmap-markers>
-						<ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
+						<!-- <ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
 							<div class='university-label'>
 								<a id='university-info-window-close-button' class='absolute top-0 right-0 txt-white high-z-index cta-modal-close close-button m05xy' ng-click='map.window.close()'>
 									<svg viewBox="0 0 100 100" style='height:20px; width:20px;' class='opacity-50'>
@@ -262,7 +261,6 @@
 									</svg>
 								</a>
 								<header style="background-image: url('{{map.window.university.banner_url}}')!important;">
-									<!-- {{university.svg_url || university.logo_url}} -->
 									<div style="background-color: {{map.window.university.school_color_dark}}!important"></div>
 									<h1>{{map.window.university.name}}</h1>
 								</header>
@@ -284,7 +282,7 @@
 									<button id='university-info-window-button' ng-click="universityButtonClicked()" style="background-color: {{map.window.university.school_color_dark}};">Go to School</button>
 								</div>
 							</div>
-						</ui-gmap-window>
+						</ui-gmap-window> -->
 					</ui-gmap-google-map>
 				</div>
 				<div class="splash-map-stats">
@@ -623,10 +621,7 @@
 		</ul>
 	</div>
 </section>
-</main>
+</div>
 </div>
 <!-- </ion-content> -->
-<!-- </ion-content> -->
 <!-- </ion-view> -->
-<!-- </ion-scroll> -->
-<!-- </ion-content>

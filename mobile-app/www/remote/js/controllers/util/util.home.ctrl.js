@@ -691,17 +691,17 @@ angular.module('uguru.util.controllers')
           }).reverse();
           result_str = "";
           if (results.length === 1) {
-            return results[0][0] + ""
+            return universityArr.length + " in " + results[0][0] + ""
           }
-          if (results.length === 2) {
-            return results[0][0] + " + " + results[1][0] + ""
+          if (results.length >= 2) {
+            return universityArr.length + " in " + results[0][0] + "," + results[1][0];
           }
-          if (results.length === 3) {
-            return results[0][0] + ", " + results[1][0] + " + " + results[2][0] + ""
-          }
-          if (results.length > 3) {
-            return results[0][0] + ", " + results[1][0] + " + "  + results[2][0] + " + more"
-          }
+          // if (results.length === 3) {
+          //   return results[0][0] + "+" + results[1][0] + " colleges"
+          // }
+          // if (results.length > 3) {
+          //   return results[0][0] + ", " + results[1][0] + " + "  + results[2][0] + " + more"
+          // }
           // for (var i = 0; i < results.length; i++) {
           //     var key = results[i][0];
           //     var value = results[i][1];
@@ -734,7 +734,7 @@ angular.module('uguru.util.controllers')
 
 
 
-        if (universityArr.length > 10) {
+        if (universityArr.length > 20) {
           var indexNumber = 1
         } else {
           var indexNumber = 2
@@ -752,28 +752,29 @@ angular.module('uguru.util.controllers')
 
       var initClusterObj = function(marker_arr) {
         var options_dict = {
-            minimumClusterSize:20,
+            minimumClusterSize:5,
             calculator: clusterCalculator,
             styles:[
               {
-                width:50,
-                height:50,
+                width:125,
+                height:100,
                 url: generateClusterImgDataURI({bg_color:$scope.universities[0].school_color_dark, _text: ""}),
                 fontFamily: "Source Sans Pro",
-                fontWeight: "600",
+                fontWeight: "bold",
                 textColor: "#FFFFFF",
-                textSize: 12,
-                // anchorText: "[0, 0]",
+                textSize: 14,
+                anchorText: [-2, -7]
                 // anchorIcon: "[0, 0]"
               },
               {
-                width:50,
-                height:50,
-                url: generateClusterImgDataURI({bg_color:$scope.universities[43].school_color_dark, _text: ""}),
+                width:75,
+                height:125,
+                url: generateClusterImgDataURI({bg_color:$scope.universities[84].school_color_dark, _text: ""}),
                 fontFamily: "Source Sans Pro",
-                fontWeight: "600",
+                fontWeight: "bold",
                 textColor: "#FFFFFF",
-                textSize: 12,
+                textSize: 10,
+                anchorText: [-35, -3]
                 // anchorText: "[0, 0]"
               }
             ],
@@ -824,7 +825,7 @@ angular.module('uguru.util.controllers')
           id: obj.id,
           latitude: obj.latitude,
           longitude: obj.longitude,
-          icon: generateUniversityImgDataURI(universityObj),
+          icon: {url: generateUniversityImgDataURI(universityObj), size: new google.maps.Size(60, 33), scaledSize: new google.maps.Size(60, 60)},
           events: {
             click: onMarkerClick
           },

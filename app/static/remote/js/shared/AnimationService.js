@@ -58,6 +58,9 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	}
 
 	 function activateSectionAnimations(elements, css_arr, delay_arr) {
+        if (!elements || !elements.length) {
+        	return;
+        }
         for (var i = 0; i < elements.length; i ++) {
           animateIn(elements[i], css_arr[i], delay_arr[i]);
         }
@@ -80,17 +83,40 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
      }
 
 	function animateIn(elem, css_class, delay) {
+		var cssClassArgs = getCSSArgs(css_class)
+
 		$timeout(function() {
-			elem.classList.add('animated', css_class);
+			elem.classList.add('animated', cssClassArgs.class);
 	      	prefixedEventListener(elem,"AnimationStart",function(e){
 	          elem.style.opacity = 1;
 	          e.target.removeEventListener(e.type, false);
 	      	});
 	      	prefixedEventListener(elem,"AnimationEnd",function(e){
-	        	elem.classList.remove(css_class, "animated");
-	          	e.target.removeEventListener(e.type, false);
+	      		if (cssClassArgs.keep) {
+	      			elem.classList.remove("animated");
+	      		} else {
+	      			elem.classList.remove(cssClassArgs.class, "animated");
+	      		}
+	      		e.target.removeEventListener(e.type, false);
 	      	});
 		}, delay || 0);
+	}
+
+	function getCSSArgs(class_name) {
+		var class_split = class_name.split(':');
+		class_name = class_split[0];
+		var css_args_dict = {}
+		if (class_split.length > 1) {
+			css_args_dict.class = class_name;
+			class_args = class_split.splice(1);
+			for (var i = 0; i < class_args.length; i++) {
+				var indexArg  = class_args[i];
+				css_args_dict[indexArg] = true;
+			}
+			return css_args_dict;
+		} else {
+			return {class: class_name};
+		}
 	}
 
 	function animateOut(elem, css_class, cb) {
