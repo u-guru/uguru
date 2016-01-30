@@ -419,7 +419,7 @@
 					</div>
 					<div>
 						<ul class='category-card-list'>
-							<li ng-repeat='category in ::categories' ng-if='category.is_active' ng-click='showDesktopSubcategories(category)'>
+							<li class="opacity-0" ng-repeat='category in ::categories' ng-if='category.is_active' ng-click='showDesktopSubcategories(category)'>
 								<div style='background-image :url({{categories_img_base + category.background_url}})'>
 									<a class='bg-{{category.hex_color}}' ng-click='launchCategoryModal(category)'>
 										<div>
@@ -429,7 +429,7 @@
 									</a>
 								</div>
 							</li>
-							<li>
+							<li class="opacity-0">
 								<div style='background-image :url({{categories_img_base + categories[0].background_url}})'>
 									<span class='bg-more' ng-click='launchCategoryModal(category)'>
                                         <div>

@@ -66,9 +66,9 @@ angular.module('uguru.util.controllers')
         viewed: false,
         beforeScroll: null,
         firstViewed: {
-          css_classes:[],
-          selectors:[],
-          delays: []
+          css_classes:['bounceUpIn', 'bounceUpIn', 'bounceUpIn', 'bounceUpIn', 'bounceUpIn', 'bounceUpIn'],
+          selectors:['.category-card-list li:nth-child(1)', '.category-card-list li:nth-child(2)', '.category-card-list li:nth-child(3)', '.category-card-list li:nth-child(4)', '.category-card-list li:nth-child(5)', '.category-card-list li:nth-child(6)'],
+          delays: [200, 300, 400, 500, 600, 700]
         },
         secondViewed: {
           css_classes:[],
