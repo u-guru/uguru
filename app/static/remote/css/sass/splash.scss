@@ -601,6 +601,7 @@
 		}
 	}
 	.splash-toast {
+		-webkit-backface-visibility: hidden;
 		@include transition(.3s ease-in-out);
 		@include flex-center-vertical;
 		@include flex-wrap;
@@ -692,44 +693,9 @@
 		}
 	}
 
-	// CONTENT SECTIONS
-	> section {
-		position: relative;
-		width: 100%;
-		height: auto;
-		background-color: $smoke;
-
-		// SECTION STYLES
-		> header {
-			@include flex;
-			@include flex-center;
-			color: $slate;
-			h1 {
-				padding-top: 15px;
-				text-align: center;
-			}
-		}
-		> footer {
-			.border {
-				position: relative;
-				background: $smoke;
-				width: 100%;
-				height: 36px;
-				&:before {
-					@include center-x;
-					top: 0;
-					content: "";
-					display: block;
-					width: 0;
-					height: 0;
-					border: 24px solid transparent;
-					border-top-color: $slate;
-				}
-			}
-		}
-		.splash-footer-link {
+	.splash-footer-link {
 			display: block;
-			position: fixed;
+			// position: fixed;
 			z-index: 99;
 			bottom: 15px;
 			span {
@@ -812,7 +778,8 @@
 			}
 			&#splash-footer-next {
 				@include center-x;
-				position: fixed;
+				-webkit-backface-visibility: hidden !important;
+				// position: fixed;
 				// &:not(.active) {
 				// 	@include opacity(0);
 				// }
@@ -880,6 +847,43 @@
 				}
 			}
 		}
+
+	// CONTENT SECTIONS
+	> section {
+		position: relative;
+		width: 100%;
+		height: auto;
+		background-color: $smoke;
+
+		// SECTION STYLES
+		> header {
+			@include flex;
+			@include flex-center;
+			color: $slate;
+			h1 {
+				padding-top: 15px;
+				text-align: center;
+			}
+		}
+		> footer {
+			.border {
+				position: relative;
+				background: $smoke;
+				width: 100%;
+				height: 36px;
+				&:before {
+					@include center-x;
+					top: 0;
+					content: "";
+					display: block;
+					width: 0;
+					height: 0;
+					border: 24px solid transparent;
+					border-top-color: $slate;
+				}
+			}
+		}
+
 		button {
 			max-width: 100%;
 			background: white;

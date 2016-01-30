@@ -97,7 +97,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
   $ionicConfigProvider.views.forwardCache(false);
-  $ionicConfigProvider.scrolling.jsScrolling(true);
+  $ionicConfigProvider.scrolling.jsScrolling(false);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 

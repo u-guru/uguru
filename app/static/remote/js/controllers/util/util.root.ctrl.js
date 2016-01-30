@@ -121,6 +121,33 @@ angular.module('uguru.util.controllers')
             $scope.keyboardOpen = false;
         }
 
+        var stateBeforeOrientation;
+        if (!$scope.desktopMode) {
+            window.addEventListener("orientationchange", function() {
+                initHeight();
+                $scope.window = {
+                    width:windowWidth,
+                    height:windowHeight
+                };
+                //mobile + horizontal
+                if (!$scope.desktopMode && $scope.window.height < $scope.window.width && $state.current.name !== 'root.orientation') {
+                    stateBeforeOrientation = $state.current.name;
+                    $state.go('^.orientation');
+                }
+
+                if (!$scope.desktopMode && $scope.window.width < $scope.window.height && $state.current.name === 'root.orientation') {
+                    LoadingService.showSuccess('Thank You', 1000, function() {
+                        if (!stateBeforeOrientation) {
+                            $state.go('^.home');
+                        } else {
+                            $state.go('^.' + stateBeforeOrientation.split('.')[1]);
+                        }
+                    })
+                }
+            // Announce the new orientation number
+            }, false);
+        }
+
 
         // if it exists, always show it until we've either updated, or checked for updates recently
         // if (!LOCAL && navigator.splashscreen && navigator.splashscreen.show) {
