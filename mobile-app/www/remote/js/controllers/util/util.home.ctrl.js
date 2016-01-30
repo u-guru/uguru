@@ -36,9 +36,9 @@ angular.module('uguru.util.controllers')
 
 
       $scope.page.animations = {hiw:{}, bg:{}, profiles: {}, categories:{}, university: {}, main: {}};
-      //@gabrielle just worry about this
+      // @gabrielle just worry about this
       // next steps
-      //
+      // setup the top section
 
       $scope.page.animations.hiw = {
         viewed: false,
@@ -87,6 +87,9 @@ angular.module('uguru.util.controllers')
         }
       }
 
+
+      //
+      //
       $scope.page.animations.bg = {
         viewed: false,
         beforeScroll: null,
@@ -281,6 +284,11 @@ angular.module('uguru.util.controllers')
 
               var callback = function() {
                 splashHiwNav = document.querySelector('#splash-hiw-nav');
+                NodeList.prototype.forEach = Array.prototype.forEach
+                splashHiwNav.querySelectorAll('div a').forEach(function(tab_item){
+                    tab_item.classList.remove('active');
+                });
+                splashHiwNav && $compile(splashHiwNav)($scope);
               }
               AnimationService.animateOut(splashHiwNav, "slideOutUp", callback);
           }
@@ -291,6 +299,12 @@ angular.module('uguru.util.controllers')
 
               var callback = function() {
                 splashHiwNav = document.querySelector('#splash-hiw-nav');
+
+                NodeList.prototype.forEach = Array.prototype.forEach
+                splashHiwNav.querySelectorAll('div a').forEach(function(tab_item){
+                    tab_item.classList.remove('active');
+                });
+                splashHiwNav && $compile(splashHiwNav)($scope);
               }
               AnimationService.animateOut(splashHiwNav, "slideOutUp", callback);
 
@@ -728,7 +742,7 @@ angular.module('uguru.util.controllers')
 
 
         var resultDict = {
-          text: "Colleges in " + getTopXStateStr,
+          text: getTopXStateStr,
           title: '+more',
           index: indexNumber
         }
@@ -738,32 +752,32 @@ angular.module('uguru.util.controllers')
 
       var initClusterObj = function(marker_arr) {
         var options_dict = {
-            minimumClusterSize:5,
+            minimumClusterSize:20,
             calculator: clusterCalculator,
             styles:[
               {
-                width:125,
-                height:125,
+                width:50,
+                height:50,
                 url: generateClusterImgDataURI({bg_color:$scope.universities[0].school_color_dark, _text: ""}),
                 fontFamily: "Source Sans Pro",
                 fontWeight: "600",
                 textColor: "#FFFFFF",
                 textSize: 12,
                 // anchorText: "[0, 0]",
-                anchorIcon: "[0, 0]"
+                // anchorIcon: "[0, 0]"
               },
               {
-                width:75,
-                height:75,
+                width:50,
+                height:50,
                 url: generateClusterImgDataURI({bg_color:$scope.universities[43].school_color_dark, _text: ""}),
                 fontFamily: "Source Sans Pro",
                 fontWeight: "600",
                 textColor: "#FFFFFF",
                 textSize: 12,
-                anchorText: "[0, 0]"
+                // anchorText: "[0, 0]"
               }
             ],
-            title: "",
+            // title: "",
             zoomOnClick: true,
             maxZoom: 7,
             gridSize: 60,
@@ -791,7 +805,7 @@ angular.module('uguru.util.controllers')
           pan: true,
           markers: generateXMarkersFromUniversities(200, $scope.universities),
           rebuildMarkers: false,
-          window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
+          // window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
         }
       }
 
