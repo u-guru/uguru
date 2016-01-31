@@ -3835,35 +3835,31 @@
 
 .splash-landing#home-splash > section.splash-school-search {
   background: white;
+  height: calc(100%) !important;
 }
 
-.splash-landing#home-splash > section.splash-school-search .main > div {
-  width: 100%;
+.splash-landing#home-splash > section.splash-school-search .splash-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: calc(100% - 36px);
+  width: calc(100%);
 }
 
-.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-desktop {
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
+.splash-landing#home-splash > section.splash-school-search .splash-school-search-form {
   display: none;
-  width: 100%;
-  padding: 7.5px;
 }
 
-.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-desktop li {
-  width: 25%;
-  padding: 7.5px;
+.splash-landing#home-splash > section.splash-school-search .splash-map-stats {
+  z-index: 2;
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 75%, white 100%);
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 75%, white 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 75%, white 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
 }
 
-.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile {
+.splash-landing#home-splash > section.splash-school-search .splash-map-stats > ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -3871,151 +3867,23 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-align-self: flex-end;
-  align-self: flex-end;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
-  margin: -1px -14px 15px;
 }
 
-.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li {
-  width: 50%;
-  padding: 1px;
-}
-
-.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a {
-  display: block;
-  background: white;
-  color: #40484B;
-  padding: 15px;
-  border-bottom: 10px solid #40484B;
-  border-radius: 2px;
-}
-
-.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a:hover, .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a:focus {
-  background: #637074;
-  color: white !important;
-  border-color: white !important;
-}
-
-.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a:active, .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a.activated {
-  background: #40484B;
-}
-
-.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a span {
-  display: block;
-  font-weight: 600;
-  text-align: center;
-}
-
-.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a .school-name {
-  font-size: 16px;
-}
-
-.splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile li > a .school-name:first-letter {
-  text-transform: uppercase;
-}
-
-@media screen and (min-width: 768px) {
-  .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-desktop {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-  }
-  .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-mobile {
-    display: none;
-  }
-}
-
-.splash-landing#home-splash > section.splash-school-search .main .splash-map {
-  width: 100%;
-}
-
-@media screen and (max-width: 768px) {
-  .splash-landing#home-splash > section.splash-school-search .main .splash-map {
-    margin: 0 -13px !important;
-    width: calc(100% + 26px) !important;
-  }
-}
-
-.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-align-items: center;
-  align-items: center;
-  min-height: 150px;
-}
-
-.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > * {
-  width: 100%;
-}
-
-.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > * h1 {
-  font-size: 48px;
-  font-weight: 600;
-}
-
-.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > * h4 {
-  font-size: 20px;
-  font-weight: 600;
+.splash-landing#home-splash > section.splash-school-search .splash-map-stats > ul li h4 {
   color: #637074;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
-.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > * h2 {
-  font-size: 28px;
-  font-weight: 700;
+.splash-landing#home-splash > section.splash-school-search .splash-map-stats > ul li h2 {
+  color: #40484B;
 }
 
-.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > div {
-  padding: 15px;
-}
-
-.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > ul {
-  padding: 7.5px;
-}
-
-.splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > ul li {
-  padding: 7.5px;
-}
-
-@media screen and (min-width: 768px) {
-  .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-results {
-    padding: 15px;
-  }
-  .splash-landing#home-splash > section.splash-school-search .main > div .splash-school-results li {
-    width: 25%;
-    padding: 15px;
-  }
-  .splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > div {
-    width: calc(100% - 613px);
-    min-width: 354px;
-  }
-  .splash-landing#home-splash > section.splash-school-search .main .splash-map-stats > ul {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    width: 613px;
-  }
+.splash-landing#home-splash > section.splash-school-search > footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 .splash-landing#home-splash > section.splash-school-search > footer .border {
@@ -4024,6 +3892,207 @@
 
 .splash-landing#home-splash > section.splash-school-search > footer .border:before {
   border-top-color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .splash-landing#home-splash > section.splash-school-search header {
+    position: relative;
+    z-index: 2;
+    height: 100px;
+    padding-top: 50px;
+    background: -moz-linear-gradient(top, white 0%, rgba(255, 255, 255, 0.9) 100%);
+    background: -webkit-linear-gradient(top, white 0%, rgba(255, 255, 255, 0.9) 100%);
+    background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0.9) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6ffffff',GradientType=0 );
+  }
+  .splash-landing#home-splash > section.splash-school-search header h1 {
+    width: 100%;
+    text-transform: none;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-zoom {
+    border-radius: 0px;
+    position: relative;
+    background: rgba(99, 112, 116, 0.9);
+    padding: 10px 15px;
+    margin-top: 30px;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: 90px;
+    z-index: 2;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-zoom:before {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    content: "";
+    display: block;
+    position: absolute;
+    top: -30px;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-bottom: 15px solid rgba(99, 112, 116, 0.9);
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats {
+    position: absolute;
+    bottom: 36px;
+    left: 0;
+    width: 100%;
+    padding: 60px 0 25px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats > div {
+    display: none;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats > ul {
+    padding: 7.5px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats > ul li {
+    width: calc(100% / 3);
+    padding: 7.5px;
+    text-align: center;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats > ul li h4 {
+    font-size: 14px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats > ul li h4 span {
+    display: none !important;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats > ul li h2 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .splash-landing#home-splash > section.splash-school-search header h1 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing#home-splash > section.splash-school-search {
+    height: calc(100%) !important;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-zoom {
+    display: none;
+  }
+  .splash-landing#home-splash > section.splash-school-search > header {
+    display: none !important;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-school-search-form {
+    background: -moz-linear-gradient(top, white 0%, white 25%, rgba(255, 255, 255, 0) 100%);
+    background: -webkit-linear-gradient(top, white 0%, white 25%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to bottom, white 0%, white 25%, rgba(255, 255, 255, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+    position: absolute;
+    top: 0;
+    padding-top: 90px;
+    z-index: 2;
+    display: block;
+    width: 100%;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-school-search-form .input-field input, .splash-landing#home-splash > section.splash-school-search .splash-school-search-form .input-field label {
+    font-weight: 600;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-school-search-form .splash-school-desktop {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 930px;
+    margin: -15px auto 0;
+    padding: 7.5px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-school-search-form .splash-school-desktop li {
+    width: 20%;
+    padding: 7.5px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-school-search-form .splash-school-desktop li .school-card .school-card-inside .school-card-top .school-card-icon {
+    width: 48px;
+    height: 48px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-school-search-form .splash-school-desktop li .school-card .school-card-inside .school-card-main .school-card-info h1 {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-school-search-form .splash-school-desktop li .school-card .school-card-inside .school-card-main .school-card-info h2 {
+    font-size: 12px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-school-search-form .splash-school-results {
+    padding: 15px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-school-search-form .splash-school-results li {
+    width: 25%;
+    padding: 15px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    bottom: 36px;
+    left: 0;
+    padding: 100px 15px 15px;
+    min-height: 150px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats > * {
+    width: 100%;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats > * h1 {
+    color: #40484B;
+    font-size: 48px;
+    font-weight: 600;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats > * h4 {
+    font-size: 20px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats > * h2 {
+    font-size: 28px;
+    font-weight: 700;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats > div {
+    padding: 15px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats > ul {
+    padding: 7.5px;
+  }
+  .splash-landing#home-splash > section.splash-school-search .splash-map-stats > ul li {
+    padding: 7.5px;
+  }
 }
 
 .splash-landing#home-splash > section .how-it-works-button {

@@ -2947,94 +2947,200 @@
 			}
 			&.splash-school-search {
 				background: white;
-				.main {
-					> div {
-						width: 100%;
-						.splash-school-desktop {
-							@include flex-wrap;
-							@include flex-center;
-							display: none;
-							width: 100%;
-							padding: 7.5px;
-							li {
-								width: 25%;
-								padding: 7.5px;
+				height: calc(100%)!important;
+				.splash-map {
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 1;
+					height: calc(100% - 36px);
+					width: calc(100%);
+				}
+				.splash-school-search-form {
+					display: none;
+				}
+				.splash-map-stats {
+					z-index: 2;
+					background: -moz-linear-gradient(top, rgba(white,0) 0%, rgba(white,1) 75%, rgba(white,1) 100%);
+					background: -webkit-linear-gradient(top, rgba(white,0) 0%, rgba(white,1) 75%, rgba(white,1) 100%);
+					background: linear-gradient(to bottom, rgba(white,0) 0%, rgba(white,1) 75%, rgba(white,1) 100%);
+					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+					> ul {
+						@include flex;
+						li {
+							h4 {
+								color: lighten($slate, 15%);
+								font-weight: 600;
+								text-transform: uppercase;
+							}
+							h2 {
+								color: $slate;
 							}
 						}
-						.splash-school-mobile {
+					}
+				}
+				> footer {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					.border {
+						background: $smoke!important;
+						&:before {
+							border-top-color: white;
+						}
+					}
+				}
+			}
+			@media screen and (max-width: 768px) {
+				&.splash-school-search {
+					header {
+						position: relative;
+						z-index: 2;
+						height: 100px;
+						padding-top: 50px;
+						background: -moz-linear-gradient(top, rgba(white,1) 0%, rgba(white,0.9) 100%);
+						background: -webkit-linear-gradient(top, rgba(white,1) 0%, rgba(white,0.9) 100%);
+						background: linear-gradient(to bottom, rgba(white,1) 0%, rgba(white,0.9) 100%);
+						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6ffffff',GradientType=0 );
+						h1 {
+							width: 100%;
+							text-transform: none;
+						}
+					}
+					.splash-zoom {
+						@include tri-down(15, rgba(lighten($slate, 15%),.9), 0, 10px 15px);
+						@include center-x;
+						top: 90px;
+						z-index: 2;
+						font-size: 16px;
+						font-weight: 600;
+						text-transform: uppercase;
+					}
+					.splash-map-stats {
+						position: absolute;
+						bottom: 36px;
+						left: 0;
+						width: 100%;
+						padding: 60px 0 25px;
+						> div {
+							display: none;
+						}
+						> ul {
+							padding: 7.5px;
+							li {
+								width: calc(100% / 3);
+								padding: 7.5px;
+								text-align: center;
+								h4 {
+									font-size: 14px;
+									span {
+										display: none!important;
+									}
+								}
+								h2 {
+									font-size: 18px;
+									font-weight: 600;
+								}
+							}
+						}
+					}
+				}
+			}
+			@media screen and (max-width: 320px) {
+				&.splash-school-search {
+					header {
+						h1 {
+							font-size: 18px;
+						}
+					}
+				}
+			}
+			@media screen and (min-width: 768px) {
+				&.splash-school-search {
+					height: calc(100%)!important;
+					.splash-zoom {
+						display: none;
+					}
+					> header {
+						display: none!important;
+					}
+					.splash-school-search-form {
+						background: -moz-linear-gradient(top, rgba(white,1) 0%, rgba(white,1) 25%, rgba(white,0) 100%);
+						background: -webkit-linear-gradient(top, rgba(white,1) 0%, rgba(white,1) 25%, rgba(white,0) 100%);
+						background: linear-gradient(to bottom,  rgba(white,1) 0%, rgba(white,1) 25%, rgba(white,0) 100%);
+						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+						position: absolute;
+						top: 0;
+						padding-top: 90px;
+						z-index: 2;
+						display: block;
+						width: 100%;
+						.input-field {
+							input, label {
+								font-weight: 600;
+							}
+						}
+						.splash-school-desktop {
 							@include flex;
 							@include flex-wrap;
-							-webkit-align-self: flex-end;
-							align-self: flex-end;
-							-webkit-align-items: flex-start;
-							align-items: flex-start;
-							margin: -1px -14px 15px;
+							@include flex-center;
+							width: 100%;
+							max-width: 930px;
+							margin: -15px auto 0;
+							padding: 7.5px;
 							li {
-								width: 50%;
-								padding: 1px;
-								> a {
-									display: block;
-									background: white;
-									color: $slate;
-									padding: 15px;
-									border-bottom: 10px solid $slate;
-									border-radius: 2px;
-									&:hover, &:focus {
-										background: lighten($slate, 15%);
-										color: white!important;
-										border-color: white!important;
-									}
-									&:active, &.activated {
-										background: $slate;
-									}
-									span {
-										display: block;
-										font-weight: 600;
-										text-align: center;
-									}
-									.school-name {
-										font-size: 16px;
-										&:first-letter {
-											text-transform: uppercase;
+								width: 20%;
+								padding: 7.5px;
+								.school-card {
+									.school-card-inside {
+										.school-card-top {
+											.school-card-icon {
+												width: 48px;
+												height: 48px;
+											}
+										}
+										.school-card-main {
+											.school-card-info {
+												h1 {
+													font-size: 16px;
+													font-weight: 700;
+												}
+												h2 {
+													font-size: 12px;
+												}
+											}
 										}
 									}
 								}
 							}
 						}
-						@media screen and (min-width: 768px) {
-							.splash-school-desktop {
-								@include flex;
+						.splash-school-results {
+							padding: 15px;
+							li {
+								width: 25%;
+								padding: 15px;
 							}
-							.splash-school-mobile {
-								display: none;
-							}
-						}
-					}
-					.splash-map {
-						width: 100%;
-					}
-					@media screen and (max-width: 768px) {
-						.splash-map {
-							margin: 0 -13px!important;
-							width: calc(100% + 26px)!important;
 						}
 					}
 					.splash-map-stats {
 						@include flex;
-						@include flex-wrap;
 						@include flex-center-vertical;
+						width: 100%;
+						position: absolute;
+						bottom: 36px;
+						left: 0;
+						padding: 100px 15px 15px;
 						min-height: 150px;
 						> * {
 							width: 100%;
 							h1 {
+								color: $slate;
 								font-size: 48px;
 								font-weight: 600;
 							}
 							h4 {
 								font-size: 20px;
-								font-weight: 600;
-								color: lighten($slate, 15%);
-								text-transform: uppercase;
 							}
 							h2 {
 								font-size: 28px;
@@ -3049,35 +3155,6 @@
 							li {
 								padding: 7.5px;
 							}
-						}
-					}
-					@media screen and (min-width: 768px) {
-						> div {
-							.splash-school-results {
-								padding: 15px;
-								li {
-									width: 25%;
-									padding: 15px;
-								}
-							}
-						}
-						.splash-map-stats {
-							> div {
-								width: calc(100% - 613px);
-								min-width: 354px;
-							}
-							> ul {
-								@include flex;
-								width: 613px;
-							}
-						}
-					}
-				}
-				> footer {
-					.border {
-						background: $smoke!important;
-						&:before {
-							border-top-color: white;
 						}
 					}
 				}

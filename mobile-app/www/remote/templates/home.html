@@ -185,124 +185,112 @@
 			<header>
 				<h1>Find Your University</h1>
 			</header>
-			<div class="main" ng-controller="AddUniversityCtrl">
-				<div>
-					<div>
-						<form>
-							<div class="input-field large">
-								<i class="material-icons prefix">
-	                                    <svg viewBox="0 0 100 100">
-	                                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
-	                                    </svg>
-	                                </i>
-								<input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, tiny_name, variations"
-								ng-model="search_text.university" ng-focus='focusUniversitySearchInput' />
-								<label for="request-search-input">
-									<span ng-show='universities.length'>search {{universities.length}} supported schools</span>
-								</label>
-								<a class="side-icon desktop-input-close-icon activated" ng-click="search_text.university = '';" ng-if="search_text.university.trim().length > 0">
-									<i class="icon ion-close-circled txt-white"></i>
-								</a>
-							</div>
-						</form>
-					</div>
-
-					<ul class="splash-school-desktop">
-						<li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 8 track by $index' ng-click='selectUniversityAndTransition(university, $event, $index)'>
-							<div class="school-card">
-								<svg class="rect" viewBox="0 0 300 200">
-									<rect x="0" y="0" width="300" height="200" fill="none"></rect>
+			<!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
+			<div class='splash-map zoom-{{map.zoom}} ng-class:{"invisible":!mapHasRendered}'>
+				<ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom">
+					<ui-gmap-markers models="map.markers" coords="'self'" options="'options'" fit="true" icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
+					</ui-gmap-markers>
+					<!-- <ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
+						<div class='university-label'>
+							<a id='university-info-window-close-button' class='absolute top-0 right-0 txt-white high-z-index cta-modal-close close-button m05xy' ng-click='map.window.close()'>
+								<svg viewBox="0 0 100 100" style='height:20px; width:20px;' class='opacity-50'>
+									<path stroke="#FFFFFF" d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 								</svg>
-								<!--@gabrielle dont need this here actually -->
-								<!-- <input type="checkbox"/> -->
-								<div class="school-card-inside">
-									<div class="school-card-top" style="background-color: {{university.school_color_one}};">
-										<span class="school-card-icon" style="background-image: url({{university.svg_url || university.seal_url || university.logo_url}}); border-color: {{university.school_color_one}};">
-												<span class="school-card-icon-bg" style="background-color: {{university.school_color_one}};"></span>
-										<span class="school-card-state" ng-include="img_base + 'templates/svg/main/check.html'"></span>
-										<span class="school-card-state" ng-include="img_base + 'templates/svg/main/plus.html'"></span>
-										</span>
-									</div>
-									<div class="school-card-main no-footer">
-										<div class="school-card-map"></div>
-										<div class="school-card-color" style="background-color: {{university.school_color_one}};"></div>
-										<div class="school-card-info" style="color: {{university.school_color_one}};">
-											<h1 style="color: {{university.school_color_one}};">{{university.short_name || university.name}}</h1>
-											<h1>{{university.short_name || university.name}}</h1>
-											<h2 style="color: {{university.school_color_one}};"><span>{{university.city}}</span>,&nbsp;<span>{{university.state}}</span></h2>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-					<ul class="splash-school-mobile">
-						<li ng-repeat='university in ::universities | filter:search_text.university:strict | limitTo: 8 track by $index'>
-							<a style="border-color: {{university.school_color_dark}}; color: {{university.school_color_dark}}" ng-click='selectUniversityAndTransition(university, $event, $index)'>
-								<div>
-									<span class="school-name">{{university.short_name || university.name}}</span>
-								</div>
-								<span class="splash-school-mobile-bg" style="background: {{university.school_color_dark}}!important;"></span>
 							</a>
-						</li>
-					</ul>
+							<header style="background-image: url('{{map.window.university.banner_url}}')!important;">
+								<div style="background-color: {{map.window.university.school_color_dark}}!important"></div>
+								<h1>{{map.window.university.name}}</h1>
+							</header>
+							<div>
+								<ul>
+									<li>
+										<h2>Courses</h2>
+										<span>12k</span>
+									</li>
+									<li>
+										<h2>Gurus</h2>
+										<span>725</span>
+									</li>
+									<li>
+										<h2>Students</h2>
+										<span>12k</span>
+									</li>
+								</ul>
+								<button id='university-info-window-button' ng-click="universityButtonClicked()" style="background-color: {{map.window.university.school_color_dark}};">Go to School</button>
+							</div>
+						</div>
+					</ui-gmap-window> -->
+				</ui-gmap-google-map>
+			</div>
+			<div class="splash-zoom">Tap to Zoom</div>
+			<div class="splash-school-search-form" ng-controller="AddUniversityCtrl">
+				<div>
+					<form>
+						<div class="input-field large">
+							<i class="material-icons prefix">
+                                    <svg viewBox="0 0 100 100">
+                                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+                                    </svg>
+                                </i>
+							<input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, tiny_name, variations"
+							ng-model="search_text.university" ng-focus='focusUniversitySearchInput' />
+							<label for="request-search-input">
+								<span ng-show='universities.length'>search {{universities.length}} supported schools</span>
+							</label>
+							<a class="side-icon desktop-input-close-icon activated" ng-click="search_text.university = '';" ng-if="search_text.university.trim().length > 0">
+								<i class="icon ion-close-circled txt-white"></i>
+							</a>
+						</div>
+					</form>
 				</div>
-				<!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
-				<div style='height:500px !important; width:calc(100%);' class='full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}'>
-					<ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom">
-						<ui-gmap-markers models="map.markers" coords="'self'" options="'options'" fit="true" icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
-						</ui-gmap-markers>
-						<!-- <ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
-							<div class='university-label'>
-								<a id='university-info-window-close-button' class='absolute top-0 right-0 txt-white high-z-index cta-modal-close close-button m05xy' ng-click='map.window.close()'>
-									<svg viewBox="0 0 100 100" style='height:20px; width:20px;' class='opacity-50'>
-										<path stroke="#FFFFFF" d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-									</svg>
-								</a>
-								<header style="background-image: url('{{map.window.university.banner_url}}')!important;">
-									<div style="background-color: {{map.window.university.school_color_dark}}!important"></div>
-									<h1>{{map.window.university.name}}</h1>
-								</header>
-								<div>
-									<ul>
-										<li>
-											<h2>Courses</h2>
-											<span>12k</span>
-										</li>
-										<li>
-											<h2>Gurus</h2>
-											<span>725</span>
-										</li>
-										<li>
-											<h2>Students</h2>
-											<span>12k</span>
-										</li>
-									</ul>
-									<button id='university-info-window-button' ng-click="universityButtonClicked()" style="background-color: {{map.window.university.school_color_dark}};">Go to School</button>
+				<ul class="splash-school-desktop">
+					<li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' ng-click='selectUniversityAndTransition(university, $event, $index)'>
+						<div class="school-card">
+							<svg class="rect" viewBox="0 0 300 200">
+								<rect x="0" y="0" width="300" height="200" fill="none"></rect>
+							</svg>
+							<!--@gabrielle dont need this here actually -->
+							<!-- <input type="checkbox"/> -->
+							<div class="school-card-inside">
+								<div class="school-card-top" style="background-color: {{university.school_color_one}};">
+									<span class="school-card-icon" style="background-image: url({{university.svg_url || university.seal_url || university.logo_url}}); border-color: {{university.school_color_one}};">
+											<span class="school-card-icon-bg" style="background-color: {{university.school_color_one}};"></span>
+									<span class="school-card-state" ng-include="img_base + 'templates/svg/main/check.html'"></span>
+									<span class="school-card-state" ng-include="img_base + 'templates/svg/main/plus.html'"></span>
+									</span>
+								</div>
+								<div class="school-card-main no-footer">
+									<div class="school-card-map"></div>
+									<div class="school-card-color" style="background-color: {{university.school_color_one}};"></div>
+									<div class="school-card-info" style="color: {{university.school_color_one}};">
+										<h1 style="color: {{university.school_color_one}};">{{university.short_name || university.name}}</h1>
+										<h1>{{university.short_name || university.name}}</h1>
+										<h2 style="color: {{university.school_color_one}};"><span>{{university.city}}</span>,&nbsp;<span>{{university.state}}</span></h2>
+									</div>
 								</div>
 							</div>
-						</ui-gmap-window> -->
-					</ui-gmap-google-map>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="splash-map-stats" ng-controller="AddUniversityCtrl">
+				<div>
+					<h1>By the numbers</h1>
 				</div>
-				<div class="splash-map-stats">
-					<div>
-						<h1>By the numbers </h1>
-					</div>
-					<ul>
-						<li>
-							<h4>Supported Universities</h4>
-							<h2 id='num-university-counter'>0</h2>
-						</li>
-						<li>
-							<h4>Available Courses</h4>
-							<h2 id='num-course-counter'>0</h2>
-						</li>
-						<li>
-							<h4>Student Gurus</h4>
-							<h2 id='num-guru-counter'>0</h2>
-						</li>
-					</ul>
-				</div>
+				<ul>
+					<li>
+						<h4><span>Supported&nbsp;</span>Universities</h4>
+						<h2 id='num-university-counter'>0</h2>
+					</li>
+					<li>
+						<h4><span>Available&nbsp;</span>Courses</h4>
+						<h2 id='num-course-counter'>0</h2>
+					</li>
+					<li>
+						<h4><span>Student&nbsp;</span>Gurus</h4>
+						<h2 id='num-guru-counter'>0</h2>
+					</li>
+				</ul>
 			</div>
 			<footer>
 				<div class="border"></div>
