@@ -675,4 +675,20 @@ header#home-nav-header.splash-header,
 	}
 }
 
-//css for student.courses.container
+
+
+//css for request request-form
+#request-one {
+	.request-content {
+		height: calc(70%) !important;
+		div {
+			@include flex;
+			@include flex-wrap;
+			> div {
+				@include flex-center;
+				max-width: 1060px;
+    			margin: 0 auto;
+			}
+		}
+	}
+}
