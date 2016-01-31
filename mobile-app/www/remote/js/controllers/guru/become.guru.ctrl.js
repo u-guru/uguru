@@ -40,7 +40,7 @@ angular.module('uguru.guru.controllers')
       console.log('universityObj passed in', $stateParams.universityObj);
       $scope.university = $scope.universityObj;
       $scope.root.vars.university = $scope.university;
-      $localstorage.setObject('university', $scope.university);
+      $localstorage.setObject('university', $scope.university || $scope.user.university);
       $scope.user.university = $scope.university;
     }
     if ($scope.root.vars.university && !$stateParams.universityObj) {

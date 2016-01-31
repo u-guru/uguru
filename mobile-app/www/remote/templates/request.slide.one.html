@@ -45,7 +45,7 @@
 				</ul>
 			</div>
 		</div>
-		
+
 		<div class="request-type ng-class:{'active': newRequest.active_step === 2 || newRequest.type, 'small': newRequest.type}">
 			<h1 class="request-step ng-class:{'small': newRequest.type}">
 				<a ng-click='newRequest.active_step = 2;'>
@@ -114,7 +114,7 @@
 				</ul>
 			</div>
 		</div>
-		
+
 		<div class="request-desc ng-class:{'active': newRequest.active_step === 3}">
 			<h1 class="request-step">
 				<a ng-click='newRequest.active_step = 3;'>
@@ -197,7 +197,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="request-time ng-class:{'active': newRequest.active_step === 4}">
 			<h1 class="request-step">
 				<a ng-click='newRequest.active_step = 4;'>
@@ -250,7 +250,7 @@
 				<div ng-include="img_base + BASE + 'templates/request-cal.html'"></div>
 			</div>
 		</div>
-		
+
 		<div class="request-location ng-class:{'active': newRequest.active_step === 5}">
 			<h1 class="request-step">
 				<a ng-click='newRequest.active_step = 5;'>
@@ -296,11 +296,8 @@
 	                <a ng-click='map.centerMarker.showWindow = !map.centerMarker.showWindow;' style='z-index:1000' class='absolute center-xy'>
 	                    <img src='https://uguru.me/static/remote/img/icons/marker.svg' />
 	                </a>
-					<ui-gmap-google-map style='height:400px;' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom" pan="false" options="map.options">
-	                    <!-- <ui-gmap-markers
-							ng-if='input.search.searchActive'
-	                        models="page.predictionMarkers"
-							></ui-gmap-markers> -->
+					<!-- <ui-gmap-google-map style='height:400px;' class='full-x relative' center="map.center" events="map.events" control="map.control" zoom="map.zoom" pan="false" options="map.options">
+
 	                    <ui-gmap-window
 	                            coords='map.centerMarker.coords'
 	                            show="map.centerMarker.showWindow"
@@ -309,18 +306,11 @@
 	                            {{map.centerMarker.windowText}}
 	                    </ui-gmap-window>
 
-	                     <!-- <ui-gmap-marker
-	                            idKey='mainMarker.id'
-	                            coords='mainMarker.coords'
-	                            options='mainMarker.options'
-	                            events='mainMarker.events'
-	                            control='mainMarker.control'
-	                            ></ui-gmap-marker> -->
-	                </ui-gmap-google-map>
+	                </ui-gmap-google-map> -->
 	            </div>
 			</div>
 		</div>
-		
+
 		<div class="request-payment ng-class:{'active': newRequest.active_step === 6}">
 			<h1 class="request-step">
 				<a ng-click='newRequest.active_step = 6;'>
@@ -475,6 +465,6 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<button>Next</button>
 </section>

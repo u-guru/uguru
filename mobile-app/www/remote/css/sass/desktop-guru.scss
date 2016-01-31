@@ -449,7 +449,7 @@
 						}
 					}
 					&.complete {
-						@include opacity(.5);
+						@include opacity(1);
 						&:hover, &:focus {
 							@include opacity(1);
 						}

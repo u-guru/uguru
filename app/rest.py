@@ -952,7 +952,16 @@ class UserOneView(restful.Resource):
             c = Course.query.get(int(course_id))
             if c in user.student_courses:
                 user.student_courses.remove(c)
-            db_session.commit()
+            try:
+                db_session.commit()
+            except:
+                db_session.rollback()
+                try:
+                    d = db_session.query(student_courses_table).filter(student_courses_table.c.user_id == user.id, student_courses_table.c.course_id == course_id).delete(synchronize_session=False)
+                    db_session.commit()
+                except:
+                    db_session.rollback()
+                    raise
 
         if request.json.get('current_device_id'):
             user.current_device_id = request.json.get('current_device_id')
