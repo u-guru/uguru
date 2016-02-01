@@ -253,7 +253,7 @@
 					<ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' bounds="map.bounds" control="map.control" pan="true" zoom="map.zoom">
 						<ui-gmap-markers models="map.markers" coords="'self'" options="'options'"  icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
 						</ui-gmap-markers>
-						<!-- <ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
+						<ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
 							<div class='university-label'>
 								<a id='university-info-window-close-button' class='absolute top-0 right-0 txt-white high-z-index cta-modal-close close-button m05xy' ng-click='map.window.close()'>
 									<svg viewBox="0 0 100 100" style='height:20px; width:20px;' class='opacity-50'>
@@ -282,7 +282,7 @@
 									<button id='university-info-window-button' ng-click="universityButtonClicked()" style="background-color: {{map.window.university.school_color_dark}};">Go to School</button>
 								</div>
 							</div>
-						</ui-gmap-window> -->
+						</ui-gmap-window>
 					</ui-gmap-google-map>
 				</div>
 				<div class="splash-map-stats">

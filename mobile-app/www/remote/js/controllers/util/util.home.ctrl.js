@@ -1172,7 +1172,7 @@ angular.module('uguru.util.controllers')
           bounds: $scope.mapBounds.desktop,
           markers: generateXMarkersFromUniversities(200, $scope.universities),
           rebuildMarkers: false,
-          // window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
+          window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
         }
         if (!$scope.desktopMode) {
           $scope.map.zoom = $scope.mapZoom.initialMobile
