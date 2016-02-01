@@ -37,6 +37,20 @@ angular.module('uguru.util.controllers')
       //enter == default
       $scope.page.animations = {hiw:{}, bg:{}, profiles: {}, categories:{}, university: {}, main: {}, waypoints: {triggers:{}, parentRef:"home-splash"}};
 
+      var cluster = {
+        style: {
+          xl: {bg_color: '#d3242c', width:150, height:150, textSize: 14, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
+          l: {bg_color: '#F04F54', width:125, height:125, textSize: 13, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
+          m: {bg_color: '#E5753C', width:80, height:80, textSize: 12, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
+          s: {bg_color: '#F6C64E', width:40, height:40, textSize: 12, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
+        },
+        minClusterSize: 10,
+        zoomOnclick: true,
+        maxZoom: 7,
+        gridSize: 45,
+        customClass: "university-svg-cluster"
+      }
+
       //keys are IDs of the elements you want to activate based on horizontal scroll
       var scrollOffset = pageNavbarHeight + sectionSneakHeight - 2;
       var pageNavbarHeight = 70;
@@ -599,7 +613,6 @@ angular.module('uguru.util.controllers')
       var elemIDtoWaypointDict = {};
       var returnWayPointFunction = function(sectionScope, animateOption) {
         return function(direction) {
-          console.log('yo', sectionScope, animateOption);
           $scope.page.animations.waypoints.triggers[sectionScope][animateOption].activated = true;
         }
       }
@@ -954,7 +967,7 @@ angular.module('uguru.util.controllers')
       }
 
       var generateClusterImgDataURI = function(obj) {
-          var baseSVGURL = "<svg class='sample-cluster' viewBox='0 0 73 91' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z' id='Rectangle-1' fill='" + obj.bg_color + "'></path><path d='M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z' id='flag' opacity='0.9' fill='" + obj.bg_color +"'></path><path d='M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z' id='border' fill='#40484B'></path><text fill='#FFFFFF' font-family='Source Sans Pro' font-size='12.7286934' font-weight='bold'><tspan x='10' y='32' fill='#FFFFFF'>" + obj._text + "</tspan></text></svg>"
+          var baseSVGURL = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="' + obj.bg_color + '"></circle></svg>'
           return 'data:image/svg+xml;base64,' + window.btoa(baseSVGURL);
         }
 
@@ -1046,37 +1059,58 @@ angular.module('uguru.util.controllers')
 
       var initClusterObj = function(marker_arr) {
         var options_dict = {
-            minimumClusterSize:10,
+            minimumClusterSize:cluster.minClusterSize,
             calculator: clusterCalculator,
             styles:[
               {
-                width:125,
-                height:100,
-                url: generateClusterImgDataURI({bg_color:$scope.universities[0].school_color_dark, _text: ""}),
+                width:150,
+                height:150,
+                url: generateClusterImgDataURI({bg_color:cluster.style.xl.bg_color}),
                 fontFamily: "Source Sans Pro",
-                fontWeight: "bold",
-                textColor: "#FFFFFF",
-                textSize: 14,
-                anchorText: [-2, -7]
+                fontWeight: cluster.style.xl.fontWeight,
+                textColor: cluster.style.xl.textColor,
+                textSize: cluster.style.xl.textSize,
+                anchorText: cluster.style.xl.anchorIcon
                 // anchorIcon: "[0, 0]"
               },
               {
-                width:75,
+                width:125,
                 height:125,
-                url: generateClusterImgDataURI({bg_color:'#FF0000', _text: ""}),
+                url: generateClusterImgDataURI({bg_color:cluster.style.l.bg_color}),
+                fontFamily: "Source Sans Pro",
+                fontWeight: cluster.style.l.fontWeight,
+                textColor: cluster.style.l.textColor,
+                textSize: cluster.style.l.textSize,
+                anchorText: cluster.style.l.anchorIcon
+                // anchorText: "[0, 0]"
+              },
+              {
+                width:80,
+                height:80,
+                url: generateClusterImgDataURI({bg_color:cluster.style.m.bg_color}),
                 fontFamily: "Source Sans Pro",
                 fontWeight: "bold",
                 textColor: "#FFFFFF",
                 textSize: 10,
                 anchorText: [-35, -3]
                 // anchorText: "[0, 0]"
-              }
+              },
+              {
+                width:60,
+                height:60,
+                url: generateClusterImgDataURI({bg_color:cluster.style.s.bg_color}),
+                fontFamily: "Source Sans Pro",
+                fontWeight: cluster.style.s.fontWeight,
+                textColor: cluster.style.s.textColor,
+                textSize: cluster.style.s.textSize,
+                anchorText: cluster.style.s.anchorIcon
+              },
             ],
             // title: "",
-            zoomOnClick: true,
-            maxZoom: 7,
-            gridSize: 45,
-            clusterClass: "university-svg-cluster",
+            zoomOnClick: cluster.zoomOnClick,
+            maxZoom: cluster.maxZoom,
+            gridSize: cluster.gridSize,
+            clusterClass: cluster.customClass,
             // batchSize:
             averageCenter: true
         }
