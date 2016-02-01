@@ -39,10 +39,10 @@ angular.module('uguru.util.controllers')
 
       var cluster = {
         style: {
-          xl: {bg_color: '#d3242c', width:200, height:200, textSize: 14, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
-          l: {bg_color: '#F04F54', width:100, height:100, textSize: 13, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
-          m: {bg_color: '#E5753C', width:80, height:80, textSize: 12, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
-          s: {bg_color: '#F6C64E', width:60, height:60, textSize: 12, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
+          xl: {bg_color: '#d3242c', width:128, height:128, textSize: 18, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+          l: {bg_color: '#F04F54', width:96, height:96, textSize: 16, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+          m: {bg_color: '#E5753C', width:84, height:84, textSize: 14, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+          s: {bg_color: '#F6C64E', width:64, height:64, textSize: 12, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
         },
         minClusterSize: 10, //direct correlation
         zoomOnclick: true,
