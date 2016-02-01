@@ -18,19 +18,32 @@ angular.module('uguru.util.controllers')
 	'uTracker',
 	'Course',
 	'LoadingService',
+	'RootService',
 	function($rootScope, $scope, $state, $timeout, $localstorage, $ionicPlatform,
 		$cordovaKeyboard, $ionicModal, $ionicTabsDelegate,
-		$ionicSideMenuDelegate, University, Utilities, uTracker, Course, LoadingService) {
+		$ionicSideMenuDelegate, University, Utilities, uTracker, Course, LoadingService, RootService) {
 
 		$scope.searchInputFocus;
 
 		if ($state.current.name !== 'root.universities') {
 			$scope.courses = University.source.courses || [];
 			if (!$scope.courses || !$scope.courses.length) {
-				var successCallback = function() {
-					$scope.courses = University.source.courses;
-				}
-				University.getPopularCourses($scope.user.university_id, $scope, successCallback)
+				University.getPopularCoursesPromise($scope.user.university.id).then(function(courses) {
+					courses = courses.plain();
+					$scope.courses = courses;
+					$scope.courses = $scope.courses.filter( function( el ) {
+					  return objectFindByIndexByKey($scope.user.student_courses, 'short_name', el.short_name) < 0;
+					});
+					$timeout(function() {
+						$scope.$apply();
+					})
+				}, function() {
+					console.log('Something went wrong');
+				})
+			} else {
+				$scope.courses = $scope.courses.filter( function( el ) {
+					return objectFindByIndexByKey($scope.user.student_courses, 'short_name', el.short_name) < 0;
+				});
 			}
 		}
 
@@ -47,6 +60,15 @@ angular.module('uguru.util.controllers')
 			};
 		}
 
+		function objectFindByIndexByKey (array, key, value) {
+            for (var i = 0; i < array.length; i++) {
+                    if (array[i][key] === value) {
+                        return i;
+                    }
+            }
+            return -1;
+        }
+
 		$scope.addUniversityStudentCourse = function(course, $index) {
 	      var course = $scope.university.popular_courses.splice($index, 1)[0];
 	      $scope.user.student_courses.push(course);
@@ -61,21 +83,28 @@ angular.module('uguru.util.controllers')
 	      $scope.courses.unshift(course);
 	    }
 
+	    $scope.addSelectedStudentCourse = function(course, input_text, $index) {
+			var course = $scope.courses.splice($index, 1)[0]
+			$scope.user.student_courses.push(course);
 
-		function updateDOM() {
-			if ($scope.courses.length > 0) {
-				for (var j = 0; j < $scope.user.guru_courses.length; j++) {
-					for (var k = 0; k < $scope.courses.length; k++) {
-						if ($scope.courses[k].id === $scope.user.guru_courses[j].id) {
-							console.log("Duplicate course found, deleting...");
-							$scope.courses.splice(k, 1);
-						}
-					}
-				}
+			$localstorage.setObject('user', $scope.user);
+
+			if ($scope.user.id) {
+				$scope.user.updateAttr('add_student_course', $scope.user, course, null, $scope);
 			}
+		};
 
-		}
+		$scope.removeSelectedStudentCourse = function(course, input_text, $index) {
+			var course = $scope.user.student_courses.splice($index, 1)[0];
+			$scope.courses.unshift(course);
+			LoadingService.showSuccess('Removed ' + course.short_name || course.name, 1000);
 
+			$localstorage.setObject('user', $scope.user);
+
+			if ($scope.user.id) {
+				$scope.user.updateAttr('remove_student_course', $scope.user, course, null, $scope);
+			}
+		};
 
 
 		$scope.alwaysTrue = true;
@@ -150,25 +179,7 @@ angular.module('uguru.util.controllers')
 			$scope.studentCourseInput.value = "";
 		};
 
-		$scope.addSelectedStudentCourse = function(course, input_text, $index) {
-			for (var i = 0; i < $scope.courses.length; i++) {
-				if ($scope.courses[i].id === course.id) {
-					$scope.courses.splice(i, 1);
-				}
-			}
-			if (course.short_name && !course.name) {
-				course.name = course.short_name;
-			}
-			$scope.user.student_courses.push(course);
-			$scope.search_text.course = '';
-			$localstorage.setObject('user', $scope.user);
-			//only if user has signed in
-			if ($scope.user.id) {
-				//adds to database for user
-				$scope.user.updateAttr('add_student_course', $scope.user, course, null, $scope);
-			} //
 
-		};
 
 		$scope.addSelectedGuruCourse = function(course) {
 

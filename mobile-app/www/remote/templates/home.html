@@ -297,7 +297,7 @@
 			</footer>
 		</section>
 
-		<section class='splash-categories' id='splash-browse'>
+		<section class='splash-categories' id='splash-browse' animate-on-first-enter-down-parent animate-on-first-enter-down="{{page.animations.waypoints.triggers.hiw.firstEnterDown}}">
 			<div id='how-it-works' class="main splash-postit ng-class:{'active':activeBrowseTabIndex===0}">
 				<header>
 					<h1 class="how-it-works-header">{{how_it_works.header}}</h1>
@@ -351,7 +351,7 @@
 					<!--Desktop mode-->
 					<div ng-if='desktopMode' class='flex-wrap-center' style='overflow:hidden;'>
 						<ul>
-							<li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.top_half">
+							<li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.top_half" animate-on-first-enter-down-child animate-on-first-enter-down="{{page.animations.waypoints.triggers.hiw.firstEnterDown}}" animate-on-first-enter-down-class="{{['bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp'][$index]}}" animate-on-first-enter-down-delay="{{400 + $index * 100}}">
 								<svg class="tape" viewBox="0 0 200 650">
 									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
 								</svg>
