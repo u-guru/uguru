@@ -78,11 +78,15 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
           } else {
             section_var.elements.push(elem);
           }
-          console.log(indexSelector, 'added to section var', css_arr[i], delay_arr[i]);
+          // console.log(indexSelector, 'added to section var', css_arr[i], delay_arr[i]);
         }
      }
 
 	function animateIn(elem, css_class, delay) {
+		if (!elem || !css_class) {
+			console.log('WARNING: no class sent for ' + elem);
+			return;
+		}
 		var cssClassArgs = getCSSArgs(css_class)
 
 		$timeout(function() {

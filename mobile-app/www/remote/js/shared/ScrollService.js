@@ -15,6 +15,7 @@ function ScrollService(LoadingService, $timeout) {
   return {
     scrollTo:scrollTo,
     initStickyHeaderScroll: initStickyHeaderScroll,
+    initWaypoint, initWaypoint,
     initArrWaypoints: initArrWaypoints,
     mainWaypointContext: mainWaypointContext,
     currentWaypointContextElem: currentWaypointContextElem
@@ -42,7 +43,7 @@ function ScrollService(LoadingService, $timeout) {
 
 
 
-  function initWaypoint(elemId, contextId, elemCb, elemOptions) {
+  function initWaypoint(elemId, contextId, elemOptions) {
     currentWaypointContextElem  = document.getElementById(contextId)
     var waypoint = new Waypoint({
         element: document.getElementById(elemId),
@@ -60,8 +61,7 @@ function ScrollService(LoadingService, $timeout) {
     for (var i = 0; i < wayPointElemIds.length; i++) {
       var wpElemId = wayPointElemIds[i];
       var wpElemOptions = wayPointsDict[wpElemId]
-      var wpElemCb = wpElemOptions.func;
-      globalWaypointsDict[wpElemId] = initWaypoint(wpElemId, parentContainerId, wpElemCb, wpElemOptions);
+      globalWaypointsDict[wpElemId] = initWaypoint(wpElemId, parentContainerId, wpElemOptions);
     }
 
   }
