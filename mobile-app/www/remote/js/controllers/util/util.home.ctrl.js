@@ -50,7 +50,9 @@ angular.module('uguru.util.controllers')
       }
       $scope.mapZoom = {
         initialMobile: 2,
-        initialDesktop: 4
+        initialDesktop: 4,
+        maxZoom: 9,
+        minZoom: 1
       }
       var cluster = {
         style: {
@@ -977,7 +979,7 @@ angular.module('uguru.util.controllers')
 
       var mapDefaults = {
         zoom: calcZoom(),
-        options: { streetViewControl:false, scrollwheel:false, panControl:false,  minZoom: 1, maxZoom: 7, styles: styleOptions,
+        options: { streetViewControl:false, scrollwheel:false, panControl:false,  minZoom: $scope.mapZoom.minZoom, maxZoom: $scope.mapZoom.maxZoom, styles: styleOptions,
                    scrollwheel: false, mapTypeControl:false, style:styleOptions, draggable:true, disableDoubleClickZoom:false, zoomControl: true
                  }
       }
