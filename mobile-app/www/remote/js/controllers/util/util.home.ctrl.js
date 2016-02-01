@@ -39,16 +39,17 @@ angular.module('uguru.util.controllers')
 
       var cluster = {
         style: {
-          xl: {bg_color: '#d3242c', width:150, height:150, textSize: 14, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
-          l: {bg_color: '#F04F54', width:125, height:125, textSize: 13, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
+          xl: {bg_color: '#d3242c', width:200, height:200, textSize: 14, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
+          l: {bg_color: '#F04F54', width:100, height:100, textSize: 13, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
           m: {bg_color: '#E5753C', width:80, height:80, textSize: 12, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
-          s: {bg_color: '#F6C64E', width:40, height:40, textSize: 12, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
+          s: {bg_color: '#F6C64E', width:60, height:60, textSize: 12, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
         },
-        minClusterSize: 10,
+        minClusterSize: 10, //direct correlation
         zoomOnclick: true,
         maxZoom: 7,
-        gridSize: 45,
-        customClass: "university-svg-cluster"
+        gridSize: 90, //direct correlation
+        customClass: "university-svg-cluster",
+        styleThreshold: [15, 20, 25] //direct correlation
       }
 
       //keys are IDs of the elements you want to activate based on horizontal scroll
@@ -998,11 +999,16 @@ angular.module('uguru.util.controllers')
           }).reverse();
           result_str = "";
           if (results.length === 1) {
-            return universityArr.length + " in " + results[0][0] + ""
+            return "<span>" + universityArr.length + " in " + results[0][0] + ""
           }
           if (results.length >= 2) {
-            return universityArr.length + " in " + results[0][0] + "," + results[1][0];
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span> in " + results[0][0] + "," + results[1][0] + '</span>';
           }
+          // if (results.length >=3 )
+
+          //6,4,3,2
+
+
           // if (results.length === 3) {
           //   return results[0][0] + "+" + results[1][0] + " colleges"
           // }
@@ -1041,10 +1047,14 @@ angular.module('uguru.util.controllers')
 
 
 
-        if (universityArr.length > 20) {
+        if (universityArr.length > cluster.styleThreshold[2]) {
           var indexNumber = 1
-        } else {
+        } else if (universityArr.length > cluster.styleThreshold[1] && universityArr.length <= cluster.styleThreshold[2]) {
           var indexNumber = 2
+        } else if (universityArr.length > cluster.styleThreshold[0] && universityArr.length <= cluster.styleThreshold[1]) {
+          var indexNumber = 3
+        } else {
+          var indexNumber = 4
         }
 
 
@@ -1063,8 +1073,8 @@ angular.module('uguru.util.controllers')
             calculator: clusterCalculator,
             styles:[
               {
-                width:150,
-                height:150,
+                width:cluster.style.xl.width,
+                height:cluster.style.xl.height,
                 url: generateClusterImgDataURI({bg_color:cluster.style.xl.bg_color}),
                 fontFamily: "Source Sans Pro",
                 fontWeight: cluster.style.xl.fontWeight,
@@ -1074,8 +1084,8 @@ angular.module('uguru.util.controllers')
                 // anchorIcon: "[0, 0]"
               },
               {
-                width:125,
-                height:125,
+                width:cluster.style.l.width,
+                height:cluster.style.l.height,
                 url: generateClusterImgDataURI({bg_color:cluster.style.l.bg_color}),
                 fontFamily: "Source Sans Pro",
                 fontWeight: cluster.style.l.fontWeight,
@@ -1085,19 +1095,19 @@ angular.module('uguru.util.controllers')
                 // anchorText: "[0, 0]"
               },
               {
-                width:80,
-                height:80,
+                width:cluster.style.m.width,
+                height:cluster.style.m.height,
                 url: generateClusterImgDataURI({bg_color:cluster.style.m.bg_color}),
                 fontFamily: "Source Sans Pro",
-                fontWeight: "bold",
-                textColor: "#FFFFFF",
-                textSize: 10,
-                anchorText: [-35, -3]
+                fontWeight: cluster.style.m.fontWeight,
+                textColor: cluster.style.m.textColor,
+                textSize: cluster.style.m.textSize,
+                anchorText: cluster.style.m.anchorIcon
                 // anchorText: "[0, 0]"
               },
               {
-                width:60,
-                height:60,
+                width:cluster.style.s.width,
+                height:cluster.style.s.height,
                 url: generateClusterImgDataURI({bg_color:cluster.style.s.bg_color}),
                 fontFamily: "Source Sans Pro",
                 fontWeight: cluster.style.s.fontWeight,
