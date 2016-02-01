@@ -999,11 +999,16 @@ angular.module('uguru.util.controllers')
           }).reverse();
           result_str = "";
           if (results.length === 1) {
-            return universityArr.length + " in " + results[0][0] + ""
+            return "<span>" + universityArr.length + " in " + results[0][0] + ""
           }
           if (results.length >= 2) {
-            return universityArr.length + " in " + results[0][0] + "," + results[1][0];
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span> in " + results[0][0] + "," + results[1][0] + '</span>';
           }
+          // if (results.length >=3 )
+
+          //6,4,3,2
+
+
           // if (results.length === 3) {
           //   return results[0][0] + "+" + results[1][0] + " colleges"
           // }
