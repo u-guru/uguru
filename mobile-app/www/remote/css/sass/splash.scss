@@ -3541,13 +3541,16 @@
 		span {
 			display: block;
 			width: 100%;
+			padding: 0 10px;
 			&:nth-child(1) {
 				font-size: 180%;
+				font-weight: 700!important;
 			}
 			&:nth-child(2) {
-				margin-top: -3%;
+				margin-top: -5%;
 			}
 			&:nth-child(3) {
+				margin-top: 2%;
 				font-size: 75%;
 			}
 		}

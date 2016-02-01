@@ -37,19 +37,36 @@ angular.module('uguru.util.controllers')
       //enter == default
       $scope.page.animations = {hiw:{}, bg:{}, profiles: {}, categories:{}, university: {}, main: {}, waypoints: {triggers:{}, parentRef:"home-splash"}};
 
+      $scope.mapCenter = {latitude: 39.8282, longitude: -98.57};
+      $scope.mapBounds = {
+        desktop: {
+          northeast: {latitude: 20.70, longitude:-128.50},
+          southwest: {latitude:48.85, longitude: -70}
+        },
+        mobile: {
+          northeast: {latitude: 20.70, longitude:-100.50},
+          southwest: {latitude:48.85, longitude: -55.90}
+        }
+      }
+      $scope.mapZoom = {
+        initialMobile: 2,
+        initialDesktop: 4,
+        maxZoom: 9,
+        minZoom: 1
+      }
       var cluster = {
         style: {
           xl: {bg_color: '#d3242c', width:128, height:128, textSize: 18, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
-          l: {bg_color: '#F04F54', width:96, height:96, textSize: 16, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
-          m: {bg_color: '#E5753C', width:84, height:84, textSize: 14, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
-          s: {bg_color: '#F6C64E', width:64, height:64, textSize: 12, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+          l: {bg_color: '#df433a', width:96, height:96, textSize: 16, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+          m: {bg_color: '#eb6248', width:84, height:84, textSize: 14, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+          s: {bg_color: '#E5753C', width:64, height:64, textSize: 12, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
         },
-        minClusterSize: 10, //direct correlation
+        minClusterSize: 4, //direct correlation
         zoomOnclick: true,
         maxZoom: 7,
-        gridSize: 90, //direct correlation
+        gridSize: 125, //direct correlation
         customClass: "university-svg-cluster",
-        styleThreshold: [15, 20, 25] //direct correlation
+        styleThreshold: [10,30,70,80] //direct correlation
       }
 
       //keys are IDs of the elements you want to activate based on horizontal scroll
@@ -954,7 +971,7 @@ angular.module('uguru.util.controllers')
 
       var calcZoom = function() {
         if ($scope.desktopMode) {
-          return 4;
+          return 3;
         } else {
           return 2;
         }
@@ -962,7 +979,7 @@ angular.module('uguru.util.controllers')
 
       var mapDefaults = {
         zoom: calcZoom(),
-        options: { streetViewControl:false, scrollwheel:false, panControl:false,  minZoom: 1, maxZoom: 7, styles: styleOptions,
+        options: { streetViewControl:false, scrollwheel:false, panControl:false,  minZoom: $scope.mapZoom.minZoom, maxZoom: $scope.mapZoom.maxZoom, styles: styleOptions,
                    scrollwheel: false, mapTypeControl:false, style:styleOptions, draggable:true, disableDoubleClickZoom:false, zoomControl: true
                  }
       }
@@ -999,11 +1016,21 @@ angular.module('uguru.util.controllers')
           }).reverse();
           result_str = "";
           if (results.length === 1) {
-            return "<span>" + universityArr.length + " in " + results[0][0] + ""
+            return "<span>" + universityArr.length + "</span> <span> schools </span> <span>" + results[0][0] + "</span>"
           }
-          if (results.length >= 2) {
-            return "<span>" + universityArr.length + "</span> <span>schools</span> <span> in " + results[0][0] + "," + results[1][0] + '</span>';
+          if (results.length === 2) {
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + '</span>';
           }
+          if (results.length === 3 && universityArr.length >= cluster.styleThreshold[0]) {
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + '</span>';
+          }
+          if (results.length === 4 && universityArr.length >= cluster.styleThreshold[1]) {
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + ", " + results[3][0] + '</span>';
+          }
+          if (results.length > 4 && universityArr.length >= cluster.styleThreshold[1]) {
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + ", " + results[3][0] + ", " + results[4][0] + '</span>';
+          }
+          return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + '</span>';
           // if (results.length >=3 )
 
           //6,4,3,2
@@ -1132,9 +1159,9 @@ angular.module('uguru.util.controllers')
       var initHomeMap = function() {
           $scope.page.load.sections.two.display = true;
           $scope.map = {
-          center: {latitude: $scope.universities[0].latitude, longitude: $scope.universities[0].longitude},
+          center: $scope.mapCenter,
           control: {},
-          zoom:  mapDefaults.zoom,
+          zoom:  $scope.mapZoom.initialDesktop,
           dragging: true, //true while map is dragging state, false otherwise
           refresh: false,
           options: mapDefaults.options,
@@ -1142,9 +1169,14 @@ angular.module('uguru.util.controllers')
           clusterOptions: initClusterObj(),
           bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
           pan: true,
+          bounds: $scope.mapBounds.desktop,
           markers: generateXMarkersFromUniversities(200, $scope.universities),
           rebuildMarkers: false,
           // window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
+        }
+        if (!$scope.desktopMode) {
+          $scope.map.zoom = $scope.mapZoom.initialMobile
+          $scope.map.bounds = $scope.mapBounds.mobile
         }
       }
 
