@@ -37,6 +37,21 @@ angular.module('uguru.util.controllers')
       //enter == default
       $scope.page.animations = {hiw:{}, bg:{}, profiles: {}, categories:{}, university: {}, main: {}, waypoints: {triggers:{}, parentRef:"home-splash"}};
 
+      $scope.mapCenter = {latitude: 39.8282, longitude: -98.57};
+      $scope.mapBounds = {
+        desktop: {
+          northeast: {latitude: 20.70, longitude:-128.50},
+          southwest: {latitude:48.85, longitude: -70}
+        },
+        mobile: {
+          northeast: {latitude: 20.70, longitude:-100.50},
+          southwest: {latitude:48.85, longitude: -55.90}
+        }
+      }
+      $scope.mapZoom = {
+        initialMobile: 2,
+        initialDesktop: 4
+      }
       var cluster = {
         style: {
           xl: {bg_color: '#d3242c', width:200, height:200, textSize: 14, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
@@ -954,7 +969,7 @@ angular.module('uguru.util.controllers')
 
       var calcZoom = function() {
         if ($scope.desktopMode) {
-          return 4;
+          return 3;
         } else {
           return 2;
         }
@@ -1142,9 +1157,9 @@ angular.module('uguru.util.controllers')
       var initHomeMap = function() {
           $scope.page.load.sections.two.display = true;
           $scope.map = {
-          center: {latitude: $scope.universities[0].latitude, longitude: $scope.universities[0].longitude},
+          center: $scope.mapCenter,
           control: {},
-          zoom:  mapDefaults.zoom,
+          zoom:  $scope.mapZoom.initialDesktop,
           dragging: true, //true while map is dragging state, false otherwise
           refresh: false,
           options: mapDefaults.options,
@@ -1152,9 +1167,14 @@ angular.module('uguru.util.controllers')
           clusterOptions: initClusterObj(),
           bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
           pan: true,
+          bounds: $scope.mapBounds.desktop,
           markers: generateXMarkersFromUniversities(200, $scope.universities),
           rebuildMarkers: false,
           // window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
+        }
+        if (!$scope.desktopMode) {
+          $scope.map.zoom = $scope.mapZoom.initialMobile
+          $scope.map.bounds = $scope.mapBounds.mobile
         }
       }
 

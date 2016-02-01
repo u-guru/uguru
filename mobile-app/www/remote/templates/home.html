@@ -249,9 +249,9 @@
 					</ul>
 				</div>
 				<!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
-				<div style='height:500px !important; width:calc(100%);' class='full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}'>
-					<ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom">
-						<ui-gmap-markers models="map.markers" coords="'self'" options="'options'" fit="true" icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
+				<div style='height:600px !important; width:calc(100%);' class='full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}'>
+					<ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' bounds="map.bounds" control="map.control" pan="true" zoom="map.zoom">
+						<ui-gmap-markers models="map.markers" coords="'self'" options="'options'"  icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
 						</ui-gmap-markers>
 						<!-- <ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
 							<div class='university-label'>
