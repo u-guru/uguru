@@ -999,11 +999,21 @@ angular.module('uguru.util.controllers')
           }).reverse();
           result_str = "";
           if (results.length === 1) {
-            return "<span>" + universityArr.length + " in " + results[0][0] + ""
+            return "<span>" + universityArr.length + "</span> <span> schools </span> <span> in " + results[0][0] + "</span>"
           }
-          if (results.length >= 2) {
-            return "<span>" + universityArr.length + "</span> <span>schools</span> <span> in " + results[0][0] + "," + results[1][0] + '</span>';
+          if (results.length === 2) {
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span> in " + results[0][0] + ", " + results[1][0] + '</span>';
           }
+          if (results.length === 3 && universityArr.length >= cluster.styleThreshold[0]) {
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span> in " + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + '</span>';
+          }
+          if (results.length === 4 && universityArr.length >= cluster.styleThreshold[1]) {
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span> in " + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + ", " + results[3][0] + '</span>';
+          }
+          if (results.length > 4 && universityArr.length >= cluster.styleThreshold[1]) {
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span> in " + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + ", " + results[3][0] + ", " + results[4][0] + '</span>';
+          }
+          return "<span>" + universityArr.length + "</span> <span>schools</span> <span> in " + results[0][0] + ", " + results[1][0] + '</span>';
           // if (results.length >=3 )
 
           //6,4,3,2
