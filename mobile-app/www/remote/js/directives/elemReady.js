@@ -49,92 +49,110 @@ angular.module('uguru.directives')
       }
     };
 }).
-directive("animateOnEnter", function () {
+directive("animEnter", function () {
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
-              attr.$observe('animateOnEnter', function() {
+              attr.$observe('animEnter', function() {
                 console.log('checking..');
-                if (attr.animateOnEnter) {
-                  console.log('triggering animation for animateOnEnter', element.id);
+                if (attr.animEnter) {
+                  console.log('triggering animation for animEnter', element.id);
                 }
            });
         }
       };
 }).
-directive("animateOnEnterDown", function () {
+directive("animEnterDown", function () {
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
-              attr.$observe('animateOnEnterDown', function() {
+              attr.$observe('animEnterDown', function() {
                 console.log('checking..');
-                if (attr.animateOnEnterDown) {
-                  console.log('triggering animation for animateOnEnterDown', element);
+                if (attr.animEnterDown) {
+                  console.log('triggering animation for animEnterDown', element);
                 }
            });
         }
       };
 }).
-directive("animateOnFirstEnterDown", ["AnimationService", function (AnimationService) {
+directive("animFirstEnterDown", ["AnimationService", function (AnimationService) {
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
-              attr.$observe('animateOnFirstEnterDown', function() {
+              attr.$observe('animFirstEnterDown', function() {
                 console.log('checking..');
-                if (attr.animateOnFirstEnterDown && "animateOnFirstEnterDownParent" in attr) {
-                  var children = element[0].querySelectorAll("[animate-on-first-enter-down-child]");
+                if (attr.animFirstEnterDown && "animFirstEnterDownParent" in attr) {
+                  var children = element[0].querySelectorAll("[anim-first-enter-down-child]");
                   if (children.length) {
                     for (var i = 0; i < children.length; i++) {
                       var indexChild = children[i];
-                      var animationClassToInject = indexChild.getAttribute('animate-on-first-enter-down-class');
-                      var animationDelay = indexChild.getAttribute('animate-on-first-enter-down-delay');
-                      var animationOnCompleteExpr = indexChild.getAttribute('animate-on-first-enter-down-on-complete');
+                      var animationClassToInject = indexChild.getAttribute('anim-first-enter-down-class');
+                      var animationDelay = indexChild.getAttribute('anim-first-enter-down-delay');
+                      var animationOnCompleteExpr = indexChild.getAttribute('anim-first-enter-down-on-complete');
                       AnimationService.animateIn(indexChild, animationClassToInject, animationDelay);
                     }
                   }
                 }
 
-                // if (attr.animateOnFirstEnterDown && "animateOnFirstEnterDownChild" in attr) {
-                //   console.log('Child animate element with class', element.class, 'and args', attr.animateOnFirstEnterDownClass, attr.animateOnFirstEnterDownDelay);
+                // if (attr.animFirstEnterDown && "animFirstEnterDownChild" in attr) {
+                //   console.log('Child animate element with class', element.class, 'and args', attr.animFirstEnterDownClass, attr.animFirstEnterDownDelay);
                 // }
            });
         }
       };
 }]).
-directive("animateOnExit", function () {
+directive("animExit", function () {
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
-              attr.$observe('animateOnExit', function() {
+              attr.$observe('animExit', function() {
                 console.log('checking..');
-                if (attr.animateOnExit) {
-                  console.log('triggering animation for animateOnExit', element);
+                if (attr.animExit) {
+                  console.log('triggering animation for animExit', element);
                 }
            });
         }
       };
 }).
-directive("animateOnExitUp", function () {
+directive("animExitUp", ["AnimationService", function (AnimationService) {
       return {
           restrict: 'A',
+          scope: {value: "=animExitUp"},
           link: function(scope, element, attr) {
-              attr.$observe('animateOnExitUp', function() {
-                console.log('checking..');
-                if (attr.animateOnExitUp) {
-                  console.log('triggering animation for animateOnExitUp', element);
+            console.log('this was called', scope.value);
+            scope.$watch('value', function(value) {
+                // scope.value = !value;
+
+                // console.log('set animExitUp from', scope.value, 'to value');
+                if (value) {
+                  console.log('animExitUp was recently set to', value, scope.$$watchers.length);
+                  scope.value = false;
+                  var children = element[0].querySelectorAll("[anim-exit-up-child]");
+                  if (children.length) {
+                    for (var i = 0; i < children.length; i++) {
+                      var indexChild = children[i];
+                      var animationClassToInject = indexChild.getAttribute('anim-exit-up-child-class');
+                      var animationDelay = indexChild.getAttribute('anim-exit-up-child-delay');
+                      var animationOnCompleteExpr = indexChild.getAttribute('anim-exit-up-complete');
+                      AnimationService.animateIn(indexChild, animationClassToInject, animationDelay);
+                    }
+                  }
+                } else {
+                  console.log('animExitUp was recently set to', value);
                 }
-           });
-        }
+            })
+
+          }
       };
-}).
-directive("animateOnExitDown", function () {
+}]).
+directive("animExitDown", function () {
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
-              attr.$observe('animateOnExitDown', function() {
-                console.log('checking..');
-                if (attr.animateOnExitDown) {
-                  console.log('triggering animation for animateOnExitDown', element);
+              attr.$observe('animExitDown', function() {
+                console.log('checking..', scope.$$watchers.length);
+                if (attr.animExitDown) {
+                  console.log('triggering animation for animExitDown', element);
                 }
            });
         }

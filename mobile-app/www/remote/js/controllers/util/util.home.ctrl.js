@@ -74,6 +74,7 @@ angular.module('uguru.util.controllers')
       var pageNavbarHeight = 70;
       var sectionSneakHeight = 36;
       var scrollOffset = pageNavbarHeight + sectionSneakHeight - 2;
+      var animateOptions = ['enterUp', 'enterDown', 'firstEnterDown', 'exitUp', 'exitDown'];
       $scope.page.animations.waypoints.triggers = {
           main: {id:"splash-home", func:null},
           university: {id:"splash-university", func:scrollUniversityCallback, offset:scrollOffset}, //precursor-section-height + navbar.height
@@ -83,9 +84,13 @@ angular.module('uguru.util.controllers')
                   onStart:scrollHowitWorksCallback,
                   offset:scrollOffset
               },
-              onExitUp: {
-
-              }
+              exitUp: {
+                  offset:"50%",
+                  activated: false
+              },
+              // editDown: {
+              //     offset:"-25%"
+              // }
             },
           bg: {id:"become-guru", func:scrollBecomeGuruCallback, offset:scrollOffset}
       }
@@ -625,15 +630,30 @@ angular.module('uguru.util.controllers')
       //@GABRIELLE-NOTE -- add more, feel free to discuss what other things you want to add to make navbar transition feel more fluid
   }
 
-      var animateOptions = ['enter', 'enterUp', 'enterDown', 'firstEnterDown', 'exit', 'exitUp', 'exitDown'];
       var wayPointDict = $scope.page.animations.waypoints.triggers;
       var wayPointDictKeys = Object.keys(wayPointDict);
       var elemIDtoWaypointDict = {};
       var returnWayPointFunction = function(sectionScope, animateOption) {
         return function(direction) {
-          $scope.page.animations.waypoints.triggers[sectionScope][animateOption].activated = true;
+          var upAnimations = ['exitUp', 'enterUp'];
+          var downAnimations = ['enterDown', 'firstEnterDown', 'exitDown']
+
+          var elemAnimateArg = animateOption;
+
+          //if up animation
+          if (upAnimations.indexOf(elemAnimateArg) > -1 && direction === 'up') {
+            console.log(elemAnimateArg, this.element, direction, $scope.page.animations.waypoints.triggers[sectionScope][animateOption].activated, $scope.$$watchers.length);
+            $scope.page.animations.waypoints.triggers[sectionScope][animateOption].activated = true;
+            $scope.$apply();
+          }
+          else if (downAnimations.indexOf(elemAnimateArg) > -1 && direction === 'down') {
+            $scope.page.animations.waypoints.triggers[sectionScope][animateOption].activated = true;
+            $scope.$apply();
+          }
         }
       }
+
+
       var initHomePageWayPoint = function() {
         var parentRef = $scope.page.animations.waypoints.parentRef;
 
@@ -648,6 +668,7 @@ angular.module('uguru.util.controllers')
                   func: returnWayPointFunction(wayPointDictKeys[i], animateOptions[j]),
                   offset: wayPointDict[indexKey][indexOption].offset
                 }
+                console.log('initializing waypoint for element with id', elemId, wayPointDictKeys[i], animateOptions[j]);
                 ScrollService.initWaypoint(elemId, parentRef, elemOptions);
               }
             }
@@ -659,7 +680,37 @@ angular.module('uguru.util.controllers')
       }
 
 
+      $timeout(function() {
+        var root = angular.element(document.getElementsByTagName('body'));
 
+        var watchers = [];
+
+        var f = function (element) {
+            angular.forEach(['$scope', '$isolateScope'], function (scopeProperty) {
+                if (element.data() && element.data().hasOwnProperty(scopeProperty)) {
+                    angular.forEach(element.data()[scopeProperty].$$watchers, function (watcher) {
+                        console.log(element[0].id || element[0].class, element[0]);
+                        watchers.push(watcher);
+                    });
+                }
+            });
+
+            angular.forEach(element.children(), function (childElement) {
+                f(angular.element(childElement));
+            });
+        };
+
+        f(root);
+
+        // Remove duplicate watchers
+        var watchersWithoutDuplicates = [];
+        angular.forEach(watchers, function(item) {
+            if(watchersWithoutDuplicates.indexOf(item) < 0) {
+                 watchersWithoutDuplicates.push(item);
+            }
+        });
+        console.log(watchersWithoutDuplicates.length);
+      }, 10000);
 
       $scope.scrollNextSection = function() {
         if ($scope.page.scroll.section_index === 0) {

@@ -1,4 +1,4 @@
-<!-- <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view>  -->
+<!-- <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="::img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view>  -->
 
 <!-- <ion-view> -->
 	<!-- <ion-content overflow-scroll='true' class='full-xy'> -->
@@ -6,16 +6,16 @@
 	<div id='home-splash' class='splash-landing hs-view full-xy' style='height:calc(100% + 1px);'>
 		<!-- START Home Page CTAs -->
 
-		<aside id='cta-modal-sidebar' class='splash-sidebar bg-charcoal ng-class:{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}' ng-include="img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
+		<aside id='cta-modal-sidebar' class='splash-sidebar bg-charcoal ng-class: ::{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}' ng-include="::img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
 
-		<ion-pane id='cta-modal-{{category.hex_color}}' ng-repeat='category in categories' ng-if='category.is_active' class='full-xy hide-display cta-modal bg-{{category.hex_color}} fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/profile.public.html'">
+		<ion-pane id='cta-modal-{{::category.hex_color}}' ng-repeat='category in ::categories' ng-if='::category.is_active' class='full-xy hide-display cta-modal bg-{{::category.hex_color}} fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/profile.public.html'">
 		</ion-pane>
 
-		<ion-pane id='cta-modal-pricing' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/pricing.html'"> </ion-pane>
+		<ion-pane id='cta-modal-pricing' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/pricing.html'"> </ion-pane>
 
-		<ion-pane id='cta-modal-team' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/team.html'"> </ion-pane>
+		<ion-pane id='cta-modal-team' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/team.html'"> </ion-pane>
 
-		<ion-pane id='cta-modal-apply' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/apply.html'"> </ion-pane>
+		<ion-pane id='cta-modal-apply' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/apply.html'"> </ion-pane>
 
 		<ion-pane id='cta-modal-FAQ' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index'>
 			<a id='guru-profile-cta-close' style='z-index:1000' class='cta-modal-close bg-white close-button high-z-index dark-modal-close full-x p20xy flex-right-center'>
@@ -29,7 +29,7 @@
 		<!-- END Home Page CTAS -->
 
 		<header class='splash-header fixed top-0' id='home-nav-header'  ng-class="{'bg-charcoal': page.header.showOnScrollNav.length, 'active': becomeGuruHeaderActive}">
-			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + 'templates/svg/logo-subtitle.html'"></a>
+			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
 
 			<div class="ugrid-3">
 				<a name='browse-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 1}" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
@@ -109,7 +109,7 @@
 				</svg>
 			</a>
 		<!-- </div> -->
-		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' bg-image="{{page.css.bg_banner}}" bg-image-has-loaded="page.load.sections.one.ready()" style='height:calc(100%)'>
+		<section id='splash-home' class='splash-hero relative' bg-image="{{::page.css.bg_banner}}" bg-image-has-loaded="::page.load.sections.one.ready()" style='height:calc(100%)'>
 
 			<div>
 				<h1 id='main-text'>
@@ -126,8 +126,8 @@
 				<svg viewBox="0 0 1280 284">
 					<defs>
 						<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="gradient">
-							<stop stop-color="{{page.css.main.gradient_fill}} !important;" stop-opacity="0.4" offset="0%"></stop>
-							<stop stop-color="{{page.css.main.gradient_fill}} !important;" offset="100%"></stop>
+							<stop stop-color="{{::page.css.main.gradient_fill}} !important;" stop-opacity="0.4" offset="0%"></stop>
+							<stop stop-color="{{::page.css.main.gradient_fill}} !important;" offset="100%"></stop>
 						</linearGradient>
 					</defs>
 					<g fill="url(#gradient)">
@@ -199,7 +199,7 @@
 								<input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, tiny_name, variations"
 								ng-model="search_text.university" ng-focus='focusUniversitySearchInput' />
 								<label for="request-search-input">
-									<span ng-show='universities.length'>search {{universities.length}} supported schools</span>
+									<span ng-show='universities.length'>search {{::universities.length}} supported schools</span>
 								</label>
 								<a class="side-icon desktop-input-close-icon activated" ng-click="search_text.university = '';" ng-if="search_text.university.trim().length > 0">
 									<i class="icon ion-close-circled txt-white"></i>
@@ -208,8 +208,8 @@
 						</form>
 					</div>
 
-					<ul class="splash-school-desktop">
-						<li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 8 track by $index' ng-click='selectUniversityAndTransition(university, $event, $index)'>
+					<ul class="splash-school-desktop" ng-if="::desktopMode">
+						<li ng-repeat='university in ::universities | filter:search_text.university:strict | limitTo: 8 track by $index' ng-click='::selectUniversityAndTransition(university, $event, $index)'>
 							<div class="school-card">
 								<svg class="rect" viewBox="0 0 300 200">
 									<rect x="0" y="0" width="300" height="200" fill="none"></rect>
@@ -217,43 +217,43 @@
 								<!--@gabrielle dont need this here actually -->
 								<!-- <input type="checkbox"/> -->
 								<div class="school-card-inside">
-									<div class="school-card-top" style="background-color: {{university.school_color_one}};">
-										<span class="school-card-icon" style="background-image: url({{university.svg_url || university.seal_url || university.logo_url}}); border-color: {{university.school_color_one}};">
-												<span class="school-card-icon-bg" style="background-color: {{university.school_color_one}};"></span>
-										<span class="school-card-state" ng-include="img_base + 'templates/svg/main/check.html'"></span>
-										<span class="school-card-state" ng-include="img_base + 'templates/svg/main/plus.html'"></span>
+									<div class="school-card-top" style="background-color: {{::university.school_color_one}};">
+										<span class="school-card-icon" style="background-image: url({{::(university.svg_url || university.seal_url || university.logo_url)}}); border-color: {{::university.school_color_one}};">
+												<span class="school-card-icon-bg" style="background-color: {{::university.school_color_one}};"></span>
+										<span class="school-card-state" ng-include="::img_base + 'templates/svg/main/check.html'"></span>
+										<span class="school-card-state" ng-include="::img_base + 'templates/svg/main/plus.html'"></span>
 										</span>
 									</div>
 									<div class="school-card-main no-footer">
 										<div class="school-card-map"></div>
-										<div class="school-card-color" style="background-color: {{university.school_color_one}};"></div>
-										<div class="school-card-info" style="color: {{university.school_color_one}};">
-											<h1 style="color: {{university.school_color_one}};">{{university.short_name || university.name}}</h1>
-											<h1>{{university.short_name || university.name}}</h1>
-											<h2 style="color: {{university.school_color_one}};"><span>{{university.city}}</span>,&nbsp;<span>{{university.state}}</span></h2>
+										<div class="school-card-color" style="background-color: {{::university.school_color_one}};"></div>
+										<div class="school-card-info" style="color: {{::university.school_color_one}};">
+											<h1 style="color: {{::university.school_color_one}};">{{ ::(university.short_name ||university.name)}}</h1>
+											<h1>{{:: (university.short_name || university.name)}}</h1>
+											<h2 style="color: {{::university.school_color_one}};"><span>{{::university.city}}</span>,&nbsp;<span>{{::university.state}}</span></h2>
 										</div>
 									</div>
 								</div>
 							</div>
 						</li>
 					</ul>
-					<ul class="splash-school-mobile">
+					<ul class="splash-school-mobile" ng-if="::!desktopMode">
 						<li ng-repeat='university in ::universities | filter:search_text.university:strict | limitTo: 8 track by $index'>
-							<a style="border-color: {{university.school_color_dark}}; color: {{university.school_color_dark}}" ng-click='selectUniversityAndTransition(university, $event, $index)'>
+							<a style="border-color: {{::university.school_color_dark}}; color: {{::university.school_color_dark}}" ng-click='::selectUniversityAndTransition(university, $event, $index)'>
 								<div>
-									<span class="school-name">{{university.short_name || university.name}}</span>
+									<span class="school-name">{{::(university.short_name || university.name)}}</span>
 								</div>
-								<span class="splash-school-mobile-bg" style="background: {{university.school_color_dark}}!important;"></span>
+								<span class="splash-school-mobile-bg" style="background: {{::university.school_color_dark}}!important;"></span>
 							</a>
 						</li>
 					</ul>
 				</div>
 				<!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
 				<div style='height:600px !important; width:calc(100%);' class='full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}'>
-					<ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' bounds="map.bounds" control="map.control" pan="true" zoom="map.zoom">
-						<ui-gmap-markers models="map.markers" coords="'self'" options="'options'"  icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
+					<ui-gmap-google-map class='full-xy absolute top-0 left-0' center="::map.center" refresh='::map.refresh' events="::map.events" options='::map.options' bounds="::map.bounds" control="::map.control" pan="::true" zoom="::map.zoom">
+						<ui-gmap-markers models="::map.markers" coords="::'self'" options="::'options'"  icon="::'icon'" clusterOptions="::map.clusterOptions" doCluster="::true">
 						</ui-gmap-markers>
-						<ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
+						<ui-gmap-window closeClick="::map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
 							<div class='university-label'>
 								<a id='university-info-window-close-button' class='absolute top-0 right-0 txt-white high-z-index cta-modal-close close-button m05xy' ng-click='map.window.close()'>
 									<svg viewBox="0 0 100 100" style='height:20px; width:20px;' class='opacity-50'>
@@ -310,14 +310,14 @@
 			</footer>
 		</section>
 
-		<section class='splash-categories' id='splash-browse' animate-on-first-enter-down-parent animate-on-first-enter-down="{{page.animations.waypoints.triggers.hiw.firstEnterDown}}">
+		<section class='splash-categories' id='splash-browse' anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-exit-up="page.animations.waypoints.triggers.hiw.exitUp.activated" anim-first-enter-down="{{page.animations.waypoints.triggers.hiw.firstEnterDown}}">
 			<div id='how-it-works' class="main splash-postit ng-class:{'active':activeBrowseTabIndex===0}">
 				<header>
-					<h1 class="how-it-works-header">{{how_it_works.header}}</h1>
+					<h1 anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="400" class="how-it-works-header">{{::how_it_works.header}}</h1>
 				</header>
 				<div class='main relative'>
 					<!--Mobile mode, hacked css @595-611, samir.scss -->
-					<div class="full-xy" ng-if='!desktopMode'>
+					<div class="full-xy" ng-if='::!desktopMode'>
 						<div class="p15xy">
 							<div class='postit empty'>
 								<svg class="square" viewBox="0 0 100 100">
@@ -329,16 +329,16 @@
 									<rect x="0" y="0" width="100" height="100"></rect>
 								</svg>
 							</div>
-							<ion-slide-box delegate-handle='hiw-slidebox' class='full-xy' on-slide-changed="hiwSlideChanged($index)" show-pager='true' slide-interval='2500' auto-play="false">
+							<ion-slide-box delegate-handle='hiw-slidebox' class='full-xy' on-slide-changed="::hiwSlideChanged($index)" show-pager='true' slide-interval='2500' auto-play="false">
 								<ion-slide ng-repeat='hiw_item in ::how_it_works.top_half'>
 									<div class='postit'>
 										<svg class="square" viewBox="0 0 100 100">
 											<rect x="0" y="0" width="100" height="100"></rect>
 										</svg>
 										<div class='flex-wrap-center full-xy'>
-											<span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-											<h1 class='full-x' ng-bind-html="hiw_item.header"></h1>
-											<p ng-bind-html="hiw_item.content"></p>
+											<span ng-include="::img_base + 'templates/svg/' + hiw_item.icon_src"></span>
+											<h1 class='full-x' ng-bind-html="::hiw_item.header"></h1>
+											<p ng-bind-html="::hiw_item.content"></p>
 										</div>
 									</div>
 								</ion-slide>
@@ -348,23 +348,23 @@
 											<rect x="0" y="0" width="100" height="100"></rect>
 										</svg>
 										<div class='flex-wrap-center full-xy'>
-											<span ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-											<h1 class='full-x' ng-bind-html="hiw_item.header"></h1>
-											<p ng-bind-html="hiw_item.content"></p>
+											<span ng-include="::img_base + 'templates/svg/' + hiw_item.icon_src"></span>
+											<h1 class='full-x' ng-bind-html="::hiw_item.header"></h1>
+											<p ng-bind-html="::hiw_item.content"></p>
 										</div>
 									</div>
 								</ion-slide>
 							</ion-slide-box>
 						</div>
 						<div class="p15xy absolute bottom-0 left-0 full-x">
-							<button ng-click='scrollToSection("#splash-university")' class="bg-university">Join Your University</button>
+							<button  ng-click='scrollToSection("#splash-university")' class="bg-university">Join Your University</button>
 						</div>
 					</div>
 
 					<!--Desktop mode-->
 					<div ng-if='desktopMode' class='flex-wrap-center' style='overflow:hidden;'>
 						<ul>
-							<li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.top_half" animate-on-first-enter-down-child animate-on-first-enter-down="{{page.animations.waypoints.triggers.hiw.firstEnterDown}}" animate-on-first-enter-down-class="{{['bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp'][$index]}}" animate-on-first-enter-down-delay="{{400 + $index * 100}}">
+							<li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.top_half" anim-exit-up-child anim-exit-up-child-class="{{::['hinge', 'hinge', 'hinge'][$index]}}" anim-exit-up-child-delay="{{::[800, 500, 900][$index]}}" anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInDown', 'bounceInRight', 'bounceInLeft'][$index]}}" anim-first-enter-down-delay="{{::[800, 500, 900][$index]}}">
 								<svg class="tape" viewBox="0 0 200 650">
 									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
 								</svg>
@@ -377,14 +377,14 @@
 									</svg>
 									<div>
 										<div>
-											<span class="hiw-icon" ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-											<h1 ng-bind-html="hiw_item.header"></h1>
-											<p ng-bind-html="hiw_item.content"></p>
+											<span class="hiw-icon" ng-include="::img_base + 'templates/svg/' + hiw_item.icon_src"></span>
+											<h1 ng-bind-html="::hiw_item.header"></h1>
+											<p ng-bind-html="::hiw_item.content"></p>
 										</div>
 									</div>
 								</div>
 							</li>
-							<li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.bottom_half">
+							<li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.bottom_half" 'bounceInLeft', anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInRight', 'bounceInUp'][$index]}}" anim-first-enter-down-delay="{{::[700, 1000, 600][$index]}}">
 								<svg class="tape" viewBox="0 0 200 650">
 									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
 								</svg>
@@ -397,15 +397,15 @@
 									</svg>
 									<div>
 										<div>
-											<span class="hiw-icon" ng-include="img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-											<h1 ng-bind-html="hiw_item.header"></h1>
-											<p ng-bind-html="hiw_item.content"></p>
+											<span class="hiw-icon" ng-include="::img_base + 'templates/svg/' + hiw_item.icon_src"></span>
+											<h1 ng-bind-html="::hiw_item.header"></h1>
+											<p ng-bind-html="::hiw_item.content"></p>
 										</div>
 									</div>
 								</div>
 							</li>
 						</ul>
-						<button class="how-it-works-button" ng-if='desktopMode' ng-click='scrollToSection("#splash-university")'>Join Your University</button>
+						<button anim-first-enter-down-child anim-first-enter-down-class='fadeIn' anim-first-enter-down-delay="2500" class="how-it-works-button" ng-if='::desktopMode' ng-click='scrollToSection("#splash-university")'>Join Your University</button>
 					</div>
 				</div>
 			</div>
@@ -417,21 +417,21 @@
 					</div>
 					<div>
 						<ul class='category-card-list'>
-							<li class="opacity-0" ng-repeat='category in ::categories' ng-if='category.is_active' ng-click='showDesktopSubcategories(category)'>
-								<div style='background-image :url({{categories_img_base + category.background_url}})'>
-									<a class='bg-{{category.hex_color}}' ng-click='launchCategoryModal(category)'>
+							<li class="opacity-0" ng-repeat='category in ::categories' ng-if='::category.is_active' ng-click='::showDesktopSubcategories(category)'>
+								<div style='background-image :url({{::(categories_img_base + category.background_url)}})'>
+									<a class='bg-{{::category.hex_color}}' ng-click='::launchCategoryModal(category)'>
 										<div>
-											<span class="card-icon opacity-0" ng-include="img_base + 'templates/svg/' + category.hex_color + '.html'"></span>
-											<span class="card-label opacity-0">{{category.name}}</span>
+											<span class="card-icon opacity-0" ng-include="::(img_base + 'templates/svg/' + category.hex_color + '.html')"></span>
+											<span class="card-label opacity-0">{{::category.name}}</span>
 										</div>
 									</a>
 								</div>
 							</li>
 							<li class="opacity-0">
-								<div style='background-image :url({{categories_img_base + categories[0].background_url}})'>
-									<span class='bg-more' ng-click='launchCategoryModal(category)'>
+								<div style='background-image :url(::{{categories_img_base + categories[0].background_url}})'>
+									<span class='bg-more' ng-click='::launchCategoryModal(category)'>
                                         <div>
-											<span class="card-icon opacity-0" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+											<span class="card-icon opacity-0" ng-include="::img_base + 'templates/svg/main/plus-circle.html'"></span>
 											<span class="card-label opacity-0">More Coming Soon!</span>
 										</div>
 									</span>
@@ -441,17 +441,17 @@
 								<button ng-click='goToSignup()'>Start Your Shop</button>
 							</li>
 						</ul>
-						<div class='subcategory-card-list sub-{{category.hex_color}} ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in ::categories'>
+						<div class='subcategory-card-list sub-{{::category.hex_color}} ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in ::categories'>
 							<ul class="category-card-list">
 								<li ng-repeat='subcategory in ::category.subcategories'>
 									<div class="bg-{{::category.hex_color}}">
 										<span class='bg-{{::category.hex_color}}'>
 											<div>
-												<span class="card-icon" ng-include="img_base + subcategory.icon_url"></span>
-												<span class="card-label txt-slate">{{subcategory.name}}</span>
+												<span class="card-icon" ng-include="::img_base + subcategory.icon_url"></span>
+												<span class="card-label txt-slate">{{::subcategory.name}}</span>
 											</div>
 										</span>
-										<span class="card-price bg-{{category.hex_color}}">Free - $10/hr Avg</span>
+										<span class="card-price bg-{{::category.hex_color}}">Free - $10/hr Avg</span>
 									</div>
 								</li>
 								<li></li>
@@ -469,12 +469,12 @@
 					<h1 class="splash-gurus-header opacity-0">Browse Sample Guru Profiles</h1>
 					<h2 class="splash-gurus-subheader opacity-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
 					<div>
-						<ul class="pf-card-group-mobile" ng-if='!desktopMode'>
+						<ul class="pf-card-group-mobile" ng-if='::!desktopMode'>
 							<li ng-repeat='category in ::categories' ng-if='category.is_active'>
-								<a class="pf-card-mini large pf-card-mini-{{category.hex_color}}" id='cta-box-{{category.hex_color}}'>
+								<a class="pf-card-mini large pf-card-mini-{{::category.hex_color}}" id='cta-box-{{::category.hex_color}}'>
 									<div class="pf-card-mini-banner"></div>
 									<span class="user-icon" style="background-image: url({{sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
-									<span class="pf-card-link" ng-include="img_base + 'templates/svg/main/external.html'"></span>
+									<span class="pf-card-link" ng-include="::img_base + 'templates/svg/main/external.html'"></span>
 								</a>
 							</li>
 						</ul>
@@ -484,9 +484,9 @@
 									<span class="pf-hover">View Profile</span>
 									<div class="pf-card-top">
 										<ul>
-											<li>{{category.hex_color}}</li>
+											<li>{{::category.hex_color}}</li>
 											<li class="pf-card-ribbon opacity-0">
-												<span>{{sampleMiniProfilesDict[category.hex_color].percentile}}&nbsp;percentile</span>
+												<span>{{::sampleMiniProfilesDict[category.hex_color].percentile}}&nbsp;percentile</span>
 											</li>
 										</ul>
 										<span class="user-icon opacity-0" style="background-image: url({{::sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
@@ -495,7 +495,7 @@
 										<h1 class="pf-card-name verified">
             								<span class="pf-card-name-span inline opacity-0">{{::sampleMiniProfilesDict[category.hex_color].name}}</span>
             								<span class="pf-card-verified inline opacity-0">
-            									<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
+            									<span ng-include="::img_base + 'templates/credibility.verified.svg.html'"> </span>
             								</span>
                 						</h1>
 										<h2 class="pf-school opacity-0">{{::sampleMiniProfilesDict[category.hex_color].university_name}}</h2>
@@ -546,11 +546,11 @@
 
 		<section id='become-guru' class="splash-postit ng-class:{'hide':!page.load.sections.five.display}">
 			<header>
-				<h1 class="become-guru-header">{{become_guru.header}}</h1>
+				<h1 class="become-guru-header">{{::become_guru.header}}</h1>
 			</header>
 			<div class='main bg-charcoal relative full-x'>
 				<!--Mobile mode, hacked css @595-611, samir.scss -->
-				<div class="full-xy" ng-if='!desktopMode'>
+				<div class="full-xy" ng-if='::!desktopMode'>
 					<div class="p15xy">
 						<div class='postit empty'>
 							<svg class="square" viewBox="0 0 100 100">
@@ -562,16 +562,16 @@
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
 						</div>
-						<ion-slide-box delegate-handle='bg-slidebox' class='full-xy' on-slide-changed="bgSlideChanged($index)" show-pager='true' slide-interval='2500' auto-play="true">
+						<ion-slide-box delegate-handle='bg-slidebox' class='full-xy' on-slide-changed="::bgSlideChanged($index)" show-pager='true' slide-interval='2500' auto-play="true">
 							<ion-slide ng-repeat='bg_item in ::become_guru.top_half'>
 								<div class='postit'>
 									<svg class="square" viewBox="0 0 100 100">
 										<rect x="0" y="0" width="100" height="100"></rect>
 									</svg>
 									<div class='flex-wrap-center full-xy'>
-										<span ng-include="img_base + 'templates/svg/' + bg_item.icon_src"></span>
-										<h1 class='full-x' ng-bind-html="bg_item.header"></h1>
-										<p ng-bind-html="bg_item.content"></p>
+										<span ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
+										<h1 class='full-x' ng-bind-html="::bg_item.header"></h1>
+										<p ng-bind-html="::bg_item.content"></p>
 									</div>
 								</div>
 							</ion-slide>
@@ -581,9 +581,9 @@
 										<rect x="0" y="0" width="100" height="100"></rect>
 									</svg>
 									<div class='flex-wrap-center full-xy'>
-										<span ng-include="img_base + 'templates/svg/' + bg_item.icon_src"></span>
-										<h1 class='full-x' ng-bind-html="bg_item.header"></h1>
-										<p ng-bind-html="bg_item.content"></p>
+										<span ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
+										<h1 class='full-x' ng-bind-html="::bg_item.header"></h1>
+										<p ng-bind-html="::bg_item.content"></p>
 									</div>
 								</div>
 							</ion-slide>
@@ -608,9 +608,9 @@
 								</svg>
 								<div>
 									<div>
-										<span class="postit-icon" ng-include="img_base + 'templates/svg/' + bg_item.icon_src"></span>
-										<h1 ng-bind-html="bg_item.header"></h1>
-										<p ng-bind-html="bg_item.content"></p>
+										<span class="postit-icon" ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
+										<h1 ng-bind-html="::bg_item.header"></h1>
+										<p ng-bind-html="::bg_item.content"></p>
 									</div>
 								</div>
 							</div>
@@ -628,9 +628,9 @@
 								</svg>
 								<div>
 									<div>
-										<span class="postit-icon" ng-include="img_base + 'templates/svg/' + bg_item.icon_src"></span>
-										<h1 ng-bind-html="bg_item.header"></h1>
-										<p ng-bind-html="bg_item.content"></p>
+										<span class="postit-icon" ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
+										<h1 ng-bind-html="::bg_item.header"></h1>
+										<p ng-bind-html="::bg_item.content"></p>
 									</div>
 								</div>
 							</div>
@@ -650,7 +650,7 @@
 				<ul>
 					<li>proudly made with</li>
 					<li>
-						<span ng-include="img_base + 'templates/svg/main/heart.html'"></span>
+						<span ng-include="::img_base + 'templates/svg/main/heart.html'"></span>
 					</li>
 					<li>by college students</li>
 				</ul>
