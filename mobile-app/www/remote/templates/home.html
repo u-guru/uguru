@@ -89,12 +89,12 @@
 			</div>
 		</header>
 		<!-- <div class='splash-footer-links-container fixed full-x left-0 p10xy' style='top:calc(90%);'> -->
-		<a id="splash-footer-support" class="splash-footer-link fixed" ng-click='launchSupportOverlay()'>
+		<a id="splash-footer-support" class="splash-footer-link fixed" ng-click='launchSupportOverlay()' style="display: none!important;">
 			<svg class="splash-footer-icon" viewBox="0 0 100 100">
 				<path d="M30,24.8677175 C31.8923771,21.0254081 34.4778855,18.8636487 37.7985936,16.9181834 C41.1193017,14.9727181 44.7586089,14 48.7166246,14 C54.6871906,14 59.802346,16.1299172 64.0622442,20.3898154 C68.3221425,24.6497136 70.4520596,29.664243 70.4520596,35.433554 C70.4520596,41.202865 68.5904785,46.1503104 64.8672604,50.2760386 C61.1440422,54.4017668 54.4442042,56.7664779 49.0103183,57.370243 L49.0103183,68.1373335 C49.0103183,68.8081837 49.015108,70.6862599 49.015108,70.6862599 M49.0289795,82.817968 L49.0289795,83.8786453"></path>
 			</svg>
 		</a>
-		<a id="splash-footer-next" class="splash-footer-link fixed ng-class:{'show':page.scroll.section_index !== 2}" ng-click='scrollNextSection()'>
+		<a id="splash-footer-next" class="splash-footer-link fixed ng-class:{'show':page.scroll.section_index !== 2}" ng-click='scrollNextSection()' style="display: none!important;">
 			<div>
 				<h4>Up Next</h4>
 				<span>How It Works</span>
@@ -103,14 +103,175 @@
 				<path d="M14,32 L50,68 L86,32"></path>
 			</svg>
 		</a>
-		<a id="splash-footer-top" class="splash-footer-link hide fixed ng-class:{'show':page.scroll.section_index}" on-hold="scrollToSection('#splash-home')" ng-click='scrollUpSection()'>
+		<a id="splash-footer-top" class="hid esplash-footer-link hide fixed ng-class:{'show':page.scroll.section_index}" on-hold="scrollToSection('#splash-home')" ng-click='scrollUpSection()' style="display: none!important;">
 			<svg class="splash-footer-icon" viewBox="0 0 100 100">
 				<path d="M14,68 L50,32 L86,68"></path>
 			</svg>
 		</a>
 		<!-- </div> -->
 		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' bg-image="{{page.css.bg_banner}}" bg-image-has-loaded="page.load.sections.one.ready()" style='height:calc(100%);'>
-			<div>
+			<ion-slide-box class='splash-scene' show-pager='false' auto-play="false">
+				<ion-slide id="splash-tech">
+					<div class="splash-scene-img" style="background-image: url('{{img_base + BASE + 'img/categories/hero/tech@2x.jpg'}}');"></div>
+					<!-- needs animation, currently set to .hide, desktop only -->
+					<div class="hide splash-scene-markers">
+						<span class="splash-marker positioned active">
+							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
+							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+							<span class="splash-marker-label">Rachel's Location</span>
+						</span>
+					</div>
+					<!-- needs animation, currently set to .hide -->
+					<div class="hide splash-scene-map">
+						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')"></div>
+					</div>
+					<!-- needs animation, currently set to .hide -->
+					<div class="hide splash-scene-overlay"></div>
+					<!-- needs animation, remove .active to shrink, desktop only -->
+					<div class="active splash-scene-prop-desktop">
+						<a class="splash-scene-svg">
+							<svg viewBox="0 0 700 400">
+							    <path d="M449.722656,372.595703 C449.722656,372.595703 486.69917,369.225613 495.333984,372.595703 C503.968799,375.965793 481.345368,381.023649 484.962891,383.837891 C488.580413,386.652132 513.259766,386.541016 513.259766,386.541016" class="cord" fill="none" stroke="#324347" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+							    <rect class="stand" fill="#D8D8D8" x="305" y="327" width="90" height="43"></rect>
+							    <path d="M455.1704,376.1398 C451.6704,372.6128 444.8014,369.9998 439.8324,369.9998 L262.1664,369.9998 C257.2014,369.9998 250.3314,372.6108 246.8294,376.1398 L229.7384,393.4848 C226.2384,397.0118 227.4294,399.9998 232.4044,399.9998 L469.5944,399.9998 C474.5684,399.9998 475.7634,397.0138 472.2614,393.4848 L455.1704,376.1398 Z M569.000726,29 C573.970888,29 578,33.0290817 578,37.9997359 L578,318.000264 C578,322.970681 573.962479,327 569.000726,327 L131.999274,327 C127.029112,327 123,322.970918 123,318.000264 L123,37.9997359 C123,33.029319 127.037521,29 131.999274,29 L569.000726,29 Z M133,48.0064028 C133,43.0323039 137.02856,39 141.998196,39 L559.001804,39 C563.97137,39 568,43.0274856 568,48.0064028 L568,279 L133,279 L133,48.0064028 Z" class="main" fill="#FFFFFF"></path>
+							    <rect class="screen" fill="#324347" x="133" y="39" width="435" height="240" rx="9"></rect>
+							    <path d="M537.767857,372.632184 C559.509223,372.632184 562.663665,390.672347 562.663665,390.672347 C564.292509,395.068443 561.807054,398.632184 557.109357,398.632184 L518.426358,398.632184 C513.729954,398.632184 511.061316,394.989619 512.87205,390.672347 C512.87205,390.672347 516.026492,372.632184 537.767857,372.632184 Z" class="mouse animate" fill="#FFFFFF"></path>
+							</svg>
+							<div class="splash-scene-type" style="top: 9.7%; left: 21.5%;">
+								<h1>My <u>Macbook</u> is <u>slow&nbsp;as&nbsp;hell</u>.</h1>
+							</div>
+						</a>
+						<div class="splash-scene-search">
+							<!-- <h1>At UC Berkeley</h1> -->
+							<h2>Searching among UC Berkeley Tech Gurus</h2>
+							<progress class="white-round height-10" max="100" value="75"></progress>
+						</div>
+					</div>
+					<!-- needs animation, set to .hide when guru message is visible, mobile only -->
+					<div class="splash-scene-prop-mobile">
+						<div class="splash-scene-svg">
+							<svg viewBox="0 0 200 200">
+							    <path d="M127.322828,192.613397 C127.322828,192.613397 137.318677,191.705017 139.652923,192.613397 C141.98717,193.521777 135.871385,194.885081 136.849309,195.643636 C137.827232,196.402192 144.498794,196.372241 144.498794,196.372241" fill="none" stroke="#324347" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"></path>
+							    <path d="M128.795515,193.568679 C127.849361,192.618005 125.992466,191.913693 124.649198,191.913693 L76.620807,191.913693 C75.2786202,191.913693 73.4214554,192.617466 72.4747609,193.568679 L67.8545565,198.243881 C66.9084026,199.194555 67.2303653,199.999946 68.5752554,199.999946 L132.69475,199.999946 C134.03937,199.999946 134.362414,199.195094 133.415719,198.243881 L128.795515,193.568679 Z M151.124058,192.62323 C157.001394,192.62323 157.85642,197.49058 157.85642,197.49058 C158.295482,198.672876 157.616641,199.631316 156.364926,199.631316 L145.88319,199.631316 C144.620399,199.631316 143.9018,198.656872 144.391697,197.49058 C144.391697,197.49058 145.246722,192.62323 151.124058,192.62323 Z M159.570677,100 C160.912355,100 162,101.089774 162,102.425805 L162,177.897645 C162,179.23738 160.917951,180.32345 159.570677,180.32345 L41.4293227,180.32345 C40.0876448,180.32345 39,179.233676 39,177.897645 L39,102.425805 C39,101.08607 40.0820494,100 41.4293227,100 L159.570677,100 Z M41.7032967,105.113278 C41.7032967,103.777931 42.7923359,102.695418 44.1324096,102.695418 L156.86759,102.695418 C158.209152,102.695418 159.296703,103.791091 159.296703,105.113278 L159.296703,167.385445 L41.7032967,167.385445 L41.7032967,105.113278 Z M88.2,180.512439 L112.52967,180.512439 L112.52967,191.833194 L88.2,191.833194 L88.2,180.512439 Z" fill="#FFFFFF"></path>
+							    <rect fill="#324347" x="41.7032967" y="102.695418" width="117.593407" height="71.1590296" rx="2"></rect>
+							</svg>
+							<div class="splash-scene-type">
+								<h1>My <u>Macbook</u> is <u>slow&nbsp;as&nbsp;hell</u>.</h1>
+							</div>
+							<button disabled>At UC Berkeley</button>
+							<!-- needs animation, remove .active on second state -->
+							<a class="active pause" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a>
+						</div>
+					</div>
+					<!-- needs animation, remove .hide on second state-->
+					<header class="hide splash-scene-header">
+						<ul>
+							<li><a class="splash-header-close close-button" ng-include="img_base + 'templates/svg/main/plus.html'"></a></li>
+						</ul>
+					</header>
+					<!-- needs animation, set to .hide on second state, desktop only-->
+					<footer class="splash-scene-footer">
+						<ul>
+							<li><a class="splash-footer-share" ng-include="img_base + 'templates/svg/main/share.html'"></a></li>
+							<li><a class="splash-footer-play-pause" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a></li>
+							<li><a class="splash-footer-mute" ng-include="img_base + 'templates/svg/main/mute.html'"></a></li>
+						</ul>
+						<ul>
+							<li><a ng-include="img_base + 'templates/svg/main/left.html'"></a></li>
+							<li><a ng-include="img_base + 'templates/svg/main/right.html'"></a></li>
+						</ul>
+					</footer>
+					<!-- needs animation, currently set to .hide, desktop only -->
+					<ul class="hide splash-scene-gurus pf-card-group">
+						<li class="pf-card-li" ng-repeat='category in ::categories | limitTo: 5' ng-if='category.is_active'>
+							<!-- needs animation, currently set to .hide -->
+							<div class="hide splash-scene-guru-message">
+								<div>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								</div>
+								<button>View {{::sampleMiniProfilesDict[category.hex_color].name}}'s Shop</button>
+							</div>
+							<div class="pf-card pf-card-tech bg-tech">
+								<div class="pf-card-top">
+									<ul>
+										<li>Tech</li>
+										<li class="pf-card-ribbon">
+											<span>{{sampleMiniProfilesDict[category.hex_color].percentile}}&nbsp;percentile</span>
+										</li>
+									</ul>
+									<span class="user-icon" style="background-image: url({{::sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
+								</div>
+								<div class="pf-card-main">
+									<h1 class="pf-card-name verified">
+										<span class="pf-card-name-span inline">{{::sampleMiniProfilesDict[category.hex_color].name}}</span>
+										<span class="pf-card-verified inline">
+											<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
+										</span>
+									</h1>
+									<h2 class="pf-online active">&#x25cf; Active Now</h2>
+									<ul class="pf-rating" data-rating="{{::sampleMiniProfilesDict[category.hex_color].rating.whole_stars}}" data-half="{{::sampleMiniProfilesDict[category.hex_color].rating.has_half_star}}">
+										<li>
+											<svg viewBox="0 0 100 100">
+												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+											</svg>
+										</li>
+										<li>
+											<svg viewBox="0 0 100 100">
+												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+											</svg>
+										</li>
+										<li>
+											<svg viewBox="0 0 100 100">
+												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+											</svg>
+										</li>
+										<li>
+											<svg viewBox="0 0 100 100">
+												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+											</svg>
+										</li>
+										<li>
+											<svg viewBox="0 0 100 100">
+												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+											</svg>
+										</li>
+									</ul>
+									<span class="pf-review-amt">{{::sampleMiniProfilesDict[category.hex_color].rating.count}} Reviews</span>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<!-- needs animation, currently set to .hide, mobile only -->
+					<div class="hide splash-scene-guru-message mobile">
+						<div>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+						</div>
+						<button>View Rachel's Shop</button>
+					</div>
+					<!-- needs animation, currently set to .hide, mobile only -->
+					<ul class="hide splash-scene-gurus pf-card-group-mobile">
+						<li ng-repeat='category in ::categories' ng-if='category.is_active'>
+							<!-- needs animation, currently set to .hide -->
+							<div class="pf-card-mini large pf-card-mini-tech">
+								<div class="pf-card-mini-banner"></div>
+								<span class="user-icon" style="background-image: url({{sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
+							</div>
+						</li>
+					</ul>
+					</footer>
+				</ion-slide>
+				<!-- <ion-slide ng-repeat='category in ::categories' ng-if='category.is_active' id="splash-{{category.hex_color}}">
+					<div class="splash-scene-img" style="background-image: url('{{img_base + BASE + 'img/categories/hero/' + category.hex_color + '@2x.jpg'}}');"></div>
+					<div class="splash-scene-map"></div>
+					<div class="splash-scene-overlay"></div>
+				</ion-slide> -->
+			</ion-slide-box>
+			<div class="splash-type" style="display: none!important;">
 				<h1 id='main-text'>
                     <span class='weight-400'>Last-second dirt-cheap</span>
                     <span class='weight-900'>
@@ -121,7 +282,7 @@
 					<span class='weight-400'>powered&nbsp;by your&nbsp;classmates</span>
                 </h1>
 			</div>
-			<footer>
+			<footer style="display: none!important;">
 				<svg viewBox="0 0 1280 284">
 					<defs>
 						<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="gradient">

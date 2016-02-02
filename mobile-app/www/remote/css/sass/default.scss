@@ -4081,6 +4081,7 @@ input[type=range] {
 				&:first-child {
 					padding: 10px 15px;
 					color: white;
+					text-align: left;
 				}
 				&:last-child {
 					@include flex;
@@ -4156,6 +4157,15 @@ input[type=range] {
 			margin-top: 0;
 			font-size: 20px;
 			font-weight: 400;
+		}
+		.pf-online {
+			margin-top: 0;
+			font-size: 20px;
+			font-weight: 400;
+			&.active {
+				font-weight: 700;
+				color: $moxie;
+			}
 		}
 		.pf-rating {
 			margin: 15px auto 0;
@@ -5364,4 +5374,8 @@ input[type=range] {
 			font-size: 20px!important;
 		}
 	}
+}
+
+#body-loading-wrapper .logo {
+	display: none!important;
 }

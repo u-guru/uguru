@@ -5488,6 +5488,7 @@ input[type=range]:focus::-ms-fill-upper {
 .pf-card .pf-card-top ul li:first-child {
   padding: 10px 15px;
   color: white;
+  text-align: left;
 }
 
 .pf-card .pf-card-top ul li:last-child {
@@ -5589,6 +5590,17 @@ input[type=range]:focus::-ms-fill-upper {
   margin-top: 0;
   font-size: 20px;
   font-weight: 400;
+}
+
+.pf-card .pf-card-main .pf-online {
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.pf-card .pf-card-main .pf-online.active {
+  font-weight: 700;
+  color: #43cb9d;
 }
 
 .pf-card .pf-card-main .pf-rating {
@@ -7047,4 +7059,8 @@ input[type=range]:focus::-ms-fill-upper {
   .input-field.large label.active {
     font-size: 20px !important;
   }
+}
+
+#body-loading-wrapper .logo {
+  display: none !important;
 }
