@@ -4831,14 +4831,14 @@
   background: #69B3A5;
 }
 
-.splash-landing#home-splash > .splash-header.bg-slate {
+.splash-landing#home-splash > .splash-header.bg-charcoal {
   background: none !important;
 }
 
-.splash-landing#home-splash > .splash-header.bg-slate:before {
+.splash-landing#home-splash > .splash-header.bg-charcoal:before {
   filter: alpha(opacity=95);
   opacity: 0.95;
-  background: #637074;
+  background: #4e5a5e;
 }
 
 @media screen and (max-width: 768px) {

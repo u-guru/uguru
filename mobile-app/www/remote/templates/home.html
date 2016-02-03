@@ -4,7 +4,7 @@
 <!-- <ion-content overflow-scroll='true' class='full-xy'> -->
 <div class='full-xy'>
 
-	<div id='home-splash' class='splash-landing hs-view full-xy' style='height:calc(100% + 1px);' init-wp-parent>
+	<main id='home-splash' class='splash-landing hs-view full-xy' style='height:calc(100% + 1px);' init-wp-parent>
 
 		<!-- START Home Page CTAs -->
 
@@ -157,12 +157,13 @@
 				<path d="M14,32 L50,68 L86,32"></path>
 			</svg>
 		</a>
-		<a id="splash-footer-top" class="hid esplash-footer-link hide fixed ng-class:{'show':page.scroll.section_index}" on-hold="scrollToSection('#splash-home')" ng-click='scrollUpSection()' style="display: none!important;">
+		<a id="splash-footer-top" class="hide splash-footer-link hide fixed ng-class:{'show':page.scroll.section_index}" on-hold="scrollToSection('#splash-home')" ng-click='scrollUpSection()' style="display: none!important;">
 			<svg class="splash-footer-icon" viewBox="0 0 100 100">
 				<path d="M14,68 L50,32 L86,68"></path>
 			</svg>
 		</a>
 		<!-- </div> -->
+		
 		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' bg-image="{{page.css.bg_banner}}" bg-image-has-loaded="page.load.sections.one.ready()" style='height:calc(100%);'>
 			<ion-slide-box class='splash-scene' show-pager='false' auto-play="false">
 				<ion-slide id="splash-tech">

@@ -3756,11 +3756,11 @@
 				@include opacity(.75);
 				background: $shamrock;
 			}
-			&.bg-slate {
+			&.bg-charcoal {
 				background: none!important;
 				&:before {
 					@include opacity(.95);
-					background: lighten($slate, 15%);
+					background: lighten($charcoal, 15%);
 				}
 			}
 		}
