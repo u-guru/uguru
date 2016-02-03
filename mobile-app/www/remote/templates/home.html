@@ -8,7 +8,7 @@
 
 		<!-- START Home Page CTAs -->
 
-		<aside id='cta-modal-sidebar' class='splash-sidebar bg-charcoal ng-class: ::{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}' ng-include="::img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
+		<aside id='cta-modal-sidebar' anim-on-show anim-on-show-parent class='splash-sidebar bg-charcoal ng-class: ::{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}' ng-include="::img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
 
 		<ion-pane id='cta-modal-{{::category.hex_color}}' ng-repeat='category in ::categories' ng-if='::category.is_active' class='full-xy hide-display cta-modal bg-{{::category.hex_color}} fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/profile.public.html'">
 		</ion-pane>
@@ -164,7 +164,7 @@
 		</a>
 		<!-- </div> -->
 		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' bg-image="{{page.css.bg_banner}}" bg-image-has-loaded="page.load.sections.one.ready()" style='height:calc(100%);'>
-			<ion-slide-box class='splash-scene' show-pager='false' auto-play="false">
+			<ion-slide-box class='splash-scene' on-slide-changed="topHomeSlider.onChange($index)" show-pager='false' delegate-handle='splash-hero-home' does-continue="true">
 				<ion-slide id="splash-tech">
 					<div class="splash-scene-img" style="background-image: url('{{img_base + BASE + 'img/categories/hero/tech@2x.jpg'}}');"></div>
 					<!-- needs animation, currently set to .hide, desktop only -->
@@ -182,7 +182,7 @@
 					<!-- needs animation, currently set to .hide -->
 					<div class="hide splash-scene-overlay"></div>
 					<!-- needs animation, remove .active to shrink, desktop only -->
-					<div class="active splash-scene-prop-desktop">
+					<div class="splash-scene-prop-desktop ng-class:{'active':desktopMode}">
 						<a class="splash-scene-svg">
 							<svg viewBox="0 0 700 400">
 							    <path d="M449.722656,372.595703 C449.722656,372.595703 486.69917,369.225613 495.333984,372.595703 C503.968799,375.965793 481.345368,381.023649 484.962891,383.837891 C488.580413,386.652132 513.259766,386.541016 513.259766,386.541016" class="cord" fill="none" stroke="#324347" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -227,12 +227,12 @@
 					<footer class="splash-scene-footer">
 						<ul>
 							<li><a class="splash-footer-share" ng-include="img_base + 'templates/svg/main/share.html'"></a></li>
-							<li><a class="splash-footer-play-pause" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a></li>
+							<li><a class="splash-footer-play-pause" ng-click='topHomeSlider.toggleRemote()' ng-include="img_base + 'templates/svg/main/play-pause.html'"></a></li>
 							<li><a class="splash-footer-mute" ng-include="img_base + 'templates/svg/main/mute.html'"></a></li>
 						</ul>
 						<ul>
-							<li><a ng-include="img_base + 'templates/svg/main/left.html'"></a></li>
-							<li><a ng-include="img_base + 'templates/svg/main/right.html'"></a></li>
+							<li><a ng-click='topHomeSlider.previous()' ng-include="img_base + 'templates/svg/main/left.html'"></a></li>
+							<li><a ng-click='topHomeSlider.next()' ng-include="img_base + 'templates/svg/main/right.html'"></a></li>
 						</ul>
 					</footer>
 					<!-- needs animation, currently set to .hide, desktop only -->
@@ -319,6 +319,35 @@
 					</ul>
 					</footer>
 				</ion-slide>
+				<ion-slide id="splash-academic" anim-on-show-parent anim-on-show="show-slide">
+					<div class="splash-scene-img" style="background-image: url('{{img_base + BASE + 'img/categories/hero/academic@2x.jpg'}}');"></div>
+					<footer class="splash-scene-footer">
+						<ul>
+							<li class="opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="200"><a class="splash-footer-share" ng-include="img_base + 'templates/svg/main/share.html'"></a></li>
+							<li class="opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="250"><a class="splash-footer-play-pause" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a></li>
+							<li class="opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="300"><a class="splash-footer-mute" ng-include="img_base + 'templates/svg/main/mute.html'"></a></li>
+						</ul>
+						<ul>
+							<li class="opacity-0" anim-on-show-child anim-on-show-class="fadeInLeftBig" anim-on-show-delay="650"><a ng-click='topHomeSlider.previous()' ng-include="img_base + 'templates/svg/main/left.html'"></a></li>
+							<li class="opacity-0" anim-on-show-child anim-on-show-class="fadeInLeftBig" anim-on-show-delay="600"><a ng-click='topHomeSlider.next()' ng-include="img_base + 'templates/svg/main/right.html'"></a></li>
+						</ul>
+					</footer>
+				</ion-slide>
+				<ion-slide id="splash-photo">
+					<div class="splash-scene-img" style="background-image: url('{{img_base + BASE + 'img/categories/hero/photo@2x.jpg'}}');"></div>
+					<footer class="splash-scene-footer">
+						<ul>
+							<li><a class="splash-footer-share" ng-include="img_base + 'templates/svg/main/share.html'"></a></li>
+							<li><a class="splash-footer-play-pause" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a></li>
+							<li><a class="splash-footer-mute" ng-include="img_base + 'templates/svg/main/mute.html'"></a></li>
+						</ul>
+						<ul>
+							<li><a ng-click='topHomeSlider.previous()' ng-include="img_base + 'templates/svg/main/left.html'"></a></li>
+							<li><a ng-click='topHomeSlider.next()' ng-include="img_base + 'templates/svg/main/right.html'"></a></li>
+						</ul>
+					</footer>
+				</ion-slide>
+
 				<!-- <ion-slide ng-repeat='category in ::categories' ng-if='category.is_active' id="splash-{{category.hex_color}}">
 					<div class="splash-scene-img" style="background-image: url('{{img_base + BASE + 'img/categories/hero/' + category.hex_color + '@2x.jpg'}}');"></div>
 					<div class="splash-scene-map"></div>
@@ -513,7 +542,7 @@
 			</footer>
 		</section>
 
-		<section init-wp="hiw, hiw_enter, hiw_enter2" wp-offset="106, 40%, 20%" class='splash-categories' id='splash-browse' anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw" anim-exit-up="university">
+		<section init-wp="hiw, hiw_enter, hiw_enter2" wp-offset="106, 40%, 20%" class='splash-categories' id='splash-browse' anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw" anim-exit-up="hiw_enter2">
 			<div id='how-it-works' class="main splash-postit ng-class:{'active':activeBrowseTabIndex===0}">
 				<header>
 					<h1 anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="400" class="how-it-works-header">{{::how_it_works.header}}</h1>

@@ -451,6 +451,7 @@ angular.module('uguru.util.controllers')
           $scope.page.scroll.section_index = 0;
           initHomePageWayPoint();
           initializePageAnimations();
+          initSlideBoxRemote();
           Waypoint.refreshAll();
         }, 250)
       }
@@ -471,6 +472,43 @@ angular.module('uguru.util.controllers')
         four: {visible:true, display:true, nested:{}, on_activate:null},
         five: {visible:true, display:true, nested:{}, on_activate:null},
         footer: {visible:true, display:true, nested:{}, on_activate:null}
+      }
+
+      function initSlideBoxRemote() {
+        $scope.topHomeSlider = {
+          next: function() {
+            $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').next()
+          },
+          previous: function() {
+            $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').previous()
+          },
+          toggleRemote: function() {
+            if ($scope.topHomeSlider.paused) {
+              $scope.topHomeSlider.play();
+            } else {
+              $scope.topHomeSlider.pause();
+            }
+          },
+          pause: function() {
+            $scope.topHomeSlider.paused =true;
+            $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').stop();
+          },
+          onChange: function($index) {
+            var ionSlides = document.querySelectorAll('.splash-scene ion-slide');
+            //remove all
+            for (var i = 0; i < ionSlides.length; i++) {
+              var indexSlide = ionSlides[i];
+              indexSlide.classList.remove('show-slide');
+            }
+            ionSlides[$index].classList.add('show-slide');
+          },
+          play: function() {
+            $scope.topHomeSlider.paused = false;
+            console.log('play clicked');
+            $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').start();
+          },
+          paused: false
+        }
       }
 
 
