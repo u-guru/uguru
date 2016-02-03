@@ -49,113 +49,140 @@ angular.module('uguru.directives')
       }
     };
 }).
-directive("animEnter", function () {
+directive("animEnterDown", ["AnimationService", "$timeout", function (AnimationService, $timeout) {
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
-              attr.$observe('animEnter', function() {
-                console.log('checking..');
-                if (attr.animEnter) {
-                  console.log('triggering animation for animEnter', element.id);
-                }
-           });
-        }
-      };
-}).
-directive("animEnterDown", function () {
-      return {
-          restrict: 'A',
-          link: function(scope, element, attr) {
-              attr.$observe('animEnterDown', function() {
-                console.log('checking..');
-                if (attr.animEnterDown) {
-                  console.log('triggering animation for animEnterDown', element);
-                }
-           });
-        }
-      };
-}).
-directive("animFirstEnterDown", ["AnimationService", function (AnimationService) {
-      return {
-          restrict: 'A',
-          link: function(scope, element, attr) {
-              attr.$observe('animFirstEnterDown', function() {
-                console.log('checking..');
-                if (attr.animFirstEnterDown && "animFirstEnterDownParent" in attr) {
-                  var children = element[0].querySelectorAll("[anim-first-enter-down-child]");
-                  if (children.length) {
-                    for (var i = 0; i < children.length; i++) {
-                      var indexChild = children[i];
-                      var animationClassToInject = indexChild.getAttribute('anim-first-enter-down-class');
-                      var animationDelay = indexChild.getAttribute('anim-first-enter-down-delay');
-                      var animationOnCompleteExpr = indexChild.getAttribute('anim-first-enter-down-on-complete');
-                      AnimationService.animateIn(indexChild, animationClassToInject, animationDelay);
-                    }
-                  }
-                }
 
-                // if (attr.animFirstEnterDown && "animFirstEnterDownChild" in attr) {
-                //   console.log('Child animate element with class', element.class, 'and args', attr.animFirstEnterDownClass, attr.animFirstEnterDownDelay);
-                // }
-           });
-        }
-      };
-}]).
-directive("animExit", function () {
-      return {
-          restrict: 'A',
-          link: function(scope, element, attr) {
-              attr.$observe('animExit', function() {
-                console.log('checking..');
-                if (attr.animExit) {
-                  console.log('triggering animation for animExit', element);
+            $timeout(function() {
+              scope.$watch('page.waypoints.' + attr.animEnterDown + '.activated', function(isActive) {
+                if (isActive && scope.page.waypoints[attr.animEnterDown].direction === 'down') {
+                  AnimationService.applyAnimateInDirective(element[0], 'enter-down');
                 }
-           });
-        }
-      };
-}).
-directive("animExitUp", ["AnimationService", function (AnimationService) {
-      return {
-          restrict: 'A',
-          scope: {value: "=animExitUp"},
-          link: function(scope, element, attr) {
-            console.log('this was called', scope.value);
-            scope.$watch('value', function(value) {
-                // scope.value = !value;
-
-                // console.log('set animExitUp from', scope.value, 'to value');
-                if (value) {
-                  console.log('animExitUp was recently set to', value, scope.$$watchers.length);
-                  scope.value = false;
-                  var children = element[0].querySelectorAll("[anim-exit-up-child]");
-                  if (children.length) {
-                    for (var i = 0; i < children.length; i++) {
-                      var indexChild = children[i];
-                      var animationClassToInject = indexChild.getAttribute('anim-exit-up-child-class');
-                      var animationDelay = indexChild.getAttribute('anim-exit-up-child-delay');
-                      var animationOnCompleteExpr = indexChild.getAttribute('anim-exit-up-complete');
-                      AnimationService.animateIn(indexChild, animationClassToInject, animationDelay);
-                    }
-                  }
-                } else {
-                  console.log('animExitUp was recently set to', value);
-                }
-            })
-
+              })
+            }, 100);
           }
       };
 }]).
-directive("animExitDown", function () {
+directive("animFirstEnterDown", ["AnimationService", "$timeout", function (AnimationService, $timeout) {
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
-              attr.$observe('animExitDown', function() {
-                console.log('checking..', scope.$$watchers.length);
-                if (attr.animExitDown) {
-                  console.log('triggering animation for animExitDown', element);
+            $timeout(function() {
+              scope.$watch('page.waypoints.' + attr.animFirstEnterDown + '.direction', function(isActive) {
+                var direction = scope.page.waypoints[attr.animFirstEnterDown].direction;
+                var firstTimeActivated = scope.page.waypoints[attr.animFirstEnterDown].firstTimeEnterActivated;
+                if (isActive &&  direction === 'down' && !firstTimeActivated) {
+                  scope.page.waypoints[attr.animFirstEnterDown].firstTimeEnterActivated = true;
+                  AnimationService.applyAnimateInDirective(element[0], 'first-enter-down');
                 }
-           });
-        }
+              })
+            }, 100);
+          }
       };
-})
+}]).
+directive("animExitUp", ["AnimationService", "$timeout", function (AnimationService, $timeout) {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+            $timeout(function() {
+              scope.$watch('page.waypoints.' + attr.animExitUp + '.direction', function(isActive) {
+                console.log('animExitUp is activated', attr.animExitUp);
+                if (isActive && scope.page.waypoints[attr.animExitUp].direction === 'up') {
+                  AnimationService.applyAnimateOutDirective(element[0], 'exit-up');
+                }
+              })
+            }, 100);
+          }
+      };
+}]).
+directive("animExitDown", ["AnimationService", "$timeout", function (AnimationService, $timeout) {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+            $timeout(function() {
+              scope.$watch('page.waypoints.' + attr.animExitDown + '.direction', function(isActive) {
+                console.log('animExitDown is activated', attr.animExitDown);
+                if (isActive && scope.page.waypoints[attr.animExitDown].direction === 'down') {
+                  AnimationService.applyAnimateOutDirective(element[0], 'exit-down');
+                }
+              })
+            }, 100);
+          }
+      };
+}]).
+directive("initWpParent", function () {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+              scope.page.waypoints.parent = '#' + element[0].id || '.' + element[0].class
+              console.log('wp parent declared', scope.page.waypoints.parent);
+          }
+      }
+}).
+directive("bindWp", ['$timeout', function ($timeout) {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+              $timeout(function() {
 
+                console.log('binding wp', attr.bindWp, attr.bindWpClass, 'page.waypoints.' + attr.bindWp + '.activated');
+                if (!attr.bindWpClass || !attr.bindWpClass.length) return;
+
+                var classNames = attr.bindWpClass.split(' ')
+
+                scope.$watch('page.waypoints.' + attr.bindWp + '.activated', function(isActive) {
+                  var direction = scope.page.waypoints[attr.bindWp].direction;
+                  for (var i = 0; i < classNames.length; i++) {
+                    var indexClassName = classNames[i];
+                    if (isActive && direction === 'down') {
+                      element[0].classList.add(indexClassName);
+                    } else if(isActive && direction === 'up'){
+                      element[0].classList.remove(indexClassName);
+                    }
+                  }
+                })
+            }, 200);
+          }
+      }
+}]).
+directive("initWp", ['$timeout', 'ScrollService', '$state', function ($timeout, ScrollService, $state) {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+              $timeout(function() {
+                //check empty or no parent declaration
+                if (!attr.initWp || !attr.initWp.length || !scope.page.waypoints.parent) return;
+
+                //check for multiple args
+
+                var elemHasManyWp = attr.initWp.split(', ');
+                var elemHasManyOffset = attr.wpOffset.split(', ');
+                var parentRef = scope.page.waypoints.parent;
+                var scopeRef = scope;
+                var stateName = $state.current.name;
+                var elemRef = '#' + element[0].id || '.' + element[0].class
+
+                if (elemHasManyWp.length > 1) {
+                  if (elemHasManyOffset.length !== elemHasManyWp.length) {
+                    console.log('ERROR: waypoint declaration for element', element[0].id || element[0].class, 'has more/less offsets declared than wp vars');
+                    return;
+                  }
+                  console.log('initializing', elemHasManyWp.length, 'wp at once')
+                  for (var i = 0; i < elemHasManyWp.length; i++) {
+                    var indexWpName = elemHasManyWp[i];
+                    var indexWpOffset = elemHasManyOffset[i];
+                    console.log('initialized', indexWpName);
+                    scope.page.waypoints[indexWpName] = {offset: indexWpOffset || 0, activated:false, direction: null};
+                    ScrollService.initScopedWaypoint(elemRef, parentRef, scopeRef, indexWpOffset, stateName, indexWpName);
+                  }
+                }
+                else if (scope.page.waypoints.parent && elemHasManyWp.length === 1) {
+
+                  scope.page.waypoints[attr.initWp] = {offset: attr.wpOffset || 0, activated:false, direction: null};
+                  ScrollService.initScopedWaypoint(elemRef, parentRef, scopeRef, attr.wpOffset, stateName, attr.initWp);
+                }
+              })
+          }
+      }
+}]);

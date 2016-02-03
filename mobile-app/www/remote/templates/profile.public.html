@@ -448,8 +448,8 @@
 					</div>
 				</li>
 
-				<!-- <li class='relative ng-class:{"full-xy":portfolio_item.visible, "min-height-modal-desktop":portfolio_item.visible}' ng-repeat='portfolio_item in user.academic_shop.portfolio_items' ng-if='!portfolio_item.archived'> -->
-				<li name='portfolio-item-course' ng-repeat='portfolio_item in ::user.academic_shop.portfolio_items' ng-if='::!portfolio_item.archived' class=" ng-class:{'disabled': ::portfolio_item.active == false}">
+
+				<li name='portfolio-item-course' ng-repeat='portfolio_item in ::user.academic_shop.portfolio_items' ng-if='::!portfolio_item.archived' class=" ng-class: ::{'disabled': portfolio_item.active == false}">
 					<div class="pf-check-container">
 						<span class="pf-price pf-price-right">${{::portfolio_item.hourly_price}}/{{::(portfolio_item.price_measure || 'hr')}}</span>
 						<div class="pf-checklist-item-bg" style="background-image: url({{::portfolio_item.featured_url}})">
@@ -470,7 +470,7 @@
 							<ul class="pf-rating" data-rating="{{::portfolio_item.rounded_avg_rating}}" data-half="{{::portfolio_item.half_stars}}" ng-include="::img_base + 'templates/svg/rating.html'"></ul>
 							<span class="pf-review-amt">{{::portfolio_item.avg_rating}}</span>
 						</span>
-						<div class="guru-popup hide ng-class:{'show': ::portfolio_item.showRemovePopup}">
+						<div class="guru-popup hide ng-class: ::{'show':portfolio_item.showRemovePopup}">
 							<div>
 								<div>
 									<h2>Remove {{::portfolio_item.course.short_name}}?</h2>

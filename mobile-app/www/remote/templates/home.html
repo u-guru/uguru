@@ -3,7 +3,7 @@
 <!-- <ion-view> -->
 	<!-- <ion-content overflow-scroll='true' class='full-xy'> -->
 <div class='full-xy'>
-	<div id='home-splash' class='splash-landing hs-view full-xy' style='height:calc(100% + 1px);'>
+	<div id='home-splash' class='splash-landing hs-view full-xy' style='height:calc(100% + 1px);' init-wp-parent>
 		<!-- START Home Page CTAs -->
 
 		<aside id='cta-modal-sidebar' class='splash-sidebar bg-charcoal ng-class: ::{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}' ng-include="::img_base + BASE + 'templates/one.university.sidebar.html'"> </aside>
@@ -28,7 +28,7 @@
 
 		<!-- END Home Page CTAS -->
 
-		<header class='splash-header fixed top-0' id='home-nav-header'  ng-class="{'bg-charcoal': page.header.showOnScrollNav.length, 'active': becomeGuruHeaderActive}">
+		<header class='splash-header fixed top-0' id='home-nav-header'  ng-class="{'active': becomeGuruHeaderActive}" bind-wp="university" bind-wp-class="bg-charcoal">
 			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
 
 			<div class="ugrid-3">
@@ -182,7 +182,7 @@
 			</footer>
 		</section>
 
-		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'>
+		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'  init-wp="university, university_exit" wp-offset="106, -100%">
 			<header>
 				<h1>Find Your University</h1>
 			</header>
@@ -310,7 +310,7 @@
 			</footer>
 		</section>
 
-		<section class='splash-categories' id='splash-browse' anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-exit-up="page.animations.waypoints.triggers.hiw.exitUp.activated" anim-first-enter-down="{{page.animations.waypoints.triggers.hiw.firstEnterDown}}">
+		<section init-wp="hiw, hiw_enter, hiw_enter2" wp-offset="106, 40%, 20%" class='splash-categories' id='splash-browse' anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw" anim-exit-up="university">
 			<div id='how-it-works' class="main splash-postit ng-class:{'active':activeBrowseTabIndex===0}">
 				<header>
 					<h1 anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="400" class="how-it-works-header">{{::how_it_works.header}}</h1>
@@ -363,8 +363,8 @@
 
 					<!--Desktop mode-->
 					<div ng-if='desktopMode' class='flex-wrap-center' style='overflow:hidden;'>
-						<ul>
-							<li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.top_half" anim-exit-up-child anim-exit-up-child-class="{{::['hinge', 'hinge', 'hinge'][$index]}}" anim-exit-up-child-delay="{{::[800, 500, 900][$index]}}" anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInDown', 'bounceInRight', 'bounceInLeft'][$index]}}" anim-first-enter-down-delay="{{::[800, 500, 900][$index]}}">
+						<ul anim-enter-down="hiw_enter" anim-enter-down-parent>
+							<li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.top_half" anim-exit-up-child anim-exit-up-class="{{::['hinge', 'hinge', 'hinge'][$index]}}" anim-exit-up-delay="{{::[800, 500, 900][$index]}}" anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInDown', 'bounceInRight', 'bounceInLeft'][$index]}}" anim-first-enter-down-delay="{{::[800, 500, 900][$index]}}"  anim-enter-down-child anim-enter-down-class="{{['tada', 'tada', 'tada'][$index]}}" anim-enter-down-delay="{{::[200, 400, 600][$index]}}">
 								<svg class="tape" viewBox="0 0 200 650">
 									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
 								</svg>

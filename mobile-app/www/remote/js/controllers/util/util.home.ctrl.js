@@ -36,8 +36,13 @@ angular.module('uguru.util.controllers')
 
       //enter == default
       $scope.page.animations = {hiw:{}, bg:{}, profiles: {}, categories:{}, university: {}, main: {}, waypoints: {triggers:{}, parentRef:"home-splash"}};
-
+      var navHeight = 70;
+      var sectionSneakHeight = 36;
       $scope.mapCenter = {latitude: 39.8282, longitude: -98.57};
+      $scope.page.heights = {
+        nav: navHeight,
+        sectionSneak: sectionSneakHeight
+      }
       $scope.mapBounds = {
         desktop: {
           northeast: {latitude: 20.70, longitude:-128.50},
@@ -48,6 +53,8 @@ angular.module('uguru.util.controllers')
           southwest: {latitude:48.85, longitude: -55.90}
         }
       }
+      $scope.page.waypoints = {};
+
       $scope.mapZoom = {
         initialMobile: 2,
         initialDesktop: 4,
@@ -70,10 +77,8 @@ angular.module('uguru.util.controllers')
       }
 
       //keys are IDs of the elements you want to activate based on horizontal scroll
-      var scrollOffset = pageNavbarHeight + sectionSneakHeight - 2;
-      var pageNavbarHeight = 70;
-      var sectionSneakHeight = 36;
-      var scrollOffset = pageNavbarHeight + sectionSneakHeight - 2;
+      var scrollOffset = navHeight + sectionSneakHeight - 2;
+      var scrollOffset = navHeight + sectionSneakHeight - 2;
       var animateOptions = ['enterUp', 'enterDown', 'firstEnterDown', 'exitUp', 'exitDown'];
       $scope.page.animations.waypoints.triggers = {
           main: {id:"splash-home", func:null},
@@ -87,10 +92,7 @@ angular.module('uguru.util.controllers')
               exitUp: {
                   offset:"50%",
                   activated: false
-              },
-              // editDown: {
-              //     offset:"-25%"
-              // }
+              }
             },
           bg: {id:"become-guru", func:scrollBecomeGuruCallback, offset:scrollOffset}
       }
@@ -642,7 +644,6 @@ angular.module('uguru.util.controllers')
 
           //if up animation
           if (upAnimations.indexOf(elemAnimateArg) > -1 && direction === 'up') {
-            console.log(elemAnimateArg, this.element, direction, $scope.page.animations.waypoints.triggers[sectionScope][animateOption].activated, $scope.$$watchers.length);
             $scope.page.animations.waypoints.triggers[sectionScope][animateOption].activated = true;
             $scope.$apply();
           }
@@ -653,6 +654,25 @@ angular.module('uguru.util.controllers')
         }
       }
 
+      var processDomWaypoints = function() {
+        var domWaypoints = document.querySelectorAll('[init-wp]');
+        if (!domWaypoints) return;
+        for (var i = 0; i < domWaypoints.length; i++) {
+          var indexElem = domWaypoints[i];
+
+          // get variable name
+          var indexElemDeclaration = indexElem.getAttribute('init-wp') || '';
+          if (!indexElemDeclaration) continue;
+
+          var indexElemOffset = indexElem.getAttribute('wp-offset') || 0;
+
+          console.log(indexElem.id, 'initialized has offset', indexElemOffset);
+        }
+      }
+
+      $scope.$on('$ionicView.loaded', function() {
+        processDomWaypoints();
+      })
 
       var initHomePageWayPoint = function() {
         var parentRef = $scope.page.animations.waypoints.parentRef;
@@ -668,7 +688,6 @@ angular.module('uguru.util.controllers')
                   func: returnWayPointFunction(wayPointDictKeys[i], animateOptions[j]),
                   offset: wayPointDict[indexKey][indexOption].offset
                 }
-                console.log('initializing waypoint for element with id', elemId, wayPointDictKeys[i], animateOptions[j]);
                 ScrollService.initWaypoint(elemId, parentRef, elemOptions);
               }
             }
@@ -680,37 +699,37 @@ angular.module('uguru.util.controllers')
       }
 
 
-      $timeout(function() {
-        var root = angular.element(document.getElementsByTagName('body'));
+      // $timeout(function() {
+      //   var root = angular.element(document.getElementsByTagName('body'));
 
-        var watchers = [];
+      //   var watchers = [];
 
-        var f = function (element) {
-            angular.forEach(['$scope', '$isolateScope'], function (scopeProperty) {
-                if (element.data() && element.data().hasOwnProperty(scopeProperty)) {
-                    angular.forEach(element.data()[scopeProperty].$$watchers, function (watcher) {
-                        console.log(element[0].id || element[0].class, element[0]);
-                        watchers.push(watcher);
-                    });
-                }
-            });
+      //   var f = function (element) {
+      //       angular.forEach(['$scope', '$isolateScope'], function (scopeProperty) {
+      //           if (element.data() && element.data().hasOwnProperty(scopeProperty)) {
+      //               angular.forEach(element.data()[scopeProperty].$$watchers, function (watcher) {
+      //                   console.log(element[0].id || element[0].class, element[0]);
+      //                   watchers.push(watcher);
+      //               });
+      //           }
+      //       });
 
-            angular.forEach(element.children(), function (childElement) {
-                f(angular.element(childElement));
-            });
-        };
+      //       angular.forEach(element.children(), function (childElement) {
+      //           f(angular.element(childElement));
+      //       });
+      //   };
 
-        f(root);
+      //   f(root);
 
-        // Remove duplicate watchers
-        var watchersWithoutDuplicates = [];
-        angular.forEach(watchers, function(item) {
-            if(watchersWithoutDuplicates.indexOf(item) < 0) {
-                 watchersWithoutDuplicates.push(item);
-            }
-        });
-        console.log(watchersWithoutDuplicates.length);
-      }, 10000);
+      //   // Remove duplicate watchers
+      //   var watchersWithoutDuplicates = [];
+      //   angular.forEach(watchers, function(item) {
+      //       if(watchersWithoutDuplicates.indexOf(item) < 0) {
+      //            watchersWithoutDuplicates.push(item);
+      //       }
+      //   });
+      //   console.log(watchersWithoutDuplicates.length);
+      // }, 10000);
 
       $scope.scrollNextSection = function() {
         if ($scope.page.scroll.section_index === 0) {
