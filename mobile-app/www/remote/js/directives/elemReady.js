@@ -129,13 +129,20 @@ directive("bindWp", ['$timeout', function ($timeout) {
                 console.log('binding wp', attr.bindWp, attr.bindWpClass, 'page.waypoints.' + attr.bindWp + '.activated');
                 if (!attr.bindWpClass || !attr.bindWpClass.length) return;
 
-                var classNames = attr.bindWpClass.split(' ')
+                var classNames = attr.bindWpClass.split(', ')
+                if (attr.bindWpDirection) {
+                  var directionNames = attr.bindWpDirection.split(', ')
+                } else {
+                  var directionNames = ["down", "down", "down"]
+                }
+
 
                 scope.$watch('page.waypoints.' + attr.bindWp + '.activated', function(isActive) {
                   var direction = scope.page.waypoints[attr.bindWp].direction;
                   for (var i = 0; i < classNames.length; i++) {
                     var indexClassName = classNames[i];
-                    if (isActive && direction === 'down') {
+                    var directionName = directionNames[i];
+                    if (isActive && direction === 'down' && directionName === direction) {
                       element[0].classList.add(indexClassName);
                     } else if(isActive && direction === 'up'){
                       element[0].classList.remove(indexClassName);
