@@ -64,11 +64,11 @@
 		</header>
 		<div id="courses-list" class="onboarding-list">
 			<ul class='list list-item-border no-icon'>
-				<li ng-click='removeStudentCourseAndUpdate(course, $index)' ng-repeat='course in user.student_courses' ng-if="user.student_courses.length > 0 && search_text.course.length === 0" class="course-item selected">
+				<li ng-click='removeSelectedStudentCourse(course, $index)' ng-repeat='course in user.student_courses' ng-if="user.student_courses.length > 0 && search_text.course.length === 0" class="course-item selected">
 					<input type="checkbox" checked ng-change='alwaysTrue = true;' ng-model='alwaysTrue'>
 					<!-- <span class="course-name txt-white">{{course.department_short}} {{course.code}}</span> -->
 					<label>
-						<span class="course-name">{{course.department_long}} {{course.code}}</span>
+						<span class="course-name">{{course.short_name}}</span>
 						<span class="course-title" ng-if="course.full_name">{{course.full_name}}</span>
 					</label>
 				</li>

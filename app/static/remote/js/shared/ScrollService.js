@@ -12,12 +12,15 @@ function ScrollService(LoadingService, $timeout) {
   var globalWaypointsDict = {};
   var mainWaypointContext;
   var currentWaypointContextElem;
+  var globalWPScopeRef = {};
   return {
     scrollTo:scrollTo,
     initStickyHeaderScroll: initStickyHeaderScroll,
+    initWaypoint, initWaypoint,
     initArrWaypoints: initArrWaypoints,
     mainWaypointContext: mainWaypointContext,
-    currentWaypointContextElem: currentWaypointContextElem
+    currentWaypointContextElem: currentWaypointContextElem,
+    initScopedWaypoint: initScopedWaypoint
   }
 
   function initStickyHeaderScroll(header_selector, start_element, inject_class, parent_container) {
@@ -41,8 +44,37 @@ function ScrollService(LoadingService, $timeout) {
   }
 
 
+      function returnWayPointFunction(wpName, stateName) {
+        return function(direction) {
+          //if up animation
+            globalWPScopeRef[stateName].page.waypoints[wpName].activated = true;
+            globalWPScopeRef[stateName].page.waypoints[wpName].direction = direction;
+            globalWPScopeRef[stateName].$apply();
+            console.log('activating ' + stateName + ' view', 'page.waypoints.' + wpName);
+            $timeout(function() {
+              globalWPScopeRef[stateName].page.waypoints[wpName].activated = false;
+            })
+          }
+      }
 
-  function initWaypoint(elemId, contextId, elemCb, elemOptions) {
+
+  function initScopedWaypoint(elemRef, contextRef, scopeRef, offset, stateName, wpName) {
+    console.log(elemRef, contextRef, scopeRef, offset);
+    if (!globalWPScopeRef[stateName]) {
+      globalWPScopeRef[stateName] = scopeRef;
+    }
+    triggerFunc = returnWayPointFunction(wpName, stateName);
+    var waypoint = new Waypoint({
+        element: document.querySelector(elemRef),
+        handler: triggerFunc || function() {},
+        enable:true,
+        context: document.querySelector(contextRef),
+        offset:offset
+      });
+    return waypoint;
+  }
+
+  function initWaypoint(elemId, contextId, elemOptions) {
     currentWaypointContextElem  = document.getElementById(contextId)
     var waypoint = new Waypoint({
         element: document.getElementById(elemId),
@@ -60,8 +92,7 @@ function ScrollService(LoadingService, $timeout) {
     for (var i = 0; i < wayPointElemIds.length; i++) {
       var wpElemId = wayPointElemIds[i];
       var wpElemOptions = wayPointsDict[wpElemId]
-      var wpElemCb = wpElemOptions.func;
-      globalWaypointsDict[wpElemId] = initWaypoint(wpElemId, parentContainerId, wpElemCb, wpElemOptions);
+      globalWaypointsDict[wpElemId] = initWaypoint(wpElemId, parentContainerId, wpElemOptions);
     }
 
   }

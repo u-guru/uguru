@@ -63,17 +63,17 @@ angular.module('uguru.util.controllers')
       }
       var cluster = {
         style: {
-          xl: {bg_color: '#d3242c', width:200, height:200, textSize: 14, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
-          l: {bg_color: '#F04F54', width:100, height:100, textSize: 13, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
-          m: {bg_color: '#E5753C', width:80, height:80, textSize: 12, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
-          s: {bg_color: '#F6C64E', width:60, height:60, textSize: 12, anchorText:[-2, -7], anchorIcon: [0,0], textColor: "#FFFFF", fontWeight: "bold"},
+          xl: {bg_color: '#d3242c', width:128, height:128, textSize: 18, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+          l: {bg_color: '#df433a', width:96, height:96, textSize: 16, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+          m: {bg_color: '#eb6248', width:84, height:84, textSize: 14, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+          s: {bg_color: '#E5753C', width:64, height:64, textSize: 12, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
         },
-        minClusterSize: 10, //direct correlation
+        minClusterSize: 4, //direct correlation
         zoomOnclick: true,
         maxZoom: 7,
-        gridSize: 90, //direct correlation
+        gridSize: 125, //direct correlation
         customClass: "university-svg-cluster",
-        styleThreshold: [15, 20, 25] //direct correlation
+        styleThreshold: [10,30,70,80] //direct correlation
       }
 
       //keys are IDs of the elements you want to activate based on horizontal scroll
@@ -1086,21 +1086,21 @@ angular.module('uguru.util.controllers')
           }).reverse();
           result_str = "";
           if (results.length === 1) {
-            return "<span>" + universityArr.length + "</span> <span> schools </span> <span> in " + results[0][0] + "</span>"
+            return "<span>" + universityArr.length + "</span> <span> schools </span> <span>" + results[0][0] + "</span>"
           }
           if (results.length === 2) {
-            return "<span>" + universityArr.length + "</span> <span>schools</span> <span> in " + results[0][0] + ", " + results[1][0] + '</span>';
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + '</span>';
           }
           if (results.length === 3 && universityArr.length >= cluster.styleThreshold[0]) {
-            return "<span>" + universityArr.length + "</span> <span>schools</span> <span> in " + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + '</span>';
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + '</span>';
           }
           if (results.length === 4 && universityArr.length >= cluster.styleThreshold[1]) {
-            return "<span>" + universityArr.length + "</span> <span>schools</span> <span> in " + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + ", " + results[3][0] + '</span>';
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + ", " + results[3][0] + '</span>';
           }
           if (results.length > 4 && universityArr.length >= cluster.styleThreshold[1]) {
-            return "<span>" + universityArr.length + "</span> <span>schools</span> <span> in " + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + ", " + results[3][0] + ", " + results[4][0] + '</span>';
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + ", " + results[3][0] + ", " + results[4][0] + '</span>';
           }
-          return "<span>" + universityArr.length + "</span> <span>schools</span> <span> in " + results[0][0] + ", " + results[1][0] + '</span>';
+          return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + '</span>';
           // if (results.length >=3 )
 
           //6,4,3,2

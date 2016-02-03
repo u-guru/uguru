@@ -345,7 +345,11 @@ angular.module('uguru.util.controllers')
                             } else {
                                 $scope.root.vars.university = university;
                                 $localstorage.setObject('university', university);
-                                AnimationService.flip('^.universities', {}, {universityId:university.id, universityObj:university});
+                                if ($scope.desktopMode) {
+                                    AnimationService.flip('^.desktop-login');
+                                } else {
+                                    AnimationService.flip('^.home');
+                                }
                             }
                         }, 1000)
 

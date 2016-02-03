@@ -92,7 +92,7 @@
 		content: "";
 		display: block;
 		position: absolute;
-		top: -($size * 2 - 1)+px;
+		top: -($size * 2)+px;
 		width: 0;
 		height: 0;
 		border: $size+px solid transparent;
@@ -110,7 +110,7 @@
 		content: "";
 		display: block;
 		position: absolute;
-		bottom: -($size * 2 - 1)+px;
+		bottom: -($size * 2)+px;
 		width: 0;
 		height: 0;
 		border: $size+px solid transparent;
