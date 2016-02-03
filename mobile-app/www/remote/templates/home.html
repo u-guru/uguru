@@ -18,11 +18,61 @@
 		<ion-pane id='cta-modal-apply' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/apply.html'"> </ion-pane>
 
 		<ion-pane id='cta-modal-FAQ' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index'>
-			<a id='guru-profile-cta-close' style='z-index:1000' class='cta-modal-close bg-white close-button high-z-index dark-modal-close full-x p20xy flex-right-center'>
-				<svg viewBox="0 0 100 100" class='m10xy' style='stroke:black;'>
-					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-				</svg>
-			</a>
+			<section id="faq">
+				<header>
+					<a id='guru-profile-cta-close' class='cta-modal-close close-button p15xy flex-right-center'>
+						<svg viewBox="0 0 100 100">
+							<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+						</svg>
+					</a>
+					<h1>Frequently Asked Questions</h1>
+					<div class="tab-bar slide">
+						<div>
+							<a class="active">All</a>
+							<a>Uguru Basics</a>
+							<a>My Account</a>
+							<a>Payment</a>
+							<a>Features</a>
+							<hr/>
+						</div>
+					</div>
+				</header>
+				<div class="main">
+					<dl>
+						<dt>
+							<span>This is a question.</span>
+							<a class='close-button'>
+								<svg viewBox="0 0 100 100">
+									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+								</svg>
+							</a>
+						</dt>
+						<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+					</dl>
+					<dl>
+						<dt>
+							<span>This is another question.</span>
+							<a class='close-button'>
+								<svg viewBox="0 0 100 100">
+									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+								</svg>
+							</a>
+						</dt>
+						<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+					</dl>
+					<dl>
+						<dt>
+							<span>This is a third question.</span>
+							<a class='close-button'>
+								<svg viewBox="0 0 100 100">
+									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+								</svg>
+							</a>
+						</dt>
+						<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+					</dl>
+				</div>
+			</section>
 			<!-- <iframe class='absolute top-0 left-0 full-xy' src="https://uguru.me/faq/"> </iframe> -->
 		</ion-pane>
 

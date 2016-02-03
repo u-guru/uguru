@@ -4555,6 +4555,14 @@ input[type=range] {
 						}
 					}
 				}
+				&:nth-child(5) {
+					&.active {
+						~ hr {
+							@include translate-x(660px);
+							border-color: white;
+						}
+					}
+				}
 
 				&:nth-child(1) {
 					&:hover, &:focus {
@@ -4599,6 +4607,19 @@ input[type=range] {
 					&:hover, &:focus {
 						~ hr {
 							@include translate-x(495px);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(5) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(660px);
 							border-color: rgba(white, .7);
 						}
 					}
