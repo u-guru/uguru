@@ -163,10 +163,12 @@
 			</svg>
 		</a>
 		<!-- </div> -->
-		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' bg-image="{{page.css.bg_banner}}" bg-image-has-loaded="page.load.sections.one.ready()" style='height:calc(100%);'>
+		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' style='height:calc(100%);'>
+
 			<ion-slide-box class='splash-scene' on-slide-changed="topHomeSlider.onChange($index)" show-pager='false' delegate-handle='splash-hero-home' does-continue="true">
-				<ion-slide id="splash-tech">
-					<div class="splash-scene-img" style="background-image: url('{{img_base + BASE + 'img/categories/hero/tech@2x.jpg'}}');"></div>
+
+				<ion-slide id="splash-tech" anim-on-show-parent anim-on-show="show-slide">
+					<div class="splash-scene-img" bg-image='{{img_base + BASE + "img/categories/hero/tech@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()"></div>
 					<!-- needs animation, currently set to .hide, desktop only -->
 					<div class="hide splash-scene-markers">
 						<span class="splash-marker positioned active">
@@ -192,10 +194,10 @@
 							    <path d="M537.767857,372.632184 C559.509223,372.632184 562.663665,390.672347 562.663665,390.672347 C564.292509,395.068443 561.807054,398.632184 557.109357,398.632184 L518.426358,398.632184 C513.729954,398.632184 511.061316,394.989619 512.87205,390.672347 C512.87205,390.672347 516.026492,372.632184 537.767857,372.632184 Z" class="mouse animate" fill="#FFFFFF"></path>
 							</svg>
 							<div class="splash-scene-type" style="top: 9.7%; left: 21.5%;">
-								<h1>My <u>Macbook</u> is <u>slow&nbsp;as&nbsp;hell</u>.</h1>
+								<h1>My <u class='home-splash-typewriter' typed-options="macbook, iphone, router">Macbook</u> is <br> <u class='home-splash-typewriter' typed-options="slow as $@($, dying hourly, not working">slow&nbsp;as&nbsp;hell</u>.</h1>
 							</div>
 						</a>
-						<div class="splash-scene-search">
+						<div class="opacity-0 splash-scene-search" anim-on-show-child anim-on-show-class="rubberBand">
 							<!-- <h1>At UC Berkeley</h1> -->
 							<h2>Searching among UC Berkeley Tech Gurus</h2>
 							<progress class="white-round height-10" max="100" value="75"></progress>
@@ -210,7 +212,7 @@
 							    <rect fill="#324347" x="41.7032967" y="102.695418" width="117.593407" height="71.1590296" rx="2"></rect>
 							</svg>
 							<div class="splash-scene-type">
-								<h1>My <u>Macbook</u> is <u>slow&nbsp;as&nbsp;hell</u>.</h1>
+								<h1>My <u class='home-splash-typewriter' typed-options="macbook, iphone, router">Macbook</u> is <u class='home-splash-typewriter' typed-options="slow as $@($, dying every 10 minutes, not working">slow&nbsp;as&nbsp;hell</u>.</h1>
 							</div>
 							<button disabled>At UC Berkeley</button>
 							<!-- needs animation, remove .active on second state -->
