@@ -168,7 +168,7 @@
 			<ion-slide-box class='splash-scene' on-slide-changed="topHomeSlider.onChange($index)" show-pager='false' delegate-handle='splash-hero-home' does-continue="true">
 
 				<ion-slide id="splash-tech" anim-on-show-parent anim-on-show="show-slide" anim-on-hide-parent anim-on-hide="show-slide">
-					<div class="splash-scene-img" bg-image='{{img_base + BASE + "img/categories/hero/tech@2x.jpg"}}' anim-on-hide-child anim-on-hide-class="slideOutUp" anim-on-hide-delay="3000" bg-image-has-loaded="page.load.sections.one.ready()"></div>
+					<div class="splash-scene-img" bg-image='{{img_base + BASE + "img/categories/hero/tech@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()"></div>
 					<!-- needs animation, currently set to .hide, desktop only -->
 					<div class="hide splash-scene-markers">
 						<span class="splash-marker positioned active">
@@ -178,9 +178,8 @@
 						</span>
 					</div>
 					<!-- needs animation, currently set to .hide -->
-					<div class="opacity-0 splash-scene-map" anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="3000">
-						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')">
-						</div>
+					<div class="hide splash-scene-map">
+						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')"></div>
 					</div>
 					<!-- needs animation, currently set to .hide -->
 					<div class="hide splash-scene-overlay"></div>
@@ -200,14 +199,16 @@
 						</a>
 						<div class="opacity-0 splash-scene-search"
 
-							anim-on-show-child
-							anim-on-show-class="lightSpeedIn"
+								anim-on-show-child
+								anim-on-show-class="bounceInUp, bounceInDown"
+								anim-on-show-delay="3000, 9000"
 
-							anim-on-hide-child
-							anim-on-hide-class="lightSpeedOut:keep"
-							anim-on-hide-delay="3000"
 
-							>
+								anim-on-hide-child
+								anim-on-hide-class="lightSpeedOut, lightSpeedOut"
+								anim-on-hide-delay="6000, 12000"
+
+						>
 							<!-- <h1>At UC Berkeley</h1> -->
 							<h2>Searching among UC Berkeley Tech Gurus</h2>
 							<progress class="white-round height-10" max="100" value="75"></progress>
@@ -437,13 +438,13 @@
 			</footer>
 		</section>
 
-		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'  init-wp="university, university_exit" wp-offset="106, -100%" ng-if='false'>
+		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'  init-wp="university, university_exit" wp-offset="106, -100%">
 			<header>
 				<h1>Find Your University</h1>
 			</header>
 
 			<!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
-			<div class='splash-map zoom-{{map.zoom}} ng-class:{"invisible":!mapHasRendered}' ng-if='false'>
+			<div class='splash-map zoom-{{map.zoom}} ng-class:{"invisible":!mapHasRendered}'>
 				<ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom">
 					<ui-gmap-markers models="map.markers" coords="'self'" options="'options'" fit="true" icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
 					</ui-gmap-markers>
@@ -554,7 +555,7 @@
 			</footer>
 		</section>
 
-		<section init-wp="hiw, hiw_enter, hiw_enter2" wp-offset="106, 40%, 20%" class='splash-categories' id='splash-browse' anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw" anim-exit-up="hiw_enter2" ng-if='false'>
+		<section init-wp="hiw, hiw_enter, hiw_enter2" wp-offset="106, 40%, 20%" class='splash-categories' id='splash-browse' anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw" anim-exit-up="hiw_enter2">
 			<div id='how-it-works' class="main splash-postit ng-class:{'active':activeBrowseTabIndex===0}">
 				<header>
 					<h1 anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="400" class="how-it-works-header">{{::how_it_works.header}}</h1>
@@ -792,7 +793,7 @@
 			</footer>
 		</section>
 
-		<section id='become-guru' class="splash-postit ng-class:{'hide':!page.load.sections.five.display}" ng-if='false'>
+		<section id='become-guru' class="splash-postit ng-class:{'hide':!page.load.sections.five.display}">
 			<header>
 				<h1 class="become-guru-header">{{::become_guru.header}}</h1>
 			</header>
