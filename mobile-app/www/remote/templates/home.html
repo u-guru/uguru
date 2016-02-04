@@ -167,8 +167,8 @@
 
 			<ion-slide-box class='splash-scene' on-slide-changed="topHomeSlider.onChange($index)" show-pager='false' delegate-handle='splash-hero-home' does-continue="true">
 
-				<ion-slide id="splash-tech" anim-on-show-parent anim-on-show="show-slide">
-					<div class="splash-scene-img" bg-image='{{img_base + BASE + "img/categories/hero/tech@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()"></div>
+				<ion-slide id="splash-tech" anim-on-show-parent anim-on-show="show-slide" anim-on-hide-parent anim-on-hide="show-slide">
+					<div class="splash-scene-img" bg-image='{{img_base + BASE + "img/categories/hero/tech@2x.jpg"}}' anim-on-hide-child anim-on-hide-class="slideOutUp" anim-on-hide-delay="3000" bg-image-has-loaded="page.load.sections.one.ready()"></div>
 					<!-- needs animation, currently set to .hide, desktop only -->
 					<div class="hide splash-scene-markers">
 						<span class="splash-marker positioned active">
@@ -178,8 +178,9 @@
 						</span>
 					</div>
 					<!-- needs animation, currently set to .hide -->
-					<div class="hide splash-scene-map">
-						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')"></div>
+					<div class="opacity-0 splash-scene-map" anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="3000">
+						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')">
+						</div>
 					</div>
 					<!-- needs animation, currently set to .hide -->
 					<div class="hide splash-scene-overlay"></div>
@@ -194,17 +195,26 @@
 							    <path d="M537.767857,372.632184 C559.509223,372.632184 562.663665,390.672347 562.663665,390.672347 C564.292509,395.068443 561.807054,398.632184 557.109357,398.632184 L518.426358,398.632184 C513.729954,398.632184 511.061316,394.989619 512.87205,390.672347 C512.87205,390.672347 516.026492,372.632184 537.767857,372.632184 Z" class="mouse animate" fill="#FFFFFF"></path>
 							</svg>
 							<div class="splash-scene-type" style="top: 9.7%; left: 21.5%;">
-								<h1>My <u class='home-splash-typewriter' typed-options="macbook, iphone, router">Macbook</u> is <br> <u class='home-splash-typewriter' typed-options="slow as $@($, dying hourly, not working">slow&nbsp;as&nbsp;hell</u>.</h1>
+								<h1>My <u class='home-splash-typewriter' typed-options="macbook, iphone, router">Macbook</u> is <br> <u class='home-splash-typewriter' typed-options="macbook, iphone, router">slow&nbsp;as&nbsp;hell</u>.</h1>
 							</div>
 						</a>
-						<div class="opacity-0 splash-scene-search" anim-on-show-child anim-on-show-class="rubberBand">
+						<div class="opacity-0 splash-scene-search"
+
+							anim-on-show-child
+							anim-on-show-class="lightSpeedIn"
+
+							anim-on-hide-child
+							anim-on-hide-class="lightSpeedOut:keep"
+							anim-on-hide-delay="3000"
+
+							>
 							<!-- <h1>At UC Berkeley</h1> -->
 							<h2>Searching among UC Berkeley Tech Gurus</h2>
 							<progress class="white-round height-10" max="100" value="75"></progress>
 						</div>
 					</div>
 					<!-- needs animation, set to .hide when guru message is visible, mobile only -->
-					<div class="splash-scene-prop-mobile">
+					<div class="splash-scene-prop-mobile" ng-if='!desktopMode'>
 						<div class="splash-scene-svg">
 							<svg viewBox="0 0 200 200">
 							    <path d="M127.322828,192.613397 C127.322828,192.613397 137.318677,191.705017 139.652923,192.613397 C141.98717,193.521777 135.871385,194.885081 136.849309,195.643636 C137.827232,196.402192 144.498794,196.372241 144.498794,196.372241" fill="none" stroke="#324347" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -427,13 +437,13 @@
 			</footer>
 		</section>
 
-		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'  init-wp="university, university_exit" wp-offset="106, -100%">
+		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'  init-wp="university, university_exit" wp-offset="106, -100%" ng-if='false'>
 			<header>
 				<h1>Find Your University</h1>
 			</header>
 
 			<!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
-			<div class='splash-map zoom-{{map.zoom}} ng-class:{"invisible":!mapHasRendered}'>
+			<div class='splash-map zoom-{{map.zoom}} ng-class:{"invisible":!mapHasRendered}' ng-if='false'>
 				<ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom">
 					<ui-gmap-markers models="map.markers" coords="'self'" options="'options'" fit="true" icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
 					</ui-gmap-markers>
@@ -544,7 +554,7 @@
 			</footer>
 		</section>
 
-		<section init-wp="hiw, hiw_enter, hiw_enter2" wp-offset="106, 40%, 20%" class='splash-categories' id='splash-browse' anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw" anim-exit-up="hiw_enter2">
+		<section init-wp="hiw, hiw_enter, hiw_enter2" wp-offset="106, 40%, 20%" class='splash-categories' id='splash-browse' anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw" anim-exit-up="hiw_enter2" ng-if='false'>
 			<div id='how-it-works' class="main splash-postit ng-class:{'active':activeBrowseTabIndex===0}">
 				<header>
 					<h1 anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="400" class="how-it-works-header">{{::how_it_works.header}}</h1>
@@ -782,7 +792,7 @@
 			</footer>
 		</section>
 
-		<section id='become-guru' class="splash-postit ng-class:{'hide':!page.load.sections.five.display}">
+		<section id='become-guru' class="splash-postit ng-class:{'hide':!page.load.sections.five.display}" ng-if='false'>
 			<header>
 				<h1 class="become-guru-header">{{::become_guru.header}}</h1>
 			</header>

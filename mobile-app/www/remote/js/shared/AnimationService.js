@@ -110,12 +110,12 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	          	var animationClassToInject = indexChild.getAttribute('anim-' + type +'-class');
 	          	var animationDelay = indexChild.getAttribute('anim-' + type +'-delay');
 	          	// var animationOnCompleteExpr = indexChild.getAttribute('anim-exit-up-complete');
-	          	animateIn(indexChild, animationClassToInject, animationDelay);
+	          	animateIn(indexChild, animationClassToInject, animationDelay || 0 );
         	}
       	} else {
 	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.attributes['anim-' + type + '-class'].value
 	          var animationDelay = element.attributes['anim-' + type + '-delay'] && element.attributes['anim-' + type + '-delay'].value;
-	          animateIn(element, animationClassToInject, animationDelay);
+	          animateIn(element, animationClassToInject, animationDelay || 0);
       	}
     }
 
