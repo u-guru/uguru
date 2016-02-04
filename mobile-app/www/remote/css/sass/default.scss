@@ -2127,7 +2127,7 @@ div[class*="progress"] {
 		&::-webkit-progress-value,
 		span {
 			@include round;
-			@include transition(.15s ease-in-out);
+			@include transition(1s ease-in);
 			display: block;
 			height: 100%;
 			overflow: hidden;

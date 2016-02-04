@@ -2739,11 +2739,11 @@ progress.white-round span,
 div[class*="progress"].white-round::-webkit-progress-value,
 div[class*="progress"].white-round span {
   border-radius: 1000px;
-  -webkit-transition: all 0.15s ease-in-out;
-  -o-transition: all 0.15s ease-in-out;
-  -ms-transition: all 0.15s ease-in-out;
-  -moz-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
+  -webkit-transition: all 1s ease-in;
+  -o-transition: all 1s ease-in;
+  -ms-transition: all 1s ease-in;
+  -moz-transition: all 1s ease-in;
+  transition: all 1s ease-in;
   display: block;
   height: 100%;
   overflow: hidden;
