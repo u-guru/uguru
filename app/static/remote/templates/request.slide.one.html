@@ -1,141 +1,34 @@
 <section id="request-one" class="request-slide">
 	<header>
-		<h1>Request</h1>
+		<h1>Request Details</h1>
 	</header>
 	<div class="request-content relative">
-		<div id="request-search" class="active ng-class:{'active': newRequest.active_step === 1 || newRequest.university, 'small': newRequest.university}" ng-controller="CoursesController">
-			<form>
-				<h1 class="request-step ng-class:{'small': newRequest.university}">
-					<b>
-						Step
-						<span>1</span>
-						<svg viewBox="0 0 100 100">
-						    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-						</svg>
-						<strong>&nbsp;&nbsp;Select a Course</strong>
-					</b>
-				</h1>
-				<div class="input-field">
-					<i class="material-icons prefix">
-						<svg viewBox="0 0 100 100">
-							<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
-						</svg>
-					</i>
-					<input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="courses" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, variations" ng-disabled="!courses || !courses.length" ng-model="search_text.course"/>
-					<label for="request-search-input">
-						<span ng-show='courses.length'>search {{courses.length}} popular {{university.school_casual_name}} courses</span>
-						<span ng-hide='courses.length'>search popular {{university.school_casual_name}} courses</span>
-					</label>
-					<a class="side-icon desktop-input-close-icon activated" ng-click="search_text.course = '';" ng-if="search_text.course.trim().length > 0">
-						<i class="icon ion-close-circled txt-white"></i>
-					</a>
+		<div class='full-xy'>
+			<div>
+				<h1 class='full-x text-center uppercase weight-600'> Select one of your courses  </h1>
+				<div class='full-x p20xy text-center'>
+					<ul class='desktop-card-list full-x flex-wrap-center'>
+						<li class='course-item p20xy m10x weight-400' ng-class='{"bg-cerise": request.course.id === course.id, "bg-slate-50": request.course.id !== course.id}' ng-click='request.course = course' ng-repeat='course in user.student_courses'>
+							{{course.short_name}}
+						</li>
+						<li class='course-item p20xy m10x bg-slate-50p weight-400' ng-click=''>
+							Add One
+						</li>
+					</ul>
 				</div>
-			</form>
-			<div class='course-none hide ng-class:{"show": search_text.course.length && !courses.length}'>
-				No results, try again?
+
 			</div>
-			<div class="course-list hide ng-class:{'show': search_text.course.length}">
-				<ul>
-					<li class="hide ng-class:{'show':course.short_name}" ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 9 track by course.id' ng-click='setCourseAndClearInput(course)'>
-						<a>
-							<span class="course-name">{{course.short_name}}</span>
-							<span class="course-title">{{course.full_name || course.title}}</span>
+			<div>
+				<h1 class='full-x text-center uppercase weight-600'> Description</h1>
+				<div class='full-x bg-smoke p20xy'>
+					<textarea class="full-x input-outline p20top " rows="4" ng-model='request.description' placeholder="Please provide as much detail as possible">{{!request.description}}</textarea>
+					<div class='tag-list p20xy'>
+						<a class="chip tag-selected" ng-click='removeTagFromRequest($index, tag)' ng-repeat="tag in newRequest.info.tags">
+							<span>&times;&nbsp;&nbsp;</span>
+							<span>{{tag.name}}</span>
 						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="request-type ng-class:{'active': newRequest.active_step === 2 || newRequest.type, 'small': newRequest.type}">
-			<h1 class="request-step ng-class:{'small': newRequest.type}">
-				<a ng-click='newRequest.active_step = 2;'>
-					<b>
-						Step
-						<span>2</span>
-						<svg viewBox="0 0 100 100">
-							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-						</svg>
-						<strong>&nbsp;&nbsp;Choose what kind of help you need</strong>
-					</b>
-				</a>
-			</h1>
-			<div>
-				<div class='request-urgency checkbox-container'>
-					<div>
-						<input type="checkbox" id='urgency-check' ng-model='request.user.is_urgent' name="urgency-check" />
-						<span>
-							<svg viewBox="0 0 100 100">
-								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-							</svg>
-						</span>
+						<input class='chip tag-add' ng-model='newRequest.info.empty_tag.name' ng-blur='addRequestTagAndInitEmpty($event, "blur")' ng-keyup="$event.keyCode == 13 && addRequestTagAndInitEmpty($event)" placeholder="+&nbsp;&nbsp;add a tag" size="{{newRequest.info.empty_tag.name.length || 10}}">
 					</div>
-					<label for="urgency-check">I need help urgently</label>
-				</div>
-				<ul>
-					<li>
-						<div class="radio-container">
-							<div>
-								<input type="radio" id="checkbox-container-1" name="checkbox-container" value='QA' ng-change='newRequest.active_step = 3;' ng-model='newRequest.type' />
-								<span>
-									<svg viewBox="0 0 100 100">
-										<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-									</svg>
-								</span>
-							</div>
-							<label for="checkbox-container-1">1:1 with a {{request.selected_university.name || request.selected_university.short_name}} guru</label>
-						</div>
-					</li>
-					<li>
-						<div class="radio-container">
-							<div>
-								<input type="radio" id="checkbox-container-2" name="checkbox-container" value='Essay' ng-change='newRequest.active_step = 3;' ng-model='newRequest.type' />
-								<span>
-									<svg viewBox="0 0 100 100">
-										<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-									</svg>
-								</span>
-							</div>
-							<label for="checkbox-container-2">Detailed essay feedback</label>
-						</div>
-					</li>
-					<li>
-						<div class="radio-container">
-							<div>
-								<input type="radio" id="checkbox-container-3" name="checkbox-container" value='Quick' ng-change='newRequest.active_step = 3;' ng-model='newRequest.type' />
-								<span>
-									<svg viewBox="0 0 100 100">
-										<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-									</svg>
-								</span>
-							</div>
-							<label for="checkbox-container-3">Quick question (&gt;10m)</label>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="request-desc ng-class:{'active': newRequest.active_step === 3}">
-			<h1 class="request-step">
-				<a ng-click='newRequest.active_step = 3;'>
-					<b>
-						Step
-						<span>3</span>
-						<svg viewBox="0 0 100 100">
-							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-						</svg>
-						<strong>&nbsp;&nbsp;Describe your situation</strong>
-					</b>
-				</a>
-			</h1>
-			<div>
-				<textarea class="input-outline" rows="4" ng-model='newRequest.info.description' placeholder="Please provide as much detail as possible"></textarea>
-				<div class='tag-list'>
-					<a class="chip tag-selected" ng-click='removeTagFromRequest($index, tag)' ng-repeat="tag in newRequest.info.tags">
-						<span>&times;&nbsp;&nbsp;</span>
-						<span>{{tag.name}}</span>
-					</a>
-					<input class='chip tag-add' ng-model='newRequest.info.empty_tag.name' ng-blur='addRequestTagAndInitEmpty($event, "blur")' ng-keyup="$event.keyCode == 13 && addRequestTagAndInitEmpty($event)" placeholder="+&nbsp;&nbsp;add a tag" size="{{newRequest.info.empty_tag.name.length || 10}}">
 				</div>
 				<div class='attachment-list'>
 					<ul>
@@ -194,104 +87,18 @@
 							</div>
 						</li>
 					</ul>
-				</div>
 			</div>
-		</div>
-
-		<div class="request-time ng-class:{'active': newRequest.active_step === 4}">
-			<h1 class="request-step">
-				<a ng-click='newRequest.active_step = 4;'>
-					<b>
-						Step
-						<span>4</span>
-						<svg viewBox="0 0 100 100">
-							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-						</svg>
-						<strong>&nbsp;&nbsp;Choose a time to meet</strong>
-					</b>
-				</a>
-			</h1>
-			<div>
-				<div class='request-form'>
-					<h2>I think I will need&nbsp;&nbsp;</h2>
-					<div class="custom-dropdown request-hours">
-						<div>
-							<span>{{request.user.time_estimate.hours}}</span>
-							<a ng-click='page.dropdowns.hour = !page.dropdowns.hour'>
-								<svg viewBox="0 0 100 100">
-									<path d="M14,32 L50,68 L86,32"></path>
-								</svg>
-							</a>
-						</div>
-						<ul class="ng-class:{'active':page.dropdowns.hour}">
-							<li ng-repeat="_ in maxHourArr" tabindex ng-click="setHourDropdownValue($index + 1)">{{$index + 1}}</li>
-						</ul>
-						<div class="dropdown-overlay hide ng-class:{'show':page.dropdowns.hour}"></div>
-					</div>
-					<h2>&nbsp;&nbsp;hr and&nbsp;&nbsp;</h2>
-					<div class="custom-dropdown request-minutes">
-						<div>
-							<span>{{request.user.time_estimate.minutes}}</span>
-							<a ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'>
-								<svg viewBox="0 0 100 100">
-									<path d="M14,32 L50,68 L86,32"></path>
-								</svg>
-							</a>
-						</div>
-						<ul class="ng-class:{'active':page.dropdowns.minutes}">
-							<li tabindex ng-click='setMinDropdownValue(15)'>15</li>
-							<li tabindex ng-click='setMinDropdownValue(30)'>30</li>
-							<li tabindex ng-click='setMinDropdownValue(45)'>45</li>
-						</ul>
-						<div class="dropdown-overlay" ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'></div>
-					</div>
-					<h2>&nbsp;&nbsp;min</h2>
-				</div>
-				<div ng-include="img_base + BASE + 'templates/request-cal.html'"></div>
-			</div>
-		</div>
-
-		<div class="request-location ng-class:{'active': newRequest.active_step === 5}">
-			<h1 class="request-step">
-				<a ng-click='newRequest.active_step = 5;'>
-					<b>
-						Step
-						<span>5</span>
-						<svg viewBox="0 0 100 100">
-							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-						</svg>
-						<strong>&nbsp;&nbsp;Choose a location</strong>
-					</b>
-				</a>
-			</h1>
-			<div>
-				<div class="request-loc map-box-container">
-					<!-- https://angular-ui.github.io/angular-google-maps/#!/api/google-map -->
-					<div class='map-box'>
-						<div class="map-search">
-							<input ng-keyup="queryAutocompleteFromSearch(page.dropdowns.location_search.input)" ng-model='page.dropdowns.location_search.input' type="text" placeholder="Search locations" />
+			<div class='request-urgency checkbox-container'>
+				<div>
+					<h1 class='full-x text-center uppercase weight-600'> Select one of your courses  </h1>
+					<div class='full-x flex-center'>
+						<input type="checkbox" id='urgency-check' ng-model='request.urgency' name="urgency-check"/>
+						<span>
 							<svg viewBox="0 0 100 100">
-							    <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 							</svg>
-						</div>
-
-						<ul class="map-results hide ng-class:{'show': page.dropdowns.location_search.predictions.length }">
-	                        <li ng-repeat='prediction in page.dropdowns.location_search.predictions'>
-	                            <div>
-	                                <div class="map-title">
-	                                    <h3><a target='_blank' href="{{prediction.website}}">{{prediction.name}}</a></h3>
-	                                    <div class="map-rating">
-	                                        <span>{{prediction.rating}}</span>
-	                                        <ul class="rating-stars" data-rating="{{prediction.rating}}" ng-include="img_base + 'templates/svg/rating.html'"></ul>
-	                                        <span>({{prediction.user_ratings_total}})</span>
-	                                    </div>
-	                                </div>
-	                                <span class="map-address">{{prediction.vicinity}}</span>
-	    							<span class="map-phone">{{prediction.international_phone_number}}</span>
-	                            </div>
-	                            <div style="background-image: url({{prediction.photos[0].getUrl}});"></div>
-	                        </li>
-						</ul>
+						</span>
+						<label for="urgency-check txt-slate">I need help urgently</label>
 					</div>
 	                <a ng-click='map.centerMarker.showWindow = !map.centerMarker.showWindow;' style='z-index:1000' class='absolute center-xy'>
 	                    <img src='https://uguru.me/static/remote/img/icons/marker.svg' />
@@ -465,6 +272,5 @@
 			</div>
 		</div>
 	</div>
-
 	<button>Next</button>
 </section>

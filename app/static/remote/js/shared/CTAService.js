@@ -66,13 +66,20 @@ function CTAService($timeout) {
 
   }
 
-  var initArrCTA = function() {
-
+  var initArrCTASharedParent = function(parentRef, elem_arr, cb_dict) {
+    if (!cb_dict) {
+      cb_dict = {};
+    }
+    if (!elem_arr || !elem_arr.length || !parentRef) return;
+    for (var i = 0; i < elem_arr.length; i++) {
+      var elemRef = elem_arr[i];
+      initSingleCTA(elemRef, parentRef, cb_dict[elemRef])
+    }
   }
 
   return {
     initSingleCTA:initSingleCTA,
-    initArrCTA:initArrCTA
+    initArrCTASharedParent:initArrCTASharedParent
   }
 
 }

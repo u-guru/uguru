@@ -55,21 +55,10 @@ angular.module('uguru.util.controllers')
       $scope.toggleMinDropdown = !$scope.toggleMinDropdown;
     }
 
-    $scope.addRequestTagAndInitEmpty = function() {
-      var emptyTagVal = $scope.request.info.empty_tag.name;
-      if (checkPropertyInArrayForDupes($scope.request.info.tags, emptyTagVal, 'name')) {
-        $scope.request.info.tags.push(JSON.parse(JSON.stringify($scope.request.info.empty_tag)))
-        $scope.request.info.empty_tag = {name: ''};
-      } else {
-        LoadingService.showMsg(emptyTagVal + ' already exists as a tag', 2000);
-        $scope.request.info.empty_tag = {name: ''};
-      }
-    }
-
     var updateCoursesToScope = function(guru_courses) {
         $scope.courses = guru_courses;
     }
-    $scope.courses = University.courses || $scope.getCoursesForUniversityId($scope.user.university_id, updateCoursesToScope) || [];
+
 
 
 

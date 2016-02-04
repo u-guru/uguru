@@ -15,74 +15,14 @@ angular.module('uguru.student.controllers', [])
     '$ionicViewSwitcher',
     'AnimationService',
     '$localstorage',
+    'TourService',
+    'CTAService',
     function($scope, $state, $ionicSideMenuDelegate, $ionicSlideBoxDelegate,
         DeviceService, $timeout, $ionicModal, GMapService, LoadingService,
-        $ionicViewSwitcher, AnimationService, $localstorage) {
-
-        var CTA_PARENT_DICT = {
-            'cta-box-student-request':'#desktop-student-home',
-            'cta-box-content': '#desktop-student-home',
-            'cta-box-student-courses': '#desktop-student-home'
-        }
-
-        var CTA_OPTIONS = {
-            duration:0.5,
-            extraTransitionDuration:1
-        }
-
-        $scope.launchCtaDict = {};
-        $scope.closeCTADict = {};
-
-        function initCTA() {
-
-            function getModalCTAElemID(cta_box_elem) {
-                elem_id = cta_box_elem.id;
-                modalID = elem_id.replace('box', 'modal');
-                return modalID;
-            }
-
-            function addEventListenerToCTABox(box_elem, modal_elem_id, index) {
-                $scope.launchCtaDict[box_elem.id] = function() {
-                    var modal_elem = document.querySelector('#' + modal_elem_id);
-
-                    var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
-
-                        $timeout(function() {
-                            modal_elem.classList.add('show');
-                            $ionicSlideBoxDelegate.update();
-
-                        }, 200);
-
-                        if (box_elem.id === 'cta-box-student-request') {
-                        }
-
-                          var close_icon = modal_elem.querySelector('.cta-modal-close');
-                          if (close_icon) {
-                              close_icon.addEventListener('click', function() {
-
-                              //add callbacks here
-                              modal_elem.classList.remove('show');
-                              closeCTAModal();
-                            });
-                          }
-                    }, CTA_PARENT_DICT[box_elem.id]);
-
-                  }
-
-                box_elem.addEventListener('click', $scope.launchCtaDict[box_elem.id]);
-            }
-
-            var allCTABoxes = document.querySelectorAll('.cta-box') || [];
-            var allCTAModels = document.querySelectorAll('.cta-modal') || [];
-            for (var i = 0; i < allCTABoxes.length; i++) {
-                var indexCTABox = allCTABoxes[i];
-                var indexCTAModalID = getModalCTAElemID(indexCTABox);
+        $ionicViewSwitcher, AnimationService, $localstorage, TourService, CTAService) {
 
 
-                addEventListenerToCTABox(indexCTABox, indexCTAModalID, i)
-
-            }
-        }
+        $scope.user.is_a_guru = false;
 
         function initStudentHomeModals() {
             $ionicModal.fromTemplateUrl(BASE + 'templates/student.courses.modal.html', {
@@ -100,9 +40,9 @@ angular.module('uguru.student.controllers', [])
             });
         }
 
-        $ionicSideMenuDelegate.canDragContent(false);
 
-        $scope.user.is_a_guru = false;
+
+
 
 
         var setStatusBarDarkText = function() {
@@ -143,8 +83,6 @@ angular.module('uguru.student.controllers', [])
                 $ionicViewSwitcher.nextDirection('forward');
                 $state.go('^.become-guru')
             }
-
-
         }
 
         $scope.goToDesktopBecomeGuru = function() {
@@ -167,46 +105,38 @@ angular.module('uguru.student.controllers', [])
             PopupService.open('welcomeStudent');
         }
 
-        var checkOnboardingStatus = function() {
-
-            var appOnboardingObj = $localstorage.getObject('appOnboarding');
-
-            if (!appOnboardingObj || appOnboardingObj === {} || !appOnboardingObj.studentWelcome) {
-                appOnboardingObj = {
-                    studentWelcome: true
-                }
-                $scope.launchWelcomeStudentPopup();
-                $localstorage.setObject('appOnboarding', appOnboardingObj);
-            }
-        }
 
 
-        $scope.initStudentHomeMap = function() {
-            var mapRenderCallback = function() {
-                $scope.universityMapRendered = true;
-            }
-            // MapService.initStudentHomeMap($scope, mapRenderCallback);
-        }
-
-        $scope.$on('$ionicView.loaded', function() {
-            $ionicSlideBoxDelegate.update();
-            $scope.root.vars.guru_mode = false;
-            if (!$scope.mapInitialized) {
-                console.log('initializing map from load');
-                $scope.mapInitialized = true;
-            }
-
+        $scope.$on('$ionicView.afterEnter', function() {
             if ($scope.desktopMode) {
-                $timeout(function() {
-                    initCTA();
-                }, 3000)
-            } else {
-                initStudentHomeModals();
+                //initialize CTAS
+                initAllCTAS();
             }
-
         })
 
 
+        function initAllCTAS() {
+            //ngAnimate
+            var parentRef = '#desktop-student-home'
+            var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-student-request'];
+            var updateSlideBoxContainer = function() {
+                $ionicSlideBoxDelegate.update();
+            }
+            var cbOptions = {'#cta-box-student-request': updateSlideBoxContainer};
+            $timeout(function() {
+                CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
+
+            })
+            //request form
+            //student files
+            //messages + empty state
+            //payments
+            //files
+            //courses
+            //support
+            //loaders
+        }
+        //mobile app specific
 
         $scope.$on('$ionicView.afterLeave', function() {
             if (DeviceService.isIOSDevice()) {
@@ -226,7 +156,6 @@ angular.module('uguru.student.controllers', [])
 
         $scope.$on('$ionicView.enter', function() {
             $ionicSlideBoxDelegate.update();
-            // $scope.studentRequestModal.show();
         });
     }
 
