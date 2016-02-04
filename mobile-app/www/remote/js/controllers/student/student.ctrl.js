@@ -16,9 +16,10 @@ angular.module('uguru.student.controllers', [])
     'AnimationService',
     '$localstorage',
     'TourService',
+    'CTAService',
     function($scope, $state, $ionicSideMenuDelegate, $ionicSlideBoxDelegate,
         DeviceService, $timeout, $ionicModal, GMapService, LoadingService,
-        $ionicViewSwitcher, AnimationService, $localstorage, TourService) {
+        $ionicViewSwitcher, AnimationService, $localstorage, TourService, CTAService) {
 
 
         $scope.user.is_a_guru = false;
@@ -106,7 +107,7 @@ angular.module('uguru.student.controllers', [])
 
 
 
-        $scope.$on('$ionicView.loaded', function() {
+        $scope.$on('$ionicView.afterEnter', function() {
             if ($scope.desktopMode) {
                 //initialize CTAS
                 initAllCTAS();
@@ -116,6 +117,16 @@ angular.module('uguru.student.controllers', [])
 
         function initAllCTAS() {
             //ngAnimate
+            var parentRef = '#desktop-student-home'
+            var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-student-request'];
+            var updateSlideBoxContainer = function() {
+                $ionicSlideBoxDelegate.update();
+            }
+            var cbOptions = {'#cta-box-student-request': updateSlideBoxContainer};
+            $timeout(function() {
+                CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
+
+            })
             //request form
             //student files
             //messages + empty state
