@@ -445,7 +445,8 @@ angular.module('uguru.util.controllers')
 
       //Scope var declarations
       var onSectionOneLoad = function() {
-        initUniversityTypeWriter();
+        // initUniversityTypeWriter();
+
         $timeout(function() {
           $scope.root.loader.body.hide = true;
           $scope.page.scroll.section_index = 0;
@@ -454,6 +455,12 @@ angular.module('uguru.util.controllers')
           initSlideBoxRemote();
           Waypoint.refreshAll();
         }, 250)
+        $timeout(function() {
+          var ionSlideOne = document.querySelector('.splash-scene ion-slide');
+          ionSlideOne.classList.add('show-slide');
+          initTypeWritersTopSection();
+        }, 400)
+
       }
       $scope.university = {}
       // $scope.page = {dropdowns: {}, css:{},predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
@@ -596,6 +603,19 @@ angular.module('uguru.util.controllers')
       // render page functions
       var initUniversityTypeWriter = function() {
         TypedService.initTypedTicker('university-typed-writer', ["CS10 Exam Prep", "MCAT Concepts", "Google Interview Help", "Dirty Laundry"]);
+      }
+
+      function initTypeWritersTopSection() {
+        var typeWriterElems = document.querySelectorAll('.home-splash-typewriter');
+        if (typeWriterElems.length) {
+          for (var i = 0; i < typeWriterElems.length; i++) {
+            var indexTypeWriter = typeWriterElems[i];
+            indexTypeWriter.id = 'typed-writer-' + i;
+            var dataOptions = indexTypeWriter.getAttribute("typed-options").split(", ");
+            console.log(indexTypeWriter.id, dataOptions);
+            TypedService.initTypedTicker(indexTypeWriter.id, dataOptions);
+          }
+        }
       }
 
 

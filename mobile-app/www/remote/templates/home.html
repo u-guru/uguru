@@ -163,67 +163,63 @@
 			</svg>
 		</a>
 		<!-- </div> -->
-		
 		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' bg-image="{{page.css.bg_banner}}" bg-image-has-loaded="page.load.sections.one.ready()" style='height:calc(100%);' init-wp='hero' wp-offset="0" anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hero" anim-exit-up="hero">
-			<div class="bg-charcoal full-xy">
-				<ion-slide-box class='splash-scene' on-slide-changed="topHomeSlider.onChange($index)" show-pager='false' delegate-handle='splash-hero-home' does-continue="true">
-					<ion-slide id="splash-tech">
-						<div class="splash-scene-img" style="background-image: url('{{img_base + BASE + 'img/categories/hero/tech@2x.jpg'}}');" anim-first-enter-down-child anim-first-enter-down-class="maksldmaslkd:keep" anim-first-enter-down-delay="2500"></div>
-						<!-- needs animation, currently set to .hide, desktop only -->
-						<div class="hide splash-scene-markers">
-							<span class="splash-marker positioned active">
-								<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
-								<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
-								<span class="splash-marker-label">Rachel's Location</span>
-							</span>
-						</div>
-						<!-- needs animation, currently set to .hide -->
-						<div class="hide splash-scene-map">
-							<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')"></div>
-						</div>
-						<!-- needs animation, currently set to .hide -->
-						<div class="hide splash-scene-overlay"></div>
-						<!-- needs animation, remove .active to shrink, desktop only -->
-						<div class="splash-scene-prop-desktop active">
-							<a class="splash-scene-svg">
-								<svg viewBox="0 0 700 400">
-								    <path d="M449.722656,372.595703 C449.722656,372.595703 486.69917,369.225613 495.333984,372.595703 C503.968799,375.965793 481.345368,381.023649 484.962891,383.837891 C488.580413,386.652132 513.259766,386.541016 513.259766,386.541016" class="cord" fill="none" stroke="#324347" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-								    <rect class="stand" fill="#D8D8D8" x="305" y="327" width="90" height="43"></rect>
-								    <path d="M455.1704,376.1398 C451.6704,372.6128 444.8014,369.9998 439.8324,369.9998 L262.1664,369.9998 C257.2014,369.9998 250.3314,372.6108 246.8294,376.1398 L229.7384,393.4848 C226.2384,397.0118 227.4294,399.9998 232.4044,399.9998 L469.5944,399.9998 C474.5684,399.9998 475.7634,397.0138 472.2614,393.4848 L455.1704,376.1398 Z M569.000726,29 C573.970888,29 578,33.0290817 578,37.9997359 L578,318.000264 C578,322.970681 573.962479,327 569.000726,327 L131.999274,327 C127.029112,327 123,322.970918 123,318.000264 L123,37.9997359 C123,33.029319 127.037521,29 131.999274,29 L569.000726,29 Z M133,48.0064028 C133,43.0323039 137.02856,39 141.998196,39 L559.001804,39 C563.97137,39 568,43.0274856 568,48.0064028 L568,279 L133,279 L133,48.0064028 Z" class="main" fill="#FFFFFF"></path>
-								    <rect class="screen" fill="#324347" x="133" y="39" width="435" height="240" rx="9"></rect>
-								    <path d="M537.767857,372.632184 C559.509223,372.632184 562.663665,390.672347 562.663665,390.672347 C564.292509,395.068443 561.807054,398.632184 557.109357,398.632184 L518.426358,398.632184 C513.729954,398.632184 511.061316,394.989619 512.87205,390.672347 C512.87205,390.672347 516.026492,372.632184 537.767857,372.632184 Z" class="mouse animate" fill="#FFFFFF"></path>
-								</svg>
-								<div class="splash-scene-type" style="top: 9.7%; left: 21.5%;">
-									<h1>My <u>Macbook</u> is <u>slow&nbsp;as&nbsp;hell</u>.</h1>
-								</div>
-							</a>
-							<div class="splash-scene-search">
-								<div class="absolute"><h1 anim-first-enter-down-child anim-first-enter-down-class="bounceOutUp:keep" anim-first-enter-down-delay="2000">At UC Berkeley</h1></div>
-								<div class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceInUp:keep" anim-first-enter-down-delay="2000">
-									<h2 anim-first-enter-down-child anim-first-enter-down-class="fadeOut:keep" anim-first-enter-down-delay="5500">Searching among UC Berkeley Tech Gurus</h2>
-									<div class="progress white-round height-10 m10top" anim-first-enter-down-child anim-first-enter-down-class="fadeOut:keep" anim-first-enter-down-delay="5500">
-										<span style="width: 15%" anim-first-enter-down-child anim-first-enter-down-class="progress-bar:keep" anim-first-enter-down-delay="2500"></span>
-									</div>
-								</div>
-								<div class="absolute opacity-0" anim-first-enter-down-child anim-first-enter-down-class="fadeIn:keep" anim-first-enter-down-delay="5500">
-									<h1>4 UC Berkeley Tech Gurus Found</h1>
+
+			<ion-slide-box class='splash-scene' on-slide-changed="topHomeSlider.onChange($index)" show-pager='false' delegate-handle='splash-hero-home' does-continue="true">
+
+				<ion-slide id="splash-tech" anim-on-show-parent anim-on-hide-parent anim-on-show="show-slide">
+					<div class="splash-scene-img" style="background-image: url('{{img_base + BASE + 'img/categories/hero/tech@2x.jpg'}}');" anim-first-enter-down-child anim-first-enter-down-class="slideOutDown:keep" anim-first-enter-down-delay="2500"></div>
+					<!-- needs animation, currently set to .hide, desktop only -->
+					<div class="hide splash-scene-markers">
+						<span class="splash-marker positioned active">
+							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
+							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+							<span class="splash-marker-label">Rachel's Location</span>
+						</span>
+					</div>
+					<!-- needs animation, currently set to .hide -->
+					<div class="hide splash-scene-map">
+						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')"></div>
+					</div>
+					<!-- needs animation, currently set to .hide -->
+					<div class="hide splash-scene-overlay"></div>
+					<!-- needs animation, remove .active to shrink, desktop only -->
+					<div class="splash-scene-prop-desktop ng-class:{'active':desktopMode}">
+						<a class="splash-scene-svg">
+							<svg viewBox="0 0 700 400">
+							    <path d="M449.722656,372.595703 C449.722656,372.595703 486.69917,369.225613 495.333984,372.595703 C503.968799,375.965793 481.345368,381.023649 484.962891,383.837891 C488.580413,386.652132 513.259766,386.541016 513.259766,386.541016" class="cord" fill="none" stroke="#324347" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+							    <rect class="stand" fill="#D8D8D8" x="305" y="327" width="90" height="43"></rect>
+							    <path d="M455.1704,376.1398 C451.6704,372.6128 444.8014,369.9998 439.8324,369.9998 L262.1664,369.9998 C257.2014,369.9998 250.3314,372.6108 246.8294,376.1398 L229.7384,393.4848 C226.2384,397.0118 227.4294,399.9998 232.4044,399.9998 L469.5944,399.9998 C474.5684,399.9998 475.7634,397.0138 472.2614,393.4848 L455.1704,376.1398 Z M569.000726,29 C573.970888,29 578,33.0290817 578,37.9997359 L578,318.000264 C578,322.970681 573.962479,327 569.000726,327 L131.999274,327 C127.029112,327 123,322.970918 123,318.000264 L123,37.9997359 C123,33.029319 127.037521,29 131.999274,29 L569.000726,29 Z M133,48.0064028 C133,43.0323039 137.02856,39 141.998196,39 L559.001804,39 C563.97137,39 568,43.0274856 568,48.0064028 L568,279 L133,279 L133,48.0064028 Z" class="main" fill="#FFFFFF"></path>
+							    <rect class="screen" fill="#324347" x="133" y="39" width="435" height="240" rx="9"></rect>
+							    <path d="M537.767857,372.632184 C559.509223,372.632184 562.663665,390.672347 562.663665,390.672347 C564.292509,395.068443 561.807054,398.632184 557.109357,398.632184 L518.426358,398.632184 C513.729954,398.632184 511.061316,394.989619 512.87205,390.672347 C512.87205,390.672347 516.026492,372.632184 537.767857,372.632184 Z" class="mouse animate" fill="#FFFFFF"></path>
+							</svg>
+							<div class="splash-scene-type" style="top: 9.7%; left: 21.5%;">
+								<h1>My <u class='home-splash-typewriter' typed-options="macbook, iphone, router">Macbook</u> is <br> <u class='home-splash-typewriter' typed-options="slow as $@($, dying hourly, not working">slow&nbsp;as&nbsp;hell</u>.</h1>
+							</div>
+						</a>
+						<div class="splash-scene-search">
+							<div class="absolute"><h1 anim-on-hide-child anim-on-show-class="bounceOutUp" anim-on-hide-delay="2000">At UC Berkeley</h1></div>
+							<div class="opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="2000">
+								<h2 anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-hide-delay="5500">Searching among UC Berkeley Tech Gurus</h2>
+								<div class="progress white-round height-10 m10top" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-hide-delay="5500">
+									<span style="width: 15%" anim-on-show-child anim-on-show-class="progress-bar:keep" anim-on-show-delay="2500"></span>
 								</div>
 							</div>
+							<div class="absolute opacity-0" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="5500">
+								<h1>4 UC Berkeley Tech Gurus Found</h1>
+							</div>
 						</div>
-						<!-- needs animation, set to .hide when guru message is visible, mobile only -->
-						<div class="splash-scene-prop-mobile">
-							<div class="splash-scene-svg">
-								<svg viewBox="0 0 200 200">
-								    <path d="M127.322828,192.613397 C127.322828,192.613397 137.318677,191.705017 139.652923,192.613397 C141.98717,193.521777 135.871385,194.885081 136.849309,195.643636 C137.827232,196.402192 144.498794,196.372241 144.498794,196.372241" fill="none" stroke="#324347" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"></path>
-								    <path d="M128.795515,193.568679 C127.849361,192.618005 125.992466,191.913693 124.649198,191.913693 L76.620807,191.913693 C75.2786202,191.913693 73.4214554,192.617466 72.4747609,193.568679 L67.8545565,198.243881 C66.9084026,199.194555 67.2303653,199.999946 68.5752554,199.999946 L132.69475,199.999946 C134.03937,199.999946 134.362414,199.195094 133.415719,198.243881 L128.795515,193.568679 Z M151.124058,192.62323 C157.001394,192.62323 157.85642,197.49058 157.85642,197.49058 C158.295482,198.672876 157.616641,199.631316 156.364926,199.631316 L145.88319,199.631316 C144.620399,199.631316 143.9018,198.656872 144.391697,197.49058 C144.391697,197.49058 145.246722,192.62323 151.124058,192.62323 Z M159.570677,100 C160.912355,100 162,101.089774 162,102.425805 L162,177.897645 C162,179.23738 160.917951,180.32345 159.570677,180.32345 L41.4293227,180.32345 C40.0876448,180.32345 39,179.233676 39,177.897645 L39,102.425805 C39,101.08607 40.0820494,100 41.4293227,100 L159.570677,100 Z M41.7032967,105.113278 C41.7032967,103.777931 42.7923359,102.695418 44.1324096,102.695418 L156.86759,102.695418 C158.209152,102.695418 159.296703,103.791091 159.296703,105.113278 L159.296703,167.385445 L41.7032967,167.385445 L41.7032967,105.113278 Z M88.2,180.512439 L112.52967,180.512439 L112.52967,191.833194 L88.2,191.833194 L88.2,180.512439 Z" fill="#FFFFFF"></path>
-								    <rect fill="#324347" x="41.7032967" y="102.695418" width="117.593407" height="71.1590296" rx="2"></rect>
-								</svg>
-								<div class="splash-scene-type">
-									<h1>My <u>Macbook</u> is <u>slow&nbsp;as&nbsp;hell</u>.</h1>
-								</div>
-								<button disabled>At UC Berkeley</button>
-								<!-- needs animation, remove .active on second state -->
-								<a class="active pause" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a>
+					</div>
+					<!-- needs animation, set to .hide when guru message is visible, mobile only -->
+					<div class="splash-scene-prop-mobile">
+						<div class="splash-scene-svg">
+							<svg viewBox="0 0 200 200">
+							    <path d="M127.322828,192.613397 C127.322828,192.613397 137.318677,191.705017 139.652923,192.613397 C141.98717,193.521777 135.871385,194.885081 136.849309,195.643636 C137.827232,196.402192 144.498794,196.372241 144.498794,196.372241" fill="none" stroke="#324347" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"></path>
+							    <path d="M128.795515,193.568679 C127.849361,192.618005 125.992466,191.913693 124.649198,191.913693 L76.620807,191.913693 C75.2786202,191.913693 73.4214554,192.617466 72.4747609,193.568679 L67.8545565,198.243881 C66.9084026,199.194555 67.2303653,199.999946 68.5752554,199.999946 L132.69475,199.999946 C134.03937,199.999946 134.362414,199.195094 133.415719,198.243881 L128.795515,193.568679 Z M151.124058,192.62323 C157.001394,192.62323 157.85642,197.49058 157.85642,197.49058 C158.295482,198.672876 157.616641,199.631316 156.364926,199.631316 L145.88319,199.631316 C144.620399,199.631316 143.9018,198.656872 144.391697,197.49058 C144.391697,197.49058 145.246722,192.62323 151.124058,192.62323 Z M159.570677,100 C160.912355,100 162,101.089774 162,102.425805 L162,177.897645 C162,179.23738 160.917951,180.32345 159.570677,180.32345 L41.4293227,180.32345 C40.0876448,180.32345 39,179.233676 39,177.897645 L39,102.425805 C39,101.08607 40.0820494,100 41.4293227,100 L159.570677,100 Z M41.7032967,105.113278 C41.7032967,103.777931 42.7923359,102.695418 44.1324096,102.695418 L156.86759,102.695418 C158.209152,102.695418 159.296703,103.791091 159.296703,105.113278 L159.296703,167.385445 L41.7032967,167.385445 L41.7032967,105.113278 Z M88.2,180.512439 L112.52967,180.512439 L112.52967,191.833194 L88.2,191.833194 L88.2,180.512439 Z" fill="#FFFFFF"></path>
+							    <rect fill="#324347" x="41.7032967" y="102.695418" width="117.593407" height="71.1590296" rx="2"></rect>
+							</svg>
+							<div class="splash-scene-type">
+								<h1>My <u class='home-splash-typewriter' typed-options="macbook, iphone, router">Macbook</u> is <u class='home-splash-typewriter' typed-options="slow as $@($, dying every 10 minutes, not working">slow&nbsp;as&nbsp;hell</u>.</h1>
 							</div>
 						</div>
 						<!-- needs animation, remove .hide on second state-->
@@ -466,7 +462,7 @@
 			</header>
 
 			<!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
-			<div class='splash-map zoom-{{map.zoom}} ng-class:{"invisible":!mapHasRendered}'>
+			<div ng-if="false" class='splash-map zoom-{{map.zoom}} ng-class:{"invisible":!mapHasRendered}'>
 				<ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom">
 					<ui-gmap-markers models="map.markers" coords="'self'" options="'options'" fit="true" icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
 					</ui-gmap-markers>
@@ -503,7 +499,7 @@
 				</ui-gmap-google-map>
 			</div>
 			<div class="splash-zoom">Tap to Zoom</div>
-			<div class="splash-school-search-form" ng-controller="AddUniversityCtrl">
+			<div ng-if="false" class="splash-school-search-form" ng-controller="AddUniversityCtrl">
 				<div>
 					<form>
 						<div class="input-field large">
