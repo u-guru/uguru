@@ -34,6 +34,14 @@ angular.module('uguru.util.controllers')
 			$scope.page.active.tabName = tabName;
 		}
 
+		//Launch on friday
+		// - back and forth
+		// --- student makes a request
+		// --- guru receives a request
+		// - data, resolve university data
+		// - content (tomorrow evening)
+		//
+
 
 		//@GABRIELLE-NOTE
 		$scope.moodboardComponents = [

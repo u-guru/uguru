@@ -24,7 +24,7 @@ angular.module('uguru.root.services', [])
                         return i;
                     }
             }
-            return null;
+            return -1;
         },
         updateObjectByKey: function(array, key, value, update_key, new_value) {
             for (var i = 0; i < array.length; i++) {

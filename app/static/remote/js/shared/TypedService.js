@@ -41,7 +41,7 @@ function TypedService($timeout, $interval) {
 
       $interval(function() {
         theater.addScene(theater.replay);
-      }, msCount + 100);
+      }, 1000);
 
 
   }

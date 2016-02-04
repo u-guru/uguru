@@ -4,6 +4,51 @@
     /* {{university.school_color_dark}} */
     /* #023360 */
     
+    /* SUB HEADER NAV */
+    #university-splash .splash-sub-header > div a {
+		color: {{university.school_color_dark}}!important;
+    }
+    #university-splash .splash-sub-header > div a:nth-child(1).active ~ hr {
+        border-color: {{university.school_color_light}};
+    }
+    #university-splash .splash-sub-header > div a:nth-child(2).active ~ hr {
+        border-color: {{university.school_color_light}};
+    }
+    #university-splash .splash-sub-header > div a:nth-child(3).active ~ hr {
+        border-color: {{university.school_color_light}};
+    }
+    #university-splash .splash-sub-header > div a:nth-child(4).active ~ hr {
+        border-color: {{university.school_color_light}};
+    }
+    #university-splash .splash-sub-header > div a:nth-child(1):hover ~ hr,
+    #university-splash .splash-sub-header > div a:nth-child(1):focus~ hr {
+    	border-color: rgba(255,255,255,.7);
+    }
+    #university-splash .splash-sub-header > div a:nth-child(1):focus~ hr {
+    	border-color: {{university.school_color_light}};
+    }
+    #university-splash .splash-sub-header > div a:nth-child(2):hover ~ hr,
+    #university-splash .splash-sub-header > div a:nth-child(2):focus~ hr {
+    	border-color: rgba(255,255,255,.7);
+    }
+    #university-splash .splash-sub-header > div a:nth-child(2):focus~ hr {
+    	border-color: {{university.school_color_light}};
+    }
+    #university-splash .splash-sub-header > div a:nth-child(3):hover ~ hr,
+    #university-splash .splash-sub-header > div a:nth-child(3):focus~ hr {
+    	border-color: rgba(255,255,255,.7);
+    }
+    #university-splash .splash-sub-header > div a:nth-child(3):focus~ hr {
+    	border-color: {{university.school_color_light}};
+    }
+    #university-splash .splash-sub-header > div a:nth-child(4):hover ~ hr,
+    #university-splash .splash-sub-header > div a:nth-child(4):focus~ hr {
+    	border-color: rgba(255,255,255,.7);
+    }
+    #university-splash .splash-sub-header > div a:nth-child(4):focus~ hr {
+    	border-color: {{university.school_color_light}};
+    }
+    
     /* FIXED FOOTER ICONS */
     #university-splash .backpack .backpack-color, .support .support-color {
         fill: {{university.school_color_light}}!important;
@@ -104,7 +149,7 @@
     #university-splash .splash-postit#how-it-works .peel-back-shadow {
         background-color: {{university.school_color_dark}} !important;
     }
-    #university-splash #how-it-works .postit > div:before, #how-it-works .postit > span:before {
+    #university-splash #how-it-works .postit > div:before, #university-splash #how-it-works .postit > span:before {
         background: {{university.school_color_dark}}!important;
     }
     #university-splash #how-it-works .postit > span:after {

@@ -424,14 +424,14 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 .hide {
 	display: none!important;
 }
-.hide-opacity {
+.hide-opacity, .opacity-0, .transparent {
 	@include opacity(0);
 }
 .show-opacity {
 	@include opacity(1);
 }
 .show-opacity-impt {
-	opacity: 1 !important;
+	@include opacity-important(1);
 }
 .absolute {
 	position: absolute!important;
@@ -2127,7 +2127,7 @@ div[class*="progress"] {
 		&::-webkit-progress-value,
 		span {
 			@include round;
-			@include transition(.15s ease-in-out);
+			@include transition(1s ease-in);
 			display: block;
 			height: 100%;
 			overflow: hidden;
@@ -4081,6 +4081,7 @@ input[type=range] {
 				&:first-child {
 					padding: 10px 15px;
 					color: white;
+					text-align: left;
 				}
 				&:last-child {
 					@include flex;
@@ -4156,6 +4157,15 @@ input[type=range] {
 			margin-top: 0;
 			font-size: 20px;
 			font-weight: 400;
+		}
+		.pf-online {
+			margin-top: 0;
+			font-size: 20px;
+			font-weight: 400;
+			&.active {
+				font-weight: 700;
+				color: $moxie;
+			}
 		}
 		.pf-rating {
 			margin: 15px auto 0;
@@ -4545,6 +4555,14 @@ input[type=range] {
 						}
 					}
 				}
+				&:nth-child(5) {
+					&.active {
+						~ hr {
+							@include translate-x(660px);
+							border-color: white;
+						}
+					}
+				}
 
 				&:nth-child(1) {
 					&:hover, &:focus {
@@ -4589,6 +4607,19 @@ input[type=range] {
 					&:hover, &:focus {
 						~ hr {
 							@include translate-x(495px);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(5) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(660px);
 							border-color: rgba(white, .7);
 						}
 					}
@@ -5364,4 +5395,8 @@ input[type=range] {
 			font-size: 20px!important;
 		}
 	}
+}
+
+#body-loading-wrapper .logo {
+	display: none!important;
 }

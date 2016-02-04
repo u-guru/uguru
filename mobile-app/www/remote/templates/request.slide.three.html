@@ -6,6 +6,48 @@
         <div class='full-xy'>
             Add Map here
         </div>
-    </div>
-    <button>Next</button>
+		<div>
+			<div>
+				<a class="request-edit">Edit</a>
+				<h1 class="request-step small selected">
+					<b>Preferred Payment</b>
+				</h1>
+				<div class="request-selection">
+					<a class='credit-card-wrapper'>
+                        <div id="credit-card-visa" class="credit-card cf relative">
+                            <span class="card-type absolute left-0 top-0 m15xy" ng-include="img_base + BASE + 'templates/cards/visa.html'"></span>
+                            <span class="text-right absolute top-0 right-0 m15x-m15y card-type txt-slate weight-700 uppercase">
+                                <span class='padding-none txt-smoke'>DEFAULT</span>
+                                <span class='padding-none'>Debit Card</span>
+                            </span>
+                            <div class="card-number">**** **** **** 4242</div>
+                            <div class="card-name">{{user.name}}</div>
+                            <div class="valid">
+                                <div class="group">Valid
+                                    <br/>Thru</div>
+                                <div class="expiry">**/**</div>
+                            </div>
+                        </div>
+                    </a>
+				</div>
+            </div>
+        </div>
+        <div>
+            <div>
+				<h1 class="request-step small selected">
+					<b>Estimated Total</b>
+				</h1>
+				<div class="request-selection">
+					<h1 class="estimated-total">$50</h1>
+				</div>
+                <button class="request-edit">Edit</button>
+			</div>
+		</div>
+		<div class="request-notes">
+			<div>
+				<h3>Don't worry, we won't charge you until after the session is completed.</h3>
+				<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h3>
+			</div>
+		</div>
+	</div>
 </section>
