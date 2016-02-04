@@ -3,7 +3,7 @@
 	<a class='cta-modal-close close-button' ng-click='toggleSidebar()' ng-include="::img_base + 'templates/svg/main/plus-circle.html'"></a>
 </header>
 <ul class="splash-sidebar-desktop">
-	<li name='pageLinks' ng-repeat="link in ::pageLinks" class=''>
+	<li name='pageLinks' ng-repeat="link in ::pageLinks" class='opacity-0 full-x' anim-on-show-child anim-on-show-class="slideInLeft" anim-on-show-delay="{{500 + 50*$index}}">
 		<div ng-if='::!link.sublinks'>
 			<a id='{{::link.id}}' ng-if="::!link.ngClickFunc">{{::link.name}}</a>
 			<a id='{{::link.id}}' ng-if="::link.ngClickFunc" ng-click="::link.ngClickFunc()">{{::link.name}}</a>

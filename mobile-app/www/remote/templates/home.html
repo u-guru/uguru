@@ -4,7 +4,7 @@
 <!-- <ion-content overflow-scroll='true' class='full-xy'> -->
 <div class='full-xy'>
 
-	<div id='home-splash' class='splash-landing hs-view full-xy' style='height:calc(100% + 1px);' init-wp-parent>
+	<main id='home-splash' class='splash-landing hs-view full-xy' style='height:calc(100% + 1px);' init-wp-parent>
 
 		<!-- START Home Page CTAs -->
 
@@ -80,7 +80,7 @@
 
 		<!-- END Home Page CTAS -->
 
-		<header class='splash-header fixed top-0' id='home-nav-header'  ng-class="{'active': becomeGuruHeaderActive}" bind-wp="university" bind-wp-class="bg-charcoal" bind-wp-direction="down">
+		<header class='splash-header fixed top-0 bg-charcoal' id='home-nav-header'  ng-class="{'active': becomeGuruHeaderActive}" bind-wp="university" bind-wp-class="bg-charcoal" bind-wp-direction="down">
 			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
 
 			<div class="ugrid-3">
@@ -157,61 +157,71 @@
 				<path d="M14,32 L50,68 L86,32"></path>
 			</svg>
 		</a>
-		<a id="splash-footer-top" class="hid esplash-footer-link hide fixed ng-class:{'show':page.scroll.section_index}" on-hold="scrollToSection('#splash-home')" ng-click='scrollUpSection()' style="display: none!important;">
+		<a id="splash-footer-top" class="hide splash-footer-link hide fixed ng-class:{'show':page.scroll.section_index}" on-hold="scrollToSection('#splash-home')" ng-click='scrollUpSection()' style="display: none!important;">
 			<svg class="splash-footer-icon" viewBox="0 0 100 100">
 				<path d="M14,68 L50,32 L86,68"></path>
 			</svg>
 		</a>
 		<!-- </div> -->
-		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' style='height:calc(100%);'>
+		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' bg-image="{{page.css.bg_banner}}" bg-image-has-loaded="page.load.sections.one.ready()" style='height:calc(100%);' init-wp='hero' wp-offset="0" anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hero" anim-exit-up="hero">
 
 			<ion-slide-box class='splash-scene' on-slide-changed="topHomeSlider.onChange($index)" show-pager='false' delegate-handle='splash-hero-home' does-continue="true">
-
 				<ion-slide id="splash-tech" anim-on-show-parent anim-on-show="show-slide" anim-on-hide-parent anim-on-hide="show-slide">
-					<div class="splash-scene-img" bg-image='{{img_base + BASE + "img/categories/hero/tech@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()"></div>
-					<!-- needs animation, currently set to .hide, desktop only -->
-					<div class="hide splash-scene-markers">
-						<span class="splash-marker positioned active">
+					<div class="splash-scene-img opacity-0" bg-image='{{img_base + BASE + "img/categories/hero/tech@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="10" anim-on-hide-child anim-on-hide-class="slideOutDown" anim-on-hide-delay="5000"></div>
+
+					<div class="opacity-0 splash-scene-map" anim-on-show-child anim-on-show-class="slideInDown" anim-on-show-delay="5000">
+						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')">
+						</div>
+					</div>
+
+					<div class="splash-scene-markers">
+						<div class="splash-scene-overlay opacity-0" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="7800"></div>
+						<span class="splash-marker opacity-0" style="top: calc(70px + 5%); right: 15%;" anim-on-show-child anim-on-show-class="bounceIn, active:keep" anim-on-show-delay="5400, 7800">
+							<span anim-on-show-child anim-on-show-class="pulse:keep, infinite:keep, animated:keep" anim-on-show-delay="7800, 7800, 7800" ng-include="img_base + 'templates/svg/main/message.html'"></span>
+							<span anim-on-show-child anim-on-show-class="pulse:keep, infinite:keep, animated:keep" anim-on-show-delay="7800" ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+							<span class="splash-marker-label opacity-0" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="7800, 7800, 7800">Rachel's Location</span>
+						</span>
+						<span class="splash-marker opacity-0" style="top: calc(70px + 10%); left: 5%;" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="5800">
 							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
 							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
-							<span class="splash-marker-label">Rachel's Location</span>
+						</span>
+						<span class="splash-marker opacity-0" style="top: calc(70px + 25%); right: 5%;" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="6200">
+							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
+							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+						</span>
+						<span class="splash-marker opacity-0" style="top: calc(70px + 40%); left: 15%;" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="6200">
+							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
+							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
 						</span>
 					</div>
-					<!-- needs animation, currently set to .hide -->
-					<div class="hide splash-scene-map">
-						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')"></div>
-					</div>
-					<!-- needs animation, currently set to .hide -->
-					<div class="hide splash-scene-overlay"></div>
-					<!-- needs animation, remove .active to shrink, desktop only -->
-					<div class="splash-scene-prop-desktop ng-class:{'active':desktopMode}">
-						<a class="splash-scene-svg">
-							<svg viewBox="0 0 700 400">
-							    <path d="M449.722656,372.595703 C449.722656,372.595703 486.69917,369.225613 495.333984,372.595703 C503.968799,375.965793 481.345368,381.023649 484.962891,383.837891 C488.580413,386.652132 513.259766,386.541016 513.259766,386.541016" class="cord" fill="none" stroke="#324347" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-							    <rect class="stand" fill="#D8D8D8" x="305" y="327" width="90" height="43"></rect>
-							    <path d="M455.1704,376.1398 C451.6704,372.6128 444.8014,369.9998 439.8324,369.9998 L262.1664,369.9998 C257.2014,369.9998 250.3314,372.6108 246.8294,376.1398 L229.7384,393.4848 C226.2384,397.0118 227.4294,399.9998 232.4044,399.9998 L469.5944,399.9998 C474.5684,399.9998 475.7634,397.0138 472.2614,393.4848 L455.1704,376.1398 Z M569.000726,29 C573.970888,29 578,33.0290817 578,37.9997359 L578,318.000264 C578,322.970681 573.962479,327 569.000726,327 L131.999274,327 C127.029112,327 123,322.970918 123,318.000264 L123,37.9997359 C123,33.029319 127.037521,29 131.999274,29 L569.000726,29 Z M133,48.0064028 C133,43.0323039 137.02856,39 141.998196,39 L559.001804,39 C563.97137,39 568,43.0274856 568,48.0064028 L568,279 L133,279 L133,48.0064028 Z" class="main" fill="#FFFFFF"></path>
-							    <rect class="screen" fill="#324347" x="133" y="39" width="435" height="240" rx="9"></rect>
-							    <path d="M537.767857,372.632184 C559.509223,372.632184 562.663665,390.672347 562.663665,390.672347 C564.292509,395.068443 561.807054,398.632184 557.109357,398.632184 L518.426358,398.632184 C513.729954,398.632184 511.061316,394.989619 512.87205,390.672347 C512.87205,390.672347 516.026492,372.632184 537.767857,372.632184 Z" class="mouse animate" fill="#FFFFFF"></path>
-							</svg>
-							<div class="splash-scene-type" style="top: 9.7%; left: 21.5%;">
-								<h1>My <u class='home-splash-typewriter' typed-options="macbook, iphone, router">Macbook</u> is <br> <u class='home-splash-typewriter' typed-options="macbook, iphone, router">slow&nbsp;as&nbsp;hell</u>.</h1>
+
+					<div class="splash-scene-prop-desktop" anim-on-show-child anim-on-show-class="active:keep" anim-on-show-delay="6500">
+						<div class="relative opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="250">
+							<a class="splash-scene-svg">
+								<svg viewBox="0 0 700 400">
+								    <path d="M449.722656,372.595703 C449.722656,372.595703 486.69917,369.225613 495.333984,372.595703 C503.968799,375.965793 481.345368,381.023649 484.962891,383.837891 C488.580413,386.652132 513.259766,386.541016 513.259766,386.541016" class="cord" fill="none" stroke="#324347" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+								    <rect class="stand" fill="#D8D8D8" x="305" y="327" width="90" height="43"></rect>
+								    <path d="M455.1704,376.1398 C451.6704,372.6128 444.8014,369.9998 439.8324,369.9998 L262.1664,369.9998 C257.2014,369.9998 250.3314,372.6108 246.8294,376.1398 L229.7384,393.4848 C226.2384,397.0118 227.4294,399.9998 232.4044,399.9998 L469.5944,399.9998 C474.5684,399.9998 475.7634,397.0138 472.2614,393.4848 L455.1704,376.1398 Z M569.000726,29 C573.970888,29 578,33.0290817 578,37.9997359 L578,318.000264 C578,322.970681 573.962479,327 569.000726,327 L131.999274,327 C127.029112,327 123,322.970918 123,318.000264 L123,37.9997359 C123,33.029319 127.037521,29 131.999274,29 L569.000726,29 Z M133,48.0064028 C133,43.0323039 137.02856,39 141.998196,39 L559.001804,39 C563.97137,39 568,43.0274856 568,48.0064028 L568,279 L133,279 L133,48.0064028 Z" class="main" fill="#FFFFFF"></path>
+								    <rect class="screen" fill="#324347" x="133" y="39" width="435" height="240" rx="9"></rect>
+								    <path d="M537.767857,372.632184 C559.509223,372.632184 562.663665,390.672347 562.663665,390.672347 C564.292509,395.068443 561.807054,398.632184 557.109357,398.632184 L518.426358,398.632184 C513.729954,398.632184 511.061316,394.989619 512.87205,390.672347 C512.87205,390.672347 516.026492,372.632184 537.767857,372.632184 Z" class="mouse animate" fill="#FFFFFF"></path>
+								</svg>
+								<div class="splash-scene-type" style="top: 9.7%; left: 21.5%;">
+									<!-- <h1>My <u class='home-splash-typewriter' typed-options="macbook, iphone, router">Macbook</u> is <br/> <u class='home-splash-typewriter' typed-options="macbook, iphone, router">slow&nbsp;as&nbsp;hell</u>.</h1> -->
+									<h1>My <u>Macbook</u> is <br/> <u>slow&nbsp;as&nbsp;hell</u>.</h1>
+								</div>
+							</a>
+							<div class="opacity-0 splash-scene-search" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="400">
+								<div class="absolute"><h1 anim-on-hide-child anim-on-hide-class="bounceOutUp" anim-on-hide-delay="2000">At UC Berkeley</h1></div>
+								<div class="opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="2000" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-hide-delay="6000">
+									<h2 anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-hide-delay="6000">Searching among UC Berkeley Tech Gurus</h2>
+									<div class="progress white-round height-10 m10top" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-hide-delay="6000">
+										<span style="width: 15%" anim-on-show-child anim-on-show-class="progress-bar:keep" anim-on-show-delay="3000"></span>
+									</div>
+								</div>
+								<div class="absolute opacity-0" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="6000">
+									<h1>4 UC Berkeley Tech Gurus Found</h1>
+								</div>
 							</div>
-						</a>
-						<div class="opacity-0 splash-scene-search"
-
-								anim-on-show-child
-								anim-on-show-class="bounceInUp, bounceInDown"
-								anim-on-show-delay="3000, 9000"
-
-
-								anim-on-hide-child
-								anim-on-hide-class="lightSpeedOut, lightSpeedOut"
-								anim-on-hide-delay="6000, 12000"
-
-						>
-							<!-- <h1>At UC Berkeley</h1> -->
-							<h2>Searching among UC Berkeley Tech Gurus</h2>
-							<progress class="white-round height-10" max="100" value="75"></progress>
 						</div>
 					</div>
 					<!-- needs animation, set to .hide when guru message is visible, mobile only -->
@@ -225,34 +235,25 @@
 							<div class="splash-scene-type">
 								<h1>My <u class='home-splash-typewriter' typed-options="macbook, iphone, router">Macbook</u> is <u class='home-splash-typewriter' typed-options="slow as $@($, dying every 10 minutes, not working">slow&nbsp;as&nbsp;hell</u>.</h1>
 							</div>
-							<button disabled>At UC Berkeley</button>
-							<!-- needs animation, remove .active on second state -->
-							<a class="active pause" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a>
 						</div>
 					</div>
-					<!-- needs animation, remove .hide on second state-->
-					<header class="hide splash-scene-header">
+
+					<header class="splash-scene-header">
 						<ul>
-							<li><a class="splash-header-close close-button" ng-include="img_base + 'templates/svg/main/plus.html'"></a></li>
+							<li><a class="splash-header-close close-button opacity-0" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="6500" ng-include="img_base + 'templates/svg/main/plus.html'"></a></li>
 						</ul>
 					</header>
-					<!-- needs animation, set to .hide on second state, desktop only-->
-					<footer class="splash-scene-footer">
-						<ul>
-							<li><a class="splash-footer-share" ng-include="img_base + 'templates/svg/main/share.html'"></a></li>
-							<li><a class="splash-footer-play-pause" ng-click='topHomeSlider.toggleRemote()' ng-include="img_base + 'templates/svg/main/play-pause.html'"></a></li>
-							<li><a class="splash-footer-mute" ng-include="img_base + 'templates/svg/main/mute.html'"></a></li>
-						</ul>
-						<ul>
-							<li><a ng-click='topHomeSlider.previous()' ng-include="img_base + 'templates/svg/main/left.html'"></a></li>
-							<li><a ng-click='topHomeSlider.next()' ng-include="img_base + 'templates/svg/main/right.html'"></a></li>
-						</ul>
-					</footer>
-					<!-- needs animation, currently set to .hide, desktop only -->
-					<ul class="hide splash-scene-gurus pf-card-group">
-						<li class="pf-card-li" ng-repeat='category in ::categories | limitTo: 5' ng-if='category.is_active'>
+
+					<ul class="splash-scene-gurus pf-card-group">
+						<li class="pf-card-li opacity-0" anim-on-show-child anim-on-show-class="{{::['bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp'][$index]}}" anim-on-show-delay="{{::[6500, 6700, 6900, 7100][$index]}}" ng-repeat='category in ::categories | limitTo: 4' ng-if='category.is_active'>
 							<!-- needs animation, currently set to .hide -->
-							<div class="hide splash-scene-guru-message">
+							<div class="splash-scene-guru-message opacity-0" anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="7800" ng-if="$index === 0">
+								<div>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								</div>
+								<button>View {{::sampleMiniProfilesDict[category.hex_color].name}}'s Shop</button>
+							</div>
+							<div class="splash-scene-guru-message opacity-0" ng-if="$index !== 0">
 								<div>
 									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 								</div>
@@ -330,43 +331,100 @@
 							</div>
 						</li>
 					</ul>
-					</footer>
 				</ion-slide>
 				<ion-slide id="splash-academic" anim-on-show-parent anim-on-show="show-slide">
-					<div class="splash-scene-img" style="background-image: url('{{img_base + BASE + 'img/categories/hero/academic@2x.jpg'}}');"></div>
-					<footer class="splash-scene-footer">
-						<ul>
-							<li class="opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="200"><a class="splash-footer-share" ng-include="img_base + 'templates/svg/main/share.html'"></a></li>
-							<li class="opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="250"><a class="splash-footer-play-pause" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a></li>
-							<li class="opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="300"><a class="splash-footer-mute" ng-include="img_base + 'templates/svg/main/mute.html'"></a></li>
-						</ul>
-						<ul>
-							<li class="opacity-0" anim-on-show-child anim-on-show-class="fadeInLeftBig" anim-on-show-delay="650"><a ng-click='topHomeSlider.previous()' ng-include="img_base + 'templates/svg/main/left.html'"></a></li>
-							<li class="opacity-0" anim-on-show-child anim-on-show-class="fadeInLeftBig" anim-on-show-delay="600"><a ng-click='topHomeSlider.next()' ng-include="img_base + 'templates/svg/main/right.html'"></a></li>
-						</ul>
-					</footer>
-				</ion-slide>
-				<ion-slide id="splash-photo">
-					<div class="splash-scene-img" style="background-image: url('{{img_base + BASE + 'img/categories/hero/photo@2x.jpg'}}');"></div>
-					<footer class="splash-scene-footer">
-						<ul>
-							<li><a class="splash-footer-share" ng-include="img_base + 'templates/svg/main/share.html'"></a></li>
-							<li><a class="splash-footer-play-pause" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a></li>
-							<li><a class="splash-footer-mute" ng-include="img_base + 'templates/svg/main/mute.html'"></a></li>
-						</ul>
-						<ul>
-							<li><a ng-click='topHomeSlider.previous()' ng-include="img_base + 'templates/svg/main/left.html'"></a></li>
-							<li><a ng-click='topHomeSlider.next()' ng-include="img_base + 'templates/svg/main/right.html'"></a></li>
-						</ul>
-					</footer>
-				</ion-slide>
+					<div class="splash-scene-img opacity-0" bg-image='{{img_base + BASE + "img/categories/hero/academic@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="10" anim-on-hide-child anim-on-hide-class="slideOutDown" anim-on-hide-delay="5000"></div>
 
-				<!-- <ion-slide ng-repeat='category in ::categories' ng-if='category.is_active' id="splash-{{category.hex_color}}">
-					<div class="splash-scene-img" style="background-image: url('{{img_base + BASE + 'img/categories/hero/' + category.hex_color + '@2x.jpg'}}');"></div>
-					<div class="splash-scene-map"></div>
-					<div class="splash-scene-overlay"></div>
-				</ion-slide> -->
-			</ion-slide-box>
+					<div class="opacity-0 splash-scene-map" anim-on-show-child anim-on-show-class="slideInDown" anim-on-show-delay="5000">
+						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')">
+						</div>
+					</div>
+
+					<div class="splash-scene-markers">
+						<div class="splash-scene-overlay opacity-0" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="7800"></div>
+						<span class="splash-marker opacity-0" style="top: calc(70px + 5%); right: 15%;" anim-on-show-child anim-on-show-class="bounceIn, active:keep" anim-on-show-delay="5400, 7800">
+							<span anim-on-show-child anim-on-show-class="pulse:keep, infinite:keep, animated:keep" anim-on-show-delay="7800, 7800, 7800" ng-include="img_base + 'templates/svg/main/message.html'"></span>
+							<span anim-on-show-child anim-on-show-class="pulse:keep, infinite:keep, animated:keep" anim-on-show-delay="7800" ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+							<span class="splash-marker-label opacity-0" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="7800, 7800, 7800">Rachel's Location</span>
+						</span>
+						<span class="splash-marker opacity-0" style="top: calc(70px + 10%); left: 5%;" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="5800">
+							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
+							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+						</span>
+						<span class="splash-marker opacity-0" style="top: calc(70px + 25%); right: 5%;" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="6200">
+							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
+							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+						</span>
+						<span class="splash-marker opacity-0" style="top: calc(70px + 40%); left: 15%;" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="6200">
+							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
+							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+						</span>
+					</div>
+
+					<div class="splash-scene-prop-desktop active">
+						<a class="splash-scene-svg">
+							<svg viewBox="0 0 700 400">
+							    <rect class="board" stroke="#DAB475" stroke-width="14" fill="#334743" x="146" y="129" width="401" height="264" rx="4"></rect>
+							    <rect class="chalk" fill="#FFFFFF" x="473" y="383" width="28.630137" height="10" rx="100"></rect>
+							</svg>
+							<div class="splash-scene-type" style="top: 35.3%; left: 21%;">
+								<h1>It's <u>5am</u> and I have a <u>biology&nbsp;exam</u> in 4&nbsp;hours.</h1>
+							</div>
+						</a>
+						<div class="splash-scene-search">
+							<!-- <h1>At UC Berkeley</h1> -->
+							<h2>Searching among UC Berkeley Academic Gurus</h2>
+							<progress class="white-round height-10" max="100" value="75"></progress>
+						</div>
+					</div>
+					<!-- needs animation, set to .hide when guru message is visible, mobile only -->
+					<div class="splash-scene-prop-mobile">
+						<div class="splash-scene-svg">
+							<svg viewBox="0 0 200 200">
+							    <rect stroke="#DAB475" stroke-width="5" fill="#334743" x="32" y="107" width="136" height="90" rx="1"></rect>
+							    <rect fill="#FFFFFF" x="121" y="190" width="32" height="7" rx="10"></rect>
+							</svg>
+							<div class="splash-scene-type">
+								<h1>My <u>Macbook</u> is <u>slow&nbsp;as&nbsp;hell</u>.</h1>
+							</div>
+							<button disabled>At UC Berkeley</button>
+							<!-- needs animation, remove .active on second state -->
+							<a class="active pause" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a>
+						</div>
+					</div>
+				</ion-slide>
+				<ion-slide id="splash-photo" anim-on-show-parent anim-on-show="show-slide">
+					<div class="splash-scene-img" style="background-image: url('{{img_base + BASE + 'img/categories/hero/photo@2x.jpg'}}');"></div>
+					<!-- needs animation, currently set to .hide -->
+					<div class="hide splash-scene-map">
+						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')"></div>
+					</div>
+					<!-- needs animation, currently set to .hide -->
+					<div class="hide splash-scene-overlay"></div>
+				</ion-slide>
+				<ion-slide id="splash-baking" anim-on-show-parent anim-on-show="show-slide">
+					<div class="splash-scene-img" style="background-image: url('{{img_base + BASE + 'img/categories/hero/baking@2x.jpg'}}');"></div>
+					<!-- needs animation, currently set to .hide -->
+					<div class="hide splash-scene-map">
+						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')"></div>
+					</div>
+					<!-- needs animation, currently set to .hide -->
+					<div class="hide splash-scene-overlay"></div>
+				</ion-slide>
+			</div>
+
+			<footer class="splash-scene-footer">
+				<ul>
+					<li><a class="splash-footer-share" ng-include="img_base + 'templates/svg/main/share.html'"></a></li>
+					<li><a class="splash-footer-play-pause" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a></li>
+					<li><a class="splash-footer-mute" ng-include="img_base + 'templates/svg/main/mute.html'"></a></li>
+				</ul>
+				<ul>
+					<li><a ng-click='topHomeSlider.previous()' ng-include="img_base + 'templates/svg/main/left.html'"></a></li>
+					<li><a ng-click='topHomeSlider.next()' ng-include="img_base + 'templates/svg/main/right.html'"></a></li>
+				</ul>
+			</footer>
+
 			<div class="splash-type" style="display: none!important;">
 				<h1 id='main-text'>
                     <span class='weight-400'>Last-second dirt-cheap</span>
@@ -438,13 +496,13 @@
 			</footer>
 		</section>
 
-		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'  init-wp="university, university_exit" wp-offset="106, -100%">
+		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'  init-wp="university, university_exit" wp-offset="106, -100%" ng-if='false'>
 			<header>
 				<h1>Find Your University</h1>
 			</header>
 
 			<!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
-			<div class='splash-map zoom-{{map.zoom}} ng-class:{"invisible":!mapHasRendered}'>
+			<div class='splash-map zoom-{{map.zoom}} ng-class:{"invisible":!mapHasRendered}' ng-if='false'>
 				<ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom">
 					<ui-gmap-markers models="map.markers" coords="'self'" options="'options'" fit="true" icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
 					</ui-gmap-markers>
@@ -481,7 +539,7 @@
 				</ui-gmap-google-map>
 			</div>
 			<div class="splash-zoom">Tap to Zoom</div>
-			<div class="splash-school-search-form" ng-controller="AddUniversityCtrl">
+			<div ng-if="false" class="splash-school-search-form" ng-controller="AddUniversityCtrl">
 				<div>
 					<form>
 						<div class="input-field large">
@@ -555,7 +613,7 @@
 			</footer>
 		</section>
 
-		<section init-wp="hiw, hiw_enter, hiw_enter2" wp-offset="106, 40%, 20%" class='splash-categories' id='splash-browse' anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw" anim-exit-up="hiw_enter2">
+		<section init-wp="hiw, hiw_enter, hiw_enter2" wp-offset="106, 40%, 20%" class='splash-categories' id='splash-browse' anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw" anim-exit-up="hiw_enter2" ng-if='false'>
 			<div id='how-it-works' class="main splash-postit ng-class:{'active':activeBrowseTabIndex===0}">
 				<header>
 					<h1 anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="400" class="how-it-works-header">{{::how_it_works.header}}</h1>
@@ -793,7 +851,7 @@
 			</footer>
 		</section>
 
-		<section id='become-guru' class="splash-postit ng-class:{'hide':!page.load.sections.five.display}">
+		<section id='become-guru' class="splash-postit ng-class:{'hide':!page.load.sections.five.display}" ng-if='false'>
 			<header>
 				<h1 class="become-guru-header">{{::become_guru.header}}</h1>
 			</header>

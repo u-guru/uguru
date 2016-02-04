@@ -445,14 +445,27 @@ angular.module('uguru.util.controllers')
 
       //Scope var declarations
       var onSectionOneLoad = function() {
-        initUniversityTypeWriter();
+        // initUniversityTypeWriter();
+
         $timeout(function() {
           $scope.root.loader.body.hide = true;
           $scope.page.scroll.section_index = 0;
-          initHomePageWayPoint();
+          // initHomePageWayPoint();
           initializePageAnimations();
+          initSlideBoxRemote();
           Waypoint.refreshAll();
         }, 250)
+        $timeout(function() {
+          initTypeWritersTopSection();
+        }, 500)
+        $timeout(function() {
+
+          var ionSlideOne = document.querySelector('.splash-scene ion-slide');
+          ionSlideOne.classList.add('show-slide');
+          $scope.$apply();
+
+      }, 5000)
+
       }
       $scope.university = {}
       // $scope.page = {dropdowns: {}, css:{},predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
@@ -471,6 +484,43 @@ angular.module('uguru.util.controllers')
         four: {visible:true, display:true, nested:{}, on_activate:null},
         five: {visible:true, display:true, nested:{}, on_activate:null},
         footer: {visible:true, display:true, nested:{}, on_activate:null}
+      }
+
+      function initSlideBoxRemote() {
+        $scope.topHomeSlider = {
+          next: function() {
+            $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').next()
+          },
+          previous: function() {
+            $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').previous()
+          },
+          toggleRemote: function() {
+            if ($scope.topHomeSlider.paused) {
+              $scope.topHomeSlider.play();
+            } else {
+              $scope.topHomeSlider.pause();
+            }
+          },
+          pause: function() {
+            $scope.topHomeSlider.paused =true;
+            $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').stop();
+          },
+          onChange: function($index) {
+            var ionSlides = document.querySelectorAll('.splash-scene ion-slide');
+            //remove all
+            for (var i = 0; i < ionSlides.length; i++) {
+              var indexSlide = ionSlides[i];
+              indexSlide.classList.remove('show-slide');
+            }
+            ionSlides[$index].classList.add('show-slide');
+          },
+          play: function() {
+            $scope.topHomeSlider.paused = false;
+            console.log('play clicked');
+            $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').start();
+          },
+          paused: false
+        }
       }
 
 
@@ -558,6 +608,19 @@ angular.module('uguru.util.controllers')
       // render page functions
       var initUniversityTypeWriter = function() {
         TypedService.initTypedTicker('university-typed-writer', ["CS10 Exam Prep", "MCAT Concepts", "Google Interview Help", "Dirty Laundry"]);
+      }
+
+      function initTypeWritersTopSection() {
+        var typeWriterElems = document.querySelectorAll('.home-splash-typewriter');
+        if (typeWriterElems.length) {
+          for (var i = 0; i < typeWriterElems.length; i++) {
+            var indexTypeWriter = typeWriterElems[i];
+            indexTypeWriter.id = 'typed-writer-' + i;
+            var dataOptions = indexTypeWriter.getAttribute("typed-options").split(", ");
+            console.log(indexTypeWriter.id, dataOptions);
+            TypedService.initTypedTicker(indexTypeWriter.id, dataOptions);
+          }
+        }
       }
 
 

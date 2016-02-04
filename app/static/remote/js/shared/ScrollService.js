@@ -50,7 +50,6 @@ function ScrollService(LoadingService, $timeout) {
             globalWPScopeRef[stateName].page.waypoints[wpName].activated = true;
             globalWPScopeRef[stateName].page.waypoints[wpName].direction = direction;
             globalWPScopeRef[stateName].$apply();
-            console.log('activating ' + stateName + ' view', 'page.waypoints.' + wpName);
             $timeout(function() {
               globalWPScopeRef[stateName].page.waypoints[wpName].activated = false;
             })
@@ -59,7 +58,6 @@ function ScrollService(LoadingService, $timeout) {
 
 
   function initScopedWaypoint(elemRef, contextRef, scopeRef, offset, stateName, wpName) {
-    console.log(elemRef, contextRef, scopeRef, offset);
     if (!globalWPScopeRef[stateName]) {
       globalWPScopeRef[stateName] = scopeRef;
     }

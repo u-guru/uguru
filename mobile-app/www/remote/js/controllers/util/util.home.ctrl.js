@@ -464,7 +464,7 @@ angular.module('uguru.util.controllers')
           ionSlideOne.classList.add('show-slide');
           $scope.$apply();
 
-        }, 1000)
+      }, 5000)
 
       }
       $scope.university = {}

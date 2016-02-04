@@ -340,4 +340,3 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 
 
 
-
