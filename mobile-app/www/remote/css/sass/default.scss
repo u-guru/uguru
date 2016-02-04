@@ -424,14 +424,14 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 .hide {
 	display: none!important;
 }
-.hide-opacity {
+.hide-opacity, .opacity-0, .transparent {
 	@include opacity(0);
 }
 .show-opacity {
 	@include opacity(1);
 }
 .show-opacity-impt {
-	opacity: 1 !important;
+	@include opacity-important(1);
 }
 .absolute {
 	position: absolute!important;

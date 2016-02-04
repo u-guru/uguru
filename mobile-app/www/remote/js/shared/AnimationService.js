@@ -89,15 +89,36 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
       	if (children.length) {
         	for (var i = 0; i < children.length; i++) {
 	          	var indexChild = children[i];
-	          	var animationClassToInject = indexChild.getAttribute('anim-' + type +'-class');
-	          	var animationDelay = indexChild.getAttribute('anim-' + type +'-delay');
+	          	var animationClassesToInject = indexChild.getAttribute('anim-' + type +'-class') && indexChild.getAttribute('anim-' + type +'-class').split(', ');
+	          	var animationDelaysToInject = indexChild.getAttribute('anim-' + type +'-delay') && indexChild.getAttribute('anim-' + type +'-delay').split(', ');
+	          	if (!animationClassesToInject) {
+	          		continue;
+	          	}
+	          	if (!animationDelaysToInject) {
+	          		animationDelaysToInject = [0,0,0,0,0];
+	          	}
+	          	for (var j = 0; j < animationClassesToInject.length; j++) {
+	          		var indexClassOfChild = animationClassesToInject[j] || '';
+	          		var indexOffsetOfChild = animationDelaysToInject[j] || 0;
+	          		if (indexClassOfChild && indexClassOfChild.length) {
+	          			animateOut(indexChild, indexClassOfChild, indexOffsetOfChild || 0 );
+	          		}
+	          	}
 	          	// var animationOnCompleteExpr = indexChild.getAttribute('anim-exit-up-complete');
-	          	animateOut(indexChild, animationClassToInject, animationDelay);
         	}
       	} else {
-	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.attributes['anim-' + type + '-class'].value
-	          var animationDelay = element.attributes['anim-' + type + '-delay'] && element.attributes['anim-' + type + '-delay'].value;
-	          animateOut(element, animationClassToInject, animationDelay);
+	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.attributes['anim-' + type + '-class'].value.split(', ')
+	          var animationDelaysToInject = element.attributes['anim-' + type + '-delay'] && element.attributes['anim-' + type + '-delay'].value.value.split(', ')
+	          if (!animationClassToInject || !animationClassToInject.length) {
+	          	return;
+	          }
+	          for (var i = 0; i < animationClassToInject.length; i++) {
+	          	var indexClassOfParent= animationClassToInject[i] || '';
+          		var indexOffsetOfParent = animationDelaysToInject[i] || 0;
+          		if (indexClassOfParent && indexClassOfParent.length) {
+          			animateOut(element, indexClassOfParent, indexOffsetOfParent || 0 );
+          		}
+	          }
       	}
     }
 
@@ -107,15 +128,36 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
       	if (children.length) {
         	for (var i = 0; i < children.length; i++) {
 	          	var indexChild = children[i];
-	          	var animationClassToInject = indexChild.getAttribute('anim-' + type +'-class');
-	          	var animationDelay = indexChild.getAttribute('anim-' + type +'-delay');
+	          	var animationClassesToInject = indexChild.getAttribute('anim-' + type +'-class') && indexChild.getAttribute('anim-' + type +'-class').split(', ');
+	          	var animationDelaysToInject = indexChild.getAttribute('anim-' + type +'-delay') && indexChild.getAttribute('anim-' + type +'-delay').split(', ');
+	          	if (!animationClassesToInject) {
+	          		continue;
+	          	}
+	          	if (!animationDelaysToInject) {
+	          		animationDelaysToInject = [0,0,0,0,0];
+	          	}
+	          	for (var j = 0; j < animationClassesToInject.length; j++) {
+	          		var indexClassOfChild = animationClassesToInject[j] || '';
+	          		var indexOffsetOfChild = animationDelaysToInject[j] || 0;
+	          		if (indexClassOfChild && indexClassOfChild.length) {
+	          			animateIn(indexChild, indexClassOfChild, indexOffsetOfChild || 0 );
+	          		}
+	          	}
 	          	// var animationOnCompleteExpr = indexChild.getAttribute('anim-exit-up-complete');
-	          	animateIn(indexChild, animationClassToInject, animationDelay);
         	}
       	} else {
-	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.attributes['anim-' + type + '-class'].value
-	          var animationDelay = element.attributes['anim-' + type + '-delay'] && element.attributes['anim-' + type + '-delay'].value;
-	          animateIn(element, animationClassToInject, animationDelay);
+	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.attributes['anim-' + type + '-class'].value.split(', ')
+	          var animationDelaysToInject = element.attributes['anim-' + type + '-delay'] && element.attributes['anim-' + type + '-delay'].value.value.split(', ')
+	          if (!animationClassToInject || !animationClassToInject.length) {
+	          	return;
+	          }
+	          for (var i = 0; i < animationClassToInject.length; i++) {
+	          	var indexClassOfParent= animationClassToInject[i] || '';
+          		var indexOffsetOfParent = animationDelaysToInject[i] || 0;
+          		if (indexClassOfParent && indexClassOfParent.length) {
+          			animateIn(element, indexClassOfParent, indexOffsetOfParent || 0 );
+          		}
+	          }
       	}
     }
 
@@ -293,7 +335,6 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	}
 
 }
-
 
 
 

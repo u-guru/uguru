@@ -450,16 +450,21 @@ angular.module('uguru.util.controllers')
         $timeout(function() {
           $scope.root.loader.body.hide = true;
           $scope.page.scroll.section_index = 0;
-          initHomePageWayPoint();
+          // initHomePageWayPoint();
           initializePageAnimations();
           initSlideBoxRemote();
           Waypoint.refreshAll();
         }, 250)
         $timeout(function() {
+          initTypeWritersTopSection();
+        }, 500)
+        $timeout(function() {
+
           var ionSlideOne = document.querySelector('.splash-scene ion-slide');
           ionSlideOne.classList.add('show-slide');
-          initTypeWritersTopSection();
-        }, 400)
+          $scope.$apply();
+
+      }, 2000)
 
       }
       $scope.university = {}

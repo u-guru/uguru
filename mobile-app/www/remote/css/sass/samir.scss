@@ -620,13 +620,6 @@ ul#guru-courses-user-profile {
 	visibility:hidden !important;
 }
 
-.opacity-0 {
-	@include opacity(0);
-}
-.opacity-1 {
-	@include opacity(1);
-}
-
 .platform-ios {
 	#home-splash {
 		overflow-y: scroll;
@@ -678,3 +671,8 @@ header#home-nav-header.splash-header,
 }
 
 //css for student.courses.container
+
+
+.opacity-1 {
+	opacity: 1 !important;
+}

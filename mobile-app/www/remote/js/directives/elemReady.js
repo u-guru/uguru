@@ -143,12 +143,27 @@ directive("initWpParent", function () {
           }
       }
 }).
+directive("animOnHide", ["AnimationService", "$timeout", function (AnimationService, $timeout) {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+              $timeout(function() {
+                scope.$watch(function() {return element.attr('class'); }, function(newValue){
+                    if (element.hasClass('show') || (attr.animOnHide && attr.animOnHide.length && element.hasClass(attr.animOnHide))) {
+                      AnimationService.applyAnimateOutDirective(element[0], 'on-hide');
+                    }
+                });
+              })
+          }
+      }
+}]).
 directive("animOnShow", ["AnimationService", "$timeout", function (AnimationService, $timeout) {
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
               $timeout(function() {
                 scope.$watch(function() {return element.attr('class'); }, function(newValue){
+                  console.log('animOnShow triggered', newValue, element.hasClass(attr.animOnShow));
                   if (element.hasClass('show') || (attr.animOnShow && attr.animOnShow.length && element.hasClass(attr.animOnShow))) {
                     AnimationService.applyAnimateInDirective(element[0], 'on-show');
                   }
@@ -172,7 +187,6 @@ directive("bindWp", ['$timeout', function ($timeout) {
                 } else {
                   var directionNames = ["down", "down", "down"]
                 }
-
 
                 scope.$watch('page.waypoints.' + attr.bindWp + '.activated', function(isActive) {
                   var direction = scope.page.waypoints[attr.bindWp].direction;
