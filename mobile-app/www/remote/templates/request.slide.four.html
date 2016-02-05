@@ -1,11 +1,25 @@
-<section id="request-one" class="request-slide">
-    <header>
-        <h1>Payment</h1>
-    </header>
-    <div class="request-content relative">
-        <div class='full-xy'>
-            Add Map here
-        </div>
+<section id="request-cta-map" class="request-slide full-xy text-center">
+    <div class='absolute high-z-index top-0 flex-center-wrap p15x p20y'>
     </div>
-    <button>Next</button>
+    <div class='map-container full-xy'>
+        <ui-gmap-google-map
+                    class="full-xy absolute top-0 left-0"
+                    center='requestForm.map.center'
+                    control='requestForm.map.control'
+                    zoom="requestForm.map.zoom"
+                    pan="requestForm.map.pan"
+                    options="requestForm.map.options"
+        >
+
+            <ui-gmap-marker
+                    idKey='requestForm.map.marker.idKey'
+                    coords='requestForm.map.center'
+                    click='requestForm.map.marker.onClick()'
+                    options='requestForm.map.marker.options'
+                    control='requestForm.map.marker.control'
+                    >
+            </ui-gmap-marker>
+
+        </ui-gmap-google-map>
+    </div>
 </section>

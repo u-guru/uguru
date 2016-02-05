@@ -596,6 +596,19 @@ header#home-nav-header.splash-header,
       height: calc(100% - 104px) !important; }
       #request main section > * {
         width: 100%; }
+      #request main section#request-cta-map ui-gmap-google-map {
+        height: calc(100%); }
+      #request main section#request-cta-calendar {
+        overflow: hidden !important; }
+        #request main section#request-cta-calendar .calendar {
+          height: calc(100% - 92px) !important; }
+          #request main section#request-cta-calendar .calendar .calendar-container {
+            overflow: visible; }
+            #request main section#request-cta-calendar .calendar .calendar-container .week-view {
+              height: calc(100% - 60px);
+              overflow: auto; }
+              #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour {
+                display: block; }
     #request main .splash-categories > .main {
       -webkit-transition: all 0.15s ease-in-out;
       -o-transition: all 0.15s ease-in-out;

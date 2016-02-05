@@ -129,8 +129,9 @@ angular.module('uguru.student.controllers', [])
             var cbOptions = {'#cta-box-student-request': triggerRequestFormCTA};
             $timeout(function() {
                 CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
-                $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope);
-                $ionicSlideBoxDelegate.$getByHandle('request-form').enableSlide(false)
+                $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
+                $ionicSlideBoxDelegate.$getByHandle('request-form').enableSlide(false);
+                console.log($scope.requestForm.calendar);
             })
             //request form
             //student files
@@ -179,7 +180,7 @@ angular.module('uguru.student.controllers', [])
                 time = time || 250;
                 $ionicSlideBoxDelegate.slide(index, time);
             }
-            $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'));
+            $scope.requestForm = $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
             updateSlideBoxContainer();
             $timeout(function() {
                 $scope.disableSwipe('request-form');

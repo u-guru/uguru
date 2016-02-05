@@ -712,6 +712,29 @@ header#home-nav-header.splash-header,
 			&>* {
 				width:100%;
 			}
+			&#request-cta-map {
+				ui-gmap-google-map {
+					height: calc(100%);
+				}
+			}
+			&#request-cta-calendar {
+				overflow:hidden !important;
+				.calendar {
+					height:calc(100% - 92px) !important;
+					.calendar-container {
+						overflow:visible;
+						.week-view {
+							height:calc(100% - 60px);
+							overflow:auto;
+							.ugrid-7 {
+								.hour {
+									display:block;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 		.splash-categories {
 			> .main {

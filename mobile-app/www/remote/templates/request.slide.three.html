@@ -1,12 +1,10 @@
-<section id="request-one" class="request-slide">
-    <header>
-        <h1>Request Time</h1>
-    </header>
-    <div class="request-content relative">
-        <div class='full-xy'>
-            <div class='request-time'>
-                <div class='request-form full-x'>
-                    <h2>I think I will need&nbsp;&nbsp;</h2>
+<section id="request-cta-calendar" class="request-slide text-center flex-wrap-center relative full-xy">
+    <div class="time-estimate-container">
+        <div class='full-x ugrid-3 p20xy'>
+            <div> </div>
+            <div class='relative'>
+                <div class='full-x ugrid-4'>
+                    <h2 class='text-right p10x p05y'>I think I will need&nbsp;&nbsp;</h2>
                     <div class="custom-dropdown request-hours">
                         <div>
                             <span>{{request.user.time_estimate.hours}}</span>
@@ -21,7 +19,7 @@
                         </ul>
                         <div class="dropdown-overlay hide ng-class:{'show':page.dropdowns.hour}"></div>
                     </div>
-                    <h2>&nbsp;&nbsp;hr and&nbsp;&nbsp;</h2>
+                    <h2 class='p15xy'>&nbsp;&nbsp;hr and&nbsp;&nbsp;</h2>
                     <div class="custom-dropdown request-minutes">
                         <div>
                             <span>{{request.user.time_estimate.minutes}}</span>
@@ -38,11 +36,35 @@
                         </ul>
                         <div class="dropdown-overlay" ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'></div>
                     </div>
-                    <h2>&nbsp;&nbsp;min</h2>
                 </div>
-                <!-- <div ng-include="img_base + BASE + 'templates/request-cal.html'"></div> -->
             </div>
         </div>
     </div>
-    <button>Next</button>
+    <div class='calendar relative'>
+        <div class='calendar-container absolute top-0 left-0 full-xy'>
+            <div class='full-x p20xy uppercase bg-azure weight-600'>
+                {{requestForm.calendar[0].monthLong}}
+            </div>
+            <div class='week-view'>
+                <div class='ugrid-7 full-x'>
+                    <div ng-repeat='day in requestForm.calendar' class='one-day p20x bg-charcoal full-y'>
+                        <div class='one-day-header full-x p05xy'>
+                            {{day.dayLong}}
+                        </div>
+                        <div class='one-day-container full-xy'>
+                            <span ng-repeat='hour in day.hours' class='hour full-x'>
+                                <span ng-if='hour.start_suffix !== hour.end_suffix'>
+                                    {{hour.formatted_start_hour + hour.start_suffix + '-' + hour.formatted_end_hour + hour.
+                                    end_suffix}}
+                                </span>
+                                <span ng-if='hour.start_suffix === hour.end_suffix'>
+                                    {{hour.formatted_start_hour + '-' + hour.formatted_end_hour + hour.end_suffix}}
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
