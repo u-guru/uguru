@@ -1,53 +1,48 @@
 <section id="request-one" class="request-slide">
     <header>
-        <h1>Where</h1>
+        <h1>Request Time</h1>
     </header>
     <div class="request-content relative">
         <div class='full-xy'>
-            Add Map here
-        </div>
-		<div>
-			<div>
-				<a class="request-edit">Edit</a>
-				<h1 class="request-step small selected">
-					<b>Preferred Payment</b>
-				</h1>
-				<div class="request-selection">
-					<a class='credit-card-wrapper'>
-                        <div id="credit-card-visa" class="credit-card cf relative">
-                            <span class="card-type absolute left-0 top-0 m15xy" ng-include="img_base + BASE + 'templates/cards/visa.html'"></span>
-                            <span class="text-right absolute top-0 right-0 m15x-m15y card-type txt-slate weight-700 uppercase">
-                                <span class='padding-none txt-smoke'>DEFAULT</span>
-                                <span class='padding-none'>Debit Card</span>
-                            </span>
-                            <div class="card-number">**** **** **** 4242</div>
-                            <div class="card-name">{{user.name}}</div>
-                            <div class="valid">
-                                <div class="group">Valid
-                                    <br/>Thru</div>
-                                <div class="expiry">**/**</div>
-                            </div>
+            <div class='request-time'>
+                <div class='request-form full-x'>
+                    <h2>I think I will need&nbsp;&nbsp;</h2>
+                    <div class="custom-dropdown request-hours">
+                        <div>
+                            <span>{{request.user.time_estimate.hours}}</span>
+                            <a ng-click='page.dropdowns.hour = !page.dropdowns.hour'>
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M14,32 L50,68 L86,32"></path>
+                                </svg>
+                            </a>
                         </div>
-                    </a>
-				</div>
+                        <ul class="ng-class:{'active':page.dropdowns.hour}">
+                            <li ng-repeat="_ in maxHourArr" tabindex ng-click="setHourDropdownValue($index + 1)">{{$index + 1}}</li>
+                        </ul>
+                        <div class="dropdown-overlay hide ng-class:{'show':page.dropdowns.hour}"></div>
+                    </div>
+                    <h2>&nbsp;&nbsp;hr and&nbsp;&nbsp;</h2>
+                    <div class="custom-dropdown request-minutes">
+                        <div>
+                            <span>{{request.user.time_estimate.minutes}}</span>
+                            <a ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'>
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M14,32 L50,68 L86,32"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <ul class="ng-class:{'active':page.dropdowns.minutes}">
+                            <li tabindex ng-click='setMinDropdownValue(15)'>15</li>
+                            <li tabindex ng-click='setMinDropdownValue(30)'>30</li>
+                            <li tabindex ng-click='setMinDropdownValue(45)'>45</li>
+                        </ul>
+                        <div class="dropdown-overlay" ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'></div>
+                    </div>
+                    <h2>&nbsp;&nbsp;min</h2>
+                </div>
+                <!-- <div ng-include="img_base + BASE + 'templates/request-cal.html'"></div> -->
             </div>
         </div>
-        <div>
-            <div>
-				<h1 class="request-step small selected">
-					<b>Estimated Total</b>
-				</h1>
-				<div class="request-selection">
-					<h1 class="estimated-total">$50</h1>
-				</div>
-                <button class="request-edit">Edit</button>
-			</div>
-		</div>
-		<div class="request-notes">
-			<div>
-				<h3>Don't worry, we won't charge you until after the session is completed.</h3>
-				<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h3>
-			</div>
-		</div>
-	</div>
+    </div>
+    <button>Next</button>
 </section>

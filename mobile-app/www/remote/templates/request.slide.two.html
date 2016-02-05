@@ -1,48 +1,93 @@
-<section id="request-one" class="request-slide">
-	<header>
-		<h1>Request Time</h1>
-	</header>
-	<div class="request-content relative">
-		<div class='full-xy'>
-			<div class='request-time'>
-				<div class='request-form full-x'>
-					<h2>I think I will need&nbsp;&nbsp;</h2>
-					<div class="custom-dropdown request-hours">
-						<div>
-							<span>{{request.user.time_estimate.hours}}</span>
-							<a ng-click='page.dropdowns.hour = !page.dropdowns.hour'>
-								<svg viewBox="0 0 100 100">
-									<path d="M14,32 L50,68 L86,32"></path>
-								</svg>
-							</a>
-						</div>
-						<ul class="ng-class:{'active':page.dropdowns.hour}">
-							<li ng-repeat="_ in maxHourArr" tabindex ng-click="setHourDropdownValue($index + 1)">{{$index + 1}}</li>
-						</ul>
-						<div class="dropdown-overlay hide ng-class:{'show':page.dropdowns.hour}"></div>
-					</div>
-					<h2>&nbsp;&nbsp;hr and&nbsp;&nbsp;</h2>
-					<div class="custom-dropdown request-minutes">
-						<div>
-							<span>{{request.user.time_estimate.minutes}}</span>
-							<a ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'>
-								<svg viewBox="0 0 100 100">
-									<path d="M14,32 L50,68 L86,32"></path>
-								</svg>
-							</a>
-						</div>
-						<ul class="ng-class:{'active':page.dropdowns.minutes}">
-							<li tabindex ng-click='setMinDropdownValue(15)'>15</li>
-							<li tabindex ng-click='setMinDropdownValue(30)'>30</li>
-							<li tabindex ng-click='setMinDropdownValue(45)'>45</li>
-						</ul>
-						<div class="dropdown-overlay" ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'></div>
-					</div>
-					<h2>&nbsp;&nbsp;min</h2>
-				</div>
-				<!-- <div ng-include="img_base + BASE + 'templates/request-cal.html'"></div> -->
+<section class="request-slide full-xy text-center flex-wrap-center">
+	<div class="course-choose-container">
+		<div>
+			<h1 class='full-x text-center uppercase weight-600'> Select one of your courses  </h1>
+			<div class='full-x p20xy text-center'>
+				<ul class='desktop-card-list full-x flex-wrap-center'>
+					<li class='course-item p20xy m10x weight-400' ng-class='{"bg-cerise": request.course.id === course.id, "bg-slate-50": request.course.id !== course.id}' ng-click='request.course = course' ng-repeat='course in user.student_courses'>
+						{{course.short_name}}
+					</li>
+					<li class='course-item p20xy m10x bg-slate-50p weight-400' ng-click=''>
+						Add One
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
-	<button>Next</button>
+	<div class='text-area-container flex-wrap-center p15x p20y'>
+		<textarea class="input-outline" rows="4" ng-model='newRequest.info.description' placeholder="Please provide as much detail as possible"></textarea>
+	</div>
+	<div class='tags-container p15x p20y'>
+		<div class='tag-list full-x flex-wrap-center'>
+			<a class="chip tag-selected" ng-click='removeTagFromRequest($index, tag)' ng-repeat="tag in newRequest.info.tags">
+				<span>&times;&nbsp;&nbsp;</span>
+				<span>{{tag.name}}</span>
+			</a>
+			<input class='chip tag-add' ng-model='newRequest.info.empty_tag.name' ng-blur='addRequestTagAndInitEmpty($event, "blur")' ng-keyup="$event.keyCode == 13 && addRequestTagAndInitEmpty($event)" placeholder="+&nbsp;&nbsp;add a tag" size="{{newRequest.info.empty_tag.name.length || 10}}">
+		</div>
+	</div>
+	<div class='attachment-container'>
+				<div class='attachment-list flex-wrap-center'>
+					<ul style='height:125px'>
+						<li class='full-y'>
+							<div class="attach-upload-file attach-upload-doc">
+								<svg class="doc-outline" viewBox="0 0 75 75" fill="{{user.university.school_color_dark}}" style="fill: {{user.university.school_color_dark}}!important;">
+									<path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
+								</svg>
+		                        <a href='{{file.url || "#"}}' target='_blank'>
+									<svg viewBox="0 0 100 100">
+										<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+									</svg>
+								</a>
+		                        <a href='{{file.url || "#"}}' target='_blank' class='m20left'>
+									<svg viewBox="0 0 100 100">
+		                                <path d="M27,38 L51,14 L75,38 M51.5,14 L51.5,86"></path>
+									</svg>
+								</a>
+								<span class="doc-info txt-smoke">
+									<span class="doc-name">{{file.name || 'something'}}</span>
+									<span class="doc-type">{{file.type.toUpperCase() || 'docx'}}</span>
+								</span>
+							</div>
+
+							<div class="attach-upload-img" style="background-image: url( {{file.url}} || {{img_base + '/img/stock/photography/5.jpg'}});" ng-if='false'>
+								<svg class="img-outline" viewBox="0 0 75 75" fill="{{user.university.school_color_dark}}" style="fill: {{user.university.school_color_dark}}!important;">
+									<path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
+								</svg>
+								<a href='{{file.url || "#"}}' target='_blank'>
+									<svg viewBox="0 0 100 100">
+										<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+									</svg>
+								</a>
+		                        <a class="doc-info" href='{{file.url || "#"}}' target='_blank'>
+		                            <svg viewBox="0 0 100 100">
+										<path d="M27,38 L51,14 L75,38 M51.5,14 L51.5,86"></path>
+									</svg>
+		                            <span>
+		                                <span class="doc-name">{{file.name}}</span>
+		                                <span class="doc-type">{{file.type.toUpperCase()}}</span>
+		                            </span>
+		                        </a>
+							</div>
+						</li>
+
+						<li ng-if='false'>
+							<div class="attach-upload-add">
+								<svg class="square" viewBox="0 0 100 100">
+									<rect x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<a>
+									<span>
+										<svg viewBox="0 0 100 100">
+											<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+										</svg>
+										<span>Add File</span>
+									</span>
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 </section>

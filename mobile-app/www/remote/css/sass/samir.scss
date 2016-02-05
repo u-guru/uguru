@@ -669,3 +669,532 @@ header#home-nav-header.splash-header,
 		margin-left: 33.33% !important;
 	}
 }
+
+
+#request {
+	height: 100%;
+	#request-form-progress {
+		bottom:60px !important;
+		top:initial !important;
+	}
+	header.desktop-tab-header {
+		@include flex;
+		@include flex-center;
+		@include flex-wrap;
+		height: calc(100% / 4);
+		background: $shamrock !important;
+		h1 {
+			padding-bottom: 60px;
+			font-size: 48px;
+			text-align: center;
+			text-transform: none!important;
+		}
+		.tab-bar {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background: rgba($slate,.4);
+			a {
+				color:white;
+				text-align:center;
+			}
+		}
+	}
+	main {
+		@include flex;
+		@include flex-wrap;
+		height: calc(100% / 4 * 3);
+		overflow: auto;
+		section {
+			//account for the footer button container, height 104px;
+			height:calc(100% - 104px) !important;
+			&>* {
+				width:100%;
+			}
+		}
+		.splash-categories {
+			> .main {
+				@include transition(.15s ease-in-out);
+				@include flex-wrap;
+				-webkit-align-items: flex-start;
+				align-items: flex-start;
+				width: 100%;
+				background: $smoke;
+				&:not(.active) {
+					@include opacity(0);
+					display: none;
+				}
+				&.active {
+					@include opacity(1);
+					display: block;
+				}
+				&#splash-livemap {
+					height: 600px;
+				}
+				> div {
+					@include flex;
+					@include flex-wrap;
+					width: 100%;
+					> h1, > h2, > div > h1, > div > h2 {
+						width: 100%;
+						text-align: center;
+					}
+					> h1, > div > h1 {
+						font-size: 24px;
+						font-weight: 600;
+						span:first-letter {
+							text-transform: uppercase;
+						}
+					}
+					> h2, > div > h2 {
+						margin: 5px auto 7.5px;
+						font-size: 16px;
+						font-weight: 400;
+					}
+					> div {
+						position: relative;
+						width: 100%;
+						&:last-child {
+							-webkit-align-self: flex-end;
+							align-self: flex-end;
+						}
+					}
+				}
+				// CATEGORY CARDS
+				.category-card-list {
+					@include listless;
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					li {
+						width: calc(100% / 3);
+						padding: 0;
+						@media screen and (max-width: 768px) {
+							&.card-button {
+								width: 100%!important;
+							}
+						}
+						button {
+							max-width: 100%;
+						}
+						> div {
+							height: 200px;
+							background-position: center center;
+							background-size: cover;
+							// overflow: hidden;
+							a, > span {
+								@include flex;
+								@include flex-wrap;
+								@include flex-center;
+								position: relative;
+								width: 100%;
+								height: 100%;
+								background:transparent;
+								background-color:transparent;
+								&:before {
+									@include transition(.15s ease-in-out);
+									@include opacity(.6);
+									content: "";
+									display: block;
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 100%;
+									height: 100%;
+									background: $slate;
+								}
+								span {
+									position: relative;
+									z-index: 5;
+								}
+								.card-icon {
+									display: block;
+									margin: 0 auto;
+									padding: 15px;
+									max-width: 120px;
+									max-height: 120px;
+									svg {
+										@include round;
+										display: block;
+										width: 100%;
+										height: auto;
+										padding: 5px;
+										background: $shamrock;
+										path, circle {
+											@include svg-stroke(white, 2);
+										}
+									}
+								}
+								.card-label {
+									display: block;
+									color:white;
+									margin-top: -10px;
+									width: 100%;
+									font-weight: 600;
+									font-size: 12px;
+									text-align: center;
+									display: block;
+								}
+								&.bg-delivery {
+									border-color: $auburn;
+									.card-icon svg {
+										background: $auburn;
+									}
+								}
+								&.bg-freelancing {
+									border-color: $orange;
+									.card-icon svg {
+										background: $orange;
+									}
+								}
+								&.bg-baking {
+									border-color: $gold;
+									.card-icon svg {
+										background: $gold;
+									}
+								}
+								&.bg-photography {
+									border-color: $moola;
+									.card-icon svg {
+										background: $moola;
+									}
+								}
+								&.bg-more {
+									border-color: $shamrock;
+									.card-label {
+										color: white!important;
+									}
+									.card-icon svg {
+										background: $shamrock;
+									}
+								}
+								&.bg-tech {
+									border-color: $azure;
+									.card-icon svg {
+										background: $azure;
+									}
+								}
+								&.bg-household {
+									border-color: $cobalt;
+									.card-icon svg {
+										background: $cobalt;
+									}
+								}
+								&.bg-athletic {
+									border-color: $eggplant;
+									.card-icon svg {
+										background: $eggplant;
+									}
+								}
+								&.bg-academic {
+									border-color: $cerise;
+									.card-icon svg {
+										background: $cerise;
+									}
+								}
+							}
+							a {
+								&:hover, &:focus {
+									&:before {
+										background: $shamrock;
+									}
+								}
+								&:active {
+									&:before {
+										@include opacity(.8);
+									}
+								}
+								&.bg-delivery {
+									&:hover, &:focus {
+										&:before {
+											background: $auburn;
+										}
+									}
+								}
+								&.bg-freelancing {
+									&:hover, &:focus {
+										&:before {
+											background: $orange;
+										}
+									}
+								}
+								&.bg-baking {
+									&:hover, &:focus {
+										&:before {
+											background: $gold;
+										}
+									}
+								}
+								&.bg-photography {
+									&:hover, &:focus {
+										&:before {
+											background: $moola;
+										}
+									}
+								}
+								&.bg-tech {
+									&:hover, &:focus {
+										&:before {
+											background: $azure;
+										}
+									}
+								}
+								&.bg-household {
+									&:hover, &:focus {
+										&:before {
+											background: $cobalt;
+										}
+									}
+								}
+								&.bg-athletic {
+									&:hover, &:focus {
+										&:before {
+											background: $eggplant;
+										}
+									}
+								}
+								&.bg-academic {
+									&:hover, &:focus {
+										&:before {
+											background: $cerise;
+										}
+									}
+								}
+							}
+							> span:not(.bg-more) {
+								&:before {
+									@include opacity(.2);
+								}
+								&.bg-delivery {
+									&:before {
+										background: $auburn;
+									}
+								}
+								&.bg-freelancing {
+									&:before {
+										background: $orange;
+									}
+								}
+								&.bg-baking {
+									&:before {
+										background: $gold;
+									}
+								}
+								&.bg-photography {
+									&:before {
+										background: $moola;
+									}
+								}
+								&.bg-tech {
+									&:before {
+										background: $azure;
+									}
+								}
+								&.bg-household {
+									&:before {
+										background: $cobalt;
+									}
+								}
+								&.bg-athletic {
+									&:before {
+										background: $eggplant;
+									}
+								}
+								&.bg-academic {
+									&:before {
+										background: $cerise;
+									}
+								}
+							}
+						}
+					}
+				}
+				// SUBCATEGORY CARDS
+				.subcategory-card-list {
+					@include flex;
+					@include flex-wrap;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: $smoke;
+					&.not-selected, &:not(.selected) {
+						@include opacity(0);
+						z-index: -99;
+					}
+					&.selected {
+						@include opacity(1);
+						z-index: 98;
+					}
+					.category-card-list {
+						margin: 0!important;
+						-webkit-align-items: flex-start;
+						align-items: flex-start;
+						-webkit-align-self: flex-start;
+						align-self: flex-start;
+						-webkit-justify-content: flex-start;
+						justify-content: flex-start;
+						height: calc(100% - 64px);
+						li {
+							width: 50%;
+							height: 25%;
+							&:nth-child(9), &:nth-child(10) {
+								display: none;
+							}
+							> div {
+								background: none;
+								height: 100%;
+								.card-label {
+									display: block!important;
+									margin-top: 0;
+									padding: 0;
+									color: white!important;
+									font-weight: 600;
+									font-size: 16px;
+								}
+								> span {
+									&:before {
+										display: none!important;
+									}
+									&:first-child {
+										height: calc(100% - 30px);
+									}
+									.card-icon {
+										padding: 0;
+										max-width: 36px;
+										max-height: 36px;
+										svg {
+											background: none!important;
+											padding: 0!important;
+											* {
+												stroke-width: 4px!important;
+											}
+										}
+									}
+									&.card-price {
+										height: 30px!important;
+										color: white;
+										font-size: 16px;
+										font-weight: 600;
+										&:before {
+											display: none!important;
+										}
+										&.bg-delivery {
+											background: $auburn;
+										}
+										&.bg-freelancing {
+											background: $orange;
+										}
+										&.bg-baking {
+											background: $gold;
+										}
+										&.bg-photography {
+											background: $moola;
+										}
+										&.bg-tech {
+											background: $azure;
+										}
+										&.bg-household {
+											background: $cobalt;
+										}
+										&.bg-athletic {
+											background: $eggplant;
+										}
+										&.bg-academic {
+											background: $cerise;
+										}
+									}
+								}
+							}
+						}
+					}
+					button {
+						-webkit-align-self: flex-end;
+						align-self: flex-end;
+						display: block;
+						width: 100%;
+						max-width: none;
+						color: white;
+						&:hover, &:focus {
+							background: lighten($slate, 15%);
+						}
+					}
+					&.sub-delivery {
+						background: mix($auburn, lighten($slate, 15%), 40%);
+						button {
+							background: $auburn;
+							&:active {
+								background: lighten($auburn, 15%);
+							}
+						}
+					}
+					&.sub-freelancing {
+						background: mix($orange, lighten($slate, 15%), 40%);
+						button {
+							background: $orange;
+							&:active {
+								background: lighten($orange, 15%);
+							}
+						}
+					}
+					&.sub-baking {
+						background: mix($gold, lighten($slate, 15%), 40%);
+						button {
+							background: $gold;
+							&:active {
+								background: lighten($gold, 5%);
+							}
+						}
+					}
+					&.sub-photography {
+						background: mix($moola, lighten($slate, 15%), 40%);
+						button {
+							background: $moola;
+							&:active {
+								background: lighten($moola, 15%);
+							}
+						}
+					}
+					&.sub-tech {
+						background: mix($azure, lighten($slate, 15%), 40%);
+						button {
+							background: $azure;
+							&:active {
+								background: lighten($azure, 15%);
+							}
+						}
+					}
+					&.sub-household {
+						background: mix($cobalt, lighten($slate, 15%), 40%);
+						button {
+							background: $cobalt;
+							&:active {
+								background: lighten($cobalt, 15%);
+							}
+						}
+					}
+					&.sub-athletic {
+						background: mix($eggplant, lighten($slate, 15%), 40%);
+						button {
+							background: $eggplant;
+							&:active {
+								background: lighten($eggplant, 15%);
+							}
+						}
+					}
+					&.sub-academic {
+						background: mix($cerise, lighten($slate, 15%), 40%);
+						button {
+							background: $cerise;
+							&:active {
+								background: lighten($cerise, 20%);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
