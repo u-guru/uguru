@@ -107,11 +107,14 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	          	// var animationOnCompleteExpr = indexChild.getAttribute('anim-exit-up-complete');
         	}
       	} else {
-	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.attributes['anim-' + type + '-class'].value.split(', ')
-	          var animationDelaysToInject = element.attributes['anim-' + type + '-delay'] && element.attributes['anim-' + type + '-delay'].value.value.split(', ')
+	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.getAttribute('anim-' + type + '-class').split(', ');
+	          var animationDelaysToInject = element.attributes['anim-' + type + '-delay'] && element.getAttribute('anim-' + type + '-delay').split(', ');
 	          if (!animationClassToInject || !animationClassToInject.length) {
 	          	return;
 	          }
+	          if (!animationDelaysToInject) {
+	          		animationDelaysToInject = [0,0,0,0,0];
+	          	}
 	          for (var i = 0; i < animationClassToInject.length; i++) {
 	          	var indexClassOfParent= animationClassToInject[i] || '';
           		var indexOffsetOfParent = animationDelaysToInject[i] || 0;
@@ -146,11 +149,14 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	          	// var animationOnCompleteExpr = indexChild.getAttribute('anim-exit-up-complete');
         	}
       	} else {
-	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.attributes['anim-' + type + '-class'].value.split(', ')
-	          var animationDelaysToInject = element.attributes['anim-' + type + '-delay'] && element.attributes['anim-' + type + '-delay'].value.value.split(', ')
+	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.getAttribute('anim-' + type + '-class').split(', ');
+	          var animationDelaysToInject = element.attributes['anim-' + type + '-delay'] && element.getAttribute('anim-' + type + '-delay').split(', ');
 	          if (!animationClassToInject || !animationClassToInject.length) {
 	          	return;
 	          }
+	          if (!animationDelaysToInject) {
+	          		animationDelaysToInject = [0,0,0,0,0];
+	          	}
 	          for (var i = 0; i < animationClassToInject.length; i++) {
 	          	var indexClassOfParent= animationClassToInject[i] || '';
           		var indexOffsetOfParent = animationDelaysToInject[i] || 0;

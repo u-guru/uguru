@@ -598,6 +598,84 @@ header#home-nav-header.splash-header,
         width: 100%; }
       #request main section#request-cta-map ui-gmap-google-map {
         height: calc(100%); }
+      #request main section#request-cta-payment .offer-price-container {
+        width: 100%;
+        max-width: 800px;
+        background: #F1F1F1;
+        text-align: center; }
+        #request main section#request-cta-payment .offer-price-container h1,
+        #request main section#request-cta-payment .offer-price-container h3 {
+          color: #2B3234; }
+        #request main section#request-cta-payment .offer-price-container h1 {
+          padding: 15px 15px 0;
+          font-weight: 900;
+          font-size: 32px; }
+        #request main section#request-cta-payment .offer-price-container h3 {
+          margin-top: 0;
+          font-size: 20px;
+          font-weight: 600;
+          padding: 0 15px; }
+        #request main section#request-cta-payment .offer-price-container ul {
+          -webkit-align-items: center;
+          align-items: center;
+          padding: 15px;
+          height: calc(100% - 141px); }
+          #request main section#request-cta-payment .offer-price-container ul li {
+            position: relative;
+            padding: 15px; }
+            #request main section#request-cta-payment .offer-price-container ul li a {
+              display: block;
+              position: relative;
+              font-size: 48px;
+              font-weight: 600;
+              color: white; }
+              #request main section#request-cta-payment .offer-price-container ul li a span,
+              #request main section#request-cta-payment .offer-price-container ul li a .add {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                display: block; }
+              #request main section#request-cta-payment .offer-price-container ul li a .add {
+                fill: none;
+                stroke: white;
+                stroke-width: 5px;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                width: 80px;
+                height: 80px; }
+              #request main section#request-cta-payment .offer-price-container ul li a svg rect {
+                fill: #2B3234; }
+              #request main section#request-cta-payment .offer-price-container ul li a:hover svg rect, #request main section#request-cta-payment .offer-price-container ul li a:focus svg rect, #request main section#request-cta-payment .offer-price-container ul li a.active svg rect {
+                fill: #81B566; }
+              #request main section#request-cta-payment .offer-price-container ul li a:active svg rect {
+                fill: #679c4c; }
+            #request main section#request-cta-payment .offer-price-container ul li:last-child .price-fill {
+              display: none;
+              position: absolute;
+              top: 15px;
+              left: 15px;
+              width: calc(100% - 30px);
+              height: calc(100% - 30px);
+              background: white;
+              border: 3px solid #81B566; }
+              #request main section#request-cta-payment .offer-price-container ul li:last-child .price-fill input {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                border: 0;
+                background: none;
+                font-size: 48px;
+                font-weight: 600; }
       #request main section#request-cta-calendar {
         overflow: hidden !important; }
         #request main section#request-cta-calendar .time-estimate-container .custom-dropdown ul {
