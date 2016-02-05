@@ -600,6 +600,13 @@ header#home-nav-header.splash-header,
         height: calc(100%); }
       #request main section#request-cta-calendar {
         overflow: hidden !important; }
+        #request main section#request-cta-calendar .time-estimate-container .custom-dropdown ul {
+          height: auto;
+          top: 50%;
+          margin-top: 24px;
+          left: -94%;
+          -webkit-transform: translate(0, 0);
+          transform: translate(0, 0); }
         #request main section#request-cta-calendar .calendar {
           height: calc(100% - 92px) !important; }
           #request main section#request-cta-calendar .calendar .calendar-container {
@@ -609,6 +616,30 @@ header#home-nav-header.splash-header,
               overflow: auto; }
               #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour {
                 display: block; }
+                #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-range {
+                  font-size: 11px;
+                  text-align: left;
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  opacity: 0.5;
+                  border-bottom: 1px solid rgba(241, 241, 241, 0.5); }
+                #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval {
+                  opacity: 0;
+                  cursor: pointer; }
+                  #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval:hover {
+                    @extends .high-z-index;
+                    opacity: 1;
+                    visibility: visible !important;
+                    font-size: 11px;
+                    font-weight: 700;
+                    color: #FFFFFF !important;
+                    background: #40484B; }
+                  #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval.bg-shamrock {
+                    background-color: #69B3A5;
+                    opacity: 1;
+                    font-size: 11px;
+                    font-weight: 700;
+                    color: #FFFFFF !important; }
     #request main .splash-categories > .main {
       -webkit-transition: all 0.15s ease-in-out;
       -o-transition: all 0.15s ease-in-out;

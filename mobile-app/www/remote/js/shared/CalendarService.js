@@ -104,6 +104,7 @@ function CalendarService() {
       if (index < 10) {
         return "0" + index;
       }
+      return "" + index;
     }
 
     function isAMorPM(index, start_interval, end_interval) {

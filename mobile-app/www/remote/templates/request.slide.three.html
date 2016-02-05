@@ -2,39 +2,39 @@
     <div class="time-estimate-container">
         <div class='full-x ugrid-3 p20xy'>
             <div> </div>
-            <div class='relative'>
-                <div class='full-x ugrid-4'>
+            <div class='relative request-time'>
+                <div class='full-x ugrid-4 request-form high-z-index'>
                     <h2 class='text-right p10x p05y'>I think I will need&nbsp;&nbsp;</h2>
                     <div class="custom-dropdown request-hours">
                         <div>
-                            <span>{{request.user.time_estimate.hours}}</span>
-                            <a ng-click='page.dropdowns.hour = !page.dropdowns.hour'>
+                            <span>{{requestForm.time_estimate.hours}}</span>
+                            <a ng-click='requestForm.time_estimate.showHoursToggle(requestForm)'>
                                 <svg viewBox="0 0 100 100">
                                     <path d="M14,32 L50,68 L86,32"></path>
                                 </svg>
                             </a>
                         </div>
-                        <ul class="ng-class:{'active':page.dropdowns.hour}">
-                            <li ng-repeat="_ in maxHourArr" tabindex ng-click="setHourDropdownValue($index + 1)">{{$index + 1}}</li>
+                        <ul class="ng-class:{'active':requestForm.time_estimate.showHours}">
+                            <li ng-repeat="_ in maxHourArr" tabindex ng-click="requestForm.time_estimate.setHours(requestForm, $index + 1)">{{$index + 1}}</li>
                         </ul>
-                        <div class="dropdown-overlay hide ng-class:{'show':page.dropdowns.hour}"></div>
+                        <div class="dropdown-overlay hide ng-class:{'show':requestForm.time_estimate.showHours}"></div>
                     </div>
                     <h2 class='p15xy'>&nbsp;&nbsp;hr and&nbsp;&nbsp;</h2>
                     <div class="custom-dropdown request-minutes">
                         <div>
-                            <span>{{request.user.time_estimate.minutes}}</span>
-                            <a ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'>
+                            <span>{{requestForm.time_estimate.minutes}}</span>
+                            <a ng-click='requestForm.time_estimate.showMinutesToggle(requestForm)'>
                                 <svg viewBox="0 0 100 100">
                                     <path d="M14,32 L50,68 L86,32"></path>
                                 </svg>
                             </a>
                         </div>
-                        <ul class="ng-class:{'active':page.dropdowns.minutes}">
-                            <li tabindex ng-click='setMinDropdownValue(15)'>15</li>
-                            <li tabindex ng-click='setMinDropdownValue(30)'>30</li>
-                            <li tabindex ng-click='setMinDropdownValue(45)'>45</li>
+                        <ul class="ng-class:{'active':requestForm.time_estimate.showMinutes}">
+                            <li tabindex ng-click='requestForm.time_estimate.setMinutes(requestForm, 15)'>15</li>
+                            <li tabindex ng-click='requestForm.time_estimate.setMinutes(requestForm, 30)'>30</li>
+                            <li tabindex ng-click='requestForm.time_estimate.setMinutes(requestForm, 45)'>45</li>
                         </ul>
-                        <div class="dropdown-overlay" ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'></div>
+                        <div class="dropdown-overlay" ng-click='requestForm.time_estimate.showMinutesToggle(requestForm)'></div>
                     </div>
                 </div>
             </div>
@@ -47,19 +47,23 @@
             </div>
             <div class='week-view'>
                 <div class='ugrid-7 full-x'>
-                    <div ng-repeat='day in requestForm.calendar' class='one-day p20x bg-charcoal full-y'>
-                        <div class='one-day-header full-x p05xy'>
-                            {{day.dayLong}}
+                    <div ng-repeat='day in ::requestForm.calendar' class='one-day p20x bg-charcoal full-y'>
+                        <div class='one-day-header full-x p05xy bg-slate-50p txt-smoke weight-600 full-x'>
+                            {{::day.dayLong}}
                         </div>
                         <div class='one-day-container full-xy'>
-                            <span ng-repeat='hour in day.hours' class='hour full-x'>
-                                <span ng-if='hour.start_suffix !== hour.end_suffix'>
-                                    {{hour.formatted_start_hour + hour.start_suffix + '-' + hour.formatted_end_hour + hour.
-                                    end_suffix}}
+                            <span ng-repeat='hour in ::day.hours' class='hour flex-wrap-center full-xy relative' style="min-height:50px;">
+                                <span ng-if='hour.start_suffix !== hour.end_suffix' class='hour-range full-xy absolute top-0 left-0'>
+                                    {{hour.formatted_start_hour + hour.start_suffix + '-' + hour.formatted_end_hour + hour.end_suffix}}
                                 </span>
-                                <span ng-if='hour.start_suffix === hour.end_suffix'>
+                                <span ng-if='hour.start_suffix === hour.end_suffix' class='hour-range full-xy absolute top-0 left-0'>
                                     {{hour.formatted_start_hour + '-' + hour.formatted_end_hour + hour.end_suffix}}
                                 </span>
+                                <div class='full-xy absolute top-0 left-0 high-z-index flex-wrap'>
+                                    <a class='full-x weight-400 hour-interval txt-charcoal' ng-class="{'bg-shamrock':interval.selected}" ng-repeat='interval in ::hour.intervals' ng-click='interval.selected = !interval.selected'>
+                                        {{ hour.formatted_start_hour + ':' + interval.formatted_start_minute + '-' + hour.formatted_start_hour + ':' + interval.formatted_end_minute}}
+                                    </a>
+                                </div>
                             </span>
                         </div>
                     </div>

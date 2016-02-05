@@ -60,6 +60,26 @@ function RequestService(Category, CalendarService) {
 
   }
 
+  function setRequestTimeEstimateHours(form, value) {
+    form.time_estimate.hours = value;
+    form.time_estimate.showHours = false;
+  }
+
+  function setRequestTimeEstimateMinutes(form, value) {
+    form.time_estimate.minutes = value;
+    form.time_estimate.showMinutes = false;
+  }
+
+  function toggleHoursDropdown(form) {
+    form.time_estimate.showMinutes = false;
+    form.time_estimate.showHours = !form.time_estimate.showHours;
+  }
+
+  function toggleMinutesDropdown(form) {
+    form.time_estimate.showHours = false;
+    form.time_estimate.showMinutes = !form.time_estimate.showMinutes;
+  }
+
   function initStudentForm(slide_box, scope, lat, long, color) {
     console.log('subcategories', Category.getAcademic());
     return {
@@ -72,7 +92,7 @@ function RequestService(Category, CalendarService) {
       files: [],
       payment_card: null,
       calendar: null,
-      time_estimate: {hours: null, minutes:null},
+      time_estimate: {hours: 1, minutes:30, showHours:false, showHoursToggle: toggleHoursDropdown, showMinutesToggle: toggleMinutesDropdown, showMinutes:false, setHours:setRequestTimeEstimateHours, setMinutes:setRequestTimeEstimateMinutes},
       position: {latitude: null, longitude: null},
       calendar: CalendarService.getNextSevenDaysArr(),
       scope: scope,
