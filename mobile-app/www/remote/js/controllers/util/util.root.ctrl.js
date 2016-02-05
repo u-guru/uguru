@@ -46,9 +46,15 @@ angular.module('uguru.util.controllers')
          KeyboardService, ModalService, Github, LoadingService,
          $ionicSlideBoxDelegate, AnimationService) {
 
-        if (DeviceService.isIOSBrowser()) {
-            document.body.parentElement.style.webkitOverflowScrolling = 'touch !important;';
-        }
+
+        // if (DeviceService.isIOSBrowser()) {
+        //     document.body.parentElement.style.webkitOverflowScrolling = 'touch !important;';
+        // }
+
+        $scope.root = RootService;
+        $scope.root.vars = {};
+        Utilities.compileToAngular('body-loading-div', $scope);
+        $scope.root.loader = {body: {hide:false}};
 
         var bodyRect;
         var windowHeight;
@@ -259,8 +265,7 @@ angular.module('uguru.util.controllers')
         $scope.getCategories(saveCategoriesToRootScope)
 
         $scope.rootUser = User;
-        $scope.root = RootService;
-        $scope.root.vars = {};
+
 
         if (window.location.hash.indexOf('essay') > -1 || window.location.hash.indexOf('hs') > -1 || $scope.user.hs_student) {
             $scope.root.vars.hs_mode = true;
@@ -755,7 +760,9 @@ angular.module('uguru.util.controllers')
         }
 
         if ($state.current.name !== 'root.home') {
-            bodyLoadingDiv.classList.add('hide');
+            $timeout(function() {
+                $scope.root.loader.body.hide = true;
+            }, 1500)
         }
 
 

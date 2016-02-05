@@ -15,6 +15,17 @@ angular.module('uguru.util.controllers')
 	'CTAService',
 	function($scope, $state, $stateParams, Restangular, User, $ionicSideMenuDelegate, LoadingService, $timeout, University, TimelineService, CTAService) {
 
+		$scope.showAdmin = false;
+
+		if (!$scope.user || !$scope.user.id || !$scope.user.is_admin) {
+			LoadingService.showMsg('404', 4000, function() {
+				$state.go('^.desktop-login');
+			})
+		} else {
+			$scope.showAdmin = true;
+		}
+
+
 		//first format by
 		$scope.page = {active: {tabName: 'Home', progress:null}};
 		var NUM_PRIORITIZED = 16;
@@ -27,33 +38,76 @@ angular.module('uguru.util.controllers')
 		//@GABRIELLE-NOTE
 		$scope.moodboardComponents = [
 			{
-				name: "Cards",
-				cta_box_bg: 'bg-azure',
-				description: "Cards with a purpose",
-				top_five: [
+				name: "Search",
+				cta_box_bg: 'bg-cerise',
+				description: "",
+				date: "January 19, 2016",
+				top: [
 					{
-						title: "Google's Material Cards",
-						reference: "http://www.google.com",
+						title: "Search Behavior Concept",
+						reference: "https://dribbble.com/shots/2467219-Search-behaviour",
+						type: "mobile",
+						banner: "https://d13yacurqjgara.cloudfront.net/users/118673/screenshots/2467219/garadge2-15.png",
 					},
 					{
-						title: "Pinterest's Material Cards",
-						reference: "http://www.Pinterests.com",
-						//@GABRIELLE-NOTE (feel free to add other fields)
+						title: "Craiglist Redesign Concept",
+						reference: "https://dribbble.com/shots/2361864-Craiglist-Mobile-animation",
+						type: "mobile",
+						banner: "https://d13yacurqjgara.cloudfront.net/users/30252/screenshots/2361864/craiglist-mobile-dribbble.gif",
+					},
+					{
+						title: "Tumblr",
+						reference: "http://tumblr.com",
+						type: "both",
+					},
+					{
+						title: "Style Seat",
+						reference: "https://itunes.apple.com/us/app/styleseat-beauty-barber-appointments/id414313281",
+						type: "mobile",
+					},
+					{
+						title: "8tracks",
+						reference: "https://itunes.apple.com/us/app/8tracks-playlist-radio-free/id346194763",
+						type: "mobile",
+					},
+					{
+						title: "Twitter",
+						reference: "https://itunes.apple.com/us/app/twitter/id409789998",
+						type: "desktop",
+					},
+					{
+						title: "Google Maps",
+						reference: "http://google.com/maps",
+						type: "desktop",
+					},
+					{
+						title: "Google Inbox",
+						reference: "http://inbox.google.com",
+						type: "desktop",
+					},
+					{
+						title: "Fantastical 2",
+						reference: "https://itunes.apple.com/us/app/fantastical-2-calendar-reminders/id975937182",
+						type: "desktop",
 					}
 
 				],
 				icebox: [
-
 					{
-						title: "Yahoo's Material Cards",
-						reference: "http://www.yahoo.com",
+						title: "Washington University",
+						reference: "http://oncologyk12.wustl.edu/?s=oncology",
+						type: "desktop",
 					},
 					{
-						title: "Facebooks's Material Cards",
-						reference: "http://www.facebook.com",
+						title: "Facebook",
+						reference: "https://itunes.apple.com/us/app/facebook/id284882215",
+						type: "mobile",
+					},
+					{
+						title: "Slack",
+						reference: "https://itunes.apple.com/us/app/slack-team-communication/id618783545",
+						type: "mobile",
 					}
-					// add however many
-
 				]
 			},
 			//end day 1
@@ -154,7 +208,7 @@ angular.module('uguru.util.controllers')
 		// --- --- action_item =
 
 
-		$scope.adminTabs = ["Home", "Universities", "Roles", "Calendar", "Guides",  "Moodboards", "Glossary"];
+		$scope.adminTabs = ["Home", "Universities", "Roles", "Moodboards"];
 		$scope.projects = [
 			{name:'Pre-app (Universities, Sidebar)'},
 			{name: 'Login/Logout + Signup + School Email Verify'},
@@ -316,52 +370,65 @@ angular.module('uguru.util.controllers')
 			projects: [
 				{
 					name: "Home",
-					alpha: ["Bind + compile the home loader", "Bind Sidebar Transition + resolve mobile", "Team CTA + Filled out", "Replace & MVP FAQ", "CTA from Sidebar", "Navbar everything", "Make Maps Fast", "Scroll Reveal Handlers + MVP"],
+					priority:{samir: 2, gabrielle:1, jeselle:2},
+					alpha: ["T: Bind + compile the home loader", "Bind Sidebar Transition + resolve mobile", "Team CTA + Filled out", "Replace & MVP FAQ", "CTA from Sidebar", "Navbar everything", "Make Maps Fast", "Scroll Reveal Handlers + MVP"],
 					beta: ["Verify Main 100%", "Verify Navbar 100%", "Verify Sidebar 100%", "Verify University 100%", "Verify Become Guru/How-it-works"],
-					production: ["G:Nail the scroll reveal animations", "G:Browse Tab bar", "B: Top Section", "B: Approve Content on MVP Completion", "J:Verify Components", "J:Make Homepage:DesignGuide w/ best practices = 1:1"],
+					production: ["J: Main top section brainstorm", "J: Desktop/Mobile Iterate until 100%", "G: Mobilized already complete desktop sections", "G: Sidebar Animations/OnScroll (Mobile+Desktop)", "G: Mobile Nav + Smooth Scroll","University Search (discuss+spec+impl)", "G:Animation Spec+Check-in+Implement", "B: Verify + Finalize"]
 				},
 				{
 					name: "University",
+					priority: {samir: 1, gabrielle:3},
 					alpha: ["Improve Scroll", "Make Maps Fast", "Mobile App Support", "Scroll Reveal Handlers + MVP"],
 					beta: ["Verify Main 100%", "Verify Navbar 100%", "Verify Sidebar 100%", "Verify University 100%", "Verify Become Guru/How-it-works"],
-					production: ["G: Apply Course Spec to Course Search", "B: Discuss & Finalize Top Section", "B: Approve Content on MVP Completion"],
+					production: [ "G: Discuss + Finalize format w/ Samir", "G: Update Course Search from Zeplin", "G: Mobile/Desktop Top Section", "B: Verify + Finalize"],
 				},
 				{
 					name: "Logo",
-					production: ["B:First Iteration", "G:Embed into app", "J:Update Design Guide"]
+					priority: {gabrielle: 5, jeselle: 3},
+					production: ["B:First Iteration", "J: Juxtapose Icon into app", "G:Embed into app", "G: Animate into App", "J:Update Design Guide"]
 				},
 				{
 					name: "Content",
+					priorities: {jeselle:2},
 					alpha: ["Home > Main > Top Section", "FAQ", "Become Guru", "How it works", "University Templating"],
-					beta: ["All Home Page Content Renders"],
-					production: ["G: Verify content meets limitations aesthetically"]
+					production: ["G: Verify content meets limitations aesthetically", "J: Choose category icons for upwork"]
 				},
 				{
 					name: "Analytics",
 					alpha: ["Inspectlet MVP", "Mixpanel MVP", "Separate Local, Dev, Production", "Finalize Tools List + Add to Admin"],
-					beta: ["Test Inspectlet Works", "Test Mixpanel Work"],
 					production: ["B:Become Familiar With Tools"]
 				},
 				{
 					name: "Cleanup/Wrapup",
 					alpha: ["Static Assets Hosted", "Static Assets Compressed", "Static Assets Window Responsive"],
-					beta: ["Link all tests together"],
 					production: ["G: Google Maps CSS", "G: Style guide for all sprint components 100%", "G: Design guide for all sprint components 100%"],
 				},
 				{
-					name: "Misc",
-					production: ["G: Admin Template Moodboard Spec"]
+					name: "Misc + Tools",
+					priority: {gabrielle:2, jason:1},
+					alpha: ["Animate Setup", "Gabrielle day setup", "Jeselle Day Setup", "Maps", "Homepage MVP Spec + Wrapup", "Code cleanup [Home]", "Mobile MVP", "Safari scroll", "SVG Images", "University Search", "FAQ/Evil pricing / team", "University MVP", "Upwork", "Categories", "Content", "Logo Creative"],
+					beta: [
+						"Create listener for css events|['http://ryanmorr.com/using-mutation-observers-to-watch-for-element-availability/','http://www.backalleycoder.com/2013/03/18/cross-browser-event-based-element-resize-detection/']",
+						"Verify that your listener works for animations |['http://callmenick.com/post/listen-for-css-animation-events-with-javascript ']",
+						"All recent listeners --> Property table |['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']",
+						"Apply above to the home page section one: Navbar|['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']",
+						"Click one of the nav items, the page should scroll (which is an animation) |['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']",
+						"Map events YAY|['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']",
+						"Create a step that records events to mixpanel through python|['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']",
+						"Same as step 7, but instead use the javascript library.|['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']",
+						"Learn how to use selenium world global dictionary for test codebase|['https://docs.google.com/document/d/1OcXbwIhHuUVIPN9HtGGsQnE1yc4c_NnUiFGlHJjAHGY/edit']"
+					],
+					production: ["G: Multi-Platform Scroll/Animate Analysis"]
 				},
 				{
 					name: "Static Pages",
+					priority: {gabrielle: 4},
 					alpha: ["FAQ MVP Content", "FAQ MVP Template w/ Search"],
-					beta: ["Link all tests together"],
-					production: ["G: Google Maps CSS", "G: Style guide for all sprint components 100%", "G: Design guide for all sprint components 100%"],
+					production: ["G: FAQ Page", "G: Evil Pricing"],
 				},
 				{
 					name: "Extra Credit",
 					alpha: ["Static Assets Hosted", "Static Assets Compressed", "Static Assets Window Responsive"],
-					beta: ["Ability to track load time for specific components"],
 					production: ["", "Static Assets Compressed", "Static Assets Window Responsive"]
 				}
 			]
@@ -371,9 +438,15 @@ angular.module('uguru.util.controllers')
 			description: "Student can go to student dashboard and can modify settings, their courses, create/edit/delete requests, add/edit cards + purchase credits",
 			projects: [
 				{
+					name: "Dashboard Mobile + Desktop",
+					// beta: ["Test Inspectlet Works", "Test Mixpanel Work"],
+					priority: {jeselle:1},
+					production: ["J T: First Iteration", "J: Mobile Dashboard", "J: Resolve/Finalize Desktop (if needed)"]
+				},
+				{
 					name: "Settings",
 					alpha: [""],
-					beta: ["Test Inspectlet Works", "Test Mixpanel Work"],
+					// beta: ["Test Inspectlet Works", "Test Mixpanel Work"],
 					production: ["Components are implimented"],
 				},
 				{
@@ -382,23 +455,28 @@ angular.module('uguru.util.controllers')
 				{
 					name: "Tour",
 					alpha: ["TourService"],
-					beta: ["Test TourService on First Time Student"],
+					// beta: ["Test TourService on First Time Student"],
 					production: ["B: Discuss, Finalize, Gameplan", "J:100% Design + Templated", "G:100% CSS/HTML w/ Best Practices"]
 				},
 				{
 					name: "Requests",
+					priority: {jeselle:5},
 					alpha: ["Make Maps Fast", "Mobile App Support"],
-					beta: ["University Specific", "Home Page"]
+					// beta: ["University Specific", "Home Page"],
+					production: ["J: Resolve+Finalize Mobile+Desktop Form Structure", "J: Resolve+Finalize Mobile+Desktop Calendar", "J: Resolve+Finalize Map"]
 				},
 				{
 					name: "Add/Delete Cards",
+					priority: {jeselle:6},
 					alpha: ["Add a Card", "Delete a Card", "Stripe Local/Dev/Staging"],
-					beta: ["Test Add a Card", "Test Delete a Card"],
+					// beta: ["Test Add a Card", "Test Delete a Card"],
 					production: ["B:First Iteration", "G:Embed into app", "J:Update Design Guide"]
 				},
 				{
-					name: "Purchase Credits",
-					alpha: ["Bare bones MVP"]
+					name: "Student Purchase Credits",
+					priority: {jeselle:7},
+					alpha: ["Bare bones MVP"],
+					production: ["J: Student can purchse credits @ Thrift Shop"]
 				}
 			]
 		}
@@ -421,8 +499,31 @@ angular.module('uguru.util.controllers')
 				},
 				{
 					name: "Become a Guru"
+				},
+				{
+					name: "Guru Profiles",
+					priority: {jeselle:3},
+					production: ["J: Discuss + Finalize + Template Bakery, Photography", "J: Tech: Rubric/Spec + Ambitious", "J: Academic: Rubric/Spec + Ambitious", "J: Laundry: Rubric/Spec + Ambitious"]
 				}
 			]
+		}
+
+		var sprint_four = {
+			name: "Guru Receives Request",
+			priority: {jeselle: 8},
+			production: ["J: Resolve + Finalize Desktop + Mobile"]
+		}
+
+		var sprint_five = {
+			name: "Student receives Guru Request + Chooses",
+			priority: {jeselle: 9},
+			production: ["J: Resolve & Finalize Desktop + Mobile "]
+		}
+
+		var sprint_six = {
+			name: "Guru & Student Enhance Message",
+			priority: {jeselle: 10},
+			production: ["J: Resolve & Finalize Desktop + Mobile "]
 		}
 
 		$scope.sprints = [sprint_one, sprint_two, sprint_three];
@@ -468,16 +569,34 @@ angular.module('uguru.util.controllers')
 			var result_arr = [];
 			for (var i = 0; i < arr_str.length; i++) {
 				var indexActionItem = arr_str[i];
-				if (indexActionItem.split(':').length > 1) {
-					result_arr.push({indexActionItem: true, member:roleDict[role]});
-				} else {
-					tempDict = {}
-					var key = indexActionItem + " ";
-					tempDict[key] = false;
-					result_arr.push(tempDict);
+				var indexActionItemComplete = isActionItemComplete(indexActionItem);
+				var externalLinksArr = hasExternalLinks(indexActionItem) || [];
+				if (indexActionItemComplete) {
+					indexActionItem = indexActionItem.replace('T:', '');
 				}
+				if (externalLinksArr.length) {
+					indexActionItem = indexActionItem.split('|')[0];
+				}
+				tempDict = {}
+				var key = indexActionItem + " ";
+				tempDict[key] = indexActionItemComplete;
+				tempDict.links = externalLinksArr;
+				result_arr.push(tempDict);
 			}
 			return result_arr;
+		}
+
+		//
+		var hasExternalLinks = function(action_string) {
+			if (action_string.indexOf('|') > 0) {
+				external_link_string = action_string.split('|')[1].replace('[', '').replace(']', '');
+				external_link_arr = external_link_string.split(',');
+				return external_link_arr;
+			}
+		}
+
+		var isActionItemComplete = function(action_string) {
+			return action_string.indexOf("T:") > -1;
 		}
 
 		var parseAndGetRole = function(str_action) {
@@ -500,14 +619,15 @@ angular.module('uguru.util.controllers')
 			var result_arr = [];
 			for (var i = 0; i < arr_str.length; i++) {
 				var indexActionItem = arr_str[i];
-				if (indexActionItem.split(':').length > 2) {
-					result_arr.push({indexActionItem: true, member:parseAndGetRole(indexActionItem , role)});
-				} else {
-					tempDict = {}
-					var key = indexActionItem + " ";
-					tempDict[key] = false;
-					result_arr.push(tempDict);
+				var indexActionItemComplete = isActionItemComplete(indexActionItem);
+				if (indexActionItemComplete) {
+					indexActionItem = indexActionItem.replace('T:', '');
 				}
+
+				tempDict = {}
+				var key = indexActionItem + " ";
+				tempDict[key] = indexActionItemComplete;
+				result_arr.push(tempDict);
 			}
 			return result_arr;
 		}
@@ -543,6 +663,26 @@ angular.module('uguru.util.controllers')
 			return result_dict;
 		}
 
+		function prioritySort(a, b) {
+		  if (!a.priority && !b.priority) {
+		    return 0;
+		  }
+		  if (!a.priority && b.priority) {
+		  	return 1;
+		  }
+		  if (a.priority && !b.priority) {
+		  	return 1;
+		  }
+		  if (a.priority && b.priority && a.priority <= b.priority) {
+		  	return 1;
+		  }
+		  if (a.priority && b.priority && a.priority > b.priority) {
+		  	return -1;
+		  }
+		  // a must be equal to b
+		  return 0;
+		}
+
 		// takes in a sprint meta data and creates
 		var initSprints = function(sprint_arr) {
 			var uniqueProjectIndex = 0
@@ -569,6 +709,7 @@ angular.module('uguru.util.controllers')
 							id: sprintProjects[j].id,
 							name: sprintProjects[j].name,
 							progress: sprintProjects[j].progress,
+							priority: (sprintProjects[j].priority && sprintProjects[j].priority.samir) || 10000,
 							action_items:sprintProjects[j].action_items.alpha
 						});
 					};
@@ -579,6 +720,7 @@ angular.module('uguru.util.controllers')
 							name: sprintProjects[j].name,
 							id: sprintProjects[j].id,
 							progress: sprintProjects[j].progress,
+							priority: (sprintProjects[j].priority && sprintProjects[j].priority.jason) || 10000,
 							action_items:sprintProjects[j].action_items.beta
 						});
 					}
@@ -586,11 +728,13 @@ angular.module('uguru.util.controllers')
 					if (sprintProjects[j].action_items.production) {
 						var productionDict = processAndFilterProductionActionItems(sprintProjects[j].action_items.production);
 						if (productionDict.gabrielle && productionDict.gabrielle.length) {
+							console.log(sprintProjects[j], sprintProjects[j].priority && sprintProjects[j].priority.gabrielle);
 							$scope.roleArr[3].all_projects.push({
 								sprint:indexSprint,
 								name: sprintProjects[j].name,
 								id: sprintProjects[j].id,
 								progress: sprintProjects[j].progress,
+								priority: (sprintProjects[j].priority && sprintProjects[j].priority.gabrielle) || 10000,
 								action_items:productionDict.gabrielle
 							});
 							sprintProjects[j].action_items.gabrielle = productionDict.gabrielle;
@@ -601,6 +745,7 @@ angular.module('uguru.util.controllers')
 								name: sprintProjects[j].name,
 								id: sprintProjects[j].id,
 								progress: sprintProjects[j].progress,
+								priority: (sprintProjects[j].priority && sprintProjects[j].priority.jeselle) || 10000,
 								action_items:productionDict.jeselle
 							});
 							sprintProjects[j].action_items.jeselle = productionDict.jeselle;
@@ -609,6 +754,8 @@ angular.module('uguru.util.controllers')
 							sprintProjects[j].action_items.both = productionDict.both;
 						}
 					}
+
+
 				}
 			}
 			return sprint_arr;

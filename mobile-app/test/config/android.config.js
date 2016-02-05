@@ -9,7 +9,7 @@ exports.config = {
          capabilities: {
           browserName: '',
            //app : '/home/twfob/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
-           app : '/Users/Jason-work/Git/uguru/mobile-app/platforms/android/ant-build/MainActivity-debug.apk',
+           app : '/Users/Jason-work/Git/uguru/mobile-app/platforms/android/build/outputs/apk/android-armv7-debug.apk',
 
 
             // app : '/home/twfob/Git/uguru/mobile-app/platforms/android/build/outputs/apk/android-armv7-debug-unaligned.apk',
@@ -24,8 +24,8 @@ exports.config = {
         specs:
 
         [
-          // '../e2e/workflows//access.js',
-          '../e2e/workflows/workflow#*.js',    
+          '../e2e/browser/firsttimeusrSpec.js', 
+          // '../e2e/workflows/workflow#*.js',    
 
 
         ],

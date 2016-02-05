@@ -1,4 +1,5 @@
 
+<div class='full-xy' class="ng-class:{'hide':!showAdmin}">
 <main id="timeline" class='full-xy'>
     <header>
         <div class="timeline-header">
@@ -32,15 +33,19 @@
                     <div style='max-height:calc(85%)' class='full-x content weight-400 bg-slate relative' ng-if='obj.all_projects'>
                         <div class='flex-wrap absolute full-xy left-0 top-0'>
                             <div class='ugrid-4 full-x m30y' style='overflow:scroll;'>
-                                <div class='flex-wrap-center bg-slate cta-box relative' ng-repeat='project in obj.all_projects'  style='min-height:200px;  width:25%; border:4px solid black; padding-bottom:20%;'>
+                                <div class='flex-wrap-center bg-slate cta-box relative' ng-repeat='project in obj.all_projects | orderBy:"priority"'  style='min-height:200px;  width:25%; border:4px solid black; padding-bottom:20%;'>
                                     <div class='full-xy flex-wrap-center absolute left-0 top-0'>
-                                        <h1 class='full-x text-center weight-900 p20xy capitalize'>
-                                            #{{project.id + 1}} <br> {{project.name}}
+                                        <h1 class='full-x text-center weight-900 p20xy capitalize' ng-if='project.priority < 11'>
+                                            #{{project.priority}} <br> {{project.name}}
+                                        </h1>
+                                        <h1 class='full-x text-center weight-900 p20xy capitalize txt-white' ng-if='project.priority > 11'>
+                                            <span class='txt-charcoal' style='display:inline;'> ICEBOX </span><br> {{project.name}}
                                         </h1>
                                         <div class='full-x'>
-                                            <ul class='full-x text-left' ng-repeat='todoObj in project.action_items track by $index'>
-                                                <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                            <ul class='full-x text-left relative' ng-repeat='todoObj in project.action_items track by $index'>
+                                                <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                                <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links.length"> <a ng-repeat='link in todoObj.links track by $index' href={{link}} target-blank><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
                                             </ul>
                                         </div>
                                     </div>
@@ -69,8 +74,9 @@
                     <div style='height:calc(85%)' class='full-x content flex-wrap-center weight-400 bg-slate p05xy' ng-if='project.action_items'>
                         <div class='full-x'>
                             <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.alpha track by $index'>
-                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                               <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links.length"> <a ng-repeat='link in todoObj.links track by $index' href={{link}} target-blank><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
                             </ul>
                         </div>
                     </div>
@@ -84,8 +90,9 @@
                     <div style='height:calc(85%)'  class='full-x content flex-wrap-center weight-400 bg-charcoal p05xy' ng-if='project.action_items'>
                         <div class='full-x'>
                             <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.beta track by $index'>
-                                <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links.length"> <a ng-repeat='link in todoObj.links track by $index' href={{link}} target-blank><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
                             </ul>
                         </div>
                     </div>
@@ -105,15 +112,17 @@
                                 <div ng-if='project.action_items.both' class='full-x'>
                                     <h1 class='weight-900 text-center txt-shamrock bg-charcoal p20xy full-x'>BOTH</h1>
                                     <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.both track by $index'>
-                                        <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                        <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}} </li>
+                                        <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links.length"> <a ng-repeat='link in todoObj.links track by $index' href={{link}} target-blank><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
                                     </ul>
                                 </div>
                                 <div ng-if='project.action_items.jeselle' class='full-x'>
                                     <h1 class='weight-900 text-center txt-shamrock p20xy bg-charcoal full-x'>Jeselle</h1>
                                     <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.jeselle track by $index'>
-                                        <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                        <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links.length"> <a ng-repeat='link in todoObj.links track by $index' href={{link}} target-blank><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
                                     </ul>
 
                                 </div>
@@ -121,8 +130,9 @@
                                 <div ng-if='project.action_items.gabrielle' class='full-x p05xy'>
                                     <h1 class='weight-900 text-center txt-shamrock p20xy bg-charcoal full-x'>Gabrielle</h1>
                                     <ul class='full-x text-left' ng-repeat='todoObj in project.action_items.gabrielle track by $index'>
-                                        <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
-                                        <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <li ng-click='todoObj[todoName] = !todoObj[todoName];' class='bg-auburn full-xy p20xy' ng-if='!status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <li ng-click='todoObj[todoName] = !todoObj[todoName]' class='bg-shamrock full-xy p20xy' ng-if='status && todoName !== "links"' ng-repeat="(todoName, status) in todoObj"> {{todoName}}</li>
+                                        <span class='p10y p05right absolute full-y right-0 top-0' ng-if="todoObj.links.length"> <a ng-repeat='link in todoObj.links track by $index' href={{link}} target-blank><i style='font-size:30px;' class='icon mtop5 ion-link m05x'></i></a></span>
                                     </ul>
                                 </div>
                             </div>
@@ -213,7 +223,7 @@
     </section>
     <!--@GABRIELLE-NOTE this is the moodboard code html-->
     <section class="full-xy hide ng-class:{'show':page.active.tabName === 'Moodboards'}" id='moodboard-main'>
-        <div class='flex-wrap-center bg-smoke txt-smoke full-xy absolute txt-charcoal weight-900'>
+        <div class='flex-wrap-center bg-smoke txt-smoke full-xy absolute'>
 
             <!--Mooboard CTA Pane-->
             <ion-pane id='cta-modal-moodboard-{{$index}}' ng-repeat='component in moodboardComponents' class='full-xy hide-display bg-charcoal fixed top-0 left-0 high-z-index cta-modal'>
@@ -223,34 +233,47 @@
                     </svg>
                 </a>
                 <div class='absolute full-xy flex-wrap-center left-0 top-0 ugrid-2'>
-                    <div class='bg-azure full-y flex-wrap-center txt-smoke text-center relative'>
-                        <div class='full-x header p20xy'>
-                            <h1 class='weight-400 uppercase p20top p10bottom m20top txt-white'>Top 5</h1>
-                            <small class='weight-900 lowercase txt-smoke'>Here are the top {{component.name}}</small>
+                    <div class='bg-cobalt full-y flex-wrap text-center text-center relative'>
+                        <div class='full-x header p15xy'>
+                            <h1 class='weight-900 caps' style="font-size: 36px">Top 5</h1>
+                            <small class='weight-600 lowercase txt-smoke'>Here are the top {{component.name}} components we found</small>
                         </div>
-
+                        <div class="full-x" style="height: calc(100% - 94px);">
+                            <ul class="full-xy ugrid-3" style="overflow: auto;">
+                                <li ng-repeat='component in component.top' class="relative" style="height: 25%; background: url('{{component.banner}}') center / cover;">
+                                    <a class="weight-600 block absolute p10y-p15x text-left bg-cobalt-90p" style="bottom: 5px; left: 5px; font-size: 14px; line-height: 1.2;" href="{{component.reference}}">{{component.title}}</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class='bg-charcoal full-y flex-wrap-center txt-smoke text-center relative'>
-                        <div class='full-x header p20xy'>
-                            <h1 class='weight-400 uppercase p20top p10bottom m20top txt-white'>Icebox</h1>
-                            <small class='weight-900 lowercase txt-smoke'>Here are the other great examples we found</small>
+                    <div class='bg-charcoal full-y flex-wrap text-center relative'>
+                        <div class='full-x header p15xy'>
+                            <h1 class='weight-900 caps' style="font-size: 36px">Icebox</h1>
+                            <small class='weight-600 lowercase txt-smoke'>Here are the other great examples we found</small>
+                        </div>
+                        <div class="full-x" style="height: calc(100% - 94px);">
+                            <ul class="full-xy ugrid-3" style="overflow: auto;">
+                                <li ng-repeat='component in component.icebox' class="relative" style="height: 25%; background: url('{{component.banner}}') center / cover;">
+                                    <a class="weight-600 block absolute p10y-p15x text-left bg-cobalt-90p" style="bottom: 5px; left: 5px; font-size: 14px; line-height: 1.2;" href="{{component.reference}}">{{component.title}}</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </ion-pane>
-            <div class='flex-wrap-center main full-x'>
-                <div class='full-x txt-charcoal weight-600'>
+            <div class='flex-wrap-center main full-xy'>
+                <div class='full-xy txt-charcoal weight-600'>
                     <div class='ugrid flex-wrap p20xy full-x'>
-                        <h1 class='uppercase text-center p10y p20top full-x uppercase'> Moodboard Components</h1>
+                        <h1 class='weight-900 text-center p10y-p20top full-x uppercase'> Moodboard Components</h1>
                         <small class='txt-slate text-center full-x'>The freshest moodboard components</small>
                     </div>
                     <div class='ugrid-3 full-x m30y' style='overflow:hidden;'>
-                        <a id='cta-box-moodboard-{{$index}}' ng-repeat='component in moodboardComponents' class='flex-wrap-center bg-gold cta-box relative {{component.cta_box_bg}}' style='height:200px; width:25%; border:4px solid black; padding-bottom:10%;'>
-                            <h1 class='full-x text-center weight-900 p20xy'>
-                                {{component.name}}
-                            </h1>
-
-                            <p> {{component.description}} </p>
+                        <a id='cta-box-moodboard-{{$index}}' ng-repeat='component in moodboardComponents' class='flex-wrap-center bg-gold cta-box relative {{component.cta_box_bg}} text-center' style='height:200px; width:25%; border:4px solid black;'>
+                            <span>
+                                <h1 class="weight-900 caps">{{component.name}}</h1>
+                                <p style="font-size: 18px; font-weight: 600;">{{component.date}}</p>
+                            </span>
+                            <!-- <p> {{component.description}} </p> -->
                         </a>
                     </div>
                 </div>
@@ -269,3 +292,5 @@
 
 
 </main>
+
+</div>

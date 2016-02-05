@@ -28,8 +28,21 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 		slide: slide,
 		flip: flip,
 		shakeElem: shakeElem,
-		fadeOutElem: fadeOutElem
+		fadeOutElem: fadeOutElem,
+		animateIn: animateIn,
+		animateOut: animateOut,
+		activateSectionAnimations: activateSectionAnimations,
+		initializeSectionComponents: initializeSectionComponents
 	}
+
+
+  	function prefixedEventListener(element, type, callback) {
+      var pfx = ["webkit", "moz", "MS", "o", ""];
+      for (var p = 0; p < pfx.length; p++) {
+          if (!pfx[p]) type = type.toLowerCase();
+          element.addEventListener(pfx[p]+type, callback, false);
+      }
+  	}
 
 	function initSlide() {
 		if(DeviceService.isMobile() && window.plugins.nativepagetransitions) {
@@ -43,6 +56,66 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 		}
 
 	}
+
+	 function activateSectionAnimations(elements, css_arr, delay_arr) {
+        for (var i = 0; i < elements.length; i ++) {
+          animateIn(elements[i], css_arr[i], delay_arr[i]);
+        }
+      }
+
+	function initializeSectionComponents(section_var, selector_arr, css_arr, delay_arr) {
+        for (var i = 0; i < selector_arr.length; i++) {
+          var indexSelector = selector_arr[i];
+          var elem = document.querySelector(indexSelector);
+          if (!elem) {
+            continue
+          }
+          if (!section_var.elements) {
+            section_var.elements = [elem];
+          } else {
+            section_var.elements.push(elem);
+          }
+          console.log(indexSelector, 'added to section var', css_arr[i], delay_arr[i]);
+        }
+     }
+
+	function animateIn(elem, css_class, delay) {
+		$timeout(function() {
+			elem.classList.add('animated', css_class);
+	      	prefixedEventListener(elem,"AnimationStart",function(e){
+	          elem.style.opacity = 1;
+	          e.target.removeEventListener(e.type, false);
+	      	});
+	      	prefixedEventListener(elem,"AnimationEnd",function(e){
+	        	elem.classList.remove(css_class, "animated");
+	          	e.target.removeEventListener(e.type, false);
+	      	});
+		}, delay || 0);
+	}
+
+	function animateOut(elem, css_class, cb) {
+
+		elem.classList.add('animated', css_class);
+	    prefixedEventListener(elem,"AnimationStart",function(e){
+	    	elem.style.opacity = 0;
+	       	e.target.removeEventListener(e.type, false);
+	    });
+
+      	prefixedEventListener(elem,"AnimationEnd",function(e){
+        	elem.classList.remove('animated', css_class);
+          	e.target.removeEventListener(e.type, false);
+          	// $timeout(function() {
+      		var cloneNode = e.target.cloneNode(true)
+      		e.target.parentNode.replaceChild(cloneNode, e.target);
+      		cb();
+
+          		// cb();
+          	// }, 100);
+
+          	// splashHiwNav = document.querySelector('#splash-hiw-nav');
+      	});
+	}
+
 
 	function shakeElem(elem, duration, callback) {
 

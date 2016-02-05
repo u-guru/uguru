@@ -7,6 +7,19 @@
 
 	<section>
 		<!--Left third -->
+		<div class="pf-banner-container">
+			<a class="pf-banner pf-banner-{{user.academic_shop.category.hex_color}} ng-class:{'pf-banner-edit':!profile.public_mode, 'active': isActive}" ng-include="img_base + 'templates/svg/' + user.academic_shop.category.hex_color + '.html'" ng-init="isActive = false" ng-click="isActive = !isActive"></a>
+			<div>
+				<a class="pf-banner pf-banner-academic" ng-include="img_base + 'templates/svg/academic.html'"></a>
+				<a class="pf-banner pf-banner-photo" ng-include="img_base + 'templates/svg/photography.html'"></a>
+				<a class="pf-banner pf-banner-baking" ng-include="img_base + 'templates/svg/baking.html'"></a>
+				<a class="pf-banner pf-banner-household" ng-include="img_base + 'templates/svg/household.html'"></a>
+				<a class="pf-banner pf-banner-delivery" ng-include="img_base + BASE + 'templates/svg/delivery.html'"></a>
+				<a class="pf-banner pf-banner-freelancing" ng-include="img_base + 'templates/svg/freelancing.html'"></a>
+				<a class="pf-banner pf-banner-athletic" ng-include="img_base + 'templates/svg/athletic.html'"></a>
+				<a class="pf-banner pf-banner-tech" ng-include="img_base + 'templates/svg/tech.html'"></a>
+			</div>
+		</div>
 		<header class="third">
 			<div class="pf-header-bg" style="background-image: url({{user.profile_url}});"></div>
 			<div class="pf-header-color"></div>
@@ -14,14 +27,6 @@
 				<span>Edit Mode</span>
 				<button class="btn-ghost-white">Preview</button>
 			</div>
-			<div class="pf-banner pf-banner-academic ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/academic.html'"></div>
-			<div class="pf-banner pf-banner-photo ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/photography.html'"></div>
-			<div class="pf-banner pf-banner-baking ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/baking.html'"></div>
-			<div class="pf-banner pf-banner-household ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/household.html'"></div>
-			<div class="pf-banner pf-banner-delivery ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + BASE + 'templates/svg/delivery.html'"></div>
-			<div class="pf-banner pf-banner-freelancing ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/freelancing.html'"></div>
-			<div class="pf-banner pf-banner-athletic ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/athletic.html'"></div>
-			<div class="pf-banner pf-banner-tech ng-class:{'pf-banner-edit':!profile.public_mode}" ng-include="img_base + 'templates/svg/tech.html'"></div>
 			<div class="pf-header ng-class:{'pf-header-edit': !profile.public_mode}">
 				<span class="user-icon" ng-if="profile.public_mode" style="background-image: url({{user.profile_url}});"></span>
 				<a class="user-icon-container" ng-click='takeProfilePhoto()' ng-if="!profile.public_mode">
@@ -50,18 +55,7 @@
 					  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 					</svg>
 				</div>
-				<ul class="pf-url"  ng-if="profile.public_mode">
-					<li>
-						<a href='http://{{user.profile_code}}.uguru.me' target='_blank'>{{user.profile_code || user.first_name}}.uguru.me</a>
-					</li>
-					<li>
-						<a href='http://{{user.profile_code}}.uguru.me' target='_blank' class='bg-white'>
-							<svg viewBox="0 0 100 100">
-								<path d="M82,38 L82,78.9930191 C82,80.6537288 80.663269,82 78.9989882,82 L21.0010118,82 C19.3435988,82 18,80.663269 18,78.9989882 L18,21.0010118 C18,19.3435988 19.3408574,18 21.0069809,18 L62,18 M88.9559283,10.8111066 L57.9878833,42.132705 M69.2453268,10.8994949 L89.0443166,10.8994949 L89.0443166,30.6984848"></path>
-							</svg>
-						</a>
-					</li>
-				</ul>
+				<button ng-if="profile.public_mode" class="pf-contact pf-contact-desktop">Contact</button>
 				<ul class="pf-url pf-edit-url" ng-if="!profile.public_mode">
 					<li class="relative">
 						<input name='profile_code' ng-blur='saveProfileCode()' ng-model='user.profile_code' size="{{user.profile_code.length + 2}}" />
@@ -85,18 +79,13 @@
 			</div>
 		</header>
 		<div class="pf-tab-container">
-			<div class="pf-tabs tab-bar">
-				<ul>
-					<li>
-						<a name='services-btn' ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex === 0}">Services</a>
-					</li>
-					<li>
-						<a name='about-btn' ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex === 1}">About</a>
-					</li>
-					<li ng-if='false'>
-						<a name='calendar-btn' ng-click='activeTabIndex = 2;' class="ng-class:{'active':activeTabIndex === 2}">Calendar</a>
-					</li>
-				</ul>
+			<div class="pf-tabs tab-bar slide">
+				<div>
+					<a name='services-btn' ng-click='activeTabIndex = 0' class="ng-class:{'active':activeTabIndex === 0}">Services</a>
+					<a name='about-btn' ng-click='activeTabIndex = 1;' class="ng-class:{'active':activeTabIndex === 1}">About</a>
+					<a ng-if='false' name='calendar-btn' ng-click='activeTabIndex = 2;' class="ng-class:{'active':activeTabIndex === 2}">Calendar</a>
+					<hr/>
+				</div>
 			</div>
 			<!-- end CTA containers -->
 
@@ -1122,6 +1111,7 @@
 				</div>
 			</div>
 		</div>
+		<button ng-if="profile.public_mode" class="pf-contact pf-contact-mobile">Contact</button>
 	</section>
 
 	<!-- @samir -->

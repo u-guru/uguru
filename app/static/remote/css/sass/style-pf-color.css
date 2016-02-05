@@ -1,3 +1,67 @@
+.pf-banner.pf-banner-academic {
+  background: #e6389b; }
+  .pf-banner.pf-banner-academic:after {
+    border-color: #e6389b;
+    border-bottom-color: transparent; }
+  .pf-banner.pf-banner-academic.pf-banner-edit svg path {
+    stroke: #e6389b; }
+
+.pf-banner.pf-banner-photo {
+  background: #81B566; }
+  .pf-banner.pf-banner-photo:after {
+    border-color: #81B566;
+    border-bottom-color: transparent; }
+  .pf-banner.pf-banner-photo.pf-banner-edit svg path {
+    stroke: #81B566; }
+
+.pf-banner.pf-banner-baking {
+  background: #F6C64E; }
+  .pf-banner.pf-banner-baking:after {
+    border-color: #F6C64E;
+    border-bottom-color: transparent; }
+  .pf-banner.pf-banner-baking.pf-banner-edit svg path {
+    stroke: #F6C64E; }
+
+.pf-banner.pf-banner-household {
+  background: #7872e3; }
+  .pf-banner.pf-banner-household:after {
+    border-color: #7872e3;
+    border-bottom-color: transparent; }
+  .pf-banner.pf-banner-household.pf-banner-edit svg path {
+    stroke: #7872e3; }
+
+.pf-banner.pf-banner-delivery {
+  background: #F04F54; }
+  .pf-banner.pf-banner-delivery:after {
+    border-color: #F04F54;
+    border-bottom-color: transparent; }
+  .pf-banner.pf-banner-delivery.pf-banner-edit svg path {
+    stroke: #F04F54; }
+
+.pf-banner.pf-banner-freelancing {
+  background: #E5753C; }
+  .pf-banner.pf-banner-freelancing:after {
+    border-color: #E5753C;
+    border-bottom-color: transparent; }
+  .pf-banner.pf-banner-freelancing.pf-banner-edit svg path {
+    stroke: #E5753C; }
+
+.pf-banner.pf-banner-athletic {
+  background: #9A5BC5; }
+  .pf-banner.pf-banner-athletic:after {
+    border-color: #9A5BC5;
+    border-bottom-color: transparent; }
+  .pf-banner.pf-banner-athletic.pf-banner-edit svg path {
+    stroke: #9A5BC5; }
+
+.pf-banner.pf-banner-tech {
+  background: #55A4B7; }
+  .pf-banner.pf-banner-tech:after {
+    border-color: #55A4B7;
+    border-bottom-color: transparent; }
+  .pf-banner.pf-banner-tech.pf-banner-edit svg path {
+    stroke: #55A4B7; }
+
 #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.save-button, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus {
   background: #e6389b !important; }
   #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:hover, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.save-button:focus, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:hover, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #desktop-languages button.bg-campus:focus, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.save-button:hover, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.save-button:focus, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:hover, #desktop-guru-home .pf-type-academic .pf-tab-container .pf-shop-desc #experience-modal button.bg-campus:focus {
@@ -49,6 +113,13 @@
     .pf-edit.pf-type-academic .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-academic .pf-tag-edit .chip.tag-add:focus {
       background: #e6389b; }
 
+.pf-type-academic .pf-contact {
+  color: #e6389b; }
+  .pf-type-academic .pf-contact:hover, .pf-type-academic .pf-contact:focus {
+    background: #f193c9;
+    color: white; }
+  .pf-type-academic .pf-contact:active {
+    background: #7c8a8f; }
 .pf-type-academic .custom-dropdown > div a:hover svg, .pf-type-academic .custom-dropdown > div a:focus svg {
   background: #ec65b2 !important; }
 .pf-type-academic .custom-dropdown > div a:active svg {
@@ -65,15 +136,6 @@
   background: #e6389b; }
 .pf-type-academic header.third .pf-header-color {
   background: #912763; }
-.pf-type-academic header.third .pf-banner {
-  background: #e6389b; }
-  .pf-type-academic header.third .pf-banner:after {
-    border: 25px solid #e6389b;
-    border-bottom-color: transparent; }
-  .pf-type-academic header.third .pf-banner.pf-banner-academic {
-    display: block; }
-  .pf-type-academic header.third .pf-banner.pf-banner-edit svg path {
-    stroke: #e6389b; }
 .pf-type-academic .pf-url li:first-child input {
   color: #912763 !important; }
 .pf-type-academic .pf-url li:last-child a svg {
@@ -86,8 +148,32 @@
   background: #912763 !important; }
 .pf-type-academic .pf-header .verified span svg path:first-child {
   fill: #e6389b; }
-.pf-type-academic .pf-tabs ul li a.active {
-  border-bottom: 5px solid #e6389b; }
+.pf-type-academic .pf-tabs.slide div hr {
+  border-color: #e6389b; }
+.pf-type-academic .pf-tabs.slide div a:nth-child(1).active ~ hr {
+  border-color: #e6389b; }
+.pf-type-academic .pf-tabs.slide div a:nth-child(2).active ~ hr {
+  border-color: #e6389b; }
+.pf-type-academic .pf-tabs.slide div a:nth-child(3).active ~ hr {
+  border-color: #e6389b; }
+.pf-type-academic .pf-tabs.slide div a:nth-child(4).active ~ hr {
+  border-color: #e6389b; }
+.pf-type-academic .pf-tabs.slide div a:nth-child(1):hover ~ hr, .pf-type-academic .pf-tabs.slide div a:nth-child(1):focus ~ hr {
+  border-color: #ef7cbd; }
+.pf-type-academic .pf-tabs.slide div a:nth-child(1):active ~ hr {
+  border-color: #e6389b; }
+.pf-type-academic .pf-tabs.slide div a:nth-child(2):hover ~ hr, .pf-type-academic .pf-tabs.slide div a:nth-child(2):focus ~ hr {
+  border-color: #ef7cbd; }
+.pf-type-academic .pf-tabs.slide div a:nth-child(2):active ~ hr {
+  border-color: #e6389b; }
+.pf-type-academic .pf-tabs.slide div a:nth-child(3):hover ~ hr, .pf-type-academic .pf-tabs.slide div a:nth-child(3):focus ~ hr {
+  border-color: #ef7cbd; }
+.pf-type-academic .pf-tabs.slide div a:nth-child(3):active ~ hr {
+  border-color: #e6389b; }
+.pf-type-academic .pf-tabs.slide div a:nth-child(4):hover ~ hr, .pf-type-academic .pf-tabs.slide div a:nth-child(4):focus ~ hr {
+  border-color: #ef7cbd; }
+.pf-type-academic .pf-tabs.slide div a:nth-child(4):active ~ hr {
+  border-color: #e6389b; }
 .pf-type-academic .pf-list h1 {
   background: #e6389b; }
 .pf-type-academic .pf-list button.chip:hover, .pf-type-academic .pf-list button.chip:focus {
@@ -192,6 +278,13 @@
     .pf-edit.pf-type-photography .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-photography .pf-tag-edit .chip.tag-add:focus {
       background: #81B566; }
 
+.pf-type-photography .pf-contact {
+  color: #81B566; }
+  .pf-type-photography .pf-contact:hover, .pf-type-photography .pf-contact:focus {
+    background: #bad6ab;
+    color: white; }
+  .pf-type-photography .pf-contact:active {
+    background: #7c8a8f; }
 .pf-type-photography .custom-dropdown > div a:hover svg, .pf-type-photography .custom-dropdown > div a:focus svg {
   background: #9dc688 !important; }
 .pf-type-photography .custom-dropdown > div a:active svg {
@@ -377,15 +470,6 @@
       border-color: #81B566; }
 .pf-type-photography header.third .pf-header-color {
   background: #56684d; }
-.pf-type-photography header.third .pf-banner {
-  background: #81B566; }
-  .pf-type-photography header.third .pf-banner:after {
-    border: 25px solid #81B566;
-    border-bottom-color: transparent; }
-  .pf-type-photography header.third .pf-banner.pf-banner-photo {
-    display: block; }
-  .pf-type-photography header.third .pf-banner.pf-banner-edit svg path {
-    stroke: #81B566; }
 .pf-type-photography .pf-url li:first-child input {
   color: #56684d !important; }
 .pf-type-photography .pf-url li:last-child a svg {
@@ -398,8 +482,32 @@
   background: #56684d !important; }
 .pf-type-photography .pf-header .verified span svg path:first-child {
   fill: #81B566; }
-.pf-type-photography .pf-tabs ul li a.active {
-  border-bottom: 5px solid #81B566; }
+.pf-type-photography .pf-tabs.slide div hr {
+  border-color: #81B566; }
+.pf-type-photography .pf-tabs.slide div a:nth-child(1).active ~ hr {
+  border-color: #81B566; }
+.pf-type-photography .pf-tabs.slide div a:nth-child(2).active ~ hr {
+  border-color: #81B566; }
+.pf-type-photography .pf-tabs.slide div a:nth-child(3).active ~ hr {
+  border-color: #81B566; }
+.pf-type-photography .pf-tabs.slide div a:nth-child(4).active ~ hr {
+  border-color: #81B566; }
+.pf-type-photography .pf-tabs.slide div a:nth-child(1):hover ~ hr, .pf-type-photography .pf-tabs.slide div a:nth-child(1):focus ~ hr {
+  border-color: #abce9a; }
+.pf-type-photography .pf-tabs.slide div a:nth-child(1):active ~ hr {
+  border-color: #81B566; }
+.pf-type-photography .pf-tabs.slide div a:nth-child(2):hover ~ hr, .pf-type-photography .pf-tabs.slide div a:nth-child(2):focus ~ hr {
+  border-color: #abce9a; }
+.pf-type-photography .pf-tabs.slide div a:nth-child(2):active ~ hr {
+  border-color: #81B566; }
+.pf-type-photography .pf-tabs.slide div a:nth-child(3):hover ~ hr, .pf-type-photography .pf-tabs.slide div a:nth-child(3):focus ~ hr {
+  border-color: #abce9a; }
+.pf-type-photography .pf-tabs.slide div a:nth-child(3):active ~ hr {
+  border-color: #81B566; }
+.pf-type-photography .pf-tabs.slide div a:nth-child(4):hover ~ hr, .pf-type-photography .pf-tabs.slide div a:nth-child(4):focus ~ hr {
+  border-color: #abce9a; }
+.pf-type-photography .pf-tabs.slide div a:nth-child(4):active ~ hr {
+  border-color: #81B566; }
 .pf-type-photography .pf-list h1 {
   background: #81B566; }
 .pf-type-photography .pf-list button.chip:hover, .pf-type-photography .pf-list button.chip:focus {
@@ -505,6 +613,13 @@
     .pf-edit.pf-type-baking .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-baking .pf-tag-edit .chip.tag-add:focus {
       background: #F6C64E; }
 
+.pf-type-baking .pf-contact {
+  color: #F6C64E; }
+  .pf-type-baking .pf-contact:hover, .pf-type-baking .pf-contact:focus {
+    background: #f7ce66;
+    color: white; }
+  .pf-type-baking .pf-contact:active {
+    background: #7c8a8f; }
 .pf-type-baking .custom-dropdown > div a:hover svg, .pf-type-baking .custom-dropdown > div a:focus svg {
   background: #f8d67f !important; }
 .pf-type-baking .custom-dropdown > div a:active svg {
@@ -521,15 +636,6 @@
   background: #F6C64E; }
 .pf-type-baking header.third .pf-header-color {
   background: #664e12; }
-.pf-type-baking header.third .pf-banner {
-  background: #F6C64E; }
-  .pf-type-baking header.third .pf-banner:after {
-    border: 25px solid #F6C64E;
-    border-bottom-color: transparent; }
-  .pf-type-baking header.third .pf-banner.pf-banner-baking {
-    display: block; }
-  .pf-type-baking header.third .pf-banner.pf-banner-edit svg path {
-    stroke: #F6C64E; }
 .pf-type-baking .pf-url li:first-child input {
   color: #664e12 !important; }
 .pf-type-baking .pf-url li:last-child a svg {
@@ -542,8 +648,32 @@
   background: #664e12 !important; }
 .pf-type-baking .pf-header .verified span svg path:first-child {
   fill: #F6C64E; }
-.pf-type-baking .pf-tabs ul li a.active {
-  border-bottom: 5px solid #F6C64E; }
+.pf-type-baking .pf-tabs.slide div hr {
+  border-color: #F6C64E; }
+.pf-type-baking .pf-tabs.slide div a:nth-child(1).active ~ hr {
+  border-color: #F6C64E; }
+.pf-type-baking .pf-tabs.slide div a:nth-child(2).active ~ hr {
+  border-color: #F6C64E; }
+.pf-type-baking .pf-tabs.slide div a:nth-child(3).active ~ hr {
+  border-color: #F6C64E; }
+.pf-type-baking .pf-tabs.slide div a:nth-child(4).active ~ hr {
+  border-color: #F6C64E; }
+.pf-type-baking .pf-tabs.slide div a:nth-child(1):hover ~ hr, .pf-type-baking .pf-tabs.slide div a:nth-child(1):focus ~ hr {
+  border-color: #fadd97; }
+.pf-type-baking .pf-tabs.slide div a:nth-child(1):active ~ hr {
+  border-color: #F6C64E; }
+.pf-type-baking .pf-tabs.slide div a:nth-child(2):hover ~ hr, .pf-type-baking .pf-tabs.slide div a:nth-child(2):focus ~ hr {
+  border-color: #fadd97; }
+.pf-type-baking .pf-tabs.slide div a:nth-child(2):active ~ hr {
+  border-color: #F6C64E; }
+.pf-type-baking .pf-tabs.slide div a:nth-child(3):hover ~ hr, .pf-type-baking .pf-tabs.slide div a:nth-child(3):focus ~ hr {
+  border-color: #fadd97; }
+.pf-type-baking .pf-tabs.slide div a:nth-child(3):active ~ hr {
+  border-color: #F6C64E; }
+.pf-type-baking .pf-tabs.slide div a:nth-child(4):hover ~ hr, .pf-type-baking .pf-tabs.slide div a:nth-child(4):focus ~ hr {
+  border-color: #fadd97; }
+.pf-type-baking .pf-tabs.slide div a:nth-child(4):active ~ hr {
+  border-color: #F6C64E; }
 .pf-type-baking .pf-list h1 {
   background: #F6C64E; }
 .pf-type-baking .pf-list button.chip:hover, .pf-type-baking .pf-list button.chip:focus {
@@ -672,6 +802,13 @@
     .pf-edit.pf-type-household .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-household .pf-tag-edit .chip.tag-add:focus {
       background: #7872e3; }
 
+.pf-type-household .pf-contact {
+  color: #7872e3; }
+  .pf-type-household .pf-contact:hover, .pf-type-household .pf-contact:focus {
+    background: #b5b2f0;
+    color: white; }
+  .pf-type-household .pf-contact:active {
+    background: #7c8a8f; }
 .pf-type-household .custom-dropdown > div a:hover svg, .pf-type-household .custom-dropdown > div a:focus svg {
   background: #a19deb !important; }
 .pf-type-household .custom-dropdown > div a:active svg {
@@ -688,15 +825,6 @@
   background: #7872e3; }
 .pf-type-household header.third .pf-header-color {
   background: #37328a; }
-.pf-type-household header.third .pf-banner {
-  background: #7872e3; }
-  .pf-type-household header.third .pf-banner:after {
-    border: 25px solid #7872e3;
-    border-bottom-color: transparent; }
-  .pf-type-household header.third .pf-banner.pf-banner-household {
-    display: block; }
-  .pf-type-household header.third .pf-banner.pf-banner-edit svg path {
-    stroke: #7872e3; }
 .pf-type-household .pf-url li:first-child input {
   color: #37328a !important; }
 .pf-type-household .pf-url li:last-child a svg {
@@ -709,8 +837,32 @@
   background: #37328a !important; }
 .pf-type-household .pf-header .verified span svg path:first-child {
   fill: #7872e3; }
-.pf-type-household .pf-tabs ul li a.active {
-  border-bottom: 5px solid #7872e3; }
+.pf-type-household .pf-tabs.slide div hr {
+  border-color: #7872e3; }
+.pf-type-household .pf-tabs.slide div a:nth-child(1).active ~ hr {
+  border-color: #7872e3; }
+.pf-type-household .pf-tabs.slide div a:nth-child(2).active ~ hr {
+  border-color: #7872e3; }
+.pf-type-household .pf-tabs.slide div a:nth-child(3).active ~ hr {
+  border-color: #7872e3; }
+.pf-type-household .pf-tabs.slide div a:nth-child(4).active ~ hr {
+  border-color: #7872e3; }
+.pf-type-household .pf-tabs.slide div a:nth-child(1):hover ~ hr, .pf-type-household .pf-tabs.slide div a:nth-child(1):focus ~ hr {
+  border-color: #b5b2f0; }
+.pf-type-household .pf-tabs.slide div a:nth-child(1):active ~ hr {
+  border-color: #7872e3; }
+.pf-type-household .pf-tabs.slide div a:nth-child(2):hover ~ hr, .pf-type-household .pf-tabs.slide div a:nth-child(2):focus ~ hr {
+  border-color: #b5b2f0; }
+.pf-type-household .pf-tabs.slide div a:nth-child(2):active ~ hr {
+  border-color: #7872e3; }
+.pf-type-household .pf-tabs.slide div a:nth-child(3):hover ~ hr, .pf-type-household .pf-tabs.slide div a:nth-child(3):focus ~ hr {
+  border-color: #b5b2f0; }
+.pf-type-household .pf-tabs.slide div a:nth-child(3):active ~ hr {
+  border-color: #7872e3; }
+.pf-type-household .pf-tabs.slide div a:nth-child(4):hover ~ hr, .pf-type-household .pf-tabs.slide div a:nth-child(4):focus ~ hr {
+  border-color: #b5b2f0; }
+.pf-type-household .pf-tabs.slide div a:nth-child(4):active ~ hr {
+  border-color: #7872e3; }
 .pf-type-household .pf-list h1 {
   background: #7872e3; }
 .pf-type-household .pf-list button.chip:hover, .pf-type-household .pf-list button.chip:focus {
@@ -815,6 +967,13 @@
     .pf-edit.pf-type-delivery .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-delivery .pf-tag-edit .chip.tag-add:focus {
       background: #F04F54; }
 
+.pf-type-delivery .pf-contact {
+  color: #F04F54; }
+  .pf-type-delivery .pf-contact:hover, .pf-type-delivery .pf-contact:focus {
+    background: #f2666b;
+    color: white; }
+  .pf-type-delivery .pf-contact:active {
+    background: #7c8a8f; }
 .pf-type-delivery .custom-dropdown > div a:hover svg, .pf-type-delivery .custom-dropdown > div a:focus svg {
   background: #f47e82 !important; }
 .pf-type-delivery .custom-dropdown > div a:active svg {
@@ -831,15 +990,6 @@
   background: #F04F54; }
 .pf-type-delivery header.third .pf-header-color {
   background: #881e21; }
-.pf-type-delivery header.third .pf-banner {
-  background: #F04F54; }
-  .pf-type-delivery header.third .pf-banner:after {
-    border: 25px solid #F04F54;
-    border-bottom-color: transparent; }
-  .pf-type-delivery header.third .pf-banner.pf-banner-delivery {
-    display: block; }
-  .pf-type-delivery header.third .pf-banner.pf-banner-edit svg path {
-    stroke: #F04F54; }
 .pf-type-delivery .pf-url li:first-child input {
   color: #881e21 !important; }
 .pf-type-delivery .pf-url li:last-child a svg {
@@ -852,8 +1002,32 @@
   background: #881e21 !important; }
 .pf-type-delivery .pf-header .verified span svg path:first-child {
   fill: #F04F54; }
-.pf-type-delivery .pf-tabs ul li a.active {
-  border-bottom: 5px solid #F04F54; }
+.pf-type-delivery .pf-tabs.slide div hr {
+  border-color: #F04F54; }
+.pf-type-delivery .pf-tabs.slide div a:nth-child(1).active ~ hr {
+  border-color: #F04F54; }
+.pf-type-delivery .pf-tabs.slide div a:nth-child(2).active ~ hr {
+  border-color: #F04F54; }
+.pf-type-delivery .pf-tabs.slide div a:nth-child(3).active ~ hr {
+  border-color: #F04F54; }
+.pf-type-delivery .pf-tabs.slide div a:nth-child(4).active ~ hr {
+  border-color: #F04F54; }
+.pf-type-delivery .pf-tabs.slide div a:nth-child(1):hover ~ hr, .pf-type-delivery .pf-tabs.slide div a:nth-child(1):focus ~ hr {
+  border-color: #f69598; }
+.pf-type-delivery .pf-tabs.slide div a:nth-child(1):active ~ hr {
+  border-color: #F04F54; }
+.pf-type-delivery .pf-tabs.slide div a:nth-child(2):hover ~ hr, .pf-type-delivery .pf-tabs.slide div a:nth-child(2):focus ~ hr {
+  border-color: #f69598; }
+.pf-type-delivery .pf-tabs.slide div a:nth-child(2):active ~ hr {
+  border-color: #F04F54; }
+.pf-type-delivery .pf-tabs.slide div a:nth-child(3):hover ~ hr, .pf-type-delivery .pf-tabs.slide div a:nth-child(3):focus ~ hr {
+  border-color: #f69598; }
+.pf-type-delivery .pf-tabs.slide div a:nth-child(3):active ~ hr {
+  border-color: #F04F54; }
+.pf-type-delivery .pf-tabs.slide div a:nth-child(4):hover ~ hr, .pf-type-delivery .pf-tabs.slide div a:nth-child(4):focus ~ hr {
+  border-color: #f69598; }
+.pf-type-delivery .pf-tabs.slide div a:nth-child(4):active ~ hr {
+  border-color: #F04F54; }
 .pf-type-delivery .pf-list h1 {
   background: #F04F54; }
 .pf-type-delivery .pf-list button.chip:hover, .pf-type-delivery .pf-list button.chip:focus {
@@ -958,6 +1132,13 @@
     .pf-edit.pf-type-freelancing .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-freelancing .pf-tag-edit .chip.tag-add:focus {
       background: #E5753C; }
 
+.pf-type-freelancing .pf-contact {
+  color: #E5753C; }
+  .pf-type-freelancing .pf-contact:hover, .pf-type-freelancing .pf-contact:focus {
+    background: #eea580;
+    color: white; }
+  .pf-type-freelancing .pf-contact:active {
+    background: #7c8a8f; }
 .pf-type-freelancing .custom-dropdown > div a:hover svg, .pf-type-freelancing .custom-dropdown > div a:focus svg {
   background: #eb9569 !important; }
 .pf-type-freelancing .custom-dropdown > div a:active svg {
@@ -974,15 +1155,6 @@
   background: #E5753C; }
 .pf-type-freelancing header.third .pf-header-color {
   background: #924c29; }
-.pf-type-freelancing header.third .pf-banner {
-  background: #E5753C; }
-  .pf-type-freelancing header.third .pf-banner:after {
-    border: 25px solid #E5753C;
-    border-bottom-color: transparent; }
-  .pf-type-freelancing header.third .pf-banner.pf-banner-freelancing {
-    display: block; }
-  .pf-type-freelancing header.third .pf-banner.pf-banner-edit svg path {
-    stroke: #E5753C; }
 .pf-type-freelancing .pf-url li:first-child input {
   color: #924c29 !important; }
 .pf-type-freelancing .pf-url li:last-child a svg {
@@ -995,8 +1167,32 @@
   background: #924c29 !important; }
 .pf-type-freelancing .pf-header .verified span svg path:first-child {
   fill: #E5753C; }
-.pf-type-freelancing .pf-tabs ul li a.active {
-  border-bottom: 5px solid #E5753C; }
+.pf-type-freelancing .pf-tabs.slide div hr {
+  border-color: #E5753C; }
+.pf-type-freelancing .pf-tabs.slide div a:nth-child(1).active ~ hr {
+  border-color: #E5753C; }
+.pf-type-freelancing .pf-tabs.slide div a:nth-child(2).active ~ hr {
+  border-color: #E5753C; }
+.pf-type-freelancing .pf-tabs.slide div a:nth-child(3).active ~ hr {
+  border-color: #E5753C; }
+.pf-type-freelancing .pf-tabs.slide div a:nth-child(4).active ~ hr {
+  border-color: #E5753C; }
+.pf-type-freelancing .pf-tabs.slide div a:nth-child(1):hover ~ hr, .pf-type-freelancing .pf-tabs.slide div a:nth-child(1):focus ~ hr {
+  border-color: #eea580; }
+.pf-type-freelancing .pf-tabs.slide div a:nth-child(1):active ~ hr {
+  border-color: #E5753C; }
+.pf-type-freelancing .pf-tabs.slide div a:nth-child(2):hover ~ hr, .pf-type-freelancing .pf-tabs.slide div a:nth-child(2):focus ~ hr {
+  border-color: #eea580; }
+.pf-type-freelancing .pf-tabs.slide div a:nth-child(2):active ~ hr {
+  border-color: #E5753C; }
+.pf-type-freelancing .pf-tabs.slide div a:nth-child(3):hover ~ hr, .pf-type-freelancing .pf-tabs.slide div a:nth-child(3):focus ~ hr {
+  border-color: #eea580; }
+.pf-type-freelancing .pf-tabs.slide div a:nth-child(3):active ~ hr {
+  border-color: #E5753C; }
+.pf-type-freelancing .pf-tabs.slide div a:nth-child(4):hover ~ hr, .pf-type-freelancing .pf-tabs.slide div a:nth-child(4):focus ~ hr {
+  border-color: #eea580; }
+.pf-type-freelancing .pf-tabs.slide div a:nth-child(4):active ~ hr {
+  border-color: #E5753C; }
 .pf-type-freelancing .pf-list h1 {
   background: #E5753C; }
 .pf-type-freelancing .pf-list button.chip:hover, .pf-type-freelancing .pf-list button.chip:focus {
@@ -1101,6 +1297,13 @@
     .pf-edit.pf-type-athletic .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-athletic .pf-tag-edit .chip.tag-add:focus {
       background: #9A5BC5; }
 
+.pf-type-athletic .pf-contact {
+  color: #9A5BC5; }
+  .pf-type-athletic .pf-contact:hover, .pf-type-athletic .pf-contact:focus {
+    background: #bd94d9;
+    color: white; }
+  .pf-type-athletic .pf-contact:active {
+    background: #7c8a8f; }
 .pf-type-athletic .custom-dropdown > div a:hover svg, .pf-type-athletic .custom-dropdown > div a:focus svg {
   background: #b181d2 !important; }
 .pf-type-athletic .custom-dropdown > div a:active svg {
@@ -1117,15 +1320,6 @@
   background: #9A5BC5; }
 .pf-type-athletic header.third .pf-header-color {
   background: #643a80; }
-.pf-type-athletic header.third .pf-banner {
-  background: #9A5BC5; }
-  .pf-type-athletic header.third .pf-banner:after {
-    border: 25px solid #9A5BC5;
-    border-bottom-color: transparent; }
-  .pf-type-athletic header.third .pf-banner.pf-banner-athletic {
-    display: block; }
-  .pf-type-athletic header.third .pf-banner.pf-banner-edit svg path {
-    stroke: #9A5BC5; }
 .pf-type-athletic .pf-url li:first-child input {
   color: #643a80 !important; }
 .pf-type-athletic .pf-url li:last-child a svg {
@@ -1138,8 +1332,32 @@
   background: #643a80 !important; }
 .pf-type-athletic .pf-header .verified span svg path:first-child {
   fill: #9A5BC5; }
-.pf-type-athletic .pf-tabs ul li a.active {
-  border-bottom: 5px solid #9A5BC5; }
+.pf-type-athletic .pf-tabs.slide div hr {
+  border-color: #9A5BC5; }
+.pf-type-athletic .pf-tabs.slide div a:nth-child(1).active ~ hr {
+  border-color: #9A5BC5; }
+.pf-type-athletic .pf-tabs.slide div a:nth-child(2).active ~ hr {
+  border-color: #9A5BC5; }
+.pf-type-athletic .pf-tabs.slide div a:nth-child(3).active ~ hr {
+  border-color: #9A5BC5; }
+.pf-type-athletic .pf-tabs.slide div a:nth-child(4).active ~ hr {
+  border-color: #9A5BC5; }
+.pf-type-athletic .pf-tabs.slide div a:nth-child(1):hover ~ hr, .pf-type-athletic .pf-tabs.slide div a:nth-child(1):focus ~ hr {
+  border-color: #bd94d9; }
+.pf-type-athletic .pf-tabs.slide div a:nth-child(1):active ~ hr {
+  border-color: #9A5BC5; }
+.pf-type-athletic .pf-tabs.slide div a:nth-child(2):hover ~ hr, .pf-type-athletic .pf-tabs.slide div a:nth-child(2):focus ~ hr {
+  border-color: #bd94d9; }
+.pf-type-athletic .pf-tabs.slide div a:nth-child(2):active ~ hr {
+  border-color: #9A5BC5; }
+.pf-type-athletic .pf-tabs.slide div a:nth-child(3):hover ~ hr, .pf-type-athletic .pf-tabs.slide div a:nth-child(3):focus ~ hr {
+  border-color: #bd94d9; }
+.pf-type-athletic .pf-tabs.slide div a:nth-child(3):active ~ hr {
+  border-color: #9A5BC5; }
+.pf-type-athletic .pf-tabs.slide div a:nth-child(4):hover ~ hr, .pf-type-athletic .pf-tabs.slide div a:nth-child(4):focus ~ hr {
+  border-color: #bd94d9; }
+.pf-type-athletic .pf-tabs.slide div a:nth-child(4):active ~ hr {
+  border-color: #9A5BC5; }
 .pf-type-athletic .pf-list h1 {
   background: #9A5BC5; }
 .pf-type-athletic .pf-list button.chip:hover, .pf-type-athletic .pf-list button.chip:focus {
@@ -1244,6 +1462,13 @@
     .pf-edit.pf-type-tech .pf-tag-edit .chip.tag-add:hover, .pf-edit.pf-type-tech .pf-tag-edit .chip.tag-add:focus {
       background: #55A4B7; }
 
+.pf-type-tech .pf-contact {
+  color: #55A4B7; }
+  .pf-type-tech .pf-contact:hover, .pf-type-tech .pf-contact:focus {
+    background: #8bc1ce;
+    color: white; }
+  .pf-type-tech .pf-contact:active {
+    background: #7c8a8f; }
 .pf-type-tech .custom-dropdown > div a:hover svg, .pf-type-tech .custom-dropdown > div a:focus svg {
   background: #79b7c6 !important; }
 .pf-type-tech .custom-dropdown > div a:active svg {
@@ -1260,15 +1485,6 @@
   background: #55A4B7; }
 .pf-type-tech header.third .pf-header-color {
   background: #3a626c; }
-.pf-type-tech header.third .pf-banner {
-  background: #55A4B7; }
-  .pf-type-tech header.third .pf-banner:after {
-    border: 25px solid #55A4B7;
-    border-bottom-color: transparent; }
-  .pf-type-tech header.third .pf-banner.pf-banner-tech {
-    display: block; }
-  .pf-type-tech header.third .pf-banner.pf-banner-edit svg path {
-    stroke: #55A4B7; }
 .pf-type-tech .pf-url li:first-child input {
   color: #3a626c !important; }
 .pf-type-tech .pf-url li:last-child a svg {
@@ -1281,8 +1497,32 @@
   background: #3a626c !important; }
 .pf-type-tech .pf-header .verified span svg path:first-child {
   fill: #55A4B7; }
-.pf-type-tech .pf-tabs ul li a.active {
-  border-bottom: 5px solid #55A4B7; }
+.pf-type-tech .pf-tabs.slide div hr {
+  border-color: #55A4B7; }
+.pf-type-tech .pf-tabs.slide div a:nth-child(1).active ~ hr {
+  border-color: #55A4B7; }
+.pf-type-tech .pf-tabs.slide div a:nth-child(2).active ~ hr {
+  border-color: #55A4B7; }
+.pf-type-tech .pf-tabs.slide div a:nth-child(3).active ~ hr {
+  border-color: #55A4B7; }
+.pf-type-tech .pf-tabs.slide div a:nth-child(4).active ~ hr {
+  border-color: #55A4B7; }
+.pf-type-tech .pf-tabs.slide div a:nth-child(1):hover ~ hr, .pf-type-tech .pf-tabs.slide div a:nth-child(1):focus ~ hr {
+  border-color: #8bc1ce; }
+.pf-type-tech .pf-tabs.slide div a:nth-child(1):active ~ hr {
+  border-color: #55A4B7; }
+.pf-type-tech .pf-tabs.slide div a:nth-child(2):hover ~ hr, .pf-type-tech .pf-tabs.slide div a:nth-child(2):focus ~ hr {
+  border-color: #8bc1ce; }
+.pf-type-tech .pf-tabs.slide div a:nth-child(2):active ~ hr {
+  border-color: #55A4B7; }
+.pf-type-tech .pf-tabs.slide div a:nth-child(3):hover ~ hr, .pf-type-tech .pf-tabs.slide div a:nth-child(3):focus ~ hr {
+  border-color: #8bc1ce; }
+.pf-type-tech .pf-tabs.slide div a:nth-child(3):active ~ hr {
+  border-color: #55A4B7; }
+.pf-type-tech .pf-tabs.slide div a:nth-child(4):hover ~ hr, .pf-type-tech .pf-tabs.slide div a:nth-child(4):focus ~ hr {
+  border-color: #8bc1ce; }
+.pf-type-tech .pf-tabs.slide div a:nth-child(4):active ~ hr {
+  border-color: #55A4B7; }
 .pf-type-tech .pf-list h1 {
   background: #55A4B7; }
 .pf-type-tech .pf-list button.chip:hover, .pf-type-tech .pf-list button.chip:focus {

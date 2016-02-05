@@ -1,4 +1,17 @@
 @import 'mixin';
+
+@font-face {
+	font-family: "Impact Label";
+	src: url("../../fonts/Impact_Label-webfont.eot");
+	src: url("../../fonts/Impact_Label-webfont#iefix") format("embedded-opentype"), url("../../fonts/Impact_Label-webfont.ttf") format("truetype"), url("../../fonts/Impact_Label-webfont.woff") format("woff"), url("../../fonts/Impact_Label-webfont.svg#impact_labelregular") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+.impact-label, .impact-label * {
+	font-family: "Impact Label"!important;
+}
+
 * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -13,8 +26,7 @@
 *:focus {
 	outline: none;
 }
-body,
-html {
+body, html {
 	height: 100%;
 }
 body {
@@ -24,12 +36,7 @@ body {
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 p {
@@ -38,29 +45,11 @@ p {
 em {
 	font-style: italic!important;
 }
-input[type=search],
-input[type=text],
-input[type=password],
-input[type=datetime],
-input[type=datetime-local],
-input[type=date],
-input[type=month],
-input[type=time],
-input[type=week],
-input[type=number],
-input[type=email],
-input[type=url],
-input[type=tel],
-input[type=color],
-textarea {
+input[type=search], input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=tel], input[type=color], textarea {
 	height: initial;
 	line-height: initial;
 }
-a,
-button,
-*[ng-click],
-*[tabindex],
-input[type=checkbox] {
+a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 	@include transition(.15s ease-in-out);
 	cursor: pointer;
 }
@@ -4619,10 +4608,9 @@ input[type=range] {
 				font-weight: 600;
 				text-transform: uppercase;
 				&.active {
-					border-bottom: 5px solid $shamrock;
+					border-bottom-color: $shamrock;
 				}
-				&:hover,
-				&:focus {
+				&:hover, &:focus {
 					border-bottom-color: rgba(white, .2);
 				}
 				&:visited {
@@ -4630,6 +4618,142 @@ input[type=range] {
 				}
 			}
 		}
+	}
+	&.slide {
+		@include flex;
+		@include flex-center;
+		> div {
+			@include flex;
+			position: relative;
+			margin: 0 7.5px;
+			a {
+				@include flex;
+				@include flex-center;
+				width: 165px;
+				text-align: center;
+				padding: 0 7.5px;
+				height: 60px;
+				font-size: 18px;
+				font-weight: 600;
+				text-transform: uppercase;
+				&:nth-child(1) {
+					&.active {
+						~ hr {
+							@include translate-x(0);
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&.active {
+						~ hr {
+							@include translate-x(165px);
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&.active {
+						~ hr {
+							@include translate-x(330px);
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&.active {
+						~ hr {
+							@include translate-x(495px);
+							border-color: white;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(0);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(165px);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(330px);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(495px);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+			}
+			hr {
+				@include transition(.15s ease-in-out);
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 165px;
+				height: 0;
+				border-top: 5px solid white;
+				border-bottom: 0;
+				border-left: 0;
+				border-right: 0;
+				margin: 0;
+			}
+		}
+		// &.full-bg {
+		// 	> div {
+		// 		hr {
+		// 			z-index: 1;
+		// 			border: 0;
+		// 			height: 100%;
+		// 			background: $smoke;
+		// 			border-radius: 0 2px;
+		// 		}
+		// 		a {
+		// 			position: relative;
+		// 			z-index: 2;
+		// 			&.active {
+		// 				color: $slate;
+		// 			}
+		// 		}
+		// 	}
+		// }
 	}
 }
 // RATING
