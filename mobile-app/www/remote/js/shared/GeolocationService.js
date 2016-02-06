@@ -56,7 +56,7 @@ function Geolocation($timeout, University, Utilities, Settings, LoadingService) 
       coordinates.lon = position.coords.longitude;
       console.log('location found!', position.coords.latitude, position.coords.longitude);
       isLocated = true;
-
+      alert(position.coords.latitude + "," + position.coords.longitude);
       if (list) {
         sortByLocation( position.coords.latitude,
                                   position.coords.longitude,

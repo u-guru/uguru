@@ -240,9 +240,12 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   };
 
   $scope.toggleLocationIconAppearance = function() {
-    if (mixpanel && mixpanel.track) {
-      mixpanel.track("Get GPS Location attempted");
-    }
+    Geolocation.getLocation($scope, $scope.source, function(results) {
+      $timeout(function() {
+        $scope.listScope = results;
+      }, 0);
+    }, DeviceService.isIOSDevice());
+
     if (Geolocation.settings.isAllowed === null || Geolocation.settings.isAllowed === false) {
       console.log("refreshing universities for location!");
       $scope.refresh.universities = 'update';
@@ -287,11 +290,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 
 
 // 							// LoadingService.showAmbig('Calculating distance...', 2000);
-// 							Geolocation.getLocation($scope, $scope.source, function(results) {
-// 								$timeout(function() {
-// 									$scope.listScope = results;
-// 								}, 0);
-// 							}, DeviceService.isIOSDevice());
+
 
 // 						}
 // 					}
