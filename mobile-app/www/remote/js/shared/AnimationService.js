@@ -149,8 +149,9 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	          	// var animationOnCompleteExpr = indexChild.getAttribute('anim-exit-up-complete');
         	}
       	} else {
-	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.getAttribute('anim-' + type + '-class').split(', ');
-	          var animationDelaysToInject = element.attributes['anim-' + type + '-delay'] && element.getAttribute('anim-' + type + '-delay').split(', ');
+	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.getAttribute('anim-' + type + '-class').split(', ')
+	          var animationDelaysToInject = element.attributes['anim-' + type + '-delay'] && element.getAttribute('anim-' + type + '-delay').split(', ')
+
 	          if (!animationClassToInject || !animationClassToInject.length) {
 	          	return;
 	          }

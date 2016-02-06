@@ -418,7 +418,6 @@
 		z-index: 98;
 		width: 100%;
 		background: rgba(white,.9);
-		@include opacity(0);
 		&.animated {
 			@include opacity(1);
 		}
@@ -1139,6 +1138,7 @@
 						z-index: 10;
 					}
 					.splash-scene-markers {
+						display: none;
 						z-index: 11;
 						.splash-marker {
 							@include flex;
@@ -1519,7 +1519,7 @@
 						.splash-scene-img:not(.opacity-0) {
 							@include opacity(1);
 						}
-						.splash-scene-prop-desktop {
+						.splash-scene-markers, .splash-scene-prop-desktop {
 							display: block!important;
 						}
 						.splash-scene-header {
