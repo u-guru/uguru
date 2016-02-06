@@ -27,8 +27,23 @@
 		</div>
 	</div>
 	<div class='attachment-container'>
-				<div class='attachment-list flex-wrap-center'>
-					<ul style='height:125px'>
+		<div class='attachment-list flex-wrap-center relative'>
+			<div id="preview-template" style="display: none;">
+				<div class="dz-preview dz-file-preview">
+				  <div class="dz-details">
+				    <div class="dz-filename"><span data-dz-name></span></div>
+				    <div class="dz-size" data-dz-size></div>
+				    <img data-dz-thumbnail />
+				  </div>
+				  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+				  <div class="dz-success-mark"><span>✔</span></div>
+				  <div class="dz-error-mark"><span>✘</span></div>
+				  <div class="dz-error-message"><span data-dz-errormessage></span></div>
+				</div>
+			</div>
+			<div id='request-form-file-uploader' class='full-xy absolute top-0 left-0 dropzone' style='min-height:250px !important;'>
+			</div>
+					<!-- <ul style='height:125px'>
 						<li class='full-y'>
 							<div class="attach-upload-file attach-upload-doc">
 								<svg class="doc-outline" viewBox="0 0 75 75" fill="{{user.university.school_color_dark}}" style="fill: {{user.university.school_color_dark}}!important;">
@@ -86,8 +101,7 @@
 								</a>
 							</div>
 						</li>
-					</ul>
+					</ul> -->
 				</div>
 			</div>
-		</div>
 </section>

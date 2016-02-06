@@ -5,10 +5,11 @@ angular
     'CalendarService',
     '$timeout',
     'LoadingService',
+    'FileService',
     RequestService
 	]);
 
-function RequestService(Category, CalendarService, $timeout, LoadingService) {
+function RequestService(Category, CalendarService, $timeout, LoadingService, FileService) {
   var _types = {DEFAULT:0, QUICK_QA:1}
   var MAX_REQUEST_HOURS = 10;
   var requestCancelTimeout;
@@ -110,6 +111,9 @@ function RequestService(Category, CalendarService, $timeout, LoadingService) {
 
   function initStudentForm(slide_box, scope, lat, long, color) {
     console.log('subcategories', Category.getAcademic());
+    $timeout(function() {
+      FileService.initDropzoneFromSelector('#request-form-file-uploader');
+    }, 1000)
     return {
       course: null,
       urgent: true,

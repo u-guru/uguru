@@ -264,6 +264,7 @@ gulp.task('scripts', function() {
       'lib/facebook/ngopenfb.js',
       'lib/facebook/facebookConnectPlugin.js',
       'lib/facebook/*.js',
+      'lib/dropzone/*min.js',
       'lib/ngElastic/*.js',
       'lib/ngMoment/moment.min.js',
       'lib/ngMoment/*.js',
