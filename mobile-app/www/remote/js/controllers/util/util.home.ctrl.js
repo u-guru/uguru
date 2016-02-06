@@ -43,6 +43,7 @@ angular.module('uguru.util.controllers')
         nav: navHeight,
         sectionSneak: sectionSneakHeight
       }
+      //@gabrielle
       //read other options here https://developers.google.com/maps/documentation/static-maps/intro#MapTypes
       var staticMapOptions = {
         scale: 1, //up to 2, only whole values
