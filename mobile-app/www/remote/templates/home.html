@@ -103,17 +103,17 @@
 			</div>
 		</header>
 
-		<div class="splash-sub-header tab-bar slide" id='splash-hiw-nav' bind-wp="hiw" bind-wp-class="animated, bounceInDown, slideInUp" bind-wp-direction="down, down, up">
+		<div class="splash-sub-header tab-bar slide" id='splash-hiw-nav' anim-enter-down="hiw_nav" anim-enter-down-delay="0" anim-enter-down-class="bounceInDown" anim-exit-up="hiw_nav" anim-exit-up-class="slideOutUp">
 			<div>
-				<a ng-click='switchToTabIndex(0)' class="ng-class:{'active':activeBrowseTabIndex===0}">
+				<a ng-click='switchToTabIndex(0)' class="hiw-subheader-nav-link ng-class:{'active':activeBrowseTabIndex===0}">
 					<span>How It</span>
 					<span>Works</span>
 				</a>
-				<a ng-click='switchToTabIndex(1)' class="ng-class:{'active':activeBrowseTabIndex===1}">
+				<a ng-click='switchToTabIndex(1)' class="hiw-subheader-nav-link ng-class:{'active':activeBrowseTabIndex===1}">
 					<span>Student-Run</span>
 					<span>Shops</span>
 				</a>
-				<a ng-click='switchToTabIndex(2)' class="ng-class:{'active':activeBrowseTabIndex===2}">
+				<a ng-click='switchToTabIndex(2)' class="hiw-subheader-nav-link ng-class:{'active':activeBrowseTabIndex===2}">
 					<span>Guru</span>
 					<span>Profiles</span>
 				</a>
@@ -162,13 +162,13 @@
 			</a>
 		</div>
 
-		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' bg-image="{{page.css.bg_banner}}" bg-image-has-loaded="page.load.sections.one.ready()" style='height:calc(100%);display:none!important' init-wp='hero' wp-offset="0" anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hero" anim-exit-up="hero">
+		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' bg-image="{{page.css.bg_banner}}" bg-image-has-loaded="page.load.sections.one.ready()" style='height:calc(100%)' init-wp='hero' wp-offset="0" anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hero" anim-exit-up="hero">
 			<ion-slide-box class='splash-scene' on-slide-changed="topHomeSlider.onChange($index)" show-pager='false' delegate-handle='splash-hero-home' does-continue="true">
-				<ion-slide id="splash-baking" anim-on-show-parent anim-on-show="show-slide" anim-on-hide-parent anim-on-hide="show-slide">
+				<ion-slide id="splash-baking" anim-on-show-parent anim-on-show="show-slide-{{topHomeSlider.index}}" anim-on-hide-parent anim-on-hide="show-slide-{{topHomeSlider.index}}">
 					<div class="splash-scene-img opacity-0" bg-image='{{img_base + BASE + "img/categories/hero/baking@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="10,10" anim-on-hide-child anim-on-hide-class="slideOutDown" anim-on-hide-delay="5000"></div>
 
 					<div class="opacity-0 splash-scene-map" anim-on-show-child anim-on-show-class="slideInDown" anim-on-show-delay="5000">
-						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')"></div>
+						<div class="splash-scene-map-img" style="background-image: url('{{staticUniversityMaps[topHomeSlider.index].static_map_url}}')"></div>
 					</div>
 
 					<div class="splash-scene-markers">
@@ -319,7 +319,7 @@
 					<div class="splash-scene-img opacity-0" bg-image='{{img_base + BASE + "img/categories/hero/photo@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="10,10" anim-on-hide-child anim-on-hide-class="slideOutDown" anim-on-hide-delay="5000"></div>
 
 					<div class="opacity-0 splash-scene-map" anim-on-show-child anim-on-show-class="slideInDown" anim-on-show-delay="5000">
-						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')"></div>
+						<div class="splash-scene-map-img" style="background-image: url('{{staticUniversityMaps[topHomeSlider.index].static_map_url}}')"></div>
 					</div>
 
 					<div class="splash-scene-markers">
@@ -469,7 +469,7 @@
 					<div class="splash-scene-img opacity-0" bg-image='{{img_base + BASE + "img/categories/hero/academic@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="10,10" anim-on-hide-child anim-on-hide-class="slideOutDown" anim-on-hide-delay="5000"></div>
 
 					<div class="opacity-0 splash-scene-map" anim-on-show-child anim-on-show-class="slideInDown" anim-on-show-delay="5000">
-						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')"></div>
+						<div class="splash-scene-map-img" style="background-image: url('{{staticUniversityMaps[topHomeSlider.index].static_map_url}}')"></div>
 					</div>
 
 					<div class="splash-scene-markers">
@@ -613,7 +613,7 @@
 					<div class="splash-scene-img opacity-0" bg-image='{{img_base + BASE + "img/categories/hero/tech@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="10,10" anim-on-hide-child anim-on-hide-class="slideOutDown" anim-on-hide-delay="5000"></div>
 
 					<div class="opacity-0 splash-scene-map" anim-on-show-child anim-on-show-class="slideInDown" anim-on-show-delay="5000">
-						<div class="splash-scene-map-img" style="background-image: url('{{img_base + BASE + 'img/categories/ucb-map@2x.png'}}')"></div>
+						<div class="splash-scene-map-img" style="background-image: url('{{staticUniversityMaps[topHomeSlider.index].static_map_url}}')"></div>
 					</div>
 
 					<div class="splash-scene-markers">
@@ -986,8 +986,8 @@
 			</footer>
 		</section>
 
-		<section init-wp="hiw, hiw_enter" wp-offset="106, 20%" class='splash-categories' id='splash-browse' anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw" anim-exit-up="hiw_enter">
-			<div id='how-it-works' class="main splash-postit ng-class:{'active':activeBrowseTabIndex===0}">
+		<section init-wp="hiw, hiw_enter, hiw_exit, hiw_nav" wp-offset="106, 20%, 70, 106" class='splash-categories' id='splash-browse' anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw">
+			<div id='how-it-works' class="hiw-subheader-nav-content main splash-postit ng-class:{'active':activeBrowseTabIndex===0}" anim-on-show="active">
 				<header>
 					<h1 class="how-it-works-header opacity-0" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="400">{{::how_it_works.header}}</h1>
 				</header>
@@ -1085,7 +1085,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="splash-categories" class="main ng-class:{'active':activeBrowseTabIndex===1, 'inactive':activeBrowseTabIndex!==1}" ng-controller="CategoriesController" anim-on-show-parent anim-on-show="active" anim-on-hide-parent anim-on-hide="inactive">
+			<div id="splash-categories" class="hiw-subheader-nav-content main ng-class:{'active':activeBrowseTabIndex===1, 'inactive':activeBrowseTabIndex!==1}" ng-controller="CategoriesController" anim-on-show-parent anim-on-show="active" anim-on-hide-parent anim-on-hide="transitioning" anim-on-hide-debounce="1500">
 				<div>
 					<div>
 						<h1 class="splash-categories-header opacity-0" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="400" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-hide-delay="200">Browse Sample Guru Categories</h1>
@@ -1140,15 +1140,15 @@
 					</div>
 				</div>
 			</div>
-			<div id="splash-gurus" class="main ng-class:{'active':activeBrowseTabIndex===2}">
+			<div id="splash-gurus" class="hiw-subheader-nav-content main ng-class:{'active':activeBrowseTabIndex===2}" anim-on-show="active" anim-on-hide="transitioning" anim-on-hide-debounce="1500" anim-on-show-parent anim-on-hide-parent>
 				<div>
 					<div>
-						<h1 class="splash-gurus-header opacity-0">Browse Sample Guru Profiles</h1>
-						<h2 class="splash-gurus-subheader opacity-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
+						<h1 class="splash-gurus-header opacity-0" anim-on-show-child anim-on-show-class="fadeInDown">Browse Sample Guru Profiles</h1>
+						<h2 class="splash-gurus-subheader opacity-0" anim-on-show-child anim-on-show-delay="200" anim-on-show-class="fadeInDown">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h2>
 					</div>
 					<div>
 						<ul class="pf-card-group-mobile" ng-if='::!desktopMode'>
-							<li ng-repeat='category in ::categories' ng-if='category.is_active'>
+							<li ng-repeat='category in ::categories' ng-if='category.is_active' anim-on-show-child anim-on-show-class="rotateInDown" anim-on-show-delay="{{100 * $index}}">
 								<a class="pf-card-mini large pf-card-mini-{{::category.hex_color}}" id='cta-box-{{::category.hex_color}}'>
 									<div class="pf-card-mini-banner"></div>
 									<span class="user-icon" style="background-image: url({{sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
@@ -1157,60 +1157,60 @@
 							</li>
 						</ul>
 						<ul class="pf-card-group" ng-if='desktopMode'>
-							<li class="pf-card-li opacity-0" ng-repeat='category in ::categories' ng-if='category.is_active'>
+							<li class="pf-card-li opacity-0" ng-repeat='category in ::categories' ng-if='category.is_active' anim-on-show-child anim-on-show-class="lightSpeedIn" anim-on-show-delay="{{200 + 100 * $index}}">
 								<a class="pf-card pf-card-{{::category.hex_color}} bg-{{::category.hex_color}}" id='cta-box-{{::category.hex_color}}'>
 									<span class="pf-hover">View Profile</span>
 									<div class="pf-card-top">
 										<ul>
 											<li>{{::category.hex_color}}</li>
-											<li class="pf-card-ribbon opacity-0">
+											<li class="pf-card-ribbon opacity-0" anim-on-show-child anim-on-show-delay="{{800 + 100*$index}}" anim-on-show-class="slideInUp">
 												<span>{{::sampleMiniProfilesDict[category.hex_color].percentile}}&nbsp;percentile</span>
 											</li>
 										</ul>
-										<span class="user-icon opacity-0" style="background-image: url({{::sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
+										<span anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{900 + 100 * $index}}" class="user-icon opacity-0"  style="background-image: url({{::sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
 									</div>
 									<div class="pf-card-main">
 										<h1 class="pf-card-name verified">
-			            								<span class="pf-card-name-span inline opacity-0">{{::sampleMiniProfilesDict[category.hex_color].name}}</span>
-			            								<span class="pf-card-verified inline opacity-0">
+			            								<span anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1000 + 100 * $index}}" class="pf-card-name-span inline opacity-0">{{::sampleMiniProfilesDict[category.hex_color].name}}</span>
+			            								<span class="pf-card-verified inline opacity-0" anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1200 + 100 * $index}}">
 			            									<span ng-include="::img_base + 'templates/credibility.verified.svg.html'"> </span>
 			            								</span>
 			                						</h1>
 
-										<h2 class="pf-school opacity-0">{{::sampleMiniProfilesDict[category.hex_color].university_name}}</h2>
+										<h2 class="pf-school opacity-0" anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1250 + 100 * $index}}">{{::sampleMiniProfilesDict[category.hex_color].university_name}}</h2>
 										<ul class="pf-rating" data-rating="{{::sampleMiniProfilesDict[category.hex_color].rating.whole_stars}}" data-half="{{::sampleMiniProfilesDict[category.hex_color].rating.has_half_star}}">
-											<li class="opacity-0">
+											<li class="opacity-0" anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1350 + 25 * index}}">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
-											<li class="opacity-0">
+											<li class="opacity-0" anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1375 + 25 * $index}}">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
-											<li class="opacity-0">
+											<li class="opacity-0"  anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1400 + 25 * $index}}">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
-											<li class="opacity-0">
+											<li class="opacity-0"  anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1425 + 25 * $index}}">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
-											<li class="opacity-0">
+											<li class="opacity-0"  anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1500 + 25 * $index}}">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 										</ul>
-										<span class="pf-review-amt opacity-0">{{::sampleMiniProfilesDict[category.hex_color].rating.count}} Reviews</span>
+										<span  anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1600 + 75 * $index}}" class="pf-review-amt opacity-0">{{::sampleMiniProfilesDict[category.hex_color].rating.count}} Reviews</span>
 									</div>
 								</a>
 							</li>

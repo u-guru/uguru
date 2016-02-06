@@ -43,6 +43,15 @@ angular.module('uguru.util.controllers')
         nav: navHeight,
         sectionSneak: sectionSneakHeight
       }
+      //read other options here https://developers.google.com/maps/documentation/static-maps/intro#MapTypes
+      var staticMapOptions = {
+        scale: 1, //up to 2, only whole values
+        map_type: "roadmap", //hybrid, terrain, satellite, roadmap
+        size: "1280x1280",
+        zoom: 17
+      }
+
+
       $scope.mapBounds = {
         desktop: {
           northeast: {latitude: 20.70, longitude:-128.50},
@@ -445,26 +454,23 @@ angular.module('uguru.util.controllers')
 
       //Scope var declarations
       var onSectionOneLoad = function() {
-        // initUniversityTypeWriter();
 
-        $timeout(function() {
           $scope.root.loader.body.hide = true;
           $scope.page.scroll.section_index = 0;
-          // initHomePageWayPoint();
-          initializePageAnimations();
+
+
           initSlideBoxRemote();
           Waypoint.refreshAll();
-        }, 250)
-        $timeout(function() {
-          initTypeWritersTopSection();
-        }, 500)
-        $timeout(function() {
+          $timeout(function() {
+            initTypeWritersTopSection();
+          }, 500)
+
 
           var ionSlideOne = document.querySelector('.splash-scene ion-slide');
-          ionSlideOne.classList.add('show-slide');
-          $scope.$apply();
-
-      }, 0)
+          ionSlideOne.classList.add('show-slide-0');
+          $timeout(function() {
+            $scope.$apply();
+          })
 
       }
       $scope.university = {}
@@ -508,9 +514,10 @@ angular.module('uguru.util.controllers')
           onChange: function($index) {
             var ionSlides = document.querySelectorAll('.splash-scene ion-slide');
             //remove all
+            $scope.topHomeSlider.index = $index;
             for (var i = 0; i < ionSlides.length; i++) {
               var indexSlide = ionSlides[i];
-              indexSlide.classList.remove('show-slide');
+              indexSlide.classList.remove('show-slide-' + $index);
             }
             ionSlides[$index].classList.add('show-slide');
           },
@@ -519,49 +526,24 @@ angular.module('uguru.util.controllers')
             console.log('play clicked');
             $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').start();
           },
+          index: 0,
           paused: false
         }
       }
 
 
       $scope.switchToTabIndex = function(index) {
-        var currentIndex = $scope.page.tabs.hiw.index;
-        $scope.activeBrowseTabIndex = index;
-        //switching to how it works
-        if (index !== currentIndex && index === 2) {
-          if (!$scope.page.animations.profiles.viewed) {
-            $scope.page.animations.profiles.viewed = true;
-            console.log('firing first time animations for profiles')
-            console.log($scope.page.animations.profiles.firstViewed.elements);
-            AnimationService.activateSectionAnimations($scope.page.animations.profiles.firstViewed.elements, $scope.page.animations.profiles.firstViewed.css_classes, $scope.page.animations.profiles.firstViewed.delays);
-          } else {
-            console.log('firing second time animations for profiles')
-            AnimationService.activateSectionAnimations($scope.page.animations.profiles.secondViewed.elements, $scope.page.animations.profiles.secondViewed.css_classes, $scope.page.animations.profiles.secondViewed.delays);
-          }
-        }
-        if (index !== currentIndex && index === 1) {
 
-          if (!$scope.page.animations.categories.viewed) {
-            $scope.page.animations.categories.viewed = true;
-            console.log('firing first time animations for categories')
-            AnimationService.activateSectionAnimations($scope.page.animations.categories.firstViewed.elements, $scope.page.animations.categories.firstViewed.css_classes, $scope.page.animations.categories.firstViewed.delays);
-          } else {
-            console.log('firing second time animations for categories')
-            AnimationService.activateSectionAnimations($scope.page.animations.categories.secondViewed.elements, $scope.page.animations.categories.secondViewed.css_classes, $scope.page.animations.categories.secondViewed.delays);
-          }
-        }
-        if (index !== currentIndex && index === 0) {
+        var activeSubheaderContainer = document.querySelector('.hiw-subheader-nav-content.active')
+        activeSubheaderContainer.classList.add('transitioning');
 
-          if (!$scope.page.animations.hiw.viewed) {
-            console.log('firing first time animations for how it works')
-            $scope.page.animations.hiw.viewed = true;
-            AnimationService.activateSectionAnimations($scope.page.animations.hiw.firstViewed.elements, $scope.page.animations.hiw.firstViewed.css_classes, $scope.page.animations.hiw.firstViewed.delays);
-          } else {
-            console.log('firing second time animations for how it works')
-            AnimationService.activateSectionAnimations($scope.page.animations.hiw.secondViewed.elements, $scope.page.animations.hiw.secondViewed.css_classes, $scope.page.animations.hiw.secondViewed.delays);
-          }
 
-        }
+
+        $timeout(function() {
+          activeSubheaderContainer.classList.remove('transitioning');
+          $scope.activeBrowseTabIndex = index;
+        }, parseInt(activeSubheaderContainer.getAttribute('anim-on-hide-debounce') || 0))
+
       }
       // $scope.page.animations = {hiw: {}};
       // $scope.page.animations.hiw = {
@@ -1102,6 +1084,8 @@ angular.module('uguru.util.controllers')
       ];
 
       $scope.universities = University.getTargetted();
+      $scope.staticUniversityMaps = GUtilService.generateStaticMapUrls($scope.universities.slice(0, 4), staticMapOptions);
+      console.log($scope.staticUniversityMaps)
       // $scope.search_text = {university: "", matching: []};
 
       var calcZoom = function() {
@@ -1417,6 +1401,8 @@ angular.module('uguru.util.controllers')
 
         if (!$scope.universities) {
             $scope.universities = University.getTargetted().slice();
+            $scope.staticUniversityMaps = GUtilService.generateStaticMapUrls($scope.universities.slice(0, 4), staticMapOptions);
+            console.log($scope.staticUniversityMaps)
         }
         initHomeMap();
 
