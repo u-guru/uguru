@@ -48,6 +48,12 @@ function ScrollService(LoadingService, $timeout) {
       return new IScroll(selector);
     }
 
+    // function initStellar(selector,) {
+    //   // $('#splash-browse').stellar({
+    //   //     scrollProperty: 'transform'
+    //   // });
+    // }
+
       function returnWayPointFunction(wpName, stateName) {
         return function(direction) {
           //if up animation

@@ -38,7 +38,7 @@ angular.module('uguru.util.controllers')
       $scope.page.animations = {hiw:{}, bg:{}, profiles: {}, categories:{}, university: {}, main: {}, waypoints: {triggers:{}, parentRef:"home-splash"}};
       var navHeight = 70;
       var sectionSneakHeight = 36;
-      $scope.mapCenter = {latitude: 39.8282, longitude: -98.57};
+      $scope.mapCenter = {latitude: 42.5, longitude: -100};
       $scope.page.heights = {
         nav: navHeight,
         sectionSneak: sectionSneakHeight
@@ -55,8 +55,8 @@ angular.module('uguru.util.controllers')
 
       $scope.mapBounds = {
         desktop: {
-          northeast: {latitude: 20.70, longitude:-128.50},
-          southwest: {latitude:48.85, longitude: -70}
+          northeast: {latitude: 54, longitude:-61.50},
+          southwest: {latitude:15, longitude: -125}
         },
         mobile: {
           northeast: {latitude: 20.70, longitude:-100.50},
@@ -1276,6 +1276,32 @@ angular.module('uguru.util.controllers')
       }
 
 
+      function hideAllClusters(selector) {
+        $timeout(function() {
+          var allClusterElems = document.querySelectorAll(selector) || [];
+          for (var i = 0; i < allClusterElems.length; i++) {
+            var indexCluster = allClusterElems[i];
+            indexCluster.classList.add('opacity-0');
+            indexCluster.setAttribute("anim-on-show-child", "");
+            indexCluster.setAttribute("anim-on-show-class", "bounceInUp");
+            indexCluster.setAttribute("anim-on-show-delay", 1500 + (i * 50) + "");
+            $compile(indexCluster)($scope);
+          }
+        })
+      }
+
+      function setPulseClusters(selector) {
+        $timeout(function() {
+          var allClusterElems = document.querySelectorAll(selector) || [];
+          for (var i = 0; i < allClusterElems.length; i++) {
+            var indexCluster = allClusterElems[i];
+            indexCluster.classList.add('opacity-0');
+            indexCluster.setAttribute("anim-on-show-child", "");
+            indexCluster.setAttribute("anim-on-show-class", "pulse, pulse, pulse");
+            $compile(indexCluster)($scope);
+          }
+        })
+      }
 
       var initHomeMap = function() {
           $scope.page.load.sections.two.display = true;
@@ -1288,7 +1314,8 @@ angular.module('uguru.util.controllers')
           options: mapDefaults.options,
           events: {tilesloaded: onMapRenderCompleteOnce},
           clusterOptions: initClusterObj(),
-          bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
+          clusterEvents: {mouseover: function(cluster){ setPulseClusters('.university-svg-cluster') }, clusteringend: function(cluster) {hideAllClusters('.university-svg-cluster')}},
+          bounds: $scope.mapBounds, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
           pan: true,
           bounds: $scope.mapBounds.desktop,
           markers: generateXMarkersFromUniversities(200, $scope.universities),

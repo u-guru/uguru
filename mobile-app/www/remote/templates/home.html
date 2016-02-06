@@ -874,8 +874,8 @@
 
 			<!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
 			<div class='splash-map zoom-{{map.zoom}}' style="background-color: #C5DDED;" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="400">
-				<ui-gmap-google-map id="splash-google-map" class='full-xy absolute top-0 left-0 opacity-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="550">
-					<ui-gmap-markers models="map.markers" coords="'self'" options="'options'" fit="true" icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
+				<ui-gmap-google-map id="splash-google-map" class='full-xy absolute top-0 left-0 opacity-0' center="map.center" refresh='map.refresh' bounds="mapBounds" bounces="map.bounds" events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="550">
+					<ui-gmap-markers models="map.markers" coords="'self'" options="'options'" icon="'icon'" clusterOptions="map.clusterOptions" clusterEvents="map.clusterEvents" doCluster="true">
 					</ui-gmap-markers>
 					<ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
 						<div class='university-label'>
@@ -1140,7 +1140,16 @@
 					</div>
 				</div>
 			</div>
-			<div id="splash-gurus" class="hiw-subheader-nav-content main ng-class:{'active':activeBrowseTabIndex===2}" anim-on-show="active" anim-on-hide="transitioning" anim-on-hide-debounce="1500" anim-on-show-parent anim-on-hide-parent>
+			<div id="splash-gurus" class="hiw-subheader-nav-content main ng-class:{'active':activeBrowseTabIndex===2}"
+
+				anim-on-show="active"
+				anim-on-hide="transitioning"
+
+				anim-on-hide-debounce="1500"
+
+				anim-on-show-parent
+				anim-on-hide-parent >
+
 				<div>
 					<div>
 						<h1 class="splash-gurus-header opacity-0" anim-on-show-child anim-on-show-class="fadeInDown">Browse Sample Guru Profiles</h1>
