@@ -424,14 +424,14 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 .hide {
 	display: none!important;
 }
-.hide-opacity {
+.hide-opacity, .opacity-0, .transparent {
 	@include opacity(0);
 }
 .show-opacity {
 	@include opacity(1);
 }
 .show-opacity-impt {
-	opacity: 1 !important;
+	@include opacity-important(1);
 }
 .absolute {
 	position: absolute!important;
@@ -2127,7 +2127,7 @@ div[class*="progress"] {
 		&::-webkit-progress-value,
 		span {
 			@include round;
-			@include transition(.15s ease-in-out);
+			@include transition(1s ease-in);
 			display: block;
 			height: 100%;
 			overflow: hidden;
@@ -2638,50 +2638,6 @@ input[type=range] {
 	@include animation-iteration-count(1);
 	@include animation-name(checkmark-opacity);
 }
-@include keyframes(checkmark-one) {
-	0% {
-		@include opacity(0);
-		stroke-dashoffset: 20.8;
-	}
-	5% {
-		@include opacity(1);
-	}
-	95% {
-		stroke-dashoffset: 0;
-	}
-	100% {
-		stroke-dashoffset: 0;
-	}
-}
-@include keyframes(checkmark-two) {
-	0% {
-		@include opacity(0);
-		stroke-dashoffset: 49.91;
-	}
-	5% {
-		@include opacity(1);
-	}
-	95% {
-		stroke-dashoffset: 0;
-	}
-	100% {
-		stroke-dashoffset: 0;
-	}
-}
-@include keyframes(checkmark-opacity) {
-	0% {
-		@include opacity(0);
-	}
-	1% {
-		@include opacity(1);
-	}
-	98% {
-		@include opacity(1);
-	}
-	100% {
-		@include opacity(0);
-	}
-}
 #tour-guru {
 	g {
 		@include animation-delay(1.5s);
@@ -2705,86 +2661,7 @@ input[type=range] {
 		@include animation-name(tour-guru-eyes-up);
 	}
 }
-@include keyframes(tour-guru-eyes-center) {
-	0% {
-		@include opacity(1);
-	}
-	14% {
-		@include opacity(1);
-	}
-	15% {
-		@include opacity(0);
-	}
-	29% {
-		@include opacity(0);
-	}
-	30% {
-		@include opacity(1);
-	}
-	44% {
-		@include opacity(1);
-	}
-	45% {
-		@include opacity(0);
-	}
-	100% {
-		@include opacity(0);
-	}
-}
-@include keyframes(tour-guru-eyes-moon) {
-	0% {
-		@include opacity(0);
-	}
-	59% {
-		@include opacity(0);
-	}
-	60% {
-		@include opacity(1);
-	}
-	100% {
-		@include opacity(1);
-	}
-}
-@include keyframes(tour-guru-eyes-side) {
-	0% {
-		@include opacity(0);
-	}
-	14% {
-		@include opacity(0);
-	}
-	15% {
-		@include opacity(1);
-	}
-	29% {
-		@include opacity(1);
-	}
-	30% {
-		@include opacity(0);
-	}
-	100% {
-		@include opacity(0);
-	}
-}
-@include keyframes(tour-guru-eyes-up) {
-	0% {
-		@include opacity(0);
-	}
-	44% {
-		@include opacity(0);
-	}
-	45% {
-		@include opacity(1);
-	}
-	59% {
-		@include opacity(1);
-	}
-	60% {
-		@include opacity(0);
-	}
-	100% {
-		@include opacity(0);
-	}
-}
+
 // USER ICON
 .user-icon,
 .user-icon-64,
@@ -4204,6 +4081,7 @@ input[type=range] {
 				&:first-child {
 					padding: 10px 15px;
 					color: white;
+					text-align: left;
 				}
 				&:last-child {
 					@include flex;
@@ -4279,6 +4157,15 @@ input[type=range] {
 			margin-top: 0;
 			font-size: 20px;
 			font-weight: 400;
+		}
+		.pf-online {
+			margin-top: 0;
+			font-size: 20px;
+			font-weight: 400;
+			&.active {
+				font-weight: 700;
+				color: $moxie;
+			}
 		}
 		.pf-rating {
 			margin: 15px auto 0;
@@ -4668,6 +4555,14 @@ input[type=range] {
 						}
 					}
 				}
+				&:nth-child(5) {
+					&.active {
+						~ hr {
+							@include translate-x(660px);
+							border-color: white;
+						}
+					}
+				}
 
 				&:nth-child(1) {
 					&:hover, &:focus {
@@ -4712,6 +4607,19 @@ input[type=range] {
 					&:hover, &:focus {
 						~ hr {
 							@include translate-x(495px);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(5) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(660px);
 							border-color: rgba(white, .7);
 						}
 					}
@@ -5488,31 +5396,7 @@ input[type=range] {
 		}
 	}
 }
-@include keyframes(courses-pop) {
-	0% {
-		@include opacity(0);
-		@include translate-y(-8%);
-	}
-	80% {
-		@include opacity(1);
-		@include translate-y(2%);
-	}
-	100% {
-		@include opacity(1);
-		@include translate-y(0);
-	}
-}
-@include keyframes(url-pop) {
-	0% {
-		@include opacity(0);
-		@include translate-y(50%);
-	}
-	90% {
-		@include opacity(1);
-		@include translate-y(-5%);
-	}
-	100% {
-		@include opacity(1);
-		@include translate-y(0);
-	}
+
+#body-loading-wrapper .logo {
+	display: none!important;
 }

@@ -1,7 +1,7 @@
 
 <main id="timeline" class='full-xy'>
     <div class='full-x'>
-        <div class="timeline-header p20xy text-center bg-shamrock">
+        <div class="timeline-header p15xy text-center bg-shamrock">
             <div>
                 <h1 style='font-size:48px;'>Sp16 Universities</h1>
                 <h2 style='font-size:36px;'><u class='weight-900'>{{alreadyStartedUniversities.length}}</u> already started</h2>
@@ -10,9 +10,9 @@
        <!-- 1 -->
         <h1 class='text-center uppercase weight-900 full-x p20top m20top hide ng-class:{"show":page.active.progress_percent}'> {{page.active.progress}} items completed</h1>
         <ul class='text-center flex-wrap full-x'>
-            <li ng-repeat='uni_group in universityDistArr' class='full-x weight-500 p20xy'>
+            <li ng-repeat='uni_group in universityDistArr' class='full-x weight-500 p15xy'>
                 <h1><span class='weight-700'>{{uni_group.length}} started </span> on {{uni_group[0].sp16_utc_date.split("00:00")[0]}}</h1>
-                <div class='ugrid p20xy align-left text-left' ng-repeat='uni in uni_group'>
+                <div class='ugrid p15xy align-left text-left' ng-repeat='uni in uni_group'>
                     <span class='university-title border bg-cerise txt-smoke p05xy' style='width:40px!important;'>
                         #{{uni.us_news_ranking}}
                         <span ng-if='uni.us_news_ranking.length === 2'>&nbsp;&nbsp;</span>
@@ -135,7 +135,7 @@
             </li>
             <div></div>
         </ul>
-        <!-- <div class='p20x bg-cerise full-x flex-wrap flex-center'>
+        <!-- <div class='p15x bg-cerise full-x flex-wrap flex-center'>
             <div class='full-x'>
                 <h1 class='weight-900'> Missing Components</h1>
                 <ol>

@@ -1,22 +1,48 @@
-<section id="request-two" class="request-slide request-pledge">
+<section id="request-one" class="request-slide">
 	<header>
-		<h1>Honor Pledge</h1>
+		<h1>Request Time</h1>
 	</header>
-	<div class="request-content">
-		<div>
-			<!-- @samir -->
-			<!-- I couldn't get the contentservice to work even though I put all the right code into student.request.ctrl.js - please fix for me when possible -->
-			<ol>
-				<li><span>I will not request that any portion of my work be rewritten by a Guru.</span></li>
-		        <li><span>I understand that if I do, I risk immediately losing access to my Uguru account.</span></li>
-		        <li><span>All of the work I'm submitting for feedback is my work and my work only.</span></li>
-		        <li><span>I understand that Uguru's services may not result in acceptance to any school.</span></li>
-		        <li><span>I understand that addicting usage of Uguru may result in cancer.</span></li>
-			</ol>
-			<input type="text" value="{{user.name}}" />
-			<label>{{user.name}}</label>
+	<div class="request-content relative">
+		<div class='full-xy'>
+			<div class='request-time'>
+				<div class='request-form full-x'>
+					<h2>I think I will need&nbsp;&nbsp;</h2>
+					<div class="custom-dropdown request-hours">
+						<div>
+							<span>{{request.user.time_estimate.hours}}</span>
+							<a ng-click='page.dropdowns.hour = !page.dropdowns.hour'>
+								<svg viewBox="0 0 100 100">
+									<path d="M14,32 L50,68 L86,32"></path>
+								</svg>
+							</a>
+						</div>
+						<ul class="ng-class:{'active':page.dropdowns.hour}">
+							<li ng-repeat="_ in maxHourArr" tabindex ng-click="setHourDropdownValue($index + 1)">{{$index + 1}}</li>
+						</ul>
+						<div class="dropdown-overlay hide ng-class:{'show':page.dropdowns.hour}"></div>
+					</div>
+					<h2>&nbsp;&nbsp;hr and&nbsp;&nbsp;</h2>
+					<div class="custom-dropdown request-minutes">
+						<div>
+							<span>{{request.user.time_estimate.minutes}}</span>
+							<a ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'>
+								<svg viewBox="0 0 100 100">
+									<path d="M14,32 L50,68 L86,32"></path>
+								</svg>
+							</a>
+						</div>
+						<ul class="ng-class:{'active':page.dropdowns.minutes}">
+							<li tabindex ng-click='setMinDropdownValue(15)'>15</li>
+							<li tabindex ng-click='setMinDropdownValue(30)'>30</li>
+							<li tabindex ng-click='setMinDropdownValue(45)'>45</li>
+						</ul>
+						<div class="dropdown-overlay" ng-click='page.dropdowns.minutes = !page.dropdowns.minutes'></div>
+					</div>
+					<h2>&nbsp;&nbsp;min</h2>
+				</div>
+				<!-- <div ng-include="img_base + BASE + 'templates/request-cal.html'"></div> -->
+			</div>
 		</div>
-    </div>
-	
-	<button ng-if='!desktopMode'>Next</button>
+	</div>
+	<button>Next</button>
 </section>

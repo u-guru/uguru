@@ -12,7 +12,7 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-  // REST_URL = "http://localhost:5000";
+  REST_URL = "http://localhost:5000";
   // BASE_URL = _ipaddress;
 
   // REST_URL = 'https://192.168.0.107:5000';
@@ -22,9 +22,7 @@ if (LOCAL) {
 }
 
 
-if (window.location.href.indexOf('hs.uguru') > -1) {
-  _startpage = 'essay-home';
-}
+
 
 
 var tracker = 'lo';
@@ -97,6 +95,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
   $ionicConfigProvider.views.forwardCache(false);
+  $ionicConfigProvider.scrolling.jsScrolling(false);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 

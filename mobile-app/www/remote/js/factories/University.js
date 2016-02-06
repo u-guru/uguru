@@ -116,13 +116,6 @@ angular.module('uguru.rest', [])
 
 
                              source.courses = response.plain();
-                             $timeout(function() {
-                                 $localstorage.set(uni_id + ' popularCourses', source.popularCourses);
-                                 uTracker.track(tracker, {
-                                     '$Downloaded_PopularCourses': uni_id
-                                 });
-                             }, 1000);
-
 
                              if (scope && callback) {
                                 console.log('saving courses');

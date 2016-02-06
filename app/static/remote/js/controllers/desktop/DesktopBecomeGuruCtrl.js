@@ -69,7 +69,10 @@ angular.module('uguru.desktop.controllers')
     });
 
     $scope.goBackOneLevel = function() {
-      if ($scope.root.vars.university) {
+      if ($scope.user.id) {
+        AnimationService.flip('^.student-home');
+      }
+      else if ($scope.root.vars.university) {
         var university = $scope.university || $scope.root.vars.university;
         AnimationService.flip('^.universities', {}, {universityId:university.id, universityObj:university});
       } else {
@@ -109,6 +112,7 @@ angular.module('uguru.desktop.controllers')
       }
 
       if (Math.round($scope.progress.width) >= 100) {
+       $scope.showFinishButton = true;
        $scope.completeAndGoToGuru();
       }
       // $scope.progress.widthValue = $scope.progress.width;
@@ -120,7 +124,6 @@ angular.module('uguru.desktop.controllers')
         if (!$scope.yourAllSetAlreadyShown) {
           LoadingService.showSuccess("You're all set!", 1500);
           $scope.yourAllSetAlreadyShown = true;
-          $scope.showFinishButton = true;
         }
 
     }
@@ -374,7 +377,13 @@ angular.module('uguru.desktop.controllers')
       $scope.categories = Category.categories;
       $ionicSlideBoxDelegate.update();
       $timeout(function() {
+        $scope.yourAllSetAlreadyShown = true;
+
         $scope.calculateProgress();
+
+        $timeout(function() {
+          $scope.yourAllSetAlreadyShown = false;
+        }, 1000)
 
         Category.mapActiveToSubcategories(Category.categories, $scope.user);
         $scope.categories = Category.categories;

@@ -507,8 +507,36 @@ ul#guru-courses-user-profile {
 .invisible .university-svg-icon svg {
   visibility: hidden !important; }
 
-.opacity-0 {
-  filter: alpha(opacity=0);
-  opacity: 0; }
+.platform-ios #home-splash {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
+.platform-ios .splash-footer-link {
+  position: fixed !important;
+  -webkit-backface-visibility: hidden !important; }
+.platform-ios .splash-toast #essay-home-backdrop {
+  -webkit-backface-visibility: hidden !important; }
+.platform-ios .fixed {
+  -webkit-backface-visibility: hidden !important; }
+
+.splash-footer-links-container {
+  bottom: 0;
+  position: fixed;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden; }
+  .splash-footer-links-container a {
+    bottom: 15px; }
+
+div#splash-hiw-nav.splash-sub-header.tab-bar.slide,
+header#home-nav-header.splash-header,
+#essay-home-backdrop, .splash-toast, .hide,
+#splash-footer-next {
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000; }
+
+#home-splash ion-pane {
+  width: 66.66% !important;
+  right: 0;
+  margin-left: 33.33% !important; }
 
 /*# sourceMappingURL=samir.css.map */

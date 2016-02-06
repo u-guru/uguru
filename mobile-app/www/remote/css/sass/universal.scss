@@ -1,5 +1,75 @@
 @import 'mixin';
 
+/* ---------- FAQ */
+#faq {
+	height: 100%;
+	header {
+		@include flex;
+		@include flex-center;
+		@include flex-wrap;
+		height: calc(100% / 3);
+		background: $shamrock;
+		h1 {
+			padding-bottom: 60px;
+			font-size: 48px;
+			text-align: center;
+			text-transform: none!important;
+		}
+		.tab-bar {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background: rgba($slate,.4);
+		}
+	}
+	.main {
+		@include flex;
+		@include flex-wrap;
+		height: calc(100% / 3 * 2);
+		overflow: auto;
+		padding: 15px;
+		dl {
+			width: 50%;
+			padding: 15px 15px 0;
+			dt {
+				@include flex;
+				@include flex-center-vertical;
+				background: $shamrock;
+				padding: 10px 15px;
+				font-size: 20px;
+				font-weight: 700;
+				.close-button {
+					display: block;
+					width: 40px;
+					height: 40px;
+    				padding-left: 10px;
+					svg {
+						width: 100%;
+						height: 100%;
+					}
+					&:not(.active) {
+						svg {
+							@include rotate(0);
+						}
+					}
+				}
+				span {
+					display: block;
+					width: calc(100% - 40px);
+				}
+			}
+			dd {
+				background: white;
+				padding: 10px 15px;
+				color: $slate;
+				font-size: 16px;
+				font-weight: 600;
+			}
+		}
+	}
+}
+
 /* ---------- TEAM */
 #team {
 	width: 100%;
@@ -174,21 +244,6 @@
 
 #intercom-container {
 	z-index: auto!important;
-}
-
-@include keyframes(toast-pop) {
-	0% {
-		@include opacity(0);
-		@include translate-y(-10%);
-	}
-	80% {
-		@include opacity(1);
-		@include translate-y(5%);
-	}
-	100% {
-		@include opacity(1);
-		@include translate-y(0);
-	}
 }
 
 // TICKET STUB

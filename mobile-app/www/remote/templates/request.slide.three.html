@@ -1,125 +1,74 @@
-<section id="request-three" class="request-confirm request-slide">
-    <header>
-		<h1>Confirm my request</h1>
-	</header>
-	<div class="request-content relative">
-		<div>
-			<div>
-				<a class="request-edit">Edit</a>
-				<h1 class="request-step small selected">
-					<b>Selected School</b>
-				</h1>
-				<div class="request-selection">
-					<h1>{{request.selected_university.name || 'UC Berkeley'}}</h1>
-				</div>
-			</div>
-		</div>
-		<div>
-			<div>
-				<a class="request-edit">Edit</a>
-				<h1 class="request-step small selected">
-					<b>Selected Help Type</b>
-				</h1>
-				<div class="request-seletion">
-					<h1>1:1 with a {{request.selected_university.name || request.selected_university.short_name}} guru</h1>
-				</div>
-			</div>
-		</div>
-		<div>
-			<div>
-				<a class="request-edit">Edit</a>
-				<h1 class="request-step small selected">
-					<b>Request Description</b>
-				</h1>
-				<div class="request-selection">
-					<p class="input-outline active" ng-model='request.info.description'>{{request.info.description || 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.'}}</p>
-					<div class='tag-list'>
-                        <span class="tag-list-label">Tags:</span>
-						<span class="chip tag-selected" ng-repeat="tag in request.info.tags | limitTo: 3">{{tag.name}}</span>
-                        <span class="chip tag-more">+ 10 more</span>
-					</div>
-                    <div class='tag-list'>
-                        <span class="tag-list-label">Attachments:</span>
-                        <span class="chip tag-pdf">file.pdf</span>
-                        <span class="chip tag-img">file.jpg</span>
-                        <span class="chip tag-doc">file.doc</span>
-                        <span class="chip tag-more">+ 10 more</span>
-					</div>
-				</div>
-			</div>
-		</div>
-        <div>
-			<div>
-				<a class="request-edit">Edit</a>
-				<h1 class="request-step small selected">
-					<b>When and Where</b>
-				</h1>
-                <div class="request-selection">
-                    <div class="request-edit-cal">
-                        <div class="request-edit-cal-item">
-                            <h2>Wed, Jan 25</h2>
-                            <span>4pm-6pm</span>
+<section id="request-cta-calendar" class="request-slide text-center flex-wrap-center relative full-xy">
+    <div class="time-estimate-container">
+        <div class='full-x ugrid-3 p20xy'>
+            <div> </div>
+            <div class='relative request-time'>
+                <div class='full-x ugrid-4 request-form high-z-index'>
+                    <h2 class='text-right p10x p05y'>I think I will need&nbsp;&nbsp;</h2>
+                    <div class="custom-dropdown request-hours">
+                        <div>
+                            <span>{{requestForm.time_estimate.hours}}</span>
+                            <a ng-click='requestForm.time_estimate.showHoursToggle(requestForm)'>
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M14,32 L50,68 L86,32"></path>
+                                </svg>
+                            </a>
                         </div>
-                        <div class="request-edit-cal-item">
-                            <h2>Sun, Jan 23</h2>
-                            <span>4-6pm, 10pm-12am</span>
-                        </div>
-                        <div class="request-edit-cal-item">
-                            <h2>Mon, Jan 24</h2>
-                            <span>4pm-6pm</span>
-                        </div>
-                        <div class="request-edit-cal-item">
-                            <h3>+ 4</h3>
-                        </div>
+                        <ul class="ng-class:{'active':requestForm.time_estimate.showHours}">
+                            <li ng-repeat="_ in maxHourArr" tabindex ng-click="requestForm.time_estimate.setHours(requestForm, $index + 1)">{{$index + 1}}</li>
+                        </ul>
+                        <div class="dropdown-overlay hide ng-class:{'show':requestForm.time_estimate.showHours}"></div>
                     </div>
-                    <h1>Philz Coffee</h1>
-                    <h2>Hours: 9am-11pm</h2>
-                    <span>1600 Shattuck Avenue #100, Berkeley</span>
+                    <h2 class='p15xy'>&nbsp;&nbsp;hr and&nbsp;&nbsp;</h2>
+                    <div class="custom-dropdown request-minutes">
+                        <div>
+                            <span>{{requestForm.time_estimate.minutes}}</span>
+                            <a ng-click='requestForm.time_estimate.showMinutesToggle(requestForm)'>
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M14,32 L50,68 L86,32"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <ul class="ng-class:{'active':requestForm.time_estimate.showMinutes}">
+                            <li tabindex ng-click='requestForm.time_estimate.setMinutes(requestForm, 15)'>15</li>
+                            <li tabindex ng-click='requestForm.time_estimate.setMinutes(requestForm, 30)'>30</li>
+                            <li tabindex ng-click='requestForm.time_estimate.setMinutes(requestForm, 45)'>45</li>
+                        </ul>
+                        <div class="dropdown-overlay" ng-click='requestForm.time_estimate.showMinutesToggle(requestForm)'></div>
+                    </div>
                 </div>
             </div>
         </div>
-		<div>
-			<div>
-				<a class="request-edit">Edit</a>
-				<h1 class="request-step small selected">
-					<b>Preferred Payment</b>
-				</h1>
-				<div class="request-selection">
-					<a class='credit-card-wrapper'>
-                        <div id="credit-card-visa" class="credit-card cf relative">
-                            <span class="card-type absolute left-0 top-0 m20xy" ng-include="img_base + BASE + 'templates/cards/visa.html'"></span>
-                            <span class="text-right absolute top-0 right-0 m20x-m15y card-type txt-slate weight-700 uppercase">
-                                <span class='padding-none txt-smoke'>DEFAULT</span>
-                                <span class='padding-none'>Debit Card</span>
-                            </span>
-                            <div class="card-number">**** **** **** 4242</div>
-                            <div class="card-name">{{user.name}}</div>
-                            <div class="valid">
-                                <div class="group">Valid
-                                    <br/>Thru</div>
-                                <div class="expiry">**/**</div>
-                            </div>
+    </div>
+    <div class='calendar relative'>
+        <div class='calendar-container absolute top-0 left-0 full-xy'>
+            <div class='full-x p20xy uppercase bg-azure weight-600'>
+                {{requestForm.calendar[0].monthLong}}
+            </div>
+            <div class='week-view'>
+                <div class='ugrid-7 full-x'>
+                    <div ng-repeat='day in ::requestForm.calendar' class='one-day p20x bg-charcoal full-y'>
+                        <div class='one-day-header full-x p05xy bg-slate-50p txt-smoke weight-600 full-x'>
+                            {{::day.dayLong}}
                         </div>
-                    </a>
-				</div>
+                        <div class='one-day-container full-xy'>
+                            <span ng-repeat='hour in ::day.hours' class='hour flex-wrap-center full-xy relative' style="min-height:50px;">
+                                <span ng-if='hour.start_suffix !== hour.end_suffix' class='hour-range full-xy absolute top-0 left-0'>
+                                    {{hour.formatted_start_hour + hour.start_suffix + '-' + hour.formatted_end_hour + hour.end_suffix}}
+                                </span>
+                                <span ng-if='hour.start_suffix === hour.end_suffix' class='hour-range full-xy absolute top-0 left-0'>
+                                    {{hour.formatted_start_hour + '-' + hour.formatted_end_hour + hour.end_suffix}}
+                                </span>
+                                <div class='full-xy absolute top-0 left-0 high-z-index flex-wrap'>
+                                    <a class='full-x weight-400 hour-interval txt-charcoal' ng-class="{'bg-shamrock':interval.selected}" ng-repeat='interval in ::hour.intervals' ng-click='interval.selected = !interval.selected'>
+                                        {{ hour.formatted_start_hour + ':' + interval.formatted_start_minute + '-' + hour.formatted_start_hour + ':' + interval.formatted_end_minute}}
+                                    </a>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div>
-            <div>
-				<h1 class="request-step small selected">
-					<b>Estimated Total</b>
-				</h1>
-				<div class="request-selection">
-					<h1 class="estimated-total">$50</h1>
-				</div>
-                <button class="request-edit">Edit</button>
-			</div>
-		</div>
-		<div class="request-notes">
-			<div>
-				<h3>Don't worry, we won't charge you until after the session is completed.</h3>
-				<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h3>
-			</div>
-		</div>
-	</div>
+    </div>
 </section>

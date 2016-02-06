@@ -27,8 +27,8 @@ angular.module('uguru.util.controllers')
     uiGmapGoogleMapApi, SearchboxService, GMapService, $ionicSlideBoxDelegate,
     GUtilService) {
 
-    $scope.request = RequestService.initSample();
-    $scope.requestProgress = {value:1};
+    $scope.request = RequestService.initStudentForm();
+
     $scope.maxHourArr = RequestService.getMaxNumHourArr();
     $scope.search_text = {
       course: '',
@@ -36,44 +36,6 @@ angular.module('uguru.util.controllers')
       input_focused: false
     };
 
-    $ionicSideMenuDelegate.canDragContent(false);
-    $ionicSlideBoxDelegate.enableSlide(false);
-    $timeout(function() {
-      $ionicSlideBoxDelegate.stop();
-    }, 2000)
-    $scope.predictionMarkers = [];
-
-    $scope.preventDragSwipe = function() {
-      $ionicSlideBoxDelegate.slide(0, 100);
-    }
-
-    $scope.page = {dropdowns: {}, predictionMarkers:[]}
-    $scope.page.dropdowns = {hour: false, minutes: false, location_search:{predictions:[], input:'phil'}}
-
-    var initMapFromUniversity = function(university) {
-      var latitude = parseFloat(university.latitude);
-      var longitude = parseFloat(university.longitude);
-      return  {
-                    center:  {latitude: latitude, longitude:longitude },
-                    zoom: 10,
-                    control: {}
-              };
-    }
-    $scope.showMarkerDetails = function(prediction) {
-      LoadingService.showMsg('Coming Soon', 1000);
-    }
-
-    $scope.queryAutocompleteFromSearch = function(query) {
-
-        query = $scope.page.dropdowns.location_search.input;
-        console.log('querying', $scope.page.dropdowns.location_search.input)
-        if (query && query.length) {
-          SearchboxService.queryAutocompleteService($scope.page.dropdowns.location_search.input, $scope, $scope.map.control.getGMap());
-        } else {
-          $scope.page.dropdowns.location_search.predictions = [];
-        }
-
-    }
 
     $scope.removeTagFromRequest = function(index, tag) {
       if ($scope.request && $scope.request.info.tags.length >= index) {
@@ -81,60 +43,6 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    var processSearchBoxResults = function(results) {
-      alert('is this real')
-      console.log(results);
-    }
-
-
-    var initSearchboxGMap = function() {
-      // var events = { places_changed: function (searchBox) { processSearchBoxResults(searchBox); } }
-
-        var searchboxInstantiateDict = {
-            template:'request.slide.two.input.html',
-            // https://developers.google.com/places/supported_types
-            options: { autocomplete:true, types: ['establishment'] },
-            events: { place_changed: function (autocomplete) {
-
-                         place = autocomplete.getPlace()
-                         console.log(place)
-                          // if (place.address_components) {
-
-                          //   newMarkers = [];
-                          //   var bounds = new google.maps.LatLngBounds();
-
-                          //   var marker = {
-                          //     id:place.place_id,
-                          //     place_id: place.place_id,
-                          //     name: place.address_components[0].long_name,
-                          //     latitude: place.geometry.location.lat(),
-                          //     longitude: place.geometry.location.lng(),
-                          //     options: {
-                          //       visible:false
-                          //     },
-                          //     // templateurl:'window.tpl.html',
-                          //     // templateparameter: place
-                          //   };
-
-
-                          // }
-
-                  }
-              }
-          }
-
-          return searchboxInstantiateDict;
-        }
-
-    var checkPropertyInArrayForDupes = function(arr, val, property) {
-      for (var i = 0; i < arr.length; i++) {
-        var indexElem = arr[i];
-        if (indexElem && indexElem[property] === val) {
-          return false;
-        }
-      }
-      return true;
-    }
 
     $scope.setHourDropdownValue = function(value) {
       $scope.page.dropdowns.hour = false;
@@ -147,77 +55,10 @@ angular.module('uguru.util.controllers')
       $scope.toggleMinDropdown = !$scope.toggleMinDropdown;
     }
 
-    var initRequestMap = function() {
-
-      if ($scope.user.university) {
-        $scope.map = GMapService.initMapObj($scope.user.university);
-        $scope.map.centerMarker = {windowText:"Campus Center",  showWindow:false, coords: {latitude:$scope.user.university.latitude, longitude:$scope.user.university.longitude}};
-        $scope.map.events.dragend = function(maps, event_name, drag_options) {
-          $scope.map.centerMarker.coords = {latitude: maps.center.G, longitude:maps.center.K};
-          GUtilService.getNearestLocationOneMarker($scope.map.control.getGMap(), maps.center.G, maps.center.K, $scope);
-          $scope.map.centerMarker.showWindow = true;
-        }
-
-        $scope.map.events.dragstart = function(maps, event_name, drag_options) {
-          $scope.map.centerMarker.showWindow = false;
-        }
-      }
-
-
-      uiGmapGoogleMapApi.then(function(maps) {
-        console.log('maps completed');
-        $timeout(function() {
-                $scope.$apply();
-        })
-        maps.visualRefresh = true;
-
-        // $scope.$on('$ionicView.loaded', function() {
-
-          $scope.searchbox = initSearchboxGMap();
-
-        //   SearchboxService.initAutocomplete({lat:$scope.user.university.latitude, lng:$scope.user.university.longitude})
-
-        // })
-
-
-      });
-    }
-    $scope.root.vars.initRequestMap = initRequestMap;
-    $timeout(function() {
-
-      $scope.root.vars.initRequestMap();
-  }, 5000)
-
-    $scope.slideHasChanged = function($index) {
-      if ($index > $scope.requestProgress.value - 1) {
-        $scope.requestProgress.value = $scope.requestProgress.value + 1
-      } else {
-        $scope.requestProgress.value = $scope.requestProgress.value - 1;
-      }
-
-      if ($index === 1 || $index === 0) {
-        if ($scope.desktopMode) {
-          $ionicSlideBoxDelegate.enableSlide(false);
-        }
-      }
-
-    }
-
-    $scope.addRequestTagAndInitEmpty = function() {
-      var emptyTagVal = $scope.request.info.empty_tag.name;
-      if (checkPropertyInArrayForDupes($scope.request.info.tags, emptyTagVal, 'name')) {
-        $scope.request.info.tags.push(JSON.parse(JSON.stringify($scope.request.info.empty_tag)))
-        $scope.request.info.empty_tag = {name: ''};
-      } else {
-        LoadingService.showMsg(emptyTagVal + ' already exists as a tag', 2000);
-        $scope.request.info.empty_tag = {name: ''};
-      }
-    }
-
     var updateCoursesToScope = function(guru_courses) {
         $scope.courses = guru_courses;
     }
-    $scope.courses = University.courses || $scope.getCoursesForUniversityId($scope.user.university_id, updateCoursesToScope) || [];
+
 
 
 
@@ -225,77 +66,3 @@ angular.module('uguru.util.controllers')
 ])
 
 
-      // }
-
-
-
-
-        //     place = autocomplete.getPlace()
-
-        //   if (place.address_components) {
-
-        //     newMarkers = [];
-        //     var bounds = new google.maps.LatLngBounds();
-
-        //     var marker = {
-        //       id:place.place_id,
-        //       place_id: place.place_id,
-        //       name: place.address_components[0].long_name,
-        //       latitude: place.geometry.location.lat(),
-        //       longitude: place.geometry.location.lng(),
-        //       options: {
-        //         visible:false
-        //       },
-        //       templateurl:'window.tpl.html',
-        //       templateparameter: place
-        //     };
-
-        //     newMarkers.push(marker);
-
-        //     bounds.extend(place.geometry.location);
-
-        //     $scope.map.bounds = {
-        //       northeast: {
-        //         latitude: bounds.getNorthEast().lat(),
-        //         longitude: bounds.getNorthEast().lng()
-        //       },
-        //       southwest: {
-        //         latitude: bounds.getSouthWest().lat(),
-        //         longitude: bounds.getSouthWest().lng()
-        //       }
-        //     }
-
-        //     _.each(newMarkers, function(marker) {
-        //       marker.closeClick = function() {
-        //         $scope.selected.options.visible = false;
-        //         marker.options.visble = false;
-        //         return $scope.$apply();
-        //       };
-        //       marker.onClicked = function() {
-        //         $scope.selected.options.visible = false;
-        //         $scope.selected = marker;
-        //         $scope.selected.options.visible = true;
-        //       };
-        //     });
-
-        //     $scope.map.markers = newMarkers;
-        //   } else {
-        //     console.log("do something else with the search string: " + place.name);
-        //   }
-        // }
-        // };
-
-    //     return searchboxInstantiateDict;
-    // }
-
-
-
-
-
-    // $scope.searchbox.addListener('places_changed', function() {
-    //   var places = searchBox.getPlaces();
-    //   alert('received places changed')
-    //   if (places.length == 0) {
-    //     return;
-    //   }
-    // })

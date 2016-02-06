@@ -34,35 +34,408 @@ angular.module('uguru.util.controllers')
 
       $scope.page = {animation: false, dropdowns: {}, css:{},predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
 
+      //enter == default
+      $scope.page.animations = {hiw:{}, bg:{}, profiles: {}, categories:{}, university: {}, main: {}, waypoints: {triggers:{}, parentRef:"home-splash"}};
+      var navHeight = 70;
+      var sectionSneakHeight = 36;
+      $scope.mapCenter = {latitude: 39.8282, longitude: -98.57};
+      $scope.page.heights = {
+        nav: navHeight,
+        sectionSneak: sectionSneakHeight
+      }
+      $scope.mapBounds = {
+        desktop: {
+          northeast: {latitude: 20.70, longitude:-128.50},
+          southwest: {latitude:48.85, longitude: -70}
+        },
+        mobile: {
+          northeast: {latitude: 20.70, longitude:-100.50},
+          southwest: {latitude:48.85, longitude: -55.90}
+        }
+      }
+      $scope.page.waypoints = {};
 
-      $scope.page.animations = {hiw:{}, bg:{}};
-      //@gabrielle just worry about this
+      $scope.mapZoom = {
+        initialMobile: 2,
+        initialDesktop: 4,
+        maxZoom: 9,
+        minZoom: 1
+      }
+      var cluster = {
+        style: {
+          xl: {bg_color: '#d3242c', width:128, height:128, textSize: 18, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+          l: {bg_color: '#df433a', width:96, height:96, textSize: 16, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+          m: {bg_color: '#eb6248', width:84, height:84, textSize: 14, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+          s: {bg_color: '#E5753C', width:64, height:64, textSize: 12, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+        },
+        minClusterSize: 4, //direct correlation
+        zoomOnclick: true,
+        maxZoom: 7,
+        gridSize: 125, //direct correlation
+        customClass: "university-svg-cluster",
+        styleThreshold: [10,30,70,80] //direct correlation
+      }
+
+      //keys are IDs of the elements you want to activate based on horizontal scroll
+      var scrollOffset = navHeight + sectionSneakHeight - 2;
+      var scrollOffset = navHeight + sectionSneakHeight - 2;
+      var animateOptions = ['enterUp', 'enterDown', 'firstEnterDown', 'exitUp', 'exitDown'];
+      $scope.page.animations.waypoints.triggers = {
+          main: {id:"splash-home", func:null},
+          university: {id:"splash-university", func:scrollUniversityCallback, offset:scrollOffset}, //precursor-section-height + navbar.height
+          hiw: {
+              id:"splash-browse",
+              firstEnterDown: {
+                  onStart:scrollHowitWorksCallback,
+                  offset:scrollOffset
+              },
+              exitUp: {
+                  offset:"50%",
+                  activated: false
+              }
+            },
+          bg: {id:"become-guru", func:scrollBecomeGuruCallback, offset:scrollOffset}
+      }
+      // @gabrielle just worry about this
+      // next steps
+      // setup the top section
 
       $scope.page.animations.hiw = {
         viewed: false,
         beforeScroll: null,
         firstViewed: {
-          css_classes:['bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp'],
-          selectors:['.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)'],
-          delays: [500, 550, 600, 650, 700, 750],
+          css_classes: ['fadeIn', 'bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'fadeIn'],
+          selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', '.hiw-postit-li:nth-child(2) .tape:nth-child(1)', '.hiw-postit-li:nth-child(2) .tape:nth-child(2)', '.hiw-postit-li:nth-child(3) .tape:nth-child(2)', '.hiw-postit-li:nth-child(4) .tape:nth-child(1)', '.hiw-postit-li:nth-child(4) .tape:nth-child(2)', '.how-it-works-button'],
+          delays: [400, 500, 600, 700, 800, 900, 1000, 2000, 2000, 2000, 2000, 2000, 2500],
+        },
+        secondViewed: {
+          css_classes: ['fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn'],
+          selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', 'how-it-works-button'],
+          delays: [400, 500, 600, 700, 800, 900, 1000, 1500],
+        },
+        onExit: {
+          css_classes: ['fadeOut', 'hinge', 'hinge-right', 'hinge-right', 'hinge-right', 'hinge', 'hinge', 'fadeOut'],
+          selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', '.how-it-works-button'],
+          delays: [400, 500, 600, 700, 800, 900, 1000, 1500],
         },
         onScrollStart: null, //coming soon, not first time
-        onScrollEnd: null,  // coming soon, not first time
+        onScrollEnd: null, // coming soon, not first time
       }
 
-      $scope.page.animations.bg = {
-        viewed: false,
-        beforeScroll: null,
-        firstViewed: {
-          css_classes:['bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp'],
-          selectors:['.bg-postit-li:nth-child(2)', '.bg-postit-li:nth-child(6)', '.bg-postit-li:nth-child(4)', '.bg-postit-li:nth-child(1)', '.bg-postit-li:nth-child(3)', '.bg-postit-li:nth-child(5)'],
-          delays: [500, 550, 600, 650, 700, 750],
-        }
+    $scope.page.animations.categories = {
+      viewed: false,
+      beforeScroll: null,
+      firstViewed: {
+        css_classes: [
+          'fadeIn', 'fadeIn',
+          'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp',
+          'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn',
+          'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
+          'bounceInUp'
+        ],
+        selectors: [
+          '.splash-categories-header',
+          '.splash-categories-subheader',
+          '.category-card-list li:nth-child(1)',
+          '.category-card-list li:nth-child(2)',
+          '.category-card-list li:nth-child(3)',
+          '.category-card-list li:nth-child(4)',
+          '.category-card-list li:nth-child(5)',
+          '.category-card-list li:nth-child(6)',
+          '.category-card-list li:nth-child(1) .card-icon',
+          '.category-card-list li:nth-child(2) .card-icon',
+          '.category-card-list li:nth-child(3) .card-icon',
+          '.category-card-list li:nth-child(4) .card-icon',
+          '.category-card-list li:nth-child(5) .card-icon',
+          '.category-card-list li:nth-child(6) .card-icon',
+          '.category-card-list li:nth-child(1) .card-label',
+          '.category-card-list li:nth-child(2) .card-label',
+          '.category-card-list li:nth-child(3) .card-label',
+          '.category-card-list li:nth-child(4) .card-label',
+          '.category-card-list li:nth-child(5) .card-label',
+          '.category-card-list li:nth-child(6) .card-label',
+          '.card-button'
+        ],
+        delays: [
+          400, 550,
+          400, 550, 700, 950, 1100, 1250,
+          1400, 1550, 1700, 1950, 2100, 2250,
+          1400, 1550, 1700, 1950, 2100, 2250,
+          3250
+        ]
+      },
+      secondViewed: {
+        css_classes: [
+          'fadeIn', 'fadeIn',
+          'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp',
+          'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn',
+          'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
+          'bounceInUp'
+        ],
+        selectors: [
+          '.splash-categories-header',
+          '.splash-categories-subheader',
+          '.category-card-list li:nth-child(1)',
+          '.category-card-list li:nth-child(2)',
+          '.category-card-list li:nth-child(3)',
+          '.category-card-list li:nth-child(4)',
+          '.category-card-list li:nth-child(5)',
+          '.category-card-list li:nth-child(6)',
+          '.category-card-list li:nth-child(1) .card-icon',
+          '.category-card-list li:nth-child(2) .card-icon',
+          '.category-card-list li:nth-child(3) .card-icon',
+          '.category-card-list li:nth-child(4) .card-icon',
+          '.category-card-list li:nth-child(5) .card-icon',
+          '.category-card-list li:nth-child(6) .card-icon',
+          '.category-card-list li:nth-child(1) .card-label',
+          '.category-card-list li:nth-child(2) .card-label',
+          '.category-card-list li:nth-child(3) .card-label',
+          '.category-card-list li:nth-child(4) .card-label',
+          '.category-card-list li:nth-child(5) .card-label',
+          '.category-card-list li:nth-child(6) .card-label',
+          '.card-button'
+        ],
+        delays: [
+          400, 550,
+          400, 550, 700, 950, 1100, 1250,
+          1400, 1550, 1700, 1950, 2100, 2250,
+          1400, 1550, 1700, 1950, 2100, 2250,
+          3250
+        ]
+      },
+      onExit: {
+        css_classes: [
+          'fadeOut', 'fadeOut',
+          'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown',
+          'bounceOutDown'
+        ],
+        selectors: [
+          '.splash-categories-header',
+          '.splash-categories-subheader',
+          '.category-card-list li:nth-child(1)',
+          '.category-card-list li:nth-child(2)',
+          '.category-card-list li:nth-child(3)',
+          '.category-card-list li:nth-child(4)',
+          '.category-card-list li:nth-child(5)',
+          '.category-card-list li:nth-child(6)',
+          '.card-button'
+        ],
+        delays: [
+          400, 550,
+          400, 550, 700, 950, 1100, 1250,
+          2250
+        ]
       }
+    }
+
+    $scope.page.animations.profiles = {
+      viewed: false,
+      beforeScroll: null,
+      firstViewed: {
+        css_classes: [
+          // headers
+          'fadeIn', 'fadeIn',
+          // card
+          'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp',
+          // ribbon
+          'slideInRight', 'slideInRight', 'slideInRight', 'slideInRight', 'slideInRight',
+          // icon
+          'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn',
+          // name
+          'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
+          // school
+          'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
+          // reviews
+          'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
+          // verified
+          'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn',
+          // ratings
+          'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn',
+          'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn',
+          'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn',
+          'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn',
+          'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn'
+        ],
+        selectors: [
+          // headers
+          '.splash-gurus-header', '.splash-gurus-subheader',
+          // card
+          '.pf-card-li:nth-child(1)', '.pf-card-li:nth-child(2)', '.pf-card-li:nth-child(3)', '.pf-card-li:nth-child(4)', '.pf-card-li:nth-child(5)',
+          // ribbon
+          '.pf-card-li:nth-child(1) .pf-card-ribbon', '.pf-card-li:nth-child(2) .pf-card-ribbon', '.pf-card-li:nth-child(3) .pf-card-ribbon', '.pf-card-li:nth-child(4) .pf-card-ribbon', '.pf-card-li:nth-child(5) .pf-card-ribbon',
+          // icon
+          '.pf-card-li:nth-child(1) .user-icon', '.pf-card-li:nth-child(2) .user-icon', '.pf-card-li:nth-child(3) .user-icon', '.pf-card-li:nth-child(4) .user-icon', '.pf-card-li:nth-child(5) .user-icon',
+          // name
+          '.pf-card-li:nth-child(1) .pf-card-name-span', '.pf-card-li:nth-child(2) .pf-card-name-span', '.pf-card-li:nth-child(3) .pf-card-name-span', '.pf-card-li:nth-child(4) .pf-card-name-span', '.pf-card-li:nth-child(5) .pf-card-name-span',
+          // school
+          '.pf-card-li:nth-child(1) .pf-school', '.pf-card-li:nth-child(2) .pf-school', '.pf-card-li:nth-child(3) .pf-school', '.pf-card-li:nth-child(4) .pf-school', '.pf-card-li:nth-child(5) .pf-school',
+          // reviews
+          '.pf-card-li:nth-child(1) .pf-review-amt', '.pf-card-li:nth-child(2) .pf-review-amt', '.pf-card-li:nth-child(3) .pf-review-amt', '.pf-card-li:nth-child(4) .pf-review-amt', '.pf-card-li:nth-child(5) .pf-review-amt',
+          // verified
+          '.pf-card-li:nth-child(1) .pf-card-verified', '.pf-card-li:nth-child(2) .pf-card-verified', '.pf-card-li:nth-child(3) .pf-card-verified', '.pf-card-li:nth-child(4) .pf-card-verified', '.pf-card-li:nth-child(5) .pf-card-verified',
+          // ratings
+          '.pf-card-li:nth-child(1) .pf-rating li:nth-child(1)', '.pf-card-li:nth-child(1) .pf-rating li:nth-child(2)', '.pf-card-li:nth-child(1) .pf-rating li:nth-child(3)', '.pf-card-li:nth-child(1) .pf-rating li:nth-child(4)', '.pf-card-li:nth-child(1) .pf-rating li:nth-child(5)',
+          '.pf-card-li:nth-child(2) .pf-rating li:nth-child(1)', '.pf-card-li:nth-child(2) .pf-rating li:nth-child(2)', '.pf-card-li:nth-child(2) .pf-rating li:nth-child(3)', '.pf-card-li:nth-child(2) .pf-rating li:nth-child(4)', '.pf-card-li:nth-child(2) .pf-rating li:nth-child(5)',
+          '.pf-card-li:nth-child(3) .pf-rating li:nth-child(1)', '.pf-card-li:nth-child(3) .pf-rating li:nth-child(2)', '.pf-card-li:nth-child(3) .pf-rating li:nth-child(3)', '.pf-card-li:nth-child(3) .pf-rating li:nth-child(4)', '.pf-card-li:nth-child(3) .pf-rating li:nth-child(5)',
+          '.pf-card-li:nth-child(4) .pf-rating li:nth-child(1)', '.pf-card-li:nth-child(4) .pf-rating li:nth-child(2)', '.pf-card-li:nth-child(4) .pf-rating li:nth-child(3)', '.pf-card-li:nth-child(4) .pf-rating li:nth-child(4)', '.pf-card-li:nth-child(4) .pf-rating li:nth-child(5)',
+          '.pf-card-li:nth-child(5) .pf-rating li:nth-child(1)', '.pf-card-li:nth-child(5) .pf-rating li:nth-child(2)', '.pf-card-li:nth-child(5) .pf-rating li:nth-child(3)', '.pf-card-li:nth-child(5) .pf-rating li:nth-child(4)', '.pf-card-li:nth-child(5) .pf-rating li:nth-child(5)'
+        ],
+        delays: [
+          // headers
+          400, 550,
+          // card
+          400, 550, 700, 950, 1100,
+          // ribbon
+          1200, 1350, 1500, 1750, 1900,
+          // icon
+          1000, 1150, 1300, 1550, 1700,
+          // name
+          1200, 1350, 1500, 1750, 1900,
+          // school
+          1200, 1350, 1500, 1750, 1900,
+          // reviews
+          1200, 1350, 1500, 1750, 1900,
+          // verified
+          1250, 1400, 1550, 1800, 1950,
+          // ratings
+          1200, 1350, 1500, 1750, 1900,
+          1350, 1500, 1750, 1900, 2050,
+          1500, 1750, 1900, 2050, 2200,
+          1750, 1900, 2050, 2200, 2350,
+          1900, 2050, 2200, 2350, 2500
+        ]
+      },
+      secondViewed: {
+        css_classes: [
+          // headers
+          'fadeIn', 'fadeIn',
+          // card
+          'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp',
+          // ribbon
+          'slideInRight', 'slideInRight', 'slideInRight', 'slideInRight', 'slideInRight',
+          // icon
+          'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn',
+          // name
+          'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
+          // school
+          'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
+          // reviews
+          'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
+          // verified
+          'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn',
+          // ratings
+          'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn',
+          'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn',
+          'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn',
+          'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn',
+          'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn', 'bounceIn'
+        ],
+        selectors: [
+          // headers
+          '.splash-gurus-header', '.splash-gurus-subheader',
+          // card
+          '.pf-card-li:nth-child(1)', '.pf-card-li:nth-child(2)', '.pf-card-li:nth-child(3)', '.pf-card-li:nth-child(4)', '.pf-card-li:nth-child(5)',
+          // ribbon
+          '.pf-card-li:nth-child(1) .pf-card-ribbon', '.pf-card-li:nth-child(2) .pf-card-ribbon', '.pf-card-li:nth-child(3) .pf-card-ribbon', '.pf-card-li:nth-child(4) .pf-card-ribbon', '.pf-card-li:nth-child(5) .pf-card-ribbon',
+          // icon
+          '.pf-card-li:nth-child(1) .user-icon', '.pf-card-li:nth-child(2) .user-icon', '.pf-card-li:nth-child(3) .user-icon', '.pf-card-li:nth-child(4) .user-icon', '.pf-card-li:nth-child(5) .user-icon',
+          // name
+          '.pf-card-li:nth-child(1) .pf-card-name-span', '.pf-card-li:nth-child(2) .pf-card-name-span', '.pf-card-li:nth-child(3) .pf-card-name-span', '.pf-card-li:nth-child(4) .pf-card-name-span', '.pf-card-li:nth-child(5) .pf-card-name-span',
+          // school
+          '.pf-card-li:nth-child(1) .pf-school', '.pf-card-li:nth-child(2) .pf-school', '.pf-card-li:nth-child(3) .pf-school', '.pf-card-li:nth-child(4) .pf-school', '.pf-card-li:nth-child(5) .pf-school',
+          // reviews
+          '.pf-card-li:nth-child(1) .pf-review-amt', '.pf-card-li:nth-child(2) .pf-review-amt', '.pf-card-li:nth-child(3) .pf-review-amt', '.pf-card-li:nth-child(4) .pf-review-amt', '.pf-card-li:nth-child(5) .pf-review-amt',
+          // verified
+          '.pf-card-li:nth-child(1) .pf-card-verified', '.pf-card-li:nth-child(2) .pf-card-verified', '.pf-card-li:nth-child(3) .pf-card-verified', '.pf-card-li:nth-child(4) .pf-card-verified', '.pf-card-li:nth-child(5) .pf-card-verified',
+          // ratings
+          '.pf-card-li:nth-child(1) .pf-rating li:nth-child(1)', '.pf-card-li:nth-child(1) .pf-rating li:nth-child(2)', '.pf-card-li:nth-child(1) .pf-rating li:nth-child(3)', '.pf-card-li:nth-child(1) .pf-rating li:nth-child(4)', '.pf-card-li:nth-child(1) .pf-rating li:nth-child(5)',
+          '.pf-card-li:nth-child(2) .pf-rating li:nth-child(1)', '.pf-card-li:nth-child(2) .pf-rating li:nth-child(2)', '.pf-card-li:nth-child(2) .pf-rating li:nth-child(3)', '.pf-card-li:nth-child(2) .pf-rating li:nth-child(4)', '.pf-card-li:nth-child(2) .pf-rating li:nth-child(5)',
+          '.pf-card-li:nth-child(3) .pf-rating li:nth-child(1)', '.pf-card-li:nth-child(3) .pf-rating li:nth-child(2)', '.pf-card-li:nth-child(3) .pf-rating li:nth-child(3)', '.pf-card-li:nth-child(3) .pf-rating li:nth-child(4)', '.pf-card-li:nth-child(3) .pf-rating li:nth-child(5)',
+          '.pf-card-li:nth-child(4) .pf-rating li:nth-child(1)', '.pf-card-li:nth-child(4) .pf-rating li:nth-child(2)', '.pf-card-li:nth-child(4) .pf-rating li:nth-child(3)', '.pf-card-li:nth-child(4) .pf-rating li:nth-child(4)', '.pf-card-li:nth-child(4) .pf-rating li:nth-child(5)',
+          '.pf-card-li:nth-child(5) .pf-rating li:nth-child(1)', '.pf-card-li:nth-child(5) .pf-rating li:nth-child(2)', '.pf-card-li:nth-child(5) .pf-rating li:nth-child(3)', '.pf-card-li:nth-child(5) .pf-rating li:nth-child(4)', '.pf-card-li:nth-child(5) .pf-rating li:nth-child(5)'
+        ],
+        delays: [
+          // headers
+          400, 550,
+          // card
+          400, 550, 700, 950, 1100,
+          // ribbon
+          1200, 1350, 1500, 1750, 1900,
+          // icon
+          1000, 1150, 1300, 1550, 1700,
+          // name
+          1200, 1350, 1500, 1750, 1900,
+          // school
+          1200, 1350, 1500, 1750, 1900,
+          // reviews
+          1200, 1350, 1500, 1750, 1900,
+          // verified
+          1250, 1400, 1550, 1800, 1950,
+          // ratings
+          1200, 1350, 1500, 1750, 1900,
+          1350, 1500, 1750, 1900, 2050,
+          1500, 1750, 1900, 2050, 2200,
+          1750, 1900, 2050, 2200, 2350,
+          1900, 2050, 2200, 2350, 2500
+        ]
+      },
+      onExit: {
+        css_classes: [
+          // headers
+          'fadeOut', 'fadeOut',
+          // card
+          'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown'
+        ],
+        selectors: [
+          // headers
+          '.splash-gurus-header', '.splash-gurus-subheader',
+          // card
+          '.pf-card-li:nth-child(1)', '.pf-card-li:nth-child(2)', '.pf-card-li:nth-child(3)', '.pf-card-li:nth-child(4)', '.pf-card-li:nth-child(5)'
+        ],
+        delays: [
+          // headers
+          400, 550,
+          // card
+          400, 550, 700, 950, 1100
+        ]
+      }
+    }
+
+    $scope.page.animations.bg = {
+      viewed: false,
+      beforeScroll: null,
+      firstViewed: {
+        css_classes: ['fadeIn', 'bounceInRight', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInUp', 'bounceInUp', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'fadeIn'],
+        selectors: ['.become-guru-header', '.bg-postit-li:nth-child(2)', '.bg-postit-li:nth-child(6)', '.bg-postit-li:nth-child(4)', '.bg-postit-li:nth-child(1)', '.bg-postit-li:nth-child(3)', '.bg-postit-li:nth-child(5)', '.bg-postit-li:nth-child(1) .tape:nth-child(2)', '.bg-postit-li:nth-child(2) .tape:nth-child(1)', '.bg-postit-li:nth-child(2) .tape:nth-child(2)', '.bg-postit-li:nth-child(6) .tape:nth-child(1)', '.bg-postit-li:nth-child(6) .tape:nth-child(2)', '.become-guru-button'],
+        delays: [400, 500, 600, 700, 800, 900, 1000, 2000, 2000, 2000, 2000, 2000, 2500],
+      },
+      secondViewed: {
+        css_classes: ['fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn'],
+        selectors: ['.become-guru-header', '.bg-postit-li:nth-child(2)', '.bg-postit-li:nth-child(6)', '.bg-postit-li:nth-child(4)', '.bg-postit-li:nth-child(1)', '.bg-postit-li:nth-child(3)', '.bg-postit-li:nth-child(5)', '.become-guru-button'],
+        delays: [400, 500, 600, 700, 800, 900, 1000, 1500],
+      },
+      onExit: {
+        css_classes: ['fadeOut', 'hinge-right', 'hinge', 'hinge', 'hinge-right', 'hinge-right', 'hinge', 'fadeOut'],
+        selectors: ['.become-guru-header', '.bg-postit-li:nth-child(2)', '.bg-postit-li:nth-child(6)', '.bg-postit-li:nth-child(4)', '.bg-postit-li:nth-child(1)', '.bg-postit-li:nth-child(3)', '.bg-postit-li:nth-child(5)', '.become-guru-button'],
+        delays: [400, 500, 600, 700, 800, 900, 1000, 1500],
+      }
+
+    }
+
 
       var initializePageAnimations = function() {
           AnimationService.initializeSectionComponents($scope.page.animations.hiw.firstViewed, $scope.page.animations.hiw.firstViewed.selectors, $scope.page.animations.hiw.firstViewed.css_classes, $scope.page.animations.hiw.firstViewed.delays);
           AnimationService.initializeSectionComponents($scope.page.animations.bg.firstViewed, $scope.page.animations.bg.firstViewed.selectors, $scope.page.animations.bg.firstViewed.css_classes, $scope.page.animations.bg.firstViewed.delays);
+
+          $timeout(function() {
+            AnimationService.initializeSectionComponents($scope.page.animations.categories.firstViewed, $scope.page.animations.categories.firstViewed.selectors, $scope.page.animations.categories.firstViewed.css_classes, $scope.page.animations.categories.firstViewed.delays);
+            AnimationService.initializeSectionComponents($scope.page.animations.profiles.firstViewed, $scope.page.animations.profiles.firstViewed.selectors, $scope.page.animations.profiles.firstViewed.css_classes, $scope.page.animations.profiles.firstViewed.delays);
+            AnimationService.initializeSectionComponents($scope.page.animations.hiw.secondViewed, $scope.page.animations.hiw.firstViewed.selectors, $scope.page.animations.hiw.firstViewed.css_classes, $scope.page.animations.hiw.firstViewed.delays);
+          AnimationService.initializeSectionComponents($scope.page.animations.bg.secondViewed, $scope.page.animations.bg.firstViewed.selectors, $scope.page.animations.bg.firstViewed.css_classes, $scope.page.animations.bg.firstViewed.delays);
+          AnimationService.initializeSectionComponents($scope.page.animations.categories.secondViewed, $scope.page.animations.categories.firstViewed.selectors, $scope.page.animations.categories.firstViewed.css_classes, $scope.page.animations.categories.firstViewed.delays);
+          AnimationService.initializeSectionComponents($scope.page.animations.profiles.secondViewed, $scope.page.animations.profiles.firstViewed.selectors, $scope.page.animations.profiles.firstViewed.css_classes, $scope.page.animations.profiles.firstViewed.delays);
+          }, 2500)
+
       }
 
 
@@ -72,23 +445,38 @@ angular.module('uguru.util.controllers')
 
       //Scope var declarations
       var onSectionOneLoad = function() {
-        initUniversityTypeWriter();
+        // initUniversityTypeWriter();
+
         $timeout(function() {
           $scope.root.loader.body.hide = true;
           $scope.page.scroll.section_index = 0;
-          initHomePageWayPoint();
+          // initHomePageWayPoint();
           initializePageAnimations();
+          initSlideBoxRemote();
           Waypoint.refreshAll();
         }, 250)
+        $timeout(function() {
+          initTypeWritersTopSection();
+        }, 500)
+        $timeout(function() {
+
+          var ionSlideOne = document.querySelector('.splash-scene ion-slide');
+          ionSlideOne.classList.add('show-slide');
+          $scope.$apply();
+
+      }, 5000)
+
       }
       $scope.university = {}
       // $scope.page = {dropdowns: {}, css:{},predictionMarkers:[], sidebar:{}, showAnimation:false, offsets:{}, header: {}, peels:{}, status:{}, counters:{}};
       $scope.page.sidebar = {show:false};
+      $scope.page.tabs = {hiw:{}};
       $scope.page.css = {bg_banner:$scope.img_base + "./img/main-bg-cambridge.jpg", main:{gradient_fill:"#40484B"}};
       $scope.page.status = {loaded:false, showLoader:true};
       $scope.page.header = {showOnScrollNav:'', becomeGuruHeaderActive:false, active_tab:{how_it_works:false, become_guru:false, university:false}};
       $scope.page.load = {sections:{}, complete:false};
       $scope.page.scroll = {section_index:0};
+
       $scope.page.load.sections = {
         one: {visible:true, display:true, nested:{bg_image: false}, ready:onSectionOneLoad},
         two: {visible:true, display:true, nested:{}, on_activate:null},
@@ -98,6 +486,83 @@ angular.module('uguru.util.controllers')
         footer: {visible:true, display:true, nested:{}, on_activate:null}
       }
 
+      function initSlideBoxRemote() {
+        $scope.topHomeSlider = {
+          next: function() {
+            $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').next()
+          },
+          previous: function() {
+            $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').previous()
+          },
+          toggleRemote: function() {
+            if ($scope.topHomeSlider.paused) {
+              $scope.topHomeSlider.play();
+            } else {
+              $scope.topHomeSlider.pause();
+            }
+          },
+          pause: function() {
+            $scope.topHomeSlider.paused =true;
+            $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').stop();
+          },
+          onChange: function($index) {
+            var ionSlides = document.querySelectorAll('.splash-scene ion-slide');
+            //remove all
+            for (var i = 0; i < ionSlides.length; i++) {
+              var indexSlide = ionSlides[i];
+              indexSlide.classList.remove('show-slide');
+            }
+            ionSlides[$index].classList.add('show-slide');
+          },
+          play: function() {
+            $scope.topHomeSlider.paused = false;
+            console.log('play clicked');
+            $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').start();
+          },
+          paused: false
+        }
+      }
+
+
+      $scope.switchToTabIndex = function(index) {
+        var currentIndex = $scope.page.tabs.hiw.index;
+        $scope.activeBrowseTabIndex = index;
+        //switching to how it works
+        if (index !== currentIndex && index === 2) {
+          if (!$scope.page.animations.profiles.viewed) {
+            $scope.page.animations.profiles.viewed = true;
+            console.log('firing first time animations for profiles')
+            console.log($scope.page.animations.profiles.firstViewed.elements);
+            AnimationService.activateSectionAnimations($scope.page.animations.profiles.firstViewed.elements, $scope.page.animations.profiles.firstViewed.css_classes, $scope.page.animations.profiles.firstViewed.delays);
+          } else {
+            console.log('firing second time animations for profiles')
+            AnimationService.activateSectionAnimations($scope.page.animations.profiles.secondViewed.elements, $scope.page.animations.profiles.secondViewed.css_classes, $scope.page.animations.profiles.secondViewed.delays);
+          }
+        }
+        if (index !== currentIndex && index === 1) {
+
+          if (!$scope.page.animations.categories.viewed) {
+            $scope.page.animations.categories.viewed = true;
+            console.log('firing first time animations for categories')
+            AnimationService.activateSectionAnimations($scope.page.animations.categories.firstViewed.elements, $scope.page.animations.categories.firstViewed.css_classes, $scope.page.animations.categories.firstViewed.delays);
+          } else {
+            console.log('firing second time animations for categories')
+            AnimationService.activateSectionAnimations($scope.page.animations.categories.secondViewed.elements, $scope.page.animations.categories.secondViewed.css_classes, $scope.page.animations.categories.secondViewed.delays);
+          }
+        }
+        if (index !== currentIndex && index === 0) {
+
+          if (!$scope.page.animations.hiw.viewed) {
+            console.log('firing first time animations for how it works')
+            $scope.page.animations.hiw.viewed = true;
+            AnimationService.activateSectionAnimations($scope.page.animations.hiw.firstViewed.elements, $scope.page.animations.hiw.firstViewed.css_classes, $scope.page.animations.hiw.firstViewed.delays);
+          } else {
+            console.log('firing second time animations for how it works')
+            AnimationService.activateSectionAnimations($scope.page.animations.hiw.secondViewed.elements, $scope.page.animations.hiw.secondViewed.css_classes, $scope.page.animations.hiw.secondViewed.delays);
+          }
+
+        }
+      }
       // $scope.page.animations = {hiw: {}};
       // $scope.page.animations.hiw = {
       //   // on first appearance
@@ -128,9 +593,6 @@ angular.module('uguru.util.controllers')
       var homeNavHeader = document.querySelector('#home-nav-header');
       var splashHiwNav = document.querySelector("#splash-hiw-nav");
       var homePageWayPoint;
-      var pageNavbarHeight = 70;
-      var sectionSneakHeight = 36;
-      var scrollOffset = pageNavbarHeight + sectionSneakHeight - 2;
 
       //cta specific initialization vars
       $scope.activeBrowseTabIndex = 0;
@@ -143,22 +605,26 @@ angular.module('uguru.util.controllers')
 
 
 
-      var whileLoaderIsOn = function() {
-        initHomeMap();
-      }
-
       // render page functions
       var initUniversityTypeWriter = function() {
         TypedService.initTypedTicker('university-typed-writer', ["CS10 Exam Prep", "MCAT Concepts", "Google Interview Help", "Dirty Laundry"]);
       }
 
+      function initTypeWritersTopSection() {
+        var typeWriterElems = document.querySelectorAll('.home-splash-typewriter');
+        if (typeWriterElems.length) {
+          for (var i = 0; i < typeWriterElems.length; i++) {
+            var indexTypeWriter = typeWriterElems[i];
+            indexTypeWriter.id = 'typed-writer-' + i;
+            var dataOptions = indexTypeWriter.getAttribute("typed-options").split(", ");
+            console.log(indexTypeWriter.id, dataOptions);
+            TypedService.initTypedTicker(indexTypeWriter.id, dataOptions);
+          }
+        }
+      }
 
 
-
-
-      var initHomePageWayPoint = function() {
-
-        var scrollUniversityCallback = function(direction, element, scrollTop) {
+      function scrollUniversityCallback(direction, element, scrollTop) {
             if (direction === 'down') {
               homeNavHeader.classList.add('bg-charcoal');
               $scope.page.scroll.section_index = 1;
@@ -168,63 +634,165 @@ angular.module('uguru.util.controllers')
             }
             // $scope.page.header.showOnScrollNav = 'bg-charcoal'
             //@GABRIELLE-NOTE -- add more, feel free to discuss what other things you want to add to make navbar transition feel more fluid
+      }
+
+      function scrollHowitWorksCallback(direction, element, scrollTop) {
+          if (direction === 'down') {
+            $scope.page.scroll.section_index = 2;
+            AnimationService.animateIn(splashHiwNav, "bounceInDown");
+
+            if (!$scope.page.animations.hiw.viewed) {
+              $scope.page.animations.hiw.viewed = true;
+              console.log('firing first time animations for hiw')
+              AnimationService.activateSectionAnimations($scope.page.animations.hiw.firstViewed.elements, $scope.page.animations.hiw.firstViewed.css_classes, $scope.page.animations.hiw.firstViewed.delays);
+            } else {
+              console.log('firing second time animations for hiw')
+              AnimationService.activateSectionAnimations($scope.page.animations.hiw.secondViewed.elements, $scope.page.animations.hiw.secondViewed.css_classes, $scope.page.animations.hiw.secondViewed.delays);
+            }
+
+          } else {
+            $scope.page.scroll.section_index = 1;
+
+            var callback = function() {
+              splashHiwNav = document.querySelector('#splash-hiw-nav');
+              NodeList.prototype.forEach = Array.prototype.forEach
+              splashHiwNav.querySelectorAll('div a').forEach(function(tab_item){
+                  tab_item.classList.remove('active');
+              });
+              splashHiwNav && $compile(splashHiwNav)($scope);
+            }
+            AnimationService.animateOut(splashHiwNav, "slideOutUp", callback);
+        }
+    }
+    function scrollBecomeGuruCallback(direction, element, scrollTop) {
+      if (direction === 'down') {
+
+        var callback = function() {
+          splashHiwNav = document.querySelector('#splash-hiw-nav');
+
+          NodeList.prototype.forEach = Array.prototype.forEach
+          splashHiwNav.querySelectorAll('div a').forEach(function(tab_item){
+              tab_item.classList.remove('active');
+          });
+          splashHiwNav && $compile(splashHiwNav)($scope);
+        }
+        AnimationService.animateOut(splashHiwNav, "slideOutUp", callback);
+
+
+        if (!$scope.page.animations.bg.viewed) {
+          $scope.page.animations.bg.viewed = true;
+          console.log('firing first time animations for become guru');
+          AnimationService.activateSectionAnimations($scope.page.animations.bg.firstViewed.elements, $scope.page.animations.bg.firstViewed.css_classes, $scope.page.animations.bg.firstViewed.delays);
+        } else {
+          console.log('firing second time animations for become guru');
+          AnimationService.activateSectionAnimations($scope.page.animations.bg.secondViewed.elements, $scope.page.animations.bg.secondViewed.css_classes, $scope.page.animations.bg.secondViewed.delays);
         }
 
+      } else {
+        $scope.page.scroll.section_index = 1;
+      }
+      // $scope.page.header.showOnScrollNav = 'bg-charcoal'
+      //@GABRIELLE-NOTE -- add more, feel free to discuss what other things you want to add to make navbar transition feel more fluid
+  }
 
+      var wayPointDict = $scope.page.animations.waypoints.triggers;
+      var wayPointDictKeys = Object.keys(wayPointDict);
+      var elemIDtoWaypointDict = {};
+      var returnWayPointFunction = function(sectionScope, animateOption) {
+        return function(direction) {
+          var upAnimations = ['exitUp', 'enterUp'];
+          var downAnimations = ['enterDown', 'firstEnterDown', 'exitDown']
 
-        var scrollHowitWorksCallback = function(direction, element, scrollTop) {
-            if (direction === 'down') {
-              $scope.page.scroll.section_index = 2;
-              AnimationService.animateIn(splashHiwNav, "bounceInDown");
+          var elemAnimateArg = animateOption;
 
-              if (!$scope.page.animations.hiw.viewed) {
-                $scope.page.animations.hiw.viewed = true;
-                AnimationService.activateSectionAnimations($scope.page.animations.hiw.firstViewed.elements, $scope.page.animations.hiw.firstViewed.css_classes, $scope.page.animations.hiw.firstViewed.delays);
+          //if up animation
+          if (upAnimations.indexOf(elemAnimateArg) > -1 && direction === 'up') {
+            $scope.page.animations.waypoints.triggers[sectionScope][animateOption].activated = true;
+            $scope.$apply();
+          }
+          else if (downAnimations.indexOf(elemAnimateArg) > -1 && direction === 'down') {
+            $scope.page.animations.waypoints.triggers[sectionScope][animateOption].activated = true;
+            $scope.$apply();
+          }
+        }
+      }
+
+      var processDomWaypoints = function() {
+        var domWaypoints = document.querySelectorAll('[init-wp]');
+        if (!domWaypoints) return;
+        for (var i = 0; i < domWaypoints.length; i++) {
+          var indexElem = domWaypoints[i];
+
+          // get variable name
+          var indexElemDeclaration = indexElem.getAttribute('init-wp') || '';
+          if (!indexElemDeclaration) continue;
+
+          var indexElemOffset = indexElem.getAttribute('wp-offset') || 0;
+
+          console.log(indexElem.id, 'initialized has offset', indexElemOffset);
+        }
+      }
+
+      $scope.$on('$ionicView.loaded', function() {
+        processDomWaypoints();
+      })
+
+      var initHomePageWayPoint = function() {
+        var parentRef = $scope.page.animations.waypoints.parentRef;
+
+        for (var i = 0; i < wayPointDictKeys.length; i++) {
+          var indexKey = wayPointDictKeys[i];
+          if (wayPointDict[indexKey].id) {
+            for (var j = 0; j < animateOptions.length; j++) {
+              var indexOption = animateOptions[j];
+              if (wayPointDict[indexKey][indexOption]) {
+                var elemId = wayPointDict[indexKey].id;
+                var elemOptions = {
+                  func: returnWayPointFunction(wayPointDictKeys[i], animateOptions[j]),
+                  offset: wayPointDict[indexKey][indexOption].offset
+                }
+                ScrollService.initWaypoint(elemId, parentRef, elemOptions);
               }
-
-            } else {
-              $scope.page.scroll.section_index = 1;
-
-              var callback = function() {
-                splashHiwNav = document.querySelector('#splash-hiw-nav');
-              }
-              AnimationService.animateOut(splashHiwNav, "slideOutUp", callback);
+            }
           }
         }
 
-        var scrollBecomeGuruCallback = function(direction, element, scrollTop) {
-            if (direction === 'down') {
-
-              var callback = function() {
-                splashHiwNav = document.querySelector('#splash-hiw-nav');
-              }
-              AnimationService.animateOut(splashHiwNav, "slideOutUp", callback);
-
-
-              if (!$scope.page.animations.bg.viewed) {
-                $scope.page.animations.bg.viewed = true;
-                AnimationService.activateSectionAnimations($scope.page.animations.bg.firstViewed.elements, $scope.page.animations.bg.firstViewed.css_classes, $scope.page.animations.bg.firstViewed.delays);
-              }
-
-            } else {
-              $scope.page.scroll.section_index = 1;
-            }
-            // $scope.page.header.showOnScrollNav = 'bg-charcoal'
-            //@GABRIELLE-NOTE -- add more, feel free to discuss what other things you want to add to make navbar transition feel more fluid
-        }
-
-        var waypointDict = {
-          "splash-home": {func:null},
-          "splash-university": {func:scrollUniversityCallback, offset:scrollOffset}, //precursor-section-height + navbar.height
-          "splash-browse": {func:scrollHowitWorksCallback, offset:scrollOffset},
-          "become-guru": {func:scrollBecomeGuruCallback, offset:scrollOffset}
-        }
-        ScrollService.initArrWaypoints(waypointDict, "home-splash");
+        // ScrollService.initArrWaypoints(, "home-splash");
 
       }
 
 
+      // $timeout(function() {
+      //   var root = angular.element(document.getElementsByTagName('body'));
 
+      //   var watchers = [];
+
+      //   var f = function (element) {
+      //       angular.forEach(['$scope', '$isolateScope'], function (scopeProperty) {
+      //           if (element.data() && element.data().hasOwnProperty(scopeProperty)) {
+      //               angular.forEach(element.data()[scopeProperty].$$watchers, function (watcher) {
+      //                   console.log(element[0].id || element[0].class, element[0]);
+      //                   watchers.push(watcher);
+      //               });
+      //           }
+      //       });
+
+      //       angular.forEach(element.children(), function (childElement) {
+      //           f(angular.element(childElement));
+      //       });
+      //   };
+
+      //   f(root);
+
+      //   // Remove duplicate watchers
+      //   var watchersWithoutDuplicates = [];
+      //   angular.forEach(watchers, function(item) {
+      //       if(watchersWithoutDuplicates.indexOf(item) < 0) {
+      //            watchersWithoutDuplicates.push(item);
+      //       }
+      //   });
+      //   console.log(watchersWithoutDuplicates.length);
+      // }, 10000);
 
       $scope.scrollNextSection = function() {
         if ($scope.page.scroll.section_index === 0) {
@@ -407,13 +975,13 @@ angular.module('uguru.util.controllers')
 
         var academicCTABoxElem = document.getElementById('cta-box-academic');
         console.log(academicCTABoxElem);
-        if (!academicCTABoxElem) {
-          console.log('checking for categories again in 1 second');
-          setTimeout(function() {
-            initProfileCTAS();
-          }, 1000)
-          return;
-        }
+        // if (!academicCTABoxElem) {
+        //   console.log('checking for categories again in 1 second');
+        //   setTimeout(function() {
+        //     initProfileCTAS();
+        //   }, 1000)
+        //   return;
+        // }
 
 
         var showCTACallback = function(category) {
@@ -446,6 +1014,8 @@ angular.module('uguru.util.controllers')
           }, 1000)
           return;
         }
+
+        CTAService.initSingleCTA("#cta-box-sidebar", "#home-splash");
         CTAService.initSingleCTA('#cta-box-baking', '#home-splash', showCTACallback("bakery"));
         CTAService.initSingleCTA('#cta-box-household', '#home-splash', showCTACallback("household"));
         CTAService.initSingleCTA('#cta-box-photography', '#home-splash', showCTACallback("photography"));
@@ -534,7 +1104,7 @@ angular.module('uguru.util.controllers')
 
       var calcZoom = function() {
         if ($scope.desktopMode) {
-          return 4;
+          return 3;
         } else {
           return 2;
         }
@@ -542,14 +1112,14 @@ angular.module('uguru.util.controllers')
 
       var mapDefaults = {
         zoom: calcZoom(),
-        options: { streetViewControl:false, scrollwheel:false, panControl:false,  minZoom: 1, maxZoom: 7, styles: styleOptions,
+        options: { streetViewControl:false, scrollwheel:false, panControl:false,  minZoom: $scope.mapZoom.minZoom, maxZoom: $scope.mapZoom.maxZoom, styles: styleOptions,
                    scrollwheel: false, mapTypeControl:false, style:styleOptions, draggable:true, disableDoubleClickZoom:false, zoomControl: true
                  }
       }
 
       var generateClusterImgDataURI = function(obj) {
-          var baseSVGURL = "<svg viewBox='0 0 73 91' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z' id='Rectangle-1' fill='" + obj.bg_color + "'></path><path d='M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z' id='flag' opacity='0.9' fill='" + obj.bg_color +"'></path><path d='M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z' id='border' fill='#40484B'></path><text fill='#FFFFFF' font-family='Source Sans Pro' font-size='12.7286934' font-weight='bold'><tspan x='10' y='32' fill='#FFFFFF'>" + obj._text + "</tspan></text></svg>"
-          return 'data:image/svg+xml;base64,' + window.btoa(baseSVGURL)
+          var baseSVGURL = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="' + obj.bg_color + '"></circle></svg>'
+          return 'data:image/svg+xml;base64,' + window.btoa(baseSVGURL);
         }
 
       var generateUniversityImgDataURI = function(obj) {
@@ -579,17 +1149,32 @@ angular.module('uguru.util.controllers')
           }).reverse();
           result_str = "";
           if (results.length === 1) {
-            return results[0][0] + ""
+            return "<span>" + universityArr.length + "</span> <span> schools </span> <span>" + results[0][0] + "</span>"
           }
           if (results.length === 2) {
-            return results[0][0] + " + " + results[1][0] + ""
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + '</span>';
           }
-          if (results.length === 3) {
-            return results[0][0] + ", " + results[1][0] + " + " + results[2][0] + ""
+          if (results.length === 3 && universityArr.length >= cluster.styleThreshold[0]) {
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + '</span>';
           }
-          if (results.length > 3) {
-            return results[0][0] + ", " + results[1][0] + " + "  + results[2][0] + " + more"
+          if (results.length === 4 && universityArr.length >= cluster.styleThreshold[1]) {
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + ", " + results[3][0] + '</span>';
           }
+          if (results.length > 4 && universityArr.length >= cluster.styleThreshold[1]) {
+            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + ", " + results[3][0] + ", " + results[4][0] + '</span>';
+          }
+          return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + '</span>';
+          // if (results.length >=3 )
+
+          //6,4,3,2
+
+
+          // if (results.length === 3) {
+          //   return results[0][0] + "+" + results[1][0] + " colleges"
+          // }
+          // if (results.length > 3) {
+          //   return results[0][0] + ", " + results[1][0] + " + "  + results[2][0] + " + more"
+          // }
           // for (var i = 0; i < results.length; i++) {
           //     var key = results[i][0];
           //     var value = results[i][1];
@@ -622,15 +1207,19 @@ angular.module('uguru.util.controllers')
 
 
 
-        if (universityArr.length > 10) {
+        if (universityArr.length > cluster.styleThreshold[2]) {
           var indexNumber = 1
-        } else {
+        } else if (universityArr.length > cluster.styleThreshold[1] && universityArr.length <= cluster.styleThreshold[2]) {
           var indexNumber = 2
+        } else if (universityArr.length > cluster.styleThreshold[0] && universityArr.length <= cluster.styleThreshold[1]) {
+          var indexNumber = 3
+        } else {
+          var indexNumber = 4
         }
 
 
         var resultDict = {
-          text: "Colleges in " + getTopXStateStr,
+          text: getTopXStateStr,
           title: '+more',
           index: indexNumber
         }
@@ -640,36 +1229,58 @@ angular.module('uguru.util.controllers')
 
       var initClusterObj = function(marker_arr) {
         var options_dict = {
-            minimumClusterSize:5,
+            minimumClusterSize:cluster.minClusterSize,
             calculator: clusterCalculator,
             styles:[
               {
-                width:125,
-                height:125,
-                url: generateClusterImgDataURI({bg_color:$scope.universities[0].school_color_dark, _text: ""}),
+                width:cluster.style.xl.width,
+                height:cluster.style.xl.height,
+                url: generateClusterImgDataURI({bg_color:cluster.style.xl.bg_color}),
                 fontFamily: "Source Sans Pro",
-                fontWeight: "600",
-                textColor: "#FFFFFF",
-                textSize: 12,
-                // anchorText: "[0, 0]",
-                anchorIcon: "[0, 0]"
+                fontWeight: cluster.style.xl.fontWeight,
+                textColor: cluster.style.xl.textColor,
+                textSize: cluster.style.xl.textSize,
+                anchorText: cluster.style.xl.anchorIcon
+                // anchorIcon: "[0, 0]"
               },
               {
-                width:75,
-                height:75,
-                url: generateClusterImgDataURI({bg_color:$scope.universities[43].school_color_dark, _text: ""}),
+                width:cluster.style.l.width,
+                height:cluster.style.l.height,
+                url: generateClusterImgDataURI({bg_color:cluster.style.l.bg_color}),
                 fontFamily: "Source Sans Pro",
-                fontWeight: "600",
-                textColor: "#FFFFFF",
-                textSize: 12,
-                anchorText: "[0, 0]"
-              }
+                fontWeight: cluster.style.l.fontWeight,
+                textColor: cluster.style.l.textColor,
+                textSize: cluster.style.l.textSize,
+                anchorText: cluster.style.l.anchorIcon
+                // anchorText: "[0, 0]"
+              },
+              {
+                width:cluster.style.m.width,
+                height:cluster.style.m.height,
+                url: generateClusterImgDataURI({bg_color:cluster.style.m.bg_color}),
+                fontFamily: "Source Sans Pro",
+                fontWeight: cluster.style.m.fontWeight,
+                textColor: cluster.style.m.textColor,
+                textSize: cluster.style.m.textSize,
+                anchorText: cluster.style.m.anchorIcon
+                // anchorText: "[0, 0]"
+              },
+              {
+                width:cluster.style.s.width,
+                height:cluster.style.s.height,
+                url: generateClusterImgDataURI({bg_color:cluster.style.s.bg_color}),
+                fontFamily: "Source Sans Pro",
+                fontWeight: cluster.style.s.fontWeight,
+                textColor: cluster.style.s.textColor,
+                textSize: cluster.style.s.textSize,
+                anchorText: cluster.style.s.anchorIcon
+              },
             ],
-            title: "",
-            zoomOnClick: true,
-            maxZoom: 7,
-            gridSize: 60,
-            clusterClass: "university-svg-cluster",
+            // title: "",
+            zoomOnClick: cluster.zoomOnClick,
+            maxZoom: cluster.maxZoom,
+            gridSize: cluster.gridSize,
+            clusterClass: cluster.customClass,
             // batchSize:
             averageCenter: true
         }
@@ -681,9 +1292,9 @@ angular.module('uguru.util.controllers')
       var initHomeMap = function() {
           $scope.page.load.sections.two.display = true;
           $scope.map = {
-          center: {latitude: $scope.universities[0].latitude, longitude: $scope.universities[0].longitude},
+          center: $scope.mapCenter,
           control: {},
-          zoom:  mapDefaults.zoom,
+          zoom:  $scope.mapZoom.initialDesktop,
           dragging: true, //true while map is dragging state, false otherwise
           refresh: false,
           options: mapDefaults.options,
@@ -691,9 +1302,14 @@ angular.module('uguru.util.controllers')
           clusterOptions: initClusterObj(),
           bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
           pan: true,
+          bounds: $scope.mapBounds.desktop,
           markers: generateXMarkersFromUniversities(200, $scope.universities),
           rebuildMarkers: false,
           window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
+        }
+        if (!$scope.desktopMode) {
+          $scope.map.zoom = $scope.mapZoom.initialMobile
+          $scope.map.bounds = $scope.mapBounds.mobile
         }
       }
 
@@ -712,7 +1328,7 @@ angular.module('uguru.util.controllers')
           id: obj.id,
           latitude: obj.latitude,
           longitude: obj.longitude,
-          icon: generateUniversityImgDataURI(universityObj),
+          icon: {url: generateUniversityImgDataURI(universityObj), size: new google.maps.Size(60, 60), scaledSize: new google.maps.Size(60, 60)},
           events: {
             click: onMarkerClick
           },
@@ -817,5 +1433,4 @@ angular.module('uguru.util.controllers')
 
 
     }
-
 ])

@@ -34,6 +34,14 @@ angular.module('uguru.util.controllers')
 			$scope.page.active.tabName = tabName;
 		}
 
+		//Launch on friday
+		// - back and forth
+		// --- student makes a request
+		// --- guru receives a request
+		// - data, resolve university data
+		// - content (tomorrow evening)
+		//
+
 
 		//@GABRIELLE-NOTE
 		$scope.moodboardComponents = [
@@ -371,7 +379,7 @@ angular.module('uguru.util.controllers')
 				{
 					name: "Home",
 					priority:{samir: 2, gabrielle:1, jeselle:2},
-					alpha: ["T: Bind + compile the home loader", "Bind Sidebar Transition + resolve mobile", "Team CTA + Filled out", "Replace & MVP FAQ", "CTA from Sidebar", "Navbar everything", "Make Maps Fast", "Scroll Reveal Handlers + MVP"],
+					alpha: ["T: Bind + compile the home loader", "T: Bind Sidebar Transition + resolve mobile", "Team CTA + Filled out", "Replace & MVP FAQ", "T: CTA from Sidebar", "T: Navbar everything", "T: Make Maps Fast", "T: Scroll Reveal Handlers + MVP"],
 					beta: ["Verify Main 100%", "Verify Navbar 100%", "Verify Sidebar 100%", "Verify University 100%", "Verify Become Guru/How-it-works"],
 					production: ["J: Main top section brainstorm", "J: Desktop/Mobile Iterate until 100%", "G: Mobilized already complete desktop sections", "G: Sidebar Animations/OnScroll (Mobile+Desktop)", "G: Mobile Nav + Smooth Scroll","University Search (discuss+spec+impl)", "G:Animation Spec+Check-in+Implement", "B: Verify + Finalize"]
 				},
@@ -430,6 +438,10 @@ angular.module('uguru.util.controllers')
 					name: "Extra Credit",
 					alpha: ["Static Assets Hosted", "Static Assets Compressed", "Static Assets Window Responsive"],
 					production: ["", "Static Assets Compressed", "Static Assets Window Responsive"]
+				},
+				{
+					name: "MVP Request Form",
+					alpha: ["cta initialize", "add loader directive", "progress detailed + tracking", "categories", "subcategories + cta", "form info", "user info", "payments", "summary", "loading + exit"]
 				}
 			]
 		}

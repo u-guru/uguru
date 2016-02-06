@@ -2751,50 +2751,6 @@ section {
 		}
 	}
 }
-@include keyframes(phone-rotate) {
-	0% {
-		@include rotate(90);
-	}
-	50% {
-		@include rotate(0);
-	}
-	100% {
-		@include rotate(0);
-	}
-}
-@include keyframes(phone-hover) {
-	0% {
-		@include translate-y(0);
-	}
-	50% {
-		@include translate-y(2px);
-	}
-	100% {
-		@include translate-y(0);
-	}
-}
-@include keyframes(shadow-hover) {
-	0% {
-		@include scale(0.9);
-	}
-	50% {
-		@include scale(1);
-	}
-	100% {
-		@include scale(0.9);
-	}
-}
-@include keyframes(sweat-roll) {
-	0% {
-		@include translate-y(5px);
-	}
-	50% {
-		@include translate-y(10px);
-	}
-	100% {
-		@include translate-y(5px);
-	}
-}
 
 
 

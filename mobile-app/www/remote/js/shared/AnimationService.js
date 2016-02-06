@@ -32,7 +32,9 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 		animateIn: animateIn,
 		animateOut: animateOut,
 		activateSectionAnimations: activateSectionAnimations,
-		initializeSectionComponents: initializeSectionComponents
+		initializeSectionComponents: initializeSectionComponents,
+		applyAnimateInDirective: applyAnimateInDirective,
+		applyAnimateOutDirective: applyAnimateOutDirective
 	}
 
 
@@ -58,6 +60,9 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	}
 
 	 function activateSectionAnimations(elements, css_arr, delay_arr) {
+        if (!elements || !elements.length) {
+        	return;
+        }
         for (var i = 0; i < elements.length; i ++) {
           animateIn(elements[i], css_arr[i], delay_arr[i]);
         }
@@ -75,46 +80,157 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
           } else {
             section_var.elements.push(elem);
           }
-          console.log(indexSelector, 'added to section var', css_arr[i], delay_arr[i]);
+          // console.log(indexSelector, 'added to section var', css_arr[i], delay_arr[i]);
         }
      }
 
+    function applyAnimateOutDirective(element, type) {
+    	var children = element.querySelectorAll("[anim-" + type + "-child]");
+      	if (children.length) {
+        	for (var i = 0; i < children.length; i++) {
+	          	var indexChild = children[i];
+	          	var animationClassesToInject = indexChild.getAttribute('anim-' + type +'-class') && indexChild.getAttribute('anim-' + type +'-class').split(', ');
+	          	var animationDelaysToInject = indexChild.getAttribute('anim-' + type +'-delay') && indexChild.getAttribute('anim-' + type +'-delay').split(', ');
+	          	if (!animationClassesToInject) {
+	          		continue;
+	          	}
+	          	if (!animationDelaysToInject) {
+	          		animationDelaysToInject = [0,0,0,0,0];
+	          	}
+	          	for (var j = 0; j < animationClassesToInject.length; j++) {
+	          		var indexClassOfChild = animationClassesToInject[j] || '';
+	          		var indexOffsetOfChild = animationDelaysToInject[j] || 0;
+	          		if (indexClassOfChild && indexClassOfChild.length) {
+	          			animateOut(indexChild, indexClassOfChild, indexOffsetOfChild || 0 );
+	          		}
+	          	}
+	          	// var animationOnCompleteExpr = indexChild.getAttribute('anim-exit-up-complete');
+        	}
+      	} else {
+	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.attributes['anim-' + type + '-class'].value.split(', ')
+	          var animationDelaysToInject = element.attributes['anim-' + type + '-delay'] && element.attributes['anim-' + type + '-delay'].value.value.split(', ')
+	          if (!animationClassToInject || !animationClassToInject.length) {
+	          	return;
+	          }
+	          for (var i = 0; i < animationClassToInject.length; i++) {
+	          	var indexClassOfParent= animationClassToInject[i] || '';
+          		var indexOffsetOfParent = animationDelaysToInject[i] || 0;
+          		if (indexClassOfParent && indexClassOfParent.length) {
+          			animateOut(element, indexClassOfParent, indexOffsetOfParent || 0 );
+          		}
+	          }
+      	}
+    }
+
+    function applyAnimateInDirective(element, type) {
+    	console.log(element, type);
+    	var children = element.querySelectorAll("[anim-" + type + "-child]");
+      	if (children.length) {
+        	for (var i = 0; i < children.length; i++) {
+	          	var indexChild = children[i];
+	          	var animationClassesToInject = indexChild.getAttribute('anim-' + type +'-class') && indexChild.getAttribute('anim-' + type +'-class').split(', ');
+	          	var animationDelaysToInject = indexChild.getAttribute('anim-' + type +'-delay') && indexChild.getAttribute('anim-' + type +'-delay').split(', ');
+	          	if (!animationClassesToInject) {
+	          		continue;
+	          	}
+	          	if (!animationDelaysToInject) {
+	          		animationDelaysToInject = [0,0,0,0,0];
+	          	}
+	          	for (var j = 0; j < animationClassesToInject.length; j++) {
+	          		var indexClassOfChild = animationClassesToInject[j] || '';
+	          		var indexOffsetOfChild = animationDelaysToInject[j] || 0;
+	          		if (indexClassOfChild && indexClassOfChild.length) {
+	          			animateIn(indexChild, indexClassOfChild, indexOffsetOfChild || 0 );
+	          		}
+	          	}
+	          	// var animationOnCompleteExpr = indexChild.getAttribute('anim-exit-up-complete');
+        	}
+      	} else {
+	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.attributes['anim-' + type + '-class'].value.split(', ')
+	          var animationDelaysToInject = element.attributes['anim-' + type + '-delay'] && element.attributes['anim-' + type + '-delay'].value.value.split(', ')
+	          if (!animationClassToInject || !animationClassToInject.length) {
+	          	return;
+	          }
+	          for (var i = 0; i < animationClassToInject.length; i++) {
+	          	var indexClassOfParent= animationClassToInject[i] || '';
+          		var indexOffsetOfParent = animationDelaysToInject[i] || 0;
+          		if (indexClassOfParent && indexClassOfParent.length) {
+          			animateIn(element, indexClassOfParent, indexOffsetOfParent || 0 );
+          		}
+	          }
+      	}
+    }
+
 	function animateIn(elem, css_class, delay) {
+		if (!elem || !css_class) {
+			console.log('WARNING: no class sent for ' + elem);
+			return;
+		}
+		var cssClassArgs = getCSSArgs(css_class)
+
 		$timeout(function() {
-			elem.classList.add('animated', css_class);
+			elem.classList.add('animated', cssClassArgs.class);
 	      	prefixedEventListener(elem,"AnimationStart",function(e){
 	          elem.style.opacity = 1;
 	          e.target.removeEventListener(e.type, false);
 	      	});
 	      	prefixedEventListener(elem,"AnimationEnd",function(e){
-	        	elem.classList.remove(css_class, "animated");
-	          	e.target.removeEventListener(e.type, false);
+	      		if (cssClassArgs.keep) {
+	      			elem.classList.remove("animated");
+	      		} else {
+	      			elem.classList.remove(cssClassArgs.class, "animated");
+	      		}
+	      		e.target.removeEventListener(e.type, false);
 	      	});
 		}, delay || 0);
 	}
 
-	function animateOut(elem, css_class, cb) {
+	function animateOut(elem, css_class, delay) {
 
-		elem.classList.add('animated', css_class);
-	    prefixedEventListener(elem,"AnimationStart",function(e){
-	    	elem.style.opacity = 0;
-	       	e.target.removeEventListener(e.type, false);
-	    });
+		if (!elem || !css_class) {
+			console.log('WARNING: no class sent for ' + elem);
+			return;
+		}
+		var cssClassArgs = getCSSArgs(css_class)
 
-      	prefixedEventListener(elem,"AnimationEnd",function(e){
-        	elem.classList.remove('animated', css_class);
-          	e.target.removeEventListener(e.type, false);
-          	// $timeout(function() {
-      		var cloneNode = e.target.cloneNode(true)
-      		e.target.parentNode.replaceChild(cloneNode, e.target);
-      		cb();
 
-          		// cb();
-          	// }, 100);
+      	$timeout(function() {
+      		elem.classList.add('animated', cssClassArgs.class);
+      		prefixedEventListener(elem,"AnimationStart",function(e){
+	    		elem.style.opacity = 0;
+	       		e.target.removeEventListener(e.type, false);
+	    	});
 
-          	// splashHiwNav = document.querySelector('#splash-hiw-nav');
-      	});
+	    	prefixedEventListener(elem,"AnimationEnd",function(e){
+	        	if (cssClassArgs.keep) {
+		      			elem.classList.remove("animated");
+	      		} else {
+	      			elem.classList.remove(cssClassArgs.class, "animated");
+	      		}
+	      		e.target.removeEventListener(e.type, false);
+	      	})
+
+      	}, delay || 0);
 	}
+
+	function getCSSArgs(class_name) {
+		var class_split = class_name.split(':');
+		class_name = class_split[0];
+		var css_args_dict = {}
+		if (class_split.length > 1) {
+			css_args_dict.class = class_name;
+			class_args = class_split.splice(1);
+			for (var i = 0; i < class_args.length; i++) {
+				var indexArg  = class_args[i];
+				css_args_dict[indexArg] = true;
+			}
+			return css_args_dict;
+		} else {
+			return {class: class_name};
+		}
+	}
+
+
 
 
 	function shakeElem(elem, duration, callback) {
@@ -219,7 +335,6 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	}
 
 }
-
 
 
 

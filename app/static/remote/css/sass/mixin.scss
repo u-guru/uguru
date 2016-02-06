@@ -92,7 +92,7 @@
 		content: "";
 		display: block;
 		position: absolute;
-		top: -($size * 2 - 1)+px;
+		top: -($size * 2)+px;
 		width: 0;
 		height: 0;
 		border: $size+px solid transparent;
@@ -110,7 +110,7 @@
 		content: "";
 		display: block;
 		position: absolute;
-		bottom: -($size * 2 - 1)+px;
+		bottom: -($size * 2)+px;
 		width: 0;
 		height: 0;
 		border: $size+px solid transparent;
@@ -207,6 +207,13 @@
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+@mixin transform($transform) {
+	-webkit-transform: $transform;
+	-moz-transform: $transform;
+	-ms-transform: $transform;
+	-o-transform: $transform;
+	transform: $transform;
 }
 @mixin translate($xpos, $ypos) {
 	-webkit-transform: translate($xpos,$ypos);
@@ -309,6 +316,12 @@
 	}
 }
 
+@mixin animation-timing-function($timing) {
+	-webkit-timing-function: $timing;
+	-moz-timing-function: $timing;
+	-o-timing-function: $timing;
+	timing-function: $timing;
+}
 @mixin animation-duration($duration) {
 	-webkit-animation-duration: $duration;
 	-moz-animation-duration: $duration;
