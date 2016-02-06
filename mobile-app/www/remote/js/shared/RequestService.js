@@ -3,13 +3,15 @@ angular
 	.factory("RequestService", [
 		'Category',
     'CalendarService',
+    '$timeout',
+    'LoadingService',
     RequestService
 	]);
 
-function RequestService(Category, CalendarService) {
+function RequestService(Category, CalendarService, $timeout, LoadingService) {
   var _types = {DEFAULT:0, QUICK_QA:1}
   var MAX_REQUEST_HOURS = 10;
-
+  var requestCancelTimeout;
 
   function getMaxNumHourArr() {
     var result = [];
@@ -80,6 +82,32 @@ function RequestService(Category, CalendarService) {
     form.time_estimate.showMinutes = !form.time_estimate.showMinutes;
   }
 
+  function confirmRequest(form) {
+    requestCancelTimeout = $timeout(function() {
+      var modalElem = document.getElementById("cta-modal-student-request");
+      if (modalElem) {
+        modalElem.classList.remove('show');
+        LoadingService.showSuccess('Request Successfully Submitted', 2000);
+      }
+    }, 5000)
+    var requestContainerDiv = document.querySelector('#request .desktop-tab-header');
+    form.nav.next();
+    if (requestContainerDiv) {
+      requestContainerDiv.classList.add('request-confirming')
+      requestContainerDiv.classList.remove('request-canceling')
+    }
+  }
+
+  function cancelRequest(form) {
+    clearTimeout(requestCancelTimeout);
+    var requestContainerDiv = document.querySelector('#request .desktop-tab-header');
+    form.nav.previous();
+    if (requestContainerDiv) {
+      requestContainerDiv.classList.remove('request-confirming');
+      requestContainerDiv.classList.add('request-canceling');
+    }
+  }
+
   function initStudentForm(slide_box, scope, lat, long, color) {
     console.log('subcategories', Category.getAcademic());
     return {
@@ -98,11 +126,13 @@ function RequestService(Category, CalendarService) {
       scope: scope,
       map: {center: {latitude: lat, longitude: long}, options: getRequestMapOptions(), zoom:15, pan:true, control:{}, marker: getDefaultMarker(lat, long, color)},
       nav: {
-        index: 3,
+        index: 0,
         next: function() {slide_box.enableSlide(true); slide_box.next(); slide_box.enableSlide(false); scope.requestForm.nav.index += 1},
         previous: function() {slide_box.enableSlide(true); slide_box.previous(); slide_box.enableSlide(false); scope.requestForm.nav.index -= 1},
         switchTo: function(index) {slide_box.enableSlide(true); slide_box.slide(index, 250); slide_box.enableSlide(false); scope.requestForm.nav.index = index},
-      }
+      },
+      confirm: confirmRequest,
+      cancel: cancelRequest,
     }
   }
   return {

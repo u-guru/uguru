@@ -107,8 +107,8 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	          	// var animationOnCompleteExpr = indexChild.getAttribute('anim-exit-up-complete');
         	}
       	} else {
-	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.attributes['anim-' + type + '-class'].value.split(', ')
-	          var animationDelaysToInject = element.attributes['anim-' + type + '-delay'] && element.attributes['anim-' + type + '-delay'].value.value.split(', ')
+	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.getAttribute('anim-' + type + '-class').split(', ');
+	          var animationDelaysToInject = element.attributes['anim-' + type + '-delay'] && element.getAttribute('anim-' + type + '-delay').split(', ');
 	          if (!animationClassToInject || !animationClassToInject.length) {
 	          	return;
 	          }
@@ -151,6 +151,7 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
       	} else {
 	          var animationClassToInject = element.attributes['anim-' + type +'-class'] && element.getAttribute('anim-' + type + '-class').split(', ')
 	          var animationDelaysToInject = element.attributes['anim-' + type + '-delay'] && element.getAttribute('anim-' + type + '-delay').split(', ')
+
 	          if (!animationClassToInject || !animationClassToInject.length) {
 	          	return;
 	          }
