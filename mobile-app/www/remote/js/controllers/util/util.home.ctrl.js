@@ -718,6 +718,7 @@ angular.module('uguru.util.controllers')
 
       $scope.$on('$ionicView.loaded', function() {
         processDomWaypoints();
+        $scope.homePageScroll = ScrollService.initIScroll('#home-splash');
       })
 
       var initHomePageWayPoint = function() {

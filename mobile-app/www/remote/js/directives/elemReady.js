@@ -14,17 +14,6 @@ angular.module('uguru.directives')
        }
     }
 })
-.directive('onImgLoad', function() {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attrs) {
-            element.bind('load', function() {
-                //call the function that was passed
-                scope.$apply(attrs.onImgLoad);
-            });
-        }
-    };
-})
 .directive('bgImage', function () {
     return {
         restrict: 'A',
