@@ -694,7 +694,6 @@
 
 					<ul class="splash-scene-gurus pf-card-group">
 						<li class="pf-card-li opacity-0" anim-on-show-child anim-on-show-class="{{::['bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp'][$index]}}" anim-on-show-delay="{{::[6500, 6700, 6900, 7100][$index]}}" ng-repeat='category in ::categories | limitTo: 4' ng-if='category.is_active'>
-							<!-- needs animation, currently set to .hide -->
 							<div class="splash-scene-guru-message opacity-0" anim-on-show-child anim-on-show-class="magictime, spaceInDown" anim-on-show-delay="7800, 7800" ng-if="$index === 0">
 								<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
 								<button>View {{::sampleMiniProfilesDict[category.hex_color].name}}'s Shop</button>
@@ -773,31 +772,32 @@
 						</li>
 					</ul>
 				</ion-slide>
+			</ion-slide-box>
 
-				<footer class="splash-scene-footer">
-					<ul>
-						<li>
-							<a class="splash-footer-share" ng-include="img_base + 'templates/svg/main/share.html'"></a>
-						</li>
-						<li>
-							<a class="splash-footer-play-pause" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a>
-						</li>
-						<li>
-							<a class="splash-footer-mute" ng-include="img_base + 'templates/svg/main/mute.html'"></a>
-						</li>
-					</ul>
-					<ul>
-						<li>
-							<a ng-click='topHomeSlider.previous()' ng-include="img_base + 'templates/svg/main/left.html'"></a>
-						</li>
-						<li>
-							<a ng-click='topHomeSlider.next()' ng-include="img_base + 'templates/svg/main/right.html'"></a>
-						</li>
-					</ul>
-				</footer>
+			<footer class="splash-scene-footer">
+				<ul>
+					<li>
+						<a class="splash-footer-share" ng-include="img_base + 'templates/svg/main/share.html'"></a>
+					</li>
+					<li>
+						<a class="splash-footer-play-pause" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a>
+					</li>
+					<li>
+						<a class="splash-footer-mute" ng-include="img_base + 'templates/svg/main/mute.html'"></a>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<a ng-click='topHomeSlider.previous()' ng-include="img_base + 'templates/svg/main/left.html'"></a>
+					</li>
+					<li>
+						<a ng-click='topHomeSlider.next()' ng-include="img_base + 'templates/svg/main/right.html'"></a>
+					</li>
+				</ul>
+			</footer>
 
-				<div class="splash-type" style="display: none!important;">
-					<h1 id='main-text'>
+			<div class="splash-type" style="display: none!important;">
+				<h1 id='main-text'>
                     <span class='weight-400'>Last-second dirt-cheap</span>
                     <span class='weight-900'>
                         <span class='typed-writer-container weight-900'>
@@ -806,73 +806,71 @@
                     </span>
 					<span class='weight-400'>powered&nbsp;by your&nbsp;classmates</span>
                 </h1>
-				</div>
-				<footer style="display: none!important;">
-					<svg viewBox="0 0 1280 284">
-						<defs>
-							<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="gradient">
-								<stop stop-color="{{::page.css.main.gradient_fill}} !important;" stop-opacity="0.4" offset="0%"></stop>
-								<stop stop-color="{{::page.css.main.gradient_fill}} !important;" offset="100%"></stop>
-							</linearGradient>
-						</defs>
-						<g fill="url(#gradient)">
-							<path d="M0,0 C0,0 352.296875,89.21875 640,89.21875 C927.703125,89.21875 1280,0 1280,0 L1280,284 L0,284 L0,0 Z"></path>
-						</g>
-					</svg>
-					<div class="border"></div>
-					<div class="footer-content">
-						<ul ng-if='::desktopMode'>
-							<li>
-								<h2>Open 24/7</h2>
-								<p>Create an academic shop for
-									<br/>course-related skills</p>
-							</li>
-							<li class='active'>
-								<h2>Trusted</h2>
-								<p>Create an academic shop for
-									<br/>course-related skills</p>
-							</li>
-							<li>
-								<h2>No BS</h2>
-								<p>Create an academic shop for
-									<br/>course-related skills</p>
-							</li>
-						</ul>
-						<div id='splash-hero-slidebox-container' class='full-xy flex-wrap-center' ng-if='::!desktopMode'>
-							<ion-slide-box class='full-xy' show-pager='true' does-continue='true' slide-interval='2500' auto-play="true">
-								<ion-slide>
-									<div class='full-xy flex-wrap-center'>
-										<h2 class='full-x p10top'>Open 24/7</h2>
-										<p>Create an academic shop for
-											<br/>course-related skills</p>
-									</div>
-								</ion-slide>
-								<ion-slide>
-									<div class='full-xy flex-wrap-center'>
-										<h2 class='full-x p10top'>Trusted</h2>
-										<p>Create an academic shop for
-											<br/>course-related skills</p>
-									</div>
-								</ion-slide>
-								<ion-slide>
-									<div class='full-xy flex-wrap-center'>
-										<h2 class='full-x p10top'>No BS</h2>
-										<p>Create an academic shop for
-											<br/>course-related skills</p>
-									</div>
-								</ion-slide>
-							</ion-slide-box>
-						</div>
+			</div>
+			<footer style="display: none!important;">
+				<svg viewBox="0 0 1280 284">
+					<defs>
+						<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="gradient">
+							<stop stop-color="{{::page.css.main.gradient_fill}} !important;" stop-opacity="0.4" offset="0%"></stop>
+							<stop stop-color="{{::page.css.main.gradient_fill}} !important;" offset="100%"></stop>
+						</linearGradient>
+					</defs>
+					<g fill="url(#gradient)">
+						<path d="M0,0 C0,0 352.296875,89.21875 640,89.21875 C927.703125,89.21875 1280,0 1280,0 L1280,284 L0,284 L0,0 Z"></path>
+					</g>
+				</svg>
+				<div class="border"></div>
+				<div class="footer-content">
+					<ul ng-if='::desktopMode'>
+						<li>
+							<h2>Open 24/7</h2>
+							<p>Create an academic shop for
+								<br/>course-related skills</p>
+						</li>
+						<li class='active'>
+							<h2>Trusted</h2>
+							<p>Create an academic shop for
+								<br/>course-related skills</p>
+						</li>
+						<li>
+							<h2>No BS</h2>
+							<p>Create an academic shop for
+								<br/>course-related skills</p>
+						</li>
+					</ul>
+					<div id='splash-hero-slidebox-container' class='full-xy flex-wrap-center' ng-if='::!desktopMode'>
+						<ion-slide-box class='full-xy' show-pager='true' does-continue='true' slide-interval='2500' auto-play="true">
+							<ion-slide>
+								<div class='full-xy flex-wrap-center'>
+									<h2 class='full-x p10top'>Open 24/7</h2>
+									<p>Create an academic shop for
+										<br/>course-related skills</p>
+								</div>
+							</ion-slide>
+							<ion-slide>
+								<div class='full-xy flex-wrap-center'>
+									<h2 class='full-x p10top'>Trusted</h2>
+									<p>Create an academic shop for
+										<br/>course-related skills</p>
+								</div>
+							</ion-slide>
+							<ion-slide>
+								<div class='full-xy flex-wrap-center'>
+									<h2 class='full-x p10top'>No BS</h2>
+									<p>Create an academic shop for
+										<br/>course-related skills</p>
+								</div>
+							</ion-slide>
+						</ion-slide-box>
 					</div>
-				</footer>
+				</div>
+			</footer>
 		</section>
 
 		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }' init-wp="university, university_exit" wp-offset="106, -100%" anim-on-show-parent anim-on-show="show-map" anim-on-hide-parent anim-on-hide="show-map">
 			<header>
 				<h1 class="opacity-0" anim-on-show-child anim-on-show-class="bounceInDown" anim-on-show-delay="1000">Find Your University</h1>
 			</header>
-
-			<!-- @Gabrielle, the zoom variable is updated in the class with zoom-INDEX, so you can bind that with the css -->
 			<div class='splash-map zoom-{{map.zoom}}' style="background-color: #C5DDED;" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="400">
 				<ui-gmap-google-map id="splash-google-map" class='full-xy absolute top-0 left-0 opacity-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="550">
 					<ui-gmap-markers models="map.markers" coords="'self'" options="'options'" fit="true" icon="'icon'" clusterOptions="map.clusterOptions" doCluster="true">
@@ -1040,7 +1038,7 @@
 					<!--Desktop mode-->
 					<div ng-if='desktopMode' class='flex-wrap-center' style='overflow:hidden;'>
 						<ul anim-enter-down="hiw_enter" anim-enter-down-parent>
-							<li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.top_half" anim-exit-up-child anim-exit-up-class="{{::['hinge', 'hinge', 'hinge-right'][$index]}}" anim-exit-up-delay="{{::[800, 500, 900][$index]}}" anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInDown', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[800, 500, 900][$index]}}" anim-enter-down-child anim-enter-down-class="fadeIn" anim-enter-down-delay="800">
+							<li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.top_half" anim-exit-up-child anim-exit-up-class="{{::['hinge', 'hinge', 'hinge-right'][$index]}}" anim-exit-up-delay="{{::[800, 500, 900][$index]}}" anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInDown', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[800, 500, 900][$index]}}" anim-enter-down-child anim-enter-down-class="fadeIn" anim-enter-down-delay="800" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="{{::[800, 500, 900][$index]}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">
 								<svg class="tape" viewBox="0 0 200 650">
 									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
 								</svg>
@@ -1060,7 +1058,7 @@
 									</div>
 								</div>
 							</li>
-							<li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.bottom_half" anim-exit-up-child anim-exit-up-class="{{::['hinge-right', 'hinge', 'hinge'][$index]}}" anim-exit-up-delay="{{::[700, 1000, 600][$index]}}" anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInUp', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[700, 1000, 600][$index]}}" anim-enter-down-child anim-enter-down-class="fadeIn" anim-enter-down-delay="800">
+							<li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.bottom_half" anim-exit-up-child anim-exit-up-class="{{::['hinge-right', 'hinge', 'hinge'][$index]}}" anim-exit-up-delay="{{::[700, 1000, 600][$index]}}" anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInUp', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[700, 1000, 600][$index]}}" anim-enter-down-child anim-enter-down-class="fadeIn" anim-enter-down-delay="800" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="{{::[700, 1000, 600][$index]}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">
 								<svg class="tape" viewBox="0 0 200 650">
 									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
 								</svg>
@@ -1148,7 +1146,7 @@
 					</div>
 					<div>
 						<ul class="pf-card-group-mobile" ng-if='::!desktopMode'>
-							<li ng-repeat='category in ::categories' ng-if='category.is_active' anim-on-show-child anim-on-show-class="rotateInDown" anim-on-show-delay="{{100 * $index}}">
+							<li ng-repeat='category in ::categories' ng-if='category.is_active' anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="{{$index * 150 + 400}}">
 								<a class="pf-card-mini large pf-card-mini-{{::category.hex_color}}" id='cta-box-{{::category.hex_color}}'>
 									<div class="pf-card-mini-banner"></div>
 									<span class="user-icon" style="background-image: url({{sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
@@ -1157,60 +1155,59 @@
 							</li>
 						</ul>
 						<ul class="pf-card-group" ng-if='desktopMode'>
-							<li class="pf-card-li opacity-0" ng-repeat='category in ::categories' ng-if='category.is_active' anim-on-show-child anim-on-show-class="lightSpeedIn" anim-on-show-delay="{{200 + 100 * $index}}">
+							<li class="pf-card-li opacity-0" ng-repeat='category in ::categories' ng-if='category.is_active' anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="{{$index * 150 + 400}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">
 								<a class="pf-card pf-card-{{::category.hex_color}} bg-{{::category.hex_color}}" id='cta-box-{{::category.hex_color}}'>
 									<span class="pf-hover">View Profile</span>
 									<div class="pf-card-top">
 										<ul>
 											<li>{{::category.hex_color}}</li>
-											<li class="pf-card-ribbon opacity-0" anim-on-show-child anim-on-show-delay="{{800 + 100*$index}}" anim-on-show-class="slideInUp">
+											<li class="pf-card-ribbon opacity-0" anim-on-show-child anim-on-show-delay="{{$index * 150 + 1200}}" anim-on-show-class="slideInRight">
 												<span>{{::sampleMiniProfilesDict[category.hex_color].percentile}}&nbsp;percentile</span>
 											</li>
 										</ul>
-										<span anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{900 + 100 * $index}}" class="user-icon opacity-0"  style="background-image: url({{::sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
+										<span anim-on-show-child anim-on-show-class="rotateIn" anim-on-show-delay="{{$index * 150 + 1000}}" class="user-icon opacity-0"  style="background-image: url({{::sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
 									</div>
 									<div class="pf-card-main">
 										<h1 class="pf-card-name verified">
-			            								<span anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1000 + 100 * $index}}" class="pf-card-name-span inline opacity-0">{{::sampleMiniProfilesDict[category.hex_color].name}}</span>
-			            								<span class="pf-card-verified inline opacity-0" anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1200 + 100 * $index}}">
-			            									<span ng-include="::img_base + 'templates/credibility.verified.svg.html'"> </span>
-			            								</span>
-			                						</h1>
-
-										<h2 class="pf-school opacity-0" anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1250 + 100 * $index}}">{{::sampleMiniProfilesDict[category.hex_color].university_name}}</h2>
+            								<span anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{$index * 150 + 1000}}" class="pf-card-name-span inline opacity-0">{{::sampleMiniProfilesDict[category.hex_color].name}}</span>
+            								<span class="pf-card-verified inline opacity-0" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="{{$index * 150 + 1250}}">
+            									<span ng-include="::img_base + 'templates/credibility.verified.svg.html'"> </span>
+            								</span>
+                						</h1>
+										<h2 class="pf-school opacity-0" anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{$index * 150 + 1200}}">{{::sampleMiniProfilesDict[category.hex_color].university_name}}</h2>
 										<ul class="pf-rating" data-rating="{{::sampleMiniProfilesDict[category.hex_color].rating.whole_stars}}" data-half="{{::sampleMiniProfilesDict[category.hex_color].rating.has_half_star}}">
-											<li class="opacity-0" anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1350 + 25 * index}}">
+											<li class="opacity-0" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="{{1350 + 25 * index}}">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
-											<li class="opacity-0" anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1375 + 25 * $index}}">
+											<li class="opacity-0" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="{{1375 + 25 * $index}}">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
-											<li class="opacity-0"  anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1400 + 25 * $index}}">
+											<li class="opacity-0"  anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="{{1400 + 25 * $index}}">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
-											<li class="opacity-0"  anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1425 + 25 * $index}}">
+											<li class="opacity-0"  anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="{{1425 + 25 * $index}}">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
-											<li class="opacity-0"  anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1500 + 25 * $index}}">
+											<li class="opacity-0"  anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="{{1500 + 25 * $index}}">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 										</ul>
-										<span  anim-on-show-child anim-on-show-class="slideInUp" anim-on-show-delay="{{1600 + 75 * $index}}" class="pf-review-amt opacity-0">{{::sampleMiniProfilesDict[category.hex_color].rating.count}} Reviews</span>
+										<span anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="{{1600 + 75 * $index}}" class="pf-review-amt opacity-0">{{::sampleMiniProfilesDict[category.hex_color].rating.count}} Reviews</span>
 									</div>
 								</a>
 							</li>
@@ -1221,121 +1218,121 @@
 			<footer>
 				<div class="border"></div>
 			</footer>
-			</section>
+		</section>
 
-			<section id='become-guru' class="splash-postit ng-class:{'hide':!page.load.sections.five.display}">
-				<header>
-					<h1 class="become-guru-header">{{::become_guru.header}}</h1>
-				</header>
-				<div class='main bg-charcoal relative full-x'>
-					<!--Mobile mode, hacked css @595-611, samir.scss -->
-					<div class="full-xy" ng-if='::!desktopMode'>
-						<div>
+		<section id='become-guru' class="splash-postit ng-class:{'hide':!page.load.sections.five.display}">
+			<header>
+				<h1 class="become-guru-header">{{::become_guru.header}}</h1>
+			</header>
+			<div class='main bg-charcoal relative full-x'>
+				<!--Mobile mode, hacked css @595-611, samir.scss -->
+				<div class="full-xy" ng-if='::!desktopMode'>
+					<div>
 
-							<div class='postit empty'>
-								<svg class="square" viewBox="0 0 100 100">
-									<rect x="0" y="0" width="100" height="100"></rect>
-								</svg>
-							</div>
-							<div class='postit empty'>
-								<svg class="square" viewBox="0 0 100 100">
-									<rect x="0" y="0" width="100" height="100"></rect>
-								</svg>
-							</div>
-							<ion-slide-box delegate-handle='bg-slidebox' class='full-xy' on-slide-changed="::bgSlideChanged($index)" show-pager='true' slide-interval='2500' auto-play="true">
-								<ion-slide ng-repeat='bg_item in ::become_guru.top_half'>
-									<div class='postit'>
-										<svg class="square" viewBox="0 0 100 100">
-											<rect x="0" y="0" width="100" height="100"></rect>
-										</svg>
-										<div class='flex-wrap-center full-xy'>
-											<span ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
-											<h1 class='full-x' ng-bind-html="::bg_item.header"></h1>
-											<p ng-bind-html="::bg_item.content"></p>
-										</div>
-									</div>
-								</ion-slide>
-								<ion-slide ng-repeat='hiw_item in ::how_it_works.bottom_half'>
-									<div class='postit'>
-										<svg class="square" viewBox="0 0 100 100">
-											<rect x="0" y="0" width="100" height="100"></rect>
-										</svg>
-										<div class='flex-wrap-center full-xy'>
-											<span ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
-											<h1 class='full-x' ng-bind-html="::bg_item.header"></h1>
-											<p ng-bind-html="::bg_item.content"></p>
-										</div>
-									</div>
-								</ion-slide>
-							</ion-slide-box>
+						<div class='postit empty'>
+							<svg class="square" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
 						</div>
-						<div class="p15xy absolute bottom-0 left-0 full-x">
-							<button ng-click='scrollToSection("#splash-university")' class='capitalize'>Become a University Guru</button>
+						<div class='postit empty'>
+							<svg class="square" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
 						</div>
+						<ion-slide-box delegate-handle='bg-slidebox' class='full-xy' on-slide-changed="::bgSlideChanged($index)" show-pager='true' slide-interval='2500' auto-play="true">
+							<ion-slide ng-repeat='bg_item in ::become_guru.top_half'>
+								<div class='postit'>
+									<svg class="square" viewBox="0 0 100 100">
+										<rect x="0" y="0" width="100" height="100"></rect>
+									</svg>
+									<div class='flex-wrap-center full-xy'>
+										<span ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
+										<h1 class='full-x' ng-bind-html="::bg_item.header"></h1>
+										<p ng-bind-html="::bg_item.content"></p>
+									</div>
+								</div>
+							</ion-slide>
+							<ion-slide ng-repeat='hiw_item in ::how_it_works.bottom_half'>
+								<div class='postit'>
+									<svg class="square" viewBox="0 0 100 100">
+										<rect x="0" y="0" width="100" height="100"></rect>
+									</svg>
+									<div class='flex-wrap-center full-xy'>
+										<span ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
+										<h1 class='full-x' ng-bind-html="::bg_item.header"></h1>
+										<p ng-bind-html="::bg_item.content"></p>
+									</div>
+								</div>
+							</ion-slide>
+						</ion-slide-box>
 					</div>
-					<div ng-if='desktopMode' class='flex-wrap-center'>
-						<ul class="desktop-postit-list">
-							<li class='opacity-0 bg-postit-li' ng-repeat="bg_item in ::become_guru.top_half">
-								<svg class="tape" viewBox="0 0 200 650">
-									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-								</svg>
-								<svg class="tape" viewBox="0 0 200 650">
-									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-								</svg>
-								<div class="postit">
-									<svg class="square" viewBox="0 0 100 100">
-										<rect x="0" y="0" width="100" height="100"></rect>
-									</svg>
-									<div>
-										<div>
-											<span class="postit-icon" ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
-											<h1 ng-bind-html="::bg_item.header"></h1>
-											<p ng-bind-html="::bg_item.content"></p>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class='opacity-0 bg-postit-li' ng-repeat="bg_item in ::become_guru.bottom_half">
-								<svg class="tape" viewBox="0 0 200 650">
-									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-								</svg>
-								<svg class="tape" viewBox="0 0 200 650">
-									<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-								</svg>
-								<div class="postit">
-									<svg class="square" viewBox="0 0 100 100">
-										<rect x="0" y="0" width="100" height="100"></rect>
-									</svg>
-									<div>
-										<div>
-											<span class="postit-icon" ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
-											<h1 ng-bind-html="::bg_item.header"></h1>
-											<p ng-bind-html="::bg_item.content"></p>
-										</div>
-									</div>
-								</div>
-							</li>
-						</ul>
-						<button ng-click='scrollToSection("#splash-university")' class='capitalize become-guru-button'>Become a University Guru</button>
+					<div class="p15xy absolute bottom-0 left-0 full-x">
+						<button ng-click='scrollToSection("#splash-university")' class='capitalize'>Become a University Guru</button>
 					</div>
 				</div>
-				<footer>
-					<div class="border"></div>
-				</footer>
-			</section>
-
-			<section id="splash-footer" class="ng-class:{'hide': !page.load.sections.footer.display}">
-				<div>
-					<ul>
-						<li>proudly made&nbsp;with</li>
-						<li>
-							<span ng-include="::img_base + 'templates/svg/main/heart.html'"></span>
+				<div ng-if='desktopMode' class='flex-wrap-center'>
+					<ul class="desktop-postit-list">
+						<li class='opacity-0 bg-postit-li' ng-repeat="bg_item in ::become_guru.top_half">
+							<svg class="tape" viewBox="0 0 200 650">
+								<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+							</svg>
+							<svg class="tape" viewBox="0 0 200 650">
+								<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+							</svg>
+							<div class="postit">
+								<svg class="square" viewBox="0 0 100 100">
+									<rect x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<div>
+										<span class="postit-icon" ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
+										<h1 ng-bind-html="::bg_item.header"></h1>
+										<p ng-bind-html="::bg_item.content"></p>
+									</div>
+								</div>
+							</div>
 						</li>
-						<li>by college students</li>
+						<li class='opacity-0 bg-postit-li' ng-repeat="bg_item in ::become_guru.bottom_half">
+							<svg class="tape" viewBox="0 0 200 650">
+								<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+							</svg>
+							<svg class="tape" viewBox="0 0 200 650">
+								<path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+							</svg>
+							<div class="postit">
+								<svg class="square" viewBox="0 0 100 100">
+									<rect x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<div>
+										<span class="postit-icon" ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
+										<h1 ng-bind-html="::bg_item.header"></h1>
+										<p ng-bind-html="::bg_item.content"></p>
+									</div>
+								</div>
+							</div>
+						</li>
 					</ul>
+					<button ng-click='scrollToSection("#splash-university")' class='capitalize become-guru-button'>Become a University Guru</button>
 				</div>
-			</section>
-		</main>
-	</div>
-	<!-- </ion-content> -->
-	<!-- </ion-view> -->
+			</div>
+			<footer>
+				<div class="border"></div>
+			</footer>
+		</section>
+
+		<section id="splash-footer" class="ng-class:{'hide': !page.load.sections.footer.display}">
+			<div>
+				<ul>
+					<li>proudly made&nbsp;with</li>
+					<li>
+						<span ng-include="::img_base + 'templates/svg/main/heart.html'"></span>
+					</li>
+					<li>by college students</li>
+				</ul>
+			</div>
+		</section>
+	</main>
+</div>
+<!-- </ion-content> -->
+<!-- </ion-view> -->
