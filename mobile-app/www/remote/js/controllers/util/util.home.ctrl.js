@@ -100,133 +100,133 @@ angular.module('uguru.util.controllers')
       // next steps
       // setup the top section
 
-      $scope.page.animations.hiw = {
-        viewed: false,
-        beforeScroll: null,
-        firstViewed: {
-          css_classes: ['fadeIn', 'bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'fadeIn'],
-          selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', '.hiw-postit-li:nth-child(2) .tape:nth-child(1)', '.hiw-postit-li:nth-child(2) .tape:nth-child(2)', '.hiw-postit-li:nth-child(3) .tape:nth-child(2)', '.hiw-postit-li:nth-child(4) .tape:nth-child(1)', '.hiw-postit-li:nth-child(4) .tape:nth-child(2)', '.how-it-works-button'],
-          delays: [400, 500, 600, 700, 800, 900, 1000, 2000, 2000, 2000, 2000, 2000, 2500],
-        },
-        secondViewed: {
-          css_classes: ['fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn'],
-          selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', 'how-it-works-button'],
-          delays: [400, 500, 600, 700, 800, 900, 1000, 1500],
-        },
-        onExit: {
-          css_classes: ['fadeOut', 'hinge', 'hinge-right', 'hinge-right', 'hinge-right', 'hinge', 'hinge', 'fadeOut'],
-          selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', '.how-it-works-button'],
-          delays: [400, 500, 600, 700, 800, 900, 1000, 1500],
-        },
-        onScrollStart: null, //coming soon, not first time
-        onScrollEnd: null, // coming soon, not first time
-      }
+    //   $scope.page.animations.hiw = {
+    //     viewed: false,
+    //     beforeScroll: null,
+    //     firstViewed: {
+    //       css_classes: ['fadeIn', 'bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'fadeIn'],
+    //       selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', '.hiw-postit-li:nth-child(2) .tape:nth-child(1)', '.hiw-postit-li:nth-child(2) .tape:nth-child(2)', '.hiw-postit-li:nth-child(3) .tape:nth-child(2)', '.hiw-postit-li:nth-child(4) .tape:nth-child(1)', '.hiw-postit-li:nth-child(4) .tape:nth-child(2)', '.how-it-works-button'],
+    //       delays: [400, 500, 600, 700, 800, 900, 1000, 2000, 2000, 2000, 2000, 2000, 2500],
+    //     },
+    //     secondViewed: {
+    //       css_classes: ['fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn'],
+    //       selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', 'how-it-works-button'],
+    //       delays: [400, 500, 600, 700, 800, 900, 1000, 1500],
+    //     },
+    //     onExit: {
+    //       css_classes: ['fadeOut', 'hinge', 'hinge-right', 'hinge-right', 'hinge-right', 'hinge', 'hinge', 'fadeOut'],
+    //       selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', '.how-it-works-button'],
+    //       delays: [400, 500, 600, 700, 800, 900, 1000, 1500],
+    //     },
+    //     onScrollStart: null, //coming soon, not first time
+    //     onScrollEnd: null, // coming soon, not first time
+    //   }
 
-    $scope.page.animations.categories = {
-      viewed: false,
-      beforeScroll: null,
-      firstViewed: {
-        css_classes: [
-          'fadeIn', 'fadeIn',
-          'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp',
-          'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn',
-          'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
-          'bounceInUp'
-        ],
-        selectors: [
-          '.splash-categories-header',
-          '.splash-categories-subheader',
-          '.category-card-list li:nth-child(1)',
-          '.category-card-list li:nth-child(2)',
-          '.category-card-list li:nth-child(3)',
-          '.category-card-list li:nth-child(4)',
-          '.category-card-list li:nth-child(5)',
-          '.category-card-list li:nth-child(6)',
-          '.category-card-list li:nth-child(1) .card-icon',
-          '.category-card-list li:nth-child(2) .card-icon',
-          '.category-card-list li:nth-child(3) .card-icon',
-          '.category-card-list li:nth-child(4) .card-icon',
-          '.category-card-list li:nth-child(5) .card-icon',
-          '.category-card-list li:nth-child(6) .card-icon',
-          '.category-card-list li:nth-child(1) .card-label',
-          '.category-card-list li:nth-child(2) .card-label',
-          '.category-card-list li:nth-child(3) .card-label',
-          '.category-card-list li:nth-child(4) .card-label',
-          '.category-card-list li:nth-child(5) .card-label',
-          '.category-card-list li:nth-child(6) .card-label',
-          '.card-button'
-        ],
-        delays: [
-          400, 550,
-          400, 550, 700, 950, 1100, 1250,
-          1400, 1550, 1700, 1950, 2100, 2250,
-          1400, 1550, 1700, 1950, 2100, 2250,
-          3250
-        ]
-      },
-      secondViewed: {
-        css_classes: [
-          'fadeIn', 'fadeIn',
-          'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp',
-          'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn',
-          'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
-          'bounceInUp'
-        ],
-        selectors: [
-          '.splash-categories-header',
-          '.splash-categories-subheader',
-          '.category-card-list li:nth-child(1)',
-          '.category-card-list li:nth-child(2)',
-          '.category-card-list li:nth-child(3)',
-          '.category-card-list li:nth-child(4)',
-          '.category-card-list li:nth-child(5)',
-          '.category-card-list li:nth-child(6)',
-          '.category-card-list li:nth-child(1) .card-icon',
-          '.category-card-list li:nth-child(2) .card-icon',
-          '.category-card-list li:nth-child(3) .card-icon',
-          '.category-card-list li:nth-child(4) .card-icon',
-          '.category-card-list li:nth-child(5) .card-icon',
-          '.category-card-list li:nth-child(6) .card-icon',
-          '.category-card-list li:nth-child(1) .card-label',
-          '.category-card-list li:nth-child(2) .card-label',
-          '.category-card-list li:nth-child(3) .card-label',
-          '.category-card-list li:nth-child(4) .card-label',
-          '.category-card-list li:nth-child(5) .card-label',
-          '.category-card-list li:nth-child(6) .card-label',
-          '.card-button'
-        ],
-        delays: [
-          400, 550,
-          400, 550, 700, 950, 1100, 1250,
-          1400, 1550, 1700, 1950, 2100, 2250,
-          1400, 1550, 1700, 1950, 2100, 2250,
-          3250
-        ]
-      },
-      onExit: {
-        css_classes: [
-          'fadeOut', 'fadeOut',
-          'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown',
-          'bounceOutDown'
-        ],
-        selectors: [
-          '.splash-categories-header',
-          '.splash-categories-subheader',
-          '.category-card-list li:nth-child(1)',
-          '.category-card-list li:nth-child(2)',
-          '.category-card-list li:nth-child(3)',
-          '.category-card-list li:nth-child(4)',
-          '.category-card-list li:nth-child(5)',
-          '.category-card-list li:nth-child(6)',
-          '.card-button'
-        ],
-        delays: [
-          400, 550,
-          400, 550, 700, 950, 1100, 1250,
-          2250
-        ]
-      }
-    }
+    // $scope.page.animations.categories = {
+    //   viewed: false,
+    //   beforeScroll: null,
+    //   firstViewed: {
+    //     css_classes: [
+    //       'fadeIn', 'fadeIn',
+    //       'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp',
+    //       'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn',
+    //       'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
+    //       'bounceInUp'
+    //     ],
+    //     selectors: [
+    //       '.splash-categories-header',
+    //       '.splash-categories-subheader',
+    //       '.category-card-list li:nth-child(1)',
+    //       '.category-card-list li:nth-child(2)',
+    //       '.category-card-list li:nth-child(3)',
+    //       '.category-card-list li:nth-child(4)',
+    //       '.category-card-list li:nth-child(5)',
+    //       '.category-card-list li:nth-child(6)',
+    //       '.category-card-list li:nth-child(1) .card-icon',
+    //       '.category-card-list li:nth-child(2) .card-icon',
+    //       '.category-card-list li:nth-child(3) .card-icon',
+    //       '.category-card-list li:nth-child(4) .card-icon',
+    //       '.category-card-list li:nth-child(5) .card-icon',
+    //       '.category-card-list li:nth-child(6) .card-icon',
+    //       '.category-card-list li:nth-child(1) .card-label',
+    //       '.category-card-list li:nth-child(2) .card-label',
+    //       '.category-card-list li:nth-child(3) .card-label',
+    //       '.category-card-list li:nth-child(4) .card-label',
+    //       '.category-card-list li:nth-child(5) .card-label',
+    //       '.category-card-list li:nth-child(6) .card-label',
+    //       '.card-button'
+    //     ],
+    //     delays: [
+    //       400, 550,
+    //       400, 550, 700, 950, 1100, 1250,
+    //       1400, 1550, 1700, 1950, 2100, 2250,
+    //       1400, 1550, 1700, 1950, 2100, 2250,
+    //       3250
+    //     ]
+    //   },
+    //   secondViewed: {
+    //     css_classes: [
+    //       'fadeIn', 'fadeIn',
+    //       'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp',
+    //       'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn',
+    //       'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
+    //       'bounceInUp'
+    //     ],
+    //     selectors: [
+    //       '.splash-categories-header',
+    //       '.splash-categories-subheader',
+    //       '.category-card-list li:nth-child(1)',
+    //       '.category-card-list li:nth-child(2)',
+    //       '.category-card-list li:nth-child(3)',
+    //       '.category-card-list li:nth-child(4)',
+    //       '.category-card-list li:nth-child(5)',
+    //       '.category-card-list li:nth-child(6)',
+    //       '.category-card-list li:nth-child(1) .card-icon',
+    //       '.category-card-list li:nth-child(2) .card-icon',
+    //       '.category-card-list li:nth-child(3) .card-icon',
+    //       '.category-card-list li:nth-child(4) .card-icon',
+    //       '.category-card-list li:nth-child(5) .card-icon',
+    //       '.category-card-list li:nth-child(6) .card-icon',
+    //       '.category-card-list li:nth-child(1) .card-label',
+    //       '.category-card-list li:nth-child(2) .card-label',
+    //       '.category-card-list li:nth-child(3) .card-label',
+    //       '.category-card-list li:nth-child(4) .card-label',
+    //       '.category-card-list li:nth-child(5) .card-label',
+    //       '.category-card-list li:nth-child(6) .card-label',
+    //       '.card-button'
+    //     ],
+    //     delays: [
+    //       400, 550,
+    //       400, 550, 700, 950, 1100, 1250,
+    //       1400, 1550, 1700, 1950, 2100, 2250,
+    //       1400, 1550, 1700, 1950, 2100, 2250,
+    //       3250
+    //     ]
+    //   },
+    //   onExit: {
+    //     css_classes: [
+    //       'fadeOut', 'fadeOut',
+    //       'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown',
+    //       'bounceOutDown'
+    //     ],
+    //     selectors: [
+    //       '.splash-categories-header',
+    //       '.splash-categories-subheader',
+    //       '.category-card-list li:nth-child(1)',
+    //       '.category-card-list li:nth-child(2)',
+    //       '.category-card-list li:nth-child(3)',
+    //       '.category-card-list li:nth-child(4)',
+    //       '.category-card-list li:nth-child(5)',
+    //       '.category-card-list li:nth-child(6)',
+    //       '.card-button'
+    //     ],
+    //     delays: [
+    //       400, 550,
+    //       400, 550, 700, 950, 1100, 1250,
+    //       2250
+    //     ]
+    //   }
+    // }
 
     $scope.page.animations.profiles = {
       viewed: false,
@@ -464,7 +464,7 @@ angular.module('uguru.util.controllers')
           ionSlideOne.classList.add('show-slide');
           $scope.$apply();
 
-      }, 5000)
+      }, 0)
 
       }
       $scope.university = {}
@@ -1057,7 +1057,9 @@ angular.module('uguru.util.controllers')
         $scope.page.counters['num-course-counter'] = CounterService.initCounter('num-course-counter', 1.0, parseInt(totalCourses / 1000), 5, 'K');
         $scope.page.counters['num-guru-counter'] = CounterService.initCounter('num-guru-counter', 1.0, 1130, 5);
         //@samir - todo, implement when scroll down to the section
-        initiateCounters();
+        $timeout(function() {
+          initiateCounters();
+      }, 500)
       }
 
 
@@ -1404,7 +1406,9 @@ angular.module('uguru.util.controllers')
         if (!$scope.map.og_map) {
           $scope.mapHasRendered = true;
           $scope.map.og_map = map;
-          console.log('map has finalled rendered');
+          $scope.page.load.complete = true;
+          document.querySelector('#splash-university').classList.add('show-map');
+          console.log('map has finally rendered');
         }
       }
 
