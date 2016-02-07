@@ -25,13 +25,14 @@ angular.module('uguru.util.controllers', ['sharedServices'])
 		'$ionicSideMenuDelegate',
 		'LoadingService',
 		'$localstorage',
+    'CardService',
 		AddUniversityCtrl
 	]);
 
 function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $ionicViewSwitcher,
   Geolocation, Utilities, $ionicSlideBoxDelegate, DeviceService, uTracker, $q,
   AnimationService, PerformanceService, $templateCache, AccessService, $ionicModal, ModalService,
-  $controller, MapService, $ionicSideMenuDelegate, LoadingService, $localstorage) {
+  $controller, MapService, $ionicSideMenuDelegate, LoadingService, $localstorage, CardService) {
 
   $scope.storedAccess = !AccessService.validate();
 
@@ -240,11 +241,18 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   };
 
   $scope.toggleLocationIconAppearance = function() {
-    Geolocation.getLocation($scope, $scope.source, function(results) {
-      $timeout(function() {
-        $scope.listScope = results;
-      }, 0);
-    }, DeviceService.isIOSDevice());
+    // Geolocation.getLocation($scope, $scope.source, function(results) {
+    //   $timeout(function() {
+    //     $scope.listScope = results;
+    //   }, 0);
+    // }, DeviceService.isIOSDevice());
+      if(DeviceService.doesCordovaExist()) {
+        CardService.open();
+        return;
+      } else {
+        alert('cordova does not exist -- use android/ios native context plz')
+        return;
+      }
 
     if (Geolocation.settings.isAllowed === null || Geolocation.settings.isAllowed === false) {
       console.log("refreshing universities for location!");
