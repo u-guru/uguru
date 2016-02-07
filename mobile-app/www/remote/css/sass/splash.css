@@ -2380,6 +2380,12 @@
   display: block;
 }
 
+@media screen and (min-width: 768px) {
+  .splash-landing > section.splash-categories > .main#how-it-works header {
+    padding-top: 100px;
+  }
+}
+
 .splash-landing > section.splash-categories > .main#splash-livemap {
   height: 600px;
 }
@@ -3090,15 +3096,18 @@
     font-size: 28px;
   }
   .splash-landing > section.splash-categories > .main > div > h2, .splash-landing > section.splash-categories > .main > div > div > h2 {
-    margin: 5px auto 22.5px;
+    margin: 5px auto -7.5px;
     font-size: 20px;
   }
-  .splash-landing > section.splash-categories > .main > div > div {
+  .splash-landing > section.splash-categories > .main > div > div:not(.flex-wrap-center) {
     -webkit-align-self: flex-start;
     align-self: flex-start;
   }
+  .splash-landing > section.splash-categories > .main > div > div:not(.flex-wrap-center):first-child {
+    padding-top: 115px;
+  }
   .splash-landing > section.splash-categories > .main .category-card-list {
-    margin: -15px 0 0;
+    margin: 15px 0 0;
   }
   .splash-landing > section.splash-categories > .main .category-card-list li {
     padding: 15px;

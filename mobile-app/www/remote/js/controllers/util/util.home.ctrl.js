@@ -115,8 +115,23 @@ angular.module('uguru.util.controllers')
     //     beforeScroll: null,
     //     firstViewed: {
     //       css_classes: ['fadeIn', 'bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'fadeIn'],
-    //       selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', '.hiw-postit-li:nth-child(2) .tape:nth-child(1)', '.hiw-postit-li:nth-child(2) .tape:nth-child(2)', '.hiw-postit-li:nth-child(3) .tape:nth-child(2)', '.hiw-postit-li:nth-child(4) .tape:nth-child(1)', '.hiw-postit-li:nth-child(4) .tape:nth-child(2)', '.how-it-works-button'],
-    //       delays: [400, 500, 600, 700, 800, 900, 1000, 2000, 2000, 2000, 2000, 2000, 2500],
+    //       selectors: [
+    //           '.how-it-works-header',
+    //           '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)',
+    //           '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)',
+    //           '.hiw-postit-li:nth-child(2) .tape:nth-child(1)',
+    //           '.hiw-postit-li:nth-child(2) .tape:nth-child(2)',
+    //           '.hiw-postit-li:nth-child(3) .tape:nth-child(2)',
+    //           '.hiw-postit-li:nth-child(4) .tape:nth-child(1)',
+    //           '.hiw-postit-li:nth-child(4) .tape:nth-child(2)',
+    //           '.how-it-works-button'
+    //       ],
+    //       delays: [
+    //           400,
+    //           500, 600, 700, 800, 900, 1000,
+    //           2000, 2000, 2000, 2000, 2000,
+    //           2500
+    //       ],
     //     },
     //     secondViewed: {
     //       css_classes: ['fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn'],

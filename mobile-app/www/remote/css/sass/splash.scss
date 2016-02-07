@@ -1699,6 +1699,13 @@
 					@include opacity(1);
 					display: block;
 				}
+				&#how-it-works {
+					@media screen and (min-width: 768px) {
+						header {
+							padding-top: 100px;
+						}
+					}
+				}
 				&#splash-livemap {
 					height: 600px;
 				}
@@ -2259,16 +2266,19 @@
 							font-size: 28px;
 						}
 						> h2, > div > h2 {
-							margin: 5px auto 22.5px;
+							margin: 5px auto -7.5px;
 							font-size: 20px;
 						}
-						> div {
+						> div:not(.flex-wrap-center) {
 							-webkit-align-self: flex-start;
 							align-self: flex-start;
+							&:first-child {
+								padding-top: 115px;
+							}
 						}
 					}
 					.category-card-list {
-						margin: -15px 0 0;
+						margin: 15px 0 0;
 						li {
 							padding: 15px;
 							&:empty {
