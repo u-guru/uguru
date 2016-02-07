@@ -261,6 +261,7 @@ gulp.task('scripts', function() {
       'lib/fastMatcher.js',
       'lib/facebook/openfb.js',
       'lib/scroll/waypoints.min.js',
+      'lib/scroll/iscroll.js',
       'lib/facebook/ngopenfb.js',
       'lib/facebook/facebookConnectPlugin.js',
       'lib/facebook/*.js',

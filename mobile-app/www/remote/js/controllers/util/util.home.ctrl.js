@@ -115,8 +115,23 @@ angular.module('uguru.util.controllers')
     //     beforeScroll: null,
     //     firstViewed: {
     //       css_classes: ['fadeIn', 'bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'fadeIn'],
-    //       selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', '.hiw-postit-li:nth-child(2) .tape:nth-child(1)', '.hiw-postit-li:nth-child(2) .tape:nth-child(2)', '.hiw-postit-li:nth-child(3) .tape:nth-child(2)', '.hiw-postit-li:nth-child(4) .tape:nth-child(1)', '.hiw-postit-li:nth-child(4) .tape:nth-child(2)', '.how-it-works-button'],
-    //       delays: [400, 500, 600, 700, 800, 900, 1000, 2000, 2000, 2000, 2000, 2000, 2500],
+    //       selectors: [
+    //           '.how-it-works-header',
+    //           '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)',
+    //           '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)',
+    //           '.hiw-postit-li:nth-child(2) .tape:nth-child(1)',
+    //           '.hiw-postit-li:nth-child(2) .tape:nth-child(2)',
+    //           '.hiw-postit-li:nth-child(3) .tape:nth-child(2)',
+    //           '.hiw-postit-li:nth-child(4) .tape:nth-child(1)',
+    //           '.hiw-postit-li:nth-child(4) .tape:nth-child(2)',
+    //           '.how-it-works-button'
+    //       ],
+    //       delays: [
+    //           400,
+    //           500, 600, 700, 800, 900, 1000,
+    //           2000, 2000, 2000, 2000, 2000,
+    //           2500
+    //       ],
     //     },
     //     secondViewed: {
     //       css_classes: ['fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn'],
@@ -1282,12 +1297,12 @@ angular.module('uguru.util.controllers')
           for (var i = 0; i < allClusterElems.length; i++) {
             var indexCluster = allClusterElems[i];
             indexCluster.classList.add('opacity-0');
-            indexCluster.setAttribute("anim-on-show-child", "");
-            indexCluster.setAttribute("anim-on-show-class", "bounceInUp");
-            indexCluster.setAttribute("anim-on-show-delay", 1500 + (i * 50) + "");
+            indexCluster.setAttribute("anim-first-enter-down-child", "");
+            indexCluster.setAttribute("anim-first-enter-down-class", "bounceInUp");
+            indexCluster.setAttribute("anim-first-enter-down-delay", 1500 + (i * 50) + "");
             $compile(indexCluster)($scope);
           }
-        })
+        }, 1000)
       }
 
       function setPulseClusters(selector) {
@@ -1295,9 +1310,8 @@ angular.module('uguru.util.controllers')
           var allClusterElems = document.querySelectorAll(selector) || [];
           for (var i = 0; i < allClusterElems.length; i++) {
             var indexCluster = allClusterElems[i];
-            indexCluster.classList.add('opacity-0');
-            indexCluster.setAttribute("anim-on-show-child", "");
-            indexCluster.setAttribute("anim-on-show-class", "pulse, pulse, pulse");
+            indexCluster.setAttribute("anim-first-enter-down-child", "");
+            indexCluster.setAttribute("anim-first-enter-down-class", "pulse, pulse, pulse");
             $compile(indexCluster)($scope);
           }
         })
@@ -1419,7 +1433,9 @@ angular.module('uguru.util.controllers')
         if (!$scope.map.og_map) {
           $scope.mapHasRendered = true;
           $scope.map.og_map = map;
-          $scope.page.load.complete = true;
+          $timeout(function() {
+            $scope.page.load.complete = true;
+          }, 2000);
           document.querySelector('#splash-university').classList.add('show-map');
           console.log('map has finally rendered');
         }

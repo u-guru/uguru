@@ -110,6 +110,19 @@ function GUtilService($timeout) {
     return marker;
   }
 
+  function generateStaticMapUrls(uni_arr, options) {
+    var API_KEY = "AIzaSyAIonm682hyuTYUjpQ0rWYVvBbY4ES1D-Y"
+    for (var i = 0; i < uni_arr.length; i++) {
+      var indexUni = uni_arr[i];
+      indexUni.static_map_url = getStaticMapUriForUniversityObj(indexUni, options.zoom, options.map_type, options.size, options.scale);
+    }
+    return uni_arr;
+  }
+
+  function getStaticMapUriForUniversityObj(uni, zoom, maptype, size, scale, api_key) {
+    return "https://maps.googleapis.com/maps/api/staticmap?center=" + uni.latitude + ',' +  uni.longitude + "&zoom=" + zoom + "&size=" + size + "&scale=" + scale + "maptype=" + maptype  // + "&key=" + api_key || ""
+  }
+
   var getRelevantIcon = function(color_one, color_two, g_types) {
     // https://developers.google.com/maps/documentation/javascript/reference?hl=en#Symbol
     //rotation, scale, stroke color, stroke opacity, stroke weight, path, label origin, fillOpacity, fillColor, anchor
@@ -266,7 +279,8 @@ function GUtilService($timeout) {
     initPlacesService:initPlacesService,
     getNearestLocationOneMarker: getNearestLocationOneMarker,
     getNearestLocationManyMarkers: getNearestLocationManyMarkers,
-    initSeveralMarkersWithLabel: initSeveralMarkersWithLabel
+    initSeveralMarkersWithLabel: initSeveralMarkersWithLabel,
+    generateStaticMapUrls: generateStaticMapUrls
   }
 
 }

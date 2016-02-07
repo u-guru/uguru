@@ -14,17 +14,6 @@ angular.module('uguru.directives')
        }
     }
 })
-.directive('onImgLoad', function() {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attrs) {
-            element.bind('load', function() {
-                //call the function that was passed
-                scope.$apply(attrs.onImgLoad);
-            });
-        }
-    };
-})
 .directive('bgImage', function () {
     return {
         restrict: 'A',
@@ -53,7 +42,10 @@ directive("animEnterDown", ["AnimationService", "$timeout", function (AnimationS
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
-
+            if (!scope.page.waypoints[attr.animEnterDown]) {
+                scope.page.waypoints[attr.animEnterDown] = {};
+            }
+            console.log('anim exit down value has changed');
             $timeout(function() {
               scope.$watch('page.waypoints.' + attr.animEnterDown + '.activated', function(isActive) {
                 var hasFirstTimeEnter = scope.page.waypoints[attr.animEnterDown].hasFirstTimeEnter;
@@ -70,16 +62,22 @@ directive("animEnterUp", ["AnimationService", "$timeout", function (AnimationSer
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
-
-            $timeout(function() {
-              scope.$watch('page.waypoints.' + attr.animEnterUp + '.activated', function(isActive) {
-                var hasFirstTimeEnter = scope.page.waypoints[attr.animEnterUp].hasFirstTimeEnter;
-                var firstTimeActivated = scope.page.waypoints[attr.animEnterUp].firstTimeEnterActivated;
-                if (isActive && scope.page.waypoints[attr.animEnterUp].direction === 'down' && (!hasFirstTimeEnter || firstTimeActivated)) {
-                  AnimationService.applyAnimateInDirective(element[0], 'enter-down');
-                }
-              })
-            }, 100);
+            var wpTriggerArgs = attr.animEnterUp.split(', ');
+            for (var i = 0; i < wpTriggerArgs.length; i++) {
+              indexAttrAnimEnterUp = wpTriggerArgs[i];
+              if (!scope.page.waypoints[attr.animEnterUp]) {
+                scope.page.waypoints[indexAttrAnimEnterUp] = {};
+              }
+              $timeout(function() {
+                scope.$watch('page.waypoints.' + indexAttrAnimEnterUp + '.activated', function(isActive) {
+                  var hasFirstTimeEnter = scope.page.waypoints[indexAttrAnimEnterUp].hasFirstTimeEnter;
+                  var firstTimeActivated = scope.page.waypoints[indexAttrAnimEnterUp].firstTimeEnterActivated;
+                  if (isActive && scope.page.waypoints[indexAttrAnimEnterUp].direction === 'down' && (!hasFirstTimeEnter || firstTimeActivated)) {
+                    AnimationService.applyAnimateInDirective(element[0], 'enter-up');
+                  }
+                })
+              }, 100);
+            }
           }
       };
 }]).
@@ -87,12 +85,17 @@ directive("animFirstEnterDown", ["AnimationService", "$timeout", function (Anima
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
+            console.log(element[0].attributes);
             $timeout(function() {
+              if (!scope.page.waypoints[attr.animFirstEnterDown]) {
+                scope.page.waypoints[attr.animFirstEnterDown] = {};
+              }
               scope.page.waypoints[attr.animFirstEnterDown].hasFirstTimeEnter = true;
               scope.$watch('page.waypoints.' + attr.animFirstEnterDown + '.direction', function(isActive) {
+                console.log(element[0], 'activated for first time enter down');
                 var direction = scope.page.waypoints[attr.animFirstEnterDown].direction;
                 var firstTimeActivated = scope.page.waypoints[attr.animFirstEnterDown].firstTimeEnterActivated;
-                if (isActive &&  direction === 'down' && !firstTimeActivated) {
+                if ((isActive &&  direction === 'down' && !firstTimeActivated)) {
                   scope.page.waypoints[attr.animFirstEnterDown].firstTimeEnterActivated = true;
                   AnimationService.applyAnimateInDirective(element[0], 'first-enter-down');
                 }
@@ -105,9 +108,12 @@ directive("animExitUp", ["AnimationService", "$timeout", function (AnimationServ
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
+            if (!scope.page.waypoints[attr.animExitUp]) {
+              scope.page.waypoints[attr.animExitUp] = {};
+            }
             $timeout(function() {
               scope.$watch('page.waypoints.' + attr.animExitUp + '.direction', function(isActive) {
-                console.log('anim exit up value has changed');
+
                 var hasFirstTimeEnter = scope.page.waypoints[attr.animExitUp].hasFirstTimeEnter;
                 var firstTimeActivated = scope.page.waypoints[attr.animExitUp].firstTimeEnterActivated;
                 if (isActive && scope.page.waypoints[attr.animExitUp].direction === 'up' && (!hasFirstTimeEnter || firstTimeActivated)) {
@@ -152,6 +158,9 @@ directive("animOnHide", ["AnimationService", "$timeout", function (AnimationServ
                     if (element.hasClass('show') || (attr.animOnHide && attr.animOnHide.length && element.hasClass(attr.animOnHide))) {
                       AnimationService.applyAnimateOutDirective(element[0], 'on-hide');
                     }
+                    // else if (attr.animOnShow && attr.animOnShow.length && attr.animOnHide && attr.animOnHide.length === 0) {
+                    //   AnimationService.applyAnimateOutDirective(element[0], 'on-hide');
+                    // }
                 });
               })
           }
@@ -164,7 +173,8 @@ directive("animOnShow", ["AnimationService", "$timeout", function (AnimationServ
               $timeout(function() {
                 scope.$watch(function() {return element.attr('class'); }, function(newValue){
                   console.log('animOnShow triggered', newValue, element.hasClass(attr.animOnShow));
-                  if (element.hasClass('show') || (attr.animOnShow && attr.animOnShow.length && element.hasClass(attr.animOnShow))) {
+                  if (element.hasClass('show') || (attr.animOnShow && attr.animOnShow.length
+                    && element.hasClass(attr.animOnShow) && (attr.animOnShow === attr.animOnHide || !element.hasClass(attr.animOnHide)))) {
                     AnimationService.applyAnimateInDirective(element[0], 'on-show');
                   }
                 });
@@ -189,6 +199,9 @@ directive("bindWp", ['$timeout', function ($timeout) {
                 }
 
                 scope.$watch('page.waypoints.' + attr.bindWp + '.activated', function(isActive) {
+                  if (!scope.page.waypoints[attr.bindWp]) {
+                    scope.page.waypoints[attr.bindWp] = {};
+                  }
                   var direction = scope.page.waypoints[attr.bindWp].direction;
                   for (var i = 0; i < classNames.length; i++) {
                     var indexClassName = classNames[i];

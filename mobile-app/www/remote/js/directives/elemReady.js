@@ -62,18 +62,22 @@ directive("animEnterUp", ["AnimationService", "$timeout", function (AnimationSer
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
-            if (!scope.page.waypoints[attr.animEnterUp]) {
-                scope.page.waypoints[attr.animEnterUp] = {};
+            var wpTriggerArgs = attr.animEnterUp.split(', ');
+            for (var i = 0; i < wpTriggerArgs.length; i++) {
+              indexAttrAnimEnterUp = wpTriggerArgs[i];
+              if (!scope.page.waypoints[attr.animEnterUp]) {
+                scope.page.waypoints[indexAttrAnimEnterUp] = {};
               }
-            $timeout(function() {
-              scope.$watch('page.waypoints.' + attr.animEnterUp + '.activated', function(isActive) {
-                var hasFirstTimeEnter = scope.page.waypoints[attr.animEnterUp].hasFirstTimeEnter;
-                var firstTimeActivated = scope.page.waypoints[attr.animEnterUp].firstTimeEnterActivated;
-                if (isActive && scope.page.waypoints[attr.animEnterUp].direction === 'down' && (!hasFirstTimeEnter || firstTimeActivated)) {
-                  AnimationService.applyAnimateInDirective(element[0], 'enter-down');
-                }
-              })
-            }, 100);
+              $timeout(function() {
+                scope.$watch('page.waypoints.' + indexAttrAnimEnterUp + '.activated', function(isActive) {
+                  var hasFirstTimeEnter = scope.page.waypoints[indexAttrAnimEnterUp].hasFirstTimeEnter;
+                  var firstTimeActivated = scope.page.waypoints[indexAttrAnimEnterUp].firstTimeEnterActivated;
+                  if (isActive && scope.page.waypoints[indexAttrAnimEnterUp].direction === 'down' && (!hasFirstTimeEnter || firstTimeActivated)) {
+                    AnimationService.applyAnimateInDirective(element[0], 'enter-up');
+                  }
+                })
+              }, 100);
+            }
           }
       };
 }]).
@@ -91,7 +95,7 @@ directive("animFirstEnterDown", ["AnimationService", "$timeout", function (Anima
                 console.log(element[0], 'activated for first time enter down');
                 var direction = scope.page.waypoints[attr.animFirstEnterDown].direction;
                 var firstTimeActivated = scope.page.waypoints[attr.animFirstEnterDown].firstTimeEnterActivated;
-                if ((isActive &&  direction === 'down' && (!firstTimeActivated || element[0].attributes))) {
+                if ((isActive &&  direction === 'down' && !firstTimeActivated)) {
                   scope.page.waypoints[attr.animFirstEnterDown].firstTimeEnterActivated = true;
                   AnimationService.applyAnimateInDirective(element[0], 'first-enter-down');
                 }

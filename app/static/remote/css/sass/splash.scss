@@ -418,7 +418,6 @@
 		z-index: 98;
 		width: 100%;
 		background: rgba(white,.9);
-		@include opacity(0);
 		&.animated {
 			@include opacity(1);
 		}
@@ -1139,6 +1138,7 @@
 						z-index: 10;
 					}
 					.splash-scene-markers {
+						display: none;
 						z-index: 11;
 						.splash-marker {
 							@include flex;
@@ -1519,7 +1519,7 @@
 						.splash-scene-img:not(.opacity-0) {
 							@include opacity(1);
 						}
-						.splash-scene-prop-desktop {
+						.splash-scene-markers, .splash-scene-prop-desktop {
 							display: block!important;
 						}
 						.splash-scene-header {
@@ -1698,6 +1698,13 @@
 				&.active {
 					@include opacity(1);
 					display: block;
+				}
+				&#how-it-works {
+					@media screen and (min-width: 768px) {
+						header {
+							padding-top: 100px;
+						}
+					}
 				}
 				&#splash-livemap {
 					height: 600px;
@@ -2259,16 +2266,19 @@
 							font-size: 28px;
 						}
 						> h2, > div > h2 {
-							margin: 5px auto 22.5px;
+							margin: 5px auto -7.5px;
 							font-size: 20px;
 						}
-						> div {
+						> div:not(.flex-wrap-center) {
 							-webkit-align-self: flex-start;
 							align-self: flex-start;
+							&:first-child {
+								padding-top: 115px;
+							}
 						}
 					}
 					.category-card-list {
-						margin: -15px 0 0;
+						margin: 15px 0 0;
 						li {
 							padding: 15px;
 							&:empty {
@@ -3125,7 +3135,7 @@
 				}
 			}
 		}
-		
+
 		// BECOME A GURU
 		.become-guru-button {
 			@include opacity(0);
@@ -3784,13 +3794,13 @@
 		> .splash-header {
 			&:before {
 				@include transition(.15s ease-in-out);
-				@include opacity(.75);
-				background: $shamrock;
+				@include opacity(.90);
+				background: lighten($charcoal, 15%);
 			}
 			&.bg-charcoal {
 				background: none!important;
 				&:before {
-					@include opacity(.95);
+					@include opacity(1);
 					background: lighten($charcoal, 15%);
 				}
 			}
