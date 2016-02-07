@@ -44,8 +44,8 @@ function ScrollService(LoadingService, $timeout) {
     stickyScroll();
   }
 
-    function initIScroll(selector) {
-      return new IScroll(selector);
+    function initIScroll(selector, options) {
+      return new IScroll(selector, options);
     }
 
     // function initStellar(selector,) {

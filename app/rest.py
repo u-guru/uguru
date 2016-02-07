@@ -1679,11 +1679,17 @@ class FileView(restful.Resource):
         # user = get_user(user_id)
         # if not user:
         #     abort(404)
+        from pprint import pprint
+
         print request.headers
         file = request.files.get('file')
         file_string= request.values.get('file')
-        filename = 'jpeg'
-
+        file_name = request.values.get('filename')
+        file_size = request.values.get('filesize')
+        file_type = request.values.get('filetype')
+        user_id = request.values.get('user_id')
+        if user_id:
+            user_id = int(user_id)
 
         import base64
         if file and not file_string:
@@ -1699,6 +1705,11 @@ class FileView(restful.Resource):
             s3_bucket = app.config['S3_BUCKET']
 
             file_obj = File.initEmptyFile()
+            file_obj.name = file_name
+            file_obj.size = file_size
+            file_obj.type = file_type
+            file_obj.user_id = user_id
+
             file_string_base64 = base64.urlsafe_b64decode(file_string.encode("utf-8"))
             file_extension = imghdr.what(None,file_string_base64)
             file_name = 'request_file_id_' + str(file_obj.id) + '.png'

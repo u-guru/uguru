@@ -112,7 +112,7 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
   function initStudentForm(slide_box, scope, lat, long, color) {
     console.log('subcategories', Category.getAcademic());
     $timeout(function() {
-      FileService.initDropzoneFromSelector('#request-form-file-uploader');
+      FileService.initDropzoneFromSelector('#request-form-file-uploader', scope);
     }, 1000)
     return {
       course: null,

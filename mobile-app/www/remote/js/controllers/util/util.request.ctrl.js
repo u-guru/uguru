@@ -27,7 +27,7 @@ angular.module('uguru.util.controllers')
     uiGmapGoogleMapApi, SearchboxService, GMapService, $ionicSlideBoxDelegate,
     GUtilService) {
 
-    $scope.request = RequestService.initStudentForm();
+    // $scope.request = RequestService.initStudentForm();
 
     $scope.maxHourArr = RequestService.getMaxNumHourArr();
     $scope.search_text = {

@@ -478,7 +478,13 @@ angular.module('uguru.util.controllers')
 
           $scope.root.loader.body.hide = true;
           $scope.page.scroll.section_index = 0;
-
+          $timeout(function() {
+            console.log(document.querySelector('#iscroll-wrapper'));
+            $scope.homePageScroll = ScrollService.initIScroll('#iscroll-wrapper', {snap: 'section'});
+            setInterval(function() {
+              console.log($scope.homePageScroll.y, 'scroller position');
+            }, 1000)
+          }, 5000)
 
           initSlideBoxRemote();
           Waypoint.refreshAll();
@@ -737,7 +743,6 @@ angular.module('uguru.util.controllers')
 
       $scope.$on('$ionicView.loaded', function() {
         processDomWaypoints();
-        $scope.homePageScroll = ScrollService.initIScroll('#home-splash');
       })
 
       var initHomePageWayPoint = function() {

@@ -2,9 +2,9 @@
 
 <!-- <ion-view> -->
 <!-- <ion-content overflow-scroll='true' class='full-xy'> -->
-<div class='full-xy'>
+<div class='relative' id='iscroll-wrapper' style='height:calc(100%); width:calc(100%); overflow:hidden !important;'>
 
-	<main id='home-splash' class='splash-landing hs-view full-xy' style='height:calc(100% + 1px);' init-wp-parent on-elem-loaded>
+	<main id='home-splash' class='splash-landing hs-view full-xy'  init-wp-parent on-elem-loaded>
 
 		<!-- START Home Page CTAs -->
 
@@ -81,7 +81,7 @@
 
 		<!-- END Home Page CTAS -->
 
-		<header class='splash-header fixed top-0' id='home-nav-header' bind-wp="university" bind-wp-class="bg-charcoal" bind-wp-direction="down">
+		<header class='splash-header fixed top-0 high-z-index' id='home-nav-header' bind-wp="university" bind-wp-class="bg-charcoal" bind-wp-direction="down">
 			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
 			<div class="ugrid-3">
 				<a name='browse-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 1}" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
@@ -161,7 +161,6 @@
 				</svg>
 			</a>
 		</div>
-
 		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' style='height:calc(100%);'>
 			<ion-slide-box class='splash-scene' on-slide-changed="topHomeSlider.onChange($index)" show-pager='false' delegate-handle='splash-hero-home' does-continue="true">
 				<ion-slide id="splash-baking" anim-on-show-parent anim-on-show="show-slide-{{topHomeSlider.index}}" anim-on-hide-parent anim-on-hide="show-slide-{{topHomeSlider.index}}" class='show-slide-0'>
@@ -984,7 +983,7 @@
 			</footer>
 		</section>
 
-		<section init-wp="hiw, hiw_enter, hiw_exit, hiw_nav" wp-offset="106, 20%, 70, 106" class='splash-categories' id='splash-browse' anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw">
+		<section init-wp="hiw, hiw_enter, hiw_exit, hiw_nav" wp-offset="106, 20%, 70, 106" class='splash-categories' id='splash-browse' bind-wp="bg_enter" bind-wp-class="high-z-index" anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw">
 			<div id='how-it-works' class="hiw-subheader-nav-content main splash-postit ng-class:{'active':activeBrowseTabIndex===0}" anim-on-show-parent anim-on-show="active" anim-on-hide-parent anim-on-hide="transitioning" anim-on-hide-debounce="2000">
 				<header>
 					<h1 class="how-it-works-header opacity-0" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="400" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="400" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">{{::how_it_works.header}}</h1>
@@ -1332,6 +1331,7 @@
 				</ul>
 			</div>
 		</section>
+	</div>
 	</main>
 </div>
 <!-- </ion-content> -->

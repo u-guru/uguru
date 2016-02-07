@@ -127,11 +127,10 @@ angular.module('uguru.student.controllers', [])
             var parentRef = '#desktop-student-home'
             var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-student-request'];
             var cbOptions = {'#cta-box-student-request': triggerRequestFormCTA};
+            CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
             $timeout(function() {
-                CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
                 $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
-                $ionicSlideBoxDelegate.$getByHandle('request-form').enableSlide(false);
-                console.log($scope.requestForm.calendar);
+                // console.log($scope.requestForm.calendar);
             })
             //request form
             //student files
@@ -171,7 +170,6 @@ angular.module('uguru.student.controllers', [])
         }
 
         function triggerRequestFormCTA() {
-
             $scope.disableSwipe = function(handle) {
                 $ionicSlideBoxDelegate.$getByHandle(handle).enableSlide(false)
                 // $ionicSlideBoxDelegate.$getByHandle(handle).stop();
@@ -180,7 +178,7 @@ angular.module('uguru.student.controllers', [])
                 time = time || 250;
                 $ionicSlideBoxDelegate.slide(index, time);
             }
-            $scope.requestForm = $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
+            $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
             updateSlideBoxContainer();
             $timeout(function() {
                 $scope.disableSwipe('request-form');

@@ -26,9 +26,10 @@
 			<input class='chip tag-add' ng-model='newRequest.info.empty_tag.name' ng-blur='addRequestTagAndInitEmpty($event, "blur")' ng-keyup="$event.keyCode == 13 && addRequestTagAndInitEmpty($event)" placeholder="+&nbsp;&nbsp;add a tag" size="{{newRequest.info.empty_tag.name.length || 10}}">
 		</div>
 	</div>
-	<div class='attachment-container'>
-		<div class='attachment-list flex-wrap-center relative'>
-			<div id="preview-template" style="display: none;">
+	<div class='attachment-container ugrid-3 relative'>
+		<div>{{requestForm.files.length}} files uploaded </div>
+		<div class='file-attach-container'>
+			<div id="preview-template" style="display: none;" style='min-height:50px; min-width: 50px;'>
 				<div class="dz-preview dz-file-preview">
 				  <div class="dz-details">
 				    <div class="dz-filename"><span data-dz-name></span></div>
@@ -41,8 +42,10 @@
 				  <div class="dz-error-message"><span data-dz-errormessage></span></div>
 				</div>
 			</div>
-			<div id='request-form-file-uploader' class='full-xy absolute top-0 left-0 dropzone' style='min-height:250px !important;'>
+			<div id='request-form-file-uploader' class='dropzone' >
 			</div>
+		</div>
+	</div>
 					<!-- <ul style='height:125px'>
 						<li class='full-y'>
 							<div class="attach-upload-file attach-upload-doc">
@@ -102,6 +105,5 @@
 							</div>
 						</li>
 					</ul> -->
-				</div>
-			</div>
+
 </section>
