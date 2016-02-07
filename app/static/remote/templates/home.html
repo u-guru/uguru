@@ -164,7 +164,7 @@
 
 		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' bg-image="{{page.css.bg_banner}}" bg-image-has-loaded="page.load.sections.one.ready()" style='height:calc(100%);'>
 			<ion-slide-box class='splash-scene' on-slide-changed="topHomeSlider.onChange($index)" show-pager='false' delegate-handle='splash-hero-home' does-continue="true">
-				<ion-slide id="splash-baking" anim-on-show-parent anim-on-show="show-slide-{{topHomeSlider.index}}" anim-on-hide-parent anim-on-hide="show-slide-{{topHomeSlider.index}}">
+				<ion-slide id="splash-baking" anim-on-show-parent anim-on-show="show-slide-{{topHomeSlider.index}}" anim-on-hide-parent anim-on-hide="show-slide-{{topHomeSlider.index}}" class='show-slide-0'>
 					<div class="splash-scene-img opacity-0" bg-image='{{img_base + BASE + "img/categories/hero/baking@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="10,10" anim-on-hide-child anim-on-hide-class="slideOutDown" anim-on-hide-delay="5000"></div>
 
 					<div class="opacity-0 splash-scene-map" anim-on-show-child anim-on-show-class="slideInDown" anim-on-show-delay="5000">
@@ -465,7 +465,7 @@
 						</li>
 					</ul>
 				</ion-slide>
-				<ion-slide id="splash-academic" anim-on-show-parent anim-on-show="show-slide" anim-on-hide-parent anim-on-hide="show-slide">
+				<ion-slide id="splash-academic" anim-on-show-parent anim-on-show="show-slide-{{topHomeSlider.index}}" anim-on-hide-parent anim-on-hide="show-slide-{{topHomeSlider.index}}">
 					<div class="splash-scene-img opacity-0" bg-image='{{img_base + BASE + "img/categories/hero/academic@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="10,10" anim-on-hide-child anim-on-hide-class="slideOutDown" anim-on-hide-delay="5000"></div>
 
 					<div class="opacity-0 splash-scene-map" anim-on-show-child anim-on-show-class="slideInDown" anim-on-show-delay="5000">
@@ -609,7 +609,7 @@
 						</li>
 					</ul>
 				</ion-slide>
-				<ion-slide id="splash-tech" anim-on-show-parent anim-on-show="show-slide" anim-on-hide-parent anim-on-hide="show-slide">
+				<ion-slide id="splash-tech" anim-on-show-parent anim-on-show="show-slide-{{topHomeSlider.index}}" anim-on-hide-parent anim-on-hide="show-slide-{{topHomeSlider.index}}">
 					<div class="splash-scene-img opacity-0" bg-image='{{img_base + BASE + "img/categories/hero/tech@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="10,10" anim-on-hide-child anim-on-hide-class="slideOutDown" anim-on-hide-delay="5000"></div>
 
 					<div class="opacity-0 splash-scene-map" anim-on-show-child anim-on-show-class="slideInDown" anim-on-show-delay="5000">
@@ -1220,7 +1220,7 @@
 			</footer>
 		</section>
 
-		<section id='become-guru' init-wp="bg_enter, bg_nav" anim-first-enter-down-parent anim-first-enter-down="bg_enter" wp-offset="70, 106" class="splash-postit ng-class:{'hide':!page.load.sections.five.display}">
+		<section id='become-guru' init-wp="bg_enter, bg_nav" anim-first-enter-down-parent anim-first-enter-down="bg_enter" wp-offset="70, 66" class="splash-postit ng-class:{'hide':!page.load.sections.five.display}">
 			<header anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="200">
 				<h1 class="become-guru-header">{{::become_guru.header}}</h1>
 			</header>

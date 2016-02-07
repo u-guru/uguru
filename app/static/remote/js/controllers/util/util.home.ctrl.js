@@ -43,6 +43,11 @@ angular.module('uguru.util.controllers')
         nav: navHeight,
         sectionSneak: sectionSneakHeight
       }
+
+      $scope.topHomeSlider = {index: 0};
+      $timeout(function() {
+        $scope.$apply();
+      })
       //@gabrielle
       //read other options here https://developers.google.com/maps/documentation/static-maps/intro#MapTypes
       var staticMapOptions = {
@@ -483,7 +488,6 @@ angular.module('uguru.util.controllers')
 
 
           var ionSlideOne = document.querySelector('.splash-scene ion-slide');
-          ionSlideOne.classList.add('show-slide-0');
           $timeout(function() {
             $scope.$apply();
           })
@@ -533,9 +537,9 @@ angular.module('uguru.util.controllers')
             $scope.topHomeSlider.index = $index;
             for (var i = 0; i < ionSlides.length; i++) {
               var indexSlide = ionSlides[i];
-              indexSlide.classList.remove('show-slide-' + $index);
+              indexSlide.classList.remove('show-slide-' + i);
             }
-            ionSlides[$index].classList.add('show-slide');
+            ionSlides[$index].classList.add('show-slide-' + $index);
           },
           play: function() {
             $scope.topHomeSlider.paused = false;
