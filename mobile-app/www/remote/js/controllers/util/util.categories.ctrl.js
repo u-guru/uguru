@@ -30,7 +30,10 @@ angular.module('uguru.util.controllers')
       $scope.categories_img_base = img_base + 'remote/';
     }
 
-    $scope.showDesktopSubcategories = function (category) {
+    $scope.showDesktopSubcategories = function (category, requestForm) {
+      if (requestForm) {
+        requestForm.category = category;
+      }
       $scope.active_category = category;
       uTracker.track(tracker, 'Category Modal', {
         '$Category': category.name

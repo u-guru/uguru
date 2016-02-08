@@ -563,8 +563,9 @@ header#home-nav-header.splash-header,
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
-    height: calc(100% / 4);
-    background: #69B3A5 !important; }
+    height: calc(100% / 4); }
+    #request header.desktop-tab-header:not([class*="bg-"]) {
+      background: #69B3A5; }
     #request header.desktop-tab-header h1 {
       padding-bottom: 60px;
       font-size: 48px;
@@ -592,10 +593,24 @@ header#home-nav-header.splash-header,
     flex-flow: row wrap;
     height: calc(100% / 4 * 3);
     overflow: auto; }
+    #request main #cta-modal-request-courses {
+      z-index: 1000000 !important; }
+      #request main #cta-modal-request-courses main#desktop-courses {
+        height: auto !important; }
+        #request main #cta-modal-request-courses main#desktop-courses .desktop-search-header h1.invisible {
+          display: none !important; }
     #request main section {
       height: calc(100% - 104px) !important; }
       #request main section > * {
         width: 100%; }
+      #request main section#request-cta-details textarea::-webkit-input-placeholder {
+        color: rbga(#40484B, 0.5) !important; }
+      #request main section#request-cta-details textarea:-moz-placeholder {
+        color: rbga(#40484B, 0.5) !important; }
+      #request main section#request-cta-details textarea::-moz-placeholder {
+        color: rbga(#40484B, 0.5) !important; }
+      #request main section#request-cta-details textarea:-ms-input-placeholder {
+        color: rbga(#40484B, 0.5) !important; }
       #request main section#request-cta-map ui-gmap-google-map {
         height: calc(100%); }
       #request main section#request-cta-payment .offer-price-container {

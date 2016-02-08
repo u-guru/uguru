@@ -6,10 +6,13 @@ angular
     '$timeout',
     'LoadingService',
     'FileService',
+    'CTAService',
+    'uiGmapIsReady',
+    'GUtilService',
     RequestService
 	]);
 
-function RequestService(Category, CalendarService, $timeout, LoadingService, FileService) {
+function RequestService(Category, CalendarService, $timeout, LoadingService, FileService, CTAService, uiGmapIsReady, GUtilService) {
   var _types = {DEFAULT:0, QUICK_QA:1}
   var MAX_REQUEST_HOURS = 10;
   var requestCancelTimeout;
@@ -113,13 +116,17 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     console.log('subcategories', Category.getAcademic());
     $timeout(function() {
       FileService.initDropzoneFromSelector('#request-form-file-uploader', scope);
-    }, 1000)
+    }, 1000);
+    $timeout(function() {initGmapListener(scope, lat, long)});
     return {
       course: null,
+      addCourse: addCourseFromRequestForm,
       urgent: true,
-      subcategory: false,
-      description: false,
-      tags: [],
+      category: {name: "academic"},
+      subcategory: {},
+      setCategory: setRequestFormCategory,
+      description: {content: '', placeholder: 'add details about your request here', showSaved: showDescriptionTextareaSaved, maxLength: 500, saved:false},
+      tags: {list:[], add: addTagToRequestList, remove:removeTagFromTagList, showError:false, empty_tag: {placeholder:"+   add a tag", content: ''}},
       subcategory: {selected: null, options: Category.getAcademic()},
       files: [],
       payment_card: null,
@@ -138,7 +145,65 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       confirm: confirmRequest,
       cancel: cancelRequest,
     }
+
+    function showDescriptionTextareaSaved() {
+      scope.requestForm.description.saved = true;
+      $timeout(function() {
+        scope.requestForm.description.saved = false;
+      }, 2000)
+    }
+
+    function removeTagFromTagList(index) {
+      if (scope.requestForm.tags.list && scope.requestForm.tags.list.length) {
+        scope.requestForm.tags.list.splice(index, 1);
+      }
+    }
+
+    function initGmapListener(scope, lat, lng) {
+      uiGmapIsReady.promise(1).then(function(instances) {
+        if (instances.length === 1 && instances[0].map) {
+          var requestMap = instances[0].map;
+          var coords = {latitude: lat, longitude: lng};
+          var types =['library', 'school', 'establishment', 'sublocality', 'store', 'food', 'university', 'cafe'];
+          var radius = 500;
+          GUtilService.coordsToNearestPlace(requestMap, coords, scope.requestForm, types, radius);
+        }
+          // instances.forEach(function(inst) {
+          //     var map = inst.map;
+          //     var uuid = map.uiGmap_id;
+          //     var mapInstanceNumber = inst.instance; // Starts at 1.
+          // });
+      });
+    }
+
+    function addTagToRequestList($event) {
+      if (scope.requestForm.tags.list) {
+        var tagContent = scope.requestForm.tags.empty_tag.content;
+        if (tagContent.length > 3) {
+          scope.requestForm.tags.list.push({name: tagContent});
+          scope.requestForm.tags.empty_tag.content = '';
+        } else {
+          scope.requestForm.tags.showError = true;
+          $timeout(function() {
+            scope.requestForm.tags.showError = false;
+          }, 2500);
+        }
+      }
+    }
+
   }
+
+  function setRequestFormCategory(requestForm, subcategory) {
+    requestForm.subcategory = subcategory;
+    requestForm.subcategory.hex_color = requestForm.category.hex_color;
+    requestForm.nav.next();
+  }
+
+  function addCourseFromRequestForm() {
+    // initSingleCTA = function(boxSelector, parentSelector, show_callback)
+    CTAService.initSingleCTA("#cta-box-request-courses", "#request main.relative");
+  }
+
   return {
     initStudentForm:initStudentForm,
     getMaxNumHourArr: getMaxNumHourArr

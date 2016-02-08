@@ -682,7 +682,9 @@ header#home-nav-header.splash-header,
 		@include flex-center;
 		@include flex-wrap;
 		height: calc(100% / 4);
-		background: $shamrock !important;
+		&:not([class*="bg-"]) {
+			background: $shamrock;
+		}
 		h1 {
 			padding-bottom: 60px;
 			font-size: 48px;
@@ -706,11 +708,28 @@ header#home-nav-header.splash-header,
 		@include flex-wrap;
 		height: calc(100% / 4 * 3);
 		overflow: auto;
+		//all CTAs defined here
+		#cta-modal-request-courses {
+			z-index:1000000 !important;
+			main#desktop-courses {
+				height: auto !important;
+				.desktop-search-header h1.invisible {
+					display:none !important;
+				}
+			}
+		}
 		section {
 			//account for the footer button container, height 104px;
 			height:calc(100% - 104px) !important;
 			&>* {
 				width:100%;
+			}
+			&#request-cta-details {
+				textarea {
+					@include placeholder {
+						color: rbga($slate, 0.5) !important;
+					}
+				}
 			}
 			&#request-cta-map {
 				ui-gmap-google-map {

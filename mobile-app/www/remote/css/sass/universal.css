@@ -433,7 +433,7 @@
   padding: 0 30px !important; }
 
 /* ---------- REQUESTS */
-#request header:not(.desktop-header) {
+#request header:not(.desktop-header, [class*="bg-"]) {
   background: #69B3A5; }
 #request main {
   height: 100%; }

@@ -1,29 +1,44 @@
-<section class="request-slide full-xy text-center flex-wrap-center">
+<section class="request-slide full-xy text-center flex-wrap-center" id='request-cta-details'>
 	<div class="course-choose-container">
 		<div>
-			<h1 class='full-x text-center uppercase weight-600'> Select one of your courses  </h1>
+			<h1 class='full-x text-center uppercase weight-600'> Select one of your {{}} courses  </h1>
 			<div class='full-x p20xy text-center'>
 				<ul class='desktop-card-list full-x flex-wrap-center'>
-					<li class='course-item p20xy m10x weight-400' ng-class='{"bg-cerise": request.course.id === course.id, "bg-slate-50": request.course.id !== course.id}' ng-click='request.course = course' ng-repeat='course in user.student_courses'>
+					<li class='course-item p20xy m10x weight-400' ng-class='{"bg-cerise": requestForm.course.id === course.id, "bg-slate-50": request.course.id !== course.id}' ng-click='requestForm.course = course' ng-repeat='course in user.student_courses'>
 						{{course.short_name}}
 					</li>
-					<li class='course-item p20xy m10x bg-slate-50p weight-400' ng-click=''>
+					<li class='course-item p20xy m10x bg-slate-50p weight-400' ng-click='requestForm.addCourse()' id='cta-box-request-courses'>
 						Add One
 					</li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<div class='text-area-container flex-wrap-center p15x p20y'>
-		<textarea class="input-outline" rows="4" ng-model='newRequest.info.description' placeholder="Please provide as much detail as possible"></textarea>
+	<div class='text-area-container ugrid-3'>
+		<div>
+			<span class='hide text-right weight-700' ng-class='{"show": requestForm.description.saved }'>
+				<svg id="checkmark" class="loader" width="25px" height="25px" viewBox="0 0 100 100">
+				    <line fill='#40484B' stroke='#40484B' x1="39.71" x2="25" y1="67.65" y2="52.94"/>
+				    <line fill='#40484B' stroke='#40484B' x1="39.71" x2="75" y1="67.65" y2="32.35"/>
+				</svg>
+				saved
+			</span>
+			</div>
+		<div class='relative' style='min-height:150px;'>
+
+			<textarea class="full-xy absolute input-outline txt-charcoal" rows="4" ng-maxlength="requestForm.description.maxLength" ng-blur="requestForm.description.showSaved($scope)" ng-model='requestForm.description.content' placeholder="{{requestForm.description.placeholder}}"></textarea>
+
+			<small class='absolute weight-300 bottom-0 right-0 p05xy'>{{requestForm.description.maxLength - requestForm.description.content.length}}  characters remaining</small>
+		</div>
 	</div>
 	<div class='tags-container p15x p20y'>
 		<div class='tag-list full-x flex-wrap-center'>
-			<a class="chip tag-selected" ng-click='removeTagFromRequest($index, tag)' ng-repeat="tag in newRequest.info.tags">
+			<a class="chip tag-selected" ng-click='requestForm.tags.remove($index)' ng-repeat="tag in requestForm.tags.list">
 				<span>&times;&nbsp;&nbsp;</span>
 				<span>{{tag.name}}</span>
 			</a>
-			<input class='chip tag-add' ng-model='newRequest.info.empty_tag.name' ng-blur='addRequestTagAndInitEmpty($event, "blur")' ng-keyup="$event.keyCode == 13 && addRequestTagAndInitEmpty($event)" placeholder="+&nbsp;&nbsp;add a tag" size="{{newRequest.info.empty_tag.name.length || 10}}">
+			<input class='chip tag-add' ng-model='requestForm.tags.empty_tag.content' ng-blur='requestForm.tags.add()' ng-keyup="$event.keyCode == 13 && requestForm.tags.add()" placeholder="{{requestForm.tags.empty_tag.placeholder}}" size="{{requestForm.tags.empty_tag.content.length || 10}}">
+			<span class='hide' ng-class="{'show': requestForm.tags.showError}">Tags must have more than 3 characters</span>
 		</div>
 	</div>
 	<div class='attachment-container ugrid-3 relative'>

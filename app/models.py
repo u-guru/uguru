@@ -2189,7 +2189,7 @@ class File(Base):
     description = Column(String)
     url = Column(String)
     _type = Column(String)
-    size = Column(String)
+    size = Column(String) ## in Bytes TODO: change to integer or create column called size_bytes
     time_created = Column(String)
     time_updated = Column(String)
     name = Column(String)
