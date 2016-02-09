@@ -928,7 +928,7 @@
 			}
 		}
 
-		button {
+		button.default {
 			max-width: 100%;
 			background: white;
 			color: $shamrock;
@@ -1045,7 +1045,7 @@
 			}
 			.splash-scene-header {
 				height: auto!important;
-				top: 40px;
+				top: 10px;
 				left: 10px;
 				z-index: 12;
 				ul {
@@ -1212,6 +1212,59 @@
 						@include transition(.15s ease-in-out);
 						&:not(.opacity-0) {
 							@include opacity(.8);
+						}
+					}
+					.splash-scene-layout {
+						@include flex;
+						@include flex-center;
+						position: relative;
+						z-index: 9;
+						width: 100%;
+						height: 100%;
+						> div {
+							@include flex;
+							@include flex-wrap;
+							@include flex-center;
+							height: 100%;
+						}
+						button:not(.btn-ghost-white) {
+							height: 48px;
+							background: $cerise;
+							font-size: 18px;
+							font-weight: 600;
+						}
+						.splash-scene-device {
+							width: 40%;
+						}
+						.splash-scene-adlib {
+							width: 60%;
+							.splash-scene-adlib-statement {
+								width: 100%;
+								span {
+									display: inline-block;
+									padding: 0 7.5px;
+									width: 25%;
+								}
+							}
+							.splash-scene-adlib-options {
+								@include listless;
+								@include flex;
+								@include flex-wrap;
+								width: 100%;
+								padding: 7.5px;
+								li {
+									width: 25%;
+									padding: 7.5px;
+								}
+							}
+							.splash-scene-cta-buttons {
+								width: 100%;
+								margin: 15px auto;
+								button {
+									display: block;
+									margin: 15px auto;
+								}
+							}
 						}
 					}
 					[class*="splash-scene-prop"] {
@@ -1523,7 +1576,7 @@
 							display: block!important;
 						}
 						.splash-scene-header {
-							top: 70px;
+							top: 0;
 							left: 0;
 						}
 						.splash-scene-footer {
