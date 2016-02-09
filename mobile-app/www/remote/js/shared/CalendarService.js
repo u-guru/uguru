@@ -35,9 +35,16 @@ function CalendarService() {
       var formattedShortMonth = formattedLongMonth.slice(0,3)
       var dayDict = {hours: [], date: indexDate, day:indexDate.getDay(), dayLong: formattedLongDay, dayShort: formattedShortDay, month: indexDate.getMonth(), monthShort: formattedShortMonth, monthLong: formattedLongMonth};
       for (var j = 0; j < 24; j++) {
-        var hourIntervals = getFormattedHourIntervals(2, j);
+        var hourObjStart = (new Date(now)).setHours(j, 0, 0);
+        // hourObjStart.
+        var isAlreadyPast = (i === 0) && j <= now.getHours();
+        var hourObjEnd = (new Date(hourObjStart)).setHours(j + 1);
+        var hourIntervals = getFormattedHourIntervals(2, j, hourObjStart, isAlreadyPast);
         dayDict.hours.push({
           intervals: hourIntervals,
+          js_obj_start: hourObjStart,
+          already_past: isAlreadyPast,
+          js_obj_end: hourObjEnd,
           start_hour: hourIntervals[0].start_hour,
           formatted_start_hour: hourIntervals[0].formatted_start_hour,
           formatted_start_minute: hourIntervals[0].formatted_start_minute,
@@ -67,14 +74,18 @@ function CalendarService() {
       return ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][day_index];
     }
 
-    function getFormattedHourIntervals(num_intervals, index) {
+    function getFormattedHourIntervals(num_intervals, index, hour_obj, already_past) {
       var intervalSize = 60 / num_intervals | 0;
       var resultArr =[]
       for (var i = 0; i < num_intervals; i++)  {
+        var end_hour_obj = (new Date(hour_obj)).setHours(index + 1)
         var hour_result_dict = {
           start_hour: index,
+          already_past: already_past,
           end_hour: (index + 1) % 24,
           start_minute: intervalSize * i,
+          js_obj_start: (new Date(hour_obj)).setMinutes(intervalSize * i),
+          js_obj_end: (new Date(end_hour_obj)).setMinutes((intervalSize * (i + 1)) % 60),
           end_minute: (intervalSize * (i + 1)) % 60,
         }
         hour_result_dict.suffix = isAMorPM(index, hour_result_dict.start_minute, hour_result_dict.end_minute)

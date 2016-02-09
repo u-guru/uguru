@@ -405,7 +405,7 @@
 
 /* ---------- REQUESTS */
 #request {
-	header:not(.desktop-header) {
+	header:not(.desktop-header, [class*="bg-"]) {
 		background: $shamrock;
 	}
 	main {

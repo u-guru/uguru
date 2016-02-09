@@ -17,9 +17,11 @@ angular.module('uguru.student.controllers', [])
     '$localstorage',
     'TourService',
     'CTAService',
+    'RequestService',
     function($scope, $state, $ionicSideMenuDelegate, $ionicSlideBoxDelegate,
         DeviceService, $timeout, $ionicModal, GMapService, LoadingService,
-        $ionicViewSwitcher, AnimationService, $localstorage, TourService, CTAService) {
+        $ionicViewSwitcher, AnimationService, $localstorage, TourService,
+        CTAService, RequestService) {
 
 
         $scope.user.is_a_guru = false;
@@ -111,6 +113,11 @@ angular.module('uguru.student.controllers', [])
             if ($scope.desktopMode) {
                 //initialize CTAS
                 initAllCTAS();
+
+                //remove-later
+                $timeout(function() {
+                    $ionicSlideBoxDelegate.$getByHandle('request-form').stop();
+                }, 1000)
             }
         })
 
@@ -119,13 +126,12 @@ angular.module('uguru.student.controllers', [])
             //ngAnimate
             var parentRef = '#desktop-student-home'
             var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-student-request'];
-            var updateSlideBoxContainer = function() {
-                $ionicSlideBoxDelegate.update();
-            }
-            var cbOptions = {'#cta-box-student-request': updateSlideBoxContainer};
+            var cbOptions = {'#cta-box-student-request': triggerRequestFormCTA};
             $timeout(function() {
                 CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
-
+                $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
+                $ionicSlideBoxDelegate.$getByHandle('request-form').enableSlide(false);
+                console.log($scope.requestForm.calendar);
             })
             //request form
             //student files
@@ -151,12 +157,39 @@ angular.module('uguru.student.controllers', [])
             if (DeviceService.isIOSDevice()) {
                 DeviceService.ios.setStatusBarText($state.current.name);
             }
+            $scope.root.loader.body.hide = true;
         })
 
 
         $scope.$on('$ionicView.enter', function() {
             $ionicSlideBoxDelegate.update();
         });
+
+
+        function updateSlideBoxContainer () {
+            $ionicSlideBoxDelegate.update();
+        }
+
+        function triggerRequestFormCTA() {
+
+            $scope.disableSwipe = function(handle) {
+                $ionicSlideBoxDelegate.$getByHandle(handle).enableSlide(false)
+                // $ionicSlideBoxDelegate.$getByHandle(handle).stop();
+            }
+            $scope.slideTo = function(index, time) {
+                time = time || 250;
+                $ionicSlideBoxDelegate.slide(index, time);
+            }
+            $scope.requestForm = $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
+            updateSlideBoxContainer();
+            $timeout(function() {
+                $scope.disableSwipe('request-form');
+                $ionicSlideBoxDelegate.$getByHandle('request-form').stop();
+            }, 1000);
+            // TODO check for previous requests
+            // initialize category
+        }
+
     }
 
 ]);

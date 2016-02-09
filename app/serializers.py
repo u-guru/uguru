@@ -616,7 +616,12 @@ RequestSerializer = {
 
 FileSerializer = {
     'id': fields.Integer,
-    'url': fields.String
+    'url': fields.String,
+    'name': fields.String,
+    'time_created': fields.String,
+    'size': fields.Integer,
+    '_type': fields.String,
+    'user_id': fields.Integer
 }
 
 AdminUniversitySerializer = {

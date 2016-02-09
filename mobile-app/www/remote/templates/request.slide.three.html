@@ -52,7 +52,7 @@
                             {{::day.dayLong}}
                         </div>
                         <div class='one-day-container full-xy'>
-                            <span ng-repeat='hour in ::day.hours' class='hour flex-wrap-center full-xy relative' style="min-height:50px;">
+                            <span ng-repeat='hour in ::day.hours' class='hour flex-wrap-center full-xy relative' style="min-height:50px;" ng-class="{'bg-smoke txt-slate': hour.already_past}">
                                 <span ng-if='hour.start_suffix !== hour.end_suffix' class='hour-range full-xy absolute top-0 left-0'>
                                     {{hour.formatted_start_hour + hour.start_suffix + '-' + hour.formatted_end_hour + hour.end_suffix}}
                                 </span>
@@ -60,7 +60,7 @@
                                     {{hour.formatted_start_hour + '-' + hour.formatted_end_hour + hour.end_suffix}}
                                 </span>
                                 <div class='full-xy absolute top-0 left-0 high-z-index flex-wrap'>
-                                    <a class='full-x weight-400 hour-interval txt-charcoal' ng-class="{'bg-shamrock':interval.selected}" ng-repeat='interval in ::hour.intervals' ng-click='interval.selected = !interval.selected'>
+                                    <a class='full-x weight-400 hour-interval txt-charcoal' ng-class="{'bg-shamrock':interval.selected && !interval.already_past}" ng-repeat='interval in ::hour.intervals' ng-click='interval.selected = !interval.selected'>
                                         {{ hour.formatted_start_hour + ':' + interval.formatted_start_minute + '-' + hour.formatted_start_hour + ':' + interval.formatted_end_minute}}
                                     </a>
                                 </div>

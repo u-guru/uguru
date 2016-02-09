@@ -3,13 +3,19 @@ angular
 	.factory("RequestService", [
 		'Category',
     'CalendarService',
+    '$timeout',
+    'LoadingService',
+    'FileService',
+    'CTAService',
+    'uiGmapIsReady',
+    'GUtilService',
     RequestService
 	]);
 
-function RequestService(Category, CalendarService) {
+function RequestService(Category, CalendarService, $timeout, LoadingService, FileService, CTAService, uiGmapIsReady, GUtilService) {
   var _types = {DEFAULT:0, QUICK_QA:1}
   var MAX_REQUEST_HOURS = 10;
-
+  var requestCancelTimeout;
 
   function getMaxNumHourArr() {
     var result = [];
@@ -30,18 +36,19 @@ function RequestService(Category, CalendarService) {
     }
   }
 
-  function getDefaultMarker(lat, long, color) {
+  function getDefaultMarker(lat, long, color, scope) {
     return {
       idKey:1,
       coords: {latitude: lat, longitude: long},
-      events: {dragend: onRequestMarkerDragEnd, click: onRequestMarkerClick},
+      events: {dragend: onRequestMarkerDragEnd(scope)},
       options: defaultMarkerOptions(color, "Location")
     }
 
     function defaultMarkerOptions(color, text) {
       return {
         animation: google.maps.Animation.DROP,
-        icon: {url: generateUniversityImgDataURI(color, text), size: new google.maps.Size(170, 170), scaledSize: new google.maps.Size(100, 100)}
+        icon: {url: generateUniversityImgDataURI(color, text), size: new google.maps.Size(170, 170), scaledSize: new google.maps.Size(100, 100)},
+        draggable: true
       }
 
       function generateUniversityImgDataURI(color, text) {
@@ -50,8 +57,13 @@ function RequestService(Category, CalendarService) {
       }
     }
 
-    function onRequestMarkerDragEnd() {
-      return;
+    function onRequestMarkerDragEnd(scope) {
+      return function(marker, eventName, model) {
+        var markerPos = marker.getPosition();
+        var markerLat = markerPos.lat();
+        var markerLng = markerPos.lng();
+        GUtilService.getAddressFromLatLng(markerLat, markerLng, scope);
+      }
     }
 
     function onRequestMarkerClick() {
@@ -80,31 +92,136 @@ function RequestService(Category, CalendarService) {
     form.time_estimate.showMinutes = !form.time_estimate.showMinutes;
   }
 
+  function confirmRequest(form) {
+    requestCancelTimeout = $timeout(function() {
+      var modalElem = document.getElementById("cta-modal-student-request");
+      if (modalElem) {
+        modalElem.classList.remove('show');
+        LoadingService.showSuccess('Request Successfully Submitted', 2000);
+      }
+    }, 5000)
+    var requestContainerDiv = document.querySelector('#request .desktop-tab-header');
+    form.nav.next();
+    if (requestContainerDiv) {
+      requestContainerDiv.classList.add('request-confirming')
+      requestContainerDiv.classList.remove('request-canceling')
+    }
+  }
+
+  function cancelRequest(form) {
+    clearTimeout(requestCancelTimeout);
+    var requestContainerDiv = document.querySelector('#request .desktop-tab-header');
+    form.nav.previous();
+    if (requestContainerDiv) {
+      requestContainerDiv.classList.remove('request-confirming');
+      requestContainerDiv.classList.add('request-canceling');
+    }
+  }
+
+  function focusRequestPriceInput(scope) {
+    return function() {
+      if (scope.requestForm.price.proposed_options.indexOf(scope.requestForm.price.selected) > -1) {
+        scope.requestForm.price.selected = null;
+      };
+    }
+  }
+
+
   function initStudentForm(slide_box, scope, lat, long, color) {
-    console.log('subcategories', Category.getAcademic());
+    $timeout(function() {
+      FileService.initDropzoneFromSelector('#request-form-file-uploader', scope);
+    }, 1000);
+    $timeout(function() {initGmapListener(scope, lat, long)});
     return {
       course: null,
+      addCourse: addCourseFromRequestForm,
       urgent: true,
-      subcategory: false,
-      description: false,
-      tags: [],
+      category: {name: "academic"},
+      subcategory: {},
+      address: '',
+      location: {latitude: null, longitude:null},
+      setCategory: setRequestFormCategory,
+      description: {content: '', placeholder: 'add details about your request here', showSaved: showDescriptionTextareaSaved, maxLength: 500, saved:false},
+      tags: {list:[], add: addTagToRequestList, remove:removeTagFromTagList, showError:false, empty_tag: {placeholder:"+   add a tag", content: ''}},
       subcategory: {selected: null, options: Category.getAcademic()},
       files: [],
+      price: {proposed_options: [0, 5, 10], selected:10, custom_selected:false, showInput: false, focus: focusRequestPriceInput(scope)},
       payment_card: null,
       calendar: null,
       time_estimate: {hours: 1, minutes:30, showHours:false, showHoursToggle: toggleHoursDropdown, showMinutesToggle: toggleMinutesDropdown, showMinutes:false, setHours:setRequestTimeEstimateHours, setMinutes:setRequestTimeEstimateMinutes},
       position: {latitude: null, longitude: null},
       calendar: CalendarService.getNextSevenDaysArr(),
       scope: scope,
-      map: {center: {latitude: lat, longitude: long}, options: getRequestMapOptions(), zoom:15, pan:true, control:{}, marker: getDefaultMarker(lat, long, color)},
+      map: {center: {latitude: lat, longitude: long}, options: getRequestMapOptions(), zoom:15, pan:true, control:{}, marker: getDefaultMarker(lat, long, color, scope)},
       nav: {
-        index: 3,
+        index: 0,
         next: function() {slide_box.enableSlide(true); slide_box.next(); slide_box.enableSlide(false); scope.requestForm.nav.index += 1},
         previous: function() {slide_box.enableSlide(true); slide_box.previous(); slide_box.enableSlide(false); scope.requestForm.nav.index -= 1},
         switchTo: function(index) {slide_box.enableSlide(true); slide_box.slide(index, 250); slide_box.enableSlide(false); scope.requestForm.nav.index = index},
+      },
+      confirm: confirmRequest,
+      cancel: cancelRequest,
+    }
+
+    function showDescriptionTextareaSaved() {
+      scope.requestForm.description.saved = true;
+      $timeout(function() {
+        scope.requestForm.description.saved = false;
+      }, 2000)
+    }
+
+    function removeTagFromTagList(index) {
+      if (scope.requestForm.tags.list && scope.requestForm.tags.list.length) {
+        scope.requestForm.tags.list.splice(index, 1);
       }
     }
+
+    function initGmapListener(scope, lat, lng) {
+      uiGmapIsReady.promise(1).then(function(instances) {
+        if (instances.length === 1 && instances[0].map) {
+          var requestMap = instances[0].map;
+          var coords = {latitude: lat, longitude: lng};
+          var types =['library', 'school', 'establishment', 'sublocality', 'store', 'food', 'university', 'cafe'];
+          var radius = 500;
+          // GUtilService.coordsToNearestPlace(requestMap, coords, scope.requestForm, types, radius);
+          GUtilService.getAddressFromLatLng(lat, lng, scope);
+        }
+          // instances.forEach(function(inst) {
+          //     var map = inst.map;
+          //     var uuid = map.uiGmap_id;
+          //     var mapInstanceNumber = inst.instance; // Starts at 1.
+          // });
+      });
+    }
+
+    function addTagToRequestList($event) {
+      if (scope.requestForm.tags.list) {
+        var tagContent = scope.requestForm.tags.empty_tag.content;
+        if (tagContent.length > 3) {
+          scope.requestForm.tags.list.push({name: tagContent});
+          scope.requestForm.tags.empty_tag.content = '';
+        } else {
+          scope.requestForm.tags.showError = true;
+          $timeout(function() {
+            scope.requestForm.tags.showError = false;
+          }, 2500);
+        }
+      }
+    }
+
   }
+
+  function setRequestFormCategory(requestForm, subcategory) {
+    requestForm.subcategory = subcategory;
+    requestForm.subcategory.hex_color = requestForm.category.hex_color;
+    requestForm.nav.next();
+  }
+
+  function addCourseFromRequestForm() {
+    // initSingleCTA = function(boxSelector, parentSelector, show_callback)
+    CTAService.initSingleCTA("#cta-box-request-courses", "#request main.relative");
+  }
+
   return {
     initStudentForm:initStudentForm,
     getMaxNumHourArr: getMaxNumHourArr

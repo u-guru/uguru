@@ -563,8 +563,9 @@ header#home-nav-header.splash-header,
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
-    height: calc(100% / 4);
-    background: #69B3A5 !important; }
+    height: calc(100% / 4); }
+    #request header.desktop-tab-header:not([class*="bg-"]) {
+      background: #69B3A5; }
     #request header.desktop-tab-header h1 {
       padding-bottom: 60px;
       font-size: 48px;
@@ -592,12 +593,104 @@ header#home-nav-header.splash-header,
     flex-flow: row wrap;
     height: calc(100% / 4 * 3);
     overflow: auto; }
+    #request main #cta-modal-request-courses {
+      z-index: 1000000 !important; }
+      #request main #cta-modal-request-courses main#desktop-courses {
+        height: auto !important; }
+        #request main #cta-modal-request-courses main#desktop-courses .desktop-search-header h1.invisible {
+          display: none !important; }
     #request main section {
       height: calc(100% - 104px) !important; }
       #request main section > * {
         width: 100%; }
+      #request main section#request-cta-details textarea::-webkit-input-placeholder {
+        color: rbga(#40484B, 0.5) !important; }
+      #request main section#request-cta-details textarea:-moz-placeholder {
+        color: rbga(#40484B, 0.5) !important; }
+      #request main section#request-cta-details textarea::-moz-placeholder {
+        color: rbga(#40484B, 0.5) !important; }
+      #request main section#request-cta-details textarea:-ms-input-placeholder {
+        color: rbga(#40484B, 0.5) !important; }
       #request main section#request-cta-map ui-gmap-google-map {
         height: calc(100%); }
+      #request main section#request-cta-payment .offer-price-container {
+        width: 100%;
+        max-width: 800px;
+        background: #F1F1F1;
+        text-align: center; }
+        #request main section#request-cta-payment .offer-price-container h1,
+        #request main section#request-cta-payment .offer-price-container h3 {
+          color: #2B3234; }
+        #request main section#request-cta-payment .offer-price-container h1 {
+          padding: 15px 15px 0;
+          font-weight: 900;
+          font-size: 32px; }
+        #request main section#request-cta-payment .offer-price-container h3 {
+          margin-top: 0;
+          font-size: 20px;
+          font-weight: 600;
+          padding: 0 15px; }
+        #request main section#request-cta-payment .offer-price-container ul {
+          -webkit-align-items: center;
+          align-items: center;
+          padding: 15px;
+          height: calc(100% - 141px); }
+          #request main section#request-cta-payment .offer-price-container ul li {
+            position: relative;
+            padding: 15px; }
+            #request main section#request-cta-payment .offer-price-container ul li a {
+              display: block;
+              position: relative;
+              font-size: 48px;
+              font-weight: 600;
+              color: white; }
+              #request main section#request-cta-payment .offer-price-container ul li a span,
+              #request main section#request-cta-payment .offer-price-container ul li a .add {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                display: block; }
+              #request main section#request-cta-payment .offer-price-container ul li a .add {
+                fill: none;
+                stroke: white;
+                stroke-width: 5px;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                width: 80px;
+                height: 80px; }
+              #request main section#request-cta-payment .offer-price-container ul li a svg rect {
+                fill: #2B3234; }
+              #request main section#request-cta-payment .offer-price-container ul li a:hover svg rect, #request main section#request-cta-payment .offer-price-container ul li a:focus svg rect, #request main section#request-cta-payment .offer-price-container ul li a.active svg rect {
+                fill: #81B566; }
+              #request main section#request-cta-payment .offer-price-container ul li a:active svg rect {
+                fill: #679c4c; }
+            #request main section#request-cta-payment .offer-price-container ul li:last-child .price-fill {
+              display: none;
+              position: absolute;
+              top: 15px;
+              left: 15px;
+              width: calc(100% - 30px);
+              height: calc(100% - 30px);
+              background: white;
+              border: 3px solid #81B566; }
+              #request main section#request-cta-payment .offer-price-container ul li:last-child .price-fill input {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                border: 0;
+                background: none;
+                font-size: 48px;
+                font-weight: 600; }
       #request main section#request-cta-calendar {
         overflow: hidden !important; }
         #request main section#request-cta-calendar .time-estimate-container .custom-dropdown ul {
@@ -1018,5 +1111,8 @@ header#home-nav-header.splash-header,
             background: #e6389b; }
             #request main .splash-categories > .main .subcategory-card-list.sub-academic button:active {
               background: #f193c9; }
+
+.opacity-0-impt {
+  opacity: 0 !important; }
 
 /*# sourceMappingURL=samir.css.map */

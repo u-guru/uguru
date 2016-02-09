@@ -1,125 +1,99 @@
-<section id="request-three" class="request-confirm request-slide">
-    <header>
-        <h1>Confirm my request</h1>
-    </header>
-    <div class="request-content relative">
-        <div>
-            <div>
-                <a class="request-edit">Edit</a>
-                <h1 class="request-step small selected">
-                    <b>Selected School</b>
-                </h1>
-                <div class="request-selection">
-                    <h1>{{request.selected_university.name || 'UC Berkeley'}}</h1>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <a class="request-edit">Edit</a>
-                <h1 class="request-step small selected">
-                    <b>Selected Help Type</b>
-                </h1>
-                <div class="request-seletion">
-                    <h1>1:1 with a {{request.selected_university.name || request.selected_university.short_name}} guru</h1>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <a class="request-edit">Edit</a>
-                <h1 class="request-step small">
-                    <b>Request Description</b>
-                </h1>
-                <div class="request-selection active">
-                    <p class="input-outline active" ng-model='request.info.description'>{{request.info.description || 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.'}}</p>
-                    <div class='tag-list'>
-                        <span class="tag-list-label">Tags:</span>
-                        <span class="chip tag-selected" ng-repeat="tag in request.info.tags | limitTo: 3">{{tag.name}}</span>
-                        <span class="chip tag-more">+ 10 more</span>
-                    </div>
-                    <div class='tag-list'>
-                        <span class="tag-list-label">Attachments:</span>
-                        <span class="chip tag-pdf">file.pdf</span>
-                        <span class="chip tag-img">file.jpg</span>
-                        <span class="chip tag-doc">file.doc</span>
-                        <span class="chip tag-more">+ 10 more</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <a class="request-edit">Edit</a>
-                <h1 class="request-step small selected">
-                    <b>When and Where</b>
-                </h1>
-                <div class="request-selection">
-                    <div class="request-edit-cal">
-                        <div class="request-edit-cal-item">
-                            <h2>Wed, Jan 25</h2>
-                            <span>4pm-6pm</span>
-                        </div>
-                        <div class="request-edit-cal-item">
-                            <h2>Sun, Jan 23</h2>
-                            <span>4-6pm, 10pm-12am</span>
-                        </div>
-                        <div class="request-edit-cal-item">
-                            <h2>Mon, Jan 24</h2>
-                            <span>4pm-6pm</span>
-                        </div>
-                        <div class="request-edit-cal-item">
-                            <h3>+ 4</h3>
-                        </div>
-                    </div>
-                    <h1>Philz Coffee</h1>
-                    <h2>Hours: 9am-11pm</h2>
-                    <span>1600 Shattuck Avenue #100, Berkeley</span>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <a class="request-edit">Edit</a>
-                <h1 class="request-step small selected">
-                    <b>Preferred Payment</b>
-                </h1>
-                <div class="request-selection">
-                    <a class='credit-card-wrapper'>
-                        <div id="credit-card-visa" class="credit-card cf relative">
-                            <span class="card-type absolute left-0 top-0 m20xy" ng-include="img_base + BASE + 'templates/cards/visa.html'"></span>
-                            <span class="text-right absolute top-0 right-0 m20x-m15y card-type txt-slate weight-700 uppercase">
-                                <span class='padding-none txt-smoke'>DEFAULT</span>
-                                <span class='padding-none'>Debit Card</span>
-                            </span>
-                            <div class="card-number">**** **** **** 4242</div>
-                            <div class="card-name">{{user.name}}</div>
-                            <div class="valid">
-                                <div class="group">Valid
-                                    <br/>Thru</div>
-                                <div class="expiry">**/**</div>
-                            </div>
-                        </div>
+<section id='request-cta-payment' class="request-slide full-xy text-center flex-wrap-center">
+        <div class="offer-price-container">
+            <h1>Offer a little cash to get things moving?</h1>
+            <h3>We’ll only charge you after your task is completed.</h3>
+            <ul class="ugrid-4">
+                <li>
+                    <a>
+                        <svg viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100"></rect></svg>
+                        <span>Nah!</span>
                     </a>
-                </div>
-            </div>
+                </li>
+                <li>
+                    <a class="active">
+                        <svg viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100"></rect></svg>
+                        <span>$1</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <svg viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100"></rect></svg>
+                        <span>$5</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <svg viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100"></rect></svg>
+                        <svg class="add" viewBox="0 0 100 100">
+                            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                        </svg>
+                    </a>
+                    <div class="price-fill">
+                        <input/>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div>
-            <div>
-                <h1 class="request-step small selected">
-                    <b>Estimated Total</b>
-                </h1>
-                <div class="request-selection">
-                    <h1 class="estimated-total">$50</h1>
-                </div>
-                <button class="request-edit">Edit</button>
-            </div>
-        </div>
-        <div class="request-notes">
-            <div>
-                <h3>Don't worry, we won't charge you until after the session is completed.</h3>
-                <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h3>
-            </div>
+    <div class="payment-preferences">
+        <h3>Select Payment Method</h3>
+        <div ng-controller='PaymentsController' class="main flex-wrap-center">
+
+            <ul class='ugrid-4 full-x'>
+                                <li> </li>
+                                <li style='height:180px;' class='p20xy'>
+                                    <a class='credit-card-wrapper'>
+                                        <div id="credit-card-visa" class="credit-card cf relative">
+                                            <span class="card-type absolute left-0 top-0 m15xy" ng-include="img_base + BASE + 'templates/cards/visa.html'"></span>
+                                            <span class="text-right absolute top-0 right-0 m15x m15y card-type txt-slate weight-700 uppercase">
+                                                <span class='txt-smoke block' style='padding:0;'>DEFAULT</span>
+                                                <span style='padding:0;' class='no-padding-y'>Debit Card</span>
+                                            </span>
+                                            <div class="card-number">**** **** **** 4242</div>
+                                            <div class="card-name">{{user.name}}</div>
+                                            <div class="valid">
+                                                <div class="group">Valid
+                                                    <br/>Thru</div>
+                                                <div class="expiry">**/**</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <form>
+                                        <div class="input-field relative">
+                                            <input ng-model='root.vars.cardForm.number' ng-disabled='root.vars.cardForm.view_only' autocomplete="off" id="card-number" type="tel" class="validate" />
+                                            <label for="email" class="ng-class:{'active':root.vars.cardForm.number.length}">Card Number</label>
+                                            <a ng-show="root.vars.cardForm.number.length" ng-click='root.vars.cardForm.number = "";' class="desktop-input-close-icon side-icon">
+                                                <i class='icon ion-close-circled'> </i>
+                                            </a>
+                                        </div>
+                                        <ul class="ugrid-2">
+                                            <li>
+                                                <div class="input-field">
+                                                    <input autocomplete="off" ng-disabled='root.vars.cardForm.view_only' ng-model='root.vars.cardForm.exp' id="exp-date" type="tel" class="validate" />
+                                                    <label for="password" class="ng-class:{'active':root.vars.cardForm.exp.length}">Expiration Date</label>
+                                                    <a ng-show="root.vars.cardForm.exp.length" ng-click='root.vars.cardForm.exp = "";' class="desktop-input-close-icon side-icon">
+                                                        <i class='icon ion-close-circled'> </i>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="input-field">
+                                                    <input autocomplete="off" ng-disabled='root.vars.cardForm.view_only' id="cvv-number" type="tel" class="validate" value="123" />
+                                                    <label for="password" class="active">CVV</label>
+                                                    <a class="desktop-input-close-icon side-icon">
+                                                        <i class='icon ion-close-circled'> </i>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="desktop-login-buttons">
+                                            <button class="bg-moola caps hide ng-class:{'show':!root.vars.cardForm.view_only}" ng-click='savePayment()'>Add Card</button>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
+
         </div>
     </div>
 </section>

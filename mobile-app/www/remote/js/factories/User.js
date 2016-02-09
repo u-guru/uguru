@@ -1411,7 +1411,9 @@ angular.module('uguru.user', [])
                     console.log('err...something went wrong');
                 }
             )
-
+            if (!$state) {
+                return;
+            }
             if ($state.current.name === 'root.student.home' ||
                 $state.current.name === 'root.guru.home') {
                 // $timeout(function() {

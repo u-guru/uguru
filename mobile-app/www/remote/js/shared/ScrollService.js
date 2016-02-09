@@ -20,7 +20,8 @@ function ScrollService(LoadingService, $timeout) {
     initArrWaypoints: initArrWaypoints,
     mainWaypointContext: mainWaypointContext,
     currentWaypointContextElem: currentWaypointContextElem,
-    initScopedWaypoint: initScopedWaypoint
+    initScopedWaypoint: initScopedWaypoint,
+    initIScroll: initIScroll
   }
 
   function initStickyHeaderScroll(header_selector, start_element, inject_class, parent_container) {
@@ -43,6 +44,15 @@ function ScrollService(LoadingService, $timeout) {
     stickyScroll();
   }
 
+    function initIScroll(selector, options) {
+      return new IScroll(selector, options);
+    }
+
+    // function initStellar(selector,) {
+    //   // $('#splash-browse').stellar({
+    //   //     scrollProperty: 'transform'
+    //   // });
+    // }
 
       function returnWayPointFunction(wpName, stateName) {
         return function(direction) {

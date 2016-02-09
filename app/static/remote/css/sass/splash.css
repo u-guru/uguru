@@ -409,9 +409,7 @@
     left: 0;
     z-index: 98;
     width: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    filter: alpha(opacity=0);
-    opacity: 0; }
+    background: rgba(255, 255, 255, 0.9); }
     .splash-landing .splash-sub-header.animated {
       filter: alpha(opacity=100);
       opacity: 1; }
@@ -1226,6 +1224,7 @@
             background: rgba(64, 72, 75, 0.8);
             z-index: 10; }
           .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-markers {
+            display: none;
             z-index: 11; }
             .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-markers .splash-marker {
               -ms-box-orient: horizontal;
@@ -1608,7 +1607,7 @@
             .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-img:not(.opacity-0) {
               filter: alpha(opacity=100);
               opacity: 1; }
-            .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-prop-desktop {
+            .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-markers, .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-prop-desktop {
               display: block !important; }
             .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-header {
               top: 70px;
@@ -1793,6 +1792,9 @@
         filter: alpha(opacity=100);
         opacity: 1;
         display: block; }
+      @media screen and (min-width: 768px) {
+        .splash-landing > section.splash-categories > .main#how-it-works header {
+          padding-top: 100px; } }
       .splash-landing > section.splash-categories > .main#splash-livemap {
         height: 600px; }
       .splash-landing > section.splash-categories > .main > div {
@@ -2254,13 +2256,15 @@
           .splash-landing > section.splash-categories > .main > div > h1, .splash-landing > section.splash-categories > .main > div > div > h1 {
             font-size: 28px; }
           .splash-landing > section.splash-categories > .main > div > h2, .splash-landing > section.splash-categories > .main > div > div > h2 {
-            margin: 5px auto 22.5px;
+            margin: 5px auto -7.5px;
             font-size: 20px; }
-          .splash-landing > section.splash-categories > .main > div > div {
+          .splash-landing > section.splash-categories > .main > div > div:not(.flex-wrap-center) {
             -webkit-align-self: flex-start;
             align-self: flex-start; }
+            .splash-landing > section.splash-categories > .main > div > div:not(.flex-wrap-center):first-child {
+              padding-top: 115px; }
         .splash-landing > section.splash-categories > .main .category-card-list {
-          margin: -15px 0 0; }
+          margin: 15px 0 0; }
           .splash-landing > section.splash-categories > .main .category-card-list li {
             padding: 15px; }
             .splash-landing > section.splash-categories > .main .category-card-list li:empty {
@@ -3625,14 +3629,14 @@
     -ms-transition: all 0.15s ease-in-out;
     -moz-transition: all 0.15s ease-in-out;
     transition: all 0.15s ease-in-out;
-    filter: alpha(opacity=75);
-    opacity: 0.75;
-    background: #69B3A5; }
+    filter: alpha(opacity=90);
+    opacity: 0.9;
+    background: #4e5a5e; }
   .splash-landing#home-splash > .splash-header.bg-charcoal {
     background: none !important; }
     .splash-landing#home-splash > .splash-header.bg-charcoal:before {
-      filter: alpha(opacity=95);
-      opacity: 0.95;
+      filter: alpha(opacity=100);
+      opacity: 1;
       background: #4e5a5e; }
   @media screen and (max-width: 768px) {
     .splash-landing#home-splash > .splash-sub-header > div a, .splash-landing#home-splash > .splash-sub-header > div hr {

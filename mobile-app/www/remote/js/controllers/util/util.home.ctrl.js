@@ -38,15 +38,30 @@ angular.module('uguru.util.controllers')
       $scope.page.animations = {hiw:{}, bg:{}, profiles: {}, categories:{}, university: {}, main: {}, waypoints: {triggers:{}, parentRef:"home-splash"}};
       var navHeight = 70;
       var sectionSneakHeight = 36;
-      $scope.mapCenter = {latitude: 39.8282, longitude: -98.57};
+      $scope.mapCenter = {latitude: 42.5, longitude: -100};
       $scope.page.heights = {
         nav: navHeight,
         sectionSneak: sectionSneakHeight
       }
+
+      $scope.topHomeSlider = {index: 0};
+      $timeout(function() {
+        $scope.$apply();
+      })
+      //@gabrielle
+      //read other options here https://developers.google.com/maps/documentation/static-maps/intro#MapTypes
+      var staticMapOptions = {
+        scale: 1, //up to 2, only whole values
+        map_type: "roadmap", //hybrid, terrain, satellite, roadmap
+        size: "1280x1280",
+        zoom: 17
+      }
+
+
       $scope.mapBounds = {
         desktop: {
-          northeast: {latitude: 20.70, longitude:-128.50},
-          southwest: {latitude:48.85, longitude: -70}
+          northeast: {latitude: 54, longitude:-61.50},
+          southwest: {latitude:15, longitude: -125}
         },
         mobile: {
           northeast: {latitude: 20.70, longitude:-100.50},
@@ -100,133 +115,148 @@ angular.module('uguru.util.controllers')
       // next steps
       // setup the top section
 
-      $scope.page.animations.hiw = {
-        viewed: false,
-        beforeScroll: null,
-        firstViewed: {
-          css_classes: ['fadeIn', 'bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'fadeIn'],
-          selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', '.hiw-postit-li:nth-child(2) .tape:nth-child(1)', '.hiw-postit-li:nth-child(2) .tape:nth-child(2)', '.hiw-postit-li:nth-child(3) .tape:nth-child(2)', '.hiw-postit-li:nth-child(4) .tape:nth-child(1)', '.hiw-postit-li:nth-child(4) .tape:nth-child(2)', '.how-it-works-button'],
-          delays: [400, 500, 600, 700, 800, 900, 1000, 2000, 2000, 2000, 2000, 2000, 2500],
-        },
-        secondViewed: {
-          css_classes: ['fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn'],
-          selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', 'how-it-works-button'],
-          delays: [400, 500, 600, 700, 800, 900, 1000, 1500],
-        },
-        onExit: {
-          css_classes: ['fadeOut', 'hinge', 'hinge-right', 'hinge-right', 'hinge-right', 'hinge', 'hinge', 'fadeOut'],
-          selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', '.how-it-works-button'],
-          delays: [400, 500, 600, 700, 800, 900, 1000, 1500],
-        },
-        onScrollStart: null, //coming soon, not first time
-        onScrollEnd: null, // coming soon, not first time
-      }
+    //   $scope.page.animations.hiw = {
+    //     viewed: false,
+    //     beforeScroll: null,
+    //     firstViewed: {
+    //       css_classes: ['fadeIn', 'bounceInDown', 'bounceInRight', 'bounceInLeft', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'animate:keep', 'fadeIn'],
+    //       selectors: [
+    //           '.how-it-works-header',
+    //           '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)',
+    //           '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)',
+    //           '.hiw-postit-li:nth-child(2) .tape:nth-child(1)',
+    //           '.hiw-postit-li:nth-child(2) .tape:nth-child(2)',
+    //           '.hiw-postit-li:nth-child(3) .tape:nth-child(2)',
+    //           '.hiw-postit-li:nth-child(4) .tape:nth-child(1)',
+    //           '.hiw-postit-li:nth-child(4) .tape:nth-child(2)',
+    //           '.how-it-works-button'
+    //       ],
+    //       delays: [
+    //           400,
+    //           500, 600, 700, 800, 900, 1000,
+    //           2000, 2000, 2000, 2000, 2000,
+    //           2500
+    //       ],
+    //     },
+    //     secondViewed: {
+    //       css_classes: ['fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn', 'fadeIn'],
+    //       selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', 'how-it-works-button'],
+    //       delays: [400, 500, 600, 700, 800, 900, 1000, 1500],
+    //     },
+    //     onExit: {
+    //       css_classes: ['fadeOut', 'hinge', 'hinge-right', 'hinge-right', 'hinge-right', 'hinge', 'hinge', 'fadeOut'],
+    //       selectors: ['.how-it-works-header', '.hiw-postit-li:nth-child(2)', '.hiw-postit-li:nth-child(6)', '.hiw-postit-li:nth-child(4)', '.hiw-postit-li:nth-child(1)', '.hiw-postit-li:nth-child(3)', '.hiw-postit-li:nth-child(5)', '.how-it-works-button'],
+    //       delays: [400, 500, 600, 700, 800, 900, 1000, 1500],
+    //     },
+    //     onScrollStart: null, //coming soon, not first time
+    //     onScrollEnd: null, // coming soon, not first time
+    //   }
 
-    $scope.page.animations.categories = {
-      viewed: false,
-      beforeScroll: null,
-      firstViewed: {
-        css_classes: [
-          'fadeIn', 'fadeIn',
-          'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp',
-          'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn',
-          'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
-          'bounceInUp'
-        ],
-        selectors: [
-          '.splash-categories-header',
-          '.splash-categories-subheader',
-          '.category-card-list li:nth-child(1)',
-          '.category-card-list li:nth-child(2)',
-          '.category-card-list li:nth-child(3)',
-          '.category-card-list li:nth-child(4)',
-          '.category-card-list li:nth-child(5)',
-          '.category-card-list li:nth-child(6)',
-          '.category-card-list li:nth-child(1) .card-icon',
-          '.category-card-list li:nth-child(2) .card-icon',
-          '.category-card-list li:nth-child(3) .card-icon',
-          '.category-card-list li:nth-child(4) .card-icon',
-          '.category-card-list li:nth-child(5) .card-icon',
-          '.category-card-list li:nth-child(6) .card-icon',
-          '.category-card-list li:nth-child(1) .card-label',
-          '.category-card-list li:nth-child(2) .card-label',
-          '.category-card-list li:nth-child(3) .card-label',
-          '.category-card-list li:nth-child(4) .card-label',
-          '.category-card-list li:nth-child(5) .card-label',
-          '.category-card-list li:nth-child(6) .card-label',
-          '.card-button'
-        ],
-        delays: [
-          400, 550,
-          400, 550, 700, 950, 1100, 1250,
-          1400, 1550, 1700, 1950, 2100, 2250,
-          1400, 1550, 1700, 1950, 2100, 2250,
-          3250
-        ]
-      },
-      secondViewed: {
-        css_classes: [
-          'fadeIn', 'fadeIn',
-          'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp',
-          'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn',
-          'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
-          'bounceInUp'
-        ],
-        selectors: [
-          '.splash-categories-header',
-          '.splash-categories-subheader',
-          '.category-card-list li:nth-child(1)',
-          '.category-card-list li:nth-child(2)',
-          '.category-card-list li:nth-child(3)',
-          '.category-card-list li:nth-child(4)',
-          '.category-card-list li:nth-child(5)',
-          '.category-card-list li:nth-child(6)',
-          '.category-card-list li:nth-child(1) .card-icon',
-          '.category-card-list li:nth-child(2) .card-icon',
-          '.category-card-list li:nth-child(3) .card-icon',
-          '.category-card-list li:nth-child(4) .card-icon',
-          '.category-card-list li:nth-child(5) .card-icon',
-          '.category-card-list li:nth-child(6) .card-icon',
-          '.category-card-list li:nth-child(1) .card-label',
-          '.category-card-list li:nth-child(2) .card-label',
-          '.category-card-list li:nth-child(3) .card-label',
-          '.category-card-list li:nth-child(4) .card-label',
-          '.category-card-list li:nth-child(5) .card-label',
-          '.category-card-list li:nth-child(6) .card-label',
-          '.card-button'
-        ],
-        delays: [
-          400, 550,
-          400, 550, 700, 950, 1100, 1250,
-          1400, 1550, 1700, 1950, 2100, 2250,
-          1400, 1550, 1700, 1950, 2100, 2250,
-          3250
-        ]
-      },
-      onExit: {
-        css_classes: [
-          'fadeOut', 'fadeOut',
-          'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown',
-          'bounceOutDown'
-        ],
-        selectors: [
-          '.splash-categories-header',
-          '.splash-categories-subheader',
-          '.category-card-list li:nth-child(1)',
-          '.category-card-list li:nth-child(2)',
-          '.category-card-list li:nth-child(3)',
-          '.category-card-list li:nth-child(4)',
-          '.category-card-list li:nth-child(5)',
-          '.category-card-list li:nth-child(6)',
-          '.card-button'
-        ],
-        delays: [
-          400, 550,
-          400, 550, 700, 950, 1100, 1250,
-          2250
-        ]
-      }
-    }
+    // $scope.page.animations.categories = {
+    //   viewed: false,
+    //   beforeScroll: null,
+    //   firstViewed: {
+    //     css_classes: [
+    //       'fadeIn', 'fadeIn',
+    //       'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp',
+    //       'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn',
+    //       'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
+    //       'bounceInUp'
+    //     ],
+    //     selectors: [
+    //       '.splash-categories-header',
+    //       '.splash-categories-subheader',
+    //       '.category-card-list li:nth-child(1)',
+    //       '.category-card-list li:nth-child(2)',
+    //       '.category-card-list li:nth-child(3)',
+    //       '.category-card-list li:nth-child(4)',
+    //       '.category-card-list li:nth-child(5)',
+    //       '.category-card-list li:nth-child(6)',
+    //       '.category-card-list li:nth-child(1) .card-icon',
+    //       '.category-card-list li:nth-child(2) .card-icon',
+    //       '.category-card-list li:nth-child(3) .card-icon',
+    //       '.category-card-list li:nth-child(4) .card-icon',
+    //       '.category-card-list li:nth-child(5) .card-icon',
+    //       '.category-card-list li:nth-child(6) .card-icon',
+    //       '.category-card-list li:nth-child(1) .card-label',
+    //       '.category-card-list li:nth-child(2) .card-label',
+    //       '.category-card-list li:nth-child(3) .card-label',
+    //       '.category-card-list li:nth-child(4) .card-label',
+    //       '.category-card-list li:nth-child(5) .card-label',
+    //       '.category-card-list li:nth-child(6) .card-label',
+    //       '.card-button'
+    //     ],
+    //     delays: [
+    //       400, 550,
+    //       400, 550, 700, 950, 1100, 1250,
+    //       1400, 1550, 1700, 1950, 2100, 2250,
+    //       1400, 1550, 1700, 1950, 2100, 2250,
+    //       3250
+    //     ]
+    //   },
+    //   secondViewed: {
+    //     css_classes: [
+    //       'fadeIn', 'fadeIn',
+    //       'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp',
+    //       'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn', 'rotateIn',
+    //       'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp', 'slideInUp',
+    //       'bounceInUp'
+    //     ],
+    //     selectors: [
+    //       '.splash-categories-header',
+    //       '.splash-categories-subheader',
+    //       '.category-card-list li:nth-child(1)',
+    //       '.category-card-list li:nth-child(2)',
+    //       '.category-card-list li:nth-child(3)',
+    //       '.category-card-list li:nth-child(4)',
+    //       '.category-card-list li:nth-child(5)',
+    //       '.category-card-list li:nth-child(6)',
+    //       '.category-card-list li:nth-child(1) .card-icon',
+    //       '.category-card-list li:nth-child(2) .card-icon',
+    //       '.category-card-list li:nth-child(3) .card-icon',
+    //       '.category-card-list li:nth-child(4) .card-icon',
+    //       '.category-card-list li:nth-child(5) .card-icon',
+    //       '.category-card-list li:nth-child(6) .card-icon',
+    //       '.category-card-list li:nth-child(1) .card-label',
+    //       '.category-card-list li:nth-child(2) .card-label',
+    //       '.category-card-list li:nth-child(3) .card-label',
+    //       '.category-card-list li:nth-child(4) .card-label',
+    //       '.category-card-list li:nth-child(5) .card-label',
+    //       '.category-card-list li:nth-child(6) .card-label',
+    //       '.card-button'
+    //     ],
+    //     delays: [
+    //       400, 550,
+    //       400, 550, 700, 950, 1100, 1250,
+    //       1400, 1550, 1700, 1950, 2100, 2250,
+    //       1400, 1550, 1700, 1950, 2100, 2250,
+    //       3250
+    //     ]
+    //   },
+    //   onExit: {
+    //     css_classes: [
+    //       'fadeOut', 'fadeOut',
+    //       'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown', 'bounceOutDown',
+    //       'bounceOutDown'
+    //     ],
+    //     selectors: [
+    //       '.splash-categories-header',
+    //       '.splash-categories-subheader',
+    //       '.category-card-list li:nth-child(1)',
+    //       '.category-card-list li:nth-child(2)',
+    //       '.category-card-list li:nth-child(3)',
+    //       '.category-card-list li:nth-child(4)',
+    //       '.category-card-list li:nth-child(5)',
+    //       '.category-card-list li:nth-child(6)',
+    //       '.card-button'
+    //     ],
+    //     delays: [
+    //       400, 550,
+    //       400, 550, 700, 950, 1100, 1250,
+    //       2250
+    //     ]
+    //   }
+    // }
 
     $scope.page.animations.profiles = {
       viewed: false,
@@ -445,26 +475,28 @@ angular.module('uguru.util.controllers')
 
       //Scope var declarations
       var onSectionOneLoad = function() {
-        // initUniversityTypeWriter();
 
-        $timeout(function() {
           $scope.root.loader.body.hide = true;
           $scope.page.scroll.section_index = 0;
-          // initHomePageWayPoint();
-          initializePageAnimations();
+          $timeout(function() {
+            console.log(document.querySelector('#iscroll-wrapper'));
+            $scope.homePageScroll = ScrollService.initIScroll('#iscroll-wrapper', {snap: 'section'});
+            setInterval(function() {
+              console.log($scope.homePageScroll.y, 'scroller position');
+            }, 1000)
+          }, 5000)
+
           initSlideBoxRemote();
           Waypoint.refreshAll();
-        }, 250)
-        $timeout(function() {
-          initTypeWritersTopSection();
-        }, 500)
-        $timeout(function() {
+          $timeout(function() {
+            initTypeWritersTopSection();
+          }, 500)
+
 
           var ionSlideOne = document.querySelector('.splash-scene ion-slide');
-          ionSlideOne.classList.add('show-slide');
-          $scope.$apply();
-
-      }, 5000)
+          $timeout(function() {
+            $scope.$apply();
+          })
 
       }
       $scope.university = {}
@@ -508,60 +540,36 @@ angular.module('uguru.util.controllers')
           onChange: function($index) {
             var ionSlides = document.querySelectorAll('.splash-scene ion-slide');
             //remove all
+            $scope.topHomeSlider.index = $index;
             for (var i = 0; i < ionSlides.length; i++) {
               var indexSlide = ionSlides[i];
-              indexSlide.classList.remove('show-slide');
+              indexSlide.classList.remove('show-slide-' + i);
             }
-            ionSlides[$index].classList.add('show-slide');
+            ionSlides[$index].classList.add('show-slide-' + $index);
           },
           play: function() {
             $scope.topHomeSlider.paused = false;
             console.log('play clicked');
             $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').start();
           },
+          index: 0,
           paused: false
         }
       }
 
 
       $scope.switchToTabIndex = function(index) {
-        var currentIndex = $scope.page.tabs.hiw.index;
-        $scope.activeBrowseTabIndex = index;
-        //switching to how it works
-        if (index !== currentIndex && index === 2) {
-          if (!$scope.page.animations.profiles.viewed) {
-            $scope.page.animations.profiles.viewed = true;
-            console.log('firing first time animations for profiles')
-            console.log($scope.page.animations.profiles.firstViewed.elements);
-            AnimationService.activateSectionAnimations($scope.page.animations.profiles.firstViewed.elements, $scope.page.animations.profiles.firstViewed.css_classes, $scope.page.animations.profiles.firstViewed.delays);
-          } else {
-            console.log('firing second time animations for profiles')
-            AnimationService.activateSectionAnimations($scope.page.animations.profiles.secondViewed.elements, $scope.page.animations.profiles.secondViewed.css_classes, $scope.page.animations.profiles.secondViewed.delays);
-          }
-        }
-        if (index !== currentIndex && index === 1) {
 
-          if (!$scope.page.animations.categories.viewed) {
-            $scope.page.animations.categories.viewed = true;
-            console.log('firing first time animations for categories')
-            AnimationService.activateSectionAnimations($scope.page.animations.categories.firstViewed.elements, $scope.page.animations.categories.firstViewed.css_classes, $scope.page.animations.categories.firstViewed.delays);
-          } else {
-            console.log('firing second time animations for categories')
-            AnimationService.activateSectionAnimations($scope.page.animations.categories.secondViewed.elements, $scope.page.animations.categories.secondViewed.css_classes, $scope.page.animations.categories.secondViewed.delays);
-          }
-        }
-        if (index !== currentIndex && index === 0) {
+        var activeSubheaderContainer = document.querySelector('.hiw-subheader-nav-content.active')
+        activeSubheaderContainer.classList.add('transitioning');
 
-          if (!$scope.page.animations.hiw.viewed) {
-            console.log('firing first time animations for how it works')
-            $scope.page.animations.hiw.viewed = true;
-            AnimationService.activateSectionAnimations($scope.page.animations.hiw.firstViewed.elements, $scope.page.animations.hiw.firstViewed.css_classes, $scope.page.animations.hiw.firstViewed.delays);
-          } else {
-            console.log('firing second time animations for how it works')
-            AnimationService.activateSectionAnimations($scope.page.animations.hiw.secondViewed.elements, $scope.page.animations.hiw.secondViewed.css_classes, $scope.page.animations.hiw.secondViewed.delays);
-          }
 
-        }
+
+        $timeout(function() {
+          activeSubheaderContainer.classList.remove('transitioning');
+          $scope.activeBrowseTabIndex = index;
+        }, parseInt(activeSubheaderContainer.getAttribute('anim-on-hide-debounce') || 0))
+
       }
       // $scope.page.animations = {hiw: {}};
       // $scope.page.animations.hiw = {
@@ -1057,7 +1065,9 @@ angular.module('uguru.util.controllers')
         $scope.page.counters['num-course-counter'] = CounterService.initCounter('num-course-counter', 1.0, parseInt(totalCourses / 1000), 5, 'K');
         $scope.page.counters['num-guru-counter'] = CounterService.initCounter('num-guru-counter', 1.0, 1130, 5);
         //@samir - todo, implement when scroll down to the section
-        initiateCounters();
+        $timeout(function() {
+          initiateCounters();
+      }, 500)
       }
 
 
@@ -1100,6 +1110,8 @@ angular.module('uguru.util.controllers')
       ];
 
       $scope.universities = University.getTargetted();
+      $scope.staticUniversityMaps = GUtilService.generateStaticMapUrls($scope.universities.slice(0, 4), staticMapOptions);
+      console.log($scope.staticUniversityMaps)
       // $scope.search_text = {university: "", matching: []};
 
       var calcZoom = function() {
@@ -1288,6 +1300,31 @@ angular.module('uguru.util.controllers')
       }
 
 
+      function hideAllClusters(selector) {
+        $timeout(function() {
+          var allClusterElems = document.querySelectorAll(selector) || [];
+          for (var i = 0; i < allClusterElems.length; i++) {
+            var indexCluster = allClusterElems[i];
+            indexCluster.classList.add('opacity-0');
+            indexCluster.setAttribute("anim-first-enter-down-child", "");
+            indexCluster.setAttribute("anim-first-enter-down-class", "bounceInUp");
+            indexCluster.setAttribute("anim-first-enter-down-delay", 1500 + (i * 50) + "");
+            $compile(indexCluster)($scope);
+          }
+        }, 1000)
+      }
+
+      function setPulseClusters(selector) {
+        $timeout(function() {
+          var allClusterElems = document.querySelectorAll(selector) || [];
+          for (var i = 0; i < allClusterElems.length; i++) {
+            var indexCluster = allClusterElems[i];
+            indexCluster.setAttribute("anim-first-enter-down-child", "");
+            indexCluster.setAttribute("anim-first-enter-down-class", "pulse, pulse, pulse");
+            $compile(indexCluster)($scope);
+          }
+        })
+      }
 
       var initHomeMap = function() {
           $scope.page.load.sections.two.display = true;
@@ -1300,7 +1337,8 @@ angular.module('uguru.util.controllers')
           options: mapDefaults.options,
           events: {tilesloaded: onMapRenderCompleteOnce},
           clusterOptions: initClusterObj(),
-          bounds: null, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
+          clusterEvents: {mouseover: function(cluster){ setPulseClusters('.university-svg-cluster') }, clusteringend: function(cluster) {hideAllClusters('.university-svg-cluster')}},
+          bounds: $scope.mapBounds, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
           pan: true,
           bounds: $scope.mapBounds.desktop,
           markers: generateXMarkersFromUniversities(200, $scope.universities),
@@ -1402,7 +1440,11 @@ angular.module('uguru.util.controllers')
         if (!$scope.map.og_map) {
           $scope.mapHasRendered = true;
           $scope.map.og_map = map;
-          console.log('map has finalled rendered');
+          $timeout(function() {
+            $scope.page.load.complete = true;
+          }, 2000);
+          document.querySelector('#splash-university').classList.add('show-map');
+          console.log('map has finally rendered');
         }
       }
 
@@ -1411,6 +1453,8 @@ angular.module('uguru.util.controllers')
 
         if (!$scope.universities) {
             $scope.universities = University.getTargetted().slice();
+            $scope.staticUniversityMaps = GUtilService.generateStaticMapUrls($scope.universities.slice(0, 4), staticMapOptions);
+            console.log($scope.staticUniversityMaps)
         }
         initHomeMap();
 

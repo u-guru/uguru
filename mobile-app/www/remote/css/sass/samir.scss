@@ -682,7 +682,9 @@ header#home-nav-header.splash-header,
 		@include flex-center;
 		@include flex-wrap;
 		height: calc(100% / 4);
-		background: $shamrock !important;
+		&:not([class*="bg-"]) {
+			background: $shamrock;
+		}
 		h1 {
 			padding-bottom: 60px;
 			font-size: 48px;
@@ -706,15 +708,121 @@ header#home-nav-header.splash-header,
 		@include flex-wrap;
 		height: calc(100% / 4 * 3);
 		overflow: auto;
+		//all CTAs defined here
+		#cta-modal-request-courses {
+			z-index:1000000 !important;
+			main#desktop-courses {
+				height: auto !important;
+				.desktop-search-header h1.invisible {
+					display:none !important;
+				}
+			}
+		}
 		section {
 			//account for the footer button container, height 104px;
 			height:calc(100% - 104px) !important;
 			&>* {
 				width:100%;
 			}
+			&#request-cta-details {
+				textarea {
+					@include placeholder {
+						color: rbga($slate, 0.5) !important;
+					}
+				}
+			}
 			&#request-cta-map {
 				ui-gmap-google-map {
 					height: calc(100%);
+				}
+			}
+			&#request-cta-payment {
+				.offer-price-container {
+					width: 100%;
+					max-width: 800px;
+					background: $smoke;
+					text-align: center;
+					h1,
+					h3 {
+						color: $charcoal;
+					}
+					h1 {
+						padding: 15px 15px 0;
+						font-weight: 900;
+						font-size: 32px;
+					}
+					h3 {
+						margin-top: 0;
+						font-size: 20px;
+						font-weight: 600;
+						padding: 0 15px;
+					}
+					ul {
+						@include flex-center-vertical;
+						padding: 15px;
+						height: calc(100% - 141px);
+						li {
+							position: relative;
+							padding: 15px;
+							a {
+								display: block;
+								position: relative;
+								font-size: 48px;
+								font-weight: 600;
+								color:white;
+								span,
+								.add {
+									@include center-xy;
+									display: block;
+								}
+								.add {
+									@include svg-stroke(white, 5);
+									width: 80px;
+									height: 80px;
+								}
+								svg {
+									rect {
+										fill: $charcoal;
+									}
+								}
+								&:hover,
+								&:focus,
+								&.active {
+									svg {
+										rect {
+											fill: $moola;
+										}
+									}
+								}
+								&:active {
+									svg {
+										rect {
+											fill: darken($moola, 10%);
+										}
+									}
+								}
+							}
+							&:last-child {
+								.price-fill {
+									display: none;
+									position: absolute;
+									top: 15px;
+									left: 15px;
+									width: calc(100% - 30px);
+									height: calc(100% - 30px);
+									background: white;
+									border: 3px solid $moola;
+									input {
+										@include center-xy;
+										border: 0;
+										background: none;
+										font-size: 48px;
+										font-weight: 600;
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 			&#request-cta-calendar {
@@ -1263,4 +1371,8 @@ header#home-nav-header.splash-header,
 			}
 		}
 	}
+}
+
+.opacity-0-impt {
+	opacity:0 !important;
 }
