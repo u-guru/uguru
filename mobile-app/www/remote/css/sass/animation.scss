@@ -1,5 +1,36 @@
 @import 'mixin';
 
+@include keyframes(splash-scene-device) {
+	0% {
+		width: 28%;
+	}
+	50% {
+		width: 64%;
+	}
+	100% {
+		width: 100%;
+	}
+}
+@include keyframes(splash-scene-adlib) {
+	0% {
+		width: 72%;
+	}
+	50% {
+		width: 86%;
+	}
+	100% {
+		width: 100%;
+	}
+}
+@include keyframes(splash-scene-android) {
+	0% {
+		@include scale(1);
+	}
+	100% {
+		@include scale(.7);
+	}
+}
+
 @include keyframes(progress-bar) {
 	0% {
 		width: 15%;

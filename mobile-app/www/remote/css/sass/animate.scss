@@ -268,6 +268,7 @@
 		@include transform(scale3d(.97, .97, .97));
 	}
 	100% {
+		// edit
 		@include opacity(1);
 		@include transform(scale3d(1, 1, 1));
 	}
@@ -295,6 +296,8 @@
 		@include transform(translate3d(0, 5px, 0));
 	}
 	100% {
+		// edit
+		@include opacity(1);
 		@include transform(none);
 	}
 }
@@ -321,6 +324,8 @@
 		@include transform(translate3d(5px, 0, 0));
 	}
 	100% {
+		// edit
+		@include opacity(1);
 		@include transform(none);
 	}
 }
@@ -347,6 +352,8 @@
 		@include transform(translate3d(-5px, 0, 0));
 	}
 	100% {
+		// edit
+		@include opacity(1);
 		@include transform(none);
 	}
 }
@@ -373,6 +380,8 @@
 		@include transform(translate3d(0, -5px, 0));
 	}
 	100% {
+		// edit
+		@include opacity(1);
 		@include transform(translate3d(0, 0, 0));
 	}
 }
@@ -1232,6 +1241,8 @@
 		visibility: visible;
 	}
 	100% {
+		// edit
+		@include opacity(1);
 		@include transform(translate3d(0, 0, 0));
 	}
 }
@@ -1245,6 +1256,8 @@
 		visibility: visible;
 	}
 	100% {
+		// edit
+		@include opacity(1);
 		@include transform(translate3d(0, 0, 0));
 	}
 }
@@ -1258,6 +1271,8 @@
 		visibility: visible;
 	}
 	100% {
+		// edit
+		@include opacity(1);
 		@include transform(translate3d(0, 0, 0));
 	}
 }
@@ -1271,6 +1286,8 @@
 		visibility: visible;
 	}
 	100% {
+		// edit
+		@include opacity(1);
 		@include transform(translate3d(0, 0, 0));
 	}
 }

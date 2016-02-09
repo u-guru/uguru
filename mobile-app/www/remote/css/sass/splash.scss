@@ -997,6 +997,7 @@
 			@include flex;
 			@include flex-center;
 			height: 100%;
+			overflow: hidden;
 			background-color: $smoke;
 			background-position: center;
 			background-size: cover;
@@ -1124,7 +1125,9 @@
 					position: relative;
 					width: 100%;
 					height: 100%;
+					overflow: hidden;
 					.splash-scene-img, .splash-scene-map, .splash-scene-overlay, .splash-scene-markers {
+						@include animation-fill-mode(forwards);
 						position: absolute;
 						top: 0;
 						left: 0;
@@ -1141,6 +1144,7 @@
 						display: none;
 						z-index: 11;
 						.splash-marker {
+							@include animation-delay(3500ms);
 							@include flex;
 							@include flex-wrap;
 							@include flex-center;
@@ -1211,15 +1215,17 @@
 					.splash-scene-img {
 						@include transition(.15s ease-in-out);
 						&:not(.opacity-0) {
-							@include opacity(.8);
+							@include opacity(.7);
 						}
 					}
 					.splash-scene-layout {
 						@include flex;
 						@include flex-center;
 						position: relative;
-						z-index: 9;
+						z-index: 12;
 						width: 100%;
+						max-width: 1020px;
+						margin: 0 auto;
 						height: 100%;
 						> div {
 							@include flex;
@@ -1229,21 +1235,165 @@
 						}
 						button:not(.btn-ghost-white) {
 							height: 48px;
-							background: $cerise;
-							font-size: 18px;
+							font-size: 20px;
 							font-weight: 600;
 						}
 						.splash-scene-device {
-							width: 40%;
+							@include flex-center;
+							display: none;
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 28%;
+							padding: 15px;
+							&.active {
+								@include animation-name(splash-scene-device);
+								@include animation-duration(.75s);
+								@include animation-fill-mode(forwards);
+							}
+							> div {
+								position: relative;
+								> svg {
+									@include opacity(.3);
+									position: relative;
+									z-index: 1;
+									display: block;
+									min-width: 256px;
+									.screen {
+										fill: $cerise;
+									}
+								}
+								&.active {
+									@include animation-name(splash-scene-android);
+									@include animation-duration(.25s);
+									@include animation-delay(3500ms);
+									@include animation-fill-mode(forwards);
+									@include transform-origin(50% -15%);
+									> svg {
+										.screen {
+											@include transition(.75s ease-in-out);
+											fill: $slate;
+										}
+									}
+								}
+								> div {
+									@include flex;
+									@include flex-center;
+									@include flex-wrap;
+									@include center-xy;
+									z-index: 2;
+									width: 90%;
+									height: 82%;
+									span {
+										display: block;
+									}
+									svg {
+										display: block;
+										width: 100%;
+										path {
+											stroke: white;
+										}
+									}
+								}
+								.splash-scene-adlib-results {
+									padding: 15px;
+									div:not(.progress) {
+										position: relative;
+										margin: 15px;
+										h1 {
+											width: 100%;
+											font-size: 20px;
+											font-weight: 600;
+											text-align: center;
+											&:nth-child(2) {
+												position: absolute;
+												top: 0;
+												margin: 0;
+											}
+											&.active {
+												@include animation-timing-function(ease-in);
+												@include animation-fill-mode(forwards);
+												@include animation-duration(.15s);
+												@include animation-delay(3500ms);
+												&:nth-child(1) {
+													@include animation-name(fadeOut);
+												}
+												&:nth-child(2) {
+													@include animation-name(fadeIn);
+												}
+											}
+										}
+									}
+									.progress {
+										-webkit-align-items: flex-end;
+										align-items: flex-end;
+										display: block;
+										width: 100%;
+										&.active {
+											span {
+												@include animation-timing-function(ease-in);
+												@include animation-fill-mode(forwards);
+												@include animation-duration(2.5s);
+												@include animation-name(progress-bar);
+												@include animation-delay(1000ms);
+											}
+										}
+									}
+								}
+							}
 						}
 						.splash-scene-adlib {
-							width: 60%;
+							position: absolute;
+							top: 0;
+							right: 0;
+							width: 72%;
+							padding: 15px;
+							.splash-scene-adlib-header {
+								margin-bottom: 30px;
+								width: 100%;
+								h1, h2 {
+									width: 100%;
+									text-align: left;
+									font-weight: 600;
+								}
+								h1 {
+									font-size: 36px;
+								}
+								h2 {
+									margin-top: 5px!important;
+									font-size: 20px;
+								}
+							}
 							.splash-scene-adlib-statement {
 								width: 100%;
-								span {
-									display: inline-block;
-									padding: 0 7.5px;
-									width: 25%;
+								&.active {
+									@include translate-y(-400%);
+									h1 {
+										@include flex-center;
+									}
+								}
+								h1 {
+									@include flex;
+									@include flex-wrap;
+									@include flex-center-vertical;
+									font-size: 28px;
+									font-weight: 600;
+									span {
+										display: inline-block;
+										padding: 0 7.5px;
+										width: 25%;
+										max-width: 177px;
+										button {
+											max-width: 162px;
+											&.blank {
+												border: 2px dashed white;
+												background: rgba(white,.15);
+											}
+											&:not(.blank) {
+												background: $cerise;
+											}
+										}
+									}
 								}
 							}
 							.splash-scene-adlib-options {
@@ -1251,18 +1401,46 @@
 								@include flex;
 								@include flex-wrap;
 								width: 100%;
-								padding: 7.5px;
+								margin: 30px -7.5px 7.5px;
 								li {
 									width: 25%;
 									padding: 7.5px;
+									button {
+										max-width: 162px;
+										&:not(.active) {
+											background: $cerise;
+										}
+										&.active, &:active {
+											background: white;
+											color: $cerise;
+										}
+										&:hover, &:focus, &:active {
+											@include opacity(1);
+										}
+									}
 								}
 							}
 							.splash-scene-cta-buttons {
 								width: 100%;
-								margin: 15px auto;
+								margin: 30px auto 7.5px;
 								button {
 									display: block;
 									margin: 15px auto;
+								}
+							}
+						}
+					}
+					@media screen and (min-width: 768px) {
+						.splash-scene-layout {
+							.splash-scene-device {
+								@include flex;
+							}
+							.splash-scene-adlib {
+								padding: 15px;
+								&.active {
+									@include animation-name(splash-scene-adlib);
+									@include animation-duration(.75s);
+									@include animation-fill-mode(forwards);
 								}
 							}
 						}
@@ -1435,6 +1613,18 @@
 							> li {
 								position: relative;
 								width: 25%;
+								&:nth-child(1) {
+									@include animation-fill-mode(forwards);
+									@include animation-delay(3000ms);
+								}
+								&:nth-child(2) {
+									@include animation-fill-mode(forwards);
+									@include animation-delay(3200ms);
+								}
+								&:nth-child(3) {
+									@include animation-fill-mode(forwards);
+									@include animation-delay(3400ms);
+								}
 								.splash-scene-guru-message {
 									position: absolute;
 									left: 7.5px;
@@ -1569,9 +1759,6 @@
 						}
 					}
 					@media screen and (min-width: 768px) {
-						.splash-scene-img:not(.opacity-0) {
-							@include opacity(1);
-						}
 						.splash-scene-markers, .splash-scene-prop-desktop {
 							display: block!important;
 						}

@@ -316,11 +316,17 @@
 	}
 }
 
+@mixin animation-direction($direction) {
+	-webkit-animation-direction: $direction;
+	-moz-animation-direction: $direction;
+	-o-animation-directionn: $direction;
+	animation-direction: $direction;
+}
 @mixin animation-timing-function($timing) {
-	-webkit-timing-function: $timing;
-	-moz-timing-function: $timing;
-	-o-timing-function: $timing;
-	timing-function: $timing;
+	-webkit-animation-timing-function: $timing;
+	-moz-animation-timing-function: $timing;
+	-o-animation-timing-function: $timing;
+	animation-timing-function: $timing;
 }
 @mixin animation-duration($duration) {
 	-webkit-animation-duration: $duration;
