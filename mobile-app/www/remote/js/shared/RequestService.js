@@ -184,7 +184,7 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
         for (var i = 0; i < errorArr.length; i++) {
           var indexError = errorArr[i];
           if (i !== errorArr.length - 2) {
-            errString += ", " + indexError;
+            errString += indexError + ", ";
           } else {
             errString += " and " + indexError;
           }
@@ -194,7 +194,28 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
 
 
       function validateRequestForm(requestForm) {
-        var errorArr = ["description", "where"];
+        errorArr = [];
+        if (!requestForm.category || !requestForm.category.name || !requestForm.category.name.length) {
+          errorArr.push('category')
+        }
+        if (!requestForm.subcategory || !requestForm.subcategory.name || !requestForm.subcategory.name.length) {
+          errorArr.push('subcategory')
+        }
+        if (!requestForm.description.content || !requestForm.description.content.length) {
+          errorArr.push('description')
+        } if (!requestForm.calendar_selected.length) {
+          errorArr.push('availability')
+        }
+        if (!requestForm.location|| !requestForm.location.latitude || !requestForm.location.longitude) {
+          errorArr.push('location')
+        }
+        if (!requestForm.payment_card) {
+          errorArr.push('payment card');
+        }
+
+        if ((!requestForm.price.selected && requestForm.price.selected !== 0)) {
+          errorArr.push('proposed price')
+        }
         return errorArr;
       }
     }
