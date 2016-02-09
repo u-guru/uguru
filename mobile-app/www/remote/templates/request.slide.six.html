@@ -65,20 +65,12 @@
                 </h1>
                 <div class="request-selection">
                     <div class="request-edit-cal">
-                        <div class="request-edit-cal-item">
-                            <h2>Wed, Jan 25</h2>
-                            <span>4pm-6pm</span>
+                        <div class="request-edit-cal-item" ng-repeat='dayWithRange in requestForm.calendar_selected_by_day | limitTo: 3'>
+                            <h2>{{dayWithRange.dayShort}}, {{dayWithRange.monthShort}} {{dayWithRange.date}}</h2>
+                            <span ng-repeat="range in dayWithRange.selected_ranges">{{range.startHour + ((range.startMinutes && (':' + range.startMinutes))||'') + range.startSuffix.toLowerCase()}}-{{range.endHour + ((range.endMinutes && (':' + range.endMinutes))||'') + range.endSuffix.toLowerCase()}}<span style='display:inline' ng-if='$index < dayWithRange.selected_ranges.length - 1'>, </span> </span>
                         </div>
-                        <div class="request-edit-cal-item">
-                            <h2>Sun, Jan 23</h2>
-                            <span>4-6pm, 10pm-12am</span>
-                        </div>
-                        <div class="request-edit-cal-item">
-                            <h2>Mon, Jan 24</h2>
-                            <span>4pm-6pm</span>
-                        </div>
-                        <div class="request-edit-cal-item">
-                            <h3>+ 4</h3>
+                        <div class="request-edit-cal-item" ng-if='requestForm.calendar_selected_by_day.length > 3'>
+                            <h3>+ {{requestForm.calendar_selected_by_day.length - 3}}</h3>
                         </div>
                     </div>
                 </div>

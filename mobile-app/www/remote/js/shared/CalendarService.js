@@ -24,6 +24,9 @@ function CalendarService() {
 
   function getCalendarRanges(arr) {
     var allRanges = [];
+    if (!arr || !arr.length) {
+      return;
+    }
     var currentRange = initDateRange(arr[0]);
 
     var consecRangeSequence = true;
@@ -59,13 +62,18 @@ function CalendarService() {
     if (currentRange && currentRange.end_time && currentRange.ranges.length) {
       currentRange.startDayShort = currentRange.ranges[0].dayObj.dayShort;
       currentRange.startDate = currentRange.ranges[0].dayObj.date;
+      currentRange.startHour = currentRange.ranges[0].start_hour;
+      currentRange.startMinutes = currentRange.ranges[0].start_minute;
+      currentRange.startSuffix = currentRange.ranges[0].suffix;
       currentRange.endDayShort = currentRange.ranges[currentRange.ranges.length - 1].dayObj.dayShort;
       currentRange.endDate = currentRange.ranges[currentRange.ranges.length - 1].dayObj.date;
+      currentRange.endHour = currentRange.ranges[currentRange.ranges.length - 1].end_hour;
+      currentRange.endMinutes = currentRange.ranges[currentRange.ranges.length - 1].end_minute;
+      currentRange.endSuffix = currentRange.ranges[currentRange.ranges.length - 1].suffix;
       allRanges.push(currentRange);
     }
     for (var i = 0; i < allRanges.length; i++) {
       var indexRange = allRanges[i];
-      console.log('range start', new Date(indexRange.start_time), new Date(indexRange.end_time), '\n');
     }
     return allRanges;
 
@@ -99,13 +107,14 @@ function CalendarService() {
         }
       }
       scope.requestForm.calendar_selected = resultArr;
-      console.log('selected calendar', resultArr);
       scope.requestForm.calendar_selected_ranges = getCalendarRanges(resultArr);
-      console.log('selected calendar by ranges', scope.requestForm.calendar_selected_ranges);
+      for (var i = 0; i < resultArrDay.length; i++) {
+        var indexDaySelected = resultArrDay[i];
+        indexDaySelected.selected_ranges = getCalendarRanges(indexDaySelected.selected);
+      }
       scope.requestForm.calendar_selected_by_day = resultArrDay;
-
-      console.log('selected calendar by day', resultArrDay);
-      // return resultArr;
+      console.log(scope.requestForm.calendar_selected_by_day);
+      return resultArr;
     }
   }
 
