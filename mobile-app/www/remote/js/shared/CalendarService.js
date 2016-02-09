@@ -29,28 +29,44 @@ function CalendarService() {
     var consecRangeSequence = true;
     for (var i = 1; i < arr.length; i++) {
       var indexRange = arr[i];
-      console.log(indexRange, 'current Range:', indexRange.js_obj_start, 'indexRange', currentRange.end_time);
       //start a new range
       if (!currentRange) {
         currentRange = initDateRange(arr[i]);
         continue;
       } else
-      if (indexRange.js_obj_start === currentRange.end_time) {
+      if (indexRange.js_obj_start === currentRange.end_time || (currentRange.end_time - currentRange.js_obj_start) < 5) {
         currentRange.end_time = indexRange.js_obj_end;
         currentRange.ranges.push(indexRange);
-        console.log(indexRange.js_obj_end, indexRange.js_obj_start, 'are connected');
+        console.log(new Date(indexRange.js_obj_start), new Date(indexRange.js_obj_end), 'are connected');
       } else {
-        currentRange.end_time = indexRange.js_obj_end;
-        currentRange.ranges.push(indexRange);
-        allRanges.push(JSON.parse(JSON.stringify(currentRange)));
-        var currentRange = null;
+        // currentRange.end_time = indexRange.js_obj_end;
+        // currentRange.ranges.push(indexRange);
+        currentRange.startDayShort = currentRange.ranges[0].dayObj.dayShort;
+        currentRange.startDate = currentRange.ranges[0].dayObj.date;
+        currentRange.startHour = currentRange.ranges[0].start_hour;
+        currentRange.startMinutes = currentRange.ranges[0].start_minute;
+        currentRange.startSuffix = currentRange.ranges[0].suffix;
+        currentRange.endDayShort = currentRange.ranges[currentRange.ranges.length - 1].dayObj.dayShort;
+        currentRange.endDate = currentRange.ranges[currentRange.ranges.length - 1].dayObj.date;
+        currentRange.endHour = currentRange.ranges[currentRange.ranges.length - 1].end_hour;
+        currentRange.endMinutes = currentRange.ranges[currentRange.ranges.length - 1].end_minute;
+        currentRange.endSuffix = currentRange.ranges[currentRange.ranges.length - 1].suffix;
+        allRanges.push(currentRange);
+        currentRange = initDateRange(arr[i]);
       }
     }
 
-    if (currentRange && currentRange.end_time && currentRange.ranges.length > 1) {
+    if (currentRange && currentRange.end_time && currentRange.ranges.length) {
+      currentRange.startDayShort = currentRange.ranges[0].dayObj.dayShort;
+      currentRange.startDate = currentRange.ranges[0].dayObj.date;
+      currentRange.endDayShort = currentRange.ranges[currentRange.ranges.length - 1].dayObj.dayShort;
+      currentRange.endDate = currentRange.ranges[currentRange.ranges.length - 1].dayObj.date;
       allRanges.push(currentRange);
     }
-
+    for (var i = 0; i < allRanges.length; i++) {
+      var indexRange = allRanges[i];
+      console.log('range start', new Date(indexRange.start_time), new Date(indexRange.end_time), '\n');
+    }
     return allRanges;
 
     function initDateRange(date_interval) {
@@ -99,13 +115,14 @@ function CalendarService() {
     var now = new Date();
 
     for (var i = 0; i < 7; i++) {
+      var now = new Date();
       now.setDate(now.getDate() + i);
       var indexDate = now;
       var formattedLongDay = getFormattedLongDay(indexDate.getDay());
       var formattedShortDay = formattedLongDay.slice(0,3)
       var formattedLongMonth = getFormattedLongMonth(indexDate.getMonth());
       var formattedShortMonth = formattedLongMonth.slice(0,3)
-      var dayDict = {hours: [], date: indexDate, day:indexDate.getDay(), dayLong: formattedLongDay, dayShort: formattedShortDay, month: indexDate.getMonth(), monthShort: formattedShortMonth, monthLong: formattedLongMonth};
+      var dayDict = {hours: [], date: indexDate.getDate(), day:indexDate.getDay(), dayLong: formattedLongDay, dayShort: formattedShortDay, month: indexDate.getMonth(), monthShort: formattedShortMonth, monthLong: formattedLongMonth};
       for (var j = 0; j < 24; j++) {
         var hourObjStart = (new Date(now)).setHours(j, 0, 0);
         // hourObjStart.
@@ -207,9 +224,6 @@ function CalendarService() {
     }
   }
 }
-
-
-
 
 
 

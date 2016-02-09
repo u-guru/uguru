@@ -45,11 +45,11 @@
             <div class='full-x p20xy uppercase bg-azure weight-600'>
                 {{requestForm.calendar[0].monthLong}}
             </div>
-            <div class='week-view'>
+            <div class='week-view' style='padding-bottom:40px;'>
                 <div class='ugrid-7 full-x'>
                     <div ng-repeat='day in ::requestForm.calendar' class='one-day p20x bg-charcoal full-y'>
                         <div class='one-day-header full-x p05xy bg-slate-50p txt-smoke weight-600 full-x'>
-                            {{::day.dayLong}}
+                            {{::day.dayLong}}, {{::day.monthShort}} {{::day.date}},
                         </div>
                         <div class='one-day-container full-xy'>
                             <span ng-repeat='hour in ::day.hours' class='hour flex-wrap-center full-xy relative' style="min-height:50px;" ng-class="{'bg-smoke txt-slate': hour.already_past}">

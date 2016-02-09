@@ -158,8 +158,8 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       scope: scope,
       map: {center: {latitude: lat, longitude: long}, options: getRequestMapOptions(), zoom:15, pan:true, control:{}, marker: getDefaultMarker(lat, long, color, scope)},
       nav: {
-        index: 0,
-        next: function() {slide_box.enableSlide(true); slide_box.next(); slide_box.enableSlide(false); scope.requestForm.nav.index += 1; if (scope.requestForm.nav.index === 4) {scope.requestForm.calendarGetSelected(scope)}},
+        index: 2,
+        next: function() {slide_box.enableSlide(true); slide_box.next(); slide_box.enableSlide(false); scope.requestForm.nav.index += 1; if (scope.requestForm.nav.index === 3) {scope.requestForm.calendarGetSelected(scope)}},
         previous: function() {slide_box.enableSlide(true); slide_box.previous(); slide_box.enableSlide(false); scope.requestForm.nav.index -= 1},
         switchTo: function(index) {slide_box.enableSlide(true); slide_box.slide(index, 250); slide_box.enableSlide(false); scope.requestForm.nav.index = index},
       },
