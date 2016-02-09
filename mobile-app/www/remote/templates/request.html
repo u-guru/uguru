@@ -38,13 +38,15 @@
 		<!-- All request form related ctas-->
 		<ion-pane ng-if='requestForm.category.name === "academic"' id='cta-modal-request-courses' class='absolute high-z-index full-xy hide-display cta-modal bg-charcoal' ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/student.courses.container.html'"></ion-pane>
 
+		<ion-pane id='cta-modal-request-payments' style='z-index:10000' class='absolute high-z-index full-xy hide-display cta-modal bg-charcoal' ng-controller='PaymentsController' ng-include="img_base + BASE + 'templates/student.payments.components.html'"></ion-pane>
+
 
 		<!-- Ion slide-->
 		<ion-slide-box id='request-form-slide-box' ng-init="disableSwipe()" show-pager='false' can-swipe-back='false' delegate-handle="request-form" on-slide-changed="slideHasChanged($index)" class='full-y'>
-			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.four.html'"></ion-slide>
 			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.one.html'"></ion-slide>
 			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.two.html'"></ion-slide>
 			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.three.html'"></ion-slide>
+			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.four.html'"></ion-slide>
 			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.five.html'"></ion-slide>
 			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.six.html'"></ion-slide>
 			<ion-slide ng-include="img_base + BASE + 'templates/request.slide.seven.html'"></ion-slide>

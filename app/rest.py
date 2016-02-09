@@ -2256,7 +2256,8 @@ class UserCardView(restful.Resource):
 
         card = request.json.get('card')
         debit_card = request.json.get('debit_card')
-
+        payment_card = request.json.get('payment_card')
+        print request.json
         # user is adding a card
         if debit_card:
             if not user.get_transfer_cards():
@@ -2264,7 +2265,7 @@ class UserCardView(restful.Resource):
             card = Card.initFromJson(request.json, user)
             return user, 200
 
-        if card:
+        if payment_card:
             if not user.get_payment_cards():
                 request.json['is_default_payment'] = True
             debit_card = Card.initFromJson(request.json, user)

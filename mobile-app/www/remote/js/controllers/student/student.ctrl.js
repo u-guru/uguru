@@ -117,6 +117,7 @@ angular.module('uguru.student.controllers', [])
                 //remove-later
                 $timeout(function() {
                     $ionicSlideBoxDelegate.$getByHandle('request-form').stop();
+                    $ionicSlideBoxDelegate.$getByHandle('request-form').enableSlide(false)
                 }, 1000)
             }
         })
@@ -125,7 +126,7 @@ angular.module('uguru.student.controllers', [])
         function initAllCTAS() {
             //ngAnimate
             var parentRef = '#desktop-student-home'
-            var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-student-request'];
+            var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-student-request', '#cta-box-request-payments'];
             var cbOptions = {'#cta-box-student-request': triggerRequestFormCTA};
             CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
             $timeout(function() {

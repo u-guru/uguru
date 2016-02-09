@@ -20,6 +20,25 @@ function GUtilService($timeout) {
     return new google.maps.places.PlacesService(map);
   }
 
+  function getAddressFromLatLng(lat, lng, scope) {
+      var gCoords = latCoordToGoogleLatLng(lat, lng);
+      var geoCoderObj = new google.maps.Geocoder();
+      var geoCodePayload = {location: gCoords};
+      geoCoderObj.geocode(geoCodePayload, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+          if (results.length) {
+            if (scope && scope.requestForm) {
+              scope.requestForm.address = results[0].formatted_address;
+              scope.requestForm.location = {latitude: results[0].geometry.location.lat(), longitude:results[0].geometry.location.lng()};
+              console.log(scope.requestForm.address, scope.requestForm.location);
+            }
+          }
+        } else {
+          console.log('GEOCODE ERROR:',results, status);
+        }
+      })
+  }
+
   function coordsToNearestPlace(map, coords, requestForm, types, radius) {
     var gCoords = latCoordToGoogleLatLng(coords.latitude, coords.longitude);
     var placeService = new google.maps.places.PlacesService(map);
@@ -30,7 +49,6 @@ function GUtilService($timeout) {
     function updateRequestFormWithPlace(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
            if (results.length) {
-            console.log(results.length, 'nearby places found <br>', results);
             for (var i = 0; i < results.length; i++) {
               console.log(results[i].name, results[i].types, results[i]);
             }
@@ -307,7 +325,8 @@ function GUtilService($timeout) {
     getNearestLocationManyMarkers: getNearestLocationManyMarkers,
     initSeveralMarkersWithLabel: initSeveralMarkersWithLabel,
     generateStaticMapUrls: generateStaticMapUrls,
-    coordsToNearestPlace: coordsToNearestPlace
+    coordsToNearestPlace: coordsToNearestPlace,
+    getAddressFromLatLng: getAddressFromLatLng
   }
 
 }

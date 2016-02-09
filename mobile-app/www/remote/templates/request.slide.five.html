@@ -4,96 +4,69 @@
             <h3>We’ll only charge you after your task is completed.</h3>
             <ul class="ugrid-4">
                 <li>
-                    <a>
+                    <a ng-class="{'active': requestForm.price.selected === 0}" ng-click='requestForm.price.selected = 0;'>
                         <svg viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100"></rect></svg>
                         <span>Nah!</span>
                     </a>
                 </li>
                 <li>
-                    <a class="active">
+                    <a ng-class="{'active': requestForm.price.selected === 5}" ng-click='requestForm.price.selected = 5;'>
                         <svg viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100"></rect></svg>
-                        <span>$1</span>
+                        <span>${{requestForm.price.proposed_options[1]}}</span>
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a ng-class="{'active': requestForm.price.selected === 10}" ng-click='requestForm.price.selected = 10;'>
                         <svg viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100"></rect></svg>
-                        <span>$5</span>
+                        <span>${{requestForm.price.proposed_options[2]}}</span>
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a ng-class="{'active': requestForm.price.proposed_options.indexOf(requestForm.price.selected) === -1}" ng-click='requestForm.price.showInput = true;'>
                         <svg viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100"></rect></svg>
-                        <svg class="add" viewBox="0 0 100 100">
+                        <svg class="add" viewBox="0 0 100 100" ng-if='requestForm.price.proposed_options.indexOf(requestForm.price.selected) > -1'>
                             <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
                         </svg>
+                        <span ng-if='requestForm.price.proposed_options.indexOf(requestForm.price.selected) === -1 && !requestForm.price.showInput'>
+                            ${{requestForm.price.selected}}
+                        </span>
+
                     </a>
-                    <div class="price-fill">
-                        <input/>
+                    <div class="price-fill" ng-class="{'show': requestForm.price.showInput}" >
+                        <div class='flex-wrap-center'>
+                            <input class='full-x text-center p05xy' placeholder="$7" ng-model="requestForm.price.selected" ng-focus="requestForm.price.focus()" ng-blur="requestForm.price.showInput = false;"/>
+                        </div>
                     </div>
                 </li>
             </ul>
         </div>
     <div class="payment-preferences">
         <h3>Select Payment Method</h3>
-        <div ng-controller='PaymentsController' class="main flex-wrap-center">
-
-            <ul class='ugrid-4 full-x'>
-                                <li> </li>
-                                <li style='height:180px;' class='p20xy'>
-                                    <a class='credit-card-wrapper'>
-                                        <div id="credit-card-visa" class="credit-card cf relative">
-                                            <span class="card-type absolute left-0 top-0 m15xy" ng-include="img_base + BASE + 'templates/cards/visa.html'"></span>
-                                            <span class="text-right absolute top-0 right-0 m15x m15y card-type txt-slate weight-700 uppercase">
-                                                <span class='txt-smoke block' style='padding:0;'>DEFAULT</span>
-                                                <span style='padding:0;' class='no-padding-y'>Debit Card</span>
-                                            </span>
-                                            <div class="card-number">**** **** **** 4242</div>
-                                            <div class="card-name">{{user.name}}</div>
-                                            <div class="valid">
-                                                <div class="group">Valid
-                                                    <br/>Thru</div>
-                                                <div class="expiry">**/**</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <form>
-                                        <div class="input-field relative">
-                                            <input ng-model='root.vars.cardForm.number' ng-disabled='root.vars.cardForm.view_only' autocomplete="off" id="card-number" type="tel" class="validate" />
-                                            <label for="email" class="ng-class:{'active':root.vars.cardForm.number.length}">Card Number</label>
-                                            <a ng-show="root.vars.cardForm.number.length" ng-click='root.vars.cardForm.number = "";' class="desktop-input-close-icon side-icon">
-                                                <i class='icon ion-close-circled'> </i>
-                                            </a>
-                                        </div>
-                                        <ul class="ugrid-2">
-                                            <li>
-                                                <div class="input-field">
-                                                    <input autocomplete="off" ng-disabled='root.vars.cardForm.view_only' ng-model='root.vars.cardForm.exp' id="exp-date" type="tel" class="validate" />
-                                                    <label for="password" class="ng-class:{'active':root.vars.cardForm.exp.length}">Expiration Date</label>
-                                                    <a ng-show="root.vars.cardForm.exp.length" ng-click='root.vars.cardForm.exp = "";' class="desktop-input-close-icon side-icon">
-                                                        <i class='icon ion-close-circled'> </i>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="input-field">
-                                                    <input autocomplete="off" ng-disabled='root.vars.cardForm.view_only' id="cvv-number" type="tel" class="validate" value="123" />
-                                                    <label for="password" class="active">CVV</label>
-                                                    <a class="desktop-input-close-icon side-icon">
-                                                        <i class='icon ion-close-circled'> </i>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="desktop-login-buttons">
-                                            <button class="bg-moola caps hide ng-class:{'show':!root.vars.cardForm.view_only}" ng-click='savePayment()'>Add Card</button>
-                                        </div>
-                                    </form>
-                                </li>
-                            </ul>
-
+        <div class='ugrid-3'>
+            <div>
+            </div>
+            <a class='credit-card-wrapper p20xy relative'>
+                <div class='flex-wrap-center' style='height:150px; max-width:300px;' ng-if='user.payment_cards || !user.payment_cards.length'>
+                    <div id="credit-card-visa" class="credit-card cf relative" style='opacity:0.5;'>
+                        <span class="card-type absolute left-0 top-0 m15xy" ng-include="img_base + BASE + 'templates/cards/visa.html'"></span>
+                        <span class="text-right absolute top-0 right-0 m15x m15y card-type txt-slate weight-700 uppercase">
+                            <span class='txt-smoke block' style='padding:0;'>DEFAULT</span>
+                            <span style='padding:0;' class='no-padding-y'>Debit Card</span>
+                        </span>
+                        <div class="card-number">**** **** **** 4242</div>
+                        <div class="card-name">{{user.name}}</div>
+                        <div class="valid">
+                            <div class="group">Valid
+                                <br/>Thru</div>
+                            <div class="expiry">**/**</div>
+                        </div>
+                    </div>
+                    <div class='text-charcoal weight-900 absolute left-0 full-xy high-index-z m15xy' id='cta-box-request-payments' style='background-color:transparent; z-index:10000; height:150px; max-width:300px;'>
+                        <div class='txt-charcoal flex-wrap-center'>
+                            Add One
+                        </div>
+                    </div>
+                </div>
+            </a>
         </div>
-    </div>
 </section>

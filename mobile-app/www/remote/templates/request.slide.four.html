@@ -1,5 +1,6 @@
 <section id="request-cta-map" class="request-slide full-xy text-center">
-    <div class='absolute high-z-index top-0 flex-center-wrap p15x p20y'>
+    <div ng-if='requestForm.address'class='absolute high-z-index top-0 flex-center-wrap p15x p20y bg-smoke'>
+        <h1 class='weight-600 uppercase txt-charcoal'> {{requestForm.address}} </h1>
     </div>
     <div class='map-container full-xy'>
         <ui-gmap-google-map
@@ -17,6 +18,7 @@
                     click='requestForm.map.marker.onClick()'
                     options='requestForm.map.marker.options'
                     control='requestForm.map.marker.control'
+                    events='requestForm.map.marker.events'
                     >
             </ui-gmap-marker>
 

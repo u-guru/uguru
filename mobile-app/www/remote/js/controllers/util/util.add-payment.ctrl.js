@@ -19,10 +19,11 @@
   $ionicSideMenuDelegate, $ionicActionSheet, LoadingService) {
 
     $scope.data = {card_exists: false};
+    $scope.card = {exp: '', number: '', cvc: '', placeholder:"**** **** **** 4242"};
 
     $scope.root.vars.cardForm = {number: '', exp:'', view_only:false};
 
-    if ($scope.LOCAL) {
+    if ($scope.LOCAL && $state.current.name === 'root.guru') {
       $scope.root.vars.cardForm.number = '4000056655665556';
       $scope.root.vars.cardForm.exp = '09 / 2016';
     }
@@ -66,14 +67,14 @@
     // add card
     $scope.savePayment = function() {
       LoadingService.showAmbig('Verifying', 10000);
-      var cardNum = $scope.root.vars.cardForm.number;
-      var expMM = $scope.root.vars.cardForm.exp.split(' / ')[0];
-      var expYY = $scope.root.vars.cardForm.exp.split(' / ')[1];
+      var cardNum = $scope.root.vars.cardForm.number || $scope.card.number;
+      var expMM = $scope.root.vars.cardForm.exp.split(' / ')[0] || $scope.card.exp.split(' / ')[0];
+      var expYY = $scope.root.vars.cardForm.exp.split(' / ')[1] || $scope.card.exp.split(' / ')[1];
 
       console.log('new details', cardNum, expMM, expYY);
 
       var stripeResponseHandler = function(status, response) {
-
+        console.log(response);
         if (response.error) {
             LoadingService.hide();
             $scope.error_msg = true;
@@ -86,7 +87,7 @@
             $scope.card_mm_text = '';
             $scope.card_yy_text = '';
         }
-        else if ($scope.debitCardOnly && response.card.funding !== "debit") {
+        else if ($scope.debitCardOnly && response.card.funding !== "debit" && $state.current.name !== 'root.student-home') {
             $scope.success.show(0, 2000, "Please Enter a Debit Card.\nYou entered a credit card.");
             if ($scope.cardYY && $scope.cardMM && $scope.cardInput) {
               $scope.cardYY.value = '';
@@ -101,14 +102,21 @@
             card_type: response.card.brand,
           }
 
-          cardInfo.debit_card = true;
-          cardInfo.is_transfer_card = true;
-          if (!$scope.user.transfer_cards) {
-            $scope.user.transfer_cards = [];
+          if ($state.current.name === 'root.student-home') {
+            cardInfo.is_payment_card = true;
+            if (!$scope.user.payment_cards) {
+              $scope.user.payment_cards = [];
+            }
+            cardInfo.payment_card = true;
+            $scope.user.payment_cards.push(cardInfo);
+          } else {
+            cardInfo.debit_card = true;
+            cardInfo.is_transfer_card = true;
+            if (!$scope.user.transfer_cards) {
+              $scope.user.transfer_cards = [];
+            }
+              $scope.user.transfer_cards.push(cardInfo);
           }
-          $scope.user.transfer_cards.push(cardInfo);
-
-
 
           $scope.user.cards.push(cardInfo);
 
@@ -198,13 +206,16 @@
       // paymentModalLink.click();
     }
 
-
-    $ionicModal.fromTemplateUrl(BASE + 'templates/add.payments.modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.addCardModal = modal;
-    });
+    $timeout(function() {
+      if (!$scope.desktopMode) {
+        $ionicModal.fromTemplateUrl(BASE + 'templates/add.payments.modal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.addCardModal = modal;
+        });
+      }
+    })
 
 
     $scope.setDefaultTransfer = function() {
@@ -272,9 +283,11 @@
             return "";
         }
 
-        // $timeout(function() {
-        //   initHandlers();
-        // })
+        $timeout(function() {
+          if ($state.current.name === 'root.student-home') {
+            initHandlers();
+          }
+        })
 
   }
 

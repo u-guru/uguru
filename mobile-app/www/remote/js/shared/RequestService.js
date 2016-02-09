@@ -36,18 +36,19 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     }
   }
 
-  function getDefaultMarker(lat, long, color) {
+  function getDefaultMarker(lat, long, color, scope) {
     return {
       idKey:1,
       coords: {latitude: lat, longitude: long},
-      events: {dragend: onRequestMarkerDragEnd, click: onRequestMarkerClick},
+      events: {dragend: onRequestMarkerDragEnd(scope)},
       options: defaultMarkerOptions(color, "Location")
     }
 
     function defaultMarkerOptions(color, text) {
       return {
         animation: google.maps.Animation.DROP,
-        icon: {url: generateUniversityImgDataURI(color, text), size: new google.maps.Size(170, 170), scaledSize: new google.maps.Size(100, 100)}
+        icon: {url: generateUniversityImgDataURI(color, text), size: new google.maps.Size(170, 170), scaledSize: new google.maps.Size(100, 100)},
+        draggable: true
       }
 
       function generateUniversityImgDataURI(color, text) {
@@ -56,8 +57,13 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       }
     }
 
-    function onRequestMarkerDragEnd() {
-      return;
+    function onRequestMarkerDragEnd(scope) {
+      return function(marker, eventName, model) {
+        var markerPos = marker.getPosition();
+        var markerLat = markerPos.lat();
+        var markerLng = markerPos.lng();
+        GUtilService.getAddressFromLatLng(markerLat, markerLng, scope);
+      }
     }
 
     function onRequestMarkerClick() {
@@ -112,8 +118,16 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     }
   }
 
+  function focusRequestPriceInput(scope) {
+    return function() {
+      if (scope.requestForm.price.proposed_options.indexOf(scope.requestForm.price.selected) > -1) {
+        scope.requestForm.price.selected = null;
+      };
+    }
+  }
+
+
   function initStudentForm(slide_box, scope, lat, long, color) {
-    console.log('subcategories', Category.getAcademic());
     $timeout(function() {
       FileService.initDropzoneFromSelector('#request-form-file-uploader', scope);
     }, 1000);
@@ -124,18 +138,21 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       urgent: true,
       category: {name: "academic"},
       subcategory: {},
+      address: '',
+      location: {latitude: null, longitude:null},
       setCategory: setRequestFormCategory,
       description: {content: '', placeholder: 'add details about your request here', showSaved: showDescriptionTextareaSaved, maxLength: 500, saved:false},
       tags: {list:[], add: addTagToRequestList, remove:removeTagFromTagList, showError:false, empty_tag: {placeholder:"+   add a tag", content: ''}},
       subcategory: {selected: null, options: Category.getAcademic()},
       files: [],
+      price: {proposed_options: [0, 5, 10], selected:10, custom_selected:false, showInput: false, focus: focusRequestPriceInput(scope)},
       payment_card: null,
       calendar: null,
       time_estimate: {hours: 1, minutes:30, showHours:false, showHoursToggle: toggleHoursDropdown, showMinutesToggle: toggleMinutesDropdown, showMinutes:false, setHours:setRequestTimeEstimateHours, setMinutes:setRequestTimeEstimateMinutes},
       position: {latitude: null, longitude: null},
       calendar: CalendarService.getNextSevenDaysArr(),
       scope: scope,
-      map: {center: {latitude: lat, longitude: long}, options: getRequestMapOptions(), zoom:15, pan:true, control:{}, marker: getDefaultMarker(lat, long, color)},
+      map: {center: {latitude: lat, longitude: long}, options: getRequestMapOptions(), zoom:15, pan:true, control:{}, marker: getDefaultMarker(lat, long, color, scope)},
       nav: {
         index: 0,
         next: function() {slide_box.enableSlide(true); slide_box.next(); slide_box.enableSlide(false); scope.requestForm.nav.index += 1},
@@ -166,7 +183,8 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
           var coords = {latitude: lat, longitude: lng};
           var types =['library', 'school', 'establishment', 'sublocality', 'store', 'food', 'university', 'cafe'];
           var radius = 500;
-          GUtilService.coordsToNearestPlace(requestMap, coords, scope.requestForm, types, radius);
+          // GUtilService.coordsToNearestPlace(requestMap, coords, scope.requestForm, types, radius);
+          GUtilService.getAddressFromLatLng(lat, lng, scope);
         }
           // instances.forEach(function(inst) {
           //     var map = inst.map;
