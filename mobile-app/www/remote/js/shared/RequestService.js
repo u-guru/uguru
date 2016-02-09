@@ -136,7 +136,7 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       course: null,
       addCourse: addCourseFromRequestForm,
       urgent: true,
-      category: {name: "academic"},
+      category: {},
       subcategory: {},
       address: '',
       location: {latitude: null, longitude:null},
@@ -148,6 +148,10 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       price: {proposed_options: [0, 5, 10], selected:10, custom_selected:false, showInput: false, focus: focusRequestPriceInput(scope)},
       payment_card: null,
       calendar: null,
+      calendar_selected: [],
+      calendar_selected_by_day: [],
+      calendar_selected_ranges: [],
+      calendarGetSelected: CalendarService.getCalendarSelected(),
       time_estimate: {hours: 1, minutes:30, showHours:false, showHoursToggle: toggleHoursDropdown, showMinutesToggle: toggleMinutesDropdown, showMinutes:false, setHours:setRequestTimeEstimateHours, setMinutes:setRequestTimeEstimateMinutes},
       position: {latitude: null, longitude: null},
       calendar: CalendarService.getNextSevenDaysArr(),
@@ -155,11 +159,11 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       map: {center: {latitude: lat, longitude: long}, options: getRequestMapOptions(), zoom:15, pan:true, control:{}, marker: getDefaultMarker(lat, long, color, scope)},
       nav: {
         index: 0,
-        next: function() {slide_box.enableSlide(true); slide_box.next(); slide_box.enableSlide(false); scope.requestForm.nav.index += 1},
+        next: function() {slide_box.enableSlide(true); slide_box.next(); slide_box.enableSlide(false); scope.requestForm.nav.index += 1; if (scope.requestForm.nav.index === 4) {scope.requestForm.calendarGetSelected(scope)}},
         previous: function() {slide_box.enableSlide(true); slide_box.previous(); slide_box.enableSlide(false); scope.requestForm.nav.index -= 1},
         switchTo: function(index) {slide_box.enableSlide(true); slide_box.slide(index, 250); slide_box.enableSlide(false); scope.requestForm.nav.index = index},
       },
-      confirm: confirmRequest,
+      confirm: validate,
       cancel: cancelRequest,
     }
 
@@ -168,6 +172,31 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       $timeout(function() {
         scope.requestForm.description.saved = false;
       }, 2000)
+    }
+
+    function validate(requestForm) {
+      console.log('validating...');
+      var errorArr = validateRequestForm(requestForm);
+      if (!errorArr.length) {
+        confirmRequest(requestForm);
+      } else {
+        var errString = "";
+        for (var i = 0; i < errorArr.length; i++) {
+          var indexError = errorArr[i];
+          if (i !== errorArr.length - 2) {
+            errString += ", " + indexError;
+          } else {
+            errString += " and " + indexError;
+          }
+        }
+        LoadingService.showMsg(errString, 3000);
+      }
+
+
+      function validateRequestForm(requestForm) {
+        var errorArr = ["description", "where"];
+        return errorArr;
+      }
     }
 
     function removeTagFromTagList(index) {

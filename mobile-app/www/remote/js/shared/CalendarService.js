@@ -10,7 +10,8 @@ function CalendarService() {
   return {
 
     initRequestCalendar: initRequestCalendar,
-    getNextSevenDaysArr: getNextSevenDaysArr
+    getNextSevenDaysArr: getNextSevenDaysArr,
+    getCalendarSelected: getCalendarSelected
 
   }
 
@@ -19,6 +20,77 @@ function CalendarService() {
 
   function initRequestCalendar() {
 
+  }
+
+  function getCalendarRanges(arr) {
+    var allRanges = [];
+    var currentRange = initDateRange(arr[0]);
+
+    var consecRangeSequence = true;
+    for (var i = 1; i < arr.length; i++) {
+      var indexRange = arr[i];
+      console.log(indexRange, 'current Range:', indexRange.js_obj_start, 'indexRange', currentRange.end_time);
+      //start a new range
+      if (!currentRange) {
+        currentRange = initDateRange(arr[i]);
+        continue;
+      } else
+      if (indexRange.js_obj_start === currentRange.end_time) {
+        currentRange.end_time = indexRange.js_obj_end;
+        currentRange.ranges.push(indexRange);
+        console.log(indexRange.js_obj_end, indexRange.js_obj_start, 'are connected');
+      } else {
+        currentRange.end_time = indexRange.js_obj_end;
+        currentRange.ranges.push(indexRange);
+        allRanges.push(JSON.parse(JSON.stringify(currentRange)));
+        var currentRange = null;
+      }
+    }
+
+    if (currentRange && currentRange.end_time && currentRange.ranges.length > 1) {
+      allRanges.push(currentRange);
+    }
+
+    return allRanges;
+
+    function initDateRange(date_interval) {
+      return {start_time: date_interval.js_obj_start, end_time: date_interval.js_obj_end, ranges:[date_interval]};
+    }
+  }
+
+  function getCalendarSelected() {
+    return function(scope) {
+      var calendar = scope.requestForm && scope.requestForm.calendar;
+      var resultArr = [];
+      var resultArrDay = [];
+      for (var i = 0; i < calendar.length; i++) {
+        var indexDay = calendar[i];
+        indexDay.selected = [];
+        for (var j = 0; j < indexDay.hours.length; j++) {
+          var indexHour = indexDay.hours[j];
+          for (var k = 0; k < indexHour.intervals.length; k++ ) {
+            var indexInterval = indexHour.intervals[k];
+            if (indexInterval.selected) {
+              indexInterval.dayObj = indexDay;
+              indexInterval.hourObj = indexHour;
+              resultArr.push(indexInterval);
+              indexDay.selected.push(indexInterval);
+            }
+          }
+        }
+        if (indexDay.selected && indexDay.selected.length) {
+          resultArrDay.push(indexDay);
+        }
+      }
+      scope.requestForm.calendar_selected = resultArr;
+      console.log('selected calendar', resultArr);
+      scope.requestForm.calendar_selected_ranges = getCalendarRanges(resultArr);
+      console.log('selected calendar by ranges', scope.requestForm.calendar_selected_ranges);
+      scope.requestForm.calendar_selected_by_day = resultArrDay;
+
+      console.log('selected calendar by day', resultArrDay);
+      // return resultArr;
+    }
   }
 
   // step 1
@@ -78,14 +150,15 @@ function CalendarService() {
       var intervalSize = 60 / num_intervals | 0;
       var resultArr =[]
       for (var i = 0; i < num_intervals; i++)  {
-        var end_hour_obj = (new Date(hour_obj)).setHours(index + 1)
+        var end_hour_obj = (new Date(hour_obj))
+        end_hour_obj.setMinutes(intervalSize * (i + 1));
         var hour_result_dict = {
           start_hour: index,
           already_past: already_past,
-          end_hour: (index + 1) % 24,
+          end_hour: end_hour_obj.getHours(),
           start_minute: intervalSize * i,
           js_obj_start: (new Date(hour_obj)).setMinutes(intervalSize * i),
-          js_obj_end: (new Date(end_hour_obj)).setMinutes((intervalSize * (i + 1)) % 60),
+          js_obj_end: (new Date(hour_obj)).setMinutes((intervalSize * (i + 1))),
           end_minute: (intervalSize * (i + 1)) % 60,
         }
         hour_result_dict.suffix = isAMorPM(index, hour_result_dict.start_minute, hour_result_dict.end_minute)
