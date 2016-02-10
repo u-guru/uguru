@@ -9,10 +9,11 @@ angular
     'CTAService',
     'uiGmapIsReady',
     'GUtilService',
+    'Restangular',
     RequestService
 	]);
 
-function RequestService(Category, CalendarService, $timeout, LoadingService, FileService, CTAService, uiGmapIsReady, GUtilService) {
+function RequestService(Category, CalendarService, $timeout, LoadingService, FileService, CTAService, uiGmapIsReady, GUtilService, Restangular) {
   var _types = {DEFAULT:0, QUICK_QA:1}
   var MAX_REQUEST_HOURS = 10;
   var requestCancelTimeout;
@@ -36,18 +37,19 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     }
   }
 
-  function getDefaultMarker(lat, long, color) {
+  function getDefaultMarker(lat, long, color, scope) {
     return {
       idKey:1,
       coords: {latitude: lat, longitude: long},
-      events: {dragend: onRequestMarkerDragEnd, click: onRequestMarkerClick},
+      events: {dragend: onRequestMarkerDragEnd(scope)},
       options: defaultMarkerOptions(color, "Location")
     }
 
     function defaultMarkerOptions(color, text) {
       return {
         animation: google.maps.Animation.DROP,
-        icon: {url: generateUniversityImgDataURI(color, text), size: new google.maps.Size(170, 170), scaledSize: new google.maps.Size(100, 100)}
+        icon: {url: generateUniversityImgDataURI(color, text), size: new google.maps.Size(170, 170), scaledSize: new google.maps.Size(100, 100)},
+        draggable: true
       }
 
       function generateUniversityImgDataURI(color, text) {
@@ -56,8 +58,13 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       }
     }
 
-    function onRequestMarkerDragEnd() {
-      return;
+    function onRequestMarkerDragEnd(scope) {
+      return function(marker, eventName, model) {
+        var markerPos = marker.getPosition();
+        var markerLat = markerPos.lat();
+        var markerLng = markerPos.lng();
+        GUtilService.getAddressFromLatLng(markerLat, markerLng, scope);
+      }
     }
 
     function onRequestMarkerClick() {
@@ -100,6 +107,55 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       requestContainerDiv.classList.add('request-confirming')
       requestContainerDiv.classList.remove('request-canceling')
     }
+    var requestPayload = formatRequestFormForServer(form);
+    sendRequestToServer(requestPayload);
+  }
+
+  function formatRequestFormForServer(form) {
+    if (form.calendar_selected_ranges && form.calendar_selected_ranges.length) {
+      for (var i = 0; i < form.calendar_selected_ranges.length; i++)   {
+        var indexRange = form.calendar_selected_ranges[i];
+        indexRange.ranges = null;
+      }
+    }
+
+    return {
+      category: {name: form.category.name, id:form.category.id},
+      subcategory: {name: form.subcategory.name, id:form.subcategory.id},
+      tags: form.tags.list,
+      files: form.files,
+      description: form.description.content,
+      calendar: form.calendar_selected_ranges,
+      location: {coords: form.location, address: form.address},
+      payment_card: form.payment_card,
+      time_estimate: {hours: form.time_estimate.hours, minutes: form.time_estimate.minutes},
+      proposed_price: form.price.selected,
+      timezone: new Date().getTimezoneOffset(),
+      user: form.scope.user,
+    }
+  }
+
+  function sendRequestToServer(payload) {
+    var userObj = payload.user;
+    payload.user = null;
+    console.log('requestObj', payload);
+    console.log('userObj', userObj);
+    Restangular
+        .one('user', userObj.id).one('requests')
+        .customPOST(JSON.stringify(payload))
+        .then(requestPostSuccess, requestPostError);
+  }
+
+  function requestPostSuccess(user) {
+    console.log('success - here is the user obj', user);
+  }
+
+  function requestPostError(err) {
+      console.log('error when sending request to form', err);
+  }
+
+  function cancelRequest(form) {
+    //
   }
 
   function cancelRequest(form) {
@@ -112,8 +168,16 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     }
   }
 
+  function focusRequestPriceInput(scope) {
+    return function() {
+      if (scope.requestForm.price.proposed_options.indexOf(scope.requestForm.price.selected) > -1) {
+        scope.requestForm.price.selected = null;
+      };
+    }
+  }
+
+
   function initStudentForm(slide_box, scope, lat, long, color) {
-    console.log('subcategories', Category.getAcademic());
     $timeout(function() {
       FileService.initDropzoneFromSelector('#request-form-file-uploader', scope);
     }, 1000);
@@ -122,27 +186,34 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       course: null,
       addCourse: addCourseFromRequestForm,
       urgent: true,
-      category: {name: "academic"},
+      category: {},
       subcategory: {},
+      address: '',
+      location: {latitude: null, longitude:null},
       setCategory: setRequestFormCategory,
       description: {content: '', placeholder: 'add details about your request here', showSaved: showDescriptionTextareaSaved, maxLength: 500, saved:false},
       tags: {list:[], add: addTagToRequestList, remove:removeTagFromTagList, showError:false, empty_tag: {placeholder:"+   add a tag", content: ''}},
       subcategory: {selected: null, options: Category.getAcademic()},
       files: [],
+      price: {proposed_options: [0, 5, 10], selected:10, custom_selected:false, showInput: false, focus: focusRequestPriceInput(scope)},
       payment_card: null,
       calendar: null,
+      calendar_selected: [],
+      calendar_selected_by_day: [],
+      calendar_selected_ranges: [],
+      calendarGetSelected: CalendarService.getCalendarSelected(),
       time_estimate: {hours: 1, minutes:30, showHours:false, showHoursToggle: toggleHoursDropdown, showMinutesToggle: toggleMinutesDropdown, showMinutes:false, setHours:setRequestTimeEstimateHours, setMinutes:setRequestTimeEstimateMinutes},
       position: {latitude: null, longitude: null},
       calendar: CalendarService.getNextSevenDaysArr(),
       scope: scope,
-      map: {center: {latitude: lat, longitude: long}, options: getRequestMapOptions(), zoom:15, pan:true, control:{}, marker: getDefaultMarker(lat, long, color)},
+      map: {center: {latitude: lat, longitude: long}, options: getRequestMapOptions(), zoom:15, pan:true, control:{}, marker: getDefaultMarker(lat, long, color, scope)},
       nav: {
         index: 0,
-        next: function() {slide_box.enableSlide(true); slide_box.next(); slide_box.enableSlide(false); scope.requestForm.nav.index += 1},
+        next: function() {slide_box.enableSlide(true); slide_box.next(); slide_box.enableSlide(false); scope.requestForm.nav.index += 1; if (scope.requestForm.nav.index === 3) {scope.requestForm.calendarGetSelected(scope)}},
         previous: function() {slide_box.enableSlide(true); slide_box.previous(); slide_box.enableSlide(false); scope.requestForm.nav.index -= 1},
         switchTo: function(index) {slide_box.enableSlide(true); slide_box.slide(index, 250); slide_box.enableSlide(false); scope.requestForm.nav.index = index},
       },
-      confirm: confirmRequest,
+      confirm: validate,
       cancel: cancelRequest,
     }
 
@@ -151,6 +222,52 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       $timeout(function() {
         scope.requestForm.description.saved = false;
       }, 2000)
+    }
+
+    function validate(requestForm) {
+      console.log('validating...');
+      var errorArr = validateRequestForm(requestForm);
+      if (!errorArr.length) {
+        confirmRequest(requestForm);
+      } else {
+        var errString = "";
+        for (var i = 0; i < errorArr.length; i++) {
+          var indexError = errorArr[i];
+          if (i !== errorArr.length - 2) {
+            errString += indexError + ", ";
+          } else {
+            errString += " and " + indexError;
+          }
+        }
+        LoadingService.showMsg(errString, 3000);
+      }
+
+
+      function validateRequestForm(requestForm) {
+        errorArr = [];
+        if (!requestForm.category || !requestForm.category.name || !requestForm.category.name.length) {
+          errorArr.push('category')
+        }
+        if (!requestForm.subcategory || !requestForm.subcategory.name || !requestForm.subcategory.name.length) {
+          errorArr.push('subcategory')
+        }
+        if (!requestForm.description.content || !requestForm.description.content.length) {
+          errorArr.push('description')
+        } if (!requestForm.calendar_selected.length) {
+          errorArr.push('availability')
+        }
+        if (!requestForm.location|| !requestForm.location.latitude || !requestForm.location.longitude) {
+          errorArr.push('location')
+        }
+        if (!requestForm.payment_card) {
+          errorArr.push('payment card');
+        }
+
+        if ((!requestForm.price.selected && requestForm.price.selected !== 0)) {
+          errorArr.push('proposed price')
+        }
+        return errorArr;
+      }
     }
 
     function removeTagFromTagList(index) {
@@ -166,7 +283,8 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
           var coords = {latitude: lat, longitude: lng};
           var types =['library', 'school', 'establishment', 'sublocality', 'store', 'food', 'university', 'cafe'];
           var radius = 500;
-          GUtilService.coordsToNearestPlace(requestMap, coords, scope.requestForm, types, radius);
+          // GUtilService.coordsToNearestPlace(requestMap, coords, scope.requestForm, types, radius);
+          GUtilService.getAddressFromLatLng(lat, lng, scope);
         }
           // instances.forEach(function(inst) {
           //     var map = inst.map;

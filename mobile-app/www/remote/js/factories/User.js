@@ -545,8 +545,8 @@ angular.module('uguru.user', [])
                 }
             }
 
-            var user_proposals = user.proposals;
-            if (user.proposals && user.proposals.length > 0) {
+            var user_proposals = user.guru_proposals;
+            if (user.guru_proposals && user.guru_proposals.length > 0) {
                 for (var i = 0; i < user_proposals.length; i ++) {
                     var index_proposal = user_proposals[i];
 
@@ -659,7 +659,7 @@ angular.module('uguru.user', [])
         $scope.user.last_position = user.last_position;
         $scope.user.requests = user.requests;
         $scope.user.sessions = user.sessions;
-        $scope.user.proposals = user.proposals;
+        $scope.user.guru_proposals = user.guru_proposals;
         $scope.user.cards = user.cards;
         $scope.user.guru_committed = user.guru_committed;
         $scope.user.student_transactions = user.student_transactions;

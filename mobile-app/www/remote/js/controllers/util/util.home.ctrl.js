@@ -481,9 +481,6 @@ angular.module('uguru.util.controllers')
           $timeout(function() {
             console.log(document.querySelector('#iscroll-wrapper'));
             $scope.homePageScroll = ScrollService.initIScroll('#iscroll-wrapper', {snap: 'section'});
-            setInterval(function() {
-              console.log($scope.homePageScroll.y, 'scroller position');
-            }, 1000)
           }, 5000)
 
           initSlideBoxRemote();
