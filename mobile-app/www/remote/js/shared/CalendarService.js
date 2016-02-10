@@ -75,6 +75,7 @@ function CalendarService() {
     for (var i = 0; i < allRanges.length; i++) {
       var indexRange = allRanges[i];
     }
+    console.log(allRanges);
     return allRanges;
 
     function initDateRange(date_interval) {

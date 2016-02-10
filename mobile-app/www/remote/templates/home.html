@@ -83,7 +83,7 @@
 
 		<header class='splash-header fixed top-0 high-z-index' id='home-nav-header' bind-wp="university" bind-wp-class="bg-charcoal" bind-wp-direction="down">
 			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
-			<div class="ugrid-3">
+			<div class="ugrid-3" id='translate-to'>
 				<a name='browse-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 1}" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
 				<a name='how-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 2}" ng-click='scrollToSection("#splash-browse")'>How It Works</a>
 				<a name='become-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 3}" ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
@@ -617,7 +617,7 @@
 
 					<div class="splash-scene-markers">
 						<div class="splash-scene-overlay opacity-0" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="7800"></div>
-						<span class="splash-marker opacity-0" style="top: calc(70px + 5%); right: 15%;" anim-on-show-child anim-on-show-class="bounceIn, active:keep" anim-on-show-delay="5400, 7800">
+						<span class="splash-marker opacity-0"  style="top: calc(70px + 5%); right: 15%;" anim-on-show-child anim-on-show-class="bounceIn, active:keep" anim-on-show-delay="5400, 7800">
 							<span anim-on-show-child anim-on-show-class="pulse:keep, infinite:keep, animated:keep" anim-on-show-delay="7800, 7800, 7800" ng-include="img_base + 'templates/svg/main/message.html'"></span>
 							<span anim-on-show-child anim-on-show-class="pulse:keep, infinite:keep, animated:keep" anim-on-show-delay="7800" ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
 							<span class="splash-marker-label opacity-0" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="7800, 7800, 7800">Rachel's Location</span>
@@ -775,7 +775,7 @@
 
 			<footer class="splash-scene-footer">
 				<ul>
-					<li>
+					<li translate-on-click translate-to-elem="#translate-to" translate-x-offset="200" translate-y-offset="200" id='example-translate-elem'>
 						<a class="splash-footer-share" ng-include="img_base + 'templates/svg/main/share.html'"></a>
 					</li>
 					<li>

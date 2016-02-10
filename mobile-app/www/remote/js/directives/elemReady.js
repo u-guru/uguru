@@ -37,6 +37,67 @@ angular.module('uguru.directives')
          });
       }
     };
+})
+.directive('translateOnClick', function () {
+    // add 'translate-to-click' to element to "declare" directive. "translate-active" is added to element if element does not have transform properties && transforms
+    // add 'translate-to-elem'="#sample-selector" to element to link destination element
+    // add 'translate-to-x'="200" to add 200px X offset (origin = bottom left);
+    // add 'translate-to-y'="200" to add 200px Y offset (origin = bottom left);
+    // add 'translate-back-class'="untransform-class-name1, untransform-class-name-2" adds the argument/class(es) when the transform is set to null (when element with attribute transforms)
+    return {
+        restrict: 'A',
+        link: function(scope, element, attr) {
+            var elementBounding = element[0].getBoundingClientRect();
+            var elemCoords = {height: elementBounding.height, width: elementBounding.width, top: elementBounding.top, left: elementBounding.left};
+
+            var translateElem = attr.translateToElem;
+            var translateElemBounding = document.querySelector(translateElem).getBoundingClientRect();
+            var translateElemCoords = {height: translateElemBounding.height, width: translateElemBounding.width, top: translateElemBounding.top, left: translateElemBounding.left};
+
+            element.bind('click', function() {
+              if (!element[0].style.webkitTransform && !element[0].style.MozTransform && !element[0].style.msTransform && !element[0].style.OTransform && !element[0].style.transform) {
+                var translateY = translateElemCoords.top - elemCoords.top + elemCoords.height - translateElemCoords.height + (attr.translateYOffset && parseInt(attr.translateYOffset)) || 0;
+                var translateX = translateElemCoords.left - elemCoords.left + (attr.translateXOffset && parseInt(attr.translateXOffset)) || 0;
+                var transFormString = "translate(" + translateX + "px, " + translateY + "px)"
+                element[0].style.webkitTransform = transFormString;
+                element[0].style.MozTransform = transFormString;
+                element[0].style.msTransform = transFormString;
+                element[0].style.OTransform = transFormString;
+                element[0].style.transform = transFormString;
+                element[0].classList.add('translate-active');
+                console.log(translateElemCoords, elemCoords, transFormString, element[0], 'with Xoffset', attr.translateXOffset, 'and y offset', attr.translateYOffset);
+
+                //deactivate other directives with transforms towards the same element "translate-to-elem";
+                var allTranslateOnClickElems = element.querySelectorAll("[translate-on-click]");
+                for (var i = 0; i < allTranslateOnClickElems.length; i++) {
+                  var indexTranslateElem  = allTranslateOnClickElems[i];
+                  indexTranslateElem.classList.remove('translate-active');
+                  if (indexTranslateElem !== element[0]) {
+                    var hasTranslateBackAttr = indexTranslateElem.getAttribute('translate-back-class');
+                    if (hasTranslateBackAttr && hasTranslateBackAttr.length) {
+                      var indexTranslateElemClasses = hasTranslateBackAttr.split(', ');
+                      for (var j = 0; j < indexTranslateElemClasses.length; j++) {
+                        var indexClassToAdd = indexTranslateElemClasses[j];
+                        indexTranslateElem.classList.add(indexClassToAdd);
+                        element[0].style.webkitTransform = null;
+                        element[0].style.MozTransform = null;
+                        element[0].style.msTransform = null;
+                        element[0].style.OTransform = null;
+                        element[0].style.transform = null;
+                      }
+                      setTimeout(function() {
+                        for (var k = 0; k < indexTranslateElemClasses.length; k++) {
+                          var indexClassToAdd = indexTranslateElemClasses[k];
+                          indexTranslateElem.classList.remove(indexClassToAdd);
+                        }
+                      }, 2000);
+                    }
+                  }
+                }
+              }
+            });
+      }
+    };
 }).
 directive("animEnterDown", ["AnimationService", "$timeout", function (AnimationService, $timeout) {
       return {

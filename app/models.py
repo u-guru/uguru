@@ -1241,6 +1241,9 @@ class University(Base):
             self.courses_sanitized = True
             db_session.commit()
 
+    def getSubcategoryGurus(self, subcategory):
+        return [guru for guru in self.gurus if subcategory in guru.guru_subcategories]
+
     def sanitizeDepartments(self):
         count = 0
         for d in self.departments:
@@ -1509,6 +1512,7 @@ class Position(Base):
     heading = Column(Float)
     speed = Column(Float)
     timestamp = Column(Float)
+    address = Column(String)
 
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship("User",
@@ -1547,8 +1551,6 @@ class Position(Base):
             db_session.rollback()
             raise
         return position
-
-
 
 
 
@@ -1866,6 +1868,8 @@ class Request(Base):
 
     time_created = Column(DateTime)
     time_accepted = Column(DateTime)
+    tz_offset = Column(Integer)
+
     high_school = Column(Boolean, default=False)
     hs_request_option = Column(String)
 
@@ -1903,6 +1907,23 @@ class Request(Base):
         uselist=False,
         backref='requests')
 
+    category_id = Column(Integer, ForeignKey('category.id'))
+    category = relationship("Category",
+        primaryjoin = "Category.id == Request.category_id",
+        )
+
+    category_id = Column(Integer, ForeignKey('category.id'))
+    category = relationship("Category",
+        primaryjoin = "Category.id == Request.category_id",
+        uselist=False,
+        )
+
+    subcategory_id = Column(Integer, ForeignKey('subcategory.id'))
+    subcategory = relationship("Subcategory",
+        primaryjoin = "Subcategory.id == Request.subcategory_id",
+        uselist=False,
+        )
+
     ## TODO REQUEST PAYMENT ID
 
     address = Column(String)
@@ -1910,7 +1931,7 @@ class Request(Base):
     online = Column(Boolean)
     time_estimate = Column(Integer)
 
-    category = Column(String)
+    # category = Column(String)
 
     contact_email = Column(Boolean)
     contact_push = Column(Boolean)
@@ -1978,6 +1999,31 @@ class Request(Base):
         if self.status == 0 or self.status == 1:
             return True
         return False
+
+
+    @staticmethod
+    def dispatchRequestToGurus(_request):
+        category = _request.category
+        subcategory = _request.subcategory
+        gurus = _request.university.getSubcategoryGurus(subcategory)
+        print len(gurus), 'found'
+        print gurus
+        for guru in gurus:
+            proposal = Proposal.initProposal(_request.id, guru.id, None)
+
+            # if guru.push_notifications:
+            #     from app.lib.push_notif import send_student_request_to_guru
+            #     send_student_request_to_guru(_request, guru)
+
+            if guru.email_notifications and guru.email:
+
+                from app.emails import send_student_request_to_guru
+                send_student_request_to_guru(_request, guru)
+
+            if guru.text_notifications and guru.phone_number:
+                from app.texts import send_student_request_to_guru
+                send_student_request_to_guru(_request, guru)
+
 
 
     @staticmethod
@@ -2111,7 +2157,7 @@ class Proposal(Base):
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
         primaryjoin = "User.id == Proposal.guru_id",
-        backref="proposals"
+        backref="guru_proposals"
     )
 
     guru_rank = Column(Integer)

@@ -470,7 +470,7 @@ UserSerializer = {
     'last_position': fields.Nested(position_fields),
     'requests': fields.List(fields.Nested(request_fields)),
     # 'sessions': fields.List(fields.Nested(session_fields)),
-    # 'proposals': fields.List(fields.Nested(proposal_fields)),
+    'guru_proposals': fields.List(fields.Nested(proposal_fields)),
     'cards': fields.List(fields.Nested(card_fields)),
     'phone_number': fields.String,
     'phone_number_token': fields.String,
