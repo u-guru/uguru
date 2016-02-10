@@ -94,74 +94,6 @@
   }
 }
 
-@-webkit-keyframes splash-scene-android {
-  0% {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-  }
-  100% {
-    -webkit-transform: scale(0.7);
-    -moz-transform: scale(0.7);
-    -ms-transform: scale(0.7);
-    -o-transform: scale(0.7);
-    transform: scale(0.7);
-  }
-}
-
-@-moz-keyframes splash-scene-android {
-  0% {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-  }
-  100% {
-    -webkit-transform: scale(0.7);
-    -moz-transform: scale(0.7);
-    -ms-transform: scale(0.7);
-    -o-transform: scale(0.7);
-    transform: scale(0.7);
-  }
-}
-
-@-ms-keyframes splash-scene-android {
-  0% {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-  }
-  100% {
-    -webkit-transform: scale(0.7);
-    -moz-transform: scale(0.7);
-    -ms-transform: scale(0.7);
-    -o-transform: scale(0.7);
-    transform: scale(0.7);
-  }
-}
-
-@keyframes splash-scene-android {
-  0% {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-  }
-  100% {
-    -webkit-transform: scale(0.7);
-    -moz-transform: scale(0.7);
-    -ms-transform: scale(0.7);
-    -o-transform: scale(0.7);
-    transform: scale(0.7);
-  }
-}
-
 @-webkit-keyframes progress-bar {
   0% {
     width: 15%;
@@ -236,10 +168,10 @@
     -ms-transform-origin: top right;
     -o-transform-origin: top right;
     transform-origin: top right;
-    -webkit-timing-function: ease-in-out;
-    -moz-timing-function: ease-in-out;
-    -o-timing-function: ease-in-out;
-    timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
   }
   20%, 60% {
     -webkit-transform: rotate3d(0, 0, 1, -80deg);
@@ -252,10 +184,10 @@
     -ms-transform-origin: top right;
     -o-transform-origin: top right;
     transform-origin: top right;
-    -webkit-timing-function: ease-in-out;
-    -moz-timing-function: ease-in-out;
-    -o-timing-function: ease-in-out;
-    timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
   }
   40%, 80% {
     -webkit-transform: rotate3d(0, 0, 1, -60deg);
@@ -268,10 +200,10 @@
     -ms-transform-origin: top right;
     -o-transform-origin: top right;
     transform-origin: top right;
-    -webkit-timing-function: ease-in-out;
-    -moz-timing-function: ease-in-out;
-    -o-timing-function: ease-in-out;
-    timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
     filter: alpha(opacity=100);
     opacity: 1;
   }
@@ -293,10 +225,10 @@
     -ms-transform-origin: top right;
     -o-transform-origin: top right;
     transform-origin: top right;
-    -webkit-timing-function: ease-in-out;
-    -moz-timing-function: ease-in-out;
-    -o-timing-function: ease-in-out;
-    timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
   }
   20%, 60% {
     -webkit-transform: rotate3d(0, 0, 1, -80deg);
@@ -309,10 +241,10 @@
     -ms-transform-origin: top right;
     -o-transform-origin: top right;
     transform-origin: top right;
-    -webkit-timing-function: ease-in-out;
-    -moz-timing-function: ease-in-out;
-    -o-timing-function: ease-in-out;
-    timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
   }
   40%, 80% {
     -webkit-transform: rotate3d(0, 0, 1, -60deg);
@@ -325,10 +257,10 @@
     -ms-transform-origin: top right;
     -o-transform-origin: top right;
     transform-origin: top right;
-    -webkit-timing-function: ease-in-out;
-    -moz-timing-function: ease-in-out;
-    -o-timing-function: ease-in-out;
-    timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
     filter: alpha(opacity=100);
     opacity: 1;
   }
@@ -350,10 +282,10 @@
     -ms-transform-origin: top right;
     -o-transform-origin: top right;
     transform-origin: top right;
-    -webkit-timing-function: ease-in-out;
-    -moz-timing-function: ease-in-out;
-    -o-timing-function: ease-in-out;
-    timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
   }
   20%, 60% {
     -webkit-transform: rotate3d(0, 0, 1, -80deg);
@@ -366,10 +298,10 @@
     -ms-transform-origin: top right;
     -o-transform-origin: top right;
     transform-origin: top right;
-    -webkit-timing-function: ease-in-out;
-    -moz-timing-function: ease-in-out;
-    -o-timing-function: ease-in-out;
-    timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
   }
   40%, 80% {
     -webkit-transform: rotate3d(0, 0, 1, -60deg);
@@ -382,10 +314,10 @@
     -ms-transform-origin: top right;
     -o-transform-origin: top right;
     transform-origin: top right;
-    -webkit-timing-function: ease-in-out;
-    -moz-timing-function: ease-in-out;
-    -o-timing-function: ease-in-out;
-    timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
     filter: alpha(opacity=100);
     opacity: 1;
   }
@@ -407,10 +339,10 @@
     -ms-transform-origin: top right;
     -o-transform-origin: top right;
     transform-origin: top right;
-    -webkit-timing-function: ease-in-out;
-    -moz-timing-function: ease-in-out;
-    -o-timing-function: ease-in-out;
-    timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
   }
   20%, 60% {
     -webkit-transform: rotate3d(0, 0, 1, -80deg);
@@ -423,10 +355,10 @@
     -ms-transform-origin: top right;
     -o-transform-origin: top right;
     transform-origin: top right;
-    -webkit-timing-function: ease-in-out;
-    -moz-timing-function: ease-in-out;
-    -o-timing-function: ease-in-out;
-    timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
   }
   40%, 80% {
     -webkit-transform: rotate3d(0, 0, 1, -60deg);
@@ -439,10 +371,10 @@
     -ms-transform-origin: top right;
     -o-transform-origin: top right;
     transform-origin: top right;
-    -webkit-timing-function: ease-in-out;
-    -moz-timing-function: ease-in-out;
-    -o-timing-function: ease-in-out;
-    timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
     filter: alpha(opacity=100);
     opacity: 1;
   }
@@ -586,10 +518,10 @@
 
 @-webkit-keyframes bounceInLeft-bg-1 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -634,10 +566,10 @@
 
 @-moz-keyframes bounceInLeft-bg-1 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -682,10 +614,10 @@
 
 @-ms-keyframes bounceInLeft-bg-1 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -730,10 +662,10 @@
 
 @keyframes bounceInLeft-bg-1 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -778,10 +710,10 @@
 
 @-webkit-keyframes bounceInRight-bg-2 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=100);
@@ -826,10 +758,10 @@
 
 @-moz-keyframes bounceInRight-bg-2 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=100);
@@ -874,10 +806,10 @@
 
 @-ms-keyframes bounceInRight-bg-2 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=100);
@@ -922,10 +854,10 @@
 
 @keyframes bounceInRight-bg-2 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=100);
@@ -970,10 +902,10 @@
 
 @-webkit-keyframes bounceInUp-bg-3 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1018,10 +950,10 @@
 
 @-moz-keyframes bounceInUp-bg-3 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1066,10 +998,10 @@
 
 @-ms-keyframes bounceInUp-bg-3 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1114,10 +1046,10 @@
 
 @keyframes bounceInUp-bg-3 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1162,10 +1094,10 @@
 
 @-webkit-keyframes bounceInLeft-bg-4 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1210,10 +1142,10 @@
 
 @-moz-keyframes bounceInLeft-bg-4 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1258,10 +1190,10 @@
 
 @-ms-keyframes bounceInLeft-bg-4 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1306,10 +1238,10 @@
 
 @keyframes bounceInLeft-bg-4 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1354,10 +1286,10 @@
 
 @-webkit-keyframes bounceInUp-bg-5 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1402,10 +1334,10 @@
 
 @-moz-keyframes bounceInUp-bg-5 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1450,10 +1382,10 @@
 
 @-ms-keyframes bounceInUp-bg-5 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1498,10 +1430,10 @@
 
 @keyframes bounceInUp-bg-5 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1546,10 +1478,10 @@
 
 @-webkit-keyframes bounceInRight-bg-6 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   from {
     filter: alpha(opacity=0);
@@ -1594,10 +1526,10 @@
 
 @-moz-keyframes bounceInRight-bg-6 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   from {
     filter: alpha(opacity=0);
@@ -1642,10 +1574,10 @@
 
 @-ms-keyframes bounceInRight-bg-6 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   from {
     filter: alpha(opacity=0);
@@ -1690,10 +1622,10 @@
 
 @keyframes bounceInRight-bg-6 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   from {
     filter: alpha(opacity=0);
@@ -1738,10 +1670,10 @@
 
 @-webkit-keyframes bounceInLeft-hiw-1 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1786,10 +1718,10 @@
 
 @-moz-keyframes bounceInLeft-hiw-1 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1834,10 +1766,10 @@
 
 @-ms-keyframes bounceInLeft-hiw-1 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1882,10 +1814,10 @@
 
 @keyframes bounceInLeft-hiw-1 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1930,10 +1862,10 @@
 
 @-webkit-keyframes bounceInDown-hiw-2 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -1978,10 +1910,10 @@
 
 @-moz-keyframes bounceInDown-hiw-2 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2026,10 +1958,10 @@
 
 @-ms-keyframes bounceInDown-hiw-2 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2074,10 +2006,10 @@
 
 @keyframes bounceInDown-hiw-2 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2122,10 +2054,10 @@
 
 @-webkit-keyframes bounceInRight-hiw-3 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2170,10 +2102,10 @@
 
 @-moz-keyframes bounceInRight-hiw-3 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2218,10 +2150,10 @@
 
 @-ms-keyframes bounceInRight-hiw-3 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2266,10 +2198,10 @@
 
 @keyframes bounceInRight-hiw-3 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2314,10 +2246,10 @@
 
 @-webkit-keyframes bounceInLeft-hiw-4 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2362,10 +2294,10 @@
 
 @-moz-keyframes bounceInLeft-hiw-4 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2410,10 +2342,10 @@
 
 @-ms-keyframes bounceInLeft-hiw-4 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2458,10 +2390,10 @@
 
 @keyframes bounceInLeft-hiw-4 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2506,10 +2438,10 @@
 
 @-webkit-keyframes bounceInUp-hiw-5 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2554,10 +2486,10 @@
 
 @-moz-keyframes bounceInUp-hiw-5 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2602,10 +2534,10 @@
 
 @-ms-keyframes bounceInUp-hiw-5 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2650,10 +2582,10 @@
 
 @keyframes bounceInUp-hiw-5 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2698,10 +2630,10 @@
 
 @-webkit-keyframes bounceInRight-hiw-6 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2746,10 +2678,10 @@
 
 @-moz-keyframes bounceInRight-hiw-6 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2794,10 +2726,10 @@
 
 @-ms-keyframes bounceInRight-hiw-6 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
@@ -2842,10 +2774,10 @@
 
 @keyframes bounceInRight-hiw-6 {
   0%, 60%, 75%, 90%, 100% {
-    -webkit-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -moz-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -o-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     filter: alpha(opacity=0);
