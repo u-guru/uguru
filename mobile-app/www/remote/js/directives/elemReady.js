@@ -99,7 +99,72 @@ angular.module('uguru.directives')
       }
     };
 }).
-directive("animEnterDown", ["AnimationService", "$timeout", function (AnimationService, $timeout) {
+directive("classOnLoad", ["$timeout", 'AnimationService', function ($timeout, AnimationService) {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+              $timeout(function() {
+                scope.$watch('root.loader.body.hide', function(value) {
+                  if (value) {
+                    var delay = attr.classOnLoadDelay || 0;
+                    var classes = attr.classOnLoad.split(", ");
+                    $timeout(function() {
+                      for (var i = 0; i < classes.length; i++) {
+                        var indexClass = classes[i].split(":")[0];
+                        var classArgs = classes[i].split(":").slice(1);
+                        if (classArgs.indexOf("anim") > -1) {
+                          if (classArgs.indexOf("keep") > -1) {
+                            indexClass = indexClass +':keep';
+                          }
+                          AnimationService.animateIn(element[0], indexClass);
+                        } else {
+                          element[0].classList.add(indexClass);
+                        }
+                      }
+                      scope.$apply();
+                    }, delay)
+                  }
+                });
+              })
+          }
+      };
+}]).
+directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, AnimationService) {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+              element.on("click", function() {
+                var delay = attr.classOnClickDelay || 0;
+                var classes = attr.classOnClick.split(", ");
+                $timeout(function() {
+                    for (var i = 0; i < classes.length; i++) {
+                      var indexClass = classes[i].split(":")[0];
+                      var classArgs = classes[i].split(":").slice(1);
+                      if (classArgs.indexOf("anim") > -1) {
+                        if (classArgs.indexOf("keep") > -1) {
+                          indexClass = indexClass +':keep';
+                        }
+                        AnimationService.animateIn(element[0], indexClass);
+                      } else {
+                        element[0].classList.add(indexClass);
+                      }
+                      if (classArgs.indexOf("unique") > -1) {
+                        var otherClassElems = document.querySelectorAll('.' + indexClass);
+                        console.log(otherClassElems);
+                        for (var j = 0; j < otherClassElems.length; j++) {
+                          var otherElemIndex = otherClassElems[j];
+                          if (otherElemIndex !== element[0]) {
+                            otherElemIndex.classList.remove(indexClass);
+                          }
+                        }
+                      }
+                    }
+                }, delay);
+              });
+            }
+          }
+}])
+.directive("animEnterDown", ["AnimationService", "$timeout", function (AnimationService, $timeout) {
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
