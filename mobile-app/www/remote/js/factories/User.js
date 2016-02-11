@@ -555,19 +555,11 @@ angular.module('uguru.user', [])
                         user.previous_proposals.push(index_proposal);
                     }
 
-                    else if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 0) {
+                    else if (index_proposal.status === 0 && index_proposal.request.status === 0) {
                         index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
 
                         index_proposal.request = processStudentRequestCalendar(index_proposal.request)
                         user.active_proposals.push(index_proposal);
-                    } else
-                    if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 1) {
-                        index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
-                        user.active_questions.push(index_proposal);
-                    } else
-                    if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 2) {
-                        index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
-                        user.active_tasks.push(index_proposal);
                     } else
                     if (index_proposal.status === 2) {
                         console.log('pending proposal', index_proposal);
@@ -1391,15 +1383,15 @@ angular.module('uguru.user', [])
                             callback($scope);
                         }
 
-                        if ($scope.user && $scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
-                            console.log('incoming request exists');
-                            $scope.root.vars.processIncomingRequests($scope.user.incoming_requests);
-                        }
+                        // if ($scope.user && $scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
+                        //     console.log('incoming request exists');
+                        //     $scope.root.vars.processIncomingRequests($scope.user.incoming_requests);
+                        // }
 
-                         if ($scope.user && $scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
-                            console.log('active proposal exists');
-                            $scope.root.vars.processActiveProposalsGuru($scope.user.active_proposals);
-                         }
+                        //  if ($scope.user && $scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
+                        //     console.log('active proposal exists');
+                        //     $scope.root.vars.processActiveProposalsGuru($scope.user.active_proposals);
+                        //  }
 
 
 

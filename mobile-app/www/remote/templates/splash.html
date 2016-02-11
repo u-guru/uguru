@@ -1,0 +1,75 @@
+<!-- <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="::img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view>  -->
+
+<!-- <ion-view> -->
+<!-- <ion-content overflow-scroll='true' class='full-xy'> -->
+<div class='relative' id='iscroll-wrapper' style='height:calc(100%); width:calc(100%); overflow:hidden !important;'>
+
+	<main id='home-splash' class='splash-landing hs-view full-xy'>
+
+		<!-- START Home Page CTAs -->
+
+		<aside id='cta-modal-sidebar' class='splash-sidebar bg-charcoal ng-class: ::{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}' ng-include="::img_base + BASE + 'templates/one.university.sidebar.html'">
+		</aside>
+
+		<!-- END Home Page CTAS -->
+
+		<header class='splash-header fixed top-0 high-z-index' id='home-nav-header' >
+			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
+			<div class="ugrid-3" id='translate-to'>
+				<a name='browse-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 1}" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
+				<a name='how-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 2}" ng-click='scrollToSection("#splash-browse")'>How It Works</a>
+				<a name='become-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 3}" ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
+				<hr/>
+			</div>
+			<div class="right">
+				<a name='sidebar' class="splash-burger" id='cta-box-sidebar'>
+					<svg viewBox="0 0 100 100">
+						<circle cx="50" cy="50" r="36"></circle>
+						<path d="M31,35.5 L69,35.5"></path>
+						<path d="M31,50.5 L69,50.5"></path>
+						<path d="M31,65.5 L69,65.5"></path>
+					</svg>
+				</a>
+				<a class="splash-nav-link highlight ng-class:{'hide':!user.id && !user.first_name}" ng-click='goToStudentHome()'>Dashboard</a>
+				<a class="splash-nav-link highlight ng-class:{'hide':user.id}" ng-click='goToSignup()'>Login</a>
+			</div>
+		</header>
+
+		<section id='splash-home' class='splash-hero relative' style='height:calc(100%); width:calc(100%);'>
+			<div class='absolute full-xy flex-wrap-center top-0 left-0 bg-slate'>
+				<div class='p20xy weight-400 opacity-0 bg-cerise' class-on-click="tada:anim:unique:inject#inject-1|bg-auburn-impt" class-on-load="bounceInUp:anim" class-on-load-delay="500">
+					OnLoad Element
+				</div>
+				<div class='p20xy m20x weight-400 opacity-0 bg-moola' class-on-click="tada:anim:keep" class-on-load="bounceInUp:anim" class-on-load-delay="800" id='inject-1'>
+					OnLoad Element
+				</div>
+			</div>
+		</section>
+
+		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'>
+
+		</section>
+
+		<section class='splash-categories' id='splash-browse'>
+
+		</section>
+
+		<section id='become-guru'  class="splash-postit ng-class:{'hide':!page.load.sections.five.display}">
+		</section>
+
+		<section id="splash-footer" class="ng-class:{'hide': !page.load.sections.footer.display}">
+			<div>
+				<ul>
+					<li>proudly made&nbsp;with</li>
+					<li>
+						<span ng-include="::img_base + 'templates/svg/main/heart.html'"></span>
+					</li>
+					<li>by college students</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+	</main>
+</div>
+<!-- </ion-content> -->
+<!-- </ion-view> -->

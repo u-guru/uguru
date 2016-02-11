@@ -272,6 +272,7 @@ message_fields['time_created'] = fields.DateTime(attribute='time_created')
 message_fields['time_sent'] = fields.DateTime(attribute='time_sent')
 message_fields['time_seen'] = fields.DateTime(attribute='time_seen')
 message_fields['id'] = fields.Integer(attribute='id')
+message_fields['_file'] = fields.Nested(file_fields)
 message_fields['contents'] = fields.String(attribute = 'contents')
 message_fields['session_id'] = fields.Integer(attribute='session_id')
 

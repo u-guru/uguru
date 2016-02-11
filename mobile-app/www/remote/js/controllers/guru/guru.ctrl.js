@@ -68,7 +68,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     'cta-box-billing': '.guru-home-container',
     'cta-box-tour': '.guru-home-container',
     'cta-box-content': '.guru-home-container',
-    'cta-box-proposals': '.guru-home-container',
+    'cta-box-proposals': '.guru-home-container'
   }
 
   $scope.launchCtaDict = {};
