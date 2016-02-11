@@ -17,6 +17,7 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
   var _types = {DEFAULT:0, QUICK_QA:1}
   var MAX_REQUEST_HOURS = 10;
   var requestCancelTimeout;
+  var constants = {GURU_ACCEPTED: 2}
 
   function getMaxNumHourArr() {
     var result = [];
@@ -71,6 +72,43 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       return;
     }
 
+  }
+
+  function acceptGuruForRequest(user_id, request, success, failure) {
+
+      var payload = request;
+      Restangular
+        .one('user', user_id).one('sessions')
+        .customPOST(JSON.stringify(payload))
+        .then(sessionPostSuccess, sessionPostFailure);
+      function sessionPostSuccess(user) {
+        console.log('success - here is the user obj', user);
+        success && success();
+      }
+
+      function sessionPostFailure(err) {
+          console.log('error when sending request to form', err);
+          failure && failure();
+      }
+  }
+
+  function acceptStudentRequest(user_id, proposal, success, failure) {
+
+    var payload = proposal;
+    Restangular
+        .one('user', user_id).one('requests')
+        .customPUT(JSON.stringify(payload))
+        .then(proposalPUTSuccess, proposalPUTFailure);
+
+    function proposalPUTSuccess(user) {
+      console.log('success - here is the user obj', user);
+      success && success();
+    }
+
+    function proposalPUTFailure(err) {
+        console.log('error when sending request to form', err);
+        failure && failure();
+    }
   }
 
   function setRequestTimeEstimateHours(form, value) {
@@ -324,7 +362,10 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
 
   return {
     initStudentForm:initStudentForm,
-    getMaxNumHourArr: getMaxNumHourArr
+    getMaxNumHourArr: getMaxNumHourArr,
+    acceptStudentRequest: acceptStudentRequest,
+    constants:constants,
+    acceptGuruForRequest: acceptGuruForRequest
   }
 
 }

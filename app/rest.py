@@ -1414,10 +1414,10 @@ class UserRequestView(restful.Resource):
         if not user:
             abort(404)
 
-        print request.json
+        # print request.json
         if request.json.get('proposal'):
             proposal_json = request.json
-            print request.json
+            from pprint import pprint
             proposal = Proposal.query.get(proposal_json.get('id'))
             proposal.status = request.json.get('status')
             db_session.commit()
@@ -1427,27 +1427,34 @@ class UserRequestView(restful.Resource):
                 event = Event.initFromDict(event_dict)
 
             if proposal.status == Proposal.GURU_ACCEPTED:
+                pprint(proposal_json)
+
                 proposal.request.status = Request.STUDENT_RECEIVED_GURU
                 proposal.request.guru_id = user_id
 
                 proposal.guru_price = proposal_json.get('guru_price')
-                calendar = Calendar.initFromProposal(proposal, 2)
-                proposal.request.guru_calendar_id = calendar.id
+                if not proposal.guru_price:
+                    proposal.guru_price = proposal.request.student_price
+
+
+                # calendar = Calendar.initFromProposal(proposal, 2)
+
+                # proposal.request.guru_calendar_id = calendar.id
                 calendar_events_json = proposal_json.get('guru_calendar')
 
                 print 'response found!', proposal_json.get('response')
-                proposal.question_response = proposal_json.get('response')
+                # proposal.question_response = proposal_json.get('response')
 
-                proposal.request.selected_proposal = proposal
+                # proposal.request.selected_proposal = proposal
 
-                proposal.time_answered = datetime.now()
+                # proposal.time_answered = datetime.now()
 
-                if request.json.get('files'):
-                    files_json = request.json.get('files')
-                    print 'woohoo', len(request.json.get('files')), 'uploaded'
-                    for file_json in request.json.get('files'):
-                        file_obj = File.query.get(file_json.get('id'))
-                        file_obj.proposal_id = proposal.id
+                # if request.json.get('files'):
+                #     files_json = request.json.get('files')
+                #     print 'woohoo', len(request.json.get('files')), 'uploaded'
+                #     for file_json in request.json.get('files'):
+                #         file_obj = File.query.get(file_json.get('id'))
+                #         file_obj.proposal_id = proposal.id
 
                 if calendar_events_json:
                     day_index = 0
@@ -1463,19 +1470,19 @@ class UserRequestView(restful.Resource):
 
                 student = proposal.request.student
 
-                if student.push_notifications:
+                # if student.push_notifications:
 
-                    #send push notification to all student devices
-                    from app.lib.push_notif import send_guru_proposal_to_student
-                    send_guru_proposal_to_student(proposal, proposal.request.student)
+                #     #send push notification to all student devices
+                #     from app.lib.push_notif import send_guru_proposal_to_student
+                #     send_guru_proposal_to_student(proposal, proposal.request.student)
 
-                if student.email_notifications and student.email:
-                    from app.emails import send_guru_proposal_to_student
-                    send_guru_proposal_to_student(proposal, proposal.request.student)
+                # if student.email_notifications and student.email:
+                #     from app.emails import send_guru_proposal_to_student
+                #     send_guru_proposal_to_student(proposal, proposal.request.student)
 
-                if student.text_notifications and student.phone_number:
-                    from app.texts import send_guru_proposal_to_student
-                    send_guru_proposal_to_student(proposal, proposal.request.student)
+                # if student.text_notifications and student.phone_number:
+                #     from app.texts import send_guru_proposal_to_student
+                #     send_guru_proposal_to_student(proposal, proposal.request.student)
 
                 event_dict = {'status': Proposal.GURU_ACCEPTED, 'proposal_id':proposal.id}
                 event = Event.initFromDict(event_dict)
@@ -1824,6 +1831,7 @@ class UserSessionView(restful.Resource):
 
         #non-recurring session
         session_json = request.json
+
         _request = Request.query.get(request.json.get('id'))
         _request.selected_proposal.status = 5
         _request.guru = User.query.get(request.json.get('guru_id'))
@@ -1833,6 +1841,8 @@ class UserSessionView(restful.Resource):
         #create an event for it
         event_dict = {'status': Request.STUDENT_ACCEPTED_GURU, 'request_id':_request.id}
         event = Event.initFromDict(event_dict)
+
+
 
         #create a session
         session = Session.initFromJson(session_json, True)
@@ -1854,25 +1864,27 @@ class UserSessionView(restful.Resource):
                 event = Event.initFromDict(event_dict)
                 break
         db_session.commit()
-
+        print session
+        print "relationship exists?", session.relationship_id
         # Create relationship as well
         if not session.relationship_id:
+            print "relationship is being created.."
             session._relationship = Relationship.initFromSession(session)
             db_session.commit()
-
+        print "relationships", user.guru_relationships, user.student_relationships
         #send notifications to Guru
-        if session.request.guru.push_notifications:
-            from app.lib.push_notif import send_student_has_accepted_to_guru
-            send_student_has_accepted_to_guru(session, session.request.guru)
+        # if session.request.guru.push_notifications:
+        #     from app.lib.push_notif import send_student_has_accepted_to_guru
+        #     send_student_has_accepted_to_guru(session, session.request.guru)
 
-        if session.request.guru.email_notifications and user.email:
-            from app.emails import send_student_has_accepted_to_guru
-            send_student_has_accepted_to_guru(session, session.request.guru)
+        # if session.request.guru.email_notifications and user.email:
+        #     from app.emails import send_student_has_accepted_to_guru
+        #     send_student_has_accepted_to_guru(session, session.request.guru)
 
-        if session.request.guru.text_notifications and user.phone_number:
-            from app.texts import send_student_has_accepted_to_guru
-            send_student_has_accepted_to_guru(session, session.request.guru)
-            print "should send a text here"  #TODO SAMIR
+        # if session.request.guru.text_notifications and user.phone_number:
+        #     from app.texts import send_student_has_accepted_to_guru
+        #     send_student_has_accepted_to_guru(session, session.request.guru)
+        #     print "should send a text here"  #TODO SAMIR
 
         return user, 200
 
