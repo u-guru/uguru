@@ -158,8 +158,37 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                           }
                         }
                       }
+                      if (classArgsHasInject(classArgs)) {
+                        var injectArgClassSplit = classArgsHasInject(classArgs).split("|")
+                        if (injectArgClassSplit.length > 1) {
+                          var classToInject = injectArgClassSplit[1];
+                          var elemToInjectSelector = injectArgClassSplit[0];
+                          var elemToInject = document.querySelector(elemToInjectSelector);
+                          elemToInject.classList.add(classToInject);
+                        }
+
+                        // var otherClassElems = document.querySelectorAll('.' + indexClass);
+                        // console.log(otherClassElems);
+                        // for (var j = 0; j < otherClassElems.length; j++) {
+                        //   var otherElemIndex = otherClassElems[j];
+                        //   if (otherElemIndex !== element[0]) {
+                        //     otherElemIndex.classList.remove(indexClass);
+                        //   }
+                        // }
+                      }
                     }
                 }, delay);
+                function classArgsHasInject(args) {
+                  var injectArg = null;
+                  args.filter(function(word, index) {
+                    if (word.indexOf("inject") > -1) {
+                      injectArg = args[index];
+                      return true
+                    };
+                  })
+                  console.log(injectArg);
+                  return injectArg.replace("inject", "");
+                }
               });
             }
           }

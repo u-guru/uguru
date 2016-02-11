@@ -2642,8 +2642,7 @@ class Message(Base):
         message.time_created = datetime.now()
         message.time_sent = datetime.now()
         message.contents = message_json.get('contents')
-        if message_json.get('type'):
-            doNothing = False
+        message.file_id = message_json.get('file_id')
 
         message.relationship_id = message_json.get('relationship_id')
 

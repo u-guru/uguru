@@ -22,7 +22,7 @@ angular.module('uguru.student.controllers', [])
         DeviceService, $timeout, $ionicModal, GMapService, LoadingService,
         $ionicViewSwitcher, AnimationService, $localstorage, TourService,
         CTAService, RequestService) {
-
+        $scope.root.vars.guru_mode = false;
 
         $scope.user.is_a_guru = false;
 
