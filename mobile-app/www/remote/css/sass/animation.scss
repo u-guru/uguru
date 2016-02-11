@@ -1,5 +1,45 @@
 @import 'mixin';
 
+@include keyframes(coach-fill) {
+	0% {
+		@include opacity(1);
+		stroke-dashoffset: 114;
+	}
+	15% {
+		stroke-dashoffset: 110;
+	}
+	100% {
+		@include opacity(1);
+		stroke-dashoffset: 0;
+	}
+}
+@include keyframes(coach-click-1) {
+	0% {
+		@include opacity(1);
+		stroke-dashoffset: 53;
+	}
+	15% {
+		stroke-dashoffset: 50;
+	}
+	100% {
+		@include opacity(1);
+		stroke-dashoffset: 0;
+	}
+}
+@include keyframes(coach-click-2) {
+	0% {
+		@include opacity(1);
+		stroke-dashoffset: 137;
+	}
+	15% {
+		stroke-dashoffset: 120;
+	}
+	100% {
+		@include opacity(1);
+		stroke-dashoffset: 0;
+	}
+}
+
 @include keyframes(splash-scene-device) {
 	0% {
 		width: 28%;

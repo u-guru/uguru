@@ -1,26 +1,18 @@
-<!-- <ion-view ngfx-speed="fast" ngfx-flip-out-y="!page.status.showLoader" ng-include="::img_base + BASE + 'templates/page.loader.html'" class='full-xy high-z-index fixed' ng-controller="PageLoadingController"> </ion-view>  -->
-
-<!-- <ion-view> -->
-<!-- <ion-content overflow-scroll='true' class='full-xy'> -->
 <div class='relative' id='iscroll-wrapper' style='height:calc(100%); width:calc(100%); overflow:hidden !important;'>
 
-	<main id='home-splash' class='splash-landing hs-view full-xy'>
-
-		<!-- START Home Page CTAs -->
-
+	<main id='home-splash' class='splash-landing new hs-view full-xy'>
+		<!-- sidebar -->
 		<aside id='cta-modal-sidebar' class='splash-sidebar bg-charcoal ng-class: ::{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}' ng-include="::img_base + BASE + 'templates/one.university.sidebar.html'">
 		</aside>
 
-		<!-- END Home Page CTAS -->
-
-		<header class='splash-header fixed top-0 high-z-index' id='home-nav-header' >
+		<header class='splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
 			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
-			<div class="ugrid-3" id='translate-to'>
+			<!-- <div class="ugrid-3" id='translate-to'>
 				<a name='browse-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 1}" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
 				<a name='how-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 2}" ng-click='scrollToSection("#splash-browse")'>How It Works</a>
 				<a name='become-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 3}" ng-click='scrollToSection("#become-guru")'>Become a Guru</a>
 				<hr/>
-			</div>
+			</div> -->
 			<div class="right">
 				<a name='sidebar' class="splash-burger" id='cta-box-sidebar'>
 					<svg viewBox="0 0 100 100">
@@ -30,34 +22,185 @@
 						<path d="M31,65.5 L69,65.5"></path>
 					</svg>
 				</a>
-				<a class="splash-nav-link highlight ng-class:{'hide':!user.id && !user.first_name}" ng-click='goToStudentHome()'>Dashboard</a>
-				<a class="splash-nav-link highlight ng-class:{'hide':user.id}" ng-click='goToSignup()'>Login</a>
+				<!-- <a class="splash-nav-link highlight ng-class:{'hide':!user.id && !user.first_name}" ng-click='goToStudentHome()'>Dashboard</a>
+				<a class="splash-nav-link highlight ng-class:{'hide':user.id}" ng-click='goToSignup()'>Login</a> -->
 			</div>
 		</header>
 
-
-
-		<section id='splash-home' class='splash-hero relative' style='height:calc(100%); width:calc(100%);'>
-			<div class='absolute full-xy flex-wrap-center top-0 left-0 bg-slate'>
+		<section id='splash-home' class='splash-hero'>
+			<div class="splash-hero-skip opacity-0" class-on-load="rollIn:anim">
+				<button ng-click="completeAnim = true;">Skip</button>
+			</div>
+			<div class="splash-device splash-device-iphone magictime opacity-0" class-on-load="vanishIn:anim">
+				<svg viewBox="0 0 319 652">
+					<path d="M2,42.0005693 C2,19.9088649 19.9096817,2 41.9948462,2 L277.005154,2 C299.093697,2 317,19.9012788 317,42.0005693 L317,609.999431 C317,632.091135 299.090318,650 277.005154,650 L41.9948462,650 C19.9063026,650 2,632.098721 2,609.999431 L2,42.0005693 Z M22,80 L298,80 L298,573 L22,573 L22,80 Z" fill="none" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3"></path>
+					<circle stroke="#F0E0D0" stroke-width="3" fill="none" cx="159" cy="611" r="25"></circle>
+				</svg>
+				<div class="splash-device-content">
+					<svg class="coach-click opacity-0 ng-class:{'opacity-0':!completeAnim}" viewBox="0 0 212 75">
+					    <g fill="none">
+						    <path class="opacity-0 ng-class:{'animate':completeAnim}" d="M126.402476,42.2902799 C126.402476,42.2902799 41.4492178,9.17968707 3.56286124,70.6500409" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+						    <path class="opacity-0 ng-class:{'animate':completeAnim}" d="M29.8097207,69.5428392 L3.63890408,70.9143936 L2.26734969,44.7435769" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+						    <g class="ng-class:{'animated bounceIn':completeAnim}">
+								<text transform="translate(172.576620, 31.576620) rotate(7) translate(-172.576620, -31.576620)" font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+							        <tspan x="134.07662" y="30.5766198">click</tspan>
+							        <tspan x="135.91662" y="70.5766198"> me!</tspan>
+							    </text>
+							</g>
+					    </g>
+					</svg>
+					<button class="opacity-0 ng-class:{'animated bounceInUp':completeAnim}">Find My Guru</button>
+				</div>
+			</div>
+			<div class="splash-hero-content">
+				<div class="splash-guru-head">
+					<div ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+					<svg class="coach-help" viewBox="0 0 274 171">
+					    <g fill="none">
+							<g class="opacity-0 ng-class:{'animated bounceIn':completeAnim}">
+						        <text transform="translate(137.304688, 66.640625) rotate(-16) translate(-137.304688, -66.640625)" font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+						            <tspan x="2.8046875" y="65.640625">we can help you</tspan>
+						            <tspan x="55.8246875" y="105.640625">with that!</tspan>
+						        </text>
+							</g>
+					        <path class="opacity-0 ng-class:{'animate':completeAnim}" d="M270.769989,161.460007 C202.5,161.460007 174.199997,111.610001 174.199997,111.610001" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+					    </g>
+					</svg>
+					<svg class="coach-fill-mobile ng-class:{'hide':completeAnim}" viewBox="0 0 216 205">
+					    <g fill="none">
+					        <g class="opacity-0" class-on-load="bounceIn:anim">
+								<text transform="translate(126.127451, 45.428169) rotate(-2.000000) translate(-126.127451, -45.428169) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+						            <tspan x="85.0274511" y="44.4281688">fill in</tspan>
+						            <tspan x="38.6274511" y="84.4281688">the blanks</tspan>
+						        </text>
+							</g>
+					        <path class="opacity-0" class-on-load="animate:anim:keep" d="M3.80744788,193.290931 C3.80744788,193.290931 58.7467299,176.933464 74.1049117,110.409871" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+					    </g>
+					</svg>
+					<svg class="coach-fill ng-class:{'hide':completeAnim}" viewBox="0 0 242 137">
+					    <g fill="none">
+							<g class="opacity-0" class-on-load="bounceIn:anim">
+						        <text transform="translate(166.371534, 39) rotate(17) translate(-166.371534, -39)" font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+						            <tspan x="125.271534" y="38">fill in</tspan>
+						            <tspan x="78.8715343" y="78">the blanks</tspan>
+						        </text>
+							</g>
+					        <path class="opacity-0" class-on-load="animate:anim:keep" d="M3,133.644252 C3,133.644252 60.2715818,136.064444 96.4509916,78.1652856" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+					    </g>
+					</svg>
+				</div>
+				<div class="splash-adlib">
+					<h1 class="opacity-0" class-on-load="bounceInUp:anim">It's
+						<a id="blank-1" class="blank">
+							<svg width="142px" height="44px" viewBox="0 0 284 88">
+							    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14" x="2" y="2" width="280" height="84" rx="16"></rect>
+							</svg>
+							<b class="opacity-0" class-on-load="fadeIn:anim">5am</b>
+						</a>
+						and I have a
+						<a id="blank-2" class="blank">
+							<svg width="142px" height="44px" viewBox="0 0 284 88">
+							    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14" x="2" y="2" width="280" height="84" rx="16"></rect>
+							</svg>
+							<b class="opacity-0" class-on-load="fadeIn:anim">bio exam</b>
+						</a>
+						in 4 hours.
+					</h1>
+					<ul>
+						<li class="opacity-0" class-on-load="bounceIn:anim">
+							<a translate-on-click translate-to-elem="#blank-1">
+								<svg width="142px" height="44px" viewBox="0 0 284 88">
+								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<b>midnight</b>
+							</a>
+						</li>
+						<li class="opacity-0" class-on-load="bounceIn:anim">
+							<a translate-on-click translate-to-elem="#blank-1">
+								<svg width="142px" height="44px" viewBox="0 0 284 88">
+								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<b>2am</b>
+							</a>
+						</li>
+						<li class="opacity-0" class-on-load="bounceIn:anim">
+							<a translate-on-click translate-to-elem="#blank-1">
+								<svg width="142px" height="44px" viewBox="0 0 284 88">
+								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<b>bedtime</b>
+							</a>
+						</li>
+						<li class="opacity-0" class-on-load="bounceIn:anim">
+							<a translate-on-click translate-to-elem="#blank-1">
+								<svg width="142px" height="44px" viewBox="0 0 284 88">
+								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<b>7am</b>
+							</a>
+						</li>
+						<li class="opacity-0" class-on-load="bounceIn:anim">
+							<a translate-on-click translate-to-elem="#blank-2">
+								<svg width="142px" height="44px" viewBox="0 0 284 88">
+								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<b>paper</b>
+							</a>
+						</li>
+						<li class="opacity-0" class-on-load="bounceIn:anim">
+							<a translate-on-click translate-to-elem="#blank-2">
+								<svg width="142px" height="44px" viewBox="0 0 284 88">
+								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<b>speech</b>
+							</a>
+						</li>
+						<li class="opacity-0" class-on-load="bounceIn:anim">
+							<a translate-on-click translate-to-elem="#blank-2">
+								<svg width="142px" height="44px" viewBox="0 0 284 88">
+								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<b>report</b>
+							</a>
+						</li>
+						<li class="opacity-0" class-on-load="bounceIn:anim">
+							<a translate-on-click translate-to-elem="#blank-2">
+								<svg width="142px" height="44px" viewBox="0 0 284 88">
+								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<b>project</b>
+							</a>
+						</li>
+					</ul>
+					<button class="splash-mobile-cta opacity-0 ng-class:{'animated bounceInUp':completeAnim}">Find My Guru</button>
+				</div>
+			</div>
+			
+			<div class="coach-scroll">
+				<svg viewBox="0 0 656 138" class="opacity-0 ng-class:{'animated fadeIn':completeAnim}">
+				    <g fill="none">
+				        <rect stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14" x="3" y="3" width="650" height="54" rx="16"></rect>
+				        <text font-family="Source Sans Pro" font-size="32" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+				            <tspan x="42.392" y="40">or scroll down to find uguru at your school!</tspan>
+				        </text>
+				        <path d="M331,58 L331,144.023254" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+				    </g>
+				</svg>
+			</div>
+			
+			<!-- <div class='absolute full-xy flex-wrap-center top-0 left-0 bg-slate'>
 				<div class='p20xy weight-400 opacity-0 bg-cerise' class-on-click="tada:anim:unique" class-on-load="bounceInUp:anim" class-on-load-delay="500">
 					OnLoad Element
 				</div>
 				<div class='p20xy m20x weight-400 opacity-0 bg-moola' class-on-click="tada:anim:keep" class-on-load="bounceInUp:anim" class-on-load-delay="800">
 					OnLoad Element
 				</div>
-			</div>
+			</div> -->
 		</section>
 
-		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'>
-
-		</section>
-
-		<section class='splash-categories' id='splash-browse'>
-
-		</section>
-
-		<section id='become-guru'  class="splash-postit ng-class:{'hide':!page.load.sections.five.display}">
-		</section>
+		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'></section>
+		<section class='splash-categories' id='splash-browse'></section>
+		<section id='become-guru'  class="splash-postit ng-class:{'hide':!page.load.sections.five.display}"></section>
 
 		<section id="splash-footer" class="ng-class:{'hide': !page.load.sections.footer.display}">
 			<div>

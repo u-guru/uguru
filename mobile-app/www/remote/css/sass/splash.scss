@@ -4720,3 +4720,323 @@
 	visibility: hidden!important;
 	z-index: -999999!important;
 }
+
+
+/* ---------- HERO */
+.splash-landing.new {
+	> header.splash-header {
+		&:before {
+			@include opacity-important(0);
+		}
+	}
+	> section.splash-hero {
+		@include flex-wrap;
+		position: relative;
+		background: $slate;
+		.splash-hero-skip {
+			@include prefix(animation-delay, 5000ms, webkit moz ms o);
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			padding: 15px;
+			button {
+				@include opacity(.5);
+				@include rotate(-15);
+				@include round;
+				width: 64px;
+				height: 64px;
+				background: none;
+				border: 2px solid white;
+				font-size: 20px;
+				font-weight: 600;
+				text-transform: uppercase;
+			}
+		}
+		.splash-device {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -150px;
+			margin-top: -306px;
+			> svg {
+				@include opacity(.1);
+				display: block;
+				width: 100%;
+			}
+			&.splash-device-iphone {
+				svg {
+					max-width: 320px;
+				}
+				.splash-device-content {
+					top: 12.6%;
+					left: 7.3%;
+					width: 85.4%;
+					height: 75%;
+					.coach-click {
+						bottom: 65px;
+						right: -90px;
+					}
+				}
+			}
+			.splash-device-content {
+				@include flex;
+				@include flex-wrap;
+				position: absolute;
+				button {
+					-webkit-align-self: flex-end;
+					align-self: flex-end;
+					width: 100%;
+					height: 54px;
+					background: $shamrock;
+					font-weight: 600;
+					text-transform: uppercase;
+					&.opacity-0 {
+						visibility: hidden;
+						&:hover, &:focus {
+							@include opacity-important(0);
+						}
+					}
+					&.animated {
+						@include prefix(animation-delay, 1000ms, webkit moz ms o);
+						visibility: visible!important;
+					}
+				}
+				.coach-click {
+					display: block;
+					position: absolute;
+					width: 106px;
+					path {
+						&:nth-child(1) {
+							stroke-dasharray: 137;
+							stroke-dashoffset: 137;
+						}
+						&:nth-child(2) {
+							stroke-dasharray: 53;
+							stroke-dashoffset: 53;
+						}
+						&.animate {
+							&:nth-child(1) {
+								@include prefix(animation, coach-click-2 200ms ease-in 1500ms 1 forwards, webkit moz ms o);
+							}
+							&:nth-child(2) {
+								@include prefix(animation, coach-click-1 100ms ease-in 1700ms 1 forwards, webkit moz ms o);
+							}
+						}
+					}
+					g g {
+						@include prefix(animation-delay, 2000ms, webkit moz ms o);
+					}
+				}
+			}
+		}
+		.coach-scroll {
+			@include center-x;
+			bottom: -3%;
+			width: 328px;
+			svg {
+				@include prefix(animation-delay, 3000ms, webkit moz ms o);
+				display: block;
+				width: 100%;
+				path, rect {
+					@include opacity(.15);
+				}
+			}
+		}
+		.splash-hero-content {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			width: 100%;
+			.splash-adlib {
+				width: 100%;
+				padding-bottom: 75px;
+				h1 {
+					@include prefix(animation-delay, 200ms, webkit moz ms o);
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					font-size: 28px;
+					font-weight: 600;
+					a {
+						margin: 0 15px;
+					}
+				}
+				a {
+					@include flex;
+					@include flex-center;
+					position: relative;
+					width: 128px;
+					height: 36px;
+					padding: 0;
+					border-radius: 8px;
+					font-size: 20px;
+					font-weight: 600;
+					border-radius: 8px;
+					svg {
+						@include transition(.15s ease-in-out);
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+					b {
+						@include prefix(animation-delay, 1200ms, webkit moz ms o);
+						font-weight: 600!important;
+					}
+					&:not(.blank) {
+						&:hover, &:focus {
+							background: $shamrock;
+							svg {
+								@include opacity(0);
+							}
+						}
+					}
+				}
+				.splash-mobile-cta {
+					margin: 0 15px;
+					background: $shamrock;
+					height: 54px;
+					width: calc(100% - 30px);
+					font-size: 20px;
+					font-weight: 600;
+					text-transform: uppercase;
+				}
+				ul {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					margin: 15px auto;
+					padding: 7.5px;
+					width: 100%;
+					li {
+						width: 143px;
+						padding: 7.5px;
+						&:nth-child(1) {
+							@include prefix(animation-delay, 1400ms, webkit moz ms o);
+						}
+						&:nth-child(2) {
+							@include prefix(animation-delay, 1500ms, webkit moz ms o);
+						}
+						&:nth-child(3) {
+							@include prefix(animation-delay, 1600ms, webkit moz ms o);
+						}
+						&:nth-child(4) {
+							@include prefix(animation-delay, 1700ms, webkit moz ms o);
+						}
+						&:nth-child(5) {
+							@include prefix(animation-delay, 1800ms, webkit moz ms o);
+						}
+						&:nth-child(6) {
+							@include prefix(animation-delay, 1900ms, webkit moz ms o);
+						}
+						&:nth-child(7) {
+							@include prefix(animation-delay, 2000ms, webkit moz ms o);
+						}
+						&:nth-child(8) {
+							@include prefix(animation-delay, 2100ms, webkit moz ms o);
+						}
+					}
+				}
+			}
+		}
+		.splash-guru-head {
+			width: 150px;
+			position: relative;
+			svg {
+				display: block;
+				width: 100%;
+			}
+			> svg {
+				position: absolute;
+			}
+			.coach-fill, .coach-fill-mobile {
+				top: 0;
+				path {
+					stroke-dasharray: 114;
+					stroke-dashoffset: 114;
+					&.animate {
+						@include prefix(animation, coach-fill 200ms ease-in 2500ms 1 forwards, webkit moz ms o);
+					}
+				}
+				g g {
+					@include prefix(animation-delay, 3000ms, webkit moz ms o);
+				}
+			}
+			.coach-fill-mobile {
+				right: -90px;
+    			top: -40px;
+				width: 108px;
+			}
+			.coach-fill {
+				display: none;
+				top: 0;
+				right: -130px;
+				width: 141px;
+			}
+			.coach-help {
+				top: -30px;
+				left: -130px;
+				width: 137px;
+				path {
+					stroke-dasharray: 114;
+					stroke-dashoffset: 114;
+					&.animate {
+						@include prefix(animation, coach-fill 200ms ease-in 0ms 1 forwards, webkit moz ms o);
+					}
+				}
+				g g {
+					@include prefix(animation-delay, 200ms, webkit moz ms o);
+				}
+			}
+		}
+		@media screen and (max-width: 768px) {
+			.splash-hero-content {
+				.splash-adlib {
+					h1 {
+						line-height: 1.5;
+					}
+				}
+			}
+		}
+		@media screen and (min-width: 768px) {
+			.splash-device {
+				display: block;
+			}
+			.splash-guru-head {
+				.coach-fill-mobile {
+					display: none;
+				}
+				.coach-fill {
+					display: block;
+				}
+			}
+			.splash-hero-content {
+				.splash-adlib {
+					h1 {
+						font-size: 40px;
+					}
+					a {
+						width: 142px;
+						height: 44px;
+						font-size: 24px;
+					}
+					.splash-mobile-cta {
+						display: none;
+					}
+					ul {
+						max-width: calc(172px * 4 + 30px);
+						padding: 15px;
+						margin: 0 auto 15px;
+						li {
+							width: 25%;
+							max-width: 172px;
+							padding: 15px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
