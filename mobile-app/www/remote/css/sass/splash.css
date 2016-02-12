@@ -6422,7 +6422,7 @@
   margin: -5px 0 0;
   font-size: 28px;
   font-weight: 400;
-  font-family: 'Grand Hotel', cursive;
+  font-family: 'Cedarville Cursive', cursive;
   text-align: center;
 }
 
@@ -6519,19 +6519,19 @@
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info.bottom div {
-  bottom: 0;
+  bottom: 3px;
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info.top div {
-  top: 0;
+  top: 3px;
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .message {
-  -webkit-animation: bounceInUp 1000ms ease-in 3000ms 1 forwards;
-  -moz-animation: bounceInUp 1000ms ease-in 3000ms 1 forwards;
-  -ms-animation: bounceInUp 1000ms ease-in 3000ms 1 forwards;
-  -o-animation: bounceInUp 1000ms ease-in 3000ms 1 forwards;
-  animation: bounceInUp 1000ms ease-in 3000ms 1 forwards;
+  -webkit-animation: bounceInUp 1000ms ease-in 3500ms 1 forwards;
+  -moz-animation: bounceInUp 1000ms ease-in 3500ms 1 forwards;
+  -ms-animation: bounceInUp 1000ms ease-in 3500ms 1 forwards;
+  -o-animation: bounceInUp 1000ms ease-in 3500ms 1 forwards;
+  animation: bounceInUp 1000ms ease-in 3500ms 1 forwards;
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.active .message {
@@ -6542,24 +6542,32 @@
   animation: bounceInUp 1000ms ease-in 0ms 1 forwards;
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.active {
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .message, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.active .message {
   visibility: visible;
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info svg path, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.active .info svg path {
-  -webkit-animation: active-message 500ms ease-in 0ms 1 forwards;
-  -moz-animation: active-message 500ms ease-in 0ms 1 forwards;
-  -ms-animation: active-message 500ms ease-in 0ms 1 forwards;
-  -o-animation: active-message 500ms ease-in 0ms 1 forwards;
-  animation: active-message 500ms ease-in 0ms 1 forwards;
+  -webkit-animation: active-message 500ms ease-in 3000ms 1 forwards;
+  -moz-animation: active-message 500ms ease-in 3000ms 1 forwards;
+  -ms-animation: active-message 500ms ease-in 3000ms 1 forwards;
+  -o-animation: active-message 500ms ease-in 3000ms 1 forwards;
+  animation: active-message 500ms ease-in 3000ms 1 forwards;
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.not-first .info, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.inactive .info {
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.not-first .info svg, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.not-first .info ul {
   -webkit-animation: inactive-marker 1000ms ease-in 3000ms 1 forwards;
   -moz-animation: inactive-marker 1000ms ease-in 3000ms 1 forwards;
   -ms-animation: inactive-marker 1000ms ease-in 3000ms 1 forwards;
   -o-animation: inactive-marker 1000ms ease-in 3000ms 1 forwards;
   animation: inactive-marker 1000ms ease-in 3000ms 1 forwards;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.inactive .info svg, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.inactive .info ul {
+  -webkit-animation: inactive-marker 1000ms ease-in 0ms 1 forwards;
+  -moz-animation: inactive-marker 1000ms ease-in 0ms 1 forwards;
+  -ms-animation: inactive-marker 1000ms ease-in 0ms 1 forwards;
+  -o-animation: inactive-marker 1000ms ease-in 0ms 1 forwards;
+  animation: inactive-marker 1000ms ease-in 0ms 1 forwards;
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-skip {

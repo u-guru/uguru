@@ -4832,7 +4832,7 @@
 							margin: -5px 0 0;
 							font-size: 28px;
 							font-weight: 400;
-							font-family: 'Grand Hotel', cursive;
+							font-family: 'Cedarville Cursive', cursive;
 							text-align: center;
 						}
 						button {
@@ -4898,18 +4898,18 @@
 					}
 					&.bottom {
 						div {
-							bottom: 0;
+							bottom: 3px;
 						}
 					}
 					&.top {
 						div {
-							top: 0;
+							top: 3px;
 						}
 					}
 				}
 				&.first {
 					.message {
-						@include prefix(animation, bounceInUp 1000ms ease-in 3000ms 1 forwards, webkit moz ms o);
+						@include prefix(animation, bounceInUp 1000ms ease-in 3500ms 1 forwards, webkit moz ms o);
 					}
 				}
 				&.active {
@@ -4918,18 +4918,29 @@
 					}
 				}
 				&.first, &.active {
-					visibility: visible;
+					.message {
+						visibility: visible;
+					}
 					.info {
 						svg {
 							path {
-								@include prefix(animation, active-message 500ms ease-in 0ms 1 forwards, webkit moz ms o);
+								@include prefix(animation, active-message 500ms ease-in 3000ms 1 forwards, webkit moz ms o);
 							}
 						}
 					}
 				}
-				&.not-first, &.inactive {
+				&.not-first {
 					.info {
-						@include prefix(animation, inactive-marker 1000ms ease-in 3000ms 1 forwards, webkit moz ms o);
+						svg, ul {
+							@include prefix(animation, inactive-marker 1000ms ease-in 3000ms 1 forwards, webkit moz ms o);
+						}
+					}
+				}
+				&.inactive {
+					.info {
+						svg, ul {
+							@include prefix(animation, inactive-marker 1000ms ease-in 0ms 1 forwards, webkit moz ms o);
+						}
 					}
 				}
 			}
