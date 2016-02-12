@@ -12,7 +12,8 @@ function FileService(LoadingService, User) {
     var dropZoneFileEvents = ["totaluploadprogress", "queuecomplete", "maxfilesreached", "complete", "success", "uploadprogress", "thumbnail"]
     return {
         initRequestDropzoneFromSelector: initRequestDropzoneFromSelector,
-        initMessageDropzone: initMessageDropzone
+        initMessageDropzone: initMessageDropzone,
+        DropzoneDict: DropzoneDict
     }
 
     function initMessageDropzone(scope) {
@@ -87,7 +88,7 @@ function FileService(LoadingService, User) {
             console.log('initializing');
             var dropzoneElem = new Dropzone(elem_selector, getDefaultRequestDropzone());
             //stor in global
-            DropzoneDict[dropzoneElem] = dropzoneElem;
+            DropzoneDict[elem_selector] = dropzoneElem;
 
             //init event listeners
             //full docs are here http://www.dropzonejs.com/#event-list
@@ -150,7 +151,7 @@ function FileService(LoadingService, User) {
 
     function getDefaultRequestDropzone(elem) {
         return {
-                    // previewTemplate: document.getElementById('preview-template').innerHTML,
+                    previewTemplate: document.getElementById('dz-preview-template').innerHTML,
                     url: REST_URL + '/api/v1/files',
                     method: "POST",
                     paramName: "file",

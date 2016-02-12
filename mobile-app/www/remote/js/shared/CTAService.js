@@ -8,7 +8,7 @@ angular
 function CTAService($timeout) {
   var ctaParentDict = {};
   var ctaFuncDict = {};
-  var ctaOptions = {duration: 0.5, extraTransitionDuration:1};
+  var ctaOptions = {duration: 0.2, extraTransitionDuration:0};
 
 
 
@@ -30,7 +30,8 @@ function CTAService($timeout) {
       var closeCTAModal = cta(box_elem, modal_elem, ctaOptions, function() {
 
         //show modal cta
-        $timeout(function() { showModalCTA(modal_elem) });
+        showModalCTA(modal_elem);
+        // $timeout(function() { showModalCTA(modal_elem) });
         show_callback && show_callback();
 
         var modalCloseIcon = getModalCloseIcon(modal_elem);
@@ -54,7 +55,6 @@ function CTAService($timeout) {
 
     var modalElemId = boxElem && boxElem.id && boxElem.id.replace('box', 'modal');
     var modalElem = document.getElementById(modalElemId);
-
     //if both dont exist dont do anything
     if (!(parentElem && boxElem && modalElem)) {
       console.log('ERROR: Could not locate elems', boxSelector, parentSelector)

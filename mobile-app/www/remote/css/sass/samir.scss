@@ -713,21 +713,38 @@ header#home-nav-header.splash-header,
 			z-index:1000000 !important;
 			main#desktop-courses {
 				height: auto !important;
-				.desktop-search-header h1.invisible {
-					display:none !important;
-				}
+
 			}
 		}
 		section {
 			//account for the footer button container, height 104px;
-			height:calc(100% - 104px) !important;
+			height:calc(100%) !important;
 			&>* {
 				width:100%;
 			}
 			&#request-cta-details {
+				#cta-modal-request-courses {
+					height:100% !important;
+					width:100% !important;
+					.desktop-header  {
+						background: transparent !important;
+						height:0px !important;
+						a.cta-modal-close {
+							position:absolute;
+							right:0 !important;
+							svg {
+								height:40px !important;
+								width: 40px !important;
+							}
+						}
+					}
+					.input-field {
+						text-align:left !important;
+					}
+				}
 				textarea {
 					@include placeholder {
-						color: rbga($slate, 0.5) !important;
+						color: rgba($slate, 0.5) !important;
 					}
 				}
 			}
@@ -848,7 +865,9 @@ header#home-nav-header.splash-header,
 						.week-view {
 							height:calc(100% - 60px);
 							overflow:auto;
+							padding-bottom:123px !important;
 							.ugrid-7 {
+								border-bottom:4px solid $azure;
 								.hour {
 									display:block;
 									.hour-range {
@@ -1383,4 +1402,52 @@ header#home-nav-header.splash-header,
 
 .bg-auburn-impt {
 	background: rgba($auburn, 0.75) !important;
+}
+
+.u-dz-attachment {
+	max-width:140px;
+	margin: 0 5px;
+	.dz-remove {
+		display: none !important;
+	}
+	.img-container {
+		width:120px;
+		a[data-dz-remove] {
+			svg {
+				height:20px;
+				width:20px;
+				stroke: $charcoal !important;
+				stroke-width: 3px !important;
+			}
+		}
+		img {
+			&:before {
+				content: "loading...";
+				font-size:10px;
+			}
+			max-width:120px;
+			max-height:100px;
+			height:100%;
+			width:auto;
+			background:$charcoal;
+		}
+		div[data-dz-uploadprogress] {
+			height:5px;
+			top:100px;
+		}
+	}
+	.u-dz-details {
+		width:100%;
+		width:125px;
+		text-align: center;
+		.u-file-name {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+}
+
+.opacity-1-impt {
+	opacity: 1 !important;
 }

@@ -111,14 +111,7 @@ angular.module('uguru.student.controllers', [])
 
         $scope.$on('$ionicView.afterEnter', function() {
             if ($scope.desktopMode) {
-                //initialize CTAS
                 initAllCTAS();
-
-                //remove-later
-                $timeout(function() {
-                    $ionicSlideBoxDelegate.$getByHandle('request-form').stop();
-                    $ionicSlideBoxDelegate.$getByHandle('request-form').enableSlide(false)
-                }, 1000)
             }
         })
 
@@ -128,7 +121,7 @@ angular.module('uguru.student.controllers', [])
         function initAllCTAS() {
             //ngAnimate
             var parentRef = '#desktop-student-home'
-            var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-student-request', '#cta-box-request-payments', '#cta-box-created-requests', '#cta-box-billing', '#cta-box-messages'];
+            var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-request-courses', '#cta-box-student-request', '#cta-box-request-payments', '#cta-box-created-requests', '#cta-box-billing', '#cta-box-messages'];
             var cbOptions = {'#cta-box-student-request': triggerRequestFormCTA};
             CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
             // $timeout(function() {
@@ -189,17 +182,17 @@ angular.module('uguru.student.controllers', [])
                 $ionicSlideBoxDelegate.slide(index, time);
             }
             $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
-            $timeout(function() {
-                $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
-                $scope.requestForm.category = $scope.categories[0];
-                $scope.requestForm.subcategory = $scope.requestForm.category.subcategories[0];
-                $scope.requestForm.description.content = 'sample test';
-                $scope.requestForm.tags.list = [{name: 'sample tag'}, {name: 'sample tag2'}, {name: 'sample tag3'}];
-                $scope.requestForm.files = [{name: 'sample file', id: 32},{name: 'sample file', id: 55}];
-                $scope.requestForm.address = 'sample address';
-                $scope.requestForm.price.selected = 45;
-                $scope.requestForm.payment_card = $scope.user.payment_cards[0];
-            }, 500);
+            // $timeout(function() {
+            //     $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
+            //     $scope.requestForm.category = $scope.categories[0];
+            //     $scope.requestForm.subcategory = $scope.requestForm.category.subcategories[0];
+            //     $scope.requestForm.description.content = 'sample test';
+            //     $scope.requestForm.tags.list = [{name: 'sample tag'}, {name: 'sample tag2'}, {name: 'sample tag3'}];
+            //     $scope.requestForm.files = [{name: 'sample file', id: 32},{name: 'sample file', id: 55}];
+            //     $scope.requestForm.address = 'sample address';
+            //     $scope.requestForm.price.selected = 45;
+            //     $scope.requestForm.payment_card = $scope.user.payment_cards[0];
+            // }, 500);
             updateSlideBoxContainer();
             $timeout(function() {
                 $scope.disableSwipe('request-form');

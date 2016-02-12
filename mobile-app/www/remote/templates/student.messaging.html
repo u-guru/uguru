@@ -121,7 +121,7 @@
 											<span>{{message.time_created}}</span>
 										</div>
 										<div class="message-single-message" ng-if='message.contents && message.contents.length'>
-											{{message.contents || message.file.name}}
+											{{message.contents}}
 										</div>
 										<div class="message-single-message" ng-if='message._file && message._file.id'>
 											<div class='weight-700'> 1 file attached </div>
