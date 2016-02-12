@@ -1594,6 +1594,9 @@ class UserRequestView(restful.Resource):
 
             return user, 200
 
+### TODO PAYMENTS SERVER SIDE
+### -- Get Transfer status
+### -- Send Receipt email
 class UserTransactionsView(restful.Resource):
 
     #create new transaction (transfer or charge)
@@ -1604,12 +1607,20 @@ class UserTransactionsView(restful.Resource):
             abort(404)
 
         if request.json.get('bank_transfer'):
-
+            card_id = None
+            selected_card = None
 
             transaction_json = request.json
-            selected_card = Card.query.get(transaction_json.get('card_id'))
 
-            Transaction.initTransferTransaction(user, selected_card);
+            card_id = transaction_json.get('card_id')
+
+            if not card_id:
+                card_id = transaction_json.get('id')
+            if card_id:
+                selected_card = Card.query.get(card_id)
+
+            if selected_card:
+                Transaction.initTransferTransaction(user, selected_card)
 
             return user, 200
 
@@ -2325,9 +2336,6 @@ class UserCardView(restful.Resource):
                 user.get_payment_cards()[0].is_default_payment = True
 
             db_session.commit()
-
-
-
 
         return user, 200
 
