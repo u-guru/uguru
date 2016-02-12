@@ -6256,6 +6256,312 @@
   background: #40484B;
 }
 
+.splash-landing.new > section.splash-hero .splash-hero-map {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-map div {
+  filter: alpha(opacity=20);
+  opacity: 0.2;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  -webkit-filter: invert(100%);
+  -moz-filter: invert(100%);
+  -ms-filter: invert(100%);
+  -o-filter: invert(100%);
+  filter: invert(100%);
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-map.animated {
+  -webkit-animation-delay: 200ms;
+  -moz-animation-delay: 200ms;
+  -ms-animation-delay: 200ms;
+  -o-animation-delay: 200ms;
+  animation-delay: 200ms;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers.active {
+  z-index: 4;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker {
+  position: absolute;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(1) {
+  -webkit-animation-delay: 1000ms;
+  -moz-animation-delay: 1000ms;
+  -ms-animation-delay: 1000ms;
+  -o-animation-delay: 1000ms;
+  animation-delay: 1000ms;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(2) {
+  -webkit-animation-delay: 1500ms;
+  -moz-animation-delay: 1500ms;
+  -ms-animation-delay: 1500ms;
+  -o-animation-delay: 1500ms;
+  animation-delay: 1500ms;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(3) {
+  -webkit-animation-delay: 1200ms;
+  -moz-animation-delay: 1200ms;
+  -ms-animation-delay: 1200ms;
+  -o-animation-delay: 1200ms;
+  animation-delay: 1200ms;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(4) {
+  -webkit-animation-delay: 1400ms;
+  -moz-animation-delay: 1400ms;
+  -ms-animation-delay: 1400ms;
+  -o-animation-delay: 1400ms;
+  animation-delay: 1400ms;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(5) {
+  -webkit-animation-delay: 1100ms;
+  -moz-animation-delay: 1100ms;
+  -ms-animation-delay: 1100ms;
+  -o-animation-delay: 1100ms;
+  animation-delay: 1100ms;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(6) {
+  -webkit-animation-delay: 1700ms;
+  -moz-animation-delay: 1700ms;
+  -ms-animation-delay: 1700ms;
+  -o-animation-delay: 1700ms;
+  animation-delay: 1700ms;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location {
+  border-radius: 1000px;
+  margin: 10px;
+  width: 10px;
+  height: 10px;
+  background: #e6389b;
+  position: absolute;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location.top {
+  top: -25px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bottom {
+  bottom: -25px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location.left {
+  left: 25px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location.right {
+  right: 25px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message svg {
+  width: 262px;
+  height: 182px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message div p {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  text-align: left;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message div .signature {
+  line-height: 1;
+  margin: -5px 0 0;
+  font-size: 28px;
+  font-weight: 400;
+  font-family: 'Grand Hotel', cursive;
+  text-align: center;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message div button {
+  border-radius: 1000px;
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  height: 36px;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  background: #e6389b;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message.top {
+  top: -197px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message.bottom {
+  bottom: -197px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info {
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info svg {
+  width: 262px;
+  height: 107px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info svg path {
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  fill: rgba(64, 72, 75, 0.5);
+  stroke: rgba(240, 224, 208, 0.5);
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 19px);
+  padding: 15px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info div .user-icon {
+  width: 60px;
+  height: 60px;
+  border-width: 2px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info div ul {
+  width: calc(100% - 60px);
+  padding-left: 15px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info div ul li {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  line-height: 1.3;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info div ul li:first-child {
+  font-size: 20px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info.bottom div {
+  bottom: 0;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info.top div {
+  top: 0;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .message {
+  -webkit-animation: bounceInUp 1000ms ease-in 3000ms 1 forwards;
+  -moz-animation: bounceInUp 1000ms ease-in 3000ms 1 forwards;
+  -ms-animation: bounceInUp 1000ms ease-in 3000ms 1 forwards;
+  -o-animation: bounceInUp 1000ms ease-in 3000ms 1 forwards;
+  animation: bounceInUp 1000ms ease-in 3000ms 1 forwards;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.active .message {
+  -webkit-animation: bounceInUp 1000ms ease-in 0ms 1 forwards;
+  -moz-animation: bounceInUp 1000ms ease-in 0ms 1 forwards;
+  -ms-animation: bounceInUp 1000ms ease-in 0ms 1 forwards;
+  -o-animation: bounceInUp 1000ms ease-in 0ms 1 forwards;
+  animation: bounceInUp 1000ms ease-in 0ms 1 forwards;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.active {
+  visibility: visible;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info svg path, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.active .info svg path {
+  -webkit-animation: active-message 500ms ease-in 0ms 1 forwards;
+  -moz-animation: active-message 500ms ease-in 0ms 1 forwards;
+  -ms-animation: active-message 500ms ease-in 0ms 1 forwards;
+  -o-animation: active-message 500ms ease-in 0ms 1 forwards;
+  animation: active-message 500ms ease-in 0ms 1 forwards;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.not-first .info, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.inactive .info {
+  -webkit-animation: inactive-marker 1000ms ease-in 3000ms 1 forwards;
+  -moz-animation: inactive-marker 1000ms ease-in 3000ms 1 forwards;
+  -ms-animation: inactive-marker 1000ms ease-in 3000ms 1 forwards;
+  -o-animation: inactive-marker 1000ms ease-in 3000ms 1 forwards;
+  animation: inactive-marker 1000ms ease-in 3000ms 1 forwards;
+}
+
 .splash-landing.new > section.splash-hero .splash-hero-skip {
   -webkit-animation-delay: 5000ms;
   -moz-animation-delay: 5000ms;
@@ -6263,9 +6569,18 @@
   -o-animation-delay: 5000ms;
   animation-delay: 5000ms;
   position: absolute;
+  z-index: 3;
   bottom: 0;
   right: 0;
   padding: 15px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-skip.rollIn {
+  -webkit-animation-name: rollInLeft;
+  -moz-animation-name: rollInLeft;
+  -ms-animation-name: rollInLeft;
+  -o-animation-name: rollInLeft;
+  animation-name: rollInLeft;
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-skip button {
@@ -6289,6 +6604,7 @@
 .splash-landing.new > section.splash-hero .splash-device {
   display: none;
   position: absolute;
+  z-index: 2;
   top: 50%;
   left: 50%;
   margin-left: -150px;
@@ -6300,6 +6616,10 @@
   opacity: 0.1;
   display: block;
   width: 100%;
+}
+
+.splash-landing.new > section.splash-hero .splash-device.active {
+  z-index: 5;
 }
 
 .splash-landing.new > section.splash-hero .splash-device.splash-device-iphone svg {
@@ -6332,9 +6652,113 @@
   position: absolute;
 }
 
-.splash-landing.new > section.splash-hero .splash-device .splash-device-content button {
+.splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 15px;
+}
+
+.splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search p {
+  position: relative;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+}
+
+.splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search p span {
+  -webkit-animation-delay: 3500ms;
+  -moz-animation-delay: 3500ms;
+  -ms-animation-delay: 3500ms;
+  -o-animation-delay: 3500ms;
+  animation-delay: 3500ms;
+}
+
+.splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search p span:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search h3 {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin: 15px 0;
+  width: 100%;
+  height: 30px;
+}
+
+.splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search h3 span:nth-child(1), .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search h3 span:nth-child(3) {
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+}
+
+.splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search h3 span:nth-child(2) {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: calc(100% - 60px);
+  height: 100%;
+  padding: 0 15px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search .progress.white-round span {
+  background: #69B3A5 !important;
+}
+
+.splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search .progress.white-round span.animate {
+  -webkit-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+  -moz-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+  -ms-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+  -o-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+  animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+}
+
+.splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-button {
   -webkit-align-self: flex-end;
   align-self: flex-end;
+  width: 100%;
+}
+
+.splash-landing.new > section.splash-hero .splash-device .splash-device-content button {
   width: 100%;
   height: 54px;
   background: #69B3A5;
@@ -6408,7 +6832,8 @@
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
-  bottom: -3%;
+  z-index: 3;
+  bottom: -4.5%;
   width: 328px;
 }
 
@@ -6446,12 +6871,23 @@
   align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
+  position: relative;
+  z-index: 3;
   width: 100%;
+  margin-bottom: 75px;
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib {
   width: 100%;
-  padding-bottom: 75px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib.animate {
+  -webkit-animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+  -moz-animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+  -ms-animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+  -o-animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+  animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+  z-index: 1;
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib h1 {
@@ -6660,24 +7096,39 @@
   position: absolute;
 }
 
-.splash-landing.new > section.splash-hero .splash-guru-head .coach-fill, .splash-landing.new > section.splash-hero .splash-guru-head .coach-fill-mobile {
-  top: 0;
+.splash-landing.new > section.splash-hero .splash-guru-head .coach-fill {
+  top: 95px;
+  right: -100px;
+  width: 140px;
 }
 
-.splash-landing.new > section.splash-hero .splash-guru-head .coach-fill path, .splash-landing.new > section.splash-hero .splash-guru-head .coach-fill-mobile path {
-  stroke-dasharray: 114;
-  stroke-dashoffset: 114;
+.splash-landing.new > section.splash-hero .splash-guru-head .coach-fill path:nth-child(1) {
+  stroke-dasharray: 137;
+  stroke-dashoffset: 137;
 }
 
-.splash-landing.new > section.splash-hero .splash-guru-head .coach-fill path.animate, .splash-landing.new > section.splash-hero .splash-guru-head .coach-fill-mobile path.animate {
-  -webkit-animation: coach-fill 200ms ease-in 2500ms 1 forwards;
-  -moz-animation: coach-fill 200ms ease-in 2500ms 1 forwards;
-  -ms-animation: coach-fill 200ms ease-in 2500ms 1 forwards;
-  -o-animation: coach-fill 200ms ease-in 2500ms 1 forwards;
-  animation: coach-fill 200ms ease-in 2500ms 1 forwards;
+.splash-landing.new > section.splash-hero .splash-guru-head .coach-fill path:nth-child(2) {
+  stroke-dasharray: 53;
+  stroke-dashoffset: 53;
 }
 
-.splash-landing.new > section.splash-hero .splash-guru-head .coach-fill g g, .splash-landing.new > section.splash-hero .splash-guru-head .coach-fill-mobile g g {
+.splash-landing.new > section.splash-hero .splash-guru-head .coach-fill path.animate:nth-child(1) {
+  -webkit-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+  -moz-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+  -ms-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+  -o-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+  animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+}
+
+.splash-landing.new > section.splash-hero .splash-guru-head .coach-fill path.animate:nth-child(2) {
+  -webkit-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+  -moz-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+  -ms-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+  -o-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+  animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+}
+
+.splash-landing.new > section.splash-hero .splash-guru-head .coach-fill g g {
   -webkit-animation-delay: 3000ms;
   -moz-animation-delay: 3000ms;
   -ms-animation-delay: 3000ms;
@@ -6685,44 +7136,10 @@
   animation-delay: 3000ms;
 }
 
-.splash-landing.new > section.splash-hero .splash-guru-head .coach-fill-mobile {
-  right: -90px;
-  top: -40px;
-  width: 108px;
-}
-
-.splash-landing.new > section.splash-hero .splash-guru-head .coach-fill {
-  display: none;
-  top: 0;
-  right: -130px;
-  width: 141px;
-}
-
 .splash-landing.new > section.splash-hero .splash-guru-head .coach-help {
-  top: -30px;
-  left: -130px;
-  width: 137px;
-}
-
-.splash-landing.new > section.splash-hero .splash-guru-head .coach-help path {
-  stroke-dasharray: 114;
-  stroke-dashoffset: 114;
-}
-
-.splash-landing.new > section.splash-hero .splash-guru-head .coach-help path.animate {
-  -webkit-animation: coach-fill 200ms ease-in 0ms 1 forwards;
-  -moz-animation: coach-fill 200ms ease-in 0ms 1 forwards;
-  -ms-animation: coach-fill 200ms ease-in 0ms 1 forwards;
-  -o-animation: coach-fill 200ms ease-in 0ms 1 forwards;
-  animation: coach-fill 200ms ease-in 0ms 1 forwards;
-}
-
-.splash-landing.new > section.splash-hero .splash-guru-head .coach-help g g {
-  -webkit-animation-delay: 200ms;
-  -moz-animation-delay: 200ms;
-  -ms-animation-delay: 200ms;
-  -o-animation-delay: 200ms;
-  animation-delay: 200ms;
+  top: -60px;
+  left: -160px;
+  width: 170px;
 }
 
 @media screen and (max-width: 768px) {
@@ -6735,11 +7152,9 @@
   .splash-landing.new > section.splash-hero .splash-device {
     display: block;
   }
-  .splash-landing.new > section.splash-hero .splash-guru-head .coach-fill-mobile {
-    display: none;
-  }
   .splash-landing.new > section.splash-hero .splash-guru-head .coach-fill {
-    display: block;
+    top: 80px;
+    right: -180px;
   }
   .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib h1 {
     font-size: 40px;
