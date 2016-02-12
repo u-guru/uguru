@@ -11,7 +11,8 @@ function CalendarService() {
 
     initRequestCalendar: initRequestCalendar,
     getNextSevenDaysArr: getNextSevenDaysArr,
-    getCalendarSelected: getCalendarSelected
+    getCalendarSelected: getCalendarSelected,
+    processServerCalenderToClient: processServerCalenderToClient
 
   }
 
@@ -20,6 +21,10 @@ function CalendarService() {
 
   function initRequestCalendar() {
 
+  }
+
+  function processServerCalenderToClient(calendar, tz_offset) {
+    return calendar;
   }
 
   function getCalendarRanges(arr) {

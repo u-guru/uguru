@@ -56,6 +56,15 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     });
   }
 
+
+
+  function processServerRequestToClient(request) {
+    request.coords = {latitude: parseFloat(request.position.latitude), longitude: parseFloat(request.position.longitude)};
+    request.student_calendar = processServerCalendarToClient(request.student_calendar, request.tz_offset);
+    request.guru_calendar = request.guru_calendar && CalendarService.processServerCalendarToClient(request.guru_calendar, request.tz_offset);
+    return request;
+  }
+
   function getDefaultMarker(lat, long, color, scope) {
     return {
       idKey:1,
