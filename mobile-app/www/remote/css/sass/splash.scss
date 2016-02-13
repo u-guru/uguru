@@ -4749,30 +4749,37 @@
 				font-size: 18px;
 			}
 			a {
-				&.bg-cerise {
+				&.bg-academic {
 					background: rgba($cerise, .8);
 					&:hover, &:focus {
 						background: $cerise;
 					}
 				}
-				&.bg-gold {
+				&.bg-baking {
 					background: rgba($gold, .8);
 					&:hover, &:focus {
 						background: $gold;
 					}
 				}
-				&.bg-moola {
+				&.bg-photography {
 					background: rgba($moola, .8);
 					&:hover, &:focus {
 						background: $moola;
 					}
 				}
-				&.bg-azure {
+				&.bg-household {
+					background: rgba($cobalt, .8);
+					&:hover, &:focus {
+						background: $cobalt;
+					}
+				}
+				&.bg-tech {
 					background: rgba($azure, .8);
 					&:hover, &:focus {
 						background: $azure;
 					}
 				}
+				// @samir put school colors here
 				&.bg-cal {
 					background: rgba(#003057, .8);
 					&:hover, &:focus {
@@ -4783,6 +4790,8 @@
 			> div {
 				position: relative;
 				> a {
+					position: relative;
+					z-index: 1;
 					padding: 0 12px 0 15px;
 					border: 2px solid white;
 					border-radius: 2px;
@@ -4794,15 +4803,18 @@
 						height: 24px;
 					}
 					&:not(.active) + div {
-						@include opacity(0);
 						visibility: hidden;
 					}
 				}
 				> div {
-					@include center-x;
-					top: 58px;
 					position: absolute;
+					left: 50%;
+					margin-left: -99px;
+					top: 58px;
 					width: 198px;
+					&:not(.visible) {
+						visibility: hidden;
+					}
 					> svg {
 						position: relative;
 						z-index: 5;
@@ -4823,6 +4835,11 @@
 							&:last-child {
 								border-bottom-left-radius: 2px;
 								border-bottom-right-radius: 2px;
+							}
+							&:not(:first-child) {
+								a + .arrow {
+									display: none;
+								}
 							}
 							a {
 								@include flex;
@@ -4848,31 +4865,71 @@
 									top: -13px;
 									width: 30px;
 									height: 15px;
-									&.bg-cerise {
+									path {
+										@include transition(.15s ease-in-out);
+									}
+									&.bg-academic {
+										path {
+											fill: rgba($cerise, .8);
+										}
+									}
+									&.bg-baking {
+										path {
+											fill: rgba($gold, .8);
+										}
+									}
+									&.bg-photography {
+										path {
+											fill: rgba($moola, .8);
+										}
+									}
+									&.bg-household {
+										path {
+											fill: rgba($cobalt, .8);
+										}
+									}
+									&.bg-tech {
 										background: none!important;
 										path {
-											@include transition(.15s ease-in-out);
-											fill: rgba($cerise, .8)!important;
+											fill: rgba($azure, .8);
 										}
 									}
 									&.bg-cal {
-										background: none!important;
 										path {
-											@include transition(.15s ease-in-out);
-											fill: rgba(#003057, .8)!important;
+											fill: rgba(#003057, .8);
 										}
 									}
 								}
 								&:hover, &:focus {
 									+ .arrow {
-										&.bg-cerise {
+										&.bg-academic {
 											path {
-												fill: $cerise!important;
+												fill: $cerise;
+											}
+										}
+										&.bg-baking {
+											path {
+												fill: $gold;
+											}
+										}
+										&.bg-photography {
+											path {
+												fill: $moola;
+											}
+										}
+										&.bg-household {
+											path {
+												fill: $cobalt;
+											}
+										}
+										&.bg-tech {
+											path {
+												fill: $azure;
 											}
 										}
 										&.bg-cal {
 											path {
-												fill: #003057!important;
+												fill: #003057;
 											}
 										}
 									}
@@ -5324,10 +5381,50 @@
 						font-weight: 600!important;
 					}
 					&:not(.blank) {
-						&:hover, &:focus {
+						&:hover, &:focus, &[class*="translate-blank"] {
 							background: $shamrock;
 							svg {
 								@include opacity(0);
+							}
+						}
+						&.bg-academic {
+							&:hover, &:focus, &[class*="translate-blank"] {
+								background: $cerise;
+								svg {
+									@include opacity(0);
+								}
+							}
+						}
+						&.bg-baking {
+							&:hover, &:focus, &[class*="translate-blank"] {
+								background: $gold;
+								svg {
+									@include opacity(0);
+								}
+							}
+						}
+						&.bg-photography {
+							&:hover, &:focus, &[class*="translate-blank"] {
+								background: $moola;
+								svg {
+									@include opacity(0);
+								}
+							}
+						}
+						&.bg-household {
+							&:hover, &:focus, &[class*="translate-blank"] {
+								background: $cobalt;
+								svg {
+									@include opacity(0);
+								}
+							}
+						}
+						&.bg-tech {
+							&:hover, &:focus, &[class*="translate-blank"] {
+								background: $azure;
+								svg {
+									@include opacity(0);
+								}
 							}
 						}
 					}

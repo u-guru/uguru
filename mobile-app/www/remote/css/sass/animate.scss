@@ -12,7 +12,8 @@
 
 .animated {
 	@include animation-duration(1s);
-	@include animation-fill-mode(both);
+	// edit
+	@include animation-fill-mode(forwards);
 }
 .animated.infinite {
 	@include animation-iteration-count(infinite);
