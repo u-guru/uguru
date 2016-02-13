@@ -104,6 +104,17 @@ angular.module('uguru.directives')
     }
   }
 }])
+.directive('skrollr', function () {
+      var obj = {
+        link: function () {
+          /* jshint ignore:start */
+          // skrollr.init({skrollrBody:'skrollr-home'}).refresh();
+
+          /* jshint ignore:end */
+        }
+      };
+      return obj;
+})
 .directive('activateOnClass', ['$timeout', function ($timeout) {
   return {
     restrict: 'A',

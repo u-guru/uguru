@@ -95,7 +95,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
   $ionicConfigProvider.views.forwardCache(false);
-  $ionicConfigProvider.scrolling.jsScrolling(false);
+  $ionicConfigProvider.scrolling.jsScrolling(true);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
@@ -509,7 +509,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.splash', {
         url: '/splash',
-        templateUrl: BASE + 'templates/splash.html'
+        templateUrl: BASE + 'templates/splash.html',
+        controller: 'SplashController'
   }).
   state('root.student-conversations', {
         url: '/student-conversations',
