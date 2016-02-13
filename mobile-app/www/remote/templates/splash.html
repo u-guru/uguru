@@ -319,11 +319,11 @@
 							</div>
 						</div>
 					</div>
-					<svg class="coach-click opacity-0 ng-class:{'opacity-0':!completeAnim, 'hide':beginSearch}" viewBox="0 0 212 75">
+					<svg class-on-activate="opacity-1-impt" class="complete-anim coach-click opacity-0 ng-class:{'opacity-0':!completeAnim, 'hide':beginSearch}" viewBox="0 0 212 75">
 					    <g fill="none">
-						    <path class="opacity-0 ng-class:{'animate':completeAnim}" d="M126.402476,42.2902799 C126.402476,42.2902799 41.4492178,9.17968707 3.56286124,70.6500409" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-						    <path class="opacity-0 ng-class:{'animate':completeAnim}" d="M29.8097207,69.5428392 L3.63890408,70.9143936 L2.26734969,44.7435769" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-						    <g class="ng-class:{'animated bounceIn':completeAnim}">
+						    <path class-on-activate="animate" class="complete-anim opacity-0 ng-class:{'animate':completeAnim}" d="M126.402476,42.2902799 C126.402476,42.2902799 41.4492178,9.17968707 3.56286124,70.6500409" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+						    <path class-on-activate="animate" class="complete-anim opacity-0 ng-class:{'animate':completeAnim}" d="M29.8097207,69.5428392 L3.63890408,70.9143936 L2.26734969,44.7435769" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+						    <g class="complete-anim ng-class:{'animated bounceIn':completeAnim}" class-on-activate="bounceIn:anim">
 								<text transform="translate(172.576620, 31.576620) rotate(7) translate(-172.576620, -31.576620)" font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
 							        <tspan x="134.07662" y="30.5766198">click</tspan>
 							        <tspan x="135.91662" y="70.5766198"> me!</tspan>
@@ -332,14 +332,14 @@
 					    </g>
 					</svg>
 					<div class="splash-device-button ng-class:{'animated bounceOutDown':beginSearch}">
-						<button id="button-find-guru" class="opacity-0" ng-click="beginSearch = true;">Find My Guru</button>
+						<button class-on-activate="bounceInUp:anim, opacity-1-impt, visibility-impt" id="button-find-guru" class="complete-anim opacity-0" ng-click="beginSearch = true;">Find My Guru</button>
 					</div>
 				</div>
 			</div>
 			<div class="splash-hero-content">
 				<div class="splash-guru-head">
 					<div ng-include="img_base + 'templates/svg/guru-head.html'"></div>
-					<svg class="coach-help opacity-0 ng-class:{'animated bounceIn':completeAnim, 'hide':beginSearch}" viewBox="0 0 340 205">
+					<svg class="coach-help opacity-0 complete-anim ng-class:{'animated bounceIn':completeAnim, 'hide':beginSearch}" viewBox="0 0 340 205" class-on-activate="bounceIn:anim">
 					    <g fill="none">
 					        <text transform="translate(173.347656, 110.679688) rotate(-19.000000) translate(-173.347656, -110.679688) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
 					            <tspan x="38.8476562" y="109.679688">we can help you</tspan>
@@ -349,7 +349,7 @@
 					    </g>
 					</svg>
 
-					<svg class="coach-fill ng-class:{'hide':completeAnim}" viewBox="0 0 280 112">
+					<svg class="coach-fill complete-anim ng-class:{'hide':completeAnim}" class-on-activate="hide"  viewBox="0 0 280 112">
 					    <g fill="none">
 					        <path class="opacity-0" class-on-load="animate:anim:keep" d="M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
 					        <path class="opacity-0" class-on-load="animate:anim:keep" d="M37.0997894,99.9330039 L12.6336973,109.324657 L3.24204445,84.8585646" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -362,7 +362,7 @@
 					    </g>
 					</svg>
 				</div>
-				<div class="splash-adlib ng-class:{'animate':beginSearch}">
+				<div class="splash-adlib ng-class:{'animate':beginSearch}" class-on-activate="step-one-complete:inject.complete-anim|activate" activate-on-class="blank-1-filled, blank-2-filled">
 					<h1 class="opacity-0" class-on-load="bounceInUp:anim">It's
 						<a id="blank-1" class="blank">
 							<svg width="142px" height="44px" viewBox="0 0 284 88">
@@ -445,11 +445,11 @@
 							</a>
 						</li>
 					</ul>
-					<button class="splash-mobile-cta opacity-0 ng-class:{'animated bounceInUp':completeAnim, 'bounceOutDown':beginSearch}">Find My Guru</button>
+					<button class-on-activate="fadeIn:anim" class="complete-anim splash-mobile-cta opacity-0 ng-class:{'animated bounceInUp':completeAnim, 'bounceOutDown':beginSearch}">Find My Guru</button>
 				</div>
 			</div>
 			<div class="coach-scroll">
-				<svg viewBox="0 0 656 138" class="opacity-0 ng-class:{'animated fadeIn':completeAnim}">
+				<svg class-on-activate="fadeIn:anim" viewBox="0 0 656 138" class="complete-anim opacity-0 ng-class:{'animated fadeIn':completeAnim}">
 				    <g fill="none">
 				        <rect stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14" x="3" y="3" width="650" height="54" rx="16"></rect>
 				        <text font-family="Source Sans Pro" font-size="32" font-weight="normal" line-spacing="40" fill="#FFFFFF">
