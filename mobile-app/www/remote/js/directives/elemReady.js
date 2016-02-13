@@ -83,8 +83,11 @@ angular.module('uguru.directives')
                   if (injectArgClassSplit.length > 1) {
                     var classToInject = injectArgClassSplit[1];
                     var elemToInjectSelector = injectArgClassSplit[0];
-                    var elemToInject = document.querySelector(elemToInjectSelector);
-                    elemToInject.classList.add(classToInject);
+                    var elemsToInject = document.querySelectorAll(elemToInjectSelector);
+                    console.log(elemToInjectSelector, classToInject, elemsToInject.length, 'elements');
+                    for (var k = 0; k < elemsToInject.length; k++) {
+                      elemsToInject[k].classList.add(classToInject);
+                    }
                   }
                 }
               }
