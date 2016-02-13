@@ -1,6 +1,6 @@
 <div class='relative' id='iscroll-wrapper' style='height:calc(100%); width:calc(100%); overflow:hidden !important;'>
 
-	<!-- <div class='p20xy weight-400 opacity-0 bg-cerise' id='inject-0'
+	<!-- <div class='p20xy weight-400 opacity-0 bg-{{selectedCategory.hex_color}}' id='inject-0'
 
 	class-on-load="bounceInUp:anim"
 	class-on-load-delay="500"
@@ -43,12 +43,12 @@
 				</a>
 			</div>
 		</header>
-		
+
 		<section id='splash-home' class='splash-hero'>
 			<div class="splash-hero-nav opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500">
 				<div>
-					<a class="bg-cerise" class-on-click="a:inject.splash-hero-nav-categories|a, active:unique">
-						<span>Academic</span>
+					<a class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-hero-nav-categories|a, active:unique">
+						<span>{{selectedCategory.name}}</span>
 						<svg viewBox="0 0 100 100">
 							<path d="M14,32 L50,68 L86,32"></path>
 						</svg>
@@ -58,40 +58,13 @@
 						    <path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
 						</svg>
 						<ul>
-							<li>
-								<a class="active bg-cerise">
-									<span>Academic</span>
-									<svg viewBox="0 0 100 100">
-									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-									</svg>
+							<li ng-repeat='category in categories' ng-if='category.id !== selectedCategory.id' ng-click='setCategory(category)'>
+								<a class="active bg-{{category.hex_color}}" >
+									<span>{{category.name}}</span>
 								</a>
-								<svg class="arrow bg-cerise" viewBox="0 0 60 30">
+								<svg class="arrow bg-{{category.hex_color}}" viewBox="0 0 60 30">
 								    <path d="M4,26 L30,0 L56,26"></path>
 								</svg>
-							</li>
-							<li>
-								<a class="bg-gold">
-									<span>Baking</span>
-									<svg viewBox="0 0 100 100">
-									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-									</svg>
-								</a>
-							</li>
-							<li>
-								<a class="bg-moola">
-									<span>Photography</span>
-									<svg viewBox="0 0 100 100">
-									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-									</svg>
-								</a>
-							</li>
-							<li>
-								<a class="bg-azure">
-									<span>Tech</span>
-									<svg viewBox="0 0 100 100">
-									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-									</svg>
-								</a>
 							</li>
 						</ul>
 					</div>
@@ -110,38 +83,18 @@
 						</svg>
 						<ul>
 							<li>
-								<a class="active bg-cal">
-									<span>UC Berkeley</span>
-									<svg viewBox="0 0 100 100">
-									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-									</svg>
-								</a>
-								<svg class="arrow bg-cal" viewBox="0 0 60 30">
-								    <path d="M4,26 L30,0 L56,26"></path>
-								</svg>
-							</li>
-							<li>
 								<a class="bg-stanford">
 									<span>Stanford University</span>
-									<svg viewBox="0 0 100 100">
-									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-									</svg>
 								</a>
 							</li>
 							<li>
 								<a class="bg-yale">
 									<span>Yale University</span>
-									<svg viewBox="0 0 100 100">
-									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-									</svg>
 								</a>
 							</li>
 							<li>
 								<a class="bg-harvard">
 									<span>Harvard University</span>
-									<svg viewBox="0 0 100 100">
-									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-									</svg>
 								</a>
 							</li>
 						</ul>
@@ -182,7 +135,6 @@
 					</div>
 					<div class="location bottom left"></div>
 				</div>
-				
 				<div class="splash-hero-marker-2 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 40%; left: 10%;">
 					<div class="message top">
 						<svg viewBox="0 0 524 364">
@@ -210,7 +162,6 @@
 					</div>
 					<div class="location bottom left"></div>
 				</div>
-				
 				<div class="splash-hero-marker-3 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 10%; left: 4%;">
 					<div class="location top left"></div>
 					<div class="info bottom">
@@ -238,7 +189,6 @@
 						</div>
 					</div>
 				</div>
-				
 				<div class="splash-hero-marker-4 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="bottom: 5%; left: 1%;">
 					<div class="message top">
 						<svg viewBox="0 0 524 364">
@@ -266,7 +216,6 @@
 					</div>
 					<div class="location bottom right"></div>
 				</div>
-				
 				<div class="splash-hero-marker-5 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 7%; right: 3%;">
 					<div class="location top right"></div>
 					<div class="info bottom">
@@ -294,7 +243,6 @@
 						</div>
 					</div>
 				</div>
-				
 				<div class="splash-hero-marker-6 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 30%; right: 12%;">
 					<div class="location top left"></div>
 					<div class="info bottom">
@@ -377,7 +325,6 @@
 					        <path d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
 					    </g>
 					</svg>
-					
 					<svg class="coach-fill" viewBox="0 0 280 112">
 					    <g fill="none">
 					        <path class="opacity-0" class-on-load="animate:anim:keep" d="M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -397,20 +344,20 @@
 							<svg width="142px" height="44px" viewBox="0 0 284 88">
 							    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14" x="2" y="2" width="280" height="84" rx="16"></rect>
 							</svg>
-							<b class="opacity-0" class-on-load="fadeIn:anim">5am</b>
+							<b class="opacity-0" activate-on-class="blank-1-filled" class-on-activate="opacity-0-impt" class-on-load="fadeIn:anim">5am</b>
 						</a>
 						and I have a
 						<a id="blank-2" class="blank">
 							<svg width="142px" height="44px" viewBox="0 0 284 88">
 							    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14" x="2" y="2" width="280" height="84" rx="16"></rect>
 							</svg>
-							<b class="opacity-0" class-on-load="fadeIn:anim">bio exam</b>
+							<b id="blank-2-text" class="opacity-0" class-on-load="fadeIn:anim" activate-on-class="blank-2-filled" class-on-activate="opacity-0-impt" class-on-load="fadeIn:anim">bio exam</b>
 						</a>
 						in 4 hours.
 					</h1>
 					<ul class="animated">
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a translate-on-click translate-to-elem="#blank-1">
+							<a class="bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
 								<svg width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
 								</svg>
@@ -418,7 +365,7 @@
 							</a>
 						</li>
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a translate-on-click translate-to-elem="#blank-1">
+							<a class="bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
 								<svg width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
 								</svg>
@@ -426,7 +373,7 @@
 							</a>
 						</li>
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a translate-on-click translate-to-elem="#blank-1">
+							<a class="bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
 								<svg width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
 								</svg>
@@ -434,7 +381,7 @@
 							</a>
 						</li>
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a translate-on-click translate-to-elem="#blank-1">
+							<a class="bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
 								<svg width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
 								</svg>
@@ -442,7 +389,7 @@
 							</a>
 						</li>
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a translate-on-click translate-to-elem="#blank-2">
+							<a class="bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled'>
 								<svg width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
 								</svg>
@@ -450,7 +397,7 @@
 							</a>
 						</li>
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a translate-on-click translate-to-elem="#blank-2">
+							<a class="bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled'>
 								<svg width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
 								</svg>
@@ -458,7 +405,7 @@
 							</a>
 						</li>
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a translate-on-click translate-to-elem="#blank-2">
+							<a class="bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled'>
 								<svg width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
 								</svg>
@@ -466,7 +413,7 @@
 							</a>
 						</li>
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a translate-on-click translate-to-elem="#blank-2">
+							<a class="bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled'>
 								<svg width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
 								</svg>

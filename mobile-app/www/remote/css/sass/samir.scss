@@ -1451,3 +1451,24 @@ header#home-nav-header.splash-header,
 .opacity-1-impt {
 	opacity: 1 !important;
 }
+
+.transform-0 {
+	transform: none !important;
+}
+
+.opacity-0-impt {
+	opacity:0 !important;
+}
+
+.splash-adlib {
+	a[translate-on-click="translate-blank-1"] {
+		&:not(.translate-blank-1) {
+			transform: none !important;
+		}
+	}
+	a[translate-on-click="translate-blank-2"] {
+		&:not(.translate-blank-2) {
+			transform: none !important;
+		}
+	}
+}

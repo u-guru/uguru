@@ -287,7 +287,10 @@ angular.module('uguru.util.controllers')
 
 
         var saveCategoriesToRootScope = function(categories) {
-            $scope.categories = categories;
+
+            $scope.categories = categories.filter(function(category, index) {
+              return category.is_active;
+            })
         }
         $scope.getCategories(saveCategoriesToRootScope)
 

@@ -6288,35 +6288,43 @@
   font-size: 18px;
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-cerise {
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-academic {
   background: rgba(230, 56, 155, 0.8);
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-cerise:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-cerise:focus {
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-academic:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-academic:focus {
   background: #e6389b;
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-gold {
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-baking {
   background: rgba(246, 198, 78, 0.8);
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-gold:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-gold:focus {
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-baking:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-baking:focus {
   background: #F6C64E;
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-moola {
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-photography {
   background: rgba(129, 181, 102, 0.8);
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-moola:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-moola:focus {
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-photography:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-photography:focus {
   background: #81B566;
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-azure {
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-household {
+  background: rgba(120, 114, 227, 0.8);
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-household:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-household:focus {
+  background: #7872e3;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-tech {
   background: rgba(85, 164, 183, 0.8);
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-azure:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-azure:focus {
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-tech:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-tech:focus {
   background: #55A4B7;
 }
 
@@ -6396,6 +6404,10 @@
   border-bottom-right-radius: 2px;
 }
 
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li:not(:first-child) a + .arrow {
+  display: none;
+}
+
 .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -6447,38 +6459,64 @@
   height: 15px;
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-cerise {
-  background: none !important;
-}
-
-.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-cerise path {
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow path {
   -webkit-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
   -ms-transition: all 0.15s ease-in-out;
   -moz-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
-  fill: rgba(230, 56, 155, 0.8) !important;
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-cal {
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-academic path {
+  fill: rgba(230, 56, 155, 0.8);
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-baking path {
+  fill: rgba(246, 198, 78, 0.8);
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-photography path {
+  fill: rgba(129, 181, 102, 0.8);
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-household path {
+  fill: rgba(120, 114, 227, 0.8);
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-tech {
   background: none !important;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-tech path {
+  fill: rgba(85, 164, 183, 0.8);
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-cal path {
-  -webkit-transition: all 0.15s ease-in-out;
-  -o-transition: all 0.15s ease-in-out;
-  -ms-transition: all 0.15s ease-in-out;
-  -moz-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
-  fill: rgba(0, 48, 87, 0.8) !important;
+  fill: rgba(0, 48, 87, 0.8);
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-cerise path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-cerise path {
-  fill: #e6389b !important;
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-academic path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-academic path {
+  fill: #e6389b;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-baking path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-baking path {
+  fill: #F6C64E;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-photography path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-photography path {
+  fill: #81B566;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-household path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-household path {
+  fill: #7872e3;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-tech path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-tech path {
+  fill: #55A4B7;
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-cal path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-cal path {
-  fill: #003057 !important;
+  fill: #003057;
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-map {
@@ -7204,11 +7242,56 @@
   font-weight: 600 !important;
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):hover, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):focus {
+.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):hover, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):focus, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank)[class*="translate-blank"] {
   background: #69B3A5;
 }
 
-.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):hover svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):focus svg {
+.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):hover svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):focus svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank)[class*="translate-blank"] svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:hover, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:focus, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic[class*="translate-blank"] {
+  background: #e6389b;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:hover svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:focus svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic[class*="translate-blank"] svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking:hover, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking:focus, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking[class*="translate-blank"] {
+  background: #F6C64E;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking:hover svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking:focus svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking[class*="translate-blank"] svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography:hover, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography:focus, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography[class*="translate-blank"] {
+  background: #81B566;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography:hover svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography:focus svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography[class*="translate-blank"] svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:hover, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:focus, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household[class*="translate-blank"] {
+  background: #7872e3;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:hover svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:focus svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household[class*="translate-blank"] svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:hover, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:focus, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech[class*="translate-blank"] {
+  background: #55A4B7;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:hover svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:focus svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech[class*="translate-blank"] svg {
   filter: alpha(opacity=0);
   opacity: 0;
 }
