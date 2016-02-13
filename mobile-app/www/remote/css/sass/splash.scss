@@ -4783,6 +4783,8 @@
 			> div {
 				position: relative;
 				> a {
+					position: relative;
+					z-index: 1;
 					padding: 0 12px 0 15px;
 					border: 2px solid white;
 					border-radius: 2px;
@@ -4794,15 +4796,18 @@
 						height: 24px;
 					}
 					&:not(.active) + div {
-						@include opacity(0);
 						visibility: hidden;
 					}
 				}
 				> div {
-					@include center-x;
-					top: 58px;
 					position: absolute;
+					left: 50%;
+					margin-left: -99px;
+					top: 58px;
 					width: 198px;
+					&:not(.visible) {
+						visibility: hidden;
+					}
 					> svg {
 						position: relative;
 						z-index: 5;

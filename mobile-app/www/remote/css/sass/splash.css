@@ -6333,6 +6333,8 @@
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-nav > div > a {
+  position: relative;
+  z-index: 1;
   padding: 0 12px 0 15px;
   border: 2px solid white;
   border-radius: 2px;
@@ -6351,22 +6353,19 @@
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-nav > div > a:not(.active) + div {
-  filter: alpha(opacity=0);
-  opacity: 0;
   visibility: hidden;
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-nav > div > div {
   position: absolute;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
+  margin-left: -99px;
   top: 58px;
-  position: absolute;
   width: 198px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div:not(.visible) {
+  visibility: hidden;
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-nav > div > div > svg {
