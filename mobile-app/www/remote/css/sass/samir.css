@@ -597,20 +597,32 @@ header#home-nav-header.splash-header,
       z-index: 1000000 !important; }
       #request main #cta-modal-request-courses main#desktop-courses {
         height: auto !important; }
-        #request main #cta-modal-request-courses main#desktop-courses .desktop-search-header h1.invisible {
-          display: none !important; }
     #request main section {
-      height: calc(100% - 104px) !important; }
+      height: calc(100%) !important; }
       #request main section > * {
         width: 100%; }
+      #request main section#request-cta-details #cta-modal-request-courses {
+        height: 100% !important;
+        width: 100% !important; }
+        #request main section#request-cta-details #cta-modal-request-courses .desktop-header {
+          background: transparent !important;
+          height: 0px !important; }
+          #request main section#request-cta-details #cta-modal-request-courses .desktop-header a.cta-modal-close {
+            position: absolute;
+            right: 0 !important; }
+            #request main section#request-cta-details #cta-modal-request-courses .desktop-header a.cta-modal-close svg {
+              height: 40px !important;
+              width: 40px !important; }
+        #request main section#request-cta-details #cta-modal-request-courses .input-field {
+          text-align: left !important; }
       #request main section#request-cta-details textarea::-webkit-input-placeholder {
-        color: rbga(#40484B, 0.5) !important; }
+        color: rgba(64, 72, 75, 0.5) !important; }
       #request main section#request-cta-details textarea:-moz-placeholder {
-        color: rbga(#40484B, 0.5) !important; }
+        color: rgba(64, 72, 75, 0.5) !important; }
       #request main section#request-cta-details textarea::-moz-placeholder {
-        color: rbga(#40484B, 0.5) !important; }
+        color: rgba(64, 72, 75, 0.5) !important; }
       #request main section#request-cta-details textarea:-ms-input-placeholder {
-        color: rbga(#40484B, 0.5) !important; }
+        color: rgba(64, 72, 75, 0.5) !important; }
       #request main section#request-cta-map ui-gmap-google-map {
         height: calc(100%); }
       #request main section#request-cta-payment .offer-price-container {
@@ -706,33 +718,36 @@ header#home-nav-header.splash-header,
             overflow: visible; }
             #request main section#request-cta-calendar .calendar .calendar-container .week-view {
               height: calc(100% - 60px);
-              overflow: auto; }
-              #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour {
-                display: block; }
-                #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-range {
-                  font-size: 11px;
-                  text-align: left;
-                  font-weight: 700;
-                  text-transform: uppercase;
-                  opacity: 0.5;
-                  border-bottom: 1px solid rgba(241, 241, 241, 0.5); }
-                #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval {
-                  opacity: 0;
-                  cursor: pointer; }
-                  #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval:hover {
-                    @extends .high-z-index;
-                    opacity: 1;
-                    visibility: visible !important;
+              overflow: auto;
+              padding-bottom: 123px !important; }
+              #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 {
+                border-bottom: 4px solid #55A4B7; }
+                #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour {
+                  display: block; }
+                  #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-range {
                     font-size: 11px;
+                    text-align: left;
                     font-weight: 700;
-                    color: #FFFFFF !important;
-                    background: #40484B; }
-                  #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval.bg-shamrock {
-                    background-color: #69B3A5;
-                    opacity: 1;
-                    font-size: 11px;
-                    font-weight: 700;
-                    color: #FFFFFF !important; }
+                    text-transform: uppercase;
+                    opacity: 0.5;
+                    border-bottom: 1px solid rgba(241, 241, 241, 0.5); }
+                  #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval {
+                    opacity: 0;
+                    cursor: pointer; }
+                    #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval:hover {
+                      @extends .high-z-index;
+                      opacity: 1;
+                      visibility: visible !important;
+                      font-size: 11px;
+                      font-weight: 700;
+                      color: #FFFFFF !important;
+                      background: #40484B; }
+                    #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval.bg-shamrock {
+                      background-color: #69B3A5;
+                      opacity: 1;
+                      font-size: 11px;
+                      font-weight: 700;
+                      color: #FFFFFF !important; }
     #request main .splash-categories > .main {
       -webkit-transition: all 0.15s ease-in-out;
       -o-transition: all 0.15s ease-in-out;
@@ -1120,5 +1135,41 @@ header#home-nav-header.splash-header,
 
 .bg-auburn-impt {
   background: rgba(240, 79, 84, 0.75) !important; }
+
+.u-dz-attachment {
+  max-width: 140px;
+  margin: 0 5px; }
+  .u-dz-attachment .dz-remove {
+    display: none !important; }
+  .u-dz-attachment .img-container {
+    width: 120px; }
+    .u-dz-attachment .img-container a[data-dz-remove] svg {
+      height: 20px;
+      width: 20px;
+      stroke: #2B3234 !important;
+      stroke-width: 3px !important; }
+    .u-dz-attachment .img-container img {
+      max-width: 120px;
+      max-height: 100px;
+      height: 100%;
+      width: auto;
+      background: #2B3234; }
+      .u-dz-attachment .img-container img:before {
+        content: "loading...";
+        font-size: 10px; }
+    .u-dz-attachment .img-container div[data-dz-uploadprogress] {
+      height: 5px;
+      top: 100px; }
+  .u-dz-attachment .u-dz-details {
+    width: 100%;
+    width: 125px;
+    text-align: center; }
+    .u-dz-attachment .u-dz-details .u-file-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+
+.opacity-1-impt {
+  opacity: 1 !important; }
 
 /*# sourceMappingURL=samir.css.map */

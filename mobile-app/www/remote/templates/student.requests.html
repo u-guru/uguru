@@ -1,4 +1,4 @@
-<section id='request' class='desktop-request'>
+<section id='request' class='desktop-request full-xy absolute top-0 left-0' ng-controller='StudentProposalController'>
     <!-- only show this on desktop mode -->
     <header class='desktop-tab-header bg-{{requestForm.subcategory.hex_color}}' ng-class="{'bg-shamrock':!requestForm.subcategory.hex_color}"  anim-on-hide='request-confirming' anim-on-show="request-canceling" anim-on-hide-class="bounceOutUp" anim-on-show-class="bounceInDown" anim-on-hide-delay="500">
         <a id='guru-profile-cta-close' class='cta-modal-close close-button p15xy flex-right-center'>
@@ -6,23 +6,15 @@
                 <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
             </svg>
         </a>
-        <h1 ng-if='!requestForm.subcategory.name'> Request Form</h1>
-        <h1 ng-if='requestForm.subcategory.name'>{{requestForm.category.name}} Request Form
-            <small class='full-x p05xy'>{{requestForm.subcategory.name}}</small>
-        </h1>
-        <div class="tab-bar slide">
+        <h1>Your Requests</h1>
+        <div class="tab-bar slide" ng-if='user.incoming_requests.length && user.requests.length'>
             <div>
-                <a ng-click='requestForm.nav.switchTo(0)' ng-class='{active:!requestForm.nav.index}'>&nbsp;Type&nbsp;</a>
-                <a ng-click='requestForm.nav.switchTo(1)' ng-class='{active:requestForm.nav.index === 1}'>Detail</a>
-                <a ng-click='requestForm.nav.switchTo(2)' ng-class='{active:requestForm.nav.index === 2}'>When</a>
-                <a ng-click='requestForm.nav.switchTo(3)' ng-class='{active:requestForm.nav.index === 3}'>Where</a>
-                <a ng-click='requestForm.nav.switchTo(4)' ng-class='{active:requestForm.nav.index === 4}'>Pay</a>
-                <a ng-click='requestForm.nav.switchTo(5)' ng-class='{active:requestForm.nav.index === 5}'>Confirm</a>
+                <a class='bg-auburn'>&nbsp;Incoming ({{user.incoming_requests.length}})&nbsp;</a>
+                <a ng-click='requestForm.nav.switchTo(1)' ng-class='{active:requestForm.nav.index === 1}'>All ({{user.requests.length}})</a>
+                <a ng-click='requestForm.nav.switchTo(2)' ng-class='{active:requestForm.nav.index === 2}'>Pending</a>
+                <a ng-click='requestForm.nav.switchTo(3)' ng-class='{active:requestForm.nav.index === 3}'>Previous</a>
                 <hr/>
             </div>
-        </div>
-        <div class="onboarding-steps absolute left-0" id='request-form-progress' ng-if='requestForm.nav.index'>
-            <progress class="white" max="6" value="{{requestForm.nav.index}}"></progress>
         </div>
     </header>
     <header class="flex-center" ng-if='!desktopMode'>
@@ -36,6 +28,22 @@
     </header>
     <main class='relative'>
         <!-- All request form related ctas-->
-        <ion-pane ng-if='requestForm.category.name === "academic"' id='cta-modal-request-courses' class='absolute high-z-index full-xy hide-display cta-modal bg-charcoal' ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/student.request.details.html'"></ion-pane>
+        <div class='flex-wrap full-x'>
+            <div class='incoming-request full-x txt-white' ng-repeat='request in user.incoming_requests'>
+                <div class='ugrid'>
+                    <div>
+                        <div class='guru-info flex-wrap-center'>
+                            <div>{{request.guru.name}}</div>
+                            <div>{{request.guru.guru_introduction}} </div>
+                            <img class='user-photo' height="50" width="50" ng-src="{{request.guru.profile_url}}">
+                        </div>
+                    </div>
+                    <div class='next-steps full-x p20xy bg-charcoal ugrid-2'>
+                        <button class='txt-smoke bg-slate'>Nah</button>
+                        <button class='txt-smoke bg-moola uppercase weight-700' ng-click='acceptIncomingProposal(request)'>Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 </section>

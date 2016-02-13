@@ -1,13 +1,14 @@
 <section class="request-slide full-xy text-center flex-wrap-center" id='request-cta-details'>
-	<div class="course-choose-container">
+	<ion-pane id='cta-modal-request-courses' class='absolute high-z-index full-xy hide-display cta-modal bg-charcoal' ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/student.courses.container.html'"></ion-pane>
+	<div class="course-choose-container" ng-show='requestForm.category && requestForm.category.name === "Academic"'>
 		<div>
-			<h1 class='full-x text-center uppercase weight-600'> Select one of your {{}} courses  </h1>
+			<h1 class='full-x text-center uppercase weight-600'> Select one of your {{user.university.short_name}} courses  </h1>
 			<div class='full-x p20xy text-center'>
 				<ul class='desktop-card-list full-x flex-wrap-center'>
 					<li class='course-item p20xy m10x weight-400' ng-class='{"bg-cerise": requestForm.course.id === course.id, "bg-slate-50": request.course.id !== course.id}' ng-click='requestForm.course = course' ng-repeat='course in user.student_courses'>
 						{{course.short_name}}
 					</li>
-					<li class='course-item p20xy m10x bg-slate-50p weight-400' ng-click='requestForm.addCourse()' id='cta-box-request-courses'>
+					<li class='course-item p20xy m10x bg-slate-50p weight-400' id='cta-box-request-courses'>
 						Add One
 					</li>
 				</ul>
@@ -37,27 +38,34 @@
 				<span>&times;&nbsp;&nbsp;</span>
 				<span>{{tag.name}}</span>
 			</a>
-			<input class='chip tag-add' ng-model='requestForm.tags.empty_tag.content' ng-blur='requestForm.tags.add()' ng-keyup="$event.keyCode == 13 && requestForm.tags.add()" placeholder="{{requestForm.tags.empty_tag.placeholder}}" size="{{requestForm.tags.empty_tag.content.length || 10}}">
+			<input tabindex="1" class='chip tag-add' ng-model='requestForm.tags.empty_tag.content' ng-blur='requestForm.tags.add()' ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && requestForm.tags.add()" placeholder="{{requestForm.tags.empty_tag.placeholder}}" size="{{requestForm.tags.empty_tag.content.length || 10}}">
 			<span class='hide' ng-class="{'show': requestForm.tags.showError}">Tags must have more than 3 characters</span>
 		</div>
 	</div>
 	<div class='attachment-container ugrid-3 relative'>
 		<div>{{requestForm.files.length}} files uploaded </div>
-		<div class='file-attach-container'>
-			<div id="preview-template" style="display: none;" style='min-height:50px; min-width: 50px;'>
-				<div class="dz-preview dz-file-preview">
-				  <div class="dz-details">
-				    <div class="dz-filename"><span data-dz-name></span></div>
-				    <div class="dz-size" data-dz-size></div>
-				    <img data-dz-thumbnail />
+		<div class='file-attach-container relative'>
+			<div id="dz-preview-template" style="display: none;">
+				<div class="u-dz-attachment full-y p10xy">
+					<div class='img-container relative'>
+						  <div data-dz-uploadprogress class='bg-shamrock absolute high-z-index'> </div>
+						  	<a data-dz-remove class='absolute high-z-index top-0 right-0 close-button'>
+						  		<svg viewBox="0 0 100 100" stroke="#2B3234" stroke-width="5">
+									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+								</svg>
+							</a>
+						  <img data-dz-thumbnail class='full-x'/>
+					</div>
+				  <div class="u-dz-details">
+				    <div class='u-file-name weight-600' data-dz-name> </div>
+				    <small class='u-file-size weight-400' data-dz-size> </small>
+				    <div class='u-file-error' data-dz-errormessage> </div>
 				  </div>
-				  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
-				  <div class="dz-success-mark"><span>✔</span></div>
-				  <div class="dz-error-mark"><span>✘</span></div>
-				  <div class="dz-error-message"><span data-dz-errormessage></span></div>
 				</div>
 			</div>
-			<div id='request-form-file-uploader' class='dropzone' >
+			<div id='request-form-file-uploader' style='max-height:180px; height:180px;' class='full-x flex-wrap-center bg-slate-50p ugrid'>
+				<small style='margin-bottom:-50px;' class='absolute txt-slate p20y uppercase weight-600 bottom-0 left-0 full-x weight-300'> Drag up to 10mb of files here </small>
+				<progress class="absolute left-0 bottom-0 shamrock" max="10" value="10"></progress>
 			</div>
 		</div>
 	</div>

@@ -3,12 +3,12 @@
 		<div class="main absolute bottom-0 full-x">
 			<div id="messenger">
 				<div id="messenger-sidebar">
-					<h1>My Students</h1>
+					<h1>My Gurus</h1>
 					<ul>
-						<li ng-repeat='relationship in user.student_relationships|filter:student_search.search_text:strict' ng-click='setToActiveRelationship(relationship)'>
+						<li ng-repeat='relationship in user.guru_relationships|filter:student_search.search_text:strict' ng-click='setToActiveRelationship(relationship)'>
 							<a class='ng-class:{"active":relationship.id === active_relationship.id}'>
-								<span class="messenger-icon" style="background-image: url({{relationship.student.profile_url}});"></span>
-								<span class="messenger-label">{{relationship.student.name}}</span>
+								<span class="messenger-icon" style="background-image: url({{relationship.guru.profile_url}});"></span>
+								<span class="messenger-label">{{relationship.guru.name}}</span>
 							</a>
 						</li>
 					</ul>
@@ -24,7 +24,7 @@
 				</div>
 				<div id="messenger-content">
 					<div class="messenger-header">
-						<h1 class="no-menu">{{active_relationship.student.name}}</h1>
+						<h1 class="no-menu">{{active_relationship.guru.name}}</h1>
 						<a class='cta-modal-close close-button desktop-header-next'>
 							<svg viewBox="0 0 100 100">
 								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
@@ -106,7 +106,7 @@
 										<div class="message-single-info"></div>
 										<div class="message-single-status">
 											This is the beginning of your message thread with
-											<strong>{{active_relationship.student.name}}</strong>
+											<strong>{{active_relationship.guru.name}}</strong>
 										</div>
 									</div>
 								</div>
@@ -120,24 +120,23 @@
 											<span ng-if='message.sender.id === user.id'>Me</span>
 											<span>{{message.time_created}}</span>
 										</div>
-										<div class="message-single-message">
+										<div class="message-single-message" ng-if='message.contents && message.contents.length'>
 											{{message.contents}}
 										</div>
 										<div class="message-single-message" ng-if='message._file && message._file.id'>
 											<div class='weight-700'> 1 file attached </div>
-											<a href='{{message._file.url}}' class='txt-charcoal'>{{message._file.name}}, {{message._file.size/1000}}kb</a>
+											<a href='{{message._file.url}}'>{{message._file.name}}, {{message._file.size/1000}}kb</a>
 										</div>
 									</div>
 									<div class='message-single-icon' ng-if='message.sender.id === user.id'>
 										<span ng-if='user.profile_url' style='background-image: url({{user.profile_url}});' />
 									</div>
 								</div>
-
 						</div>
 						<div id='message-dropzone' class='bg-slate-50p absolute left-0 full-x txt-charcoal weight-400' style='bottom:64px; height:150px;' ng-class="{'show':showAttachments}"> Drag attachments here
 						</div>
 						<div id="message-box">
-							<a>
+							<a ng-click='showAttachments = !showAttachments'>
 								<svg viewBox="0 0 100 100">
 									<path d="M23.9602215,14 C18.4593164,14 14,18.4585633 14,23.9588015 L14,76.0411985 C14,81.5417132 18.4592951,86 23.9602215,86 L76.0397785,86 C81.5406836,86 86,81.5414367 86,76.0411985 L86,23.9588015 C86,18.4582868 81.5407049,14 76.0397785,14 L23.9602215,14 L23.9602215,14 Z M68,50 C68,40.0588745 59.9411255,32 50,32 C40.0588745,32 32,40.0588745 32,50 C32,59.9411255 40.0588745,68 50,68 C59.9411255,68 68,59.9411255 68,50 Z"></path>
 								</svg>

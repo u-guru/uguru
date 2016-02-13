@@ -791,6 +791,8 @@ def init_categories():
 
 
 
+
+
 if arg in ['generate_init_categories', '-gic']:
     generate_init_categories()
 
@@ -1002,36 +1004,25 @@ if arg == 'update':
 
     ## Helper functions
 
-if arg == 'seed_admin':
-    user = User.query.filter_by(email='samir@uguru.me').first()
 
-
-
-
+def getSeedAdmin(user):
     from hashlib import md5
 
     from app.database import db_session
-    from app.models import *
 
-    if len(sys.argv) > 2:
-        user = User.query.filter_by(email=sys.argv[2]).first()
-
-    admin_accounts = [('jason@uguru.me', 'Jason Huang'), ('gabrielle@uguru.me','Gabrielle Wee'), ('samir@uguru.me', 'Samir Makhani'), ('jeselle@uguru.me', 'Jeselle Obina')]
-    admin_emails = [_tuple[0] for _tuple in admin_accounts]
+    # admin_accounts = [('jason@uguru.me', 'Jason Huang'), ('gabrielle@uguru.me','Gabrielle Wee'), ('samir@uguru.me', 'Samir Makhani'), ('jeselle@uguru.me', 'Jeselle Obina')]
+    # admin_emails = [_tuple[0] for _tuple in admin_accounts]
     u = University.query.get(2307)
 
 
-    #teston jeselle
+    # #teston jeselle
     admin_account = user.email
     account_name = user.name
 
-    # check user exists
+    # # check user exists
     if not user:
         print "something is wrong"
         sys.exit()
-
-
-
 
     def selectXRandomCourses(user, x):
         university_courses = user.university.popular_courses
@@ -1375,10 +1366,27 @@ if arg == 'seed_admin':
         pass
 
     # print "credibility percentage %s" % checkCredibilityOfUser(user)
-    print "profile completion percentage %s" % profileCompletionUser(user)
-    print "\n\nAll Shop Info\n\n", shopDetails(user)
+    # print "profile completion percentage %s" % profileCompletionUser(user)
+    # print "\n\nAll Shop Info\n\n", shopDetails(user)
 
 
+def createTestGurus():
+    admin_users = User.query.filter_by(is_admin=True).all()
+    for user in admin_users:
+        print 'initializing...'
+
+    print "process complete"
+    from hashlib import md5
+    for user in admin_users:
+        user.is_admin = True
+        print "initializing %s with email %s\n\n" % (user.name, user.email)
+        getSeedAdmin(user)
+        user.password = md5('launchuguru123').hexdigest()
+        user.profile_code = user.name.split(' ')[0].lower()
+        user.referral_code = user.name.split(' ')[0].lower()
+        print "email:%s " % user.email
+        print "password:%s" % "launchuguru123"
+        print "num subcategories:%s" % len(user.guru_subcategories)
 
     #2. Profile
 
@@ -1393,6 +1401,8 @@ if arg == 'seed_admin':
     # Goal
     # --> Create hella shops
 
+if arg == 'init_dev':
+    createTestGurus()
 
 if arg == 'init_admin':
     from hashlib import md5

@@ -10,13 +10,15 @@ angular
     'uiGmapIsReady',
     'GUtilService',
     'Restangular',
+    'uiGmapIsReady',
     RequestService
 	]);
 
-function RequestService(Category, CalendarService, $timeout, LoadingService, FileService, CTAService, uiGmapIsReady, GUtilService, Restangular) {
+function RequestService(Category, CalendarService, $timeout, LoadingService, FileService, CTAService, uiGmapIsReady, GUtilService, Restangular, uiGmapIsReady) {
   var _types = {DEFAULT:0, QUICK_QA:1}
   var MAX_REQUEST_HOURS = 10;
   var requestCancelTimeout;
+  var constants = {GURU_ACCEPTED: 2}
 
   function getMaxNumHourArr() {
     var result = [];
@@ -37,6 +39,32 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     }
   }
 
+  function initMapReadyFunction(scope) {
+    if (scope.requestForm.mapReady) {
+      return;
+    }
+    LoadingService.showAmbig('Loading...');
+    uiGmapIsReady.promise(1).then(function(instances) {
+        $timeout(function() {
+          LoadingService.hide();
+        }, 1500);
+        scope.requestForm.map.center = scope.requestForm.map.marker.coords;
+         instances.forEach(function(inst) {
+            var map = inst.map;
+            google.maps.event.trigger(map, "resize");
+        });
+    });
+  }
+
+
+
+  function processServerRequestToClient(request) {
+    request.coords = {latitude: parseFloat(request.position.latitude), longitude: parseFloat(request.position.longitude)};
+    request.student_calendar = processServerCalendarToClient(request.student_calendar, request.tz_offset);
+    request.guru_calendar = request.guru_calendar && CalendarService.processServerCalendarToClient(request.guru_calendar, request.tz_offset);
+    return request;
+  }
+
   function getDefaultMarker(lat, long, color, scope) {
     return {
       idKey:1,
@@ -48,7 +76,7 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     function defaultMarkerOptions(color, text) {
       return {
         animation: google.maps.Animation.DROP,
-        icon: {url: generateUniversityImgDataURI(color, text), size: new google.maps.Size(170, 170), scaledSize: new google.maps.Size(100, 100)},
+        icon: {url: generateUniversityImgDataURI(color, text), size: new google.maps.Size(170, 170), scaledSize: new google.maps.Size(100, 100), anchor: new google.maps.Point(30, 40)},
         draggable: true
       }
 
@@ -71,6 +99,43 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       return;
     }
 
+  }
+
+  function acceptGuruForRequest(user_id, request, success, failure) {
+
+      var payload = request;
+      Restangular
+        .one('user', user_id).one('sessions')
+        .customPOST(JSON.stringify(payload))
+        .then(sessionPostSuccess, sessionPostFailure);
+      function sessionPostSuccess(user) {
+        console.log('success - here is the user obj', user);
+        success && success();
+      }
+
+      function sessionPostFailure(err) {
+          console.log('error when sending request to form', err);
+          failure && failure();
+      }
+  }
+
+  function acceptStudentRequest(user_id, proposal, success, failure) {
+
+    var payload = proposal;
+    Restangular
+        .one('user', user_id).one('requests')
+        .customPUT(JSON.stringify(payload))
+        .then(proposalPUTSuccess, proposalPUTFailure);
+
+    function proposalPUTSuccess(user) {
+      console.log('success - here is the user obj', user);
+      success && success();
+    }
+
+    function proposalPUTFailure(err) {
+        console.log('error when sending request to form', err);
+        failure && failure();
+    }
   }
 
   function setRequestTimeEstimateHours(form, value) {
@@ -109,6 +174,9 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     }
     var requestPayload = formatRequestFormForServer(form);
     sendRequestToServer(requestPayload);
+    $timeout(function() {
+      form = {};
+    });
   }
 
   function formatRequestFormForServer(form) {
@@ -176,12 +244,19 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     }
   }
 
+  function selectCalendarInterval(scope) {
+    return function(interval, form) {
+      interval.selected = !interval.selected;
+      form.calendarGetSelected && form.calendarGetSelected(scope);
+    }
+  }
+
 
   function initStudentForm(slide_box, scope, lat, long, color) {
-    $timeout(function() {
-      FileService.initDropzoneFromSelector('#request-form-file-uploader', scope);
-    }, 1000);
-    $timeout(function() {initGmapListener(scope, lat, long)});
+    console.log(FileService.DropzoneDict);
+    if (!FileService.DropzoneDict['#request-form-file-uploader']) {
+      FileService.initRequestDropzoneFromSelector('#request-form-file-uploader', scope);
+    }
     return {
       course: null,
       addCourse: addCourseFromRequestForm,
@@ -199,6 +274,7 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       payment_card: null,
       calendar: null,
       calendar_selected: [],
+      select_calendar: selectCalendarInterval(scope),
       calendar_selected_by_day: [],
       calendar_selected_ranges: [],
       calendarGetSelected: CalendarService.getCalendarSelected(),
@@ -209,9 +285,9 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       map: {center: {latitude: lat, longitude: long}, options: getRequestMapOptions(), zoom:15, pan:true, control:{}, marker: getDefaultMarker(lat, long, color, scope)},
       nav: {
         index: 0,
-        next: function() {slide_box.enableSlide(true); slide_box.next(); slide_box.enableSlide(false); scope.requestForm.nav.index += 1; if (scope.requestForm.nav.index === 3) {scope.requestForm.calendarGetSelected(scope)}},
-        previous: function() {slide_box.enableSlide(true); slide_box.previous(); slide_box.enableSlide(false); scope.requestForm.nav.index -= 1},
-        switchTo: function(index) {slide_box.enableSlide(true); slide_box.slide(index, 250); slide_box.enableSlide(false); scope.requestForm.nav.index = index},
+        next: function() {if (scope.requestForm.nav.index === 2) {initMapReadyFunction(scope); scope.requestForm.mapReady = true;}; slide_box.enableSlide(true); slide_box.next(); slide_box.enableSlide(false); scope.requestForm.nav.index += 1; console.log('current requestForm', scope.requestForm); updateValidationIndex(scope); },
+        previous: function() {slide_box.enableSlide(true); slide_box.previous(); slide_box.enableSlide(false); scope.requestForm.nav.index -= 1; updateValidationIndex(scope); },
+        switchTo: function(index) {slide_box.enableSlide(true); slide_box.slide(index, 250); slide_box.enableSlide(false); scope.requestForm.nav.index = index; updateValidationIndex(scope); if (scope.requestForm.nav.index === 3) {initMapReadyFunction(scope); scope.requestForm.mapReady = true;}},
       },
       confirm: validate,
       cancel: cancelRequest,
@@ -222,6 +298,28 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       $timeout(function() {
         scope.requestForm.description.saved = false;
       }, 2000)
+    }
+
+    function updateValidationIndex(scope) {
+      scope.requestForm.validationIndex = 0;
+      if (scope.requestForm.category && scope.requestForm.category.name && scope.requestForm.category.name.length && scope.requestForm.subcategory && scope.requestForm.subcategory.name && scope.requestForm.subcategory.name.length) {
+          scope.requestForm.validationIndex++;
+      }
+      if (scope.requestForm.description.content && scope.requestForm.description.content.length) {
+        scope.requestForm.validationIndex++;
+      } if (scope.requestForm.calendar_selected.length) {
+        scope.requestForm.validationIndex++;
+      }
+      if (scope.requestForm.location && scope.requestForm.location.latitude && scope.requestForm.location.longitude) {
+        scope.requestForm.validationIndex++;
+      }
+      if (scope.requestForm.payment_card && scope.requestForm.payment_card.id) {
+        scope.requestForm.validationIndex++;
+      }
+
+      if ((scope.requestForm.price.selected || scope.requestForm.price.selected === 0)) {
+        scope.requestForm.validationIndex++;
+      }
     }
 
     function validate(requestForm) {
@@ -241,7 +339,6 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
         }
         LoadingService.showMsg(errString, 3000);
       }
-
 
       function validateRequestForm(requestForm) {
         errorArr = [];
@@ -319,12 +416,15 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
 
   function addCourseFromRequestForm() {
     // initSingleCTA = function(boxSelector, parentSelector, show_callback)
-    CTAService.initSingleCTA("#cta-box-request-courses", "#request main.relative");
+    CTAService.initSingleCTA("#cta-box-request-courses", "#request-cta-details");
   }
 
   return {
     initStudentForm:initStudentForm,
-    getMaxNumHourArr: getMaxNumHourArr
+    getMaxNumHourArr: getMaxNumHourArr,
+    acceptStudentRequest: acceptStudentRequest,
+    constants:constants,
+    acceptGuruForRequest: acceptGuruForRequest
   }
 
 }

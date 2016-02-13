@@ -4733,6 +4733,156 @@
 		@include flex-wrap;
 		position: relative;
 		background: $slate;
+		.splash-hero-nav {
+			@include flex;
+			@include flex-center-vertical;
+			position: fixed;
+			z-index: 1001;
+			top: 15px;
+			right: 72px;
+			a, h2 {
+				@include flex;
+				@include flex-center-vertical;
+				padding: 0 10px;
+				height: 48px;
+				font-weight: 600;
+				font-size: 18px;
+			}
+			a {
+				&.bg-cerise {
+					background: rgba($cerise, .8);
+					&:hover, &:focus {
+						background: $cerise;
+					}
+				}
+				&.bg-gold {
+					background: rgba($gold, .8);
+					&:hover, &:focus {
+						background: $gold;
+					}
+				}
+				&.bg-moola {
+					background: rgba($moola, .8);
+					&:hover, &:focus {
+						background: $moola;
+					}
+				}
+				&.bg-azure {
+					background: rgba($azure, .8);
+					&:hover, &:focus {
+						background: $azure;
+					}
+				}
+				&.bg-cal {
+					background: rgba(#003057, .8);
+					&:hover, &:focus {
+						background: #003057;
+					}
+				}
+			}
+			> div {
+				position: relative;
+				> a {
+					padding: 0 12px 0 15px;
+					border: 2px solid white;
+					border-radius: 2px;
+					svg {
+						@include svg-stroke(white, 10);
+						display: block;
+						margin-left: 5px;
+						width: 24px;
+						height: 24px;
+					}
+					&:not(.active) + div {
+						@include opacity(0);
+						visibility: hidden;
+					}
+				}
+				> div {
+					@include center-x;
+					top: 58px;
+					position: absolute;
+					width: 198px;
+					> svg {
+						position: relative;
+						z-index: 5;
+					}
+					ul {
+						margin-top: -6px;
+						li {
+							position: relative;
+							height: 48px;
+							border: 2px solid white;
+							border-top: 0;
+							font-size: 18px;
+							font-weight: 600;
+							&:first-child {
+								border-top-left-radius: 2px;
+								border-top-right-radius: 2px;
+							}
+							&:last-child {
+								border-bottom-left-radius: 2px;
+								border-bottom-right-radius: 2px;
+							}
+							a {
+								@include flex;
+								@include flex-center;
+								height: 100%;
+								width: 100%;
+								padding: 0 15px;
+								svg {
+									@include svg-stroke(white, 10);
+									display: none;
+									margin-left: 5px;
+									width: 24px;
+									height: 24px;
+								}
+								&.active {
+									svg {
+										display: block;
+									}
+								}
+								+ .arrow {
+									@include center-x;
+									display: block;
+									top: -13px;
+									width: 30px;
+									height: 15px;
+									&.bg-cerise {
+										background: none!important;
+										path {
+											@include transition(.15s ease-in-out);
+											fill: rgba($cerise, .8)!important;
+										}
+									}
+									&.bg-cal {
+										background: none!important;
+										path {
+											@include transition(.15s ease-in-out);
+											fill: rgba(#003057, .8)!important;
+										}
+									}
+								}
+								&:hover, &:focus {
+									+ .arrow {
+										&.bg-cerise {
+											path {
+												fill: $cerise!important;
+											}
+										}
+										&.bg-cal {
+											path {
+												fill: #003057!important;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 		.splash-hero-map {
 			position: absolute;
 			z-index: 1;
@@ -4946,7 +5096,6 @@
 			}
 		}
 		.splash-hero-skip {
-			@include prefix(animation-delay, 5000ms, webkit moz ms o);
 			position: absolute;
 			z-index: 3;
 			bottom: 0;
@@ -4988,7 +5137,7 @@
 				svg {
 					max-width: 320px;
 				}
-				.splash-device-content {
+				.splash-device-content, .splash-device-profile {
 					top: 12.6%;
 					left: 7.3%;
 					width: 85.4%;
@@ -4998,6 +5147,10 @@
 						right: -90px;
 					}
 				}
+			}
+			.splash-device-profile {
+				position: absolute;
+				background: $cerise;
 			}
 			.splash-device-content {
 				@include flex;
@@ -5032,6 +5185,7 @@
 						height: 30px;
 						span {
 							&:nth-child(1), &:nth-child(3) {
+								z-index: -1;
 								width: 0;
 								height: 0;
 								border: 15px solid transparent;
@@ -5110,7 +5264,7 @@
 		.coach-scroll {
 			@include center-x;
 			z-index: 3;
-			bottom: -4.5%;
+			bottom: -30px;
 			width: 328px;
 			svg {
 				@include prefix(animation-delay, 3000ms, webkit moz ms o);

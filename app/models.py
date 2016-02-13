@@ -2509,9 +2509,9 @@ class Session(Base):
     @staticmethod
     def initFromJson(session_json, is_request_json = None):
         _session = Session()
-        _session.seconds = session_json.get('time_estimate').get('seconds')
-        _session.minutes = session_json.get('time_estimate').get('minutes')
-        _session.hours = session_json.get('time_estimate').get('hours')
+        # _session.seconds = session_json.get('time_estimate').get('seconds')
+        # _session.minutes = session_json.get('time_estimate').get('minutes')
+        # _session.hours = session_json.get('time_estimate').get('hours')
         _session.guru_id = session_json.get('guru_id')
         _session.student_id = session_json.get('student_id')
         _session.status = session_json.get('status')
@@ -2524,7 +2524,7 @@ class Session(Base):
         _session.address = session_json.get('address')
         _session.in_person = session_json.get('in_person')
         _session.online = session_json.get('online')
-        _session.time_estimate = int(session_json.get('time_estimate').get('hours')) * 60 + int(session_json.get('time_estimate').get('minutes'))
+        # _session.time_estimate = int(session_json.get('time_estimate').get('hours')) * 60 + int(session_json.get('time_estimate').get('minutes'))
         db_session.add(_session)
         try:
             db_session.commit()
@@ -2569,8 +2569,7 @@ class Relationship(Base):
 
     student_id = Column(Integer, ForeignKey('user.id'))
     student = relationship("User",
-        primaryjoin = "(User.id==Relationship.student_id) & "\
-                        "(User.is_a_guru==False)",
+        primaryjoin = "(User.id==Relationship.student_id)",
                         uselist=False,
                         backref="guru_relationships")
 
@@ -2643,8 +2642,7 @@ class Message(Base):
         message.time_created = datetime.now()
         message.time_sent = datetime.now()
         message.contents = message_json.get('contents')
-        if message_json.get('type'):
-            doNothing = False
+        message.file_id = message_json.get('file_id')
 
         message.relationship_id = message_json.get('relationship_id')
 

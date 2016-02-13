@@ -2,7 +2,7 @@
     <div ng-if='requestForm.address'class='absolute high-z-index top-0 flex-center-wrap p15x p20y bg-smoke'>
         <h1 class='weight-600 uppercase txt-charcoal'> {{requestForm.address}} </h1>
     </div>
-    <div class='map-container full-xy'>
+    <div class='map-container full-x relative' style='height:calc(100% - 165px) !important; top:60px;' ng-if='requestForm.mapReady'>
         <ui-gmap-google-map
                     class="full-xy absolute top-0 left-0"
                     center='requestForm.map.center'
@@ -14,7 +14,7 @@
 
             <ui-gmap-marker
                     idKey='requestForm.map.marker.idKey'
-                    coords='requestForm.map.center'
+                    coords='requestForm.map.marker.coords'
                     click='requestForm.map.marker.onClick()'
                     options='requestForm.map.marker.options'
                     control='requestForm.map.marker.control'

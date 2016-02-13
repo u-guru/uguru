@@ -6256,6 +6256,232 @@
   background: #40484B;
 }
 
+.splash-landing.new > section.splash-hero .splash-hero-nav {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1001;
+  top: 15px;
+  right: 72px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav a, .splash-landing.new > section.splash-hero .splash-hero-nav h2 {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  padding: 0 10px;
+  height: 48px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-cerise {
+  background: rgba(230, 56, 155, 0.8);
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-cerise:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-cerise:focus {
+  background: #e6389b;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-gold {
+  background: rgba(246, 198, 78, 0.8);
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-gold:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-gold:focus {
+  background: #F6C64E;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-moola {
+  background: rgba(129, 181, 102, 0.8);
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-moola:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-moola:focus {
+  background: #81B566;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-azure {
+  background: rgba(85, 164, 183, 0.8);
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-azure:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-azure:focus {
+  background: #55A4B7;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-cal {
+  background: rgba(0, 48, 87, 0.8);
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav a.bg-cal:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-cal:focus {
+  background: #003057;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div {
+  position: relative;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > a {
+  padding: 0 12px 0 15px;
+  border: 2px solid white;
+  border-radius: 2px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > a svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+  margin-left: 5px;
+  width: 24px;
+  height: 24px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > a:not(.active) + div {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 58px;
+  position: absolute;
+  width: 198px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div > svg {
+  position: relative;
+  z-index: 5;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul {
+  margin-top: -6px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li {
+  position: relative;
+  height: 48px;
+  border: 2px solid white;
+  border-top: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li:first-child {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li:last-child {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: none;
+  margin-left: 5px;
+  width: 24px;
+  height: 24px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a.active svg {
+  display: block;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  display: block;
+  top: -13px;
+  width: 30px;
+  height: 15px;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-cerise {
+  background: none !important;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-cerise path {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  fill: rgba(230, 56, 155, 0.8) !important;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-cal {
+  background: none !important;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-cal path {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  fill: rgba(0, 48, 87, 0.8) !important;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-cerise path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-cerise path {
+  fill: #e6389b !important;
+}
+
+.splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-cal path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-cal path {
+  fill: #003057 !important;
+}
+
 .splash-landing.new > section.splash-hero .splash-hero-map {
   position: absolute;
   z-index: 1;
@@ -6571,11 +6797,6 @@
 }
 
 .splash-landing.new > section.splash-hero .splash-hero-skip {
-  -webkit-animation-delay: 5000ms;
-  -moz-animation-delay: 5000ms;
-  -ms-animation-delay: 5000ms;
-  -o-animation-delay: 5000ms;
-  animation-delay: 5000ms;
   position: absolute;
   z-index: 3;
   bottom: 0;
@@ -6634,16 +6855,21 @@
   max-width: 320px;
 }
 
-.splash-landing.new > section.splash-hero .splash-device.splash-device-iphone .splash-device-content {
+.splash-landing.new > section.splash-hero .splash-device.splash-device-iphone .splash-device-content, .splash-landing.new > section.splash-hero .splash-device.splash-device-iphone .splash-device-profile {
   top: 12.6%;
   left: 7.3%;
   width: 85.4%;
   height: 75%;
 }
 
-.splash-landing.new > section.splash-hero .splash-device.splash-device-iphone .splash-device-content .coach-click {
+.splash-landing.new > section.splash-hero .splash-device.splash-device-iphone .splash-device-content .coach-click, .splash-landing.new > section.splash-hero .splash-device.splash-device-iphone .splash-device-profile .coach-click {
   bottom: 65px;
   right: -90px;
+}
+
+.splash-landing.new > section.splash-hero .splash-device .splash-device-profile {
+  position: absolute;
+  background: #e6389b;
 }
 
 .splash-landing.new > section.splash-hero .splash-device .splash-device-content {
@@ -6719,6 +6945,7 @@
 }
 
 .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search h3 span:nth-child(1), .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search h3 span:nth-child(3) {
+  z-index: -1;
   width: 0;
   height: 0;
   border: 15px solid transparent;
@@ -6841,7 +7068,7 @@
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
   z-index: 3;
-  bottom: -4.5%;
+  bottom: -30px;
   width: 328px;
 }
 

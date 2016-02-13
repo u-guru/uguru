@@ -1,5 +1,30 @@
 <div class='relative' id='iscroll-wrapper' style='height:calc(100%); width:calc(100%); overflow:hidden !important;'>
 
+	<!-- <div class='p20xy weight-400 opacity-0 bg-cerise' id='inject-0'
+
+	class-on-load="bounceInUp:anim"
+	class-on-load-delay="500"
+
+	class-on-click="tada:anim:unique:inject#inject-1|bg-auburn-impt"
+
+	class-on-activate="bounceOutDown:animOut:inject#inject-1|activate"
+	class-on-activate-delay="2500">
+	OnLoad Element
+	</div>
+
+	<div
+	class-on-load="bounceInUp:anim"
+	class-on-load-delay="800"
+
+	activate-on-class="bg-auburn-impt"
+	activate-on-class-delay="1000"
+
+	class-on-activate="lightSpeedOut:animOut:inject#inject-0|activate"
+
+	class-on-click="tada:anim:keep"
+	class='p20xy m20x weight-400 opacity-0 bg-moola'
+	id='inject-1'> -->
+
 	<main id='home-splash' class='splash-landing new hs-view full-xy'>
 		<!-- sidebar -->
 		<aside id='cta-modal-sidebar' class='splash-sidebar bg-charcoal ng-class: ::{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}' ng-include="::img_base + BASE + 'templates/one.university.sidebar.html'">
@@ -18,13 +43,116 @@
 				</a>
 			</div>
 		</header>
-
+		
 		<section id='splash-home' class='splash-hero'>
+			<div class="splash-hero-nav">
+				<div>
+					<a class="active bg-cerise">
+						<span>Academics</span>
+						<svg viewBox="0 0 100 100">
+							<path d="M14,32 L50,68 L86,32"></path>
+						</svg>
+					</a>
+					<div>
+						<svg viewBox="0 0 396 38">
+						    <path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+						</svg>
+						<ul>
+							<li>
+								<a class="active bg-cerise">
+									<span>Academic</span>
+									<svg viewBox="0 0 100 100">
+									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+									</svg>
+								</a>
+								<svg class="arrow bg-cerise" viewBox="0 0 60 30">
+								    <path d="M4,26 L30,0 L56,26"></path>
+								</svg>
+							</li>
+							<li>
+								<a class="bg-gold">
+									<span>Baking</span>
+									<svg viewBox="0 0 100 100">
+									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+									</svg>
+								</a>
+							</li>
+							<li>
+								<a class="bg-moola">
+									<span>Photography</span>
+									<svg viewBox="0 0 100 100">
+									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+									</svg>
+								</a>
+							</li>
+							<li>
+								<a class="bg-azure">
+									<span>Tech</span>
+									<svg viewBox="0 0 100 100">
+									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+									</svg>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<h2>@</h2>
+				<div>
+					<a class="bg-cal">
+						<span>UC Berkeley</span>
+						<svg viewBox="0 0 100 100">
+							<path d="M14,32 L50,68 L86,32"></path>
+						</svg>
+					</a>
+					<div>
+						<svg viewBox="0 0 396 38">
+						    <path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+						</svg>
+						<ul>
+							<li>
+								<a class="active bg-cal">
+									<span>UC Berkeley</span>
+									<svg viewBox="0 0 100 100">
+									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+									</svg>
+								</a>
+								<svg class="arrow bg-cal" viewBox="0 0 60 30">
+								    <path d="M4,26 L30,0 L56,26"></path>
+								</svg>
+							</li>
+							<li>
+								<a class="bg-stanford">
+									<span>Stanford University</span>
+									<svg viewBox="0 0 100 100">
+									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+									</svg>
+								</a>
+							</li>
+							<li>
+								<a class="bg-yale">
+									<span>Yale University</span>
+									<svg viewBox="0 0 100 100">
+									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+									</svg>
+								</a>
+							</li>
+							<li>
+								<a class="bg-harvard">
+									<span>Harvard University</span>
+									<svg viewBox="0 0 100 100">
+									    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+									</svg>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 			<div class="splash-hero-map opacity-0 ng-class:{'animated fadeIn':beginSearch}">
 				<div class="splash-scene-map-img" style="background-image: url('{{img_base + 'img/categories/ucb-map@2x.png'}}')"></div>
 			</div>
-			<div class="splash-hero-skip opacity-0" class-on-load="rollIn:anim">
-				<button ng-click="completeAnim = true;">Skip</button>
+			<div class="splash-hero-skip opacity-0" class-on-load="rollIn:anim" class-on-load-delay="5000">
+				<button ng-click="completeAnim = true;" class-on-click="button-skip:inject#button-find-guru|animated, button-skip:inject#button-find-guru|bounceInUp">Skip</button>
 			</div>
 			<div class="splash-hero-markers ng-class:{'active':beginSearch}">
 				<div class="splash-hero-marker opacity-0 ng-class:{'animated bounceIn':beginSearch, 'first':beginSearch}" style="bottom: 10%; right: 10%;">
@@ -195,6 +323,9 @@
 					<path d="M2,42.0005693 C2,19.9088649 19.9096817,2 41.9948462,2 L277.005154,2 C299.093697,2 317,19.9012788 317,42.0005693 L317,609.999431 C317,632.091135 299.090318,650 277.005154,650 L41.9948462,650 C19.9063026,650 2,632.098721 2,609.999431 L2,42.0005693 Z M22,80 L298,80 L298,573 L22,573 L22,80 Z" fill="none" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3"></path>
 					<circle stroke="#F0E0D0" stroke-width="3" fill="none" cx="159" cy="611" r="25"></circle>
 				</svg>
+				<div class="splash-device-profile active">
+					<strong>.splash-device-profile</strong>
+				</div>
 				<div class="splash-device-content">
 					<div class="splash-device-search">
 						<div class="opacity-0 ng-class:{'animated bounceInUp':beginSearch}">
@@ -202,10 +333,10 @@
 								<span class="ng-class:{'animated fadeOut':beginSearch}">Searching for gurus at</span>
 								<span class="opacity-0 ng-class:{'animated fadeIn':beginSearch}">Found <b>6 gurus</b> at</span>
 							</p>
-							<h3>
-								<span style="border-color: #023360; border-left-color: transparent;"></span>
-								<span style="background: #023360;">UC Berkeley</span>
-								<span style="border-color: #023360; border-right-color: transparent;"></span>
+							<h3 style="border-top: 1px solid #FFBD17; border-bottom: 1px solid #FFBD17;">
+								<span style="border-color: #003057; border-left-color: transparent;"></span>
+								<span style="background: #003057;">UC Berkeley</span>
+								<span style="border-color: #003057; border-right-color: transparent;"></span>
 							</h3>
 							<div class="progress white-round height-10 ng-class:{'animate':beginSearch}">
 								<span style="width: 15%;" class="ng-class:{'animate':beginSearch}"></span>
@@ -225,7 +356,7 @@
 					    </g>
 					</svg>
 					<div class="splash-device-button ng-class:{'animated bounceOutDown':beginSearch}">
-						<button class="opacity-0 ng-class:{'animated bounceInUp':completeAnim}" ng-click="beginSearch = true;">Find My Guru</button>
+						<button id="button-find-guru" class="opacity-0" ng-click="beginSearch = true;">Find My Guru</button>
 					</div>
 				</div>
 			</div>
@@ -341,7 +472,6 @@
 					<button class="splash-mobile-cta opacity-0 ng-class:{'animated bounceInUp':completeAnim, 'bounceOutDown':beginSearch}">Find My Guru</button>
 				</div>
 			</div>
-			
 			<div class="coach-scroll">
 				<svg viewBox="0 0 656 138" class="opacity-0 ng-class:{'animated fadeIn':completeAnim}">
 				    <g fill="none">
