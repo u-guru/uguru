@@ -1,0 +1,31 @@
+<ion-view class='bottom-0 student-messages-container'>
+	<main id='desktop-payments' class="desktop-mode" ng-if='desktopMode'>
+		<div class="main absolute bottom-0 full-xy">
+				<div id="messenger-sidebar">
+					<h1>My Transactions</h1>
+					<ul>
+						<li ng-repeat='relationship in user.guru_relationships|filter:student_search.search_text:strict' ng-click='setToActiveRelationship(relationship)'>
+							<a class='ng-class:{"active":relationship.id === active_relationship.id}'>
+								<span class="messenger-icon" style="background-image: url({{relationship.guru.profile_url}});"></span>
+								<span class="messenger-label">{{relationship.guru.name}}</span>
+							</a>
+						</li>
+					</ul>
+					<div id="messenger-sidebar-search">
+						<label for="messenger-sidebar-search">
+							<svg viewBox="0 0 100 100">
+								<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+							</svg>
+						</label>
+
+						<input name="messenger-sidebar-search" placeholder="Filter" ng-model='student_search.search_text' />
+					</div>
+				</div>
+				<div id="payments-content" class='relative full-x'>
+					<div ng-controller='PaymentsController' ng-include="img_base + BASE + 'templates/student.payments.components.html'">
+					</div>
+
+				</div>
+		</div>
+	</main>
+</ion-view>
