@@ -4738,8 +4738,8 @@
 			@include flex-center-vertical;
 			position: fixed;
 			z-index: 1001;
-			top: 15px;
-			right: 72px;
+			top: 0;
+			right: 0;
 			a, h2 {
 				@include flex;
 				@include flex-center-vertical;
@@ -4939,6 +4939,16 @@
 					}
 				}
 			}
+			&.desktop {
+				display: none;
+			}
+			&.mobile {
+				> div {
+					> a {
+						border: 0;
+					}
+				}
+			}
 		}
 		.splash-hero-map {
 			position: absolute;
@@ -4971,8 +4981,11 @@
 			}
 			.splash-hero-marker {
 				position: absolute;
+				&:not(:first-child) {
+					display: none;
+				}
 				&:nth-child(1) {
-					@include prefix(animation-delay, 1000ms, webkit moz ms o);
+					@include prefix(animation-delay, 500ms, webkit moz ms o);
 				}
 				&:nth-child(2) {
 					@include prefix(animation-delay, 1500ms, webkit moz ms o);
@@ -5116,7 +5129,7 @@
 				}
 				&.first {
 					.message {
-						@include prefix(animation, bounceInUp 1000ms ease-in 3500ms 1 forwards, webkit moz ms o);
+						@include prefix(animation, bounceInUp 1000ms ease-in 1000ms 1 forwards, webkit moz ms o);
 					}
 				}
 				&.active {
@@ -5154,7 +5167,7 @@
 		}
 		.splash-hero-skip {
 			position: absolute;
-			z-index: 3;
+			z-index: 10;
 			bottom: 0;
 			right: 0;
 			padding: 15px;
@@ -5321,15 +5334,22 @@
 		.coach-scroll {
 			@include center-x;
 			z-index: 3;
-			bottom: -30px;
+			bottom: -40px;
 			width: 328px;
 			svg {
 				@include prefix(animation-delay, 3000ms, webkit moz ms o);
 				display: block;
 				width: 100%;
 				path, rect {
-					@include opacity(.15);
+					@include transition(1000ms ease-in-out);
+					stroke: rgba(white, .15);
 				}
+				rect {
+					fill: rgba($slate, .5);
+				}
+			}
+			&.active {
+				z-index: 11;
 			}
 		}
 		.splash-hero-content {
@@ -5342,10 +5362,6 @@
 			margin-bottom: 75px;
 			.splash-adlib {
 				width: 100%;
-				&.animate {
-					@include prefix(animation, splash-adlib 500ms ease-in 200ms 1 forwards, webkit moz ms o);
-					z-index: 1;
-				}
 				h1 {
 					@include prefix(animation-delay, 200ms, webkit moz ms o);
 					@include flex;
@@ -5361,13 +5377,12 @@
 					@include flex;
 					@include flex-center;
 					position: relative;
-					width: 128px;
-					height: 36px;
+					width: 130px;
+					height: 38px;
 					padding: 0;
 					border-radius: 8px;
 					font-size: 20px;
 					font-weight: 600;
-					border-radius: 8px;
 					svg {
 						@include transition(.15s ease-in-out);
 						position: absolute;
@@ -5375,6 +5390,9 @@
 						left: 0;
 						width: 100%;
 						height: 100%;
+						&.desktop {
+							display: none;
+						}
 					}
 					b {
 						@include prefix(animation-delay, 1200ms, webkit moz ms o);
@@ -5448,6 +5466,9 @@
 					li {
 						width: 143px;
 						padding: 7.5px;
+						a[class*="translate-blank"] {
+							@include prefix(animation, none!important, webkit moz ms o);
+						}
 						&:nth-child(1) {
 							@include prefix(animation-delay, 1400ms, webkit moz ms o);
 						}
@@ -5513,12 +5534,29 @@
 				}
 			}
 			.coach-help {
-				top: -60px;
-    			left: -160px;
-				width: 170px;
+				&.coach-help-desktop {
+					display: none;
+					top: -60px;
+	    			left: -160px;
+					width: 170px;
+				}
+				&.coach-help-mobile {
+					top: -15px;
+					left: -100px;
+					width: 114.5px;
+				}
 			}
 		}
 		@media screen and (max-width: 768px) {
+			.splash-hero-markers {
+				.splash-hero-marker {
+					&:first-child {
+						right: 50%;
+						margin-right: -131px;
+						bottom: 15%;
+					}
+				}
+			}
 			.splash-hero-content {
 				.splash-adlib {
 					h1 {
@@ -5528,6 +5566,54 @@
 			}
 		}
 		@media screen and (min-width: 768px) {
+			.splash-hero-markers {
+				.splash-hero-marker {
+					&:first-child {
+						right: 10%;
+						margin-right: 0;
+						bottom: 10%;
+					}
+					&:nth-child(1) {
+						@include prefix(animation-delay, 1000ms, webkit moz ms o);
+					}
+					&.first {
+						.message {
+							@include prefix(animation, bounceInUp 1000ms ease-in 3500ms 1 forwards, webkit moz ms o);
+						}
+					}
+				}
+			}
+			.coach-scroll {
+				bottom: -70px;
+			}
+			.coach-help {
+				&.coach-help-desktop {
+					display: block;
+				}
+				&.coach-help-mobile {
+					display: none;
+				}
+			}
+			.splash-hero-nav {
+				top: 15px;
+				right: 72px;
+				&.desktop {
+					@include flex;
+				}
+				&.mobile {
+					display: none;
+				}
+				> div:first-child, > div:first-child + h2 {
+					display: block;
+				}
+			}
+			.splash-hero-markers {
+				.splash-hero-marker {
+					&:not(:first-child) {
+						display: block;
+					}
+				}
+			}
 			.splash-device {
 				display: block;
 			}
@@ -5539,6 +5625,10 @@
 			}
 			.splash-hero-content {
 				.splash-adlib {
+					&.animate {
+						@include prefix(animation, splash-adlib 500ms ease-in 200ms 1 forwards, webkit moz ms o);
+						z-index: 1;
+					}
 					h1 {
 						font-size: 40px;
 					}
@@ -5546,6 +5636,14 @@
 						width: 142px;
 						height: 44px;
 						font-size: 24px;
+						svg {
+							&.mobile {
+								display: none;
+							}
+							&.desktop {
+								display: block;
+							}
+						}
 					}
 					.splash-mobile-cta {
 						display: none;

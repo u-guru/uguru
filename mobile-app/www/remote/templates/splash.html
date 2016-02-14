@@ -45,7 +45,7 @@
 		</header>
 
 		<section id='splash-home' class='splash-hero'>
-			<div class="splash-hero-nav opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500">
+			<div class="splash-hero-nav desktop opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500">
 				<div>
 					<a class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-hero-nav-categories|a, active:unique">
 						<span>{{selectedCategory.name}}</span>
@@ -101,14 +101,24 @@
 					</div>
 				</div>
 			</div>
+			<div class="splash-hero-nav mobile opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500">
+				<div>
+					<a class="bg-cal" class-on-click="a:inject.splash-hero-nav-schools|a, active:unique">
+						<span>@ Cal</span>
+						<svg viewBox="0 0 100 100">
+							<path d="M14,32 L50,68 L86,32"></path>
+						</svg>
+					</a>
+				</div>
+			</div>
 			<div class="splash-hero-map opacity-0 animated">
 				<div class="splash-scene-map-img" style="background-image: url('{{img_base + 'img/categories/ucb-map@2x.png'}}')"></div>
 			</div>
 			<div class="splash-hero-skip opacity-0" class-on-load="rollIn:anim" class-on-load-delay="5000">
-				<button class-on-click="a:inject.button-find-guru|bounceInUp, a:inject.coach-click|show-opacity-impt, a:inject.coach-click path|animate, a:inject.coach-click-path-2|animate, a:inject.coach-click g g|bounceIn, a:inject.coach-help|bounceIn, a:inject.coach-fill|hide, a:inject.coach-scroll|fadeIn">Skip</button>
+				<button class-on-click="a:inject.button-find-guru|bounceInUp, a:inject.splash-mobile-cta|bounceInUp, a:inject.coach-click|show-opacity-impt, a:inject.coach-click path|animate, a:inject.coach-click-path-2|animate, a:inject.coach-click g g|bounceIn, a:inject.coach-help-desktop|bounceIn, a:inject.coach-help-mobile|bounceIn, a:inject.coach-fill|hide, a:inject.coach-scroll|active, a:inject.coach-scroll svg|fadeIn">Skip</button>
 			</div>
 			<div class="splash-hero-markers" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker-1|a, active:inject.splash-hero-marker-2|a, active:inject.splash-hero-marker-3|a, active:inject.splash-hero-marker-4|a, active:inject.splash-hero-marker-5|a, active:inject.splash-hero-marker-6|a">
-				<div class="splash-hero-marker-1 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="first:unique, bounceIn:anim" style="bottom: 10%; right: 10%;">
+				<div class="splash-hero-marker-1 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="first:unique, bounceIn:anim">
 					<div class="message top">
 						<svg viewBox="0 0 524 364">
 						    <rect x="2" y="2" width="520" height="360" rx="4" stroke="#FFFFFF" stroke-width="4" fill="#40484B" stroke-linecap="round" stroke-linejoin="round"></rect>
@@ -317,13 +327,22 @@
 			<div class="splash-hero-content" activate-on-class="a" class-on-activate="fadeOut:animOut">
 				<div class="splash-guru-head">
 					<div ng-include="img_base + 'templates/svg/guru-head.html'"></div>
-					<svg class="coach-help opacity-0 animated" viewBox="0 0 340 205">
+					<svg class="coach-help coach-help-desktop opacity-0 animated" viewBox="0 0 340 205">
 					    <g fill="none">
 					        <text transform="translate(173.347656, 110.679688) rotate(-19.000000) translate(-173.347656, -110.679688) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
 					            <tspan x="38.8476562" y="109.679688">we can help you</tspan>
 					            <tspan x="91.8676562" y="149.679688">with that!</tspan>
 					        </text>
 					        <path d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+					    </g>
+					</svg>
+					<svg class="coach-help coach-help-mobile opacity-0 animated" viewBox="0 0 229 196">
+					    <g fill="none">
+					        <text transform="translate(113.624918, 91.749311) rotate(-21) translate(-113.624918, -91.749311) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+					            <tspan x="55.1249179" y="90.7493111">we can</tspan>
+					            <tspan x="70.6849179" y="130.749311">help!</tspan>
+					        </text>
+					        <path d="M180.350646,159.695545 C180.350646,159.695544 181.232899,177.999995 205.232902,189.000001 C165.52585,201.901604 151.232897,186.999998 142.038937,178.7445 C81.8973532,198.285685 20.829672,176.230522 5.64045374,129.482915 C-9.5487645,82.7353086 26.8923282,28.9976249 87.0339124,9.45643967 C147.175497,-10.0847456 208.243178,11.9704169 223.432396,58.7180238 C235.030692,94.4139086 216.525122,134.185468 180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
 					    </g>
 					</svg>
 					<svg class="coach-fill" viewBox="0 0 280 112">
@@ -342,97 +361,127 @@
 				<div class="splash-adlib">
 					<h1 class="opacity-0" class-on-load="bounceInUp:anim">It's
 						<a id="blank-1" class="blank">
-							<svg width="142px" height="44px" viewBox="0 0 284 88">
-							    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14" x="2" y="2" width="280" height="84" rx="16"></rect>
+							<svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+								<rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+							</svg>
+							<svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+								<rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14"></rect>
 							</svg>
 							<b class="opacity-0" activate-on-class="blank-1-filled" class-on-activate="opacity-0-impt" class-on-load="fadeIn:anim">5am</b>
 						</a>
 						and I have a
 						<a id="blank-2" class="blank">
-							<svg width="142px" height="44px" viewBox="0 0 284 88">
-							    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14" x="2" y="2" width="280" height="84" rx="16"></rect>
+							<svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+								<rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+							</svg>
+							<svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+								<rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14"></rect>
 							</svg>
 							<b id="blank-2-text" class="opacity-0" class-on-load="fadeIn:anim" activate-on-class="blank-2-filled" class-on-activate="opacity-0-impt" class-on-load="fadeIn:anim">bio exam</b>
 						</a>
 						in 4 hours.
 					</h1>
-					<ul>
+					<ul activate-on-class="a" class-on-activate="a:inject.adlib-1|a, a:inject.adlib-2|a, a:inject.adlib-3|a, a:inject.adlib-4|a, a:inject.adlib-5|a, a:inject.adlib-6|a, a:inject.adlib-7|a, a:inject.adlib-8|a">
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a class="adlib-1 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
-								<svg width="142px" height="44px" viewBox="0 0 284 88">
+							<a class="adlib-1 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+								<svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+								    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
 								</svg>
 								<b>midnight</b>
 							</a>
 						</li>
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a class="adlib-2 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
-								<svg width="142px" height="44px" viewBox="0 0 284 88">
+							<a class="adlib-2 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+								<svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+								    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
 								</svg>
 								<b>2am</b>
 							</a>
 						</li>
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a class="adlib-3 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
-								<svg width="142px" height="44px" viewBox="0 0 284 88">
+							<a class="adlib-3 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+								<svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+								    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
 								</svg>
 								<b>bedtime</b>
 							</a>
 						</li>
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a class="adlib-4 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
-								<svg width="142px" height="44px" viewBox="0 0 284 88">
+							<a class="adlib-4 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+								<svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+								    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
 								</svg>
 								<b>7am</b>
 							</a>
 						</li>
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a class="adlib-5 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled'>
-								<svg width="142px" height="44px" viewBox="0 0 284 88">
+							<a class="adlib-5 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+								<svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+								    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
 								</svg>
 								<b>paper</b>
 							</a>
 						</li>
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a class="adlib-6 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled'>
-								<svg width="142px" height="44px" viewBox="0 0 284 88">
+							<a class="adlib-6 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+								<svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+								    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
 								</svg>
 								<b>speech</b>
 							</a>
 						</li>
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a class="adlib-7 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled'>
-								<svg width="142px" height="44px" viewBox="0 0 284 88">
+							<a class="adlib-7 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+								<svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+								    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
 								</svg>
 								<b>report</b>
 							</a>
 						</li>
 						<li class="opacity-0" class-on-load="bounceIn:anim">
-							<a class="adlib-8 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled'>
-								<svg width="142px" height="44px" viewBox="0 0 284 88">
+							<a class="adlib-8 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+								<svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 								    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+								</svg>
+								<svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+								    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
 								</svg>
 								<b>project</b>
 							</a>
 						</li>
 					</ul>
-					<button class="button-find-guru splash-mobile-cta opacity-0 animated">Find My Guru</button>
+					<button class="button-find-guru splash-mobile-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|fadeIn, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.coach-help-mobile|hide, a:inject.splash-adlib|animate, a:inject.splash-adlib ul|a">Find My Guru</button>
 				</div>
 			</div>
 			<div class="coach-scroll">
-				<svg viewBox="0 0 656 138" class="opacity-0 animated">
+				<svg viewBox="0 0 656 256" class="opacity-0 animated">
 				    <g fill="none">
 				        <rect stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14" x="3" y="3" width="650" height="54" rx="16"></rect>
 				        <text font-family="Source Sans Pro" font-size="32" font-weight="normal" line-spacing="40" fill="#FFFFFF">
 				            <tspan x="42.392" y="40">or scroll down to find uguru at your school!</tspan>
 				        </text>
-				        <path d="M331,58 L331,144.023254" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+				        <path d="M331,58 L331,253.041016" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14"></path>
 				    </g>
 				</svg>
 			</div>
@@ -441,7 +490,6 @@
 		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'></section>
 		<section class='splash-categories' id='splash-browse'></section>
 		<section id='become-guru'  class="splash-postit ng-class:{'hide':!page.load.sections.five.display}"></section>
-
 		<section id="splash-footer" class="ng-class:{'hide': !page.load.sections.footer.display}">
 			<div>
 				<ul>
