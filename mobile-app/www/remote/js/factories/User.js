@@ -1458,7 +1458,7 @@ angular.module('uguru.user', [])
                     .customPOST(JSON.stringify(payload))
                     .then(function(user){
 
-                        var processed_user = processResults(user);
+                        var processed_user = processResults(user.plain());
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);
 
@@ -1470,7 +1470,8 @@ angular.module('uguru.user', [])
 
                     }, function(err){
                         alert('Your card information is incorrect. Please try again');
-                        console.log(JSON.stringify(err));
+                        console.log(err);
+                        LoadingService.showMsg(err);
                         console.log('error...something happened with the server;')
                     });
             } else if (param === 'bank_transfer') {

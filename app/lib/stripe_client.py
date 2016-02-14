@@ -119,7 +119,7 @@ def charge_customer(user, amount):
         print "Param is: %s" % err['param']
         print "Message is: %s" % err['message']
 
-        return str(e.json_body)
+        return (err['code'], err['message'])
 
     except stripe.error.StripeError, e:
 

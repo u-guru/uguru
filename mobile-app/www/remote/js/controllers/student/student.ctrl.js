@@ -42,11 +42,6 @@ angular.module('uguru.student.controllers', [])
             });
         }
 
-
-
-
-
-
         var setStatusBarDarkText = function() {
             if (DeviceService.isIOSDevice()) {
                 DeviceService.ios.setStatusBarText($state.current.name);
@@ -109,6 +104,8 @@ angular.module('uguru.student.controllers', [])
 
 
 
+
+
         $scope.$on('$ionicView.afterEnter', function() {
             if ($scope.desktopMode) {
                 initAllCTAS();
@@ -121,7 +118,8 @@ angular.module('uguru.student.controllers', [])
         function initAllCTAS() {
             //ngAnimate
             var parentRef = '#desktop-student-home'
-            var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-request-courses', '#cta-box-student-request', '#cta-box-request-payments', '#cta-box-created-requests', '#cta-box-billing', '#cta-box-messages'];
+            var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-request-courses', '#cta-box-student-request',
+            '#cta-box-request-payments', '#cta-box-created-requests', '#cta-box-billing', '#cta-box-messages', '#cta-box-shop'];
             var cbOptions = {'#cta-box-student-request': triggerRequestFormCTA};
             CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
             // $timeout(function() {

@@ -2321,6 +2321,28 @@ class UserCardView(restful.Resource):
 
             db_session.commit()
 
+        if card_json.get('purchase_credit'):
+            offers = [(40, 50), (80, 105), (165, 200)]
+            from pprint import pprint
+            pprint(card_json)
+            offer_index = card_json.get('offer_index')
+            card_id = card_json.get('id')
+            if card_id and int(card_id) and offer_index <= 2:
+                try:
+                    credits = offers[offer_index][1]
+                    amount = offers[offer_index][0]
+                    card = Card.query.get(int(card_id))
+                    Card.initStudentCreditPurchase(user, card, amount, credits)
+                except:
+                    return 422
+
+            # card.is_default_transfer = True
+            # for other_card in user.cards:
+            #     if other_card.is_transfer_card and other_card.id != card.id:
+            #         other_card.is_default_transfer = False
+
+            # db_session.commit()
+
         if card_json.get('remove_card'):
 
             card_json = request.json.get('card')

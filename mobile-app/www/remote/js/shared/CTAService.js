@@ -20,6 +20,11 @@ function CTAService($timeout) {
     elem.classList.remove('show');
   }
 
+  var showCTAManually = function(elem_id) {
+    var func = ctaFuncDict[elem_id];
+    func && func();
+  }
+
   var getModalCloseIcon = function(elem) {
     return elem.querySelector('.cta-modal-close');
   }
@@ -79,7 +84,8 @@ function CTAService($timeout) {
 
   return {
     initSingleCTA:initSingleCTA,
-    initArrCTASharedParent:initArrCTASharedParent
+    initArrCTASharedParent:initArrCTASharedParent,
+    showCTAManually:showCTAManually
   }
 
 }

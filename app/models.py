@@ -3861,16 +3861,19 @@ class Card(Base):
     @staticmethod
     def initFromJson(card_json, user):
         from app.lib.stripe_client import create_customer, create_recipient
-
+        if (card_json.get('card')):
+            card_json = card_json.get('card')
         card = Card()
         card.stripe_token = card_json.get('stripe_token')
         if card_json.get('card'):
             card.stripe_customer_id = create_customer(user, card.stripe_token)
         if card_json.get('debit_card'):
             card.stripe_recipient_id = create_recipient(user, card.stripe_token)
+
+        card.time_added = card_json.get('time_added')
+        card.funding = card_json.get('funding')
         card.card_last4 = card_json.get('card_last4')
         card.card_type = card_json.get('card_type')
-        card.time_added = card_json.get('time_added')
         card.is_transfer_card = card_json.get('is_transfer_card')
         card.is_payment_card = card_json.get('is_payment_card')
         card.user_id = user.id
@@ -3923,6 +3926,10 @@ class   Transaction(Base):
     balance_transaction_id = Column(String)
     refunded = Column(Boolean, default=False)
     description = Column(String)
+
+    credits = Column(Float)
+    credits_before = Column(Float)
+    credits_after = Column(Float)
 
 
     balance_before = Column(Float)
@@ -3990,6 +3997,35 @@ class   Transaction(Base):
         except:
             db_session.rollback()
             raise
+        return transaction
+
+    @staticmethod
+    def initStudentCreditPurchase(user, card, amount, credits):
+        from app.lib.stripe_client import charge_customer
+        stripe_charge = charge_customer(user, amount)
+        if type(stripe_charge) == tuple:
+            error_code = stripe_charge[0]
+            error_msg = stripe_charge[1]
+            return error_code, error_msg
+
+        from datetime import datetime
+        transaction = Transaction()
+        transaction.time_created = datetime.now()
+        transaction.charge_id = stripe_charge.id
+        transaction.student_amount = amount
+        transaction.stripe_fee = (transaction.student_amount * .029) + 0.3
+        transaction._type = Transaction.CREDIT_PURCHASE
+        transaction.description = "You purchase %s credits for $%s"
+        transaction.credits = credits
+        transaction.student_id = user.id
+        transaction.card_id = card.id
+        if not user.credits:
+            user.credits = 0
+        transaction.credits_before = user.credits
+        user.credits = credits
+        transaction.credits_after = user.credits
+        db_session.add(transaction)
+        db_session.commit()
         return transaction
 
     @staticmethod
