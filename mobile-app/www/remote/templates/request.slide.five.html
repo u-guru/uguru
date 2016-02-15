@@ -1,4 +1,9 @@
-<section id='request-cta-payment' class="request-slide full-xy text-center flex-wrap-center">
+<section id='request-cta-payment' class="request-slide full-xy text-center flex-wrap-center high-z-index">
+    <ion-pane id='cta-modal-request-payments' class='high-z-index full-xy hide-display cta-modal absolute top-0 left-0' >
+            <div class='full-xy absolute top-0 left-0 desktop-forms' ng-controller='PaymentsController'>
+                <div class="main" ng-include="img_base + BASE + 'templates/student.payments.html'"></div>
+            </div>
+    </ion-pane>
         <div class="offer-price-container">
             <h1>Offer a little cash to get things moving?</h1>
             <h3>We’ll only charge you after your task is completed.</h3>
@@ -41,7 +46,7 @@
             </ul>
         </div>
     <div class="payment-preferences" ng-if='user.payment_cards && user.payment_cards.length'>
-        <h3>Choose Payment Option</h3>
+        <h3>Choose Payment Option <a id='cta-box-request-payments' class='txt-azure'> (edit) </a></h3>
         <div ng-class="{'ugrid-3': user.payment_cards.length === 3 || user.payment_cards.length === 1, 'ugrid-4':user.payment_cards.length === 2}">
             <div ng-if='user.payment_cards.length < 3'>
             </div>
@@ -67,7 +72,7 @@
         </div>
     </div>
     <div class="payment-preferences" ng-if='!user.payment_cards || !user.payment_cards.length'>
-        <h3>Select Payment Method</h3>
+        <h3>Select Payment Method </h3>
         <div class='ugrid-3'>
             <div>
             </div>

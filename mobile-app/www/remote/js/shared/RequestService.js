@@ -39,6 +39,109 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     }
   }
 
+  function requestHasCalendarEvents(indexRequest) {
+    return indexRequest.student_calendar && indexRequest.tz_offset >= 0 && indexRequest.student_calendar.calendar_events && indexRequest.student_calendar.calendar_events.length;
+  }
+
+  function requestHasGuru(request) {
+    return request.guru && request.guru.id;
+  }
+
+  function requestSessionIsPast(request) {
+    now = new Date();
+    return indexRequest.student_calendar.calendar_events[0].start_time < now //todo --> use mutual calendar
+  }
+
+  function applyTZOffsetToTime(tz_offset, rfc_time) {
+
+    var js_date = parseRFC822Date(rfc_time);
+    js_date.setMinutes(tz_offset)
+    return js_date
+
+  }
+
+  function parseRFC822Date(rfc_date) {
+    return new Date(Date.parse(rfc_date))
+  }
+
+  function parseRFCCalendarEvents(arr_events) {
+    for (var i = 0; i < arr_events.length; i++) {
+      arr_events[i].start_time = applyTZOffsetToTime(arr_events[i].start_time);
+      arr_events[i].end_time = applyTZOffsetToTime(arr_events[i].end_time);
+      console.log(arr_events[i].start_time, arr_events[i].end_time)
+    }
+  }
+
+  function parseAndFormatDate(js_date) {
+    return {
+      day: js_date.getDate(),
+      month: getMonthName(js_date.getMonth()),
+    }
+    function getMonthName(month_index) {
+      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      return months[month_index].substring(0, 3);
+    }
+  }
+
+
+  function splitStudentRequestsIntoTypes(user) {
+    if (!user.requests || !user.requests.length) {
+      return;
+    }
+    //1. all requests
+    user.pending_requests = []; // pending status = 0;
+    user.incoming_requests = []; // incoming status = 1;
+    user.upcoming_sessions = []; // incoming status = 2;
+    user.past_requests = []; // canceled// or previous section
+    for (var i = 0; i < user.requests.length; i++) {
+      var indexRequest = user.requests[i];
+      indexRequest.time_created = applyTZOffsetToTime(indexRequest.tz_offset, indexRequest.time_created);
+      indexRequest.time_created_formatted = parseAndFormatDate(indexRequest.time_created);
+      indexRequest.time_estimate = {hours: indexRequest.time_estimate / 60 | 0, minutes: indexRequest.time_estimate % 60};
+      requestHasCalendarEvents(indexRequest) && parseRFCCalendarEvents(indexRequest.student_calendar.calendar_events);
+      if (indexRequest.status === 2 || requestHasCalendarEvents(indexRequest) && requestHasGuru(indexRequest)) {
+        user.past_requests.push(indexRequest);
+        indexRequest.is_past = true;
+        indexRequest.status_text = 'complete'
+        indexRequest.status_bg_color = 'bg-shamrock'
+      } else
+      if (requestHasCalendarEvents(indexRequest) && requestHasGuru(indexRequest) && requestSessionIsPast(indexRequest)) {
+        user.upcoming_sessions.push(indexRequest);
+        indexRequest.is_upcoming = true;
+        indexRequest.status_text = 'upcoming'
+        indexRequest.status_bg_color = 'bg-shamrock-50p'
+      }
+      if (indexRequest.status === 0) {
+        user.pending_requests.push(indexRequest);
+        indexRequest.is_pending = true;
+        indexRequest.status_bg_color = 'bg-gold'
+        indexRequest.status_text = 'waiting for gurus'
+      } else
+      if (indexRequest.status === 1) {
+        user.incoming_requests.push(indexRequest);
+        indexRequest.is_incoming = true;
+        indexRequest.status_text = 'incoming gurus!'
+        indexRequest.status_bg_color = 'bg-gold'
+
+      } else
+      if (indexRequest.status === 4) {
+        indexRequest.is_past = true;
+        indexRequest.is_canceled = true;
+        user.past_requests.push(indexRequest);
+        indexRequest.status_text = 'canceled';
+        indexRequest.status_bg_color = 'bg-auburn';
+      }
+    }
+    user.requests.sort(function(a, b) {return new Date(b.time_created) - new Date(a.time_created)});
+  }
+
+
+
+  function studentRequestsFilter(requests, nav_index, arr_filters) {
+
+  }
+
+
   function initMapReadyFunction(scope) {
     if (scope.requestForm.mapReady) {
       return;
@@ -220,10 +323,6 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
 
   function requestPostError(err) {
       console.log('error when sending request to form', err);
-  }
-
-  function cancelRequest(form) {
-    //
   }
 
   function cancelRequest(form) {
@@ -424,7 +523,8 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     getMaxNumHourArr: getMaxNumHourArr,
     acceptStudentRequest: acceptStudentRequest,
     constants:constants,
-    acceptGuruForRequest: acceptGuruForRequest
+    acceptGuruForRequest: acceptGuruForRequest,
+    splitStudentRequestsIntoTypes: splitStudentRequestsIntoTypes
   }
 
 }

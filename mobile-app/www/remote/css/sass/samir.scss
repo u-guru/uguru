@@ -754,6 +754,13 @@ header#home-nav-header.splash-header,
 				}
 			}
 			&#request-cta-payment {
+				#cta-modal-request-payments {
+					overflow:visible;
+					height:calc(100%);
+					#payments-sidebar {
+						display:none !important;
+					}
+				}
 				.offer-price-container {
 					width: 100%;
 					max-width: 800px;
@@ -1483,6 +1490,7 @@ header#home-nav-header.splash-header,
 							@include flex;
 							@include flex-center-vertical;
 							padding: 15px;
+							padding-right:0px !important;
 							&.active,
 							&:active,
 							&.active {
@@ -1501,13 +1509,37 @@ header#home-nav-header.splash-header,
 								background-size: cover;
 							}
 							.payments-label {
-								width: calc(100% - 48px);
+								width: calc(70%);
 								padding-left: 15px;
+								padding-top:10px;
 								font-weight: 600;
+								font-size:18px;
 							}
 							&.active {
 								.payments-label {
 									font-weight: 700;
+								}
+							}
+							.transaction-card-wrapper {
+								width:15%;
+								padding-top:10px;
+								.card-type {
+									svg {
+										background: rgba(255,255,255, 0.9);
+										height: 25px;
+									    padding: 5px 7px;
+									    border: 1px solid rgba($smoke, 0.8);
+									    border-radius:5px;
+									    margin-bottom:2px;
+									}
+								}
+								small {
+									font-size:18px;
+									opacity:1;
+									color: rgba(255,255,255,0.9);
+									display:block;
+									text-align:center;
+									font-weight:600;
 								}
 							}
 						}
@@ -1667,4 +1699,60 @@ header#home-nav-header.splash-header,
  			display:none;
  		}
  	}
+}
+
+#student-request-details {
+	height: 100%;
+	header.desktop-tab-header {
+		@include flex;
+		@include flex-center;
+		@include flex-wrap;
+		height: calc(100% / 4);
+		&:not([class*="bg-"]) {
+			background: $shamrock;
+		}
+		h1 {
+			padding-bottom: 60px;
+			font-size: 48px;
+			text-align: center;
+			text-transform: none!important;
+		}
+		.tab-bar {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background: rgba($slate,.4);
+			a {
+				color:white;
+				text-align:center;
+			}
+		}
+	}
+	main {
+		@include flex;
+		@include flex-wrap;
+		height: calc(100% / 4 * 3);
+		overflow: auto;
+		.micro-guru-profile-container {
+			right:20px;
+			.micro-guru-profile {
+				@include round;
+				border: 1px solid $smoke;
+				width: 48px;
+				height: 48px;
+				background-position: center center;
+				background-size: cover;
+			}
+			small {
+				text-transform:uppercase;
+				font-size:10px;
+				padding-left:5px;
+				width:43px;
+				text-align:center;
+				right:0;
+				display: block;
+			}
+		}
+	}
 }

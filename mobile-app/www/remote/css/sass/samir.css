@@ -625,6 +625,11 @@ header#home-nav-header.splash-header,
         color: rgba(64, 72, 75, 0.5) !important; }
       #request main section#request-cta-map ui-gmap-google-map {
         height: calc(100%); }
+      #request main section#request-cta-payment #cta-modal-request-payments {
+        overflow: visible;
+        height: calc(100%); }
+        #request main section#request-cta-payment #cta-modal-request-payments #payments-sidebar {
+          display: none !important; }
       #request main section#request-cta-payment .offer-price-container {
         width: 100%;
         max-width: 800px;
@@ -1213,7 +1218,8 @@ header#home-nav-header.splash-header,
               display: flex;
               -webkit-align-items: center;
               align-items: center;
-              padding: 15px; }
+              padding: 15px;
+              padding-right: 0px !important; }
               #desktop-payments .main #payments #payments-sidebar ul li a.active, #desktop-payments .main #payments #payments-sidebar ul li a:active, #desktop-payments .main #payments #payments-sidebar ul li a.active, #desktop-payments .main #shop #payments-sidebar ul li a.active, #desktop-payments .main #shop #payments-sidebar ul li a:active, #desktop-payments .main #shop #payments-sidebar ul li a.active, #desktop-shop .main #payments #payments-sidebar ul li a.active, #desktop-shop .main #payments #payments-sidebar ul li a:active, #desktop-shop .main #payments #payments-sidebar ul li a.active, #desktop-shop .main #shop #payments-sidebar ul li a.active, #desktop-shop .main #shop #payments-sidebar ul li a:active, #desktop-shop .main #shop #payments-sidebar ul li a.active {
                 background: rgba(241, 241, 241, 0.2); }
               #desktop-payments .main #payments #payments-sidebar ul li a:hover, #desktop-payments .main #payments #payments-sidebar ul li a:focus, #desktop-payments .main #payments #payments-sidebar ul li a.active, #desktop-payments .main #shop #payments-sidebar ul li a:hover, #desktop-payments .main #shop #payments-sidebar ul li a:focus, #desktop-payments .main #shop #payments-sidebar ul li a.active, #desktop-shop .main #payments #payments-sidebar ul li a:hover, #desktop-shop .main #payments #payments-sidebar ul li a:focus, #desktop-shop .main #payments #payments-sidebar ul li a.active, #desktop-shop .main #shop #payments-sidebar ul li a:hover, #desktop-shop .main #shop #payments-sidebar ul li a:focus, #desktop-shop .main #shop #payments-sidebar ul li a.active {
@@ -1225,11 +1231,30 @@ header#home-nav-header.splash-header,
                 background-position: center center;
                 background-size: cover; }
               #desktop-payments .main #payments #payments-sidebar ul li a .payments-label, #desktop-payments .main #shop #payments-sidebar ul li a .payments-label, #desktop-shop .main #payments #payments-sidebar ul li a .payments-label, #desktop-shop .main #shop #payments-sidebar ul li a .payments-label {
-                width: calc(100% - 48px);
+                width: calc(70%);
                 padding-left: 15px;
-                font-weight: 600; }
+                padding-top: 10px;
+                font-weight: 600;
+                font-size: 18px; }
               #desktop-payments .main #payments #payments-sidebar ul li a.active .payments-label, #desktop-payments .main #shop #payments-sidebar ul li a.active .payments-label, #desktop-shop .main #payments #payments-sidebar ul li a.active .payments-label, #desktop-shop .main #shop #payments-sidebar ul li a.active .payments-label {
                 font-weight: 700; }
+              #desktop-payments .main #payments #payments-sidebar ul li a .transaction-card-wrapper, #desktop-payments .main #shop #payments-sidebar ul li a .transaction-card-wrapper, #desktop-shop .main #payments #payments-sidebar ul li a .transaction-card-wrapper, #desktop-shop .main #shop #payments-sidebar ul li a .transaction-card-wrapper {
+                width: 15%;
+                padding-top: 10px; }
+                #desktop-payments .main #payments #payments-sidebar ul li a .transaction-card-wrapper .card-type svg, #desktop-payments .main #shop #payments-sidebar ul li a .transaction-card-wrapper .card-type svg, #desktop-shop .main #payments #payments-sidebar ul li a .transaction-card-wrapper .card-type svg, #desktop-shop .main #shop #payments-sidebar ul li a .transaction-card-wrapper .card-type svg {
+                  background: rgba(255, 255, 255, 0.9);
+                  height: 25px;
+                  padding: 5px 7px;
+                  border: 1px solid rgba(241, 241, 241, 0.8);
+                  border-radius: 5px;
+                  margin-bottom: 2px; }
+                #desktop-payments .main #payments #payments-sidebar ul li a .transaction-card-wrapper small, #desktop-payments .main #shop #payments-sidebar ul li a .transaction-card-wrapper small, #desktop-shop .main #payments #payments-sidebar ul li a .transaction-card-wrapper small, #desktop-shop .main #shop #payments-sidebar ul li a .transaction-card-wrapper small {
+                  font-size: 18px;
+                  opacity: 1;
+                  color: rgba(255, 255, 255, 0.9);
+                  display: block;
+                  text-align: center;
+                  font-weight: 600; }
         #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search {
           position: absolute;
           bottom: 15px;
@@ -1391,5 +1416,74 @@ header#home-nav-header.splash-header,
         border-radius: 5px; }
   #student-shop #cta-modal-shop-billing #payments-sidebar {
     display: none; }
+
+#student-request-details {
+  height: 100%; }
+  #student-request-details header.desktop-tab-header {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    height: calc(100% / 4); }
+    #student-request-details header.desktop-tab-header:not([class*="bg-"]) {
+      background: #69B3A5; }
+    #student-request-details header.desktop-tab-header h1 {
+      padding-bottom: 60px;
+      font-size: 48px;
+      text-align: center;
+      text-transform: none !important; }
+    #student-request-details header.desktop-tab-header .tab-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(64, 72, 75, 0.4); }
+      #student-request-details header.desktop-tab-header .tab-bar a {
+        color: white;
+        text-align: center; }
+  #student-request-details main {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    height: calc(100% / 4 * 3);
+    overflow: auto; }
+    #student-request-details main .micro-guru-profile-container {
+      right: 20px; }
+      #student-request-details main .micro-guru-profile-container .micro-guru-profile {
+        border-radius: 1000px;
+        border: 1px solid #F1F1F1;
+        width: 48px;
+        height: 48px;
+        background-position: center center;
+        background-size: cover; }
+      #student-request-details main .micro-guru-profile-container small {
+        text-transform: uppercase;
+        font-size: 10px;
+        padding-left: 5px;
+        width: 43px;
+        text-align: center;
+        right: 0;
+        display: block; }
 
 /*# sourceMappingURL=samir.css.map */

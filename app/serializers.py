@@ -302,6 +302,9 @@ transaction_fields['guru'] = fields.Nested(guru_fields)
 # transaction_fields['session'] = fields.Nested(session_fields_transaction)
 transaction_fields['request'] = fields.Nested(request_fields)
 transaction_fields['student'] = fields.Nested(student_fields)
+transaction_fields['description'] = fields.String(attribute='description')
+transaction_fields['credits'] = fields.Integer(attribute='credits')
+transaction_fields['_type'] = fields.Integer(attribute='_type')
 transaction_fields['card'] = fields.Nested(card_fields)
 transaction_fields['id'] = fields.Integer(attribute='id')
 transaction_fields['transfer_status'] = fields.String(attribute='transfer_status')
@@ -526,7 +529,8 @@ UserSerializer = {
     'external_profiles': fields.List(fields.Nested(resource_fields)),
     'universities': fields.List(fields.Nested(university_fields)),
     'hs_student': fields.Boolean,
-    'hs_files': fields.List(fields.Nested(file_fields))
+    'hs_files': fields.List(fields.Nested(file_fields)),
+    'credits': fields.Float
 
 }
 

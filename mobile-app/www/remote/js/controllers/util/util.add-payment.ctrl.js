@@ -19,10 +19,8 @@
  	$ionicModal, $ionicHistory, $stateParams, $ionicViewSwitcher,
   $ionicSideMenuDelegate, $ionicActionSheet, LoadingService,
   PaymentService) {
-
     $scope.data = {card_exists: false};
     $scope.card = {exp: '', number: '', cvc: '', placeholder:"**** **** **** 4242"};
-
     $scope.root.vars.cardForm = {number: '', exp:'', view_only:false};
 
     if ($scope.LOCAL && $state.current.name === 'root.guru') {
@@ -323,8 +321,7 @@
 
 //helper functions
 
-var cardLength, cardValue;
-var el = document.getElementById("card-number"),
+var cardLength, cardValue, el;
   CreditCardTypeExpressions = [{
     "card-type": "MasterCard",
     "exp": function(num) {
@@ -355,10 +352,13 @@ var el = document.getElementById("card-number"),
   }
 
 var cardLength, cardValue, el;
-var initHandlers = function($scope) {
-
-
-      el = document.getElementById("card-number");
+var initHandlers = function($scope, parent) {
+  if (parent) {
+    parent += ' ';
+  } else {
+   parent = ''
+  }
+      el = document.querySelector(parent + "#card-number");
 
       $("#card-number").on("keydown", function(e) {
         cardLength = $(this).val().replace(/ /g, "").length;
@@ -379,7 +379,7 @@ var initHandlers = function($scope) {
 
       });
 
-      $("#card-number").on("keyup", function(e) {
+      $(parent + "#card-number").on("keyup", function(e) {
         cardLength = $(this).val().replace(/ /g, "").length;
         cardValue = $(this).val().replace(/ /g, ""),
           pos = GetCaretPosition(this),
@@ -411,7 +411,7 @@ var initHandlers = function($scope) {
 
       });
 
-      $("#exp-date").on("keydown", function(e) {
+      $(parent + "#exp-date").on("keydown", function(e) {
         var value = $(this).val(),
           length = value.length;
 
@@ -430,7 +430,7 @@ var initHandlers = function($scope) {
         }
       })
 
-      $("#exp-date").on("keyup", function(e) {
+      $(parent + "#exp-date").on("keyup", function(e) {
         var value = $(this).val(),
           length = value.length;
 

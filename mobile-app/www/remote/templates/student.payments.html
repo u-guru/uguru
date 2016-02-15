@@ -1,10 +1,10 @@
-<ion-view class='bottom-0 bg-smoke full-xy'>
+<ion-view class='bottom-0 bg-smoke full-xy' cache-view='false'>
 	<a class='cta-modal-close close-button desktop-header-next absolute top-0 right-0 high-z-index p10xy'>
 		<svg viewBox="0 0 100 100" class='p05xy'>
 			<path stroke="#2B3234" d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 		</svg>
 	</a>
-	<main id='desktop-payments' class="desktop-mode full-xy" ng-if='desktopMode' ng-controller='PaymentsController'>
+	<main id='desktop-payments' class="desktop-mode full-xy" ng-if='desktopMode'>
 		<div class='main absolute full-xy bottom-0'>
 			<div id='payments'>
 					<div id="payments-sidebar">
@@ -13,20 +13,30 @@
 							<h2 class='text-center uppercase weight-700 txt-white'>No transactions yet</h2>
 						</ul>
 						<ul ng-if='user.student_transactions && user.student_transactions.length'>
-							<li ng-repeat='relationship in user.student_transactions|filter:student_search.search_text:strict'>
-								<a class='ng-class:{"active":relationship.id === active_relationship.id}'>
-									<span class="payments-icon" style="background-image: url({{relationship.guru.profile_url}});"></span>
-									<span class="payment-label">{{relationship.guru.name}}</span>
+							<li ng-repeat='transaction in user.student_transactions' class='relative'>
+								<a class='flex-wrap full-x' ng-if='transaction._type === 2'  style='max-height:80px;'>
+									<div class='payments-icon p05xy' class='p05xy' style='max-width:20%; background-image:url({{user.profile_url}})'> </div>
+									<div class='txt-white payments-label weight-400'>
+										<p>You purchased <span class='weight-800'> {{transaction.credits}} credits <br></span> for <span class='weight-800'>${{transaction.student_amount}}</span>
+										</p>
+									</div>
+									<div class='transaction-card-wrapper'>
+										<span class="card-type" ng-include="img_base + BASE + 'templates/cards/' + user.default_payment_card.card_type + '.html'">
+					                    </span>
+					                    <small class='txt-smoke'>
+					                    	{{user.default_payment_card.card_last4}}
+					                    </small>
+									</div>
 								</a>
 							</li>
 						</ul>
-						<div id="payments-sidebar-search">
+						<!-- <div id="payments-sidebar-search">
 							<label for="payments-sidebar-search">
 								<svg viewBox="0 0 100 100">
 									<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 								</svg>
 							</label>
-						</div>
+						</div> -->
 					</div>
 					<div id="payments-content" class='relative full-xy'>
 						<div class='absolute flex-wrap ugrid-2 top-0 left-0 full-xy'>

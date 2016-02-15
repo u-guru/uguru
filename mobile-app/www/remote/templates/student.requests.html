@@ -1,5 +1,6 @@
-<section id='request' class='desktop-request full-xy absolute top-0 left-0' ng-controller='StudentProposalController'>
+<section id='student-request-details' class='desktop-request full-xy absolute top-0 left-0' ng-controller='StudentProposalController'>
     <!-- only show this on desktop mode -->
+
     <header class='desktop-tab-header bg-{{requestForm.subcategory.hex_color}}' ng-class="{'bg-shamrock':!requestForm.subcategory.hex_color}"  anim-on-hide='request-confirming' anim-on-show="request-canceling" anim-on-hide-class="bounceOutUp" anim-on-show-class="bounceInDown" anim-on-hide-delay="500">
         <a id='guru-profile-cta-close' class='cta-modal-close close-button p15xy flex-right-center'>
             <svg viewBox="0 0 100 100">
@@ -7,12 +8,13 @@
             </svg>
         </a>
         <h1>Your Requests</h1>
-        <div class="tab-bar slide" ng-if='user.incoming_requests.length && user.requests.length'>
+        <div class="tab-bar slide" ng-if='student_requests.nav.show'>
             <div>
-                <a class='bg-auburn'>&nbsp;Incoming ({{user.incoming_requests.length}})&nbsp;</a>
-                <a ng-click='requestForm.nav.switchTo(1)' ng-class='{active:requestForm.nav.index === 1}'>All ({{user.requests.length}})</a>
-                <a ng-click='requestForm.nav.switchTo(2)' ng-class='{active:requestForm.nav.index === 2}'>Pending</a>
-                <a ng-click='requestForm.nav.switchTo(3)' ng-class='{active:requestForm.nav.index === 3}'>Previous</a>
+                <a class='bg-auburn'>&nbsp;All ({{user.requests.length}})&nbsp;</a>
+                <a ng-click='requestForm.nav.switchTo(0)' ng-class='{active: === 0}'>All</a>
+                <a ng-click='requestForm.nav.switchTo(1)' ng-class='{active: === 1}'>Upcoming</a>
+                <a ng-click='requestForm.nav.switchTo(2)' ng-class='{active: === 2}'>Pending</a>
+                <a ng-click='requestForm.nav.switchTo(3)' ng-class='{active: === 3}'>Previous</a>
                 <hr/>
             </div>
         </div>
@@ -27,23 +29,40 @@
         </div>
     </header>
     <main class='relative'>
-        <!-- All request form related ctas-->
-        <div class='flex-wrap full-x'>
-            <div class='incoming-request full-x txt-white' ng-repeat='request in user.incoming_requests'>
-                <div class='ugrid'>
-                    <div>
-                        <div class='guru-info flex-wrap-center'>
-                            <div>{{request.guru.name}}</div>
-                            <div>{{request.guru.guru_introduction}} </div>
-                            <img class='user-photo' height="50" width="50" ng-src="{{request.guru.profile_url}}">
-                        </div>
-                    </div>
-                    <div class='next-steps full-x p20xy bg-charcoal ugrid-2'>
-                        <button class='txt-smoke bg-slate'>Nah</button>
-                        <button class='txt-smoke bg-moola uppercase weight-700' ng-click='acceptIncomingProposal(request)'>Yes</button>
-                    </div>
-                </div>
+        <ion-pane id='cta-modal-request-details' class='full-xy hide-display cta-modal absolute top-0 left-0 high-z-index'>
+            <div class='full-xy absolute top-0 left-0 desktop-forms bg-cerise'>
+                <div class="main" ng-include="img_base + BASE + 'templates/student.request.detailed.html'"></div>
             </div>
+        </ion-pane>
+        <!-- All request form related ctas-->
+        <div class='flex-wrap-center full-xy'>
+            <a class='cta-box-request-details ugrid-6 full-x flex-wrap-center weight-400 txt-white flex-wrap txt-white' ng-repeat='request in user.requests' ng-click='selectAndDisplayRequestDetails(request)'>
+                <div class='p20xy flex-wrap weight-600 uppercase bg-charcoal'>
+                    <small class='full-x opacity-50 uppercase'> Date Created </small>
+                    <h1>{{request.time_created_formatted.month + ' ' + request.time_created_formatted.day}}</h1>
+                </div>
+                <div class='p20xy uppercase weight-600 flex-wrap bg-charcoal'>
+                    <small class='opacity-50 uppercase full-x'> Requested Time Needed </small>
+                    <h1>{{request.time_estimate.hours}}h {{request.time_estimate.minutes}} min</h1>
+                </div>
+                <div class='p20xy uppercase weight-600 flex-wrap bg-charcoal'>
+                    <small class='opacity-50 uppercase full-x'> Preferred Location </small>
+                    <h1> @{{request.address.split(', ')[0]}} </h1>
+                </div>
+                <div class='p20xy bg-{{request.category.hex_color}} flex-wrap weight-600'>
+                    <small class='uppercase full-x txt-smoke'> {{request.category.name}} Request </small>
+                    <h1> {{request.subcategory.name}}</h1>
+                </div>
+                <div class='p20xy uppercase {{request.status_bg_color}} weight-600 flex-wrap relative'>
+                    <small class='txt-smoke uppercase full-x'> Status </small>
+                    <h1>{{request.status_text}}</h1>
+                    <span class='absolute center-y micro-guru-profile-container' ng-if="request.status === 2 && request.guru && request.guru.id">
+                        <div class='micro-guru-profile' style='background-image:url({{request.guru.profile_url}})'>
+                        </div>
+                        <small>{{request.guru.name.split(' ')[0]}}</small>
+                    </span>
+                </div>
+            </a>
         </div>
     </main>
 </section>

@@ -53,6 +53,7 @@ angular.module('uguru.util.controllers')
 
         $scope.root = RootService;
         $scope.root.vars = {};
+        $scope.root.vars.getUserFromServer = User.getUserFromServer;
         Utilities.compileToAngular('body-loading-div', $scope);
         $scope.root.loader = {body: {hide:false}};
 

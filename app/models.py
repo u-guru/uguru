@@ -1,5 +1,5 @@
 from sqlalchemy import String, Integer, Column, ForeignKey, Float, SmallInteger, Boolean, Table, Unicode, DateTime
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship, backref, make_transient
 from app.database import Base, db_session
 from datetime import datetime
 import os
@@ -3861,16 +3861,23 @@ class Card(Base):
     @staticmethod
     def initFromJson(card_json, user):
         from app.lib.stripe_client import create_customer, create_recipient
+        payment_card = False
+        transfer_card = False
         if (card_json.get('card')):
+            payment_card = card_json.get('payment_card')
+            transfer_card = card_json.get('debit_card') or card_json.get('transfer_card')
             card_json = card_json.get('card')
         card = Card()
         card.stripe_token = card_json.get('stripe_token')
-        if card_json.get('card'):
+        if card.stripe_token and payment_card:
             card.stripe_customer_id = create_customer(user, card.stripe_token)
-        if card_json.get('debit_card'):
+        if transfer_card and card.stripe_token:
             card.stripe_recipient_id = create_recipient(user, card.stripe_token)
 
         card.time_added = card_json.get('time_added')
+        if not card.time_added:
+            from datetime import datetime
+            card.time_added = datetime.now()
         card.funding = card_json.get('funding')
         card.card_last4 = card_json.get('card_last4')
         card.card_type = card_json.get('card_type')
@@ -4002,7 +4009,9 @@ class   Transaction(Base):
     @staticmethod
     def initStudentCreditPurchase(user, card, amount, credits):
         from app.lib.stripe_client import charge_customer
-        stripe_charge = charge_customer(user, amount)
+        stripe_charge = charge_customer(user, amount, card)
+        print type(stripe_charge)
+        print stripe_charge
         if type(stripe_charge) == tuple:
             error_code = stripe_charge[0]
             error_msg = stripe_charge[1]
@@ -4184,4 +4193,15 @@ class   Transaction(Base):
 
 
 
+####
+## Helper functions
+#
 
+def cloneObj(obj):
+    db_session.expunge(obj)  # expunge the object from session
+    make_transient(obj)  # http://docs.sqlalchemy.org/en/rel_1_1/orm/session_api.html#sqlalchemy.orm.session.make_transient
+
+    obj.id = None
+    db_session.add(obj)
+    db_session.commit()
+    return obj

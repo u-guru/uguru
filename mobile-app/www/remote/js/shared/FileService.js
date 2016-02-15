@@ -2,11 +2,10 @@ angular
 .module('sharedServices')
 .factory("FileService", [
   'LoadingService',
-  'User',
   FileService
 	]);
 
-function FileService(LoadingService, User) {
+function FileService(LoadingService) {
     var DropzoneDict = {}
     var dropZoneUiEvents = ['drop', 'dragstart', 'dragend', 'dragenter', 'dragover', 'dragleave']; //event first param
     var dropZoneFileEvents = ["totaluploadprogress", "queuecomplete", "maxfilesreached", "complete", "success", "uploadprogress", "thumbnail"]
@@ -113,7 +112,7 @@ function FileService(LoadingService, User) {
                 console.log(dropzoneElem.options);
                 if (scope.requestForm && scope.requestForm.files) {
                     scope.requestForm.files.push(server_response);
-                    User.getUserFromServer(scope);
+                    scope.root.vars.getUserFromServer(scope);
                 }
             })
 

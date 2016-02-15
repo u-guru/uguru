@@ -118,9 +118,8 @@ angular.module('uguru.student.controllers', [])
         function initAllCTAS() {
             //ngAnimate
             var parentRef = '#desktop-student-home'
-            var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-request-courses', '#cta-box-student-request',
-            '#cta-box-request-payments', '#cta-box-created-requests', '#cta-box-billing', '#cta-box-messages', '#cta-box-shop'];
-            var cbOptions = {'#cta-box-student-request': triggerRequestFormCTA};
+            var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-request-courses', '#cta-box-student-request','#cta-box-created-requests', '#cta-box-billing', '#cta-box-messages', '#cta-box-shop'];
+            var cbOptions = {'#cta-box-student-request': triggerRequestFormCTA, '#cta-box-created-requests': initRequestDetailsCTA};
             CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
             // $timeout(function() {
             //     $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
@@ -191,13 +190,26 @@ angular.module('uguru.student.controllers', [])
             //     $scope.requestForm.price.selected = 45;
             //     $scope.requestForm.payment_card = $scope.user.payment_cards[0];
             // }, 500);
+
             updateSlideBoxContainer();
             $timeout(function() {
                 $scope.disableSwipe('request-form');
                 $ionicSlideBoxDelegate.$getByHandle('request-form').stop();
+                CTAService.initSingleCTA('#cta-box-request-payments', '#request-cta-payment', function() {
+                  $scope.card = {exp: '', number: '', cvc: '', placeholder:"**** **** **** 4242"};
+                  initHandlers($scope, '#request-cta-payment');
+                });
             }, 1000);
             // TODO check for previous requests
             // initialize category
+        }
+
+        function initRequestDetailsCTA() {
+          $timeout(function() {
+            CTAService.initSingleCTA('.cta-box-request-details', '#student-request-details', function() {
+                LoadingService.showAmbig(null, 750);
+            })
+          })
         }
 
     }

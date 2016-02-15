@@ -1,8 +1,8 @@
 angular.module('uguru.user', [])
 .factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory',
-    'RootService', '$ionicSideMenuDelegate', 'Category', 'RankingService', 'LoadingService',
+    'RootService', '$ionicSideMenuDelegate', 'Category', 'RankingService', 'LoadingService', 'RequestService',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
-        $ionicSideMenuDelegate, Category, RankingService, LoadingService) {
+        $ionicSideMenuDelegate, Category, RankingService, LoadingService, RequestService) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -769,7 +769,7 @@ angular.module('uguru.user', [])
         $scope.user.summer_15 = user.summer_15;
         $scope.user.uber_friendly = user.uber_friendly;
         $scope.user.outside_university = user.outside_university;
-        $scope.user.credits = user.credits;
+        $scope.user.credits = parseInt(user.credits) | 0;
         $scope.user.official_guru_grade = user.official_guru_grade;
         $scope.user.grade_dict = user.grade_dict;
         $scope.user.guru_score_opportunities = user.guru_score_opportunities;
@@ -794,7 +794,7 @@ angular.module('uguru.user', [])
             $scope.root.vars.last_active_relationship = $scope.user.student_relationships[0];
         }
 
-
+        RequestService.splitStudentRequestsIntoTypes($scope.user);
     }
 
     var delegateActionsFromProcessedUser = function($scope) {
@@ -1702,11 +1702,12 @@ angular.module('uguru.user', [])
                         }
 
                     }, function(err){
+                        console.log(err);
                     if (err.status === 409 ) {
                             console.log('already have an active request');
-                        } else {
+                        } else if (err.status === 400) {
                             console.log(err);
-                            console.log('error...something happened with the server;')
+                            LoadingService.showMsg('Insufficient funds on card. Please try again or contact support.', 2500);
                         }
                     });
             }

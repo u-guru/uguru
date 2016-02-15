@@ -2332,9 +2332,11 @@ class UserCardView(restful.Resource):
                     credits = offers[offer_index][1]
                     amount = offers[offer_index][0]
                     card = Card.query.get(int(card_id))
-                    Card.initStudentCreditPurchase(user, card, amount, credits)
+                    transaction_response = Transaction.initStudentCreditPurchase(user, card, amount, credits)
+                    if type(transaction_response) == tuple:
+                        abort(400)
                 except:
-                    return 422
+                    abort(400)
 
             # card.is_default_transfer = True
             # for other_card in user.cards:

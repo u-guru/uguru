@@ -1,3 +1,4 @@
+
 <section id='student-shop' class='desktop-request full-xy absolute top-0 left-0' ng-controller="ShopController">
     <!-- only show this on desktop mode -->
     <header class='desktop-tab-header bg-{{requestForm.subcategory.hex_color}}' ng-class="{'bg-shamrock':!requestForm.subcategory.hex_color}"  anim-on-hide='request-confirming' anim-on-show="request-canceling" anim-on-hide-class="bounceOutUp" anim-on-show-class="bounceInDown" anim-on-hide-delay="500">
@@ -20,8 +21,8 @@
     </header>
     <main class='relative bg-smoke ugrid-2 flex-wrap full-x' id='student-shop-main'>
         <!-- All request form related ctas-->
-        <ion-pane id='cta-modal-shop-billing' class='full-xy hide-display cta-modal absolute top-0 left-0'>
-            <div class='full-xy absolute top-0 left-0 desktop-forms'>
+        <ion-pane id='cta-modal-shop-billing' class='full-xy hide-display cta-modal absolute top-0 left-0' >
+            <div class='full-xy absolute top-0 left-0 desktop-forms' ng-controller='PaymentsController'>
                 <div class="main" ng-include="img_base + BASE + 'templates/student.payments.html'"></div>
             </div>
         </ion-pane>
@@ -49,7 +50,7 @@
                 <div class='purchase-option-button-container p20x10y m20xy'>
                     <button ng-click='studentPurchasesCredits(1)' class='bg-charcoal weight-600'> Get it </button>
                 </div>
-                <div class='default-purchase-options p20x10y m20xy txt-charcoal'>
+                <div class='default-purchase-options p20x10y m20xy txt-charcoal' ng-if='user.payment_cards && user.payment_cards.length'>
                     with my
                     <span class="card-type" ng-include="img_base + BASE + 'templates/cards/' + user.default_payment_card.card_type + '.html'">
                     </span>
