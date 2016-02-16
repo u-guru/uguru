@@ -792,9 +792,9 @@ angular.module('uguru.util.controllers')
         }
 
         if ($state.current.name !== 'root.home') {
-            // $timeout(function() {
-            //     $scope.root.loader.body.hide = true;
-            // }, 1500)
+            $timeout(function() {
+                $scope.root.loader.body.hide = true;
+            }, TIMEOUT_UNTIL_END_OF_LOADER);
         }
 
 

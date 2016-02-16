@@ -638,18 +638,6 @@
   -webkit-transition: opacity 0.15s, visibility 0s 0.15s;
   transition: opacity 0.15s, visibility 0s 0.15s; }
 
-@-webkit-keyframes moveRight {
-  to {
-    -webkit-transform: translateX(20px); } }
-@keyframes moveRight {
-  to {
-    transform: translateX(20px); } }
-@-webkit-keyframes moveLeft {
-  to {
-    -webkit-transform: translateX(-20px); } }
-@keyframes moveLeft {
-  to {
-    transform: translateX(-20px); } }
 .pageload-loading.pageload-overlay::after,
 .pageload-loading.pageload-overlay::before {
   opacity: 1;

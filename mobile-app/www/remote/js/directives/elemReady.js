@@ -83,13 +83,19 @@ angular.module('uguru.directives')
                   if (injectArgClassSplit.length > 1) {
                     var classToInject = injectArgClassSplit[1];
                     var elemToInjectSelector = injectArgClassSplit[0];
-                    var elemToInject = document.querySelector(elemToInjectSelector);
-                    elemToInject.classList.add(classToInject);
+                    var elemsToInject = document.querySelectorAll(elemToInjectSelector);
+                    console.log(elemToInjectSelector, classToInject, elemsToInject.length, 'elements');
+                    for (var k = 0; k < elemsToInject.length; k++) {
+                      elemsToInject[k].classList.add(classToInject);
+                    }
                   }
                 }
               }
           }, delay);
           function classArgsHasInject(args) {
+            if (!args || !args.length) {
+              return;
+            }
             var injectArg = null;
             args.filter(function(word, index) {
               if (word.indexOf("inject") > -1) {
@@ -97,7 +103,7 @@ angular.module('uguru.directives')
                 return true
               };
             })
-            return injectArg.replace("inject", "");
+            return injectArg && injectArg.replace("inject", "");
           }
         }
       })
@@ -162,25 +168,25 @@ angular.module('uguru.directives')
             var translateElem = attr.translateToElem;
             var translateElemBounding = document.querySelector(translateElem).getBoundingClientRect();
             var translateElemCoords = {height: translateElemBounding.height, width: translateElemBounding.width, top: translateElemBounding.top, left: translateElemBounding.left};
-
             element.on('click', function() {
+              var injectOnTranslateClass = attr.translateOnClick || 'translate-active';
               if (!element[0].style.webkitTransform && !element[0].style.MozTransform && !element[0].style.msTransform && !element[0].style.OTransform && !element[0].style.transform) {
-                var translateY = translateElemCoords.top - elemCoords.top + elemCoords.height - translateElemCoords.height + (attr.translateYOffset && parseInt(attr.translateYOffset)) || 0;
-                var translateX = translateElemCoords.left - elemCoords.left + (attr.translateXOffset && parseInt(attr.translateXOffset)) || 0;
+                var translateY = translateElemCoords.top - elemCoords.top + elemCoords.height - translateElemCoords.height + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
+                var translateX = translateElemCoords.left - elemCoords.left + ((attr.translateXOffset && parseInt(attr.translateXOffset)) || 0);
                 var transFormString = "translate(" + translateX + "px, " + translateY + "px)"
                 element[0].style.webkitTransform = transFormString;
                 element[0].style.MozTransform = transFormString;
                 element[0].style.msTransform = transFormString;
                 element[0].style.OTransform = transFormString;
                 element[0].style.transform = transFormString;
-                element[0].classList.add('translate-active');
+                element[0].classList.add(injectOnTranslateClass);
                 console.log(translateElemCoords, elemCoords, transFormString, element[0], 'with Xoffset', attr.translateXOffset, 'and y offset', attr.translateYOffset);
 
                 //deactivate other directives with transforms towards the same element "translate-to-elem";
-                var allTranslateOnClickElems = element.querySelectorAll("[translate-on-click]");
+                var allTranslateOnClickElems = element[0].querySelectorAll("[translate-on-click]");
                 for (var i = 0; i < allTranslateOnClickElems.length; i++) {
                   var indexTranslateElem  = allTranslateOnClickElems[i];
-                  indexTranslateElem.classList.remove('translate-active');
+                  indexTranslateElem.classList.remove(injectOnTranslateClass);
                   if (indexTranslateElem !== element[0]) {
                     var hasTranslateBackAttr = indexTranslateElem.getAttribute('translate-back-class');
                     if (hasTranslateBackAttr && hasTranslateBackAttr.length) {
@@ -293,6 +299,9 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                     }
                 }, delay);
                 function classArgsHasInject(args) {
+                  if (!args || !args.length) {
+                    return;
+                  }
                   var injectArg = null;
                   args.filter(function(word, index) {
                     if (word.indexOf("inject") > -1) {
@@ -300,8 +309,8 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                       return true
                     };
                   })
-                  console.log(injectArg);
-                  return injectArg.replace("inject", "");
+
+                  return injectArg && injectArg.replace("inject", "");
                 }
               });
             }

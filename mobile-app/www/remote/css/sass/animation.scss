@@ -1,5 +1,91 @@
 @import 'mixin';
 
+@include keyframes(splash-adlib) {
+	0%, 100% {
+		@include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));
+	}
+	0% {
+		@include transform(translate3d(0, 0, 0));
+	}
+	100% {
+		@include transform(translate3d(0, -87%, 0));
+	}
+}
+
+@include keyframes(rollInLeft) {
+	0% {
+		@include opacity(0);
+		@include transform(translate3d(100%, 0, 0) rotate3d(0, 0, 1, 120deg));
+	}
+	100% {
+		@include opacity(1);
+		@include transform(none);
+	}
+}
+
+@include keyframes(coach-fill) {
+	0% {
+		@include opacity(1);
+		stroke-dashoffset: 114;
+	}
+	15% {
+		stroke-dashoffset: 110;
+	}
+	100% {
+		@include opacity(1);
+		stroke-dashoffset: 0;
+	}
+}
+@include keyframes(coach-click-1) {
+	0% {
+		@include opacity(1);
+		stroke-dashoffset: 53;
+	}
+	15% {
+		stroke-dashoffset: 50;
+	}
+	100% {
+		@include opacity(1);
+		stroke-dashoffset: 0;
+	}
+}
+@include keyframes(coach-click-2) {
+	0% {
+		@include opacity(1);
+		stroke-dashoffset: 137;
+	}
+	15% {
+		stroke-dashoffset: 120;
+	}
+	100% {
+		@include opacity(1);
+		stroke-dashoffset: 0;
+	}
+}
+
+@include keyframes(splash-scene-device) {
+	0% {
+		width: 28%;
+	}
+	50% {
+		width: 64%;
+	}
+	100% {
+		width: 100%;
+	}
+}
+@include keyframes(splash-scene-adlib) {
+	0% {
+		width: 72%;
+	}
+	50% {
+		width: 86%;
+	}
+	100% {
+		width: 100%;
+	}
+}
+
 @include keyframes(progress-bar) {
 	0% {
 		width: 15%;
