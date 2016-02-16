@@ -81,7 +81,7 @@
 
 		<!-- END Home Page CTAS -->
 
-		<header class='splash-header fixed top-0 high-z-index' id='home-nav-header' bind-wp="university" bind-wp-class="bg-charcoal" bind-wp-direction="down">
+		<header class='splash-header fixed top-0' id='home-nav-header' bind-wp="university" bind-wp-class="bg-charcoal" bind-wp-direction="down">
 			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
 			<div class="ugrid-3" id='translate-to'>
 				<a name='browse-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 1}" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
@@ -125,7 +125,7 @@
 			<div>
 				<h1>Help {{university.short_name}} students ace courses like <u>CS10</u>, <u>CS61C</u><span class='weight-900'> &amp; earn side cash</span>!</h1>
 			</div>
-			<button ng-click='goToUniversity()'>Become a college Guru</button>
+			<button class="default" ng-click='goToUniversity()'>Become a college Guru</button>
 			<a class="header-close" ng-click='becomeGuruHeaderActive = false;'>
 				<svg viewBox="0 0 100 100">
 					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -161,8 +161,252 @@
 				</svg>
 			</a>
 		</div>
-		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' style='height:calc(100%);'>
+		<section id='splash-home' class='splash-hero relative ng-class:{"show":page.load.sections.one.display, "hide":!page.load.sections.one.display}' style='height:calc(100%); display: none!important;'>
 			<ion-slide-box class='splash-scene' on-slide-changed="topHomeSlider.onChange($index)" show-pager='false' delegate-handle='splash-hero-home' does-continue="true">
+				<ion-slide id="splash-academic" anim-on-show-parent anim-on-show="show-slide-{{topHomeSlider.index}}" anim-on-hide-parent anim-on-hide="show-slide-{{topHomeSlider.index}}" class='show-slide-0'>
+					<!-- <div class="splash-scene-img opacity-0" bg-image='{{img_base + BASE + "img/categories/hero/academic@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="10,10" anim-on-hide-child anim-on-hide-class="slideOutDown" anim-on-hide-delay="5000"></div> -->
+					<div class="splash-scene-img ng-class:{'animated fadeOut':subscene}" bg-image='{{img_base + BASE + "img/categories/hero/academic@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()"></div>
+
+					<div class="opacity-0 splash-scene-map ng-class:{'animated slideInLeft':subscene}">
+						<div class="splash-scene-map-img" style="background-image: url('{{staticUniversityMaps[topHomeSlider.index].static_map_url}}')"></div>
+					</div>
+
+					<div class="splash-scene-markers">
+						<span class="splash-marker opacity-0 ng-class:{'animated bounceIn':subscene}" style="top: calc(70px + 5%); right: 15%;">
+							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
+							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+							<span class="splash-marker-label opacity-0">Rachel's Location</span>
+						</span>
+						<span class="splash-marker opacity-0 ng-class:{'animated bounceIn':subscene}" style="top: calc(70px + 10%); left: 5%;">
+							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
+							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+						</span>
+						<span class="splash-marker opacity-0 ng-class:{'animated bounceIn':subscene}" style="top: calc(70px + 25%); right: 5%;">
+							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
+							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+						</span>
+						<span class="splash-marker opacity-0 ng-class:{'animated bounceIn':subscene}" style="top: calc(70px + 40%); left: 15%;">
+							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
+							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+						</span>
+					</div>
+
+					<div class="splash-scene-layout ng-class:{'active':subscene}">
+						<!-- device goes here -->
+						<div class="splash-scene-device ng-class:{'active':subscene}">
+							<div class="ng-class:{'active':subscene}">
+								<svg viewBox="0 0 319 623">
+								    <path d="M66.0058999,2 C30.6564175,2 2,30.6526469 2,66.0028645 L2,556.997136 C2,592.344942 30.6493215,621 66.0058999,621 L252.9941,621 C288.343583,621 317,592.347353 317,556.997136 L317,66.0028645 C317,30.6550585 288.350678,2 252.9941,2 L66.0058999,2 Z M17,57 L17,567 L303,567 L303,57 L17,57 Z" fill="#FFFFFF" fill-rule="evenodd"></path>
+								    <rect fill="none" stroke="#E8D1CA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="315" height="619" rx="64"></rect>
+								    <rect stroke="#E8D1CA" stroke-width="3" fill="#FFFFFF" x="119" y="580" width="82" height="24" rx="13"></rect>
+								</svg>
+								<!-- <svg viewBox="0 0 319 652">
+									<path d="M2,42.0005693 C2,19.9088649 19.9096817,2 41.9948462,2 L277.005154,2 C299.093697,2 317,19.9012788 317,42.0005693 L317,609.999431 C317,632.091135 299.090318,650 277.005154,650 L41.9948462,650 C19.9063026,650 2,632.098721 2,609.999431 L2,42.0005693 Z M22,80 L298,80 L298,573 L22,573 L22,80 Z" fill="#FFFFFF" fill-rule="evenodd"></path>
+									<rect fill="none" stroke="#F0E0D0" stroke-width="3" x="2" y="2" width="315" height="648" rx="40"></rect>
+									<circle stroke="#F0E0D0" stroke-width="3" fill="#FFFFFF" cx="159" cy="611" r="25"></circle>
+								</svg> -->
+								<!-- <svg viewBox="0 0 474 354">
+									<path d="M451.102761,2 C462.643987,2 472,11.3616545 472,22.8945675 L472,331.105433 C472,342.645184 462.638037,352 451.102761,352 L22.8972395,352 C11.3560128,352 2,342.638345 2,331.105433 L2,22.8945675 C2,11.3548165 11.3619631,2 22.8972395,2 L451.102761,2 L451.102761,2 Z M425,23 L425,331 L49,331 L49,23 L425,23 L425,23 Z" fill="#FFFFFF" fill-rule="evenodd"></path>
+									<path d="M451.102761,2 C462.643987,2 472,11.3616545 472,22.8945675 L472,331.105433 C472,342.645184 462.638037,352 451.102761,352 L22.8972395,352 C11.3560128,352 2,342.638345 2,331.105433 L2,22.8945675 C2,11.3548165 11.3619631,2 22.8972395,2 L451.102761,2 L451.102761,2 Z" fill="none" stroke="#D7D8DC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+									<path d="M25,164 C32.1797017,164 38,169.81872 38,177 L38,177 C38,184.179702 32.1812804,190 25,190 L25,190 C17.8202983,190 12,184.18128 12,177 L12,177 C12,169.820298 17.8187196,164 25,164 L25,164 L25,164 Z" fill="none" stroke="#D7D7DC" stroke-width="3"></path>
+								</svg> -->
+								<!-- <svg viewBox="0 0 436 506">
+									<rect fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" x="3" y="3" width="430" height="500" rx="5"></rect>
+									<rect fill="#FFFFFF" x="3" y="3" width="430" height="26"></rect>
+									<ellipse fill="#2DCC40" cx="56" cy="15" rx="5" ry="5"></ellipse>
+									<ellipse fill="#FCBD2E" cx="36" cy="15" rx="5" ry="5"></ellipse>
+									<path d="M17.0016584,20 C19.763998,20 22.0033167,17.7614237 22.0033167,15 C22.0033167,12.2385763 19.763998,10 17.0016584,10 C14.2393187,10 12,12.2385763 12,15 C12,17.7614237 14.2393187,20 17.0016584,20 Z" fill="#E75D56"></path>
+								</svg> -->
+								<div class="android ng-class:{'hide-opacity':subscene}">
+									<div class="device-header" style="background: #023360">
+										<div style='url("https://farm8.staticflickr.com/7318/9357094656_965041bc2b_k.jpg") center center / cover!important;'></div>
+										<h1>Discover Academia @</h1>
+										<span class="device-logo" ng-include="img_base + 'templates/svg/logo-subtitle-cal.html'"></span></span>
+									</div>
+									<div class="device-content">
+										<div class="device-trending">
+											<h2>Trending</h2>
+											<ul class="ugrid-3">
+												<li>
+													<div>
+														<svg class="square" viewBox="0 0 100 100">
+															<rect x="0" y="0" width="100" height="100"></rect>
+														</svg>
+														<span>Item</span>
+													</div>
+												</li>
+												<li>
+													<div>
+														<svg class="square" viewBox="0 0 100 100">
+															<rect x="0" y="0" width="100" height="100"></rect>
+														</svg>
+														<span>Item</span>
+													</div>
+												</li>
+												<li>
+													<div>
+														<svg class="square" viewBox="0 0 100 100">
+															<rect x="0" y="0" width="100" height="100"></rect>
+														</svg>
+														<span>Item</span>
+													</div>
+												</li>
+												<li>
+													<div>
+														<svg class="square" viewBox="0 0 100 100">
+															<rect x="0" y="0" width="100" height="100"></rect>
+														</svg>
+														<span>Item</span>
+													</div>
+												</li>
+												<li>
+													<div>
+														<svg class="square" viewBox="0 0 100 100">
+															<rect x="0" y="0" width="100" height="100"></rect>
+														</svg>
+														<span>Item</span>
+													</div>
+												</li>
+												<li>
+													<div>
+														<svg class="square" viewBox="0 0 100 100">
+															<rect x="0" y="0" width="100" height="100"></rect>
+														</svg>
+														<span>Item</span>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<div class="device-gurus">
+											<h2>Gurus</h2>
+											<ul class="ugrid-3">
+												<li>
+													<span style="background-image: url('https://uguru-rest-test.herokuapp.com/static/remote/img/filler/avatars/guru-academic-f.jpg');"></span>
+													<span>Rachel</span>
+												</li>
+												<li>
+													<span style="background-image: url('https://uguru-rest-test.herokuapp.com/static/remote/img/filler/avatars/guru-academic-f.jpg');"></span>
+													<span>Rachel</span>
+												</li>
+												<li>
+													<span style="background-image: url('https://uguru-rest-test.herokuapp.com/static/remote/img/filler/avatars/guru-academic-f.jpg');"></span>
+													<span>Rachel</span>
+												</li>
+												<li>
+													<span style="background-image: url('https://uguru-rest-test.herokuapp.com/static/remote/img/filler/avatars/guru-academic-f.jpg');"></span>
+													<span>Rachel</span>
+												</li>
+												<li>
+													<span style="background-image: url('https://uguru-rest-test.herokuapp.com/static/remote/img/filler/avatars/guru-academic-f.jpg');"></span>
+													<span>Rachel</span>
+												</li>
+												<li>
+													<span style="background-image: url('https://uguru-rest-test.herokuapp.com/static/remote/img/filler/avatars/guru-academic-f.jpg');"></span>
+													<span>Rachel</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="device-category-switcher">
+										<ul class="ugrid-4">
+											<li>
+												<div class="switcher-academic">
+													<input type="radio" name="switcher" checked />
+													<div>
+														<svg class="square" viewBox="0 0 100 100">
+															<rect x="0" y="0" width="100" height="100"></rect>
+														</svg>
+														<svg viewBox="0 0 100 100">
+														    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="switcher-baking">
+													<input type="radio" name="switcher" />
+													<div>
+														<svg class="square" viewBox="0 0 100 100">
+															<rect x="0" y="0" width="100" height="100"></rect>
+														</svg>
+														<svg viewBox="0 0 100 100">
+														    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="switcher-photography">
+													<input type="radio" name="switcher" />
+													<div>
+														<svg class="square" viewBox="0 0 100 100">
+															<rect x="0" y="0" width="100" height="100"></rect>
+														</svg>
+														<svg viewBox="0 0 100 100">
+														    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="switcher-tech">
+													<input type="radio" name="switcher" />
+													<div>
+														<svg class="square" viewBox="0 0 100 100">
+															<rect x="0" y="0" width="100" height="100"></rect>
+														</svg>
+														<svg viewBox="0 0 100 100">
+														    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="android splash-scene-adlib-results hide-opacity ng-class:{'show-opacity':subscene}">
+									<div>
+										<h1 class="show-opacity ng-class:{'active':subscene}">Searching&nbsp;UC&nbsp;Berkeley</h1>
+										<h1 class="hide-opacity ng-class:{'active':subscene}">4 gurus found!</h1>
+									</div>
+									<div class="progress white-round height-10 ng-class:{'active':subscene}">
+										<span style="width: 15%"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="splash-scene-adlib ng-class:{'active':subscene}">
+							<div class="splash-scene-adlib-header ng-class:{'animated bounceOutRight':subscene}">
+								<h1>Select Your Story and Go!</h1>
+								<h2>Click on the buttons to fill in the blanks.</h2>
+							</div>
+							<div class="splash-scene-adlib-statement ng-class:{'active':subscene}">
+								<h1>It's <span><button disabled class="blank" id="blank-5am">5am</button></span> and I have a <span><button disabled class="blank ng-class:{'hide':speech}">biology exam</button><button disabled class="hide ng-class:{'show':speech}">speech</button></span> in the morning.</h1>
+							</div>
+							<ul class="splash-scene-adlib-options ng-class:{'animated bounceOutRight':subscene}">
+								<li><button translate-back-class="animated, bounceIn" translate-on-click translate-to-elem="#blank-5am">midnight</button></li>
+								<li><button translate-on-click translate-back-class="animated, bounceIn" translate-to-elem="#blank-5am">paper due</button></li>
+								<li><button translate-on-click translate-to-elem="#blank-5am" translate-back-class="animated, bounceIn">the morning</button></li>
+								<li><button ng-click="speech = true;" class="ng-class:{'active':speech}">speech</button></li>
+								<li><button>midnight</button></li>
+								<li><button>paper due</button></li>
+								<li><button>the morning</button></li>
+								<li><button>speech</button></li>
+							</ul>
+							<div class="splash-scene-cta-buttons ng-class:{'animated bounceOutRight':subscene}">
+								<button class="btn-ghost-white default-none" ng-click="subscene = true;">Play scenario</button>
+							</div>
+						</div>
+					</div>
+
+					<header class="splash-scene-header">
+						<ul>
+							<li>
+								<a class="splash-header-close close-button opacity-0 ng-class:{'animated bounceIn':subscene, 'show-opacity':subscene}" ng-include="img_base + 'templates/svg/main/plus.html'" ng-click="subscene = true;"></a>
+							</li>
+						</ul>
+					</header>
+				</ion-slide>
 				<ion-slide id="splash-baking" anim-on-show-parent anim-on-show="show-slide-{{topHomeSlider.index}}" anim-on-hide-parent anim-on-hide="show-slide-{{topHomeSlider.index}}" class='show-slide-0'>
 					<div class="splash-scene-img opacity-0" bg-image='{{img_base + BASE + "img/categories/hero/baking@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="10,10" anim-on-hide-child anim-on-hide-class="slideOutDown" anim-on-hide-delay="5000"></div>
 
@@ -314,7 +558,7 @@
 						</li>
 					</ul>
 				</ion-slide>
-				<ion-slide id="splash-photo" anim-on-show-parent anim-on-show="show-slide" anim-on-hide-parent anim-on-hide="show-slide">
+				<!-- <ion-slide id="splash-photo" anim-on-show-parent anim-on-show="show-slide-{{topHomeSlider.index}}" anim-on-hide-parent anim-on-hide="show-slide-{{topHomeSlider.index}}" class='show-slide-0'>
 					<div class="splash-scene-img opacity-0" bg-image='{{img_base + BASE + "img/categories/hero/photo@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="10,10" anim-on-hide-child anim-on-hide-class="slideOutDown" anim-on-hide-delay="5000"></div>
 
 					<div class="opacity-0 splash-scene-map" anim-on-show-child anim-on-show-class="slideInDown" anim-on-show-delay="5000">
@@ -464,151 +708,7 @@
 						</li>
 					</ul>
 				</ion-slide>
-				<ion-slide id="splash-academic" anim-on-show-parent anim-on-show="show-slide-{{topHomeSlider.index}}" anim-on-hide-parent anim-on-hide="show-slide-{{topHomeSlider.index}}">
-					<div class="splash-scene-img opacity-0" bg-image='{{img_base + BASE + "img/categories/hero/academic@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="10,10" anim-on-hide-child anim-on-hide-class="slideOutDown" anim-on-hide-delay="5000"></div>
-
-					<div class="opacity-0 splash-scene-map" anim-on-show-child anim-on-show-class="slideInDown" anim-on-show-delay="5000">
-						<div class="splash-scene-map-img" style="background-image: url('{{staticUniversityMaps[topHomeSlider.index].static_map_url}}')"></div>
-					</div>
-
-					<div class="splash-scene-markers">
-						<div class="splash-scene-overlay opacity-0" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="7800"></div>
-						<span class="splash-marker opacity-0" style="top: calc(70px + 5%); right: 15%;" anim-on-show-child anim-on-show-class="bounceIn, active:keep" anim-on-show-delay="5400, 7800">
-							<span anim-on-show-child anim-on-show-class="pulse:keep, infinite:keep, animated:keep" anim-on-show-delay="7800, 7800, 7800" ng-include="img_base + 'templates/svg/main/message.html'"></span>
-							<span anim-on-show-child anim-on-show-class="pulse:keep, infinite:keep, animated:keep" anim-on-show-delay="7800" ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
-							<span class="splash-marker-label opacity-0" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="7800, 7800, 7800">Rachel's Location</span>
-						</span>
-						<span class="splash-marker opacity-0" style="top: calc(70px + 10%); left: 5%;" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="5800">
-							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
-							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
-						</span>
-						<span class="splash-marker opacity-0" style="top: calc(70px + 25%); right: 5%;" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="6200">
-							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
-							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
-						</span>
-						<span class="splash-marker opacity-0" style="top: calc(70px + 40%); left: 15%;" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="6200">
-							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
-							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
-						</span>
-					</div>
-
-					<div class="splash-scene-prop-desktop" anim-on-show-child anim-on-show-class="active:keep" anim-on-show-delay="6500">
-						<div class="relative opacity-0" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="100, 100">
-							<a class="splash-scene-svg">
-								<svg viewBox="0 0 700 400">
-									<rect class="board" stroke="#DAB475" stroke-width="14" fill="#334743" x="146" y="129" width="401" height="264" rx="4"></rect>
-									<rect class="chalk" fill="#FFFFFF" x="473" y="383" width="28.630137" height="10" rx="100"></rect>
-								</svg>
-								<div class="splash-scene-type" style="top: 35.3%; left: 21%;">
-									<h1>It's <u>5am</u> and I have a <u>biology&nbsp;exam</u> in 4&nbsp;hours.</h1>
-								</div>
-							</a>
-							<div class="opacity-0 splash-scene-search" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="250,250">
-								<div class="absolute">
-									<h1 anim-on-hide-child anim-on-hide-class="bounceOutUp" anim-on-hide-delay="2000">At UC Berkeley</h1>
-								</div>
-								<div class="opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="2000" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-hide-delay="6000">
-									<h2 anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-hide-delay="6000">Searching among UC Berkeley Gurus</h2>
-									<div class="progress white-round height-10 m10top" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-hide-delay="6000">
-										<span style="width: 15%" anim-on-show-child anim-on-show-class="progress-bar:keep" anim-on-show-delay="3000"></span>
-									</div>
-								</div>
-								<div class="absolute opacity-0" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="6000">
-									<h1>4 UC Berkeley Gurus Found</h1>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="splash-scene-prop-mobile">
-						<div class="splash-scene-svg">
-							<svg class="opacity-0" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="1000,1000" viewBox="0 0 200 200">
-								<rect stroke="#DAB475" stroke-width="5" fill="#334743" x="32" y="107" width="136" height="90" rx="1"></rect>
-								<rect fill="#FFFFFF" x="121" y="190" width="32" height="7" rx="5"></rect>
-							</svg>
-							<div class="splash-scene-type opacity-0" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="550,550">
-								<h1>It's <u>5am</u> and I have a <u>biology&nbsp;exam</u> in 4&nbsp;hours.</h1>
-							</div>
-							<button disabled class="opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="400">At UC Berkeley</button>
-							<a class="active pause opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="550" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a>
-						</div>
-					</div>
-
-					<header class="splash-scene-header">
-						<ul>
-							<li>
-								<a class="splash-header-close close-button opacity-0" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="6500" ng-include="img_base + 'templates/svg/main/plus.html'"></a>
-							</li>
-						</ul>
-					</header>
-
-					<ul class="splash-scene-gurus pf-card-group">
-						<li class="pf-card-li opacity-0" anim-on-show-child anim-on-show-class="{{::['bounceInUp', 'bounceInUp', 'bounceInUp', 'bounceInUp'][$index]}}" anim-on-show-delay="{{::[6500, 6700, 6900, 7100][$index]}}" ng-repeat='category in ::categories | limitTo: 4' ng-if='category.is_active'>
-							<div class="splash-scene-guru-message opacity-0" anim-on-show-child anim-on-show-class="magictime, spaceInDown" anim-on-show-delay="7800, 7800" ng-if="$index === 0">
-								<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-								<button>View {{::sampleMiniProfilesDict[category.hex_color].name}}'s Shop</button>
-							</div>
-							<div class="splash-scene-guru-message opacity-0" ng-if="$index !== 0">
-								<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-								<button>View {{::sampleMiniProfilesDict[category.hex_color].name}}'s Shop</button>
-							</div>
-							<div class="pf-card pf-card-academic bg-academic">
-								<div class="pf-card-top">
-									<ul>
-										<li>Academic</li>
-										<li class="pf-card-ribbon">
-											<span>{{sampleMiniProfilesDict[category.hex_color].percentile}}&nbsp;percentile</span>
-										</li>
-									</ul>
-									<span class="user-icon" style="background-image: url({{::sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
-								</div>
-								<div class="pf-card-main">
-									<h1 class="pf-card-name verified">
-										<span class="pf-card-name-span inline">{{::sampleMiniProfilesDict[category.hex_color].name}}</span>
-										<span class="pf-card-verified inline">
-											<span ng-include="img_base + 'templates/credibility.verified.svg.html'"> </span>
-										</span>
-									</h1>
-									<h2 class="pf-online active">&#x25cf; Active Now</h2>
-									<ul class="pf-rating" data-rating="{{::sampleMiniProfilesDict[category.hex_color].rating.whole_stars}}" data-half="{{::sampleMiniProfilesDict[category.hex_color].rating.has_half_star}}">
-										<li>
-											<svg viewBox="0 0 100 100">
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-											</svg>
-										</li>
-										<li>
-											<svg viewBox="0 0 100 100">
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-											</svg>
-										</li>
-										<li>
-											<svg viewBox="0 0 100 100">
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-											</svg>
-										</li>
-										<li>
-											<svg viewBox="0 0 100 100">
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-											</svg>
-										</li>
-										<li>
-											<svg viewBox="0 0 100 100">
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-											</svg>
-										</li>
-									</ul>
-									<span class="pf-review-amt">{{::sampleMiniProfilesDict[category.hex_color].rating.count}} Reviews</span>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</ion-slide>
-				<ion-slide id="splash-tech" anim-on-show-parent anim-on-show="show-slide-{{topHomeSlider.index}}" anim-on-hide-parent anim-on-hide="show-slide-{{topHomeSlider.index}}">
+				<ion-slide id="splash-tech" anim-on-show-parent anim-on-show="show-slide-{{topHomeSlider.index}}" anim-on-hide-parent anim-on-hide="show-slide-{{topHomeSlider.index}}" class='show-slide-0'>
 					<div class="splash-scene-img opacity-0" bg-image='{{img_base + BASE + "img/categories/hero/tech@2x.jpg"}}' bg-image-has-loaded="page.load.sections.one.ready()" anim-on-show-child anim-on-show-class="magictime, vanishIn" anim-on-show-delay="10,10" anim-on-hide-child anim-on-hide-class="slideOutDown" anim-on-hide-delay="5000"></div>
 
 					<div class="opacity-0 splash-scene-map" anim-on-show-child anim-on-show-class="slideInDown" anim-on-show-delay="5000">
@@ -647,7 +747,7 @@
 									<path d="M537.767857,372.632184 C559.509223,372.632184 562.663665,390.672347 562.663665,390.672347 C564.292509,395.068443 561.807054,398.632184 557.109357,398.632184 L518.426358,398.632184 C513.729954,398.632184 511.061316,394.989619 512.87205,390.672347 C512.87205,390.672347 516.026492,372.632184 537.767857,372.632184 Z" class="mouse animate" fill="#FFFFFF"></path>
 								</svg>
 								<div class="splash-scene-type" style="top: 9.7%; left: 21.5%;">
-									<!-- <h1>My <u class='home-splash-typewriter' typed-options="macbook, iphone, router">Macbook</u> is <br/> <u class='home-splash-typewriter' typed-options="macbook, iphone, router">slow&nbsp;as&nbsp;hell</u>.</h1> -->
+									<h1 style="display:none!important">My <u class='home-splash-typewriter' typed-options="macbook, iphone, router">Macbook</u> is <br/> <u class='home-splash-typewriter' typed-options="macbook, iphone, router">slow&nbsp;as&nbsp;hell</u>.</h1>
 									<h1>My <u>Macbook</u> is <br/> <u>slow&nbsp;as&nbsp;hell</u>.</h1>
 								</div>
 							</a>
@@ -760,17 +860,16 @@
 						<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
 						<button>View Rachel's Shop</button>
 					</div>
-					<!-- needs animation, currently set to .hide, mobile only -->
+
 					<ul class="hide splash-scene-gurus pf-card-group-mobile">
 						<li ng-repeat='category in ::categories' ng-if='category.is_active'>
-							<!-- needs animation, currently set to .hide -->
 							<div class="pf-card-mini large pf-card-mini-tech">
 								<div class="pf-card-mini-banner"></div>
 								<span class="user-icon" style="background-image: url({{sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
 							</div>
 						</li>
 					</ul>
-				</ion-slide>
+				</ion-slide> -->
 			</ion-slide-box>
 
 			<footer class="splash-scene-footer">
@@ -866,7 +965,7 @@
 			</footer>
 		</section>
 
-		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }' init-wp="university, university_exit, university_first" wp-offset="106, -100%, 106" anim-first-enter-down-parent anim-first-enter-down="university_first" >
+		<section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }' init-wp="university, university_exit, university_first" wp-offset="106, -100%, 106" anim-first-enter-down-parent anim-first-enter-down="university_first" style="display:none!important;">
 			<header>
 				<h1 class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceInDown" anim-first-enter-down-delay="1000">Find Your University</h1>
 			</header>
@@ -900,7 +999,7 @@
 										<span>12k</span>
 									</li>
 								</ul>
-								<button id='university-info-window-button' ng-click="universityButtonClicked()" style="background-color: {{map.window.university.school_color_dark}};">Go to School</button>
+								<button id='university-info-window-button' class="default" ng-click="universityButtonClicked()" style="background-color: {{map.window.university.school_color_dark}};">Go to School</button>
 							</div>
 						</div>
 					</ui-gmap-window>
@@ -983,7 +1082,7 @@
 			</footer>
 		</section>
 
-		<section init-wp="hiw, hiw_enter, hiw_exit, hiw_nav" wp-offset="106, 20%, 70, 106" class='splash-categories' id='splash-browse' bind-wp="bg_enter" bind-wp-class="high-z-index" anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw">
+		<section init-wp="hiw, hiw_enter, hiw_exit, hiw_nav" wp-offset="106, 20%, 70, 106" class='splash-categories' id='splash-browse' bind-wp="bg_enter" bind-wp-class="high-z-index" anim-first-enter-down-parent anim-exit-up-parent anim-exit-down-parent anim-first-enter-down="hiw" style="display:none!important;">
 			<div id='how-it-works' class="hiw-subheader-nav-content main splash-postit ng-class:{'active':activeBrowseTabIndex===0}" anim-on-show-parent anim-on-show="active" anim-on-hide-parent anim-on-hide="transitioning" anim-on-hide-debounce="2000">
 				<header>
 					<h1 class="how-it-works-header opacity-0" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="400" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="400" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">{{::how_it_works.header}}</h1>
@@ -1030,7 +1129,7 @@
 							</ion-slide-box>
 						</div>
 						<div class="p15xy absolute bottom-0 left-0 full-x">
-							<button ng-click='scrollToSection("#splash-university")' class="bg-university">Join Your University</button>
+							<button ng-click='scrollToSection("#splash-university")' class="bg-university default">Join Your University</button>
 						</div>
 					</div>
 
@@ -1078,7 +1177,7 @@
 								</div>
 							</li>
 						</ul>
-						<button anim-exit-up-child anim-exit-up-class="fadeOut" anim-exit-up-delay="1000" anim-enter-down-child anim-enter-down-class="fadeIn" anim-enter-down-delay="2500" class="how-it-works-button" ng-if='::desktopMode' ng-click='scrollToSection("#splash-university")'>Join Your University</button>
+						<button anim-exit-up-child anim-exit-up-class="fadeOut" anim-exit-up-delay="1000" anim-enter-down-child anim-enter-down-class="fadeIn" anim-enter-down-delay="2500" class="how-it-works-button default" ng-if='::desktopMode' ng-click='scrollToSection("#splash-university")'>Join Your University</button>
 					</div>
 				</div>
 			</div>
@@ -1111,7 +1210,7 @@
 								</div>
 							</li>
 							<li class="card-button opacity-0">
-								<button ng-click='goToSignup()'>Start Your Shop</button>
+								<button class="default" ng-click='goToSignup()'>Start Your Shop</button>
 							</li>
 						</ul>
 						<div class='subcategory-card-list sub-{{::category.hex_color}} ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in ::categories'>
@@ -1132,7 +1231,7 @@
 								<li></li>
 								<li></li>
 							</ul>
-							<button ng-click='hideCategorySkillsModal()'>Back</button>
+							<button class="default" ng-click='hideCategorySkillsModal()'>Back</button>
 						</div>
 					</div>
 				</div>
@@ -1219,7 +1318,7 @@
 			</footer>
 		</section>
 
-		<section id='become-guru' init-wp="bg_enter, bg_nav" anim-first-enter-down-parent anim-first-enter-down="bg_enter" wp-offset="70, 66" class="splash-postit ng-class:{'hide':!page.load.sections.five.display}">
+		<section id='become-guru' init-wp="bg_enter, bg_nav" anim-first-enter-down-parent anim-first-enter-down="bg_enter" wp-offset="70, 66" class="splash-postit ng-class:{'hide':!page.load.sections.five.display}" style="display:none!important;">
 			<header anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="200">
 				<h1 class="become-guru-header">{{::become_guru.header}}</h1>
 			</header>
@@ -1266,7 +1365,7 @@
 						</ion-slide-box>
 					</div>
 					<div class="p15xy absolute bottom-0 left-0 full-x">
-						<button ng-click='scrollToSection("#splash-university")' class='capitalize'>Become a University Guru</button>
+						<button ng-click='scrollToSection("#splash-university")' class='default'>Become a University Guru</button>
 					</div>
 				</div>
 				<div ng-if='desktopMode' class='flex-wrap-center'>
@@ -1312,7 +1411,7 @@
 							</div>
 						</li>
 					</ul>
-					<button ng-click='scrollToSection("#splash-university")' class='capitalize become-guru-button'>Become a University Guru</button>
+					<button ng-click='scrollToSection("#splash-university")' class='become-guru-button default'>Become a University Guru</button>
 				</div>
 			</div>
 			<footer>

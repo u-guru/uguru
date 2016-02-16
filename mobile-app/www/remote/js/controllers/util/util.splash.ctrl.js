@@ -8,27 +8,31 @@ angular.module('uguru.util.controllers')
   '$timeout',
   '$localstorage',
   '$ionicPlatform',
-  '$interval',
-  function($scope, $state, $timeout, $localstorage, $ionicPlatform, $interval) {
-
+  '$cordovaKeyboard',
+  '$ionicModal',
+  'Category',
+  function($scope, $state, $timeout, $localstorage, $ionicPlatform,
+    $cordovaKeyboard, $ionicModal, Category) {
+    $scope.selectedCategory = ($scope.categories && $scope.categories[0]) || {name: 'Academic', hex_color: 'academic'};
     // $scope.request = RequestService.initStudentForm();
+    $timeout(function() {
+      var saveCategoriesToRootScope = function(categories) {
+            $scope.categories = categories;
+            $scope.categories = $scope.categories.filter(function(category, index) {
+              return category.is_active;
+            })
+            $scope.selectedCategory = $scope.categories[0];
+        }
+      $scope.getCategories(saveCategoriesToRootScope);
+    })
 
-    $scope.$on('$ionicView.loaded', function() {
-        $timeout(function() {
-          // s.refresh();
-          s = skrollr.init({
-            skrollrBody:'skrollr-body'
-          })
-          s.refresh();
-          // s.setScrollTop(1000);
-          $interval(function() {
-            console.log('max scrolling', s.getMaxScrollTop(), 'current:', s.getScrollTop());
-
-            // s.setScrollTop(700);
-
-          }, 1000)
-        }, 5000)
-    });
+    $scope.setCategory = function(category) {
+      $timeout(function(){
+        $scope.$apply(function(){
+          $scope.selectedCategory = category;
+        });
+      })
+    }
 
 
   }

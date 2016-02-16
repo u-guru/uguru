@@ -510,7 +510,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.splash', {
         url: '/splash',
         templateUrl: BASE + 'templates/splash.html',
-        controller: 'SplashController'
+        controller: "SplashController"
   }).
   state('root.student-conversations', {
         url: '/student-conversations',

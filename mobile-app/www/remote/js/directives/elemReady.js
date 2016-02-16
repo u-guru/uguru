@@ -93,9 +93,6 @@ angular.module('uguru.directives')
               }
           }, delay);
           function classArgsHasInject(args) {
-            if (!args || !args.length) {
-              return;
-            }
             var injectArg = null;
             args.filter(function(word, index) {
               if (word.indexOf("inject") > -1) {
@@ -103,7 +100,7 @@ angular.module('uguru.directives')
                 return true
               };
             })
-            return injectArg && injectArg.replace("inject", "");
+            return injectArg.replace("inject", "");
           }
         }
       })
@@ -299,9 +296,6 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                     }
                 }, delay);
                 function classArgsHasInject(args) {
-                  if (!args || !args.length) {
-                    return;
-                  }
                   var injectArg = null;
                   args.filter(function(word, index) {
                     if (word.indexOf("inject") > -1) {
@@ -309,8 +303,8 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                       return true
                     };
                   })
-
-                  return injectArg && injectArg.replace("inject", "");
+                  console.log(injectArg);
+                  return injectArg.replace("inject", "");
                 }
               });
             }
