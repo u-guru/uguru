@@ -16,8 +16,8 @@
 	// SIDEBAR
 	.splash-sidebar {
 		@include opacity(0);
-		@include translate-x(-100%);
-		@include transition(.15s ease-in-out);
+		@include prefix(transform, translateX(-100%), webkit moz ms o);
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -26,7 +26,7 @@
 		height: 100%;
 		&.show {
 			@include opacity(1);
-			@include translate-x(0);
+			@include prefix(transform, translateX(0), webkit moz ms o);
 		}
 		&:before {
 			@include opacity(.95);
@@ -61,7 +61,7 @@
 					height: 100%;
 					width: auto;
 					path, circle {
-						@include transition(.15s ease-it-out);
+						@include prefix(transition, all 150ms ease-it-out, webkit moz ms o);
 						@include svg-stroke(white, 4);
 					}
 				}
@@ -192,7 +192,7 @@
 			display: block;
 			height: 100%;
 			path {
-				@include transition(.15s ease-in-out);
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 				&:first-child {
 					fill: rgba(white,.8);
 				}
@@ -222,7 +222,7 @@
 		}
 	}
 	> header {
-		@include transition(.15s ease-in-out);
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 		@include flex;
 		@include flex-center-vertical;
 		@include flex-wrap;
@@ -283,7 +283,7 @@
 					height: 100%;
 					width: auto;
 					circle, path {
-						@include transition(.15s ease-in-out);
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 						@include svg-stroke(white, 4);
 					}
 				}
@@ -301,7 +301,7 @@
 			}
 		}
 		hr {
-			@include transition(.15s ease-in-out);
+			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 			position: absolute;
 			bottom: 0;
 			left: 0;
@@ -321,7 +321,7 @@
 				&:nth-child(1) {
 					&.active {
 						~ hr {
-							@include translate-x(0);
+							@include prefix(transform, translateX(0), webkit moz ms o);
 							border-color: white;
 						}
 					}
@@ -329,7 +329,7 @@
 				&:nth-child(2) {
 					&.active {
 						~ hr {
-							@include translate-x(165px);
+							@include prefix(transform, translateX(165px), webkit moz ms o);
 							border-color: white;
 						}
 					}
@@ -337,7 +337,7 @@
 				&:nth-child(3) {
 					&.active {
 						~ hr {
-							@include translate-x(330px);
+							@include prefix(transform, translateX(330px), webkit moz ms o);
 							border-color: white;
 						}
 					}
@@ -345,7 +345,7 @@
 				&:nth-child(4) {
 					&.active {
 						~ hr {
-							@include translate-x(495px);
+							@include prefix(transform, translateX(495px), webkit moz ms o);
 							border-color: white;
 						}
 					}
@@ -354,7 +354,7 @@
 				&:nth-child(1) {
 					&:hover, &:focus {
 						~ hr {
-							@include translate-x(0);
+							@include prefix(transform, translateX(0), webkit moz ms o);
 							border-color: rgba(white,.7);
 						}
 					}
@@ -367,7 +367,7 @@
 				&:nth-child(2) {
 					&:hover, &:focus {
 						~ hr {
-							@include translate-x(165px);
+							@include prefix(transform, translateX(165px), webkit moz ms o);
 							border-color: rgba(white,.7);
 						}
 					}
@@ -380,7 +380,7 @@
 				&:nth-child(3) {
 					&:hover, &:focus {
 						~ hr {
-							@include translate-x(330px);
+							@include prefix(transform, translateX(330px), webkit moz ms o);
 							border-color: rgba(white,.7);
 						}
 					}
@@ -393,7 +393,7 @@
 				&:nth-child(4) {
 					&:hover, &:focus {
 						~ hr {
-							@include translate-x(495px);
+							@include prefix(transform, translateX(495px), webkit moz ms o);
 							border-color: rgba(white,.7);
 						}
 					}
@@ -411,7 +411,7 @@
 		}
 	}
 	.splash-sub-header {
-		@include transition(.15s ease-in-out);
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 		-webkit-justify-content: flex-start;
 		justify-content: flex-start;
 		position: fixed;
@@ -441,7 +441,7 @@
 				&:nth-child(1) {
 					&.active {
 						~ hr {
-							@include translate-x(0);
+							@include prefix(transform, translateX(0), webkit moz ms o);
 							border-color: lighten($shamrock, 35%);
 						}
 					}
@@ -449,7 +449,7 @@
 				&:nth-child(2) {
 					&.active {
 						~ hr {
-							@include translate-x(165px);
+							@include prefix(transform, translateX(165px), webkit moz ms o);
 							border-color: lighten($shamrock, 35%);
 						}
 					}
@@ -457,7 +457,7 @@
 				&:nth-child(3) {
 					&.active {
 						~ hr {
-							@include translate-x(330px);
+							@include prefix(transform, translateX(330px), webkit moz ms o);
 							border-color: lighten($shamrock, 35%);
 						}
 					}
@@ -465,7 +465,7 @@
 				&:nth-child(4) {
 					&.active {
 						~ hr {
-							@include translate-x(495px);
+							@include prefix(transform, translateX(495px), webkit moz ms o);
 							border-color: lighten($shamrock, 35%);
 						}
 					}
@@ -473,7 +473,7 @@
 				&:nth-child(1) {
 					&:hover, &:focus {
 						~ hr {
-							@include translate-x(0);
+							@include prefix(transform, translateX(0), webkit moz ms o);
 							border-color: rgba(white,.7);
 						}
 					}
@@ -486,7 +486,7 @@
 				&:nth-child(2) {
 					&:hover, &:focus {
 						~ hr {
-							@include translate-x(165px);
+							@include prefix(transform, translateX(165px), webkit moz ms o);
 							border-color: rgba(white,.7);
 						}
 					}
@@ -499,7 +499,7 @@
 				&:nth-child(3) {
 					&:hover, &:focus {
 						~ hr {
-							@include translate-x(330px);
+							@include prefix(transform, translateX(330px), webkit moz ms o);
 							border-color: rgba(white,.7);
 						}
 					}
@@ -512,7 +512,7 @@
 				&:nth-child(4) {
 					&:hover, &:focus {
 						~ hr {
-							@include translate-x(495px);
+							@include prefix(transform, translateX(495px), webkit moz ms o);
 							border-color: rgba(white,.7);
 						}
 					}
@@ -549,56 +549,56 @@
 					&:nth-child(1) {
 						&.active {
 							~ hr {
-								@include translate-x(0);
+								@include prefix(transform, translateX(0), webkit moz ms o);
 							}
 						}
 					}
 					&:nth-child(2) {
 						&.active {
 							~ hr {
-								@include translate-x(100%);
+								@include prefix(transform, translateX(100%), webkit moz ms o);
 							}
 						}
 					}
 					&:nth-child(3) {
 						&.active {
 							~ hr {
-								@include translate-x(200%);
+								@include prefix(transform, translateX(200%), webkit moz ms o);
 							}
 						}
 					}
 					&:nth-child(4) {
 						&.active {
 							~ hr {
-								@include translate-x(300%);
+								@include prefix(transform, translateX(300%), webkit moz ms o);
 							}
 						}
 					}
 					&:nth-child(1) {
 						&:hover, &:focus {
 							~ hr {
-								@include translate-x(0);
+								@include prefix(transform, translateX(0), webkit moz ms o);
 							}
 						}
 					}
 					&:nth-child(2) {
 						&:hover, &:focus {
 							~ hr {
-								@include translate-x(100%);
+								@include prefix(transform, translateX(100%), webkit moz ms o);
 							}
 						}
 					}
 					&:nth-child(3) {
 						&:hover, &:focus {
 							~ hr {
-								@include translate-x(200%);
+								@include prefix(transform, translateX(200%), webkit moz ms o);
 							}
 						}
 					}
 					&:nth-child(4) {
 						&:hover, &:focus {
 							~ hr {
-								@include translate-x(300%);
+								@include prefix(transform, translateX(300%), webkit moz ms o);
 							}
 						}
 					}
@@ -648,7 +648,7 @@
 	}
 	.splash-toast {
 		-webkit-backface-visibility: hidden;
-		@include transition(.3s ease-in-out);
+		@include prefix(transition, all .3s ease-in-out, webkit moz ms o);
 		@include flex-center-vertical;
 		@include flex-wrap;
 		background: rgba(white, .75)!important;
@@ -662,19 +662,19 @@
 		&.hide {
 			@include flex-important;
 			@include opacity(0);
-			@include translate-y(-15%);
+			@include prefix(transform, translateY(-15%), webkit moz ms o);
 			z-index: -50;
 		}
 		&.show {
 			@include opacity(1);
-			@include translate-y(0);
+			@include prefix(transform, translateY(0), webkit moz ms o);
 			@include animation-name(toast-pop);
 			@include animation-duration(.4s);
 			@include animation-iteration-count(1);
 			z-index: 100;
 		}
 		h1 {
-			padding: 15px !important;
+			padding: 15px!important;
 			text-transform: none;
 			line-height: 1.2;
 		}
@@ -729,9 +729,9 @@
 	}
 	@media screen and (min-width: 768px) {
 		.splash-header.active {
-			@include transition(.3s ease-in-out);
+			@include prefix(transition, all .3s ease-in-out, webkit moz ms o);
 			@include opacity(1);
-			@include translate-y(0);
+			@include prefix(transform, translateY(0), webkit moz ms o);
 			@include animation-name(toast-pop);
 			@include animation-duration(.4s);
 			@include animation-iteration-count(1);
@@ -755,7 +755,7 @@
 			.splash-footer-icon {
 				@include flex;
 				@include flex-center;
-				@include transition(.15s ease-in-out);
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 				@include round;
 				@include svg-stroke($shamrock, 7);
 				width: 48px;
@@ -779,7 +779,7 @@
 				}
 			}
 			&:before, &:after {
-				@include transition(.15s ease-in-out);
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 				@include opacity(0);
 				@include center-y;
 			}
@@ -834,7 +834,7 @@
 				}
 				div {
 					@include opacity(0);
-					@include transition(.15s ease-in-out);
+					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 					@include center-x;
 					display: block;
 					width: 122px;
@@ -1010,9 +1010,9 @@
 			@media screen and (min-width: 768px) {
 				&.active {
 					> div {
-						@include transition(.3s ease-in-out);
+						@include prefix(transition, all .3s ease-in-out, webkit moz ms o);
 						@include opacity(1);
-						@include translate-y(0);
+						@include prefix(transform, translateY(0), webkit moz ms o);
 						@include animation-name(toast-pop);
 						@include animation-duration(.4s);
 						@include animation-iteration-count(1);
@@ -1026,7 +1026,7 @@
 				left: 0;
 				width: 100%;
 				svg {
-					@include transition(.15s ease-in-out);
+					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 					display: block;
 					width: 48px;
 					height: 48px;
@@ -1201,7 +1201,7 @@
 						}
 					}
 					.splash-scene-map {
-						@include transition(.15s ease-in-out);
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 						.splash-scene-map-img, &:after {
 							position: absolute;
 							top: 0;
@@ -1222,7 +1222,7 @@
 						}
 					}
 					.splash-scene-img {
-						@include transition(.15s ease-in-out);
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 						&:not(.opacity-0) {
 							@include opacity(.5);
 						}
@@ -1379,7 +1379,7 @@
 												background: $smoke;
 												&:hover {
 													+ .device-gurus {
-														@include translate-y(-15%);
+														@include prefix(transform, translateY(-15%), webkit moz ms o);
 													}
 												}
 												ul {
@@ -1405,7 +1405,7 @@
 											&.device-gurus {
 												background: white;
 												&:hover {
-													@include translate-y(-15%);
+													@include prefix(transform, translateY(-15%), webkit moz ms o);
 												}
 												ul {
 													li {
@@ -1522,7 +1522,7 @@
 											&.active {
 												@include animation-timing-function(ease-in);
 												@include animation-fill-mode(forwards);
-												@include animation-duration(.15s);
+												@include animation-duration(150ms);
 												@include animation-delay(3500ms);
 												&:nth-child(1) {
 													@include animation-name(fadeOut);
@@ -1576,7 +1576,7 @@
 							.splash-scene-adlib-statement {
 								width: 100%;
 								&.active {
-									@include translate-y(-400%);
+									@include prefix(transform, translateY(-400%), webkit moz ms o);
 									h1 {
 										@include flex-center;
 									}
@@ -1659,7 +1659,7 @@
 						position: relative;
 						z-index: 9;
 						&.splash-scene-prop-desktop {
-							@include transition(.25s ease-in-out);
+							@include prefix(transition, all .25s ease-in-out, webkit moz ms o);
 							display: none;
 							&.active {
 								@include scale(.615);
@@ -1777,7 +1777,7 @@
 									width: 100px;
 									margin: 0 auto;
 									svg {
-										@include transition(.15s ease-in-out);
+										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 										display: block;
 										width: 100px;
 										height: 100px;
@@ -1850,7 +1850,7 @@
 							width: 100%;
 							overflow: auto;
 							li {
-								@include transition(.15s ease-in-out);
+								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 								padding: 7.5px;
 								&.active {
 									padding: 0 18px;
@@ -2135,7 +2135,7 @@
 		// CATEGORIES
 		&.splash-categories {
 			> .main {
-				@include transition(.15s ease-in-out);
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 				@include flex-wrap;
 				-webkit-align-items: flex-start;
 				align-items: flex-start;
@@ -2218,7 +2218,7 @@
 								width: 100%;
 								height: 100%;
 								&:before {
-									@include transition(.15s ease-in-out);
+									@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 									@include opacity(.6);
 									content: "";
 									display: block;
@@ -2638,7 +2638,7 @@
 						.pf-card {
 							.pf-card-top {
 								.user-icon {
-									@include translate-x(0);
+									@include prefix(transform, translateX(0), webkit moz ms o);
 									margin-left: -48px;
 									width: 96px;
 									height: 96px;
@@ -3018,7 +3018,7 @@
 						// }
 						.tape {
 							@include animation-fill-mode(forwards);
-							@include transition(.3s ease-in-out);
+							@include prefix(transition, all .3s ease-in-out, webkit moz ms o);
 							@include animation-duration(.6s);
 							@include animation-iteration-count(1);
 							@include transform-origin(center);
@@ -3206,7 +3206,7 @@
 						height: 128px;
 						svg {
 							@include animation-fill-mode(forwards);
-							@include transition(.3s ease-in-out);
+							@include prefix(transition, all .3s ease-in-out, webkit moz ms o);
 							@include animation-duration(.9s);
 							@include transform-origin(center);
 							display: block;
@@ -3214,7 +3214,7 @@
 							height: 100%;
 							* {
 								@include animation-fill-mode(forwards);
-								@include transition(.3s ease-in-out);
+								@include prefix(transition, all .3s ease-in-out, webkit moz ms o);
 								@include animation-duration(.9s);
 								@include transform-origin(center);
 							}
@@ -3955,7 +3955,7 @@
 						height: 64px;
 					}
 					svg {
-						@include transition(1.2s ease-in-out);
+						@include prefix(transition, all 1.2s ease-in-out, webkit moz ms o);
 						@include animation-name(pulse-heart);
 						@include animation-duration(1.2s);
 						@include animation-iteration-count(infinite);
@@ -4243,7 +4243,7 @@
 		}
 		> .splash-header {
 			&:before {
-				@include transition(.15s ease-in-out);
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 				@include opacity(.90);
 				background: lighten($charcoal, 15%);
 			}
@@ -4607,7 +4607,7 @@
 	font-family: $font;
 }
 .gm-style-iw {
-	@include translate-x(-50%);
+	@include prefix(transform, translateX(-50%), webkit moz ms o);
 	position: absolute!important;
 	top: auto!important;
 	bottom: 0!important;
@@ -4802,18 +4802,22 @@
 						width: 24px;
 						height: 24px;
 					}
-					&:not(.active) + div {
-						visibility: hidden;
-					}
 				}
 				> div {
+					@include prefix(transition, 150ms ease-in-out, webkit moz ms o);
+					@include prefix(transform, translateY(-100%), webkit moz ms o);
 					position: absolute;
 					left: 50%;
 					margin-left: -99px;
 					top: 58px;
 					width: 198px;
 					&:not(.visible) {
+						@include opacity(0);
 						visibility: hidden;
+					}
+					&.visible {
+						@include opacity(1);
+						@include prefix(transform, translateY(0), webkit moz ms o);
 					}
 					> svg {
 						position: relative;
@@ -4866,7 +4870,7 @@
 									width: 30px;
 									height: 15px;
 									path {
-										@include transition(.15s ease-in-out);
+										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 									}
 									&.bg-academic {
 										path {
@@ -5000,14 +5004,13 @@
 					@include prefix(animation-delay, 1100ms, webkit moz ms o);
 				}
 				&:nth-child(6) {
-					@include prefix(animation-delay, 1700ms, webkit moz ms o);
+					@include prefix(animation-delay, 1000ms, webkit moz ms o);
 				}
 				.location {
 					@include round;
 					margin: 10px;
 					width: 10px;
 					height: 10px;
-					background: $cerise;
 					position: absolute;
 					&.top {
 						top: -25px;
@@ -5016,10 +5019,25 @@
 						bottom: -25px;
 					}
 					&.left {
-						left: 25px;
+						left: 30px;
 					}
 					&.right {
-						right: 25px;
+						right: 30px;
+					}
+					&.bg-academic {
+						background: $cerise;
+					}
+					&.bg-baking {
+						background: $gold;
+					}
+					&.bg-photography {
+						background: $moola;
+					}
+					&.bg-household {
+						background: $cobalt;
+					}
+					&.bg-tech {
+						background: $azure;
 					}
 				}
 				.message {
@@ -5079,32 +5097,42 @@
 					}
 				}
 				.info {
-					@include prefix(transition, all .15s ease-in-out, webkit moz ms o);
+					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 					svg {
 						width: 262px;
 						height: 107px;
-						path {
-							@include prefix(transition, all .15s ease-in-out, webkit moz ms o);
-							fill: rgba($slate, .5);
-							stroke: rgba(#F0E0D0, .5);
+						.line, .fill {
+							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						}
+						.line {
+							stroke: white;
+							stroke-width: 4px;
+							stroke-linecap: round;
+							stroke-linejoin: round;
+						}
+						.fill {
+							fill: $slate;
 						}
 					}
 					div {
 						@include flex;
-						@include flex-center;
+						@include flex-center-vertical;
 						position: absolute;
 						left: 0;
 						width: 100%;
 						height: calc(100% - 19px);
 						padding: 15px;
 						.user-icon {
+							margin: 0;
 							width: 60px;
 							height: 60px;
 							border-width: 2px;
 						}
+						aside {
+							width: 172px;
+						}
 						ul {
-							width: calc(100% - 60px);
-							padding-left: 15px;
+							width: 172px;
 							li {
 								font-size: 14px;
 								font-weight: 600;
@@ -5116,20 +5144,37 @@
 							}
 						}
 					}
+					&.left {
+						div {
+							ul {
+								padding-left: 15px;
+							}
+						}
+					}
+					&.right {
+						div {
+							-webkit-justify-content: flex-end;
+							justify-content: flex-end;
+							ul {
+								padding-right: 15px;
+								text-align: right;
+							}
+						}
+					}
 					&.bottom {
 						div {
-							bottom: 3px;
+							bottom: 1px;
 						}
 					}
 					&.top {
 						div {
-							top: 3px;
+							top: 1px;
 						}
 					}
 				}
 				&.first {
 					.message {
-						@include prefix(animation, bounceInUp 1000ms ease-in 1000ms 1 forwards, webkit moz ms o);
+						@include prefix(animation, bounceInUp 1000ms ease-in 2200ms 1 forwards, webkit moz ms o);
 					}
 				}
 				&.active {
@@ -5141,25 +5186,18 @@
 					.message {
 						visibility: visible;
 					}
-					.info {
-						svg {
-							path {
-								@include prefix(animation, active-message 500ms ease-in 3000ms 1 forwards, webkit moz ms o);
-							}
-						}
-					}
 				}
 				&.not-first {
 					.info {
 						svg, ul {
-							@include prefix(animation, inactive-marker 1000ms ease-in 3000ms 1 forwards, webkit moz ms o);
+							
 						}
 					}
 				}
 				&.inactive {
 					.info {
 						svg, ul {
-							@include prefix(animation, inactive-marker 1000ms ease-in 0ms 1 forwards, webkit moz ms o);
+							
 						}
 					}
 				}
@@ -5195,10 +5233,15 @@
 			left: 50%;
 			margin-left: -150px;
 			margin-top: -306px;
-			> svg {
+			.splash-device-svg {
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+				@include prefix(transition-delay, 500ms, webkit moz ms o);
 				@include opacity(.1);
 				display: block;
 				width: 100%;
+				&.active {
+					@include opacity(1);
+				}
 			}
 			&.active {
 				z-index: 5;
@@ -5229,7 +5272,41 @@
 				.splash-device-search {
 					@include center-xy;
 					width: 100%;
-					padding: 15px;
+					height: 100%;
+					padding: 150px 15px 15px;
+					.splash-device-adlib {
+						padding-bottom: 30px;
+						h1 {
+							@include flex;
+							@include flex-wrap;
+							@include flex-center;
+							font-weight: 600;
+							a {
+								@include flex;
+								@include flex-center;
+								height: 38px;
+								padding: 0 10px;
+								border-radius: 8px;
+								margin: 5px;
+								font-size: 18px;
+								&.bg-academic {
+									background: $cerise;
+								}
+								&.bg-baking {
+									background: $gold;
+								}
+								&.bg-photography {
+									background: $moola;
+								}
+								&.bg-household {
+									background: $cobalt;
+								}
+								&.bg-tech {
+									background: $azure;
+								}
+							}
+						}
+					}
 					p {
 						position: relative;
 						font-size: 18px;
@@ -5300,7 +5377,6 @@
 					}
 					&.animated {
 						@include prefix(animation-delay, 1000ms, webkit moz ms o);
-						visibility: visible!important;
 					}
 				}
 				.coach-click {
@@ -5334,14 +5410,14 @@
 		.coach-scroll {
 			@include center-x;
 			z-index: 3;
-			bottom: -40px;
+			bottom: -88px;
 			width: 328px;
 			svg {
 				@include prefix(animation-delay, 3000ms, webkit moz ms o);
 				display: block;
 				width: 100%;
 				path, rect {
-					@include transition(1000ms ease-in-out);
+					@include prefix(transition, all 1000ms ease-in-out, webkit moz ms o);
 					stroke: rgba(white, .15);
 				}
 				rect {
@@ -5384,7 +5460,7 @@
 					font-size: 20px;
 					font-weight: 600;
 					svg {
-						@include transition(.15s ease-in-out);
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 						position: absolute;
 						top: 0;
 						left: 0;
@@ -5488,9 +5564,11 @@
 							@include prefix(animation-delay, 1900ms, webkit moz ms o);
 						}
 						&:nth-child(7) {
+							display: none;
 							@include prefix(animation-delay, 2000ms, webkit moz ms o);
 						}
 						&:nth-child(8) {
+							display: none;
 							@include prefix(animation-delay, 2100ms, webkit moz ms o);
 						}
 					}
@@ -5536,7 +5614,7 @@
 			.coach-help {
 				&.coach-help-desktop {
 					display: none;
-					top: -60px;
+					top: -40px;
 	    			left: -160px;
 					width: 170px;
 				}
@@ -5547,13 +5625,38 @@
 				}
 			}
 		}
+		@media screen and (max-width: 414px) {
+			.splash-hero-content {
+				margin-bottom: 0;
+				.splash-adlib {
+					ul {
+						margin: 5px 0;
+					}
+				}
+			}
+		}
+		@media screen and (max-width: 360px) {
+			.splash-hero-content {
+				@include prefix(transform, scale(.9), webkit moz ms o);
+				.splash-adlib {
+					h1 {
+						font-size: 24px;
+					}
+				}
+			}
+		}
+		@media screen and (max-width: 320px) {
+			.splash-hero-content {
+				@include prefix(transform, scale(.7), webkit moz ms o);
+			}
+		}
 		@media screen and (max-width: 768px) {
 			.splash-hero-markers {
 				.splash-hero-marker {
 					&:first-child {
 						right: 50%;
 						margin-right: -131px;
-						bottom: 15%;
+						bottom: 65px;
 					}
 				}
 			}
@@ -5573,12 +5676,89 @@
 						margin-right: 0;
 						bottom: 10%;
 					}
+					&:not(:first-child) {
+						display: block;
+					}
 					&:nth-child(1) {
-						@include prefix(animation-delay, 1000ms, webkit moz ms o);
+						@include prefix(animation-delay, 1700ms, webkit moz ms o);
+					}
+					.info {
+						svg {
+							.line-1 {
+								stroke-dasharray: 520, 520;
+								stroke-dashoffset: 338;
+							}
+							.line-2 {
+								stroke-dasharray: 398, 398;
+								stroke-dashoffset: 338;
+							}
+							.fill {
+								@include opacity(0);
+							}
+						}
+						div {
+							aside {
+								width: 0;
+								overflow: hidden;
+							}
+							ul {
+								@include opacity(0);
+							}
+						}
+						&.left {
+							svg {
+								.line-3 {
+									transform: translateX(-338px);
+								}
+							}
+						}
+						&.right {
+							svg {
+								.line-3 {
+									transform: translateX(338px);
+								}
+							}
+						}
 					}
 					&.first {
+						.info {
+							svg {
+								path, line {
+									@include prefix(transition-delay, 3500ms, webkit moz ms o);
+								}
+							}
+							div {
+								aside {
+									@include prefix(transition-delay, 3500ms, webkit moz ms o);
+									ul {
+										@include prefix(transition-delay, 3650ms, webkit moz ms o);
+									}
+								}
+							}
+						}
 						.message {
 							@include prefix(animation, bounceInUp 1000ms ease-in 3500ms 1 forwards, webkit moz ms o);
+						}
+					}
+					&.first, &.active, &:hover {
+						.info {
+							svg {
+								.line-3 {
+									transform: translateX(0)!important;
+								}
+								.line-1, .line-2 {
+									stroke-dashoffset: 0;
+								}
+							}
+							div {
+								aside {
+									width: 172px;
+									ul {
+										@include opacity(1);
+										@include prefix(transition-delay, 150ms, webkit moz ms o);
+									}
+								}
+							}
 						}
 					}
 				}
@@ -5588,7 +5768,10 @@
 			}
 			.coach-help {
 				&.coach-help-desktop {
-					display: block;
+					display: block!important;
+					&.hide {
+						display: none!important;
+					}
 				}
 				&.coach-help-mobile {
 					display: none;
@@ -5604,14 +5787,7 @@
 					display: none;
 				}
 				> div:first-child, > div:first-child + h2 {
-					display: block;
-				}
-			}
-			.splash-hero-markers {
-				.splash-hero-marker {
-					&:not(:first-child) {
-						display: block;
-					}
+					@include flex;
 				}
 			}
 			.splash-device {
@@ -5656,6 +5832,9 @@
 							width: 25%;
 							max-width: 172px;
 							padding: 15px;
+							&:nth-child(7), &:nth-child(8) {
+								display: block;
+							}
 						}
 					}
 				}

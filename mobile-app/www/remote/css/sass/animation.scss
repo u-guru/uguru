@@ -1,25 +1,5 @@
 @import 'mixin';
 
-@include keyframes(active-message) {
-	0% {
-		fill: rgba($slate, .5);
-		stroke: rgba(#F0E0D0, .5);
-	}
-	100% {
-		fill: $slate;
-		stroke: white;
-	}
-}
-
-@include keyframes(inactive-marker) {
-	0% {
-		@include opacity(1);
-	}
-	100% {
-		@include opacity(.3);
-	}
-}
-
 @include keyframes(splash-adlib) {
 	0%, 100% {
 		@include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));

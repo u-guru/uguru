@@ -2550,6 +2550,7 @@
   60% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, -20px, 0);
     -moz-transform: translate3d(0, -20px, 0);
     -ms-transform: translate3d(0, -20px, 0);
@@ -2573,6 +2574,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -2600,6 +2602,7 @@
   60% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, -20px, 0);
     -moz-transform: translate3d(0, -20px, 0);
     -ms-transform: translate3d(0, -20px, 0);
@@ -2623,6 +2626,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -2650,6 +2654,7 @@
   60% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, -20px, 0);
     -moz-transform: translate3d(0, -20px, 0);
     -ms-transform: translate3d(0, -20px, 0);
@@ -2673,6 +2678,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -2700,6 +2706,7 @@
   60% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, -20px, 0);
     -moz-transform: translate3d(0, -20px, 0);
     -ms-transform: translate3d(0, -20px, 0);
@@ -2723,6 +2730,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -7284,6 +7292,7 @@
   0% {
     filter: alpha(opacity=0);
     opacity: 0;
+    visibility: hidden;
     -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
     -moz-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
     -ms-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
@@ -7293,6 +7302,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
@@ -7305,6 +7315,7 @@
   0% {
     filter: alpha(opacity=0);
     opacity: 0;
+    visibility: hidden;
     -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
     -moz-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
     -ms-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
@@ -7314,6 +7325,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
@@ -7326,6 +7338,7 @@
   0% {
     filter: alpha(opacity=0);
     opacity: 0;
+    visibility: hidden;
     -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
     -moz-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
     -ms-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
@@ -7335,6 +7348,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
@@ -7347,6 +7361,7 @@
   0% {
     filter: alpha(opacity=0);
     opacity: 0;
+    visibility: hidden;
     -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
     -moz-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
     -ms-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
@@ -7356,6 +7371,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
@@ -8613,6 +8629,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8633,6 +8650,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8653,6 +8671,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8673,6 +8692,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8700,6 +8720,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8720,6 +8741,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8740,6 +8762,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8760,6 +8783,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8787,6 +8811,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8807,6 +8832,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8827,6 +8853,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8847,6 +8874,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8874,6 +8902,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8894,6 +8923,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8914,6 +8944,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -8934,6 +8965,7 @@
   100% {
     filter: alpha(opacity=100);
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);

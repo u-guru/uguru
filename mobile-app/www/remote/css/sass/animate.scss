@@ -372,6 +372,7 @@
 	}
 	60% {
 		@include opacity(1);
+		visibility: visible;
 		@include transform(translate3d(0, -20px, 0));
 	}
 	75% {
@@ -383,6 +384,7 @@
 	100% {
 		// edit
 		@include opacity(1);
+		visibility: visible;
 		@include transform(translate3d(0, 0, 0));
 	}
 }
@@ -1054,10 +1056,12 @@
 @include keyframes(rollIn) {
 	0% {
 		@include opacity(0);
+		visibility: hidden;
 		@include transform(translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg));
 	}
 	100% {
 		@include opacity(1);
+		visibility: visible;
 		@include transform(none);
 	}
 }
@@ -1244,6 +1248,7 @@
 	100% {
 		// edit
 		@include opacity(1);
+		visibility: visible;
 		@include transform(translate3d(0, 0, 0));
 	}
 }
@@ -1259,6 +1264,7 @@
 	100% {
 		// edit
 		@include opacity(1);
+		visibility: visible;
 		@include transform(translate3d(0, 0, 0));
 	}
 }
@@ -1274,6 +1280,7 @@
 	100% {
 		// edit
 		@include opacity(1);
+		visibility: visible;
 		@include transform(translate3d(0, 0, 0));
 	}
 }
@@ -1289,6 +1296,7 @@
 	100% {
 		// edit
 		@include opacity(1);
+		visibility: visible;
 		@include transform(translate3d(0, 0, 0));
 	}
 }
