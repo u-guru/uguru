@@ -13,11 +13,36 @@ angular.module('uguru.guru.controllers')
   function($scope, $state, $timeout, $localstorage,
  	RequestService, LoadingService, CTAService) {
 
-
-
+    $timeout(function() {
+      console.log('incoming requests', $scope.user.incoming_requests.length);
+      console.log('past requests', $scope.user.past_requests.length);
+      console.log('pending requests', $scope.user.pending_requests.length);
+    }, 2500);
+    $scope.shouldShowNav = shouldShowNav;
     $scope.student_requests = {nav: {index: 0, show:shouldShowNav($scope.user)}, selected: null};
     $scope.incoming_requests = $scope.user.incoming_requests;
     $scope.request = $scope.incoming_requests[0];
+
+
+    $scope.currentFilter = null;
+    $scope.filterFunction = function(request, index, arr) {
+      if (!$scope.currentFilter) {
+        return true;
+      }
+      if (request.is_past && $scope.currentFilter === 'is_past') {
+        return true;
+      }
+      if (request.is_pending && $scope.currentFilter === 'is_pending') {
+        return true;
+      }
+      if (request.is_upcoming && $scope.currentFilter === 'is_upcoming') {
+        return true;
+      }
+      if (request.is_incoming && $scope.currentFilter === 'is_incoming') {
+        return true;
+      }
+    }
+
     $scope.acceptIncomingProposal = function(request) {
       RequestService.acceptGuruForRequest($scope.user.id, request, success, failure);
       function success() {
@@ -31,7 +56,6 @@ angular.module('uguru.guru.controllers')
     $scope.selectAndDisplayRequestDetails = function(request) {
       LoadingService.showAmbig();
       $scope.student_requests.selected = request;
-      console.log(request);
       // if (!CTAService.ctaFuncDict('.cta-box-request-details')) {
         // initRequestDetailsCTA(request);
         CTAService.showCTAManually('.cta-box-request-details');

@@ -8,13 +8,13 @@
             </svg>
         </a>
         <h1>Your Requests</h1>
-        <div class="tab-bar slide" ng-if='student_requests.nav.show'>
+        <div class="tab-bar slide" ng-show='shouldShowNav(user)'>
             <div>
-                <a class='bg-auburn'>&nbsp;All ({{user.requests.length}})&nbsp;</a>
-                <a ng-click='requestForm.nav.switchTo(0)' ng-class='{active: === 0}'>All</a>
-                <a ng-click='requestForm.nav.switchTo(1)' ng-class='{active: === 1}'>Upcoming</a>
-                <a ng-click='requestForm.nav.switchTo(2)' ng-class='{active: === 2}'>Pending</a>
-                <a ng-click='requestForm.nav.switchTo(3)' ng-class='{active: === 3}'>Previous</a>
+                <a ng-click='currentFilter = null;' ng-class='{"active":!currentFilter }'>All</a>
+                <a ng-click='currentFilter = "is_incoming"' ng-class='{"active": currentFilter === "is_incoming"}'>Incoming</a>
+                <a ng-click='currentFilter = "is_upcoming"' ng-class='{"active": currentFilter === "is_upcoming"}'>Upcoming</a>
+                <a ng-click='currentFilter = "is_pending"' ng-class='{"active": currentFilter === "is_pending"}'>Pending</a>
+                <a ng-click='currentFilter = "is_past"' ng-class='{"active": currentFilter === "is_past"}'>Previous</a>
                 <hr/>
             </div>
         </div>
@@ -36,7 +36,7 @@
         </ion-pane>
         <!-- All request form related ctas-->
         <div class='flex-wrap-center full-xy'>
-            <a class='cta-box-request-details ugrid-6 full-x flex-wrap-center weight-400 txt-white flex-wrap txt-white' ng-repeat='request in user.requests' ng-click='selectAndDisplayRequestDetails(request)'>
+            <a class='cta-box-request-details ugrid-6 full-x flex-wrap-center weight-400 txt-white flex-wrap txt-white' ng-repeat='request in user.requests | filter:filterFunction' ng-click='selectAndDisplayRequestDetails(request)'>
                 <div class='p20xy flex-wrap weight-600 uppercase bg-charcoal'>
                     <small class='full-x opacity-50 uppercase'> Date Created </small>
                     <h1>{{request.time_created_formatted.month + ' ' + request.time_created_formatted.day}}</h1>

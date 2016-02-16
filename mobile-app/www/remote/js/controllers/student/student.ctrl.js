@@ -156,7 +156,7 @@ angular.module('uguru.student.controllers', [])
             if (DeviceService.isIOSDevice()) {
                 DeviceService.ios.setStatusBarText($state.current.name);
             }
-            $scope.root.loader.body.hide = true;
+            // $scope.root.loader.body.hide = true;
         })
 
 

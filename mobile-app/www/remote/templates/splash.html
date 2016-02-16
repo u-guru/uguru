@@ -1,8 +1,535 @@
+<div class='relative' id='iscroll-wrapper' style='height:calc(100%); width:calc(100%); overflow:hidden !important;'>
+    <main id='home-splash' class='splash-landing new hs-view full-xy'>
+        <!-- sidebar -->
+        <aside id='cta-modal-sidebar' class='splash-sidebar bg-charcoal ng-class: ::{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}' ng-include="::img_base + BASE + 'templates/one.university.sidebar.html'">
+        </aside>
 
+        <header class='splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
+            <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
+            <div class="right">
+                <a name='sidebar' class="splash-burger" id='cta-box-sidebar'>
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="36"></circle>
+                        <path d="M31,35.5 L69,35.5"></path>
+                        <path d="M31,50.5 L69,50.5"></path>
+                        <path d="M31,65.5 L69,65.5"></path>
+                    </svg>
+                </a>
+            </div>
+        </header>
 
-<div style='height:calc(200%); display:block; overflow:auto;' id='skrollr-body' class='absolute'>
-	<div id="skrollr-home">
-			spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>spacer<br>
-			<div class='bg-cerise' data--100-top="transform:rotate(0deg);" data--500-top="transform:rotate(360deg);">WOOOT</div>
-	</div>
+        <section id='splash-home' class='splash-hero'>
+            <div class="splash-hero-nav desktop opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500">
+                <div>
+                    <a class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-hero-nav-categories|a, active:unique">
+                        <span>{{selectedCategory.name}}</span>
+                        <svg viewBox="0 0 100 100">
+                            <path d="M14,32 L50,68 L86,32"></path>
+                        </svg>
+                    </a>
+                    <div class="splash-hero-nav-categories" activate-on-class="a" class-on-activate="visible:keep:unique">
+                        <svg viewBox="0 0 396 38">
+                            <path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        <ul>
+                            <li ng-repeat='category in categories' ng-if='category.id !== selectedCategory.id' ng-click='setCategory(category)'>
+                                <a class="active bg-{{category.hex_color}}" >
+                                    <span>{{category.name}}</span>
+                                </a>
+                                <svg class="arrow bg-{{category.hex_color}}" viewBox="0 0 60 30">
+                                    <path d="M4,26 L30,0 L56,26"></path>
+                                </svg>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <h2>@</h2>
+                <div>
+                    <a class="bg-cal" class-on-click="a:inject.splash-hero-nav-schools|a, active:unique">
+                        <span>UC Berkeley</span>
+                        <svg viewBox="0 0 100 100">
+                            <path d="M14,32 L50,68 L86,32"></path>
+                        </svg>
+                    </a>
+                    <div class="splash-hero-nav-schools" activate-on-class="a" class-on-activate="visible:keep:unique">
+                        <svg viewBox="0 0 396 38">
+                            <path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        <ul>
+                            <li>
+                                <a class="bg-stanford">
+                                    <span>Stanford University</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="bg-yale">
+                                    <span>Yale University</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="bg-harvard">
+                                    <span>Harvard University</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="splash-hero-nav mobile opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500">
+                <div>
+                    <a class="bg-cal" class-on-click="a:inject.splash-hero-nav-schools|a, active:unique">
+                        <span>@ Cal</span>
+                        <svg viewBox="0 0 100 100">
+                            <path d="M14,32 L50,68 L86,32"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="splash-hero-map opacity-0 animated">
+                <div class="splash-scene-map-img" style="background-image: url('{{img_base + 'img/categories/ucb-map@2x.png'}}')"></div>
+            </div>
+            <div class="splash-hero-skip opacity-0" class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a" class-on-activate="rollOut:animOut">
+                <button class-on-click="a:inject.splash-desktop-cta|bounceInUp, a:inject.splash-mobile-cta|bounceInUp, a:inject.coach-click|show-opacity-impt, a:inject.coach-click path|animate, a:inject.coach-click-path-2|animate, a:inject.coach-click g g|bounceIn, a:inject.coach-help-desktop|bounceIn, a:inject.coach-help-mobile|bounceIn, a:inject.coach-fill|hide, a:inject.coach-scroll|active, a:inject.coach-scroll svg|fadeIn, a:inject.splash-hero-skip|a">Skip</button>
+            </div>
+            <div class="splash-hero-markers" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker-1|a, active:inject.splash-hero-marker-2|a, active:inject.splash-hero-marker-3|a, active:inject.splash-hero-marker-4|a, active:inject.splash-hero-marker-5|a, active:inject.splash-hero-marker-6|a">
+                <div class="splash-hero-marker-1 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="first:unique, bounceIn:anim">
+                    <div class="message top">
+                        <svg viewBox="0 0 524 364">
+                            <rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
+                        </svg>
+                        <div>
+                            <p>Hey there,</p>
+                            <p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
+                            <p class="signature">Lorem Ipsum</p>
+                            <button class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">View Profile</button>
+                        </div>
+                    </div>
+                    <div class="info top left">
+                        <svg width="524px" height="214px" viewBox="0 0 524 214">
+                            <g fill="none">
+                                <path class="fill" d="M2,2 L522,2 L522,182 L122,182 L92,212 L62,182 L2,182 L2,2 Z"></path>
+                                <path class="line" d="M2,2 L2,182 L62,182 L92,212 L122,182"></path>
+                                <line class="line line-3" x1="522" y1="2" x2="522" y2="182"/>
+                                <line class="line line-2" x1="122" y1="182" x2="522" y2="182"/>
+                                <line class="line line-1" x1="2" y1="2" x2="522" y2="2"/>
+                            </g>
+                        </svg>
+                        <div>
+                            <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                            <aside class="info-text">
+                                <ul>
+                                    <li>Lorem Ipsum</li>
+                                    <li>Active now at Philz Coffee</li>
+                                    <li>2.4 miles away</li>
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                    <div class="location bg-{{selectedCategory.hex_color}} bottom left"></div>
+                </div>
+                <div class="splash-hero-marker-2 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 40%; left: 10%;">
+                    <div class="message top">
+                        <svg viewBox="0 0 524 364">
+                            <rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
+                        </svg>
+                        <div>
+                            <p>Hey there,</p>
+                            <p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
+                            <p class="signature">Lorem Ipsum</p>
+                            <button class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">View Profile</button>
+                        </div>
+                    </div>
+                    <div class="info top left">
+                        <svg width="524px" height="214px" viewBox="0 0 524 214">
+                            <g fill="none">
+                                <path class="fill" d="M2,2 L522,2 L522,182 L122,182 L92,212 L62,182 L2,182 L2,2 Z"></path>
+                                <path class="line" d="M2,2 L2,182 L62,182 L92,212 L122,182"></path>
+                                <line class="line line-3" x1="522" y1="2" x2="522" y2="182"/>
+                                <line class="line line-2" x1="122" y1="182" x2="522" y2="182"/>
+                                <line class="line line-1" x1="2" y1="2" x2="522" y2="2"/>
+                            </g>
+                        </svg>
+                        <div>
+                            <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                            <aside class="info-text">
+                                <ul>
+                                    <li>Lorem Ipsum</li>
+                                    <li>Active now at Philz Coffee</li>
+                                    <li>2.4 miles away</li>
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                    <div class="location bg-{{selectedCategory.hex_color}} bottom left"></div>
+                </div>
+                <div class="splash-hero-marker-3 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 10%; left: 4%;">
+                    <div class="location bg-{{selectedCategory.hex_color}} top left"></div>
+                    <div class="info bottom left">
+                        <svg width="524px" height="214px" viewBox="0 0 524 214">
+                            <g fill="none">
+                                <path class="fill" d="M2,212 L522,212 L522,32 L122,32 L92,2 L62,32 L2,32 L2,212 L2,212 L2,212 Z"></path>
+                                <path class="line" d="M2,212 L2,32 L62,32 L92,2 L122,32"></path>
+                                <line class="line line-3" x1="522" y1="32" x2="522" y2="212"/>
+                                <line class="line line-2" x1="122" y1="32" x2="522" y2="32"/>
+                                <line class="line line-1" x1="2" y1="212" x2="522" y2="212"/>
+                            </g>
+                        </svg>
+                        <div>
+                            <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                            <aside class="info-text">
+                                <ul>
+                                    <li>Lorem Ipsum</li>
+                                    <li>Active now at Philz Coffee</li>
+                                    <li>2.4 miles away</li>
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                    <div class="message bottom">
+                        <svg viewBox="0 0 524 364">
+                            <rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
+                        </svg>
+                        <div>
+                            <p>Hey there,</p>
+                            <p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
+                            <p class="signature">Lorem Ipsum</p>
+                            <button class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="splash-hero-marker-4 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="bottom: 5%; left: 1%;">
+                    <div class="message top">
+                        <svg viewBox="0 0 524 364">
+                            <rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
+                        </svg>
+                        <div>
+                            <p>Hey there,</p>
+                            <p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
+                            <p class="signature">Lorem Ipsum</p>
+                            <button class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">View Profile</button>
+                        </div>
+                    </div>
+                    <div class="info top right">
+                        <svg width="524px" height="214px" viewBox="0 0 524 214">
+                            <g fill="none">
+                                <path class="fill" d="M522,2 L2,2 L2,182 L402,182 L432,212 L462,182 L522,182 L522,2 L522,2 Z" fill="#40484B"></path>
+                                <path class="line" d="M522,2 L522,182 L462,182 L432,212 L402,182"></path>
+                                <line class="line line-3" x1="2" y1="2" x2="2" y2="182"/>
+                                <line class="line line-2" x1="400" y1="182" x2="2" y2="182"/>
+                                <line class="line line-1" x1="522" y1="2" x2="2" y2="2"/>
+                            </g>
+                        </svg>
+                        <div>
+                            <aside class="info-text">
+                                <ul>
+                                    <li>Lorem Ipsum</li>
+                                    <li>Active now at Philz Coffee</li>
+                                    <li>2.4 miles away</li>
+                                </ul>
+                            </aside>
+                            <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                        </div>
+                    </div>
+                    <div class="location bg-{{selectedCategory.hex_color}} bottom right"></div>
+                </div>
+                <div class="splash-hero-marker-5 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 15%; right: 3%;">
+                    <div class="location bg-{{selectedCategory.hex_color}} top right"></div>
+                    <div class="info bottom right">
+                        <svg width="524px" height="214px" viewBox="0 0 524 214">
+                            <g fill="none">
+                                <path class="fill" d="M522,212 L2,212 L2,32 L402,32 L432,2 L462,32 L522,32 L522,212 L522,212 Z" fill="#40484B"></path>
+                                <path class="line" d="M522,212 L522,32 L462,32 L432,2 L402,32"></path>
+                                <line class="line line-3" x1="2" y1="32" x2="2" y2="212"/>
+                                <line class="line line-2" x1="402" y1="32" x2="2" y2="32"/>
+                                <line class="line line-1" x1="522" y1="212" x2="2" y2="212"/>
+                            </g>
+                        </svg>
+                        <div>
+                            <aside class="info-text">
+                                <ul>
+                                    <li>Lorem Ipsum</li>
+                                    <li>Active now at Philz Coffee</li>
+                                    <li>2.4 miles away</li>
+                                </ul>
+                            </aside>
+                            <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                        </div>
+                    </div>
+                    <div class="message bottom">
+                        <svg viewBox="0 0 524 364">
+                            <rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
+                        </svg>
+                        <div>
+                            <p>Hey there,</p>
+                            <p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
+                            <p class="signature">Lorem Ipsum</p>
+                            <button class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="splash-hero-marker-6 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 30%; right: 12%;">
+                    <div class="location bg-{{selectedCategory.hex_color}} top left"></div>
+                    <div class="info bottom left">
+                        <svg width="524px" height="214px" viewBox="0 0 524 214">
+                            <g fill="none">
+                                <path class="fill" d="M2,212 L522,212 L522,32 L122,32 L92,2 L62,32 L2,32 L2,212 L2,212 L2,212 Z"></path>
+                                <path class="line" d="M2,212 L2,32 L62,32 L92,2 L122,32"></path>
+                                <line class="line line-3" x1="522" y1="32" x2="522" y2="212"/>
+                                <line class="line line-2" x1="122" y1="32" x2="522" y2="32"/>
+                                <line class="line line-1" x1="2" y1="212" x2="522" y2="212"/>
+                            </g>
+                        </svg>
+                        <div>
+                            <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+                            <aside class="info-text">
+                                <ul>
+                                    <li>Lorem Ipsum</li>
+                                    <li>Active now at Philz Coffee</li>
+                                    <li>2.4 miles away</li>
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                    <div class="message bottom">
+                        <svg viewBox="0 0 524 364">
+                            <rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
+                        </svg>
+                        <div>
+                            <p>Hey there,</p>
+                            <p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
+                            <p class="signature">Lorem Ipsum</p>
+                            <button class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="splash-device splash-device-iphone magictime opacity-0" class-on-load="vanishIn:anim" activate-on-class="a" class-on-activate="active:inject.splash-device-search-inside|a, b:inject.splash-device-svg|a">
+                <svg class="splash-device-svg" activate-on-class="a" class-on-activate="active:keep" viewBox="0 0 319 652">
+                    <path d="M2,42.0005693 C2,19.9088649 19.9096817,2 41.9948462,2 L277.005154,2 C299.093697,2 317,19.9012788 317,42.0005693 L317,609.999431 C317,632.091135 299.090318,650 277.005154,650 L41.9948462,650 C19.9063026,650 2,632.098721 2,609.999431 L2,42.0005693 Z M22,80 L298,80 L298,573 L22,573 L22,80 Z" fill="none" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3"></path>
+                    <circle stroke="#F0E0D0" stroke-width="3" fill="none" cx="159" cy="611" r="25"></circle>
+                </svg>
+                <div class="splash-device-profile opacity-0 animated">
+                    <strong>.splash-device-profile</strong>
+                </div>
+                <div class="splash-device-content" activate-on-class="a" class-on-activate="fadeOut:animOut">
+                    <div class="splash-device-search">
+                        <div class="splash-device-search-inside opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim, b:inject.splash-device-adlib|a, b:inject.splash-device-search-searching|a, b:inject.splash-device-search-results|a, b:inject.splash-device-search .progress span|animate">
+                            <div class="splash-device-adlib opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim">
+                                <h1>It's
+                                    <a class="bg-{{selectedCategory.hex_color}}"><b>5am</b></a>
+                                    and I have a
+                                    <a class="bg-{{selectedCategory.hex_color}}"><b>bio exam</b></a>
+                                    in 4 hours.
+                                </h1>
+                            </div>
+                            <p>
+                                <span class="splash-device-search-searching" activate-on-class="a" class-on-activate="fadeOut:animOut">Searching for gurus at</span>
+                                <span class="splash-device-search-results opacity-0" activate-on-class="a" class-on-activate="fadeIn:anim">Found <b>6 gurus</b> at</span>
+                            </p>
+                            <h3 style="border-top: 1px solid #FFBD17; border-bottom: 1px solid #FFBD17;">
+                                <span style="border-color: #003057; border-left-color: transparent;"></span>
+                                <span style="background: #003057;">UC Berkeley</span>
+                                <span style="border-color: #003057; border-right-color: transparent;"></span>
+                            </h3>
+                            <div class="progress white-round height-10">
+                                <span style="width: 15%;"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <svg class="coach-click opacity-0" viewBox="0 0 212 75">
+                        <g fill="none">
+                            <path class="opacity-0 coach-click-path-1" d="M126.402476,42.2902799 C126.402476,42.2902799 41.4492178,9.17968707 3.56286124,70.6500409" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path class="opacity-0 coach-click-path-2" d="M29.8097207,69.5428392 L3.63890408,70.9143936 L2.26734969,44.7435769" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <g class="opacity-0 animated">
+                                <text transform="translate(172.576620, 31.576620) rotate(7) translate(-172.576620, -31.576620)" font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+                                    <tspan x="134.07662" y="30.5766198">click</tspan>
+                                    <tspan x="135.91662" y="70.5766198"> me!</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </svg>
+                    <div class="splash-device-button animated">
+                        <button class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|fadeIn, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.coach-help-desktop|hide, a:inject.splash-adlib|a, a:inject.splash-adlib ul|a">Find My Guru</button>
+                        <!-- samir -->
+                    </div>
+                </div>
+            </div>
+            <div class="splash-hero-content" activate-on-class="a" class-on-activate="fadeOut:animOut">
+                <div class="splash-guru-head">
+                    <div ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+                    <svg class="coach-help coach-help-desktop opacity-0 animated" viewBox="0 0 340 205">
+                        <g fill="none">
+                            <text transform="translate(173.347656, 110.679688) rotate(-19.000000) translate(-173.347656, -110.679688) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+                                <tspan x="38.8476562" y="109.679688">we can help you</tspan>
+                                <tspan x="91.8676562" y="149.679688">with that!</tspan>
+                            </text>
+                            <path d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                    <svg class="coach-help coach-help-mobile opacity-0 animated" viewBox="0 0 229 196">
+                        <g fill="none">
+                            <text transform="translate(113.624918, 91.749311) rotate(-21) translate(-113.624918, -91.749311) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+                                <tspan x="55.1249179" y="90.7493111">we can</tspan>
+                                <tspan x="70.6849179" y="130.749311">help!</tspan>
+                            </text>
+                            <path d="M180.350646,159.695545 C180.350646,159.695544 181.232899,177.999995 205.232902,189.000001 C165.52585,201.901604 151.232897,186.999998 142.038937,178.7445 C81.8973532,198.285685 20.829672,176.230522 5.64045374,129.482915 C-9.5487645,82.7353086 26.8923282,28.9976249 87.0339124,9.45643967 C147.175497,-10.0847456 208.243178,11.9704169 223.432396,58.7180238 C235.030692,94.4139086 216.525122,134.185468 180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                    <svg class="coach-fill" viewBox="0 0 280 112">
+                        <g fill="none">
+                            <path class="opacity-0" class-on-load="animate:anim:keep" d="M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path class="opacity-0" class-on-load="animate:anim:keep" d="M37.0997894,99.9330039 L12.6336973,109.324657 L3.24204445,84.8585646" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <g class="opacity-0" class-on-load="bounceIn:anim">
+                                <text transform="translate(187.228115, 32.099551) rotate(-15.000000) translate(-187.228115, -32.099551) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+                                    <tspan x="146.128115" y="31.0995511">fill in</tspan>
+                                    <tspan x="99.7281154" y="71.0995511">the blanks</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div class="splash-adlib" activate-on-class="a" class-on-activate="bounceOutUp:animOut">
+                    <h1 class="opacity-0" class-on-load="bounceInUp:anim">It's
+                        <a id="blank-1" class="blank">
+                            <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+                                <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16" stroke-dasharray="16,14"></rect>
+                            </svg>
+                            <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+                                <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14"></rect>
+                            </svg>
+                            <b class="opacity-0" activate-on-class="blank-1-filled" class-on-activate="opacity-0-impt" class-on-load="fadeIn:anim">5am</b>
+                        </a>
+                        and I have a
+                        <a id="blank-2" class="blank">
+                            <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+                                <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16" stroke-dasharray="16,14"></rect>
+                            </svg>
+                            <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+                                <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14"></rect>
+                            </svg>
+                            <b id="blank-2-text" class="opacity-0" class-on-load="fadeIn:anim" activate-on-class="blank-2-filled" class-on-activate="opacity-0-impt" class-on-load="fadeIn:anim">bio exam</b>
+                        </a>
+                        in 4 hours.
+                    </h1>
+                    <ul activate-on-class="a" class-on-activate="a:inject.adlib-1|a, a:inject.adlib-2|a, a:inject.adlib-3|a, a:inject.adlib-4|a, a:inject.adlib-5|a, a:inject.adlib-6|a, a:inject.adlib-7|a, a:inject.adlib-8|a">
+                        <li class="opacity-0" class-on-load="bounceIn:anim">
+                            <a class="adlib-1 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+                                <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+                                    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+                                </svg>
+                                <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+                                    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
+                                </svg>
+                                <b>midnight</b>
+                            </a>
+                        </li>
+                        <li class="opacity-0" class-on-load="bounceIn:anim">
+                            <a class="adlib-2 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+                                <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+                                    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+                                </svg>
+                                <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+                                    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
+                                </svg>
+                                <b>2am</b>
+                            </a>
+                        </li>
+                        <li class="opacity-0" class-on-load="bounceIn:anim">
+                            <a class="adlib-3 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+                                <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+                                    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+                                </svg>
+                                <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+                                    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
+                                </svg>
+                                <b>bedtime</b>
+                            </a>
+                        </li>
+                        <li class="opacity-0" class-on-load="bounceIn:anim">
+                            <a class="adlib-4 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+                                <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+                                    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+                                </svg>
+                                <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+                                    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
+                                </svg>
+                                <b>7am</b>
+                            </a>
+                        </li>
+                        <li class="opacity-0" class-on-load="bounceIn:anim">
+                            <a class="adlib-5 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+                                <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+                                    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+                                </svg>
+                                <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+                                    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
+                                </svg>
+                                <b>paper</b>
+                            </a>
+                        </li>
+                        <li class="opacity-0" class-on-load="bounceIn:anim">
+                            <a class="adlib-6 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+                                <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+                                    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+                                </svg>
+                                <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+                                    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
+                                </svg>
+                                <b>speech</b>
+                            </a>
+                        </li>
+                        <li class="opacity-0" class-on-load="bounceIn:anim">
+                            <a class="adlib-7 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+                                <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+                                    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+                                </svg>
+                                <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+                                    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
+                                </svg>
+                                <b>report</b>
+                            </a>
+                        </li>
+                        <li class="opacity-0" class-on-load="bounceIn:anim">
+                            <a class="adlib-8 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled' activate-on-class="a" class-on-activate="bounceOut:animOut:keep">
+                                <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+                                    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
+                                </svg>
+                                <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+                                    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
+                                </svg>
+                                <b>project</b>
+                            </a>
+                        </li>
+                    </ul>
+                    <button class="button-find-guru splash-mobile-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|fadeIn, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.coach-help-mobile|hide, a:inject.splash-adlib|a, a:inject.splash-adlib ul|a">Find My Guru</button>
+                </div>
+            </div>
+            <div class="coach-scroll">
+                <svg viewBox="0 0 656 256" class="opacity-0 animated">
+                    <g fill="none">
+                        <rect stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14" x="3" y="3" width="650" height="54" rx="16"></rect>
+                        <text font-family="Source Sans Pro" font-size="32" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+                            <tspan x="42.392" y="40">or scroll down to find uguru at your school!</tspan>
+                        </text>
+                        <path d="M331,58 L331,253.041016" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+                    </g>
+                </svg>
+            </div>
+        </section>
+
+        <section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'></section>
+        <section class='splash-categories' id='splash-browse'></section>
+        <section id='become-guru'  class="splash-postit ng-class:{'hide':!page.load.sections.five.display}"></section>
+        <section id="splash-footer" class="ng-class:{'hide': !page.load.sections.footer.display}">
+            <div>
+                <ul>
+                    <li>proudly made&nbsp;with</li>
+                    <li>
+                        <span ng-include="::img_base + 'templates/svg/main/heart.html'"></span>
+                    </li>
+                    <li>by college students</li>
+                </ul>
+            </div>
+        </section>
+    </div>
 </div>
