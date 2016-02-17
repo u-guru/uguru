@@ -191,6 +191,7 @@ card_fields['time_created'] = fields.DateTime(attribute='time_created')
 card_fields['card_last4'] = fields.String(attribute='card_last4')
 card_fields['bank_last4'] = fields.String(attribute='bank_last4')
 card_fields['card_type'] = fields.String(attribute='card_type')
+card_fields['funding'] = fields.String(attribute='funding')
 card_fields['is_default_payment'] = fields.Boolean(attribute='is_default_payment')
 card_fields['is_default_transfer'] = fields.Boolean(attribute='is_default_transfer')
 card_fields['is_bank_account'] = fields.Boolean(attribute='is_bank_account')
@@ -208,6 +209,8 @@ request_fields['address'] = fields.String(attribute='address')
 request_fields['category'] = fields.String(attribute='category')
 request_fields['id'] = fields.Integer(attribute='id')
 request_fields['guru'] = fields.Nested(guru_fields)
+request_fields['tz_offset'] = fields.Integer(attribute='tz_offset')
+request_fields['payment_card'] = fields.Nested(card_fields)
 request_fields['guru_id'] = fields.Integer(attribute='guru_id')
 request_fields['student'] = fields.Nested(student_fields)
 request_fields['position'] = fields.Nested(position_fields)
@@ -229,6 +232,9 @@ request_fields['status'] = fields.Integer(attribute='status')
 request_fields['student_calendar'] = fields.List(fields.Nested(calendar_fields))
 request_fields['guru_calendar'] = fields.List(fields.Nested(calendar_fields))
 request_fields['tags'] = fields.List(fields.Nested(tag_fields))
+request_fields['files'] = fields.List(fields.Nested(file_fields))
+request_fields['subcategory'] = fields.Nested(subcategory_fields)
+request_fields['category'] = fields.Nested(category_fields)
 request_fields['type'] = fields.Integer(attribute='_type')
 request_fields['student_price'] = fields.Float(attribute='student_price')
 request_fields['hs_request_option'] = fields.String(attribute='hs_request_option')
@@ -272,6 +278,7 @@ message_fields['time_created'] = fields.DateTime(attribute='time_created')
 message_fields['time_sent'] = fields.DateTime(attribute='time_sent')
 message_fields['time_seen'] = fields.DateTime(attribute='time_seen')
 message_fields['id'] = fields.Integer(attribute='id')
+message_fields['_file'] = fields.Nested(file_fields)
 message_fields['contents'] = fields.String(attribute = 'contents')
 message_fields['session_id'] = fields.Integer(attribute='session_id')
 
@@ -295,6 +302,9 @@ transaction_fields['guru'] = fields.Nested(guru_fields)
 # transaction_fields['session'] = fields.Nested(session_fields_transaction)
 transaction_fields['request'] = fields.Nested(request_fields)
 transaction_fields['student'] = fields.Nested(student_fields)
+transaction_fields['description'] = fields.String(attribute='description')
+transaction_fields['credits'] = fields.Integer(attribute='credits')
+transaction_fields['_type'] = fields.Integer(attribute='_type')
 transaction_fields['card'] = fields.Nested(card_fields)
 transaction_fields['id'] = fields.Integer(attribute='id')
 transaction_fields['transfer_status'] = fields.String(attribute='transfer_status')
@@ -470,7 +480,7 @@ UserSerializer = {
     'last_position': fields.Nested(position_fields),
     'requests': fields.List(fields.Nested(request_fields)),
     # 'sessions': fields.List(fields.Nested(session_fields)),
-    # 'proposals': fields.List(fields.Nested(proposal_fields)),
+    'guru_proposals': fields.List(fields.Nested(proposal_fields)),
     'cards': fields.List(fields.Nested(card_fields)),
     'phone_number': fields.String,
     'phone_number_token': fields.String,
@@ -519,7 +529,8 @@ UserSerializer = {
     'external_profiles': fields.List(fields.Nested(resource_fields)),
     'universities': fields.List(fields.Nested(university_fields)),
     'hs_student': fields.Boolean,
-    'hs_files': fields.List(fields.Nested(file_fields))
+    'hs_files': fields.List(fields.Nested(file_fields)),
+    'credits': fields.Float
 
 }
 

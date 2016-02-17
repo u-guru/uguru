@@ -331,7 +331,7 @@ class UserOneView(restful.Resource):
         [db_session.refresh(_request) for _request in user.requests]
         [db_session.refresh(_session) for _session in user.guru_sessions]
         [db_session.refresh(_session) for _session in user.student_sessions]
-        [db_session.refresh(proposal) for proposal in user.proposals]
+        [db_session.refresh(proposal) for proposal in user.guru_proposals]
         db_session.refresh(user)
 
         # if not request.json.get('auth_token'):
@@ -1099,7 +1099,7 @@ class UserOneView(restful.Resource):
         user.requests = []
         user.student_sessions = []
         user.guru_sessions = []
-        user.proposals = []
+        user.guru_proposals = []
         user.guru_experiences = []
         # user.guru_courses = []
         user.majors = []
@@ -1127,14 +1127,14 @@ class UserOneView(restful.Resource):
         user.fb_id = None
         user.transcript_file = None
 
-        if user.proposals:
-            user.proposals = []
+        if user.guru_proposals:
+            user.guru_proposals = []
 
         for proposal in Proposal.query.all():
             if proposal.guru_id == user.id:
                 proposal.guru_id = None
-                if proposal in user.proposals:
-                    user.proposals.remove(proposal)
+                if proposal in user.guru_proposals:
+                    user.guru_proposals.remove(proposal)
         db_session.commit()
 
 
@@ -1191,83 +1191,140 @@ class UserRequestView(restful.Resource):
     @marshal_with(UserSerializer)
     def post(self, user_id):
 
-        # pprint(request.json)
+        pprint(request.json)
         user = get_user(user_id)
 
         if not user:
             abort(404)
 
+        ## course related
         course = request.json.get('course')
-
-
         print "course received!", course
-
         #check if request is already active
-
         if course and course.get('id'):
             course_id = course.get('id')
             if (user.request_active(course_id, request.json.get('type'))):
                 abort(409)
 
-        position = request.json.get('position')
+        ## location related - resolved
+        position_json = request.json.get('location')
+        if position_json:
+            coords_json = position_json.get('coords')
+            coords_json['address'] = position_json.get('address')
+            address = position_json.get('address')
+            lat, lng = coords_json.get('latitude'), coords_json.get('longitude')
+            print "position parsed", lat, lng, address
 
-        print "position received!", position
 
-        if position:
-            position = Position.initFromJson(position, user.id)
+        ## Category related
+        if request.json.get('category'):
+            category_json = request.json.get('category')
+            category_id = category_json.get('id')
+            if category_id:
+                category = Category.query.get(int(category_id))
+                print category, "category retrieved"
 
-        print "position processed!", position
 
+        ## Subcategory related
+        if request.json.get('subcategory'):
+            subcategory_json = request.json.get('subcategory')
+            subcategory_id = subcategory_json.get('id')
+            if subcategory_id:
+                subcategory = Subcategory.query.get(int(subcategory_id))
+                print subcategory, "subcategory retrieved"
+
+        ## description related - resolved
+        if request.json.get('description'):
+            description = request.json.get('description')
+            print "description received", description
+
+        ## Tags
+        tags = None
+        if request.json.get('tags'):
+            tags = request.json.get('tags')
+            for tag in tags:
+                print tag.get('name'), "Received"
+
+        ## attachment list
+        if request.json.get('files'):
+            files = request.json.get('files')
+            for _file in files:
+                print _file.get('id'), _file.get('name'), 'received'
+
+        # price related
+        proposed_price_json = None
+        if request.json.get('payment_card'):
+            payment_json = request.json.get('payment_card')
+            proposed_price_json = request.json.get('proposed_price')
+            if payment_json.get('id'):
+                payment_id = payment_json.get('id')
+                payment_card = Card.query.get(int(payment_id))
+                print payment_card, 'successfully retrieved with proposed price', proposed_price_json
+
+        # availablility related
+        time_estimate_json = None
+        if request.json.get('time_estimate'):
+            time_estimate_json = request.json.get('time_estimate')
+            hours_json = time_estimate_json.get('hours')
+            minutes_json = time_estimate_json.get('minutes')
+            print hours_json, minutes_json, 'received'
+
+        calendar_json = None
+        if request.json.get('calendar'):
+            calendar_json = request.json.get('calendar')
+            timezone_offset = request.json.get('timezone')
+            print "Timezone", timezone_offset
+            if len(calendar_json):
+                for date_range in calendar_json:
+                    print date_range.get('start_time'), 'to', date_range.get('end_time')
+
+        if not category or (not subcategory and not course) or not payment_card \
+        or not time_estimate_json or not coords_json or not timezone_offset or not calendar_json:
+            abort(404)
+
+        from datetime import datetime
         _request = Request()
+        db_session.add(_request)
 
-
-        if position:
-            _request.position = position
+        db_session.commit()
+        _request.student_id = user.id
+        _request.position = Position.initFromJson(coords_json, user.id)
+        _request.category = category
+        _request.description = description
         _request.time_created = datetime.now()
-        _request.description = request.json.get('description')
-        _request.in_person = request.json.get('in_person')
-        _request.online = request.json.get('online')
-        _request.student_price = request.json.get('student_price')
-        _request.task_title = request.json.get('task_title')
-
-
-
-        if request.json.get('fields'):
-            _request.verb_image = request.json.get('fields').get('img')
-            _request.inital_status = request.json.get('fields').get('initial_status')
-
-
-        if request.json.get('type'):
-            _request._type = request.json.get('type').get('value')
-
-
-        _request.student_price = request.json.get('student_price')
-
-        if course and course.get('id'):
-            _request.course_id = course.get('id')
-
-        hours = int(request.json.get('time_estimate').get('hours'))
-        minutes = int(request.json.get('time_estimate').get('minutes'))
-
-        _request.time_estimate = hours * 60  + minutes
-        _request.address = request.json.get('address')
+        _request.tz_offset = timezone_offset
+        _request.time_estimate = hours_json * 60  + minutes_json
         _request.status = Request.PROCESSING_GURUS
+        _request.payment_card = payment_card
+        _request.student_calendar = Calendar.initFromRequest(_request, 7)
+        _request.student_price = proposed_price_json
+        for date_range in calendar_json:
+            from datetime import datetime
+            ce = Calendar_Event()
+            ce.calendar_id = _request.student_calendar.id
+            ce.start_time = datetime.fromtimestamp(date_range.get('start_time')/1000.)
+            ce.end_time = datetime.fromtimestamp(date_range.get('end_time')/1000.)
+            ce.is_student = True
+            db_session.add(ce)
+            db_session.commit()
+
+
+        if subcategory:
+            _request.subcategory = subcategory
+        if course:
+            _request.course = course
+
         _request.student_id = user_id
         _request.university_id = user.university_id
-
-
         _request.contact_email = request.json.get('contact_email')
         _request.contact_text = request.json.get('contact_text')
         _request.contact_push = request.json.get('contact_push')
 
-        db_session.add(_request)
-        user.requests.append(_request)
-        db_session.commit()
 
         if request.json.get('tags'):
             json_tags = request.json.get('tags')
             for tag in json_tags:
-                _tag = Tag.query.filter_by(name=tag).first()
+                _tag = Tag.query.filter_by(name=tag.get('name')).first()
                 if _tag:
                     _tag.requests.append(_request)
                     _tag.last_referenced = datetime.now()
@@ -1280,7 +1337,7 @@ class UserRequestView(restful.Resource):
                     db_session.add(_tag)
                     _tag.creator_id = _request.student.id
                     _tag.time_created = datetime.now()
-                    _tag.name = tag
+                    _tag.name = tag.get('name')
                     _tag.times_referenced = 1
                     _tag.last_referenced = datetime.now()
                     _tag.name, 'successfully created'
@@ -1290,35 +1347,6 @@ class UserRequestView(restful.Resource):
 
 
 
-        calendar = None
-        calendar_json = request.json.get('calendar')
-        calendar_json_start_time = calendar_json.get('start_time')
-        calendar_json_end_time = calendar_json.get('end_time')
-
-        # if calendar is actually created
-        if calendar_json_start_time and calendar_json_end_time and calendar_json_start_time.get('hours'):
-            calendar = Calendar()
-            calendar.time_created = datetime.now()
-            calendar.number_of_days = 9
-            db_session.add(calendar)
-            db_session.commit()
-
-            _request.student_calendar_id = calendar.id
-
-
-            offset_integer = calendar_json.get('date').get('offset')
-
-            print calendar_json
-            print
-            print calendar_json_start_time, calendar_json_end_time, offset_integer
-
-            calendar_event = Calendar_Event.initFromJson(calendar_json, calendar, offset_integer)
-            db_session.add(calendar_event)
-            db_session.commit()
-
-
-
-        print request.json.get('files')
         if request.json.get('files'):
             print 'there are', len(request.json.get('files')), 'files'
             files_json = request.json.get('files')
@@ -1329,43 +1357,10 @@ class UserRequestView(restful.Resource):
                         file_obj.request_id = _request.id
                         file_obj.user_id = _request.student_id
 
-                db_session.commit()
 
-        print "checking for categories"
-        task_category = request.json.get('category')
-        print "task_category", task_category
-        task_categories = ['chores', 'items', 'food', 'skilled_task', 'specific']
+        Request.dispatchRequestToGurus(_request)
 
-        if task_category and task_category in task_categories:
-            _request.category = task_category
-            for skill in Skill.query.all():
-                if skill.is_popular and skill.category == task_category:
-                    print len(skill.gurus.all()), 'gurus found for', skill.name, 'category', skill.category
-                    for guru in skill.gurus:
-
-                        proposal = Proposal.initProposal(_request.id, guru.id, None)
-
-
-                        event_dict = {'status': Proposal.GURU_SENT, 'proposal_id':proposal.id}
-                        event = Event.initFromDict(event_dict)
-
-                        db_session.commit()
-
-                        #send push notification is user has permitted device
-                        if guru.push_notifications:
-                            from app.lib.push_notif import send_student_request_to_guru
-                            send_student_request_to_guru(_request, guru)
-
-                        if guru.email_notifications and guru.email:
-
-                            from app.emails import send_student_request_to_guru
-                            send_student_request_to_guru(_request, guru)
-
-
-                        if guru.text_notifications and guru.phone_number:
-                            from app.texts import send_student_request_to_guru
-                            send_student_request_to_guru(_request, guru)
-
+        return user
 
         if _request.course:
 
@@ -1419,10 +1414,10 @@ class UserRequestView(restful.Resource):
         if not user:
             abort(404)
 
-        print request.json
+        # print request.json
         if request.json.get('proposal'):
             proposal_json = request.json
-            print request.json
+            from pprint import pprint
             proposal = Proposal.query.get(proposal_json.get('id'))
             proposal.status = request.json.get('status')
             db_session.commit()
@@ -1432,27 +1427,34 @@ class UserRequestView(restful.Resource):
                 event = Event.initFromDict(event_dict)
 
             if proposal.status == Proposal.GURU_ACCEPTED:
+                pprint(proposal_json)
+
                 proposal.request.status = Request.STUDENT_RECEIVED_GURU
                 proposal.request.guru_id = user_id
 
                 proposal.guru_price = proposal_json.get('guru_price')
-                calendar = Calendar.initFromProposal(proposal, 2)
-                proposal.request.guru_calendar_id = calendar.id
+                if not proposal.guru_price:
+                    proposal.guru_price = proposal.request.student_price
+
+
+                # calendar = Calendar.initFromProposal(proposal, 2)
+
+                # proposal.request.guru_calendar_id = calendar.id
                 calendar_events_json = proposal_json.get('guru_calendar')
 
                 print 'response found!', proposal_json.get('response')
-                proposal.question_response = proposal_json.get('response')
+                # proposal.question_response = proposal_json.get('response')
 
-                proposal.request.selected_proposal = proposal
+                # proposal.request.selected_proposal = proposal
 
-                proposal.time_answered = datetime.now()
+                # proposal.time_answered = datetime.now()
 
-                if request.json.get('files'):
-                    files_json = request.json.get('files')
-                    print 'woohoo', len(request.json.get('files')), 'uploaded'
-                    for file_json in request.json.get('files'):
-                        file_obj = File.query.get(file_json.get('id'))
-                        file_obj.proposal_id = proposal.id
+                # if request.json.get('files'):
+                #     files_json = request.json.get('files')
+                #     print 'woohoo', len(request.json.get('files')), 'uploaded'
+                #     for file_json in request.json.get('files'):
+                #         file_obj = File.query.get(file_json.get('id'))
+                #         file_obj.proposal_id = proposal.id
 
                 if calendar_events_json:
                     day_index = 0
@@ -1468,19 +1470,19 @@ class UserRequestView(restful.Resource):
 
                 student = proposal.request.student
 
-                if student.push_notifications:
+                # if student.push_notifications:
 
-                    #send push notification to all student devices
-                    from app.lib.push_notif import send_guru_proposal_to_student
-                    send_guru_proposal_to_student(proposal, proposal.request.student)
+                #     #send push notification to all student devices
+                #     from app.lib.push_notif import send_guru_proposal_to_student
+                #     send_guru_proposal_to_student(proposal, proposal.request.student)
 
-                if student.email_notifications and student.email:
-                    from app.emails import send_guru_proposal_to_student
-                    send_guru_proposal_to_student(proposal, proposal.request.student)
+                # if student.email_notifications and student.email:
+                #     from app.emails import send_guru_proposal_to_student
+                #     send_guru_proposal_to_student(proposal, proposal.request.student)
 
-                if student.text_notifications and student.phone_number:
-                    from app.texts import send_guru_proposal_to_student
-                    send_guru_proposal_to_student(proposal, proposal.request.student)
+                # if student.text_notifications and student.phone_number:
+                #     from app.texts import send_guru_proposal_to_student
+                #     send_guru_proposal_to_student(proposal, proposal.request.student)
 
                 event_dict = {'status': Proposal.GURU_ACCEPTED, 'proposal_id':proposal.id}
                 event = Event.initFromDict(event_dict)
@@ -1592,6 +1594,9 @@ class UserRequestView(restful.Resource):
 
             return user, 200
 
+### TODO PAYMENTS SERVER SIDE
+### -- Get Transfer status
+### -- Send Receipt email
 class UserTransactionsView(restful.Resource):
 
     #create new transaction (transfer or charge)
@@ -1602,12 +1607,20 @@ class UserTransactionsView(restful.Resource):
             abort(404)
 
         if request.json.get('bank_transfer'):
-
+            card_id = None
+            selected_card = None
 
             transaction_json = request.json
-            selected_card = Card.query.get(transaction_json.get('card_id'))
 
-            Transaction.initTransferTransaction(user, selected_card);
+            card_id = transaction_json.get('card_id')
+
+            if not card_id:
+                card_id = transaction_json.get('id')
+            if card_id:
+                selected_card = Card.query.get(card_id)
+
+            if selected_card:
+                Transaction.initTransferTransaction(user, selected_card)
 
             return user, 200
 
@@ -1829,6 +1842,7 @@ class UserSessionView(restful.Resource):
 
         #non-recurring session
         session_json = request.json
+
         _request = Request.query.get(request.json.get('id'))
         _request.selected_proposal.status = 5
         _request.guru = User.query.get(request.json.get('guru_id'))
@@ -1838,6 +1852,8 @@ class UserSessionView(restful.Resource):
         #create an event for it
         event_dict = {'status': Request.STUDENT_ACCEPTED_GURU, 'request_id':_request.id}
         event = Event.initFromDict(event_dict)
+
+
 
         #create a session
         session = Session.initFromJson(session_json, True)
@@ -1859,25 +1875,27 @@ class UserSessionView(restful.Resource):
                 event = Event.initFromDict(event_dict)
                 break
         db_session.commit()
-
+        print session
+        print "relationship exists?", session.relationship_id
         # Create relationship as well
         if not session.relationship_id:
+            print "relationship is being created.."
             session._relationship = Relationship.initFromSession(session)
             db_session.commit()
-
+        print "relationships", user.guru_relationships, user.student_relationships
         #send notifications to Guru
-        if session.request.guru.push_notifications:
-            from app.lib.push_notif import send_student_has_accepted_to_guru
-            send_student_has_accepted_to_guru(session, session.request.guru)
+        # if session.request.guru.push_notifications:
+        #     from app.lib.push_notif import send_student_has_accepted_to_guru
+        #     send_student_has_accepted_to_guru(session, session.request.guru)
 
-        if session.request.guru.email_notifications and user.email:
-            from app.emails import send_student_has_accepted_to_guru
-            send_student_has_accepted_to_guru(session, session.request.guru)
+        # if session.request.guru.email_notifications and user.email:
+        #     from app.emails import send_student_has_accepted_to_guru
+        #     send_student_has_accepted_to_guru(session, session.request.guru)
 
-        if session.request.guru.text_notifications and user.phone_number:
-            from app.texts import send_student_has_accepted_to_guru
-            send_student_has_accepted_to_guru(session, session.request.guru)
-            print "should send a text here"  #TODO SAMIR
+        # if session.request.guru.text_notifications and user.phone_number:
+        #     from app.texts import send_student_has_accepted_to_guru
+        #     send_student_has_accepted_to_guru(session, session.request.guru)
+        #     print "should send a text here"  #TODO SAMIR
 
         return user, 200
 
@@ -2303,6 +2321,30 @@ class UserCardView(restful.Resource):
 
             db_session.commit()
 
+        if card_json.get('purchase_credit'):
+            offers = [(40, 50), (80, 105), (165, 200)]
+            from pprint import pprint
+            pprint(card_json)
+            offer_index = card_json.get('offer_index')
+            card_id = card_json.get('id')
+            if card_id and int(card_id) and offer_index <= 2:
+                try:
+                    credits = offers[offer_index][1]
+                    amount = offers[offer_index][0]
+                    card = Card.query.get(int(card_id))
+                    transaction_response = Transaction.initStudentCreditPurchase(user, card, amount, credits)
+                    if type(transaction_response) == tuple:
+                        abort(400)
+                except:
+                    abort(400)
+
+            # card.is_default_transfer = True
+            # for other_card in user.cards:
+            #     if other_card.is_transfer_card and other_card.id != card.id:
+            #         other_card.is_default_transfer = False
+
+            # db_session.commit()
+
         if card_json.get('remove_card'):
 
             card_json = request.json.get('card')
@@ -2318,9 +2360,6 @@ class UserCardView(restful.Resource):
                 user.get_payment_cards()[0].is_default_payment = True
 
             db_session.commit()
-
-
-
 
         return user, 200
 

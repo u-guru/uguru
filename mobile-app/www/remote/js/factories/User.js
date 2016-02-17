@@ -1,8 +1,8 @@
 angular.module('uguru.user', [])
 .factory('User', ['$localstorage', 'Restangular', '$state', '$timeout', '$ionicModal', '$ionicHistory',
-    'RootService', '$ionicSideMenuDelegate', 'Category', 'RankingService', 'LoadingService',
+    'RootService', '$ionicSideMenuDelegate', 'Category', 'RankingService', 'LoadingService', 'RequestService',
     function($localstorage, Restangular, $state, $timeout, $ionicModal, $ionicHistory, RootService,
-        $ionicSideMenuDelegate, Category, RankingService, LoadingService) {
+        $ionicSideMenuDelegate, Category, RankingService, LoadingService, RequestService) {
     var User;
 
     var defineProperty = function(obj, name, value) {
@@ -545,8 +545,8 @@ angular.module('uguru.user', [])
                 }
             }
 
-            var user_proposals = user.proposals;
-            if (user.proposals && user.proposals.length > 0) {
+            var user_proposals = user.guru_proposals;
+            if (user.guru_proposals && user.guru_proposals.length > 0) {
                 for (var i = 0; i < user_proposals.length; i ++) {
                     var index_proposal = user_proposals[i];
 
@@ -555,19 +555,11 @@ angular.module('uguru.user', [])
                         user.previous_proposals.push(index_proposal);
                     }
 
-                    else if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 0) {
+                    else if (index_proposal.status === 0 && index_proposal.request.status === 0) {
                         index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
 
                         index_proposal.request = processStudentRequestCalendar(index_proposal.request)
                         user.active_proposals.push(index_proposal);
-                    } else
-                    if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 1) {
-                        index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
-                        user.active_questions.push(index_proposal);
-                    } else
-                    if (index_proposal.status === 0 && index_proposal.request.status === 0 && index_proposal.request._type === 2) {
-                        index_proposal.formatted_time = RootService.time.since(new Date(index_proposal.time_created));
-                        user.active_tasks.push(index_proposal);
                     } else
                     if (index_proposal.status === 2) {
                         console.log('pending proposal', index_proposal);
@@ -659,7 +651,7 @@ angular.module('uguru.user', [])
         $scope.user.last_position = user.last_position;
         $scope.user.requests = user.requests;
         $scope.user.sessions = user.sessions;
-        $scope.user.proposals = user.proposals;
+        $scope.user.guru_proposals = user.guru_proposals;
         $scope.user.cards = user.cards;
         $scope.user.guru_committed = user.guru_committed;
         $scope.user.student_transactions = user.student_transactions;
@@ -777,7 +769,7 @@ angular.module('uguru.user', [])
         $scope.user.summer_15 = user.summer_15;
         $scope.user.uber_friendly = user.uber_friendly;
         $scope.user.outside_university = user.outside_university;
-        $scope.user.credits = user.credits;
+        $scope.user.credits = parseInt(user.credits) | 0;
         $scope.user.official_guru_grade = user.official_guru_grade;
         $scope.user.grade_dict = user.grade_dict;
         $scope.user.guru_score_opportunities = user.guru_score_opportunities;
@@ -802,7 +794,7 @@ angular.module('uguru.user', [])
             $scope.root.vars.last_active_relationship = $scope.user.student_relationships[0];
         }
 
-
+        RequestService.splitStudentRequestsIntoTypes($scope.user);
     }
 
     var delegateActionsFromProcessedUser = function($scope) {
@@ -1391,15 +1383,15 @@ angular.module('uguru.user', [])
                             callback($scope);
                         }
 
-                        if ($scope.user && $scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
-                            console.log('incoming request exists');
-                            $scope.root.vars.processIncomingRequests($scope.user.incoming_requests);
-                        }
+                        // if ($scope.user && $scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
+                        //     console.log('incoming request exists');
+                        //     $scope.root.vars.processIncomingRequests($scope.user.incoming_requests);
+                        // }
 
-                         if ($scope.user && $scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
-                            console.log('active proposal exists');
-                            $scope.root.vars.processActiveProposalsGuru($scope.user.active_proposals);
-                         }
+                        //  if ($scope.user && $scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
+                        //     console.log('active proposal exists');
+                        //     $scope.root.vars.processActiveProposalsGuru($scope.user.active_proposals);
+                        //  }
 
 
 
@@ -1466,7 +1458,7 @@ angular.module('uguru.user', [])
                     .customPOST(JSON.stringify(payload))
                     .then(function(user){
 
-                        var processed_user = processResults(user);
+                        var processed_user = processResults(user.plain());
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);
 
@@ -1478,7 +1470,8 @@ angular.module('uguru.user', [])
 
                     }, function(err){
                         alert('Your card information is incorrect. Please try again');
-                        console.log(JSON.stringify(err));
+                        console.log(err);
+                        LoadingService.showMsg(err);
                         console.log('error...something happened with the server;')
                     });
             } else if (param === 'bank_transfer') {
@@ -1709,11 +1702,12 @@ angular.module('uguru.user', [])
                         }
 
                     }, function(err){
+                        console.log(err);
                     if (err.status === 409 ) {
                             console.log('already have an active request');
-                        } else {
+                        } else if (err.status === 400) {
                             console.log(err);
-                            console.log('error...something happened with the server;')
+                            LoadingService.showMsg('Insufficient funds on card. Please try again or contact support.', 2500);
                         }
                     });
             }

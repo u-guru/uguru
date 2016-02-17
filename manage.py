@@ -357,7 +357,59 @@ def generateNumHSRequests(num, user):
         _request = Request.createHSRequest(user.id, university.id, hs_request_option,\
         file_arr, tag_arr, description, random_payment_card.id)
 
+### clone request terminal code
+# cloneObj(r)
+# for request in user.requests:
+# ...     request.student_calendar.calendar_events[0].start_time = datetime.combine(request.student_calendar.calendar_events[0].start_time.replace(day=days[index]), datetime.min.time())
+# ...     request.student_calendar.calendar_events[0].end_time = datetime.combine(request.student_calendar.calendar_events[0].end_time.replace(day=days[index]), datetime.min.time())
+# ...     print request.student_calendar.calendar_events[0].start_time, index
+# ...     index += 1
 
+def clone_requests(user_id, date_arr=[15, 18, 15, 14]):
+    from datetime import datetime
+    user = User.query.get(user_id)
+    categories = [c for c in Category.query.all() if c.is_active and not c.name == 'Academic']
+    user.requests = user.requests[:1]
+    user.requests[0].student_calendar.calendar_events = [evt for evt in user.requests[0].student_calendar.calendar_events if evt.start_time != evt.end_time]
+    index = 0
+    for date in date_arr:
+        clone_request = user.requests[0]
+        request_clone = cloneObj(clone_request)
+        request_clone.student_calendar = cloneObj(request_clone.student_calendar)
+        request_clone.student_calendar.request_id = request_clone.id
+        request_clone.time_created = datetime.combine(request_clone.time_created.replace(day=date), datetime.min.time())
+        request_clone.student_calendar.time_created = request_clone.time_created
+        request_clone.category = categories[index]
+        request_clone.subcategory = request_clone.category.subcategories[len(request_clone.category.subcategories) - index - 1]
+        db_session.commit()
+        clone_events = []
+        for calendar_event in user.requests[0].student_calendar.calendar_events:
+            if not calendar_event.start_time:
+                continue
+            calendar_event = cloneObj(calendar_event)
+            calendar_event.calendar_id = request_clone.student_calendar.id
+            db_session.commit()
+            calendar_event.start_time = datetime.combine(calendar_event.start_time.replace(day=date), datetime.min.time())
+            calendar_event.end_time = datetime.combine(calendar_event.end_time.replace(day=date), datetime.min.time())
+            db_session.commit()
+        index += 1
+
+    for request in user.requests:
+        print "request", request.id, request.time_created
+        print "calendar", request.student_calendar_id, request.student_calendar.time_created
+        print "category", request.category.name, request.subcategory.name
+        print "calendar_events:"
+        for event in request.student_calendar.calendar_events:
+            print event.id, event.start_time, event.end_time
+        print
+    db_session.commit()
+
+
+
+
+
+if arg == 'cp_requests':
+    clone_requests(6082)
 
 
 def init_hs():
@@ -791,6 +843,8 @@ def init_categories():
 
 
 
+
+
 if arg in ['generate_init_categories', '-gic']:
     generate_init_categories()
 
@@ -1002,36 +1056,25 @@ if arg == 'update':
 
     ## Helper functions
 
-if arg == 'seed_admin':
-    user = User.query.filter_by(email='samir@uguru.me').first()
 
-
-
-
+def getSeedAdmin(user):
     from hashlib import md5
 
     from app.database import db_session
-    from app.models import *
 
-    if len(sys.argv) > 2:
-        user = User.query.filter_by(email=sys.argv[2]).first()
-
-    admin_accounts = [('jason@uguru.me', 'Jason Huang'), ('gabrielle@uguru.me','Gabrielle Wee'), ('samir@uguru.me', 'Samir Makhani'), ('jeselle@uguru.me', 'Jeselle Obina')]
-    admin_emails = [_tuple[0] for _tuple in admin_accounts]
+    # admin_accounts = [('jason@uguru.me', 'Jason Huang'), ('gabrielle@uguru.me','Gabrielle Wee'), ('samir@uguru.me', 'Samir Makhani'), ('jeselle@uguru.me', 'Jeselle Obina')]
+    # admin_emails = [_tuple[0] for _tuple in admin_accounts]
     u = University.query.get(2307)
 
 
-    #teston jeselle
+    # #teston jeselle
     admin_account = user.email
     account_name = user.name
 
-    # check user exists
+    # # check user exists
     if not user:
         print "something is wrong"
         sys.exit()
-
-
-
 
     def selectXRandomCourses(user, x):
         university_courses = user.university.popular_courses
@@ -1375,10 +1418,27 @@ if arg == 'seed_admin':
         pass
 
     # print "credibility percentage %s" % checkCredibilityOfUser(user)
-    print "profile completion percentage %s" % profileCompletionUser(user)
-    print "\n\nAll Shop Info\n\n", shopDetails(user)
+    # print "profile completion percentage %s" % profileCompletionUser(user)
+    # print "\n\nAll Shop Info\n\n", shopDetails(user)
 
 
+def createTestGurus():
+    admin_users = User.query.filter_by(is_admin=True).all()
+    for user in admin_users:
+        print 'initializing...'
+
+    print "process complete"
+    from hashlib import md5
+    for user in admin_users:
+        user.is_admin = True
+        print "initializing %s with email %s\n\n" % (user.name, user.email)
+        getSeedAdmin(user)
+        user.password = md5('launchuguru123').hexdigest()
+        user.profile_code = user.name.split(' ')[0].lower()
+        user.referral_code = user.name.split(' ')[0].lower()
+        print "email:%s " % user.email
+        print "password:%s" % "launchuguru123"
+        print "num subcategories:%s" % len(user.guru_subcategories)
 
     #2. Profile
 
@@ -1393,6 +1453,8 @@ if arg == 'seed_admin':
     # Goal
     # --> Create hella shops
 
+if arg == 'init_dev':
+    createTestGurus()
 
 if arg == 'init_admin':
     from hashlib import md5

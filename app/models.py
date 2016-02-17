@@ -1,5 +1,5 @@
 from sqlalchemy import String, Integer, Column, ForeignKey, Float, SmallInteger, Boolean, Table, Unicode, DateTime
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship, backref, make_transient
 from app.database import Base, db_session
 from datetime import datetime
 import os
@@ -1241,6 +1241,9 @@ class University(Base):
             self.courses_sanitized = True
             db_session.commit()
 
+    def getSubcategoryGurus(self, subcategory):
+        return [guru for guru in self.gurus if subcategory in guru.guru_subcategories]
+
     def sanitizeDepartments(self):
         count = 0
         for d in self.departments:
@@ -1509,6 +1512,7 @@ class Position(Base):
     heading = Column(Float)
     speed = Column(Float)
     timestamp = Column(Float)
+    address = Column(String)
 
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship("User",
@@ -1547,8 +1551,6 @@ class Position(Base):
             db_session.rollback()
             raise
         return position
-
-
 
 
 
@@ -1866,6 +1868,8 @@ class Request(Base):
 
     time_created = Column(DateTime)
     time_accepted = Column(DateTime)
+    tz_offset = Column(Integer)
+
     high_school = Column(Boolean, default=False)
     hs_request_option = Column(String)
 
@@ -1903,6 +1907,23 @@ class Request(Base):
         uselist=False,
         backref='requests')
 
+    category_id = Column(Integer, ForeignKey('category.id'))
+    category = relationship("Category",
+        primaryjoin = "Category.id == Request.category_id",
+        )
+
+    category_id = Column(Integer, ForeignKey('category.id'))
+    category = relationship("Category",
+        primaryjoin = "Category.id == Request.category_id",
+        uselist=False,
+        )
+
+    subcategory_id = Column(Integer, ForeignKey('subcategory.id'))
+    subcategory = relationship("Subcategory",
+        primaryjoin = "Subcategory.id == Request.subcategory_id",
+        uselist=False,
+        )
+
     ## TODO REQUEST PAYMENT ID
 
     address = Column(String)
@@ -1910,7 +1931,7 @@ class Request(Base):
     online = Column(Boolean)
     time_estimate = Column(Integer)
 
-    category = Column(String)
+    # category = Column(String)
 
     contact_email = Column(Boolean)
     contact_push = Column(Boolean)
@@ -1978,6 +1999,31 @@ class Request(Base):
         if self.status == 0 or self.status == 1:
             return True
         return False
+
+
+    @staticmethod
+    def dispatchRequestToGurus(_request):
+        category = _request.category
+        subcategory = _request.subcategory
+        gurus = _request.university.getSubcategoryGurus(subcategory)
+        print len(gurus), 'found'
+        print gurus
+        for guru in gurus:
+            proposal = Proposal.initProposal(_request.id, guru.id, None)
+
+            # if guru.push_notifications:
+            #     from app.lib.push_notif import send_student_request_to_guru
+            #     send_student_request_to_guru(_request, guru)
+
+            if guru.email_notifications and guru.email:
+
+                from app.emails import send_student_request_to_guru
+                send_student_request_to_guru(_request, guru)
+
+            if guru.text_notifications and guru.phone_number:
+                from app.texts import send_student_request_to_guru
+                send_student_request_to_guru(_request, guru)
+
 
 
     @staticmethod
@@ -2111,7 +2157,7 @@ class Proposal(Base):
     guru_id = Column(Integer, ForeignKey('user.id'))
     guru = relationship("User",
         primaryjoin = "User.id == Proposal.guru_id",
-        backref="proposals"
+        backref="guru_proposals"
     )
 
     guru_rank = Column(Integer)
@@ -2463,9 +2509,9 @@ class Session(Base):
     @staticmethod
     def initFromJson(session_json, is_request_json = None):
         _session = Session()
-        _session.seconds = session_json.get('time_estimate').get('seconds')
-        _session.minutes = session_json.get('time_estimate').get('minutes')
-        _session.hours = session_json.get('time_estimate').get('hours')
+        # _session.seconds = session_json.get('time_estimate').get('seconds')
+        # _session.minutes = session_json.get('time_estimate').get('minutes')
+        # _session.hours = session_json.get('time_estimate').get('hours')
         _session.guru_id = session_json.get('guru_id')
         _session.student_id = session_json.get('student_id')
         _session.status = session_json.get('status')
@@ -2478,7 +2524,7 @@ class Session(Base):
         _session.address = session_json.get('address')
         _session.in_person = session_json.get('in_person')
         _session.online = session_json.get('online')
-        _session.time_estimate = int(session_json.get('time_estimate').get('hours')) * 60 + int(session_json.get('time_estimate').get('minutes'))
+        # _session.time_estimate = int(session_json.get('time_estimate').get('hours')) * 60 + int(session_json.get('time_estimate').get('minutes'))
         db_session.add(_session)
         try:
             db_session.commit()
@@ -2523,8 +2569,7 @@ class Relationship(Base):
 
     student_id = Column(Integer, ForeignKey('user.id'))
     student = relationship("User",
-        primaryjoin = "(User.id==Relationship.student_id) & "\
-                        "(User.is_a_guru==False)",
+        primaryjoin = "(User.id==Relationship.student_id)",
                         uselist=False,
                         backref="guru_relationships")
 
@@ -2597,8 +2642,7 @@ class Message(Base):
         message.time_created = datetime.now()
         message.time_sent = datetime.now()
         message.contents = message_json.get('contents')
-        if message_json.get('type'):
-            doNothing = False
+        message.file_id = message_json.get('file_id')
 
         message.relationship_id = message_json.get('relationship_id')
 
@@ -3817,16 +3861,26 @@ class Card(Base):
     @staticmethod
     def initFromJson(card_json, user):
         from app.lib.stripe_client import create_customer, create_recipient
-
+        payment_card = False
+        transfer_card = False
+        if (card_json.get('card')):
+            payment_card = card_json.get('payment_card')
+            transfer_card = card_json.get('debit_card') or card_json.get('transfer_card')
+            card_json = card_json.get('card')
         card = Card()
         card.stripe_token = card_json.get('stripe_token')
-        if card_json.get('card'):
+        if card.stripe_token and payment_card:
             card.stripe_customer_id = create_customer(user, card.stripe_token)
-        if card_json.get('debit_card'):
+        if transfer_card and card.stripe_token:
             card.stripe_recipient_id = create_recipient(user, card.stripe_token)
+
+        card.time_added = card_json.get('time_added')
+        if not card.time_added:
+            from datetime import datetime
+            card.time_added = datetime.now()
+        card.funding = card_json.get('funding')
         card.card_last4 = card_json.get('card_last4')
         card.card_type = card_json.get('card_type')
-        card.time_added = card_json.get('time_added')
         card.is_transfer_card = card_json.get('is_transfer_card')
         card.is_payment_card = card_json.get('is_payment_card')
         card.user_id = user.id
@@ -3879,6 +3933,10 @@ class   Transaction(Base):
     balance_transaction_id = Column(String)
     refunded = Column(Boolean, default=False)
     description = Column(String)
+
+    credits = Column(Float)
+    credits_before = Column(Float)
+    credits_after = Column(Float)
 
 
     balance_before = Column(Float)
@@ -3946,6 +4004,37 @@ class   Transaction(Base):
         except:
             db_session.rollback()
             raise
+        return transaction
+
+    @staticmethod
+    def initStudentCreditPurchase(user, card, amount, credits):
+        from app.lib.stripe_client import charge_customer
+        stripe_charge = charge_customer(user, amount, card)
+        print type(stripe_charge)
+        print stripe_charge
+        if type(stripe_charge) == tuple:
+            error_code = stripe_charge[0]
+            error_msg = stripe_charge[1]
+            return error_code, error_msg
+
+        from datetime import datetime
+        transaction = Transaction()
+        transaction.time_created = datetime.now()
+        transaction.charge_id = stripe_charge.id
+        transaction.student_amount = amount
+        transaction.stripe_fee = (transaction.student_amount * .029) + 0.3
+        transaction._type = Transaction.CREDIT_PURCHASE
+        transaction.description = "You purchase %s credits for $%s"
+        transaction.credits = credits
+        transaction.student_id = user.id
+        transaction.card_id = card.id
+        if not user.credits:
+            user.credits = 0
+        transaction.credits_before = user.credits
+        user.credits = credits
+        transaction.credits_after = user.credits
+        db_session.add(transaction)
+        db_session.commit()
         return transaction
 
     @staticmethod
@@ -4104,4 +4193,15 @@ class   Transaction(Base):
 
 
 
+####
+## Helper functions
+#
 
+def cloneObj(obj):
+    db_session.expunge(obj)  # expunge the object from session
+    make_transient(obj)  # http://docs.sqlalchemy.org/en/rel_1_1/orm/session_api.html#sqlalchemy.orm.session.make_transient
+
+    obj.id = None
+    db_session.add(obj)
+    db_session.commit()
+    return obj

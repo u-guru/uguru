@@ -84,16 +84,18 @@ def create_recipient(user, token):
         return str(e.json_body)
 
 
-def charge_customer(user, amount):
+def charge_customer(user, amount, card=None):
 
-    default_card = None
-    for card in user.cards:
-        if card.is_default_payment:
-            default_card = card
+    default_card = card
+    if not card:
+        for card in user.cards:
+            if card.is_default_payment:
+                default_card = card
+
 
     if not default_card:
         return 0
-
+    print default_card.stripe_customer_id
     if amount < 50:
         amount = 50
 
@@ -119,7 +121,7 @@ def charge_customer(user, amount):
         print "Param is: %s" % err['param']
         print "Message is: %s" % err['message']
 
-        return str(e.json_body)
+        return e.http_status, err['message']
 
     except stripe.error.StripeError, e:
 
@@ -132,7 +134,7 @@ def charge_customer(user, amount):
         # # param is '' in this case
         # print "Param is: %s" % err['param']
         # print "Message is: %s" % err['message']
-        return str(e.json_body)
+        return e.http_status, err['message']
 
 
 

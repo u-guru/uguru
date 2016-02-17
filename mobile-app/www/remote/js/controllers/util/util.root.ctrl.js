@@ -53,6 +53,7 @@ angular.module('uguru.util.controllers')
 
         $scope.root = RootService;
         $scope.root.vars = {};
+        $scope.root.vars.getUserFromServer = User.getUserFromServer;
         Utilities.compileToAngular('body-loading-div', $scope);
         $scope.root.loader = {body: {hide:false}};
 
@@ -287,7 +288,10 @@ angular.module('uguru.util.controllers')
 
 
         var saveCategoriesToRootScope = function(categories) {
-            $scope.categories = categories;
+
+            $scope.categories = categories.filter(function(category, index) {
+              return category.is_active;
+            })
         }
         $scope.getCategories(saveCategoriesToRootScope)
 
@@ -793,7 +797,7 @@ angular.module('uguru.util.controllers')
         if ($state.current.name !== 'root.home') {
             $timeout(function() {
                 $scope.root.loader.body.hide = true;
-            }, 1500)
+            }, TIMEOUT_UNTIL_END_OF_LOADER);
         }
 
 

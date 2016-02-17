@@ -12,8 +12,8 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-  // REST_URL = "http://localhost:5000";
-  REST_URL = "http://192.168.42.70:5000";
+  REST_URL = "http://localhost:5000";
+  // REST_URL = "http://192.168.42.70:5000";
   // BASE_URL = _ipaddress;
 
   // REST_URL = 'https://192.168.0.107:5000';
@@ -96,7 +96,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $ionicConfigProvider.tabs.position("bottom");
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
   $ionicConfigProvider.views.forwardCache(false);
-  $ionicConfigProvider.scrolling.jsScrolling(false);
+  $ionicConfigProvider.scrolling.jsScrolling(true);
 
   // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
 
@@ -507,6 +507,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.messaging', {
         url: '/messaging',
         templateUrl: BASE + 'templates/messaging.html'
+  }).
+  state('root.splash', {
+        url: '/splash',
+        templateUrl: BASE + 'templates/splash.html',
+        controller: "SplashController"
   }).
   state('root.student-conversations', {
         url: '/student-conversations',

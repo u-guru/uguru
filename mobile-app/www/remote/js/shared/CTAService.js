@@ -8,7 +8,7 @@ angular
 function CTAService($timeout) {
   var ctaParentDict = {};
   var ctaFuncDict = {};
-  var ctaOptions = {duration: 0.5, extraTransitionDuration:1};
+  var ctaOptions = {duration: 0.2, extraTransitionDuration:0};
 
 
 
@@ -20,17 +20,24 @@ function CTAService($timeout) {
     elem.classList.remove('show');
   }
 
+  var showCTAManually = function(elem_id) {
+    console.log(ctaFuncDict);
+    var func = ctaFuncDict[elem_id];
+    func && func();
+  }
+
   var getModalCloseIcon = function(elem) {
     return elem.querySelector('.cta-modal-close');
   }
 
-  var bindCtaToBoxElem = function(box_elem, modal_elem, show_callback) {
-    ctaFuncDict[box_elem.id] = function() {
+  var bindCtaToBoxElem = function(box_elem, modal_elem, show_callback, box_selector) {
+    ctaFuncDict[box_selector] = function() {
 
       var closeCTAModal = cta(box_elem, modal_elem, ctaOptions, function() {
 
         //show modal cta
-        $timeout(function() { showModalCTA(modal_elem) });
+        showModalCTA(modal_elem);
+        // $timeout(function() { showModalCTA(modal_elem) });
         show_callback && show_callback();
 
         var modalCloseIcon = getModalCloseIcon(modal_elem);
@@ -41,27 +48,27 @@ function CTAService($timeout) {
           })
         }
 
-      }, ctaParentDict[box_elem.id])
+      }, ctaParentDict[box_selector])
 
     }
 
-    box_elem.addEventListener('click', ctaFuncDict[box_elem.id]);
+    box_elem.addEventListener('click', ctaFuncDict[box_selector]);
   }
 
   var initSingleCTA = function(boxSelector, parentSelector, show_callback) {
+
     var parentElem = document.querySelector(parentSelector);
     var boxElem = document.querySelector(boxSelector);
 
-    var modalElemId = boxElem && boxElem.id && boxElem.id.replace('box', 'modal');
-    var modalElem = document.getElementById(modalElemId);
-
+    var modalElemId = boxElem && boxSelector.replace('.', '#').replace('box', 'modal');
+    var modalElem = document.querySelector(modalElemId);
     //if both dont exist dont do anything
     if (!(parentElem && boxElem && modalElem)) {
       console.log('ERROR: Could not locate elems', boxSelector, parentSelector)
       return false;
     }
-    ctaParentDict[boxElem.id] = parentSelector;
-    bindCtaToBoxElem(boxElem, modalElem, show_callback);
+    ctaParentDict[boxSelector] = parentSelector;
+    bindCtaToBoxElem(boxElem, modalElem, show_callback, boxSelector);
 
 
   }
@@ -79,7 +86,8 @@ function CTAService($timeout) {
 
   return {
     initSingleCTA:initSingleCTA,
-    initArrCTASharedParent:initArrCTASharedParent
+    initArrCTASharedParent:initArrCTASharedParent,
+    showCTAManually:showCTAManually
   }
 
 }

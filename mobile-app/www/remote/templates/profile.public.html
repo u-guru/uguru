@@ -222,8 +222,8 @@
 								  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 								</svg>
 							</div>
-							<ul name="alumni-dropdown" class="ng-class:{'active': ::page.dropdowns.year.active}">
-								<li ng-click='updateUserYear(option)' ng-repeat='option in ::page.dropdowns.year.options' tabindex>{{option}}</li>
+							<ul name="alumni-dropdown" class="ng-class:{'active': page.dropdowns.year.active}">
+								<li ng-click='updateUserYear(option)' ng-repeat='option in page.dropdowns.year.options' tabindex>{{option}}</li>
 							</ul>
 						</div>
 						<h2>&nbsp;&nbsp;</h2>
@@ -280,7 +280,7 @@
 						</li>
 					</ul>
 					<div class="hide ng-class:{'show':page.toggles.experience.active}" ng-controller='ExperiencesController' ng-include="::img_base + BASE + 'templates/guru.experiences.container.html'"></div>
-					<button name='exp-add-btn' ng-if='::!profile.public_mode' ng-click='::page.toggles.experience.active = !page.toggles.experience.active;' class="chip">Add an Experience</button>
+					<button name='exp-add-btn' ng-if='::!profile.public_mode' ng-click='page.toggles.experience.active = !page.toggles.experience.active;' class="chip">Add an Experience</button>
 				</div>
 				<div class="pf-list p15top relative">
 					<h1 class='relative'>Languages</h1>
@@ -296,7 +296,7 @@
 					<h1>Will Work For</h1>
 					<ul class="pf-list-x ugrid-3">
 						<li name="currency-check" ng-repeat='currency in ::(all_currencies||user.all_currencies)' ng-if="::((currency.active && profile.public_mode) || !profile.public_mode)">
-							<span ng-include="::img_base + BASE + 'templates/svg/wwf/' + ::currency.icon_url"></span>
+							<span ng-include="::img_base + BASE + 'templates/svg/wwf/' + currency.icon_url"></span>
 							<span>{{::currency.name}}</span>
 							<div ng-if='::!profile.public_mode'>
 								<input type="checkbox" ng-change='updateGuruCurrency(::currency, ::currency.active)' ng-model="::currency.active" />
@@ -421,7 +421,7 @@
 						<!-- @samir -->
 						<!-- BIND -->
 						<!-- add .checkmark to activate animation, parent must have .relative -->
-						<svg name='shop_title-checkmark' class="loader right-center ng-class:{'checkmark': ::page.checkmarks.shop_title}" viewBox="0 0 100 100">
+						<svg name='shop_title-checkmark' class="loader right-center ng-class:{'checkmark': page.checkmarks.shop_title}" viewBox="0 0 100 100">
 						  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
 						  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 						</svg>
@@ -432,7 +432,7 @@
 					<div class='pf-textarea-container relative' ng-if='::(desktopMode && !profile.public_mode)'>
 						<textarea name='description' ng-model='::user.academic_shop.description' ng-blur='::saveGuruShopDescription()' class="pf-header-desc" rows="2" maxlength="100" placeholder="This is a great place to add in-depth details regarding your academic experience tutoring"></textarea>
 						<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700'>{{::(100 - user.guru_introduction.length)}}</span>
-						<svg name='shop_descp-checkmark' class="loader right-center ng-class:{'checkmark': ::page.checkmarks.shop_description}" viewBox="0 0 100 100">
+						<svg name='shop_descp-checkmark' class="loader right-center ng-class:{'checkmark': page.checkmarks.shop_description}" viewBox="0 0 100 100">
 						  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
 						  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 						</svg>

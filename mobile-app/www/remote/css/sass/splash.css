@@ -18,11 +18,11 @@
     -ms-transform: translateX(-100%);
     -o-transform: translateX(-100%);
     transform: translateX(-100%);
-    -webkit-transition: all 0.15s ease-in-out;
-    -o-transition: all 0.15s ease-in-out;
-    -ms-transition: all 0.15s ease-in-out;
-    -moz-transition: all 0.15s ease-in-out;
-    transition: all 0.15s ease-in-out;
+    -webkit-transition: all 150ms ease-in-out;
+    -moz-transition: all 150ms ease-in-out;
+    -ms-transition: all 150ms ease-in-out;
+    -o-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
     position: absolute;
     top: 0;
     left: 0;
@@ -75,11 +75,11 @@
           height: 100%;
           width: auto; }
           .splash-landing .splash-sidebar > header .close-button svg path, .splash-landing .splash-sidebar > header .close-button svg circle {
-            -webkit-transition: all 0.15s ease-it-out;
-            -o-transition: all 0.15s ease-it-out;
-            -ms-transition: all 0.15s ease-it-out;
-            -moz-transition: all 0.15s ease-it-out;
-            transition: all 0.15s ease-it-out;
+            -webkit-transition: all 150ms ease-it-out;
+            -moz-transition: all 150ms ease-it-out;
+            -ms-transition: all 150ms ease-it-out;
+            -o-transition: all 150ms ease-it-out;
+            transition: all 150ms ease-it-out;
             fill: none;
             stroke: white;
             stroke-width: 4px;
@@ -187,11 +187,11 @@
       display: block;
       height: 100%; }
       .splash-landing .splash-logo svg path {
-        -webkit-transition: all 0.15s ease-in-out;
-        -o-transition: all 0.15s ease-in-out;
-        -ms-transition: all 0.15s ease-in-out;
-        -moz-transition: all 0.15s ease-in-out;
-        transition: all 0.15s ease-in-out; }
+        -webkit-transition: all 150ms ease-in-out;
+        -moz-transition: all 150ms ease-in-out;
+        -ms-transition: all 150ms ease-in-out;
+        -o-transition: all 150ms ease-in-out;
+        transition: all 150ms ease-in-out; }
         .splash-landing .splash-logo svg path:first-child {
           fill: rgba(255, 255, 255, 0.8); }
         .splash-landing .splash-logo svg path:last-child {
@@ -207,11 +207,11 @@
       .splash-landing .splash-logo:hover svg text, .splash-landing .splash-logo:focus svg text {
         fill: #F1F1F1; }
   .splash-landing > header {
-    -webkit-transition: all 0.15s ease-in-out;
-    -o-transition: all 0.15s ease-in-out;
-    -ms-transition: all 0.15s ease-in-out;
-    -moz-transition: all 0.15s ease-in-out;
-    transition: all 0.15s ease-in-out;
+    -webkit-transition: all 150ms ease-in-out;
+    -moz-transition: all 150ms ease-in-out;
+    -ms-transition: all 150ms ease-in-out;
+    -o-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -225,10 +225,11 @@
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
     position: fixed;
-    z-index: 99;
     top: 0;
     right: 0;
     width: 100%; }
+    .splash-landing > header:not(.opacity-0) {
+      z-index: 999; }
     .splash-landing > header:before {
       filter: alpha(opacity=90);
       opacity: 0.9;
@@ -293,11 +294,11 @@
           height: 100%;
           width: auto; }
           .splash-landing .splash-header .right .splash-burger svg circle, .splash-landing .splash-header .right .splash-burger svg path {
-            -webkit-transition: all 0.15s ease-in-out;
-            -o-transition: all 0.15s ease-in-out;
-            -ms-transition: all 0.15s ease-in-out;
-            -moz-transition: all 0.15s ease-in-out;
-            transition: all 0.15s ease-in-out;
+            -webkit-transition: all 150ms ease-in-out;
+            -moz-transition: all 150ms ease-in-out;
+            -ms-transition: all 150ms ease-in-out;
+            -o-transition: all 150ms ease-in-out;
+            transition: all 150ms ease-in-out;
             fill: none;
             stroke: white;
             stroke-width: 4px;
@@ -310,11 +311,11 @@
           .splash-landing .splash-header .right .splash-burger:hover svg path, .splash-landing .splash-header .right .splash-burger:focus svg path {
             stroke: #40484B; }
     .splash-landing .splash-header hr {
-      -webkit-transition: all 0.15s ease-in-out;
-      -o-transition: all 0.15s ease-in-out;
-      -ms-transition: all 0.15s ease-in-out;
-      -moz-transition: all 0.15s ease-in-out;
-      transition: all 0.15s ease-in-out;
+      -webkit-transition: all 150ms ease-in-out;
+      -moz-transition: all 150ms ease-in-out;
+      -ms-transition: all 150ms ease-in-out;
+      -o-transition: all 150ms ease-in-out;
+      transition: all 150ms ease-in-out;
       position: absolute;
       bottom: 0;
       left: 0;
@@ -397,11 +398,11 @@
       height: 50px !important;
       margin: 5px; }
   .splash-landing .splash-sub-header {
-    -webkit-transition: all 0.15s ease-in-out;
-    -o-transition: all 0.15s ease-in-out;
-    -ms-transition: all 0.15s ease-in-out;
-    -moz-transition: all 0.15s ease-in-out;
-    transition: all 0.15s ease-in-out;
+    -webkit-transition: all 150ms ease-in-out;
+    -moz-transition: all 150ms ease-in-out;
+    -ms-transition: all 150ms ease-in-out;
+    -o-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
     -webkit-justify-content: flex-start;
     justify-content: flex-start;
     position: fixed;
@@ -620,9 +621,9 @@
   .splash-landing .splash-toast {
     -webkit-backface-visibility: hidden;
     -webkit-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     -webkit-align-items: center;
     align-items: center;
@@ -737,9 +738,9 @@
   @media screen and (min-width: 768px) {
     .splash-landing .splash-header.active {
       -webkit-transition: all 0.3s ease-in-out;
-      -o-transition: all 0.3s ease-in-out;
-      -ms-transition: all 0.3s ease-in-out;
       -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
       filter: alpha(opacity=100);
       opacity: 1;
@@ -788,11 +789,11 @@
       align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
-      -webkit-transition: all 0.15s ease-in-out;
-      -o-transition: all 0.15s ease-in-out;
-      -ms-transition: all 0.15s ease-in-out;
-      -moz-transition: all 0.15s ease-in-out;
-      transition: all 0.15s ease-in-out;
+      -webkit-transition: all 150ms ease-in-out;
+      -moz-transition: all 150ms ease-in-out;
+      -ms-transition: all 150ms ease-in-out;
+      -o-transition: all 150ms ease-in-out;
+      transition: all 150ms ease-in-out;
       border-radius: 1000px;
       fill: none;
       stroke: #69B3A5;
@@ -822,11 +823,11 @@
           height: 36px;
           stroke-width: 10px; } }
     .splash-landing .splash-footer-link:before, .splash-landing .splash-footer-link:after {
-      -webkit-transition: all 0.15s ease-in-out;
-      -o-transition: all 0.15s ease-in-out;
-      -ms-transition: all 0.15s ease-in-out;
-      -moz-transition: all 0.15s ease-in-out;
-      transition: all 0.15s ease-in-out;
+      -webkit-transition: all 150ms ease-in-out;
+      -moz-transition: all 150ms ease-in-out;
+      -ms-transition: all 150ms ease-in-out;
+      -o-transition: all 150ms ease-in-out;
+      transition: all 150ms ease-in-out;
       filter: alpha(opacity=0);
       opacity: 0;
       position: absolute;
@@ -878,11 +879,11 @@
       .splash-landing .splash-footer-link#splash-footer-next div {
         filter: alpha(opacity=0);
         opacity: 0;
-        -webkit-transition: all 0.15s ease-in-out;
-        -o-transition: all 0.15s ease-in-out;
-        -ms-transition: all 0.15s ease-in-out;
-        -moz-transition: all 0.15s ease-in-out;
-        transition: all 0.15s ease-in-out;
+        -webkit-transition: all 150ms ease-in-out;
+        -moz-transition: all 150ms ease-in-out;
+        -ms-transition: all 150ms ease-in-out;
+        -o-transition: all 150ms ease-in-out;
+        transition: all 150ms ease-in-out;
         position: absolute;
         left: 50%;
         -webkit-transform: translateX(-50%);
@@ -994,18 +995,18 @@
         height: 0;
         border: 24px solid transparent;
         border-top-color: #40484B; }
-    .splash-landing > section button {
+    .splash-landing > section button.default {
       max-width: 100%;
       background: white;
       color: #69B3A5;
       font-weight: 600;
       text-transform: capitalize; }
-      .splash-landing > section button:hover, .splash-landing > section button:focus {
+      .splash-landing > section button.default:hover, .splash-landing > section button.default:focus {
         filter: alpha(opacity=100);
         opacity: 1;
         background: #69B3A5;
         color: white; }
-      .splash-landing > section button:active, .splash-landing > section button.activated {
+      .splash-landing > section button.default:active, .splash-landing > section button.default.activated {
         background: #637074; }
     .splash-landing > section .main {
       -ms-box-orient: horizontal;
@@ -1072,6 +1073,7 @@
       -webkit-justify-content: center;
       justify-content: center;
       height: 100%;
+      overflow: hidden;
       background-color: #F1F1F1;
       background-position: center;
       background-size: cover;
@@ -1087,9 +1089,9 @@
       @media screen and (min-width: 768px) {
         .splash-landing > section.splash-hero.active > div {
           -webkit-transition: all 0.3s ease-in-out;
-          -o-transition: all 0.3s ease-in-out;
-          -ms-transition: all 0.3s ease-in-out;
           -moz-transition: all 0.3s ease-in-out;
+          -ms-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
           transition: all 0.3s ease-in-out;
           filter: alpha(opacity=100);
           opacity: 1;
@@ -1123,11 +1125,11 @@
         left: 0;
         width: 100%; }
         .splash-landing > section.splash-hero .splash-scene-header svg, .splash-landing > section.splash-hero .splash-scene-footer svg {
-          -webkit-transition: all 0.15s ease-in-out;
-          -o-transition: all 0.15s ease-in-out;
-          -ms-transition: all 0.15s ease-in-out;
-          -moz-transition: all 0.15s ease-in-out;
-          transition: all 0.15s ease-in-out;
+          -webkit-transition: all 150ms ease-in-out;
+          -moz-transition: all 150ms ease-in-out;
+          -ms-transition: all 150ms ease-in-out;
+          -o-transition: all 150ms ease-in-out;
+          transition: all 150ms ease-in-out;
           display: block;
           width: 48px;
           height: 48px; }
@@ -1148,7 +1150,7 @@
             padding: 7.5px; }
       .splash-landing > section.splash-hero .splash-scene-header {
         height: auto !important;
-        top: 40px;
+        top: 10px;
         left: 10px;
         z-index: 12; }
         .splash-landing > section.splash-hero .splash-scene-header ul {
@@ -1211,8 +1213,13 @@
           background: #40484B;
           position: relative;
           width: 100%;
-          height: 100%; }
-          .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-img, .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-map, .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-overlay, .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-markers {
+          height: 100%;
+          overflow: hidden; }
+          .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-img, .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-map, .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-markers {
+            -webkit-animation-fill-mode: forwards;
+            -moz-animation-fill-mode: forwards;
+            -o-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
             position: absolute;
             top: 0;
             left: 0;
@@ -1220,9 +1227,6 @@
             height: 100%;
             background-position: center;
             background-size: cover; }
-          .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-overlay {
-            background: rgba(64, 72, 75, 0.8);
-            z-index: 10; }
           .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-markers {
             display: none;
             z-index: 11; }
@@ -1251,6 +1255,26 @@
               .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-markers .splash-marker.inactive {
                 filter: alpha(opacity=40) !important;
                 opacity: 0.4 !important; }
+              .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-markers .splash-marker:nth-child(1) {
+                -webkit-animation-delay: 3500ms;
+                -moz-animation-delay: 3500ms;
+                -o-animation-delay: 3500ms;
+                animation-delay: 3500ms; }
+              .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-markers .splash-marker:nth-child(2) {
+                -webkit-animation-delay: 3700ms;
+                -moz-animation-delay: 3700ms;
+                -o-animation-delay: 3700ms;
+                animation-delay: 3700ms; }
+              .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-markers .splash-marker:nth-child(3) {
+                -webkit-animation-delay: 3900ms;
+                -moz-animation-delay: 3900ms;
+                -o-animation-delay: 3900ms;
+                animation-delay: 3900ms; }
+              .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-markers .splash-marker:nth-child(4) {
+                -webkit-animation-delay: 4100ms;
+                -moz-animation-delay: 4100ms;
+                -o-animation-delay: 4100ms;
+                animation-delay: 4100ms; }
               .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-markers .splash-marker span {
                 display: block;
                 width: 100%; }
@@ -1275,11 +1299,11 @@
                   font-size: 18px;
                   font-weight: 600; }
           .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-map {
-            -webkit-transition: all 0.15s ease-in-out;
-            -o-transition: all 0.15s ease-in-out;
-            -ms-transition: all 0.15s ease-in-out;
-            -moz-transition: all 0.15s ease-in-out;
-            transition: all 0.15s ease-in-out; }
+            -webkit-transition: all 150ms ease-in-out;
+            -moz-transition: all 150ms ease-in-out;
+            -ms-transition: all 150ms ease-in-out;
+            -o-transition: all 150ms ease-in-out;
+            transition: all 150ms ease-in-out; }
             .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-map .splash-scene-map-img, .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-map:after {
               position: absolute;
               top: 0;
@@ -1296,22 +1320,519 @@
               display: block;
               background: rgba(74, 128, 163, 0.3); }
           .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-img {
-            -webkit-transition: all 0.15s ease-in-out;
-            -o-transition: all 0.15s ease-in-out;
-            -ms-transition: all 0.15s ease-in-out;
-            -moz-transition: all 0.15s ease-in-out;
-            transition: all 0.15s ease-in-out; }
+            -webkit-transition: all 150ms ease-in-out;
+            -moz-transition: all 150ms ease-in-out;
+            -ms-transition: all 150ms ease-in-out;
+            -o-transition: all 150ms ease-in-out;
+            transition: all 150ms ease-in-out; }
             .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-img:not(.opacity-0) {
-              filter: alpha(opacity=80);
-              opacity: 0.8; }
+              filter: alpha(opacity=50);
+              opacity: 0.5; }
+          .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            position: relative;
+            z-index: 12;
+            width: 100%;
+            max-width: 1048.5px;
+            margin: 15px;
+            height: 100%; }
+            .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout.wide {
+              max-width: 1280px; }
+              .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout.wide .splash-scene-device {
+                width: 39% !important; }
+                .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout.wide .splash-scene-device > div > svg {
+                  min-width: 457px !important; }
+              .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout.wide .splash-scene-adlib {
+                width: 61% !important; }
+            .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout > div {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -ms-flex-flow: row wrap;
+              -webkit-flex-flow: row wrap;
+              flex-flow: row wrap;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-align-content: center;
+              align-content: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              height: 100%; }
+            .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout button:not(.btn-ghost-white) {
+              height: 48px;
+              font-size: 24px;
+              font-weight: 600; }
+            .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device {
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-align-content: center;
+              align-content: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              display: none;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 27%;
+              padding: 15px; }
+              .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device.active {
+                -webkit-animation-name: splash-scene-device;
+                -moz-animation-name: splash-scene-device;
+                -o-animation-name: splash-scene-device;
+                animation-name: splash-scene-device;
+                -webkit-animation-duration: 0.75s;
+                -moz-animation-duration: 0.75s;
+                -o-animation-duration: 0.75s;
+                animation-duration: 0.75s;
+                -webkit-animation-fill-mode: forwards;
+                -moz-animation-fill-mode: forwards;
+                -o-animation-fill-mode: forwards;
+                animation-fill-mode: forwards; }
+              .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div {
+                position: relative; }
+                .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > svg {
+                  position: relative;
+                  z-index: 1;
+                  display: block;
+                  min-width: 256px; }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > svg .screen {
+                    fill: #e6389b; }
+                .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div {
+                  -ms-box-orient: horizontal;
+                  display: -webkit-box;
+                  display: -moz-box;
+                  display: -ms-flexbox;
+                  display: -moz-flex;
+                  display: -webkit-flex;
+                  display: flex;
+                  -webkit-flex-direction: row;
+                  flex-direction: row;
+                  -webkit-align-items: center;
+                  align-items: center;
+                  -webkit-align-content: center;
+                  align-content: center;
+                  -webkit-justify-content: center;
+                  justify-content: center;
+                  -ms-flex-flow: row wrap;
+                  -webkit-flex-flow: row wrap;
+                  flex-flow: row wrap;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  -webkit-transform: translate(-50%, -50%);
+                  -moz-transform: translate(-50%, -50%);
+                  -ms-transform: translate(-50%, -50%);
+                  -o-transform: translate(-50%, -50%);
+                  transform: translate(-50%, -50%);
+                  z-index: 2;
+                  background: #2B3234; }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div.android {
+                    width: 90%;
+                    height: 82%; }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div.ios {
+                    width: 87%;
+                    height: 76%; }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div.tablet {
+                    width: 79%;
+                    height: 87%; }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div.browser {
+                    width: 97.5%;
+                    height: 93.1%;
+                    margin-top: 2.8%;
+                    margin-left: -0.5px;
+                    border-bottom-left-radius: 3px;
+                    border-bottom-right-radius: 3px; }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-header {
+                    -ms-box-orient: horizontal;
+                    display: -webkit-box;
+                    display: -moz-box;
+                    display: -ms-flexbox;
+                    display: -moz-flex;
+                    display: -webkit-flex;
+                    display: flex;
+                    -ms-flex-flow: row wrap;
+                    -webkit-flex-flow: row wrap;
+                    flex-flow: row wrap;
+                    -webkit-flex-direction: row;
+                    flex-direction: row;
+                    -webkit-align-items: center;
+                    align-items: center;
+                    -webkit-align-content: center;
+                    align-content: center;
+                    -webkit-justify-content: center;
+                    justify-content: center;
+                    position: relative;
+                    height: calc(100% / 3);
+                    padding: 15px; }
+                    .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-header > div {
+                      filter: alpha(opacity=30);
+                      opacity: 0.3;
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%; }
+                    .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-header h1 {
+                      font-size: 20px;
+                      font-weight: 600;
+                      margin-bottom: 10px; }
+                    .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-header .device-logo {
+                      display: block; }
+                      .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-header .device-logo svg {
+                        display: block;
+                        width: 120px; }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-header .device-logo svg path:first-child {
+                          fill: rgba(255, 255, 255, 0.8); }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-header .device-logo svg path:last-child {
+                          fill: white; }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-header .device-logo svg text {
+                          fill: white; }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content {
+                    height: calc(100% / 3 * 2 - 10%);
+                    overflow: hidden; }
+                    .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content > div {
+                      height: 50%; }
+                      .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content > div h2 {
+                        padding: 5px;
+                        color: #40484B;
+                        font-size: 20px;
+                        font-weight: 600; }
+                      .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content > div span {
+                        font-size: 14px;
+                        font-weight: 600;
+                        text-align: center; }
+                      .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content > div ul {
+                        padding: 5px; }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content > div ul li {
+                          padding: 5px; }
+                      .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content > div.device-trending {
+                        position: relative;
+                        z-index: 1;
+                        background: #F1F1F1; }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content > div.device-trending:hover + .device-gurus {
+                          -webkit-transform: translateY(-15%);
+                          -moz-transform: translateY(-15%);
+                          -ms-transform: translateY(-15%);
+                          -o-transform: translateY(-15%);
+                          transform: translateY(-15%); }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content > div.device-trending ul li div {
+                          position: relative; }
+                          .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content > div.device-trending ul li div svg {
+                            fill: #934073; }
+                          .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content > div.device-trending ul li div span {
+                            display: block;
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            width: 100%;
+                            padding: 2px;
+                            background: #e6389b; }
+                      .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content > div.device-gurus {
+                        background: white; }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content > div.device-gurus:hover {
+                          -webkit-transform: translateY(-15%);
+                          -moz-transform: translateY(-15%);
+                          -ms-transform: translateY(-15%);
+                          -o-transform: translateY(-15%);
+                          transform: translateY(-15%); }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content > div.device-gurus ul li span:nth-child(1) {
+                          border-radius: 1000px;
+                          display: block;
+                          margin: 0 auto;
+                          width: 48px;
+                          height: 48px;
+                          background-position: center;
+                          background-size: cover;
+                          border: 2px solid #e6389b; }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-content > div.device-gurus ul li span:nth-child(2) {
+                          display: block;
+                          color: #e6389b; }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-category-switcher {
+                    -ms-box-orient: horizontal;
+                    display: -webkit-box;
+                    display: -moz-box;
+                    display: -ms-flexbox;
+                    display: -moz-flex;
+                    display: -webkit-flex;
+                    display: flex;
+                    -webkit-flex-direction: row;
+                    flex-direction: row;
+                    -webkit-align-items: center;
+                    align-items: center;
+                    -webkit-align-content: center;
+                    align-content: center;
+                    -webkit-justify-content: center;
+                    justify-content: center;
+                    height: 10%; }
+                    .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-category-switcher ul {
+                      width: 75%;
+                      max-width: 250px; }
+                      .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-category-switcher ul li div {
+                        display: block;
+                        margin: 5px;
+                        position: relative; }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-category-switcher ul li div svg {
+                          display: block; }
+                          .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-category-switcher ul li div svg:not(.square) {
+                            filter: alpha(opacity=0);
+                            opacity: 0;
+                            fill: none;
+                            stroke: white;
+                            stroke-width: 8px;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            padding: 1px; }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-category-switcher ul li div input {
+                          filter: alpha(opacity=0);
+                          opacity: 0;
+                          position: absolute;
+                          top: 0;
+                          left: 0;
+                          width: 100%;
+                          height: 100%;
+                          z-index: 10; }
+                          .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-category-switcher ul li div input:checked + div svg:not(.square) {
+                            filter: alpha(opacity=100);
+                            opacity: 1; }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-category-switcher ul li div.switcher-academic .square {
+                          fill: #e6389b; }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-category-switcher ul li div.switcher-baking .square {
+                          fill: #F6C64E; }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-category-switcher ul li div.switcher-photography .square {
+                          fill: #81B566; }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div .device-category-switcher ul li div.switcher-tech .square {
+                          fill: #55A4B7; }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div span {
+                    display: block; }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div svg {
+                    display: block;
+                    width: 100%; }
+                    .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div > div svg path {
+                      stroke: white; }
+                .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div .splash-scene-adlib-results {
+                  padding: 15px; }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div .splash-scene-adlib-results div:not(.progress) {
+                    position: relative;
+                    margin: 15px; }
+                    .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div .splash-scene-adlib-results div:not(.progress) h1 {
+                      width: 100%;
+                      font-size: 20px;
+                      font-weight: 600;
+                      text-align: center; }
+                      .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div .splash-scene-adlib-results div:not(.progress) h1:nth-child(2) {
+                        position: absolute;
+                        top: 0;
+                        margin: 0; }
+                      .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div .splash-scene-adlib-results div:not(.progress) h1.active {
+                        -webkit-animation-timing-function: ease-in;
+                        -moz-animation-timing-function: ease-in;
+                        -o-animation-timing-function: ease-in;
+                        animation-timing-function: ease-in;
+                        -webkit-animation-fill-mode: forwards;
+                        -moz-animation-fill-mode: forwards;
+                        -o-animation-fill-mode: forwards;
+                        animation-fill-mode: forwards;
+                        -webkit-animation-duration: 150ms;
+                        -moz-animation-duration: 150ms;
+                        -o-animation-duration: 150ms;
+                        animation-duration: 150ms;
+                        -webkit-animation-delay: 3500ms;
+                        -moz-animation-delay: 3500ms;
+                        -o-animation-delay: 3500ms;
+                        animation-delay: 3500ms; }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div .splash-scene-adlib-results div:not(.progress) h1.active:nth-child(1) {
+                          -webkit-animation-name: fadeOut;
+                          -moz-animation-name: fadeOut;
+                          -o-animation-name: fadeOut;
+                          animation-name: fadeOut; }
+                        .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div .splash-scene-adlib-results div:not(.progress) h1.active:nth-child(2) {
+                          -webkit-animation-name: fadeIn;
+                          -moz-animation-name: fadeIn;
+                          -o-animation-name: fadeIn;
+                          animation-name: fadeIn; }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div .splash-scene-adlib-results .progress {
+                    -webkit-align-items: flex-end;
+                    align-items: flex-end;
+                    display: block;
+                    width: 100%; }
+                    .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device > div .splash-scene-adlib-results .progress.active span {
+                      -webkit-animation-timing-function: ease-in;
+                      -moz-animation-timing-function: ease-in;
+                      -o-animation-timing-function: ease-in;
+                      animation-timing-function: ease-in;
+                      -webkit-animation-fill-mode: forwards;
+                      -moz-animation-fill-mode: forwards;
+                      -o-animation-fill-mode: forwards;
+                      animation-fill-mode: forwards;
+                      -webkit-animation-duration: 2.5s;
+                      -moz-animation-duration: 2.5s;
+                      -o-animation-duration: 2.5s;
+                      animation-duration: 2.5s;
+                      -webkit-animation-name: progress-bar;
+                      -moz-animation-name: progress-bar;
+                      -o-animation-name: progress-bar;
+                      animation-name: progress-bar;
+                      -webkit-animation-delay: 1000ms;
+                      -moz-animation-delay: 1000ms;
+                      -o-animation-delay: 1000ms;
+                      animation-delay: 1000ms; }
+            .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib {
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 73%;
+              padding: 15px; }
+              .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-header {
+                margin-bottom: 30px;
+                width: 100%; }
+                .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-header h1, .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-header h2 {
+                  width: 100%;
+                  text-align: left;
+                  font-weight: 600; }
+                .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-header h1 {
+                  font-size: 28px; }
+                .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-header h2 {
+                  margin-top: 0 !important;
+                  font-size: 20px; }
+              .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-statement {
+                width: 100%; }
+                .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-statement.active {
+                  -webkit-transform: translateY(-400%);
+                  -moz-transform: translateY(-400%);
+                  -ms-transform: translateY(-400%);
+                  -o-transform: translateY(-400%);
+                  transform: translateY(-400%); }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-statement.active h1 {
+                    -webkit-flex-direction: row;
+                    flex-direction: row;
+                    -webkit-align-items: center;
+                    align-items: center;
+                    -webkit-align-content: center;
+                    align-content: center;
+                    -webkit-justify-content: center;
+                    justify-content: center; }
+                .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-statement h1 {
+                  -ms-box-orient: horizontal;
+                  display: -webkit-box;
+                  display: -moz-box;
+                  display: -ms-flexbox;
+                  display: -moz-flex;
+                  display: -webkit-flex;
+                  display: flex;
+                  -ms-flex-flow: row wrap;
+                  -webkit-flex-flow: row wrap;
+                  flex-flow: row wrap;
+                  -webkit-align-items: center;
+                  align-items: center;
+                  font-size: 32px;
+                  font-weight: 600; }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-statement h1 span {
+                    display: inline-block;
+                    padding: 0 7.5px;
+                    width: 25%;
+                    max-width: 188px; }
+                    .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-statement h1 span button {
+                      max-width: 173px; }
+                      .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-statement h1 span button.blank {
+                        border: 2px dashed white;
+                        background: rgba(230, 56, 155, 0.15); }
+                      .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-statement h1 span button:not(.blank) {
+                        background: #e6389b; }
+              .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-options {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                -ms-box-orient: horizontal;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -moz-flex;
+                display: -webkit-flex;
+                display: flex;
+                -ms-flex-flow: row wrap;
+                -webkit-flex-flow: row wrap;
+                flex-flow: row wrap;
+                width: calc(100% + 15px);
+                margin: 30px -7.5px 7.5px; }
+                .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-options li {
+                  width: 25%;
+                  padding: 7.5px; }
+                  .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-options li button {
+                    max-width: 173px; }
+                    .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-options li button:not(.active) {
+                      background: #e6389b; }
+                    .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-options li button.active, .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-options li button:active {
+                      background: white;
+                      color: #e6389b; }
+                    .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-options li button:hover, .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-options li button:focus, .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-adlib-options li button:active {
+                      filter: alpha(opacity=100) !important;
+                      opacity: 1 !important; }
+              .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-cta-buttons {
+                width: 100%;
+                margin: 30px auto 7.5px; }
+                .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib .splash-scene-cta-buttons button {
+                  display: block;
+                  margin: 15px auto;
+                  font-size: 24px; }
+          @media screen and (min-width: 768px) {
+            .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-device {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex; }
+            .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib {
+              padding: 15px; }
+              .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-layout .splash-scene-adlib.active {
+                -webkit-animation-name: splash-scene-adlib;
+                -moz-animation-name: splash-scene-adlib;
+                -o-animation-name: splash-scene-adlib;
+                animation-name: splash-scene-adlib;
+                -webkit-animation-duration: 0.75s;
+                -moz-animation-duration: 0.75s;
+                -o-animation-duration: 0.75s;
+                animation-duration: 0.75s;
+                -webkit-animation-fill-mode: forwards;
+                -moz-animation-fill-mode: forwards;
+                -o-animation-fill-mode: forwards;
+                animation-fill-mode: forwards; } }
           .splash-landing > section.splash-hero .splash-scene ion-slide [class*="splash-scene-prop"] {
             position: relative;
             z-index: 9; }
             .splash-landing > section.splash-hero .splash-scene ion-slide [class*="splash-scene-prop"].splash-scene-prop-desktop {
               -webkit-transition: all 0.25s ease-in-out;
-              -o-transition: all 0.25s ease-in-out;
-              -ms-transition: all 0.25s ease-in-out;
               -moz-transition: all 0.25s ease-in-out;
+              -ms-transition: all 0.25s ease-in-out;
+              -o-transition: all 0.25s ease-in-out;
               transition: all 0.25s ease-in-out;
               display: none; }
               .splash-landing > section.splash-hero .splash-scene ion-slide [class*="splash-scene-prop"].splash-scene-prop-desktop.active {
@@ -1392,10 +1913,10 @@
                   font-size: 28px;
                   font-weight: 600; }
                 .splash-landing > section.splash-hero .splash-scene ion-slide [class*="splash-scene-prop"].splash-scene-prop-desktop .splash-scene-search .progress span.progress-bar {
-                  -webkit-timing-function: ease-in;
-                  -moz-timing-function: ease-in;
-                  -o-timing-function: ease-in;
-                  timing-function: ease-in;
+                  -webkit-animation-timing-function: ease-in;
+                  -moz-animation-timing-function: ease-in;
+                  -o-animation-timing-function: ease-in;
+                  animation-timing-function: ease-in;
                   -webkit-animation-fill-mode: forwards;
                   -moz-animation-fill-mode: forwards;
                   -o-animation-fill-mode: forwards;
@@ -1461,11 +1982,11 @@
                 width: 100px;
                 margin: 0 auto; }
                 .splash-landing > section.splash-hero .splash-scene ion-slide [class*="splash-scene-prop"].splash-scene-prop-mobile .splash-scene-svg a svg {
-                  -webkit-transition: all 0.15s ease-in-out;
-                  -o-transition: all 0.15s ease-in-out;
-                  -ms-transition: all 0.15s ease-in-out;
-                  -moz-transition: all 0.15s ease-in-out;
-                  transition: all 0.15s ease-in-out;
+                  -webkit-transition: all 150ms ease-in-out;
+                  -moz-transition: all 150ms ease-in-out;
+                  -ms-transition: all 150ms ease-in-out;
+                  -o-transition: all 150ms ease-in-out;
+                  transition: all 150ms ease-in-out;
                   display: block;
                   width: 100px;
                   height: 100px; }
@@ -1499,6 +2020,33 @@
               .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-gurus.pf-card-group > li {
                 position: relative;
                 width: 25%; }
+                .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-gurus.pf-card-group > li:nth-child(1) {
+                  -webkit-animation-fill-mode: forwards;
+                  -moz-animation-fill-mode: forwards;
+                  -o-animation-fill-mode: forwards;
+                  animation-fill-mode: forwards;
+                  -webkit-animation-delay: 3000ms;
+                  -moz-animation-delay: 3000ms;
+                  -o-animation-delay: 3000ms;
+                  animation-delay: 3000ms; }
+                .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-gurus.pf-card-group > li:nth-child(2) {
+                  -webkit-animation-fill-mode: forwards;
+                  -moz-animation-fill-mode: forwards;
+                  -o-animation-fill-mode: forwards;
+                  animation-fill-mode: forwards;
+                  -webkit-animation-delay: 3200ms;
+                  -moz-animation-delay: 3200ms;
+                  -o-animation-delay: 3200ms;
+                  animation-delay: 3200ms; }
+                .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-gurus.pf-card-group > li:nth-child(3) {
+                  -webkit-animation-fill-mode: forwards;
+                  -moz-animation-fill-mode: forwards;
+                  -o-animation-fill-mode: forwards;
+                  animation-fill-mode: forwards;
+                  -webkit-animation-delay: 3400ms;
+                  -moz-animation-delay: 3400ms;
+                  -o-animation-delay: 3400ms;
+                  animation-delay: 3400ms; }
                 .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-gurus.pf-card-group > li .splash-scene-guru-message {
                   position: absolute;
                   left: 7.5px;
@@ -1517,11 +2065,11 @@
               width: 100%;
               overflow: auto; }
               .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-gurus.pf-card-group-mobile li {
-                -webkit-transition: all 0.15s ease-in-out;
-                -o-transition: all 0.15s ease-in-out;
-                -ms-transition: all 0.15s ease-in-out;
-                -moz-transition: all 0.15s ease-in-out;
-                transition: all 0.15s ease-in-out;
+                -webkit-transition: all 150ms ease-in-out;
+                -moz-transition: all 150ms ease-in-out;
+                -ms-transition: all 150ms ease-in-out;
+                -o-transition: all 150ms ease-in-out;
+                transition: all 150ms ease-in-out;
                 padding: 7.5px; }
                 .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-gurus.pf-card-group-mobile li.active {
                   padding: 0 18px; }
@@ -1604,13 +2152,10 @@
           .splash-landing > section.splash-hero .splash-scene ion-slide#splash-tech .splash-scene-markers .splash-marker.active svg path {
             fill: #55A4B7; }
           @media screen and (min-width: 768px) {
-            .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-img:not(.opacity-0) {
-              filter: alpha(opacity=100);
-              opacity: 1; }
             .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-markers, .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-prop-desktop {
               display: block !important; }
             .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-header {
-              top: 70px;
+              top: 0;
               left: 0; }
             .splash-landing > section.splash-hero .splash-scene ion-slide .splash-scene-footer {
               -ms-box-orient: horizontal !important;
@@ -1772,11 +2317,11 @@
             .splash-landing > section.splash-hero > footer:not(.splash-scene-footer) .footer-content ul li {
               width: calc(100% / 3); } }
     .splash-landing > section.splash-categories > .main {
-      -webkit-transition: all 0.15s ease-in-out;
-      -o-transition: all 0.15s ease-in-out;
-      -ms-transition: all 0.15s ease-in-out;
-      -moz-transition: all 0.15s ease-in-out;
-      transition: all 0.15s ease-in-out;
+      -webkit-transition: all 150ms ease-in-out;
+      -moz-transition: all 150ms ease-in-out;
+      -ms-transition: all 150ms ease-in-out;
+      -o-transition: all 150ms ease-in-out;
+      transition: all 150ms ease-in-out;
       -ms-flex-flow: row wrap;
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap;
@@ -1885,11 +2430,11 @@
               width: 100%;
               height: 100%; }
               .splash-landing > section.splash-categories > .main .category-card-list li > div a:before, .splash-landing > section.splash-categories > .main .category-card-list li > div > span:before {
-                -webkit-transition: all 0.15s ease-in-out;
-                -o-transition: all 0.15s ease-in-out;
-                -ms-transition: all 0.15s ease-in-out;
-                -moz-transition: all 0.15s ease-in-out;
-                transition: all 0.15s ease-in-out;
+                -webkit-transition: all 150ms ease-in-out;
+                -moz-transition: all 150ms ease-in-out;
+                -ms-transition: all 150ms ease-in-out;
+                -o-transition: all 150ms ease-in-out;
+                transition: all 150ms ease-in-out;
                 filter: alpha(opacity=60);
                 opacity: 0.6;
                 content: "";
@@ -2482,9 +3027,9 @@
           -o-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
           -webkit-transition: all 0.3s ease-in-out;
-          -o-transition: all 0.3s ease-in-out;
-          -ms-transition: all 0.3s ease-in-out;
           -moz-transition: all 0.3s ease-in-out;
+          -ms-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
           transition: all 0.3s ease-in-out;
           -webkit-animation-duration: 0.6s;
           -moz-animation-duration: 0.6s;
@@ -2683,9 +3228,9 @@
             -o-animation-fill-mode: forwards;
             animation-fill-mode: forwards;
             -webkit-transition: all 0.3s ease-in-out;
-            -o-transition: all 0.3s ease-in-out;
-            -ms-transition: all 0.3s ease-in-out;
             -moz-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
             -webkit-animation-duration: 0.9s;
             -moz-animation-duration: 0.9s;
@@ -2705,9 +3250,9 @@
               -o-animation-fill-mode: forwards;
               animation-fill-mode: forwards;
               -webkit-transition: all 0.3s ease-in-out;
-              -o-transition: all 0.3s ease-in-out;
-              -ms-transition: all 0.3s ease-in-out;
               -moz-transition: all 0.3s ease-in-out;
+              -ms-transition: all 0.3s ease-in-out;
+              -o-transition: all 0.3s ease-in-out;
               transition: all 0.3s ease-in-out;
               -webkit-animation-duration: 0.9s;
               -moz-animation-duration: 0.9s;
@@ -3345,9 +3890,9 @@
             height: 64px; }
           .splash-landing > section#splash-footer ul li svg {
             -webkit-transition: all 1.2s ease-in-out;
-            -o-transition: all 1.2s ease-in-out;
-            -ms-transition: all 1.2s ease-in-out;
             -moz-transition: all 1.2s ease-in-out;
+            -ms-transition: all 1.2s ease-in-out;
+            -o-transition: all 1.2s ease-in-out;
             transition: all 1.2s ease-in-out;
             -webkit-animation-name: pulse-heart;
             -moz-animation-name: pulse-heart;
@@ -3624,11 +4169,11 @@
   .splash-landing#home-splash > .splash-toast a.header-close svg path {
     stroke: #40484B !important; }
   .splash-landing#home-splash > .splash-header:before {
-    -webkit-transition: all 0.15s ease-in-out;
-    -o-transition: all 0.15s ease-in-out;
-    -ms-transition: all 0.15s ease-in-out;
-    -moz-transition: all 0.15s ease-in-out;
-    transition: all 0.15s ease-in-out;
+    -webkit-transition: all 150ms ease-in-out;
+    -moz-transition: all 150ms ease-in-out;
+    -ms-transition: all 150ms ease-in-out;
+    -o-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
     filter: alpha(opacity=90);
     opacity: 0.9;
     background: #4e5a5e; }
@@ -4091,5 +4636,1165 @@
   display: none !important;
   visibility: hidden !important;
   z-index: -999999 !important; }
+
+/* ---------- HERO */
+.splash-landing.new > header.splash-header:before {
+  filter: alpha(opacity=0) !important;
+  opacity: 0 !important; }
+.splash-landing.new > section.splash-hero {
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  position: relative;
+  background: #40484B; }
+  .splash-landing.new > section.splash-hero .splash-hero-nav {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    right: 0; }
+    .splash-landing.new > section.splash-hero .splash-hero-nav a, .splash-landing.new > section.splash-hero .splash-hero-nav h2 {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center;
+      padding: 0 10px;
+      height: 48px;
+      font-weight: 600;
+      font-size: 18px; }
+    .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-academic {
+      background: rgba(230, 56, 155, 0.8); }
+      .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-academic:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-academic:focus {
+        background: #e6389b; }
+    .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-baking {
+      background: rgba(246, 198, 78, 0.8); }
+      .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-baking:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-baking:focus {
+        background: #F6C64E; }
+    .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-photography {
+      background: rgba(129, 181, 102, 0.8); }
+      .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-photography:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-photography:focus {
+        background: #81B566; }
+    .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-household {
+      background: rgba(120, 114, 227, 0.8); }
+      .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-household:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-household:focus {
+        background: #7872e3; }
+    .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-tech {
+      background: rgba(85, 164, 183, 0.8); }
+      .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-tech:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-tech:focus {
+        background: #55A4B7; }
+    .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-cal {
+      background: rgba(0, 48, 87, 0.8); }
+      .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-cal:hover, .splash-landing.new > section.splash-hero .splash-hero-nav a.bg-cal:focus {
+        background: #003057; }
+    .splash-landing.new > section.splash-hero .splash-hero-nav > div {
+      position: relative; }
+      .splash-landing.new > section.splash-hero .splash-hero-nav > div > a {
+        position: relative;
+        z-index: 1;
+        padding: 0 12px 0 15px;
+        border: 2px solid white;
+        border-radius: 2px; }
+        .splash-landing.new > section.splash-hero .splash-hero-nav > div > a svg {
+          fill: none;
+          stroke: white;
+          stroke-width: 10px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          display: block;
+          margin-left: 5px;
+          width: 24px;
+          height: 24px; }
+      .splash-landing.new > section.splash-hero .splash-hero-nav > div > div {
+        -webkit-transition: 150ms ease-in-out;
+        -moz-transition: 150ms ease-in-out;
+        -ms-transition: 150ms ease-in-out;
+        -o-transition: 150ms ease-in-out;
+        transition: 150ms ease-in-out;
+        -webkit-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+        transform: translateY(-100%);
+        position: absolute;
+        left: 50%;
+        margin-left: -99px;
+        top: 58px;
+        width: 198px; }
+        .splash-landing.new > section.splash-hero .splash-hero-nav > div > div:not(.visible) {
+          filter: alpha(opacity=0);
+          opacity: 0;
+          visibility: hidden; }
+        .splash-landing.new > section.splash-hero .splash-hero-nav > div > div.visible {
+          filter: alpha(opacity=100);
+          opacity: 1;
+          -webkit-transform: translateY(0);
+          -moz-transform: translateY(0);
+          -ms-transform: translateY(0);
+          -o-transform: translateY(0);
+          transform: translateY(0); }
+        .splash-landing.new > section.splash-hero .splash-hero-nav > div > div > svg {
+          position: relative;
+          z-index: 5; }
+        .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul {
+          margin-top: -6px; }
+          .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li {
+            position: relative;
+            height: 48px;
+            border: 2px solid white;
+            border-top: 0;
+            font-size: 18px;
+            font-weight: 600; }
+            .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li:first-child {
+              border-top-left-radius: 2px;
+              border-top-right-radius: 2px; }
+            .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li:last-child {
+              border-bottom-left-radius: 2px;
+              border-bottom-right-radius: 2px; }
+            .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li:not(:first-child) a + .arrow {
+              display: none; }
+            .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-align-content: center;
+              align-content: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              height: 100%;
+              width: 100%;
+              padding: 0 15px; }
+              .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a svg {
+                fill: none;
+                stroke: white;
+                stroke-width: 10px;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                display: none;
+                margin-left: 5px;
+                width: 24px;
+                height: 24px; }
+              .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a.active svg {
+                display: block; }
+              .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow {
+                position: absolute;
+                left: 50%;
+                -webkit-transform: translateX(-50%);
+                -moz-transform: translateX(-50%);
+                -ms-transform: translateX(-50%);
+                -o-transform: translateX(-50%);
+                transform: translateX(-50%);
+                display: block;
+                top: -13px;
+                width: 30px;
+                height: 15px; }
+                .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow path {
+                  -webkit-transition: all 150ms ease-in-out;
+                  -moz-transition: all 150ms ease-in-out;
+                  -ms-transition: all 150ms ease-in-out;
+                  -o-transition: all 150ms ease-in-out;
+                  transition: all 150ms ease-in-out; }
+                .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-academic path {
+                  fill: rgba(230, 56, 155, 0.8); }
+                .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-baking path {
+                  fill: rgba(246, 198, 78, 0.8); }
+                .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-photography path {
+                  fill: rgba(129, 181, 102, 0.8); }
+                .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-household path {
+                  fill: rgba(120, 114, 227, 0.8); }
+                .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-tech {
+                  background: none !important; }
+                  .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-tech path {
+                    fill: rgba(85, 164, 183, 0.8); }
+                .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-cal path {
+                  fill: rgba(0, 48, 87, 0.8); }
+              .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-academic path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-academic path {
+                fill: #e6389b; }
+              .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-baking path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-baking path {
+                fill: #F6C64E; }
+              .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-photography path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-photography path {
+                fill: #81B566; }
+              .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-household path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-household path {
+                fill: #7872e3; }
+              .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-tech path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-tech path {
+                fill: #55A4B7; }
+              .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-cal path, .splash-landing.new > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-cal path {
+                fill: #003057; }
+    .splash-landing.new > section.splash-hero .splash-hero-nav.desktop {
+      display: none; }
+    .splash-landing.new > section.splash-hero .splash-hero-nav.mobile > div > a {
+      border: 0; }
+  .splash-landing.new > section.splash-hero .splash-hero-map {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .splash-landing.new > section.splash-hero .splash-hero-map div {
+      filter: alpha(opacity=20);
+      opacity: 0.2;
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      background-size: cover;
+      -webkit-filter: invert(100%);
+      -moz-filter: invert(100%);
+      -ms-filter: invert(100%);
+      -o-filter: invert(100%);
+      filter: invert(100%); }
+    .splash-landing.new > section.splash-hero .splash-hero-map.animated {
+      -webkit-animation-delay: 200ms;
+      -moz-animation-delay: 200ms;
+      -ms-animation-delay: 200ms;
+      -o-animation-delay: 200ms;
+      animation-delay: 200ms; }
+  .splash-landing.new > section.splash-hero .splash-hero-markers {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers.active {
+      z-index: 4; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker {
+      position: absolute; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:not(:first-child) {
+        display: none; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(1) {
+        -webkit-animation-delay: 500ms;
+        -moz-animation-delay: 500ms;
+        -ms-animation-delay: 500ms;
+        -o-animation-delay: 500ms;
+        animation-delay: 500ms; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(2) {
+        -webkit-animation-delay: 1500ms;
+        -moz-animation-delay: 1500ms;
+        -ms-animation-delay: 1500ms;
+        -o-animation-delay: 1500ms;
+        animation-delay: 1500ms; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(3) {
+        -webkit-animation-delay: 1200ms;
+        -moz-animation-delay: 1200ms;
+        -ms-animation-delay: 1200ms;
+        -o-animation-delay: 1200ms;
+        animation-delay: 1200ms; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(4) {
+        -webkit-animation-delay: 1400ms;
+        -moz-animation-delay: 1400ms;
+        -ms-animation-delay: 1400ms;
+        -o-animation-delay: 1400ms;
+        animation-delay: 1400ms; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(5) {
+        -webkit-animation-delay: 1100ms;
+        -moz-animation-delay: 1100ms;
+        -ms-animation-delay: 1100ms;
+        -o-animation-delay: 1100ms;
+        animation-delay: 1100ms; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(6) {
+        -webkit-animation-delay: 1000ms;
+        -moz-animation-delay: 1000ms;
+        -ms-animation-delay: 1000ms;
+        -o-animation-delay: 1000ms;
+        animation-delay: 1000ms; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location {
+        border-radius: 1000px;
+        margin: 10px;
+        width: 10px;
+        height: 10px;
+        position: absolute; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location.top {
+          top: -25px; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bottom {
+          bottom: -25px; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location.left {
+          left: 30px; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location.right {
+          right: 30px; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-academic {
+          background: #e6389b; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-baking {
+          background: #F6C64E; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-photography {
+          background: #81B566; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-household {
+          background: #7872e3; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-tech {
+          background: #55A4B7; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message {
+        filter: alpha(opacity=0);
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        left: 0; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message svg {
+          width: 262px;
+          height: 182px; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message div {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          padding: 15px; }
+          .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message div p {
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 8px;
+            text-align: left; }
+          .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message div .signature {
+            line-height: 1;
+            margin: -5px 0 0;
+            font-size: 28px;
+            font-weight: 400;
+            font-family: 'Cedarville Cursive', cursive;
+            text-align: center; }
+          .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message div button {
+            border-radius: 1000px;
+            -webkit-align-self: flex-end;
+            align-self: flex-end;
+            display: block;
+            margin: 0 auto;
+            width: auto;
+            height: 36px;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            background: #e6389b;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message.top {
+          top: -197px; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .message.bottom {
+          bottom: -197px; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info {
+        -webkit-transition: all 150ms ease-in-out;
+        -moz-transition: all 150ms ease-in-out;
+        -ms-transition: all 150ms ease-in-out;
+        -o-transition: all 150ms ease-in-out;
+        transition: all 150ms ease-in-out; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info svg {
+          width: 262px;
+          height: 107px; }
+          .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info svg .line, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info svg .fill {
+            -webkit-transition: all 150ms ease-in-out;
+            -moz-transition: all 150ms ease-in-out;
+            -ms-transition: all 150ms ease-in-out;
+            -o-transition: all 150ms ease-in-out;
+            transition: all 150ms ease-in-out; }
+          .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info svg .line {
+            stroke: white;
+            stroke-width: 4px;
+            stroke-linecap: round;
+            stroke-linejoin: round; }
+          .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info svg .fill {
+            fill: #40484B; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info div {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-align-items: center;
+          align-items: center;
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: calc(100% - 19px);
+          padding: 15px; }
+          .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info div .user-icon {
+            margin: 0;
+            width: 60px;
+            height: 60px;
+            border-width: 2px; }
+          .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info div aside {
+            width: 172px; }
+          .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info div ul {
+            width: 172px; }
+            .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info div ul li {
+              font-size: 14px;
+              font-weight: 600;
+              text-align: left;
+              line-height: 1.3; }
+              .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info div ul li:first-child {
+                font-size: 20px; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info.left div ul {
+          padding-left: 15px; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info.right div {
+          -webkit-justify-content: flex-end;
+          justify-content: flex-end; }
+          .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info.right div ul {
+            padding-right: 15px;
+            text-align: right; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info.bottom div {
+          bottom: 1px; }
+        .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info.top div {
+          top: 1px; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .message {
+        -webkit-animation: bounceInUp 1000ms ease-in 2200ms 1 forwards;
+        -moz-animation: bounceInUp 1000ms ease-in 2200ms 1 forwards;
+        -ms-animation: bounceInUp 1000ms ease-in 2200ms 1 forwards;
+        -o-animation: bounceInUp 1000ms ease-in 2200ms 1 forwards;
+        animation: bounceInUp 1000ms ease-in 2200ms 1 forwards; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.active .message {
+        -webkit-animation: bounceInUp 1000ms ease-in 0ms 1 forwards;
+        -moz-animation: bounceInUp 1000ms ease-in 0ms 1 forwards;
+        -ms-animation: bounceInUp 1000ms ease-in 0ms 1 forwards;
+        -o-animation: bounceInUp 1000ms ease-in 0ms 1 forwards;
+        animation: bounceInUp 1000ms ease-in 0ms 1 forwards; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .message, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.active .message {
+        visibility: visible; }
+  .splash-landing.new > section.splash-hero .splash-hero-skip {
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    right: 0;
+    padding: 15px; }
+    .splash-landing.new > section.splash-hero .splash-hero-skip.rollIn {
+      -webkit-animation-name: rollInLeft;
+      -moz-animation-name: rollInLeft;
+      -ms-animation-name: rollInLeft;
+      -o-animation-name: rollInLeft;
+      animation-name: rollInLeft; }
+    .splash-landing.new > section.splash-hero .splash-hero-skip button {
+      filter: alpha(opacity=50);
+      opacity: 0.5;
+      -webkit-transform: rotate(-15deg);
+      -moz-transform: rotate(-15deg);
+      -ms-transform: rotate(-15deg);
+      -o-transform: rotate(-15deg);
+      transform: rotate(-15deg);
+      border-radius: 1000px;
+      width: 64px;
+      height: 64px;
+      background: none;
+      border: 2px solid white;
+      font-size: 20px;
+      font-weight: 600;
+      text-transform: uppercase; }
+  .splash-landing.new > section.splash-hero .splash-device {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -306px; }
+    .splash-landing.new > section.splash-hero .splash-device .splash-device-svg {
+      -webkit-transition: all 150ms ease-in-out;
+      -moz-transition: all 150ms ease-in-out;
+      -ms-transition: all 150ms ease-in-out;
+      -o-transition: all 150ms ease-in-out;
+      transition: all 150ms ease-in-out;
+      -webkit-transition-delay: 500ms;
+      -moz-transition-delay: 500ms;
+      -ms-transition-delay: 500ms;
+      -o-transition-delay: 500ms;
+      transition-delay: 500ms;
+      filter: alpha(opacity=10);
+      opacity: 0.1;
+      display: block;
+      width: 100%; }
+      .splash-landing.new > section.splash-hero .splash-device .splash-device-svg.active {
+        filter: alpha(opacity=100);
+        opacity: 1; }
+    .splash-landing.new > section.splash-hero .splash-device.active {
+      z-index: 5; }
+    .splash-landing.new > section.splash-hero .splash-device.splash-device-iphone svg {
+      max-width: 320px; }
+    .splash-landing.new > section.splash-hero .splash-device.splash-device-iphone .splash-device-content, .splash-landing.new > section.splash-hero .splash-device.splash-device-iphone .splash-device-profile {
+      top: 12.6%;
+      left: 7.3%;
+      width: 85.4%;
+      height: 75%; }
+      .splash-landing.new > section.splash-hero .splash-device.splash-device-iphone .splash-device-content .coach-click, .splash-landing.new > section.splash-hero .splash-device.splash-device-iphone .splash-device-profile .coach-click {
+        bottom: 65px;
+        right: -90px; }
+    .splash-landing.new > section.splash-hero .splash-device .splash-device-profile {
+      position: absolute;
+      background: #e6389b; }
+    .splash-landing.new > section.splash-hero .splash-device .splash-device-content {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      position: absolute; }
+      .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        padding: 150px 15px 15px; }
+        .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib {
+          padding-bottom: 30px; }
+          .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib h1 {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -ms-flex-flow: row wrap;
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            font-weight: 600; }
+            .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib h1 a {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-align-content: center;
+              align-content: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              height: 38px;
+              padding: 0 10px;
+              border-radius: 8px;
+              margin: 5px;
+              font-size: 18px; }
+              .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib h1 a.bg-academic {
+                background: #e6389b; }
+              .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib h1 a.bg-baking {
+                background: #F6C64E; }
+              .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib h1 a.bg-photography {
+                background: #81B566; }
+              .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib h1 a.bg-household {
+                background: #7872e3; }
+              .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib h1 a.bg-tech {
+                background: #55A4B7; }
+        .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search p {
+          position: relative;
+          font-size: 18px;
+          font-weight: 600;
+          text-align: center;
+          width: 100%; }
+          .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search p span {
+            -webkit-animation-delay: 3500ms;
+            -moz-animation-delay: 3500ms;
+            -ms-animation-delay: 3500ms;
+            -o-animation-delay: 3500ms;
+            animation-delay: 3500ms; }
+          .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search p span:nth-child(2) {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center; }
+        .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search h3 {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          margin: 15px 0;
+          width: 100%;
+          height: 30px; }
+          .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search h3 span:nth-child(1), .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search h3 span:nth-child(3) {
+            z-index: -1;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent; }
+          .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search h3 span:nth-child(2) {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            width: calc(100% - 60px);
+            height: 100%;
+            padding: 0 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600; }
+        .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search .progress.white-round span {
+          background: #69B3A5 !important; }
+          .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-search .progress.white-round span.animate {
+            -webkit-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+            -moz-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+            -ms-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+            -o-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+            animation: progress-bar 2500ms ease-in 1000ms 1 forwards; }
+      .splash-landing.new > section.splash-hero .splash-device .splash-device-content .splash-device-button {
+        -webkit-align-self: flex-end;
+        align-self: flex-end;
+        width: 100%; }
+      .splash-landing.new > section.splash-hero .splash-device .splash-device-content button {
+        width: 100%;
+        height: 54px;
+        background: #69B3A5;
+        font-weight: 600;
+        text-transform: uppercase; }
+        .splash-landing.new > section.splash-hero .splash-device .splash-device-content button.opacity-0 {
+          visibility: hidden; }
+          .splash-landing.new > section.splash-hero .splash-device .splash-device-content button.opacity-0:hover, .splash-landing.new > section.splash-hero .splash-device .splash-device-content button.opacity-0:focus {
+            filter: alpha(opacity=0) !important;
+            opacity: 0 !important; }
+        .splash-landing.new > section.splash-hero .splash-device .splash-device-content button.animated {
+          -webkit-animation-delay: 1000ms;
+          -moz-animation-delay: 1000ms;
+          -ms-animation-delay: 1000ms;
+          -o-animation-delay: 1000ms;
+          animation-delay: 1000ms; }
+      .splash-landing.new > section.splash-hero .splash-device .splash-device-content .coach-click {
+        display: block;
+        position: absolute;
+        width: 106px; }
+        .splash-landing.new > section.splash-hero .splash-device .splash-device-content .coach-click path:nth-child(1) {
+          stroke-dasharray: 137;
+          stroke-dashoffset: 137; }
+        .splash-landing.new > section.splash-hero .splash-device .splash-device-content .coach-click path:nth-child(2) {
+          stroke-dasharray: 53;
+          stroke-dashoffset: 53; }
+        .splash-landing.new > section.splash-hero .splash-device .splash-device-content .coach-click path.animate:nth-child(1) {
+          -webkit-animation: coach-click-2 200ms ease-in 1500ms 1 forwards;
+          -moz-animation: coach-click-2 200ms ease-in 1500ms 1 forwards;
+          -ms-animation: coach-click-2 200ms ease-in 1500ms 1 forwards;
+          -o-animation: coach-click-2 200ms ease-in 1500ms 1 forwards;
+          animation: coach-click-2 200ms ease-in 1500ms 1 forwards; }
+        .splash-landing.new > section.splash-hero .splash-device .splash-device-content .coach-click path.animate:nth-child(2) {
+          -webkit-animation: coach-click-1 100ms ease-in 1700ms 1 forwards;
+          -moz-animation: coach-click-1 100ms ease-in 1700ms 1 forwards;
+          -ms-animation: coach-click-1 100ms ease-in 1700ms 1 forwards;
+          -o-animation: coach-click-1 100ms ease-in 1700ms 1 forwards;
+          animation: coach-click-1 100ms ease-in 1700ms 1 forwards; }
+        .splash-landing.new > section.splash-hero .splash-device .splash-device-content .coach-click g g {
+          -webkit-animation-delay: 2000ms;
+          -moz-animation-delay: 2000ms;
+          -ms-animation-delay: 2000ms;
+          -o-animation-delay: 2000ms;
+          animation-delay: 2000ms; }
+  .splash-landing.new > section.splash-hero .coach-scroll {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: 3;
+    bottom: -88px;
+    width: 328px; }
+    .splash-landing.new > section.splash-hero .coach-scroll svg {
+      -webkit-animation-delay: 3000ms;
+      -moz-animation-delay: 3000ms;
+      -ms-animation-delay: 3000ms;
+      -o-animation-delay: 3000ms;
+      animation-delay: 3000ms;
+      display: block;
+      width: 100%; }
+      .splash-landing.new > section.splash-hero .coach-scroll svg path, .splash-landing.new > section.splash-hero .coach-scroll svg rect {
+        -webkit-transition: all 1000ms ease-in-out;
+        -moz-transition: all 1000ms ease-in-out;
+        -ms-transition: all 1000ms ease-in-out;
+        -o-transition: all 1000ms ease-in-out;
+        transition: all 1000ms ease-in-out;
+        stroke: rgba(255, 255, 255, 0.15); }
+      .splash-landing.new > section.splash-hero .coach-scroll svg rect {
+        fill: rgba(64, 72, 75, 0.5); }
+    .splash-landing.new > section.splash-hero .coach-scroll.active {
+      z-index: 11; }
+  .splash-landing.new > section.splash-hero .splash-hero-content {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    margin-bottom: 75px; }
+    .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib {
+      width: 100%; }
+      .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib h1 {
+        -webkit-animation-delay: 200ms;
+        -moz-animation-delay: 200ms;
+        -ms-animation-delay: 200ms;
+        -o-animation-delay: 200ms;
+        animation-delay: 200ms;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        font-size: 28px;
+        font-weight: 600; }
+        .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib h1 a {
+          margin: 0 15px; }
+      .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        position: relative;
+        width: 130px;
+        height: 38px;
+        padding: 0;
+        border-radius: 8px;
+        font-size: 20px;
+        font-weight: 600; }
+        .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a svg {
+          -webkit-transition: all 150ms ease-in-out;
+          -moz-transition: all 150ms ease-in-out;
+          -ms-transition: all 150ms ease-in-out;
+          -o-transition: all 150ms ease-in-out;
+          transition: all 150ms ease-in-out;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a svg.desktop {
+            display: none; }
+        .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a b {
+          -webkit-animation-delay: 1200ms;
+          -moz-animation-delay: 1200ms;
+          -ms-animation-delay: 1200ms;
+          -o-animation-delay: 1200ms;
+          animation-delay: 1200ms;
+          font-weight: 600 !important; }
+        .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):hover, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):focus, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank)[class*="translate-blank"] {
+          background: #69B3A5; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):hover svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):focus svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank)[class*="translate-blank"] svg {
+            filter: alpha(opacity=0);
+            opacity: 0; }
+        .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:hover, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:focus, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic[class*="translate-blank"] {
+          background: #e6389b; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:hover svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:focus svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic[class*="translate-blank"] svg {
+            filter: alpha(opacity=0);
+            opacity: 0; }
+        .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking:hover, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking:focus, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking[class*="translate-blank"] {
+          background: #F6C64E; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking:hover svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking:focus svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking[class*="translate-blank"] svg {
+            filter: alpha(opacity=0);
+            opacity: 0; }
+        .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography:hover, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography:focus, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography[class*="translate-blank"] {
+          background: #81B566; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography:hover svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography:focus svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography[class*="translate-blank"] svg {
+            filter: alpha(opacity=0);
+            opacity: 0; }
+        .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:hover, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:focus, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household[class*="translate-blank"] {
+          background: #7872e3; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:hover svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:focus svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household[class*="translate-blank"] svg {
+            filter: alpha(opacity=0);
+            opacity: 0; }
+        .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:hover, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:focus, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech[class*="translate-blank"] {
+          background: #55A4B7; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:hover svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:focus svg, .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech[class*="translate-blank"] svg {
+            filter: alpha(opacity=0);
+            opacity: 0; }
+      .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib .splash-mobile-cta {
+        margin: 0 15px;
+        background: #69B3A5;
+        height: 54px;
+        width: calc(100% - 30px);
+        font-size: 20px;
+        font-weight: 600;
+        text-transform: uppercase; }
+      .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        margin: 15px auto;
+        padding: 7.5px;
+        width: 100%; }
+        .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul li {
+          width: 143px;
+          padding: 7.5px; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul li a[class*="translate-blank"] {
+            -webkit-animation: none !important;
+            -moz-animation: none !important;
+            -ms-animation: none !important;
+            -o-animation: none !important;
+            animation: none !important; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(1) {
+            -webkit-animation-delay: 1400ms;
+            -moz-animation-delay: 1400ms;
+            -ms-animation-delay: 1400ms;
+            -o-animation-delay: 1400ms;
+            animation-delay: 1400ms; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(2) {
+            -webkit-animation-delay: 1500ms;
+            -moz-animation-delay: 1500ms;
+            -ms-animation-delay: 1500ms;
+            -o-animation-delay: 1500ms;
+            animation-delay: 1500ms; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(3) {
+            -webkit-animation-delay: 1600ms;
+            -moz-animation-delay: 1600ms;
+            -ms-animation-delay: 1600ms;
+            -o-animation-delay: 1600ms;
+            animation-delay: 1600ms; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(4) {
+            -webkit-animation-delay: 1700ms;
+            -moz-animation-delay: 1700ms;
+            -ms-animation-delay: 1700ms;
+            -o-animation-delay: 1700ms;
+            animation-delay: 1700ms; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(5) {
+            -webkit-animation-delay: 1800ms;
+            -moz-animation-delay: 1800ms;
+            -ms-animation-delay: 1800ms;
+            -o-animation-delay: 1800ms;
+            animation-delay: 1800ms; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(6) {
+            -webkit-animation-delay: 1900ms;
+            -moz-animation-delay: 1900ms;
+            -ms-animation-delay: 1900ms;
+            -o-animation-delay: 1900ms;
+            animation-delay: 1900ms; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(7) {
+            display: none;
+            -webkit-animation-delay: 2000ms;
+            -moz-animation-delay: 2000ms;
+            -ms-animation-delay: 2000ms;
+            -o-animation-delay: 2000ms;
+            animation-delay: 2000ms; }
+          .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(8) {
+            display: none;
+            -webkit-animation-delay: 2100ms;
+            -moz-animation-delay: 2100ms;
+            -ms-animation-delay: 2100ms;
+            -o-animation-delay: 2100ms;
+            animation-delay: 2100ms; }
+  .splash-landing.new > section.splash-hero .splash-guru-head {
+    width: 150px;
+    position: relative; }
+    .splash-landing.new > section.splash-hero .splash-guru-head svg {
+      display: block;
+      width: 100%; }
+    .splash-landing.new > section.splash-hero .splash-guru-head > svg {
+      position: absolute; }
+    .splash-landing.new > section.splash-hero .splash-guru-head .coach-fill {
+      top: 95px;
+      right: -100px;
+      width: 140px; }
+      .splash-landing.new > section.splash-hero .splash-guru-head .coach-fill path:nth-child(1) {
+        stroke-dasharray: 137;
+        stroke-dashoffset: 137; }
+      .splash-landing.new > section.splash-hero .splash-guru-head .coach-fill path:nth-child(2) {
+        stroke-dasharray: 53;
+        stroke-dashoffset: 53; }
+      .splash-landing.new > section.splash-hero .splash-guru-head .coach-fill path.animate:nth-child(1) {
+        -webkit-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+        -moz-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+        -ms-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+        -o-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+        animation: coach-click-2 200ms ease-in 2500ms 1 forwards; }
+      .splash-landing.new > section.splash-hero .splash-guru-head .coach-fill path.animate:nth-child(2) {
+        -webkit-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+        -moz-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+        -ms-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+        -o-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+        animation: coach-click-1 100ms ease-in 2700ms 1 forwards; }
+      .splash-landing.new > section.splash-hero .splash-guru-head .coach-fill g g {
+        -webkit-animation-delay: 3000ms;
+        -moz-animation-delay: 3000ms;
+        -ms-animation-delay: 3000ms;
+        -o-animation-delay: 3000ms;
+        animation-delay: 3000ms; }
+    .splash-landing.new > section.splash-hero .splash-guru-head .coach-help.coach-help-desktop {
+      display: none;
+      top: -40px;
+      left: -160px;
+      width: 170px; }
+    .splash-landing.new > section.splash-hero .splash-guru-head .coach-help.coach-help-mobile {
+      top: -15px;
+      left: -100px;
+      width: 114.5px; }
+  @media screen and (max-width: 414px) {
+    .splash-landing.new > section.splash-hero .splash-hero-content {
+      margin-bottom: 0; }
+      .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul {
+        margin: 5px 0; } }
+  @media screen and (max-width: 360px) {
+    .splash-landing.new > section.splash-hero .splash-hero-content {
+      -webkit-transform: scale(0.9);
+      -moz-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+      -o-transform: scale(0.9);
+      transform: scale(0.9); }
+      .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib h1 {
+        font-size: 24px; } }
+  @media screen and (max-width: 320px) {
+    .splash-landing.new > section.splash-hero .splash-hero-content {
+      -webkit-transform: scale(0.7);
+      -moz-transform: scale(0.7);
+      -ms-transform: scale(0.7);
+      -o-transform: scale(0.7);
+      transform: scale(0.7); } }
+  @media screen and (max-width: 768px) {
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:first-child {
+      right: 50%;
+      margin-right: -131px;
+      bottom: 65px; }
+    .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib h1 {
+      line-height: 1.5; } }
+  @media screen and (min-width: 768px) {
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:first-child {
+      right: 10%;
+      margin-right: 0;
+      bottom: 10%; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:not(:first-child) {
+      display: block; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(1) {
+      -webkit-animation-delay: 1700ms;
+      -moz-animation-delay: 1700ms;
+      -ms-animation-delay: 1700ms;
+      -o-animation-delay: 1700ms;
+      animation-delay: 1700ms; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info svg .line-1 {
+      stroke-dasharray: 520, 520;
+      stroke-dashoffset: 338; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info svg .line-2 {
+      stroke-dasharray: 398, 398;
+      stroke-dashoffset: 338; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info svg .fill {
+      filter: alpha(opacity=0);
+      opacity: 0; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info div aside {
+      width: 0;
+      overflow: hidden; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info div ul {
+      filter: alpha(opacity=0);
+      opacity: 0; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info.left svg .line-3 {
+      transform: translateX(-338px); }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker .info.right svg .line-3 {
+      transform: translateX(338px); }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info svg path, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info svg line {
+      -webkit-transition-delay: 3500ms;
+      -moz-transition-delay: 3500ms;
+      -ms-transition-delay: 3500ms;
+      -o-transition-delay: 3500ms;
+      transition-delay: 3500ms; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info div aside {
+      -webkit-transition-delay: 3500ms;
+      -moz-transition-delay: 3500ms;
+      -ms-transition-delay: 3500ms;
+      -o-transition-delay: 3500ms;
+      transition-delay: 3500ms; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info div aside ul {
+        -webkit-transition-delay: 3650ms;
+        -moz-transition-delay: 3650ms;
+        -ms-transition-delay: 3650ms;
+        -o-transition-delay: 3650ms;
+        transition-delay: 3650ms; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .message {
+      -webkit-animation: bounceInUp 1000ms ease-in 3500ms 1 forwards;
+      -moz-animation: bounceInUp 1000ms ease-in 3500ms 1 forwards;
+      -ms-animation: bounceInUp 1000ms ease-in 3500ms 1 forwards;
+      -o-animation: bounceInUp 1000ms ease-in 3500ms 1 forwards;
+      animation: bounceInUp 1000ms ease-in 3500ms 1 forwards; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info svg .line-3, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.active .info svg .line-3, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .info svg .line-3 {
+      transform: translateX(0) !important; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info svg .line-1, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info svg .line-2, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.active .info svg .line-1, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.active .info svg .line-2, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .info svg .line-1, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .info svg .line-2 {
+      stroke-dashoffset: 0; }
+    .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info div aside, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.active .info div aside, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .info div aside {
+      width: 172px; }
+      .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info div aside ul, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker.active .info div aside ul, .splash-landing.new > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .info div aside ul {
+        filter: alpha(opacity=100);
+        opacity: 1;
+        -webkit-transition-delay: 150ms;
+        -moz-transition-delay: 150ms;
+        -ms-transition-delay: 150ms;
+        -o-transition-delay: 150ms;
+        transition-delay: 150ms; }
+    .splash-landing.new > section.splash-hero .coach-scroll {
+      bottom: -70px; }
+    .splash-landing.new > section.splash-hero .coach-help.coach-help-desktop {
+      display: block !important; }
+      .splash-landing.new > section.splash-hero .coach-help.coach-help-desktop.hide {
+        display: none !important; }
+    .splash-landing.new > section.splash-hero .coach-help.coach-help-mobile {
+      display: none; }
+    .splash-landing.new > section.splash-hero .splash-hero-nav {
+      top: 15px;
+      right: 72px; }
+      .splash-landing.new > section.splash-hero .splash-hero-nav.desktop {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex; }
+      .splash-landing.new > section.splash-hero .splash-hero-nav.mobile {
+        display: none; }
+      .splash-landing.new > section.splash-hero .splash-hero-nav > div:first-child, .splash-landing.new > section.splash-hero .splash-hero-nav > div:first-child + h2 {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex; }
+    .splash-landing.new > section.splash-hero .splash-device {
+      display: block; }
+    .splash-landing.new > section.splash-hero .splash-guru-head .coach-fill {
+      top: 80px;
+      right: -180px; }
+    .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib.animate {
+      -webkit-animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+      -moz-animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+      -ms-animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+      -o-animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+      animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+      z-index: 1; }
+    .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib h1 {
+      font-size: 40px; }
+    .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a {
+      width: 142px;
+      height: 44px;
+      font-size: 24px; }
+      .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a svg.mobile {
+        display: none; }
+      .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib a svg.desktop {
+        display: block; }
+    .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib .splash-mobile-cta {
+      display: none; }
+    .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul {
+      max-width: calc(172px * 4 + 30px);
+      padding: 15px;
+      margin: 0 auto 15px; }
+      .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul li {
+        width: 25%;
+        max-width: 172px;
+        padding: 15px; }
+        .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(7), .splash-landing.new > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(8) {
+          display: block; } }
 
 /*# sourceMappingURL=splash.css.map */

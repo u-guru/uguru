@@ -14,13 +14,13 @@
   '$ionicSideMenuDelegate',
   '$ionicActionSheet',
   'LoadingService',
+  'PaymentService',
   function($scope, $state, $timeout, $localstorage,
  	$ionicModal, $ionicHistory, $stateParams, $ionicViewSwitcher,
-  $ionicSideMenuDelegate, $ionicActionSheet, LoadingService) {
-
+  $ionicSideMenuDelegate, $ionicActionSheet, LoadingService,
+  PaymentService) {
     $scope.data = {card_exists: false};
     $scope.card = {exp: '', number: '', cvc: '', placeholder:"**** **** **** 4242"};
-
     $scope.root.vars.cardForm = {number: '', exp:'', view_only:false};
 
     if ($scope.LOCAL && $state.current.name === 'root.guru') {
@@ -29,7 +29,47 @@
     }
 
 
+      $scope.addStudentPayment = function() {
+        var cardNum = $scope.root.vars.cardForm.number || $scope.card.number;
+        var expMM = $scope.root.vars.cardForm.exp.split(' / ')[0] || $scope.card.exp.split(' / ')[0];
+        var expYY = $scope.root.vars.cardForm.exp.split(' / ')[1] || $scope.card.exp.split(' / ')[1];
 
+        if (!expYY || !expMM || !cardNum) {
+          LoadingService.showMsg('Please fill in all fields');
+          return;
+        }
+        LoadingService.showAmbig();
+        Stripe.card.createToken({
+          number: cardNum,
+          exp_month: expMM,
+          exp_year: expYY
+        }, postStripeResponse);
+
+        function postStripeResponse(status, response) {
+          if (response.error) {
+            LoadingService.showMsg(response.error, 3000);
+            $scope.card.number = '';
+            $scope.card.exp = '';
+            $scope.card.csv = '';
+          } else {
+            var successFunction = function(scope) {
+              scope.card.number = '';
+              scope.card.exp = '';
+              scope.card.cvc = '';
+              scope.card.editStudentPaymentCard = false;
+            }
+            PaymentService.addPaymentCard($scope, response, successFunction);
+          }
+        }
+      }
+
+      $scope.setStudentCardDefault = function(card) {
+        PaymentService.setPaymentCardToDefault(card, $scope);
+      }
+
+      $scope.removeStudentPaymentCard = function(card) {
+       PaymentService.removeCard(card, $scope);
+      }
 
       $scope.cashoutUser = function() {
       if ($scope.user.balance > 0) {
@@ -51,27 +91,12 @@
       }
 
 
-    //1. Add card [x] [ ]
-      // validate card
-      // send to server
-    //2. Remove card [x] [ ]
-      // remove client side
-      // send to server
-    //3. Update default Transfer [x] [ ]
-      // Send card to server
-    //4. Cashout
-      // Update current balance
-      // Create transaction server side
-      // update transaction here
-
     // add card
     $scope.savePayment = function() {
       LoadingService.showAmbig('Verifying', 10000);
       var cardNum = $scope.root.vars.cardForm.number || $scope.card.number;
       var expMM = $scope.root.vars.cardForm.exp.split(' / ')[0] || $scope.card.exp.split(' / ')[0];
       var expYY = $scope.root.vars.cardForm.exp.split(' / ')[1] || $scope.card.exp.split(' / ')[1];
-
-      console.log('new details', cardNum, expMM, expYY);
 
       var stripeResponseHandler = function(status, response) {
         console.log(response);
@@ -285,7 +310,7 @@
 
         $timeout(function() {
           if ($state.current.name === 'root.student-home') {
-            initHandlers();
+            initHandlers($scope);
           }
         })
 
@@ -296,8 +321,7 @@
 
 //helper functions
 
-var cardLength, cardValue;
-var el = document.getElementById("card-number"),
+var cardLength, cardValue, el;
   CreditCardTypeExpressions = [{
     "card-type": "MasterCard",
     "exp": function(num) {
@@ -328,10 +352,13 @@ var el = document.getElementById("card-number"),
   }
 
 var cardLength, cardValue, el;
-var initHandlers = function() {
-
-
-      el = document.getElementById("card-number");
+var initHandlers = function($scope, parent) {
+  if (parent) {
+    parent += ' ';
+  } else {
+   parent = ''
+  }
+      el = document.querySelector(parent + "#card-number");
 
       $("#card-number").on("keydown", function(e) {
         cardLength = $(this).val().replace(/ /g, "").length;
@@ -352,7 +379,7 @@ var initHandlers = function() {
 
       });
 
-      $("#card-number").on("keyup", function(e) {
+      $(parent + "#card-number").on("keyup", function(e) {
         cardLength = $(this).val().replace(/ /g, "").length;
         cardValue = $(this).val().replace(/ /g, ""),
           pos = GetCaretPosition(this),
@@ -380,11 +407,11 @@ var initHandlers = function() {
         $(this).val(newValue);
 
         setCaretPosition(pos);
-        displayCardIcon($(this));
+        displayCardIcon($(this), $scope);
 
       });
 
-      $("#exp-date").on("keydown", function(e) {
+      $(parent + "#exp-date").on("keydown", function(e) {
         var value = $(this).val(),
           length = value.length;
 
@@ -403,7 +430,7 @@ var initHandlers = function() {
         }
       })
 
-      $("#exp-date").on("keyup", function(e) {
+      $(parent + "#exp-date").on("keyup", function(e) {
         var value = $(this).val(),
           length = value.length;
 
@@ -476,18 +503,22 @@ function GetCaretPosition() {
 
 }
 
-function displayCardIcon($el) {
+function displayCardIcon($el, scope) {
   switch (GetCardType(cardValue)) {
     case "MasterCard":
+      scope.card.type = 'mastercard';
       $el.css("background", "url(https://www.gcmapp.net/components/payment_v2/MasterCardLogo.gif) no-repeat right");
       break;
     case "Visa":
+      scope.card.type = 'visa';
       $el.css("background", "url(https://www.gcmapp.net/components/payment_v2/VisaLogo.gif) no-repeat right");
       break;
     case "American Express":
+      scope.card.type = 'amex';
       $el.css("background", "url(https://www.gcmapp.net/components/payment_v2/AmExLogo.gif) no-repeat right");
       break;
     case "Discover":
+      scope.card.type = 'discover';
       $el.css("background", "url(https://www.gcmapp.net/components/payment_v2/DiscoverLogo.gif) no-repeat right");
       break;
     default:
