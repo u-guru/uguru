@@ -639,8 +639,8 @@
 			</div>
 		</section>
 		<section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
-            <div class="projector-trigger">
-                <a id="projector-pull" bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity">
+            <div class="projector-trigger" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="500">
+                <a id="projector-pull" bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a">
     				<svg width="28px" height="224px" viewBox="0 0 56 448">
     				    <g stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
     				        <path d="M28,2 L28,392" fill="none" stroke-width="4" stroke-dasharray="16,14" opacity="0.6"></path>
@@ -657,7 +657,7 @@
                 </svg>
             </div>
             <div class="splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
-            <div class="splash-projector-message desktop">
+            <div class="splash-projector-message desktop" activate-on-class="a" class-on-activate="bounceOut:animOut">
                 <svg viewBox="0 0 1304 354">
                     <path d="M2,39.9999987 C2,35.5817214 5.58280463,32 10.0088717,32 L622,32 L652,2 L682,32 L1293.99113,32 C1298.41431,32 1302,35.5800296 1302,39.9999987 L1302,344.000001 C1302,348.418279 1298.41351,352 1293.99365,352 L10.0063476,352 C5.58456393,352 2,348.41997 2,344.000001 L2,39.9999987 Z" stroke="#FFFFFF" stroke-width="4" fill-opacity="0.5" fill="#40484B"></path>
                     <text font-family="Source Sans Pro" font-size="96" font-weight="600" line-spacing="126" fill="#FFFFFF" text-anchor="middle">
@@ -674,7 +674,7 @@
                     <span>back to top</span>
                 </a>
             </div>
-			<div class='header-swipers'>
+			<div class='header-swipers opacity-0' activate-on-class="a" class-on-activate="bounceInDown:anim" class-on-activate-delay="700">
 				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-1">
 					<div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
@@ -826,6 +826,7 @@
 								</div>
     						</div>
     						<div class-on-activate="tada:anim" id='slide-2' class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -112.5px) rotateX(0deg) rotateY(-56.25deg); z-index: 0; transition-duration: 0ms; margin-right: 100px;">
+                                <div class="projector-top"></div>
 								<div class="projector-content">
                                     <div id='how-it-works' class="hide hiw-subheader-nav-content main splash-postit ng-class:{'active':activeBrowseTabIndex===0}" anim-on-show-parent anim-on-show="active" anim-on-hide-parent anim-on-hide="transitioning" anim-on-hide-debounce="2000">
                                                     <header>
@@ -928,6 +929,7 @@
 								</div>
     						</div>
     						<div class="swiper-slide swiper-slide-gallery" style="transform: translate3d(0px, 0px, -225px) rotateX(0deg) rotateY(-112.5deg); z-index: -1; transition-duration: 0ms; margin-right: 100px;">
+                                <div class="projector-top"></div>
 								<div class="projector-content">
 									<div id='become-guru' class='hide'>
                                         <div class='main bg-charcoal relative full-x'>
@@ -1021,37 +1023,9 @@
                                                 <button ng-click='scrollToSection("#splash-university")' class='become-guru-button default'>Become a University Guru</button>
                                     </div>
 								</div>
-    							<!-- <div class="swiper-container swiper-gallery-top swiper-container-horizontal">
-    								<div class="slide-title demo-iframe-title">Build Complex Touch Galleries</div>
-    								<div class="swiper-wrapper">
-    									<div class="swiper-slide swiper-lazy swiper-lazy-loaded swiper-slide-active" style="width: 800px; margin-right: 10px; background-image: url('http://lorempixel.com/1200/600/nature/1');">
-
-    									</div>
-    									<div data-background="http://lorempixel.com/1200/600/nature/2" class="swiper-slide swiper-lazy swiper-slide-next" style="width: 800px; margin-right: 10px;">
-    										<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-    									</div>
-    									<div data-background="http://lorempixel.com/1200/600/nature/3" class="swiper-slide swiper-lazy" style="width: 800px; margin-right: 10px;">
-    										<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-    									</div>
-    									<div data-background="http://lorempixel.com/1200/600/nature/4" class="swiper-slide swiper-lazy" style="width: 800px; margin-right: 10px;">
-    										<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-    									</div>
-    									<div data-background="http://lorempixel.com/1200/600/nature/5" class="swiper-slide swiper-lazy" style="width: 800px; margin-right: 10px;">
-    										<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-    									</div>
-    								</div>
-    							</div>
-    							<div class="swiper-container swiper-gallery-thumbs swiper-container-horizontal">
-    								<div class="swiper-wrapper" style="transform: translate3d(324px, 0px, 0px); transition-duration: 0ms;">
-    									<div style="width: 152px; margin-right: 10px; background-image: url(&quot;http://lorempixel.com/300/200/nature/1&quot;);" class="swiper-slide swiper-slide-active"></div>
-    									<div style="width: 152px; margin-right: 10px; background-image: url(&quot;http://lorempixel.com/300/200/nature/2&quot;);" class="swiper-slide swiper-slide-next"></div>
-    									<div style="width: 152px; margin-right: 10px; background-image: url(&quot;http://lorempixel.com/300/200/nature/3&quot;);" class="swiper-slide"></div>
-    									<div style="width: 152px; margin-right: 10px; background-image: url(&quot;http://lorempixel.com/300/200/nature/4&quot;);" class="swiper-slide"></div>
-    									<div style="width: 152px; margin-right: 10px; background-image: url(&quot;http://lorempixel.com/300/200/nature/5&quot;);" class="swiper-slide"></div>
-    								</div>
-    							</div> -->
     						</div>
     						<div class="swiper-slide" style="transform: translate3d(0px, 0px, -337.5px) rotateX(0deg) rotateY(-168.75deg); z-index: -2; transition-duration: 0ms; margin-right: 100px;">
+                                <div class="projector-top"></div>
 								<div class="projector-content">
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 								</div>
@@ -1059,7 +1033,7 @@
     					</div>
     					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                     </div>
-                    <div class="swiper-container swiper-front-gallery-thumbs">
+                    <div class="swiper-container swiper-front-gallery-thumbs opacity-0">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/1)"></div>
                             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/2)"></div>
