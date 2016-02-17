@@ -9,6 +9,7 @@ function CTAService($timeout) {
   var ctaParentDict = {};
   var ctaFuncDict = {};
   var ctaOptions = {duration: 0.2, extraTransitionDuration:0};
+  var ctaCloseFuncDict = {};
 
 
 
@@ -20,10 +21,17 @@ function CTAService($timeout) {
     elem.classList.remove('show');
   }
 
-  var showCTAManually = function(elem_id) {
+  var showCTAManually = function(elem_id, cb) {
     console.log(ctaFuncDict);
     var func = ctaFuncDict[elem_id];
     func && func();
+    cb && cb();
+  }
+
+  var closeCTAManually = function(elem_id, cb) {
+    var func = ctaCloseFuncDict[elem_id];
+    func && func();
+    cb && cb();
   }
 
   var getModalCloseIcon = function(elem) {
@@ -33,7 +41,7 @@ function CTAService($timeout) {
   var bindCtaToBoxElem = function(box_elem, modal_elem, show_callback, box_selector) {
     ctaFuncDict[box_selector] = function() {
 
-      var closeCTAModal = cta(box_elem, modal_elem, ctaOptions, function() {
+      ctaCloseFuncDict[box_selector]  = cta(box_elem, modal_elem, ctaOptions, function() {
 
         //show modal cta
         showModalCTA(modal_elem);
@@ -43,7 +51,7 @@ function CTAService($timeout) {
         var modalCloseIcon = getModalCloseIcon(modal_elem);
         if (modalCloseIcon) {
           modalCloseIcon.addEventListener('click', function() {
-            closeCTAModal();
+            ctaCloseFuncDict[box_selector]();
             hideModalCTA(modal_elem);
           })
         }
@@ -87,7 +95,8 @@ function CTAService($timeout) {
   return {
     initSingleCTA:initSingleCTA,
     initArrCTASharedParent:initArrCTASharedParent,
-    showCTAManually:showCTAManually
+    showCTAManually:showCTAManually,
+    closeCTAManually: closeCTAManually
   }
 
 }

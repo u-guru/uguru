@@ -386,8 +386,9 @@ angular.module('uguru.util.controllers')
         };
 
 
-
-        var isSideMenuOpen = function(ratio) {
+        $timeout(function() {
+            if (!$scope.desktopMode && $state.current.name !== 'root.splash') {
+                var isSideMenuOpen = function(ratio) {
             if (!ratio && ratio !== -1) {
                 console.log('status bar is closing');
                 $scope.sideMenuActive = false;
@@ -398,30 +399,33 @@ angular.module('uguru.util.controllers')
 
                 }
 
-            } else {
-                console.log('status bar is opening');
-                $scope.sideMenuActive = true;
-                // $scope.sideMenuActive = true;
+                } else {
+                    console.log('status bar is opening');
+                    $scope.sideMenuActive = true;
+                    // $scope.sideMenuActive = true;
 
-                if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                    if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
 
-                    window.StatusBar.styleLightContent();
+                        window.StatusBar.styleLightContent();
+
+                    }
 
                 }
-
+                $ionicSlideBoxDelegate.update();
             }
-            $ionicSlideBoxDelegate.update();
-        }
 
 
-        //UGH I HATE MY LIFE FUCK YOU IONIC
-        var getIonicSideMenuOpenRatio = function() {
+            //UGH I HATE MY LIFE FUCK YOU IONIC
+            var getIonicSideMenuOpenRatio = function() {
 
-            var openRatio = $ionicSideMenuDelegate.getOpenRatio();
-            return openRatio;
-        }
+                var openRatio = $ionicSideMenuDelegate.getOpenRatio();
+                return openRatio;
+            }
 
-        $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
+            $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
+            }
+        }, 500);
+
 
         $scope.loader = {
             showMsg: function(message, delay, duration) {

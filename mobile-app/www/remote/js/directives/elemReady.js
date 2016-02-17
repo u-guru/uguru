@@ -107,17 +107,6 @@ angular.module('uguru.directives')
     }
   }
 }])
-.directive('skrollr', function () {
-      var obj = {
-        link: function () {
-          /* jshint ignore:start */
-          // skrollr.init({skrollrBody:'skrollr-home'}).refresh();
-
-          /* jshint ignore:end */
-        }
-      };
-      return obj;
-})
 .directive('activateOnClass', ['$timeout', function ($timeout) {
   return {
     restrict: 'A',
@@ -176,37 +165,23 @@ angular.module('uguru.directives')
                 element[0].style.msTransform = transFormString;
                 element[0].style.OTransform = transFormString;
                 element[0].style.transform = transFormString;
-                element[0].classList.add(injectOnTranslateClass);
-                console.log(translateElemCoords, elemCoords, transFormString, element[0], 'with Xoffset', attr.translateXOffset, 'and y offset', attr.translateYOffset);
+                element[0].classList.add(injectOnTranslateClass, 'active');
 
                 //deactivate other directives with transforms towards the same element "translate-to-elem";
-                var allTranslateOnClickElems = element[0].querySelectorAll("[translate-on-click]");
+                var allTranslateOnClickElems = document.querySelectorAll('.' + injectOnTranslateClass + ".active");
+                console.log('allTranslateOnClickElems', allTranslateOnClickElems.length, 'found:\n', allTranslateOnClickElems);
                 for (var i = 0; i < allTranslateOnClickElems.length; i++) {
                   var indexTranslateElem  = allTranslateOnClickElems[i];
-                  indexTranslateElem.classList.remove(injectOnTranslateClass);
                   if (indexTranslateElem !== element[0]) {
-                    var hasTranslateBackAttr = indexTranslateElem.getAttribute('translate-back-class');
-                    if (hasTranslateBackAttr && hasTranslateBackAttr.length) {
-                      var indexTranslateElemClasses = hasTranslateBackAttr.split(', ');
-                      for (var j = 0; j < indexTranslateElemClasses.length; j++) {
-                        var indexClassToAdd = indexTranslateElemClasses[j];
-                        indexTranslateElem.classList.add(indexClassToAdd);
-                        element[0].style.webkitTransform = null;
-                        element[0].style.MozTransform = null;
-                        element[0].style.msTransform = null;
-                        element[0].style.OTransform = null;
-                        element[0].style.transform = null;
+                        indexTranslateElem.classList.remove(injectOnTranslateClass, 'active');
+                        indexTranslateElem.style.webkitTransform = null;
+                        indexTranslateElem.style.MozTransform = null;
+                        indexTranslateElem.style.msTransform = null;
+                        indexTranslateElem.style.OTransform = null;
+                        indexTranslateElem.style.transform = null;
                       }
-                      setTimeout(function() {
-                        for (var k = 0; k < indexTranslateElemClasses.length; k++) {
-                          var indexClassToAdd = indexTranslateElemClasses[k];
-                          indexTranslateElem.classList.remove(indexClassToAdd);
-                        }
-                      }, 2000);
                     }
-                  }
                 }
-              }
             });
       }
     };
@@ -241,6 +216,23 @@ directive("classOnLoad", ["$timeout", 'AnimationService', function ($timeout, An
           }
       };
 }]).
+directive("evalOnLoad", ["$timeout", 'AnimationService', '$parse', function($timeout, AnimationService, $parse) {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+              $timeout(function() {
+                scope.$watch('root.loader.body.hide', function(value) {
+                    $timeout(function() {
+                      scope.$apply(function(){
+                        var func = $parse(attr.evalOnLoad);
+                        func(scope);
+                      })
+                    })
+                })
+              })
+          }
+      }
+}]).
 directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, AnimationService) {
       return {
           restrict: 'A',
@@ -268,7 +260,6 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                       }
                       if (classArgs.indexOf("unique") > -1) {
                         var otherClassElems = document.querySelectorAll('.' + indexClass);
-                        console.log(otherClassElems);
                         for (var j = 0; j < otherClassElems.length; j++) {
                           var otherElemIndex = otherClassElems[j];
                           if (otherElemIndex !== element[0]) {
@@ -303,7 +294,6 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                       return true
                     };
                   })
-                  console.log(injectArg);
                   return injectArg.replace("inject", "");
                 }
               });
@@ -467,7 +457,7 @@ directive("bindWp", ['$timeout', function ($timeout) {
                 if (attr.bindWpDirection) {
                   var directionNames = attr.bindWpDirection.split(', ')
                 } else {
-                  var directionNames = ["down", "down", "down"]
+                  var directionNames = ["down", "down", "down", "down", "down", "down"]
                 }
 
                 scope.$watch('page.waypoints.' + attr.bindWp + '.activated', function(isActive) {
@@ -478,10 +468,27 @@ directive("bindWp", ['$timeout', function ($timeout) {
                   for (var i = 0; i < classNames.length; i++) {
                     var indexClassName = classNames[i];
                     var directionName = directionNames[i];
+                    var directionArgs = directionName.split(':');
+                    var directionName = directionArgs[0];
                     if (isActive && direction === 'down' && directionName === direction) {
-                      element[0].classList.add(indexClassName);
-                    } else if(isActive && direction === 'up'){
-                      element[0].classList.remove(indexClassName);
+                      if (directionArgs.length === 1) {
+                        element[0].classList.add(classNames[i]);
+                      } else if (directionArgs.length === 2 && directionArgs[1] === 'remove') {
+                        element[0].classList.remove(classNames[i]);
+                      } else if (directionArgs.length === 3 && directionArgs[1] === 'remove' && directionArgs[2].length) {
+                        element[0].classList.remove(directionArgs[2]);
+                        element[0].classList.add(classNames[i]);
+                      }
+
+                    } else if(isActive && direction === 'up' && directionName === direction){
+                      if (directionArgs.length === 1) {
+                        element[0].classList.add(classNames[i]);
+                      } else if (directionArgs.length === 2 && directionArgs[1] === 'remove') {
+                        element[0].classList.remove(classNames[i]);
+                      } else if (directionArgs.length === 3 && directionArgs[1] === 'remove' && directionArgs[2].length) {
+                        element[0].classList.remove(directionArgs[2]);
+                        element[0].classList.add(classNames[i]);
+                      }
                     }
                   }
                 })

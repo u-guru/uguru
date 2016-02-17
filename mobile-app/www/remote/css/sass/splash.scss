@@ -4722,11 +4722,72 @@
 }
 
 
-/* ---------- HERO */
+/* ---------- NEW */
 .splash-landing.new {
 	> header.splash-header {
 		&:before {
 			@include opacity-important(0);
+		}
+	}
+	.splash-sidebar-full {
+		@include flex;
+		position: fixed;
+		z-index: 9999;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba($slate, .95);
+		.splash-sidebar-menu {
+			height: 100%;
+			width: calc(100% / 3);
+			background: rgba(lighten($slate, 15%), .2);
+			ul {
+				li {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					a {
+						display: block;
+						padding: 20px 0;
+						width: calc(100% - 34px);
+						font-size: 24px;
+						font-weight: 600;
+						text-align: center;
+						text-transform: uppercase;
+						&:hover, &:focus {
+							background: $shamrock;
+						}
+					}
+					&:not(:last-child):after {
+						@include round;
+						content: "";
+						display: block;
+						width: calc(100% - 30px);
+						height: 2px;
+						background: rgba(white, .2);
+					}
+				}
+			}
+		}
+		.splash-sidebar-content {
+			height: 100%;
+			width: calc(100% / 3 * 2);
+			left:calc(100% / 3);
+			overflow:hidden;
+			#desktop-account {
+				aside, #cta-desktop-signup-back {
+					display:none;
+				}
+				.main {
+					width:100%;
+				}
+			}
+			#desktop-guru-onboarding {
+				.desktop-header {
+					display:none;
+				}
+			}
 		}
 	}
 	> section.splash-hero {
@@ -5839,6 +5900,70 @@
 					}
 				}
 			}
+		}
+	}
+	> section#splash-projector {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		background: $slate;
+		#projector-pull {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			margin-left: -1px;
+		}
+		.header-swiper-front {
+			height: 90%;
+		}
+		.swiper-front-gallery-thumbs {
+			height: 10%;
+			top: auto;
+			bottom: 0;
+			left: 0;
+		}
+		.projector-top {
+			position: absolute;
+			top: .2%;
+			left: .8%;
+			width: 98.4%;
+			height: 3.3%;
+			border: 2px solid white;
+			background: rgba($slate, .95);
+			&:before, &:after {
+				content: "";
+				display: block;
+				position: absolute;
+				border: 2px solid white;
+				border-radius: 2px;
+				top: -20%;
+			    width: 1%;
+				min-width: 9px;
+			    height: 140%;
+				background: $slate;
+			}
+			&:before {
+				left: -1%;
+			}
+			&:after {
+				right: -1%;
+			}
+		}
+		.projector-content {
+			position: absolute;
+			top: 3.2%;
+			left: 2%;
+			width: 96%;
+			height: 96.2%;
+			padding: 15px;
+			border: 2px solid white;
+			border-bottom-left-radius: 2px;
+			border-bottom-right-radius: 2px;
+			background: rgba($slate, .95);
+			font-size: 20px;
+			font-weight: 600;
+			line-height: 1.2;
 		}
 	}
 }
