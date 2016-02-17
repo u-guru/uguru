@@ -473,7 +473,7 @@ directive("bindWp", ['$timeout', function ($timeout) {
                 if (attr.bindWpDirection) {
                   var directionNames = attr.bindWpDirection.split(', ')
                 } else {
-                  var directionNames = ["down", "down", "down"]
+                  var directionNames = ["down", "down", "down", "down", "down", "down", "down", "down", "down"];
                 }
 
                 scope.$watch('page.waypoints.' + attr.bindWp + '.activated', function(isActive) {
