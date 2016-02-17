@@ -51,28 +51,28 @@ angular.module('uguru.util.controllers')
       var swiperFront=new Swiper('.header-swiper-front', swiperMainOptions);
 
       //start swiper gallaery
-      var swiperNestedGalleryOptions = {
-        slidesPerView:1,
-        spaceBetween:10,
-        nested:true,
-        resistanceRatio:0,
-        preloadImages:false,
-        lazyLoading:true
-      }
+      // var swiperNestedGalleryOptions = {
+      //   slidesPerView:1,
+      //   spaceBetween:10,
+      //   nested:true,
+      //   resistanceRatio:0,
+      //   preloadImages:false,
+      //   lazyLoading:true
+      // }
 
-      var swiperNestedGallery = new Swiper('.swiper-gallery-top', swiperNestedGalleryOptions);
+      // var swiperNestedGallery = new Swiper('.swiper-gallery-top', swiperNestedGalleryOptions);
 
-      //start swiper gallaery
-      var swiperNestedThumbsGalleryOptions = {
-        slidesPerView:5,
-        spaceBetween:10,
-        centeredSlides:true,
-        touchRatio:0.2,
-        slideToClickedSlide:true,
-        nested:true,
-        resistanceRatio:0
-      }
-      var swiperNestedThumbsGallery = new Swiper('.swiper-gallery-thumbs', swiperNestedThumbsGalleryOptions);
+      // //start swiper gallaery
+      // var swiperNestedThumbsGalleryOptions = {
+      //   slidesPerView:5,
+      //   spaceBetween:10,
+      //   centeredSlides:true,
+      //   touchRatio:0.2,
+      //   slideToClickedSlide:true,
+      //   nested:true,
+      //   resistanceRatio:0
+      // }
+      // var swiperNestedThumbsGallery = new Swiper('.swiper-gallery-thumbs', swiperNestedThumbsGalleryOptions);
 
       var swiperFrontGalleryThumbsOption = {
         slidesPerView:5,
@@ -85,11 +85,10 @@ angular.module('uguru.util.controllers')
       }
       var swiperFrontGalleryThumbs = new Swiper('.swiper-front-gallery-thumbs', swiperFrontGalleryThumbsOption);
 
+      // swiperFrontGalleryThumbs.setWrapperTranslate(swiperFront.getWrapperTranslate());
       swiperFront.params.control = swiperFrontGalleryThumbs;
       swiperFrontGalleryThumbs.params.control = swiperFront;
 
-      swiperNestedGallery.params.control=swiperNestedThumbsGallery;
-      swiperNestedThumbsGallery.params.control=swiperNestedGallery
   }
 
     function swiperOnSlideChangeStart(s) {
