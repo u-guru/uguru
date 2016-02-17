@@ -37,7 +37,7 @@ angular.module('uguru.util.controllers')
         effect:'coverflow',
         speed:600,
         coverflow:{slideShadows:false},
-        pagination:'.header-swiper-front .swiper-pagination',
+        // pagination:'.header-swiper-front .swiper-pagination',
         paginationClickable:true,
         nextButton:'.header-swiper-front .swiper-button-next',
         prevButton:'.header-swiper-front .swiper-button-prev',
@@ -134,7 +134,7 @@ angular.module('uguru.util.controllers')
       // @gabrielle-note -- what
       initSwipers();
       $timeout(function() {
-        $scope.scrollToSection('#scene-2');
+        $scope.scrollToSection('#splash-projector');
       })
     }
 

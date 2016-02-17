@@ -1,7 +1,8 @@
 <div class='relative' style='height:calc(100%); width:calc(100%); overflow:hidden !important;' eval-on-load="testFunction()">
-	<main id='home-splash' init-wp-parent class='splash-landing new hs-view full-xy' style="height:calc(200% !importantc); width:calc(100%) !important;">
+	<main id='home-splash'class='splash-landing new hs-view full-xy' style="height:calc(200% !important); width:calc(100%) !important;">
 		<!-- sidebar -->
 		<aside id='cta-modal-sidebar' class='splash-sidebar bg-charcoal ng-class: ::{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}' ng-include="::img_base + BASE + 'templates/one.university.sidebar.html'">
+
 		</aside>
 
 		<header class='splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
@@ -527,10 +528,17 @@
 				</svg>
 			</div>
 		</section>
-        <!-- initializing 3 way points above section two, auto triggered on the scroll downards-->
-		<section id='scene-2' class='full-y bg-cerise relative' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
-			<div class='header-swipers bg-azure' >
-				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-0">
+		<section id='splash-projector' class='full-y bg-slate relative' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
+			<a id="projector-pull">
+				<svg width="28px" height="224px" viewBox="0 0 56 448">
+				    <g stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+				        <path d="M28,2 L28,392" fill="none" stroke-width="4" stroke-dasharray="16,14" opacity="0.6"></path>
+				        <path d="M28,444 C41.254834,444 52,433.254834 52,420 C52,406.745166 41.254834,396 28,396 C14.745166,396 4,406.745166 4,420 C4,433.254834 14.745166,444 28,444 Z" stroke-opacity="0.6" stroke-width="8" fill="#FFFFFF"></path>
+				    </g>
+				</svg>
+			</a>
+			<div class='header-swipers bg-azure'>
+				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-1">
 					<div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
 						<div class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -117.241px) rotateX(58.6207deg) rotateY(0deg); z-index: 0; transition-duration: 0ms; margin-bottom: 100px;"></div>
@@ -546,9 +554,9 @@
 						<div class="swiper-slide" style="transform: translate3d(0px, 0px, -407.143px) rotateX(0deg) rotateY(-203.571deg); z-index: -3; transition-duration: 0ms; margin-right: 300px;"></div>
 					</div>
 				</div>
-                <div class='main-swiper-container-wrapper relative' style='height:100%;'>
+                <div class='main-swipers-container'>
     				<div class="swiper-container header-swiper-front swiper-container-horizontal swiper-container-3d swiper-container-coverflow">
-    					<!--Pagination-->
+    					<!-- pagination -->
     					<div class="swiper-pagination swiper-pagination-white swiper-pagination-clickable swiper-pagination-bullets">
     						<span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span>
     						<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span>
@@ -560,46 +568,32 @@
     					<div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
     						<!-- Slide # 1-->
     						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-right: 100px;">
-    							<div class="logo"></div>
-    							<div class="titles">
-    								<h1 class="title">Swiper</h1>
-    								<h2 class="subtitle">Most Modern Mobile Touch Slider</h2>
-    								<div class="by"><a href="http://www.idangero.us/">by iDangero.us</a></div>
-    								<div class="clearfix"></div>
-    							</div>
-    							<div class="release-info">MIT Licensed, v3.3.1 released on February 7, 2016 | <a href="https://github.com/nolimits4web/Swiper/blob/master/CHANGELOG.md" target="_blank">Changelog</a></div>
-    							<div class="links"><a href="https://github.com/nolimits4web/Swiper/archive/v3.3.1.zip">Download</a><a href="http://www.idangero.us/swiper/get-started/">Get Started</a><a href="http://www.idangero.us/swiper/api/">API</a><a href="http://www.idangero.us/swiper/demos/">Demos</a>
-    								<a href="http://www.idangero.us/swiper/forum/">Forum</a>
-    							</div>
-    							<div class="github-buttons bg-charcoal">
-    								<iframe class="github-btn" src="./swiper_files/github-btn.html" width="100" height="20"></iframe>
-    								<iframe class="github-btn" src="./swiper_files/github-btn(1).html" width="100" height="20"></iframe>
-    							</div>
+                                <svg viewBox="0 0 2150 1335">
+                                    <g stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.8">
+                                        <path d="M2131,6.00172845 C2131,3.79163485 2132.78717,2 2135.00724,2 L2143.99276,2 C2146.2059,2 2148,3.78913646 2148,6.00172845 L2148,43.9982716 C2148,46.2083651 2146.21283,48 2143.99276,48 L2135.00724,48 C2132.7941,48 2131,46.2108635 2131,43.9982716 L2131,6.00172845 Z M2,6.00172845 C2,3.79163485 3.78716697,2 6.00723574,2 L14.9927643,2 C17.2058994,2 19,3.78913646 19,6.00172845 L19,43.9982716 C19,46.2083651 17.212833,48 14.9927643,48 L6.00723574,48 C3.79410055,48 2,46.2108635 2,43.9982716 L2,6.00172845 Z M19,5 L2131,5 L2131,45 L19,45 L19,5 Z"></path>
+                                        <rect x="45" y="45" width="2060" height="1288"></rect>
+                                    </g>
+                                </svg>
     						</div>
     						<div class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -112.5px) rotateX(0deg) rotateY(-56.25deg); z-index: 0; transition-duration: 0ms; margin-right: 100px;">
-    							<div class="slide-title">Top Notch Features</div>
-    							<ul class="slide-features-list">
-    								<li>Library Agnostic</li>
-    								<li>Mutation Observer</li>
-    								<li>Flexbox Layout</li>
-    								<li>Full True RTL Support</li>
-    								<li>Multi Row Slides Layout</li>
-    								<li>3D Effects</li>
-    								<li>Two-way Control</li>
-    								<li>Full Navigation Control</li>
-    								<li>Reach API</li>
-    								<li>Most Flexible Slides Layout Grid</li>
-    								<li>Parallax Transitions</li>
-    								<li>Images Lazy Loading</li>
-    								<li>And many more ...</li>
-    							</ul>
+                                <svg viewBox="0 0 2150 1335">
+                                    <g stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.8">
+                                        <path d="M2131,6.00172845 C2131,3.79163485 2132.78717,2 2135.00724,2 L2143.99276,2 C2146.2059,2 2148,3.78913646 2148,6.00172845 L2148,43.9982716 C2148,46.2083651 2146.21283,48 2143.99276,48 L2135.00724,48 C2132.7941,48 2131,46.2108635 2131,43.9982716 L2131,6.00172845 Z M2,6.00172845 C2,3.79163485 3.78716697,2 6.00723574,2 L14.9927643,2 C17.2058994,2 19,3.78913646 19,6.00172845 L19,43.9982716 C19,46.2083651 17.212833,48 14.9927643,48 L6.00723574,48 C3.79410055,48 2,46.2108635 2,43.9982716 L2,6.00172845 Z M19,5 L2131,5 L2131,45 L19,45 L19,5 Z"></path>
+                                        <rect x="45" y="45" width="2060" height="1288"></rect>
+                                    </g>
+                                </svg>
     						</div>
     						<div class="swiper-slide swiper-slide-gallery" style="transform: translate3d(0px, 0px, -225px) rotateX(0deg) rotateY(-112.5deg); z-index: -1; transition-duration: 0ms; margin-right: 100px;">
-    							<div class="swiper-container swiper-gallery-top swiper-container-horizontal">
+                                <svg viewBox="0 0 2150 1335">
+                                    <g stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.8">
+                                        <path d="M2131,6.00172845 C2131,3.79163485 2132.78717,2 2135.00724,2 L2143.99276,2 C2146.2059,2 2148,3.78913646 2148,6.00172845 L2148,43.9982716 C2148,46.2083651 2146.21283,48 2143.99276,48 L2135.00724,48 C2132.7941,48 2131,46.2108635 2131,43.9982716 L2131,6.00172845 Z M2,6.00172845 C2,3.79163485 3.78716697,2 6.00723574,2 L14.9927643,2 C17.2058994,2 19,3.78913646 19,6.00172845 L19,43.9982716 C19,46.2083651 17.212833,48 14.9927643,48 L6.00723574,48 C3.79410055,48 2,46.2108635 2,43.9982716 L2,6.00172845 Z M19,5 L2131,5 L2131,45 L19,45 L19,5 Z"></path>
+                                        <rect x="45" y="45" width="2060" height="1288"></rect>
+                                    </g>
+                                </svg>
+    							<!-- <div class="swiper-container swiper-gallery-top swiper-container-horizontal">
     								<div class="slide-title demo-iframe-title">Build Complex Touch Galleries</div>
     								<div class="swiper-wrapper">
     									<div class="swiper-slide swiper-lazy swiper-lazy-loaded swiper-slide-active" style="width: 800px; margin-right: 10px; background-image: url('http://lorempixel.com/1200/600/nature/1');">
-
 
     									</div>
     									<div data-background="http://lorempixel.com/1200/600/nature/2" class="swiper-slide swiper-lazy swiper-slide-next" style="width: 800px; margin-right: 10px;">
@@ -624,28 +618,27 @@
     									<div style="width: 152px; margin-right: 10px; background-image: url(&quot;http://lorempixel.com/300/200/nature/4&quot;);" class="swiper-slide"></div>
     									<div style="width: 152px; margin-right: 10px; background-image: url(&quot;http://lorempixel.com/300/200/nature/5&quot;);" class="swiper-slide"></div>
     								</div>
-    							</div>
+    							</div> -->
     						</div>
-    						<div class="swiper-slide last-centered-slide" style="transform: translate3d(0px, 0px, -337.5px) rotateX(0deg) rotateY(-168.75deg); z-index: -2; transition-duration: 0ms; margin-right: 100px;">
-    							<div class="slide-title">Start Using It Now</div>
-    							<div class="slide-subtitle">Swiper is completely free and open-source</div>
+    						<div class="swiper-slide" style="transform: translate3d(0px, 0px, -337.5px) rotateX(0deg) rotateY(-168.75deg); z-index: -2; transition-duration: 0ms; margin-right: 100px;">
+                                <svg viewBox="0 0 2150 1335">
+                                    <g stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.8">
+                                        <path d="M2131,6.00172845 C2131,3.79163485 2132.78717,2 2135.00724,2 L2143.99276,2 C2146.2059,2 2148,3.78913646 2148,6.00172845 L2148,43.9982716 C2148,46.2083651 2146.21283,48 2143.99276,48 L2135.00724,48 C2132.7941,48 2131,46.2108635 2131,43.9982716 L2131,6.00172845 Z M2,6.00172845 C2,3.79163485 3.78716697,2 6.00723574,2 L14.9927643,2 C17.2058994,2 19,3.78913646 19,6.00172845 L19,43.9982716 C19,46.2083651 17.212833,48 14.9927643,48 L6.00723574,48 C3.79410055,48 2,46.2108635 2,43.9982716 L2,6.00172845 Z M19,5 L2131,5 L2131,45 L19,45 L19,5 Z"></path>
+                                        <rect x="45" y="45" width="2060" height="1288"></rect>
+                                    </g>
+                                </svg>
     						</div>
     					</div>
     					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                     </div>
-
-                    <div class="high-z-index swiper-container gallery-thumbs swiper-front-gallery-thumbs" style='height:20%; box-sizing:border-box; padding: 10px 0;'>
+                    <div class="swiper-container swiper-front-gallery-thumbs" style='height:20%;'>
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/1); height:100%; opacity: 1;"></div>
-                            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/2); height:100%; opacity: 0.4;"></div>
-                            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/3); height:100%; opacity: 0.4;"></div>
-                            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/4); height:100%; opacity: 0.4;"></div>
-                       <!--      <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/5); height:100%; opacity: 0.4;"></div>
-                            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/6); height:100%; opacity: 0.4;"></div>
-                            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/7);"></div>
-                            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/8); height:100%; opacity: 0.4;"></div> -->
+                            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/1)"></div>
+                            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/2)"></div>
+                            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/3)"></div>
+                            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/4)"></div>
+                            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/5)"></div>
                         </div>
-                    </div>
                 </div>
 			</div>
         </section>
