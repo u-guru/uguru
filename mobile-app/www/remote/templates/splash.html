@@ -1,9 +1,46 @@
 <div class='relative' style='height:calc(100%); width:calc(100%); overflow:hidden !important;' eval-on-load="testFunction()">
-	<main id='home-splash' class='splash-landing new hs-view full-xy' style="height:calc(200% !importantc); width:calc(100%) !important;">
+	<main id='home-splash' class='splash-landing new hs-view full-xy' style="height:calc(200% !important); width:calc(100%) !important;">
 		<aside class="splash-sidebar-full">
-			<div>
-				
-			</div>
+			<nav class="splash-sidebar-menu">
+				<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
+				<ul>
+					<li>
+						<a>
+							<span>Home</span>
+						</a>
+					</li>
+					<li>
+						<a>
+							<span>Meet the team</span>
+						</a>
+					</li>
+					<li>
+						<a>
+							<span>FAQ</span>
+						</a>
+					</li>
+					<li>
+						<a>
+							<span>Pricing</span>
+						</a>
+					</li>
+					<li>
+						<a>
+							<span>Apply</span>
+						</a>
+					</li>
+					<li>
+						<a>
+							<span>Login</span>
+						</a>
+					</li>
+					<li>
+						<a>
+							<span>Support</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
 		</aside>
 
 		<header class='splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
