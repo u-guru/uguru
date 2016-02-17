@@ -107,17 +107,6 @@ angular.module('uguru.directives')
     }
   }
 }])
-.directive('skrollr', function () {
-      var obj = {
-        link: function () {
-          /* jshint ignore:start */
-          // skrollr.init({skrollrBody:'skrollr-home'}).refresh();
-
-          /* jshint ignore:end */
-        }
-      };
-      return obj;
-})
 .directive('activateOnClass', ['$timeout', function ($timeout) {
   return {
     restrict: 'A',
@@ -240,6 +229,23 @@ directive("classOnLoad", ["$timeout", 'AnimationService', function ($timeout, An
               })
           }
       };
+}]).
+directive("evalOnLoad", ["$timeout", 'AnimationService', '$parse', function($timeout, AnimationService, $parse) {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+              $timeout(function() {
+                scope.$watch('root.loader.body.hide', function(value) {
+                    $timeout(function() {
+                      scope.$apply(function(){
+                        var func = $parse(attr.evalOnLoad);
+                        func(scope);
+                      })
+                    })
+                })
+              })
+          }
+      }
 }]).
 directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, AnimationService) {
       return {

@@ -270,6 +270,7 @@ gulp.task('scripts', function() {
       'lib/ngMoment/moment.min.js',
       'lib/ngMoment/*.js',
       'lib/snap-svg/*js',
+      'lib/swiper/*js',
       'lib/angular-google-maps/angular-google-maps.min.js',
       'http://maps.google.com/maps/api/js?sensor=false',
       // 'lib/angular-google-maps/google-marker-with-labels.js',
