@@ -575,7 +575,7 @@
 				    </g>
 				</svg>
 			</a>
-			<div class='header-swipers bg-azure'>
+			<div class='header-swipers'>
 				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-1">
 					<div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
@@ -584,7 +584,7 @@
 						<div class="swiper-slide" style="transform: translate3d(0px, 0px, -351.724px) rotateX(175.862deg) rotateY(0deg); z-index: -3; transition-duration: 0ms; margin-bottom: 100px;"></div>
 					</div>
 				</div>
-				<div  bind-wp="s2_top" bind-wp-class="bg-azure, bg-charcoal" bind-wp-direction="up, down" class="swiper-container header-swiper-back-1 swiper-container-horizontal swiper-container-3d swiper-container-coverflow opacity-0">
+				<div bind-wp="s2_top" bind-wp-class="bg-azure, bg-charcoal" bind-wp-direction="up, down" class="swiper-container header-swiper-back-1 swiper-container-horizontal swiper-container-3d swiper-container-coverflow opacity-0">
 					<div class="swiper-wrapper" style="transform: translate3d(236px, 0px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-right: 300px;"></div>
 						<div class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -135.714px) rotateX(0deg) rotateY(-67.8571deg); z-index: 0; transition-duration: 0ms; margin-right: 300px;"></div>
@@ -595,7 +595,7 @@
                 <div class='main-swipers-container'>
     				<div class="swiper-container header-swiper-front swiper-container-horizontal swiper-container-3d swiper-container-coverflow">
     					<!-- pagination -->
-    					<div class="swiper-pagination swiper-pagination-white swiper-pagination-clickable swiper-pagination-bullets">
+    					<div class="swiper-pagination swiper-pagination-white swiper-pagination-clickable swiper-pagination-bullets opacity-0" style="visibility: hidden">
     						<span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span>
     						<span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span>
     					</div>
@@ -606,28 +606,20 @@
     					<div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
     						<!-- Slide # 1-->
     						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-right: 100px;">
-                                <svg viewBox="0 0 2150 1335">
-                                    <g stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.8">
-                                        <path d="M2131,6.00172845 C2131,3.79163485 2132.78717,2 2135.00724,2 L2143.99276,2 C2146.2059,2 2148,3.78913646 2148,6.00172845 L2148,43.9982716 C2148,46.2083651 2146.21283,48 2143.99276,48 L2135.00724,48 C2132.7941,48 2131,46.2108635 2131,43.9982716 L2131,6.00172845 Z M2,6.00172845 C2,3.79163485 3.78716697,2 6.00723574,2 L14.9927643,2 C17.2058994,2 19,3.78913646 19,6.00172845 L19,43.9982716 C19,46.2083651 17.212833,48 14.9927643,48 L6.00723574,48 C3.79410055,48 2,46.2108635 2,43.9982716 L2,6.00172845 Z M19,5 L2131,5 L2131,45 L19,45 L19,5 Z"></path>
-                                        <rect x="45" y="45" width="2060" height="1288"></rect>
-                                    </g>
-                                </svg>
+								<div class="projector-top"></div>
+								<div class="projector-content">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								</div>
     						</div>
     						<div class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -112.5px) rotateX(0deg) rotateY(-56.25deg); z-index: 0; transition-duration: 0ms; margin-right: 100px;">
-                                <svg viewBox="0 0 2150 1335">
-                                    <g stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.8">
-                                        <path d="M2131,6.00172845 C2131,3.79163485 2132.78717,2 2135.00724,2 L2143.99276,2 C2146.2059,2 2148,3.78913646 2148,6.00172845 L2148,43.9982716 C2148,46.2083651 2146.21283,48 2143.99276,48 L2135.00724,48 C2132.7941,48 2131,46.2108635 2131,43.9982716 L2131,6.00172845 Z M2,6.00172845 C2,3.79163485 3.78716697,2 6.00723574,2 L14.9927643,2 C17.2058994,2 19,3.78913646 19,6.00172845 L19,43.9982716 C19,46.2083651 17.212833,48 14.9927643,48 L6.00723574,48 C3.79410055,48 2,46.2108635 2,43.9982716 L2,6.00172845 Z M19,5 L2131,5 L2131,45 L19,45 L19,5 Z"></path>
-                                        <rect x="45" y="45" width="2060" height="1288"></rect>
-                                    </g>
-                                </svg>
+								<div class="projector-content">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								</div>
     						</div>
     						<div class="swiper-slide swiper-slide-gallery" style="transform: translate3d(0px, 0px, -225px) rotateX(0deg) rotateY(-112.5deg); z-index: -1; transition-duration: 0ms; margin-right: 100px;">
-                                <svg viewBox="0 0 2150 1335">
-                                    <g stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.8">
-                                        <path d="M2131,6.00172845 C2131,3.79163485 2132.78717,2 2135.00724,2 L2143.99276,2 C2146.2059,2 2148,3.78913646 2148,6.00172845 L2148,43.9982716 C2148,46.2083651 2146.21283,48 2143.99276,48 L2135.00724,48 C2132.7941,48 2131,46.2108635 2131,43.9982716 L2131,6.00172845 Z M2,6.00172845 C2,3.79163485 3.78716697,2 6.00723574,2 L14.9927643,2 C17.2058994,2 19,3.78913646 19,6.00172845 L19,43.9982716 C19,46.2083651 17.212833,48 14.9927643,48 L6.00723574,48 C3.79410055,48 2,46.2108635 2,43.9982716 L2,6.00172845 Z M19,5 L2131,5 L2131,45 L19,45 L19,5 Z"></path>
-                                        <rect x="45" y="45" width="2060" height="1288"></rect>
-                                    </g>
-                                </svg>
+								<div class="projector-content">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								</div>
     							<!-- <div class="swiper-container swiper-gallery-top swiper-container-horizontal">
     								<div class="slide-title demo-iframe-title">Build Complex Touch Galleries</div>
     								<div class="swiper-wrapper">
@@ -659,17 +651,14 @@
     							</div> -->
     						</div>
     						<div class="swiper-slide" style="transform: translate3d(0px, 0px, -337.5px) rotateX(0deg) rotateY(-168.75deg); z-index: -2; transition-duration: 0ms; margin-right: 100px;">
-                                <svg viewBox="0 0 2150 1335">
-                                    <g stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.8">
-                                        <path d="M2131,6.00172845 C2131,3.79163485 2132.78717,2 2135.00724,2 L2143.99276,2 C2146.2059,2 2148,3.78913646 2148,6.00172845 L2148,43.9982716 C2148,46.2083651 2146.21283,48 2143.99276,48 L2135.00724,48 C2132.7941,48 2131,46.2108635 2131,43.9982716 L2131,6.00172845 Z M2,6.00172845 C2,3.79163485 3.78716697,2 6.00723574,2 L14.9927643,2 C17.2058994,2 19,3.78913646 19,6.00172845 L19,43.9982716 C19,46.2083651 17.212833,48 14.9927643,48 L6.00723574,48 C3.79410055,48 2,46.2108635 2,43.9982716 L2,6.00172845 Z M19,5 L2131,5 L2131,45 L19,45 L19,5 Z"></path>
-                                        <rect x="45" y="45" width="2060" height="1288"></rect>
-                                    </g>
-                                </svg>
+								<div class="projector-content">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								</div>
     						</div>
     					</div>
     					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                     </div>
-                    <div class="swiper-container swiper-front-gallery-thumbs" style='height:20%;'>
+                    <div class="swiper-container swiper-front-gallery-thumbs">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/1)"></div>
                             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/2)"></div>
