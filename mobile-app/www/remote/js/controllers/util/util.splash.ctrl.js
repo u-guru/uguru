@@ -73,19 +73,19 @@ angular.module('uguru.util.controllers')
       }
       var swiperNestedThumbsGallery = new Swiper('.swiper-gallery-thumbs', swiperNestedThumbsGalleryOptions);
 
-      // var swiperFrontGalleryThumbsOption = {
-      //   slidesPerView:5,
-      //   spaceBetween:10,
-      //   centeredSlides:true,
-      //   touchRatio:0.2,
-      //   slideToClickedSlide:true,
-      //   nested:true,
-      //   resistanceRatio:0
-      // }
-      // var swiperFrontGalleryThumbs = new Swiper('.swiper-front-gallery-thumbs', swiperFrontGalleryThumbs);
+      var swiperFrontGalleryThumbsOption = {
+        slidesPerView:5,
+        spaceBetween:10,
+        centeredSlides:true,
+        touchRatio:0.2,
+        slideToClickedSlide:true,
+        nested:true,
+        resistanceRatio:0
+      }
+      var swiperFrontGalleryThumbs = new Swiper('.swiper-front-gallery-thumbs', swiperFrontGalleryThumbsOption);
 
-      // swiperFront.params.control = swiperFrontThumbs;
-      // swiperFrontThumbs.params.control = swiperFront;
+      swiperFront.params.control = swiperFrontGalleryThumbs;
+      swiperFrontGalleryThumbs.params.control = swiperFront;
 
       swiperNestedGallery.params.control=swiperNestedThumbsGallery;
       swiperNestedThumbsGallery.params.control=swiperNestedGallery
