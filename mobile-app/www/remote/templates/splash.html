@@ -6,7 +6,7 @@
 				<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
 				<ul>
 					<li>
-						<a>
+						<a ng-click='page.sidebar.toggle()'>
 							<span>Home</span>
 						</a>
 					</li>
@@ -37,12 +37,7 @@
                     </li>
                     <li>
                         <a id='cta-box-intercom'>
-                            <span>Support2</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a ng-click='page.sidebar.toggle()'>
-                            <span> Close </span>
+                            <span>Support</span>
                         </a>
                     </li>
 				</ul>
@@ -135,7 +130,7 @@
 
 		<section id='splash-home' class='splash-hero'>
 			<div class="splash-hero-nav desktop opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500">
-                <div>
+                <div bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
                     <a class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-hero-nav-categories|a, active:unique">
                         <span>{{selectedCategory.name}}</span>
                         <svg viewBox="0 0 100 100">
@@ -158,7 +153,7 @@
                         </ul>
                     </div>
                 </div>
-                <h2>@</h2>
+                <h2 bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">@</h2>
                 <div>
                     <a class="bg-cal" class-on-click="a:inject.splash-hero-nav-schools|a, active:unique">
                         <span>UC Berkeley</span>
@@ -473,7 +468,7 @@
 			</div>
 			<div class="splash-hero-content" activate-on-class="a" class-on-activate="fadeOut:animOut">
 				<div class="splash-guru-head">
-					<div ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+					<div class="splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
 					<svg class="coach-help coach-help-desktop opacity-0 animated" viewBox="0 0 340 205">
 						<g fill="none">
 							<text transform="translate(173.347656, 110.679688) rotate(-19.000000) translate(-173.347656, -110.679688) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
@@ -643,15 +638,42 @@
 				</svg>
 			</div>
 		</section>
-		<section id='splash-projector' class='full-y bg-slate relative' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
-			<a id="projector-pull">
-				<svg width="28px" height="224px" viewBox="0 0 56 448">
-				    <g stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
-				        <path d="M28,2 L28,392" fill="none" stroke-width="4" stroke-dasharray="16,14" opacity="0.6"></path>
-				        <path d="M28,444 C41.254834,444 52,433.254834 52,420 C52,406.745166 41.254834,396 28,396 C14.745166,396 4,406.745166 4,420 C4,433.254834 14.745166,444 28,444 Z" stroke-opacity="0.6" stroke-width="8" fill="#FFFFFF"></path>
-				    </g>
-				</svg>
-			</a>
+		<section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
+            <div class="projector-trigger">
+                <a id="projector-pull" bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity">
+    				<svg width="28px" height="224px" viewBox="0 0 56 448">
+    				    <g stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+    				        <path d="M28,2 L28,392" fill="none" stroke-width="4" stroke-dasharray="16,14" opacity="0.6"></path>
+    				        <path d="M28,444 C41.254834,444 52,433.254834 52,420 C52,406.745166 41.254834,396 28,396 C14.745166,396 4,406.745166 4,420 C4,433.254834 14.745166,444 28,444 Z" stroke-opacity="0.6" stroke-width="8" fill="#FFFFFF"></path>
+    				    </g>
+    				</svg>
+    			</a>
+                <svg class="coach-projector" viewBox="0 0 205 72">
+                    <path d="M126.402476,34.2902799 C126.402476,34.2902799 41.4492178,1.17968707 3.56286124,62.6500409 M29.8097207,61.5428392 L3.63890408,62.9143936 L2.26734969,36.7435769" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <text transform="translate(171.576620, 28.576620) rotate(7.000000) translate(-171.576620, -28.576620)" font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+                        <tspan x="139.17662" y="27.5766198">pull</tspan>
+                        <tspan x="139.07662" y="67.5766198">me!</tspan>
+                    </text>
+                </svg>
+            </div>
+            <div class="splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+            <div class="splash-projector-message desktop">
+                <svg viewBox="0 0 1304 354">
+                    <path d="M2,39.9999987 C2,35.5817214 5.58280463,32 10.0088717,32 L622,32 L652,2 L682,32 L1293.99113,32 C1298.41431,32 1302,35.5800296 1302,39.9999987 L1302,344.000001 C1302,348.418279 1298.41351,352 1293.99365,352 L10.0063476,352 C5.58456393,352 2,348.41997 2,344.000001 L2,39.9999987 Z" stroke="#FFFFFF" stroke-width="4" fill-opacity="0.5" fill="#40484B"></path>
+                    <text font-family="Source Sans Pro" font-size="96" font-weight="600" line-spacing="126" fill="#FFFFFF" text-anchor="middle">
+                        <tspan x="652" y="163">Wanna see something cool?</tspan>
+                        <tspan x="652" y="289">Check it out.</tspan>
+                    </text>
+                </svg>
+            </div>
+            <div class="splash-projector-footer">
+                <a>
+                    <svg viewBox="0 0 100 100">
+                    	<path d="M14,68 L50,32 L86,68"></path>
+                    </svg>
+                    <span>back to top</span>
+                </a>
+            </div>
 			<div class='header-swipers'>
 				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-1">
 					<div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
@@ -661,7 +683,7 @@
 						<div class="swiper-slide" style="transform: translate3d(0px, 0px, -351.724px) rotateX(175.862deg) rotateY(0deg); z-index: -3; transition-duration: 0ms; margin-bottom: 100px;"></div>
 					</div>
 				</div>
-				<div bind-wp="s2_top" bind-wp-class="bg-azure, bg-charcoal" bind-wp-direction="up, down:remove:bg-azure" class="swiper-container header-swiper-back-1 swiper-container-horizontal swiper-container-3d swiper-container-coverflow opacity-0 bg-azure">
+				<div class="swiper-container header-swiper-back-1 swiper-container-horizontal swiper-container-3d swiper-container-coverflow opacity-0">
 					<div class="swiper-wrapper" style="transform: translate3d(236px, 0px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-right: 300px;"></div>
 						<div class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -135.714px) rotateX(0deg) rotateY(-67.8571deg); z-index: 0; transition-duration: 0ms; margin-right: 300px;"></div>
@@ -684,7 +706,8 @@
     						<!-- Slide # 1-->
     						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-right: 100px;">
 								<div class="projector-top"></div>
-								<div class="projector-content" bind-wp="s2_25_top" bind-wp-class="bg-cerise-impt, opacity-0-impt" bind-wp-direction="down:remove:opacity-0-impt, up" activate-on-class="bg-cerise-impt" activate-on-class-delay="500" class-on-activate="tada:anim:inject#slide-2|activate" class-on-activate-delay="200">
+								<div class="projector-content">
+                                    <!-- bind-wp="s2_25_top" bind-wp-class="bg-cerise-impt, opacity-0-impt" bind-wp-direction="down:remove:opacity-0-impt, up" activate-on-class="bg-cerise-impt" activate-on-class-delay="500" class-on-activate="tada:anim:inject#slide-2|activate" class-on-activate-delay="200" -->
 									<!-- SECTION #1 -- UNIVERSITY -->
                                     <div class='hide' id='splash-university'>
                                         <header>

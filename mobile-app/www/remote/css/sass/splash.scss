@@ -4729,6 +4729,12 @@
 			@include opacity-important(0);
 		}
 	}
+	.splash-logo-guru {
+		svg {
+			display: block;
+			width: 150px;
+		}
+	}
 	.splash-sidebar-full {
 		@include flex;
 		position: fixed;
@@ -5639,10 +5645,6 @@
 		.splash-guru-head {
 			width: 150px;
 			position: relative;
-			svg {
-				display: block;
-				width: 100%;
-			}
 			> svg {
 				position: absolute;
 			}
@@ -5906,16 +5908,64 @@
 		@include flex;
 		@include flex-wrap;
 		@include flex-center;
+		position: relative;
 		background: $slate;
-		#projector-pull {
-			display: block;
+		height: 100%;
+		overflow: hidden;
+		.projector-trigger {
 			position: absolute;
-			top: 0;
+			z-index: 11;
+			top: -60px;
 			left: 50%;
 			margin-left: -1px;
 		}
+		#projector-pull {
+			display: block;
+		}
+		.coach-projector {
+			display: block;
+			position: absolute;
+			bottom: 30px;
+			left: 30px;
+			width: 102.5px;
+			height: 36px;
+		}
+		.splash-projector-message {
+			width: 100%;
+			svg {
+				display: block;
+				margin: 0 auto;
+				width: 100%;
+				max-width: 642px;
+			}
+		}
+		.splash-projector-footer {
+			position: absolute;
+			bottom: 15px;
+			right: 50%;
+			margin-right: -75px;
+			width: 150px;
+			a {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				svg {
+					@include svg-stroke(white, 4);
+					width: 50px;
+					height: 50px;
+				}
+				span {
+					display: block;
+					width: 100%;
+					margin-top: -5px;
+					font-size: 18px;
+					font-weight: 600;
+					text-align: center;
+				}
+			}
+		}
 		.header-swiper-front {
-			height: 90%;
+			height: 100%;
 		}
 		.swiper-front-gallery-thumbs {
 			height: 10%;
