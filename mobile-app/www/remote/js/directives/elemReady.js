@@ -165,37 +165,23 @@ angular.module('uguru.directives')
                 element[0].style.msTransform = transFormString;
                 element[0].style.OTransform = transFormString;
                 element[0].style.transform = transFormString;
-                element[0].classList.add(injectOnTranslateClass);
-                console.log(translateElemCoords, elemCoords, transFormString, element[0], 'with Xoffset', attr.translateXOffset, 'and y offset', attr.translateYOffset);
+                element[0].classList.add(injectOnTranslateClass, 'active');
 
                 //deactivate other directives with transforms towards the same element "translate-to-elem";
-                var allTranslateOnClickElems = element[0].querySelectorAll("[translate-on-click]");
+                var allTranslateOnClickElems = document.querySelectorAll('.' + injectOnTranslateClass + ".active");
+                console.log('allTranslateOnClickElems', allTranslateOnClickElems.length, 'found:\n', allTranslateOnClickElems);
                 for (var i = 0; i < allTranslateOnClickElems.length; i++) {
                   var indexTranslateElem  = allTranslateOnClickElems[i];
-                  indexTranslateElem.classList.remove(injectOnTranslateClass);
                   if (indexTranslateElem !== element[0]) {
-                    var hasTranslateBackAttr = indexTranslateElem.getAttribute('translate-back-class');
-                    if (hasTranslateBackAttr && hasTranslateBackAttr.length) {
-                      var indexTranslateElemClasses = hasTranslateBackAttr.split(', ');
-                      for (var j = 0; j < indexTranslateElemClasses.length; j++) {
-                        var indexClassToAdd = indexTranslateElemClasses[j];
-                        indexTranslateElem.classList.add(indexClassToAdd);
-                        element[0].style.webkitTransform = null;
-                        element[0].style.MozTransform = null;
-                        element[0].style.msTransform = null;
-                        element[0].style.OTransform = null;
-                        element[0].style.transform = null;
+                        indexTranslateElem.classList.remove(injectOnTranslateClass, 'active');
+                        indexTranslateElem.style.webkitTransform = null;
+                        indexTranslateElem.style.MozTransform = null;
+                        indexTranslateElem.style.msTransform = null;
+                        indexTranslateElem.style.OTransform = null;
+                        indexTranslateElem.style.transform = null;
                       }
-                      setTimeout(function() {
-                        for (var k = 0; k < indexTranslateElemClasses.length; k++) {
-                          var indexClassToAdd = indexTranslateElemClasses[k];
-                          indexTranslateElem.classList.remove(indexClassToAdd);
-                        }
-                      }, 2000);
                     }
-                  }
                 }
-              }
             });
       }
     };
@@ -274,7 +260,6 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                       }
                       if (classArgs.indexOf("unique") > -1) {
                         var otherClassElems = document.querySelectorAll('.' + indexClass);
-                        console.log(otherClassElems);
                         for (var j = 0; j < otherClassElems.length; j++) {
                           var otherElemIndex = otherClassElems[j];
                           if (otherElemIndex !== element[0]) {
@@ -309,7 +294,6 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                       return true
                     };
                   })
-                  console.log(injectArg);
                   return injectArg.replace("inject", "");
                 }
               });

@@ -135,7 +135,7 @@ angular.module('uguru.util.controllers')
       // @gabrielle-note -- what
       initSwipers();
       $timeout(function() {
-        $scope.scrollToSection('#splash-projector');
+        // $scope.scrollToSection('#splash-projector');
         $scope.page.sidebar = SideMenuService.initHomeSideMenu($scope);
       })
     }
