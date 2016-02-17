@@ -473,7 +473,7 @@ directive("bindWp", ['$timeout', function ($timeout) {
                 if (attr.bindWpDirection) {
                   var directionNames = attr.bindWpDirection.split(', ')
                 } else {
-                  var directionNames = ["down", "down", "down", "down", "down", "down", "down", "down", "down"];
+                  var directionNames = ["down", "down", "down", "down", "down", "down"]
                 }
 
                 scope.$watch('page.waypoints.' + attr.bindWp + '.activated', function(isActive) {
@@ -484,10 +484,27 @@ directive("bindWp", ['$timeout', function ($timeout) {
                   for (var i = 0; i < classNames.length; i++) {
                     var indexClassName = classNames[i];
                     var directionName = directionNames[i];
+                    var directionArgs = directionName.split(':');
+                    var directionName = directionArgs[0];
                     if (isActive && direction === 'down' && directionName === direction) {
-                      element[0].classList.add(indexClassName);
-                    } else if(isActive && direction === 'up'){
-                      element[0].classList.remove(indexClassName);
+                      if (directionArgs.length === 1) {
+                        element[0].classList.add(classNames[i]);
+                      } else if (directionArgs.length === 2 && directionArgs[1] === 'remove') {
+                        element[0].classList.remove(classNames[i]);
+                      } else if (directionArgs.length === 3 && directionArgs[1] === 'remove' && directionArgs[2].length) {
+                        element[0].classList.remove(directionArgs[2]);
+                        element[0].classList.add(classNames[i]);
+                      }
+
+                    } else if(isActive && direction === 'up' && directionName === direction){
+                      if (directionArgs.length === 1) {
+                        element[0].classList.add(classNames[i]);
+                      } else if (directionArgs.length === 2 && directionArgs[1] === 'remove') {
+                        element[0].classList.remove(classNames[i]);
+                      } else if (directionArgs.length === 3 && directionArgs[1] === 'remove' && directionArgs[2].length) {
+                        element[0].classList.remove(directionArgs[2]);
+                        element[0].classList.add(classNames[i]);
+                      }
                     }
                   }
                 })

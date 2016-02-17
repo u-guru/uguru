@@ -4770,6 +4770,25 @@
 				}
 			}
 		}
+		.splash-sidebar-content {
+			height: 100%;
+			width: calc(100% / 3 * 2);
+			left:calc(100% / 3);
+			overflow:hidden;
+			#desktop-account {
+				aside, #cta-desktop-signup-back {
+					display:none;
+				}
+				.main {
+					width:100%;
+				}
+			}
+			#desktop-guru-onboarding {
+				.desktop-header {
+					display:none;
+				}
+			}
+		}
 	}
 	> section.splash-hero {
 		@include flex-wrap;

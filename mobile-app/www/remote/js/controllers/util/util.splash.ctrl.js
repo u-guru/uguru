@@ -12,11 +12,12 @@ angular.module('uguru.util.controllers')
   '$ionicModal',
   'Category',
   'ScrollService',
+  'SideMenuService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
-    $cordovaKeyboard, $ionicModal, Category, ScrollService) {
+    $cordovaKeyboard, $ionicModal, Category, ScrollService, SideMenuService) {
     $scope.selectedCategory = ($scope.categories && $scope.categories[0]) || {name: 'Academic', hex_color: 'academic'};
 
-    $scope.page = {scroll: {}, waypoints: {}};
+    $scope.page = {scroll: {}, waypoints: {}, sidebar:{} };
     //@gabrielle note, scroll preferences
     $scope.page.scroll = {
       _length: 250,//scroll duration
@@ -135,6 +136,7 @@ angular.module('uguru.util.controllers')
       initSwipers();
       $timeout(function() {
         $scope.scrollToSection('#splash-projector');
+        $scope.page.sidebar = SideMenuService.initHomeSideMenu($scope);
       })
     }
 
