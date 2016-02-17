@@ -506,8 +506,7 @@ button.swiper-pagination-bullet {
 	width: 100%;
 }
 .header-swipers .swiper-container .swiper-slide {
-	box-sizing: border-box;
-	padding: 40px;
+	@include box-sizing;
 }
 .header-swipers .swiper-pagination {
 	bottom: 70px;
@@ -524,52 +523,18 @@ button.swiper-pagination-bullet {
 	@include opacity(.5);
 }
 .header-swipers .header-swiper-back-1 .swiper-slide {
-	border: 1px solid rgba(white, .5);
-	height: 540px;
+	// border: 1px solid rgba(white, .5);
+	height: 640px;
 	margin-bottom: auto;
 	margin-top: auto;
-	width: 840px;
+	width: 1000px;
 }
 .header-swipers .header-swiper-front .swiper-slide {
-	border: 1px solid white;
-	height: 500px;
+	// border: 1px solid white;
+	height: 600px;
 	margin-bottom: auto;
 	margin-top: auto;
-	width: 800px;
-}
-.header-swipers .slide-title,
-.header-swipers .slide-subtitle {
-	margin-bottom: 40px;
-}
-.header-swipers .demo-iframe-title {
-    @include prefix(transform-style, preserve-3d, webkit moz ms);
-    @include prefix(backface-visibility, hidden, webkit moz ms);
-	backface-visibility: hidden;
-	background: rgba($lake, .5);
-	left: 0;
-	margin: 0;
-	padding: 10px;
-	position: absolute;
-	top: 0;
-	z-index: 100;
-}
-.header-swipers .slide-features-list li {
-	float: left;
-	position: relative;
-	width: 50%;
-}
-.header-swipers .slide-features-list li:before {
-    @include opacity(.7);
-    @include prefix(transform, rotate(-45deg), webkit moz ms o);
-	border-bottom: 1px solid white;
-	border-left: 1px solid white;
-	content: "";
-	height: 6px;
-	margin-right: 8px;
-	position: absolute;
-	right: 100%;
-	top: 8px;
-	width: 12px;
+	width: 960px;
 }
 .header-swipers .swiper-slide.swiper-slide-gallery {
 	border: none;

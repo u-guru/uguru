@@ -120,7 +120,7 @@ angular.module('uguru.util.controllers')
       // @gabrielle-note -- what
       initSwipers();
       $timeout(function() {
-        $scope.scrollToSection('#scene-2');
+        $scope.scrollToSection('#splash-projector');
       })
     }
 
