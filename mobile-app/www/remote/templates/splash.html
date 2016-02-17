@@ -1,5 +1,5 @@
 <div class='relative' style='height:calc(100%); width:calc(100%); overflow:hidden !important;' eval-on-load="testFunction()">
-	<main id='home-splash' class='splash-landing new hs-view full-xy' style="height:calc(200% !importantc); width:calc(100%) !important;">
+	<main id='home-splash' init-wp-parent class='splash-landing new hs-view full-xy' style="height:calc(200% !importantc); width:calc(100%) !important;">
 		<!-- sidebar -->
 		<aside id='cta-modal-sidebar' class='splash-sidebar bg-charcoal ng-class: ::{"show":page.sidebar.show, "fx-zoom-down fx-duration-700":!desktopMode && page.sidebar.show}' ng-include="::img_base + BASE + 'templates/one.university.sidebar.html'">
 		</aside>
@@ -527,9 +527,9 @@
 				</svg>
 			</div>
 		</section>
-
-		<section id='scene-2' class='full-y bg-cerise relative'>
-			<div class='header-swipers bg-azure'>
+        <!-- initializing 3 way points above section two, auto triggered on the scroll downards-->
+		<section id='scene-2' class='full-y bg-cerise relative' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
+			<div class='header-swipers bg-azure' >
 				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-0">
 					<div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
@@ -538,7 +538,7 @@
 						<div class="swiper-slide" style="transform: translate3d(0px, 0px, -351.724px) rotateX(175.862deg) rotateY(0deg); z-index: -3; transition-duration: 0ms; margin-bottom: 100px;"></div>
 					</div>
 				</div>
-				<div class="swiper-container header-swiper-back-1 swiper-container-horizontal swiper-container-3d swiper-container-coverflow opacity-0">
+				<div  bind-wp="s2_top" bind-wp-class="bg-azure, bg-charcoal" bind-wp-direction="up, down" class="swiper-container header-swiper-back-1 swiper-container-horizontal swiper-container-3d swiper-container-coverflow opacity-0">
 					<div class="swiper-wrapper" style="transform: translate3d(236px, 0px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-right: 300px;"></div>
 						<div class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -135.714px) rotateX(0deg) rotateY(-67.8571deg); z-index: 0; transition-duration: 0ms; margin-right: 300px;"></div>
@@ -634,7 +634,7 @@
     					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                     </div>
 
-                    <div class="swiper-container gallery-thumbs swiper-front-gallery-thumbs" style='height:20%; box-sizing:border-box; padding: 10px 0;'>
+                    <div class="high-z-index swiper-container gallery-thumbs swiper-front-gallery-thumbs" style='height:20%; box-sizing:border-box; padding: 10px 0;'>
                         <div class="swiper-wrapper">
                             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/1); height:100%; opacity: 1;"></div>
                             <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/2); height:100%; opacity: 0.4;"></div>

@@ -16,7 +16,7 @@ angular.module('uguru.util.controllers')
     $cordovaKeyboard, $ionicModal, Category, ScrollService) {
     $scope.selectedCategory = ($scope.categories && $scope.categories[0]) || {name: 'Academic', hex_color: 'academic'};
 
-    $scope.page = {scroll: {}};
+    $scope.page = {scroll: {}, waypoints: {}};
     //@gabrielle note, scroll preferences
     $scope.page.scroll = {
       _length: 250,//scroll duration

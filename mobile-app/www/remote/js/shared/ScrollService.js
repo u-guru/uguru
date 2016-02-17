@@ -34,6 +34,7 @@ function ScrollService(LoadingService, $timeout) {
       function returnWayPointFunction(wpName, stateName) {
         return function(direction) {
           //if up animation
+            console.log(wpName, direction, stateName, 'triggered');
             globalWPScopeRef[stateName].page.waypoints[wpName].activated = true;
             globalWPScopeRef[stateName].page.waypoints[wpName].direction = direction;
             globalWPScopeRef[stateName].$apply();
