@@ -5842,6 +5842,16 @@
 		}
 	}
 	> section#splash-projector {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
 		background: $slate;
+		#projector-pull {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			margin-left: -1px;
+		}
 	}
 }
