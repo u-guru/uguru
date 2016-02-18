@@ -7,21 +7,67 @@ angular
     '$timeout',
     'CounterService',
     'CTAService',
+    '$ionicModal',
+    '$ionicSlideBoxDelegate',
     SideMenuService
 	]);
 
-function SideMenuService(LoadingService, $timeout, CounterService, CTAService) {
+function SideMenuService(LoadingService, $timeout, CounterService, CTAService, $ionicModal, $ionicSlideBoxDelegate) {
   return {
-    initHomeSideMenu: initHomeSideMenu
+    initHomeSideMenu: initHomeSideMenu,
+    initHomeModals: initHomeModals
   }
 
     function initHomeSideMenu(scope) {
       initSupportBox(scope);
-      initSideMenuCTAs(scope, '.splash-sidebar-content');
+      scope.desktopMode && initSideMenuCTAs(scope, '.splash-sidebar-content');
       return {
         toggle: toggleSidebar(scope),
         show: false
       }
+    }
+
+    function initHomeModals(scope) {
+
+        $ionicModal.fromTemplateUrl(BASE + 'templates/signup.modal.html', {
+          scope: scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          scope.page.modals.account = modal;
+        });
+
+        scope.$on('modal.shown', function() {
+          $ionicSlideBoxDelegate.update();
+        });
+
+        $ionicModal.fromTemplateUrl(BASE + 'templates/team.html', {
+          scope: scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          scope.page.modals.team = modal;
+        });
+
+        $ionicModal.fromTemplateUrl(BASE + 'templates/become.guru.modal.html', {
+          scope: scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          scope.page.modals.become_guru = modal;
+        });
+
+        $ionicModal.fromTemplateUrl(BASE + 'templates/pricing.html', {
+          scope: scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          scope.page.modals.pricing = modal;
+        });
+
+        // $ionicModal.fromTemplateUrl(BASE + 'templates/faq.html', {
+        //   scope: scope,
+        //   animation: 'slide-in-up'
+        // }).then(function(modal) {
+        //   scope.page.modals.faq = modal;
+        // });
+        scope.page.modals.support = showSupport(scope);
     }
 
     function showSupport(scope) {

@@ -1,4 +1,4 @@
-<div class='relative' style='height:calc(100%); width:calc(100%); overflow:hidden !important;' eval-on-load="testFunction()">
+<div class='relative' style='height:calc(100%); width:calc(100%); overflow:hidden !important;' eval-on-load="onLoad()">
 	<!-- @gabrielle, do not not remove  init-wp-parent -->
     <main id='home-splash' init-wp-parent class='splash-landing new hs-view full-xy' style="height:calc(200% !important); width:calc(100%) !important;" bind-wp="s1_top">
 		<aside class="splash-sidebar-full hide" ng-class="{'show': page.sidebar.show}" id='home-splash-sidebar'>
@@ -11,32 +11,37 @@
 						</a>
 					</li>
 					<li id='cta-box-team' activate-on-class="anim-sidemenu-li" class-on-activate="lightSpeedIn:anim" class-on-activate-delay="100" class='opacity-0'>
-						<a>
+						<a ng-click='!desktopMode && page.modals.team.show()'>
 							<span>Meet the team</span>
 						</a>
 					</li>
 					<li activate-on-class="anim-sidemenu-li" class-on-activate="lightSpeedIn:anim" class-on-activate="lightSpeedIn:anim" class-on-activate-delay="150" class='opacity-0'>
-						<a id='cta-box-FAQ'>
+						<a id='cta-box-FAQ' ng-click='!desktopMode && page.modals.faq.show()'>
 							<span>FAQ</span>
 						</a>
 					</li>
 					<li activate-on-class="anim-sidemenu-li" class-on-activate="lightSpeedIn:anim" class-on-activate="lightSpeedIn:anim" class-on-activate-delay="200" class='opacity-0'>
-						<a id='cta-box-pricing'>
+						<a id='cta-box-pricing' ng-click='!desktopMode && page.modals.pricing.show()'>
 							<span>Pricing</span>
 						</a>
 					</li>
 					<li activate-on-class="anim-sidemenu-li" class-on-activate="lightSpeedIn:anim" class-on-activate="lightSpeedIn:anim" class-on-activate-delay="250" class='opacity-0'>
-						<a id='cta-box-account'>
+						<a id='cta-box-account' ng-click='!desktopMode && page.modals.signup.show()'>
 							<span>Login / Signup</span>
 						</a>
 					</li>
                     <li activate-on-class="anim-sidemenu-li" class-on-activate="lightSpeedIn:anim" class-on-activate="lightSpeedIn:anim" class-on-activate-delay="300" class='opacity-0'>
-                        <a id='cta-box-become-guru'>
+                        <a id='cta-box-become-guru' ng-click='!desktopMode && page.modals.become_guru.show()'>
                             <span>Become a Guru</span>
                         </a>
                     </li>
                     <li activate-on-class="anim-sidemenu-li" class-on-activate="lightSpeedIn:anim" class-on-activate="lightSpeedIn:anim" class-on-activate-delay="350" class='opacity-0'>
-                        <a id='cta-box-intercom'>
+                        <a id='cta-box-intercom' ng-click='!desktopMode && page.modals.support.show()'>
+                            <span>Support</span>
+                        </a>
+                    </li>
+                     <li activate-on-class="anim-sidemenu-li" class-on-activate="lightSpeedIn:anim" class-on-activate="lightSpeedIn:anim" class-on-activate-delay="350" class='opacity-0'>
+                        <a id='cta-box-intercom' ng-click='page.sidebar.toggle()'>
                             <span>Support</span>
                         </a>
                     </li>
@@ -47,7 +52,7 @@
 
                 <ion-pane id='cta-modal-team' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/team.html'"> </ion-pane>
 
-                <ion-pane id='cta-modal-become-guru' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/desktop.guru.onboarding.html'" ng-controller='DesktopBecomeGuruController'> </ion-pane>
+                <ion-pane id='cta-modal-become-guru' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-if='user.university && user.university.id' ng-include="::img_base + BASE + 'templates/desktop.guru.onboarding.html'" ng-controller='DesktopBecomeGuruController'> </ion-pane>
 
                 <ion-pane id='cta-modal-account' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/desktop.login.html'" ng-controller='AccountPageController'> </ion-pane>
 
@@ -638,9 +643,10 @@
 				</svg>
 			</div>
 		</section>
-		<section id='splash-projector' class='relative' init-wp="s2_50_top, s2_25_top, s2_top, s1_top" wp-offset="50%, 25%, 1%, 100%">
-            <div class="projector-trigger">
-                <a id="projector-pull" bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity">
+
+		<section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
+            <div class="projector-trigger" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750">
+                <a id="projector-pull" bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-guru|a">
     				<svg width="28px" height="224px" viewBox="0 0 56 448">
     				    <g stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
     				        <path d="M28,2 L28,392" fill="none" stroke-width="4" stroke-dasharray="16,14" opacity="0.6"></path>
@@ -656,17 +662,26 @@
                     </text>
                 </svg>
             </div>
-            <div class="splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
-            <div class="splash-projector-message desktop">
+            <div class="splash-projector-message mobile">
+                <svg viewBox="0 0 694 201">
+                    <path d="M2,161.001505 C2,165.418952 5.57826352,169 10.0035603,169 L317,169 L347,199 L377,169 L683.99644,169 C688.416684,169 692,165.415269 692,161.001505 L692,9.99849542 C692,5.58104838 688.411289,2 683.99733,2 L10.0026704,2 C5.58291758,2 2,5.58473072 2,9.99849542 L2,161.001505 L2,161.001505 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.5" fill="#40484B"></path>
+                    <text font-family="Source Sans Pro" font-size="48" font-weight="600" line-spacing="64" fill="#FFFFFF" text-anchor="middle">
+                        <tspan x="347" y="68">Wanna see something cool?</tspan>
+                        <tspan x="347" y="132">Check it out.</tspan>
+                    </text>
+                </svg>
+            </div>
+            <div class="splash-projector-guru splash-logo-guru" activate-on-class="a" class-on-activate="bounceOut:animOut" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+            <div class="splash-projector-message desktop" activate-on-class="a" class-on-activate="bounceOut:animOut" class-on-activate-delay="250">
                 <svg viewBox="0 0 1304 354">
-                    <path d="M2,39.9999987 C2,35.5817214 5.58280463,32 10.0088717,32 L622,32 L652,2 L682,32 L1293.99113,32 C1298.41431,32 1302,35.5800296 1302,39.9999987 L1302,344.000001 C1302,348.418279 1298.41351,352 1293.99365,352 L10.0063476,352 C5.58456393,352 2,348.41997 2,344.000001 L2,39.9999987 Z" stroke="#FFFFFF" stroke-width="4" fill-opacity="0.5" fill="#40484B"></path>
+                    <path d="M2,39.9999987 C2,35.5817214 5.58280463,32 10.0088717,32 L622,32 L652,2 L682,32 L1293.99113,32 C1298.41431,32 1302,35.5800296 1302,39.9999987 L1302,344.000001 C1302,348.418279 1298.41351,352 1293.99365,352 L10.0063476,352 C5.58456393,352 2,348.41997 2,344.000001 L2,39.9999987 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.5" fill="#40484B"></path>
                     <text font-family="Source Sans Pro" font-size="96" font-weight="600" line-spacing="126" fill="#FFFFFF" text-anchor="middle">
                         <tspan x="652" y="163">Wanna see something cool?</tspan>
                         <tspan x="652" y="289">Check it out.</tspan>
                     </text>
                 </svg>
             </div>
-            <div class="splash-projector-footer">
+            <div class="splash-projector-footer active">
                 <a>
                     <svg viewBox="0 0 100 100">
                     	<path d="M14,68 L50,32 L86,68"></path>
@@ -674,7 +689,7 @@
                     <span>back to top</span>
                 </a>
             </div>
-			<div class='header-swipers'>
+			<div class='header-swipers opacity-0' activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university" class-on-activate-delay="2000">
 				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-1">
 					<div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
@@ -701,20 +716,19 @@
     					<!-- next buttons -->
     					<div class="swiper-button-next swiper-button-white" aria-disabled="false" tabindex="0" role="button" aria-label="Next slide"></div>
     					<div class="swiper-button-prev swiper-button-white swiper-button-disabled" aria-disabled="true" tabindex="0" role="button" aria-label="Previous slide"></div>
-
     					<div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
     						<!-- Slide # 1-->
-    						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-right: 100px;">
+    						<div class="swiper-slide">
 								<div class="projector-top"></div>
-								<div class="projector-content">
+								<div class="projector-content relative">
                                     <!-- bind-wp="s2_25_top" bind-wp-class="bg-cerise-impt, opacity-0-impt" bind-wp-direction="down:remove:opacity-0-impt, up" activate-on-class="bg-cerise-impt" activate-on-class-delay="500" class-on-activate="tada:anim:inject#slide-2|activate" class-on-activate-delay="200" -->
-									<!-- SECTION #1 -- UNIVERSITY -->
-                                    <div class='hide' id='splash-university'>
+									<!-- SECTION #1 -- UNIVERSITY + @Gabrielle note! Sweet hack w/ framework -->
+                                    <div class='splash-school-search opacity-0 absolute left-0 top-0 full-xy flex-wrap-center' id='splash-university' activate-on-class="show-splash-university" class-on-activate="opacity-1-impt:inject#splash-university [class-on-activate]|activate" class-on-activate-delay="1500" style='overflow:hidden;'>
                                         <header>
-                                            <h1 class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceInDown" anim-first-enter-down-delay="1000">Find Your University</h1>
+                                            <h1 class-on-activate="bounceInDown:anim" class="opacity-0">Find Your University</h1>
                                         </header>
-                                        <div class='splash-map zoom-{{map.zoom}}' style="background-color: #C5DDED;" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="400">
-                                            <ui-gmap-google-map id="splash-google-map" class='full-xy absolute top-0 left-0 opacity-0' center="map.center" refresh='map.refresh' bounds="mapBounds" bounces="map.bounds" events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="550">
+                                        <div  class='splash-map zoom-{{map.zoom}}' style="background-color: #C5DDED; height:calc(90%);" class-on-activate="fadeIn:anim" class-on-activate-delay="400">
+                                            <ui-gmap-google-map id="splash-google-map" class='opacity-0 full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' bounds="mapBounds" bounces="map.bounds" events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
                                                 <ui-gmap-markers models="map.markers" coords="'self'" options="'options'" icon="'icon'" clusterOptions="map.clusterOptions" clusterEvents="map.clusterEvents" doCluster="true">
                                                 </ui-gmap-markers>
                                                 <ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
@@ -749,9 +763,9 @@
                                                 </ui-gmap-window>
                                             </ui-gmap-google-map>
                                         </div>
-                                        <div class="splash-zoom opacity-0" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="1000">Tap to Zoom</div>
+                                        <div class="splash-zoom opacity-0 absolute high-z-index" class-on-activate="fadeIn:anim" class-on-activate-delay="1000">Tap to Zoom</div>
                                         <div class="splash-school-search-form" ng-controller="AddUniversityCtrl">
-                                            <div class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceInDown" anim-first-enter-down-delay="1000">
+                                            <div class="opacity-0" class-on-activate="bounceInDown:anim" class-on-activate-delay="1000">
                                                 <form>
                                                     <div class="input-field large">
                                                         <i class="material-icons prefix">
@@ -772,7 +786,7 @@
                                             </div>
                                             <ul class="splash-school-desktop">
                                                 <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' ng-click='selectUniversityAndTransition(university, $event, $index)'>
-                                                    <div class="school-card opacity-0" anim-first-enter-down-child anim-first-enter-down-class="magictime, boingInUp" anim-first-enter-down-delay="{{['2000, 2000', '2200, 2200', '2400, 2400', '2600, 2600', '2800, 2800'][$index]}}">
+                                                    <div class="school-card opacity-0" class-on-activate="magictime:anim:keep, boingInUp:anim:keep" class-on-activate-delay="{{2000 + $index*200}}">
                                                         <svg class="rect" viewBox="0 0 300 200">
                                                             <rect x="0" y="0" width="300" height="200" fill="none"></rect>
                                                         </svg>
@@ -803,19 +817,19 @@
                                             </ul>
                                         </div>
                                         <div class="splash-map-stats" ng-controller="AddUniversityCtrl">
-                                            <div class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceInLeft" anim-first-enter-down-delay="2000">
+                                            <div class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="2000">
                                                 <h1>By the numbers</h1>
                                             </div>
                                             <ul>
-                                                <li class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceInUp" anim-first-enter-down-delay="2200">
+                                                <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="2200">
                                                     <h4><span>Supported&nbsp;</span>Universities</h4>
                                                     <h2 id='num-university-counter'>0</h2>
                                                 </li>
-                                                <li class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceInUp" anim-first-enter-down-delay="2400">
+                                                <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="2400">
                                                     <h4><span>Available&nbsp;</span>Courses</h4>
                                                     <h2 id='num-course-counter'>0</h2>
                                                 </li>
-                                                <li class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceInUp" anim-first-enter-down-delay="2600">
+                                                <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate="2600">
                                                     <h4><span>Student&nbsp;</span>Gurus</h4>
                                                     <h2 id='num-guru-counter'>0</h2>
                                                 </li>
@@ -825,7 +839,8 @@
                                     </div>
 								</div>
     						</div>
-    						<div class-on-activate="tada:anim" id='slide-2' class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -112.5px) rotateX(0deg) rotateY(-56.25deg); z-index: 0; transition-duration: 0ms; margin-right: 100px;">
+    						<div id='slide-2' class="swiper-slide" activate-on-class="activate" class-on-activate="pulse:anim:inject#how-it-works|show" >
+                                <div class="projector-top"></div>
 								<div class="projector-content">
                                     <div id='how-it-works' class="hide hiw-subheader-nav-content main splash-postit ng-class:{'active':activeBrowseTabIndex===0}" anim-on-show-parent anim-on-show="active" anim-on-hide-parent anim-on-hide="transitioning" anim-on-hide-debounce="2000">
                                                     <header>
@@ -927,55 +942,12 @@
                                                 </div>
 								</div>
     						</div>
-    						<div class="swiper-slide swiper-slide-gallery" style="transform: translate3d(0px, 0px, -225px) rotateX(0deg) rotateY(-112.5deg); z-index: -1; transition-duration: 0ms; margin-right: 100px;">
+    						<div class="swiper-slide swiper-slide-gallery" class-on-activate="pulse:anim:inject#become-guru|show">
+                                <div class="projector-top"></div>
 								<div class="projector-content">
 									<div id='become-guru' class='hide'>
                                         <div class='main bg-charcoal relative full-x'>
-                                            <div class="full-xy" ng-if='::!desktopMode'>
-                                                <div>
-
-                                                    <div class='postit empty'>
-                                                        <svg class="square" viewBox="0 0 100 100">
-                                                            <rect x="0" y="0" width="100" height="100"></rect>
-                                                        </svg>
-                                                    </div>
-                                                    <div class='postit empty'>
-                                                        <svg class="square" viewBox="0 0 100 100">
-                                                            <rect x="0" y="0" width="100" height="100"></rect>
-                                                        </svg>
-                                                    </div>
-                                                    <ion-slide-box delegate-handle='bg-slidebox' class='full-xy' on-slide-changed="::bgSlideChanged($index)" show-pager='true' slide-interval='2500' auto-play="true">
-                                                        <ion-slide ng-repeat='bg_item in ::become_guru.top_half'>
-                                                            <div class='postit'>
-                                                                <svg class="square" viewBox="0 0 100 100">
-                                                                    <rect x="0" y="0" width="100" height="100"></rect>
-                                                                </svg>
-                                                                <div class='flex-wrap-center full-xy'>
-                                                                    <span ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
-                                                                    <h1 class='full-x' ng-bind-html="::bg_item.header"></h1>
-                                                                    <p ng-bind-html="::bg_item.content"></p>
-                                                                </div>
-                                                            </div>
-                                                        </ion-slide>
-                                                        <ion-slide ng-repeat='hiw_item in ::how_it_works.bottom_half'>
-                                                            <div class='postit'>
-                                                                <svg class="square" viewBox="0 0 100 100">
-                                                                    <rect x="0" y="0" width="100" height="100"></rect>
-                                                                </svg>
-                                                                <div class='flex-wrap-center full-xy'>
-                                                                    <span ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
-                                                                    <h1 class='full-x' ng-bind-html="::bg_item.header"></h1>
-                                                                    <p ng-bind-html="::bg_item.content"></p>
-                                                                </div>
-                                                            </div>
-                                                        </ion-slide>
-                                                    </ion-slide-box>
-                                                </div>
-                                                <div class="p15xy absolute bottom-0 left-0 full-x">
-                                                    <button ng-click='scrollToSection("#splash-university")' class='default'>Become a University Guru</button>
-                                                </div>
-                                            </div>
-                                            <div ng-if='desktopMode' class='flex-wrap-center'>
+                                            <div class='flex-wrap-center'>
                                                 <ul class="desktop-postit-list">
                                                     <li class='opacity-0 bg-postit-li' anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInDown', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[800, 500, 900][$index]}}" ng-repeat="bg_item in ::become_guru.top_half">
                                                         <svg class="tape" viewBox="0 0 200 650">
@@ -1019,10 +991,13 @@
                                                     </li>
                                                 </ul>
                                                 <button ng-click='scrollToSection("#splash-university")' class='become-guru-button default'>Become a University Guru</button>
+                                            </div>
+                                        </div>
                                     </div>
 								</div>
     						</div>
     						<div class="swiper-slide" style="transform: translate3d(0px, 0px, -337.5px) rotateX(0deg) rotateY(-168.75deg); z-index: -2; transition-duration: 0ms; margin-right: 100px;">
+                                <div class="projector-top"></div>
 								<div class="projector-content">
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 								</div>
@@ -1030,12 +1005,30 @@
     					</div>
     					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                     </div>
+                </div>
 			</div>
-            <div class="swiper-container swiper-front-gallery-thumbs absolute bottom-0 left-0 full-x">
+            <div class="swiper-container swiper-front-gallery-thumbs">
                 <div class="swiper-wrapper swiper-gallery-wrapper">
-                    <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/1)"></div>
-                    <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/2)"></div>
-                    <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1200/1200/nature/3)"></div>
+                    <div class="swiper-slide">
+                        <div>
+                            <h1>Slide 1</h1>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div>
+                            <h1>Slide 2</h1>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div>
+                            <h1>Slide 3</h1>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div>
+                            <h1>Slide 4</h1>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
