@@ -10,8 +10,8 @@
 							<span>Home</span>
 						</a>
 					</li>
-					<li id='cta-box-team'>
-						<a>
+					<li >
+						<a id='cta-box-team'>
 							<span>Meet the team</span>
 						</a>
 					</li>
@@ -136,7 +136,7 @@
 		<section id='splash-home' class='splash-hero'>
 			<div class="splash-hero-nav desktop opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500">
                 <div>
-                    <a class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-hero-nav-categories|a, active:unique">
+                    <a name='category' class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-hero-nav-categories|a, active:unique">
                         <span>{{selectedCategory.name}}</span>
                         <svg viewBox="0 0 100 100">
                             <path d="M14,32 L50,68 L86,32"></path>
@@ -160,7 +160,7 @@
                 </div>
                 <h2>@</h2>
                 <div>
-                    <a class="bg-cal" class-on-click="a:inject.splash-hero-nav-schools|a, active:unique">
+                    <a  name='university' class="bg-cal" class-on-click="a:inject.splash-hero-nav-schools|a, active:unique">
                         <span>UC Berkeley</span>
                         <svg viewBox="0 0 100 100">
                             <path d="M14,32 L50,68 L86,32"></path>
