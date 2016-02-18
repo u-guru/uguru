@@ -7940,7 +7940,6 @@
 
 .splash-landing.new > section#splash-projector .projector-trigger {
   position: absolute;
-  z-index: 11;
   top: -60px;
   left: 50%;
   margin-left: -14px;
@@ -7985,9 +7984,16 @@
 .splash-landing.new > section#splash-projector .splash-projector-footer {
   position: absolute;
   bottom: 15px;
+}
+
+.splash-landing.new > section#splash-projector .splash-projector-footer.center {
+  width: 150px;
   right: 50%;
   margin-right: -75px;
-  width: 150px;
+}
+
+.splash-landing.new > section#splash-projector .splash-projector-footer.right {
+  right: 15px;
 }
 
 .splash-landing.new > section#splash-projector .splash-projector-footer a {
@@ -8030,6 +8036,14 @@
   text-align: center;
 }
 
+.splash-landing.new > section#splash-projector .header-swipers, .splash-landing.new > section#splash-projector .swiper-front-gallery-thumbs {
+  z-index: -2;
+}
+
+.splash-landing.new > section#splash-projector .header-swipers.active, .splash-landing.new > section#splash-projector .swiper-front-gallery-thumbs.active {
+  z-index: 2;
+}
+
 .splash-landing.new > section#splash-projector .main-swipers-container {
   height: 100%;
 }
@@ -8044,6 +8058,20 @@
   transform: translateY(-50%);
   height: 100%;
   padding: 6.25% 0;
+}
+
+.splash-landing.new > section#splash-projector .projector-line {
+  position: absolute;
+  left: 50%;
+  margin-left: 1px;
+}
+
+.splash-landing.new > section#splash-projector .projector-line.top {
+  top: -196px;
+}
+
+.splash-landing.new > section#splash-projector .projector-line.bottom {
+  bottom: -196px;
 }
 
 .splash-landing.new > section#splash-projector .swiper-front-gallery-thumbs {
@@ -8082,7 +8110,7 @@
   text-align: center;
 }
 
-.splash-landing.new > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide:not(.swiper-slide-active) {
+.splash-landing.new > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide:not(.swiper-slide-active) > div {
   filter: alpha(opacity=50);
   opacity: 0.5;
 }
@@ -8161,6 +8189,18 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 1.2;
+}
+
+@media screen and (max-width: 320px) {
+  .splash-landing.new > section#splash-projector .splash-projector-message {
+    padding-top: 45px;
+  }
+}
+
+@media screen and (max-width: 414px) and (max-height: 736px) {
+  .splash-landing.new > section#splash-projector .header-swiper-front {
+    padding: 25% 0;
+  }
 }
 
 @media screen and (max-width: 768px) {

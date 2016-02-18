@@ -640,7 +640,7 @@
 		</section>
 		<section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
             <div class="projector-trigger" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750">
-                <a id="projector-pull" bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-guru|a">
+                <a id="projector-pull" bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
     				<svg width="28px" height="224px" viewBox="0 0 56 448">
     				    <g stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
     				        <path d="M28,2 L28,392" fill="none" stroke-width="4" stroke-dasharray="16,14" opacity="0.6"></path>
@@ -656,7 +656,7 @@
                     </text>
                 </svg>
             </div>
-            <div class="splash-projector-message mobile">
+            <div class="splash-projector-message mobile" activate-on-class="a" class-on-activate="bounceOut:animOut" class-on-activate-delay="250">
                 <svg viewBox="0 0 694 201">
                     <path d="M2,161.001505 C2,165.418952 5.57826352,169 10.0035603,169 L317,169 L347,199 L377,169 L683.99644,169 C688.416684,169 692,165.415269 692,161.001505 L692,9.99849542 C692,5.58104838 688.411289,2 683.99733,2 L10.0026704,2 C5.58291758,2 2,5.58473072 2,9.99849542 L2,161.001505 L2,161.001505 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.5" fill="#40484B"></path>
                     <text font-family="Source Sans Pro" font-size="48" font-weight="600" line-spacing="64" fill="#FFFFFF" text-anchor="middle">
@@ -675,7 +675,7 @@
                     </text>
                 </svg>
             </div>
-            <div class="splash-projector-footer active">
+            <div class="splash-projector-footer center" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750">
                 <a>
                     <svg viewBox="0 0 100 100">
                     	<path d="M14,68 L50,32 L86,68"></path>
@@ -683,7 +683,15 @@
                     <span>back to top</span>
                 </a>
             </div>
-			<div class='header-swipers opacity-0' activate-on-class="a" class-on-activate="bounceInDown:anim" class-on-activate-delay="1250">
+            <div class="splash-projector-footer right opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="1500">
+                <a>
+                    <svg viewBox="0 0 100 100">
+                    	<path d="M14,68 L50,32 L86,68"></path>
+                    </svg>
+                    <span>back to top</span>
+                </a>
+            </div>
+			<div class='header-swipers opacity-0' activate-on-class="a" class-on-activate="bounceInDown:anim, active:keep,  b:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="900">
 				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-1">
 					<div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
@@ -713,6 +721,9 @@
     					<div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
     						<!-- Slide # 1-->
     						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-right: 100px;">
+                                <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
+                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+                                </svg>
 								<div class="projector-top"></div>
 								<div class="projector-content">
                                     <!-- bind-wp="s2_25_top" bind-wp-class="bg-cerise-impt, opacity-0-impt" bind-wp-direction="down:remove:opacity-0-impt, up" activate-on-class="bg-cerise-impt" activate-on-class-delay="500" class-on-activate="tada:anim:inject#slide-2|activate" class-on-activate-delay="200" -->
@@ -832,8 +843,14 @@
 
                                     </div>
 								</div>
+                                <svg class="projector-line bottom" width="2px" height="196px" viewBox="0 0 4 392">
+                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+                                </svg>
     						</div>
     						<div id='slide-2' class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -112.5px) rotateX(0deg) rotateY(-56.25deg); z-index: 0; transition-duration: 0ms; margin-right: 100px;">
+                                <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
+                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+                                </svg>
                                 <div class="projector-top"></div>
 								<div class="projector-content">
                                     <div id='how-it-works' class="hide hiw-subheader-nav-content main splash-postit ng-class:{'active':activeBrowseTabIndex===0}" anim-on-show-parent anim-on-show="active" anim-on-hide-parent anim-on-hide="transitioning" anim-on-hide-debounce="2000">
@@ -935,8 +952,14 @@
                                                     </div>
                                                 </div>
 								</div>
-    						</div>
+                                <svg class="projector-line bottom" width="2px" height="196px" viewBox="0 0 4 392">
+                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+                                </svg>
+                            </div>
     						<div class="swiper-slide swiper-slide-gallery" style="transform: translate3d(0px, 0px, -225px) rotateX(0deg) rotateY(-112.5deg); z-index: -1; transition-duration: 0ms; margin-right: 100px;">
+                                <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
+                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+                                </svg>
                                 <div class="projector-top"></div>
 								<div class="projector-content">
 									<div id='become-guru' class='hide'>
@@ -989,36 +1012,45 @@
                                         </div>
                                     </div>
 								</div>
+                                <svg class="projector-line bottom" width="2px" height="196px" viewBox="0 0 4 392">
+                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+                                </svg>
     						</div>
     						<div class="swiper-slide" style="transform: translate3d(0px, 0px, -337.5px) rotateX(0deg) rotateY(-168.75deg); z-index: -2; transition-duration: 0ms; margin-right: 100px;">
+                                <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
+                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+                                </svg>
                                 <div class="projector-top"></div>
 								<div class="projector-content">
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 								</div>
+                                <svg class="projector-line bottom" width="2px" height="196px" viewBox="0 0 4 392">
+                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+                                </svg>
     						</div>
     					</div>
     					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                     </div>
                 </div>
 			</div>
-            <div class="swiper-container swiper-front-gallery-thumbs">
+            <div class="swiper-container swiper-front-gallery-thumbs" activate-on-class="a" class-on-activate="active:keep, b:inject.slideshow-thumb-1|a, b:inject.slideshow-thumb-2|a, b:inject.slideshow-thumb-3|a, b:inject.slideshow-thumb-4|a">
                 <div class="swiper-wrapper swiper-gallery-wrapper">
-                    <div class="swiper-slide">
+                    <div class="swiper-slide slideshow-thumb-1 opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim">
                         <div>
                             <h1>Slide 1</h1>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide slideshow-thumb-2 opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="200">
                         <div>
                             <h1>Slide 2</h1>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide slideshow-thumb-3 opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="400">
                         <div>
                             <h1>Slide 3</h1>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide slideshow-thumb-4 opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="600">
                         <div>
                             <h1>Slide 4</h1>
                         </div>
