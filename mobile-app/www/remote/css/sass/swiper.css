@@ -583,9 +583,11 @@ button.swiper-pagination-bullet {
   opacity: 0.5; }
 
 .header-swipers .header-swiper-back-1 .swiper-slide {
+  height: 100%;
   height: 640px;
   margin-bottom: auto;
   margin-top: auto;
+  width: 100%;
   width: 1000px; }
 
 .header-swipers .header-swiper-front .swiper-slide {

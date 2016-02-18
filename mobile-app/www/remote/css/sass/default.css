@@ -317,6 +317,10 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   filter: alpha(opacity=100);
   opacity: 1; }
 
+.hide-opacity-impt {
+  filter: alpha(opacity=0) !important;
+  opacity: 0 !important; }
+
 .show-opacity-impt {
   filter: alpha(opacity=100) !important;
   opacity: 1 !important; }

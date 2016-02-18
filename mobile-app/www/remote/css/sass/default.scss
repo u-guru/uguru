@@ -433,6 +433,9 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 .show-opacity {
 	@include opacity(1);
 }
+.hide-opacity-impt {
+	@include opacity-important(0);
+}
 .show-opacity-impt {
 	@include opacity-important(1);
 }

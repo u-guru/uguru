@@ -1108,7 +1108,6 @@ angular.module('uguru.util.controllers')
 
       $scope.universities = University.getTargetted();
       $scope.staticUniversityMaps = GUtilService.generateStaticMapUrls($scope.universities.slice(0, 4), staticMapOptions);
-      console.log($scope.staticUniversityMaps)
       // $scope.search_text = {university: "", matching: []};
 
       var calcZoom = function() {
