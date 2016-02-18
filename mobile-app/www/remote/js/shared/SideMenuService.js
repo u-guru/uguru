@@ -19,7 +19,8 @@ function SideMenuService(LoadingService, $timeout, CounterService, CTAService) {
       initSupportBox(scope);
       initSideMenuCTAs(scope, '.splash-sidebar-content');
       return {
-        toggle: toggleSidebar(scope)
+        toggle: toggleSidebar(scope),
+        show: false
       }
     }
 

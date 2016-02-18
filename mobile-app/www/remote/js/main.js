@@ -508,8 +508,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/messaging.html'
   }).
   state('root.splash', {
-        url: '/splash',
+        url: '/splash:categoryId',
         templateUrl: BASE + 'templates/splash.html',
+        params: {category: {name: 'Academic', id:5, hex_color:'academic'}},
         controller: "SplashController"
   }).
   state('root.student-conversations', {

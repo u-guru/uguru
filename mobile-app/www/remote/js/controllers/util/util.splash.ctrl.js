@@ -13,12 +13,18 @@ angular.module('uguru.util.controllers')
   'Category',
   'ScrollService',
   'SideMenuService',
+  '$stateParams',
+  'Utilities',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
-    $cordovaKeyboard, $ionicModal, Category, ScrollService, SideMenuService) {
-    $scope.selectedCategory = ($scope.categories && $scope.categories[0]) || {name: 'Academic', hex_color: 'academic'};
+    $cordovaKeyboard, $ionicModal, Category, ScrollService, SideMenuService, $stateParams, Utilities) {
 
-    $scope.page = {scroll: {}, waypoints: {}, sidebar:{} };
+
+    resolveStateParams()
+
+    $scope.page = {scroll: {}, waypoints: {}, sidebar:{}, dropdowns: {}};
+    $scope.page.dropdowns = {category: {show: true, active:false, toggle:toggleCategoryDropdown}, university: {show: true, active: false, toggle: toggleUniversityDropdown}};
     //@gabrielle note, scroll preferences
+
     $scope.page.scroll = {
       _length: 250,//scroll duration
       parentElem: "#home-splash",
@@ -29,6 +35,10 @@ angular.module('uguru.util.controllers')
     }
 
     var initSwipers = function() {
+      var doesSwiperExist = document.querySelector('.header-swiper-back-2') && document.querySelector('.header-swiper-back-2').swiper;
+      if (doesSwiperExist) {
+        return;
+      }
       var swiperBack2=new Swiper('.header-swiper-back-2',{slidesPerView:'auto',centeredSlides:true,spaceBetween:100,onlyExternal:true,effect:'coverflow',direction:'vertical',speed:600,coverflow:{slideShadows:false}});
       var swiperBack1=new Swiper('.header-swiper-back-1',{slidesPerView:'auto',centeredSlides:true,spaceBetween:300,effect:'coverflow',speed:600,coverflow:{slideShadows:false}});
       var swiperMainOptions = {
@@ -106,17 +116,26 @@ angular.module('uguru.util.controllers')
             $scope.categories = $scope.categories.filter(function(category, index) {
               return category.is_active;
             })
-            $scope.selectedCategory = $scope.categories[0];
+            if ($stateParams.category) {
+              $scope.selectedCategory = $stateParams.category;
+            }
         }
       $scope.getCategories(saveCategoriesToRootScope);
     })
 
-    $scope.setCategory = function(category) {
-      $timeout(function(){
-        $scope.$apply(function(){
-          $scope.selectedCategory = category;
+
+
+    $scope.refreshState = function(category) {
+      var bodyLoadingDiv = document.querySelector('#body-loading-div')
+      bodyLoadingDiv.className ='hide';
+      document.querySelector('#splash-home').classList.add('clear');
+      $timeout(function() {
+        $state.go($state.current.name, {categoryId:category.id, category:category}, {
+            reload: true,
+            inherit: false,
+            notify: true
         });
-      })
+      }, 1500);
     }
 
     $scope.scrollToSection = function(section_selector) {
@@ -137,6 +156,28 @@ angular.module('uguru.util.controllers')
         // $scope.scrollToSection('#splash-projector');
         $scope.page.sidebar = SideMenuService.initHomeSideMenu($scope);
       })
+    }
+
+    function resolveStateParams() {
+      if ($stateParams && $stateParams.category && $stateParams.category.id) {
+        $scope.root.loader.body.hide = true;
+        Utilities.compileToAngular('body-loading-div', $scope);
+        $scope.selectedCategory = $stateParams.category;
+      } else {
+        $scope.selectedCategory = ($scope.categories && $scope.categories[0]) || {name: 'Academic', hex_color: 'academic', id:5};
+        Utilities.compileToAngular('body-loading-div', $scope);
+        $scope.root.loader.body.hide = true;
+      }
+    }
+
+    function toggleCategoryDropdown() {
+      $scope.page.dropdowns.university.active = false;
+      $scope.page.dropdowns.category.active = !$scope.page.dropdowns.category.active;
+    }
+
+    function toggleUniversityDropdown() {
+      $scope.page.dropdowns.university.active = !$scope.page.dropdowns.university.active;
+      $scope.page.dropdowns.category.active = false;
     }
 
 
