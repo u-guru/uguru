@@ -5917,7 +5917,7 @@
 			z-index: 11;
 			top: -60px;
 			left: 50%;
-			margin-left: -1px;
+			margin-left: -14px;
 		}
 		#projector-pull {
 			display: block;
@@ -5932,11 +5932,22 @@
 		}
 		.splash-projector-message {
 			width: 100%;
+			padding: 0 15px;
 			svg {
 				display: block;
 				margin: 0 auto;
 				width: 100%;
-				max-width: 642px;
+			}
+			&.desktop {
+				display: none;
+				svg {
+					max-width: 642px;
+				}
+			}
+			&.mobile {
+				svg {
+					max-width: 347px;
+				}
 			}
 		}
 		.splash-projector-footer {
@@ -5964,14 +5975,47 @@
 				}
 			}
 		}
-		.header-swiper-front {
+		.main-swipers-container {
 			height: 100%;
 		}
+		.header-swiper-front {
+			@include center-y;
+			height: 100%;
+			padding: 6.25% 0;
+		}
 		.swiper-front-gallery-thumbs {
-			height: 10%;
+			@include center-x;
 			top: auto;
 			bottom: 0;
-			left: 0;
+			height: 10%;
+			width: 100%;
+			max-width: 935px;
+			.swiper-gallery-wrapper {
+				@include prefix(transform, translate3d(0px, 0px, 0px)!important, webkit moz ms o);
+				width: auto!important;
+				.swiper-slide {
+					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+					width: 25%!important;
+					margin: 0!important;
+					padding: 0 7.5px;
+					text-align: center;
+					&:not(.swiper-slide-active) {
+						@include opacity(.5);
+					}
+					> div {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						width: 100%;
+						height: 100%;
+						background: $shamrock;
+						h1 {
+							font-size: 20px;
+							font-weight: 600;
+						}
+					}
+				}
+			}
 		}
 		.projector-top {
 			position: absolute;
@@ -6014,6 +6058,27 @@
 			font-size: 20px;
 			font-weight: 600;
 			line-height: 1.2;
+		}
+		@media screen and (max-width: 768px) {
+			.swiper-button-next, .swiper-button-prev, .swiper-front-gallery-thumbs {
+				@include opacity(0);
+				z-index: -9;
+				visibility: hidden;
+			}
+			.projector-content {
+			    left: 5%;
+			    width: 90%;
+			}
+		}
+		@media screen and (min-width: 768px) {
+			.splash-projector-message {
+				&.desktop {
+					display: block;
+				}
+				&.mobile {
+					display: none;
+				}
+			}
 		}
 	}
 }
