@@ -147,7 +147,7 @@
                             <path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                         <ul>
-                            <li ng-repeat='category in categories' ng-if='category.id !== selectedCategory.id' ng-click='refreshState(category)'>
+                            <li ng-repeat='category in categories' ng-if='category.id !== selectedCategory.id' ng-click='refreshCategoryState(category)'>
                                 <a class="active bg-{{category.hex_color}}" >
                                     <span>{{category.name}}</span>
                                 </a>
@@ -161,7 +161,7 @@
                 <h2 bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">@</h2>
                 <div>
                     <a class="bg-cal" ng-click="page.dropdowns.university.toggle()">
-                        <span>UC Berkeley</span>
+                        <span>{{selectedUniversity.short_name || selectedUniversity.name}}</span>
                         <svg viewBox="0 0 100 100">
                             <path d="M14,32 L50,68 L86,32"></path>
                         </svg>
@@ -171,19 +171,17 @@
                             <path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                         <ul>
-                            <li>
-                                <a class="bg-stanford">
-                                    <span>Stanford University</span>
+                            <li ng-repeat='university in featured_universities' ng-if='selectedUniversity.id !== university.id'>
+                                <a ng-click='refreshState2(university)' class="bg-stanford" style='background-color: {{university.school_color_dark}}'>
+                                    <span>{{university.short_name || university.name}}</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="bg-yale">
-                                    <span>Yale University</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="bg-harvard">
-                                    <span>Harvard University</span>
+                                <a class='bg-normal ugrid flex-wrap-center'>
+                                    <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <path d="M8.41512973,15.2860269 C4.48265083,15.2860269 1.29477962,12.1537981 1.29477962,8.2838387 C1.29477962,4.41387934 4.48265083,1.27539856 8.41512973,1.27539856 C12.3476086,1.27539856 15.536105,4.41387934 15.536105,8.2838387 C15.536105,12.1537981 12.3476086,15.2860269 8.41512973,15.2860269 L8.41512973,15.2860269 Z M19.811191,18.9121601 L14.6477024,13.8293217 C15.9993748,12.3601125 16.8302595,10.4220069 16.8302595,8.2838387 C16.8302595,3.70740857 13.0628321,0 8.41512973,0 C3.76742732,0 0,3.70740857 0,8.2838387 C0,12.8540169 3.76742732,16.5614254 8.41512973,16.5614254 C10.4232573,16.5614254 12.2650828,15.8674586 13.7117849,14.7108471 L18.895905,19.8124414 C19.1491091,20.0625195 19.5586121,20.0625195 19.811191,19.8124414 C20.0643951,19.5686152 20.0643951,19.1622382 19.811191,18.9121601 L19.811191,18.9121601 Z" fill="#FFFFFF"></path>
+                                    </svg>
+                                    Find your College
                                 </a>
                             </li>
                         </ul>
@@ -718,12 +716,12 @@
     					<div class="swiper-button-prev swiper-button-white swiper-button-disabled" aria-disabled="true" tabindex="0" role="button" aria-label="Previous slide"></div>
     					<div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
     						<!-- Slide # 1-->
-    						<div class="swiper-slide">
+    						<div class="swiper-slide" class-on-clear="null:inject#splash-university|clear, null:inject.projector-content|clear" class-on-activate="null:inject#splash-university|opacity-1, null:inject.projector-content|activate" style='overflow:hidden !important;'>
 								<div class="projector-top"></div>
-								<div class="projector-content relative">
+								<div class="projector-content relative" class-on-clear="fadeOut:animOut" class-on-clear-delay="650">
                                     <!-- bind-wp="s2_25_top" bind-wp-class="bg-cerise-impt, opacity-0-impt" bind-wp-direction="down:remove:opacity-0-impt, up" activate-on-class="bg-cerise-impt" activate-on-class-delay="500" class-on-activate="tada:anim:inject#slide-2|activate" class-on-activate-delay="200" -->
 									<!-- SECTION #1 -- UNIVERSITY + @Gabrielle note! Sweet hack w/ framework -->
-                                    <div class='splash-school-search opacity-0 absolute left-0 top-0 full-xy flex-wrap-center' id='splash-university' activate-on-class="show-splash-university" class-on-activate="opacity-1-impt:inject#splash-university [class-on-activate]|activate" class-on-activate-delay="1500" style='overflow:hidden;'>
+                                    <div class-on-clear="slideOutUp:animOut"  class='splash-school-search opacity-0 absolute left-0 top-0 full-xy flex-wrap-center' id='splash-university' activate-on-class="show-splash-university" class-on-activate="opacity-1-impt:inject#splash-university [class-on-activate]|activate" class-on-activate-delay="1500" style='overflow:hidden;'>
                                         <header>
                                             <h1 class-on-activate="bounceInDown:anim" class="opacity-0">Find Your University</h1>
                                         </header>

@@ -56,7 +56,7 @@ angular.module('uguru.util.controllers')
         centeredSlides:true,
         spaceBetween: 80,
         effect:'coverflow',
-        speed:600,
+        speed:1500,
         coverflow:{slideShadows:false},
         // pagination:'.header-swiper-front .swiper-pagination',
         paginationClickable:true,
@@ -66,7 +66,9 @@ angular.module('uguru.util.controllers')
         controlBy:'container',
         keyboardControl:true,
         a11y:true,
-        onTransitionEnd:onSlideChangeEndMainSwiper($timeout, $scope)
+        onTransitionEnd:onSlideChangeEndMainSwiper($timeout, $scope),
+        // onSlidePrevStart: onSlidePrevStart($timeout, $scope),
+        parallax: true
       }
 
       if (!desktop_mode) {
@@ -76,6 +78,14 @@ angular.module('uguru.util.controllers')
       }
 
       var swiperFront=new Swiper('.header-swiper-front', swiperMainOptions);
+
+      swiperFront.on('slideChangeStart', function () {
+          swiperFront.slides[swiperFront.previousIndex].classList.add('clear');
+          swiperFront.slides[swiperFront.previousIndex].classList.remove('opacity-1-impt');
+          $timeout(function() {
+            swiperFront.params.speed = 300;
+          }, 500);
+      });
 
       var swiperFrontGalleryThumbsOption = {
         slidesPerView:5,
@@ -99,11 +109,33 @@ angular.module('uguru.util.controllers')
       return function(swiper) {
         $timeout(function(){
           $scope.$apply(function() {
+            swiper.params.speed = 1500;
             swiper.slides[swiper.activeIndex].classList.add('activate');
           })
         })
       }
     }
+
+    function onSlideNextStart($timeout, $scope) {
+      return function(swiper) {
+        $timeout(function(){
+          $scope.$apply(function() {
+            swiper.slides[swiper.previousIndex].classList.add('clear');
+          })
+        })
+      }
+    }
+
+    function onSlidePrevStart($timeout, $scope) {
+      return function(swiper) {
+        $timeout(function(){
+          $scope.$apply(function() {
+            swiper.slides[swiper.activeIndex + 1].classList.add('clear');
+          })
+        })
+      }
+    }
+
     function swiperOnSlideChangeStart(s) {
       if (s.activeIndex===$('.swiper-slide-gallery').index()) {
         $(s.container[0]).find('.swiper-pagination').hide();
@@ -128,7 +160,24 @@ angular.module('uguru.util.controllers')
 
 
 
-    $scope.refreshState = function(category) {
+    $scope.refreshCategoryState = function(category) {
+      var bodyLoadingDiv = document.querySelector('#body-loading-div')
+      bodyLoadingDiv.className ='hide';
+      document.querySelector('#splash-home').classList.add('clear');
+      $timeout(function() {
+        $state.go($state.current.name, {categoryId:category.id, category:category}, {
+            reload: true,
+            inherit: false,
+            notify: true
+        });
+      }, 1500);
+    }
+
+    $scope.refreshUniversityState = function(University) {
+
+    }
+
+    $scope.refreshCategoryState = function(category) {
       var bodyLoadingDiv = document.querySelector('#body-loading-div')
       bodyLoadingDiv.className ='hide';
       document.querySelector('#splash-home').classList.add('clear');
@@ -155,6 +204,8 @@ angular.module('uguru.util.controllers')
     $scope.onLoad = function() {
       // @gabrielle-note -- what
       // Default parameters
+      University.initUniversitiesSplash($scope);
+
       var responsiveSwiperArgs = {
         desktop: {
           slidesPerView: 1,
@@ -182,7 +233,7 @@ angular.module('uguru.util.controllers')
       initSwipers(responsiveSwiperArgs, $scope.desktopMode);
       $scope.universities = University.getTargetted().slice();
       $timeout(function() {
-
+        // University.initUniversitiesSplash($scope);
         //autoscroll code
         $scope.scrollToSection('#splash-projector');
 
