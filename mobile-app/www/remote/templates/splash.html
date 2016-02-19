@@ -787,7 +787,7 @@
                                             </div>
                                             <ul class="splash-school-desktop">
                                                 <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' ng-click='selectUniversityAndTransition(university, $event, $index)'>
-                                                    <div class="school-card opacity-0" class-on-activate="magictime:anim:keep, boingInUp:anim:keep" class-on-activate-delay="{{2000 + $index*200}}">
+                                                    <div class="school-card opacity-0" class-on-activate="magictime:anim:keep, boingInUp:anim:keep" class-on-uC-delay="{{2000 + $index*200}}">
                                                         <svg class="rect" viewBox="0 0 300 200">
                                                             <rect x="0" y="0" width="300" height="200" fill="none"></rect>
                                                         </svg>
@@ -840,15 +840,17 @@
                                     </div>
 								</div>
     						</div>
-    						<div id='slide-2' class="swiper-slide" activate-on-class="activate" class-on-activate="pulse:anim:inject#how-it-works|show" >
+    						<div id='slide-2' class="swiper-slide" activate-on-class="activate" class-on-activate="pulse:anim:inject#how-it-works|activate" >
                                 <div class="projector-top"></div>
 								<div class="projector-content">
-                                    <div id='how-it-works' class="hide hiw-subheader-nav-content main splash-postit ng-class:{'active':activeBrowseTabIndex===0}" anim-on-show-parent anim-on-show="active" anim-on-hide-parent anim-on-hide="transitioning" anim-on-hide-debounce="2000">
+                                    <div id='how-it-works' class="hide hiw-subheader-nav-content main splash-postit ng-class:{'active':activeBrowseTabIndex===0}" class-on-activate="show:inject#how-it-works [class-on-activate]|activate">
                                                     <header>
-                                                        <h1 class="how-it-works-header opacity-0" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="400" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="400" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">{{::how_it_works.header}}</h1>
+                                                        <!-- Add fadeout as inactive anim-on-show-delay="400" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200-->
+                                                        <h1 class="how-it-works-header opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="400">{{::how_it_works.header}}</h1>
                                                     </header>
                                                     <div class='main relative'>
                                                         <!--Mobile mode, hacked css @595-611, samir.scss -->
+                                                        <!--@gabrielle-note please delete if you want to, it's your call + desktop example underneath is a static example-->
                                                         <div class="full-xy" ng-if='!desktopMode'>
                                                             <div>
                                                                 <div class='postit empty'>
@@ -895,14 +897,111 @@
 
                                                         <!--Desktop mode-->
                                                         <div ng-if='desktopMode' class='flex-wrap-center' style='overflow:hidden;'>
-                                                            <ul anim-enter-down="hiw_enter" anim-enter-down-parent>
-                                                                <li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.top_half" anim-exit-up-child anim-exit-up-class="{{::['hinge', 'hinge', 'hinge-right'][$index]}}" anim-exit-up-delay="{{::[800, 500, 900][$index]}}" anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInDown', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[800, 500, 900][$index]}}" anim-enter-down-child anim-enter-down-class="fadeIn" anim-enter-down-delay="800" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="{{::[800, 500, 900][$index]}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">
-                                                                    <svg class="tape" viewBox="0 0 200 650" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="2000">
+                                                            <ul>
+                                                                <!-- @gabrielle got rid of the forloop and just make it so each animatoin is element-based -->
+
+                                                                <!-- Start: Top 3 hiw slides-->
+                                                                <li class='hiw-postit-li opacity-0' class-on-activate="bounceInLeft:anim" class-on-activate-delay="800">
+                                                                    <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
                                                                         <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
                                                                     </svg>
-                                                                    <svg class="tape" viewBox="0 0 200 650" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="2000">
+                                                                    <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
                                                                         <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
                                                                     </svg>
+                                                                     <div class="postit">
+                                                                        <svg class="square" viewBox="0 0 100 100">
+                                                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                                                        </svg>
+                                                                        <div>
+                                                                            <div>
+                                                                                <span class="hiw-icon opacity-0" ng-include="::img_base + 'templates/svg/' + how_it_works.top_half[0].icon_src" class-on-activate="bounceIn:anim" class-on-activate-delay="1200"></span>
+                                                                                <h1 ng-bind-html="::how_it_works.top_half[0].header"></h1>
+                                                                                <p ng-bind-html="::how_it_works.top_half[0].content"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class='hiw-postit-li opacity-0' class-on-activate="bounceInDown:anim" class-on-activate-delay="500">
+                                                                     <div class="postit">
+                                                                        <svg class="square" viewBox="0 0 100 100">
+                                                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                                                        </svg>
+                                                                        <div>
+                                                                            <div>
+                                                                                <span class="hiw-icon opacity-0" ng-include="::img_base + 'templates/svg/' + how_it_works.top_half[1].icon_src" class-on-activate="bounceIn:anim" class-on-activate-delay="900"></span>
+                                                                                <h1 ng-bind-html="::how_it_works.top_half[1].header"></h1>
+                                                                                <p ng-bind-html="::how_it_works.top_half[1].content"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class='hiw-postit-li opacity-0' class-on-activate="bounceInRight:anim" class-on-activate-delay="900">
+                                                                     <div class="postit">
+                                                                        <svg class="square" viewBox="0 0 100 100">
+                                                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                                                        </svg>
+                                                                        <div>
+                                                                            <div>
+                                                                                <span class="hiw-icon opacity-0" ng-include="::img_base + 'templates/svg/' + how_it_works.top_half[2].icon_src" class-on-activate="bounceIn:anim" class-on-activate-delay="1300"></span>
+                                                                                <h1 ng-bind-html="::how_it_works.top_half[2].header"></h1>
+                                                                                <p ng-bind-html="::how_it_works.top_half[2].content"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+
+                                                                <!--Botton 3 How it works slides-->
+                                                                <li class='hiw-postit-li opacity-0' class-on-activate="bounceInLeft:anim" class-on-activate-delay="700">
+                                                                    <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                                        <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                                    </svg>
+                                                                    <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                                        <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                                    </svg>
+                                                                     <div class="postit">
+                                                                        <svg class="square" viewBox="0 0 100 100">
+                                                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                                                        </svg>
+                                                                        <div>
+                                                                            <div>
+                                                                                <span class="hiw-icon opacity-0" ng-include="::img_base + 'templates/svg/' + how_it_works.bottom_half[0].icon_src" class-on-activate="bounceIn:anim" class-on-activate-delay="1000"></span>
+                                                                                <h1 ng-bind-html="::how_it_works.bottom_half[0].header"></h1>
+                                                                                <p ng-bind-html="::how_it_works.bottom_half[0].content"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class='hiw-postit-li opacity-0' class-on-activate="bounceInUp:anim" class-on-activate-delay="1000">
+                                                                     <div class="postit">
+                                                                        <svg class="square" viewBox="0 0 100 100">
+                                                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                                                        </svg>
+                                                                        <div>
+                                                                            <div>
+                                                                                <span class="hiw-icon opacity-0" ng-include="::img_base + 'templates/svg/' + how_it_works.bottom_half[1].icon_src" class-on-activate="bounceIn:anim" class-on-activate-delay="1400"></span>
+                                                                                <h1 ng-bind-html="::how_it_works.bottom_half[1].header"></h1>
+                                                                                <p ng-bind-html="::how_it_works.bottom_half[1].content"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class='hiw-postit-li opacity-0' class-on-activate="bounceInRight:anim" class-on-activate-delay="600">
+                                                                     <div class="postit">
+                                                                        <svg class="square" viewBox="0 0 100 100">
+                                                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                                                        </svg>
+                                                                        <div>
+                                                                            <div>
+                                                                                <span class="hiw-icon opacity-0" ng-include="::img_base + 'templates/svg/' + how_it_works.bottom_half[2].icon_src" class-on-activate="bounceIn:anim" class-on-activate-delay="1000"></span>
+                                                                                <h1 ng-bind-html="::how_it_works.bottom_half[2].header"></h1>
+                                                                                <p ng-bind-html="::how_it_works.bottom_half[2].content"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <!-- old code included for reference @gabrielle-note, feel free to delete if you dont need it cuz i dont -->
+                                                               <!--  <li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.top_half" anim-exit-up-child anim-exit-up-class="{{::['hinge', 'hinge', 'hinge-right'][$index]}}" anim-exit-up-delay="{{::[800, 500, 900][$index]}}" anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInDown', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[800, 500, 900][$index]}}" anim-enter-down-child anim-enter-down-class="fadeIn" anim-enter-down-delay="800" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="{{::[800, 500, 900][$index]}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">
+
                                                                     <div class="postit">
                                                                         <svg class="square" viewBox="0 0 100 100">
                                                                             <rect x="0" y="0" width="100" height="100"></rect>
@@ -915,8 +1014,8 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </li>
-                                                                <li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.bottom_half" anim-exit-up-child anim-exit-up-class="{{::['hinge-right', 'hinge', 'hinge'][$index]}}" anim-exit-up-delay="{{::[700, 1000, 600][$index]}}" anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInUp', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[700, 1000, 600][$index]}}" anim-enter-down-child anim-enter-down-class="fadeIn" anim-enter-down-delay="800" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="{{::[700, 1000, 600][$index]}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">
+                                                                </li> -->
+                                                                <!-- <li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.bottom_half" anim-exit-up-child anim-exit-up-class="{{::['hinge-right', 'hinge', 'hinge'][$index]}}" anim-exit-up-delay="{{::[700, 1000, 600][$index]}}" anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInUp', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[700, 1000, 600][$index]}}" anim-enter-down-child anim-enter-down-class="fadeIn" anim-enter-down-delay="800" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="{{::[700, 1000, 600][$index]}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">
                                                                     <svg class="tape" viewBox="0 0 200 650" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="2000">
                                                                         <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
                                                                     </svg>
@@ -936,21 +1035,121 @@
                                                                         </div>
                                                                     </div>
                                                                 </li>
-                                                            </ul>
-                                                            <button anim-exit-up-child anim-exit-up-class="fadeOut" anim-exit-up-delay="1000" anim-enter-down-child anim-enter-down-class="fadeIn" anim-enter-down-delay="2500" class="how-it-works-button default" ng-if='::desktopMode' ng-click='scrollToSection("#splash-university")'>Join Your University</button>
+                                                            </ul> -->
+                                                            <button activate-on-class="fadeIn:anim" activate-on-class-delay="2500" class="how-it-works-button default" ng-if='::desktopMode' ng-click='scrollToSection("#splash-university")'>Join Your University</button>
                                                         </div>
                                                     </div>
                                                 </div>
 								</div>
     						</div>
-    						<div id='slide-3' class="swiper-slide swiper-slide-gallery" class-on-activate="pulse:anim:inject#become-guru|show">
+    						<div id='slide-3' class="swiper-slide swiper-slide-gallery" class-on-activate="pulse:anim:inject#become-guru|activate">
                                 <div class="projector-top"></div>
-								<div class="projector-content">
-									<div id='become-guru' class='hide'>
-                                        <div class='main bg-charcoal relative full-x'>
-                                            <div class='flex-wrap-center'>
+                                    <div class="projector-content relative">
+                                        <div id='become-guru' class='hide absolute full-xy bg-subheader-nav-content main splash-postit' class-on-activate="show:inject#become-guru [class-on-activate]|activate">
+                                            <header>
+                                                <h1 class="become-guru-header opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="400">{{::become_guru.header}}</h1>
+                                            </header>
+                                            <div class='main relative'>
                                                 <ul class="desktop-postit-list">
-                                                    <li class='opacity-0 bg-postit-li' anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInDown', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[800, 500, 900][$index]}}" ng-repeat="bg_item in ::become_guru.top_half">
+                                                    <li class='bg-postit-li opacity-0' class-on-activate="bounceInLeft:anim" class-on-activate-delay="800">
+                                                                    <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                                        <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                                    </svg>
+                                                                    <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                                        <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                                    </svg>
+                                                                     <div class="postit">
+                                                                        <svg class="square" viewBox="0 0 100 100">
+                                                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                                                        </svg>
+                                                                        <div>
+                                                                            <div>
+                                                                                <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/' + become_guru.top_half[0].icon_src" class-on-activate="bounceIn:anim" class-on-activate-delay="1200"></span>
+                                                                                <h1 ng-bind-html="::become_guru.top_half[0].header"></h1>
+                                                                                <p ng-bind-html="::become_guru.top_half[0].content"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class='bg-postit-li opacity-0' class-on-activate="bounceInDown:anim" class-on-activate-delay="500">
+                                                                     <div class="postit">
+                                                                        <svg class="square" viewBox="0 0 100 100">
+                                                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                                                        </svg>
+                                                                        <div>
+                                                                            <div>
+                                                                                <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/' + become_guru.top_half[1].icon_src" class-on-activate="bounceIn:anim" class-on-activate-delay="900"></span>
+                                                                                <h1 ng-bind-html="::become_guru.top_half[1].header"></h1>
+                                                                                <p ng-bind-html="::become_guru.top_half[1].content"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class='bg-postit-li opacity-0' class-on-activate="bounceInRight:anim" class-on-activate-delay="900">
+                                                                     <div class="postit">
+                                                                        <svg class="square" viewBox="0 0 100 100">
+                                                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                                                        </svg>
+                                                                        <div>
+                                                                            <div>
+                                                                                <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/' + become_guru.top_half[2].icon_src" class-on-activate="bounceIn:anim" class-on-activate-delay="1300"></span>
+                                                                                <h1 ng-bind-html="::become_guru.top_half[2].header"></h1>
+                                                                                <p ng-bind-html="::become_guru.top_half[2].content"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+
+                                                                <!--Botton 3 Become Guru slides-->
+                                                                <li class='postit-li opacity-0' class-on-activate="bounceInLeft:anim" class-on-activate-delay="700">
+                                                                    <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                                        <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                                    </svg>
+                                                                    <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                                        <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                                    </svg>
+                                                                     <div class="postit">
+                                                                        <svg class="square" viewBox="0 0 100 100">
+                                                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                                                        </svg>
+                                                                        <div>
+                                                                            <div>
+                                                                                <span class="bg-icon opacity-0" ng-include="::img_base + 'templates/svg/' + become_guru.bottom_half[0].icon_src" class-on-activate="bounceIn:anim" class-on-activate-delay="1000"></span>
+                                                                                <h1 ng-bind-html="::become_guru.bottom_half[0].header"></h1>
+                                                                                <p ng-bind-html="::become_guru.bottom_half[0].content"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class='bg-postit-li opacity-0' class-on-activate="bounceInUp:anim" class-on-activate-delay="1000">
+                                                                     <div class="postit">
+                                                                        <svg class="square" viewBox="0 0 100 100">
+                                                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                                                        </svg>
+                                                                        <div>
+                                                                            <div>
+                                                                                <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/' + become_guru.bottom_half[1].icon_src" class-on-activate="bounceIn:anim" class-on-activate-delay="1400"></span>
+                                                                                <h1 ng-bind-html="::become_guru.bottom_half[1].header"></h1>
+                                                                                <p ng-bind-html="::become_guru.bottom_half[1].content"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li class='bg-postit-li opacity-0' class-on-activate="bounceInRight:anim" class-on-activate-delay="600">
+                                                                     <div class="postit">
+                                                                        <svg class="square" viewBox="0 0 100 100">
+                                                                            <rect x="0" y="0" width="100" height="100"></rect>
+                                                                        </svg>
+                                                                        <div>
+                                                                            <div>
+                                                                                <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/' + how_it_works.become_guru[2].icon_src" class-on-activate="bounceIn:anim" class-on-activate-delay="1000"></span>
+                                                                                <h1 ng-bind-html="::become_guru.bottom_half[2].header"></h1>
+                                                                                <p ng-bind-html="::become_guru.bottom_half[2].content"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                    <!-- <li class='opacity-0 bg-postit-li' anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInDown', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[800, 500, 900][$index]}}" ng-repeat="bg_item in ::become_guru.top_half">
                                                         <svg class="tape" viewBox="0 0 200 650">
                                                             <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
                                                         </svg>
@@ -989,13 +1188,12 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </li>
+                                                    </li> -->
                                                 </ul>
                                                 <button ng-click='scrollToSection("#splash-university")' class='become-guru-button default'>Become a University Guru</button>
                                             </div>
                                         </div>
                                     </div>
-								</div>
     						</div>
     						<div id='slide-4' class="swiper-slide" style="transform: translate3d(0px, 0px, -337.5px) rotateX(0deg) rotateY(-168.75deg); z-index: -2; transition-duration: 0ms; margin-right: 100px;">
                                 <div class="projector-top"></div>
