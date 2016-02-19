@@ -1,53 +1,76 @@
-<div class='relative' style='height:calc(100%); width:calc(100%); overflow:hidden !important;' eval-on-load="testFunction()">
+<div class='relative' style='height:calc(100%); width:calc(100%); overflow:hidden !important;' eval-on-load="onLoad()">
 	<!-- @gabrielle, do not not remove  init-wp-parent -->
-    <main id='home-splash' init-wp-parent class='splash-landing new hs-view full-xy' style="height:calc(200% !important); width:calc(100%) !important;">
-		<aside class="splash-sidebar-full hide" id='home-splash-sidebar' ng-class="{'show': page.sidebar.show}">
+    <main id='home-splash' init-wp-parent class='splash-landing new hs-view full-xy' style="height:calc(200% !important); width:calc(100%) !important;" bind-wp="s1_top">
+		<aside class="splash-sidebar-full hide" ng-class="{'show': page.sidebar.show}" id='home-splash-sidebar'>
 			<nav class="splash-sidebar-menu">
-				<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
-				<ul>
-					<li>
-						<a ng-click='page.sidebar.toggle()'>
-							<span>Home</span>
-						</a>
-					</li>
-					<li id='cta-box-team'>
-						<a>
-							<span>Meet the team</span>
-						</a>
-					</li>
-					<li>
-						<a id='cta-box-FAQ'>
-							<span>FAQ</span>
-						</a>
-					</li>
-					<li>
-						<a id='cta-box-pricing'>
-							<span>Pricing</span>
-						</a>
-					</li>
-					<li>
-						<a id='cta-box-account'>
-							<span>Login / Signup</span>
-						</a>
-					</li>
-                    <li>
-                        <a id='cta-box-become-guru'>
-                            <span>Become a Guru</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a id='cta-box-intercom'>
-                            <span>Support</span>
-                        </a>
-                    </li>
-				</ul>
+                <div>
+                    <header>
+                        <a class="splash-logo" ng-click='page.sidebar.toggle()' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
+                        <a class="splash-burger close splash-close" ng-click='page.sidebar.toggle()' ng-include="::img_base + 'templates/svg/main/plus-circle.html'"></a>
+                    </header>
+    				<ul class="splash-sidebar-links">
+    					<li>
+    						<a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="50" ng-click='page.sidebar.toggle()'>
+    							<span>Home</span>
+    						</a>
+    					</li>
+    					<li>
+    						<a class="opacity-0" id='cta-box-team' activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="150" ng-click='!desktopMode && page.modals.team.show()'>
+    							<span>Meet the team</span>
+    						</a>
+    					</li>
+    					<li>
+    						<a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="250" id='cta-box-FAQ' ng-click='!desktopMode && page.modals.faq.show()'>
+    							<span>FAQ</span>
+    						</a>
+    					</li>
+    					<li>
+    						<a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="350" id='cta-box-pricing' ng-click='!desktopMode && page.modals.pricing.show()'>
+    							<span>Pricing</span>
+    						</a>
+    					</li>
+                        <li>
+                            <a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="450" id='cta-box-become-guru' ng-click='!desktopMode && page.modals.become_guru.show()'>
+                                <span>Become a Guru</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="550" id='cta-box-intercom' ng-click='!desktopMode && page.modals.support.show()'>
+                                <span>Support</span>
+                            </a>
+                        </li>
+    				</ul>
+                </div>
+                <div>
+                    <button id='cta-box-account' class="btn-ghost-white opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="700" ng-click='!desktopMode && page.modals.signup.show()'><span>Login / Signup</button>
+                    <ul class="splash-sidebar-platforms">
+                        <li>
+                            <a class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1100" ng-include="::img_base + 'templates/svg/main/mobile.html'"></a>
+                        </li>
+                        <li>
+                            <a class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1200" ng-include="::img_base + 'templates/svg/main/desktop.html'"></a>
+                        </li>
+                    </ul>
+                </div>
 			</nav>
             <section class='splash-sidebar-content' ng-if='desktopMode'>
+                <div class="splash-sidebar-empty">
+                    <div class="splash-sidebar-guru splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+                    <div class="splash-sidebar-message">
+                        <svg viewBox="0 0 1304 354">
+                            <path d="M2,39.9999987 C2,35.5817214 5.58280463,32 10.0088717,32 L622,32 L652,2 L682,32 L1293.99113,32 C1298.41431,32 1302,35.5800296 1302,39.9999987 L1302,344.000001 C1302,348.418279 1298.41351,352 1293.99365,352 L10.0063476,352 C5.58456393,352 2,348.41997 2,344.000001 L2,39.9999987 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.5" fill="#40484B"></path>
+                            <text font-family="Source Sans Pro" font-size="96" font-weight="600" line-spacing="126" fill="#FFFFFF" text-anchor="middle">
+                                <tspan x="652" y="163">Wanna see something cool?</tspan>
+                                <tspan x="652" y="289">Check it out.</tspan>
+                            </text>
+                        </svg>
+                    </div>
+                </div>
                 <ion-pane id='cta-modal-pricing' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/pricing.html'"> </ion-pane>
 
                 <ion-pane id='cta-modal-team' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/team.html'"> </ion-pane>
 
-                <ion-pane id='cta-modal-become-guru' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/desktop.guru.onboarding.html'" ng-controller='DesktopBecomeGuruController'> </ion-pane>
+                <ion-pane id='cta-modal-become-guru' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-if='user.university && user.university.id' ng-include="::img_base + BASE + 'templates/desktop.guru.onboarding.html'" ng-controller='DesktopBecomeGuruController'> </ion-pane>
 
                 <ion-pane id='cta-modal-account' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/desktop.login.html'" ng-controller='AccountPageController'> </ion-pane>
 
@@ -117,7 +140,7 @@
 		<header class='splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
 			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'"></a>
 			<div class="right">
-				<a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='page.sidebar.toggle()'>
+				<a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='page.sidebar.toggle()' class-on-click="null:inject.splash-sidebar-menu li a|anim-sidemenu-li, null:inject.splash-sidebar-menu button|a, null:inject.splash-sidebar-platforms li a|a" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
 					<svg viewBox="0 0 100 100">
 						<circle cx="50" cy="50" r="36"></circle>
 						<path d="M31,35.5 L69,35.5"></path>
@@ -128,21 +151,21 @@
 			</div>
 		</header>
 
-		<section id='splash-home' class='splash-hero'>
+		<section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear">
 			<div class="splash-hero-nav desktop opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500">
                 <div bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
-                    <a class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-hero-nav-categories|a, active:unique">
+                    <a class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()'>
                         <span>{{selectedCategory.name}}</span>
                         <svg viewBox="0 0 100 100">
                             <path d="M14,32 L50,68 L86,32"></path>
                         </svg>
                     </a>
-                    <div class="splash-hero-nav-categories" activate-on-class="a" class-on-activate="visible:keep:unique">
+                    <div class="splash-hero-nav-categories" ng-class="{'visible':page.dropdowns.category.active}">
                         <svg viewBox="0 0 396 38">
                             <path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                         <ul>
-                            <li ng-repeat='category in categories' ng-if='category.id !== selectedCategory.id' ng-click='setCategory(category)'>
+                            <li ng-repeat='category in categories' ng-if='category.id !== selectedCategory.id' ng-click='refreshState(category)'>
                                 <a class="active bg-{{category.hex_color}}" >
                                     <span>{{category.name}}</span>
                                 </a>
@@ -155,13 +178,13 @@
                 </div>
                 <h2 bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">@</h2>
                 <div>
-                    <a class="bg-cal" class-on-click="a:inject.splash-hero-nav-schools|a, active:unique">
+                    <a class="bg-cal" ng-click="page.dropdowns.university.toggle()">
                         <span>UC Berkeley</span>
                         <svg viewBox="0 0 100 100">
                             <path d="M14,32 L50,68 L86,32"></path>
                         </svg>
                     </a>
-                    <div class="splash-hero-nav-schools" activate-on-class="a" class-on-activate="visible:keep:unique">
+                    <div class="splash-hero-nav-schools" ng-class="{'visible':page.dropdowns.university.active}">
                         <svg viewBox="0 0 396 38">
                             <path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
@@ -185,7 +208,7 @@
                     </div>
                 </div>
             </div>
-			<div class="splash-hero-nav mobile opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500">
+			<div class="splash-hero-nav mobile opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
 				<div>
 					<a class="bg-cal" class-on-click="a:inject.splash-hero-nav-schools|a, active:unique">
 						<span>@ Cal</span>
@@ -202,7 +225,7 @@
                 <!--@gabrielle-note lol-->
 				<button activate-on-class="c" class-on-activate="a:inject.splash-desktop-cta|bounceInUp, a:inject.splash-mobile-cta|bounceInUp, a:inject.coach-click|show-opacity-impt, a:inject.coach-click path|animate, a:inject.coach-click-path-2|animate, a:inject.coach-click g g|bounceIn, a:inject.coach-help-desktop|bounceIn, a:inject.coach-help-mobile|bounceIn, a:inject.coach-fill|hide, a:inject.coach-scroll|active, a:inject.coach-scroll svg|fadeIn, a:inject.splash-hero-skip|a" class-on-click="a:inject.splash-desktop-cta|bounceInUp, a:inject.splash-mobile-cta|bounceInUp, a:inject.coach-click|show-opacity-impt, a:inject.coach-click path|animate, a:inject.coach-click-path-2|animate, a:inject.coach-click g g|bounceIn, a:inject.coach-help-desktop|bounceIn, a:inject.coach-help-mobile|bounceIn, a:inject.coach-fill|hide, a:inject.coach-scroll|active, a:inject.coach-scroll svg|fadeIn, a:inject.splash-hero-skip|a">Skip</button>
 			</div>
-			<div class="splash-hero-markers" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker-1|a, active:inject.splash-hero-marker-2|a, active:inject.splash-hero-marker-3|a, active:inject.splash-hero-marker-4|a, active:inject.splash-hero-marker-5|a, active:inject.splash-hero-marker-6|a">
+			<div class="splash-hero-markers" class-on-clear="lightSpeedOut:animOut" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker-1|a, active:inject.splash-hero-marker-2|a, active:inject.splash-hero-marker-3|a, active:inject.splash-hero-marker-4|a, active:inject.splash-hero-marker-5|a, active:inject.splash-hero-marker-6|a">
 				<div class="splash-hero-marker-1 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="first:unique, bounceIn:anim">
 					<div class="message top">
 						<svg viewBox="0 0 524 364">
@@ -638,6 +661,7 @@
 				</svg>
 			</div>
 		</section>
+
 		<section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
             <div class="projector-trigger" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750">
                 <a id="projector-pull" bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
@@ -691,8 +715,8 @@
                     <span>back to top</span>
                 </a>
             </div>
-			<div class='header-swipers opacity-0' activate-on-class="a" class-on-activate="bounceInDown:anim, active:keep,  b:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="900">
-				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-1">
+			<div class='header-swipers opacity-0' activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, b:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="2000">
+				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-0">
 					<div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
 						<div class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -117.241px) rotateX(58.6207deg) rotateY(0deg); z-index: 0; transition-duration: 0ms; margin-bottom: 100px;"></div>
@@ -720,20 +744,20 @@
     					<div class="swiper-button-prev swiper-button-white swiper-button-disabled" aria-disabled="true" tabindex="0" role="button" aria-label="Previous slide"></div>
     					<div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
     						<!-- Slide # 1-->
-    						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-right: 100px;">
+    						<div class="swiper-slide">
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>
 								<div class="projector-top"></div>
-								<div class="projector-content">
+								<div class="projector-content relative">
                                     <!-- bind-wp="s2_25_top" bind-wp-class="bg-cerise-impt, opacity-0-impt" bind-wp-direction="down:remove:opacity-0-impt, up" activate-on-class="bg-cerise-impt" activate-on-class-delay="500" class-on-activate="tada:anim:inject#slide-2|activate" class-on-activate-delay="200" -->
-									<!-- SECTION #1 -- UNIVERSITY -->
-                                    <div class='hide' id='splash-university'>
+									<!-- SECTION #1 -- UNIVERSITY + @Gabrielle note! Sweet hack w/ framework -->
+                                    <div class='splash-school-search opacity-0 absolute left-0 top-0 full-xy flex-wrap-center' id='splash-university' activate-on-class="show-splash-university" class-on-activate="opacity-1-impt:inject#splash-university [class-on-activate]|activate" class-on-activate-delay="1500" style='overflow:hidden;'>
                                         <header>
-                                            <h1 class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceInDown" anim-first-enter-down-delay="1000">Find Your University</h1>
+                                            <h1 class-on-activate="bounceInDown:anim" class="opacity-0">Find Your University</h1>
                                         </header>
-                                        <div class='splash-map zoom-{{map.zoom}}' style="background-color: #C5DDED;" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="400">
-                                            <ui-gmap-google-map id="splash-google-map" class='full-xy absolute top-0 left-0 opacity-0' center="map.center" refresh='map.refresh' bounds="mapBounds" bounces="map.bounds" events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="550">
+                                        <div class='splash-map zoom-{{map.zoom}} bg-slate' style="height:calc(100%);" class-on-activate="fadeIn:anim" class-on-activate-delay="400">
+                                            <ui-gmap-google-map id="splash-google-map" class='opacity-0 full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' bounds="mapBounds" bounces="map.bounds" events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
                                                 <ui-gmap-markers models="map.markers" coords="'self'" options="'options'" icon="'icon'" clusterOptions="map.clusterOptions" clusterEvents="map.clusterEvents" doCluster="true">
                                                 </ui-gmap-markers>
                                                 <ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
@@ -768,11 +792,11 @@
                                                 </ui-gmap-window>
                                             </ui-gmap-google-map>
                                         </div>
-                                        <div class="splash-zoom opacity-0" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="1000">Tap to Zoom</div>
+                                        <div class="splash-zoom opacity-0 absolute high-z-index" class-on-activate="fadeIn:anim" class-on-activate-delay="1000">Tap to Zoom</div>
                                         <div class="splash-school-search-form" ng-controller="AddUniversityCtrl">
-                                            <div class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceInDown" anim-first-enter-down-delay="1000">
+                                            <div class="opacity-0" class-on-activate="bounceInDown:anim" class-on-activate-delay="1000">
                                                 <form>
-                                                    <div class="input-field large">
+                                                    <div class="input-field large white">
                                                         <i class="material-icons prefix">
                                                                 <svg viewBox="0 0 100 100">
                                                                     <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
@@ -791,7 +815,7 @@
                                             </div>
                                             <ul class="splash-school-desktop">
                                                 <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' ng-click='selectUniversityAndTransition(university, $event, $index)'>
-                                                    <div class="school-card opacity-0" anim-first-enter-down-child anim-first-enter-down-class="magictime, boingInUp" anim-first-enter-down-delay="{{['2000, 2000', '2200, 2200', '2400, 2400', '2600, 2600', '2800, 2800'][$index]}}">
+                                                    <div class="school-card opacity-0" class-on-activate="magictime:anim:keep, boingInUp:anim:keep" class-on-activate-delay="{{2000 + $index*200}}">
                                                         <svg class="rect" viewBox="0 0 300 200">
                                                             <rect x="0" y="0" width="300" height="200" fill="none"></rect>
                                                         </svg>
@@ -822,19 +846,19 @@
                                             </ul>
                                         </div>
                                         <div class="splash-map-stats" ng-controller="AddUniversityCtrl">
-                                            <div class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceInLeft" anim-first-enter-down-delay="2000">
+                                            <div class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="2000">
                                                 <h1>By the numbers</h1>
                                             </div>
                                             <ul>
-                                                <li class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceInUp" anim-first-enter-down-delay="2200">
+                                                <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="2200">
                                                     <h4><span>Supported&nbsp;</span>Universities</h4>
                                                     <h2 id='num-university-counter'>0</h2>
                                                 </li>
-                                                <li class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceInUp" anim-first-enter-down-delay="2400">
+                                                <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="2400">
                                                     <h4><span>Available&nbsp;</span>Courses</h4>
                                                     <h2 id='num-course-counter'>0</h2>
                                                 </li>
-                                                <li class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceInUp" anim-first-enter-down-delay="2600">
+                                                <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate="2600">
                                                     <h4><span>Student&nbsp;</span>Gurus</h4>
                                                     <h2 id='num-guru-counter'>0</h2>
                                                 </li>
@@ -847,7 +871,7 @@
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>
     						</div>
-    						<div id='slide-2' class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -112.5px) rotateX(0deg) rotateY(-56.25deg); z-index: 0; transition-duration: 0ms; margin-right: 100px;">
+    						<div id='slide-2' class="swiper-slide" activate-on-class="activate" class-on-activate="pulse:anim:inject#how-it-works|show">
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>
@@ -956,7 +980,7 @@
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>
                             </div>
-    						<div class="swiper-slide swiper-slide-gallery" style="transform: translate3d(0px, 0px, -225px) rotateX(0deg) rotateY(-112.5deg); z-index: -1; transition-duration: 0ms; margin-right: 100px;">
+    						<div class="swiper-slide swiper-slide-gallery" class-on-activate="pulse:anim:inject#become-guru|show">
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>

@@ -38,17 +38,18 @@ angular.module('uguru.directives')
       }
     };
 })
-.directive('classOnActivate', ['$timeout', 'AnimationService', function ($timeout, AnimationService) {
+.directive('classOnClear', ['$timeout', 'AnimationService', function ($timeout, AnimationService) {
   return {
     restrict: 'A',
     link: function(scope, element, attr) {
       scope.$watch(function() {
         return element.attr('class');
       },function() {
-        if (element[0].classList.contains('activate')) {
-          element[0].classList.remove('activate')
-          var delay = attr.classOnActivateDelay || 0;
-          var classes = attr.classOnActivate.split(", ");
+        if (element[0].classList.contains('clear')) {
+          element[0].classList.remove('clear')
+          var delay = attr.classOnClearDelay || 0;
+          console.log(element[0]);
+          var classes = attr.classOnClear.split(", ");
           $timeout(function() {
               for (var i = 0; i < classes.length; i++) {
                 var indexClass = classes[i].split(":")[0];
@@ -66,6 +67,75 @@ angular.module('uguru.directives')
                   AnimationService.animateOut(element[0], indexClass);
                 }
                 else {
+                  element[0].classList.add(indexClass);
+                }
+                if (classArgs.indexOf("unique") > -1) {
+                  var otherClassElems = document.querySelectorAll('.' + indexClass);
+                  console.log(otherClassElems);
+                  for (var j = 0; j < otherClassElems.length; j++) {
+                    var otherElemIndex = otherClassElems[j];
+                    if (otherElemIndex !== element[0]) {
+                      otherElemIndex.classList.remove(indexClass);
+                    }
+                  }
+                }
+                if (classes[i].indexOf('inject') > -1 && classArgsHasInject(classArgs)) {
+                  var injectArgClassSplit = classArgsHasInject(classArgs).split("|")
+                  if (injectArgClassSplit.length > 1) {
+                    var classToInject = injectArgClassSplit[1];
+                    var elemToInjectSelector = injectArgClassSplit[0];
+                    var elemsToInject = document.querySelectorAll(elemToInjectSelector);
+                    console.log(elemToInjectSelector, classToInject, elemsToInject.length, 'elements');
+                    for (var k = 0; k < elemsToInject.length; k++) {
+                      elemsToInject[k].classList.add(classToInject);
+                    }
+                  }
+                }
+              }
+          }, delay);
+          function classArgsHasInject(args) {
+            var injectArg = null;
+            args.filter(function(word, index) {
+              if (word.indexOf("inject") > -1) {
+                injectArg = args[index];
+                return true
+              };
+            })
+            return injectArg.replace("inject", "");
+          }
+        }
+      })
+    }
+  }
+}])
+.directive('classOnActivate', ['$timeout', 'AnimationService', function ($timeout, AnimationService) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      scope.$watch(function() {
+        return element.attr('class');
+      },function() {
+        if (element[0].classList.contains('activate')) {
+          element[0].classList.remove('activate')
+          var delay = attr.classOnActivateDelay || 0;
+          var classes = attr.classOnActivate.split(", ");
+          $timeout(function() {
+              for (var i = 0; i < classes.length; i++) {
+                var indexClass = classes[i].split(":")[0];
+                var classArgs = classes[i].split(":").slice(1);
+                if (classArgs.indexOf("anim") > -1 && indexClass !== "null") {
+                  if (classArgs.indexOf("keep") > -1) {
+                    indexClass = indexClass +':keep';
+                  }
+                  AnimationService.animateIn(element[0], indexClass);
+                } else
+                if (classArgs.indexOf("animOut") > -1 && indexClass !== "null") {
+                  if (classArgs.indexOf("keep") > -1) {
+                    indexClass = indexClass +':keep';
+                  }
+                  AnimationService.animateOut(element[0], indexClass);
+                }
+                else if (indexClass !== "null") {
                   element[0].classList.add(indexClass);
                 }
                 if (classArgs.indexOf("unique") > -1) {
@@ -272,8 +342,10 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                         if (injectArgClassSplit.length > 1) {
                           var classToInject = injectArgClassSplit[1];
                           var elemToInjectSelector = injectArgClassSplit[0];
-                          var elemToInject = document.querySelector(elemToInjectSelector);
-                          elemToInject.classList.add(classToInject);
+                          var elemsToInject = document.querySelectorAll(elemToInjectSelector);
+                          for (var k = 0; k < elemsToInject.length; k++) {
+                            elemsToInject[k].classList.add(classToInject);
+                          }
                         }
                         // var otherClassElems = document.querySelectorAll('.' + indexClass);
                         // console.log(otherClassElems);

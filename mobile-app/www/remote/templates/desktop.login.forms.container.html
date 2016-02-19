@@ -57,7 +57,7 @@
     </section>
 </div>
 
-<div class="login-courses-container" ng-if='university'>
+<div class="login-courses-container" ng-if='university && university.id'>
 	<h2 class='hide ng-class:{"show":user.student_courses.length}'>Your <span>{{university.short_name}}</span> courses</h2>
     <h2 class='hide ng-class:{"show":!user.student_courses.length}'>Link <span>{{university.short_name}}</span> courses to your account</h2>
 	<div class="ugrid-2">
