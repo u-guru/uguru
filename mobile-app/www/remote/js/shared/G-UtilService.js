@@ -39,6 +39,33 @@ function GUtilService($timeout) {
       })
   }
 
+  function getPlaceListByCoords(scope, map, coords) {
+    var gCoords = latCoordToGoogleLatLng(coords.latitude, coords.longitude);
+    var placeService = new google.maps.places.PlacesService(map);
+    var types =['library', 'food', 'cafe'];
+    var radius = 500;
+    var placeService = new google.maps.places.PlacesService(map);
+    var placeServiceOptions = { location: gCoords, radius:radius || 10000, rankBy: google.maps.places.RankBy.prominence, types: types};
+    placeService.nearbySearch(placeServiceOptions, updateScopeWithPlaces);
+    function updateScopeWithPlaces(results, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        if (results.length) {
+          for (var i = 0; i < results.length; i++) {
+            console.log(results[i].name, results[i].type, results[i]);
+          }
+          staticMapOptions = {
+            scale: 1, //up to 2, only whole values
+            map_type: "roadmap", //hybrid, terrain, satellite, roadmap
+            size: "1280x1280",
+            zoom: 17
+          }
+          scope.selectedUniversity.place_results = results;
+          generateStaticMapUrls([scope.selectedUniversity], staticMapOptions);
+        }
+      }
+    }
+  }
+
   function coordsToNearestPlace(map, coords, requestForm, types, radius) {
     var gCoords = latCoordToGoogleLatLng(coords.latitude, coords.longitude);
     var placeService = new google.maps.places.PlacesService(map);
@@ -326,7 +353,8 @@ function GUtilService($timeout) {
     initSeveralMarkersWithLabel: initSeveralMarkersWithLabel,
     generateStaticMapUrls: generateStaticMapUrls,
     coordsToNearestPlace: coordsToNearestPlace,
-    getAddressFromLatLng: getAddressFromLatLng
+    getAddressFromLatLng: getAddressFromLatLng,
+    getPlaceListByCoords: getPlaceListByCoords
   }
 
 }

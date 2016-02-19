@@ -136,8 +136,8 @@
                 </ion-pane>
             </section>
 		</aside>
-
-		<header class='splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
+        <a ng-if='page.dropdowns.category.active || page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()' style='z-index:1000'> </a>
+		<header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
 			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'"></a>
 			<div class="right">
 				<a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='page.sidebar.toggle()' class-on-click="null:inject.splash-sidebar-menu li a|anim-sidemenu-li, null:inject.splash-sidebar-menu button|a, null:inject.splash-sidebar-platforms li a|a" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
@@ -152,7 +152,7 @@
 		</header>
 
 		<section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear">
-			<div class="splash-hero-nav desktop opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
+			<div class="splash-hero-nav desktop opacity-0 high-z-index" class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
                 <div>
                     <a class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()'>
                         <span>{{selectedCategory.name}}</span>
@@ -165,7 +165,7 @@
                             <path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                         <ul>
-                            <li ng-repeat='category in categories' ng-if='category.id !== selectedCategory.id' ng-click='refreshCategoryState(category)'>
+                            <li ng-repeat='category in categories' ng-if='category.id !== selectedCategory.id' ng-click='refreshCategoryState(category, selectedUniversity)'>
                                 <a class="active bg-{{category.hex_color}}" >
                                     <span>{{category.name}}</span>
                                 </a>
@@ -178,7 +178,7 @@
                 </div>
                 <h2>@</h2>
                 <div>
-                    <a class="bg-cal" ng-click="page.dropdowns.university.toggle()">
+                    <a class="bg-cal" style='background-color:{{selectedUniversity.school_color_dark}}' ng-click="page.dropdowns.university.toggle()">
                         <span>{{selectedUniversity.short_name || selectedUniversity.name}}</span>
                         <svg viewBox="0 0 100 100">
                             <path d="M14,32 L50,68 L86,32"></path>
@@ -190,11 +190,11 @@
                         </svg>
                         <ul>
                             <li ng-repeat='university in featured_universities' ng-if='selectedUniversity.id !== university.id'>
-                                <a ng-click='refreshState2(university)' class="bg-stanford" style='background-color: {{university.school_color_dark}}'>
+                                <a ng-click='refreshUniversityState(university)' class="bg-stanford" style='background-color: {{university.school_color_dark}}'>
                                     <span>{{university.short_name || university.name}}</span>
                                 </a>
                             </li>
-                            <li>
+                            <li ng-click="scrollToSection('#splash-projector')" >
                                 <a class='bg-normal ugrid flex-wrap-center'>
                                     <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                         <path d="M8.41512973,15.2860269 C4.48265083,15.2860269 1.29477962,12.1537981 1.29477962,8.2838387 C1.29477962,4.41387934 4.48265083,1.27539856 8.41512973,1.27539856 C12.3476086,1.27539856 15.536105,4.41387934 15.536105,8.2838387 C15.536105,12.1537981 12.3476086,15.2860269 8.41512973,15.2860269 L8.41512973,15.2860269 Z M19.811191,18.9121601 L14.6477024,13.8293217 C15.9993748,12.3601125 16.8302595,10.4220069 16.8302595,8.2838387 C16.8302595,3.70740857 13.0628321,0 8.41512973,0 C3.76742732,0 0,3.70740857 0,8.2838387 C0,12.8540169 3.76742732,16.5614254 8.41512973,16.5614254 C10.4232573,16.5614254 12.2650828,15.8674586 13.7117849,14.7108471 L18.895905,19.8124414 C19.1491091,20.0625195 19.5586121,20.0625195 19.811191,19.8124414 C20.0643951,19.5686152 20.0643951,19.1622382 19.811191,18.9121601 L19.811191,18.9121601 Z" fill="#FFFFFF"></path>
@@ -216,15 +216,57 @@
 					</a>
 				</div>
 			</div>
-			<div class="splash-hero-map opacity-0 animated">
-				<div class="splash-scene-map-img" style="background-image: url('{{img_base + 'img/categories/ucb-map@2x.png'}}')"></div>
+			<!-- @gabrielle-note, the 3000 ms is to generate the static map URL with the right icon-->
+            <div class="splash-hero-map opacity-0" class-on-clear="slideOutUp:animOut" class-on-activate="fadeIn:anim" class-on-activate-delay="3000">
+				<div class="splash-scene-map-img" style="background-image: url('{{selectedUniversity.static_map_url}}')"></div>
+                <!-- zoom="requestForm.map.zoom"
+                    pan="requestForm.map.pan"
+                    options="requestForm.map.options" -->
 			</div>
 			<div class="splash-hero-skip opacity-0" class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a" class-on-activate="rollOut:animOut:keep">
                 <!--@gabrielle-note lol-->
 				<button activate-on-class="c" class-on-activate="a:inject.splash-desktop-cta|bounceInUp, a:inject.splash-mobile-cta|bounceInUp, a:inject.coach-click|show-opacity-impt, a:inject.coach-click path|animate, a:inject.coach-click-path-2|animate, a:inject.coach-click g g|bounceIn, a:inject.coach-help-desktop|bounceIn, a:inject.coach-help-mobile|bounceIn, a:inject.coach-fill|hide, a:inject.coach-scroll|active, a:inject.coach-scroll svg|fadeIn, a:inject.splash-hero-skip|a" class-on-click="a:inject.splash-desktop-cta|bounceInUp, a:inject.splash-mobile-cta|bounceInUp, a:inject.coach-click|show-opacity-impt, a:inject.coach-click path|animate, a:inject.coach-click-path-2|animate, a:inject.coach-click g g|bounceIn, a:inject.coach-help-desktop|bounceIn, a:inject.coach-help-mobile|bounceIn, a:inject.coach-fill|hide, a:inject.coach-scroll|active, a:inject.coach-scroll svg|fadeIn, a:inject.splash-hero-skip|a">Skip</button>
 			</div>
-			<div class="splash-hero-markers" class-on-clear="lightSpeedOut:animOut" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker-1|a, active:inject.splash-hero-marker-2|a, active:inject.splash-hero-marker-3|a, active:inject.splash-hero-marker-4|a, active:inject.splash-hero-marker-5|a, active:inject.splash-hero-marker-6|a">
-				<div class="splash-hero-marker-1 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="first:unique, bounceIn:anim">
+            <div class='splash-hero-skip opacity-1-impt left-0' class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a">
+                <button style='top:-50px;' class="button-find-guru splash-mobile-cta" ng-click='refreshUniversityState(selectedUniversity)'>Refresh</button>
+            </div>
+			<div class="splash-hero-markers" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker-1|a, active:inject.splash-hero-marker-2|a, active:inject.splash-hero-marker-3|a, active:inject.splash-hero-marker-4|a, active:inject.splash-hero-marker-5|a, active:inject.splash-hero-marker-6|a">
+				<div class="splash-hero-marker-1 splash-hero-marker opacity-0" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="first:unique, bounceIn:anim">
+					<div class="message top">
+						<svg viewBox="0 0 524 364">
+							<rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
+						</svg>
+						<div>
+							<p>Hey there,</p>
+							<p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
+							<p class="signature">Lorem Ipsum</p>
+							<button class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">View Profile</button>
+						</div>
+					</div>
+					<div class="info top left">
+						<svg width="524px" height="214px" viewBox="0 0 524 214">
+							<g fill="none">
+								<path class="fill" d="M2,2 L522,2 L522,182 L122,182 L92,212 L62,182 L2,182 L2,2 Z"></path>
+								<path class="line" d="M2,2 L2,182 L62,182 L92,212 L122,182"></path>
+								<line class="line line-3" x1="522" y1="2" x2="522" y2="182" />
+								<line class="line line-2" x1="122" y1="182" x2="522" y2="182" />
+								<line class="line line-1" x1="2" y1="2" x2="522" y2="2" />
+							</g>
+						</svg>
+						<div>
+							<img ng-src="{{selectedUniversity.place_results[0].icon}}"/>
+							<aside class="info-text">
+								<ul>
+									<li>Lorem Ipsum</li>
+									<li>Active now at {{selectedUniversity.place_results[0].name}}</li>
+									<li>2.4 miles away</li>
+								</ul>
+							</aside>
+						</div>
+					</div>
+					<div class="location bg-{{selectedCategory.hex_color}} bottom left"></div>
+				</div>
+				<div class="splash-hero-marker-2 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 40%; left: 10%;">
 					<div class="message top">
 						<svg viewBox="0 0 524 364">
 							<rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
@@ -250,8 +292,8 @@
 							<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
 							<aside class="info-text">
 								<ul>
-									<li>Lorem Ipsum</li>
-									<li>Active now at Philz Coffee</li>
+									<img ng-src="{{selectedUniversity.place_results[1].icon}}"/>
+									<li>Active now at {{selectedUniversity.place_results[1].name}}</li>
 									<li>2.4 miles away</li>
 								</ul>
 							</aside>
@@ -259,42 +301,7 @@
 					</div>
 					<div class="location bg-{{selectedCategory.hex_color}} bottom left"></div>
 				</div>
-				<div class="splash-hero-marker-2 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 40%; left: 10%;">
-					<div class="message top">
-						<svg viewBox="0 0 524 364">
-							<rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
-						</svg>
-						<div>
-							<p>Hey there,</p>
-							<p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
-							<p class="signature">Lorem Ipsum</p>
-							<button class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">View Profile</button>
-						</div>
-					</div>
-					<div class="info top left">
-						<svg width="524px" height="214px" viewBox="0 0 524 214">
-							<g fill="none">
-								<path class="fill" d="M2,2 L522,2 L522,182 L122,182 L92,212 L62,182 L2,182 L2,2 Z"></path>
-								<path class="line" d="M2,2 L2,182 L62,182 L92,212 L122,182"></path>
-								<line class="line line-3" x1="522" y1="2" x2="522" y2="182" />
-								<line class="line line-2" x1="122" y1="182" x2="522" y2="182" />
-								<line class="line line-1" x1="2" y1="2" x2="522" y2="2" />
-							</g>
-						</svg>
-						<div>
-							<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
-							<aside class="info-text">
-								<ul>
-									<li>Lorem Ipsum</li>
-									<li>Active now at Philz Coffee</li>
-									<li>2.4 miles away</li>
-								</ul>
-							</aside>
-						</div>
-					</div>
-					<div class="location bg-{{selectedCategory.hex_color}} bottom left"></div>
-				</div>
-				<div class="splash-hero-marker-3 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 10%; left: 4%;">
+				<div class="splash-hero-marker-3 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 10%; left: 4%;">
 					<div class="location bg-{{selectedCategory.hex_color}} top left"></div>
 					<div class="info bottom left">
 						<svg width="524px" height="214px" viewBox="0 0 524 214">
@@ -307,11 +314,11 @@
 							</g>
 						</svg>
 						<div>
-							<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+							<img ng-src="{{selectedUniversity.place_results[2].icon}}"/>
 							<aside class="info-text">
 								<ul>
 									<li>Lorem Ipsum</li>
-									<li>Active now at Philz Coffee</li>
+									<li>Active now at {{selectedUniversity.place_results[2].name}}</li>
 									<li>2.4 miles away</li>
 								</ul>
 							</aside>
@@ -329,7 +336,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="splash-hero-marker-4 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="bottom: 5%; left: 1%;">
+				<div class="splash-hero-marker-4 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="200" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="bottom: 5%; left: 1%;">
 					<div class="message top">
 						<svg viewBox="0 0 524 364">
 							<rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
@@ -355,16 +362,16 @@
 							<aside class="info-text">
 								<ul>
 									<li>Lorem Ipsum</li>
-									<li>Active now at Philz Coffee</li>
+									<li>Active now at {{selectedUniversity.place_results[3].name}}</li>
 									<li>2.4 miles away</li>
 								</ul>
 							</aside>
-							<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+							<img ng-src="{{selectedUniversity.place_results[3].icon}}"/>
 						</div>
 					</div>
 					<div class="location bg-{{selectedCategory.hex_color}} bottom right"></div>
 				</div>
-				<div class="splash-hero-marker-5 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 15%; right: 3%;">
+				<div class="splash-hero-marker-5 splash-hero-marker opacity-0" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 15%; right: 3%;">
 					<div class="location bg-{{selectedCategory.hex_color}} top right"></div>
 					<div class="info bottom right">
 						<svg width="524px" height="214px" viewBox="0 0 524 214">
@@ -380,7 +387,7 @@
 							<aside class="info-text">
 								<ul>
 									<li>Lorem Ipsum</li>
-									<li>Active now at Philz Coffee</li>
+									<li>Active now at {{selectedUniversity.place_results[4].name}}</li>
 									<li>2.4 miles away</li>
 								</ul>
 							</aside>
@@ -399,7 +406,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="splash-hero-marker-6 splash-hero-marker opacity-0" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 30%; right: 12%;">
+				<div class="splash-hero-marker-6 splash-hero-marker opacity-0" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 30%; right: 12%;">
 					<div class="location bg-{{selectedCategory.hex_color}} top left"></div>
 					<div class="info bottom left">
 						<svg width="524px" height="214px" viewBox="0 0 524 214">
@@ -416,7 +423,7 @@
 							<aside class="info-text">
 								<ul>
 									<li>Lorem Ipsum</li>
-									<li>Active now at Philz Coffee</li>
+									<li>Active now at {{selectedUniversity.place_results[5].name}}</li>
 									<li>2.4 miles away</li>
 								</ul>
 							</aside>
@@ -459,10 +466,10 @@
 								<span class="splash-device-search-searching" activate-on-class="a" class-on-activate="fadeOut:animOut">Searching for gurus at</span>
 								<span class="splash-device-search-results opacity-0" activate-on-class="a" class-on-activate="fadeIn:anim">Found <b>6 gurus</b> at</span>
 							</p>
-							<h3 style="border-top: 1px solid #FFBD17; border-bottom: 1px solid #FFBD17;">
-                                <span style="border-color: #003057; border-left-color: transparent;"></span>
-                                <span style="background: #003057;">UC Berkeley</span>
-                                <span style="border-color: #003057; border-right-color: transparent;"></span>
+							<h3 style="border-top: 2px solid {{selectedUniversity.school_color_light}}; border-bottom: 2px solid {{selectedUniversity.school_color_light}};">
+                                <span style="border-color: {{selectedUniversity.school_color_dark}}; border-left-color: transparent;"></span>
+                                <span style="background: {{selectedUniversity.school_color_dark}};">{{selectedUniversity.short_name || selectedUniversity.name}}</span>
+                                <span style="border-color: {{selectedUniversity.school_color_dark}}; border-right-color: transparent;"></span>
                             </h3>
 							<div class="progress white-round height-10">
 								<span style="width: 15%;"></span>
@@ -482,7 +489,7 @@
 						</g>
 					</svg>
 					<div class="splash-device-button animated">
-						<button class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|fadeIn, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.coach-help-desktop|hide, a:inject.splash-adlib|a, a:inject.splash-adlib ul|activate, a:inject.splash-adlib|bounceOutUp:animOut">Find My Guru</button>
+						<button ng-click='getUniversityPlaces(selectedUniversity)' class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|activate, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.coach-help-desktop|hide, a:inject.splash-adlib|a, a:inject.splash-adlib ul|activate, a:inject.splash-adlib|bounceOutUp:animOut">Find My Guru</button>
 						<!-- samir -->
 					</div>
 				</div>
@@ -644,7 +651,7 @@
 							</a>
 						</li>
 					</ul>
-					<button class="button-find-guru splash-mobile-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|fadeIn, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.coach-help-mobile|hide, a:inject.splash-adlib|a, a:inject.splash-adlib ul|activate, a:inject.splash-adlib|bounceOutUp:animOut">Find My Guru</button>
+					<button ng-click='getUniversityPlaces(selectedUniversity)' class="button-find-guru splash-mobile-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|activate, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.coach-help-mobile|hide, a:inject.splash-adlib|a, a:inject.splash-adlib ul|activate, a:inject.splash-adlib|bounceOutUp:animOut">Find My Guru</button>
 				</div>
 			</div>
 			<div class="coach-scroll">

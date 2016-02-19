@@ -1,6 +1,6 @@
 angular.module('uguru.rest', [])
-.factory('University', ['Restangular', '$timeout', '$localstorage', 'uTracker',
-    function(Restangular, $timeout, $localstorage, uTracker) {
+.factory('University', ['Restangular', '$timeout', '$localstorage', 'uTracker', 'GUtilService',
+    function(Restangular, $timeout, $localstorage, uTracker, GUtilService) {
     var University;
     var source = {
         majors: [],
@@ -63,10 +63,12 @@ angular.module('uguru.rest', [])
                     console.log(indexKey, universities_dist_dict[indexKey].length, 'universities');
                 }
         },
-        initUniversitiesSplash : function(scope) {
+        initUniversitiesSplash : function(scope, map_options) {
             scope.featured_universities = [];
             scope.universities = University.getTargetted().slice();
-            scope.selectedUniversity = scope.user.university || University.getTargetted().slice()[0]; //berkeley
+            if (!scope.selectedUniversity) {
+                scope.selectedUniversity = scope.user.university || University.getTargetted().slice()[0]; //berkeley
+            }
             scope.featured_uni_ids = [1714, 2318, 2089, 1632, 702, 1853];
             scope.featured_universities = [scope.selectedUniversity];
             for (var i = 0; i < scope.universities.length; i++) {
@@ -74,6 +76,7 @@ angular.module('uguru.rest', [])
                 var isFeaturedByIndex = scope.featured_uni_ids.indexOf(indexUniversity.id)
                 if (isFeaturedByIndex > - 1) {
                     scope.featured_universities.push(indexUniversity);
+                    GUtilService.generateStaticMapUrls(scope.featured_universities, map_options)
                 }
             }
         },
