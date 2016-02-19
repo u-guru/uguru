@@ -152,8 +152,8 @@
 		</header>
 
 		<section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear">
-			<div class="splash-hero-nav desktop opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500">
-                <div bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
+			<div class="splash-hero-nav desktop opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
+                <div>
                     <a class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()'>
                         <span>{{selectedCategory.name}}</span>
                         <svg viewBox="0 0 100 100">
@@ -176,7 +176,7 @@
                         </ul>
                     </div>
                 </div>
-                <h2 bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">@</h2>
+                <h2>@</h2>
                 <div>
                     <a class="bg-cal" ng-click="page.dropdowns.university.toggle()">
                         <span>UC Berkeley</span>
@@ -663,7 +663,7 @@
 		</section>
 
 		<section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
-            <div class="projector-trigger" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750">
+            <!-- <div class="projector-trigger" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750">
                 <a id="projector-pull" bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
     				<svg width="28px" height="224px" viewBox="0 0 56 448">
     				    <g stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
@@ -698,24 +698,9 @@
                         <tspan x="652" y="289">Check it out.</tspan>
                     </text>
                 </svg>
-            </div>
-            <div class="splash-projector-footer center" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750">
-                <a>
-                    <svg viewBox="0 0 100 100">
-                    	<path d="M14,68 L50,32 L86,68"></path>
-                    </svg>
-                    <span>back to top</span>
-                </a>
-            </div>
-            <div class="splash-projector-footer right opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="1500">
-                <a>
-                    <svg viewBox="0 0 100 100">
-                    	<path d="M14,68 L50,32 L86,68"></path>
-                    </svg>
-                    <span>back to top</span>
-                </a>
-            </div>
-			<div class='header-swipers opacity-0' activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, b:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="2000">
+            </div> -->
+
+            <div class='header-swipers opacity-0' bind-wp="s2_top" bind-wp-class="a" activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, b:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700">
 				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-0">
 					<div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
@@ -743,7 +728,246 @@
     					<div class="swiper-button-next swiper-button-white" aria-disabled="false" tabindex="0" role="button" aria-label="Next slide"></div>
     					<div class="swiper-button-prev swiper-button-white swiper-button-disabled" aria-disabled="true" tabindex="0" role="button" aria-label="Previous slide"></div>
     					<div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
-    						<!-- Slide # 1-->
+                            <!-- how it works -->
+                            <div id='slide-2' class="swiper-slide" activate-on-class="activate" class-on-activate="pulse:anim:inject#how-it-works|activate">
+                                <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
+                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+                                </svg>
+                                <div class="projector-top"></div>
+                                <div class="projector-content">
+                                    <div id='how-it-works' class="hide hiw-subheader-nav-content main splash-postit" class-on-activate="show:inject#how-it-works [class-on-activate]|activate">
+                                        <header>
+                                            <!-- anim-on-show-delay="400" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200-->
+                                            <h1 class="how-it-works-header opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="400">{{::how_it_works.header}}</h1>
+                                        </header>
+                                        <div class='main'>
+                                            <div class="mobile-postits">
+                                                <ul class="mobile-postit-list">
+                                                    <li class="active">
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/anytime.html'"></span>
+                                                            <h1>24/7, Anytime, Anywhere</h1>
+                                                            <p>Request anything. Your peers can help you with biology @2am</p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/save.html'"></span>
+                                                            <h1 ng-bind-html="::how_it_works.top_half[1].header"></h1>
+                                                            <p ng-bind-html="::how_it_works.top_half[1].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/same.html'"></span>
+                                                            <h1 ng-bind-html="::how_it_works.top_half[2].header"></h1>
+                                                            <p ng-bind-html="::how_it_works.top_half[2].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/organize.html'"></span>
+                                                            <h1 ng-bind-html="::how_it_works.top_half[3].header"></h1>
+                                                            <p ng-bind-html="::how_it_works.top_half[3].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/career.html'"></span>
+                                                            <h1 ng-bind-html="::how_it_works.top_half[4].header"></h1>
+                                                            <p ng-bind-html="::how_it_works.top_half[4].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/earn.html'"></span>
+                                                            <h1 ng-bind-html="::how_it_works.top_half[5].header"></h1>
+                                                            <p ng-bind-html="::how_it_works.top_half[5].content"></p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <ul class="mobile-postit-thumbs">
+                                                    <li class="active">
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/anytime.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/save.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/same.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/organize.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/career.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/earn.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <ul class="desktop-postit-list">
+                                                <!-- top hiw slides -->
+                                                <li class='hiw-postit-li opacity-0' class-on-activate="bounceInLeft:anim" class-on-activate-delay="800">
+                                                    <div>
+                                                        <svg class="tape opacity-0" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                        <svg class="tape opacity-0" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                         <div class="postit">
+                                                            <svg class="square" viewBox="0 0 100 100">
+                                                                <rect x="0" y="0" width="100" height="100"></rect>
+                                                            </svg>
+                                                            <div>
+                                                                <div>
+                                                                    <span class="hiw-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/anytime.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1200"></span>
+                                                                    <h1 ng-bind-html="::how_it_works.top_half[0].header"></h1>
+                                                                    <p ng-bind-html="::how_it_works.top_half[0].content"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class='hiw-postit-li opacity-0' class-on-activate="bounceInDown:anim" class-on-activate-delay="500">
+                                                    <div>
+                                                        <svg class="tape opacity-0" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                        <svg class="tape opacity-0" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                         <div class="postit">
+                                                            <svg class="square" viewBox="0 0 100 100">
+                                                                <rect x="0" y="0" width="100" height="100"></rect>
+                                                            </svg>
+                                                            <div>
+                                                                <div>
+                                                                    <span class="hiw-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/save.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="900"></span>
+                                                                    <h1 ng-bind-html="::how_it_works.top_half[1].header"></h1>
+                                                                    <p ng-bind-html="::how_it_works.top_half[1].content"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class='hiw-postit-li opacity-0' class-on-activate="bounceInRight:anim" class-on-activate-delay="900">
+                                                    <div>
+                                                        <svg class="tape opacity-0" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                        <svg class="tape opacity-0" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                         <div class="postit">
+                                                            <svg class="square" viewBox="0 0 100 100">
+                                                                <rect x="0" y="0" width="100" height="100"></rect>
+                                                            </svg>
+                                                            <div>
+                                                                <div>
+                                                                    <span class="hiw-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/same.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1300"></span>
+                                                                    <h1 ng-bind-html="::how_it_works.top_half[2].header"></h1>
+                                                                    <p ng-bind-html="::how_it_works.top_half[2].content"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <!-- bottom hiw slides -->
+                                                <li class='hiw-postit-li opacity-0' class-on-activate="bounceInLeft:anim" class-on-activate-delay="700">
+                                                    <div>
+                                                        <svg class="tape opacity-0" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                        <svg class="tape opacity-0" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                         <div class="postit">
+                                                            <svg class="square" viewBox="0 0 100 100">
+                                                                <rect x="0" y="0" width="100" height="100"></rect>
+                                                            </svg>
+                                                            <div>
+                                                                <div>
+                                                                    <span class="hiw-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/organize.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1000"></span>
+                                                                    <h1 ng-bind-html="::how_it_works.bottom_half[0].header"></h1>
+                                                                    <p ng-bind-html="::how_it_works.bottom_half[0].content"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class='hiw-postit-li opacity-0' class-on-activate="bounceInUp:anim" class-on-activate-delay="1000">
+                                                    <div>
+                                                        <svg class="tape opacity-0" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                        <svg class="tape opacity-0" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                         <div class="postit">
+                                                            <svg class="square" viewBox="0 0 100 100">
+                                                                <rect x="0" y="0" width="100" height="100"></rect>
+                                                            </svg>
+                                                            <div>
+                                                                <div>
+                                                                    <span class="hiw-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/career.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1400"></span>
+                                                                    <h1 ng-bind-html="::how_it_works.bottom_half[1].header"></h1>
+                                                                    <p ng-bind-html="::how_it_works.bottom_half[1].content"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class='hiw-postit-li opacity-0' class-on-activate="bounceInRight:anim" class-on-activate-delay="600">
+                                                    <div>
+                                                        <svg class="tape opacity-0" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                        <svg class="tape opacity-0" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                         <div class="postit">
+                                                            <svg class="square" viewBox="0 0 100 100">
+                                                                <rect x="0" y="0" width="100" height="100"></rect>
+                                                            </svg>
+                                                            <div>
+                                                                <div>
+                                                                    <span class="hiw-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/earn.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1000"></span>
+                                                                    <h1 ng-bind-html="::how_it_works.bottom_half[2].header"></h1>
+                                                                    <p ng-bind-html="::how_it_works.bottom_half[2].content"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- university -->
     						<div class="swiper-slide">
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
@@ -847,19 +1071,19 @@
                                         </div>
                                         <div class="splash-map-stats" ng-controller="AddUniversityCtrl">
                                             <div class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="2000">
-                                                <h1>By the numbers</h1>
+                                                <h1>By the<br/>numbers</h1>
                                             </div>
                                             <ul>
                                                 <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="2200">
-                                                    <h4><span>Supported&nbsp;</span>Universities</h4>
+                                                    <h4><span>Supported</span><span>Universities</span></h4>
                                                     <h2 id='num-university-counter'>0</h2>
                                                 </li>
                                                 <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="2400">
-                                                    <h4><span>Available&nbsp;</span>Courses</h4>
+                                                    <h4><span>Available</span><span>Courses</span></h4>
                                                     <h2 id='num-course-counter'>0</h2>
                                                 </li>
                                                 <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate="2600">
-                                                    <h4><span>Student&nbsp;</span>Gurus</h4>
+                                                    <h4><span>Student</span><span>Gurus</span></h4>
                                                     <h2 id='num-guru-counter'>0</h2>
                                                 </li>
                                             </ul>
@@ -867,197 +1091,167 @@
 
                                     </div>
 								</div>
-                                <svg class="projector-line bottom" width="2px" height="196px" viewBox="0 0 4 392">
-                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
-                                </svg>
     						</div>
-    						<div id='slide-2' class="swiper-slide" activate-on-class="activate" class-on-activate="pulse:anim:inject#how-it-works|show">
+                            
+                            <!-- become a guru -->
+                            <div class="swiper-slide swiper-slide-gallery" class-on-activate="pulse:anim:inject#become-guru|activate">
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>
                                 <div class="projector-top"></div>
-								<div class="projector-content">
-                                    <div id='how-it-works' class="hide hiw-subheader-nav-content main splash-postit ng-class:{'active':activeBrowseTabIndex===0}" anim-on-show-parent anim-on-show="active" anim-on-hide-parent anim-on-hide="transitioning" anim-on-hide-debounce="2000">
-                                                    <header>
-                                                        <h1 class="how-it-works-header opacity-0" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="400" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="400" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">{{::how_it_works.header}}</h1>
-                                                    </header>
-                                                    <div class='main relative'>
-                                                        <!--Mobile mode, hacked css @595-611, samir.scss -->
-                                                        <div class="full-xy" ng-if='!desktopMode'>
+                                <div class="projector-content relative">
+                                    <div id='become-guru' class='hide bg-subheader-nav-content main splash-postit' class-on-activate="show:inject#become-guru [class-on-activate]|activate">
+                                        <header>
+                                            <h1 class="become-guru-header opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="400">{{::become_guru.header}}</h1>
+                                        </header>
+                                        <div class='main'>
+                                            <ul class="desktop-postit-list">
+                                                <!-- top become guru slides-->
+                                                <li class='bg-postit-li opacity-0' class-on-activate="bounceInLeft:anim" class-on-activate-delay="800">
+                                                    <div>
+                                                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                         <div class="postit">
+                                                            <svg class="square" viewBox="0 0 100 100">
+                                                                <rect x="0" y="0" width="100" height="100"></rect>
+                                                            </svg>
                                                             <div>
-                                                                <div class='postit empty'>
-                                                                    <svg class="square" viewBox="0 0 100 100">
-                                                                        <rect x="0" y="0" width="100" height="100"></rect>
-                                                                    </svg>
+                                                                <div>
+                                                                    <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/profile.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1200"></span>
+                                                                    <h1 ng-bind-html="::become_guru.top_half[0].header"></h1>
+                                                                    <p ng-bind-html="::become_guru.top_half[0].content"></p>
                                                                 </div>
-                                                                <div class='postit empty'>
-                                                                    <svg class="square" viewBox="0 0 100 100">
-                                                                        <rect x="0" y="0" width="100" height="100"></rect>
-                                                                    </svg>
-                                                                </div>
-                                                                <ion-slide-box delegate-handle='hiw-slidebox' class='full-xy' on-slide-changed="::hiwSlideChanged($index)" show-pager='true' slide-interval='2500' auto-play="false">
-                                                                    <ion-slide ng-repeat='hiw_item in ::how_it_works.top_half'>
-                                                                        <div class='postit'>
-                                                                            <svg class="square" viewBox="0 0 100 100">
-                                                                                <rect x="0" y="0" width="100" height="100"></rect>
-                                                                            </svg>
-                                                                            <div class='flex-wrap-center full-xy'>
-                                                                                <span ng-include="::img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-                                                                                <h1 class='full-x' ng-bind-html="::hiw_item.header"></h1>
-                                                                                <p ng-bind-html="::hiw_item.content"></p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </ion-slide>
-                                                                    <ion-slide ng-repeat='hiw_item in ::how_it_works.bottom_half'>
-                                                                        <div class='postit'>
-                                                                            <svg class="square" viewBox="0 0 100 100">
-                                                                                <rect x="0" y="0" width="100" height="100"></rect>
-                                                                            </svg>
-                                                                            <div class='flex-wrap-center full-xy'>
-                                                                                <span ng-include="::img_base + 'templates/svg/' + hiw_item.icon_src"></span>
-                                                                                <h1 class='full-x' ng-bind-html="::hiw_item.header"></h1>
-                                                                                <p ng-bind-html="::hiw_item.content"></p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </ion-slide>
-                                                                </ion-slide-box>
                                                             </div>
-                                                            <div class="p15xy absolute bottom-0 left-0 full-x">
-                                                                <button ng-click='scrollToSection("#splash-university")' class="bg-university default">Join Your University</button>
-                                                            </div>
-                                                        </div>
-
-                                                        <!--Desktop mode-->
-                                                        <div ng-if='desktopMode' class='flex-wrap-center' style='overflow:hidden;'>
-                                                            <ul anim-enter-down="hiw_enter" anim-enter-down-parent>
-                                                                <li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.top_half" anim-exit-up-child anim-exit-up-class="{{::['hinge', 'hinge', 'hinge-right'][$index]}}" anim-exit-up-delay="{{::[800, 500, 900][$index]}}" anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInDown', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[800, 500, 900][$index]}}" anim-enter-down-child anim-enter-down-class="fadeIn" anim-enter-down-delay="800" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="{{::[800, 500, 900][$index]}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">
-                                                                    <svg class="tape" viewBox="0 0 200 650" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="2000">
-                                                                        <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                                                                    </svg>
-                                                                    <svg class="tape" viewBox="0 0 200 650" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="2000">
-                                                                        <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                                                                    </svg>
-                                                                    <div class="postit">
-                                                                        <svg class="square" viewBox="0 0 100 100">
-                                                                            <rect x="0" y="0" width="100" height="100"></rect>
-                                                                        </svg>
-                                                                        <div>
-                                                                            <div>
-                                                                                <span class="hiw-icon opacity-0" ng-include="::img_base + 'templates/svg/' + hiw_item.icon_src" anim-enter-down-child anim-enter-down-class="bounceIn" anim-enter-down-delay="1000" anim-first-enter-down-child anim-first-enter-down-class="bounceIn" anim-first-enter-down-delay="{{::[1200, 900, 1300][$index]}}" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="{{::[1200, 900, 1300][$index]}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200"></span>
-                                                                                <h1 ng-bind-html="::hiw_item.header"></h1>
-                                                                                <p ng-bind-html="::hiw_item.content"></p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class='hiw-postit-li opacity-0' ng-repeat="hiw_item in ::how_it_works.bottom_half" anim-exit-up-child anim-exit-up-class="{{::['hinge-right', 'hinge', 'hinge'][$index]}}" anim-exit-up-delay="{{::[700, 1000, 600][$index]}}" anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInUp', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[700, 1000, 600][$index]}}" anim-enter-down-child anim-enter-down-class="fadeIn" anim-enter-down-delay="800" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="{{::[700, 1000, 600][$index]}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">
-                                                                    <svg class="tape" viewBox="0 0 200 650" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="2000">
-                                                                        <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                                                                    </svg>
-                                                                    <svg class="tape" viewBox="0 0 200 650" anim-first-enter-down-child anim-first-enter-down-class="fadeIn" anim-first-enter-down-delay="2000">
-                                                                        <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                                                                    </svg>
-                                                                    <div class="postit">
-                                                                        <svg class="square" viewBox="0 0 100 100">
-                                                                            <rect x="0" y="0" width="100" height="100"></rect>
-                                                                        </svg>
-                                                                        <div>
-                                                                            <div>
-                                                                                <span class="hiw-icon" ng-include="::img_base + 'templates/svg/' + hiw_item.icon_src" anim-enter-down-child anim-enter-down-class="bounceIn" anim-enter-down-delay="1000" anim-first-enter-down-child anim-first-enter-down-class="bounceIn" anim-first-enter-down-delay="{{::[1100, 1400, 1000][$index]}}" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="{{::[1100, 1400, 1000][$index]}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200"></span>
-                                                                                <h1 ng-bind-html="::hiw_item.header"></h1>
-                                                                                <p ng-bind-html="::hiw_item.content"></p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                            <button anim-exit-up-child anim-exit-up-class="fadeOut" anim-exit-up-delay="1000" anim-enter-down-child anim-enter-down-class="fadeIn" anim-enter-down-delay="2500" class="how-it-works-button default" ng-if='::desktopMode' ng-click='scrollToSection("#splash-university")'>Join Your University</button>
                                                         </div>
                                                     </div>
-                                                </div>
-								</div>
-                                <svg class="projector-line bottom" width="2px" height="196px" viewBox="0 0 4 392">
-                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
-                                </svg>
-                            </div>
-    						<div class="swiper-slide swiper-slide-gallery" class-on-activate="pulse:anim:inject#become-guru|show">
-                                <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
-                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
-                                </svg>
-                                <div class="projector-top"></div>
-								<div class="projector-content">
-									<div id='become-guru' class='hide'>
-                                        <div class='main bg-charcoal relative full-x'>
-                                            <div class='flex-wrap-center'>
-                                                <ul class="desktop-postit-list">
-                                                    <li class='opacity-0 bg-postit-li' anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInDown', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[800, 500, 900][$index]}}" ng-repeat="bg_item in ::become_guru.top_half">
-                                                        <svg class="tape" viewBox="0 0 200 650">
+                                                </li>
+                                                <li class='bg-postit-li opacity-0' class-on-activate="bounceInDown:anim" class-on-activate-delay="500">
+                                                    <div>
+                                                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
                                                             <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
                                                         </svg>
-                                                        <svg class="tape" viewBox="0 0 200 650">
+                                                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
                                                             <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
                                                         </svg>
-                                                        <div class="postit">
+                                                         <div class="postit">
                                                             <svg class="square" viewBox="0 0 100 100">
                                                                 <rect x="0" y="0" width="100" height="100"></rect>
                                                             </svg>
                                                             <div>
                                                                 <div>
-                                                                    <span class="postit-icon" ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
-                                                                    <h1 ng-bind-html="::bg_item.header"></h1>
-                                                                    <p ng-bind-html="::bg_item.content"></p>
+                                                                    <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/promotion.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="900"></span>
+                                                                    <h1 ng-bind-html="::become_guru.top_half[1].header"></h1>
+                                                                    <p ng-bind-html="::become_guru.top_half[1].content"></p>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </li>
-                                                    <li class='opacity-0 bg-postit-li' anim-first-enter-down-child anim-first-enter-down-class="{{::['bounceInLeft', 'bounceInDown', 'bounceInRight'][$index]}}" anim-first-enter-down-delay="{{::[800, 500, 900][$index]}}" ng-repeat="bg_item in ::become_guru.bottom_half">
-                                                        <svg class="tape" viewBox="0 0 200 650">
+                                                    </div>
+                                                </li>
+                                                <li class='bg-postit-li opacity-0' class-on-activate="bounceInRight:anim" class-on-activate-delay="900">
+                                                    <div>
+                                                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
                                                             <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
                                                         </svg>
-                                                        <svg class="tape" viewBox="0 0 200 650">
+                                                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
                                                             <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
                                                         </svg>
-                                                        <div class="postit">
+                                                         <div class="postit">
                                                             <svg class="square" viewBox="0 0 100 100">
                                                                 <rect x="0" y="0" width="100" height="100"></rect>
                                                             </svg>
                                                             <div>
                                                                 <div>
-                                                                    <span class="postit-icon" ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
-                                                                    <h1 ng-bind-html="::bg_item.header"></h1>
-                                                                    <p ng-bind-html="::bg_item.content"></p>
+                                                                    <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/payment.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1300"></span>
+                                                                    <h1 ng-bind-html="::become_guru.top_half[2].header"></h1>
+                                                                    <p ng-bind-html="::become_guru.top_half[2].content"></p>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </li>
-                                                </ul>
-                                                <button ng-click='scrollToSection("#splash-university")' class='become-guru-button default'>Become a University Guru</button>
-                                            </div>
+                                                    </div>
+                                                </li>
+
+                                                <!-- bottom become guru slides-->
+                                                <li class='postit-li opacity-0' class-on-activate="bounceInLeft:anim" class-on-activate-delay="700">
+                                                    <div>
+                                                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                         <div class="postit">
+                                                            <svg class="square" viewBox="0 0 100 100">
+                                                                <rect x="0" y="0" width="100" height="100"></rect>
+                                                            </svg>
+                                                            <div>
+                                                                <div>
+                                                                    <span class="bg-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/skills.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1000"></span>
+                                                                    <h1 ng-bind-html="::become_guru.bottom_half[0].header"></h1>
+                                                                    <p ng-bind-html="::become_guru.bottom_half[0].content"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class='bg-postit-li opacity-0' class-on-activate="bounceInUp:anim" class-on-activate-delay="1000">
+                                                    <div>
+                                                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                         <div class="postit">
+                                                            <svg class="square" viewBox="0 0 100 100">
+                                                                <rect x="0" y="0" width="100" height="100"></rect>
+                                                            </svg>
+                                                            <div>
+                                                                <div>
+                                                                    <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/fees.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1400"></span>
+                                                                    <h1 ng-bind-html="::become_guru.bottom_half[1].header"></h1>
+                                                                    <p ng-bind-html="::become_guru.bottom_half[1].content"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class='bg-postit-li opacity-0' class-on-activate="bounceInRight:anim" class-on-activate-delay="600">
+                                                    <div>
+                                                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
+                                                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
+                                                        </svg>
+                                                         <div class="postit">
+                                                            <svg class="square" viewBox="0 0 100 100">
+                                                                <rect x="0" y="0" width="100" height="100"></rect>
+                                                            </svg>
+                                                            <div>
+                                                                <div>
+                                                                    <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/pajamas.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1000"></span>
+                                                                    <h1 ng-bind-html="::become_guru.bottom_half[2].header"></h1>
+                                                                    <p ng-bind-html="::become_guru.bottom_half[2].content"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
 								</div>
-                                <svg class="projector-line bottom" width="2px" height="196px" viewBox="0 0 4 392">
-                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
-                                </svg>
-    						</div>
-    						<div class="swiper-slide" style="transform: translate3d(0px, 0px, -337.5px) rotateX(0deg) rotateY(-168.75deg); z-index: -2; transition-duration: 0ms; margin-right: 100px;">
-                                <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
-                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
-                                </svg>
-                                <div class="projector-top"></div>
-								<div class="projector-content">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-								</div>
-                                <svg class="projector-line bottom" width="2px" height="196px" viewBox="0 0 4 392">
-                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
-                                </svg>
     						</div>
     					</div>
     					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                     </div>
                 </div>
 			</div>
-            <div class="swiper-container swiper-front-gallery-thumbs" activate-on-class="a" class-on-activate="active:keep, b:inject.slideshow-thumb-1|a, b:inject.slideshow-thumb-2|a, b:inject.slideshow-thumb-3|a, b:inject.slideshow-thumb-4|a">
+            <div class="swiper-container swiper-front-gallery-thumbs" activate-on-class="a" class-on-activate="active:keep, b:inject.slideshow-thumb-1|a, b:inject.slideshow-thumb-2|a, b:inject.slideshow-thumb-3|a">
                 <div class="swiper-wrapper swiper-gallery-wrapper">
                     <div class="swiper-slide slideshow-thumb-1 opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim">
                         <div>
@@ -1072,11 +1266,6 @@
                     <div class="swiper-slide slideshow-thumb-3 opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="400">
                         <div>
                             <h1>Slide 3</h1>
-                        </div>
-                    </div>
-                    <div class="swiper-slide slideshow-thumb-4 opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="600">
-                        <div>
-                            <h1>Slide 4</h1>
                         </div>
                     </div>
                 </div>
