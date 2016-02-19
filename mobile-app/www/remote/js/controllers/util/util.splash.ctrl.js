@@ -19,9 +19,11 @@ angular.module('uguru.util.controllers')
   'GMapService',
   'University',
   '$compile',
+  'ContentService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal, Category, ScrollService, SideMenuService,
-    $stateParams, Utilities, GUtilService, GMapService, University, $compile) {
+    $stateParams, Utilities, GUtilService, GMapService, University, $compile,
+    ContentService) {
 
 
     resolveStateParams()
@@ -183,7 +185,10 @@ angular.module('uguru.util.controllers')
 
         //autoscroll code
         $scope.scrollToSection('#splash-projector');
+
         $timeout(function() {
+          $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);
+          $scope.become_guru = ContentService.generateUniversitySpecificBecomeGuruText($scope.university);
           initHomeMap();
         }, 1500);
         !$scope.desktopMode && SideMenuService.initHomeModals($scope);
