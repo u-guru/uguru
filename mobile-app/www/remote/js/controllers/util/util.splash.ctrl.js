@@ -207,7 +207,6 @@ angular.module('uguru.util.controllers')
     $scope.refreshUniversityState = function(university) {
       var currentSceneNumber = getSceneNumber();
       $scope.selectedUniversity = university;
-      $scope.getUniversityPlaces($scope.selectedUniversity)
       GUtilService.generateStaticMapUrls([$scope.selectedUniversity], getStaticMapOptions());
       $scope.page.dropdowns.university.active = false;
       if (currentSceneNumber === 1) {
@@ -221,6 +220,7 @@ angular.module('uguru.util.controllers')
         ['.coach-help-desktop', 'a'],
       ]
       clearAnimationArgs(args);
+      $scope.getUniversityPlaces($scope.selectedUniversity)
       $timeout(function() {
         LoadingService.hide();
         for (var i = 0; i < args.length; i++) {
@@ -304,7 +304,11 @@ angular.module('uguru.util.controllers')
 
     $scope.getUniversityPlaces = function(university) {
       console.log($scope.map.og_map);
-      GUtilService.getPlaceListByCoords($scope, $scope.map.og_map, {latitude: university.latitude, longitude: university.longitude});
+      $timeout(function() {
+        $scope.$apply(function() {
+          GUtilService.getPlaceListByCoords($scope, $scope.map.og_map, {latitude: university.latitude, longitude: university.longitude});
+        })
+      })
       // $scope.map.center = {latitude: university.latitude, university.longitude};
     }
 
