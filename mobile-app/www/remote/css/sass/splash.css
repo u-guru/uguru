@@ -1675,7 +1675,7 @@
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker {
-  position: fixed;
+  position: absolute;
   z-index: 10;
 }
 
