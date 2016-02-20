@@ -4888,58 +4888,70 @@ input[type=range]:focus::-ms-fill-upper {
     height: 102px; }
     .course-list li a {
       height: 87px; } }
+.input-field.large:not(.white) .prefix svg {
+  fill: none;
+  stroke: #40484B;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #40484B !important; }
+.input-field.large:not(.white) .desktop-input-close-icon .txt-white {
+  color: #40484B !important; }
+.input-field.large:not(.white) input, .input-field.large:not(.white) label {
+  border-color: rgba(64, 72, 75, 0.5) !important;
+  color: #40484B !important; }
+.input-field.large:not(.white) input::-webkit-input-placeholder {
+  color: #40484B; }
+.input-field.large:not(.white) input:-moz-placeholder {
+  color: #40484B; }
+.input-field.large:not(.white) input::-moz-placeholder {
+  color: #40484B; }
+.input-field.large:not(.white) input:-ms-input-placeholder {
+  color: #40484B; }
+.input-field.large:not(.white) input:focus {
+  border-color: #40484B !important;
+  box-shadow: 0 1px 0 0 #40484B !important; }
+.input-field.large.white .prefix svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: white !important; }
+.input-field.large.white .desktop-input-close-icon .txt-white {
+  color: white !important; }
+.input-field.large.white input, .input-field.large.white label {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: white !important; }
+.input-field.large.white input::-webkit-input-placeholder {
+  color: white; }
+.input-field.large.white input:-moz-placeholder {
+  color: white; }
+.input-field.large.white input::-moz-placeholder {
+  color: white; }
+.input-field.large.white input:-ms-input-placeholder {
+  color: white; }
+.input-field.large.white input:focus {
+  border-color: white !important;
+  box-shadow: 0 1px 0 0 white !important; }
 .input-field.large .prefix {
   top: 4px; }
   .input-field.large .prefix svg {
-    fill: none;
-    stroke: #40484B;
-    stroke-width: 5px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke: #40484B !important;
     width: 100%;
     height: 100%;
     padding: 10px; }
 .input-field.large .desktop-input-close-icon {
   z-index: 3;
   top: 25%; }
-  @media screen and (min-width: 768px) {
-    .input-field.large .desktop-input-close-icon {
-      top: 50%;
-      margin: -10px -20px -10px 0 !important; }
-      .input-field.large .desktop-input-close-icon .icon {
-        font-size: 20px !important; } }
-  .input-field.large .desktop-input-close-icon .txt-white {
-    color: #40484B !important; }
-.input-field.large input,
-.input-field.large label {
-  border-color: rgba(64, 72, 75, 0.5) !important;
-  color: #40484B !important; }
-  @media screen and (min-width: 768px) {
-    .input-field.large input,
-    .input-field.large label {
-      text-align: center !important; } }
 .input-field.large input {
   padding-right: 48px;
   z-index: 2;
   margin-bottom: 0; }
-  .input-field.large input::-webkit-input-placeholder {
-    color: #40484B; }
-  .input-field.large input:-moz-placeholder {
-    color: #40484B; }
-  .input-field.large input::-moz-placeholder {
-    color: #40484B; }
-  .input-field.large input:-ms-input-placeholder {
-    color: #40484B; }
-  .input-field.large input:focus {
-    border-color: #40484B !important;
-    box-shadow: 0 1px 0 0 #40484B !important; }
 .input-field.large label {
   width: calc(100% - 48px);
   padding-right: 48px;
   z-index: 1; }
-  .input-field.large label span.selected-school,
-  .input-field.large label span.selected-course {
+  .input-field.large label span.selected-school, .input-field.large label span.selected-course {
     font-weight: 600; }
   .input-field.large label.active {
     filter: alpha(opacity=0) !important;
@@ -4956,11 +4968,16 @@ input[type=range]:focus::-ms-fill-upper {
       stroke-linecap: round;
       stroke-linejoin: round;
       padding: 0; }
+  .input-field.large .desktop-input-close-icon {
+    top: 50%;
+    margin: -10px -20px -10px 0 !important; }
+    .input-field.large .desktop-input-close-icon .icon {
+      font-size: 20px !important; }
   .input-field.large input {
     height: 72px; }
-  .input-field.large input,
-  .input-field.large label {
-    font-size: 32px !important; }
+  .input-field.large input, .input-field.large label {
+    font-size: 32px !important;
+    text-align: center !important; }
   .input-field.large label.active {
     font-size: 20px !important; } }
 #body-loading-wrapper .logo {

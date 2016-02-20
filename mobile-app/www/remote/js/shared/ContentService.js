@@ -894,7 +894,7 @@ function ContentService(Category) {
 			top_half: [{
 				icon_src: "splash/anytime.html",
 				header: "24/7, Anytime, Anywhere",
-				content: "Request anything. Your peers can your Biology Grade @2am",
+				content: "Request anything. Your peers can help you with biology @2am",
 				// content: "Request anything. Your peers can your Biology Grade @2am, take your grad photos, or do dirty laundry",
 			}, {
 				icon_src: "splash/save.html",

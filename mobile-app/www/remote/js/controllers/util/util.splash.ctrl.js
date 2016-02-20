@@ -20,16 +20,17 @@ angular.module('uguru.util.controllers')
   'University',
   '$compile',
   'ContentService',
+  'LoadingService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal, Category, ScrollService, SideMenuService,
     $stateParams, Utilities, GUtilService, GMapService, University, $compile,
-    ContentService) {
+    ContentService, LoadingService) {
 
 
     resolveStateParams()
     $scope.map;
-    $scope.page = {scroll: {}, waypoints: {}, sidebar:{}, dropdowns: {}, modals: {}, swipers: {}};
-    $scope.page.dropdowns = {category: {show: true, active:false, toggle:toggleCategoryDropdown}, university: {show: true, active: false, toggle: toggleUniversityDropdown}};
+    $scope.page = {scroll: {}, waypoints: {}, sidebar:{}, dropdowns: {}, modals: {}, swipers: {}, map:{}};
+    $scope.page.dropdowns = {closeAll: closeAllDropdowns, category: {show: true, active:false, toggle:toggleCategoryDropdown}, university: {show: true, active: false, toggle: toggleUniversityDropdown}};
     //@gabrielle note, scroll preferences
 
     $scope.page.scroll = {
@@ -56,7 +57,7 @@ angular.module('uguru.util.controllers')
         centeredSlides:true,
         spaceBetween: 80,
         effect:'coverflow',
-        speed:600,
+        speed:1500,
         coverflow:{slideShadows:false},
         // pagination:'.header-swiper-front .swiper-pagination',
         paginationClickable:true,
@@ -66,7 +67,9 @@ angular.module('uguru.util.controllers')
         controlBy:'container',
         keyboardControl:true,
         a11y:true,
-        onTransitionEnd:onSlideChangeEndMainSwiper($timeout, $scope)
+        onTransitionEnd:onSlideChangeEndMainSwiper($timeout, $scope),
+        // onSlidePrevStart: onSlidePrevStart($timeout, $scope),
+        parallax: true
       }
 
       if (!desktop_mode) {
@@ -76,6 +79,14 @@ angular.module('uguru.util.controllers')
       }
 
       var swiperFront=new Swiper('.header-swiper-front', swiperMainOptions);
+
+      swiperFront.on('slideChangeStart', function () {
+          swiperFront.slides[swiperFront.previousIndex].classList.add('clear');
+          swiperFront.slides[swiperFront.previousIndex].classList.remove('opacity-1-impt');
+          $timeout(function() {
+            swiperFront.params.speed = 300;
+          }, 500);
+      });
 
       var swiperFrontGalleryThumbsOption = {
         slidesPerView:5,
@@ -99,11 +110,33 @@ angular.module('uguru.util.controllers')
       return function(swiper) {
         $timeout(function(){
           $scope.$apply(function() {
+            swiper.params.speed = 1500;
             swiper.slides[swiper.activeIndex].classList.add('activate');
           })
         })
       }
     }
+
+    function onSlideNextStart($timeout, $scope) {
+      return function(swiper) {
+        $timeout(function(){
+          $scope.$apply(function() {
+            swiper.slides[swiper.previousIndex].classList.add('clear');
+          })
+        })
+      }
+    }
+
+    function onSlidePrevStart($timeout, $scope) {
+      return function(swiper) {
+        $timeout(function(){
+          $scope.$apply(function() {
+            swiper.slides[swiper.activeIndex + 1].classList.add('clear');
+          })
+        })
+      }
+    }
+
     function swiperOnSlideChangeStart(s) {
       if (s.activeIndex===$('.swiper-slide-gallery').index()) {
         $(s.container[0]).find('.swiper-pagination').hide();
@@ -128,17 +161,74 @@ angular.module('uguru.util.controllers')
 
 
 
-    $scope.refreshState = function(category) {
+    $scope.refreshCategoryState = function(category, university) {
       var bodyLoadingDiv = document.querySelector('#body-loading-div')
       bodyLoadingDiv.className ='hide';
       document.querySelector('#splash-home').classList.add('clear');
       $timeout(function() {
-        $state.go($state.current.name, {categoryId:category.id, category:category}, {
+        $state.go($state.current.name, {categoryId:category.id, category:category, universityId:university.id, university:university}, {
             reload: true,
             inherit: false,
-            notify: true
+            notify: true,
+            location: false
         });
       }, 1500);
+    }
+
+    function getSceneNumber() {
+      var elem = document.querySelector('.splash-device-content .progress span')
+      if (elem) {
+        console.log('progress elem', elem, elem.className);
+        if (elem.className.indexOf('animate') > -1) {
+          return 2;
+        }
+      }
+      return 1;
+    }
+
+    function clearAnimationArgs(args) {
+      for (var i = 0; i < args.length; i++) {
+        var argIndexInjectClass = args[i][0]
+        var argIndexElem = document.querySelector(argIndexInjectClass);
+        console.log(argIndexElem.style);
+        argIndexElem && argIndexElem.classList.add('clear');
+      }
+    }
+
+    function getStaticMapOptions() {
+      return {
+        scale: 1, //up to 2, only whole values
+        map_type: "roadmap", //hybrid, terrain, satellite, roadmap
+        size: "1280x1280",
+        zoom: 17
+      }
+    }
+
+    $scope.refreshUniversityState = function(university) {
+      var currentSceneNumber = getSceneNumber();
+      $scope.selectedUniversity = university;
+      $scope.getUniversityPlaces($scope.selectedUniversity)
+      GUtilService.generateStaticMapUrls([$scope.selectedUniversity], getStaticMapOptions());
+      $scope.page.dropdowns.university.active = false;
+      if (currentSceneNumber === 1) {
+        return;
+      }
+      LoadingService.showAmbig(null, 10000);
+      var args = [
+        ['.splash-hero-map', 'activate'],
+        ['.splash-hero-markers', 'a'],
+        ['.splash-device', 'a'],
+        ['.coach-help-desktop', 'a'],
+      ]
+      clearAnimationArgs(args);
+      $timeout(function() {
+        LoadingService.hide();
+        for (var i = 0; i < args.length; i++) {
+          var argIndexInjectClass = args[i][0]
+          var argIndexElem = document.querySelector(argIndexInjectClass);
+          argIndexElem && argIndexElem.classList.add(args[i][1]);
+        }
+      }, 5000)
     }
 
     $scope.scrollToSection = function(section_selector) {
@@ -155,6 +245,8 @@ angular.module('uguru.util.controllers')
     $scope.onLoad = function() {
       // @gabrielle-note -- what
       // Default parameters
+      University.initUniversitiesSplash($scope, getStaticMapOptions());
+
       var responsiveSwiperArgs = {
         desktop: {
           slidesPerView: 1,
@@ -182,9 +274,9 @@ angular.module('uguru.util.controllers')
       initSwipers(responsiveSwiperArgs, $scope.desktopMode);
       $scope.universities = University.getTargetted().slice();
       $timeout(function() {
-
+        // University.initUniversitiesSplash($scope);
         //autoscroll code
-        $scope.scrollToSection('#splash-projector');
+        // $scope.scrollToSection('#splash-projector');
 
         $timeout(function() {
           $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);
@@ -201,11 +293,19 @@ angular.module('uguru.util.controllers')
         $scope.root.loader.body.hide = true;
         Utilities.compileToAngular('body-loading-div', $scope);
         $scope.selectedCategory = $stateParams.category;
+        $scope.selectedUniversity = $stateParams.university || University.getTargetted()[0];
       } else {
         $scope.selectedCategory = ($scope.categories && $scope.categories[0]) || {name: 'Academic', hex_color: 'academic', id:5};
+        $scope.selectedUniversity = University.getTargetted()[0];
         Utilities.compileToAngular('body-loading-div', $scope);
         $scope.root.loader.body.hide = true;
       }
+    }
+
+    $scope.getUniversityPlaces = function(university) {
+      console.log($scope.map.og_map);
+      GUtilService.getPlaceListByCoords($scope, $scope.map.og_map, {latitude: university.latitude, longitude: university.longitude});
+      // $scope.map.center = {latitude: university.latitude, university.longitude};
     }
 
     function toggleCategoryDropdown() {
@@ -231,7 +331,6 @@ angular.module('uguru.util.controllers')
       size: "1280x1280",
       zoom: 17
     }
-
 
     $scope.mapBounds = {
       desktop: {
@@ -592,6 +691,11 @@ angular.module('uguru.util.controllers')
           $scope.map.og_map = map;
           document.querySelector('#splash-university').classList.add('show-map');
         }
+      }
+
+      function closeAllDropdowns() {
+        $scope.page.dropdowns.category.active = false;
+        $scope.page.dropdowns.university.active = false;
       }
 
 
