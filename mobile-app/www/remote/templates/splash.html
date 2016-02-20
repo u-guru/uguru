@@ -232,228 +232,414 @@
             </div> -->
 			<div class="splash-hero-markers" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker-1|a, active:inject.splash-hero-marker-2|a, active:inject.splash-hero-marker-3|a, active:inject.splash-hero-marker-4|a, active:inject.splash-hero-marker-5|a, active:inject.splash-hero-marker-6|a">
 				<div class="splash-hero-marker-1 splash-hero-marker opacity-0" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="first:unique, bounceIn:anim">
-					<div class="message top">
-						<svg viewBox="0 0 524 364">
-							<rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
-						</svg>
-						<div>
-							<p>Hey there,</p>
-							<p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
-							<p class="signature">Lorem Ipsum</p>
-							<button class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-device-profile|fadeIn">View Profile</button>
-						</div>
-					</div>
-					<div class="info top left">
-						<svg width="524px" height="214px" viewBox="0 0 524 214">
-							<g fill="none">
-								<path class="fill" d="M2,2 L522,2 L522,182 L122,182 L92,212 L62,182 L2,182 L2,2 Z"></path>
-								<path class="line" d="M2,2 L2,182 L62,182 L92,212 L122,182"></path>
-								<line class="line line-3" x1="522" y1="2" x2="522" y2="182" />
-								<line class="line line-2" x1="122" y1="182" x2="522" y2="182" />
-								<line class="line line-1" x1="2" y1="2" x2="522" y2="2" />
-							</g>
-						</svg>
-						<div>
-							<!-- <img ng-src="{{selectedUniversity.place_results[0].}}"/> -->
-                            <span class='user-icon'>
-                                <svg class='user-icon' height="35" width="35" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="#FFFFFF">
-                                    <path d='{{(selectedUniversity.place_results && selectedUniversity.place_results[0].svg_path)}}' stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>></path>
-                                </svg>
-                            </span>
-							<aside class="info-text">
-								<ul>
-									<li>Lorem Ipsum</li>
-									<li>Active now at {{selectedUniversity.place_results[0].name}}</li>
-									<li>2.4 miles away</li>
-								</ul>
-							</aside>
-						</div>
-					</div>
+                    <svg class="map-tooltip-window bottom left" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
+                        <path class="bg" d="M2,2 L522,2 L522,542 L122,542 L92,572 L62,542 L2,542 L2,2 Z" fill="#40484B"></path>
+                        <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2,542 L62,542 L92,572 L122,542"></path>
+                            <line class="left" x1="2" y1="542" x2="2" y2="2"/>
+                            <line class="bottom" x1="122" y1="542" x2="522" y2="542"/>
+                            <line class="right" x1="522" y1="542" x2="522" y2="2"/>
+                            <line class="top" x1="2" y1="2" x2="522" y2="2"/>
+                        </g>
+                    </svg>
+                    <span class="user-icon"></span>
+                    <div class="map-tooltip-text top">
+                        <div class="map-tooltip-guru">
+                            <div>
+                                <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
+                                <h2>Active 10 min ago</h2>
+                                <ul class="rating-stars" data-rating="4" data-half="true">
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div ng-include="img_base + 'templates/svg/main/right.html'"></div>
+                        </div>
+                        <div class="map-tooltip-location">
+                            <div style="background-image: url({{selectedUniversity.place_results[1].photo_url}});"></div>
+                            <div>
+                                <h1>{{selectedUniversity.place_results[1].name}}</h1>
+                                <h2>open now until 10pm</h2>
+                                <h2>2.4 miles away</h2>
+                            </div>
+                            <div ng-include="img_base + 'templates/svg/wwf/coffee.html'"></div>
+                        </div>
+                        <div class="map-tooltip-message">
+                            <p>Hey there,</p>
+                            <p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
+                        </div>
+                    </div>
 					<div class="location bg-{{selectedCategory.hex_color}} bottom left"></div>
 				</div>
-				<div class="splash-hero-marker-2 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 40%; left: 10%;">
-					<div class="message top">
-						<svg viewBox="0 0 524 364">
-							<rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
-						</svg>
-						<div>
-							<p>Hey there,</p>
-							<p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
-							<p class="signature">Lorem Ipsum</p>
-							<button class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-device-profile|fadeIn">View Profile</button>
-						</div>
-					</div>
-					<div class="info top left">
-						<svg width="524px" height="214px" viewBox="0 0 524 214">
-							<g fill="none">
-								<path class="fill" d="M2,2 L522,2 L522,182 L122,182 L92,212 L62,182 L2,182 L2,2 Z"></path>
-								<path class="line" d="M2,2 L2,182 L62,182 L92,212 L122,182"></path>
-								<line class="line line-3" x1="522" y1="2" x2="522" y2="182" />
-								<line class="line line-2" x1="122" y1="182" x2="522" y2="182" />
-								<line class="line line-1" x1="2" y1="2" x2="522" y2="2" />
-							</g>
-						</svg>
-						<div>
-							<span class='user-icon'>
-                                <svg class='user-icon' height="35" width="35" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="#FFFFFF">
-                                    <path d='{{(selectedUniversity.place_results && selectedUniversity.place_results[1].svg_path)}}' stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>></path>
-                                </svg>
-                            </span>
-							<aside class="info-text">
-								<ul>
-									<img ng-src="{{selectedUniversity.place_results[1].icon}}"/>
-									<li>Active now at {{selectedUniversity.place_results[1].name}}</li>
-									<li>2.4 miles away</li>
-								</ul>
-							</aside>
-						</div>
-					</div>
+				<div class="splash-hero-marker-2 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 30%; left: 10%;">
+                    <svg class="map-tooltip-window bottom left" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
+                        <path class="bg" d="M522,2 L2,2 L2,542 L402,542 L432,572 L462,542 L522,542 L522,2 L522,2 Z" fill="#40484B"></path>
+                        <path class="bg" d="M2,2 L522,2 L522,542 L122,542 L92,572 L62,542 L2,542 L2,2 Z" fill="#40484B"></path>
+                        <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2,542 L62,542 L92,572 L122,542"></path>
+                            <line class="left" x1="2" y1="542" x2="2" y2="2"/>
+                            <line class="bottom" x1="122" y1="542" x2="522" y2="542"/>
+                            <line class="right" x1="522" y1="542" x2="522" y2="2"/>
+                            <line class="top" x1="2" y1="2" x2="522" y2="2"/>
+                        </g>
+                    </svg>
+                    <span class="user-icon"></span>
+                    <div class="map-tooltip-text top">
+                        <div class="map-tooltip-guru">
+                            <div>
+                                <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
+                                <h2>Active 10 min ago</h2>
+                                <ul class="rating-stars" data-rating="4" data-half="true">
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div ng-include="img_base + 'templates/svg/main/right.html'"></div>
+                        </div>
+                        <div class="map-tooltip-location">
+                            <div style="background-image: url({{selectedUniversity.place_results[1].photo_url}});"></div>
+                            <div>
+                                <h1>{{selectedUniversity.place_results[1].name}}</h1>
+                                <h2>open now until 10pm</h2>
+                                <h2>2.4 miles away</h2>
+                            </div>
+                            <div ng-include="img_base + 'templates/svg/wwf/coffee.html'"></div>
+                        </div>
+                        <div class="map-tooltip-message">
+                            <p>Hey there,</p>
+                            <p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
+                        </div>
+                    </div>
 					<div class="location bg-{{selectedCategory.hex_color}} bottom left"></div>
 				</div>
 				<div class="splash-hero-marker-3 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 10%; left: 4%;">
 					<div class="location bg-{{selectedCategory.hex_color}} top left"></div>
-					<div class="info bottom left">
-						<svg width="524px" height="214px" viewBox="0 0 524 214">
-							<g fill="none">
-								<path class="fill" d="M2,212 L522,212 L522,32 L122,32 L92,2 L62,32 L2,32 L2,212 L2,212 L2,212 Z"></path>
-								<path class="line" d="M2,212 L2,32 L62,32 L92,2 L122,32"></path>
-								<line class="line line-3" x1="522" y1="32" x2="522" y2="212" />
-								<line class="line line-2" x1="122" y1="32" x2="522" y2="32" />
-								<line class="line line-1" x1="2" y1="212" x2="522" y2="212" />
-							</g>
-						</svg>
-						<div>
-							<span class='user-icon'>
-                                <svg class='user-icon' height="35" width="35" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="#FFFFFF">
-                                    <path d='{{(selectedUniversity.place_results && selectedUniversity.place_results[2].svg_path)}}' stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>></path>
-                                </svg>
-                            </span>
-							<aside class="info-text">
-								<ul>
-									<li>Lorem Ipsum</li>
-									<li>Active now at {{selectedUniversity.place_results[2].name}}</li>
-									<li>2.4 miles away</li>
-								</ul>
-							</aside>
-						</div>
-					</div>
-					<div class="message bottom">
-						<svg viewBox="0 0 524 364">
-							<rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
-						</svg>
-						<div>
-							<p>Hey there,</p>
-							<p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
-							<p class="signature">Lorem Ipsum</p>
-							<button class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-device-profile|fadeIn">View Profile</button>
-						</div>
-					</div>
+                    <svg class="map-tooltip-window top left" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
+                        <path class="bg" d="M2,571 L522,571 L522,31 L122,31 L92,1 L62,31 L2,31 L2,571 L2,571 Z" fill="#40484B"></path>
+                        <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2,31 L62,31 L92,1 L122,31"></path>
+                            <line class="left" x1="2" y1="31" x2="2" y2="571"/>
+                            <line class="bottom" x1="122" y1="31" x2="522" y2="31"/>
+                            <line class="right" x1="522" y1="31" x2="522" y2="571"/>
+                            <line class="top" x1="2" y1="571" x2="522" y2="571"/>
+                        </g>
+                    </svg>
+                    <span class="user-icon"></span>
+                    <div class="map-tooltip-text bottom">
+                        <div class="map-tooltip-guru">
+                            <div>
+                                <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
+                                <h2>Active 10 min ago</h2>
+                                <ul class="rating-stars" data-rating="4" data-half="true">
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div ng-include="img_base + 'templates/svg/main/right.html'"></div>
+                        </div>
+                        <div class="map-tooltip-location">
+                            <div style="background-image: url({{selectedUniversity.place_results[2].photo_url}});"></div>
+                            <div>
+                                <h1>{{selectedUniversity.place_results[2].name}}</h1>
+                                <h2>open now until 10pm</h2>
+                                <h2>2.4 miles away</h2>
+                            </div>
+                            <div ng-include="img_base + 'templates/svg/wwf/coffee.html'"></div>
+                        </div>
+                        <div class="map-tooltip-message">
+                            <p>Hey there,</p>
+                            <p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
+                        </div>
+                    </div>
 				</div>
 				<div class="splash-hero-marker-4 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="200" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="bottom: 5%; left: 1%;">
-					<div class="message top">
-						<svg viewBox="0 0 524 364">
-							<rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
-						</svg>
-						<div>
-							<p>Hey there,</p>
-							<p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
-							<p class="signature">Lorem Ipsum</p>
-							<button class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-device-profile|fadeIn">View Profile</button>
-						</div>
-					</div>
-					<div class="info top right">
-						<svg width="524px" height="214px" viewBox="0 0 524 214">
-							<g fill="none">
-								<path class="fill" d="M522,2 L2,2 L2,182 L402,182 L432,212 L462,182 L522,182 L522,2 L522,2 Z" fill="#40484B"></path>
-								<path class="line" d="M522,2 L522,182 L462,182 L432,212 L402,182"></path>
-								<line class="line line-3" x1="2" y1="2" x2="2" y2="182" />
-								<line class="line line-2" x1="400" y1="182" x2="2" y2="182" />
-								<line class="line line-1" x1="522" y1="2" x2="2" y2="2" />
-							</g>
-						</svg>
-						<div>
-							<aside class="info-text">
-								<ul>
-									<li>Lorem Ipsum</li>
-									<li>Active now at {{selectedUniversity.place_results[3].name}}</li>
-									<li>2.4 miles away</li>
-								</ul>
-							</aside>
-							<span  style="height:90px; width:90px; background-image: url({{selectedUniversity.place_results[3].photo_url}});"></span>
-						</div>
-					</div>
+                    <svg class="map-tooltip-window bottom right" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
+                        <path class="bg" d="M522,2 L2,2 L2,542 L402,542 L432,572 L462,542 L522,542 L522,2 L522,2 Z" fill="#40484B"></path>
+                        <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M522,542 L462,542 L432,572 L402,542"></path>
+                            <line class="left" x1="522" y1="542" x2="522" y2="2"/>
+                            <line class="bottom" x1="402" y1="542" x2="2" y2="542"/>
+                            <line class="right" x1="2" y1="542" x2="2" y2="2"/>
+                            <line class="top" x1="522" y1="2" x2="2" y2="2"/>
+                        </g>
+                    </svg>
+                    <span class="user-icon"></span>
+                    <div class="map-tooltip-text top">
+                        <div class="map-tooltip-guru">
+                            <div>
+                                <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
+                                <h2>Active 10 min ago</h2>
+                                <ul class="rating-stars" data-rating="4" data-half="true">
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div ng-include="img_base + 'templates/svg/main/right.html'"></div>
+                        </div>
+                        <div class="map-tooltip-location">
+                            <div style="background-image: url({{selectedUniversity.place_results[3].photo_url}});"></div>
+                            <div>
+                                <h1>{{selectedUniversity.place_results[3].name}}</h1>
+                                <h2>open now until 10pm</h2>
+                                <h2>2.4 miles away</h2>
+                            </div>
+                            <div ng-include="img_base + 'templates/svg/wwf/coffee.html'"></div>
+                        </div>
+                        <div class="map-tooltip-message">
+                            <p>Hey there,</p>
+                            <p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
+                        </div>
+                    </div>
 					<div class="location bg-{{selectedCategory.hex_color}} bottom right"></div>
 				</div>
 				<div class="splash-hero-marker-5 splash-hero-marker opacity-0" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 15%; right: 3%;">
-					<div class="location bg-{{selectedCategory.hex_color}} top right"></div>
-					<div class="info bottom right">
-						<svg width="524px" height="214px" viewBox="0 0 524 214">
-							<g fill="none">
-								<path class="fill" d="M522,212 L2,212 L2,32 L402,32 L432,2 L462,32 L522,32 L522,212 L522,212 Z" fill="#40484B"></path>
-								<path class="line" d="M522,212 L522,32 L462,32 L432,2 L402,32"></path>
-								<line class="line line-3" x1="2" y1="32" x2="2" y2="212" />
-								<line class="line line-2" x1="402" y1="32" x2="2" y2="32" />
-								<line class="line line-1" x1="522" y1="212" x2="2" y2="212" />
-							</g>
-						</svg>
-						<div>
-							<aside class="info-text">
-								<ul>
-									<li>Lorem Ipsum</li>
-									<li>Active now at {{selectedUniversity.place_results[4].name}}</li>
-									<li>2.4 miles away</li>
-								</ul>
-							</aside>
-							<span  style="height:90px; width:90px; background-image: url({{selectedUniversity.place_results[4].photo_url}});"></span>
-						</div>
-					</div>
-					<div class="message bottom">
-						<svg viewBox="0 0 524 364">
-							<rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
-						</svg>
-						<div>
-							<p>Hey there,</p>
-							<p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
-							<p class="signature">Lorem Ipsum</p>
-							<button class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-device-profile|fadeIn">View Profile</button>
-						</div>
-					</div>
+                    <svg class="map-tooltip-window top right" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
+                        <path class="bg" d="M522,571 L2,571 L2,31 L402,31 L432,1 L462,31 L522,31 L522,571 L522,571 Z" fill="#40484B"></path>
+                        <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M522,31 L462,31 L432,1 L402,31"></path>
+                            <line class="left" x1="522" y1="31" x2="522" y2="571"/>
+                            <line class="bottom" x1="402" y1="31" x2="2" y2="31"/>
+                            <line class="right" x1="2" y1="31" x2="2" y2="571"/>
+                            <line class="top" x1="522" y1="571" x2="2" y2="571"/>
+                        </g>
+                    </svg>
+                    <span class="user-icon"></span>
+                    <div class="map-tooltip-text bottom">
+                        <div class="map-tooltip-guru">
+                            <div>
+                                <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
+                                <h2>Active 10 min ago</h2>
+                                <ul class="rating-stars" data-rating="4" data-half="true">
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div ng-include="img_base + 'templates/svg/main/right.html'"></div>
+                        </div>
+                        <div class="map-tooltip-location">
+                            <div style="background-image: url({{selectedUniversity.place_results[3].photo_url}});"></div>
+                            <div>
+                                <h1>{{selectedUniversity.place_results[3].name}}</h1>
+                                <h2>open now until 10pm</h2>
+                                <h2>2.4 miles away</h2>
+                            </div>
+                            <div ng-include="img_base + 'templates/svg/wwf/coffee.html'"></div>
+                        </div>
+                        <div class="map-tooltip-message">
+                            <p>Hey there,</p>
+                            <p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
+                        </div>
+                    </div>
 				</div>
 				<div class="splash-hero-marker-6 splash-hero-marker opacity-0" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="not-first, bounceIn:anim" style="top: 30%; right: 12%;">
 					<div class="location bg-{{selectedCategory.hex_color}} top left"></div>
-					<div class="info bottom left">
-						<svg width="524px" height="214px" viewBox="0 0 524 214">
-							<g fill="none">
-								<path class="fill" d="M2,212 L522,212 L522,32 L122,32 L92,2 L62,32 L2,32 L2,212 L2,212 L2,212 Z"></path>
-								<path class="line" d="M2,212 L2,32 L62,32 L92,2 L122,32"></path>
-								<line class="line line-3" x1="522" y1="32" x2="522" y2="212" />
-								<line class="line line-2" x1="122" y1="32" x2="522" y2="32" />
-								<line class="line line-1" x1="2" y1="212" x2="522" y2="212" />
-							</g>
-						</svg>
-						<div>
-							<span  style="height:90px; width:90px; background-image: url({{selectedUniversity.place_results[5].photo_url}});"></span>
-							<aside class="info-text">
-								<ul>
-									<li>Lorem Ipsum</li>
-									<li>Active now at {{selectedUniversity.place_results[5].name}}</li>
-									<li>2.4 miles away</li>
-								</ul>
-							</aside>
-						</div>
-					</div>
-					<div class="message bottom">
-						<svg viewBox="0 0 524 364">
-							<rect x="2" y="2" width="520" height="360" stroke="#FFFFFF" stroke-width="4" fill="#40484B" fill-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"></rect>
-						</svg>
-						<div>
-							<p>Hey there,</p>
-							<p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
-							<p class="signature">Lorem Ipsum</p>
-							<button class="bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-device-profile|fadeIn">View Profile</button>
-						</div>
-					</div>
-				</div>
+                    <div class="location bg-{{selectedCategory.hex_color}} top left"></div>
+                    <svg class="map-tooltip-window top left" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
+                        <path class="bg" d="M2,571 L522,571 L522,31 L122,31 L92,1 L62,31 L2,31 L2,571 L2,571 Z" fill="#40484B"></path>
+                        <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2,31 L62,31 L92,1 L122,31"></path>
+                            <line class="left" x1="2" y1="31" x2="2" y2="571"/>
+                            <line class="bottom" x1="122" y1="31" x2="522" y2="31"/>
+                            <line class="right" x1="522" y1="31" x2="522" y2="571"/>
+                            <line class="top" x1="2" y1="571" x2="522" y2="571"/>
+                        </g>
+                    </svg>
+                    <span class="user-icon"></span>
+                    <div class="map-tooltip-text bottom">
+                        <div class="map-tooltip-guru">
+                            <div>
+                                <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
+                                <h2>Active 10 min ago</h2>
+                                <ul class="rating-stars" data-rating="4" data-half="true">
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 100 100">
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                                            <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                                        </svg>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div ng-include="img_base + 'templates/svg/main/right.html'"></div>
+                        </div>
+                        <div class="map-tooltip-location">
+                            <div style="background-image: url({{selectedUniversity.place_results[2].photo_url}});"></div>
+                            <div>
+                                <h1>{{selectedUniversity.place_results[2].name}}</h1>
+                                <h2>open now until 10pm</h2>
+                                <h2>2.4 miles away</h2>
+                            </div>
+                            <div ng-include="img_base + 'templates/svg/wwf/coffee.html'"></div>
+                        </div>
+                        <div class="map-tooltip-message">
+                            <p>Hey there,</p>
+                            <p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
+                        </div>
+                    </div>
+                </div>
 			</div>
 			<div class="splash-device splash-device-iphone magictime opacity-0" class-on-load="vanishIn:anim" activate-on-class="a" class-on-activate="active:inject.splash-device-search-inside|a, b:inject.splash-device-svg|a">
 				<svg class="splash-device-svg" activate-on-class="a" class-on-activate="active:keep" viewBox="0 0 319 652">

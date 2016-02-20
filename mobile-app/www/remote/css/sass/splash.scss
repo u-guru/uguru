@@ -1099,6 +1099,7 @@
 						width: 10px;
 						height: 10px;
 						position: absolute;
+						border: 2px solid white;
 						&.top {
 							top: -25px;
 						}
@@ -1792,65 +1793,240 @@
 						&:nth-child(1) {
 							@include prefix(animation-delay, 1700ms, webkit moz ms o);
 						}
-						.info {
-							svg {
-								.line-1 {
-									stroke-dasharray: 520, 520;
-									stroke-dashoffset: 338;
-								}
-								.line-2 {
-									stroke-dasharray: 398, 398;
-									stroke-dashoffset: 338;
-								}
-								.fill {
-									@include opacity(0);
+						.map-tooltip-window {
+							path, line {
+								@include prefix(transition, all 0ms ease-in-out, webkit moz ms o);
+							}
+							.bg {
+								@include prefix(transition-delay, 150ms, webkit moz ms o);
+								@include opacity(0);
+							}
+							.top, .bottom, .left, .right {
+								@include prefix(transition-delay, 300ms, webkit moz ms o);
+							}
+							.left, .right {
+								stroke-dasharray: 540, 540;
+								stroke-dashoffset: 360;
+							}
+							.top {
+								stroke-dasharray: 520, 520;
+								stroke-dashoffset: 340;
+							}
+							.bottom {
+								stroke-dasharray: 400, 400;
+								stroke-dashoffset: 340;
+							}
+							&.top {
+								.top {
+									@include prefix(transform, translate3d(0, -360px, 0), webkit moz ms o);
 								}
 							}
-							div {
-								aside {
-									width: 0;
-									overflow: hidden;
-								}
-								ul {
-									@include opacity(0);
+							&.bottom {
+								.top {
+									@include prefix(transform, translate3d(0, 360px, 0), webkit moz ms o);
 								}
 							}
 							&.left {
-								svg {
-									.line-3 {
-										transform: translateX(-338px);
-									}
+								.right {
+									@include prefix(transform, translate3d(-338px, 0, 0), webkit moz ms o);
 								}
 							}
 							&.right {
-								svg {
-									.line-3 {
-										transform: translateX(338px);
+								.right {
+									@include prefix(transform, translate3d(338px, 0, 0), webkit moz ms o);
+								}
+							}
+						}
+						.user-icon {
+							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+							position: absolute;
+							width: 64px;
+						    height: 64px;
+						    border-width: 2px;
+						    left: 14px;
+							background-color: $slate;
+						}
+						.map-tooltip-window.top + .user-icon {
+							top: 28px;
+						}
+						.map-tooltip-window.bottom + .user-icon {
+							bottom: 30px;
+						}
+						.map-tooltip-window.left + .user-icon {
+							left: 14px;
+						}
+						.map-tooltip-window.right + .user-icon {
+							right: -154px;
+						}
+						.map-tooltip-text {
+							@include opacity(0);
+							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+							@include prefix(transition-delay, 300ms, webkit moz ms o);
+							position: absolute;
+							left: 1px;
+							width: 260px;
+							height: 270px;
+							&.top {
+								top: 1px;
+							}
+							&.bottom {
+								bottom: 1px;
+							}
+							> div {
+								@include flex;
+								@include flex-wrap;
+								@include flex-center-vertical;
+								padding: 0 15px;
+								height: calc(100% / 3);
+								text-align: left;
+								&:not(:last-child) {
+									border-bottom: 2px solid white;
+								}
+							}
+							h1, h2, p {
+								width: 100%;
+							}
+							h1, h2 {
+								margin: 0!important;
+							}
+							h2 {
+								font-size: 16px;
+								font-weight: 600;
+							}
+							.map-tooltip-guru {
+								background: rgba($cerise, .25);
+								> div {
+									&:first-child {
+										@include prefix(transform, translateX(50px), webkit moz ms o);
+										width: calc(100% - 25px);
 									}
+									&:last-child {
+										svg {
+											display: block;
+											width: 25px;
+											height: 25px;
+											path {
+												@include svg-stroke(white, 8);
+											}
+										}
+									}
+								}
+								h1 {
+									@include flex;
+									@include flex-center-vertical;
+									font-size: 20px;
+									font-weight: 600;
+									.map-tooltip-course {
+										@include round;
+										@include flex;
+										@include flex-center-vertical;
+										background: rgba($cerise, .25);
+										border: 2px solid white;
+										padding: 0 6px;
+										margin-left: 5px;
+										height: 24px;
+										font-size: 10px;
+									}
+								}
+								h2 {
+									color: rgba(white,.5);
+								}
+								.rating-stars {
+									margin: 0;
+								}
+							}
+							.map-tooltip-location {
+								position: relative;
+								h1 {
+									height: 24px;
+									overflow: hidden;
+									font-size: 20px;
+									font-weight: 700;
+								}
+								> div {
+									&:nth-child(1) {
+										@include opacity(.4);
+										position: absolute;
+										top: 0;
+										left: 0;
+										width: 100%;
+										height: 100%;
+										background-size: cover;
+										background-position: center;
+									}
+									&:not(:first-child) {
+										position: relative;
+    									z-index: 3;
+									}
+									&:nth-child(2) {
+										width: calc(100% - 64px);
+									}
+								}
+								svg {
+									@include round;
+									display: block;
+									width: 64px;
+									height: 64px;
+									border: 2px solid white;
+									background: lighten($slate, 10%);
+									path {
+										@include svg-stroke(white, 4);
+									}
+								}
+							}
+							.map-tooltip-message {
+								p {
+									margin: 0;
+									font-size: 16px;
+									font-weight: 600;
 								}
 							}
 						}
 						&.first {
-							.info {
-								svg {
-									path, line {
-										@include prefix(transition-delay, 3500ms, webkit moz ms o);
-									}
-								}
-								div {
-									aside {
-										@include prefix(transition-delay, 3500ms, webkit moz ms o);
-										ul {
-											@include prefix(transition-delay, 3650ms, webkit moz ms o);
-										}
-									}
-								}
-							}
-							.message {
-								@include prefix(animation, bounceInUp 1000ms ease-in 3500ms 1 forwards, webkit moz ms o);
+							* {
+								@include prefix(transition-delay, 3500ms, webkit moz ms o);
 							}
 						}
+						&.not-first {
+							@include prefix(transition-delay, 3500ms, webkit moz ms o);
+							@include opacity(.5);
+						}
 						&.first, &.active, &:hover {
+							z-index: 10;
+							.user-icon {
+    							z-index: 5;
+							}
+							.map-tooltip-text {
+								@include prefix(transition-delay, 300ms, webkit moz ms o);
+							}
+							.map-tooltip-window.top.left + .user-icon {
+								@include prefix(transform, translate3d(-30px, -30px, 0) scale(1.26), webkit moz ms o);
+							}
+							.map-tooltip-window.top.right + .user-icon {
+								@include prefix(transform, translate3d(-200px, -30px, 0) scale(1.26), webkit moz ms o);
+							}
+							.map-tooltip-window.bottom.left + .user-icon {
+								@include prefix(transform, translate3d(-30px, -210px, 0) scale(1.26), webkit moz ms o);
+							}
+							.map-tooltip-window.bottom.right + .user-icon {
+								@include prefix(transform, translate3d(-200px, -210px, 0) scale(1.26), webkit moz ms o);
+							}
+							.map-tooltip-window {
+								.bg {
+									@include prefix(transition-delay, 150ms, webkit moz ms o);
+									@include opacity(.95);
+								}
+								.left, .right, .top, .bottom {
+									@include prefix(transition-delay, 0ms, webkit moz ms o);
+									stroke-dashoffset: 0;
+								}
+								.right, .top {
+									@include prefix(transform, translate3d(0, 0, 0), webkit moz ms o);
+								}
+							}
+							.map-tooltip-text {
+								@include opacity(1);
+							}
 							.info {
 								svg {
 									.line-3 {

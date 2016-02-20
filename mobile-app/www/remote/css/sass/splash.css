@@ -359,6 +359,8 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-align-items: center;
   align-items: center;
   -ms-flex-flow: row wrap;
@@ -435,6 +437,8 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-align-items: center;
   align-items: center;
   position: absolute;
@@ -479,6 +483,8 @@
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-align-items: center;
     align-items: center;
     position: absolute;
@@ -512,6 +518,8 @@
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-align-items: center;
   align-items: center;
   -ms-flex-flow: row wrap;
@@ -591,6 +599,8 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-align-items: center;
   align-items: center;
   position: absolute;
@@ -967,6 +977,8 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-align-items: center;
   align-items: center;
   -webkit-justify-content: space-between;
@@ -1306,6 +1318,8 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-align-items: center;
   align-items: center;
   position: fixed;
@@ -1322,6 +1336,8 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-align-items: center;
   align-items: center;
   padding: 0 10px;
@@ -1737,6 +1753,7 @@
   width: 10px;
   height: 10px;
   position: absolute;
+  border: 2px solid white;
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .location.top {
@@ -1900,6 +1917,8 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-align-items: center;
   align-items: center;
   position: absolute;
@@ -2756,59 +2775,345 @@
     -o-animation-delay: 1700ms;
     animation-delay: 1700ms;
   }
-  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .info svg .line-1 {
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window path, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window line {
+    -webkit-transition: all 0ms ease-in-out;
+    -moz-transition: all 0ms ease-in-out;
+    -ms-transition: all 0ms ease-in-out;
+    -o-transition: all 0ms ease-in-out;
+    transition: all 0ms ease-in-out;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window .bg {
+    -webkit-transition-delay: 150ms;
+    -moz-transition-delay: 150ms;
+    -ms-transition-delay: 150ms;
+    -o-transition-delay: 150ms;
+    transition-delay: 150ms;
+    filter: alpha(opacity=0);
+    opacity: 0;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window .top, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window .bottom, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window .left, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window .right {
+    -webkit-transition-delay: 300ms;
+    -moz-transition-delay: 300ms;
+    -ms-transition-delay: 300ms;
+    -o-transition-delay: 300ms;
+    transition-delay: 300ms;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window .left, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window .right {
+    stroke-dasharray: 540, 540;
+    stroke-dashoffset: 360;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window .top {
     stroke-dasharray: 520, 520;
-    stroke-dashoffset: 338;
+    stroke-dashoffset: 340;
   }
-  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .info svg .line-2 {
-    stroke-dasharray: 398, 398;
-    stroke-dashoffset: 338;
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window .bottom {
+    stroke-dasharray: 400, 400;
+    stroke-dashoffset: 340;
   }
-  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .info svg .fill {
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window.top .top {
+    -webkit-transform: translate3d(0, -360px, 0);
+    -moz-transform: translate3d(0, -360px, 0);
+    -ms-transform: translate3d(0, -360px, 0);
+    -o-transform: translate3d(0, -360px, 0);
+    transform: translate3d(0, -360px, 0);
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window.bottom .top {
+    -webkit-transform: translate3d(0, 360px, 0);
+    -moz-transform: translate3d(0, 360px, 0);
+    -ms-transform: translate3d(0, 360px, 0);
+    -o-transform: translate3d(0, 360px, 0);
+    transform: translate3d(0, 360px, 0);
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window.left .right {
+    -webkit-transform: translate3d(-338px, 0, 0);
+    -moz-transform: translate3d(-338px, 0, 0);
+    -ms-transform: translate3d(-338px, 0, 0);
+    -o-transform: translate3d(-338px, 0, 0);
+    transform: translate3d(-338px, 0, 0);
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window.right .right {
+    -webkit-transform: translate3d(338px, 0, 0);
+    -moz-transform: translate3d(338px, 0, 0);
+    -ms-transform: translate3d(338px, 0, 0);
+    -o-transform: translate3d(338px, 0, 0);
+    transform: translate3d(338px, 0, 0);
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .user-icon {
+    -webkit-transition: all 150ms ease-in-out;
+    -moz-transition: all 150ms ease-in-out;
+    -ms-transition: all 150ms ease-in-out;
+    -o-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border-width: 2px;
+    left: 14px;
+    background-color: #40484B;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window.top + .user-icon {
+    top: 28px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window.bottom + .user-icon {
+    bottom: 30px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window.left + .user-icon {
+    left: 14px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window.right + .user-icon {
+    right: -154px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text {
     filter: alpha(opacity=0);
     opacity: 0;
+    -webkit-transition: all 150ms ease-in-out;
+    -moz-transition: all 150ms ease-in-out;
+    -ms-transition: all 150ms ease-in-out;
+    -o-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+    -webkit-transition-delay: 300ms;
+    -moz-transition-delay: 300ms;
+    -ms-transition-delay: 300ms;
+    -o-transition-delay: 300ms;
+    transition-delay: 300ms;
+    position: absolute;
+    left: 1px;
+    width: 260px;
+    height: 270px;
   }
-  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .info div aside {
-    width: 0;
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.top {
+    top: 1px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom {
+    bottom: 1px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text > div {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 0 15px;
+    height: calc(100% / 3);
+    text-align: left;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text > div:not(:last-child) {
+    border-bottom: 2px solid white;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text h1, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text h2, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text p {
+    width: 100%;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text h1, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text h2 {
+    margin: 0 !important;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text h2 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru {
+    background: rgba(230, 56, 155, 0.25);
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:first-child {
+    -webkit-transform: translateX(50px);
+    -moz-transform: translateX(50px);
+    -ms-transform: translateX(50px);
+    -o-transform: translateX(50px);
+    transform: translateX(50px);
+    width: calc(100% - 25px);
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:last-child svg {
+    display: block;
+    width: 25px;
+    height: 25px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:last-child svg path {
+    fill: none;
+    stroke: white;
+    stroke-width: 8px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h1 {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h1 .map-tooltip-course {
+    border-radius: 1000px;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background: rgba(230, 56, 155, 0.25);
+    border: 2px solid white;
+    padding: 0 6px;
+    margin-left: 5px;
+    height: 24px;
+    font-size: 10px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h2 {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru .rating-stars {
+    margin: 0;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-location {
+    position: relative;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-location h1 {
+    height: 24px;
     overflow: hidden;
+    font-size: 20px;
+    font-weight: 700;
   }
-  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .info div ul {
-    filter: alpha(opacity=0);
-    opacity: 0;
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-location > div:nth-child(1) {
+    filter: alpha(opacity=40);
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
   }
-  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .info.left svg .line-3 {
-    transform: translateX(-338px);
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-location > div:not(:first-child) {
+    position: relative;
+    z-index: 3;
   }
-  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .info.right svg .line-3 {
-    transform: translateX(338px);
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-location > div:nth-child(2) {
+    width: calc(100% - 64px);
   }
-  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info svg path, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info svg line {
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-location svg {
+    border-radius: 1000px;
+    display: block;
+    width: 64px;
+    height: 64px;
+    border: 2px solid white;
+    background: #576267;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-location svg path {
+    fill: none;
+    stroke: white;
+    stroke-width: 4px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-message p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first * {
     -webkit-transition-delay: 3500ms;
     -moz-transition-delay: 3500ms;
     -ms-transition-delay: 3500ms;
     -o-transition-delay: 3500ms;
     transition-delay: 3500ms;
   }
-  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info div aside {
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.not-first {
     -webkit-transition-delay: 3500ms;
     -moz-transition-delay: 3500ms;
     -ms-transition-delay: 3500ms;
     -o-transition-delay: 3500ms;
     transition-delay: 3500ms;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
   }
-  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info div aside ul {
-    -webkit-transition-delay: 3650ms;
-    -moz-transition-delay: 3650ms;
-    -ms-transition-delay: 3650ms;
-    -o-transition-delay: 3650ms;
-    transition-delay: 3650ms;
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover {
+    z-index: 10;
   }
-  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .message {
-    -webkit-animation: bounceInUp 1000ms ease-in 3500ms 1 forwards;
-    -moz-animation: bounceInUp 1000ms ease-in 3500ms 1 forwards;
-    -ms-animation: bounceInUp 1000ms ease-in 3500ms 1 forwards;
-    -o-animation: bounceInUp 1000ms ease-in 3500ms 1 forwards;
-    animation: bounceInUp 1000ms ease-in 3500ms 1 forwards;
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .user-icon, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .user-icon, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .user-icon {
+    z-index: 5;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .map-tooltip-text, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .map-tooltip-text, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .map-tooltip-text {
+    -webkit-transition-delay: 300ms;
+    -moz-transition-delay: 300ms;
+    -ms-transition-delay: 300ms;
+    -o-transition-delay: 300ms;
+    transition-delay: 300ms;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .map-tooltip-window.top.left + .user-icon, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .map-tooltip-window.top.left + .user-icon, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .map-tooltip-window.top.left + .user-icon {
+    -webkit-transform: translate3d(-30px, -30px, 0) scale(1.26);
+    -moz-transform: translate3d(-30px, -30px, 0) scale(1.26);
+    -ms-transform: translate3d(-30px, -30px, 0) scale(1.26);
+    -o-transform: translate3d(-30px, -30px, 0) scale(1.26);
+    transform: translate3d(-30px, -30px, 0) scale(1.26);
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .map-tooltip-window.top.right + .user-icon, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .map-tooltip-window.top.right + .user-icon, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .map-tooltip-window.top.right + .user-icon {
+    -webkit-transform: translate3d(-200px, -30px, 0) scale(1.26);
+    -moz-transform: translate3d(-200px, -30px, 0) scale(1.26);
+    -ms-transform: translate3d(-200px, -30px, 0) scale(1.26);
+    -o-transform: translate3d(-200px, -30px, 0) scale(1.26);
+    transform: translate3d(-200px, -30px, 0) scale(1.26);
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .map-tooltip-window.bottom.left + .user-icon, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .map-tooltip-window.bottom.left + .user-icon, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .map-tooltip-window.bottom.left + .user-icon {
+    -webkit-transform: translate3d(-30px, -210px, 0) scale(1.26);
+    -moz-transform: translate3d(-30px, -210px, 0) scale(1.26);
+    -ms-transform: translate3d(-30px, -210px, 0) scale(1.26);
+    -o-transform: translate3d(-30px, -210px, 0) scale(1.26);
+    transform: translate3d(-30px, -210px, 0) scale(1.26);
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .map-tooltip-window.bottom.right + .user-icon, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .map-tooltip-window.bottom.right + .user-icon, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .map-tooltip-window.bottom.right + .user-icon {
+    -webkit-transform: translate3d(-200px, -210px, 0) scale(1.26);
+    -moz-transform: translate3d(-200px, -210px, 0) scale(1.26);
+    -ms-transform: translate3d(-200px, -210px, 0) scale(1.26);
+    -o-transform: translate3d(-200px, -210px, 0) scale(1.26);
+    transform: translate3d(-200px, -210px, 0) scale(1.26);
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .map-tooltip-window .bg, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .map-tooltip-window .bg, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .map-tooltip-window .bg {
+    -webkit-transition-delay: 150ms;
+    -moz-transition-delay: 150ms;
+    -ms-transition-delay: 150ms;
+    -o-transition-delay: 150ms;
+    transition-delay: 150ms;
+    filter: alpha(opacity=95);
+    opacity: 0.95;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .map-tooltip-window .left, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .map-tooltip-window .right, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .map-tooltip-window .top, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .map-tooltip-window .bottom, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .map-tooltip-window .left, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .map-tooltip-window .right, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .map-tooltip-window .top, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .map-tooltip-window .bottom, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .map-tooltip-window .left, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .map-tooltip-window .right, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .map-tooltip-window .top, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .map-tooltip-window .bottom {
+    -webkit-transition-delay: 0ms;
+    -moz-transition-delay: 0ms;
+    -ms-transition-delay: 0ms;
+    -o-transition-delay: 0ms;
+    transition-delay: 0ms;
+    stroke-dashoffset: 0;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .map-tooltip-window .right, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .map-tooltip-window .top, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .map-tooltip-window .right, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .map-tooltip-window .top, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .map-tooltip-window .right, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .map-tooltip-window .top {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .map-tooltip-text, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .map-tooltip-text, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .map-tooltip-text {
+    filter: alpha(opacity=100);
+    opacity: 1;
   }
   .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .info svg .line-3, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .info svg .line-3, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .info svg .line-3 {
     transform: translateX(0) !important;
@@ -3445,6 +3750,8 @@
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-align-items: center;
     align-items: center;
     -webkit-justify-content: space-between;
