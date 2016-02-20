@@ -292,12 +292,14 @@ directive("evalOnLoad", ["$timeout", 'AnimationService', '$parse', function($tim
           link: function(scope, element, attr) {
               $timeout(function() {
                 scope.$watch('root.loader.body.hide', function(value) {
-                    $timeout(function() {
-                      scope.$apply(function(){
-                        var func = $parse(attr.evalOnLoad);
-                        func(scope);
+                    if (value) {
+                      $timeout(function() {
+                        scope.$apply(function(){
+                          var func = $parse(attr.evalOnLoad);
+                          func(scope);
+                        })
                       })
-                    })
+                    }
                 })
               })
           }
