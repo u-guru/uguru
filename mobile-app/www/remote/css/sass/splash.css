@@ -1668,19 +1668,15 @@
 
 .splash-landing > section.splash-hero .splash-hero-markers {
   position: absolute;
-  z-index: 2;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
 
-.splash-landing > section.splash-hero .splash-hero-markers.active {
-  z-index: 4;
-}
-
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker {
-  position: absolute;
+  position: fixed;
+  z-index: 10;
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:not(:first-child) {
@@ -2047,10 +2043,6 @@
   opacity: 1;
 }
 
-.splash-landing > section.splash-hero .splash-device.active {
-  z-index: 5;
-}
-
 .splash-landing > section.splash-hero .splash-device.splash-device-iphone svg {
   max-width: 320px;
 }
@@ -2406,31 +2398,31 @@
   margin-bottom: 75px;
 }
 
-.splash-landing > section.splash-hero .splash-hero-content .splash-adlib {
-  width: 100%;
-}
-
-.splash-landing > section.splash-hero .splash-hero-content .splash-adlib .splash-adlib-inside.active h1 {
+.splash-landing > section.splash-hero .splash-hero-content.active {
   -webkit-transition-duration: 1000ms;
   -moz-transition-duration: 1000ms;
   -ms-transition-duration: 1000ms;
   -o-transition-duration: 1000ms;
   transition-duration: 1000ms;
-  -webkit-transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-  -moz-transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-  -ms-transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-  -o-transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-  transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -ms-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
   -webkit-transition-delay: 200ms;
   -moz-transition-delay: 200ms;
   -ms-transition-delay: 200ms;
   -o-transition-delay: 200ms;
   transition-delay: 200ms;
-  -webkit-transform: translateY(-430%) scale(0.75);
-  -moz-transform: translateY(-430%) scale(0.75);
-  -ms-transform: translateY(-430%) scale(0.75);
-  -o-transform: translateY(-430%) scale(0.75);
-  transform: translateY(-430%) scale(0.75);
+  -webkit-transform: translateY(-55%) scale(0.75);
+  -moz-transform: translateY(-55%) scale(0.75);
+  -ms-transform: translateY(-55%) scale(0.75);
+  -o-transform: translateY(-55%) scale(0.75);
+  transform: translateY(-55%) scale(0.75);
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib {
+  width: 100%;
 }
 
 .splash-landing > section.splash-hero .splash-hero-content .splash-adlib h1 {
@@ -2624,6 +2616,10 @@
   margin: 15px auto;
   padding: 7.5px;
   width: 100%;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul.a li a {
+  pointer-events: none !important;
 }
 
 .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li {
