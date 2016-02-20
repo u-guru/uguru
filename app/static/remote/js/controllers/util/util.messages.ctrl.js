@@ -24,20 +24,31 @@ angular.module('uguru.student.controllers')
   '$interval',
   '$ionicActionSheet',
   'ScrollService',
+  'FileService',
   function($scope, $state, $timeout, $localstorage,
   $ionicModal, $ionicTabsDelegate, $cordovaProgress,
   $stateParams, $cordovaKeyboard, $ionicScrollDelegate,
   Restangular, $ionicHistory, $cordovaStatusbar, $ionicPlatform, LoadingService,
-  $ionicViewSwitcher, MockService, $interval, $ionicActionSheet, ScrollService) {
+  $ionicViewSwitcher, MockService, $interval, $ionicActionSheet, ScrollService, FileService) {
 
     $scope.active_relationship = {search_text:'', new_message:''};
 
+
+    $timeout(function() {
+        var dropzoneElem = FileService.initMessageDropzone($scope);
+      });
+
     var initActiveRelationships = function() {
       if ($scope.root.vars.last_active_relationship) {
+
         $scope.active_relationship = $scope.root.vars.last_active_relationship;
       }
-      else if ($scope.user.student_relationships && $scope.user.student_relationships.length) {
+      else if ($scope.root.vars.guru_mode && $scope.user.student_relationships && $scope.user.student_relationships.length) {
+
         $scope.active_relationship = $scope.user.student_relationships[0];
+        $scope.root.vars.last_active_relationship = $scope.active_relationship;
+      } else if (!$scope.root.vars.guru_mode && $scope.user.guru_relationships && $scope.user.guru_relationships.length) {
+        $scope.active_relationship = $scope.user.guru_relationships[0];
         $scope.root.vars.last_active_relationship = $scope.active_relationship;
       }
       $scope.active_relationship.msg_nav = false;
@@ -215,7 +226,9 @@ angular.module('uguru.student.controllers')
     });
 
     $timeout(function() {
+
       initActiveRelationships();
+
     }, 500);
 
 

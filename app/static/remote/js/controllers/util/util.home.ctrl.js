@@ -476,9 +476,12 @@ angular.module('uguru.util.controllers')
       //Scope var declarations
       var onSectionOneLoad = function() {
 
-          $scope.root.loader.body.hide = true;
+          // $scope.root.loader.body.hide = true;
           $scope.page.scroll.section_index = 0;
-
+          $timeout(function() {
+            console.log(document.querySelector('#iscroll-wrapper'));
+            $scope.homePageScroll = ScrollService.initIScroll('#iscroll-wrapper', {snap: 'section'});
+          }, 5000)
 
           initSlideBoxRemote();
           Waypoint.refreshAll();
@@ -737,7 +740,6 @@ angular.module('uguru.util.controllers')
 
       $scope.$on('$ionicView.loaded', function() {
         processDomWaypoints();
-        $scope.homePageScroll = ScrollService.initIScroll('#home-splash');
       })
 
       var initHomePageWayPoint = function() {
@@ -1106,7 +1108,6 @@ angular.module('uguru.util.controllers')
 
       $scope.universities = University.getTargetted();
       $scope.staticUniversityMaps = GUtilService.generateStaticMapUrls($scope.universities.slice(0, 4), staticMapOptions);
-      console.log($scope.staticUniversityMaps)
       // $scope.search_text = {university: "", matching: []};
 
       var calcZoom = function() {

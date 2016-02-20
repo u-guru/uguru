@@ -15,38 +15,15 @@ function ScrollService(LoadingService, $timeout) {
   var globalWPScopeRef = {};
   return {
     scrollTo:scrollTo,
-    initStickyHeaderScroll: initStickyHeaderScroll,
     initWaypoint, initWaypoint,
     initArrWaypoints: initArrWaypoints,
     mainWaypointContext: mainWaypointContext,
     currentWaypointContextElem: currentWaypointContextElem,
-    initScopedWaypoint: initScopedWaypoint,
-    initIScroll: initIScroll
+    initScopedWaypoint: initScopedWaypoint
   }
 
-  function initStickyHeaderScroll(header_selector, start_element, inject_class, parent_container) {
-    var header = document.querySelector(header_selector);
-    var top_section             = document.querySelector(parent_container);
-    var top_section_height      = getComputedStyle(top_section).height.split('px')[0];
-    var sticky_start              = document.querySelector(start_element);
-    var sticky_height       = getComputedStyle(sticky_start).height.split('px')[0];
 
-    function stickyScroll(e) {
-      // 50 allows it to a bit earlier to avoid any chance of lag
-      if( top_section.scrollTop > (sticky_start.offsetTop - 50) ) {
 
-        header.classList.add(inject_class);
-      } else {
-        header.classList.remove(inject_class);
-      }
-    }
-
-    stickyScroll();
-  }
-
-    function initIScroll(selector) {
-      return new IScroll(selector);
-    }
 
     // function initStellar(selector,) {
     //   // $('#splash-browse').stellar({
@@ -57,6 +34,7 @@ function ScrollService(LoadingService, $timeout) {
       function returnWayPointFunction(wpName, stateName) {
         return function(direction) {
           //if up animation
+            console.log(wpName, direction, stateName, 'triggered');
             globalWPScopeRef[stateName].page.waypoints[wpName].activated = true;
             globalWPScopeRef[stateName].page.waypoints[wpName].direction = direction;
             globalWPScopeRef[stateName].$apply();
@@ -105,7 +83,7 @@ function ScrollService(LoadingService, $timeout) {
 
   }
 
-  function scrollTo(to, callback, duration, viewSelectorID, destinationSelectorID, offset) {
+  function scrollTo(to, callback, duration, viewSelectorID, destinationSelectorID, offset, ease_type) {
     offset = offset || 0;
     if (!to && !(to === 0) && destinationSelectorID) {
       to = document.querySelector(destinationSelectorID).offsetTop;
@@ -124,13 +102,19 @@ function ScrollService(LoadingService, $timeout) {
       change = to - start - offset,
       currentTime = 0,
       increment = 20;
-    console.log(start);
+    console.log('scroll details', start, duration);
     duration = (typeof(duration) === 'undefined') ? 500 : duration;
     var animateScroll = function() {
       // increment the time
       currentTime += increment;
       // find the value with the quadratic in-out easing function
-      var val = Math.easeInOutQuad(currentTime, start, change, duration);
+      if (ease_type === 'quad' || !ease_type) {
+        var val = Math.easeInOutQuad(currentTime, start, change, duration);
+      } else if (ease_type === 'cubic') {
+        var val = Math.easeInCubic(currentTime, start, change, duration);
+      } else if (ease_type ==='quint') {
+        var val = Math.inOutQuintic(currentTime, start, change, duration);
+      }
       // move the document.body
         move(val);
       // do the animation unless its over

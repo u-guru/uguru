@@ -791,10 +791,16 @@
 					font-size: 18px;
 				}
 				a {
-					&.bg-academic {
-						background: rgba($cerise, .8);
+					&.bg-delivery {
+						background: rgba($auburn, .8);
 						&:hover, &:focus {
-							background: $cerise;
+							background: $auburn;
+						}
+					}
+					&.bg-freelancing {
+						background: rgba($orange, .8);
+						&:hover, &:focus {
+							background: $orange;
 						}
 					}
 					&.bg-baking {
@@ -809,16 +815,28 @@
 							background: $moola;
 						}
 					}
+					&.bg-tech {
+						background: rgba($azure, .8);
+						&:hover, &:focus {
+							background: $azure;
+						}
+					}
 					&.bg-household {
 						background: rgba($cobalt, .8);
 						&:hover, &:focus {
 							background: $cobalt;
 						}
 					}
-					&.bg-tech {
-						background: rgba($azure, .8);
+					&.bg-athletic {
+						background: rgba($eggplant, .8);
 						&:hover, &:focus {
-							background: $azure;
+							background: $eggplant;
+						}
+					}
+					&.bg-academic {
+						background: rgba($cerise, .8);
+						&:hover, &:focus {
+							background: $cerise;
 						}
 					}
 					// @samir put school colors here
@@ -914,9 +932,14 @@
 										path {
 											@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 										}
-										&.bg-academic {
+										&.bg-delivery {
 											path {
-												fill: rgba($cerise, .8);
+												fill: rgba($auburn, .8);
+											}
+										}
+										&.bg-freelancing {
+											path {
+												fill: rgba($orange, .8);
 											}
 										}
 										&.bg-baking {
@@ -929,15 +952,25 @@
 												fill: rgba($moola, .8);
 											}
 										}
+										&.bg-tech {
+											background: none!important;
+											path {
+												fill: rgba($azure, .8);
+											}
+										}
 										&.bg-household {
 											path {
 												fill: rgba($cobalt, .8);
 											}
 										}
-										&.bg-tech {
-											background: none!important;
+										&.bg-athletic {
 											path {
-												fill: rgba($azure, .8);
+												fill: rgba($eggplant, .8);
+											}
+										}
+										&.bg-academic {
+											path {
+												fill: rgba($cerise, .8);
 											}
 										}
 										&.bg-cal {
@@ -948,9 +981,14 @@
 									}
 									&:hover, &:focus {
 										+ .arrow {
-											&.bg-academic {
+											&.bg-delivery {
 												path {
-													fill: $cerise;
+													fill: $auburn;
+												}
+											}
+											&.bg-freelancing {
+												path {
+													fill: $orange;
 												}
 											}
 											&.bg-baking {
@@ -963,14 +1001,24 @@
 													fill: $moola;
 												}
 											}
+											&.bg-tech {
+												path {
+													fill: $azure;
+												}
+											}
 											&.bg-household {
 												path {
 													fill: $cobalt;
 												}
 											}
-											&.bg-tech {
+											&.bg-athletic {
 												path {
-													fill: $azure;
+													fill: $eggplant;
+												}
+											}
+											&.bg-academic {
+												path {
+													fill: $cerise;
 												}
 											}
 											&.bg-cal {
@@ -1066,8 +1114,11 @@
 						&.right {
 							right: 30px;
 						}
-						&.bg-academic {
-							background: $cerise;
+						&.bg-delivery {
+							background: $auburn;
+						}
+						&.bg-freelancing {
+							background: $orange;
 						}
 						&.bg-baking {
 							background: $gold;
@@ -1075,11 +1126,17 @@
 						&.bg-photography {
 							background: $moola;
 						}
+						&.bg-tech {
+							background: $azure;
+						}
 						&.bg-household {
 							background: $cobalt;
 						}
-						&.bg-tech {
-							background: $azure;
+						&.bg-athletic {
+							background: $eggplant;
+						}
+						&.bg-academic {
+							background: $cerise;
 						}
 					}
 					.message {
@@ -1313,87 +1370,85 @@
 						@include center-xy;
 						width: 100%;
 						height: 100%;
-						padding: 150px 15px 15px;
-						.splash-device-adlib {
-							padding-bottom: 30px;
-							h1 {
-								@include flex;
-								@include flex-wrap;
-								@include flex-center;
-								font-weight: 600;
-								a {
-									@include flex;
-									@include flex-center;
-									height: 38px;
-									padding: 0 10px;
-									border-radius: 8px;
-									margin: 5px;
-									font-size: 18px;
-									&.bg-academic {
-										background: $cerise;
-									}
-									&.bg-baking {
-										background: $gold;
-									}
-									&.bg-photography {
-										background: $moola;
-									}
-									&.bg-household {
-										background: $cobalt;
-									}
-									&.bg-tech {
-										background: $azure;
-									}
-								}
-							}
+						.splash-device-search-inside {
+							@include flex;
+							@include flex-wrap;
+							@include flex-center;
+							height: 100%;
 						}
-						p {
-							position: relative;
-							font-size: 18px;
-							font-weight: 600;
-							text-align: center;
-							width: 100%;
-							span {
-								@include prefix(animation-delay, 3500ms, webkit moz ms o);
-							}
-							span:nth-child(2) {
-								position: absolute;
-								top: 0;
-								left: 0;
-								width: 100%;
-								text-align: center;
-							}
-						}
-						h3 {
+						h1 {
 							@include flex;
 							@include flex-center;
-							margin: 15px 0;
+							@include round;
+							margin-top: 15px;
+							width: 110px;
+							height: 110px;
+							border: 3px solid white;
+							font-size: 72px;
+							font-weight: 600;
+						}
+						p {
 							width: 100%;
-							height: 30px;
-							span {
-								&:nth-child(1), &:nth-child(3) {
-									z-index: -1;
-									width: 0;
-									height: 0;
-									border: 15px solid transparent;
-								}
-								&:nth-child(2) {
-									@include flex;
-									@include flex-center;
-									width: calc(100% - 60px);
-									height: 100%;
-									padding: 0 15px;
-									text-align: center;
-									font-size: 18px;
-									font-weight: 600;
+							font-size: 18px;
+							font-weight: 600;
+							margin: 0;
+						}
+						ul {
+							@include flex;
+							@include flex-wrap;
+							padding: 7.5px;
+							li {
+								padding: 7.5px;
+							}
+							&.splash-device-search-gurus {
+								li {
+									width: calc(100% / 3);
+									padding: 7.5px;
+									.user-icon {
+										width: 64px;
+										height: 64px;
+										border-width: 2px;
+									}
 								}
 							}
-						}
-						.progress.white-round {
-							span {
-								background: $shamrock!important;
-								&.animate {
-									@include prefix(animation, progress-bar 2500ms ease-in 1000ms 1 forwards, webkit moz ms o);
+							&.splash-device-search-courses {
+								margin-top: -15px;
+								li {
+									width: 50%;
+									span {
+										@include flex;
+										@include flex-center;
+										@include round;
+										width: 100%;
+										height: 36px;
+										border: 2px solid white;
+										font-size: 18px;
+										font-weight: 600;
+										&.bg-delivery {
+											background: rgba($auburn, .25);
+										}
+										&.bg-freelancing {
+											background: rgba($orange, .25);
+										}
+										&.bg-baking {
+											background: rgba($gold, .25);
+										}
+										&.bg-photography {
+											background: rgba($moola, .25);
+										}
+										&.bg-tech {
+											background: rgba($azure, .25);
+										}
+										&.bg-household {
+											background: rgba($cobalt, .25);
+										}
+										&.bg-athletic {
+											background: rgba($eggplant, .25);
+										}
+										&.bg-academic {
+											background: rgba($cerise, .25);
+										}
+									}
 								}
 							}
 						}
@@ -1446,6 +1501,22 @@
 					}
 				}
 			}
+			.splash-hero-progress {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 15px;
+				&.progress.white {
+					background: rgba(white,.2);
+					span {
+						background: $shamrock!important;
+						&.animate {
+							@include prefix(animation, progress-bar 2500ms ease-in 1000ms 1 forwards, webkit moz ms o);
+						}
+					}
+				}
+			}
 			.coach-scroll {
 				@include center-x;
 				z-index: 3;
@@ -1477,8 +1548,17 @@
 				margin-bottom: 75px;
 				.splash-adlib {
 					width: 100%;
+					.splash-adlib-inside {
+						&.active {
+							h1 {
+								@include prefix(transition-duration, 1000ms, webkit moz ms o);
+								@include prefix(transition-timing-function, cubic-bezier(.42, 0, .58, 1), webkit moz ms o);
+								@include prefix(transition-delay, 200ms, webkit moz ms o);
+								@include prefix(transform, translateY(-430%) scale(.75), webkit moz ms o);
+							}
+						}
+					}
 					h1 {
-						@include prefix(animation-delay, 200ms, webkit moz ms o);
 						@include flex;
 						@include flex-wrap;
 						@include flex-center;
@@ -1520,9 +1600,17 @@
 									@include opacity(0);
 								}
 							}
-							&.bg-academic {
+							&.bg-delivery {
 								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $cerise;
+									background: $auburn;
+									svg {
+										@include opacity(0);
+									}
+								}
+							}
+							&.bg-freelancing {
+								&:hover, &:focus, &[class*="translate-blank"] {
+									background: $orange;
 									svg {
 										@include opacity(0);
 									}
@@ -1544,6 +1632,14 @@
 									}
 								}
 							}
+							&.bg-tech {
+								&:hover, &:focus, &[class*="translate-blank"] {
+									background: $azure;
+									svg {
+										@include opacity(0);
+									}
+								}
+							}
 							&.bg-household {
 								&:hover, &:focus, &[class*="translate-blank"] {
 									background: $cobalt;
@@ -1552,9 +1648,17 @@
 									}
 								}
 							}
-							&.bg-tech {
+							&.bg-athletic {
 								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $azure;
+									background: $eggplant;
+									svg {
+										@include opacity(0);
+									}
+								}
+							}
+							&.bg-academic {
+								&:hover, &:focus, &[class*="translate-blank"] {
+									background: $cerise;
 									svg {
 										@include opacity(0);
 									}
@@ -1583,32 +1687,6 @@
 							padding: 7.5px;
 							a[class*="translate-blank"] {
 								@include prefix(animation, none!important, webkit moz ms o);
-							}
-							&:nth-child(1) {
-								@include prefix(animation-delay, 1400ms, webkit moz ms o);
-							}
-							&:nth-child(2) {
-								@include prefix(animation-delay, 1500ms, webkit moz ms o);
-							}
-							&:nth-child(3) {
-								@include prefix(animation-delay, 1600ms, webkit moz ms o);
-							}
-							&:nth-child(4) {
-								@include prefix(animation-delay, 1700ms, webkit moz ms o);
-							}
-							&:nth-child(5) {
-								@include prefix(animation-delay, 1800ms, webkit moz ms o);
-							}
-							&:nth-child(6) {
-								@include prefix(animation-delay, 1900ms, webkit moz ms o);
-							}
-							&:nth-child(7) {
-								display: none;
-								@include prefix(animation-delay, 2000ms, webkit moz ms o);
-							}
-							&:nth-child(8) {
-								display: none;
-								@include prefix(animation-delay, 2100ms, webkit moz ms o);
 							}
 						}
 					}

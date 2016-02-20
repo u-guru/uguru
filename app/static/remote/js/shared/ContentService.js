@@ -6,7 +6,79 @@ angular
 	]);
 
 function ContentService(Category) {
-	var STATIC_BASE = "https://uguru-rest-test.herokuapp.com/static/remote/"
+	var STATIC_BASE = "https://uguru-rest-test.herokuapp.com/static/remote/";
+
+	var splashCategoryOptions = {
+		Academic: {
+			madlib: {
+				_class: "academic-madlib",
+				template: {
+					beginning: "It's",
+					p1: "5am",
+					middle: "and I have a ",
+					p2: "bio exam",
+					end: "in 4 hours"
+				},
+				blank_one_options: ['midnight', '2am', 'bedtime', '7am'],
+				blank_two_options: ['paper', 'speech', 'report', 'project']
+			}
+		},
+		Household: {
+			madlib: {
+				_class: "household-madlib",
+				template: {
+					beginning: "It's been a ",
+					p1: "month",
+					middle: "since I did",
+					p2: "my laundry",
+					end: ""
+				},
+				blank_one_options: ["semester", "...idk", "week", "never"],
+				blank_one_options: ["the dishes", "vacuuming", "cleaned the bathroom", "ironed"]
+			}
+		},
+		Tech: {
+			madlib: {
+				_class: "tech-madlib",
+				template: {
+					beginning: "My current",
+					p1: "iphone",
+					middle: "needs a",
+					p2: "new screen",
+					end: ""
+				},
+				blank_one_options: ['macbook', 'router', 'windows pc', 'nexus tablet'],
+				blank_two_options: ['virus', '1hr battery life', 'replacement', 'charger'],
+			}
+		},
+		Photography: {
+			madlib: {
+				_class: 'photography-madlib',
+				template: {
+					beginning: "Its almost",
+					p1: "graduation",
+					middle: "and I need",
+					p2: "take grad photos",
+					end: "",
+				},
+				blank_one_options: ['macbook', 'router', 'windows pc', 'nexus tablet'],
+				blank_two_options: ['virus', '1hr battery life', 'replacement', 'charger']
+			}
+		},
+		Bakery: {
+			madlib: {
+				_class: 'bakery-madlib',
+				template: {
+					beginning: "I'm really",
+					p1: "lazy",
+					middle: "and I'm craving",
+					p2: "brownies"
+				},
+				blank_one_options: ['macbook', 'router', 'windows pc', 'nexus tablet'],
+				blank_two_options: ['virus', '1hr battery life', 'replacement', 'charger']
+			}
+		}
+	}
 
 	var pricing = {
 		header: "Estimated Pricing",
@@ -894,7 +966,7 @@ function ContentService(Category) {
 			top_half: [{
 				icon_src: "splash/anytime.html",
 				header: "24/7, Anytime, Anywhere",
-				content: "Request anything. Your peers can your Biology Grade @2am",
+				content: "Request anything. Your peers can help you with biology @2am",
 				// content: "Request anything. Your peers can your Biology Grade @2am, take your grad photos, or do dirty laundry",
 			}, {
 				icon_src: "splash/save.html",
@@ -967,7 +1039,8 @@ function ContentService(Category) {
 		sophisticated_modal: sophisticated_modal,
 		affordability_modal: affordability_modal,
 		sampleProfiles: sampleProfiles,
-		generateMiniSampleProfileDict: generateMiniSampleProfileDict
+		generateMiniSampleProfileDict: generateMiniSampleProfileDict,
+		splashCategoryOptions: splashCategoryOptions
 	}
 
 }

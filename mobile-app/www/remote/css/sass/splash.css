@@ -1044,10 +1044,14 @@
           height: 48px;
           font-weight: 600;
           font-size: 18px; }
-        .splash-landing > section.splash-hero .splash-hero-nav a.bg-academic {
-          background: rgba(230, 56, 155, 0.8); }
-          .splash-landing > section.splash-hero .splash-hero-nav a.bg-academic:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-academic:focus {
-            background: #e6389b; }
+        .splash-landing > section.splash-hero .splash-hero-nav a.bg-delivery {
+          background: rgba(240, 79, 84, 0.8); }
+          .splash-landing > section.splash-hero .splash-hero-nav a.bg-delivery:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-delivery:focus {
+            background: #F04F54; }
+        .splash-landing > section.splash-hero .splash-hero-nav a.bg-freelancing {
+          background: rgba(229, 117, 60, 0.8); }
+          .splash-landing > section.splash-hero .splash-hero-nav a.bg-freelancing:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-freelancing:focus {
+            background: #E5753C; }
         .splash-landing > section.splash-hero .splash-hero-nav a.bg-baking {
           background: rgba(246, 198, 78, 0.8); }
           .splash-landing > section.splash-hero .splash-hero-nav a.bg-baking:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-baking:focus {
@@ -1056,14 +1060,22 @@
           background: rgba(129, 181, 102, 0.8); }
           .splash-landing > section.splash-hero .splash-hero-nav a.bg-photography:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-photography:focus {
             background: #81B566; }
-        .splash-landing > section.splash-hero .splash-hero-nav a.bg-household {
-          background: rgba(120, 114, 227, 0.8); }
-          .splash-landing > section.splash-hero .splash-hero-nav a.bg-household:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-household:focus {
-            background: #7872e3; }
         .splash-landing > section.splash-hero .splash-hero-nav a.bg-tech {
           background: rgba(85, 164, 183, 0.8); }
           .splash-landing > section.splash-hero .splash-hero-nav a.bg-tech:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-tech:focus {
             background: #55A4B7; }
+        .splash-landing > section.splash-hero .splash-hero-nav a.bg-household {
+          background: rgba(120, 114, 227, 0.8); }
+          .splash-landing > section.splash-hero .splash-hero-nav a.bg-household:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-household:focus {
+            background: #7872e3; }
+        .splash-landing > section.splash-hero .splash-hero-nav a.bg-athletic {
+          background: rgba(154, 91, 197, 0.8); }
+          .splash-landing > section.splash-hero .splash-hero-nav a.bg-athletic:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-athletic:focus {
+            background: #9A5BC5; }
+        .splash-landing > section.splash-hero .splash-hero-nav a.bg-academic {
+          background: rgba(230, 56, 155, 0.8); }
+          .splash-landing > section.splash-hero .splash-hero-nav a.bg-academic:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-academic:focus {
+            background: #e6389b; }
         .splash-landing > section.splash-hero .splash-hero-nav a.bg-cal {
           background: rgba(0, 48, 87, 0.8); }
           .splash-landing > section.splash-hero .splash-hero-nav a.bg-cal:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-cal:focus {
@@ -1183,30 +1195,42 @@
                       -ms-transition: all 150ms ease-in-out;
                       -o-transition: all 150ms ease-in-out;
                       transition: all 150ms ease-in-out; }
-                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-academic path {
-                      fill: rgba(230, 56, 155, 0.8); }
+                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-delivery path {
+                      fill: rgba(240, 79, 84, 0.8); }
+                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-freelancing path {
+                      fill: rgba(229, 117, 60, 0.8); }
                     .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-baking path {
                       fill: rgba(246, 198, 78, 0.8); }
                     .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-photography path {
                       fill: rgba(129, 181, 102, 0.8); }
-                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-household path {
-                      fill: rgba(120, 114, 227, 0.8); }
                     .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-tech {
                       background: none !important; }
                       .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-tech path {
                         fill: rgba(85, 164, 183, 0.8); }
+                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-household path {
+                      fill: rgba(120, 114, 227, 0.8); }
+                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-athletic path {
+                      fill: rgba(154, 91, 197, 0.8); }
+                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-academic path {
+                      fill: rgba(230, 56, 155, 0.8); }
                     .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-cal path {
                       fill: rgba(0, 48, 87, 0.8); }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-academic path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-academic path {
-                    fill: #e6389b; }
+                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-delivery path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-delivery path {
+                    fill: #F04F54; }
+                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-freelancing path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-freelancing path {
+                    fill: #E5753C; }
                   .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-baking path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-baking path {
                     fill: #F6C64E; }
                   .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-photography path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-photography path {
                     fill: #81B566; }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-household path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-household path {
-                    fill: #7872e3; }
                   .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-tech path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-tech path {
                     fill: #55A4B7; }
+                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-household path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-household path {
+                    fill: #7872e3; }
+                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-athletic path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-athletic path {
+                    fill: #9A5BC5; }
+                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-academic path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-academic path {
+                    fill: #e6389b; }
                   .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-cal path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-cal path {
                     fill: #003057; }
         .splash-landing > section.splash-hero .splash-hero-nav.desktop {
@@ -1301,16 +1325,22 @@
               left: 30px; }
             .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .location.right {
               right: 30px; }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-academic {
-              background: #e6389b; }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-delivery {
+              background: #F04F54; }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-freelancing {
+              background: #E5753C; }
             .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-baking {
               background: #F6C64E; }
             .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-photography {
               background: #81B566; }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-household {
-              background: #7872e3; }
             .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-tech {
               background: #55A4B7; }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-household {
+              background: #7872e3; }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-athletic {
+              background: #9A5BC5; }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .location.bg-academic {
+              background: #e6389b; }
           .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .message {
             filter: alpha(opacity=0);
             opacity: 0;
@@ -1538,80 +1568,28 @@
             -o-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             width: 100%;
-            height: 100%;
-            padding: 150px 15px 15px; }
-            .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib {
-              padding-bottom: 30px; }
-              .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib h1 {
-                -ms-box-orient: horizontal;
-                display: -webkit-box;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: -moz-flex;
-                display: -webkit-flex;
-                display: flex;
-                -ms-flex-flow: row wrap;
-                -webkit-flex-flow: row wrap;
-                flex-flow: row wrap;
-                -webkit-flex-direction: row;
-                flex-direction: row;
-                -webkit-align-items: center;
-                align-items: center;
-                -webkit-align-content: center;
-                align-content: center;
-                -webkit-justify-content: center;
-                justify-content: center;
-                font-weight: 600; }
-                .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib h1 a {
-                  -ms-box-orient: horizontal;
-                  display: -webkit-box;
-                  display: -moz-box;
-                  display: -ms-flexbox;
-                  display: -moz-flex;
-                  display: -webkit-flex;
-                  display: flex;
-                  -webkit-flex-direction: row;
-                  flex-direction: row;
-                  -webkit-align-items: center;
-                  align-items: center;
-                  -webkit-align-content: center;
-                  align-content: center;
-                  -webkit-justify-content: center;
-                  justify-content: center;
-                  height: 38px;
-                  padding: 0 10px;
-                  border-radius: 8px;
-                  margin: 5px;
-                  font-size: 18px; }
-                  .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib h1 a.bg-academic {
-                    background: #e6389b; }
-                  .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib h1 a.bg-baking {
-                    background: #F6C64E; }
-                  .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib h1 a.bg-photography {
-                    background: #81B566; }
-                  .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib h1 a.bg-household {
-                    background: #7872e3; }
-                  .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-adlib h1 a.bg-tech {
-                    background: #55A4B7; }
-            .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search p {
-              position: relative;
-              font-size: 18px;
-              font-weight: 600;
-              text-align: center;
-              width: 100%; }
-              .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search p span {
-                -webkit-animation-delay: 3500ms;
-                -moz-animation-delay: 3500ms;
-                -ms-animation-delay: 3500ms;
-                -o-animation-delay: 3500ms;
-                animation-delay: 3500ms; }
-              .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search p span:nth-child(2) {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                text-align: center; }
-            .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search h3 {
+            height: 100%; }
+            .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-search-inside {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -ms-flex-flow: row wrap;
+              -webkit-flex-flow: row wrap;
+              flex-flow: row wrap;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-align-content: center;
+              align-content: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              height: 100%; }
+            .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search h1 {
               -ms-box-orient: horizontal;
               display: -webkit-box;
               display: -moz-box;
@@ -1627,44 +1605,81 @@
               align-content: center;
               -webkit-justify-content: center;
               justify-content: center;
-              margin: 15px 0;
+              border-radius: 1000px;
+              margin-top: 15px;
+              width: 110px;
+              height: 110px;
+              border: 3px solid white;
+              font-size: 72px;
+              font-weight: 600; }
+            .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search p {
               width: 100%;
-              height: 30px; }
-              .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search h3 span:nth-child(1), .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search h3 span:nth-child(3) {
-                z-index: -1;
-                width: 0;
-                height: 0;
-                border: 15px solid transparent; }
-              .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search h3 span:nth-child(2) {
-                -ms-box-orient: horizontal;
-                display: -webkit-box;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: -moz-flex;
-                display: -webkit-flex;
-                display: flex;
-                -webkit-flex-direction: row;
-                flex-direction: row;
-                -webkit-align-items: center;
-                align-items: center;
-                -webkit-align-content: center;
-                align-content: center;
-                -webkit-justify-content: center;
-                justify-content: center;
-                width: calc(100% - 60px);
-                height: 100%;
-                padding: 0 15px;
-                text-align: center;
-                font-size: 18px;
-                font-weight: 600; }
-            .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .progress.white-round span {
-              background: #69B3A5 !important; }
-              .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .progress.white-round span.animate {
-                -webkit-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
-                -moz-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
-                -ms-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
-                -o-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
-                animation: progress-bar 2500ms ease-in 1000ms 1 forwards; }
+              font-size: 18px;
+              font-weight: 600;
+              margin: 0; }
+            .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -ms-flex-flow: row wrap;
+              -webkit-flex-flow: row wrap;
+              flex-flow: row wrap;
+              padding: 7.5px; }
+              .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul li {
+                padding: 7.5px; }
+              .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li {
+                width: calc(100% / 3);
+                padding: 7.5px; }
+                .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .user-icon {
+                  width: 64px;
+                  height: 64px;
+                  border-width: 2px; }
+              .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses {
+                margin-top: -15px; }
+                .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li {
+                  width: 50%; }
+                  .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span {
+                    -ms-box-orient: horizontal;
+                    display: -webkit-box;
+                    display: -moz-box;
+                    display: -ms-flexbox;
+                    display: -moz-flex;
+                    display: -webkit-flex;
+                    display: flex;
+                    -webkit-flex-direction: row;
+                    flex-direction: row;
+                    -webkit-align-items: center;
+                    align-items: center;
+                    -webkit-align-content: center;
+                    align-content: center;
+                    -webkit-justify-content: center;
+                    justify-content: center;
+                    border-radius: 1000px;
+                    width: 100%;
+                    height: 36px;
+                    border: 2px solid white;
+                    font-size: 18px;
+                    font-weight: 600; }
+                    .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-delivery {
+                      background: rgba(240, 79, 84, 0.25); }
+                    .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-freelancing {
+                      background: rgba(229, 117, 60, 0.25); }
+                    .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-baking {
+                      background: rgba(246, 198, 78, 0.25); }
+                    .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-photography {
+                      background: rgba(129, 181, 102, 0.25); }
+                    .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-tech {
+                      background: rgba(85, 164, 183, 0.25); }
+                    .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-household {
+                      background: rgba(120, 114, 227, 0.25); }
+                    .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-athletic {
+                      background: rgba(154, 91, 197, 0.25); }
+                    .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-academic {
+                      background: rgba(230, 56, 155, 0.25); }
           .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-button {
             -webkit-align-self: flex-end;
             align-self: flex-end;
@@ -1714,6 +1729,22 @@
               -ms-animation-delay: 2000ms;
               -o-animation-delay: 2000ms;
               animation-delay: 2000ms; }
+      .splash-landing > section.splash-hero .splash-hero-progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 15px; }
+        .splash-landing > section.splash-hero .splash-hero-progress.progress.white {
+          background: rgba(255, 255, 255, 0.2); }
+          .splash-landing > section.splash-hero .splash-hero-progress.progress.white span {
+            background: #69B3A5 !important; }
+            .splash-landing > section.splash-hero .splash-hero-progress.progress.white span.animate {
+              -webkit-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+              -moz-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+              -ms-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+              -o-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+              animation: progress-bar 2500ms ease-in 1000ms 1 forwards; }
       .splash-landing > section.splash-hero .coach-scroll {
         position: absolute;
         left: 50%;
@@ -1769,12 +1800,28 @@
         margin-bottom: 75px; }
         .splash-landing > section.splash-hero .splash-hero-content .splash-adlib {
           width: 100%; }
+          .splash-landing > section.splash-hero .splash-hero-content .splash-adlib .splash-adlib-inside.active h1 {
+            -webkit-transition-duration: 1000ms;
+            -moz-transition-duration: 1000ms;
+            -ms-transition-duration: 1000ms;
+            -o-transition-duration: 1000ms;
+            transition-duration: 1000ms;
+            -webkit-transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+            -moz-transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+            -ms-transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+            -o-transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+            transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+            -webkit-transition-delay: 200ms;
+            -moz-transition-delay: 200ms;
+            -ms-transition-delay: 200ms;
+            -o-transition-delay: 200ms;
+            transition-delay: 200ms;
+            -webkit-transform: translateY(-430%) scale(0.75);
+            -moz-transform: translateY(-430%) scale(0.75);
+            -ms-transform: translateY(-430%) scale(0.75);
+            -o-transform: translateY(-430%) scale(0.75);
+            transform: translateY(-430%) scale(0.75); }
           .splash-landing > section.splash-hero .splash-hero-content .splash-adlib h1 {
-            -webkit-animation-delay: 200ms;
-            -moz-animation-delay: 200ms;
-            -ms-animation-delay: 200ms;
-            -o-animation-delay: 200ms;
-            animation-delay: 200ms;
             -ms-box-orient: horizontal;
             display: -webkit-box;
             display: -moz-box;
@@ -1845,9 +1892,14 @@
               .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank)[class*="translate-blank"] svg {
                 filter: alpha(opacity=0);
                 opacity: 0; }
-            .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic[class*="translate-blank"] {
-              background: #e6389b; }
-              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic[class*="translate-blank"] svg {
+            .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-delivery:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-delivery:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-delivery[class*="translate-blank"] {
+              background: #F04F54; }
+              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-delivery:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-delivery:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-delivery[class*="translate-blank"] svg {
+                filter: alpha(opacity=0);
+                opacity: 0; }
+            .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-freelancing:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-freelancing:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-freelancing[class*="translate-blank"] {
+              background: #E5753C; }
+              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-freelancing:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-freelancing:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-freelancing[class*="translate-blank"] svg {
                 filter: alpha(opacity=0);
                 opacity: 0; }
             .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking[class*="translate-blank"] {
@@ -1860,14 +1912,24 @@
               .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography[class*="translate-blank"] svg {
                 filter: alpha(opacity=0);
                 opacity: 0; }
+            .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech[class*="translate-blank"] {
+              background: #55A4B7; }
+              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech[class*="translate-blank"] svg {
+                filter: alpha(opacity=0);
+                opacity: 0; }
             .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household[class*="translate-blank"] {
               background: #7872e3; }
               .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household[class*="translate-blank"] svg {
                 filter: alpha(opacity=0);
                 opacity: 0; }
-            .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech[class*="translate-blank"] {
-              background: #55A4B7; }
-              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech[class*="translate-blank"] svg {
+            .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-athletic:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-athletic:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-athletic[class*="translate-blank"] {
+              background: #9A5BC5; }
+              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-athletic:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-athletic:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-athletic[class*="translate-blank"] svg {
+                filter: alpha(opacity=0);
+                opacity: 0; }
+            .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic[class*="translate-blank"] {
+              background: #e6389b; }
+              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic[class*="translate-blank"] svg {
                 filter: alpha(opacity=0);
                 opacity: 0; }
           .splash-landing > section.splash-hero .splash-hero-content .splash-adlib .splash-mobile-cta {
@@ -1909,56 +1971,6 @@
                 -ms-animation: none !important;
                 -o-animation: none !important;
                 animation: none !important; }
-              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(1) {
-                -webkit-animation-delay: 1400ms;
-                -moz-animation-delay: 1400ms;
-                -ms-animation-delay: 1400ms;
-                -o-animation-delay: 1400ms;
-                animation-delay: 1400ms; }
-              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(2) {
-                -webkit-animation-delay: 1500ms;
-                -moz-animation-delay: 1500ms;
-                -ms-animation-delay: 1500ms;
-                -o-animation-delay: 1500ms;
-                animation-delay: 1500ms; }
-              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(3) {
-                -webkit-animation-delay: 1600ms;
-                -moz-animation-delay: 1600ms;
-                -ms-animation-delay: 1600ms;
-                -o-animation-delay: 1600ms;
-                animation-delay: 1600ms; }
-              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(4) {
-                -webkit-animation-delay: 1700ms;
-                -moz-animation-delay: 1700ms;
-                -ms-animation-delay: 1700ms;
-                -o-animation-delay: 1700ms;
-                animation-delay: 1700ms; }
-              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(5) {
-                -webkit-animation-delay: 1800ms;
-                -moz-animation-delay: 1800ms;
-                -ms-animation-delay: 1800ms;
-                -o-animation-delay: 1800ms;
-                animation-delay: 1800ms; }
-              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(6) {
-                -webkit-animation-delay: 1900ms;
-                -moz-animation-delay: 1900ms;
-                -ms-animation-delay: 1900ms;
-                -o-animation-delay: 1900ms;
-                animation-delay: 1900ms; }
-              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(7) {
-                display: none;
-                -webkit-animation-delay: 2000ms;
-                -moz-animation-delay: 2000ms;
-                -ms-animation-delay: 2000ms;
-                -o-animation-delay: 2000ms;
-                animation-delay: 2000ms; }
-              .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(8) {
-                display: none;
-                -webkit-animation-delay: 2100ms;
-                -moz-animation-delay: 2100ms;
-                -ms-animation-delay: 2100ms;
-                -o-animation-delay: 2100ms;
-                animation-delay: 2100ms; }
       .splash-landing > section.splash-hero .splash-guru-head {
         width: 150px;
         position: relative; }

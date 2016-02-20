@@ -264,6 +264,12 @@ angular.module('uguru.util.controllers')
 
 
                 $scope.categories = Category.categories.slice();
+                for (var i = 0; i < $scope.categories.length; i++) {
+                    var indexCategory = $scope.categories[i];
+                    if (indexCategory.id === 4) {
+                        $scope.categories[i].name = 'Tech';
+                    }
+                }
                 callback && callback(Category.categories);
                 console.log($scope.categories.length, 'categories loaded', Category.categories);
 

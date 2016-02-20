@@ -21,9 +21,9 @@
 						</h2>
 
 					</div>
-					<div>
+					<div class='flex-wrap-center'>
 						<ul class='category-card-list'>
-							<li ng-repeat='category in ::categories' ng-if='category.is_active' ng-click='showDesktopSubcategories(category)'>
+							<li ng-repeat='category in ::categories' ng-if='category.is_active' ng-click='showDesktopSubcategories(category, requestForm)'>
 								<div style='background-image: url({{categories_img_base + category.background_url}})'>
 									<a class='bg-{{category.hex_color}}' ng-click='launchCategoryModal(category)'>
 										<div>
@@ -47,13 +47,13 @@
 								<button ng-click='goToSignup()'>Start Your Shop</button>
 							</li>
 						</ul>
-						<div class='subcategory-card-list sub-{{::category.hex_color}} ng-class:{"selected":category.id == active_category.id, "not-selected": active_category.id && active_category.id !== category.id }' ng-repeat='category in ::categories'>
+						<div class='flex-wrap-center subcategory-card-list sub-{{::category.hex_color}} ng-class:{"selected":category.id == requestForm.category.id, "not-selected": requestForm.category.id && requestForm.category.id !== category.id }' ng-repeat='category in ::categories'>
 							<ul class="category-card-list">
-								<li ng-repeat='subcategory in ::category.subcategories'>
-									<div class="bg-{{::category.hex_color}}">
+								<li ng-repeat='subcategory in ::category.subcategories' ng-click='requestForm.setCategory(requestForm, subcategory)'>
+									<div class="p20x p15y bg-{{::category.hex_color}}">
 										<span class='bg-{{::category.hex_color}}'>
-											<div>
-												<span class="card-icon" ng-include="::img_base + subcategory.icon_url"></span>
+											<div class='p05xy'>
+												<span class="p05xy card-icon" ng-include="::img_base + subcategory.icon_url"></span>
 												<span class="card-label txt-slate">{{::subcategory.name}}</span>
 											</div>
 										</span>
@@ -65,7 +65,7 @@
 								<li></li>
 								<li></li>
 							</ul>
-							<button ng-click='hideCategorySkillsModal()'>Back</button>
+							<button ng-click='requestForm.category = {}'>Back</button>
 						</div>
 					</div>
 				</div>

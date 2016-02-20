@@ -354,7 +354,7 @@ ion-pane #experience-modal #guru-experience-remove-button {
 	width: 100%;
 	left: 0;
 }
-ul.mobile-cards-container li {
+ul.mobile-cards-container li, ul.desktop-cards-container li {
 	padding: 7.5px;
 	a {
 		@include flex;
@@ -610,7 +610,9 @@ ul#guru-courses-user-profile {
 	visibility: hidden !important;
 }
 
-
+.university-svg-icon.bounceInUp {
+	opacity: 1 !important;
+}
 
 .university-svg-icon ~ .gmnoprint {
 	z-index:10000 !important;
@@ -682,7 +684,9 @@ header#home-nav-header.splash-header,
 		@include flex-center;
 		@include flex-wrap;
 		height: calc(100% / 4);
-		background: $shamrock !important;
+		&:not([class*="bg-"]) {
+			background: $shamrock;
+		}
 		h1 {
 			padding-bottom: 60px;
 			font-size: 48px;
@@ -706,11 +710,45 @@ header#home-nav-header.splash-header,
 		@include flex-wrap;
 		height: calc(100% / 4 * 3);
 		overflow: auto;
+		//all CTAs defined here
+		#cta-modal-request-courses {
+			z-index:1000000 !important;
+			main#desktop-courses {
+				height: auto !important;
+
+			}
+		}
 		section {
 			//account for the footer button container, height 104px;
-			height:calc(100% - 104px) !important;
+			height:calc(100%) !important;
 			&>* {
 				width:100%;
+			}
+			&#request-cta-details {
+				#cta-modal-request-courses {
+					height:100% !important;
+					width:100% !important;
+					.desktop-header  {
+						background: transparent !important;
+						height:0px !important;
+						a.cta-modal-close {
+							position:absolute;
+							right:0 !important;
+							svg {
+								height:40px !important;
+								width: 40px !important;
+							}
+						}
+					}
+					.input-field {
+						text-align:left !important;
+					}
+				}
+				textarea {
+					@include placeholder {
+						color: rgba($slate, 0.5) !important;
+					}
+				}
 			}
 			&#request-cta-map {
 				ui-gmap-google-map {
@@ -718,6 +756,13 @@ header#home-nav-header.splash-header,
 				}
 			}
 			&#request-cta-payment {
+				#cta-modal-request-payments {
+					overflow:visible;
+					height:calc(100%);
+					#payments-sidebar {
+						display:none !important;
+					}
+				}
 				.offer-price-container {
 					width: 100%;
 					max-width: 800px;
@@ -829,7 +874,9 @@ header#home-nav-header.splash-header,
 						.week-view {
 							height:calc(100% - 60px);
 							overflow:auto;
+							padding-bottom:123px !important;
 							.ugrid-7 {
+								border-bottom:4px solid $azure;
 								.hour {
 									display:block;
 									.hour-range {
@@ -1356,4 +1403,363 @@ header#home-nav-header.splash-header,
 
 .opacity-0-impt {
 	opacity:0 !important;
+}
+
+.opacity-50 {
+	opacity:0.5;
+}
+
+.bg-auburn-impt {
+	background: rgba($auburn, 0.75) !important;
+}
+
+.u-dz-attachment {
+	max-width:140px;
+	margin: 0 5px;
+	.dz-remove {
+		display: none !important;
+	}
+	.img-container {
+		width:120px;
+		a[data-dz-remove] {
+			svg {
+				height:20px;
+				width:20px;
+				stroke: $charcoal !important;
+				stroke-width: 3px !important;
+			}
+		}
+		img {
+			&:before {
+				content: "loading...";
+				font-size:10px;
+			}
+			max-width:120px;
+			max-height:100px;
+			height:100%;
+			width:auto;
+			background:$charcoal;
+		}
+		div[data-dz-uploadprogress] {
+			height:5px;
+			top:100px;
+		}
+	}
+	.u-dz-details {
+		width:100%;
+		width:125px;
+		text-align: center;
+		.u-file-name {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+}
+
+.opacity-1-impt {
+	opacity: 1 !important;
+}
+
+#desktop-payments, #desktop-shop {
+	background: $smoke;
+	.main,
+	{
+		height: 100%;
+		padding: 0;
+		#payments, #shop {
+			@include flex;
+			width: 100%;
+			height: 100%;
+			background: $smoke;
+			#payments-sidebar {
+				position: relative;
+				width: 30%;
+				height: 100%;
+				background: $gabrielle;
+				h1 {
+					padding: 15px;
+					font-size: 32px;
+					font-weight: 900;
+				}
+				ul {
+					height: calc(100% - 146px);
+					overflow: auto;
+					li {
+						font-weight: 400;
+						text-transform: uppercase;
+						a {
+							@include flex;
+							@include flex-center-vertical;
+							padding: 15px;
+							padding-right:0px !important;
+							&.active,
+							&:active,
+							&.active {
+								background: rgba($smoke,.2);
+							}
+							&:hover,
+							&:focus,
+							&.active {
+								background: rgba($smoke,.4);
+							}
+							.payments-icon {
+								@include round;
+								width: 48px;
+								height: 48px;
+								background-position: center center;
+								background-size: cover;
+							}
+							.payments-label {
+								width: calc(70%);
+								padding-left: 15px;
+								padding-top:10px;
+								font-weight: 600;
+								font-size:18px;
+							}
+							&.active {
+								.payments-label {
+									font-weight: 700;
+								}
+							}
+							.transaction-card-wrapper {
+								width:15%;
+								padding-top:10px;
+								.card-type {
+									svg {
+										background: rgba(255,255,255, 0.9);
+										height: 25px;
+									    padding: 5px 7px;
+									    border: 1px solid rgba($smoke, 0.8);
+									    border-radius:5px;
+									    margin-bottom:2px;
+									}
+								}
+								small {
+									font-size:18px;
+									opacity:1;
+									color: rgba(255,255,255,0.9);
+									display:block;
+									text-align:center;
+									font-weight:600;
+								}
+							}
+						}
+					}
+				}
+				#payments-sidebar-search {
+					position: absolute;
+					bottom: 15px;
+					left: 15px;
+					width: calc(100% - 30px);
+					label {
+						@include center-y;
+						left: 15px;
+						svg {
+							@include svg-stroke(rgba($taupe,.5), 8);
+							margin-top: 2px;
+							width: 24px;
+							height: 24px;
+						}
+					}
+					input {
+						@include round;
+						display: block;
+						width: 100%;
+						height: 48px;
+						padding-left: 51px;
+						padding-right: 15px;
+						font-size: 16px;
+						background: $smoke;
+						border: 0;
+						&:active,
+						&:hover,
+						&:focus,
+						&.active {
+							background: white;
+							@include placeholder {
+								color: $taupe;
+							}
+						}
+					}
+					label:hover + input {
+						background: white;
+					}
+				}
+			}
+			#payments-content {
+				width: 70%;
+				height: 100%;
+				h1 {
+					font-size:36px;
+					font-weight:700;
+				}
+				.ugrid-4 {
+					> div:nth-child(1) {
+						width:20% !important;
+					}
+					> div:nth-child(2),
+					> div:nth-child(3) {
+						width:30% !important;
+						padding: 0 !important;
+						.credit-card-wrapper {
+							padding: 10px 0px !important;
+							width:320px !important;
+						}
+					}
+				}
+				#student-payment-cards {
+					.credit-card-wrapper:hover {
+						.credit-card-remove-link {
+							@include center-xy;
+							height:170px !important;
+							visibility: visible !important;
+							opacity: 0.8;
+							background-color: $charcoal;
+							z-index:1000;
+							color: white;
+						}
+					}
+				}
+				.credit-card-wrapper {
+					z-index:101;
+					min-height: 200px;
+			    	max-width: 80%;
+			    	left: 10% !important;
+			    	.card-type {
+			    		float:left !important;
+			    	}
+			    	.card-funding {
+			    		float:right !important;
+			    		font-size:80% !important;
+			    	}
+			    	&~.default-text {
+			    		position:absolute;
+			    		width:100%;
+			    		text-align:center;
+			    		bottom:-30px !important;
+			    	}
+				}
+				.student-add-card-container {
+					a.cancel-link {
+						position: absolute;
+					    top: 70px;
+					    text-align: center;
+					    width: 320px;
+					}
+					.credit-card-wrapper {
+						width:320px !important;
+						right: 10% !important;
+						left: auto !important;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+#student-shop {
+	height: 100%;
+	header.desktop-tab-header {
+		@include flex;
+		@include flex-center;
+		@include flex-wrap;
+		height: calc(100% / 4);
+		&:not([class*="bg-"]) {
+			background: $shamrock;
+		}
+		h1 {
+			padding-bottom: 60px;
+			font-size: 48px;
+			text-align: center;
+			text-transform: none!important;
+		}
+	}
+	main {
+		@include flex;
+		@include flex-wrap;
+		height: calc(100% / 4 * 3);
+		overflow: auto;
+		.default-purchase-options {
+			font-weight:400;
+			text-align:center;
+			color: $slate;
+			.card-type {
+				svg {
+					height: 25px;
+				    padding: 5px 7px;
+				    margin-bottom: -7px;
+				    border: 1px solid rgba(0,0,0,0.3);
+				    border-radius:5px;
+				}
+			}
+		}
+	}
+	#cta-modal-shop-billing {
+ 		#payments-sidebar {
+ 			display:none;
+ 		}
+ 	}
+}
+
+#student-request-details {
+	height: 100%;
+	header.desktop-tab-header {
+		@include flex;
+		@include flex-center;
+		@include flex-wrap;
+		height: calc(100% / 4);
+		&:not([class*="bg-"]) {
+			background: $shamrock;
+		}
+		h1 {
+			padding-bottom: 60px;
+			font-size: 48px;
+			text-align: center;
+			text-transform: none!important;
+		}
+		.tab-bar {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background: rgba($slate,.4);
+			a {
+				color:white;
+				text-align:center;
+			}
+		}
+	}
+	main {
+		@include flex;
+		@include flex-wrap;
+		height: calc(100% / 4 * 3);
+		overflow: auto;
+		.micro-guru-profile-container {
+			right:20px;
+			.micro-guru-profile {
+				@include round;
+				border: 1px solid $smoke;
+				width: 48px;
+				height: 48px;
+				background-position: center center;
+				background-size: cover;
+			}
+			small {
+				text-transform:uppercase;
+				font-size:10px;
+				padding-left:5px;
+				width:43px;
+				text-align:center;
+				right:0;
+				display: block;
+			}
+		}
+	}
+}
+
+
+.bg-cerise-impt {
+	background: $cerise!important;
 }

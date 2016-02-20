@@ -98,11 +98,8 @@
 							</div>
 						</nav>
 					</div>
-					<div id="message-container">
+					<div id="message-container" class='relative'>
 						<div id="messages">
-							<ion-scroll>
-								<ion-refresher pulling-icon="ion-arrow-down-c" spinner="circles" on-refresh="doRefresh()">
-								</ion-refresher>
 								<div class="message-single message-status left center">
 									<div class='message-single-icon' ng-include="img_base + 'templates/green-guru-svg.html'"> </div>
 									<div class="message-single-content">
@@ -126,13 +123,18 @@
 										<div class="message-single-message">
 											{{message.contents}}
 										</div>
+										<div class="message-single-message" ng-if='message._file && message._file.id'>
+											<div class='weight-700'> 1 file attached </div>
+											<a href='{{message._file.url}}' class='txt-charcoal'>{{message._file.name}}, {{message._file.size/1000}}kb</a>
+										</div>
 									</div>
 									<div class='message-single-icon' ng-if='message.sender.id === user.id'>
 										<span ng-if='user.profile_url' style='background-image: url({{user.profile_url}});' />
 									</div>
 								</div>
-							</ion-scroll>
 
+						</div>
+						<div id='message-dropzone' class='bg-slate-50p absolute left-0 full-x txt-charcoal weight-400' style='bottom:64px; height:150px;' ng-class="{'show':showAttachments}"> Drag attachments here
 						</div>
 						<div id="message-box">
 							<a>
