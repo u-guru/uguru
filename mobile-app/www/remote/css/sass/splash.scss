@@ -1071,7 +1071,9 @@
 				height: 100%;
 				.splash-hero-marker {
 					position: absolute;
-					z-index: 10;
+					&.visible {
+						z-index: 9;
+					}
 					&:not(:first-child) {
 						display: none;
 					}
@@ -1107,10 +1109,10 @@
 							bottom: -25px;
 						}
 						&.left {
-							left: 30px;
+							left: 30.5px;
 						}
 						&.right {
-							right: 30px;
+							right: 30.5px;
 						}
 						&.bg-delivery {
 							background: $auburn;
@@ -1137,163 +1139,252 @@
 							background: $cerise;
 						}
 					}
-					.message {
-						@include opacity(0);
-						visibility: hidden;
+					.location-text {
+						@include flex;
+						@include prefix(justify-content, center, webkit);
 						position: absolute;
+						font-size: 16px;
+						font-weight: 600;
+						width: 90px;
+						white-space: nowrap;
+						overflow: visible;
+					}
+					.location.left + .location-text {
 						left: 0;
-						svg {
-							width: 262px;
-							height: 182px;
+					}
+					.location.right + .location-text {
+						right: 0;
+					}
+					.location.top + .location-text {
+						top: -40px;
+					}
+					.location.bottom + .location-text {
+						bottom: -40px;
+					}
+					.map-tooltip-window {
+						path, line {
+							@include prefix(transition, all 0ms ease-in-out, webkit moz ms o);
 						}
-						div {
-							@include flex;
-							@include flex-wrap;
-							position: absolute;
-							top: 0;
-							left: 0;
-							width: 100%;
-							height: 100%;
-							padding: 15px;
-							p {
-								width: 100%;
-								font-size: 16px;
-								font-weight: 600;
-								margin: 0 0 8px;
-								text-align: left;
-							}
-							.signature {
-								line-height: 1;
-								margin: -5px 0 0;
-								font-size: 28px;
-								font-weight: 400;
-								font-family: 'Cedarville Cursive', cursive;
-								text-align: center;
-							}
-							button {
-								@include round;
-								@include prefix(align-self, flex-end, webkit);
-								display: block;
-								margin: 0 auto;
-								width: auto;
-								height: 36px;
-								padding-left: 20px!important;
-								padding-right: 20px!important;
-								background: $cerise;
-								font-size: 16px;
-								font-weight: 600;
-								text-transform: uppercase;
-							}
+						.bg {
+							@include prefix(transition-delay, 150ms, webkit moz ms o);
+							@include opacity(0);
+						}
+						.top, .bottom, .left, .right {
+							@include prefix(transition-delay, 300ms, webkit moz ms o);
+						}
+						.left, .right {
+							stroke-dasharray: 540, 540;
+							stroke-dashoffset: 360;
+						}
+						.top {
+							stroke-dasharray: 520, 520;
+							stroke-dashoffset: 340;
+						}
+						.bottom {
+							stroke-dasharray: 400, 400;
+							stroke-dashoffset: 340;
 						}
 						&.top {
-							top: -197px;
+							.top {
+								@include prefix(transform, translate3d(0, -360px, 0), webkit moz ms o);
+							}
 						}
 						&.bottom {
-							bottom: -197px;
-						}
-					}
-					.info {
-						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						svg {
-							width: 262px;
-							height: 107px;
-							.line, .fill {
-								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-							}
-							.line {
-								stroke: white;
-								stroke-width: 4px;
-								stroke-linecap: round;
-								stroke-linejoin: round;
-							}
-							.fill {
-								fill: $slate;
-							}
-						}
-						div {
-							@include flex;
-							@include flex-center-vertical;
-							position: absolute;
-							left: 0;
-							width: 100%;
-							height: calc(100% - 19px);
-							padding: 15px;
-							.user-icon {
-								margin: 0;
-								width: 60px;
-								height: 60px;
-								border-width: 2px;
-							}
-							aside {
-								width: 172px;
-							}
-							ul {
-								width: 172px;
-								li {
-									font-size: 14px;
-									font-weight: 600;
-									text-align: left;
-									line-height: 1.3;
-									&:first-child {
-										font-size: 20px;
-									}
-								}
+							.top {
+								@include prefix(transform, translate3d(0, 360px, 0), webkit moz ms o);
 							}
 						}
 						&.left {
-							div {
-								ul {
-									padding-left: 15px;
-								}
+							.right {
+								@include prefix(transform, translate3d(-338px, 0, 0), webkit moz ms o);
 							}
 						}
 						&.right {
-							div {
-								@include prefix(justify-content, flex-end, webkit);
-								ul {
-									padding-right: 15px;
-									text-align: right;
+							.right {
+								@include prefix(transform, translate3d(338px, 0, 0), webkit moz ms o);
+							}
+						}
+					}
+					.user-icon {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						position: absolute;
+						width: 64px;
+						height: 64px;
+						border-width: 2px;
+						left: 14px;
+						background-color: $slate;
+					}
+					.map-tooltip-window.top + .user-icon {
+						top: 28px;
+					}
+					.map-tooltip-window.bottom + .user-icon {
+						bottom: 30px;
+					}
+					.map-tooltip-window.left + .user-icon {
+						left: 14px;
+					}
+					.map-tooltip-window.right + .user-icon {
+						right: -154px;
+					}
+					.map-tooltip-text {
+						@include opacity(0);
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						@include prefix(transition-delay, 300ms, webkit moz ms o);
+						position: absolute;
+						left: 1px;
+						width: 260px;
+						height: 270px;
+						&.top {
+							top: 1px;
+						}
+						&.bottom {
+							bottom: 1px;
+						}
+						> div {
+							@include flex;
+							@include flex-wrap;
+							@include flex-center-vertical;
+							padding: 0 15px;
+							height: calc(100% / 3);
+							text-align: left;
+							&:not(:last-child) {
+								border-bottom: 2px solid white;
+							}
+						}
+						h1, h2, p {
+							width: 100%;
+						}
+						h1, h2 {
+							margin: 0!important;
+						}
+						h2 {
+							font-size: 16px;
+							font-weight: 600;
+						}
+						.map-tooltip-guru {
+							background: rgba($cerise, .25);
+							> div {
+								&:first-child {
+									@include prefix(transform, translateX(50px), webkit moz ms o);
+									width: calc(100% - 25px);
+								}
+								&:last-child {
+									svg {
+										display: block;
+										width: 25px;
+										height: 25px;
+										path {
+											@include svg-stroke(white, 8);
+										}
+									}
+								}
+							}
+							h1 {
+								@include flex;
+								@include flex-center-vertical;
+								font-size: 20px;
+								font-weight: 600;
+								.map-tooltip-course {
+									@include round;
+									@include flex;
+									@include flex-center-vertical;
+									background: rgba($cerise, .25);
+									border: 2px solid white;
+									padding: 0 6px;
+									margin-left: 5px;
+									height: 24px;
+									font-size: 10px;
+								}
+							}
+							h2 {
+								color: rgba(white,.5);
+							}
+							.rating-stars {
+								margin: 0;
+							}
+						}
+						.map-tooltip-location {
+							position: relative;
+							h1 {
+								height: 24px;
+								overflow: hidden;
+								font-size: 20px;
+								font-weight: 700;
+							}
+							> div {
+								&:nth-child(1) {
+									@include opacity(.4);
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 100%;
+									height: 100%;
+									background-size: cover;
+									background-position: center;
+								}
+								&:not(:first-child) {
+									position: relative;
+									z-index: 3;
+								}
+								&:nth-child(2) {
+									width: calc(100% - 64px);
+								}
+							}
+							svg {
+								@include round;
+								display: block;
+								width: 64px;
+								height: 64px;
+								border: 2px solid white;
+								background: lighten($slate, 10%);
+								path {
+									@include svg-stroke(white, 4);
 								}
 							}
 						}
-						&.bottom {
-							div {
-								bottom: 1px;
-							}
-						}
-						&.top {
-							div {
-								top: 1px;
+						.map-tooltip-message {
+							p {
+								margin: 0;
+								font-size: 16px;
+								font-weight: 600;
 							}
 						}
 					}
-					&.first {
-						.message {
-							@include prefix(animation, bounceInUp 1000ms ease-in 2200ms 1 forwards, webkit moz ms o);
+					&.first, &.active, &:hover {
+						z-index: 12;
+						.user-icon {
+							z-index: 5;
 						}
-					}
-					&.active {
-						.message {
-							@include prefix(animation, bounceInUp 1000ms ease-in 0ms 1 forwards, webkit moz ms o);
+						.map-tooltip-text {
+							@include prefix(transition-delay, 300ms, webkit moz ms o);
 						}
-					}
-					&.first, &.active {
-						.message {
-							visibility: visible;
+						.map-tooltip-window.top.left + .user-icon {
+							@include prefix(transform, translate3d(-30px, -30px, 0) scale(1.26), webkit moz ms o);
 						}
-					}
-					&.not-first {
-						.info {
-							svg, ul {
-
+						.map-tooltip-window.top.right + .user-icon {
+							@include prefix(transform, translate3d(-200px, -30px, 0) scale(1.26), webkit moz ms o);
+						}
+						.map-tooltip-window.bottom.left + .user-icon {
+							@include prefix(transform, translate3d(-30px, -210px, 0) scale(1.26), webkit moz ms o);
+						}
+						.map-tooltip-window.bottom.right + .user-icon {
+							@include prefix(transform, translate3d(-200px, -210px, 0) scale(1.26), webkit moz ms o);
+						}
+						.map-tooltip-window {
+							.bg {
+								@include prefix(transition-delay, 150ms, webkit moz ms o);
+								@include opacity(.95);
+							}
+							.left, .right, .top, .bottom {
+								@include prefix(transition-delay, 0ms, webkit moz ms o);
+								stroke-dashoffset: 0;
+							}
+							.right, .top {
+								@include prefix(transform, translate3d(0, 0, 0), webkit moz ms o);
 							}
 						}
-					}
-					&.inactive {
-						.info {
-							svg, ul {
-
-							}
+						.map-tooltip-text {
+							@include opacity(1);
 						}
 					}
 				}
@@ -1503,7 +1594,11 @@
 				width: 100%;
 				height: 15px;
 				&.progress.white {
+					@include prefix(transition, 150ms ease-in-out, webkit moz ms o);
 					background: rgba(white,.2);
+					&.active {
+						@include opacity-important(1);
+					}
 					span {
 						background: $shamrock!important;
 						&.animate {
@@ -1793,195 +1888,6 @@
 						&:nth-child(1) {
 							@include prefix(animation-delay, 1700ms, webkit moz ms o);
 						}
-						.map-tooltip-window {
-							path, line {
-								@include prefix(transition, all 0ms ease-in-out, webkit moz ms o);
-							}
-							.bg {
-								@include prefix(transition-delay, 150ms, webkit moz ms o);
-								@include opacity(0);
-							}
-							.top, .bottom, .left, .right {
-								@include prefix(transition-delay, 300ms, webkit moz ms o);
-							}
-							.left, .right {
-								stroke-dasharray: 540, 540;
-								stroke-dashoffset: 360;
-							}
-							.top {
-								stroke-dasharray: 520, 520;
-								stroke-dashoffset: 340;
-							}
-							.bottom {
-								stroke-dasharray: 400, 400;
-								stroke-dashoffset: 340;
-							}
-							&.top {
-								.top {
-									@include prefix(transform, translate3d(0, -360px, 0), webkit moz ms o);
-								}
-							}
-							&.bottom {
-								.top {
-									@include prefix(transform, translate3d(0, 360px, 0), webkit moz ms o);
-								}
-							}
-							&.left {
-								.right {
-									@include prefix(transform, translate3d(-338px, 0, 0), webkit moz ms o);
-								}
-							}
-							&.right {
-								.right {
-									@include prefix(transform, translate3d(338px, 0, 0), webkit moz ms o);
-								}
-							}
-						}
-						.user-icon {
-							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-							position: absolute;
-							width: 64px;
-						    height: 64px;
-						    border-width: 2px;
-						    left: 14px;
-							background-color: $slate;
-						}
-						.map-tooltip-window.top + .user-icon {
-							top: 28px;
-						}
-						.map-tooltip-window.bottom + .user-icon {
-							bottom: 30px;
-						}
-						.map-tooltip-window.left + .user-icon {
-							left: 14px;
-						}
-						.map-tooltip-window.right + .user-icon {
-							right: -154px;
-						}
-						.map-tooltip-text {
-							@include opacity(0);
-							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-							@include prefix(transition-delay, 300ms, webkit moz ms o);
-							position: absolute;
-							left: 1px;
-							width: 260px;
-							height: 270px;
-							&.top {
-								top: 1px;
-							}
-							&.bottom {
-								bottom: 1px;
-							}
-							> div {
-								@include flex;
-								@include flex-wrap;
-								@include flex-center-vertical;
-								padding: 0 15px;
-								height: calc(100% / 3);
-								text-align: left;
-								&:not(:last-child) {
-									border-bottom: 2px solid white;
-								}
-							}
-							h1, h2, p {
-								width: 100%;
-							}
-							h1, h2 {
-								margin: 0!important;
-							}
-							h2 {
-								font-size: 16px;
-								font-weight: 600;
-							}
-							.map-tooltip-guru {
-								background: rgba($cerise, .25);
-								> div {
-									&:first-child {
-										@include prefix(transform, translateX(50px), webkit moz ms o);
-										width: calc(100% - 25px);
-									}
-									&:last-child {
-										svg {
-											display: block;
-											width: 25px;
-											height: 25px;
-											path {
-												@include svg-stroke(white, 8);
-											}
-										}
-									}
-								}
-								h1 {
-									@include flex;
-									@include flex-center-vertical;
-									font-size: 20px;
-									font-weight: 600;
-									.map-tooltip-course {
-										@include round;
-										@include flex;
-										@include flex-center-vertical;
-										background: rgba($cerise, .25);
-										border: 2px solid white;
-										padding: 0 6px;
-										margin-left: 5px;
-										height: 24px;
-										font-size: 10px;
-									}
-								}
-								h2 {
-									color: rgba(white,.5);
-								}
-								.rating-stars {
-									margin: 0;
-								}
-							}
-							.map-tooltip-location {
-								position: relative;
-								h1 {
-									height: 24px;
-									overflow: hidden;
-									font-size: 20px;
-									font-weight: 700;
-								}
-								> div {
-									&:nth-child(1) {
-										@include opacity(.4);
-										position: absolute;
-										top: 0;
-										left: 0;
-										width: 100%;
-										height: 100%;
-										background-size: cover;
-										background-position: center;
-									}
-									&:not(:first-child) {
-										position: relative;
-    									z-index: 3;
-									}
-									&:nth-child(2) {
-										width: calc(100% - 64px);
-									}
-								}
-								svg {
-									@include round;
-									display: block;
-									width: 64px;
-									height: 64px;
-									border: 2px solid white;
-									background: lighten($slate, 10%);
-									path {
-										@include svg-stroke(white, 4);
-									}
-								}
-							}
-							.map-tooltip-message {
-								p {
-									margin: 0;
-									font-size: 16px;
-									font-weight: 600;
-								}
-							}
-						}
 						&.first {
 							* {
 								@include prefix(transition-delay, 3500ms, webkit moz ms o);
@@ -1990,62 +1896,6 @@
 						&.not-first {
 							@include prefix(transition-delay, 3500ms, webkit moz ms o);
 							@include opacity(.5);
-						}
-						&.first, &.active, &:hover {
-							z-index: 10;
-							.user-icon {
-    							z-index: 5;
-							}
-							.map-tooltip-text {
-								@include prefix(transition-delay, 300ms, webkit moz ms o);
-							}
-							.map-tooltip-window.top.left + .user-icon {
-								@include prefix(transform, translate3d(-30px, -30px, 0) scale(1.26), webkit moz ms o);
-							}
-							.map-tooltip-window.top.right + .user-icon {
-								@include prefix(transform, translate3d(-200px, -30px, 0) scale(1.26), webkit moz ms o);
-							}
-							.map-tooltip-window.bottom.left + .user-icon {
-								@include prefix(transform, translate3d(-30px, -210px, 0) scale(1.26), webkit moz ms o);
-							}
-							.map-tooltip-window.bottom.right + .user-icon {
-								@include prefix(transform, translate3d(-200px, -210px, 0) scale(1.26), webkit moz ms o);
-							}
-							.map-tooltip-window {
-								.bg {
-									@include prefix(transition-delay, 150ms, webkit moz ms o);
-									@include opacity(.95);
-								}
-								.left, .right, .top, .bottom {
-									@include prefix(transition-delay, 0ms, webkit moz ms o);
-									stroke-dashoffset: 0;
-								}
-								.right, .top {
-									@include prefix(transform, translate3d(0, 0, 0), webkit moz ms o);
-								}
-							}
-							.map-tooltip-text {
-								@include opacity(1);
-							}
-							.info {
-								svg {
-									.line-3 {
-										transform: translateX(0)!important;
-									}
-									.line-1, .line-2 {
-										stroke-dashoffset: 0;
-									}
-								}
-								div {
-									aside {
-										width: 172px;
-										ul {
-											@include opacity(1);
-											@include prefix(transition-delay, 150ms, webkit moz ms o);
-										}
-									}
-								}
-							}
 						}
 					}
 				}
@@ -2245,19 +2095,45 @@
 						margin: 0!important;
 						padding: 0 7.5px;
 						text-align: center;
+						&.swiper-slide-active {
+							> div {
+								svg {
+									.bg {
+										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+										fill: $shamrock!important;
+									}
+								}
+							}
+						}
 						&:not(.swiper-slide-active) {
 							> div {
-								@include opacity(.5);
+								svg {
+									@include opacity(.5);
+								}
 							}
 						}
 						> div {
 							@include flex;
 							@include flex-wrap;
 							@include flex-center;
+							position: relative;
 							width: 100%;
 							height: 100%;
-							background: $shamrock;
+							svg {
+								display: block;
+								height: 100%;
+								min-height: 100px;
+								width: 100%;
+								min-width: 100px;
+								g {
+									g {
+										@include opacity(.1);
+									}
+								}
+							}
 							h1 {
+								@include center-xy;
+								z-index: 1;
 								font-size: 20px;
 								font-weight: 600;
 							}
