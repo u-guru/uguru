@@ -21,10 +21,11 @@ angular.module('uguru.util.controllers')
   '$compile',
   'ContentService',
   'LoadingService',
+  'ContentService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal, Category, ScrollService, SideMenuService,
     $stateParams, Utilities, GUtilService, GMapService, University, $compile,
-    ContentService, LoadingService) {
+    ContentService, LoadingService, ContentService) {
 
 
     resolveStateParams()
@@ -152,8 +153,15 @@ angular.module('uguru.util.controllers')
             $scope.categories = $scope.categories.filter(function(category, index) {
               return category.is_active;
             })
+            for (var i = 0; i < $scope.categories.length; i++) {
+                    var indexCategory = $scope.categories[i];
+                    if (indexCategory.id === 4) {
+                        $scope.categories[i].name = 'Tech';
+                    }
+                }
             if ($stateParams.category) {
               $scope.selectedCategory = $stateParams.category;
+              $scope.selectedCategory.splashData = ContentService.splashCategoryOptions[$scope.selectedCategory.name]
             }
         }
       $scope.getCategories(saveCategoriesToRootScope);
@@ -165,6 +173,7 @@ angular.module('uguru.util.controllers')
       var bodyLoadingDiv = document.querySelector('#body-loading-div')
       bodyLoadingDiv.className ='hide';
       document.querySelector('#splash-home').classList.add('clear');
+      category.splashData = ContentService.splashCategoryOptions[category.name];
       $timeout(function() {
         $state.go($state.current.name, {categoryId:category.id, category:category, universityId:university.id, university:university}, {
             reload: true,
@@ -209,7 +218,7 @@ angular.module('uguru.util.controllers')
       $scope.selectedUniversity = university;
       GUtilService.generateStaticMapUrls([$scope.selectedUniversity], getStaticMapOptions());
       $scope.page.dropdowns.university.active = false;
-      if (currentSceneNumber === 1) {
+      if (currentSceneNumber !== 2) {
         return;
       }
       LoadingService.showAmbig(null, 10000);
@@ -229,6 +238,17 @@ angular.module('uguru.util.controllers')
           argIndexElem && argIndexElem.classList.add(args[i][1]);
         }
       }, 5000)
+    }
+
+    $scope.transitionToScene3 = function() {
+      $scope.page.dropdowns.university.active = false;
+      $scope.scrollToSection('#splash-projector');
+    }
+
+    $scope.selectUniversityFromMap = function(university) {
+      $scope.selectedUniversity = true;
+      $scope.refreshUniversityState(university);
+      $scope.scrollToSection('#splash-home');
     }
 
     $scope.scrollToSection = function(section_selector) {
@@ -289,13 +309,18 @@ angular.module('uguru.util.controllers')
     }
 
     function resolveStateParams() {
+      console.log('splashData', $stateParams.category.splashData);
       if ($stateParams && $stateParams.category && $stateParams.category.id) {
         $scope.root.loader.body.hide = true;
         Utilities.compileToAngular('body-loading-div', $scope);
         $scope.selectedCategory = $stateParams.category;
+        $scope.selectedCategory.splashData = ContentService.splashCategoryOptions[$scope.selectedCategory.name];
         $scope.selectedUniversity = $stateParams.university || University.getTargetted()[0];
+
       } else {
-        $scope.selectedCategory = ($scope.categories && $scope.categories[0]) || {name: 'Academic', hex_color: 'academic', id:5};
+        $scope.selectedCategory = ($scope.categories && $scope.categories[0]) || {name: 'Academic', hex_color: 'academic', id:5, splashData: ContentService.splashCategoryOptions['Academic']};
+        $scope.selectedCategory.splashData = ContentService.splashCategoryOptions[$scope.selectedCategory.name];
+
         $scope.selectedUniversity = University.getTargetted()[0];
         Utilities.compileToAngular('body-loading-div', $scope);
         $scope.root.loader.body.hide = true;
@@ -553,16 +578,24 @@ angular.module('uguru.util.controllers')
         return options_dict
       }
 
-
+      function hasMapBeenShown() {
+        var splashMap = document.querySelector('#splash-university.opacity-1-impt');
+        return splashMap;
+      }
       function hideAllClusters(selector) {
         $timeout(function() {
           var allClusterElems = document.querySelectorAll(selector) || [];
           for (var i = 0; i < allClusterElems.length; i++) {
-            var indexCluster = allClusterElems[i];
-            indexCluster.classList.add('opacity-0');
-            indexCluster.setAttribute("class-on-activate", "bounceInUp:anim");
-            indexCluster.setAttribute("class-on-activate-delay", 1500 + (i * 50) + "");
-            $compile(indexCluster)($scope);
+              var indexCluster = allClusterElems[i];
+              indexCluster.style.opacity = 0;
+              if (!hasMapBeenShown()) {
+                indexCluster.classList.add('opacity-0');
+                indexCluster.setAttribute("class-on-activate", "bounceInUp:anim:keep");
+                indexCluster.setAttribute("class-on-activate-delay", 1500 + (i * 50) + "");
+              } else {
+                indexCluster.classList.add('opacity-1', 'opacity-1-impt');
+              }
+              $compile(indexCluster)($scope);
           }
         }, 1000)
       }
@@ -701,7 +734,6 @@ angular.module('uguru.util.controllers')
         $scope.page.dropdowns.category.active = false;
         $scope.page.dropdowns.university.active = false;
       }
-
 
   }
 ])

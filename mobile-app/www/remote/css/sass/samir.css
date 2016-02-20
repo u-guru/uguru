@@ -501,6 +501,9 @@ ul#guru-courses-user-profile {
 .invisible {
   visibility: hidden !important; }
 
+.university-svg-icon.bounceInUp {
+  opacity: 1 !important; }
+
 .university-svg-icon ~ .gmnoprint {
   z-index: 10000 !important; }
 
