@@ -1314,39 +1314,6 @@
 						width: 100%;
 						height: 100%;
 						padding: 150px 15px 15px;
-						.splash-device-adlib {
-							padding-bottom: 30px;
-							h1 {
-								@include flex;
-								@include flex-wrap;
-								@include flex-center;
-								font-weight: 600;
-								a {
-									@include flex;
-									@include flex-center;
-									height: 38px;
-									padding: 0 10px;
-									border-radius: 8px;
-									margin: 5px;
-									font-size: 18px;
-									&.bg-academic {
-										background: $cerise;
-									}
-									&.bg-baking {
-										background: $gold;
-									}
-									&.bg-photography {
-										background: $moola;
-									}
-									&.bg-household {
-										background: $cobalt;
-									}
-									&.bg-tech {
-										background: $azure;
-									}
-								}
-							}
-						}
 						p {
 							position: relative;
 							font-size: 18px;
