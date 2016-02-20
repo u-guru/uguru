@@ -254,7 +254,12 @@
 							</g>
 						</svg>
 						<div>
-							<img ng-src="{{selectedUniversity.place_results[0].icon}}"/>
+							<!-- <img ng-src="{{selectedUniversity.place_results[0].}}"/> -->
+                            <span class='user-icon'>
+                                <svg class='user-icon' height="35" width="35" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="#FFFFFF">
+                                    <path d='{{(selectedUniversity.place_results && selectedUniversity.place_results[0].svg_path)}}' stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>></path>
+                                </svg>
+                            </span>
 							<aside class="info-text">
 								<ul>
 									<li>Lorem Ipsum</li>
@@ -289,7 +294,11 @@
 							</g>
 						</svg>
 						<div>
-							<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+							<span class='user-icon'>
+                                <svg class='user-icon' height="35" width="35" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="#FFFFFF">
+                                    <path d='{{(selectedUniversity.place_results && selectedUniversity.place_results[1].svg_path)}}' stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>></path>
+                                </svg>
+                            </span>
 							<aside class="info-text">
 								<ul>
 									<img ng-src="{{selectedUniversity.place_results[1].icon}}"/>
@@ -314,7 +323,11 @@
 							</g>
 						</svg>
 						<div>
-							<img ng-src="{{selectedUniversity.place_results[2].icon}}"/>
+							<span class='user-icon'>
+                                <svg class='user-icon' height="35" width="35" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="#FFFFFF">
+                                    <path d='{{(selectedUniversity.place_results && selectedUniversity.place_results[2].svg_path)}}' stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>></path>
+                                </svg>
+                            </span>
 							<aside class="info-text">
 								<ul>
 									<li>Lorem Ipsum</li>
@@ -366,7 +379,7 @@
 									<li>2.4 miles away</li>
 								</ul>
 							</aside>
-							<img ng-src="{{selectedUniversity.place_results[3].icon}}"/>
+							<span  style="height:90px; width:90px; background-image: url({{selectedUniversity.place_results[3].photo_url}});"></span>
 						</div>
 					</div>
 					<div class="location bg-{{selectedCategory.hex_color}} bottom right"></div>
@@ -391,7 +404,7 @@
 									<li>2.4 miles away</li>
 								</ul>
 							</aside>
-							<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+							<span  style="height:90px; width:90px; background-image: url({{selectedUniversity.place_results[4].photo_url}});"></span>
 						</div>
 					</div>
 					<div class="message bottom">
@@ -419,7 +432,7 @@
 							</g>
 						</svg>
 						<div>
-							<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+							<span  style="height:90px; width:90px; background-image: url({{selectedUniversity.place_results[5].photo_url}});"></span>
 							<aside class="info-text">
 								<ul>
 									<li>Lorem Ipsum</li>
