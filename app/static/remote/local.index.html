@@ -49,10 +49,9 @@
     <link href="remote/css/ionic.app.min.css" rel="stylesheet">
     <!-- <link href="remote/css/archive/animate.css" rel="stylesheet"> -->
 
-
-
     <!-- The main css file -->
     <link href="remote/css/sass/default.css" rel="stylesheet">
+    <link href="remote/css/sass/swiper.css" rel="stylesheet">
     <link href="remote/css/sass/loading.css" rel="stylesheet">
     <link href="remote/lib/dropzone/dropzone.min.css" rel="stylesheet">
     <link href="remote/css/sass/material.css" rel="stylesheet">
@@ -167,13 +166,14 @@
 
     <script src="remote/lib/restangular/dist/restangular.js"></script>
     <script src="remote/lib/interact/interact.min.js"></script>
-    <script src="remote/lib/scroll/iscroll.js"></script>
     <script src="remote/lib/angular-local-storage/angular-local-storage.js"></script>
     <script src="remote/lib/angular-loading-bar/angular-loading-bar.js"></script>
     <script src="remote/lib/angular-strap/angular-strap.min.js"></script>
     <script src="remote/lib/angular-strap/angular-strap.tpl.min.js"></script>
     <script src="remote/lib/angular-fx/TweenMax.min.js"></script>
     <script src="remote/lib/dropzone/dropzone.min.js"></script>
+    <script src="remote/lib/swiper/swiper.min.js"></script>
+    <script src="remote/lib/snap-svg/snap.svg.min.js"></script>
     <script src="remote/lib/angular-fx/ng-fx.min.js"></script>
     <script src="remote/lib/angular-fx/ng-fx-720.min.js"></script>
     <script src="remote/lib/scroll/waypoints.min.js"></script>
@@ -244,6 +244,7 @@
 
     <script type="text/javascript" src="remote/lib/facebook/openfb.js"></script>
     <script type="text/javascript" src="remote/lib/facebook/ngopenfb.js"></script>
+
     <script type="text/javascript" src="remote/js/directives/angularFastMatcher.js"></script>
     <script type="text/javascript" src="remote/js/directives/customDirectives.js"></script>
     <script type="text/javascript" src="remote/js/directives/imageSaver.js"></script>
@@ -304,7 +305,8 @@
     <script type="text/javascript" src="remote/js/controllers/guru/guru.student-request.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.active-session.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.session-start.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/guru/guru.proposal-details.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.proposals.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/guru/student.proposals.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.verification.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.edit-profile.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.profile.ctrl.js"></script>
@@ -365,6 +367,8 @@
     <script type="text/javascript" src="remote/js/shared/RequestService.js"></script>
     <script type="text/javascript" src="remote/js/shared/G-UtilService.js"></script>
     <script type="text/javascript" src="remote/js/shared/G-MapService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/SideMenuService.js"></script>
+
     <script type="text/javascript" src="remote/js/shared/ContentService.js"></script>
     <script type="text/javascript" src="remote/js/shared/TransitionService.js"></script>
     <script type="text/javascript" src="remote/js/shared/ScrollService.js"></script>
@@ -377,6 +381,7 @@
     <script type="text/javascript" src="remote/js/shared/CardReader.js"></script>
     <script type="text/javascript" src="remote/js/shared/SocialSharing.js"></script>
     <script type="text/javascript" src="remote/js/shared/CalendarService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/PaymentService.js"></script>
     <script type="text/javascript" src="remote/js/shared/FileService.js"></script>
     <script type="text/javascript" src="remote/js/shared/BadgeService.js"></script>
     <script type="text/javascript" src="remote/js/shared/AppAvailability.js"></script>
@@ -404,6 +409,7 @@
     <script type="text/javascript" src="remote/js/controllers/util/util.messages.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.ratings.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.request.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.splash.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.browse.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/PricingCtrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/ApplyCtrl.js"></script>
@@ -413,7 +419,7 @@
     <script type="text/javascript" src="remote/js/controllers/util/util.admin.timeline.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.admin.universities.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.loading.ctrl.js"></script>
-
+    <script type="text/javascript" src="remote/js/controllers/util/util.shop.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.availability.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.gurubook.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.studentbook.ctrl.js"></script>

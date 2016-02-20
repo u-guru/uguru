@@ -22,7 +22,7 @@ angular.module('uguru.student.controllers', [])
         DeviceService, $timeout, $ionicModal, GMapService, LoadingService,
         $ionicViewSwitcher, AnimationService, $localstorage, TourService,
         CTAService, RequestService) {
-
+        $scope.root.vars.guru_mode = false;
 
         $scope.user.is_a_guru = false;
 
@@ -41,11 +41,6 @@ angular.module('uguru.student.controllers', [])
                 $scope.studentRequestModal = modal;
             });
         }
-
-
-
-
-
 
         var setStatusBarDarkText = function() {
             if (DeviceService.isIOSDevice()) {
@@ -109,30 +104,34 @@ angular.module('uguru.student.controllers', [])
 
 
 
+
+
         $scope.$on('$ionicView.afterEnter', function() {
             if ($scope.desktopMode) {
-                //initialize CTAS
                 initAllCTAS();
-
-                //remove-later
-                $timeout(function() {
-                    $ionicSlideBoxDelegate.$getByHandle('request-form').stop();
-                }, 1000)
             }
         })
 
-
+        $timeout(function() {
+            console.log($scope.user);
+        }, 500);
         function initAllCTAS() {
             //ngAnimate
             var parentRef = '#desktop-student-home'
-            var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-student-request'];
-            var cbOptions = {'#cta-box-student-request': triggerRequestFormCTA};
-            $timeout(function() {
-                CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
-                $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
-                $ionicSlideBoxDelegate.$getByHandle('request-form').enableSlide(false);
-                console.log($scope.requestForm.calendar);
-            })
+            var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-request-courses', '#cta-box-student-request','#cta-box-created-requests', '#cta-box-billing', '#cta-box-messages', '#cta-box-shop'];
+            var cbOptions = {'#cta-box-student-request': triggerRequestFormCTA, '#cta-box-created-requests': initRequestDetailsCTA};
+            CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
+            // $timeout(function() {
+            //     $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
+            //     $scope.requestForm.category = $scope.categories[0];
+            //     $scope.requestForm.subcategory = $scope.requestForm.category.subcategories[0];
+            //     $scope.requestForm.description.content = 'sample test';
+            //     $scope.requestForm.tags.list = [{name: 'sample tag'}, {name: 'sample tag2'}, {name: 'sample tag3'}];
+            //     $scope.requestForm.files = [{name: 'sample file', id: 32},{name: 'sample file', id: 55}];
+            //     $scope.requestForm.address = 'sample address';
+            //     $scope.requestForm.price.selected = 45;
+            //     $scope.requestForm.payment_card = $scope.user.payment_cards[0];
+            // }, 500);
             //request form
             //student files
             //messages + empty state
@@ -157,7 +156,7 @@ angular.module('uguru.student.controllers', [])
             if (DeviceService.isIOSDevice()) {
                 DeviceService.ios.setStatusBarText($state.current.name);
             }
-            $scope.root.loader.body.hide = true;
+            // $scope.root.loader.body.hide = true;
         })
 
 
@@ -171,7 +170,6 @@ angular.module('uguru.student.controllers', [])
         }
 
         function triggerRequestFormCTA() {
-
             $scope.disableSwipe = function(handle) {
                 $ionicSlideBoxDelegate.$getByHandle(handle).enableSlide(false)
                 // $ionicSlideBoxDelegate.$getByHandle(handle).stop();
@@ -180,14 +178,38 @@ angular.module('uguru.student.controllers', [])
                 time = time || 250;
                 $ionicSlideBoxDelegate.slide(index, time);
             }
-            $scope.requestForm = $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
+            $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
+            // $timeout(function() {
+            //     $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
+            //     $scope.requestForm.category = $scope.categories[0];
+            //     $scope.requestForm.subcategory = $scope.requestForm.category.subcategories[0];
+            //     $scope.requestForm.description.content = 'sample test';
+            //     $scope.requestForm.tags.list = [{name: 'sample tag'}, {name: 'sample tag2'}, {name: 'sample tag3'}];
+            //     $scope.requestForm.files = [{name: 'sample file', id: 32},{name: 'sample file', id: 55}];
+            //     $scope.requestForm.address = 'sample address';
+            //     $scope.requestForm.price.selected = 45;
+            //     $scope.requestForm.payment_card = $scope.user.payment_cards[0];
+            // }, 500);
+
             updateSlideBoxContainer();
             $timeout(function() {
                 $scope.disableSwipe('request-form');
                 $ionicSlideBoxDelegate.$getByHandle('request-form').stop();
+                CTAService.initSingleCTA('#cta-box-request-payments', '#request-cta-payment', function() {
+                  $scope.card = {exp: '', number: '', cvc: '', placeholder:"**** **** **** 4242"};
+                  initHandlers($scope, '#request-cta-payment');
+                });
             }, 1000);
             // TODO check for previous requests
             // initialize category
+        }
+
+        function initRequestDetailsCTA() {
+          $timeout(function() {
+            CTAService.initSingleCTA('.cta-box-request-details', '#student-request-details', function() {
+                LoadingService.showAmbig(null, 750);
+            })
+          })
         }
 
     }

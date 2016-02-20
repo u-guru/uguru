@@ -27,8 +27,10 @@ angular.module('uguru.util.controllers')
     $stateParams, Utilities, GUtilService, GMapService, University, $compile,
     ContentService, LoadingService, ContentService) {
 
+    if ($scope.root.loader.body.hide) {
+      resolveStateParams();
+    }
 
-    resolveStateParams()
     $scope.map;
     $scope.page = {scroll: {}, waypoints: {}, sidebar:{}, dropdowns: {}, modals: {}, swipers: {}, map:{}};
     $scope.page.dropdowns = {closeAll: closeAllDropdowns, category: {show: true, active:false, toggle:toggleCategoryDropdown}, university: {show: true, active: false, toggle: toggleUniversityDropdown}};
@@ -265,6 +267,7 @@ angular.module('uguru.util.controllers')
     $scope.onLoad = function() {
       // @gabrielle-note -- what
       // Default parameters
+      resolveStateParams();
       University.initUniversitiesSplash($scope, getStaticMapOptions());
 
       var responsiveSwiperArgs = {
@@ -311,8 +314,8 @@ angular.module('uguru.util.controllers')
     function resolveStateParams() {
       console.log('splashData', $stateParams.category.splashData);
       if ($stateParams && $stateParams.category && $stateParams.category.id) {
-        $scope.root.loader.body.hide = true;
-        Utilities.compileToAngular('body-loading-div', $scope);
+        // $scope.root.loader.body.hide = true;
+        // Utilities.compileToAngular('body-loading-div', $scope);
         $scope.selectedCategory = $stateParams.category;
         $scope.selectedCategory.splashData = ContentService.splashCategoryOptions[$scope.selectedCategory.name];
         $scope.selectedUniversity = $stateParams.university || University.getTargetted()[0];

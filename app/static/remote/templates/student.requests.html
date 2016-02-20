@@ -1,0 +1,68 @@
+<section id='student-request-details' class='desktop-request full-xy absolute top-0 left-0' ng-controller='StudentProposalController'>
+    <!-- only show this on desktop mode -->
+
+    <header class='desktop-tab-header bg-{{requestForm.subcategory.hex_color}}' ng-class="{'bg-shamrock':!requestForm.subcategory.hex_color}"  anim-on-hide='request-confirming' anim-on-show="request-canceling" anim-on-hide-class="bounceOutUp" anim-on-show-class="bounceInDown" anim-on-hide-delay="500">
+        <a id='guru-profile-cta-close' class='cta-modal-close close-button p15xy flex-right-center'>
+            <svg viewBox="0 0 100 100">
+                <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+            </svg>
+        </a>
+        <h1>Your Requests</h1>
+        <div class="tab-bar slide" ng-show='shouldShowNav(user)'>
+            <div>
+                <a ng-click='currentFilter = null;' ng-class='{"active":!currentFilter }'>All</a>
+                <a ng-click='currentFilter = "is_incoming"' ng-class='{"active": currentFilter === "is_incoming"}'>Incoming</a>
+                <a ng-click='currentFilter = "is_upcoming"' ng-class='{"active": currentFilter === "is_upcoming"}'>Upcoming</a>
+                <a ng-click='currentFilter = "is_pending"' ng-class='{"active": currentFilter === "is_pending"}'>Pending</a>
+                <a ng-click='currentFilter = "is_past"' ng-class='{"active": currentFilter === "is_past"}'>Previous</a>
+                <hr/>
+            </div>
+        </div>
+    </header>
+    <header class="flex-center" ng-if='!desktopMode'>
+        <div class="header-nav full-x">
+            <a class="header-close cta-modal-close" ng-click="studentRequestModal.hide()">
+                <svg viewBox="0 0 100 100">
+                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                </svg>
+            </a>
+        </div>
+    </header>
+    <main class='relative'>
+        <ion-pane id='cta-modal-request-details' class='full-xy hide-display cta-modal absolute top-0 left-0 high-z-index'>
+            <div class='full-xy absolute top-0 left-0 desktop-forms bg-cerise'>
+                <div class="main" ng-include="img_base + BASE + 'templates/student.request.detailed.html'"></div>
+            </div>
+        </ion-pane>
+        <!-- All request form related ctas-->
+        <div class='flex-wrap-center full-xy'>
+            <a class='cta-box-request-details ugrid-6 full-x flex-wrap-center weight-400 txt-white flex-wrap txt-white' ng-repeat='request in user.requests | filter:filterFunction' ng-click='selectAndDisplayRequestDetails(request)'>
+                <div class='p20xy flex-wrap weight-600 uppercase bg-charcoal'>
+                    <small class='full-x opacity-50 uppercase'> Date Created </small>
+                    <h1>{{request.time_created_formatted.month + ' ' + request.time_created_formatted.day}}</h1>
+                </div>
+                <div class='p20xy uppercase weight-600 flex-wrap bg-charcoal'>
+                    <small class='opacity-50 uppercase full-x'> Requested Time Needed </small>
+                    <h1>{{request.time_estimate.hours}}h {{request.time_estimate.minutes}} min</h1>
+                </div>
+                <div class='p20xy uppercase weight-600 flex-wrap bg-charcoal'>
+                    <small class='opacity-50 uppercase full-x'> Preferred Location </small>
+                    <h1> @{{request.address.split(', ')[0]}} </h1>
+                </div>
+                <div class='p20xy bg-{{request.category.hex_color}} flex-wrap weight-600'>
+                    <small class='uppercase full-x txt-smoke'> {{request.category.name}} Request </small>
+                    <h1> {{request.subcategory.name}}</h1>
+                </div>
+                <div class='p20xy uppercase {{request.status_bg_color}} weight-600 flex-wrap relative'>
+                    <small class='txt-smoke uppercase full-x'> Status </small>
+                    <h1>{{request.status_text}}</h1>
+                    <span class='absolute center-y micro-guru-profile-container' ng-if="request.status === 2 && request.guru && request.guru.id">
+                        <div class='micro-guru-profile' style='background-image:url({{request.guru.profile_url}})'>
+                        </div>
+                        <small>{{request.guru.name.split(' ')[0]}}</small>
+                    </span>
+                </div>
+            </a>
+        </div>
+    </main>
+</section>

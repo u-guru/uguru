@@ -294,9 +294,9 @@ ion-pane #experience-modal #guru-experience-remove-button {
   width: 100%;
   left: 0; }
 
-ul.mobile-cards-container li {
+ul.mobile-cards-container li, ul.desktop-cards-container li {
   padding: 7.5px; }
-  ul.mobile-cards-container li a {
+  ul.mobile-cards-container li a, ul.desktop-cards-container li a {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -321,7 +321,7 @@ ul.mobile-cards-container li {
     height: 150px;
     background: #40484B;
     font-weight: 600; }
-    ul.mobile-cards-container li a svg {
+    ul.mobile-cards-container li a svg, ul.desktop-cards-container li a svg {
       fill: none;
       stroke: white;
       stroke-width: 4px;
@@ -329,9 +329,9 @@ ul.mobile-cards-container li {
       stroke-linejoin: round;
       width: 80px;
       height: 80px; }
-    ul.mobile-cards-container li a span {
+    ul.mobile-cards-container li a span, ul.desktop-cards-container li a span {
       display: block; }
-      ul.mobile-cards-container li a span span {
+      ul.mobile-cards-container li a span span, ul.desktop-cards-container li a span span {
         padding-top: 10px;
         padding-bottom: 10px; }
 
@@ -501,6 +501,9 @@ ul#guru-courses-user-profile {
 .invisible {
   visibility: hidden !important; }
 
+.university-svg-icon.bounceInUp {
+  opacity: 1 !important; }
+
 .university-svg-icon ~ .gmnoprint {
   z-index: 10000 !important; }
 
@@ -563,8 +566,9 @@ header#home-nav-header.splash-header,
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
-    height: calc(100% / 4);
-    background: #69B3A5 !important; }
+    height: calc(100% / 4); }
+    #request header.desktop-tab-header:not([class*="bg-"]) {
+      background: #69B3A5; }
     #request header.desktop-tab-header h1 {
       padding-bottom: 60px;
       font-size: 48px;
@@ -592,12 +596,43 @@ header#home-nav-header.splash-header,
     flex-flow: row wrap;
     height: calc(100% / 4 * 3);
     overflow: auto; }
+    #request main #cta-modal-request-courses {
+      z-index: 1000000 !important; }
+      #request main #cta-modal-request-courses main#desktop-courses {
+        height: auto !important; }
     #request main section {
-      height: calc(100% - 104px) !important; }
+      height: calc(100%) !important; }
       #request main section > * {
         width: 100%; }
+      #request main section#request-cta-details #cta-modal-request-courses {
+        height: 100% !important;
+        width: 100% !important; }
+        #request main section#request-cta-details #cta-modal-request-courses .desktop-header {
+          background: transparent !important;
+          height: 0px !important; }
+          #request main section#request-cta-details #cta-modal-request-courses .desktop-header a.cta-modal-close {
+            position: absolute;
+            right: 0 !important; }
+            #request main section#request-cta-details #cta-modal-request-courses .desktop-header a.cta-modal-close svg {
+              height: 40px !important;
+              width: 40px !important; }
+        #request main section#request-cta-details #cta-modal-request-courses .input-field {
+          text-align: left !important; }
+      #request main section#request-cta-details textarea::-webkit-input-placeholder {
+        color: rgba(64, 72, 75, 0.5) !important; }
+      #request main section#request-cta-details textarea:-moz-placeholder {
+        color: rgba(64, 72, 75, 0.5) !important; }
+      #request main section#request-cta-details textarea::-moz-placeholder {
+        color: rgba(64, 72, 75, 0.5) !important; }
+      #request main section#request-cta-details textarea:-ms-input-placeholder {
+        color: rgba(64, 72, 75, 0.5) !important; }
       #request main section#request-cta-map ui-gmap-google-map {
         height: calc(100%); }
+      #request main section#request-cta-payment #cta-modal-request-payments {
+        overflow: visible;
+        height: calc(100%); }
+        #request main section#request-cta-payment #cta-modal-request-payments #payments-sidebar {
+          display: none !important; }
       #request main section#request-cta-payment .offer-price-container {
         width: 100%;
         max-width: 800px;
@@ -691,33 +726,36 @@ header#home-nav-header.splash-header,
             overflow: visible; }
             #request main section#request-cta-calendar .calendar .calendar-container .week-view {
               height: calc(100% - 60px);
-              overflow: auto; }
-              #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour {
-                display: block; }
-                #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-range {
-                  font-size: 11px;
-                  text-align: left;
-                  font-weight: 700;
-                  text-transform: uppercase;
-                  opacity: 0.5;
-                  border-bottom: 1px solid rgba(241, 241, 241, 0.5); }
-                #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval {
-                  opacity: 0;
-                  cursor: pointer; }
-                  #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval:hover {
-                    @extends .high-z-index;
-                    opacity: 1;
-                    visibility: visible !important;
+              overflow: auto;
+              padding-bottom: 123px !important; }
+              #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 {
+                border-bottom: 4px solid #55A4B7; }
+                #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour {
+                  display: block; }
+                  #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-range {
                     font-size: 11px;
+                    text-align: left;
                     font-weight: 700;
-                    color: #FFFFFF !important;
-                    background: #40484B; }
-                  #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval.bg-shamrock {
-                    background-color: #69B3A5;
-                    opacity: 1;
-                    font-size: 11px;
-                    font-weight: 700;
-                    color: #FFFFFF !important; }
+                    text-transform: uppercase;
+                    opacity: 0.5;
+                    border-bottom: 1px solid rgba(241, 241, 241, 0.5); }
+                  #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval {
+                    opacity: 0;
+                    cursor: pointer; }
+                    #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval:hover {
+                      @extends .high-z-index;
+                      opacity: 1;
+                      visibility: visible !important;
+                      font-size: 11px;
+                      font-weight: 700;
+                      color: #FFFFFF !important;
+                      background: #40484B; }
+                    #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval.bg-shamrock {
+                      background-color: #69B3A5;
+                      opacity: 1;
+                      font-size: 11px;
+                      font-weight: 700;
+                      color: #FFFFFF !important; }
     #request main .splash-categories > .main {
       -webkit-transition: all 0.15s ease-in-out;
       -o-transition: all 0.15s ease-in-out;
@@ -1099,5 +1137,359 @@ header#home-nav-header.splash-header,
 
 .opacity-0-impt {
   opacity: 0 !important; }
+
+.opacity-50 {
+  opacity: 0.5; }
+
+.bg-auburn-impt {
+  background: rgba(240, 79, 84, 0.75) !important; }
+
+.u-dz-attachment {
+  max-width: 140px;
+  margin: 0 5px; }
+  .u-dz-attachment .dz-remove {
+    display: none !important; }
+  .u-dz-attachment .img-container {
+    width: 120px; }
+    .u-dz-attachment .img-container a[data-dz-remove] svg {
+      height: 20px;
+      width: 20px;
+      stroke: #2B3234 !important;
+      stroke-width: 3px !important; }
+    .u-dz-attachment .img-container img {
+      max-width: 120px;
+      max-height: 100px;
+      height: 100%;
+      width: auto;
+      background: #2B3234; }
+      .u-dz-attachment .img-container img:before {
+        content: "loading...";
+        font-size: 10px; }
+    .u-dz-attachment .img-container div[data-dz-uploadprogress] {
+      height: 5px;
+      top: 100px; }
+  .u-dz-attachment .u-dz-details {
+    width: 100%;
+    width: 125px;
+    text-align: center; }
+    .u-dz-attachment .u-dz-details .u-file-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+
+.opacity-1-impt {
+  opacity: 1 !important; }
+
+#desktop-payments, #desktop-shop {
+  background: #F1F1F1; }
+  #desktop-payments .main, #desktop-shop .main {
+    height: 100%;
+    padding: 0; }
+    #desktop-payments .main #payments, #desktop-payments .main #shop, #desktop-shop .main #payments, #desktop-shop .main #shop {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      background: #F1F1F1; }
+      #desktop-payments .main #payments #payments-sidebar, #desktop-payments .main #shop #payments-sidebar, #desktop-shop .main #payments #payments-sidebar, #desktop-shop .main #shop #payments-sidebar {
+        position: relative;
+        width: 30%;
+        height: 100%;
+        background: #69B3A5; }
+        #desktop-payments .main #payments #payments-sidebar h1, #desktop-payments .main #shop #payments-sidebar h1, #desktop-shop .main #payments #payments-sidebar h1, #desktop-shop .main #shop #payments-sidebar h1 {
+          padding: 15px;
+          font-size: 32px;
+          font-weight: 900; }
+        #desktop-payments .main #payments #payments-sidebar ul, #desktop-payments .main #shop #payments-sidebar ul, #desktop-shop .main #payments #payments-sidebar ul, #desktop-shop .main #shop #payments-sidebar ul {
+          height: calc(100% - 146px);
+          overflow: auto; }
+          #desktop-payments .main #payments #payments-sidebar ul li, #desktop-payments .main #shop #payments-sidebar ul li, #desktop-shop .main #payments #payments-sidebar ul li, #desktop-shop .main #shop #payments-sidebar ul li {
+            font-weight: 400;
+            text-transform: uppercase; }
+            #desktop-payments .main #payments #payments-sidebar ul li a, #desktop-payments .main #shop #payments-sidebar ul li a, #desktop-shop .main #payments #payments-sidebar ul li a, #desktop-shop .main #shop #payments-sidebar ul li a {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-align-items: center;
+              align-items: center;
+              padding: 15px;
+              padding-right: 0px !important; }
+              #desktop-payments .main #payments #payments-sidebar ul li a.active, #desktop-payments .main #payments #payments-sidebar ul li a:active, #desktop-payments .main #payments #payments-sidebar ul li a.active, #desktop-payments .main #shop #payments-sidebar ul li a.active, #desktop-payments .main #shop #payments-sidebar ul li a:active, #desktop-payments .main #shop #payments-sidebar ul li a.active, #desktop-shop .main #payments #payments-sidebar ul li a.active, #desktop-shop .main #payments #payments-sidebar ul li a:active, #desktop-shop .main #payments #payments-sidebar ul li a.active, #desktop-shop .main #shop #payments-sidebar ul li a.active, #desktop-shop .main #shop #payments-sidebar ul li a:active, #desktop-shop .main #shop #payments-sidebar ul li a.active {
+                background: rgba(241, 241, 241, 0.2); }
+              #desktop-payments .main #payments #payments-sidebar ul li a:hover, #desktop-payments .main #payments #payments-sidebar ul li a:focus, #desktop-payments .main #payments #payments-sidebar ul li a.active, #desktop-payments .main #shop #payments-sidebar ul li a:hover, #desktop-payments .main #shop #payments-sidebar ul li a:focus, #desktop-payments .main #shop #payments-sidebar ul li a.active, #desktop-shop .main #payments #payments-sidebar ul li a:hover, #desktop-shop .main #payments #payments-sidebar ul li a:focus, #desktop-shop .main #payments #payments-sidebar ul li a.active, #desktop-shop .main #shop #payments-sidebar ul li a:hover, #desktop-shop .main #shop #payments-sidebar ul li a:focus, #desktop-shop .main #shop #payments-sidebar ul li a.active {
+                background: rgba(241, 241, 241, 0.4); }
+              #desktop-payments .main #payments #payments-sidebar ul li a .payments-icon, #desktop-payments .main #shop #payments-sidebar ul li a .payments-icon, #desktop-shop .main #payments #payments-sidebar ul li a .payments-icon, #desktop-shop .main #shop #payments-sidebar ul li a .payments-icon {
+                border-radius: 1000px;
+                width: 48px;
+                height: 48px;
+                background-position: center center;
+                background-size: cover; }
+              #desktop-payments .main #payments #payments-sidebar ul li a .payments-label, #desktop-payments .main #shop #payments-sidebar ul li a .payments-label, #desktop-shop .main #payments #payments-sidebar ul li a .payments-label, #desktop-shop .main #shop #payments-sidebar ul li a .payments-label {
+                width: calc(70%);
+                padding-left: 15px;
+                padding-top: 10px;
+                font-weight: 600;
+                font-size: 18px; }
+              #desktop-payments .main #payments #payments-sidebar ul li a.active .payments-label, #desktop-payments .main #shop #payments-sidebar ul li a.active .payments-label, #desktop-shop .main #payments #payments-sidebar ul li a.active .payments-label, #desktop-shop .main #shop #payments-sidebar ul li a.active .payments-label {
+                font-weight: 700; }
+              #desktop-payments .main #payments #payments-sidebar ul li a .transaction-card-wrapper, #desktop-payments .main #shop #payments-sidebar ul li a .transaction-card-wrapper, #desktop-shop .main #payments #payments-sidebar ul li a .transaction-card-wrapper, #desktop-shop .main #shop #payments-sidebar ul li a .transaction-card-wrapper {
+                width: 15%;
+                padding-top: 10px; }
+                #desktop-payments .main #payments #payments-sidebar ul li a .transaction-card-wrapper .card-type svg, #desktop-payments .main #shop #payments-sidebar ul li a .transaction-card-wrapper .card-type svg, #desktop-shop .main #payments #payments-sidebar ul li a .transaction-card-wrapper .card-type svg, #desktop-shop .main #shop #payments-sidebar ul li a .transaction-card-wrapper .card-type svg {
+                  background: rgba(255, 255, 255, 0.9);
+                  height: 25px;
+                  padding: 5px 7px;
+                  border: 1px solid rgba(241, 241, 241, 0.8);
+                  border-radius: 5px;
+                  margin-bottom: 2px; }
+                #desktop-payments .main #payments #payments-sidebar ul li a .transaction-card-wrapper small, #desktop-payments .main #shop #payments-sidebar ul li a .transaction-card-wrapper small, #desktop-shop .main #payments #payments-sidebar ul li a .transaction-card-wrapper small, #desktop-shop .main #shop #payments-sidebar ul li a .transaction-card-wrapper small {
+                  font-size: 18px;
+                  opacity: 1;
+                  color: rgba(255, 255, 255, 0.9);
+                  display: block;
+                  text-align: center;
+                  font-weight: 600; }
+        #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search {
+          position: absolute;
+          bottom: 15px;
+          left: 15px;
+          width: calc(100% - 30px); }
+          #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search label, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search label, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search label, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search label {
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            left: 15px; }
+            #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search label svg, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search label svg, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search label svg, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search label svg {
+              fill: none;
+              stroke: rgba(117, 117, 117, 0.5);
+              stroke-width: 8px;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              margin-top: 2px;
+              width: 24px;
+              height: 24px; }
+          #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input {
+            border-radius: 1000px;
+            display: block;
+            width: 100%;
+            height: 48px;
+            padding-left: 51px;
+            padding-right: 15px;
+            font-size: 16px;
+            background: #F1F1F1;
+            border: 0; }
+            #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:active, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:hover, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:focus, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input.active, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:active, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:hover, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:focus, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input.active, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:active, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:hover, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:focus, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input.active, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:active, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:hover, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:focus, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input.active {
+              background: white; }
+              #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:active::-webkit-input-placeholder, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:hover::-webkit-input-placeholder, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:focus::-webkit-input-placeholder, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input.active::-webkit-input-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:active::-webkit-input-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:hover::-webkit-input-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:focus::-webkit-input-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input.active::-webkit-input-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:active::-webkit-input-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:hover::-webkit-input-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:focus::-webkit-input-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input.active::-webkit-input-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:active::-webkit-input-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:hover::-webkit-input-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:focus::-webkit-input-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input.active::-webkit-input-placeholder {
+                color: #757575; }
+              #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:active:-moz-placeholder, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:hover:-moz-placeholder, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:focus:-moz-placeholder, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input.active:-moz-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:active:-moz-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:hover:-moz-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:focus:-moz-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input.active:-moz-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:active:-moz-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:hover:-moz-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:focus:-moz-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input.active:-moz-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:active:-moz-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:hover:-moz-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:focus:-moz-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input.active:-moz-placeholder {
+                color: #757575; }
+              #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:active::-moz-placeholder, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:hover::-moz-placeholder, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:focus::-moz-placeholder, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input.active::-moz-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:active::-moz-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:hover::-moz-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:focus::-moz-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input.active::-moz-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:active::-moz-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:hover::-moz-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:focus::-moz-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input.active::-moz-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:active::-moz-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:hover::-moz-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:focus::-moz-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input.active::-moz-placeholder {
+                color: #757575; }
+              #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:active:-ms-input-placeholder, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:hover:-ms-input-placeholder, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input:focus:-ms-input-placeholder, #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search input.active:-ms-input-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:active:-ms-input-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:hover:-ms-input-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input:focus:-ms-input-placeholder, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search input.active:-ms-input-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:active:-ms-input-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:hover:-ms-input-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input:focus:-ms-input-placeholder, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search input.active:-ms-input-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:active:-ms-input-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:hover:-ms-input-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input:focus:-ms-input-placeholder, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search input.active:-ms-input-placeholder {
+                color: #757575; }
+          #desktop-payments .main #payments #payments-sidebar #payments-sidebar-search label:hover + input, #desktop-payments .main #shop #payments-sidebar #payments-sidebar-search label:hover + input, #desktop-shop .main #payments #payments-sidebar #payments-sidebar-search label:hover + input, #desktop-shop .main #shop #payments-sidebar #payments-sidebar-search label:hover + input {
+            background: white; }
+      #desktop-payments .main #payments #payments-content, #desktop-payments .main #shop #payments-content, #desktop-shop .main #payments #payments-content, #desktop-shop .main #shop #payments-content {
+        width: 70%;
+        height: 100%; }
+        #desktop-payments .main #payments #payments-content h1, #desktop-payments .main #shop #payments-content h1, #desktop-shop .main #payments #payments-content h1, #desktop-shop .main #shop #payments-content h1 {
+          font-size: 36px;
+          font-weight: 700; }
+        #desktop-payments .main #payments #payments-content .ugrid-4 > div:nth-child(1), #desktop-payments .main #shop #payments-content .ugrid-4 > div:nth-child(1), #desktop-shop .main #payments #payments-content .ugrid-4 > div:nth-child(1), #desktop-shop .main #shop #payments-content .ugrid-4 > div:nth-child(1) {
+          width: 20% !important; }
+        #desktop-payments .main #payments #payments-content .ugrid-4 > div:nth-child(2),
+        #desktop-payments .main #payments #payments-content .ugrid-4 > div:nth-child(3), #desktop-payments .main #shop #payments-content .ugrid-4 > div:nth-child(2),
+        #desktop-payments .main #shop #payments-content .ugrid-4 > div:nth-child(3), #desktop-shop .main #payments #payments-content .ugrid-4 > div:nth-child(2),
+        #desktop-shop .main #payments #payments-content .ugrid-4 > div:nth-child(3), #desktop-shop .main #shop #payments-content .ugrid-4 > div:nth-child(2),
+        #desktop-shop .main #shop #payments-content .ugrid-4 > div:nth-child(3) {
+          width: 30% !important;
+          padding: 0 !important; }
+          #desktop-payments .main #payments #payments-content .ugrid-4 > div:nth-child(2) .credit-card-wrapper,
+          #desktop-payments .main #payments #payments-content .ugrid-4 > div:nth-child(3) .credit-card-wrapper, #desktop-payments .main #shop #payments-content .ugrid-4 > div:nth-child(2) .credit-card-wrapper,
+          #desktop-payments .main #shop #payments-content .ugrid-4 > div:nth-child(3) .credit-card-wrapper, #desktop-shop .main #payments #payments-content .ugrid-4 > div:nth-child(2) .credit-card-wrapper,
+          #desktop-shop .main #payments #payments-content .ugrid-4 > div:nth-child(3) .credit-card-wrapper, #desktop-shop .main #shop #payments-content .ugrid-4 > div:nth-child(2) .credit-card-wrapper,
+          #desktop-shop .main #shop #payments-content .ugrid-4 > div:nth-child(3) .credit-card-wrapper {
+            padding: 10px 0px !important;
+            width: 320px !important; }
+        #desktop-payments .main #payments #payments-content #student-payment-cards .credit-card-wrapper:hover .credit-card-remove-link, #desktop-payments .main #shop #payments-content #student-payment-cards .credit-card-wrapper:hover .credit-card-remove-link, #desktop-shop .main #payments #payments-content #student-payment-cards .credit-card-wrapper:hover .credit-card-remove-link, #desktop-shop .main #shop #payments-content #student-payment-cards .credit-card-wrapper:hover .credit-card-remove-link {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          height: 170px !important;
+          visibility: visible !important;
+          opacity: 0.8;
+          background-color: #2B3234;
+          z-index: 1000;
+          color: white; }
+        #desktop-payments .main #payments #payments-content .credit-card-wrapper, #desktop-payments .main #shop #payments-content .credit-card-wrapper, #desktop-shop .main #payments #payments-content .credit-card-wrapper, #desktop-shop .main #shop #payments-content .credit-card-wrapper {
+          z-index: 101;
+          min-height: 200px;
+          max-width: 80%;
+          left: 10% !important; }
+          #desktop-payments .main #payments #payments-content .credit-card-wrapper .card-type, #desktop-payments .main #shop #payments-content .credit-card-wrapper .card-type, #desktop-shop .main #payments #payments-content .credit-card-wrapper .card-type, #desktop-shop .main #shop #payments-content .credit-card-wrapper .card-type {
+            float: left !important; }
+          #desktop-payments .main #payments #payments-content .credit-card-wrapper .card-funding, #desktop-payments .main #shop #payments-content .credit-card-wrapper .card-funding, #desktop-shop .main #payments #payments-content .credit-card-wrapper .card-funding, #desktop-shop .main #shop #payments-content .credit-card-wrapper .card-funding {
+            float: right !important;
+            font-size: 80% !important; }
+          #desktop-payments .main #payments #payments-content .credit-card-wrapper ~ .default-text, #desktop-payments .main #shop #payments-content .credit-card-wrapper ~ .default-text, #desktop-shop .main #payments #payments-content .credit-card-wrapper ~ .default-text, #desktop-shop .main #shop #payments-content .credit-card-wrapper ~ .default-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            bottom: -30px !important; }
+        #desktop-payments .main #payments #payments-content .student-add-card-container a.cancel-link, #desktop-payments .main #shop #payments-content .student-add-card-container a.cancel-link, #desktop-shop .main #payments #payments-content .student-add-card-container a.cancel-link, #desktop-shop .main #shop #payments-content .student-add-card-container a.cancel-link {
+          position: absolute;
+          top: 70px;
+          text-align: center;
+          width: 320px; }
+        #desktop-payments .main #payments #payments-content .student-add-card-container .credit-card-wrapper, #desktop-payments .main #shop #payments-content .student-add-card-container .credit-card-wrapper, #desktop-shop .main #payments #payments-content .student-add-card-container .credit-card-wrapper, #desktop-shop .main #shop #payments-content .student-add-card-container .credit-card-wrapper {
+          width: 320px !important;
+          right: 10% !important;
+          left: auto !important; }
+
+#student-shop {
+  height: 100%; }
+  #student-shop header.desktop-tab-header {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    height: calc(100% / 4); }
+    #student-shop header.desktop-tab-header:not([class*="bg-"]) {
+      background: #69B3A5; }
+    #student-shop header.desktop-tab-header h1 {
+      padding-bottom: 60px;
+      font-size: 48px;
+      text-align: center;
+      text-transform: none !important; }
+  #student-shop main {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    height: calc(100% / 4 * 3);
+    overflow: auto; }
+    #student-shop main .default-purchase-options {
+      font-weight: 400;
+      text-align: center;
+      color: #40484B; }
+      #student-shop main .default-purchase-options .card-type svg {
+        height: 25px;
+        padding: 5px 7px;
+        margin-bottom: -7px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 5px; }
+  #student-shop #cta-modal-shop-billing #payments-sidebar {
+    display: none; }
+
+#student-request-details {
+  height: 100%; }
+  #student-request-details header.desktop-tab-header {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    height: calc(100% / 4); }
+    #student-request-details header.desktop-tab-header:not([class*="bg-"]) {
+      background: #69B3A5; }
+    #student-request-details header.desktop-tab-header h1 {
+      padding-bottom: 60px;
+      font-size: 48px;
+      text-align: center;
+      text-transform: none !important; }
+    #student-request-details header.desktop-tab-header .tab-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(64, 72, 75, 0.4); }
+      #student-request-details header.desktop-tab-header .tab-bar a {
+        color: white;
+        text-align: center; }
+  #student-request-details main {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    height: calc(100% / 4 * 3);
+    overflow: auto; }
+    #student-request-details main .micro-guru-profile-container {
+      right: 20px; }
+      #student-request-details main .micro-guru-profile-container .micro-guru-profile {
+        border-radius: 1000px;
+        border: 1px solid #F1F1F1;
+        width: 48px;
+        height: 48px;
+        background-position: center center;
+        background-size: cover; }
+      #student-request-details main .micro-guru-profile-container small {
+        text-transform: uppercase;
+        font-size: 10px;
+        padding-left: 5px;
+        width: 43px;
+        text-align: center;
+        right: 0;
+        display: block; }
+
+.bg-cerise-impt {
+  background: #e6389b !important; }
 
 /*# sourceMappingURL=samir.css.map */

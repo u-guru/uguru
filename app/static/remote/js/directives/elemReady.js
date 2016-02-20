@@ -37,8 +37,342 @@ angular.module('uguru.directives')
          });
       }
     };
+})
+.directive('classOnClear', ['$timeout', 'AnimationService', function ($timeout, AnimationService) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      scope.$watch(function() {
+        return element.attr('class');
+      },function() {
+        if (element[0].classList.contains('clear')) {
+          element[0].classList.remove('clear')
+          var delay = attr.classOnClearDelay || 0;
+          console.log(element[0]);
+          var classes = attr.classOnClear.split(", ");
+          $timeout(function() {
+              for (var i = 0; i < classes.length; i++) {
+                var indexClass = classes[i].split(":")[0];
+                var classArgs = classes[i].split(":").slice(1);
+                if (classArgs.indexOf("anim") > -1) {
+                  if (classArgs.indexOf("keep") > -1) {
+                    indexClass = indexClass +':keep';
+                  }
+                  AnimationService.animateIn(element[0], indexClass);
+                } else
+                if (classArgs.indexOf("animOut") > -1) {
+                  if (classArgs.indexOf("keep") > -1) {
+                    indexClass = indexClass +':keep';
+                  }
+                  AnimationService.animateOut(element[0], indexClass);
+                }
+                else {
+                  element[0].classList.add(indexClass);
+                }
+                if (classArgs.indexOf("unique") > -1) {
+                  var otherClassElems = document.querySelectorAll('.' + indexClass);
+                  console.log(otherClassElems);
+                  for (var j = 0; j < otherClassElems.length; j++) {
+                    var otherElemIndex = otherClassElems[j];
+                    if (otherElemIndex !== element[0]) {
+                      otherElemIndex.classList.remove(indexClass);
+                    }
+                  }
+                }
+                if (classes[i].indexOf('inject') > -1 && classArgsHasInject(classArgs)) {
+                  var injectArgClassSplit = classArgsHasInject(classArgs).split("|")
+                  if (injectArgClassSplit.length > 1) {
+                    var classToInject = injectArgClassSplit[1];
+                    var elemToInjectSelector = injectArgClassSplit[0];
+                    var elemsToInject = document.querySelectorAll(elemToInjectSelector);
+                    console.log(elemToInjectSelector, classToInject, elemsToInject.length, 'elements');
+                    for (var k = 0; k < elemsToInject.length; k++) {
+                      elemsToInject[k].classList.add(classToInject);
+                    }
+                  }
+                }
+              }
+          }, delay);
+          function classArgsHasInject(args) {
+            var injectArg = null;
+            args.filter(function(word, index) {
+              if (word.indexOf("inject") > -1) {
+                injectArg = args[index];
+                return true
+              };
+            })
+            return injectArg.replace("inject", "");
+          }
+        }
+      })
+    }
+  }
+}])
+.directive('classOnActivate', ['$timeout', 'AnimationService', function ($timeout, AnimationService) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      scope.$watch(function() {
+        return element.attr('class');
+      },function() {
+        if (element[0].classList.contains('activate')) {
+          element[0].classList.remove('activate')
+          var delay = attr.classOnActivateDelay || 0;
+          var classes = attr.classOnActivate.split(", ");
+          $timeout(function() {
+              for (var i = 0; i < classes.length; i++) {
+                var indexClass = classes[i].split(":")[0];
+                var classArgs = classes[i].split(":").slice(1);
+                if (classArgs.indexOf("anim") > -1 && indexClass !== "null") {
+                  if (classArgs.indexOf("keep") > -1) {
+                    indexClass = indexClass +':keep';
+                  }
+                  AnimationService.animateIn(element[0], indexClass);
+                } else
+                if (classArgs.indexOf("animOut") > -1 && indexClass !== "null") {
+                  if (classArgs.indexOf("keep") > -1) {
+                    indexClass = indexClass +':keep';
+                  }
+                  AnimationService.animateOut(element[0], indexClass);
+                }
+                else if (indexClass !== "null") {
+                  element[0].classList.add(indexClass);
+                }
+                if (classArgs.indexOf("unique") > -1) {
+                  var otherClassElems = document.querySelectorAll('.' + indexClass);
+                  console.log(otherClassElems);
+                  for (var j = 0; j < otherClassElems.length; j++) {
+                    var otherElemIndex = otherClassElems[j];
+                    if (otherElemIndex !== element[0]) {
+                      otherElemIndex.classList.remove(indexClass);
+                    }
+                  }
+                }
+                if (classes[i].indexOf('inject') > -1 && classArgsHasInject(classArgs)) {
+                  var injectArgClassSplit = classArgsHasInject(classArgs).split("|")
+                  if (injectArgClassSplit.length > 1) {
+                    var classToInject = injectArgClassSplit[1];
+                    var elemToInjectSelector = injectArgClassSplit[0];
+                    var elemsToInject = document.querySelectorAll(elemToInjectSelector);
+                    console.log(elemToInjectSelector, classToInject, elemsToInject.length, 'elements');
+                    for (var k = 0; k < elemsToInject.length; k++) {
+                      elemsToInject[k].classList.add(classToInject);
+                    }
+                  }
+                }
+              }
+          }, delay);
+          function classArgsHasInject(args) {
+            var injectArg = null;
+            args.filter(function(word, index) {
+              if (word.indexOf("inject") > -1) {
+                injectArg = args[index];
+                return true
+              };
+            })
+            return injectArg.replace("inject", "");
+          }
+        }
+      })
+    }
+  }
+}])
+.directive('activateOnClass', ['$timeout', function ($timeout) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      scope.$watch(function() {
+        return element.attr('class');
+      },function() {
+        var classTriggers = attr.activateOnClass.split(', ');
+        var classTriggerDict = {};
+        for (var i = 0; i < classTriggers.length; i++) {
+          var classTriggers
+          var indexClassTrigger = classTriggers[i];
+          if (element[0].classList.contains(indexClassTrigger)) {
+            classTriggerDict[indexClassTrigger] = true;
+          }
+        }
+        if (Object.keys(classTriggerDict).length > 0 &&  Object.keys(classTriggerDict).length === classTriggers.length) {
+          var delay = attr.activateOnClassDelay || 0;
+          $timeout(function() {
+            element[0].classList.add('activate');
+            for (var i = 0; i < classTriggers.length; i++) {
+              element[0].classList.remove(classTriggers[i]);
+            }
+            $timeout(function() {
+              scope.$apply();
+            })
+          }, delay)
+        }
+      });
+    }
+  }
+}])
+.directive('translateOnClick', function () {
+    // add 'translate-to-click' to element to "declare" directive. "translate-active" is added to element if element does not have transform properties && transforms
+    // add 'translate-to-elem'="#sample-selector" to element to link destination element
+    // add 'translate-to-x'="200" to add 200px X offset (origin = bottom left);
+    // add 'translate-to-y'="200" to add 200px Y offset (origin = bottom left);
+    // add 'translate-back-class'="untransform-class-name1, untransform-class-name-2" adds the argument/class(es) when the transform is set to null (when element with attribute transforms)
+    return {
+        restrict: 'A',
+        link: function(scope, element, attr) {
+            var elementBounding = element[0].getBoundingClientRect();
+            var elemCoords = {height: elementBounding.height, width: elementBounding.width, top: elementBounding.top, left: elementBounding.left};
+
+            var translateElem = attr.translateToElem;
+            var translateElemBounding = document.querySelector(translateElem).getBoundingClientRect();
+            var translateElemCoords = {height: translateElemBounding.height, width: translateElemBounding.width, top: translateElemBounding.top, left: translateElemBounding.left};
+            element.on('click', function() {
+              var injectOnTranslateClass = attr.translateOnClick || 'translate-active';
+              if (!element[0].style.webkitTransform && !element[0].style.MozTransform && !element[0].style.msTransform && !element[0].style.OTransform && !element[0].style.transform) {
+                var translateY = translateElemCoords.top - elemCoords.top + elemCoords.height - translateElemCoords.height + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
+                var translateX = translateElemCoords.left - elemCoords.left + ((attr.translateXOffset && parseInt(attr.translateXOffset)) || 0);
+                var transFormString = "translate(" + translateX + "px, " + translateY + "px)"
+                element[0].style.webkitTransform = transFormString;
+                element[0].style.MozTransform = transFormString;
+                element[0].style.msTransform = transFormString;
+                element[0].style.OTransform = transFormString;
+                element[0].style.transform = transFormString;
+                element[0].classList.add(injectOnTranslateClass, 'active');
+
+                //deactivate other directives with transforms towards the same element "translate-to-elem";
+                var allTranslateOnClickElems = document.querySelectorAll('.' + injectOnTranslateClass + ".active");
+                console.log('allTranslateOnClickElems', allTranslateOnClickElems.length, 'found:\n', allTranslateOnClickElems);
+                for (var i = 0; i < allTranslateOnClickElems.length; i++) {
+                  var indexTranslateElem  = allTranslateOnClickElems[i];
+                  if (indexTranslateElem !== element[0]) {
+                        indexTranslateElem.classList.remove(injectOnTranslateClass, 'active');
+                        indexTranslateElem.style.webkitTransform = null;
+                        indexTranslateElem.style.MozTransform = null;
+                        indexTranslateElem.style.msTransform = null;
+                        indexTranslateElem.style.OTransform = null;
+                        indexTranslateElem.style.transform = null;
+                      }
+                    }
+                }
+            });
+      }
+    };
 }).
-directive("animEnterDown", ["AnimationService", "$timeout", function (AnimationService, $timeout) {
+directive("classOnLoad", ["$timeout", 'AnimationService', function ($timeout, AnimationService) {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+              $timeout(function() {
+                scope.$watch('root.loader.body.hide', function(value) {
+                  if (value) {
+                    var delay = attr.classOnLoadDelay || 0;
+                    var classes = attr.classOnLoad.split(", ");
+                    $timeout(function() {
+                      for (var i = 0; i < classes.length; i++) {
+                        var indexClass = classes[i].split(":")[0];
+                        var classArgs = classes[i].split(":").slice(1);
+                        if (classArgs.indexOf("anim") > -1) {
+                          if (classArgs.indexOf("keep") > -1) {
+                            indexClass = indexClass +':keep';
+                          }
+                          AnimationService.animateIn(element[0], indexClass);
+                        } else {
+                          element[0].classList.add(indexClass);
+                        }
+                      }
+                      scope.$apply();
+                    }, delay)
+                  }
+                });
+              })
+          }
+      };
+}]).
+directive("evalOnLoad", ["$timeout", 'AnimationService', '$parse', function($timeout, AnimationService, $parse) {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+              $timeout(function() {
+                scope.$watch('root.loader.body.hide', function(value) {
+                    $timeout(function() {
+                      scope.$apply(function(){
+                        var func = $parse(attr.evalOnLoad);
+                        func(scope);
+                      })
+                    })
+                })
+              })
+          }
+      }
+}]).
+directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, AnimationService) {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+              element.on("click", function() {
+                var delay = attr.classOnClickDelay || 0;
+                var classes = attr.classOnClick.split(", ");
+                $timeout(function() {
+                    for (var i = 0; i < classes.length; i++) {
+                      var indexClass = classes[i].split(":")[0];
+                      var classArgs = classes[i].split(":").slice(1);
+                      if (classArgs.indexOf("anim") > -1) {
+                        if (classArgs.indexOf("keep") > -1) {
+                          indexClass = indexClass +':keep';
+                        }
+                        AnimationService.animateIn(element[0], indexClass);
+                      } else
+                      if (classArgs.indexOf("animOut") > -1) {
+                        if (classArgs.indexOf("keep") > -1) {
+                          indexClass = indexClass +':keep';
+                        }
+                        AnimationService.animateOut(element[0], indexClass);
+                      }else {
+                        element[0].classList.add(indexClass);
+                      }
+                      if (classArgs.indexOf("unique") > -1) {
+                        var otherClassElems = document.querySelectorAll('.' + indexClass);
+                        for (var j = 0; j < otherClassElems.length; j++) {
+                          var otherElemIndex = otherClassElems[j];
+                          if (otherElemIndex !== element[0]) {
+                            otherElemIndex.classList.remove(indexClass);
+                          }
+                        }
+                      }
+                      if (classArgsHasInject(classArgs)) {
+                        var injectArgClassSplit = classArgsHasInject(classArgs).split("|")
+                        if (injectArgClassSplit.length > 1) {
+                          var classToInject = injectArgClassSplit[1];
+                          var elemToInjectSelector = injectArgClassSplit[0];
+                          var elemsToInject = document.querySelectorAll(elemToInjectSelector);
+                          for (var k = 0; k < elemsToInject.length; k++) {
+                            elemsToInject[k].classList.add(classToInject);
+                          }
+                        }
+                        // var otherClassElems = document.querySelectorAll('.' + indexClass);
+                        // console.log(otherClassElems);
+                        // for (var j = 0; j < otherClassElems.length; j++) {
+                        //   var otherElemIndex = otherClassElems[j];
+                        //   if (otherElemIndex !== element[0]) {
+                        //     otherElemIndex.classList.remove(indexClass);
+                        //   }
+                        // }
+                      }
+                    }
+                }, delay);
+                function classArgsHasInject(args) {
+                  var injectArg = null;
+                  args.filter(function(word, index) {
+                    if (word.indexOf("inject") > -1) {
+                      injectArg = args[index];
+                      return true
+                    };
+                  })
+                  return injectArg.replace("inject", "");
+                }
+              });
+            }
+          }
+}])
+.directive("animEnterDown", ["AnimationService", "$timeout", function (AnimationService, $timeout) {
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
@@ -195,7 +529,7 @@ directive("bindWp", ['$timeout', function ($timeout) {
                 if (attr.bindWpDirection) {
                   var directionNames = attr.bindWpDirection.split(', ')
                 } else {
-                  var directionNames = ["down", "down", "down"]
+                  var directionNames = ["down", "down", "down", "down", "down", "down"]
                 }
 
                 scope.$watch('page.waypoints.' + attr.bindWp + '.activated', function(isActive) {
@@ -206,10 +540,27 @@ directive("bindWp", ['$timeout', function ($timeout) {
                   for (var i = 0; i < classNames.length; i++) {
                     var indexClassName = classNames[i];
                     var directionName = directionNames[i];
+                    var directionArgs = directionName.split(':');
+                    var directionName = directionArgs[0];
                     if (isActive && direction === 'down' && directionName === direction) {
-                      element[0].classList.add(indexClassName);
-                    } else if(isActive && direction === 'up'){
-                      element[0].classList.remove(indexClassName);
+                      if (directionArgs.length === 1) {
+                        element[0].classList.add(classNames[i]);
+                      } else if (directionArgs.length === 2 && directionArgs[1] === 'remove') {
+                        element[0].classList.remove(classNames[i]);
+                      } else if (directionArgs.length === 3 && directionArgs[1] === 'remove' && directionArgs[2].length) {
+                        element[0].classList.remove(directionArgs[2]);
+                        element[0].classList.add(classNames[i]);
+                      }
+
+                    } else if(isActive && direction === 'up' && directionName === direction){
+                      if (directionArgs.length === 1) {
+                        element[0].classList.add(classNames[i]);
+                      } else if (directionArgs.length === 2 && directionArgs[1] === 'remove') {
+                        element[0].classList.remove(classNames[i]);
+                      } else if (directionArgs.length === 3 && directionArgs[1] === 'remove' && directionArgs[2].length) {
+                        element[0].classList.remove(directionArgs[2]);
+                        element[0].classList.add(classNames[i]);
+                      }
                     }
                   }
                 })

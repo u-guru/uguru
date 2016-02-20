@@ -34,6 +34,10 @@
 				<!-- <div ></div> -->
 			</ion-pane>
 
+			<ion-pane id='cta-modal-proposals' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/guru.proposals.html'">
+				<!-- <div ></div> -->
+			</ion-pane>
+
 			<ion-pane id='cta-modal-referrals' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/referrals.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
@@ -106,6 +110,16 @@
 										<span class="notification-number">{{user.student_relationships.length || 0}}</span>
 									</span>
 									<span class="notification-type cta-box bg-charcoal" id='cta-box-signup'>Messages</span>
+								</a>
+							</li>
+							<li ng-if='user.guru_proposals'>
+								<a id='cta-box-proposals' class='cta-box'>
+									<span class="notification-icon">
+										<svg class='bg-auburn' viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.notification.html'">
+										</svg>
+										<span class="notification-number bg-auburn">{{user.guru_proposals.length || 0}}</span>
+									</span>
+									<span class="notification-type cta-box bg-charcoal" id='cta-box-signup'>Proposals</span>
 								</a>
 							</li>
 							<li class='display-hide cta-box' id='cta-box-tour'>

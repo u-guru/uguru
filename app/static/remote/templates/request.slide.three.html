@@ -45,14 +45,14 @@
             <div class='full-x p20xy uppercase bg-azure weight-600'>
                 {{requestForm.calendar[0].monthLong}}
             </div>
-            <div class='week-view'>
+            <div class='week-view' style='padding-bottom:40px;'>
                 <div class='ugrid-7 full-x'>
                     <div ng-repeat='day in ::requestForm.calendar' class='one-day p20x bg-charcoal full-y'>
                         <div class='one-day-header full-x p05xy bg-slate-50p txt-smoke weight-600 full-x'>
-                            {{::day.dayLong}}
+                            {{::day.dayLong}}, {{::day.monthShort}} {{::day.date}}
                         </div>
                         <div class='one-day-container full-xy'>
-                            <span ng-repeat='hour in ::day.hours' class='hour flex-wrap-center full-xy relative' style="min-height:50px;">
+                            <span ng-repeat='hour in ::day.hours' class='hour flex-wrap-center full-xy relative' style="min-height:50px;" ng-class="{'bg-smoke txt-slate': hour.already_past}">
                                 <span ng-if='hour.start_suffix !== hour.end_suffix' class='hour-range full-xy absolute top-0 left-0'>
                                     {{hour.formatted_start_hour + hour.start_suffix + '-' + hour.formatted_end_hour + hour.end_suffix}}
                                 </span>
@@ -60,8 +60,8 @@
                                     {{hour.formatted_start_hour + '-' + hour.formatted_end_hour + hour.end_suffix}}
                                 </span>
                                 <div class='full-xy absolute top-0 left-0 high-z-index flex-wrap'>
-                                    <a class='full-x weight-400 hour-interval txt-charcoal' ng-class="{'bg-shamrock':interval.selected}" ng-repeat='interval in ::hour.intervals' ng-click='interval.selected = !interval.selected'>
-                                        {{ hour.formatted_start_hour + ':' + interval.formatted_start_minute + '-' + hour.formatted_start_hour + ':' + interval.formatted_end_minute}}
+                                    <a class='full-x weight-400 hour-interval txt-charcoal' ng-class="{'bg-shamrock':interval.selected && !interval.already_past}" ng-repeat='interval in ::hour.intervals' ng-click='requestForm.select_calendar(interval, requestForm)'>
+                                        {{ hour.formatted_start_hour + ':' + interval.formatted_start_minute + '-' + ((!$index &&hour.formatted_start_hour) ||($index && hour.formatted_end_hour)) + ':' + interval.formatted_end_minute}}
                                     </a>
                                 </div>
                             </span>

@@ -12,7 +12,8 @@
 
 .animated {
 	@include animation-duration(1s);
-	@include animation-fill-mode(both);
+	// edit
+	@include animation-fill-mode(forwards);
 }
 .animated.infinite {
 	@include animation-iteration-count(infinite);
@@ -268,6 +269,7 @@
 		@include transform(scale3d(.97, .97, .97));
 	}
 	100% {
+		// edit
 		@include opacity(1);
 		@include transform(scale3d(1, 1, 1));
 	}
@@ -295,6 +297,8 @@
 		@include transform(translate3d(0, 5px, 0));
 	}
 	100% {
+		// edit
+		@include opacity(1);
 		@include transform(none);
 	}
 }
@@ -321,6 +325,8 @@
 		@include transform(translate3d(5px, 0, 0));
 	}
 	100% {
+		// edit
+		@include opacity(1);
 		@include transform(none);
 	}
 }
@@ -347,6 +353,8 @@
 		@include transform(translate3d(-5px, 0, 0));
 	}
 	100% {
+		// edit
+		@include opacity(1);
 		@include transform(none);
 	}
 }
@@ -364,6 +372,7 @@
 	}
 	60% {
 		@include opacity(1);
+		visibility: visible;
 		@include transform(translate3d(0, -20px, 0));
 	}
 	75% {
@@ -373,6 +382,9 @@
 		@include transform(translate3d(0, -5px, 0));
 	}
 	100% {
+		// edit
+		@include opacity(1);
+		visibility: visible;
 		@include transform(translate3d(0, 0, 0));
 	}
 }
@@ -1044,10 +1056,12 @@
 @include keyframes(rollIn) {
 	0% {
 		@include opacity(0);
+		visibility: hidden;
 		@include transform(translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg));
 	}
 	100% {
 		@include opacity(1);
+		visibility: visible;
 		@include transform(none);
 	}
 }
@@ -1232,6 +1246,9 @@
 		visibility: visible;
 	}
 	100% {
+		// edit
+		@include opacity(1);
+		visibility: visible;
 		@include transform(translate3d(0, 0, 0));
 	}
 }
@@ -1245,6 +1262,9 @@
 		visibility: visible;
 	}
 	100% {
+		// edit
+		@include opacity(1);
+		visibility: visible;
 		@include transform(translate3d(0, 0, 0));
 	}
 }
@@ -1258,6 +1278,9 @@
 		visibility: visible;
 	}
 	100% {
+		// edit
+		@include opacity(1);
+		visibility: visible;
 		@include transform(translate3d(0, 0, 0));
 	}
 }
@@ -1271,6 +1294,9 @@
 		visibility: visible;
 	}
 	100% {
+		// edit
+		@include opacity(1);
+		visibility: visible;
 		@include transform(translate3d(0, 0, 0));
 	}
 }

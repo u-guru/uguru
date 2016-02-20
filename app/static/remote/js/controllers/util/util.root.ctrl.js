@@ -53,6 +53,7 @@ angular.module('uguru.util.controllers')
 
         $scope.root = RootService;
         $scope.root.vars = {};
+        $scope.root.vars.getUserFromServer = User.getUserFromServer;
         Utilities.compileToAngular('body-loading-div', $scope);
         $scope.root.loader = {body: {hide:false}};
 
@@ -263,6 +264,12 @@ angular.module('uguru.util.controllers')
 
 
                 $scope.categories = Category.categories.slice();
+                for (var i = 0; i < $scope.categories.length; i++) {
+                    var indexCategory = $scope.categories[i];
+                    if (indexCategory.id === 4) {
+                        $scope.categories[i].name = 'Tech';
+                    }
+                }
                 callback && callback(Category.categories);
                 console.log($scope.categories.length, 'categories loaded', Category.categories);
 
@@ -287,7 +294,10 @@ angular.module('uguru.util.controllers')
 
 
         var saveCategoriesToRootScope = function(categories) {
-            $scope.categories = categories;
+
+            $scope.categories = categories.filter(function(category, index) {
+              return category.is_active;
+            })
         }
         $scope.getCategories(saveCategoriesToRootScope)
 
@@ -382,8 +392,9 @@ angular.module('uguru.util.controllers')
         };
 
 
-
-        var isSideMenuOpen = function(ratio) {
+        $timeout(function() {
+            if (!$scope.desktopMode && $state.current.name !== 'root.splash') {
+                var isSideMenuOpen = function(ratio) {
             if (!ratio && ratio !== -1) {
                 console.log('status bar is closing');
                 $scope.sideMenuActive = false;
@@ -394,30 +405,33 @@ angular.module('uguru.util.controllers')
 
                 }
 
-            } else {
-                console.log('status bar is opening');
-                $scope.sideMenuActive = true;
-                // $scope.sideMenuActive = true;
+                } else {
+                    console.log('status bar is opening');
+                    $scope.sideMenuActive = true;
+                    // $scope.sideMenuActive = true;
 
-                if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
+                    if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
 
-                    window.StatusBar.styleLightContent();
+                        window.StatusBar.styleLightContent();
+
+                    }
 
                 }
-
+                $ionicSlideBoxDelegate.update();
             }
-            $ionicSlideBoxDelegate.update();
-        }
 
 
-        //UGH I HATE MY LIFE FUCK YOU IONIC
-        var getIonicSideMenuOpenRatio = function() {
+            //UGH I HATE MY LIFE FUCK YOU IONIC
+            var getIonicSideMenuOpenRatio = function() {
 
-            var openRatio = $ionicSideMenuDelegate.getOpenRatio();
-            return openRatio;
-        }
+                var openRatio = $ionicSideMenuDelegate.getOpenRatio();
+                return openRatio;
+            }
 
-        $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
+            $scope.$watch(getIonicSideMenuOpenRatio, isSideMenuOpen);
+            }
+        }, 500);
+
 
         $scope.loader = {
             showMsg: function(message, delay, duration) {
@@ -793,7 +807,7 @@ angular.module('uguru.util.controllers')
         if ($state.current.name !== 'root.home') {
             $timeout(function() {
                 $scope.root.loader.body.hide = true;
-            }, 1500)
+            }, TIMEOUT_UNTIL_END_OF_LOADER);
         }
 
 
