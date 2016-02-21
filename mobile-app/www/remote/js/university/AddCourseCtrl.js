@@ -91,6 +91,7 @@ angular.module('uguru.util.controllers')
 
 			if ($scope.user.id) {
 				$scope.user.updateAttr('add_student_course', $scope.user, course, null, $scope);
+				$scope.search_text.course = '';
 			}
 		};
 

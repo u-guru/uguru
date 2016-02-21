@@ -25,7 +25,7 @@
 				</svg>
 			</a>
 			<a ng-if='!root.vars.guru_mode && user.credits && user.credits > 0' class='mright20 weight-400' style='min-width:auto'>
-				<h1 style='font-size:30px'><span class='weight-900'>${{user.credits}}</span>&nbsp;&nbsp;|&nbsp;&nbsp;</h1>
+				<h1 style='font-size:30px'><span name='user-credits' class='weight-900'>${{user.credits}}</span>&nbsp;&nbsp;|&nbsp;&nbsp;</h1>
 			</a>
 			<a id="top-settings" class='relative' ng-click='toggleDesktopSettings()'>
 				<img ng-if='user.profile_url' ng-src='{{user.profile_url}}' />

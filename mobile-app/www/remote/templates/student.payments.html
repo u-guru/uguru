@@ -48,8 +48,8 @@
 									<div class='ugrid-3 desktop-cards-container full-x' ng-class="{'ugrid-4':user.payment_cards.length === 2}">
 										<div class='flex-wrap-center' ng-if='user.payment_cards.length <= 2'>
 										</div>
-										<div id='student-payment-cards' class='p20xy relative flex-wrap-center' ng-repeat='card in user.payment_cards'>
-											<a class='credit-card-wrapper full-xy absolute p20xy'>
+										<div name='card' id='student-payment-cards' class='p20xy relative flex-wrap-center' ng-repeat='card in user.payment_cards'>
+											<a name='cards-remove' class='credit-card-wrapper full-xy absolute p20xy'>
 												<div class='credit-card-remove-link absolute full-xy invisible flex-wrap-center uppercase' ng-click='removeStudentPaymentCard(card)'>
 													<h1> Remove </h1>
 												</div>
@@ -69,7 +69,7 @@
 									                </h3>
 								            	</div>
 								            	<div class='default-text text-center bottom-0' ng-if='!card.is_default_payment'>
-									                <div ng-click='setStudentCardDefault(card)'>
+									                <div  name='cards-default' ng-click='setStudentCardDefault(card)'>
 										                <h3 class='p10xy'>
 										                  <strong class='uppercase txt-slate'>Set to default</strong>
 										                </h3>
@@ -105,7 +105,7 @@
 											<div class="input-field relative full-x">
 						                      <input ng-model='card.number' ng-disabled='card.view_only' autocomplete="off" id="card-number" type="tel" class="validate" placeholder="**** **** **** ****"/>
 						                      <label for="email" class='active'>Card Number</label>
-						                      <a ng-show="card.number.length" ng-click='card.number = "";' class="desktop-input-close-icon side-icon">
+						                      <a name='number-clear' ng-show="card.number.length" ng-click='card.number = "";' class="desktop-input-close-icon side-icon">
 						                          <i class='icon ion-close-circled'> </i>
 						                      </a>
 						                  	</div>
@@ -114,7 +114,7 @@
 						                          <div class="input-field">
 						                              <input autocomplete="off" ng-disabled='card.view_only' ng-model='card.exp' id="exp-date" type="tel" placeholder="09 / 17" class="validate" />
 						                              <label for="password" class='active'>Expiration Date</label>
-						                              <a ng-show="card.exp.length" ng-click='card.exp = "";' class="desktop-input-close-icon side-icon">
+						                              <a name='exp-clear' ng-show="card.exp.length" ng-click='card.exp = "";' class="desktop-input-close-icon side-icon">
 						                                  <i class='icon ion-close-circled'> </i>
 						                              </a>
 						                          </div>
@@ -123,7 +123,7 @@
 						                          <div class="input-field">
 						                              <input autocomplete="off" ng-model='card.cvc' id="cvv-number" type="tel" class="validate" placeholder='999' />
 						                              <label for="password" class="active">CVV</label>
-						                              <a class="desktop-input-close-icon side-icon" ng-show="card.cvc.length">
+						                              <a name='cvc-clear' class="desktop-input-close-icon side-icon" ng-show="card.cvc.length">
 						                                  <i class='icon ion-close-circled' ng-click='card.csv = ""'> </i>
 						                              </a>
 						                          </div>

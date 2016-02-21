@@ -154,7 +154,7 @@
 		<section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear">
 			<div class="splash-hero-nav desktop opacity-0 high-z-index" class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
                 <div>
-                    <a class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()'>
+                    <a name='category'  class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()'>
                         <span>{{selectedCategory.name}}</span>
                         <svg viewBox="0 0 100 100">
                             <path d="M14,32 L50,68 L86,32"></path>
@@ -178,7 +178,7 @@
                 </div>
                 <h2>@</h2>
                 <div>
-                    <a class="bg-cal" style='background-color:{{selectedUniversity.school_color_dark}}' ng-click="page.dropdowns.university.toggle()">
+                    <a name='university' class="bg-cal" style='background-color:{{selectedUniversity.school_color_dark}}' ng-click="page.dropdowns.university.toggle()">
                         <span>{{selectedUniversity.short_name || selectedUniversity.name}}</span>
                         <svg viewBox="0 0 100 100">
                             <path d="M14,32 L50,68 L86,32"></path>
@@ -771,7 +771,7 @@
     					<div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
     						<!-- Slide # 1-->
                             <!-- university slide #1 -->
-                            <div class="swiper-slide" class-on-clear="null:inject#splash-university|clear, null:inject.projector-content|clear" class-on-activate="null:inject#splash-university|opacity-1, null:inject.projector-content|activate" style='overflow:hidden !important;'>
+                            <div id='slide-1' class="swiper-slide" class-on-clear="null:inject#splash-university|clear, null:inject.projector-content|clear" class-on-activate="null:inject#splash-university|opacity-1, null:inject.projector-content|activate" style='overflow:hidden !important;'>
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>
@@ -1019,9 +1019,8 @@
                                     </div>
                                 </div>
                             </div>
-
                             <!-- become a guru -->
-                            <div class="swiper-slide swiper-slide-gallery" class-on-activate="pulse:anim:inject#become-guru|activate">
+                            <div id='slide-3' class="swiper-slide swiper-slide-gallery" class-on-activate="pulse:anim:inject#become-guru|activate">
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>
