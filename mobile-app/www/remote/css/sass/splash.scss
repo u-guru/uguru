@@ -1072,28 +1072,11 @@
 				.splash-hero-marker {
 					position: absolute;
 					&.visible {
+						@include opacity-important(1);
 						z-index: 9;
 					}
 					&:not(:first-child) {
 						display: none;
-					}
-					&:nth-child(1) {
-						@include prefix(animation-delay, 500ms, webkit moz ms o);
-					}
-					&:nth-child(2) {
-						@include prefix(animation-delay, 1500ms, webkit moz ms o);
-					}
-					&:nth-child(3) {
-						@include prefix(animation-delay, 1200ms, webkit moz ms o);
-					}
-					&:nth-child(4) {
-						@include prefix(animation-delay, 1400ms, webkit moz ms o);
-					}
-					&:nth-child(5) {
-						@include prefix(animation-delay, 1100ms, webkit moz ms o);
-					}
-					&:nth-child(6) {
-						@include prefix(animation-delay, 1000ms, webkit moz ms o);
 					}
 					.location {
 						@include round;
@@ -1212,7 +1195,7 @@
 						height: 64px;
 						border-width: 2px;
 						left: 14px;
-						background-color: $slate;
+						background-color: $shamrock;
 					}
 					.map-tooltip-window.top + .user-icon {
 						top: 28px;
@@ -1583,6 +1566,7 @@
 										width: 64px;
 										height: 64px;
 										border-width: 2px;
+										background-color: $shamrock;
 									}
 								}
 							}
@@ -1978,6 +1962,7 @@
 							@include prefix(animation-delay, 1700ms, webkit moz ms o);
 						}
 						&.first {
+							@include prefix(transition-delay, 3500ms, webkit moz ms o);
 							* {
 								@include prefix(transition-delay, 3500ms, webkit moz ms o);
 							}

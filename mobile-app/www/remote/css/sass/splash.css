@@ -1695,59 +1695,13 @@
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.visible {
+  filter: alpha(opacity=100) !important;
+  opacity: 1 !important;
   z-index: 9;
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:not(:first-child) {
   display: none;
-}
-
-.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(1) {
-  -webkit-animation-delay: 500ms;
-  -moz-animation-delay: 500ms;
-  -ms-animation-delay: 500ms;
-  -o-animation-delay: 500ms;
-  animation-delay: 500ms;
-}
-
-.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(2) {
-  -webkit-animation-delay: 1500ms;
-  -moz-animation-delay: 1500ms;
-  -ms-animation-delay: 1500ms;
-  -o-animation-delay: 1500ms;
-  animation-delay: 1500ms;
-}
-
-.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(3) {
-  -webkit-animation-delay: 1200ms;
-  -moz-animation-delay: 1200ms;
-  -ms-animation-delay: 1200ms;
-  -o-animation-delay: 1200ms;
-  animation-delay: 1200ms;
-}
-
-.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(4) {
-  -webkit-animation-delay: 1400ms;
-  -moz-animation-delay: 1400ms;
-  -ms-animation-delay: 1400ms;
-  -o-animation-delay: 1400ms;
-  animation-delay: 1400ms;
-}
-
-.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(5) {
-  -webkit-animation-delay: 1100ms;
-  -moz-animation-delay: 1100ms;
-  -ms-animation-delay: 1100ms;
-  -o-animation-delay: 1100ms;
-  animation-delay: 1100ms;
-}
-
-.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(6) {
-  -webkit-animation-delay: 1000ms;
-  -moz-animation-delay: 1000ms;
-  -ms-animation-delay: 1000ms;
-  -o-animation-delay: 1000ms;
-  animation-delay: 1000ms;
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .location {
@@ -1925,7 +1879,7 @@
   height: 64px;
   border-width: 2px;
   left: 14px;
-  background-color: #40484B;
+  background-color: #69B3A5;
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window.top + .user-icon {
@@ -2496,6 +2450,7 @@
   width: 64px;
   height: 64px;
   border-width: 2px;
+  background-color: #69B3A5;
 }
 
 .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses {
@@ -3089,6 +3044,13 @@
     -ms-animation-delay: 1700ms;
     -o-animation-delay: 1700ms;
     animation-delay: 1700ms;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first {
+    -webkit-transition-delay: 3500ms;
+    -moz-transition-delay: 3500ms;
+    -ms-transition-delay: 3500ms;
+    -o-transition-delay: 3500ms;
+    transition-delay: 3500ms;
   }
   .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first * {
     -webkit-transition-delay: 3500ms;
