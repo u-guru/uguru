@@ -23,7 +23,7 @@
 					</div>
 					<div class='flex-wrap-center'>
 						<ul class='category-card-list'>
-							<li ng-repeat='category in ::categories' ng-if='category.is_active' ng-click='showDesktopSubcategories(category, requestForm)'>
+							<li name='category-menu' ng-repeat='category in ::categories' ng-if='category.is_active' ng-click='showDesktopSubcategories(category, requestForm)'>
 								<div style='background-image: url({{categories_img_base + category.background_url}})'>
 									<a class='bg-{{category.hex_color}}' ng-click='launchCategoryModal(category)'>
 										<div>
@@ -49,7 +49,7 @@
 						</ul>
 						<div class='flex-wrap-center subcategory-card-list sub-{{::category.hex_color}} ng-class:{"selected":category.id == requestForm.category.id, "not-selected": requestForm.category.id && requestForm.category.id !== category.id }' ng-repeat='category in ::categories'>
 							<ul class="category-card-list">
-								<li ng-repeat='subcategory in ::category.subcategories' ng-click='requestForm.setCategory(requestForm, subcategory)'>
+								<li name='sub-category' ng-repeat='subcategory in ::category.subcategories' ng-click='requestForm.setCategory(requestForm, subcategory)'>
 									<div class="p20x p15y bg-{{::category.hex_color}}">
 										<span class='bg-{{::category.hex_color}}'>
 											<div class='p05xy'>

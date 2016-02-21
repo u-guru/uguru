@@ -1260,7 +1260,7 @@
         left: 0;
         width: 100%;
         height: 100%; }
-        .splash-landing > section.splash-hero .splash-hero-map ui-gmap-google-map {
+        .splash-landing > section.splash-hero .splash-hero-map div {
           filter: alpha(opacity=20);
           opacity: 0.2;
           width: 100%;
@@ -1472,9 +1472,37 @@
             width: 260px;
             height: 270px; }
             .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.top {
-              top: 1px; }
+              top: 2px; }
             .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom {
-              bottom: 1px; }
+              bottom: 2px; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom .map-tooltip-guru:before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 0;
+                height: 0;
+                border: 15px solid transparent;
+                top: -30px; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom .map-tooltip-guru.bg-delivery:before {
+                border-bottom-color: rgba(240, 79, 84, 0.25); }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom .map-tooltip-guru.bg-freelancing:before {
+                border-bottom-color: rgba(229, 117, 60, 0.25); }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom .map-tooltip-guru.bg-baking:before {
+                border-bottom-color: rgba(246, 198, 78, 0.25); }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom .map-tooltip-guru.bg-photography:before {
+                border-bottom-color: rgba(129, 181, 102, 0.25); }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom .map-tooltip-guru.bg-tech:before {
+                border-bottom-color: rgba(85, 164, 183, 0.25); }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom .map-tooltip-guru.bg-household:before {
+                border-bottom-color: rgba(120, 114, 227, 0.25); }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom .map-tooltip-guru.bg-athletic:before {
+                border-bottom-color: rgba(154, 91, 197, 0.25); }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom .map-tooltip-guru.bg-academic:before {
+                border-bottom-color: rgba(230, 56, 155, 0.25); }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom.left .map-tooltip-guru:before {
+                left: 30px; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom.right .map-tooltip-guru:before {
+                right: 30px; }
             .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text > div {
               -ms-box-orient: horizontal;
               display: -webkit-box;
@@ -1502,15 +1530,35 @@
             .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text h2 {
               font-size: 16px;
               font-weight: 600; }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru {
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-delivery {
+              background: rgba(240, 79, 84, 0.25); }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-freelancing {
+              background: rgba(229, 117, 60, 0.25); }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-baking {
+              background: rgba(246, 198, 78, 0.25); }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-photography {
+              background: rgba(129, 181, 102, 0.25); }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-tech {
+              background: rgba(85, 164, 183, 0.25); }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-household {
+              background: rgba(120, 114, 227, 0.25); }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-athletic {
+              background: rgba(154, 91, 197, 0.25); }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-academic {
               background: rgba(230, 56, 155, 0.25); }
-              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:first-child {
-                -webkit-transform: translateX(50px);
-                -moz-transform: translateX(50px);
-                -ms-transform: translateX(50px);
-                -o-transform: translateX(50px);
-                transform: translateX(50px);
-                width: calc(100% - 25px); }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:first-child {
+              -webkit-transform: translateX(50px);
+              -moz-transform: translateX(50px);
+              -ms-transform: translateX(50px);
+              -o-transform: translateX(50px);
+              transform: translateX(50px);
+              width: calc(100% - 25px); }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:last-child {
+              -webkit-transform: translateX(12.5px);
+              -moz-transform: translateX(12.5px);
+              -ms-transform: translateX(12.5px);
+              -o-transform: translateX(12.5px);
+              transform: translateX(12.5px); }
               .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:last-child svg {
                 display: block;
                 width: 25px;
@@ -1521,7 +1569,22 @@
                   stroke-width: 8px;
                   stroke-linecap: round;
                   stroke-linejoin: round; }
-              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h1 {
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h1 {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-align-content: center;
+              align-content: center;
+              -webkit-align-items: center;
+              align-items: center;
+              font-size: 20px;
+              font-weight: 600; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h1 .map-tooltip-course {
+                border-radius: 1000px;
                 -ms-box-orient: horizontal;
                 display: -webkit-box;
                 display: -moz-box;
@@ -1533,31 +1596,16 @@
                 align-content: center;
                 -webkit-align-items: center;
                 align-items: center;
-                font-size: 20px;
-                font-weight: 600; }
-                .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h1 .map-tooltip-course {
-                  border-radius: 1000px;
-                  -ms-box-orient: horizontal;
-                  display: -webkit-box;
-                  display: -moz-box;
-                  display: -ms-flexbox;
-                  display: -moz-flex;
-                  display: -webkit-flex;
-                  display: flex;
-                  -webkit-align-content: center;
-                  align-content: center;
-                  -webkit-align-items: center;
-                  align-items: center;
-                  background: rgba(230, 56, 155, 0.25);
-                  border: 2px solid white;
-                  padding: 0 6px;
-                  margin-left: 5px;
-                  height: 24px;
-                  font-size: 10px; }
-              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h2 {
-                color: rgba(255, 255, 255, 0.5); }
-              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru .rating-stars {
-                margin: 0; }
+                background: rgba(230, 56, 155, 0.25);
+                border: 2px solid white;
+                padding: 0 6px;
+                margin-left: 5px;
+                height: 24px;
+                font-size: 10px; }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h2 {
+              color: rgba(255, 255, 255, 0.5); }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru .rating-stars {
+              margin: 0; }
             .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-location {
               position: relative; }
               .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-location h1 {
@@ -3658,6 +3706,7 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   -webkit-align-content: center;
@@ -7963,6 +8012,8 @@
   display: -webkit-flex;
   display: flex;
 >>>>>>> 190d290e06b11e9a8d3eff176c0428e12e26c80c
+=======
+>>>>>>> dev-splash-samir
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;

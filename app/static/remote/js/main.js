@@ -13,6 +13,7 @@ if (LOCAL) {
   BASE = 'remote/';
   BASE_URL = _ipaddress;
   REST_URL = "http://localhost:5000";
+  // REST_URL = "http://192.168.42.70:5000";
   // BASE_URL = _ipaddress;
 
   // REST_URL = 'https://192.168.0.107:5000';
@@ -510,7 +511,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.splash', {
         url: '/splash:categoryId:universityId',
         templateUrl: BASE + 'templates/splash.html',
-        params: {category: {name: 'Academic', id:5, hex_color:'academic'}, university: {latitude: "37.8718992", longitude: "-122.2585399",name: 'UC Berkeley', id:2307, school_color_dark: "#023360", school_color_light: "#FBB431", short_name: "UC Berkeley"}},
+        params: {category: {name: 'Academic', id:5, hex_color:'academic'}, university: {latitude: "37.8718992", longitude: "-122.2585399",name: 'UC Berkeley', id:2307, school_color_dark: "#023360", school_tiny_name: 'Cal', school_color_light: "#FBB431", short_name: "UC Berkeley"}},
         controller: "SplashController"
   }).
   state('root.student-conversations', {

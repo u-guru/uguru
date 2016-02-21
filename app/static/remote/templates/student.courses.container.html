@@ -44,7 +44,7 @@
 				</li>
 			</ul>
 			<ul  class='desktop-card-list'>
-				<li name='guru-courses' ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 10 track by course.id' ng-click='addSelectedStudentCourse(course)'>
+				<li name='guru-courses' ng-repeat='course in courses | filter:search_text.course:strict | limitTo: 8 track by course.id' ng-click='addSelectedStudentCourse(course)'>
 					<a ng-if='course.full_name || course.title'>
 						<span>
 							<span class="course-name">{{course.short_name}}</span>
