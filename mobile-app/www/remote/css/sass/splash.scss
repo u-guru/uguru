@@ -1235,10 +1235,75 @@
 						width: 260px;
 						height: 270px;
 						&.top {
-							top: 1px;
+							top: 2px;
 						}
 						&.bottom {
-							bottom: 1px;
+							bottom: 2px;
+							.map-tooltip-guru {
+								&:before {
+									content: "";
+									display: block;
+									position: absolute;
+									width: 0;
+									height: 0;
+									border: 15px solid transparent;
+									top: -30px;
+								}
+								&.bg-delivery {
+									&:before {
+										border-bottom-color: rgba($auburn, .25);
+									}
+								}
+								&.bg-freelancing {
+									&:before {
+										border-bottom-color: rgba($orange, .25);
+									}
+								}
+								&.bg-baking {
+									&:before {
+										border-bottom-color: rgba($gold, .25);
+									}
+								}
+								&.bg-photography {
+									&:before {
+										border-bottom-color: rgba($moola, .25);
+									}
+								}
+								&.bg-tech {
+									&:before {
+										border-bottom-color: rgba($azure, .25);
+									}
+								}
+								&.bg-household {
+									&:before {
+										border-bottom-color: rgba($cobalt, .25);
+									}
+								}
+								&.bg-athletic {
+									&:before {
+										border-bottom-color: rgba($eggplant, .25);
+									}
+								}
+								&.bg-academic {
+									&:before {
+										border-bottom-color: rgba($cerise, .25);
+									}
+								}
+							}
+							&.left {
+								.map-tooltip-guru {
+									&:before {
+										left: 30px;
+									}
+								}
+							}
+							&.right {
+								.map-tooltip-guru {
+									&:before {
+										right: 30px;
+									}
+								}
+							}
 						}
 						> div {
 							@include flex;
@@ -1262,13 +1327,37 @@
 							font-weight: 600;
 						}
 						.map-tooltip-guru {
-							background: rgba($cerise, .25);
+							&.bg-delivery {
+								background: rgba($auburn, .25);
+							}
+							&.bg-freelancing {
+								background: rgba($orange, .25);
+							}
+							&.bg-baking {
+								background: rgba($gold, .25);
+							}
+							&.bg-photography {
+								background: rgba($moola, .25);
+							}
+							&.bg-tech {
+								background: rgba($azure, .25);
+							}
+							&.bg-household {
+								background: rgba($cobalt, .25);
+							}
+							&.bg-athletic {
+								background: rgba($eggplant, .25);
+							}
+							&.bg-academic {
+								background: rgba($cerise, .25);
+							}
 							> div {
 								&:first-child {
 									@include prefix(transform, translateX(50px), webkit moz ms o);
 									width: calc(100% - 25px);
 								}
 								&:last-child {
+									@include prefix(transform, translateX(12.5px), webkit moz ms o);
 									svg {
 										display: block;
 										width: 25px;
