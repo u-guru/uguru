@@ -58,6 +58,8 @@
         display: -moz-flex;
         display: -webkit-flex;
         display: flex;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-align-items: center;
         align-items: center;
         background: #69B3A5;
@@ -341,6 +343,8 @@
         display: -moz-flex;
         display: -webkit-flex;
         display: flex;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-align-items: center;
         align-items: center;
         padding: 7.5px;
@@ -569,6 +573,8 @@
         display: -moz-flex;
         display: -webkit-flex;
         display: flex;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-align-items: center;
         align-items: center;
         margin-top: -3px;
@@ -583,6 +589,8 @@
           display: -moz-flex;
           display: -webkit-flex;
           display: flex;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-align-items: center;
           align-items: center;
           color: #757575;
@@ -1012,6 +1020,8 @@
         display: -moz-flex;
         display: -webkit-flex;
         display: flex;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-align-items: center;
         align-items: center;
         margin-bottom: 15px;
@@ -1438,6 +1448,8 @@
           font-weight: 400;
           color: #40484B; }
         .request-slide.request-confirm .request-content > div > div .tag-list {
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-align-items: center;
           align-items: center;
           margin: 5px 15px 0; }
@@ -1488,6 +1500,8 @@
             -ms-flex-flow: row wrap;
             -webkit-flex-flow: row wrap;
             flex-flow: row wrap;
+            -webkit-align-content: center;
+            align-content: center;
             -webkit-align-items: center;
             align-items: center;
             margin: 7.5px;
@@ -2739,6 +2753,8 @@
           display: -moz-flex;
           display: -webkit-flex;
           display: flex;
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-align-items: center;
           align-items: center;
           position: absolute;
@@ -2901,6 +2917,8 @@
             display: -moz-flex;
             display: -webkit-flex;
             display: flex;
+            -webkit-align-content: center;
+            align-content: center;
             -webkit-align-items: center;
             align-items: center; }
             #timeline > section > ul > li article footer ul li:first-child span {
