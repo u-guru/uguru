@@ -1401,8 +1401,6 @@ angular.module('uguru.util.controllers')
         })
       }
 
-
-
       var updateWindowToMarker = function(window_obj, model_obj) {
         window_obj.coords = {latitude:model_obj.latitude, longitude:model_obj.longitude};
         window_obj.university = model_obj.university;

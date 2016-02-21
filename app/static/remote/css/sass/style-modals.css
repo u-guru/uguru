@@ -632,6 +632,8 @@
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-align-items: center;
     align-items: center;
     margin-top: -15px;
@@ -1798,6 +1800,8 @@
       display: -moz-flex;
       display: -webkit-flex;
       display: flex;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-align-items: center;
       align-items: center;
       position: relative;
@@ -1818,6 +1822,8 @@
         display: -moz-flex;
         display: -webkit-flex;
         display: flex;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-align-items: center;
         align-items: center;
         padding: 0 15px;

@@ -179,6 +179,8 @@
 	justify-content: center;
 }
 @mixin flex-center-vertical {
+	-webkit-align-content: center;
+	align-content: center;
 	-webkit-align-items: center;
 	align-items: center;
 }

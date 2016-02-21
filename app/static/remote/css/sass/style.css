@@ -630,6 +630,8 @@ section {
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-align-items: center;
     align-items: center;
     width: 100%;
@@ -1693,6 +1695,8 @@ section {
         display: -moz-flex;
         display: -webkit-flex;
         display: flex;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-align-items: center;
         align-items: center;
         width: 100%;
@@ -2102,6 +2106,8 @@ section {
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-align-items: center;
   align-items: center;
   width: 100%;
@@ -2676,6 +2682,8 @@ section {
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -webkit-align-content: center;
+  align-content: center;
   -webkit-align-items: center;
   align-items: center;
   position: relative;
@@ -2807,6 +2815,8 @@ section {
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-align-items: center;
     align-items: center;
     background: rgba(240, 79, 84, 0.9);

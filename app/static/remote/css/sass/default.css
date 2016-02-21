@@ -2685,6 +2685,8 @@ input[type=range]:focus::-ms-fill-upper {
       -ms-flex-flow: row wrap;
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-align-items: center;
       align-items: center; }
     .guru-popup > div input {
@@ -3768,6 +3770,8 @@ input[type=range]:focus::-ms-fill-upper {
       display: -moz-flex;
       display: -webkit-flex;
       display: flex;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-align-items: center;
       align-items: center; }
       .pf-card .pf-card-top ul li {
@@ -3801,6 +3805,8 @@ input[type=range]:focus::-ms-fill-upper {
             display: -moz-flex;
             display: -webkit-flex;
             display: flex;
+            -webkit-align-content: center;
+            align-content: center;
             -webkit-align-items: center;
             align-items: center;
             position: relative;
@@ -4278,6 +4284,8 @@ input[type=range]:focus::-ms-fill-upper {
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-align-items: center;
     align-items: center;
     background: #576267;
@@ -4861,6 +4869,8 @@ input[type=range]:focus::-ms-fill-upper {
       display: -moz-flex;
       display: -webkit-flex;
       display: flex;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-align-items: center;
       align-items: center;
       display: block;

@@ -314,6 +314,8 @@
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-align-items: center;
     align-items: center;
     padding: 0;
@@ -331,6 +333,8 @@
       display: -moz-flex;
       display: -webkit-flex;
       display: flex;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-align-items: center;
       align-items: center;
       height: 100%;
@@ -349,6 +353,8 @@
       display: -moz-flex;
       display: -webkit-flex;
       display: flex;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-align-items: center;
       align-items: center;
       height: 100%;
@@ -1849,6 +1855,8 @@
         display: -moz-flex;
         display: -webkit-flex;
         display: flex;
+        -webkit-align-content: center;
+        align-content: center;
         -webkit-align-items: center;
         align-items: center;
         background: #485d5d;
@@ -2641,6 +2649,8 @@
       -ms-flex-flow: row wrap;
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap;
+      -webkit-align-content: center;
+      align-content: center;
       -webkit-align-items: center;
       align-items: center;
       margin-top: -5px;
