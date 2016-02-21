@@ -217,8 +217,13 @@
 				</div>
 			</div>
 			<!-- @gabrielle-note, the 3000 ms is to generate the static map URL with the right icon-->
-            <div class="splash-hero-map opacity-0" class-on-clear="slideOutUp:animOut" class-on-activate="fadeIn:anim" class-on-activate-delay="3000">
-				<div class="splash-scene-map-img" style="background-image: url('{{selectedUniversity.static_map_url}}')"></div>
+            <div class="splash-hero-map"  class-on-clear="slideOutUp:animOut" class-on-activate="fadeIn:anim" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
+				<!--Initial map class: init-university-map -->
+                <ui-gmap-google-map class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events" id='splash-google-map-selected-university' control="selectedUniversity.map.control" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
+                    <ui-gmap-marker coords="selectedUniversity.map.marker.coords" idKey="selectedUniversity.map.marker.id" options="selectedUniversity.map.marker.options" icon="selectedUniversity.map.marker.icon">
+                    </ui-gmap-marker>
+                </ui-gmap-google-map>
+                <!-- <div class="splash-scene-map-img" style="background-image: url('{{selectedUniversity.static_map_url}}')"></div> -->
                 <!-- zoom="requestForm.map.zoom"
                     pan="requestForm.map.pan"
                     options="requestForm.map.options" -->
