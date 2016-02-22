@@ -20,7 +20,7 @@ if [  $# -eq 1 ]; then
 		printf "${GREEN}Commit with message : ${RED}$1${NC} \n"
 		git commit -m '$1'
 		printf "${GREEN}Pushing Staging from ${RED}$branch${NC}\n"
-		# git push staging $branch:master
+		git push staging $branch:master
 		printf "${GREEN}DONE${NC}\n"
 	else
 		printf "${GREEN}Dude please make sure you are ready to push ^_^凸 jk~~lol ${NC} \n"
