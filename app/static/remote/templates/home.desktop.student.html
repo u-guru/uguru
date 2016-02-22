@@ -5,7 +5,7 @@
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 
 		<div class="main relative" id='desktop-student-home-main'>
-			<ion-pane id='cta-modal-student-request' class='absolute full-xy hide-display cta-modal bg-charcoal' ng-controller='RequestController' ng-include="img_base + BASE + 'templates/request.html'"></ion-pane>
+			<ion-pane id='cta-modal-student-request' class='absolute full-xy hide-display cta-modal bg-charcoal' ng-if='!active_relationship || !active_relationship.nav.menu.active_index === 6' ng-controller='RequestController' ng-include="img_base + BASE + 'templates/request.html'"></ion-pane>
 
 			<ion-pane id='cta-modal-content' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/content.general.html'"></ion-pane>
 
