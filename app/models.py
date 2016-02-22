@@ -972,6 +972,12 @@ class Calendar_Event(Base):
         primaryjoin="Portfolio_Item.id == Calendar_Event.portfolio_item_id",
         backref="calendar_events")
 
+    relationship_id = Column(Integer, ForeignKey('relationship.id'))
+    _relationship = relationship("Relationship",
+        uselist=False,
+        primaryjoin="Relationship.id == Calendar_Event.relationship_id",
+        backref="calendar_events")
+
     # shop_id = Column(Integer, ForeignKey('shop.id'))
     # shop = relationship("Shop", uselist=False, backref="portfolio_items")
 
@@ -1521,12 +1527,20 @@ class Position(Base):
         backref="positions"
     )
 
+
+
     session_id = Column(Integer, ForeignKey('session.id'))
     session = relationship("Session",
         uselist=False,
         primaryjoin = "Session.id == Position.session_id",
         backref="positions"
     )
+
+    relationship_id = Column(Integer, ForeignKey('relationship.id'))
+    _relationship = relationship("Relationship",
+        uselist=False,
+        primaryjoin = "Relationship.id == Position.relationship_id",
+        backref="positions")
 
 
 
@@ -2572,6 +2586,44 @@ class Relationship(Base):
         primaryjoin = "(User.id==Relationship.student_id)",
                         uselist=False,
                         backref="guru_relationships")
+
+    guru_positions = relationship("Position",
+        primaryjoin = "(Position.user_id == Relationship.guru_id) & "\
+                        "(Relationship.id == Position.relationship_id)")
+
+    student_positions = relationship("Position",
+        primaryjoin = "(Position.user_id == Relationship.student_id) & "\
+                        "(Relationship.id == Position.relationship_id)")
+
+
+    guru_files = relationship("File",
+        primaryjoin = "(File.user_id == Relationship.guru_id) & "\
+                        "(Relationship.id == File.relationship_id)")
+
+    student_files = relationship("File",
+        primaryjoin = "(File.user_id == Relationship.student_id) & "\
+                        "(Relationship.id == File.relationship_id)")
+
+    guru_transactions = relationship("Transaction",
+        primaryjoin = "(Transaction.user_id == Relationship.guru_id) & "\
+                        "(Relationship.id == Transaction.relationship_id)")
+
+    student_transactions = relationship("Transaction",
+        primaryjoin = "(Transaction.user_id == Relationship.student_id) & "\
+                        "(Relationship.id == Transaction.relationship_id)")
+
+
+    student_calendar_id = Column(Integer, ForeignKey('calendar.id'))
+    student_calendar = relationship("Calendar",
+        primaryjoin="Calendar.id==Relationship.student_calendar_id",
+        uselist=False)
+
+
+    guru_calendar_id = Column(Integer, ForeignKey('calendar.id'))
+    guru_calendar = relationship("Calendar",
+        primaryjoin="Calendar.id==Relationship.guru_calendar_id",
+        uselist=False
+        )
 
     @staticmethod
     def initFromSession(session):
@@ -3982,6 +4034,13 @@ class   Transaction(Base):
         primaryjoin = "Card.id == Transaction.card_id",
         backref = 'transactions'
         )
+
+    relationship_id = Column(Integer, ForeignKey("relationship.id"))
+    _relationship = relationship("Relationship",
+        uselist = False,
+        primaryjoin = "Relationship.id == Transaction.relationship_id",
+        backref = "transactions"
+    )
 
 
     @staticmethod
