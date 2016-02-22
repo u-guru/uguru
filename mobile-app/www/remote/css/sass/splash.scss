@@ -1062,6 +1062,11 @@
 				&.animated {
 					@include prefix(animation-delay, 200ms, webkit moz ms o);
 				}
+				&.active {
+					@include opacity-important(1);
+					@include prefix(transition, all 1000ms ease-in-out, webkit moz ms o);
+					@include prefix(transition-delay, 200ms, webkit moz ms o);
+				}
 			}
 			.splash-hero-markers {
 				position: absolute;
@@ -1236,40 +1241,64 @@
 									&:before {
 										border-bottom-color: rgba($auburn, .25);
 									}
+									&:hover:before {
+										border-bottom-color: $auburn;
+									}
 								}
 								&.bg-freelancing {
 									&:before {
 										border-bottom-color: rgba($orange, .25);
+									}
+									&:hover:before {
+										border-bottom-color: $orange;
 									}
 								}
 								&.bg-baking {
 									&:before {
 										border-bottom-color: rgba($gold, .25);
 									}
+									&:hover:before {
+										border-bottom-color: $gold;
+									}
 								}
 								&.bg-photography {
 									&:before {
 										border-bottom-color: rgba($moola, .25);
+									}
+									&:hover:before {
+										border-bottom-color: $moola;
 									}
 								}
 								&.bg-tech {
 									&:before {
 										border-bottom-color: rgba($azure, .25);
 									}
+									&:hover:before {
+										border-bottom-color: $azure;
+									}
 								}
 								&.bg-household {
 									&:before {
 										border-bottom-color: rgba($cobalt, .25);
+									}
+									&:hover:before {
+										border-bottom-color: $cobalt;
 									}
 								}
 								&.bg-athletic {
 									&:before {
 										border-bottom-color: rgba($eggplant, .25);
 									}
+									&:hover:before {
+										border-bottom-color: $eggplant;
+									}
 								}
 								&.bg-academic {
 									&:before {
 										border-bottom-color: rgba($cerise, .25);
+									}
+									&:hover:before {
+										border-bottom-color: $cerise;
 									}
 								}
 							}
@@ -1713,7 +1742,7 @@
 					@include prefix(transition-duration, 1000ms, webkit moz ms o);
 					@include prefix(transition-timing-function, ease-in-out, webkit moz ms o);
 					@include prefix(transition-delay, 200ms, webkit moz ms o);
-					// @include prefix(transform, translateY(-55%) scale(.75), webkit moz ms o);
+					@include prefix(transform, translateY(-55%) scale(.75), webkit moz ms o);
 				}
 				.splash-adlib {
 					width: 100%;
