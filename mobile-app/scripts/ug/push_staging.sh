@@ -17,9 +17,9 @@ if [  $# -eq 1 ]; then
 		printf "${GREEN}Pushing ^_^~${NC} \n"
 		printf "${GREEN}Add all the file...${NC} \n"
 		git add -A .
-		printf "${GREEN}Commit with message : ${RED}$1$${NC} \n"
+		printf "${GREEN}Commit with message : ${RED}$1${NC} \n"
 		git commit -m '$1'
-		printf "${GREEN}Pushing Staging ~${NC} \n"
+		printf "${GREEN}Pushing Staging from ~${NC} \n"
 		# git push staging {{CURRENT_BRANCH_NAME}}:master
 	else
 		printf "${GREEN}Plese making sure and run the same command again ^_^ ${NC} \n"
