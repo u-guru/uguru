@@ -1915,6 +1915,13 @@ class Request(Base):
         uselist=False,
         backref="requests")
 
+
+    relationship_id = Column(Integer, ForeignKey('relationship.id'))
+    _relationship = relationship("Relationship",
+        uselist=False,
+        primaryjoin = "Request.relationship_id == Relationship.id",
+        backref="requests")
+
     payment_card_id = Column(Integer, ForeignKey('card.id'))
     payment_card = relationship("Card",
         primaryjoin="Card.id==Request.payment_card_id",
