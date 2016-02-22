@@ -5,6 +5,9 @@
     "type": "git",
     "url": "git://github.com/username/repository.git"
   },
+  "engines" : { 
+    "npm" : ">=0.12.2"
+  },
   "description": "uguru-mobile: An Ionic project",
   "dependencies": {
     "beepbeep": "^1.2.0",

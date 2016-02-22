@@ -4,7 +4,7 @@ RED='\033[0;31m'
 NC='\033[0;0;0m' # No Color
 # 
 if [  $# -eq 0 ]; then
-	printf "${RED} Please add a message ${NC} \n"
+	printf "${RED} Please add a message EX: npm run push-staging 'example message' ${NC} \n"
 	exit
 fi
 
