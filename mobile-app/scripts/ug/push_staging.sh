@@ -21,9 +21,9 @@ if [  $# -eq 1 ]; then
 		git commit -m '$1'
 		printf "${GREEN}Pushing Staging from ${RED}$branch${NC}\n"
 		# git push staging $branch:master
-		printf "${GREEN}DONE{NC}\n"
+		printf "${GREEN}DONE${NC}\n"
 	else
-		printf "${GREEN}Plese making sure and run the same command again ^_^ ${NC} \n"
+		printf "${GREEN}Dude please make sure you are ready to push ^_^凸 jk~~lol ${NC} \n"
 		exit
 	fi
 fi
