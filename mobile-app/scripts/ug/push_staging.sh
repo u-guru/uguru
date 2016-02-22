@@ -19,7 +19,7 @@ if [  $# -eq 1 ]; then
 		git add -A .
 		printf "${GREEN}Commit with message : ${RED}$1${NC} \n"
 		git commit -m '$1'
-		printf "${GREEN}Pushing Staging from ~${NC} \n"
+		printf "${GREEN}Pushing Staging from ${RED}$branch${NC}\n"
 		# git push staging {{CURRENT_BRANCH_NAME}}:master
 	else
 		printf "${GREEN}Plese making sure and run the same command again ^_^ ${NC} \n"
