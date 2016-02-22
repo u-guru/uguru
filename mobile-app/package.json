@@ -83,5 +83,22 @@
     "vinyl-sourcemaps-apply": "^0.1.4"
   },
   "cordovaPlugins": [],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [],
+  "bugs": {
+    "url": "https://github.com/username/repository/issues"
+  },
+  "homepage": "https://github.com/username/repository#readme",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "setup":"chmod 777 ./scripts/ug/push_staging.sh",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "gulp -b",
+    "push-staging": "./scripts/ug/push_staging.sh"
+
+  },
+  "author": "",
+  "license": "ISC"
 }
