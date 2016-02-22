@@ -789,9 +789,9 @@ angular.module('uguru.util.controllers')
         initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
       }
 
-      $timeout(function() {
-        console.log('map' , $scope.selectedUniversity.map)
-      }, 5000);
+      // $timeout(function() {
+      //   console.log('map' , $scope.selectedUniversity.map)
+      // }, 5000);
 
   }
 ])

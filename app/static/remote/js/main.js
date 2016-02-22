@@ -497,7 +497,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.guru-messages-mobile', {
         url: '/messages/',
         templateUrl: BASE + 'templates/messaging.mobile.html',
-        controller: 'GuruMessagesController'
+        controller: 'MessagesController'
   }).
   state('root.messaging', {
         url: '/messaging',

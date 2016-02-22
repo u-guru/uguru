@@ -2605,11 +2605,11 @@ class Relationship(Base):
                         "(Relationship.id == File.relationship_id)")
 
     guru_transactions = relationship("Transaction",
-        primaryjoin = "(Transaction.user_id == Relationship.guru_id) & "\
+        primaryjoin = "(Transaction.guru_id == Relationship.guru_id) & "\
                         "(Relationship.id == Transaction.relationship_id)")
 
     student_transactions = relationship("Transaction",
-        primaryjoin = "(Transaction.user_id == Relationship.student_id) & "\
+        primaryjoin = "(Transaction.student_id == Relationship.student_id) & "\
                         "(Relationship.id == Transaction.relationship_id)")
 
 

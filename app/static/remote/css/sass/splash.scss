@@ -1713,7 +1713,7 @@
 					@include prefix(transition-duration, 1000ms, webkit moz ms o);
 					@include prefix(transition-timing-function, ease-in-out, webkit moz ms o);
 					@include prefix(transition-delay, 200ms, webkit moz ms o);
-					@include prefix(transform, translateY(-55%) scale(.75), webkit moz ms o);
+					// @include prefix(transform, translateY(-55%) scale(.75), webkit moz ms o);
 				}
 				.splash-adlib {
 					width: 100%;
