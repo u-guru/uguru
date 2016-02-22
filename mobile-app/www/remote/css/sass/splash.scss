@@ -692,7 +692,7 @@
 		position: relative;
 		width: 100%;
 		height: auto;
-		
+
 		// SECTION STYLES
 		> header {
 			@include flex;
@@ -1051,8 +1051,8 @@
 				left: 0;
 				width: 100%;
 				height: 100%;
-				div {
-					@include opacity(.2);
+				ui-gmap-google-map {
+					// @include opacity(.2);
 					width: 100%;
 					height: 100%;
 					background-position: center;
@@ -1065,36 +1065,18 @@
 			}
 			.splash-hero-markers {
 				position: absolute;
-				z-index: 2;
 				top: 0;
 				left: 0;
 				width: 100%;
 				height: 100%;
-				&.active {
-					z-index: 4;
-				}
 				.splash-hero-marker {
 					position: absolute;
+					&.visible {
+						@include opacity-important(1);
+						z-index: 9;
+					}
 					&:not(:first-child) {
 						display: none;
-					}
-					&:nth-child(1) {
-						@include prefix(animation-delay, 500ms, webkit moz ms o);
-					}
-					&:nth-child(2) {
-						@include prefix(animation-delay, 1500ms, webkit moz ms o);
-					}
-					&:nth-child(3) {
-						@include prefix(animation-delay, 1200ms, webkit moz ms o);
-					}
-					&:nth-child(4) {
-						@include prefix(animation-delay, 1400ms, webkit moz ms o);
-					}
-					&:nth-child(5) {
-						@include prefix(animation-delay, 1100ms, webkit moz ms o);
-					}
-					&:nth-child(6) {
-						@include prefix(animation-delay, 1000ms, webkit moz ms o);
 					}
 					.location {
 						@include round;
@@ -1102,6 +1084,7 @@
 						width: 10px;
 						height: 10px;
 						position: absolute;
+						border: 2px solid white;
 						&.top {
 							top: -25px;
 						}
@@ -1109,10 +1092,10 @@
 							bottom: -25px;
 						}
 						&.left {
-							left: 30px;
+							left: 30.5px;
 						}
 						&.right {
-							right: 30px;
+							right: 30.5px;
 						}
 						&.bg-delivery {
 							background: $auburn;
@@ -1139,163 +1122,341 @@
 							background: $cerise;
 						}
 					}
-					.message {
-						@include opacity(0);
-						visibility: hidden;
+					.location-text {
+						@include flex;
+						@include prefix(justify-content, center, webkit);
 						position: absolute;
+						font-size: 16px;
+						font-weight: 600;
+						width: 90px;
+						white-space: nowrap;
+						overflow: visible;
+					}
+					.location.left + .location-text {
 						left: 0;
-						svg {
-							width: 262px;
-							height: 182px;
+					}
+					.location.right + .location-text {
+						right: 0;
+					}
+					.location.top + .location-text {
+						top: -40px;
+					}
+					.location.bottom + .location-text {
+						bottom: -40px;
+					}
+					.map-tooltip-window {
+						path, line {
+							@include prefix(transition, all 0ms ease-in-out, webkit moz ms o);
 						}
-						div {
-							@include flex;
-							@include flex-wrap;
-							position: absolute;
-							top: 0;
-							left: 0;
-							width: 100%;
-							height: 100%;
-							padding: 15px;
-							p {
-								width: 100%;
-								font-size: 16px;
-								font-weight: 600;
-								margin: 0 0 8px;
-								text-align: left;
-							}
-							.signature {
-								line-height: 1;
-								margin: -5px 0 0;
-								font-size: 28px;
-								font-weight: 400;
-								font-family: 'Cedarville Cursive', cursive;
-								text-align: center;
-							}
-							button {
-								@include round;
-								@include prefix(align-self, flex-end, webkit);
-								display: block;
-								margin: 0 auto;
-								width: auto;
-								height: 36px;
-								padding-left: 20px!important;
-								padding-right: 20px!important;
-								background: $cerise;
-								font-size: 16px;
-								font-weight: 600;
-								text-transform: uppercase;
-							}
+						.bg {
+							@include prefix(transition-delay, 150ms, webkit moz ms o);
+							@include opacity(0);
+						}
+						.top, .bottom, .left, .right {
+							@include prefix(transition-delay, 300ms, webkit moz ms o);
+						}
+						.left, .right {
+							stroke-dasharray: 540, 540;
+							stroke-dashoffset: 360;
+						}
+						.top {
+							stroke-dasharray: 520, 520;
+							stroke-dashoffset: 340;
+						}
+						.bottom {
+							stroke-dasharray: 400, 400;
+							stroke-dashoffset: 340;
 						}
 						&.top {
-							top: -197px;
+							.top {
+								@include prefix(transform, translate3d(0, -360px, 0), webkit moz ms o);
+							}
 						}
 						&.bottom {
-							bottom: -197px;
+							.top {
+								@include prefix(transform, translate3d(0, 360px, 0), webkit moz ms o);
+							}
+						}
+						&.left {
+							.right {
+								@include prefix(transform, translate3d(-338px, 0, 0), webkit moz ms o);
+							}
+						}
+						&.right {
+							.right {
+								@include prefix(transform, translate3d(338px, 0, 0), webkit moz ms o);
+							}
 						}
 					}
-					.info {
+					.user-icon {
 						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						svg {
-							width: 262px;
-							height: 107px;
-							.line, .fill {
-								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-							}
-							.line {
-								stroke: white;
-								stroke-width: 4px;
-								stroke-linecap: round;
-								stroke-linejoin: round;
-							}
-							.fill {
-								fill: $slate;
-							}
+						position: absolute;
+						width: 64px;
+						height: 64px;
+						border-width: 2px;
+						left: 14px;
+						background-color: $shamrock;
+					}
+					.map-tooltip-window.top + .user-icon {
+						top: 28px;
+					}
+					.map-tooltip-window.bottom + .user-icon {
+						bottom: 30px;
+					}
+					.map-tooltip-window.left + .user-icon {
+						left: 14px;
+					}
+					.map-tooltip-window.right + .user-icon {
+						right: -154px;
+					}
+					.map-tooltip-text {
+						@include opacity(0);
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						@include prefix(transition-delay, 300ms, webkit moz ms o);
+						position: absolute;
+						left: 1px;
+						width: 260px;
+						height: 270px;
+						&.top {
+							top: 2px;
 						}
-						div {
-							@include flex;
-							@include flex-center-vertical;
-							position: absolute;
-							left: 0;
-							width: 100%;
-							height: calc(100% - 19px);
-							padding: 15px;
-							.user-icon {
-								margin: 0;
-								width: 60px;
-								height: 60px;
-								border-width: 2px;
+						&.bottom {
+							bottom: 2px;
+							.map-tooltip-guru {
+								&:before {
+									content: "";
+									display: block;
+									position: absolute;
+									width: 0;
+									height: 0;
+									border: 15px solid transparent;
+									top: -30px;
+								}
+								&.bg-delivery {
+									&:before {
+										border-bottom-color: rgba($auburn, .25);
+									}
+								}
+								&.bg-freelancing {
+									&:before {
+										border-bottom-color: rgba($orange, .25);
+									}
+								}
+								&.bg-baking {
+									&:before {
+										border-bottom-color: rgba($gold, .25);
+									}
+								}
+								&.bg-photography {
+									&:before {
+										border-bottom-color: rgba($moola, .25);
+									}
+								}
+								&.bg-tech {
+									&:before {
+										border-bottom-color: rgba($azure, .25);
+									}
+								}
+								&.bg-household {
+									&:before {
+										border-bottom-color: rgba($cobalt, .25);
+									}
+								}
+								&.bg-athletic {
+									&:before {
+										border-bottom-color: rgba($eggplant, .25);
+									}
+								}
+								&.bg-academic {
+									&:before {
+										border-bottom-color: rgba($cerise, .25);
+									}
+								}
 							}
-							aside {
-								width: 172px;
+							&.left {
+								.map-tooltip-guru {
+									&:before {
+										left: 30px;
+									}
+								}
 							}
-							ul {
-								width: 172px;
-								li {
-									font-size: 14px;
-									font-weight: 600;
-									text-align: left;
-									line-height: 1.3;
-									&:first-child {
-										font-size: 20px;
+							&.right {
+								.map-tooltip-guru {
+									&:before {
+										right: 30px;
 									}
 								}
 							}
 						}
-						&.left {
-							div {
-								ul {
-									padding-left: 15px;
+						> div {
+							@include flex;
+							@include flex-wrap;
+							@include flex-center-vertical;
+							padding: 0 15px;
+							height: calc(100% / 3);
+							text-align: left;
+							&:not(:last-child) {
+								border-bottom: 2px solid white;
+							}
+						}
+						h1, h2, p {
+							width: 100%;
+						}
+						h1, h2 {
+							margin: 0!important;
+						}
+						h2 {
+							font-size: 16px;
+							font-weight: 600;
+						}
+						.map-tooltip-guru {
+							&.bg-delivery {
+								background: rgba($auburn, .25);
+							}
+							&.bg-freelancing {
+								background: rgba($orange, .25);
+							}
+							&.bg-baking {
+								background: rgba($gold, .25);
+							}
+							&.bg-photography {
+								background: rgba($moola, .25);
+							}
+							&.bg-tech {
+								background: rgba($azure, .25);
+							}
+							&.bg-household {
+								background: rgba($cobalt, .25);
+							}
+							&.bg-athletic {
+								background: rgba($eggplant, .25);
+							}
+							&.bg-academic {
+								background: rgba($cerise, .25);
+							}
+							> div {
+								&:first-child {
+									@include prefix(transform, translateX(50px), webkit moz ms o);
+									width: calc(100% - 25px);
+								}
+								&:last-child {
+									@include prefix(transform, translateX(12.5px), webkit moz ms o);
+									svg {
+										display: block;
+										width: 25px;
+										height: 25px;
+										path {
+											@include svg-stroke(white, 8);
+										}
+									}
+								}
+							}
+							h1 {
+								@include flex;
+								@include flex-center-vertical;
+								font-size: 20px;
+								font-weight: 600;
+								.map-tooltip-course {
+									@include round;
+									@include flex;
+									@include flex-center-vertical;
+									background: rgba($cerise, .25);
+									border: 2px solid white;
+									padding: 0 6px;
+									margin-left: 5px;
+									height: 24px;
+									font-size: 10px;
+								}
+							}
+							h2 {
+								color: rgba(white,.5);
+							}
+							.rating-stars {
+								margin: 0;
+							}
+						}
+						.map-tooltip-location {
+							position: relative;
+							h1 {
+								height: 24px;
+								overflow: hidden;
+								font-size: 20px;
+								font-weight: 700;
+							}
+							> div {
+								&:nth-child(1) {
+									@include opacity(.4);
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 100%;
+									height: 100%;
+									background-size: cover;
+									background-position: center;
+								}
+								&:not(:first-child) {
+									position: relative;
+									z-index: 3;
+								}
+								&:nth-child(2) {
+									width: calc(100% - 64px);
+								}
+							}
+							svg {
+								@include round;
+								display: block;
+								width: 64px;
+								height: 64px;
+								border: 2px solid white;
+								background: lighten($slate, 10%);
+								path {
+									@include svg-stroke(white, 4);
 								}
 							}
 						}
-						&.right {
-							div {
-								@include prefix(justify-content, flex-end, webkit);
-								ul {
-									padding-right: 15px;
-									text-align: right;
-								}
-							}
-						}
-						&.bottom {
-							div {
-								bottom: 1px;
-							}
-						}
-						&.top {
-							div {
-								top: 1px;
+						.map-tooltip-message {
+							p {
+								margin: 0;
+								font-size: 16px;
+								font-weight: 600;
 							}
 						}
 					}
-					&.first {
-						.message {
-							@include prefix(animation, bounceInUp 1000ms ease-in 2200ms 1 forwards, webkit moz ms o);
+					&.first, &.active, &:hover {
+						z-index: 12;
+						.user-icon {
+							z-index: 5;
 						}
-					}
-					&.active {
-						.message {
-							@include prefix(animation, bounceInUp 1000ms ease-in 0ms 1 forwards, webkit moz ms o);
+						.map-tooltip-text {
+							@include prefix(transition-delay, 300ms, webkit moz ms o);
 						}
-					}
-					&.first, &.active {
-						.message {
-							visibility: visible;
+						.map-tooltip-window.top.left + .user-icon {
+							@include prefix(transform, translate3d(-30px, -30px, 0) scale(1.26), webkit moz ms o);
 						}
-					}
-					&.not-first {
-						.info {
-							svg, ul {
-
+						.map-tooltip-window.top.right + .user-icon {
+							@include prefix(transform, translate3d(-200px, -30px, 0) scale(1.26), webkit moz ms o);
+						}
+						.map-tooltip-window.bottom.left + .user-icon {
+							@include prefix(transform, translate3d(-30px, -210px, 0) scale(1.26), webkit moz ms o);
+						}
+						.map-tooltip-window.bottom.right + .user-icon {
+							@include prefix(transform, translate3d(-200px, -210px, 0) scale(1.26), webkit moz ms o);
+						}
+						.map-tooltip-window {
+							.bg {
+								@include prefix(transition-delay, 150ms, webkit moz ms o);
+								@include opacity(.95);
+							}
+							.left, .right, .top, .bottom {
+								@include prefix(transition-delay, 0ms, webkit moz ms o);
+								stroke-dashoffset: 0;
+							}
+							.right, .top {
+								@include prefix(transform, translate3d(0, 0, 0), webkit moz ms o);
 							}
 						}
-					}
-					&.inactive {
-						.info {
-							svg, ul {
-
-							}
+						.map-tooltip-text {
+							@include opacity(1);
 						}
 					}
 				}
@@ -1339,9 +1500,6 @@
 					&.active {
 						@include opacity(1);
 					}
-				}
-				&.active {
-					z-index: 5;
 				}
 				&.splash-device-iphone {
 					svg {
@@ -1408,6 +1566,7 @@
 										width: 64px;
 										height: 64px;
 										border-width: 2px;
+										background-color: $shamrock;
 									}
 								}
 							}
@@ -1508,7 +1667,11 @@
 				width: 100%;
 				height: 15px;
 				&.progress.white {
+					@include prefix(transition, 150ms ease-in-out, webkit moz ms o);
 					background: rgba(white,.2);
+					&.active {
+						@include opacity-important(1);
+					}
 					span {
 						background: $shamrock!important;
 						&.animate {
@@ -1546,18 +1709,14 @@
 				z-index: 3;
 				width: 100%;
 				margin-bottom: 75px;
+				&.active {
+					@include prefix(transition-duration, 1000ms, webkit moz ms o);
+					@include prefix(transition-timing-function, ease-in-out, webkit moz ms o);
+					@include prefix(transition-delay, 200ms, webkit moz ms o);
+					// @include prefix(transform, translateY(-55%) scale(.75), webkit moz ms o);
+				}
 				.splash-adlib {
 					width: 100%;
-					.splash-adlib-inside {
-						&.active {
-							h1 {
-								@include prefix(transition-duration, 1000ms, webkit moz ms o);
-								@include prefix(transition-timing-function, cubic-bezier(.42, 0, .58, 1), webkit moz ms o);
-								@include prefix(transition-delay, 200ms, webkit moz ms o);
-								@include prefix(transform, translateY(-430%) scale(.75), webkit moz ms o);
-							}
-						}
-					}
 					h1 {
 						@include flex;
 						@include flex-wrap;
@@ -1682,6 +1841,13 @@
 						margin: 15px auto;
 						padding: 7.5px;
 						width: 100%;
+						&.a {
+							li {
+								a {
+									pointer-events: none!important;
+								}
+							}
+						}
 						li {
 							width: 143px;
 							padding: 7.5px;
@@ -1795,84 +1961,15 @@
 						&:nth-child(1) {
 							@include prefix(animation-delay, 1700ms, webkit moz ms o);
 						}
-						.info {
-							svg {
-								.line-1 {
-									stroke-dasharray: 520, 520;
-									stroke-dashoffset: 338;
-								}
-								.line-2 {
-									stroke-dasharray: 398, 398;
-									stroke-dashoffset: 338;
-								}
-								.fill {
-									@include opacity(0);
-								}
-							}
-							div {
-								aside {
-									width: 0;
-									overflow: hidden;
-								}
-								ul {
-									@include opacity(0);
-								}
-							}
-							&.left {
-								svg {
-									.line-3 {
-										transform: translateX(-338px);
-									}
-								}
-							}
-							&.right {
-								svg {
-									.line-3 {
-										transform: translateX(338px);
-									}
-								}
-							}
-						}
 						&.first {
-							.info {
-								svg {
-									path, line {
-										@include prefix(transition-delay, 3500ms, webkit moz ms o);
-									}
-								}
-								div {
-									aside {
-										@include prefix(transition-delay, 3500ms, webkit moz ms o);
-										ul {
-											@include prefix(transition-delay, 3650ms, webkit moz ms o);
-										}
-									}
-								}
-							}
-							.message {
-								@include prefix(animation, bounceInUp 1000ms ease-in 3500ms 1 forwards, webkit moz ms o);
+							@include prefix(transition-delay, 3500ms, webkit moz ms o);
+							* {
+								@include prefix(transition-delay, 3500ms, webkit moz ms o);
 							}
 						}
-						&.first, &.active, &:hover {
-							.info {
-								svg {
-									.line-3 {
-										transform: translateX(0)!important;
-									}
-									.line-1, .line-2 {
-										stroke-dashoffset: 0;
-									}
-								}
-								div {
-									aside {
-										width: 172px;
-										ul {
-											@include opacity(1);
-											@include prefix(transition-delay, 150ms, webkit moz ms o);
-										}
-									}
-								}
-							}
+						&.not-first {
+							@include prefix(transition-delay, 3500ms, webkit moz ms o);
+							@include opacity(.5);
 						}
 					}
 				}
@@ -1954,7 +2051,7 @@
 				}
 			}
 		}
-		
+
 		// PROJECTOR
 		&#splash-projector {
 			@include flex;
@@ -2072,19 +2169,45 @@
 						margin: 0!important;
 						padding: 0 7.5px;
 						text-align: center;
+						&.swiper-slide-active {
+							> div {
+								svg {
+									.bg {
+										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+										fill: $shamrock!important;
+									}
+								}
+							}
+						}
 						&:not(.swiper-slide-active) {
 							> div {
-								@include opacity(.5);
+								svg {
+									@include opacity(.5);
+								}
 							}
 						}
 						> div {
 							@include flex;
 							@include flex-wrap;
 							@include flex-center;
+							position: relative;
 							width: 100%;
 							height: 100%;
-							background: $shamrock;
+							svg {
+								display: block;
+								height: 100%;
+								min-height: 100px;
+								width: 100%;
+								min-width: 100px;
+								g {
+									g {
+										@include opacity(.1);
+									}
+								}
+							}
 							h1 {
+								@include center-xy;
+								z-index: 1;
 								font-size: 20px;
 								font-weight: 600;
 							}
@@ -2172,7 +2295,7 @@
 				}
 			}
 		}
-		
+
 		// UNIVERSITY
 		.splash-school-search {
 			height: calc(100%)!important;
@@ -2918,7 +3041,7 @@
 				}
 			}
 		}
-		
+
 		&#splash-footer {
 			background: $slate;
 			padding: 0 15px 72px;
@@ -3428,4 +3551,19 @@
 	display: none!important;
 	visibility: hidden!important;
 	z-index: -999999!important;
+}
+
+.splash-landing > section.splash-hero .splash-hero-map ui-gmap-google-map {
+	.angular-google-map-container .gm-style > div:first-child > div:nth-child(1),
+	.angular-google-map-container .gm-style > div:first-child > div:nth-child(2), {
+		opacity:0.2 !important;
+	}
+	.angular-google-map-container .gm-style > div:first-child > div:nth-child(3) {
+		.selected-university-svg-icon {
+			opacity: 0;
+		}
+		.gmnoprint {
+			opacity: 1!important;
+		}
+	}
 }

@@ -1,7 +1,7 @@
 angular.module('uguru.student.controllers')
 
 //ALL student controllers
-.controller('GuruMessagesController', [
+.controller('MessagesController', [
 
   //All imported packages go here
   '$scope',
@@ -25,11 +25,13 @@ angular.module('uguru.student.controllers')
   '$ionicActionSheet',
   'ScrollService',
   'FileService',
+  'MessageService',
   function($scope, $state, $timeout, $localstorage,
   $ionicModal, $ionicTabsDelegate, $cordovaProgress,
   $stateParams, $cordovaKeyboard, $ionicScrollDelegate,
   Restangular, $ionicHistory, $cordovaStatusbar, $ionicPlatform, LoadingService,
-  $ionicViewSwitcher, MockService, $interval, $ionicActionSheet, ScrollService, FileService) {
+  $ionicViewSwitcher, MockService, $interval, $ionicActionSheet, ScrollService, FileService,
+  MessageService) {
 
     $scope.active_relationship = {search_text:'', new_message:''};
 
@@ -46,11 +48,14 @@ angular.module('uguru.student.controllers')
       else if ($scope.root.vars.guru_mode && $scope.user.student_relationships && $scope.user.student_relationships.length) {
 
         $scope.active_relationship = $scope.user.student_relationships[0];
+
         $scope.root.vars.last_active_relationship = $scope.active_relationship;
       } else if (!$scope.root.vars.guru_mode && $scope.user.guru_relationships && $scope.user.guru_relationships.length) {
         $scope.active_relationship = $scope.user.guru_relationships[0];
         $scope.root.vars.last_active_relationship = $scope.active_relationship;
       }
+      MessageService.initActiveRelationship($scope.active_relationship);
+      console.log($scope.active_relationship.nav)
       $scope.active_relationship.msg_nav = false;
       console.log($scope.active_relationship);
     }
@@ -266,6 +271,7 @@ angular.module('uguru.student.controllers')
         }, 1000)
       }
       $scope.active_relationship = relationship;
+      MessageService.initActiveRelationship($scope.active_relationship);
       $scope.active_relationship.msg_nav = false;
     }
 

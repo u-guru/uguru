@@ -801,6 +801,8 @@
             display: -moz-flex;
             display: -webkit-flex;
             display: flex;
+            -webkit-align-content: center;
+            align-content: center;
             -webkit-align-items: center;
             align-items: center; }
             #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a span {
@@ -1547,6 +1549,8 @@
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
+    -webkit-align-content: center;
+    align-content: center;
     -webkit-align-items: center;
     align-items: center;
     text-align: left;

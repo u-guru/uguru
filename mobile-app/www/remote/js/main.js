@@ -381,11 +381,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/payments.html',
         controller: 'PaymentsController'
   }).
-  state('root.home', {
-        url: '/',
-        templateUrl: BASE + 'templates/home.html',
-        controller: 'HomeController'
-  }).
   state('root.guru', {
         url: '/guru',
         templateUrl: BASE + 'templates/guru.html',
@@ -502,16 +497,16 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.guru-messages-mobile', {
         url: '/messages/',
         templateUrl: BASE + 'templates/messaging.mobile.html',
-        controller: 'GuruMessagesController'
+        controller: 'MessagesController'
   }).
   state('root.messaging', {
         url: '/messaging',
         templateUrl: BASE + 'templates/messaging.html'
   }).
   state('root.splash', {
-        url: '/splash:categoryId:universityId',
+        url: '/:categoryId:universityId',
         templateUrl: BASE + 'templates/splash.html',
-        params: {category: {name: 'Academic', id:5, hex_color:'academic'}, university: {latitude: "37.8718992", longitude: "-122.2585399",name: 'UC Berkeley', id:2307, school_color_dark: "#023360", school_color_light: "#FBB431", short_name: "UC Berkeley"}},
+        params: {category: {name: 'Academic', id:5, hex_color:'academic'}, university: {latitude: "37.8718992", longitude: "-122.2585399",name: 'UC Berkeley', id:2307, school_color_dark: "#023360", school_tiny_name: 'Cal', school_color_light: "#FBB431", short_name: "UC Berkeley"}},
         controller: "SplashController"
   }).
   state('root.student-conversations', {

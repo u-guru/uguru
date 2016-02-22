@@ -89,6 +89,8 @@
               display: -moz-flex;
               display: -webkit-flex;
               display: flex;
+              -webkit-align-content: center;
+              align-content: center;
               -webkit-align-items: center;
               align-items: center; }
               #desktop-student-home .main .student-home-greeting div .student-home-notifications ul li a span {

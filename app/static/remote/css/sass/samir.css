@@ -651,6 +651,8 @@ header#home-nav-header.splash-header,
           font-weight: 600;
           padding: 0 15px; }
         #request main section#request-cta-payment .offer-price-container ul {
+          -webkit-align-content: center;
+          align-content: center;
           -webkit-align-items: center;
           align-items: center;
           padding: 15px;
@@ -1219,6 +1221,8 @@ header#home-nav-header.splash-header,
               display: -moz-flex;
               display: -webkit-flex;
               display: flex;
+              -webkit-align-content: center;
+              align-content: center;
               -webkit-align-items: center;
               align-items: center;
               padding: 15px;

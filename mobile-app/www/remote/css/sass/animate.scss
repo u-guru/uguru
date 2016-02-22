@@ -600,9 +600,11 @@
 @include keyframes(fadeOut) {
 	0% {
 		@include opacity(1);
+		visibility: visible;
 	}
 	100% {
 		@include opacity(0);
+		visibility: hidden;
 	}
 }
 .fadeOut {
@@ -612,9 +614,11 @@
 @include keyframes(fadeOutDown) {
 	0% {
 		@include opacity(1);
+		visibility: visible;
 	}
 	100% {
 		@include opacity(0);
+		visibility: hidden;
 		@include transform(translate3d(0, 100%, 0));
 	}
 }
@@ -625,9 +629,11 @@
 @include keyframes(fadeOutDownBig) {
 	0% {
 		@include opacity(1);
+		visibility: visible;
 	}
 	100% {
 		@include opacity(0);
+		visibility: hidden;
 		@include transform(translate3d(0, 2000px, 0));
 	}
 }
@@ -638,9 +644,11 @@
 @include keyframes(fadeOutLeft) {
 	0% {
 		@include opacity(1);
+		visibility: visible;
 	}
 	100% {
 		@include opacity(0);
+		visibility: hidden;
 		@include transform(translate3d(-100%, 0, 0));
 	}
 }
@@ -651,9 +659,11 @@
 @include keyframes(fadeOutLeftBig) {
 	0% {
 		@include opacity(1);
+		visibility: visible;
 	}
 	100% {
 		@include opacity(0);
+		visibility: hidden;
 		@include transform(translate3d(-2000px, 0, 0));
 	}
 }
@@ -664,9 +674,11 @@
 @include keyframes(fadeOutRight) {
 	0% {
 		@include opacity(1);
+		visibility: visible;
 	}
 	100% {
 		@include opacity(0);
+		visibility: hidden;
 		@include transform(translate3d(100%, 0, 0));
 	}
 }
@@ -677,9 +689,11 @@
 @include keyframes(fadeOutRightBig) {
 	0% {
 		@include opacity(1);
+		visibility: visible;
 	}
 	100% {
 		@include opacity(0);
+		visibility: hidden;
 		@include transform(translate3d(2000px, 0, 0));
 	}
 }
@@ -690,9 +704,11 @@
 @include keyframes(fadeOutUp) {
 	0% {
 		@include opacity(1);
+		visibility: visible;
 	}
 	100% {
 		@include opacity(0);
+		visibility: hidden;
 		@include transform(translate3d(0, -100%, 0));
 	}
 }
@@ -703,9 +719,11 @@
 @include keyframes(fadeOutUpBig) {
 	0% {
 		@include opacity(1);
+		visibility: visible;
 	}
 	100% {
 		@include opacity(0);
+		visibility: hidden;
 		@include transform(translate3d(0, -2000px, 0));
 	}
 }

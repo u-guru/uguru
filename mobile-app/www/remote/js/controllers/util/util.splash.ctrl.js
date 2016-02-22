@@ -311,6 +311,54 @@ angular.module('uguru.util.controllers')
       })
     }
 
+    function initializeDynamicSelectedUniversityMap(university) {
+      university.map = {
+        marker: generateSelectedUniversityMapMarkerObj(university),
+        control: {},
+        coords: {latitude: university.latitude, longitude: university.longitude},
+        zoom: 17,
+        pan: false,
+        events: {tilesloaded: function(map) {
+
+          var mapBounds = map.getBounds().getSouthWest();
+          var mapCenter = map.getCenter();
+          console.log('bottom left', mapBounds.lat(), mapBounds.lng());
+          console.log('center', mapCenter.lat(), mapCenter.lng())
+          var dx = mapBounds.lat() - mapCenter.lat();
+          var dy = mapBounds.lng() - mapCenter.lng();
+          var newMarkerLat = mapBounds.lat() - (dx/6);
+          var newMarkerLng = mapBounds.lng() - (dy/6); //purposely dx so its a square
+          university.map.marker.coords = {latitude: newMarkerLat, longitude: newMarkerLng};
+        }},
+      }
+      function generateSelectedUniversityMapMarkerObj(university) {
+        obj = university;
+        var universityObj = {
+            school_color_light: obj.school_color_light,
+            banner_url: obj.banner_url,
+            school_color_dark: obj.school_color_dark,
+            name: obj.name,
+            tiny_name: obj.school_tiny_name,
+            city: obj.city,
+            state: obj.state
+        }
+        return {
+          coords: {
+            latitude: university.latitude,
+            longitude: university.longitude
+          },
+          id: university.id,
+          control: {},
+          options: {
+            animation: google.maps.Animation.DROP,
+            icon: {url: generateUniversityImgDataURI(universityObj), size: new google.maps.Size(100, 100)},//, scaledSize: new google.maps.Size(100, 100)
+            labelClass: 'selected-university-svg-icon',
+            labelVisible: false
+          },
+        }
+      }
+    }
+
     function resolveStateParams() {
       console.log('splashData', $stateParams.category.splashData);
       if ($stateParams && $stateParams.category && $stateParams.category.id) {
@@ -328,6 +376,7 @@ angular.module('uguru.util.controllers')
         Utilities.compileToAngular('body-loading-div', $scope);
         $scope.root.loader.body.hide = true;
       }
+      initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
     }
 
     $scope.getUniversityPlaces = function(university) {
@@ -426,8 +475,7 @@ angular.module('uguru.util.controllers')
       }
 
       var generateClusterImgDataURI = function(obj) {
-          var baseSVGURL = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="' + obj.bg_color + '"></circle></svg>'
-          return 'data:image/svg+xml;base64,' + window.btoa(baseSVGURL);
+
         }
 
       var generateUniversityImgDataURI = function(obj) {
@@ -737,6 +785,15 @@ angular.module('uguru.util.controllers')
         $scope.page.dropdowns.category.active = false;
         $scope.page.dropdowns.university.active = false;
       }
+
+      $timeout(function() {
+        $scope.selectedUniversity && initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+      });
+      $timeout(function() {
+        $scope.selectedUniversity && initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+        console.log('map', $scope.selectedUniversity.map);
+      }, 5000);
+
 
   }
 ])
