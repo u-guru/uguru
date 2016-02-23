@@ -317,6 +317,7 @@ angular.module('uguru.util.controllers')
         control: {},
         coords: {latitude: university.latitude, longitude: university.longitude},
         zoom: 17,
+        options: {scrollwheel: false, streetViewControl:false, scrollwheel:false, panControl:false,  mapTypeControl:false, style:{}, draggable:false, disableDoubleClickZoom:false, zoomControl: false},
         pan: false,
         events: {tilesloaded: function(map) {
 
@@ -492,7 +493,6 @@ angular.module('uguru.util.controllers')
         var markerValues = markers.values();
         var universityArr = getUniversitiesFromMarkers(markerValues)
         var stateDict = getMostCommonStateFromUniversities(universityArr);
-        console.log(stateDict, universityArr);
         var getTopXStateStr = processStateDictToStr(stateDict);
 
         function processStateDictToStr(state_dict) {
@@ -791,10 +791,6 @@ angular.module('uguru.util.controllers')
       $timeout(function() {
         $scope.selectedUniversity && initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
       });
-      $timeout(function() {
-        $scope.selectedUniversity && initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
-        console.log('map', $scope.selectedUniversity.map);
-      }, 5000);
 
 
   }
