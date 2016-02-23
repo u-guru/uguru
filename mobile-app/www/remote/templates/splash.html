@@ -235,7 +235,8 @@
             <!-- <div class='splash-hero-skip opacity-1-impt left-0' class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a">
                 <button style='top:-50px;' class="button-find-guru splash-mobile-cta" ng-click='refreshUniversityState(selectedUniversity)'>Refresh</button>
             </div> -->
-			<div class="splash-hero-markers" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker|a, null:inject.splash-hero-marker .location|a, null:inject.splash-hero-marker .marker-inside|a">
+			<div class="splash-hero-markers" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker|a, null:inject.location[class-on-activate]|activate, null:inject.splash-hero-marker .marker-inside[class-on-activate]|activate">
+                <!-- null:inject.splash-hero-marker .marker-inside|a -->
 
                 <div class="splash-hero-marker-1 splash-hero-marker opacity-0" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="first:unique, visible:keep">
                     <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim">
@@ -309,8 +310,8 @@
                     <div class="location-text">{{selectedUniversity.place_results[0].name}}</div>
 				</div>
 
-				<div class="splash-hero-marker-2 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="not-first, visible:keep" style="top: 20%; left: 10%;">
-                    <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim">
+				<div class="splash-hero-marker-2 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 20%; left: 10%;">
+                    <div class="marker-inside opacity-0" class-on-activate="fadeInUpBig:anim" class-on-activate-delay="250">
                         <svg class="map-tooltip-window bottom left" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
                             <path class="bg" d="M2,2 L522,2 L522,542 L122,542 L92,572 L62,542 L2,542 L2,2 Z" fill="#40484B"></path>
                             <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -377,14 +378,14 @@
                             </div>
                         </div>
                     </div>
-					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} bottom left" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="500"></div>
+					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} bottom left"  class-on-activate="slideInLeft:anim" class-on-activate-delay="50"></div>
                     <div class="location-text">{{selectedUniversity.place_results[1].name}}</div>
 				</div>
 
-				<div class="splash-hero-marker-3 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="not-first, visible:keep" style="top: 15%; left: 4%;">
-					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} top left" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1500"></div>
+				<div class="splash-hero-marker-3 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 15%; left: 4%;">
+					<div class-on-activate="slideInLeft:anim" class-on-activate-delay="250" class="location opacity-0 bg-{{selectedCategory.hex_color}} top left"></div>
                     <div class="location-text">{{selectedUniversity.place_results[2].name}}</div>
-                    <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim">
+                    <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="zoomInUp:anim" class-on-activate-delay="550">
                         <svg class="map-tooltip-window top left" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
                             <path class="bg" d="M2,571 L522,571 L522,31 L122,31 L92,1 L62,31 L2,31 L2,571 L2,571 Z" fill="#40484B"></path>
                             <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -453,8 +454,8 @@
                     </div>
 				</div>
 
-				<div class="splash-hero-marker-4 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="200" activate-on-class="a" class-on-activate="not-first, visible:keep" style="bottom: 10%; left: 5%;">
-                    <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim">
+				<div class="splash-hero-marker-4 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="200" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="bottom: 10%; left: 5%;">
+                    <div class="marker-inside opacity-0" class-on-activate="zoomInUp:anim" class-on-activate-delay="700">
                         <svg class="map-tooltip-window bottom right" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
                             <path class="bg" d="M522,2 L2,2 L2,542 L402,542 L432,572 L462,542 L522,542 L522,2 L522,2 Z" fill="#40484B"></path>
                             <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -521,14 +522,14 @@
                             </div>
                         </div>
                     </div>
-					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} bottom right" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1200"></div>
+					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} bottom right" class-on-activate="slideInUp:anim" class-on-activate-delay="400"></div>
                     <div class="location-text">{{selectedUniversity.place_results[3].name}}</div>
 				</div>
 
-				<div class="splash-hero-marker-5 splash-hero-marker opacity-0" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" activate-on-class="a" class-on-activate="not-first, visible:keep" style="top: 15%; right: 3%;">
-                    <div class="location opacity-0 bg-{{selectedCategory.hex_color}} top right" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1400"></div>
+				<div class="splash-hero-marker-5 splash-hero-marker opacity-0" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 15%; right: 3%;">
+                    <div class="location opacity-0 bg-{{selectedCategory.hex_color}} top right" class-on-activate="lightSpeedIn:anim" class-on-activate-delay="600"></div>
                     <div class="location-text">{{selectedUniversity.place_results[4].name}}</div>
-                    <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim">
+                    <div class="marker-inside opacity-0" class-on-activate="zoomInDown:anim" class-on-activate-delay="900">
                         <svg class="map-tooltip-window top right" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
                             <path class="bg" d="M522,571 L2,571 L2,31 L402,31 L432,1 L462,31 L522,31 L522,571 L522,571 Z" fill="#40484B"></path>
                             <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -597,10 +598,10 @@
                     </div>
 				</div>
 
-				<div class="splash-hero-marker-6 splash-hero-marker opacity-0" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="not-first, visible:keep" style="top: 30%; right: 12%;">
-					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} top left" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1100"></div>
+				<div class="splash-hero-marker-6 splash-hero-marker opacity-0 visible" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 30%; right: 12%;">
+					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} top left" class-on-activate="slideInLeft:anim" class-on-activate-delay="1100" class-on-activate-delay="1400"></div>
                     <div class="location-text">{{selectedUniversity.place_results[5].name}}</div>
-                    <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim">
+                    <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="zoomInUp:anim" class-on-activate-delay="1000">
                         <svg class="map-tooltip-window top left" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
                             <path class="bg" d="M2,571 L522,571 L522,31 L122,31 L92,1 L62,31 L2,31 L2,571 L2,571 Z" fill="#40484B"></path>
                             <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -738,7 +739,8 @@
 						</g>
 					</svg>
 					<div class="splash-device-button animated">
-						<button ng-click='getUniversityPlaces(selectedUniversity)' class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, null:inject.splash-hero-map|activate, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help-desktop|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|activate, null:inject.splash-adlib ul li a|a, null:inject.splash-guru-head .splash-logo-guru|a">Find My Guru</button>
+                        <button  class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|opacity-50, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.coach-help-mobile|hide, a:inject.splash-adlib|a, a:inject.splash-adlib ul|activate, a:inject.splash-adlib|bounceOutUp:animOut">Find My Guru</button>
+						<!-- <button  class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, null:inject.splash-hero-map|activate, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help-desktop|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|activate, null:inject.splash-adlib ul li a|a, null:inject.splash-guru-head .splash-logo-guru|a">Find My Guru</button> -->
 					</div>
 				</div>
 			</div>

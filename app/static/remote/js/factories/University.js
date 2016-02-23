@@ -7016,7 +7016,7 @@ var targettedUniversities = [{
         "city": "Notre dame",
         "num_popular_courses": 2,
         "state": "IN",
-        "latitude": "37.8413092",
+        "latitude": "41.7067",
         "population": 509,
         "website": null,
         "banner_url_confirmed": true,
@@ -7035,7 +7035,7 @@ var targettedUniversities = [{
         "num_emails": 0,
         "num_courses": 1655,
         "variations": " smc",
-        "longitude": "-122.1100905",
+        "longitude": "-86.2570",
         "courses_sanitized": false,
         "popular_courses": [
             "BIO 103",
