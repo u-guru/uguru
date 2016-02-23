@@ -1672,6 +1672,14 @@
   filter: invert(100%);
 }
 
+.splash-landing > section.splash-hero .splash-hero-map .gmnoprint img {
+  -webkit-filter: invert(100%);
+  -moz-filter: invert(100%);
+  -ms-filter: invert(100%);
+  -o-filter: invert(100%);
+  filter: invert(100%);
+}
+
 .splash-landing > section.splash-hero .splash-hero-map.animated {
   -webkit-animation-delay: 200ms;
   -moz-animation-delay: 200ms;
@@ -2492,6 +2500,11 @@
 }
 
 .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .user-icon {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
   width: 64px;
   height: 64px;
   border-width: 2px;
@@ -2637,6 +2650,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: 25;
   width: 100%;
   height: 15px;
 }
