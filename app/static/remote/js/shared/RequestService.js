@@ -352,7 +352,6 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
 
 
   function initStudentForm(slide_box, scope, lat, long, color) {
-    console.log(FileService.DropzoneDict);
     if (!FileService.DropzoneDict['#request-form-file-uploader']) {
       FileService.initRequestDropzoneFromSelector('#request-form-file-uploader', scope);
     }

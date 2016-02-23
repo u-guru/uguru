@@ -29,6 +29,11 @@ function MessageService(CalendarService, $timeout, LoadingService, FileService, 
     }
   }
 
+  //
+  function initReRequest(scope) {
+
+  }
+
 
   return {initActiveRelationship: initActiveRelationship}
 
