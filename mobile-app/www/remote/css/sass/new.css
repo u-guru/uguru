@@ -66,8 +66,7 @@
   font-family: "OpenSans-Light";
   src: url("../../fonts/OpenSans-Light.ttf"); }
 
-body,
-h1, h2, h3, h4, h5, h6 {
+body, h1, h2, h3, h4, h5, h6 {
   font-family: "OpenSans-Regular"; }
 
 h5 {
@@ -88,13 +87,11 @@ button {
   color: #fff;
   text-decoration: none; }
 
-.item.settings-item.activated,
-.item.settings-item.active {
+.item.settings-item.activated, .item.settings-item.active {
   background-color: rgba(0, 0, 0, 0.1);
   border-color: rgba(0, 0, 0, 0.4); }
 
-.button.button-positive.activated,
-.button.button-positive.active {
+.button.button-positive.activated, .button.button-positive.active {
   border-color: #429486;
   background-color: #429486;
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2); }
@@ -114,8 +111,7 @@ button {
   background: 0 0;
   color: #68b2a5; }
 
-.button.button-positive.button-outline.activated,
-.button.button-positive.button-outline.active {
+.button.button-positive.button-outline.activated, .button.button-positive.button-outline.active {
   background-color: #68b2a5;
   box-shadow: none;
   color: #fff; }
@@ -262,17 +258,12 @@ button {
 
 .onboarding-university-wrapper h5.header.center {
   opacity: 0.9; }
-
 .onboarding-university-wrapper h5.header {
   font-family: "OpenSans-Regular"; }
-
-.onboarding-university-wrapper .guru-logo-container
-img {
+.onboarding-university-wrapper .guru-logo-container img {
   padding-top: 0em; }
-
 .onboarding-university-wrapper .button-padding {
   padding: 1em 0em; }
-
 .onboarding-university-wrapper .university-mini-logo-container {
   padding: 0% 5% 0%;
   align-self: center; }
@@ -282,7 +273,6 @@ img {
     flex-shrink: 1;
     height: 2.33em;
     max-width: 2.33em; }
-
 .onboarding-university-wrapper h6 {
   font-size: 60%;
   text-align: center;
@@ -302,7 +292,6 @@ img {
     color: rgba(0, 0, 0, 0.8);
     font-size: 13px;
     text-transform: none; }
-
 .onboarding-nearest .container.relative .name {
   font-family: "OpenSans-SemiBold";
   opacity: 0.9;
@@ -311,17 +300,14 @@ img {
   width: 75%;
   white-space: normal;
   font-size: 90%; }
-
 .onboarding-nearest .container.relative .city {
   opacity: 0.4; }
-
 .onboarding-nearest .container.relative .absolute.miles {
   top: 8px;
   right: 0px;
   color: #68b2a5;
   position: absolute;
   height: 115%; }
-
 .onboarding-nearest .enter-university {
   color: rgba(0, 0, 0, 0.4); }
 
@@ -337,47 +323,34 @@ img {
     bottom: 2%;
     width: 100%; }
 
-.onboarding-confirm .onboarding-confirm-header,
-.onboarding-confirm .popular-courses-header {
+.onboarding-confirm .onboarding-confirm-header, .onboarding-confirm .popular-courses-header {
   background-color: #2E3541; }
-
 .onboarding-confirm .courses-container {
   letter-spacing: inherit; }
-
 .onboarding-confirm .row {
   margin: 0;
   padding: 0; }
-
 .onboarding-confirm .course-row-1 .course {
   padding-top: 8px; }
-
 .onboarding-confirm .course-row-1 .course:nth-child(2) {
   background-color: rgba(0, 0, 0, 0.2); }
-
 .onboarding-confirm .course-row-2 .course {
   padding-top: 8px; }
-
-.onboarding-confirm .course-row-2 .course:nth-child(1),
-.onboarding-confirm .course-row-2 .course:nth-child(3) {
+.onboarding-confirm .course-row-2 .course:nth-child(1), .onboarding-confirm .course-row-2 .course:nth-child(3) {
   background-color: rgba(0, 0, 0, 0.2); }
-
 .onboarding-confirm .course {
   background-color: rgba(0, 0, 0, 0.3);
   line-height: 1.5em; }
-
 .onboarding-confirm .university-banner {
   position: absolute;
   top: 0px;
   width: 40%;
   margin: 0 auto;
   left: 30%; }
-
 .onboarding-confirm .onboarding-confirm-header h1 {
   font-family: "OpenSans-SemiBold"; }
-
 .onboarding-confirm .container {
   overflow: hidden; }
-
 .onboarding-confirm .background-splash-img {
   opacity: 0.7; }
 
@@ -410,7 +383,7 @@ img {
     right: 10%;
     height: 4.19%; }
   .onboarding-loading #_6 {
-    top: 50.0%;
+    top: 50%;
     right: 17%;
     height: 5.9%; }
   .onboarding-loading #_7 {
@@ -420,7 +393,7 @@ img {
   .onboarding-loading #_8 {
     top: 46%;
     right: 29%;
-    height: 11.0%; }
+    height: 11%; }
   .onboarding-loading #_9 {
     top: 57%;
     left: 50%;
@@ -453,7 +426,6 @@ img {
     font-family: "OpenSans-Semibold";
     font-weight: bold;
     font-size: 15px; }
-
 .university-modal .search-button {
   color: #68b2a5 !important; }
 
@@ -470,7 +442,6 @@ img {
     color: rgba(0, 0, 0, 0.8);
     font-size: 13px;
     text-transform: none; }
-
 .student-home .tabs-background-positive {
   background-color: #E6E6E5; }
 
@@ -489,35 +460,28 @@ p {
     bottom: 27.5%;
     font-size: 80%;
     position: absolute; }
-
-.course-list-container .list-inset
-.item.course-item {
+.course-list-container .list-inset .item.course-item {
   margin: 0.75em 0em;
   border-width: 1px;
   padding: 12px; }
-  .course-list-container .list-inset
-.item.course-item h5 {
+  .course-list-container .list-inset .item.course-item h5 {
     font-family: "OpenSans-Bold";
     font-size: 80%;
     margin: 0px;
     opacity: 0.7; }
-
 .course-list-container .item-icon-right .icon-right {
   right: 0;
   font-size: 80%;
   opacity: 0.4; }
-
 .course-list-container .item.course-item.add-course-item h5 {
   line-height: 1em;
   color: #68b2a5;
   opacity: 1; }
-
 .course-list-container .item-icon-left .icon-left {
   color: #68b2a5;
   opacity: 1;
   font-size: 80%;
   left: 0px; }
-
 .course-list-container .add-course-item {
   color: #68b2a5;
   padding: 4px; }
@@ -562,37 +526,27 @@ p {
     font-family: "OpenSans-Semibold";
     text-transform: uppercase;
     text-align: center; }
-
 .student-request-form h5.inactive {
   opacity: 0.3 !important; }
-
 .student-request-form h5.inline {
   display: inline-block; }
-
-.student-request-form .list-inset
-.item.request-item {
+.student-request-form .list-inset .item.request-item {
   margin: 0.75em 0em;
   border-width: 2px;
   padding: 12px; }
-  .student-request-form .list-inset
-.item.request-item h5 {
+  .student-request-form .list-inset .item.request-item h5 {
     font-family: "OpenSans-Semibold";
     font-size: 80%;
     margin: 0px;
     opacity: 0.7; }
-
-.student-request-form #selected-course,
-.student-request-form .green-border {
+.student-request-form #selected-course, .student-request-form .green-border {
   border-left: 4px solid #68b2a5 !important; }
-
 .student-request-form .selected-course {
   border-left: 4px solid #68b2a5 !important; }
-
 .student-request-form .item-icon-right .icon-right {
   right: 0;
   font-size: 80%;
   opacity: 0.4; }
-
 .student-request-form .button-back {
   font-family: "OpenSans-Regular";
   color: rgba(0, 0, 0, 0.8);
@@ -609,10 +563,8 @@ p {
 
 .request-guru-type .checkbox {
   width: 100%; }
-
 .request-guru-type .checkbox-container {
   border: 1px solid rgba(0, 0, 0, 0.2); }
-
 .request-guru-type .checkbox span {
   width: 80px;
   top: 0.8em;
@@ -621,10 +573,8 @@ p {
   font-family: "OpenSans-Regular";
   color: rgba(0, 0, 0, 0.7);
   font-size: 105%; }
-
 .request-guru-type .checkbox input, .request-guru-type .checkbox-icon {
   display: inline-block; }
-
 .request-guru-type .checkbox input:before, .request-guru-type .checkbox-icon:before {
   border-width: 1px;
   border-radius: 3px; }
@@ -634,39 +584,31 @@ p {
 
 .student-request-calendar .calendar-subheader {
   background-color: #E6E6E5; }
-
 .student-request-calendar .button-back {
   font-family: "OpenSans-Regular";
   color: rgba(0, 0, 0, 0.8);
   font-size: 13px !important;
   text-transform: none; }
-
 .student-request-calendar .one-day {
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 1.2em;
   border-bottom: 0px; }
-
 .student-request-calendar .time {
   position: absolute;
   top: 7px;
   left: 8px; }
-
 .student-request-calendar .calendar-row .pure-u-1-2 {
   border-bottom: 0px;
   padding: 1.33em; }
-
 .student-request-calendar .calendar-col {
   border-right: 1px solid rgba(0, 0, 0, 0.2);
   position: relative; }
-
 .student-request-calendar .calendar-col-2 {
   position: relative; }
-
 .student-request-calendar .calendar-header {
   text-transform: uppercase;
   font-family: OpenSans-SemiBold;
   font-size: 88%; }
-
 .student-request-calendar h5.title, .student-request-calendar .header-bar h5, .header-bar .student-request-calendar h5 {
   text-transform: uppercase; }
 
@@ -675,19 +617,15 @@ p {
 
 .request-description-container .textarea-container {
   border: 1px solid rgba(0, 0, 0, 0.2); }
-
 .request-description-container textarea {
   width: 100%;
   padding: 0.5em;
   resize: none;
   outline: none; }
-
 .request-description-container .textarea-wrapper {
   padding-top: 1em; }
-
 .request-description-container h5 {
   margin: 0px; }
-
 .request-description-container .attachment-container {
   height: 100px;
   width: 75px;
@@ -703,110 +641,89 @@ p {
 .map-modal .bar .button-block {
   margin: 0; }
 
-.guru-home
-.bottom-tabs.tabs-positive > .tabs, .tabs.tabs-positive {
+.guru-home .bottom-tabs.tabs-positive > .tabs, .tabs.tabs-positive {
   border-color: #2b3234;
   background-color: #2b3234;
   background-image: none; }
 
-.student-home
-.bottom-tabs.tabs-positive > .tabs, .tabs.tabs-positive {
+.student-home .bottom-tabs.tabs-positive > .tabs, .tabs.tabs-positive {
   border-color: #68b2a5;
   background-color: #68b2a5;
   background-image: none; }
 
 .guru-home .guru-home-content {
   color: white; }
-
 .guru-home .guru-home-img {
   margin-top: 45%; }
-
 .guru-home ion-content {
   background-color: #4c4c4c; }
-
 .guru-home .tabs .tab-item .icon {
   background-repeat: no-repeat;
   background-position: 50%;
   height: 15px;
-  background-image: url("../img/tabs-icon-1.svg");
+  background-image: url('../img/tabs-icon-1.svg');
   background-size: contain;
   position: absolute;
   width: 100%; }
-
 .guru-home .tabs .tab-item .icon.request-icon {
   background-repeat: no-repeat;
   background-position: 50%;
   height: 15px;
-  background-image: url("../img/tabs-icon-3.svg");
+  background-image: url('../img/tabs-icon-3.svg');
   background-size: contain;
   position: absolute;
   width: 100%;
   font-weight: bold; }
-
 .guru-home .tabs .tab-item .icon.settings-icon {
   background-repeat: no-repeat;
   background-position: 50%;
   height: 15px;
-  background-image: url("../img/tabs-icon-2.svg");
+  background-image: url('../img/tabs-icon-2.svg');
   background-size: contain;
   position: absolute;
   width: 100%; }
-
 .guru-home .tab-item {
   position: relative;
   padding-top: 8px;
   margin-top: -1px; }
-
 .guru-home .tab-item-active {
   background-color: #609C8F; }
-
 .guru-home .tab-title {
   text-transform: capitalize;
   font-size: 11px; }
 
-.student-home .tabs .tab-item .icon.session-icon,
-.bottom-tabs.tabs-positive .tabs .tab-item .icon.session-icon {
+.student-home .tabs .tab-item .icon.session-icon, .bottom-tabs.tabs-positive .tabs .tab-item .icon.session-icon {
   background-repeat: no-repeat;
   background-position: 50%;
   height: 15px;
-  background-image: url("../../img/tabs-icon-1.svg");
+  background-image: url('../../img/tabs-icon-1.svg');
   background-size: contain;
   position: absolute;
   width: 100%; }
-
-.student-home .tabs .tab-item .icon.request-icon,
-.bottom-tabs.tabs-positive .tabs .tab-item .icon.request-icon {
+.student-home .tabs .tab-item .icon.request-icon, .bottom-tabs.tabs-positive .tabs .tab-item .icon.request-icon {
   background-repeat: no-repeat;
   background-position: 50%;
   height: 15px;
-  background-image: url("../../img/tabs-icon-3.svg");
+  background-image: url('../../img/tabs-icon-3.svg');
   background-size: contain;
   position: absolute;
   width: 100%;
   font-weight: bold; }
-
-.student-home .tabs .tab-item .icon.settings-icon,
-.bottom-tabs.tabs-positive .tabs .tab-item .icon.settings-icon {
+.student-home .tabs .tab-item .icon.settings-icon, .bottom-tabs.tabs-positive .tabs .tab-item .icon.settings-icon {
   background-repeat: no-repeat;
   background-position: 50%;
   height: 15px;
-  background-image: url("../../img/tabs-icon-2.svg");
+  background-image: url('../../img/tabs-icon-2.svg');
   background-size: contain;
   position: absolute;
   width: 100%; }
-
-.student-home .tab-item,
-.bottom-tabs.tabs-positive .tab-item {
+.student-home .tab-item, .bottom-tabs.tabs-positive .tab-item {
   position: relative;
   padding-top: 8px;
   margin-top: -1px; }
-
-.student-home .tab-item-active,
-.bottom-tabs.tabs-positive .tab-item-active {
+.student-home .tab-item-active, .bottom-tabs.tabs-positive .tab-item-active {
   background-color: #609C8F; }
-
-.student-home .tab-title,
-.bottom-tabs.tabs-positive .tab-title {
+.student-home .tab-title, .bottom-tabs.tabs-positive .tab-title {
   text-transform: capitalize;
   font-size: 11px; }
 
@@ -818,17 +735,14 @@ p {
   font-family: "OpenSans-Semibold";
   margin-top: 0px !important;
   padding-top: 0px !important; }
-
 .tabs-top.session-tabs .tab-item.tab-item-active {
   background-color: #E6E6E5;
   border-width: 0 0 4px !important;
   border-style: solid;
   border-color: #68b2a5; }
-
 .tabs-top.session-tabs .tab-title {
   text-transform: uppercase !important;
   font-size: 100% !important; }
-
 .tabs-top.session-tabs .tabs-striped.tabs-color-dark .tab-item.tab-item-active {
   color: #4D4D4D !important; }
 
@@ -915,24 +829,20 @@ p {
 .request-status.proposal-details .row-details {
   margin: 5px 20px;
   color: white; }
-
 .request-status.proposal-details .grey-subject-text {
   color: rgba(255, 255, 255, 0.5); }
 
 .student-sessions .row-details {
   margin: 5px 20px;
   color: black; }
-
 .student-sessions .grey-subject-text {
   color: rgba(255, 255, 255, 0.5); }
 
 .request-status .grey-subject-text {
   font-family: "OpenSans-Regular";
   color: rgba(255, 255, 255, 0.5); }
-
 .request-status .header-bar {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
-
 .request-status .button-light {
   border: 1px solid rgba(0, 0, 0, 0.01);
   width: 100%;
@@ -941,14 +851,12 @@ p {
   font-family: "OpenSans-Regular";
   padding: 0px;
   margin: 0px; }
-
 .request-status .map-container {
   width: 100%;
   background-color: black;
   height: 100px;
   display: block; }
-
-.request-status .header-bar .title, .request-status .header-bar h5 {
+.request-status .header-bar .title, .request-status .header-bar .header-bar h5, .header-bar .request-status .header-bar h5 {
   font-size: 100%; }
 
 .j-start {
@@ -974,16 +882,13 @@ p {
   width: 50%;
   margin-top: 10%;
   margin-left: 25%; }
-
 .become-guru button {
   border-width: 2px;
   font-size: 80%;
   font-family: "OpenSans-Semibold"; }
-
 .become-guru .guru-content h1 {
   font-family: "OpenSans-Bold";
   font-weight: 500; }
-
 .become-guru .guru-content p {
   color: rgba(0, 0, 0, 0.7); }
 
@@ -993,9 +898,7 @@ p {
   align-items: center;
   -webkit-align-items: center; }
 
-.guru-course-tag,
-.course-tag,
-.legend-tag {
+.guru-course-tag, .course-tag, .legend-tag {
   background-color: #D97142;
   color: white;
   padding: 6px 10px;
@@ -1047,10 +950,8 @@ p {
 
 .uguru-settings .button-outline {
   border-width: 2px; }
-
 .uguru-settings .padding-half {
   padding-bottom: 0px; }
-
 .uguru-settings .become-guru-wrapper {
   padding: 0em 1em; }
 
@@ -1060,7 +961,6 @@ p {
 
 .item-avatar-right div {
   text-align: right; }
-
 .item-avatar-right img {
   position: absolute;
   top: 16px;
@@ -1074,39 +974,29 @@ p {
 .student-request-duration .scroll-container {
   padding: 1em 3em;
   border: 2px solid rgba(0, 0, 0, 0.2); }
-
 .student-request-duration .hour-scroll {
   text-align: right;
   padding-right: 1em; }
-
 .student-request-duration .flex-item-c {
   padding: 0.5em 0em;
   font-size: 150%;
   display: inline-block; }
-
-.student-request-duration .main-hours,
-.student-request-duration .main-minutes {
+.student-request-duration .main-hours, .student-request-duration .main-minutes {
   border-top: 1.5px solid black;
   border-bottom: 1.5px solid black; }
-
 .student-request-duration .main-hours {
   padding-right: 0.95em; }
-
 .student-request-duration .icon {
   color: #68b2a5;
   font-size: 150%; }
-
 .student-request-duration .hours-offset {
   padding-right: 0.5em;
   color: rgba(0, 0, 0, 0.4); }
-
 .student-request-duration .minutes-offset {
   padding-left: 0.75em;
   color: rgba(0, 0, 0, 0.4); }
-
 .student-request-duration .main-minutes {
   padding-left: 0.5em; }
-
 .student-request-duration .min-scroll {
   text-align: left;
   padding-left: 1em; }
@@ -1114,39 +1004,29 @@ p {
 .student-request-budget .scroll-container {
   padding: 1em 3em;
   border: 2px solid rgba(0, 0, 0, 0.2); }
-
 .student-request-budget .hour-scroll {
   text-align: right;
   padding-right: 1em; }
-
 .student-request-budget .flex-item-c {
   padding: 0.5em 0em;
   font-size: 150%;
   display: inline-block; }
-
-.student-request-budget .main-hours,
-.student-request-budget .main-minutes {
+.student-request-budget .main-hours, .student-request-budget .main-minutes {
   border-top: 1.5px solid black;
   border-bottom: 1.5px solid black; }
-
 .student-request-budget .main-hours {
   padding-right: 0.95em; }
-
 .student-request-budget .icon {
   color: #68b2a5;
   font-size: 150%; }
-
 .student-request-budget .hours-offset {
   padding-right: 0.5em;
   color: rgba(0, 0, 0, 0.4); }
-
 .student-request-budget .minutes-offset {
   padding-left: 0.75em;
   color: rgba(0, 0, 0, 0.4); }
-
 .student-request-budget .main-minutes {
   padding-left: 0.5em; }
-
 .student-request-budget .min-scroll {
   text-align: left;
   padding-left: 1em; }
@@ -1157,23 +1037,15 @@ p {
 .show {
   display: block; }
 
-.uguru-popover
-#student-web-popover,
-#student-request-help-popover {
+.uguru-popover #student-web-popover, #student-request-help-popover {
   left: 7.5% !important;
   width: 85% !important; }
-  .uguru-popover
-#student-web-popover .bar-header,
-  #student-request-help-popover .bar-header {
+  .uguru-popover #student-web-popover .bar-header, #student-request-help-popover .bar-header {
     border-bottom-width: 0px; }
-  .uguru-popover
-#student-web-popover h1.title,
-  #student-request-help-popover h1.title {
+  .uguru-popover #student-web-popover h1.title, #student-request-help-popover h1.title {
     font-size: 162.5%;
     top: 8px; }
-  .uguru-popover
-#student-web-popover p,
-  #student-request-help-popover p {
+  .uguru-popover #student-web-popover p, #student-request-help-popover p {
     font-size: 80%; }
 
 .platform-ios .popover-arrow {
@@ -1211,8 +1083,7 @@ tabs-positive > .tabs .tab-item .badge, .tabs.tabs-positive .tab-item .badge {
 .padding-top-1-5em {
   padding-top: 1.5em; }
 
-padding-top-1
-.flex-row {
+padding-top-1 .flex-row {
   flex-direction: row;
   -webkit-flex-direction: row; }
 
@@ -1276,8 +1147,7 @@ padding-top-1
   flex-direction: initial;
   -webkit-flex-direction: initial; }
 
-.bottom-tabs-home
-.tab-item.tab-item-active .tab-title {
+.bottom-tabs-home .tab-item.tab-item-active .tab-title {
   text-transform: capitalize;
   font-size: 12px;
   position: absolute;
@@ -1288,8 +1158,7 @@ padding-top-1
 .bottom-tabs-home {
   overflow: visible; }
 
-.bottom-tabs-home
-.tab-item .tab-title {
+.bottom-tabs-home .tab-item .tab-title {
   text-transform: capitalize;
   font-size: 12px;
   position: absolute;
@@ -1426,15 +1295,13 @@ div.signup-tag {
 
 #general-popup .popover-arrow {
   left: 34px !important; }
-
 #general-popup .pure-white.bottom-sessions-tab p {
   font-size: 95% !important;
   margin-top: 3em; }
 
 .request-status {
   font-family: "OpenSans-Regular" !important; }
-  .request-status .pure-g
-.pure-u-4-5 {
+  .request-status .pure-g .pure-u-4-5 {
     padding-left: 2em !important;
     font-family: "OpenSans-Regular"; }
   .request-status button.button-full.button-light {
@@ -1443,8 +1310,7 @@ div.signup-tag {
     font-size: 85%;
     color: rgba(0, 0, 0, 0.5); }
 
-.icon.ion-plus.positive,
-a.button.button-clear.positive {
+.icon.ion-plus.positive, a.button.button-clear.positive {
   color: #68b2a5; }
 
 .san-bold {
@@ -1573,7 +1439,6 @@ a.button.button-clear.positive {
 .guru-verification .verification-explaination {
   color: #68b2a5;
   display: inline-block; }
-
 .guru-verification .sans-bold {
   font-family: "OpenSans-Bold"; }
 
@@ -1667,8 +1532,7 @@ a.sans-bold {
 .popover-backdrop .title, .popover-backdrop .header-bar h5, .header-bar .popover-backdrop h5 {
   font-size: 150% !important; }
 
-.popover-backdrop
-p {
+.popover-backdrop p {
   font-size: 90% !important;
   opacity: 0.4; }
 
@@ -1734,7 +1598,6 @@ p {
 
 .session-start-timer .has-header, .session-start-timer .positive-header {
   background-color: #68b2a5; }
-
 .session-start-timer .item-button-right .button-back {
   color: white;
   font-family: "OpenSans-Bold";
@@ -1742,31 +1605,23 @@ p {
   text-transform: uppercase;
   opacity: 1;
   border-bottom: 0px; }
-
 .session-start-timer .has-header {
   border-width: 0px; }
-
 .session-start-timer #timer-container {
   width: 90%;
   margin-left: 5%;
   height: auto; }
-
 .session-start-timer #timer-container > svg {
   width: 100%;
   display: block; }
-
-.session-start-timer .timer-minutes,
-.session-start-timer .timer-hours {
+.session-start-timer .timer-minutes, .session-start-timer .timer-hours {
   font-family: "OpenSans-Bold";
   font-size: 3em;
   color: white; }
-
-.session-start-timer .timer-minutes-m,
-.session-start-timer .timer-hours-h {
+.session-start-timer .timer-minutes-m, .session-start-timer .timer-hours-h {
   font-family: "OpenSans-Light";
   font-size: 2em;
   color: white; }
-
 .session-start-timer .session-start-timer .header-bar {
   color: white; }
   .session-start-timer .session-start-timer .header-bar a.button.button-clear.button-back {
@@ -1777,8 +1632,7 @@ p {
 .button-positive.button-full.button-positive-inverted {
   border: 2px solid white; }
 
-.button-positive.button-full.button-positive-inverted.activated,
-.button-positive.button-full.button-positive-inverted.activate {
+.button-positive.button-full.button-positive-inverted.activated, .button-positive.button-full.button-positive-inverted.activate {
   background-color: white;
   color: #68b2a5; }
 
@@ -1821,10 +1675,8 @@ p {
 .payment-cards .cards-container.item-avatar-left {
   position: relative;
   min-height: 0 !important; }
-
 .payment-cards .default-card-class {
   float: right; }
-
 .payment-cards .card-img {
   position: absolute;
   width: auto !important;
@@ -1844,11 +1696,9 @@ a.uppercase {
   text-transform: uppercase !important;
   font-family: "OpenSans-Bold" !important; }
 
-li.item.item-avatar-left.message-item,
-li.item.item-avatar-right.message-item {
+li.item.item-avatar-left.message-item, li.item.item-avatar-right.message-item {
   border: 0px; }
-  li.item.item-avatar-left.message-item img,
-  li.item.item-avatar-right.message-item img {
+  li.item.item-avatar-left.message-item img, li.item.item-avatar-right.message-item img {
     height: 30px;
     width: 30px;
     max-height: 30px;
@@ -1900,7 +1750,7 @@ li.item.item-avatar-left.message-item {
   background-repeat: no-repeat;
   background-position: 50%;
   height: 15px;
-  background-image: url("../../img/guru-profile.svg");
+  background-image: url('../../img/guru-profile.svg');
   background-size: contain;
   position: absolute;
   width: 100%; }
@@ -1933,38 +1783,28 @@ a.timer-icon-link {
 .session-start-timer .scroll-container {
   padding: 1em 3em;
   border: 2px solid rgba(0, 0, 0, 0.2); }
-
 .session-start-timer .hour-scroll {
   text-align: right;
   padding-right: 1em; }
-
-.session-start-timer .main-hours,
-.session-start-timer .main-minutes {
+.session-start-timer .main-hours, .session-start-timer .main-minutes {
   border-top: 1.5px solid black;
   border-bottom: 1.5px solid black; }
-
 .session-start-timer .main-hours {
   padding-right: 0.95em; }
-
 .session-start-timer .icon {
   color: #68b2a5;
   font-size: 150%; }
-
 .session-start-timer .hours-offset {
   padding-right: 0.5em;
   color: rgba(0, 0, 0, 0.4); }
-
 .session-start-timer .minutes-offset {
   padding-left: 0.75em;
   color: rgba(0, 0, 0, 0.4); }
-
 .session-start-timer .main-minutes {
   padding-left: 0.5em; }
-
 .session-start-timer .min-scroll {
   text-align: left;
   padding-left: 1em; }
-
 .session-start-timer .item {
   text-align: center; }
   .session-start-timer .item .timer-hours {
@@ -1980,8 +1820,7 @@ a.timer-icon-link {
 .no-border {
   border-width: 0px; }
 
-.hour-scroll,
-.minute-scroll {
+.hour-scroll, .minute-scroll {
   max-height: 225px; }
 
 .hour-scroll .item:nth-child(1) {
@@ -1996,11 +1835,9 @@ a.timer-icon-link {
 .ratings-modal h1.sans-bold {
   font-family: "OpenSans-Bold" !important;
   color: white; }
-
 .ratings-modal .pure-u-1-5 .icon {
   font-size: 3em;
   opacity: 0.4; }
-
 .ratings-modal .pure-u-1-5.green .icon {
   color: #68b2a5;
   opacity: 1; }
@@ -2069,21 +1906,15 @@ a.timer-icon-link {
   border-color: #68b2a5 !important;
   background-color: #68b2a5 !important; }
 
-.guru-onboarding .item-toggle .toggle,
-.edit-guru-profile .item-toggle .toggle {
+.guru-onboarding .item-toggle .toggle, .edit-guru-profile .item-toggle .toggle {
   position: absolute;
   top: 18px;
   right: 10px;
   z-index: 3; }
-
-.guru-onboarding .item-toggle, .guru-onboarding .item-toggle.item-complex .item-content,
-.edit-guru-profile .item-toggle,
-.edit-guru-profile .item-toggle.item-complex .item-content {
+.guru-onboarding .item-toggle, .guru-onboarding .item-toggle.item-complex .item-content, .edit-guru-profile .item-toggle, .edit-guru-profile .item-toggle.item-complex .item-content {
   padding-right: 71px;
   padding-top: 1em; }
-
-.guru-onboarding .uber-logo,
-.edit-guru-profile .uber-logo {
+.guru-onboarding .uber-logo, .edit-guru-profile .uber-logo {
   height: 40px;
   width: 40px;
   position: absolute;
@@ -2172,22 +2003,18 @@ a.timer-icon-link {
   .unclickable-calendar-element .time {
     color: white; }
 
-.student-request-form .list-inset
-.item.request-price-slider {
+.student-request-form .list-inset .item.request-price-slider {
   padding: 10px 15px 0px 15px;
   margin: 0px;
   font-size: 80%; }
-  .student-request-form .list-inset
-.item.request-price-slider span.full-price {
+  .student-request-form .list-inset .item.request-price-slider span.full-price {
     color: #68b2a5;
     font-family: "OpenSans-Light";
     font-size: 200%; }
-  .student-request-form .list-inset
-.item.request-price-slider span.full-price .price-only {
+  .student-request-form .list-inset .item.request-price-slider span.full-price .price-only {
     font-family: "OpenSans-Bold";
     font-size: 100% !important; }
-  .student-request-form .list-inset
-.item.request-price-slider p {
+  .student-request-form .list-inset .item.request-price-slider p {
     position: absolute;
     left: 0;
     font-size: 8px;
@@ -2206,20 +2033,17 @@ a.timer-icon-link {
   height: 28px;
   border-bottom: rgba(255, 255, 255, 0.9); }
 
-.ionic-css-range
-.ionic-css-range:themecolor {
+.ionic-css-range .ionic-css-range:themecolor {
   background-color: #68b2a5; }
 
 .request-status.student-view .row-details {
   color: rgba(0, 0, 0, 0.85);
   font-size: 90%;
   padding: 0.5em 0em; }
-
 .request-status.student-view .grey-subject-text {
   color: rgba(0, 0, 0, 0.4); }
 
-.proposal-details
-.cancel-session-container {
+.proposal-details .cancel-session-container {
   padding: 0.5em; }
 
 .margin-half {
@@ -2227,7 +2051,7 @@ a.timer-icon-link {
 
 #credits-button {
   top: -5px;
-  right: 0.0em;
+  right: 0em;
   font-size: 1.2em !important;
   opacity: 0.4; }
 
@@ -2235,7 +2059,6 @@ a.timer-icon-link {
   background-color: transparent; }
   .request-status.student-view .request-status-student-card .gold-student-star {
     margin: 0.2em; }
-
 .request-status.student-view hr {
   margin-top: -0.5em; }
 
