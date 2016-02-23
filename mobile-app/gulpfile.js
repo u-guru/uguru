@@ -167,9 +167,9 @@ gulp.task('styles', function() {
   var cssStream4 = gulp.src('www/remote/css/sass/loading.css');
   var cssStream5 = gulp.src('www/remote/lib/dropzone/dropzone.min.css');
   var cssStream6 = gulp.src('www/remote/css/sass/material.css');
-  var cssStream7 = gulp.src('www/remote/css/archive/animate.css');
-  var cssStream8 = gulp.src('www/remote/css/archive/magic.css');
-  var cssStream9 = gulp.src('www/remote/css/archive/animation.css');
+  var cssStream7 = gulp.src('www/remote/css/sass/animate.css');
+  var cssStream8 = gulp.src('www/remote/css/sass/magic.css');
+  var cssStream9 = gulp.src('www/remote/css/sass/animation.css');
   var cssStream10 = gulp.src('www/remote/css/sass/desktop.css');
   var cssStream11 = gulp.src('www/remote/css/sass/desktop-student.css');
   var cssStream12 = gulp.src('www/remote/css/sass/desktop-guru.css');
