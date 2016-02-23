@@ -217,9 +217,8 @@ angular.module('uguru.directives')
         scope.$watch(function() {
           return element.attr('class');
         },function() {
-          $timeout(function() {
             var classNames = element.attr('class').split(', ');
-              if (classNames.indexOf('activate') >-1 && attr.translateToElem) {
+              if ((classNames.indexOf('activate') > -1) && attr.translateToElem && attr.translateOnClass === 'activate') {
                 var elementBounding = element[0].getBoundingClientRect();
                 var elemCoords = {height: elementBounding.height, width: elementBounding.width, top: elementBounding.top, left: elementBounding.left};
                 var translateElem = attr.translateToElem;
@@ -239,13 +238,12 @@ angular.module('uguru.directives')
                   element[0].classList.add(injectOnTranslateClass, 'active');
                 }
               }
-          })
         });
       })
     }
   }
 }])
-.directive('translateOnClick', function () {
+.directive('translateOnClick', ['$timeout', function ($timeout) {
     // add 'translate-to-click' to element to "declare" directive. "translate-active" is added to element if element does not have transform properties && transforms
     // add 'translate-to-elem'="#sample-selector" to element to link destination element
     // add 'translate-to-x'="200" to add 200px X offset (origin = bottom left);
@@ -272,11 +270,10 @@ angular.module('uguru.directives')
                 element[0].style.msTransform = transFormString;
                 element[0].style.OTransform = transFormString;
                 element[0].style.transform = transFormString;
-                element[0].classList.add(injectOnTranslateClass, 'active');
-
                 //deactivate other directives with transforms towards the same element "translate-to-elem";
                 var allTranslateOnClickElems = document.querySelectorAll('.' + injectOnTranslateClass + ".active");
                 console.log('allTranslateOnClickElems', allTranslateOnClickElems.length, 'found:\n', allTranslateOnClickElems);
+                element[0].classList.add(injectOnTranslateClass, 'active', 'recently-active');
                 for (var i = 0; i < allTranslateOnClickElems.length; i++) {
                   var indexTranslateElem  = allTranslateOnClickElems[i];
                   if (indexTranslateElem !== element[0]) {
@@ -289,10 +286,13 @@ angular.module('uguru.directives')
                       }
                     }
                 }
+                $timeout(function() {
+                  element[0].classList.remove('recently-active');
+                }, 500);
             });
       }
     };
-}).
+}]).
 directive("classOnLoad", ["$timeout", 'AnimationService', function ($timeout, AnimationService) {
       return {
           restrict: 'A',
