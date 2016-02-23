@@ -217,7 +217,7 @@
 				</div>
 			</div>
 			<!-- @gabrielle-note, the 3000 ms is to generate the static map URL with the right icon-->
-            <div class="splash-hero-map opacity-0"  class-on-clear="slideOutUp:animOut" class-on-activate="fadeIn:anim" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
+            <div class="splash-hero-map opacity-0"  class-on-clear="slideOutUp:animOut" class-on-activate="active:anim" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
 				<!--Initial map class: init-university-map -->
                 <ui-gmap-google-map class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events" id='splash-google-map-selected-university' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
                     <ui-gmap-marker coords="selectedUniversity.map.marker.coords" idKey="selectedUniversity.map.marker.id" options="selectedUniversity.map.marker.options" icon="selectedUniversity.map.marker.icon">
@@ -230,7 +230,7 @@
 			</div>
 			<div class="splash-hero-skip opacity-0" class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a" class-on-activate="rollOut:animOut:keep">
                 <!--@gabrielle-note lol-->
-				<button activate-on-class="c" class-on-activate="a:inject.splash-desktop-cta|bounceInUp, a:inject.splash-mobile-cta|bounceInUp, a:inject.coach-click|show-opacity-impt, a:inject.coach-click path|animate, a:inject.coach-click-path-2|animate, a:inject.coach-click g g|bounceIn, a:inject.coach-help-desktop|bounceIn, a:inject.coach-help-mobile|bounceIn, a:inject.coach-fill|hide, a:inject.coach-scroll|active, a:inject.coach-scroll svg|fadeIn, a:inject.splash-hero-skip|a" class-on-click="a:inject.splash-desktop-cta|bounceInUp, a:inject.splash-mobile-cta|bounceInUp, a:inject.coach-click|show-opacity-impt, a:inject.coach-click path|animate, a:inject.coach-click-path-2|animate, a:inject.coach-click g g|bounceIn, a:inject.coach-help-desktop|bounceIn, a:inject.coach-help-mobile|bounceIn, a:inject.coach-fill|hide, a:inject.coach-scroll|active, a:inject.coach-scroll svg|fadeIn, a:inject.splash-hero-skip|a">Skip</button>
+				<button activate-on-class="c" class-on-activate="null:inject.splash-desktop-cta|bounceInUp, null:inject.splash-mobile-cta|bounceInUp, null:inject.coach-click|show-opacity-impt, null:inject.coach-click path|animate, null:inject.coach-click-path-2|animate, null:inject.coach-click g g|bounceIn, null:inject.coach-help-desktop|bounceIn, null:inject.coach-help-mobile|bounceIn, null:inject.coach-fill|hide, null:inject.coach-scroll|active, null:inject.coach-scroll svg|fadeIn, null:inject.splash-hero-skip|a" class-on-click="null:inject.splash-desktop-cta|bounceInUp, null:inject.splash-mobile-cta|bounceInUp, null:inject.coach-click|show-opacity-impt, null:inject.coach-click path|animate, null:inject.coach-click-path-2|animate, null:inject.coach-click g g|bounceIn, null:inject.coach-help-desktop|bounceIn, null:inject.coach-help-mobile|bounceIn, null:inject.coach-fill|hide, null:inject.coach-scroll|active, null:inject.coach-scroll svg|fadeIn, null:inject.splash-hero-skip|a, null:inject.splash-adlib ul li a|a">Skip</button>
 			</div>
             <!-- <div class='splash-hero-skip opacity-1-impt left-0' class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a">
                 <button style='top:-50px;' class="button-find-guru splash-mobile-cta" ng-click='refreshUniversityState(selectedUniversity)'>Refresh</button>
@@ -238,8 +238,8 @@
 			<div class="splash-hero-markers" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker|a, null:inject.location[class-on-activate]|activate, null:inject.splash-hero-marker .marker-inside[class-on-activate]|activate">
                 <!-- null:inject.splash-hero-marker .marker-inside|a -->
 
-                <div class="splash-hero-marker-1 splash-hero-marker opacity-0" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="first:unique, visible:keep">
-                    <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim">
+                <div class="splash-hero-marker-1 splash-hero-marker opacity-0" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="fadeIn:anim, visible">
+                    <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="3900">
                         <svg class="map-tooltip-window bottom left" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
                             <path class="bg" d="M2,2 L522,2 L522,542 L122,542 L92,572 L62,542 L2,542 L2,2 Z" fill="#40484B"></path>
                             <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -250,9 +250,9 @@
                                 <line class="top" x1="2" y1="2" x2="522" y2="2"/>
                             </g>
                         </svg>
-                        <span class="user-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span>
+                        <span id="map-icon-2" class="user-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span>
                         <div class="map-tooltip-text top left">
-                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}">
+                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">
                                 <div>
                                     <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
                                     <h2>Active 10 min ago</h2>
@@ -306,12 +306,12 @@
                             </div>
                         </div>
                     </div>
-					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} bottom left" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1700"></div>
+					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} bottom left" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1800"></div>
                     <div class="location-text">{{selectedUniversity.place_results[0].name}}</div>
 				</div>
 
 				<div class="splash-hero-marker-2 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 20%; left: 10%;">
-                    <div class="marker-inside opacity-0" class-on-activate="fadeInUpBig:anim" class-on-activate-delay="250">
+                    <div class="marker-inside opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="3600">
                         <svg class="map-tooltip-window bottom left" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
                             <path class="bg" d="M2,2 L522,2 L522,542 L122,542 L92,572 L62,542 L2,542 L2,2 Z" fill="#40484B"></path>
                             <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -322,9 +322,9 @@
                                 <line class="top" x1="2" y1="2" x2="522" y2="2"/>
                             </g>
                         </svg>
-                        <span id="tester" class="user-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span>
+                        <span id="map-icon-1" class="user-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span>
                         <div class="map-tooltip-text top left">
-                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}">
+                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">
                                 <div>
                                     <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
                                     <h2>Active 10 min ago</h2>
@@ -378,14 +378,14 @@
                             </div>
                         </div>
                     </div>
-					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} bottom left"  class-on-activate="slideInLeft:anim" class-on-activate-delay="50"></div>
+					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} bottom left" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1500"></div>
                     <div class="location-text">{{selectedUniversity.place_results[1].name}}</div>
 				</div>
 
 				<div class="splash-hero-marker-3 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 15%; left: 4%;">
-					<div class-on-activate="slideInLeft:anim" class-on-activate-delay="250" class="location opacity-0 bg-{{selectedCategory.hex_color}} top left"></div>
+					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} top left" class-on-activate="bounceIn:anim" class-on-activate-delay="300"></div>
                     <div class="location-text">{{selectedUniversity.place_results[2].name}}</div>
-                    <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="zoomInUp:anim" class-on-activate-delay="550">
+                    <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="2400">
                         <svg class="map-tooltip-window top left" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
                             <path class="bg" d="M2,571 L522,571 L522,31 L122,31 L92,1 L62,31 L2,31 L2,571 L2,571 Z" fill="#40484B"></path>
                             <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -396,9 +396,9 @@
                                 <line class="top" x1="2" y1="571" x2="522" y2="571"/>
                             </g>
                         </svg>
-                        <span class="user-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span>
+                        <span id="map-icon-5" class="user-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span>
                         <div class="map-tooltip-text bottom left">
-                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}">
+                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">
                                 <div>
                                     <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
                                     <h2>Active 10 min ago</h2>
@@ -455,7 +455,7 @@
 				</div>
 
 				<div class="splash-hero-marker-4 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="200" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="bottom: 10%; left: 5%;">
-                    <div class="marker-inside opacity-0" class-on-activate="zoomInUp:anim" class-on-activate-delay="700">
+                    <div class="marker-inside opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="2700">
                         <svg class="map-tooltip-window bottom right" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
                             <path class="bg" d="M522,2 L2,2 L2,542 L402,542 L432,572 L462,542 L522,542 L522,2 L522,2 Z" fill="#40484B"></path>
                             <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -466,9 +466,9 @@
                                 <line class="top" x1="522" y1="2" x2="2" y2="2"/>
                             </g>
                         </svg>
-                        <span class="user-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span>
+                        <span id="map-icon-4" class="user-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span>
                         <div class="map-tooltip-text top right">
-                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}">
+                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">
                                 <div>
                                     <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
                                     <h2>Active 10 min ago</h2>
@@ -522,14 +522,14 @@
                             </div>
                         </div>
                     </div>
-					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} bottom right" class-on-activate="slideInUp:anim" class-on-activate-delay="400"></div>
+					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} bottom right" class-on-activate="slideInUp:anim" class-on-activate-delay="600"></div>
                     <div class="location-text">{{selectedUniversity.place_results[3].name}}</div>
 				</div>
 
 				<div class="splash-hero-marker-5 splash-hero-marker opacity-0" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 15%; right: 3%;">
-                    <div class="location opacity-0 bg-{{selectedCategory.hex_color}} top right" class-on-activate="lightSpeedIn:anim" class-on-activate-delay="600"></div>
+                    <div class="location opacity-0 bg-{{selectedCategory.hex_color}} top right" class-on-activate="bounceIn:anim" class-on-activate-delay="1200"></div>
                     <div class="location-text">{{selectedUniversity.place_results[4].name}}</div>
-                    <div class="marker-inside opacity-0" class-on-activate="zoomInDown:anim" class-on-activate-delay="900">
+                    <div class="marker-inside opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="3300">
                         <svg class="map-tooltip-window top right" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
                             <path class="bg" d="M522,571 L2,571 L2,31 L402,31 L432,1 L462,31 L522,31 L522,571 L522,571 Z" fill="#40484B"></path>
                             <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -540,9 +540,9 @@
                                 <line class="top" x1="522" y1="571" x2="2" y2="571"/>
                             </g>
                         </svg>
-                        <span class="user-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span>
+                        <span id="map-icon-6" class="user-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span>
                         <div class="map-tooltip-text bottom right">
-                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}">
+                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">
                                 <div>
                                     <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
                                     <h2>Active 10 min ago</h2>
@@ -599,9 +599,9 @@
 				</div>
 
 				<div class="splash-hero-marker-6 splash-hero-marker opacity-0 visible" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 30%; right: 12%;">
-					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} top left" class-on-activate="slideInLeft:anim" class-on-activate-delay="1100" class-on-activate-delay="1400"></div>
+					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} top left" class-on-activate="bounceIn:anim" class-on-activate-delay="900"></div>
                     <div class="location-text">{{selectedUniversity.place_results[5].name}}</div>
-                    <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="zoomInUp:anim" class-on-activate-delay="1000">
+                    <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="3000">
                         <svg class="map-tooltip-window top left" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
                             <path class="bg" d="M2,571 L522,571 L522,31 L122,31 L92,1 L62,31 L2,31 L2,571 L2,571 Z" fill="#40484B"></path>
                             <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -612,9 +612,9 @@
                                 <line class="top" x1="2" y1="571" x2="522" y2="571"/>
                             </g>
                         </svg>
-                        <span class="user-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span>
+                        <span id="map-icon-3" class="user-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span>
                         <div class="map-tooltip-text bottom left">
-                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}">
+                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">
                                 <div>
                                     <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
                                     <h2>Active 10 min ago</h2>
@@ -681,27 +681,27 @@
 				</div>
 				<div class="splash-device-content" activate-on-class="a" class-on-activate="fadeOut:animOut">
 					<div class="splash-device-search">
-						<div class="splash-device-search-inside opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim, null:inject.splash-device-adlib|a, null:inject.splash-device-search-inside h1|a, null:inject.splash-device-search-inside p|a, null:inject.splash-device-search-gurus li|a, null:inject.splash-device-search-courses li|a">
+						<div class="splash-device-search-inside opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim, null:inject.splash-device-adlib|a, null:inject.splash-device-search-inside h1|a, null:inject.splash-device-search-inside p|a, null:inject.splash-device-search-gurus li|a, null:inject.splash-device-search-courses li|a, null:inject.splash-device-search-gurus .user-icon|activate">
                             <h1 class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim">6</h1>
                             <p class="opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim">Gurus Found</p>
                             <ul class="splash-device-search-gurus">
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="0">
-                                    <span class="user-icon" translate-to-elem="#tester"></span>
+                                    <span class="user-icon" activate-on-class-delay="4200" translate-to-elem="#map-icon-1" translate-on-class="activate" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="600">
-                                    <span class="user-icon"></span>
+                                    <span class="user-icon" activate-on-class-delay="4200" translate-to-elem="#map-icon-2" translate-on-class="activate" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1200">
-                                    <span class="user-icon"></span>
+                                    <span class="user-icon" activate-on-class-delay="4200" translate-to-elem="#map-icon-3" translate-on-class="activate" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="900">
-                                    <span class="user-icon"></span>
+                                    <span class="user-icon" activate-on-class-delay="4200" translate-to-elem="#map-icon-4" translate-on-class="activate" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="300">
-                                    <span class="user-icon"></span>
+                                    <span class="user-icon" activate-on-class-delay="4200" translate-to-elem="#map-icon-5" translate-on-class="activate" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1500">
-                                    <span class="user-icon"></span>
+                                    <span class="user-icon" activate-on-class-delay="4200" translate-to-elem="#map-icon-6" translate-on-class="activate" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
                                 </li>
                             </ul>
                             <ul class="splash-device-search-courses">
@@ -739,13 +739,11 @@
 						</g>
 					</svg>
 					<div class="splash-device-button animated">
-                        <button  class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|opacity-50, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.coach-help-mobile|hide, a:inject.splash-adlib|a, a:inject.splash-adlib ul|activate, a:inject.splash-adlib|bounceOutUp:animOut, null:inject.splash-hero-progress|activate, null:inject.splash-hero-progress span|animate">Find My Guru</button>
-						<!-- <button  class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, null:inject.splash-hero-map|activate, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help-desktop|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|activate, null:inject.splash-adlib ul li a|a, null:inject.splash-guru-head .splash-logo-guru|a">Find My Guru</button> -->
+                        <button class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, null:inject.splash-hero-map|opacity-50, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|activate, null:inject.splash-logo-guru|a">Find My Guru</button>
 					</div>
 				</div>
 			</div>
-			<!-- @gabrielle-note, don't remove the z-index:1000 without thinking. It disables all clicking for any fill in the blank options outside the device (on the right only)-->
-            <div class="splash-hero-content" style='z-index:1000 !important;' activate-on-class="a" class-on-activate="active" class-on-activate-delay="1000">
+			<div class="splash-hero-content" activate-on-class="a" class-on-activate="active" class-on-activate-delay="1000">
 				<div class="splash-guru-head">
 					<div class="splash-logo-guru" activate-on-class="a" class-on-activate="fadeOut:animOut" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
 					<svg class="coach-help coach-help-desktop opacity-0 animated" viewBox="0 0 340 205">
@@ -781,7 +779,7 @@
 						</g>
 					</svg>
 				</div>
-				<div class="splash-adlib" activate-on-class="blank-1-filled, blank-2-filled" class-on-activate="active:keep, animated:inject.splash-hero-skip button|c, animated:inject.splash-hero-map|activate">
+				<div class="splash-adlib" activate-on-class="blank-1-filled, blank-2-filled" class-on-activate="active:keep, animated:inject.splash-hero-skip button|c, null:inject.splash-hero-map|activate">
 					<div class="splash-adlib-inside" activate-on-class="a" class-on-activate="active:keep">
                         <h1 class="opacity-0" class-on-load="bounceInUp:anim">{{selectedCategory.splashData.madlib.template.beginning}}
                             <a id="blank-1" class="blank">
@@ -910,13 +908,13 @@
 					</g>
 				</svg>
 			</div>
-            <div class="splash-hero-progress high-z-index progress white opacity-0" class-on-activate="opacity-1-impt">
+            <div class="splash-hero-progress progress white opacity-0" activate-on-class="a" class-on-activate="active">
                 <span style="width: 15%;"></span>
             </div>
 		</section>
 
 		<section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
-            <!-- <div class="projector-trigger" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750">
+            <div class="projector-trigger" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750">
                 <a id="projector-pull" bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
     				<svg width="28px" height="224px" viewBox="0 0 56 448">
     				    <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -951,9 +949,10 @@
                         <tspan x="652" y="289">Check it out.</tspan>
                     </text>
                 </svg>
-            </div> -->
+            </div>
 
-            <div class='header-swipers opacity-0' bind-wp="s2_top" bind-wp-class="a" activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, b:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700">
+            <!-- bind-wp="s2_top" bind-wp-class="a" -->
+            <div class='header-swipers opacity-0' activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, b:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700">
 				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-0">
 					<div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
