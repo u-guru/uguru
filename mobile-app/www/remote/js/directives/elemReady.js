@@ -218,7 +218,7 @@ angular.module('uguru.directives')
           return element.attr('class');
         },function() {
           $timeout(function() {
-            var classNames = attr.activateOnClass.split(', ');
+            var classNames = element.attr('class').split(', ');
               if (classNames.indexOf('activate') >-1 && attr.translateToElem) {
                 var elementBounding = element[0].getBoundingClientRect();
                 var elemCoords = {height: elementBounding.height, width: elementBounding.width, top: elementBounding.top, left: elementBounding.left};
