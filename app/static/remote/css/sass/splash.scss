@@ -1203,7 +1203,18 @@
 						height: 64px;
 						border-width: 2px;
 						left: 14px;
+						z-index: 5;
 						background-color: $shamrock;
+						svg {
+							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+							@include round;
+							background-color: $shamrock;
+						}
+						&.active {
+							svg {
+								@include opacity(0);
+							}
+						}
 					}
 					.map-tooltip-window.top + .user-icon {
 						top: 28px;
@@ -1232,6 +1243,7 @@
 							bottom: 2px;
 							.map-tooltip-guru {
 								&:before {
+									@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 									content: "";
 									display: block;
 									position: absolute;
@@ -1342,29 +1354,54 @@
 							font-weight: 600;
 						}
 						.map-tooltip-guru {
+							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 							&.bg-delivery {
 								background: rgba($auburn, .25);
+								&:hover {
+									background: $auburn;
+								}
 							}
 							&.bg-freelancing {
 								background: rgba($orange, .25);
+								&:hover {
+									background: $orange;
+								}
 							}
 							&.bg-baking {
 								background: rgba($gold, .25);
+								&:hover {
+									background: $gold;
+								}
 							}
 							&.bg-photography {
 								background: rgba($moola, .25);
+								&:hover {
+									background: $moola;
+								}
 							}
 							&.bg-tech {
 								background: rgba($azure, .25);
+								&:hover {
+									background: $azure;
+								}
 							}
 							&.bg-household {
 								background: rgba($cobalt, .25);
+								&:hover {
+									background: $cobalt;
+								}
 							}
 							&.bg-athletic {
 								background: rgba($eggplant, .25);
+								&:hover {
+									background: $eggplant;
+								}
 							}
 							&.bg-academic {
 								background: rgba($cerise, .25);
+								&:hover {
+									background: $cerise;
+								}
 							}
 							> div {
 								&:first-child {
@@ -1456,9 +1493,6 @@
 					}
 					&.first, &.active, &:hover {
 						z-index: 12;
-						.user-icon {
-							z-index: 5;
-						}
 						.map-tooltip-text {
 							@include prefix(transition-delay, 300ms, webkit moz ms o);
 						}
@@ -1560,6 +1594,12 @@
 						@include center-xy;
 						width: 100%;
 						height: 100%;
+						.splash-device-found {
+							&.active {
+								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+								@include prefix(transform, translateY(100%), webkit moz ms o);
+							}
+						}
 						.splash-device-search-inside {
 							@include flex;
 							@include flex-wrap;
@@ -1612,6 +1652,8 @@
 										@include flex-center;
 										@include round;
 										width: 100%;
+										max-width: 105px;
+										margin: 0 auto;
 										height: 36px;
 										border: 2px solid white;
 										font-size: 18px;

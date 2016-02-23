@@ -216,8 +216,8 @@ angular.module('uguru.directives')
       $timeout(function() {
         scope.$watch(function() {
           return element.attr('class');
-        },function() {
-            var classNames = element.attr('class').split(', ');
+        },function(value) {
+            var classNames = element.attr('class').split(' ');
               if ((classNames.indexOf('activate') > -1) && attr.translateToElem && attr.translateOnClass === 'activate') {
                 var elementBounding = element[0].getBoundingClientRect();
                 var elemCoords = {height: elementBounding.height, width: elementBounding.width, top: elementBounding.top, left: elementBounding.left};
@@ -229,13 +229,25 @@ angular.module('uguru.directives')
                   var translateY = parseInt(translateElemCoords.top - elemCoords.top + elemCoords.height - translateElemCoords.height) + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
                   var translateX = parseInt(translateElemCoords.left - elemCoords.left) + ((attr.translateXOffset && parseInt(attr.translateXOffset)) || 0);
                   var transFormString = "translate(" + translateX + "px, " + translateY + "px)"
-                  console.log(transFormString, translateElemCoords);
-                  element[0].style.webkitTransform = transFormString;
-                  element[0].style.MozTransform = transFormString;
-                  element[0].style.msTransform = transFormString;
-                  element[0].style.OTransform = transFormString;
-                  element[0].style.transform = transFormString;
-                  element[0].classList.add(injectOnTranslateClass, 'active');
+                  var delay = attr.translateOnClassDelay || 0;
+                  if (delay) {
+                    $timeout(function() {
+                      element[0].style.webkitTransform = transFormString;
+                      element[0].style.MozTransform = transFormString;
+                      element[0].style.msTransform = transFormString;
+                      element[0].style.OTransform = transFormString;
+                      element[0].style.transform = transFormString;
+                      element[0].classList.add(injectOnTranslateClass, 'active');
+                    }, delay);
+                  } else {
+                    element[0].style.webkitTransform = transFormString;
+                    element[0].style.MozTransform = transFormString;
+                    element[0].style.msTransform = transFormString;
+                    element[0].style.OTransform = transFormString;
+                    element[0].style.transform = transFormString;
+                    element[0].classList.add(injectOnTranslateClass, 'active');
+                  }
+
                 }
               }
         });

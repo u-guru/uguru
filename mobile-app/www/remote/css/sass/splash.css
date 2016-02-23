@@ -1428,7 +1428,19 @@
             height: 64px;
             border-width: 2px;
             left: 14px;
+            z-index: 5;
             background-color: #69B3A5; }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .user-icon svg {
+              -webkit-transition: all 150ms ease-in-out;
+              -moz-transition: all 150ms ease-in-out;
+              -ms-transition: all 150ms ease-in-out;
+              -o-transition: all 150ms ease-in-out;
+              transition: all 150ms ease-in-out;
+              border-radius: 1000px;
+              background-color: #69B3A5; }
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .user-icon.active svg {
+              filter: alpha(opacity=0);
+              opacity: 0; }
           .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window.top + .user-icon {
             top: 28px; }
           .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-window.bottom + .user-icon {
@@ -1459,6 +1471,11 @@
             .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom {
               bottom: 2px; }
               .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text.bottom .map-tooltip-guru:before {
+                -webkit-transition: all 150ms ease-in-out;
+                -moz-transition: all 150ms ease-in-out;
+                -ms-transition: all 150ms ease-in-out;
+                -o-transition: all 150ms ease-in-out;
+                transition: all 150ms ease-in-out;
                 content: "";
                 display: block;
                 position: absolute;
@@ -1529,61 +1546,68 @@
             .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text h2 {
               font-size: 16px;
               font-weight: 600; }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-delivery {
-              background: rgba(240, 79, 84, 0.25); }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-freelancing {
-              background: rgba(229, 117, 60, 0.25); }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-baking {
-              background: rgba(246, 198, 78, 0.25); }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-photography {
-              background: rgba(129, 181, 102, 0.25); }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-tech {
-              background: rgba(85, 164, 183, 0.25); }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-household {
-              background: rgba(120, 114, 227, 0.25); }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-athletic {
-              background: rgba(154, 91, 197, 0.25); }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-academic {
-              background: rgba(230, 56, 155, 0.25); }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:first-child {
-              -webkit-transform: translateX(50px);
-              -moz-transform: translateX(50px);
-              -ms-transform: translateX(50px);
-              -o-transform: translateX(50px);
-              transform: translateX(50px);
-              width: calc(100% - 25px); }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:last-child {
-              -webkit-transform: translateX(12.5px);
-              -moz-transform: translateX(12.5px);
-              -ms-transform: translateX(12.5px);
-              -o-transform: translateX(12.5px);
-              transform: translateX(12.5px); }
-              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:last-child svg {
-                display: block;
-                width: 25px;
-                height: 25px; }
-                .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:last-child svg path {
-                  fill: none;
-                  stroke: white;
-                  stroke-width: 8px;
-                  stroke-linecap: round;
-                  stroke-linejoin: round; }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h1 {
-              -ms-box-orient: horizontal;
-              display: -webkit-box;
-              display: -moz-box;
-              display: -ms-flexbox;
-              display: -moz-flex;
-              display: -webkit-flex;
-              display: flex;
-              -webkit-align-content: center;
-              align-content: center;
-              -webkit-align-items: center;
-              align-items: center;
-              font-size: 20px;
-              font-weight: 600; }
-              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h1 .map-tooltip-course {
-                border-radius: 1000px;
+            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru {
+              -webkit-transition: all 150ms ease-in-out;
+              -moz-transition: all 150ms ease-in-out;
+              -ms-transition: all 150ms ease-in-out;
+              -o-transition: all 150ms ease-in-out;
+              transition: all 150ms ease-in-out; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-delivery {
+                background: rgba(240, 79, 84, 0.25); }
+                .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-delivery:hover {
+                  background: #F04F54; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-freelancing {
+                background: rgba(229, 117, 60, 0.25); }
+                .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-freelancing:hover {
+                  background: #E5753C; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-baking {
+                background: rgba(246, 198, 78, 0.25); }
+                .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-baking:hover {
+                  background: #F6C64E; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-photography {
+                background: rgba(129, 181, 102, 0.25); }
+                .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-photography:hover {
+                  background: #81B566; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-tech {
+                background: rgba(85, 164, 183, 0.25); }
+                .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-tech:hover {
+                  background: #55A4B7; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-household {
+                background: rgba(120, 114, 227, 0.25); }
+                .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-household:hover {
+                  background: #7872e3; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-athletic {
+                background: rgba(154, 91, 197, 0.25); }
+                .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-athletic:hover {
+                  background: #9A5BC5; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-academic {
+                background: rgba(230, 56, 155, 0.25); }
+                .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru.bg-academic:hover {
+                  background: #e6389b; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:first-child {
+                -webkit-transform: translateX(50px);
+                -moz-transform: translateX(50px);
+                -ms-transform: translateX(50px);
+                -o-transform: translateX(50px);
+                transform: translateX(50px);
+                width: calc(100% - 25px); }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:last-child {
+                -webkit-transform: translateX(12.5px);
+                -moz-transform: translateX(12.5px);
+                -ms-transform: translateX(12.5px);
+                -o-transform: translateX(12.5px);
+                transform: translateX(12.5px); }
+                .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:last-child svg {
+                  display: block;
+                  width: 25px;
+                  height: 25px; }
+                  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru > div:last-child svg path {
+                    fill: none;
+                    stroke: white;
+                    stroke-width: 8px;
+                    stroke-linecap: round;
+                    stroke-linejoin: round; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h1 {
                 -ms-box-orient: horizontal;
                 display: -webkit-box;
                 display: -moz-box;
@@ -1595,16 +1619,31 @@
                 align-content: center;
                 -webkit-align-items: center;
                 align-items: center;
-                background: rgba(230, 56, 155, 0.25);
-                border: 2px solid white;
-                padding: 0 6px;
-                margin-left: 5px;
-                height: 24px;
-                font-size: 10px; }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h2 {
-              color: rgba(255, 255, 255, 0.5); }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru .rating-stars {
-              margin: 0; }
+                font-size: 20px;
+                font-weight: 600; }
+                .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h1 .map-tooltip-course {
+                  border-radius: 1000px;
+                  -ms-box-orient: horizontal;
+                  display: -webkit-box;
+                  display: -moz-box;
+                  display: -ms-flexbox;
+                  display: -moz-flex;
+                  display: -webkit-flex;
+                  display: flex;
+                  -webkit-align-content: center;
+                  align-content: center;
+                  -webkit-align-items: center;
+                  align-items: center;
+                  background: rgba(230, 56, 155, 0.25);
+                  border: 2px solid white;
+                  padding: 0 6px;
+                  margin-left: 5px;
+                  height: 24px;
+                  font-size: 10px; }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru h2 {
+                color: rgba(255, 255, 255, 0.5); }
+              .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-guru .rating-stars {
+                margin: 0; }
             .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-location {
               position: relative; }
               .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .map-tooltip-text .map-tooltip-location h1 {
@@ -1646,8 +1685,6 @@
               font-weight: 600; }
           .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover {
             z-index: 12; }
-            .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .user-icon, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .user-icon, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .user-icon {
-              z-index: 5; }
             .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first .map-tooltip-text, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.active .map-tooltip-text, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:hover .map-tooltip-text {
               -webkit-transition-delay: 300ms;
               -moz-transition-delay: 300ms;
@@ -1792,6 +1829,17 @@
             transform: translate(-50%, -50%);
             width: 100%;
             height: 100%; }
+            .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-found.active {
+              -webkit-transition: all 150ms ease-in-out;
+              -moz-transition: all 150ms ease-in-out;
+              -ms-transition: all 150ms ease-in-out;
+              -o-transition: all 150ms ease-in-out;
+              transition: all 150ms ease-in-out;
+              -webkit-transform: translateY(100%);
+              -moz-transform: translateY(100%);
+              -ms-transform: translateY(100%);
+              -o-transform: translateY(100%);
+              transform: translateY(100%); }
             .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-search-inside {
               -ms-box-orient: horizontal;
               display: -webkit-box;
@@ -1889,6 +1937,8 @@
                     justify-content: center;
                     border-radius: 1000px;
                     width: 100%;
+                    max-width: 105px;
+                    margin: 0 auto;
                     height: 36px;
                     border: 2px solid white;
                     font-size: 18px;
