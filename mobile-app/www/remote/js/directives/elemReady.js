@@ -259,7 +259,7 @@ angular.module('uguru.directives')
               var translateElemCoords = {height: translateElemBounding.height, width: translateElemBounding.width, top: translateElemBounding.top, left: translateElemBounding.left};
               var injectOnTranslateClass = attr.translateOnClick || 'translate-active';
               if (!element[0].style.webkitTransform && !element[0].style.MozTransform && !element[0].style.msTransform && !element[0].style.OTransform && !element[0].style.transform) {
-                var translateY = parseInt(translateElemCoords.top - elemCoords.top) + parseInt(elemCoords.height - translateElemCoords.height) + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
+                var translateY = parseInt(translateElemCoords.top - elemCoords.top + elemCoords.height - translateElemCoords.height) + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
                 var translateX = parseInt(translateElemCoords.left - elemCoords.left) + ((attr.translateXOffset && parseInt(attr.translateXOffset)) || 0);
                 var transFormString = "translate(" + translateX + "px, " + translateY + "px)"
                 console.log(transFormString, translateElemCoords);
