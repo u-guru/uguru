@@ -743,7 +743,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="splash-hero-content" activate-on-class="a" class-on-activate="active" class-on-activate-delay="1000">
+			<!-- @gabrielle-note, don't remove the z-index:1000 without thinking. It disables all clicking for any fill in the blank options outside the device (on the right only)-->
+            <div class="splash-hero-content" style='z-index:1000 !important;' activate-on-class="a" class-on-activate="active" class-on-activate-delay="1000">
 				<div class="splash-guru-head">
 					<div class="splash-logo-guru" activate-on-class="a" class-on-activate="fadeOut:animOut" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
 					<svg class="coach-help coach-help-desktop opacity-0 animated" viewBox="0 0 340 205">
