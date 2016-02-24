@@ -32,7 +32,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.map;
-    $scope.page = {scroll: {}, waypoints: {}, sidebar:{}, dropdowns: {}, modals: {}, swipers: {}, map:{}};
+    $scope.page = {scroll: {}, waypoints: {}, sidebar:{}, dropdowns: {}, modals: {}, swipers: {cached:[], galleryIndex:0}, map:{}};
     $scope.page.dropdowns = {closeAll: closeAllDropdowns, category: {show: true, active:false, toggle:toggleCategoryDropdown}, university: {show: true, active: false, toggle: toggleUniversityDropdown}};
     //@gabrielle note, scroll preferences
 
@@ -60,7 +60,7 @@ angular.module('uguru.util.controllers')
         centeredSlides:true,
         spaceBetween: 80,
         effect:'coverflow',
-        speed:1500,
+        speed:250,
         coverflow:{slideShadows:false},
         // pagination:'.header-swiper-front .swiper-pagination',
         paginationClickable:true,
@@ -86,9 +86,7 @@ angular.module('uguru.util.controllers')
       swiperFront.on('slideChangeStart', function () {
           swiperFront.slides[swiperFront.previousIndex].classList.add('clear');
           swiperFront.slides[swiperFront.previousIndex].classList.remove('opacity-1-impt');
-          $timeout(function() {
-            swiperFront.params.speed = 300;
-          }, 500);
+          toggleGalleryDisplays()
       });
 
       var swiperFrontGalleryThumbsOption = {
@@ -107,8 +105,183 @@ angular.module('uguru.util.controllers')
       swiperFrontGalleryThumbs.params.control = swiperFront;
       $scope.page.swipers.main = swiperFront;
       $scope.page.swipers.gallery = swiperFrontGalleryThumbs;
-
   }
+
+    function hideSwiperNavButtons() {
+      var allSwiperButtons = document.querySelectorAll('.swiper-button-disabled');
+      if (!allSwiperButtons.length) {
+        return;
+      }
+      for (var i = 0; i < allSwiperButtons.length; i ++) {
+        var indexSwiperButton = allSwiperButtons[i];
+        indexSwiperButton.classList.add('hide');
+      }
+    }
+
+    function showSwiperNavButtons() {
+        var allSwiperButtons = document.querySelectorAll('.swiper-button-disabled');
+        if (!allSwiperButtons.length) {
+          return;
+        }
+        for (var i = 0; i < allSwiperButtons.length; i ++) {
+          allSwiperButtons[i].classList.remove('hide');
+        }
+    }
+
+    function hideSwiperGallery() {
+      var swiperGalaryElem = document.querySelector('#swiper-gallery-nav');
+      swiperGalaryElem && swiperGalaryElem.classList.add('hide');
+    }
+
+    function showSwiperGallery() {
+      var swiperGalaryElem = document.querySelector('#swiper-gallery-nav');
+      swiperGalaryElem && swiperGalaryElem.classList.remove('hide');
+    }
+
+
+
+    function addAllSwipersToUniversity() {
+      $scope.page.swipers.main.appendSlide($scope.page.swipers.cached);
+    }
+
+    function hideProjectorPrecursor() {
+      var projectorPullElem = document.querySelector('.projector-trigger');
+      var projectorPullMessageDesktop = document.querySelector('.splash-projector-message.desktop');
+      var projectorPullMessageMobile = document.querySelector('.splash-projector-message.mobile');
+      var projectorPullGuru = document.querySelector('.splash-projector-guru');
+      projectorPullElem && projectorPullElem.classList.add('hide');
+      projectorPullMessageDesktop && projectorPullMessageDesktop.classList.add('hide');
+      projectorPullMessageMobile && projectorPullMessageMobile.classList.add('hide');
+      projectorPullGuru && projectorPullGuru.classList.add('hide');
+    }
+
+    function showProjectorPrecursor() {
+      var projectorPullElem = document.querySelector('.projector-trigger');
+      var projectorPullMessageDesktop = document.querySelector('.splash-projector-message.desktop');
+      var projectorPullMessageMobile = document.querySelector('.splash-projector-message.mobile');
+      var projectorPullGuru = document.querySelector('.splash-projector-guru');
+      projectorPullElem && projectorPullElem.classList.remove('hide');
+      projectorPullMessageDesktop && projectorPullMessageDesktop.classList.remove('hide');
+      projectorPullMessageMobile && projectorPullMessageMobile.classList.remove('hide');
+      projectorPullGuru && projectorPullGuru.classList.remove('hide');
+    }
+
+    function hideSplashHeroMap() {
+      var splashHeroElem = document.querySelector('.splash-hero-map');
+      if (splashHeroElem) {
+        splashHeroElem.classList.add('hide');
+      }
+    }
+
+    function toggleGalleryDisplays() {
+      var swiperIndex = $scope.page.swipers.main.activeIndex;
+      var previousSwiperIndex = $scope.page.swipers.main.previousIndex;
+      console.log('transitioning... to index ' + swiperIndex + ' from ' + previousSwiperIndex)
+      if (swiperIndex === 2 && previousSwiperIndex === 3) {
+        //scene 3
+        $timeout(function() {
+          $scope.$apply(function() {
+            $scope.page.swipers.galleryIndex = 0;
+            if (previousSwiperIndex === 3) {
+              var slideClassesToActivate = ['slideshow-thumb-1', 'slideshow-thumb-2', 'slideshow-thumb-3', 'slideshow-thumb-4'];
+              var slideClassesToClear = ['slideshow-thumb-4', 'slideshow-thumb-5', 'slideshow-thumb-6', 'slideshow-thumb-7'];
+              for (var i = 0; i < slideClassesToClear.length; i++) {
+                  var clearClassIndex = slideClassesToClear[i];
+                  var clearElem = document.querySelector('.' + clearClassIndex);
+                  clearElem && clearElem.classList.add('clear');
+              }
+              $timeout(function() {
+                for (var j = 0; j < slideClassesToActivate.length; j++) {
+                  var activateClassIndex = slideClassesToActivate[j];
+                  var activateElem = document.querySelector('.' + activateClassIndex);
+                  activateElem && activateElem.classList.add('activate');
+                }
+              }, 500);
+            }
+          })
+        })
+      } else if (swiperIndex === 3 && previousSwiperIndex === 2) {
+        $timeout(function() {
+          $scope.$apply(function() {
+            $scope.page.swipers.galleryIndex = 1;
+              var slideClassesToClear = ['slideshow-thumb-1', 'slideshow-thumb-2', 'slideshow-thumb-3', 'slideshow-thumb-4'];
+              var slideClassesToActivate = ['slideshow-thumb-4', 'slideshow-thumb-5', 'slideshow-thumb-6', 'slideshow-thumb-7'];
+              for (var i = 0; i < slideClassesToClear.length; i++) {
+                  var clearClassIndex = slideClassesToClear[i];
+                  var clearElem = document.querySelector('.' + clearClassIndex);
+                  clearElem && clearElem.classList.add('clear');
+              }
+              $timeout(function() {
+                for (var j = 0; j < slideClassesToActivate.length; j++) {
+                  var activateClassIndex = slideClassesToActivate[j];
+                  var activateElem = document.querySelector('.' + activateClassIndex);
+                  activateElem && activateElem.classList.add('activate');
+                }
+              }, 500);
+          })
+        })
+      }
+    }
+
+    function showSplashHeroMap() {
+      var splashHeroElem = document.querySelector('.splash-hero-map');
+      if (splashHeroElem) {
+        splashHeroElem.classList.remove('hide');
+      }
+    }
+
+    function removeAllSwipersButOne(index) {
+      var page_swipers = $scope.page.swipers.main.slides;
+      var arrIndexToRemove = [];
+      for (var i = 0; i < index; i++ ) {
+        $scope.page.swipers.cached.push(page_swipers[i]);
+        arrIndexToRemove.push(i);
+      }
+      for (var j = index + 1; j < page_swipers.length; j++) {
+        $scope.page.swipers.cached.push(page_swipers[j]);
+        arrIndexToRemove.push(j);
+      }
+      $scope.page.swipers.main.removeSlide(arrIndexToRemove);
+    }
+
+    function showProjectorAtTop(index) {
+      var sectionSplashProjectorElem = document.querySelector('#splash-projector');
+      if (sectionSplashProjectorElem) {
+        removeAllSwipersButOne(index)
+
+        !$scope.projectorPullActivated && hideProjectorPrecursor();
+        hideSwiperGallery();
+        hideSplashHeroMap();
+        hideSwiperNavButtons();
+        sectionSplashProjectorElem.style.zIndex = 100;
+        $timeout(function() {
+          sectionSplashProjectorElem.classList.add('absolute', 'top-0');
+        })
+
+          var swiperContainer = document.querySelector('.header-swipers');
+          swiperContainer.classList.add('a');
+      }
+    };
+
+    function moveProjectorToBottom(index) {
+      var sectionSplashProjectorElem = document.querySelector('#splash-projector');
+      if (sectionSplashProjectorElem) {
+        sectionSplashProjectorElem.classList.add('slideOutDown', 'animated');
+      }
+      showSplashHeroMap();
+      $timeout(function() {
+        sectionSplashProjectorElem.classList.remove('slideOutDown', 'animated');
+        sectionSplashProjectorElem.classList.remove('absolute', 'top-0');
+        !$scope.projectorPullActivated && showProjectorPrecursor();
+        addAllSwipersToUniversity();
+        showSwiperGallery();
+        showSwiperNavButtons();
+        var swiperContainer = document.querySelector('.header-swipers');
+        swiperContainer.classList.add('a');
+        sectionSplashProjectorElem.style.zIndex = 1;
+      }, 800)
+    }
+
     function onSlideChangeEndMainSwiper($timeout, $scope) {
       return function(swiper) {
         $timeout(function(){
@@ -124,21 +297,22 @@ angular.module('uguru.util.controllers')
       return function(swiper) {
         $timeout(function(){
           $scope.$apply(function() {
-            swiper.slides[swiper.previousIndex].classList.add('clear');
+            // swiper.slides[swiper.previousIndex].classList.add('clear');
+
           })
         })
       }
     }
 
-    function onSlidePrevStart($timeout, $scope) {
-      return function(swiper) {
-        $timeout(function(){
-          $scope.$apply(function() {
-            swiper.slides[swiper.activeIndex + 1].classList.add('clear');
-          })
-        })
-      }
-    }
+    // function onSlidePrevStart($timeout, $scope) {
+    //   return function(swiper) {
+    //     $timeout(function(){
+    //       $scope.$apply(function() {
+    //         swiper.slides[swiper.activeIndex + 1].classList.add('clear');
+    //       })
+    //     })
+    //   }
+    // }
 
     function swiperOnSlideChangeStart(s) {
       if (s.activeIndex===$('.swiper-slide-gallery').index()) {
@@ -256,7 +430,7 @@ angular.module('uguru.util.controllers')
     }
 
     function getSceneNumber() {
-      var elem = document.querySelector('.splash-device-content .progress span')
+      var elem = document.querySelector('splash-hero-progress.progress span');
       if (elem) {
         console.log('progress elem', elem, elem.className);
         if (elem.className.indexOf('animate') > -1) {
@@ -313,13 +487,31 @@ angular.module('uguru.util.controllers')
 
     $scope.transitionToScene3 = function() {
       $scope.page.dropdowns.university.active = false;
-      $scope.scrollToSection('#splash-projector');
+      showProjectorAtTop(0);
+    }
+
+    function activateMapElem() {
+      var mapElem = document.querySelector('.splash-hero-map');
+      if (mapElem.className.indexOf('active') === -1) {
+        mapElem.classList.add('active');
+      }
     }
 
     $scope.selectUniversityFromMap = function(university) {
-      $scope.selectedUniversity = true;
+      $scope.selectedUniversity = university;
       $scope.refreshUniversityState(university);
+      activateMapElem();
       $scope.scrollToSection('#splash-home');
+      if (getSceneNumber() === 1) {
+        moveProjectorToBottom(0);
+      }
+      $timeout(function() {
+        var dropdownUniversity = document.querySelector('#dropdown-university')
+        dropdownUniversity && dropdownUniversity.classList.add('animated', 'tada');
+        $timeout(function() {
+          dropdownUniversity && dropdownUniversity.classList.remove('animated', 'tada');
+        }, 750);
+      }, 250);
     }
 
     $scope.scrollToSection = function(section_selector) {
@@ -369,7 +561,9 @@ angular.module('uguru.util.controllers')
         // University.initUniversitiesSplash($scope);
         //autoscroll code
         // $scope.scrollToSection('#splash-projector');
-
+        $timeout(function() {
+          // showProjectorAtTop(6);
+        });
         $timeout(function() {
           $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);
           $scope.become_guru = ContentService.generateUniversitySpecificBecomeGuruText($scope.university);
