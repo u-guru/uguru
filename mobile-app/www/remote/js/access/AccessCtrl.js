@@ -80,12 +80,13 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
 
     var successCallback = function(data) {
       $scope.root.vars.tempUser = data;
-      console.log('data access is granted', data);
       $timeout(function() {
           LoadingService.hide();
           $timeout(function() {
               LoadingService.showSuccess('Access Granted', 2000);
             }, 250);
+
+          $scope.user.access_code = true;
 
         $timeout(function() {
             $ionicSlideBoxDelegate.$getByHandle('access-university-slide-box').next();

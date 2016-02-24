@@ -1496,4 +1496,120 @@ header#home-nav-header.splash-header,
 .bg-cerise-impt {
   background: #e6389b !important; }
 
+#home-splash .login-courses-container {
+  width: 100%;
+  text-align: center;
+  margin-top: 15px; }
+  #home-splash .login-courses-container > h2 {
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase; }
+  #home-splash .login-courses-container > div {
+    max-width: 800px;
+    margin: 0 auto; }
+    #home-splash .login-courses-container > div .login-backpack {
+      position: relative;
+      display: block;
+      width: 230px;
+      padding: 25px 15px 15px; }
+      #home-splash .login-courses-container > div .login-backpack svg {
+        display: block;
+        width: 100%;
+        height: auto; }
+      #home-splash .login-courses-container > div .login-backpack b {
+        border-radius: 1000px;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        top: 66px;
+        width: 72px;
+        height: 72px;
+        background: white;
+        color: #40484B;
+        font-size: 36px;
+        font-weight: 700; }
+      #home-splash .login-courses-container > div .login-backpack a {
+        display: block;
+        margin-top: 10px;
+        font-weight: 600;
+        font-size: 20px; }
+    #home-splash .login-courses-container > div .login-courses {
+      width: calc(100% - 230px);
+      padding: 15px; }
+      #home-splash .login-courses-container > div .login-courses ul {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        padding: 7.5px; }
+        #home-splash .login-courses-container > div .login-courses ul li {
+          width: calc(100% / 3);
+          padding: 7.5px; }
+          #home-splash .login-courses-container > div .login-courses ul li > span {
+            position: relative;
+            display: block;
+            padding: 20px 0 25px;
+            background: white;
+            color: #40484B;
+            font-size: 20px;
+            font-weight: 600; }
+            #home-splash .login-courses-container > div .login-courses ul li > span:after {
+              filter: alpha(opacity=30);
+              opacity: 0.3;
+              content: "";
+              display: block;
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: 10px;
+              background: #40484B; }
+      #home-splash .login-courses-container > div .login-courses .desktop-card-list li a {
+        font-size: 20px !important;
+        text-align: center; }
+        #home-splash .login-courses-container > div .login-courses .desktop-card-list li a .course-title {
+          height: 50px;
+          overflow: hidden; }
+        #home-splash .login-courses-container > div .login-courses .desktop-card-list li a span {
+          display: block;
+          width: 100%;
+          text-align: center; }
+          #home-splash .login-courses-container > div .login-courses .desktop-card-list li a span span {
+            display: block; }
+            #home-splash .login-courses-container > div .login-courses .desktop-card-list li a span span.course-name:not(:only-child) {
+              font-size: 14px !important; }
+
 /*# sourceMappingURL=samir.css.map */

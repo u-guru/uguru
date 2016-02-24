@@ -73,7 +73,7 @@ function GUtilService($timeout) {
             zoom: 17
           }
           $timeout(function() {
-            scope.selectedUniversity.place_results = []
+            scope.selectedUniversity.place_results = [];
             for (var i = 0; i < results.length; i++) {
               var resultPlace = results[i];
               if (!resultPlace.photos || !resultPlace.photos.length) {
@@ -87,8 +87,6 @@ function GUtilService($timeout) {
               scope.selectedUniversity.place_results.push(resultPlace);
             }
           }, 5000);
-
-          generateStaticMapUrls([scope.selectedUniversity], staticMapOptions);
         }
       }
     }

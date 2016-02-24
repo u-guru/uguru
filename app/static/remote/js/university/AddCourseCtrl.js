@@ -25,7 +25,7 @@ angular.module('uguru.util.controllers')
 
 		$scope.searchInputFocus;
 
-		if ($state.current.name !== 'root.universities') {
+		if ($state.current.name !== 'root.universities' && $scope.user && $scope.user.university && $scope.user.university.id) {
 			$scope.courses = University.source.courses || [];
 			if (!$scope.courses || !$scope.courses.length) {
 				University.getPopularCoursesPromise($scope.user.university.id).then(function(courses) {

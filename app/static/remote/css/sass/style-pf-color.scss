@@ -412,6 +412,12 @@
 		}
 	}
 	.pf-checklist {
+		.pf-checklist-desc {
+			svg {
+				display: block;
+				margin-top: 0;
+			}
+		}
 		> li:not(.pf-checklist-full) {
 			.pf-check-enabled {
 				div {

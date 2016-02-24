@@ -1059,8 +1059,16 @@
 					background-size: cover;
 					@include prefix(filter, invert(100%), webkit moz ms o);
 				}
+				.gmnoprint img {
+					@include prefix(filter, invert(100%), webkit moz ms o);
+				}
 				&.animated {
 					@include prefix(animation-delay, 200ms, webkit moz ms o);
+				}
+				&.active {
+					@include opacity-important(1);
+					@include prefix(transition, all 1000ms ease-in-out, webkit moz ms o);
+					@include prefix(transition-delay, 200ms, webkit moz ms o);
 				}
 			}
 			.splash-hero-markers {
@@ -1195,7 +1203,18 @@
 						height: 64px;
 						border-width: 2px;
 						left: 14px;
+						z-index: 5;
 						background-color: $shamrock;
+						svg {
+							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+							@include round;
+							background-color: $shamrock;
+						}
+						&.active {
+							svg {
+								@include opacity(0);
+							}
+						}
 					}
 					.map-tooltip-window.top + .user-icon {
 						top: 28px;
@@ -1224,6 +1243,7 @@
 							bottom: 2px;
 							.map-tooltip-guru {
 								&:before {
+									@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 									content: "";
 									display: block;
 									position: absolute;
@@ -1236,40 +1256,64 @@
 									&:before {
 										border-bottom-color: rgba($auburn, .25);
 									}
+									&:hover:before {
+										border-bottom-color: $auburn;
+									}
 								}
 								&.bg-freelancing {
 									&:before {
 										border-bottom-color: rgba($orange, .25);
+									}
+									&:hover:before {
+										border-bottom-color: $orange;
 									}
 								}
 								&.bg-baking {
 									&:before {
 										border-bottom-color: rgba($gold, .25);
 									}
+									&:hover:before {
+										border-bottom-color: $gold;
+									}
 								}
 								&.bg-photography {
 									&:before {
 										border-bottom-color: rgba($moola, .25);
+									}
+									&:hover:before {
+										border-bottom-color: $moola;
 									}
 								}
 								&.bg-tech {
 									&:before {
 										border-bottom-color: rgba($azure, .25);
 									}
+									&:hover:before {
+										border-bottom-color: $azure;
+									}
 								}
 								&.bg-household {
 									&:before {
 										border-bottom-color: rgba($cobalt, .25);
+									}
+									&:hover:before {
+										border-bottom-color: $cobalt;
 									}
 								}
 								&.bg-athletic {
 									&:before {
 										border-bottom-color: rgba($eggplant, .25);
 									}
+									&:hover:before {
+										border-bottom-color: $eggplant;
+									}
 								}
 								&.bg-academic {
 									&:before {
 										border-bottom-color: rgba($cerise, .25);
+									}
+									&:hover:before {
+										border-bottom-color: $cerise;
 									}
 								}
 							}
@@ -1310,29 +1354,54 @@
 							font-weight: 600;
 						}
 						.map-tooltip-guru {
+							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 							&.bg-delivery {
 								background: rgba($auburn, .25);
+								&:hover {
+									background: $auburn;
+								}
 							}
 							&.bg-freelancing {
 								background: rgba($orange, .25);
+								&:hover {
+									background: $orange;
+								}
 							}
 							&.bg-baking {
 								background: rgba($gold, .25);
+								&:hover {
+									background: $gold;
+								}
 							}
 							&.bg-photography {
 								background: rgba($moola, .25);
+								&:hover {
+									background: $moola;
+								}
 							}
 							&.bg-tech {
 								background: rgba($azure, .25);
+								&:hover {
+									background: $azure;
+								}
 							}
 							&.bg-household {
 								background: rgba($cobalt, .25);
+								&:hover {
+									background: $cobalt;
+								}
 							}
 							&.bg-athletic {
 								background: rgba($eggplant, .25);
+								&:hover {
+									background: $eggplant;
+								}
 							}
 							&.bg-academic {
 								background: rgba($cerise, .25);
+								&:hover {
+									background: $cerise;
+								}
 							}
 							> div {
 								&:first-child {
@@ -1424,9 +1493,6 @@
 					}
 					&.first, &.active, &:hover {
 						z-index: 12;
-						.user-icon {
-							z-index: 5;
-						}
 						.map-tooltip-text {
 							@include prefix(transition-delay, 300ms, webkit moz ms o);
 						}
@@ -1528,6 +1594,12 @@
 						@include center-xy;
 						width: 100%;
 						height: 100%;
+						.splash-device-found {
+							&.active {
+								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+								@include prefix(transform, translateY(100%), webkit moz ms o);
+							}
+						}
 						.splash-device-search-inside {
 							@include flex;
 							@include flex-wrap;
@@ -1563,6 +1635,7 @@
 									width: calc(100% / 3);
 									padding: 7.5px;
 									.user-icon {
+										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 										width: 64px;
 										height: 64px;
 										border-width: 2px;
@@ -1579,6 +1652,8 @@
 										@include flex-center;
 										@include round;
 										width: 100%;
+										max-width: 105px;
+										margin: 0 auto;
 										height: 36px;
 										border: 2px solid white;
 										font-size: 18px;
@@ -1664,6 +1739,7 @@
 				position: absolute;
 				bottom: 0;
 				left: 0;
+				z-index: 25;
 				width: 100%;
 				height: 15px;
 				&.progress.white {
@@ -1713,7 +1789,7 @@
 					@include prefix(transition-duration, 1000ms, webkit moz ms o);
 					@include prefix(transition-timing-function, ease-in-out, webkit moz ms o);
 					@include prefix(transition-delay, 200ms, webkit moz ms o);
-					// @include prefix(transform, translateY(-55%) scale(.75), webkit moz ms o);
+					@include prefix(transform, translateY(-55%) scale(.75), webkit moz ms o);
 				}
 				.splash-adlib {
 					width: 100%;
