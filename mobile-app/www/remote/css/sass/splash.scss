@@ -2252,6 +2252,48 @@
 						height: 80px!important;
 						margin: 0!important;
 						text-align: center;
+						.progress-step {
+							@include flex;
+							@include flex-center;
+							position: relative;
+							height: 100%;
+							background: none;
+							.progress-step-icon {
+								height: 100%;
+								width: 80px;
+								background: none;
+								svg {
+									display: block;
+									width: 80px;
+									height: 80px;
+									* {
+										stroke-width: 6px;
+									}
+								}
+							}
+							&:hover, &:focus {
+								.progress-step-icon {
+									svg {
+										.bg {
+											@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+											fill: lighten($slate, 30%)!important;
+										}
+										*:not(.bg) {
+											fill: rgba($slate, .5);
+										}
+									}
+								}
+							}
+							h1 {
+								@include center-x;
+								bottom: -23px;
+								text-align: center;
+								font-size: 18px;
+								font-weight: 600;
+								text-transform: lowercase;
+								white-space: nowrap;
+							}
+						}
 						.onboarding-step {
 							@include round;
 							@include flex;
@@ -2290,7 +2332,22 @@
 									stroke-dashoffset: 220;
 								}
 							}
-							&.complete {
+						}
+						&.complete {
+							.onboarding-step {
+								.onboarding-icon {
+									background: mix($shamrock, $slate);
+								}
+								.onboarding-status {
+									.top, .bottom {
+										@include opacity(1);
+										stroke-dashoffset: 0;
+									}
+								}
+							}
+						}
+						&.swiper-slide-prev {
+							.onboarding-step {
 								.onboarding-icon {
 									background: $shamrock;
 								}
@@ -2301,7 +2358,22 @@
 									}
 								}
 							}
-							&.active {
+						}
+						&.swiper-slide-active {
+							.progress-step {
+								.progress-step-icon {
+									svg {
+										.bg {
+											@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+											fill: $shamrock!important;
+										}
+										*:not(.bg) {
+											fill: rgba($slate, .5);
+										}
+									}
+								}
+							}
+							.onboarding-step {
 								.onboarding-icon {
 									background: $shamrock;
 								}
@@ -2314,9 +2386,14 @@
 								}
 							}
 						}
-						&.swiper-slide-active {
-						}
 						&:not(.swiper-slide-active) {
+							.progress-step {
+								.progress-step-icon {
+									svg {
+										@include opacity(.5);
+									}
+								}
+							}
 						}
 					}
 				}
@@ -2837,9 +2914,9 @@
 			}
 			.splash-map-stats {
 				z-index: 2;
-				background: -moz-linear-gradient(top, rgba($slate,0) 0%, rgba($slate,1) 75%, rgba($slate,1) 100%);
-				background: -webkit-linear-gradient(top, rgba($slate,0) 0%, rgba($slate,1) 75%, rgba($slate,1) 100%);
-				background: linear-gradient(to bottom, rgba($slate,0) 0%, rgba($slate,1) 75%, rgba($slate,1) 100%);
+				background: -moz-linear-gradient(top, rgba($slate,0) 0%, rgba($slate,1) 50%, rgba($slate,1) 100%);
+				background: -webkit-linear-gradient(top, rgba($slate,0) 0%, rgba($slate,1) 50%, rgba($slate,1) 100%);
+				background: linear-gradient(to bottom, rgba($slate,0) 0%, rgba($slate,1) 50%, rgba($slate,1) 100%);
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0040484b', endColorstr='$slate',GradientType=0 );
 				> ul {
 					@include flex;
@@ -2890,7 +2967,7 @@
 					> ul {
 						padding: 7.5px;
 						li {
-							width: calc(100% / 3);
+							width: 50%;
 							padding: 7.5px;
 							text-align: center;
 							h4 {
@@ -2927,13 +3004,11 @@
 				.splash-map-stats {
 					@include flex;
 					@include flex-center-vertical;
-					@include prefix(justify-content, space-between, webkit);
-					width: 100%;
+					@include prefix(justify-content, flex-end, webkit);
 					position: absolute;
 					bottom: 0;
-					left: 0;
-					padding: 50px 15px 15px;
-					min-height: 150px;
+					right: 0;
+					width: 100%;
 					> * {
 						h1 {
 							font-size: 36px;

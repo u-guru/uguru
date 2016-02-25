@@ -607,7 +607,7 @@ angular.module('uguru.util.controllers')
         $scope.scrollToSection('#splash-projector');
         document.querySelector('#projector-pull').classList.add('activate');
         $timeout(function() {
-        //   showProjectorAtTop(6);
+        //    showProjectorAtTop(0);
         });
         $timeout(function() {
           $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);
@@ -769,12 +769,39 @@ angular.module('uguru.util.controllers')
       }
 
     var styleOptions = [
-        { featureType: 'water', elementType: 'geometry', stylers: [ { hue: '#50A5DD' }, { saturation: -50 },{ lightness: 0 }, { visibility: 'on' }]},
-        { featureType: 'water', elementType: 'labels', stylers: [ { visibility: 'off' } ]},
-        { featureType: 'landscape', elementType: 'all', stylers: [ {visibility: 'off'} ] },
-        { featureType: 'poi', elementType: 'all', stylers: [ {visibility: 'off'} ] },
-        { featureType: 'administrative.country', elementType: 'labels',stylers: [{visibility: 'off'} ] },
-        { featureType: 'administrative.locality', elementType: 'labels', stylers: [ {visibility: 'off'} ]},
+        { featureType: 'water', elementType: 'geometry.fill', stylers: [
+            { color: '#40484b' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'landscape', elementType: 'geometry', stylers: [
+            { color: '#51595c' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'water', elementType: 'geometry.stroke', stylers: [
+            { color: '#FFFFFF' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'administrative', elementType: 'geometry.fill', stylers: [
+            { color: '#51595c' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'administrative.country', elementType: 'geometry.stroke', stylers: [
+            { color: '#FFFFFF' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'administrative.province', elementType: 'geometry.stroke', stylers: [
+            { color: '#FFFFFF' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'road', elementType: 'geometry', stylers: [
+            { color: '#474e51' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'transit', elementType: 'geometry', stylers: [
+            { color: '#474e51' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'poi', elementType: 'all', stylers: [ { visibility: 'off' } ]},
         { featureType: 'all', elementType: 'labels', stylers: [ {visibility: 'off'} ]}
       ];
 
