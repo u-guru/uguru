@@ -258,6 +258,7 @@ angular.module('uguru.util.controllers')
         removeAllSwipersButOne(index)
 
         !$scope.projectorPullActivated && hideProjectorPrecursor();
+
         hideSwiperGallery();
 
         hideSplashHeroMap();
@@ -582,9 +583,6 @@ angular.module('uguru.util.controllers')
         }
       }
       initCTASplash()
-      $timeout(function(){
-        $compile(document.querySelector('#cta-modal-sidebar aside'))($scope);
-      })
       initSwipers(responsiveSwiperArgs, $scope.desktopMode);
       $scope.universities = University.getTargetted().slice();
       $timeout(function() {
@@ -598,7 +596,7 @@ angular.module('uguru.util.controllers')
 
 
         $timeout(function() {
-          // showProjectorAtTop(6);
+          // showProjectorAtTop(0);
         });
         $timeout(function() {
           $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);
@@ -853,6 +851,27 @@ angular.module('uguru.util.controllers')
       $scope.universities = University.getTargetted();
       // $scope.staticUniversityMaps = GUtilService.generateStaticMapUrls($scope.universities.slice(0, 4), staticMapOptions);
       // $scope.search_text = {university: "", matching: []};
+
+      $scope.sidebarGetStarted = function() {
+        LoadingService.show();
+        var modalElemSidebar = document.querySelector('#cta-modal-sidebar');
+        modalElemSidebar && modalElemSidebar.classList.remove('show');
+        CTAService.closeCTAManually('#cta-box-sidebar', function() {
+          if (!$scope.projectorPullActivated) {
+            $scope.scrollToSection('#splash-projector');
+            LoadingService.hide();
+          } else {
+            $scope.scrollToSection('#splash-projector');
+            $timeout(function() {
+              $scope.page.swipers.main.slideTo(3);
+              $timeout(function() {
+                toggleGalleryDisplays();
+                LoadingService.hide();
+              }, 1000)
+            }, 1500)
+          }
+        })
+      }
 
       var calcZoom = function() {
         if ($scope.desktopMode) {
@@ -1173,8 +1192,9 @@ angular.module('uguru.util.controllers')
         CTAService.initSingleCTA("#cta-box-sidebar", ctaParentElemSelector, activateAtShow);
         function activateAtShow(modal_elem) {
           var sidebarAside = modal_elem.querySelector('aside');
-          sidebarAside && sidebarAside.classList.add('activate')
-          modal_elem && modal_elem.classList.remove('hide')
+          sidebarAside && sidebarAside.classList.add('activate');
+          var asideElem = document.querySelector('.splash-sidebar-full')
+          console.log(asideElem);
         }
       }
 

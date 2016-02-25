@@ -36,6 +36,7 @@ angular.module('uguru.util.controllers')
     'LoadingService',
     '$ionicSlideBoxDelegate',
     'AnimationService',
+    'CTAService',
     function($ionicPlatform, $scope, $state, $localstorage, User,
         RootService, Version, $ionicHistory, $templateCache, $ionicLoading, $rootScope,
         CordovaPushWrapper, $cordovaPush, University,
@@ -44,7 +45,7 @@ angular.module('uguru.util.controllers')
         Skill, Profession, $cordovaNgCardIO, DeviceService,
          Utilities, Category, DownloadService, PopupService,
          KeyboardService, ModalService, Github, LoadingService,
-         $ionicSlideBoxDelegate, AnimationService) {
+         $ionicSlideBoxDelegate, AnimationService, CTAService) {
 
 
         // if (DeviceService.isIOSBrowser()) {
@@ -346,19 +347,23 @@ angular.module('uguru.util.controllers')
                         $scope.root.vars.settings = {icons : {profile : true}};
 
                         LoadingService.showSuccess('You have been successfully logged out!', 2500);
+                        if ($state.current.name === 'root.splash') {
+                            CTAService.closeCTAManually('#cta-box-sidebar');
+                            return;
+                        }
                         $timeout(function() {
                             if (!$scope.desktopMode) {
                                 $scope.toggleRightSideMenu();
                             }
                             if (!tempUniversity) {
-                                AnimationService.flip('^.home');
+                                AnimationService.flip('^.splash');
                             } else {
                                 $scope.root.vars.university = university;
                                 $localstorage.setObject('university', university);
                                 if ($scope.desktopMode) {
                                     AnimationService.flip('^.desktop-login');
                                 } else {
-                                    AnimationService.flip('^.home');
+                                    AnimationService.flip('^.splash');
                                 }
                             }
                         }, 1000)
