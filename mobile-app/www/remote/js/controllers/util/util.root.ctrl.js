@@ -348,6 +348,8 @@ angular.module('uguru.util.controllers')
 
                         LoadingService.showSuccess('You have been successfully logged out!', 2500);
                         if ($state.current.name === 'root.splash') {
+                            var modalElemSidebar = document.querySelector('#cta-modal-sidebar');
+                            modalElemSidebar && modalElemSidebar.classList.remove('show');
                             CTAService.closeCTAManually('#cta-box-sidebar');
                             return;
                         }
