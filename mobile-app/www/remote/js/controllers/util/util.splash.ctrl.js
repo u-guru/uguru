@@ -84,9 +84,9 @@ angular.module('uguru.util.controllers')
       var swiperFront=new Swiper('.header-swiper-front', swiperMainOptions);
 
       swiperFront.on('slideChangeStart', function () {
-          swiperFront.slides[swiperFront.previousIndex].classList.add('clear');
-          swiperFront.slides[swiperFront.previousIndex].classList.remove('opacity-1-impt');
-          toggleGalleryDisplays()
+          // swiperFront.slides[swiperFront.previousIndex].classList.add('clear');
+          // swiperFront.slides[swiperFront.previousIndex].classList.remove('opacity-1-impt');
+          toggleGalleryDisplays();
       });
 
       var swiperFrontGalleryThumbsOption = {
@@ -103,6 +103,8 @@ angular.module('uguru.util.controllers')
       // swiperFrontGalleryThumbs.setWrapperTranslate(swiperFront.getWrapperTranslate());
       swiperFront.params.control = swiperFrontGalleryThumbs;
       swiperFrontGalleryThumbs.params.control = swiperFront;
+      swiperFrontGalleryThumbs.params.slideChangeStart = swiperFront.params.slideChangeStart;
+      swiperFrontGalleryThumbs.params.onTransitionEnd = swiperFront.params.onTransitionEnd;
       $scope.page.swipers.main = swiperFront;
       $scope.page.swipers.gallery = swiperFrontGalleryThumbs;
   }
@@ -177,12 +179,15 @@ angular.module('uguru.util.controllers')
       var swiperIndex = $scope.page.swipers.main.activeIndex;
       var previousSwiperIndex = $scope.page.swipers.main.previousIndex;
       console.log('transitioning... to index ' + swiperIndex + ' from ' + previousSwiperIndex)
-      if (swiperIndex === 2 && previousSwiperIndex === 3) {
+      if (swiperIndex === 6) {
+        console.log('retrieving courses');
+        getAllCourses($scope.selectedUniversity);
+      }
+      if (swiperIndex === 2 && previousSwiperIndex > 2) {
         //scene 3
         $timeout(function() {
           $scope.$apply(function() {
-            $scope.page.swipers.galleryIndex = 0;
-            if (previousSwiperIndex === 3) {
+            // if (previousSwiperIndex === 3) {
               var slideClassesToActivate = ['slideshow-thumb-1', 'slideshow-thumb-2', 'slideshow-thumb-3', 'slideshow-thumb-4'];
               var slideClassesToClear = ['slideshow-thumb-4', 'slideshow-thumb-5', 'slideshow-thumb-6', 'slideshow-thumb-7'];
               for (var i = 0; i < slideClassesToClear.length; i++) {
@@ -191,19 +196,20 @@ angular.module('uguru.util.controllers')
                   clearElem && clearElem.classList.add('clear');
               }
               $timeout(function() {
+                $scope.page.swipers.galleryIndex = 0;
                 for (var j = 0; j < slideClassesToActivate.length; j++) {
                   var activateClassIndex = slideClassesToActivate[j];
                   var activateElem = document.querySelector('.' + activateClassIndex);
                   activateElem && activateElem.classList.add('activate');
                 }
-              }, 500);
-            }
+              }, 1250);
+            // }
           })
         })
-      } else if (swiperIndex === 3 && previousSwiperIndex === 2) {
+      } else if (swiperIndex === 3 && previousSwiperIndex < 3) {
         $timeout(function() {
           $scope.$apply(function() {
-            $scope.page.swipers.galleryIndex = 1;
+
               var slideClassesToClear = ['slideshow-thumb-1', 'slideshow-thumb-2', 'slideshow-thumb-3', 'slideshow-thumb-4'];
               var slideClassesToActivate = ['slideshow-thumb-4', 'slideshow-thumb-5', 'slideshow-thumb-6', 'slideshow-thumb-7'];
               for (var i = 0; i < slideClassesToClear.length; i++) {
@@ -212,12 +218,13 @@ angular.module('uguru.util.controllers')
                   clearElem && clearElem.classList.add('clear');
               }
               $timeout(function() {
+                $scope.page.swipers.galleryIndex = 1;
                 for (var j = 0; j < slideClassesToActivate.length; j++) {
                   var activateClassIndex = slideClassesToActivate[j];
                   var activateElem = document.querySelector('.' + activateClassIndex);
                   activateElem && activateElem.classList.add('activate');
                 }
-              }, 500);
+              }, 1250);
           })
         })
       }
@@ -286,7 +293,6 @@ angular.module('uguru.util.controllers')
       return function(swiper) {
         $timeout(function(){
           $scope.$apply(function() {
-            swiper.params.speed = 1500;
             swiper.slides[swiper.activeIndex].classList.add('activate');
           })
         })
@@ -357,6 +363,22 @@ angular.module('uguru.util.controllers')
           });
         }, 1500);
     }
+
+    function getAllCourses(university) {
+      var areCoursesInCache = $localstorage.getObject('selected_university_courses');
+      if (university.courses && university.courses.length) {
+        return;
+      }
+      if (areCoursesInCache && areCoursesInCache.length) {
+        university.courses = areCoursesInCache;
+      } else {
+        University.getPopularCoursesPromise(university.id).then(function(courses) {
+          university.courses = courses.plain();
+          $localstorage.setObject('selected_university_courses', university.courses);
+        }, function(err) {console.log('ERROR FETCHING COURSES', err)});
+      }
+    }
+
 
     $scope.resetMadLibBlankIfActive = function ($event){
 
@@ -460,9 +482,13 @@ angular.module('uguru.util.controllers')
 
     $scope.refreshUniversityState = function(university) {
       var currentSceneNumber = getSceneNumber();
+      $localstorage.setObject('selected_university_courses', null);
       $scope.selectedUniversity = university;
       initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
       $scope.page.dropdowns.university.active = false;
+      $timeout(function(){
+        getAllCourses($scope.selectedUniversity);
+      });
       if (currentSceneNumber !== 2) {
         return;
       }
@@ -560,7 +586,8 @@ angular.module('uguru.util.controllers')
       $timeout(function() {
         // University.initUniversitiesSplash($scope);
         //autoscroll code
-        // $scope.scrollToSection('#splash-projector');
+        $scope.scrollToSection('#splash-projector');
+        document.querySelector('#projector-pull').classList.add('activate');
         $timeout(function() {
           // showProjectorAtTop(6);
         });
@@ -606,7 +633,10 @@ angular.module('uguru.util.controllers')
       }
       $timeout(function() {
         $scope.getUniversityPlaces($scope.selectedUniversity);
-      })
+        if (!$scope.selectedUniversity.courses || !$scope.selectedUniversity.courses.length) {
+          getAllCourses($scope.selectedUniversity);
+        }
+      }, 5000);
       function generateSelectedUniversityMapMarkerObj(university, calc_coords_func) {
         obj = university;
         var universityObj = {
