@@ -2252,6 +2252,48 @@
 						height: 80px!important;
 						margin: 0!important;
 						text-align: center;
+						.progress-step {
+							@include flex;
+							@include flex-center;
+							position: relative;
+							height: 100%;
+							background: none;
+							.progress-step-icon {
+								height: 100%;
+								width: 80px;
+								background: none;
+								svg {
+									display: block;
+									width: 80px;
+									height: 80px;
+									* {
+										stroke-width: 6px;
+									}
+								}
+							}
+							&:hover, &:focus {
+								.progress-step-icon {
+									svg {
+										.bg {
+											@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+											fill: lighten($slate, 30%)!important;
+										}
+										*:not(.bg) {
+											fill: rgba($slate, .5);
+										}
+									}
+								}
+							}
+							h1 {
+								@include center-x;
+								bottom: -23px;
+								text-align: center;
+								font-size: 18px;
+								font-weight: 600;
+								text-transform: lowercase;
+								white-space: nowrap;
+							}
+						}
 						.onboarding-step {
 							@include round;
 							@include flex;
@@ -2290,7 +2332,22 @@
 									stroke-dashoffset: 220;
 								}
 							}
-							&.complete {
+						}
+						&.complete {
+							.onboarding-step {
+								.onboarding-icon {
+									background: mix($shamrock, $slate);
+								}
+								.onboarding-status {
+									.top, .bottom {
+										@include opacity(1);
+										stroke-dashoffset: 0;
+									}
+								}
+							}
+						}
+						&.swiper-slide-prev {
+							.onboarding-step {
 								.onboarding-icon {
 									background: $shamrock;
 								}
@@ -2301,7 +2358,22 @@
 									}
 								}
 							}
-							&.active {
+						}
+						&.swiper-slide-active {
+							.progress-step {
+								.progress-step-icon {
+									svg {
+										.bg {
+											@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+											fill: $shamrock!important;
+										}
+										*:not(.bg) {
+											fill: rgba($slate, .5);
+										}
+									}
+								}
+							}
+							.onboarding-step {
 								.onboarding-icon {
 									background: $shamrock;
 								}
@@ -2314,9 +2386,14 @@
 								}
 							}
 						}
-						&.swiper-slide-active {
-						}
 						&:not(.swiper-slide-active) {
+							.progress-step {
+								.progress-step-icon {
+									svg {
+										@include opacity(.5);
+									}
+								}
+							}
 						}
 					}
 				}
@@ -2412,7 +2489,7 @@
 						top: 0;
 						width: 100%;
 						height: 100%;
-						padding: 150px 30px 15px;
+						padding: 0;
 						&:not(.active) {
 							@include opacity(0);
 							z-index: -10;
@@ -2429,10 +2506,7 @@
 						.input-field {
 							width: 100%;
 							input {
-								height: 64px;
 								color: white;
-								font-size: 48px;
-								font-weight: 300;
 							}
 							a {
 								&:not(.active) {
@@ -2442,13 +2516,16 @@
 								}
 							}
 							svg {
-								@include svg-stroke(white, 4);
-								position: absolute;
-								top: 5px;
-								right: 0;
+								@include svg-stroke(white, 5);
 								display: block;
-								width: 50px;
-								height: 50px;
+								position: absolute;
+								right: 0;
+								top: 0;
+								width: 30px;
+								height: 30px;
+								&.clear {
+									@include prefix(transform, rotate(45deg), webkit moz ms o);
+								}
 								&.verified {
 									circle {
 										fill: $moxie;
@@ -2482,12 +2559,15 @@
 								position: relative;
 								@include flex;
 								@include flex-center-vertical;
-								width: calc(100% - 240px);
-								height: 160px;
+								width: 100%;
+								height: 51px;
 								.input-field {
 									@include center-y;
-									left: 30px;
+									left: 15px;
 									width: calc(100% - 30px);
+									input {
+										height: 36px;
+									}
 									&:not(.active) {
 										@include opacity(0);
 										z-index: -10;
@@ -2497,6 +2577,88 @@
 							.btn-login-fb {
 								@include center-x;
 								bottom: 15px;
+							}
+						}
+					}
+					@media screen and (max-width: 768px) {
+						.btn-ghost-white {
+							padding-left: 20px;
+		    				padding-right: 20px;
+							white-space: nowrap;
+						}
+						.btn-splash-login {
+							display: none;
+						}
+						.btn-login-fb {
+							display: none;
+						}
+						.splash-projector-guru {
+							display: none;
+						}
+						.splash-signup-content {
+							.splash-signup-inside {
+								@include flex-center;
+								@include flex-wrap;
+								padding-top: 15px;
+								.splash-signup-form {
+									width: 100%;
+								}
+								.splash-signup-buttons {
+									position: absolute;
+									bottom: 0;
+									left: 0;
+									width: 100%;
+									@include flex;
+									li {
+										width: 50%;
+										button {
+											font-size: 16px!important;
+											font-weight: 600;
+											line-height: 1.2;
+											height: 50px;
+										}
+										&:first-child {
+											button {
+												background: $shamrock;
+											}
+										}
+										&:last-child {
+											button {
+												background: $facebook;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					@media screen and (min-width: 768px) {
+						.splash-content {
+							padding: 150px 30px 15px;
+						}
+						.splash-signup-content {
+							.splash-signup-inside {
+								.splash-signup-form {
+									width: calc(100% - 240px);
+									height: 160px;
+									.input-field {
+										left: 30px;
+										input {
+											height: 64px;
+											font-size: 48px;
+											font-weight: 300;
+										}
+										svg {
+											@include svg-stroke(white, 4);
+											top: 5px;
+											width: 50px;
+											height: 50px;
+										}
+									}
+								}
+								.splash-signup-buttons {
+									display: none;
+								}
 							}
 						}
 					}
@@ -2733,7 +2895,7 @@
 			}
 			@media screen and (max-width: 414px) and (max-height: 736px) {
 				.header-swiper-front {
-					padding: 25% 0;
+					padding: 20% 0 30%;
 					// .swiper-slide {
 					// 	margin-right: 0px!important;
 					// }
@@ -2837,9 +2999,9 @@
 			}
 			.splash-map-stats {
 				z-index: 2;
-				background: -moz-linear-gradient(top, rgba($slate,0) 0%, rgba($slate,1) 75%, rgba($slate,1) 100%);
-				background: -webkit-linear-gradient(top, rgba($slate,0) 0%, rgba($slate,1) 75%, rgba($slate,1) 100%);
-				background: linear-gradient(to bottom, rgba($slate,0) 0%, rgba($slate,1) 75%, rgba($slate,1) 100%);
+				background: -moz-linear-gradient(top, rgba($slate,0) 0%, rgba($slate,1) 50%, rgba($slate,1) 100%);
+				background: -webkit-linear-gradient(top, rgba($slate,0) 0%, rgba($slate,1) 50%, rgba($slate,1) 100%);
+				background: linear-gradient(to bottom, rgba($slate,0) 0%, rgba($slate,1) 50%, rgba($slate,1) 100%);
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0040484b', endColorstr='$slate',GradientType=0 );
 				> ul {
 					@include flex;
@@ -2890,7 +3052,7 @@
 					> ul {
 						padding: 7.5px;
 						li {
-							width: calc(100% / 3);
+							width: 50%;
 							padding: 7.5px;
 							text-align: center;
 							h4 {
@@ -2927,13 +3089,11 @@
 				.splash-map-stats {
 					@include flex;
 					@include flex-center-vertical;
-					@include prefix(justify-content, space-between, webkit);
-					width: 100%;
+					@include prefix(justify-content, flex-end, webkit);
 					position: absolute;
 					bottom: 0;
-					left: 0;
-					padding: 50px 15px 15px;
-					min-height: 150px;
+					right: 0;
+					width: 100%;
 					> * {
 						h1 {
 							font-size: 36px;
@@ -3003,7 +3163,7 @@
 					@include prefix(align-content, space-between, webkit);
 					width: 100%;
 					height: 100%;
-					background: rgba($shamrock, .2);
+					background: lighten($slate, 15%);
 					padding: 15px;
 				}
 				ul {
@@ -3127,6 +3287,72 @@
 
 		// HOW IT WORKS
 		#how-it-works {
+			.main {
+				ul {
+					li {
+						&:nth-child(1) {
+							svg {
+								circle, path {
+									stroke: $cobalt;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $cobalt;
+								}
+							}
+						}
+						&:nth-child(2) {
+							svg {
+								circle, path {
+									stroke: $eggplant;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $eggplant;
+								}
+							}
+						}
+						&:nth-child(3) {
+							svg {
+								circle, path {
+									stroke: $cerise;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $cerise;
+								}
+							}
+						}
+						&:nth-child(4) {
+							svg {
+								circle, path {
+									stroke: $azure;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $azure;
+								}
+							}
+						}
+						&:nth-child(5) {
+							svg {
+								circle, path {
+									stroke: $orange;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $orange;
+								}
+							}
+						}
+						&:nth-child(6) {
+							svg {
+								circle, path {
+									stroke: $moola;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $moola;
+								}
+							}
+						}
+					}
+				}
+			}
 			@media screen and (min-width: 768px) {
 				.main {
 					ul {
@@ -3137,18 +3363,6 @@
 								}
 								.tape {
 									display: none;
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $cobalt;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cobalt;
-											}
-										}
-									}
 								}
 							}
 							&:nth-child(2) {
@@ -3177,18 +3391,6 @@
 										}
 									}
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $eggplant;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $eggplant;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(3) {
 								> div {
@@ -3208,18 +3410,6 @@
 										&:nth-child(2) {
 											@include animation-name(tape-3);
 											@include animation-delay(.5s);
-										}
-									}
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $cerise;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cerise;
-											}
 										}
 									}
 								}
@@ -3250,18 +3440,6 @@
 										}
 									}
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $azure;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $azure;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(5) {
 								> div {
@@ -3270,18 +3448,6 @@
 								.tape {
 									display: none;
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $orange;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $orange;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(6) {
 								> div {
@@ -3289,18 +3455,6 @@
 								}
 								.tape {
 									display: none;
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $moola;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $moola;
-											}
-										}
-									}
 								}
 							}
 						}
@@ -3311,6 +3465,91 @@
 
 		// BECOME A GURU
 		#become-guru {
+			.main {
+				ul {
+					li {
+						&:nth-child(1) {
+							svg {
+								circle, path {
+									stroke: $cerise;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $cerise;
+								}
+							}
+						}
+						&:nth-child(2) {
+							svg {
+								circle, path {
+									stroke: $eggplant;
+								}
+								path[fill="#69B3A5"] {
+									fill: $eggplant;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $eggplant;
+								}
+							}
+						}
+						&:nth-child(3) {
+							svg {
+								circle, path {
+									stroke: $cobalt;
+								}
+								rect[fill="#69B3A5"] {
+									fill: $cobalt;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $cobalt;
+								}
+							}
+						}
+						&:nth-child(4) {
+							svg {
+								circle, path {
+									stroke: $orange;
+								}
+								circle[fill="#69B3A5"] {
+									fill: $orange!important;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $orange;
+								}
+							}
+						}
+						&:nth-child(5) {
+							svg {
+								circle, path {
+									stroke: $moola;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $moola;
+								}
+								path {
+									&:nth-child(2) {
+										fill: none!important;
+										stroke: white;
+									}
+									&:nth-child(3) {
+										fill: none!important;
+										stroke: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							svg {
+								circle, path {
+									stroke: $azure;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $azure;
+								}
+							}
+						}
+					}
+				}
+			}
 			@media screen and (min-width: 768px) {
 				.main {
 					ul {
@@ -3333,18 +3572,6 @@
 										&:nth-child(2) {
 											@include animation-name(tape-3);
 											@include animation-delay(.5s);
-										}
-									}
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $cerise;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cerise;
-											}
 										}
 									}
 								}
@@ -3374,21 +3601,6 @@
 										}
 									}
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $eggplant;
-											}
-											path[fill="#69B3A5"] {
-												fill: $eggplant;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $eggplant;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(3) {
 								> div {
@@ -3396,21 +3608,6 @@
 								}
 								.tape {
 									display: none;
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $cobalt;
-											}
-											rect[fill="#69B3A5"] {
-												fill: $cobalt;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cobalt;
-											}
-										}
-									}
 								}
 							}
 							&:nth-child(4) {
@@ -3420,21 +3617,6 @@
 								.tape {
 									display: none;
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $orange;
-											}
-											circle[fill="#69B3A5"] {
-												fill: $orange!important;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $orange;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(5) {
 								> div {
@@ -3442,28 +3624,6 @@
 								}
 								.tape {
 									display: none;
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $moola;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $moola;
-											}
-											path {
-												&:nth-child(2) {
-													fill: none!important;
-													stroke: white;
-												}
-												&:nth-child(3) {
-													fill: none!important;
-													stroke: $moola;
-												}
-											}
-										}
-									}
 								}
 							}
 							&:nth-child(6) {
@@ -3489,18 +3649,6 @@
 										&:nth-child(2) {
 											@include animation-name(tape-4);
 											@include animation-delay(.75s);
-										}
-									}
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $azure;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $azure;
-											}
 										}
 									}
 								}

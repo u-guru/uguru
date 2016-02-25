@@ -3670,6 +3670,7 @@ input[type=range] {
 		left: 0;
 		width: 100%;
 		height: 100%;
+		cursor: pointer;
 	}
 	.school-card-inside {
 		position: absolute;
@@ -3827,8 +3828,7 @@ input[type=range] {
 					}
 				}
 			}
-			h1,
-			h2 {
+			h1, h2 {
 				@include transition(.15s ease-in-out);
 				text-align: center;
 				margin: 0 !important;

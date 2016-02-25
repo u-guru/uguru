@@ -1146,6 +1146,90 @@
                                             <h1 class="become-guru-header opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="400">{{::become_guru.header}}</h1>
                                         </header>
                                         <div class='main'>
+                                            <div class="mobile-postits">
+                                                <ul class="mobile-postit-list">
+                                                    <li class="active">
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/profile.html'"></span>
+                                                            <h1>Full Stack Profile</h1>
+                                                            <p>A platform where you come first. Complete control over your profile.</p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/promotion.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[1].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[1].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/payment.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[2].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[2].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/skills.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[3].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[3].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/fees.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[4].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[4].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/pajamas.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[5].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[5].content"></p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <ul class="mobile-postit-thumbs">
+                                                    <li class="active">
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/profile.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/promotion.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/payment.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/skills.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/fees.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/pajamas.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                             <ul class="desktop-postit-list">
                                                 <!-- top become guru slides-->
                                                 <li class='bg-postit-li opacity-0' class-on-activate="bounceInLeft:anim" class-on-activate-delay="800">
@@ -1411,7 +1495,11 @@
                                                     </a>
                             					</div>
                             				</div>
-                            				<button ng-click='connectWithFacebook()' class="btn-login-fb btn-ghost-white caps">Login with Facebook</button>
+                            				<ul class="splash-signup-buttons">
+                                                <li><button>Switch<br/>to Login</button></li>
+                                                <li><button>Login with<br/>Facebook</button></li>
+                                            </ul>
+                                            <button ng-click='connectWithFacebook()' class="btn-login-fb btn-ghost-white caps">Login with Facebook</button>
                             			</div>
                             		</div>
                             		<div class="splash-content splash-login-content ng-class:{'active':!root.vars.loginMode}">
@@ -1537,22 +1625,6 @@
                             			</div>
                             		</div>
                             	</div>
-                                <!-- <div class="projector-content relative">
-                                    <div class='absolute full-xy flex-wrap ugrid-3'>
-                                        <header class='full-x text-center'>
-                                            <h1 class="slide-access-header opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="400">Access</h1>
-                                        </header>
-                                        <div ng-controller='AccessController' class='full-x flex-wrap-center'>
-                                            <div class='full-x'>
-                                                <input id="access-code-bar" name='access'  class='input-outline full-x text-center' ng-blur='accessInputOnBlur()' ng-click="selectAllText($event)" autocorrect="off" ng-focus='accessInputOnFocus()' autocapitalize="off" ng-model='access.codeInput' type="text" placeholder="Enter your access code"
-                                            submit='checkAccessCode(access.codeInput)' />
-                                            </div>
-                                        </div>
-                                        <div class='submit-access flex-wrap-center full-x'>
-                                            <button ng-click='checkAccessCode(access.codeInput)' class="semibold btn-ghost-white">Submit</button>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
 
                             <div id='slide-7' class="swiper-slide swiper-slide-gallery" activate-on-class="swiper-slide-active" class-on-activate="pulse:anim:keep:inject.slide-courses-container|activate" class-on-activate-delay="1000">
@@ -1610,51 +1682,34 @@
                 </div>
 			</div>
             <div id='swiper-gallery-nav' class="swiper-container swiper-front-gallery-thumbs" activate-on-class="a" class-on-activate="active:keep, b:inject.slideshow-thumb-1|activate, b:inject.slideshow-thumb-2|activate, b:inject.slideshow-thumb-3|activate, b:inject.slideshow-thumb-4|activate">
-                <div class="progress height-10 white-round">
+                <div class="progress height-10 white-round" ng-if='page.swipers.galleryIndex'>
             		<span style="width: 10%;"></span>
             	</div>
                 <div class="swiper-wrapper swiper-gallery-wrapper">
                     <div class="swiper-slide slideshow-thumb-1 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
-                        <a class="onboarding-step">
-            				<svg class="onboarding-icon" viewBox="0 0 100 100"></svg>
-            				<svg class="onboarding-status" viewBox="0 0 160 160">
-            					 <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
-            						  <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
-            						  <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
-            						  <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
-            					 </g>
-            				</svg>
-            				<h1>University</h1>
-            			</a>
+                        <a class="progress-step">
+                            <div class="progress-step-icon" ng-include="::img_base + 'templates/svg/splash-search.html'"></div>
+                			<h1>University</h1>
+                        </a>
                     </div>
                     <div class="swiper-slide slideshow-thumb-2 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
-                        <a class="onboarding-step">
-            				<svg class="onboarding-icon" viewBox="0 0 100 100"></svg>
-            				<svg class="onboarding-status" viewBox="0 0 160 160">
-            					 <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
-            						  <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
-            						  <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
-            						  <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
-            					 </g>
-            				</svg>
-            				<h1>How It Works</h1>
-            			</a>
+                        <a class="progress-step">
+                            <div class="progress-step-icon" ng-include="::img_base + 'templates/svg/splash-hiw.html'"></div>
+                            <h1>How It Works</h1>
+                        </a>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-3 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim"  >
-                        <a class="onboarding-step">
-            				<svg class="onboarding-icon" viewBox="0 0 100 100"></svg>
-            				<svg class="onboarding-status" viewBox="0 0 160 160">
-            					 <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
-            						  <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
-            						  <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
-            						  <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
-            					 </g>
-            				</svg>
-            				<h1>Become a Guru</h1>
-            			</a>
+                    <div class="swiper-slide slideshow-thumb-3 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                        <a class="progress-step">
+                            <div class="progress-step-icon" ng-include="::img_base + 'templates/svg/splash-bg.html'"></div>
+                			<h1>Become a Guru</h1>
+                        </a>
                     </div>
                     <div class="swiper-slide slideshow-thumb-4 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
-                        <a class="onboarding-step active">
+                        <a class="progress-step" ng-if='!page.swipers.galleryIndex'>
+                            <div class="progress-step-icon" ng-include="::img_base + 'templates/svg/splash-blank.html'"></div>
+                            <h1>Getting Started</h1>
+                        </a>
+                        <a class="onboarding-step active" ng-if='page.swipers.galleryIndex'>
             				<svg class="onboarding-icon" viewBox="0 0 100 100">
                                 <path ng-if='page.swipers.galleryIndex' d="M50.4242207,50.1355679 L45.5990961,57.0258328 M50.5,50.1355679 L55.3251246,57.0258328 M50.5,39.2259818 L50.5,49.9441717 M55.7778965,43.6280955 L45.2221035,43.6280955 M50.5,38.6517931 C52.79028,38.6517931 54.6469187,36.7665907 54.6469187,34.4410756 C54.6469187,32.1155606 52.79028,30.2303582 50.5,30.2303582 C48.20972,30.2303582 46.3530813,32.1155606 46.3530813,34.4410756 C46.3530813,36.7665907 48.20972,38.6517931 50.5,38.6517931 Z M66.6639023,59.8793769 L61.8387777,66.7696418 M66.7396816,59.8793769 L71.5648062,66.7696418 M66.7396816,48.9697908 L66.7396816,59.6879806 M72.0175781,53.3719045 L61.4617851,53.3719045 M66.7396816,48.395602 C69.0299616,48.395602 70.8866003,46.5103996 70.8866003,44.1848846 C70.8866003,41.8593696 69.0299616,39.9741672 66.7396816,39.9741672 C64.4494016,39.9741672 62.5927629,41.8593696 62.5927629,44.1848846 C62.5927629,46.5103996 64.4494016,48.395602 66.7396816,48.395602 Z M34.1845391,59.8793769 L29.3594145,66.7696418 M34.2603184,59.8793769 L39.085443,66.7696418 M34.2603184,48.9697908 L34.2603184,59.6879806 M39.5382149,53.3719045 L28.9824219,53.3719045 M34.2603184,48.395602 C36.5505984,48.395602 38.4072371,46.5103996 38.4072371,44.1848846 C38.4072371,41.8593696 36.5505984,39.9741672 34.2603184,39.9741672 C31.9700384,39.9741672 30.1133997,41.8593696 30.1133997,44.1848846 C30.1133997,46.5103996 31.9700384,48.395602 34.2603184,48.395602 Z"></path>
                             </svg>
@@ -1665,8 +1720,7 @@
             						  <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
             					 </g>
             				</svg>
-                            <h1 ng-if='!page.swipers.galleryIndex'>Getting Started</h1>
-                            <h1 ng-if='page.swipers.galleryIndex'>Demographic</h1>
+                            <h1>Demographic</h1>
             			</a>
                     </div>
                     <div class="swiper-slide slideshow-thumb-5 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" >
@@ -1717,19 +1771,6 @@
                 </div>
             </div>
         </section>
-        <!-- <section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'></section>
-        <section class='splash-categories' id='splash-browse'></section>
-        <section id='become-guru'  class="splash-postit ng-class:{'hide':!page.load.sections.five.display}"></section>
-        <section id="splash-footer" class="ng-class:{'hide': !page.load.sections.footer.display}">
-            <div>
-                <ul>
-                    <li>proudly made&nbsp;with</li>
-                    <li>
-                        <span ng-include="::img_base + 'templates/svg/main/heart.html'"></span>
-                    </li>
-                    <li>by college students</li>
-                </ul>
-            </div>
-        </section> -->
     </main>
 </div>
+<!-- <img class="high-z-index absolute bottom-0 left-0 full-x" src="https://2.bp.blogspot.com/-TIxU9owVPBo/VcO7Z1fS5UI/AAAAAAAABUk/xhq0AzZJBwQ/s1600/img_0085.png"/> -->

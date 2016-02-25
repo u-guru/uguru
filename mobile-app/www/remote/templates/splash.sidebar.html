@@ -1,4 +1,4 @@
-<aside class="splash-sidebar-full opacity-0 bg-slate activate" class-on-activate="fadeIn:anim:inject.splash-sidebar-menu .splash-sidebar-links li a|activate" class-on-clear="fadeOut:animOut">
+<aside class="splash-sidebar-full opacity-0 bg-slate" class-on-activate="fadeIn:anim:inject.splash-sidebar-menu .splash-sidebar-links li a|activate" class-on-clear="fadeOut:animOut">
     <nav class="splash-sidebar-menu">
         <div>
             <header>
@@ -43,9 +43,9 @@
                         <span>Support</span>
                     </a>
                 </li>
-                <li>
+                <li ng-if='!user || !user.id'>
                     <a class="opacity-0" class-on-activate="bounceIn:anim" class-on-activate-delay="550" id='cta-box-intercom' class-on-clear="bounceOut:animOut" ng-click='sidebarGetStarted()'>
-                        <span>Sidebar Get Started</span>
+                        <span>Get Started</span>
                     </a>
                 </li>
                 <li ng-if='user && user.id'>
