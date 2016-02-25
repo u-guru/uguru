@@ -591,13 +591,13 @@ angular.module('uguru.util.controllers')
         // $scope.scrollToSection('#splash-projector');
         // document.querySelector('#projector-pull').classList.add('activate');
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
-        // document.querySelector('.splash-hero-map').classList.add('activate');
-        // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+        document.querySelector('.splash-hero-map').classList.add('activate');
+        initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
 
 
-        $timeout(function() {
-           showProjectorAtTop(4);
-        });
+        // $timeout(function() {
+        //    showProjectorAtTop(4);
+        // });
         $timeout(function() {
           $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);
           $scope.become_guru = ContentService.generateUniversitySpecificBecomeGuruText($scope.university);
@@ -608,12 +608,14 @@ angular.module('uguru.util.controllers')
       })
     }
 
+    var selectedUniversityMapStyles = [];
+
     function initializeDynamicSelectedUniversityMap(university) {
       university.map = {
         control: {},
         coords: {latitude: university.latitude, longitude: university.longitude},
         zoom: 17,
-        options: {scrollwheel: false, streetViewControl:false, scrollwheel:false, panControl:false,  mapTypeControl:false, style:{}, draggable:false, disableDoubleClickZoom:false, zoomControl: false},
+        options: {styles: selectedUniversityMapStyles, scrollwheel: false, streetViewControl:false, scrollwheel:false, panControl:false,  mapTypeControl:false, style:{}, draggable:false, disableDoubleClickZoom:false, zoomControl: false},
         pan: false,
         refresh: false,
         events: {tilesloaded: function(map) {
@@ -713,6 +715,7 @@ angular.module('uguru.util.controllers')
         var indexPlace = university.place_results[i];
         university.map.markers.push(generateMarkerObj(indexPlace.geometry.location.lat(), indexPlace.geometry.location.lng(), i, selectedCategory.hex_color));
       }
+
       if ($scope.desktopMode) {
         $timeout(function() {
           var selectedMarkerElems = document.querySelectorAll('.university-place-marker');
@@ -911,7 +914,7 @@ angular.module('uguru.util.controllers')
 
       var mapDefaults = {
         zoom: calcZoom(),
-        options: { streetViewControl:false, scrollwheel:false, panControl:false,  minZoom: $scope.mapZoom.minZoom, maxZoom: $scope.mapZoom.maxZoom, styles: styleOptions,
+        options: { streetViewControl:false, scrollwheel:false, panControl:false,  minZoom: $scope.mapZoom.minZoom, maxZoom: $scope.mapZoom.maxZoom,
                    scrollwheel: false, mapTypeControl:false, style:styleOptions, draggable:true, disableDoubleClickZoom:false, zoomControl: true
                  }
       }
