@@ -1276,6 +1276,90 @@
                                             <h1 class="become-guru-header opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="400">{{::become_guru.header}}</h1>
                                         </header>
                                         <div class='main'>
+                                            <div class="mobile-postits">
+                                                <ul class="mobile-postit-list">
+                                                    <li class="active">
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/profile.html'"></span>
+                                                            <h1>Full Stack Profile</h1>
+                                                            <p>A platform where you come first. Complete control over your profile.</p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/promotion.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[1].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[1].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/payment.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[2].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[2].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/skills.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[3].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[3].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/fees.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[4].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[4].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/pajamas.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[5].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[5].content"></p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <ul class="mobile-postit-thumbs">
+                                                    <li class="active">
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/profile.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/promotion.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/payment.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/skills.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/fees.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/pajamas.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                             <ul class="desktop-postit-list">
                                                 <!-- top become guru slides-->
                                                 <li class='bg-postit-li opacity-0' class-on-activate="bounceInLeft:anim" class-on-activate-delay="800">
@@ -1457,6 +1541,13 @@
                             		</div>
                                     <div class="splash-content splash-signup-content ng-class:{'active':root.vars.loginMode}">
                             			<button class="btn-splash-login btn-ghost-white" ng-click='toggleLoginMode()'>Login</button>
+                                        <div class="tab-bar slide">
+                                            <div>
+                                                <a class="active">Signup</a>
+                                                <a ng-click='toggleLoginMode()'>Login</a>
+                                                <hr/>
+                                            </div>
+                                        </div>
                             			<div class="splash-signup-inside">
                             				<div class="school-id-card">
                             					<svg viewBox="0 0 240 160">
@@ -1546,6 +1637,13 @@
                             		</div>
                             		<div class="splash-content splash-login-content ng-class:{'active':!root.vars.loginMode}">
                             			<button class="btn-splash-login btn-ghost-white" ng-click='toggleLoginMode()'>Signup</button>
+                                        <div class="tab-bar slide">
+                                            <div>
+                                                <a ng-click='toggleLoginMode()'>Signup</a>
+                                                <a class="active">Login</a>
+                                                <hr/>
+                                            </div>
+                                        </div>
                             			<div class="splash-login-inside">
                             				<div class="input-field">
                             					<input type="text" placeholder="email"/>

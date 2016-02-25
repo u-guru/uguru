@@ -607,7 +607,7 @@ angular.module('uguru.util.controllers')
         $scope.scrollToSection('#splash-projector');
         document.querySelector('#projector-pull').classList.add('activate');
         $timeout(function() {
-        //    showProjectorAtTop(0);
+           showProjectorAtTop(4);
         });
         $timeout(function() {
           $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);

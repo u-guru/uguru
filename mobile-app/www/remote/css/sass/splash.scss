@@ -2489,7 +2489,7 @@
 						top: 0;
 						width: 100%;
 						height: 100%;
-						padding: 150px 30px 15px;
+						padding: 0;
 						&:not(.active) {
 							@include opacity(0);
 							z-index: -10;
@@ -2539,6 +2539,61 @@
 								}
 							}
 						}
+						.tab-bar.slide {
+							background: rgba(white, .2);
+							> div {
+								width: 100%;
+								a {
+									width: 50%;
+									height: 50px;
+									&:nth-child(1) {
+										&.active {
+											~ hr {
+												@include translate-x(0);
+												border-color: white;
+											}
+										}
+									}
+									&:nth-child(2) {
+										&.active {
+											~ hr {
+												@include translate-x(100%);
+												border-color: white;
+											}
+										}
+									}
+									&:nth-child(1) {
+										&:hover, &:focus {
+											~ hr {
+												@include translate-x(0);
+												border-color: rgba(white, .7);
+											}
+										}
+										&:active {
+											~ hr {
+												border-color: white;
+											}
+										}
+									}
+									&:nth-child(2) {
+										&:hover, &:focus {
+											~ hr {
+												@include translate-x(100%);
+												border-color: rgba(white, .7);
+											}
+										}
+										&:active {
+											~ hr {
+												border-color: white;
+											}
+										}
+									}
+								}
+								hr {
+									width: 50%;
+								}
+							}
+						}
 					}
 					.splash-login-content {
 						.login-buttons {
@@ -2574,6 +2629,50 @@
 							.btn-login-fb {
 								@include center-x;
 								bottom: 15px;
+							}
+						}
+					}
+					@media screen and (max-width: 768px) {
+						.btn-ghost-white {
+							padding-left: 20px;
+		    				padding-right: 20px;
+							white-space: nowrap;
+						}
+						.btn-splash-login {
+							display: none;
+						}
+						.splash-projector-guru {
+							display: none;
+						}
+						.splash-signup-content {
+							.splash-signup-inside {
+								@include flex-center;
+								@include flex-wrap;
+								padding-top: 15px;
+								.splash-signup-form {
+									width: 100%;
+								}
+							}
+						}
+					}
+					@media screen and (min-width: 768px) {
+						.splash-content {
+							padding: 150px 30px 15px;
+							.tab-bar.slide {
+								display: none;
+							}
+						}
+						.splash-signup-content {
+							.splash-signup-inside {
+								.splash-signup-form {
+									width: calc(100% - 240px);
+									height: 160px;
+									.input-field {
+										@include center-y;
+										left: 30px;
+										width: calc(100% - 30px);
+									}
+								}
 							}
 						}
 					}
@@ -3078,7 +3177,7 @@
 					@include prefix(align-content, space-between, webkit);
 					width: 100%;
 					height: 100%;
-					background: rgba($shamrock, .2);
+					background: lighten($slate, 15%);
 					padding: 15px;
 				}
 				ul {
@@ -3202,6 +3301,72 @@
 
 		// HOW IT WORKS
 		#how-it-works {
+			.main {
+				ul {
+					li {
+						&:nth-child(1) {
+							svg {
+								circle, path {
+									stroke: $cobalt;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $cobalt;
+								}
+							}
+						}
+						&:nth-child(2) {
+							svg {
+								circle, path {
+									stroke: $eggplant;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $eggplant;
+								}
+							}
+						}
+						&:nth-child(3) {
+							svg {
+								circle, path {
+									stroke: $cerise;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $cerise;
+								}
+							}
+						}
+						&:nth-child(4) {
+							svg {
+								circle, path {
+									stroke: $azure;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $azure;
+								}
+							}
+						}
+						&:nth-child(5) {
+							svg {
+								circle, path {
+									stroke: $orange;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $orange;
+								}
+							}
+						}
+						&:nth-child(6) {
+							svg {
+								circle, path {
+									stroke: $moola;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $moola;
+								}
+							}
+						}
+					}
+				}
+			}
 			@media screen and (min-width: 768px) {
 				.main {
 					ul {
@@ -3212,18 +3377,6 @@
 								}
 								.tape {
 									display: none;
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $cobalt;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cobalt;
-											}
-										}
-									}
 								}
 							}
 							&:nth-child(2) {
@@ -3252,18 +3405,6 @@
 										}
 									}
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $eggplant;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $eggplant;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(3) {
 								> div {
@@ -3283,18 +3424,6 @@
 										&:nth-child(2) {
 											@include animation-name(tape-3);
 											@include animation-delay(.5s);
-										}
-									}
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $cerise;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cerise;
-											}
 										}
 									}
 								}
@@ -3325,18 +3454,6 @@
 										}
 									}
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $azure;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $azure;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(5) {
 								> div {
@@ -3345,18 +3462,6 @@
 								.tape {
 									display: none;
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $orange;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $orange;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(6) {
 								> div {
@@ -3364,18 +3469,6 @@
 								}
 								.tape {
 									display: none;
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $moola;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $moola;
-											}
-										}
-									}
 								}
 							}
 						}
@@ -3386,6 +3479,91 @@
 
 		// BECOME A GURU
 		#become-guru {
+			.main {
+				ul {
+					li {
+						&:nth-child(1) {
+							svg {
+								circle, path {
+									stroke: $cerise;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $cerise;
+								}
+							}
+						}
+						&:nth-child(2) {
+							svg {
+								circle, path {
+									stroke: $eggplant;
+								}
+								path[fill="#69B3A5"] {
+									fill: $eggplant;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $eggplant;
+								}
+							}
+						}
+						&:nth-child(3) {
+							svg {
+								circle, path {
+									stroke: $cobalt;
+								}
+								rect[fill="#69B3A5"] {
+									fill: $cobalt;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $cobalt;
+								}
+							}
+						}
+						&:nth-child(4) {
+							svg {
+								circle, path {
+									stroke: $orange;
+								}
+								circle[fill="#69B3A5"] {
+									fill: $orange!important;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $orange;
+								}
+							}
+						}
+						&:nth-child(5) {
+							svg {
+								circle, path {
+									stroke: $moola;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $moola;
+								}
+								path {
+									&:nth-child(2) {
+										fill: none!important;
+										stroke: white;
+									}
+									&:nth-child(3) {
+										fill: none!important;
+										stroke: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							svg {
+								circle, path {
+									stroke: $azure;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $azure;
+								}
+							}
+						}
+					}
+				}
+			}
 			@media screen and (min-width: 768px) {
 				.main {
 					ul {
@@ -3408,18 +3586,6 @@
 										&:nth-child(2) {
 											@include animation-name(tape-3);
 											@include animation-delay(.5s);
-										}
-									}
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $cerise;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cerise;
-											}
 										}
 									}
 								}
@@ -3449,21 +3615,6 @@
 										}
 									}
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $eggplant;
-											}
-											path[fill="#69B3A5"] {
-												fill: $eggplant;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $eggplant;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(3) {
 								> div {
@@ -3471,21 +3622,6 @@
 								}
 								.tape {
 									display: none;
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $cobalt;
-											}
-											rect[fill="#69B3A5"] {
-												fill: $cobalt;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cobalt;
-											}
-										}
-									}
 								}
 							}
 							&:nth-child(4) {
@@ -3495,21 +3631,6 @@
 								.tape {
 									display: none;
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $orange;
-											}
-											circle[fill="#69B3A5"] {
-												fill: $orange!important;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $orange;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(5) {
 								> div {
@@ -3517,28 +3638,6 @@
 								}
 								.tape {
 									display: none;
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $moola;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $moola;
-											}
-											path {
-												&:nth-child(2) {
-													fill: none!important;
-													stroke: white;
-												}
-												&:nth-child(3) {
-													fill: none!important;
-													stroke: $moola;
-												}
-											}
-										}
-									}
 								}
 							}
 							&:nth-child(6) {
@@ -3564,18 +3663,6 @@
 										&:nth-child(2) {
 											@include animation-name(tape-4);
 											@include animation-delay(.75s);
-										}
-									}
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $azure;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $azure;
-											}
 										}
 									}
 								}
