@@ -53,7 +53,7 @@ function GUtilService($timeout) {
       console.log(photoCount, 'photos found');
     }
 
-  function getPlaceListByCoords(scope, map, coords) {
+  function getPlaceListByCoords(scope, map, coords, callback) {
     var gCoords = latCoordToGoogleLatLng(coords.latitude, coords.longitude);
     var placeService = new google.maps.places.PlacesService(map);
     var types =['library', 'food', 'cafe', 'bus-stop', 'grocery'];
@@ -62,6 +62,7 @@ function GUtilService($timeout) {
     var placeService = new google.maps.places.PlacesService(map);
     var placeServiceOptions = { location: gCoords, radius:radius || 10000, rankBy: google.maps.places.RankBy.prominence, types: types};
     placeService.nearbySearch(placeServiceOptions, updateScopeWithPlaces);
+
     function updateScopeWithPlaces(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         if (results.length) {
@@ -86,7 +87,11 @@ function GUtilService($timeout) {
               resultPlace.photo_url = resultPlace.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
               scope.selectedUniversity.place_results.push(resultPlace);
             }
-          }, 5000);
+            if (callback) {
+              console.log('calling callback');
+              callback(scope.selectedUniversity, scope.selectedCategory);
+            }
+          });
         }
       }
     }

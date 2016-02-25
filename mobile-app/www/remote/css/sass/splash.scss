@@ -2231,62 +2231,92 @@
 			}
 			.swiper-front-gallery-thumbs {
 				@include center-x;
+				@include flex;
 				top: auto;
 				bottom: 0;
-				height: 15%;
+				height: 110px;
 				width: 100%;
 				max-width: 600px;
+				.progress.white-round {
+					position: absolute;
+					top: 35px;
+					background: #606669!important;
+				}
 				.swiper-gallery-wrapper {
 					@include prefix(transform, translate3d(0px, 0px, 0px)!important, webkit moz ms o);
-					width: auto!important;
+					width: 100%!important;
+					height: 100%!important;
 					.swiper-slide {
 						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 						width: 25%!important;
+						height: 80px!important;
 						margin: 0!important;
-						padding: 0 7.5px;
 						text-align: center;
-						&.swiper-slide-active {
-							> div {
-								svg {
-									.bg {
-										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-										fill: $shamrock!important;
-									}
-								}
-							}
-						}
-						&:not(.swiper-slide-active) {
-							> div {
-								svg {
-									@include opacity(.5);
-								}
-							}
-						}
-						> div {
+						.onboarding-step {
+							@include round;
 							@include flex;
-							@include flex-wrap;
 							@include flex-center;
 							position: relative;
-							width: 100%;
-							height: 100%;
-							svg {
+							margin: 0 auto;
+							width: 80px;
+							height: 80px;
+							h1 {
+								@include center-x;
+								bottom: -23px;
+								text-align: center;
+								font-size: 18px;
+								font-weight: 600;
+								text-transform: lowercase;
+								white-space: nowrap;
+							}
+							.onboarding-icon {
+								@include round;
+								@include svg-stroke(white, 4);
 								display: block;
-								height: 100%;
-								min-height: 100px;
 								width: 100%;
-								min-width: 100px;
-								g {
-									g {
-										@include opacity(.1);
+								height: 100%;
+								background: #9FA3A5;
+							}
+							.onboarding-status {
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								.top, .bottom {
+									@include prefix(transition, stroke-dashoffset 300ms ease-in-out, webkit moz ms o);
+									@include opacity(0);
+									stroke-dasharray: 220, 220;
+									stroke-dashoffset: 220;
+								}
+							}
+							&.complete {
+								.onboarding-icon {
+									background: $shamrock;
+								}
+								.onboarding-status {
+									.top, .bottom {
+										@include opacity(1);
+										stroke-dashoffset: 0;
 									}
 								}
 							}
-							h1 {
-								@include center-xy;
-								z-index: 1;
-								font-size: 20px;
-								font-weight: 600;
+							&.active {
+								.onboarding-icon {
+									background: $shamrock;
+								}
+								.onboarding-status {
+									.top, .bottom {
+										@include prefix(transition, stroke-dashoffset 150ms ease-in-out, webkit moz ms o);
+										@include opacity(1);
+										stroke-dashoffset: 110;
+									}
+								}
 							}
+						}
+						&.swiper-slide-active {
+						}
+						&:not(.swiper-slide-active) {
 						}
 					}
 				}
@@ -2332,6 +2362,369 @@
 				font-size: 20px;
 				font-weight: 600;
 				line-height: 1.2;
+				.btn-ghost-white {
+					padding-top: 0;
+					padding-bottom: 0;
+					height: 54px;
+				}
+				.splash-projector-guru {
+					@include center-x;
+					top: 0;
+					.splash-logo-guru {
+						@include prefix(transform, rotate(-7deg), webkit moz ms o);
+						@include prefix(trasnform-origin, center, webkit moz ms o);
+					}
+					.coach {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						position: absolute;
+						top: -50px;
+						right: -95px;
+						&:not(.active) {
+							@include opacity(0);
+						}
+					}
+				}
+				&#splash-signup {
+					padding: 0!important;
+					overflow: visible!important;
+					.btn-login-fb {
+						background: $facebook;
+						&:hover, &:focus {
+							background: white;
+							color: $facebook;
+						}
+					}
+					.btn-login-login {
+						background: $shamrock;
+						&:hover, &:focus {
+							background: white;
+						}
+					}
+					.btn-forgot-pw {
+						background: lighten($slate, 15%);
+						&:hover, &:focus {
+							background: white;
+						}
+					}
+					.splash-content {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						position: absolute;
+						top: 0;
+						width: 100%;
+						height: 100%;
+						padding: 150px 30px 15px;
+						&:not(.active) {
+							@include opacity(0);
+							z-index: -10;
+						}
+						.btn-splash-login {
+							@include opacity(.5);
+							position: absolute;
+							top: 15px;
+							right: 15px;
+							&:hover, &:focus {
+								@include opacity(1);
+							}
+						}
+						.input-field {
+							width: 100%;
+							input {
+								height: 64px;
+								color: white;
+								font-size: 48px;
+								font-weight: 300;
+							}
+							a {
+								&:not(.active) {
+									svg {
+										@include opacity(0);
+									}
+								}
+							}
+							svg {
+								@include svg-stroke(white, 4);
+								position: absolute;
+								top: 5px;
+								right: 0;
+								display: block;
+								width: 50px;
+								height: 50px;
+								&.verified {
+									circle {
+										fill: $moxie;
+									}
+								}
+								&.error {
+									@include prefix(transform, rotate(45deg), webkit moz ms o);
+									circle {
+										fill: $crimson;
+									}
+								}
+							}
+						}
+					}
+					.splash-login-content {
+						.login-buttons {
+							@include flex;
+							@include flex-center;
+							@include flex-wrap;
+							margin: 22.5px auto 0;
+							max-width: 500px;
+							button {
+								margin: 7.5px;
+							}
+						}
+					}
+					.splash-signup-content {
+						.splash-signup-inside {
+							@include flex;
+							.splash-signup-form {
+								position: relative;
+								@include flex;
+								@include flex-center-vertical;
+								width: calc(100% - 240px);
+								height: 160px;
+								.input-field {
+									@include center-y;
+									left: 30px;
+									width: calc(100% - 30px);
+									&:not(.active) {
+										@include opacity(0);
+										z-index: -10;
+									}
+								}
+							}
+							.btn-login-fb {
+								@include center-x;
+								bottom: 15px;
+							}
+						}
+					}
+				}
+				&#splash-access {
+					overflow: visible!important;
+					padding: 0!important;
+					.guru {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						&:not(.active) {
+							@include opacity(0);
+						}
+					}
+					.user-icon {
+						@include center-xy;
+						border-width: 2px;
+						width: 110px;
+						height: 110px;
+					}
+					.splash-access-content {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						padding: 200px 15px 15px;
+						.splash-access-inside {
+							position: relative;
+							width: 100%;
+							max-width: 652px;
+							height: 119px;
+						}
+						.splash-access-code {
+							@include flex;
+							@include flex-center;
+							position: relative;
+							z-index: 10;
+							background: none;
+							border: 0;
+							width: 100%;
+							max-width: 652px;
+							height: 119px;
+							font-size: 48px;
+							text-align: center;
+							line-height: 1.2;
+							padding-bottom: 10px;
+							color: white;
+							font-weight: 300;
+							@include placeholder {
+								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+							}
+							+ div {
+								position: absolute;
+								top: 0;
+								left: 0;
+								.splash-access-bubble {
+									max-width: 100%;
+									display: block;
+									path {
+										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+									}
+								}
+								button {
+									display: block;
+									margin: 15px auto;
+								}
+								.btn-access-activate {
+									background: $shamrock;
+									&:hover, &:focus {
+										background: white;
+										color: $shamrock;
+									}
+								}
+								.btn-access-skip {
+									background: lighten($slate, 15%);
+									&:hover, &:focus {
+										background: white;
+										color: $shamrock;
+									}
+								}
+							}
+							&:focus {
+								@include placeholder {
+									color: white;
+								}
+								+ div {
+									.splash-access-bubble {
+										path {
+											fill: lighten($slate, 15%);
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				&#splash-courses {
+					@include flex;
+					@include flex-wrap;
+					@include prefix(align-content, flex-start, webkit);
+					@include prefix(justify-content, center, webkit);
+					overflow: visible!important;
+					padding: 0!important;
+					.splash-logo-guru {
+						position: absolute;
+						bottom: -30px;
+						left: -30px;
+						display: block;
+					}
+					.backpack {
+						position: absolute;
+						bottom: -15px;
+						right: -15px;
+						display: block;
+						width: 100px;
+						height: 100px;
+					}
+					form {
+						@include prefix(align-self, flex-start, webkit);
+						width: 100%;
+						padding: 0 15px;
+					}
+					.input-field {
+						width: 100%;
+						margin: 15px auto 0;
+						input {
+							margin-bottom: 0;
+						}
+						label:not(.active) {
+							top: 0;
+						}
+						.prefix {
+							top: 9px;
+						}
+					}
+					ul {
+						@include listless;
+						@include flex;
+						@include flex-wrap;
+						padding: 7.5px;
+						width: 100%;
+						max-width: 750px;
+						li {
+							padding: 7.5px;
+						}
+					}
+					.course-search {
+						@include prefix(align-self, flex-start, webkit);
+						@include flex-center;
+						li {
+							width: calc(100% / 3);
+							max-width: 250px;
+							a {
+								@include flex;
+								@include flex-wrap;
+								height: 100px;
+								border: 2px solid white;
+								border-radius: 2px;
+								text-align: center;
+								div {
+									width: 100%;
+									height: 100%;
+									.course-name {
+										display: block;
+										margin: 15px auto 5px;
+										font-size: 14px;
+										font-weight: 600;
+										text-transform: uppercase;
+									}
+									.course-title {
+										display: block;
+										margin: 0 auto;
+										padding: 0 15px 15px;
+										overflow: hidden;
+										height: calc(100% - 36px);
+										border-bottom-width: 5px;
+										border-bottom-style: solid;
+										font-size: 18px;
+										span {
+											display: block;
+											height: 44px;
+											overflow: hidden;
+										}
+									}
+								}
+								&:hover, &:focus {
+									background: white;
+									color: $slate;
+								}
+							}
+						}
+					}
+					.course-selected {
+						@include prefix(align-self, flex-end, webkit);
+						li {
+							a {
+								@include flex;
+								border: 2px solid white;
+								border-radius: 2px;
+								> span {
+									@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+									@include flex;
+									@include flex-center;
+									padding: 5px 8px 5px 10px;
+									border-bottom-width: 5px;
+									border-bottom-style: solid;
+									font-size: 18px;
+									svg {
+										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+										@include prefix(transform, rotate(45deg), webkit moz ms o);
+										@include svg-stroke(white, 9);
+										display: block;
+										width: 18px;
+										height: 18px;
+										margin-left: 5px;
+									}
+								}
+								&:hover, &:active {
+									background: white;
+									> span {
+										color: $slate;
+										svg {
+											stroke: $slate;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 			@media screen and (max-width: 320px) {
 				.splash-projector-message {
@@ -3629,7 +4022,7 @@
 	z-index: -999999!important;
 }
 
-.splash-landing > section.splash-hero .splash-hero-map ui-gmap-google-map {
+.splash-landing > section.splash-hero .splash-hero-map.limited-opacity ui-gmap-google-map {
 	.angular-google-map-container .gm-style > div:first-child > div:nth-child(1),
 	.angular-google-map-container .gm-style > div:first-child > div:nth-child(2), {
 		opacity:0.2 !important;
@@ -3644,3 +4037,6 @@
 	}
 }
 
+.selected-university-place-marker {
+	@include prefix(filter, invert(100%), webkit moz ms o);
+}
