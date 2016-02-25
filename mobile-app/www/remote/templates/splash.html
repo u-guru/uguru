@@ -1,147 +1,14 @@
 <div class='relative' style='height:calc(100%); width:calc(100%); overflow:hidden !important;' eval-on-load="onLoad()">
 	<!-- @gabrielle, do not not remove  init-wp-parent -->
     <main id='home-splash' init-wp-parent class='splash-landing new hs-view full-xy' style="height:calc(200% !important); width:calc(100%) !important;" bind-wp="s1_top">
-		<aside class="splash-sidebar-full hide" ng-class="{'show': page.sidebar.show}" id='home-splash-sidebar' ng-if='page.sidebar.show'>
-			<nav class="splash-sidebar-menu">
-                <div>
-                    <header>
-                        <a class="splash-logo" ng-click='page.sidebar.toggle()' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
-                        <a class="splash-burger close splash-close" ng-click='page.sidebar.toggle()' ng-include="::img_base + 'templates/svg/main/plus-circle.html'"></a>
-                    </header>
-    				<ul class="splash-sidebar-links">
-    					<li>
-    						<a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="50" ng-click='page.sidebar.toggle()'>
-    							<span>Home</span>
-    						</a>
-    					</li>
-    					<li>
-    						<a class="opacity-0" id='cta-box-team' activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="150" ng-click='!desktopMode && page.modals.team.show()'>
-    							<span>Meet the team</span>
-    						</a>
-    					</li>
-    					<li>
-    						<a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="250" id='cta-box-FAQ' ng-click='!desktopMode && page.modals.faq.show()'>
-    							<span>FAQ</span>
-    						</a>
-    					</li>
-    					<li>
-    						<a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="350" id='cta-box-pricing' ng-click='!desktopMode && page.modals.pricing.show()'>
-    							<span>Pricing</span>
-    						</a>
-    					</li>
-                        <li>
-                            <a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="450" id='cta-box-become-guru' ng-click='!desktopMode && page.modals.become_guru.show()'>
-                                <span>Become a Guru</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="550" id='cta-box-intercom' ng-click='!desktopMode && page.modals.support.show()'>
-                                <span>Support</span>
-                            </a>
-                        </li>
-    				</ul>
-                </div>
-                <div>
-                    <button id='cta-box-account' class="btn-ghost-white opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="700" ng-click='!desktopMode && page.modals.signup.show()'><span>Login / Signup</button>
-                    <ul class="splash-sidebar-platforms">
-                        <li>
-                            <a class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1100" ng-include="::img_base + 'templates/svg/main/mobile.html'"></a>
-                        </li>
-                        <li>
-                            <a class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1200" ng-include="::img_base + 'templates/svg/main/desktop.html'"></a>
-                        </li>
-                    </ul>
-                </div>
-			</nav>
-
-            <section class='splash-sidebar-content' ng-if='desktopMode'>
-                <div class="splash-sidebar-empty">
-                    <div class="splash-sidebar-guru splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
-                    <div class="splash-sidebar-message">
-                        <svg viewBox="0 0 1304 354">
-                            <path d="M2,39.9999987 C2,35.5817214 5.58280463,32 10.0088717,32 L622,32 L652,2 L682,32 L1293.99113,32 C1298.41431,32 1302,35.5800296 1302,39.9999987 L1302,344.000001 C1302,348.418279 1298.41351,352 1293.99365,352 L10.0063476,352 C5.58456393,352 2,348.41997 2,344.000001 L2,39.9999987 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.5" fill="#40484B"></path>
-                            <text font-family="Source Sans Pro" font-size="96" font-weight="600" line-spacing="126" fill="#FFFFFF" text-anchor="middle">
-                                <tspan x="652" y="163">Wanna see something cool?</tspan>
-                                <tspan x="652" y="289">Check it out.</tspan>
-                            </text>
-                        </svg>
-                    </div>
-                </div>
-                <ion-pane id='cta-modal-pricing' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/pricing.html'"> </ion-pane>
-
-                <ion-pane id='cta-modal-team' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/team.html'"> </ion-pane>
-
-                <ion-pane id='cta-modal-become-guru' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-if='user.university && user.university.id' ng-include="::img_base + BASE + 'templates/desktop.guru.onboarding.html'" ng-controller='DesktopBecomeGuruController'> </ion-pane>
-
-                <ion-pane id='cta-modal-account' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/desktop.login.html'" ng-controller='AccountPageController'> </ion-pane>
-
-                <ion-pane id='cta-modal-intercom' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-controller='AccountPageController'> </ion-pane>
-
-                <ion-pane id='cta-modal-FAQ' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index'>
-                    <section id="faq">
-                        <header>
-                            <a id='guru-profile-cta-close' class='cta-modal-close close-button p15xy flex-right-center'>
-                                <svg viewBox="0 0 100 100">
-                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                                </svg>
-                            </a>
-                            <h1>Frequently Asked Questions</h1>
-                            <div class="tab-bar slide">
-                                <div>
-                                    <a class="active">All</a>
-                                    <a>Uguru Basics</a>
-                                    <a>My Account</a>
-                                    <a>Payment</a>
-                                    <a>Features</a>
-                                    <hr/>
-                                </div>
-                            </div>
-                        </header>
-                        <div class="main">
-                            <dl>
-                                <dt>
-                                    <span>This is a question.</span>
-                                    <a class='close-button'>
-                                        <svg viewBox="0 0 100 100">
-                                            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                                        </svg>
-                                    </a>
-                                </dt>
-                                <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
-                            </dl>
-                            <dl>
-                                <dt>
-                                    <span>This is another question.</span>
-                                    <a class='close-button'>
-                                        <svg viewBox="0 0 100 100">
-                                            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                                        </svg>
-                                    </a>
-                                </dt>
-                                <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
-                            </dl>
-                            <dl>
-                                <dt>
-                                    <span>This is a third question.</span>
-                                    <a class='close-button'>
-                                        <svg viewBox="0 0 100 100">
-                                            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                                        </svg>
-                                    </a>
-                                </dt>
-                                <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
-                            </dl>
-                        </div>
-                    </section>
-                    <!-- <iframe class='absolute top-0 left-0 full-xy' src="https://uguru.me/faq/"> </iframe> -->
-                </ion-pane>
-            </section>
-		</aside>
+        <ion-pane style='z-index:1001;' id='cta-modal-sidebar' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
         <a ng-if='page.dropdowns.category.active || page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()' style='z-index:5'> </a>
 		<header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
 			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'"></a>
 			<div class="right">
-				<a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='page.sidebar.toggle()' class-on-click="null:inject.splash-sidebar-menu li a|anim-sidemenu-li, null:inject.splash-sidebar-menu button|a, null:inject.splash-sidebar-platforms li a|a" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
+				<a name='sidebar' class="splash-burger" id='cta-box-sidebar'>
+                    <!-- @gabrielle whats this? If you dont know delete below-->
+                    <!-- bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut" -->
 					<svg viewBox="0 0 100 100">
 						<circle cx="50" cy="50" r="36"></circle>
 						<path d="M31,35.5 L69,35.5"></path>
@@ -244,11 +111,13 @@
 				</div>
 			</div>
 			<!-- @gabrielle-note, the 3000 ms is to generate the static map URL with the right icon-->
-            <div class="splash-hero-map opacity-0 invisible" class-on-clear="slideOutUp:animOut" class-on-activate="active:anim, visible-impt" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
+            <div class="splash-hero-map opacity-0 invisible limited-opacity" class-on-clear="slideOutUp:animOut" class-on-activate="active:anim, visible-impt" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
 				<!--Initial map class: init-university-map -->
                 <ui-gmap-google-map class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events" id='splash-google-map-selected-university' refresh='map.refresh' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
                     <ui-gmap-marker coords="selectedUniversity.map.marker.coords" idKey="selectedUniversity.map.marker.id || selectedUniversity.id" options="selectedUniversity.map.marker.options" icon="selectedUniversity.map.marker.icon">
                     </ui-gmap-marker>
+                    <ui-gmap-markers ng-if='selectedUniversity.map.markers' models="selectedUniversity.map.markers" coords="'coords'" options="'options'" icon="'options.icon'" fit="true">
+                    </ui-gmap-markers>
                 </ui-gmap-google-map>
                 <!-- <div class="splash-scene-map-img" style="background-image: url('{{selectedUniversity.static_map_url}}')"></div> -->
                 <!-- zoom="requestForm.map.zoom"
@@ -262,7 +131,8 @@
             <!-- <div class='splash-hero-skip opacity-1-impt left-0' class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a">
                 <button style='top:-50px;' class="button-find-guru splash-mobile-cta" ng-click='refreshUniversityState(selectedUniversity)'>Refresh</button>
             </div> -->
-			<div class="splash-hero-markers" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker|a, null:inject.location[class-on-activate]|activate, null:inject.splash-hero-marker .marker-inside[class-on-activate]|activate">
+			<div class="splash-hero-markers" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker|a">
+                <!-- , null:inject.location[class-on-activate]|activate, null:inject.splash-hero-marker .marker-inside[class-on-activate]|activate -->
                 <!-- null:inject.splash-hero-marker .marker-inside|a -->
 
                 <div class="splash-hero-marker-1 splash-hero-marker opacity-0" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="fadeIn:anim, visible">
@@ -557,7 +427,7 @@
                     <div class="location-text">{{selectedUniversity.place_results[3].name}}</div>
 				</div>
 
-				<div class="splash-hero-marker-5 splash-hero-marker opacity-0" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 15%; right: 3%;">
+				<div class="splash-hero-marker-5 splash-hero-marker opacity-0" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" translate-on-class="translate" translate-to-elem="#university-place-marker-5" class-on-activate="fadeIn:anim, visible">
                     <div class="location opacity-0 bg-{{selectedCategory.hex_color}} top right" class-on-activate="bounceIn:anim" class-on-activate-delay="3600"></div>
                     <div class="location-text">{{selectedUniversity.place_results[4].name}}</div>
                     <div class="marker-inside opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="5000">
@@ -774,7 +644,7 @@
 						</g>
 					</svg>
 					<div class="splash-device-button animated">
-                        <button ng-click='getUniversityPlaces(selectedUniversity)' class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, null:inject.splash-hero-map|opacity-50, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|clear, null:inject.splash-logo-guru|a">Find My Guru</button>
+                        <button id='desktop-find-guru-button' ng-click='getUniversityPlaces(selectedUniversity)' class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, null:inject.splash-hero-map|opacity-50, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|clear, null:inject.splash-logo-guru|a" class-on-activate="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, null:inject.splash-hero-map|opacity-50, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|clear, null:inject.splash-logo-guru|a">Find My Guru</button>
 					</div>
 				</div>
 			</div>

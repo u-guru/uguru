@@ -22,10 +22,11 @@ angular.module('uguru.util.controllers')
   'ContentService',
   'LoadingService',
   'ContentService',
+  'CTAService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal, Category, ScrollService, SideMenuService,
     $stateParams, Utilities, GUtilService, GMapService, University, $compile,
-    ContentService, LoadingService, ContentService) {
+    ContentService, LoadingService, ContentService, CTAService) {
 
     if ($scope.root.loader.body.hide) {
       resolveStateParams();
@@ -257,25 +258,9 @@ angular.module('uguru.util.controllers')
         removeAllSwipersButOne(index)
 
         !$scope.projectorPullActivated && hideProjectorPrecursor();
-        
+
         hideSwiperGallery();
-        // $scope.page.swipers.gallery.slideTo(3);
-        // var slideClassesToClear = ['slideshow-thumb-1', 'slideshow-thumb-2', 'slideshow-thumb-3'];
-        //   var slideClassesToActivate = ['slideshow-thumb-4', 'slideshow-thumb-5', 'slideshow-thumb-6', 'slideshow-thumb-7'];
-        //   for (var i = 0; i < slideClassesToClear.length; i++) {
-        //       var clearClassIndex = slideClassesToClear[i];
-        //       var clearElem = document.querySelector('.' + clearClassIndex);
-        //       clearElem && clearElem.classList.add('clear');
-        //   }
-        //   $timeout(function() {
-        //     $scope.page.swipers.galleryIndex = 1;
-        //     for (var j = 0; j < slideClassesToActivate.length; j++) {
-        //       var activateClassIndex = slideClassesToActivate[j];
-        //       var activateElem = document.querySelector('.' + activateClassIndex);
-        //       activateElem && activateElem.classList.add('activate');
-        //     }
-        //   });
-        
+
         hideSplashHeroMap();
         hideSwiperNavButtons();
         sectionSplashProjectorElem.style.zIndex = 100;
@@ -574,7 +559,6 @@ angular.module('uguru.util.controllers')
       // Default parameters
       resolveStateParams();
       University.initUniversitiesSplash($scope, getStaticMapOptions());
-
       var responsiveSwiperArgs = {
         desktop: {
           slidesPerView: 1,
@@ -598,18 +582,21 @@ angular.module('uguru.util.controllers')
           }
         }
       }
-
+      initCTASplash()
       initSwipers(responsiveSwiperArgs, $scope.desktopMode);
       $scope.universities = University.getTargetted().slice();
       $timeout(function() {
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
-        // document.querySelector('.splash-hero-map').classList.add('activate');
-        // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+        document.querySelector('.splash-hero-map').classList.add('activate');
+        initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
         
         // University.initUniversitiesSplash($scope);
         // autoscroll code
         // $scope.scrollToSection('#splash-projector');
         // document.querySelector('#projector-pull').classList.add('activate');
+        // document.querySelector('#desktop-find-guru-button').classList.add('activate');
+        // document.querySelector('.splash-hero-map').classList.add('activate');
+        // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
         $timeout(function() {
         //    showProjectorAtTop(4);
         });
@@ -632,6 +619,7 @@ angular.module('uguru.util.controllers')
         pan: false,
         refresh: false,
         events: {tilesloaded: function(map) {
+          university.og_map = map;
           function calcMarkerCoords(map) {
             return function () {
               var mapBounds = map.getBounds().getSouthWest();
@@ -648,14 +636,16 @@ angular.module('uguru.util.controllers')
           $timeout(function() {
             $scope.$apply(function() {
               university.map.marker = generateSelectedUniversityMapMarkerObj(university, calcMarkerCoords(map));
+              university.mapRendered = true;
+              university.map.markers = [];
             })
           })
 
         }},
       }
       $timeout(function() {
-        $scope.getUniversityPlaces($scope.selectedUniversity);
         if (!$scope.selectedUniversity.courses || !$scope.selectedUniversity.courses.length) {
+          $scope.getUniversityPlaces($scope.selectedUniversity);
           getAllCourses($scope.selectedUniversity);
         }
       }, 5000);
@@ -706,14 +696,61 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.getUniversityPlaces = function(university) {
-      if ($scope.map && $scope.map.og_map && (!university.place_results || !university.place_results.length)) {
+      console.log('uni og_map', university.og_map);
+      if (university.og_map  && (!university.place_results || !university.place_results.length)) {
         $timeout(function() {
           $scope.$apply(function() {
-            GUtilService.getPlaceListByCoords($scope, $scope.map.og_map, {latitude: university.latitude, longitude: university.longitude});
+            console.log('\ncalling university places\n', university)
+            GUtilService.getPlaceListByCoords($scope, university.og_map, {latitude: university.latitude, longitude: university.longitude}, updateMarkersOnUniversitySpecificMap);
           })
         })
       }
       // $scope.map.center = {latitude: university.latitude, university.longitude};
+    }
+
+    function updateMarkersOnUniversitySpecificMap(university, selectedCategory) {
+      university.map.markers = [];
+      var markerLabelDivs = [];
+      for (var i = 0; i < 8; i++) {
+        var indexPlace = university.place_results[i];
+        university.map.markers.push(generateMarkerObj(indexPlace.geometry.location.lat(), indexPlace.geometry.location.lng(), i, selectedCategory.hex_color));
+      }
+      if ($scope.desktopMode) {
+        $timeout(function() {
+          var selectedMarkerElems = document.querySelectorAll('.university-place-marker');
+          console.log(selectedMarkerElems);
+          var splashHeroMarkerElems = document.querySelectorAll('.splash-hero-marker')
+          if (!splashHeroMarkerElems) {
+            return;
+          }
+          for (var i = 0; i < splashHeroMarkerElems.length; i++) {
+            var indexMarker = selectedMarkerElems[i];
+            indexMarker.id = 'university-place-marker-' + (i + 1);
+            var indexDOMElem = document.querySelector('.splash-hero-marker-' + (i+1));
+            indexDOMElem.classList.add('translate');
+          }
+        }, 2500);
+      }
+
+      function generateMarkerObj(lat, lng, id, cat_hex) {
+        var hexColorLookupDict = {'academic': '#e6389b'}
+        var customIcon = {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 10,
+          strokeColor:'#FFFFFF',
+          fillColor: hexColorLookupDict[cat_hex] || '#e6389b',
+          size: new google.maps.Size(25, 25)
+        }
+        return {
+          options: {
+            labelClass: 'university-place-marker',
+            icon: customIcon
+          },
+          coords: {latitude:lat, longitude:lng},
+          id: id
+        }
+      }
+      // $compile(div)($scope);
     }
 
     function toggleCategoryDropdown() {
@@ -725,6 +762,38 @@ angular.module('uguru.util.controllers')
       $scope.page.dropdowns.university.active = !$scope.page.dropdowns.university.active;
       $scope.page.dropdowns.category.active = false;
     }
+
+
+    function filterPlacesThatOverlapElem(elem, places_arr, buffer) {
+      var filteredPlaces = [];
+      for (var i = 0; i < places_arr.length; i++) {
+        var indexPlace = places_arr[i];
+
+        //point object
+        var indexPlaceXYCoords = getXYPosOfGMarker(indexPlace);
+        if (!isXYWithinElem(indexPlaceXYCoords.x, indexPlaceXYCoords.y, elem, buffer)) {
+
+        }
+      }
+    }
+
+    function getXYPosOfGMarker(map, place) {
+      return map.getProjection().fromLatLngToPoint(place.geometry.location);
+    }
+
+    function getDOMElemBoundsWithBuffer(elem, buffer) {
+      //offset left
+    }
+
+    function isXYWithinElem(x, y, elem, buffer) {
+      var buffer = 0.25;
+      elemBounds = getDOMElemBoundsWithBuffer(elem, buffer);
+
+    }
+
+    // phonePosition phoneWidth * 1.25
+    // phonePosition phoneHeight * 1.25
+    //
 
     // ***************
     // START MAP CODE
@@ -812,6 +881,27 @@ angular.module('uguru.util.controllers')
       $scope.universities = University.getTargetted();
       // $scope.staticUniversityMaps = GUtilService.generateStaticMapUrls($scope.universities.slice(0, 4), staticMapOptions);
       // $scope.search_text = {university: "", matching: []};
+
+      $scope.sidebarGetStarted = function() {
+        LoadingService.show();
+        var modalElemSidebar = document.querySelector('#cta-modal-sidebar');
+        modalElemSidebar && modalElemSidebar.classList.remove('show');
+        CTAService.closeCTAManually('#cta-box-sidebar', function() {
+          if (!$scope.projectorPullActivated) {
+            $scope.scrollToSection('#splash-projector');
+            LoadingService.hide();
+          } else {
+            $scope.scrollToSection('#splash-projector');
+            $timeout(function() {
+              $scope.page.swipers.main.slideTo(3);
+              $timeout(function() {
+                toggleGalleryDisplays();
+                LoadingService.hide();
+              }, 1000)
+            }, 1500)
+          }
+        })
+      }
 
       var calcZoom = function() {
         if ($scope.desktopMode) {
@@ -1126,7 +1216,17 @@ angular.module('uguru.util.controllers')
         }, 1000)
       }
 
+      function initCTASplash() {
 
+        var ctaParentElemSelector = '#home-splash';
+        CTAService.initSingleCTA("#cta-box-sidebar", ctaParentElemSelector, activateAtShow);
+        function activateAtShow(modal_elem) {
+          var sidebarAside = modal_elem.querySelector('aside');
+          sidebarAside && sidebarAside.classList.add('activate');
+          var asideElem = document.querySelector('.splash-sidebar-full')
+          console.log(asideElem);
+        }
+      }
 
       function onMapRenderCompleteOnce(map) {
         if (!$scope.map.og_map) {
