@@ -46,7 +46,7 @@ function CTAService($timeout) {
         //show modal cta
         showModalCTA(modal_elem);
         // $timeout(function() { showModalCTA(modal_elem) });
-        show_callback && show_callback();
+        show_callback && show_callback(modal_elem);
 
         var modalCloseIcon = getModalCloseIcon(modal_elem);
         if (modalCloseIcon) {

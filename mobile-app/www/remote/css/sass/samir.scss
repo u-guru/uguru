@@ -665,7 +665,7 @@ header#home-nav-header.splash-header,
 }
 
 #home-splash {
-	ion-pane {
+	ion-pane:not(#cta-modal-sidebar) {
 		width:66.66% !important;
 		right:0;
 		margin-left: 33.33% !important;

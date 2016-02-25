@@ -537,7 +537,7 @@ header#home-nav-header.splash-header,
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000; }
 
-#home-splash ion-pane {
+#home-splash ion-pane:not(#cta-modal-sidebar) {
   width: 66.66% !important;
   right: 0;
   margin-left: 33.33% !important; }

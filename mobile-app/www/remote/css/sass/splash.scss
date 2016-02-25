@@ -3629,7 +3629,7 @@
 	z-index: -999999!important;
 }
 
-.splash-landing > section.splash-hero .splash-hero-map ui-gmap-google-map {
+.splash-landing > section.splash-hero .splash-hero-map.limited-opacity ui-gmap-google-map {
 	.angular-google-map-container .gm-style > div:first-child > div:nth-child(1),
 	.angular-google-map-container .gm-style > div:first-child > div:nth-child(2), {
 		opacity:0.2 !important;
@@ -3644,3 +3644,6 @@
 	}
 }
 
+.selected-university-place-marker {
+	@include prefix(filter, invert(100%), webkit moz ms o);
+}
