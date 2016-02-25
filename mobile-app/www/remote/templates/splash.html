@@ -53,6 +53,7 @@
                     </ul>
                 </div>
 			</nav>
+
             <section class='splash-sidebar-content' ng-if='desktopMode'>
                 <div class="splash-sidebar-empty">
                     <div class="splash-sidebar-guru splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
@@ -150,7 +151,33 @@
 				</a>
 			</div>
 		</header>
-
+        <div class="school-card opacity-0 absolute hide" class-on-activate="show" id='global-school-card' ng-if='selectedUniversity && selectedUniversity.id'>
+            <svg class="rect" viewBox="0 0 300 200">
+                <rect x="0" y="0" width="300" height="200" fill="none"></rect>
+            </svg>
+            <!--@gabrielle dont need this here actually -->
+            <!-- <input type="checkbox"/> -->
+            <div class="school-card-inside">
+                <div class="school-card-top" style="background-color: {{selectedUniversity.school_color_one}};">
+                    <div class="opacity-0">
+                        <span class="school-card-icon" style="background-image: url({{selectedUniversity.svg_url || selectedUniversity.seal_url || selectedUniversity.logo_url}}); border-color: {{selectedUniversity.school_color_one}};">
+                            <span class="school-card-icon-bg" style="background-color: {{selectedUniversity.school_color_dark}};"></span>
+                            <span class="school-card-state" ng-include="img_base + 'templates/svg/main/check.html'"></span>
+                            <span class="school-card-state" ng-include="img_base + 'templates/svg/main/plus.html'"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="school-card-main no-footer">
+                    <div class="school-card-map"></div>
+                    <div class="school-card-color" style="background-color: {{selectedUniversity.school_color_dark}};"></div>
+                    <div class="school-card-info">
+                        <h1 style="color: {{selectedUniversity.school_color_dark}};">{{selectedUniversity.short_name || selectedUniversity.name}}</h1>
+                        <h1>{{selectedUniversity.short_name || selectedUniversity.name}}</h1>
+                        <h2 style="color: {{selectedUniversity.school_color_dark}};"><span>{{selectedUniversity.city}}</span>,&nbsp;<span>{{selectedUniversity.state}}</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
 		<section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear">
 			<div class="splash-hero-nav desktop opacity-0 high-z-index" class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
                 <div>
@@ -217,7 +244,7 @@
 				</div>
 			</div>
 			<!-- @gabrielle-note, the 3000 ms is to generate the static map URL with the right icon-->
-            <div class="splash-hero-map opacity-0" class-on-clear="slideOutUp:animOut" class-on-activate="active:anim" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
+            <div class="splash-hero-map opacity-0 invisible" class-on-clear="slideOutUp:animOut" class-on-activate="active:anim, visible-impt" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
 				<!--Initial map class: init-university-map -->
                 <ui-gmap-google-map class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events" id='splash-google-map-selected-university' refresh='map.refresh' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
                     <ui-gmap-marker coords="selectedUniversity.map.marker.coords" idKey="selectedUniversity.map.marker.id || selectedUniversity.id" options="selectedUniversity.map.marker.options" icon="selectedUniversity.map.marker.icon">
@@ -923,7 +950,7 @@
 
 		<section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
             <div class="projector-trigger" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750">
-                <a id="projector-pull" ng-click='projectorPullActivated = true;' bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
+                <a id="projector-pull" ng-click='projectorPullActivated = true;' bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a" class-on-activate="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
     				<svg width="28px" height="224px" viewBox="0 0 56 448">
     				    <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
     				        <path d="M28,2 L28,392" fill="none" stroke-width="4" stroke-dasharray="16,14" opacity="0.6"></path>
@@ -1414,7 +1441,7 @@
                                 </svg>
                                 <div class="projector-top"></div>
                                 <div class="projector-content relative">
-                                    <div id='become-guru'>
+                                    <div>
                                         <header>
                                             <h1 class="slide-signup-header opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="400">Signup / Login</h1>
                                         </header>
@@ -1461,7 +1488,7 @@
                                         <div class="ugrid-2">
                                             <div class="login-backpack">
                                                 <span ng-include="img_base + 'templates/svg/backpack.html'"></span>
-                                                <b>{{user.student_courses.length}}</b>
+                                                <b style='color:{{selectedUniversity.school_color_dark}}'>{{user.student_courses.length}}</b>
                                                 <a ng-click='showGoBackToUniversityPage()'>+ add more</a>
                                             </div>
                                             <div class="login-courses" ng-controller='CoursesController'>
@@ -1473,7 +1500,7 @@
                                                             </div>
                                                         </span>
                                                     </li>
-                                                    <li ng-click='addUniversityStudentCourse(course, $index)' ng-repeat='course in selectedUniversity.popular_courses |  limitTo: (9 - user.student_courses.length) track by $index'>
+                                                    <li ng-click='addUniversityStudentCourse(course, $index)' ng-repeat='course in selectedUniversity.courses |  limitTo: (9 - user.student_courses.length) track by $index'>
                                                         <span>
                                                             <div>
                                                                 <span class="course-name">{{course.short_name}}</span>
@@ -1494,7 +1521,7 @@
 			</div>
             <div id='swiper-gallery-nav' class="swiper-container swiper-front-gallery-thumbs" activate-on-class="a" class-on-activate="active:keep, b:inject.slideshow-thumb-1|activate, b:inject.slideshow-thumb-2|activate, b:inject.slideshow-thumb-3|activate, b:inject.slideshow-thumb-4|activate">
                 <div class="swiper-wrapper swiper-gallery-wrapper">
-                    <div class="swiper-slide slideshow-thumb-1 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" >
+                    <div class="swiper-slide slideshow-thumb-1 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
                         <div>
                             <svg viewBox="0 0 200 200">
                             	<g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -1512,7 +1539,7 @@
                             <h1>Slide 1</h1>
                         </div>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-2 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="200" >
+                    <div class="swiper-slide slideshow-thumb-2 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
                         <div>
                             <svg viewBox="0 0 200 200">
                                 <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -1531,7 +1558,7 @@
                             <h1>Slide 2</h1>
                         </div>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-3 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="400" >
+                    <div class="swiper-slide slideshow-thumb-3 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim"  >
                         <div>
                             <svg viewBox="0 0 200 200">
                                 <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -1550,7 +1577,7 @@
                             <h1>Slide 3</h1>
                         </div>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-4 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="600">
+                    <div class="swiper-slide slideshow-thumb-4 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
                         <div>
                             <svg viewBox="0 0 200 200">
                                 <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -1561,7 +1588,7 @@
                             <h1 ng-if='page.swipers.galleryIndex'>Demographic</h1>
                         </div>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-5 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="1000">
+                    <div class="swiper-slide slideshow-thumb-5 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" >
                         <div>
                             <svg viewBox="0 0 200 200">
                                 <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -1571,7 +1598,7 @@
                             <h1>Signup</h1>
                         </div>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-6 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="1500">
+                    <div class="swiper-slide slideshow-thumb-6 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" >
                         <div>
                             <svg viewBox="0 0 200 200">
                                 <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -1581,7 +1608,7 @@
                             <h1>Access</h1>
                         </div>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-7 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="2000">
+                    <div class="swiper-slide slideshow-thumb-7 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim">
                         <div>
                             <svg viewBox="0 0 200 200">
                                 <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">

@@ -70,12 +70,20 @@ angular.module('uguru.util.controllers')
         }
 
 		$scope.addUniversityStudentCourse = function(course, $index) {
-	      var course = $scope.university.popular_courses.splice($index, 1)[0];
-	      $scope.user.student_courses.push(course);
-	      console.log(course, $index, $scope.user.student_courses);
-	      $timeout(function(){
-	      	$scope.$apply();
-	      })
+			var course;
+			if ($scope.university && $scope.university.popular_courses && $scope.university.popular_courses.length) {
+				var course = $scope.university.popular_courses.splice($index, 1)[0];
+			} else if ($scope.selectedUniversity && $scope.selectedUniversity.courses && $scope.selectedUniversity.courses.length) {
+				var course = $scope.selectedUniversity.courses.splice($index, 1)[0];
+			}
+
+			if (course) {
+				$scope.user.student_courses.push(course);
+		      	console.log(course, $index, $scope.user.student_courses);
+		      	$timeout(function(){
+		      		$scope.$apply();
+		      	})
+			}
 	    }
 
 	    $scope.removeUniversityStudentCourse = function(course, $index) {
