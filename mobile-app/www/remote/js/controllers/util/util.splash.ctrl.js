@@ -566,7 +566,7 @@ angular.module('uguru.util.controllers')
         },
         mobile: {
           // slidesPerView: 2, //defaults
-          // spaceBetween: 0, //defaults
+          // spaceBetween: 0, // defaults
           // Responsive breakpoints
           breakpoints: {
             // when window width is <= 320px
@@ -586,8 +586,12 @@ angular.module('uguru.util.controllers')
       initSwipers(responsiveSwiperArgs, $scope.desktopMode);
       $scope.universities = University.getTargetted().slice();
       $timeout(function() {
+        // document.querySelector('#desktop-find-guru-button').classList.add('activate');
+        document.querySelector('.splash-hero-map').classList.add('activate');
+        initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+
         // University.initUniversitiesSplash($scope);
-        //autoscroll code
+        // autoscroll code
         // $scope.scrollToSection('#splash-projector');
         // document.querySelector('#projector-pull').classList.add('activate');
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
@@ -598,6 +602,12 @@ angular.module('uguru.util.controllers')
         // $timeout(function() {
         //    showProjectorAtTop(4);
         // });
+        // document.querySelector('.splash-hero-map').classList.add('activate');
+        // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+        $timeout(function() {
+        //    showProjectorAtTop(4);
+        });
+
         $timeout(function() {
           $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);
           $scope.become_guru = ContentService.generateUniversitySpecificBecomeGuruText($scope.university);
