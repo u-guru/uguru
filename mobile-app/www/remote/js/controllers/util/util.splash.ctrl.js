@@ -257,7 +257,25 @@ angular.module('uguru.util.controllers')
         removeAllSwipersButOne(index)
 
         !$scope.projectorPullActivated && hideProjectorPrecursor();
+        
         hideSwiperGallery();
+        // $scope.page.swipers.gallery.slideTo(3);
+        // var slideClassesToClear = ['slideshow-thumb-1', 'slideshow-thumb-2', 'slideshow-thumb-3'];
+        //   var slideClassesToActivate = ['slideshow-thumb-4', 'slideshow-thumb-5', 'slideshow-thumb-6', 'slideshow-thumb-7'];
+        //   for (var i = 0; i < slideClassesToClear.length; i++) {
+        //       var clearClassIndex = slideClassesToClear[i];
+        //       var clearElem = document.querySelector('.' + clearClassIndex);
+        //       clearElem && clearElem.classList.add('clear');
+        //   }
+        //   $timeout(function() {
+        //     $scope.page.swipers.galleryIndex = 1;
+        //     for (var j = 0; j < slideClassesToActivate.length; j++) {
+        //       var activateClassIndex = slideClassesToActivate[j];
+        //       var activateElem = document.querySelector('.' + activateClassIndex);
+        //       activateElem && activateElem.classList.add('activate');
+        //     }
+        //   });
+        
         hideSplashHeroMap();
         hideSwiperNavButtons();
         sectionSplashProjectorElem.style.zIndex = 100;
@@ -589,7 +607,7 @@ angular.module('uguru.util.controllers')
         $scope.scrollToSection('#splash-projector');
         document.querySelector('#projector-pull').classList.add('activate');
         $timeout(function() {
-          // showProjectorAtTop(6);
+        //   showProjectorAtTop(6);
         });
         $timeout(function() {
           $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);
