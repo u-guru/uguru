@@ -596,7 +596,7 @@ angular.module('uguru.util.controllers')
 
 
         $timeout(function() {
-          // showProjectorAtTop(0);
+           showProjectorAtTop(4);
         });
         $timeout(function() {
           $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);
@@ -642,8 +642,8 @@ angular.module('uguru.util.controllers')
         }},
       }
       $timeout(function() {
-        $scope.getUniversityPlaces($scope.selectedUniversity);
         if (!$scope.selectedUniversity.courses || !$scope.selectedUniversity.courses.length) {
+          $scope.getUniversityPlaces($scope.selectedUniversity);
           getAllCourses($scope.selectedUniversity);
         }
       }, 5000);
@@ -713,21 +713,22 @@ angular.module('uguru.util.controllers')
         var indexPlace = university.place_results[i];
         university.map.markers.push(generateMarkerObj(indexPlace.geometry.location.lat(), indexPlace.geometry.location.lng(), i, selectedCategory.hex_color));
       }
-
-      $timeout(function() {
-        var selectedMarkerElems = document.querySelectorAll('.university-place-marker');
-        console.log(selectedMarkerElems);
-        var splashHeroMarkerElems = document.querySelectorAll('.splash-hero-marker')
-        if (!splashHeroMarkerElems) {
-          return;
-        }
-        for (var i = 0; i < splashHeroMarkerElems.length; i++) {
-          var indexMarker = selectedMarkerElems[i];
-          indexMarker.id = 'university-place-marker-' + (i + 1);
-          var indexDOMElem = document.querySelector('.splash-hero-marker-' + (i+1));
-          indexDOMElem.classList.add('translate');
-        }
-      }, 2500);
+      if ($scope.desktopMode) {
+        $timeout(function() {
+          var selectedMarkerElems = document.querySelectorAll('.university-place-marker');
+          console.log(selectedMarkerElems);
+          var splashHeroMarkerElems = document.querySelectorAll('.splash-hero-marker')
+          if (!splashHeroMarkerElems) {
+            return;
+          }
+          for (var i = 0; i < splashHeroMarkerElems.length; i++) {
+            var indexMarker = selectedMarkerElems[i];
+            indexMarker.id = 'university-place-marker-' + (i + 1);
+            var indexDOMElem = document.querySelector('.splash-hero-marker-' + (i+1));
+            indexDOMElem.classList.add('translate');
+          }
+        }, 2500);
+      }
 
       function generateMarkerObj(lat, lng, id, cat_hex) {
         var hexColorLookupDict = {'academic': '#e6389b'}
@@ -839,12 +840,39 @@ angular.module('uguru.util.controllers')
       }
 
     var styleOptions = [
-        { featureType: 'water', elementType: 'geometry', stylers: [ { hue: '#50A5DD' }, { saturation: -50 },{ lightness: 0 }, { visibility: 'on' }]},
-        { featureType: 'water', elementType: 'labels', stylers: [ { visibility: 'off' } ]},
-        { featureType: 'landscape', elementType: 'all', stylers: [ {visibility: 'off'} ] },
-        { featureType: 'poi', elementType: 'all', stylers: [ {visibility: 'off'} ] },
-        { featureType: 'administrative.country', elementType: 'labels',stylers: [{visibility: 'off'} ] },
-        { featureType: 'administrative.locality', elementType: 'labels', stylers: [ {visibility: 'off'} ]},
+        { featureType: 'water', elementType: 'geometry.fill', stylers: [
+            { color: '#40484b' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'landscape', elementType: 'geometry', stylers: [
+            { color: '#51595c' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'water', elementType: 'geometry.stroke', stylers: [
+            { color: '#FFFFFF' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'administrative', elementType: 'geometry.fill', stylers: [
+            { color: '#51595c' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'administrative.country', elementType: 'geometry.stroke', stylers: [
+            { color: '#FFFFFF' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'administrative.province', elementType: 'geometry.stroke', stylers: [
+            { color: '#FFFFFF' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'road', elementType: 'geometry', stylers: [
+            { color: '#474e51' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'transit', elementType: 'geometry', stylers: [
+            { color: '#474e51' },
+            { visibility: 'on' }
+        ]},
+        { featureType: 'poi', elementType: 'all', stylers: [ { visibility: 'off' } ]},
         { featureType: 'all', elementType: 'labels', stylers: [ {visibility: 'off'} ]}
       ];
 
