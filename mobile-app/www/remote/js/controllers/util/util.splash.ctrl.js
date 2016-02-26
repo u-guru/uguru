@@ -587,19 +587,19 @@ angular.module('uguru.util.controllers')
       $scope.universities = University.getTargetted().slice();
       $timeout(function() {
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
-        document.querySelector('.splash-hero-map').classList.add('activate');
-        initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+        // document.querySelector('.splash-hero-map').classList.add('activate');
+        // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
         
         // University.initUniversitiesSplash($scope);
         // autoscroll code
         // $scope.scrollToSection('#splash-projector');
         // document.querySelector('#projector-pull').classList.add('activate');
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
-        // document.querySelector('.splash-hero-map').classList.add('activate');
-        // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
-        $timeout(function() {
+
+
+        // $timeout(function() {
         //    showProjectorAtTop(4);
-        });
+        // });
         $timeout(function() {
           $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);
           $scope.become_guru = ContentService.generateUniversitySpecificBecomeGuruText($scope.university);
@@ -609,13 +609,94 @@ angular.module('uguru.util.controllers')
         $scope.page.sidebar = SideMenuService.initHomeSideMenu($scope);
       })
     }
+    
+    // should be university light color
+    var currentColor = "#FBB431";
+    var currentDarkColor = "#023360";
+
+    var selectedUniversityMapStyles = [
+        { featureType: 'all', elementType: 'labels', stylers: [ 
+            { visibility: 'off' }
+        ]},
+        {
+        	"featureType": "administrative",
+        	"elementType": "geometry.stroke",
+        	"stylers": [{
+        		"color": "#144b53"
+        	}, {
+        		"lightness": 14
+        	}, {
+        		"weight": 1.4
+        	}]
+        }, {
+        	"featureType": "landscape",
+        	"elementType": "all",
+        	"stylers": [{
+        		"color": "#08304b"
+        	}]
+        }, {
+        	"featureType": "poi",
+        	"elementType": "geometry",
+        	"stylers": [{
+        		"color": "#08304b"
+        	}, {
+        		"lightness": 5
+        	}]
+        }, {
+        	"featureType": "road.highway",
+        	"elementType": "geometry.fill",
+        	"stylers": [{
+        		"color": "#BACCD3"
+        	}]
+        }, {
+        	"featureType": "road.highway",
+        	"elementType": "geometry.stroke",
+        	"stylers": [{
+        		"color": "#0b434f"
+        	}, {
+        		"lightness": 25
+        	}]
+        }, {
+        	"featureType": "road.arterial",
+        	"elementType": "geometry.fill",
+        	"stylers": [{
+        		"color": "#BACCD3"
+        	}]
+        }, {
+        	"featureType": "road.arterial",
+        	"elementType": "geometry.stroke",
+        	"stylers": [{
+        		"color": "#0b3d51"
+        	}, {
+        		"lightness": 16
+        	}]
+        }, {
+        	"featureType": "road.local",
+        	"elementType": "geometry",
+        	"stylers": [{
+        		"color": "#BACCD3"
+        	}]
+        }, {
+        	"featureType": "transit",
+        	"elementType": "all",
+        	"stylers": [{
+        		"color": "#08304b"
+        	}]
+        }, {
+        	"featureType": "water",
+        	"elementType": "all",
+        	"stylers": [{
+        		"color": "#021019"
+        	}]
+        }
+    ];
 
     function initializeDynamicSelectedUniversityMap(university) {
       university.map = {
         control: {},
         coords: {latitude: university.latitude, longitude: university.longitude},
         zoom: 17,
-        options: {scrollwheel: false, streetViewControl:false, scrollwheel:false, panControl:false,  mapTypeControl:false, style:{}, draggable:false, disableDoubleClickZoom:false, zoomControl: false},
+        options: {styles: selectedUniversityMapStyles, scrollwheel: false, streetViewControl:false, scrollwheel:false, panControl:false,  mapTypeControl:false, style:{}, draggable:false, disableDoubleClickZoom:false, zoomControl: false},
         pan: false,
         refresh: false,
         events: {tilesloaded: function(map) {
@@ -715,6 +796,7 @@ angular.module('uguru.util.controllers')
         var indexPlace = university.place_results[i];
         university.map.markers.push(generateMarkerObj(indexPlace.geometry.location.lat(), indexPlace.geometry.location.lng(), i, selectedCategory.hex_color));
       }
+
       if ($scope.desktopMode) {
         $timeout(function() {
           var selectedMarkerElems = document.querySelectorAll('.university-place-marker');
@@ -850,10 +932,6 @@ angular.module('uguru.util.controllers')
             { color: '#51595c' },
             { visibility: 'on' }
         ]},
-        { featureType: 'water', elementType: 'geometry.stroke', stylers: [
-            { color: '#FFFFFF' },
-            { visibility: 'on' }
-        ]},
         { featureType: 'administrative', elementType: 'geometry.fill', stylers: [
             { color: '#51595c' },
             { visibility: 'on' }
@@ -913,7 +991,7 @@ angular.module('uguru.util.controllers')
 
       var mapDefaults = {
         zoom: calcZoom(),
-        options: { streetViewControl:false, scrollwheel:false, panControl:false,  minZoom: $scope.mapZoom.minZoom, maxZoom: $scope.mapZoom.maxZoom, styles: styleOptions,
+        options: { streetViewControl:false, scrollwheel:false, panControl:false,  minZoom: $scope.mapZoom.minZoom, maxZoom: $scope.mapZoom.maxZoom,
                    scrollwheel: false, mapTypeControl:false, style:styleOptions, draggable:true, disableDoubleClickZoom:false, zoomControl: true
                  }
       }

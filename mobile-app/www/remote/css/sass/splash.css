@@ -1665,19 +1665,6 @@
   height: 100%;
   background-position: center;
   background-size: cover;
-  -webkit-filter: invert(100%);
-  -moz-filter: invert(100%);
-  -ms-filter: invert(100%);
-  -o-filter: invert(100%);
-  filter: invert(100%);
-}
-
-.splash-landing > section.splash-hero .splash-hero-map .gmnoprint img {
-  -webkit-filter: invert(100%);
-  -moz-filter: invert(100%);
-  -ms-filter: invert(100%);
-  -o-filter: invert(100%);
-  filter: invert(100%);
 }
 
 .splash-landing > section.splash-hero .splash-hero-map.animated {
@@ -2895,6 +2882,7 @@
   border-radius: 8px;
   font-size: 20px;
   font-weight: 600;
+  background: rgba(64, 72, 75, 0.9);
 }
 
 .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a svg {
@@ -6180,23 +6168,10 @@
   z-index: -999999 !important;
 }
 
-.splash-landing > section.splash-hero .splash-hero-map.limited-opacity ui-gmap-google-map .angular-google-map-container .gm-style > div:first-child > div:nth-child(1),
-.splash-landing > section.splash-hero .splash-hero-map.limited-opacity ui-gmap-google-map .angular-google-map-container .gm-style > div:first-child > div:nth-child(2) {
-  opacity: 0.2 !important;
-}
-
 .splash-landing > section.splash-hero .splash-hero-map.limited-opacity ui-gmap-google-map .angular-google-map-container .gm-style > div:first-child > div:nth-child(3) .selected-university-svg-icon {
   opacity: 0;
 }
 
 .splash-landing > section.splash-hero .splash-hero-map.limited-opacity ui-gmap-google-map .angular-google-map-container .gm-style > div:first-child > div:nth-child(3) .gmnoprint {
   opacity: 1 !important;
-}
-
-.selected-university-place-marker {
-  -webkit-filter: invert(100%);
-  -moz-filter: invert(100%);
-  -ms-filter: invert(100%);
-  -o-filter: invert(100%);
-  filter: invert(100%);
 }

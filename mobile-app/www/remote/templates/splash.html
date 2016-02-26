@@ -119,6 +119,7 @@
                     <ui-gmap-markers ng-if='selectedUniversity.map.markers' models="selectedUniversity.map.markers" coords="'coords'" options="'options'" icon="'options.icon'" fit="true">
                     </ui-gmap-markers>
                 </ui-gmap-google-map>
+                <!-- <div style="opacity: .5; background: #023360; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 10;"></div> -->
                 <!-- <div class="splash-scene-map-img" style="background-image: url('{{selectedUniversity.static_map_url}}')"></div> -->
                 <!-- zoom="requestForm.map.zoom"
                     pan="requestForm.map.pan"
@@ -500,7 +501,7 @@
                     <span class="marker-course opacity-0 hide">BIO 1B</span>
 				</div>
 
-				<div class="splash-hero-marker-6 splash-hero-marker opacity-0 visible" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 30%; right: 12%;">
+				<div class="splash-hero-marker-6 splash-hero-marker opacity-0" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 30%; right: 12%;">
 					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} top left" class-on-activate="bounceIn:anim" class-on-activate-delay="3300"></div>
                     <div class="location-text">{{selectedUniversity.place_results[5].name}}</div>
                     <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="fadeIn:anim" class-on-activate-delay="5000">
