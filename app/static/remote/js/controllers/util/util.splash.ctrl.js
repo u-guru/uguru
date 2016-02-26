@@ -258,6 +258,19 @@ angular.module('uguru.util.controllers')
     function showProjectorAtTop(index) {
       var sectionSplashProjectorElem = document.querySelector('#splash-projector');
       var swiperContainer = document.querySelector('.header-swipers');
+      LoadingService.showAmbig();
+      if (swiperContainer) {
+        swiperContainer.classList.add('a');
+      }
+      if (sectionSplashProjectorElem) {
+        $timeout(function() {
+          LoadingService.hide();
+        }, 1000)
+        $timeout(function() {
+          sectionSplashProjectorElem.classList.add('absolute', 'top-0', 'bounceInDown', 'animated');
+        }, 1250)
+      }
+
       swiperContainer.style.opacity = 0;
       if (sectionSplashProjectorElem) {
         removeAllSwipersButOne(index)
@@ -269,13 +282,13 @@ angular.module('uguru.util.controllers')
         hideSwiperNavButtons();
         sectionSplashProjectorElem.style.zIndex = 1003;
         $timeout(function() {
-          sectionSplashProjectorElem.classList.add('absolute', 'top-0');
+          sectionSplashProjectorElem.classList.remove('bounceInDown', 'animated');
           // sectionSplashProjectorElem.classList.remove('opacity-0');
           // swiperContainer.classList.remove('opacity-0-impt')
-        })
+        }, 800)
 
 
-          swiperContainer.classList.add('a');
+
 
       }
     };

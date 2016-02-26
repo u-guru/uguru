@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="150" id='cta-box-intercom' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.support.show()'>
+                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="150" id='cta-box-intercom' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.support()'>
                         <span>Support</span>
                     </a>
                 </li>
@@ -53,7 +53,7 @@
         </div>
         <div>
             <button class="btn-ghost-white" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="700" ng-click='sidebarGetStarted()'><span>Get Started</button>
-            <ul class="splash-sidebar-platforms">
+            <ul class="splash-sidebar-platforms" ng-if='false'>
                 <li>
                     <a class="" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1100" ng-include="::img_base + 'templates/svg/main/mobile.html'"></a>
                 </li>
