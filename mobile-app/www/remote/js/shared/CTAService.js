@@ -30,6 +30,7 @@ function CTAService($timeout) {
 
   var closeCTAManually = function(elem_id, cb) {
     var func = ctaCloseFuncDict[elem_id];
+
     func && func();
     cb && cb();
   }

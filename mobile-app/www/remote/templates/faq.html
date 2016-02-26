@@ -1,0 +1,33 @@
+<section id="faq">
+                <header>
+                    <a id='guru-profile-cta-close' ng-click='!desktopMode && page.modals.faq.hide()' class='cta-modal-close close-button p15xy flex-right-center'>
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                        </svg>
+                    </a>
+                    <h1>Frequently Asked Questions</h1>
+                    <div class="tab-bar slide"  ng-if = "false">
+                        <div>
+                            <a class="active">All</a>
+                            <a>Uguru Basics</a>
+                            <a>My Account</a>
+                            <a>Payment</a>
+                            <a>Features</a>
+                            <hr/>
+                        </div>
+                    </div>
+                </header>
+                <div class="main">
+                    <dl ng-repeat="faq in ::page.faq_arr" ng-class='{"full-x" :!desktopMode}' class='relative'>
+                        <dt ng-click='faq.active = !faq.active' ng-class="{'active': faq.active}" class='high-z-index'>
+                            <span>{{faq.question}}</span>
+                            <a class='close-button'>
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                </svg>
+                            </a>
+                        </dt>
+                        <dd class='weight-400 left-0' ng-if='faq.active'  id='faq-content-{{$index}}' ng-bind-html="faq.answer"></dd>
+                    </dl>
+                </div>
+</section>
