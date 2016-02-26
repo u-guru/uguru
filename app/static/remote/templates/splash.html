@@ -1,7 +1,7 @@
 <div class='relative' style='height:calc(100%); width:calc(100%); overflow:hidden !important;' eval-on-load="onLoad()">
 	<!-- @gabrielle, do not not remove  init-wp-parent -->
     <main id='home-splash' init-wp-parent class='splash-landing new hs-view full-xy' style="height:calc(200% !important); width:calc(100%) !important;" bind-wp="s1_top">
-        <ion-pane style='z-index:1001;' id='cta-modal-sidebar' class='full-xy hide-display cta-modal bg-charcoal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
+        <ion-pane style='z-index:1001;' id='cta-modal-sidebar' class='full-xy hide-display show cta-modal bg-charcoal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
         <a ng-if='page.dropdowns.category.active || page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()' style='z-index:5'> </a>
 		<header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
 			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'"></a>
@@ -46,7 +46,7 @@
             </div>
         </div>
 		<section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" >
-			<div class="splash-hero-nav desktop opacity-0 high-z-index" class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
+			<div class="splash-hero-nav desktop opacity-0 high-z-index" style='z-index:1000;' class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
                 <div>
                     <a name='category'  class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()'>
                         <span>{{selectedCategory.name}}</span>
@@ -886,7 +886,7 @@
                 </svg>
             </div>
 
-            <div class='header-swipers opacity-0'  activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, b:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700">
+            <div class='header-swipers opacity-0'  activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, b:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700" class-on-clear="slideOutUp:animOut">
 				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-0">
 					<div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
@@ -913,9 +913,13 @@
     					<!-- next buttons -->
     					<div class="swiper-button-next swiper-button-white" aria-disabled="false" tabindex="0" role="button" aria-label="Next slide"></div>
     					<div class="swiper-button-prev swiper-button-white swiper-button-disabled" aria-disabled="true" tabindex="0" role="button" aria-label="Previous slide"></div>
+                        <a class='absolute bottom-0 uppercase weight-700 text-center full-x left-0 opacity-50 p20xy' ng-click="closeSingleProjector()">
+                                Close
+                            </a>
     					<div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
     						<!-- Slide # 1-->
                             <!-- university slide #1 -->
+
                             <div id='slide-1' class="swiper-slide" class-on-clear="null:inject#splash-university|clear, null:inject.projector-content|clear" class-on-activate="null:inject#splash-university|opacity-1, null:inject.projector-content|activate" style='overflow:hidden !important;'>
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
@@ -1439,8 +1443,8 @@
                                             </text>
                             			</svg>
                             		</div>
-                                    <div class="splash-content splash-signup-content ng-class:{'active':root.vars.loginMode}">
-                            			<button class="btn-splash-login btn-ghost-white" ng-click='toggleLoginMode()'>Login</button>
+                                    <div class="splash-content splash-signup-content ng-class:{'active':!page.account.loginMode}">
+                            			<button class="btn-splash-login btn-ghost-white" ng-click='page.account.toggle()'>Login</button>
                             			<div class="splash-signup-inside">
                             				<div class="school-id-card">
                             					<svg viewBox="0 0 240 160">
@@ -1532,8 +1536,8 @@
                                             <button ng-click='connectWithFacebook()' class="btn-login-fb btn-ghost-white caps">Login with Facebook</button>
                             			</div>
                             		</div>
-                            		<div class="splash-content splash-login-content ng-class:{'active':!root.vars.loginMode}">
-                            			<button class="btn-splash-login btn-ghost-white" ng-click='toggleLoginMode()'>Signup</button>
+                            		<div class="splash-content splash-login-content ng-class:{'active':page.account.loginMode}">
+                            			<button class="btn-splash-login btn-ghost-white" ng-click='page.account.login()'>Signup</button>
                             			<div class="splash-login-inside">
                             				<div class="input-field">
                             					<input type="text" placeholder="email"/>

@@ -1,25 +1,8 @@
-<ion-modal-view class='uguru-view faq-modal' onload='LoadingService'>
-<style>
-	.uguru-view.faq-modal {
-		#top-menu {
-			display: none;
-			visibility: hidden;
-		}
-	}
-</style>
-<section class="full-xy">
-	<header class="bg-charcoal white">
-		<div class="header-nav">
-			<a class="header-down" ng-click="closeModal('faq')">
-				<svg viewBox="0 0 100 100">
-					<path d="M14,32 L50,68 L86,32"></path>
-				</svg>
-			</a>
+<div class='modal'>
+	<ion-modal-view class='bg-smoke'>
+		<ion-scroll>
+		<div ng-include='img_base + BASE + "templates/faq.html"'>
 		</div>
-		<h1 class="text-center">Uguru FAQs</h1>
-	</header>
-	<ion-content class='white-bg' scroll='false'>
-		<iframe iframe-onload='closeLoader()' name="Uguru FAQ" ng-src="https://www.uguru.me/faq-only/"></iframe>
-	</ion-content>
-</section>
-</ion-modal-view>
+		</ion-scroll
+	</ion-modal-view>
+</div>
