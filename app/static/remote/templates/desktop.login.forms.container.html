@@ -65,7 +65,7 @@
 			<b>{{user.student_courses.length}}</b>
 			<a ng-click='showGoBackToUniversityPage()'>+ add more</a>
 		</div>
-		<div class="login-courses" ng-controller='CoursesController'>
+		<div class="login-courses" >
 			<ul class='desktop-card-list'>
                 <li ng-repeat='course in user.student_courses |  limitTo: 8 track by $index' class='course-item selected'>
                     <span class='bg-slate' style='background:#40484B !important;'>
