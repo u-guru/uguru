@@ -149,19 +149,13 @@ angular.module('uguru.rest', [])
              }
              return Restangular.one('universities', uni_id).customGET('popular_courses');
          },
-        getCourses: function(uni_id) {
+        getCourses: function(uni_id, callback) {
             return $timeout(function() {
                  Restangular
                     .one('universities', uni_id).customGET('courses').then(function(response) {
-                        console.log("Success in getCourses()");
-                        source.courses = response.plain();
+                        // source.courses = response.plain();
+                        callback && callback(response.plain());
                         // $timeout(function() {
-                            $localstorage.set(uni_id + ' courses', source.courses);
-                            uTracker.track(tracker, {
-                                '$Downloaded_Courses': uni_id
-                            });
-                        // }, 1000);
-                        console.log("length of courses in callback: " + source.courses.length);
 
                     }, function(err) {
                         console.log("Error getting courses: " + err);

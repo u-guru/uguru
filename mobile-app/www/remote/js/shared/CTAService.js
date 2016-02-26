@@ -30,6 +30,7 @@ function CTAService($timeout) {
 
   var closeCTAManually = function(elem_id, cb) {
     var func = ctaCloseFuncDict[elem_id];
+
     func && func();
     cb && cb();
   }
@@ -46,7 +47,11 @@ function CTAService($timeout) {
         //show modal cta
         showModalCTA(modal_elem);
         // $timeout(function() { showModalCTA(modal_elem) });
-        show_callback && show_callback(modal_elem);
+
+        $timeout(function() {
+          console.log('calling callback');
+          show_callback && show_callback(modal_elem);
+        })
 
         var modalCloseIcon = getModalCloseIcon(modal_elem);
         if (modalCloseIcon) {

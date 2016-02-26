@@ -855,47 +855,28 @@ function ContentService(Category) {
 		}
 	}
 
-	var faq = [{
-		question: "Is this college ruled?",
-		popularity: 10,
-		answer: "Yes"
-	}, {
-		question: "Do Gurus edit my content anonymously?",
-		popularity: 10,
-		answer: "Yes - unless you choose Option 1 on pricing, where we leave it up to you guys to reveal identities"
-	}, {
-		question: "What payment forms do you support?",
-		popularity: 10,
-		answer: "We take all popular credit cards, domestically and internationally"
-	}, {
-		question: "Can other college applications see any of my uploaded content (i.e. college essays)?",
-		popularity: 10,
-		answer: "Absolutely not. We take privacy very seriously and can assure you that your data is safe with us."
-	}, {
-		question: "Can I request help anonymously?",
-		popularity: 10,
-		answer: "You remain anonymous by default. However, our signup still requires your full name and email."
-	}, {
-		question: "How can I increase my chances to be connected with a college Guru?",
-		popularity: 10,
-		answer: "Provide detailed description of what you need help in. If you are not sure, try our live customer support."
-	}, {
-		question: "I am not 100% happy with my experience - can I request a refund?",
-		popularity: 10,
-		answer: "Absolutely, we will dispute the situation from both sides."
-	}, {
-		question: "Can I request for a college Guru to rewrite parts of my essay?",
-		popularity: 10,
-		answer: "This is strictly against our policy. Any violation or attempts to do so will result in a de-activated account. We do not tolerate cheating, just like the university you are applying to."
-	}, {
-		question: "Do you sell my content to third party services?",
-		popularity: 10,
-		answer: "Absolutely not. We respect your privacy and have no future plans to share any sensitive content."
-	}, {
-		question: "I'm applying for many different special scholarships, including athletics, honors, and minorities. I need these to be able to afford college. Can I clarify this when I request help?",
-		popularity: 10,
-		answer: "Yes. For Gurus that have used the exact same key terms in their description, we'll immediately let them know and connect you immediately if they are available."
-	}];
+	var faq = [{question: "What is Uguru?", answer: "<dd><p>uGuru <strong> helps connect college students with peer tutors (Gurus)</strong> who have done well in the same classes in school.</p><p>We have all experienced that helpless feeling when you are stuck in the library by yourself the night before exams because you can’t find help outside the classroom.</p><p>Traditional tutoring is too expensive. Office hours are too packed. Why not make it easy for students to get help from each other?</p><p><strong>So we created a platform to make peer-to-peer help available and affordable.</strong></p></dd>"},
+		{question: "Who are you guys?", answer: "<p>We are a team of college students and graduates who are passionate about turning the unnecessary academic competition into collaborative learning opportunities, starting with Cal (Berkeley).</p>"},
+		{question: "How is uGuru different comparing to traditional private tutoring?", answer: "<p>Traditional private tutoring costs anywhere from $30 to $60 per hour, and that is ridiculously expensive for poor college students living on top ramen. Since it’s students helping each other, sessions on uGuru are super affordable ($15/hr on average).</p><p>uGuru also focuses on making urgent help available, especially when you are in a jam, and need to cram.</p><p>Most importantly, students are getting help directly from peer tutors that have done well in the same exact courses at Cal, instead of random “experts” who are not familiar with the students particular course.</p>"},
+		{question: "Who can sign up as a Guru?", answer: "<p>Everyone can sign up as a Guru, but you will need to prove yourself before you can start charging your students. You will give free sessions until you receive an average rating of 4.5 stars. Most good Gurus can do that in one shot and become an official Guru.</p>"},
+		{question: "What is the time commitment as a Guru?", answer: "<p>No time commitment required at all! Signing up to be a guru makes it possible for you to receive work, but you are not obligated to take a job if it doesn’t fit your schedule or if you’re cramming for your own midterm. You set your own schedule based upon which sessions you choose to accept.</p>"},
+		{question: "Which classes are offered?", answer: "<p>The class selection is based upon what courses gurus have signed up to tutor. The larger the course, the more likely a guru has signed up to tutor that course. Currently, the largest selection of gurus are available for lower division courses and for writing help.</p>"},
+		{question: "Why should I choose uGuru over other resource", answer: "<p>uGuru offers personal attention and time flexibility which are often not offered by other resources on campus. With uGuru, students wouldn’t have to worry about competing for the tutor’s time with other students.</p><p>uGuru tutors are also available at times that are convenient to the student, whether that be on the weekends or late in the night right before a midterm. Overall, it’s easier, and faster.</p>"},
+		{question: "What’s the price generally?", answer: "<p>Prices vary, but usually around $15 per hour. You name your own price when you request help, and Gurus also get to reply with their ideal price. We also provide recommended rates depending on the time of the semester (ex: a higher offer helps you attract Gurus during finals season).</p>"},
+		{question: "How do students and Gurus get matched up?", answer: "<p>Student sends out a Guru request for a class, specifying a preferred price, time, and location to meet.</p><p>We pin all the Gurus who registered for the class with the request. Based on their availability, Gurus could ignore or accept the request, with the option of changing the price to how much they’d like to get paid.</p><p>Student then choose from up to 3 Gurus based on their ratings, relevant attributes and experience.</p>"},
+		{question: "How do students and Gurus get matched up?", answer: "<ol><li>Student sends out a Guru request for a class, specifying a preferred price, time, and location to meet.</li><li>We pin all the Gurus who registered for the class with the request. Based on their availability, Gurus could ignore or accept the request, with the option of changing the price to how much they’d like to get paid.</li><li>Student then choose from up to 3 Gurus based on their ratings, relevant attributes and experience.</li></ol>"},
+		{question: "How do students and Gurus get matched up?", answer: "<p>After each payment through the platform, students give the Guru a review and a rating, which will be appear on the Guru’s profile to help other students compare their options.</p><p>Generally, Gurus with higher ratings and higher number of reviews are more popular and are compensated more per hour.</p>"},
+		{question: "How does a student reconnect with the same Guru again?", answer: "<p>Since our Gurus are awesome, it is common that students would like to have more sessions with the same Guru after the first time.</p><p>You can re-request from the same Guru, and if the Guru doesn’t respond, the request gets sent to other available Gurus.</p>"}
+		]
+
+
+
+
+
+
+
+
+
 
 	var timeline = {
 

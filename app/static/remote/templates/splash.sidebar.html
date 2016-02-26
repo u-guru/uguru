@@ -1,0 +1,153 @@
+<aside class="splash-sidebar-full bg-slate">
+    <nav class="splash-sidebar-menu" class-on-activate="null:inject.splash-sidebar-links a[class-on-activate]|activate" class-on-activate-delay="500" class-on-clear="fadeOut:animOut">
+        <div>
+            <header>
+                <a class="splash-logo" ng-click='page.sidebar.toggle()' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
+                <a class="splash-burger close splash-close cta-modal-close" ng-click='hideSideBar()' ng-include="::img_base + 'templates/svg/main/plus-circle.html'"></a>
+            </header>
+            <ul class="splash-sidebar-links">
+                <!-- @gabrielle can we plz discuss why we need this again?-->
+                <!-- <li>
+                    <a class="opacity-0" class-on-activate="bounceIn:anim" class-on-activate-delay="50" ng-click='page.sidebar.toggle()'>
+                        <span>Home</span>
+                    </a>
+                </li> -->
+                <li ng-if='user && user.id'>
+                    <a class='opacity-' class-on-activate="slideInLeft:anim" class-on-activate-delay="100" class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.team.show()'>
+                        <span class="user-icon guru" style="background-image: url('{{user.profile_url}}');"></span>
+                        <span>My dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="opacity-0" id='cta-box-team'  class-on-activate="slideInLeft:anim" class-on-activate-delay="150" class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.team.show()'>
+                        <span>Meet the team</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="opacity-0"  class-on-activate="slideInLeft:anim" class-on-activate-delay="200" id='cta-box-FAQ' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.faq.show()'>
+                        <span>FAQ</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="opacity-0"  class-on-activate="slideInLeft:anim" class-on-activate-delay="250" id='cta-box-pricing' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.pricing.show()'>
+                        <span>Pricing</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="300" id='cta-box-become-guru' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.become_guru.show()'>
+                        <span>Become a Guru</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="350" id='cta-box-intercom' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.support.show()'>
+                        <span>Support</span>
+                    </a>
+                </li>
+                <li ng-if='!user || !user.id'>
+                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="400" id='cta-box-intercom' class-on-clear="bounceOut:animOut" ng-click='sidebarGetStarted()'>
+                        <span>Get Started</span>
+                    </a>
+                </li>
+                <li ng-if='user && user.id'>
+                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="550" id='cta-box-intercom' class-on-clear="bounceOut:animOut" ng-click='logoutUser(true)'>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <button id='cta-box-account' class="btn-ghost-white" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="700" ng-click='!desktopMode && page.modals.signup.show()'><span>Login / Signup</button>
+            <ul class="splash-sidebar-platforms">
+                <li>
+                    <a class="" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1100" ng-include="::img_base + 'templates/svg/main/mobile.html'"></a>
+                </li>
+                <li>
+                    <a class="" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1200" ng-include="::img_base + 'templates/svg/main/desktop.html'"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class='splash-sidebar-content' ng-if='desktopMode'>
+        <div class="splash-sidebar-empty">
+            <div class="splash-sidebar-guru splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+            <div class="splash-sidebar-message">
+                <svg viewBox="0 0 1304 354">
+                    <path d="M2,39.9999987 C2,35.5817214 5.58280463,32 10.0088717,32 L622,32 L652,2 L682,32 L1293.99113,32 C1298.41431,32 1302,35.5800296 1302,39.9999987 L1302,344.000001 C1302,348.418279 1298.41351,352 1293.99365,352 L10.0063476,352 C5.58456393,352 2,348.41997 2,344.000001 L2,39.9999987 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.5" fill="#40484B"></path>
+                    <text font-family="Source Sans Pro" font-size="96" font-weight="600" line-spacing="126" fill="#FFFFFF" text-anchor="middle">
+                        <tspan x="652" y="163">Wanna see something cool?</tspan>
+                        <tspan x="652" y="289">Check it out.</tspan>
+                    </text>
+                </svg>
+            </div>
+        </div>
+        <ion-pane id='cta-modal-pricing' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/pricing.html'"> </ion-pane>
+
+        <ion-pane id='cta-modal-team' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/team.html'"> </ion-pane>
+
+        <ion-pane id='cta-modal-become-guru' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-if='user.university && user.university.id' ng-include="::img_base + BASE + 'templates/desktop.guru.onboarding.html'" ng-controller='DesktopBecomeGuruController'> </ion-pane>
+
+        <ion-pane id='cta-modal-account' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/desktop.login.html'" ng-controller='AccountPageController'> </ion-pane>
+
+        <ion-pane id='cta-modal-intercom' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-controller='AccountPageController'> </ion-pane>
+
+        <ion-pane id='cta-modal-FAQ' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index'>
+            <section id="faq">
+                <header>
+                    <a id='guru-profile-cta-close' class='cta-modal-close close-button p15xy flex-right-center' class-on-click='null:inject.splash-sidebar-full|clear'>
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                        </svg>
+                    </a>
+                    <h1>Frequently Asked Questions</h1>
+                    <div class="tab-bar slide">
+                        <div>
+                            <a class="active">All</a>
+                            <a>Uguru Basics</a>
+                            <a>My Account</a>
+                            <a>Payment</a>
+                            <a>Features</a>
+                            <hr/>
+                        </div>
+                    </div>
+                </header>
+                <div class="main">
+                    <dl>
+                        <dt>
+                            <span>This is a question.</span>
+                            <a class='close-button'>
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                </svg>
+                            </a>
+                        </dt>
+                        <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <span>This is another question.</span>
+                            <a class='close-button'>
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                </svg>
+                            </a>
+                        </dt>
+                        <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <span>This is a third question.</span>
+                            <a class='close-button'>
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                </svg>
+                            </a>
+                        </dt>
+                        <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+                    </dl>
+                </div>
+            </section>
+            <!-- <iframe class='absolute top-0 left-0 full-xy' src="https://uguru.me/faq/"> </iframe> -->
+        </ion-pane>
+    </section>
+</aside>
