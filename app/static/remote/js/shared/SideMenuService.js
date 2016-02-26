@@ -40,7 +40,7 @@ function SideMenuService(LoadingService, $timeout, CounterService, CTAService, $
           $ionicSlideBoxDelegate.update();
         });
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/team.html', {
+        $ionicModal.fromTemplateUrl(BASE + 'templates/team.modal.html', {
           scope: scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -54,7 +54,7 @@ function SideMenuService(LoadingService, $timeout, CounterService, CTAService, $
           scope.page.modals.become_guru = modal;
         });
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/pricing.html', {
+        $ionicModal.fromTemplateUrl(BASE + 'templates/pricing.modal.html', {
           scope: scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -94,7 +94,9 @@ function SideMenuService(LoadingService, $timeout, CounterService, CTAService, $
         $timeout(function() {
           var intercomMessengerDiv = intercomContainer.querySelector('#intercom-conversation');
           if (intercomMessengerDiv) {
-            intercomMessengerDiv.style.cssText = "width: 66% !important; ";
+            if (scope.desktopMode) {
+              intercomMessengerDiv.style.cssText = "width: 66% !important; ";
+            }
             $timeout(function() {
               intercomContainer.style.visibility = "visible";
             }, 2000);
