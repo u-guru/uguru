@@ -554,6 +554,20 @@ angular.module('uguru.util.controllers')
         ScrollService.scrollTo(amount, successFunction, scrollDuration, pageParentContainer, section_selector, scrollOffset, easeType);
     }
 
+    $scope.hideSideBar = function() {
+      var sidebarCTAModal = document.querySelector('#cta-modal-sidebar');
+      CTAService.closeCTAManually('#cta-box-sidebar', function() {
+        var menuLinks = document.querySelectorAll('ul.splash-sidebar-links li a');
+        for (var i =0 ; i < menuLinks.length; i++) {
+          var menuLinkIndexElem = menuLinks[i];
+          menuLinkIndexElem.style.opacity = 0;
+        }
+      })
+      $timeout(function() {
+        sidebarCTAModal && sidebarCTAModal.classList.remove('show');
+      }, 1000);
+    }
+
     $scope.onLoad = function() {
       // @gabrielle-note -- what
       // Default parameters
@@ -587,21 +601,26 @@ angular.module('uguru.util.controllers')
       $scope.universities = University.getTargetted().slice();
       $timeout(function() {
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
-        document.querySelector('.splash-hero-map').classList.add('activate');
-        initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+        // document.querySelector('.splash-hero-map').classList.add('activate');
+        // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+
+        // document.querySelector('.splash-hero-map').classList.add('activate');
+        // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
 
         // University.initUniversitiesSplash($scope);
         // autoscroll code
         // $scope.scrollToSection('#splash-projector');
         // document.querySelector('#projector-pull').classList.add('activate');
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
-        document.querySelector('.splash-hero-map').classList.add('activate');
-        initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+        // document.querySelector('.splash-hero-map').classList.add('activate');
+        // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+
 
 
         // $timeout(function() {
         //    showProjectorAtTop(4);
         // });
+
         // document.querySelector('.splash-hero-map').classList.add('activate');
         // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
         $timeout(function() {
@@ -618,7 +637,86 @@ angular.module('uguru.util.controllers')
       })
     }
 
-    var selectedUniversityMapStyles = [];
+    // should be university light color
+    var currentColor = "#FBB431";
+    var currentDarkColor = "#023360";
+
+    var selectedUniversityMapStyles = [
+        { featureType: 'all', elementType: 'labels', stylers: [
+            { visibility: 'off' }
+        ]},
+        {
+        	"featureType": "administrative",
+        	"elementType": "geometry.stroke",
+        	"stylers": [{
+        		"color": "#144b53"
+        	}, {
+        		"lightness": 14
+        	}, {
+        		"weight": 1.4
+        	}]
+        }, {
+        	"featureType": "landscape",
+        	"elementType": "all",
+        	"stylers": [{
+        		"color": "#08304b"
+        	}]
+        }, {
+        	"featureType": "poi",
+        	"elementType": "geometry",
+        	"stylers": [{
+        		"color": "#08304b"
+        	}, {
+        		"lightness": 5
+        	}]
+        }, {
+        	"featureType": "road.highway",
+        	"elementType": "geometry.fill",
+        	"stylers": [{
+        		"color": "#BACCD3"
+        	}]
+        }, {
+        	"featureType": "road.highway",
+        	"elementType": "geometry.stroke",
+        	"stylers": [{
+        		"color": "#0b434f"
+        	}, {
+        		"lightness": 25
+        	}]
+        }, {
+        	"featureType": "road.arterial",
+        	"elementType": "geometry.fill",
+        	"stylers": [{
+        		"color": "#BACCD3"
+        	}]
+        }, {
+        	"featureType": "road.arterial",
+        	"elementType": "geometry.stroke",
+        	"stylers": [{
+        		"color": "#0b3d51"
+        	}, {
+        		"lightness": 16
+        	}]
+        }, {
+        	"featureType": "road.local",
+        	"elementType": "geometry",
+        	"stylers": [{
+        		"color": "#BACCD3"
+        	}]
+        }, {
+        	"featureType": "transit",
+        	"elementType": "all",
+        	"stylers": [{
+        		"color": "#08304b"
+        	}]
+        }, {
+        	"featureType": "water",
+        	"elementType": "all",
+        	"stylers": [{
+        		"color": "#021019"
+        	}]
+        }
+    ];
 
     function initializeDynamicSelectedUniversityMap(university) {
       university.map = {
@@ -859,10 +957,6 @@ angular.module('uguru.util.controllers')
         ]},
         { featureType: 'landscape', elementType: 'geometry', stylers: [
             { color: '#51595c' },
-            { visibility: 'on' }
-        ]},
-        { featureType: 'water', elementType: 'geometry.stroke', stylers: [
-            { color: '#FFFFFF' },
             { visibility: 'on' }
         ]},
         { featureType: 'administrative', elementType: 'geometry.fill', stylers: [
@@ -1228,14 +1322,12 @@ angular.module('uguru.util.controllers')
       }
 
       function initCTASplash() {
-
+        $compile(document.querySelector('#cta-box-sidebar'))($scope);
         var ctaParentElemSelector = '#home-splash';
         CTAService.initSingleCTA("#cta-box-sidebar", ctaParentElemSelector, activateAtShow);
         function activateAtShow(modal_elem) {
-          var sidebarAside = modal_elem.querySelector('aside');
+          var sidebarAside = modal_elem.querySelector('.splash-sidebar-menu');
           sidebarAside && sidebarAside.classList.add('activate');
-          var asideElem = document.querySelector('.splash-sidebar-full')
-          console.log(asideElem);
         }
       }
 
