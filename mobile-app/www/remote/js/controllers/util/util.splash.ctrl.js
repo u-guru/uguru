@@ -645,8 +645,8 @@ angular.module('uguru.util.controllers')
       initSwipers(responsiveSwiperArgs, $scope.desktopMode);
       $scope.universities = University.getTargetted().slice();
       $timeout(function() {
-        // document.querySelector('#desktop-find-guru-button').classList.add('activate');
-        // document.querySelector('.splash-hero-map').classList.add('activate');
+        document.querySelector('#desktop-find-guru-button').classList.add('activate');
+        document.querySelector('.splash-hero-map').classList.add('activate');
         // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
 
         // document.querySelector('.splash-hero-map').classList.add('activate');

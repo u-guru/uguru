@@ -140,57 +140,61 @@
                 <!-- , null:inject.location[class-on-activate]|activate, null:inject.splash-hero-marker .marker-inside[class-on-activate]|activate -->
                 <!-- null:inject.splash-hero-marker .marker-inside|a -->
 
-                <div class="splash-hero-marker-1 splash-hero-marker opacity-0" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="fadeIn:anim, visible">
-                    <span class="marker-course opacity-0 hide">BIO 1A</span>
+                <div class="splash-hero-marker-1 splash-hero-marker opacity-0 bg-{{selectedCategory.hex_color}}" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="fadeIn:anim, visible, null:inject.splash-hero-marker-1 .marker-normal|a">
+                    <div class="marker-normal" activate-on-class="a" class-on-activate="move:keep" class-on-click="null:inject.splash-hero-marker-1|splash-marker-active:unique, null:inject#map-icon-2-translate|move">
+            			<svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
+            				<g fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+            					<path class="side" d="M92,176 L122,146 L171.991129,146 C177.518876,146 182,141.532461 182,136.002779 L182,11.9972208 C182,6.47590822 177.527924,2 172.009493,2 L142,2"></path>
+            					<path class="side" d="M92,176 L62,146 L12.0088711,146 C6.48112423,146 2,141.532461 2,136.002779 L2,11.9972208 C2,6.47590822 6.47207592,2 11.9905068,2 L42,2"></path>
+            					<path class="open" d="M12,2 L92,2"></path>
+            					<path class="open" d="M171,2 L91,2"></path>
+            				</g>
+            			</svg>
+            			<div class="marker-normal-content">
+            				<a class="marker-link" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></a>
+            				<a id="map-icon-2" class="marker-guru opacity-0">
+            					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+            					<span class="marker-guru-course">BIO 1A</span>
+            				</a>
+            			</div>
+            		</div>
+            		<div class="marker-expanded">
+            			<svg class="marker-expanded-window" width="262px" height="267px" viewBox="0 0 524 534">
+            				 <g fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+            					  <path class="sides" d="M262,532 L232,502 L22.0086422,502 C10.9581743,502 2,493.042549 2,481.993992 L2,22.006008 C2,10.9569949 10.9569966,2 21.9941986,2 L182,2"></path>
+            					  <path class="sides" d="M262,532 L292,502 L501.991358,502 C513.041826,502 522,493.042549 522,481.993992 L522,22.006008 C522,10.9569949 513.043003,2 502.005801,2 L342,2"></path>
+            				 </g>
+            			</svg>
+            			<div class="marker-expanded-content">
+            				<div class="marker-expanded-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></div>
+            				<div class="marker-location">
+            					<h1>{{selectedUniversity.place_results[0].name}}</h1>
+            					<h4>open now &middot; 2.4 miles</h4>
+            				</div>
+            				<a class="marker-guru">
+            					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+            					<div>
+            						<h1>Gabrielle W</h1>
+            						<h3>Active 10 min ago</h3>
+            					</div>
+                                <svg viewBox="0 0 100 100">
+        							<path d="M32,86 L68,50 L32,14"></path>
+        						</svg>
+            				</a>
+            				<div class="marker-message">
+            					<p>Hey there,<br/>I can tutor you in any bio class. We’ll get you to an A in no time!</p>
+            				</div>
+            			</div>
+            		</div>
+            		<div class="marker-circle"></div>
+                    <!-- <span class="marker-course opacity-0 hide">BIO 1A</span>
                     <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="fadeIn:anim" class-on-activate-delay="5000">
-                        <svg class="map-tooltip-window bottom left" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
-                            <path class="bg" d="M2,2 L522,2 L522,542 L122,542 L92,572 L62,542 L2,542 L2,2 Z" fill="#40484B"></path>
-                            <g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M2,542 L62,542 L92,572 L122,542"></path>
-                                <line class="left" x1="2" y1="542" x2="2" y2="2"/>
-                                <line class="bottom" x1="122" y1="542" x2="522" y2="542"/>
-                                <line class="right" x1="522" y1="542" x2="522" y2="2"/>
-                                <line class="top" x1="2" y1="2" x2="522" y2="2"/>
-                            </g>
-                        </svg>
                         <span id="map-icon-2" class="user-icon map-guru-icon" activate-on-class="a" class-on-activate="active:keep" class-on-activate-delay="5500" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"><span ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span></span>
                         <div class="map-tooltip-text top left">
                             <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, null:inject.splash-device-profile|a">
                                 <div>
                                     <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
                                     <h2>Active 10 min ago</h2>
-                                    <ul class="rating-stars" data-rating="4" data-half="true">
-                                        <li>
-                                            <svg viewBox="0 0 100 100">
-                                                <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-                                                <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-                                            </svg>
-                                        </li>
-                                        <li>
-                                            <svg viewBox="0 0 100 100">
-                                                <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-                                                <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-                                            </svg>
-                                        </li>
-                                        <li>
-                                            <svg viewBox="0 0 100 100">
-                                                <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-                                                <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-                                            </svg>
-                                        </li>
-                                        <li>
-                                            <svg viewBox="0 0 100 100">
-                                                <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-                                                <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-                                            </svg>
-                                        </li>
-                                        <li>
-                                            <svg viewBox="0 0 100 100">
-                                                <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-                                                <polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-                                            </svg>
-                                        </li>
-                                    </ul>
                                 </div>
                                 <div ng-include="img_base + 'templates/svg/main/right.html'"></div>
                             </div>
@@ -203,17 +207,13 @@
                                 </div>
                                 <div ng-include="img_base + 'templates/svg/wwf/coffee.html'"></div>
                             </div>
-                            <div class="map-tooltip-message">
-                                <p>Hey there,</p>
-                                <p>I can tutor you in any bio class. We'll get you to an A in no time!</p>
-                            </div>
                         </div>
                     </div>
 					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} bottom left" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="4200"></div>
-                    <div class="location-text">{{selectedUniversity.place_results[0].name}}</div>
+                    <div class="location-text">{{selectedUniversity.place_results[0].name}}</div> -->
 				</div>
 
-				<div class="splash-hero-marker-2 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 20%; left: 10%;">
+				<!-- <div class="splash-hero-marker-2 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 20%; left: 10%;">
                     <span class="marker-course opacity-0 hide">MCB 11</span>
                     <div class="marker-inside opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="5000">
                         <svg class="map-tooltip-window bottom left" width="262px" height="287px" viewBox="0 0 524 574" tabindex="1">
@@ -576,7 +576,7 @@
                         </div>
                     </div>
                     <span class="marker-course opacity-0 hide">MCB 41</span>
-                </div>
+                </div> -->
 			</div>
 			<div class="splash-device splash-device-iphone magictime opacity-0" class-on-load="vanishIn:anim" activate-on-class="a" class-on-activate="active:inject.splash-device-search-inside|a, b:inject.splash-device-svg|a">
 				<svg class="splash-device-svg" activate-on-class="a" class-on-activate="active:keep" viewBox="0 0 319 652">
@@ -587,32 +587,50 @@
 				<div class="splash-device-profile opacity-0" activate-on-class="a" class-on-activate="fadeIn:anim, high-z-index:keep" ng-include="img_base + 'templates/profile.public.photo.html'"></div>
 				<div class="splash-device-content" activate-on-class="a" class-on-activate="fadeOut:animOut">
 					<div class="splash-device-search">
-						<div class="splash-device-search-inside opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim, null:inject.splash-device-adlib|a, null:inject.splash-device-search-inside h1|a, null:inject.splash-device-search-inside p|a, null:inject.splash-device-search-gurus li|a, null:inject.splash-device-search-courses li|a, null:inject.splash-device-search-gurus .user-icon|activate, null:inject.splash-device-found|a, null:inject.map-guru-icon|a">
+						<div class="splash-device-search-inside opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim, null:inject.splash-device-adlib|a, null:inject.splash-device-search-inside h1|a, null:inject.splash-device-search-inside p|a, null:inject.splash-device-search-gurus li|a, null:inject.splash-device-search-courses li|a, null:inject.splash-device-search-gurus .marker-guru|activate, null:inject.splash-device-found|a, null:inject.map-guru-icon|a">
                             <div class="splash-device-found" activate-on-class="a" class-on-activate="active:keep" class-on-activate-delay="6000">
                                 <h1 class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim">6</h1>
                                 <p class="opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim">Gurus Found</p>
                             </div>
                             <ul class="splash-device-search-gurus">
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="600">
-                                    <span class="user-icon" translate-on-class-delay="3000" activate-on-class-delay="5500" translate-to-elem="#map-icon-1" translate-on-class="activate" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
+                                    <a class="marker-guru bg-{{selectedCategory.hex_color}}" translate-on-class-delay="3000" activate-on-class-delay="5500" translate-to-elem="#map-icon-1" translate-on-class="activate">
+                    					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                    					<span class="marker-guru-course">BIO 1A</span>
+                    				</a>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1200">
-                                    <span class="user-icon" activate-on-class-delay="5500" translate-to-elem="#map-icon-2" translate-on-class="activate" translate-on-class-delay="2500" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
+                                    <a id="map-icon-2-translate" class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-2" translate-on-class="activate" translate-on-class-delay="2500">
+                    					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                    					<span class="marker-guru-course">BIO 1A</span>
+                    				</a>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1800">
-                                    <span class="user-icon" activate-on-class-delay="5500" translate-to-elem="#map-icon-3" translate-on-class="activate" translate-on-class-delay="2000" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
+                                    <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-3" translate-on-class="activate" translate-on-class-delay="2000">
+                    					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                    					<span class="marker-guru-course">BIO 1A</span>
+                    				</a>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1500">
-                                    <span class="user-icon" activate-on-class-delay="5500" translate-to-elem="#map-icon-4" translate-on-class-delay="1500" translate-on-class="activate" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
+                                    <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-4" translate-on-class-delay="1500" translate-on-class="activate">
+                    					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                    					<span class="marker-guru-course">BIO 1A</span>
+                    				</a>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="900">
-                                    <span class="user-icon" activate-on-class-delay="5500" translate-to-elem="#map-icon-5" translate-on-class-delay="1000" translate-on-class="activate" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
+                                    <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-5" translate-on-class-delay="1000" translate-on-class="activate">
+                    					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                    					<span class="marker-guru-course">BIO 1A</span>
+                    				</a>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="2100">
-                                    <span class="user-icon" activate-on-class-delay="5500" translate-to-elem="#map-icon-6" translate-on-class-delay="500" translate-on-class="activate" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
+                                    <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-6" translate-on-class-delay="500" translate-on-class="activate">
+                    					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                    					<span class="marker-guru-course">BIO 1A</span>
+                    				</a>
                                 </li>
                             </ul>
-                            <ul class="splash-device-search-courses">
+                            <!-- <ul class="splash-device-search-courses hide">
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="900">
                                     <span class="bg-{{selectedCategory.hex_color}}">BIO 1A</span>
                                 </li>
@@ -631,7 +649,7 @@
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1200">
                                     <span class="bg-{{selectedCategory.hex_color}}">MCB 41</span>
                                 </li>
-                            </ul>
+                            </ul> -->
 						</div>
 					</div>
 					<svg class="coach-click opacity-0" viewBox="0 0 212 75">
