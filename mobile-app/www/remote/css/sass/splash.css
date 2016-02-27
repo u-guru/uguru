@@ -2610,7 +2610,61 @@
 
 .splash-landing > section.splash-hero .splash-device .splash-device-profile {
   position: absolute;
-  background: #e6389b;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div {
+  width: 100%;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div a {
+  width: 50%;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div a:nth-child(1).active ~ hr {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div a:nth-child(2).active ~ hr {
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div a:nth-child(1):hover ~ hr, .splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div a:nth-child(1):focus ~ hr {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div a:nth-child(2):hover ~ hr, .splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div a:nth-child(2):focus ~ hr {
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div hr {
+  width: 50%;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .pf-aside .pf-rating {
+  margin-top: 0 !important;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .pf-portfolio-items .pf-portfolio-item .pf-portfolio-img {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 150px;
 }
 
 .splash-landing > section.splash-hero .splash-device .splash-device-content {
@@ -3580,6 +3634,10 @@
   height: 100%;
 }
 
+.splash-landing > section#splash-projector .main-swipers-container .swiper-slide {
+  overflow: visible !important;
+}
+
 .splash-landing > section#splash-projector .header-swiper-front {
   position: absolute;
   top: 50%;
@@ -3604,6 +3662,23 @@
 
 .splash-landing > section#splash-projector .projector-line.bottom {
   bottom: -196px;
+}
+
+.splash-landing > section#splash-projector .projector-handle {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  margin-left: -30.5px;
+}
+
+.splash-landing > section#splash-projector .projector-handle:not(.active) {
+  filter: alpha(opacity=0);
+  opacity: 0;
 }
 
 .splash-landing > section#splash-projector .swiper-front-gallery-thumbs {
@@ -4688,6 +4763,7 @@
 
 .splash-landing > section .splash-school-search {
   height: calc(100%) !important;
+  overflow: hidden !important;
 }
 
 .splash-landing > section .splash-school-search .splash-map {

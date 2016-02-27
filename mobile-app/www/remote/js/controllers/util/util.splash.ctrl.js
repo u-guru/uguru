@@ -612,7 +612,7 @@ angular.module('uguru.util.controllers')
     
     // should be university light color
     var currentColor = "#FBB431";
-    var currentDarkColor = "#023360";
+    var currentDarkColor = "#652d8a";
 
     var selectedUniversityMapStyles = [
         { featureType: 'all', elementType: 'labels', stylers: [ 
@@ -622,7 +622,7 @@ angular.module('uguru.util.controllers')
         	"featureType": "administrative",
         	"elementType": "geometry.stroke",
         	"stylers": [{
-        		"color": "#144b53"
+        		"color": currentDarkColor
         	}, {
         		"lightness": 14
         	}, {
@@ -632,61 +632,83 @@ angular.module('uguru.util.controllers')
         	"featureType": "landscape",
         	"elementType": "all",
         	"stylers": [{
-        		"color": "#08304b"
+        		"color": currentDarkColor
         	}]
         }, {
         	"featureType": "poi",
         	"elementType": "geometry",
         	"stylers": [{
-        		"color": "#08304b"
+        		"color": currentDarkColor
         	}, {
-        		"lightness": 5
+        		"lightness": 10
+        	}]
+        }, {
+        	"featureType": "poi.school",
+        	"elementType": "geometry",
+        	"stylers": [{
+        		"color": currentDarkColor
+        	}, {
+        		"lightness": 15
         	}]
         }, {
         	"featureType": "road.highway",
         	"elementType": "geometry.fill",
         	"stylers": [{
-        		"color": "#BACCD3"
+        		"color": currentDarkColor
+        	}, {
+        		"lightness": 80
         	}]
         }, {
         	"featureType": "road.highway",
         	"elementType": "geometry.stroke",
         	"stylers": [{
-        		"color": "#0b434f"
+        		"color": currentDarkColor
         	}, {
-        		"lightness": 25
+        		"lightness": 50
         	}]
         }, {
         	"featureType": "road.arterial",
         	"elementType": "geometry.fill",
         	"stylers": [{
-        		"color": "#BACCD3"
+        		"color": currentDarkColor
+        	}, {
+        		"lightness": 80
         	}]
         }, {
         	"featureType": "road.arterial",
         	"elementType": "geometry.stroke",
         	"stylers": [{
-        		"color": "#0b3d51"
+        		"color": currentDarkColor
         	}, {
-        		"lightness": 16
+        		"lightness": 50
         	}]
         }, {
         	"featureType": "road.local",
-        	"elementType": "geometry",
+        	"elementType": "geometry.fill",
         	"stylers": [{
-        		"color": "#BACCD3"
+        		"color": currentDarkColor
+        	}, {
+        		"lightness": 80
+        	}]
+        }, {
+        	"featureType": "road.local",
+        	"elementType": "geometry.stroke",
+            "stylers": [{
+        		"color": currentDarkColor
+        	}, {
+        		"lightness": 50
         	}]
         }, {
         	"featureType": "transit",
         	"elementType": "all",
         	"stylers": [{
-        		"color": "#08304b"
+        		"color": currentDarkColor
         	}]
         }, {
         	"featureType": "water",
         	"elementType": "all",
         	"stylers": [{
-        		"color": "#021019"
+        		"color": currentDarkColor
         	}]
         }
     ];

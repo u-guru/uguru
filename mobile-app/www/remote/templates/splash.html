@@ -119,7 +119,8 @@
                     <ui-gmap-markers ng-if='selectedUniversity.map.markers' models="selectedUniversity.map.markers" coords="'coords'" options="'options'" icon="'options.icon'" fit="true">
                     </ui-gmap-markers>
                 </ui-gmap-google-map>
-                <!-- <div style="opacity: .5; background: #023360; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 10;"></div> -->
+                <div class="absolute top-0 left-0 full-xy bg-slate" style="opacity: .5; z-index: 10;"></div>
+                <div class="absolute top-0 left-0 full-xy" style="background: #023360; opacity: .4; z-index: 10;"></div>
                 <!-- <div class="splash-scene-map-img" style="background-image: url('{{selectedUniversity.static_map_url}}')"></div> -->
                 <!-- zoom="requestForm.map.zoom"
                     pan="requestForm.map.pan"
@@ -151,7 +152,7 @@
                         </svg>
                         <span id="map-icon-2" class="user-icon map-guru-icon" activate-on-class="a" class-on-activate="active:keep" class-on-activate-delay="5500" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"><span ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span></span>
                         <div class="map-tooltip-text top left">
-                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">
+                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, null:inject.splash-device-profile|a">
                                 <div>
                                     <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
                                     <h2>Active 10 min ago</h2>
@@ -224,7 +225,7 @@
                         </svg>
                         <span id="map-icon-1" class="user-icon map-guru-icon" activate-on-class="a" class-on-activate="active:keep" class-on-activate-delay="5500" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"><span ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span></span>
                         <div class="map-tooltip-text top left">
-                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">
+                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, null:inject.splash-device-profile|a">
                                 <div>
                                     <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
                                     <h2>Active 10 min ago</h2>
@@ -298,7 +299,7 @@
                         </svg>
                         <span id="map-icon-5" class="user-icon map-guru-icon" activate-on-class="a" class-on-activate="active:keep" class-on-activate-delay="5500" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"><span ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span></span>
                         <div class="map-tooltip-text bottom left">
-                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">
+                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, null:inject.splash-device-profile|a">
                                 <div>
                                     <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
                                     <h2>Active 10 min ago</h2>
@@ -370,7 +371,7 @@
                         </svg>
                         <span id="map-icon-4" class="user-icon map-guru-icon" activate-on-class="a" class-on-activate="active:keep" class-on-activate-delay="5500" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"><span ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span></span>
                         <div class="map-tooltip-text top right">
-                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">
+                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, null:inject.splash-device-profile|a">
                                 <div>
                                     <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
                                     <h2>Active 10 min ago</h2>
@@ -444,7 +445,7 @@
                         </svg>
                         <span id="map-icon-6" class="user-icon map-guru-icon" activate-on-class="a" class-on-activate="active:keep" class-on-activate-delay="5500" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"><span ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span></span>
                         <div class="map-tooltip-text bottom right">
-                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">
+                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, null:inject.splash-device-profile|a">
                                 <div>
                                     <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
                                     <h2>Active 10 min ago</h2>
@@ -517,7 +518,7 @@
                         </svg>
                         <span id="map-icon-3" class="user-icon map-guru-icon" activate-on-class="a" class-on-activate="active:keep" class-on-activate-delay="5500" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"><span ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span></span>
                         <div class="map-tooltip-text bottom left">
-                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, a:inject.splash-device-profile|fadeIn">
+                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, null:inject.splash-device-profile|a">
                                 <div>
                                     <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
                                     <h2>Active 10 min ago</h2>
@@ -580,9 +581,7 @@
 						fill="none" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3"></path>
 					<circle stroke="#F0E0D0" stroke-width="3" fill="none" cx="159" cy="611" r="25"></circle>
 				</svg>
-				<div class="splash-device-profile opacity-0 animated">
-					<strong>.splash-device-profile</strong>
-				</div>
+				<div class="splash-device-profile opacity-0" activate-on-class="a" class-on-activate="fadeIn:anim, high-z-index:keep" ng-include="img_base + 'templates/profile.public.photo.html'"></div>
 				<div class="splash-device-content" activate-on-class="a" class-on-activate="fadeOut:animOut">
 					<div class="splash-device-search">
 						<div class="splash-device-search-inside opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim, null:inject.splash-device-adlib|a, null:inject.splash-device-search-inside h1|a, null:inject.splash-device-search-inside p|a, null:inject.splash-device-search-gurus li|a, null:inject.splash-device-search-courses li|a, null:inject.splash-device-search-gurus .user-icon|activate, null:inject.splash-device-found|a, null:inject.map-guru-icon|a">
@@ -817,7 +816,8 @@
             <div class="splash-hero-progress progress white opacity-0" activate-on-class="a" class-on-activate="active">
                 <span style="width: 15%;"></span>
             </div>
-            <div id="next-steps-container" class="active">
+            <!-- .active -->
+            <div id="next-steps-container" class="">
             	<div id="next-steps">
             		<div class="next-device">
             			<svg class="splash-device-svg" viewBox="0 0 319 652">
@@ -920,6 +920,9 @@
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>
+                                <svg class="projector-handle" width="61px" height="24px" viewBox="0 0 122 48">
+                                    <path d="M116.813759,2 L119.407837,16.1511345 C121.400182,27.0197169 114.265024,37.7105153 103.431627,39.9081948 C103.431627,39.9081948 77.5373297,46 60.9999232,46 C44.4625167,46 18.5495835,39.9045365 18.5495835,39.9045365 C7.74411375,37.6544772 0.597741646,27.0302069 2.59200971,16.1511345 L5.18608711,2" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
                                 <div class="projector-top"></div>
 
                                 <div class="projector-content relative" class-on-clear="fadeOut:animOut" class-on-clear-delay="650" ng-include="img_base + BASE + 'templates/splash.university.html'">
@@ -930,6 +933,9 @@
                             <div id='slide-2' class="swiper-slide" activate-on-class="activate" class-on-activate="null:inject#how-it-works|activate">
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+                                </svg>
+                                <svg class="projector-handle" width="61px" height="24px" viewBox="0 0 122 48">
+                                    <path d="M116.813759,2 L119.407837,16.1511345 C121.400182,27.0197169 114.265024,37.7105153 103.431627,39.9081948 C103.431627,39.9081948 77.5373297,46 60.9999232,46 C44.4625167,46 18.5495835,39.9045365 18.5495835,39.9045365 C7.74411375,37.6544772 0.597741646,27.0302069 2.59200971,16.1511345 L5.18608711,2" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
                                 </svg>
                                 <div class="projector-top"></div>
                                 <div class="projector-content">
@@ -1169,6 +1175,9 @@
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>
+                                <svg class="projector-handle" width="61px" height="24px" viewBox="0 0 122 48">
+                                    <path d="M116.813759,2 L119.407837,16.1511345 C121.400182,27.0197169 114.265024,37.7105153 103.431627,39.9081948 C103.431627,39.9081948 77.5373297,46 60.9999232,46 C44.4625167,46 18.5495835,39.9045365 18.5495835,39.9045365 C7.74411375,37.6544772 0.597741646,27.0302069 2.59200971,16.1511345 L5.18608711,2" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
                                 <div class="projector-top"></div>
                                 <div class="projector-content relative">
                                     <div id='become-guru' class='hide bg-subheader-nav-content main splash-postit' class-on-activate="show:inject#become-guru [class-on-activate]|activate">
@@ -1406,6 +1415,9 @@
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>
+                                <svg class="projector-handle" width="61px" height="24px" viewBox="0 0 122 48">
+                                    <path d="M116.813759,2 L119.407837,16.1511345 C121.400182,27.0197169 114.265024,37.7105153 103.431627,39.9081948 C103.431627,39.9081948 77.5373297,46 60.9999232,46 C44.4625167,46 18.5495835,39.9045365 18.5495835,39.9045365 C7.74411375,37.6544772 0.597741646,27.0302069 2.59200971,16.1511345 L5.18608711,2" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
                                 <div class="projector-top"></div>
                                 <div class="projector-content relative">
                                     <div class='relative'>
@@ -1422,6 +1434,9 @@
                             <div id='slide-5' class="swiper-slide swiper-slide-gallery" activate-on-class="swiper-slide-active" class-on-activate="pulse:anim:keep:inject.slide-signup-header|activate" class-on-activate-delay="1000">
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+                                </svg>
+                                <svg class="projector-handle" width="61px" height="24px" viewBox="0 0 122 48">
+                                    <path d="M116.813759,2 L119.407837,16.1511345 C121.400182,27.0197169 114.265024,37.7105153 103.431627,39.9081948 C103.431627,39.9081948 77.5373297,46 60.9999232,46 C44.4625167,46 18.5495835,39.9045365 18.5495835,39.9045365 C7.74411375,37.6544772 0.597741646,27.0302069 2.59200971,16.1511345 L5.18608711,2" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
                                 </svg>
                                 <div class="projector-top"></div>
                                 <div id="splash-signup" class="projector-content" ng-controller='AccountPageController'>
@@ -1623,6 +1638,9 @@
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>
+                                <svg class="projector-handle" width="61px" height="24px" viewBox="0 0 122 48">
+                                    <path d="M116.813759,2 L119.407837,16.1511345 C121.400182,27.0197169 114.265024,37.7105153 103.431627,39.9081948 C103.431627,39.9081948 77.5373297,46 60.9999232,46 C44.4625167,46 18.5495835,39.9045365 18.5495835,39.9045365 C7.74411375,37.6544772 0.597741646,27.0302069 2.59200971,16.1511345 L5.18608711,2" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
                                 <div class="projector-top"></div>
                                 <div id="splash-access" class="projector-content">
                             		<div class="splash-projector-guru">
@@ -1660,6 +1678,9 @@
                             <div id='slide-7' class="swiper-slide swiper-slide-gallery" activate-on-class="swiper-slide-active" class-on-activate="pulse:anim:keep:inject.slide-courses-container|activate" class-on-activate-delay="1000">
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+                                </svg>
+                                <svg class="projector-handle" width="61px" height="24px" viewBox="0 0 122 48">
+                                    <path d="M116.813759,2 L119.407837,16.1511345 C121.400182,27.0197169 114.265024,37.7105153 103.431627,39.9081948 C103.431627,39.9081948 77.5373297,46 60.9999232,46 C44.4625167,46 18.5495835,39.9045365 18.5495835,39.9045365 C7.74411375,37.6544772 0.597741646,27.0302069 2.59200971,16.1511345 L5.18608711,2" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
                                 </svg>
                                 <div class="projector-top"></div>
                                 <div id="splash-courses" class="projector-content" ng-controller="CoursesController">
