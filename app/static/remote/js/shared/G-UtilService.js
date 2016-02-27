@@ -80,9 +80,7 @@ function GUtilService($timeout) {
               if (!resultPlace.photos || !resultPlace.photos.length) {
                 continue;
               }
-              if (resultPlace.opening_hours) {
-                console.log(resultPlace.name, resultPlace.opening_hours, '\n', resultPlace);
-              }
+
               resultPlace.svg_path = getMapIconPathOnly(resultPlace.types[0], scope.selectedUniversity.school_color_dark, '#FFFFFF', 5);
               resultPlace.photo_url = resultPlace.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
               scope.selectedUniversity.place_results.push(resultPlace);

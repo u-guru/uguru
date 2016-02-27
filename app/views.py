@@ -1159,7 +1159,7 @@ def app_route():
         return redirect('https://uguru.me/static/remote/index.html?version=' + str(version) + str(02323))
     else:
         print "aww im local"
-        return redirect('/static/remote/index.html')
+        return redirect('http://uguru-rest-test.herokuapp.com/static/remote/index.html?version=' + str(version) + str(02323))
         # return redirect('http://localhost:8100/')
 
 @app.route('/localhost/')

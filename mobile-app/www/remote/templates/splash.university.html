@@ -6,7 +6,7 @@
         <ui-gmap-google-map id="splash-google-map" class='opacity-0 full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' bounds="mapBounds" bounces="map.bounds" events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
             <ui-gmap-markers models="map.markers" coords="'self'" options="'options'" icon="'icon'" clusterOptions="map.clusterOptions" clusterEvents="map.clusterEvents" doCluster="true">
             </ui-gmap-markers>
-            <ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
+            <ui-gmap-window ng-if='false' closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
                 <div class='university-label'>
                     <a id='university-info-window-close-button' class='absolute top-0 right-0 txt-white high-z-index cta-modal-close close-button m05xy' ng-click='map.window.close()'>
                         <svg viewBox="0 0 100 100" style='height:20px; width:20px;' class='opacity-50'>
@@ -60,7 +60,7 @@
             </form>
         </div>
         <ul class="splash-school-desktop opacity-0" class-on-activate="zoomInDown:anim" class-on-activate-delay="3000">
-            <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' ng-click='selectUniversityFromMap(university)'>
+            <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' ng-click='selectUniversityFromMap(university, true)'>
                 <div class="school-card"> <!-- ng-class="{'activate':$index < 5}" class-on-activate="magictime:anim, boingInUp:anim, null:inject.school-card-icon-container|a" -->
                     <svg class="rect" viewBox="0 0 300 200">
                         <rect x="0" y="0" width="300" height="200" fill="none"></rect>
