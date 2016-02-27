@@ -61,15 +61,14 @@
         </div>
         <ul class="splash-school-desktop">
             <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' ng-click='selectUniversityFromMap(university)'>
-                <div class="school-card opacity-0" class-on-activate="magictime:anim:keep, boingInUp:anim:keep" class-on-activate-delay="{{2000 + $index*200}}">
+                <div class="school-card opacity-0" class-on-activate="magictime:anim:keep, boingInUp:anim:keep, null:inject.school-card-icon-container|a" class-on-activate-delay="{{2000 + $index*200}}">
                     <svg class="rect" viewBox="0 0 300 200">
                         <rect x="0" y="0" width="300" height="200" fill="none"></rect>
-                    </svg>
-                    <!--@gabrielle dont need this here actually -->
-                    <!-- <input type="checkbox"/> -->
+                    </svg> 
+                    <input type="radio" name="school-card" />
                     <div class="school-card-inside">
                         <div class="school-card-top" style="background-color: {{university.school_color_one}};">
-                            <div class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceIn" anim-first-enter-down-delay="{{[2200, 2400, 2600, 2800, 3000][$index]}}">
+                            <div class="school-card-icon-container">
                                 <span class="school-card-icon" style="background-image: url({{university.svg_url || university.seal_url || university.logo_url}}); border-color: {{university.school_color_one}};">
                                     <span class="school-card-icon-bg" style="background-color: {{university.school_color_one}};"></span>
                                     <span class="school-card-state" ng-include="img_base + 'templates/svg/main/check.html'"></span>
@@ -92,19 +91,16 @@
         </ul>
     </div>
     <div class="splash-map-stats" ng-controller="AddUniversityCtrl">
-        <div class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="2000">
-            <h1>By the<br/>numbers</h1>
-        </div>
         <ul>
             <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="2200">
                 <h4><span>Supported</span><span>Universities</span></h4>
                 <h2 id='num-university-counter'>0</h2>
             </li>
-            <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="2400">
+            <!-- <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="2400">
                 <h4><span>Available</span><span>Courses</span></h4>
                 <h2 id='num-course-counter'>0</h2>
-            </li>
-            <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate="2600">
+            </li> -->
+            <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="2400">
                 <h4><span>Student</span><span>Gurus</span></h4>
                 <h2 id='num-guru-counter'>0</h2>
             </li>

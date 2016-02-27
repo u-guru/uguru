@@ -200,7 +200,7 @@
 			font-size: 22px!important;
 		}
 	}
-	
+
 	// NEXT STEPS
 	#next-steps-container {
 		@include flex;
@@ -678,7 +678,10 @@
 			}
 			button {
 				display: block;
-				margin: 15px auto 7px;
+				margin: 15px auto;
+			}
+			.school-id-card {
+				margin: 15px auto;
 			}
 			.splash-sidebar-links {
 				li {

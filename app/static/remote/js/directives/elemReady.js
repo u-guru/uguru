@@ -116,7 +116,9 @@ angular.module('uguru.directives')
         return element.attr('class');
       },function() {
         if (element[0].classList.contains('activate')) {
+
           element[0].classList.remove('activate')
+
           var delay = attr.classOnActivateDelay || 0;
           var classes = attr.classOnActivate.split(", ");
           $timeout(function() {
@@ -187,7 +189,6 @@ angular.module('uguru.directives')
         var classTriggers = attr.activateOnClass.split(', ');
         var classTriggerDict = {};
         for (var i = 0; i < classTriggers.length; i++) {
-          var classTriggers
           var indexClassTrigger = classTriggers[i];
           if (element[0].classList.contains(indexClassTrigger)) {
             classTriggerDict[indexClassTrigger] = true;
@@ -218,7 +219,9 @@ angular.module('uguru.directives')
           return element.attr('class');
         },function(value) {
             var classNames = element.attr('class').split(' ');
-              if ((classNames.indexOf('activate') > -1) && attr.translateToElem && attr.translateOnClass === 'activate') {
+
+              if ((classNames.indexOf('activate') > -1 || classNames.indexOf(attr.translateOnClass) > -1) && attr.translateToElem) {
+                element[0].classList.remove(attr.translateToElem);
                 var elementBounding = element[0].getBoundingClientRect();
                 var elemCoords = {height: elementBounding.height, width: elementBounding.width, top: elementBounding.top, left: elementBounding.left};
                 var translateElem = attr.translateToElem;

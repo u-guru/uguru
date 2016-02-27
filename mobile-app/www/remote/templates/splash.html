@@ -1,21 +1,24 @@
 <div class='relative' style='height:calc(100%); width:calc(100%); overflow:hidden !important;' eval-on-load="onLoad()">
 	<!-- @gabrielle, do not not remove  init-wp-parent -->
     <main id='home-splash' init-wp-parent class='splash-landing new hs-view full-xy' style="height:calc(200% !important); width:calc(100%) !important;" bind-wp="s1_top">
-        <ion-pane style='z-index:1001;' id='cta-modal-sidebar' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
+        <ion-pane style='z-index:1001;' id='cta-modal-sidebar' class='full-xy hide-display cta-modal bg-charcoal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
         <a ng-if='page.dropdowns.category.active || page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()' style='z-index:5'> </a>
 		<header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
-			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'"></a>
+			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ></a>
 			<div class="right">
-				<a name='sidebar' class="splash-burger" id='cta-box-sidebar'>
+				<a name='sidebar' class="splash-burger" id='cta-box-sidebar' >
                     <!-- @gabrielle whats this? If you dont know delete below-->
                     <!-- bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut" -->
-					<svg viewBox="0 0 100 100">
+					<svg viewBox="0 0 100 100" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" class-on-activate-delay="600">
 						<circle cx="50" cy="50" r="36"></circle>
 						<path d="M31,35.5 L69,35.5"></path>
 						<path d="M31,50.5 L69,50.5"></path>
 						<path d="M31,65.5 L69,65.5"></path>
 					</svg>
 				</a>
+                <a name="back-to-scene-one" id='splash-up-link' class='full-x p10xy flex-wrap-center opacity-0 left-0 absolute' bind-wp="s2_50_top" bind-wp-class="activate, clear" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut, opacity-0, invisible" class-on-activate="fadeInDown:anim, visible" class-on-activate-delay="1250" ng-show='projectorPullActivated' style="width:100% !important; top:10px;" ng-click='closeSingleProjector()'>
+                    <i style='font-size:100%; left:10px;' class='icon ion-chevron-up'> </i>
+                </a>
 			</div>
 		</header>
         <div class="school-card opacity-0 absolute hide" class-on-activate="show" id='global-school-card' ng-if='selectedUniversity && selectedUniversity.id'>
@@ -45,8 +48,8 @@
                 </div>
             </div>
         </div>
-		<section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear">
-			<div class="splash-hero-nav desktop opacity-0 high-z-index" class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
+		<section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" >
+			<div class="splash-hero-nav desktop opacity-0 high-z-index" style='z-index:1000;' class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
                 <div>
                     <a name='category'  class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()'>
                         <span>{{selectedCategory.name}}</span>
@@ -100,7 +103,7 @@
                     </div>
                 </div>
             </div>
-			<div class="splash-hero-nav mobile opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
+			<div class="splash-hero-nav mobile opacity-0 animated" class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim">
 				<div>
 					<a class="bg-cal" class-on-click="a:inject.splash-hero-nav-schools|a, active:unique">
 						<span>@ Cal</span>
@@ -817,8 +820,7 @@
             <div class="splash-hero-progress progress white opacity-0" activate-on-class="a" class-on-activate="active">
                 <span style="width: 15%;"></span>
             </div>
-            <!-- .active -->
-            <div id="next-steps-container" class="">
+            <div id="next-steps-container" class="active" ng-if='false'>
             	<div id="next-steps">
             		<div class="next-device">
             			<svg class="splash-device-svg" viewBox="0 0 319 652">
@@ -851,7 +853,7 @@
 
 		<section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
             <div class="projector-trigger" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750">
-                <a id="projector-pull" ng-click='projectorPullActivated = true;' bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a" class-on-activate="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
+                <a id="projector-pull" ng-click='activateProjectorPull();' bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a" class-on-activate="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
     				<svg width="28px" height="224px" viewBox="0 0 56 448">
     				    <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
     				        <path d="M28,2 L28,392" fill="none" stroke-width="4" stroke-dasharray="16,14" opacity="0.6"></path>
@@ -887,7 +889,7 @@
                 </svg>
             </div>
 
-            <div class='header-swipers opacity-0'  activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, b:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700">
+            <div class='header-swipers opacity-0'  activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, b:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700" class-on-clear="slideOutUp:animOut">
 				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-0">
 					<div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
@@ -914,9 +916,13 @@
     					<!-- next buttons -->
     					<div class="swiper-button-next swiper-button-white" aria-disabled="false" tabindex="0" role="button" aria-label="Next slide"></div>
     					<div class="swiper-button-prev swiper-button-white swiper-button-disabled" aria-disabled="true" tabindex="0" role="button" aria-label="Previous slide"></div>
+                        <!-- <a class='absolute bottom-0 uppercase weight-700 text-center full-x left-0 opacity-50 p20xy' ng-click="closeSingleProjector()">
+                                Close
+                            </a> -->
     					<div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
     						<!-- Slide # 1-->
                             <!-- university slide #1 -->
+
                             <div id='slide-1' class="swiper-slide" class-on-clear="null:inject#splash-university|clear, null:inject.projector-content|clear" class-on-activate="null:inject#splash-university|opacity-1, null:inject.projector-content|activate" style='overflow:hidden !important;'>
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
@@ -1455,9 +1461,8 @@
                                             </text>
                             			</svg>
                             		</div>
-                                    <div class="splash-content splash-signup-content">
-                                    <!-- <div class="splash-content splash-signup-content ng-class:{'active':root.vars.loginMode}"> -->
-                            			<button class="btn-splash-login btn-ghost-white" ng-click='toggleLoginMode()'>Login</button>
+                                    <div class="splash-content splash-signup-content ng-class:{'active':!page.account.loginMode}">
+                            			<button class="btn-splash-login btn-ghost-white" ng-click='page.account.toggle()'>Login</button>
                             			<div class="splash-signup-inside">
                             				<div class="school-id-card">
                             					<svg viewBox="0 0 240 160">
@@ -1549,9 +1554,8 @@
                                             <button ng-click='connectWithFacebook()' class="btn-login-fb btn-ghost-white caps">Login with Facebook</button>
                             			</div>
                             		</div>
-                            		<div class="splash-content splash-login-content active">
-                                    <!-- <div class="splash-content splash-login-content ng-class:{'active':!root.vars.loginMode}"> -->
-                            			<button class="btn-splash-login btn-ghost-white" ng-click='toggleLoginMode()'>Signup</button>
+                            		<div class="splash-content splash-login-content ng-class:{'active':page.account.loginMode}">
+                            			<button class="btn-splash-login btn-ghost-white" ng-click='page.account.login()'>Signup</button>
                             			<div class="splash-login-inside">
                             				<div class="input-field">
                             					<input type="text" placeholder="email"/>

@@ -1,158 +1,55 @@
 <div class='relative' style='height:calc(100%); width:calc(100%); overflow:hidden !important;' eval-on-load="onLoad()">
 	<!-- @gabrielle, do not not remove  init-wp-parent -->
     <main id='home-splash' init-wp-parent class='splash-landing new hs-view full-xy' style="height:calc(200% !important); width:calc(100%) !important;" bind-wp="s1_top">
-		<aside class="splash-sidebar-full hide" ng-class="{'show': page.sidebar.show}" id='home-splash-sidebar' ng-if='page.sidebar.show'>
-			<nav class="splash-sidebar-menu">
-                <div>
-                    <header>
-                        <a class="splash-logo" ng-click='page.sidebar.toggle()' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
-                        <a class="splash-burger close splash-close" ng-click='page.sidebar.toggle()' ng-include="::img_base + 'templates/svg/main/plus-circle.html'"></a>
-                    </header>
-    				<ul class="splash-sidebar-links">
-    					<li>
-    						<a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="50" ng-click='page.sidebar.toggle()'>
-    							<span>Home</span>
-    						</a>
-    					</li>
-    					<li>
-    						<a class="opacity-0" id='cta-box-team' activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="150" ng-click='!desktopMode && page.modals.team.show()'>
-    							<span>Meet the team</span>
-    						</a>
-    					</li>
-    					<li>
-    						<a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="250" id='cta-box-FAQ' ng-click='!desktopMode && page.modals.faq.show()'>
-    							<span>FAQ</span>
-    						</a>
-    					</li>
-    					<li>
-    						<a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="350" id='cta-box-pricing' ng-click='!desktopMode && page.modals.pricing.show()'>
-    							<span>Pricing</span>
-    						</a>
-    					</li>
-                        <li>
-                            <a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="450" id='cta-box-become-guru' ng-click='!desktopMode && page.modals.become_guru.show()'>
-                                <span>Become a Guru</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="opacity-0" activate-on-class="anim-sidemenu-li" class-on-activate="bounceIn:anim" class-on-activate-delay="550" id='cta-box-intercom' ng-click='!desktopMode && page.modals.support.show()'>
-                                <span>Support</span>
-                            </a>
-                        </li>
-    				</ul>
-                </div>
-                <div>
-                    <button id='cta-box-account' class="btn-ghost-white opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="700" ng-click='!desktopMode && page.modals.signup.show()'><span>Login / Signup</button>
-                    <ul class="splash-sidebar-platforms">
-                        <li>
-                            <a class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1100" ng-include="::img_base + 'templates/svg/main/mobile.html'"></a>
-                        </li>
-                        <li>
-                            <a class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1200" ng-include="::img_base + 'templates/svg/main/desktop.html'"></a>
-                        </li>
-                    </ul>
-                </div>
-			</nav>
-            <section class='splash-sidebar-content' ng-if='desktopMode'>
-                <div class="splash-sidebar-empty">
-                    <div class="splash-sidebar-guru splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
-                    <div class="splash-sidebar-message">
-                        <svg viewBox="0 0 1304 354">
-                            <path d="M2,39.9999987 C2,35.5817214 5.58280463,32 10.0088717,32 L622,32 L652,2 L682,32 L1293.99113,32 C1298.41431,32 1302,35.5800296 1302,39.9999987 L1302,344.000001 C1302,348.418279 1298.41351,352 1293.99365,352 L10.0063476,352 C5.58456393,352 2,348.41997 2,344.000001 L2,39.9999987 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.5" fill="#40484B"></path>
-                            <text font-family="Source Sans Pro" font-size="96" font-weight="600" line-spacing="126" fill="#FFFFFF" text-anchor="middle">
-                                <tspan x="652" y="163">Wanna see something cool?</tspan>
-                                <tspan x="652" y="289">Check it out.</tspan>
-                            </text>
-                        </svg>
-                    </div>
-                </div>
-                <ion-pane id='cta-modal-pricing' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/pricing.html'"> </ion-pane>
-
-                <ion-pane id='cta-modal-team' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/team.html'"> </ion-pane>
-
-                <ion-pane id='cta-modal-become-guru' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-if='user.university && user.university.id' ng-include="::img_base + BASE + 'templates/desktop.guru.onboarding.html'" ng-controller='DesktopBecomeGuruController'> </ion-pane>
-
-                <ion-pane id='cta-modal-account' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/desktop.login.html'" ng-controller='AccountPageController'> </ion-pane>
-
-                <ion-pane id='cta-modal-intercom' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-controller='AccountPageController'> </ion-pane>
-
-                <ion-pane id='cta-modal-FAQ' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index'>
-                    <section id="faq">
-                        <header>
-                            <a id='guru-profile-cta-close' class='cta-modal-close close-button p15xy flex-right-center'>
-                                <svg viewBox="0 0 100 100">
-                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                                </svg>
-                            </a>
-                            <h1>Frequently Asked Questions</h1>
-                            <div class="tab-bar slide">
-                                <div>
-                                    <a class="active">All</a>
-                                    <a>Uguru Basics</a>
-                                    <a>My Account</a>
-                                    <a>Payment</a>
-                                    <a>Features</a>
-                                    <hr/>
-                                </div>
-                            </div>
-                        </header>
-                        <div class="main">
-                            <dl>
-                                <dt>
-                                    <span>This is a question.</span>
-                                    <a class='close-button'>
-                                        <svg viewBox="0 0 100 100">
-                                            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                                        </svg>
-                                    </a>
-                                </dt>
-                                <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
-                            </dl>
-                            <dl>
-                                <dt>
-                                    <span>This is another question.</span>
-                                    <a class='close-button'>
-                                        <svg viewBox="0 0 100 100">
-                                            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                                        </svg>
-                                    </a>
-                                </dt>
-                                <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
-                            </dl>
-                            <dl>
-                                <dt>
-                                    <span>This is a third question.</span>
-                                    <a class='close-button'>
-                                        <svg viewBox="0 0 100 100">
-                                            <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                                        </svg>
-                                    </a>
-                                </dt>
-                                <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
-                            </dl>
-                        </div>
-                    </section>
-                    <!-- <iframe class='absolute top-0 left-0 full-xy' src="https://uguru.me/faq/"> </iframe> -->
-                </ion-pane>
-            </section>
-		</aside>
+        <ion-pane style='z-index:1001;' id='cta-modal-sidebar' class='full-xy hide-display cta-modal bg-charcoal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
         <a ng-if='page.dropdowns.category.active || page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()' style='z-index:5'> </a>
 		<header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
-			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'"></a>
+			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ></a>
 			<div class="right">
-				<a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='page.sidebar.toggle()' class-on-click="null:inject.splash-sidebar-menu li a|anim-sidemenu-li, null:inject.splash-sidebar-menu button|a, null:inject.splash-sidebar-platforms li a|a" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
-					<svg viewBox="0 0 100 100">
+				<a name='sidebar' class="splash-burger" id='cta-box-sidebar' >
+                    <!-- @gabrielle whats this? If you dont know delete below-->
+                    <!-- bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut" -->
+					<svg viewBox="0 0 100 100" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" class-on-activate-delay="600">
 						<circle cx="50" cy="50" r="36"></circle>
 						<path d="M31,35.5 L69,35.5"></path>
 						<path d="M31,50.5 L69,50.5"></path>
 						<path d="M31,65.5 L69,65.5"></path>
 					</svg>
 				</a>
+                <a name="back-to-scene-one" id='splash-up-link' class='full-x p10xy flex-wrap-center opacity-0 left-0 absolute' bind-wp="s2_50_top" bind-wp-class="activate, clear" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut, opacity-0, invisible" class-on-activate="fadeInDown:anim, visible" class-on-activate-delay="1250" ng-show='projectorPullActivated' style="width:100% !important; top:10px;" ng-click='closeSingleProjector()'>
+                    <i style='font-size:100%; left:10px;' class='icon ion-chevron-up'> </i>
+                </a>
 			</div>
 		</header>
-
-		<section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear">
-			<div class="splash-hero-nav desktop opacity-0 high-z-index" class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
+        <div class="school-card opacity-0 absolute hide" class-on-activate="show" id='global-school-card' ng-if='selectedUniversity && selectedUniversity.id'>
+            <svg class="rect" viewBox="0 0 300 200">
+                <rect x="0" y="0" width="300" height="200" fill="none"></rect>
+            </svg>
+            <!--@gabrielle dont need this here actually -->
+            <!-- <input type="checkbox"/> -->
+            <div class="school-card-inside">
+                <div class="school-card-top" style="background-color: {{selectedUniversity.school_color_one}};">
+                    <div class="opacity-0">
+                        <span class="school-card-icon" style="background-image: url({{selectedUniversity.svg_url || selectedUniversity.seal_url || selectedUniversity.logo_url}}); border-color: {{selectedUniversity.school_color_one}};">
+                            <span class="school-card-icon-bg" style="background-color: {{selectedUniversity.school_color_dark}};"></span>
+                            <span class="school-card-state" ng-include="img_base + 'templates/svg/main/check.html'"></span>
+                            <span class="school-card-state" ng-include="img_base + 'templates/svg/main/plus.html'"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="school-card-main no-footer">
+                    <div class="school-card-map"></div>
+                    <div class="school-card-color" style="background-color: {{selectedUniversity.school_color_dark}};"></div>
+                    <div class="school-card-info">
+                        <h1 style="color: {{selectedUniversity.school_color_dark}};">{{selectedUniversity.short_name || selectedUniversity.name}}</h1>
+                        <h1>{{selectedUniversity.short_name || selectedUniversity.name}}</h1>
+                        <h2 style="color: {{selectedUniversity.school_color_dark}};"><span>{{selectedUniversity.city}}</span>,&nbsp;<span>{{selectedUniversity.state}}</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" >
+			<div class="splash-hero-nav desktop opacity-0 high-z-index" style='z-index:1000;' class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
                 <div>
                     <a name='category'  class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()'>
                         <span>{{selectedCategory.name}}</span>
@@ -206,7 +103,7 @@
                     </div>
                 </div>
             </div>
-			<div class="splash-hero-nav mobile opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut">
+			<div class="splash-hero-nav mobile opacity-0 animated" class-on-load="fadeIn:anim" class-on-load-delay="5500" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim">
 				<div>
 					<a class="bg-cal" class-on-click="a:inject.splash-hero-nav-schools|a, active:unique">
 						<span>@ Cal</span>
@@ -217,12 +114,15 @@
 				</div>
 			</div>
 			<!-- @gabrielle-note, the 3000 ms is to generate the static map URL with the right icon-->
-            <div class="splash-hero-map opacity-0" class-on-clear="slideOutUp:animOut" class-on-activate="active:anim" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
+            <div class="splash-hero-map opacity-0 invisible limited-opacity" class-on-clear="slideOutUp:animOut" class-on-activate="active:anim, visible-impt" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
 				<!--Initial map class: init-university-map -->
                 <ui-gmap-google-map class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events" id='splash-google-map-selected-university' refresh='map.refresh' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
                     <ui-gmap-marker coords="selectedUniversity.map.marker.coords" idKey="selectedUniversity.map.marker.id || selectedUniversity.id" options="selectedUniversity.map.marker.options" icon="selectedUniversity.map.marker.icon">
                     </ui-gmap-marker>
+                    <ui-gmap-markers ng-if='selectedUniversity.map.markers' models="selectedUniversity.map.markers" coords="'coords'" options="'options'" icon="'options.icon'" fit="true">
+                    </ui-gmap-markers>
                 </ui-gmap-google-map>
+                <!-- <div style="opacity: .5; background: #023360; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 10;"></div> -->
                 <!-- <div class="splash-scene-map-img" style="background-image: url('{{selectedUniversity.static_map_url}}')"></div> -->
                 <!-- zoom="requestForm.map.zoom"
                     pan="requestForm.map.pan"
@@ -235,7 +135,8 @@
             <!-- <div class='splash-hero-skip opacity-1-impt left-0' class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a">
                 <button style='top:-50px;' class="button-find-guru splash-mobile-cta" ng-click='refreshUniversityState(selectedUniversity)'>Refresh</button>
             </div> -->
-			<div class="splash-hero-markers" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker|a, null:inject.location[class-on-activate]|activate, null:inject.splash-hero-marker .marker-inside[class-on-activate]|activate">
+			<div class="splash-hero-markers" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker|a">
+                <!-- , null:inject.location[class-on-activate]|activate, null:inject.splash-hero-marker .marker-inside[class-on-activate]|activate -->
                 <!-- null:inject.splash-hero-marker .marker-inside|a -->
 
                 <div class="splash-hero-marker-1 splash-hero-marker opacity-0" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="fadeIn:anim, visible">
@@ -530,7 +431,7 @@
                     <div class="location-text">{{selectedUniversity.place_results[3].name}}</div>
 				</div>
 
-				<div class="splash-hero-marker-5 splash-hero-marker opacity-0" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 15%; right: 3%;">
+				<div class="splash-hero-marker-5 splash-hero-marker opacity-0" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" translate-on-class="translate" translate-to-elem="#university-place-marker-5" class-on-activate="fadeIn:anim, visible">
                     <div class="location opacity-0 bg-{{selectedCategory.hex_color}} top right" class-on-activate="bounceIn:anim" class-on-activate-delay="3600"></div>
                     <div class="location-text">{{selectedUniversity.place_results[4].name}}</div>
                     <div class="marker-inside opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="5000">
@@ -603,7 +504,7 @@
                     <span class="marker-course opacity-0 hide">BIO 1B</span>
 				</div>
 
-				<div class="splash-hero-marker-6 splash-hero-marker opacity-0 visible" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 30%; right: 12%;">
+				<div class="splash-hero-marker-6 splash-hero-marker opacity-0" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 30%; right: 12%;">
 					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} top left" class-on-activate="bounceIn:anim" class-on-activate-delay="3300"></div>
                     <div class="location-text">{{selectedUniversity.place_results[5].name}}</div>
                     <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="fadeIn:anim" class-on-activate-delay="5000">
@@ -747,7 +648,7 @@
 						</g>
 					</svg>
 					<div class="splash-device-button animated">
-                        <button ng-click='getUniversityPlaces(selectedUniversity)' class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, null:inject.splash-hero-map|opacity-50, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|clear, null:inject.splash-logo-guru|a">Find My Guru</button>
+                        <button id='desktop-find-guru-button' ng-click='getUniversityPlaces(selectedUniversity)' class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, null:inject.splash-hero-map|opacity-50, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|clear, null:inject.splash-logo-guru|a" class-on-activate="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, null:inject.splash-hero-map|opacity-50, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|clear, null:inject.splash-logo-guru|a">Find My Guru</button>
 					</div>
 				</div>
 			</div>
@@ -919,11 +820,40 @@
             <div class="splash-hero-progress progress white opacity-0" activate-on-class="a" class-on-activate="active">
                 <span style="width: 15%;"></span>
             </div>
-		</section>
+            <div id="next-steps-container" class="active" ng-if='false'>
+            	<div id="next-steps">
+            		<div class="next-device">
+            			<svg class="splash-device-svg" viewBox="0 0 319 652">
+            				<path d="M2,42.0005693 C2,19.9088649 19.9096817,2 41.9948462,2 L277.005154,2 C299.093697,2 317,19.9012788 317,42.0005693 L317,609.999431 C317,632.091135 299.090318,650 277.005154,650 L41.9948462,650 C19.9063026,650 2,632.098721 2,609.999431 L2,42.0005693 Z M22,80 L298,80 L298,573 L22,573 L22,80 Z" fill="none" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3"></path>
+            				<circle stroke="#F0E0D0" stroke-width="3" fill="none" cx="159" cy="611" r="25"></circle>
+            			</svg>
+            		</div>
+            		<div class="next-content">
+            			<div class="next-guru">
+            				<div class="splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+            				<svg class="coach-next-steps" width="114px" height="98px" viewBox="0 0 228 196">
+            					 <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
+            					 <text transform="translate(113.612466, 96.294134) rotate(20.000000) translate(-113.612466, -96.294134) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+            						  <tspan x="35.612466" y="95.2941336">so what’s</tspan>
+            						  <tspan x="69.112466" y="135.294134">next?</tspan>
+            					 </text>
+            				</svg>
+            			</div>
+            			<ol>
+            				<li class="active"><span>Explore by changing categories or universities</span></li>
+            				<li><span>Learn more</span></li>
+            				<li><span>Start your profile</span></li>
+            				<li><span>Try those madlibs again</span></li>
+            				<li><span>Refresh that craziness</span></li>
+            			</ol>
+            		</div>
+            	</div>
+            </div>
+        </section>
 
 		<section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
             <div class="projector-trigger" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750">
-                <a id="projector-pull" ng-click='projectorPullActivated = true;' bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
+                <a id="projector-pull" ng-click='activateProjectorPull();' bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a" class-on-activate="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
     				<svg width="28px" height="224px" viewBox="0 0 56 448">
     				    <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
     				        <path d="M28,2 L28,392" fill="none" stroke-width="4" stroke-dasharray="16,14" opacity="0.6"></path>
@@ -959,7 +889,7 @@
                 </svg>
             </div>
 
-            <div class='header-swipers opacity-0'  activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, b:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700">
+            <div class='header-swipers opacity-0'  activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, b:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700" class-on-clear="slideOutUp:animOut">
 				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-0">
 					<div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
@@ -986,9 +916,13 @@
     					<!-- next buttons -->
     					<div class="swiper-button-next swiper-button-white" aria-disabled="false" tabindex="0" role="button" aria-label="Next slide"></div>
     					<div class="swiper-button-prev swiper-button-white swiper-button-disabled" aria-disabled="true" tabindex="0" role="button" aria-label="Previous slide"></div>
+                        <!-- <a class='absolute bottom-0 uppercase weight-700 text-center full-x left-0 opacity-50 p20xy' ng-click="closeSingleProjector()">
+                                Close
+                            </a> -->
     					<div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
     						<!-- Slide # 1-->
                             <!-- university slide #1 -->
+
                             <div id='slide-1' class="swiper-slide" class-on-clear="null:inject#splash-university|clear, null:inject.projector-content|clear" class-on-activate="null:inject#splash-university|opacity-1, null:inject.projector-content|activate" style='overflow:hidden !important;'>
                                 <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
@@ -1249,6 +1183,90 @@
                                             <h1 class="become-guru-header opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="400">{{::become_guru.header}}</h1>
                                         </header>
                                         <div class='main'>
+                                            <div class="mobile-postits">
+                                                <ul class="mobile-postit-list">
+                                                    <li class="active">
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/profile.html'"></span>
+                                                            <h1>Full Stack Profile</h1>
+                                                            <p>A platform where you come first. Complete control over your profile.</p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/promotion.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[1].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[1].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/payment.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[2].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[2].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/skills.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[3].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[3].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/fees.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[4].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[4].content"></p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/pajamas.html'"></span>
+                                                            <h1 ng-bind-html="::become_guru.top_half[5].header"></h1>
+                                                            <p ng-bind-html="::become_guru.top_half[5].content"></p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <ul class="mobile-postit-thumbs">
+                                                    <li class="active">
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/profile.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/promotion.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/payment.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/skills.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/fees.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <span ng-include="::img_base + 'templates/svg/splash/pajamas.html'"></span>
+                                                            <h1>Lorem Ipsum</h1>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                             <ul class="desktop-postit-list">
                                                 <!-- top become guru slides-->
                                                 <li class='bg-postit-li opacity-0' class-on-activate="bounceInLeft:anim" class-on-activate-delay="800">
@@ -1413,15 +1431,197 @@
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>
                                 <div class="projector-top"></div>
-                                <div class="projector-content relative">
-                                    <div id='become-guru'>
-                                        <header>
-                                            <h1 class="slide-signup-header opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="400">Signup / Login</h1>
-                                        </header>
-                                        <div class='main' ng-include="::img_base + BASE + 'templates/desktop.login.html'" ng-controller='AccountPageController'>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div id="splash-signup" class="projector-content" ng-controller='AccountPageController'>
+                            		<div class="splash-projector-guru">
+                            			<div class="splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+                            			<svg class="coach coach-signup-welcome active" width="114px" height="98px" viewBox="0 0 228 196">
+                            				<path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
+                            				<text class="show ng-class:{'hide':root.vars.forgotPassword}" transform="translate(112, 93) rotate(24) translate(-112, -93)" font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+                            					<tspan x="37.152466" y="91.8605398">welcome</tspan>
+                            					<tspan x="35.612466" y="131.86054">to uguru!</tspan>
+                            				</text>
+                                            <text class="hide ng-class:{'show':root.vars.forgotPassword}" transform="translate(118.193148, 88.776332) rotate(24.000000) translate(-118.193148, -88.776332) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+                                                <tspan x="67.3531477" y="87.7763318">forgot</tspan>
+                                                <tspan x="28.6931477" y="127.776332">password?</tspan>
+                                            </text>
+                            			</svg>
+                            		</div>
+                                    <div class="splash-content splash-signup-content ng-class:{'active':!page.account.loginMode}">
+                            			<button class="btn-splash-login btn-ghost-white" ng-click='page.account.toggle()'>Login</button>
+                            			<div class="splash-signup-inside">
+                            				<div class="school-id-card">
+                            					<svg viewBox="0 0 240 160">
+                            						<rect x="0" y="0" width="300" height="175" fill="none"></rect>
+                            					</svg>
+                            					<div class="school-id-inside">
+                            						<div class="school-id-top" style="background: {{selectedUniversity.school_color_dark}};">
+                            							<span class="user-icon" style="border-color: {{selectedUniversity.school_color_dark}}; background-image: url();"></span>
+                            						</div>
+                            						<div class="school-id-bottom">
+                            							<div>
+                            								<h1 style="color: {{selectedUniversity.school_color_dark}};">Student Name</h1>
+                            								<h2 style="color: {{selectedUniversity.school_color_dark}};">{{selectedUniversity.short_name || selectedUniversity.name}}</h2>
+                            								<h2 style="color: {{selectedUniversity.school_color_dark}};">email@domain.com</h2>
+                            							</div>
+                            							<h3><span style="color: {{selectedUniversity.school_color_dark}};">SELECTED COURSES</span></h3>
+                            						</div>
+                            					</div>
+                            				</div>
+                            				<div class="splash-signup-form">
+                            					<div class="input-field active">
+                            						<input type="text" placeholder="what's your name?" ng-model='signupForm.full_name' autocomplete="off"/>
+                                                    <a class="ng-class:{'active':signupForm.full_name && signupForm.full_name.length}" ng-click='signupForm.full_name = "";'>
+                                                        <svg class="clear" viewBox="0 0 100 100">
+                                							<circle cx="50" cy="50" r="36"></circle>
+                                							<path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                						</svg>
+                                                    </a>
+                                                    <a>
+                                						<svg class="verified" viewBox="0 0 100 100">
+                                							<circle cx="50" cy="50" r="36"></circle>
+                                							<path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                                						</svg>
+                                                    </a>
+                                                    <a>
+                                						<svg class="error" viewBox="0 0 100 100">
+                                							<circle cx="50" cy="50" r="36"></circle>
+                                							<path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                						</svg>
+                                                    </a>
+                            					</div>
+                                                <div class="input-field">
+                            						<input type="email" placeholder="what's your email?" ng-model='signupForm.email' autocomplete="off"/>
+                                                    <a class="ng-class:{'active':signupForm.email && signupForm.email.length}" ng-click='signupForm.email = "";'>
+                                                        <svg class="clear" viewBox="0 0 100 100">
+                                							<circle cx="50" cy="50" r="36"></circle>
+                                							<path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                						</svg>
+                                                    </a>
+                                                    <a>
+                                						<svg class="verified" viewBox="0 0 100 100">
+                                							<circle cx="50" cy="50" r="36"></circle>
+                                							<path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                                						</svg>
+                                                    </a>
+                                                    <a>
+                                						<svg class="error" viewBox="0 0 100 100">
+                                							<circle cx="50" cy="50" r="36"></circle>
+                                							<path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                						</svg>
+                                                    </a>
+                            					</div>
+                                                <div class="input-field">
+                            						<input type="password" placeholder="enter a password" autocomplete="off" ng-keyup="$event.keyCode == 13 && signupOnEnter()" ng-model='signupForm.password'/>
+                                                    <a class="ng-class:{'active':signupForm.password && signupForm.password.length}" ng-click='signupForm.password = "";'>
+                                                        <svg class="clear" viewBox="0 0 100 100">
+                                							<circle cx="50" cy="50" r="36"></circle>
+                                							<path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                						</svg>
+                                                    </a>
+                                                    <a>
+                                						<svg class="verified" viewBox="0 0 100 100">
+                                							<circle cx="50" cy="50" r="36"></circle>
+                                							<path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                                						</svg>
+                                                    </a>
+                                                    <a>
+                                						<svg class="error" viewBox="0 0 100 100">
+                                							<circle cx="50" cy="50" r="36"></circle>
+                                							<path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                						</svg>
+                                                    </a>
+                            					</div>
+                            				</div>
+                            				<ul class="splash-signup-buttons">
+                                                <li><button>Switch<br/>to Login</button></li>
+                                                <li><button>Login with<br/>Facebook</button></li>
+                                            </ul>
+                                            <button ng-click='connectWithFacebook()' class="btn-login-fb btn-ghost-white caps">Login with Facebook</button>
+                            			</div>
+                            		</div>
+                            		<div class="splash-content splash-login-content ng-class:{'active':page.account.loginMode}">
+                            			<button class="btn-splash-login btn-ghost-white" ng-click='page.account.login()'>Signup</button>
+                            			<div class="splash-login-inside">
+                            				<div class="input-field">
+                            					<input type="text" placeholder="email"/>
+                                                <a>
+                                                    <svg class="clear" viewBox="0 0 100 100">
+                                                        <circle cx="50" cy="50" r="36"></circle>
+                                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                                    </svg>
+                                                </a>
+                                                <a>
+                                                    <svg class="verified" viewBox="0 0 100 100">
+                                                        <circle cx="50" cy="50" r="36"></circle>
+                                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                                                    </svg>
+                                                </a>
+                                                <a>
+                                                    <svg class="error" viewBox="0 0 100 100">
+                                                        <circle cx="50" cy="50" r="36"></circle>
+                                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                                    </svg>
+                                                </a>
+                            				</div>
+                            				<div class="input-field">
+                            					<input type="text" placeholder="password"/>
+                                                <a>
+                                                    <svg class="clear" viewBox="0 0 100 100">
+                                                        <circle cx="50" cy="50" r="36"></circle>
+                                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                                    </svg>
+                                                </a>
+                                                <a>
+                                                    <svg class="verified" viewBox="0 0 100 100">
+                                                        <circle cx="50" cy="50" r="36"></circle>
+                                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                                                    </svg>
+                                                </a>
+                                                <a>
+                                                    <svg class="error" viewBox="0 0 100 100">
+                                                        <circle cx="50" cy="50" r="36"></circle>
+                                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                                    </svg>
+                                                </a>
+                            				</div>
+                            				<div class="login-buttons">
+                            					<button ng-click='connectWithFacebook()' class="btn-login-fb btn-ghost-white">Login with Facebook</button>
+                            					<button ng-click='loginUser()' class="btn-login-login btn-ghost-white">Login</button>
+                            					<button ng-click="root.vars.forgotPassword = true;" class="btn-forgot-pw btn-ghost-white">Forgot your password?</button>
+                            				</div>
+                            			</div>
+                            		</div>
+                                    <div class="splash-content splash-forgot-pw-content splash-login-content ng-class:{'active':root.vars.forgotPassword}">
+                            			<button class="btn-splash-login btn-ghost-white" ng-click='toggleLoginMode()'>Signup</button>
+                            			<div class="splash-login-inside">
+                            				<div class="input-field">
+                            					<input type="text" placeholder="email"/>
+                                                <a>
+                                                    <svg class="clear" viewBox="0 0 100 100">
+                                                        <circle cx="50" cy="50" r="36"></circle>
+                                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                                    </svg>
+                                                </a>
+                                                <a>
+                                                    <svg class="verified" viewBox="0 0 100 100">
+                                                        <circle cx="50" cy="50" r="36"></circle>
+                                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                                                    </svg>
+                                                </a>
+                                                <a>
+                                                    <svg class="error" viewBox="0 0 100 100">
+                                                        <circle cx="50" cy="50" r="36"></circle>
+                                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                                    </svg>
+                                                </a>
+                            				</div>
+                            				<div class="login-buttons">
+                                				<button ng-click='attemptToResetPassword()' class="btn-login-login btn-ghost-white">Submit</button>
+                                                <button ng-click='root.vars.forgotPassword = false;' class="btn-forgot-pw btn-ghost-white">Cancel</button>
+                            				</div>
+                            			</div>
+                            		</div>
+                            	</div>
                             </div>
                             <!--end slide 5-->
 
@@ -1431,22 +1631,37 @@
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>
                                 <div class="projector-top"></div>
-                                <div class="projector-content relative">
-                                    <div class='absolute full-xy flex-wrap ugrid-3'>
-                                        <header class='full-x text-center'>
-                                            <h1 class="slide-access-header opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="400">Access</h1>
-                                        </header>
-                                        <div ng-controller='AccessController' class='full-x flex-wrap-center'>
-                                            <div class='full-x'>
-                                                <input id="access-code-bar" name='access'  class='input-outline full-x text-center' ng-blur='accessInputOnBlur()' ng-click="selectAllText($event)" autocorrect="off" ng-focus='accessInputOnFocus()' autocapitalize="off" ng-model='access.codeInput' type="text" placeholder="Enter your access code"
-                                            submit='checkAccessCode(access.codeInput)' />
-                                            </div>
-                                        </div>
-                                        <div class='submit-access flex-wrap-center full-x'>
-                                            <button ng-click='checkAccessCode(access.codeInput)' class="semibold btn-ghost-white">Submit</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div id="splash-access" class="projector-content">
+                            		<div class="splash-projector-guru">
+                            			<div class="splash-logo-guru guru active" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+                                        <span class="user-icon guru" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
+                            			<svg class="coach coach-promo active" width="114px" height="98px" viewBox="0 0 228 196">
+                            				 <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
+                            				 <text transform="translate(118.193148, 88.776332) rotate(24.000000) translate(-118.193148, -88.776332) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+                            					  <tspan x="76.3731477" y="87.7763318">got a</tspan>
+                            					  <tspan x="53.6931477" y="127.776332">promo?</tspan>
+                            				 </text>
+                            			</svg>
+                            			<svg class="coach coach-thanks" width="114px" height="98px" viewBox="0 0 228 196">
+                            				 <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
+                            				 <text transform="translate(117.688097, 93.895318) rotate(24.000000) translate(-117.688097, -93.895318) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+                            					  <tspan x="54.6880967" y="112.895318">thanks!</tspan>
+                            				 </text>
+                            			</svg>
+                            		</div>
+                            		<div class="splash-access-content">
+                            			<div class="splash-access-inside" ng-controller='AccessController'>
+                            				<input id="access-code-bar" name='access' class="splash-access-code" type="text" ng-blur='accessInputOnBlur()' ng-click="selectAllText($event)" autocorrect="off" ng-focus='accessInputOnFocus()' autocapitalize="off" ng-model='access.codeInput' placeholder="enter it here" submit='checkAccessCode(access.codeInput)'/>
+                            				<div>
+                            					<svg class="splash-access-bubble" width="652px" height="119px" viewBox="0 0 1304 237">
+                            						 <path d="M10.0088717,205 L622,205 L652,235 L682,205 L1293.99113,205 C1298.41431,205 1302,201.41997 1302,197.000001 L1302,9.99999875 C1302,5.58172144 1298.41351,2 1293.99365,2 L10.0063476,2 C5.58456393,2 2,5.58002961 2,9.99999875 L2,197.000001 C2,201.418279 5.58280463,205 10.0088717,205 Z" stroke-width="4" stroke="#FFFFFF" fill-opacity="0.8" fill="#40484B"></path>
+                            					</svg>
+                            					<button ng-click='checkAccessCode(access.codeInput)' class="btn-access-activate btn-ghost-white">Activate my promo!</button>
+                            					<button class="btn-access-skip btn-ghost-white">Skip</button>
+                            				</div>
+                            			</div>
+                            		</div>
+                            	</div>
                             </div>
 
                             <div id='slide-7' class="swiper-slide swiper-slide-gallery" activate-on-class="swiper-slide-active" class-on-activate="pulse:anim:keep:inject.slide-courses-container|activate" class-on-activate-delay="1000">
@@ -1454,159 +1669,145 @@
                                     <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
                                 </svg>
                                 <div class="projector-top"></div>
-                                <div class="projector-content relative">
-                                    <div ng-controller='AccountPageController' class="login-courses-container slide-courses-container opacity-0 absolute full-xy" class-on-activate="fadeIn:anim">
-                                        <h2 class='hide ng-class:{"show":user.student_courses.length}'>Your <span>{{university.short_name}}</span> courses</h2>
-                                        <h2 class='hide ng-class:{"show":!user.student_courses.length}'>Link <span>{{university.short_name}}</span> courses to your account</h2>
-                                        <div class="ugrid-2">
-                                            <div class="login-backpack">
-                                                <span ng-include="img_base + 'templates/svg/backpack.html'"></span>
-                                                <b>{{user.student_courses.length}}</b>
-                                                <a ng-click='showGoBackToUniversityPage()'>+ add more</a>
-                                            </div>
-                                            <div class="login-courses" ng-controller='CoursesController'>
-                                                <ul class='desktop-card-list'>
-                                                    <li ng-repeat='course in user.student_courses |  limitTo: 8 track by $index' class='course-item selected'>
-                                                        <span class='bg-slate' style='background:#40484B !important;'>
-                                                            <div>
-                                                                <span class="course-name txt-white">{{course.short_name}}</span>
-                                                            </div>
-                                                        </span>
-                                                    </li>
-                                                    <li ng-click='addUniversityStudentCourse(course, $index)' ng-repeat='course in selectedUniversity.popular_courses |  limitTo: (9 - user.student_courses.length) track by $index'>
-                                                        <span>
-                                                            <div>
-                                                                <span class="course-name">{{course.short_name}}</span>
-                                                            </div>
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div id="splash-courses" class="projector-content" ng-controller="CoursesController">
+                            		<div class="splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+                                    <!-- @samir -->
+                                    <!-- course count is inside the svg -->
+                                    <div ng-include="img_base + 'templates/svg/backpack-text.html'"></div>
+                            		<form>
+                            			<div class="input-field large white">
+                            				<i class="material-icons prefix">
+                            					<svg viewBox="0 0 100 100">
+                            						<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+                            					</svg>
+                            				</i>
+                                            <!-- @samir -->
+                                            <!-- i can't get this to work -->
+                            				<input id='course-search-input' name='course-search-input' type="text" autocomplete="off" fast-matcher fast-matcher-source="courses" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, variations" ng-model="search_text.course"/>
+                            				<label for="course-search-input">
+                            					<span>search for your courses</span>
+                            				</label>
+                            			</div>
+                            		</form>
+                            		<ul class="course-search" ng-controller='CoursesController'>
+                                        <li ng-click='addUniversityStudentCourse(course, $index)' ng-repeat='course in selectedUniversity.courses |  limitTo: 9 track by $index'>
+                            				<a>
+                            					<div>
+                            						<span class="course-name">{{course.short_name}}</span>
+                            						<span class="course-title" style="border-bottom-color: {{selectedUniversity.school_color_dark}};"><span>{{course.full_name || course.title}}</span></span>
+                            					</div>
+                            				</a>
+                                        </li>
+                            		</ul>
+                            		<ul class="course-selected">
+                            			<li ng-repeat='course in user.student_courses |  limitTo: 8 track by $index'>
+                            				<a>
+                            					<span style="border-bottom-color: {{selectedUniversity.school_color_dark}};">
+                            						<span>{{course.short_name}}</span>
+                            						<svg viewBox="0 0 100 100">
+                            							 <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                            						</svg>
+                            					</span>
+                            				</a>
+                            			</li>
+                            		</ul>
+                            	</div>
                             </div>
-
     					</div>
     					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                     </div>
                 </div>
 			</div>
             <div id='swiper-gallery-nav' class="swiper-container swiper-front-gallery-thumbs" activate-on-class="a" class-on-activate="active:keep, b:inject.slideshow-thumb-1|activate, b:inject.slideshow-thumb-2|activate, b:inject.slideshow-thumb-3|activate, b:inject.slideshow-thumb-4|activate">
+                <div class="progress height-10 white-round" ng-if='page.swipers.galleryIndex'>
+            		<span style="width: 10%;"></span>
+            	</div>
                 <div class="swiper-wrapper swiper-gallery-wrapper">
-                    <div class="swiper-slide slideshow-thumb-1 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" >
-                        <div>
-                            <svg viewBox="0 0 200 200">
-                            	<g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                            	    <rect class="bg" fill="#4E5A5E" x="2" y="2" width="196" height="196" rx="8"></rect>
-                            	    <g>
-                            		    <path d="M25,29 L175,29"></path>
-                            		    <rect fill="#40484B" x="28" y="41" width="24" height="24" rx="8"></rect>
-                            		    <rect fill="#40484B" x="68" y="41" width="24" height="24" rx="8"></rect>
-                            		    <rect fill="#40484B" x="108" y="41" width="24" height="24" rx="8"></rect>
-                            		    <rect fill="#40484B" x="148" y="41" width="24" height="24" rx="8"></rect>
-                            		    <path d="M160.225873,129.546152 C160.680873,128.487152 161.908873,126.209152 161.818873,124.942152 C161.655873,122.666152 161.371873,121.073152 161.649873,122.156152 C162.488873,120.899152 165.103873,115.939152 162.409873,115.881152 C164.039873,114.473152 164.598873,113.424152 163.281873,114.249152 C164.683873,111.380152 171.187873,109.292152 170.823873,109.859152 C172.391873,109.053152 174.254873,107.868152 172.005873,106.932152 C173.155873,108.420152 169.613873,105.907152 169.770873,103.897152 C170.077873,99.9841517 173.114873,100.570152 173.159873,97.1101517 C173.338873,97.4701517 173.575873,97.7801517 173.778873,98.1241517 C174.479873,96.2811517 175.825873,97.2141517 176.754873,95.5271517 C178.310873,92.7001517 176.605873,94.4301517 175.804873,93.0301517 C175.306873,92.1601517 173.947873,87.3531517 173.018873,86.6421517 C171.156873,85.2161517 170.748873,87.6101517 169.078873,86.4171517 C167.580873,89.2721517 168.259873,92.0491517 167.235873,94.7471517 C166.265873,97.3021517 162.582873,97.5311517 159.144873,98.7291517 C156.841873,99.5311517 154.559873,100.340152 153.544873,103.048152 C153.235873,103.872152 154.698873,104.491152 154.065873,105.567152 C153.482873,106.556152 152.456873,106.826152 151.405873,107.157152 C150.499873,107.443152 149.041873,106.772152 148.056873,107.467152 C146.161873,108.804152 148.145873,108.709152 147.311873,110.238152 C146.251873,112.182152 142.432873,115.274152 140.458873,116.022152 C137.335873,117.204152 135.995873,116.530152 136.256873,114.013152 C136.440873,112.240152 137.666873,112.268152 137.644873,110.506152 C137.607873,107.577152 136.299873,107.512152 134.858873,107.129152 C134.584873,107.056152 134.555873,109.206152 133.426873,108.508152 C132.363873,107.850152 133.944873,107.288152 133.915873,106.890152 C133.818873,105.523152 134.534873,104.827152 133.817873,103.217152 C133.298873,102.053152 127.670873,100.168152 131.988873,99.8961517 C131.957873,99.7001517 131.429873,98.0461517 131.340873,97.8701517 C130.019873,98.5491517 129.061873,98.5201517 128.892873,97.1671517 C127.689873,97.5631517 125.131873,98.8991517 123.967873,98.7991517 C122.253873,98.6511517 121.627873,96.8041517 119.971873,97.6731517 C120.117873,96.5961517 120.332873,96.1581517 121.519873,95.5061517 C119.450873,94.5571517 116.176873,99.6171517 113.386873,99.1371517 C113.531873,98.6551517 113.443873,98.1451517 113.527873,97.7011517 C112.604873,98.4011517 111.459873,98.8011517 110.347873,98.7711517 C112.173873,96.2411517 114.893873,95.4621517 116.675873,93.4521517 C112.983873,93.3161517 111.339873,93.1111517 108.433873,92.1581517 C105.153873,91.0811517 104.431873,91.9491517 102.129873,88.8651517 C102.114873,91.7011517 87.2308727,90.0841517 84.2058727,89.9011517 C77.9708727,89.5261517 71.7478727,88.8081517 65.5658727,87.9221517 C59.8198727,87.0981517 54.1398727,86.0111517 48.4618727,84.8071517 C43.6458727,83.7851517 36.7608727,80.5981517 32.1988727,81.0421517 C32.8278727,82.2801517 32.6188727,83.5141517 32.7048727,84.9251517 C32.3828727,83.8881517 32.2478727,84.1441517 32.2268727,83.1801517 C30.9698727,84.2811517 28.4578727,83.2271517 27.3018727,81.6611517 C26.4488727,83.1531517 26.4048727,85.9231517 27.4708727,87.3731517 C26.4978727,88.3901517 27.0088727,88.7491517 26.7108727,90.1031517 C26.0718727,93.0111517 24.1898727,96.6691517 22.8268727,99.3621517 C20.8378727,103.293152 19.5538727,108.479152 19.0848727,112.363152 C18.6608727,115.873152 19.9138727,120.271152 20.8858727,123.310152 C20.9668727,123.566152 21.8478727,125.781152 21.8558727,125.885152 C21.8678727,126.023152 21.5228727,127.604152 21.5328727,127.644152 C21.8988727,129.154152 23.1608727,131.118152 23.4888727,132.766152 C23.5958727,133.305152 23.4628727,135.557152 23.5308727,135.664152 C24.1228727,136.611152 24.8338727,136.217152 25.7258727,137.057152 C26.8978727,138.161152 29.3558727,139.215152 29.4118727,140.730152 C31.2268727,141.072152 31.3678727,142.637152 32.2688727,143.994152 C33.8948727,146.445152 31.1488727,144.947152 34.3798727,146.367152 C35.7558727,146.972152 38.4528727,146.916152 39.9658727,146.978152 C39.4018727,148.656152 46.2008727,151.763152 47.9048727,152.714152 C51.8588727,154.921152 55.6668727,154.915152 60.0868727,155.701152 C60.1618727,155.120152 60.2368727,154.538152 60.3118727,153.956152 C64.1738727,154.585152 65.2078727,154.662152 67.6288727,156.996152 C70.2048727,159.479152 70.3898727,162.406152 72.7788727,164.735152 C76.0038727,167.879152 75.3338727,164.913152 77.5058727,163.722152 C79.8428727,162.440152 82.6628727,164.145152 84.0348727,166.184152 C86.8548727,170.373152 87.2598727,175.463152 91.4648727,177.736152 C95.7158727,180.035152 94.7698727,178.765152 94.7358727,175.203152 C94.7088727,172.365152 95.5618727,171.540152 97.5148727,170.236152 C99.8998727,168.645152 102.661873,166.414152 105.126873,165.185152 C108.305873,163.601152 111.575873,165.480152 114.146873,164.735152 C113.651873,164.585152 113.149873,164.485152 112.654873,164.341152 C113.554873,163.342152 115.262873,164.782152 115.919873,165.298152 C116.060873,166.599152 117.736873,166.951152 118.846873,165.607152 C119.053873,166.232152 118.877873,166.140152 118.930873,166.536152 C119.255873,165.941152 119.909873,165.731152 120.168873,164.960152 C120.834873,164.778152 122.207873,166.069152 123.292873,165.748152 C120.606873,165.020152 121.213873,163.953152 121.800873,162.343152 C121.197873,162.774152 120.998873,162.837152 120.562873,163.074152 C121.311873,160.007152 125.362873,162.498152 126.134873,159.697152 C126.268873,160.756152 126.712873,160.421152 126.584873,161.358152 C129.337873,160.903152 133.873873,159.072152 135.449873,162.568152 C138.714873,161.688152 138.518873,159.971152 141.753873,161.892152 C145.178873,163.927152 143.480873,166.179152 145.158873,169.237152 C145.417873,168.367152 145.140873,168.572152 145.102873,168.196152 C145.439873,168.177152 145.777873,168.159152 146.115873,168.140152 C143.695873,170.980152 155.754873,183.931152 154.909873,173.008152 C154.500873,167.723152 150.766873,164.678152 148.704873,160.176152 C146.089873,154.468152 149.134873,151.959152 151.785873,148.201152 C152.410873,147.316152 152.856873,145.998152 153.488873,145.247152 C154.452873,144.099152 155.758873,143.856152 156.583873,143.038152 C157.349873,142.279152 157.767873,140.696152 158.722873,139.745152 C159.589873,138.883152 160.645873,139.040152 161.396873,137.831152 C160.050873,138.444152 159.828873,137.484152 159.735873,136.312152 C163.750873,137.328152 160.109873,128.523152 160.225873,129.546152 Z" fill="#40484B"></path>
-                            	    </g>
-                            	</g>
-                            </svg>
-                            <h1>Slide 1</h1>
-                        </div>
+                    <div class="swiper-slide slideshow-thumb-1 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                        <a class="progress-step">
+                            <div class="progress-step-icon" ng-include="::img_base + 'templates/svg/splash-search.html'"></div>
+                			<h1>University</h1>
+                        </a>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-2 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="200" >
-                        <div>
-                            <svg viewBox="0 0 200 200">
-                                <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect class="bg" fill="#4E5A5E" x="2" y="2" width="196" height="196" rx="8"></rect>
-                                    <g>
-                            	        <path d="M27.729956,53.9963654 C28.7190487,51.4196906 31.6072024,50.1317521 34.1840076,51.1208949 L66.929293,63.6906323 C69.5046745,64.6792287 70.7911623,67.5680276 69.8015228,70.1461268 L57.2254732,102.907856 C56.2363804,105.484531 53.3482267,106.772469 50.7714216,105.783327 L18.0261361,93.2135891 C15.4507546,92.2249928 14.1642668,89.3361939 15.1539063,86.7580947 L27.729956,53.9963654 L27.729956,53.9963654 Z" stroke-width="5" fill="#40484B"></path>
-                            	        <path d="M144.672899,57.8404236 C145.525784,55.215515 148.342574,53.7781873 150.967615,54.631115 L184.325874,65.4698702 C186.949465,66.3223266 188.385378,69.139837 187.532022,71.7661967 L176.687824,105.141207 C175.834939,107.766115 173.018149,109.203443 170.393108,108.350515 L137.034849,97.5117603 C134.411258,96.6593038 132.975345,93.8417935 133.828701,91.2154338 L144.672899,57.8404236 L144.672899,57.8404236 Z" stroke-width="5" fill="#40484B"></path>
-                            	        <path d="M15.312779,133.189754 C14.9286623,130.456622 16.8302935,127.929961 19.563564,127.545824 L54.2971656,122.664335 C57.028926,122.280411 59.5546312,124.18331 59.9389602,126.917953 L64.8229009,161.668997 C65.2070176,164.402129 63.3053864,166.92879 60.5721159,167.312926 L25.8385143,172.194416 C23.1067539,172.57834 20.5810488,170.675441 20.1967197,167.940798 L15.312779,133.189754 L15.312779,133.189754 Z" stroke-width="5" fill="#40484B"></path>
-                            	        <path d="M86.6249062,117.576932 C87.962977,115.162988 91.0022698,114.289537 93.4163356,115.627676 L124.093577,132.632348 C126.506309,133.969747 127.378234,137.009477 126.039423,139.424755 L109.026211,170.117402 C107.68814,172.531345 104.648848,173.404796 102.234782,172.066658 L71.5575406,155.061985 C69.1448086,153.724586 68.2728839,150.684856 69.6116944,148.269578 L86.6249062,117.576932 L86.6249062,117.576932 Z" stroke-width="5" fill="#40484B"></path>
-                            	        <path d="M127.235166,140.226309 C126.567463,137.548301 128.194569,134.836706 130.872713,134.16897 L164.905786,125.683572 C167.582451,125.016205 170.293227,126.644671 170.961299,129.32416 L179.450958,163.374323 C180.11866,166.052332 178.491555,168.763926 175.81341,169.431663 L141.780338,177.917061 C139.103673,178.584428 136.392897,176.955962 135.724825,174.276473 L127.235166,140.226309 L127.235166,140.226309 Z" stroke-width="5" fill="#40484B"></path>
-                            	        <path d="M67.5659031,86.2612815 C66.6673375,83.6516575 68.0519207,80.80857 70.6616767,79.909959 L103.825692,68.4906727 C106.434006,67.5925581 109.276397,68.978568 110.17546,71.5896346 L121.60048,104.770304 C122.499046,107.379928 121.114463,110.223016 118.504707,111.121627 L85.3406913,122.540913 C82.7323772,123.439028 79.8899862,122.053018 78.9909238,119.441951 L67.5659031,86.2612815 L67.5659031,86.2612815 Z" stroke-width="5" fill="#40484B"></path>
-                            	        <rect stroke-width="4" fill="#40484B" x="21" y="18" width="159" height="18" rx="9"></rect>
-                                    </g>
-                                </g>
-                            </svg>
-                            <h1>Slide 2</h1>
-                        </div>
+                    <div class="swiper-slide slideshow-thumb-2 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                        <a class="progress-step">
+                            <div class="progress-step-icon" ng-include="::img_base + 'templates/svg/splash-hiw.html'"></div>
+                            <h1>How It Works</h1>
+                        </a>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-3 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="400" >
-                        <div>
-                            <svg viewBox="0 0 200 200">
-                                <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect class="bg" fill="#4E5A5E" x="2" y="2" width="196" height="196" rx="8"></rect>
-                                    <g>
-                            	        <rect stroke-width="4" fill="#40484B" x="21" y="18" width="159" height="18" rx="9"></rect>
-                            	        <path d="M23.7073119,56.9288245 C24.2339433,54.219541 26.8545712,52.4496466 29.5639918,52.9763046 L63.9945148,59.6689203 C66.7024384,60.1952874 68.4710163,62.8168027 67.9440938,65.5275838 L61.2481172,99.975397 C60.7214858,102.68468 58.1008579,104.454575 55.3914373,103.927917 L20.9609144,97.2353011 C18.2529907,96.7089341 16.4844129,94.0874188 17.0113354,91.3766377 L23.7073119,56.9288245 L23.7073119,56.9288245 Z" stroke-width="5" fill="#40484B"></path>
-                            	        <rect stroke-width="5" fill="#40484B" x="138.147987" y="58.9471259" width="45.0647482" height="45.0873786" rx="5"></rect>
-                            	        <path d="M25.3200813,122.97363 C26.3091741,120.396955 29.1973278,119.109017 31.7741329,120.09816 L64.5194184,132.667897 C67.0947999,133.656493 68.3812877,136.545292 67.3916482,139.123391 L54.8155986,171.885121 C53.8265058,174.461796 50.9383521,175.749734 48.361547,174.760591 L15.6162615,162.190854 C13.04088,161.202258 11.7543922,158.313459 12.7440317,155.735359 L25.3200813,122.97363 L25.3200813,122.97363 Z" stroke-width="5" fill="#40484B"></path>
-                            	        <path d="M78.869319,130.161304 C79.0137658,127.405094 81.3625683,125.287703 84.1189176,125.432157 L119.145797,127.267838 C121.900624,127.412213 124.016834,129.762077 123.872308,132.51981 L122.035705,167.56428 C121.891258,170.32049 119.542455,172.43788 116.786106,172.293426 L81.7592265,170.457745 C79.0044001,170.313371 76.8881895,167.963506 77.0327162,165.205773 L78.869319,130.161304 L78.869319,130.161304 Z" stroke-width="5" fill="#40484B"></path>
-                            	        <path d="M129.100037,136.70543 C128.811539,133.960557 130.800191,131.501801 133.545203,131.213289 L168.428007,127.546959 C171.171502,127.258606 173.629258,129.248491 173.917915,131.994881 L177.586087,166.895203 C177.874585,169.640076 175.885933,172.098831 173.140921,172.387344 L138.258117,176.053674 C135.514622,176.342027 133.056866,174.352142 132.768208,171.605752 L129.100037,136.70543 L129.100037,136.70543 Z" stroke-width="5" fill="#40484B"></path>
-                            	        <path d="M70.6073009,80.0001064 C70.3667518,77.2506167 72.398012,74.826942 75.1476408,74.5863807 L110.089119,71.5293975 C112.837228,71.288969 115.259882,73.3214452 115.500564,76.0724548 L118.559083,111.031479 C118.799632,113.780969 116.768371,116.204644 114.018743,116.445205 L79.0772648,119.502188 C76.3291551,119.742617 73.9065014,117.710141 73.6658193,114.959131 L70.6073009,80.0001064 L70.6073009,80.0001064 Z" stroke-width="5" fill="#40484B"></path>
-                                    </g>
-                                </g>
-                            </svg>
-                            <h1>Slide 3</h1>
-                        </div>
+                    <div class="swiper-slide slideshow-thumb-3 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                        <a class="progress-step">
+                            <div class="progress-step-icon" ng-include="::img_base + 'templates/svg/splash-bg.html'"></div>
+                			<h1>Become a Guru</h1>
+                        </a>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-4 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="600">
-                        <div>
-                            <svg viewBox="0 0 200 200">
-                                <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect class="bg" fill="#4E5A5E" x="2" y="2" width="196" height="196" rx="8"></rect>
-                                </g>
+                    <div class="swiper-slide slideshow-thumb-4 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                        <a class="progress-step" ng-if='!page.swipers.galleryIndex'>
+                            <div class="progress-step-icon" ng-include="::img_base + 'templates/svg/splash-blank.html'"></div>
+                            <h1>Getting Started</h1>
+                        </a>
+                        <a class="onboarding-step active" ng-if='page.swipers.galleryIndex'>
+            				<svg class="onboarding-icon" viewBox="0 0 100 100">
+                                <path ng-if='page.swipers.galleryIndex' d="M50.4242207,50.1355679 L45.5990961,57.0258328 M50.5,50.1355679 L55.3251246,57.0258328 M50.5,39.2259818 L50.5,49.9441717 M55.7778965,43.6280955 L45.2221035,43.6280955 M50.5,38.6517931 C52.79028,38.6517931 54.6469187,36.7665907 54.6469187,34.4410756 C54.6469187,32.1155606 52.79028,30.2303582 50.5,30.2303582 C48.20972,30.2303582 46.3530813,32.1155606 46.3530813,34.4410756 C46.3530813,36.7665907 48.20972,38.6517931 50.5,38.6517931 Z M66.6639023,59.8793769 L61.8387777,66.7696418 M66.7396816,59.8793769 L71.5648062,66.7696418 M66.7396816,48.9697908 L66.7396816,59.6879806 M72.0175781,53.3719045 L61.4617851,53.3719045 M66.7396816,48.395602 C69.0299616,48.395602 70.8866003,46.5103996 70.8866003,44.1848846 C70.8866003,41.8593696 69.0299616,39.9741672 66.7396816,39.9741672 C64.4494016,39.9741672 62.5927629,41.8593696 62.5927629,44.1848846 C62.5927629,46.5103996 64.4494016,48.395602 66.7396816,48.395602 Z M34.1845391,59.8793769 L29.3594145,66.7696418 M34.2603184,59.8793769 L39.085443,66.7696418 M34.2603184,48.9697908 L34.2603184,59.6879806 M39.5382149,53.3719045 L28.9824219,53.3719045 M34.2603184,48.395602 C36.5505984,48.395602 38.4072371,46.5103996 38.4072371,44.1848846 C38.4072371,41.8593696 36.5505984,39.9741672 34.2603184,39.9741672 C31.9700384,39.9741672 30.1133997,41.8593696 30.1133997,44.1848846 C30.1133997,46.5103996 31.9700384,48.395602 34.2603184,48.395602 Z"></path>
                             </svg>
-                            <h1 ng-if='!page.swipers.galleryIndex'>Getting Started</h1>
-                            <h1 ng-if='page.swipers.galleryIndex'>Demographic</h1>
-                        </div>
+            				<svg class="onboarding-status" viewBox="0 0 160 160">
+            					 <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+            						  <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
+            						  <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
+            						  <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
+            					 </g>
+            				</svg>
+                            <h1>Demographic</h1>
+            			</a>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-5 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="1000">
-                        <div>
-                            <svg viewBox="0 0 200 200">
-                                <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect class="bg" fill="#4E5A5E" x="2" y="2" width="196" height="196" rx="8"></rect>
-                                </g>
-                            </svg>
-                            <h1>Signup</h1>
-                        </div>
+                    <div class="swiper-slide slideshow-thumb-5 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" >
+                        <a class="onboarding-step">
+            				<svg class="onboarding-icon" viewBox="0 0 100 100">
+            					<path d="M29.0625,69.4746739 C29.9383669,61.9102984 34.411127,55.5456659 40.9439259,52.5466977 C38.366931,50.1269695 36.7459934,46.7013569 36.7459934,42.8958127 C36.7459934,35.5875797 42.6917669,29.6418061 50,29.6418061 C57.3082331,29.6418061 63.2540066,35.5875797 63.2540066,42.8958127 C63.2540066,46.7013569 61.633069,50.1269695 59.0560741,52.5466977 C65.588873,55.5456659 70.0616331,61.9102984 70.9375,69.4746739"></path>
+            				</svg>
+            				<svg class="onboarding-status" viewBox="0 0 160 160">
+            					 <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+            						  <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
+            						  <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
+            						  <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
+            					 </g>
+            				</svg>
+            				<h1>Sign Up</h1>
+            			</a>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-6 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="1500">
-                        <div>
-                            <svg viewBox="0 0 200 200">
-                                <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect class="bg" fill="#4E5A5E" x="2" y="2" width="196" height="196" rx="8"></rect>
-                                </g>
-                            </svg>
-                            <h1>Access</h1>
-                        </div>
+                    <div class="swiper-slide slideshow-thumb-6 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" >
+                        <a class="onboarding-step">
+            				<svg class="onboarding-icon" viewBox="0 0 100 100">
+            					<path d="M53.9615385,59.8185363 C49.3858024,57.0152806 30.7143382,56.053238 26.5,55.8631189 L26.5,39.8508085 C32.0010063,39.5571691 49.8418296,38.7966926 53.9615385,35.9234314 L53.9615385,59.8185363 Z M54.173642,30.9304244 L54.173642,65.1798362 M37.4662589,39.9867592 L37.4662589,55.9259086 M54.4701877,53.3901348 C57.26751,53.3901348 59.5351877,51.1195256 59.5351877,48.3185873 C59.5351877,45.5176489 57.26751,43.2470398 54.4701877,43.2470398 M63.8851008,53.0278814 L72.8236875,58.0321509 M64.2468865,43.0320132 L73.1854732,38.0277437 M66.4161525,47.941365 L77.5,47.941365 M35.8290996,56.5780637 L35.8290996,69.4496285 L30.7575521,69.4496285 L30.7575521,56.5780637"></path>
+            				</svg>
+            				<svg class="onboarding-status" viewBox="0 0 160 160">
+            					 <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+            						  <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
+            						  <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
+            						  <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
+            					 </g>
+            				</svg>
+            				<h1>Access</h1>
+            			</a>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-7 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="2000">
-                        <div>
-                            <svg viewBox="0 0 200 200">
-                                <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect class="bg" fill="#4E5A5E" x="2" y="2" width="196" height="196" rx="8"></rect>
-                                </g>
-                            </svg>
-                            <h1>Courses</h1>
-                        </div>
+                    <div class="swiper-slide slideshow-thumb-7 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim">
+                        <a class="onboarding-step">
+            				<svg class="onboarding-icon" viewBox="0 0 100 100">
+            					<path d="M39.4955026,39.4166667 L47.7082519,39.4166667 L47.7082519,44.6666667 L67.6535002,44.6666667 C67.6535002,44.6666667 66.1499805,43.4451667 66.1499805,38.8333333 C66.1499805,34.2215 67.6535002,33 67.6535002,33 L36.5623778,33 C36.5623778,33 35.0394994,34.20225 35.0394994,38.8333333 C35.0394994,43.4644167 36.5623778,44.6666667 36.5623778,44.6666667 L39.4955026,44.6666667 L39.4955026,39.4166667 L39.4955026,39.4166667 L39.4955026,39.4166667 Z M66.7366054,62.1666667 C66.7366054,57.5548333 68.2401252,56.3333333 68.2401252,56.3333333 L35.3891279,56.3333333 C35.3891279,56.3333333 33.8662495,57.5355833 33.8662495,62.1666667 C33.8662495,66.79775 35.3891279,68 35.3891279,68 L68.2401252,68 C68.2401252,68 66.7366054,66.7785 66.7366054,62.1666667 L66.7366054,62.1666667 L66.7366054,62.1666667 Z M63.8034807,50.5 C63.8034807,45.8881667 65.3070004,44.6666667 65.3070004,44.6666667 L47.7082518,44.6666667 L47.7082518,51.6666667 L43.5484943,48.8958333 L39.4955026,51.56575 L39.4955026,44.6666667 L29.5228783,44.6666667 C29.5228783,44.6666667 28,45.8689167 28,50.5 C28,55.1310833 29.5228783,56.3333333 29.5228783,56.3333333 L65.3070004,56.3333333 C65.3070004,56.3333333 63.8034807,55.1118333 63.8034807,50.5 L63.8034807,50.5 L63.8034807,50.5 Z M68.2401252,68 L70,68 L68.2401252,68 L68.2401252,68 Z M69.413375,33 L67.6535002,33 L69.413375,33 L69.413375,33 Z M70,56.3333333 L68.2401252,56.3333333 L70,56.3333333 L70,56.3333333 Z M67.6535002,44.6666667 L69.413375,44.6666667 L67.6535002,44.6666667 L67.6535002,44.6666667 Z M39.4955025,39.4166667 L39.4955025,51.56575 L43.5484943,48.8958333 L47.7082518,51.6666667 L47.7082518,39.4166667 L39.4955025,39.4166667 L39.4955025,39.4166667 L39.4955025,39.4166667 Z"></path>
+            				</svg>
+            				<svg class="onboarding-status" viewBox="0 0 160 160">
+            					 <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+            						  <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
+            						  <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
+            						  <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
+            					 </g>
+            				</svg>
+            				<h1>Courses</h1>
+            			</a>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- <section id='splash-university' class='splash-school-search ng-class:{"hide": !page.load.sections.two.display, "invisible": !page.load.sections.two.visible }'></section>
-        <section class='splash-categories' id='splash-browse'></section>
-        <section id='become-guru'  class="splash-postit ng-class:{'hide':!page.load.sections.five.display}"></section>
-        <section id="splash-footer" class="ng-class:{'hide': !page.load.sections.footer.display}">
-            <div>
-                <ul>
-                    <li>proudly made&nbsp;with</li>
-                    <li>
-                        <span ng-include="::img_base + 'templates/svg/main/heart.html'"></span>
-                    </li>
-                    <li>by college students</li>
-                </ul>
-            </div>
-        </section> -->
     </main>
 </div>
+<!-- <img class="high-z-index absolute bottom-0 left-0 full-x" src="https://2.bp.blogspot.com/-TIxU9owVPBo/VcO7Z1fS5UI/AAAAAAAABUk/xhq0AzZJBwQ/s1600/img_0085.png"/> -->

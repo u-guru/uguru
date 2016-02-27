@@ -40,7 +40,7 @@ function SideMenuService(LoadingService, $timeout, CounterService, CTAService, $
           $ionicSlideBoxDelegate.update();
         });
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/team.html', {
+        $ionicModal.fromTemplateUrl(BASE + 'templates/team.modal.html', {
           scope: scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -54,11 +54,18 @@ function SideMenuService(LoadingService, $timeout, CounterService, CTAService, $
           scope.page.modals.become_guru = modal;
         });
 
-        $ionicModal.fromTemplateUrl(BASE + 'templates/pricing.html', {
+        $ionicModal.fromTemplateUrl(BASE + 'templates/pricing.modal.html', {
           scope: scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
           scope.page.modals.pricing = modal;
+        });
+
+        $ionicModal.fromTemplateUrl(BASE + 'templates/faq.modal.html', {
+          scope: scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          scope.page.modals.faq = modal;
         });
 
         // $ionicModal.fromTemplateUrl(BASE + 'templates/faq.html', {
@@ -72,16 +79,40 @@ function SideMenuService(LoadingService, $timeout, CounterService, CTAService, $
 
     function showSupport(scope) {
       return function() {
-        var intercomContainer = document.querySelector('#intercom-container');
-        intercomContainer.style.cssText += ' z-index:1000 !important;';
         Intercom('show');
-        var intercomMessengerDiv = intercomContainer.querySelector('#intercom-conversation');
-        intercomMessengerDiv.style.cssText = "width: 66% !important; ";
-        intercomContainer.style.visibility = "visible";
+
+        var intercomContainer = document.querySelector('#intercom-container');
+        if (!intercomContainer) {
+          $timeout(function() {
+            console.log('attempting to load intercom again');
+            showSupport(scope)();
+          }, 1000)
+          return;
+        }
+        intercomContainer.style.cssText += ' z-index:1000 !important;';
+        intercomContainer.style.display = "block";
+        $timeout(function() {
+          var intercomMessengerDiv = intercomContainer.querySelector('#intercom-conversation');
+          if (intercomMessengerDiv) {
+            if (scope.desktopMode) {
+              intercomMessengerDiv.style.cssText = "width: 66% !important; ";
+            }
+            $timeout(function() {
+              intercomContainer.style.visibility = "visible";
+            }, 2000);
+          }
+
+        }, 1000);
         Intercom('onHide', function() {
           intercomContainer.style.visibility = "hidden";
+          intercomContainer.style.display = "none";
           var callback = function() {
             document.querySelector('ion-pane#cta-modal-intercom') && document.querySelector('ion-pane#cta-modal-intercom').classList.remove('show');
+            intercomContainer.style.visibility = "hidden";
+            $timeout(function() {
+              intercomContainer.style.visibility = "hidden";
+              intercomContainer.style.display = "none";
+            })
           }
           CTAService.closeCTAManually('#cta-box-intercom', callback);
         });

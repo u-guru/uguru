@@ -201,6 +201,101 @@
 		}
 	}
 
+	// NEXT STEPS
+	#next-steps-container {
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba($slate, .95);
+		&:not(.active) {
+			@include opacity(0);
+			z-index: -1;
+		}
+		&.active {
+			z-index: 101;
+		}
+	}
+	#next-steps {
+		@include flex;
+		width: 100%;
+		max-width: 830px;
+		padding: 15px;
+		.next-device {
+			@include flex-center;
+			display: none;
+			svg {
+				display: block;
+				width: 100%;
+				max-width: 320px;
+			}
+		}
+		.next-content {
+			@include flex;
+			@include flex-wrap;
+			@include prefix(align-content, center, webkit);
+			@include prefix(justify-content, center, webkit);
+			width: 100%;
+			.next-guru {
+				position: relative;
+				.coach-next-steps {
+					position: absolute;
+					top: -50px;
+					right: -95px;
+				}
+			}
+			ol {
+				counter-reset: li;
+				width: 100%;
+				li {
+					@include flex;
+					@include flex-center-vertical;
+					width: 100%;
+					margin-bottom: 10px;
+					&:not(.active) {
+						@include opacity(.5);
+					}
+					span {
+						display: block;
+						width: calc(100% - 48px);
+						padding-left: 15px;
+						font-size: 24px;
+						font-weight: 600;
+						text-align: left;
+						line-height: 1.2;
+					}
+					&:before {
+						@include round;
+						@include flex;
+						@include flex-center;
+						content: counter(li);
+						counter-increment: li;
+						width: 48px;
+						height: 48px;
+						margin-top: 5px;
+						background: white;
+						color: $slate;
+						font-size: 24px;
+						font-weight: 900;
+						line-height: 1;
+					}
+				}
+			}
+		}
+		@media screen and (min-width: 768px) {
+			.next-device {
+				@include flex;
+			}
+			.next-content {
+				width: calc(100% - 320px);
+				padding-left: 15px;
+			}
+		}
+	}
+
 	// HEADERS
 	> header {
 		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
@@ -1053,15 +1148,15 @@
 				height: 100%;
 				ui-gmap-google-map {
 					// @include opacity(.2);
+					// @include prefix(filter, invert(100%), webkit moz ms o);
 					width: 100%;
 					height: 100%;
 					background-position: center;
 					background-size: cover;
-					@include prefix(filter, invert(100%), webkit moz ms o);
 				}
-				.gmnoprint img {
-					@include prefix(filter, invert(100%), webkit moz ms o);
-				}
+				// .gmnoprint img {
+				// 	@include prefix(filter, invert(100%), webkit moz ms o);
+				// }
 				&.animated {
 					@include prefix(animation-delay, 200ms, webkit moz ms o);
 				}
@@ -1813,6 +1908,7 @@
 						border-radius: 8px;
 						font-size: 20px;
 						font-weight: 600;
+						background: rgba($slate, .9);
 						svg {
 							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 							position: absolute;
@@ -2231,61 +2327,168 @@
 			}
 			.swiper-front-gallery-thumbs {
 				@include center-x;
+				@include flex;
 				top: auto;
 				bottom: 0;
-				height: 15%;
+				height: 110px;
 				width: 100%;
 				max-width: 600px;
+				.progress.white-round {
+					position: absolute;
+					top: 35px;
+					background: #606669!important;
+				}
 				.swiper-gallery-wrapper {
 					@include prefix(transform, translate3d(0px, 0px, 0px)!important, webkit moz ms o);
-					width: auto!important;
+					width: 100%!important;
+					height: 100%!important;
 					.swiper-slide {
 						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 						width: 25%!important;
+						height: 80px!important;
 						margin: 0!important;
-						padding: 0 7.5px;
 						text-align: center;
-						&.swiper-slide-active {
-							> div {
+						.progress-step {
+							@include flex;
+							@include flex-center;
+							position: relative;
+							height: 100%;
+							background: none;
+							.progress-step-icon {
+								height: 100%;
+								width: 80px;
+								background: none;
 								svg {
-									.bg {
-										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-										fill: $shamrock!important;
+									display: block;
+									width: 80px;
+									height: 80px;
+									* {
+										stroke-width: 6px;
+									}
+								}
+							}
+							&:hover, &:focus {
+								.progress-step-icon {
+									svg {
+										.bg {
+											@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+											fill: lighten($slate, 30%)!important;
+										}
+										*:not(.bg) {
+											fill: rgba($slate, .5);
+										}
+									}
+								}
+							}
+							h1 {
+								@include center-x;
+								bottom: -23px;
+								text-align: center;
+								font-size: 18px;
+								font-weight: 600;
+								text-transform: lowercase;
+								white-space: nowrap;
+							}
+						}
+						.onboarding-step {
+							@include round;
+							@include flex;
+							@include flex-center;
+							position: relative;
+							margin: 0 auto;
+							width: 80px;
+							height: 80px;
+							h1 {
+								@include center-x;
+								bottom: -23px;
+								text-align: center;
+								font-size: 18px;
+								font-weight: 600;
+								text-transform: lowercase;
+								white-space: nowrap;
+							}
+							.onboarding-icon {
+								@include round;
+								@include svg-stroke(white, 4);
+								display: block;
+								width: 100%;
+								height: 100%;
+								background: #9FA3A5;
+							}
+							.onboarding-status {
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								.top, .bottom {
+									@include prefix(transition, stroke-dashoffset 300ms ease-in-out, webkit moz ms o);
+									@include opacity(0);
+									stroke-dasharray: 220, 220;
+									stroke-dashoffset: 220;
+								}
+							}
+						}
+						&.complete {
+							.onboarding-step {
+								.onboarding-icon {
+									background: mix($shamrock, $slate);
+								}
+								.onboarding-status {
+									.top, .bottom {
+										@include opacity(1);
+										stroke-dashoffset: 0;
+									}
+								}
+							}
+						}
+						&.swiper-slide-prev {
+							.onboarding-step {
+								.onboarding-icon {
+									background: $shamrock;
+								}
+								.onboarding-status {
+									.top, .bottom {
+										@include opacity(1);
+										stroke-dashoffset: 0;
+									}
+								}
+							}
+						}
+						&.swiper-slide-active {
+							.progress-step {
+								.progress-step-icon {
+									svg {
+										.bg {
+											@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+											fill: $shamrock!important;
+										}
+										*:not(.bg) {
+											fill: rgba($slate, .5);
+										}
+									}
+								}
+							}
+							.onboarding-step {
+								.onboarding-icon {
+									background: $shamrock;
+								}
+								.onboarding-status {
+									.top, .bottom {
+										@include prefix(transition, stroke-dashoffset 150ms ease-in-out, webkit moz ms o);
+										@include opacity(1);
+										stroke-dashoffset: 110;
 									}
 								}
 							}
 						}
 						&:not(.swiper-slide-active) {
-							> div {
-								svg {
-									@include opacity(.5);
-								}
-							}
-						}
-						> div {
-							@include flex;
-							@include flex-wrap;
-							@include flex-center;
-							position: relative;
-							width: 100%;
-							height: 100%;
-							svg {
-								display: block;
-								height: 100%;
-								min-height: 100px;
-								width: 100%;
-								min-width: 100px;
-								g {
-									g {
-										@include opacity(.1);
+							.progress-step {
+								.progress-step-icon {
+									svg {
+										@include opacity(.5);
 									}
 								}
-							}
-							h1 {
-								@include center-xy;
-								z-index: 1;
-								font-size: 20px;
-								font-weight: 600;
 							}
 						}
 					}
@@ -2332,6 +2535,454 @@
 				font-size: 20px;
 				font-weight: 600;
 				line-height: 1.2;
+				.btn-ghost-white {
+					padding-top: 0;
+					padding-bottom: 0;
+					height: 54px;
+				}
+				.splash-projector-guru {
+					@include center-x;
+					top: 0;
+					.splash-logo-guru {
+						@include prefix(transform, rotate(-7deg), webkit moz ms o);
+						@include prefix(trasnform-origin, center, webkit moz ms o);
+					}
+					.coach {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						position: absolute;
+						top: -50px;
+						right: -95px;
+						&:not(.active) {
+							@include opacity(0);
+						}
+					}
+				}
+				&#splash-signup {
+					padding: 0!important;
+					overflow: visible!important;
+					.btn-login-fb {
+						background: $facebook;
+						&:hover, &:focus {
+							background: white;
+							color: $facebook;
+						}
+					}
+					.btn-login-login {
+						background: $shamrock;
+						&:hover, &:focus {
+							background: white;
+						}
+					}
+					.btn-forgot-pw {
+						background: lighten($slate, 15%);
+						&:hover, &:focus {
+							background: white;
+						}
+					}
+					.splash-content {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						position: absolute;
+						top: 0;
+						width: 100%;
+						height: 100%;
+						padding: 0;
+						&:not(.active) {
+							@include opacity(0);
+							z-index: -10;
+						}
+						.btn-splash-login {
+							@include opacity(.5);
+							position: absolute;
+							top: 15px;
+							right: 15px;
+							&:hover, &:focus {
+								@include opacity(1);
+							}
+						}
+						.input-field {
+							width: 100%;
+							input {
+								color: white;
+							}
+							a {
+								&:not(.active) {
+									svg {
+										@include opacity(0);
+									}
+								}
+							}
+							svg {
+								@include svg-stroke(white, 5);
+								display: block;
+								position: absolute;
+								right: 0;
+								top: 0;
+								width: 30px;
+								height: 30px;
+								&.clear {
+									@include prefix(transform, rotate(45deg), webkit moz ms o);
+								}
+								&.verified {
+									circle {
+										fill: $moxie;
+									}
+								}
+								&.error {
+									@include prefix(transform, rotate(45deg), webkit moz ms o);
+									circle {
+										fill: $crimson;
+									}
+								}
+							}
+						}
+					}
+					.splash-login-content {
+						.login-buttons {
+							@include flex;
+							@include flex-center;
+							@include flex-wrap;
+							margin: 22.5px auto 0;
+							max-width: 500px;
+							button {
+								margin: 7.5px;
+							}
+						}
+					}
+					.splash-signup-content {
+						.splash-signup-inside {
+							@include flex;
+							.splash-signup-form {
+								position: relative;
+								@include flex;
+								@include flex-center-vertical;
+								width: 100%;
+								height: 51px;
+								.input-field {
+									@include center-y;
+									left: 15px;
+									width: calc(100% - 30px);
+									input {
+										height: 36px;
+									}
+									&:not(.active) {
+										@include opacity(0);
+										z-index: -10;
+									}
+								}
+							}
+							.btn-login-fb {
+								@include center-x;
+								bottom: 15px;
+							}
+						}
+					}
+					@media screen and (max-width: 768px) {
+						.btn-ghost-white {
+							padding-left: 20px;
+		    				padding-right: 20px;
+							white-space: nowrap;
+						}
+						.btn-splash-login {
+							display: none;
+						}
+						.btn-login-fb {
+							display: none;
+						}
+						.splash-projector-guru {
+							display: none;
+						}
+						.splash-signup-content {
+							.splash-signup-inside {
+								@include flex-center;
+								@include flex-wrap;
+								padding-top: 15px;
+								.splash-signup-form {
+									width: 100%;
+								}
+								.splash-signup-buttons {
+									position: absolute;
+									bottom: 0;
+									left: 0;
+									width: 100%;
+									@include flex;
+									li {
+										width: 50%;
+										button {
+											font-size: 16px!important;
+											font-weight: 600;
+											line-height: 1.2;
+											height: 50px;
+										}
+										&:first-child {
+											button {
+												background: $shamrock;
+											}
+										}
+										&:last-child {
+											button {
+												background: $facebook;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					@media screen and (min-width: 768px) {
+						.splash-content {
+							padding: 150px 30px 15px;
+						}
+						.splash-signup-content {
+							.splash-signup-inside {
+								.splash-signup-form {
+									width: calc(100% - 240px);
+									height: 160px;
+									.input-field {
+										left: 30px;
+										input {
+											height: 64px;
+											font-size: 48px;
+											font-weight: 300;
+										}
+										svg {
+											@include svg-stroke(white, 4);
+											top: 5px;
+											width: 50px;
+											height: 50px;
+										}
+									}
+								}
+								.splash-signup-buttons {
+									display: none;
+								}
+							}
+						}
+					}
+				}
+				&#splash-access {
+					overflow: visible!important;
+					padding: 0!important;
+					.guru {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						&:not(.active) {
+							@include opacity(0);
+						}
+					}
+					.user-icon {
+						@include center-xy;
+						border-width: 2px;
+						width: 110px;
+						height: 110px;
+					}
+					.splash-access-content {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						padding: 200px 15px 15px;
+						.splash-access-inside {
+							position: relative;
+							width: 100%;
+							max-width: 652px;
+							height: 119px;
+						}
+						.splash-access-code {
+							@include flex;
+							@include flex-center;
+							position: relative;
+							z-index: 10;
+							background: none;
+							border: 0;
+							width: 100%;
+							max-width: 652px;
+							height: 119px;
+							font-size: 48px;
+							text-align: center;
+							line-height: 1.2;
+							padding-bottom: 10px;
+							color: white;
+							font-weight: 300;
+							@include placeholder {
+								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+							}
+							+ div {
+								position: absolute;
+								top: 0;
+								left: 0;
+								.splash-access-bubble {
+									max-width: 100%;
+									display: block;
+									path {
+										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+									}
+								}
+								button {
+									display: block;
+									margin: 15px auto;
+								}
+								.btn-access-activate {
+									background: $shamrock;
+									&:hover, &:focus {
+										background: white;
+										color: $shamrock;
+									}
+								}
+								.btn-access-skip {
+									background: lighten($slate, 15%);
+									&:hover, &:focus {
+										background: white;
+										color: $shamrock;
+									}
+								}
+							}
+							&:focus {
+								@include placeholder {
+									color: white;
+								}
+								+ div {
+									.splash-access-bubble {
+										path {
+											fill: lighten($slate, 15%);
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				&#splash-courses {
+					@include flex;
+					@include flex-wrap;
+					@include prefix(align-content, flex-start, webkit);
+					@include prefix(justify-content, center, webkit);
+					overflow: visible!important;
+					padding: 0!important;
+					.splash-logo-guru {
+						position: absolute;
+						bottom: -30px;
+						left: -30px;
+						display: block;
+					}
+					.backpack {
+						position: absolute;
+						bottom: -15px;
+						right: -15px;
+						display: block;
+						width: 100px;
+						height: 100px;
+					}
+					form {
+						@include prefix(align-self, flex-start, webkit);
+						width: 100%;
+						padding: 0 15px;
+					}
+					.input-field {
+						width: 100%;
+						margin: 15px auto 0;
+						input {
+							margin-bottom: 0;
+						}
+						label:not(.active) {
+							top: 0;
+						}
+						.prefix {
+							top: 9px;
+						}
+					}
+					ul {
+						@include listless;
+						@include flex;
+						@include flex-wrap;
+						padding: 7.5px;
+						width: 100%;
+						max-width: 750px;
+						li {
+							padding: 7.5px;
+						}
+					}
+					.course-search {
+						@include prefix(align-self, flex-start, webkit);
+						@include flex-center;
+						li {
+							width: calc(100% / 3);
+							max-width: 250px;
+							a {
+								@include flex;
+								@include flex-wrap;
+								height: 100px;
+								border: 2px solid white;
+								border-radius: 2px;
+								text-align: center;
+								div {
+									width: 100%;
+									height: 100%;
+									.course-name {
+										display: block;
+										margin: 15px auto 5px;
+										font-size: 14px;
+										font-weight: 600;
+										text-transform: uppercase;
+									}
+									.course-title {
+										display: block;
+										margin: 0 auto;
+										padding: 0 15px 15px;
+										overflow: hidden;
+										height: calc(100% - 36px);
+										border-bottom-width: 5px;
+										border-bottom-style: solid;
+										font-size: 18px;
+										span {
+											display: block;
+											height: 44px;
+											overflow: hidden;
+										}
+									}
+								}
+								&:hover, &:focus {
+									background: white;
+									color: $slate;
+								}
+							}
+						}
+					}
+					.course-selected {
+						@include prefix(align-self, flex-end, webkit);
+						li {
+							a {
+								@include flex;
+								border: 2px solid white;
+								border-radius: 2px;
+								> span {
+									@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+									@include flex;
+									@include flex-center;
+									padding: 5px 8px 5px 10px;
+									border-bottom-width: 5px;
+									border-bottom-style: solid;
+									font-size: 18px;
+									svg {
+										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+										@include prefix(transform, rotate(45deg), webkit moz ms o);
+										@include svg-stroke(white, 9);
+										display: block;
+										width: 18px;
+										height: 18px;
+										margin-left: 5px;
+									}
+								}
+								&:hover, &:active {
+									background: white;
+									> span {
+										color: $slate;
+										svg {
+											stroke: $slate;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 			@media screen and (max-width: 320px) {
 				.splash-projector-message {
@@ -2340,7 +2991,7 @@
 			}
 			@media screen and (max-width: 414px) and (max-height: 736px) {
 				.header-swiper-front {
-					padding: 25% 0;
+					padding: 20% 0 30%;
 					// .swiper-slide {
 					// 	margin-right: 0px!important;
 					// }
@@ -2444,9 +3095,9 @@
 			}
 			.splash-map-stats {
 				z-index: 2;
-				background: -moz-linear-gradient(top, rgba($slate,0) 0%, rgba($slate,1) 75%, rgba($slate,1) 100%);
-				background: -webkit-linear-gradient(top, rgba($slate,0) 0%, rgba($slate,1) 75%, rgba($slate,1) 100%);
-				background: linear-gradient(to bottom, rgba($slate,0) 0%, rgba($slate,1) 75%, rgba($slate,1) 100%);
+				background: -moz-linear-gradient(top, rgba($slate,0) 0%, rgba($slate,1) 50%, rgba($slate,1) 100%);
+				background: -webkit-linear-gradient(top, rgba($slate,0) 0%, rgba($slate,1) 50%, rgba($slate,1) 100%);
+				background: linear-gradient(to bottom, rgba($slate,0) 0%, rgba($slate,1) 50%, rgba($slate,1) 100%);
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0040484b', endColorstr='$slate',GradientType=0 );
 				> ul {
 					@include flex;
@@ -2497,7 +3148,7 @@
 					> ul {
 						padding: 7.5px;
 						li {
-							width: calc(100% / 3);
+							width: 50%;
 							padding: 7.5px;
 							text-align: center;
 							h4 {
@@ -2534,13 +3185,11 @@
 				.splash-map-stats {
 					@include flex;
 					@include flex-center-vertical;
-					@include prefix(justify-content, space-between, webkit);
-					width: 100%;
+					@include prefix(justify-content, flex-end, webkit);
 					position: absolute;
 					bottom: 0;
-					left: 0;
-					padding: 50px 15px 15px;
-					min-height: 150px;
+					right: 0;
+					width: 100%;
 					> * {
 						h1 {
 							font-size: 36px;
@@ -2610,7 +3259,7 @@
 					@include prefix(align-content, space-between, webkit);
 					width: 100%;
 					height: 100%;
-					background: rgba($shamrock, .2);
+					background: lighten($slate, 15%);
 					padding: 15px;
 				}
 				ul {
@@ -2734,6 +3383,72 @@
 
 		// HOW IT WORKS
 		#how-it-works {
+			.main {
+				ul {
+					li {
+						&:nth-child(1) {
+							svg {
+								circle, path {
+									stroke: $cobalt;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $cobalt;
+								}
+							}
+						}
+						&:nth-child(2) {
+							svg {
+								circle, path {
+									stroke: $eggplant;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $eggplant;
+								}
+							}
+						}
+						&:nth-child(3) {
+							svg {
+								circle, path {
+									stroke: $cerise;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $cerise;
+								}
+							}
+						}
+						&:nth-child(4) {
+							svg {
+								circle, path {
+									stroke: $azure;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $azure;
+								}
+							}
+						}
+						&:nth-child(5) {
+							svg {
+								circle, path {
+									stroke: $orange;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $orange;
+								}
+							}
+						}
+						&:nth-child(6) {
+							svg {
+								circle, path {
+									stroke: $moola;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $moola;
+								}
+							}
+						}
+					}
+				}
+			}
 			@media screen and (min-width: 768px) {
 				.main {
 					ul {
@@ -2744,18 +3459,6 @@
 								}
 								.tape {
 									display: none;
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $cobalt;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cobalt;
-											}
-										}
-									}
 								}
 							}
 							&:nth-child(2) {
@@ -2784,18 +3487,6 @@
 										}
 									}
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $eggplant;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $eggplant;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(3) {
 								> div {
@@ -2815,18 +3506,6 @@
 										&:nth-child(2) {
 											@include animation-name(tape-3);
 											@include animation-delay(.5s);
-										}
-									}
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $cerise;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cerise;
-											}
 										}
 									}
 								}
@@ -2857,18 +3536,6 @@
 										}
 									}
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $azure;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $azure;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(5) {
 								> div {
@@ -2877,18 +3544,6 @@
 								.tape {
 									display: none;
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $orange;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $orange;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(6) {
 								> div {
@@ -2896,18 +3551,6 @@
 								}
 								.tape {
 									display: none;
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $moola;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $moola;
-											}
-										}
-									}
 								}
 							}
 						}
@@ -2918,6 +3561,91 @@
 
 		// BECOME A GURU
 		#become-guru {
+			.main {
+				ul {
+					li {
+						&:nth-child(1) {
+							svg {
+								circle, path {
+									stroke: $cerise;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $cerise;
+								}
+							}
+						}
+						&:nth-child(2) {
+							svg {
+								circle, path {
+									stroke: $eggplant;
+								}
+								path[fill="#69B3A5"] {
+									fill: $eggplant;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $eggplant;
+								}
+							}
+						}
+						&:nth-child(3) {
+							svg {
+								circle, path {
+									stroke: $cobalt;
+								}
+								rect[fill="#69B3A5"] {
+									fill: $cobalt;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $cobalt;
+								}
+							}
+						}
+						&:nth-child(4) {
+							svg {
+								circle, path {
+									stroke: $orange;
+								}
+								circle[fill="#69B3A5"] {
+									fill: $orange!important;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $orange;
+								}
+							}
+						}
+						&:nth-child(5) {
+							svg {
+								circle, path {
+									stroke: $moola;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $moola;
+								}
+								path {
+									&:nth-child(2) {
+										fill: none!important;
+										stroke: white;
+									}
+									&:nth-child(3) {
+										fill: none!important;
+										stroke: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							svg {
+								circle, path {
+									stroke: $azure;
+								}
+								*[opacity="0.5"], *[fill-opacity="0.5"]{
+									fill: $azure;
+								}
+							}
+						}
+					}
+				}
+			}
 			@media screen and (min-width: 768px) {
 				.main {
 					ul {
@@ -2940,18 +3668,6 @@
 										&:nth-child(2) {
 											@include animation-name(tape-3);
 											@include animation-delay(.5s);
-										}
-									}
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $cerise;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cerise;
-											}
 										}
 									}
 								}
@@ -2981,21 +3697,6 @@
 										}
 									}
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $eggplant;
-											}
-											path[fill="#69B3A5"] {
-												fill: $eggplant;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $eggplant;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(3) {
 								> div {
@@ -3003,21 +3704,6 @@
 								}
 								.tape {
 									display: none;
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $cobalt;
-											}
-											rect[fill="#69B3A5"] {
-												fill: $cobalt;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $cobalt;
-											}
-										}
-									}
 								}
 							}
 							&:nth-child(4) {
@@ -3027,21 +3713,6 @@
 								.tape {
 									display: none;
 								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $orange;
-											}
-											circle[fill="#69B3A5"] {
-												fill: $orange!important;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $orange;
-											}
-										}
-									}
-								}
 							}
 							&:nth-child(5) {
 								> div {
@@ -3049,28 +3720,6 @@
 								}
 								.tape {
 									display: none;
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $moola;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $moola;
-											}
-											path {
-												&:nth-child(2) {
-													fill: none!important;
-													stroke: white;
-												}
-												&:nth-child(3) {
-													fill: none!important;
-													stroke: $moola;
-												}
-											}
-										}
-									}
 								}
 							}
 							&:nth-child(6) {
@@ -3096,18 +3745,6 @@
 										&:nth-child(2) {
 											@include animation-name(tape-4);
 											@include animation-delay(.75s);
-										}
-									}
-								}
-								.postit {
-									> div {
-										svg {
-											circle, path {
-												stroke: $azure;
-											}
-											*[opacity="0.5"], *[fill-opacity="0.5"]{
-												fill: $azure;
-											}
 										}
 									}
 								}
@@ -3629,11 +4266,11 @@
 	z-index: -999999!important;
 }
 
-.splash-landing > section.splash-hero .splash-hero-map ui-gmap-google-map {
-	.angular-google-map-container .gm-style > div:first-child > div:nth-child(1),
-	.angular-google-map-container .gm-style > div:first-child > div:nth-child(2), {
-		opacity:0.2 !important;
-	}
+.splash-landing > section.splash-hero .splash-hero-map.limited-opacity ui-gmap-google-map {
+	// .angular-google-map-container .gm-style > div:first-child > div:nth-child(1),
+	// .angular-google-map-container .gm-style > div:first-child > div:nth-child(2), {
+	// 	opacity:0.2 !important;
+	// }
 	.angular-google-map-container .gm-style > div:first-child > div:nth-child(3) {
 		.selected-university-svg-icon {
 			opacity: 0;
@@ -3643,3 +4280,7 @@
 		}
 	}
 }
+
+// .selected-university-place-marker {
+// 	@include prefix(filter, invert(100%), webkit moz ms o);
+// }

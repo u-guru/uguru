@@ -1180,7 +1180,11 @@
 
 .splash-landing .splash-sidebar-full .splash-sidebar-menu button {
   display: block;
-  margin: 15px auto 7px;
+  margin: 15px auto;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu .school-id-card {
+  margin: 15px auto;
 }
 
 .splash-landing .splash-sidebar-full .splash-sidebar-menu .splash-sidebar-links li {

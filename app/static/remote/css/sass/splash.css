@@ -269,6 +269,148 @@
     @media screen and (max-width: 768px) {
       .splash-landing button:not([class*="btn-ghost"]) {
         font-size: 22px !important; } }
+  .splash-landing #next-steps-container {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(64, 72, 75, 0.95); }
+    .splash-landing #next-steps-container:not(.active) {
+      filter: alpha(opacity=0);
+      opacity: 0;
+      z-index: -1; }
+    .splash-landing #next-steps-container.active {
+      z-index: 101; }
+  .splash-landing #next-steps {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    max-width: 830px;
+    padding: 15px; }
+    .splash-landing #next-steps .next-device {
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      display: none; }
+      .splash-landing #next-steps .next-device svg {
+        display: block;
+        width: 100%;
+        max-width: 320px; }
+    .splash-landing #next-steps .next-content {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      width: 100%; }
+      .splash-landing #next-steps .next-content .next-guru {
+        position: relative; }
+        .splash-landing #next-steps .next-content .next-guru .coach-next-steps {
+          position: absolute;
+          top: -50px;
+          right: -95px; }
+      .splash-landing #next-steps .next-content ol {
+        counter-reset: li;
+        width: 100%; }
+        .splash-landing #next-steps .next-content ol li {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-align-content: center;
+          align-content: center;
+          -webkit-align-items: center;
+          align-items: center;
+          width: 100%;
+          margin-bottom: 10px; }
+          .splash-landing #next-steps .next-content ol li:not(.active) {
+            filter: alpha(opacity=50);
+            opacity: 0.5; }
+          .splash-landing #next-steps .next-content ol li span {
+            display: block;
+            width: calc(100% - 48px);
+            padding-left: 15px;
+            font-size: 24px;
+            font-weight: 600;
+            text-align: left;
+            line-height: 1.2; }
+          .splash-landing #next-steps .next-content ol li:before {
+            border-radius: 1000px;
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            content: counter(li);
+            counter-increment: li;
+            width: 48px;
+            height: 48px;
+            margin-top: 5px;
+            background: white;
+            color: #40484B;
+            font-size: 24px;
+            font-weight: 900;
+            line-height: 1; }
+    @media screen and (min-width: 768px) {
+      .splash-landing #next-steps .next-device {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex; }
+      .splash-landing #next-steps .next-content {
+        width: calc(100% - 320px);
+        padding-left: 15px; } }
   .splash-landing > header {
     -webkit-transition: all 150ms ease-in-out;
     -moz-transition: all 150ms ease-in-out;
@@ -1264,18 +1406,7 @@
           width: 100%;
           height: 100%;
           background-position: center;
-          background-size: cover;
-          -webkit-filter: invert(100%);
-          -moz-filter: invert(100%);
-          -ms-filter: invert(100%);
-          -o-filter: invert(100%);
-          filter: invert(100%); }
-        .splash-landing > section.splash-hero .splash-hero-map .gmnoprint img {
-          -webkit-filter: invert(100%);
-          -moz-filter: invert(100%);
-          -ms-filter: invert(100%);
-          -o-filter: invert(100%);
-          filter: invert(100%); }
+          background-size: cover; }
         .splash-landing > section.splash-hero .splash-hero-map.animated {
           -webkit-animation-delay: 200ms;
           -moz-animation-delay: 200ms;
@@ -2154,7 +2285,8 @@
             padding: 0;
             border-radius: 8px;
             font-size: 20px;
-            font-weight: 600; }
+            font-weight: 600;
+            background: rgba(64, 72, 75, 0.9); }
             .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a svg {
               -webkit-transition: all 150ms ease-in-out;
               -moz-transition: all 150ms ease-in-out;
@@ -2552,18 +2684,30 @@
         -ms-transform: translateX(-50%);
         -o-transform: translateX(-50%);
         transform: translateX(-50%);
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
         top: auto;
         bottom: 0;
-        height: 15%;
+        height: 110px;
         width: 100%;
         max-width: 600px; }
+        .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .progress.white-round {
+          position: absolute;
+          top: 35px;
+          background: #606669 !important; }
         .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper {
           -webkit-transform: translate3d(0px, 0px, 0px) !important;
           -moz-transform: translate3d(0px, 0px, 0px) !important;
           -ms-transform: translate3d(0px, 0px, 0px) !important;
           -o-transform: translate3d(0px, 0px, 0px) !important;
           transform: translate3d(0px, 0px, 0px) !important;
-          width: auto !important; }
+          width: 100% !important;
+          height: 100% !important; }
           .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide {
             -webkit-transition: all 150ms ease-in-out;
             -moz-transition: all 150ms ease-in-out;
@@ -2571,20 +2715,10 @@
             -o-transition: all 150ms ease-in-out;
             transition: all 150ms ease-in-out;
             width: 25% !important;
+            height: 80px !important;
             margin: 0 !important;
-            padding: 0 7.5px;
             text-align: center; }
-            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide.swiper-slide-active > div svg .bg {
-              -webkit-transition: all 150ms ease-in-out;
-              -moz-transition: all 150ms ease-in-out;
-              -ms-transition: all 150ms ease-in-out;
-              -o-transition: all 150ms ease-in-out;
-              transition: all 150ms ease-in-out;
-              fill: #69B3A5 !important; }
-            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide:not(.swiper-slide-active) > div svg {
-              filter: alpha(opacity=50);
-              opacity: 0.5; }
-            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide > div {
+            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .progress-step {
               -ms-box-orient: horizontal;
               display: -webkit-box;
               display: -moz-box;
@@ -2592,9 +2726,6 @@
               display: -moz-flex;
               display: -webkit-flex;
               display: flex;
-              -ms-flex-flow: row wrap;
-              -webkit-flex-flow: row wrap;
-              flex-flow: row wrap;
               -webkit-flex-direction: row;
               flex-direction: row;
               -webkit-align-items: center;
@@ -2604,29 +2735,138 @@
               -webkit-justify-content: center;
               justify-content: center;
               position: relative;
-              width: 100%;
-              height: 100%; }
-              .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide > div svg {
-                display: block;
+              height: 100%;
+              background: none; }
+              .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .progress-step .progress-step-icon {
                 height: 100%;
-                min-height: 100px;
-                width: 100%;
-                min-width: 100px; }
-                .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide > div svg g g {
-                  filter: alpha(opacity=10);
-                  opacity: 0.1; }
-              .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide > div h1 {
+                width: 80px;
+                background: none; }
+                .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .progress-step .progress-step-icon svg {
+                  display: block;
+                  width: 80px;
+                  height: 80px; }
+                  .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .progress-step .progress-step-icon svg * {
+                    stroke-width: 6px; }
+              .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .progress-step:hover .progress-step-icon svg .bg, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .progress-step:focus .progress-step-icon svg .bg {
+                -webkit-transition: all 150ms ease-in-out;
+                -moz-transition: all 150ms ease-in-out;
+                -ms-transition: all 150ms ease-in-out;
+                -o-transition: all 150ms ease-in-out;
+                transition: all 150ms ease-in-out;
+                fill: #89969b !important; }
+              .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .progress-step:hover .progress-step-icon svg *:not(.bg), .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .progress-step:focus .progress-step-icon svg *:not(.bg) {
+                fill: rgba(64, 72, 75, 0.5); }
+              .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .progress-step h1 {
                 position: absolute;
-                top: 50%;
                 left: 50%;
-                -webkit-transform: translate(-50%, -50%);
-                -moz-transform: translate(-50%, -50%);
-                -ms-transform: translate(-50%, -50%);
-                -o-transform: translate(-50%, -50%);
-                transform: translate(-50%, -50%);
-                z-index: 1;
-                font-size: 20px;
-                font-weight: 600; }
+                -webkit-transform: translateX(-50%);
+                -moz-transform: translateX(-50%);
+                -ms-transform: translateX(-50%);
+                -o-transform: translateX(-50%);
+                transform: translateX(-50%);
+                bottom: -23px;
+                text-align: center;
+                font-size: 18px;
+                font-weight: 600;
+                text-transform: lowercase;
+                white-space: nowrap; }
+            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .onboarding-step {
+              border-radius: 1000px;
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-align-content: center;
+              align-content: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              position: relative;
+              margin: 0 auto;
+              width: 80px;
+              height: 80px; }
+              .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .onboarding-step h1 {
+                position: absolute;
+                left: 50%;
+                -webkit-transform: translateX(-50%);
+                -moz-transform: translateX(-50%);
+                -ms-transform: translateX(-50%);
+                -o-transform: translateX(-50%);
+                transform: translateX(-50%);
+                bottom: -23px;
+                text-align: center;
+                font-size: 18px;
+                font-weight: 600;
+                text-transform: lowercase;
+                white-space: nowrap; }
+              .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .onboarding-step .onboarding-icon {
+                border-radius: 1000px;
+                fill: none;
+                stroke: white;
+                stroke-width: 4px;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                display: block;
+                width: 100%;
+                height: 100%;
+                background: #9FA3A5; }
+              .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .onboarding-step .onboarding-status {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%; }
+                .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .onboarding-step .onboarding-status .top, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .onboarding-step .onboarding-status .bottom {
+                  -webkit-transition: stroke-dashoffset 300ms ease-in-out;
+                  -moz-transition: stroke-dashoffset 300ms ease-in-out;
+                  -ms-transition: stroke-dashoffset 300ms ease-in-out;
+                  -o-transition: stroke-dashoffset 300ms ease-in-out;
+                  transition: stroke-dashoffset 300ms ease-in-out;
+                  filter: alpha(opacity=0);
+                  opacity: 0;
+                  stroke-dasharray: 220, 220;
+                  stroke-dashoffset: 220; }
+            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide.complete .onboarding-step .onboarding-icon {
+              background: #557e78; }
+            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide.complete .onboarding-step .onboarding-status .top, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide.complete .onboarding-step .onboarding-status .bottom {
+              filter: alpha(opacity=100);
+              opacity: 1;
+              stroke-dashoffset: 0; }
+            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide.swiper-slide-prev .onboarding-step .onboarding-icon {
+              background: #69B3A5; }
+            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide.swiper-slide-prev .onboarding-step .onboarding-status .top, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide.swiper-slide-prev .onboarding-step .onboarding-status .bottom {
+              filter: alpha(opacity=100);
+              opacity: 1;
+              stroke-dashoffset: 0; }
+            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide.swiper-slide-active .progress-step .progress-step-icon svg .bg {
+              -webkit-transition: all 150ms ease-in-out;
+              -moz-transition: all 150ms ease-in-out;
+              -ms-transition: all 150ms ease-in-out;
+              -o-transition: all 150ms ease-in-out;
+              transition: all 150ms ease-in-out;
+              fill: #69B3A5 !important; }
+            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide.swiper-slide-active .progress-step .progress-step-icon svg *:not(.bg) {
+              fill: rgba(64, 72, 75, 0.5); }
+            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide.swiper-slide-active .onboarding-step .onboarding-icon {
+              background: #69B3A5; }
+            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide.swiper-slide-active .onboarding-step .onboarding-status .top, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide.swiper-slide-active .onboarding-step .onboarding-status .bottom {
+              -webkit-transition: stroke-dashoffset 150ms ease-in-out;
+              -moz-transition: stroke-dashoffset 150ms ease-in-out;
+              -ms-transition: stroke-dashoffset 150ms ease-in-out;
+              -o-transition: stroke-dashoffset 150ms ease-in-out;
+              transition: stroke-dashoffset 150ms ease-in-out;
+              filter: alpha(opacity=100);
+              opacity: 1;
+              stroke-dashoffset: 110; }
+            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide:not(.swiper-slide-active) .progress-step .progress-step-icon svg {
+              filter: alpha(opacity=50);
+              opacity: 0.5; }
       .splash-landing > section#splash-projector .projector-top {
         position: absolute;
         top: .2%;
@@ -2664,12 +2904,584 @@
         font-size: 20px;
         font-weight: 600;
         line-height: 1.2; }
+        .splash-landing > section#splash-projector .projector-content .btn-ghost-white {
+          padding-top: 0;
+          padding-bottom: 0;
+          height: 54px; }
+        .splash-landing > section#splash-projector .projector-content .splash-projector-guru {
+          position: absolute;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+          top: 0; }
+          .splash-landing > section#splash-projector .projector-content .splash-projector-guru .splash-logo-guru {
+            -webkit-transform: rotate(-7deg);
+            -moz-transform: rotate(-7deg);
+            -ms-transform: rotate(-7deg);
+            -o-transform: rotate(-7deg);
+            transform: rotate(-7deg);
+            -webkit-trasnform-origin: center;
+            -moz-trasnform-origin: center;
+            -ms-trasnform-origin: center;
+            -o-trasnform-origin: center;
+            trasnform-origin: center; }
+          .splash-landing > section#splash-projector .projector-content .splash-projector-guru .coach {
+            -webkit-transition: all 150ms ease-in-out;
+            -moz-transition: all 150ms ease-in-out;
+            -ms-transition: all 150ms ease-in-out;
+            -o-transition: all 150ms ease-in-out;
+            transition: all 150ms ease-in-out;
+            position: absolute;
+            top: -50px;
+            right: -95px; }
+            .splash-landing > section#splash-projector .projector-content .splash-projector-guru .coach:not(.active) {
+              filter: alpha(opacity=0);
+              opacity: 0; }
+        .splash-landing > section#splash-projector .projector-content#splash-signup {
+          padding: 0 !important;
+          overflow: visible !important; }
+          .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb {
+            background: #3b5998; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb:focus {
+              background: white;
+              color: #3b5998; }
+          .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-login {
+            background: #69B3A5; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-login:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-login:focus {
+              background: white; }
+          .splash-landing > section#splash-projector .projector-content#splash-signup .btn-forgot-pw {
+            background: #637074; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .btn-forgot-pw:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .btn-forgot-pw:focus {
+              background: white; }
+          .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content {
+            -webkit-transition: all 150ms ease-in-out;
+            -moz-transition: all 150ms ease-in-out;
+            -ms-transition: all 150ms ease-in-out;
+            -o-transition: all 150ms ease-in-out;
+            transition: all 150ms ease-in-out;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            padding: 0; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content:not(.active) {
+              filter: alpha(opacity=0);
+              opacity: 0;
+              z-index: -10; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .btn-splash-login {
+              filter: alpha(opacity=50);
+              opacity: 0.5;
+              position: absolute;
+              top: 15px;
+              right: 15px; }
+              .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .btn-splash-login:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .btn-splash-login:focus {
+                filter: alpha(opacity=100);
+                opacity: 1; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field {
+              width: 100%; }
+              .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field input {
+                color: white; }
+              .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field a:not(.active) svg {
+                filter: alpha(opacity=0);
+                opacity: 0; }
+              .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg {
+                fill: none;
+                stroke: white;
+                stroke-width: 5px;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 30px;
+                height: 30px; }
+                .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.clear {
+                  -webkit-transform: rotate(45deg);
+                  -moz-transform: rotate(45deg);
+                  -ms-transform: rotate(45deg);
+                  -o-transform: rotate(45deg);
+                  transform: rotate(45deg); }
+                .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.verified circle {
+                  fill: #43cb9d; }
+                .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.error {
+                  -webkit-transform: rotate(45deg);
+                  -moz-transform: rotate(45deg);
+                  -ms-transform: rotate(45deg);
+                  -o-transform: rotate(45deg);
+                  transform: rotate(45deg); }
+                  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.error circle {
+                    fill: #d3242c; }
+          .splash-landing > section#splash-projector .projector-content#splash-signup .splash-login-content .login-buttons {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -ms-flex-flow: row wrap;
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
+            margin: 22.5px auto 0;
+            max-width: 500px; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .splash-login-content .login-buttons button {
+              margin: 7.5px; }
+          .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
+              position: relative;
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-align-content: center;
+              align-content: center;
+              -webkit-align-items: center;
+              align-items: center;
+              width: 100%;
+              height: 51px; }
+              .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field {
+                position: absolute;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -moz-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                -o-transform: translateY(-50%);
+                transform: translateY(-50%);
+                left: 15px;
+                width: calc(100% - 30px); }
+                .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field input {
+                  height: 36px; }
+                .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field:not(.active) {
+                  filter: alpha(opacity=0);
+                  opacity: 0;
+                  z-index: -10; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .btn-login-fb {
+              position: absolute;
+              left: 50%;
+              -webkit-transform: translateX(-50%);
+              -moz-transform: translateX(-50%);
+              -ms-transform: translateX(-50%);
+              -o-transform: translateX(-50%);
+              transform: translateX(-50%);
+              bottom: 15px; }
+          @media screen and (max-width: 768px) {
+            .splash-landing > section#splash-projector .projector-content#splash-signup .btn-ghost-white {
+              padding-left: 20px;
+              padding-right: 20px;
+              white-space: nowrap; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .btn-splash-login {
+              display: none; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb {
+              display: none; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .splash-projector-guru {
+              display: none; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside {
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-align-content: center;
+              align-content: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              -ms-flex-flow: row wrap;
+              -webkit-flex-flow: row wrap;
+              flex-flow: row wrap;
+              padding-top: 15px; }
+              .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
+                width: 100%; }
+              .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-buttons {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                -ms-box-orient: horizontal;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -moz-flex;
+                display: -webkit-flex;
+                display: flex; }
+                .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-buttons li {
+                  width: 50%; }
+                  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-buttons li button {
+                    font-size: 16px !important;
+                    font-weight: 600;
+                    line-height: 1.2;
+                    height: 50px; }
+                  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-buttons li:first-child button {
+                    background: #69B3A5; }
+                  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-buttons li:last-child button {
+                    background: #3b5998; } }
+          @media screen and (min-width: 768px) {
+            .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content {
+              padding: 150px 30px 15px; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
+              width: calc(100% - 240px);
+              height: 160px; }
+              .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field {
+                left: 30px; }
+                .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field input {
+                  height: 64px;
+                  font-size: 48px;
+                  font-weight: 300; }
+                .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field svg {
+                  fill: none;
+                  stroke: white;
+                  stroke-width: 4px;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  top: 5px;
+                  width: 50px;
+                  height: 50px; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-buttons {
+              display: none; } }
+        .splash-landing > section#splash-projector .projector-content#splash-access {
+          overflow: visible !important;
+          padding: 0 !important; }
+          .splash-landing > section#splash-projector .projector-content#splash-access .guru {
+            -webkit-transition: all 150ms ease-in-out;
+            -moz-transition: all 150ms ease-in-out;
+            -ms-transition: all 150ms ease-in-out;
+            -o-transition: all 150ms ease-in-out;
+            transition: all 150ms ease-in-out; }
+            .splash-landing > section#splash-projector .projector-content#splash-access .guru:not(.active) {
+              filter: alpha(opacity=0);
+              opacity: 0; }
+          .splash-landing > section#splash-projector .projector-content#splash-access .user-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            border-width: 2px;
+            width: 110px;
+            height: 110px; }
+          .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -ms-flex-flow: row wrap;
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            padding: 200px 15px 15px; }
+            .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-inside {
+              position: relative;
+              width: 100%;
+              max-width: 652px;
+              height: 119px; }
+            .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-align-content: center;
+              align-content: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              position: relative;
+              z-index: 10;
+              background: none;
+              border: 0;
+              width: 100%;
+              max-width: 652px;
+              height: 119px;
+              font-size: 48px;
+              text-align: center;
+              line-height: 1.2;
+              padding-bottom: 10px;
+              color: white;
+              font-weight: 300; }
+              .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code::-webkit-input-placeholder {
+                -webkit-transition: all 150ms ease-in-out;
+                -moz-transition: all 150ms ease-in-out;
+                -ms-transition: all 150ms ease-in-out;
+                -o-transition: all 150ms ease-in-out;
+                transition: all 150ms ease-in-out; }
+              .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:-moz-placeholder {
+                -webkit-transition: all 150ms ease-in-out;
+                -moz-transition: all 150ms ease-in-out;
+                -ms-transition: all 150ms ease-in-out;
+                -o-transition: all 150ms ease-in-out;
+                transition: all 150ms ease-in-out; }
+              .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code::-moz-placeholder {
+                -webkit-transition: all 150ms ease-in-out;
+                -moz-transition: all 150ms ease-in-out;
+                -ms-transition: all 150ms ease-in-out;
+                -o-transition: all 150ms ease-in-out;
+                transition: all 150ms ease-in-out; }
+              .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:-ms-input-placeholder {
+                -webkit-transition: all 150ms ease-in-out;
+                -moz-transition: all 150ms ease-in-out;
+                -ms-transition: all 150ms ease-in-out;
+                -o-transition: all 150ms ease-in-out;
+                transition: all 150ms ease-in-out; }
+              .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div {
+                position: absolute;
+                top: 0;
+                left: 0; }
+                .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble {
+                  max-width: 100%;
+                  display: block; }
+                  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble path {
+                    -webkit-transition: all 150ms ease-in-out;
+                    -moz-transition: all 150ms ease-in-out;
+                    -ms-transition: all 150ms ease-in-out;
+                    -o-transition: all 150ms ease-in-out;
+                    transition: all 150ms ease-in-out; }
+                .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div button {
+                  display: block;
+                  margin: 15px auto; }
+                .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate {
+                  background: #69B3A5; }
+                  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate:hover, .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate:focus {
+                    background: white;
+                    color: #69B3A5; }
+                .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip {
+                  background: #637074; }
+                  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip:hover, .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip:focus {
+                    background: white;
+                    color: #69B3A5; }
+              .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus::-webkit-input-placeholder {
+                color: white; }
+              .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus:-moz-placeholder {
+                color: white; }
+              .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus::-moz-placeholder {
+                color: white; }
+              .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus:-ms-input-placeholder {
+                color: white; }
+              .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus + div .splash-access-bubble path {
+                fill: #637074; }
+        .splash-landing > section#splash-projector .projector-content#splash-courses {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          -webkit-align-content: flex-start;
+          align-content: flex-start;
+          -webkit-justify-content: center;
+          justify-content: center;
+          overflow: visible !important;
+          padding: 0 !important; }
+          .splash-landing > section#splash-projector .projector-content#splash-courses .splash-logo-guru {
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            display: block; }
+          .splash-landing > section#splash-projector .projector-content#splash-courses .backpack {
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            display: block;
+            width: 100px;
+            height: 100px; }
+          .splash-landing > section#splash-projector .projector-content#splash-courses form {
+            -webkit-align-self: flex-start;
+            align-self: flex-start;
+            width: 100%;
+            padding: 0 15px; }
+          .splash-landing > section#splash-projector .projector-content#splash-courses .input-field {
+            width: 100%;
+            margin: 15px auto 0; }
+            .splash-landing > section#splash-projector .projector-content#splash-courses .input-field input {
+              margin-bottom: 0; }
+            .splash-landing > section#splash-projector .projector-content#splash-courses .input-field label:not(.active) {
+              top: 0; }
+            .splash-landing > section#splash-projector .projector-content#splash-courses .input-field .prefix {
+              top: 9px; }
+          .splash-landing > section#splash-projector .projector-content#splash-courses ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -ms-flex-flow: row wrap;
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
+            padding: 7.5px;
+            width: 100%;
+            max-width: 750px; }
+            .splash-landing > section#splash-projector .projector-content#splash-courses ul li {
+              padding: 7.5px; }
+          .splash-landing > section#splash-projector .projector-content#splash-courses .course-search {
+            -webkit-align-self: flex-start;
+            align-self: flex-start;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
+            -webkit-justify-content: center;
+            justify-content: center; }
+            .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li {
+              width: calc(100% / 3);
+              max-width: 250px; }
+              .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a {
+                -ms-box-orient: horizontal;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -moz-flex;
+                display: -webkit-flex;
+                display: flex;
+                -ms-flex-flow: row wrap;
+                -webkit-flex-flow: row wrap;
+                flex-flow: row wrap;
+                height: 100px;
+                border: 2px solid white;
+                border-radius: 2px;
+                text-align: center; }
+                .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div {
+                  width: 100%;
+                  height: 100%; }
+                  .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-name {
+                    display: block;
+                    margin: 15px auto 5px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    text-transform: uppercase; }
+                  .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title {
+                    display: block;
+                    margin: 0 auto;
+                    padding: 0 15px 15px;
+                    overflow: hidden;
+                    height: calc(100% - 36px);
+                    border-bottom-width: 5px;
+                    border-bottom-style: solid;
+                    font-size: 18px; }
+                    .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title span {
+                      display: block;
+                      height: 44px;
+                      overflow: hidden; }
+                .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a:hover, .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a:focus {
+                  background: white;
+                  color: #40484B; }
+          .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected {
+            -webkit-align-self: flex-end;
+            align-self: flex-end; }
+            .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              border: 2px solid white;
+              border-radius: 2px; }
+              .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a > span {
+                -webkit-transition: all 150ms ease-in-out;
+                -moz-transition: all 150ms ease-in-out;
+                -ms-transition: all 150ms ease-in-out;
+                -o-transition: all 150ms ease-in-out;
+                transition: all 150ms ease-in-out;
+                -ms-box-orient: horizontal;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -moz-flex;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-flex-direction: row;
+                flex-direction: row;
+                -webkit-align-items: center;
+                align-items: center;
+                -webkit-align-content: center;
+                align-content: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+                padding: 5px 8px 5px 10px;
+                border-bottom-width: 5px;
+                border-bottom-style: solid;
+                font-size: 18px; }
+                .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a > span svg {
+                  -webkit-transition: all 150ms ease-in-out;
+                  -moz-transition: all 150ms ease-in-out;
+                  -ms-transition: all 150ms ease-in-out;
+                  -o-transition: all 150ms ease-in-out;
+                  transition: all 150ms ease-in-out;
+                  -webkit-transform: rotate(45deg);
+                  -moz-transform: rotate(45deg);
+                  -ms-transform: rotate(45deg);
+                  -o-transform: rotate(45deg);
+                  transform: rotate(45deg);
+                  fill: none;
+                  stroke: white;
+                  stroke-width: 9px;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  display: block;
+                  width: 18px;
+                  height: 18px;
+                  margin-left: 5px; }
+              .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:hover, .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:active {
+                background: white; }
+                .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:hover > span, .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:active > span {
+                  color: #40484B; }
+                  .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:hover > span svg, .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:active > span svg {
+                    stroke: #40484B; }
       @media screen and (max-width: 320px) {
         .splash-landing > section#splash-projector .splash-projector-message {
           padding-top: 45px; } }
       @media screen and (max-width: 414px) and (max-height: 736px) {
         .splash-landing > section#splash-projector .header-swiper-front {
-          padding: 25% 0; } }
+          padding: 20% 0 30%; } }
       @media screen and (max-width: 768px) {
         .splash-landing > section#splash-projector .swiper-button-next, .splash-landing > section#splash-projector .swiper-button-prev, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs {
           filter: alpha(opacity=0);
@@ -2751,9 +3563,9 @@
             padding: 15px; }
       .splash-landing > section .splash-school-search .splash-map-stats {
         z-index: 2;
-        background: -moz-linear-gradient(top, rgba(64, 72, 75, 0) 0%, #40484b 75%, #40484b 100%);
-        background: -webkit-linear-gradient(top, rgba(64, 72, 75, 0) 0%, #40484b 75%, #40484b 100%);
-        background: linear-gradient(to bottom, rgba(64, 72, 75, 0) 0%, #40484b 75%, #40484b 100%);
+        background: -moz-linear-gradient(top, rgba(64, 72, 75, 0) 0%, #40484b 50%, #40484b 100%);
+        background: -webkit-linear-gradient(top, rgba(64, 72, 75, 0) 0%, #40484b 50%, #40484b 100%);
+        background: linear-gradient(to bottom, rgba(64, 72, 75, 0) 0%, #40484b 50%, #40484b 100%);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0040484b', endColorstr='$slate',GradientType=0 ); }
         .splash-landing > section .splash-school-search .splash-map-stats > ul {
           -ms-box-orient: horizontal;
@@ -2827,7 +3639,7 @@
           .splash-landing > section .splash-school-search .splash-map-stats > ul {
             padding: 7.5px; }
             .splash-landing > section .splash-school-search .splash-map-stats > ul li {
-              width: calc(100% / 3);
+              width: 50%;
               padding: 7.5px;
               text-align: center; }
               .splash-landing > section .splash-school-search .splash-map-stats > ul li h4 {
@@ -2859,14 +3671,12 @@
           align-content: center;
           -webkit-align-items: center;
           align-items: center;
-          -webkit-justify-content: space-between;
-          justify-content: space-between;
-          width: 100%;
+          -webkit-justify-content: flex-end;
+          justify-content: flex-end;
           position: absolute;
           bottom: 0;
-          left: 0;
-          padding: 50px 15px 15px;
-          min-height: 150px; }
+          right: 0;
+          width: 100%; }
           .splash-landing > section .splash-school-search .splash-map-stats > * h1 {
             font-size: 36px;
             font-weight: 600; }
@@ -2948,7 +3758,7 @@
           align-content: space-between;
           width: 100%;
           height: 100%;
-          background: rgba(105, 179, 165, 0.2);
+          background: #637074;
           padding: 15px; }
         .splash-landing > section .splash-postit .main ul li span {
           display: block;
@@ -3069,6 +3879,30 @@
           .splash-landing > section .splash-postit .main .desktop-postit-list li {
             width: calc(100% / 3);
             height: 50%; } }
+    .splash-landing > section #how-it-works .main ul li:nth-child(1) svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(1) svg path {
+      stroke: #7872e3; }
+    .splash-landing > section #how-it-works .main ul li:nth-child(1) svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(1) svg *[fill-opacity="0.5"] {
+      fill: #7872e3; }
+    .splash-landing > section #how-it-works .main ul li:nth-child(2) svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(2) svg path {
+      stroke: #9A5BC5; }
+    .splash-landing > section #how-it-works .main ul li:nth-child(2) svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(2) svg *[fill-opacity="0.5"] {
+      fill: #9A5BC5; }
+    .splash-landing > section #how-it-works .main ul li:nth-child(3) svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(3) svg path {
+      stroke: #e6389b; }
+    .splash-landing > section #how-it-works .main ul li:nth-child(3) svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(3) svg *[fill-opacity="0.5"] {
+      fill: #e6389b; }
+    .splash-landing > section #how-it-works .main ul li:nth-child(4) svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(4) svg path {
+      stroke: #55A4B7; }
+    .splash-landing > section #how-it-works .main ul li:nth-child(4) svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(4) svg *[fill-opacity="0.5"] {
+      fill: #55A4B7; }
+    .splash-landing > section #how-it-works .main ul li:nth-child(5) svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(5) svg path {
+      stroke: #E5753C; }
+    .splash-landing > section #how-it-works .main ul li:nth-child(5) svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(5) svg *[fill-opacity="0.5"] {
+      fill: #E5753C; }
+    .splash-landing > section #how-it-works .main ul li:nth-child(6) svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(6) svg path {
+      stroke: #81B566; }
+    .splash-landing > section #how-it-works .main ul li:nth-child(6) svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(6) svg *[fill-opacity="0.5"] {
+      fill: #81B566; }
     @media screen and (min-width: 768px) {
       .splash-landing > section #how-it-works .main ul li:nth-child(1) > div {
         -webkit-transform: rotate(5deg) translate(30px, 20px);
@@ -3078,10 +3912,6 @@
         transform: rotate(5deg) translate(30px, 20px); }
       .splash-landing > section #how-it-works .main ul li:nth-child(1) .tape {
         display: none; }
-      .splash-landing > section #how-it-works .main ul li:nth-child(1) .postit > div svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(1) .postit > div svg path {
-        stroke: #7872e3; }
-      .splash-landing > section #how-it-works .main ul li:nth-child(1) .postit > div svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(1) .postit > div svg *[fill-opacity="0.5"] {
-        fill: #7872e3; }
       .splash-landing > section #how-it-works .main ul li:nth-child(2) {
         z-index: 10; }
         .splash-landing > section #how-it-works .main ul li:nth-child(2) > div {
@@ -3120,10 +3950,6 @@
           -moz-animation-delay: 0.25s;
           -o-animation-delay: 0.25s;
           animation-delay: 0.25s; }
-        .splash-landing > section #how-it-works .main ul li:nth-child(2) .postit > div svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(2) .postit > div svg path {
-          stroke: #9A5BC5; }
-        .splash-landing > section #how-it-works .main ul li:nth-child(2) .postit > div svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(2) .postit > div svg *[fill-opacity="0.5"] {
-          fill: #9A5BC5; }
       .splash-landing > section #how-it-works .main ul li:nth-child(3) > div {
         -webkit-transform: rotate(7deg) translate(0px, 20px);
         -moz-transform: rotate(7deg) translate(0px, 20px);
@@ -3150,10 +3976,6 @@
         -moz-animation-delay: 0.5s;
         -o-animation-delay: 0.5s;
         animation-delay: 0.5s; }
-      .splash-landing > section #how-it-works .main ul li:nth-child(3) .postit > div svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(3) .postit > div svg path {
-        stroke: #e6389b; }
-      .splash-landing > section #how-it-works .main ul li:nth-child(3) .postit > div svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(3) .postit > div svg *[fill-opacity="0.5"] {
-        fill: #e6389b; }
       .splash-landing > section #how-it-works .main ul li:nth-child(4) > div {
         -webkit-transform: rotate(-2deg) translate(-20px, 5px);
         -moz-transform: rotate(-2deg) translate(-20px, 5px);
@@ -3194,10 +4016,6 @@
         -moz-animation-delay: 0.75s;
         -o-animation-delay: 0.75s;
         animation-delay: 0.75s; }
-      .splash-landing > section #how-it-works .main ul li:nth-child(4) .postit > div svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(4) .postit > div svg path {
-        stroke: #55A4B7; }
-      .splash-landing > section #how-it-works .main ul li:nth-child(4) .postit > div svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(4) .postit > div svg *[fill-opacity="0.5"] {
-        fill: #55A4B7; }
       .splash-landing > section #how-it-works .main ul li:nth-child(5) > div {
         -webkit-transform: rotate(20deg) translate(-10px, -10px);
         -moz-transform: rotate(20deg) translate(-10px, -10px);
@@ -3206,10 +4024,6 @@
         transform: rotate(20deg) translate(-10px, -10px); }
       .splash-landing > section #how-it-works .main ul li:nth-child(5) .tape {
         display: none; }
-      .splash-landing > section #how-it-works .main ul li:nth-child(5) .postit > div svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(5) .postit > div svg path {
-        stroke: #E5753C; }
-      .splash-landing > section #how-it-works .main ul li:nth-child(5) .postit > div svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(5) .postit > div svg *[fill-opacity="0.5"] {
-        fill: #E5753C; }
       .splash-landing > section #how-it-works .main ul li:nth-child(6) > div {
         -webkit-transform: rotate(-5deg);
         -moz-transform: rotate(-5deg);
@@ -3217,11 +4031,43 @@
         -o-transform: rotate(-5deg);
         transform: rotate(-5deg); }
       .splash-landing > section #how-it-works .main ul li:nth-child(6) .tape {
-        display: none; }
-      .splash-landing > section #how-it-works .main ul li:nth-child(6) .postit > div svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(6) .postit > div svg path {
-        stroke: #81B566; }
-      .splash-landing > section #how-it-works .main ul li:nth-child(6) .postit > div svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(6) .postit > div svg *[fill-opacity="0.5"] {
-        fill: #81B566; } }
+        display: none; } }
+    .splash-landing > section #become-guru .main ul li:nth-child(1) svg circle, .splash-landing > section #become-guru .main ul li:nth-child(1) svg path {
+      stroke: #e6389b; }
+    .splash-landing > section #become-guru .main ul li:nth-child(1) svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(1) svg *[fill-opacity="0.5"] {
+      fill: #e6389b; }
+    .splash-landing > section #become-guru .main ul li:nth-child(2) svg circle, .splash-landing > section #become-guru .main ul li:nth-child(2) svg path {
+      stroke: #9A5BC5; }
+    .splash-landing > section #become-guru .main ul li:nth-child(2) svg path[fill="#69B3A5"] {
+      fill: #9A5BC5; }
+    .splash-landing > section #become-guru .main ul li:nth-child(2) svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(2) svg *[fill-opacity="0.5"] {
+      fill: #9A5BC5; }
+    .splash-landing > section #become-guru .main ul li:nth-child(3) svg circle, .splash-landing > section #become-guru .main ul li:nth-child(3) svg path {
+      stroke: #7872e3; }
+    .splash-landing > section #become-guru .main ul li:nth-child(3) svg rect[fill="#69B3A5"] {
+      fill: #7872e3; }
+    .splash-landing > section #become-guru .main ul li:nth-child(3) svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(3) svg *[fill-opacity="0.5"] {
+      fill: #7872e3; }
+    .splash-landing > section #become-guru .main ul li:nth-child(4) svg circle, .splash-landing > section #become-guru .main ul li:nth-child(4) svg path {
+      stroke: #E5753C; }
+    .splash-landing > section #become-guru .main ul li:nth-child(4) svg circle[fill="#69B3A5"] {
+      fill: #E5753C !important; }
+    .splash-landing > section #become-guru .main ul li:nth-child(4) svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(4) svg *[fill-opacity="0.5"] {
+      fill: #E5753C; }
+    .splash-landing > section #become-guru .main ul li:nth-child(5) svg circle, .splash-landing > section #become-guru .main ul li:nth-child(5) svg path {
+      stroke: #81B566; }
+    .splash-landing > section #become-guru .main ul li:nth-child(5) svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(5) svg *[fill-opacity="0.5"] {
+      fill: #81B566; }
+    .splash-landing > section #become-guru .main ul li:nth-child(5) svg path:nth-child(2) {
+      fill: none !important;
+      stroke: white; }
+    .splash-landing > section #become-guru .main ul li:nth-child(5) svg path:nth-child(3) {
+      fill: none !important;
+      stroke: #81B566; }
+    .splash-landing > section #become-guru .main ul li:nth-child(6) svg circle, .splash-landing > section #become-guru .main ul li:nth-child(6) svg path {
+      stroke: #55A4B7; }
+    .splash-landing > section #become-guru .main ul li:nth-child(6) svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(6) svg *[fill-opacity="0.5"] {
+      fill: #55A4B7; }
     @media screen and (min-width: 768px) {
       .splash-landing > section #become-guru .main ul li:nth-child(1) > div {
         -webkit-transform: rotate(7deg) translate(0px, 40px);
@@ -3249,10 +4095,6 @@
         -moz-animation-delay: 0.5s;
         -o-animation-delay: 0.5s;
         animation-delay: 0.5s; }
-      .splash-landing > section #become-guru .main ul li:nth-child(1) .postit > div svg circle, .splash-landing > section #become-guru .main ul li:nth-child(1) .postit > div svg path {
-        stroke: #e6389b; }
-      .splash-landing > section #become-guru .main ul li:nth-child(1) .postit > div svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(1) .postit > div svg *[fill-opacity="0.5"] {
-        fill: #e6389b; }
       .splash-landing > section #become-guru .main ul li:nth-child(2) > div {
         -webkit-transform: rotate(-7deg) translate(-25px, 60px);
         -moz-transform: rotate(-7deg) translate(-25px, 60px);
@@ -3289,12 +4131,6 @@
         -moz-animation-delay: 0.25s;
         -o-animation-delay: 0.25s;
         animation-delay: 0.25s; }
-      .splash-landing > section #become-guru .main ul li:nth-child(2) .postit > div svg circle, .splash-landing > section #become-guru .main ul li:nth-child(2) .postit > div svg path {
-        stroke: #9A5BC5; }
-      .splash-landing > section #become-guru .main ul li:nth-child(2) .postit > div svg path[fill="#69B3A5"] {
-        fill: #9A5BC5; }
-      .splash-landing > section #become-guru .main ul li:nth-child(2) .postit > div svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(2) .postit > div svg *[fill-opacity="0.5"] {
-        fill: #9A5BC5; }
       .splash-landing > section #become-guru .main ul li:nth-child(3) > div {
         -webkit-transform: rotate(5deg) translate(30px, 40px);
         -moz-transform: rotate(5deg) translate(30px, 40px);
@@ -3303,12 +4139,6 @@
         transform: rotate(5deg) translate(30px, 40px); }
       .splash-landing > section #become-guru .main ul li:nth-child(3) .tape {
         display: none; }
-      .splash-landing > section #become-guru .main ul li:nth-child(3) .postit > div svg circle, .splash-landing > section #become-guru .main ul li:nth-child(3) .postit > div svg path {
-        stroke: #7872e3; }
-      .splash-landing > section #become-guru .main ul li:nth-child(3) .postit > div svg rect[fill="#69B3A5"] {
-        fill: #7872e3; }
-      .splash-landing > section #become-guru .main ul li:nth-child(3) .postit > div svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(3) .postit > div svg *[fill-opacity="0.5"] {
-        fill: #7872e3; }
       .splash-landing > section #become-guru .main ul li:nth-child(4) > div {
         -webkit-transform: rotate(20deg) translate(-10px, 10px);
         -moz-transform: rotate(20deg) translate(-10px, 10px);
@@ -3317,12 +4147,6 @@
         transform: rotate(20deg) translate(-10px, 10px); }
       .splash-landing > section #become-guru .main ul li:nth-child(4) .tape {
         display: none; }
-      .splash-landing > section #become-guru .main ul li:nth-child(4) .postit > div svg circle, .splash-landing > section #become-guru .main ul li:nth-child(4) .postit > div svg path {
-        stroke: #E5753C; }
-      .splash-landing > section #become-guru .main ul li:nth-child(4) .postit > div svg circle[fill="#69B3A5"] {
-        fill: #E5753C !important; }
-      .splash-landing > section #become-guru .main ul li:nth-child(4) .postit > div svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(4) .postit > div svg *[fill-opacity="0.5"] {
-        fill: #E5753C; }
       .splash-landing > section #become-guru .main ul li:nth-child(5) > div {
         -webkit-transform: rotate(5deg) translate(0px, 20px);
         -moz-transform: rotate(5deg) translate(0px, 20px);
@@ -3331,16 +4155,6 @@
         transform: rotate(5deg) translate(0px, 20px); }
       .splash-landing > section #become-guru .main ul li:nth-child(5) .tape {
         display: none; }
-      .splash-landing > section #become-guru .main ul li:nth-child(5) .postit > div svg circle, .splash-landing > section #become-guru .main ul li:nth-child(5) .postit > div svg path {
-        stroke: #81B566; }
-      .splash-landing > section #become-guru .main ul li:nth-child(5) .postit > div svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(5) .postit > div svg *[fill-opacity="0.5"] {
-        fill: #81B566; }
-      .splash-landing > section #become-guru .main ul li:nth-child(5) .postit > div svg path:nth-child(2) {
-        fill: none !important;
-        stroke: white; }
-      .splash-landing > section #become-guru .main ul li:nth-child(5) .postit > div svg path:nth-child(3) {
-        fill: none !important;
-        stroke: #81B566; }
       .splash-landing > section #become-guru .main ul li:nth-child(6) > div {
         -webkit-transform: rotate(-2deg) translate(-20px, 15px);
         -moz-transform: rotate(-2deg) translate(-20px, 15px);
@@ -3380,11 +4194,7 @@
         -webkit-animation-delay: 0.75s;
         -moz-animation-delay: 0.75s;
         -o-animation-delay: 0.75s;
-        animation-delay: 0.75s; }
-      .splash-landing > section #become-guru .main ul li:nth-child(6) .postit > div svg circle, .splash-landing > section #become-guru .main ul li:nth-child(6) .postit > div svg path {
-        stroke: #55A4B7; }
-      .splash-landing > section #become-guru .main ul li:nth-child(6) .postit > div svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(6) .postit > div svg *[fill-opacity="0.5"] {
-        fill: #55A4B7; } }
+        animation-delay: 0.75s; } }
     .splash-landing > section#splash-footer {
       background: #40484B;
       padding: 0 15px 72px; }
@@ -3950,12 +4760,9 @@
   visibility: hidden !important;
   z-index: -999999 !important; }
 
-.splash-landing > section.splash-hero .splash-hero-map ui-gmap-google-map .angular-google-map-container .gm-style > div:first-child > div:nth-child(1),
-.splash-landing > section.splash-hero .splash-hero-map ui-gmap-google-map .angular-google-map-container .gm-style > div:first-child > div:nth-child(2) {
-  opacity: 0.2 !important; }
-.splash-landing > section.splash-hero .splash-hero-map ui-gmap-google-map .angular-google-map-container .gm-style > div:first-child > div:nth-child(3) .selected-university-svg-icon {
+.splash-landing > section.splash-hero .splash-hero-map.limited-opacity ui-gmap-google-map .angular-google-map-container .gm-style > div:first-child > div:nth-child(3) .selected-university-svg-icon {
   opacity: 0; }
-.splash-landing > section.splash-hero .splash-hero-map ui-gmap-google-map .angular-google-map-container .gm-style > div:first-child > div:nth-child(3) .gmnoprint {
+.splash-landing > section.splash-hero .splash-hero-map.limited-opacity ui-gmap-google-map .angular-google-map-container .gm-style > div:first-child > div:nth-child(3) .gmnoprint {
   opacity: 1 !important; }
 
 /*# sourceMappingURL=splash.css.map */
