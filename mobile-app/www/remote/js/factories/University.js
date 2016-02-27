@@ -10098,7 +10098,7 @@ var targettedUniversities = [{
         "school_mascot_name": "Bobcat",
         "school_color_light": null,
         "departments_sanitized": true,
-        "school_color_dark": null,
+        "school_color_dark": "#57068C",
         "school_color_primary": null,
         "school_color_two": null,
         "forbes_url": null,

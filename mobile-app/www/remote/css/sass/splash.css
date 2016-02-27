@@ -1524,6 +1524,27 @@
   font-size: 18px;
 }
 
+.splash-landing > section.splash-hero .splash-hero-nav a {
+  position: relative;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a .splash-hero-nav-link-bg {
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a:hover .splash-hero-nav-link-bg, .splash-landing > section.splash-hero .splash-hero-nav a:focus .splash-hero-nav-link-bg {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
 .splash-landing > section.splash-hero .splash-hero-nav a.bg-delivery {
   background: rgba(240, 79, 84, 0.8);
 }
@@ -1588,12 +1609,8 @@
   background: #e6389b;
 }
 
-.splash-landing > section.splash-hero .splash-hero-nav a.bg-cal {
-  background: rgba(0, 48, 87, 0.8);
-}
-
-.splash-landing > section.splash-hero .splash-hero-nav a.bg-cal:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-cal:focus {
-  background: #003057;
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-shamrock:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-shamrock:focus {
+  background: #6f7d82;
 }
 
 .splash-landing > section.splash-hero .splash-hero-nav > div {
@@ -1601,7 +1618,6 @@
 }
 
 .splash-landing > section.splash-hero .splash-hero-nav > div > a {
-  position: relative;
   z-index: 1;
   padding: 0 12px 0 15px;
   border: 2px solid white;
@@ -1737,6 +1753,11 @@
   height: 15px;
 }
 
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.school path {
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+}
+
 .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow path {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
@@ -1781,8 +1802,9 @@
   fill: rgba(230, 56, 155, 0.8);
 }
 
-.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-cal path {
-  fill: rgba(0, 48, 87, 0.8);
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.school path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.school path {
+  filter: alpha(opacity=100);
+  opacity: 1;
 }
 
 .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-delivery path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-delivery path {
@@ -2340,30 +2362,30 @@
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-first .marker-normal {
-  -webkit-transition-delay: 3300ms;
-  -moz-transition-delay: 3300ms;
-  -ms-transition-delay: 3300ms;
-  -o-transition-delay: 3300ms;
-  transition-delay: 3300ms;
+  -webkit-transition-delay: 4800ms;
+  -moz-transition-delay: 4800ms;
+  -ms-transition-delay: 4800ms;
+  -o-transition-delay: 4800ms;
+  transition-delay: 4800ms;
   filter: alpha(opacity=0);
   opacity: 0;
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-first .marker-normal .marker-normal-window .side {
-  -webkit-transition-delay: 3150ms;
-  -moz-transition-delay: 3150ms;
-  -ms-transition-delay: 3150ms;
-  -o-transition-delay: 3150ms;
-  transition-delay: 3150ms;
+  -webkit-transition-delay: 4650ms;
+  -moz-transition-delay: 4650ms;
+  -ms-transition-delay: 4650ms;
+  -o-transition-delay: 4650ms;
+  transition-delay: 4650ms;
   stroke-dashoffset: 278;
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-first .marker-normal .marker-normal-content {
-  -webkit-transition-delay: 3000ms;
-  -moz-transition-delay: 3000ms;
-  -ms-transition-delay: 3000ms;
-  -o-transition-delay: 3000ms;
-  transition-delay: 3000ms;
+  -webkit-transition-delay: 4500ms;
+  -moz-transition-delay: 4500ms;
+  -ms-transition-delay: 4500ms;
+  -o-transition-delay: 4500ms;
+  transition-delay: 4500ms;
   filter: alpha(opacity=0);
   opacity: 0;
 }
@@ -2373,20 +2395,20 @@
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-first .marker-expanded .marker-expanded-window .sides {
-  -webkit-transition-delay: 3350ms;
-  -moz-transition-delay: 3350ms;
-  -ms-transition-delay: 3350ms;
-  -o-transition-delay: 3350ms;
-  transition-delay: 3350ms;
+  -webkit-transition-delay: 4850ms;
+  -moz-transition-delay: 4850ms;
+  -ms-transition-delay: 4850ms;
+  -o-transition-delay: 4850ms;
+  transition-delay: 4850ms;
   stroke-dashoffset: 0;
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-first .marker-expanded .marker-expanded-content {
-  -webkit-transition-delay: 3650ms;
-  -moz-transition-delay: 3650ms;
-  -ms-transition-delay: 3650ms;
-  -o-transition-delay: 3650ms;
-  transition-delay: 3650ms;
+  -webkit-transition-delay: 5150ms;
+  -moz-transition-delay: 5150ms;
+  -ms-transition-delay: 5150ms;
+  -o-transition-delay: 5150ms;
+  transition-delay: 5150ms;
   filter: alpha(opacity=100);
   opacity: 1;
 }
@@ -2446,15 +2468,15 @@
   -ms-transition-delay: 500ms;
   -o-transition-delay: 500ms;
   transition-delay: 500ms;
-  filter: alpha(opacity=10);
-  opacity: 0.1;
+  filter: alpha(opacity=20);
+  opacity: 0.2;
   display: block;
   width: 100%;
 }
 
 .splash-landing > section.splash-hero .splash-device .splash-device-svg.active {
-  filter: alpha(opacity=100);
-  opacity: 1;
+  filter: alpha(opacity=80);
+  opacity: 0.8;
 }
 
 .splash-landing > section.splash-hero .splash-device.splash-device-iphone svg {
@@ -2606,6 +2628,7 @@
   width: 110px;
   height: 110px;
   border: 3px solid white;
+  background: rgba(64, 72, 75, 0.5);
   font-size: 72px;
   font-weight: 600;
 }
@@ -2664,11 +2687,11 @@
 }
 
 .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li div.splash-marker-guru-first {
-  -webkit-transition-delay: 3000ms;
-  -moz-transition-delay: 3000ms;
-  -ms-transition-delay: 3000ms;
-  -o-transition-delay: 3000ms;
-  transition-delay: 3000ms;
+  -webkit-transition-delay: 4500ms;
+  -moz-transition-delay: 4500ms;
+  -ms-transition-delay: 4500ms;
+  -o-transition-delay: 4500ms;
+  transition-delay: 4500ms;
   filter: alpha(opacity=0) !important;
   opacity: 0 !important;
 }
@@ -2931,6 +2954,12 @@
   height: 15px;
 }
 
+@media screen and (max-width: 768px) {
+  .splash-landing > section.splash-hero .splash-hero-progress {
+    display: none !important;
+  }
+}
+
 .splash-landing > section.splash-hero .splash-hero-progress.progress.white {
   -webkit-transition: 150ms ease-in-out;
   -moz-transition: 150ms ease-in-out;
@@ -3099,7 +3128,7 @@
   border-radius: 8px;
   font-size: 20px;
   font-weight: 600;
-  background: rgba(64, 72, 75, 0.9);
+  background: rgba(64, 72, 75, 0.5);
 }
 
 .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a svg {
@@ -3260,11 +3289,6 @@
   animation: none !important;
 }
 
-.splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul .spacer {
-  width: 100%;
-  height: 10px;
-}
-
 .splash-landing > section.splash-hero .splash-guru-head {
   width: 150px;
   position: relative;
@@ -3368,6 +3392,14 @@
   .splash-landing > section.splash-hero .splash-hero-content .splash-adlib h1 {
     line-height: 1.5;
   }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul {
+    -wekit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+    height: 250px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -3469,6 +3501,9 @@
     height: 44px;
     font-size: 24px;
   }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a.adlib-1.translate-blank-1 {
+    margin-left: 1px !important;
+  }
   .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a svg.mobile {
     display: none;
   }
@@ -3482,9 +3517,6 @@
     max-width: calc(172px * 4 + 30px);
     padding: 15px;
     margin: 0 auto 15px;
-  }
-  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul .spacer {
-    display: none !important;
   }
   .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li {
     width: 25%;
