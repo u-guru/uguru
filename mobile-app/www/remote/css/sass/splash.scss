@@ -1176,7 +1176,9 @@
 				width: 100%;
 				height: 100%;
 				.splash-hero-marker {
+					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 					position: absolute;
+					cursor: pointer;
 					&.visible {
 						@include opacity-important(1);
 						z-index: 9;
@@ -1446,7 +1448,7 @@
 						height: 10px;
 						border: 2px solid white;
 					}
-					&.first, &.splash-marker-active {
+					&.splash-marker-active {
 						z-index: 12;
 						.marker-normal {
 							@include prefix(transition-delay, 300ms, webkit moz ms o);
@@ -1471,6 +1473,36 @@
 							}
 							.marker-expanded-content {
 								@include prefix(transition-delay, 650ms, webkit moz ms o);
+								@include opacity(1);
+							}
+						}
+					}
+					&.splash-marker-first {
+						z-index: 12;
+						.marker-normal {
+							@include prefix(transition-delay, 3300ms, webkit moz ms o);
+							@include opacity(0);
+							.marker-normal-window {
+								.side {
+									@include prefix(transition-delay, 3150ms, webkit moz ms o);
+									stroke-dashoffset: 278;
+								}
+							}
+							.marker-normal-content {
+								@include prefix(transition-delay, 3000ms, webkit moz ms o);
+								@include opacity(0);
+							}
+						}
+						.marker-expanded {
+							z-index: 2;
+							.marker-expanded-window {
+								.sides {
+									@include prefix(transition-delay, 3350ms, webkit moz ms o);
+									stroke-dashoffset: 0;
+								}
+							}
+							.marker-expanded-content {
+								@include prefix(transition-delay, 3650ms, webkit moz ms o);
 								@include opacity(1);
 							}
 						}
@@ -1634,10 +1666,21 @@
 							@include flex-wrap;
 							&.splash-device-search-gurus {
 								li {
+									@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 									@include flex;
 									@include flex-center;
 									width: calc(100% / 3);
 									padding: 8px 0;
+									div {
+										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+										&.splash-marker-guru-first {
+											@include prefix(transition-delay, 3000ms, webkit moz ms o);
+											@include opacity-important(0);
+										}
+										&.splash-marker-guru-active {
+											@include opacity(0);
+										}
+									}
 									.marker-guru {
 										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 										@include round;
@@ -1652,9 +1695,6 @@
 										font-weight: 600;
 										line-height: 1;
 										text-align: center;
-										&.move {
-											@include opacity(0);
-										}
 										&.bg-academic {
 											background: rgba($auburn, .3);
 											&:hover, &:focus {

@@ -137,11 +137,12 @@
                 <button style='top:-50px;' class="button-find-guru splash-mobile-cta" ng-click='refreshUniversityState(selectedUniversity)'>Refresh</button>
             </div> -->
 			<div class="splash-hero-markers" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker|a">
-                <!-- , null:inject.location[class-on-activate]|activate, null:inject.splash-hero-marker .marker-inside[class-on-activate]|activate -->
-                <!-- null:inject.splash-hero-marker .marker-inside|a -->
-
-                <div class="splash-hero-marker-1 splash-hero-marker opacity-0 bg-{{selectedCategory.hex_color}}" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="fadeIn:anim, visible, null:inject.splash-hero-marker-1 .marker-normal|a">
-                    <div class="marker-normal" activate-on-class="a" class-on-activate="move:keep" class-on-click="null:inject.splash-hero-marker-1|splash-marker-active:unique, null:inject#map-icon-2-translate|move">
+                <!-- splash-marker-first:unique:keep && null:inject#map-icon-2-translate|splash-marker-guru-first:unique:keep
+                    are unique to the first marker popping up and should not be used on other map markers. They should also be removed
+                    when another map marker is clicked. -->
+                <div class="splash-hero-marker-1 splash-hero-marker opacity-0 bg-{{selectedCategory.hex_color}}" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="splash-marker-first:unique:keep, null:inject#map-icon-2-translate|splash-marker-guru-first:unique:keep, fadeIn:anim, visible, null:inject.splash-hero-marker-1 .marker-normal|a" tabindex="1">
+                    <!-- the delay for .marker-normal should be 3000ms less than the element .marker-guru being translated to it -->
+                    <div class="marker-normal" activate-on-class="a" class-on-activate="move:keep" class-on-activate-delay="2500" class-on-click="null:inject.splash-hero-marker-1|splash-marker-active:unique, null:inject#map-icon-2-translate|splash-marker-guru-active:unique">
             			<svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
             				<g fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
             					<path class="side" d="M92,176 L122,146 L171.991129,146 C177.518876,146 182,141.532461 182,136.002779 L182,11.9972208 C182,6.47590822 177.527924,2 172.009493,2 L142,2"></path>
@@ -187,30 +188,6 @@
             			</div>
             		</div>
             		<div class="marker-circle"></div>
-                    <!-- <span class="marker-course opacity-0 hide">BIO 1A</span>
-                    <div class="marker-inside opacity-0" activate-on-class="a" class-on-activate="fadeIn:anim" class-on-activate-delay="5000">
-                        <span id="map-icon-2" class="user-icon map-guru-icon" activate-on-class="a" class-on-activate="active:keep" class-on-activate-delay="5500" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"><span ng-include="img_base + 'templates/svg/wwf/coffee.html'"></span></span>
-                        <div class="map-tooltip-text top left">
-                            <div class="map-tooltip-guru bg-{{selectedCategory.hex_color}}" class-on-click="a:inject.splash-device-content|a, a:inject.splash-hero-content|a, null:inject.splash-device-profile|a">
-                                <div>
-                                    <h1><span>Gabrielle Wee</span><span class="map-tooltip-course">BIO 1B</span></h1>
-                                    <h2>Active 10 min ago</h2>
-                                </div>
-                                <div ng-include="img_base + 'templates/svg/main/right.html'"></div>
-                            </div>
-                            <div class="map-tooltip-location">
-                                <div style="background-image: url({{selectedUniversity.place_results[0].photo_url}});"></div>
-                                <div>
-                                    <h1>{{selectedUniversity.place_results[0].name}}</h1>
-                                    <h2>open now until 10pm</h2>
-                                    <h2>2.4 miles away</h2>
-                                </div>
-                                <div ng-include="img_base + 'templates/svg/wwf/coffee.html'"></div>
-                            </div>
-                        </div>
-                    </div>
-					<div class="location opacity-0 bg-{{selectedCategory.hex_color}} bottom left" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="4200"></div>
-                    <div class="location-text">{{selectedUniversity.place_results[0].name}}</div> -->
 				</div>
 
 				<!-- <div class="splash-hero-marker-2 splash-hero-marker opacity-0" class-on-clear="fadeOutLeftBig:animOut" class-on-clear-delay="150" activate-on-class="a" class-on-activate="fadeIn:anim, visible" style="top: 20%; left: 10%;">
@@ -594,40 +571,52 @@
                             </div>
                             <ul class="splash-device-search-gurus">
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="600">
-                                    <a class="marker-guru bg-{{selectedCategory.hex_color}}" translate-on-class-delay="3000" activate-on-class-delay="5500" translate-to-elem="#map-icon-1" translate-on-class="activate">
-                    					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
-                    					<span class="marker-guru-course">BIO 1A</span>
-                    				</a>
+                                    <div id="map-icon-1-translate">
+                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" translate-on-class-delay="3000" activate-on-class-delay="5500" translate-to-elem="#map-icon-1" translate-on-class="activate">
+                        					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                        					<span class="marker-guru-course">BIO 1A</span>
+                        				</a>
+                                    </div>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1200">
-                                    <a id="map-icon-2-translate" class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-2" translate-on-class="activate" translate-on-class-delay="2500">
-                    					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
-                    					<span class="marker-guru-course">BIO 1A</span>
-                    				</a>
+                                    <div id="map-icon-2-translate">
+                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-2" translate-on-class="activate" translate-on-class-delay="2500">
+                        					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                        					<span class="marker-guru-course">BIO 1A</span>
+                        				</a>
+                                    </div>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1800">
-                                    <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-3" translate-on-class="activate" translate-on-class-delay="2000">
-                    					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
-                    					<span class="marker-guru-course">BIO 1A</span>
-                    				</a>
+                                    <div id="map-icon-3-translate">
+                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-3" translate-on-class="activate" translate-on-class-delay="2000">
+                        					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                        					<span class="marker-guru-course">BIO 1A</span>
+                        				</a>
+                                    </div>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1500">
-                                    <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-4" translate-on-class-delay="1500" translate-on-class="activate">
-                    					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
-                    					<span class="marker-guru-course">BIO 1A</span>
-                    				</a>
+                                    <div id="map-icon-4-translate">
+                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-4" translate-on-class-delay="1500" translate-on-class="activate">
+                        					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                        					<span class="marker-guru-course">BIO 1A</span>
+                        				</a>
+                                    </div>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="900">
-                                    <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-5" translate-on-class-delay="1000" translate-on-class="activate">
-                    					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
-                    					<span class="marker-guru-course">BIO 1A</span>
-                    				</a>
+                                    <div id="map-icon-5-translate">
+                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-5" translate-on-class-delay="1000" translate-on-class="activate">
+                        					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                        					<span class="marker-guru-course">BIO 1A</span>
+                        				</a>
+                                    </div>
                                 </li>
                                 <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="2100">
-                                    <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-6" translate-on-class-delay="500" translate-on-class="activate">
-                    					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
-                    					<span class="marker-guru-course">BIO 1A</span>
-                    				</a>
+                                    <div id="map-icon-6-translate">
+                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-6" translate-on-class-delay="500" translate-on-class="activate">
+                        					<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                        					<span class="marker-guru-course">BIO 1A</span>
+                        				</a>
+                                    </div>
                                 </li>
                             </ul>
                             <!-- <ul class="splash-device-search-courses hide">
