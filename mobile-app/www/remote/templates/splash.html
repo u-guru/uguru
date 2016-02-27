@@ -21,12 +21,10 @@
                 </a>
 			</div>
 		</header>
-        <div class="school-card opacity-0 absolute hide" class-on-activate="show" id='global-school-card' ng-if='selectedUniversity && selectedUniversity.id'>
+        <!-- <div class="school-card opacity-0 absolute hide" class-on-activate="show" id='global-school-card' ng-if='selectedUniversity && selectedUniversity.id'>
             <svg class="rect" viewBox="0 0 300 200">
                 <rect x="0" y="0" width="300" height="200" fill="none"></rect>
             </svg>
-            <!--@gabrielle dont need this here actually -->
-            <!-- <input type="checkbox"/> -->
             <div class="school-card-inside">
                 <div class="school-card-top" style="background-color: {{selectedUniversity.school_color_one}};">
                     <div class="opacity-0">
@@ -47,7 +45,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 		<section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" >
 			<div class="splash-hero-nav desktop opacity-0 high-z-index" style='z-index:1000;'  class-on-load="fadeIn:anim" class-on-load-delay="3000" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim">
                 <div>
@@ -75,7 +73,8 @@
                 </div>
                 <h2>@</h2>
                 <div>
-                    <a name='university' class="bg-cal" style='background-color:{{selectedUniversity.school_color_dark}}' ng-click="page.dropdowns.university.toggle()" id='dropdown-university'>
+                    <a name='university' ng-click="page.dropdowns.university.toggle()" id='dropdown-university'>
+                        <span class="splash-hero-nav-link-bg" style='background-color: {{selectedUniversity.school_color_dark}}'></span>
                         <span>{{selectedUniversity.short_name || selectedUniversity.name}}</span>
                         <svg viewBox="0 0 100 100">
                             <path d="M14,32 L50,68 L86,32"></path>
@@ -87,16 +86,17 @@
                         </svg>
                         <ul>
                             <li ng-repeat='university in featured_universities' ng-if='selectedUniversity.id !== university.id'>
-                                <a ng-click='refreshUniversityState(university)' class="bg-stanford" style='background-color: {{university.school_color_dark}}'>
+                                <a ng-click='refreshUniversityState(university)'>
+                                    <span class="splash-hero-nav-link-bg" style='background-color: {{university.school_color_dark}}'></span>
                                     <span>{{university.short_name || university.name}}</span>
                                 </a>
+                                <svg class="arrow school" viewBox="0 0 60 30">
+                                    <path d="M4,26 L30,0 L56,26" fill="{{university.school_color_dark}}"></path>
+                                </svg>
                             </li>
                             <li ng-click="transitionToScene3()" >
-                                <a class='bg-normal ugrid flex-wrap-center'>
-                                    <svg width="20px" height="20px" viewBox="0 0 20 20">
-                                        <path d="M8.41512973,15.2860269 C4.48265083,15.2860269 1.29477962,12.1537981 1.29477962,8.2838387 C1.29477962,4.41387934 4.48265083,1.27539856 8.41512973,1.27539856 C12.3476086,1.27539856 15.536105,4.41387934 15.536105,8.2838387 C15.536105,12.1537981 12.3476086,15.2860269 8.41512973,15.2860269 L8.41512973,15.2860269 Z M19.811191,18.9121601 L14.6477024,13.8293217 C15.9993748,12.3601125 16.8302595,10.4220069 16.8302595,8.2838387 C16.8302595,3.70740857 13.0628321,0 8.41512973,0 C3.76742732,0 0,3.70740857 0,8.2838387 C0,12.8540169 3.76742732,16.5614254 8.41512973,16.5614254 C10.4232573,16.5614254 12.2650828,15.8674586 13.7117849,14.7108471 L18.895905,19.8124414 C19.1491091,20.0625195 19.5586121,20.0625195 19.811191,19.8124414 C20.0643951,19.5686152 20.0643951,19.1622382 19.811191,18.9121601 L19.811191,18.9121601 Z" fill="#FFFFFF"></path>
-                                    </svg>
-                                    Find your College
+                                <a class="bg-shamrock">
+                                    <span>Find your College</span>
                                 </a>
                             </li>
                         </ul>
@@ -105,7 +105,8 @@
             </div>
 			<div class="splash-hero-nav mobile opacity-0 animated" class-on-load="fadeIn:anim" class-on-load-delay="3000" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim">
 				<div>
-					<a class="bg-cal" class-on-click="a:inject.splash-hero-nav-schools|a, active:unique">
+					<a class-on-click="a:inject.splash-hero-nav-schools|a, active:unique">
+                        <span class="splash-hero-nav-link-bg" style='background-color: {{selectedUniversity.school_color_dark}}'></span>
 						<span>@ Cal</span>
 						<svg viewBox="0 0 100 100">
 							<path d="M14,32 L50,68 L86,32"></path>
@@ -114,8 +115,13 @@
 				</div>
 			</div>
 			<!-- @gabrielle-note, the 3000 ms is to generate the static map URL with the right icon-->
+<<<<<<< HEAD
             <div class="splash-hero-map opacity-0 invisible limited-opacity" class-on-clear="slideOutUp:animOut" class-on-activate="active:anim, visible-impt" class-on-activate-delay="250" ng-if='false && selectedUniversity.map && selectedUniversity.map.coords'>
 				<!--Initial map class: init-university-map -->
+=======
+            <div class="splash-hero-map opacity-0 invisible limited-opacity" class-on-clear="slideOutUp:animOut" class-on-activate="active:anim, visible-impt" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
+				<!-- initial map class: init-university-map -->
+>>>>>>> a9927aa70367742f4e62f7122b5d03452f90ddb9
                 <ui-gmap-google-map class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events" id='splash-google-map-selected-university' refresh='map.refresh' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
                     <ui-gmap-marker coords="selectedUniversity.map.marker.coords" idKey="selectedUniversity.map.marker.id || selectedUniversity.id" options="selectedUniversity.map.marker.options" icon="selectedUniversity.map.marker.icon">
                     </ui-gmap-marker>
@@ -669,22 +675,20 @@
 					<div class="splash-logo-guru" activate-on-class="a" class-on-activate="fadeOut:animOut" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
 					<svg class="coach-help coach-help-desktop opacity-0 animated" viewBox="0 0 340 205">
 						<g fill="none">
-							<text transform="translate(173.347656, 110.679688) rotate(-19.000000) translate(-173.347656, -110.679688) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+							<path d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 Z" fill="#40484b" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <text transform="translate(173.347656, 110.679688) rotate(-19.000000) translate(-173.347656, -110.679688) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
 								<tspan x="38.8476562" y="109.679688">we can help you</tspan>
 								<tspan x="91.8676562" y="149.679688">with that!</tspan>
 							</text>
-							<path d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 Z"
-								stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
 						</g>
 					</svg>
 					<svg class="coach-help coach-help-mobile opacity-0 animated" viewBox="0 0 229 196">
 						<g fill="none">
-							<text transform="translate(113.624918, 91.749311) rotate(-21) translate(-113.624918, -91.749311) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+							<path d="M180.350646,159.695545 C180.350646,159.695544 181.232899,177.999995 205.232902,189.000001 C165.52585,201.901604 151.232897,186.999998 142.038937,178.7445 C81.8973532,198.285685 20.829672,176.230522 5.64045374,129.482915 C-9.5487645,82.7353086 26.8923282,28.9976249 87.0339124,9.45643967 C147.175497,-10.0847456 208.243178,11.9704169 223.432396,58.7180238 C235.030692,94.4139086 216.525122,134.185468 180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 Z" fill="#40484b" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <text transform="translate(113.624918, 91.749311) rotate(-21) translate(-113.624918, -91.749311) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
 								<tspan x="55.1249179" y="90.7493111">we can</tspan>
 								<tspan x="70.6849179" y="130.749311">help!</tspan>
 							</text>
-							<path d="M180.350646,159.695545 C180.350646,159.695544 181.232899,177.999995 205.232902,189.000001 C165.52585,201.901604 151.232897,186.999998 142.038937,178.7445 C81.8973532,198.285685 20.829672,176.230522 5.64045374,129.482915 C-9.5487645,82.7353086 26.8923282,28.9976249 87.0339124,9.45643967 C147.175497,-10.0847456 208.243178,11.9704169 223.432396,58.7180238 C235.030692,94.4139086 216.525122,134.185468 180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 Z"
-								stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
 						</g>
 					</svg>
 					<svg class="coach-fill" viewBox="0 0 280 112">
@@ -769,7 +773,6 @@
     								<b>{{selectedCategory.splashData.madlib.blank_one_options[3]}}</b>
     							</a>
     						</li>
-                            <div class="spacer"></div>
     						<li class="opacity-0" class-on-load="bounceIn:anim" class-on-load-delay="1400" class-on-activate="bounceIn:anim" class-on-activate-delay="1400" class-on-clear="fadeOut:animOut" class-on-clear-delay="200">
     							<a class="adlib-5 animated bg-{{selectedCategory.hex_color}}"  translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled' ng-click='resetMadLibBlankIfActive($event)'>
     								<svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
@@ -864,11 +867,16 @@
             </div>
         </section>
 
+<<<<<<< HEAD
 		<section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%" class='relative'>
             <a bind-wp="s2_top" id='desktop-projector-up-link' bind-wp-class="activate, clear" bind-wp-direction="down, up" class-on-activate="fadeInDown:anim" class-on-activate-delay="600" class-on-clear="fadeOutUp:animOut" class='absolute opacity-0 top-0 full-x left-0 flex-wrap-center p10xy' ng-click='scrollToSection("#home-splash")' style='z-index:10000; top:50px;'>
                 <i style='font-size:100%; left:10px;' class='icon ion-chevron-up' ng-class="{'show': projectorPullActivated}" ng-show='projectorPullActivated'> </i>
             </a>
             <div class="projector-trigger" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750">
+=======
+		<section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
+            <div class="projector-trigger animated opacity-0" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750" bind-wp="s2_25_top" bind-wp-class="bounceInDown" bind-wp-direction="down">
+>>>>>>> a9927aa70367742f4e62f7122b5d03452f90ddb9
                 <a id="projector-pull" ng-click='activateProjectorPull();' bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a" class-on-activate="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
     				<svg width="28px" height="224px" viewBox="0 0 56 448">
     				    <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -905,7 +913,7 @@
                 </svg>
             </div>
 
-            <div class='header-swipers opacity-0'  activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, b:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700" class-on-clear="slideOutUp:animOut">
+            <div class='header-swipers opacity-0'  activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, null:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700" class-on-clear="slideOutUp:animOut">
 				<div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-0">
 					<div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
 						<div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
@@ -1762,23 +1770,41 @@
                     </div>
                 </div>
 			</div>
+<<<<<<< HEAD
             <div id='swiper-gallery-nav' class="swiper-container swiper-front-gallery-thumbs" activate-on-class="a" class-on-activate="active:keep, b:inject.slideshow-thumb-1|activate, b:inject.slideshow-thumb-2|activate, b:inject.slideshow-thumb-3|activate">
+=======
+            <div id='swiper-gallery-nav' class="swiper-container swiper-front-gallery-thumbs" activate-on-class="a" class-on-activate="active:keep, null:inject.slideshow-thumb-1|activate, null:inject.slideshow-thumb-2|activate, null:inject.slideshow-thumb-3|activate, null:inject.slideshow-thumb-4|activate">
+>>>>>>> a9927aa70367742f4e62f7122b5d03452f90ddb9
                 <div class="progress height-10 white-round" ng-if='page.swipers.galleryIndex'>
             		<span style="width: 10%;"></span>
             	</div>
                 <div class="swiper-wrapper swiper-gallery-wrapper">
-                    <div class="swiper-slide slideshow-thumb-1 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                    <div class="swiper-slide slideshow-thumb-1 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-clear-delay="600" class-on-activate="bounceInUp:anim" class-on-activate-delay="0">
                         <a class="progress-step">
+<<<<<<< HEAD
+=======
+                            <div class="progress-step-icon" ng-include="::img_base + 'templates/svg/splash-search.html'"></div>
+                			<h1>University</h1>
+                        </a>
+                    </div>
+                    <div class="swiper-slide slideshow-thumb-2 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-clear-delay="400" class-on-activate="bounceInUp:anim" class-on-activate-delay="200">
+                        <a class="progress-step">
+>>>>>>> a9927aa70367742f4e62f7122b5d03452f90ddb9
                             <div class="progress-step-icon" ng-include="::img_base + 'templates/svg/splash-hiw.html'"></div>
                             <h1>How It Works</h1>
                         </a>
                     </div>
+<<<<<<< HEAD
                     <div class="swiper-slide slideshow-thumb-2 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+=======
+                    <div class="swiper-slide slideshow-thumb-3 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-clear-delay="200" class-on-activate="bounceInUp:anim" class-on-activate-delay="400">
+>>>>>>> a9927aa70367742f4e62f7122b5d03452f90ddb9
                         <a class="progress-step">
                             <div class="progress-step-icon" ng-include="::img_base + 'templates/svg/splash-bg.html'"></div>
                 			<h1>Become a Guru</h1>
                         </a>
                     </div>
+<<<<<<< HEAD
                     <div class="swiper-slide slideshow-thumb-3 opacity-0" ng-class="{'progress-active':page.swipers.galleryIndex}"  class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
                         <a class="progress-step" ng-if='!page.swipers.galleryIndex'>
                             <div class="progress-step-icon" ng-include="::img_base + 'templates/svg/splash-blank.html'"></div>
@@ -1800,6 +1826,15 @@
                     <div class="swiper-slide slideshow-thumb-4 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
                         <a class="onboarding-step active" ng-if='page.swipers.galleryIndex' >
                             <svg class="onboarding-icon" viewBox="0 0 100 100">
+=======
+                    <div class="swiper-slide slideshow-thumb-4" class-on-clear="bounceOutDown:animOut" class-on-clear-delay="0" class-on-activate="bounceInUp:anim" class-on-activate-delay="0">
+                        <a class="progress-step slideshow-thumb-4 opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="600" ng-if='!page.swipers.galleryIndex'>
+                            <div class="progress-step-icon" ng-include="::img_base + 'templates/svg/splash-blank.html'"></div>
+                            <h1>Getting Started</h1>
+                        </a>
+                        <a class="onboarding-step active slideshow-thumb-4" ng-if='page.swipers.galleryIndex'>
+            				<svg class="onboarding-icon" viewBox="0 0 100 100">
+>>>>>>> a9927aa70367742f4e62f7122b5d03452f90ddb9
                                 <path ng-if='page.swipers.galleryIndex' d="M50.4242207,50.1355679 L45.5990961,57.0258328 M50.5,50.1355679 L55.3251246,57.0258328 M50.5,39.2259818 L50.5,49.9441717 M55.7778965,43.6280955 L45.2221035,43.6280955 M50.5,38.6517931 C52.79028,38.6517931 54.6469187,36.7665907 54.6469187,34.4410756 C54.6469187,32.1155606 52.79028,30.2303582 50.5,30.2303582 C48.20972,30.2303582 46.3530813,32.1155606 46.3530813,34.4410756 C46.3530813,36.7665907 48.20972,38.6517931 50.5,38.6517931 Z M66.6639023,59.8793769 L61.8387777,66.7696418 M66.7396816,59.8793769 L71.5648062,66.7696418 M66.7396816,48.9697908 L66.7396816,59.6879806 M72.0175781,53.3719045 L61.4617851,53.3719045 M66.7396816,48.395602 C69.0299616,48.395602 70.8866003,46.5103996 70.8866003,44.1848846 C70.8866003,41.8593696 69.0299616,39.9741672 66.7396816,39.9741672 C64.4494016,39.9741672 62.5927629,41.8593696 62.5927629,44.1848846 C62.5927629,46.5103996 64.4494016,48.395602 66.7396816,48.395602 Z M34.1845391,59.8793769 L29.3594145,66.7696418 M34.2603184,59.8793769 L39.085443,66.7696418 M34.2603184,48.9697908 L34.2603184,59.6879806 M39.5382149,53.3719045 L28.9824219,53.3719045 M34.2603184,48.395602 C36.5505984,48.395602 38.4072371,46.5103996 38.4072371,44.1848846 C38.4072371,41.8593696 36.5505984,39.9741672 34.2603184,39.9741672 C31.9700384,39.9741672 30.1133997,41.8593696 30.1133997,44.1848846 C30.1133997,46.5103996 31.9700384,48.395602 34.2603184,48.395602 Z"></path>
                             </svg>
                             <svg class="onboarding-status" viewBox="0 0 160 160">
@@ -1812,8 +1847,13 @@
                             <h1>Demographic</h1>
                         </a>
                     </div>
+<<<<<<< HEAD
                     <div class="swiper-slide slideshow-thumb-5 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim">
                         <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
+=======
+                    <div class="swiper-slide slideshow-thumb-5 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-clear-delay="200" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="200">
+                        <a class="onboarding-step">
+>>>>>>> a9927aa70367742f4e62f7122b5d03452f90ddb9
             				<svg class="onboarding-icon" viewBox="0 0 100 100">
             					<path d="M29.0625,69.4746739 C29.9383669,61.9102984 34.411127,55.5456659 40.9439259,52.5466977 C38.366931,50.1269695 36.7459934,46.7013569 36.7459934,42.8958127 C36.7459934,35.5875797 42.6917669,29.6418061 50,29.6418061 C57.3082331,29.6418061 63.2540066,35.5875797 63.2540066,42.8958127 C63.2540066,46.7013569 61.633069,50.1269695 59.0560741,52.5466977 C65.588873,55.5456659 70.0616331,61.9102984 70.9375,69.4746739"></path>
             				</svg>
@@ -1827,8 +1867,13 @@
             				<h1>Sign Up</h1>
             			</a>
                     </div>
+<<<<<<< HEAD
                     <div class="swiper-slide slideshow-thumb-6 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim">
                         <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
+=======
+                    <div class="swiper-slide slideshow-thumb-6 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-clear-delay="400" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="400">
+                        <a class="onboarding-step">
+>>>>>>> a9927aa70367742f4e62f7122b5d03452f90ddb9
             				<svg class="onboarding-icon" viewBox="0 0 100 100">
             					<path d="M53.9615385,59.8185363 C49.3858024,57.0152806 30.7143382,56.053238 26.5,55.8631189 L26.5,39.8508085 C32.0010063,39.5571691 49.8418296,38.7966926 53.9615385,35.9234314 L53.9615385,59.8185363 Z M54.173642,30.9304244 L54.173642,65.1798362 M37.4662589,39.9867592 L37.4662589,55.9259086 M54.4701877,53.3901348 C57.26751,53.3901348 59.5351877,51.1195256 59.5351877,48.3185873 C59.5351877,45.5176489 57.26751,43.2470398 54.4701877,43.2470398 M63.8851008,53.0278814 L72.8236875,58.0321509 M64.2468865,43.0320132 L73.1854732,38.0277437 M66.4161525,47.941365 L77.5,47.941365 M35.8290996,56.5780637 L35.8290996,69.4496285 L30.7575521,69.4496285 L30.7575521,56.5780637"></path>
             				</svg>
@@ -1842,8 +1887,13 @@
             				<h1>Access</h1>
             			</a>
                     </div>
+<<<<<<< HEAD
                     <div class="swiper-slide slideshow-thumb-7 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim">
                         <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
+=======
+                    <div class="swiper-slide slideshow-thumb-7 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-clear-delay="600" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="600">
+                        <a class="onboarding-step">
+>>>>>>> a9927aa70367742f4e62f7122b5d03452f90ddb9
             				<svg class="onboarding-icon" viewBox="0 0 100 100">
             					<path d="M39.4955026,39.4166667 L47.7082519,39.4166667 L47.7082519,44.6666667 L67.6535002,44.6666667 C67.6535002,44.6666667 66.1499805,43.4451667 66.1499805,38.8333333 C66.1499805,34.2215 67.6535002,33 67.6535002,33 L36.5623778,33 C36.5623778,33 35.0394994,34.20225 35.0394994,38.8333333 C35.0394994,43.4644167 36.5623778,44.6666667 36.5623778,44.6666667 L39.4955026,44.6666667 L39.4955026,39.4166667 L39.4955026,39.4166667 L39.4955026,39.4166667 Z M66.7366054,62.1666667 C66.7366054,57.5548333 68.2401252,56.3333333 68.2401252,56.3333333 L35.3891279,56.3333333 C35.3891279,56.3333333 33.8662495,57.5355833 33.8662495,62.1666667 C33.8662495,66.79775 35.3891279,68 35.3891279,68 L68.2401252,68 C68.2401252,68 66.7366054,66.7785 66.7366054,62.1666667 L66.7366054,62.1666667 L66.7366054,62.1666667 Z M63.8034807,50.5 C63.8034807,45.8881667 65.3070004,44.6666667 65.3070004,44.6666667 L47.7082518,44.6666667 L47.7082518,51.6666667 L43.5484943,48.8958333 L39.4955026,51.56575 L39.4955026,44.6666667 L29.5228783,44.6666667 C29.5228783,44.6666667 28,45.8689167 28,50.5 C28,55.1310833 29.5228783,56.3333333 29.5228783,56.3333333 L65.3070004,56.3333333 C65.3070004,56.3333333 63.8034807,55.1118333 63.8034807,50.5 L63.8034807,50.5 L63.8034807,50.5 Z M68.2401252,68 L70,68 L68.2401252,68 L68.2401252,68 Z M69.413375,33 L67.6535002,33 L69.413375,33 L69.413375,33 Z M70,56.3333333 L68.2401252,56.3333333 L70,56.3333333 L70,56.3333333 Z M67.6535002,44.6666667 L69.413375,44.6666667 L67.6535002,44.6666667 L67.6535002,44.6666667 Z M39.4955025,39.4166667 L39.4955025,51.56575 L43.5484943,48.8958333 L47.7082518,51.6666667 L47.7082518,39.4166667 L39.4955025,39.4166667 L39.4955025,39.4166667 L39.4955025,39.4166667 Z"></path>
             				</svg>
