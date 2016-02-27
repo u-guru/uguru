@@ -2253,6 +2253,9 @@
 							&.adlib-1.translate-blank-1 {
 								margin-left: 1px!important;
 							}
+							&.adlib-8.translate-blank-2 {
+								margin-left: -1px!important;
+							}
 							svg {
 								&.mobile {
 									display: none;
@@ -2481,7 +2484,7 @@
 							}
 							.onboarding-icon {
 								@include round;
-								@include svg-stroke(white, 4);
+								@include svg-stroke(white, 3);
 								display: block;
 								width: 100%;
 								height: 100%;
@@ -2675,6 +2678,7 @@
 							width: 100%;
 							input {
 								color: white;
+								height: 36px;
 							}
 							a {
 								&:not(.active) {
@@ -2733,9 +2737,6 @@
 									@include center-y;
 									left: 15px;
 									width: calc(100% - 30px);
-									input {
-										height: 36px;
-									}
 									&:not(.active) {
 										@include opacity(0);
 										z-index: -10;
@@ -2831,6 +2832,19 @@
 						.splash-signup-buttons {
 							display: none;
 						}
+						.input-field {
+							input {
+								height: 64px!important;
+								font-size: 48px;
+								font-weight: 300;
+							}
+							svg {
+								@include svg-stroke(white, 4);
+								top: 5px;
+								width: 50px;
+								height: 50px;
+							}
+						}
 						.splash-signup-content {
 							.splash-signup-inside {
 								.splash-signup-form {
@@ -2838,17 +2852,6 @@
 									height: 160px;
 									.input-field {
 										left: 30px;
-										input {
-											height: 64px;
-											font-size: 48px;
-											font-weight: 300;
-										}
-										svg {
-											@include svg-stroke(white, 4);
-											top: 5px;
-											width: 50px;
-											height: 50px;
-										}
 									}
 								}
 							}
@@ -3460,6 +3463,7 @@
 				> header {
 					height: auto!important;
 					h1 {
+						padding-top: 0;
 						font-size: 36px;
 					}
 				}

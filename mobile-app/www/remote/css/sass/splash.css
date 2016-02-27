@@ -3504,6 +3504,9 @@
   .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a.adlib-1.translate-blank-1 {
     margin-left: 1px !important;
   }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a.adlib-8.translate-blank-2 {
+    margin-left: -1px !important;
+  }
   .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a svg.mobile {
     display: none;
   }
@@ -3869,7 +3872,7 @@
   border-radius: 1000px;
   fill: none;
   stroke: white;
-  stroke-width: 4px;
+  stroke-width: 3px;
   stroke-linecap: round;
   stroke-linejoin: round;
   display: block;
@@ -4112,6 +4115,7 @@
 
 .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field input {
   color: white;
+  height: 36px;
 }
 
 .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field a:not(.active) svg {
@@ -4223,10 +4227,6 @@
   width: calc(100% - 30px);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field input {
-  height: 36px;
-}
-
 .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field:not(.active) {
   filter: alpha(opacity=0);
   opacity: 0;
@@ -4331,19 +4331,12 @@
   .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons {
     display: none;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
-    width: calc(100% - 240px);
-    height: 160px;
-  }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field {
-    left: 30px;
-  }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field input {
-    height: 64px;
+  .splash-landing > section#splash-projector .projector-content#splash-signup .input-field input {
+    height: 64px !important;
     font-size: 48px;
     font-weight: 300;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field svg {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .input-field svg {
     fill: none;
     stroke: white;
     stroke-width: 4px;
@@ -4352,6 +4345,13 @@
     top: 5px;
     width: 50px;
     height: 50px;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
+    width: calc(100% - 240px);
+    height: 160px;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field {
+    left: 30px;
   }
 }
 
@@ -5290,6 +5290,7 @@
     height: auto !important;
   }
   .splash-landing > section .splash-postit > header h1 {
+    padding-top: 0;
     font-size: 36px;
   }
   .splash-landing > section .splash-postit .main .mobile-postits {
