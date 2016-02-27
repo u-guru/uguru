@@ -883,6 +883,7 @@ angular.module('uguru.util.controllers')
             }
             indexMarker.id = 'university-place-marker-' + (i + 1);
             var indexDOMElem = document.querySelector('.splash-hero-marker-' + (i+1));
+            console.log(indexMarker.id, indexDOMElem);
             indexDOMElem.classList.add('translate');
           }
         }, 2500);

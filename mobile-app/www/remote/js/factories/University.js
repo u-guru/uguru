@@ -69,7 +69,7 @@ angular.module('uguru.rest', [])
             if (!scope.selectedUniversity) {
                 scope.selectedUniversity = scope.user.university || University.getTargetted().slice()[0]; //berkeley
             }
-            scope.featured_uni_ids = [1714, 2318, 2089, 1632, 702, 1853];
+            scope.featured_uni_ids = [1714, 2089, 1632, 702, 1853];
             scope.featured_universities = [scope.selectedUniversity];
             for (var i = 0; i < scope.universities.length; i++) {
                 var indexUniversity = scope.universities[i];
