@@ -287,11 +287,22 @@ angular.module('uguru.util.controllers')
           // swiperContainer.classList.remove('opacity-0-impt')
         }, 800)
 
-
-
-
       }
     };
+
+    $scope.activateProjectorPull = function() {
+      var splashHeroNavElem = document.querySelector('#splash-up-link');
+      if (!$scope.desktopMode) {
+
+        if (splashHeroNavElem) {
+          splashHeroNavElem.classList.add('opacity-0');
+          $timeout(function() {
+            $scope.projectorPullActivated = true;
+          }, 2500);
+        }
+      }
+
+    }
 
     function moveProjectorToBottom(index) {
       var sectionSplashProjectorElem = document.querySelector('#splash-projector');
@@ -594,7 +605,12 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.closeSingleProjector = function() {
-      moveProjectorToBottom($scope.page.activeProjectorIndex);
+      if ($scope.page.swipers.main.slides.length > 1) {
+        $scope.scrollToSection('#home-splash');
+      } else {
+        moveProjectorToBottom($scope.page.activeProjectorIndex);
+      }
+
     }
 
     $scope.onLoad = function() {
