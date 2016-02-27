@@ -2082,6 +2082,10 @@
 								@include prefix(animation, none!important, webkit moz ms o);
 							}
 						}
+						.spacer {
+							width: 100%;
+							height: 10px;
+						}
 					}
 				}
 			}
@@ -2265,6 +2269,9 @@
 							max-width: calc(172px * 4 + 30px);
 							padding: 15px;
 							margin: 0 auto 15px;
+							.spacer {
+								display: none!important;
+							}
 							li {
 								width: 25%;
 								max-width: 172px;
@@ -2759,6 +2766,56 @@
 						.splash-projector-guru {
 							display: none;
 						}
+						.splash-signup-buttons {
+							position: absolute;
+							bottom: 0;
+							left: 0;
+							width: 100%;
+							@include flex;
+							@include flex-wrap;
+							li {
+								width: 50%;
+								button {
+									font-size: 16px!important;
+									font-weight: 600;
+									line-height: 1.2;
+									height: 50px;
+								}
+								&:nth-child(1) {
+									button {
+										background: lighten(mix($slate, $shamrock), 15%);
+									}
+								}
+								&.login:nth-child(1) {
+									button {
+										background: $moxie;
+									}
+								}
+								&:nth-child(2) {
+									button {
+										background: $facebook;
+									}
+								}
+								&:nth-child(3) {
+									button {
+										background: lighten(mix($slate, $shamrock), 15%);
+									}
+								}
+								&:nth-child(4) {
+									button {
+										background: lighten($slate, 15%);
+									}
+								}
+							}
+						}
+						.splash-login-content {
+							.input-field {
+							    padding: 0 15px;
+							}
+							.login-buttons {
+								display: none;
+							}
+						}
 						.splash-signup-content {
 							.splash-signup-inside {
 								@include flex-center;
@@ -2767,38 +2824,15 @@
 								.splash-signup-form {
 									width: 100%;
 								}
-								.splash-signup-buttons {
-									position: absolute;
-									bottom: 0;
-									left: 0;
-									width: 100%;
-									@include flex;
-									li {
-										width: 50%;
-										button {
-											font-size: 16px!important;
-											font-weight: 600;
-											line-height: 1.2;
-											height: 50px;
-										}
-										&:first-child {
-											button {
-												background: $shamrock;
-											}
-										}
-										&:last-child {
-											button {
-												background: $facebook;
-											}
-										}
-									}
-								}
 							}
 						}
 					}
 					@media screen and (min-width: 768px) {
 						.splash-content {
 							padding: 150px 30px 15px;
+						}
+						.splash-signup-buttons {
+							display: none;
 						}
 						.splash-signup-content {
 							.splash-signup-inside {
@@ -2819,9 +2853,6 @@
 											height: 50px;
 										}
 									}
-								}
-								.splash-signup-buttons {
-									display: none;
 								}
 							}
 						}
