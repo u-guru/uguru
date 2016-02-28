@@ -4682,6 +4682,26 @@
   font-size: 18px;
 }
 
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title.only {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 24px;
+}
+
 .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title span {
   display: block;
   height: 44px;

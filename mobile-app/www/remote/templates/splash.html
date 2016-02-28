@@ -1725,8 +1725,8 @@
                                         <li ng-click='addUniversityStudentCourse(course, $index)' ng-repeat='course in selectedUniversity.courses |  limitTo: 9 track by $index'>
                             				<a>
                             					<div>
-                            						<span class="course-name">{{course.short_name}}</span>
-                            						<span class="course-title" style="border-bottom-color: {{selectedUniversity.school_color_dark}};"><span>{{course.full_name || course.title}}</span></span>
+                            						<span class="course-name" ng-if="course.full_name">{{course.short_name}}</span>
+                            						<span class="course-title ng-class:{'only':!course.full_name || !course.title}" style="border-bottom-color: {{selectedUniversity.school_color_dark}};"><span>{{course.full_name || course.title || course.short_name}}</span></span>
                             					</div>
                             				</a>
                                         </li>

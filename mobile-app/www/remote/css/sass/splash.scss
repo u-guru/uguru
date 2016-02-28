@@ -3030,6 +3030,12 @@
 										border-bottom-width: 5px;
 										border-bottom-style: solid;
 										font-size: 18px;
+										&.only {
+											@include flex;
+											@include flex-center;
+											height: 100%;
+											font-size: 24px;
+										}
 										span {
 											display: block;
 											height: 44px;
