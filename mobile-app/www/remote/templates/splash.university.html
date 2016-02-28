@@ -6,7 +6,7 @@
         <ui-gmap-google-map id="splash-google-map" class='opacity-0 full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' bounds="mapBounds" bounces="map.bounds" events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
             <ui-gmap-markers models="map.markers" coords="'self'" options="'options'" icon="'icon'" clusterOptions="map.clusterOptions" clusterEvents="map.clusterEvents" doCluster="true">
             </ui-gmap-markers>
-            <ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
+            <ui-gmap-window ng-if='false' closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
                 <div class='university-label'>
                     <a id='university-info-window-close-button' class='absolute top-0 right-0 txt-white high-z-index cta-modal-close close-button m05xy' ng-click='map.window.close()'>
                         <svg viewBox="0 0 100 100" style='height:20px; width:20px;' class='opacity-50'>
@@ -48,7 +48,7 @@
                                 <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
                             </svg>
                         </i>
-                    <input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="universities" fast-matcher-output="search_text.matching" fast-matcher-properties="short_name, full_name, tiny_name, variations"
+                    <input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="universities" fast-matcher-output="filtered_universities" fast-matcher-properties="short_name, full_name, tiny_name, variations"
                         ng-model="search_text.university" ng-focus='focusUniversitySearchInput' />
                     <label for="request-search-input">
                         <span ng-show='universities.length'>search {{universities.length}} supported schools</span>
@@ -59,12 +59,12 @@
                 </div>
             </form>
         </div>
-        <ul class="splash-school-desktop">
-            <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' ng-click='selectUniversityFromMap(university)'>
-                <div class="school-card opacity-0" class-on-activate="magictime:anim:keep, boingInUp:anim:keep, null:inject.school-card-icon-container|a" class-on-activate-delay="{{2000 + $index*200}}">
+        <ul class="splash-school-desktop opacity-0" class-on-activate="zoomInDown:anim" class-on-activate-delay="3000">
+            <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' ng-click='selectUniversityFromMap(university, true)'>
+                <div class="school-card"> <!-- ng-class="{'activate':$index < 5}" class-on-activate="magictime:anim, boingInUp:anim, null:inject.school-card-icon-container|a" -->
                     <svg class="rect" viewBox="0 0 300 200">
                         <rect x="0" y="0" width="300" height="200" fill="none"></rect>
-                    </svg> 
+                    </svg>
                     <input type="radio" name="school-card" />
                     <div class="school-card-inside">
                         <div class="school-card-top" style="background-color: {{university.school_color_one}};">
@@ -90,21 +90,4 @@
             </li>
         </ul>
     </div>
-    <div class="splash-map-stats" ng-controller="AddUniversityCtrl">
-        <ul>
-            <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="2200">
-                <h4><span>Supported</span><span>Universities</span></h4>
-                <h2 id='num-university-counter'>0</h2>
-            </li>
-            <!-- <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="2400">
-                <h4><span>Available</span><span>Courses</span></h4>
-                <h2 id='num-course-counter'>0</h2>
-            </li> -->
-            <li class="opacity-0" class-on-activate="bounceInUp:anim" class-on-activate-delay="2400">
-                <h4><span>Student</span><span>Gurus</span></h4>
-                <h2 id='num-guru-counter'>0</h2>
-            </li>
-        </ul>
-    </div>
-
 </div>

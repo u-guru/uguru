@@ -1914,8 +1914,15 @@
   z-index: 9;
 }
 
-.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:not(:first-child) {
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:not(.splash-hero-marker-mobile) {
   display: none;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:last-child {
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  margin-left: -46px;
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-academic .marker-circle {
@@ -3408,7 +3415,10 @@
     margin-right: 0;
     bottom: 10%;
   }
-  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:not(:first-child) {
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:last-child {
+    display: none;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:not(.splash-hero-marker-mobile) {
     display: block;
   }
   .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(1) {
@@ -3757,7 +3767,7 @@
   -ms-transition: all 150ms ease-in-out;
   -o-transition: all 150ms ease-in-out;
   transition: all 150ms ease-in-out;
-  width: 25% !important;
+  width: 33% !important;
   height: 80px !important;
   margin: 0 !important;
   text-align: center;
@@ -3879,6 +3889,20 @@
   width: 100%;
   height: 100%;
   background: #9FA3A5;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .onboarding-step .onboarding-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .onboarding-step .onboarding-icon svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .swiper-slide .onboarding-step .onboarding-status {
@@ -6492,4 +6516,14 @@
 
 .splash-landing > section.splash-hero .splash-hero-map.limited-opacity ui-gmap-google-map .angular-google-map-container .gm-style > div:first-child > div:nth-child(3) .gmnoprint {
   opacity: 1 !important;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-7,
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-6,
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-5,
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-4,
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-3.progress-active {
+  width: 20% !important;
+  opacity: 1 !important;
+  background: transparent !important;
 }

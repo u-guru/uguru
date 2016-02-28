@@ -1201,8 +1201,14 @@
 						@include opacity-important(1);
 						z-index: 9;
 					}
-					&:not(:first-child) {
+					&:not(.splash-hero-marker-mobile) {
 						display: none;
+					}
+					&:last-child {
+						position: absolute;
+					    bottom: 70px;
+					    left: 50%;
+					    margin-left: -46px;
 					}
 					&.bg-academic {
 						.marker-circle {
@@ -2183,7 +2189,10 @@
 							margin-right: 0;
 							bottom: 10%;
 						}
-						&:not(:first-child) {
+						&:last-child {
+							display: none;
+						}
+						&:not(.splash-hero-marker-mobile) {
 							display: block;
 						}
 						&:nth-child(1) {
@@ -2419,7 +2428,7 @@
 					height: 100%!important;
 					.swiper-slide {
 						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						width: 25%!important;
+						width: 33%!important;
 						height: 80px!important;
 						margin: 0!important;
 						text-align: center;
@@ -2489,6 +2498,14 @@
 								width: 100%;
 								height: 100%;
 								background: #9FA3A5;
+								svg {
+									display: block;
+									width: 100%;
+									height: 100%;
+									* {
+										@include svg-stroke(white, 3);
+									}
+								}
 							}
 							.onboarding-status {
 								position: absolute;
@@ -4391,3 +4408,15 @@
 // .selected-university-place-marker {
 // 	@include prefix(filter, invert(100%), webkit moz ms o);
 // }
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper {
+	.slideshow-thumb-7,
+	.slideshow-thumb-6,
+	.slideshow-thumb-5,
+	.slideshow-thumb-4,
+	.slideshow-thumb-3.progress-active {
+		width:20% !important;
+		opacity: 1 !important;
+		background:transparent !important;
+	}
+}
