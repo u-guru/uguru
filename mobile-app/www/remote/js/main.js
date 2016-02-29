@@ -319,11 +319,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/profile.public.html',
     controller: 'PublicProfileController'
   }).
-  state('root.profile-academic', {
-    url:'/profile-academic',
-    templateUrl: BASE + 'templates/profile-academic.public.html',
-    controller: 'PublicProfileController'
-  }).
   state('root.profile-public-bakery', {
     url:'/profile-public-bakery',
     templateUrl: BASE + 'templates/profile.public.bakery.html',
