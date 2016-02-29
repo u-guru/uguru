@@ -2760,9 +2760,15 @@
 									}
 								}
 							}
-							.btn-login-fb {
-								@include center-x;
+							button {
+								// @include center-x;
 								bottom: 15px;
+								&.btn-login-login {
+									margin-right:10px;
+								}
+								&.btn-login-fb {
+									margin-left:10px;
+								}
 							}
 						}
 					}

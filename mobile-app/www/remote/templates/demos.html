@@ -1,0 +1,64 @@
+<!-- @GABRIELLE-NOTE-EXAMPLE-->
+<!--
+
+reference to docs
+
+Parallax: https://github.com/wagerfield/parallax
+
+
+-->
+<ion-view>
+ <!--    <ion-refresher
+        pulling-icon="ion-arrow-down-c"
+        spinner="circles"
+        on-refresh="doRefresh()">
+    </ion-refresher> -->
+    <ion-content class='bg-slate-50p full-xy absolute'>
+        <div class='full-xy flex-wrap-center'
+            parallax-parent="p1"
+            parallax-relative-input="false"
+            parallax-clip-relative-input="false"
+            parallax-calibration-threshold="100"
+            parallax-calibration-delay="500"
+            parallax-support-delay="500"
+            parallax-calibrate-x="false"
+            parallax-calibrate-y="true"
+            parallax-invert-x="true"
+            parallax-invert-y="true"
+            parallax-limit-x="false"
+            parallax-limit-y="false"
+            parallax-scalar-x="10.0"
+            parallax-scalar-y="10.0"
+            parallax-friction-x="0.1"
+            parallax-friction-y="0.1"
+            parallax-origin-x="0.5"
+            parallax-origin-y="0.5"
+            >
+            <div class='flex-wrap-center bg-smoke p20xy high-z-index left-0 txt-smoke weight-500' parallax-parent-ref="p1" parallax-child="0.2" style='height:400px; width:400px;'>
+                <div class='bg-cerise p20xy high-z-index absolute txt-smoke weight-500' parallax-child="0.75" style='height:200px; width:200px;'>
+                    <div parallax-child="1" class='p20xy bg-azure high-z-index left-0 txt-smoke weight-500 activate'
+                        counter
+                        init-on-class="counter:activate"
+                        counter-max="100"
+                        counter-min="0"
+                        counter-prefix="Loading :"
+                        counter-suffix="%"
+                        counter-duration="10"
+                        counter-delay="1000">
+                    </div>
+                </div>
+            </div>
+
+            <div class='full-x mojs-wrapper p20xy flex-wrap-center' style='height:400px;'>
+
+                <button mo-js class='btn-ghost-white relative flex-wrap-center'>
+                    <span mo-js-child class='weight-400 flex-wrap-center'>
+                        <i style='font-size:30px;' class='ion-thumbsup icon'>
+                        </i>
+                    </span>
+                </button>
+
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

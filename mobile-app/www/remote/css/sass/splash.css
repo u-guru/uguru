@@ -4257,15 +4257,16 @@
   z-index: -10;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .btn-login-fb {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside button {
   bottom: 15px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside button.btn-login-login {
+  margin-right: 10px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside button.btn-login-fb {
+  margin-left: 10px;
 }
 
 @media screen and (max-width: 768px) {

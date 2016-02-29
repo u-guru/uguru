@@ -33,9 +33,9 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.map;
-    $scope.page = {scroll: {}, waypoints: {}, sidebar:{}, dropdowns: {}, modals: {}, swipers: {cachedBefore: [], cachedAfter:[], cached:[], galleryIndex:0}, map:{}};
+    $scope.page = {account: {}, scroll: {}, waypoints: {}, sidebar:{}, dropdowns: {}, modals: {}, swipers: {cachedBefore: [], cachedAfter:[], cached:[], galleryIndex:0}, map:{}};
     $scope.page.dropdowns = {closeAll: closeAllDropdowns, category: {show: true, active:false, toggle:toggleCategoryDropdown}, university: {show: true, active: false, toggle: toggleUniversityDropdown}};
-    $scope.page.account = {loginMode:true, toggle: function(){$scope.page.account.loginMode = !$scope.page.account.loginMode}};
+    $scope.page.account = {loginMode:true, forgotPassword:false, toggle: function(){alert('yo'); $scope.page.account.loginMode = !$scope.page.account.loginMode}};
     $scope.page.faq_arr = ContentService.faq;
     //@gabrielle note, scroll preferences
 
@@ -46,6 +46,21 @@ angular.module('uguru.util.controllers')
       successFunction: null,
       easeType: 'quad', //quad + quint as options
       offset: 0
+    }
+
+    $scope.switchToSignup = function() {
+      $scope.page.account.loginMode = false;
+      $scope.page.account.forgotPassword = false;
+    }
+
+    $scope.switchToLogin = function() {
+      $scope.page.account.loginMode = true;
+      $scope.page.account.forgotPassword = false;
+    }
+
+    $scope.switchToForgotPassword = function() {
+      $scope.page.account.loginMode = false;
+      $scope.page.account.forgotPassword = true;
     }
 
     var initSwipers = function(args, desktop_mode) {
@@ -93,7 +108,7 @@ angular.module('uguru.util.controllers')
       });
 
       var swiperFrontGalleryThumbsOption = {
-        slidesPerView:4,
+        slidesPerView:5,
         spaceBetween:10,
         centeredSlides:true,
         touchRatio:0.2,
@@ -110,6 +125,9 @@ angular.module('uguru.util.controllers')
       swiperFrontGalleryThumbs.params.onTransitionEnd = swiperFront.params.onTransitionEnd;
       $scope.page.swipers.main = swiperFront;
       $scope.page.swipers.gallery = swiperFrontGalleryThumbs;
+
+
+
   }
 
     function hideSwiperNavButtons() {
@@ -618,8 +636,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.showSidebarLogin = function() {
-         $scope.page.account.loginMode = true;
          showProjectorAtTop(4);
+         $scope.scrollToSection('#splash-projector')
     }
 
     $scope.closeSingleProjector = function() {
@@ -635,8 +653,10 @@ angular.module('uguru.util.controllers')
     $scope.onLoad = function() {
       // @gabrielle-note -- what
       // Default parameters
+
+
       resolveStateParams();
-      University.initUniversitiesSplash($scope, getStaticMapOptions());
+      // University.initUniversitiesSplash($scope, getStaticMapOptions());
       var responsiveSwiperArgs = {
         desktop: {
           slidesPerView: 1,
@@ -664,28 +684,22 @@ angular.module('uguru.util.controllers')
       initSwipers(responsiveSwiperArgs, $scope.desktopMode);
       $scope.universities = University.getTargetted().slice();
       $timeout(function() {
-
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
         // document.querySelector('.splash-hero-map').classList.add('activate');
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
-
-
         // document.querySelector('.splash-hero-map').classList.add('activate');
+        // $scope.activateProjectorPull();
+        // $scope.scrollToSection('#splash-projector');
         // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
-
         // University.initUniversitiesSplash($scope);
         // autoscroll code
         // $scope.scrollToSection('#splash-projector');
-        // document.querySelector('#projector-pull').classList.add('activate');
         // document.querySelector('.splash-hero-map').classList.add('activate');
         // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
-
-
         // document.querySelector('.splash-hero-map').classList.add('activate');
         // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
-        $timeout(function() {
            // $scope.showSidebarLogin();
-        });
+        // }, 1000);
 
         $timeout(function() {
           $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);

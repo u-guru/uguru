@@ -38,6 +38,69 @@ angular.module('uguru.directives')
       }
     };
 })
+.directive('parallaxParent', ['$state', '$timeout', function ($state, $timeout) {
+    // TODO --> provide support bool | integer
+    return {
+      restrict: 'A',
+      link: function(scope, element, attr) {
+          var parallaxArgs = ["clipRelativeInput", "relativeInput", "calibrationThreshold", "calibrationDelay", "supportDelay", "calibrateX", "calibrateY","invertX", "invertY","limitX","limitY","scalarX","scalarY","frictionX","frictionY","originX","originY"];
+          var parallaxArgsType = ["bool", "bool", "int", "int", "int", "bool", "bool", "bool", "bool", "bool", "bool", "float", "float", "float", "float", "float", "float"];
+          var elemParallaxArgs = [];
+          $timeout(function() {
+            if (attr.parallaxParent && attr.parallaxParent.length) {
+              var elemParallax = new Parallax(element[0]);
+              for (var i = 0; i < parallaxArgs.length; i++) {
+                 var parsedIndexArg = "parallax" + parallaxArgs[i][0].toUpperCase() + parallaxArgs[i].slice(1);
+                 if (!parsedIndexArg || !parsedIndexArg.length) continue;
+                 var indexArg = parallaxArgs[i];
+                 elemParallaxArgs.push(parsedIndexArg);
+                 // console.log('setting', elemParallaxArgs[i], 'to', parseArg(attr[parsedIndexArg], parallaxArgsType[i]) || ('default ' + elemParallax[indexArg]))
+                 elemParallax[indexArg] = parseArg(attr[parsedIndexArg], parallaxArgsType[i]) || elemParallax[indexArg]
+              }
+              $timeout(function() {
+                elemParallax.enable();
+                elemParallax.updateLayers();
+                scope.root.parallax[attr.parallaxParent] = elemParallax
+              })
+
+              scope.root.parallax[attr.parallaxParent] = elemParallax
+              $timeout(function() {
+                // console.log(elemParallax)
+              })
+            }
+          })
+          function parseArg(arg, _type) {
+            if (_type === "float") {
+              return parseFloat(arg)
+            }
+            if (_type === "bool") {
+              return arg === "true"
+            }
+            if (_type === "int") {
+              return parseInt(arg)
+            }
+          }
+      }
+    }
+}])
+.directive('parallaxChild', ['$state', '$timeout', function ($state, $timeout) {
+    return {
+      restrict: 'A',
+      link: function(scope, element, attr) {
+        if (attr.parallaxChild && attr.parallaxChild.length) {
+          var floatValue =  parseFloat(attr.parallaxChild);
+
+          element[0].setAttribute('data-depth', floatValue)
+          element[0].classList.add('layer');
+          $timeout(function() {
+            if (attr.parallaxParentRef && attr.parallaxParentRef.length && scope.root.parallax[attr.parallaxParentRef]) {
+              scope.root.parallax[attr.parallaxParentRef] && scope.root.parallax[attr.parallaxParentRef].updateLayers();
+            }
+          }, 1000)
+        }
+      }
+    }
+}])
 .directive('classOnClear', ['$timeout', 'AnimationService', function ($timeout, AnimationService) {
   return {
     restrict: 'A',
@@ -176,6 +239,65 @@ angular.module('uguru.directives')
           }
         }
       })
+    }
+  }
+}])
+.directive('counter', ['$timeout', function ($timeout) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      var counterMax = attr.counterMax;
+      var counterMin = attr.counterMin || 0;
+      var counterSuffix = attr.counterSuffix || '';
+      var counterPrefix = attr.counterPrefix || '';
+      var counterDuration = attr.counterDuration || '';
+      if (attr.initOnClass && attr.initOnClass.indexOf('counter:') > -1 && counterMax) {
+        var initOnClassArgs = attr.initOnClass.split(', ');
+        var initCounterClassIndex = getClassArgIndex('counter', initOnClassArgs)
+        var initCounterClassArr = initOnClassArgs[initCounterClassIndex].split(':')
+        if (initCounterClassArr.length === 2) {
+          initCounterClass = initCounterClassArr[1];
+        }
+        if (initCounterClass) {
+          scope.$watch(function() {
+            return element.attr('class').indexOf(initCounterClass) > -1;
+
+          },function(elem_has_init_counter_class) {
+            if (elem_has_init_counter_class) {
+              $timeout(function() {
+                scope.$apply(function() {
+                  element[0].classList.remove(elem_has_init_counter_class);
+                })
+              });
+              if (!element[0].id) {
+                var numCounterElems = document.querySelectorAll('[counter]').length + 1
+                element[0].id = 'counter-' + numCounterElems;
+                console.log('setting id for counter directive');
+              }
+              var counterArgs = {
+                  useEasing : true,
+                  useGrouping : false,
+                  separator : ',',
+                  decimal : '.',
+                  prefix : counterPrefix ,
+                  suffix : counterSuffix
+              }
+              var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+              countUpInstance.start();
+            }
+          })
+        }
+      }
+
+      function getClassArgIndex(arg_name, class_arr) {
+        for (var i = 0; i < class_arr.length; i++) {
+          var indexClass = class_arr[i];
+          if (indexClass.indexOf(arg_name + ':') > -1) {
+            return i;
+          }
+        }
+      }
+
     }
   }
 }])

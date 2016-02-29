@@ -54,6 +54,7 @@ angular.module('uguru.util.controllers')
 
         $scope.root = RootService;
         $scope.root.vars = {};
+        $scope.root.parallax = {};
         $scope.root.vars.getUserFromServer = User.getUserFromServer;
         Utilities.compileToAngular('body-loading-div', $scope);
         $scope.root.loader = {body: {hide:false}};
@@ -330,7 +331,7 @@ angular.module('uguru.util.controllers')
                   $localstorage.set('access', false);
                   $localstorage.setObject('appOnboarding', null);
                   $localstorage.setObject('page_cache', null);
-
+                  LoadingService.showAmbig(null, 10000);
                   $ionicHistory.clearCache();
                   $ionicHistory.clearHistory();
                   var tempUniversity = $scope.user.university;
@@ -360,13 +361,14 @@ angular.module('uguru.util.controllers')
                             if (!tempUniversity) {
                                 AnimationService.flip('^.splash');
                             } else {
-                                $scope.root.vars.university = university;
-                                $localstorage.setObject('university', university);
-                                if ($scope.desktopMode) {
-                                    AnimationService.flip('^.desktop-login');
-                                } else {
-                                    AnimationService.flip('^.splash');
-                                }
+                                $timeout(function() {
+                                    $scope.root.vars.university = tempUniversity;
+                                    $scope.user.university = tempUniversity;
+                                    $scope.selectedUniversity = tempUniversity;
+                                    $localstorage.setObject('university', tempUniversity);
+                                    var category = {name: 'Academic', id:5, hex_color:'academic'};
+                                    AnimationService.flip('^.splash', {}, {categoryId:category.id, category:category, universityId:tempUniversity.id, university:tempUniversity});
+                                }, 2000)
                             }
                         }, 1000)
 
