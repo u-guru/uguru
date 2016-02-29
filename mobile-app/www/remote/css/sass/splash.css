@@ -4461,14 +4461,25 @@
   background: none;
   border: 0;
   width: 100%;
-  max-width: 652px;
-  height: 119px;
-  font-size: 48px;
+  max-width: 347px;
+  height: 84px;
+  margin: 0 auto;
+  font-size: 28px;
   text-align: center;
   line-height: 1.2;
-  padding-bottom: 10px;
+  padding-top: 5px;
   color: white;
   font-weight: 300;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code {
+    max-width: 652px;
+    height: 119px;
+    font-size: 48px;
+    padding-top: 0;
+    padding-bottom: 10px;
+  }
 }
 
 .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code::-webkit-input-placeholder {
@@ -4507,11 +4518,18 @@
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble {
-  max-width: 100%;
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.mobile {
   display: block;
+  max-width: 347px;
+  margin: 0 auto;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.desktop {
+  display: none;
+  max-width: 100%;
 }
 
 .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble path {
@@ -4520,6 +4538,15 @@
   -ms-transition: all 150ms ease-in-out;
   -o-transition: all 150ms ease-in-out;
   transition: all 150ms ease-in-out;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.mobile {
+    display: none;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.desktop {
+    display: block;
+  }
 }
 
 .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div button {
@@ -4676,10 +4703,16 @@
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  height: 100px;
+  height: 50px;
   border: 2px solid white;
   border-radius: 2px;
   text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a {
+    height: 100px;
+  }
 }
 
 .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div {
@@ -4723,7 +4756,17 @@
   -webkit-justify-content: center;
   justify-content: center;
   height: 100%;
-  font-size: 24px;
+  padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title.only {
+    font-size: 24px;
+  }
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title.only span {
+  height: auto !important;
 }
 
 .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title span {
@@ -4920,6 +4963,10 @@
 .splash-landing > section .splash-school-search .splash-school-search-form .splash-school-desktop li .school-card .school-card-inside .school-card-top .school-card-icon {
   width: 48px;
   height: 48px;
+}
+
+.splash-landing > section .splash-school-search .splash-school-search-form .splash-school-desktop li .school-card .school-card-inside .school-card-top .school-card-icon .school-card-state svg {
+  padding: 10px;
 }
 
 .splash-landing > section .splash-school-search .splash-school-search-form .splash-school-desktop li .school-card .school-card-inside .school-card-main .school-card-info h1 {
