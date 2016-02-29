@@ -52,6 +52,24 @@
             </ul>
         </div>
         <div>
+            <div class="school-id-card">
+                <svg viewBox="0 0 240 160">
+                    <rect x="0" y="0" width="300" height="175" fill="none"></rect>
+                </svg>
+                <div class="school-id-inside">
+                    <div class="school-id-top" style="background: {{selectedUniversity.school_color_dark}};">
+                        <span class="user-icon" style="border-color: {{selectedUniversity.school_color_dark}}; background-image: url();"></span>
+                    </div>
+                    <div class="school-id-bottom">
+                        <div>
+                            <h1 style="color: {{selectedUniversity.school_color_dark}};">Student Name</h1>
+                            <h2 style="color: {{selectedUniversity.school_color_dark}};">{{selectedUniversity.short_name || selectedUniversity.name}}</h2>
+                            <h2 style="color: {{selectedUniversity.school_color_dark}};">email@domain.com</h2>
+                        </div>
+                        <h3><span style="color: {{selectedUniversity.school_color_dark}};">SELECTED COURSES</span></h3>
+                    </div>
+                </div>
+            </div>
             <button class="btn-ghost-white" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="700" ng-click='sidebarGetStarted()'><span>Get Started</button>
             <ul class="splash-sidebar-platforms" ng-if='false'>
                 <li>

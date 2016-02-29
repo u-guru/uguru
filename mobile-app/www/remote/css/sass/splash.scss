@@ -678,7 +678,10 @@
 			}
 			button {
 				display: block;
-				margin: 15px auto 7px;
+				margin: 15px auto;
+			}
+			.school-id-card {
+				margin: 15px auto;
 			}
 			.splash-sidebar-links {
 				li {
@@ -1173,7 +1176,9 @@
 				width: 100%;
 				height: 100%;
 				.splash-hero-marker {
+					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 					position: absolute;
+					cursor: pointer;
 					&.visible {
 						@include opacity-important(1);
 						z-index: 9;
@@ -1181,443 +1186,325 @@
 					&:not(:first-child) {
 						display: none;
 					}
-					.location {
-						@include round;
-						margin: 10px;
-						width: 10px;
-						height: 10px;
-						position: absolute;
-						border: 2px solid white;
-						&.top {
-							top: -25px;
-						}
-						&.bottom {
-							bottom: -25px;
-						}
-						&.left {
-							left: 30.5px;
-						}
-						&.right {
-							right: 30.5px;
-						}
-						&.bg-delivery {
+					&.bg-academic {
+						.marker-circle {
 							background: $auburn;
 						}
-						&.bg-freelancing {
+						.marker-guru {
+							background: rgba($auburn, .3);
+							&:hover, &:focus {
+								background: $auburn;
+							}
+						}
+					}
+					&.bg-freelancing {
+						.marker-circle {
 							background: $orange;
 						}
-						&.bg-baking {
+						.marker-guru {
+							background: rgba($orange, .3);
+							&:hover, &:focus {
+								background: $orange;
+							}
+						}
+					}
+					&.bg-baking {
+						.marker-circle {
 							background: $gold;
 						}
-						&.bg-photography {
+						.marker-guru {
+							background: rgba($gold, .3);
+							&:hover, &:focus {
+								background: $gold;
+							}
+						}
+					}
+					&.bg-photography {
+						.marker-circle {
 							background: $moola;
 						}
-						&.bg-tech {
+						.marker-guru {
+							background: rgba($moola, .3);
+							&:hover, &:focus {
+								background: $moola;
+							}
+						}
+					}
+					&.bg-tech {
+						.marker-circle {
 							background: $azure;
 						}
-						&.bg-household {
+						.marker-guru {
+							background: rgba($azure, .3);
+							&:hover, &:focus {
+								background: $azure;
+							}
+						}
+					}
+					&.bg-household {
+						.marker-circle {
 							background: $cobalt;
 						}
-						&.bg-athletic {
+						.marker-guru {
+							background: rgba($cobalt, .3);
+							&:hover, &:focus {
+								background: $cobalt;
+							}
+						}
+					}
+					&.bg-athletic {
+						.marker-circle {
 							background: $eggplant;
 						}
-						&.bg-academic {
+						.marker-guru {
+							background: rgba($eggplant, .3);
+							&:hover, &:focus {
+								background: $eggplant;
+							}
+						}
+					}
+					&.bg-academic {
+						.marker-circle {
 							background: $cerise;
 						}
-					}
-					.location-text {
-						@include flex;
-						@include prefix(justify-content, center, webkit);
-						position: absolute;
-						font-size: 16px;
-						font-weight: 600;
-						width: 90px;
-						white-space: nowrap;
-						overflow: visible;
-					}
-					.location.left + .location-text {
-						left: 0;
-					}
-					.location.right + .location-text {
-						right: 0;
-					}
-					.location.top + .location-text {
-						top: -40px;
-					}
-					.location.bottom + .location-text {
-						bottom: -40px;
-					}
-					.map-tooltip-window {
-						path, line {
-							@include prefix(transition, all 0ms ease-in-out, webkit moz ms o);
-						}
-						.bg {
-							@include prefix(transition-delay, 150ms, webkit moz ms o);
-							@include opacity(0);
-						}
-						.top, .bottom, .left, .right {
-							@include prefix(transition-delay, 300ms, webkit moz ms o);
-						}
-						.left, .right {
-							stroke-dasharray: 540, 540;
-							stroke-dashoffset: 360;
-						}
-						.top {
-							stroke-dasharray: 520, 520;
-							stroke-dashoffset: 340;
-						}
-						.bottom {
-							stroke-dasharray: 400, 400;
-							stroke-dashoffset: 340;
-						}
-						&.top {
-							.top {
-								@include prefix(transform, translate3d(0, -360px, 0), webkit moz ms o);
-							}
-						}
-						&.bottom {
-							.top {
-								@include prefix(transform, translate3d(0, 360px, 0), webkit moz ms o);
-							}
-						}
-						&.left {
-							.right {
-								@include prefix(transform, translate3d(-338px, 0, 0), webkit moz ms o);
-							}
-						}
-						&.right {
-							.right {
-								@include prefix(transform, translate3d(338px, 0, 0), webkit moz ms o);
+						.marker-guru {
+							background: rgba($cerise, .3);
+							&:hover, &:focus {
+								background: $cerise;
 							}
 						}
 					}
-					.user-icon {
-						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						position: absolute;
-						width: 64px;
-						height: 64px;
-						border-width: 2px;
-						left: 14px;
-						z-index: 5;
-						background-color: $shamrock;
-						svg {
+					.marker-normal {
+						position: relative;
+						.marker-normal-window {
+							.open {
+								@include prefix(transition, stroke-dashoffset 150ms ease-in-out, webkit moz ms o);
+								stroke-dasharray: 80, 80;
+								stroke-dashoffset: 0;
+							}
+							.side {
+								@include prefix(transition, stroke-dashoffset 200ms ease-in-out, webkit moz ms o);
+								stroke-dasharray: 278, 278;
+								stroke-dashoffset: 0;
+							}
+						}
+						.marker-normal-content {
 							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-							@include round;
-							background-color: $shamrock;
-						}
-						&.active {
+							@include flex;
+							@include flex-wrap;
+							position: absolute;
+							top: 2px;
+							left: 2px;
+							width: calc(100% - 4px);
+							height: calc(100% - 26px);
 							svg {
+								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+								@include svg-stroke(white, 3);
+								position: absolute;
+								top: 50%;
+								margin-top: -24px;
+								left: 50%;
+								margin-left: -24px;
+								z-index: 2;
+								width: 48px;
+								height: 48px;
+							}
+							.marker-guru {
+								@include opacity(0);
+								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+								@include round;
+								@include flex;
+								@include flex-center-vertical;
+								@include center-xy;
+								margin-top: 6px;
+								height: 30px;
+								width: 74px;
+								padding-left: 28px;
+								border: 2px solid white;
+								font-size: 10px;
+								font-weight: 600;
+								line-height: 1;
+								text-align: center;
+								.user-icon {
+									position: absolute;
+									top: -2px;
+									left: -2px;
+									width: 30px;
+									height: 30px;
+									border-width: 2px;
+								}
+								.marker-guru-course {
+									display: block;
+									width: 100%;
+								}
+							}
+						}
+						&.move {
+							.marker-normal-window {
+								.open {
+									stroke-dashoffset: 80;
+								}
+							}
+							.marker-normal-content {
+								svg {
+									@include prefix(transform, translateY(-36px), webkit moz ms o);
+								}
+							}
+						}
+					}
+					.marker-expanded {
+						position: absolute;
+						z-index: -1;
+						bottom: 0;
+						left: 50%;
+						margin-left: -131px;
+						.marker-expanded-window {
+							.sides {
+								@include prefix(transition, stroke-dashoffset 300ms ease-in-out, webkit moz ms o);
+								stroke-dasharray: 936, 936;
+								stroke-dashoffset: 936;
+							}
+						}
+						.marker-expanded-content {
+							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+							@include opacity(0);
+							position: absolute;
+							top: 2px;
+							left: 2px;
+							width: calc(100% - 4px);
+							height: calc(100% - 26px);
+							.marker-expanded-icon {
+								svg {
+									@include svg-stroke(white, 1.5);
+									@include center-x;
+									top: -50%;
+									margin-top: 75px;
+									width: 100px;
+									height: 100px;
+								}
+							}
+							.marker-location {
+								padding: 40px 0 15px 0;
+								text-align: center;
+								h1 {
+									font-size: 18px;
+									font-weight: 600;
+								}
+								h4 {
+									font-size: 14px;
+									font-weight: 600;
+								}
+							}
+							.marker-guru {
+								@include flex;
+								position: relative;
+								padding: 10px 15px;
+								.user-icon {
+									width: 48px;
+									height: 48px;
+									border-width: 2px;
+								}
+								div {
+									width: calc(100% - 48px);
+									padding-left: 15px;
+									text-align: left;
+								}
+								h1 {
+									font-size: 20px;
+									font-weight: 600;
+								}
+								h3 {
+									@include opacity(.5);
+									margin-top: 0!important;
+									font-size: 14px;
+									font-weight: 600;
+								}
+								svg {
+									@include svg-stroke(white, 8);
+									@include center-y;
+									right: 2px;
+									height: 24px;
+								}
+							}
+							.marker-message {
+								@include flex;
+								@include flex-center-vertical;
+								height: calc(100% - 96px - 68px);
+								padding: 0 15px;
+								p {
+									margin: 0;
+									font-size: 16px;
+									font-weight: 400;
+									text-align: left;
+								}
+							}
+						}
+					}
+					.marker-circle {
+						@include round;
+						@include center-x;
+						margin-top: 3px;
+						width: 10px;
+						height: 10px;
+						border: 2px solid white;
+					}
+					&.splash-marker-active {
+						z-index: 12;
+						.marker-normal {
+							@include prefix(transition-delay, 300ms, webkit moz ms o);
+							@include opacity(0);
+							.marker-normal-window {
+								.side {
+									@include prefix(transition-delay, 150ms, webkit moz ms o);
+									stroke-dashoffset: 278;
+								}
+							}
+							.marker-normal-content {
 								@include opacity(0);
 							}
 						}
-					}
-					.map-tooltip-window.top + .user-icon {
-						top: 28px;
-					}
-					.map-tooltip-window.bottom + .user-icon {
-						bottom: 30px;
-					}
-					.map-tooltip-window.left + .user-icon {
-						left: 14px;
-					}
-					.map-tooltip-window.right + .user-icon {
-						right: -154px;
-					}
-					.map-tooltip-text {
-						@include opacity(0);
-						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						@include prefix(transition-delay, 300ms, webkit moz ms o);
-						position: absolute;
-						left: 1px;
-						width: 260px;
-						height: 270px;
-						&.top {
-							top: 2px;
-						}
-						&.bottom {
-							bottom: 2px;
-							.map-tooltip-guru {
-								&:before {
-									@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-									content: "";
-									display: block;
-									position: absolute;
-									width: 0;
-									height: 0;
-									border: 15px solid transparent;
-									top: -30px;
-								}
-								&.bg-delivery {
-									&:before {
-										border-bottom-color: rgba($auburn, .25);
-									}
-									&:hover:before {
-										border-bottom-color: $auburn;
-									}
-								}
-								&.bg-freelancing {
-									&:before {
-										border-bottom-color: rgba($orange, .25);
-									}
-									&:hover:before {
-										border-bottom-color: $orange;
-									}
-								}
-								&.bg-baking {
-									&:before {
-										border-bottom-color: rgba($gold, .25);
-									}
-									&:hover:before {
-										border-bottom-color: $gold;
-									}
-								}
-								&.bg-photography {
-									&:before {
-										border-bottom-color: rgba($moola, .25);
-									}
-									&:hover:before {
-										border-bottom-color: $moola;
-									}
-								}
-								&.bg-tech {
-									&:before {
-										border-bottom-color: rgba($azure, .25);
-									}
-									&:hover:before {
-										border-bottom-color: $azure;
-									}
-								}
-								&.bg-household {
-									&:before {
-										border-bottom-color: rgba($cobalt, .25);
-									}
-									&:hover:before {
-										border-bottom-color: $cobalt;
-									}
-								}
-								&.bg-athletic {
-									&:before {
-										border-bottom-color: rgba($eggplant, .25);
-									}
-									&:hover:before {
-										border-bottom-color: $eggplant;
-									}
-								}
-								&.bg-academic {
-									&:before {
-										border-bottom-color: rgba($cerise, .25);
-									}
-									&:hover:before {
-										border-bottom-color: $cerise;
-									}
+						.marker-expanded {
+							z-index: 2;
+							.marker-expanded-window {
+								.sides {
+									@include prefix(transition-delay, 350ms, webkit moz ms o);
+									stroke-dashoffset: 0;
 								}
 							}
-							&.left {
-								.map-tooltip-guru {
-									&:before {
-										left: 30px;
-									}
-								}
-							}
-							&.right {
-								.map-tooltip-guru {
-									&:before {
-										right: 30px;
-									}
-								}
-							}
-						}
-						> div {
-							@include flex;
-							@include flex-wrap;
-							@include flex-center-vertical;
-							padding: 0 15px;
-							height: calc(100% / 3);
-							text-align: left;
-							&:not(:last-child) {
-								border-bottom: 2px solid white;
-							}
-						}
-						h1, h2, p {
-							width: 100%;
-						}
-						h1, h2 {
-							margin: 0!important;
-						}
-						h2 {
-							font-size: 16px;
-							font-weight: 600;
-						}
-						.map-tooltip-guru {
-							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-							&.bg-delivery {
-								background: rgba($auburn, .25);
-								&:hover {
-									background: $auburn;
-								}
-							}
-							&.bg-freelancing {
-								background: rgba($orange, .25);
-								&:hover {
-									background: $orange;
-								}
-							}
-							&.bg-baking {
-								background: rgba($gold, .25);
-								&:hover {
-									background: $gold;
-								}
-							}
-							&.bg-photography {
-								background: rgba($moola, .25);
-								&:hover {
-									background: $moola;
-								}
-							}
-							&.bg-tech {
-								background: rgba($azure, .25);
-								&:hover {
-									background: $azure;
-								}
-							}
-							&.bg-household {
-								background: rgba($cobalt, .25);
-								&:hover {
-									background: $cobalt;
-								}
-							}
-							&.bg-athletic {
-								background: rgba($eggplant, .25);
-								&:hover {
-									background: $eggplant;
-								}
-							}
-							&.bg-academic {
-								background: rgba($cerise, .25);
-								&:hover {
-									background: $cerise;
-								}
-							}
-							> div {
-								&:first-child {
-									@include prefix(transform, translateX(50px), webkit moz ms o);
-									width: calc(100% - 25px);
-								}
-								&:last-child {
-									@include prefix(transform, translateX(12.5px), webkit moz ms o);
-									svg {
-										display: block;
-										width: 25px;
-										height: 25px;
-										path {
-											@include svg-stroke(white, 8);
-										}
-									}
-								}
-							}
-							h1 {
-								@include flex;
-								@include flex-center-vertical;
-								font-size: 20px;
-								font-weight: 600;
-								.map-tooltip-course {
-									@include round;
-									@include flex;
-									@include flex-center-vertical;
-									background: rgba($cerise, .25);
-									border: 2px solid white;
-									padding: 0 6px;
-									margin-left: 5px;
-									height: 24px;
-									font-size: 10px;
-								}
-							}
-							h2 {
-								color: rgba(white,.5);
-							}
-							.rating-stars {
-								margin: 0;
-							}
-						}
-						.map-tooltip-location {
-							position: relative;
-							h1 {
-								height: 24px;
-								overflow: hidden;
-								font-size: 20px;
-								font-weight: 700;
-							}
-							> div {
-								&:nth-child(1) {
-									@include opacity(.4);
-									position: absolute;
-									top: 0;
-									left: 0;
-									width: 100%;
-									height: 100%;
-									background-size: cover;
-									background-position: center;
-								}
-								&:not(:first-child) {
-									position: relative;
-									z-index: 3;
-								}
-								&:nth-child(2) {
-									width: calc(100% - 64px);
-								}
-							}
-							svg {
-								@include round;
-								display: block;
-								width: 64px;
-								height: 64px;
-								border: 2px solid white;
-								background: lighten($slate, 10%);
-								path {
-									@include svg-stroke(white, 4);
-								}
-							}
-						}
-						.map-tooltip-message {
-							p {
-								margin: 0;
-								font-size: 16px;
-								font-weight: 600;
+							.marker-expanded-content {
+								@include prefix(transition-delay, 650ms, webkit moz ms o);
+								@include opacity(1);
 							}
 						}
 					}
-					&.first, &.active, &:hover {
+					&.splash-marker-first {
 						z-index: 12;
-						.map-tooltip-text {
-							@include prefix(transition-delay, 300ms, webkit moz ms o);
-						}
-						.map-tooltip-window.top.left + .user-icon {
-							@include prefix(transform, translate3d(-30px, -30px, 0) scale(1.26), webkit moz ms o);
-						}
-						.map-tooltip-window.top.right + .user-icon {
-							@include prefix(transform, translate3d(-200px, -30px, 0) scale(1.26), webkit moz ms o);
-						}
-						.map-tooltip-window.bottom.left + .user-icon {
-							@include prefix(transform, translate3d(-30px, -210px, 0) scale(1.26), webkit moz ms o);
-						}
-						.map-tooltip-window.bottom.right + .user-icon {
-							@include prefix(transform, translate3d(-200px, -210px, 0) scale(1.26), webkit moz ms o);
-						}
-						.map-tooltip-window {
-							.bg {
-								@include prefix(transition-delay, 150ms, webkit moz ms o);
-								@include opacity(.95);
+						.marker-normal {
+							@include prefix(transition-delay, 3300ms, webkit moz ms o);
+							@include opacity(0);
+							.marker-normal-window {
+								.side {
+									@include prefix(transition-delay, 3150ms, webkit moz ms o);
+									stroke-dashoffset: 278;
+								}
 							}
-							.left, .right, .top, .bottom {
-								@include prefix(transition-delay, 0ms, webkit moz ms o);
-								stroke-dashoffset: 0;
-							}
-							.right, .top {
-								@include prefix(transform, translate3d(0, 0, 0), webkit moz ms o);
+							.marker-normal-content {
+								@include prefix(transition-delay, 3000ms, webkit moz ms o);
+								@include opacity(0);
 							}
 						}
-						.map-tooltip-text {
-							@include opacity(1);
+						.marker-expanded {
+							z-index: 2;
+							.marker-expanded-window {
+								.sides {
+									@include prefix(transition-delay, 3350ms, webkit moz ms o);
+									stroke-dashoffset: 0;
+								}
+							}
+							.marker-expanded-content {
+								@include prefix(transition-delay, 3650ms, webkit moz ms o);
+								@include opacity(1);
+							}
 						}
 					}
 				}
@@ -1679,7 +1566,62 @@
 				}
 				.splash-device-profile {
 					position: absolute;
-					background: $cerise;
+					.pf-container {
+						.tab-bar.slide {
+							> div {
+								width: 100%;
+								a {
+									width: 50%;
+									&:nth-child(1) {
+										&.active {
+											~ hr {
+												@include translate-x(0);
+											}
+										}
+									}
+									&:nth-child(2) {
+										&.active {
+											~ hr {
+												@include translate-x(100%);
+											}
+										}
+									}
+									&:nth-child(1) {
+										&:hover, &:focus {
+											~ hr {
+												@include translate-x(0);
+											}
+										}
+									}
+									&:nth-child(2) {
+										&:hover, &:focus {
+											~ hr {
+												@include translate-x(100%);
+											}
+										}
+									}
+								}
+								hr {
+									width: 50%;
+								}
+							}
+						}
+						.pf-aside {
+							.pf-rating {
+								margin-top: 0!important;
+							}
+						}
+						.pf-portfolio-items {
+							.pf-portfolio-item {
+								.pf-portfolio-img {
+									margin: 0;
+									padding: 0;
+									width: 100%;
+									height: 150px;
+								}
+							}
+						}
+					}
 				}
 				.splash-device-content {
 					@include flex;
@@ -1690,10 +1632,11 @@
 						width: 100%;
 						height: 100%;
 						.splash-device-found {
-							&.active {
-								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-								@include prefix(transform, translateY(100%), webkit moz ms o);
-							}
+							margin-bottom: 10px;
+							// &.active {
+							// 	@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+							// 	@include prefix(transform, translateY(100%), webkit moz ms o);
+							// }
 						}
 						.splash-device-search-inside {
 							@include flex;
@@ -1721,22 +1664,109 @@
 						ul {
 							@include flex;
 							@include flex-wrap;
-							padding: 7.5px;
-							li {
-								padding: 7.5px;
-							}
 							&.splash-device-search-gurus {
 								li {
+									@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+									@include flex;
+									@include flex-center;
 									width: calc(100% / 3);
-									padding: 7.5px;
-									.user-icon {
+									padding: 8px 0;
+									div {
 										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-										width: 64px;
-										height: 64px;
-										border-width: 2px;
-										background-color: $shamrock;
+										&.splash-marker-guru-first {
+											@include prefix(transition-delay, 3000ms, webkit moz ms o);
+											@include opacity-important(0);
+										}
+										&.splash-marker-guru-active {
+											@include opacity(0);
+										}
+									}
+									.marker-guru {
+										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+										@include round;
+										@include flex;
+										@include flex-center-vertical;
+										position: relative;
+										height: 30px;
+										width: 74px;
+										padding-left: 28px;
+										border: 2px solid white;
+										font-size: 10px;
+										font-weight: 600;
+										line-height: 1;
+										text-align: center;
+										&.bg-academic {
+											background: rgba($auburn, .3);
+											&:hover, &:focus {
+												background: $auburn;
+											}
+										}
+										&.bg-freelancing {
+											background: rgba($orange, .3);
+											&:hover, &:focus {
+												background: $orange;
+											}
+										}
+										&.bg-baking {
+											background: rgba($gold, .3);
+											&:hover, &:focus {
+												background: $gold;
+											}
+										}
+										&.bg-photography {
+											background: rgba($moola, .3);
+											&:hover, &:focus {
+												background: $moola;
+											}
+										}
+										&.bg-tech {
+											background: rgba($azure, .3);
+											&:hover, &:focus {
+												background: $azure;
+											}
+										}
+										&.bg-household {
+											background: rgba($cobalt, .3);
+											&:hover, &:focus {
+												background: $cobalt;
+											}
+										}
+										&.bg-athletic {
+											background: rgba($eggplant, .3);
+											&:hover, &:focus {
+												background: $eggplant;
+											}
+										}
+										&.bg-academic {
+											background: rgba($cerise, .3);
+											&:hover, &:focus {
+												background: $cerise;
+											}
+										}
+										.user-icon {
+											position: absolute;
+											top: -2px;
+											left: -2px;
+											width: 30px;
+											height: 30px;
+											border-width: 2px;
+										}
+										.marker-guru-course {
+											display: block;
+											width: 100%;
+										}
 									}
 								}
+								// li {
+								// 	width: calc(100% / 3);
+								// 	.user-icon {
+								// 		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+								// 		width: 64px;
+								// 		height: 64px;
+								// 		border-width: 2px;
+								// 		background-color: $shamrock;
+								// 	}
+								// }
 							}
 							&.splash-device-search-courses {
 								margin-top: -15px;
@@ -2027,6 +2057,10 @@
 								@include prefix(animation, none!important, webkit moz ms o);
 							}
 						}
+						.spacer {
+							width: 100%;
+							height: 10px;
+						}
 					}
 				}
 			}
@@ -2210,6 +2244,9 @@
 							max-width: calc(172px * 4 + 30px);
 							padding: 15px;
 							margin: 0 auto 15px;
+							.spacer {
+								display: none!important;
+							}
 							li {
 								width: 25%;
 								max-width: 172px;
@@ -2308,6 +2345,9 @@
 			}
 			.main-swipers-container {
 				height: 100%;
+				.swiper-slide {
+					overflow: visible!important;
+				}
 			}
 			.header-swiper-front {
 				@include center-y;
@@ -2323,6 +2363,16 @@
 				}
 				&.bottom {
 					bottom: -196px;
+				}
+			}
+			.projector-handle {
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+				position: absolute;
+				bottom: -20px;
+				left: 50%;
+				margin-left: -30.5px;
+				&:not(.active) {
+					@include opacity(0);
 				}
 			}
 			.swiper-front-gallery-thumbs {
@@ -2344,7 +2394,7 @@
 					height: 100%!important;
 					.swiper-slide {
 						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						width: 25%!important;
+						width: 33%!important;
 						height: 80px!important;
 						margin: 0!important;
 						text-align: center;
@@ -2691,6 +2741,56 @@
 						.splash-projector-guru {
 							display: none;
 						}
+						.splash-signup-buttons {
+							position: absolute;
+							bottom: 0;
+							left: 0;
+							width: 100%;
+							@include flex;
+							@include flex-wrap;
+							li {
+								width: 50%;
+								button {
+									font-size: 16px!important;
+									font-weight: 600;
+									line-height: 1.2;
+									height: 50px;
+								}
+								&:nth-child(1) {
+									button {
+										background: lighten(mix($slate, $shamrock), 15%);
+									}
+								}
+								&.login:nth-child(1) {
+									button {
+										background: $moxie;
+									}
+								}
+								&:nth-child(2) {
+									button {
+										background: $facebook;
+									}
+								}
+								&:nth-child(3) {
+									button {
+										background: lighten(mix($slate, $shamrock), 15%);
+									}
+								}
+								&:nth-child(4) {
+									button {
+										background: lighten($slate, 15%);
+									}
+								}
+							}
+						}
+						.splash-login-content {
+							.input-field {
+							    padding: 0 15px;
+							}
+							.login-buttons {
+								display: none;
+							}
+						}
 						.splash-signup-content {
 							.splash-signup-inside {
 								@include flex-center;
@@ -2699,38 +2799,15 @@
 								.splash-signup-form {
 									width: 100%;
 								}
-								.splash-signup-buttons {
-									position: absolute;
-									bottom: 0;
-									left: 0;
-									width: 100%;
-									@include flex;
-									li {
-										width: 50%;
-										button {
-											font-size: 16px!important;
-											font-weight: 600;
-											line-height: 1.2;
-											height: 50px;
-										}
-										&:first-child {
-											button {
-												background: $shamrock;
-											}
-										}
-										&:last-child {
-											button {
-												background: $facebook;
-											}
-										}
-									}
-								}
 							}
 						}
 					}
 					@media screen and (min-width: 768px) {
 						.splash-content {
 							padding: 150px 30px 15px;
+						}
+						.splash-signup-buttons {
+							display: none;
 						}
 						.splash-signup-content {
 							.splash-signup-inside {
@@ -2751,9 +2828,6 @@
 											height: 50px;
 										}
 									}
-								}
-								.splash-signup-buttons {
-									display: none;
 								}
 							}
 						}
@@ -3026,6 +3100,7 @@
 		// UNIVERSITY
 		.splash-school-search {
 			height: calc(100%)!important;
+			overflow: hidden!important;
 			.splash-map {
 				position: absolute;
 				top: 0;
@@ -4284,3 +4359,15 @@
 // .selected-university-place-marker {
 // 	@include prefix(filter, invert(100%), webkit moz ms o);
 // }
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper {
+	.slideshow-thumb-7,
+	.slideshow-thumb-6,
+	.slideshow-thumb-5,
+	.slideshow-thumb-4,
+	.slideshow-thumb-3.progress-active {
+		width:20% !important;
+		opacity: 1 !important;
+		background:transparent !important;
+	}
+}

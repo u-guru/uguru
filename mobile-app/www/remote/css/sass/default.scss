@@ -415,10 +415,10 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 }
 // SIZING
 .inline {
-	display: inline;
+	display: inline!important;
 }
 .inline-block {
-	display: inline-block;
+	display: inline-block!important;
 }
 .block,
 .show:not(.uguru-popup) {

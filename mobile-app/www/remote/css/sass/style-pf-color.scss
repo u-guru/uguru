@@ -1,5 +1,896 @@
 @import 'mixin';
 
+.pf-container {
+	&.pf-delivery {
+		.tab-bar.slide {
+			> div {
+				a {
+					&:nth-child(1).active ~ hr {
+						border-color: $auburn;
+					}
+					&:nth-child(2).active ~ hr {
+						border-color: $auburn;
+					}
+					&:nth-child(3).active ~ hr {
+						border-color: $auburn;
+					}
+					&:nth-child(4).active ~ hr {
+						border-color: $auburn;
+					}
+					&:nth-child(5).active ~ hr {
+						border-color: $auburn;
+					}
+
+					&:nth-child(1) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($auburn, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $auburn;
+							}
+						}
+					}
+					&:nth-child(2) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($auburn, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $auburn;
+							}
+						}
+					}
+					&:nth-child(3) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($auburn, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $auburn;
+							}
+						}
+					}
+					&:nth-child(4) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($auburn, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $auburn;
+							}
+						}
+					}
+					&:nth-child(5) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($auburn, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $auburn;
+							}
+						}
+					}
+				}
+				hr {
+					border-top: 5px solid $auburn;
+				}
+			}
+		}
+		.pf-main {
+			> div {
+				&.pf-about {
+					.pf-about-section {
+						header {
+							h2 {
+								background: $auburn;
+							}
+						}
+						div {
+							.pf-url-link {
+								li {
+									&:last-child {
+										a {
+											background: $auburn;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.pf-freelancing {
+		.tab-bar.slide {
+			> div {
+				a {
+					&:nth-child(1).active ~ hr {
+						border-color: $orange;
+					}
+					&:nth-child(2).active ~ hr {
+						border-color: $orange;
+					}
+					&:nth-child(3).active ~ hr {
+						border-color: $orange;
+					}
+					&:nth-child(4).active ~ hr {
+						border-color: $orange;
+					}
+					&:nth-child(5).active ~ hr {
+						border-color: $orange;
+					}
+
+					&:nth-child(1) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($orange, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $orange;
+							}
+						}
+					}
+					&:nth-child(2) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($orange, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $orange;
+							}
+						}
+					}
+					&:nth-child(3) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($orange, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $orange;
+							}
+						}
+					}
+					&:nth-child(4) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($orange, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $orange;
+							}
+						}
+					}
+					&:nth-child(5) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($orange, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $orange;
+							}
+						}
+					}
+				}
+				hr {
+					border-top: 5px solid $orange;
+				}
+			}
+		}
+		.pf-main {
+			> div {
+				&.pf-about {
+					.pf-about-section {
+						header {
+							h2 {
+								background: $orange;
+							}
+						}
+						div {
+							.pf-url-link {
+								li {
+									&:last-child {
+										a {
+											background: $orange;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.pf-baking {
+		.tab-bar.slide {
+			> div {
+				a {
+					&:nth-child(1).active ~ hr {
+						border-color: $gold;
+					}
+					&:nth-child(2).active ~ hr {
+						border-color: $gold;
+					}
+					&:nth-child(3).active ~ hr {
+						border-color: $gold;
+					}
+					&:nth-child(4).active ~ hr {
+						border-color: $gold;
+					}
+					&:nth-child(5).active ~ hr {
+						border-color: $gold;
+					}
+
+					&:nth-child(1) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($gold, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $gold;
+							}
+						}
+					}
+					&:nth-child(2) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($gold, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $gold;
+							}
+						}
+					}
+					&:nth-child(3) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($gold, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $gold;
+							}
+						}
+					}
+					&:nth-child(4) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($gold, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $gold;
+							}
+						}
+					}
+					&:nth-child(5) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($gold, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $gold;
+							}
+						}
+					}
+				}
+				hr {
+					border-top: 5px solid $gold;
+				}
+			}
+		}
+		.pf-main {
+			> div {
+				&.pf-about {
+					.pf-about-section {
+						header {
+							h2 {
+								background: $gold;
+							}
+						}
+						div {
+							.pf-url-link {
+								li {
+									&:last-child {
+										a {
+											background: $gold;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.pf-photography {
+		.tab-bar.slide {
+			> div {
+				a {
+					&:nth-child(1).active ~ hr {
+						border-color: $moola;
+					}
+					&:nth-child(2).active ~ hr {
+						border-color: $moola;
+					}
+					&:nth-child(3).active ~ hr {
+						border-color: $moola;
+					}
+					&:nth-child(4).active ~ hr {
+						border-color: $moola;
+					}
+					&:nth-child(5).active ~ hr {
+						border-color: $moola;
+					}
+
+					&:nth-child(1) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($moola, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $moola;
+							}
+						}
+					}
+					&:nth-child(2) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($moola, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $moola;
+							}
+						}
+					}
+					&:nth-child(3) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($moola, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $moola;
+							}
+						}
+					}
+					&:nth-child(4) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($moola, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $moola;
+							}
+						}
+					}
+					&:nth-child(5) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($moola, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $moola;
+							}
+						}
+					}
+				}
+				hr {
+					border-top: 5px solid $moola;
+				}
+			}
+		}
+		.pf-main {
+			> div {
+				&.pf-about {
+					.pf-about-section {
+						header {
+							h2 {
+								background: $moola;
+							}
+						}
+						div {
+							.pf-url-link {
+								li {
+									&:last-child {
+										a {
+											background: $moola;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.pf-tech {
+		.tab-bar.slide {
+			> div {
+				a {
+					&:nth-child(1).active ~ hr {
+						border-color: $azure;
+					}
+					&:nth-child(2).active ~ hr {
+						border-color: $azure;
+					}
+					&:nth-child(3).active ~ hr {
+						border-color: $azure;
+					}
+					&:nth-child(4).active ~ hr {
+						border-color: $azure;
+					}
+					&:nth-child(5).active ~ hr {
+						border-color: $azure;
+					}
+
+					&:nth-child(1) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($azure, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $azure;
+							}
+						}
+					}
+					&:nth-child(2) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($azure, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $azure;
+							}
+						}
+					}
+					&:nth-child(3) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($azure, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $azure;
+							}
+						}
+					}
+					&:nth-child(4) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($azure, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $azure;
+							}
+						}
+					}
+					&:nth-child(5) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($azure, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $azure;
+							}
+						}
+					}
+				}
+				hr {
+					border-top: 5px solid $azure;
+				}
+			}
+		}
+		.pf-main {
+			> div {
+				&.pf-about {
+					.pf-about-section {
+						header {
+							h2 {
+								background: $azure;
+							}
+						}
+						div {
+							.pf-url-link {
+								li {
+									&:last-child {
+										a {
+											background: $azure;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.pf-household {
+		.tab-bar.slide {
+			> div {
+				a {
+					&:nth-child(1).active ~ hr {
+						border-color: $cobalt;
+					}
+					&:nth-child(2).active ~ hr {
+						border-color: $cobalt;
+					}
+					&:nth-child(3).active ~ hr {
+						border-color: $cobalt;
+					}
+					&:nth-child(4).active ~ hr {
+						border-color: $cobalt;
+					}
+					&:nth-child(5).active ~ hr {
+						border-color: $cobalt;
+					}
+
+					&:nth-child(1) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($cobalt, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $cobalt;
+							}
+						}
+					}
+					&:nth-child(2) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($cobalt, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $cobalt;
+							}
+						}
+					}
+					&:nth-child(3) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($cobalt, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $cobalt;
+							}
+						}
+					}
+					&:nth-child(4) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($cobalt, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $cobalt;
+							}
+						}
+					}
+					&:nth-child(5) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($cobalt, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $cobalt;
+							}
+						}
+					}
+				}
+				hr {
+					border-top: 5px solid $cobalt;
+				}
+			}
+		}
+		.pf-main {
+			> div {
+				&.pf-about {
+					.pf-about-section {
+						header {
+							h2 {
+								background: $cobalt;
+							}
+						}
+						div {
+							.pf-url-link {
+								li {
+									&:last-child {
+										a {
+											background: $cobalt;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.pf-athletic {
+		.tab-bar.slide {
+			> div {
+				a {
+					&:nth-child(1).active ~ hr {
+						border-color: $eggplant;
+					}
+					&:nth-child(2).active ~ hr {
+						border-color: $eggplant;
+					}
+					&:nth-child(3).active ~ hr {
+						border-color: $eggplant;
+					}
+					&:nth-child(4).active ~ hr {
+						border-color: $eggplant;
+					}
+					&:nth-child(5).active ~ hr {
+						border-color: $eggplant;
+					}
+
+					&:nth-child(1) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($eggplant, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $eggplant;
+							}
+						}
+					}
+					&:nth-child(2) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($eggplant, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $eggplant;
+							}
+						}
+					}
+					&:nth-child(3) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($eggplant, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $eggplant;
+							}
+						}
+					}
+					&:nth-child(4) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($eggplant, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $eggplant;
+							}
+						}
+					}
+					&:nth-child(5) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($eggplant, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $eggplant;
+							}
+						}
+					}
+				}
+				hr {
+					border-top: 5px solid $eggplant;
+				}
+			}
+		}
+		.pf-main {
+			> div {
+				&.pf-about {
+					.pf-about-section {
+						header {
+							h2 {
+								background: $eggplant;
+							}
+						}
+						div {
+							.pf-url-link {
+								li {
+									&:last-child {
+										a {
+											background: $eggplant;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.pf-academic {
+		.tab-bar.slide {
+			> div {
+				a {
+					&:nth-child(1).active ~ hr {
+						border-color: $cerise;
+					}
+					&:nth-child(2).active ~ hr {
+						border-color: $cerise;
+					}
+					&:nth-child(3).active ~ hr {
+						border-color: $cerise;
+					}
+					&:nth-child(4).active ~ hr {
+						border-color: $cerise;
+					}
+					&:nth-child(5).active ~ hr {
+						border-color: $cerise;
+					}
+
+					&:nth-child(1) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($cerise, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $cerise;
+							}
+						}
+					}
+					&:nth-child(2) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($cerise, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $cerise;
+							}
+						}
+					}
+					&:nth-child(3) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($cerise, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $cerise;
+							}
+						}
+					}
+					&:nth-child(4) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($cerise, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $cerise;
+							}
+						}
+					}
+					&:nth-child(5) {
+						&:hover, &:focus {
+							~ hr {
+								border-color: rgba($cerise, .7);
+							}
+						}
+						&:active {
+							~ hr {
+								border-color: $cerise;
+							}
+						}
+					}
+				}
+				hr {
+					border-top: 5px solid $cerise;
+				}
+			}
+		}
+		.pf-main {
+			> div {
+				&.pf-about {
+					.pf-about-section {
+						header {
+							h2 {
+								background: $cerise;
+							}
+						}
+						div {
+							.pf-url-link {
+								li {
+									&:last-child {
+										a {
+											background: $cerise;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 .pf-banner.pf-banner-academic {
 	background: $cerise;
 	&:after {
