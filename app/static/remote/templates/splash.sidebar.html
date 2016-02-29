@@ -12,13 +12,6 @@
                         <span>Home</span>
                     </a>
                 </li> -->
-                <li ng-if='user && user.id'>
-                    <a class='opacity-' class-on-activate="slideInLeft:anim" class-on-activate-delay="100" class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.team.show()'>
-                        <span class="user-icon guru" style="background-image: url('{{user.profile_url}}');"></span>
-                        <span>My dashboard</span>
-                    </a>
-                </li>
-
                 <li>
                     <a class="opacity-0"   class-on-activate="slideInLeft:anim" class-on-activate-delay="50" id='cta-box-FAQ' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.faq.show()'>
                         <span>FAQ</span>
@@ -52,7 +45,7 @@
             </ul>
         </div>
         <div>
-            <div class="school-id-card">
+            <div class="school-id-card" ng-if='user && user.name'>
                 <svg viewBox="0 0 240 160">
                     <rect x="0" y="0" width="300" height="175" fill="none"></rect>
                 </svg>

@@ -889,6 +889,22 @@
 					font-size: 18px;
 				}
 				a {
+					position: relative;
+					.splash-hero-nav-link-bg {
+						@include opacity(.8);
+						display: block;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						z-index: -1;
+					}
+					&:hover, &:focus {
+						.splash-hero-nav-link-bg {
+							@include opacity(1);
+						}
+					}
 					&.bg-delivery {
 						background: rgba($auburn, .8);
 						&:hover, &:focus {
@@ -937,18 +953,15 @@
 							background: $cerise;
 						}
 					}
-					// @samir put school colors here
-					&.bg-cal {
-						background: rgba(#003057, .8);
+					&.bg-shamrock {
 						&:hover, &:focus {
-							background: #003057;
+							background: lighten($slate, 20%);
 						}
 					}
 				}
 				> div {
 					position: relative;
 					> a {
-						position: relative;
 						z-index: 1;
 						padding: 0 12px 0 15px;
 						border: 2px solid white;
@@ -1027,6 +1040,11 @@
 										top: -13px;
 										width: 30px;
 										height: 15px;
+										&.school {
+											path {
+												@include opacity(.8);
+											}
+										}
 										path {
 											@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 										}
@@ -1071,14 +1089,14 @@
 												fill: rgba($cerise, .8);
 											}
 										}
-										&.bg-cal {
-											path {
-												fill: rgba(#003057, .8);
-											}
-										}
 									}
 									&:hover, &:focus {
 										+ .arrow {
+											&.school {
+												path {
+													@include opacity(1);
+												}
+											}
 											&.bg-delivery {
 												path {
 													fill: $auburn;
@@ -1183,8 +1201,14 @@
 						@include opacity-important(1);
 						z-index: 9;
 					}
-					&:not(:first-child) {
+					&:not(.splash-hero-marker-mobile) {
 						display: none;
+					}
+					&:last-child {
+						position: absolute;
+					    bottom: 70px;
+					    left: 50%;
+					    margin-left: -46px;
 					}
 					&.bg-academic {
 						.marker-circle {
@@ -1480,16 +1504,16 @@
 					&.splash-marker-first {
 						z-index: 12;
 						.marker-normal {
-							@include prefix(transition-delay, 3300ms, webkit moz ms o);
+							@include prefix(transition-delay, 4800ms, webkit moz ms o);
 							@include opacity(0);
 							.marker-normal-window {
 								.side {
-									@include prefix(transition-delay, 3150ms, webkit moz ms o);
+									@include prefix(transition-delay, 4650ms, webkit moz ms o);
 									stroke-dashoffset: 278;
 								}
 							}
 							.marker-normal-content {
-								@include prefix(transition-delay, 3000ms, webkit moz ms o);
+								@include prefix(transition-delay, 4500ms, webkit moz ms o);
 								@include opacity(0);
 							}
 						}
@@ -1497,12 +1521,12 @@
 							z-index: 2;
 							.marker-expanded-window {
 								.sides {
-									@include prefix(transition-delay, 3350ms, webkit moz ms o);
+									@include prefix(transition-delay, 4850ms, webkit moz ms o);
 									stroke-dashoffset: 0;
 								}
 							}
 							.marker-expanded-content {
-								@include prefix(transition-delay, 3650ms, webkit moz ms o);
+								@include prefix(transition-delay, 5150ms, webkit moz ms o);
 								@include opacity(1);
 							}
 						}
@@ -1542,11 +1566,11 @@
 				.splash-device-svg {
 					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 					@include prefix(transition-delay, 500ms, webkit moz ms o);
-					@include opacity(.1);
+					@include opacity(.2);
 					display: block;
 					width: 100%;
 					&.active {
-						@include opacity(1);
+						@include opacity(.8);
 					}
 				}
 				&.splash-device-iphone {
@@ -1652,6 +1676,7 @@
 							width: 110px;
 							height: 110px;
 							border: 3px solid white;
+							background: rgba($slate, .5);
 							font-size: 72px;
 							font-weight: 600;
 						}
@@ -1674,7 +1699,7 @@
 									div {
 										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 										&.splash-marker-guru-first {
-											@include prefix(transition-delay, 3000ms, webkit moz ms o);
+											@include prefix(transition-delay, 4500ms, webkit moz ms o);
 											@include opacity-important(0);
 										}
 										&.splash-marker-guru-active {
@@ -1867,6 +1892,9 @@
 				z-index: 25;
 				width: 100%;
 				height: 15px;
+				@media screen and (max-width: 768px) {
+					display: none!important;
+				}
 				&.progress.white {
 					@include prefix(transition, 150ms ease-in-out, webkit moz ms o);
 					background: rgba(white,.2);
@@ -1938,7 +1966,7 @@
 						border-radius: 8px;
 						font-size: 20px;
 						font-weight: 600;
-						background: rgba($slate, .9);
+						background: rgba($slate, .5);
 						svg {
 							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 							position: absolute;
@@ -2057,10 +2085,6 @@
 								@include prefix(animation, none!important, webkit moz ms o);
 							}
 						}
-						.spacer {
-							width: 100%;
-							height: 10px;
-						}
 					}
 				}
 			}
@@ -2150,6 +2174,10 @@
 						h1 {
 							line-height: 1.5;
 						}
+						ul {
+							@include prefix(flex-direction, column, wekit moz ms o);
+							height: 250px;
+						}
 					}
 				}
 			}
@@ -2161,7 +2189,10 @@
 							margin-right: 0;
 							bottom: 10%;
 						}
-						&:not(:first-child) {
+						&:last-child {
+							display: none;
+						}
+						&:not(.splash-hero-marker-mobile) {
 							display: block;
 						}
 						&:nth-child(1) {
@@ -2228,6 +2259,12 @@
 							width: 142px;
 							height: 44px;
 							font-size: 24px;
+							&.adlib-1.translate-blank-1 {
+								margin-left: 1px!important;
+							}
+							&.adlib-8.translate-blank-2 {
+								margin-left: -1px!important;
+							}
 							svg {
 								&.mobile {
 									display: none;
@@ -2244,9 +2281,6 @@
 							max-width: calc(172px * 4 + 30px);
 							padding: 15px;
 							margin: 0 auto 15px;
-							.spacer {
-								display: none!important;
-							}
 							li {
 								width: 25%;
 								max-width: 172px;
@@ -2459,11 +2493,19 @@
 							}
 							.onboarding-icon {
 								@include round;
-								@include svg-stroke(white, 4);
+								@include svg-stroke(white, 3);
 								display: block;
 								width: 100%;
 								height: 100%;
 								background: #9FA3A5;
+								svg {
+									display: block;
+									width: 100%;
+									height: 100%;
+									* {
+										@include svg-stroke(white, 3);
+									}
+								}
 							}
 							.onboarding-status {
 								position: absolute;
@@ -2653,6 +2695,7 @@
 							width: 100%;
 							input {
 								color: white;
+								height: 36px;
 							}
 							a {
 								&:not(.active) {
@@ -2711,18 +2754,21 @@
 									@include center-y;
 									left: 15px;
 									width: calc(100% - 30px);
-									input {
-										height: 36px;
-									}
 									&:not(.active) {
 										@include opacity(0);
 										z-index: -10;
 									}
 								}
 							}
-							.btn-login-fb {
-								@include center-x;
+							button {
+								// @include center-x;
 								bottom: 15px;
+								&.btn-login-login {
+									margin-right:10px;
+								}
+								&.btn-login-fb {
+									margin-left:10px;
+								}
 							}
 						}
 					}
@@ -2809,6 +2855,19 @@
 						.splash-signup-buttons {
 							display: none;
 						}
+						.input-field {
+							input {
+								height: 64px!important;
+								font-size: 48px;
+								font-weight: 300;
+							}
+							svg {
+								@include svg-stroke(white, 4);
+								top: 5px;
+								width: 50px;
+								height: 50px;
+							}
+						}
 						.splash-signup-content {
 							.splash-signup-inside {
 								.splash-signup-form {
@@ -2816,17 +2875,6 @@
 									height: 160px;
 									.input-field {
 										left: 30px;
-										input {
-											height: 64px;
-											font-size: 48px;
-											font-weight: 300;
-										}
-										svg {
-											@include svg-stroke(white, 4);
-											top: 5px;
-											width: 50px;
-											height: 50px;
-										}
 									}
 								}
 							}
@@ -3005,6 +3053,12 @@
 										border-bottom-width: 5px;
 										border-bottom-style: solid;
 										font-size: 18px;
+										&.only {
+											@include flex;
+											@include flex-center;
+											height: 100%;
+											font-size: 24px;
+										}
 										span {
 											display: block;
 											height: 44px;
@@ -3438,6 +3492,7 @@
 				> header {
 					height: auto!important;
 					h1 {
+						padding-top: 0;
 						font-size: 36px;
 					}
 				}

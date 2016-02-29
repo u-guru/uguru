@@ -503,6 +503,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/messaging',
         templateUrl: BASE + 'templates/messaging.html'
   }).
+  state('root.demos', {
+        url: '/demos',
+        templateUrl: BASE + 'templates/demos.html'
+  }).
   state('root.splash', {
         url: '/:categoryId:universityId',
         templateUrl: BASE + 'templates/splash.html',

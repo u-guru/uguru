@@ -75,8 +75,8 @@ angular.module('uguru.util.controllers')
         openFB.login(callback, {scope: 'email,public_profile,user_friends'});
     }
 
-    $scope.page = {toggles: {}};
-    $scope.page.toggles = {login: {active:true}};
+    // $scope.page = {toggles: {}};
+    // $scope.page.toggles = {login: {active:true}};
 
     $scope.openModal = function(modalName) {
      if (!$scope.desktopMode) {
