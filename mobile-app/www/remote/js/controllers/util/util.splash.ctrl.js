@@ -689,16 +689,12 @@ angular.module('uguru.util.controllers')
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
         // document.querySelector('.splash-hero-map').classList.add('activate');
         $scope.activateProjectorPull();
-        $scope.scrollToSection('#splash-projector');
         // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
-
         // University.initUniversitiesSplash($scope);
         // autoscroll code
         // $scope.scrollToSection('#splash-projector');
         // document.querySelector('.splash-hero-map').classList.add('activate');
         // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
-
-
         // document.querySelector('.splash-hero-map').classList.add('activate');
         // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
            // $scope.showSidebarLogin();
