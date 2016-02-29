@@ -656,7 +656,7 @@ angular.module('uguru.util.controllers')
 
 
       resolveStateParams();
-      University.initUniversitiesSplash($scope, getStaticMapOptions());
+      // University.initUniversitiesSplash($scope, getStaticMapOptions());
       var responsiveSwiperArgs = {
         desktop: {
           slidesPerView: 1,
@@ -688,7 +688,8 @@ angular.module('uguru.util.controllers')
         // document.querySelector('.splash-hero-map').classList.add('activate');
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
         // document.querySelector('.splash-hero-map').classList.add('activate');
-        $scope.activateProjectorPull();
+        // $scope.activateProjectorPull();
+        // $scope.scrollToSection('#splash-projector');
         // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
         // University.initUniversitiesSplash($scope);
         // autoscroll code
