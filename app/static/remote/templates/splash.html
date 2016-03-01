@@ -46,8 +46,36 @@
                 </div>
             </div>
         </div> -->
-        <section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" >
-            <div class="splash-hero-nav desktop opacity-0 high-z-index" style='z-index:1000;'  class-on-load="fadeIn:anim" class-on-load-delay="3000" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim">
+        <div class="onboarding-success mo-js-wrapper">
+            <div class="mojs-wrapper" mo-js>
+                <a mo-js-child></a>
+                <div class="guru" ng-include="img_base + 'templates/svg/guru-success.html'"></div>
+            </div>
+        	<h1>Congrats!</h1>
+        	<h2>Your Account is Ready</h2>
+        	<button class="btn-ghost-white">Take Me to My Dashboard</button>
+        </div>
+        
+        <section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear"
+            parallax-parent="p1"
+            parallax-relative-input="false"
+            parallax-clip-relative-input="false"
+            parallax-calibration-threshold="100"
+            parallax-calibration-delay="500"
+            parallax-support-delay="500"
+            parallax-calibrate-x="false"
+            parallax-calibrate-y="true"
+            parallax-invert-x="true"
+            parallax-invert-y="true"
+            parallax-limit-x="false"
+            parallax-limit-y="false"
+            parallax-scalar-x="5.0"
+            parallax-scalar-y="5.0"
+            parallax-friction-x="0.1"
+            parallax-friction-y="0.1"
+            parallax-origin-x="0.5"
+            parallax-origin-y="0.5">
+            <div class="splash-hero-nav desktop opacity-0 high-z-index" style='z-index:1000;' class-on-load="fadeIn:anim" class-on-load-delay="3000" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim">
                 <div>
                     <a name='category'  class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()'>
                         <span>{{selectedCategory.name}}</span>
@@ -187,7 +215,6 @@
                     </div>
                 </div>
 
-
                 <div ng-if="!desktopMode" class="splash-hero-marker-mobile splash-hero-marker bg-{{selectedCategory.hex_color}} opacity-0" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="splash-marker-first:unique:keep, null:inject#map-icon-2-translate|splash-marker-guru-first:unique:keep, fadeIn:anim, visible, null:inject.splash-hero-marker-1 .marker-normal|a" tabindex="1">
                     <div class="marker-normal" activate-on-class="a" class-on-activate="move:keep" class-on-activate-delay="2500" class-on-click="null:inject.splash-hero-marker-mobile|splash-marker-active:unique, null:inject#map-icon-2-translate|splash-marker-guru-active:unique">
                         <svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
@@ -248,7 +275,15 @@
                     <div class="splash-device-search">
                         <div class="splash-device-search-inside opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim, null:inject.splash-device-adlib|a, null:inject.splash-device-search-inside h1|a, null:inject.splash-device-search-inside p|a, null:inject.splash-device-search-gurus li|a, null:inject.splash-device-search-courses li|a, null:inject.splash-device-search-gurus .marker-guru|activate, null:inject.splash-device-found|a, null:inject.map-guru-icon|a">
                             <div class="splash-device-found" activate-on-class="a" class-on-activate="active:keep" class-on-activate-delay="6000">
-                                <h1 class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim">6</h1>
+                                <h1 class="opacity-0"
+                                    activate-on-class="a"
+                                    class-on-activate="bounceIn:anim"
+                                    counter
+                                    init-on-class="counter:activate"
+                                    counter-max="6"
+                                    counter-min="0"
+                                    counter-duration="2"
+                                    counter-delay="0"></h1>
                                 <p class="opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim">Gurus Found</p>
                             </div>
                             <ul class="splash-device-search-gurus">
@@ -342,7 +377,7 @@
             </div>
             <div class="splash-hero-content" activate-on-class="a" class-on-activate="active" class-on-activate-delay="1000" style='z-index:100 !important;'>
                 <div class="splash-guru-head">
-                    <div class="splash-logo-guru" activate-on-class="a" class-on-activate="fadeOut:animOut" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+                    <div class="splash-logo-guru" parallax-parent-ref="p1" parallax-child="0.4" activate-on-class="a" class-on-activate="fadeOut:animOut" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
                     <svg class="coach-help coach-help-desktop opacity-0 animated" viewBox="0 0 340 205">
                         <g fill="none">
                             <path d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 Z" fill="#40484b" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -352,7 +387,7 @@
                             </text>
                         </g>
                     </svg>
-                    <svg class="coach-help coach-help-mobile opacity-0 animated" viewBox="0 0 229 196">
+                    <svg class="coach-help coach-help-mobile opacity-0 animated" parallax-parent-ref="p1" parallax-child="0.2" viewBox="0 0 229 196">
                         <g fill="none">
                             <path d="M180.350646,159.695545 C180.350646,159.695544 181.232899,177.999995 205.232902,189.000001 C165.52585,201.901604 151.232897,186.999998 142.038937,178.7445 C81.8973532,198.285685 20.829672,176.230522 5.64045374,129.482915 C-9.5487645,82.7353086 26.8923282,28.9976249 87.0339124,9.45643967 C147.175497,-10.0847456 208.243178,11.9704169 223.432396,58.7180238 C235.030692,94.4139086 216.525122,134.185468 180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 Z" fill="#40484b" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
                             <text transform="translate(113.624918, 91.749311) rotate(-21) translate(-113.624918, -91.749311) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
@@ -1366,6 +1401,38 @@
                                     <div class="splash-projector-guru">
                                         <div class="splash-logo-guru guru active" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
                                         <span class="user-icon guru" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
+<<<<<<< HEAD
+                            			<svg class="coach coach-promo active" width="114px" height="98px" viewBox="0 0 228 196">
+                            				 <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
+                            				 <text transform="translate(118.193148, 88.776332) rotate(24.000000) translate(-118.193148, -88.776332) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+                            					  <tspan x="76.3731477" y="87.7763318">got a</tspan>
+                            					  <tspan x="53.6931477" y="127.776332">promo?</tspan>
+                            				 </text>
+                            			</svg>
+                            			<svg class="coach coach-thanks" width="114px" height="98px" viewBox="0 0 228 196">
+                            				 <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
+                            				 <text transform="translate(117.688097, 93.895318) rotate(24.000000) translate(-117.688097, -93.895318) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+                            					  <tspan x="54.6880967" y="112.895318">thanks!</tspan>
+                            				 </text>
+                            			</svg>
+                            		</div>
+                            		<div class="splash-access-content">
+                            			<div class="splash-access-inside" ng-controller='AccessController'>
+                            				<input id="access-code-bar" name='access' class="splash-access-code" type="text" ng-blur='accessInputOnBlur()' ng-click="selectAllText($event)" autocorrect="off" ng-focus='accessInputOnFocus()' autocapitalize="off" ng-model='access.codeInput' placeholder="enter it here" submit='checkAccessCode(access.codeInput)'/>
+                            				<div>
+                                                <svg class="splash-access-bubble mobile" viewBox="0 0 694 201">
+                                                    <path d="M2,161.001505 C2,165.418952 5.57826352,169 10.0035603,169 L317,169 L347,199 L377,169 L683.99644,169 C688.416684,169 692,165.415269 692,161.001505 L692,9.99849542 C692,5.58104838 688.411289,2 683.99733,2 L10.0026704,2 C5.58291758,2 2,5.58473072 2,9.99849542 L2,161.001505 L2,161.001505 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.5" fill="#40484B"></path>
+                                                </svg>
+                            					<svg class="splash-access-bubble desktop" width="652px" height="119px" viewBox="0 0 1304 237">
+                            						 <path d="M10.0088717,205 L622,205 L652,235 L682,205 L1293.99113,205 C1298.41431,205 1302,201.41997 1302,197.000001 L1302,9.99999875 C1302,5.58172144 1298.41351,2 1293.99365,2 L10.0063476,2 C5.58456393,2 2,5.58002961 2,9.99999875 L2,197.000001 C2,201.418279 5.58280463,205 10.0088717,205 Z" stroke-width="4" stroke="#FFFFFF" fill-opacity="0.8" fill="#40484B"></path>
+                            					</svg>
+                            					<button ng-click='checkAccessCode(access.codeInput)' class="btn-access-activate btn-ghost-white">Activate my promo!</button>
+                            					<button class="btn-access-skip btn-ghost-white">Skip</button>
+                            				</div>
+                            			</div>
+                            		</div>
+                            	</div>
+=======
                                         <svg class="coach coach-promo active" width="114px" height="98px" viewBox="0 0 228 196">
                                              <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
                                              <text transform="translate(118.193148, 88.776332) rotate(24.000000) translate(-118.193148, -88.776332) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
@@ -1393,6 +1460,7 @@
                                         </div>
                                     </div>
                                 </div>
+>>>>>>> 640c14d638b49a820551a4609ab2cb37a7fb78e2
                             </div>
 
                             <div id='slide-7' class="swiper-slide swiper-slide-gallery" activate-on-class="swiper-slide-active" class-on-activate="pulse:anim:keep:inject.slide-courses-container|activate" class-on-activate-delay="1000">

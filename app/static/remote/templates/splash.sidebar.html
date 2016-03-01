@@ -13,12 +13,12 @@
                     </a>
                 </li> -->
                 <li>
-                    <a class="opacity-0"   class-on-activate="slideInLeft:anim" class-on-activate-delay="50" id='cta-box-FAQ' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.faq.show()'>
+                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="50" id='cta-box-FAQ' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.faq.show()'>
                         <span>FAQ</span>
                     </a>
                 </li>
                 <li>
-                    <a class="opacity-0"  class-on-activate="slideInLeft:anim" class-on-activate-delay="100" id='cta-box-pricing' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.pricing.show()'>
+                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="100" id='cta-box-pricing' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.pricing.show()'>
                         <span>Pricing</span>
                     </a>
                 </li>
@@ -98,8 +98,6 @@
 
         <ion-pane id='cta-modal-intercom' ng-if='desktopMode' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-controller='AccountPageController'> </ion-pane>
 
-        <ion-pane id='cta-modal-FAQ' ng-if='desktopMode' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/faq.html'">
-            <!-- <iframe class='absolute top-0 left-0 full-xy' src="https://uguru.me/faq/"> </iframe> -->
-        </ion-pane>
+        <ion-pane id='cta-modal-FAQ' ng-if='desktopMode' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index' ng-include="::img_base + BASE + 'templates/faq.html'"> </ion-pane>
     </section>
 </aside>
