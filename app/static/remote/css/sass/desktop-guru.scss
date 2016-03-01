@@ -714,16 +714,6 @@
 	}
 }
 
-.close-button {
-	display: block;
-	svg {
-		@include rotate(45);
-		@include svg-stroke(white, 5);
-		height: 50px;
-		width: 50px;
-	}
-}
-
 /* ---------- GURU HOME */
 #cta-modal-signup {
 	background: rgba($charcoal,.9) !important;

@@ -690,22 +690,6 @@
     #guru-onboarding-buttons li:first-child {
       text-align: right; }
 
-.close-button {
-  display: block; }
-  .close-button svg {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-    fill: none;
-    stroke: white;
-    stroke-width: 5px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    height: 50px;
-    width: 50px; }
-
 /* ---------- GURU HOME */
 #cta-modal-signup {
   background: rgba(43, 50, 52, 0.9) !important;

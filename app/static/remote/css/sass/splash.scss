@@ -187,6 +187,104 @@
 	}
 }
 
+.onboarding-success {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: rgba($slate, .9);
+	text-align: center;
+	&:not(.active) {
+		@include opacity(0);
+		z-index: -1000;
+	}
+	> div {
+		position: relative;
+		height: 100%;
+		max-height: 50%;
+		a {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		div:not(.guru) {
+			left: 50%!important;
+		}
+		.guru {
+			position: relative;
+			z-index: 3;
+		}
+		div, a, svg {
+			display: block;
+			height: 100%;
+			margin: 0 auto;
+		}
+	}
+	svg {
+		display: block;
+		height: 100%;
+		> g {
+			*:not(.freeze) {
+				@include prefix(animation, hover-success 1000ms linear infinite alternate, webkit moz ms o)
+			}
+		}
+	}
+	h1, h2 {
+		display: block;
+		width: 100%;
+	}
+	h1 {
+		font-size: 36px;
+		font-weight: 900;
+		@media screen and (min-width: 768px) {
+			font-size: 48px;
+		}
+	}
+	h2 {
+		margin-top: 0!important;
+		margin-bottom: 30px;
+		font-size: 28px;
+		font-weight: 600;
+		@media screen and (min-width: 768px) {
+			font-size: 32px;
+		}
+	}
+	button {
+		background: $shamrock;
+		letter-spacing: 0;
+		text-transform: none;
+		@media screen and (min-width: 768px) {
+			padding-top: 0;
+			padding-bottom: 0;
+			height: 64px;
+			font-size: 24px;
+		}
+		&:hover, &:focus {
+			color: $shamrock!important;
+		}
+		&:active {
+			background: lighten($shamrock, 35%)!important;
+		}
+	}
+}
+
+@include keyframes(hover-success) {
+	0% {
+		@include prefix(transform, translateY(3px), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translateY(-3px), webkit moz ms o);
+	}
+}
+
 /* ---------- SPLASH PAGES */
 .splash-landing {
 	background: white;
@@ -1684,7 +1782,7 @@
 							width: 100%;
 							font-size: 18px;
 							font-weight: 600;
-							margin: 0;
+							margin: 5px 0 0;
 						}
 						ul {
 							@include flex;
@@ -2063,6 +2161,9 @@
 						font-size: 20px;
 						font-weight: 600;
 						text-transform: uppercase;
+						&:not(.bounceInUp) {
+							visibility: hidden;
+						}
 					}
 					ul {
 						@include flex;
@@ -2122,7 +2223,7 @@
 				}
 				.coach-help {
 					&.coach-help-desktop {
-						display: none;
+						display: none!important;
 						top: -40px;
 		    			left: -160px;
 						width: 170px;
@@ -2221,7 +2322,7 @@
 						}
 					}
 					&.coach-help-mobile {
-						display: none;
+						display: none!important;
 					}
 				}
 				.splash-hero-nav {
@@ -2915,14 +3016,22 @@
 							background: none;
 							border: 0;
 							width: 100%;
-							max-width: 652px;
-							height: 119px;
-							font-size: 48px;
+							max-width: 347px;
+							height: 84px;
+							margin: 0 auto;
+							font-size: 28px;
 							text-align: center;
 							line-height: 1.2;
-							padding-bottom: 10px;
+							padding-top: 5px;
 							color: white;
 							font-weight: 300;
+							@media screen and (min-width: 768px) {
+								max-width: 652px;
+								height: 119px;
+								font-size: 48px;
+								padding-top: 0;
+								padding-bottom: 10px;
+							}
 							@include placeholder {
 								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 							}
@@ -2930,11 +3039,29 @@
 								position: absolute;
 								top: 0;
 								left: 0;
+								width: 100%;
 								.splash-access-bubble {
-									max-width: 100%;
-									display: block;
+									&.mobile {
+										display: block;
+										max-width: 347px;
+										margin: 0 auto;
+									}
+									&.desktop {
+										display: none;
+										max-width: 100%;
+									}
 									path {
 										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+									}
+								}
+								@media screen and (min-width: 768px) {
+									.splash-access-bubble {
+										&.mobile {
+											display: none;
+										}
+										&.desktop {
+											display: block;
+										}
 									}
 								}
 								button {
@@ -3030,7 +3157,10 @@
 							a {
 								@include flex;
 								@include flex-wrap;
-								height: 100px;
+								height: 50px;
+								@media screen and (min-width: 768px) {
+									height: 100px;
+								}
 								border: 2px solid white;
 								border-radius: 2px;
 								text-align: center;
@@ -3057,7 +3187,13 @@
 											@include flex;
 											@include flex-center;
 											height: 100%;
-											font-size: 24px;
+											padding: 0;
+											@media screen and (min-width: 768px) {
+												font-size: 24px;
+											}
+											span {
+												height: auto!important;
+											}
 										}
 										span {
 											display: block;
@@ -3197,6 +3333,9 @@
 									.school-card-icon {
 										width: 48px;
 										height: 48px;
+										.school-card-state svg {
+											padding: 10px;
+										}
 									}
 								}
 								.school-card-main {

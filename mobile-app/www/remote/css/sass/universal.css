@@ -1,6 +1,7 @@
 /* ---------- FAQ */
 #faq {
-  height: 100%; }
+  height: 100%;
+  overflow: auto; }
   #faq header {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -22,9 +23,10 @@
     flex-flow: row wrap;
     height: calc(100% / 3);
     background: #69B3A5; }
+    #faq header.has-tabs h1 {
+      padding-bottom: 60px; }
     #faq header h1 {
-      padding-bottom: 60px;
-      font-size: 48px;
+      font-size: 28px;
       text-align: center;
       text-transform: none !important; }
     #faq header .tab-bar {
@@ -45,11 +47,11 @@
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
     height: calc(100% / 3 * 2);
-    overflow: auto;
-    padding: 15px; }
+    padding: 7.5px; }
     #faq .main dl {
       width: 50%;
-      padding: 15px 15px 0; }
+      padding: 7.5px;
+      margin-bottom: 0 !important; }
       #faq .main dl dt {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -74,12 +76,12 @@
           #faq .main dl dt .close-button svg {
             width: 100%;
             height: 100%; }
-          #faq .main dl dt .close-button:not(.active) svg {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            -o-transform: rotate(0deg);
-            transform: rotate(0deg); }
+        #faq .main dl dt:not(.active) .close-button svg {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          -o-transform: rotate(0deg);
+          transform: rotate(0deg); }
         #faq .main dl dt span {
           display: block;
           width: calc(100% - 40px); }
@@ -90,10 +92,18 @@
         font-size: 16px;
         font-weight: 600; }
 
+@media screen and (min-width: 768px) {
+  #faq h1 {
+    font-size: 48px; }
+  #faq .main {
+    padding: 15px; }
+    #faq .main dl {
+      padding: 15px; } }
 /* ---------- TEAM */
 #team {
   width: 100%;
   height: 100%;
+  overflow: auto;
   background: #F1F1F1; }
   #team header {
     -ms-box-orient: horizontal;
@@ -111,12 +121,12 @@
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
-    height: 25%;
+    height: calc(100% / 3);
     max-height: none;
     background: white; }
     #team header h1 {
       color: #50A5DD;
-      font-size: 48px;
+      font-size: 28px;
       font-weight: 600;
       text-transform: none; }
     #team header.no-graphic {
@@ -124,7 +134,7 @@
       #team header.no-graphic h1 {
         color: white; }
   #team section {
-    height: 75%; }
+    height: calc(100% / 3 * 2); }
     #team section .pf-card-group > li .pf-card .pf-card-top {
       height: 80px; }
       #team section .pf-card-group > li .pf-card .pf-card-top > ul li:first-child {
@@ -132,132 +142,13 @@
       #team section .pf-card-group > li .pf-card .pf-card-top > ul li:last-child {
         width: 30%; }
 
-.pf-card-group {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 915px;
-  margin: 0 auto;
-  padding: 7.5px; }
-  .pf-card-group > li {
-    width: 100%;
-    min-width: 300px;
-    padding: 7.5px; }
-    @media screen and (min-width: 768px) {
-      .pf-card-group > li {
-        width: calc(100% / 3); } }
-    .pf-card-group > li .pf-card {
-      position: relative;
-      display: block;
-      margin: 0;
-      max-width: none; }
-      .pf-card-group > li .pf-card .pf-hover {
-        -webkit-transition: all 0.15s ease-in-out;
-        -o-transition: all 0.15s ease-in-out;
-        -ms-transition: all 0.15s ease-in-out;
-        -moz-transition: all 0.15s ease-in-out;
-        transition: all 0.15s ease-in-out;
-        filter: alpha(opacity=0);
-        opacity: 0;
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 2px;
-        background: rgba(105, 179, 165, 0.95);
-        color: white;
-        font-size: 24px;
-        font-weight: 600; }
-      .pf-card-group > li .pf-card.pf-card-delivery .pf-hover {
-        background: rgba(244, 126, 130, 0.95); }
-      .pf-card-group > li .pf-card.pf-card-freelancing .pf-hover {
-        background: rgba(235, 149, 105, 0.95); }
-      .pf-card-group > li .pf-card.pf-card-baking .pf-hover {
-        background: rgba(247, 206, 102, 0.95); }
-      .pf-card-group > li .pf-card.pf-card-photography .pf-hover {
-        background: rgba(157, 198, 136, 0.95); }
-      .pf-card-group > li .pf-card.pf-card-tech .pf-hover {
-        background: rgba(121, 183, 198, 0.95); }
-      .pf-card-group > li .pf-card.pf-card-household .pf-hover {
-        background: rgba(161, 157, 235, 0.95); }
-      .pf-card-group > li .pf-card.pf-card-athletic .pf-hover {
-        background: rgba(177, 129, 210, 0.95); }
-      .pf-card-group > li .pf-card.pf-card-academic .pf-hover {
-        background: rgba(239, 124, 189, 0.95); }
-      .pf-card-group > li .pf-card:hover {
-        color: #40484B; }
-        .pf-card-group > li .pf-card:hover .pf-hover {
-          filter: alpha(opacity=100);
-          opacity: 1; }
-      .pf-card-group > li .pf-card .pf-card-top .user-icon {
-        position: absolute;
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        -moz-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        -o-transform: translateX(-50%);
-        transform: translateX(-50%);
-        width: 96px;
-        height: 96px;
-        bottom: -60px;
-        border-width: 3px; }
-      .pf-card-group > li .pf-card .pf-card-main {
-        padding: 60px 15px 15px; }
-        .pf-card-group > li .pf-card .pf-card-main h1 {
-          font-size: 24px; }
-          .pf-card-group > li .pf-card .pf-card-main h1 span svg {
-            margin-left: 8px;
-            margin-top: 5px;
-            width: 20px;
-            height: 20px; }
-        .pf-card-group > li .pf-card .pf-card-main .pf-school {
-          font-size: 16px; }
-          .pf-card-group > li .pf-card .pf-card-main .pf-school + .pf-school {
-            color: #7c8a8f; }
-        .pf-card-group > li .pf-card .pf-card-main .pf-quote {
-          display: none;
-          padding-top: 5px;
-          font-size: 14px;
-          font-weight: 400; }
-        .pf-card-group > li .pf-card .pf-card-main .pf-rating {
-          margin: 5px auto; }
-
-#intercom-container {
-  z-index: auto !important; }
-
+@media screen and (min-width: 768px) {
+  #team header {
+    height: 25%; }
+    #team header h1 {
+      font-size: 48px; }
+  #team section {
+    height: 75%; } }
 .ticket-container {
   background: #F1F1F1; }
 
@@ -3562,167 +3453,215 @@
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
-    height: 40%;
+    height: calc(100% / 3);
     background: #69B3A5; }
     #pricing header > h1 {
       width: 100%;
-      padding: 30px;
-      font-size: 48px;
-      font-weight: 900;
+      font-size: 28px;
       color: white;
       text-align: center;
       text-transform: none; }
-    #pricing header .pricing-other {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      position: relative;
-      margin: 0 auto;
-      padding: 15px 0;
-      width: 100%;
-      max-width: 800px;
+  #pricing .pricing-other {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+    padding: 15px 0;
+    width: 100%;
+    max-width: 800px;
+    background: #d4ac54; }
+    #pricing .pricing-other li {
+      -webkit-transform: translateY(25%);
+      -moz-transform: translateY(25%);
+      -ms-transform: translateY(25%);
+      -o-transform: translateY(25%);
+      transform: translateY(25%);
+      padding: 0 50px; }
+      #pricing .pricing-other li div {
+        text-align: center; }
+        #pricing .pricing-other li div h3 {
+          font-size: 36px;
+          font-weight: 700; }
+        #pricing .pricing-other li div h1 {
+          margin-top: 0 !important;
+          padding: 0 !important;
+          font-size: 128px;
+          font-weight: 900; }
+    #pricing .pricing-other:before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -80px;
+      left: 0;
+      width: calc(100% - 80px);
+      height: 80px;
       background: #d4ac54; }
-      #pricing header .pricing-other li {
-        -webkit-transform: translateY(25%);
-        -moz-transform: translateY(25%);
-        -ms-transform: translateY(25%);
-        -o-transform: translateY(25%);
-        transform: translateY(25%);
-        padding: 0 50px; }
-        #pricing header .pricing-other li div {
-          text-align: center; }
-          #pricing header .pricing-other li div h3 {
-            font-size: 36px;
-            font-weight: 700; }
-          #pricing header .pricing-other li div h1 {
-            margin-top: 0 !important;
-            padding: 0 !important;
-            font-size: 128px;
-            font-weight: 900; }
-      #pricing header .pricing-other:before {
-        content: "";
-        display: block;
-        position: absolute;
-        bottom: -80px;
-        left: 0;
-        width: calc(100% - 80px);
-        height: 80px;
-        background: #d4ac54; }
-      #pricing header .pricing-other:after {
-        content: "";
-        display: block;
-        position: absolute;
-        bottom: -80px;
-        right: 0;
-        width: 0;
-        height: 0;
-        border: 40px solid transparent;
-        border-top-color: #876722;
-        border-left-color: #876722; }
-    #pricing header .pricing-uguru {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      width: 815px;
-      margin: 0 auto;
-      color: #40484B;
-      text-align: center; }
-      #pricing header .pricing-uguru li {
+    #pricing .pricing-other:after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -80px;
+      right: 0;
+      width: 0;
+      height: 0;
+      border: 40px solid transparent;
+      border-top-color: #876722;
+      border-left-color: #876722; }
+  #pricing .pricing-uguru {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 815px;
+    margin: 0 auto;
+    color: #40484B;
+    text-align: center; }
+    #pricing .pricing-uguru li {
+      position: relative;
+      width: calc(100% / 3);
+      padding: 0 7.5px; }
+      #pricing .pricing-uguru li div {
+        overflow: hidden;
         position: relative;
-        width: calc(100% / 3);
-        padding: 0 7.5px; }
-        #pricing header .pricing-uguru li div {
-          overflow: hidden;
-          position: relative;
-          padding: 15px 0;
-          background: #F1F1F1;
-          border: 10px solid #40484B; }
-          #pricing header .pricing-uguru li div h3 {
-            font-size: 24px;
-            font-weight: 700;
-            text-transform: uppercase; }
-          #pricing header .pricing-uguru li div h2 {
-            border-radius: 1000px;
-            -ms-box-orient: horizontal;
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -moz-flex;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-flex-direction: row;
-            flex-direction: row;
-            -webkit-align-items: center;
-            align-items: center;
-            -webkit-align-content: center;
-            align-content: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            margin: 15px auto;
-            width: 144px;
-            height: 144px;
-            background: rgba(85, 164, 183, 0.1);
-            font-size: 44px;
-            font-weight: 700; }
-            #pricing header .pricing-uguru li div h2 u {
-              display: block;
-              padding-bottom: 8px;
-              padding-right: 2px; }
-          #pricing header .pricing-uguru li div span {
-            font-size: 24px;
-            font-weight: 400; }
-          #pricing header .pricing-uguru li div svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            fill: rgba(117, 117, 117, 0.1); }
-        #pricing header .pricing-uguru li:after {
-          content: "";
-          display: block;
+        padding: 15px 0;
+        background: #F1F1F1;
+        border: 10px solid #40484B; }
+        #pricing .pricing-uguru li div h3 {
+          font-size: 24px;
+          font-weight: 700;
+          text-transform: uppercase; }
+        #pricing .pricing-uguru li div h2 {
+          border-radius: 1000px;
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          margin: 15px auto;
+          width: 144px;
+          height: 144px;
+          background: rgba(85, 164, 183, 0.1);
+          font-size: 44px;
+          font-weight: 700; }
+          #pricing .pricing-uguru li div h2 u {
+            display: block;
+            padding-bottom: 8px;
+            padding-right: 2px; }
+        #pricing .pricing-uguru li div span {
+          font-size: 24px;
+          font-weight: 400; }
+        #pricing .pricing-uguru li div svg {
           position: absolute;
-          bottom: -5px;
-          left: 7.5px;
-          width: calc(100% - 15px);
-          height: 5px;
-          background: rgba(117, 117, 117, 0.5); }
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          fill: rgba(117, 117, 117, 0.1); }
+      #pricing .pricing-uguru li:after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -5px;
+        left: 7.5px;
+        width: calc(100% - 15px);
+        height: 5px;
+        background: rgba(117, 117, 117, 0.5); }
   #pricing > div {
-    padding: 110px 30px 30px;
-    max-width: 860px;
+    padding: 15px;
+    width: 100%;
     margin: auto;
     color: #40484B; }
+    #pricing > div .pricing-uguru {
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      margin-top: -20%; }
+      #pricing > div .pricing-uguru li {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 20px; }
+        #pricing > div .pricing-uguru li:after {
+          left: 0;
+          width: 100%; }
     #pricing > div dl dt {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 700;
       line-height: 1.2; }
     #pricing > div dl dd {
-      font-size: 24px;
+      font-size: 18px;
       font-weight: 400;
       line-height: 1.2; }
+
+@media screen and (max-width: 768px) {
+  #pricing > header {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center; }
+    #pricing > header .pricing-uguru {
+      display: none; } }
+@media screen and (min-width: 768px) {
+  #pricing > header {
+    height: 40%; }
+    #pricing > header h1 {
+      padding: 30px;
+      font-size: 48px;
+      font-weight: 900; }
+    #pricing > header .pricing-uguru {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex; }
+  #pricing > div {
+    padding: 140px 30px 30px;
+    max-width: 860px; }
+    #pricing > div .pricing-uguru {
+      display: none; }
+    #pricing > div dl dt {
+      font-size: 28px; }
+    #pricing > div dl dd {
+      font-size: 24px; } }
 
 /*# sourceMappingURL=universal.css.map */

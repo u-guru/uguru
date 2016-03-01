@@ -257,6 +257,154 @@
   .tape path {
     fill: rgba(255, 255, 255, 0.4); }
 
+.onboarding-success {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: rgba(64, 72, 75, 0.9);
+  text-align: center; }
+  .onboarding-success:not(.active) {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    z-index: -1000; }
+  .onboarding-success > div {
+    position: relative;
+    height: 100%;
+    max-height: 50%; }
+    .onboarding-success > div a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+    .onboarding-success > div div:not(.guru) {
+      left: 50% !important; }
+    .onboarding-success > div .guru {
+      position: relative;
+      z-index: 3; }
+    .onboarding-success > div div, .onboarding-success > div a, .onboarding-success > div svg {
+      display: block;
+      height: 100%;
+      margin: 0 auto; }
+  .onboarding-success svg {
+    display: block;
+    height: 100%; }
+    .onboarding-success svg > g *:not(.freeze) {
+      -webkit-animation: hover-success 1000ms linear infinite alternate;
+      -moz-animation: hover-success 1000ms linear infinite alternate;
+      -ms-animation: hover-success 1000ms linear infinite alternate;
+      -o-animation: hover-success 1000ms linear infinite alternate;
+      animation: hover-success 1000ms linear infinite alternate; }
+  .onboarding-success h1, .onboarding-success h2 {
+    display: block;
+    width: 100%; }
+  .onboarding-success h1 {
+    font-size: 36px;
+    font-weight: 900; }
+    @media screen and (min-width: 768px) {
+      .onboarding-success h1 {
+        font-size: 48px; } }
+  .onboarding-success h2 {
+    margin-top: 0 !important;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600; }
+    @media screen and (min-width: 768px) {
+      .onboarding-success h2 {
+        font-size: 32px; } }
+  .onboarding-success button {
+    background: #69B3A5;
+    letter-spacing: 0;
+    text-transform: none; }
+    @media screen and (min-width: 768px) {
+      .onboarding-success button {
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 64px;
+        font-size: 24px; } }
+    .onboarding-success button:hover, .onboarding-success button:focus {
+      color: #69B3A5 !important; }
+    .onboarding-success button:active {
+      background: #dfefec !important; }
+
+@-webkit-keyframes hover-success {
+  0% {
+    -webkit-transform: translateY(3px);
+    -moz-transform: translateY(3px);
+    -ms-transform: translateY(3px);
+    -o-transform: translateY(3px);
+    transform: translateY(3px); }
+  100% {
+    -webkit-transform: translateY(-3px);
+    -moz-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    -o-transform: translateY(-3px);
+    transform: translateY(-3px); } }
+@-moz-keyframes hover-success {
+  0% {
+    -webkit-transform: translateY(3px);
+    -moz-transform: translateY(3px);
+    -ms-transform: translateY(3px);
+    -o-transform: translateY(3px);
+    transform: translateY(3px); }
+  100% {
+    -webkit-transform: translateY(-3px);
+    -moz-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    -o-transform: translateY(-3px);
+    transform: translateY(-3px); } }
+@-ms-keyframes hover-success {
+  0% {
+    -webkit-transform: translateY(3px);
+    -moz-transform: translateY(3px);
+    -ms-transform: translateY(3px);
+    -o-transform: translateY(3px);
+    transform: translateY(3px); }
+  100% {
+    -webkit-transform: translateY(-3px);
+    -moz-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    -o-transform: translateY(-3px);
+    transform: translateY(-3px); } }
+@keyframes hover-success {
+  0% {
+    -webkit-transform: translateY(3px);
+    -moz-transform: translateY(3px);
+    -ms-transform: translateY(3px);
+    -o-transform: translateY(3px);
+    transform: translateY(3px); }
+  100% {
+    -webkit-transform: translateY(-3px);
+    -moz-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    -o-transform: translateY(-3px);
+    transform: translateY(-3px); } }
 /* ---------- SPLASH PAGES */
 .splash-landing {
   background: white;
@@ -2012,7 +2160,7 @@
               width: 100%;
               font-size: 18px;
               font-weight: 600;
-              margin: 0; }
+              margin: 5px 0 0; }
             .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul {
               -ms-box-orient: horizontal;
               display: -webkit-box;
@@ -2450,6 +2598,8 @@
             font-size: 20px;
             font-weight: 600;
             text-transform: uppercase; }
+            .splash-landing > section.splash-hero .splash-hero-content .splash-adlib .splash-mobile-cta:not(.bounceInUp) {
+              visibility: hidden; }
           .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul {
             -ms-box-orient: horizontal;
             display: -webkit-box;
@@ -2517,7 +2667,7 @@
             -o-animation-delay: 3000ms;
             animation-delay: 3000ms; }
         .splash-landing > section.splash-hero .splash-guru-head .coach-help.coach-help-desktop {
-          display: none;
+          display: none !important;
           top: -40px;
           left: -160px;
           width: 170px; }
@@ -2602,7 +2752,7 @@
           .splash-landing > section.splash-hero .coach-help.coach-help-desktop.hide {
             display: none !important; }
         .splash-landing > section.splash-hero .coach-help.coach-help-mobile {
-          display: none; }
+          display: none !important; }
         .splash-landing > section.splash-hero .splash-hero-nav {
           top: 15px;
           right: 72px; }
@@ -3365,14 +3515,22 @@
               background: none;
               border: 0;
               width: 100%;
-              max-width: 652px;
-              height: 119px;
-              font-size: 48px;
+              max-width: 347px;
+              height: 84px;
+              margin: 0 auto;
+              font-size: 28px;
               text-align: center;
               line-height: 1.2;
-              padding-bottom: 10px;
+              padding-top: 5px;
               color: white;
               font-weight: 300; }
+              @media screen and (min-width: 768px) {
+                .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code {
+                  max-width: 652px;
+                  height: 119px;
+                  font-size: 48px;
+                  padding-top: 0;
+                  padding-bottom: 10px; } }
               .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code::-webkit-input-placeholder {
                 -webkit-transition: all 150ms ease-in-out;
                 -moz-transition: all 150ms ease-in-out;
@@ -3400,16 +3558,26 @@
               .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div {
                 position: absolute;
                 top: 0;
-                left: 0; }
-                .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble {
-                  max-width: 100%;
-                  display: block; }
-                  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble path {
-                    -webkit-transition: all 150ms ease-in-out;
-                    -moz-transition: all 150ms ease-in-out;
-                    -ms-transition: all 150ms ease-in-out;
-                    -o-transition: all 150ms ease-in-out;
-                    transition: all 150ms ease-in-out; }
+                left: 0;
+                width: 100%; }
+                .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.mobile {
+                  display: block;
+                  max-width: 347px;
+                  margin: 0 auto; }
+                .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.desktop {
+                  display: none;
+                  max-width: 100%; }
+                .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble path {
+                  -webkit-transition: all 150ms ease-in-out;
+                  -moz-transition: all 150ms ease-in-out;
+                  -ms-transition: all 150ms ease-in-out;
+                  -o-transition: all 150ms ease-in-out;
+                  transition: all 150ms ease-in-out; }
+                @media screen and (min-width: 768px) {
+                  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.mobile {
+                    display: none; }
+                  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.desktop {
+                    display: block; } }
                 .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div button {
                   display: block;
                   margin: 15px auto; }
@@ -3520,10 +3688,13 @@
                 -ms-flex-flow: row wrap;
                 -webkit-flex-flow: row wrap;
                 flex-flow: row wrap;
-                height: 100px;
+                height: 50px;
                 border: 2px solid white;
                 border-radius: 2px;
                 text-align: center; }
+                @media screen and (min-width: 768px) {
+                  .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a {
+                    height: 100px; } }
                 .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div {
                   width: 100%;
                   height: 100%; }
@@ -3559,7 +3730,12 @@
                       -webkit-justify-content: center;
                       justify-content: center;
                       height: 100%;
-                      font-size: 24px; }
+                      padding: 0; }
+                      @media screen and (min-width: 768px) {
+                        .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title.only {
+                          font-size: 24px; } }
+                      .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title.only span {
+                        height: auto !important; }
                     .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title span {
                       display: block;
                       height: 44px;
@@ -3707,6 +3883,8 @@
             .splash-landing > section .splash-school-search .splash-school-search-form .splash-school-desktop li .school-card .school-card-inside .school-card-top .school-card-icon {
               width: 48px;
               height: 48px; }
+              .splash-landing > section .splash-school-search .splash-school-search-form .splash-school-desktop li .school-card .school-card-inside .school-card-top .school-card-icon .school-card-state svg {
+                padding: 10px; }
             .splash-landing > section .splash-school-search .splash-school-search-form .splash-school-desktop li .school-card .school-card-inside .school-card-main .school-card-info h1 {
               font-size: 16px;
               font-weight: 700; }
