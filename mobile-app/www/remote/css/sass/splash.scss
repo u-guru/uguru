@@ -187,6 +187,84 @@
 	}
 }
 
+.onboarding-success {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: rgba($slate, .9);
+	text-align: center;
+	&:not(.active) {
+		@include opacity(0);
+		z-index: -1000;
+	}
+	> div {
+		height: 100%;
+		max-height: 50%;
+	}
+	svg {
+		display: block;
+		height: 100%;
+		> g {
+			*:not(.freeze) {
+				@include prefix(animation, hover-success 1000ms linear infinite alternate, webkit moz ms o)
+			}
+		}
+	}
+	h1, h2 {
+		display: block;
+		width: 100%;
+	}
+	h1 {
+		font-size: 36px;
+		font-weight: 900;
+		@media screen and (min-width: 768px) {
+			font-size: 48px;
+		}
+	}
+	h2 {
+		margin-top: 0!important;
+		margin-bottom: 30px;
+		font-size: 28px;
+		font-weight: 600;
+		@media screen and (min-width: 768px) {
+			font-size: 32px;
+		}
+	}
+	button {
+		background: $shamrock;
+		letter-spacing: 0;
+		text-transform: none;
+		@media screen and (min-width: 768px) {
+			padding-top: 0;
+			padding-bottom: 0;
+			height: 64px;
+			font-size: 24px;
+		}
+		&:hover, &:focus {
+			color: $shamrock!important;
+		}
+		&:active {
+			background: lighten($shamrock, 35%)!important;
+		}
+	}
+}
+
+@include keyframes(hover-success) {
+	0% {
+		@include prefix(transform, translateY(3px), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translateY(-3px), webkit moz ms o);
+	}
+}
+
 /* ---------- SPLASH PAGES */
 .splash-landing {
 	background: white;

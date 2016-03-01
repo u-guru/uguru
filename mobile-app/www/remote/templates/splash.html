@@ -46,6 +46,12 @@
                 </div>
             </div>
         </div> -->
+        <div class="onboarding-success">
+        	<div ng-include="img_base + 'templates/svg/guru-success.html'"></div>
+        	<h1>Congrats!</h1>
+        	<h2>Your Account is Ready</h2>
+        	<button class="btn-ghost-white">Take Me to My Dashboard</button>
+        </div>
         <section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" >
             <div class="splash-hero-nav desktop opacity-0 high-z-index" style='z-index:1000;'  class-on-load="fadeIn:anim" class-on-load-delay="3000" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim">
                 <div>
@@ -248,7 +254,17 @@
                     <div class="splash-device-search">
                         <div class="splash-device-search-inside opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim, null:inject.splash-device-adlib|a, null:inject.splash-device-search-inside h1|a, null:inject.splash-device-search-inside p|a, null:inject.splash-device-search-gurus li|a, null:inject.splash-device-search-courses li|a, null:inject.splash-device-search-gurus .marker-guru|activate, null:inject.splash-device-found|a, null:inject.map-guru-icon|a">
                             <div class="splash-device-found" activate-on-class="a" class-on-activate="active:keep" class-on-activate-delay="6000">
-                                <h1 class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim">6</h1>
+                                <h1 class="opacity-0"
+                                    activate-on-class="a"
+                                    class-on-activate="bounceIn:anim"
+                                    counter
+                                    init-on-class="counter:activate"
+                                    counter-max="6"
+                                    counter-min="0"
+                                    counter-prefix=""
+                                    counter-suffix="found"
+                                    counter-duration="10"
+                                    counter-delay="1000"></h1>
                                 <p class="opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim">Gurus Found</p>
                             </div>
                             <ul class="splash-device-search-gurus">
