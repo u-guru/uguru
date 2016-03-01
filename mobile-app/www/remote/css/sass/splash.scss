@@ -2564,7 +2564,7 @@
 								}
 							}
 							&:nth-child(1) {
-								&.active {
+								&.active, &.swiper-slide-active {
 									~ hr {
 										@include translate-x(0);
 										border-color: white;
@@ -2572,7 +2572,7 @@
 								}
 							}
 							&:nth-child(2) {
-								&.active {
+								&.active, &.swiper-slide-active {
 									~ hr {
 										@include translate-x(100%);
 										border-color: white;
@@ -2580,7 +2580,7 @@
 								}
 							}
 							&:nth-child(3) {
-								&.active {
+								&.active, &.swiper-slide-active {
 									~ hr {
 										@include translate-x(200%);
 										border-color: white;
