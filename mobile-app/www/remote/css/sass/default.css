@@ -5207,6 +5207,24 @@ input[type=range]:focus::-ms-fill-upper {
   height: 100% !important; }
 
 #intercom-container {
+<<<<<<< HEAD
   z-index: auto !important; }
 
 /*# sourceMappingURL=default.css.map */
+=======
+  z-index: auto !important;
+}
+
+.parallax-static {
+  position: static !important;
+}
+
+.parallax-relative {
+  position: relative !important;
+}
+
+.parallax-auto {
+  top: auto !important;
+  left: auto !important;
+}
+>>>>>>> d00832cdd12882302241ef232f1c322586ec4909

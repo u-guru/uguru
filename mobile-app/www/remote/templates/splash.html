@@ -3,24 +3,6 @@
     <main id='home-splash' init-wp-parent class='splash-landing new hs-view full-xy' style="height:calc(200% !important); width:calc(100%) !important;" bind-wp="s1_top">
         <ion-pane style='z-index:1001;' id='cta-modal-sidebar' class='full-xy hide-display cta-modal bg-charcoal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
         <a ng-if='page.dropdowns.category.active || page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()' style='z-index:5'> </a>
-        <header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
-            <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ></a>
-            <div class="right">
-                <a name='sidebar' class="splash-burger" id='cta-box-sidebar' >
-                    <!-- @gabrielle whats this? If you dont know delete below-->
-                    <!-- bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut" -->
-                    <svg viewBox="0 0 100 100" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" class-on-activate-delay="600">
-                        <circle cx="50" cy="50" r="36"></circle>
-                        <path d="M31,35.5 L69,35.5"></path>
-                        <path d="M31,50.5 L69,50.5"></path>
-                        <path d="M31,65.5 L69,65.5"></path>
-                    </svg>
-                </a>
-                <a ng-if='!desktopMode' name="back-to-scene-one" id='splash-up-link' class='full-x p10xy flex-wrap-center opacity-0 left-0 absolute' bind-wp="s2_50_top" bind-wp-class="activate, clear" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut, opacity-0" class-on-activate="fadeInDown:anim" class-on-activate-delay="1250" ng-show='projectorPullActivated || singleProjectorActivated' style="width:100% !important; top:10px;" ng-click='closeSingleProjector()'>
-                    <i style='font-size:100%; left:10px;' class='icon ion-chevron-up'> </i>
-                </a>
-            </div>
-        </header>
         <!-- <div class="school-card opacity-0 absolute hide" class-on-activate="show" id='global-school-card' ng-if='selectedUniversity && selectedUniversity.id'>
             <svg class="rect" viewBox="0 0 300 200">
                 <rect x="0" y="0" width="300" height="200" fill="none"></rect>
@@ -75,6 +57,24 @@
             parallax-friction-y="0.1"
             parallax-origin-x="0.5"
             parallax-origin-y="0.5">
+            <header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
+                <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ></a>
+                <div class="right">
+                    <a name='sidebar' class="splash-burger" id='cta-box-sidebar' >
+                        <!-- @gabrielle whats this? If you dont know delete below-->
+                        <!-- bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut" -->
+                        <svg viewBox="0 0 100 100" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" class-on-activate-delay="600">
+                            <circle cx="50" cy="50" r="36"></circle>
+                            <path d="M31,35.5 L69,35.5"></path>
+                            <path d="M31,50.5 L69,50.5"></path>
+                            <path d="M31,65.5 L69,65.5"></path>
+                        </svg>
+                    </a>
+                    <a ng-if='!desktopMode' name="back-to-scene-one" id='splash-up-link' class='full-x p10xy flex-wrap-center opacity-0 left-0 absolute' bind-wp="s2_50_top" bind-wp-class="activate, clear" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut, opacity-0" class-on-activate="fadeInDown:anim" class-on-activate-delay="1250" ng-show='projectorPullActivated || singleProjectorActivated' style="width:100% !important; top:10px;" ng-click='closeSingleProjector()'>
+                        <i style='font-size:100%; left:10px;' class='icon ion-chevron-up'> </i>
+                    </a>
+                </div>
+            </header>
             <div class="splash-hero-nav desktop opacity-0 high-z-index" style='z-index:1000;' class-on-load="fadeIn:anim" class-on-load-delay="3000" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim">
                 <div>
                     <a name='category'  class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()'>
@@ -195,7 +195,7 @@
                         <div class="marker-expanded-content">
                             <div class="marker-expanded-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></div>
                             <div class="marker-location">
-                                <h1>{{selectedUniversity.place_results[0].name}}</h1>
+                                <h1>{{selectedUniversity.place_results[0].name || 'Philz Coffee'}}</h1>
                                 <h4>open now &middot; 2.4 miles</h4>
                             </div>
                             <a class="marker-guru">
@@ -213,6 +213,8 @@
                             </div>
                         </div>
                     </div>
+                    <div class="marker-circle"></div>
+                    <div class="marker-label">{{selectedUniversity.place_results[0].name || 'Philz Coffee'}}</div>
                 </div>
 
                 <div ng-if="!desktopMode" class="splash-hero-marker-mobile splash-hero-marker bg-{{selectedCategory.hex_color}} opacity-0" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="splash-marker-first:unique:keep, null:inject#map-icon-2-translate|splash-marker-guru-first:unique:keep, fadeIn:anim, visible, null:inject.splash-hero-marker-1 .marker-normal|a" tabindex="1">

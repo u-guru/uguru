@@ -5653,3 +5653,14 @@ input[type=range] {
 #intercom-container {
 	z-index: auto!important;
 }
+
+.parallax-static {
+	position: static!important;
+}
+.parallax-relative {
+	position: relative!important;
+}
+.parallax-auto {
+	top: auto!important;
+	left: auto!important;
+}

@@ -971,6 +971,14 @@
 			position: relative;
 			background: $slate;
 			text-align: center;
+			.splash-header {
+				@include prefix(justify-content, space-between, webkit);
+				height: 50px!important;
+				width: 100%;
+				@media screen and (min-width: 860px) {
+					height: 70px!important;
+				}
+			}
 			.splash-hero-nav {
 				@include flex;
 				@include flex-center-vertical;
@@ -1295,6 +1303,7 @@
 					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 					position: absolute;
 					cursor: pointer;
+					max-width: 262px;
 					&.visible {
 						@include opacity-important(1);
 						z-index: 9;
@@ -1302,7 +1311,7 @@
 					&:not(.splash-hero-marker-mobile) {
 						display: none;
 					}
-					&:last-child {
+					&.splash-hero-marker-mobile {
 						position: absolute;
 					    bottom: 70px;
 					    left: 50%;
@@ -1569,6 +1578,13 @@
 						width: 10px;
 						height: 10px;
 						border: 2px solid white;
+					}
+					.marker-label {
+						position: absolute;
+						width: 100%;
+						bottom: -35px;
+						font-weight: 600;
+						font-size: 14px;
 					}
 					&.splash-marker-active {
 						z-index: 12;
