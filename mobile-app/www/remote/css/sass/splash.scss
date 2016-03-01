@@ -2540,6 +2540,95 @@
 				height: 110px;
 				width: 100%;
 				max-width: 600px;
+				&#swiper-gallery-tab {
+					height: 60px;
+					background: none!important;
+					.swiper-gallery-wrapper {
+						hr {
+							width: calc(100% / 3);
+						}
+						a.swiper-slide {
+							font-size: 16px;
+							line-height: 1.2;
+							margin: 0!important;
+							margin-right: 0!important;
+							&.third {
+								width: calc(100% / 3)!important;
+							}
+							&:not(.third) {
+								width: 20%!important;
+								+ hr {
+									hr {
+										width: 20%;
+									}
+								}
+							}
+							&:nth-child(1) {
+								&.active {
+									~ hr {
+										@include translate-x(0);
+										border-color: white;
+									}
+								}
+							}
+							&:nth-child(2) {
+								&.active {
+									~ hr {
+										@include translate-x(100%);
+										border-color: white;
+									}
+								}
+							}
+							&:nth-child(3) {
+								&.active {
+									~ hr {
+										@include translate-x(200%);
+										border-color: white;
+									}
+								}
+							}
+							&:nth-child(1) {
+								&:hover, &:focus {
+									~ hr {
+										@include translate-x(0);
+										border-color: rgba(white, .7);
+									}
+								}
+								&:active {
+									~ hr {
+										border-color: white;
+									}
+								}
+							}
+							&:nth-child(2) {
+								&:hover, &:focus {
+									~ hr {
+										@include translate-x(100%);
+										border-color: rgba(white, .7);
+									}
+								}
+								&:active {
+									~ hr {
+										border-color: white;
+									}
+								}
+							}
+							&:nth-child(3) {
+								&:hover, &:focus {
+									~ hr {
+										@include translate-x(200%);
+										border-color: rgba(white, .7);
+									}
+								}
+								&:active {
+									~ hr {
+										border-color: white;
+									}
+								}
+							}
+						}
+					}
+				}
 				.progress.white-round {
 					position: absolute;
 					top: 35px;
@@ -2549,7 +2638,7 @@
 					@include prefix(transform, translate3d(0px, 0px, 0px)!important, webkit moz ms o);
 					width: 100%!important;
 					height: 100%!important;
-					.swiper-slide {
+					div.swiper-slide {
 						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 						width: 33%!important;
 						height: 80px!important;
@@ -2742,6 +2831,7 @@
 				left: 2%;
 				width: 96%;
 				height: 96.2%;
+				overflow: visible!important;
 				border: 2px solid white;
 				border-bottom-left-radius: 2px;
 				border-bottom-right-radius: 2px;
@@ -3489,7 +3579,7 @@
 				}
 			}
 			@media screen and (max-width: 768px) {
-				.swiper-button-next, .swiper-button-prev, .swiper-front-gallery-thumbs {
+				.swiper-button-next, .swiper-button-prev, .swiper-front-gallery-thumbs#swiper-gallery-nav {
 					@include opacity(0);
 					z-index: -9;
 					visibility: hidden;
@@ -3500,6 +3590,11 @@
 				}
 			}
 			@media screen and (min-width: 768px) {
+				.swiper-front-gallery-thumbs#swiper-gallery-tab {
+					@include opacity(0);
+					z-index: -9;
+					visibility: hidden;
+				}
 				.splash-projector-message {
 					&.desktop {
 						display: block;
@@ -4787,8 +4882,8 @@
 	.slideshow-thumb-5,
 	.slideshow-thumb-4,
 	.slideshow-thumb-3.progress-active {
-		width:20% !important;
-		opacity: 1 !important;
-		background:transparent !important;
+		@include opacity-important(1);
+		width: 20%!important;
+		background: none!important;
 	}
 }

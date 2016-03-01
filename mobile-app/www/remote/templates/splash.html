@@ -575,7 +575,6 @@
         </section>
 
         <section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%" class='relative'>
-
             <!-- <div class="projector-trigger animated opacity-0" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750" bind-wp="s2_25_top" bind-wp-class="bounceInDown" bind-wp-direction="down">
                 <a id="projector-pull" ng-click='activateProjectorPull();' bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a" class-on-activate="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
                     <svg width="28px" height="224px" viewBox="0 0 56 448">
@@ -1225,9 +1224,7 @@
                                 </a>
                                 <div class="projector-top"></div>
 
-                                <div id="splash-school" class="projector-content relative" class-on-clear="fadeOut:animOut" class-on-clear-delay="650" ng-include="img_base + BASE + 'templates/splash.university.html'">
-
-                                </div>
+                                <div id="splash-school" class="projector-content relative" class-on-clear="fadeOut:animOut" class-on-clear-delay="650" ng-include="img_base + BASE + 'templates/splash.university.html'"></div>
                             </div>
 
                             <div id='slide-5' class="swiper-slide swiper-slide-gallery" activate-on-class="swiper-slide-active" class-on-activate="pulse:anim:keep:inject.slide-signup-header|activate" class-on-activate-delay="1000" ng-controller='AccountPageController'>
@@ -1553,90 +1550,99 @@
                     </div>
                 </div>
 
-                        <div id='swiper-gallery-nav' class="swiper-container swiper-front-gallery-thumbs" activate-on-class="a" class-on-activate="active:keep, null:inject.slideshow-thumb-1|activate, null:inject.slideshow-thumb-2|activate, null:inject.slideshow-thumb-3|activate, null:inject.slideshow-thumb-4|activate">
-                <div class="progress height-10 white-round" ng-if='page.swipers.galleryIndex'>
-                    <span style="width: 10%;"></span>
+                <div id='swiper-gallery-tab' class="swiper-container swiper-front-gallery-thumbs tab-bar slide" activate-on-class="a" class-on-activate="active:keep, null:inject.slideshow-thumb-1|activate, null:inject.slideshow-thumb-2|activate, null:inject.slideshow-thumb-3|activate, null:inject.slideshow-thumb-4|activate">
+                    <div class="swiper-wrapper swiper-gallery-wrapper">
+                        <a class="swiper-slide third">How It<br/>Works</a>
+                        <a class="swiper-slide third">Become<br/>A Guru</a>
+                        <a class="swiper-slide third">Get<br/>Started</a>
+                        <hr/>
+                    </div>
                 </div>
-                <div class="swiper-wrapper swiper-gallery-wrapper">
-                    <div class="swiper-slide slideshow-thumb-1 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
-                        <a class="progress-step">
-                            <h1 ng-class="{'opacity-50': page.swipers.main.currentIndex}">How It Works</h1>
-                        </a>
+                
+                <div id='swiper-gallery-nav' class="swiper-container swiper-front-gallery-thumbs" activate-on-class="a" class-on-activate="active:keep, null:inject.slideshow-thumb-1|activate, null:inject.slideshow-thumb-2|activate, null:inject.slideshow-thumb-3|activate, null:inject.slideshow-thumb-4|activate">
+                    <div class="progress height-10 white-round" ng-if='page.swipers.galleryIndex'>
+                        <span style="width: 10%;"></span>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-2 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
-                        <a class="progress-step">
-                            <h1  ng-class="{'opacity-50': page.swipers.main.currentIndex !== 1}" >Become a Guru</h1>
-                        </a>
+                    <div class="swiper-wrapper swiper-gallery-wrapper">
+                        <div class="swiper-slide slideshow-thumb-1 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                            <a class="progress-step">
+                                <h1 ng-class="{'opacity-50': page.swipers.main.currentIndex}">How It Works</h1>
+                            </a>
+                        </div>
+                        <div class="swiper-slide slideshow-thumb-2 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                            <a class="progress-step">
+                                <h1  ng-class="{'opacity-50': page.swipers.main.currentIndex !== 1}" >Become a Guru</h1>
+                            </a>
+                        </div>
+                        <div class="swiper-slide slideshow-thumb-3 opacity-0" ng-class="{'progress-active':page.swipers.galleryIndex}"  class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                            <a class="progress-step" ng-if='!page.swipers.galleryIndex'>
+                                <h1  ng-class="{'opacity-50': page.swipers.main.currentIndex !== 2}">Getting Started</h1>
+                            </a>
+                            <a class="onboarding-step active" ng-if='page.swipers.galleryIndex'>
+                                <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/university.html'"></span>
+                                <svg class="onboarding-status" viewBox="0 0 160 160">
+                                     <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+                                          <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
+                                          <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
+                                          <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
+                                     </g>
+                                </svg>
+                                <h1>University</h1>
+                            </a>
+                        </div>
+                        <div class="swiper-slide slideshow-thumb-4 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                            <a class="onboarding-step active" ng-if='page.swipers.galleryIndex' >
+                                <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/demographic.html'"></span>
+                                <svg class="onboarding-status" viewBox="0 0 160 160">
+                                     <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+                                          <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
+                                          <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
+                                          <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
+                                     </g>
+                                </svg>
+                                <h1>Demographic</h1>
+                            </a>
+                        </div>
+                        <div class="swiper-slide slideshow-thumb-5 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim">
+                            <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
+                                <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/account.html'"></span>
+                                <svg class="onboarding-status" viewBox="0 0 160 160">
+                                     <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+                                          <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
+                                          <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
+                                          <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
+                                     </g>
+                                </svg>
+                                <h1>Sign Up</h1>
+                            </a>
+                        </div>
+                        <div class="swiper-slide slideshow-thumb-6 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim">
+                            <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
+                                <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/promo.html'"></span>
+                                <svg class="onboarding-status" viewBox="0 0 160 160">
+                                     <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+                                          <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
+                                          <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
+                                          <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
+                                     </g>
+                                </svg>
+                                <h1>Access</h1>
+                            </a>
+                        </div>
+                        <div class="swiper-slide slideshow-thumb-7 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim">
+                            <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
+                                <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/courses.html'"></span>
+                                <svg class="onboarding-status" viewBox="0 0 160 160">
+                                     <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+                                          <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
+                                          <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
+                                          <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
+                                     </g>
+                                </svg>
+                                <h1>Courses</h1>
+                            </a>
+                        </div>
                     </div>
-                    <div class="swiper-slide slideshow-thumb-3 opacity-0" ng-class="{'progress-active':page.swipers.galleryIndex}"  class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
-                        <a class="progress-step" ng-if='!page.swipers.galleryIndex'>
-                            <h1  ng-class="{'opacity-50': page.swipers.main.currentIndex !== 2}">Getting Started</h1>
-                        </a>
-                        <a class="onboarding-step active" ng-if='page.swipers.galleryIndex'>
-                            <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/university.html'"></span>
-                            <svg class="onboarding-status" viewBox="0 0 160 160">
-                                 <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
-                                      <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
-                                      <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
-                                      <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
-                                 </g>
-                            </svg>
-                            <h1>University</h1>
-                        </a>
-                    </div>
-                    <div class="swiper-slide slideshow-thumb-4 opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
-                        <a class="onboarding-step active" ng-if='page.swipers.galleryIndex' >
-                            <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/demographic.html'"></span>
-                            <svg class="onboarding-status" viewBox="0 0 160 160">
-                                 <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
-                                      <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
-                                      <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
-                                      <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
-                                 </g>
-                            </svg>
-                            <h1>Demographic</h1>
-                        </a>
-                    </div>
-                    <div class="swiper-slide slideshow-thumb-5 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim">
-                        <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
-                            <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/account.html'"></span>
-                            <svg class="onboarding-status" viewBox="0 0 160 160">
-                                 <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
-                                      <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
-                                      <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
-                                      <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
-                                 </g>
-                            </svg>
-                            <h1>Sign Up</h1>
-                        </a>
-                    </div>
-                    <div class="swiper-slide slideshow-thumb-6 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim">
-                        <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
-                            <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/promo.html'"></span>
-                            <svg class="onboarding-status" viewBox="0 0 160 160">
-                                 <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
-                                      <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
-                                      <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
-                                      <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
-                                 </g>
-                            </svg>
-                            <h1>Access</h1>
-                        </a>
-                    </div>
-                    <div class="swiper-slide slideshow-thumb-7 opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim">
-                        <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
-                            <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/courses.html'"></span>
-                            <svg class="onboarding-status" viewBox="0 0 160 160">
-                                 <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
-                                      <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
-                                      <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
-                                      <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
-                                 </g>
-                            </svg>
-                            <h1>Courses</h1>
-                        </a>
-                    </div>
-
                 </div>
             </div>
         </section>
