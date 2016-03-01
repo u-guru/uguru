@@ -1690,6 +1690,19 @@
   text-align: center;
 }
 
+.splash-landing > section.splash-hero .splash-header {
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  height: 50px !important;
+  width: 100%;
+}
+
+@media screen and (min-width: 860px) {
+  .splash-landing > section.splash-hero .splash-header {
+    height: 70px !important;
+  }
+}
+
 .splash-landing > section.splash-hero .splash-hero-nav {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -2108,6 +2121,7 @@
   transition: all 150ms ease-in-out;
   position: absolute;
   cursor: pointer;
+  max-width: 262px;
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.visible {
@@ -2120,7 +2134,7 @@
   display: none;
 }
 
-.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:last-child {
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-hero-marker-mobile {
   position: absolute;
   bottom: 70px;
   left: 50%;
@@ -2513,6 +2527,14 @@
   width: 10px;
   height: 10px;
   border: 2px solid white;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-label {
+  position: absolute;
+  width: 100%;
+  bottom: -35px;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-active {

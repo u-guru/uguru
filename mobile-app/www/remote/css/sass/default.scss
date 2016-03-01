@@ -1311,13 +1311,12 @@ header:not(.desktop-header) {
 		bottom: 0;
 		left: 0;
 		width: 100%;
-		input,
-		label {
+		input, label {
 			color: white;
 			border-color: white!important;
+			line-height: normal!important;
 		}
-		label.active,
-		input:focus {
+		label.active, input:focus {
 			color: white!important;
 		}
 		input {
@@ -5654,11 +5653,18 @@ input[type=range] {
 	z-index: auto!important;
 }
 
+.parallax-absolute {
+	position: absolute!important;
+}
 .parallax-static {
 	position: static!important;
 }
 .parallax-relative {
 	position: relative!important;
+}
+.parallax-50 {
+	top: 50%!important;
+	left: 50%!important;
 }
 .parallax-auto {
 	top: auto!important;

@@ -1715,14 +1715,13 @@ header:not(.desktop-header) .input-field {
   width: 100%;
 }
 
-header:not(.desktop-header) .input-field input,
-header:not(.desktop-header) .input-field label {
+header:not(.desktop-header) .input-field input, header:not(.desktop-header) .input-field label {
   color: white;
   border-color: white !important;
+  line-height: normal !important;
 }
 
-header:not(.desktop-header) .input-field label.active,
-header:not(.desktop-header) .input-field input:focus {
+header:not(.desktop-header) .input-field label.active, header:not(.desktop-header) .input-field input:focus {
   color: white !important;
 }
 
@@ -7429,12 +7428,21 @@ input[type=range]:focus::-ms-fill-upper {
   z-index: auto !important;
 }
 
+.parallax-absolute {
+  position: absolute !important;
+}
+
 .parallax-static {
   position: static !important;
 }
 
 .parallax-relative {
   position: relative !important;
+}
+
+.parallax-50 {
+  top: 50% !important;
+  left: 50% !important;
 }
 
 .parallax-auto {

@@ -2136,7 +2136,7 @@
 
 .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-hero-marker-mobile {
   position: absolute;
-  bottom: 70px;
+  bottom: 15%;
   left: 50%;
   margin-left: -46px;
 }
@@ -2679,7 +2679,7 @@
 }
 
 .splash-landing > section.splash-hero .splash-device {
-  display: none;
+  display: none !important;
   position: absolute;
   z-index: 2;
   top: 50%;
@@ -2722,8 +2722,8 @@
 }
 
 .splash-landing > section.splash-hero .splash-device.splash-device-iphone .splash-device-content .coach-click, .splash-landing > section.splash-hero .splash-device.splash-device-iphone .splash-device-profile .coach-click {
-  bottom: 65px;
-  right: -90px;
+  bottom: 65px !important;
+  right: -90px !important;
 }
 
 .splash-landing > section.splash-hero .splash-device .splash-device-profile {
@@ -3574,7 +3574,7 @@
 }
 
 .splash-landing > section.splash-hero .splash-guru-head .coach-help.coach-help-desktop {
-  display: none !important;
+  display: none;
   top: -40px;
   left: -160px;
   width: 170px;
@@ -3596,6 +3596,13 @@
 }
 
 @media screen and (max-width: 360px) {
+  .splash-landing > section.splash-hero .splash-hero-device {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9);
+  }
   .splash-landing > section.splash-hero .splash-hero-content {
     -webkit-transform: scale(0.9);
     -moz-transform: scale(0.9);
@@ -3609,6 +3616,13 @@
 }
 
 @media screen and (max-width: 320px) {
+  .splash-landing > section.splash-hero .splash-hero-device {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transform: scale(0.8);
+  }
   .splash-landing > section.splash-hero .splash-hero-content {
     -webkit-transform: scale(0.7);
     -moz-transform: scale(0.7);
@@ -3717,7 +3731,7 @@
     display: flex;
   }
   .splash-landing > section.splash-hero .splash-device {
-    display: block;
+    display: block !important;
   }
   .splash-landing > section.splash-hero .splash-guru-head .coach-fill {
     top: 80px;
@@ -4666,7 +4680,12 @@
   position: relative;
   width: 100%;
   max-width: 652px;
-  height: 119px;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-inside {
+    height: 119px;
+  }
 }
 
 .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code {
@@ -4691,7 +4710,7 @@
   border: 0;
   width: 100%;
   max-width: 347px;
-  height: 84px;
+  height: 64px;
   margin: 0 auto;
   font-size: 28px;
   text-align: center;
@@ -4865,19 +4884,23 @@
 
 .splash-landing > section#splash-projector .projector-content#splash-courses .input-field {
   width: 100%;
-  margin: 15px auto 0;
+  margin: 0 auto;
 }
 
 .splash-landing > section#splash-projector .projector-content#splash-courses .input-field input {
   margin-bottom: 0;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .input-field label:not(.active) {
-  top: 0;
-}
-
-.splash-landing > section#splash-projector .projector-content#splash-courses .input-field .prefix {
-  top: 9px;
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-courses .input-field {
+    margin: 15px auto 0;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-courses .input-field label:not(.active) {
+    top: 0;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-courses .input-field .prefix {
+    top: 9px;
+  }
 }
 
 .splash-landing > section#splash-projector .projector-content#splash-courses ul {
