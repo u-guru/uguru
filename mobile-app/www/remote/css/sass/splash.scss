@@ -3288,6 +3288,7 @@
 							margin-top: 60px;
 							padding: 7.5px;
 							width: 100%;
+							max-width: 80%;
 							&:not(.active) {
 								@include opacity(0);
 								z-index: -10;
@@ -3500,7 +3501,7 @@
 										border-bottom-width: 5px;
 										border-bottom-style: solid;
 										font-size: 18px;
-										&.only {
+										&:only-child {
 											@include flex;
 											@include flex-center;
 											height: 100%;

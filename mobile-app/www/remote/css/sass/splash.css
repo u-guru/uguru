@@ -5098,6 +5098,7 @@
   margin-top: 60px;
   padding: 7.5px;
   width: 100%;
+  max-width: 80%;
 }
 
 .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul:not(.active) {
@@ -5416,7 +5417,7 @@
   font-size: 18px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title.only {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title:only-child {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -5437,12 +5438,12 @@
 }
 
 @media screen and (min-width: 768px) {
-  .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title.only {
+  .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title:only-child {
     font-size: 24px;
   }
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title.only span {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title:only-child span {
   height: auto !important;
 }
 
