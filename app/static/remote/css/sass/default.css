@@ -7402,11 +7402,6 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .close-button svg {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
   fill: none;
   stroke: white;
   stroke-width: 5px;
@@ -7414,6 +7409,14 @@ input[type=range]:focus::-ms-fill-upper {
   stroke-linejoin: round;
   height: 50px;
   width: 50px;
+}
+
+.close-button:not(.arrow) svg {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .close-button.absolute {

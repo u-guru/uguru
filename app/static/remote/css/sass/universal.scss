@@ -67,6 +67,8 @@
 				}
 			}
 			dd {
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+				@include prefix(transform-origin, top center, webkit moz ms o);
 				background: white;
 				padding: 10px 15px;
 				color: $slate;
@@ -78,10 +80,16 @@
 }
 @media screen and (min-width: 768px) {
 	#faq {
-		h1 {
-			font-size: 48px;
+		header {
+			h1 {
+				font-size: 48px;
+			}
 		}
 		.main {
+			@include prefix(flex-direction, column, wekit moz ms o);
+			height: 100%;
+			width: 100%;
+			overflow-x: hidden;
 			padding: 15px;
 			dl {
 				padding: 15px;
@@ -4827,6 +4835,7 @@
 		> h1 {
 			width: 100%;
 			font-size: 28px;
+			font-weight: 600;
 			color: white;
 			text-align: center;
 			text-transform: none;
@@ -4994,7 +5003,6 @@
 			h1 {
 				padding: 30px;
 				font-size: 48px;
-				font-weight: 900;
 			}
 			.pricing-uguru {
 				@include flex;

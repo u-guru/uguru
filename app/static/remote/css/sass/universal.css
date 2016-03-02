@@ -110,6 +110,16 @@
 }
 
 #faq .main dl dd {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  -webkit-transform-origin: top center;
+  -moz-transform-origin: top center;
+  -ms-transform-origin: top center;
+  -o-transform-origin: top center;
+  transform-origin: top center;
   background: white;
   padding: 10px 15px;
   color: #40484B;
@@ -118,10 +128,18 @@
 }
 
 @media screen and (min-width: 768px) {
-  #faq h1 {
+  #faq header h1 {
     font-size: 48px;
   }
   #faq .main {
+    -wekit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
     padding: 15px;
   }
   #faq .main dl {
@@ -5163,6 +5181,7 @@
 #pricing header > h1 {
   width: 100%;
   font-size: 28px;
+  font-weight: 600;
   color: white;
   text-align: center;
   text-transform: none;
@@ -5400,7 +5419,6 @@
   #pricing > header h1 {
     padding: 30px;
     font-size: 48px;
-    font-weight: 900;
   }
   #pricing > header .pricing-uguru {
     -ms-box-orient: horizontal;

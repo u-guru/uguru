@@ -38,25 +38,7 @@
         	<button class="btn-ghost-white">Take Me to My Dashboard</button>
         </div>
         
-        <section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear"
-            parallax-parent="p1"
-            parallax-relative-input="false"
-            parallax-clip-relative-input="false"
-            parallax-calibration-threshold="100"
-            parallax-calibration-delay="500"
-            parallax-support-delay="500"
-            parallax-calibrate-x="false"
-            parallax-calibrate-y="true"
-            parallax-invert-x="true"
-            parallax-invert-y="true"
-            parallax-limit-x="false"
-            parallax-limit-y="false"
-            parallax-scalar-x="5.0"
-            parallax-scalar-y="5.0"
-            parallax-friction-x="0.1"
-            parallax-friction-y="0.1"
-            parallax-origin-x="0.5"
-            parallax-origin-y="0.5">
+        <section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" parallax-parent="p1" parallax-relative-input="false" parallax-clip-relative-input="false" parallax-calibration-threshold="100" parallax-calibration-delay="500" parallax-support-delay="500" parallax-calibrate-x="false" parallax-calibrate-y="true" parallax-invert-x="true" parallax-invert-y="true" parallax-limit-x="false" parallax-limit-y="false" parallax-scalar-x="5.0" parallax-scalar-y="5.0" parallax-friction-x="0.1" parallax-friction-y="0.1" parallax-origin-x="0.5" parallax-origin-y="0.5">
             <header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
                 <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ></a>
                 <div class="right">
@@ -268,8 +250,7 @@
             </div>
             <div class="splash-device splash-device-iphone magictime opacity-0 parallax-absolute parallax-50" parallax-parent-ref="p1" parallax-child="0.2" class-on-load="vanishIn:anim" activate-on-class="a" class-on-activate="active:inject.splash-device-search-inside|a, b:inject.splash-device-svg|a" translate-on-class-delay="500" translate-on-class="translate-device">
                 <svg class="splash-device-svg" activate-on-class="a" class-on-activate="active:keep" viewBox="0 0 319 652">
-                    <path d="M2,42.0005693 C2,19.9088649 19.9096817,2 41.9948462,2 L277.005154,2 C299.093697,2 317,19.9012788 317,42.0005693 L317,609.999431 C317,632.091135 299.090318,650 277.005154,650 L41.9948462,650 C19.9063026,650 2,632.098721 2,609.999431 L2,42.0005693 Z M22,80 L298,80 L298,573 L22,573 L22,80 Z"
-                        fill="none" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3"></path>
+                    <path d="M2,42.0005693 C2,19.9088649 19.9096817,2 41.9948462,2 L277.005154,2 C299.093697,2 317,19.9012788 317,42.0005693 L317,609.999431 C317,632.091135 299.090318,650 277.005154,650 L41.9948462,650 C19.9063026,650 2,632.098721 2,609.999431 L2,42.0005693 Z M22,80 L298,80 L298,573 L22,573 L22,80 Z" fill="none" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3"></path>
                     <circle stroke="#F0E0D0" stroke-width="3" fill="none" cx="159" cy="611" r="25"></circle>
                 </svg>
                 <div class="splash-device-profile opacity-0" activate-on-class="a" class-on-activate="fadeIn:anim, high-z-index:keep" ng-include="img_base + 'templates/profile.public.photo.html'"></div>
@@ -277,15 +258,7 @@
                     <div class="splash-device-search">
                         <div class="splash-device-search-inside opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim, null:inject.splash-device-adlib|a, null:inject.splash-device-search-inside h1|a, null:inject.splash-device-search-inside p|a, null:inject.splash-device-search-gurus li|a, null:inject.splash-device-search-courses li|a, null:inject.splash-device-search-gurus .marker-guru|activate, null:inject.splash-device-found|a, null:inject.map-guru-icon|a">
                             <div class="splash-device-found" activate-on-class="a" class-on-activate="active:keep" class-on-activate-delay="6000">
-                                <h1 class="opacity-0"
-                                    activate-on-class="a"
-                                    class-on-activate="bounceIn:anim"
-                                    counter
-                                    init-on-class="counter:activate"
-                                    counter-max="6"
-                                    counter-min="0"
-                                    counter-duration="2"
-                                    counter-delay="0"></h1>
+                                <h1 class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" counter init-on-class="counter:activate" counter-max="6" counter-min="0" counter-duration="2" counter-delay="0"></h1>
                                 <p class="opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim">Gurus Found</p>
                             </div>
                             <ul class="splash-device-search-gurus">
@@ -338,26 +311,6 @@
                                     </div>
                                 </li>
                             </ul>
-                            <!-- <ul class="splash-device-search-courses hide">
-                                <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="900">
-                                    <span class="bg-{{selectedCategory.hex_color}}">BIO 1A</span>
-                                </li>
-                                <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="2100">
-                                    <span class="bg-{{selectedCategory.hex_color}}">BIO 1B</span>
-                                </li>
-                                <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1800">
-                                    <span class="bg-{{selectedCategory.hex_color}}">MCB C160</span>
-                                </li>
-                                <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1500">
-                                    <span class="bg-{{selectedCategory.hex_color}}">MCB C100</span>
-                                </li>
-                                <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="600">
-                                    <span class="bg-{{selectedCategory.hex_color}}">MCB 11</span>
-                                </li>
-                                <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1200">
-                                    <span class="bg-{{selectedCategory.hex_color}}">MCB 41</span>
-                                </li>
-                            </ul> -->
                         </div>
                     </div>
                     <svg class="coach-click opacity-0 parallax-auto" parallax-parent-ref="p1" parallax-child="0.2" viewBox="0 0 212 75">
@@ -575,7 +528,7 @@
         </section>
 
         <section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%" class='relative'>
-            <!-- <div class="projector-trigger animated opacity-0" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750" bind-wp="s2_25_top" bind-wp-class="bounceInDown" bind-wp-direction="down">
+            <div class="projector-trigger animated opacity-0" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750" bind-wp="s2_25_top" bind-wp-class="bounceInDown" bind-wp-direction="down">
                 <a id="projector-pull" ng-click='activateProjectorPull();' bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a" class-on-activate="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
                     <svg width="28px" height="224px" viewBox="0 0 56 448">
                         <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -610,9 +563,9 @@
                         <tspan x="652" y="289">Check it out.</tspan>
                     </text>
                 </svg>
-            </div> -->
+            </div>
 
-            <div class='header-swipers opacity-0 a'  activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, null:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700" class-on-clear="slideOutUp:animOut">
+            <div class='header-swipers opacity-0'  activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, null:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700" class-on-clear="slideOutUp:animOut">
                 <div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-0">
                     <div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
                         <div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
@@ -1526,7 +1479,7 @@
                                             <a>
                                                 <div>
                                                     <span class="course-name" ng-if="course.full_name">{{course.short_name}}</span>
-                                                    <span class="course-title ng-class:{'only':!course.full_name || !course.title}" style="border-bottom-color: {{selectedUniversity.school_color_dark}};"><span>{{course.full_name || course.title || course.short_name}}</span></span>
+                                                    <span class="course-title" style="border-bottom-color: {{selectedUniversity.school_color_dark}};"><span>{{course.full_name || course.title || course.short_name}}</span></span>
                                                 </div>
                                             </a>
                                         </li>

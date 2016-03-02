@@ -5624,10 +5624,14 @@ input[type=range] {
 .close-button {
 	display: block;
 	svg {
-		@include rotate(45);
 		@include svg-stroke(white, 5);
 		height: 50px;
 		width: 50px;
+	}
+	&:not(.arrow) {
+		svg {
+			@include rotate(45);
+		}
 	}
 	&.absolute {
 		position: absolute;
