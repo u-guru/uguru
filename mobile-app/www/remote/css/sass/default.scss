@@ -13,13 +13,8 @@
 }
 
 * {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
-	-o-backface-visibility: hidden;
-	backface-visibility: hidden;
+	@include prefix(box-sizing, border-box, webkit moz);
+	@include prefix(backface-visibility, hidden, webkit moz ms o);
 	-ms-overflow-style: none;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -54,12 +49,8 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 	cursor: pointer;
 }
 .noselect {
+	@include prefix(user-select, none, webkit khtml moz ms o);
 	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
 }
 .icon {
 	font-size: 16px;
@@ -5633,10 +5624,14 @@ input[type=range] {
 .close-button {
 	display: block;
 	svg {
-		@include rotate(45);
 		@include svg-stroke(white, 5);
 		height: 50px;
 		width: 50px;
+	}
+	&:not(.arrow) {
+		svg {
+			@include rotate(45);
+		}
 	}
 	&.absolute {
 		position: absolute;

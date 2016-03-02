@@ -1,8 +1,8 @@
 <section id="faq">
     <header>
-        <a id='guru-profile-cta-close' class='cta-modal-close close-button absolute' ng-click='!desktopMode && page.modals.faq.hide()'>
+        <a id='guru-profile-cta-close' class='cta-modal-close close-button arrow absolute' ng-click='!desktopMode && page.modals.faq.hide()'>
             <svg viewBox="0 0 100 100">
-                <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                <path d="M14,32 L50,68 L86,32"></path>
             </svg>
         </a>
         <h1>Frequently Asked Questions</h1>
@@ -27,7 +27,7 @@
                     </svg>
                 </a>
             </dt>
-            <dd class='weight-400 left-0' ng-if='faq.active' id='faq-content-{{$index}}' ng-bind-html="faq.answer"></dd>
+            <dd class='weight-400 left-0 animated' ng-if='faq.active' id='faq-content-{{$index}}' ng-bind-html="faq.answer"></dd>
         </dl>
     </div>
 </section>

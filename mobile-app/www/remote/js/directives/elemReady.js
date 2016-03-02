@@ -111,7 +111,6 @@ angular.module('uguru.directives')
         if (element[0].classList.contains('clear')) {
           element[0].classList.remove('clear')
           var delay = attr.classOnClearDelay || 0;
-          console.log(element[0]);
           var classes = attr.classOnClear.split(", ");
           $timeout(function() {
               for (var i = 0; i < classes.length; i++) {
@@ -134,7 +133,6 @@ angular.module('uguru.directives')
                 }
                 if (classArgs.indexOf("unique") > -1) {
                   var otherClassElems = document.querySelectorAll('.' + indexClass);
-                  console.log(otherClassElems);
                   for (var j = 0; j < otherClassElems.length; j++) {
                     var otherElemIndex = otherClassElems[j];
                     if (otherElemIndex !== element[0]) {
@@ -148,7 +146,6 @@ angular.module('uguru.directives')
                     var classToInject = injectArgClassSplit[1];
                     var elemToInjectSelector = injectArgClassSplit[0];
                     var elemsToInject = document.querySelectorAll(elemToInjectSelector);
-                    console.log(elemToInjectSelector, classToInject, elemsToInject.length, 'elements');
                     for (var k = 0; k < elemsToInject.length; k++) {
                       elemsToInject[k].classList.add(classToInject);
                     }
@@ -205,7 +202,6 @@ angular.module('uguru.directives')
                 }
                 if (classArgs.indexOf("unique") > -1) {
                   var otherClassElems = document.querySelectorAll('.' + indexClass);
-                  console.log(otherClassElems);
                   for (var j = 0; j < otherClassElems.length; j++) {
                     var otherElemIndex = otherClassElems[j];
                     if (otherElemIndex !== element[0]) {
@@ -219,7 +215,6 @@ angular.module('uguru.directives')
                     var classToInject = injectArgClassSplit[1];
                     var elemToInjectSelector = injectArgClassSplit[0];
                     var elemsToInject = document.querySelectorAll(elemToInjectSelector);
-                    console.log(elemToInjectSelector, classToInject, elemsToInject.length, 'elements');
                     for (var k = 0; k < elemsToInject.length; k++) {
                       elemsToInject[k].classList.add(classToInject);
                     }
@@ -766,11 +761,9 @@ directive("initWp", ['$timeout', 'ScrollService', '$state', function ($timeout, 
                     console.log('ERROR: waypoint declaration for element', element[0].id || element[0].class, 'has more/less offsets declared than wp vars');
                     return;
                   }
-                  console.log('initializing', elemHasManyWp.length, 'wp at once')
                   for (var i = 0; i < elemHasManyWp.length; i++) {
                     var indexWpName = elemHasManyWp[i];
                     var indexWpOffset = elemHasManyOffset[i];
-                    console.log('initialized', indexWpName);
                     scope.page.waypoints[indexWpName] = {offset: indexWpOffset || 0, activated:false, direction: null};
                     ScrollService.initScopedWaypoint(elemRef, parentRef, scopeRef, indexWpOffset, stateName, indexWpName);
                   }

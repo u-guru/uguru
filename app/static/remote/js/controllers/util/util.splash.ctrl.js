@@ -116,7 +116,7 @@ angular.module('uguru.util.controllers')
         nested:true,
         resistanceRatio:0
       }
-      var swiperFrontGalleryThumbs = new Swiper('.swiper-front-gallery-thumbs', swiperFrontGalleryThumbsOption);
+      var swiperFrontGalleryThumbs = new Swiper('#swiper-gallery-nav', swiperFrontGalleryThumbsOption);
 
       // swiperFrontGalleryThumbs.setWrapperTranslate(swiperFront.getWrapperTranslate());
       swiperFront.params.control = swiperFrontGalleryThumbs;
