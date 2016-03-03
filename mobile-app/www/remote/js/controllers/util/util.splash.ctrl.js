@@ -23,10 +23,43 @@ angular.module('uguru.util.controllers')
   'LoadingService',
   'ContentService',
   'CTAService',
+  'User',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal, Category, ScrollService, SideMenuService,
     $stateParams, Utilities, GUtilService, GMapService, University, $compile,
-    ContentService, LoadingService, ContentService, CTAService) {
+    ContentService, LoadingService, ContentService, CTAService, User) {
+
+    $scope.demographics = User.demographics;
+    $scope.saveDemographic = saveDemographic;
+    $scope.clearDemographic = clearDemographic;
+    $scope.updateUserIdCard = function(field_name, val, form) {
+      if (field_name === 'name' && val && val.length) {
+        $timeout(function(){
+          $scope.$apply(function() {
+            $scope.user.name = val;
+            form.activateEmail = true;
+          })
+        })
+      }
+      if (field_name === 'email' && val && val.length) {
+        $timeout(function(){
+          $scope.$apply(function() {
+            $scope.user.email = val;
+            form.activatePassword = true;
+          })
+        })
+      }
+    }
+
+    function clearDemographic () {
+      $scope.user.demographic = null;
+      User.updateLocal($scope.user);
+    }
+
+    function saveDemographic(demographic) {
+      $scope.user.demographic = demographic;
+      User.updateLocal($scope.user);
+    }
 
     if ($scope.root.loader.body.hide) {
       resolveStateParams();
@@ -314,6 +347,8 @@ angular.module('uguru.util.controllers')
 
     $scope.activateProjectorPull = function() {
       var splashHeroNavElem = document.querySelector('#splash-up-link');
+      $scope.switchToSignup();
+      // $scope.page
       if (!$scope.desktopMode) {
 
         if (splashHeroNavElem || $scope.desktopMode) {
@@ -684,6 +719,8 @@ angular.module('uguru.util.controllers')
       initSwipers(responsiveSwiperArgs, $scope.desktopMode);
       $scope.universities = University.getTargetted().slice();
       $timeout(function() {
+        // $scope.switchToSignup();
+        // showProjectorAtTop(4);
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
         // document.querySelector('.splash-hero-map').classList.add('activate');
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
