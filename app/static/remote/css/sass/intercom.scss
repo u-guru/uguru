@@ -35,7 +35,7 @@
 		@include transition(.15s ease-in-out);
 		@include opacity(0);
 		content: "";
-		display: block;
+		display: none;
 		position: fixed;
 		z-index: -10000000;
 		left: 0;
@@ -47,6 +47,7 @@
 	#intercom-messenger.intercom-messenger-active:after {
 		@include opacity(1);
 		z-index: auto;
+		display:block !important;
 	}
 
 	// notify email submit

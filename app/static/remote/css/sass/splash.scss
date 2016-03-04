@@ -187,6 +187,104 @@
 	}
 }
 
+.onboarding-success {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: rgba($slate, .9);
+	text-align: center;
+	&:not(.active) {
+		@include opacity(0);
+		z-index: -1000;
+	}
+	> div {
+		position: relative;
+		height: 100%;
+		max-height: 50%;
+		a {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		div:not(.guru) {
+			left: 50%!important;
+		}
+		.guru {
+			position: relative;
+			z-index: 3;
+		}
+		div, a, svg {
+			display: block;
+			height: 100%;
+			margin: 0 auto;
+		}
+	}
+	svg {
+		display: block;
+		height: 100%;
+		> g {
+			*:not(.freeze) {
+				@include prefix(animation, hover-success 1000ms linear infinite alternate, webkit moz ms o)
+			}
+		}
+	}
+	h1, h2 {
+		display: block;
+		width: 100%;
+	}
+	h1 {
+		font-size: 36px;
+		font-weight: 900;
+		@media screen and (min-width: 768px) {
+			font-size: 48px;
+		}
+	}
+	h2 {
+		margin-top: 0!important;
+		margin-bottom: 30px;
+		font-size: 28px;
+		font-weight: 600;
+		@media screen and (min-width: 768px) {
+			font-size: 32px;
+		}
+	}
+	button {
+		background: $shamrock;
+		letter-spacing: 0;
+		text-transform: none;
+		@media screen and (min-width: 768px) {
+			padding-top: 0;
+			padding-bottom: 0;
+			height: 64px;
+			font-size: 24px;
+		}
+		&:hover, &:focus {
+			color: $shamrock!important;
+		}
+		&:active {
+			background: lighten($shamrock, 35%)!important;
+		}
+	}
+}
+
+@include keyframes(hover-success) {
+	0% {
+		@include prefix(transform, translateY(3px), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translateY(-3px), webkit moz ms o);
+	}
+}
+
 /* ---------- SPLASH PAGES */
 .splash-landing {
 	background: white;
@@ -873,6 +971,14 @@
 			position: relative;
 			background: $slate;
 			text-align: center;
+			.splash-header {
+				@include prefix(justify-content, space-between, webkit);
+				height: 50px!important;
+				width: 100%;
+				@media screen and (min-width: 860px) {
+					height: 70px!important;
+				}
+			}
 			.splash-hero-nav {
 				@include flex;
 				@include flex-center-vertical;
@@ -1197,6 +1303,7 @@
 					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 					position: absolute;
 					cursor: pointer;
+					max-width: 262px;
 					&.visible {
 						@include opacity-important(1);
 						z-index: 9;
@@ -1204,9 +1311,9 @@
 					&:not(.splash-hero-marker-mobile) {
 						display: none;
 					}
-					&:last-child {
+					&.splash-hero-marker-mobile {
 						position: absolute;
-					    bottom: 70px;
+					    bottom: 15%;
 					    left: 50%;
 					    margin-left: -46px;
 					}
@@ -1472,6 +1579,13 @@
 						height: 10px;
 						border: 2px solid white;
 					}
+					.marker-label {
+						position: absolute;
+						width: 100%;
+						bottom: -35px;
+						font-weight: 600;
+						font-size: 14px;
+					}
 					&.splash-marker-active {
 						z-index: 12;
 						.marker-normal {
@@ -1556,7 +1670,7 @@
 				}
 			}
 			.splash-device {
-				display: none;
+				display: none!important;
 				position: absolute;
 				z-index: 2;
 				top: 50%;
@@ -1583,8 +1697,8 @@
 						width: 85.4%;
 						height: 75%;
 						.coach-click {
-							bottom: 65px;
-							right: -90px;
+							bottom: 65px!important;
+							right: -90px!important;
 						}
 					}
 				}
@@ -1684,7 +1798,7 @@
 							width: 100%;
 							font-size: 18px;
 							font-weight: 600;
-							margin: 0;
+							margin: 5px 0 0;
 						}
 						ul {
 							@include flex;
@@ -2063,6 +2177,9 @@
 						font-size: 20px;
 						font-weight: 600;
 						text-transform: uppercase;
+						&:not(.bounceInUp) {
+							visibility: hidden;
+						}
 					}
 					ul {
 						@include flex;
@@ -2145,6 +2262,9 @@
 				}
 			}
 			@media screen and (max-width: 360px) {
+				.splash-hero-device {
+					@include prefix(transform, scale(.9), webkit moz ms o);
+				}
 				.splash-hero-content {
 					@include prefix(transform, scale(.9), webkit moz ms o);
 					.splash-adlib {
@@ -2155,6 +2275,9 @@
 				}
 			}
 			@media screen and (max-width: 320px) {
+				.splash-hero-device {
+					@include prefix(transform, scale(.8), webkit moz ms o);
+				}
 				.splash-hero-content {
 					@include prefix(transform, scale(.7), webkit moz ms o);
 				}
@@ -2221,7 +2344,7 @@
 						}
 					}
 					&.coach-help-mobile {
-						display: none;
+						display: none!important;
 					}
 				}
 				.splash-hero-nav {
@@ -2238,7 +2361,7 @@
 					}
 				}
 				.splash-device {
-					display: block;
+					display: block!important;
 				}
 				.splash-guru-head {
 					.coach-fill {
@@ -2417,6 +2540,95 @@
 				height: 110px;
 				width: 100%;
 				max-width: 600px;
+				&#swiper-gallery-tab {
+					height: 60px;
+					background: none!important;
+					.swiper-gallery-wrapper {
+						hr {
+							width: calc(100% / 3);
+						}
+						a.swiper-slide {
+							font-size: 16px;
+							line-height: 1.2;
+							margin: 0!important;
+							margin-right: 0!important;
+							&.third {
+								width: calc(100% / 3)!important;
+							}
+							&:not(.third) {
+								width: 20%!important;
+								+ hr {
+									hr {
+										width: 20%;
+									}
+								}
+							}
+							&:nth-child(1) {
+								&.active, &.swiper-slide-active {
+									~ hr {
+										@include translate-x(0);
+										border-color: white;
+									}
+								}
+							}
+							&:nth-child(2) {
+								&.active, &.swiper-slide-active {
+									~ hr {
+										@include translate-x(100%);
+										border-color: white;
+									}
+								}
+							}
+							&:nth-child(3) {
+								&.active, &.swiper-slide-active {
+									~ hr {
+										@include translate-x(200%);
+										border-color: white;
+									}
+								}
+							}
+							&:nth-child(1) {
+								&:hover, &:focus {
+									~ hr {
+										@include translate-x(0);
+										border-color: rgba(white, .7);
+									}
+								}
+								&:active {
+									~ hr {
+										border-color: white;
+									}
+								}
+							}
+							&:nth-child(2) {
+								&:hover, &:focus {
+									~ hr {
+										@include translate-x(100%);
+										border-color: rgba(white, .7);
+									}
+								}
+								&:active {
+									~ hr {
+										border-color: white;
+									}
+								}
+							}
+							&:nth-child(3) {
+								&:hover, &:focus {
+									~ hr {
+										@include translate-x(200%);
+										border-color: rgba(white, .7);
+									}
+								}
+								&:active {
+									~ hr {
+										border-color: white;
+									}
+								}
+							}
+						}
+					}
+				}
 				.progress.white-round {
 					position: absolute;
 					top: 35px;
@@ -2426,7 +2638,7 @@
 					@include prefix(transform, translate3d(0px, 0px, 0px)!important, webkit moz ms o);
 					width: 100%!important;
 					height: 100%!important;
-					.swiper-slide {
+					div.swiper-slide {
 						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 						width: 33%!important;
 						height: 80px!important;
@@ -2619,7 +2831,7 @@
 				left: 2%;
 				width: 96%;
 				height: 96.2%;
-				overflow: hidden!important;
+				overflow: visible!important;
 				border: 2px solid white;
 				border-bottom-left-radius: 2px;
 				border-bottom-right-radius: 2px;
@@ -2646,6 +2858,67 @@
 						right: -95px;
 						&:not(.active) {
 							@include opacity(0);
+						}
+					}
+				}
+				&#splash-school {
+					.splash-university-selected {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						position: absolute;
+						top: 0;
+						left: 0;
+						height: 100%;
+						width: 100%;
+						background: rgba($slate, .95);
+						&.active {
+							z-index: 10;
+						}
+						&:not(.active) {
+							@include opacity(0);
+							z-index: -10;
+						}
+					}
+					.splash-university-content {
+						@include flex;
+						@include flex-center;
+						height: 100%;
+						padding: 70px 15px 15px;
+						.coach-edit-school {
+							position: absolute;
+							bottom: 15px;
+							left: 50%;
+							margin-left: -82px;
+						}
+						.school-id-card {
+							position: relative;
+							.school-id-link {
+								@include opacity(0);
+								@include flex;
+								@include flex-center;
+								position: absolute;
+								z-index: 10;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								border-radius: 10px;
+								background: rgba($shamrock, .95);
+								font-size: 24px;
+								font-weight: 600;
+								&:hover, &:focus {
+									@include opacity(1);
+								}
+							}
+						}
+						@media screen and (min-width: 414px) {
+							.school-id-card {
+								@include scale(1.2);
+							}
+						}
+						@media screen and (min-width: 768px) {
+							.school-id-card {
+								@include scale(1.5);
+							}
 						}
 					}
 				}
@@ -2905,7 +3178,9 @@
 							position: relative;
 							width: 100%;
 							max-width: 652px;
-							height: 119px;
+							@media screen and (min-width: 768px) {
+								height: 119px;
+							}
 						}
 						.splash-access-code {
 							@include flex;
@@ -2915,14 +3190,22 @@
 							background: none;
 							border: 0;
 							width: 100%;
-							max-width: 652px;
-							height: 119px;
-							font-size: 48px;
+							max-width: 347px;
+							height: 64px;
+							margin: 0 auto;
+							font-size: 28px;
 							text-align: center;
 							line-height: 1.2;
-							padding-bottom: 10px;
+							padding-top: 5px;
 							color: white;
 							font-weight: 300;
+							@media screen and (min-width: 768px) {
+								max-width: 652px;
+								height: 119px;
+								font-size: 48px;
+								padding-top: 0;
+								padding-bottom: 10px;
+							}
 							@include placeholder {
 								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 							}
@@ -2930,11 +3213,29 @@
 								position: absolute;
 								top: 0;
 								left: 0;
+								width: 100%;
 								.splash-access-bubble {
-									max-width: 100%;
-									display: block;
+									&.mobile {
+										display: block;
+										max-width: 347px;
+										margin: 0 auto;
+									}
+									&.desktop {
+										display: none;
+										max-width: 100%;
+									}
 									path {
 										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+									}
+								}
+								@media screen and (min-width: 768px) {
+									.splash-access-bubble {
+										&.mobile {
+											display: none;
+										}
+										&.desktop {
+											display: block;
+										}
 									}
 								}
 								button {
@@ -2971,6 +3272,145 @@
 						}
 					}
 				}
+				&#splash-demographic {
+					.splash-demographic-content {
+						@include flex;
+						@include flex-center;
+						position: relative;
+						padding: 15px;
+						height: 100%;
+						ul {
+							@include center-xy;
+							@include listless;
+							@include flex;
+							@include flex-wrap;
+							@include flex-center;
+							margin-top: 60px;
+							padding: 7.5px;
+							width: 100%;
+							max-width: 80%;
+							&:not(.active) {
+								@include opacity(0);
+								z-index: -10;
+							}
+							li {
+								padding: 7.5px;
+								a {
+									@include round;
+									@include flex;
+									@include flex-center;
+									text-align: center;
+									width: 100px;
+									height: 100px;
+									border: 2px solid white;
+									font-size: 18px;
+									&.demo-freshman {
+										background: rgba($lake, .5);
+										&:hover, &:focus {
+											background: $lake;
+										}
+										&:active {
+											background: lighten($slate, 20%);
+										}
+									}
+									&.demo-sophomore {
+										background: rgba(mix($shamrock, $lake, 25%), .5);
+										&:hover, &:focus {
+											background: mix($shamrock, $lake, 25%);
+										}
+										&:active {
+											background: lighten($slate, 20%);
+										}
+									}
+									&.demo-jr {
+										background: rgba(mix($shamrock, $lake, 50%), .5);
+										&:hover, &:focus {
+											background: mix($shamrock, $lake, 50%);
+										}
+										&:active {
+											background: lighten($slate, 20%);
+										}
+									}
+									&.demo-sr {
+										background: rgba(mix($shamrock, $lake, 75%), .5);
+										&:hover, &:focus {
+											background: mix($shamrock, $lake, 75%);
+										}
+										&:active {
+											background: lighten($slate, 20%);
+										}
+									}
+									&.demo-postgrad {
+										background: rgba($shamrock, .5);
+										&:hover, &:focus {
+											background: $shamrock;
+										}
+										&:active {
+											background: lighten($slate, 20%);
+										}
+									}
+									&.demo-college {
+										background: rgba(mix($smoke, $cerise, 10%), .5);
+										&:hover, &:focus {
+											background: mix($smoke, $cerise, 10%);
+										}
+										&:active {
+											background: lighten($slate, 20%);
+										}
+									}
+									&.demo-alum {
+										background: rgba(mix($smoke, $cobalt, 10%), .5);
+										&:hover, &:focus {
+											background: mix($smoke, $cobalt, 10%);
+										}
+										&:active {
+											background: lighten($slate, 20%);
+										}
+									}
+									&.demo-hs {
+										background: rgba(mix($smoke, $orange, 10%), .5);
+										&:hover, &:focus {
+											background: mix($smoke, $orange, 10%);
+										}
+										&:active {
+											background: lighten($slate, 20%);
+										}
+									}
+									&.demo-parent {
+										background: rgba(#2bb3b8, .5);
+										&:hover, &:focus {
+											background: #2bb3b8;
+										}
+										&:active {
+											background: lighten($slate, 20%);
+										}
+									}
+									&.demo-other {
+										background: rgba(lighten($slate, 15%), .5);
+										&:hover, &:focus {
+											background: lighten($slate, 15%);
+										}
+										&:active {
+											background: lighten($slate, 20%);
+										}
+									}
+								}
+							}
+						}
+						@media screen and (min-width: 768px) {
+							ul {
+								li {
+									padding: 15px;
+									a {
+										width: 150px;
+										height: 150px;
+										font-size: 24px;
+									}
+								}
+							}
+						}
+					}
+				}
 				&#splash-courses {
 					@include flex;
 					@include flex-wrap;
@@ -2999,15 +3439,20 @@
 					}
 					.input-field {
 						width: 100%;
-						margin: 15px auto 0;
+						margin: 0 auto;
 						input {
 							margin-bottom: 0;
 						}
-						label:not(.active) {
-							top: 0;
-						}
-						.prefix {
-							top: 9px;
+					}
+					@media screen and (min-width: 768px) {
+						.input-field {
+							margin: 15px auto 0;
+							label:not(.active) {
+								top: 0;
+							}
+							.prefix {
+								top: 9px;
+							}
 						}
 					}
 					ul {
@@ -3030,10 +3475,13 @@
 							a {
 								@include flex;
 								@include flex-wrap;
-								height: 100px;
+								height: 50px;
 								border: 2px solid white;
 								border-radius: 2px;
 								text-align: center;
+								@media screen and (min-width: 768px) {
+									height: 100px;
+								}
 								div {
 									width: 100%;
 									height: 100%;
@@ -3053,11 +3501,17 @@
 										border-bottom-width: 5px;
 										border-bottom-style: solid;
 										font-size: 18px;
-										&.only {
+										&:only-child {
 											@include flex;
 											@include flex-center;
 											height: 100%;
-											font-size: 24px;
+											padding: 0;
+											@media screen and (min-width: 768px) {
+												font-size: 24px;
+											}
+											span {
+												height: auto!important;
+											}
 										}
 										span {
 											display: block;
@@ -3126,7 +3580,7 @@
 				}
 			}
 			@media screen and (max-width: 768px) {
-				.swiper-button-next, .swiper-button-prev, .swiper-front-gallery-thumbs {
+				.swiper-button-next, .swiper-button-prev, .swiper-front-gallery-thumbs#swiper-gallery-nav {
 					@include opacity(0);
 					z-index: -9;
 					visibility: hidden;
@@ -3137,6 +3591,11 @@
 				}
 			}
 			@media screen and (min-width: 768px) {
+				.swiper-front-gallery-thumbs#swiper-gallery-tab {
+					@include opacity(0);
+					z-index: -9;
+					visibility: hidden;
+				}
 				.splash-projector-message {
 					&.desktop {
 						display: block;
@@ -3197,6 +3656,9 @@
 									.school-card-icon {
 										width: 48px;
 										height: 48px;
+										.school-card-state svg {
+											padding: 10px;
+										}
 									}
 								}
 								.school-card-main {
@@ -4421,8 +4883,12 @@
 	.slideshow-thumb-5,
 	.slideshow-thumb-4,
 	.slideshow-thumb-3.progress-active {
-		width:20% !important;
-		opacity: 1 !important;
-		background:transparent !important;
+		@include opacity-important(1);
+		width: 20%!important;
+		background: none!important;
 	}
+}
+
+#intercom-container {
+	display:none !important;
 }

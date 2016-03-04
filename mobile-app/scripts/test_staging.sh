@@ -62,4 +62,4 @@ echo 'jk -- we can do that for you too ;)'
 echo
 echo
 echo
-open 'http://localhost:5000/static/remote/index.html'
+open 'http://localhost:5000/#/'

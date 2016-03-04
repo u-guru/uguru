@@ -1334,6 +1334,22 @@ angular.module('uguru.user', [])
                 }
               }
         },
+        demographics: [
+            {
+                name: 'College Student',
+                class: 'college',
+                type:
+                    [
+                        {name: 'Freshman', class:'freshman'},
+                        {name: 'Sophomore', class:'sophomore'},
+                        {name: 'Junior', class:'jr'},
+                        {name: 'Senior', class:'sr'},
+                        {name: 'Grad Student', class:'postgrad'}],
+            },
+            {name: 'Professional (Alumni)', class: 'alum' },
+            {name: 'High School Student', class: 'hs'},
+            {name: 'Parent', class: 'parent'},
+            {name: 'Other', class: 'other'}],
         getUserFromServer: function($scope, callback, $state) {
 
             // if ($scope && $scope.root && $scope.root.vars.fetch_user_server_mutex) {

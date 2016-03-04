@@ -157,6 +157,9 @@ class User(Base):
     is_admin = Column(Boolean)
     is_support_admin = Column(Boolean)
     hs_student = Column(Boolean)
+    is_parent = Column(Boolean)
+    is_hs_parent = Column(Boolean)
+    is_professional = Column(Boolean)
 
 
     fb_id = Column(String)

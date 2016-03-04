@@ -3,15 +3,20 @@
 /* ---------- FAQ */
 #faq {
 	height: 100%;
+	overflow: auto;
 	header {
 		@include flex;
 		@include flex-center;
 		@include flex-wrap;
 		height: calc(100% / 3);
 		background: $shamrock;
+		&.has-tabs {
+			h1 {
+				padding-bottom: 60px;
+			}
+		}
 		h1 {
-			padding-bottom: 60px;
-			font-size: 48px;
+			font-size: 28px;
 			text-align: center;
 			text-transform: none!important;
 		}
@@ -27,11 +32,11 @@
 		@include flex;
 		@include flex-wrap;
 		height: calc(100% / 3 * 2);
-		overflow: auto;
-		padding: 15px;
+		padding: 7.5px;
 		dl {
 			width: 50%;
-			padding: 15px 15px 0;
+			padding: 7.5px;
+			margin-bottom: 0!important;
 			dt {
 				@include flex;
 				@include flex-center-vertical;
@@ -48,7 +53,9 @@
 						width: 100%;
 						height: 100%;
 					}
-					&:not(.active) {
+				}
+				&:not(.active) {
+					.close-button {
 						svg {
 							@include rotate(0);
 						}
@@ -60,6 +67,8 @@
 				}
 			}
 			dd {
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+				@include prefix(transform-origin, top center, webkit moz ms o);
 				background: white;
 				padding: 10px 15px;
 				color: $slate;
@@ -69,21 +78,41 @@
 		}
 	}
 }
+@media screen and (min-width: 768px) {
+	#faq {
+		header {
+			h1 {
+				font-size: 48px;
+			}
+		}
+		.main {
+			@include prefix(flex-direction, column, wekit moz ms o);
+			height: 100%;
+			width: 100%;
+			overflow-x: hidden;
+			padding: 15px;
+			dl {
+				padding: 15px;
+			}
+		}
+	}
+}
 
 /* ---------- TEAM */
 #team {
 	width: 100%;
 	height: 100%;
+	overflow: auto;
 	background: $smoke;
 	header {
 		@include flex;
 		@include flex-center;
-		height: 25%;
+		height: calc(100% / 3);
 		max-height: none;
 		background: white;
 		h1 {
 			color: $lake;
-			font-size: 48px;
+			font-size: 28px;
 			font-weight: 600;
 			text-transform: none;
 		}
@@ -95,7 +124,7 @@
 		}
 	}
 	section {
-		height: 75%;
+		height: calc(100% / 3 * 2);
 		.pf-card-group {
 			> li {
 				.pf-card {
@@ -117,133 +146,18 @@
 		}
 	}
 }
-.pf-card-group {
-	@include flex;
-	@include flex-wrap;
-	@include flex-center;
-	width: 100%;
-	max-width: 915px;
-	margin: 0 auto;
-	padding: 7.5px;
-	> li {
-		width: 100%;
-		min-width: 300px;
-		padding: 7.5px;
-		@media screen and (min-width: 768px) {
-			width: calc(100% / 3);
+@media screen and (min-width: 768px) {
+	#team {
+		header {
+			height: 25%;
+			h1 {
+				font-size: 48px;
+			}
 		}
-		.pf-card {
-			position: relative;
-			display: block;
-			margin: 0;
-			max-width: none;
-			.pf-hover {
-				@include transition(.15s ease-in-out);
-				@include opacity(0);
-				@include flex;
-				@include flex-center;
-				position: absolute;
-				z-index: 10;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				border-radius: 2px;
-				background: rgba($shamrock, .95);
-				color: white;
-				font-size: 24px;
-				font-weight: 600;
-			}
-			&.pf-card-delivery {
-				.pf-hover {
-					background: rgba(lighten($auburn, 10%), .95);
-				}
-			}
-			&.pf-card-freelancing {
-				.pf-hover {
-					background: rgba(lighten($orange, 10%), .95);
-				}
-			}
-			&.pf-card-baking {
-				.pf-hover {
-					background: rgba(lighten($gold, 5%), .95);
-				}
-			}
-			&.pf-card-photography {
-				.pf-hover {
-					background: rgba(lighten($moola, 10%), .95);
-				}
-			}
-			&.pf-card-tech {
-				.pf-hover {
-					background: rgba(lighten($azure, 10%), .95);
-				}
-			}
-			&.pf-card-household {
-				.pf-hover {
-					background: rgba(lighten($cobalt, 10%), .95);
-				}
-			}
-			&.pf-card-athletic {
-				.pf-hover {
-					background: rgba(lighten($eggplant, 10%), .95);
-				}
-			}
-			&.pf-card-academic {
-				.pf-hover {
-					background: rgba(lighten($cerise, 15%), .95);
-				}
-			}
-			&:hover {
-				color: $slate;
-				.pf-hover {
-					@include opacity(1);
-				}
-			}
-			.pf-card-top {
-				.user-icon {
-					@include center-x;
-					width: 96px;
-					height: 96px;
-					bottom: -60px;
-					border-width: 3px;
-				}
-			}
-			.pf-card-main {
-				padding: 60px 15px 15px;
-				h1 {
-					font-size: 24px;
-					span {
-						svg {
-							margin-left: 8px;
-							margin-top: 5px;
-							width: 20px;
-							height: 20px;
-						}
-					}
-				}
-				.pf-school {
-					font-size: 16px;
-					+ .pf-school {
-						color: lighten($slate, 25%);
-					}
-				}
-				.pf-quote {
-					display: none;
-					padding-top: 5px;
-					font-size: 14px;
-					font-weight: 400;
-				}
-				.pf-rating {
-					margin: 5px auto;
-				}
-			}
+		section {
+			height: 75%;
 		}
 	}
-}
-
-#intercom-container {
-	z-index: auto!important;
 }
 
 // TICKET STUB
@@ -4916,145 +4830,197 @@
 	header {
 		@include flex;
 		@include flex-wrap;
-		height: 40%;
+		height: calc(100% / 3);
 		background: $shamrock;
 		> h1 {
 			width: 100%;
-			padding: 30px;
-			font-size: 48px;
-			font-weight: 900;
+			font-size: 28px;
+			font-weight: 600;
 			color: white;
 			text-align: center;
 			text-transform: none;
 		}
-		.pricing-other {
-			@include flex;
-			@include flex-center;
-			position: relative;
-			margin: 0 auto;
-			padding: 15px 0;
-			width: 100%;
-			max-width: 800px;
-			background: #d4ac54;
-			li {
-				@include translate-y(25%);
-				padding: 0 50px;
-				div {
-					text-align: center;
-					h3 {
-						font-size: 36px;
-						font-weight: 700;
-					}
-					h1 {
-						margin-top: 0!important;
-						padding: 0!important;
-						font-size: 128px;
-						font-weight: 900;
-					}
+	}
+	.pricing-other {
+		@include flex;
+		@include flex-center;
+		position: relative;
+		margin: 0 auto;
+		padding: 15px 0;
+		width: 100%;
+		max-width: 800px;
+		background: #d4ac54;
+		li {
+			@include translate-y(25%);
+			padding: 0 50px;
+			div {
+				text-align: center;
+				h3 {
+					font-size: 36px;
+					font-weight: 700;
+				}
+				h1 {
+					margin-top: 0!important;
+					padding: 0!important;
+					font-size: 128px;
+					font-weight: 900;
 				}
 			}
-			&:before {
-				content: "";
-				display: block;
-				position: absolute;
-				bottom: -80px;
-				left: 0;
-				width: calc(100% - 80px);
-				height: 80px;
-				background: #d4ac54;
+		}
+		&:before {
+			content: "";
+			display: block;
+			position: absolute;
+			bottom: -80px;
+			left: 0;
+			width: calc(100% - 80px);
+			height: 80px;
+			background: #d4ac54;
+		}
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			bottom: -80px;
+			right: 0;
+			width: 0;
+			height: 0;
+			border: 40px solid transparent;
+			border-top-color: darken(#d4ac54, 25%);
+			border-left-color: darken(#d4ac54, 25%);
+		}
+	}
+	.pricing-uguru {
+		@include flex;
+		@include flex-center;
+		width: 100%;
+		max-width: 815px;
+		margin: 0 auto;
+		color: $slate;
+		text-align: center;
+		li {
+			position: relative;
+			width: calc(100% / 3);
+			padding: 0 7.5px;
+			div {
+				overflow: hidden;
+				position: relative;
+				padding: 15px 0;
+				background: $smoke;
+				border: 10px solid $slate;
+				h3 {
+					font-size: 24px;
+					font-weight: 700;
+					text-transform: uppercase;
+				}
+				h2 {
+					@include round;
+					@include flex;
+					@include flex-center;
+					margin: 15px auto;
+					width: 144px;
+					height: 144px;
+					background: rgba($azure, .1);
+					font-size: 44px;
+					font-weight: 700;
+					u {
+						display: block;
+						padding-bottom: 8px;
+						padding-right: 2px;
+					}
+				}
+				span {
+					font-size: 24px;
+					font-weight: 400;
+				}
+				svg {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					fill: rgba($taupe,.1);
+				}
 			}
 			&:after {
 				content: "";
 				display: block;
 				position: absolute;
-				bottom: -80px;
-				right: 0;
-				width: 0;
-				height: 0;
-				border: 40px solid transparent;
-				border-top-color: darken(#d4ac54, 25%);
-				border-left-color: darken(#d4ac54, 25%);
-			}
-		}
-		.pricing-uguru {
-			@include flex;
-			@include flex-center;
-			width: 815px;
-			margin: 0 auto;
-			color: $slate;
-			text-align: center;
-			li {
-				position: relative;
-				width: calc(100% / 3);
-				padding: 0 7.5px;
-				div {
-					overflow: hidden;
-					position: relative;
-					padding: 15px 0;
-					background: $smoke;
-					border: 10px solid $slate;
-					h3 {
-						font-size: 24px;
-						font-weight: 700;
-						text-transform: uppercase;
-					}
-					h2 {
-						@include round;
-						@include flex;
-						@include flex-center;
-						margin: 15px auto;
-						width: 144px;
-						height: 144px;
-						background: rgba($azure, .1);
-						font-size: 44px;
-						font-weight: 700;
-						u {
-							display: block;
-							padding-bottom: 8px;
-							padding-right: 2px;
-						}
-					}
-					span {
-						font-size: 24px;
-						font-weight: 400;
-					}
-					svg {
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						fill: rgba($taupe,.1);
-					}
-				}
-				&:after {
-					content: "";
-					display: block;
-					position: absolute;
-					bottom: -5px;
-					left: 7.5px;
-					width: calc(100% - 15px);
-					height: 5px;
-					background: rgba($taupe,.5);
-				}
+				bottom: -5px;
+				left: 7.5px;
+				width: calc(100% - 15px);
+				height: 5px;
+				background: rgba($taupe,.5);
 			}
 		}
 	}
 	> div {
-		padding: 110px 30px 30px;
-		max-width: 860px;
+		padding: 15px;
+		width: 100%;
 		margin: auto;
 		color: $slate;
+		.pricing-uguru {
+			@include flex-wrap;
+			margin-top: -20%;
+			li {
+				width: 100%;
+				padding: 0;
+				margin-bottom: 20px;
+				&:after {
+					left: 0;
+					width: 100%;
+				}
+			}
+		}
 		dl {
 			dt {
-				font-size: 28px;
+				font-size: 24px;
 				font-weight: 700;
 				line-height: 1.2;
 			}
 			dd {
-				font-size: 24px;
+				font-size: 18px;
 				font-weight: 400;
 				line-height: 1.2;
+			}
+		}
+	}
+}
+@media screen and (max-width: 768px) {
+	#pricing {
+		> header {
+			@include flex-center;
+			.pricing-uguru {
+				display: none;
+			}
+		}
+	}
+}
+@media screen and (min-width: 768px) {
+	#pricing {
+		> header {
+			height: 40%;
+			h1 {
+				padding: 30px;
+				font-size: 48px;
+			}
+			.pricing-uguru {
+				@include flex;
+			}
+		}
+		> div {
+			padding: 140px 30px 30px;
+			max-width: 860px;
+			.pricing-uguru {
+				display: none;
+			}
+			dl {
+				dt {
+					font-size: 28px;
+				}
+				dd {
+					font-size: 24px;
+				}
 			}
 		}
 	}
