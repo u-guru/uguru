@@ -2542,16 +2542,31 @@
 				max-width: 600px;
 				&#swiper-gallery-tab {
 					height: 60px;
+					max-width: 300px;
+					margin: 0 auto;
 					background: none!important;
 					.swiper-gallery-wrapper {
-						hr {
+						background: $slate!important;
+						> div {
 							width: calc(100% / 3);
+							&:before {
+								left: -15px;
+								border-color: $shamrock;
+								border-left-color: $slate;
+							}
+							&:after {
+								right: -15px;
+								border-color: $slate;
+								border-left-color: $shamrock;
+							}
 						}
 						a.swiper-slide {
-							font-size: 16px;
-							line-height: 1.2;
+							position: relative;
+    						z-index: 10;
 							margin: 0!important;
 							margin-right: 0!important;
+							font-size: 16px;
+							line-height: 1.2;
 							&.third {
 								width: calc(100% / 3)!important;
 							}
@@ -2564,65 +2579,86 @@
 								}
 							}
 							&:nth-child(1) {
-								&.active, &.swiper-slide-active {
-									~ hr {
-										@include translate-x(0);
-										border-color: white;
+								&.active {
+									~ div {
+										&:before {
+											border-color: $shamrock;
+											border-left-color: $slate;
+										}
+										&:after {
+											border-color: $slate;
+											border-left-color: $shamrock;
+										}
 									}
 								}
 							}
 							&:nth-child(2) {
-								&.active, &.swiper-slide-active {
-									~ hr {
-										@include translate-x(100%);
-										border-color: white;
+								&.active {
+									~ div {
+										&:before {
+											border-color: $shamrock;
+											border-left-color: $slate;
+										}
+										&:after {
+											border-color: $slate;
+											border-left-color: $shamrock;
+										}
 									}
 								}
 							}
 							&:nth-child(3) {
-								&.active, &.swiper-slide-active {
-									~ hr {
-										@include translate-x(200%);
-										border-color: white;
+								&.active {
+									~ div {
+										&:before {
+											border-color: $shamrock;
+											border-left-color: $slate;
+										}
+										&:after {
+											border-color: $slate;
+											border-left-color: $shamrock;
+										}
 									}
 								}
 							}
 							&:nth-child(1) {
 								&:hover, &:focus {
-									~ hr {
-										@include translate-x(0);
-										border-color: rgba(white, .7);
-									}
-								}
-								&:active {
-									~ hr {
-										border-color: white;
+									~ div {
+										&:before {
+											border-color: $shamrock;
+											border-left-color: $slate;
+										}
+										&:after {
+											border-color: $slate;
+											border-left-color: $shamrock;
+										}
 									}
 								}
 							}
 							&:nth-child(2) {
 								&:hover, &:focus {
-									~ hr {
-										@include translate-x(100%);
-										border-color: rgba(white, .7);
-									}
-								}
-								&:active {
-									~ hr {
-										border-color: white;
+									~ div {
+										&:before {
+											border-color: $shamrock;
+											border-left-color: $slate;
+										}
+										&:after {
+											border-color: $slate;
+											border-left-color: $shamrock;
+										}
 									}
 								}
 							}
 							&:nth-child(3) {
 								&:hover, &:focus {
-									~ hr {
-										@include translate-x(200%);
-										border-color: rgba(white, .7);
-									}
-								}
-								&:active {
-									~ hr {
-										border-color: white;
+									~ div {
+										&:before {
+											border-color: $shamrock;
+											border-left-color: $slate;
+										}
+										&:after {
+											border-color: $slate;
+											border-left-color: $shamrock;
+										}
 									}
 								}
 							}
@@ -3288,7 +3324,6 @@
 							margin-top: 60px;
 							padding: 7.5px;
 							width: 100%;
-							max-width: 80%;
 							&:not(.active) {
 								@include opacity(0);
 								z-index: -10;
@@ -3399,6 +3434,7 @@
 						}
 						@media screen and (min-width: 768px) {
 							ul {
+								max-width: 80%;
 								li {
 									padding: 15px;
 									a {
