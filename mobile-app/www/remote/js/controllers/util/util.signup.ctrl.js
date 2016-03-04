@@ -69,8 +69,14 @@ angular.module('uguru.util.controllers')
       var callback = function(success) {
         if (success.status === 'connected' && success.authResponse && success.authResponse.accessToken)
           var fbToken = success.authResponse.accessToken
-          LoadingService.showSuccess('Facebook Login Successful..', 2000);
-          facebookAuthSuccessCallback(fbToken);
+
+          $timeout(function() {
+            LoadingService.hide();
+            $timeout(function() {
+              LoadingService.showSuccess('Facebook Login Successful..', 2000);
+              facebookAuthSuccessCallback(fbToken);
+            }, 1000);
+          }, 1500);
       }
         openFB.login(callback, {scope: 'email,public_profile,user_friends'});
     }
@@ -86,6 +92,9 @@ angular.module('uguru.util.controllers')
 
     $scope.signupOnEnter = function() {
       if (!$scope.signupForm || !$scope.signupForm.password || !$scope.signupForm.password.length) {
+        return;
+      }
+      if (!$scope.signupForm.validatePassword && !$scope.signupForm.validateEmail && !$scope.signupForm.validateName) {
         return;
       }
       if ($scope.root.vars.loginMode) {
@@ -1163,7 +1172,7 @@ angular.module('uguru.util.controllers')
 
 
 
-          LoadingService.showAmbig(null, 1000);
+          LoadingService.showAmbig();
 
           $timeout(function() {
             $scope.ngFBlogin();
@@ -1201,15 +1210,18 @@ angular.module('uguru.util.controllers')
       $state.go('^.home');
     }
     $scope.postFbGraphApiSuccess = function(success, callback) {
-
+      console.log('fb info', success);
         $scope.user.first_name = success.first_name;
         $scope.user.last_name = success.last_name;
         $scope.user.name = success.name;
-        $scope.user.email = success.email;
         $scope.user.fb_id = success.id;
+        if ($state.current.name) {
+          $scope.user.profile_url = "https://graph.facebook.com/" + success.id + "/picture?width=100&height=100";
+        } else {
+          $scope.user.email = success.email;
+          $scope.signupForm.email = success.email;
+        }
 
-
-        $scope.signupForm.email = success.email;
         $scope.signupForm.first_name = $scope.user.first_name;
         $scope.signupForm.last_name = $scope.user.last_name;
         $scope.signupForm.fb_id = success.id;
@@ -1217,11 +1229,9 @@ angular.module('uguru.util.controllers')
         $scope.signupForm.gender = success.gender;
 
 
-        $scope.completeSignup();
+        $scope.completeSignup(callback);
 
-        if (callback) {
-          callback();
-        }
+
     }
 
      $scope.facebookApiGetDetails = function (callback) {
@@ -1326,6 +1336,7 @@ angular.module('uguru.util.controllers')
         $scope.user.last_name = $scope.signupForm.last_name;
         $scope.user.email = $scope.signupForm.email;
         $scope.user.password = $scope.signupForm.password;
+        console.log($scope.user);
         return true
 
     }
@@ -1491,33 +1502,13 @@ angular.module('uguru.util.controllers')
      }
     }
 
-    $scope.completeSignup = function() {
-
-      if (mixpanel && mixpanel.track) {
-        mixpanel.track(
-            "Signup Attempt",
-            {email: $scope.signupForm.email, name: $scope.signupForm.full_name}
-        );
-      }
+    $scope.completeSignup = function(callback) {
 
       if ($scope.signupForm.email)
         $scope.signupForm.email = $scope.signupForm.email.toLowerCase();
       if (!$scope.user.fb_id && !$scope.validateSignupForm()) {
         return;
       }
-
-      //validation for high school essay flow
-      if (isHighschoolEssayWorkflow()) {
-        $scope.root.vars.essay = true;
-        if (validateHighSchoolEssayWorfklow()) {
-          LoadingService.showMsg('Please enter at least one university! <br> <br> Click "My Universities" on the top of this page to add one.', 3000);
-          return;
-        } else {
-          $scope.user.high_school = true;
-          $scope.user.add_hs_universities = $scope.user.universities;
-        }
-      }
-
 
       $scope.user.name = $scope.signupForm.first_name + ' ' + $scope.signupForm.last_name;
       $scope.user.email = $scope.signupForm.email;
@@ -1530,9 +1521,8 @@ angular.module('uguru.util.controllers')
       if ($scope.user.current_device && $scope.user.current_device.id) {
         $scope.signupForm.current_device_id = $scope.user.current_device.id;
       }
-
+      LoadingService.showAmbig();
       $scope.signupForm.guru_mode = false;
-      LoadingService.show();
       User.create($scope.user).then(function(user) {
 
           var processed_user = User.process_results(user.plain());
@@ -1580,11 +1570,14 @@ angular.module('uguru.util.controllers')
             }
           }
 
-          if (!$scope.root.vars.essay) {
-            redirectToGuruHome();
-          } else {
-            redirectToStudentEssayHome();
+
+
+          if ($state.current.name === 'root.splash') {
+            LoadingService.showMsg('Account Created!', 2500);
+            $scope.page.swipers.main.slideNext();
+            callback && callback();
           }
+
 
       },
       function(err){
@@ -1592,9 +1585,23 @@ angular.module('uguru.util.controllers')
           // LoadingService.hide();
         if (err.status === 409) {
           // alert('Email already exists in our system! Login?')
-          LoadingService.showMsg('Email already exists in our system ! Login?', 0, 3500);
-          $scope.toggleLoginMode();
-          $scope.signupForm.password = '';
+          $timeout(function() {
+            LoadingService.hide();
+            $timeout(function() {
+
+              LoadingService.showMsg('Email already exists in our system. Maybe try logging in?', 2500, function() {
+                var loginButton = document.querySelector('#signup-mode-login-btn');
+                loginButton && loginButton.classList.add('activate');
+                $timeout(function() {
+                  $scope.signupForm.password = '';
+                }, 1500)
+                return;
+              });
+
+            }, 1000)
+
+          }, 1500)
+
         }
       });
 

@@ -3073,10 +3073,11 @@
             -ms-transition: all 150ms ease-in-out;
             -o-transition: all 150ms ease-in-out;
             transition: all 150ms ease-in-out;
-            width: 33% !important;
             height: 80px !important;
             margin: 0 !important;
             text-align: center; }
+            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide:not(.slideshow-thumb-getting-started) {
+              width: 33% !important; }
             .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step {
               -ms-box-orient: horizontal;
               display: -webkit-box;
@@ -4161,11 +4162,6 @@
           left: 5%;
           width: 90%; } }
       @media screen and (min-width: 768px) {
-        .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab {
-          filter: alpha(opacity=0);
-          opacity: 0;
-          z-index: -9;
-          visibility: hidden; }
         .splash-landing > section#splash-projector .splash-projector-message.desktop {
           display: block; }
         .splash-landing > section#splash-projector .splash-projector-message.mobile {
@@ -5448,12 +5444,15 @@
 .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-5,
 .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-4,
 .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-3.progress-active {
-  filter: alpha(opacity=100) !important;
-  opacity: 1 !important;
   width: 20% !important;
   background: none !important; }
 
 #intercom-container {
   display: none !important; }
+
+.school-id-inside .user-icon {
+  background-image: url("https://uguru.me/static/remote/img/avatar.svg");
+  backface-visibility: inherit !important;
+  background-size: cover !important; }
 
 /*# sourceMappingURL=splash.css.map */
