@@ -360,10 +360,12 @@ angular.module('uguru.util.controllers')
       if (swiperIndex === 1 && previousSwiperIndex > 1) {
         console.log('called once');
         //scene 3
+        var elemGalleryTab = document.querySelector('#swiper-gallery-tab div');
+        elemGalleryTab && elemGalleryTab.classList.add('activate');
         $timeout(function() {
           $scope.$apply(function() {
             // if (previousSwiperIndex === 3) {
-              var slideClassesToActivate = ['slideshow-thumb-1', 'slideshow-thumb-2', 'slideshow-thumb-3'];
+              // var slideClassesToActivate = ['slideshow-thumb-1', 'slideshow-thumb-2', 'slideshow-thumb-3'];
               var slideClassesToClear = [ 'slideshow-thumb-3', 'slideshow-thumb-4', 'slideshow-thumb-5', 'slideshow-thumb-6', 'slideshow-thumb-7'];
               for (var i = 0; i < slideClassesToClear.length; i++) {
                   var clearClassIndex = slideClassesToClear[i];
@@ -387,19 +389,20 @@ angular.module('uguru.util.controllers')
           })
         })
       } else if (swiperIndex === 2 && previousSwiperIndex < 2) {
-        console.log('called again');
+        var elemGalleryTab = document.querySelector('#swiper-gallery-tab div');
+        elemGalleryTab && elemGalleryTab.classList.add('clear');
         $timeout(function() {
           $scope.$apply(function() {
 
-              var slideClassesToClear = ['slideshow-thumb-1', 'slideshow-thumb-2', 'slideshow-thumb-3',];
+              // var slideClassesToClear = ['slideshow-thumb-1', 'slideshow-thumb-2', 'slideshow-thumb-3',];
               var slideClassesToActivate = ['slideshow-thumb-3', 'slideshow-thumb-4', 'slideshow-thumb-5', 'slideshow-thumb-6', 'slideshow-thumb-7'];
               $scope.page.swipers.galleryIndex = 1;
-              for (var i = 0; i < slideClassesToClear.length; i++) {
-                  var clearClassIndex = slideClassesToClear[i];
-                  var clearElem = document.querySelector('.' + clearClassIndex);
-                  clearElem.style.opacity = 0;
-                  clearElem && clearElem.classList.add('clear');
-              }
+              // for (var i = 0; i < slideClassesToClear.length; i++) {
+              //     var clearClassIndex = slideClassesToClear[i];
+              //     var clearElem = document.querySelector('.' + clearClassIndex);
+              //     clearElem.style.opacity = 0;
+              //     clearElem && clearElem.classList.add('clear');
+              // }
               for (var j = 0; j < slideClassesToActivate.length; j++) {
                   var activateClassIndex = slideClassesToActivate[j];
                   var activateElem = document.querySelector('.' + activateClassIndex);
@@ -411,7 +414,7 @@ angular.module('uguru.util.controllers')
                   var activateElem = document.querySelector('.' + activateClassIndex);
                   activateElem && activateElem.classList.add('activate');
                 }
-              }, 1500);
+              }, 750);
           })
         })
       }

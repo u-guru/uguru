@@ -3602,11 +3602,11 @@
 				}
 			}
 			@media screen and (min-width: 768px) {
-				.swiper-front-gallery-thumbs#swiper-gallery-tab {
-					@include opacity(0);
-					z-index: -9;
-					visibility: hidden;
-				}
+				// .swiper-front-gallery-thumbs#swiper-gallery-tab {
+				// 	@include opacity(0);
+				// 	z-index: -9;
+				// 	visibility: hidden;
+				// }
 				.splash-projector-message {
 					&.desktop {
 						display: block;

@@ -4162,11 +4162,6 @@
           left: 5%;
           width: 90%; } }
       @media screen and (min-width: 768px) {
-        .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab {
-          filter: alpha(opacity=0);
-          opacity: 0;
-          z-index: -9;
-          visibility: hidden; }
         .splash-landing > section#splash-projector .splash-projector-message.desktop {
           display: block; }
         .splash-landing > section#splash-projector .splash-projector-message.mobile {

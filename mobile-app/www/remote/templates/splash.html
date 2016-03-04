@@ -976,47 +976,31 @@
                     </div>
                 </div>
 
-                <!-- <div id='swiper-gallery-tab' class="swiper-container swiper-front-gallery-thumbs tab-bar slide" activate-on-class="a" class-on-activate="active:keep, null:inject.slideshow-thumb-1|activate, null:inject.slideshow-thumb-2|activate, null:inject.slideshow-thumb-3|activate, null:inject.slideshow-thumb-4|activate">
-                    <div class="swiper-wrapper swiper-gallery-wrapper">
-                        <a class="swiper-slide third">How It<br/>Works</a>
-                        <a class="swiper-slide third">Become<br/>A Guru</a>
-                        <a class="swiper-slide third">Get<br/>Started</a>
+                <div id='swiper-gallery-tab' class="swiper-container swiper-front-gallery-thumbs tab-bar slide" activate-on-class="a" class-on-activate="active:keep, null:inject.slideshow-thumb-1|activate, null:inject.slideshow-thumb-2|activate, null:inject.slideshow-thumb-3|activate, null:inject.slideshow-thumb-4|activate">
+                    <div class="swiper-wrapper swiper-gallery-wrapper" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                        <a class="swiper-slide third" ng-click='page.swipers.main.slideTo(0)' ng-class="{'active':!page.swipers.main.activeIndex}">How It<br/>Works</a>
+                        <a class="swiper-slide third" ng-click='page.swipers.main.slideTo(1)' ng-class="{'active':page.swipers.main.activeIndex === 1}">Become<br/>A Guru</a>
+                        <a class="swiper-slide third" ng-click='page.swipers.main.slideTo(2)' ng-class="{'active':page.swipers.main.activeIndex === 2}">Get<br/>Started</a>
                         <hr/>
                     </div>
-                </div> -->
+                </div>
 
-                <div id='swiper-gallery-nav' class="swiper-container swiper-front-gallery-thumbs" activate-on-class="a" class-on-activate="active:keep, null:inject.slideshow-thumb-1|activate, null:inject.slideshow-thumb-2|activate, null:inject.slideshow-thumb-3|activate, null:inject.slideshow-thumb-4|activate">
+                <div id='swiper-gallery-nav' class="swiper-container swiper-front-gallery-thumbs">
                     <div class="progress height-10 white-round opacity-0" ng-if='page.swipers.galleryIndex'>
                         <span style="width: 10%;"></span>
                     </div>
                     <div class="swiper-wrapper swiper-gallery-wrapper" >
-                        <div class="swiper-slide slideshow-thumb-1 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                        <div class="swiper-slide slideshow-thumb-1 opacity-0 hide" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
                             <a class="progress-step">
                                 <h1 ng-class="{'opacity-50': page.swipers.main.activeIndex}">How It Works</h1>
                             </a>
                         </div>
-                        <div class="swiper-slide slideshow-thumb-2 opacity-0" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                        <div class="swiper-slide slideshow-thumb-2 opacity-0 hide" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
                             <a class="progress-step">
                                 <h1  ng-class="{'opacity-50': page.swipers.main.activeIndex !== 1}" >Become a Guru</h1>
                             </a>
                         </div>
-                        <div class="swiper-slide slideshow-thumb-3 opacity-0" ng-class="{'progress-active':page.swipers.galleryIndex, 'slideshow-thumb-getting-started': page.swipers.main.activeIndex >= 2}"  class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="500">
-                            <a class="progress-step text-center absolute full-x"  ng-if='!page.swipers.galleryIndex'>
-                                <h1  ng-class="{'opacity-50': page.swipers.main.activeIndex !== 2}">Getting Started</h1>
-                            </a>
-                            <a class="onboarding-step active" ng-if='page.swipers.galleryIndex'>
-                                <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/university.html'"></span>
-                                <svg class="onboarding-status" viewBox="0 0 160 160">
-                                     <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
-                                          <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
-                                          <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
-                                          <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
-                                     </g>
-                                </svg>
-                                <h1>University</h1>
-                            </a>
-                        </div>
-                        <div class="swiper-slide slideshow-thumb-4 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="600">
+                        <div class="swiper-slide slideshow-thumb-3 opacity-0 progress-active complete" ng-class="{'progress-active':page.swipers.galleryIndex, 'slideshow-thumb-getting-started': page.swipers.main.activeIndex >= 2}"  class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="500">
                             <a class="onboarding-step active" ng-if='page.swipers.galleryIndex' >
                                 <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/demographic.html'"></span>
                                 <svg class="onboarding-status" viewBox="0 0 160 160">
@@ -1027,6 +1011,19 @@
                                      </g>
                                 </svg>
                                 <h1>Demographic</h1>
+                            </a>
+                        </div>
+                        <div class="swiper-slide slideshow-thumb-4 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="600">
+                            <a class="onboarding-step active" ng-if='page.swipers.galleryIndex'>
+                                <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/university.html'"></span>
+                                <svg class="onboarding-status" viewBox="0 0 160 160">
+                                     <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+                                          <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
+                                          <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
+                                          <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
+                                     </g>
+                                </svg>
+                                <h1>University</h1>
                             </a>
                         </div>
                         <div class="swiper-slide slideshow-thumb-5 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="700">
