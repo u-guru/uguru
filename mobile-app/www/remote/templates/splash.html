@@ -1000,7 +1000,7 @@
                                 <h1  ng-class="{'opacity-50': page.swipers.main.activeIndex !== 1}" >Become a Guru</h1>
                             </a>
                         </div>
-                        <div class="swiper-slide slideshow-thumb-3 opacity-0 progress-active complete" ng-class="{'progress-active':page.swipers.galleryIndex, 'slideshow-thumb-getting-started': page.swipers.main.activeIndex >= 2}"  class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="500">
+                        <div class="swiper-slide slideshow-thumb-3 opacity-0" ng-class="{'progress-active':page.swipers.galleryIndex, 'slideshow-thumb-getting-started': page.swipers.main.activeIndex >= 2, 'complete': user.demographic && user.demographic.selected}"  class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="500">
                             <a class="onboarding-step active" ng-if='page.swipers.galleryIndex' >
                                 <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/demographic.html'"></span>
                                 <svg class="onboarding-status" viewBox="0 0 160 160">
@@ -1013,7 +1013,7 @@
                                 <h1>Demographic</h1>
                             </a>
                         </div>
-                        <div class="swiper-slide slideshow-thumb-4 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="600">
+                        <div class="swiper-slide slideshow-thumb-4 slideshow-thumb-getting-started opacity-0" ng-class="{'complete': user && user.university && user.university.id}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="600" >
                             <a class="onboarding-step active" ng-if='page.swipers.galleryIndex'>
                                 <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/university.html'"></span>
                                 <svg class="onboarding-status" viewBox="0 0 160 160">
@@ -1026,7 +1026,7 @@
                                 <h1>University</h1>
                             </a>
                         </div>
-                        <div class="swiper-slide slideshow-thumb-5 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="700">
+                        <div class="swiper-slide slideshow-thumb-5 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="700" ng-class="{'complete': user && user.id}">
                             <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
                                 <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/account.html'"></span>
                                 <svg class="onboarding-status" viewBox="0 0 160 160">
@@ -1039,7 +1039,20 @@
                                 <h1>Sign Up</h1>
                             </a>
                         </div>
-                        <div class="swiper-slide slideshow-thumb-6 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="800">
+                        <div class="swiper-slide slideshow-thumb-6 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="800" ng-class="{'complete': user && user.student_courses.length}">
+                             <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
+                                <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/courses.html'"></span>
+                                <svg class="onboarding-status" viewBox="0 0 160 160">
+                                     <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+                                          <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
+                                          <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
+                                          <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
+                                     </g>
+                                </svg>
+                                <h1>Courses</h1>
+                            </a>
+                        </div>
+                         <div class="swiper-slide slideshow-thumb-7 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="900" ng-class="{'complete': user && user.access_code}">
                             <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
                                 <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/promo.html'"></span>
                                 <svg class="onboarding-status" viewBox="0 0 160 160">
@@ -1050,19 +1063,6 @@
                                      </g>
                                 </svg>
                                 <h1>Access</h1>
-                            </a>
-                        </div>
-                         <div class="swiper-slide slideshow-thumb-7 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="900">
-                            <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
-                                <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/courses.html'"></span>
-                                <svg class="onboarding-status" viewBox="0 0 160 160">
-                                     <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
-                                          <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
-                                          <path d="M10,80 C10,118.659932 41.3400675,150 80,150 C118.659932,150 150,118.659932 150,80" class="bottom" stroke="#FFFFFF"></path>
-                                          <path d="M10,80 C10,41.3400675 41.3400675,10 80,10 C118.659932,10 150,41.3400675 150,80" class="top" stroke="#FFFFFF"></path>
-                                     </g>
-                                </svg>
-                                <h1>Courses</h1>
                             </a>
                         </div>
                     </div>

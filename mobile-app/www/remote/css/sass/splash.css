@@ -3214,29 +3214,6 @@
               filter: alpha(opacity=100);
               opacity: 1;
               stroke-dashoffset: 0; }
-            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.swiper-slide-active .progress-step .progress-step-icon svg .bg {
-              -webkit-transition: all 150ms ease-in-out;
-              -moz-transition: all 150ms ease-in-out;
-              -ms-transition: all 150ms ease-in-out;
-              -o-transition: all 150ms ease-in-out;
-              transition: all 150ms ease-in-out;
-              fill: #69B3A5 !important; }
-            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.swiper-slide-active .progress-step .progress-step-icon svg *:not(.bg) {
-              fill: rgba(64, 72, 75, 0.5); }
-            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.swiper-slide-active .onboarding-step .onboarding-icon {
-              background: #69B3A5; }
-            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.swiper-slide-active .onboarding-step .onboarding-status .top, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.swiper-slide-active .onboarding-step .onboarding-status .bottom {
-              -webkit-transition: stroke-dashoffset 150ms ease-in-out;
-              -moz-transition: stroke-dashoffset 150ms ease-in-out;
-              -ms-transition: stroke-dashoffset 150ms ease-in-out;
-              -o-transition: stroke-dashoffset 150ms ease-in-out;
-              transition: stroke-dashoffset 150ms ease-in-out;
-              filter: alpha(opacity=100);
-              opacity: 1;
-              stroke-dashoffset: 110; }
-            .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide:not(.swiper-slide-active) .progress-step .progress-step-icon svg {
-              filter: alpha(opacity=50);
-              opacity: 0.5; }
       .splash-landing > section#splash-projector .projector-top {
         position: absolute;
         top: .2%;

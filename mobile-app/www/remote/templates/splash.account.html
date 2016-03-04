@@ -40,8 +40,8 @@
                                                 <div class="input-field active">
                                                     <input type="text" placeholder="what's your name?" ng-focus="onSignupFormFocus('name', signupForm.name, signupForm)" ng-blur="updateUserIdCard('name', signupForm.full_name, signupForm)" ng-model='signupForm.full_name' autocomplete="off" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && updateUserIdCard('name', signupForm.full_name, signupForm)" />
                                                     <small class='form-error absolute txt-shamrock weight-400' ng-if='signupForm.focusedInput === "name" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}</small>
-                                                    <a ng-if='!signupForm.activateErrorName && signupForm.focusedInput === "name"' class="active">
-                                                        <svg class="clear" viewBox="0 0 100 100" ng-click='signupForm.full_name = "";'>
+                                                    <a ng-if='!signupForm.activateErrorName && signupForm.focusedInput === "name"' class="active" ng-click='signupForm.full_name = "";'>
+                                                        <svg class="clear" viewBox="0 0 100 100">
                                                             <circle cx="50" cy="50" r="36"></circle>
                                                             <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
                                                         </svg>
