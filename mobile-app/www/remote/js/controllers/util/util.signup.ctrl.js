@@ -85,6 +85,9 @@ angular.module('uguru.util.controllers')
     };
 
     $scope.signupOnEnter = function() {
+      if (!$scope.signupForm || !$scope.signupForm.password || !$scope.signupForm.password.length) {
+        return;
+      }
       if ($scope.root.vars.loginMode) {
         $scope.loginUser();
       } else {

@@ -3031,6 +3031,9 @@
 										@include opacity(0);
 										z-index: -10;
 									}
+									small.form-error {
+										margin-top: -10px; //to be close to the input form
+									}
 								}
 							}
 							button {
@@ -3140,6 +3143,9 @@
 								width: 50px;
 								height: 50px;
 							}
+							small.form-error {
+								margin-top: -10px; //to be close to the input form
+							}
 						}
 						.splash-signup-content {
 							.splash-signup-inside {
@@ -3148,6 +3154,9 @@
 									height: 160px;
 									.input-field {
 										left: 30px;
+										small.form-error {
+											margin-top: -10px; //to be close to the input form
+										}
 									}
 								}
 							}

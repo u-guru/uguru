@@ -32,22 +32,138 @@ angular.module('uguru.util.controllers')
     $scope.demographics = User.demographics;
     $scope.saveDemographic = saveDemographic;
     $scope.clearDemographic = clearDemographic;
+    $scope.updateFormCapitalization = function(str, val, form) {
+        $timeout(function() {
+          $scope.$apply(function() {
+            var words = str.split(' ');
+            for (var i = 0; i < words.length; i++) {
+              if (words[i].length) {
+                words[i] = words[i][0].toUpperCase() + words[i].slice(1).toLowerCase();
+              }
+            }
+            str = words.join(' ')
+            form[val] = str;
+          })
+        })
+    }
+    $scope.onSignupFormFocus = function(field_name, val, form) {
+      $timeout(function() {
+        $scope.$apply(function() {
+          form.focusedInput = field_name;
+          form.activateError = false;
+          form.activateErrorMsg = false;
+        })
+      }, 1000)
+    }
     $scope.updateUserIdCard = function(field_name, val, form) {
       if (field_name === 'name' && val && val.length) {
-        $timeout(function(){
-          $scope.$apply(function() {
-            $scope.user.name = val;
-            form.activateEmail = true;
+        $scope.updateFormCapitalization(val, 'full_name', form)
+        var error_msg = validateFullName(val)
+        if (error_msg.validated) {
+          $timeout(function(){
+            $scope.$apply(function() {
+              $scope.user.name = val;
+              form.activateEmail = true;
+              form.activateErrorName = false;
+              form.validateName = true;
+            })
           })
-        })
+        } else {
+          $timeout(function(){
+              $scope.$apply(function() {
+                form.activateError = true;
+                form.activateErrorName = true;
+                form.validateName = false;
+                form.activateErrorMsg = error_msg.error_msg;
+                console.log('should show error');
+              })
+          })
+        }
       }
       if (field_name === 'email' && val && val.length) {
-        $timeout(function(){
-          $scope.$apply(function() {
-            $scope.user.email = val;
-            form.activatePassword = true;
+        var error_msg = validateEmail(val);
+        if (error_msg.validated) {
+          $timeout(function(){
+            $scope.$apply(function() {
+              $scope.user.email = val;
+              form.validateEmail = true;
+              form.activateErrorEmail = false;
+              form.activatePassword = true;
+            })
           })
-        })
+        } else {
+          $timeout(function(){
+              $scope.$apply(function() {
+                form.activateError = true;
+                form.validateEmail = false;
+                form.activateErrorEmail = true;
+                form.activateErrorMsg = error_msg.error_msg;
+              })
+          })
+        }
+      }
+      if (field_name === 'password' && val && val.length) {
+        var error_msg = validatePassword(val);
+        if (error_msg.validated) {
+          $timeout(function(){
+            $scope.$apply(function() {
+              $scope.user.password = val;
+              form.validatePassword = true;
+              form.activateErrorPassword = false;
+            })
+          })
+        } else {
+          $timeout(function(){
+              $scope.$apply(function() {
+                form.activateError = true;
+                form.validatePassword = false;
+                form.activateErrorPassword = true;
+                form.activateErrorMsg = error_msg.error_msg;
+              })
+          })
+        }
+      }
+      function validateFullName(name) {
+        var splitName = name.split(' ');
+        var errorResults = {};
+        if (splitName.length < 2) {
+          errorResults.error_msg = "Please enter your full name";
+          errorResults.validated = false;
+          return errorResults;
+        }
+        for (var i = 0; i < splitName.length; i++) {
+          var indexWord = splitName[i];
+          if (indexWord.length < 2) {
+            errorResults.error_msg = "First or last name must be greater than 2 or more characters";
+            errorResults.validated = false;
+            return errorResults;
+          }
+        }
+        errorResults.validated = true;
+        return errorResults
+      }
+
+      function validateEmail(email) {
+        var errorResults = {};
+        var re =  /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(edu|guru)|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+        if(re.test(email)) {
+          errorResults.validated = true;
+          return errorResults
+        } else {
+          errorResults.validated = false;
+          errorResults.error_msg = 'Please enter a valid school .edu email';
+          return errorResults
+        }
+      }
+      function validatePassword(string) {
+        var errorResults = {};
+        errorResults = {
+          validated: string.length >= 6
+        }
+        if (!errorResults.validated) {
+          errorResults.error_msg = 'Please enter a password that is at least 6 characters.'
+        }
+        return errorResults;
       }
     }
 
@@ -682,7 +798,6 @@ angular.module('uguru.util.controllers')
       } else {
         moveProjectorToBottom($scope.page.activeProjectorIndex);
       }
-
     }
 
     $scope.onLoad = function() {
