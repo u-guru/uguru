@@ -2640,7 +2640,9 @@
 					height: 100%!important;
 					div.swiper-slide {
 						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						width: 33%!important;
+						&:not(.slideshow-thumb-getting-started) {
+							width: 33%!important;
+						}
 						height: 80px!important;
 						margin: 0!important;
 						text-align: center;
@@ -4892,7 +4894,7 @@
 	.slideshow-thumb-5,
 	.slideshow-thumb-4,
 	.slideshow-thumb-3.progress-active {
-		@include opacity-important(1);
+		// @include opacity-important(1);
 		width: 20%!important;
 		background: none!important;
 	}
@@ -4900,4 +4902,11 @@
 
 #intercom-container {
 	display:none !important;
+}
+
+.school-id-inside .user-icon
+{
+	background-image: url('https://uguru.me/static/remote/img/avatar.svg');
+    backface-visibility: inherit !important;
+    background-size: cover !important;
 }

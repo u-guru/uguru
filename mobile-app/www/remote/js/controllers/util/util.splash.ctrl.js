@@ -355,10 +355,10 @@ angular.module('uguru.util.controllers')
       var previousSwiperIndex = $scope.page.swipers.main.previousIndex;
       console.log('transitioning... to index ' + swiperIndex + ' from ' + previousSwiperIndex)
       if (swiperIndex === 6) {
-        console.log('retrieving courses');
         getAllCourses($scope.selectedUniversity);
       }
-      if (swiperIndex === 2 && previousSwiperIndex > 2) {
+      if (swiperIndex === 1 && previousSwiperIndex > 1) {
+        console.log('called once');
         //scene 3
         $timeout(function() {
           $scope.$apply(function() {
@@ -370,6 +370,11 @@ angular.module('uguru.util.controllers')
                   var clearElem = document.querySelector('.' + clearClassIndex);
                   clearElem && clearElem.classList.add('clear');
               }
+              for (var j = 0; j < slideClassesToActivate.length; j++) {
+                  var activateClassIndex = slideClassesToActivate[j];
+                  var activateElem = document.querySelector('.' + activateClassIndex);
+                  activateElem.style.opacity = 0;
+              }
               $timeout(function() {
                 $scope.page.swipers.galleryIndex = 0;
                 for (var j = 0; j < slideClassesToActivate.length; j++) {
@@ -377,29 +382,36 @@ angular.module('uguru.util.controllers')
                   var activateElem = document.querySelector('.' + activateClassIndex);
                   activateElem && activateElem.classList.add('activate');
                 }
-              }, 1250);
+              }, 2500);
             // }
           })
         })
       } else if (swiperIndex === 2 && previousSwiperIndex < 2) {
+        console.log('called again');
         $timeout(function() {
           $scope.$apply(function() {
 
               var slideClassesToClear = ['slideshow-thumb-1', 'slideshow-thumb-2', 'slideshow-thumb-3',];
               var slideClassesToActivate = ['slideshow-thumb-3', 'slideshow-thumb-4', 'slideshow-thumb-5', 'slideshow-thumb-6', 'slideshow-thumb-7'];
+              $scope.page.swipers.galleryIndex = 1;
               for (var i = 0; i < slideClassesToClear.length; i++) {
                   var clearClassIndex = slideClassesToClear[i];
                   var clearElem = document.querySelector('.' + clearClassIndex);
+                  clearElem.style.opacity = 0;
                   clearElem && clearElem.classList.add('clear');
               }
+              for (var j = 0; j < slideClassesToActivate.length; j++) {
+                  var activateClassIndex = slideClassesToActivate[j];
+                  var activateElem = document.querySelector('.' + activateClassIndex);
+                  activateElem.style.opacity = 0;
+              }
               $timeout(function() {
-                $scope.page.swipers.galleryIndex = 1;
                 for (var j = 0; j < slideClassesToActivate.length; j++) {
                   var activateClassIndex = slideClassesToActivate[j];
                   var activateElem = document.querySelector('.' + activateClassIndex);
                   activateElem && activateElem.classList.add('activate');
                 }
-              }, 1250);
+              }, 1500);
           })
         })
       }

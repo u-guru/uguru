@@ -2405,7 +2405,8 @@ class UserNewView(restful.Resource):
             email_user.fb_id = request.json.get('fb_id')
             db_session.commit()
 
-            return jsonify({'status': 201, 'user': email_user})
+        if email_user:
+            abort(409)
 
         ## If they tried signing up w/ no account
         elif email_user and not fb_user and not request.json.get('fb_id'):

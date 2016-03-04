@@ -16,7 +16,7 @@
                                     <!--Signup mode-->
                                     <div  class="splash-content splash-signup-content ng-class:{'active':!page.account.loginMode && !page.account.forgotPassword}">
 
-                                        <button class="btn-splash-login btn-ghost-white" ng-click='page.account.loginMode = true'>Login</button>
+                                        <button id='signup-mode-login-btn' class-on-activate="tada:anim" class="btn-splash-login btn-ghost-white" ng-click='page.account.loginMode = true'>Login</button>
                                         <div class="splash-signup-inside">
                                             <div class="school-id-card">
                                                 <svg viewBox="0 0 240 160">
@@ -24,7 +24,7 @@
                                                 </svg>
                                                 <div class="school-id-inside">
                                                     <div class="school-id-top" style="background: {{selectedUniversity.school_color_dark}};">
-                                                        <span class="user-icon" style="border-color: {{selectedUniversity.school_color_dark}}; background-image: url();"></span>
+                                                        <span class="user-icon" style="background-color:transparent; border-color: {{selectedUniversity.school_color_dark}}; background-image: url({{user.profile_url || 'https://uguru.me/static/remote/img/avatar.svg'}});"></span>
                                                     </div>
                                                     <div class="school-id-bottom">
                                                         <div>
@@ -108,7 +108,7 @@
                                                 <li><button ng-click="switchToLogin()">Switch<br/>to Login</button></li>
                                                 <li><button ng-click='connectWithFacebook()'>Login with<br/>Facebook</button></li>
                                             </ul>
-                                            <div class='ugrid-2 flex-wrap-center full-x absolute bottom-0 flex-wrap-center p20xy left-0 opacity-50' ng-class="{'opacity-1-impt': signupForm.validatePassword && signupForm.validateEmail && signupForm.validateName}">
+                                            <div class='ugrid-2 flex-wrap-center full-x absolute bottom-0 flex-wrap-center p20xy left-0 invisible' ng-class="{'visible animated bounceInUp': signupForm.validatePassword && signupForm.validateEmail && signupForm.validateName}">
                                                 <button style='width:50% !important' ng-click='completeSignup()' class="p10y p05x mright05 btn-login-login btn-ghost-white caps">Continue with Email</button>
                                                 <button style='width:50% !important' ng-click='connectWithFacebook()' class="p10y p05x mleft05 btn-login-fb btn-ghost-white caps">Continue with Facebook</button>
                                             </div>
