@@ -208,7 +208,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.map;
-    $scope.page = {account: {}, scroll: {}, waypoints: {}, sidebar:{}, dropdowns: {}, modals: {}, swipers: {cachedBefore: [], cachedAfter:[], cached:[], galleryIndex:0}, map:{}};
+    $scope.page = {account: {}, progress: {}, scroll: {}, waypoints: {}, sidebar:{}, dropdowns: {}, modals: {}, swipers: {cachedBefore: [], cachedAfter:[], cached:[], galleryIndex:0}, map:{}};
     $scope.page.dropdowns = {closeAll: closeAllDropdowns, category: {show: true, active:false, toggle:toggleCategoryDropdown}, university: {show: true, active: false, toggle: toggleUniversityDropdown}};
     $scope.page.account = {loginMode:true, forgotPassword:false, toggle: function(){alert('yo'); $scope.page.account.loginMode = !$scope.page.account.loginMode}};
     $scope.page.faq_arr = ContentService.faq;
@@ -236,6 +236,38 @@ angular.module('uguru.util.controllers')
     $scope.switchToForgotPassword = function() {
       $scope.page.account.loginMode = false;
       $scope.page.account.forgotPassword = true;
+    }
+
+    $scope.updateProgress = function() {
+      var sum = 0;
+      var progressTrackerDict = {};
+      if ($scope.user && $scope.user.demographic && $scope.user.demographic.selected) {
+        sum += 10;
+        progressTrackerDict.demographic = true;
+      }
+      if ($scope.user.university && $scope.user.university.id && progressTrackerDict.demographic) {
+        sum += 20;
+        progressTrackerDict.university = true;
+
+      }
+      if ($scope.user && $scope.user.id && progressTrackerDict.demographic && progressTrackerDict.university) {
+        sum += 20;
+        progressTrackerDict.user = true;
+      }
+      if ($scope.user && $scope.user.student_courses && $scope.user.student_courses.length > 0 && progressTrackerDict.demographic && progressTrackerDict.user && progressTrackerDict.university) {
+        sum += 20;
+        progressTrackerDict.courses = true;
+      }
+      if ($scope.user && $scope.user.access_code && progressTrackerDict.demographic && progressTrackerDict.university && progressTrackerDict.user && progressTrackerDict.courses) {
+        sum += 20;
+        progressTrackerDict.access = true;
+      }
+      if (progressTrackerDict.access && progressTrackerDict.demographic && progressTrackerDict.university && progressTrackerDict.user && progressTrackerDict.courses) {
+        sum = 100;
+      }
+      $timeout(function() {
+        $scope.page.progress.getting_started = sum;
+      })
     }
 
     var initSwipers = function(args, desktop_mode) {
@@ -279,6 +311,7 @@ angular.module('uguru.util.controllers')
       swiperFront.on('slideChangeStart', function () {
           // swiperFront.slides[swiperFront.previousIndex].classList.add('clear');
           // swiperFront.slides[swiperFront.previousIndex].classList.remove('opacity-1-impt');
+          $scope.updateProgress();
           toggleGalleryDisplays();
       });
 
@@ -379,6 +412,7 @@ angular.module('uguru.util.controllers')
     function toggleGalleryDisplays() {
       var swiperIndex = $scope.page.swipers.main.activeIndex;
       var previousSwiperIndex = $scope.page.swipers.main.previousIndex;
+
       console.log('transitioning... to index ' + swiperIndex + ' from ' + previousSwiperIndex)
       if (swiperIndex === 6) {
         getAllCourses($scope.selectedUniversity);
@@ -388,6 +422,8 @@ angular.module('uguru.util.controllers')
         //scene 3
         var elemGalleryTab = document.querySelector('#swiper-gallery-tab div');
         elemGalleryTab && elemGalleryTab.classList.add('activate');
+        var elem = document.querySelector('#getting-started-progress');
+        elem.classList.add('clear');
         $timeout(function() {
           $scope.$apply(function() {
             // if (previousSwiperIndex === 3) {
@@ -398,19 +434,19 @@ angular.module('uguru.util.controllers')
                   var clearElem = document.querySelector('.' + clearClassIndex);
                   clearElem && clearElem.classList.add('clear');
               }
-              for (var j = 0; j < slideClassesToActivate.length; j++) {
-                  var activateClassIndex = slideClassesToActivate[j];
-                  var activateElem = document.querySelector('.' + activateClassIndex);
-                  activateElem.style.opacity = 0;
-              }
-              $timeout(function() {
-                $scope.page.swipers.galleryIndex = 0;
-                for (var j = 0; j < slideClassesToActivate.length; j++) {
-                  var activateClassIndex = slideClassesToActivate[j];
-                  var activateElem = document.querySelector('.' + activateClassIndex);
-                  activateElem && activateElem.classList.add('activate');
-                }
-              }, 2500);
+              // for (var j = 0; j < slideClassesToActivate.length; j++) {
+              //     var activateClassIndex = slideClassesToActivate[j];
+              //     var activateElem = document.querySelector('.' + activateClassIndex);
+              //     activateElem.style.opacity = 0;
+              // }
+              // $timeout(function() {
+              //   $scope.page.swipers.galleryIndex = 0;
+              //   for (var j = 0; j < slideClassesToActivate.length; j++) {
+              //     var activateClassIndex = slideClassesToActivate[j];
+              //     var activateElem = document.querySelector('.' + activateClassIndex);
+              //     activateElem && activateElem.classList.add('activate');
+              //   }
+              // }, 2500);
             // }
           })
         })
@@ -441,6 +477,10 @@ angular.module('uguru.util.controllers')
                   activateElem && activateElem.classList.add('activate');
                 }
               }, 750);
+              $timeout(function() {
+                var elem = document.querySelector('#getting-started-progress');
+                elem.classList.add('activate');
+              }, 1250)
           })
         })
       }
