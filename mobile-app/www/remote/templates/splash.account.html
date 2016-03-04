@@ -38,41 +38,43 @@
                                             </div>
                                             <div class="splash-signup-form">
                                                 <div class="input-field active">
-                                                    <input type="text" placeholder="what's your name?"  ng-blur="updateUserIdCard('name', signupForm.full_name, signupForm)" ng-model='signupForm.full_name' autocomplete="off" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && updateUserIdCard('name', signupForm.full_name, signupForm)" />
-                                                    <a class="ng-class:{'active':signupForm.full_name && signupForm.full_name.length}">
+                                                    <input type="text" placeholder="what's your name?" ng-focus="onSignupFormFocus('name', signupForm.name, signupForm)" ng-blur="updateUserIdCard('name', signupForm.full_name, signupForm)" ng-model='signupForm.full_name' autocomplete="off" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && updateUserIdCard('name', signupForm.full_name, signupForm)" />
+                                                    <small class='form-error absolute txt-shamrock weight-400' ng-if='signupForm.focusedInput === "name" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}</small>
+                                                    <a ng-if='!signupForm.activateErrorName && signupForm.focusedInput === "name"' class="active">
                                                         <svg class="clear" viewBox="0 0 100 100" ng-click='signupForm.full_name = "";'>
                                                             <circle cx="50" cy="50" r="36"></circle>
                                                             <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
                                                         </svg>
                                                     </a>
-                                                    <a ng-if='false'>
+                                                    <a class='active'  ng-if='!signupForm.activateErrorName && signupForm.validateName'>
                                                         <svg class="verified" viewBox="0 0 100 100">
                                                             <circle cx="50" cy="50" r="36"></circle>
                                                             <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
                                                         </svg>
                                                     </a>
-                                                    <a ng-if='false'>
-                                                        <svg class="error" viewBox="0 0 100 100">
+                                                    <a ng-if='signupForm.activateErrorName' class='active' ng-click='signupForm.full_name = "";'>
+                                                        <svg class="error" viewBox="0 0 100 100" >
                                                             <circle cx="50" cy="50" r="36"></circle>
                                                             <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
                                                         </svg>
                                                     </a>
                                                 </div>
-                                                <div class="input-field" ng-class="{ 'active' : signupForm.activateEmail}" style='margin-top:100px;'>
-                                                    <input type="email" ng-blur="updateUserIdCard('email', signupForm.email, signupForm)" placeholder="what's your email?" ng-model='signupForm.email' autocomplete="off" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && updateUserIdCard('email', signupForm.email, signupForm)" />
-                                                    <a class="ng-class:{'active':signupForm.email && signupForm.email.length}" ng-click='signupForm.email = "";'>
+                                                <div class="input-field" ng-class="{ 'active' : signupForm.activateEmail}"  style='margin-top:100px;'>
+                                                    <input type="email" ng-focus="onSignupFormFocus('email', signupForm.email, signupForm)" ng-blur="updateUserIdCard('email', signupForm.email, signupForm)" placeholder="what's your email?" ng-model='signupForm.email' autocomplete="off" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && updateUserIdCard('email', signupForm.email, signupForm)" />
+                                                    <small class='form-error absolute txt-shamrock weight-400' ng-if='signupForm.focusedInput === "email" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}</small>
+                                                    <a ng-if='signupForm.focusedInput === "email"' class="active" ng-click='signupForm.email = "";'>
                                                         <svg class="clear" viewBox="0 0 100 100">
                                                             <circle cx="50" cy="50" r="36"></circle>
                                                             <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
                                                         </svg>
                                                     </a>
-                                                    <a ng-if='false'>
+                                                    <a ng-if='!signupForm.activateErrorEmail && signupForm.validateEmail' class='active'>
                                                         <svg class="verified" viewBox="0 0 100 100">
                                                             <circle cx="50" cy="50" r="36"></circle>
                                                             <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
                                                         </svg>
                                                     </a>
-                                                    <a ng-if='false'>
+                                                    <a ng-if='signupForm.activateErrorEmail' class='active' ng-click='signupForm.email = "";'>
                                                         <svg class="error" viewBox="0 0 100 100">
                                                             <circle cx="50" cy="50" r="36"></circle>
                                                             <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
@@ -80,20 +82,21 @@
                                                     </a>
                                                 </div>
                                                 <div class="input-field" ng-class="{'active': signupForm.activatePassword}" style='margin-top:200px;'>
-                                                    <input type="password" placeholder="enter a password" autocomplete="off" ng-keyup="$event.keyCode == 13 && signupOnEnter()" ng-model='signupForm.password'/>
-                                                    <a class="ng-class:{'active':signupForm.password && signupForm.password.length}" ng-click='signupForm.password = "";'>
+                                                    <input type="password" ng-blur="updateUserIdCard('password', signupForm.password, signupForm)"  ng-focus="onSignupFormFocus('password', signupForm.password, signupForm)" placeholder="enter a password" autocomplete="off" ng-keyup="(($event.keyCode == 13 || $event.keyCode == 9) && signupOnEnter()) || (signupForm.password.length > 5 && updateUserIdCard('password', signupForm.password, signupForm))" ng-model='signupForm.password'/>
+                                                    <small class='form-error absolute txt-shamrock weight-400' ng-if='signupForm.focusedInput === "password" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}</small>
+                                                    <a class='active' ng-if='signupForm.focusedInput === "password"' ng-click='signupForm.password = "";'>
                                                         <svg class="clear" viewBox="0 0 100 100">
                                                             <circle cx="50" cy="50" r="36"></circle>
                                                             <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
                                                         </svg>
                                                     </a>
-                                                    <a>
+                                                    <a ng-if='!signupForm.activateErrorPassword && signupForm.validatePassword' class='active'>
                                                         <svg class="verified" viewBox="0 0 100 100">
                                                             <circle cx="50" cy="50" r="36"></circle>
                                                             <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
                                                         </svg>
                                                     </a>
-                                                    <a>
+                                                    <a ng-if='signupForm.activateErrorPassword' class='active' ng-click='signupForm.password = "";'>
                                                         <svg class="error" viewBox="0 0 100 100">
                                                             <circle cx="50" cy="50" r="36"></circle>
                                                             <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
@@ -105,9 +108,9 @@
                                                 <li><button ng-click="switchToLogin()">Switch<br/>to Login</button></li>
                                                 <li><button ng-click='connectWithFacebook()'>Login with<br/>Facebook</button></li>
                                             </ul>
-                                            <div class='ugrid-2 flex-wrap-center full-x absolute bottom-0 flex-wrap-center p20xy left-0'>
-                                                <button ng-click='completeSignup()' class="p10y p05x mright05 btn-login-login btn-ghost-white caps">Continue with Email</button>
-                                                <button ng-click='connectWithFacebook()' class="p10y p05x mleft05 btn-login-fb btn-ghost-white caps">Continue with Facebook</button>
+                                            <div class='ugrid-2 flex-wrap-center full-x absolute bottom-0 flex-wrap-center p20xy left-0 opacity-50' ng-class="{'opacity-1-impt': signupForm.validatePassword && signupForm.validateEmail && signupForm.validateName}">
+                                                <button style='width:50% !important' ng-click='completeSignup()' class="p10y p05x mright05 btn-login-login btn-ghost-white caps">Continue with Email</button>
+                                                <button style='width:50% !important' ng-click='connectWithFacebook()' class="p10y p05x mleft05 btn-login-fb btn-ghost-white caps">Continue with Facebook</button>
                                             </div>
                                         </div>
                                     </div>

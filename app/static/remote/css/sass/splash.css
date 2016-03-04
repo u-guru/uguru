@@ -3533,6 +3533,8 @@
                   filter: alpha(opacity=0);
                   opacity: 0;
                   z-index: -10; }
+                .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field small.form-error {
+                  margin-top: -10px; }
             .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside button {
               bottom: 15px; }
               .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside button.btn-login-login {
@@ -3619,11 +3621,15 @@
               top: 5px;
               width: 50px;
               height: 50px; }
+            .splash-landing > section#splash-projector .projector-content#splash-signup .input-field small.form-error {
+              margin-top: -10px; }
             .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
               width: calc(100% - 240px);
               height: 160px; }
               .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field {
-                left: 30px; } }
+                left: 30px; }
+                .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field small.form-error {
+                  margin-top: -10px; } }
         .splash-landing > section#splash-projector .projector-content#splash-access {
           overflow: visible !important;
           padding: 0 !important; }
