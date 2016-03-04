@@ -10,7 +10,7 @@
 ### ridl=run_ios_device_reload
 ### radl=run_android_device_reload
 
-source ~/.bash_profile
+# source ~/.bash_profile
 echo "Clearing iOS xCode cache..."
 rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang/ModuleCache"
 echo 'cd to uguru-mobile repository'

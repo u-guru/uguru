@@ -15,7 +15,7 @@ function ScrollService(LoadingService, $timeout) {
   var globalWPScopeRef = {};
   return {
     scrollTo:scrollTo,
-    initWaypoint, initWaypoint,
+    initWaypoint: initWaypoint,
     initArrWaypoints: initArrWaypoints,
     mainWaypointContext: mainWaypointContext,
     currentWaypointContextElem: currentWaypointContextElem,
