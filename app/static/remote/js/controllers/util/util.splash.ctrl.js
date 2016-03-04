@@ -24,10 +24,13 @@ angular.module('uguru.util.controllers')
   'ContentService',
   'CTAService',
   'User',
+  'AccessService',
+  'AnimationService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal, Category, ScrollService, SideMenuService,
     $stateParams, Utilities, GUtilService, GMapService, University, $compile,
-    ContentService, LoadingService, ContentService, CTAService, User) {
+    ContentService, LoadingService, ContentService, CTAService, User, AccessService,
+     AnimationService) {
 
     $scope.demographics = User.demographics;
     $scope.saveDemographic = saveDemographic;
@@ -172,8 +175,31 @@ angular.module('uguru.util.controllers')
       User.updateLocal($scope.user);
     }
 
+    $scope.validateAccessCodeSplash = function(code) {
+      AccessService.validate(code, successFunction, failureFunction);
+      function successFunction(user) {
+        LoadingService.showSuccess('Access Granted', 2000, function() {
+          LoadingService.hide();
+          $timeout(function() {
+            LoadingService.showMsg('Taking you to your dasbhoard', 2500);
+            $timeout(function() {
+              AnimationService.flip('^.student-home');
+            }, 500)
+          }, 1000)
+        })
+      }
+      function failureFunction(resp) {
+        LoadingService.showMsg('Incorrect access code! Please try again.', 2500);
+      }
+    }
+
     function saveDemographic(demographic) {
       $scope.user.demographic = demographic;
+      if ($scope.user.demographic && $scope.user.demographic.name !== 'College Student') {
+        $scope.user.demographic.selected = true;
+      } else {
+        $scope.user.demographic.selected = false;
+      }
       User.updateLocal($scope.user);
     }
 
@@ -711,9 +737,9 @@ angular.module('uguru.util.controllers')
       }
     }
 
+
     $scope.refreshUniversityState = function(university) {
       var currentSceneNumber = getSceneNumber();
-      console.log(currentSceneNumber);
       $localstorage.setObject('selected_university_courses', null);
       $scope.selectedUniversity = university;
       initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
@@ -759,7 +785,17 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.selectUniversityGettingStarted = function(university) {
+      $scope.selectedUniversity = university;
+      $scope.user.university = $scope.selectedUniversity;
+      $scope.refreshUniversityState(university);
+    }
+
     $scope.selectUniversityFromMap = function(university, bool) {
+      if ($scope.page.swipers.main.activeIndex === 3 && $scope.page.swipers.main.slides.length > 5) {
+        $scope.selectUniversityGettingStarted(university);
+        return;
+      }
       $scope.selectedUniversity = university;
       $scope.refreshUniversityState(university);
       activateMapElem();
@@ -1578,6 +1614,7 @@ angular.module('uguru.util.controllers')
         $timeout(function() {
           var origUniversity = getUniversityFromOriginalArray($scope.universities, model.id);
           origUniversity && $scope.selectUniversityFromMap(origUniversity);
+
           LoadingService.hide();
         }, 1000)
         // updateWindowToMarker($scope.map.window, model);
