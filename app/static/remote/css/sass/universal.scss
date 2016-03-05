@@ -4918,11 +4918,11 @@
 					@include flex;
 					@include flex-center;
 					margin: 15px auto;
-					width: 144px;
-					height: 144px;
+					width: 160px;
+					height: 160px;
 					background: rgba($azure, .1);
-					font-size: 44px;
-					font-weight: 700;
+					font-size: 36px;
+					font-weight: 900;
 					u {
 						display: block;
 						padding-bottom: 8px;
@@ -4990,6 +4990,9 @@
 	#pricing {
 		> header {
 			@include flex-center;
+			> h1 {
+				padding-bottom: 30px;
+			}
 			.pricing-uguru {
 				display: none;
 			}

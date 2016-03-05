@@ -272,6 +272,9 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 [class*="padding-none"] {
 	padding: 0;
 }
+[class*="padding-15-half"] {
+	padding: 7.5px;
+}
 [class*="padding-none-impt"] {
 	padding: 0 !important;
 }
@@ -5883,4 +5886,72 @@ input[type=range] {
 .parallax-auto {
 	top: auto!important;
 	left: auto!important;
+}
+
+.toggle {
+	position: relative;
+	input {
+		@include opacity(0);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 5;
+	}
+	label {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		@include flex;
+		@include flex-center;
+		position: relative;
+		background: $slate;
+		padding: 5px;
+		height: 36px;
+		width: 72px;
+		border-radius: 2px;
+		color: white;
+		font-size: 18px;
+		font-weight: 600;
+		* {
+			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		}
+		span {
+			padding: 0 5px;
+		}
+		svg {
+			display: block;
+			height: 100%;
+			border-radius: 2px;
+			overflow: hidden;
+			* {
+				fill: none;
+			}
+			&:first-child {
+				position: absolute;
+				top: 5px;
+				left: 5px;
+				height: calc(100% - 10px);
+				* {
+					fill: white;
+				}
+			}
+		}
+	}
+	input:checked + label {
+		background: $moxie;
+		span {
+			@include prefix(transform, translateX(-26px), webkit moz ms o);
+		}
+		svg:first-child {
+			@include prefix(transform, translateX(36px), webkit moz ms o);
+		}
+	}
+	&.round {
+		label {
+			@include round;
+			svg {
+				@include round;
+			}
+		}
+	}
 }
