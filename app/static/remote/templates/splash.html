@@ -986,8 +986,8 @@
                 </div>
 
                 <div id='swiper-gallery-nav' class="swiper-container swiper-front-gallery-thumbs">
-                    <div class="progress height-10 white-round opacity-0" ng-if='page.swipers.galleryIndex'>
-                        <span style="width: 10%;"></span>
+                    <div id='getting-started-progress' class="progress height-10 white-round opacity-0" class-on-activate="slideInLeft:anim" ng-if='page.swipers.galleryIndex' class-on-clear="bounceOutDown:animOut">
+                        <span style="width: {{page.progress.getting_started}}%;"></span>
                     </div>
                     <div class="swiper-wrapper swiper-gallery-wrapper" >
                         <div class="swiper-slide slideshow-thumb-1 opacity-0 hide" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
