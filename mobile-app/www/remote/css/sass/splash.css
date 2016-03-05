@@ -7278,6 +7278,208 @@
   background: none !important;
 }
 
+/* ---------- MADE WITH LOVE */
+#made-with-love {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 250px;
+  padding: 50px 15px 15px;
+}
+
+#made-with-love ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#made-with-love ul li {
+  position: relative;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#made-with-love ul li:first-child, #made-with-love ul li:last-child {
+  z-index: 2;
+  width: calc(100% - 64px / 2);
+}
+
+#made-with-love ul li:first-child {
+  text-align: right;
+  padding-right: 15px;
+}
+
+#made-with-love ul li:last-child {
+  text-align: left;
+  padding-left: 15px;
+}
+
+#made-with-love ul li:nth-child(2) {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+}
+
+#made-with-love ul li span {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+#made-with-love ul li svg {
+  -webkit-transition: all 1.2s ease-in-out;
+  -moz-transition: all 1.2s ease-in-out;
+  -ms-transition: all 1.2s ease-in-out;
+  -o-transition: all 1.2s ease-in-out;
+  transition: all 1.2s ease-in-out;
+  -webkit-animation-name: pulse-heart;
+  -moz-animation-name: pulse-heart;
+  -o-animation-name: pulse-heart;
+  animation-name: pulse-heart;
+  -webkit-animation-duration: 1.2s;
+  -moz-animation-duration: 1.2s;
+  -o-animation-duration: 1.2s;
+  animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+  width: 64px;
+  min-width: 64px;
+  height: 64px;
+}
+
+#made-with-love ul li svg path {
+  stroke: #eb4478;
+  fill: #eb4478;
+}
+
+#made-with-love ul li span:last-child svg {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  -o-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+#made-with-love div[class*="mt-"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: 0% 100%;
+  background-repeat: repeat-x;
+  background-size: 900px 100px;
+}
+
+#made-with-love .mt-footer-bg {
+  -webkit-animation: 600000ms mt-footer-small linear infinite forwards;
+  -moz-animation: 600000ms mt-footer-small linear infinite forwards;
+  -ms-animation: 600000ms mt-footer-small linear infinite forwards;
+  -o-animation: 600000ms mt-footer-small linear infinite forwards;
+  animation: 600000ms mt-footer-small linear infinite forwards;
+  background-image: url("../../img/made/mountain-footer-background.svg"), url("/static/remote/img/made/mountain-footer-background.svg");
+}
+
+#made-with-love .mt-footer-mid-back {
+  -webkit-animation: 602500ms mt-footer-small linear infinite forwards;
+  -moz-animation: 602500ms mt-footer-small linear infinite forwards;
+  -ms-animation: 602500ms mt-footer-small linear infinite forwards;
+  -o-animation: 602500ms mt-footer-small linear infinite forwards;
+  animation: 602500ms mt-footer-small linear infinite forwards;
+  background-image: url("../../img/made/mountain-footer-mid-back.svg"), url("/static/remote/img/made/mountain-footer-mid-back.svg");
+}
+
+#made-with-love .mt-footer-mid-front {
+  -webkit-animation: 605000ms mt-footer-small linear infinite forwards;
+  -moz-animation: 605000ms mt-footer-small linear infinite forwards;
+  -ms-animation: 605000ms mt-footer-small linear infinite forwards;
+  -o-animation: 605000ms mt-footer-small linear infinite forwards;
+  animation: 605000ms mt-footer-small linear infinite forwards;
+  background-image: url("../../img/made/mountain-footer-mid-front.svg"), url("/static/remote/img/made/mountain-footer-mid-front.svg");
+}
+
+#made-with-love .mt-footer-fg {
+  -webkit-animation: 610000ms mt-footer-small linear infinite forwards;
+  -moz-animation: 610000ms mt-footer-small linear infinite forwards;
+  -ms-animation: 610000ms mt-footer-small linear infinite forwards;
+  -o-animation: 610000ms mt-footer-small linear infinite forwards;
+  animation: 610000ms mt-footer-small linear infinite forwards;
+  background-image: url("../../img/made/mountain-footer-foreground.svg"), url("/static/remote/img/made/mountain-footer-foreground.svg");
+}
+
+@media screen and (min-width: 768px) {
+  #made-with-love ul li {
+    font-size: 36px;
+  }
+  #made-with-love ul li:first-child, #made-with-love ul li:last-child {
+    width: calc(100% - 84px / 2);
+  }
+  #made-with-love ul li:nth-child(2) {
+    width: 84px;
+    height: 84px;
+  }
+  #made-with-love ul li svg {
+    width: 72px;
+    min-width: 72px;
+    height: 72px;
+  }
+  #made-with-love div[class*="mt-"] {
+    -webkit-animation-name: mt-footer-large;
+    -moz-animation-name: mt-footer-large;
+    -ms-animation-name: mt-footer-large;
+    -o-animation-name: mt-footer-large;
+    animation-name: mt-footer-large;
+  }
+}
+
 /* ---------- HOW IT WORKS */
 #hiw {
   -ms-box-orient: horizontal;

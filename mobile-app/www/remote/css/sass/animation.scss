@@ -1,5 +1,23 @@
 @import 'mixin';
 
+// made with love
+@include keyframes(mt-footer-small) {
+	0% {
+		background-position: 0% 100%;
+	}
+	100% {
+		background-position: -2000% 100%;
+	}
+}
+@include keyframes(mt-footer-large) {
+	0% {
+		background-position: 0% 100%;
+	}
+	100% {
+		background-position: -1000% 100%;
+	}
+}
+
 // tour guru
 @include keyframes(tour-guru-hover) {
 	0% {
