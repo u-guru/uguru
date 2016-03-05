@@ -720,7 +720,6 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.refreshCategoryState = function(category, university) {
-      alert('most updated');
       var sceneNumber = getSceneNumber();
       $scope.page.dropdowns.category.toggle();
       if (sceneNumber > 1) {

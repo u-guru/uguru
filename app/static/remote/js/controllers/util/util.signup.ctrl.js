@@ -1514,9 +1514,7 @@ angular.module('uguru.util.controllers')
       $scope.user.email = $scope.signupForm.email;
       $scope.user.password = $scope.signupForm.password;
       $scope.user.name = $scope.signupForm.full_name;
-
-
-
+      $scope.user.university_id = ($scope.user.university && $scope.user.university.id) || $scope.selectedUniversity.id;
 
       if ($scope.user.current_device && $scope.user.current_device.id) {
         $scope.signupForm.current_device_id = $scope.user.current_device.id;

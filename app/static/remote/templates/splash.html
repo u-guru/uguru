@@ -38,7 +38,7 @@
         	<button class="btn-ghost-white">Take Me to My Dashboard</button>
         </div>
 
-        <section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" parallax-parent="p1" parallax-relative-input="false" parallax-clip-relative-input="false" parallax-calibration-threshold="100" parallax-calibration-delay="500" parallax-support-delay="500" parallax-calibrate-x="false" parallax-calibrate-y="true" parallax-invert-x="true" parallax-invert-y="true" parallax-limit-x="false" parallax-limit-y="false" parallax-scalar-x="5.0" parallax-scalar-y="5.0" parallax-friction-x="0.1" parallax-friction-y="0.1" parallax-origin-x="0.5" parallax-origin-y="0.5">
+        <section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" parallax-parent="p1" parallax-relative-input="false" parallax-clip-relative-input="false" parallax-calibration-threshold="100" parallax-calibration-delay="500" parallax-support-delay="500" parallax-calibrate-x="false" parallax-calibrate-y="true" parallax-invert-x="true" parallax-invert-y="true" parallax-limit-x="false" parallax-limit-y="false" parallax-scalar-x="5.0" parallax-scalar-y="5.0" parallax-friction-x="0.1" parallax-friction-y="0.1" parallax-origin-x="0.5" parallax-origin-y="0.5" style='z-index:10;'>
             <header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
                 <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ></a>
                 <div class="right">
@@ -53,7 +53,7 @@
                         </svg>
                     </a>
                     <a ng-if='!desktopMode' name="back-to-scene-one" id='splash-up-link' class='full-x p10xy flex-wrap-center opacity-0 left-0 absolute' bind-wp="s2_50_top" bind-wp-class="activate, clear" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut, opacity-0" class-on-activate="fadeInDown:anim" class-on-activate-delay="1250" ng-show='projectorPullActivated || singleProjectorActivated' style="width:100% !important; top:10px;" ng-click='closeSingleProjector()'>
-                        <i style='font-size:100%; left:10px;' class='icon ion-chevron-up'> </i>
+                    <i style='font-size:100%; left:10px;' class='icon ion-chevron-up'> </i>
                     </a>
                 </div>
             </header>
@@ -125,7 +125,7 @@
                 </div>
             </div>
             <!-- @gabrielle-note, the 3000 ms is to generate the static map URL with the right icon-->
-            <div class="splash-hero-map opacity-0 invisible limited-opacity" class-on-clear="slideOutUp:animOut" class-on-activate="active:anim, visible-impt" class-on-activate-delay="250" ng-if='false && selectedUniversity.map && selectedUniversity.map.coords'>
+            <div class="splash-hero-map opacity-0 invisible limited-opacity" class-on-clear="slideOutUp:animOut" class-on-activate="active:anim, visible-impt" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
                 <!-- initial map class: init-university-map -->
                 <ui-gmap-google-map class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events" id='splash-google-map-selected-university' refresh='map.refresh' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
                     <ui-gmap-marker coords="selectedUniversity.map.marker.coords" idKey="selectedUniversity.map.marker.id || selectedUniversity.id" options="selectedUniversity.map.marker.options" icon="selectedUniversity.map.marker.icon">
@@ -976,7 +976,7 @@
                     </div>
                 </div>
 
-                <div id='swiper-gallery-tab' class="swiper-container swiper-front-gallery-thumbs tab-bar slide" activate-on-class="a" class-on-activate="active:keep, null:inject.slideshow-thumb-1|activate, null:inject.slideshow-thumb-2|activate, null:inject.slideshow-thumb-3|activate, null:inject.slideshow-thumb-4|activate">
+                <div id='swiper-gallery-tab' class="swiper-container swiper-front-gallery-thumbs tab-bar slide" activate-on-class="a" class-on-activate="active:keep, null:inject.slideshow-thumb-1|activate, null:inject.slideshow-thumb-2|activate, null:inject.slideshow-thumb-3|activate"  ng-show='!page.swipers.galleryIndex'>
                     <div class="swiper-wrapper swiper-gallery-wrapper" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
                         <a class="swiper-slide third" ng-click='page.swipers.main.slideTo(0)' ng-class="{'active':!page.swipers.main.activeIndex}">How It<br/>Works</a>
                         <a class="swiper-slide third" ng-click='page.swipers.main.slideTo(1)' ng-class="{'active':page.swipers.main.activeIndex === 1}">Become<br/>A Guru</a>
@@ -985,23 +985,23 @@
                     </div>
                 </div>
 
-                <div id='swiper-gallery-nav' class="swiper-container swiper-front-gallery-thumbs">
-                    <div class="progress height-10 white-round opacity-0" ng-if='page.swipers.galleryIndex'>
-                        <span style="width: 10%;"></span>
+                <div id='swiper-gallery-nav' class="swiper-container swiper-front-gallery-thumbs high-z-index high-index-z" style='z-index:100000'>
+                    <div id='getting-started-progress' class="progress height-10 white-round opacity-0" class-on-activate="slideInLeft:anim" ng-if='page.swipers.galleryIndex' class-on-clear="bounceOutDown:animOut">
+                        <span style="width: {{page.progress.getting_started}}%;"></span>
                     </div>
                     <div class="swiper-wrapper swiper-gallery-wrapper" >
-                        <div class="swiper-slide slideshow-thumb-1 opacity-0 hide" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                        <div class="swiper-slide slideshow-thumb-1 opacity-0 invisible" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
                             <a class="progress-step">
                                 <h1 ng-class="{'opacity-50': page.swipers.main.activeIndex}">How It Works</h1>
                             </a>
                         </div>
-                        <div class="swiper-slide slideshow-thumb-2 opacity-0 hide" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
+                        <div class="swiper-slide slideshow-thumb-2 opacity-0 invisible" ng-class="{'hide': page.swipers.galleryIndex}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
                             <a class="progress-step">
                                 <h1  ng-class="{'opacity-50': page.swipers.main.activeIndex !== 1}" >Become a Guru</h1>
                             </a>
                         </div>
                         <div class="swiper-slide slideshow-thumb-3 opacity-0" ng-class="{'progress-active':page.swipers.galleryIndex, 'slideshow-thumb-getting-started': page.swipers.main.activeIndex >= 2, 'complete': user.demographic && user.demographic.selected}"  class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="500">
-                            <a class="onboarding-step active" ng-if='page.swipers.galleryIndex' >
+                            <a class="onboarding-step active" ng-if='page.swipers.galleryIndex' ng-click='page.swipers.main.slideTo(2)'>
                                 <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/demographic.html'"></span>
                                 <svg class="onboarding-status" viewBox="0 0 160 160">
                                      <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
@@ -1014,7 +1014,7 @@
                             </a>
                         </div>
                         <div class="swiper-slide slideshow-thumb-4 slideshow-thumb-getting-started opacity-0" ng-class="{'complete': user && user.university && user.university.id}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="600" >
-                            <a class="onboarding-step active" ng-if='page.swipers.galleryIndex'>
+                            <a class="onboarding-step active" ng-if='page.swipers.galleryIndex' ng-click='page.swipers.main.slideTo(3)'>
                                 <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/university.html'"></span>
                                 <svg class="onboarding-status" viewBox="0 0 160 160">
                                      <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
@@ -1027,7 +1027,7 @@
                             </a>
                         </div>
                         <div class="swiper-slide slideshow-thumb-5 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="700" ng-class="{'complete': user && user.id}">
-                            <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
+                            <a class="onboarding-step" ng-if='page.swipers.galleryIndex' ng-click='page.swipers.main.slideTo(4)'>
                                 <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/account.html'"></span>
                                 <svg class="onboarding-status" viewBox="0 0 160 160">
                                      <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
@@ -1040,7 +1040,7 @@
                             </a>
                         </div>
                         <div class="swiper-slide slideshow-thumb-6 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="800" ng-class="{'complete': user && user.student_courses.length}">
-                             <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
+                             <a class="onboarding-step" ng-if='page.swipers.galleryIndex' ng-click='page.swipers.main.slideTo(5)'>
                                 <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/courses.html'"></span>
                                 <svg class="onboarding-status" viewBox="0 0 160 160">
                                      <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
@@ -1053,7 +1053,7 @@
                             </a>
                         </div>
                          <div class="swiper-slide slideshow-thumb-7 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="900" ng-class="{'complete': user && user.access_code}">
-                            <a class="onboarding-step" ng-if='page.swipers.galleryIndex'>
+                            <a class="onboarding-step" ng-if='page.swipers.galleryIndex' ng-click='page.swipers.main.slideTo(6)'>
                                 <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/promo.html'"></span>
                                 <svg class="onboarding-status" viewBox="0 0 160 160">
                                      <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
