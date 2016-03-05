@@ -2749,17 +2749,17 @@
 							}
 						}
 						&.swiper-slide-prev {
-							.onboarding-step {
-								.onboarding-icon {
-									background: $shamrock;
-								}
-								.onboarding-status {
-									.top, .bottom {
-										@include opacity(1);
-										stroke-dashoffset: 0;
-									}
-								}
-							}
+							// .onboarding-step {
+							// 	.onboarding-icon {
+							// 		background: $shamrock;
+							// 	}
+							// 	.onboarding-status {
+							// 		.top, .bottom {
+							// 			@include opacity(1);
+							// 			stroke-dashoffset: 0;
+							// 		}
+							// 	}
+							// }
 						}
 						// &.swiper-slide-active {
 						// 	.progress-step {

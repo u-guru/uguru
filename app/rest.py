@@ -2443,9 +2443,10 @@ class UserNewView(restful.Resource):
         if not user_email and request.json.get('fb_id'):
             user_email = 'fb_id:' + request.json.get('fb_id')
 
-
         ### Main user creation script
         user = User.initNewUser(user_email, request.json)
+        if request.json.get('university_id'):
+            user.university_id = request.json.get('university_id')
 
 
         print user.guru_shops

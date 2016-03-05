@@ -720,6 +720,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.refreshCategoryState = function(category, university) {
+      alert('most updated');
       var sceneNumber = getSceneNumber();
       $scope.page.dropdowns.category.toggle();
       if (sceneNumber > 1) {
@@ -897,7 +898,7 @@ angular.module('uguru.util.controllers')
 
 
       resolveStateParams();
-      // University.initUniversitiesSplash($scope, getStaticMapOptions());
+      University.initUniversitiesSplash($scope, getStaticMapOptions());
       var responsiveSwiperArgs = {
         desktop: {
           slidesPerView: 1,
