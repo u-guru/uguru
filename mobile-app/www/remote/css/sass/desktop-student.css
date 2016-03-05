@@ -193,6 +193,7 @@
   max-width: 1030px;
   margin: 0 auto;
   height: calc(100% - 60px);
+  max-height: 650px;
 }
 
 #desktop-student-home .main .home-main .home-tiles-top {
@@ -258,18 +259,6 @@
   height: 100%;
   background: white;
   border-radius: 2px;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 30px;
-  left: -30px;
-  width: 0;
-  height: 0;
-  border: 15px solid transparent;
-  border-right-color: white;
 }
 
 #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div h1 {
@@ -356,8 +345,8 @@
   -webkit-justify-content: center;
   justify-content: center;
   padding: 15px;
-  background: #6e8694;
-  color: white;
+  background: rgba(78, 156, 206, 0.1);
+  color: #40484B;
   font-size: 16px;
   font-weight: 400;
 }
@@ -446,6 +435,7 @@
 #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile {
   position: relative;
   width: 25%;
+  height: 100%;
   padding: 15px;
 }
 
@@ -469,7 +459,27 @@
   background: #a8d2ee;
 }
 
+#desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100%;
+}
+
 #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div {
+  width: 100%;
   padding-bottom: 5px;
 }
 
@@ -521,20 +531,6 @@
 
 #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div svg *:not(.line) {
   fill: rgba(255, 255, 255, 0.3) !important;
-}
-
-@media screen and (min-height: 1024px) {
-  #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div svg {
-    width: 120px;
-    height: 120px;
-  }
-  #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div svg * {
-    fill: none;
-    stroke: white;
-    stroke-width: 2px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
 }
 
 #desktop-courses.student-mode .input-field .prefix svg {

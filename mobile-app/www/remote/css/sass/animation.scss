@@ -1,5 +1,6 @@
 @import 'mixin';
 
+// tour guru
 @include keyframes(tour-guru-hover) {
 	0% {
 		@include prefix(transform, translateY(3px), webkit moz ms o);
@@ -17,6 +18,7 @@
 	}
 }
 
+// misc
 @include keyframes(splash-adlib) {
 	0%, 100% {
 		@include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));

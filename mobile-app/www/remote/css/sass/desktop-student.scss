@@ -126,6 +126,7 @@
 			max-width: 1030px;
 			margin: 0 auto;
 			height: calc(100% - 60px);
+			max-height: 650px;
 			.home-tiles-top {
 				@include flex;
 				@include flex-center;
@@ -156,17 +157,6 @@
 						height: 100%;
 						background: white;
 						border-radius: 2px;
-						&:before {
-							content: "";
-							display: block;
-							position: absolute;
-							top: 30px;
-							left: -30px;
-							width: 0;
-							height: 0;
-							border: 15px solid transparent;
-							border-right-color: white;
-						}
 						h1 {
 							position: relative;
 							color: $lake;
@@ -218,8 +208,8 @@
 											@include flex;
 											@include flex-center;
 											padding: 15px;
-											background: lighten(mix($slate, $lake, 90%), 20%);
-											color: white;
+											background: rgba(mix($slate, $lake, 10%), .1);
+											color: $slate;
 											font-size: 16px;
 											font-weight: 400;
 											h3 {
@@ -291,6 +281,7 @@
 					.home-tile {
 						position: relative;
 						width: 25%;
+						height: 100%;
 						padding: 15px;
 						&:hover, &:focus {
 							background: rgba(lighten(mix($slate, $lake, 90%), 20%), .5);
@@ -312,7 +303,11 @@
 							}
 						}
 						.home-tile-inside {
+							@include flex;
+							@include flex-center;
+							height: 100%;
 							div {
+								width: 100%;
 								padding-bottom: 5px;
 								span {
 									display: block;
@@ -350,15 +345,6 @@
 										@include svg-stroke(white, 3);
 										&:not(.line) {
 											fill: rgba(white, .3)!important;
-										}
-									}
-								}
-								@media screen and (min-height: 1024px) {
-									svg {
-										width: 120px;
-										height: 120px;
-										* {
-											@include svg-stroke(white, 2);
 										}
 									}
 								}
