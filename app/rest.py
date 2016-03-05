@@ -338,7 +338,7 @@ class UserOneView(restful.Resource):
         #     abort(400)
 
 
-
+        print user.university.school_color_dark
         if not user.profile_url:
             user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
             db_session.commit()
@@ -2443,9 +2443,10 @@ class UserNewView(restful.Resource):
         if not user_email and request.json.get('fb_id'):
             user_email = 'fb_id:' + request.json.get('fb_id')
 
-
         ### Main user creation script
         user = User.initNewUser(user_email, request.json)
+        if request.json.get('university_id'):
+            user.university_id = request.json.get('university_id')
 
 
         print user.guru_shops
