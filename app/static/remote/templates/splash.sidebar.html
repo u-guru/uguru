@@ -13,7 +13,7 @@
                     </a>
                 </li> -->
                 <li>
-                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="50" id='cta-box-faq' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.faq.show()'>
+                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="50" id='cta-box-FAQ' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.faq.show()'>
                         <span>FAQ</span>
                     </a>
                 </li>
@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 <li ng-if='!user || !user.id'>
-                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="250" id='cta-box-intercom' class-on-clear="bounceOut:animOut" ng-click="showSidebarLogin()" >
+                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="250" id='cta-box-account' class-on-clear="bounceOut:animOut" ng-click="showSidebarLogin()" >
                         <span>Login</span>
                     </a>
                 </li>
@@ -50,8 +50,8 @@
                     <rect x="0" y="0" width="300" height="175" fill="none"></rect>
                 </svg>
                 <div class="school-id-inside">
-                    <div class="school-id-top" style="background: {{selectedUniversity.school_color_dark}};">
-                        <span class="user-icon" style="border-color: {{selectedUniversity.school_color_dark}}; background-image: url();">
+                    <div class="school-id-top" style="background: {{user.university.school_color_dark}};">
+                        <span class="user-icon" style="border-color: {{user.university.school_color_dark}}; background-image: url({{user.profile_url}});">
                             <svg viewBox="0 0 100 100">
     							 <circle fill="#B8B8BF" cx="50" cy="50" r="50"></circle>
     							 <path d="M50,100 C64.0354871,100 76.7202586,94.2168993 85.8014664,84.903546 C84.3573333,71.9293333 76.6973333,61.0293333 65.5093333,55.8933333 C69.9226667,51.7493333 72.6986667,45.8826667 72.6986667,39.3653333 C72.6986667,26.8493333 62.516,16.6666667 50,16.6666667 C37.484,16.6666667 27.3013333,26.8493333 27.3013333,39.3653333 C27.3013333,45.8826667 30.0773333,51.7493333 34.4906667,55.8933333 C23.3026667,61.0293333 15.7036269,71.9488808 14.2036269,84.9035475 C23.2844841,94.2190612 35.9671367,100 50,100 Z" fill="#EBEBEF"></path>
@@ -60,11 +60,11 @@
                     </div>
                     <div class="school-id-bottom">
                         <div>
-                            <h1 style="color: {{selectedUniversity.school_color_dark}};">Student Name</h1>
-                            <h2 style="color: {{selectedUniversity.school_color_dark}};">{{selectedUniversity.short_name || selectedUniversity.name}}</h2>
-                            <h2 style="color: {{selectedUniversity.school_color_dark}};">email@domain.com</h2>
+                            <h1 style="color: {{user.university.school_color_dark}};">{{user.name}}</h1>
+                            <h2 style="color: {{user.university.school_color_dark}};">{{user.university.short_name || user.university.name}}</h2>
+                            <h2 style="color: {{user.university.school_color_dark}};">{{user.email}}</h2>
                         </div>
-                        <h3><span style="color: {{selectedUniversity.school_color_dark}};">SELECTED COURSES</span></h3>
+                        <h3><span style="color: {{user.university.school_color_dark}};">SELECTED COURSES</span></h3>
                     </div>
                 </div>
             </div>
@@ -103,6 +103,6 @@
 
         <ion-pane id='cta-modal-intercom' ng-if='desktopMode' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index sidebar-modal' ng-controller='AccountPageController'> </ion-pane>
 
-        <ion-pane id='cta-modal-faq' ng-if='desktopMode' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index sidebar-modal' ng-include="::img_base + BASE + 'templates/faq.html'"> </ion-pane>
+        <ion-pane id='cta-modal-FAQ' ng-if='desktopMode' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index sidebar-modal' ng-include="::img_base + BASE + 'templates/faq.html'"> </ion-pane>
     </section>
 </aside>

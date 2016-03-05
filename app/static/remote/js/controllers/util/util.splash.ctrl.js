@@ -895,10 +895,12 @@ angular.module('uguru.util.controllers')
       // @gabrielle-note -- what
       // Default parameters
 
-
       resolveStateParams();
+
       University.initUniversitiesSplash($scope, getStaticMapOptions());
+
       var responsiveSwiperArgs = {
+
         desktop: {
           slidesPerView: 1,
           spaceBetween: 80
@@ -921,10 +923,15 @@ angular.module('uguru.util.controllers')
           }
         }
       }
-      initCTASplash()
+
       initSwipers(responsiveSwiperArgs, $scope.desktopMode);
+
       $scope.universities = University.getTargetted().slice();
+
       $timeout(function() {
+        $timeout(function() {
+          $scope.initCTASplash = initCTASplash;
+        }, 1250)
         // $scope.switchToSignup();
         // showProjectorAtTop(4);
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
@@ -948,9 +955,10 @@ angular.module('uguru.util.controllers')
           $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);
           $scope.become_guru = ContentService.generateUniversitySpecificBecomeGuruText($scope.university);
           initHomeMap();
+          $scope.page.sidebar = SideMenuService.initHomeSideMenu($scope);
+
         }, 1500);
         !$scope.desktopMode && SideMenuService.initHomeModals($scope);
-        $scope.page.sidebar = SideMenuService.initHomeSideMenu($scope);
       })
     }
 

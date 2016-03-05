@@ -2,7 +2,7 @@
     <!-- @gabrielle, do not not remove  init-wp-parent -->
     <main id='home-splash' init-wp-parent class='splash-landing new hs-view full-xy' style="height:calc(200% !important); width:calc(100%) !important;" bind-wp="s1_top">
         <ion-pane style='z-index:1001;' id='cta-modal-sidebar' class='full-xy hide-display cta-modal bg-charcoal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
-        <a ng-if='page.dropdowns.category.active || page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()' style='z-index:5'> </a>
+        <a ng-if='page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()' style='z-index:5'> </a>
         <!-- <div class="school-card opacity-0 absolute hide" class-on-activate="show" id='global-school-card' ng-if='selectedUniversity && selectedUniversity.id'>
             <svg class="rect" viewBox="0 0 300 200">
                 <rect x="0" y="0" width="300" height="200" fill="none"></rect>
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div> -->
-        <div class="onboarding-success mo-js-wrapper">
+       <!--  <div class="onboarding-success mo-js-wrapper">
             <div class="mojs-wrapper" mo-js>
                 <a mo-js-child></a>
                 <div class="guru" ng-include="img_base + 'templates/svg/guru-success.html'"></div>
@@ -36,13 +36,13 @@
         	<h1>Congrats!</h1>
         	<h2>Your Account is Ready</h2>
         	<button class="btn-ghost-white">Take Me to My Dashboard</button>
-        </div>
+        </div> -->
 
         <section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" parallax-parent="p1" parallax-relative-input="false" parallax-clip-relative-input="false" parallax-calibration-threshold="100" parallax-calibration-delay="500" parallax-support-delay="500" parallax-calibrate-x="false" parallax-calibrate-y="true" parallax-invert-x="true" parallax-invert-y="true" parallax-limit-x="false" parallax-limit-y="false" parallax-scalar-x="5.0" parallax-scalar-y="5.0" parallax-friction-x="0.1" parallax-friction-y="0.1" parallax-origin-x="0.5" parallax-origin-y="0.5" style='z-index:10;'>
             <header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
                 <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ></a>
                 <div class="right">
-                    <a name='sidebar' class="splash-burger" id='cta-box-sidebar' >
+                    <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()'>
                         <!-- @gabrielle whats this? If you dont know delete below-->
                         <!-- bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut" -->
                         <svg viewBox="0 0 100 100" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" class-on-activate-delay="600">

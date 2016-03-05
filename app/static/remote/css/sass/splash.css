@@ -11108,7 +11108,7 @@
   background: none !important; }
 
 #intercom-container {
-  display: none !important; }
+  position: absolute !important; }
 
 .school-id-inside .user-icon {
   background-image: url("https://uguru.me/static/remote/img/avatar.svg");
