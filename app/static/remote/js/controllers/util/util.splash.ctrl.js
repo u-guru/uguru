@@ -932,10 +932,13 @@ angular.module('uguru.util.controllers')
         $timeout(function() {
           $scope.initCTASplash = initCTASplash;
         }, 1250)
+<<<<<<< HEAD
         // var mapElem = document.querySelector('.splash-hero-map')
         // $timeout(function(){
         //   mapElem.classList.add('activate')
         // }, 250)
+=======
+>>>>>>> 981a445cd272a512e1dbd2038dad00efded54693
         // $scope.switchToSignup();
         // showProjectorAtTop(4);
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
