@@ -895,10 +895,12 @@ angular.module('uguru.util.controllers')
       // @gabrielle-note -- what
       // Default parameters
 
-
       resolveStateParams();
+
       University.initUniversitiesSplash($scope, getStaticMapOptions());
+
       var responsiveSwiperArgs = {
+
         desktop: {
           slidesPerView: 1,
           spaceBetween: 80
@@ -921,10 +923,19 @@ angular.module('uguru.util.controllers')
           }
         }
       }
-      initCTASplash()
+
       initSwipers(responsiveSwiperArgs, $scope.desktopMode);
+
       $scope.universities = University.getTargetted().slice();
+
       $timeout(function() {
+        $timeout(function() {
+          $scope.initCTASplash = initCTASplash;
+        }, 1250)
+        // var mapElem = document.querySelector('.splash-hero-map')
+        // $timeout(function(){
+        //   mapElem.classList.add('activate')
+        // }, 250)
         // $scope.switchToSignup();
         // showProjectorAtTop(4);
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
@@ -948,9 +959,10 @@ angular.module('uguru.util.controllers')
           $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);
           $scope.become_guru = ContentService.generateUniversitySpecificBecomeGuruText($scope.university);
           initHomeMap();
+          $scope.page.sidebar = SideMenuService.initHomeSideMenu($scope);
+
         }, 1500);
         !$scope.desktopMode && SideMenuService.initHomeModals($scope);
-        $scope.page.sidebar = SideMenuService.initHomeSideMenu($scope);
       })
     }
 
@@ -1068,7 +1080,7 @@ angular.module('uguru.util.controllers')
         coords: {latitude: university.latitude, longitude: university.longitude},
         zoom: 17,
         // options: {styles: selectedUniversityMapStyles, scrollwheel: false, streetViewControl:false, scrollwheel:false, panControl:false,  mapTypeControl:false, style:{}, draggable:false, disableDoubleClickZoom:false, zoomControl: false},
-        options: {styles: {}, scrollwheel: false, streetViewControl:false, scrollwheel:false, panControl:false,  mapTypeControl:false, style:{}, draggable:false, disableDoubleClickZoom:false, zoomControl: false},
+        options: {styles: selectedUniversityMapStyles, scrollwheel: false, streetViewControl:false, scrollwheel:false, panControl:false,  mapTypeControl:false, style:{}, draggable:false, disableDoubleClickZoom:false, zoomControl: false},
         pan: false,
         refresh: false,
         events: {tilesloaded: function(map) {
@@ -1162,13 +1174,57 @@ angular.module('uguru.util.controllers')
       // $scope.map.center = {latitude: university.latitude, university.longitude};
     }
 
+
+    function addRandomGurusToMarkers(markers) {
+      for (var i = 0; i < markers.length; i ++) {
+        var indexMarker = markers[i];
+        indexMarker.guru = {
+          name: 'Samir M.',
+          lastActive: 'Active 10 min ago',
+          message: "<p>Hey there<br>, I can tutor you in bio class. We'll get you an A in no time</p>",
+          profile_url: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256',
+          type: 'templates/svg/wwf/' + iconGPlaceMapping('cafe') +  '.html',
+          subcategory: 'Bio 1a',
+        }
+      }
+      console.log('custom markers with guru details', markers);
+
+      function iconGPlaceMapping(place_type) {
+        var placeIconDict = {
+          'cafe': 'coffee',
+          'meal_takeaway': 'food',
+          'restaurant': 'food',
+          'restaurant': 'coffee',
+        }
+        return placeIconDict[place_type]
+      }
+    }
+
     function updateMarkersOnUniversitySpecificMap(university, selectedCategory) {
       university.map.markers = [];
       var markerLabelDivs = [];
-      for (var i = 0; i < 1; i++) {
+      for (var i = 0; i < 10; i++) {
         var indexPlace = university.place_results[i];
-        university.map.markers.push(generateMarkerObj(indexPlace.geometry.location.lat(), indexPlace.geometry.location.lng(), i, selectedCategory.hex_color));
+        var details = {
+          place_name: indexPlace.name,
+          open_now: indexPlace.opening_hours && indexPlace.opening_hours.open_now,
+          type: indexPlace.types[0],
+        }
+        if (indexPlace.photos && indexPlace.photos.length) {
+          for (var j = 0; j < indexPlace.photos.length; j++) {
+            var indexPhoto = indexPlace.photos[j];
+            if (indexPhoto && indexPhoto.getUrl) {
+              details.place_photo_url = indexPhoto.getUrl({'maxWidth': 260}, {'maxHeight': 90});
+              console.log('found photo for', indexPlace.name, ':', details.place_photo_url);
+              break;
+            }
+          }
+        }
+
+        university.map.markers.push(generateMarkerObj(indexPlace.geometry.location.lat(), indexPlace.geometry.location.lng(), i, selectedCategory.hex_color, details));
       }
+
+      addRandomGurusToMarkers(university.map.markers)
 
       if ($scope.desktopMode) {
         $timeout(function() {
@@ -1181,7 +1237,7 @@ angular.module('uguru.util.controllers')
             return;
           }
 
-          for (var i = 0; i < 1; i++) {
+          for (var i = 0; i < splashHeroMarkerElems.length; i++) {
             var indexMarker = selectedMarkerElems[i];
             if (!indexMarker) {
               continue;
@@ -1189,14 +1245,14 @@ angular.module('uguru.util.controllers')
             indexMarker.id = 'university-place-marker-' + (i + 1);
             var className = 'splash-hero-marker-' + (i+1);
             var indexDOMElem = document.querySelector('.' + className);
-            indexDOMElem.classList.add('translate', 'a');
+            indexDOMElem.classList.add('translate', 'marker-translate', 'a');
             console.log(className, indexMarker.id);
             console.log(indexDOMElem, indexMarker);
           }
         }, 2500);
       }
 
-      function generateMarkerObj(lat, lng, id, cat_hex) {
+      function generateMarkerObj(lat, lng, id, cat_hex, details) {
         var hexColorLookupDict = {'academic': '#e6389b'}
         var customIcon = {
           path: google.maps.SymbolPath.CIRCLE,
@@ -1211,7 +1267,10 @@ angular.module('uguru.util.controllers')
             icon: customIcon
           },
           coords: {latitude:lat, longitude:lng},
-          id: id
+          id: id,
+          details: details
+          // place: place,
+          // university: university
         }
       }
       // $compile(div)($scope);

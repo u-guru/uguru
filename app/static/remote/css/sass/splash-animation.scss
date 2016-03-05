@@ -1,0 +1,478 @@
+@import 'mixin';
+
+/* ---------- SCENES */
+// student run
+@include keyframes(course-border) {
+	0% {
+		border-color: rgba(white, .2);
+		background: rgba($shamrock, 0);
+	}
+	80% {
+		border-color: rgba(white, .2);
+		background: rgba($shamrock, 0);
+	}
+	100% {
+		border-color: rgba($shamrock, 1);
+		background: rgba($shamrock, 1);
+	}
+}
+@include keyframes(course-highlight) {
+	0% {
+		width: 29px;
+		background: rgba(white, .2);
+	}
+	80% {
+		width: 100%;
+		background: rgba(white, .2);
+	}
+	100% {
+		width: 100%;
+		background: $shamrock;
+	}
+}
+
+// instant and in person
+@include keyframes(point-graph-desktop) {
+	0% {
+		@include prefix(transform, translate(0, 0), webkit moz ms o);
+	}
+	40% {
+		@include prefix(transform, translate(119px, -147px), webkit moz ms o);
+	}
+	90% {
+		@include prefix(transform, translate(199px, -121px))
+	}
+	100% {
+		@include prefix(transform, translate(294px, -294px), webkit moz ms o);
+	}
+}
+@include keyframes(point-graph) {
+	0% {
+		@include prefix(transform, translate(0, 0), webkit moz ms o);
+	}
+	40% {
+		@include prefix(transform, translate(146px, -180px), webkit moz ms o);
+	}
+	90% {
+		@include prefix(transform, translate(243px, -148px), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translate(360px, -360px), webkit moz ms o);
+	}
+}
+
+// not just tutoring
+@include keyframes(guru-hover) {
+	0% {
+		@include prefix(transform, translateY(-1%), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translateY(1%), webkit moz ms o);
+	}
+}
+
+// affordable to all
+@include keyframes(dollar-1-hover) {
+	0% {
+		@include prefix(transform, translate(-50%, -21%) scale(.5), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translate(-50%, -19%) scale(.5), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-1) {
+	0% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	20% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	80% {
+		@include opacity(.2);
+		@include prefix(transform, translate(-50%, -20%) scale(.5), webkit moz ms o);
+	}
+	100% {
+		@include opacity(.2);
+		@include prefix(transform, translate(-50%, -20%) scale(.5), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-2-hover) {
+	0% {
+		@include prefix(transform, translate(0%, -101%) scale(.8), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translate(0%, -99%) scale(.8), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-2) {
+	0% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	20% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	80% {
+		@include opacity(.2);
+		@include prefix(transform, translate(0%, -100%) scale(.8), webkit moz ms o);
+	}
+	100% {
+		@include opacity(.2);
+		@include prefix(transform, translate(0%, -100%) scale(.8), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-3-hover) {
+	0% {
+		@include prefix(transform, translate(-20%, -141%) scale(.6), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translate(-20%, -139%) scale(.6), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-3) {
+	0% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	20% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	80% {
+		@include opacity(.2);
+		@include prefix(transform, translate(-20%, -140%) scale(.6), webkit moz ms o);
+	}
+	100% {
+		@include opacity(.2);
+		@include prefix(transform, translate(-20%, -140%) scale(.6), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-4-hover) {
+	0% {
+		@include prefix(transform, translate(50%, -91%) scale(.4), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translate(50%, -89%) scale(.4), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-4) {
+	0% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	20% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	80% {
+		@include opacity(.2);
+		@include prefix(transform, translate(50%, -90%) scale(.4), webkit moz ms o);
+	}
+	100% {
+		@include opacity(.2);
+		@include prefix(transform, translate(50%, -90%) scale(.4), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-5-hover) {
+	0% {
+		@include prefix(transform, translate(-60%, -91%) scale(.7), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translate(-60%, -89%) scale(.7), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-5) {
+	0% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	20% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	80% {
+		@include opacity(.2);
+		@include prefix(transform, translate(-60%, -90%) scale(.7), webkit moz ms o);
+	}
+	100% {
+		@include opacity(.2);
+		@include prefix(transform, translate(-60%, -90%) scale(.7), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-6-hover) {
+	0% {
+		@include prefix(transform, translate(30%, -61%) scale(.3), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translate(30%, -59%) scale(.3), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-6) {
+	0% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	20% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	80% {
+		@include opacity(.2);
+		@include prefix(transform, translate(30%, -60%) scale(.3), webkit moz ms o);
+	}
+	100% {
+		@include opacity(.2);
+		@include prefix(transform, translate(30%, -60%) scale(.3), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-7-hover) {
+	0% {
+		@include prefix(transform, translate(40%, -11%) scale(.3), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translate(40%, -9%) scale(.3), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-7) {
+	0% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	20% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	80% {
+		@include opacity(.2);
+		@include prefix(transform, translate(40%, -10%) scale(.3), webkit moz ms o);
+	}
+	100% {
+		@include opacity(.2);
+		@include prefix(transform, translate(40%, -10%) scale(.3), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-8-hover) {
+	0% {
+		@include prefix(transform, translate(0%, -121%) scale(.5), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translate(0%, -119%) scale(.5), webkit moz ms o);
+	}
+}
+@include keyframes(dollar-8) {
+	0% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	20% {
+		@include opacity(.025);
+		@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+	}
+	80% {
+		@include opacity(.2);
+		@include prefix(transform, translate(0%, -120%) scale(.5), webkit moz ms o);
+	}
+	100% {
+		@include opacity(.2);
+		@include prefix(transform, translate(0%, -120%) scale(.5), webkit moz ms o);
+	}
+}
+
+// open 24/7
+@include keyframes(hiw-open-24-7-text-flash) {
+	0%, 16.66%, 33.32%, 49.98%, 66.64%, 83.3%, 100% {
+		@include opacity(1)
+	}
+	8.33%, 24.99%, 41.65%, 58.31%, 74.97%, 91.63% {
+		@include opacity(0)
+	}
+}
+
+@include keyframes(hiw-open-24-7-star-scale) {
+	0%, 8.33%, 16.66%, 24.99%, 30.32% {
+		@include prefix(transform, scale(0), webkit moz ms o);
+	}
+	33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97% {
+		@include prefix(transform, scale(1), webkit moz ms o);
+	}
+	77.97%, 83.3%, 91.63%, 100% {
+		@include prefix(transform, scale(0), webkit moz ms o);
+	}
+}
+
+@include keyframes(hiw-open-24-7-day-shift) {
+	0%, 8.33%, 16.66%, 24.99% {
+		@include opacity(1);
+	}
+	33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97% {
+		@include opacity(0);
+	}
+	83.3%, 91.63%, 100% {
+		@include opacity(1);
+	}
+}
+
+@include keyframes(hiw-open-24-7-sun-shift) {
+	0%, 8.33%, 16.66%, 24.99% {
+		@include prefix(transform, translateY(0), webkit moz ms o);
+	}
+	33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97% {
+		@include prefix(transform, translateY(20px), webkit moz ms o);
+	}
+	83.3%, 91.63%, 100% {
+		@include prefix(transform, translateY(0), webkit moz ms o);
+	}
+}
+
+@include keyframes(hiw-open-24-7-moon-shift) {
+	0%, 8.33%, 16.66%, 24.99% {
+		@include prefix(transform, translateY(20px), webkit moz ms o);
+	}
+	33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97% {
+		@include prefix(transform, translateY(0), webkit moz ms o);
+	}
+	83.3%, 91.63%, 100% {
+		@include prefix(transform, translateY(20px), webkit moz ms o);
+	}
+}
+
+/* ---------- HOVER */
+// open 24/7
+@include keyframes(hiw-hour-hand) {
+	0% {
+		@include prefix(transform, rotate(0deg), webkit moz ms o);
+	}
+	8.33% {
+		@include prefix(transform, rotate(30deg), webkit moz ms o);
+	}
+	16.66% {
+		@include prefix(transform, rotate(60deg), webkit moz ms o);
+	}
+	24.99% {
+		@include prefix(transform, rotate(90deg), webkit moz ms o);
+	}
+	33.32% {
+		@include prefix(transform, rotate(120deg), webkit moz ms o);
+	}	
+	41.65% {
+		@include prefix(transform, rotate(150deg), webkit moz ms o);
+	}
+	49.98% {
+		@include prefix(transform, rotate(180deg), webkit moz ms o);
+	}
+	58.31% {
+		@include prefix(transform, rotate(210deg), webkit moz ms o);
+	}
+	66.64% {
+		@include prefix(transform, rotate(240deg), webkit moz ms o);
+	}
+	74.97% {
+		@include prefix(transform, rotate(270deg), webkit moz ms o);
+	}
+	83.3% {
+		@include prefix(transform, rotate(300deg), webkit moz ms o);
+	}
+	91.63% {
+		@include prefix(transform, rotate(330deg), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, rotate(360deg), webkit moz ms o);
+	}
+}
+
+@include keyframes(hiw-minute-hand) {
+	0% {
+		@include prefix(transform, rotate(0deg), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, rotate(360deg), webkit moz ms o);
+	}
+}
+
+// affordable to all
+@include keyframes(hiw-affordable-path-widen) {
+	0% {
+		stroke-width: 2px;
+	}
+	100% {
+		stroke-width: 6px;
+	}
+}
+
+@include keyframes(hiw-line-right) {
+	0% {
+		@include prefix(transform, translate(-5px), webkit moz ms o);
+		stroke-width: 2px;
+	}
+	100% {
+		@include prefix(transform, translate(0), webkit moz ms o);
+		stroke-width: 6px;
+	}
+}
+
+@include keyframes(hiw-line-left) {
+	0% {
+		@include prefix(transform, translate(5px), webkit moz ms o);
+		stroke-width: 2px;
+	}
+	100% {
+		@include prefix(transform, translate(0), webkit moz ms o);
+		stroke-width: 6px;
+	}
+}
+
+@include keyframes(hiw-move-left) {
+	0% {
+		@include prefix(transform, scale(1) translateX(0), webkit moz ms o);
+	}
+	55% {
+		@include prefix(transform, scale(0.5), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translateX(-65px) scale(0.5), webkit moz ms o);
+	}
+}
+
+@include keyframes(hiw-move-right) {
+	0% {
+		@include prefix(transform, scale(1) translateX(0), webkit moz ms o);
+	}
+	55% {
+		@include prefix(transform, scale(0.5), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translateX(65px) scale(0.5), webkit moz ms o);
+	}
+}
+
+// not just tutoring
+@include keyframes(hiw-conveyor-belt) {
+	0% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 30000;
+	}
+}
+
+// student run
+@include keyframes(hiw-student-run-hat) {
+	0% {
+		@include prefix(transform, translate(0,0), webkit moz ms o);
+	}
+	25% {
+		@include prefix(transform, translate(0,-5px), webkit moz ms o);
+	}
+	50% {
+		@include prefix(transform, translate(40px,-25px), webkit moz ms o);
+	}
+	75% {
+		@include prefix(transform, translate(80px,-5px), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translate(80px,0), webkit moz ms o);
+	}
+}

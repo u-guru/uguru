@@ -1,5 +1,42 @@
 @import 'mixin';
 
+// made with love
+@include keyframes(mt-footer-small) {
+	0% {
+		background-position: 0% 100%;
+	}
+	100% {
+		background-position: -2000% 100%;
+	}
+}
+@include keyframes(mt-footer-large) {
+	0% {
+		background-position: 0% 100%;
+	}
+	100% {
+		background-position: -1000% 100%;
+	}
+}
+
+// tour guru
+@include keyframes(tour-guru-hover) {
+	0% {
+		@include prefix(transform, translateY(3px), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translateY(-3px), webkit moz ms o);
+	}
+}
+@include keyframes(tour-guru-shadow-hover) {
+	0% {
+		@include scale(1);
+	}
+	100% {
+		@include scale(0.9);
+	}
+}
+
+// misc
 @include keyframes(splash-adlib) {
 	0%, 100% {
 		@include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));
