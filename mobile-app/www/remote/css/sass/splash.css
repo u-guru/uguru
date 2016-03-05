@@ -3587,6 +3587,7 @@
 }
 
 .splash-landing > section.splash-hero .splash-mobile-cta {
+  display: none;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -3682,6 +3683,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .splash-landing > section.splash-hero .splash-mobile-cta {
+    display: block !important;
+  }
   .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:first-child {
     right: 50%;
     margin-right: -131px;
