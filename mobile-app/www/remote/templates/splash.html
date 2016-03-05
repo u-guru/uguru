@@ -145,12 +145,12 @@
                 <button activate-on-class="c" class-on-activate="null:inject.splash-desktop-cta|bounceInUp, null:inject.splash-mobile-cta|bounceInUp, null:inject.coach-click|show-opacity-impt, null:inject.coach-click path|animate, null:inject.coach-click-path-2|animate, null:inject.coach-click g g|bounceIn, null:inject.coach-help-desktop|bounceIn, null:inject.coach-help-mobile|bounceIn, null:inject.coach-fill|hide, null:inject.coach-scroll|active, null:inject.coach-scroll svg|fadeIn, null:inject.splash-hero-skip|a" class-on-click="null:inject.splash-desktop-cta|bounceInUp, null:inject.splash-mobile-cta|bounceInUp, null:inject.coach-click|show-opacity-impt, null:inject.coach-click path|animate, null:inject.coach-click-path-2|animate, null:inject.coach-click g g|bounceIn, null:inject.coach-help-desktop|bounceIn, null:inject.coach-help-mobile|bounceIn, null:inject.coach-fill|hide, null:inject.coach-scroll|active, null:inject.coach-scroll svg|fadeIn, null:inject.splash-hero-skip|a, null:inject.splash-adlib ul li a|a">Skip</button>
             </div>
 
-            <div class="splash-hero-markers" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker|a">
+            <div class="splash-hero-markers opacity-0" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker|a">
 
                 <!-- splash-marker-first:unique:keep && null:inject#map-icon-2-translate|splash-marker-guru-first:unique:keep are unique to the first marker popping up and should not be used on other map markers. They should also be removed when another map marker is clicked. -->
-                <div class="splash-hero-marker-1 splash-hero-marker opacity-0 bg-{{selectedCategory.hex_color}}" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="splash-marker-first:unique:keep, null:inject#map-icon-2-translate|splash-marker-guru-first:unique:keep, fadeIn:anim, visible, null:inject.splash-hero-marker-1 .marker-normal|a" tabindex="1">
+                <div class="splash-hero-marker-{{$index + 1}} splash-hero-marker opacity-0 bg-{{selectedCategory.hex_color}}" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="fadeIn:anim, visible, null:inject.splash-hero-marker-{{$index + 1}} .marker-normal|a" tabindex="{{$index + 1}}" ng-repeat='splash_marker in selectedUniversity.map.markers' translate-on-class="marker-translate" translate-to-elem="#university-place-marker-{{$index + 1}}">
                     <!-- the delay for .marker-normal should be 3000ms less than the element .marker-guru being translated to it -->
-                    <div class="marker-normal" activate-on-class="a" class-on-activate="move:keep" class-on-activate-delay="2500" class-on-click="null:inject.splash-hero-marker-1|splash-marker-active:unique, null:inject#map-icon-2-translate|splash-marker-guru-active:unique">
+                    <div class="marker-normal" activate-on-class="a" class-on-activate="move:keep" class-on-activate-delay="2500" class-on-click="null:inject.splash-hero-marker-{{$index + 1}}|splash-marker-active:unique, null:inject#map-icon-{{$index + 2}}-translate|splash-marker-guru-active:unique">
                         <svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
                             <g fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
                                 <path class="side" d="M92,176 L122,146 L171.991129,146 C177.518876,146 182,141.532461 182,136.002779 L182,11.9972208 C182,6.47590822 177.527924,2 172.009493,2 L142,2"></path>
@@ -160,10 +160,10 @@
                             </g>
                         </svg>
                         <div class="marker-normal-content">
-                            <a class="marker-link" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></a>
-                            <a id="map-icon-2" class="marker-guru opacity-0">
-                                <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
-                                <span class="marker-guru-course">BIO 1A</span>
+                            <a class="marker-link" ng-include="img_base + BASE + splash_marker.guru.type"></a>
+                            <a id="map-icon-{{$index + 2}}" class="marker-guru opacity-0">
+                                <span class="user-icon" style="background-image: url({{splash_marker.guru.profile_url}})"></span>
+                                <span class="marker-guru-course">{{splash_marker.guru.subcategory}}</span>
                             </a>
                         </div>
                     </div>
@@ -175,28 +175,28 @@
                              </g>
                         </svg>
                         <div class="marker-expanded-content">
-                            <div class="marker-expanded-icon" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></div>
+                            <div class="marker-expanded-icon" ng-include="img_base + BASE + splash_marker.guru.type"></div>
                             <div class="marker-location">
-                                <h1>{{selectedUniversity.place_results[0].name || 'Philz Coffee'}}</h1>
-                                <h4>open now &middot; 2.4 miles</h4>
+                                <h1>{{splash_marker.details.place_name || 'Philz Coffee'}}</h1>
+                                <h4 ng-if="splash_marker.details.open_now">open now &middot; 2.4 miles</h4>
+                                <h4 ng-if="!splash_marker.details.open_now">&middot; 2.4 miles</h4>
                             </div>
                             <a class="marker-guru">
-                                <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                                <span class="user-icon" style="background-image: url({{splash_marker.guru.profile_url}})"></span>
                                 <div>
-                                    <h1>Gabrielle W</h1>
-                                    <h3>Active 10 min ago</h3>
+                                    <h1>{{splash_marker.guru.name}}</h1>
+                                    <h3>{{splash_marker.guru.lastActive}}</h3>
                                 </div>
                                 <svg viewBox="0 0 100 100">
                                     <path d="M32,86 L68,50 L32,14"></path>
                                 </svg>
                             </a>
-                            <div class="marker-message">
-                                <p>Hey there,<br/>I can tutor you in any bio class. We’ll get you to an A in no time!</p>
+                            <div class="marker-message" ng-bind-html="splash_marker.guru.message">
                             </div>
                         </div>
                     </div>
                     <div class="marker-circle"></div>
-                    <div class="marker-label">{{selectedUniversity.place_results[0].name || 'Philz Coffee'}}</div>
+                    <div class="marker-label">{{splash_marker.details.place_name || 'Cafe'}}</div>
                 </div>
 
                 <div ng-if="!desktopMode" class="splash-hero-marker-mobile splash-hero-marker bg-{{selectedCategory.hex_color}} opacity-0" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="splash-marker-first:unique:keep, null:inject#map-icon-2-translate|splash-marker-guru-first:unique:keep, fadeIn:anim, visible, null:inject.splash-hero-marker-1 .marker-normal|a" tabindex="1">
