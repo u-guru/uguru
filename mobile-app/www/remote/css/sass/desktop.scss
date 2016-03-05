@@ -128,12 +128,23 @@
 				max-width: 1280px;
 				height: 100%;
 			}
-			a:hover,
-			a:focus {
+			a:hover, a:focus {
 				@include opacity(.8);
 			}
 			a:active {
 				@include opacity(.5);
+			}
+			.toggle {
+				margin-right: 15px;
+				label {
+					width: auto;
+				}
+				input:checked + label {
+					background: $moxie;
+					svg:first-child {
+						@include prefix(transform, translateX(55px), webkit moz ms o);
+					}
+				}
 			}
 			#top-logo {
 				display: block;
