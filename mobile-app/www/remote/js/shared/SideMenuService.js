@@ -20,7 +20,7 @@ function SideMenuService(LoadingService, $timeout, CounterService, CTAService, $
 
     function initHomeSideMenu(scope) {
       initSupportBox(scope);
-      scope.desktopMode && initSideMenuCTAs(scope, '.splash-sidebar-content');
+      scope.desktopMode && initSideMenuCTAs(scope, '.splash-sidebar-full');
       return {
         toggle: toggleSidebar(scope),
         show: false

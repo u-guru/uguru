@@ -338,7 +338,7 @@ class UserOneView(restful.Resource):
         #     abort(400)
 
 
-
+        print user.university.school_color_dark
         if not user.profile_url:
             user.profile_url = "https://graph.facebook.com/10152573868267292/picture?width=100&height=100"
             db_session.commit()

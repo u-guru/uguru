@@ -1365,38 +1365,30 @@ angular.module('uguru.user', [])
 
             if ($scope) {
                 var scope_user_id = $scope.user.id;
+                console.log(scope_user_id);
             } else {
                 console.log('accessing user from local..')
                 scope_user_id = $localstorage.getObject('user')['id']
             }
-            if (!scope_user_id) {
-                console.log('Cant fetch user, user not logged in');
-                $scope.$broadcast('scroll.refreshComplete');
-                return;
-            }
-
-            if (callback) {
-                callback()
-            }
-
-            else {
-                // console.log('Fetching user from ', $state.current.name);
-            }
-
 
             Restangular.one('user', scope_user_id).customGET().then(
                 function(user) {
                     var processed_user = processResults(user.plain());
-                    $scope.$broadcast('scroll.refreshComplete');
                     if ($scope) {
 
                         $scope.root.vars.fetch_user_server_mutex = false;
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);
 
+                        $localstorage.setObject('user', $scope.user);
 
                         if (callback) {
+                            console.log('calling scope callback', $scope.user)
                             callback($scope);
+                        }
+
+                        if (callback) {
+                            callback($scope, $state);
                         }
 
                         // if ($scope.user && $scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
