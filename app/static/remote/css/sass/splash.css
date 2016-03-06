@@ -3587,6 +3587,7 @@
 }
 
 .splash-landing > section.splash-hero .splash-mobile-cta {
+  display: none;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -3682,6 +3683,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .splash-landing > section.splash-hero .splash-mobile-cta {
+    display: block !important;
+  }
   .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:first-child {
     right: 50%;
     margin-right: -131px;
@@ -8544,11 +8548,14 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #intercom-container {
   position: absolute !important; }
 =======
 =======
 >>>>>>> 22b73dd42c54cbf305b8425599f337fb6384a271
+=======
+>>>>>>> ffeacc9ec86c572be22b50d31bc7c98e00e2c3da
 .hiw-open-container .hour-hand {
   -webkit-transform-origin: 0% 50%;
   -moz-transform-origin: 0% 50%;
@@ -8557,6 +8564,7 @@
   transform-origin: 0% 50%;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 4c1e2bf2ea618fdc7913eebc78c35f18a4c1c6a8
 =======
 =======
@@ -8564,6 +8572,8 @@
   position: absolute !important; }
 >>>>>>> 981a445cd272a512e1dbd2038dad00efded54693
 >>>>>>> 22b73dd42c54cbf305b8425599f337fb6384a271
+=======
+>>>>>>> ffeacc9ec86c572be22b50d31bc7c98e00e2c3da
 
 .hiw-affordable-container .hiw-affordable-to-all path {
   transition: all 150ms ease-in-out;

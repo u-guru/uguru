@@ -2252,6 +2252,7 @@
 				}
 			}
 			.splash-mobile-cta {
+				display: none;
 				position: absolute;
 				bottom: 0;
 				left: 0;
@@ -2327,6 +2328,9 @@
 				}
 			}
 			@media screen and (max-width: 768px) {
+				.splash-mobile-cta {
+					display: block!important;
+				}
 				.splash-hero-markers {
 					.splash-hero-marker {
 						&:first-child {
