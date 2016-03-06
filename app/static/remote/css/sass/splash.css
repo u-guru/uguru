@@ -8543,9 +8543,12 @@
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #intercom-container {
   position: absolute !important; }
 =======
+=======
+>>>>>>> 22b73dd42c54cbf305b8425599f337fb6384a271
 .hiw-open-container .hour-hand {
   -webkit-transform-origin: 0% 50%;
   -moz-transform-origin: 0% 50%;
@@ -8553,7 +8556,14 @@
   -o-transform-origin: 0% 50%;
   transform-origin: 0% 50%;
 }
+<<<<<<< HEAD
 >>>>>>> 4c1e2bf2ea618fdc7913eebc78c35f18a4c1c6a8
+=======
+=======
+#intercom-container {
+  position: absolute !important; }
+>>>>>>> 981a445cd272a512e1dbd2038dad00efded54693
+>>>>>>> 22b73dd42c54cbf305b8425599f337fb6384a271
 
 .hiw-affordable-container .hiw-affordable-to-all path {
   transition: all 150ms ease-in-out;

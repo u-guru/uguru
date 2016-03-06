@@ -933,12 +933,20 @@ angular.module('uguru.util.controllers')
           $scope.initCTASplash = initCTASplash;
         }, 1250)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 22b73dd42c54cbf305b8425599f337fb6384a271
         // var mapElem = document.querySelector('.splash-hero-map')
         // $timeout(function(){
         //   mapElem.classList.add('activate')
         // }, 250)
+<<<<<<< HEAD
 >>>>>>> 4c1e2bf2ea618fdc7913eebc78c35f18a4c1c6a8
+=======
+=======
+>>>>>>> 981a445cd272a512e1dbd2038dad00efded54693
+>>>>>>> 22b73dd42c54cbf305b8425599f337fb6384a271
         // $scope.switchToSignup();
         // showProjectorAtTop(4);
         // document.querySelector('#desktop-find-guru-button').classList.add('activate');
