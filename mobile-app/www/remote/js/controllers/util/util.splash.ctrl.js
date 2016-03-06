@@ -78,7 +78,6 @@ angular.module('uguru.util.controllers')
                 form.activateErrorName = true;
                 form.validateName = false;
                 form.activateErrorMsg = error_msg.error_msg;
-                console.log('should show error');
               })
           })
         }
@@ -236,6 +235,15 @@ angular.module('uguru.util.controllers')
     $scope.switchToForgotPassword = function() {
       $scope.page.account.loginMode = false;
       $scope.page.account.forgotPassword = true;
+    }
+
+    $scope.goToStudentMode = function() {
+      LoadingService.showAmbig();
+      AnimationService.flip('^.student-home', {}, function() {
+        $timeout(function() {
+          LoadingService.hide();
+        }, 500)
+      });
     }
 
     $scope.updateProgress = function() {
@@ -413,12 +421,10 @@ angular.module('uguru.util.controllers')
       var swiperIndex = $scope.page.swipers.main.activeIndex;
       var previousSwiperIndex = $scope.page.swipers.main.previousIndex;
 
-      console.log('transitioning... to index ' + swiperIndex + ' from ' + previousSwiperIndex)
       if (swiperIndex === 6) {
         getAllCourses($scope.selectedUniversity);
       }
       if (swiperIndex === 1 && previousSwiperIndex > 1) {
-        console.log('called once');
         //scene 3
         var elemGalleryTab = document.querySelector('#swiper-gallery-tab div');
         elemGalleryTab && elemGalleryTab.classList.add('activate');
@@ -751,7 +757,6 @@ angular.module('uguru.util.controllers')
     function getSceneNumber() {
       var elem = document.querySelector('splash-hero-progress.progress span');
       if (elem) {
-        console.log('progress elem', elem, elem.className);
         if (elem.className.indexOf('animate') > -1) {
           return 2;
         }
@@ -763,7 +768,6 @@ angular.module('uguru.util.controllers')
       for (var i = 0; i < args.length; i++) {
         var argIndexInjectClass = args[i][0]
         var argIndexElem = document.querySelector(argIndexInjectClass);
-        console.log(argIndexElem.style);
         argIndexElem && argIndexElem.classList.add('clear');
       }
     }
@@ -882,6 +886,22 @@ angular.module('uguru.util.controllers')
          $scope.scrollToSection('#splash-projector')
     }
 
+    $scope.clearAllCTAExcept = function(cta_arg) {
+      var modalElems = document.querySelectorAll('.splash-sidebar-full .cta-modal');
+      for (var i = 0; i < modalElems.length; i++) {
+        var indexModalElem = modalElems[i];
+        console.log(cta_arg, 'removing show from', indexModalElem.id);
+        if (cta_arg && indexModalElem.id.indexOf(cta_arg) > -1) {
+          continue;
+        } else {
+          indexModalElem.classList.remove('show');
+        }
+      }
+      if (cta_arg !== 'support') {
+        Intercom('hide');
+      }
+    }
+
     $scope.closeSingleProjector = function() {
       $scope.singleProjectorActivate = false;
       if ($scope.page.swipers.main.slides.length > 1) {
@@ -930,7 +950,14 @@ angular.module('uguru.util.controllers')
 
       $timeout(function() {
         $timeout(function() {
-          $scope.initCTASplash = initCTASplash;
+          // $scope.initCTASplash = initCTASplash;
+          initCTASplash();
+          var modalElem = document.querySelector('#cta-modal-sidebar')
+          modalElem.classList.add('show');
+          $timeout(function(){
+            var activateElem = document.querySelector(".splash-sidebar-menu");
+            activateElem && activateElem.classList.add('activate');
+          }, 500)
         }, 1250)
         // var mapElem = document.querySelector('.splash-hero-map')
         // $timeout(function(){
@@ -1071,7 +1098,6 @@ angular.module('uguru.util.controllers')
 
     function translatePhoneToLeft() {
       var splashDeviceElem = document.querySelector('.splash-device.splash-device-iphone');
-      // console.log(splashDeviceElem.)
     }
 
     function initializeDynamicSelectedUniversityMap(university) {
@@ -1091,8 +1117,6 @@ angular.module('uguru.util.controllers')
             return function () {
               var mapBounds = map.getBounds().getSouthWest();
               var mapCenter = map.getCenter();
-              console.log('bottom left', mapBounds.lat(), mapBounds.lng());
-              console.log('center', mapCenter.lat(), mapCenter.lng())
               var dx = mapBounds.lat() - mapCenter.lat();
               var dy = mapBounds.lng() - mapCenter.lng();
               var newMarkerLat = mapBounds.lat() - (dx/6);
@@ -1142,7 +1166,6 @@ angular.module('uguru.util.controllers')
     }
 
     function resolveStateParams() {
-      console.log('splashData', $stateParams.category.splashData);
       if ($stateParams && $stateParams.category && $stateParams.category.id) {
         // $scope.root.loader.body.hide = true;
         // Utilities.compileToAngular('body-loading-div', $scope);
@@ -1162,11 +1185,9 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.getUniversityPlaces = function(university) {
-      console.log('uni og_map', university.og_map);
       if (university.og_map  && (!university.place_results || !university.place_results.length)) {
         $timeout(function() {
           $scope.$apply(function() {
-            console.log('\ncalling university places\n', university)
             GUtilService.getPlaceListByCoords($scope, university.og_map, {latitude: university.latitude, longitude: university.longitude}, updateMarkersOnUniversitySpecificMap);
           })
         })
@@ -1187,7 +1208,6 @@ angular.module('uguru.util.controllers')
           subcategory: 'Bio 1a',
         }
       }
-      console.log('custom markers with guru details', markers);
 
       function iconGPlaceMapping(place_type) {
         var placeIconDict = {
@@ -1215,7 +1235,6 @@ angular.module('uguru.util.controllers')
             var indexPhoto = indexPlace.photos[j];
             if (indexPhoto && indexPhoto.getUrl) {
               details.place_photo_url = indexPhoto.getUrl({'maxWidth': 260}, {'maxHeight': 90});
-              console.log('found photo for', indexPlace.name, ':', details.place_photo_url);
               break;
             }
           }
@@ -1246,8 +1265,6 @@ angular.module('uguru.util.controllers')
             var className = 'splash-hero-marker-' + (i+1);
             var indexDOMElem = document.querySelector('.' + className);
             indexDOMElem.classList.add('translate', 'marker-translate', 'a');
-            console.log(className, indexMarker.id);
-            console.log(indexDOMElem, indexMarker);
           }
         }, 2500);
       }
@@ -1306,9 +1323,6 @@ angular.module('uguru.util.controllers')
     }
 
 
-    $scope.updateMarkers = function(filtered_arr) {
-      console.log('keypress event fired', filtered_arr && filtered_arr.length, $scope.filtered_universities.length);
-    }
 
     $scope.mapBounds = {
       desktop: {
@@ -1624,7 +1638,6 @@ angular.module('uguru.util.controllers')
           $scope.map.zoom = $scope.mapZoom.initialMobile
           $scope.map.bounds = $scope.mapBounds.mobile
         }
-        console.log($scope.map);
       }
 
       var createMarkerObj = function(obj) {
@@ -1675,7 +1688,6 @@ angular.module('uguru.util.controllers')
 
       var refreshMap = function() {
         $scope.map.refresh = true;
-        console.log('map is refreshing');
         $timeout(function() {
           $scope.map.refresh = false;
         })

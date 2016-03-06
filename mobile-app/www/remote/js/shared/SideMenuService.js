@@ -172,7 +172,6 @@ function SideMenuService(LoadingService, $timeout, CounterService, CTAService, $
           var intercomContainer = document.querySelector('#intercom-container');
 
           if (intercomContainer) {
-            console.log('intercom container instantiated');
             Intercom('hide');
             intercomContainer.style.cssText += ' z-index:1000 !important; visibility:hidden;';
           }

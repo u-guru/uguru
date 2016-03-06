@@ -1365,7 +1365,6 @@ angular.module('uguru.user', [])
 
             if ($scope) {
                 var scope_user_id = $scope.user.id;
-                console.log(scope_user_id);
             } else {
                 console.log('accessing user from local..')
                 scope_user_id = $localstorage.getObject('user')['id']

@@ -2272,7 +2272,7 @@
 					@include prefix(animation-delay, 1000ms, webkit moz ms o);
 				}
 			}
-			
+
 			@media only screen and (orientation: portrait) {
 				.splash-hero-content {
 					.splash-adlib {
@@ -5939,4 +5939,10 @@ a:hover, a:focus {
 			}
 		}
 	}
+}
+
+
+#intercom-conversation {
+	width:66.6% !important;
+	position:fixed !important;
 }
