@@ -46,7 +46,7 @@ function GUtilService($timeout) {
           if (resultPlace.photos && resultPlace.photos.length){
             photoCount += 1;
             console.log(resultPlace.name, resultPlace.photos[0]);
-            console.log(resultPlace.name, resultPlace.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100}));
+            console.log(resultPlace.name, resultPlace.photos[0].getUrl({'maxWidth': 260, 'maxHeight': 90}));
             // console.log(resultPlace.photos[0].getUrl());
           }
       }

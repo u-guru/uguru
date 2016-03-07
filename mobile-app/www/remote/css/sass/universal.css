@@ -3592,11 +3592,11 @@
           -webkit-justify-content: center;
           justify-content: center;
           margin: 15px auto;
-          width: 144px;
-          height: 144px;
+          width: 160px;
+          height: 160px;
           background: rgba(85, 164, 183, 0.1);
-          font-size: 44px;
-          font-weight: 700; }
+          font-size: 36px;
+          font-weight: 900; }
           #pricing .pricing-uguru li div h2 u {
             display: block;
             padding-bottom: 8px;
@@ -3656,6 +3656,8 @@
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center; }
+    #pricing > header > h1 {
+      padding-bottom: 30px; }
     #pricing > header .pricing-uguru {
       display: none; } }
 @media screen and (min-width: 768px) {

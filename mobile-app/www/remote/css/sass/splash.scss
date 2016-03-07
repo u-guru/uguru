@@ -979,7 +979,7 @@
 					height: 70px!important;
 				}
 			}
-			.splash-hero-nav {
+			.splash-hero-nav, .splash-hero-nav-mobile-dropdowns {
 				@include flex;
 				@include flex-center-vertical;
 				position: fixed;
@@ -2102,6 +2102,9 @@
 								svg {
 									@include opacity(0);
 								}
+								&[class*="translate-blank"] {
+									background-color: $shamrock !important;
+								}
 							}
 							&.bg-delivery {
 								&:hover, &:focus, &[class*="translate-blank"] {
@@ -2109,6 +2112,9 @@
 									svg {
 										@include opacity(0);
 									}
+								}
+								&[class*="translate-blank"] {
+									background-color: $auburn !important;
 								}
 							}
 							&.bg-freelancing {
@@ -2118,6 +2124,9 @@
 										@include opacity(0);
 									}
 								}
+								&[class*="translate-blank"] {
+									background-color: $orange !important;
+								}
 							}
 							&.bg-baking {
 								&:hover, &:focus, &[class*="translate-blank"] {
@@ -2126,13 +2135,20 @@
 										@include opacity(0);
 									}
 								}
+								&[class*="translate-blank"] {
+									background-color: $gold !important;
+								}
 							}
 							&.bg-photography {
 								&:hover, &:focus, &[class*="translate-blank"] {
 									background: $moola;
+									background-color: $azure;
 									svg {
 										@include opacity(0);
 									}
+								}
+								&[class*="translate-blank"] {
+									background-color: $moola !important;
 								}
 							}
 							&.bg-tech {
@@ -2142,6 +2158,9 @@
 										@include opacity(0);
 									}
 								}
+								&[class*="translate-blank"] {
+									background-color: $azure !important;
+								}
 							}
 							&.bg-household {
 								&:hover, &:focus, &[class*="translate-blank"] {
@@ -2149,6 +2168,9 @@
 									svg {
 										@include opacity(0);
 									}
+								}
+								&[class*="translate-blank"] {
+									background-color: $cobalt !important;
 								}
 							}
 							&.bg-athletic {
@@ -2158,6 +2180,9 @@
 										@include opacity(0);
 									}
 								}
+								&[class*="translate-blank"] {
+									background-color: $eggplant !important;
+								}
 							}
 							&.bg-academic {
 								&:hover, &:focus, &[class*="translate-blank"] {
@@ -2165,6 +2190,9 @@
 									svg {
 										@include opacity(0);
 									}
+								}
+								&[class*="translate-blank"] {
+									background-color: $cerise !important;
 								}
 							}
 						}
@@ -2212,7 +2240,7 @@
 					position: absolute;
 				}
 				.coach-fill {
-					top: 95px;
+					top: 85px;
 	    			right: -100px;
 					width: 140px;
 					path {
@@ -2245,18 +2273,63 @@
 						width: 170px;
 					}
 					&.coach-help-mobile {
-						top: -15px;
-						left: -100px;
+						top: -10px;
+						left: -90px;
 						width: 114.5px;
+					}
+				}
+			}
+			.splash-mobile-cta {
+				display: none;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				z-index: 18;
+				width: 100%;
+				height: 54px;
+				background: $shamrock;
+				font-weight: 600;
+				text-transform: uppercase;
+				&.opacity-0 {
+					visibility: hidden;
+					&:hover, &:focus {
+						@include opacity-important(0);
+					}
+				}
+				&.animated {
+					@include prefix(animation-delay, 1000ms, webkit moz ms o);
+				}
+			}
+
+			@media only screen and (orientation: portrait) {
+				.splash-hero-content {
+					.splash-adlib {
+						a {
+							&[class*="translate-blank-"] {
+								margin-top: -1px!important;
+								&:nth-child(even) {
+									margin-left: -1px!important;
+								}
+							}
+						}
 					}
 				}
 			}
 			@media screen and (max-width: 414px) {
 				.splash-hero-content {
+					margin-top: -15px;
 					margin-bottom: 0;
+					.splash-guru-head {
+						.splash-logo-guru {
+							svg {
+								@include prefix(transform, scale(.8), webkit moz ms o);
+							}
+						}
+					}
 					.splash-adlib {
+						margin-top: -10px;
 						ul {
-							margin: 5px 0;
+							margin: -10px 0 5px;
 						}
 					}
 				}
@@ -2283,6 +2356,9 @@
 				}
 			}
 			@media screen and (max-width: 768px) {
+				.splash-mobile-cta {
+					display: block!important;
+				}
 				.splash-hero-markers {
 					.splash-hero-marker {
 						&:first-child {
@@ -5890,5 +5966,25 @@ a:hover, a:focus {
 				@include prefix(transform, translateY(0), webkit moz ms o);
 			}
 		}
+	}
+}
+
+
+#intercom-conversation {
+	width:66.6% !important;
+	position:fixed !important;
+}
+@media screen and (min-width: 768px) {
+	#cta-modal-team {
+		ul {
+			height:100% !important;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	#intercom-conversation {
+		width:100% !important;
+		position:fixed !important;
 	}
 }

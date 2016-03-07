@@ -255,9 +255,12 @@ angular.module('uguru.directives')
         }
         if (initCounterClass) {
           scope.$watch(function() {
+            counterMax = attr.counterMax;
+            var counterDuration = attr.counterDuration || '';
             return element.attr('class').indexOf(initCounterClass) > -1;
 
           },function(elem_has_init_counter_class) {
+            console.log('starting_counter', elem_has_init_counter_class)
             if (elem_has_init_counter_class) {
               $timeout(function() {
                 scope.$apply(function() {
@@ -271,14 +274,22 @@ angular.module('uguru.directives')
               }
               var counterArgs = {
                   useEasing : true,
-                  useGrouping : false,
+                  useGrouping : true,
                   separator : ',',
                   decimal : '.',
                   prefix : counterPrefix ,
                   suffix : counterSuffix
               }
-              var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
-              countUpInstance.start();
+              var counterDelay = attr.counterDelay;
+              if (counterDelay) {
+                $timeout(function() {
+                  var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+                  countUpInstance.start();
+                }, parseInt(counterDelay))
+              } else {
+                  var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+                  countUpInstance.start();
+              }
             }
           })
         }
@@ -396,7 +407,7 @@ angular.module('uguru.directives')
                 var translateY = parseInt(translateElemCoords.top - elemCoords.top + elemCoords.height - translateElemCoords.height) + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
                 var translateX = parseInt(translateElemCoords.left - elemCoords.left) + ((attr.translateXOffset && parseInt(attr.translateXOffset)) || 0);
                 var transFormString = "translate(" + translateX + "px, " + translateY + "px)"
-                console.log(transFormString, translateElemCoords);
+                // console.log(transFormString, translateElemCoords);
                 element[0].style.webkitTransform = transFormString;
                 element[0].style.MozTransform = transFormString;
                 element[0].style.msTransform = transFormString;
@@ -404,7 +415,7 @@ angular.module('uguru.directives')
                 element[0].style.transform = transFormString;
                 //deactivate other directives with transforms towards the same element "translate-to-elem";
                 var allTranslateOnClickElems = document.querySelectorAll('.' + injectOnTranslateClass + ".active");
-                console.log('allTranslateOnClickElems', allTranslateOnClickElems.length, 'found:\n', allTranslateOnClickElems);
+                // console.log('allTranslateOnClickElems', allTranslateOnClickElems.length, 'found:\n', allTranslateOnClickElems);
                 element[0].classList.add(injectOnTranslateClass, 'active', 'recently-active');
                 for (var i = 0; i < allTranslateOnClickElems.length; i++) {
                   var indexTranslateElem  = allTranslateOnClickElems[i];
@@ -590,14 +601,14 @@ directive("animFirstEnterDown", ["AnimationService", "$timeout", function (Anima
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
-            console.log(element[0].attributes);
+            // console.log(element[0].attributes);
             $timeout(function() {
               if (!scope.page.waypoints[attr.animFirstEnterDown]) {
                 scope.page.waypoints[attr.animFirstEnterDown] = {};
               }
               scope.page.waypoints[attr.animFirstEnterDown].hasFirstTimeEnter = true;
               scope.$watch('page.waypoints.' + attr.animFirstEnterDown + '.direction', function(isActive) {
-                console.log(element[0], 'activated for first time enter down');
+                // console.log(element[0], 'activated for first time enter down');
                 var direction = scope.page.waypoints[attr.animFirstEnterDown].direction;
                 var firstTimeActivated = scope.page.waypoints[attr.animFirstEnterDown].firstTimeEnterActivated;
                 if ((isActive &&  direction === 'down' && !firstTimeActivated)) {
@@ -650,7 +661,7 @@ directive("initWpParent", function () {
           restrict: 'A',
           link: function(scope, element, attr) {
               scope.page.waypoints.parent = '#' + element[0].id || '.' + element[0].class
-              console.log('wp parent declared', scope.page.waypoints.parent);
+              // console.log('wp parent declared', scope.page.waypoints.parent);
           }
       }
 }).
@@ -677,7 +688,7 @@ directive("animOnShow", ["AnimationService", "$timeout", function (AnimationServ
           link: function(scope, element, attr) {
               $timeout(function() {
                 scope.$watch(function() {return element.attr('class'); }, function(newValue){
-                  console.log('animOnShow triggered', newValue, element.hasClass(attr.animOnShow));
+                  // console.log('animOnShow triggered', newValue, element.hasClass(attr.animOnShow));
                   if (element.hasClass('show') || (attr.animOnShow && attr.animOnShow.length
                     && element.hasClass(attr.animOnShow) && (attr.animOnShow === attr.animOnHide || !element.hasClass(attr.animOnHide)))) {
                     AnimationService.applyAnimateInDirective(element[0], 'on-show');
@@ -693,7 +704,6 @@ directive("bindWp", ['$timeout', function ($timeout) {
           link: function(scope, element, attr) {
               $timeout(function() {
 
-                console.log('binding wp', attr.bindWp, attr.bindWpClass, 'page.waypoints.' + attr.bindWp + '.activated');
                 if (!attr.bindWpClass || !attr.bindWpClass.length) return;
 
                 var classNames = attr.bindWpClass.split(', ')

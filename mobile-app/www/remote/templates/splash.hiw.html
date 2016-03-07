@@ -3,8 +3,8 @@
 </header>
 <div class="main">
     <div class="how-scene">
-        <div class="how-scene-1" ng-include="::img_base + 'templates/hiw/1-open-24-7-scene.html'"></div>
-        <div class="how-scene-2 opacity-0">
+        <div class="how-scene-1 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut" ng-include="::img_base + 'templates/hiw/1-open-24-7-scene.html'"></div>
+        <div class="how-scene-2 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
             <div class="ugrid-2">
                 <div>
                     <div ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="how-scene-3 opacity-0">
+        <div class="how-scene-3 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
             <ul class="ugrid-5">
                 <li ng-include="::img_base + 'templates/hiw/3-not-just-tutoring-guru.html'"></li>
                 <li ng-include="::img_base + 'templates/hiw/3-not-just-tutoring-guru.html'"></li>
@@ -35,8 +35,8 @@
             </ul>
             <div ng-include="::img_base + 'templates/hiw/3-not-just-tutoring-conveyor.html'"></div>
         </div>
-        <div class="how-scene-4 opacity-0" ng-include="::img_base + 'templates/hiw/4-instant-and-in-person-scene.html'"></div>
-        <div class="how-scene-5 opacity-0">
+        <div class="how-scene-4 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut" ng-include="::img_base + 'templates/hiw/4-instant-and-in-person-scene.html'"></div>
+        <div class="how-scene-5 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
             <div class="opacity-0" ng-include="::img_base + 'templates/hiw/5-student-run-placeholder.html'"></div>
             <ul class="ugrid-2">
                 <li>
@@ -99,41 +99,41 @@
                 </li>
             </ul>
         </div>
-        <div class="how-scene-6 opacity-0" ng-include="::img_base + 'templates/hiw/6-everyone-wins-scene.html'"></div>
+        <div class="how-scene-6 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="750" class-on-clear="fadeOut:animOut" ng-include="::img_base + 'templates/hiw/6-everyone-wins-scene.html'"></div>
     </div>
     <ul class="how-props active">
         <li>
-            <a>
+            <a ng-click='switchToHiwScene(1)'>
                 <div class="hiw-open-container hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/1-open-24-7-hover.html'"></div>
                 <h1>Open<br/>24/7</h1>
             </a>
         </li>
         <li>
-            <a>
+            <a ng-click='switchToHiwScene(2)'>
                 <div class="hiw-affordable-container hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/2-afforable-to-all-hover.html'"></div>
                 <h1>Affordable<br/>to&nbsp;All</h1>
             </a>
         </li>
         <li>
-            <a>
+            <a ng-click='switchToHiwScene(3)'>
                 <div class="hiw-beyond-tutoring-container hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/3-not-just-tutoring-hover.html'"></div>
                 <h1>Not&nbsp;Just<br/>Tutoring</h1>
             </a>
         </li>
         <li>
-            <a>
+            <a ng-click='switchToHiwScene(4)'>
                 <div class="hiw-instant-container hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/4-instant-and-in-person-hover.html'"></div>
                 <h1>Instant&nbsp;and<br/>In-Person</h1>
             </a>
         </li>
         <li>
-            <a>
+            <a ng-click='switchToHiwScene(5)'>
                 <div class="hiw-student-run-container hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/5-student-run-hover.html'"></div>
                 <h1>Student<br/>Run</h1>
             </a>
         </li>
         <li>
-            <a>
+            <a ng-click='switchToHiwScene(6)'>
                 <div class="hiw-svg-container hiw-everyone-container relative full-xy" ng-include="::img_base + 'templates/hiw/6-everyone-wins-hover.html'"></div>
                 <h1>Everyone<br/>Wins</h1>
             </a>

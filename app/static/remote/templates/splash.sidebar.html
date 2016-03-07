@@ -13,26 +13,26 @@
                     </a>
                 </li> -->
                 <li>
-                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="50" id='cta-box-FAQ' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.faq.show()'>
+                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="50" id='cta-box-FAQ' class-on-clear="bounceOut:animOut" ng-click='(!desktopMode && page.modals.faq.show()) || clearAllCTAExcept("FAQ")'>
                         <span>FAQ</span>
                     </a>
                 </li>
                 <li>
-                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="100" id='cta-box-pricing' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.pricing.show()'>
+                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="100" id='cta-box-pricing' class-on-clear="bounceOut:animOut" ng-click='(!desktopMode && page.modals.pricing.show()) || clearAllCTAExcept("pricing")'>
                         <span>Pricing</span>
                     </a>
                 </li>
                 <li>
-                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="150" id='cta-box-intercom' class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.support()'>
+                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="150" id='cta-box-intercom' class-on-clear="bounceOut:animOut" ng-click='(!desktopMode && page.modals.support() || clearAllCTAExcept("support"))'>
                         <span>Support</span>
                     </a>
                 </li>
                 <li>
-                    <a class="opacity-0" id='cta-box-team'  class-on-activate="slideInLeft:anim" class-on-activate-delay="200" class-on-clear="bounceOut:animOut" ng-click='!desktopMode && page.modals.team.show()'>
+                    <a class="opacity-0" id='cta-box-team'  class-on-activate="slideInLeft:anim" class-on-activate-delay="200" class-on-clear="bounceOut:animOut" ng-click='(!desktopMode && page.modals.team.show()) || clearAllCTAExcept("team")'>
                         <span>Team</span>
                     </a>
                 </li>
-                <li ng-if='!user || !user.id'>
+                <li ng-click='clearAllCTAExcept()' ng-if='!user || !user.id'>
                     <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="250" id='cta-box-account' class-on-clear="bounceOut:animOut" ng-click="showSidebarLogin()" >
                         <span>Login</span>
                     </a>
@@ -68,7 +68,8 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-ghost-white" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="700" ng-click='sidebarGetStarted()'><span>Get Started</button>
+            <button class="btn-ghost-white" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="700" ng-click='sidebarGetStarted()' ng-if='!user || !user.id'>Get Started</button>
+            <button class="btn-ghost-white" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="700" ng-click='goToStudentMode()' ng-if='user && user.id'>Go to Dashboard</button>
             <ul class="splash-sidebar-platforms" ng-if='false'>
                 <li>
                     <a class="" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="1100" ng-include="::img_base + 'templates/svg/main/mobile.html'"></a>
