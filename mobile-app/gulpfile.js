@@ -277,7 +277,7 @@ gulp.task('scripts', function() {
       'lib/snap-svg/*js',
       'lib/swiper/*js',
       'lib/angular-google-maps/angular-google-maps.min.js',
-      'http://maps.google.com/maps/api/js?sensor=false',
+      // 'http://maps.google.com/maps/api/js?sensor=false',
       // 'lib/angular-google-maps/google-marker-with-labels.js',
       'lib/restangular/dist/restangular.js',
       'lib/angular-strap/angular-strap.min.js',

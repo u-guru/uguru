@@ -979,7 +979,7 @@
 					height: 70px!important;
 				}
 			}
-			.splash-hero-nav {
+			.splash-hero-nav, .splash-hero-nav-mobile-dropdowns {
 				@include flex;
 				@include flex-center-vertical;
 				position: fixed;
@@ -2102,6 +2102,9 @@
 								svg {
 									@include opacity(0);
 								}
+								&[class*="translate-blank"] {
+									background-color: $shamrock !important;
+								}
 							}
 							&.bg-delivery {
 								&:hover, &:focus, &[class*="translate-blank"] {
@@ -2109,6 +2112,9 @@
 									svg {
 										@include opacity(0);
 									}
+								}
+								&[class*="translate-blank"] {
+									background-color: $auburn !important;
 								}
 							}
 							&.bg-freelancing {
@@ -2118,6 +2124,9 @@
 										@include opacity(0);
 									}
 								}
+								&[class*="translate-blank"] {
+									background-color: $orange !important;
+								}
 							}
 							&.bg-baking {
 								&:hover, &:focus, &[class*="translate-blank"] {
@@ -2126,13 +2135,20 @@
 										@include opacity(0);
 									}
 								}
+								&[class*="translate-blank"] {
+									background-color: $gold !important;
+								}
 							}
 							&.bg-photography {
 								&:hover, &:focus, &[class*="translate-blank"] {
 									background: $moola;
+									background-color: $azure;
 									svg {
 										@include opacity(0);
 									}
+								}
+								&[class*="translate-blank"] {
+									background-color: $moola !important;
 								}
 							}
 							&.bg-tech {
@@ -2142,6 +2158,9 @@
 										@include opacity(0);
 									}
 								}
+								&[class*="translate-blank"] {
+									background-color: $azure !important;
+								}
 							}
 							&.bg-household {
 								&:hover, &:focus, &[class*="translate-blank"] {
@@ -2149,6 +2168,9 @@
 									svg {
 										@include opacity(0);
 									}
+								}
+								&[class*="translate-blank"] {
+									background-color: $cobalt !important;
 								}
 							}
 							&.bg-athletic {
@@ -2158,6 +2180,9 @@
 										@include opacity(0);
 									}
 								}
+								&[class*="translate-blank"] {
+									background-color: $eggplant !important;
+								}
 							}
 							&.bg-academic {
 								&:hover, &:focus, &[class*="translate-blank"] {
@@ -2165,6 +2190,9 @@
 									svg {
 										@include opacity(0);
 									}
+								}
+								&[class*="translate-blank"] {
+									background-color: $cerise !important;
 								}
 							}
 						}
@@ -2272,7 +2300,7 @@
 					@include prefix(animation-delay, 1000ms, webkit moz ms o);
 				}
 			}
-			
+
 			@media only screen and (orientation: portrait) {
 				.splash-hero-content {
 					.splash-adlib {
@@ -5938,5 +5966,25 @@ a:hover, a:focus {
 				@include prefix(transform, translateY(0), webkit moz ms o);
 			}
 		}
+	}
+}
+
+
+#intercom-conversation {
+	width:66.6% !important;
+	position:fixed !important;
+}
+@media screen and (min-width: 768px) {
+	#cta-modal-team {
+		ul {
+			height:100% !important;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	#intercom-conversation {
+		width:100% !important;
+		position:fixed !important;
 	}
 }

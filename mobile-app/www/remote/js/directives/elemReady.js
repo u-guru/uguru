@@ -255,9 +255,12 @@ angular.module('uguru.directives')
         }
         if (initCounterClass) {
           scope.$watch(function() {
+            counterMax = attr.counterMax;
+            var counterDuration = attr.counterDuration || '';
             return element.attr('class').indexOf(initCounterClass) > -1;
 
           },function(elem_has_init_counter_class) {
+            console.log('starting_counter', elem_has_init_counter_class)
             if (elem_has_init_counter_class) {
               $timeout(function() {
                 scope.$apply(function() {
@@ -271,14 +274,22 @@ angular.module('uguru.directives')
               }
               var counterArgs = {
                   useEasing : true,
-                  useGrouping : false,
+                  useGrouping : true,
                   separator : ',',
                   decimal : '.',
                   prefix : counterPrefix ,
                   suffix : counterSuffix
               }
-              var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
-              countUpInstance.start();
+              var counterDelay = attr.counterDelay;
+              if (counterDelay) {
+                $timeout(function() {
+                  var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+                  countUpInstance.start();
+                }, parseInt(counterDelay))
+              } else {
+                  var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+                  countUpInstance.start();
+              }
             }
           })
         }

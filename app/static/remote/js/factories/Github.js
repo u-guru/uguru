@@ -25,7 +25,6 @@ angular.module('uguru.rest')
         function init() {
             sendToGH = false;
             sendToEmail = false;
-            console.log(sendToGH, sendToEmail);
         }
         function setExceptionToGithubIssue(bool) {
         	sendToGH = bool;

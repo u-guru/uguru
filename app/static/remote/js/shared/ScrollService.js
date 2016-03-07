@@ -34,7 +34,7 @@ function ScrollService(LoadingService, $timeout) {
       function returnWayPointFunction(wpName, stateName) {
         return function(direction) {
           //if up animation
-            console.log(wpName, direction, stateName, 'triggered');
+            // console.log(wpName, direction, stateName, 'triggered');
             globalWPScopeRef[stateName].page.waypoints[wpName].activated = true;
             globalWPScopeRef[stateName].page.waypoints[wpName].direction = direction;
             globalWPScopeRef[stateName].$apply();
@@ -102,7 +102,6 @@ function ScrollService(LoadingService, $timeout) {
       change = to - start - offset,
       currentTime = 0,
       increment = 20;
-    console.log('scroll details', start, duration);
     duration = (typeof(duration) === 'undefined') ? 500 : duration;
     var animateScroll = function() {
       // increment the time
