@@ -27,6 +27,18 @@
 			<a ng-if='!root.vars.guru_mode && user.credits && user.credits > 0' class='mright20 weight-400' style='min-width:auto'>
 				<h1 style='font-size:30px'><span name='user-credits' class='weight-900'>${{user.credits}}</span>&nbsp;&nbsp;|&nbsp;&nbsp;</h1>
 			</a>
+			<span class="toggle" ng-if='!user || !user.id' ng-click='signupModal.show()'>
+                <input type="checkbox" checked />
+                <label>
+                    <svg class="square" viewBox="0 0 100 100">
+                        <rect x="0" y="0" width="100" height="100"></rect>
+                    </svg>
+                    <svg class="square" viewBox="0 0 100 100">
+                        <rect x="0" y="0" width="100" height="100"></rect>
+                    </svg>
+                    <span>Demo</span>
+                </label>
+            </span>
 			<a id="top-settings" class='relative' ng-click='toggleDesktopSettings()'>
 				<img ng-if='user.profile_url' ng-src='{{user.profile_url}}' />
 				<img class='profile-url' ng-if='!user.profile_url' ng-src='{{img_base + BASE + "img/avatar.svg"}}' />

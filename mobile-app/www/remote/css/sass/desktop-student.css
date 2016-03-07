@@ -144,85 +144,17 @@
       display: -moz-flex;
       display: -webkit-flex;
       display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-justify-content: center;
+      justify-content: center;
       width: 100%;
-      height: calc(100% - 60px); }
-      #desktop-student-home .main .home-main .home-tile {
-        display: block;
-        padding: 7.5px; }
-        #desktop-student-home .main .home-main .home-tile .home-tile-inside {
-          position: relative; }
-          #desktop-student-home .main .home-main .home-tile .home-tile-inside > svg {
-            display: block;
-            width: 100%;
-            height: auto; }
-            #desktop-student-home .main .home-main .home-tile .home-tile-inside > svg.square * {
-              fill: none !important; }
-          #desktop-student-home .main .home-main .home-tile .home-tile-inside div {
-            -webkit-transition: all 150ms ease-in-out;
-            -moz-transition: all 150ms ease-in-out;
-            -ms-transition: all 150ms ease-in-out;
-            -o-transition: all 150ms ease-in-out;
-            transition: all 150ms ease-in-out;
-            -ms-box-orient: horizontal;
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -moz-flex;
-            display: -webkit-flex;
-            display: flex;
-            -ms-flex-flow: row wrap;
-            -webkit-flex-flow: row wrap;
-            flex-flow: row wrap;
-            -webkit-flex-direction: row;
-            flex-direction: row;
-            -webkit-align-items: center;
-            align-items: center;
-            -webkit-align-content: center;
-            align-content: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #50A5DD;
-            border-radius: 2px; }
-            #desktop-student-home .main .home-main .home-tile .home-tile-inside div span {
-              display: block; }
-            #desktop-student-home .main .home-main .home-tile .home-tile-inside div svg {
-              display: block;
-              width: 100px;
-              height: 100px;
-              margin: 0 auto; }
-              #desktop-student-home .main .home-main .home-tile .home-tile-inside div svg * {
-                fill: none;
-                stroke: white;
-                stroke-width: 3px;
-                stroke-linecap: round;
-                stroke-linejoin: round; }
-                #desktop-student-home .main .home-main .home-tile .home-tile-inside div svg *:not(.line) {
-                  fill: rgba(255, 255, 255, 0.3) !important; }
-            #desktop-student-home .main .home-main .home-tile .home-tile-inside div h1 {
-              width: 100%;
-              color: white;
-              font-size: 24px;
-              font-weight: 600;
-              text-align: center; }
-            #desktop-student-home .main .home-main .home-tile .home-tile-inside div h2 {
-              filter: alpha(opacity=50);
-              opacity: 0.5;
-              margin-top: 0 !important;
-              width: 100%;
-              color: white;
-              font-size: 16px;
-              font-weight: 600;
-              text-align: center; }
-        #desktop-student-home .main .home-main .home-tile:hover .home-tile-inside div, #desktop-student-home .main .home-main .home-tile:focus .home-tile-inside div {
-          background: #6f7d82; }
-        #desktop-student-home .main .home-main .home-tile:active .home-tile-inside div {
-          background: #7bbbe5; }
-      #desktop-student-home .main .home-main .home-tile-container {
+      max-width: 1030px;
+      margin: 0 auto;
+      height: calc(100% - 60px);
+      max-height: 650px; }
+      #desktop-student-home .main .home-main .home-tiles-top {
         -ms-box-orient: horizontal;
         display: -webkit-box;
         display: -moz-box;
@@ -230,18 +162,146 @@
         display: -moz-flex;
         display: -webkit-flex;
         display: flex;
-        -ms-flex-flow: row wrap;
-        -webkit-flex-flow: row wrap;
-        flex-flow: row wrap;
-        -webkit-align-content: flex-start;
-        align-content: flex-start;
-        padding: 7.5px; }
-      #desktop-student-home .main .home-main .home-tiles-powerups {
-        width: 415px; }
-        #desktop-student-home .main .home-main .home-tiles-powerups .home-tile {
-          width: 200px; }
-          #desktop-student-home .main .home-main .home-tiles-powerups .home-tile .home-tile-inside {
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        width: 100%;
+        height: calc(100% / 3 * 2); }
+        #desktop-student-home .main .home-main .home-tiles-top .home-tiles-guru {
+          height: 100%;
+          padding: 15px 0; }
+          #desktop-student-home .main .home-main .home-tiles-top .home-tiles-guru svg {
+            display: block;
+            height: 100%;
+            width: auto; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-guru svg > g > ellipse {
+              -webkit-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+              -moz-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+              -ms-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+              -o-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+              animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+              -webkit-transform-origin: center center;
+              -moz-transform-origin: center center;
+              -ms-transform-origin: center center;
+              -o-transform-origin: center center;
+              transform-origin: center center; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-guru svg .guru-body {
+              -webkit-animation: tour-guru-hover 1000ms linear infinite alternate;
+              -moz-animation: tour-guru-hover 1000ms linear infinite alternate;
+              -ms-animation: tour-guru-hover 1000ms linear infinite alternate;
+              -o-animation: tour-guru-hover 1000ms linear infinite alternate;
+              animation: tour-guru-hover 1000ms linear infinite alternate; }
+        #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily {
+          padding: 15px 0 15px 15px;
+          height: 100%;
+          width: 100%; }
+          #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div {
+            position: relative;
+            height: 100%;
+            background: white;
             border-radius: 2px; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div h1 {
+              position: relative;
+              color: #50A5DD;
+              font-size: 28px;
+              font-weight: 600;
+              padding: 15px; }
+              #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div h1:after {
+                border-radius: 1000px;
+                content: "";
+                display: block;
+                position: absolute;
+                bottom: -1px;
+                left: 15px;
+                width: calc(100% - 30px);
+                height: 2px;
+                background: rgba(80, 165, 221, 0.3); }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div p {
+              font-size: 18px;
+              font-weight: 400; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              padding: 7.5px;
+              height: calc(100% - 63px); }
+              #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li {
+                padding: 7.5px;
+                width: 50%;
+                height: 100%; }
+                #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li h2 {
+                  color: #50A5DD;
+                  font-size: 20px;
+                  font-weight: 600;
+                  padding-bottom: 15px; }
+                #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul {
+                  height: calc(100% - 39px);
+                  overflow: auto; }
+                  #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li {
+                    padding: 7.5px 0; }
+                    #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li:first-child {
+                      padding-top: 0; }
+                    #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li:last-child {
+                      padding-bottom: 0; }
+                    #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li div {
+                      -ms-box-orient: horizontal;
+                      display: -webkit-box;
+                      display: -moz-box;
+                      display: -ms-flexbox;
+                      display: -moz-flex;
+                      display: -webkit-flex;
+                      display: flex;
+                      -webkit-flex-direction: row;
+                      flex-direction: row;
+                      -webkit-align-items: center;
+                      align-items: center;
+                      -webkit-align-content: center;
+                      align-content: center;
+                      -webkit-justify-content: center;
+                      justify-content: center;
+                      padding: 15px;
+                      background: rgba(78, 156, 206, 0.1);
+                      color: #40484B;
+                      font-size: 16px;
+                      font-weight: 400; }
+                      #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li div h3 {
+                        width: 100%;
+                        font-size: 20px;
+                        font-weight: 600; }
+      #desktop-student-home .main .home-main .home-tiles-container {
+        padding: 7.5px; }
+        #desktop-student-home .main .home-main .home-tiles-container .home-tile {
+          display: block; }
+      #desktop-student-home .main .home-main .home-tiles-powerups {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        height: 100%;
+        padding: 7.5px; }
+        #desktop-student-home .main .home-main .home-tiles-powerups .home-tile {
+          height: 25%;
+          padding: 7.5px; }
+          #desktop-student-home .main .home-main .home-tiles-powerups .home-tile .home-tile-inside {
+            border-radius: 2px;
+            height: 100%; }
+            #desktop-student-home .main .home-main .home-tiles-powerups .home-tile .home-tile-inside > svg {
+              height: 100%;
+              width: auto; }
           #desktop-student-home .main .home-main .home-tiles-powerups .home-tile.gpa .home-tile-inside {
             background: #559AB0; }
           #desktop-student-home .main .home-main .home-tiles-powerups .home-tile.munchies .home-tile-inside {
@@ -251,14 +311,96 @@
           #desktop-student-home .main .home-main .home-tiles-powerups .home-tile.transit .home-tile-inside {
             background: #81B566; }
       #desktop-student-home .main .home-main .home-tiles-main {
-        width: 515px; }
-        #desktop-student-home .main .home-main .home-tiles-main .home-tile {
-          width: 250px; }
-          #desktop-student-home .main .home-main .home-tiles-main .home-tile .home-tile-inside div svg {
-            width: 120px;
-            height: 120px; }
-            #desktop-student-home .main .home-main .home-tiles-main .home-tile .home-tile-inside div svg * {
-              stroke-width: 2px; }
+        width: 100%;
+        height: calc(100% / 3);
+        padding: 0 15px 15px; }
+        #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          background: #50A5DD;
+          border-radius: 2px;
+          height: 100%; }
+          #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile {
+            position: relative;
+            width: 25%;
+            height: 100%;
+            padding: 15px; }
+            #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:hover, #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:focus {
+              background: rgba(110, 134, 148, 0.5); }
+            #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:active {
+              background: #6e8694; }
+            #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:not(:last-child):after {
+              border-radius: 1000px;
+              content: "";
+              position: absolute;
+              z-index: 10;
+              top: 15px;
+              right: -1px;
+              height: calc(100% - 30px);
+              width: 2px;
+              background: #a8d2ee; }
+            #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-align-content: center;
+              align-content: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              height: 100%; }
+              #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div {
+                width: 100%;
+                padding-bottom: 5px; }
+                #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div span {
+                  display: block; }
+                #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div h1 {
+                  width: 100%;
+                  color: white;
+                  font-size: 24px;
+                  font-weight: 600;
+                  text-align: center; }
+                  #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div h1 span:not([data-courses="1"]) b {
+                    font-weight: 600; }
+                    #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div h1 span:not([data-courses="1"]) b:after {
+                      content: "s"; }
+                #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div h2 {
+                  filter: alpha(opacity=50);
+                  opacity: 0.5;
+                  margin-top: 0 !important;
+                  width: 100%;
+                  color: white;
+                  font-size: 16px;
+                  font-weight: 600;
+                  text-align: center; }
+                #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div svg {
+                  display: block;
+                  margin: 0 auto;
+                  height: 80px;
+                  width: 80px; }
+                  #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div svg * {
+                    fill: none;
+                    stroke: white;
+                    stroke-width: 3px;
+                    stroke-linecap: round;
+                    stroke-linejoin: round; }
+                    #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div svg *:not(.line) {
+                      fill: rgba(255, 255, 255, 0.3) !important; }
 
 #desktop-courses.student-mode .input-field .prefix svg {
   stroke: #40484B; }

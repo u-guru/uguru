@@ -120,95 +120,131 @@
 		}
 		.home-main {
 			@include flex;
+			@include flex-wrap;
+			@include prefix(justify-content, center, webkit);
 			width: 100%;
+			max-width: 1030px;
+			margin: 0 auto;
 			height: calc(100% - 60px);
-			.home-tile {
-				display: block;
-				padding: 7.5px;
-				.home-tile-inside {
-					position: relative;
-					> svg {
+			max-height: 650px;
+			.home-tiles-top {
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				height: calc(100% / 3 * 2);
+				.home-tiles-guru {
+					height: 100%;
+					padding: 15px 0;
+					svg {
 						display: block;
-						width: 100%;
-						height: auto;
-						&.square {
-							* {
-								fill: none!important;
-							}
+						height: 100%;
+						width: auto;
+						> g > ellipse {
+							@include prefix(animation, tour-guru-shadow-hover 1000ms linear infinite alternate, webkit moz ms o);
+							@include prefix(transform-origin, center center, webkit moz ms o);
+						}
+						.guru-body {
+							@include prefix(animation, tour-guru-hover 1000ms linear infinite alternate, webkit moz ms o);
 						}
 					}
-					div {
-						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						@include flex;
-						@include flex-wrap;
-						@include flex-center;
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
+				}
+				.home-tiles-daily {
+					padding: 15px 0 15px 15px;
+					height: 100%;
+					width: 100%;
+					> div {
+						position: relative;
 						height: 100%;
-						background: $lake;
+						background: white;
 						border-radius: 2px;
-						span {
-							display: block;
+						h1 {
+							position: relative;
+							color: $lake;
+							font-size: 28px;
+							font-weight: 600;
+							padding: 15px;
+							&:after {
+								@include round;
+								content: "";
+								display: block;
+								position: absolute;
+								bottom: -1px;
+								left: 15px;
+								width: calc(100% - 30px);
+								height: 2px;
+								background: rgba($lake, .3);
+							}
 						}
-						svg {
-							display: block;
-							width: 100px;
-							height: 100px;
-							margin: 0 auto;
-							* {
-								@include svg-stroke(white, 3);
-								&:not(.line) {
-									fill: rgba(white, .3)!important;
+						p {
+							font-size: 18px;
+							font-weight: 400;
+						}
+						.home-tiles-upcoming {
+							@include flex;
+							padding: 7.5px;
+							height: calc(100% - 63px);
+							> li {
+								padding: 7.5px;
+								width: 50%;
+								height: 100%;
+								h2 {
+									color: $lake;
+									font-size: 20px;
+									font-weight: 600;
+									padding-bottom: 15px;
+								}
+								> ul {
+									height: calc(100% - 39px);
+									overflow: auto;
+									li {
+										padding: 7.5px 0;
+										&:first-child {
+											padding-top: 0;
+										}
+										&:last-child {
+											padding-bottom: 0;
+										}
+										div {
+											@include flex;
+											@include flex-center;
+											padding: 15px;
+											background: rgba(mix($slate, $lake, 10%), .1);
+											color: $slate;
+											font-size: 16px;
+											font-weight: 400;
+											h3 {
+												width: 100%;
+												font-size: 20px;
+												font-weight: 600;
+											}
+										}
+									}
 								}
 							}
 						}
-						h1 {
-							width: 100%;
-							color: white;
-							font-size: 24px;
-							font-weight: 600;
-							text-align: center;
-						}
-						h2 {
-							@include opacity(.5);
-							margin-top: 0!important;
-							width: 100%;
-							color: white;
-							font-size: 16px;
-							font-weight: 600;
-							text-align: center;
-						}
-					}
-				}
-				&:hover, &:focus {
-					.home-tile-inside {
-						div {
-							background: lighten($slate, 20%);
-						}
-					}
-				}
-				&:active {
-					.home-tile-inside {
-						div {
-							background: lighten($lake, 10%);
-						}
 					}
 				}
 			}
-			.home-tile-container {
-				@include flex;
-				@include flex-wrap;
-				@include prefix(align-content, flex-start, webkit);
+			.home-tiles-container {
 				padding: 7.5px;
+				.home-tile {
+					display: block;
+				}
 			}
 			.home-tiles-powerups {
-				width: 415px;
+				@include flex-column;
+				height: 100%;
+				padding: 7.5px;
 				.home-tile {
-					width: 200px;
+					height: 25%;
+					padding: 7.5px;
 					.home-tile-inside {
 						border-radius: 2px;
+						height: 100%;
+						> svg {
+							height: 100%;
+							width: auto;
+						}
 					}
 					&.gpa {
 						.home-tile-inside {
@@ -233,16 +269,84 @@
 				}
 			}
 			.home-tiles-main {
-				width: 515px;
-				.home-tile {
-					width: 250px;
-					.home-tile-inside {
-						div {
-							svg {
-								width: 120px;
-								height: 120px;
-								* {
-									stroke-width: 2px;
+				width: 100%;
+				height: calc(100% / 3);
+				padding: 0 15px 15px;
+				.home-tiles-main-inside {
+					@include flex;
+					@include flex-wrap;
+					background: $lake;
+					border-radius: 2px;
+					height: 100%;
+					.home-tile {
+						position: relative;
+						width: 25%;
+						height: 100%;
+						padding: 15px;
+						&:hover, &:focus {
+							background: rgba(lighten(mix($slate, $lake, 90%), 20%), .5);
+						}
+						&:active {
+							background: lighten(mix($slate, $lake, 90%), 20%);
+						}
+						&:not(:last-child) {
+							&:after {
+								@include round;
+								content: "";
+								position: absolute;
+								z-index: 10;
+								top: 15px;
+								right: -1px;
+								height: calc(100% - 30px);
+								width: 2px;
+								background: mix($lake, white);
+							}
+						}
+						.home-tile-inside {
+							@include flex;
+							@include flex-center;
+							height: 100%;
+							div {
+								width: 100%;
+								padding-bottom: 5px;
+								span {
+									display: block;
+								}
+								h1 {
+									width: 100%;
+									color: white;
+									font-size: 24px;
+									font-weight: 600;
+									text-align: center;
+									span:not([data-courses="1"]) {
+										b {
+											font-weight: 600;
+											&:after {
+												content: "s";
+											}
+										}
+									}
+								}
+								h2 {
+									@include opacity(.5);
+									margin-top: 0!important;
+									width: 100%;
+									color: white;
+									font-size: 16px;
+									font-weight: 600;
+									text-align: center;
+								}
+								svg {
+									display: block;
+									margin: 0 auto;
+									height: 80px;
+									width: 80px;
+									* {
+										@include svg-stroke(white, 3);
+										&:not(.line) {
+											fill: rgba(white, .3)!important;
+										}
+									}
 								}
 							}
 						}

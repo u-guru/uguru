@@ -48,29 +48,112 @@
 			</nav>
 
 			<div class="home-main">
-				<div class="home-tiles-main home-tile-container">
-					<a class="home-tile" id='cta-box-student-request'>
-						<div class="home-tile-inside">
-							<svg class="square" viewBox="0 0 100 100">
-		                        <rect x="0" y="0" width="100" height="100"></rect>
-		                    </svg>
-							<div>
-								<span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
-								<h1>Requst a Guru</h1>
-								<h2>Your peers who aced<br/>your current courses!</h2>
-							</div>
+				<div class="home-tiles-top">
+					<div class="home-tiles-guru" ng-include="img_base + BASE + 'templates/svg/tour-guru.html'"></div>
+					<div class="home-tiles-daily">
+						<div class="home-tiles-daily-inside">
+							<h1>Hello, {{user.first_name || 'Student'}}, how are you today?</h1>
+							<!-- @samir -->
+							<ul class="home-tiles-upcoming">
+								<li>
+									<h2>Upcoming Events</h2>
+									<ul>
+										<li>
+											<div>
+												<h3>Event Name</h3>
+												<aside>March&nbsp;4<br/>10am</aside>
+											</div>
+										</li>
+										<li>
+											<div>
+												<h3>Event Name</h3>
+												<aside>March&nbsp;4<br/>10am</aside>
+											</div>
+										</li>
+										<li>
+											<div>
+												<h3>Event Name</h3>
+												<aside>March&nbsp;4<br/>10am</aside>
+											</div>
+										</li>
+										<li>
+											<div>
+												<h3>Event Name</h3>
+												<aside>March&nbsp;4<br/>10am</aside>
+											</div>
+										</li>
+										<li>
+											<div>
+												<h3>Event Name</h3>
+												<aside>March&nbsp;4<br/>10am</aside>
+											</div>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h2>Announcements</h2>
+									<ul>
+										<li>
+											<div>
+												This is an announcement. You can put whatever you want in here.
+											</div>
+										</li>
+										<li>
+											<div>
+												This is an announcement. You can put whatever you want in here.
+											</div>
+										</li>
+										<li>
+											<div>
+												This is an announcement. You can put whatever you want in here.
+											</div>
+										</li>
+										<li>
+											<div>
+												This is an announcement. You can put whatever you want in here.
+											</div>
+										</li>
+										<li>
+											<div>
+												This is an announcement. You can put whatever you want in here.
+											</div>
+										</li>
+										<li>
+											<div>
+												This is an announcement. You can put whatever you want in here.
+											</div>
+										</li>
+									</ul>
+								</li>
+							</ul>
 						</div>
-					</a>
-					<a class="home-tile" ng-click='goToDesktopBecomeGuru()'>
-						<div class="home-tile-inside">
-							<svg class="square" viewBox="0 0 100 100">
-		                        <rect x="0" y="0" width="100" height="100"></rect>
-		                    </svg>
-							<div>
-								<span ng-include="img_base + 'templates/svg/main/become.html'"></span>
-								<h1>Become a Guru</h1>
-								<h2>Done early?<br/>Return the favor!</h2>
+					</div>
+					<div class="home-tiles-powerups home-tiles-container">
+						<a class="home-tile gpa">
+							<div class="home-tile-inside" ng-include="img_base + BASE + 'templates/svg/gpa.html'"></div>
+						</a>
+						<a class="home-tile munchies">
+							<div class="home-tile-inside" ng-include="img_base + BASE + 'templates/svg/munchies.html'"></div>
+						</a>
+						<a class="home-tile sound">
+							<div class="home-tile-inside" ng-include="img_base + BASE + 'templates/svg/sound.html'"></div>
+						</a>
+						<a class="home-tile transit">
+							<div class="home-tile-inside" ng-include="img_base + BASE + 'templates/svg/transit.html'"></div>
+						</a>
+					</div>
+				</div>
+				<div class="home-tiles-main home-tiles-container">
+					<div class="home-tiles-main-inside">
+						<a class="home-tile" id='cta-box-student-request'>
+							<div class="home-tile-inside">
+								<div>
+									<span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
+									<h1>Requst a Guru</h1>
+									<h2>Your peers who aced<br/>your current courses!</h2>
+								</div>
 							</div>
+<<<<<<< HEAD
 						</div>
 					</a>
 					<a  class="cta-box home-tile">
@@ -82,40 +165,42 @@
 								<span ng-include="img_base + 'templates/svg/main/lightbulb.html'"></span>
 								<h1>Quick Solver</h1>
 								<h2>Take a photo or<br/>ask a question</h2>
+=======
+						</a>
+						<a class="home-tile" ng-click='goToDesktopBecomeGuru()'>
+							<div class="home-tile-inside">
+								<div>
+									<span ng-include="img_base + 'templates/svg/main/become.html'"></span>
+									<h1>Become a Guru</h1>
+									<h2>Done early?<br/>Return the favor!</h2>
+								</div>
+>>>>>>> 4f041d399986b78683230834934712881f59a960
 							</div>
-						</div>
-					</a>
-					<a id='cta-box-student-courses' class="cta-box home-tile">
-						<div class="home-tile-inside">
-							<svg class="square" viewBox="0 0 100 100">
-		                        <rect x="0" y="0" width="100" height="100"></rect>
-		                    </svg>
-							<div>
-								<span ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
-								<h1>
-									<span class='ng-class:{"hide":user.student_courses.length}'>Add Your Courses</span>
-									<span class='hide ng-class:{"show":user.student_courses.length}'>
-										{{user.student_courses.length}} course<span class='hide ng-class:{"inline":user.student_courses.length !== 1}'>s</span> added
-									</span>
-								</h1>
-								<h2>Discover gurus who have taken<br/>the same courses!</h2>
+						</a>
+						<a  class="cta-box home-tile">
+							<div class="home-tile-inside">
+								<div>
+									<span ng-include="img_base + 'templates/svg/main/lightbulb.html'"></span>
+									<h1>Quick Solver</h1>
+									<h2>Take a photo or<br/>ask a question</h2>
+								</div>
 							</div>
-						</div>
-					</a>
-				</div>
-				<div class="home-tiles-powerups home-tile-container">
-					<a class="home-tile gpa">
-						<div class="home-tile-inside" ng-include="img_base + BASE + 'templates/svg/gpa.html'"></div>
-					</a>
-					<a class="home-tile munchies">
-						<div class="home-tile-inside" ng-include="img_base + BASE + 'templates/svg/munchies.html'"></div>
-					</a>
-					<a class="home-tile sound">
-						<div class="home-tile-inside" ng-include="img_base + BASE + 'templates/svg/sound.html'"></div>
-					</a>
-					<a class="home-tile transit">
-						<div class="home-tile-inside" ng-include="img_base + BASE + 'templates/svg/transit.html'"></div>
-					</a>
+						</a>
+						<a id='cta-box-student-courses' class="cta-box home-tile">
+							<div class="home-tile-inside">
+								<div>
+									<span ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+									<h1>
+										<span class='ng-class:{"hide":user.student_courses.length}'>Add Your Courses</span>
+										<span class='hide ng-class:{"show":user.student_courses.length}' data-courses="{{user.student_courses.length}}">
+											{{user.student_courses.length}} <b>Course</b> Added
+										</span>
+									</h1>
+									<h2>Discover gurus who have taken<br/>the same courses!</h2>
+								</div>
+							</div>
+						</a>
+					</div>
 				</div>
 			</div>
 

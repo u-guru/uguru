@@ -691,17 +691,5706 @@
           right: auto;
           height: auto; } }
   .splash-landing .splash-toast {
+<<<<<<< HEAD
     -webkit-backspace-visibility: hidden;
     backspace-visibility: hidden;
+=======
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding: 30px 15px 15px;
+    margin-top: -15px !important;
+    text-align: center;
+  }
+  .splash-landing .splash-toast a {
+    top: calc(50% + 7.5px);
+    margin-top: -25px;
+  }
+  .splash-landing .splash-toast h1 {
+    padding: 0 15px 15px !important;
+    font-size: 28px !important;
+  }
+  .splash-landing .splash-toast button {
+    border-radius: 1000px;
+    margin: 0 15px;
+    width: auto;
+    padding: 15px 30px !important;
+  }
+}
+
+@media screen and (min-width: 1106px) {
+  .splash-landing .splash-toast h1 {
+    padding: 0 15px !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing .splash-header.active {
+>>>>>>> 4f041d399986b78683230834934712881f59a960
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+<<<<<<< HEAD
+=======
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-name: toast-pop;
+    -moz-animation-name: toast-pop;
+    -o-animation-name: toast-pop;
+    animation-name: toast-pop;
+    -webkit-animation-duration: 0.4s;
+    -moz-animation-duration: 0.4s;
+    -o-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -o-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    margin-top: 94px;
+  }
+}
+
+.splash-landing .splash-footer-link {
+  display: block;
+  position: fixed;
+  z-index: 99;
+  bottom: 15px;
+}
+
+.splash-landing .splash-footer-link span {
+  display: block;
+}
+
+.splash-landing .splash-footer-link .backpack, .splash-landing .splash-footer-link .support {
+  display: none;
+  width: 100px;
+  height: auto;
+}
+
+.splash-landing .splash-footer-link .splash-footer-icon {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  border-radius: 1000px;
+  fill: none;
+  stroke: #69B3A5;
+  stroke-width: 7px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 48px;
+  height: 48px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 28px;
+  font-weight: 600;
+  color: #69B3A5;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing .splash-footer-link .backpack, .splash-landing .splash-footer-link .support {
+    display: block;
+  }
+  .splash-landing .splash-footer-link .backpack + .splash-footer-icon, .splash-landing .splash-footer-link .support + .splash-footer-icon {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: 19%;
+    width: 36px;
+    height: 36px;
+    stroke-width: 10px;
+  }
+}
+
+.splash-landing .splash-footer-link:before, .splash-landing .splash-footer-link:after {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.splash-landing .splash-footer-link:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+}
+
+.splash-landing .splash-footer-link:after {
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #40484B;
+}
+
+.splash-landing .splash-footer-link:hover:before, .splash-landing .splash-footer-link:hover:after, .splash-landing .splash-footer-link:focus:before, .splash-landing .splash-footer-link:focus:after {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.splash-landing .splash-footer-link:hover .splash-footer-icon, .splash-landing .splash-footer-link:focus .splash-footer-icon {
+  background: #8bc4b9;
+  stroke: white;
+}
+
+.splash-landing .splash-footer-link:active .splash-footer-icon {
+  background: #69B3A5;
+}
+
+.splash-landing .splash-footer-link#splash-footer-support {
+  left: 15px;
+}
+
+.splash-landing .splash-footer-link#splash-footer-support:before {
+  right: -20px;
+  border-right-color: rgba(255, 255, 255, 0.9);
+}
+
+.splash-landing .splash-footer-link#splash-footer-support:after {
+  content: "Support";
+  right: -108px;
+}
+
+.splash-landing .splash-footer-link#splash-footer-next {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-backspace-visibility: hidden !important;
+  backspace-visibility: hidden !important;
+}
+
+.splash-landing .splash-footer-link#splash-footer-next:before, .splash-landing .splash-footer-link#splash-footer-next:after {
+  display: none;
+}
+
+.splash-landing .splash-footer-link#splash-footer-next div {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  display: block;
+  width: 122px;
+  top: -80px;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #40484B;
+}
+
+.splash-landing .splash-footer-link#splash-footer-next div h4 {
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+.splash-landing .splash-footer-link#splash-footer-next div span {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.splash-landing .splash-footer-link#splash-footer-next div:before {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: -20px;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.9);
+}
+
+.splash-landing .splash-footer-link#splash-footer-next:hover div, .splash-landing .splash-footer-link#splash-footer-next:focus div {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.splash-landing .splash-footer-link#splash-footer-top {
+  right: 15px;
+}
+
+.splash-landing .splash-footer-link#splash-footer-top:before {
+  left: -20px;
+  border-left-color: rgba(255, 255, 255, 0.9);
+}
+
+.splash-landing .splash-footer-link#splash-footer-top:after {
+  content: "Back to Top";
+  left: -130px;
+}
+
+.splash-landing .arrow-down-next {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  display: block;
+  bottom: 0;
+}
+
+.splash-landing .arrow-down-next svg {
+  width: 72px;
+  height: 72px;
+}
+
+.splash-landing .arrow-down-next svg path {
+  fill: none;
+  stroke: white;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.splash-landing .splash-sidebar-full {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(64, 72, 75, 0.95);
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-content: space-between;
+  align-content: space-between;
+  height: 100%;
+  width: 100%;
+  background: rgba(99, 112, 116, 0.2);
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu header {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  height: 50px;
+  width: 100%;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu header .splash-logo {
+  height: 50px !important;
+  margin: 5px;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu div {
+  width: 100%;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu ul {
+  width: 100%;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu ul li a {
+  display: block;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu button {
+  display: block;
+  margin: 15px auto;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu .school-id-card {
+  margin: 15px auto;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu .splash-sidebar-links li {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu .splash-sidebar-links li a {
+  padding: 20px 0;
+  width: calc(100% - 34px);
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu .splash-sidebar-links li a:hover, .splash-landing .splash-sidebar-full .splash-sidebar-menu .splash-sidebar-links li a:focus {
+  background: #69B3A5;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu .splash-sidebar-links li:not(:last-child):after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  width: calc(100% - 30px);
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu .splash-sidebar-platforms {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu .splash-sidebar-platforms li a {
+  padding: 7px;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu .splash-sidebar-platforms li a svg {
+  display: block;
+  width: 64px;
+  height: 64px;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-menu .splash-sidebar-platforms li a svg * {
+  stroke: white;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-content {
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  display: none;
+  height: 100%;
+  width: calc(100% / 3 * 2);
+  overflow: hidden;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-content .splash-sidebar-empty {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-content .splash-sidebar-empty .splash-sidebar-message {
+  width: 100%;
+  padding: 0 15px;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-content .splash-sidebar-empty .splash-sidebar-message svg {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 642px;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-content #desktop-account aside, .splash-landing .splash-sidebar-full .splash-sidebar-content #desktop-account #cta-desktop-signup-back {
+  display: none;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-content #desktop-account .main {
+  width: 100%;
+}
+
+.splash-landing .splash-sidebar-full .splash-sidebar-content #desktop-guru-onboarding .desktop-header {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing .splash-sidebar-full .splash-sidebar-menu {
+    width: calc(100% / 3);
+  }
+  .splash-landing .splash-sidebar-full .splash-sidebar-content {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 860px) {
+  .splash-landing .splash-sidebar-full .splash-sidebar-menu header {
+    height: 70px;
+  }
+  .splash-landing .splash-sidebar-full .splash-sidebar-menu header .splash-logo {
+    height: 100% !important;
+    margin: 0 15px !important;
+  }
+}
+
+.splash-landing > section {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.splash-landing > section > header {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  color: #40484B;
+}
+
+.splash-landing > section > header h1 {
+  padding-top: 15px;
+  text-align: center;
+}
+
+.splash-landing > section button.default {
+  max-width: 100%;
+  background: white;
+  color: #69B3A5;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.splash-landing > section button.default:hover, .splash-landing > section button.default:focus {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  background: #69B3A5;
+  color: white;
+}
+
+.splash-landing > section button.default:active, .splash-landing > section button.default.activated {
+  background: #637074;
+}
+
+.splash-landing > section .main {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 15px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.splash-landing > section form {
+  position: relative;
+  width: 100%;
+}
+
+.splash-landing > section form .input-field {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.splash-landing > section form .input-field .prefix {
+  top: 9px;
+}
+
+.splash-landing > section form .input-field input {
+  padding-right: 48px;
+}
+
+.splash-landing > section form .input-field .desktop-input-close-icon {
+  margin: 0 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section button {
+    max-width: 300px;
+  }
+  .splash-landing > section > header {
+    height: 25% !important;
+  }
+  .splash-landing > section > header h1 {
+    font-size: 36px;
+    font-weight: 600;
+    text-transform: none !important;
+  }
+  .splash-landing > section form .input-field label:not(.active) {
+    top: 0;
+  }
+}
+
+.splash-landing > section.splash-hero {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background: #40484B;
+  text-align: center;
+}
+
+.splash-landing > section.splash-hero .splash-header {
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  height: 50px !important;
+  width: 100%;
+}
+
+@media screen and (min-width: 860px) {
+  .splash-landing > section.splash-hero .splash-header {
+    height: 70px !important;
+  }
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1001;
+  top: 0;
+  right: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a, .splash-landing > section.splash-hero .splash-hero-nav h2 {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  padding: 0 10px;
+  height: 48px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a {
+  position: relative;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a .splash-hero-nav-link-bg {
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a:hover .splash-hero-nav-link-bg, .splash-landing > section.splash-hero .splash-hero-nav a:focus .splash-hero-nav-link-bg {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-delivery {
+  background: rgba(240, 79, 84, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-delivery:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-delivery:focus {
+  background: #F04F54;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-freelancing {
+  background: rgba(229, 117, 60, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-freelancing:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-freelancing:focus {
+  background: #E5753C;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-baking {
+  background: rgba(246, 198, 78, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-baking:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-baking:focus {
+  background: #F6C64E;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-photography {
+  background: rgba(129, 181, 102, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-photography:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-photography:focus {
+  background: #81B566;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-tech {
+  background: rgba(85, 164, 183, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-tech:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-tech:focus {
+  background: #55A4B7;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-household {
+  background: rgba(120, 114, 227, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-household:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-household:focus {
+  background: #7872e3;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-athletic {
+  background: rgba(154, 91, 197, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-athletic:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-athletic:focus {
+  background: #9A5BC5;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-academic {
+  background: rgba(230, 56, 155, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-academic:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-academic:focus {
+  background: #e6389b;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav a.bg-shamrock:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-shamrock:focus {
+  background: #6f7d82;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div {
+  position: relative;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > a {
+  z-index: 1;
+  padding: 0 12px 0 15px;
+  border: 2px solid white;
+  border-radius: 2px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > a svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+  margin-left: 5px;
+  width: 24px;
+  height: 24px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div {
+  -webkit-transition: 150ms ease-in-out;
+  -moz-transition: 150ms ease-in-out;
+  -ms-transition: 150ms ease-in-out;
+  -o-transition: 150ms ease-in-out;
+  transition: 150ms ease-in-out;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+  position: absolute;
+  left: 50%;
+  margin-left: -99px;
+  top: 58px;
+  width: 198px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div:not(.visible) {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div.visible {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div > svg {
+  position: relative;
+  z-index: 5;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul {
+  margin-top: -6px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li {
+  position: relative;
+  height: 48px;
+  border: 2px solid white;
+  border-top: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li:first-child {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li:last-child {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li:not(:first-child) a + .arrow {
+  display: none;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: none;
+  margin-left: 5px;
+  width: 24px;
+  height: 24px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a.active svg {
+  display: block;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  display: block;
+  top: -13px;
+  width: 30px;
+  height: 15px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.school path {
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow path {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-delivery path {
+  fill: rgba(240, 79, 84, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-freelancing path {
+  fill: rgba(229, 117, 60, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-baking path {
+  fill: rgba(246, 198, 78, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-photography path {
+  fill: rgba(129, 181, 102, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-tech {
+  background: none !important;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-tech path {
+  fill: rgba(85, 164, 183, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-household path {
+  fill: rgba(120, 114, 227, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-athletic path {
+  fill: rgba(154, 91, 197, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-academic path {
+  fill: rgba(230, 56, 155, 0.8);
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.school path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.school path {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-delivery path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-delivery path {
+  fill: #F04F54;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-freelancing path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-freelancing path {
+  fill: #E5753C;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-baking path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-baking path {
+  fill: #F6C64E;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-photography path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-photography path {
+  fill: #81B566;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-tech path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-tech path {
+  fill: #55A4B7;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-household path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-household path {
+  fill: #7872e3;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-athletic path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-athletic path {
+  fill: #9A5BC5;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-academic path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-academic path {
+  fill: #e6389b;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-cal path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-cal path {
+  fill: #003057;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav.desktop {
+  display: none;
+}
+
+.splash-landing > section.splash-hero .splash-hero-nav.mobile > div > a {
+  border: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-map {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-landing > section.splash-hero .splash-hero-map ui-gmap-google-map {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.splash-landing > section.splash-hero .splash-hero-map.animated {
+  -webkit-animation-delay: 200ms;
+  -moz-animation-delay: 200ms;
+  -ms-animation-delay: 200ms;
+  -o-animation-delay: 200ms;
+  animation-delay: 200ms;
+}
+
+.splash-landing > section.splash-hero .splash-hero-map.active {
+  filter: alpha(opacity=100) !important;
+  opacity: 1 !important;
+  -webkit-transition: all 1000ms ease-in-out;
+  -moz-transition: all 1000ms ease-in-out;
+  -ms-transition: all 1000ms ease-in-out;
+  -o-transition: all 1000ms ease-in-out;
+  transition: all 1000ms ease-in-out;
+  -webkit-transition-delay: 200ms;
+  -moz-transition-delay: 200ms;
+  -ms-transition-delay: 200ms;
+  -o-transition-delay: 200ms;
+  transition-delay: 200ms;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  position: absolute;
+  cursor: pointer;
+  max-width: 262px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.visible {
+  filter: alpha(opacity=100) !important;
+  opacity: 1 !important;
+  z-index: 9;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:not(.splash-hero-marker-mobile) {
+  display: none;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-hero-marker-mobile {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  margin-left: -46px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-academic .marker-circle {
+  background: #F04F54;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-academic .marker-guru {
+  background: rgba(240, 79, 84, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-academic .marker-guru:hover, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-academic .marker-guru:focus {
+  background: #F04F54;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-freelancing .marker-circle {
+  background: #E5753C;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-freelancing .marker-guru {
+  background: rgba(229, 117, 60, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-freelancing .marker-guru:hover, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-freelancing .marker-guru:focus {
+  background: #E5753C;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-baking .marker-circle {
+  background: #F6C64E;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-baking .marker-guru {
+  background: rgba(246, 198, 78, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-baking .marker-guru:hover, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-baking .marker-guru:focus {
+  background: #F6C64E;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-photography .marker-circle {
+  background: #81B566;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-photography .marker-guru {
+  background: rgba(129, 181, 102, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-photography .marker-guru:hover, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-photography .marker-guru:focus {
+  background: #81B566;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-tech .marker-circle {
+  background: #55A4B7;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-tech .marker-guru {
+  background: rgba(85, 164, 183, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-tech .marker-guru:hover, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-tech .marker-guru:focus {
+  background: #55A4B7;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-household .marker-circle {
+  background: #7872e3;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-household .marker-guru {
+  background: rgba(120, 114, 227, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-household .marker-guru:hover, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-household .marker-guru:focus {
+  background: #7872e3;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-athletic .marker-circle {
+  background: #9A5BC5;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-athletic .marker-guru {
+  background: rgba(154, 91, 197, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-athletic .marker-guru:hover, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-athletic .marker-guru:focus {
+  background: #9A5BC5;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-academic .marker-circle {
+  background: #e6389b;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-academic .marker-guru {
+  background: rgba(230, 56, 155, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-academic .marker-guru:hover, .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.bg-academic .marker-guru:focus {
+  background: #e6389b;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-normal {
+  position: relative;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-normal .marker-normal-window .open {
+  -webkit-transition: stroke-dashoffset 150ms ease-in-out;
+  -moz-transition: stroke-dashoffset 150ms ease-in-out;
+  -ms-transition: stroke-dashoffset 150ms ease-in-out;
+  -o-transition: stroke-dashoffset 150ms ease-in-out;
+  transition: stroke-dashoffset 150ms ease-in-out;
+  stroke-dasharray: 80, 80;
+  stroke-dashoffset: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-normal .marker-normal-window .side {
+  -webkit-transition: stroke-dashoffset 200ms ease-in-out;
+  -moz-transition: stroke-dashoffset 200ms ease-in-out;
+  -ms-transition: stroke-dashoffset 200ms ease-in-out;
+  -o-transition: stroke-dashoffset 200ms ease-in-out;
+  transition: stroke-dashoffset 200ms ease-in-out;
+  stroke-dasharray: 278, 278;
+  stroke-dashoffset: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-normal .marker-normal-content {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 26px);
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-normal .marker-normal-content svg {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  fill: none;
+  stroke: white;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  position: absolute;
+  top: 50%;
+  margin-top: -24px;
+  left: 50%;
+  margin-left: -24px;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-normal .marker-normal-content .marker-guru {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  border-radius: 1000px;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin-top: 6px;
+  height: 30px;
+  width: 74px;
+  padding-left: 28px;
+  border: 2px solid white;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-normal .marker-normal-content .marker-guru .user-icon {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 30px;
+  height: 30px;
+  border-width: 2px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-normal .marker-normal-content .marker-guru .marker-guru-course {
+  display: block;
+  width: 100%;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-normal.move .marker-normal-window .open {
+  stroke-dashoffset: 80;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-normal.move .marker-normal-content svg {
+  -webkit-transform: translateY(-36px);
+  -moz-transform: translateY(-36px);
+  -ms-transform: translateY(-36px);
+  -o-transform: translateY(-36px);
+  transform: translateY(-36px);
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 50%;
+  margin-left: -131px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded .marker-expanded-window .sides {
+  -webkit-transition: stroke-dashoffset 300ms ease-in-out;
+  -moz-transition: stroke-dashoffset 300ms ease-in-out;
+  -ms-transition: stroke-dashoffset 300ms ease-in-out;
+  -o-transition: stroke-dashoffset 300ms ease-in-out;
+  transition: stroke-dashoffset 300ms ease-in-out;
+  stroke-dasharray: 936, 936;
+  stroke-dashoffset: 936;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded .marker-expanded-content {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 26px);
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded .marker-expanded-content .marker-expanded-icon svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: -50%;
+  margin-top: 75px;
+  width: 100px;
+  height: 100px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded .marker-expanded-content .marker-location {
+  padding: 40px 0 15px 0;
+  text-align: center;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded .marker-expanded-content .marker-location h1 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded .marker-expanded-content .marker-location h4 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded .marker-expanded-content .marker-guru {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  position: relative;
+  padding: 10px 15px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded .marker-expanded-content .marker-guru .user-icon {
+  width: 48px;
+  height: 48px;
+  border-width: 2px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded .marker-expanded-content .marker-guru div {
+  width: calc(100% - 48px);
+  padding-left: 15px;
+  text-align: left;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded .marker-expanded-content .marker-guru h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded .marker-expanded-content .marker-guru h3 {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  margin-top: 0 !important;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded .marker-expanded-content .marker-guru svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 2px;
+  height: 24px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded .marker-expanded-content .marker-message {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: calc(100% - 96px - 68px);
+  padding: 0 15px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-expanded .marker-expanded-content .marker-message p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-circle {
+  border-radius: 1000px;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  margin-top: 3px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid white;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker .marker-label {
+  position: absolute;
+  width: 100%;
+  bottom: -35px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-active {
+  z-index: 12;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-active .marker-normal {
+  -webkit-transition-delay: 300ms;
+  -moz-transition-delay: 300ms;
+  -ms-transition-delay: 300ms;
+  -o-transition-delay: 300ms;
+  transition-delay: 300ms;
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-active .marker-normal .marker-normal-window .side {
+  -webkit-transition-delay: 150ms;
+  -moz-transition-delay: 150ms;
+  -ms-transition-delay: 150ms;
+  -o-transition-delay: 150ms;
+  transition-delay: 150ms;
+  stroke-dashoffset: 278;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-active .marker-normal .marker-normal-content {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-active .marker-expanded {
+  z-index: 2;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-active .marker-expanded .marker-expanded-window .sides {
+  -webkit-transition-delay: 350ms;
+  -moz-transition-delay: 350ms;
+  -ms-transition-delay: 350ms;
+  -o-transition-delay: 350ms;
+  transition-delay: 350ms;
+  stroke-dashoffset: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-active .marker-expanded .marker-expanded-content {
+  -webkit-transition-delay: 650ms;
+  -moz-transition-delay: 650ms;
+  -ms-transition-delay: 650ms;
+  -o-transition-delay: 650ms;
+  transition-delay: 650ms;
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-first {
+  z-index: 12;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-first .marker-normal {
+  -webkit-transition-delay: 4800ms;
+  -moz-transition-delay: 4800ms;
+  -ms-transition-delay: 4800ms;
+  -o-transition-delay: 4800ms;
+  transition-delay: 4800ms;
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-first .marker-normal .marker-normal-window .side {
+  -webkit-transition-delay: 4650ms;
+  -moz-transition-delay: 4650ms;
+  -ms-transition-delay: 4650ms;
+  -o-transition-delay: 4650ms;
+  transition-delay: 4650ms;
+  stroke-dashoffset: 278;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-first .marker-normal .marker-normal-content {
+  -webkit-transition-delay: 4500ms;
+  -moz-transition-delay: 4500ms;
+  -ms-transition-delay: 4500ms;
+  -o-transition-delay: 4500ms;
+  transition-delay: 4500ms;
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-first .marker-expanded {
+  z-index: 2;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-first .marker-expanded .marker-expanded-window .sides {
+  -webkit-transition-delay: 4850ms;
+  -moz-transition-delay: 4850ms;
+  -ms-transition-delay: 4850ms;
+  -o-transition-delay: 4850ms;
+  transition-delay: 4850ms;
+  stroke-dashoffset: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.splash-marker-first .marker-expanded .marker-expanded-content {
+  -webkit-transition-delay: 5150ms;
+  -moz-transition-delay: 5150ms;
+  -ms-transition-delay: 5150ms;
+  -o-transition-delay: 5150ms;
+  transition-delay: 5150ms;
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.splash-landing > section.splash-hero .splash-hero-skip {
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-skip.rollIn {
+  -webkit-animation-name: rollInLeft;
+  -moz-animation-name: rollInLeft;
+  -ms-animation-name: rollInLeft;
+  -o-animation-name: rollInLeft;
+  animation-name: rollInLeft;
+}
+
+.splash-landing > section.splash-hero .splash-hero-skip button {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  -webkit-transform: rotate(-15deg);
+  -moz-transform: rotate(-15deg);
+  -ms-transform: rotate(-15deg);
+  -o-transform: rotate(-15deg);
+  transform: rotate(-15deg);
+  border-radius: 1000px;
+  width: 64px;
+  height: 64px;
+  background: none;
+  border: 2px solid white;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.splash-landing > section.splash-hero .splash-device {
+  display: none !important;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: -306px;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-svg {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  -webkit-transition-delay: 500ms;
+  -moz-transition-delay: 500ms;
+  -ms-transition-delay: 500ms;
+  -o-transition-delay: 500ms;
+  transition-delay: 500ms;
+  filter: alpha(opacity=20);
+  opacity: 0.2;
+  display: block;
+  width: 100%;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-svg.active {
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+}
+
+.splash-landing > section.splash-hero .splash-device.splash-device-iphone svg {
+  max-width: 320px;
+}
+
+.splash-landing > section.splash-hero .splash-device.splash-device-iphone .splash-device-content, .splash-landing > section.splash-hero .splash-device.splash-device-iphone .splash-device-profile {
+  top: 12.6%;
+  left: 7.3%;
+  width: 85.4%;
+  height: 75%;
+}
+
+.splash-landing > section.splash-hero .splash-device.splash-device-iphone .splash-device-content .coach-click, .splash-landing > section.splash-hero .splash-device.splash-device-iphone .splash-device-profile .coach-click {
+  bottom: 65px !important;
+  right: -90px !important;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile {
+  position: absolute;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div {
+  width: 100%;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div a {
+  width: 50%;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div a:nth-child(1).active ~ hr {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div a:nth-child(2).active ~ hr {
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div a:nth-child(1):hover ~ hr, .splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div a:nth-child(1):focus ~ hr {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div a:nth-child(2):hover ~ hr, .splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div a:nth-child(2):focus ~ hr {
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .tab-bar.slide > div hr {
+  width: 50%;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .pf-aside .pf-rating {
+  margin-top: 0 !important;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-profile .pf-container .pf-portfolio-items .pf-portfolio-item .pf-portfolio-img {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 150px;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  position: absolute;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-found {
+  margin-bottom: 10px;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search .splash-device-search-inside {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search h1 {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  border-radius: 1000px;
+  margin-top: 15px;
+  width: 110px;
+  height: 110px;
+  border: 3px solid white;
+  background: rgba(64, 72, 75, 0.5);
+  font-size: 72px;
+  font-weight: 600;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search p {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 5px 0 0;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: calc(100% / 3);
+  padding: 8px 0;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li div {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li div.splash-marker-guru-first {
+  -webkit-transition-delay: 4500ms;
+  -moz-transition-delay: 4500ms;
+  -ms-transition-delay: 4500ms;
+  -o-transition-delay: 4500ms;
+  transition-delay: 4500ms;
+  filter: alpha(opacity=0) !important;
+  opacity: 0 !important;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li div.splash-marker-guru-active {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  border-radius: 1000px;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  position: relative;
+  height: 30px;
+  width: 74px;
+  padding-left: 28px;
+  border: 2px solid white;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-academic {
+  background: rgba(240, 79, 84, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-academic:hover, .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-academic:focus {
+  background: #F04F54;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-freelancing {
+  background: rgba(229, 117, 60, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-freelancing:hover, .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-freelancing:focus {
+  background: #E5753C;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-baking {
+  background: rgba(246, 198, 78, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-baking:hover, .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-baking:focus {
+  background: #F6C64E;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-photography {
+  background: rgba(129, 181, 102, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-photography:hover, .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-photography:focus {
+  background: #81B566;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-tech {
+  background: rgba(85, 164, 183, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-tech:hover, .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-tech:focus {
+  background: #55A4B7;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-household {
+  background: rgba(120, 114, 227, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-household:hover, .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-household:focus {
+  background: #7872e3;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-athletic {
+  background: rgba(154, 91, 197, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-athletic:hover, .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-athletic:focus {
+  background: #9A5BC5;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-academic {
+  background: rgba(230, 56, 155, 0.3);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-academic:hover, .splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-academic:focus {
+  background: #e6389b;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru .user-icon {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 30px;
+  height: 30px;
+  border-width: 2px;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru .marker-guru-course {
+  display: block;
+  width: 100%;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses {
+  margin-top: -15px;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li {
+  width: 50%;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  border-radius: 1000px;
+  width: 100%;
+  max-width: 105px;
+  margin: 0 auto;
+  height: 36px;
+  border: 2px solid white;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-delivery {
+  background: rgba(240, 79, 84, 0.25);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-freelancing {
+  background: rgba(229, 117, 60, 0.25);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-baking {
+  background: rgba(246, 198, 78, 0.25);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-photography {
+  background: rgba(129, 181, 102, 0.25);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-tech {
+  background: rgba(85, 164, 183, 0.25);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-household {
+  background: rgba(120, 114, 227, 0.25);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-athletic {
+  background: rgba(154, 91, 197, 0.25);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-academic {
+  background: rgba(230, 56, 155, 0.25);
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .splash-device-button {
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+  width: 100%;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content button {
+  width: 100%;
+  height: 54px;
+  background: #69B3A5;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content button.opacity-0 {
+  visibility: hidden;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content button.opacity-0:hover, .splash-landing > section.splash-hero .splash-device .splash-device-content button.opacity-0:focus {
+  filter: alpha(opacity=0) !important;
+  opacity: 0 !important;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content button.animated {
+  -webkit-animation-delay: 1000ms;
+  -moz-animation-delay: 1000ms;
+  -ms-animation-delay: 1000ms;
+  -o-animation-delay: 1000ms;
+  animation-delay: 1000ms;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .coach-click {
+  display: block;
+  position: absolute;
+  width: 106px;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .coach-click path:nth-child(1) {
+  stroke-dasharray: 137;
+  stroke-dashoffset: 137;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .coach-click path:nth-child(2) {
+  stroke-dasharray: 53;
+  stroke-dashoffset: 53;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .coach-click path.animate:nth-child(1) {
+  -webkit-animation: coach-click-2 200ms ease-in 1500ms 1 forwards;
+  -moz-animation: coach-click-2 200ms ease-in 1500ms 1 forwards;
+  -ms-animation: coach-click-2 200ms ease-in 1500ms 1 forwards;
+  -o-animation: coach-click-2 200ms ease-in 1500ms 1 forwards;
+  animation: coach-click-2 200ms ease-in 1500ms 1 forwards;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .coach-click path.animate:nth-child(2) {
+  -webkit-animation: coach-click-1 100ms ease-in 1700ms 1 forwards;
+  -moz-animation: coach-click-1 100ms ease-in 1700ms 1 forwards;
+  -ms-animation: coach-click-1 100ms ease-in 1700ms 1 forwards;
+  -o-animation: coach-click-1 100ms ease-in 1700ms 1 forwards;
+  animation: coach-click-1 100ms ease-in 1700ms 1 forwards;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-content .coach-click g g {
+  -webkit-animation-delay: 2000ms;
+  -moz-animation-delay: 2000ms;
+  -ms-animation-delay: 2000ms;
+  -o-animation-delay: 2000ms;
+  animation-delay: 2000ms;
+}
+
+.splash-landing > section.splash-hero .splash-hero-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 25;
+  width: 100%;
+  height: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .splash-landing > section.splash-hero .splash-hero-progress {
+    display: none !important;
+  }
+}
+
+.splash-landing > section.splash-hero .splash-hero-progress.progress.white {
+  -webkit-transition: 150ms ease-in-out;
+  -moz-transition: 150ms ease-in-out;
+  -ms-transition: 150ms ease-in-out;
+  -o-transition: 150ms ease-in-out;
+  transition: 150ms ease-in-out;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.splash-landing > section.splash-hero .splash-hero-progress.progress.white.active {
+  filter: alpha(opacity=100) !important;
+  opacity: 1 !important;
+}
+
+.splash-landing > section.splash-hero .splash-hero-progress.progress.white span {
+  background: #69B3A5 !important;
+}
+
+.splash-landing > section.splash-hero .splash-hero-progress.progress.white span.animate {
+  -webkit-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+  -moz-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+  -ms-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+  -o-animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+  animation: progress-bar 2500ms ease-in 1000ms 1 forwards;
+}
+
+.splash-landing > section.splash-hero .coach-scroll {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 3;
+  bottom: -88px;
+  width: 328px;
+}
+
+.splash-landing > section.splash-hero .coach-scroll svg {
+  -webkit-animation-delay: 3000ms;
+  -moz-animation-delay: 3000ms;
+  -ms-animation-delay: 3000ms;
+  -o-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+  display: block;
+  width: 100%;
+}
+
+.splash-landing > section.splash-hero .coach-scroll svg path, .splash-landing > section.splash-hero .coach-scroll svg rect {
+  -webkit-transition: all 1000ms ease-in-out;
+  -moz-transition: all 1000ms ease-in-out;
+  -ms-transition: all 1000ms ease-in-out;
+  -o-transition: all 1000ms ease-in-out;
+  transition: all 1000ms ease-in-out;
+  stroke: rgba(255, 255, 255, 0.15);
+}
+
+.splash-landing > section.splash-hero .coach-scroll svg rect {
+  fill: rgba(64, 72, 75, 0.5);
+}
+
+.splash-landing > section.splash-hero .coach-scroll.active {
+  z-index: 11;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  margin-bottom: 75px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content.active {
+  -webkit-transition-duration: 1000ms;
+  -moz-transition-duration: 1000ms;
+  -ms-transition-duration: 1000ms;
+  -o-transition-duration: 1000ms;
+  transition-duration: 1000ms;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -ms-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-delay: 200ms;
+  -moz-transition-delay: 200ms;
+  -ms-transition-delay: 200ms;
+  -o-transition-delay: 200ms;
+  transition-delay: 200ms;
+  -webkit-transform: translateY(-55%) scale(0.75);
+  -moz-transform: translateY(-55%) scale(0.75);
+  -ms-transform: translateY(-55%) scale(0.75);
+  -o-transform: translateY(-55%) scale(0.75);
+  transform: translateY(-55%) scale(0.75);
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib {
+  width: 100%;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib h1 {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib h1 a {
+  margin: 0 15px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  width: 130px;
+  height: 38px;
+  padding: 0;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  background: rgba(64, 72, 75, 0.5);
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a svg {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a svg.desktop {
+  display: none;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a b {
+  -webkit-animation-delay: 1200ms;
+  -moz-animation-delay: 1200ms;
+  -ms-animation-delay: 1200ms;
+  -o-animation-delay: 1200ms;
+  animation-delay: 1200ms;
+  font-weight: 600 !important;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank)[class*="translate-blank"] {
+  background: #69B3A5;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank):focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank)[class*="translate-blank"] svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-delivery:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-delivery:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-delivery[class*="translate-blank"] {
+  background: #F04F54;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-delivery:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-delivery:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-delivery[class*="translate-blank"] svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-freelancing:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-freelancing:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-freelancing[class*="translate-blank"] {
+  background: #E5753C;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-freelancing:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-freelancing:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-freelancing[class*="translate-blank"] svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking[class*="translate-blank"] {
+  background: #F6C64E;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-baking[class*="translate-blank"] svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography[class*="translate-blank"] {
+  background: #81B566;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-photography[class*="translate-blank"] svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech[class*="translate-blank"] {
+  background: #55A4B7;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-tech[class*="translate-blank"] svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household[class*="translate-blank"] {
+  background: #7872e3;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-household[class*="translate-blank"] svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-athletic:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-athletic:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-athletic[class*="translate-blank"] {
+  background: #9A5BC5;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-athletic:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-athletic:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-athletic[class*="translate-blank"] svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:hover, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:focus, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic[class*="translate-blank"] {
+  background: #e6389b;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:hover svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic:focus svg, .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a:not(.blank).bg-academic[class*="translate-blank"] svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib .splash-mobile-cta {
+  margin: 0 15px;
+  background: #69B3A5;
+  height: 54px;
+  width: calc(100% - 30px);
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib .splash-mobile-cta:not(.bounceInUp) {
+  visibility: hidden;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin: 15px auto;
+  padding: 7.5px;
+  width: 100%;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul.a li a {
+  pointer-events: none !important;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li {
+  width: 143px;
+  padding: 7.5px;
+}
+
+.splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li a[class*="translate-blank"] {
+  -webkit-animation: none !important;
+  -moz-animation: none !important;
+  -ms-animation: none !important;
+  -o-animation: none !important;
+  animation: none !important;
+}
+
+.splash-landing > section.splash-hero .splash-guru-head {
+  width: 150px;
+  position: relative;
+}
+
+.splash-landing > section.splash-hero .splash-guru-head > svg {
+  position: absolute;
+}
+
+.splash-landing > section.splash-hero .splash-guru-head .coach-fill {
+  top: 95px;
+  right: -100px;
+  width: 140px;
+}
+
+.splash-landing > section.splash-hero .splash-guru-head .coach-fill path:nth-child(1) {
+  stroke-dasharray: 137;
+  stroke-dashoffset: 137;
+}
+
+.splash-landing > section.splash-hero .splash-guru-head .coach-fill path:nth-child(2) {
+  stroke-dasharray: 53;
+  stroke-dashoffset: 53;
+}
+
+.splash-landing > section.splash-hero .splash-guru-head .coach-fill path.animate:nth-child(1) {
+  -webkit-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+  -moz-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+  -ms-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+  -o-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+  animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+}
+
+.splash-landing > section.splash-hero .splash-guru-head .coach-fill path.animate:nth-child(2) {
+  -webkit-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+  -moz-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+  -ms-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+  -o-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+  animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+}
+
+.splash-landing > section.splash-hero .splash-guru-head .coach-fill g g {
+  -webkit-animation-delay: 3000ms;
+  -moz-animation-delay: 3000ms;
+  -ms-animation-delay: 3000ms;
+  -o-animation-delay: 3000ms;
+  animation-delay: 3000ms;
+}
+
+.splash-landing > section.splash-hero .splash-guru-head .coach-help.coach-help-desktop {
+  display: none;
+  top: -40px;
+  left: -160px;
+  width: 170px;
+}
+
+.splash-landing > section.splash-hero .splash-guru-head .coach-help.coach-help-mobile {
+  top: -15px;
+  left: -100px;
+  width: 114.5px;
+}
+
+@media screen and (max-width: 414px) {
+  .splash-landing > section.splash-hero .splash-hero-content {
+    margin-bottom: 0;
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul {
+    margin: 5px 0;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .splash-landing > section.splash-hero .splash-hero-device {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  .splash-landing > section.splash-hero .splash-hero-content {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib h1 {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .splash-landing > section.splash-hero .splash-hero-device {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  .splash-landing > section.splash-hero .splash-hero-content {
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -o-transform: scale(0.7);
+    transform: scale(0.7);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:first-child {
+    right: 50%;
+    margin-right: -131px;
+    bottom: 65px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib h1 {
+    line-height: 1.5;
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul {
+    -wekit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+    height: 250px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:first-child {
+    right: 10%;
+    margin-right: 0;
+    bottom: 10%;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:last-child {
+    display: none;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:not(.splash-hero-marker-mobile) {
+    display: block;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:nth-child(1) {
+    -webkit-animation-delay: 1700ms;
+    -moz-animation-delay: 1700ms;
+    -ms-animation-delay: 1700ms;
+    -o-animation-delay: 1700ms;
+    animation-delay: 1700ms;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first {
+    -webkit-transition-delay: 3500ms;
+    -moz-transition-delay: 3500ms;
+    -ms-transition-delay: 3500ms;
+    -o-transition-delay: 3500ms;
+    transition-delay: 3500ms;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.first * {
+    -webkit-transition-delay: 3500ms;
+    -moz-transition-delay: 3500ms;
+    -ms-transition-delay: 3500ms;
+    -o-transition-delay: 3500ms;
+    transition-delay: 3500ms;
+  }
+  .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker.not-first {
+    -webkit-transition-delay: 3500ms;
+    -moz-transition-delay: 3500ms;
+    -ms-transition-delay: 3500ms;
+    -o-transition-delay: 3500ms;
+    transition-delay: 3500ms;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+  }
+  .splash-landing > section.splash-hero .coach-scroll {
+    bottom: -70px;
+  }
+  .splash-landing > section.splash-hero .coach-help.coach-help-desktop {
+    display: block !important;
+  }
+  .splash-landing > section.splash-hero .coach-help.coach-help-desktop.hide {
+    display: none !important;
+  }
+  .splash-landing > section.splash-hero .coach-help.coach-help-mobile {
+    display: none !important;
+  }
+  .splash-landing > section.splash-hero .splash-hero-nav {
+    top: 15px;
+    right: 72px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-nav.desktop {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+  }
+  .splash-landing > section.splash-hero .splash-hero-nav.mobile {
+    display: none;
+  }
+  .splash-landing > section.splash-hero .splash-hero-nav > div:first-child, .splash-landing > section.splash-hero .splash-hero-nav > div:first-child + h2 {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+  }
+  .splash-landing > section.splash-hero .splash-device {
+    display: block !important;
+  }
+  .splash-landing > section.splash-hero .splash-guru-head .coach-fill {
+    top: 80px;
+    right: -180px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib.animate {
+    -webkit-animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+    -moz-animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+    -ms-animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+    -o-animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+    animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+    z-index: 1;
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib h1 {
+    font-size: 40px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a {
+    width: 142px;
+    height: 44px;
+    font-size: 24px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a.adlib-1.translate-blank-1 {
+    margin-left: 1px !important;
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a.adlib-8.translate-blank-2 {
+    margin-left: -1px !important;
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a svg.mobile {
+    display: none;
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib a svg.desktop {
+    display: block;
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib .splash-mobile-cta {
+    display: none;
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul {
+    max-width: calc(172px * 4 + 30px);
+    padding: 15px;
+    margin: 0 auto 15px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li {
+    width: 25%;
+    max-width: 172px;
+    padding: 15px;
+  }
+  .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(7), .splash-landing > section.splash-hero .splash-hero-content .splash-adlib ul li:nth-child(8) {
+    display: block;
+  }
+}
+
+.splash-landing > section#splash-projector {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  background: #40484B;
+  height: 100%;
+  overflow: hidden;
+}
+
+.splash-landing > section#splash-projector .projector-trigger {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  margin-left: -14px;
+}
+
+.splash-landing > section#splash-projector #projector-pull {
+  display: block;
+}
+
+.splash-landing > section#splash-projector .coach-projector {
+  display: block;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  width: 102.5px;
+  height: 36px;
+}
+
+.splash-landing > section#splash-projector .splash-projector-message {
+  width: 100%;
+  padding: 0 15px;
+}
+
+.splash-landing > section#splash-projector .splash-projector-message svg {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.splash-landing > section#splash-projector .splash-projector-message.desktop {
+  display: none;
+}
+
+.splash-landing > section#splash-projector .splash-projector-message.desktop svg {
+  max-width: 642px;
+}
+
+.splash-landing > section#splash-projector .splash-projector-message.mobile svg {
+  max-width: 347px;
+}
+
+.splash-landing > section#splash-projector .splash-projector-footer {
+  position: absolute;
+  bottom: 15px;
+}
+
+.splash-landing > section#splash-projector .splash-projector-footer.center {
+  width: 150px;
+  right: 50%;
+  margin-right: -75px;
+}
+
+.splash-landing > section#splash-projector .splash-projector-footer.right {
+  right: 15px;
+}
+
+.splash-landing > section#splash-projector .splash-projector-footer a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.splash-landing > section#splash-projector .splash-projector-footer a svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 50px;
+  height: 50px;
+}
+
+.splash-landing > section#splash-projector .splash-projector-footer a span {
+  display: block;
+  width: 100%;
+  margin-top: -5px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.splash-landing > section#splash-projector .header-swipers, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs {
+  z-index: -2;
+}
+
+.splash-landing > section#splash-projector .header-swipers.active, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs.active {
+  z-index: 2;
+}
+
+.splash-landing > section#splash-projector .main-swipers-container {
+  height: 100%;
+}
+
+.splash-landing > section#splash-projector .main-swipers-container .swiper-slide {
+  overflow: visible !important;
+}
+
+.splash-landing > section#splash-projector .header-swiper-front {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 100%;
+  padding: 3% 0 9.5%;
+}
+
+.splash-landing > section#splash-projector .projector-line {
+  position: absolute;
+  left: 50%;
+  margin-left: 1px;
+}
+
+.splash-landing > section#splash-projector .projector-line.top {
+  top: -196px;
+}
+
+.splash-landing > section#splash-projector .projector-line.bottom {
+  bottom: -196px;
+}
+
+.splash-landing > section#splash-projector .projector-handle {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  margin-left: -30.5px;
+}
+
+.splash-landing > section#splash-projector .projector-handle:not(.active) {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  top: auto;
+  bottom: 0;
+  height: 110px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab {
+  height: 60px;
+  max-width: 300px;
+  margin: 0 auto;
+  background: none !important;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper {
+  background: #40484B !important;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper > div {
+  width: calc(100% / 3);
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper > div:before {
+  left: -15px;
+  border-color: #69B3A5;
+  border-left-color: #40484B;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper > div:after {
+  right: -15px;
+  border-color: #40484B;
+  border-left-color: #69B3A5;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide {
+  position: relative;
+  z-index: 10;
+  margin: 0 !important;
+  margin-right: 0 !important;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide.third {
+  width: calc(100% / 3) !important;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:not(.third) {
+  width: 20% !important;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:not(.third) + hr hr {
+  width: 20%;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1).active ~ div:before {
+  border-color: #69B3A5;
+  border-left-color: #40484B;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1).active ~ div:after {
+  border-color: #40484B;
+  border-left-color: #69B3A5;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2).active ~ div:before {
+  border-color: #69B3A5;
+  border-left-color: #40484B;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2).active ~ div:after {
+  border-color: #40484B;
+  border-left-color: #69B3A5;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3).active ~ div:before {
+  border-color: #69B3A5;
+  border-left-color: #40484B;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3).active ~ div:after {
+  border-color: #40484B;
+  border-left-color: #69B3A5;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):hover ~ div:before, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):focus ~ div:before {
+  border-color: #69B3A5;
+  border-left-color: #40484B;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):hover ~ div:after, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):focus ~ div:after {
+  border-color: #40484B;
+  border-left-color: #69B3A5;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):hover ~ div:before, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):focus ~ div:before {
+  border-color: #69B3A5;
+  border-left-color: #40484B;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):hover ~ div:after, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):focus ~ div:after {
+  border-color: #40484B;
+  border-left-color: #69B3A5;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):hover ~ div:before, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):focus ~ div:before {
+  border-color: #69B3A5;
+  border-left-color: #40484B;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):hover ~ div:after, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):focus ~ div:after {
+  border-color: #40484B;
+  border-left-color: #69B3A5;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .progress.white-round {
+  position: absolute;
+  top: 35px;
+  background: #606669 !important;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper {
+  -webkit-transform: translate3d(0px, 0px, 0px) !important;
+  -moz-transform: translate3d(0px, 0px, 0px) !important;
+  -ms-transform: translate3d(0px, 0px, 0px) !important;
+  -o-transform: translate3d(0px, 0px, 0px) !important;
+  transform: translate3d(0px, 0px, 0px) !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  width: 33% !important;
+  height: 80px !important;
+  margin: 0 !important;
+  text-align: center;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+  background: none;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step .progress-step-icon {
+  height: 100%;
+  width: 80px;
+  background: none;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step .progress-step-icon svg {
+  display: block;
+  width: 80px;
+  height: 80px;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step .progress-step-icon svg * {
+  stroke-width: 6px;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:hover .progress-step-icon svg .bg, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:focus .progress-step-icon svg .bg {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  fill: #89969b !important;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:hover .progress-step-icon svg *:not(.bg), .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:focus .progress-step-icon svg *:not(.bg) {
+  fill: rgba(64, 72, 75, 0.5);
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step h1 {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: -23px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step {
+  border-radius: 1000px;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step h1 {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: -23px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-icon {
+  border-radius: 1000px;
+  fill: none;
+  stroke: white;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #9FA3A5;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-icon svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-status .top, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-status .bottom {
+  -webkit-transition: stroke-dashoffset 300ms ease-in-out;
+  -moz-transition: stroke-dashoffset 300ms ease-in-out;
+  -ms-transition: stroke-dashoffset 300ms ease-in-out;
+  -o-transition: stroke-dashoffset 300ms ease-in-out;
+  transition: stroke-dashoffset 300ms ease-in-out;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  stroke-dasharray: 220, 220;
+  stroke-dashoffset: 220;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.complete .onboarding-step .onboarding-icon {
+  background: #557e78;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.complete .onboarding-step .onboarding-status .top, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.complete .onboarding-step .onboarding-status .bottom {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  stroke-dashoffset: 0;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.swiper-slide-prev .onboarding-step .onboarding-icon {
+  background: #69B3A5;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.swiper-slide-prev .onboarding-step .onboarding-status .top, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.swiper-slide-prev .onboarding-step .onboarding-status .bottom {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  stroke-dashoffset: 0;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.swiper-slide-active .progress-step .progress-step-icon svg .bg {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  fill: #69B3A5 !important;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.swiper-slide-active .progress-step .progress-step-icon svg *:not(.bg) {
+  fill: rgba(64, 72, 75, 0.5);
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.swiper-slide-active .onboarding-step .onboarding-icon {
+  background: #69B3A5;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.swiper-slide-active .onboarding-step .onboarding-status .top, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.swiper-slide-active .onboarding-step .onboarding-status .bottom {
+  -webkit-transition: stroke-dashoffset 150ms ease-in-out;
+  -moz-transition: stroke-dashoffset 150ms ease-in-out;
+  -ms-transition: stroke-dashoffset 150ms ease-in-out;
+  -o-transition: stroke-dashoffset 150ms ease-in-out;
+  transition: stroke-dashoffset 150ms ease-in-out;
+  filter: alpha(opacity=100);
+  opacity: 1;
+  stroke-dashoffset: 110;
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide:not(.swiper-slide-active) .progress-step .progress-step-icon svg {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+
+.splash-landing > section#splash-projector .projector-top {
+  position: absolute;
+  top: .2%;
+  left: .8%;
+  width: 98.4%;
+  height: 3.3%;
+  border: 2px solid white;
+  background: rgba(64, 72, 75, 0.95);
+}
+
+.splash-landing > section#splash-projector .projector-top:before, .splash-landing > section#splash-projector .projector-top:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border: 2px solid white;
+  border-radius: 2px;
+  top: -20%;
+  width: 1%;
+  min-width: 9px;
+  height: 140%;
+  background: #40484B;
+}
+
+.splash-landing > section#splash-projector .projector-top:before {
+  left: -1%;
+}
+
+.splash-landing > section#splash-projector .projector-top:after {
+  right: -1%;
+}
+
+.splash-landing > section#splash-projector .projector-content {
+  position: absolute;
+  top: 3.2%;
+  left: 2%;
+  width: 96%;
+  height: 96.2%;
+  overflow: visible !important;
+  border: 2px solid white;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background: rgba(64, 72, 75, 0.95);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.splash-landing > section#splash-projector .projector-content .btn-ghost-white {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 54px;
+}
+
+.splash-landing > section#splash-projector .projector-content .splash-projector-guru {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 0;
+}
+
+.splash-landing > section#splash-projector .projector-content .splash-projector-guru .splash-logo-guru {
+  -webkit-transform: rotate(-7deg);
+  -moz-transform: rotate(-7deg);
+  -ms-transform: rotate(-7deg);
+  -o-transform: rotate(-7deg);
+  transform: rotate(-7deg);
+  -webkit-trasnform-origin: center;
+  -moz-trasnform-origin: center;
+  -ms-trasnform-origin: center;
+  -o-trasnform-origin: center;
+  trasnform-origin: center;
+}
+
+.splash-landing > section#splash-projector .projector-content .splash-projector-guru .coach {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  position: absolute;
+  top: -50px;
+  right: -95px;
+}
+
+.splash-landing > section#splash-projector .projector-content .splash-projector-guru .coach:not(.active) {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-selected {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(64, 72, 75, 0.95);
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-selected.active {
+  z-index: 10;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-selected:not(.active) {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  z-index: -10;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100%;
+  padding: 70px 15px 15px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .coach-edit-school {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  margin-left: -82px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card {
+  position: relative;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card .school-id-link {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: rgba(105, 179, 165, 0.95);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card .school-id-link:hover, .splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card .school-id-link:focus {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+@media screen and (min-width: 414px) {
+  .splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card {
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup {
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb {
+  background: #3b5998;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb:focus {
+  background: white;
+  color: #3b5998;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-login {
+  background: #69B3A5;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-login:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-login:focus {
+  background: white;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .btn-forgot-pw {
+  background: #637074;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .btn-forgot-pw:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .btn-forgot-pw:focus {
+  background: white;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content:not(.active) {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  z-index: -10;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .btn-splash-login {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .btn-splash-login:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .btn-splash-login:focus {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field {
+  width: 100%;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field input {
+  color: white;
+  height: 36px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field a:not(.active) svg {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.clear {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.verified circle {
+  fill: #43cb9d;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.error {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.error circle {
+  fill: #d3242c;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-login-content .login-buttons {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  margin: 22.5px auto 0;
+  max-width: 500px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-login-content .login-buttons button {
+  margin: 7.5px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
+  position: relative;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 100%;
+  height: 51px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 15px;
+  width: calc(100% - 30px);
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field:not(.active) {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  z-index: -10;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside button {
+  bottom: 15px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside button.btn-login-login {
+  margin-right: 10px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside button.btn-login-fb {
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .btn-ghost-white {
+    padding-left: 20px;
+    padding-right: 20px;
+    white-space: nowrap;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .btn-splash-login {
+    display: none;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb {
+    display: none;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-projector-guru {
+    display: none;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li {
+    width: 50%;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li button {
+    font-size: 16px !important;
+    font-weight: 600;
+    line-height: 1.2;
+    height: 50px;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li:nth-child(1) button {
+    background: #7aa59f;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li.login:nth-child(1) button {
+    background: #43cb9d;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li:nth-child(2) button {
+    background: #3b5998;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li:nth-child(3) button {
+    background: #7aa59f;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li:nth-child(4) button {
+    background: #637074;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-login-content .input-field {
+    padding: 0 15px;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-login-content .login-buttons {
+    display: none;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    padding-top: 15px;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content {
+    padding: 150px 30px 15px;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons {
+    display: none;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .input-field input {
+    height: 64px !important;
+    font-size: 48px;
+    font-weight: 300;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .input-field svg {
+    fill: none;
+    stroke: white;
+    stroke-width: 4px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    top: 5px;
+    width: 50px;
+    height: 50px;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
+    width: calc(100% - 240px);
+    height: 160px;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field {
+    left: 30px;
+  }
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access {
+  overflow: visible !important;
+  padding: 0 !important;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .guru {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .guru:not(.active) {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .user-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-width: 2px;
+  width: 110px;
+  height: 110px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 200px 15px 15px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-inside {
+  position: relative;
+  width: 100%;
+  max-width: 652px;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-inside {
+    height: 119px;
+  }
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  background: none;
+  border: 0;
+  width: 100%;
+  max-width: 347px;
+  height: 64px;
+  margin: 0 auto;
+  font-size: 28px;
+  text-align: center;
+  line-height: 1.2;
+  padding-top: 5px;
+  color: white;
+  font-weight: 300;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code {
+    max-width: 652px;
+    height: 119px;
+    font-size: 48px;
+    padding-top: 0;
+    padding-bottom: 10px;
+  }
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code::-webkit-input-placeholder {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:-moz-placeholder {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code::-moz-placeholder {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:-ms-input-placeholder {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.mobile {
+  display: block;
+  max-width: 347px;
+  margin: 0 auto;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.desktop {
+  display: none;
+  max-width: 100%;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble path {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.mobile {
+    display: none;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.desktop {
+    display: block;
+  }
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div button {
+  display: block;
+  margin: 15px auto;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate {
+  background: #69B3A5;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate:hover, .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate:focus {
+  background: white;
+  color: #69B3A5;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip {
+  background: #637074;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip:hover, .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip:focus {
+  background: white;
+  color: #69B3A5;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus::-webkit-input-placeholder {
+  color: white;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus:-moz-placeholder {
+  color: white;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus::-moz-placeholder {
+  color: white;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus:-ms-input-placeholder {
+  color: white;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus + div .splash-access-bubble path {
+  fill: #637074;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  padding: 15px;
+  height: 100%;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin-top: 60px;
+  padding: 7.5px;
+  width: 100%;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul:not(.active) {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  z-index: -10;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li {
+  padding: 7.5px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a {
+  border-radius: 1000px;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  border: 2px solid white;
+  font-size: 18px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman {
+  background: rgba(80, 165, 221, 0.5);
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:focus {
+  background: #50A5DD;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:active {
+  background: #6f7d82;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore {
+  background: rgba(86, 169, 207, 0.5);
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:focus {
+  background: #56a9cf;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:active {
+  background: #6f7d82;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr {
+  background: rgba(93, 172, 193, 0.5);
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:focus {
+  background: #5dacc1;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:active {
+  background: #6f7d82;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr {
+  background: rgba(99, 176, 179, 0.5);
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:focus {
+  background: #63b0b3;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:active {
+  background: #6f7d82;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad {
+  background: rgba(105, 179, 165, 0.5);
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:focus {
+  background: #69B3A5;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:active {
+  background: #6f7d82;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college {
+  background: rgba(231, 75, 164, 0.5);
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:focus {
+  background: #e74ba4;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:active {
+  background: #6f7d82;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum {
+  background: rgba(132, 127, 228, 0.5);
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:focus {
+  background: #847fe4;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:active {
+  background: #6f7d82;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs {
+  background: rgba(230, 129, 78, 0.5);
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:focus {
+  background: #e6814e;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:active {
+  background: #6f7d82;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent {
+  background: rgba(43, 179, 184, 0.5);
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:focus {
+  background: #2bb3b8;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:active {
+  background: #6f7d82;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other {
+  background: rgba(99, 112, 116, 0.5);
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:focus {
+  background: #637074;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:active {
+  background: #6f7d82;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul {
+    max-width: 80%;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li {
+    padding: 15px;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a {
+    width: 150px;
+    height: 150px;
+    font-size: 24px;
+  }
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
+  -webkit-justify-content: center;
+  justify-content: center;
+  overflow: visible !important;
+  padding: 0 !important;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .splash-logo-guru {
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  display: block;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .backpack {
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses form {
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .input-field {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .input-field input {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-courses .input-field {
+    margin: 15px auto 0;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-courses .input-field label:not(.active) {
+    top: 0;
+  }
+  .splash-landing > section#splash-projector .projector-content#splash-courses .input-field .prefix {
+    top: 9px;
+  }
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding: 7.5px;
+  width: 100%;
+  max-width: 750px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses ul li {
+  padding: 7.5px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search {
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li {
+  width: calc(100% / 3);
+  max-width: 250px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  height: 50px;
+  border: 2px solid white;
+  border-radius: 2px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a {
+    height: 100px;
+  }
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div {
+  width: 100%;
+  height: 100%;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-name {
+  display: block;
+  margin: 15px auto 5px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title {
+  display: block;
+  margin: 0 auto;
+  padding: 0 15px 15px;
+  overflow: hidden;
+  height: calc(100% - 36px);
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+  font-size: 18px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title:only-child {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title:only-child {
+    font-size: 24px;
+  }
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title:only-child span {
+  height: auto !important;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title span {
+  display: block;
+  height: 44px;
+  overflow: hidden;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a:hover, .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a:focus {
+  background: white;
+  color: #40484B;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected {
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  border: 2px solid white;
+  border-radius: 2px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a > span {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 5px 8px 5px 10px;
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+  font-size: 18px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a > span svg {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  fill: none;
+  stroke: white;
+  stroke-width: 9px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin-left: 5px;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:hover, .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:active {
+  background: white;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:hover > span, .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:active > span {
+  color: #40484B;
+}
+
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:hover > span svg, .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:active > span svg {
+  stroke: #40484B;
+}
+
+@media screen and (max-width: 320px) {
+  .splash-landing > section#splash-projector .splash-projector-message {
+    padding-top: 45px;
+  }
+}
+
+@media screen and (max-width: 414px) and (max-height: 736px) {
+  .splash-landing > section#splash-projector .header-swiper-front {
+    padding: 20% 0 30%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .splash-landing > section#splash-projector .swiper-button-next, .splash-landing > section#splash-projector .swiper-button-prev, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-nav {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    z-index: -9;
+    visibility: hidden;
+  }
+  .splash-landing > section#splash-projector .projector-content {
+    left: 5%;
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    z-index: -9;
+    visibility: hidden;
+  }
+  .splash-landing > section#splash-projector .splash-projector-message.desktop {
+    display: block;
+  }
+  .splash-landing > section#splash-projector .splash-projector-message.mobile {
+    display: none;
+  }
+  .splash-landing > section#splash-projector .projector-content {
+    padding: 15px;
+  }
+}
+
+.splash-landing > section .splash-school-search {
+  height: calc(100%) !important;
+  overflow: hidden !important;
+}
+
+.splash-landing > section .splash-school-search .splash-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: calc(100% - 36px);
+  width: calc(100%);
+}
+
+.splash-landing > section .splash-school-search .splash-school-search-form {
+  display: none;
+  background: -moz-linear-gradient(top, #40484b 0%, #40484b 25%, rgba(64, 72, 75, 0) 100%);
+  background: -webkit-linear-gradient(top, #40484b 0%, #40484b 25%, rgba(64, 72, 75, 0) 100%);
+  background: linear-gradient(to bottom, #40484b 0%, #40484b 25%, rgba(64, 72, 75, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$slate', endColorstr='#0040484b',GradientType=0 );
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+}
+
+.splash-landing > section .splash-school-search .splash-school-search-form .input-field {
+  margin: 15px auto;
+}
+
+.splash-landing > section .splash-school-search .splash-school-search-form .input-field input, .splash-landing > section .splash-school-search .splash-school-search-form .input-field label {
+  font-weight: 600;
+}
+
+.splash-landing > section .splash-school-search .splash-school-search-form .splash-school-desktop {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 930px;
+  margin: -15px auto 0;
+  padding: 7.5px;
+}
+
+.splash-landing > section .splash-school-search .splash-school-search-form .splash-school-desktop li {
+  width: 20%;
+  padding: 7.5px;
+}
+
+.splash-landing > section .splash-school-search .splash-school-search-form .splash-school-desktop li .school-card .school-card-inside .school-card-top .school-card-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.splash-landing > section .splash-school-search .splash-school-search-form .splash-school-desktop li .school-card .school-card-inside .school-card-top .school-card-icon .school-card-state svg {
+  padding: 10px;
+}
+
+.splash-landing > section .splash-school-search .splash-school-search-form .splash-school-desktop li .school-card .school-card-inside .school-card-main .school-card-info h1 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.splash-landing > section .splash-school-search .splash-school-search-form .splash-school-desktop li .school-card .school-card-inside .school-card-main .school-card-info h2 {
+  font-size: 12px;
+}
+
+.splash-landing > section .splash-school-search .splash-school-search-form .splash-school-results {
+  padding: 15px;
+}
+
+.splash-landing > section .splash-school-search .splash-school-search-form .splash-school-results li {
+  width: 25%;
+  padding: 15px;
+}
+
+.splash-landing > section .splash-school-search .splash-map-stats {
+  z-index: 2;
+  background: -moz-linear-gradient(top, rgba(64, 72, 75, 0) 0%, #40484b 50%, #40484b 100%);
+  background: -webkit-linear-gradient(top, rgba(64, 72, 75, 0) 0%, #40484b 50%, #40484b 100%);
+  background: linear-gradient(to bottom, rgba(64, 72, 75, 0) 0%, #40484b 50%, #40484b 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0040484b', endColorstr='$slate',GradientType=0 );
+}
+
+.splash-landing > section .splash-school-search .splash-map-stats > ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.splash-landing > section .splash-school-search .splash-map-stats > ul li h4 {
+  color: #b3bbbe;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+  .splash-landing > section .splash-school-search header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    background: -moz-linear-gradient(top, #40484b 0%, rgba(64, 72, 75, 0.9) 100%);
+    background: -webkit-linear-gradient(top, #40484b 0%, rgba(64, 72, 75, 0.9) 100%);
+    background: linear-gradient(to bottom, #40484b 0%, rgba(64, 72, 75, 0.9) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$slate', endColorstr='#e640484b',GradientType=0 );
+  }
+  .splash-landing > section .splash-school-search header h1 {
+    text-align: center;
+    width: 100%;
+    text-transform: none;
+  }
+  .splash-landing > section .splash-school-search .splash-zoom {
+    border-radius: 0px;
+    position: relative;
+    background: rgba(99, 112, 116, 0.9);
+    padding: 10px 15px;
+    margin-top: 30px;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: 40px;
+    z-index: 2;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .splash-landing > section .splash-school-search .splash-zoom:before {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    content: "";
+    display: block;
+    position: absolute;
+    top: -30px;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-bottom: 15px solid rgba(99, 112, 116, 0.9);
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0 0;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats > div {
+    display: none;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats > ul {
+    padding: 7.5px;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats > ul li {
+    width: 50%;
+    padding: 7.5px;
+    text-align: center;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats > ul li h4 {
+    font-size: 12px;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats > ul li h4 span:first-child {
+    display: none !important;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats > ul li h2 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .splash-landing > section .splash-school-search header h1 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section .splash-school-search .splash-zoom {
+    display: none;
+  }
+  .splash-landing > section .splash-school-search > header {
+    display: none !important;
+  }
+  .splash-landing > section .splash-school-search .splash-school-search-form {
+    display: block;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+>>>>>>> 4f041d399986b78683230834934712881f59a960
     -webkit-align-content: center;
     align-content: center;
     -webkit-align-items: center;
     align-items: center;
+<<<<<<< HEAD
+=======
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats > * h1 {
+    font-size: 36px;
+    font-weight: 600;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats > * h4 span {
+    display: block !important;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats > * h4 span:first-child {
+    font-size: 18px;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats > * h4 span:last-child {
+    font-size: 24px;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats > * h2 {
+    font-size: 28px;
+    font-weight: 700;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats > div {
+    padding: 15px;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats > ul {
+    padding: 7.5px;
+  }
+  .splash-landing > section .splash-school-search .splash-map-stats > ul li {
+    padding: 7.5px;
+  }
+}
+
+.splash-landing > section .splash-postit {
+  height: 100%;
+  padding: 0 !important;
+}
+
+.splash-landing > section .splash-postit.show {
+  -ms-box-orient: horizontal !important;
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
+  display: -moz-flex !important;
+  display: -webkit-flex !important;
+  display: flex !important;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.splash-landing > section .splash-postit > header {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.splash-landing > section .splash-postit > header h1 {
+  padding-top: 15px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: none !important;
+}
+
+.splash-landing > section .splash-postit .main {
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+  position: relative;
+  padding: 0 !important;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-landing > section .splash-postit .main .mobile-postits {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-content: space-between;
+  align-content: space-between;
+  width: 100%;
+  height: 100%;
+  background: #637074;
+  padding: 15px;
+}
+
+.splash-landing > section .splash-postit .main ul li span {
+  display: block;
+  margin: 0 auto;
+}
+
+.splash-landing > section .splash-postit .main ul li span svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-landing > section .splash-postit .main .mobile-postit-list {
+  position: relative;
+  width: 100%;
+}
+
+.splash-landing > section .splash-postit .main .mobile-postit-list li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-landing > section .splash-postit .main .mobile-postit-list li.active {
+  z-index: 1;
+}
+
+.splash-landing > section .splash-postit .main .mobile-postit-list li:not(.active) {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  z-index: -1;
+}
+
+.splash-landing > section .splash-postit .main .mobile-postit-list li div {
+  text-align: center;
+}
+
+.splash-landing > section .splash-postit .main .mobile-postit-list li div span {
+  width: 96px;
+  height: 96px;
+}
+
+.splash-landing > section .splash-postit .main .mobile-postit-list li div h1 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.splash-landing > section .splash-postit .main .mobile-postit-list li div p {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.splash-landing > section .splash-postit .main .mobile-postit-thumbs {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+.splash-landing > section .splash-postit .main .mobile-postit-thumbs li {
+  width: calc(100% / 3);
+  padding-bottom: 15px;
+}
+
+.splash-landing > section .splash-postit .main .mobile-postit-thumbs li:not(.active) {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+
+.splash-landing > section .splash-postit .main .mobile-postit-thumbs li div span {
+  width: 48px;
+  height: 48px;
+}
+
+.splash-landing > section .splash-postit .main .mobile-postit-thumbs li div h1 {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.splash-landing > section .splash-postit .main .desktop-postit-list {
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  display: none;
+  width: 100%;
+  max-width: 700px;
+  height: 100%;
+}
+
+.splash-landing > section .splash-postit .main .desktop-postit-list li {
+  width: 100%;
+}
+
+.splash-landing > section .splash-postit .main .desktop-postit-list li > div {
+  position: relative;
+  width: 100%;
+  padding: 15px;
+}
+
+.splash-landing > section .splash-postit .main .desktop-postit-list li .tape {
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-animation-duration: 0.6s;
+  -moz-animation-duration: 0.6s;
+  -o-animation-duration: 0.6s;
+  animation-duration: 0.6s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .splash-landing > section .splash-postit > header {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section .splash-postit > header {
+    height: auto !important;
+  }
+  .splash-landing > section .splash-postit > header h1 {
+    padding-top: 0;
+    font-size: 36px;
+  }
+  .splash-landing > section .splash-postit .main .mobile-postits {
+    display: none;
+  }
+  .splash-landing > section .splash-postit .main .desktop-postit-list {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+  }
+  .splash-landing > section .splash-postit .main .desktop-postit-list li {
+    width: calc(100% / 3);
+    height: 50%;
+  }
+}
+
+.splash-landing > section #how-it-works .main ul li:nth-child(1) svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(1) svg path {
+  stroke: #7872e3;
+}
+
+.splash-landing > section #how-it-works .main ul li:nth-child(1) svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(1) svg *[fill-opacity="0.5"] {
+  fill: #7872e3;
+}
+
+.splash-landing > section #how-it-works .main ul li:nth-child(2) svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(2) svg path {
+  stroke: #9A5BC5;
+}
+
+.splash-landing > section #how-it-works .main ul li:nth-child(2) svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(2) svg *[fill-opacity="0.5"] {
+  fill: #9A5BC5;
+}
+
+.splash-landing > section #how-it-works .main ul li:nth-child(3) svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(3) svg path {
+  stroke: #e6389b;
+}
+
+.splash-landing > section #how-it-works .main ul li:nth-child(3) svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(3) svg *[fill-opacity="0.5"] {
+  fill: #e6389b;
+}
+
+.splash-landing > section #how-it-works .main ul li:nth-child(4) svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(4) svg path {
+  stroke: #55A4B7;
+}
+
+.splash-landing > section #how-it-works .main ul li:nth-child(4) svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(4) svg *[fill-opacity="0.5"] {
+  fill: #55A4B7;
+}
+
+.splash-landing > section #how-it-works .main ul li:nth-child(5) svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(5) svg path {
+  stroke: #E5753C;
+}
+
+.splash-landing > section #how-it-works .main ul li:nth-child(5) svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(5) svg *[fill-opacity="0.5"] {
+  fill: #E5753C;
+}
+
+.splash-landing > section #how-it-works .main ul li:nth-child(6) svg circle, .splash-landing > section #how-it-works .main ul li:nth-child(6) svg path {
+  stroke: #81B566;
+}
+
+.splash-landing > section #how-it-works .main ul li:nth-child(6) svg *[opacity="0.5"], .splash-landing > section #how-it-works .main ul li:nth-child(6) svg *[fill-opacity="0.5"] {
+  fill: #81B566;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section #how-it-works .main ul li:nth-child(1) > div {
+    -webkit-transform: rotate(5deg) translate(30px, 20px);
+    -moz-transform: rotate(5deg) translate(30px, 20px);
+    -ms-transform: rotate(5deg) translate(30px, 20px);
+    -o-transform: rotate(5deg) translate(30px, 20px);
+    transform: rotate(5deg) translate(30px, 20px);
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(1) .tape {
+    display: none;
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(2) {
+    z-index: 10;
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(2) > div {
+    -webkit-transform: rotate(-7deg) translate(-25px, 60px);
+    -moz-transform: rotate(-7deg) translate(-25px, 60px);
+    -ms-transform: rotate(-7deg) translate(-25px, 60px);
+    -o-transform: rotate(-7deg) translate(-25px, 60px);
+    transform: rotate(-7deg) translate(-25px, 60px);
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(2) .tape:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    left: 22.5px;
+    top: -15px;
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(2) .tape:nth-child(2) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: -15px;
+    right: 22.5px;
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(2) .tape.animate:nth-child(1) {
+    -webkit-animation-name: tape-1;
+    -moz-animation-name: tape-1;
+    -o-animation-name: tape-1;
+    animation-name: tape-1;
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(2) .tape.animate:nth-child(2) {
+    -webkit-animation-name: tape-2;
+    -moz-animation-name: tape-2;
+    -o-animation-name: tape-2;
+    animation-name: tape-2;
+    -webkit-animation-delay: 0.25s;
+    -moz-animation-delay: 0.25s;
+    -o-animation-delay: 0.25s;
+    animation-delay: 0.25s;
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(3) > div {
+    -webkit-transform: rotate(7deg) translate(0px, 20px);
+    -moz-transform: rotate(7deg) translate(0px, 20px);
+    -ms-transform: rotate(7deg) translate(0px, 20px);
+    -o-transform: rotate(7deg) translate(0px, 20px);
+    transform: rotate(7deg) translate(0px, 20px);
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(3) .tape:nth-child(1) {
+    display: none;
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(3) .tape:nth-child(2) {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    top: -35px;
+    left: 50%;
+    margin-left: -15px;
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(3) .tape.animate:nth-child(2) {
+    -webkit-animation-name: tape-3;
+    -moz-animation-name: tape-3;
+    -o-animation-name: tape-3;
+    animation-name: tape-3;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(4) > div {
+    -webkit-transform: rotate(-2deg) translate(-20px, 5px);
+    -moz-transform: rotate(-2deg) translate(-20px, 5px);
+    -ms-transform: rotate(-2deg) translate(-20px, 5px);
+    -o-transform: rotate(-2deg) translate(-20px, 5px);
+    transform: rotate(-2deg) translate(-20px, 5px);
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(4) .tape:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    left: 22.5px;
+    top: -15px;
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(4) .tape:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    bottom: -15px;
+    right: 22.5px;
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(4) .tape.animate:nth-child(1) {
+    -webkit-animation-name: tape-1;
+    -moz-animation-name: tape-1;
+    -o-animation-name: tape-1;
+    animation-name: tape-1;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(4) .tape.animate:nth-child(2) {
+    -webkit-animation-name: tape-4;
+    -moz-animation-name: tape-4;
+    -o-animation-name: tape-4;
+    animation-name: tape-4;
+    -webkit-animation-delay: 0.75s;
+    -moz-animation-delay: 0.75s;
+    -o-animation-delay: 0.75s;
+    animation-delay: 0.75s;
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(5) > div {
+    -webkit-transform: rotate(20deg) translate(-10px, -10px);
+    -moz-transform: rotate(20deg) translate(-10px, -10px);
+    -ms-transform: rotate(20deg) translate(-10px, -10px);
+    -o-transform: rotate(20deg) translate(-10px, -10px);
+    transform: rotate(20deg) translate(-10px, -10px);
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(5) .tape {
+    display: none;
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(6) > div {
+    -webkit-transform: rotate(-5deg);
+    -moz-transform: rotate(-5deg);
+    -ms-transform: rotate(-5deg);
+    -o-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+  }
+  .splash-landing > section #how-it-works .main ul li:nth-child(6) .tape {
+    display: none;
+  }
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(1) svg circle, .splash-landing > section #become-guru .main ul li:nth-child(1) svg path {
+  stroke: #e6389b;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(1) svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(1) svg *[fill-opacity="0.5"] {
+  fill: #e6389b;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(2) svg circle, .splash-landing > section #become-guru .main ul li:nth-child(2) svg path {
+  stroke: #9A5BC5;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(2) svg path[fill="#69B3A5"] {
+  fill: #9A5BC5;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(2) svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(2) svg *[fill-opacity="0.5"] {
+  fill: #9A5BC5;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(3) svg circle, .splash-landing > section #become-guru .main ul li:nth-child(3) svg path {
+  stroke: #7872e3;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(3) svg rect[fill="#69B3A5"] {
+  fill: #7872e3;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(3) svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(3) svg *[fill-opacity="0.5"] {
+  fill: #7872e3;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(4) svg circle, .splash-landing > section #become-guru .main ul li:nth-child(4) svg path {
+  stroke: #E5753C;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(4) svg circle[fill="#69B3A5"] {
+  fill: #E5753C !important;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(4) svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(4) svg *[fill-opacity="0.5"] {
+  fill: #E5753C;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(5) svg circle, .splash-landing > section #become-guru .main ul li:nth-child(5) svg path {
+  stroke: #81B566;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(5) svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(5) svg *[fill-opacity="0.5"] {
+  fill: #81B566;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(5) svg path:nth-child(2) {
+  fill: none !important;
+  stroke: white;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(5) svg path:nth-child(3) {
+  fill: none !important;
+  stroke: #81B566;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(6) svg circle, .splash-landing > section #become-guru .main ul li:nth-child(6) svg path {
+  stroke: #55A4B7;
+}
+
+.splash-landing > section #become-guru .main ul li:nth-child(6) svg *[opacity="0.5"], .splash-landing > section #become-guru .main ul li:nth-child(6) svg *[fill-opacity="0.5"] {
+  fill: #55A4B7;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section #become-guru .main ul li:nth-child(1) > div {
+    -webkit-transform: rotate(7deg) translate(0px, 40px);
+    -moz-transform: rotate(7deg) translate(0px, 40px);
+    -ms-transform: rotate(7deg) translate(0px, 40px);
+    -o-transform: rotate(7deg) translate(0px, 40px);
+    transform: rotate(7deg) translate(0px, 40px);
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(1) .tape:nth-child(1) {
+    display: none;
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(1) .tape:nth-child(2) {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    top: -35px;
+    left: 50%;
+    margin-left: -15px;
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(1) .tape.animate:nth-child(2) {
+    -webkit-animation-name: tape-3;
+    -moz-animation-name: tape-3;
+    -o-animation-name: tape-3;
+    animation-name: tape-3;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(2) > div {
+    -webkit-transform: rotate(-7deg) translate(-25px, 60px);
+    -moz-transform: rotate(-7deg) translate(-25px, 60px);
+    -ms-transform: rotate(-7deg) translate(-25px, 60px);
+    -o-transform: rotate(-7deg) translate(-25px, 60px);
+    transform: rotate(-7deg) translate(-25px, 60px);
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(2) .tape:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    left: 22.5px;
+    top: -15px;
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(2) .tape:nth-child(2) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: -20px;
+    right: 30px;
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(2) .tape.animate:nth-child(1) {
+    -webkit-animation-name: tape-1;
+    -moz-animation-name: tape-1;
+    -o-animation-name: tape-1;
+    animation-name: tape-1;
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(2) .tape.animate:nth-child(2) {
+    -webkit-animation-name: tape-2;
+    -moz-animation-name: tape-2;
+    -o-animation-name: tape-2;
+    animation-name: tape-2;
+    -webkit-animation-delay: 0.25s;
+    -moz-animation-delay: 0.25s;
+    -o-animation-delay: 0.25s;
+    animation-delay: 0.25s;
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(3) > div {
+    -webkit-transform: rotate(5deg) translate(30px, 40px);
+    -moz-transform: rotate(5deg) translate(30px, 40px);
+    -ms-transform: rotate(5deg) translate(30px, 40px);
+    -o-transform: rotate(5deg) translate(30px, 40px);
+    transform: rotate(5deg) translate(30px, 40px);
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(3) .tape {
+    display: none;
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(4) > div {
+    -webkit-transform: rotate(20deg) translate(-10px, 10px);
+    -moz-transform: rotate(20deg) translate(-10px, 10px);
+    -ms-transform: rotate(20deg) translate(-10px, 10px);
+    -o-transform: rotate(20deg) translate(-10px, 10px);
+    transform: rotate(20deg) translate(-10px, 10px);
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(4) .tape {
+    display: none;
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(5) > div {
+    -webkit-transform: rotate(5deg) translate(0px, 20px);
+    -moz-transform: rotate(5deg) translate(0px, 20px);
+    -ms-transform: rotate(5deg) translate(0px, 20px);
+    -o-transform: rotate(5deg) translate(0px, 20px);
+    transform: rotate(5deg) translate(0px, 20px);
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(5) .tape {
+    display: none;
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(6) > div {
+    -webkit-transform: rotate(-2deg) translate(-20px, 15px);
+    -moz-transform: rotate(-2deg) translate(-20px, 15px);
+    -ms-transform: rotate(-2deg) translate(-20px, 15px);
+    -o-transform: rotate(-2deg) translate(-20px, 15px);
+    transform: rotate(-2deg) translate(-20px, 15px);
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(6) .tape:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    left: 22.5px;
+    top: -15px;
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(6) .tape:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    bottom: -15px;
+    right: 22.5px;
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(6) .tape.animate:nth-child(1) {
+    -webkit-animation-name: tape-1;
+    -moz-animation-name: tape-1;
+    -o-animation-name: tape-1;
+    animation-name: tape-1;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+  }
+  .splash-landing > section #become-guru .main ul li:nth-child(6) .tape.animate:nth-child(2) {
+    -webkit-animation-name: tape-4;
+    -moz-animation-name: tape-4;
+    -o-animation-name: tape-4;
+    animation-name: tape-4;
+    -webkit-animation-delay: 0.75s;
+    -moz-animation-delay: 0.75s;
+    -o-animation-delay: 0.75s;
+    animation-delay: 0.75s;
+  }
+}
+
+.splash-landing > section#splash-footer {
+  background: #40484B;
+  padding: 0 15px 72px;
+}
+
+.splash-landing > section#splash-footer ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.splash-landing > section#splash-footer ul li {
+  position: relative;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.splash-landing > section#splash-footer ul li:first-child, .splash-landing > section#splash-footer ul li:last-child {
+  z-index: 2;
+  width: calc(100% - 64px / 2);
+}
+
+.splash-landing > section#splash-footer ul li:first-child {
+  text-align: right;
+  padding-right: 5px;
+}
+
+.splash-landing > section#splash-footer ul li:last-child {
+  text-align: left;
+  padding-left: 5px;
+}
+
+.splash-landing > section#splash-footer ul li:nth-child(2) {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+}
+
+.splash-landing > section#splash-footer ul li svg {
+  -webkit-transition: all 1.2s ease-in-out;
+  -moz-transition: all 1.2s ease-in-out;
+  -ms-transition: all 1.2s ease-in-out;
+  -o-transition: all 1.2s ease-in-out;
+  transition: all 1.2s ease-in-out;
+  -webkit-animation-name: pulse-heart;
+  -moz-animation-name: pulse-heart;
+  -o-animation-name: pulse-heart;
+  animation-name: pulse-heart;
+  -webkit-animation-duration: 1.2s;
+  -moz-animation-duration: 1.2s;
+  -o-animation-duration: 1.2s;
+  animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+  width: 64px;
+  height: 64px;
+}
+
+.splash-landing > section#splash-footer ul li svg path {
+  stroke: #eb4478;
+  fill: #eb4478;
+}
+
+.splash-landing > section#splash-footer ul li span:last-child svg {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  -o-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section#splash-footer {
+    padding: 36px 15px 72px;
+  }
+  .splash-landing > section#splash-footer ul li {
+    font-size: 36px;
+  }
+  .splash-landing > section#splash-footer ul li:first-child, .splash-landing > section#splash-footer ul li:last-child {
+    width: calc(100% - 84px / 2);
+  }
+  .splash-landing > section#splash-footer ul li:nth-child(2) {
+    width: 84px;
+    height: 84px;
+  }
+  .splash-landing > section#splash-footer ul li svg {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+.splash-landing > section.essay-pricing .main {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+.splash-landing > section.essay-pricing .main > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.splash-landing > section.essay-pricing .main > ul > li {
+  width: 100%;
+  min-width: 320px;
+  padding: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .splash-landing > section.essay-pricing .main > ul {
+>>>>>>> 4f041d399986b78683230834934712881f59a960
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
