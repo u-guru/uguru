@@ -1897,3 +1897,13 @@ header#home-nav-header.splash-header,
 	}
 }
 
+
+
+#draw-path-demo {
+	svg {
+		fill: $charcoal;
+		path {
+			stroke: $charcoal;
+		}
+	}
+}

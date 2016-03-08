@@ -38,6 +38,48 @@ angular.module('uguru.directives')
       }
     };
 })
+.directive('drawPath', ['$timeout', function ($timeout) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      var clonedElem = element[0].cloneNode(true);
+      var currentFrame = parseInt(attr.initFrame) || 0;
+      var delay = attr.drawPathDelay || 0;
+      var totalFrames = parseInt(attr.numFrames) || 60;
+      var svgPaths = element[0].querySelectorAll('path');
+      var pathLengths = new Array();
+      for (var i = 0; i < svgPaths.length; i++) {
+        var indexPath = svgPaths[i];
+        var pathLength = indexPath.getTotalLength();
+        pathLengths[i] = pathLength;
+        indexPath.style.strokeDasharray = pathLength + ' ' + pathLength;
+        indexPath.style.strokeDashoffset = pathLength;
+      }
+      scope.$watch(function() {
+        return element.attr('class');
+      }, function() {
+        if (element[0].classList.contains('activate') || (attr.drawOnClass && element[0].classList.contains(attr.drawOnClass))) {
+            $timeout(function() {
+              var requestFrameHandle = 0;
+              function draw() {
+                var progress = currentFrame/totalFrames;
+                if (progress > 1) {
+                   window.cancelAnimationFrame(requestFrameHandle);
+                } else {
+                  currentFrame++;
+                  for(var j=0; j<svgPaths.length;j++){
+                    svgPaths[j].style.strokeDashoffset = Math.floor(pathLengths[j] * (1 - progress));
+                  }
+                  requestFrameHandle = window.requestAnimationFrame(draw);
+                }
+              }
+              draw()
+            }, delay);
+          }
+        })
+      }
+    }
+}])
 .directive('parallaxParent', ['$state', '$timeout', function ($state, $timeout) {
     // TODO --> provide support bool | integer
     return {
@@ -237,7 +279,7 @@ angular.module('uguru.directives')
     }
   }
 }])
-.directive('counter', ['$timeout', function ($timeout) {
+.directive('counter', ['$timeout', '$interval', function ($timeout, $interval) {
   return {
     restrict: 'A',
     link: function(scope, element, attr) {
@@ -257,7 +299,7 @@ angular.module('uguru.directives')
           scope.$watch(function() {
             counterMax = attr.counterMax;
             var counterDuration = attr.counterDuration || '';
-            return element.attr('class').indexOf(initCounterClass) > -1;
+            return (element.attr('class') && element.attr('class').indexOf(initCounterClass) > -1) || "";
 
           },function(elem_has_init_counter_class) {
             console.log('starting_counter', elem_has_init_counter_class)
@@ -281,14 +323,33 @@ angular.module('uguru.directives')
                   suffix : counterSuffix
               }
               var counterDelay = attr.counterDelay;
-              if (counterDelay) {
-                $timeout(function() {
-                  var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
-                  countUpInstance.start();
-                }, parseInt(counterDelay))
+              var counterInfinite = attr.counterInfinite;
+              if ('counterInfinite' in attr) {
+                var counterTimeBetween = attr.counterInfiniteInBtwn || 0;
+                if (counterDelay) {
+                  $timeout(function() {
+                    $interval(function() {
+                      var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+                      countUpInstance.start();
+                    }, parseInt(counterDuration) * 1000 + parseInt(counterTimeBetween) * 1000 + 1000)
+                  }, parseInt(counterDelay))
+                } else {
+                  $interval(function() {
+                    var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+                    countUpInstance.start();
+                  }, parseInt(counterDuration) * 1000 + parseInt(counterTimeBetween) * 1000);
+                }
+
               } else {
-                  var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
-                  countUpInstance.start();
+                if (counterDelay) {
+                  $timeout(function() {
+                    var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+                    countUpInstance.start();
+                  }, parseInt(counterDelay))
+                } else {
+                    var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+                    countUpInstance.start();
+                }
               }
             }
           })
@@ -391,6 +452,9 @@ angular.module('uguru.directives')
     // add 'translate-to-elem'="#sample-selector" to element to link destination element
     // add 'translate-to-x'="200" to add 200px X offset (origin = bottom left);
     // add 'translate-to-y'="200" to add 200px Y offset (origin = bottom left);
+    // add 'scale-x-on-click'="1.3" scales x by 1.3
+    // add 'translate-on-click-duration'="2.0" scales x by 1.3
+    // add 'scale-y-on-click'="0.7" scales y by 0.7
     // add 'translate-back-class'="untransform-class-name1, untransform-class-name-2" adds the argument/class(es) when the transform is set to null (when element with attribute transforms)
     return {
         restrict: 'A',
@@ -403,16 +467,28 @@ angular.module('uguru.directives')
               var translateElemBounding = document.querySelector(translateElem).getBoundingClientRect();
               var translateElemCoords = {height: translateElemBounding.height, width: translateElemBounding.width, top: translateElemBounding.top, left: translateElemBounding.left};
               var injectOnTranslateClass = attr.translateOnClick || 'translate-active';
+              var scaleString = "";
               if (!element[0].style.webkitTransform && !element[0].style.MozTransform && !element[0].style.msTransform && !element[0].style.OTransform && !element[0].style.transform) {
                 var translateY = parseInt(translateElemCoords.top - elemCoords.top + elemCoords.height - translateElemCoords.height) + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
                 var translateX = parseInt(translateElemCoords.left - elemCoords.left) + ((attr.translateXOffset && parseInt(attr.translateXOffset)) || 0);
+                var scaleX = (attr.scaleXOnClick && parseFloat(attr.scaleXOnClick)) || 1.0;
+                var scaleY = (attr.scaleXOnClick && parseFloat(attr.scaleYOnClick)) || 1.0;
                 var transFormString = "translate(" + translateX + "px, " + translateY + "px)"
+                var scaleString = " scale(" + scaleX + ',' + scaleY + ')'
                 // console.log(transFormString, translateElemCoords);
-                element[0].style.webkitTransform = transFormString;
-                element[0].style.MozTransform = transFormString;
-                element[0].style.msTransform = transFormString;
-                element[0].style.OTransform = transFormString;
-                element[0].style.transform = transFormString;
+                element[0].style.webkitTransform = transFormString + scaleString;
+                element[0].style.MozTransform = transFormString + scaleString;
+                element[0].style.msTransform = transFormString + scaleString;
+                element[0].style.OTransform = transFormString + scaleString;
+                element[0].style.transform = transFormString + scaleString;
+                if (attr.translateOnClickDuration && attr.translateOnClickDuration.length) {
+                  var translateDuration = parseInt(attr.translateOnClickDuration);
+                  element[0].style.webkitTransitionDuration = translateDuration + "ms";
+                  element[0].style.MozTransitionDuration = translateDuration + "ms";
+                  element[0].style.msTransitionDuration = translateDuration + "ms";
+                  element[0].style.OTransitionDuration = translateDuration + "ms";
+                  element[0].style.transitionDuration = translateDuration + "ms";
+                }
                 //deactivate other directives with transforms towards the same element "translate-to-elem";
                 var allTranslateOnClickElems = document.querySelectorAll('.' + injectOnTranslateClass + ".active");
                 // console.log('allTranslateOnClickElems', allTranslateOnClickElems.length, 'found:\n', allTranslateOnClickElems);
