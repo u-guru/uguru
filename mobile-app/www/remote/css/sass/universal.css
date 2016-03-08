@@ -1,3 +1,378 @@
+/* ---------- HOME */
+.desktop-home .main {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  position: relative;
+  padding: 0;
+}
+
+.desktop-home .main .home-tabs {
+  width: 100%;
+  height: 60px;
+}
+
+.desktop-home .main .home-tabs ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.desktop-home .main .home-tabs ul li {
+  position: relative;
+}
+
+.desktop-home .main .home-tabs ul li:not(:last-child):after {
+  filter: alpha(opacity=40);
+  opacity: 0.4;
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: -1px;
+  width: 2px;
+  height: 40px;
+  background: white;
+}
+
+.desktop-home .main .home-tabs ul li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  height: 60px;
+  padding: 0 15px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.desktop-home .main .home-tabs ul li a .notification {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  background: #43cb9d;
+  color: white;
+  width: 36px;
+  height: 32px;
+  border-radius: 2px;
+}
+
+.desktop-home .main .home-tabs ul li a .notification:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  margin-top: -6px;
+  height: 0;
+  width: 0;
+  border: 6px solid transparent;
+  border-left-color: #43cb9d;
+}
+
+.desktop-home .main .home-tabs ul li a span:not(.notification) {
+  margin-left: 15px;
+}
+
+.desktop-home .main .home-tabs ul li a:hover .notification, .desktop-home .main .home-tabs ul li a:focus .notification {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  background: #40484B;
+}
+
+.desktop-home .main .home-tabs ul li a:hover .notification:after, .desktop-home .main .home-tabs ul li a:focus .notification:after {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  border-left-color: #40484B;
+}
+
+.desktop-home .main .home-main {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1030px;
+  margin: 0 auto;
+  height: calc(100% - 60px);
+  max-height: 650px;
+}
+
+.desktop-home .main .home-main .home-tiles-top {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100% / 3 * 2);
+}
+
+.desktop-home .main .home-main .home-tiles-top .home-tiles-guru {
+  height: 100%;
+  padding: 15px 0;
+}
+
+.desktop-home .main .home-main .home-tiles-top .home-tiles-guru svg {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: 320px;
+}
+
+.desktop-home .main .home-main .home-tiles-top .home-tiles-guru svg > g > ellipse {
+  -webkit-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+  -moz-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+  -ms-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+  -o-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+  animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+  -webkit-transform-origin: center center;
+  -moz-transform-origin: center center;
+  -ms-transform-origin: center center;
+  -o-transform-origin: center center;
+  transform-origin: center center;
+}
+
+.desktop-home .main .home-main .home-tiles-top .home-tiles-guru svg .guru-body {
+  -webkit-animation: tour-guru-hover 1000ms linear infinite alternate;
+  -moz-animation: tour-guru-hover 1000ms linear infinite alternate;
+  -ms-animation: tour-guru-hover 1000ms linear infinite alternate;
+  -o-animation: tour-guru-hover 1000ms linear infinite alternate;
+  animation: tour-guru-hover 1000ms linear infinite alternate;
+}
+
+.desktop-home .main .home-main .home-tiles-top .home-tiles-daily {
+  padding: 15px 0 15px 15px;
+  height: 100%;
+  width: 100%;
+}
+
+.desktop-home .main .home-main .home-tiles-top .home-tiles-daily > div {
+  position: relative;
+  height: 100%;
+  border-radius: 2px;
+}
+
+.desktop-home .main .home-main .home-tiles-top .home-tiles-daily > div h1 {
+  position: relative;
+  font-size: 28px;
+  font-weight: 600;
+  padding: 15px;
+}
+
+.desktop-home .main .home-main .home-tiles-top .home-tiles-daily > div h1:after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  left: 15px;
+  width: calc(100% - 30px);
+  height: 2px;
+}
+
+.desktop-home .main .home-main .home-tiles-top .home-tiles-daily > div p {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.desktop-home .main .home-main .home-tiles-container {
+  padding: 7.5px;
+}
+
+.desktop-home .main .home-main .home-tiles-container .home-tile {
+  display: block;
+}
+
+.desktop-home .main .home-main .home-tiles-main {
+  width: 100%;
+  height: calc(100% / 3);
+  padding: 0 15px 15px;
+}
+
+.desktop-home .main .home-main .home-tiles-main .home-tiles-main-inside {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  border-radius: 2px;
+  height: 100%;
+}
+
+.desktop-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile {
+  position: relative;
+  width: 25%;
+  height: 100%;
+  padding: 15px;
+}
+
+.desktop-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:not(:last-child):after {
+  border-radius: 1000px;
+  content: "";
+  position: absolute;
+  z-index: 10;
+  top: 15px;
+  right: -1px;
+  height: calc(100% - 30px);
+  width: 2px;
+}
+
+.desktop-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.desktop-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div {
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.desktop-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div > span {
+  display: block;
+  font-size: 64px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 80px;
+  height: 80px;
+}
+
+.desktop-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div h1 {
+  width: 100%;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.desktop-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div h1 span:not([data-courses="1"]) b {
+  font-weight: 600;
+}
+
+.desktop-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div h1 span:not([data-courses="1"]) b:after {
+  content: "s";
+}
+
+.desktop-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div h2 {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  margin-top: 0 !important;
+  width: 100%;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.desktop-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div svg {
+  display: block;
+  margin: 0 auto;
+  height: 80px;
+  width: 80px;
+}
+
+.desktop-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.desktop-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div svg *:not(.line) {
+  fill: rgba(255, 255, 255, 0.3) !important;
+}
+
 /* ---------- FAQ */
 #faq {
   height: 100%;
