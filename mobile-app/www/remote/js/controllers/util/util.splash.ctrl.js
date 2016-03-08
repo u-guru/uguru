@@ -1009,6 +1009,18 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.switchToBgScene = function(index) {
+      var currentActive = document.querySelector('.bg-scene .bg-single-scene.active-scene');
+      if (currentActive) {
+        currentActive.classList.remove('active-scene');
+        currentActive.classList.add('clear');
+      }
+      var selectedIndexScene = document.querySelector('.bg-scene-' + index);
+      if (selectedIndexScene) {
+        selectedIndexScene.classList.add('active-scene', 'activate');
+      }
+    }
+
     $scope.onLoad = function() {
       // @gabrielle-note -- what
       // Default parameters
