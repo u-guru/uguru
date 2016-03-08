@@ -1,3 +1,293 @@
+/* ---------- GURU HOME */
+#cta-modal-signup {
+  background: rgba(43, 50, 52, 0.9) !important;
+  top: 64px;
+  height: calc(100% - 64px); }
+  #cta-modal-signup .cta-modal-close {
+    display: block; }
+  #cta-modal-signup header.desktop-header {
+    display: block;
+    top: 0; }
+    #cta-modal-signup header.desktop-header a.cta-modal-close {
+      display: block;
+      top: 0;
+      margin: 15px;
+      right: 0;
+      position: absolute;
+      width: auto !important; }
+  #cta-modal-signup input {
+    color: #2B3234 !important; }
+  #cta-modal-signup #cta-footer-switch-link {
+    display: block;
+    bottom: 20%;
+    text-align: center;
+    left: 0; }
+
+#desktop-guru-home {
+  background: #40484B; }
+  #desktop-guru-home .main .home-tabs {
+    background: #5b6f70; }
+  #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily {
+    width: calc(100% - 320px);
+    padding-right: 15px;
+    height: 100%; }
+    #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div {
+      background: #2B3234; }
+      #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div h1 {
+        color: #69B3A5;
+        text-align: center; }
+        #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div h1:after {
+          background: rgba(105, 179, 165, 0.3); }
+      #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        overflow-x: auto;
+        padding: 7.5px;
+        height: calc(100% - 63px); }
+        #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li {
+          width: 25%;
+          height: 100%;
+          min-width: 300px;
+          padding: 7.5px; }
+          #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li:last-child {
+            padding-right: 15px; }
+          #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div {
+            background: #4c5559;
+            height: 100%;
+            border: 2px solid #69B3A5;
+            border-radius: 2px; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div header {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-align-content: center;
+              align-content: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              background: #69B3A5; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div header > span {
+                display: block;
+                margin-left: -14px; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div header svg {
+                display: block;
+                width: 50px;
+                height: 50px;
+                padding: 5px; }
+                #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div header svg * {
+                  fill: none;
+                  stroke: white;
+                  stroke-width: 4px;
+                  stroke-linecap: round;
+                  stroke-linejoin: round; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div header h2 {
+                font-size: 20px;
+                font-weight: 600;
+                text-align: center; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div > div {
+              position: relative;
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -ms-flex-flow: row wrap;
+              -webkit-flex-flow: row wrap;
+              flex-flow: row wrap;
+              position: relative;
+              padding: 15px 15px 65px;
+              height: calc(100% - 50px);
+              font-size: 18px;
+              font-weight: 400;
+              line-height: 1.2;
+              text-align: center; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div > div > div {
+                width: 100%;
+                padding: 15px; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div > div ul {
+                text-align: left; }
+                #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div > div ul li {
+                  padding-bottom: 10px; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div > div h3 {
+                width: 100%;
+                font-size: 28px;
+                font-weight: 600; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div > div progress, #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div > div .progress {
+                border-radius: 1000px;
+                overflow: hidden;
+                margin: 15px 0;
+                width: 100%;
+                height: 15px; }
+                #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div > div progress::-webkit-progress-value, #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div > div progress span, #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div > div .progress::-webkit-progress-value, #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div > div .progress span {
+                  border-radius: 1000px; }
+                #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div > div progress::-moz-progress-bar, #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div > div .progress::-moz-progress-bar {
+                  border-radius: 1000px; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > div > div button {
+                position: absolute;
+                left: 50%;
+                -webkit-transform: translateX(-50%);
+                -moz-transform: translateX(-50%);
+                -ms-transform: translateX(-50%);
+                -o-transform: translateX(-50%);
+                transform: translateX(-50%);
+                bottom: 15px; }
+          #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-ranking > div > div {
+            padding-bottom: 15px; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-ranking > div > div svg {
+              -webkit-transform: scale(0.75);
+              -moz-transform: scale(0.75);
+              -ms-transform: scale(0.75);
+              -o-transform: scale(0.75);
+              transform: scale(0.75); }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-ranking > div > div svg path {
+                stroke-linecap: round; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-ranking > div > div #percentile {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              -webkit-transform: translate(-50%, -50%);
+              -moz-transform: translate(-50%, -50%);
+              -ms-transform: translate(-50%, -50%);
+              -o-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%); }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-ranking > div > div #percentile #percentile-ranking {
+                position: relative;
+                font-size: 64px;
+                font-weight: 600;
+                line-height: 1; }
+                #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-ranking > div > div #percentile #percentile-ranking:after {
+                  content: "th";
+                  display: block;
+                  position: absolute;
+                  top: 5px;
+                  right: -5px;
+                  font-size: 16px;
+                  font-weight: 400;
+                  line-height: 28px;
+                  text-transform: uppercase; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-ranking > div > div #percentile #percentile-label {
+                font-size: 16px;
+                font-weight: 400;
+                letter-spacing: 1px;
+                text-transform: uppercase; }
+          #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-guru > div > div {
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
+            -webkit-justify-content: center;
+            justify-content: center; }
+          #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-guru > div .btn-ghost-shamrock {
+            border-color: white;
+            color: white; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-guru > div .btn-ghost-shamrock:hover, #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-guru > div .btn-ghost-shamrock:focus {
+              border-color: #69B3A5;
+              background: #69B3A5; }
+          #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-delivery > div {
+            border: 2px solid #F04F54; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-delivery > div header {
+              background: #F04F54; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-delivery > div .btn-ghost-shamrock {
+              border-color: white;
+              color: white; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-delivery > div .btn-ghost-shamrock:hover, #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-delivery > div .btn-ghost-shamrock:focus {
+                border-color: #F04F54;
+                background: #F04F54; }
+          #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-freelancing > div {
+            border: 2px solid #E5753C; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-freelancing > div header {
+              background: #E5753C; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-freelancing > div .btn-ghost-shamrock {
+              border-color: white;
+              color: white; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-freelancing > div .btn-ghost-shamrock:hover, #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-freelancing > div .btn-ghost-shamrock:focus {
+                border-color: #E5753C;
+                background: #E5753C; }
+          #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-baking > div {
+            border: 2px solid #F6C64E; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-baking > div header {
+              background: #F6C64E; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-baking > div .btn-ghost-shamrock {
+              border-color: white;
+              color: white; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-baking > div .btn-ghost-shamrock:hover, #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-baking > div .btn-ghost-shamrock:focus {
+                border-color: #F6C64E;
+                background: #F6C64E; }
+          #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-photography > div {
+            border: 2px solid #81B566; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-photography > div header {
+              background: #81B566; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-photography > div .btn-ghost-shamrock {
+              border-color: white;
+              color: white; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-photography > div .btn-ghost-shamrock:hover, #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-photography > div .btn-ghost-shamrock:focus {
+                border-color: #81B566;
+                background: #81B566; }
+          #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-tech > div {
+            border: 2px solid #55A4B7; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-tech > div header {
+              background: #55A4B7; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-tech > div .btn-ghost-shamrock {
+              border-color: white;
+              color: white; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-tech > div .btn-ghost-shamrock:hover, #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-tech > div .btn-ghost-shamrock:focus {
+                border-color: #55A4B7;
+                background: #55A4B7; }
+          #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-household > div {
+            border: 2px solid #7872e3; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-household > div header {
+              background: #7872e3; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-household > div .btn-ghost-shamrock {
+              border-color: white;
+              color: white; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-household > div .btn-ghost-shamrock:hover, #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-household > div .btn-ghost-shamrock:focus {
+                border-color: #7872e3;
+                background: #7872e3; }
+          #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-athletic > div {
+            border: 2px solid #9A5BC5; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-athletic > div header {
+              background: #9A5BC5; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-athletic > div .btn-ghost-shamrock {
+              border-color: white;
+              color: white; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-athletic > div .btn-ghost-shamrock:hover, #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-athletic > div .btn-ghost-shamrock:focus {
+                border-color: #9A5BC5;
+                background: #9A5BC5; }
+          #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-academic > div {
+            border: 2px solid #e6389b; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-academic > div header {
+              background: #e6389b; }
+            #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-academic > div .btn-ghost-shamrock {
+              border-color: white;
+              color: white; }
+              #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-academic > div .btn-ghost-shamrock:hover, #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li.event-academic > div .btn-ghost-shamrock:focus {
+                border-color: #e6389b;
+                background: #e6389b; }
+  #desktop-guru-home .main .home-main .home-tiles-main .home-tiles-main-inside {
+    background: #69B3A5; }
+    #desktop-guru-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:hover, #desktop-guru-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:focus {
+      background: rgba(91, 111, 112, 0.5); }
+    #desktop-guru-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:active {
+      background: #5b6f70; }
+    #desktop-guru-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:not(:last-child):after {
+      background: #b4d9d2; }
+
 /* ---------- CREDIBILITY */
 #desktop-credibility #credit-complete {
   -ms-box-orient: horizontal;
@@ -689,460 +979,6 @@
       font-weight: 600; }
     #guru-onboarding-buttons li:first-child {
       text-align: right; }
-
-/* ---------- GURU HOME */
-#cta-modal-signup {
-  background: rgba(43, 50, 52, 0.9) !important;
-  top: 64px;
-  height: calc(100% - 64px); }
-  #cta-modal-signup .cta-modal-close {
-    display: block; }
-  #cta-modal-signup header.desktop-header {
-    display: block;
-    top: 0; }
-    #cta-modal-signup header.desktop-header a.cta-modal-close {
-      display: block;
-      top: 0;
-      margin: 15px;
-      right: 0;
-      position: absolute;
-      width: auto !important; }
-  #cta-modal-signup input {
-    color: #2B3234 !important; }
-  #cta-modal-signup #cta-footer-switch-link {
-    display: block;
-    bottom: 20%;
-    text-align: center;
-    left: 0; }
-
-#desktop-guru-home .main {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  padding: 0; }
-  #desktop-guru-home .main .guru-home-greeting {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    width: calc(50% + 80px);
-    height: 100%; }
-    #desktop-guru-home .main .guru-home-greeting div {
-      text-align: center;
-      text-transform: uppercase; }
-      #desktop-guru-home .main .guru-home-greeting div h1 {
-        color: #69B3A5;
-        font-size: 40px;
-        font-weight: 700; }
-      #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        width: 100%;
-        margin-top: 10%; }
-        #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li {
-          padding: 0 15px; }
-          #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a {
-            -ms-box-orient: horizontal;
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -moz-flex;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-align-content: center;
-            align-content: center;
-            -webkit-align-items: center;
-            align-items: center; }
-            #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a span {
-              display: block; }
-            #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a .notification-icon {
-              position: relative; }
-              #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a .notification-icon svg {
-                -webkit-transition: all 0.15s ease-in-out;
-                -o-transition: all 0.15s ease-in-out;
-                -ms-transition: all 0.15s ease-in-out;
-                -moz-transition: all 0.15s ease-in-out;
-                transition: all 0.15s ease-in-out;
-                border-radius: 1000px;
-                fill: none;
-                stroke: #40484B;
-                stroke-width: 5px;
-                stroke-linecap: round;
-                stroke-linejoin: round;
-                background: #F1F1F1;
-                width: 64px;
-                height: 64px;
-                padding: 10px; }
-              #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a .notification-icon .notification-number {
-                border-radius: 1000px;
-                -ms-box-orient: horizontal;
-                display: -webkit-box;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: -moz-flex;
-                display: -webkit-flex;
-                display: flex;
-                -webkit-flex-direction: row;
-                flex-direction: row;
-                -webkit-align-items: center;
-                align-items: center;
-                -webkit-align-content: center;
-                align-content: center;
-                -webkit-justify-content: center;
-                justify-content: center;
-                position: absolute;
-                top: -15px;
-                right: -15px;
-                width: 40px;
-                height: 40px;
-                background: #69B3A5;
-                border: 3px solid #2B3234;
-                font-size: 18px;
-                font-weight: 600; }
-            #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a .notification-type {
-              padding-left: 15px;
-              font-weight: 600; }
-          #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a:hover .notification-icon svg, #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a:focus .notification-icon svg {
-            background: #8bc4b9; }
-          #desktop-guru-home .main .guru-home-greeting div .guru-home-notifications ul li a:active .notification-icon svg {
-            background: #69B3A5; }
-  #desktop-guru-home .main .guru-home-tiles {
-    height: 100%;
-    max-height: 715px;
-    margin-right: -20px; }
-    #desktop-guru-home .main .guru-home-tiles .square {
-      height: 100%; }
-    #desktop-guru-home .main .guru-home-tiles .square + div {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 5; }
-      #desktop-guru-home .main .guru-home-tiles .square + div h1 {
-        margin: 0 !important; }
-      #desktop-guru-home .main .guru-home-tiles .square + div h2, #desktop-guru-home .main .guru-home-tiles .square + div h3 {
-        padding: 15px 0;
-        font-weight: 700;
-        text-transform: uppercase; }
-        #desktop-guru-home .main .guru-home-tiles .square + div h2 span, #desktop-guru-home .main .guru-home-tiles .square + div h3 span {
-          font-weight: 400; }
-      #desktop-guru-home .main .guru-home-tiles .square + div h3 {
-        padding-bottom: 0;
-        font-size: 18px; }
-      #desktop-guru-home .main .guru-home-tiles .square + div progress {
-        margin: 0 15px;
-        width: calc(100% - 30px); }
-    #desktop-guru-home .main .guru-home-tiles > div {
-      width: 100%;
-      height: 50%;
-      text-align: center; }
-    #desktop-guru-home .main .guru-home-tiles .home-tiles-top {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      padding-top: 7.5px;
-      padding-left: 10px; }
-      #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking {
-        height: 100%;
-        width: calc(100% / 3 * 2);
-        padding: 7.5px; }
-        #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div {
-          position: relative;
-          height: 100%; }
-          #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div .square {
-            fill: #9ccdc3; }
-          #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div .square + div {
-            background: #9ccdc3; }
-          #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div h3 {
-            padding-top: 0; }
-          #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart {
-            position: relative;
-            height: calc(100% - 97px);
-            width: 100%; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart #guru-ranking-progress-bar {
-              height: 100%; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart svg {
-              display: none;
-              padding: 0 15px 15px;
-              height: 100%; }
-              #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart svg path {
-                stroke-linecap: round; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart #percentile + svg {
-              display: inline-block; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart #percentile {
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              -webkit-transform: translate(-50%, -50%);
-              -moz-transform: translate(-50%, -50%);
-              -ms-transform: translate(-50%, -50%);
-              -o-transform: translate(-50%, -50%);
-              transform: translate(-50%, -50%); }
-              #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart #percentile #percentile-ranking {
-                position: relative;
-                margin-top: -30px;
-                font-size: 84px;
-                font-weight: 600;
-                line-height: 1;
-                text-align: center; }
-                #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart #percentile #percentile-ranking::after {
-                  content: "th";
-                  display: block;
-                  position: absolute;
-                  top: 11px;
-                  right: -10px;
-                  font-size: 20px;
-                  font-weight: 600;
-                  line-height: 28px;
-                  text-transform: uppercase; }
-              #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-ranking > div #guru-chart #percentile #percentile-label {
-                font-size: 20px;
-                font-weight: 600;
-                letter-spacing: 1px;
-                line-height: 1.2;
-                text-transform: uppercase; }
-      #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating {
-        height: 100%;
-        width: calc(100% / 3);
-        padding: 7.5px; }
-        #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div {
-          position: relative;
-          height: 50%; }
-          #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div .square + div {
-            height: calc(100% - 7.5px); }
-          #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child {
-            padding-bottom: 7.5px; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child .square {
-              fill: #69B3A5; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child .square + div {
-              background: #69B3A5; }
-              #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child .square + div svg {
-                fill: none;
-                stroke: white;
-                stroke-width: 2px;
-                stroke-linecap: round;
-                stroke-linejoin: round;
-                height: calc(100% - 39px); }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child #home-tiles-ranking {
-              -ms-box-orient: horizontal;
-              display: -webkit-box;
-              display: -moz-box;
-              display: -ms-flexbox;
-              display: -moz-flex;
-              display: -webkit-flex;
-              display: flex;
-              -webkit-flex-direction: row;
-              flex-direction: row;
-              -webkit-align-items: center;
-              align-items: center;
-              -webkit-align-content: center;
-              align-content: center;
-              -webkit-justify-content: center;
-              justify-content: center;
-              font-size: 60px;
-              font-weight: 700; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:first-child h5 {
-              filter: alpha(opacity=70);
-              opacity: 0.7;
-              font-size: 20px;
-              font-weight: 600;
-              text-transform: uppercase; }
-          #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:last-child {
-            padding-top: 7.5px; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:last-child .square {
-              fill: #809c97; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:last-child .square + div {
-              top: 7.5px;
-              background: #809c97; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-top .home-tiles-rating > div:last-child #home-tiles-earnings {
-              -ms-box-orient: horizontal;
-              display: -webkit-box;
-              display: -moz-box;
-              display: -ms-flexbox;
-              display: -moz-flex;
-              display: -webkit-flex;
-              display: flex;
-              -webkit-flex-direction: row;
-              flex-direction: row;
-              -webkit-align-items: center;
-              align-items: center;
-              -webkit-align-content: center;
-              align-content: center;
-              -webkit-justify-content: center;
-              justify-content: center;
-              padding-top: 13px !important;
-              font-size: 60px;
-              font-weight: 700; }
-    #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      padding-bottom: 7.5px;
-      padding-left: 10px; }
-      #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats {
-        height: 100%;
-        width: calc(100% / 3);
-        padding: 7.5px; }
-        #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div {
-          position: relative;
-          height: 50%; }
-          #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div .square + div {
-            -ms-box-orient: horizontal;
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -moz-flex;
-            display: -webkit-flex;
-            display: flex;
-            -ms-flex-flow: row wrap;
-            -webkit-flex-flow: row wrap;
-            flex-flow: row wrap;
-            -webkit-flex-direction: row;
-            flex-direction: row;
-            -webkit-align-items: center;
-            align-items: center;
-            -webkit-align-content: center;
-            align-content: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            height: calc(100% - 7.5px);
-            cursor: pointer; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div .square + div svg {
-              fill: none;
-              stroke: white;
-              stroke-width: 4px;
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              width: 60px;
-              height: 60px; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div .square + div h3 {
-              padding-top: 0; }
-              #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div .square + div h3 .credibility-percent {
-                font-weight: 700; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div .square + div progress {
-              vertical-align: 0; }
-          #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:first-child {
-            padding-bottom: 7.5px; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:first-child .square {
-              fill: #63b9a9; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:first-child .square + div {
-              background: #63b9a9; }
-          #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:last-child {
-            padding-top: 7.5px; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:last-child .square {
-              fill: #809c97; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-stats > div:last-child .square + div {
-              top: 7.5px;
-              background: #809c97; }
-      #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming {
-        height: 100%;
-        width: calc(100% / 3 * 2);
-        padding: 7.5px; }
-        #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div {
-          position: relative;
-          height: 100%; }
-          #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square {
-            fill: #69B3A5; }
-          #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square + div {
-            background: #69B3A5; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square + div .slider {
-              height: calc(100% - 58px); }
-              #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square + div .slider .card {
-                -ms-box-orient: horizontal;
-                display: -webkit-box;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: -moz-flex;
-                display: -webkit-flex;
-                display: flex;
-                -webkit-flex-direction: row;
-                flex-direction: row;
-                -webkit-align-items: center;
-                align-items: center;
-                -webkit-align-content: center;
-                align-content: center;
-                -webkit-justify-content: center;
-                justify-content: center;
-                margin: 0 15px;
-                height: calc(100% - 54px); }
-                #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square + div .slider .card h1 {
-                  margin-bottom: 5px;
-                  font-size: 36px;
-                  font-weight: 600; }
-            #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square + div ul {
-              padding: 0 15px 15px;
-              font-size: 18px;
-              text-align: left;
-              font-weight: 600; }
-              #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square + div ul li {
-                margin-bottom: 5px;
-                padding-bottom: 5px;
-                border-bottom: 1px solid white; }
-              #desktop-guru-home .main .guru-home-tiles .home-tiles-bottom .home-tiles-upcoming > div .square + div ul span {
-                filter: alpha(opacity=50);
-                opacity: 0.5;
-                font-size: 14px; }
 
 /* ---------- BILLING */
 #desktop-billing .main {

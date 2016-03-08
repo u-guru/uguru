@@ -593,34 +593,44 @@ section {
   .university-view #school-list.onboarding-list ul li a:active, .university-view #school-list.onboarding-list ul li a.active, .university-view #school-list.onboarding-list ul li a.activated, .university-view #school-list-modal ul li a:active, .university-view #school-list-modal ul li a.active, .university-view #school-list-modal ul li a.activated {
     background: rgba(255, 255, 255, 0.2); }
 
-#nav-icon-burger {
-  display: block;
+/* ---------- HOME */
+.mobile-home .toggle {
   position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 42px;
-  height: 42px; }
-  #nav-icon-burger svg {
-    display: block; }
-    #nav-icon-burger svg * {
-      -webkit-transition: all 150ms ease-in-out;
-      -moz-transition: all 150ms ease-in-out;
-      -ms-transition: all 150ms ease-in-out;
-      -o-transition: all 150ms ease-in-out;
-      transition: all 150ms ease-in-out;
-      fill: none;
-      stroke: white;
-      stroke-width: 4px;
-      stroke-linecap: round;
-      stroke-linejoin: round; }
-  #nav-icon-burger:hover svg circle {
-    fill: white !important; }
-  #nav-icon-burger:hover svg path {
-    stroke: #40484B !important; }
-
-#mobile-student-home {
-  background: #F1F1F1; }
-  #mobile-student-home .toggle {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 10px; }
+  .mobile-home .toggle label {
+    width: auto; }
+  .mobile-home .toggle input:checked + label {
+    background: #43cb9d; }
+    .mobile-home .toggle input:checked + label svg:first-child {
+      -webkit-transform: translateX(55px);
+      -moz-transform: translateX(55px);
+      -ms-transform: translateX(55px);
+      -o-transform: translateX(55px);
+      transform: translateX(55px); }
+.mobile-home .home-top {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 50%; }
+  .mobile-home .home-top > h1 {
     position: absolute;
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -628,18 +638,6 @@ section {
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
-    top: 10px; }
-    #mobile-student-home .toggle label {
-      width: auto; }
-    #mobile-student-home .toggle input:checked + label {
-      background: #43cb9d; }
-      #mobile-student-home .toggle input:checked + label svg:first-child {
-        -webkit-transform: translateX(55px);
-        -moz-transform: translateX(55px);
-        -ms-transform: translateX(55px);
-        -o-transform: translateX(55px);
-        transform: translateX(55px); }
-  #mobile-student-home .home-top {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -655,8 +653,130 @@ section {
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
-    background: #6e8694;
-    height: 50%; }
+    height: 42px;
+    font-size: 20px;
+    font-weight: 600; }
+.mobile-home .home-tabs ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex; }
+  .mobile-home .home-tabs ul li {
+    position: relative;
+    width: 100%; }
+    .mobile-home .home-tabs ul li:not(:last-child):after {
+      filter: alpha(opacity=40);
+      opacity: 0.4;
+      border-radius: 1000px;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 10px;
+      right: -1px;
+      width: 2px;
+      height: 40px; }
+    .mobile-home .home-tabs ul li a {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      position: relative;
+      height: 60px;
+      padding-top: 15px;
+      font-weight: 600;
+      font-size: 18px; }
+      .mobile-home .home-tabs ul li a .notification {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        position: absolute;
+        left: 50%;
+        margin-left: -18px;
+        top: -16px;
+        background: #43cb9d;
+        color: white;
+        width: 36px;
+        height: 32px;
+        border-radius: 2px; }
+        .mobile-home .home-tabs ul li a .notification:after {
+          content: "";
+          display: block;
+          position: absolute;
+          bottom: -12px;
+          left: 50%;
+          margin-left: -6px;
+          height: 0;
+          width: 0;
+          border: 6px solid transparent;
+          border-top-color: #43cb9d; }
+      .mobile-home .home-tabs ul li a:hover .notification, .mobile-home .home-tabs ul li a:focus .notification {
+        -webkit-transition: all 150ms ease-in-out;
+        -moz-transition: all 150ms ease-in-out;
+        -ms-transition: all 150ms ease-in-out;
+        -o-transition: all 150ms ease-in-out;
+        transition: all 150ms ease-in-out; }
+        .mobile-home .home-tabs ul li a:hover .notification:after, .mobile-home .home-tabs ul li a:focus .notification:after {
+          -webkit-transition: all 150ms ease-in-out;
+          -moz-transition: all 150ms ease-in-out;
+          -ms-transition: all 150ms ease-in-out;
+          -o-transition: all 150ms ease-in-out;
+          transition: all 150ms ease-in-out; }
+
+.nav-icon-burger {
+  display: block;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 42px;
+  height: 42px; }
+  .nav-icon-burger svg {
+    display: block; }
+    .nav-icon-burger svg * {
+      -webkit-transition: all 150ms ease-in-out;
+      -moz-transition: all 150ms ease-in-out;
+      -ms-transition: all 150ms ease-in-out;
+      -o-transition: all 150ms ease-in-out;
+      transition: all 150ms ease-in-out;
+      fill: none;
+      stroke: white;
+      stroke-width: 4px;
+      stroke-linecap: round;
+      stroke-linejoin: round; }
+  .nav-icon-burger:hover svg circle {
+    fill: white !important; }
+  .nav-icon-burger:hover svg path {
+    stroke: #40484B !important; }
+
+#mobile-student-home {
+  background: #F1F1F1; }
+  #mobile-student-home .home-top {
+    background: #6e8694; }
     #mobile-student-home .home-top .home-top-guru {
       position: relative;
       height: 100%;
@@ -700,104 +820,18 @@ section {
             font-size: 14px;
             font-weight: 400;
             line-height: 1.2; }
-  #mobile-student-home .home-tabs ul {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex; }
-    #mobile-student-home .home-tabs ul li {
-      position: relative;
-      width: 100%;
-      min-width: 50%; }
-      #mobile-student-home .home-tabs ul li:not(:last-child):after {
-        filter: alpha(opacity=40);
-        opacity: 0.4;
-        border-radius: 1000px;
-        content: "";
-        display: block;
-        position: absolute;
-        top: 10px;
-        right: -1px;
-        width: 2px;
-        height: 40px;
-        background: #50A5DD; }
-      #mobile-student-home .home-tabs ul li a {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        position: relative;
-        height: 60px;
-        padding-top: 15px;
-        color: #50A5DD;
-        font-weight: 600;
-        font-size: 18px; }
-        #mobile-student-home .home-tabs ul li a .notification {
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-flex-direction: row;
-          flex-direction: row;
-          -webkit-align-items: center;
-          align-items: center;
-          -webkit-align-content: center;
-          align-content: center;
-          -webkit-justify-content: center;
-          justify-content: center;
-          position: absolute;
-          left: 50%;
-          margin-left: -18px;
-          top: -16px;
-          background: #43cb9d;
-          color: white;
-          width: 36px;
-          height: 32px;
-          border-radius: 2px; }
-          #mobile-student-home .home-tabs ul li a .notification:after {
-            content: "";
-            display: block;
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            margin-left: -6px;
-            height: 0;
-            width: 0;
-            border: 6px solid transparent;
-            border-top-color: #43cb9d; }
-        #mobile-student-home .home-tabs ul li a:hover, #mobile-student-home .home-tabs ul li a:focus {
-          color: #6f7d82; }
-          #mobile-student-home .home-tabs ul li a:hover .notification, #mobile-student-home .home-tabs ul li a:focus .notification {
-            -webkit-transition: all 150ms ease-in-out;
-            -moz-transition: all 150ms ease-in-out;
-            -ms-transition: all 150ms ease-in-out;
-            -o-transition: all 150ms ease-in-out;
-            transition: all 150ms ease-in-out;
-            background: #40484B; }
-            #mobile-student-home .home-tabs ul li a:hover .notification:after, #mobile-student-home .home-tabs ul li a:focus .notification:after {
-              -webkit-transition: all 150ms ease-in-out;
-              -moz-transition: all 150ms ease-in-out;
-              -ms-transition: all 150ms ease-in-out;
-              -o-transition: all 150ms ease-in-out;
-              transition: all 150ms ease-in-out;
-              border-top-color: #40484B; }
+  #mobile-student-home .home-tabs ul li {
+    min-width: calc(100% / 3); }
+    #mobile-student-home .home-tabs ul li:not(:last-child):after {
+      background: #50A5DD; }
+    #mobile-student-home .home-tabs ul li a {
+      color: #50A5DD; }
+      #mobile-student-home .home-tabs ul li a:hover, #mobile-student-home .home-tabs ul li a:focus {
+        color: #6f7d82; }
+        #mobile-student-home .home-tabs ul li a:hover .notification, #mobile-student-home .home-tabs ul li a:focus .notification {
+          background: #40484B; }
+          #mobile-student-home .home-tabs ul li a:hover .notification:after, #mobile-student-home .home-tabs ul li a:focus .notification:after {
+            border-top-color: #40484B; }
   #mobile-student-home .home-links {
     height: calc(50% - 60px);
     background: #50A5DD; }
@@ -892,6 +926,21 @@ section {
                 stroke-linejoin: round; }
                 #mobile-student-home .home-links ul li a span svg *:not(.line) {
                   fill: rgba(255, 255, 255, 0.3) !important; }
+
+#mobile-guru-home .home-top {
+  background: #5b6f70; }
+#mobile-guru-home .home-tabs ul li {
+  min-width: calc(100% / 3); }
+  #mobile-guru-home .home-tabs ul li:not(:last-child):after {
+    background: #69B3A5; }
+  #mobile-guru-home .home-tabs ul li a {
+    color: white; }
+    #mobile-guru-home .home-tabs ul li a:hover, #mobile-guru-home .home-tabs ul li a:focus {
+      color: #6f7d82; }
+      #mobile-guru-home .home-tabs ul li a:hover .notification, #mobile-guru-home .home-tabs ul li a:focus .notification {
+        background: #40484B; }
+        #mobile-guru-home .home-tabs ul li a:hover .notification:after, #mobile-guru-home .home-tabs ul li a:focus .notification:after {
+          border-top-color: #40484B; }
 
 /* ---------- GURU ONBOARDING */
 .onboarding-steps {
@@ -2097,473 +2146,6 @@ section {
         .bakery-guru-profile-view #menu #menu-content ul li.inactive a.active, .bakery-guru-profile-view #menu #menu-content ul li.inactive a:active, .bakery-guru-profile-view #menu #menu-content ul li.inactive a:hover {
           filter: alpha(opacity=100);
           opacity: 1; }
-
-/* ---------- GURU HOME */
-.guru-tiles-warning {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 9999;
-  background: white;
-  border-radius: 0 0 0 75%;
-  width: 40px;
-  height: 40px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  color: #F04F54;
-  font-weight: 900;
-  font-size: 24px; }
-  .guru-tiles-warning:not(.active) {
-    display: none; }
-
-.guru-view header {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: flex-end;
-  align-items: flex-end;
-  height: calc(25% - 64px);
-  padding-bottom: 15px;
-  background: #2B3234; }
-  .guru-view header h1 {
-    padding: 15px 15px 5px;
-    font-size: 28px !important;
-    line-height: 1.2;
-    text-transform: none; }
-.guru-view .guru-home-notifications ul {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-align-items: center;
-  align-items: center;
-  width: 100%;
-  height: 64px;
-  background: white; }
-  .guru-view .guru-home-notifications ul li {
-    padding: 15px; }
-    .guru-view .guru-home-notifications ul li a {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      color: #69B3A5; }
-      .guru-view .guru-home-notifications ul li a span {
-        display: block; }
-      .guru-view .guru-home-notifications ul li a .notification-icon {
-        position: relative; }
-        .guru-view .guru-home-notifications ul li a .notification-icon .notification-number {
-          border-radius: 1000px;
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-flex-direction: row;
-          flex-direction: row;
-          -webkit-align-items: center;
-          align-items: center;
-          -webkit-align-content: center;
-          align-content: center;
-          -webkit-justify-content: center;
-          justify-content: center;
-          padding: 0 5px;
-          height: 28px;
-          min-width: 28px;
-          background: #69B3A5;
-          color: white;
-          font-size: 14px;
-          font-weight: 600; }
-      .guru-view .guru-home-notifications ul li a .notification-type {
-        padding-left: 10px;
-        font-weight: 600;
-        font-size: 20px; }
-.guru-view .main {
-  height: 75%;
-  overflow: auto;
-  background: #40484B; }
-  .guru-view .main .guru-home-tiles {
-    height: 100%;
-    padding: 1px; }
-    .guru-view .main .guru-home-tiles .square {
-      height: 100%; }
-    .guru-view .main .guru-home-tiles .square + div {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 5;
-      overflow: hidden; }
-      .guru-view .main .guru-home-tiles .square + div .guru-tiles-warning {
-        width: 28px;
-        height: 28px;
-        padding-bottom: 3px;
-        padding-left: 3px;
-        font-size: 20px; }
-      .guru-view .main .guru-home-tiles .square + div h1 {
-        margin: 0 !important; }
-      .guru-view .main .guru-home-tiles .square + div h2, .guru-view .main .guru-home-tiles .square + div h3 {
-        padding: 15px 0;
-        font-weight: 700;
-        text-transform: uppercase; }
-        .guru-view .main .guru-home-tiles .square + div h2 span, .guru-view .main .guru-home-tiles .square + div h3 span {
-          font-weight: 400; }
-      .guru-view .main .guru-home-tiles .square + div h3 {
-        padding-bottom: 0;
-        font-size: 18px; }
-      .guru-view .main .guru-home-tiles .square + div progress {
-        margin: 0 15px;
-        width: calc(100% - 30px); }
-    .guru-view .main .guru-home-tiles > div {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      width: 100%;
-      height: 50%;
-      overflow: hidden;
-      text-align: center; }
-      .guru-view .main .guru-home-tiles > div .home-tiles-ranking {
-        height: 100%;
-        width: calc(100% / 3 * 2);
-        overflow: hidden;
-        padding: 1px; }
-        .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div {
-          position: relative;
-          height: 100%; }
-          .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div .square {
-            fill: #9ccdc3; }
-          .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div .square + div {
-            background: #9ccdc3; }
-          .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div h3 {
-            padding-top: 0; }
-          .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart {
-            position: relative;
-            height: calc(100% - 97px);
-            width: 100%;
-            text-align: center !important; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #guru-ranking-progress-bar {
-              height: 100%; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart svg {
-              display: none;
-              margin: 0 auto;
-              padding: 0 15px 15px;
-              height: 100%; }
-              .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart svg path {
-                stroke-linecap: round; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #percentile {
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              -webkit-transform: translate(-50%, -50%);
-              -moz-transform: translate(-50%, -50%);
-              -ms-transform: translate(-50%, -50%);
-              -o-transform: translate(-50%, -50%);
-              transform: translate(-50%, -50%); }
-              .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #percentile + svg {
-                display: block !important;
-                margin: 0 auto !important; }
-              .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #percentile #percentile-ranking {
-                position: relative;
-                margin-top: -24px;
-                font-size: 52px;
-                font-weight: 600;
-                line-height: 1;
-                text-align: center; }
-                .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #percentile #percentile-ranking::after {
-                  content: "th";
-                  display: block;
-                  position: absolute;
-                  top: 1px;
-                  right: -2px;
-                  font-size: 14px;
-                  font-weight: 600;
-                  line-height: 28px;
-                  text-transform: uppercase; }
-              .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #percentile #percentile-label {
-                font-size: 14px;
-                font-weight: 600;
-                letter-spacing: 1px;
-                line-height: 1.2;
-                text-transform: uppercase; }
-      .guru-view .main .guru-home-tiles > div .home-tiles-rating {
-        height: 100%;
-        width: calc(100% / 3);
-        padding: 1px; }
-        .guru-view .main .guru-home-tiles > div .home-tiles-rating > div {
-          position: relative;
-          height: 50%; }
-          .guru-view .main .guru-home-tiles > div .home-tiles-rating > div .square + div {
-            height: calc(100% - 1px); }
-          .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child {
-            padding-bottom: 1px; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child .square {
-              fill: #69B3A5; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child .square + div {
-              background: #69B3A5; }
-              .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child .square + div svg {
-                fill: none;
-                stroke: white;
-                stroke-width: 2px;
-                stroke-linecap: round;
-                stroke-linejoin: round;
-                height: calc(100% - 39px); }
-            .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child #home-tiles-ranking {
-              -ms-box-orient: horizontal;
-              display: -webkit-box;
-              display: -moz-box;
-              display: -ms-flexbox;
-              display: -moz-flex;
-              display: -webkit-flex;
-              display: flex;
-              -webkit-flex-direction: row;
-              flex-direction: row;
-              -webkit-align-items: center;
-              align-items: center;
-              -webkit-align-content: center;
-              align-content: center;
-              -webkit-justify-content: center;
-              justify-content: center;
-              font-size: 44px;
-              font-weight: 700; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child h5 {
-              filter: alpha(opacity=70);
-              opacity: 0.7;
-              font-size: 18px;
-              font-weight: 600;
-              text-transform: uppercase; }
-          .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:last-child {
-            padding-top: 1px; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:last-child .square {
-              fill: #809c97; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:last-child .square + div {
-              top: 1px;
-              background: #809c97; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:last-child #home-tiles-earnings {
-              -ms-box-orient: horizontal;
-              display: -webkit-box;
-              display: -moz-box;
-              display: -ms-flexbox;
-              display: -moz-flex;
-              display: -webkit-flex;
-              display: flex;
-              -webkit-flex-direction: row;
-              flex-direction: row;
-              -webkit-align-items: center;
-              align-items: center;
-              -webkit-align-content: center;
-              align-content: center;
-              -webkit-justify-content: center;
-              justify-content: center;
-              padding-top: 10px !important;
-              font-size: 44px;
-              font-weight: 700; }
-      .guru-view .main .guru-home-tiles > div .home-tiles-stats {
-        height: 100%;
-        width: calc(100% / 3);
-        padding: 1px; }
-        .guru-view .main .guru-home-tiles > div .home-tiles-stats > div {
-          position: relative;
-          height: 50%; }
-          .guru-view .main .guru-home-tiles > div .home-tiles-stats > div .square + div {
-            -ms-box-orient: horizontal;
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -moz-flex;
-            display: -webkit-flex;
-            display: flex;
-            -ms-flex-flow: row wrap;
-            -webkit-flex-flow: row wrap;
-            flex-flow: row wrap;
-            -webkit-flex-direction: row;
-            flex-direction: row;
-            -webkit-align-items: center;
-            align-items: center;
-            -webkit-align-content: center;
-            align-content: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            height: calc(100% - 1px); }
-            .guru-view .main .guru-home-tiles > div .home-tiles-stats > div .square + div svg {
-              fill: none;
-              stroke: white;
-              stroke-width: 4px;
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              margin-top: -6.25px;
-              width: 50px;
-              height: 50px; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-stats > div .square + div h3 {
-              padding-top: 0;
-              font-size: 14px; }
-              .guru-view .main .guru-home-tiles > div .home-tiles-stats > div .square + div h3 .credibility-percent {
-                font-weight: 700; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-stats > div .square + div progress {
-              vertical-align: 0;
-              width: 90px; }
-          .guru-view .main .guru-home-tiles > div .home-tiles-stats > div:first-child {
-            padding-bottom: 1px; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-stats > div:first-child .square {
-              fill: #63b9a9; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-stats > div:first-child .square + div {
-              background: #63b9a9; }
-          .guru-view .main .guru-home-tiles > div .home-tiles-stats > div:last-child {
-            padding-top: 1px; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-stats > div:last-child .square {
-              fill: #809c97; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-stats > div:last-child .square + div {
-              top: 1px;
-              background: #809c97; }
-      .guru-view .main .guru-home-tiles > div .home-tiles-upcoming {
-        height: 100%;
-        width: calc(100% / 3 * 2);
-        padding: 1px; }
-        .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div {
-          position: relative;
-          height: 100%; }
-          .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square {
-            fill: #69B3A5; }
-          .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div {
-            background: #69B3A5; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider {
-              height: calc(100% - 58px); }
-              .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider .card {
-                -ms-box-orient: horizontal;
-                display: -webkit-box;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: -moz-flex;
-                display: -webkit-flex;
-                display: flex;
-                -webkit-flex-direction: row;
-                flex-direction: row;
-                -webkit-align-items: center;
-                align-items: center;
-                -webkit-align-content: center;
-                align-content: center;
-                -webkit-justify-content: center;
-                justify-content: center;
-                margin: 0 15px;
-                height: calc(100% - 54px); }
-                .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider .card h1 {
-                  margin-bottom: 5px;
-                  font-size: 28px;
-                  font-weight: 600; }
-                .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider .card p {
-                  font-size: 20px;
-                  font-weight: 400; }
-            .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div ul {
-              padding: 0 15px 15px;
-              font-size: 18px;
-              text-align: left;
-              font-weight: 600; }
-              .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div ul li {
-                margin-bottom: 5px;
-                padding-bottom: 5px;
-                border-bottom: 1px solid white; }
-              .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div ul span {
-                filter: alpha(opacity=50);
-                opacity: 0.5;
-                font-size: 14px; }
-@media screen and (max-height: 500px) {
-  .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #percentile {
-    -webkit-transform: translate(-50%, -50%) scale(0.7);
-    -moz-transform: translate(-50%, -50%) scale(0.7);
-    -ms-transform: translate(-50%, -50%) scale(0.7);
-    -o-transform: translate(-50%, -50%) scale(0.7);
-    transform: translate(-50%, -50%) scale(0.7); } }
-@media screen and (max-height: 650px) {
-  .guru-view header h1 {
-    display: none; }
-  .guru-view .main .guru-home-tiles h2 {
-    font-size: 20px; }
-  .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div h2 {
-    padding-bottom: 5px; }
-  .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart {
-    height: calc(100% - 80px); }
-    .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart #percentile #percentile-ranking {
-      margin-top: -15px; }
-    .guru-view .main .guru-home-tiles > div .home-tiles-ranking > div #guru-chart svg {
-      padding-bottom: 5px; }
-  .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child #home-tiles-ranking {
-    font-size: 36px; }
-  .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:first-child h5 {
-    font-size: 14px; }
-  .guru-view .main .guru-home-tiles > div .home-tiles-rating > div:last-child #home-tiles-earnings {
-    padding-top: 5px !important;
-    font-size: 36px; }
-  .guru-view .main .guru-home-tiles > div .home-tiles-stats > div .square + div svg {
-    fill: none;
-    stroke: white;
-    stroke-width: 4px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    margin-top: -4.5px;
-    width: 36px;
-    height: 36px; }
-  .guru-view .main .guru-home-tiles > div .home-tiles-stats > div .square + div h3 {
-    font-size: 12px; }
-  .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider {
-    height: calc(100% - 46px); }
-    .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider .card {
-      height: calc(100% - 42px); }
-      .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider .card h1 {
-        font-size: 24px; }
-      .guru-view .main .guru-home-tiles > div .home-tiles-upcoming > div .square + div .slider .card p {
-        font-size: 18px; } }
 
 /* ---------- OFFLINE */
 #offline, #orientation {

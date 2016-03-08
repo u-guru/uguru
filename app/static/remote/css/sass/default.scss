@@ -2123,8 +2123,7 @@ div[class*="progress"] {
 		&::-webkit-progress-bar {
 			background: transparent;
 		}
-		&::-webkit-progress-value,
-		span {
+		&::-webkit-progress-value, span {
 			@include round;
 			@include transition(1s ease-in);
 			display: block;
@@ -5770,10 +5769,6 @@ input[type=range] {
 	}
 }
 
-#body-loading-wrapper .logo {
-	display: none!important;
-}
-
 .school-id-card {
 	position: relative;
 	width: 100%;
@@ -5795,6 +5790,7 @@ input[type=range] {
 			height: 30%;
 			border-top-left-radius: 10px;
 			border-top-right-radius: 10px;
+			background-color: $shamrock;
 			.user-icon {
 				position: absolute;
 				bottom: -32px;
@@ -5815,6 +5811,9 @@ input[type=range] {
 			padding: 10px 15px;
 			text-align: right;
 			line-height: 1.1;
+			* {
+				color: $slate;
+			}
 			h1, h2 {
 				width: 100%;
 				margin: 0!important;

@@ -1,6 +1,6 @@
 <ion-view class='uguru-view home-view'>
-    <section id="mobile-student-home">
-        <span id="nav-icon-burger" ng-include="img_base + 'templates/svg/main/menu-circle.html'" ng-if='user || user.id' ng-click='toggleRightSideMenu()'></span>
+    <section id="mobile-student-home" class="mobile-home">
+        <a id="nav-icon-burger" class="nav-icon-burger" ng-if='user || user.id' ng-click='toggleRightSideMenu()' ng-include="img_base + 'templates/svg/main/menu-circle.html'"></a>
         <div class="home-top">
             <div class="toggle" ng-if='!user || !user.id' ng-click='signupModal.show()'>
                 <input type="checkbox" checked />
@@ -21,13 +21,19 @@
                 <li>
                     <a>
                         <span class="notification">0</span>
-                        <span>Billing Items</span>
+                        <span>Billing</span>
                     </a>
                 </li>
                 <li>
                     <a>
                         <span class="notification">{{user.student_relationships.length || 0}}</span>
-                        <span ng-click='messagesModal.show()'>Messages</span>
+                        <span ng-click='messagesModal.show()'>Gurus</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="notification">0</span>
+                        <span>Requests</span>
                     </a>
                 </li>
             </ul>

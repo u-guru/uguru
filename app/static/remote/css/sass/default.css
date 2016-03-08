@@ -1822,8 +1822,7 @@ div[class*="progress"] {
     progress.white-round::-webkit-progress-bar,
     div[class*="progress"].white-round::-webkit-progress-bar {
       background: transparent; }
-    progress.white-round::-webkit-progress-value,
-    progress.white-round span,
+    progress.white-round::-webkit-progress-value, progress.white-round span,
     div[class*="progress"].white-round::-webkit-progress-value,
     div[class*="progress"].white-round span {
       border-radius: 1000px;
@@ -5308,9 +5307,6 @@ input[type=range]:focus::-ms-fill-upper {
     text-align: center !important; }
   .input-field.large label.active {
     font-size: 20px !important; } }
-#body-loading-wrapper .logo {
-  display: none !important; }
-
 .school-id-card {
   position: relative;
   width: 100%;
@@ -5330,7 +5326,8 @@ input[type=range]:focus::-ms-fill-upper {
       z-index: 10;
       height: 30%;
       border-top-left-radius: 10px;
-      border-top-right-radius: 10px; }
+      border-top-right-radius: 10px;
+      background-color: #69B3A5; }
       .school-id-card .school-id-inside .school-id-top .user-icon {
         position: absolute;
         bottom: -32px;
@@ -5357,6 +5354,8 @@ input[type=range]:focus::-ms-fill-upper {
       padding: 10px 15px;
       text-align: right;
       line-height: 1.1; }
+      .school-id-card .school-id-inside .school-id-bottom * {
+        color: #40484B; }
       .school-id-card .school-id-inside .school-id-bottom h1, .school-id-card .school-id-inside .school-id-bottom h2 {
         width: 100%;
         margin: 0 !important; }

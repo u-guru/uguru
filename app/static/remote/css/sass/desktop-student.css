@@ -16,127 +16,15 @@
         color: #50A5DD; }
       #desktop-student-home #top-bar div:nth-child(2) #top-menu-links ul li:last-child a svg {
         stroke: #50A5DD; }
-  #desktop-student-home .main {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    padding: 0; }
-    #desktop-student-home .main a {
-      color: #40484B; }
-    #desktop-student-home .main .home-tabs {
-      width: 100%;
-      background: #6e8694;
-      height: 60px; }
-      #desktop-student-home .main .home-tabs ul {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        width: 100%; }
-        #desktop-student-home .main .home-tabs ul li {
-          position: relative; }
-          #desktop-student-home .main .home-tabs ul li:not(:last-child):after {
-            filter: alpha(opacity=40);
-            opacity: 0.4;
-            border-radius: 1000px;
-            content: "";
-            display: block;
-            position: absolute;
-            top: 10px;
-            right: -1px;
-            width: 2px;
-            height: 40px;
-            background: white; }
-          #desktop-student-home .main .home-tabs ul li a {
-            -ms-box-orient: horizontal;
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -moz-flex;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-flex-direction: row;
-            flex-direction: row;
-            -webkit-align-items: center;
-            align-items: center;
-            -webkit-align-content: center;
-            align-content: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            position: relative;
-            height: 60px;
-            padding: 0 15px;
-            color: white;
-            font-weight: 600;
-            font-size: 18px; }
-            #desktop-student-home .main .home-tabs ul li a .notification {
-              -ms-box-orient: horizontal;
-              display: -webkit-box;
-              display: -moz-box;
-              display: -ms-flexbox;
-              display: -moz-flex;
-              display: -webkit-flex;
-              display: flex;
-              -webkit-flex-direction: row;
-              flex-direction: row;
-              -webkit-align-items: center;
-              align-items: center;
-              -webkit-align-content: center;
-              align-content: center;
-              -webkit-justify-content: center;
-              justify-content: center;
-              position: relative;
-              background: #43cb9d;
-              color: white;
-              width: 36px;
-              height: 32px;
-              border-radius: 2px; }
-              #desktop-student-home .main .home-tabs ul li a .notification:after {
-                content: "";
-                display: block;
-                position: absolute;
-                right: -12px;
-                top: 50%;
-                margin-top: -6px;
-                height: 0;
-                width: 0;
-                border: 6px solid transparent;
-                border-left-color: #43cb9d; }
-            #desktop-student-home .main .home-tabs ul li a span:not(.notification) {
-              margin-left: 15px; }
-            #desktop-student-home .main .home-tabs ul li a:hover .notification, #desktop-student-home .main .home-tabs ul li a:focus .notification {
-              -webkit-transition: all 150ms ease-in-out;
-              -moz-transition: all 150ms ease-in-out;
-              -ms-transition: all 150ms ease-in-out;
-              -o-transition: all 150ms ease-in-out;
-              transition: all 150ms ease-in-out;
-              background: #40484B; }
-              #desktop-student-home .main .home-tabs ul li a:hover .notification:after, #desktop-student-home .main .home-tabs ul li a:focus .notification:after {
-                -webkit-transition: all 150ms ease-in-out;
-                -moz-transition: all 150ms ease-in-out;
-                -ms-transition: all 150ms ease-in-out;
-                -o-transition: all 150ms ease-in-out;
-                transition: all 150ms ease-in-out;
-                border-left-color: #40484B; }
-    #desktop-student-home .main .home-main {
+  #desktop-student-home .main .home-tabs {
+    background: #6e8694; }
+  #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div {
+    background: white; }
+    #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div h1 {
+      color: #50A5DD; }
+      #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div h1:after {
+        background: rgba(80, 165, 221, 0.3); }
+    #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming {
       -ms-box-orient: horizontal;
       display: -webkit-box;
       display: -moz-box;
@@ -144,263 +32,172 @@
       display: -moz-flex;
       display: -webkit-flex;
       display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      -webkit-justify-content: center;
-      justify-content: center;
-      width: 100%;
-      max-width: 1030px;
-      margin: 0 auto;
-      height: calc(100% - 60px);
-      max-height: 650px; }
-      #desktop-student-home .main .home-main .home-tiles-top {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        width: 100%;
-        height: calc(100% / 3 * 2); }
-        #desktop-student-home .main .home-main .home-tiles-top .home-tiles-guru {
-          height: 100%;
-          padding: 15px 0; }
-          #desktop-student-home .main .home-main .home-tiles-top .home-tiles-guru svg {
-            display: block;
-            height: 100%;
-            width: auto; }
-            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-guru svg > g > ellipse {
-              -webkit-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
-              -moz-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
-              -ms-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
-              -o-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
-              animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
-              -webkit-transform-origin: center center;
-              -moz-transform-origin: center center;
-              -ms-transform-origin: center center;
-              -o-transform-origin: center center;
-              transform-origin: center center; }
-            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-guru svg .guru-body {
-              -webkit-animation: tour-guru-hover 1000ms linear infinite alternate;
-              -moz-animation: tour-guru-hover 1000ms linear infinite alternate;
-              -ms-animation: tour-guru-hover 1000ms linear infinite alternate;
-              -o-animation: tour-guru-hover 1000ms linear infinite alternate;
-              animation: tour-guru-hover 1000ms linear infinite alternate; }
-        #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily {
-          padding: 15px 0 15px 15px;
-          height: 100%;
-          width: 100%; }
-          #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div {
-            position: relative;
-            height: 100%;
-            background: white;
-            border-radius: 2px; }
-            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div h1 {
+      padding: 7.5px;
+      height: calc(100% - 63px); }
+      #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li {
+        padding: 7.5px;
+        width: 50%;
+        height: 100%; }
+        #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li h2 {
+          font-size: 20px;
+          font-weight: 600;
+          padding-bottom: 15px; }
+        #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul {
+          height: calc(100% - 39px);
+          overflow: auto; }
+          #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li {
+            padding: 7.5px 0; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li:first-child {
+              padding-top: 0; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li:last-child {
+              padding-bottom: 0; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a {
               position: relative;
-              color: #50A5DD;
-              font-size: 28px;
-              font-weight: 600;
-              padding: 15px; }
-              #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div h1:after {
-                border-radius: 1000px;
-                content: "";
-                display: block;
-                position: absolute;
-                bottom: -1px;
-                left: 15px;
-                width: calc(100% - 30px);
-                height: 2px;
-                background: rgba(80, 165, 221, 0.3); }
-            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div p {
-              font-size: 18px;
+              display: block;
+              background: rgba(80, 165, 221, 0.2);
+              border: 2px solid #50A5DD;
+              border-radius: 2px;
+              padding: 15px;
+              width: 100%;
+              color: #40484B;
+              font-size: 16px;
               font-weight: 400; }
-            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming {
-              -ms-box-orient: horizontal;
-              display: -webkit-box;
-              display: -moz-box;
-              display: -ms-flexbox;
-              display: -moz-flex;
-              display: -webkit-flex;
-              display: flex;
-              padding: 7.5px;
-              height: calc(100% - 63px); }
-              #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li {
-                padding: 7.5px;
-                width: 50%;
-                height: 100%; }
-                #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li h2 {
-                  color: #50A5DD;
-                  font-size: 20px;
-                  font-weight: 600;
-                  padding-bottom: 15px; }
-                #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul {
-                  height: calc(100% - 39px);
-                  overflow: auto; }
-                  #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li {
-                    padding: 7.5px 0; }
-                    #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li:first-child {
-                      padding-top: 0; }
-                    #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li:last-child {
-                      padding-bottom: 0; }
-                    #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li div {
-                      -ms-box-orient: horizontal;
-                      display: -webkit-box;
-                      display: -moz-box;
-                      display: -ms-flexbox;
-                      display: -moz-flex;
-                      display: -webkit-flex;
-                      display: flex;
-                      -webkit-flex-direction: row;
-                      flex-direction: row;
-                      -webkit-align-items: center;
-                      align-items: center;
-                      -webkit-align-content: center;
-                      align-content: center;
-                      -webkit-justify-content: center;
-                      justify-content: center;
-                      padding: 15px;
-                      background: rgba(78, 156, 206, 0.1);
-                      color: #40484B;
-                      font-size: 16px;
-                      font-weight: 400; }
-                      #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li div h3 {
-                        width: 100%;
-                        font-size: 20px;
-                        font-weight: 600; }
-      #desktop-student-home .main .home-main .home-tiles-container {
-        padding: 7.5px; }
-        #desktop-student-home .main .home-main .home-tiles-container .home-tile {
-          display: block; }
-      #desktop-student-home .main .home-main .home-tiles-powerups {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: column;
-        flex-direction: column;
-        height: 100%;
-        padding: 7.5px; }
-        #desktop-student-home .main .home-main .home-tiles-powerups .home-tile {
-          height: 25%;
-          padding: 7.5px; }
-          #desktop-student-home .main .home-main .home-tiles-powerups .home-tile .home-tile-inside {
-            border-radius: 2px;
-            height: 100%; }
-            #desktop-student-home .main .home-main .home-tiles-powerups .home-tile .home-tile-inside > svg {
-              height: 100%;
-              width: auto; }
-          #desktop-student-home .main .home-main .home-tiles-powerups .home-tile.gpa .home-tile-inside {
-            background: #559AB0; }
-          #desktop-student-home .main .home-main .home-tiles-powerups .home-tile.munchies .home-tile-inside {
-            background: #F25A5B; }
-          #desktop-student-home .main .home-main .home-tiles-powerups .home-tile.sound .home-tile-inside {
-            background: #9A5BC5; }
-          #desktop-student-home .main .home-main .home-tiles-powerups .home-tile.transit .home-tile-inside {
-            background: #81B566; }
-      #desktop-student-home .main .home-main .home-tiles-main {
-        width: 100%;
-        height: calc(100% / 3);
-        padding: 0 15px 15px; }
-        #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside {
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -ms-flex-flow: row wrap;
-          -webkit-flex-flow: row wrap;
-          flex-flow: row wrap;
-          background: #50A5DD;
-          border-radius: 2px;
-          height: 100%; }
-          #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile {
-            position: relative;
-            width: 25%;
-            height: 100%;
-            padding: 15px; }
-            #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:hover, #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:focus {
-              background: rgba(110, 134, 148, 0.5); }
-            #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:active {
-              background: #6e8694; }
-            #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:not(:last-child):after {
-              border-radius: 1000px;
-              content: "";
-              position: absolute;
-              z-index: 10;
-              top: 15px;
-              right: -1px;
-              height: calc(100% - 30px);
-              width: 2px;
-              background: #a8d2ee; }
-            #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside {
-              -ms-box-orient: horizontal;
-              display: -webkit-box;
-              display: -moz-box;
-              display: -ms-flexbox;
-              display: -moz-flex;
-              display: -webkit-flex;
-              display: flex;
-              -webkit-flex-direction: row;
-              flex-direction: row;
-              -webkit-align-items: center;
-              align-items: center;
-              -webkit-align-content: center;
-              align-content: center;
-              -webkit-justify-content: center;
-              justify-content: center;
-              height: 100%; }
-              #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div {
+              #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a h3 {
                 width: 100%;
-                padding-bottom: 5px; }
-                #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div span {
-                  display: block; }
-                #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div h1 {
-                  width: 100%;
-                  color: white;
-                  font-size: 24px;
-                  font-weight: 600;
-                  text-align: center; }
-                  #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div h1 span:not([data-courses="1"]) b {
-                    font-weight: 600; }
-                    #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div h1 span:not([data-courses="1"]) b:after {
-                      content: "s"; }
-                #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div h2 {
-                  filter: alpha(opacity=50);
-                  opacity: 0.5;
-                  margin-top: 0 !important;
-                  width: 100%;
-                  color: white;
-                  font-size: 16px;
-                  font-weight: 600;
-                  text-align: center; }
-                #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div svg {
+                font-size: 20px;
+                font-weight: 600; }
+              #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a div:first-child {
+                width: calc(100% - 24px); }
+              #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a div:last-child {
+                position: absolute;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -moz-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                -o-transform: translateY(-50%);
+                transform: translateY(-50%);
+                right: 8px; }
+                #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a div:last-child svg {
                   display: block;
-                  margin: 0 auto;
-                  height: 80px;
-                  width: 80px; }
-                  #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div svg * {
+                  width: 24px;
+                  height: 24px; }
+                  #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a div:last-child svg * {
+                    -webkit-transition: all 150ms ease-in-out;
+                    -moz-transition: all 150ms ease-in-out;
+                    -ms-transition: all 150ms ease-in-out;
+                    -o-transition: all 150ms ease-in-out;
+                    transition: all 150ms ease-in-out;
                     fill: none;
-                    stroke: white;
-                    stroke-width: 3px;
+                    stroke: #40484B;
+                    stroke-width: 8px;
                     stroke-linecap: round;
                     stroke-linejoin: round; }
-                    #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile .home-tile-inside div svg *:not(.line) {
-                      fill: rgba(255, 255, 255, 0.3) !important; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-urgent a {
+              background: #50A5DD;
+              color: white; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-urgent div:last-child svg * {
+              stroke: white; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-delivery a {
+              background: rgba(240, 79, 84, 0.2);
+              border-color: #F04F54; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-delivery.event-urgent a {
+              border-color: #df1319;
+              background: #F04F54; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-freelancing a {
+              background: rgba(229, 117, 60, 0.2);
+              border-color: #E5753C; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-freelancing.event-urgent a {
+              border-color: #bc5019;
+              background: #E5753C; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-baking a {
+              background: rgba(246, 198, 78, 0.2);
+              border-color: #F6C64E; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-baking.event-urgent a {
+              border-color: #ecac0c;
+              background: #F6C64E; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-photography a {
+              background: rgba(129, 181, 102, 0.2);
+              border-color: #81B566; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-photography.event-urgent a {
+              border-color: #5c8b43;
+              background: #81B566; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-tech a {
+              background: rgba(85, 164, 183, 0.2);
+              border-color: #55A4B7; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-tech.event-urgent a {
+              border-color: #397787;
+              background: #55A4B7; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-household a {
+              background: rgba(120, 114, 227, 0.2);
+              border-color: #7872e3; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-household.event-urgent a {
+              border-color: #514bbe;
+              background: #7872e3; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-athletic a {
+              background: rgba(154, 91, 197, 0.2);
+              border-color: #9A5BC5; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-athletic.event-urgent a {
+              border-color: #73379c;
+              background: #9A5BC5; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-academic a {
+              background: rgba(230, 56, 155, 0.2);
+              border-color: #e6389b; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-academic.event-urgent a {
+              border-color: #ba1774;
+              background: #e6389b; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a:hover, #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a:focus {
+              background: #7c8a8f !important;
+              border-color: #7c8a8f !important;
+              color: white !important; }
+              #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a:hover svg *, #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a:focus svg * {
+                stroke: white !important; }
+            #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a:active {
+              background: #637074 !important;
+              border-color: #637074 !important;
+              color: white !important; }
+        #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li:first-child > ul li a {
+          border-left-width: 10px; }
+          #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li:first-child > ul li a:hover, #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li:first-child > ul li a:focus {
+            border-color: #637074 !important; }
+          #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li:first-child > ul li a:active {
+            border-color: #40484B !important; }
+  #desktop-student-home .main .home-main .home-tiles-powerups {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+    padding: 7.5px; }
+    #desktop-student-home .main .home-main .home-tiles-powerups .home-tile {
+      height: 25%;
+      padding: 7.5px; }
+      #desktop-student-home .main .home-main .home-tiles-powerups .home-tile .home-tile-inside {
+        border-radius: 2px;
+        height: 100%; }
+        #desktop-student-home .main .home-main .home-tiles-powerups .home-tile .home-tile-inside > svg {
+          height: 100%;
+          width: auto; }
+      #desktop-student-home .main .home-main .home-tiles-powerups .home-tile.gpa .home-tile-inside {
+        background: #559AB0; }
+      #desktop-student-home .main .home-main .home-tiles-powerups .home-tile.munchies .home-tile-inside {
+        background: #F25A5B; }
+      #desktop-student-home .main .home-main .home-tiles-powerups .home-tile.sound .home-tile-inside {
+        background: #9A5BC5; }
+      #desktop-student-home .main .home-main .home-tiles-powerups .home-tile.transit .home-tile-inside {
+        background: #81B566; }
+  #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside {
+    background: #50A5DD; }
+    #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:hover, #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:focus {
+      background: rgba(110, 134, 148, 0.5); }
+    #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:active {
+      background: #6e8694; }
+    #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:not(:last-child):after {
+      background: #a8d2ee; }
 
 #desktop-courses.student-mode .input-field .prefix svg {
   stroke: #40484B; }

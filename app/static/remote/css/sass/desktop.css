@@ -317,11 +317,13 @@
         justify-content: center;
         width: 90px;
         height: 64px; }
-        .desktop-mode #top-bar div:nth-child(2) #top-settings img, .desktop-mode #top-bar div:nth-child(2) #top-settings img.profile-url {
-          border-radius: 1000px;
+        .desktop-mode #top-bar div:nth-child(2) #top-settings .user-icon {
           width: 40px;
           height: 40px;
-          border: 3px solid white; }
+          border: 3px solid white;
+          background-position: center;
+          background-size: cover;
+          background-color: #557e78; }
         .desktop-mode #top-bar div:nth-child(2) #top-settings svg {
           fill: none;
           stroke: white;

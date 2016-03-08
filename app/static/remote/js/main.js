@@ -55,11 +55,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 .config(function($stateProvider, $urlRouterProvider, $popoverProvider, RestangularProvider,
   $ionicConfigProvider, $compileProvider, $provide, $httpProvider, uiGmapGoogleMapApiProvider,$sceDelegateProvider) {
 
-  uiGmapGoogleMapApiProvider.configure({
-        key: 'AIzaSyDytQb8vjgkgYkAp7oVTjwIZkMtOE6xMZg',
-        v: '3.21',
-        libraries: 'places, weather,geometry,visualization'
-    });
+  // uiGmapGoogleMapApiProvider.configure({
+  //       key: 'AIzaSyDytQb8vjgkgYkAp7oVTjwIZkMtOE6xMZg',
+  //       v: '3.21',
+  //       libraries: 'places, weather,geometry,visualization'
+  //   });
 
    $sceDelegateProvider.resourceUrlWhitelist([
     // Allow same origin resource loads.
