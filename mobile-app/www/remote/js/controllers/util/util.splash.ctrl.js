@@ -1047,14 +1047,19 @@ angular.module('uguru.util.controllers')
       $scope.universities = University.getTargetted().slice();
 
       $timeout(function() {
+          var hiwSceneOne = document.querySelector('.how-scene-1');
+          hiwSceneOne && hiwSceneOne.classList.add('activate');
+      }, 2000)
+      showProjectorAtTop(0);
+
+      $timeout(function() {
         // $timeout(function() {
         //   angular.element('.adlib-1').triggerHandler('click');
         //   angular.element('.adlib-5').triggerHandler('click');
         //   $timeout(function() {
         //     angular.element('.splash-device-button button').triggerHandler('click');
         //   }, 5000);
-        // }, 1500);
-        // showProjectorAtTop(1);
+        // }, 1500)
         // $scope.scrollToSection('#splash-projector');
         // $timeout(function() {
         //   var modalElem = document.querySelector('#cta-modal-sidebar')
