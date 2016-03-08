@@ -5732,6 +5732,8 @@
         width: 100%;
         height: 100%;
         overflow: hidden; }
+      #hiw .main .how-scene .active-scene {
+        z-index: 10; }
       #hiw .main .how-scene .how-scene-6 svg {
         position: absolute;
         left: 50%;
@@ -6210,6 +6212,7 @@
       -webkit-justify-content: center;
       justify-content: center;
       position: absolute;
+      z-index: 11;
       bottom: 0;
       left: 0;
       width: 100%;
@@ -6297,13 +6300,10 @@
       font-size: 64px; }
     #hiw .main .how-scene .how-scene-2 .hiw-svg-container svg {
       top: 100px; }
-    #hiw .main .how-scene .how-scene-1 svg {
-      top: auto;
-      bottom: 178px; }
-      #hiw .main .how-scene .how-scene-1 svg[class*="mobile"] {
-        display: none; }
-      #hiw .main .how-scene .how-scene-1 svg:not([class*="mobile"]) {
-        display: block; }
+    #hiw .main .how-scene .how-scene-1 svg[class*="mobile"] {
+      display: none; }
+    #hiw .main .how-scene .how-scene-1 svg:not([class*="mobile"]) {
+      display: block; }
     #hiw .main .how-props li {
       width: calc(100% / 6); }
       #hiw .main .how-props li a div {
@@ -6311,41 +6311,41 @@
       #hiw .main .how-props li a h1 {
         font-size: 16px; } }
 
-.hiw-open-24-7-active .open-now, .hiw-open-24-7-active-mobile .open-now {
+.active-scene .hiw-open-24-7-active .open-now, .active-scene .hiw-open-24-7-active-mobile .open-now {
   -webkit-animation: 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards;
   -moz-animation: 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards;
   -ms-animation: 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards;
   -o-animation: 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards;
   animation: 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards; }
-.hiw-open-24-7-active .clock .minute-hand, .hiw-open-24-7-active-mobile .clock .minute-hand {
-  -webkit-animation: 2000ms hiw-open-24-7-minute-hand ease-in 500ms infinite forwards;
-  -moz-animation: 2000ms hiw-open-24-7-minute-hand ease-in 500ms infinite forwards;
-  -ms-animation: 2000ms hiw-open-24-7-minute-hand ease-in 500ms infinite forwards;
-  -o-animation: 2000ms hiw-open-24-7-minute-hand ease-in 500ms infinite forwards;
-  animation: 2000ms hiw-open-24-7-minute-hand ease-in 500ms infinite forwards;
+.active-scene .hiw-open-24-7-active .clock .minute-hand, .active-scene .hiw-open-24-7-active-mobile .clock .minute-hand {
+  -webkit-animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
+  -moz-animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
+  -ms-animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
+  -o-animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
+  animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
   -webkit-transform-origin: 50% 100%;
   -moz-transform-origin: 50% 100%;
   -ms-transform-origin: 50% 100%;
   -o-transform-origin: 50% 100%;
   transform-origin: 50% 100%; }
-.hiw-open-24-7-active .clock .hour-hand, .hiw-open-24-7-active-mobile .clock .hour-hand {
+.active-scene .hiw-open-24-7-active .clock .hour-hand, .active-scene .hiw-open-24-7-active-mobile .clock .hour-hand {
   -webkit-transform-origin: 0% 50%;
   -moz-transform-origin: 0% 50%;
   -ms-transform-origin: 0% 50%;
   -o-transform-origin: 0% 50%;
   transform-origin: 0% 50%;
-  -webkit-animation: 12000ms hiw-open-24-7-hour-hand 2000ms ease-in infinite forwards;
-  -moz-animation: 12000ms hiw-open-24-7-hour-hand 2000ms ease-in infinite forwards;
-  -ms-animation: 12000ms hiw-open-24-7-hour-hand 2000ms ease-in infinite forwards;
-  -o-animation: 12000ms hiw-open-24-7-hour-hand 2000ms ease-in infinite forwards;
-  animation: 12000ms hiw-open-24-7-hour-hand 2000ms ease-in infinite forwards; }
-.hiw-open-24-7-active .outside-day, .hiw-open-24-7-active-mobile .outside-day {
+  -webkit-animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards;
+  -moz-animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards;
+  -ms-animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards;
+  -o-animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards;
+  animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards; }
+.active-scene .hiw-open-24-7-active .outside-day, .active-scene .hiw-open-24-7-active-mobile .outside-day {
   -webkit-animation: 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards;
   -moz-animation: 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards;
   -ms-animation: 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards;
   -o-animation: 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards;
   animation: 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards; }
-  .hiw-open-24-7-active .outside-day .sun, .hiw-open-24-7-active-mobile .outside-day .sun {
+  .active-scene .hiw-open-24-7-active .outside-day .sun, .active-scene .hiw-open-24-7-active-mobile .outside-day .sun {
     -webkit-transform: translateY(0);
     -moz-transform: translateY(0);
     -ms-transform: translateY(0);
@@ -6356,7 +6356,7 @@
     -ms-animation: 12000ms hiw-open-24-7-sun-shift 2000ms ease-in infinite forwards;
     -o-animation: 12000ms hiw-open-24-7-sun-shift 2000ms ease-in infinite forwards;
     animation: 12000ms hiw-open-24-7-sun-shift 2000ms ease-in infinite forwards; }
-.hiw-open-24-7-active .outside-night .moon, .hiw-open-24-7-active .outside-night .crater, .hiw-open-24-7-active-mobile .outside-night .moon, .hiw-open-24-7-active-mobile .outside-night .crater {
+.active-scene .hiw-open-24-7-active .outside-night .moon, .active-scene .hiw-open-24-7-active .outside-night .crater, .active-scene .hiw-open-24-7-active-mobile .outside-night .moon, .active-scene .hiw-open-24-7-active-mobile .outside-night .crater {
   -webkit-transform: translateY(20px);
   -moz-transform: translateY(20px);
   -ms-transform: translateY(20px);
@@ -6367,7 +6367,7 @@
   -ms-animation: 12000ms hiw-open-24-7-moon-shift 2000ms ease-in infinite forwards;
   -o-animation: 12000ms hiw-open-24-7-moon-shift 2000ms ease-in infinite forwards;
   animation: 12000ms hiw-open-24-7-moon-shift 2000ms ease-in infinite forwards; }
-.hiw-open-24-7-active .outside-night polygon[class*="star-"], .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"] {
+.active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"], .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"] {
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -6383,37 +6383,37 @@
   -ms-animation: 12000ms hiw-open-24-7-star-scale 2000ms ease-in infinite forwards;
   -o-animation: 12000ms hiw-open-24-7-star-scale 2000ms ease-in infinite forwards;
   animation: 12000ms hiw-open-24-7-star-scale 2000ms ease-in infinite forwards; }
-  .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-1, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-7, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-8, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-19, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-1, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-7, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-8, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-19 {
+  .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-1, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-7, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-8, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-19, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-1, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-7, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-8, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-19 {
     -webkit-animation-delay: 2200ms;
     -moz-animation-delay: 2200ms;
     -ms-animation-delay: 2200ms;
     -o-animation-delay: 2200ms;
     animation-delay: 2200ms; }
-  .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-2, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-9, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-10, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-20, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-2, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-9, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-10, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-20 {
+  .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-2, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-9, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-10, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-20, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-2, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-9, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-10, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-20 {
     -webkit-animation-delay: 2400ms;
     -moz-animation-delay: 2400ms;
     -ms-animation-delay: 2400ms;
     -o-animation-delay: 2400ms;
     animation-delay: 2400ms; }
-  .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-3, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-11, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-12, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-21, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-3, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-11, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-12, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-21 {
+  .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-3, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-11, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-12, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-21, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-3, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-11, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-12, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-21 {
     -webkit-animation-delay: 2600ms;
     -moz-animation-delay: 2600ms;
     -ms-animation-delay: 2600ms;
     -o-animation-delay: 2600ms;
     animation-delay: 2600ms; }
-  .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-4, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-13, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-14, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-22, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-4, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-13, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-14, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-22 {
+  .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-4, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-13, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-14, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-22, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-4, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-13, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-14, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-22 {
     -webkit-animation-delay: 2800ms;
     -moz-animation-delay: 2800ms;
     -ms-animation-delay: 2800ms;
     -o-animation-delay: 2800ms;
     animation-delay: 2800ms; }
-  .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-5, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-15, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-16, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-23, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-5, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-15, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-16, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-23 {
+  .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-5, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-15, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-16, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-23, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-5, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-15, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-16, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-23 {
     -webkit-animation-delay: 3000ms;
     -moz-animation-delay: 3000ms;
     -ms-animation-delay: 3000ms;
     -o-animation-delay: 3000ms;
     animation-delay: 3000ms; }
-  .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-6, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-17, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-18, .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-24, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-6, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-17, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-18, .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-24 {
+  .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-6, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-17, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-18, .active-scene .hiw-open-24-7-active .outside-night polygon[class*="star-"].star-24, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-6, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-17, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-18, .active-scene .hiw-open-24-7-active-mobile .outside-night polygon[class*="star-"].star-24 {
     -webkit-animation-delay: 3200ms;
     -moz-animation-delay: 3200ms;
     -ms-animation-delay: 3200ms;
@@ -6510,17 +6510,17 @@ a:hover .hiw-open-container path[class*="time-"], a:focus .hiw-open-container pa
 a:hover .hiw-open-container .hour-hand, a:hover .hiw-open-container .minute-hand, a:hover .hiw-open-container .clock-base, a:focus .hiw-open-container .hour-hand, a:focus .hiw-open-container .minute-hand, a:focus .hiw-open-container .clock-base {
   fill: #637074; }
 a:hover .hiw-open-container .minute-hand, a:focus .hiw-open-container .minute-hand {
-  -webkit-animation: 2000ms hiw-open-24-7-minute-hand ease-in 500ms infinite forwards;
-  -moz-animation: 2000ms hiw-open-24-7-minute-hand ease-in 500ms infinite forwards;
-  -ms-animation: 2000ms hiw-open-24-7-minute-hand ease-in 500ms infinite forwards;
-  -o-animation: 2000ms hiw-open-24-7-minute-hand ease-in 500ms infinite forwards;
-  animation: 2000ms hiw-open-24-7-minute-hand ease-in 500ms infinite forwards; }
+  -webkit-animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
+  -moz-animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
+  -ms-animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
+  -o-animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
+  animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards; }
 a:hover .hiw-open-container .hour-hand, a:focus .hiw-open-container .hour-hand {
-  -webkit-animation: 12000ms hiw-open-24-7-hour-hand 2000ms ease-in infinite forwards;
-  -moz-animation: 12000ms hiw-open-24-7-hour-hand 2000ms ease-in infinite forwards;
-  -ms-animation: 12000ms hiw-open-24-7-hour-hand 2000ms ease-in infinite forwards;
-  -o-animation: 12000ms hiw-open-24-7-hour-hand 2000ms ease-in infinite forwards;
-  animation: 12000ms hiw-open-24-7-hour-hand 2000ms ease-in infinite forwards; }
+  -webkit-animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards;
+  -moz-animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards;
+  -ms-animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards;
+  -o-animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards;
+  animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards; }
 a:hover .hiw-affordable-container .hiw-affordable-to-all .s-right, a:hover .hiw-affordable-container .hiw-affordable-to-all .s-left, a:focus .hiw-affordable-container .hiw-affordable-to-all .s-right, a:focus .hiw-affordable-container .hiw-affordable-to-all .s-left {
   -webkit-animation: 1000ms hiw-affordable-path-widen ease-in infinite alternate forwards;
   -moz-animation: 1000ms hiw-affordable-path-widen ease-in infinite alternate forwards;
