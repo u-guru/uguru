@@ -186,7 +186,7 @@
                 <ui-gmap-google-map class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events" id='splash-google-map-selected-university' refresh='map.refresh' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
                     <ui-gmap-marker coords="selectedUniversity.map.marker.coords" idKey="selectedUniversity.map.marker.id || selectedUniversity.id" options="selectedUniversity.map.marker.options" icon="selectedUniversity.map.marker.icon">
                     </ui-gmap-marker>
-                    <ui-gmap-markers ng-if='selectedUniversity.map.markers' models="selectedUniversity.map.markers" coords="'coords'" options="'options'" icon="'options.icon'" fit="false">
+                    <ui-gmap-markers models="selectedUniversity.map.markers" coords="'coords'" options="'options'" icon="'options.icon'">
                     </ui-gmap-markers>
                 </ui-gmap-google-map>
                 <div class="absolute top-0 left-0 full-xy bg-slate" style="opacity: .5; z-index: 10;"></div>
