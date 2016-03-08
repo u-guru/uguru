@@ -180,13 +180,16 @@
 
                 </div>
             </div>
+
+
+
             <!-- @gabrielle-note, the 3000 ms is to generate the static map URL with the right icon-->
             <div class="splash-hero-map opacity-0 invisible limited-opacity" class-on-clear="slideOutUp:animOut" class-on-activate="active:anim, visible-impt" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
                 <!-- initial map class: init-university-map -->
-                <ui-gmap-google-map class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events" id='splash-google-map-selected-university' refresh='map.refresh' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
+                <ui-gmap-google-map  class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events" id='splash-google-map-selected-university' refresh='map.refresh' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
                     <ui-gmap-marker coords="selectedUniversity.map.marker.coords" idKey="selectedUniversity.map.marker.id || selectedUniversity.id" options="selectedUniversity.map.marker.options" icon="selectedUniversity.map.marker.icon">
                     </ui-gmap-marker>
-                    <ui-gmap-markers ng-if='selectedUniversity.map.markers' models="selectedUniversity.map.markers" coords="'coords'" options="'options'" icon="'options.icon'" fit="false">
+                    <ui-gmap-markers models="selectedUniversity.map.markers" coords="'coords'" options="'options'" icon="'options.icon'">
                     </ui-gmap-markers>
                 </ui-gmap-google-map>
                 <div class="absolute top-0 left-0 full-xy bg-slate" style="opacity: .5; z-index: 10;"></div>
@@ -204,7 +207,7 @@
             <div class="splash-hero-markers opacity-0" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker|a">
 
                 <!-- splash-marker-first:unique:keep && null:inject#map-icon-2-translate|splash-marker-guru-first:unique:keep are unique to the first marker popping up and should not be used on other map markers. They should also be removed when another map marker is clicked. -->
-                <div class="splash-hero-marker-{{$index + 1}} splash-hero-marker opacity-0 bg-{{selectedCategory.hex_color}}" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="fadeIn:anim, visible, null:inject.splash-hero-marker-{{$index + 1}} .marker-normal|a" tabindex="{{$index + 1}}" ng-repeat='splash_marker in selectedUniversity.map.markers' translate-on-class="marker-translate" translate-to-elem="#university-place-marker-{{$index + 1}}">
+                <div  class="splash-hero-marker-{{$index + 1}} splash-hero-marker opacity-0 bg-{{selectedCategory.hex_color}}" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="fadeIn:anim, visible, null:inject.splash-hero-marker-{{$index + 1}} .marker-normal|a" tabindex="{{$index + 1}}" ng-repeat='splash_marker in selectedUniversity.map.markers' translate-on-class="marker-translate" translate-to-elem="#university-place-marker-{{$index + 1}}">
                     <!-- the delay for .marker-normal should be 3000ms less than the element .marker-guru being translated to it -->
                     <div class="marker-normal" activate-on-class="a" class-on-activate="move:keep" class-on-activate-delay="2500" class-on-click="null:inject.splash-hero-marker-{{$index + 1}}|splash-marker-active:unique, null:inject#map-icon-{{$index + 2}}-translate|splash-marker-guru-active:unique">
                         <svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
@@ -600,7 +603,7 @@
             </div>
         </section>
 
-        <section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%" class='relative'>
+        <section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
             <div class="projector-trigger animated opacity-0" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750" bind-wp="s2_25_top" bind-wp-class="bounceInDown" bind-wp-direction="down">
                 <a id="projector-pull" ng-click='activateProjectorPull();' bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a" class-on-activate="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
                     <svg width="28px" height="224px" viewBox="0 0 56 448">
@@ -718,7 +721,7 @@
                                     </svg>
                                 </a>
                                 <div class="projector-top"></div>
-                                <div  class="projector-content relative" ng-include="::img_base + BASE + 'templates/splash.bg.html'">
+                                <div  class="projector-content relative activate" id='bg' ng-include="::img_base + BASE + 'templates/splash.bg.html'">
                                 </div>
                             </div>
                             <!-- End slide 3 -->
