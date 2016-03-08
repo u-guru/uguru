@@ -775,6 +775,55 @@ section {
 			}
 		}
 	}
+	.home-links {
+		height: calc(50% - 60px);
+		ul {
+			@include flex;
+			@include flex-wrap;
+			position: relative;
+			height: 100%;
+			&:after {
+				@include round;
+				content: "";
+				position: absolute;
+				top: 50%;
+				margin-top: -1px;
+				left: 15px;
+				width: calc(100% - 30px);
+				height: 2px;
+			}
+			li {
+				position: relative;
+				height: 50%;
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					width: 100%;
+					height: 100%;
+					font-size: 16px;
+					font-weight: 600;
+					text-align: center;
+					span {
+						display: block;
+						width: 100%;
+						svg {
+							display: block;
+							margin: 0 auto;
+							width: 60px;
+							height: 60px;
+							* {
+								@include svg-stroke(white, 3);
+								&:not(.line) {
+									fill: rgba(white, .3)!important;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 // STUDENT HOME
 .nav-icon-burger {
@@ -865,28 +914,13 @@ section {
 		}
 	}
 	.home-links {
-		height: calc(50% - 60px);
 		background: $lake;
 		ul {
-			@include flex;
-			@include flex-wrap;
-			position: relative;
-			height: 100%;
 			&:after {
-				@include round;
-				content: "";
-				position: absolute;
-				top: 50%;
-				margin-top: -1px;
-				left: 15px;
-				width: calc(100% - 30px);
-				height: 2px;
 				background: mix($lake, white);
 			}
 			li {
-				position: relative;
 				width: calc(100% / 3);
-				height: 50%;
 				&:nth-child(1), &:nth-child(2) {
 					&:after {
 						content: "";
@@ -914,35 +948,11 @@ section {
 					}
 				}
 				a {
-					@include flex;
-					@include flex-wrap;
-					@include flex-center;
-					width: 100%;
-					height: 100%;
-					font-size: 16px;
-					font-weight: 600;
-					text-align: center;
 					&:hover, &:focus {
 						background: rgba(lighten(mix($slate, $lake, 90%), 20%), .5);
 					}
 					&:active {
 						background: lighten(mix($slate, $lake, 90%), 20%);
-					}
-					span {
-						display: block;
-						width: 100%;
-						svg {
-							display: block;
-							margin: 0 auto;
-							width: 60px;
-							height: 60px;
-							* {
-								@include svg-stroke(white, 3);
-								&:not(.line) {
-									fill: rgba(white, .3)!important;
-								}
-							}
-						}
 					}
 				}
 			}
@@ -956,6 +966,7 @@ section {
 		background: lighten(mix($slate, $shamrock, 90%), 10%);
 	}
 	.home-tabs {
+		background: $slate;
 		ul {
 			li {
 				min-width: calc(100% / 3);
@@ -974,6 +985,58 @@ section {
 								border-top-color: $slate;
 							}
 						}
+					}
+				}
+			}
+		}
+	}
+	.home-links {
+		background: $shamrock;
+		ul {
+			&:after {
+				background: mix($shamrock, white);
+			}
+			li {
+				width: 50%;
+				&:nth-child(1) {
+					&:after {
+						content: "";
+						position: absolute;
+						top: 15px;
+						right: -1px;
+						height: calc(100% - 15px);
+						width: 2px;
+						background: mix($shamrock, white);
+						border-top-left-radius: 1000px;
+						border-top-right-radius: 1000px;
+					}
+				}
+				&:nth-child(3) {
+					&:after {
+						content: "";
+						position: absolute;
+						bottom: 15px;
+						right: -1px;
+						height: calc(100% - 15px);
+						width: 2px;
+						background: mix($shamrock, white);
+						border-bottom-left-radius: 1000px;
+						border-bottom-right-radius: 1000px;
+					}
+				}
+				a {
+					&:hover, &:focus {
+						background: rgba(lighten(mix($slate, $shamrock, 90%), 10%), .5);
+					}
+					&:active {
+						background: lighten(mix($slate, $shamrock, 90%), 10%);
+					}
+					span:first-child {
+						display: block;
+						font-size: 48px;
+						font-weight: 600;
+						line-height: 60px;
+						height: 60px;
 					}
 				}
 			}
