@@ -2795,10 +2795,6 @@
           flex-direction: column;
           height: 250px; } }
       @media screen and (min-width: 768px) {
-        .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:first-child {
-          right: 10%;
-          margin-right: 0;
-          bottom: 10%; }
         .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:last-child {
           display: none; }
         .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:not(.splash-hero-marker-mobile) {

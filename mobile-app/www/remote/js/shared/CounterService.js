@@ -9,7 +9,7 @@ angular
 function CounterService($timeout, $interval) {
 
   var defaultOptions = {
-      useEasing : true,
+      useEasing : false,
       useGrouping : false,
       separator : ',',
       decimal : '.',

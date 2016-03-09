@@ -209,7 +209,7 @@ angular.module('uguru.util.controllers')
     $scope.map;
     $scope.page = {account: {}, progress: {}, scroll: {}, waypoints: {}, sidebar:{}, dropdowns: {}, modals: {}, swipers: {cachedBefore: [], cachedAfter:[], cached:[], galleryIndex:0}, map:{}};
     $scope.page.dropdowns = {closeAll: closeAllDropdowns, category: {show: true, active:false, toggle:toggleCategoryDropdown}, university: {show: true, active: false, toggle: toggleUniversityDropdown}};
-    $scope.page.account = {loginMode:true, forgotPassword:false, toggle: function(){alert('yo'); $scope.page.account.loginMode = !$scope.page.account.loginMode}};
+    $scope.page.account = {loginMode:true, forgotPassword:false, toggle: function(){$scope.page.account.loginMode = !$scope.page.account.loginMode}};
     $scope.page.faq_arr = ContentService.faq;
     //@gabrielle note, scroll preferences
 
@@ -1311,7 +1311,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.lockFilledBlanksAndgetUniversityPlaces = function(university) {
-      panUniversityBy(university);
+      // panUniversityBy(university);
       var translateBlankOneElem = document.querySelector('.translate-blank-1');
       translateBlankOneElem && translateBlankOneElem.parentNode && translateBlankOneElem.parentNode.classList.add('opacity-1-impt');
       var translateBlankTwoElem = document.querySelector('.translate-blank-2');
@@ -1393,7 +1393,7 @@ angular.module('uguru.util.controllers')
 
     function updateMarkersOnUniversitySpecificMap(university, selectedCategory) {
 
-      panUniversityBy(university);
+      // panUniversityBy(university);
 
       $timeout(function() {
 
@@ -1417,6 +1417,8 @@ angular.module('uguru.util.controllers')
           }
           university.map.markers.push(generateMarkerObj(indexPlace.geometry.location.lat(), indexPlace.geometry.location.lng(), i, selectedCategory.hex_color, details));
         }
+
+        addRandomGurusToMarkers(university.map.markers);
 
         if ($scope.desktopMode) {
           $timeout(function() {

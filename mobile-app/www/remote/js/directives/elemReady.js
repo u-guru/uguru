@@ -354,8 +354,8 @@ angular.module('uguru.directives')
                 console.log('setting id for counter directive');
               }
               var counterArgs = {
-                  useEasing : true,
-                  useGrouping : true,
+                  useEasing : false,
+                  useGrouping : false,
                   separator : ',',
                   decimal : '.',
                   prefix : counterPrefix ,
@@ -363,6 +363,7 @@ angular.module('uguru.directives')
               }
               var counterDelay = attr.counterDelay;
               var counterInfinite = attr.counterInfinite;
+              var counterDuration = attr.counterDuration;
               if ('counterInfinite' in attr) {
                 var counterTimeBetween = attr.counterInfiniteInBtwn || 0;
                 if (counterDelay) {
@@ -448,7 +449,7 @@ angular.module('uguru.directives')
         },function(value) {
             var classNames = element.attr('class').split(' ');
 
-              if ((classNames.indexOf('activate') > -1 || classNames.indexOf(attr.translateOnClass) > -1) && attr.translateToElem) {
+              if (((classNames.indexOf('activate') > -1 && !('translateOnClass' in attr)) || classNames.indexOf(attr.translateOnClass) > -1) && attr.translateToElem) {
                 element[0].classList.remove(attr.translateToElem);
                 var elementBounding = element[0].getBoundingClientRect();
                 var elemCoords = {height: elementBounding.height, width: elementBounding.width, top: elementBounding.top, left: elementBounding.left};
