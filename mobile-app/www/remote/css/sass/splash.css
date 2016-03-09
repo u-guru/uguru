@@ -51,6 +51,58 @@
   fill: #F1F1F1;
 }
 
+.splash-up-circle {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  right: 50%;
+  margin-right: -25px;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+}
+
+.splash-up-circle svg {
+  width: 42px;
+  height: 42px;
+}
+
+.splash-up-circle svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.splash-up-circle svg circle {
+  fill: rgba(64, 72, 75, 0.9);
+}
+
+@media screen and (min-width: 768px) {
+  .splash-up-circle {
+    left: auto;
+    right: 0;
+    margin-right: 0;
+    width: 70px;
+    height: 70px;
+  }
+}
+
 .splash-burger {
   position: absolute;
   top: 50%;
@@ -1691,8 +1743,8 @@
 }
 
 .splash-landing > section.splash-hero .splash-header {
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
   height: 50px !important;
   width: 100%;
 }
@@ -4027,7 +4079,7 @@
 .splash-landing > section#splash-projector .projector-line {
   position: absolute;
   left: 50%;
-  margin-left: 1px;
+  margin-left: -1px;
 }
 
 .splash-landing > section#splash-projector .projector-line.top {
@@ -7765,48 +7817,11 @@
   -ms-transform: scale(0);
   -o-transform: scale(0);
   transform: scale(0);
-  -webkit-animation: 200ms bounceIn forwards;
-  -moz-animation: 200ms bounceIn forwards;
-  -ms-animation: 200ms bounceIn forwards;
-  -o-animation: 200ms bounceIn forwards;
-  animation: 200ms bounceIn forwards;
   -webkit-transform-origin: 50% 50%;
   -moz-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   -o-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-}
-
-#hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .guru-2 {
-  -webkit-animation-delay: 200ms;
-  -moz-animation-delay: 200ms;
-  -ms-animation-delay: 200ms;
-  -o-animation-delay: 200ms;
-  animation-delay: 200ms;
-}
-
-#hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .guru-3 {
-  -webkit-animation-delay: 400ms;
-  -moz-animation-delay: 400ms;
-  -ms-animation-delay: 400ms;
-  -o-animation-delay: 400ms;
-  animation-delay: 400ms;
-}
-
-#hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .guru-4 {
-  -webkit-animation-delay: 800ms;
-  -moz-animation-delay: 800ms;
-  -ms-animation-delay: 800ms;
-  -o-animation-delay: 800ms;
-  animation-delay: 800ms;
-}
-
-#hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .guru-5 {
-  -webkit-animation-delay: 1000ms;
-  -moz-animation-delay: 1000ms;
-  -ms-animation-delay: 1000ms;
-  -o-animation-delay: 1000ms;
-  animation-delay: 1000ms;
 }
 
 #hiw .main .how-scene .how-scene-4 svg.graph {
@@ -8164,13 +8179,6 @@
     top: auto;
     bottom: 178px;
   }
-  #hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .point {
-    -webkit-animation: 1000ms point-graph-desktop ease-in-out forwards;
-    -moz-animation: 1000ms point-graph-desktop ease-in-out forwards;
-    -ms-animation: 1000ms point-graph-desktop ease-in-out forwards;
-    -o-animation: 1000ms point-graph-desktop ease-in-out forwards;
-    animation: 1000ms point-graph-desktop ease-in-out forwards;
-  }
   #hiw .main .how-scene .how-scene-4 svg.graph {
     display: none;
   }
@@ -8456,6 +8464,64 @@
   -ms-animation: 600000ms hiw-conveyor-belt forwards;
   -o-animation: 600000ms hiw-conveyor-belt forwards;
   animation: 600000ms hiw-conveyor-belt forwards;
+}
+
+.active-scene .graph-desktop .point {
+  -webkit-animation: 1000ms point-graph-desktop ease-in-out forwards;
+  -moz-animation: 1000ms point-graph-desktop ease-in-out forwards;
+  -ms-animation: 1000ms point-graph-desktop ease-in-out forwards;
+  -o-animation: 1000ms point-graph-desktop ease-in-out forwards;
+  animation: 1000ms point-graph-desktop ease-in-out forwards;
+}
+
+.active-scene .graph-desktop .guru-1, .active-scene .graph-desktop .guru-2, .active-scene .graph-desktop .guru-3, .active-scene .graph-desktop .guru-4, .active-scene .graph-desktop .guru-5 {
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  -webkit-animation: 200ms bounceIn forwards;
+  -moz-animation: 200ms bounceIn forwards;
+  -ms-animation: 200ms bounceIn forwards;
+  -o-animation: 200ms bounceIn forwards;
+  animation: 200ms bounceIn forwards;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+.active-scene .graph-desktop .guru-2 {
+  -webkit-animation-delay: 200ms;
+  -moz-animation-delay: 200ms;
+  -ms-animation-delay: 200ms;
+  -o-animation-delay: 200ms;
+  animation-delay: 200ms;
+}
+
+.active-scene .graph-desktop .guru-3 {
+  -webkit-animation-delay: 400ms;
+  -moz-animation-delay: 400ms;
+  -ms-animation-delay: 400ms;
+  -o-animation-delay: 400ms;
+  animation-delay: 400ms;
+}
+
+.active-scene .graph-desktop .guru-4 {
+  -webkit-animation-delay: 800ms;
+  -moz-animation-delay: 800ms;
+  -ms-animation-delay: 800ms;
+  -o-animation-delay: 800ms;
+  animation-delay: 800ms;
+}
+
+.active-scene .graph-desktop .guru-5 {
+  -webkit-animation-delay: 1000ms;
+  -moz-animation-delay: 1000ms;
+  -ms-animation-delay: 1000ms;
+  -o-animation-delay: 1000ms;
+  animation-delay: 1000ms;
 }
 
 .hiw-open-container path[class*="time-"] {

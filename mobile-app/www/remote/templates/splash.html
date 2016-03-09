@@ -52,9 +52,6 @@
                             <path d="M31,65.5 L69,65.5"></path>
                         </svg>
                     </a>
-                    <a ng-if='!desktopMode' name="back-to-scene-one" id='splash-up-link' class='full-x p10xy flex-wrap-center opacity-0 left-0 absolute' bind-wp="s2_50_top" bind-wp-class="activate, clear" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut, opacity-0" class-on-activate="fadeInDown:anim" class-on-activate-delay="1250" ng-show='projectorPullActivated || singleProjectorActivated' style="width:100% !important; top:10px;" ng-click='closeSingleProjector()'>
-                    <i style='font-size:100%; left:10px;' class='icon ion-chevron-up'> </i>
-                    </a>
                 </div>
             </header>
             <div class="splash-hero-nav desktop opacity-0 high-z-index" style='z-index:1000;' class-on-load="fadeIn:anim" class-on-load-delay="3000" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim">
@@ -180,8 +177,6 @@
 
                 </div>
             </div>
-
-
 
             <!-- @gabrielle-note, the 3000 ms is to generate the static map URL with the right icon-->
             <div class="splash-hero-map opacity-0 invisible limited-opacity" class-on-clear="slideOutUp:animOut" class-on-activate="active:anim, visible-impt" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
@@ -604,6 +599,7 @@
         </section>
 
         <section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
+            <a name="back-to-scene-one" id='splash-up-link' class="splash-up-circle" bind-wp="s2_50_top" bind-wp-class="activate, clear" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut, opacity-0" class-on-activate="fadeInDown:anim" class-on-activate-delay="1250" ng-show='projectorPullActivated || singleProjectorActivated' ng-click='closeSingleProjector()' ng-include="img_base + 'templates/svg/main/up-circle.html'"></a>
             <div class="projector-trigger animated opacity-0" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750" bind-wp="s2_25_top" bind-wp-class="bounceInDown" bind-wp-direction="down">
                 <a id="projector-pull" ng-click='activateProjectorPull();' bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a" class-on-activate="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
                     <svg width="28px" height="224px" viewBox="0 0 56 448">

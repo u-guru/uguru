@@ -44,6 +44,34 @@
 		}
 	}
 }
+.splash-up-circle {
+	@include flex;
+	@include flex-center;
+	position: absolute;
+	right: 50%;
+	margin-right: -25px;
+	top: 0;
+	width: 50px;
+	height: 50px;
+	z-index: 10;
+	svg {
+		width: 42px;
+		height: 42px;
+		* {
+			@include svg-stroke(white, 4);
+		}
+		circle {
+			fill: rgba($slate, .9);
+		}
+	}
+	@media screen and (min-width: 768px) {
+		left: auto;
+		right: 0;
+		margin-right: 0;
+		width: 70px;
+		height: 70px;
+	}
+}
 .splash-burger {
 	@include center-xy;
 	height: 100%;
@@ -972,7 +1000,7 @@
 			background: $slate;
 			text-align: center;
 			.splash-header {
-				@include prefix(justify-content, space-between, webkit);
+				@include prefix(justify-content, flex-start, webkit);
 				height: 50px!important;
 				width: 100%;
 				@media screen and (min-width: 860px) {
@@ -2590,7 +2618,7 @@
 			.projector-line {
 				position: absolute;
 				left: 50%;
-				margin-left: 1px;
+				margin-left: -1px;
 				&.top {
 					top: -196px;
 				}
@@ -5278,20 +5306,7 @@
 						max-height: 400px;
 						.guru-1, .guru-2, .guru-3, .guru-4, .guru-5 {
 							@include prefix(transform, scale(0), webkit moz ms o);
-							@include prefix(animation, 200ms bounceIn forwards, webkit moz ms o);
 							@include prefix(transform-origin, 50% 50%, webkit moz ms o);
-						}
-						.guru-2 {
-							@include prefix(animation-delay, 200ms, webkit moz ms o);
-						}
-						.guru-3 {
-							@include prefix(animation-delay, 400ms, webkit moz ms o);
-						}
-						.guru-4 {
-							@include prefix(animation-delay, 800ms, webkit moz ms o);
-						}
-						.guru-5 {
-							@include prefix(animation-delay, 1000ms, webkit moz ms o);
 						}
 					}
 					&.graph {
@@ -5547,9 +5562,6 @@
 							display: block;
 							top: auto;
 							bottom: 178px;
-							.point {
-								@include prefix(animation, 1000ms point-graph-desktop ease-in-out forwards, webkit moz ms o);
-							}
 						}
 						&.graph {
 							display: none;
@@ -5757,6 +5769,32 @@
 .active-scene {
 	.conveyor {
 		@include prefix(animation, 600000ms hiw-conveyor-belt forwards, webkit moz ms o);
+	}
+}
+
+// instant and in person
+.active-scene {
+	.graph-desktop {
+		.point {
+			@include prefix(animation, 1000ms point-graph-desktop ease-in-out forwards, webkit moz ms o);
+		}
+		.guru-1, .guru-2, .guru-3, .guru-4, .guru-5 {
+			@include prefix(transform, scale(0), webkit moz ms o);
+			@include prefix(animation, 200ms bounceIn forwards, webkit moz ms o);
+			@include prefix(transform-origin, 50% 50%, webkit moz ms o);
+		}
+		.guru-2 {
+			@include prefix(animation-delay, 200ms, webkit moz ms o);
+		}
+		.guru-3 {
+			@include prefix(animation-delay, 400ms, webkit moz ms o);
+		}
+		.guru-4 {
+			@include prefix(animation-delay, 800ms, webkit moz ms o);
+		}
+		.guru-5 {
+			@include prefix(animation-delay, 1000ms, webkit moz ms o);
+		}
 	}
 }
 
