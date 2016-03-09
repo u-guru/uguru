@@ -38,32 +38,71 @@ angular.module('uguru.directives')
       }
     };
 })
-.directive('drawPath', ['$timeout', function ($timeout) {
+.directive('draw', ['$timeout', 'SVGService', function ($timeout, SVGService) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      var nodeName = element[0].nodeName;
+
+      if (SVGService.supportedShapes.indexOf(nodeName) > -1) {
+        var drawElement = element[0]
+        var drawDelay = attr.drawDelay || 0;
+        var drawStartFrame = attr.drawStartFrame || 0;
+        var drawDuration = SVGService.computeDrawDuration(attr.drawDuration);
+
+        var drawPathLength = SVGService.getTotalPathLength(drawElement);
+
+        drawElement.style.strokeDasharray = drawPathLength + ' ' + drawPathLength;
+        drawElement.style.strokeDashoffset = drawPathLength;
+        scope.$watch(function() {
+          return element.attr('class');
+        }, function() {
+
+          if (element[0].classList.contains('activate') || (attr.drawOnClass && element[0].classList.contains(attr.drawOnClass))) {
+            $timeout(function() {
+              SVGService.drawOneShape(drawElement, drawStartFrame, drawDuration, drawPathLength);
+            }, drawDelay);
+          }
+        })
+      }
+    }
+  }
+}])
+.directive('drawShapes', ['$timeout', 'SVGService', function ($timeout, SVGService) {
   return {
     restrict: 'A',
     link: function(scope, element, attr) {
       var clonedElem = element[0].cloneNode(true);
       var currentFrame = parseInt(attr.initFrame) || 0;
-      var delay = attr.drawPathDelay || 0;
-      var totalFrames = parseInt(attr.numFrames) || 60;
-      var svgPaths = element[0].querySelectorAll('path');
+      var delay = attr.drawDelay || 0;
+      var totalFrames = SVGService.computeDrawDuration(attr.drawDuration) || 60;
+      var svgPaths = element[0].querySelectorAll('path:not([draw]):not([draw-ignore]), line:not([draw]):not([draw-ignore]), circle:not([draw]):not([draw-ignore]), rect:not([draw]):not([draw-ignore]), polygon:not([draw]):not([draw-ignore])');
       var pathLengths = new Array();
+      var drawShapesDelay = parseInt(attr.drawShapesDelay) || 0;
       for (var i = 0; i < svgPaths.length; i++) {
-        var indexPath = svgPaths[i];
-        var pathLength = indexPath.getTotalLength();
+        var indexPathElem = svgPaths[i];
+
+        var pathLength = SVGService.getTotalPathLength(indexPathElem);
+
+        // var pathLength = indexPathElem.getTotalLength();
         pathLengths[i] = pathLength;
-        indexPath.style.strokeDasharray = pathLength + ' ' + pathLength;
-        indexPath.style.strokeDashoffset = pathLength;
+        indexPathElem.style.strokeDasharray = pathLength + ' ' + pathLength;
+        indexPathElem.style.strokeDashoffset = pathLength;
       }
       scope.$watch(function() {
         return element.attr('class');
       }, function() {
+
         if (element[0].classList.contains('activate') || (attr.drawOnClass && element[0].classList.contains(attr.drawOnClass))) {
             $timeout(function() {
+              //concurrent case
+              var startTime = new Date().getTime();
               var requestFrameHandle = 0;
               function draw() {
                 var progress = currentFrame/totalFrames;
                 if (progress > 1) {
+                  var endTime = new Date().getTime();
+                  console.log(endTime - startTime, 'ms total animation');
                    window.cancelAnimationFrame(requestFrameHandle);
                 } else {
                   currentFrame++;

@@ -505,7 +505,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.demos', {
         url: '/demos',
-        templateUrl: BASE + 'templates/demos.html'
+        templateUrl: BASE + 'templates/demos.html',
+        controller: 'DemosController'
   }).
   state('root.splash', {
         url: '/:categoryId:universityId',
