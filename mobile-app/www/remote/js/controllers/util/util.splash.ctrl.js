@@ -1059,7 +1059,7 @@ angular.module('uguru.util.controllers')
       $scope.universities = University.getTargetted().slice();
 
       $timeout(function() {
-          var hiwSceneOne = document.querySelector('.how-scene-1');
+          var hiwSceneOne = document.querySelector('.hiw-scene-1');
           hiwSceneOne && hiwSceneOne.classList.add('activate');
       }, 2000)
       showProjectorAtTop(0);

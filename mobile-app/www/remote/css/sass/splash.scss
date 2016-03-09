@@ -5206,100 +5206,6 @@
 					max-height: 400px;
 					width: auto;
 				}
-				.pf-card-outline {
-					position: relative;
-					border: 2px solid $shamrock;
-					border-radius: 5px;
-					margin-top: 36px;
-					.pf-card-top {
-						.user-icon {
-							@include center-x;
-							z-index: 10;
-							top: -36px;
-							width: 72px;
-							height: 72px;
-							border: 2px solid $shamrock;
-						}
-					}
-					.pf-card-main {
-						@include flex;
-						@include flex-wrap;
-						@include flex-center;
-						.pf-card-info {
-							padding: 36px 15px 15px;
-							width: 100%;
-							background: $shamrock;
-							text-align: center;
-							h1 {
-								font-size: 24px;
-								font-weight: 600;
-								span {
-									svg {
-										margin-left: 8px;
-										margin-top: 5px;
-										width: 20px;
-										height: 20px;
-										path {
-											&:first-child {
-												fill: white;
-											}
-											&:last-child {
-												fill: $shamrock;
-											}
-										}
-									}
-								}
-							}
-							h2 {
-								margin-top: 0!important;
-								font-size: 16px;
-							}
-							.pf-rating {
-								margin: 5px auto 0;
-							}
-						}
-						.pf-card-content {
-							.pf-courses {
-								@include flex;
-								@include flex-wrap;
-								padding: 7.5px;
-								li {
-									padding: 7.5px;
-									&:not(:first-child) {
-										display: none;
-									}
-									.pf-course {
-										@include round;
-										@include prefix(animation, 500ms course-border ease-in forwards, webkit moz ms o);
-										display: block;
-										position: relative;
-										padding: 5px 10px;
-										border: 2px solid rgba(white, .2);
-										font-size: 16px;
-										font-weight: 600;
-										overflow: none;
-										&:before {
-											@include round;
-											@include prefix(animation, 500ms course-highlight ease-in forwards, webkit moz ms o);
-											content: "";
-											display: block;
-											position: absolute;
-											top: 0;
-											left: 0;
-											height: 100%;
-											width: 29px;
-											background: rgba(white, .2);
-										}
-										span {
-											position: relative;
-											z-index: 10;
-										}
-									}
-								}
-							}
-						}
-					}
-				}
 				.ugrid-2 {
 					@include flex-center;
 					position: absolute;
@@ -6038,62 +5944,98 @@ a:hover, a:focus {
                 height: 100%;
                 overflow: hidden;
             }
+			svg {
+				max-height: 400px;
+			}
+			.bg-scene-1 {
+				background: #F2B65A;
+			}
+			.bg-scene-2 {
+				background: #8DA09C;
+			}
+			.bg-scene-3 {
+				background: #89A1B5;
+			}
+			.bg-scene-4 {
+				background: #F39185;
+			}
+			.bg-scene-5 {
+				background: #07113C;
+			}
+			.bg-scene-6 {
+				background: #81B88C;
+			}
+			.bg-scene-7 {
+				background: #40484B;
+			}
+			.bg-scene-8 {
+				background: #637074;
+			}
         }
         .bg-props {
             @include flex;
-						@include flex-wrap;
-						@include flex-center;
-						position: absolute;
-						bottom: 0;
-						left: 0;
+			@include flex-center;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			padding: 7.5px;
+			li {
+				width: calc(100% / 4);
+				text-align: center;
+				padding: 7.5px;
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					margin: 0 auto;
+					div {
 						width: 100%;
-						padding: 7.5px;
-						li {
-							width: calc(100% / 3);
-							text-align: center;
-							padding: 7.5px;
-							a {
-								@include flex;
-								@include flex-wrap;
-								@include flex-center;
-								margin: 0 auto;
-								div {
-									width: 100%;
-									max-width: 50px;
-								}
-								svg {
-									@include prefix(transition, all 150ms ease-in-out);
-									border-radius: 5px;
-									background: lighten($slate, 5%);
-									* {
-										stroke-width: 4px!important;
-									}
-								}
-								h1 {
-									padding-top: 10px;
-									width: 100%;
-									font-size: 14px;
-									font-weight: 600;
-								}
-								&:hover {
-									svg {
-										background: lighten($slate, 15%);
-									}
-								}
-							}
+						max-width: 50px;
+					}
+					svg {
+						@include prefix(transition, all 150ms ease-in-out);
+						border-radius: 5px;
+						background: lighten($slate, 5%);
+						* {
+							stroke-width: 4px!important;
 						}
+					}
+					h1 {
+						padding-top: 10px;
+						width: 100%;
+						font-size: 14px;
+						font-weight: 600;
+					}
+					&:hover {
+						svg {
+							background: lighten($slate, 15%);
+						}
+					}
+				}
+			}
         }
     }
+	@media screen and (max-width: 768px) {
+        .main {
+            .bg-props {
+				@include flex-wrap;
+			}
+		}
+	}
     @media screen and (min-width: 768px) {
         header {
             @include opacity(1);
         }
         .main {
             .bg-props {
+				height: 163px;
+				overflow-x: auto;
                 li {
-                    width: calc(100% / 6);
+                    width: calc(100% / 4);
                     a {
                         div {
+							width: 100px;
                             max-width: 100px;
                         }
                         h1 {
