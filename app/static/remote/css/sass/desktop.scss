@@ -89,14 +89,14 @@
 			color: $slate;
 		}
 		&:hover, &:focus {
-			background: lighten($gabrielle, 10%);
+			background: lighten($shamrock, 10%);
 			&:before,
 			&:after {
 				@include opacity(1);
 			}
 		}
 		&:active {
-			background: $gabrielle;
+			background: $shamrock;
 		}
 	}
 	#cta-box-content.dark {
@@ -107,7 +107,7 @@
 	}
 	#top-bar {
 		height: 64px;
-		background: $gabrielle;
+		background: $shamrock;
 		padding: 0 15px;
 		div:nth-child(2) {
 			@include flex;
@@ -122,7 +122,7 @@
 				@include flex-center-vertical;
 				position: relative;
 				z-index: 13;
-				background: $gabrielle;
+				background: $shamrock;
 				margin: 0 auto;
 				width: 100%;
 				max-width: 1280px;
@@ -193,10 +193,8 @@
 					text-transform: uppercase;
 					color: $slate;
 				}
-				&:hover,
-				&:focus {
-					&:before,
-					&:after {
+				&:hover, &:focus {
+					&:before, &:after {
 						@include opacity(1);
 					}
 					svg {
@@ -229,7 +227,7 @@
 				svg {
 					circle {
 						@include svg-stroke(white, 5);
-						fill: $gabrielle;
+						fill: $shamrock;
 					}
 				}
 				&:after {
@@ -241,7 +239,7 @@
 							fill: white;
 						}
 						path {
-							stroke: $gabrielle;
+							stroke: $shamrock;
 						}
 					}
 				}
@@ -251,11 +249,13 @@
 				@include flex-center;
 				width: 90px;
 				height: 64px;
-				img, img.profile-url {
-					@include round;
+				.user-icon {
 					width: 40px;
 					height: 40px;
 					border: 3px solid white;
+					background-position: center;
+					background-size: cover;
+					background-color: mix($slate, $shamrock);
 				}
 				svg {
 					@include svg-stroke(white, 14);
@@ -284,7 +284,7 @@
 				z-index: 11;
 				right: 0;
 				top: 64px;
-				background: $gabrielle;
+				background: $shamrock;
 				overflow: hidden;
 				&.active {
 					@include transition(.15s ease-in-out);
@@ -347,10 +347,10 @@
 							&:hover, &:active, &:focus {
 								background: white;
 								span {
-									color: $gabrielle;
+									color: $shamrock;
 								}
 								svg {
-									stroke: $gabrielle;
+									stroke: $shamrock;
 								}
 							}
 						}
@@ -358,10 +358,10 @@
 							a {
 								background: rgba(white,.75);
 								span {
-									color: $gabrielle;
+									color: $shamrock;
 								}
 								svg {
-									stroke: $gabrielle;
+									stroke: $shamrock;
 								}
 							}
 							&:hover, &:active, &:focus {
@@ -396,7 +396,7 @@
 		height: 128px;
 		width: 100%;
 		max-width: 960px;
-		background: $gabrielle;
+		background: $shamrock;
 		.progress {
 			border-radius: 0;
 			&::-webkit-progress-value,
@@ -2067,8 +2067,8 @@
 				margin-top: 0;
 				margin-bottom: 30px;
 				input:focus:not([readonly]) {
-					border-bottom: 1px solid $gabrielle!important;
-					box-shadow: 0 1px 0 0 $gabrielle!important;
+					border-bottom: 1px solid $shamrock!important;
+					box-shadow: 0 1px 0 0 $shamrock!important;
 				}
 				label:after {
 					width: 500px;
@@ -2139,7 +2139,7 @@
 				position: relative;
 				width: 30%;
 				height: 100%;
-				background: $gabrielle;
+				background: $shamrock;
 				h1 {
 					padding: 15px;
 					font-size: 32px;
@@ -2763,7 +2763,7 @@
 			padding: 15px;
 			font-weight: 600;
 			span:first-child {
-				color: $gabrielle;
+				color: $shamrock;
 			}
 			span:last-child {
 				font-size: 32px;
@@ -2803,16 +2803,16 @@
 		.request-form-map {
 			height: 305px;
 			> div {
-				border-color: $gabrielle;
+				border-color: $shamrock;
 				ul {
-					background: $gabrielle;
+					background: $shamrock;
 				}
 			}
 		}
 		.request-form-date {
 			> div {
-				border-color: $gabrielle;
-				color: $gabrielle;
+				border-color: $shamrock;
+				color: $shamrock;
 			}
 		}
 		.request-form-upload {

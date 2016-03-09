@@ -104,13 +104,13 @@
     <ul class="how-props active">
         <li>
             <a ng-click='switchToHiwScene(1)'>
-                <div class="hiw-open-container hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/1-open-24-7-hover.html'"></div>
+                <div class="hiw-open-container hiw-svg-container relative full-xy" activate-on-class='translate-active' class-on-activate-delay="2000" class-on-activate="bg-cerise:inject.hiw-open-24-7.block|bg-cerise-impt" translate-on-click-duration="2000" translate-on-click translate-to-elem='.hiw-open-24-7-active .clock' scale-x-on-click="1.5" scale-y-on-click="1.5" ng-include="::img_base + 'templates/hiw/1-open-24-7-hover.html'"></div>
                 <h1>Open<br/>24/7</h1>
             </a>
         </li>
         <li>
             <a ng-click='switchToHiwScene(2)'>
-                <div class="hiw-affordable-container hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/2-afforable-to-all-hover.html'"></div>
+                <div class="hiw-affordable-container hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/2-affordable-to-all-hover.html'"></div>
                 <h1>Affordable<br/>to&nbsp;All</h1>
             </a>
         </li>

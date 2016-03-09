@@ -28,15 +28,7 @@
                 </div>
             </div>
         </div> -->
-       <!--  <div class="onboarding-success mo-js-wrapper">
-            <div class="mojs-wrapper" mo-js>
-                <a mo-js-child></a>
-                <div class="guru" ng-include="img_base + 'templates/svg/guru-success.html'"></div>
-            </div>
-        	<h1>Congrats!</h1>
-        	<h2>Your Account is Ready</h2>
-        	<button class="btn-ghost-white">Take Me to My Dashboard</button>
-        </div> -->
+
 
         <section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" parallax-parent="p1" parallax-relative-input="false" parallax-clip-relative-input="false" parallax-calibration-threshold="100" parallax-calibration-delay="500" parallax-support-delay="500" parallax-calibrate-x="false" parallax-calibrate-y="true" parallax-invert-x="true" parallax-invert-y="true" parallax-limit-x="false" parallax-limit-y="false" parallax-scalar-x="5.0" parallax-scalar-y="5.0" parallax-friction-x="0.1" parallax-friction-y="0.1" parallax-origin-x="0.5" parallax-origin-y="0.5" style='z-index:10;'>
             <header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
@@ -204,12 +196,18 @@
                 <button activate-on-class="c" class-on-activate="null:inject.splash-desktop-cta|bounceInUp, null:inject.splash-mobile-cta|bounceInUp, null:inject.coach-click|show-opacity-impt, null:inject.coach-click path|animate, null:inject.coach-click-path-2|animate, null:inject.coach-click g g|bounceIn, null:inject.coach-help-desktop|bounceIn, null:inject.coach-help-mobile|bounceIn, null:inject.coach-fill|hide, null:inject.coach-scroll|active, null:inject.coach-scroll svg|fadeIn, null:inject.splash-hero-skip|a" class-on-click="null:inject.splash-desktop-cta|bounceInUp, null:inject.splash-mobile-cta|bounceInUp, null:inject.coach-click|show-opacity-impt, null:inject.coach-click path|animate, null:inject.coach-click-path-2|animate, null:inject.coach-click g g|bounceIn, null:inject.coach-help-desktop|bounceIn, null:inject.coach-help-mobile|bounceIn, null:inject.coach-fill|hide, null:inject.coach-scroll|active, null:inject.coach-scroll svg|fadeIn, null:inject.splash-hero-skip|a, null:inject.splash-adlib ul li a|a">Skip</button>
             </div>
 
-            <div class="splash-hero-markers opacity-0" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="active:inject.splash-hero-marker|a">
+            <div class="splash-hero-markers opacity-0" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="fadeIn:anim:inject.splash-hero-marker|a">
 
                 <!-- splash-marker-first:unique:keep && null:inject#map-icon-2-translate|splash-marker-guru-first:unique:keep are unique to the first marker popping up and should not be used on other map markers. They should also be removed when another map marker is clicked. -->
-                <div  class="splash-hero-marker-{{$index + 1}} splash-hero-marker opacity-0 bg-{{selectedCategory.hex_color}}" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="fadeIn:anim, visible, null:inject.splash-hero-marker-{{$index + 1}} .marker-normal|a" tabindex="{{$index + 1}}" ng-repeat='splash_marker in selectedUniversity.map.markers' translate-on-class="marker-translate" translate-to-elem="#university-place-marker-{{$index + 1}}">
+                <!-- SPLASH STOCK MARKER ICONS -->
+                <div  class="opacity-0 splash-hero-marker-{{$index + 1}} splash-hero-marker bg-{{selectedCategory.hex_color}}" activate-on-class="a"
+                    class-on-clear="fadeOutRightBig:animOut"
+                    class-on-clear-delay="100"
+                    class-on-activate="fadeIn:anim, high-z-index, null:inject.splash-hero-marker-{{$index + 1}} .marker-circle|activate, null:inject.splash-hero-marker-{{$index + 1}} .marker-label|activate" tabindex="{{$index + 1}}"
+                    class-on-activate-delay="{{ $index * 1000 + 8000}}"
+                    ng-repeat='splash_marker in selectedUniversity.map.markers' translate-on-class="marker-translate" translate-to-elem="#university-place-marker-{{$index + 1}}">
                     <!-- the delay for .marker-normal should be 3000ms less than the element .marker-guru being translated to it -->
-                    <div class="marker-normal" activate-on-class="a" class-on-activate="move:keep" class-on-activate-delay="2500" class-on-click="null:inject.splash-hero-marker-{{$index + 1}}|splash-marker-active:unique, null:inject#map-icon-{{$index + 2}}-translate|splash-marker-guru-active:unique">
+                    <div class="marker-normal opacity-0" activate-on-class="a" class-on-activate="move:keep" class-on-activate-delay="2500" class-on-click="null:inject.splash-hero-marker-{{$index + 1}}|splash-marker-active:unique, null:inject#map-icon-{{$index + 2}}-translate|splash-marker-guru-active:unique">
                         <svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
                             <g fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
                                 <path class="side" d="M92,176 L122,146 L171.991129,146 C177.518876,146 182,141.532461 182,136.002779 L182,11.9972208 C182,6.47590822 177.527924,2 172.009493,2 L142,2"></path>
@@ -226,7 +224,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="marker-expanded">
+                    <div class="marker-expanded opacity-0">
                         <svg class="marker-expanded-window" width="262px" height="267px" viewBox="0 0 524 534">
                              <g fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
                                   <path class="sides" d="M262,532 L232,502 L22.0086422,502 C10.9581743,502 2,493.042549 2,481.993992 L2,22.006008 C2,10.9569949 10.9569966,2 21.9941986,2 L182,2"></path>
@@ -254,8 +252,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="marker-circle"></div>
-                    <div class="marker-label">{{splash_marker.details.place_name || 'Cafe'}}</div>
+                    <div class="marker-circle opacity-0" class-on-activate="zoomInUp:anim" class-on-activate-delay="{{$index * 1000 + 6000}}"></div>
+                    <div class="marker-label opacity-0" class-on-activate="flipInX:anim" class-on-activate-delay="{{$index * 1000 + 250 + 6000}}">{{splash_marker.details.place_name || 'Cafe'}}</div>
                 </div>
 
                 <div ng-if="!desktopMode" class="splash-hero-marker-mobile splash-hero-marker bg-{{selectedCategory.hex_color}} opacity-0" activate-on-class="a" class-on-clear="fadeOutRightBig:animOut" class-on-clear-delay="100" class-on-activate="splash-marker-first:unique:keep, null:inject#map-icon-2-translate|splash-marker-guru-first:unique:keep, fadeIn:anim, visible, null:inject.splash-hero-marker-1 .marker-normal|a" tabindex="1">
@@ -307,7 +305,7 @@
                     <div class="marker-circle"></div>
                 </div>
             </div>
-            <div class="splash-device splash-device-iphone magictime opacity-0 parallax-absolute parallax-50" parallax-parent-ref="p1" parallax-child="0.2" class-on-load="vanishIn:anim" activate-on-class="a" class-on-activate="active:inject.splash-device-search-inside|a, b:inject.splash-device-svg|a" translate-on-class-delay="500" translate-on-class="translate-device" class-on-clear="null:inject.splash-device-search-inside|clear, null:inject:splash-device-svg|clear">
+            <div class="splash-device splash-device-iphone magictime opacity-0 parallax-absolute parallax-50" parallax-parent-ref="p1" parallax-child="0.2" class-on-load="vanishIn:anim" activate-on-class="a" class-on-activate="active:inject.splash-device-search-inside|a, b:inject.splash-device-svg|a" class-on-activate-delay="4000" translate-on-class-delay="500" translate-on-class="translate-device" class-on-clear="null:inject.splash-device-search-inside|clear, null:inject:splash-device-svg|clear">
                 <svg class="splash-device-svg" activate-on-class="a" class-on-activate="active:keep" viewBox="0 0 319 652">
                     <path d="M2,42.0005693 C2,19.9088649 19.9096817,2 41.9948462,2 L277.005154,2 C299.093697,2 317,19.9012788 317,42.0005693 L317,609.999431 C317,632.091135 299.090318,650 277.005154,650 L41.9948462,650 C19.9063026,650 2,632.098721 2,609.999431 L2,42.0005693 Z M22,80 L298,80 L298,573 L22,573 L22,80 Z" fill="none" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3"></path>
                     <circle stroke="#F0E0D0" stroke-width="3" fill="none" cx="159" cy="611" r="25"></circle>
@@ -317,75 +315,19 @@
                     <div class="splash-device-search" class-on-activate="fadeIn:anim" class-on-activate-delay="6000" class-on-clear="slideOutDown:animOut" class-on-clear-delay="1500">
                         <div class="splash-device-search-inside opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim, null:inject.splash-device-adlib|a, null:inject.splash-device-search-inside h1.device-counter|activate, null:inject.splash-device-search-inside p|a, null:inject.splash-device-search-gurus li|a, null:inject.splash-device-search-courses li|a, null:inject.splash-device-found|a, null:inject.map-guru-icon|a" class-on-clear="null:inject.splash-device-adlib|clear, null:inject.splash-device-search-inside p|clear, null:inject.splash-device-search-gurus li|clear, null:inject.splash-device-search-courses li|clear, null:inject.splash-device-found|a, null:inject.map-guru-icon|clear">
                             <!-- null:inject.splash-device-search-gurus .marker-guru|activate -->
-                            <div class="splash-device-found" activate-on-class="a" class-on-activate="active:keep" class-on-activate-delay="6000" class-on-clear="fadeOut:animOut" class-on-clear-delay="1500">
-                                <h1 class="opacity-0 device-counter" class-on-activate="bounceIn:anim" counter init-on-class="counter:activate" counter-max="{{selectedUniversity.map.markers.length || 6}}" counter-min="0" counter-duration="{{selectedUniversity.map.markers.length * 0.8 || 7}}" counter-delay="2000"></h1>
+                            <div class="splash-device-found" activate-on-class="a" class-on-activate="active:keep" class-on-activate-delay="4000" class-on-clear="fadeOut:animOut" class-on-clear-delay="1500">
+                                <h1 class="opacity-0 device-counter" class-on-activate="bounceIn:anim" counter init-on-class="counter:activate" counter-max="{{selectedUniversity.map.markers.length || 6}}" counter-min="1" counter-duration="{{(selectedUniversity.map.markers.length * 1.15) || 7}}" counter-delay="4000"></h1>
                                 <p class="opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-clear="fadeOutDown:animOut" class-on-clear-delay="500">Gurus Found</p>
                             </div>
                             <ul class="splash-device-search-gurus">
-                                <li class="opacity-0" activate-on-class="a" class-on-clear="fadeOut:animOut" class-on-clear-delay="1000" class-on-activate="bounceIn:anim:inject#map-icon-{{$index+1}}-translate a|activate" class-on-activate-delay="{{$index * 400}}" ng-repeat="marker in selectedUniversity.map.markers" class-on-clear="fadeOutDown:animOut", class-on-clear-delay="{{$index * 100}}">
+                                <li class="opacity-0" activate-on-class="a"  class-on-activate="bounceIn:anim:inject#map-icon-{{$index+1}}-translate a|activate" class-on-activate-delay="{{$index * 1000 + 4000 }}" ng-repeat="marker in selectedUniversity.map.markers" class-on-clear="fadeOutDown:animOut", class-on-clear-delay="{{$index * 100}}">
                                     <div id="map-icon-{{$index + 1}}-translate">
-                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" translate-on-class-delay="{{(selectedUniversity.map.markers.length * 1000 * 0.6) || 1000}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-{{$index + 1}}" translate-on-class="activate">
+                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" translate-on-class-delay="{{(selectedUniversity.map.markers.length * 1000 * 0.6) || 1000}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-{{$index + 1}}" translate-on-class="translate-device-guru-profile">
                                             <span class="user-icon" style="background-image: url('{{marker.guru.profile_url}}')"></span>
                                             <span class="marker-guru-course">{{marker.guru.subcategory}}</span>
                                         </a>
                                     </div>
                                 </li>
-                                <!-- <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="2000">
-                                    <div id="map-icon-2-translate">
-                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-2" translate-on-class="activate" translate-on-class-delay="2500">
-                                            <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
-                                            <span class="marker-guru-course">BIO 1A</span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="3000">
-                                    <div id="map-icon-3-translate">
-                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-3" translate-on-class="activate" translate-on-class-delay="2000">
-                                            <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
-                                            <span class="marker-guru-course">BIO 1A</span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="4000">
-                                    <div id="map-icon-4-translate">
-                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-4" translate-on-class-delay="1500" translate-on-class="activate">
-                                            <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
-                                            <span class="marker-guru-course">BIO 1A</span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="5000">
-                                    <div id="map-icon-5-translate">
-                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-5" translate-on-class-delay="1000" translate-on-class="activate">
-                                            <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
-                                            <span class="marker-guru-course">BIO 1A</span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="6000">
-                                    <div id="map-icon-6-translate">
-                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-6" translate-on-class-delay="500" translate-on-class="activate">
-                                            <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
-                                            <span class="marker-guru-course">BIO 1A</span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="7000">
-                                    <div id="map-icon-7-translate">
-                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-6" translate-on-class-delay="500" translate-on-class="activate">
-                                            <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
-                                            <span class="marker-guru-course">BIO 1A</span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class="opacity-0" activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="8000">
-                                    <div id="map-icon-7-translate">
-                                        <a class="marker-guru bg-{{selectedCategory.hex_color}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-6" translate-on-class-delay="500" translate-on-class="activate">
-                                            <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
-                                            <span class="marker-guru-course">BIO 1A</span>
-                                        </a>
-                                    </div>
-                                </li> -->
                             </ul>
                         </div>
                     </div>
@@ -571,36 +513,8 @@
             <div class="splash-hero-progress progress white opacity-0" activate-on-class="a" class-on-activate="active">
                 <span style="width: 15%;"></span>
             </div>
+            <!-- mobile-->
             <button ng-click='lockFilledBlanksAndgetUniversityPlaces(selectedUniversity)' class="button-find-guru splash-mobile-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|activate, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.splash-device-search|activate, a:inject.coach-help-mobile|hide, a:inject.splash-adlib|a, a:inject.splash-adlib ul|clear, a:inject.splash-adlib|bounceOutUp:animOut, null:inject.splash-hero-progress|activate, null:inject.splash-hero-progress span|animate">Find My Guru</button>
-            <div id="next-steps-container" class="active" ng-if='false'>
-                <div id="next-steps">
-                    <div class="next-device">
-                        <svg class="splash-device-svg" viewBox="0 0 319 652">
-                            <path d="M2,42.0005693 C2,19.9088649 19.9096817,2 41.9948462,2 L277.005154,2 C299.093697,2 317,19.9012788 317,42.0005693 L317,609.999431 C317,632.091135 299.090318,650 277.005154,650 L41.9948462,650 C19.9063026,650 2,632.098721 2,609.999431 L2,42.0005693 Z M22,80 L298,80 L298,573 L22,573 L22,80 Z" fill="none" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3"></path>
-                            <circle stroke="#F0E0D0" stroke-width="3" fill="none" cx="159" cy="611" r="25"></circle>
-                        </svg>
-                    </div>
-                    <div class="next-content">
-                        <div class="next-guru">
-                            <div class="splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
-                            <svg class="coach-next-steps" width="114px" height="98px" viewBox="0 0 228 196">
-                                 <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
-                                 <text transform="translate(113.612466, 96.294134) rotate(20.000000) translate(-113.612466, -96.294134) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
-                                      <tspan x="35.612466" y="95.2941336">so what’s</tspan>
-                                      <tspan x="69.112466" y="135.294134">next?</tspan>
-                                 </text>
-                            </svg>
-                        </div>
-                        <ol>
-                            <li class="active"><span>Explore by changing categories or universities</span></li>
-                            <li><span>Learn more</span></li>
-                            <li><span>Start your profile</span></li>
-                            <li><span>Try those madlibs again</span></li>
-                            <li><span>Refresh that craziness</span></li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
@@ -934,5 +848,44 @@
                 </div>
             </div>
         </section>
+        <div class="onboarding-success mo-js-wrapper" ng-if='false'>
+            <div class="mojs-wrapper" mo-js>
+                <a mo-js-child></a>
+                <div class="guru" ng-include="img_base + 'templates/svg/guru-success.html'"></div>
+            </div>
+            <h1>Congrats!</h1>
+            <h2>Your Account is Ready</h2>
+            <button class="btn-ghost-white">Take Me to My Dashboard</button>
+        </div>
+
+        <div id="next-steps-container" class="active" ng-if='false'>
+                <div id="next-steps">
+                    <div class="next-device">
+                        <svg class="splash-device-svg" viewBox="0 0 319 652">
+                            <path d="M2,42.0005693 C2,19.9088649 19.9096817,2 41.9948462,2 L277.005154,2 C299.093697,2 317,19.9012788 317,42.0005693 L317,609.999431 C317,632.091135 299.090318,650 277.005154,650 L41.9948462,650 C19.9063026,650 2,632.098721 2,609.999431 L2,42.0005693 Z M22,80 L298,80 L298,573 L22,573 L22,80 Z" fill="none" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3"></path>
+                            <circle stroke="#F0E0D0" stroke-width="3" fill="none" cx="159" cy="611" r="25"></circle>
+                        </svg>
+                    </div>
+                    <div class="next-content">
+                        <div class="next-guru">
+                            <div class="splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+                            <svg class="coach-next-steps" width="114px" height="98px" viewBox="0 0 228 196">
+                                 <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
+                                 <text transform="translate(113.612466, 96.294134) rotate(20.000000) translate(-113.612466, -96.294134) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+                                      <tspan x="35.612466" y="95.2941336">so what’s</tspan>
+                                      <tspan x="69.112466" y="135.294134">next?</tspan>
+                                 </text>
+                            </svg>
+                        </div>
+                        <ol>
+                            <li class="active"><span>Explore by changing categories or universities</span></li>
+                            <li><span>Learn more</span></li>
+                            <li><span>Start your profile</span></li>
+                            <li><span>Try those madlibs again</span></li>
+                            <li><span>Refresh that craziness</span></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
     </main>
 </div>

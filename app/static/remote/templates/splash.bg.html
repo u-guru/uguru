@@ -1,228 +1,89 @@
-
-    <div id='become-guru' class='hide activate bg-subheader-nav-content main splash-postit' class-on-activate="show:inject#become-guru [class-on-activate]|activate">
-        <header>
-            <h1 class="become-guru-header opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="400">{{::become_guru.header}}</h1>
-        </header>
-        <div class='main'>
-            <div class="mobile-postits">
-                <ul class="mobile-postit-list">
-                    <li class="active">
-                        <div>
-                            <span ng-include="::img_base + 'templates/svg/splash/profile.html'"></span>
-                            <h1>Full Stack Profile</h1>
-                            <p>A platform where you come first. Complete control over your profile.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <span ng-include="::img_base + 'templates/svg/splash/promotion.html'"></span>
-                            <h1 ng-bind-html="::become_guru.top_half[1].header"></h1>
-                            <p ng-bind-html="::become_guru.top_half[1].content"></p>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <span ng-include="::img_base + 'templates/svg/splash/payment.html'"></span>
-                            <h1 ng-bind-html="::become_guru.top_half[2].header"></h1>
-                            <p ng-bind-html="::become_guru.top_half[2].content"></p>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <span ng-include="::img_base + 'templates/svg/splash/skills.html'"></span>
-                            <h1 ng-bind-html="::become_guru.top_half[3].header"></h1>
-                            <p ng-bind-html="::become_guru.top_half[3].content"></p>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <span ng-include="::img_base + 'templates/svg/splash/fees.html'"></span>
-                            <h1 ng-bind-html="::become_guru.top_half[4].header"></h1>
-                            <p ng-bind-html="::become_guru.top_half[4].content"></p>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <span ng-include="::img_base + 'templates/svg/splash/pajamas.html'"></span>
-                            <h1 ng-bind-html="::become_guru.top_half[5].header"></h1>
-                            <p ng-bind-html="::become_guru.top_half[5].content"></p>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="mobile-postit-thumbs">
-                    <li class="active">
-                        <div>
-                            <span ng-include="::img_base + 'templates/svg/splash/profile.html'"></span>
-                            <h1>Lorem Ipsum</h1>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <span ng-include="::img_base + 'templates/svg/splash/promotion.html'"></span>
-                            <h1>Lorem Ipsum</h1>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <span ng-include="::img_base + 'templates/svg/splash/payment.html'"></span>
-                            <h1>Lorem Ipsum</h1>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <span ng-include="::img_base + 'templates/svg/splash/skills.html'"></span>
-                            <h1>Lorem Ipsum</h1>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <span ng-include="::img_base + 'templates/svg/splash/fees.html'"></span>
-                            <h1>Lorem Ipsum</h1>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <span ng-include="::img_base + 'templates/svg/splash/pajamas.html'"></span>
-                            <h1>Lorem Ipsum</h1>
-                        </div>
-                    </li>
-                </ul>
+<header>
+    <h1>{{bg.header}}</h1>
+</header>
+<div class="main">
+    <div class="bg-scene">
+        <div class="bg-scene-1 bg-single-scene active-scene activate opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
+            <div class='flex-wrap-center full-xy'>
+                Scene 1
             </div>
-            <ul class="desktop-postit-list">
-                <!-- top become guru slides-->
-                <li class='bg-postit-li opacity-0' class-on-activate="bounceInLeft:anim" class-on-activate-delay="800">
-                    <div>
-                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
-                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                        </svg>
-                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
-                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                        </svg>
-                         <div class="postit">
-                            <svg class="square" viewBox="0 0 100 100">
-                                <rect x="0" y="0" width="100" height="100"></rect>
-                            </svg>
-                            <div>
-                                <div>
-                                    <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/profile.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1200"></span>
-                                    <h1 ng-bind-html="::become_guru.top_half[0].header"></h1>
-                                    <p ng-bind-html="::become_guru.top_half[0].content"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class='bg-postit-li opacity-0' class-on-activate="bounceInDown:anim" class-on-activate-delay="500">
-                    <div>
-                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
-                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                        </svg>
-                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
-                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                        </svg>
-                         <div class="postit">
-                            <svg class="square" viewBox="0 0 100 100">
-                                <rect x="0" y="0" width="100" height="100"></rect>
-                            </svg>
-                            <div>
-                                <div>
-                                    <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/promotion.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="900"></span>
-                                    <h1 ng-bind-html="::become_guru.top_half[1].header"></h1>
-                                    <p ng-bind-html="::become_guru.top_half[1].content"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class='bg-postit-li opacity-0' class-on-activate="bounceInRight:anim" class-on-activate-delay="900">
-                    <div>
-                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
-                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                        </svg>
-                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
-                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                        </svg>
-                         <div class="postit">
-                            <svg class="square" viewBox="0 0 100 100">
-                                <rect x="0" y="0" width="100" height="100"></rect>
-                            </svg>
-                            <div>
-                                <div>
-                                    <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/payment.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1300"></span>
-                                    <h1 ng-bind-html="::become_guru.top_half[2].header"></h1>
-                                    <p ng-bind-html="::become_guru.top_half[2].content"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- bottom become guru slides-->
-                <li class='postit-li opacity-0' class-on-activate="bounceInLeft:anim" class-on-activate-delay="700">
-                    <div>
-                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
-                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                        </svg>
-                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
-                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                        </svg>
-                         <div class="postit">
-                            <svg class="square" viewBox="0 0 100 100">
-                                <rect x="0" y="0" width="100" height="100"></rect>
-                            </svg>
-                            <div>
-                                <div>
-                                    <span class="bg-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/skills.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1000"></span>
-                                    <h1 ng-bind-html="::become_guru.bottom_half[0].header"></h1>
-                                    <p ng-bind-html="::become_guru.bottom_half[0].content"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class='bg-postit-li opacity-0' class-on-activate="bounceInUp:anim" class-on-activate-delay="1000">
-                    <div>
-                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
-                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                        </svg>
-                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
-                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                        </svg>
-                         <div class="postit">
-                            <svg class="square" viewBox="0 0 100 100">
-                                <rect x="0" y="0" width="100" height="100"></rect>
-                            </svg>
-                            <div>
-                                <div>
-                                    <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/fees.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1400"></span>
-                                    <h1 ng-bind-html="::become_guru.bottom_half[1].header"></h1>
-                                    <p ng-bind-html="::become_guru.bottom_half[1].content"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class='bg-postit-li opacity-0' class-on-activate="bounceInRight:anim" class-on-activate-delay="600">
-                    <div>
-                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
-                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                        </svg>
-                        <svg class="tape" viewBox="0 0 200 650" class-on-activate="fadeIn:anim" class-on-activate-delay="2000">
-                            <path d="M200,0 L175,50 L150,0 L125,50 L100,0 L75,50 L50,0 L25,50 L0,0 L0,650 L25,600 L50,650 L75,600 L100,650 L125,600 L150,650 L175,600 L200,650 L200,0 Z" fill="#FFFFFF"></path>
-                        </svg>
-                         <div class="postit">
-                            <svg class="square" viewBox="0 0 100 100">
-                                <rect x="0" y="0" width="100" height="100"></rect>
-                            </svg>
-                            <div>
-                                <div>
-                                    <span class="postit-icon opacity-0" ng-include="::img_base + 'templates/svg/splash/pajamas.html'" class-on-activate="bounceIn:anim" class-on-activate-delay="1000"></span>
-                                    <h1 ng-bind-html="::become_guru.bottom_half[2].header"></h1>
-                                    <p ng-bind-html="::become_guru.bottom_half[2].content"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
         </div>
+        <div class="bg-scene-2 bg-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
+            <div class='flex-wrap-center full-xy'>
+                Scene 2
+            </div>
+        </div>
+        <div class="bg-scene-3 bg-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
+            <div class='flex-wrap-center full-xy'>
+                Scene 3
+            </div>
+        </div>
+        <div class="bg-scene-4 bg-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
+            <div class='flex-wrap-center full-xy'>
+                Scene 4
+            </div>
+        </div>
+        <div class="bg-scene-5 bg-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
+            <div class='flex-wrap-center full-xy'>
+                Scene 5
+            </div>
+        </div>
+        <div class="bg-scene-6 bg-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
+            <div class='flex-wrap-center full-xy'>
+                Scene 6
+            </div>
+        </div>
+        <div class="bg-scene-7 bg-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
+            <div class='flex-wrap-center full-xy'>
+                Scene 7
+            </div>
+        </div>
+        <div class="bg-scene-8 bg-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
+            <div class='flex-wrap-center full-xy'>
+                Scene 8
+            </div>
+        </div>
+    </div>
+    <ul class="bg-props active">
+        <li>
+            <a ng-click='switchToBgScene(1)'>
+                <h1>No earning<br/>limits</h1>
+            </a>
+        </li>
+        <li>
+            <a ng-click='switchToBgScene(2)'>
+                <h1>Work anytime<br/>anyplace</h1>
+            </a>
+        </li>
+        <li>
+            <a ng-click='switchToBgScene(3)'>
+                <h1>Add Courses<br/>You've Aced</h1>
+            </a>
+        </li>
+        <li>
+            <a ng-click='switchToBgScene(4)'>
+                <h1>Accept Requests<br/>Instantly</h1>
+            </a>
+        </li>
+        <li>
+            <a ng-click='switchToBgScene(5)'>
+                <h1>Free Marketing<br/>& Promo Kit</h1>
+            </a>
+        </li>
+        <li>
+            <a ng-click='switchToBgScene(6)'>
+                <h1>Earnings<br/>direct to Bank</h1>
+            </a>
+        </li>
+        <li>
+            <a ng-click='switchToBgScene(7)'>
+                <h1>Compete And <br/> Become #1 </h1>
+            </a>
+        </li>
+        <li>
+            <a ng-click='switchToBgScene(8)'>
+                <h1>Several Profiles <br/> Many Skills </h1>
+            </a>
+        </li>
+    </ul>
+</div>

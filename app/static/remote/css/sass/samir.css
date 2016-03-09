@@ -1634,4 +1634,9 @@ header#home-nav-header.splash-header,
     transform: scale3d(1, 1, 1);
     display: block !important; }
 
+#draw-path-demo svg {
+  fill: #2B3234; }
+  #draw-path-demo svg path {
+    stroke: #2B3234; }
+
 /*# sourceMappingURL=samir.css.map */
