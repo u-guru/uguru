@@ -5183,6 +5183,9 @@
 				height: 100%;
 				overflow: hidden;
 			}
+			.active-scene {
+				z-index: 10;
+			}
 			.how-scene-6 {
 				svg {
 					@include center-x;
@@ -5600,6 +5603,7 @@
 			@include flex-wrap;
 			@include flex-center;
 			position: absolute;
+			z-index: 11;
 			bottom: 0;
 			left: 0;
 			width: 100%;
@@ -5728,8 +5732,6 @@
 				}
 				.how-scene-1 {
 					svg {
-						top: auto;
-						bottom: 178px;
 						&[class*="mobile"] {
 							display: none;
 						}
@@ -5758,53 +5760,55 @@
 
 /// SCENES ///
 // open 24/7
-.hiw-open-24-7-active, .hiw-open-24-7-active-mobile {
-	.open-now {
-		@include prefix(animation, 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards, webkit moz ms o);
-	}
-	.clock {
-		.minute-hand {
-			@include prefix(animation, 2000ms hiw-open-24-7-minute-hand ease-in 500ms infinite forwards, webkit moz ms o);
-			@include prefix(transform-origin, 50% 100%, webkit moz ms o);
+.active-scene {
+	.hiw-open-24-7-active, .hiw-open-24-7-active-mobile {
+		.open-now {
+			@include prefix(animation, 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards, webkit moz ms o);
 		}
-		.hour-hand {
-			@include prefix(transform-origin, 0% 50%, webkit moz ms o);
-			@include prefix(animation, 12000ms hiw-open-24-7-hour-hand 2000ms ease-in infinite forwards, webkit moz ms o);
+		.clock {
+			.minute-hand {
+				@include prefix(animation, 2000ms hiw-minute-hand ease-in 500ms infinite forwards, webkit moz ms o);
+				@include prefix(transform-origin, 50% 100%, webkit moz ms o);
+			}
+			.hour-hand {
+				@include prefix(transform-origin, 0% 50%, webkit moz ms o);
+				@include prefix(animation, 12000ms hiw-hour-hand 2000ms ease-in infinite forwards, webkit moz ms o);
+			}
 		}
-	}
-	.outside-day {
-		@include prefix(animation, 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards, webkit moz ms o);
-		.sun {
-			@include prefix(transform, translateY(0), webkit moz ms o);
-			@include prefix(animation, 12000ms hiw-open-24-7-sun-shift 2000ms ease-in infinite forwards, webkit moz ms o);
+		.outside-day {
+			@include prefix(animation, 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards, webkit moz ms o);
+			.sun {
+				@include prefix(transform, translateY(0), webkit moz ms o);
+				@include prefix(animation, 12000ms hiw-open-24-7-sun-shift 2000ms ease-in infinite forwards, webkit moz ms o);
+			}
 		}
-	}
-	.outside-night {
-		.moon, .crater {
-			@include prefix(transform, translateY(20px), webkit moz ms o);
-			@include prefix(animation, 12000ms hiw-open-24-7-moon-shift 2000ms ease-in infinite forwards, webkit moz ms o);
-		}
-		polygon[class*="star-"] {
-			@include prefix(transform, scale(0), webkit moz ms o);
-			@include prefix(transform-origin, 50% 50%, webkit moz ms o);
-			@include prefix(animation, 12000ms hiw-open-24-7-star-scale 2000ms ease-in infinite forwards, webkit moz ms o);
-			&.star-1, &.star-7, &.star-8, &.star-19 {
-				@include prefix(animation-delay, 2200ms, webkit moz ms o);
+		.outside-night {
+			.moon, .crater {
+				@include prefix(transform, translateY(20px), webkit moz ms o);
+				@include prefix(animation, 12000ms hiw-open-24-7-moon-shift 2000ms ease-in infinite forwards, webkit moz ms o);
 			}
-			&.star-2, &.star-9, &.star-10, &.star-20 {
-				@include prefix(animation-delay, 2400ms, webkit moz ms o);
-			}
-			&.star-3, &.star-11, &.star-12, &.star-21 {
-				@include prefix(animation-delay, 2600ms, webkit moz ms o);
-			}
-			&.star-4, &.star-13, &.star-14, &.star-22 {
-				@include prefix(animation-delay, 2800ms, webkit moz ms o);
-			}
-			&.star-5, &.star-15, &.star-16, &.star-23 {
-				@include prefix(animation-delay, 3000ms, webkit moz ms o);
-			}
-			&.star-6, &.star-17, &.star-18, &.star-24 {
-				@include prefix(animation-delay, 3200ms, webkit moz ms o);
+			polygon[class*="star-"] {
+				@include prefix(transform, scale(0), webkit moz ms o);
+				@include prefix(transform-origin, 50% 50%, webkit moz ms o);
+				@include prefix(animation, 12000ms hiw-open-24-7-star-scale 2000ms ease-in infinite forwards, webkit moz ms o);
+				&.star-1, &.star-7, &.star-8, &.star-19 {
+					@include prefix(animation-delay, 2200ms, webkit moz ms o);
+				}
+				&.star-2, &.star-9, &.star-10, &.star-20 {
+					@include prefix(animation-delay, 2400ms, webkit moz ms o);
+				}
+				&.star-3, &.star-11, &.star-12, &.star-21 {
+					@include prefix(animation-delay, 2600ms, webkit moz ms o);
+				}
+				&.star-4, &.star-13, &.star-14, &.star-22 {
+					@include prefix(animation-delay, 2800ms, webkit moz ms o);
+				}
+				&.star-5, &.star-15, &.star-16, &.star-23 {
+					@include prefix(animation-delay, 3000ms, webkit moz ms o);
+				}
+				&.star-6, &.star-17, &.star-18, &.star-24 {
+					@include prefix(animation-delay, 3200ms, webkit moz ms o);
+				}
 			}
 		}
 	}
@@ -5905,10 +5909,10 @@ a:hover, a:focus {
 			fill: lighten($slate, 15%);
 		}
 		.minute-hand {
-			@include prefix(animation, 2000ms hiw-open-24-7-minute-hand ease-in 500ms infinite forwards, webkit moz ms o);
+			@include prefix(animation, 2000ms hiw-minute-hand ease-in 500ms infinite forwards, webkit moz ms o);
 		}
 		.hour-hand {
-			@include prefix(animation, 12000ms hiw-open-24-7-hour-hand 2000ms ease-in infinite forwards, webkit moz ms o);
+			@include prefix(animation, 12000ms hiw-hour-hand 2000ms ease-in infinite forwards, webkit moz ms o);
 		}
 	}
 	// affordable to all

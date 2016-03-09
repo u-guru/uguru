@@ -48,28 +48,28 @@
         </nav>
 		<div class="home-links">
             <ul>
+				<li>
+                    <a>
+                        <span ng-include="img_base + 'templates/svg/main/profile.html'"></span>
+                        <span>Profile</span>
+                    </a>
+                </li>
+				<li>
+                    <a>
+                        <span>${{user.total_earned || 0.0}}</span>
+                        <span>Earnings</span>
+                    </a>
+                </li>
+				<li>
+                    <a>
+                        <span ng-include="img_base + 'templates/svg/main/shield-star.html'"></span>
+                        <span>Credibility</span>
+                    </a>
+                </li>
                 <li>
                     <a ng-click='studentRequestModal.show()'>
                         <span ng-include="img_base + 'templates/svg/main/stats.html'"></span>
                         <span>Ranking</span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span>{{user.total_earned || 0.0}}</span>
-                        <span>Earnings</span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span ng-include="img_base + 'templates/svg/main/lightbulb.html'"></span>
-                        <span>Quick Solver</span>
-                    </a>
-                </li>
-                <li>
-                    <a ng-click='studentCoursesModal.show();'>
-                        <span ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
-                        <span>Add Courses</span>
                     </a>
                 </li>
             </ul>
