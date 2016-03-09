@@ -70,6 +70,14 @@
 		@include prefix(transform, translateY(1%), webkit moz ms o);
 	}
 }
+@include keyframes(hiw-conveyor-belt) {
+	0% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 30000;
+	}
+}
 
 // affordable to all
 @include keyframes(dollar-1-hover) {
@@ -290,7 +298,6 @@
 		@include opacity(0)
 	}
 }
-
 @include keyframes(hiw-open-24-7-star-scale) {
 	0%, 8.33%, 16.66%, 24.99%, 30.32% {
 		@include prefix(transform, scale(0), webkit moz ms o);
@@ -302,7 +309,6 @@
 		@include prefix(transform, scale(0), webkit moz ms o);
 	}
 }
-
 @include keyframes(hiw-open-24-7-day-shift) {
 	0%, 8.33%, 16.66%, 24.99% {
 		@include opacity(1);
@@ -314,7 +320,6 @@
 		@include opacity(1);
 	}
 }
-
 @include keyframes(hiw-open-24-7-sun-shift) {
 	0%, 8.33%, 16.66%, 24.99% {
 		@include prefix(transform, translateY(0), webkit moz ms o);
@@ -326,7 +331,6 @@
 		@include prefix(transform, translateY(0), webkit moz ms o);
 	}
 }
-
 @include keyframes(hiw-open-24-7-moon-shift) {
 	0%, 8.33%, 16.66%, 24.99% {
 		@include prefix(transform, translateY(20px), webkit moz ms o);
@@ -382,7 +386,6 @@
 		@include prefix(transform, rotate(360deg), webkit moz ms o);
 	}
 }
-
 @include keyframes(hiw-minute-hand) {
 	0% {
 		@include prefix(transform, rotate(0deg), webkit moz ms o);
@@ -401,7 +404,6 @@
 		stroke-width: 6px;
 	}
 }
-
 @include keyframes(hiw-line-right) {
 	0% {
 		@include prefix(transform, translate(-5px), webkit moz ms o);
@@ -412,7 +414,6 @@
 		stroke-width: 6px;
 	}
 }
-
 @include keyframes(hiw-line-left) {
 	0% {
 		@include prefix(transform, translate(5px), webkit moz ms o);
@@ -423,7 +424,6 @@
 		stroke-width: 6px;
 	}
 }
-
 @include keyframes(hiw-move-left) {
 	0% {
 		@include prefix(transform, scale(1) translateX(0), webkit moz ms o);
@@ -435,7 +435,6 @@
 		@include prefix(transform, translateX(-65px) scale(0.5), webkit moz ms o);
 	}
 }
-
 @include keyframes(hiw-move-right) {
 	0% {
 		@include prefix(transform, scale(1) translateX(0), webkit moz ms o);
@@ -449,12 +448,67 @@
 }
 
 // not just tutoring
-@include keyframes(hiw-conveyor-belt) {
+@include keyframes(hiw-beyond-tutoring-seam) {
 	0% {
-		stroke-dashoffset: 0;
+		stroke-dashoffset: 200;
+		@include opacity(0);
+	}
+	1%{
+		@include opacity(1);
 	}
 	100% {
-		stroke-dashoffset: 30000;
+		stroke-dashoffset: 0;
+		@include opacity(1);
+	}
+}
+
+@include keyframes(hiw-beyond-tutoring-cuffs) {
+	0% {
+		stroke-dashoffset: 52;
+		@include opacity(0);
+	}
+	1% {
+		@include opacity(1);
+	}
+	100% {
+		stroke-dashoffset: 0;
+		@include opacity(1);
+	}
+}
+
+@include keyframes(hiw-beyond-tutoring-garment) {
+	0% {
+		stroke-dashoffset: 470;
+		@include opacity(0);
+	} 
+	1% {
+		@include opacity(1);
+	}
+	100% {
+		stroke-dashoffset: 0;
+		@include opacity(1);
+	}
+}
+
+@include keyframes(hiw-beyond-tutoring-shirt) {
+	0% {
+		@include opacity(0);
+	}
+	50% {
+		@include opacity(0);
+	}
+	70%, 100% {
+		@include opacity(1);
+	}
+}
+
+@include keyframes(hiw-beyond-tutoring-academic) {
+	0% {
+		@include prefix(transform, scale(1), webkit moz ms o);
+	}
+	70%, 100% {
+		@include prefix(transform, scale(.33), webkit moz ms o);
+		stroke-width: 8px;
 	}
 }
 

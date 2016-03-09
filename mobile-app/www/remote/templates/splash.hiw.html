@@ -3,23 +3,22 @@
 </header>
 <div class="main">
     <div class="how-scene">
-        <div class="how-scene-1 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut" ng-include="::img_base + 'templates/hiw/1-open-24-7-scene.html'"></div>
-        <div class="how-scene-2 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
-            <div class="ugrid-2">
+        <div class="how-scene-1 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim, null:inject.hiw-open-24-7-active|activate, null:inject.hiw-open-24-7-active .draw|activate, null:inject.hiw-open-24-7-active .fade|activate" class-on-activate-delay="" class-on-clear="fadeOut:animOut" ng-include="::img_base + 'templates/hiw/1-open-24-7-scene.html'"></div>
+        <div class="how-scene-2 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim, null:inject.how-scene-2 .ugrid-2|activate" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
+            <div class="ugrid-2" class-on-activate="animate:keep">
                 <div>
-                    <div ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
-                    <div ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
-                    <div ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
-                    <div ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
-                    <div ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
-                    <div ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
-                    <div ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
-                    <div ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
+                    <div class="hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
+                    <div class="hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
+                    <div class="hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
+                    <div class="hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
+                    <div class="hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
+                    <div class="hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
+                    <div class="hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
                     <h1>Competitors</h1>
                     <h2>$50</h2>
                 </div>
                 <div>
-                    <div ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
+                    <div class="hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/2-affordable-to-all-component.html'"></div>
                     <h1>Uguru</h1>
                     <h2>$25</h2>
                 </div>
@@ -104,7 +103,8 @@
     <ul class="how-props active">
         <li>
             <a ng-click='switchToHiwScene(1)'>
-                <div class="hiw-open-container hiw-svg-container relative full-xy" activate-on-class='translate-active' class-on-activate-delay="2000" class-on-activate="bg-cerise:inject.hiw-open-24-7.block|bg-cerise-impt" translate-on-click-duration="2000" translate-on-click translate-to-elem='.hiw-open-24-7-active .clock .clock-ref' scale-x-on-click="1.5" scale-y-on-click="1.5" ng-include="::img_base + 'templates/hiw/1-open-24-7-hover.html'"></div>
+                <!-- <div class="hiw-open-container hiw-svg-container relative full-xy" activate-on-class='translate-active' class-on-activate-delay="2000" class-on-activate="bg-cerise:inject.hiw-open-24-7.block|bg-cerise-impt" translate-on-click-duration="2000" translate-on-click translate-to-elem='.hiw-open-24-7-active .clock .clock-ref' scale-x-on-click="1.5" scale-y-on-click="1.5" ng-include="::img_base + 'templates/hiw/1-open-24-7-hover.html'"></div> -->
+                <div class="hiw-open-container hiw-svg-container relative full-xy" ng-include="::img_base + 'templates/hiw/1-open-24-7-hover.html'"></div>
                 <h1>Open<br/>24/7</h1>
             </a>
         </li>
