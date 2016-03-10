@@ -78,6 +78,17 @@
 		stroke-dashoffset: 30000;
 	}
 }
+@include keyframes(subcat-move) {
+	0% {
+		@include prefix(transform, translate(0,0), webkit moz ms o);
+	}
+	0.5% {
+		@include prefix(transform, translate(0,253.24px), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translateY(-1600px,253.24px), webkit moz ms o);
+	}
+}
 
 // affordable to all
 @include keyframes(dollar-1-hover) {

@@ -5325,76 +5325,6 @@
 				}
 			}
 			.how-scene-3 {
-				.ugrid-5 {
-					li {
-						svg {
-							@include prefix(animation, 1000ms guru-hover linear infinite alternate forwards, webkit moz ms o);
-							.symbol {
-								@include opacity(0);
-							}
-						}
-						&:nth-child(1) svg {
-							@include prefix(animation-delay, 200ms, webkit moz ms o);
-							.shirt, .shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								stroke: darken($cerise, 20%);
-							}
-							.shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								fill: $cerise;
-							}
-							.academic.symbol {
-								@include opacity(1);
-							}
-						}
-						&:nth-child(2) svg {
-							@include prefix(animation-delay, 500ms, webkit moz ms o);
-							.shirt, .shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								stroke: darken($gold, 20%);
-							}
-							.shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								fill: $gold;
-							}
-							.baking.symbol {
-								@include opacity(1);
-							}
-						}
-						&:nth-child(3) svg {
-							@include prefix(animation-delay, 0ms, webkit moz ms o);
-							.shirt, .shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								stroke: darken($moola, 20%);
-							}
-							.shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								fill: $moola;
-							}
-							.photography.symbol {
-								@include opacity(1);
-							}
-						}
-						&:nth-child(4) svg {
-							@include prefix(animation-delay, 800ms, webkit moz ms o);
-							.shirt, .shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								stroke: darken(desaturate($cobalt, 20%), 20%);
-							}
-							.shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								fill: $cobalt;
-							}
-							.household.symbol {
-								@include opacity(1);
-							}
-						}
-						&:nth-child(5) svg {
-							@include prefix(animation-delay, 400ms, webkit moz ms o);
-							.shirt, .shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								stroke: darken($azure, 20%);
-							}
-							.shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								fill: $azure;
-							}
-							.tech.symbol {
-								@include opacity(1);
-							}
-						}
-					}
-				}
 				svg {
 					display: block;
 					position: absolute;
@@ -5403,12 +5333,20 @@
 					width: 100%;
 					height: auto;
 					max-height: 400px;
-					&.guru {
-						max-height: 300px;
+					.guru {
+						@include prefix(transition, all 300ms ease-in, webkit moz ms o);
 					}
-					&.conveyor {
-						@include center-x;
-						width: 800px;
+					.guru-academic {
+						@include prefix(transform, translateX(211.5%), webkit moz ms o);
+					}
+					.guru-baking {
+						@include prefix(transform, translateX(105.75%), webkit moz ms o);
+					}
+					.guru-household {
+						@include prefix(transform, translateX(-105.75%), webkit moz ms o);
+					}
+					.guru-tech {
+						@include prefix(transform, translateX(-211.5%), webkit moz ms o);
 					}
 				}
 			}
@@ -5767,8 +5705,19 @@
 
 // not just tutoring
 .active-scene {
+	&.how-scene-3 {
+		svg {
+			.guru-hover {
+				@include prefix(transform, translateX(0)!important, webkit moz ms o);
+				@include prefix(animation, 1000ms guru-hover linear infinite alternate forwards, webkit moz ms o);
+			}
+			.subcat-move-1 {
+				@include prefix(animation, 200000ms subcat-move linear infinite forwards, webkit moz ms o);
+			}
+		}
+	}
 	.conveyor {
-		@include prefix(animation, 600000ms hiw-conveyor-belt forwards, webkit moz ms o);
+		@include prefix(animation, 1200000ms hiw-conveyor-belt forwards, webkit moz ms o);
 	}
 }
 

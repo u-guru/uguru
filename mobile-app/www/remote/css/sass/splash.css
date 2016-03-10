@@ -7848,124 +7848,6 @@
   animation: 1000ms point-graph ease-in-out forwards;
 }
 
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li svg {
-  -webkit-animation: 1000ms guru-hover linear infinite alternate forwards;
-  -moz-animation: 1000ms guru-hover linear infinite alternate forwards;
-  -ms-animation: 1000ms guru-hover linear infinite alternate forwards;
-  -o-animation: 1000ms guru-hover linear infinite alternate forwards;
-  animation: 1000ms guru-hover linear infinite alternate forwards;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li svg .symbol {
-  filter: alpha(opacity=0);
-  opacity: 0;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(1) svg {
-  -webkit-animation-delay: 200ms;
-  -moz-animation-delay: 200ms;
-  -ms-animation-delay: 200ms;
-  -o-animation-delay: 200ms;
-  animation-delay: 200ms;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(1) svg .shirt, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(1) svg .shirt-sleeve-left, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(1) svg .shirt-sleeve-right, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(1) svg .shirt-bottom {
-  stroke: #a31566;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(1) svg .shirt-sleeve-left, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(1) svg .shirt-sleeve-right, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(1) svg .shirt-bottom {
-  fill: #e6389b;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(1) svg .academic.symbol {
-  filter: alpha(opacity=100);
-  opacity: 1;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(2) svg {
-  -webkit-animation-delay: 500ms;
-  -moz-animation-delay: 500ms;
-  -ms-animation-delay: 500ms;
-  -o-animation-delay: 500ms;
-  animation-delay: 500ms;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(2) svg .shirt, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(2) svg .shirt-sleeve-left, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(2) svg .shirt-sleeve-right, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(2) svg .shirt-bottom {
-  stroke: #d39a0b;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(2) svg .shirt-sleeve-left, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(2) svg .shirt-sleeve-right, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(2) svg .shirt-bottom {
-  fill: #F6C64E;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(2) svg .baking.symbol {
-  filter: alpha(opacity=100);
-  opacity: 1;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(3) svg {
-  -webkit-animation-delay: 0ms;
-  -moz-animation-delay: 0ms;
-  -ms-animation-delay: 0ms;
-  -o-animation-delay: 0ms;
-  animation-delay: 0ms;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(3) svg .shirt, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(3) svg .shirt-sleeve-left, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(3) svg .shirt-sleeve-right, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(3) svg .shirt-bottom {
-  stroke: #517a3b;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(3) svg .shirt-sleeve-left, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(3) svg .shirt-sleeve-right, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(3) svg .shirt-bottom {
-  fill: #81B566;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(3) svg .photography.symbol {
-  filter: alpha(opacity=100);
-  opacity: 1;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(4) svg {
-  -webkit-animation-delay: 800ms;
-  -moz-animation-delay: 800ms;
-  -ms-animation-delay: 800ms;
-  -o-animation-delay: 800ms;
-  animation-delay: 800ms;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(4) svg .shirt, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(4) svg .shirt-sleeve-left, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(4) svg .shirt-sleeve-right, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(4) svg .shirt-bottom {
-  stroke: #453fb0;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(4) svg .shirt-sleeve-left, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(4) svg .shirt-sleeve-right, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(4) svg .shirt-bottom {
-  fill: #7872e3;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(4) svg .household.symbol {
-  filter: alpha(opacity=100);
-  opacity: 1;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(5) svg {
-  -webkit-animation-delay: 400ms;
-  -moz-animation-delay: 400ms;
-  -ms-animation-delay: 400ms;
-  -o-animation-delay: 400ms;
-  animation-delay: 400ms;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(5) svg .shirt, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(5) svg .shirt-sleeve-left, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(5) svg .shirt-sleeve-right, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(5) svg .shirt-bottom {
-  stroke: #316875;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(5) svg .shirt-sleeve-left, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(5) svg .shirt-sleeve-right, #hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(5) svg .shirt-bottom {
-  fill: #55A4B7;
-}
-
-#hiw .main .how-scene .how-scene-3 .ugrid-5 li:nth-child(5) svg .tech.symbol {
-  filter: alpha(opacity=100);
-  opacity: 1;
-}
-
 #hiw .main .how-scene .how-scene-3 svg {
   display: block;
   position: absolute;
@@ -7976,19 +7858,44 @@
   max-height: 400px;
 }
 
-#hiw .main .how-scene .how-scene-3 svg.guru {
-  max-height: 300px;
+#hiw .main .how-scene .how-scene-3 svg .guru {
+  -webkit-transition: all 300ms ease-in;
+  -moz-transition: all 300ms ease-in;
+  -ms-transition: all 300ms ease-in;
+  -o-transition: all 300ms ease-in;
+  transition: all 300ms ease-in;
 }
 
-#hiw .main .how-scene .how-scene-3 svg.conveyor {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
-  width: 800px;
+#hiw .main .how-scene .how-scene-3 svg .guru-academic {
+  -webkit-transform: translateX(211.5%);
+  -moz-transform: translateX(211.5%);
+  -ms-transform: translateX(211.5%);
+  -o-transform: translateX(211.5%);
+  transform: translateX(211.5%);
+}
+
+#hiw .main .how-scene .how-scene-3 svg .guru-baking {
+  -webkit-transform: translateX(105.75%);
+  -moz-transform: translateX(105.75%);
+  -ms-transform: translateX(105.75%);
+  -o-transform: translateX(105.75%);
+  transform: translateX(105.75%);
+}
+
+#hiw .main .how-scene .how-scene-3 svg .guru-household {
+  -webkit-transform: translateX(-105.75%);
+  -moz-transform: translateX(-105.75%);
+  -ms-transform: translateX(-105.75%);
+  -o-transform: translateX(-105.75%);
+  transform: translateX(-105.75%);
+}
+
+#hiw .main .how-scene .how-scene-3 svg .guru-tech {
+  -webkit-transform: translateX(-211.5%);
+  -moz-transform: translateX(-211.5%);
+  -ms-transform: translateX(-211.5%);
+  -o-transform: translateX(-211.5%);
+  transform: translateX(-211.5%);
 }
 
 #hiw .main .how-scene .how-scene-2 {
@@ -8458,12 +8365,33 @@
   animation: 300ms dollar-8 forwards, 1000ms dollar-8-hover 300ms linear infinite alternate forwards;
 }
 
+.active-scene.how-scene-3 svg .guru-hover {
+  -webkit-transform: translateX(0) !important;
+  -moz-transform: translateX(0) !important;
+  -ms-transform: translateX(0) !important;
+  -o-transform: translateX(0) !important;
+  transform: translateX(0) !important;
+  -webkit-animation: 1000ms guru-hover linear infinite alternate forwards;
+  -moz-animation: 1000ms guru-hover linear infinite alternate forwards;
+  -ms-animation: 1000ms guru-hover linear infinite alternate forwards;
+  -o-animation: 1000ms guru-hover linear infinite alternate forwards;
+  animation: 1000ms guru-hover linear infinite alternate forwards;
+}
+
+.active-scene.how-scene-3 svg .subcat-move-1 {
+  -webkit-animation: 200000ms subcat-move linear infinite forwards;
+  -moz-animation: 200000ms subcat-move linear infinite forwards;
+  -ms-animation: 200000ms subcat-move linear infinite forwards;
+  -o-animation: 200000ms subcat-move linear infinite forwards;
+  animation: 200000ms subcat-move linear infinite forwards;
+}
+
 .active-scene .conveyor {
-  -webkit-animation: 600000ms hiw-conveyor-belt forwards;
-  -moz-animation: 600000ms hiw-conveyor-belt forwards;
-  -ms-animation: 600000ms hiw-conveyor-belt forwards;
-  -o-animation: 600000ms hiw-conveyor-belt forwards;
-  animation: 600000ms hiw-conveyor-belt forwards;
+  -webkit-animation: 1200000ms hiw-conveyor-belt forwards;
+  -moz-animation: 1200000ms hiw-conveyor-belt forwards;
+  -ms-animation: 1200000ms hiw-conveyor-belt forwards;
+  -o-animation: 1200000ms hiw-conveyor-belt forwards;
+  animation: 1200000ms hiw-conveyor-belt forwards;
 }
 
 .active-scene .graph-desktop .point {

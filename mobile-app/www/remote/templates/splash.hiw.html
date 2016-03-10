@@ -24,16 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="how-scene-3 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
-            <ul class="ugrid-5">
-                <li ng-include="::img_base + 'templates/hiw/3-not-just-tutoring-guru.html'"></li>
-                <li ng-include="::img_base + 'templates/hiw/3-not-just-tutoring-guru.html'"></li>
-                <li ng-include="::img_base + 'templates/hiw/3-not-just-tutoring-guru.html'"></li>
-                <li ng-include="::img_base + 'templates/hiw/3-not-just-tutoring-guru.html'"></li>
-                <li ng-include="::img_base + 'templates/hiw/3-not-just-tutoring-guru.html'"></li>
-            </ul>
-            <div ng-include="::img_base + 'templates/hiw/3-not-just-tutoring-conveyor.html'"></div>
-        </div>
+        <div class="how-scene-3 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim, null:inject.how-scene-3 .guru|activate, null:inject.how-scene-3 .subcats|activate" class-on-activate-delay="" class-on-clear="fadeOut:animOut" ng-include="::img_base + 'templates/hiw/3-not-just-tutoring-scene.html'"></div>
         <div class="how-scene-4 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut" ng-include="::img_base + 'templates/hiw/4-instant-and-in-person-scene.html'"></div>
         <div class="how-scene-5 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
             <div class="opacity-0" ng-include="::img_base + 'templates/hiw/5-student-run-placeholder.html'"></div>
