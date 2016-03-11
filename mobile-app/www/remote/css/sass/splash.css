@@ -640,7 +640,9 @@
         height: 100%; }
     .splash-landing .splash-header .splash-logo {
       height: 50px !important;
-      margin: 5px; }
+      margin: 5px;
+      padding: 2px;
+      width: inherit; }
   @media screen and (min-width: 860px) {
     .splash-landing .splash-header {
       height: 70px; }
@@ -1077,7 +1079,8 @@
         width: 100%; }
         .splash-landing .splash-sidebar-full .splash-sidebar-menu header .splash-logo {
           height: 50px !important;
-          margin: 5px; }
+          margin: 5px;
+          width: inherit; }
       .splash-landing .splash-sidebar-full .splash-sidebar-menu div {
         width: 100%; }
       .splash-landing .splash-sidebar-full .splash-sidebar-menu ul {
@@ -1324,7 +1327,7 @@
         -webkit-justify-content: space-between;
         justify-content: space-between;
         height: 50px !important;
-        width: 100%; }
+        width: inherit; }
         @media screen and (min-width: 860px) {
           .splash-landing > section.splash-hero .splash-header {
             height: 70px !important; } }
@@ -2795,10 +2798,6 @@
           flex-direction: column;
           height: 250px; } }
       @media screen and (min-width: 768px) {
-        .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:first-child {
-          right: 10%;
-          margin-right: 0;
-          bottom: 10%; }
         .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:last-child {
           display: none; }
         .splash-landing > section.splash-hero .splash-hero-markers .splash-hero-marker:not(.splash-hero-marker-mobile) {

@@ -1,4 +1,4 @@
-<div class='relative' style='height:calc(100%); width:calc(100%); overflow:hidden !important;' eval-on-load="onLoad()">
+<div class='relative' style='height:calc(100%); width:calc(100%);' eval-on-load="onLoad()" ng-class="{'overflow-inherit': !desktopMode && root.vars.showSidebarOneProjector}">
     <!-- @gabrielle, do not not remove  init-wp-parent -->
     <main id='home-splash' init-wp-parent class='splash-landing new hs-view full-xy' style="height:calc(200% !important); width:calc(100%) !important;" bind-wp="s1_top">
         <ion-pane style='z-index:1001;' id='cta-modal-sidebar' class='full-xy hide-display cta-modal bg-charcoal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
@@ -32,7 +32,7 @@
 
         <section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" parallax-parent="p1" parallax-relative-input="false" parallax-clip-relative-input="false" parallax-calibration-threshold="100" parallax-calibration-delay="500" parallax-support-delay="500" parallax-calibrate-x="false" parallax-calibrate-y="true" parallax-invert-x="true" parallax-invert-y="true" parallax-limit-x="false" parallax-limit-y="false" parallax-scalar-x="5.0" parallax-scalar-y="5.0" parallax-friction-x="0.1" parallax-friction-y="0.1" parallax-origin-x="0.5" parallax-origin-y="0.5" style='z-index:10;'>
             <header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
-                <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ></a>
+                <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ng-class="{'m10xy absolute left-0 top-0':!desktopMode}"></a>
                 <div class="right">
                     <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()'>
                         <!-- @gabrielle whats this? If you dont know delete below-->
@@ -754,7 +754,7 @@
                     </div>
                 </div>
 
-                <div id='swiper-gallery-tab' class="swiper-container swiper-front-gallery-thumbs tab-bar slide" activate-on-class="a" class-on-activate="active:keep, null:inject.slideshow-thumb-1|activate, null:inject.slideshow-thumb-2|activate, null:inject.slideshow-thumb-3|activate"  ng-show='!page.swipers.galleryIndex'>
+                <div id='swiper-gallery-tab' ng-class="{'hide':singleProjectorActivate || showSidebarOneProjector || root.vars.showSidebarOneProjector}" class="swiper-container swiper-front-gallery-thumbs tab-bar slide" activate-on-class="a" class-on-activate="active:keep, null:inject.slideshow-thumb-1|activate, null:inject.slideshow-thumb-2|activate, null:inject.slideshow-thumb-3|activate"  ng-show='!page.swipers.galleryIndex'>
                     <div class="swiper-wrapper swiper-gallery-wrapper" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
                         <a class="swiper-slide third" ng-click='page.swipers.main.slideTo(0)' ng-class="{'active':!page.swipers.main.activeIndex}">How It<br/>Works</a>
                         <a class="swiper-slide third" ng-click='page.swipers.main.slideTo(1)' ng-class="{'active':page.swipers.main.activeIndex === 1}">Become<br/>A Guru</a>

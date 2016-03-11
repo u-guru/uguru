@@ -38,6 +38,64 @@ angular.module('uguru.directives')
       }
     };
 })
+.directive('preBg', function () {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attr) {
+            attr.$observe('bgImage', function() {
+              if (!attr.bgImage) {
+                 // No attribute specified, so use default
+                 element.css("background-image","url("+scope.defaultImage+")");
+              } else {
+                 var image = new Image();
+                 image.src = attr.bgImage;
+                 image.onload = function() {
+                    element.css("background-image","url("+attr.bgImage+")");
+                    scope.$apply(attr.bgImageHasLoaded);
+                 };
+                 image.onerror = function() {
+                    //Image failed to load- use default
+                    element.css("background-image","url("+scope.defaultImage+")");
+                 };
+             }
+         });
+      }
+    };
+})
+.directive('postBg', function () {
+     return {
+      restrict: 'A',
+      link: function(scope, element, attr) {
+          scope.$watch(function() {
+            return element.attr('class');
+          }, function() {
+
+            if (element[0].classList.contains('activate') || ('activatePostBgOnClass' in attr && element[0].classList.contains(attr.activatePostBgOnClass) > -1)) {
+              console.log('it works', element[0].nodeName);
+              var elementOpacity = parseFloat(attr.postBgOpacity) || 1;
+              var elementNodeName = element[0].nodeName;
+              element[0].style.transition = 'all 150ms ease-in-out';
+              if (attr.postBg.indexOf('#') > -1) {
+                // if svg
+                if (['circle', 'rect', 'polygon', 'path', 'line'].indexOf(elementNodeName.toLowerCase()) > -1) {
+                  element[0].style.fill = attr.postBg;
+                } else {
+                  element[0].style.backgroundColor = attr.postBg;
+                }
+                element[0].style.opacity = elementOpacity;
+              } else {
+                var elemFill = 'rgba("' + (attr.postBg || '#FFFFFF')  + ',' + elementOpacity + '")'
+                 if (['circle', 'rect', 'polygon', 'path', 'line'].indexOf(elementNodeName.toLowerCase())) {
+                    console.log(elemFill);
+                    element[0].style.fill = elemFill;
+                  }
+                console.log(element[0].style);
+              }
+            }
+          })
+        }
+      }
+})
 .directive('draw', ['$timeout', 'SVGService', function ($timeout, SVGService) {
   return {
     restrict: 'A',

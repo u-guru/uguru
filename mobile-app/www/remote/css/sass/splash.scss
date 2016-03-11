@@ -455,6 +455,8 @@
 		.splash-logo {
 			height: 50px!important;
 			margin: 5px;
+			padding:2px;
+			width:inherit;
 		}
 	}
 	@media screen and (min-width: 860px) {
@@ -761,6 +763,7 @@
 				.splash-logo {
 					height: 50px!important;
     				margin: 5px;
+    				width:inherit;
 				}
 			}
 			div {
@@ -974,7 +977,8 @@
 			.splash-header {
 				@include prefix(justify-content, space-between, webkit);
 				height: 50px!important;
-				width: 100%;
+				// width: 100%;
+				width:inherit;
 				@media screen and (min-width: 860px) {
 					height: 70px!important;
 				}
