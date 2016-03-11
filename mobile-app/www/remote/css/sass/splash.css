@@ -7595,6 +7595,85 @@
 }
 
 /* ---------- HOW IT WORKS */
+.circle-nav ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.circle-nav ul li {
+  width: 130px;
+  padding: 15px;
+}
+
+.circle-nav ul li a {
+  display: block;
+}
+
+.circle-nav ul li a svg {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  display: block;
+  width: 100%;
+}
+
+.circle-nav ul li a svg * {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.circle-nav ul li a h1 {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  padding-top: 5px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.circle-nav ul li a:hover, .circle-nav ul li a:focus, .circle-nav ul li a:active, .circle-nav ul li a.active-circle {
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  -ms-transform: scale(1.25);
+  -o-transform: scale(1.25);
+  transform: scale(1.25);
+}
+
+.circle-nav ul li a:hover svg .bg-slate, .circle-nav ul li a:hover svg .fade, .circle-nav ul li a:focus svg .bg-slate, .circle-nav ul li a:focus svg .fade, .circle-nav ul li a:active svg .bg-slate, .circle-nav ul li a:active svg .fade, .circle-nav ul li a.active-circle svg .bg-slate, .circle-nav ul li a.active-circle svg .fade {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.circle-nav ul li a:hover h1, .circle-nav ul li a:focus h1, .circle-nav ul li a:active h1, .circle-nav ul li a.active-circle h1 {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
 #hiw {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -7972,6 +8051,14 @@
 
 #hiw .main .how-scene .how-scene-1 svg:not([class*="mobile"]) {
   display: none;
+}
+
+#hiw .main .circle-nav {
+  position: absolute;
+  z-index: 11;
+  bottom: -115px;
+  left: 0;
+  width: 100%;
 }
 
 #hiw .main .how-props {

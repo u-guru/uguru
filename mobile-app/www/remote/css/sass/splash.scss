@@ -5167,6 +5167,48 @@
 
 /* ---------- HOW IT WORKS */
 /// HTML ///
+.circle-nav {
+	ul {
+		@include flex;
+		@include flex-center;
+		padding: 15px;
+		li {
+			width: 130px;
+			padding: 15px;
+			a {
+				display: block;
+				svg {
+					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+					display: block;
+					width: 100%;
+					* {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+					}
+				}
+				h1 {
+					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+					@include opacity(0);
+					padding-top: 5px;
+					width: 100%;
+					font-size: 14px;
+					font-weight: 600;
+					text-align: center;
+				}
+				&:hover, &:focus, &:active, &.active-circle {
+					@include prefix(transform, scale(1.25), webkit moz ms o);
+					svg {
+						.bg-slate, .fade {
+							@include opacity(0);
+						}
+					}
+					h1 {
+						@include opacity(1);
+					}
+				}
+			}
+		}
+	}
+}
 #hiw {
 	@include flex;
 	@include flex-wrap;
@@ -5406,6 +5448,13 @@
 					}
 				}
 			}
+		}
+		.circle-nav {
+			position: absolute;
+			z-index: 11;
+			bottom: -115px;
+			left: 0;
+			width: 100%;
 		}
 		.how-props {
 			@include flex;
