@@ -109,7 +109,7 @@
                 }
                 return 'Android';
               }
-            else if ( !(userAgent.toLowerCase().indexOf('safari') > -1) )
+            else if ((!(userAgent.toLowerCase().indexOf('firefox') > -1) && !(userAgent.toLowerCase().indexOf('safari') > -1)) || userAgent.indexOf('iPad') > 0 )
               {
                 console.log('woohoo ios');
                 injectJs('ios.cordova_plugins.js');

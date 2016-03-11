@@ -26,7 +26,7 @@ WINDOWS = null;
                 }
                 return 'Android';
               }
-            else if ( !(userAgent.toLowerCase().indexOf('safari') > -1) || userAgent.indexOf('iPad') > 0 )
+            else if ((!(userAgent.toLowerCase().indexOf('Firefox') > -1) && !(userAgent.toLowerCase().indexOf('safari') > -1)) || userAgent.indexOf('iPad') > 0 )
               {
 
                 injectJs('ios.cordova_plugins.js');

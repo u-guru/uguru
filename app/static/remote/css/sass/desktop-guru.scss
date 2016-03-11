@@ -40,286 +40,32 @@
 			.home-tiles-top {
 				.home-tiles-daily {
 					width: calc(100% - 320px);
-					padding-right: 15px;
 					height: 100%;
-					> div {
-						background: $charcoal;
-						h1 {
-							color: $shamrock;
-							text-align: center;
-							&:after {
-								background: rgba($shamrock, .3);
+					.home-ticket-content {
+						border: 3px solid $shamrock;
+						background: $slate;
+						.home-ticket-inside {
+							.home-ticket-icon {
+								svg {
+									*[stroke="#000000"] {
+										stroke: white!important;
+									}
+								}
 							}
 						}
-						.home-tiles-upcoming {
-							@include flex;
-							overflow-x: auto;
-							padding: 7.5px;
-							height: calc(100% - 63px);
-							> li {
-								width: 25%;
-								height: 100%;
-								min-width: 300px;
-								padding: 7.5px;
-								&:last-child {
-									padding-right: 15px;
-								}
-								> div {
-									background: lighten($slate, 5%);
-									height: 100%;
-									border: 2px solid $shamrock;
-									border-radius: 2px;
-									header {
-										@include flex;
-										@include flex-center;
-										background: $shamrock;
-										> span {
-											display: block;
-											margin-left: -14px;
-										}
-										svg {
-											display: block;
-											width: 50px;
-											height: 50px;
-											padding: 5px;
-											* {
-												@include svg-stroke(white, 4);
-											}
-										}
-										h2 {
-											font-size: 20px;
-											font-weight: 600;
-											text-align: center;
-										}
-									}
-									> div {
-										position: relative;
-										@include flex;
-										@include flex-wrap;
-										position: relative;
-										padding: 15px 15px 65px;
-										height: calc(100% - 50px);
-										font-size: 18px;
-										font-weight: 400;
-										line-height: 1.2;
-										text-align: center;
-										> div {
-											width: 100%;
-											padding: 15px;
-										}
-										ul {
-											text-align: left;
-											li {
-												padding-bottom: 10px;
-											}
-										}
-										h3 {
-											width: 100%;
-											font-size: 28px;
-											font-weight: 600;
-										}
-										progress, .progress {
-											@include round;
-											overflow: hidden;
-											margin: 15px 0;
-											width: 100%;
-											height: 15px;
-											&::-webkit-progress-value, span {
-												@include round;
-											}
-											&::-moz-progress-bar {
-												@include round;
-											}
-										}
-										button {
-											@include center-x;
-											bottom: 15px;
-										}
-									}
-								}
-								&.event-ranking {
-									> div {
-										> div {
-											padding-bottom: 15px;
-											svg {
-												@include prefix(transform, scale(.75), webkit moz ms o);
-												path {
-													stroke-linecap: round;
-												}
-											}
-											#percentile {
-						                        @include center-xy;
-						                        #percentile-ranking {
-						                            position: relative;
-						                            font-size: 64px;
-						                            font-weight: 600;
-						                            line-height: 1;
-						                            &:after {
-						                                content: "th";
-						                                display: block;
-						                                position: absolute;
-						                                top: 5px;
-						                                right: -5px;
-						                                font-size: 16px;
-						                                font-weight: 400;
-						                                line-height: 28px;
-						                                text-transform: uppercase;
-						                            }
-						                        }
-						                        #percentile-label {
-						                            font-size: 16px;
-						                            font-weight: 400;
-						                            letter-spacing: 1px;
-						                            text-transform: uppercase;
-						                        }
-						                    }
-										}
-									}
-								}
-								&.event-guru {
-									> div {
-										> div {
-											@include flex-center;
-										}
-										.btn-ghost-shamrock {
-											border-color: white;
-											color: white;
-											&:hover, &:focus {
-												border-color: $shamrock;
-												background: $shamrock;
-											}
-										}
-									}
-								}
-								&.event-delivery {
-									> div {
-										border: 2px solid $auburn;
-										header {
-											background: $auburn;
-										}
-										.btn-ghost-shamrock {
-											border-color: white;
-											color: white;
-											&:hover, &:focus {
-												border-color: $auburn;
-												background: $auburn;
-											}
-										}
-									}
-								}
-								&.event-freelancing {
-									> div {
-										border: 2px solid $orange;
-										header {
-											background: $orange;
-										}
-										.btn-ghost-shamrock {
-											border-color: white;
-											color: white;
-											&:hover, &:focus {
-												border-color: $orange;
-												background: $orange;
-											}
-										}
-									}
-								}
-								&.event-baking {
-									> div {
-										border: 2px solid $gold;
-										header {
-											background: $gold;
-										}
-										.btn-ghost-shamrock {
-											border-color: white;
-											color: white;
-											&:hover, &:focus {
-												border-color: $gold;
-												background: $gold;
-											}
-										}
-									}
-								}
-								&.event-photography {
-									> div {
-										border: 2px solid $moola;
-										header {
-											background: $moola;
-										}
-										.btn-ghost-shamrock {
-											border-color: white;
-											color: white;
-											&:hover, &:focus {
-												border-color: $moola;
-												background: $moola;
-											}
-										}
-									}
-								}
-								&.event-tech {
-									> div {
-										border: 2px solid $azure;
-										header {
-											background: $azure;
-										}
-										.btn-ghost-shamrock {
-											border-color: white;
-											color: white;
-											&:hover, &:focus {
-												border-color: $azure;
-												background: $azure;
-											}
-										}
-									}
-								}
-								&.event-household {
-									> div {
-										border: 2px solid $cobalt;
-										header {
-											background: $cobalt;
-										}
-										.btn-ghost-shamrock {
-											border-color: white;
-											color: white;
-											&:hover, &:focus {
-												border-color: $cobalt;
-												background: $cobalt;
-											}
-										}
-									}
-								}
-								&.event-athletic {
-									> div {
-										border: 2px solid $eggplant;
-										header {
-											background: $eggplant;
-										}
-										.btn-ghost-shamrock {
-											border-color: white;
-											color: white;
-											&:hover, &:focus {
-												border-color: $eggplant;
-												background: $eggplant;
-											}
-										}
-									}
-								}
-								&.event-academic {
-									> div {
-										border: 2px solid $cerise;
-										header {
-											background: $cerise;
-										}
-										.btn-ghost-shamrock {
-											border-color: white;
-											color: white;
-											&:hover, &:focus {
-												border-color: $cerise;
-												background: $cerise;
-											}
-										}
-									}
-								}
-							}
+					}
+					.home-ticket {
+						div {
+							background: url(../../img/ticket/center-guru.svg) repeat-x center center / contain,
+										url(/static/remote/img/ticket/center-guru.svg) repeat-x center center / contain;
+						}
+						&:before {
+							background: url(../../img/ticket/left-guru.svg) no-repeat center left / contain,
+										url(/static/remote/img/ticket/left-guru.svg) no-repeat center left / contain;
+						}
+						&:after {
+							background: url(../../img/ticket/right-guru.svg) no-repeat center right / contain,
+										url(/static/remote/img/ticket/right-guru.svg) no-repeat center right / contain;
 						}
 					}
 				}
