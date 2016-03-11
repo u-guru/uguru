@@ -7843,6 +7843,31 @@ input[type=range]:focus::-ms-fill-upper {
   transform: translateX(36px);
 }
 
+.toggle.white-round label {
+  border-radius: 1000px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid white;
+}
+
+.toggle.white-round label svg {
+  border-radius: 1000px;
+}
+
+.toggle.white-round label svg:first-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.toggle.white-round label svg:first-child * {
+  fill: white;
+}
+
+.toggle.white-round input:checked + label {
+  background: rgba(255, 255, 255, 0.5);
+}
+
 .toggle.round label {
   border-radius: 1000px;
 }

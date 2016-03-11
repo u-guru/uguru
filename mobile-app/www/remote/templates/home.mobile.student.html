@@ -2,7 +2,7 @@
     <section id="mobile-student-home" class="mobile-home">
         <a id="nav-icon-burger" class="nav-icon-burger" ng-if='user || user.id' ng-click='toggleRightSideMenu()' ng-include="img_base + 'templates/svg/main/menu-circle.html'"></a>
         <div class="home-top">
-            <div class="toggle" ng-if='!user || !user.id' ng-click='signupModal.show()'>
+            <div class="toggle round" ng-if='!user || !user.id' ng-click='signupModal.show()'>
                 <input type="checkbox" checked />
                 <label>
                     <svg class="square" viewBox="0 0 100 100">
@@ -14,7 +14,87 @@
                     <span>Demo</span>
                 </label>
             </div>
-            <div class="home-top-guru" ng-include="img_base + BASE + 'templates/svg/tour-guru-dashboard-mobile.html'"></div>
+            <ion-slide-box class="home-ticket-content">
+                <ion-slide class="home-ticket-inside">
+                    <div>
+                        <h1>You have <u>2</u> Incoming Gurus for CS10.</h1>
+                        <h2>See more request details about these gurus</h2>
+                    </div>
+                    <ul class="home-ticket-guru-bar">
+                        <li>
+                            <div class="pf-card-mini large pf-card-mini-academic">
+                                <div class="pf-card-mini-banner"></div>
+                                <span class="user-icon bg-cerise"></span>
+                                <span class="pf-name">Christopher W.</span>
+                                <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pf-card-mini large pf-card-mini-academic">
+                                <div class="pf-card-mini-banner"></div>
+                                <span class="user-icon bg-cerise"></span>
+                                <span class="pf-name">Christopher W.</span>
+                                <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pf-card-mini large pf-card-mini-academic">
+                                <div class="pf-card-mini-banner"></div>
+                                <span class="user-icon bg-cerise"></span>
+                                <span class="pf-name">Christopher W.</span>
+                                <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul>
+                            </div>
+                        </li>
+                    </ul>
+                </ion-slide>
+                <ion-slide class="home-ticket-inside">
+                    <div>
+                        <h1>You created <u>3</u> Student Requests.</h1>
+                        <h2>Check or edit the status of your requests</h2>
+                    </div>
+                    <ul class="home-ticket-icon-bar">
+                        <li class="academic">
+                            <span ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></span>
+                            <span>1-on-1 Help</span>
+                        </li>
+                        <li class="baking">
+                            <span ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></span>
+                            <span>Birthday Cake</span>
+                        </li>
+                        <li class="photography">
+                            <span ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></span>
+                            <span>Graduation</span>
+                        </li>
+                    </ul>
+                </ion-slide>
+                <ion-slide class="home-ticket-inside">
+                    <div>
+                        <h1>You are currently in demo mode.</h1>
+                        <h2>Activate your UC Berkeley Email to create a real request</h2>
+                    </div>
+                    <ul class="home-ticket-icon-bar">
+                        <li class="academic" ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></li>
+                        <li class="baking" ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></li>
+                        <li class="photography" ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></li>
+                        <li class="household" ng-include="img_base + BASE + 'templates/svg/household-simple.html'"></li>
+                        <li class="tech" ng-include="img_base + BASE + 'templates/svg/tech-simple.html'"></li>
+                    </ul>
+                </ion-slide>
+                <ion-slide class="home-ticket-inside">
+                    <div>
+                        <h1>You are currently in demo mode.</h1>
+                        <h2>Activate your UC Berkeley Email to create a real request</h2>
+                    </div>
+                    <span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/email.html'"></span>
+                </ion-slide>
+                <ion-slide class="home-ticket-inside">
+                    <div>
+                        <h1>Make a Referral</h1>
+                        <h2>Skip the line by inviting a friend to Uguru</h2>
+                    </div>
+                    <span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/gift.html'"></span>
+                </ion-slide>
+            </ion-slide-box>
         </div>
         <nav class="home-tabs">
             <ul>

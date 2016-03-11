@@ -5945,6 +5945,28 @@ input[type=range] {
 			@include prefix(transform, translateX(36px), webkit moz ms o);
 		}
 	}
+	&.white-round {
+		label {
+			@include round;
+			background: rgba(white, .5);
+			border: 2px solid white;
+			svg {
+				@include round;
+				&:first-child {
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					* {
+						fill: white;
+					}
+				}
+			}
+		}
+		input:checked + label {
+			background: rgba(white, .5);
+		}
+	}
 	&.round {
 		label {
 			@include round;
