@@ -36,227 +36,25 @@
   background: #6e8694;
 }
 
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div {
+#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily .home-ticket-content {
+  border: 3px solid #F1B99D;
   background: white;
 }
 
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div h1 {
-  color: #50A5DD;
+#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily .home-ticket-content .home-ticket-inside .home-ticket-icon svg *[stroke="#000000"] {
+  stroke: #40484B !important;
 }
 
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div h1:after {
-  background: rgba(80, 165, 221, 0.3);
+#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily .home-ticket div {
+  background: url(../../img/ticket/center.svg) repeat-x center center/contain, url(/static/remote/img/ticket/center.svg) repeat-x center center/contain;
 }
 
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  padding: 7.5px;
-  height: calc(100% - 63px);
+#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily .home-ticket:before {
+  background: url(../../img/ticket/left.svg) no-repeat center left/contain, url(/static/remote/img/ticket/left.svg) no-repeat center left/contain;
 }
 
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li {
-  padding: 7.5px;
-  width: 50%;
-  height: 100%;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li h2 {
-  font-size: 20px;
-  font-weight: 600;
-  padding-bottom: 15px;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul {
-  height: calc(100% - 39px);
-  overflow: auto;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li {
-  padding: 7.5px 0;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li:first-child {
-  padding-top: 0;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li:last-child {
-  padding-bottom: 0;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a {
-  position: relative;
-  display: block;
-  background: rgba(80, 165, 221, 0.2);
-  border: 2px solid #50A5DD;
-  border-radius: 2px;
-  padding: 15px;
-  width: 100%;
-  color: #40484B;
-  font-size: 16px;
-  font-weight: 400;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a h3 {
-  width: 100%;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a div:first-child {
-  width: calc(100% - 24px);
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a div:last-child {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  right: 8px;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a div:last-child svg {
-  display: block;
-  width: 24px;
-  height: 24px;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a div:last-child svg * {
-  -webkit-transition: all 150ms ease-in-out;
-  -moz-transition: all 150ms ease-in-out;
-  -ms-transition: all 150ms ease-in-out;
-  -o-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
-  fill: none;
-  stroke: #40484B;
-  stroke-width: 8px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-urgent a {
-  background: #50A5DD;
-  color: white;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-urgent div:last-child svg * {
-  stroke: white;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-delivery a {
-  background: rgba(240, 79, 84, 0.2);
-  border-color: #F04F54;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-delivery.event-urgent a {
-  border-color: #df1319;
-  background: #F04F54;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-freelancing a {
-  background: rgba(229, 117, 60, 0.2);
-  border-color: #E5753C;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-freelancing.event-urgent a {
-  border-color: #bc5019;
-  background: #E5753C;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-baking a {
-  background: rgba(246, 198, 78, 0.2);
-  border-color: #F6C64E;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-baking.event-urgent a {
-  border-color: #ecac0c;
-  background: #F6C64E;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-photography a {
-  background: rgba(129, 181, 102, 0.2);
-  border-color: #81B566;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-photography.event-urgent a {
-  border-color: #5c8b43;
-  background: #81B566;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-tech a {
-  background: rgba(85, 164, 183, 0.2);
-  border-color: #55A4B7;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-tech.event-urgent a {
-  border-color: #397787;
-  background: #55A4B7;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-household a {
-  background: rgba(120, 114, 227, 0.2);
-  border-color: #7872e3;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-household.event-urgent a {
-  border-color: #514bbe;
-  background: #7872e3;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-athletic a {
-  background: rgba(154, 91, 197, 0.2);
-  border-color: #9A5BC5;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-athletic.event-urgent a {
-  border-color: #73379c;
-  background: #9A5BC5;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-academic a {
-  background: rgba(230, 56, 155, 0.2);
-  border-color: #e6389b;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li.event-academic.event-urgent a {
-  border-color: #ba1774;
-  background: #e6389b;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a:hover, #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a:focus {
-  background: #7c8a8f !important;
-  border-color: #7c8a8f !important;
-  color: white !important;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a:hover svg *, #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a:focus svg * {
-  stroke: white !important;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li > ul li a:active {
-  background: #637074 !important;
-  border-color: #637074 !important;
-  color: white !important;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li:first-child > ul li a {
-  border-left-width: 10px;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li:first-child > ul li a:hover, #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li:first-child > ul li a:focus {
-  border-color: #637074 !important;
-}
-
-#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily > div .home-tiles-upcoming > li:first-child > ul li a:active {
-  border-color: #40484B !important;
+#desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily .home-ticket:after {
+  background: url(../../img/ticket/right.svg) no-repeat center right/contain, url(/static/remote/img/ticket/right.svg) no-repeat center right/contain;
 }
 
 #desktop-student-home .main .home-main .home-tiles-powerups {

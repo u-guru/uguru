@@ -46,219 +46,31 @@
 		.home-main {
 			.home-tiles-top {
 				.home-tiles-daily {
-					> div {
+					.home-ticket-content {
+						border: 3px solid #F1B99D;
 						background: white;
-						h1 {
-							color: $lake;
-							&:after {
-								background: rgba($lake, .3);
+						.home-ticket-inside {
+							.home-ticket-icon {
+								svg {
+									*[stroke="#000000"] {
+										stroke: $slate!important;
+									}
+								}
 							}
 						}
-						.home-tiles-upcoming {
-							@include flex;
-							padding: 7.5px;
-							height: calc(100% - 63px);
-							> li {
-								padding: 7.5px;
-								width: 50%;
-								height: 100%;
-								h2 {
-									font-size: 20px;
-									font-weight: 600;
-									padding-bottom: 15px;
-								}
-								> ul {
-									height: calc(100% - 39px);
-									overflow: auto;
-									li {
-										padding: 7.5px 0;
-										&:first-child {
-											padding-top: 0;
-										}
-										&:last-child {
-											padding-bottom: 0;
-										}
-										a {
-											position: relative;
-											display: block;
-											background: rgba($lake, .2);
-											border: 2px solid $lake;
-											border-radius: 2px;
-											padding: 15px;
-											width: 100%;
-											color: $slate;
-											font-size: 16px;
-											font-weight: 400;
-											h3 {
-												width: 100%;
-												font-size: 20px;
-												font-weight: 600;
-											}
-											div {
-												&:first-child {
-													width: calc(100% - 24px);
-												}
-												&:last-child {
-													@include center-y;
-													right: 8px;
-													svg {
-														display: block;
-														width: 24px;
-														height: 24px;
-														* {
-															@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-															@include svg-stroke($slate, 8);
-														}
-													}
-												}
-											}
-										}
-										&.event-urgent {
-											a {
-												background: $lake;
-												color: white;
-											}
-											div {
-												&:last-child {
-													svg {
-														* {
-															stroke: white;
-														}
-													}
-												}
-											}
-										}
-										&.event-delivery {
-											a {
-												background: rgba($auburn, .2);
-												border-color: $auburn;
-											}
-											&.event-urgent {
-												a {
-													border-color: darken($auburn, 15%);
-													background: $auburn;
-												}
-											}
-										}
-										&.event-freelancing {
-											a {
-												background: rgba($orange, .2);
-												border-color: $orange;
-											}
-											&.event-urgent {
-												a {
-													border-color: darken($orange, 15%);
-													background: $orange;
-												}
-											}
-										}
-										&.event-baking {
-											a {
-												background: rgba($gold, .2);
-												border-color: $gold;
-											}
-											&.event-urgent {
-												a {
-													border-color: darken($gold, 15%);
-													background: $gold;
-												}
-											}
-										}
-										&.event-photography {
-											a {
-												background: rgba($moola, .2);
-												border-color: $moola;
-											}
-											&.event-urgent {
-												a {
-													border-color: darken($moola, 15%);
-													background: $moola;
-												}
-											}
-										}
-										&.event-tech {
-											a {
-												background: rgba($azure, .2);
-												border-color: $azure;
-											}
-											&.event-urgent {
-												a {
-													border-color: darken($azure, 15%);
-													background: $azure;
-												}
-											}
-										}
-										&.event-household {
-											a {
-												background: rgba($cobalt, .2);
-												border-color: $cobalt;
-											}
-											&.event-urgent {
-												a {
-													border-color: desaturate(darken($cobalt, 15%), 20%);
-													background: $cobalt;
-												}
-											}
-										}
-										&.event-athletic {
-											a {
-												background: rgba($eggplant, .2);
-												border-color: $eggplant;
-											}
-											&.event-urgent {
-												a {
-													border-color: darken($eggplant, 15%);
-													background: $eggplant;
-												}
-											}
-										}
-										&.event-academic {
-											a {
-												background: rgba($cerise, .2);
-												border-color: $cerise;
-											}
-											&.event-urgent {
-												a {
-													border-color: darken($cerise, 15%);
-													background: $cerise;
-												}
-											}
-										}
-										a {
-											&:hover, &:focus {
-												background: lighten($slate, 25%)!important;
-												border-color: lighten($slate, 25%)!important;
-												color: white!important;
-												svg {
-													* {
-														stroke: white!important;
-													}
-												}
-											}
-											&:active {
-												background: lighten($slate, 15%)!important;
-												border-color: lighten($slate, 15%)!important;
-												color: white!important;
-											}
-										}
-									}
-								}
-								&:first-child {
-									> ul {
-										li {
-											a {
-												border-left-width: 10px;
-												&:hover, &:focus {
-													border-color: lighten($slate, 15%)!important;
-												}
-												&:active {
-													border-color: $slate!important;
-												}
-											}
-										}
-									}
-								}
-							}
+					}
+					.home-ticket {
+						div {
+							background: url(../../img/ticket/center.svg) repeat-x center center / contain,
+										url(/static/remote/img/ticket/center.svg) repeat-x center center / contain;
+						}
+						&:before {
+							background: url(../../img/ticket/left.svg) no-repeat center left / contain,
+										url(/static/remote/img/ticket/left.svg) no-repeat center left / contain;
+						}
+						&:after {
+							background: url(../../img/ticket/right.svg) no-repeat center right / contain,
+										url(/static/remote/img/ticket/right.svg) no-repeat center right / contain;
 						}
 					}
 				}

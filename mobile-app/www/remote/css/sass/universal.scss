@@ -113,29 +113,160 @@
 					padding: 15px 0 15px 15px;
 					height: 100%;
 					width: 100%;
-					> div {
-						position: relative;
-						height: 100%;
-						border-radius: 2px;
-						h1 {
-							position: relative;
-							font-size: 28px;
-							font-weight: 600;
+					position: relative;
+					.home-ticket-content {
+						position: absolute;
+						left: calc(10% + 7.5px);
+						top: 10%;
+						width: 80%;
+						height: 80%;
+						border-radius: 5px;
+						text-align: center;
+						.home-ticket-inside {
+							@include flex;
+							@include flex-wrap;
+							@include prefix(justify-content, center, webkit);
 							padding: 15px;
-							&:after {
-								@include round;
-								content: "";
+							width: 100%;
+							height: 100%;
+							h1, h2 {
+								@include prefix(align-self, flex-start, webkit);
+								text-align: center;
+								padding: 0;
+								margin: 0!important;
+							}
+							h1 {
+								font-size: 32px;
+								font-weight: 900;
+							}
+							h2 {
+								font-size: 20px;
+								font-weight: 600;
+							}
+							.home-ticket-guru-bar {
+								@include prefix(align-self, center, webkit);
+								@include flex;
+								@include flex-center;
+								padding: 0 7.5px;
+								width: 100%;
+								> li {
+									padding: 0 7.5px;
+									.pf-card-mini {
+										background: $smoke;
+										color: $slate;
+										.user-icon {
+											border-color: $smoke;
+											width: 48px;
+											height: 48px;
+										}
+										.pf-name {
+											font-size: 14px;
+											font-weight: 600;
+										}
+										.rating-stars {
+											max-width: 70px;
+										}
+									}
+								}
+							}
+							.home-ticket-icon-bar {
+								@include prefix(align-self, center, webkit);
+								@include flex;
+								@include flex-center;
+								padding: 0 7.5px;
+								> li {
+									padding: 0 7.5px;
+									span {
+										display: block;
+										width: 100%;
+										font-size: 16px;
+										font-weight: 600;
+										line-height: 1.2;
+										text-align: center;
+										text-transform: uppercase;
+										+ span {
+											margin-top: 5px;
+										}
+									}
+									svg {
+										@include round;
+										display: block;
+										width: 100%;
+										max-width: 90px;
+										margin: 0 auto;
+										padding: 5px;
+										* {
+											@include svg-stroke(white, 3);
+										}
+									}
+									&.academic {
+										svg {
+											background: $cerise;
+										}
+									}
+									&.baking {
+										svg {
+											background: $gold;
+										}
+									}
+									&.photography {
+										svg {
+											background: $moola;
+										}
+									}
+									&.household {
+										svg {
+											background: $cobalt;
+										}
+									}
+									&.tech {
+										svg {
+											background: $azure;
+										}
+									}
+								}
+							}
+							.home-ticket-icon {
+								@include prefix(align-self, center, webkit);
 								display: block;
-								position: absolute;
-								bottom: -1px;
-								left: 15px;
-								width: calc(100% - 30px);
-								height: 2px;
+								margin: 0 auto;
+								svg {
+									display: block;
+									margin: 0 auto;
+									width: 100%;
+									max-height: 150px;
+								}
+							}
+							button {
+								@include prefix(align-self, flex-end, webkit);
+								display: inline-block;
+								max-width: 75%;
 							}
 						}
-						p {
-							font-size: 18px;
-							font-weight: 400;
+					}
+					.home-ticket {
+						position: relative;
+						width: 100%;
+						height: 100%;
+						div {
+							margin: 0 auto;
+							width: calc(100% - 10px);
+							height: 100%;
+						}
+						&:before, &:after {
+							content: "";
+							display: block;
+							position: absolute;
+							z-index: 2;
+							top: 0;
+							height: 100%;
+							width: 20%;
+						}
+						&:before {
+							left: 0;
+						}
+						&:after {
+							right: 0;
 						}
 					}
 				}
@@ -180,12 +311,15 @@
 								width: 100%;
 								padding-bottom: 5px;
 								> span {
+									position: relative;
 									display: block;
-									font-size: 64px;
-									font-weight: 600;
-									text-align: center;
-									line-height: 80px;
-									height: 80px;
+									> span {
+										@include center-xy;
+										display: block;
+										font-size: 28px;
+										font-weight: 600;
+										text-align: center;
+									}
 								}
 								h1 {
 									width: 100%;
@@ -395,147 +529,147 @@
 // TICKET STUB
 .ticket-container {
 	background: $smoke;
-}
-.ticket {
-	border-radius: 5px;
-	border: 3px solid darken($lake, 15%);
-	.ticket-top {
-		position: relative;
-		padding: 30px 15px 15px;
-		background: $lake;
-		border-bottom: 3px dashed darken($lake, 15%);
-		color: white;
-		text-align: center;
-		h1 {
-			font-size: 28px;
-			font-weight: 600;
-		}
-		p {
-			margin: 0;
-			font-size: 16px;
-			font-weight: 400;
-		}
-		&:before {
-			@include round;
-			@include center-x;
-			content: "";
-			display: block;
-			top: -24px;
-			width: 48px;
-			height: 48px;
-			background: $smoke;
-			border: 3px solid darken($lake, 15%);
-		}
-		&:after {
-			@include center-x;
-			content: "";
-			display: block;
-			top: -27px;
-			width: 48px;
-			height: 24px;
-			background: $smoke;
-		}
-	}
-	.ticket-bot {
-		@include flex;
-		@include flex-wrap;
-		@include flex-center;
-		position: relative;
-		background: white;
-		color: lighten($slate, 20%);
-		padding-bottom: 24px;
-		min-height: 280px;
-		ul {
-			padding: 7.5px;
-			width: 100%;
-			li {
-				@include flex;
-				@include flex-center-vertical;
-				padding: 7.5px;
-				font-size: 18px;
-				font-weight: 400;
-				span {
-					display: block;
-				}
-				.ticket-icon {
-					width: 24px;
-					height: 24px;
-					svg {
-						display: block;
-						width: 100%;
-						height: 100%;
-						* {
-							@include svg-stroke(lighten($slate, 20%), 6);
-						}
-					}
-				}
-				.ticket-info {
-					width: calc(100% - 24px);
-					padding-left: 15px;
-				}
-			}
-		}
-		h1 {
-			-webkit-align-self: flex-end;
-			align-self: flex-end;
+	.ticket {
+		border-radius: 5px;
+		border: 3px solid darken($lake, 15%);
+		.ticket-top {
 			position: relative;
-			width: 80%;
-			margin: 0 0 15px;
-			padding: 15px;
-			font-size: 22px;
-			font-weight: 600;
-			text-align: center;
+			padding: 30px 15px 15px;
 			background: $lake;
+			border-bottom: 3px dashed darken($lake, 15%);
 			color: white;
-			> span {
-				display: block;
+			text-align: center;
+			h1 {
+				font-size: 28px;
+				font-weight: 600;
 			}
-			span.strong {
-				font-weight: 900;
-			}
-			&:not(.verified) span:nth-child(2) {
-				display: initial !important; //overrides nth-child(2) 'display: none' on 1081 lol
-			}
-			&:before,
-			&:after {
-				content: "";
-				display: block;
-				position: absolute;
-				top: 0;
-				width: 0;
-				height: 0;
-				border: 28px solid transparent;
-				border-left-width: 14px;
-				border-right-width: 14px;
-				border-top-color: $lake;
-				border-bottom-color: $lake;
+			p {
+				margin: 0;
+				font-size: 16px;
+				font-weight: 400;
 			}
 			&:before {
-				left: -14px;
+				@include round;
+				@include center-x;
+				content: "";
+				display: block;
+				top: -24px;
+				width: 48px;
+				height: 48px;
+				background: $smoke;
+				border: 3px solid darken($lake, 15%);
 			}
 			&:after {
-				right: -14px;
+				@include center-x;
+				content: "";
+				display: block;
+				top: -27px;
+				width: 48px;
+				height: 24px;
+				background: $smoke;
 			}
 		}
-		&:before {
-			@include round;
-			@include center-x;
-			content: "";
-			display: block;
-			bottom: -24px;
-			width: 48px;
-			height: 48px;
-			background: $smoke;
-			border: 3px solid darken($lake, 15%);
-		}
-		&:after {
-			@include center-x;
-			content: "";
-			display: block;
-			bottom: -27px;
-			width: 48px;
-			height: 24px;
-			background: $smoke;
+		.ticket-bot {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			position: relative;
+			background: white;
+			color: lighten($slate, 20%);
+			padding-bottom: 24px;
+			min-height: 280px;
+			ul {
+				padding: 7.5px;
+				width: 100%;
+				li {
+					@include flex;
+					@include flex-center-vertical;
+					padding: 7.5px;
+					font-size: 18px;
+					font-weight: 400;
+					span {
+						display: block;
+					}
+					.ticket-icon {
+						width: 24px;
+						height: 24px;
+						svg {
+							display: block;
+							width: 100%;
+							height: 100%;
+							* {
+								@include svg-stroke(lighten($slate, 20%), 6);
+							}
+						}
+					}
+					.ticket-info {
+						width: calc(100% - 24px);
+						padding-left: 15px;
+					}
+				}
+			}
+			h1 {
+				-webkit-align-self: flex-end;
+				align-self: flex-end;
+				position: relative;
+				width: 80%;
+				margin: 0 0 15px;
+				padding: 15px;
+				font-size: 22px;
+				font-weight: 600;
+				text-align: center;
+				background: $lake;
+				color: white;
+				> span {
+					display: block;
+				}
+				span.strong {
+					font-weight: 900;
+				}
+				&:not(.verified) span:nth-child(2) {
+					display: initial !important; //overrides nth-child(2) 'display: none' on 1081 lol
+				}
+				&:before,
+				&:after {
+					content: "";
+					display: block;
+					position: absolute;
+					top: 0;
+					width: 0;
+					height: 0;
+					border: 28px solid transparent;
+					border-left-width: 14px;
+					border-right-width: 14px;
+					border-top-color: $lake;
+					border-bottom-color: $lake;
+				}
+				&:before {
+					left: -14px;
+				}
+				&:after {
+					right: -14px;
+				}
+			}
+			&:before {
+				@include round;
+				@include center-x;
+				content: "";
+				display: block;
+				bottom: -24px;
+				width: 48px;
+				height: 48px;
+				background: $smoke;
+				border: 3px solid darken($lake, 15%);
+			}
+			&:after {
+				@include center-x;
+				content: "";
+				display: block;
+				bottom: -27px;
+				width: 48px;
+				height: 24px;
+				background: $smoke;
+			}
 		}
 	}
 }

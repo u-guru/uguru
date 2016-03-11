@@ -7843,10 +7843,174 @@ input[type=range]:focus::-ms-fill-upper {
   transform: translateX(36px);
 }
 
+.toggle.white-round label {
+  border-radius: 1000px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid white;
+}
+
+.toggle.white-round label svg {
+  border-radius: 1000px;
+}
+
+.toggle.white-round label svg:first-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.toggle.white-round label svg:first-child * {
+  fill: white;
+}
+
+.toggle.white-round input:checked + label {
+  background: rgba(255, 255, 255, 0.5);
+}
+
 .toggle.round label {
   border-radius: 1000px;
 }
 
 .toggle.round label svg {
   border-radius: 1000px;
+}
+
+.pf-card-outline {
+  position: relative;
+  border: 2px solid #69B3A5;
+  border-radius: 5px;
+  margin-top: 36px;
+}
+
+.pf-card-outline .pf-card-top .user-icon {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 10;
+  top: -36px;
+  width: 72px;
+  height: 72px;
+  border: 2px solid #69B3A5;
+}
+
+.pf-card-outline .pf-card-main {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.pf-card-outline .pf-card-main .pf-card-info {
+  padding: 36px 15px 15px;
+  width: 100%;
+  background: #69B3A5;
+  text-align: center;
+}
+
+.pf-card-outline .pf-card-main .pf-card-info h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.pf-card-outline .pf-card-main .pf-card-info h1 span svg {
+  margin-left: 8px;
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.pf-card-outline .pf-card-main .pf-card-info h1 span svg path:first-child {
+  fill: white;
+}
+
+.pf-card-outline .pf-card-main .pf-card-info h1 span svg path:last-child {
+  fill: #69B3A5;
+}
+
+.pf-card-outline .pf-card-main .pf-card-info h2 {
+  margin-top: 0 !important;
+  font-size: 16px;
+}
+
+.pf-card-outline .pf-card-main .pf-card-info .pf-rating {
+  margin: 5px auto 0;
+}
+
+.pf-card-outline .pf-card-main .pf-card-content .pf-courses {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding: 7.5px;
+}
+
+.pf-card-outline .pf-card-main .pf-card-content .pf-courses li {
+  padding: 7.5px;
+}
+
+.pf-card-outline .pf-card-main .pf-card-content .pf-courses li:not(:first-child) {
+  display: none;
+}
+
+.pf-card-outline .pf-card-main .pf-card-content .pf-courses li .pf-course {
+  border-radius: 1000px;
+  -webkit-animation: 500ms course-border ease-in forwards;
+  -moz-animation: 500ms course-border ease-in forwards;
+  -ms-animation: 500ms course-border ease-in forwards;
+  -o-animation: 500ms course-border ease-in forwards;
+  animation: 500ms course-border ease-in forwards;
+  display: block;
+  position: relative;
+  padding: 5px 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  font-weight: 600;
+  overflow: none;
+}
+
+.pf-card-outline .pf-card-main .pf-card-content .pf-courses li .pf-course:before {
+  border-radius: 1000px;
+  -webkit-animation: 500ms course-highlight ease-in forwards;
+  -moz-animation: 500ms course-highlight ease-in forwards;
+  -ms-animation: 500ms course-highlight ease-in forwards;
+  -o-animation: 500ms course-highlight ease-in forwards;
+  animation: 500ms course-highlight ease-in forwards;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 29px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.pf-card-outline .pf-card-main .pf-card-content .pf-courses li .pf-course span {
+  position: relative;
+  z-index: 10;
 }

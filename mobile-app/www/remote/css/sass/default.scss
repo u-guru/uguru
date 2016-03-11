@@ -5945,11 +5945,129 @@ input[type=range] {
 			@include prefix(transform, translateX(36px), webkit moz ms o);
 		}
 	}
+	&.white-round {
+		label {
+			@include round;
+			background: rgba(white, .5);
+			border: 2px solid white;
+			svg {
+				@include round;
+				&:first-child {
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					* {
+						fill: white;
+					}
+				}
+			}
+		}
+		input:checked + label {
+			background: rgba(white, .5);
+		}
+	}
 	&.round {
 		label {
 			@include round;
 			svg {
 				@include round;
+			}
+		}
+	}
+}
+
+
+.pf-card-outline {
+	position: relative;
+	border: 2px solid $shamrock;
+	border-radius: 5px;
+	margin-top: 36px;
+	.pf-card-top {
+		.user-icon {
+			@include center-x;
+			z-index: 10;
+			top: -36px;
+			width: 72px;
+			height: 72px;
+			border: 2px solid $shamrock;
+		}
+	}
+	.pf-card-main {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		.pf-card-info {
+			padding: 36px 15px 15px;
+			width: 100%;
+			background: $shamrock;
+			text-align: center;
+			h1 {
+				font-size: 24px;
+				font-weight: 600;
+				span {
+					svg {
+						margin-left: 8px;
+						margin-top: 5px;
+						width: 20px;
+						height: 20px;
+						path {
+							&:first-child {
+								fill: white;
+							}
+							&:last-child {
+								fill: $shamrock;
+							}
+						}
+					}
+				}
+			}
+			h2 {
+				margin-top: 0!important;
+				font-size: 16px;
+			}
+			.pf-rating {
+				margin: 5px auto 0;
+			}
+		}
+		.pf-card-content {
+			.pf-courses {
+				@include flex;
+				@include flex-wrap;
+				padding: 7.5px;
+				li {
+					padding: 7.5px;
+					&:not(:first-child) {
+						display: none;
+					}
+					.pf-course {
+						@include round;
+						@include prefix(animation, 500ms course-border ease-in forwards, webkit moz ms o);
+						display: block;
+						position: relative;
+						padding: 5px 10px;
+						border: 2px solid rgba(white, .2);
+						font-size: 16px;
+						font-weight: 600;
+						overflow: none;
+						&:before {
+							@include round;
+							@include prefix(animation, 500ms course-highlight ease-in forwards, webkit moz ms o);
+							content: "";
+							display: block;
+							position: absolute;
+							top: 0;
+							left: 0;
+							height: 100%;
+							width: 29px;
+							background: rgba(white, .2);
+						}
+						span {
+							position: relative;
+							z-index: 10;
+						}
+					}
+				}
 			}
 		}
 	}
