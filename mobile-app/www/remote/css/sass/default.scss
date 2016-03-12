@@ -4776,6 +4776,8 @@ input[type=range] {
 			padding: 0;
 			background: lighten($slate, 15%);
 			a {
+				position: relative;
+				z-index: 10;
 				padding: 0!important;
 				font-size: 24px!important;
 				span {

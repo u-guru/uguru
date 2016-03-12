@@ -6224,6 +6224,8 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .tab-bar.arrow-bar > div a {
+  position: relative;
+  z-index: 10;
   padding: 0 !important;
   font-size: 24px !important;
 }
