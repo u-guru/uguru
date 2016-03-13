@@ -1025,8 +1025,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.onLoad = function() {
-      // @gabrielle-note -- what
-      // Default parameters
+
 
       resolveStateParams();
 
@@ -1061,11 +1060,11 @@ angular.module('uguru.util.controllers')
 
       $scope.universities = University.getTargetted().slice();
 
-      $timeout(function() {
-          var hiwSceneOne = document.querySelector('.hiw-scene-1');
-          hiwSceneOne && hiwSceneOne.classList.add('activate');
-      }, 2000)
-      showProjectorAtTop(0);
+    //   $timeout(function() {
+    //       var hiwSceneOne = document.querySelector('.hiw-scene-1');
+    //       hiwSceneOne && hiwSceneOne.classList.add('activate');
+    //   }, 2000)
+    //   showProjectorAtTop(0);
 
       $timeout(function() {
         // $timeout(function() {

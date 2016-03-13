@@ -542,12 +542,188 @@ header#home-nav-header.splash-header,
   right: 0;
   margin-left: 33.33% !important; }
 
-#request {
-  height: 100%; }
-  #request #request-form-progress {
-    bottom: 60px !important;
-    top: initial !important; }
-  #request header.desktop-tab-header {
+#request main #cta-modal-request-courses {
+  z-index: 1000000 !important; }
+  #request main #cta-modal-request-courses main#desktop-courses {
+    height: auto !important; }
+#request main section#request-cta-details #cta-modal-request-courses {
+  height: 100% !important;
+  width: 100% !important; }
+  #request main section#request-cta-details #cta-modal-request-courses .desktop-header {
+    background: transparent !important;
+    height: 0px !important; }
+    #request main section#request-cta-details #cta-modal-request-courses .desktop-header a.cta-modal-close {
+      position: absolute;
+      right: 0 !important; }
+      #request main section#request-cta-details #cta-modal-request-courses .desktop-header a.cta-modal-close svg {
+        height: 40px !important;
+        width: 40px !important; }
+  #request main section#request-cta-details #cta-modal-request-courses .input-field {
+    text-align: left !important; }
+#request main section#request-cta-details textarea::-webkit-input-placeholder {
+  color: rgba(64, 72, 75, 0.5) !important; }
+#request main section#request-cta-details textarea:-moz-placeholder {
+  color: rgba(64, 72, 75, 0.5) !important; }
+#request main section#request-cta-details textarea::-moz-placeholder {
+  color: rgba(64, 72, 75, 0.5) !important; }
+#request main section#request-cta-details textarea:-ms-input-placeholder {
+  color: rgba(64, 72, 75, 0.5) !important; }
+#request main section#request-cta-map ui-gmap-google-map {
+  height: calc(100%); }
+#request main section#request-cta-payment #cta-modal-request-payments {
+  overflow: visible;
+  height: calc(100%); }
+  #request main section#request-cta-payment #cta-modal-request-payments #payments-sidebar {
+    display: none !important; }
+#request main section#request-cta-payment .offer-price-container {
+  width: 100%;
+  max-width: 800px;
+  background: #F1F1F1;
+  text-align: center; }
+  #request main section#request-cta-payment .offer-price-container h1,
+  #request main section#request-cta-payment .offer-price-container h3 {
+    color: #2B3234; }
+  #request main section#request-cta-payment .offer-price-container h1 {
+    padding: 15px 15px 0;
+    font-weight: 900;
+    font-size: 32px; }
+  #request main section#request-cta-payment .offer-price-container h3 {
+    margin-top: 0;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0 15px; }
+  #request main section#request-cta-payment .offer-price-container ul {
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 15px;
+    height: calc(100% - 141px); }
+    #request main section#request-cta-payment .offer-price-container ul li {
+      position: relative;
+      padding: 15px; }
+      #request main section#request-cta-payment .offer-price-container ul li a {
+        display: block;
+        position: relative;
+        font-size: 48px;
+        font-weight: 600;
+        color: white; }
+        #request main section#request-cta-payment .offer-price-container ul li a span,
+        #request main section#request-cta-payment .offer-price-container ul li a .add {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          display: block; }
+        #request main section#request-cta-payment .offer-price-container ul li a .add {
+          fill: none;
+          stroke: white;
+          stroke-width: 5px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          width: 80px;
+          height: 80px; }
+        #request main section#request-cta-payment .offer-price-container ul li a svg rect {
+          fill: #2B3234; }
+        #request main section#request-cta-payment .offer-price-container ul li a:hover svg rect, #request main section#request-cta-payment .offer-price-container ul li a:focus svg rect, #request main section#request-cta-payment .offer-price-container ul li a.active svg rect {
+          fill: #81B566; }
+        #request main section#request-cta-payment .offer-price-container ul li a:active svg rect {
+          fill: #679c4c; }
+      #request main section#request-cta-payment .offer-price-container ul li:last-child .price-fill {
+        display: none;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        width: calc(100% - 30px);
+        height: calc(100% - 30px);
+        background: white;
+        border: 3px solid #81B566; }
+        #request main section#request-cta-payment .offer-price-container ul li:last-child .price-fill input {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          border: 0;
+          background: none;
+          font-size: 48px;
+          font-weight: 600; }
+#request main section#request-cta-calendar {
+  overflow: hidden !important; }
+  #request main section#request-cta-calendar .time-estimate-container .custom-dropdown ul {
+    height: auto;
+    top: 50%;
+    margin-top: 24px;
+    left: -94%;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0); }
+  #request main section#request-cta-calendar .calendar {
+    height: calc(100% - 92px) !important; }
+    #request main section#request-cta-calendar .calendar .calendar-container {
+      overflow: visible; }
+      #request main section#request-cta-calendar .calendar .calendar-container .week-view {
+        height: calc(100% - 60px);
+        overflow: auto;
+        padding-bottom: 123px !important; }
+        #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 {
+          border-bottom: 4px solid #55A4B7; }
+          #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour {
+            display: block; }
+            #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-range {
+              font-size: 11px;
+              text-align: left;
+              font-weight: 700;
+              text-transform: uppercase;
+              opacity: 0.5;
+              border-bottom: 1px solid rgba(241, 241, 241, 0.5); }
+            #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval {
+              opacity: 0;
+              cursor: pointer; }
+              #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval:hover {
+                @extends .high-z-index;
+                opacity: 1;
+                visibility: visible !important;
+                font-size: 11px;
+                font-weight: 700;
+                color: #FFFFFF !important;
+                background: #40484B; }
+              #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval.bg-shamrock {
+                background-color: #69B3A5;
+                opacity: 1;
+                font-size: 11px;
+                font-weight: 700;
+                color: #FFFFFF !important; }
+#request main .splash-categories > .main {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  background: #F1F1F1; }
+  #request main .splash-categories > .main:not(.active) {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    display: none; }
+  #request main .splash-categories > .main.active {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    display: block; }
+  #request main .splash-categories > .main#splash-livemap {
+    height: 600px; }
+  #request main .splash-categories > .main > div {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -555,6 +731,42 @@ header#home-nav-header.splash-header,
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    width: 100%; }
+    #request main .splash-categories > .main > div > h1, #request main .splash-categories > .main > div > h2, #request main .splash-categories > .main > div > div > h1, #request main .splash-categories > .main > div > div > h2 {
+      width: 100%;
+      text-align: center; }
+    #request main .splash-categories > .main > div > h1, #request main .splash-categories > .main > div > div > h1 {
+      font-size: 24px;
+      font-weight: 600; }
+      #request main .splash-categories > .main > div > h1 span:first-letter, #request main .splash-categories > .main > div > div > h1 span:first-letter {
+        text-transform: uppercase; }
+    #request main .splash-categories > .main > div > h2, #request main .splash-categories > .main > div > div > h2 {
+      margin: 5px auto 7.5px;
+      font-size: 16px;
+      font-weight: 400; }
+    #request main .splash-categories > .main > div > div {
+      position: relative;
+      width: 100%; }
+      #request main .splash-categories > .main > div > div:last-child {
+        -webkit-align-self: flex-end;
+        align-self: flex-end; }
+  #request main .splash-categories > .main .category-card-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
     -webkit-flex-direction: row;
     flex-direction: row;
     -webkit-align-items: center;
@@ -562,28 +774,169 @@ header#home-nav-header.splash-header,
     -webkit-align-content: center;
     align-content: center;
     -webkit-justify-content: center;
-    justify-content: center;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    height: calc(100% / 4); }
-    #request header.desktop-tab-header:not([class*="bg-"]) {
-      background: #69B3A5; }
-    #request header.desktop-tab-header h1 {
-      padding-bottom: 60px;
-      font-size: 48px;
-      text-align: center;
-      text-transform: none !important; }
-    #request header.desktop-tab-header .tab-bar {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(64, 72, 75, 0.4); }
-      #request header.desktop-tab-header .tab-bar a {
-        color: white;
-        text-align: center; }
-  #request main {
+    justify-content: center; }
+    #request main .splash-categories > .main .category-card-list li {
+      width: calc(100% / 3);
+      padding: 0; }
+      @media screen and (max-width: 768px) {
+        #request main .splash-categories > .main .category-card-list li.card-button {
+          width: 100% !important; } }
+      #request main .splash-categories > .main .category-card-list li button {
+        max-width: 100%; }
+      #request main .splash-categories > .main .category-card-list li > div {
+        height: 200px;
+        background-position: center center;
+        background-size: cover; }
+        #request main .splash-categories > .main .category-card-list li > div a, #request main .splash-categories > .main .category-card-list li > div > span {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background: transparent;
+          background-color: transparent; }
+          #request main .splash-categories > .main .category-card-list li > div a:before, #request main .splash-categories > .main .category-card-list li > div > span:before {
+            -webkit-transition: all 0.15s ease-in-out;
+            -o-transition: all 0.15s ease-in-out;
+            -ms-transition: all 0.15s ease-in-out;
+            -moz-transition: all 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out;
+            filter: alpha(opacity=60);
+            opacity: 0.6;
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #40484B; }
+          #request main .splash-categories > .main .category-card-list li > div a span, #request main .splash-categories > .main .category-card-list li > div > span span {
+            position: relative;
+            z-index: 5; }
+          #request main .splash-categories > .main .category-card-list li > div a .card-icon, #request main .splash-categories > .main .category-card-list li > div > span .card-icon {
+            display: block;
+            margin: 0 auto;
+            padding: 15px;
+            max-width: 120px;
+            max-height: 120px; }
+            #request main .splash-categories > .main .category-card-list li > div a .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span .card-icon svg {
+              border-radius: 1000px;
+              display: block;
+              width: 100%;
+              height: auto;
+              padding: 5px;
+              background: #69B3A5; }
+              #request main .splash-categories > .main .category-card-list li > div a .card-icon svg path, #request main .splash-categories > .main .category-card-list li > div a .card-icon svg circle, #request main .splash-categories > .main .category-card-list li > div > span .card-icon svg path, #request main .splash-categories > .main .category-card-list li > div > span .card-icon svg circle {
+                fill: none;
+                stroke: white;
+                stroke-width: 2px;
+                stroke-linecap: round;
+                stroke-linejoin: round; }
+          #request main .splash-categories > .main .category-card-list li > div a .card-label, #request main .splash-categories > .main .category-card-list li > div > span .card-label {
+            display: block;
+            color: white;
+            margin-top: -10px;
+            width: 100%;
+            font-weight: 600;
+            font-size: 12px;
+            text-align: center;
+            display: block; }
+          #request main .splash-categories > .main .category-card-list li > div a.bg-delivery, #request main .splash-categories > .main .category-card-list li > div > span.bg-delivery {
+            border-color: #F04F54; }
+            #request main .splash-categories > .main .category-card-list li > div a.bg-delivery .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-delivery .card-icon svg {
+              background: #F04F54; }
+          #request main .splash-categories > .main .category-card-list li > div a.bg-freelancing, #request main .splash-categories > .main .category-card-list li > div > span.bg-freelancing {
+            border-color: #E5753C; }
+            #request main .splash-categories > .main .category-card-list li > div a.bg-freelancing .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-freelancing .card-icon svg {
+              background: #E5753C; }
+          #request main .splash-categories > .main .category-card-list li > div a.bg-baking, #request main .splash-categories > .main .category-card-list li > div > span.bg-baking {
+            border-color: #F6C64E; }
+            #request main .splash-categories > .main .category-card-list li > div a.bg-baking .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-baking .card-icon svg {
+              background: #F6C64E; }
+          #request main .splash-categories > .main .category-card-list li > div a.bg-photography, #request main .splash-categories > .main .category-card-list li > div > span.bg-photography {
+            border-color: #81B566; }
+            #request main .splash-categories > .main .category-card-list li > div a.bg-photography .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-photography .card-icon svg {
+              background: #81B566; }
+          #request main .splash-categories > .main .category-card-list li > div a.bg-more, #request main .splash-categories > .main .category-card-list li > div > span.bg-more {
+            border-color: #69B3A5; }
+            #request main .splash-categories > .main .category-card-list li > div a.bg-more .card-label, #request main .splash-categories > .main .category-card-list li > div > span.bg-more .card-label {
+              color: white !important; }
+            #request main .splash-categories > .main .category-card-list li > div a.bg-more .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-more .card-icon svg {
+              background: #69B3A5; }
+          #request main .splash-categories > .main .category-card-list li > div a.bg-tech, #request main .splash-categories > .main .category-card-list li > div > span.bg-tech {
+            border-color: #55A4B7; }
+            #request main .splash-categories > .main .category-card-list li > div a.bg-tech .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-tech .card-icon svg {
+              background: #55A4B7; }
+          #request main .splash-categories > .main .category-card-list li > div a.bg-household, #request main .splash-categories > .main .category-card-list li > div > span.bg-household {
+            border-color: #7872e3; }
+            #request main .splash-categories > .main .category-card-list li > div a.bg-household .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-household .card-icon svg {
+              background: #7872e3; }
+          #request main .splash-categories > .main .category-card-list li > div a.bg-athletic, #request main .splash-categories > .main .category-card-list li > div > span.bg-athletic {
+            border-color: #9A5BC5; }
+            #request main .splash-categories > .main .category-card-list li > div a.bg-athletic .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-athletic .card-icon svg {
+              background: #9A5BC5; }
+          #request main .splash-categories > .main .category-card-list li > div a.bg-academic, #request main .splash-categories > .main .category-card-list li > div > span.bg-academic {
+            border-color: #e6389b; }
+            #request main .splash-categories > .main .category-card-list li > div a.bg-academic .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-academic .card-icon svg {
+              background: #e6389b; }
+        #request main .splash-categories > .main .category-card-list li > div a:hover:before, #request main .splash-categories > .main .category-card-list li > div a:focus:before {
+          background: #69B3A5; }
+        #request main .splash-categories > .main .category-card-list li > div a:active:before {
+          filter: alpha(opacity=80);
+          opacity: 0.8; }
+        #request main .splash-categories > .main .category-card-list li > div a.bg-delivery:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-delivery:focus:before {
+          background: #F04F54; }
+        #request main .splash-categories > .main .category-card-list li > div a.bg-freelancing:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-freelancing:focus:before {
+          background: #E5753C; }
+        #request main .splash-categories > .main .category-card-list li > div a.bg-baking:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-baking:focus:before {
+          background: #F6C64E; }
+        #request main .splash-categories > .main .category-card-list li > div a.bg-photography:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-photography:focus:before {
+          background: #81B566; }
+        #request main .splash-categories > .main .category-card-list li > div a.bg-tech:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-tech:focus:before {
+          background: #55A4B7; }
+        #request main .splash-categories > .main .category-card-list li > div a.bg-household:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-household:focus:before {
+          background: #7872e3; }
+        #request main .splash-categories > .main .category-card-list li > div a.bg-athletic:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-athletic:focus:before {
+          background: #9A5BC5; }
+        #request main .splash-categories > .main .category-card-list li > div a.bg-academic:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-academic:focus:before {
+          background: #e6389b; }
+        #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more):before {
+          filter: alpha(opacity=20);
+          opacity: 0.2; }
+        #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-delivery:before {
+          background: #F04F54; }
+        #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-freelancing:before {
+          background: #E5753C; }
+        #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-baking:before {
+          background: #F6C64E; }
+        #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-photography:before {
+          background: #81B566; }
+        #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-tech:before {
+          background: #55A4B7; }
+        #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-household:before {
+          background: #7872e3; }
+        #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-athletic:before {
+          background: #9A5BC5; }
+        #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-academic:before {
+          background: #e6389b; }
+  #request main .splash-categories > .main .subcategory-card-list {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -594,548 +947,137 @@ header#home-nav-header.splash-header,
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
-    height: calc(100% / 4 * 3);
-    overflow: auto; }
-    #request main #cta-modal-request-courses {
-      z-index: 1000000 !important; }
-      #request main #cta-modal-request-courses main#desktop-courses {
-        height: auto !important; }
-    #request main section {
-      height: calc(100%) !important; }
-      #request main section > * {
-        width: 100%; }
-      #request main section#request-cta-details #cta-modal-request-courses {
-        height: 100% !important;
-        width: 100% !important; }
-        #request main section#request-cta-details #cta-modal-request-courses .desktop-header {
-          background: transparent !important;
-          height: 0px !important; }
-          #request main section#request-cta-details #cta-modal-request-courses .desktop-header a.cta-modal-close {
-            position: absolute;
-            right: 0 !important; }
-            #request main section#request-cta-details #cta-modal-request-courses .desktop-header a.cta-modal-close svg {
-              height: 40px !important;
-              width: 40px !important; }
-        #request main section#request-cta-details #cta-modal-request-courses .input-field {
-          text-align: left !important; }
-      #request main section#request-cta-details textarea::-webkit-input-placeholder {
-        color: rgba(64, 72, 75, 0.5) !important; }
-      #request main section#request-cta-details textarea:-moz-placeholder {
-        color: rgba(64, 72, 75, 0.5) !important; }
-      #request main section#request-cta-details textarea::-moz-placeholder {
-        color: rgba(64, 72, 75, 0.5) !important; }
-      #request main section#request-cta-details textarea:-ms-input-placeholder {
-        color: rgba(64, 72, 75, 0.5) !important; }
-      #request main section#request-cta-map ui-gmap-google-map {
-        height: calc(100%); }
-      #request main section#request-cta-payment #cta-modal-request-payments {
-        overflow: visible;
-        height: calc(100%); }
-        #request main section#request-cta-payment #cta-modal-request-payments #payments-sidebar {
-          display: none !important; }
-      #request main section#request-cta-payment .offer-price-container {
-        width: 100%;
-        max-width: 800px;
-        background: #F1F1F1;
-        text-align: center; }
-        #request main section#request-cta-payment .offer-price-container h1,
-        #request main section#request-cta-payment .offer-price-container h3 {
-          color: #2B3234; }
-        #request main section#request-cta-payment .offer-price-container h1 {
-          padding: 15px 15px 0;
-          font-weight: 900;
-          font-size: 32px; }
-        #request main section#request-cta-payment .offer-price-container h3 {
-          margin-top: 0;
-          font-size: 20px;
-          font-weight: 600;
-          padding: 0 15px; }
-        #request main section#request-cta-payment .offer-price-container ul {
-          -webkit-align-content: center;
-          align-content: center;
-          -webkit-align-items: center;
-          align-items: center;
-          padding: 15px;
-          height: calc(100% - 141px); }
-          #request main section#request-cta-payment .offer-price-container ul li {
-            position: relative;
-            padding: 15px; }
-            #request main section#request-cta-payment .offer-price-container ul li a {
-              display: block;
-              position: relative;
-              font-size: 48px;
-              font-weight: 600;
-              color: white; }
-              #request main section#request-cta-payment .offer-price-container ul li a span,
-              #request main section#request-cta-payment .offer-price-container ul li a .add {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                -webkit-transform: translate(-50%, -50%);
-                -moz-transform: translate(-50%, -50%);
-                -ms-transform: translate(-50%, -50%);
-                -o-transform: translate(-50%, -50%);
-                transform: translate(-50%, -50%);
-                display: block; }
-              #request main section#request-cta-payment .offer-price-container ul li a .add {
-                fill: none;
-                stroke: white;
-                stroke-width: 5px;
-                stroke-linecap: round;
-                stroke-linejoin: round;
-                width: 80px;
-                height: 80px; }
-              #request main section#request-cta-payment .offer-price-container ul li a svg rect {
-                fill: #2B3234; }
-              #request main section#request-cta-payment .offer-price-container ul li a:hover svg rect, #request main section#request-cta-payment .offer-price-container ul li a:focus svg rect, #request main section#request-cta-payment .offer-price-container ul li a.active svg rect {
-                fill: #81B566; }
-              #request main section#request-cta-payment .offer-price-container ul li a:active svg rect {
-                fill: #679c4c; }
-            #request main section#request-cta-payment .offer-price-container ul li:last-child .price-fill {
-              display: none;
-              position: absolute;
-              top: 15px;
-              left: 15px;
-              width: calc(100% - 30px);
-              height: calc(100% - 30px);
-              background: white;
-              border: 3px solid #81B566; }
-              #request main section#request-cta-payment .offer-price-container ul li:last-child .price-fill input {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                -webkit-transform: translate(-50%, -50%);
-                -moz-transform: translate(-50%, -50%);
-                -ms-transform: translate(-50%, -50%);
-                -o-transform: translate(-50%, -50%);
-                transform: translate(-50%, -50%);
-                border: 0;
-                background: none;
-                font-size: 48px;
-                font-weight: 600; }
-      #request main section#request-cta-calendar {
-        overflow: hidden !important; }
-        #request main section#request-cta-calendar .time-estimate-container .custom-dropdown ul {
-          height: auto;
-          top: 50%;
-          margin-top: 24px;
-          left: -94%;
-          -webkit-transform: translate(0, 0);
-          transform: translate(0, 0); }
-        #request main section#request-cta-calendar .calendar {
-          height: calc(100% - 92px) !important; }
-          #request main section#request-cta-calendar .calendar .calendar-container {
-            overflow: visible; }
-            #request main section#request-cta-calendar .calendar .calendar-container .week-view {
-              height: calc(100% - 60px);
-              overflow: auto;
-              padding-bottom: 123px !important; }
-              #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 {
-                border-bottom: 4px solid #55A4B7; }
-                #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour {
-                  display: block; }
-                  #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-range {
-                    font-size: 11px;
-                    text-align: left;
-                    font-weight: 700;
-                    text-transform: uppercase;
-                    opacity: 0.5;
-                    border-bottom: 1px solid rgba(241, 241, 241, 0.5); }
-                  #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval {
-                    opacity: 0;
-                    cursor: pointer; }
-                    #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval:hover {
-                      @extends .high-z-index;
-                      opacity: 1;
-                      visibility: visible !important;
-                      font-size: 11px;
-                      font-weight: 700;
-                      color: #FFFFFF !important;
-                      background: #40484B; }
-                    #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval.bg-shamrock {
-                      background-color: #69B3A5;
-                      opacity: 1;
-                      font-size: 11px;
-                      font-weight: 700;
-                      color: #FFFFFF !important; }
-    #request main .splash-categories > .main {
-      -webkit-transition: all 0.15s ease-in-out;
-      -o-transition: all 0.15s ease-in-out;
-      -ms-transition: all 0.15s ease-in-out;
-      -moz-transition: all 0.15s ease-in-out;
-      transition: all 0.15s ease-in-out;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #F1F1F1; }
+    #request main .splash-categories > .main .subcategory-card-list.not-selected, #request main .splash-categories > .main .subcategory-card-list:not(.selected) {
+      filter: alpha(opacity=0);
+      opacity: 0;
+      z-index: -99; }
+    #request main .splash-categories > .main .subcategory-card-list.selected {
+      filter: alpha(opacity=100);
+      opacity: 1;
+      z-index: 98; }
+    #request main .splash-categories > .main .subcategory-card-list .category-card-list {
+      margin: 0 !important;
       -webkit-align-items: flex-start;
       align-items: flex-start;
+      -webkit-align-self: flex-start;
+      align-self: flex-start;
+      -webkit-justify-content: flex-start;
+      justify-content: flex-start;
+      height: calc(100% - 64px); }
+      #request main .splash-categories > .main .subcategory-card-list .category-card-list li {
+        width: 50%;
+        height: 25%; }
+        #request main .splash-categories > .main .subcategory-card-list .category-card-list li:nth-child(9), #request main .splash-categories > .main .subcategory-card-list .category-card-list li:nth-child(10) {
+          display: none; }
+        #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div {
+          background: none;
+          height: 100%; }
+          #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div .card-label {
+            display: block !important;
+            margin-top: 0;
+            padding: 0;
+            color: white !important;
+            font-weight: 600;
+            font-size: 16px; }
+          #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span:before {
+            display: none !important; }
+          #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span:first-child {
+            height: calc(100% - 30px); }
+          #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span .card-icon {
+            padding: 0;
+            max-width: 36px;
+            max-height: 36px; }
+            #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span .card-icon svg {
+              background: none !important;
+              padding: 0 !important; }
+              #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span .card-icon svg * {
+                stroke-width: 4px !important; }
+          #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price {
+            height: 30px !important;
+            color: white;
+            font-size: 16px;
+            font-weight: 600; }
+            #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price:before {
+              display: none !important; }
+            #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-delivery {
+              background: #F04F54; }
+            #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-freelancing {
+              background: #E5753C; }
+            #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-baking {
+              background: #F6C64E; }
+            #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-photography {
+              background: #81B566; }
+            #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-tech {
+              background: #55A4B7; }
+            #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-household {
+              background: #7872e3; }
+            #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-athletic {
+              background: #9A5BC5; }
+            #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-academic {
+              background: #e6389b; }
+    #request main .splash-categories > .main .subcategory-card-list button {
+      -webkit-align-self: flex-end;
+      align-self: flex-end;
+      display: block;
       width: 100%;
-      background: #F1F1F1; }
-      #request main .splash-categories > .main:not(.active) {
-        filter: alpha(opacity=0);
-        opacity: 0;
-        display: none; }
-      #request main .splash-categories > .main.active {
-        filter: alpha(opacity=100);
-        opacity: 1;
-        display: block; }
-      #request main .splash-categories > .main#splash-livemap {
-        height: 600px; }
-      #request main .splash-categories > .main > div {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -ms-flex-flow: row wrap;
-        -webkit-flex-flow: row wrap;
-        flex-flow: row wrap;
-        width: 100%; }
-        #request main .splash-categories > .main > div > h1, #request main .splash-categories > .main > div > h2, #request main .splash-categories > .main > div > div > h1, #request main .splash-categories > .main > div > div > h2 {
-          width: 100%;
-          text-align: center; }
-        #request main .splash-categories > .main > div > h1, #request main .splash-categories > .main > div > div > h1 {
-          font-size: 24px;
-          font-weight: 600; }
-          #request main .splash-categories > .main > div > h1 span:first-letter, #request main .splash-categories > .main > div > div > h1 span:first-letter {
-            text-transform: uppercase; }
-        #request main .splash-categories > .main > div > h2, #request main .splash-categories > .main > div > div > h2 {
-          margin: 5px auto 7.5px;
-          font-size: 16px;
-          font-weight: 400; }
-        #request main .splash-categories > .main > div > div {
-          position: relative;
-          width: 100%; }
-          #request main .splash-categories > .main > div > div:last-child {
-            -webkit-align-self: flex-end;
-            align-self: flex-end; }
-      #request main .splash-categories > .main .category-card-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -ms-flex-flow: row wrap;
-        -webkit-flex-flow: row wrap;
-        flex-flow: row wrap;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center; }
-        #request main .splash-categories > .main .category-card-list li {
-          width: calc(100% / 3);
-          padding: 0; }
-          @media screen and (max-width: 768px) {
-            #request main .splash-categories > .main .category-card-list li.card-button {
-              width: 100% !important; } }
-          #request main .splash-categories > .main .category-card-list li button {
-            max-width: 100%; }
-          #request main .splash-categories > .main .category-card-list li > div {
-            height: 200px;
-            background-position: center center;
-            background-size: cover; }
-            #request main .splash-categories > .main .category-card-list li > div a, #request main .splash-categories > .main .category-card-list li > div > span {
-              -ms-box-orient: horizontal;
-              display: -webkit-box;
-              display: -moz-box;
-              display: -ms-flexbox;
-              display: -moz-flex;
-              display: -webkit-flex;
-              display: flex;
-              -ms-flex-flow: row wrap;
-              -webkit-flex-flow: row wrap;
-              flex-flow: row wrap;
-              -webkit-flex-direction: row;
-              flex-direction: row;
-              -webkit-align-items: center;
-              align-items: center;
-              -webkit-align-content: center;
-              align-content: center;
-              -webkit-justify-content: center;
-              justify-content: center;
-              position: relative;
-              width: 100%;
-              height: 100%;
-              background: transparent;
-              background-color: transparent; }
-              #request main .splash-categories > .main .category-card-list li > div a:before, #request main .splash-categories > .main .category-card-list li > div > span:before {
-                -webkit-transition: all 0.15s ease-in-out;
-                -o-transition: all 0.15s ease-in-out;
-                -ms-transition: all 0.15s ease-in-out;
-                -moz-transition: all 0.15s ease-in-out;
-                transition: all 0.15s ease-in-out;
-                filter: alpha(opacity=60);
-                opacity: 0.6;
-                content: "";
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: #40484B; }
-              #request main .splash-categories > .main .category-card-list li > div a span, #request main .splash-categories > .main .category-card-list li > div > span span {
-                position: relative;
-                z-index: 5; }
-              #request main .splash-categories > .main .category-card-list li > div a .card-icon, #request main .splash-categories > .main .category-card-list li > div > span .card-icon {
-                display: block;
-                margin: 0 auto;
-                padding: 15px;
-                max-width: 120px;
-                max-height: 120px; }
-                #request main .splash-categories > .main .category-card-list li > div a .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span .card-icon svg {
-                  border-radius: 1000px;
-                  display: block;
-                  width: 100%;
-                  height: auto;
-                  padding: 5px;
-                  background: #69B3A5; }
-                  #request main .splash-categories > .main .category-card-list li > div a .card-icon svg path, #request main .splash-categories > .main .category-card-list li > div a .card-icon svg circle, #request main .splash-categories > .main .category-card-list li > div > span .card-icon svg path, #request main .splash-categories > .main .category-card-list li > div > span .card-icon svg circle {
-                    fill: none;
-                    stroke: white;
-                    stroke-width: 2px;
-                    stroke-linecap: round;
-                    stroke-linejoin: round; }
-              #request main .splash-categories > .main .category-card-list li > div a .card-label, #request main .splash-categories > .main .category-card-list li > div > span .card-label {
-                display: block;
-                color: white;
-                margin-top: -10px;
-                width: 100%;
-                font-weight: 600;
-                font-size: 12px;
-                text-align: center;
-                display: block; }
-              #request main .splash-categories > .main .category-card-list li > div a.bg-delivery, #request main .splash-categories > .main .category-card-list li > div > span.bg-delivery {
-                border-color: #F04F54; }
-                #request main .splash-categories > .main .category-card-list li > div a.bg-delivery .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-delivery .card-icon svg {
-                  background: #F04F54; }
-              #request main .splash-categories > .main .category-card-list li > div a.bg-freelancing, #request main .splash-categories > .main .category-card-list li > div > span.bg-freelancing {
-                border-color: #E5753C; }
-                #request main .splash-categories > .main .category-card-list li > div a.bg-freelancing .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-freelancing .card-icon svg {
-                  background: #E5753C; }
-              #request main .splash-categories > .main .category-card-list li > div a.bg-baking, #request main .splash-categories > .main .category-card-list li > div > span.bg-baking {
-                border-color: #F6C64E; }
-                #request main .splash-categories > .main .category-card-list li > div a.bg-baking .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-baking .card-icon svg {
-                  background: #F6C64E; }
-              #request main .splash-categories > .main .category-card-list li > div a.bg-photography, #request main .splash-categories > .main .category-card-list li > div > span.bg-photography {
-                border-color: #81B566; }
-                #request main .splash-categories > .main .category-card-list li > div a.bg-photography .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-photography .card-icon svg {
-                  background: #81B566; }
-              #request main .splash-categories > .main .category-card-list li > div a.bg-more, #request main .splash-categories > .main .category-card-list li > div > span.bg-more {
-                border-color: #69B3A5; }
-                #request main .splash-categories > .main .category-card-list li > div a.bg-more .card-label, #request main .splash-categories > .main .category-card-list li > div > span.bg-more .card-label {
-                  color: white !important; }
-                #request main .splash-categories > .main .category-card-list li > div a.bg-more .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-more .card-icon svg {
-                  background: #69B3A5; }
-              #request main .splash-categories > .main .category-card-list li > div a.bg-tech, #request main .splash-categories > .main .category-card-list li > div > span.bg-tech {
-                border-color: #55A4B7; }
-                #request main .splash-categories > .main .category-card-list li > div a.bg-tech .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-tech .card-icon svg {
-                  background: #55A4B7; }
-              #request main .splash-categories > .main .category-card-list li > div a.bg-household, #request main .splash-categories > .main .category-card-list li > div > span.bg-household {
-                border-color: #7872e3; }
-                #request main .splash-categories > .main .category-card-list li > div a.bg-household .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-household .card-icon svg {
-                  background: #7872e3; }
-              #request main .splash-categories > .main .category-card-list li > div a.bg-athletic, #request main .splash-categories > .main .category-card-list li > div > span.bg-athletic {
-                border-color: #9A5BC5; }
-                #request main .splash-categories > .main .category-card-list li > div a.bg-athletic .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-athletic .card-icon svg {
-                  background: #9A5BC5; }
-              #request main .splash-categories > .main .category-card-list li > div a.bg-academic, #request main .splash-categories > .main .category-card-list li > div > span.bg-academic {
-                border-color: #e6389b; }
-                #request main .splash-categories > .main .category-card-list li > div a.bg-academic .card-icon svg, #request main .splash-categories > .main .category-card-list li > div > span.bg-academic .card-icon svg {
-                  background: #e6389b; }
-            #request main .splash-categories > .main .category-card-list li > div a:hover:before, #request main .splash-categories > .main .category-card-list li > div a:focus:before {
-              background: #69B3A5; }
-            #request main .splash-categories > .main .category-card-list li > div a:active:before {
-              filter: alpha(opacity=80);
-              opacity: 0.8; }
-            #request main .splash-categories > .main .category-card-list li > div a.bg-delivery:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-delivery:focus:before {
-              background: #F04F54; }
-            #request main .splash-categories > .main .category-card-list li > div a.bg-freelancing:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-freelancing:focus:before {
-              background: #E5753C; }
-            #request main .splash-categories > .main .category-card-list li > div a.bg-baking:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-baking:focus:before {
-              background: #F6C64E; }
-            #request main .splash-categories > .main .category-card-list li > div a.bg-photography:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-photography:focus:before {
-              background: #81B566; }
-            #request main .splash-categories > .main .category-card-list li > div a.bg-tech:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-tech:focus:before {
-              background: #55A4B7; }
-            #request main .splash-categories > .main .category-card-list li > div a.bg-household:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-household:focus:before {
-              background: #7872e3; }
-            #request main .splash-categories > .main .category-card-list li > div a.bg-athletic:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-athletic:focus:before {
-              background: #9A5BC5; }
-            #request main .splash-categories > .main .category-card-list li > div a.bg-academic:hover:before, #request main .splash-categories > .main .category-card-list li > div a.bg-academic:focus:before {
-              background: #e6389b; }
-            #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more):before {
-              filter: alpha(opacity=20);
-              opacity: 0.2; }
-            #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-delivery:before {
-              background: #F04F54; }
-            #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-freelancing:before {
-              background: #E5753C; }
-            #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-baking:before {
-              background: #F6C64E; }
-            #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-photography:before {
-              background: #81B566; }
-            #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-tech:before {
-              background: #55A4B7; }
-            #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-household:before {
-              background: #7872e3; }
-            #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-athletic:before {
-              background: #9A5BC5; }
-            #request main .splash-categories > .main .category-card-list li > div > span:not(.bg-more).bg-academic:before {
-              background: #e6389b; }
-      #request main .splash-categories > .main .subcategory-card-list {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -ms-flex-flow: row wrap;
-        -webkit-flex-flow: row wrap;
-        flex-flow: row wrap;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #F1F1F1; }
-        #request main .splash-categories > .main .subcategory-card-list.not-selected, #request main .splash-categories > .main .subcategory-card-list:not(.selected) {
-          filter: alpha(opacity=0);
-          opacity: 0;
-          z-index: -99; }
-        #request main .splash-categories > .main .subcategory-card-list.selected {
-          filter: alpha(opacity=100);
-          opacity: 1;
-          z-index: 98; }
-        #request main .splash-categories > .main .subcategory-card-list .category-card-list {
-          margin: 0 !important;
-          -webkit-align-items: flex-start;
-          align-items: flex-start;
-          -webkit-align-self: flex-start;
-          align-self: flex-start;
-          -webkit-justify-content: flex-start;
-          justify-content: flex-start;
-          height: calc(100% - 64px); }
-          #request main .splash-categories > .main .subcategory-card-list .category-card-list li {
-            width: 50%;
-            height: 25%; }
-            #request main .splash-categories > .main .subcategory-card-list .category-card-list li:nth-child(9), #request main .splash-categories > .main .subcategory-card-list .category-card-list li:nth-child(10) {
-              display: none; }
-            #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div {
-              background: none;
-              height: 100%; }
-              #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div .card-label {
-                display: block !important;
-                margin-top: 0;
-                padding: 0;
-                color: white !important;
-                font-weight: 600;
-                font-size: 16px; }
-              #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span:before {
-                display: none !important; }
-              #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span:first-child {
-                height: calc(100% - 30px); }
-              #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span .card-icon {
-                padding: 0;
-                max-width: 36px;
-                max-height: 36px; }
-                #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span .card-icon svg {
-                  background: none !important;
-                  padding: 0 !important; }
-                  #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span .card-icon svg * {
-                    stroke-width: 4px !important; }
-              #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price {
-                height: 30px !important;
-                color: white;
-                font-size: 16px;
-                font-weight: 600; }
-                #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price:before {
-                  display: none !important; }
-                #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-delivery {
-                  background: #F04F54; }
-                #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-freelancing {
-                  background: #E5753C; }
-                #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-baking {
-                  background: #F6C64E; }
-                #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-photography {
-                  background: #81B566; }
-                #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-tech {
-                  background: #55A4B7; }
-                #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-household {
-                  background: #7872e3; }
-                #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-athletic {
-                  background: #9A5BC5; }
-                #request main .splash-categories > .main .subcategory-card-list .category-card-list li > div > span.card-price.bg-academic {
-                  background: #e6389b; }
-        #request main .splash-categories > .main .subcategory-card-list button {
-          -webkit-align-self: flex-end;
-          align-self: flex-end;
-          display: block;
-          width: 100%;
-          max-width: none;
-          color: white; }
-          #request main .splash-categories > .main .subcategory-card-list button:hover, #request main .splash-categories > .main .subcategory-card-list button:focus {
-            background: #637074; }
-        #request main .splash-categories > .main .subcategory-card-list.sub-delivery {
-          background: #9b6367; }
-          #request main .splash-categories > .main .subcategory-card-list.sub-delivery button {
-            background: #F04F54; }
-            #request main .splash-categories > .main .subcategory-card-list.sub-delivery button:active {
-              background: #f69598; }
-        #request main .splash-categories > .main .subcategory-card-list.sub-freelancing {
-          background: #97725e; }
-          #request main .splash-categories > .main .subcategory-card-list.sub-freelancing button {
-            background: #E5753C; }
-            #request main .splash-categories > .main .subcategory-card-list.sub-freelancing button:active {
-              background: #eea580; }
-        #request main .splash-categories > .main .subcategory-card-list.sub-baking {
-          background: #9e9265; }
-          #request main .splash-categories > .main .subcategory-card-list.sub-baking button {
-            background: #F6C64E; }
-            #request main .splash-categories > .main .subcategory-card-list.sub-baking button:active {
-              background: #f7ce66; }
-        #request main .splash-categories > .main .subcategory-card-list.sub-photography {
-          background: #6f8c6e; }
-          #request main .splash-categories > .main .subcategory-card-list.sub-photography button {
-            background: #81B566; }
-            #request main .splash-categories > .main .subcategory-card-list.sub-photography button:active {
-              background: #abce9a; }
-        #request main .splash-categories > .main .subcategory-card-list.sub-tech {
-          background: #5d858f; }
-          #request main .splash-categories > .main .subcategory-card-list.sub-tech button {
-            background: #55A4B7; }
-            #request main .splash-categories > .main .subcategory-card-list.sub-tech button:active {
-              background: #8bc1ce; }
-        #request main .splash-categories > .main .subcategory-card-list.sub-household {
-          background: #6b71a0; }
-          #request main .splash-categories > .main .subcategory-card-list.sub-household button {
-            background: #7872e3; }
-            #request main .splash-categories > .main .subcategory-card-list.sub-household button:active {
-              background: #b5b2f0; }
-        #request main .splash-categories > .main .subcategory-card-list.sub-athletic {
-          background: #796894; }
-          #request main .splash-categories > .main .subcategory-card-list.sub-athletic button {
-            background: #9A5BC5; }
-            #request main .splash-categories > .main .subcategory-card-list.sub-athletic button:active {
-              background: #bd94d9; }
-        #request main .splash-categories > .main .subcategory-card-list.sub-academic {
-          background: #975a84; }
-          #request main .splash-categories > .main .subcategory-card-list.sub-academic button {
-            background: #e6389b; }
-            #request main .splash-categories > .main .subcategory-card-list.sub-academic button:active {
-              background: #f193c9; }
+      max-width: none;
+      color: white; }
+      #request main .splash-categories > .main .subcategory-card-list button:hover, #request main .splash-categories > .main .subcategory-card-list button:focus {
+        background: #637074; }
+    #request main .splash-categories > .main .subcategory-card-list.sub-delivery {
+      background: #9b6367; }
+      #request main .splash-categories > .main .subcategory-card-list.sub-delivery button {
+        background: #F04F54; }
+        #request main .splash-categories > .main .subcategory-card-list.sub-delivery button:active {
+          background: #f69598; }
+    #request main .splash-categories > .main .subcategory-card-list.sub-freelancing {
+      background: #97725e; }
+      #request main .splash-categories > .main .subcategory-card-list.sub-freelancing button {
+        background: #E5753C; }
+        #request main .splash-categories > .main .subcategory-card-list.sub-freelancing button:active {
+          background: #eea580; }
+    #request main .splash-categories > .main .subcategory-card-list.sub-baking {
+      background: #9e9265; }
+      #request main .splash-categories > .main .subcategory-card-list.sub-baking button {
+        background: #F6C64E; }
+        #request main .splash-categories > .main .subcategory-card-list.sub-baking button:active {
+          background: #f7ce66; }
+    #request main .splash-categories > .main .subcategory-card-list.sub-photography {
+      background: #6f8c6e; }
+      #request main .splash-categories > .main .subcategory-card-list.sub-photography button {
+        background: #81B566; }
+        #request main .splash-categories > .main .subcategory-card-list.sub-photography button:active {
+          background: #abce9a; }
+    #request main .splash-categories > .main .subcategory-card-list.sub-tech {
+      background: #5d858f; }
+      #request main .splash-categories > .main .subcategory-card-list.sub-tech button {
+        background: #55A4B7; }
+        #request main .splash-categories > .main .subcategory-card-list.sub-tech button:active {
+          background: #8bc1ce; }
+    #request main .splash-categories > .main .subcategory-card-list.sub-household {
+      background: #6b71a0; }
+      #request main .splash-categories > .main .subcategory-card-list.sub-household button {
+        background: #7872e3; }
+        #request main .splash-categories > .main .subcategory-card-list.sub-household button:active {
+          background: #b5b2f0; }
+    #request main .splash-categories > .main .subcategory-card-list.sub-athletic {
+      background: #796894; }
+      #request main .splash-categories > .main .subcategory-card-list.sub-athletic button {
+        background: #9A5BC5; }
+        #request main .splash-categories > .main .subcategory-card-list.sub-athletic button:active {
+          background: #bd94d9; }
+    #request main .splash-categories > .main .subcategory-card-list.sub-academic {
+      background: #975a84; }
+      #request main .splash-categories > .main .subcategory-card-list.sub-academic button {
+        background: #e6389b; }
+        #request main .splash-categories > .main .subcategory-card-list.sub-academic button:active {
+          background: #f193c9; }
 
 .opacity-0-impt {
   opacity: 0 !important; }
@@ -1145,39 +1087,6 @@ header#home-nav-header.splash-header,
 
 .bg-auburn-impt {
   background: rgba(240, 79, 84, 0.75) !important; }
-
-.u-dz-attachment {
-  max-width: 140px;
-  margin: 0 5px; }
-  .u-dz-attachment .dz-remove {
-    display: none !important; }
-  .u-dz-attachment .img-container {
-    width: 120px; }
-    .u-dz-attachment .img-container a[data-dz-remove] svg {
-      height: 20px;
-      width: 20px;
-      stroke: #2B3234 !important;
-      stroke-width: 3px !important; }
-    .u-dz-attachment .img-container img {
-      max-width: 120px;
-      max-height: 100px;
-      height: 100%;
-      width: auto;
-      background: #2B3234; }
-      .u-dz-attachment .img-container img:before {
-        content: "loading...";
-        font-size: 10px; }
-    .u-dz-attachment .img-container div[data-dz-uploadprogress] {
-      height: 5px;
-      top: 100px; }
-  .u-dz-attachment .u-dz-details {
-    width: 100%;
-    width: 125px;
-    text-align: center; }
-    .u-dz-attachment .u-dz-details .u-file-name {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis; }
 
 .opacity-1-impt {
   opacity: 1 !important; }

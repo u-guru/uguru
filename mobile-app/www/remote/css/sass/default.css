@@ -3676,8 +3676,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .custom-dropdown > div a:hover svg,
 .custom-dropdown > div a:focus svg,
-.dropdown > div a:hover svg,
-.dropdown > div a:focus svg {
+.dropdown > div a:hover svg, .dropdown > div a:focus svg {
   background: #8bc4b9;
 }
 
@@ -6224,6 +6223,8 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .tab-bar.arrow-bar > div a {
+  position: relative;
+  z-index: 10;
   padding: 0 !important;
   font-size: 24px !important;
 }
@@ -6695,6 +6696,43 @@ input[type=range]:focus::-ms-fill-upper {
   color: white !important;
 }
 
+.tag-list ul,
+.pf-tags ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  width: 100%;
+  padding: 10px 10px 5px;
+}
+
+.tag-list ul li,
+.pf-tags ul li {
+  padding: 0 5px 10px;
+}
+
+.tag-list ul li .chip,
+.pf-tags ul li .chip {
+  margin-right: 0;
+}
+
+.tag-list .error,
+.pf-tags .error {
+  display: block;
+  width: 100%;
+  padding: 0 15px 15px;
+  color: #d3242c;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
 .attachment-list {
   width: 100%;
   min-height: 100px;
@@ -6721,6 +6759,12 @@ input[type=range]:focus::-ms-fill-upper {
   padding: 7.5px;
 }
 
+.attachment-list ul:not(:empty) {
+  background: #F1F1F1;
+  position: relative;
+  z-index: 10;
+}
+
 .attachment-list ul li {
   padding: 7.5px;
   height: 100%;
@@ -6730,13 +6774,144 @@ input[type=range]:focus::-ms-fill-upper {
   padding-right: 15px;
 }
 
-.attachment-list ul li div {
-  position: relative;
+.attachment-list ul li div:not(.not) {
   width: 150px;
-  height: 100%;
   background: #40484B;
   border: 2px solid white;
+}
+
+.attachment-list ul li div, .attachment-list ul li img {
+  position: relative;
+  height: 100%;
   border-radius: 10px;
+}
+
+.attachment-list ul li img {
+  max-height: 100%;
+  width: auto;
+}
+
+.attachment-list ul li img:before, .attachment-list ul li .details {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(64, 72, 75, 0.6);
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.attachment-list ul li img:before span, .attachment-list ul li .details span {
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.attachment-list ul li img:before span:first-child, .attachment-list ul li .details span:first-child {
+  font-size: 18px;
+}
+
+.attachment-list ul li img:before span.u-file-name, .attachment-list ul li .details span.u-file-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.attachment-list ul li img:before span.u-file-error:not(:empty), .attachment-list ul li .details span.u-file-error:not(:empty) {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(211, 36, 44, 0.95);
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+.attachment-list ul li img:not([src]) {
+  display: none;
+}
+
+.attachment-list ul li img:not([src]) + .details {
+  position: static;
+  top: auto;
+  left: auto;
+  width: 120px;
+  background: #50A5DD;
+}
+
+.attachment-list ul li .dz-remove {
+  display: none !important;
+}
+
+.attachment-list ul li div[data-dz-uploadprogress] {
+  border-radius: 1000px;
+  position: absolute;
+  background: white;
+  height: 5px;
+  bottom: 15px;
+  left: 15px;
+  max-width: calc(100% - 30px);
+}
+
+.attachment-list ul li a[data-dz-remove], .attachment-list ul li a:not(.doc-info) {
+  display: block;
+  position: absolute;
+  z-index: 3;
+  top: 5px;
+  left: 5px;
+  width: 25px;
+  height: 25px;
+}
+
+.attachment-list ul li a[data-dz-remove] svg, .attachment-list ul li a:not(.doc-info) svg {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  fill: none;
+  stroke: white;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 25px;
+  height: 25px;
 }
 
 .attachment-list ul li .doc-info {
@@ -6825,33 +7000,6 @@ input[type=range]:focus::-ms-fill-upper {
   position: absolute;
   top: 5px;
   right: 5px;
-  width: 25px;
-  height: 25px;
-}
-
-.attachment-list ul li .attach-upload-img a:not(.doc-info),
-.attachment-list ul li .attach-upload-file a:not(.doc-info) {
-  display: block;
-  position: absolute;
-  z-index: 3;
-  top: 5px;
-  left: 5px;
-  width: 25px;
-  height: 25px;
-}
-
-.attachment-list ul li .attach-upload-img a:not(.doc-info) svg,
-.attachment-list ul li .attach-upload-file a:not(.doc-info) svg {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-  fill: none;
-  stroke: white;
-  stroke-width: 8px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
   width: 25px;
   height: 25px;
 }
@@ -6956,8 +7104,7 @@ input[type=range]:focus::-ms-fill-upper {
   background: #cfe6e2;
 }
 
-.checkbox-container,
-.radio-container {
+.checkbox-container, .radio-container {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -6975,13 +7122,11 @@ input[type=range]:focus::-ms-fill-upper {
   justify-content: center;
 }
 
-.checkbox-container div,
-.radio-container div {
+.checkbox-container div, .radio-container div {
   position: relative;
 }
 
-.checkbox-container div input,
-.radio-container div input {
+.checkbox-container div input, .radio-container div input {
   filter: alpha(opacity=0);
   opacity: 0;
   position: absolute;
@@ -6992,14 +7137,12 @@ input[type=range]:focus::-ms-fill-upper {
   height: 100%;
 }
 
-.checkbox-container div span,
-.radio-container div span {
+.checkbox-container div span, .radio-container div span {
   display: block;
   background: #40484B;
 }
 
-.checkbox-container label,
-.radio-container label {
+.checkbox-container label, .radio-container label {
   padding-left: 15px;
   color: white;
   font-size: 20px;

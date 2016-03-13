@@ -993,6 +993,269 @@
 		}
 
 		// HERO
+		#splash-hero-nav-mobile {
+			@include flex;
+			@include flex-wrap;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background: rgba($slate, .95);
+			@media screen and (min-width: 768px) {
+				display: none!important;
+			}
+			h1 {
+				padding-top: 15px;
+				font-size: 28px;
+				font-weight: 700;
+			}
+			.splash-hero-nav-school {
+				width: 100%;
+				ul {
+					padding: 7.5px;
+					width: 100%;
+					li {
+						padding: 7.5px;
+						width: 100%;
+						a {
+							@include round;
+							@include flex;
+							@include flex-center;
+							position: relative;
+							width: 100%;
+							height: 48px;
+							border-width: 2px;
+							border-style: solid;
+							span {
+								@include prefix(transition, all 150ms ease-in-out);
+								&:nth-child(1) {
+									@include opacity(.5);
+									@include round;
+									display: block;
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 100%;
+									height: 100%;
+								}
+								&:nth-child(2) {
+									display: block;
+									position: relative;
+									z-index: 5;
+									font-size: 20px;
+									font-weight: 600;
+								}
+								&:nth-child(3) {
+									position: relative;
+									z-index: 5;
+									svg {
+										display: block;
+										width: 36px;
+										height: 36px;
+										padding: 6px;
+										* {
+											@include svg-stroke(white, 8);
+										}
+									}
+								}
+							}
+							&:not(.active) {
+								span:nth-child(3) {
+									svg {
+										@include prefix(transition, all 150ms ease-in-out);
+										@include opacity(0);
+										display: none;
+									}
+								}
+							}
+							&.bg-find {
+								border-color: white;
+								span:first-child {
+									@include opacity(.2);
+									background: white;
+								}
+								&:hover, &:focus {
+									span:nth-child(2) {
+										color: $slate;
+									}
+								}
+							}
+							&:hover, &:focus {
+								span:nth-child(1) {
+									@include opacity(1);
+								}
+							}
+						}
+					}
+				}
+			}
+			.splash-hero-nav-category {
+				ul {
+					@include flex;
+					@include flex-center;
+					@include flex-wrap;
+					padding: 7.5px;
+					li {
+						width: calc(100% / 3);
+						padding: 7.5px;
+						a {
+							&:not(.active) {
+								span {
+									svg {
+										* {
+											@include opacity(0);
+										}
+									}
+								}
+							}
+							&.bg-delivery {
+								span {
+									svg {
+										background: mix($auburn, $slate);
+										border: 2px solid $auburn;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $auburn;
+										}
+									}
+								}
+							}
+							&.bg-freelancing {
+								span {
+									svg {
+										background: mix($orange, $slate);
+										border: 2px solid $orange;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $orange;
+										}
+									}
+								}
+							}
+							&.bg-baking {
+								span {
+									svg {
+										background: mix($gold, $slate);
+										border: 2px solid $gold;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $gold;
+										}
+									}
+								}
+							}
+							&.bg-photography {
+								span {
+									svg {
+										background: mix($moola, $slate);
+										border: 2px solid $moola;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $moola;
+										}
+									}
+								}
+							}
+							&.bg-tech {
+								span {
+									svg {
+										background: mix($azure, $slate);
+										border: 2px solid $azure;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $azure;
+										}
+									}
+								}
+							}
+							&.bg-household {
+								span {
+									svg {
+										background: mix($cobalt, $slate);
+										border: 2px solid $cobalt;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $cobalt;
+										}
+									}
+								}
+							}
+							&.bg-athletic {
+								span {
+									svg {
+										background: mix($eggplant, $slate);
+										border: 2px solid $eggplant;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $eggplant;
+										}
+									}
+								}
+							}
+							&.bg-academic {
+								span {
+									svg {
+										background: mix($cerise, $slate);
+										border: 2px solid $cerise;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $cerise;
+										}
+									}
+								}
+							}
+						}
+						span {
+							display: block;
+							font-size: 16px;
+							font-weight: 600;
+							white-space: nowrap;
+							&:first-child {
+								svg {
+									@include round;
+									width: 48px;
+									height: 48px;
+									padding: 6px;
+									* {
+										@include prefix(transition, all 150ms ease-in-out);
+										@include svg-stroke(white, 6);
+									}
+								}
+							}
+							&:last-child {
+								padding-top: 5px;
+							}
+						}
+					}
+				}
+			}
+		}
 		&.splash-hero {
 			@include flex;
 			@include flex-center;
@@ -1011,7 +1274,7 @@
 					height: 70px!important;
 				}
 			}
-			.splash-hero-nav, .splash-hero-nav-mobile-dropdowns {
+			.splash-hero-nav {
 				@include flex;
 				@include flex-center-vertical;
 				position: fixed;
@@ -2379,14 +2642,6 @@
 					}
 				}
 			}
-			@media screen and (max-width: 320px) {
-				.splash-hero-device {
-					@include prefix(transform, scale(.8), webkit moz ms o);
-				}
-				.splash-hero-content {
-					@include prefix(transform, scale(.7), webkit moz ms o);
-				}
-			}
 			@media screen and (max-width: 768px) {
 				.splash-mobile-cta {
 					display: block!important;
@@ -2409,6 +2664,17 @@
 							@include prefix(flex-direction, column, wekit moz ms o);
 							height: 250px;
 						}
+					}
+				}
+			}
+			@media screen and (max-width: 320px) {
+				.splash-hero-device {
+					@include prefix(transform, scale(.8), webkit moz ms o);
+				}
+				.splash-hero-content {
+					@include prefix(transform, scale(.7), webkit moz ms o);
+					.splash-adlib h1 {
+						line-height: 2!important;
 					}
 				}
 			}
@@ -2654,7 +2920,7 @@
 					margin: 0 auto;
 					background: none!important;
 					.swiper-gallery-wrapper {
-						background: $slate!important;
+						background: none!important;
 						> div {
 							width: calc(100% / 3);
 							&:before {
@@ -3646,6 +3912,15 @@
 										font-size: 14px;
 										font-weight: 600;
 										text-transform: uppercase;
+										&:only-child {
+											@include flex;
+											@include flex-center;
+											margin: 0!important;
+											width: 100%;
+											height: 100%;
+											border-bottom-width: 5px;
+											border-bottom-style: solid;
+										}
 									}
 									.course-title {
 										display: block;

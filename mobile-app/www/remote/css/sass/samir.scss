@@ -674,42 +674,7 @@ header#home-nav-header.splash-header,
 
 
 #request {
-	height: 100%;
-	#request-form-progress {
-		bottom:60px !important;
-		top:initial !important;
-	}
-	header.desktop-tab-header {
-		@include flex;
-		@include flex-center;
-		@include flex-wrap;
-		height: calc(100% / 4);
-		&:not([class*="bg-"]) {
-			background: $shamrock;
-		}
-		h1 {
-			padding-bottom: 60px;
-			font-size: 48px;
-			text-align: center;
-			text-transform: none!important;
-		}
-		.tab-bar {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			background: rgba($slate,.4);
-			a {
-				color:white;
-				text-align:center;
-			}
-		}
-	}
 	main {
-		@include flex;
-		@include flex-wrap;
-		height: calc(100% / 4 * 3);
-		overflow: auto;
 		//all CTAs defined here
 		#cta-modal-request-courses {
 			z-index:1000000 !important;
@@ -719,11 +684,6 @@ header#home-nav-header.splash-header,
 			}
 		}
 		section {
-			//account for the footer button container, height 104px;
-			height:calc(100%) !important;
-			&>* {
-				width:100%;
-			}
 			&#request-cta-details {
 				#cta-modal-request-courses {
 					height:100% !important;
@@ -1411,50 +1371,6 @@ header#home-nav-header.splash-header,
 
 .bg-auburn-impt {
 	background: rgba($auburn, 0.75) !important;
-}
-
-.u-dz-attachment {
-	max-width:140px;
-	margin: 0 5px;
-	.dz-remove {
-		display: none !important;
-	}
-	.img-container {
-		width:120px;
-		a[data-dz-remove] {
-			svg {
-				height:20px;
-				width:20px;
-				stroke: $charcoal !important;
-				stroke-width: 3px !important;
-			}
-		}
-		img {
-			&:before {
-				content: "loading...";
-				font-size:10px;
-			}
-			max-width:120px;
-			max-height:100px;
-			height:100%;
-			width:auto;
-			background:$charcoal;
-		}
-		div[data-dz-uploadprogress] {
-			height:5px;
-			top:100px;
-		}
-	}
-	.u-dz-details {
-		width:100%;
-		width:125px;
-		text-align: center;
-		.u-file-name {
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-	}
 }
 
 .opacity-1-impt {
