@@ -2,7 +2,7 @@
 	<div class="request-category">
 		<header>
 			<h1>Select a request category.</h1>
-			<h2>Don't worry! You can always change this.</h2>
+			<h2>Don't worry! You can change this.</h2>
 		</header>
 		<ul>
 			<li name='category-menu' ng-repeat='category in ::categories' ng-if='category.is_active'>
@@ -21,7 +21,7 @@
 	<div class='request-subcategory sub-{{::category.hex_color}} ng-class:{"selected":category.id == requestForm.category.id }' ng-repeat='category in ::categories'>
 		<header>
 			<h1>Select a subcategory</h1>
-			<h2>Don't worry! You can always change this.</h2>
+			<h2>Don't worry! You can change this.</h2>
 		</header>
 		<ul>
 			<li name='sub-category' ng-repeat='subcategory in ::category.subcategories'>

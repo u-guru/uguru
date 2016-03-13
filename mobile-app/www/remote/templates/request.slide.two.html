@@ -32,7 +32,7 @@
 					<a>Bio 1A</a>
 				</li>
 				<li id='cta-box-request-courses' class='course-item'>
-					<a>Add One</a>
+					<a>+ Add One</a>
 				</li>
 			</ul>
 		</div>
@@ -40,7 +40,56 @@
 			<h1>Description</h1>
 			<textarea rows="4" ng-maxlength="requestForm.description.maxLength" ng-blur="requestForm.description.showSaved($scope)" ng-model='requestForm.description.content' placeholder="{{requestForm.description.placeholder}}"></textarea>
 		</div>
+		<div class="request-tags">
+			<h1>Tags</h1>
+			<div class='tag-list'>
+				<ul>
+					<li ng-repeat="tag in requestForm.tags.list">
+						<a class="chip tag-selected" ng-click='requestForm.tags.remove($index)'>
+							<span>&times;&nbsp;&nbsp;</span>
+							<span>{{tag.name}}</span>
+						</a>
+					</li>
+					<li>
+						<input tabindex="1" class='chip tag-add' ng-model='requestForm.tags.empty_tag.content' ng-blur='requestForm.tags.add()' ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && requestForm.tags.add()" placeholder="+ add a tag" size="{{requestForm.tags.empty_tag.content.length || 10}}">
+					</li>
+				</ul>
+				<span class="error hide" ng-class="{'show': requestForm.tags.showError}">Tags must have more than 3 characters</span> 
+			</div>
+		</div>
+		<div class="request-attachments">
+			<h1>Attachments</h1>
+			<div>
+				<div class='attachment-container'>
+					<ul id="dz-preview-template" style="display: none;">
+						<li class="u-dz-attachment">
+							<div class='img-container relative not'>
+								<div data-dz-uploadprogress class='not'></div>
+								<a data-dz-remove>
+									<svg viewBox="0 0 100 100" stroke="#FFFFFF" stroke-width="5">
+										<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+									</svg>
+								</a>
+								<img data-dz-thumbnail />
+								<span class="u-dz-details details">
+									<span class='u-file-name' data-dz-name></span>
+									<span class='u-file-size' data-dz-size></span>
+									<span class='u-file-error' data-dz-errormessage></span>
+								</span>
+							</div>
+						</li>
+					</ul>
+					<div class='attachment-list min-height'>
+						<span class="instructions">Drag up to 10mb of files here</span>
+						<ul id='request-form-file-uploader'></ul>
+						<progress class="bg-slate txt-shamrock round" max="10" value="10"></progress>
+					</div>
+					<span class="uploaded">{{requestForm.files.length || '0'}} files uploaded</span>
+				</div>
+			</div>
+		</div>
 	</div>
+	<button class="confirm">Next</button>
 </section>
 <!-- <section class="request-slide full-xy text-center flex-wrap-center" id='request-cta-details'>
 	<ion-pane id='cta-modal-request-courses' class='absolute high-z-index full-xy hide-display cta-modal bg-charcoal' ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/student.courses.container.html'"></ion-pane>

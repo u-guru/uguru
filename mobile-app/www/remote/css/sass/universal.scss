@@ -698,6 +698,186 @@
 				> div {
 					width: calc(100% / 6);
 				}
+				a {
+					&:nth-child(1) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(2) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(3) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(4) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(5) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(6) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(1) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(2) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(3) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(4) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(5) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(6) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: $lake;
+								}
+							}
+						}
+					}
+				}
+				> div {
+					span {
+						background: $lake;
+					}
+					&:before {
+						border-color: $lake;
+						border-left-color: lighten($slate, 15%);
+					}
+					&:after {
+						right: -15px;
+						border-color: lighten($slate, 15%);
+						border-left-color: $lake;
+					}
+				}
 			}
 		}
 		progress, .progress {
@@ -847,6 +1027,11 @@
 			font-weight: 600;
 			text-transform: none;
 		}
+	}
+	button.confirm {
+		background: rgba($lake, .95);
+		color: white;
+		font-weight: 600;
 	}
 	&.request-categories {
 		position: relative;
@@ -1226,8 +1411,8 @@
 						}
 					}
 					&.bg-more {
-						background: white;
-						color: $slate;
+						background: mix($slate, white);
+						color: white;
 					}
 				}
 			}
@@ -1235,28 +1420,44 @@
 	}
 	&.request-details {
 		> div {
+			padding-bottom: 64px;
 			> div {
 				h1 {
-					padding: 15px 15px 13px;
+					padding: 15px 15px 0;
 					color: $slate;
-					font-size: 24px;
+					font-size: 16px;
 					font-weight: 600;
+					text-transform: uppercase;
+					text-align: left;
 				}
 				&.request-courses {
 					ul {
 						@include flex;
 						@include flex-wrap;
-						padding: 1px;
+						padding: 14px;
+						margin-top: -5px;
 						li {
 							padding: 1px;
 							width: calc(100% / 3);
 							a {
 								display: block;
 								padding: 15px;
-								font-size: 16px;
+								font-size: 18px;
 								font-weight: 600;
-								background: $shamrock;
+								background: $lake;
 								border-radius: 2px;
+								border-bottom: 5px solid rgba(white, .3);
+								border-top: 5px solid transparent;
+								&:hover, &:focus {
+									background: mix($lake, white);
+									color: mix($lake, $slate);
+									border-bottom-color: rgba(mix($shamrock, $slate), .3);
+								}
+								&:active {
+									background: mix($lake, $slate);
+									color: white;
+									border-bottom-color: rgba(white, .3);
+								}
 							}
 						}
 					}
@@ -1264,16 +1465,16 @@
 				&.request-desc {
 					textarea {
 						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						margin: 2px;
-						width: calc(100% - 4px);
-						@include transition(.15s ease-in-out);
+						margin: 10px 15px 15px;
+						width: calc(100% - 30px);
 						min-height: 100px;
+						padding: 15px;
 						resize: none;
-						background: rgba(white,.3);
-						border: 2px solid lighten($slate, 35%);
+						background: rgba(white,.2);
+						border: 2px solid lighten($slate, 40%);
 						border-bottom-width: 5px;
 						color: $slate;
-						font-size: 18px;
+						font-size: 16px;
 						font-weight: 400;
 						@include placeholder {
 							color: lighten($slate, 30%);
@@ -1285,10 +1486,481 @@
 						}
 						&:focus, &.active {
 							background: white;
-							border-color: $slate;
+							border-color: $lake;
 							color: $slate;
 						}
 					}
+				}
+				&.request-attachments {
+					.attachment-list {
+						position: relative;
+						margin: 10px 15px;
+						width: calc(100% - 30px);
+						height: 180px;
+						border: 2px dashed rgba($lake, .5);
+						border-radius: 5px;
+						ul {
+							height: 150px;
+						}
+						progress {
+							margin: 0 15px 15px;
+							width: calc(100% - 30px);
+						}
+						.instructions {
+							@include center-xy;
+							color: $lake;
+							font-size: 16px;
+							font-weight: 600;
+							width: 180px;
+							padding: 15px;
+						}
+					}
+					.uploaded {
+						display: block;
+						width: 100%;
+						padding: 0 15px 15px;
+						color: $lake;
+						font-size: 14px;
+						font-weight: 600;
+						text-align: center;
+					}
+				}
+			}
+		}
+		> button {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+	}
+	&.request-time {
+		> div {
+			height: calc(100% - 87px - 64px);
+			h1 {
+				padding: 15px 15px 0;
+				color: $slate;
+				font-size: 16px;
+				font-weight: 600;
+				text-transform: uppercase;
+				text-align: left;
+			}
+		}
+		.request-form {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center-vertical;
+			padding: 15px;
+			h2 {
+				@include flex;
+				@include flex-center-vertical;
+				margin-bottom: 15px;
+				height: 48px;
+				font-weight: 600;
+				color: $slate;
+			}
+			.custom-dropdown {
+				color: $slate;
+				margin-bottom: 15px;
+				> div {
+					span {
+						width: 84px;
+						background: white;
+						color: $slate;
+					}
+					a {
+						svg {
+							background: $lake;
+						}
+						&:hover, &:focus {
+							svg {
+								background: lighten($lake, 10%);
+							}
+						}
+						&:active {
+							svg {
+								background: darken($lake, 10%);
+							}
+						}
+					}
+				}
+				> ul {
+					@include transition(.15s ease-in-out);
+					@include flex;
+					@include flex-wrap;
+					@include translate(-50%, -50%);
+					top: 50%;
+					left: 50%;
+					li {
+						background: rgba(lighten($slate, 5%), .98);
+						font-weight: 600;
+						&:hover, &:focus {
+							background: rgba($lake,.98);
+						}
+						&:active {
+							background: rgba(lighten($lake, 10%),.98);
+						}
+					}
+				}
+				&.request-hours {
+					> ul {
+						li {
+							width: 50%;
+						}
+					}
+				}
+				&.request-minutes {
+					> ul {
+						left: calc(50% + 24px);
+						li {
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+		.request-when {
+			ul {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				padding: 0 14px 15px;
+				li {
+					width: calc(100% / 3);
+					padding: 1px;
+					a {
+						display: block;
+						width: 100%;
+						background: white;
+						border: 2px solid $lake;
+						border-left-width: 5px;
+						border-radius: 2px;
+						padding: 10px 15px;
+						color: lighten($slate, 15%);
+						font-weight: 600;
+						span {
+							display: block;
+							&:first-child {
+								font-size: 18px;
+								color: $lake;
+							}
+							&:last-child {
+								font-size: 14px;
+							}
+						}
+						&:hover, &:focus {
+							background: mix($lake, white);
+							span {
+								&:first-child {
+									color: mix($lake, $slate);
+								}
+								&:last-child {
+									color: $slate;
+								}
+							}
+						}
+						&:active {
+							background: mix($lake, $slate);
+							border-color: mix($lake, white);
+							span {
+								&:first-child {
+									color: mix($lake, white);
+								}
+								&:last-child {
+									color: white;
+								}
+							}
+						}
+					}
+					&:last-child {
+						width: 100%;
+						button {
+							background: $lake;
+							border-radius: 2px;
+							font-weight: 600;
+							&:hover, &:focus {
+								background: mix($lake, white);
+								color: mix($lake, $slate);
+							}
+							&:active {
+								background: mix($lake, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+			.checkbox-container {
+				@include prefix(justify-content, flex-start, webkit);
+				padding: 10px 15px 15px;
+				div {
+					span {
+						background: rgba($slate, .2);
+						svg {
+							stroke: rgba(white, .4);
+						}
+					}
+					input:checked + span {
+						background: $lake;
+						svg {
+							stroke: white;
+						}
+					}
+				}
+				label {
+					color: $slate;
+				}
+			}
+		}
+	}
+	&.request-map {
+		> div {
+			@include flex;
+			@include flex-wrap;
+			height: calc(100% - 87px - 64px);
+			.map-container {
+				height: calc(100% - 63px);
+			}
+			.input-field {
+				@include prefix(align-self, flex-end, webkit);
+				background: white;
+				width: 100%;
+				margin-top: 0;
+				padding-left: 15px;
+				padding-right: 15px;
+				input:focus {
+					border-bottom: 1px solid $lake;
+					box-shadow: 0 1px 0 0 $lake;
+				}
+			}
+		}
+	}
+	&.request-payment {
+		> button {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+		> div {
+			height: calc(100% - 87px);
+			padding-bottom: 64px;
+			.request-offer {
+				@include flex;
+				@include flex-center;
+				padding: 1px;
+				li {
+					position: relative;
+					padding: 1px;
+					width: 25%;
+					a {
+						position: relative;
+						display: block;
+						background: $lake;
+						border-radius: 2px;
+						span {
+							@include center-xy;
+							font-size: 28px;
+							font-weight: 600;
+						}
+						.add {
+							@include center-xy;
+							display: block;
+							width: 48px;
+							height: 48px;
+							* {
+								@include svg-stroke(white, 5);
+							}
+						}
+					}
+					input {
+						@include center-xy;
+						font-size: 28px;
+						font-weight: 600;
+						background: none;
+						border: 0;
+						width: 100%;
+						color: white;
+						text-align: center;
+						@include placeholder {
+							color: rgba(white, .5);
+						}
+					}
+				}
+			}
+			.request-cards {
+				.request-wallet {
+					position: relative;
+					button {
+						position: absolute;
+						z-index: 10;
+					    top: 55%;
+					    left: 28.5%;
+					    width: auto;
+					    padding-left: 15px;
+					    padding-right: 15px;
+					    height: 52px;
+					    border-radius: 2px;
+					    background: $smoke;
+					    font-weight: 600;
+					    color: $orange;
+					}
+				}
+				.wallet {
+					padding: 14px 15px 15px;
+					width: 100%;
+				}
+				ul {
+					padding: 7.5px;
+					li {
+						padding: 7.5px;
+						a {
+							@include flex;
+							@include flex-center-vertical;
+							@include prefix(justify-content, space-between, webkit);
+							background: $slate;
+							border-radius: 10px;
+							padding: 10px 15px;
+							height: 64px;
+							span {
+								font-size: 18px;
+								font-weight: 600;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.request-confirm {
+		header {
+			background: $lake;
+			svg {
+				width: 120px;
+			}
+			h1 {
+				text-transform: none;
+			}
+		}
+		> button {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+		> div {
+			padding-bottom: 64px;
+			> a {
+				display: block;
+				&:hover, &:focus {
+					background: rgba($lake, .2);
+				}
+			}
+			.confirm-course {
+				padding: 15px;
+				background: $slate;
+				h1 {
+					font-size: 20px;
+					font-weight: 600;
+				}
+				h2 {
+					@include opacity(.5);
+					margin-top: 0;
+					font-size: 16px;
+					font-weight: 600;
+				}
+			}
+			.confirm-info, .confirm-amount {
+				h1 {
+					padding: 15px 15px 0;
+					color: $lake;
+					font-size: 16px;
+					font-weight: 600;
+					text-transform: uppercase;
+					text-align: left;
+				}
+				p {
+					padding: 5px 15px 15px;
+					color: $slate;
+					font-size: 18px;
+					font-weight: 400;
+					text-align: left;
+				}
+			}
+			.confirm-time {
+				padding: 15px;
+				.time-tile {
+					border: 2px solid $lake;
+					border-left-width: 5px;
+					border-radius: 2px;
+					background: white;
+					padding: 15px;
+					h1 {
+						color: $lake;
+						font-size: 24px;
+						font-weight: 600;
+					}
+					h2 {
+						margin: 0!important;
+						color: lighten($slate, 15%);
+						font-size: 20px;
+						font-weight: 600;
+					}
+				}
+			}
+			.confirm-location {
+				@include flex;
+				@include flex-center;
+				padding: 15px;
+				svg {
+					display: block;
+					height: 80px;
+					width: auto;
+				}
+				.location-info {
+					position: relative;
+					background: mix(lighten($slate, 25%), $lake, 80%);
+					padding: 10px 15px;
+					margin-left: 15px;
+					border-radius: 2px;
+					&:before {
+						@include center-y;
+						content: "";
+						width: 0;
+						height: 0;
+						left: -30px;
+						border: 15px solid transparent;
+						border-right-color: mix(lighten($slate, 25%), $lake, 80%);
+					}
+					h1 {
+						font-size: 24px;
+						font-weight: 600;
+					}
+					p {
+						font-size: 18px;
+						font-weight: 400;
+					}
+				}
+			}
+			.confirm-card {
+				padding: 15px;
+				.request-card {
+					@include flex;
+					@include flex-center-vertical;
+					@include prefix(justify-content, space-between, webkit);
+					background: $slate;
+					border-radius: 10px;
+					padding: 10px 15px;
+					height: 64px;
+					span {
+						font-size: 18px;
+						font-weight: 600;
+					}
+				}
+			}
+			.confirm-amount {
+				h3 {
+					color: $slate;
+					font-size: 64px;
+					font-weight: 900;
+					padding-bottom: 15px;
 				}
 			}
 		}

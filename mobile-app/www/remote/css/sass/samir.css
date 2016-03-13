@@ -1572,56 +1572,6 @@ header#home-nav-header.splash-header,
   background: rgba(240, 79, 84, 0.75) !important;
 }
 
-.u-dz-attachment {
-  max-width: 140px;
-  margin: 0 5px;
-}
-
-.u-dz-attachment .dz-remove {
-  display: none !important;
-}
-
-.u-dz-attachment .img-container {
-  width: 120px;
-}
-
-.u-dz-attachment .img-container a[data-dz-remove] svg {
-  height: 20px;
-  width: 20px;
-  stroke: #2B3234 !important;
-  stroke-width: 3px !important;
-}
-
-.u-dz-attachment .img-container img {
-  max-width: 120px;
-  max-height: 100px;
-  height: 100%;
-  width: auto;
-  background: #2B3234;
-}
-
-.u-dz-attachment .img-container img:before {
-  content: "loading...";
-  font-size: 10px;
-}
-
-.u-dz-attachment .img-container div[data-dz-uploadprogress] {
-  height: 5px;
-  top: 100px;
-}
-
-.u-dz-attachment .u-dz-details {
-  width: 100%;
-  width: 125px;
-  text-align: center;
-}
-
-.u-dz-attachment .u-dz-details .u-file-name {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .opacity-1-impt {
   opacity: 1 !important;
 }
