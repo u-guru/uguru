@@ -162,10 +162,31 @@
 
 						<!-- Location -->
 						<div id='messages-main' class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 1">
+							<div class='flex-wrap-center flex-stretch bg-slate full-xy'>
+
+								<div class='full-x bg-smoke' style='height:20%;'>
+									<div class='ugrid-2 text-center'>
+										<h1 class='txt-charcoal p20xy'>
+											{{user.name}}'s last location shared
+										</h1>
+										<h1 class='txt-charcoal p20xy'>
+											{{active_relationship.guru.name}}'s last location shared
+										</h1>
+									</div>
+								</div>
+								<div class='gmap bg-charcoal flex-wrap-center'>
+									TODO INSERT GOOGLE MAP HERE
+								</div>
+							</div>
 						</div>
 
 						<!-- Create a request -->
-						<div id='messages-request' class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 2" ng-controller='RequestController' ng-include="img_base + BASE + 'templates/request.html'">
+						<div id='messages-request' class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 2" ng-controller='RequestController'>
+							<div class='flex-wrap-center flex-stretch'>
+								<h1 class='p20xy font-4'>
+									Request {{active_relationship.guru.name}}'s Help Again
+								</h1>
+							</div>
 						</div>
 
 						<!-- Create a calendar -->

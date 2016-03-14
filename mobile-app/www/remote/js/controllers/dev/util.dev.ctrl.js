@@ -11,6 +11,7 @@ angular.module('uguru.dev.controllers', [])
   function($scope, $state, $timeout, $localstorage) {
     var randomGurusAlreadySelected = [];
 
+    $scope.img_base = 'https://uguru-rest-test.herokuapp.com/static/remote/';
     //generate fake gurus
     //scope out the entire scope
     //
@@ -57,6 +58,7 @@ angular.module('uguru.dev.controllers', [])
 
 
 
+
     function initMessagingState(user) {
 
         user.guru_relationships = [];
@@ -64,7 +66,34 @@ angular.module('uguru.dev.controllers', [])
             user.guru_relationships.push(generateFakeRelationship(i))
         }
         $scope.active_relationship = user.guru_relationships[0];
-        console.log($scope.user.guru_relationships)
+        $timeout(function() {
+            initActiveRelationship($scope.active_relationship);
+        }, 500)
+
+        $scope.student_search = {search_text: ''};
+        $scope.setToActiveRelationship = function(relationship) {
+            $scope.active_relationship = relationship;
+            initActiveRelationship(relationship)
+        }
+        $scope.toggleActiveRelationshipMessageNav = function() {
+            $scope.active_relationship.msg_nav = !$scope.active_relationship.msg_nav;
+
+        }
+        var MENU_TITLES = ['Messages', 'Location', 'Calendar', 'Files', 'Sessions', 'Billing History', 'Create a Request'];
+
+        function initActiveRelationship(relationship) {
+            relationship.nav = initRelationshipNav(relationship);
+        }
+
+        function initRelationshipNav(relationship) {
+            return {
+              menu: {
+                show: false, //displayed
+                active_index: 1,
+              },
+              menu_titles: MENU_TITLES
+            }
+          }
     }
 
     function initUser() {
