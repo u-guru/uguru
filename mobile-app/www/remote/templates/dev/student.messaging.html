@@ -162,20 +162,39 @@
 
 						<!-- Location -->
 						<div id='messages-main' class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 1">
-							<div class='flex-wrap-center flex-stretch bg-slate full-xy'>
+							<div class='flex-wrap-center flex-stretch bg-slate full-xy relative'>
 
 								<div class='full-x bg-smoke' style='height:20%;'>
 									<div class='ugrid-2 text-center'>
-										<h1 class='txt-charcoal p20xy'>
-											{{user.name}}'s last location shared
-										</h1>
-										<h1 class='txt-charcoal p20xy'>
-											{{active_relationship.guru.name}}'s last location shared
-										</h1>
+										<div class='flex-wrap-center'>
+											<h1 class='txt-charcoal p20xy'>
+												{{user.name}}'s last location shared
+											</h1>
+											<small class='full-x opacity-50 txt-charcoal uppercase'> Last Updated: 2 hours ago </small>
+											<span> </span>
+										</div>
+										<div class='flex-wrap-center'>
+											<h1 class='txt-charcoal p20xy'>
+												{{active_relationship.guru.name}}'s last location shared
+											</h1>
+											<small class ='full-x txt-charcoal opacity-50 uppercase'> Last Updated: 5 hours ago </small>
+											<span> </span>
+										</div>
 									</div>
 								</div>
-								<div class='gmap bg-charcoal flex-wrap-center'>
-									TODO INSERT GOOGLE MAP HERE
+								<div class='gmap bg-charcoal flex-wrap-center flex-stretch full-x' style='height:80%;'>
+									<div>
+										<h1 class='txt-white uppercase'>
+											Components for this section
+										</h1>
+									</div>
+									<div>
+										<ol>
+											<li> 1. Background map </li>
+											<li> 2. One icon for each user that includes their profile image (maybe put it in a flag?)</li>
+											<li> 3. Tooltip that says "Drag me to update my location!"</li>
+										</ol>
+									</div>
 								</div>
 							</div>
 						</div>

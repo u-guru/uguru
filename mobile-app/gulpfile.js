@@ -331,6 +331,7 @@ gulp.task('scripts', function() {
       "js/controllers/guru/guru.ctrl.js",
       "js/controllers/guru/*.js",
       "js/controllers/util/*js",
+      "js/controllers/dev/*js",
       "js/controllers/desktop/SettingsCtrl.js",
       "js/controllers/desktop/*",
       ], { cwd: 'www/remote' })
