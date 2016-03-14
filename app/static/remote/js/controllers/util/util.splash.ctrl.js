@@ -1060,19 +1060,6 @@ angular.module('uguru.util.controllers')
 
       $scope.universities = University.getTargetted().slice();
 
-<<<<<<< HEAD
-    //   $timeout(function() {
-    //       var hiwSceneOne = document.querySelector('.hiw-scene-1');
-    //       hiwSceneOne && hiwSceneOne.classList.add('activate');
-    //   }, 2000)
-    //   showProjectorAtTop(0);
-=======
-      $timeout(function() {
-          var hiwSceneOne = document.querySelector('.hiw-scene-1');
-          hiwSceneOne && hiwSceneOne.classList.add('activate');
-      }, 2000)
-      // showProjectorAtTop(0);
->>>>>>> 499621d22e1fcf74e9f54f1d6b310391dfb3a87f
 
       $timeout(function() {
         // $timeout(function() {
