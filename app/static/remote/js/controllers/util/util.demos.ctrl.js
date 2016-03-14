@@ -6,7 +6,10 @@ angular.module('uguru.util.controllers')
   '$timeout',
   'SVGService',
   function($scope, $state, $timeout, SVGService) {
-
+    $timeout(function() {
+        var fillBgDemo = document.querySelector('#fill-bg-demo');
+        fillBgDemo.classList.add('activate');
+    }, 2500);
   }
 
 ])

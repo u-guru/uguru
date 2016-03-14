@@ -87,95 +87,93 @@
 				<div class="home-tiles-top">
 					<div class="home-tiles-guru" ng-include="img_base + BASE + 'templates/svg/tutor-guru.html'"></div>
 					<div class="home-tiles-daily">
-						<div class="home-tiles-daily-inside">
-							<h1>Hello, {{user.first_name || 'Student'}}, how are you today?</h1>
-							<ul class="home-tiles-upcoming">
-								<li class="event-guru event-ranking">
-									<div>
-										<header>
-											<span ng-include="img_base + 'templates/svg/main/stats.html'"></span>
-											<h2>Ranking</h2>
-										</header>
-										<div>
-											<div id="guru-chart">
-												<div id='guru-ranking-progress-bar'>
-													<div id="percentile">
-														<div id="percentile-ranking">{{user.guru_ranking || 25}}</div>
-														<div id="percentile-label">Percentile</div>
-													</div>
-												</div>
-											</div>
+						<div class="home-ticket"><div></div></div>
+						<ion-slide-box show-pager="false" class="home-ticket-content">
+							<ion-slide class="home-ticket-inside">
+								<div>
+									<h1>You have <u>2</u> Incoming Gurus for CS10.</h1>
+									<h2>See more request details about these gurus</h2>
+								</div>
+								<ul class="home-ticket-guru-bar">
+									<li>
+										<div class="pf-card-mini large pf-card-mini-academic">
+											<div class="pf-card-mini-banner"></div>
+											<span class="user-icon bg-cerise"></span>
+											<span class="pf-name">Christopher W.</span>
+											<ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul>
 										</div>
-									</div>
-								</li>
-								<li class="event-academic">
-									<div>
-										<header>
-											<span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
-											<h2>Office Hours</h2>
-										</header>
-										<div>
-											<ul>
-												<li><strong>What: </strong>VET103</li>
-												<li><strong>Where: </strong>Undergrad Library</li>
-												<li><strong>When: </strong>Monday, Mar 7, 3:15pm</li>
-											</ul>
-											<button class="btn-ghost-shamrock">View&nbsp;Now</button>
+									</li>
+									<li>
+										<div class="pf-card-mini large pf-card-mini-academic">
+											<div class="pf-card-mini-banner"></div>
+											<span class="user-icon bg-cerise"></span>
+											<span class="pf-name">Christopher W.</span>
+											<ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul>
 										</div>
-									</div>
-								</li>
-								<li class="event-photography">
-									<div>
-										<header>
-											<span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
-											<h2>Grad Photoshoot</h2>
-										</header>
-										<div>
-											<ul>
-												<li><strong>Who: </strong>Gabrielle Wee</li>
-												<li><strong>Where: </strong>Engineering Quad</li>
-												<li><strong>When: </strong>Monday, Mar 7, 3:15pm</li>
-											</ul>
-											<button class="btn-ghost-shamrock">View&nbsp;Now</button>
+									</li>
+									<li>
+										<div class="pf-card-mini large pf-card-mini-academic">
+											<div class="pf-card-mini-banner"></div>
+											<span class="user-icon bg-cerise"></span>
+											<span class="pf-name">Christopher W.</span>
+											<ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul>
 										</div>
-									</div>
-								</li>
-								<li class="event-academic">
-									<div>
-										<header>
-											<span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
-											<h2>1-on-1</h2>
-										</header>
-										<div>
-											<ul>
-												<li><strong>Who: </strong>Jeselle Obina</li>
-												<li><strong>What: </strong>VET103</li>
-												<li><strong>Where: </strong>Undergrad Library</li>
-												<li><strong>When: </strong>Monday, Mar 7, 3:15pm</li>
-											</ul>
-											<button class="btn-ghost-shamrock">View&nbsp;Now</button>
-										</div>
-									</div>
-								</li>
-								<li class="event-guru">
-									<div>
-										<header>
-											<span ng-include="img_base + 'templates/svg/main/shield-star.html'"></span>
-											<h2>Complete Credibility!</h2>
-										</header>
-										<div>
-											<div>
-												<h3>56% Credibility</h3>
-												<div class="progress">
-													<span style="width: 56%"></span>
-												</div>
-											</div>
-											<button class="btn-ghost-shamrock">View&nbsp;Now</button>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
+									</li>
+								</ul>
+								<button class="bg-shamrock semibold">See Request Details</button>
+							</ion-slide>
+							<ion-slide class="home-ticket-inside">
+								<div>
+									<h1>You created <u>3</u> Student Requests.</h1>
+									<h2>Check or edit the status of your requests</h2>
+								</div>
+								<ul class="home-ticket-icon-bar">
+									<li class="academic">
+										<span ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></span>
+										<span>1-on-1 Help</span>
+									</li>
+									<li class="baking">
+										<span ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></span>
+										<span>Birthday Cake</span>
+									</li>
+									<li class="photography">
+										<span ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></span>
+										<span>Graduation</span>
+									</li>
+								</ul>
+								<button class="bg-shamrock semibold">Activate my Student Email</button>
+							</ion-slide>
+							<ion-slide class="home-ticket-inside">
+								<div>
+									<h1>You are currently in demo mode.</h1>
+									<h2>Activate your UC Berkeley Email to create a real request</h2>
+								</div>
+								<ul class="home-ticket-icon-bar">
+									<li class="academic" ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></li>
+									<li class="baking" ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></li>
+									<li class="photography" ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></li>
+									<li class="household" ng-include="img_base + BASE + 'templates/svg/household-simple.html'"></li>
+									<li class="tech" ng-include="img_base + BASE + 'templates/svg/tech-simple.html'"></li>
+								</ul>
+								<button class="bg-shamrock semibold">Activate my Student Email</button>
+							</ion-slide>
+							<ion-slide class="home-ticket-inside">
+								<div>
+									<h1>You are currently in demo mode.</h1>
+									<h2>Activate your UC Berkeley Email to create a real request</h2>
+								</div>
+								<span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/email.html'"></span>
+								<button class="bg-shamrock semibold">Activate my Student Email</button>
+							</ion-slide>
+							<ion-slide class="home-ticket-inside">
+								<div>
+									<h1>Make a Referral</h1>
+									<h2>Skip the line by inviting a friend to Uguru</h2>
+								</div>
+								<span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/gift.html'"></span>
+								<button class="bg-shamrock semibold">Refer a Friend</button>
+							</ion-slide>
+						</ion-slide-box>
 					</div>
 				</div>
 				<div class="home-tiles-main home-tiles-container">
@@ -195,7 +193,12 @@
 			                        <rect x="0" y="0" width="100" height="100"></rect>
 			                    </svg>
 								<div>
-									<span>${{user.total_earned || 0}}</span>
+									<span>
+										<svg viewBox="0 0 100 100">
+					                        <circle cx="50" cy="50" r="40"></circle>
+					                    </svg>
+										<span>${{user.total_earned || 0}}</span>
+									</span>
 									<h1>Earnings</h1>
 									<h2>Lorem ipsum<br/>dolor sit amet.</h2>
 								</div>

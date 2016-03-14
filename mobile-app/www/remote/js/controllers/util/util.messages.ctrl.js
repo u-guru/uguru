@@ -36,9 +36,9 @@ angular.module('uguru.student.controllers')
     $scope.active_relationship = {search_text:'', new_message:''};
 
 
-    $timeout(function() {
-        var dropzoneElem = FileService.initMessageDropzone($scope);
-      });
+    // $timeout(function() {
+    //     var dropzoneElem = FileService.initMessageDropzone($scope);
+    //   });
 
     var initActiveRelationships = function() {
       if ($scope.root.vars.last_active_relationship) {

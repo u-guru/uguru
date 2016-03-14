@@ -1,46 +1,9 @@
-<div class='bg-charcoal full-xy flex-wrap-center' cache-view="false">
-    <div style='max-height:500px !important;' class='full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}'>
-        <ui-gmap-google-map class='full-xy absolute top-0 left-0' center="map.center" refresh='map.refresh' events="map.events" options='map.options' control="map.control" pan="true" zoom="map.zoom">
-                <ui-gmap-markers
-                    models="map.markers"
-                    coords="'self'"
-                    fit="true"
-                    options="'options'"
-                    icon="'icon'"
-                    doRebuildAll="map.rebuildMarkers"
-                >
-                </ui-gmap-markers>
-                <ui-gmap-window closeClick="map.window.options.closeclick()" show='map.window.show' coords='map.window.coords' options="map.window.options">
-                    <div class='university-label'>
-                        <a id='university-info-window-close-button' class='absolute top-0 right-0 txt-white high-z-index cta-modal-close close-button m05xy' ng-click='map.window.close()'>
-                            <svg viewBox="0 0 100 100" style='height:20px; width:20px;' class='opacity-50'>
-                                <path stroke="#FFFFFF" d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                            </svg>
-                        </a>
-                        <header style="background-image: url('{{map.window.university.banner_url}}')!important;">
-                            <!-- {{university.svg_url || university.logo_url}} -->
-                            <div style="background-color: {{map.window.university.school_color_dark}}!important"></div>
-                            <h1>{{map.window.university.name}}</h1>
-                        </header>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h2>Courses</h2>
-                                    <span>12k</span>
-                                </li>
-                                <li>
-                                    <h2>Gurus</h2>
-                                    <span>725</span>
-                                </li>
-                                <li>
-                                    <h2>Students</h2>
-                                    <span>12k</span>
-                                </li>
-                            </ul>
-                            <button id='university-info-window-button' ng-click="universityButtonClicked()" style="background-color: {{map.window.university.school_color_dark}};" >Go to School</button>
-                        </div>
-                    </div>
-                </ui-gmap-window>
+<div class='bg-charcoal full-xy flex-wrap-center relative' cache-view="false" id='map-parent-wrapper'>
+    <div style='max-height:500px !important;' class='ui-gmap-wrapper full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}'>
+        <ui-gmap-google-map  id='{{selectedUniversity.map.domId}}' class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events"  refresh='map.refresh' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
+            <ui-gmap-marker coords="selectedUniversity.map.marker.coords" idKey="selectedUniversity.map.marker.id || selectedUniversity.id" options="selectedUniversity.map.marker.options" icon="selectedUniversity.map.marker.icon">
+            </ui-gmap-marker>
         </ui-gmap-google-map>
     </div>
+    <span class='absolute bottom-0 left-0 weight-400 txt-white m20xy text-center full-x'> State: {{time_state.value}} -- {{time_state.description}} </span>
 </div>

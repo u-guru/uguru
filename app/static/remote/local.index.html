@@ -109,7 +109,7 @@
                 }
                 return 'Android';
               }
-            else if ( !(userAgent.toLowerCase().indexOf('safari') > -1) )
+            else if ((!(userAgent.toLowerCase().indexOf('firefox') > -1) && !(userAgent.toLowerCase().indexOf('safari') > -1)) || userAgent.indexOf('iPad') > 0 )
               {
                 console.log('woohoo ios');
                 injectJs('ios.cordova_plugins.js');
@@ -303,6 +303,7 @@
     <script type="text/javascript" src="remote/js/controllers/student/student.contact-method.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/student.home.sessions.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/student.session.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.helper.ctrl.js"></script>
 
 
      <script type="text/javascript" src="remote/js/controllers/guru/guru.ctrl.js"></script>
@@ -417,6 +418,7 @@
     <script type="text/javascript" src="remote/js/controllers/util/util.ratings.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.request.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.splash.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/util/util.dev.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/util.browse.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/PricingCtrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/ApplyCtrl.js"></script>

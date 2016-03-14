@@ -44,6 +44,34 @@
 		}
 	}
 }
+.splash-up-circle {
+	@include flex;
+	@include flex-center;
+	position: absolute;
+	right: 50%;
+	margin-right: -25px;
+	top: 0;
+	width: 50px;
+	height: 50px;
+	z-index: 10;
+	svg {
+		width: 42px;
+		height: 42px;
+		* {
+			@include svg-stroke(white, 4);
+		}
+		circle {
+			fill: rgba($slate, .9);
+		}
+	}
+	@media screen and (min-width: 768px) {
+		left: auto;
+		right: 0;
+		margin-right: 0;
+		width: 70px;
+		height: 70px;
+	}
+}
 .splash-burger {
 	@include center-xy;
 	height: 100%;
@@ -455,6 +483,8 @@
 		.splash-logo {
 			height: 50px!important;
 			margin: 5px;
+			padding:2px;
+			width:inherit;
 		}
 	}
 	@media screen and (min-width: 860px) {
@@ -761,6 +791,7 @@
 				.splash-logo {
 					height: 50px!important;
     				margin: 5px;
+    				width:inherit;
 				}
 			}
 			div {
@@ -962,6 +993,269 @@
 		}
 
 		// HERO
+		#splash-hero-nav-mobile {
+			@include flex;
+			@include flex-wrap;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background: rgba($slate, .95);
+			@media screen and (min-width: 768px) {
+				display: none!important;
+			}
+			h1 {
+				padding-top: 15px;
+				font-size: 28px;
+				font-weight: 700;
+			}
+			.splash-hero-nav-school {
+				width: 100%;
+				ul {
+					padding: 7.5px;
+					width: 100%;
+					li {
+						padding: 7.5px;
+						width: 100%;
+						a {
+							@include round;
+							@include flex;
+							@include flex-center;
+							position: relative;
+							width: 100%;
+							height: 48px;
+							border-width: 2px;
+							border-style: solid;
+							span {
+								@include prefix(transition, all 150ms ease-in-out);
+								&:nth-child(1) {
+									@include opacity(.5);
+									@include round;
+									display: block;
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 100%;
+									height: 100%;
+								}
+								&:nth-child(2) {
+									display: block;
+									position: relative;
+									z-index: 5;
+									font-size: 20px;
+									font-weight: 600;
+								}
+								&:nth-child(3) {
+									position: relative;
+									z-index: 5;
+									svg {
+										display: block;
+										width: 36px;
+										height: 36px;
+										padding: 6px;
+										* {
+											@include svg-stroke(white, 8);
+										}
+									}
+								}
+							}
+							&:not(.active) {
+								span:nth-child(3) {
+									svg {
+										@include prefix(transition, all 150ms ease-in-out);
+										@include opacity(0);
+										display: none;
+									}
+								}
+							}
+							&.bg-find {
+								border-color: white;
+								span:first-child {
+									@include opacity(.2);
+									background: white;
+								}
+								&:hover, &:focus {
+									span:nth-child(2) {
+										color: $slate;
+									}
+								}
+							}
+							&:hover, &:focus {
+								span:nth-child(1) {
+									@include opacity(1);
+								}
+							}
+						}
+					}
+				}
+			}
+			.splash-hero-nav-category {
+				ul {
+					@include flex;
+					@include flex-center;
+					@include flex-wrap;
+					padding: 7.5px;
+					li {
+						width: calc(100% / 3);
+						padding: 7.5px;
+						a {
+							&:not(.active) {
+								span {
+									svg {
+										* {
+											@include opacity(0);
+										}
+									}
+								}
+							}
+							&.bg-delivery {
+								span {
+									svg {
+										background: mix($auburn, $slate);
+										border: 2px solid $auburn;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $auburn;
+										}
+									}
+								}
+							}
+							&.bg-freelancing {
+								span {
+									svg {
+										background: mix($orange, $slate);
+										border: 2px solid $orange;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $orange;
+										}
+									}
+								}
+							}
+							&.bg-baking {
+								span {
+									svg {
+										background: mix($gold, $slate);
+										border: 2px solid $gold;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $gold;
+										}
+									}
+								}
+							}
+							&.bg-photography {
+								span {
+									svg {
+										background: mix($moola, $slate);
+										border: 2px solid $moola;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $moola;
+										}
+									}
+								}
+							}
+							&.bg-tech {
+								span {
+									svg {
+										background: mix($azure, $slate);
+										border: 2px solid $azure;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $azure;
+										}
+									}
+								}
+							}
+							&.bg-household {
+								span {
+									svg {
+										background: mix($cobalt, $slate);
+										border: 2px solid $cobalt;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $cobalt;
+										}
+									}
+								}
+							}
+							&.bg-athletic {
+								span {
+									svg {
+										background: mix($eggplant, $slate);
+										border: 2px solid $eggplant;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $eggplant;
+										}
+									}
+								}
+							}
+							&.bg-academic {
+								span {
+									svg {
+										background: mix($cerise, $slate);
+										border: 2px solid $cerise;
+									}
+								}
+								&:hover, &:focus, &.active {
+									span {
+										svg {
+											background: $cerise;
+										}
+									}
+								}
+							}
+						}
+						span {
+							display: block;
+							font-size: 16px;
+							font-weight: 600;
+							white-space: nowrap;
+							&:first-child {
+								svg {
+									@include round;
+									width: 48px;
+									height: 48px;
+									padding: 6px;
+									* {
+										@include prefix(transition, all 150ms ease-in-out);
+										@include svg-stroke(white, 6);
+									}
+								}
+							}
+							&:last-child {
+								padding-top: 5px;
+							}
+						}
+					}
+				}
+			}
+		}
 		&.splash-hero {
 			@include flex;
 			@include flex-center;
@@ -972,14 +1266,15 @@
 			background: $slate;
 			text-align: center;
 			.splash-header {
-				@include prefix(justify-content, space-between, webkit);
+				@include prefix(justify-content, flex-start, webkit);
 				height: 50px!important;
-				width: 100%;
+				// width: 100%;
+				width:inherit;
 				@media screen and (min-width: 860px) {
 					height: 70px!important;
 				}
 			}
-			.splash-hero-nav, .splash-hero-nav-mobile-dropdowns {
+			.splash-hero-nav {
 				@include flex;
 				@include flex-center-vertical;
 				position: fixed;
@@ -2347,14 +2642,6 @@
 					}
 				}
 			}
-			@media screen and (max-width: 320px) {
-				.splash-hero-device {
-					@include prefix(transform, scale(.8), webkit moz ms o);
-				}
-				.splash-hero-content {
-					@include prefix(transform, scale(.7), webkit moz ms o);
-				}
-			}
 			@media screen and (max-width: 768px) {
 				.splash-mobile-cta {
 					display: block!important;
@@ -2377,6 +2664,17 @@
 							@include prefix(flex-direction, column, wekit moz ms o);
 							height: 250px;
 						}
+					}
+				}
+			}
+			@media screen and (max-width: 320px) {
+				.splash-hero-device {
+					@include prefix(transform, scale(.8), webkit moz ms o);
+				}
+				.splash-hero-content {
+					@include prefix(transform, scale(.7), webkit moz ms o);
+					.splash-adlib h1 {
+						line-height: 2!important;
 					}
 				}
 			}
@@ -2590,7 +2888,7 @@
 			.projector-line {
 				position: absolute;
 				left: 50%;
-				margin-left: 1px;
+				margin-left: -1px;
 				&.top {
 					top: -196px;
 				}
@@ -2622,7 +2920,7 @@
 					margin: 0 auto;
 					background: none!important;
 					.swiper-gallery-wrapper {
-						background: $slate!important;
+						background: none!important;
 						> div {
 							width: calc(100% / 3);
 							&:before {
@@ -3614,6 +3912,15 @@
 										font-size: 14px;
 										font-weight: 600;
 										text-transform: uppercase;
+										&:only-child {
+											@include flex;
+											@include flex-center;
+											margin: 0!important;
+											width: 100%;
+											height: 100%;
+											border-bottom-width: 5px;
+											border-bottom-style: solid;
+										}
 									}
 									.course-title {
 										display: block;
@@ -5139,6 +5446,48 @@
 
 /* ---------- HOW IT WORKS */
 /// HTML ///
+.circle-nav {
+	ul {
+		@include flex;
+		@include flex-center;
+		padding: 15px;
+		li {
+			width: 130px;
+			padding: 15px;
+			a {
+				display: block;
+				svg {
+					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+					display: block;
+					width: 100%;
+					* {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+					}
+				}
+				h1 {
+					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+					@include opacity(0);
+					padding-top: 5px;
+					width: 100%;
+					font-size: 14px;
+					font-weight: 600;
+					text-align: center;
+				}
+				&:hover, &:focus, &:active, &.active-circle {
+					@include prefix(transform, scale(1.25), webkit moz ms o);
+					svg {
+						.bg-slate, .fade {
+							@include opacity(0);
+						}
+					}
+					h1 {
+						@include opacity(1);
+					}
+				}
+			}
+		}
+	}
+}
 #hiw {
 	@include flex;
 	@include flex-wrap;
@@ -5205,100 +5554,6 @@
 					height: 100%;
 					max-height: 400px;
 					width: auto;
-				}
-				.pf-card-outline {
-					position: relative;
-					border: 2px solid $shamrock;
-					border-radius: 5px;
-					margin-top: 36px;
-					.pf-card-top {
-						.user-icon {
-							@include center-x;
-							z-index: 10;
-							top: -36px;
-							width: 72px;
-							height: 72px;
-							border: 2px solid $shamrock;
-						}
-					}
-					.pf-card-main {
-						@include flex;
-						@include flex-wrap;
-						@include flex-center;
-						.pf-card-info {
-							padding: 36px 15px 15px;
-							width: 100%;
-							background: $shamrock;
-							text-align: center;
-							h1 {
-								font-size: 24px;
-								font-weight: 600;
-								span {
-									svg {
-										margin-left: 8px;
-										margin-top: 5px;
-										width: 20px;
-										height: 20px;
-										path {
-											&:first-child {
-												fill: white;
-											}
-											&:last-child {
-												fill: $shamrock;
-											}
-										}
-									}
-								}
-							}
-							h2 {
-								margin-top: 0!important;
-								font-size: 16px;
-							}
-							.pf-rating {
-								margin: 5px auto 0;
-							}
-						}
-						.pf-card-content {
-							.pf-courses {
-								@include flex;
-								@include flex-wrap;
-								padding: 7.5px;
-								li {
-									padding: 7.5px;
-									&:not(:first-child) {
-										display: none;
-									}
-									.pf-course {
-										@include round;
-										@include prefix(animation, 500ms course-border ease-in forwards, webkit moz ms o);
-										display: block;
-										position: relative;
-										padding: 5px 10px;
-										border: 2px solid rgba(white, .2);
-										font-size: 16px;
-										font-weight: 600;
-										overflow: none;
-										&:before {
-											@include round;
-											@include prefix(animation, 500ms course-highlight ease-in forwards, webkit moz ms o);
-											content: "";
-											display: block;
-											position: absolute;
-											top: 0;
-											left: 0;
-											height: 100%;
-											width: 29px;
-											background: rgba(white, .2);
-										}
-										span {
-											position: relative;
-											z-index: 10;
-										}
-									}
-								}
-							}
-						}
-					}
 				}
 				.ugrid-2 {
 					@include flex-center;
@@ -5372,20 +5627,7 @@
 						max-height: 400px;
 						.guru-1, .guru-2, .guru-3, .guru-4, .guru-5 {
 							@include prefix(transform, scale(0), webkit moz ms o);
-							@include prefix(animation, 200ms bounceIn forwards, webkit moz ms o);
 							@include prefix(transform-origin, 50% 50%, webkit moz ms o);
-						}
-						.guru-2 {
-							@include prefix(animation-delay, 200ms, webkit moz ms o);
-						}
-						.guru-3 {
-							@include prefix(animation-delay, 400ms, webkit moz ms o);
-						}
-						.guru-4 {
-							@include prefix(animation-delay, 800ms, webkit moz ms o);
-						}
-						.guru-5 {
-							@include prefix(animation-delay, 1000ms, webkit moz ms o);
 						}
 					}
 					&.graph {
@@ -5404,76 +5646,6 @@
 				}
 			}
 			.how-scene-3 {
-				.ugrid-5 {
-					li {
-						svg {
-							@include prefix(animation, 1000ms guru-hover linear infinite alternate forwards, webkit moz ms o);
-							.symbol {
-								@include opacity(0);
-							}
-						}
-						&:nth-child(1) svg {
-							@include prefix(animation-delay, 200ms, webkit moz ms o);
-							.shirt, .shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								stroke: darken($cerise, 20%);
-							}
-							.shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								fill: $cerise;
-							}
-							.academic.symbol {
-								@include opacity(1);
-							}
-						}
-						&:nth-child(2) svg {
-							@include prefix(animation-delay, 500ms, webkit moz ms o);
-							.shirt, .shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								stroke: darken($gold, 20%);
-							}
-							.shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								fill: $gold;
-							}
-							.baking.symbol {
-								@include opacity(1);
-							}
-						}
-						&:nth-child(3) svg {
-							@include prefix(animation-delay, 0ms, webkit moz ms o);
-							.shirt, .shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								stroke: darken($moola, 20%);
-							}
-							.shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								fill: $moola;
-							}
-							.photography.symbol {
-								@include opacity(1);
-							}
-						}
-						&:nth-child(4) svg {
-							@include prefix(animation-delay, 800ms, webkit moz ms o);
-							.shirt, .shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								stroke: darken(desaturate($cobalt, 20%), 20%);
-							}
-							.shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								fill: $cobalt;
-							}
-							.household.symbol {
-								@include opacity(1);
-							}
-						}
-						&:nth-child(5) svg {
-							@include prefix(animation-delay, 400ms, webkit moz ms o);
-							.shirt, .shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								stroke: darken($azure, 20%);
-							}
-							.shirt-sleeve-left, .shirt-sleeve-right, .shirt-bottom {
-								fill: $azure;
-							}
-							.tech.symbol {
-								@include opacity(1);
-							}
-						}
-					}
-				}
 				svg {
 					display: block;
 					position: absolute;
@@ -5482,12 +5654,20 @@
 					width: 100%;
 					height: auto;
 					max-height: 400px;
-					&.guru {
-						max-height: 300px;
+					.guru {
+						@include prefix(transition, all 300ms ease-in, webkit moz ms o);
 					}
-					&.conveyor {
-						@include center-x;
-						width: 800px;
+					.guru-academic {
+						@include prefix(transform, translateX(211.5%), webkit moz ms o);
+					}
+					.guru-baking {
+						@include prefix(transform, translateX(105.75%), webkit moz ms o);
+					}
+					.guru-household {
+						@include prefix(transform, translateX(-105.75%), webkit moz ms o);
+					}
+					.guru-tech {
+						@include prefix(transform, translateX(-211.5%), webkit moz ms o);
 					}
 				}
 			}
@@ -5500,56 +5680,6 @@
 					text-align: center;
 					> div {
 						position: relative;
-						&:first-child {
-							.hiw-svg-container {
-								svg {
-									@include opacity(.025);
-									@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
-								}
-								&:nth-child(1) {
-									svg {
-										@include prefix(animation, #{"300ms dollar-1 forwards, 1000ms dollar-1-hover 300ms linear infinite alternate forwards"}, webkit moz ms o);
-									}
-								}
-								&:nth-child(2) {
-									svg {
-										@include prefix(animation, #{"300ms dollar-2 200ms forwards, 1000ms dollar-2-hover 500ms linear infinite alternate forwards"}, webkit moz ms o);
-									}
-								}
-								&:nth-child(3) {
-									svg {
-										@include prefix(animation, #{"300ms dollar-3 400ms forwards, 1000ms dollar-3-hover 700ms linear infinite alternate forwards"}, webkit moz ms o);
-									}
-								}
-								&:nth-child(4) {
-									svg {
-										@include prefix(animation, #{"300ms dollar-4 600ms forwards, 1000ms dollar-4-hover 900ms linear infinite alternate forwards"}, webkit moz ms o);
-									}
-								}
-								&:nth-child(5) {
-									svg {
-										@include prefix(animation, #{"300ms dollar-5 800ms forwards, 1000ms dollar-5-hover 1100ms linear infinite alternate forwards"}, webkit moz ms o);
-									}
-								}
-								&:nth-child(6) {
-									svg {
-										@include prefix(animation, #{"300ms dollar-6 1000ms forwards, 1000ms dollar-6-hover 1300ms linear infinite alternate forwards"}, webkit moz ms o);
-									}
-								}
-								&:nth-child(7) {
-									svg {
-										@include prefix(animation, #{"300ms dollar-7 1200ms forwards, 1000ms dollar-7-hover 1500ms linear infinite alternate forwards"}, webkit moz ms o);
-									}
-								}
-							}
-						}
-						&:last-child {
-							.hiw-svg-container {
-								svg {
-									@include prefix(animation, #{"300ms dollar-8 forwards, 1000ms dollar-8-hover 300ms linear infinite alternate forwards"}, webkit moz ms o);
-								}
-							}
-						}
 					}
 					h1 {
 						font-size: 28px;
@@ -5598,6 +5728,13 @@
 				}
 			}
 		}
+		.circle-nav {
+			position: absolute;
+			z-index: 11;
+			bottom: -115px;
+			left: 0;
+			width: 100%;
+		}
 		.how-props {
 			@include flex;
 			@include flex-wrap;
@@ -5622,7 +5759,7 @@
 						max-width: 50px;
 					}
 					svg {
-						@include prefix(transition, all 150ms ease-in-out);
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 						border-radius: 5px;
 						background: lighten($slate, 5%);
 						* {
@@ -5691,9 +5828,6 @@
 							display: block;
 							top: auto;
 							bottom: 178px;
-							.point {
-								@include prefix(animation, 1000ms point-graph-desktop ease-in-out forwards, webkit moz ms o);
-							}
 						}
 						&.graph {
 							display: none;
@@ -5701,6 +5835,7 @@
 					}
 				}
 				.how-scene-3 {
+					background: #69867C;
 					svg {
 						&.guru {
 							position: static!important;
@@ -5760,54 +5895,136 @@
 
 /// SCENES ///
 // open 24/7
+.hiw-open-24-7-active, .hiw-open-24-7-active-mobile {
+	* {
+		@include prefix(transition, all 300ms ease-in-out, webkit moz ms o);
+	}
+	.fade {
+		&:not(.visible) {
+			@include opacity(0);
+		}
+		&.visible {
+			@include opacity(1);
+		}
+		&.night-sky {
+			@include prefix(transition-delay, 500ms, webkit moz ms o);
+		}
+	}
+	&:not(.start) {
+		rect, polygon, circle, path, text {
+			&.draw {
+				fill: rgba(0,0,0,0)!important;
+			}
+		}
+	}
+}
 .active-scene {
 	.hiw-open-24-7-active, .hiw-open-24-7-active-mobile {
-		.open-now {
-			@include prefix(animation, 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards, webkit moz ms o);
+		&.start {
+			.open-now-text {
+				@include prefix(animation, 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards, webkit moz ms o);
+			}
+			.clock {
+				.minute-hand {
+					@include prefix(animation, 2000ms hiw-minute-hand ease-in 500ms infinite forwards, webkit moz ms o);
+					@include prefix(transform-origin, 50% 100%, webkit moz ms o);
+				}
+				.hour-hand {
+					@include prefix(transform-origin, 0% 50%, webkit moz ms o);
+					@include prefix(animation, 12000ms hiw-hour-hand 2000ms ease-in infinite forwards, webkit moz ms o);
+				}
+			}
+			.outside-day {
+				@include prefix(animation, 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards, webkit moz ms o);
+				.sun {
+					@include prefix(transform, translateY(0), webkit moz ms o);
+					@include prefix(animation, 12000ms hiw-open-24-7-sun-shift 2000ms ease-in infinite forwards, webkit moz ms o);
+				}
+			}
+			.outside-night {
+				.moon, .crater {
+					@include prefix(transform, translateY(20px), webkit moz ms o);
+					@include prefix(animation, 12000ms hiw-open-24-7-moon-shift 2000ms ease-in infinite forwards, webkit moz ms o);
+				}
+				polygon[class*="star-"] {
+					@include prefix(transform, scale(0), webkit moz ms o);
+					@include prefix(transform-origin, 50% 50%, webkit moz ms o);
+					@include prefix(animation, 12000ms hiw-open-24-7-star-scale 2000ms ease-in infinite forwards, webkit moz ms o);
+					&.star-1, &.star-7, &.star-8, &.star-19 {
+						@include prefix(animation-delay, 2200ms, webkit moz ms o);
+					}
+					&.star-2, &.star-9, &.star-10, &.star-20 {
+						@include prefix(animation-delay, 2400ms, webkit moz ms o);
+					}
+					&.star-3, &.star-11, &.star-12, &.star-21 {
+						@include prefix(animation-delay, 2600ms, webkit moz ms o);
+					}
+					&.star-4, &.star-13, &.star-14, &.star-22 {
+						@include prefix(animation-delay, 2800ms, webkit moz ms o);
+					}
+					&.star-5, &.star-15, &.star-16, &.star-23 {
+						@include prefix(animation-delay, 3000ms, webkit moz ms o);
+					}
+					&.star-6, &.star-17, &.star-18, &.star-24 {
+						@include prefix(animation-delay, 3200ms, webkit moz ms o);
+					}
+				}
+			}
 		}
-		.clock {
-			.minute-hand {
-				@include prefix(animation, 2000ms hiw-minute-hand ease-in 500ms infinite forwards, webkit moz ms o);
-				@include prefix(transform-origin, 50% 100%, webkit moz ms o);
+	}
+}
+
+// affordable to all
+.active-scene {
+	.ugrid-2.animate {
+		> div {
+			&:first-child {
+				.hiw-svg-container {
+					svg {
+						@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+					}
+					&:nth-child(1) {
+						svg {
+							@include prefix(animation, #{"300ms dollar-1 forwards, 1000ms dollar-1-hover 300ms linear infinite alternate forwards"}, webkit moz ms o);
+						}
+					}
+					&:nth-child(2) {
+						svg {
+							@include prefix(animation, #{"300ms dollar-2 200ms forwards, 1000ms dollar-2-hover 500ms linear infinite alternate forwards"}, webkit moz ms o);
+						}
+					}
+					&:nth-child(3) {
+						svg {
+							@include prefix(animation, #{"300ms dollar-3 400ms forwards, 1000ms dollar-3-hover 700ms linear infinite alternate forwards"}, webkit moz ms o);
+						}
+					}
+					&:nth-child(4) {
+						svg {
+							@include prefix(animation, #{"300ms dollar-4 600ms forwards, 1000ms dollar-4-hover 900ms linear infinite alternate forwards"}, webkit moz ms o);
+						}
+					}
+					&:nth-child(5) {
+						svg {
+							@include prefix(animation, #{"300ms dollar-5 800ms forwards, 1000ms dollar-5-hover 1100ms linear infinite alternate forwards"}, webkit moz ms o);
+						}
+					}
+					&:nth-child(6) {
+						svg {
+							@include prefix(animation, #{"300ms dollar-6 1000ms forwards, 1000ms dollar-6-hover 1300ms linear infinite alternate forwards"}, webkit moz ms o);
+						}
+					}
+					&:nth-child(7) {
+						svg {
+							@include prefix(animation, #{"300ms dollar-7 1200ms forwards, 1000ms dollar-7-hover 1500ms linear infinite alternate forwards"}, webkit moz ms o);
+						}
+					}
+				}
 			}
-			.hour-hand {
-				@include prefix(transform-origin, 0% 50%, webkit moz ms o);
-				@include prefix(animation, 12000ms hiw-hour-hand 2000ms ease-in infinite forwards, webkit moz ms o);
-			}
-		}
-		.outside-day {
-			@include prefix(animation, 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards, webkit moz ms o);
-			.sun {
-				@include prefix(transform, translateY(0), webkit moz ms o);
-				@include prefix(animation, 12000ms hiw-open-24-7-sun-shift 2000ms ease-in infinite forwards, webkit moz ms o);
-			}
-		}
-		.outside-night {
-			.moon, .crater {
-				@include prefix(transform, translateY(20px), webkit moz ms o);
-				@include prefix(animation, 12000ms hiw-open-24-7-moon-shift 2000ms ease-in infinite forwards, webkit moz ms o);
-			}
-			polygon[class*="star-"] {
-				@include prefix(transform, scale(0), webkit moz ms o);
-				@include prefix(transform-origin, 50% 50%, webkit moz ms o);
-				@include prefix(animation, 12000ms hiw-open-24-7-star-scale 2000ms ease-in infinite forwards, webkit moz ms o);
-				&.star-1, &.star-7, &.star-8, &.star-19 {
-					@include prefix(animation-delay, 2200ms, webkit moz ms o);
-				}
-				&.star-2, &.star-9, &.star-10, &.star-20 {
-					@include prefix(animation-delay, 2400ms, webkit moz ms o);
-				}
-				&.star-3, &.star-11, &.star-12, &.star-21 {
-					@include prefix(animation-delay, 2600ms, webkit moz ms o);
-				}
-				&.star-4, &.star-13, &.star-14, &.star-22 {
-					@include prefix(animation-delay, 2800ms, webkit moz ms o);
-				}
-				&.star-5, &.star-15, &.star-16, &.star-23 {
-					@include prefix(animation-delay, 3000ms, webkit moz ms o);
-				}
-				&.star-6, &.star-17, &.star-18, &.star-24 {
-					@include prefix(animation-delay, 3200ms, webkit moz ms o);
+			&:last-child {
+				.hiw-svg-container {
+					svg {
+						@include prefix(animation, #{"300ms dollar-8 forwards, 1000ms dollar-8-hover 300ms linear infinite alternate forwards"}, webkit moz ms o);
+					}
 				}
 			}
 		}
@@ -5815,8 +6032,47 @@
 }
 
 // not just tutoring
-.conveyor {
-	@include prefix(animation, 600000ms hiw-conveyor-belt forwards, webkit moz ms o);
+.active-scene {
+	&.how-scene-3 {
+		svg {
+			.guru-hover {
+				@include prefix(transform, translateX(0)!important, webkit moz ms o);
+				@include prefix(animation, 1000ms guru-hover linear infinite alternate forwards, webkit moz ms o);
+			}
+			.subcat-move-1 {
+				@include prefix(animation, 200000ms subcat-move linear infinite forwards, webkit moz ms o);
+			}
+		}
+	}
+	.conveyor {
+		@include prefix(animation, 1200000ms hiw-conveyor-belt forwards, webkit moz ms o);
+	}
+}
+
+// instant and in person
+.active-scene {
+	.graph-desktop {
+		.point {
+			@include prefix(animation, 1000ms point-graph-desktop ease-in-out forwards, webkit moz ms o);
+		}
+		.guru-1, .guru-2, .guru-3, .guru-4, .guru-5 {
+			@include prefix(transform, scale(0), webkit moz ms o);
+			@include prefix(animation, 200ms bounceIn forwards, webkit moz ms o);
+			@include prefix(transform-origin, 50% 50%, webkit moz ms o);
+		}
+		.guru-2 {
+			@include prefix(animation-delay, 200ms, webkit moz ms o);
+		}
+		.guru-3 {
+			@include prefix(animation-delay, 400ms, webkit moz ms o);
+		}
+		.guru-4 {
+			@include prefix(animation-delay, 800ms, webkit moz ms o);
+		}
+		.guru-5 {
+			@include prefix(animation-delay, 1000ms, webkit moz ms o);
+		}
+	}
 }
 
 /// HOVER ///
@@ -5843,7 +6099,7 @@
 .hiw-affordable-container {
 	.hiw-affordable-to-all {
 		path {
-			@include prefix(transition, all 150ms ease-in-out);
+			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 		}
 		.right {
 			@include prefix(transform-origin, 50% 50%, webkit moz ms o);
@@ -5851,6 +6107,17 @@
 		.left {
 			@include prefix(transform-origin, 50% 50%, webkit moz ms o);
 		}
+	}
+}
+// not just tutoring
+.hiw-beyond-tutoring-container {
+	.academic {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		@include prefix(transform, scale(1), webkit moz ms o);
+		@include prefix(transform-origin, 50% 50%, webkit moz ms o);
+	}
+	.shirt {
+		@include opacity(0);
 	}
 }
 // everyone wins
@@ -5886,7 +6153,7 @@
 .hiw-student-run-container {
 	.hiw-student-run {
 		path[class*="person-"] {
-			@include prefix(transition, all 150ms ease-in-out);
+			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 			fill: lighten($slate, 5%);
 		}
 	}
@@ -5894,7 +6161,7 @@
 // instant and in person
 .hiw-instant-container {
 	.boom {
-		@include prefix(transition, all 150ms ease-in-out);
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 		fill: lighten($slate, 5%);
 	}
 }
@@ -5935,6 +6202,15 @@ a:hover, a:focus {
 					@include prefix(transform, translate(5px), webkit moz ms o);
 				}
 			}
+		}
+	}
+	// not just tutoring
+	.hiw-beyond-tutoring-container {
+		.academic {
+			@include prefix(animation, 1000ms hiw-beyond-tutoring-academic ease-in 500ms infinite alternate forwards, webkit moz ms o);
+		}
+		.shirt {
+			@include prefix(animation, 1000ms hiw-beyond-tutoring-shirt ease-in 500ms infinite alternate forwards, webkit moz ms o);
 		}
 	}
 	// instant and in person
@@ -5988,8 +6264,8 @@ a:hover, a:focus {
 
 @media screen and (max-width: 768px) {
 	#intercom-conversation {
-		width:100% !important;
-		position:fixed !important;
+		width: 100%!important;
+		position: fixed!important;
 	}
 }
 
@@ -6038,62 +6314,98 @@ a:hover, a:focus {
                 height: 100%;
                 overflow: hidden;
             }
+			svg {
+				max-height: 400px;
+			}
+			.bg-scene-1 {
+				background: #F2B65A;
+			}
+			.bg-scene-2 {
+				background: #8DA09C;
+			}
+			.bg-scene-3 {
+				background: #89A1B5;
+			}
+			.bg-scene-4 {
+				background: #F39185;
+			}
+			.bg-scene-5 {
+				background: #07113C;
+			}
+			.bg-scene-6 {
+				background: #81B88C;
+			}
+			.bg-scene-7 {
+				background: #40484B;
+			}
+			.bg-scene-8 {
+				background: #637074;
+			}
         }
         .bg-props {
             @include flex;
-						@include flex-wrap;
-						@include flex-center;
-						position: absolute;
-						bottom: 0;
-						left: 0;
+			@include flex-center;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			padding: 7.5px;
+			li {
+				width: calc(100% / 4);
+				text-align: center;
+				padding: 7.5px;
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					margin: 0 auto;
+					div {
 						width: 100%;
-						padding: 7.5px;
-						li {
-							width: calc(100% / 3);
-							text-align: center;
-							padding: 7.5px;
-							a {
-								@include flex;
-								@include flex-wrap;
-								@include flex-center;
-								margin: 0 auto;
-								div {
-									width: 100%;
-									max-width: 50px;
-								}
-								svg {
-									@include prefix(transition, all 150ms ease-in-out);
-									border-radius: 5px;
-									background: lighten($slate, 5%);
-									* {
-										stroke-width: 4px!important;
-									}
-								}
-								h1 {
-									padding-top: 10px;
-									width: 100%;
-									font-size: 14px;
-									font-weight: 600;
-								}
-								&:hover {
-									svg {
-										background: lighten($slate, 15%);
-									}
-								}
-							}
+						max-width: 50px;
+					}
+					svg {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						border-radius: 5px;
+						background: lighten($slate, 5%);
+						* {
+							stroke-width: 4px!important;
 						}
+					}
+					h1 {
+						padding-top: 10px;
+						width: 100%;
+						font-size: 14px;
+						font-weight: 600;
+					}
+					&:hover {
+						svg {
+							background: lighten($slate, 15%);
+						}
+					}
+				}
+			}
         }
     }
+	@media screen and (max-width: 768px) {
+        .main {
+            .bg-props {
+				@include flex-wrap;
+			}
+		}
+	}
     @media screen and (min-width: 768px) {
         header {
             @include opacity(1);
         }
         .main {
             .bg-props {
+				height: 163px;
+				overflow-x: auto;
                 li {
-                    width: calc(100% / 6);
+                    width: calc(100% / 4);
                     a {
                         div {
+							width: 100px;
                             max-width: 100px;
                         }
                         h1 {

@@ -211,6 +211,9 @@ if ( typeof define === 'function' && define.amd ) {
 })( window );
 
 
+//constants
+var _state;
+
 var bodyLoadingDiv = document.createElement('div');
 bodyLoadingDiv.id = 'body-loading-div'
 bodyLoadingDiv.className += bodyLoadingDiv.className  + ' show ng-class:{"hide":root.loader.body.hide}'

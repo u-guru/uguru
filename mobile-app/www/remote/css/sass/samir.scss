@@ -1827,3 +1827,11 @@ header#home-nav-header.splash-header,
 .overflow-inherit {
 	overflow:inherit !important;
 }
+
+.font-4 {
+	font-size:30px;
+}
+
+.flex-stretch {
+	@include flex-stretch-impt;
+}

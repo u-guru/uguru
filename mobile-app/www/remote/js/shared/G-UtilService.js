@@ -47,18 +47,20 @@ function GUtilService($timeout) {
             photoCount += 1;
             console.log(resultPlace.name, resultPlace.photos[0]);
             console.log(resultPlace.name, resultPlace.photos[0].getUrl({'maxWidth': 260, 'maxHeight': 90}));
-            // console.log(resultPlace.photos[0].getUrl());
+
           }
       }
       console.log(photoCount, 'photos found');
     }
 
-  function getPlaceListByCoords(scope, map, coords, callback) {
+  function getPlaceListByCoords(scope, map, coords, callback, options) {
+    var options = options || {};
+
     var gCoords = latCoordToGoogleLatLng(coords.latitude, coords.longitude);
     var placeService = new google.maps.places.PlacesService(map);
-    var types =['library', 'food', 'cafe', 'bus-stop', 'grocery'];
+    var types = options.types || ['library', 'food', 'cafe', 'bus-stop', 'grocery'];
     // var types = ["bus-stop", "cafe", "establishment", "grocery", "library", "lodging", "parking", "restaurant", "theater", "weight"];
-    var radius = 500;
+    var radius = options.radius || 500;
     var placeService = new google.maps.places.PlacesService(map);
     var placeServiceOptions = { location: gCoords, radius:radius || 10000, rankBy: google.maps.places.RankBy.prominence, types: types};
     placeService.nearbySearch(placeServiceOptions, updateScopeWithPlaces);
@@ -67,12 +69,6 @@ function GUtilService($timeout) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         if (results.length) {
 
-          staticMapOptions = {
-            scale: 1, //up to 2, only whole values
-            map_type: "roadmap", //hybrid, terrain, satellite, roadmap
-            size: "1280x1280",
-            zoom: 17
-          }
           $timeout(function() {
             scope.selectedUniversity.place_results = [];
             for (var i = 0; i < results.length; i++) {
@@ -86,7 +82,7 @@ function GUtilService($timeout) {
               scope.selectedUniversity.place_results.push(resultPlace);
             }
             if (callback) {
-              console.log('calling callback');
+
               callback(scope.selectedUniversity, scope.selectedCategory);
             }
           });

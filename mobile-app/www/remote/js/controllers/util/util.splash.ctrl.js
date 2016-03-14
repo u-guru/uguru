@@ -1222,6 +1222,17 @@ angular.module('uguru.util.controllers')
       return selectedUniversityMapStyles
     }
 
+     $scope.getUniversityPlaces = function(university) {
+      if (university.og_map  && (!university.place_results || !university.place_results.length)) {
+        $timeout(function() {
+          $scope.$apply(function() {
+            GUtilService.getPlaceListByCoords($scope, university.og_map, {latitude: university.latitude, longitude: university.longitude}, updateMarkersOnUniversitySpecificMap);
+          })
+        })
+      }
+      // $scope.map.center = {latitude: university.latitude, university.longitude};
+    }
+
     function translatePhoneToLeft() {
       var splashDeviceElem = document.querySelector('.splash-device.splash-device-iphone');
     }

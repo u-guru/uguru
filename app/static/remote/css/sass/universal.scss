@@ -113,29 +113,160 @@
 					padding: 15px 0 15px 15px;
 					height: 100%;
 					width: 100%;
-					> div {
-						position: relative;
-						height: 100%;
-						border-radius: 2px;
-						h1 {
-							position: relative;
-							font-size: 28px;
-							font-weight: 600;
+					position: relative;
+					.home-ticket-content {
+						position: absolute;
+						left: calc(10% + 7.5px);
+						top: 10%;
+						width: 80%;
+						height: 80%;
+						border-radius: 5px;
+						text-align: center;
+						.home-ticket-inside {
+							@include flex;
+							@include flex-wrap;
+							@include prefix(justify-content, center, webkit);
 							padding: 15px;
-							&:after {
-								@include round;
-								content: "";
+							width: 100%;
+							height: 100%;
+							h1, h2 {
+								@include prefix(align-self, flex-start, webkit);
+								text-align: center;
+								padding: 0;
+								margin: 0!important;
+							}
+							h1 {
+								font-size: 32px;
+								font-weight: 900;
+							}
+							h2 {
+								font-size: 20px;
+								font-weight: 600;
+							}
+							.home-ticket-guru-bar {
+								@include prefix(align-self, center, webkit);
+								@include flex;
+								@include flex-center;
+								padding: 0 7.5px;
+								width: 100%;
+								> li {
+									padding: 0 7.5px;
+									.pf-card-mini {
+										background: $smoke;
+										color: $slate;
+										.user-icon {
+											border-color: $smoke;
+											width: 48px;
+											height: 48px;
+										}
+										.pf-name {
+											font-size: 14px;
+											font-weight: 600;
+										}
+										.rating-stars {
+											max-width: 70px;
+										}
+									}
+								}
+							}
+							.home-ticket-icon-bar {
+								@include prefix(align-self, center, webkit);
+								@include flex;
+								@include flex-center;
+								padding: 0 7.5px;
+								> li {
+									padding: 0 7.5px;
+									span {
+										display: block;
+										width: 100%;
+										font-size: 16px;
+										font-weight: 600;
+										line-height: 1.2;
+										text-align: center;
+										text-transform: uppercase;
+										+ span {
+											margin-top: 5px;
+										}
+									}
+									svg {
+										@include round;
+										display: block;
+										width: 100%;
+										max-width: 90px;
+										margin: 0 auto;
+										padding: 5px;
+										* {
+											@include svg-stroke(white, 3);
+										}
+									}
+									&.academic {
+										svg {
+											background: $cerise;
+										}
+									}
+									&.baking {
+										svg {
+											background: $gold;
+										}
+									}
+									&.photography {
+										svg {
+											background: $moola;
+										}
+									}
+									&.household {
+										svg {
+											background: $cobalt;
+										}
+									}
+									&.tech {
+										svg {
+											background: $azure;
+										}
+									}
+								}
+							}
+							.home-ticket-icon {
+								@include prefix(align-self, center, webkit);
 								display: block;
-								position: absolute;
-								bottom: -1px;
-								left: 15px;
-								width: calc(100% - 30px);
-								height: 2px;
+								margin: 0 auto;
+								svg {
+									display: block;
+									margin: 0 auto;
+									width: 100%;
+									max-height: 150px;
+								}
+							}
+							button {
+								@include prefix(align-self, flex-end, webkit);
+								display: inline-block;
+								max-width: 75%;
 							}
 						}
-						p {
-							font-size: 18px;
-							font-weight: 400;
+					}
+					.home-ticket {
+						position: relative;
+						width: 100%;
+						height: 100%;
+						div {
+							margin: 0 auto;
+							width: calc(100% - 10px);
+							height: 100%;
+						}
+						&:before, &:after {
+							content: "";
+							display: block;
+							position: absolute;
+							z-index: 2;
+							top: 0;
+							height: 100%;
+							width: 20%;
+						}
+						&:before {
+							left: 0;
+						}
+						&:after {
+							right: 0;
 						}
 					}
 				}
@@ -180,12 +311,15 @@
 								width: 100%;
 								padding-bottom: 5px;
 								> span {
+									position: relative;
 									display: block;
-									font-size: 64px;
-									font-weight: 600;
-									text-align: center;
-									line-height: 80px;
-									height: 80px;
+									> span {
+										@include center-xy;
+										display: block;
+										font-size: 28px;
+										font-weight: 600;
+										text-align: center;
+									}
 								}
 								h1 {
 									width: 100%;
@@ -395,147 +529,147 @@
 // TICKET STUB
 .ticket-container {
 	background: $smoke;
-}
-.ticket {
-	border-radius: 5px;
-	border: 3px solid darken($lake, 15%);
-	.ticket-top {
-		position: relative;
-		padding: 30px 15px 15px;
-		background: $lake;
-		border-bottom: 3px dashed darken($lake, 15%);
-		color: white;
-		text-align: center;
-		h1 {
-			font-size: 28px;
-			font-weight: 600;
-		}
-		p {
-			margin: 0;
-			font-size: 16px;
-			font-weight: 400;
-		}
-		&:before {
-			@include round;
-			@include center-x;
-			content: "";
-			display: block;
-			top: -24px;
-			width: 48px;
-			height: 48px;
-			background: $smoke;
-			border: 3px solid darken($lake, 15%);
-		}
-		&:after {
-			@include center-x;
-			content: "";
-			display: block;
-			top: -27px;
-			width: 48px;
-			height: 24px;
-			background: $smoke;
-		}
-	}
-	.ticket-bot {
-		@include flex;
-		@include flex-wrap;
-		@include flex-center;
-		position: relative;
-		background: white;
-		color: lighten($slate, 20%);
-		padding-bottom: 24px;
-		min-height: 280px;
-		ul {
-			padding: 7.5px;
-			width: 100%;
-			li {
-				@include flex;
-				@include flex-center-vertical;
-				padding: 7.5px;
-				font-size: 18px;
-				font-weight: 400;
-				span {
-					display: block;
-				}
-				.ticket-icon {
-					width: 24px;
-					height: 24px;
-					svg {
-						display: block;
-						width: 100%;
-						height: 100%;
-						* {
-							@include svg-stroke(lighten($slate, 20%), 6);
-						}
-					}
-				}
-				.ticket-info {
-					width: calc(100% - 24px);
-					padding-left: 15px;
-				}
-			}
-		}
-		h1 {
-			-webkit-align-self: flex-end;
-			align-self: flex-end;
+	.ticket {
+		border-radius: 5px;
+		border: 3px solid darken($lake, 15%);
+		.ticket-top {
 			position: relative;
-			width: 80%;
-			margin: 0 0 15px;
-			padding: 15px;
-			font-size: 22px;
-			font-weight: 600;
-			text-align: center;
+			padding: 30px 15px 15px;
 			background: $lake;
+			border-bottom: 3px dashed darken($lake, 15%);
 			color: white;
-			> span {
-				display: block;
+			text-align: center;
+			h1 {
+				font-size: 28px;
+				font-weight: 600;
 			}
-			span.strong {
-				font-weight: 900;
-			}
-			&:not(.verified) span:nth-child(2) {
-				display: initial !important; //overrides nth-child(2) 'display: none' on 1081 lol
-			}
-			&:before,
-			&:after {
-				content: "";
-				display: block;
-				position: absolute;
-				top: 0;
-				width: 0;
-				height: 0;
-				border: 28px solid transparent;
-				border-left-width: 14px;
-				border-right-width: 14px;
-				border-top-color: $lake;
-				border-bottom-color: $lake;
+			p {
+				margin: 0;
+				font-size: 16px;
+				font-weight: 400;
 			}
 			&:before {
-				left: -14px;
+				@include round;
+				@include center-x;
+				content: "";
+				display: block;
+				top: -24px;
+				width: 48px;
+				height: 48px;
+				background: $smoke;
+				border: 3px solid darken($lake, 15%);
 			}
 			&:after {
-				right: -14px;
+				@include center-x;
+				content: "";
+				display: block;
+				top: -27px;
+				width: 48px;
+				height: 24px;
+				background: $smoke;
 			}
 		}
-		&:before {
-			@include round;
-			@include center-x;
-			content: "";
-			display: block;
-			bottom: -24px;
-			width: 48px;
-			height: 48px;
-			background: $smoke;
-			border: 3px solid darken($lake, 15%);
-		}
-		&:after {
-			@include center-x;
-			content: "";
-			display: block;
-			bottom: -27px;
-			width: 48px;
-			height: 24px;
-			background: $smoke;
+		.ticket-bot {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			position: relative;
+			background: white;
+			color: lighten($slate, 20%);
+			padding-bottom: 24px;
+			min-height: 280px;
+			ul {
+				padding: 7.5px;
+				width: 100%;
+				li {
+					@include flex;
+					@include flex-center-vertical;
+					padding: 7.5px;
+					font-size: 18px;
+					font-weight: 400;
+					span {
+						display: block;
+					}
+					.ticket-icon {
+						width: 24px;
+						height: 24px;
+						svg {
+							display: block;
+							width: 100%;
+							height: 100%;
+							* {
+								@include svg-stroke(lighten($slate, 20%), 6);
+							}
+						}
+					}
+					.ticket-info {
+						width: calc(100% - 24px);
+						padding-left: 15px;
+					}
+				}
+			}
+			h1 {
+				-webkit-align-self: flex-end;
+				align-self: flex-end;
+				position: relative;
+				width: 80%;
+				margin: 0 0 15px;
+				padding: 15px;
+				font-size: 22px;
+				font-weight: 600;
+				text-align: center;
+				background: $lake;
+				color: white;
+				> span {
+					display: block;
+				}
+				span.strong {
+					font-weight: 900;
+				}
+				&:not(.verified) span:nth-child(2) {
+					display: initial !important; //overrides nth-child(2) 'display: none' on 1081 lol
+				}
+				&:before,
+				&:after {
+					content: "";
+					display: block;
+					position: absolute;
+					top: 0;
+					width: 0;
+					height: 0;
+					border: 28px solid transparent;
+					border-left-width: 14px;
+					border-right-width: 14px;
+					border-top-color: $lake;
+					border-bottom-color: $lake;
+				}
+				&:before {
+					left: -14px;
+				}
+				&:after {
+					right: -14px;
+				}
+			}
+			&:before {
+				@include round;
+				@include center-x;
+				content: "";
+				display: block;
+				bottom: -24px;
+				width: 48px;
+				height: 48px;
+				background: $smoke;
+				border: 3px solid darken($lake, 15%);
+			}
+			&:after {
+				@include center-x;
+				content: "";
+				display: block;
+				bottom: -27px;
+				width: 48px;
+				height: 24px;
+				background: $smoke;
+			}
 		}
 	}
 }
@@ -551,11 +685,215 @@
 
 /* ---------- REQUESTS */
 #request {
-	header:not(.desktop-header, [class*="bg-"]) {
-		background: $shamrock;
+	height: 100%;
+	> header {
+		height: 65px;
+		.request-nav {
+			width: 100%;
+			> div {
+				width: 100%;
+				a {
+					width: calc(100% / 6);
+				}
+				> div {
+					width: calc(100% / 6);
+				}
+				a {
+					&:nth-child(1) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(2) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(3) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(4) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(5) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(6) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(1) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(2) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(3) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(4) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(5) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: lighten($slate, 15%);
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(6) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: lighten($slate, 15%);
+								}
+								&:after {
+									border-color: $lake;
+								}
+							}
+						}
+					}
+				}
+				> div {
+					span {
+						background: $lake;
+					}
+					&:before {
+						border-color: $lake;
+						border-left-color: lighten($slate, 15%);
+					}
+					&:after {
+						right: -15px;
+						border-color: lighten($slate, 15%);
+						border-left-color: $lake;
+					}
+				}
+			}
+		}
+		progress, .progress {
+			margin: 0;
+			vertical-align: top;
+		}
 	}
 	main {
-		height: 100%;
+		@include flex;
+		@include flex-wrap;
+		height: calc(100% - 65px);
+		background: $smoke;
+		.request-slide {
+			height: 100%;
+			overflow: auto;
+		}
 	}
 }
 .angular-google-map,
@@ -672,389 +1010,545 @@
 	}
 }
 .request-slide {
-	background: $smoke;
-	color: $slate;
-	overflow: auto;
+	width: 100%;
+	text-align: center;
 	header {
-		@include flex;
-		@include flex-center;
-		background: $shamrock;
-		height: calc(100% / 3 - 98px)!important;
+		padding: 15px;
+		background: $charcoal;
 		h1 {
-			padding-bottom: 50px;
-			color: white;
+			padding: 0;
 			font-size: 28px;
 			font-weight: 600;
-			text-transform: none!important;
+			text-transform: lowercase;
 		}
-	}
-	@media screen and (min-width: 768px) {
-		header {
-			height: calc(30% - 87px)!important;
-			h1 {
-				padding-bottom: 0;
-				font-size: 48px;
-				font-weight: 700;
-			}
-		}
-	}
-	h1.request-step {
-		@include transition(.15s ease-in-out);
-		width: 100%;
-		padding: 15px;
-		color: $slate;
-		font-size: 28px;
-		font-weight: 600;
-		text-align: center;
-		a {
-			@include flex;
-			@include flex-wrap;
-			@include flex-center;
-			width: 100%;
-			color: $slate;
-		}
-		b {
-			@include flex;
-			@include flex-wrap;
-			@include flex-center;
-			font-weight: 600;
-			width: 100%;
-			+ b {
-				padding-top: 5px;
-				font-size: 20px!important;
-			}
-		}
-		span {
-			@include round;
-			@include flex;
-			@include flex-center;
-			background: $slate;
-			color: white;
-			margin-left: 7px;
-			width: 36px;
-			height: 36px;
-		}
-		svg {
-			@include svg-stroke($slate, 10);
-			display: none;
-			margin-left: 1px;
-			padding: 6px;
-			width: 36px;
-			height: 36px;
-		}
-		&.small {
-			@include opacity(.4);
+		h2 {
+			margin-top: 5px!important;
 			font-size: 20px;
-			b {
-				strong {
-					display: none;
-				}
-				+ b {
-					font-size: 16px;
-				}
-			}
-			svg {
-				display: block;
-			}
-			span {
-				width: 28px;
-				height: 28px;
-			}
-		}
-		&.selected {
-			@include opacity-important(.7);
-		}
-		@media screen and (max-width: 768px) {
-			font-size: 20px!important;
-			span {
-				width: 28px;
-				height: 28px;
-			}
-			strong {
-				display: block;
-				width: 100%;
-				&:after {
-					content: "\00a0\00a0";
-				}
-			}
+			font-weight: 600;
+			text-transform: none;
 		}
 	}
-	.request-content {
-		background: $smoke;
+	button.confirm {
+		background: rgba($lake, .95);
+		color: white;
+		font-weight: 600;
 	}
-	#request-search {
+	&.request-categories {
 		position: relative;
-		background: $smoke;
-		form {
+		.request-category, .request-subcategory {
+			height: 100%;
 			background: $smoke;
-			padding: 0 15px 15px 0;
-			position: relative;
-			z-index: 12;
 		}
-		.input-field {
-			max-width: 800px;
-			margin: 0 auto;
-			padding: 0 0 15px;
-			.prefix {
-				top: 4px;
-				svg {
-					@include svg-stroke($slate, 5);
-					stroke: $slate!important;
-					width: 100%;
-					height: 100%;
-					padding: 10px;
-				}
-			}
-			.desktop-input-close-icon {
-				z-index: 3;
-			    top: 25%;
-				@media screen and (min-width: 768px) {
-					top: 50%;
-					margin: -10px -20px -10px 0!important;
-					.icon {
-						font-size: 20px!important;
-					}
-				}
-				.txt-white {
-					color: $slate!important;
-				}
-			}
-			input, label {
-				border-color: rgba($slate, .5)!important;
-				color: $slate!important;
-				@media screen and (min-width: 768px) {
-					text-align: center!important;
-				}
-			}
-			input {
-				padding-right: 48px;
-				z-index: 2;
-				margin-bottom: 0;
-				@include placeholder {
-					color: $slate;
-				}
-				&:focus {
-					border-color: $slate!important;
-					box-shadow: 0 1px 0 0 $slate!important;
-				}
-			}
-			label {
-				width: calc(100% - 48px);
-				padding-right: 48px;
-				z-index: 1;
-				span.selected-school, span.selected-course {
-					font-weight: 600;
-				}
-				&.active {
-					@include opacity-important(0);
-				}
-			}
-		}
-		.course-list, .course-none {
-			top: 158px;
-    		left: 0;
-			background: $smoke;
-			a {
-				color: white;
-				text-align: center;
-				.course-title {
-					text-align: center;
-				}
-			}
-			&.active {
-				z-index: 1000;
-			}
-		}
-		.course-list {
+		.request-category {
 			ul {
-				width: 100%;
-				max-width: 815px;
-				margin: 0 auto;
+				height: calc(100% - 87px);
+				li {
+					height: calc(100% / 3);
+				}
 			}
 		}
-		.course-none {
-			padding: 15px;
-		    font-size: 28px;
-		    color: $slate;
-		    line-height: 1.5;
-		}
-		@media screen and (min-width: 768px) {
-			.course-list, .course-none {
-				top: 153px;
+		.request-subcategory {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			&:not(.selected) {
+				@include opacity(0);
+				z-index: -10;
 			}
-			.course-none {
-				font-size: 36px;
+			&.selected {
+				z-index: 10;
 			}
-		}
-	}
-	.request-type {
-		background: darken($smoke, 2.5%);
-		.checkbox-container {
-			div {
-				span {
-					background: rgba($slate,.4);
-					svg {
-						path {
-							stroke: rgba(white,.3);
+			ul {
+				@include prefix(align-content, flex-start, webkit);
+				height: calc(100% - 87px - 64px);
+				li {
+					height: 20%;
+					a {
+						.card-icon {
+							width: 75px;
+							height: 75px;
+							svg {
+								* {
+									stroke-width: 3px;
+								}
+								&:not(.normalized) {
+									@include round;
+									background: rgba(white, .5);
+									* {
+										@include opacity(0);
+									}
+								}
+							}
 						}
 					}
 				}
-				input:checked + span {
-					background: $slate;
-					svg {
-						path {
-							stroke: white;
-						}
-					}
+			}
+		}
+		button {
+			&.bg-delivery {
+				background: mix($auburn, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($auburn, white);
+					color: mix($auburn, $slate);
+				}
+				&:active {
+					background: mix($auburn, $slate);
+					color: white;
 				}
 			}
-			label {
-				color: $slate;
+			&.bg-freelancing {
+				background: mix($orange, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($orange, white);
+					color: mix($orange, $slate);
+				}
+				&:active {
+					background: mix($orange, $slate);
+					color: white;
+				}
+			}
+			&.bg-baking {
+				background: mix($gold, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($gold, white);
+					color: mix($gold, $slate);
+				}
+				&:active {
+					background: mix($gold, $slate);
+					color: white;
+				}
+			}
+			&.bg-photography {
+				background: mix($moola, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($moola, white);
+					color: mix($moola, $slate);
+				}
+				&:active {
+					background: mix($moola, $slate);
+					color: white;
+				}
+			}
+			&.bg-tech {
+				background: mix($azure, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($azure, white);
+					color: mix($azure, $slate);
+				}
+				&:active {
+					background: mix($azure, $slate);
+					color: white;
+				}
+			}
+			&.bg-household {
+				background: mix($cobalt, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($cobalt, white);
+					color: mix($cobalt, $slate);
+				}
+				&:active {
+					background: mix($cobalt, $slate);
+					color: white;
+				}
+			}
+			&.bg-athletic {
+				background: mix($eggplant, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($eggplant, white);
+					color: mix($eggplant, $slate);
+				}
+				&:active {
+					background: mix($eggplant, $slate);
+					color: white;
+				}
+			}
+			&.bg-academic {
+				background: mix($cerise, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($cerise, white);
+					color: mix($cerise, $slate);
+				}
+				&:active {
+					background: mix($cerise, $slate);
+					color: white;
+				}
 			}
 		}
 		ul {
 			@include flex;
 			@include flex-wrap;
-			@include flex-center;
-			@media screen and (max-width: 768px) {
-				padding: 0 7.5px 10px;
-				li {
-					width: 100%;
-				}
-			}
+			border: 1px solid $smoke;
 			li {
-				padding: 7.5px;
-				@media screen and (min-width: 768px) {
-					padding: 15px;
-				}
-				.radio-container {
-					div {
-						span {
-							background: rgba($slate,.4);
-							svg {
-								@include round;
-								background: rgba(white,.3);
-								path {
-									display: none;
+				width: 50%;
+				border: 1px solid $smoke;
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					width: 100%;
+					height: 100%;
+					border-radius: 2px;
+					span {
+						display: block;
+						width: 100%;
+					}
+					.card-icon {
+						width: 100px;
+						height: 100px;
+						svg {
+							display: block;
+							width: 100%;
+							height: 100%;
+							* {
+								@include svg-stroke(white, 2);
+							}
+						}
+					}
+					.card-label {
+						font-size: 18px;
+						font-weight: 600;
+					}
+					&.bg-delivery {
+						background: $auburn;
+						&:hover, &:focus {
+							background: mix($auburn, white);
+							color: mix($auburn, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($auburn, $slate);
+									}
 								}
 							}
 						}
-						input:checked + span {
-							background: white;
-							svg {
-								background: $slate;
+						&:active {
+							background: mix($auburn, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
 							}
 						}
 					}
-					label {
-						font-size: 24px;
-						color: $slate;
-					}
-				}
-				&:only-child {
-					.radio-container {
-						label {
-							font-size: 28px;
+					&.bg-freelancing {
+						background: $orange;
+						&:hover, &:focus {
+							background: mix($orange, white);
+							color: mix($orange, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($orange, $slate);
+									}
+								}
+							}
 						}
-					}
-				}
-			}
-		}
-		@media screen and (max-width: 768px) {
-			&.small {
-				ul {
-					li {
-						.radio-container {
-							label {
-								font-size: 18px!important;
+						&:active {
+							background: mix($orange, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
 							}
 						}
 					}
-				}
-			}
-		}
-	}
-	.request-desc {
-		background: darken($smoke, 5%);
-		padding: 0 15px;
-		textarea {
-			@include transition(.15s ease-in-out);
-			width: 100%;
-			max-width: 800px;
-			min-height: 150px;
-			resize: none;
-			margin: 0 auto;
-			background: rgba(white,.1);
-			border-color: lighten($slate, 40%);
-			color: $slate;
-			font-size: 18px;
-			font-weight: 400;
-			@include placeholder {
-				color: lighten($slate, 30%);
-			}
-			&:hover {
-				background: rgba(white, .7);
-				border-color: lighten($slate, 30%);
-				color: $slate;
-			}
-			&:focus, &.active {
-				background: white;
-				border-color: $slate;
-				color: $slate;
-			}
-		}
-		.tag-list, .attachment-list {
-			width: 800px;
-			margin-left: auto;
-			margin-right: auto;
-		}
-		.tag-list {
-			margin-top: 15px;
-			.chip {
-				margin-bottom: 15px;
-				&:hover, &:focus {
-					@include placeholder {
+					&.bg-baking {
+						background: $gold;
+						&:hover, &:focus {
+							background: mix($gold, white);
+							color: mix($gold, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($gold, $slate);
+									}
+								}
+							}
+						}
+						&:active {
+							background: mix($gold, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
+							}
+						}
+					}
+					&.bg-photography {
+						background: $moola;
+						&:hover, &:focus {
+							background: mix($moola, white);
+							color: mix($moola, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($moola, $slate);
+									}
+								}
+							}
+						}
+						&:active {
+							background: mix($moola, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
+							}
+						}
+					}
+					&.bg-tech {
+						background: $azure;
+						&:hover, &:focus {
+							background: mix($azure, white);
+							color: mix($azure, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($azure, $slate);
+									}
+								}
+							}
+						}
+						&:active {
+							background: mix($azure, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
+							}
+						}
+					}
+					&.bg-household {
+						background: $cobalt;
+						&:hover, &:focus {
+							background: mix($cobalt, white);
+							color: mix($cobalt, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($cobalt, $slate);
+									}
+								}
+							}
+						}
+						&:active {
+							background: mix($cobalt, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}	
+							}
+						}
+					}
+					&.bg-athletic {
+						background: $eggplant;
+						&:hover, &:focus {
+							background: mix($eggplant, white);
+							color: mix($eggplant, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($eggplant, $slate);
+									}
+								}
+							}
+						}
+						&:active {
+							background: mix($eggplant, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
+							}
+						}
+					}
+					&.bg-academic {
+						background: $cerise;
+						&:hover, &:focus {
+							background: mix($cerise, white);
+							color: mix($cerise, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($cerise, $slate);
+									}
+								}
+							}
+						}
+						&:active {
+							background: mix($cerise, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
+							}
+						}
+					}
+					&.bg-more {
+						background: mix($slate, white);
 						color: white;
 					}
 				}
 			}
 		}
-		.attachment-list {
-			height: 150px;
-			ul {
-				margin-left: -15px;
-			}
-			.attach-upload-add {
-				a {
-					border-color: lighten($slate, 30%);
-					span {
-						color: lighten($slate, 30%);
-						svg {
-							stroke: lighten($slate, 30%);
-						}
-					}
-					&:hover, &:focus {
-						border-color: $slate;
-						span {
-							color: $slate;
-							svg {
-								stroke: $slate;
+	}
+	&.request-details {
+		> div {
+			padding-bottom: 64px;
+			> div {
+				h1 {
+					padding: 15px 15px 0;
+					color: $slate;
+					font-size: 16px;
+					font-weight: 600;
+					text-transform: uppercase;
+					text-align: left;
+				}
+				&.request-courses {
+					ul {
+						@include flex;
+						@include flex-wrap;
+						padding: 14px;
+						margin-top: -5px;
+						li {
+							padding: 1px;
+							width: calc(100% / 3);
+							a {
+								display: block;
+								padding: 15px;
+								font-size: 18px;
+								font-weight: 600;
+								background: $lake;
+								border-radius: 2px;
+								border-bottom: 5px solid rgba(white, .3);
+								border-top: 5px solid transparent;
+								&:hover, &:focus {
+									background: mix($lake, white);
+									color: mix($lake, $slate);
+									border-bottom-color: rgba(mix($shamrock, $slate), .3);
+								}
+								&:active {
+									background: mix($lake, $slate);
+									color: white;
+									border-bottom-color: rgba(white, .3);
+								}
 							}
 						}
 					}
 				}
+				&.request-desc {
+					textarea {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						margin: 10px 15px 15px;
+						width: calc(100% - 30px);
+						min-height: 100px;
+						padding: 15px;
+						resize: none;
+						background: rgba(white,.2);
+						border: 2px solid lighten($slate, 40%);
+						border-bottom-width: 5px;
+						color: $slate;
+						font-size: 16px;
+						font-weight: 400;
+						@include placeholder {
+							color: lighten($slate, 30%);
+						}
+						&:hover {
+							background: rgba(white, .7);
+							border-color: lighten($slate, 15%);
+							color: $slate;
+						}
+						&:focus, &.active {
+							background: white;
+							border-color: $lake;
+							color: $slate;
+						}
+					}
+				}
+				&.request-attachments {
+					.attachment-list {
+						position: relative;
+						margin: 10px 15px;
+						width: calc(100% - 30px);
+						height: 180px;
+						border: 2px dashed rgba($lake, .5);
+						border-radius: 5px;
+						ul {
+							height: 150px;
+						}
+						progress {
+							margin: 0 15px 15px;
+							width: calc(100% - 30px);
+						}
+						.instructions {
+							@include center-xy;
+							color: $lake;
+							font-size: 16px;
+							font-weight: 600;
+							width: 180px;
+							padding: 15px;
+						}
+					}
+					.uploaded {
+						display: block;
+						width: 100%;
+						padding: 0 15px 15px;
+						color: $lake;
+						font-size: 14px;
+						font-weight: 600;
+						text-align: center;
+					}
+				}
 			}
 		}
+		> button {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
 	}
-	.request-time {
-		background: darken($smoke, 7.5%);
+	&.request-time {
 		> div {
-			padding-bottom: 15px;
+			height: calc(100% - 87px - 64px);
+			h1 {
+				padding: 15px 15px 0;
+				color: $slate;
+				font-size: 16px;
+				font-weight: 600;
+				text-transform: uppercase;
+				text-align: left;
+			}
 		}
 		.request-form {
 			@include flex;
 			@include flex-wrap;
-			@include flex-center;
+			@include flex-center-vertical;
 			padding: 15px;
 			h2 {
 				@include flex;
@@ -1062,15 +1556,31 @@
 				margin-bottom: 15px;
 				height: 48px;
 				font-weight: 600;
+				color: $slate;
 			}
 			.custom-dropdown {
-				color: white;
+				color: $slate;
 				margin-bottom: 15px;
 				> div {
 					span {
 						width: 84px;
 						background: white;
 						color: $slate;
+					}
+					a {
+						svg {
+							background: $lake;
+						}
+						&:hover, &:focus {
+							svg {
+								background: lighten($lake, 10%);
+							}
+						}
+						&:active {
+							svg {
+								background: darken($lake, 10%);
+							}
+						}
 					}
 				}
 				> ul {
@@ -1084,10 +1594,10 @@
 						background: rgba(lighten($slate, 5%), .98);
 						font-weight: 600;
 						&:hover, &:focus {
-							background: rgba($shamrock,.98);
+							background: rgba($lake,.98);
 						}
 						&:active {
-							background: rgba(lighten($shamrock, 10%),.98);
+							background: rgba(lighten($lake, 10%),.98);
 						}
 					}
 				}
@@ -1108,1678 +1618,210 @@
 				}
 			}
 		}
-		.request-cal {
-			max-width: 800px;
-			margin: 0 auto;
-			background: darken($campus, 15%);
-			color: white;
-			.cal-week {
-				&:not(.active) {
-					.cal-time, .cal-main {
-						display: none;
-					}
-				}
-				&.active {
-					.cal-month {
-						svg {
-							&:last-child {
-								@include rotate(180);
-							}
-						}
-					}
-				}
-				.cal-month {
-					margin: 0 0 2px;
-					width: calc(100% + 4px);
-					text-transform: none;
-					a {
-						padding: 10px 15px;
-					}
-					svg {
-						@include svg-stroke(white, 4);
-						display: block;
-						&:first-child {
-							margin: 0 auto 5px;
-							width: 48px;
-							height: 48px;
-						}
-						&:last-child {
-							margin: 5px auto 0;
-							stroke-width: 8px;
-							width: 24px;
-							height: 24px;
-						}
-					}
-					span:nth-child(2) {
-						display: block!important;
-					}
-				}
-				.cal-main {
-					.cal-date {
-						min-width: 720px;
-						li {
-							min-width: 102px;
-						}
-					}
-					.cal-events {
-						min-width: 720px;
-						.cal-day {
-							li {
-								min-width: 102px;
-							}
-						}
-					}
-				}
-				@media screen and (max-width: 768px) {
-					.cal-month {
-						font-size: 20px;
-						font-weight: 600;
-					}
-					.cal-main {
-						overflow: visible;
-						.cal-date {
-							min-width: auto;
-							li {
-								min-width: auto;
-								> span {
-									span:nth-child(2), span:nth-child(3) {
-										display: none!important;
-									}
-								}
-							}
-						}
-						.cal-events {
-							@include flex;
-							@include flex-center;
-							width: 100%;
-							min-width: auto!important;
-							overflow-x: auto;
-							.cal-day {
-								min-width: 102px;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	.request-location {
-		background: darken($smoke, 10%);
-	}
-	.request-payment {
-		background: darken($smoke, 12.5%);
-		.request-payment-mobile {
-			@media screen and (min-width: 768px) {
-				display: none;
-			}
-			.mini-card {
-				display: block;
-				width: 60px;
-				margin: 0 auto;
-				border: 2px solid rgba($slate,.5);
-				border-radius: 5px;
-				font-size: 14px;
-				font-weight: 600;
-				text-transform: uppercase;
-				text-align: center;
-				&:hover, &:focus {
-					border-color: $slate;
-					background: $slate;
-					color: white!important;
-				}
-			}
-		}
-		.request-payment-desktop {
-			display: none;
-			@media screen and (min-width: 768px) {
-				@include flex;
-			}
-		}
-		> div {
-			max-width: 800px;
-			margin: 0 auto;
-			h4 {
-				margin: 15px 0 10px;
-				font-size: 24px;
-				font-weight: 600;
-				text-align: center;
-				@media screen and (min-width: 768px) {
-					text-align: left;
-				}
-			}
-			.credit-card {
-				height: 150px;
-				max-width: 250px;
-				span {
-					display: block!important;
-				}
-			}
-			> div:last-child {
-				> .ugrid-2 {
-					> li:first-child {
-						display: none;
-						@media screen and (min-width: 768px) {
-							display: block;
-						}
-					}
-					> li:last-child {
-						width: 100%;
-						padding: 0 15px;
-						@media screen and (min-width: 768px) {
-							width: 50%;
-							padding: 0;
-						}
-					}
-				}
-				.credit-card {
-					height: 175px;
-    				max-width: 300px;
-				}
-				form {
-					ul {
-						margin: 0 -7.5px;
-						li {
-							padding: 0 7.5px;
-						}
-					}
-					button {
-						position: static!important;
-						top: auto!important;
-						left: auto!important;
-						margin-bottom: 15px;
-					}
-				}
-			}
-		}
-	}
-	&#request-one {
-		.request-content {
-			> ul {
+		.request-when {
+			ul {
 				@include flex;
 				@include flex-wrap;
-				max-width: 830px;
-				padding: 7.5px;
-				margin: 0 auto;
-				> li {
-					width: 100%;
-					padding: 7.5px;
-					&:last-child {
-						.attachment-list {
-							margin: -15px;
-						}
-					}
-				}
-			}
-		}
-	}
-	&#request-two {
-		.request-payment-container {
-			@include flex;
-			@include flex-center;
-			height: calc(70% + 87px);
-			> ul {
-				@include flex;
-				-webkit-justify-content: center;
-				justify-content: center;
-				padding: 15px;
-				width: 100%;
-				max-width: 860px;
-				margin: 0 auto;
-				> li {
-					padding: 15px;
-					.credit-card-wrapper {
-						display: block;
-						margin: 0 auto;
-						width: 275px;
-						height: 150px;
-					}
-					&:last-child {
-						width: calc(100% - 305px);
-						button {
-							width: 100%;
-							max-width: none!important;
-						}
-						.desktop-input-close-icon {
-							right: 0!important;
-							padding: 0!important;
-							margin: -10px 0 0!important;
-						}
-						.ugrid-2 {
-							margin: 0 -7.5px;
-							> * {
-								padding: 0 7.5px;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	&.request-pledge {
-		.request-content {
-			background: none;
-			max-width: 800px;
-			margin: 0 auto;
-			padding: 15px;
-			ol {
-				counter-reset: li;
+				@include flex-center;
+				padding: 0 14px 15px;
 				li {
-					@include flex;
-					@include flex-center;
-					margin-bottom: 15px;
-					font-size: 20px;
-					font-weight: 600;
-					line-height: 1.2;
-					&:before {
-						@include flex;
-						@include flex-center;
-						content: counter(li);
-						counter-increment: li;
-						width: 48px;
-						height: 48px;
-						background: white;
-						font-size: 24px;
-					}
-					span {
-						display: block;
-						width: calc(100% - 48px);
-						padding-left: 15px;
-					}
-				}
-			}
-			input {
-				background: none;
-				border: 0;
-				margin-top: 30px;
-				height: 41px;
-				line-height: 41px;
-				font-size: 24px;
-				font-family: "Cedarville Cursive", cursive!important;
-				border-bottom: 2px solid;
-				width: 40%;
-			}
-			label {
-				height: 38px;
-				line-height: 38px;
-				font-size: 16px;
-				font-weight: 600;
-			}
-		}
-	}
-	&.request-confirm {
-		.request-content {
-			@include flex;
-			@include flex-wrap;
-			padding: 7.5px;
-			background: mix($shamrock, $smoke, 10%);
-			@media screen and (min-width: 768px) {
-				overflow: hidden;
-			}
-			> div {
-				width: 100%;
-				padding: 7.5px;
-				@media screen and (max-width: 768px) {
-					min-height: auto!important;
-				}
-				&.request-notes {
-					> div {
-						padding: 15px;
-						h3 {
-							font-weight: 600;
-							text-align: center;
-						}
-					}
-				}
-				> div {
-					position: relative;
-					background: $smoke;
-					a.request-edit {
-						display: none;
-						position: absolute;
-						z-index: 99;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						padding: 15px;
-						background: rgba($shamrock,.95);
-						color: white!important;
-						font-size: 28px;
-						font-weight: 600;
-						text-align: center;
-						@media screen and (min-width: 768px) {
-							@include opacity(0);
-							@include flex;
-							@include flex-center;
-							&:hover, &:focus {
-								@include opacity(1);
-							}
-						}
-					}
-					button.request-edit {
-						width: 100%;
-						max-width: 100%;
-						margin: 0;
-						@media screen and (min-width: 768px) {
-							display: none;
-						}
-					}
-					h1:not(.request-step) {
-						margin-top: -10px;
-						padding: 0 15px 15px;
-						font-size: 24px;
-						font-weight: 600;
-						text-align: center;
-					}
-					p {
-						margin: 0 15px;
-						height: 68px;
-						overflow: hidden;
-						background: white;
-						border-color: $shamrock;
-						border-radius: 2px;
-						font-size: 18px;
-						font-weight: 400;
-						color: $slate;
-					}
-					.tag-list {
-						@include flex-center-vertical;
-						margin: 5px 15px 0;
-						+ .tag-list {
-							margin-top: 0;
-							padding-bottom: 15px;
-						}
-						.chip {
-							margin-top: 10px;
-						}
-						.tag-list-label {
-							display: block;
-							margin: 5px 15px 0 0;
-							font-size: 18px;
-							font-weight: 600;
-						}
-						.tag-more {
-							background: lighten($slate, 25%);
-						}
-						.tag-attach {
-							background: lighten($shamrock, 15%);
-						}
-					}
-					.request-edit-cal {
-						@include flex;
-						@include flex-wrap;
-						@include flex-center;
-						margin: -7.5px 7.5px 7.5px;
-						+ h1 {
-							margin-top: 5px;
-						}
-						.request-edit-cal-item {
-							@include flex;
-							@include flex-wrap;
-							@include flex-center-vertical;
-							margin: 7.5px;
-							height: 68px;
-							max-width: 160px;
-							background: white;
-							border: 1px solid $shamrock;
-							border-left-width: 5px;
-							border-radius: 2px;
-							padding: 10px;
-							h2 {
-								width: 100%;
-								color: $shamrock;
-								font-size: 20px;
-								font-weight: 600;
-							}
-							h3 {
-								width: 100%;
-								font-size: 24px;
-								font-weight: 600;
-							}
-							span {
-								display: block;
-								width: 100%;
-								font-size: 16px;
-								font-weight: 400;
-							}
-						}
-					}
-					.request-selection {
-						> h2 {
-							margin-top: -18px;
-							font-size: 20px;
-							font-weight: 600;
-							text-align: center;
-						}
-						> span {
-							display: block;
-							padding-bottom: 15px;
-							font-size: 16px;
-							font-weight: 400;
-							text-align: center;
-						}
-					}
-					.credit-card-wrapper {
-						display: block;
-						margin: 0 auto;
-						padding-bottom: 15px;
-						.credit-card {
-							margin: 0 auto;
-							height: 150px;
-							max-width: 250px;
-							span {
-								display: block!important;
-							}
-						}
-					}
-					h1.estimated-total:not(.request-step) {
-						@include flex;
-						@include flex-center;
-						height: 175px;
-						font-size: 128px;
-						font-weight: 700;
-					}
-				}
-				@media screen and (min-width: 768px) {
-					width: 50%;
-					&.request-notes {
-						width: 100%!important;
-					}
-					> div {
-						h1:not(.request-step) {
-							font-size: 28px;
-						}
-					}
-				}
-			}
-		}
-	}
-	button {
-		display: block;
-		margin: 15px auto;
-		max-width: 400px;
-		background: $slate;
-		font-weight: 600;
-	}
-}
-
-#request {
-	.request-content {
-		> div:not(.active) {
-			h1.request-step {
-				padding: 45px 15px;
-				+ * {
-					height: 0;
-					padding: 0;
-					margin: 0;
-					overflow: hidden;
-					opacity: 0;
-				}
-			}
-		}
-	}
-}
-
-@media screen and (max-width: 768px) {
-	#request {
-		.desktop-header {
-			padding: 0;
-			top: 5px;
-			a {
-				&:nth-child(1) {
-					width: calc(100% - 50px);
-				}
-				&:nth-child(2) {
-					@include flex;
-					@include flex-center;
-					width: 50px;
-					height: 50px;
-					svg {
-						margin: 8px;
-						width: 28px;
-						height: 28px;
-						stroke-width: 7px;
-					}
-				}
-			}
-		}
-	}
-	.request-slide {
-		padding-bottom: 64px!important;
-		header {
-			h1 {
-				padding-bottom: 0!important;
-				text-align: center!important;
-			}
-		}
-		.request-content {
-			// height: calc(100% / 3 * 2 + 98px)!important;
-			> div {
-				// min-height: calc(100% / 3);
-				&.small {
-					// min-height: auto!important;
-					&#request-type {
-						ul {
-							li {
-								.radio-container {
-									label {
-										font-size: 18px!important;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-.request-delivery {
-	.map-box {
-		> ul {
-			> li {
-				a {
-					color: $auburn!important;
-					&:hover, &:focus {
-						color: lighten($auburn, 10%)!important;
-					}
-				}
-			}
-		}
-	}
-	button {
-		background: $auburn;
-		&:focus, &:hover {
-			background: lighten($auburn, 10%);
-		}
-		&:active, &.activated {
-			background: lighten($slate, 20%);
-		}
-	}
-	header:not(.desktop-header) {
-		background: $auburn!important;
-	}
-	h1.request-step {
-		span {
-			background: $auburn;
-		}
-		svg {
-			stroke: $auburn;
-		}
-	}
-	#request-search {
-		.course-list {
-			li {
-				a {
-					&:hover, &:focus {
-						background: $auburn;
-					}
-					&:active {
-						background: lighten($slate, 10%);
-					}
-				}
-			}
-		}
-	}
-	#request-one {
-		.request-content {
-			.request-type {
-				.checkbox-container {
-					div {
-						input:checked + span {
-							background: $auburn;
-						}
-					}
-				}
-				ul {
-					li {
-						.radio-container {
-							div {
-								input:checked + span {
-									svg {
-										background: $auburn;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			.request-payment {
-				.request-payment-mobile {
-					.mini-card {
-						&:hover, &:focus {
-							border-color: $auburn;
-							background: $auburn;
-						}
-					}
-				}
-			}
-			textarea {
-				&:focus, &.active {
-					border-color: $auburn;
-				}
-			}
-			.tag-list {
-				.chip {
-					&:hover, &:focus {
-						background: lighten($auburn, 10%);
-					}
-					&:active {
-						background: lighten($slate, 20%);
-					}
-				}
-				input.chip {
-					&:active {
-						background: $auburn;
-					}
-				}
-			}
-			.request-time {
-				.request-form {
-					.custom-dropdown {
-						> div {
-							a {
-								svg {
-									background: $auburn;
-								}
-								&:hover, &:focus {
-									svg {
-										background: lighten($auburn, 10%);
-									}
-								}
-								&:active {
-									svg {
-										background: darken($auburn, 10%);
-									}
-								}
-							}
-						}
-						> ul {
-							li {
-								&:hover, &:focus {
-									background: rgba($auburn,.98);
-								}
-								&:active {
-									background: rgba(lighten($auburn, 10%),.98);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	.request-pledge {
-		background: mix($auburn, $smoke, 10%);
-	}
-	.request-confirm {
-		.request-content {
-			background: mix($auburn, $smoke, 10%);
-			> div {
-				> div {
-					a.request-edit {
-						background: rgba($auburn,.95);
-					}
-					p {
-						border-color: $auburn;
-					}
-					.tag-list {
-						.tag-attach {
-							background: lighten($auburn, 15%);
-						}
-					}
-					.request-edit-cal {
-						.request-edit-cal-item {
-							border-color: $auburn;
-							h2 {
-								color: $auburn;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-.request-freelancing {
-	.map-box {
-		> ul {
-			> li {
-				a {
-					color: $orange!important;
-					&:hover, &:focus {
-						color: lighten($orange, 10%)!important;
-					}
-				}
-			}
-		}
-	}
-	button {
-		background: $orange;
-		&:focus, &:hover {
-			background: lighten($orange, 10%);
-		}
-		&:active, &.activated {
-			background: lighten($slate, 20%);
-		}
-	}
-	header:not(.desktop-header) {
-		background: $orange!important;
-	}
-	h1.request-step {
-		span {
-			background: $orange;
-		}
-		svg {
-			stroke: $orange;
-		}
-	}
-	#request-search {
-		.course-list {
-			li {
-				a {
-					&:hover, &:focus {
-						background: $orange;
-					}
-					&:active {
-						background: lighten($slate, 10%);
-					}
-				}
-			}
-		}
-	}
-	#request-one {
-		.request-content {
-			.request-type {
-				.checkbox-container {
-					div {
-						input:checked + span {
-							background: $orange;
-						}
-					}
-				}
-				ul {
-					li {
-						.radio-container {
-							div {
-								input:checked + span {
-									svg {
-										background: $orange;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			.request-payment {
-				.request-payment-mobile {
-					.mini-card {
-						&:hover, &:focus {
-							border-color: $orange;
-							background: $orange;
-						}
-					}
-				}
-			}
-			textarea {
-				&:focus, &.active {
-					border-color: $orange;
-				}
-			}
-			.tag-list {
-				.chip {
-					&:hover, &:focus {
-						background: lighten($orange, 10%);
-					}
-					&:active {
-						background: lighten($slate, 20%);
-					}
-				}
-				input.chip {
-					&:active {
-						background: $orange;
-					}
-				}
-			}
-			.request-time {
-				.request-form {
-					.custom-dropdown {
-						> div {
-							a {
-								svg {
-									background: $orange;
-								}
-								&:hover, &:focus {
-									svg {
-										background: lighten($orange, 10%);
-									}
-								}
-								&:active {
-									svg {
-										background: darken($orange, 10%);
-									}
-								}
-							}
-						}
-						> ul {
-							li {
-								&:hover, &:focus {
-									background: rgba($orange,.98);
-								}
-								&:active {
-									background: rgba(lighten($orange, 10%),.98);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	.request-pledge {
-		background: mix($orange, $smoke, 10%);
-	}
-	.request-confirm {
-		.request-content {
-			background: mix($orange, $smoke, 10%);
-			> div {
-				> div {
-					a.request-edit {
-						background: rgba($orange,.95);
-					}
-					p {
-						border-color: $orange;
-					}
-					.tag-list {
-						.tag-attach {
-							background: lighten($orange, 15%);
-						}
-					}
-					.request-edit-cal {
-						.request-edit-cal-item {
-							border-color: $orange;
-							h2 {
-								color: $orange;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-.request-baking {
-	.map-box {
-		> ul {
-			> li {
-				a {
-					color: darken($gold, 10%)!important;
-					&:hover, &:focus {
-						color: $gold!important;
-					}
-				}
-			}
-		}
-	}
-	button {
-		background: $gold;
-		&:focus, &:hover {
-			background: lighten($gold, 10%);
-		}
-		&:active, &.activated {
-			background: lighten($slate, 20%);
-		}
-	}
-	header:not(.desktop-header) {
-		background: $gold!important;
-	}
-	h1.request-step {
-		span {
-			background: $gold;
-		}
-		svg {
-			stroke: $gold;
-		}
-	}
-	#request-search {
-		.course-list {
-			li {
-				a {
-					&:hover, &:focus {
-						background: $gold;
-					}
-					&:active {
-						background: lighten($slate, 10%);
-					}
-				}
-			}
-		}
-	}
-	#request-one {
-		.request-content {
-			.request-type {
-				.checkbox-container {
-					div {
-						input:checked + span {
-							background: $gold;
-						}
-					}
-				}
-				ul {
-					li {
-						.radio-container {
-							div {
-								input:checked + span {
-									svg {
-										background: $gold;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			.request-payment {
-				.request-payment-mobile {
-					.mini-card {
-						&:hover, &:focus {
-							border-color: $gold;
-							background: $gold;
-						}
-					}
-				}
-			}
-			textarea {
-				&:focus, &.active {
-					border-color: $gold;
-				}
-			}
-			.tag-list {
-				.chip {
-					&:hover, &:focus {
-						background: $gold;
-					}
-					&:active {
-						background: lighten($slate, 20%);
-					}
-				}
-				input.chip {
-					&:active {
-						background: darken($gold, 10%);
-					}
-				}
-			}
-			.request-time {
-				.request-form {
-					.custom-dropdown {
-						> div {
-							a {
-								svg {
-									background: $gold;
-								}
-								&:hover, &:focus {
-									svg {
-										background: lighten($gold, 10%);
-									}
-								}
-								&:active {
-									svg {
-										background: darken($gold, 10%);
-									}
-								}
-							}
-						}
-						> ul {
-							li {
-								&:hover, &:focus {
-									background: rgba($gold,.98);
-								}
-								&:active {
-									background: rgba(lighten($gold, 10%),.98);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	.request-pledge {
-		background: mix($gold, $smoke, 10%);
-	}
-	.request-confirm {
-		.request-content {
-			background: mix($gold, $smoke, 10%);
-			> div {
-				> div {
-					a.request-edit {
-						background: rgba($gold,.95);
-					}
-					p {
-						border-color: $gold;
-					}
-					.tag-list {
-						.tag-attach {
-							background: lighten($gold, 15%);
-						}
-					}
-					.request-edit-cal {
-						.request-edit-cal-item {
-							border-color: $gold;
-							h2 {
-								color: $gold;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-.request-photography {
-	.map-box {
-		> ul {
-			> li {
-				a {
-					color: $moola!important;
-					&:hover, &:focus {
-						color: lighten($moola, 10%)!important;
-					}
-				}
-			}
-		}
-	}
-	button {
-		background: $moola;
-		&:focus, &:hover {
-			background: lighten($moola, 10%);
-		}
-		&:active, &.activated {
-			background: lighten($slate, 20%);
-		}
-	}
-	header:not(.desktop-header) {
-		background: $moola!important;
-	}
-	h1.request-step {
-		span {
-			background: $moola;
-		}
-		svg {
-			stroke: $moola;
-		}
-	}
-	#request-search {
-		.course-list {
-			li {
-				a {
-					&:hover, &:focus {
-						background: $moola;
-					}
-					&:active {
-						background: lighten($slate, 10%);
-					}
-				}
-			}
-		}
-	}
-	#request-one {
-		.request-content {
-			.request-type {
-				.checkbox-container {
-					div {
-						input:checked + span {
-							background: $moola;
-						}
-					}
-				}
-				ul {
-					li {
-						.radio-container {
-							div {
-								input:checked + span {
-									svg {
-										background: $moola;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			.request-payment {
-				.request-payment-mobile {
-					.mini-card {
-						&:hover, &:focus {
-							border-color: $moola;
-							background: $moola;
-						}
-					}
-				}
-			}
-			textarea {
-				&:focus, &.active {
-					border-color: $moola;
-				}
-			}
-			.tag-list {
-				.chip {
-					&:hover, &:focus {
-						background: lighten($moola, 10%);
-					}
-					&:active {
-						background: lighten($slate, 20%);
-					}
-				}
-				input.chip {
-					&:active {
-						background: $moola;
-					}
-				}
-			}
-			.request-time {
-				.request-form {
-					.custom-dropdown {
-						> div {
-							a {
-								svg {
-									background: $moola;
-								}
-								&:hover, &:focus {
-									svg {
-										background: lighten($moola, 10%);
-									}
-								}
-								&:active {
-									svg {
-										background: darken($moola, 10%);
-									}
-								}
-							}
-						}
-						> ul {
-							li {
-								&:hover, &:focus {
-									background: rgba($moola,.98);
-								}
-								&:active {
-									background: rgba(lighten($moola, 10%),.98);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	.request-pledge {
-		background: mix($moola, $smoke, 10%);
-	}
-	.request-confirm {
-		.request-content {
-			background: mix($moola, $smoke, 10%);
-			> div {
-				> div {
-					a.request-edit {
-						background: rgba($moola,.95);
-					}
-					p {
-						border-color: $moola;
-					}
-					.tag-list {
-						.tag-attach {
-							background: lighten($moola, 15%);
-						}
-					}
-					.request-edit-cal {
-						.request-edit-cal-item {
-							border-color: $moola;
-							h2 {
-								color: $moola;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-.request-tech {
-	.map-box {
-		> ul {
-			> li {
-				a {
-					color: $azure!important;
-					&:hover, &:focus {
-						color: lighten($azure, 10%)!important;
-					}
-				}
-			}
-		}
-	}
-	button {
-		background: $azure;
-		&:focus, &:hover {
-			background: lighten($azure, 10%);
-		}
-		&:active, &.activated {
-			background: lighten($slate, 20%);
-		}
-	}
-	header:not(.desktop-header) {
-		background: $azure!important;
-	}
-	h1.request-step {
-		span {
-			background: $azure;
-		}
-		svg {
-			stroke: $azure;
-		}
-	}
-	#request-search {
-		.course-list {
-			li {
-				a {
-					&:hover, &:focus {
-						background: $azure;
-					}
-					&:active {
-						background: lighten($slate, 10%);
-					}
-				}
-			}
-		}
-	}
-	#request-one {
-		.request-content {
-			.request-type {
-				.checkbox-container {
-					div {
-						input:checked + span {
-							background: $azure;
-						}
-					}
-				}
-				ul {
-					li {
-						.radio-container {
-							div {
-								input:checked + span {
-									svg {
-										background: $azure;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			.request-payment {
-				.request-payment-mobile {
-					.mini-card {
-						&:hover, &:focus {
-							border-color: $azure;
-							background: $azure;
-						}
-					}
-				}
-			}
-			textarea {
-				&:focus, &.active {
-					border-color: $azure;
-				}
-			}
-			.tag-list {
-				.chip {
-					&:hover, &:focus {
-						background: lighten($azure, 10%);
-					}
-					&:active {
-						background: lighten($slate, 20%);
-					}
-				}
-				input.chip {
-					&:active {
-						background: $azure;
-					}
-				}
-			}
-			.request-time {
-				.request-form {
-					.custom-dropdown {
-						> div {
-							a {
-								svg {
-									background: $azure;
-								}
-								&:hover, &:focus {
-									svg {
-										background: lighten($azure, 10%);
-									}
-								}
-								&:active {
-									svg {
-										background: darken($azure, 10%);
-									}
-								}
-							}
-						}
-						> ul {
-							li {
-								&:hover, &:focus {
-									background: rgba($azure,.98);
-								}
-								&:active {
-									background: rgba(lighten($azure, 10%),.98);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	.request-pledge {
-		background: mix($azure, $smoke, 10%);
-	}
-	.request-confirm {
-		.request-content {
-			background: mix($azure, $smoke, 10%);
-			> div {
-				> div {
-					a.request-edit {
-						background: rgba($azure,.95);
-					}
-					p {
-						border-color: $azure;
-					}
-					.tag-list {
-						.tag-attach {
-							background: lighten($azure, 15%);
-						}
-					}
-					.request-edit-cal {
-						.request-edit-cal-item {
-							border-color: $azure;
-							h2 {
-								color: $azure;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-.request-essay {
-	color: white;
-	h1.request-step {
-		color: white;
-		a {
-			color: white!important;
-		}
-		span {
-			color: $lake;
-			background: white;
-		}
-		svg {
-			stroke: white;
-		}
-	}
-	.map-box {
-		> ul {
-			> li {
-				a {
-					color: $lake!important;
-					&:hover, &:focus {
-						color: lighten($lake, 10%)!important;
-					}
-				}
-			}
-		}
-	}
-	button {
-		background: $lake;
-		&:focus, &:hover {
-			background: lighten($lake, 10%);
-		}
-		&:active, &.activated {
-			background: lighten($slate, 20%);
-		}
-	}
-	header:not(.desktop-header) {
-		background: $lake!important;
-	}
-	#request-search, #request-search form {
-		background: lighten($lake, 5%);
-	}
-	#request-search {
-		h1.request-step {
-			span {
-				color: lighten($lake, 5%);
-			}
-		}
-		form {
-			color: white!important;
-			.input-field {
-				.prefix {
-					svg {
-						@include svg-stroke(white, 5);
-						stroke: white!important;
-					}
-				}
-				.desktop-input-close-icon {
-					.txt-white {
-						color: white!important;
-					}
-				}
-				input, label {
-					border-color: rgba(white, .5)!important;
-					color: white!important;
-				}
-				input {
-					@include placeholder {
-						color: white;
-					}
-					&:focus {
-						border-color: white!important;
-						box-shadow: 0 1px 0 0 white!important;
-					}
-				}
-			}
-		}
-		.course-list {
-			li {
-				a {
-					@include flex;
-					@include flex-center;
-					&:hover, &:focus {
-						background: $lake;
-					}
-					&:active {
-						background: lighten($slate, 10%);
-					}
-					.course-name {
-						font-size: 24px;
-						text-transform: none;
-						&:first-letter {
-							text-transform: uppercase;
-						}
-					}
-				}
-				@media screen and (max-width: 768px) {
-					width: 50%;
+					width: calc(100% / 3);
+					padding: 1px;
 					a {
-						height: 62px;
-						padding-left: 10px;
-						padding-right: 10px;
-						text-align: center;
-						.course-name {
-							text-align: center;
-							font-size: 18px;
+						display: block;
+						width: 100%;
+						background: white;
+						border: 2px solid $lake;
+						border-left-width: 5px;
+						border-radius: 2px;
+						padding: 10px 15px;
+						color: lighten($slate, 15%);
+						font-weight: 600;
+						span {
+							display: block;
+							&:first-child {
+								font-size: 18px;
+								color: $lake;
+							}
+							&:last-child {
+								font-size: 14px;
+							}
 						}
-					}
-				}
-			}
-		}
-	}
-	#request-one {
-		.request-content {
-			.request-type {
-				background: lighten($lake, 10%);
-				h1.request-step {
-					span {
-						color: lighten($lake, 10%);
-					}
-				}
-				.checkbox-container {
-					div {
-						input:checked + span {
-							background: $lake;
-						}
-					}
-				}
-				ul {
-					li {
-						.radio-container {
-							div {
-								span {
-									background: rgba(white,.4);
+						&:hover, &:focus {
+							background: mix($lake, white);
+							span {
+								&:first-child {
+									color: mix($lake, $slate);
 								}
-								input:checked + span {
-									background: white;
-									svg {
-										background: $lake;
-									}
+								&:last-child {
+									color: $slate;
 								}
 							}
-							label {
+						}
+						&:active {
+							background: mix($lake, $slate);
+							border-color: mix($lake, white);
+							span {
+								&:first-child {
+									color: mix($lake, white);
+								}
+								&:last-child {
+									color: white;
+								}
+							}
+						}
+					}
+					&:last-child {
+						width: 100%;
+						button {
+							background: $lake;
+							border-radius: 2px;
+							font-weight: 600;
+							&:hover, &:focus {
+								background: mix($lake, white);
+								color: mix($lake, $slate);
+							}
+							&:active {
+								background: mix($lake, $slate);
 								color: white;
 							}
 						}
 					}
 				}
 			}
-			.request-desc {
-				background: lighten($lake, 15%);
-				h1.request-step {
+			.checkbox-container {
+				@include prefix(justify-content, flex-start, webkit);
+				padding: 10px 15px 15px;
+				div {
 					span {
-						color: lighten($lake, 15%);
+						background: rgba($slate, .2);
+						svg {
+							stroke: rgba(white, .4);
+						}
 					}
-				}
-			}
-			textarea {
-				border-color: rgba(white,.4);
-				&:hover {
-					border-color: lighten($slate, 30%);
-				}
-				&:focus, &.active {
-					border-color: $lake;
-				}
-			}
-			.tag-list {
-				.chip {
-					&:hover, &:focus {
-						background: lighten($lake, 5%);
-					}
-					&:active {
-						background: lighten($slate, 20%);
-					}
-				}
-				input.chip {
-					&:active {
+					input:checked + span {
 						background: $lake;
-					}
-				}
-			}
-			.attachment-list {
-				.attach-upload-add {
-					a {
-						border-color: white;
-						span {
-							color: white;
-							svg {
-								stroke: white;
-							}
-						}
-						&:hover, &:focus {
-							border-color: $lake;
-							span {
-								color: $lake;
-								svg {
-									stroke: $lake;
-								}
-							}
+						svg {
+							stroke: white;
 						}
 					}
 				}
-			}
-			.request-form {
-				.custom-dropdown {
-					> div {
-						a {
-							svg {
-								background: $lake;
-							}
-							&:hover, &:focus {
-								svg {
-									background: lighten($lake, 10%);
-								}
-							}
-							&:active {
-								svg {
-									background: darken($lake, 10%);
-								}
-							}
-						}
-					}
-					> ul {
-						li {
-							&:hover, &:focus {
-								background: rgba($lake,.98);
-							}
-							&:active {
-								background: rgba(lighten($lake, 10%),.98);
-							}
-						}
-					}
+				label {
+					color: $slate;
 				}
 			}
-			.request-payment {
-				background: lighten($lake, 7.5%);
-				padding: 0 15px 15px;
-				.credit-card {
+		}
+	}
+	&.request-map {
+		> div {
+			@include flex;
+			@include flex-wrap;
+			height: calc(100% - 87px - 64px);
+			.map-container {
+				height: calc(100% - 63px);
+			}
+			.input-field {
+				@include prefix(align-self, flex-end, webkit);
+				background: white;
+				width: 100%;
+				margin-top: 0;
+				padding-left: 15px;
+				padding-right: 15px;
+				input:focus {
+					border-bottom: 1px solid $lake;
+					box-shadow: 0 1px 0 0 $lake;
+				}
+			}
+		}
+	}
+	&.request-payment {
+		> button {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+		> div {
+			height: calc(100% - 87px);
+			padding-bottom: 64px;
+			.request-offer {
+				@include flex;
+				@include flex-center;
+				padding: 1px;
+				li {
 					position: relative;
-					background: $slate;
-					border-radius: 15px;
-					max-width: 350px;
-					margin: 15px auto 0;
-					.credit-card-info {
-						@include flex;
-						@include flex-wrap;
-						@include flex-center;
-						position: absolute;
-						top: 0;
-						left: 0;
+					padding: 1px;
+					width: 25%;
+					a {
+						position: relative;
+						display: block;
+						background: $lake;
+						border-radius: 2px;
+						span {
+							@include center-xy;
+							font-size: 28px;
+							font-weight: 600;
+						}
+						.add {
+							@include center-xy;
+							display: block;
+							width: 48px;
+							height: 48px;
+							* {
+								@include svg-stroke(white, 5);
+							}
+						}
+					}
+					input {
+						@include center-xy;
+						font-size: 28px;
+						font-weight: 600;
+						background: none;
+						border: 0;
 						width: 100%;
-						height: 100%;
-						div {
+						color: white;
+						text-align: center;
+						@include placeholder {
+							color: rgba(white, .5);
+						}
+					}
+				}
+			}
+			.request-cards {
+				.request-wallet {
+					position: relative;
+					button {
+						position: absolute;
+						z-index: 10;
+					    top: 55%;
+					    left: 28.5%;
+					    width: auto;
+					    padding-left: 15px;
+					    padding-right: 15px;
+					    height: 52px;
+					    border-radius: 2px;
+					    background: $smoke;
+					    font-weight: 600;
+					    color: $orange;
+					}
+				}
+				.wallet {
+					padding: 14px 15px 15px;
+					width: 100%;
+				}
+				ul {
+					padding: 7.5px;
+					li {
+						padding: 7.5px;
+						a {
+							@include flex;
+							@include flex-center-vertical;
+							@include prefix(justify-content, space-between, webkit);
+							background: $slate;
+							border-radius: 10px;
+							padding: 10px 15px;
+							height: 64px;
 							span {
-								display: block;
-								text-align: center;
-							}
-							.credit-card-type {
-								margin-bottom: 15px;
-								font-size: 24px;
-								font-weight: 900;
-								text-transform: uppercase;
-							}
-							.credit-card-number {
-								font-size: 32px;
+								font-size: 18px;
 								font-weight: 600;
 							}
 						}
@@ -2788,698 +1830,137 @@
 			}
 		}
 	}
-	.request-total {
-		background: $lake;
-		padding: 0 15px 15px;
-		> div {
+	&.request-confirm {
+		header {
+			background: $lake;
+			svg {
+				width: 120px;
+			}
 			h1 {
-				font-size: 84px;
-				font-weight: 700;
-				text-align: center;
-			}
-			h3 {
-				font-size: 20px;
-				font-weight: 600;
-				text-align: center;
-				&:first-child {
-					margin-top: 15px;
-				}
-				+ h3 {
-					margin-top: 0px!important;
-				}
+				text-transform: none;
 			}
 		}
-	}
-	#request-two {
-		.request-payment-container {
-			background: lighten($lake, 35%);
-		}
-		.request-content {
-			.request-cal {
-				.cal-week {
-					.cal-month {
-						a {
-							&:hover, &:focus {
-								background: lighten($lake, 10%);
-							}
-							&:active, &.active {
-								background: $lake;
-							}
-						}
-					}
-					.cal-main {
-						.cal-date {
-							li.active {
-								> span {
-									background: lighten($lake, 10%);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	.request-pledge {
-		background: mix($lake, $smoke, 10%);
-	}
-	.request-confirm {
-		.request-content {
-			background: mix($lake, $smoke, 10%);
-			> div {
-				> div {
-					a.request-edit {
-						background: rgba($lake,.95);
-					}
-					p {
-						border-color: $lake;
-					}
-					.tag-list {
-						.tag-attach {
-							background: lighten($lake, 15%);
-						}
-					}
-					.request-edit-cal {
-						.request-edit-cal-item {
-							border-color: $lake;
-							h2 {
-								color: $lake;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-.request-household {
-	.map-box {
-		> ul {
-			> li {
-				a {
-					color: $cobalt!important;
-					&:hover, &:focus {
-						color: lighten($cobalt, 10%)!important;
-					}
-				}
-			}
-		}
-	}
-	button {
-		background: $cobalt;
-		&:focus, &:hover {
-			background: lighten($cobalt, 10%);
-		}
-		&:active, &.activated {
-			background: lighten($slate, 20%);
-		}
-	}
-	header:not(.desktop-header) {
-		background: $cobalt!important;
-	}
-	h1.request-step {
-		span {
-			background: $cobalt;
-		}
-		svg {
-			stroke: $cobalt;
-		}
-	}
-	#request-search {
-		.course-list {
-			li {
-				a {
-					&:hover, &:focus {
-						background: $cobalt;
-					}
-					&:active {
-						background: lighten($slate, 10%);
-					}
-				}
-			}
-		}
-	}
-	#request-one {
-		.request-content {
-			.request-type {
-				.checkbox-container {
-					div {
-						input:checked + span {
-							background: $cobalt;
-						}
-					}
-				}
-				ul {
-					li {
-						.radio-container {
-							div {
-								input:checked + span {
-									svg {
-										background: $cobalt;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			.request-payment {
-				.request-payment-mobile {
-					.mini-card {
-						&:hover, &:focus {
-							border-color: $cobalt;
-							background: $cobalt;
-						}
-					}
-				}
-			}
-			textarea {
-				&:focus, &.active {
-					border-color: $cobalt;
-				}
-			}
-			.tag-list {
-				.chip {
-					&:hover, &:focus {
-						background: lighten($cobalt, 10%);
-					}
-					&:active {
-						background: lighten($slate, 20%);
-					}
-				}
-				input.chip {
-					&:active {
-						background: $cobalt;
-					}
-				}
-			}
-			.request-time {
-				.request-form {
-					.custom-dropdown {
-						> div {
-							a {
-								svg {
-									background: $cobalt;
-								}
-								&:hover, &:focus {
-									svg {
-										background: lighten($cobalt, 10%);
-									}
-								}
-								&:active {
-									svg {
-										background: darken($cobalt, 10%);
-									}
-								}
-							}
-						}
-						> ul {
-							li {
-								&:hover, &:focus {
-									background: rgba($cobalt,.98);
-								}
-								&:active {
-									background: rgba(lighten($cobalt, 10%),.98);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	.request-pledge {
-		background: mix($cobalt, $smoke, 10%);
-	}
-	.request-confirm {
-		.request-content {
-			background: mix($cobalt, $smoke, 10%);
-			> div {
-				> div {
-					a.request-edit {
-						background: rgba($cobalt,.95);
-					}
-					p {
-						border-color: $cobalt;
-					}
-					.tag-list {
-						.tag-attach {
-							background: lighten($cobalt, 15%);
-						}
-					}
-					.request-edit-cal {
-						.request-edit-cal-item {
-							border-color: $cobalt;
-							h2 {
-								color: $cobalt;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-.request-athletic {
-	.map-box {
-		> ul {
-			> li {
-				a {
-					color: $eggplant!important;
-					&:hover, &:focus {
-						color: lighten($eggplant, 10%)!important;
-					}
-				}
-			}
-		}
-	}
-	button {
-		background: $eggplant;
-		&:focus, &:hover {
-			background: lighten($eggplant, 10%);
-		}
-		&:active, &.activated {
-			background: lighten($slate, 20%);
-		}
-	}
-	header:not(.desktop-header) {
-		background: $eggplant!important;
-	}
-	h1.request-step {
-		span {
-			background: $eggplant;
-		}
-		svg {
-			stroke: $eggplant;
-		}
-	}
-	#request-search {
-		.course-list {
-			li {
-				a {
-					&:hover, &:focus {
-						background: $eggplant;
-					}
-					&:active {
-						background: lighten($slate, 10%);
-					}
-				}
-			}
-		}
-	}
-	#request-one {
-		.request-content {
-			.request-type {
-				.checkbox-container {
-					div {
-						input:checked + span {
-							background: $eggplant;
-						}
-					}
-				}
-				ul {
-					li {
-						.radio-container {
-							div {
-								input:checked + span {
-									svg {
-										background: $eggplant;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			.request-payment {
-				.request-payment-mobile {
-					.mini-card {
-						&:hover, &:focus {
-							border-color: $eggplant;
-							background: $eggplant;
-						}
-					}
-				}
-			}
-			textarea {
-				&:focus, &.active {
-					border-color: $eggplant;
-				}
-			}
-			.tag-list {
-				.chip {
-					&:hover, &:focus {
-						background: lighten($eggplant, 10%);
-					}
-					&:active {
-						background: lighten($slate, 20%);
-					}
-				}
-				input.chip {
-					&:active {
-						background: $eggplant;
-					}
-				}
-			}
-			.request-time {
-				.request-form {
-					.custom-dropdown {
-						> div {
-							a {
-								svg {
-									background: $eggplant;
-								}
-								&:hover, &:focus {
-									svg {
-										background: lighten($eggplant, 10%);
-									}
-								}
-								&:active {
-									svg {
-										background: darken($eggplant, 10%);
-									}
-								}
-							}
-						}
-						> ul {
-							li {
-								&:hover, &:focus {
-									background: rgba($eggplant,.98);
-								}
-								&:active {
-									background: rgba(lighten($eggplant, 10%),.98);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	.request-pledge {
-		background: mix($eggplant, $smoke, 10%);
-	}
-	.request-confirm {
-		.request-content {
-			background: mix($eggplant, $smoke, 10%);
-			> div {
-				> div {
-					a.request-edit {
-						background: rgba($eggplant,.95);
-					}
-					p {
-						border-color: $eggplant;
-					}
-					.tag-list {
-						.tag-attach {
-							background: lighten($eggplant, 15%);
-						}
-					}
-					.request-edit-cal {
-						.request-edit-cal-item {
-							border-color: $eggplant;
-							h2 {
-								color: $eggplant;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-.request-academic {
-	.map-box {
-		> ul {
-			> li {
-				a {
-					color: $cerise!important;
-					&:hover, &:focus {
-						color: lighten($cerise, 10%)!important;
-					}
-				}
-			}
-		}
-	}
-	button {
-		background: $cerise;
-		&:focus, &:hover {
-			background: lighten($cerise, 10%);
-		}
-		&:active, &.activated {
-			background: lighten($slate, 20%);
-		}
-	}
-	header:not(.desktop-header) {
-		background: $cerise!important;
-	}
-	h1.request-step {
-		span {
-			background: $cerise;
-		}
-		svg {
-			stroke: $cerise;
-		}
-	}
-	#request-search {
-		.course-list {
-			li {
-				a {
-					&:hover, &:focus {
-						background: $cerise;
-					}
-					&:active {
-						background: lighten($slate, 10%);
-					}
-				}
-			}
-		}
-	}
-	#request-one {
-		.request-content {
-			.request-type {
-				.checkbox-container {
-					div {
-						input:checked + span {
-							background: $cerise;
-						}
-					}
-				}
-				ul {
-					li {
-						.radio-container {
-							div {
-								input:checked + span {
-									svg {
-										background: $cerise;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			.request-payment {
-				.request-payment-mobile {
-					.mini-card {
-						&:hover, &:focus {
-							border-color: $cerise;
-							background: $cerise;
-						}
-					}
-				}
-			}
-			textarea {
-				&:focus, &.active {
-					border-color: $cerise;
-				}
-			}
-			.tag-list {
-				.chip {
-					&:hover, &:focus {
-						background: lighten($cerise, 10%);
-					}
-					&:active {
-						background: lighten($slate, 20%);
-					}
-				}
-				input.chip {
-					&:active {
-						background: $cerise;
-					}
-				}
-			}
-		}
-		.request-time {
-			.request-form {
-				.custom-dropdown {
-					> div {
-						a {
-							svg {
-								background: $cerise;
-							}
-							&:hover, &:focus {
-								svg {
-									background: lighten($cerise, 10%);
-								}
-							}
-							&:active {
-								svg {
-									background: darken($cerise, 10%);
-								}
-							}
-						}
-					}
-					> ul {
-						li {
-							&:hover, &:focus {
-								background: rgba($cerise,.98);
-							}
-							&:active {
-								background: rgba(lighten($cerise, 10%),.98);
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	.request-pledge {
-		background: mix($cerise, $smoke, 10%);
-	}
-	.request-confirm {
-		.request-content {
-			background: mix($cerise, $smoke, 10%);
-			> div {
-				> div {
-					a.request-edit {
-						background: rgba($cerise,.95);
-					}
-					p {
-						border-color: $cerise;
-					}
-					.tag-list {
-						.tag-attach {
-							background: lighten($cerise, 15%);
-						}
-					}
-					.request-edit-cal {
-						.request-edit-cal-item {
-							border-color: $cerise;
-							h2 {
-								color: $cerise;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-@media screen and (max-width: 768px) {
-	.request-slide {
-		padding-bottom: 79px;
-		button:not(.request-edit) {
+		> button {
 			position: absolute;
 			bottom: 0;
 			left: 0;
-			width: 100%;
-			margin: 0;
-			max-width: none;
 		}
-		&#request-two {
-			.request-content {
-				.request-form {
-					h2:first-child {
-						-webkit-justify-content: center;
-						justify-content: center;
-						width: 100%;
+		> div {
+			padding-bottom: 64px;
+			> a {
+				display: block;
+				&:hover, &:focus {
+					background: rgba($lake, .2);
+				}
+			}
+			.confirm-course {
+				padding: 15px;
+				background: $slate;
+				h1 {
+					font-size: 20px;
+					font-weight: 600;
+				}
+				h2 {
+					@include opacity(.5);
+					margin-top: 0;
+					font-size: 16px;
+					font-weight: 600;
+				}
+			}
+			.confirm-info, .confirm-amount {
+				h1 {
+					padding: 15px 15px 0;
+					color: $lake;
+					font-size: 16px;
+					font-weight: 600;
+					text-transform: uppercase;
+					text-align: left;
+				}
+				p {
+					padding: 5px 15px 15px;
+					color: $slate;
+					font-size: 18px;
+					font-weight: 400;
+					text-align: left;
+				}
+			}
+			.confirm-time {
+				padding: 15px;
+				.time-tile {
+					border: 2px solid $lake;
+					border-left-width: 5px;
+					border-radius: 2px;
+					background: white;
+					padding: 15px;
+					h1 {
+						color: $lake;
+						font-size: 24px;
+						font-weight: 600;
 					}
-					.custom-dropdown {
-						position: static!important;
-						> div {
-							span {
-								width: 72px;
-								font-size: 24px;
-							}
-						}
-						> ul {
-							z-index: 20;
-							width: calc(100% - 60px);
-							li {
-							    font-size: 36px;
-							    font-weight: 600;
-							    line-height: 1;
-							}
-						}
-						&.request-minutes {
-							> ul {
-								left: 50%;
-							}
-						}
-						.dropdown-overlay {
-							@include transition(.15s ease-in-out);
-							@include opacity(0);
-							position: absolute;
-							z-index: -100;
-							top: 0;
-							left: 0;
-							width: 100%;
-							height: 100%;
-							background: rgba($slate, .4);
-						}
-						> ul.active + .dropdown-overlay {
-							@include opacity(1);
-							z-index: 19;
-						}
+					h2 {
+						margin: 0!important;
+						color: lighten($slate, 15%);
+						font-size: 20px;
+						font-weight: 600;
 					}
 				}
 			}
-		}
-	}
-}
-@media screen and (min-width: 768px) {
-	#request {
-		main {
-			height: 100%;
-		}
-	}
-	.request-slide {
-		&#request-two {
-			.request-urgency {
-				height: 87px;
-				div {
+			.confirm-location {
+				@include flex;
+				@include flex-center;
+				padding: 15px;
+				svg {
+					display: block;
+					height: 80px;
+					width: auto;
+				}
+				.location-info {
+					position: relative;
+					background: mix(lighten($slate, 25%), $lake, 80%);
+					padding: 10px 15px;
+					margin-left: 15px;
+					border-radius: 2px;
+					&:before {
+						@include center-y;
+						content: "";
+						width: 0;
+						height: 0;
+						left: -30px;
+						border: 15px solid transparent;
+						border-right-color: mix(lighten($slate, 25%), $lake, 80%);
+					}
+					h1 {
+						font-size: 24px;
+						font-weight: 600;
+					}
+					p {
+						font-size: 18px;
+						font-weight: 400;
+					}
+				}
+			}
+			.confirm-card {
+				padding: 15px;
+				.request-card {
+					@include flex;
+					@include flex-center-vertical;
+					@include prefix(justify-content, space-between, webkit);
+					background: $slate;
+					border-radius: 10px;
+					padding: 10px 15px;
+					height: 64px;
 					span {
-						width: 36px;
-						height: 36px;
+						font-size: 18px;
+						font-weight: 600;
 					}
 				}
-				label {
-					font-size: 28px;
-				}
 			}
-		}
-		#request-search {
-			form {
-				padding: 0 15px;
-			}
-			.input-field {
-				.prefix {
-					top: 24px;
-					padding-right: 12px;
-					svg {
-						@include svg-stroke(white, 7);
-						padding: 0;
-					}
-				}
-				input {
-					height: 72px;
-				}
-				input, label {
-					font-size: 32px!important;
-				}
-				label.active {
-					font-size: 20px!important;
+			.confirm-amount {
+				h3 {
+					color: $slate;
+					font-size: 64px;
+					font-weight: 900;
+					padding-bottom: 15px;
 				}
 			}
 		}

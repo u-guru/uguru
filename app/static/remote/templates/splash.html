@@ -1,4 +1,4 @@
-<div class='relative' style='height:calc(100%); width:calc(100%); overflow:hidden !important;' eval-on-load="onLoad()">
+<div class='relative' style='height:calc(100%); width:calc(100%);' eval-on-load="onLoad()" ng-class="{'overflow-inherit': !desktopMode && root.vars.showSidebarOneProjector}">
     <!-- @gabrielle, do not not remove  init-wp-parent -->
     <main id='home-splash' init-wp-parent class='splash-landing new hs-view full-xy' style="height:calc(200% !important); width:calc(100%) !important;" bind-wp="s1_top">
         <ion-pane style='z-index:1001;' id='cta-modal-sidebar' class='full-xy hide-display cta-modal bg-charcoal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
@@ -29,10 +29,53 @@
             </div>
         </div> -->
 
+       <!--  <div class="onboarding-success mo-js-wrapper">
+            <div class="mojs-wrapper" mo-js>
+                <a mo-js-child></a>
+                <div class="guru" ng-include="img_base + 'templates/svg/guru-success.html'"></div>
+            </div>
+        	<h1>Congrats!</h1>
+        	<h2>Your Account is Ready</h2>
+        	<button class="btn-ghost-white">Take Me to My Dashboard</button>
+        </div> -->
+
+        <div id="splash-hero-nav-mobile" ng-class="{'visible high-z-index':page.dropdowns.university.active, 'invisible': !page.dropdowns.university.active}" ng-if='!desktopMode'>
+            <div class="splash-hero-nav-category">
+                <h1>Category</h1>
+                <ul>
+                    <li ng-repeat='category in categories'>
+                        <a class="bg-{{category.hex_color}}" ng-click='demoSwitchCategory(category, selectedUniversity)' ng-class="{'active':category.id == selectedCategory.id}">
+                            <span ng-include="img_base + 'templates/svg/main/check.html'"></span>
+                            <span>{{category.name}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="splash-hero-nav-school">
+                <h1>University</h1>
+                <ul>
+                    <li ng-repeat='university in featured_universities'>
+                        <a ng-click='refreshUniversityState(university)' ng-class="{'active':university.id == selectedUniversity.id}" style="border-color: {{university.school_color_dark}}">
+                            <span style="background: {{university.school_color_dark}}"></span>
+                            <span>{{university.short_name || university.name}}</span>
+                            <span ng-include="img_base + 'templates/svg/main/check.html'"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="bg-find" ng-click="transitionToScene3()">
+                            <span></span>
+                            <span>Find your College</span>
+                            <span></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
 
         <section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" parallax-parent="p1" parallax-relative-input="false" parallax-clip-relative-input="false" parallax-calibration-threshold="100" parallax-calibration-delay="500" parallax-support-delay="500" parallax-calibrate-x="false" parallax-calibrate-y="true" parallax-invert-x="true" parallax-invert-y="true" parallax-limit-x="false" parallax-limit-y="false" parallax-scalar-x="5.0" parallax-scalar-y="5.0" parallax-friction-x="0.1" parallax-friction-y="0.1" parallax-origin-x="0.5" parallax-origin-y="0.5" style='z-index:10;'>
             <header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
-                <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ></a>
+                <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ng-class="{'m10xy absolute left-0 top-0':!desktopMode}"></a>
                 <div class="right">
                     <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()'>
                         <!-- @gabrielle whats this? If you dont know delete below-->
@@ -43,9 +86,6 @@
                             <path d="M31,50.5 L69,50.5"></path>
                             <path d="M31,65.5 L69,65.5"></path>
                         </svg>
-                    </a>
-                    <a ng-if='!desktopMode' name="back-to-scene-one" id='splash-up-link' class='full-x p10xy flex-wrap-center opacity-0 left-0 absolute' bind-wp="s2_50_top" bind-wp-class="activate, clear" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut, opacity-0" class-on-activate="fadeInDown:anim" class-on-activate-delay="1250" ng-show='projectorPullActivated || singleProjectorActivated' style="width:100% !important; top:10px;" ng-click='closeSingleProjector()'>
-                    <i style='font-size:100%; left:10px;' class='icon ion-chevron-up'> </i>
                     </a>
                 </div>
             </header>
@@ -116,64 +156,6 @@
                     </a>
                 </div>
             </div>
-            <div class='absolute full-xy top-0 left-0 bg-charcoal' ng-if='!desktopMode' ng-class="{'visible high-z-index':page.dropdowns.university.active, 'invisible': !page.dropdowns.university.active}">
-                <div class='ugrid-2 full-xy opacity-1-impt splash-hero-nav-mobile-dropdowns bg-charcoal'>
-                    <div class='full-y relative'>
-                        <div class='full-xy absolute flex-wrap-center  visible opacity-1-impt'>
-                            <a name='category'  class="m20xy p20xy text-center full-x bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()'>
-                                <span>{{selectedCategory.name}}</span>
-                                <svg viewBox="0 0 100 100">
-                                    <path d="M14,32 L50,68 L86,32"></path>
-                                </svg>
-                            </a>
-                            <div class="splash-hero-nav-categories visible opacity-1-impt" ng-class="{'visible':page.dropdowns.category.active}">
-                                <ul>
-                                    <li ng-repeat='category in categories' ng-if='category.id !== selectedCategory.id' ng-click='demoSwitchCategory(category, selectedUniversity)'>
-                                        <a class="active bg-{{category.hex_color}}" >
-                                            <span>{{category.name}}</span>
-                                        </a>
-                                        <svg class="arrow bg-{{category.hex_color}}" viewBox="0 0 60 30">
-                                            <path d="M4,26 L30,0 L56,26"></path>
-                                        </svg>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='full-y relative'>
-                        <div class='full-xy absolute flex-wrap-center  visible opacity-1-impt'>
-                            <a name='university' class='text-center full-x p20xy m20xy' ng-click="page.dropdowns.university.toggle()" id='dropdown-university'>
-                                <span class="splash-hero-nav-link-bg" style='background-color: {{selectedUniversity.school_color_dark}}'></span>
-                                <span>{{selectedUniversity.short_name || selectedUniversity.name}}</span>
-                                <svg viewBox="0 0 100 100">
-                                    <path d="M14,32 L50,68 L86,32"></path>
-                                </svg>
-                            </a>
-                            <div class="splash-hero-nav-schools" ng-class="{'visible':page.dropdowns.university.active}">
-                                <ul>
-                                    <li ng-repeat='university in featured_universities' ng-if='selectedUniversity.id !== university.id'>
-                                        <a ng-click='refreshUniversityState(university)'>
-                                            <span class="splash-hero-nav-link-bg" style='background-color: {{university.school_color_dark}}'></span>
-                                            <span>{{university.short_name || university.name}}</span>
-                                        </a>
-                                        <svg class="arrow school" viewBox="0 0 60 30">
-                                            <path d="M4,26 L30,0 L56,26" fill="{{university.school_color_dark}}"></path>
-                                        </svg>
-                                    </li>
-                                    <li ng-click="transitionToScene3()" >
-                                        <a class="bg-shamrock">
-                                            <span>Find your College</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                    </div>
-                </div>
-
-                </div>
-            </div>
-
-
 
             <!-- @gabrielle-note, the 3000 ms is to generate the static map URL with the right icon-->
             <div class="splash-hero-map opacity-0 invisible limited-opacity" class-on-clear="slideOutUp:animOut" class-on-activate="active:anim, visible-impt" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
@@ -518,6 +500,7 @@
         </section>
 
         <section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
+            <a name="back-to-scene-one" id='splash-up-link' class="splash-up-circle" bind-wp="s2_50_top" bind-wp-class="activate, clear" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut, opacity-0" class-on-activate="fadeInDown:anim" class-on-activate-delay="1250" ng-show='projectorPullActivated || singleProjectorActivated' ng-click='closeSingleProjector()' ng-include="img_base + 'templates/svg/main/up-circle.html'"></a>
             <div class="projector-trigger animated opacity-0" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750" bind-wp="s2_25_top" bind-wp-class="bounceInDown" bind-wp-direction="down">
                 <a id="projector-pull" ng-click='activateProjectorPull();' bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a" class-on-activate="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
                     <svg width="28px" height="224px" viewBox="0 0 56 448">
@@ -535,7 +518,7 @@
                     </text>
                 </svg>
             </div>
-            <footer id="made-with-love">
+            <!-- <footer id="made-with-love">
         		<div class="mt-footer-bg"></div>
         		<div class="mt-footer-mid-back"></div>
         		<div class="mt-footer-mid-front"></div>
@@ -553,7 +536,7 @@
         				<li>by college students</li>
         			</ul>
         		</div>
-        	</footer>
+        	</footer> -->
             <!-- <div class="splash-projector-message mobile" activate-on-class="a" class-on-activate="bounceOut:animOut" class-on-activate-delay="250">
                 <svg viewBox="0 0 694 201">
                     <path d="M2,161.001505 C2,165.418952 5.57826352,169 10.0035603,169 L317,169 L347,199 L377,169 L683.99644,169 C688.416684,169 692,165.415269 692,161.001505 L692,9.99849542 C692,5.58104838 688.411289,2 683.99733,2 L10.0026704,2 C5.58291758,2 2,5.58473072 2,9.99849542 L2,161.001505 L2,161.001505 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.5" fill="#40484B"></path>
@@ -714,8 +697,8 @@
                                         <li ng-click='addUniversityStudentCourse(course, $index)' ng-repeat='course in selectedUniversity.courses |  limitTo: 9 track by $index'>
                                             <a>
                                                 <div>
-                                                    <span class="course-name" ng-if="course.full_name">{{course.short_name}}</span>
-                                                    <span class="course-title" style="border-bottom-color: {{selectedUniversity.school_color_dark}};"><span>{{course.full_name || course.title || course.short_name}}</span></span>
+                                                    <span class="course-name" ng-if="course.full_name" style="border-bottom-color: {{selectedUniversity.school_color_dark}};">{{course.short_name}}</span>
+                                                    <span class="course-title" ng-if='desktopMode' style="border-bottom-color: {{selectedUniversity.school_color_dark}};"><span>{{course.full_name || course.title || course.short_name}}</span></span>
                                                 </div>
                                             </a>
                                         </li>
@@ -754,7 +737,7 @@
                     </div>
                 </div>
 
-                <div id='swiper-gallery-tab' class="swiper-container swiper-front-gallery-thumbs tab-bar slide" activate-on-class="a" class-on-activate="active:keep, null:inject.slideshow-thumb-1|activate, null:inject.slideshow-thumb-2|activate, null:inject.slideshow-thumb-3|activate"  ng-show='!page.swipers.galleryIndex'>
+                <div id='swiper-gallery-tab' ng-class="{'hide':singleProjectorActivate || showSidebarOneProjector || root.vars.showSidebarOneProjector}" class="swiper-container swiper-front-gallery-thumbs tab-bar slide" activate-on-class="a" class-on-activate="active:keep, null:inject.slideshow-thumb-1|activate, null:inject.slideshow-thumb-2|activate, null:inject.slideshow-thumb-3|activate"  ng-show='!page.swipers.galleryIndex'>
                     <div class="swiper-wrapper swiper-gallery-wrapper" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim">
                         <a class="swiper-slide third" ng-click='page.swipers.main.slideTo(0)' ng-class="{'active':!page.swipers.main.activeIndex}">How It<br/>Works</a>
                         <a class="swiper-slide third" ng-click='page.swipers.main.slideTo(1)' ng-class="{'active':page.swipers.main.activeIndex === 1}">Become<br/>A Guru</a>

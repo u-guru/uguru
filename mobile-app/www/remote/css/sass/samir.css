@@ -1551,4 +1551,13 @@ header#home-nav-header.splash-header,
 .overflow-inherit {
   overflow: inherit !important; }
 
+.font-4 {
+  font-size: 30px; }
+
+.flex-stretch {
+  -webkit-align-items: stretch !important;
+  align-items: stretch !important;
+  -webkit-align-content: stretch !important;
+  align-content: stretch !important; }
+
 /*# sourceMappingURL=samir.css.map */

@@ -968,6 +968,8 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.showSidebarLogin = function() {
+         $scope.showSidebarOneProjector = true;
+         $scope.root.vars.showSidebarOneProjector = $scope.showSidebarOneProjector;
          showProjectorAtTop(4);
          $scope.scrollToSection('#splash-projector')
     }
@@ -990,6 +992,7 @@ angular.module('uguru.util.controllers')
 
     $scope.closeSingleProjector = function() {
       $scope.singleProjectorActivate = false;
+      $scope.root.vars.showSidebarOneProjector = $scope.showSidebarOneProjector;
       if ($scope.page.swipers.main.slides.length > 1) {
         $scope.scrollToSection('#home-splash');
       } else {
@@ -1022,8 +1025,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.onLoad = function() {
-      // @gabrielle-note -- what
-      // Default parameters
+
 
       resolveStateParams();
 
@@ -1058,11 +1060,11 @@ angular.module('uguru.util.controllers')
 
       $scope.universities = University.getTargetted().slice();
 
-      // $timeout(function() {
-      //     var hiwSceneOne = document.querySelector('.how-scene-1');
-      //     hiwSceneOne && hiwSceneOne.classList.add('activate');
-      // }, 2000)
-      // showProjectorAtTop(0);
+    //   $timeout(function() {
+    //       var hiwSceneOne = document.querySelector('.hiw-scene-1');
+    //       hiwSceneOne && hiwSceneOne.classList.add('activate');
+    //   }, 2000)
+    //   showProjectorAtTop(0);
 
       $timeout(function() {
         // $timeout(function() {
@@ -1218,6 +1220,17 @@ angular.module('uguru.util.controllers')
           }
       ];
       return selectedUniversityMapStyles
+    }
+
+     $scope.getUniversityPlaces = function(university) {
+      if (university.og_map  && (!university.place_results || !university.place_results.length)) {
+        $timeout(function() {
+          $scope.$apply(function() {
+            GUtilService.getPlaceListByCoords($scope, university.og_map, {latitude: university.latitude, longitude: university.longitude}, updateMarkersOnUniversitySpecificMap);
+          })
+        })
+      }
+      // $scope.map.center = {latitude: university.latitude, university.longitude};
     }
 
     function translatePhoneToLeft() {
@@ -1572,22 +1585,29 @@ angular.module('uguru.util.controllers')
       $scope.sidebarGetStarted = function() {
         LoadingService.show();
         var modalElemSidebar = document.querySelector('#cta-modal-sidebar');
-        modalElemSidebar && modalElemSidebar.classList.remove('show');
-        CTAService.closeCTAManually('#cta-box-sidebar', function() {
-          if (!$scope.projectorPullActivated) {
-            $scope.scrollToSection('#splash-projector');
-            LoadingService.hide();
-          } else {
-            $scope.scrollToSection('#splash-projector');
+
+
+        $scope.activateProjectorPull();
+        $scope.projectorPullActivated = true;
+
+        $scope.scrollToSection('#splash-projector');
+        var projectTriggerElem = document.querySelector('#projector-pull')
+
+        $timeout(function() {
+          projectTriggerElem && projectTriggerElem.classList.add('activate');
+          $scope.page.swipers.main.slideTo(2);
+          // toggleGalleryDisplays();
+        }, 1000)
+
+        $timeout(function() {
+          CTAService.closeCTAManually('#cta-box-sidebar', function() {
+            modalElemSidebar && modalElemSidebar.classList.remove('show');
             $timeout(function() {
-              $scope.page.swipers.main.slideTo(3);
-              $timeout(function() {
-                toggleGalleryDisplays();
-                LoadingService.hide();
-              }, 1000)
-            }, 1500)
-          }
-        })
+              LoadingService.hide();
+            }, 1000)
+          })
+        }, 1500)
+
       }
 
       var calcZoom = function() {

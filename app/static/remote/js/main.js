@@ -225,6 +225,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/signup.modal.html',
     controller: 'AccountPageController',
   }).
+  state('root.student-helper', {
+    url:'/student-helper',
+    templateUrl: BASE + 'templates/student.helper.dashboard.html',
+    controller: 'StudentHelperController',
+  }).
   state('root.pricing', {
     url:'/pricing',
     templateUrl: BASE + 'templates/pricing.html',
@@ -333,6 +338,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     url:'/profile-modal',
     templateUrl: BASE + 'templates/profile.modal.html'
   }).
+
   state('root.profile-modal-edit', {
     url:'/profile-modal-edit',
     templateUrl: BASE + 'templates/profile.modal.edit.html'
@@ -501,7 +507,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.messaging', {
         url: '/messaging',
-        templateUrl: BASE + 'templates/messaging.html'
+        templateUrl: BASE + 'templates/dev/student.messaging.html',
+        controller: 'DevController'
   }).
   state('root.demos', {
         url: '/demos',
