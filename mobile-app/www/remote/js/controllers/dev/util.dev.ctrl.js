@@ -74,14 +74,7 @@ angular.module('uguru.dev.controllers', [])
     }
 
     $scope.user = initUser();
-
-    $scope.$on('$ionicView.loaded', function() {
-        console.log('DEVCONTROLLER: state is currently ', _state);
-        switch (_state) {
-            case 'messaging':
-                initMessagingState($scope.user);
-        }
-    })
+    initMessagingState($scope.user);
 
   }
 ])
