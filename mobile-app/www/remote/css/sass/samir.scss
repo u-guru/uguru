@@ -1,5 +1,128 @@
 @import 'mixin';
 
+.modal {
+	height: 100%!important;
+}
+.smaller-list-font {
+	font-size: 85%;
+}
+.content {
+	height: 100%;
+	&.footer-exists {
+		padding-bottom: 64px;
+	}
+}
+
+.stats-small {
+	font-size: 12px;
+	font-weight: 700;
+	margin: 0.66em;
+	text-transform: uppercase;
+}
+.stats-large {
+	font-size: 36px;
+	font-weight: 700;
+}
+
+.uguru-view.faq-modal {
+    background-color: white!important;
+    z-index: 1000;
+    header {
+        overflow: hidden;
+    }
+}
+.major-input-close {
+	position: absolute;
+    right: 10px;
+    top: 34%;
+}
+
+// platform specific ios
+body.platform-ios {
+	background: none;
+	section#guru-home.request.full-xy.student-home {
+		padding-top: 10px;
+	}
+	section#credibility {
+		padding-top: 20px;
+	}
+	ion-side-menus.root-ion-side-menus.view {
+		background: none;
+		.home-view {
+			background: white;
+			padding-top: 20px;
+			section, #student-home-map-container {
+				top: 20px!important;
+			}
+		}
+		.settings-view nav.main-nav{
+			padding-top: 20px;
+		}
+	}
+	.modal-wrapper header,
+	.header-nav,
+	.close-popup-link,
+	#guru-home h1 {
+		padding-top: 20px;
+	}
+	.modal-wrapper {
+		iframe {
+			height: calc(100% - 70px)!important;
+		}
+		.support-modal ion-content {
+			margin-top: 70px;
+		}
+	}
+	.modal-wrapper .terms-modal header {
+		padding-top: 0!important;
+	}
+	.terms-modal header.text-center {
+		h1 {
+			padding-top: 20px !important;
+		}
+		.header-nav {
+			padding-top: 0!important;
+		}
+		a.header-down {
+			padding-top: 10px;
+		}
+	}
+}
+
+.android-access-edge-case {
+	bottom:64px;
+	position:absolute;
+}
+
+#side-menu-left-overlay {
+	left: 0;
+}
+
+#courses-list {
+	ul li label {
+		color: white;
+	}
+}
+#credit-slider {
+	ul {
+		li {
+			&::selection, &.active, &.activated, a, a:hover {
+				background: none!important;
+			}
+		}
+	}
+}
+
+
+
+//start SAMIR
+.pf-character-count {
+	font-size:12px;
+	font-weight:500;
+	right:33px;
+}
+//end Samir
+
 // start samir css 11/9
 .desktop-input-close-icon {
 	@include center-y;
