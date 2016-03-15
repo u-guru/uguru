@@ -33,7 +33,7 @@ var stats = new Stats();
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
   'uguru.util.controllers', 'uguru.dev.controllers', 'uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
-  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic',
+  'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'uguru.components',
   'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps'])
 
 
@@ -183,8 +183,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.admin', {
         url: '/admin',
-        templateUrl: BASE + 'templates/admin/admin.html',
-        controller: 'AdminTimelineController'
+        templateUrl: BASE + 'templates/admin/index.html',
+        controller: 'AdminController'
   }).
   state('root.admin-universities', {
         url: '/admin-universities',

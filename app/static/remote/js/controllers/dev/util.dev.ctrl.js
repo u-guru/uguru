@@ -176,6 +176,13 @@ angular.module('uguru.dev.controllers', [])
     }
 
     $scope.user = initUser();
+    $scope.lifecycle = {
+        url: $scope.img_base + 'templates/dev/docs/lifecycle.tpl',
+        header: 'Steps to a HiFi Component',
+        steps: [
+          {title: 'Step 1', description: 'here is a description'}
+        ]
+      }
     initMessagingState($scope.user);
 
   }

@@ -104,7 +104,9 @@ angular.module('uguru.student.controllers', [])
 
 
 
-
+        $scope.goToAdmin = function() {
+            AnimationService.flip('^.admin');
+        }
 
         $scope.$on('$ionicView.afterEnter', function() {
             if ($scope.desktopMode) {
