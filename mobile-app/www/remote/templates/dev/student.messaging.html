@@ -72,8 +72,9 @@
 									<li>
 										<a ng-click='active_relationship.nav.menu.active_index = 2' ng-class="{'active': active_relationship.nav.menu.active_index === 2}">
 											<svg viewBox="0 0 100 100">
-												<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+												<path d="M26.5585171,14 C23.7977205,14 21.5596527,16.2337694 21.5596527,19.0057363 L21.5596527,80.9942637 C21.5596527,83.7588555 23.7894161,86 26.5575218,86 L73.4417836,86 C76.2020305,86 78.4396823,83.7643283 78.4397188,81.0001225 L78.4403462,33.5605722 C78.4403609,32.4548035 77.7876011,30.9334881 77.0011727,30.1806226 L61.5384132,15.3777783 C60.7435649,14.6168523 59.2032934,14 58.1083137,14 L26.5585171,14 Z M60.0992131,14.96 C60.0992131,14.96 60.0992131,15.4039671 60.0992131,15.9609247 L60.0992131,26.5558242 C60.0992131,29.318671 62.3364841,31.5584009 65.1045233,31.5584009 L77.4848101,31.5584009"></path>
 											</svg>
+
 										</a>
 									</li>
 									<li>
@@ -86,7 +87,7 @@
 									<li>
 										<a ng-click='active_relationship.nav.menu.active_index = 4' ng-class="{'active': active_relationship.nav.menu.active_index === 4}">
 											<svg viewBox="0 0 100 100">
-												<path d="M26.5585171,14 C23.7977205,14 21.5596527,16.2337694 21.5596527,19.0057363 L21.5596527,80.9942637 C21.5596527,83.7588555 23.7894161,86 26.5575218,86 L73.4417836,86 C76.2020305,86 78.4396823,83.7643283 78.4397188,81.0001225 L78.4403462,33.5605722 C78.4403609,32.4548035 77.7876011,30.9334881 77.0011727,30.1806226 L61.5384132,15.3777783 C60.7435649,14.6168523 59.2032934,14 58.1083137,14 L26.5585171,14 Z M60.0992131,14.96 C60.0992131,14.96 60.0992131,15.4039671 60.0992131,15.9609247 L60.0992131,26.5558242 C60.0992131,29.318671 62.3364841,31.5584009 65.1045233,31.5584009 L77.4848101,31.5584009"></path>
+												<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 											</svg>
 										</a>
 									</li>
@@ -109,10 +110,10 @@
 						</nav>
 					</div>
 					<div id="message-container" class='relative'>
-						<div id="messages" style='padding:0'>
-							<div class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 0">
+						<div id="messages" style='padding:0; overflow: auto;'>
+							<div class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 0" style='overflow:auto'>
 								<div class="message-single message-status left center">
-									<div class='message-single-icon' ng-include="img_base + 'templates/green-guru-svg.html'"> </div>
+									<!-- <div class='message-single-icon' ng-include="img_base + 'templates/green-guru-svg.html'"> </div> -->
 									<div class="message-single-content">
 										<div class="message-single-info"></div>
 										<div class="message-single-status">
@@ -143,9 +144,9 @@
 										<span ng-if='user.profile_url' style='background-image: url({{user.profile_url}});' />
 									</div>
 								</div>
-								<div id='message-dropzone' class='bg-slate-50p absolute left-0 full-x txt-charcoal weight-400' style='bottom:64px; height:150px;' ng-class="{'show':showAttachments}"> Drag attachments here
+								<div id='message-dropzone' class='bg-slate-50p absolute left-0 full-x txt-charcoal weight-400 hide' style='bottom:64px; height:150px;' ng-class="{'show':showAttachments}"> Drag attachments here
 								</div>
-								<div id="message-box" class='bottom-0 left-0 absolute'>
+								<div id="message-box" class='bottom-0 right-0 fixed' style='width:70%;'>
 									<a ng-click='showAttachments = !showAttachments'>
 										<svg viewBox="0 0 100 100">
 											<path d="M23.9602215,14 C18.4593164,14 14,18.4585633 14,23.9588015 L14,76.0411985 C14,81.5417132 18.4592951,86 23.9602215,86 L76.0397785,86 C81.5406836,86 86,81.5414367 86,76.0411985 L86,23.9588015 C86,18.4582868 81.5407049,14 76.0397785,14 L23.9602215,14 L23.9602215,14 Z M68,50 C68,40.0588745 59.9411255,32 50,32 C40.0588745,32 32,40.0588745 32,50 C32,59.9411255 40.0588745,68 50,68 C59.9411255,68 68,59.9411255 68,50 Z"></path>
@@ -200,16 +201,59 @@
 						</div>
 
 						<!-- Create a request -->
-						<div id='messages-request' class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 2" ng-controller='RequestController'>
-							<div class='flex-wrap-center flex-stretch'>
-								<h1 class='p20xy font-4'>
-									Request {{active_relationship.guru.name}}'s Help Again
-								</h1>
+						<div id='messages-request' class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 2" >
+							<div class='flex-wrap-center flex-stretch full-xy'>
+								<div class='full-x ugrid-4 p20xy' ng-repeat='file in active_relationship.files' ng-class="{'bg-slate': file.user.id === user.id, 'bg-charcoal': file.user.id !== user.id}">
+									<div class='flex-wrap-center'>
+										<h1 ng-bind-html="file.time_created"> </h1>
+
+									</div>
+									<div class='flex-wrap-center'>
+										{{file.name}}
+									</div>
+									<div class='flex-wrap-center'>
+										{{file.type}} <br>
+										(insert icon)
+
+									</div>
+									<div class='flex-wrap-center' ng-if='file.user.id === user.id'>
+										uploaded by {{user.name}}
+									</div>
+									<div class='flex-wrap-center' ng-if='file.user.id !== user.id'>
+										uploaded by {{active_relationship.guru.name}}
+										(insert profile photo)
+									</div>
+								</div>
 							</div>
 						</div>
 
 						<!-- Create a calendar -->
 						<div id='messages-calendar' class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 3">
+							<div class='full-x bg-smoke' style='height:20%;'>
+								<div class='ugrid-2 text-center'>
+									<div class='flex-wrap-center txt-white p20xy bg-shamrock'>
+
+										<h1>
+											{{user.name}}'s Availability
+										</h1>
+										<small class='full-x opacity-50 txt-white uppercase'> Last Updated: 2 hours ago </small>
+										<span> </span>
+									</div>
+									<div class='flex-wrap-center txt-white p20xy bg-azure'>
+										<h1>
+											{{active_relationship.guru.name}}'s last location shared
+										</h1>
+										<small class ='full-x txt-white opacity-50 uppercase'> Last Updated: 5 hours ago </small>
+										<span> </span>
+									</div>
+								</div>
+							</div>
+							<div class='full-x bg-slate flex-wrap-center' style='height:80%;'>
+								<h1 class='font-4 txt-white'>
+									14 Day Calendar, 4-5 shown at once, with right arrow on top
+								</h1>
+							</div>
+
 						</div>
 
 						<!-- Create a calendar -->
