@@ -162,7 +162,7 @@ angular.module('uguru.dev.controllers', [])
             return {
               menu: {
                 show: false, //displayed
-                active_index: 2,
+                active_index: 0
               },
               menu_titles: MENU_TITLES
             }
