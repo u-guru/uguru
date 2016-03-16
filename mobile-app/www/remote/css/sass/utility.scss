@@ -720,9 +720,10 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 	}
 }
 // COLORS
-.bg-transparent {
+.bg-transparent, [class*="bg-transparent"] {
 	background: transparent!important;
 }
+
 [class*="bg-white"] {
 	background: white;
 	color: white;
@@ -894,6 +895,149 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 		background: rgba($campus, .9);
 	}
 }
+
+[class*="bg-shamrock"] {
+	background: $shamrock;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($shamrock, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($shamrock, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($shamrock, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($shamrock, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($shamrock, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($shamrock, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($shamrock, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($shamrock, .9);
+	}
+}
+[class*="bg-lake"] {
+	background: $lake;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($lake, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($lake, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($lake, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($lake, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($lake, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($lake, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($lake, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($lake, .9);
+	}
+}
+
+[class*="bg-crimson"] {
+	background: $crimson;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($crimson, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($crimson, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($crimson, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($crimson, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($crimson, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($crimson, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($crimson, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($crimson, .9);
+	}
+}
+[class*="bg-moxie"] {
+	background: $moxie;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($moxie, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($moxie, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($moxie, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($moxie, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($moxie, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($moxie, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($moxie, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($moxie, .9);
+	}
+}
+[class*="bg-robin"] {
+	background: $robin;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($robin, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($robin, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($robin, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($robin, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($robin, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($robin, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($robin, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($robin, .9);
+	}
+}
+
 [class*="bg-auburn"] {
 	background: $auburn;
 	color: white;
@@ -1006,37 +1150,6 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 		background: rgba($moola, .9);
 	}
 }
-[class*="bg-shamrock"] {
-	background: $shamrock;
-	color: white;
-	&[class*="-05p"] {
-		background: rgba($shamrock, .05);
-	}
-	&[class*="-10p"] {
-		background: rgba($shamrock, .1);
-	}
-	&[class*="-20p"] {
-		background: rgba($shamrock, .2);
-	}
-	&[class*="-25p"] {
-		background: rgba($shamrock, .25);
-	}
-	&[class*="-50p"] {
-		background: rgba($shamrock, .5);
-	}
-	&[class*="-75p"] {
-		background: rgba($shamrock, .75);
-	}
-	&[class*="-80p"] {
-		background: rgba($shamrock, .8);
-	}
-	&[class*="-90p"] {
-		background: rgba($shamrock, .9);
-	}
-}
-[class*="bg-transparent"] {
-	background: transparent;
-}
 [class*="bg-azure"] {
 	background: $azure;
 	color: white;
@@ -1063,34 +1176,6 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 	}
 	&[class*="-90p"] {
 		background: rgba($azure, .9);
-	}
-}
-[class*="bg-lake"] {
-	background: $lake;
-	color: white;
-	&[class*="-05p"] {
-		background: rgba($lake, .05);
-	}
-	&[class*="-10p"] {
-		background: rgba($lake, .1);
-	}
-	&[class*="-20p"] {
-		background: rgba($lake, .2);
-	}
-	&[class*="-25p"] {
-		background: rgba($lake, .25);
-	}
-	&[class*="-50p"] {
-		background: rgba($lake, .5);
-	}
-	&[class*="-75p"] {
-		background: rgba($lake, .75);
-	}
-	&[class*="-80p"] {
-		background: rgba($lake, .8);
-	}
-	&[class*="-90p"] {
-		background: rgba($lake, .9);
 	}
 }
 [class*="bg-cobalt"] {
@@ -1177,6 +1262,7 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 		background: rgba($cerise, .9);
 	}
 }
+
 .bg-fb {
 	background: $facebook;
 }
@@ -1521,6 +1607,42 @@ button:focus {
 			border: 2px solid white;
 			background: white;
 			color: $charcoal;
+		}
+	}
+	&[class*="btn-ghost-crimson"] {
+		color: $crimson;
+		&.activated,
+		&:active,
+		&:hover,
+		&:focus {
+			@include opacity(1);
+			border: 2px solid $crimson;
+			background: $crimson;
+			color: white;
+		}
+	}
+	&[class*="btn-ghost-moxie"] {
+		color: $moxie;
+		&.activated,
+		&:active,
+		&:hover,
+		&:focus {
+			@include opacity(1);
+			border: 2px solid $moxie;
+			background: $moxie;
+			color: white;
+		}
+	}
+	&[class*="btn-ghost-robin"] {
+		color: $robin;
+		&.activated,
+		&:active,
+		&:hover,
+		&:focus {
+			@include opacity(1);
+			border: 2px solid $robin;
+			background: $robin;
+			color: white;
 		}
 	}
 	&[class*="btn-ghost-auburn"] {

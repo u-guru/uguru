@@ -1504,6 +1504,11 @@
   font-weight: 600;
 }
 
+.request-slide.request-confirm > div .confirm-course:hover, .request-slide.request-confirm > div .confirm-course:focus {
+  background: rgba(80, 165, 221, 0.5);
+  color: #40484B;
+}
+
 .request-slide.request-confirm > div .confirm-info h1, .request-slide.request-confirm > div .confirm-amount h1 {
   padding: 15px 15px 0;
   color: #50A5DD;
