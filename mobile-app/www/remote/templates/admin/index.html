@@ -2,9 +2,13 @@
 
 <div class='full-xy flex-wrap-center flex-stretch absolute'>
     <header style='height: 10%;' class='flex-center full-x bg-shamrock'>
-        <div>
-            <div>
-                <h1>Uguru Admin</h1>
+        <div class='ugrid-5 full-x'>
+            <h1 class='flex-wrap-center weight-900'>Uguru Admin</h1>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div class='flex-right relative' ng-init="navDropdown = {options: ['admin', 'student', 'guru', 'logout'], selectedIndex:0}">
+                <dropdown ng-model="navDropdown" ></dropdown>
             </div>
         </div>
     </header>
@@ -18,8 +22,8 @@
                 </a>
             </div>
             <div class='relative bg-smoke flex-wrap-center flex-stretch' style='width:80% !important;' id='main-admin-content'>
-                <ion-pane id='cta-modal-selected-component' class='full-xy hide-display cta-modal show bg-charcoal absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch'>
-                    <a ng-click='page.layout.sections[0].tabs.options[1].selected = null;' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
+                <ion-pane id='cta-modal-selected-component' class='full-xy hide-display cta-modal bg-charcoal absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch'>
+                    <a ng-click='hideComponentCTA()' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
                             <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5">
                                 <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
                             </svg>
@@ -30,8 +34,8 @@
                         <div class='relative flex-wrap-center bg-charcoal p20xy full-x flex-stretch'>
                             <div class='absolute full-xy flex-wrap-center left-0 top-0'>
                                 <h4 class='weight-600 uppercase text-center full-x'> DEMO </h4>
-                                <div class='demo-container flex-wrap-center'>
-                                    <div ng-include="img_base + selected_component.template" > </div>
+                                <div class='demo-container flex-wrap-center' id='demo-template'>
+                                    <div id='demo-component-template' ng-bind="selected_component.template"> </div>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +106,7 @@
 
                                                 <ul class='p20xy bg-gold txt-slate' style='border:2px dashed white;'>
                                                     <li class='uppercase weight-600 m20xy'>{{user_story.title}}</li>
-                                                    <li ng-repeat ='component in user_story.components' class='text-left weight-300 p10xy' ng-click='initAndLaunchComponentCTA(component)'>
+                                                    <li ng-repeat ='component in user_story.components' class='text-left weight-300 p10xy' ng-click='initAndLaunchComponentCTA($event, component)'>
                                                         <p class='weight-300'> #{{$index + 1}} {{component.name}} </p>
                                                     </li>
                                                     <li class='p20xy'>
@@ -148,6 +152,46 @@
                 </div>
                 </section>
                 <section class='flex-wrap-center full-xy txt-charcoal absolute left-0' ng-hide='page.layout.sidebar.index !== 1'>
+                    <div class='ugrid-5 flex-wrap-center full-x bg-azure' style='height:10%;'>
+                        <a class='flex-wrap-center' ng-repeat='option in page.layout.sections[1].tabs.options' ng-click='page.layout.sections[1].tabs.index = $index'>
+                            <span ng-if='option.profile_url' class='user-icon' style="background-image: url({{option.profile_url}}); height:50px; width:50px;"></span>
+                            <div class='uppercase full-x text-center uppercase weight-600 flex-wrap-center' style='font-size:18px;'>
+                                <small class='uppercase'>{{option.title}}</small>
+                            </div>
+                        </a>
+                    </div>
+                    <div class='milestones-content relative flex-wrap-center full-x bg-smoke' style='height:90%;'>
+                        <div class='txt-charcoal absolute full-xy flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index'>
+                            <h1>
+                                {{page.layout.sections[1].tabs.options[1].title}}
+                            </h1>
+                        </div>
+                        <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 1'>
+                            <h1 style='height:10%;' class='bg-smoke full-x flex-wrap-center p20xy weight-800 txt-charcoal'>
+                                {{page.layout.sections[1].tabs.options[1].title}}'s action items
+                            </h1>
+                            <div class='relative flex-wrap-center full-x' style='height:90%'>
+                                <div class='absolute full-xy top-0 left-0'>
+                                    <div class='ugrid-4 flex-wrap-center flex-wrap full-x'>
+                                        <a ng-repeat='component in page.components' class='relative flex-wrap-center flex-stretch' style='min-height:200px;' ng-click='initAndLaunchComponentCTA($event, component)'>
+                                            <div class='absolute flex-wrap-center flex-stretch full-x p20xy left-0 top-0'>
+                                                <div class='component-header bg-azure txt-white p20xy full-x'>
+                                                    <div class='full-x uppercase weight-600 text-center'>
+                                                        {{component.name}}
+                                                    </div>
+                                                </div>
+                                                <div class='component-mini-demo full-x txt-white bg-slate relative' style='min-height:200px; overflow:hidden;'>
+                                                    <!-- <ng-bind src="component.template"/> -->
+                                                    <demo template="{{component.template}}"/>
+                                                    <!-- <step-by-step steps="component.scope.steps" header="component.scope.header"></step-by-step> -->
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
                 <section class='flex-wrap-center full-x txt-charcoal' ng-hide='page.layout.sidebar.index !== 2'>
                     <doc steps="::page.glossary.lifecycleComponent.steps" header="::page.glossary.lifecycleComponent.header"></doc>

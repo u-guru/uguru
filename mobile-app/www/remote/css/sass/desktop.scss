@@ -999,6 +999,57 @@
 		}
 	}
 }
+#desktop-courses.student-mode {
+	.input-field {
+		.prefix {
+			svg {
+				stroke: $slate;
+			}
+		}
+		input {
+			color: $slate;
+		}
+	}
+	.desktop-header {
+		a {
+			svg {
+				stroke: $slate!important;
+			}
+		}
+	}
+	.desktop-search-header {
+		color: $slate;
+	}
+	.desktop-card-list {
+		li {
+			a {
+				background: rgba($slate,.1);
+				border-bottom: 10px solid rgba(white,.7);
+				&:hover {
+					background: $lake;
+					span {
+						color: white;
+					}
+				}
+			}
+			a svg, label svg {
+				background: white;
+				path {
+					stroke: $lake;
+				}
+			}
+		}
+		.selected {
+			a {
+				background: $lake;
+				border-color: white;
+				span {
+					color: white;
+				}
+			}
+		}
+	}
+}
 
 // SKILLS
 #desktop-skills, .desktop-skills {
@@ -2588,6 +2639,14 @@
 		}
 	}
 }
+.message-single.right .message-single-content {
+	-moz-align-items:flex-end;
+	-webkit-align-items:flex-end;
+	align-items:flex-end;
+	-moz-flex-direction:column !important;
+	-webkit-flex-direction:column !important;
+	flex-direction:column !important;
+}
 
 // CONFIRM
 #desktop-request-student,
@@ -3914,6 +3973,630 @@
 			background: $smoke;
 			* {
 				color: $charcoal!important;
+			}
+		}
+	}
+}
+
+/* ---------- CREDIBILITY */
+#desktop-credibility {
+	#credit-complete {
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		z-index: 99;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba($charcoal, .9);
+		.credit-complete-inside {
+			@include flex;
+			-webkit-justify-content: center;
+			justify-content: center;
+		}
+		aside {
+			@include flex;
+			@include flex-wrap;
+			-webkit-justify-content: flex-end;
+			justify-content: flex-end;
+			max-width: 200px;
+			.icon {
+				width: 100px;
+				height: 100px;
+				background: $moola;
+				border-radius: 2px;
+				svg {
+					width: 100px;
+					height: 100px;
+					path {
+						@include svg-stroke(white, 3);
+					}
+				}
+			}
+			.chip {
+				@include flex;
+				@include flex-center;
+				max-width: 200px;
+				height: 72px;
+				line-height: 18px;
+				text-align: center;
+				svg {
+					left: 75%;
+				}
+			}
+			a {
+				display: block;
+				padding-top: 5px;
+				font-size: 14px;
+				font-weight: 600;
+				text-align: center;
+			}
+		}
+		main {
+			margin-left: 60px;
+			height: 200px;
+			width: 800px;
+			> div:first-child {
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				h1, a {
+					display: block;
+					width: 50%;
+				}
+				h1 {
+					padding-bottom: 5px;
+					font-size: 32px;
+					font-weight: 900;
+				}
+				a {
+					text-align: right;
+					svg {
+						@include rotate(45);
+						width: 32px;
+						height: 32px;
+						path {
+							@include svg-stroke(white, 8);
+						}
+					}
+				}
+			}
+			> div:last-child {
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				height: calc(100% - 43px);
+				background: white;
+				color: rgba($taupe,.5);
+				font-weight: 700;
+				text-align: center;
+				border: 5px dashed;
+				svg {
+					width: 100%;
+					height: 40px;
+					margin-bottom: 5px;
+					path {
+						@include svg-stroke(rgba($taupe,.5), 8);
+					}
+				}
+			}
+		}
+	}
+	.main {
+		@include flex;
+		@include flex-center;
+		height: calc(100% - 128px);
+		padding: 7.5px;
+		ul {
+			width: 100%;
+			height: 100%;
+			padding: 7.5px;
+			li {
+				padding: 7.5px;
+				height: 50%;
+				max-height: 325px;
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					position: relative;
+					width: 100%;
+					height: 100%;
+					background: $taupe;
+					border-radius: 2px;
+					overflow: hidden;
+					&::before {
+						@include transition(.15s ease-in-out);
+						@include opacity(0);
+						content: "";
+						display: block;
+						position: absolute;
+						z-index: 2;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						border-radius: 2px;
+						background: white;
+					}
+					&:hover {
+						&::before {
+							@include opacity(.2);
+						}
+					}
+					&::after {
+						content: "";
+						display: block;
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						width: 100%;
+						height: 20px;
+						background: $slate;
+						border-radius: 0 0 2px 2px;
+					}
+					svg {
+						width: 50%;
+						height: 50%;
+						path {
+							@include svg-stroke(white, 3);
+						}
+					}
+					span {
+						display: block;
+						position: absolute;
+						bottom: 20px;
+						left: 0;
+						width: 100%;
+						padding: 15px;
+						font-weight: 600;
+						text-align: center;
+					}
+				}
+				&.complete {
+					a::after {
+						background: white;
+					}
+				}
+				&#credit-grid-grades a {
+					background: $moola;
+				}
+				&#credit-grid-fb a {
+					background: $facebook;
+				}
+				&#credit-grid-phone a {
+					background: $eggplant;
+				}
+				&#credit-grid-email a {
+					background: $lake;
+				}
+				&#credit-grid-exp a {
+					background: $shamrock;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:960px) {
+	#desktop-credibility {
+		.main {
+			ul {
+				max-width: 975px;
+			}
+		}
+	}
+}
+@media screen and (min-height:857px) {
+	#desktop-credibility {
+		.main {
+			ul {
+				height: auto;
+				li {
+					height: 310px;
+				}
+			}
+		}
+	}
+}
+
+/* ---------- BILLING */
+#desktop-billing {
+	.main {
+		@include flex;
+		@include flex-center;
+		padding: 0;
+		> div {
+			width: 100%;
+			height: 100%;
+			max-width: 1280px;
+			max-height: 800px;
+			padding: 15px;
+			background: lighten($charcoal, 5%);
+		}
+		h1 {
+			font-size: 48px;
+			font-weight: 900;
+		}
+		#billing-container {
+			max-width: 800px;
+			margin: 15px auto 0;
+			h2 {
+				background: $shamrock;
+				padding: 10px;
+				font-size: 28px;
+				font-weight: 600;
+			}
+			h3 {
+				font-size: 28px;
+				font-weight: 600;
+				text-transform: uppercase;
+			}
+			> div {
+				background: $slate;
+			}
+			> * {
+				margin-bottom: 15px;
+			}
+			#billing-student {
+				#select-student {
+					display: none;
+				}
+				#select-skill {
+					@include flex-center;
+					max-width: 600px;
+					margin: 0 auto;
+					> li:nth-child(2) {
+						font-size: 36px;
+						font-weight: 600;
+					}
+				}
+				ul {
+					.user-icon {
+						margin-top: 30px;
+						margin-bottom: 15px;
+						+ span {
+							display: block;
+							margin-bottom: 30px;
+							font-weight: 600;
+						}
+					}
+				}
+			}
+			#billing-details {
+				> ul {
+					padding: 7.5px;
+					li {
+						padding: 7.5px;
+						&:first-child {
+							h3 {
+								@include flex;
+								@include flex-center;
+								height: 48px;
+								background: lighten($slate, 10%);
+								margin-bottom: 15px;
+							}
+							> ul {
+								> li {
+									&:nth-child(1), &:nth-child(3) {
+										padding-right: 10px;
+									}
+									&:nth-child(2) {
+										padding-right: 30px;
+									}
+								}
+							}
+						}
+						&:last-child {
+							> ul {
+								&:nth-child(1) {
+									padding-right: 10px;
+								}
+							}
+							> .custom-dropdown {
+								margin-bottom: 15px;
+							}
+						}
+						.keep-it-free {
+							@include flex;
+							@include flex-center;
+							height: 58px;
+							padding-top: 5px;
+							font-weight: 400;
+						}
+						> ul {
+							@include flex;
+							@include flex-center;
+							padding-top: 5px;
+							> li {
+								font-weight: 600;
+								input {
+									font-size: 32px;
+									font-weight: 700;
+									text-align: center;
+									max-width: 50px;
+									background: lighten($slate, 10%);
+									color: white;
+									@include placeholder {
+										color: rgba(white,.5);
+									}
+								}
+								.custom-dropdown {
+									span {
+										width: 96px;
+									}
+								}
+							}
+						}
+						.custom-dropdown {
+							span {
+								width: calc(100% - 48px);
+							}
+							ul {
+								width: 100%;
+								li {
+									width: calc(100% - 48px);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- REFERRALS */
+#desktop-referrals {
+	.main {
+		aside {
+			background: $shamrock;
+			#referrals-stats {
+				text-align: center;
+				padding: 1px;
+				li {
+					padding: 1px;
+					div {
+						padding: 15px;
+						background: rgba($charcoal,.6);
+						h1 {
+							font-size: 72px;
+							font-weight: 900;
+						}
+						span {
+							font-size: 18px;
+							font-weight: 400;
+							line-height: 1.2;
+						}
+					}
+				}
+				li:last-child {
+					div {
+						background: rgba(white,.6);
+						color: $charcoal;
+					}
+				}
+			}
+			.sidebar-layout-list {
+				height: calc(100% - 232px);
+				margin-top: 15px;
+			}
+		}
+		aside + div {
+			input {
+				@include flex;
+				@include flex-center;
+				background: rgba(white,.5);
+				height: 84px;
+				text-align: center;
+				margin: 0 auto;
+				font-size: 60px;
+				font-weight: 600;
+				&:hover {
+					background: rgba(white,.8);
+				}
+				&:active, &:focus {
+					background: white;
+				}
+			}
+			h3 {
+				font-size: 32px;
+				font-weight: 700;
+			}
+			#referrals-share {
+				width: 100%;
+				ul {
+					max-width: 700px;
+					margin: 30px auto 0;
+					li {
+						svg {
+							@include round;
+							@include svg-stroke(white, 3);
+							width: 100px;
+							height: 100px;
+							margin: 0 auto;
+							padding: 12px;
+						}
+						&:nth-child(1) svg {
+							background: $lake;
+						}
+						&:nth-child(2) svg {
+							background: $eggplant;
+						}
+						&:nth-child(3) svg {
+							background: $facebook;
+						}
+						&:nth-child(4) svg {
+							background: $twitter;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- RANKING */
+#desktop-ranking,
+#mobile-ranking {
+	.main {
+		aside {
+			background: $shamrock;
+			.sidebar-layout-list {
+				li {
+					div {
+						width: calc(100% - 40px);
+					}
+					.chip {
+						min-width: 40px;
+					}
+				}
+			}
+			.sidebar-lock {
+				@include svg-stroke(white, 4);
+				width: 100%;
+				height: 80px;
+				+ h2 {
+					padding-top: 0!important;
+				}
+			}
+			.disabled {
+				@include opacity(.7);
+				max-height: calc(100% - 317px);
+				.chip {
+					@include opacity(.7);
+				}
+			}
+		}
+		aside + div {
+			padding: 15px;
+			h1 {
+				width: 100%;
+			}
+			#ranking-primary {
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				padding: 15px;
+				li {
+					&:first-child, &:last-child {
+						width: 30%;
+						div {
+							background: $slate;
+							padding: 15px;
+							h2 {
+								font-size: 32px;
+								font-weight: 700;
+							}
+							h3 {
+								font-size: 22px;
+								font-weight: 600;
+							}
+						}
+					}
+					&:nth-child(2) {
+						width: 40%;
+						padding: 0 30px;
+						h3 {
+							padding-top: 15px;
+							font-weight: 700;
+						}
+						#guru-chart {
+							position: relative;
+							height: 100%;
+							width: 100%;
+							#guru-ranking-progress-bar {
+								height: 100%;
+							}
+							svg {
+								height: 100%;
+								path {
+									stroke-linecap: round;
+								}
+							}
+							#percentile {
+								@include center-xy;
+								#percentile-ranking {
+									position: relative;
+									margin-top: -20px;
+									font-size: 96px;
+									font-weight: 600;
+									line-height: 1;
+									text-align: center;
+									&::after {
+										content: "th";
+										display: block;
+										position: absolute;
+										top: 14px;
+										right: -15px;
+										font-size: 20px;
+										font-weight: 600;
+										line-height: 28px;
+										text-transform: uppercase;
+									}
+								}
+								#percentile-label {
+									font-size: 20px;
+									font-weight: 600;
+									letter-spacing: 1px;
+									line-height: 1.2;
+									text-transform: uppercase;
+								}
+							}
+						}
+					}
+				}
+			}
+			.ugrid-3 {
+				width: 100%;
+				li {
+					padding: 15px;
+				}
+			}
+			> div {
+				width: 100%;
+			}
+			#ranking-secondary {
+				li {
+					> div {
+						@include flex;
+						@include flex-center-vertical;
+						text-align: left;
+						background: $shamrock;
+						div {
+							padding: 15px;
+							width: calc(100% - 55px);
+							font-size: 16px;
+							font-weight: 600;
+							h4 {
+								font-size: 28px;
+								font-weight: 900;
+							}
+						}
+						svg {
+							padding-right: 15px;
+							width: 55px;
+							height: 40px;
+							stroke-linecap: round;
+						}
+					}
+				}
+			}
+			#ranking-tertiary {
+				li {
+					> div {
+						background: mix($shamrock, $slate, 20%);
+						padding: 15px;
+						span {
+							display: block;
+							font-size: 20px;
+							font-weight: 600;
+						}
+						h4 {
+							font-size: 28px;
+							font-weight: 900;
+						}
+					}
+				}
 			}
 		}
 	}

@@ -66,20 +66,20 @@ function AdminContent($localstorage) {
         return {
             sections: [
                 {
-                    title: 'Milestones',
+                    title: 'Projects',
                     tabs: generateMilestoneTabs(members),
                     sections: {
                         user_stories: initUserStories(),
                         admin_setup: initAdminSetup()
                     }
                 },
-                { title: 'Components', tabs: {index: 0}, options: [{title: 'Assets'}, {title: 'Components'}, {title:'Containers'}, {title: 'Layouts'}, {title: 'Scenes'}]},
-                { title: 'Docs', tabs: ['Responsibilities', 'Stages', 'Component LifeCycle']},
-                { title: 'Moodboard'},
+                { title: 'Components', tabs: {index: 0, options: [{title: 'Components'}, {title:'Containers'}, {title: 'Layouts'}, {title: 'Scenes'}, {title: 'Assets'}]}},
+                { title: 'Documentation', tabs: ['CSS Style', 'Guides', 'Component LifeCycle']},
+                { title: 'Moodboard', tabs: ['All', 'Components', '<b>+ Add one</b>']},
                 { title: 'Tools'}
             ],
             sidebar: {
-                index: 0
+                index: 1
             }
         }
 
@@ -275,8 +275,66 @@ var docs = {
                 description: "Does the component have any nested components? Any custom we don't have? If so, repeat this process for that nested component after this one"
             },
         ]
+    },
+    perfectComponent: {
+        header: 'Steps to Adding a New Component',
+        steps: [
+            {
+                title: 'Find great examples to <i>start</i> with',
+                description: 'These will be added to the moodboard'
+            }
+        ]
     }
 }
+
+var componentList = ['user icon', 'tag', 'tooltip', 'profile card', 'mini card', 'color picker', 'input', 'toggle', 'progress', 'sliding tab bar', 'rating', 'map marker', 'map', 'request tile', 'open round progress', 'copy url', 'copy url', 'credit tile', 'form popup', 'credit card with edit button', 'breaking bad tile', 'countdown', 'button', 'calendar tile', 'dropdowns', 'credit card', 'school card', 'id card', 'social network link bar', 'numbered list', 'range inputs', 'ribbon edge', 'pricing tile', 'profile section', 'badges', 'info popup', 'dashboard ticket']
+var defaultComponentFields = {
+    events: [],
+    states: [],
+    status: 'complete',
+    full_status: {
+         dynamic: true,
+        cross_platform: true,
+        responsive: true,
+        functional: true,
+        hifi: true,
+        tests: true
+    },
+    template_url: '',
+    scope: {},
+    id: 1,
+    ref: 'shortest_name',
+    name: false,
+    layout_ref: [],
+    child_component: [],
+    moodboard_reference: [],
+    core: false,
+    hasCollection: false,
+    notes: '',
+    description: '',
+    assigned: ''
+    //has different mobile form
+    //is a core component
+}
+
+//default components
+
+var defaultComponentStatus = {
+    dynamic: true,
+    cross_platform: true,
+    responsive: true,
+    functional: true,
+    hifi: true,
+    tests: true
+}
+
+var componentDefaults = {
+    states: defaultComponentStatus,
+    fields: defaultComponentFields
+}
+
+
+
 
 var components = [
     {
@@ -305,7 +363,11 @@ var components = [
     {
         stage: 1,
         reference: 'steps',
-        template: 'templates/components/dev/containers/steps.tpl',
+        scope: {
+            steps: [{img_base: 'remote/', title: 'Request a Guru', icon_url: 'templates/svg/main/calendar.html', description: 'This is how you would request a guru'}, {img_base: 'remote/' ,title: 'Just Chill', icon_url: 'templates/svg/main/lightbulb.html', description: 'Gurus will fight to meet you - ur the hot shot'}],
+            header: 'Steps to Success'
+        },
+        template: '<step-by-step steps="selected_component.scope.steps" header="selected_component.scope.header"></step-by-step>',
         name: 'Steps Container',
         spec: {
             responsive: {
