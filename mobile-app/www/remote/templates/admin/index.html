@@ -17,7 +17,46 @@
                     </h1>
                 </a>
             </div>
-            <div class='relative bg-smoke flex-wrap-center flex-stretch' style='width:80% !important;'>
+            <div class='relative bg-smoke flex-wrap-center flex-stretch' style='width:80% !important;' id='main-admin-content'>
+                <ion-pane id='cta-modal-selected-component' class='full-xy hide-display cta-modal show bg-charcoal absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch'>
+                    <a ng-click='page.layout.sections[0].tabs.options[1].selected = null;' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
+                            <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5">
+                                <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                            </svg>
+                    </a>
+                    <div class='flex-wrap-center full-xy relative flex-stretch'>
+                        <h1 class='full-x p20xy font-4 txt-white bg-azure uppercase text-center'> {{selected_component.name}} Component</h1>
+
+                        <div class='relative flex-wrap-center bg-charcoal p20xy full-x flex-stretch'>
+                            <div class='absolute full-xy flex-wrap-center left-0 top-0'>
+                                <h4 class='weight-600 uppercase text-center full-x'> DEMO </h4>
+                                <div class='demo-container flex-wrap-center'>
+                                    <div ng-include="img_base + selected_component.template" > </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='bg-azure full-x flex-wrap-center flex-stretch'>
+                            <h4 class='p10xy uppercase weight-400'> Details </h4>
+                            <div class='p20xy ugrid-2'>
+                                <p class='full-x'> {{selected_component.description}} </p>
+                                <p class='full-x'> {{selected_component.requirements}} </p>
+                            </div>
+                            <div class='ugrid-3 full-x'>
+                                <div class='p20xy'>
+                                    <h1 class='full-x text-center weight-600 p10y'> States </h1>
+                                    <ul>
+                                        <li ng-repeat='state in selected_component.states' class='m10y'>
+                                            <div class='weight-400'>{{$index + 1}}. {{state.name}}</div>
+                                            <span> {{state.description}} </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ion-pane>
+
                 <section class='flex-wrap-center absolute flex-stretch full-xy txt-charcoal top-0 left-0' ng-hide='page.layout.sidebar.index'>
                     <div class='ugrid-5 flex-wrap-center full-x bg-azure' style='height:10%;'>
                         <a class='flex-wrap-center' ng-repeat='option in page.layout.sections[0].tabs.options' ng-click='page.layout.sections[0].tabs.index = $index'>
@@ -28,46 +67,12 @@
                         </a>
                     </div>
                     <div class='milestones-content relative flex-wrap-center full-x bg-smoke' style='height:90%;'>
-                        <div class='expanded-content-overlay full-xy flex-wrap-center absolute top-0 high-z-index left-0 bg-charcoal-50p' ng-if='page.layout.sections[0].tabs.options[1].selected'>
-                            <a ng-click='page.layout.sections[0].tabs.options[1].selected = null;' class='absolute top-0 right-0 m20xy'>
-                                <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5">
-                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                                </svg>
-                            </a>
-                            <div class='txt-smoke weight-700 flex-wrap-center flex-stretch' ng-init='selectedAction = page.layout.sections[0].tabs.options[1].selected'>
-                                <div>
-                                    <div class='p20xy flex-wrap-center font-4'>
-                                        {{selectedAction.name}}
-                                    </div>
-                                    <small class='weight-700 uppercase text-center full-x m20y txt-smoke'>
-                                        Description
-                                    </small>
-                                    <p class='weight-400 txt-white'>
-                                        {{selectedAction.description}}
-                                    </p>
-                                    <small class='weight-700 uppercase text-center full-x m20y txt-smoke'>
-                                        Requirments
-                                    </small>
-                                    <p class='weight-400 txt-white'>
-                                        {{selectedAction.requirements}}
-                                    </p>
-                                    <div class='full-x ugrid-2 relative'>
-                                        <div class='bg-cerise full-y flex-wrap-center p20xy'>
-                                            Demo
-                                        </div>
-                                        <div class='bg-azure full-y flex-wrap-center p20xy'>
-                                            Submission
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class='txt-charcoal absolute full-xy flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index'>
                             <h1>
                                 {{page.layout.sections[0].tabs.options[0].title}}
                             </h1>
                         </div>
-                        <div class='txt-charcoal absolute full-xy flex-wrap-center flex-stretch flex-start top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 1'>
+                        <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 1'>
                             <h1 style='height:10%;' class='bg-cerise-50p full-x flex-wrap-center p20xy weight-600'>
                                 {{page.layout.sections[0].tabs.options[1].title}}'s action items
                             </h1>
@@ -97,7 +102,7 @@
 
                                                 <ul class='p20xy bg-gold txt-slate' style='border:2px dashed white;'>
                                                     <li class='uppercase weight-600 m20xy'>{{user_story.title}}</li>
-                                                    <li ng-repeat ='component in user_story.components' class='text-left weight-300 p10xy' ng-click='page.layout.sections[0].tabs.options[1].selected = component;'>
+                                                    <li ng-repeat ='component in user_story.components' class='text-left weight-300 p10xy' ng-click='initAndLaunchComponentCTA(component)'>
                                                         <p class='weight-300'> #{{$index + 1}} {{component.name}} </p>
                                                     </li>
                                                     <li class='p20xy'>
@@ -125,8 +130,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
+
                         <div class='txt-charcoal absolute full-xy flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 2'>
                             <h1>
                                 {{page.layout.sections[0].tabs.options[2].title}}'s action items
@@ -140,7 +145,7 @@
                         <!-- <div class='flex-wrap-center absolute top-0 left-0 bg-cerise' >
                             The all milestones
                         </div> -->
-                    </div>
+                </div>
                 </section>
                 <section class='flex-wrap-center full-xy txt-charcoal absolute left-0' ng-hide='page.layout.sidebar.index !== 1'>
                 </section>

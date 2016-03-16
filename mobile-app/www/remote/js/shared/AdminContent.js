@@ -16,7 +16,8 @@ function AdminContent($localstorage) {
         responsibilitiesContent: responsibilitiesContent,
         getGlosseryContent: getGlosseryContent,
         getMainLayout: getMainLayout,
-        getMembers: getMembers
+        getMembers: getMembers,
+        getComponents: getComponents
     }
 
     function initAllContent() {
@@ -235,6 +236,10 @@ function AdminContent($localstorage) {
         return docs;
     }
 
+    function getComponents() {
+        return components;
+    }
+
     function getGlosseryContent() {
         return glosseryContent;
     }
@@ -273,9 +278,10 @@ var docs = {
     }
 }
 
-var components = {
-    refresher: {
+var components = [
+    {
         stage: 1,
+        reference: 'refresher',
         name: 'Pull-to-Refresh',
         template: 'templates/components/dev/input/refresh.tpl',
         description: '',
@@ -286,15 +292,19 @@ var components = {
                 desktop: true
             },
             hifi: false,
-        }
+        },
+        nested_components: ['animated_spinner'],
+        states: [{name: 'Pulling Down', description: 'When the user starts pulling down'}, {name:'Pulling Down Text', description: 'Text to display as the user is pulling down'}, {name: 'Pulling Refresh', description: 'When user pulls either long enough, or lets go'}, {name: 'Refresh Complete', description: 'When refreshing is complete'}]
     },
-    tabs: {
+    {
+        reference: 'tabs',
         stage: 1,
         template: 'templates/components/dev/containers/tabs.tpl',
         name: 'Tab Bar'
     },
-    steps: {
+    {
         stage: 1,
+        reference: 'steps',
         template: 'templates/components/dev/containers/steps.tpl',
         name: 'Steps Container',
         spec: {
@@ -305,10 +315,11 @@ var components = {
             hifi: false
         }
     },
-    dropdown: {
+    {
         stage: 1,
+        reference: 'dropdown',
         template: 'templates/components/dev/input/dropdown.tpl',
-        name: "Plain Dropdown"
+        name: "Base Dropdown"
     }
-}
+]
 
