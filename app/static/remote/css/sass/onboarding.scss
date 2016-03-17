@@ -1,0 +1,1201 @@
+@import 'mixin';
+
+/// MOBILE
+/* ---------- SETTING UP APP */
+// ACCESS
+.access-view {
+	background: $shamrock;
+	input {
+		cursor: text;
+	}
+	#access-data {
+		height: calc(100% - 64px);
+	}
+	#access-logo {
+		@include flex;
+		@include flex-wrap;
+		@include flex-bottom;
+		height: 70%;
+		svg {
+			display: block;
+			max-height: 70%;
+		}
+	}
+	#access-code {
+		@include flex;
+		@include flex-center;
+	}
+	#access-start {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+	p {
+		margin: 0 0 15px;
+		font-size: smaller;
+	}
+	button:active {
+		background: rgba($charcoal,.7);
+	}
+}
+
+// HOW IT WORKS
+.how-it-works-view {
+	background: $charcoal;
+	height: 100%;
+	header {
+		padding-top: 20px;
+		height: 50px;
+	}
+	.header-up {
+		display: block;
+		margin: 0 auto;
+		height: 50px;
+		svg {
+			@include svg-stroke(white, 6);
+			height: 100%;
+		}
+	}
+	button {
+		bottom: 0;
+		background: rgba(white,.1);
+	}
+	button:active {
+		background: rgba(white,.4);
+	}
+	#how-cards-container {
+		height: calc(100% - 50px - 64px);
+		width: 100%;
+		overflow-y: hidden;
+		overflow-x: auto;
+		.breadcrumbs {
+			position: fixed;
+			width: 100%;
+			margin-top: 10%;
+		}
+	}
+	#how-cards {
+		@include listless;
+		@include flex;
+		padding-top: 15%;
+		box-sizing: content-box;
+		height: 70%;
+		width: 600%;
+		.how-card {
+			width: 100%;
+			height: 100%;
+			.how-card-media, .how-card-desc {
+				margin: 0 30px;
+				width: calc(100% - 60px);
+			}
+			.how-card-media {
+				position: relative;
+				border-radius: 10px 10px 0 0;
+				height: 70%;
+				h1 {
+					text-align: center;
+					font-size: 20px;
+					font-weight: 600;
+					line-height: 50px;
+				}
+				div {
+					@include flex;
+					@include flex-center;
+					position: absolute;
+					width: 100%;
+					height: calc(100% - 50px);
+					padding: 15px;
+					svg {
+						height: 100%;
+						width: auto;
+					}
+					&.bottom-0 {
+						padding-bottom: 25px;
+					}
+					&.top-0 {
+						padding-top: 25px;
+					}
+				}
+			}
+			.how-card-desc {
+				@include flex;
+				@include flex-center;
+				border-radius: 0 0 10px 10px;
+				padding: 15px;
+				background: white;
+				height: 30%;
+				color: $charcoal;
+				p {
+					margin: 0;
+					font-size: 16px;
+					font-weight: 400;
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
+// ONBOARDING
+.onboarding-search {
+	.prefix {
+		top: 4px;
+		svg {
+			@include svg-stroke(white, 5);
+			width: 100%;
+			height: 100%;
+			padding: 10px;
+		}
+	}
+}
+
+// UNIVERSITY
+.university-view {
+	background: $charcoal;
+	header.third {
+		&::before {
+			background: url(../../img/onboarding/schools.jpg) no-repeat center center / cover,
+						url(/static/remote/img/onboarding/schools.jpg) no-repeat center center / cover;
+		}
+		> h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
+			padding-bottom: 30px;
+		}
+		.onboarding-search {
+			input {
+				width: calc(100% - 48px - 15px);
+			}
+			input, label {
+				color: white!important;
+				border-color: white!important;
+			}
+		}
+		.geolocation-icon {
+			position: absolute;
+			top: -15px;
+			right: -15px;
+			padding: 30px;
+		}
+	}
+	#school-list.onboarding-list, #school-list-modal {
+		ul {
+			li {
+				a {
+					font-weight: 300;
+					.school-icon {
+						img {
+							@include round;
+							border: 0!important;
+							margin: 10px;
+							width: 44px;
+							height: 44px;
+							background: white;
+						}
+					}
+					.school-name {
+						display: block;
+						width: calc(100% - 69px);
+						padding-right: 5px;
+						b, i {
+							display: block;
+							width: 100%;
+							line-height: 1.2;
+						}
+						b {
+							font-size: 20px;
+							font-weight: 400;
+						}
+						i {
+							font-size: 16px;
+							font-style: normal;
+							font-weight: 300;
+						}
+						.school-title {
+							display: block;
+							width: 100%;
+							overflow: hidden;
+							white-space: nowrap;
+							text-overflow: ellipsis;
+						}
+						.school-city {
+							text-transform: capitalize;
+						}
+						.school-state {
+							text-transform: uppercase;
+						}
+						.school-distance {
+							float: right;
+						    bottom: 0;
+						    font-size:12px;
+						    padding-top: 5px;
+						    font-weight: 500;
+						}
+					}
+				}
+				a:active, a.active, a.activated {
+					background: rgba(white,.2);
+				}
+			}
+		}
+	}
+}
+
+/* ---------- GURU ONBOARDING */
+// ONBOARDING
+.onboarding-steps {
+	position: fixed;
+	z-index: 50;
+	top: calc(100% / 3 - 5px);
+	left: 0;
+	width: 100%;
+	height: 5px;
+	progress {
+		display: block;
+		border-radius: 0!important;
+		vertical-align: 0;
+		margin: 0;
+	}
+}
+.onboarding {
+	progress, .progress {
+		position: absolute;
+		top: 0;
+		z-index: 9;
+		span[data-value="2"] {
+			width: 2%;
+		}
+		span[data-value="30"] {
+			width: 25%;
+		}
+		span[data-value="50"] {
+			width: 40%;
+		}
+		span[data-value="80"] {
+			width: 80%;
+		}
+		span[data-value="85"] {
+			width: 85%;
+		}
+		span[data-value="95"] {
+			width: 95%;
+		}
+		span[data-value="99"] {
+			width: 86%;
+		}
+	}
+	header {
+		h1:not(header .header-nav a h1) {
+			text-align: center;
+		}
+	}
+	.onboarding-list {
+		height: calc(100% / 3 * 2);
+		overflow: auto;
+	}
+	&#start {
+		background: $slate;
+		#start-container {
+			@include center-y;
+			padding-bottom: 64px;
+			color: $shamrock;
+			font-size: 28px;
+			text-align: center;
+		}
+	}
+}
+
+// MAJOR
+.major-view, .language-view {
+	background: $charcoal;
+	header.third {
+		&::before {
+			background: url(../../img/onboarding/major.jpg) no-repeat center center / cover,
+						url(/static/remote/img/onboarding/major.jpg) no-repeat center center / cover;
+		}
+		> h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
+		}
+	}
+	#major-list.onboarding-list, #language-list {
+		ul {
+			margin-top: 1px;
+			li {
+				a {
+					border-color: $campus;
+					margin-bottom: 2px;
+					padding: 0 40px 0 20px;
+					font-weight: 400;
+					font-size: 20px;
+					line-height: 1.2;
+				}
+				#{$links} {
+					&.active, &.activated {
+						background: rgba(white,.2);
+					}
+				}
+				&.selected  {
+					position: relative;
+					a {
+						border-color: white!important;
+						color: inherit!important;
+						font-weight: 600;
+						background: $campus;
+					}
+					svg {
+						@include center-y;
+						right: 0;
+						width: 64px;
+						height: 64px;
+						padding: 20px;
+					}
+				}
+			}
+		}
+	}
+}
+
+// COURSES
+.courses-view {
+	header.third {
+		&::before {
+			background: url(../../img/onboarding/courses.jpg) no-repeat center center / cover,
+						url(/static/remote/img/onboarding/courses.jpg) no-repeat center center / cover;
+		}
+		div:not(.header-nav) h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
+			padding-bottom: 5px;
+			+ h2 {
+				margin-top: 0;
+				font-size: 20px;
+				padding: 0 15px 30px;
+			}
+		}
+		.onboarding-search {
+			input {
+				width: calc(100% - 48px - 15px);
+			}
+			input, label {
+				color: white!important;
+				border-color: white!important;
+			}
+		}
+	}
+	@media screen and (max-height:568px) {
+		header.third {
+			div:not(.header-nav) h1 {
+				padding-bottom: 30px;
+				+ h2 {
+					display: none;
+				}
+			}
+		}
+	}
+	#courses-list.onboarding-list {
+		ul {
+			margin: 1px 1px 0;
+			li {
+				position: relative;
+				border: 1px solid transparent;
+				label {
+					display: block;
+					width: 100%;
+					padding: 15px 20px;
+					font-size: 18px;
+					font-weight: 400;
+					line-height: 24px;
+					text-align: left;
+					span {
+						display: block;
+						width: 100%;
+						overflow: hidden;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						&:first-child:not(:only-child) {
+							font-size: 14px;
+							line-height: 1.2;
+						}
+					}
+				}
+				input {
+					@include opacity(0);
+					position: absolute;
+					z-index: 99;
+					top: 0;
+					left: 0;
+					margin: 0;
+					width: 100%;
+					height: 100%;
+					cursor: pointer;
+				}
+				input:checked + label {
+					color: inherit!important;
+					font-weight: 600;
+				}
+				input:checked:active + label {
+					@include opacity(.75);
+				}
+			}
+		}
+	}
+}
+.courses-view:not(.student-courses-view) {
+	#course {
+		background: $charcoal;
+	}
+	#courses-list.onboarding-list {
+		ul {
+			li {
+				label {
+					background: rgba(white,.1);
+					border-color: $campus;
+				}
+				input:checked + label {
+					background: $campus;
+					border-color: white!important;
+				}
+				input:active + label {
+					background: rgba(white,.2);
+				}
+				input:checked:active + label {
+					background: $campus;
+				}
+			}
+		}
+	}
+}
+
+// SKILLS
+.skills-view {
+	background: $charcoal;
+	header.third {
+		&::before {
+			background: url(../../img/onboarding/skills.jpg) no-repeat center center / cover,
+						url(/static/remote/img/onboarding/skills.jpg) no-repeat center center / cover;
+		}
+		div:not(.header-nav) h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
+			padding-bottom: 5px;
+			+ h2 {
+				margin-top: 0;
+				font-size: 20px;
+				padding: 0 15px 15px;
+			}
+		}
+	}
+	@media screen and (max-height:568px) {
+		header.third {
+			div:not(.header-nav) h1 {
+				padding-bottom: 15px;
+				+ h2 {
+					display: none;
+				}
+			}
+		}
+	}
+	#skills-list.onboarding-list  {
+		ul {
+			padding: 1px;
+			height: 100%;
+			li {
+				height: 25%;
+				border: 1px solid $charcoal;
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					position: relative;
+					margin-bottom: 0;
+					background-color: rgba($charcoal,.5);
+					height: 100%;
+					font-size: 18px;
+					font-weight: 400;
+					line-height: 24px;
+					text-align: center;
+					.skill-label {
+						position: relative;
+						z-index: 9;
+						display: block;
+						width: 100%;
+						font-weight: 600;
+						line-height: 1.25;
+					}
+					.skill-count {
+						@include flex;
+						@include flex-center;
+						position: absolute;
+						top: 0;
+						right: 0;
+						z-index: 9999;
+						background: white;
+						border-radius: 0 0 0 75%;
+						width: 28px;
+					    height: 28px;
+					    padding-bottom: 3px;
+					    padding-left: 3px;
+					    font-weight: 600;
+					    font-size: 18px;
+					}
+				}
+			}
+			[class*="skill-item-bg-"]::after {
+				@include opacity(.7);
+				position: absolute;
+				content: "";
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+			}
+			.skill-item-bg-delivery.important {
+				.skill-count {
+					color: $auburn!important;
+				}
+				&::after {
+					background: $auburn;
+				}
+			}
+			.skill-item-bg-freelancing.important {
+				.skill-count {
+					color: $orange!important;
+				}
+				&::after {
+					background: $orange;
+				}
+			}
+			.skill-item-bg-baking.important {
+				.skill-count {
+					color: $gold!important;
+				}
+				&::after {
+					background: $gold;
+				}
+			}
+			.skill-item-bg-photography.important {
+				.skill-count {
+					color: $moola!important;
+				}
+				&::after {
+					background: $moola;
+				}
+			}
+			.skill-item-bg-tech.important {
+				.skill-count {
+					color: $azure!important;
+				}
+				&::after {
+					background: $azure;
+				}
+			}
+			.skill-item-bg-household.important {
+				.skill-count {
+					color: $cobalt!important;
+				}
+				&::after {
+					background: $cobalt;
+				}
+			}
+			.skill-item-bg-athetic.important {
+				.skill-count {
+					color: $eggplant!important;
+				}
+				&::after {
+					background: $eggplant;
+				}
+			}
+			.skill-item-bg-academic.important{
+				.skill-count {
+					color: $cerise!important;
+				}
+				&::after {
+					background: $cerise;
+				}
+			}
+		}
+	}
+}
+
+// PHOTO
+.photo-view {
+	background: $charcoal;
+	header.third {
+		h1.text-center {
+			line-height: 1.2!important;
+		}
+		div:not(.header-nav) h1 {
+			font-size: 28px!important;
+			text-transform: lowercase;
+			padding-bottom: 5px;
+			+ h2 {
+				margin-top: 0;
+				font-size: 20px;
+				padding: 0 15px 15px;
+			}
+		}
+	}
+	@media screen and (max-height:568px) {
+		header.third {
+			div:not(.header-nav) h1 {
+				padding-bottom: 15px;
+				+ h2 {
+					display: none;
+				}
+			}
+		}
+	}
+	#photo-list {
+		position: absolute;
+		bottom: 0;
+		padding: 1px;
+		p {
+			font-size: 14px;
+			text-align: center;
+			font-weight: 400;
+			opacity: 0.5;
+		}
+		li {
+			padding: 1px;
+			img {
+				display: block;
+				max-width: 100%;
+			}
+		}
+	}
+	#photo-container {
+		#profile-icon {
+			position: relative;
+			height: 75%;
+			text-align: center;
+			a.active, a.activated, a:active {
+				@include opacity(.75);
+			}
+			h1 {
+				@include center-xy;
+				z-index: 9;
+				margin: 0;
+				border: 0;
+				font-size: 20px;
+				font-weight: 700;
+				text-transform: uppercase;
+			}
+			span {
+				display: block;
+				margin: 0 auto;
+				width: 80%;
+				height: 80%;
+				max-width: 150px;
+				max-height: 150px;
+				overflow: hidden;
+			}
+			span, img {
+				border: 5px solid white;
+			}
+			svg, img {
+				@include round;
+				@include center-xy;
+				@include opacity(.5);
+				width: 80%;
+				height: 80%;
+				max-width: 150px;
+				max-height: 150px;
+			}
+		}
+	}
+}
+
+/// DESKTOP
+/* ---------- GURU ONBOARDING */
+.desktop-guru-onboarding {
+	.main {
+		.desktop-search-list {
+			#guru-courses-user-profile {
+				@include flex;
+				justify-content: flex-start!important;
+				-webkit-justify-content: flex-start !important;
+				li.course-item.selected{
+					width: 25%!important;
+					display: block!important;
+					a {
+						height: 60px!important;
+						max-height: 60px!important;
+						span {
+							font-size: 20px;
+							text-align: center!important;
+						}
+					}
+				}
+			}
+			.desktop-card-list {
+				li {
+					display: none;
+					a {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						height: 84px;
+						padding: 15px;
+						border-bottom: 10px solid rgba(white,.5);
+						font-size: 16px;
+						font-weight: 600;
+						line-height: 1.25;
+						text-align: center;
+						&:hover {
+							background: lighten($slate, 15%);
+						}
+					}
+					a > svg, label > svg, a .icon {
+						display: block;
+						position: absolute;
+						top: 0;
+						right: 0;
+						width: 40px!important;
+						height: 40px;
+						border-radius: 0 0 0 75%;
+						padding: 5px 5px 10px 10px !important;
+						background: white;
+						path {
+							@include svg-stroke(lighten($slate, 15%), 15);
+						}
+					}
+					a {
+						.icon {
+							@include transition(.15s ease-in-out);
+							@include opacity(0);
+							svg {
+								@include rotate(45);
+							}
+						}
+						&:hover, &:focus {
+							.icon {
+								@include opacity(1);
+							}
+						}
+					}
+				}
+				li:nth-child(1), li:nth-child(2), li:nth-child(3), li:nth-child(4),
+				li:nth-child(5), li:nth-child(6), li:nth-child(7), li:nth-child(8) {
+					display: block;
+				}
+				.selected {
+					a {
+						background: lighten($slate, 15%);
+						border-color: white;
+						&:hover, &:focus {
+							background: $slate;
+							svg {
+								path {
+									stroke: $slate;
+								}
+							}
+						}
+						&:active {
+							background: rgba(white,.25);
+							border-bottom: 10px solid rgba(white,.5);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:750px) and (min-width: 820px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							font-size: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:750px) and (min-width: 1024px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 100px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:952px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 125px;
+							font-size: 24px;
+						}
+						a svg, label svg {
+							padding: 30px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:1000px) {
+	.desktop-guru-onboarding {
+		.main {
+			.desktop-search-list {
+				.desktop-card-list {
+					li {
+						a {
+							height: 150px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- BECOME GURU ONBOARDING */
+.guru-onboarding-header {
+	position: relative;
+	text-align: center;
+	h1, h2 {
+		position: relative;
+		z-index: 10;
+		font-weight: 600;
+	}
+	h1 {
+		font-size: 48px;
+	}
+	h2 {
+		margin-top: 0;
+		font-size: 28px;
+	}
+}
+#desktop-guru-onboarding {
+	@include flex;
+	@include flex-center;
+	&:before {
+		@include opacity(.4);
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: $slate;
+	}
+	.main {
+		height: auto;
+		.guru-onboarding-header {
+			h1 {
+				font-size: 72px;
+			}
+		}
+		#guru-onboarding-grid {
+			padding: 60px 15px 15px;
+			max-width: 1020px;
+			margin: auto;
+			li {
+				position: relative;
+				padding: 15px;
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					position: relative;
+					max-height: 270px;
+					border-radius: 2px;
+					&:after {
+						@include transition(.15s ease-in-out);
+						@include opacity(.8);
+				        display: block;
+				        content: "";
+				        position: absolute;
+				        top: 0;
+				        left: 0;
+				        width: 100%;
+				        height: 100%;
+					}
+					&:hover, &:focus {
+						&:after {
+							@include opacity(1);
+						}
+					}
+					&.complete {
+						@include opacity(1);
+						&:hover, &:focus {
+							@include opacity(1);
+						}
+					}
+					> span {
+						display: block;
+						position: relative;
+				        z-index: 10;
+						span {
+							display: block;
+						}
+						span:first-child {
+							svg {
+								height: 175px;
+								width: 100%;
+								path {
+									 @include svg-stroke(white, 2);
+								}
+							}
+						}
+						span:last-child {
+							margin-top: -20px;
+							padding-bottom: 15px;
+							font-size: 20px;
+							font-weight: 700;
+							text-align: center;
+						}
+					}
+				}
+				&:nth-child(1) a {
+					background: $moola;
+					&:hover, &:focus {
+						background: mix($moola, white, 20%);
+						> span {
+							color: $moola!important;
+							span:first-child {
+								svg {
+									path {
+										stroke: $moola!important;
+									}
+								}
+							}
+						}
+					}
+					&:active {
+						background: white;
+					}
+				}
+				&:nth-child(2) a {
+					background: $shamrock;
+					&:hover, &:focus {
+						background: mix($shamrock, white, 20%);
+						> span {
+							color: $shamrock!important;
+							span:first-child {
+								svg {
+									path {
+										stroke: $shamrock!important;
+									}
+								}
+							}
+						}
+					}
+					&:active {
+						background: white;
+					}
+				}
+				&:nth-child(3) a {
+					background: $azure;
+					&:hover, &:focus {
+						background: mix($azure, white, 20%);
+						> span {
+							color: $azure!important;
+							span:first-child {
+								svg {
+									path {
+										stroke: $azure!important;
+									}
+								}
+							}
+						}
+					}
+					&:active {
+						background: white;
+					}
+				}
+				&:nth-child(4) a {
+					background: $lake;
+					&:hover, &:focus {
+						background: mix($lake, white, 20%);
+						> span {
+							color: $lake!important;
+							span:first-child {
+								svg {
+									path {
+										stroke: $lake!important;
+									}
+								}
+							}
+						}
+					}
+					&:active {
+						background: white;
+					}
+				}
+			}
+		}
+		#guru-onboarding-progress {
+			padding-top: 30px;
+			max-width: 960px;
+			margin: auto;
+			.progress {
+				position: relative;
+				overflow: visible;
+				height: 10px;
+				ul {
+					@include center-y;
+					@include flex;
+					@include flex-center;
+					left: 0;
+					width: 100%;
+					li {
+						width: 33%;
+						&:first-child {
+							padding-right: 30px;
+						}
+						&:last-child {
+							padding-left: 30px;
+						}
+						span {
+							@include flex;
+							@include flex-center;
+							margin: 0 auto;
+							width: 70px;
+							height: 70px;
+							background: white;
+							font-size: 36px;
+							font-weight: 900;
+							border: 5px solid;
+							svg {
+								@include svg-stroke-width(15);
+								width: 40px;
+								height: 40px;
+							}
+							&:not(complete) {
+								i {
+									display: none;
+								}
+								b {
+									display: block;
+								}
+							}
+							&.complete {
+								i {
+									display: block;
+								}
+								b {
+									display: none;
+								}
+							}
+						}
+						&:nth-child(1) span {
+							color: $moola;
+							border-color: $moola;
+							svg {
+								stroke: $moola;
+							}
+						}
+						&:nth-child(2) span {
+							color: $shamrock;
+							border-color: $shamrock;
+							svg {
+								stroke: $shamrock;
+							}
+						}
+						&:nth-child(3) span {
+							color: $azure;
+							border-color: $azure;
+							svg {
+								stroke: $azure;
+							}
+						}
+						&:nth-child(4) span {
+							color: $lake;
+							border-color: $lake;
+							svg {
+								stroke: $lake;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:800px) {
+	#desktop-guru-onboarding {
+		.main {
+			.header {
+				h1 {
+					font-size: 64px;
+				}
+				h2 {
+					font-size: 28px;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:980px) {
+	#desktop-guru-onboarding {
+		.main {
+			#guru-onboarding-grid {
+				li {
+					a {
+						> span {
+							span:last-child {
+								margin-top: -10px;
+								padding-bottom: 30px;
+								font-size: 28px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-height:850px) {
+	#desktop-guru-onboarding {
+		.main {
+			#guru-onboarding-grid {
+				margin-top: 60px;
+				margin-bottom: 60px;
+				li {
+					a {
+						height: 270px;
+						> span {
+							span:last-child {
+								margin-top: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#guru-onboarding-buttons {
+	@include center-x;
+	bottom: 15px;
+	li {
+		padding: 0 7.5px;
+		button {
+			display: inline-block!important;
+			width: 200px!important;
+			font-weight: 600;
+		}
+		&:first-child {
+			text-align: right;
+		}
+	}
+}

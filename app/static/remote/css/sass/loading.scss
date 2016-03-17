@@ -1,5 +1,71 @@
 @import 'mixin';
 
+.loading {
+	font-size: 18px!important;
+	font-weight: 600;
+	text-align: center;
+	.success {
+		svg {
+			margin-top: -10px;
+		}
+		> div {
+			margin-top: -10px;
+		}
+	}
+}
+.loader {
+	@include svg-stroke(white, 8);
+	div {
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+}
+#checkmark line,
+.checkmark line {
+	@include animation-duration(.75s);
+	@include animation-iteration-count(1);
+	&:first-child {
+		@include animation-name(checkmark-one);
+		stroke-dasharray: 20.8, 20.8;
+		stroke-dashoffset: 0;
+	}
+	&:last-child {
+		@include animation-name(checkmark-two);
+		stroke-dasharray: 49.91, 49.91;
+		stroke-dashoffset: 0;
+	}
+}
+.checkmark {
+	@include opacity(0);
+	@include animation-duration(3s);
+	@include animation-iteration-count(1);
+	@include animation-name(checkmark-opacity);
+}
+// tour guru
+#tour-guru {
+	g {
+		@include animation-delay(1.5s);
+		@include animation-duration(2.5s);
+		@include animation-iteration-count(1);
+	}
+	#eyes-center {
+		@include opacity(0);
+		@include animation-name(tour-guru-eyes-center);
+	}
+	#eyes-moon {
+		@include opacity(1);
+		@include animation-name(tour-guru-eyes-moon);
+	}
+	#eyes-side {
+		@include opacity(0);
+		@include animation-name(tour-guru-eyes-side);
+	}
+	#eyes-up {
+		@include opacity(0);
+		@include animation-name(tour-guru-eyes-up);
+	}
+}
+
 #body-loading-div {
 	margin: 0;
 	background: $smoke;

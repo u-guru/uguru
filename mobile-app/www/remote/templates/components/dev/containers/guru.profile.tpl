@@ -2,16 +2,16 @@
     <div class="uguru pf-card pf-card-household">
         <div class="pf-card-top">
             <ul>
-                <li>Gabrielle's Shop</li>
+                <li>{{user.first_name}}'s Shop</li>
                 <li>
-                    <span><span data-rank="25">25</span>&nbsp;Percentile</span>
+                    <span><span data-rank="{{user.current_guru_ranking}}">{{user.current_guru_ranking}}</span>&nbsp;Percentile</span>
                 </li>
             </ul>
-            <span class="user-icon" style="background-image: url(http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800);"></span>
+            <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
         </div>
         <div class="pf-card-main">
             <h1 class="verified">
-                <span class="inline">Gabrielle Wee</span>
+                <span class="inline">{{user.name}}</span>
                 <span class="inline">
                     <span>
                         <svg preserveAspectRatio="xMidYMax meet" viewBox="0 0 100 100">
@@ -21,7 +21,7 @@
                     </span>
                 </span>
             </h1>
-            <h2 class="pf-school">UC Berkeley</h2>
+            <h2 class="pf-school">{{user.university.short_name}}</h2>
             <ul class="pf-rating" data-rating="4" data-half="true">
                 <li>
                     <svg viewBox="0 0 100 100">

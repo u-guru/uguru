@@ -15,10 +15,13 @@ angular.module('uguru.util.controllers')
 			layout: AdminContent.getMainLayout(),
 			glossary: AdminContent.getGlosseryContent(),
 			team_members: AdminContent.getMembers(),
-			components: AdminContent.getComponents()
+			components: AdminContent.getComponents(),
+			user_stories: AdminContent.getUserStories(),
+			defaults: {
+				tabsIndex: 0,
+				sidebarIndex: 1
+			}
 		}
-
-
 		$scope.selected_component = $scope.page.components[2];
 
 		$scope.initAndLaunchComponentCTA = function($event, component) {
@@ -27,16 +30,18 @@ angular.module('uguru.util.controllers')
 			$timeout(function() {
 				$scope.$apply(function() {
 					$scope.selected_component = component;
-					// $scope.selected_component.template = angular.element($scope.selected_component.template)[0];
 					var demoComponentContainer = angular.element(document.querySelector('#demo-component-template'));
-					demoComponentContainer.html($scope.selected_component.template);
-					// angular.element($scope.selected_component.template).replaceWith($compile($scope.selected_component.template)($scope));
+					demoComponentContainer.html($scope.selected_component.sample.template);
+					console.log(demoComponentContainer);
 					$compile(demoComponentContainer.contents())($scope);
 				})
 			})
 
-			// $compile($scope.selected_component.template.contents())($scope);
-			// $compile($scope.selected_component.template.contents())($scope);
+			$timeout(function() {
+				$scope.selected_component = component;
+				var demo = document.querySelector('#demo-template');
+				$compile(demo)($scope);
+			}, 1000)
 
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-component';
@@ -47,6 +52,27 @@ angular.module('uguru.util.controllers')
 
 				CTAService.showCTAManually(targetElem.id, function() {
 					var modalElem = document.querySelector('#cta-modal-selected-component');
+					$timeout(function() {
+						modalElem && modalElem.classList.add('show');
+
+					}, 100);
+				});
+
+			})
+		}
+
+		$scope.initAndLaunchAssetCTA = function($event, asset) {
+			var targetElem = $event.target;
+			$scope.lastCTABoxTargetElem = targetElem;
+			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-asset-action';
+			$scope.selected_asset = asset;
+			CTAService.initSingleCTA('#' + targetElem.id, '#main-admin-content');
+			$timeout(function() {
+				var targetElem = document.querySelector('#cta-box-selected-asset-action');
+				angular.element(targetElem).triggerHandler('click');
+
+				CTAService.showCTAManually(targetElem.id, function() {
+					var modalElem = document.querySelector('#cta-modal-selected-assect-action');
 					$timeout(function() {
 						modalElem && modalElem.classList.add('show');
 
@@ -79,7 +105,8 @@ angular.module('uguru.util.controllers')
 		}
 
 		$timeout(function() {
-
+			$scope.page.layout.sidebar.index = $scope.page.defaults.sidebarIndex;
+			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = $scope.page.defaults.tabsIndex;
 		}, 1000)
 	}
 
