@@ -1,0 +1,157 @@
+
+
+<div class='full-xy flex-wrap-center flex-stretch absolute'>
+    <header style='height: 10%;' class='flex-center full-x bg-shamrock'>
+        <div>
+            <div>
+                <h1>Uguru Admin</h1>
+            </div>
+        </div>
+    </header>
+    <main class='bg-charcoal-80p relative full-x flex-wrap-center txt-white' style='height:90%;'>
+        <div class='ugrid-2 full-xy'>
+            <div class='sidebar flex-wrap-center flex-stretch' style='width:20% !important;'>
+                <a class='full-x p20xy flex-wrap-center txt-white' ng-class="{'bg-slate-50p': page.layout.sidebar.index === $index}" ng-repeat='section in page.layout.sections' ng-click='page.layout.sidebar.index = $index;'>
+                    <h1 class='weight-500'>
+                        {{section.title}}
+                    </h1>
+                </a>
+            </div>
+            <div class='relative bg-smoke flex-wrap-center flex-stretch' style='width:80% !important;'>
+                <section class='flex-wrap-center absolute flex-stretch full-xy txt-charcoal top-0 left-0' ng-hide='page.layout.sidebar.index'>
+                    <div class='ugrid-5 flex-wrap-center full-x bg-azure' style='height:10%;'>
+                        <a class='flex-wrap-center' ng-repeat='option in page.layout.sections[0].tabs.options' ng-click='page.layout.sections[0].tabs.index = $index'>
+                            <span ng-if='option.profile_url' class='user-icon' style="background-image: url({{option.profile_url}}); height:50px; width:50px;"></span>
+                            <p class='uppercase full-x text-center uppercase weight-400 p10xy' style='font-size:14px;'>
+                                {{option.title}}
+                            </p>
+                        </a>
+                    </div>
+                    <div class='milestones-content relative flex-wrap-center full-x bg-smoke' style='height:90%;'>
+                        <div class='expanded-content-overlay full-xy flex-wrap-center absolute top-0 high-z-index left-0 bg-charcoal-50p' ng-if='page.layout.sections[0].tabs.options[1].selected'>
+                            <a ng-click='page.layout.sections[0].tabs.options[1].selected = null;' class='absolute top-0 right-0 m20xy'>
+                                <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5">
+                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                </svg>
+                            </a>
+                            <div class='txt-smoke weight-700 flex-wrap-center flex-stretch' ng-init='selectedAction = page.layout.sections[0].tabs.options[1].selected'>
+                                <div>
+                                    <div class='p20xy flex-wrap-center font-4'>
+                                        {{selectedAction.name}}
+                                    </div>
+                                    <small class='weight-700 uppercase text-center full-x m20y txt-smoke'>
+                                        Description
+                                    </small>
+                                    <p class='weight-400 txt-white'>
+                                        {{selectedAction.description}}
+                                    </p>
+                                    <small class='weight-700 uppercase text-center full-x m20y txt-smoke'>
+                                        Requirments
+                                    </small>
+                                    <p class='weight-400 txt-white'>
+                                        {{selectedAction.requirements}}
+                                    </p>
+                                    <div class='full-x ugrid-2 relative'>
+                                        <div class='bg-cerise full-y flex-wrap-center p20xy'>
+                                            Demo
+                                        </div>
+                                        <div class='bg-azure full-y flex-wrap-center p20xy'>
+                                            Submission
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='txt-charcoal absolute full-xy flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index'>
+                            <h1>
+                                {{page.layout.sections[0].tabs.options[0].title}}
+                            </h1>
+                        </div>
+                        <div class='txt-charcoal absolute full-xy flex-wrap-center flex-stretch flex-start top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 1'>
+                            <h1 style='height:10%;' class='bg-cerise-50p full-x flex-wrap-center p20xy weight-600'>
+                                {{page.layout.sections[0].tabs.options[1].title}}'s action items
+                            </h1>
+                            <div class='ugrid-3 full-xy' style='height:90%' ng-init='action_items = page.layout.sections[0].tabs.options[1].action_items'>
+                                <div class='flex-wrap-center relative flex-stretch full-y' id='jeselle-resources'>
+                                    <h1 class='font-4 weight-700 p20xy full-x text-center'>
+                                        Resources
+                                    </h1>
+                                    <div class='flex-wrap-center full-x'>
+                                        <div class='full-x text-center' ng-repeat='user_story in action_items.resources' style='border:2px solid dashed;'>
+
+                                            <ul class='p20xy bg-auburn txt-white'>
+                                                <li class='uppercase weight-600 m20xy'>{{user_story.title}}:<br>Missing Icons</li>
+                                                <li ng-repeat ='icon in user_story.icons' class='text-left weight-300 p10xy' ng-click='page.layout.sections[0].tabs.options[1].selected = user_story;'>
+                                                    <p class='weight-300'> #{{$index + 1}} {{icon}} </p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='flex-wrap-center flex-stretch full-y' style='overflow:scroll;' id=''>
+                                    <h1 class='font-4 weight-700 p20xy'>
+                                        Research
+                                    </h1>
+                                    <div class='flex-wrap-center full-x flex-stretch flex-start'>
+                                            <div class='full-x text-center' ng-repeat='user_story in action_items.research'>
+
+                                                <ul class='p20xy bg-gold txt-slate' style='border:2px dashed white;'>
+                                                    <li class='uppercase weight-600 m20xy'>{{user_story.title}}</li>
+                                                    <li ng-repeat ='component in user_story.components' class='text-left weight-300 p10xy' ng-click='page.layout.sections[0].tabs.options[1].selected = component;'>
+                                                        <p class='weight-300'> #{{$index + 1}} {{component.name}} </p>
+                                                    </li>
+                                                    <li class='p20xy'>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class='flex-wrap-center flex-stretch full-y'>
+                                    <h1 class='font-4 weight-700 p20xy'>
+                                        HiFi
+                                    </h1>
+                                        <div class='flex-wrap-center full-x flex-stretch flex-start'>
+                                            <div class='full-x text-center' ng-repeat='user_story in action_items.hifi'>
+
+                                                <ul class='p20xy bg-shamrock txt-white' style='border:2px dashed white;'>
+                                                    <li class='uppercase weight-600 m20xy'>{{user_story.title}}</li>
+                                                    <li ng-repeat ='component in user_story.components' class='text-left weight-300 p10xy' ng-click='page.layout.sections[0].tabs.options[1].selected = component;'>
+                                                        <p class='weight-300'> #{{$index + 1}} {{component.name}} </p>
+                                                    </li>
+                                                    <li class='p20xy'>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='txt-charcoal absolute full-xy flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 2'>
+                            <h1>
+                                {{page.layout.sections[0].tabs.options[2].title}}'s action items
+                            </h1>
+                        </div>
+                        <div class='txt-charcoal absolute full-xy flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 3'>
+                            <h1>
+                                {{page.layout.sections[0].tabs.options[3].title}}'s action items
+                            </h1>
+                        </div>
+                        <!-- <div class='flex-wrap-center absolute top-0 left-0 bg-cerise' >
+                            The all milestones
+                        </div> -->
+                    </div>
+                </section>
+                <section class='flex-wrap-center full-xy txt-charcoal absolute left-0' ng-hide='page.layout.sidebar.index !== 1'>
+                </section>
+                <section class='flex-wrap-center full-x txt-charcoal' ng-hide='page.layout.sidebar.index !== 2'>
+                    <doc steps="::page.glossary.lifecycleComponent.steps" header="::page.glossary.lifecycleComponent.header"></doc>
+                </section>
+                <section class='flex-wrap-center full-x txt-charcoal' ng-hide='page.layout.sidebar.index !== 3'>
+                </section>
+                <section class='flex-wrap-center full-x txt-charcoal' ng-hide='page.layout.sidebar.index !== 4'>
+                </section>
+            </div>
+        </div>
+    </main>
+</div>

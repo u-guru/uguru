@@ -1,3 +1,86 @@
+.modal {
+  height: 100% !important; }
+
+.smaller-list-font {
+  font-size: 85%; }
+
+.content {
+  height: 100%; }
+  .content.footer-exists {
+    padding-bottom: 64px; }
+
+.stats-small {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0.66em;
+  text-transform: uppercase; }
+
+.stats-large {
+  font-size: 36px;
+  font-weight: 700; }
+
+.uguru-view.faq-modal {
+  background-color: white !important;
+  z-index: 1000; }
+  .uguru-view.faq-modal header {
+    overflow: hidden; }
+
+.major-input-close {
+  position: absolute;
+  right: 10px;
+  top: 34%; }
+
+body.platform-ios {
+  background: none; }
+  body.platform-ios section#guru-home.request.full-xy.student-home {
+    padding-top: 10px; }
+  body.platform-ios section#credibility {
+    padding-top: 20px; }
+  body.platform-ios ion-side-menus.root-ion-side-menus.view {
+    background: none; }
+    body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view {
+      background: white;
+      padding-top: 20px; }
+      body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view section, body.platform-ios ion-side-menus.root-ion-side-menus.view .home-view #student-home-map-container {
+        top: 20px !important; }
+    body.platform-ios ion-side-menus.root-ion-side-menus.view .settings-view nav.main-nav {
+      padding-top: 20px; }
+  body.platform-ios .modal-wrapper header,
+  body.platform-ios .header-nav,
+  body.platform-ios .close-popup-link,
+  body.platform-ios #guru-home h1 {
+    padding-top: 20px; }
+  body.platform-ios .modal-wrapper iframe {
+    height: calc(100% - 70px) !important; }
+  body.platform-ios .modal-wrapper .support-modal ion-content {
+    margin-top: 70px; }
+  body.platform-ios .modal-wrapper .terms-modal header {
+    padding-top: 0 !important; }
+  body.platform-ios .terms-modal header.text-center h1 {
+    padding-top: 20px !important; }
+  body.platform-ios .terms-modal header.text-center .header-nav {
+    padding-top: 0 !important; }
+  body.platform-ios .terms-modal header.text-center a.header-down {
+    padding-top: 10px; }
+
+.android-access-edge-case {
+  bottom: 64px;
+  position: absolute; }
+
+#side-menu-left-overlay {
+  left: 0; }
+
+#courses-list ul li label {
+  color: white; }
+
+#credit-slider ul li::selection, #credit-slider ul li.active, #credit-slider ul li.activated, #credit-slider ul li a, #credit-slider ul li a:hover {
+  background: none !important; }
+
+.pf-character-count {
+  font-size: 12px;
+  font-weight: 500;
+  right: 33px; }
+
 .desktop-input-close-icon {
   position: absolute;
   top: 50%;
