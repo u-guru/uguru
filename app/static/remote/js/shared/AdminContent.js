@@ -17,7 +17,8 @@ function AdminContent($localstorage) {
         getGlosseryContent: getGlosseryContent,
         getMainLayout: getMainLayout,
         getMembers: getMembers,
-        getComponents: getComponents
+        getComponents: getComponents,
+        getUserStories: getUserStories
     }
 
     function initAllContent() {
@@ -30,6 +31,37 @@ function AdminContent($localstorage) {
 
     function getMainLayout() {
         return mainLayout;
+    }
+
+    function getUserStories() {
+        var userStoryListV1 = [
+            {id: 1, title: 'Anonymous User Checks out Uguru', ref:"splash", layouts:['mad-lib', 'map-university', '']},
+            {id: 2, title: 'Anonymous User Checks out Become Guru/How it Works', ref:"splash-bg-hiw", layouts:[]},
+            {id: 3, title: 'Anonymous User Gets Started/Signup', ref:"splash-start", layouts:[]},
+            {id: 4, title: 'Student Explores Dashboard', ref:"student-dash-first", layouts:[]},
+            {id: 5, title: 'Student Becomes a Guru', ref:"student-becomes-guru", layouts:[]},
+            {id: 6, title: 'Guru Explores Guru Dashboard', ref:"guru-dash-first", layouts:[]},
+            {id: 7, title: 'Student Creates/Cancels 1-Many Request', ref:"student-requests", layouts:[]},
+            {id: 8, title: 'Guru Accepts/Rejects/Cancels 1-Many Student Requests', ref:"guru-incoming-requests", layouts:[]},
+            {id: 9, title: 'Student receives & Accepts/Rejects/Cancels 1 - many incoming Gurus', ref:"student-incoming-gurus", layouts:[]},
+            {id: 10, title: 'Student Accepts/Rejects/Cancels Guru', ref:"student-accept-guru", layouts:[]},
+            {id: 11, title: 'Student & Guru Message/ & Share Location/Files/Contact Info', ref:"student-guru-message", layouts:[]},
+            {id: 12, title: 'Guru/Student rate each other', ref:"student-guru-rating", layouts:[]},
+            {id: 13, title: 'Guru Sets-up 1-Many Shops', ref:"guru-profiles-setup", layouts:[]},
+            {id: 14, title: 'Guru becomes 100% Credibly', ref:"guru-credibility", layouts:[]},
+            {id: 15, title: 'Student/Guru Refer Each Other', ref:"student-guru-referrals", layouts:[]},
+            {id: 16, title: 'Guru Bills a Student through Billing/Enhanced Messaging', ref:"guru-bills-student", layouts:[]},
+            {id: 17, title: 'Student adds card & purchases from Credit Shop', ref:"student-payments-shop", layouts:[]},
+            {id: 18, title: 'Guru adds Debit Card && Cashes Out', ref:"guru-cashes-out", layouts:[]},
+            {id: 19, title: 'Student/Guru edit their settings', ref:"student-guru-settings", layouts:[]},
+            {id: 20, title: 'Guru checks out Guru Ranking', ref:"guru-promote", layouts:[]},
+            {id: 21, title: 'Guru checks out Guru Promote', ref:"guru-ranking", layouts:[]}
+        ]
+        return userStoryListV1;
+    }
+
+    function getUserLayouts() {
+
     }
 
     function getMembers() {
@@ -52,6 +84,11 @@ function AdminContent($localstorage) {
             {
                 name: 'Samir',
                 profile_url: 'https://uguru.me/static/web/images/team/samir.png'
+            },
+            {
+                name: 'Girls',
+                profile_url_1: 'https://uguru.me/static/web/images/team/jeselle.png',
+                profile_url_2: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200'
             }
         ]
     }
@@ -73,10 +110,10 @@ function AdminContent($localstorage) {
                         admin_setup: initAdminSetup()
                     }
                 },
-                { title: 'Components', tabs: {index: 0, options: [{title: 'Components'}, {title:'Containers'}, {title: 'Layouts'}, {title: 'Scenes'}, {title: 'Assets'}]}},
-                { title: 'Documentation', tabs: ['CSS Style', 'Guides', 'Component LifeCycle']},
-                { title: 'Moodboard', tabs: ['All', 'Components', '<b>+ Add one</b>']},
-                { title: 'Tools'}
+                { title: 'Components', tabs: {index: 1, options: [{title: 'Components'}, {title:'Containers'}, {title: 'Layouts'}, {title: 'Scenes'}, {title: 'User Stories'}, {title: 'Assets'}]}},
+                { title: 'Reference', tabs: {index:0, options: [{title: 'Docs'}, {title: 'HTML/CSS Guide'}, {title: 'Colors'}, {title: 'Themes'}, {title:'Animation'}]}},
+                { title: 'Moodboard', tabs: {index: 0, options: [{title: 'Uguru / Internal', header: 'What are you most proud of?'}, {title: 'Components', header: 'External components we really like'}, {title: 'Fluid + Animation', header: 'External animations/Fluid example we really like'}, {title: 'Creative/Thematic', header: 'Out of this world level'}, {title: 'Library', header: 'Great, specific libraries we really like'}]}},
+                { title: 'Tools', tabs: {index: 0, options: [{title: 'External Exporter'}, {title: 'Internal Editor'}, {title: 'Component Creator'}, {title: 'Asset Importer'}, {title: 'Codepen Tools'}]}}
             ],
             sidebar: {
                 index: 0
@@ -88,13 +125,13 @@ function AdminContent($localstorage) {
         }
 
         function generateMilestoneTabs(members) {
-            var tabOptions = [{title: 'All'}];
+            var tabOptions = [{title: 'All User <br> Stories'}];
             for (var i = 0; i < members.length; i++) {
                 var indexMember = members[i];
                 tabOptions.push({title: indexMember.name, profile_url: indexMember.profile_url, action_items: getActionItemsFor(indexMember.name)})
             }
             return {
-                index: 1,
+                index: 0,
                 options: tabOptions
             }
         }
@@ -139,19 +176,23 @@ function AdminContent($localstorage) {
                     }]
                 },
                 'girls': {
-                    'research': [{project: 'Admin Setup', description: 'Decide tags to use for moodboard, make a list of changes you want to have/make over time.', title: 'Making Dashboard Yours'},
+                    research: [{project: 'Admin Setup', description: 'Decide tags to use for moodboard, make a list of changes you want to have/make over time.', title: 'Making Dashboard Yours'},
                                 {project: 'Components', description: 'Lets finalize a loader that we can use within containers that load images, as well as the main. Our current black one is OK & we can do better.', tite: 'Wrapping up'},
                                 {project: 'Admin Setup', description: 'Ongoing.. If time permits today (no more than 1 hour daily).', tite: 'Wrapping up'}],
                 },
                 'jason': {
-                    'tests': compileTests(['dropdown', 'user icon', 'input', 'input-marker', 'map', 'map marker'])
+                    components: componentList
                 },
                 'gabrielle': {
-                    'components': compileComponents()
+                    components: componentList
+                },
+                'samir': {
+                    components: componentList
                 }
+
             }
             var resultActionArr = [];
-            if (member_name.toLowerCase() === 'jeselle') {
+            // if (member_name.toLowerCase() === 'jeselle') {
                 var actionDict = actionList[member_name.toLowerCase()]
                 var actionDictKeysArr = Object.keys(actionDict);
                 for (var i = 0; i < actionDictKeysArr.length; i++) {
@@ -163,7 +204,6 @@ function AdminContent($localstorage) {
                         resultActionArr.push(indexAction);
                     }
                 }
-            }
             return resultActionArr;
         }
 
@@ -202,7 +242,7 @@ function AdminContent($localstorage) {
     }
 
     function getComponents() {
-        return components;
+        return componentList;
     }
 
     function getGlosseryContent() {
@@ -254,7 +294,165 @@ var docs = {
 
 
 
-var componentList = ['user icon', 'tag', 'tooltip', 'profile card', 'mini card', 'color picker', 'input', 'toggle', 'progress', 'sliding tab bar', 'rating', 'map marker', 'map', 'request tile', 'open round progress', 'copy url', 'copy url', 'credit tile', 'form popup', 'credit card with edit button', 'breaking bad tile', 'countdown', 'button', 'calendar tile', 'dropdowns', 'credit card', 'school card', 'id card', 'social network link bar', 'numbered list', 'range inputs', 'ribbon edge', 'pricing tile', 'profile section', 'badges', 'info popup', 'dashboard ticket']
+var componentList = [
+    {
+        stage: 1,
+        ref: 'dropdown',
+        cp_link: '',
+        name: "Dropdowns",
+        notes: 'Seems not 100% unified, could be more fluid with another sample tool',
+        sample: {
+            template: '<dropdown ng-model="component.sample.scope"></dropdown>',
+            scope: {
+                options: ['apples', 'bananas', 'oranges'],
+                selectedIndex: 0
+            }
+        }
+    },
+    {
+        id: 2,
+        ref: 'user-icon',
+        name: 'User Icon',
+        notes: 'Add pre-loader states while the image is loading',
+        sample: {
+            template: '<user-icon class="center-xy" size="component.sample.scope.size" url="component.sample.scope.profile_url"> </user-icon>',
+            scope: {
+                profile_url: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200',
+                size: 'medium'
+            }
+        }
+    },
+    {
+        id: 3,
+        ref: 'tooltip',
+        name: 'Tool Tip',
+        notes: 'CSS issues',
+        sample: {
+            template: '<tooltip class="full-x center-xy" direction="component.sample.scope.direction" title="component.sample.scope.title" button-text="component.sample.scope.button_text"/>',
+            scope: {
+                button_text: 'Okay',
+                title: 'This is a tool-tip',
+                direction:'bottom'
+            }
+        }
+    },
+    {
+        id: 4,
+        ref: 'rating-stars',
+        name: 'Rating Stars',
+        sample: {
+            template: '<rating class="center-xy" style="width:100px; height:50px;" avg="component.sample.scope.avg"/>',
+            scope: {
+                avg: 4.5
+            }
+        },
+        notes: 'doesnt show 0.5'
+    },
+    {
+        tabs: 5,
+        ref: 'tabs',
+        name: 'Tabs',
+        sample: {
+            template: '<tabs class="txt-white" tabs="component.sample.scope.tabs" />',
+            scope: {
+                tabs: ['Apples', 'Oranges', 'Bananas'],
+                index: 1
+            }
+        }
+    },
+
+]
+
+
+function getDefaultObjReferenceDict() {
+    return {
+        gallery: getGalleryItemRef(), //components
+        projects: getProjectsItemRef(), //reference
+        action_items: getActionItemsRef(), //action items
+        tools: {},
+        moodboard: getMoodboardRef(),
+    }
+
+    function getMoodboardRef() {
+
+    }
+
+    function getActionItemsRef() {
+        return {
+            owner: 'Samir',
+            priority: 1,
+            quality: 'hifi',
+            quality_spec: {
+                default: 'hifi',
+                options: ['MVP', 'hifi', 'moodboardworthy']
+            },
+            deliverable: {},
+            deliverable_spec: {
+                default: 'codepen',
+                options: ['codebase', 'codepen', 'admin'],
+            },
+            gallery_ref: {},
+            complete: false
+        }
+    }
+
+    function getGalleryRef() {
+        return {
+            id: 0,
+            mp_ref: null,
+            type_spec: {
+                default: 'component',
+                options: ['asset', 'component', 'container', 'container group', 'layout', 'user story'],
+            },
+            progress: {
+                default: 'spec',
+                options: ['spec', 'functional', 'hifi', 'fluid', 'tested', 'staging', 'production'],
+            },
+            external: {
+                codepen: [{title: 'Export directive to codepen'}, {title: 'Export RAW to codepen'}]
+            },
+            gallery_ref: {
+                parents: [],
+                children: [],
+            },
+            action_items: [],
+            details: {
+                description: 'this is where the goals will go',
+                notes: 'this is where the notes will go',
+                comments: {}
+            },
+            gallery_states: [],
+            bugs: [],
+            ref: 'tabs',
+            name: 'Tabs',
+            sample: {
+                template: '<tabs class="txt-white" tabs="component.sample.scope.tabs" />',
+                scope: {
+                    tabs: ['Apples', 'Oranges', 'Bananas'],
+                    index: 1
+                }
+            },
+            template_url: 'templates/dev/something.tpl',
+            variations: {
+                parent_1: 'insert scope',
+                parent_2: 'insert scope',
+                general: 'insert mapping function'
+            },
+            moodboard_refs: []
+        }
+    }
+}
+
+function compileGallery() {
+    var galleryList = ['Components', 'Containers', 'Layouts', 'Scenes', 'User Stories', 'Assets'];
+}
+
+var componentListVanilla = ['user icon', 'tag', 'tooltip', 'ratings', 'tabs',
+     'map marker', 'map', 'profile card', 'mini card', 'color picker', 'input', 'toggle', 'progress', 'request tile', 'open round progress', 'copy url', 'credit tile', 'form popup', 'credit card with edit button', 'countdown', 'button', 'calendar tile', 'credit card', 'school card', 'social network link bar', 'numbered list', 'range inputs', 'ribbon edge', 'pricing tile', 'profile section', 'badges', 'info popup', 'dashboard ticket', 'projector slide']
+//notes for whem compiling
+// make red if status is incomplete
+// tests --> false, then send to jason
+
 var defaultComponentFields = {
     events: [],
     states: [],
@@ -305,23 +503,6 @@ var componentDefaults = {
 
 var components = [
     {
-        stage: 1,
-        reference: 'refresher',
-        name: 'Pull-to-Refresh',
-        template: 'templates/components/dev/input/refresh.tpl',
-        description: '',
-        requirements: '',
-        spec: {
-            responsive: {
-                mobile:true,
-                desktop: true
-            },
-            hifi: false,
-        },
-        nested_components: ['animated_spinner'],
-        states: [{name: 'Pulling Down', description: 'When the user starts pulling down'}, {name:'Pulling Down Text', description: 'Text to display as the user is pulling down'}, {name: 'Pulling Refresh', description: 'When user pulls either long enough, or lets go'}, {name: 'Refresh Complete', description: 'When refreshing is complete'}]
-    },
-    {
         reference: 'tabs',
         stage: 1,
         template: 'templates/components/dev/containers/tabs.tpl',
@@ -352,8 +533,6 @@ var components = [
     }
 ]
 
-var userStoryList = ['Explore the Uguru Home Page', 'Getting Started', 'Student Explore', 'Student Becomes a Guru', 'Guru Explores', 'Student Creates a Request', 'Guru Receives a Student Request'];
-
 
 
 function compileActions() {
@@ -361,7 +540,7 @@ function compileActions() {
 }
 
 function compileComponents() {
-
+    return compon
 }
 
 function compileTests() {

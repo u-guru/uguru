@@ -15,10 +15,13 @@ angular.module('uguru.util.controllers')
 			layout: AdminContent.getMainLayout(),
 			glossary: AdminContent.getGlosseryContent(),
 			team_members: AdminContent.getMembers(),
-			components: AdminContent.getComponents()
+			components: AdminContent.getComponents(),
+			user_stories: AdminContent.getUserStories(),
+			defaults: {
+				tabsIndex: 0,
+				sidebarIndex: 2
+			}
 		}
-
-
 		$scope.selected_component = $scope.page.components[2];
 
 		$scope.initAndLaunchComponentCTA = function($event, component) {
@@ -28,10 +31,17 @@ angular.module('uguru.util.controllers')
 				$scope.$apply(function() {
 					$scope.selected_component = component;
 					var demoComponentContainer = angular.element(document.querySelector('#demo-component-template'));
-					demoComponentContainer.html($scope.selected_component.template);
+					demoComponentContainer.html($scope.selected_component.sample.template);
+					console.log(demoComponentContainer);
 					$compile(demoComponentContainer.contents())($scope);
 				})
 			})
+
+			$timeout(function() {
+				$scope.selected_component = component;
+				var demo = document.querySelector('#demo-template');
+				$compile(demo)($scope);
+			}, 1000)
 
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-component';
@@ -95,7 +105,8 @@ angular.module('uguru.util.controllers')
 		}
 
 		$timeout(function() {
-
+			$scope.page.layout.sidebar.index = $scope.page.defaults.sidebarIndex;
+			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = $scope.page.defaults.tabsIndex;
 		}, 1000)
 	}
 

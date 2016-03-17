@@ -123,7 +123,7 @@ angular.module('uguru.components', [])
     },
     restrict: 'E',
     link: function( scope, element, attr ) {
-      scope.index = scope.index || 0;
+      // scope.index = scope.index || 0;
     }
   };
 })

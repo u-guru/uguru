@@ -18,6 +18,7 @@ function AdminContent($localstorage) {
         getMainLayout: getMainLayout,
         getMembers: getMembers,
         getComponents: getComponents,
+        getLayouts: getLayouts,
         getUserStories: getUserStories
     }
 
@@ -110,10 +111,10 @@ function AdminContent($localstorage) {
                         admin_setup: initAdminSetup()
                     }
                 },
-                { title: 'Components', tabs: {index: 0, options: [{title: 'Components'}, {title:'Containers'}, {title: 'Layouts'}, {title: 'Scenes'}, {title: 'Assets'}]}},
-                { title: 'Documentation', tabs: ['CSS Style', 'Guides', 'Component LifeCycle']},
-                { title: 'Moodboard', tabs: ['All', 'Components', '<b>+ Add one</b>']},
-                { title: 'Tools'}
+                { title: 'Components', tabs: {index: 1, options: [{title: 'Components', header: 'All lightweight components'}, {title:'Containers', header: 'All components that include many other nested components'}, {title: 'Layouts'}, {title: 'Scenes'}, {title: 'User Stories'}, {title: 'Assets'}]}},
+                { title: 'Reference', tabs: {index:0, options: [{title: 'Docs', header: 'Any rules that we have created ourselves'}, {title: 'HTML/CSS Guide', header: 'Raw HTML, Directives, Base CSS'}, {title: 'Colors', header: 'Color Palettes for different use cases'}, {title: 'Themes + Demographics', header: 'I.e. Guru, Student, Parents'}, {title:'Animation', header: 'Directives + Best Practices'}]}},
+                { title: 'Moodboard', tabs: {index: 0, options: [{title: 'Uguru / Internal', header: 'What are you most proud of?'}, {title: 'Components', header: 'External components we really like'}, {title: 'Fluid + Animation', header: 'External animations/Fluid example we really like'}, {title: 'Creative/Thematic', header: 'Out of this world level'}, {title: 'Library', header: 'Great, specific libraries we really like'}]}},
+                { title: 'Tools', tabs: {index: 0, options: [{title: 'External Exporter'}, {title: 'Internal Editor'}, {title: 'Component Creator'}, {title: 'Asset Importer'}, {title: 'Codepen Tools'}]}}
             ],
             sidebar: {
                 index: 0
@@ -141,6 +142,7 @@ function AdminContent($localstorage) {
         function getActionItemsFor(member_name) {
             var actionList = {
                 'jeselle': {
+                    layouts: layoutList,
                     assets: [
                                 {type:'logo', title: 'Guru Wizard', description: ' a wizard cap + glasses can give the “dumbledory” feeling'},
                                 {type:'logo', title: 'Honor Guru', description: ' an honor pledge guru to use for later'},
@@ -204,7 +206,6 @@ function AdminContent($localstorage) {
                         resultActionArr.push(indexAction);
                     }
                 }
-            console.log(resultActionArr.length)
             return resultActionArr;
         }
 
@@ -244,6 +245,10 @@ function AdminContent($localstorage) {
 
     function getComponents() {
         return componentList;
+    }
+
+    function getLayouts() {
+        return layoutList;
     }
 
     function getGlosseryContent() {
@@ -293,7 +298,45 @@ var docs = {
     }
 }
 
-
+var layoutList = [
+        {
+            id: 0,
+            mp_ref: null,
+            type: 'layout',
+            progress: 'hifi',
+            name: 'Guru Ranking',
+            ref: 'guru-ranking-layout',
+            external: {
+                codepen: [{title: 'Export directive to codepen'}, {title: 'Export RAW to codepen'}]
+            },
+            gallery_ref: {
+                parents: [{type:'User Story', name: 'Guru Checks Guru Ranking'}],
+                children: [{type: 'component', name: 'Circular Progress Bar'}, {type: 'container', name: 'High Score List'}, {type: 'container', name: 'Action Item List'}],
+            },
+            action_items: [],
+            details: {
+                description: 'When a Guru clicks on "Guru Ranking tile" on their dashboard, this is the CTA that will popup',
+                notes: 'Any questions or random thoughts after a spec is complete',
+            },
+            gallery_states: [],
+            bugs: [],
+            sample: {
+                template_url: 'templates/dev/layouts/guru.ranking.tpl',
+                scope: {
+                    guru_hs_list: [{index: 1, name: 'Jeselle O.', guru_ranking: 1}, {index: 2, name: 'Jason M', guru_ranking: 2}, {index: 2, name: 'Gabrielle W', guru_ranking: 3}, {index: 4, name: 'Gabrielle W', guru_ranking: 4, is_user:true}],
+                    user: {
+                        ranking_actions: [{index: 1, text: 'Refer two friends', new_ranking: 10, impact_level: 3}, {index: 1, text: 'Tutor two students in CS10 this week', new_ranking: 5, impact_level: 1}],
+                        guru_ranking: 99,
+                        name: 'Samir M'
+                    },
+                    list_index: 0,
+                    header: 'Guru Ranking'
+                }
+            },
+            template_url: 'templates/dev/something.tpl',
+            moodboard_refs: []
+        }
+]
 
 var componentList = [
     {
@@ -363,6 +406,91 @@ var componentList = [
     },
 
 ]
+
+
+function getDefaultObjReferenceDict() {
+    return {
+        gallery: getGalleryItemRef(), //components
+        projects: getProjectsItemRef(), //reference
+        action_items: getActionItemsRef(), //action items
+        tools: {},
+        moodboard: getMoodboardRef(),
+    }
+
+    function getMoodboardRef() {
+
+    }
+
+    function getActionItemsRef() {
+        return {
+            owner: 'Samir',
+            priority: 1,
+            quality: 'hifi',
+            quality_spec: {
+                default: 'hifi',
+                options: ['MVP', 'hifi', 'moodboardworthy']
+            },
+            deliverable: {},
+            deliverable_spec: {
+                default: 'codepen',
+                options: ['codebase', 'codepen', 'admin']
+            },
+            gallery_ref: {},
+            complete: false
+        }
+    }
+
+    function getGalleryRef() {
+        return {
+            id: 0,
+            mp_ref: null,
+            type_spec: {
+                default: 'component',
+                options: ['asset', 'component', 'container', 'container group', 'layout', 'user story'],
+            },
+            progress: {
+                default: 'spec',
+                options: ['spec', 'functional', 'hifi', 'fluid', 'tested', 'staging', 'production'],
+            },
+            external: {
+                codepen: [{title: 'Export directive to codepen'}, {title: 'Export RAW to codepen'}]
+            },
+            gallery_ref: {
+                parents: [],
+                children: [],
+            },
+            action_items: [],
+            details: {
+                description: 'this is where the goals will go',
+                notes: 'this is where the notes will go',
+                comments: {}
+            },
+            gallery_states: [],
+            bugs: [],
+            ref: 'tabs',
+            name: 'Tabs',
+            sample: {
+                template: '<tabs class="txt-white" tabs="component.sample.scope.tabs" />',
+                scope: {
+                    tabs: ['Apples', 'Oranges', 'Bananas'],
+                    index: 1
+                }
+            },
+            template_url: 'templates/dev/something.tpl',
+            variations: {
+                parent_1: 'insert scope',
+                parent_2: 'insert scope',
+                general: 'insert mapping function'
+            },
+            moodboard_refs: []
+        }
+    }
+}
+
+function compileGallery() {
+    var galleryList = ['Components', 'Containers', 'Layouts', 'Scenes', 'User Stories', 'Assets'];
+}
+
 var componentListVanilla = ['user icon', 'tag', 'tooltip', 'ratings', 'tabs',
      'map marker', 'map', 'profile card', 'mini card', 'color picker', 'input', 'toggle', 'progress', 'request tile', 'open round progress', 'copy url', 'credit tile', 'form popup', 'credit card with edit button', 'countdown', 'button', 'calendar tile', 'credit card', 'school card', 'social network link bar', 'numbered list', 'range inputs', 'ribbon edge', 'pricing tile', 'profile section', 'badges', 'info popup', 'dashboard ticket', 'projector slide']
 //notes for whem compiling
