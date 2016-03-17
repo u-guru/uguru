@@ -5,11 +5,10 @@
         <div class='ugrid-5 full-x' ng-init="test = [{},{options: ['YA', 'student', 'guru', 'logout'], selectedIndex:0},{options: ['HI', 'student', 'guru', 'logout'], selectedIndex:0},{options: ['WFFFFC', 'student', 'guru', 'logout'], selectedIndex:0}]">
             <h1 class='flex-wrap-center weight-900'>Uguru Admin</h1>
 
-  <!--           <div class='flex-left' ng-class="{'relative' : x.options}" ng-repeat='x in test'>
-                <dropdown ng-model="x" event-focus="click" test-arr="test" index='{{$index}}' ></dropdown>
-            </div> -->
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
+            <div class='flex-left' ng-class="{'relative' : x.options}" ng-repeat='x in test'>
+                <dropdown ng-model="x" event="click" is-focus ="false" test-arr="test" index='{{$index}}' ></dropdown>
+            </div>
+          <!--   <div>&nbsp;</div>
             <div class='flex-left relative' >
                 <dropdown ng-model="navDropdown" ></dropdown>
             </div>
@@ -19,7 +18,7 @@
 
             <div class='flex-right relative' ng-init="navDropdown = {options: ['admin', 'student', 'guru', 'logout'], selectedIndex:0}">
                 <dropdown ng-model="navDropdown" ></dropdown>
-            </div>
+            </div> -->
         </div>
     </header>
     <main class='bg-charcoal-80p relative full-x flex-wrap-center txt-white' style='height:90%;'>

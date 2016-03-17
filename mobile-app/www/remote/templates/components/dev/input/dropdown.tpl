@@ -10,6 +10,16 @@
         cursor: default!important;
         background: black !important;
     }
+    #test
+    {
+        background-color: red;  
+    }
+    #test.myFocus {  
+            background-color: yellow;  
+        }  
+     #test.myBlur {  
+            background-color: red;  
+        }  
 </style>
 <!-- <a ng-if='dropdown.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='dropdown.active = !dropdown.active' style='z-index:5'></a>
  -->
@@ -24,7 +34,7 @@
                 </svg>
             </a>
         </div>
-        <ul ng-if="dropdown.active" ng-class='{"active": dropdown.active}' style="width: 152px">
+        <ul ng-if="dropdown.active" ng-class='{"active": dropdown.active}' ng-blur="!dropdown.active" id = 'test' style="width: 152px">
             <li tabindex ng-if='$index !== dropdown.selectedIndex' ng-click="dropdown.selectedIndex = $index ; dropdown.active = !dropdown.active " ng-repeat='option in dropdown.options'>{{option}}</li>
         </ul>
     </div>

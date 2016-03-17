@@ -33,20 +33,23 @@ angular.module('uguru.components', [])
         // console.log("WTF",attr.eventFocus)
         // console.log("WTF",movable)
 
-        element.find('a').on(attr.eventFocus, function() {
+        element.find('a').on(attr.event, function() {
            // focus(attr.eventFocusId);
-           var stack =[]
-           for (var i = 0 ; i < scope.tests.length;++i)
-              if (i != (parseInt(attr.index)) && scope.tests[i].active)
-                  stack.push(i)
-           for(var i = 0; i < stack.length;++i)
-           {
-              scope.$apply(function() {
-                console.log("APPLY",stack[i])
-                scope.tests[stack[i]].active = false
-              });
-           }
+             var stack =[]
+             for (var i = 0 ; i < scope.tests.length;++i)
+                if (i != (parseInt(attr.index)) && scope.tests[i].active)
+                    stack.push(i)
+          
+             scope.$apply(function() {
+                  for(var i = 0; i < stack.length;++i)
+                  {
+                      scope.tests[stack[i]].active = false
+                  }
+                  // if (i == (parseInt(attr.index)) && scope.tests[i].active)
+                  //   element.find('ul')[0].focus();
+             });
          });
+
     }
   };
 })
