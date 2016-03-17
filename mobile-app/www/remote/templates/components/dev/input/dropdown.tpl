@@ -1,5 +1,5 @@
 <style>
-    #splash-nav-bg-overlay{
+  /*  #splash-nav-bg-overlay{
         position: absolute !important;
         left:-1000px !important;
         top:-50% !important;
@@ -19,7 +19,7 @@
         }  
      #test.myBlur {  
             background-color: red;  
-        }  
+        }  */
 </style>
 <!-- <a ng-if='dropdown.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='dropdown.active = !dropdown.active' style='z-index:5'></a>
  -->
