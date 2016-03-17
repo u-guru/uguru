@@ -81,7 +81,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
       Github.exceptionToGHIssue(exception, cause);
 
-      $delegate(exception, cause);
+      // $delegate(exception, cause);
 
     };
 

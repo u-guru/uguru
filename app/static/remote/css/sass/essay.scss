@@ -1,5 +1,14 @@
 @import 'mixin';
 
+// ESSAY UNIVERSITY SEARCH
+#desktop-university.essay-university-search {
+	.main {
+		form {
+			padding: 0 30px!important;
+		}
+	}
+}
+
 // GABRIELLE CSS
 ion-view {
 	.student-mode {

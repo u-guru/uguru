@@ -16,7 +16,9 @@ function AdminContent($localstorage) {
         responsibilitiesContent: responsibilitiesContent,
         getGlosseryContent: getGlosseryContent,
         getMainLayout: getMainLayout,
-        getMembers: getMembers
+        getMembers: getMembers,
+        getComponents: getComponents,
+        getUserStories: getUserStories
     }
 
     function initAllContent() {
@@ -29,6 +31,37 @@ function AdminContent($localstorage) {
 
     function getMainLayout() {
         return mainLayout;
+    }
+
+    function getUserStories() {
+        var userStoryListV1 = [
+            {id: 1, title: 'Anonymous User Checks out Uguru', ref:"splash", layouts:['mad-lib', 'map-university', '']},
+            {id: 2, title: 'Anonymous User Checks out Become Guru/How it Works', ref:"splash-bg-hiw", layouts:[]},
+            {id: 3, title: 'Anonymous User Gets Started/Signup', ref:"splash-start", layouts:[]},
+            {id: 4, title: 'Student Explores Dashboard', ref:"student-dash-first", layouts:[]},
+            {id: 5, title: 'Student Becomes a Guru', ref:"student-becomes-guru", layouts:[]},
+            {id: 6, title: 'Guru Explores Guru Dashboard', ref:"guru-dash-first", layouts:[]},
+            {id: 7, title: 'Student Creates/Cancels 1-Many Request', ref:"student-requests", layouts:[]},
+            {id: 8, title: 'Guru Accepts/Rejects/Cancels 1-Many Student Requests', ref:"guru-incoming-requests", layouts:[]},
+            {id: 9, title: 'Student receives & Accepts/Rejects/Cancels 1 - many incoming Gurus', ref:"student-incoming-gurus", layouts:[]},
+            {id: 10, title: 'Student Accepts/Rejects/Cancels Guru', ref:"student-accept-guru", layouts:[]},
+            {id: 11, title: 'Student & Guru Message/ & Share Location/Files/Contact Info', ref:"student-guru-message", layouts:[]},
+            {id: 12, title: 'Guru/Student rate each other', ref:"student-guru-rating", layouts:[]},
+            {id: 13, title: 'Guru Sets-up 1-Many Shops', ref:"guru-profiles-setup", layouts:[]},
+            {id: 14, title: 'Guru becomes 100% Credibly', ref:"guru-credibility", layouts:[]},
+            {id: 15, title: 'Student/Guru Refer Each Other', ref:"student-guru-referrals", layouts:[]},
+            {id: 16, title: 'Guru Bills a Student through Billing/Enhanced Messaging', ref:"guru-bills-student", layouts:[]},
+            {id: 17, title: 'Student adds card & purchases from Credit Shop', ref:"student-payments-shop", layouts:[]},
+            {id: 18, title: 'Guru adds Debit Card && Cashes Out', ref:"guru-cashes-out", layouts:[]},
+            {id: 19, title: 'Student/Guru edit their settings', ref:"student-guru-settings", layouts:[]},
+            {id: 20, title: 'Guru checks out Guru Ranking', ref:"guru-promote", layouts:[]},
+            {id: 21, title: 'Guru checks out Guru Promote', ref:"guru-ranking", layouts:[]}
+        ]
+        return userStoryListV1;
+    }
+
+    function getUserLayouts() {
+
     }
 
     function getMembers() {
@@ -51,6 +84,11 @@ function AdminContent($localstorage) {
             {
                 name: 'Samir',
                 profile_url: 'https://uguru.me/static/web/images/team/samir.png'
+            },
+            {
+                name: 'Girls',
+                profile_url_1: 'https://uguru.me/static/web/images/team/jeselle.png',
+                profile_url_2: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200'
             }
         ]
     }
@@ -65,16 +103,16 @@ function AdminContent($localstorage) {
         return {
             sections: [
                 {
-                    title: 'Milestones',
+                    title: 'Projects',
                     tabs: generateMilestoneTabs(members),
                     sections: {
                         user_stories: initUserStories(),
                         admin_setup: initAdminSetup()
                     }
                 },
-                { title: 'Components', tabs: {index: 0}, options: [{title: 'Assets'}, {title: 'Components'}, {title:'Containers'}, {title: 'Layouts'}, {title: 'Scenes'}]},
-                { title: 'Docs', tabs: ['Responsibilities', 'Stages', 'Component LifeCycle']},
-                { title: 'Moodboard'},
+                { title: 'Components', tabs: {index: 0, options: [{title: 'Components'}, {title:'Containers'}, {title: 'Layouts'}, {title: 'Scenes'}, {title: 'Assets'}]}},
+                { title: 'Documentation', tabs: ['CSS Style', 'Guides', 'Component LifeCycle']},
+                { title: 'Moodboard', tabs: ['All', 'Components', '<b>+ Add one</b>']},
                 { title: 'Tools'}
             ],
             sidebar: {
@@ -87,118 +125,83 @@ function AdminContent($localstorage) {
         }
 
         function generateMilestoneTabs(members) {
-            var tabOptions = [{title: 'All'}];
+            var tabOptions = [{title: 'All User <br> Stories'}];
             for (var i = 0; i < members.length; i++) {
                 var indexMember = members[i];
                 tabOptions.push({title: indexMember.name, profile_url: indexMember.profile_url, action_items: getActionItemsFor(indexMember.name)})
             }
             return {
-                index: 1,
+                index: 0,
                 options: tabOptions
             }
         }
 
+
+
         function getActionItemsFor(member_name) {
-            if (member_name === 'Jeselle') {
-                return {
-                    resources: [
-                        {
-                            title: 'Guru Ranking',
-                            icons: ['Gauge', 'Calculator', 'High Score List', 'Milestones'],
-                            reference: 'Google Drive',
-                            description: 'Go to google doc for more details <br> https://drive.google.com/drive/u/0/folders/0By5VIgFdqFHdTE9nc3h1ZUItVFE',
-                            requirements: 'normalized'
-                        }
-                    ],
+            var actionList = {
+                'jeselle': {
+                    assets: [
+                                {type:'logo', title: 'Guru Wizard', description: ' a wizard cap + glasses can give the “dumbledory” feeling'},
+                                {type:'logo', title: 'Honor Guru', description: ' an honor pledge guru to use for later'},
+                                {type:'logo', title: 'Deputy Guru', description: ' for warning gurus'}],
                     research: [
-                        {   title: 'messages',
-                            components: [{
-                                    reference: 'refresher',
-                                    stage: 1,
-                                    name: 'Pull-to-Refresh',
-                                    template: 'templates/components/dev/input/refresh.tpl',
-                                    description: 'Find the best web example of pull to refresh',
-                                    requirements: 'Must be web browser',
-                                    spec: {
-                                        responsive: {
-                                            mobile:true,
-                                            desktop: true
-                                        },
-                                        hifi: false,
-                                    }
-                                },
-                                {
-                                    reference: 'shared_calendar',
-                                    stage: 1,
-                                    name: 'Shared Calendar',
-                                    template: 'Between Student and a Guru on messages'
-                                },
-                                {
-                                    reference: 'message_types',
-                                    name: 'Various Message Types',
-                                    description: 'When a student/guru updates their location, calendar, etc, it will show that it was updated on the main message thread',
-                                    requirements: 'Make it kinda like iMessage, and keep it as simple as possible'
-                                }
-                            ]
-                        },
-                        {   title: 'guru_promote',
-                            components: [{
-                                    reference: 'steps',
-                                    stage: 1,
-                                    template: 'templates/components/dev/containers/steps.tpl',
-                                    name: 'Steps Container',
-                                    description: 'A general content 3-6 steps container where each container has the number, icon, and header',
-                                    spec: {
-                                        responsive: {
-                                            mobile: true,
-                                            desktop: true
-                                        },
-                                        hifi: false
-                                    }
-                                }
-                            ]
-                        },
-                        {   title: 'guru_ranking',
-                            components: [{
-                                    stage: 1,
-                                    template: 'templates/components/dev/containers/steps.tpl',
-                                    name: 'Guru High Score List',
-                                    description: 'A general content 3-6 steps container where each container has the number, icon, and header',
-                                    spec: {
-                                        responsive: {
-                                            mobile: true,
-                                            desktop: true
-                                        },
-                                        hifi: false
-                                    }
-                                }
-                            ]
+                    {
+                        title: 'Fluid File Icons + Variations',
+                        description: 'Our file icons are good -- but I am curious to see what else is out there in the world. I am not sure where the current ones are, but let me know if Gabrielle sends them you - I can link them in the spec',
+                        requirements: 'See if you can find something over the top - anything you like and can see yourself interfacing with -- add it to the moodboard section. I feel like this is really low hanging fruit that you can personally animate and finish the feature from an idea/research to the final set! <br> I prefer not to finalize the file type list myself because I am not up-to-date with the ratios that certains are currently most used.',
+                        user_story_ref: 'student_explore',
+                        project_details: {size: 'sm - med', type: 'component'},
+                        component_attributes: ['file name'],
+                        use_cases: ['[Student / Guru] User wants to browse/upload files to their dashboard', 'Student/Guru are matched, and want to share files with each other, as well as view all just for between.', 'User wants to delete files - what does that look like?', 'Request Form'],
+                        component_ref: [{'svg': ['profile/document.svg']}, {'html': ['templates/messaging']}],
+                        next_steps: 'hifi',
+                        submission_type: 'Zeplin',
+                        spec_status: 'incomplete'
+                    },
+                    {
+                        title: 'Guru Office Hours',
+                        description: 'All states affiliated with this, including Guru Promote banner page + the HiFi calendar component both mobile & desktop',
+                        requirements: 'Simple focused. We do not need a full calendar functionality. I prefer a much more heavily animated one thats extermely simple, over a less animated but crowded feeling',
+                        user_story_ref: 'guru_oh',
+                        project_details: {size: 'large', type:'user story'},
+                        submission_type: 'Zeplin'
+                    }
+                    ],
+
+                    upcoming: [{
+                        assets: {
+                            type: 'logo', title: 'Security Guru', description: "Let's say a Guru wants to join online office hours, it should show enter passcode, which is a relatively simple state"
                         }
-                    ]
-                    ,
-                    hifi: [{
-                            title: 'messages',
-                            components:[
-                                {
-                                    title: 'refresher',
-                                    stage: 1,
-                                    name: 'Pull-to-Refresh',
-                                    template: 'templates/components/dev/input/refresh.tpl',
-                                    description: 'Find the best web example of pull to refresh',
-                                    requirements: 'Must be web browser',
-                                    spec: {
-                                        responsive: {
-                                            mobile:true,
-                                            desktop: true
-                                        },
-                                        hifi: false,
-                                    }
-                                }
-                            ]
-                        }
-                    ]
+                    }]
+                },
+                'girls': {
+                    'research': [{project: 'Admin Setup', description: 'Decide tags to use for moodboard, make a list of changes you want to have/make over time.', title: 'Making Dashboard Yours'},
+                                {project: 'Components', description: 'Lets finalize a loader that we can use within containers that load images, as well as the main. Our current black one is OK & we can do better.', tite: 'Wrapping up'},
+                                {project: 'Admin Setup', description: 'Ongoing.. If time permits today (no more than 1 hour daily).', tite: 'Wrapping up'}],
+                },
+                'jason': {
+                    'tests': compileTests(['dropdown', 'user icon', 'input', 'input-marker', 'map', 'map marker'])
+                },
+                'gabrielle': {
+                    'components': compileComponents()
                 }
             }
+            var resultActionArr = [];
+            if (member_name.toLowerCase() === 'jeselle') {
+                var actionDict = actionList[member_name.toLowerCase()]
+                var actionDictKeysArr = Object.keys(actionDict);
+                for (var i = 0; i < actionDictKeysArr.length; i++) {
+                    var actionType = actionDictKeysArr[i];
+                    var actionTypeActions = actionDict[actionType];
+                    for (var j = 0; j < actionTypeActions.length; j++) {
+                        var indexAction = actionTypeActions[j];
+                        indexAction.action_type = actionType;
+                        resultActionArr.push(indexAction);
+                    }
+                }
+            }
+            return resultActionArr;
         }
 
         function initAdminSetup() {
@@ -233,6 +236,10 @@ function AdminContent($localstorage) {
 
     function initGlosseryContent() {
         return docs;
+    }
+
+    function getComponents() {
+        return componentList;
     }
 
     function getGlosseryContent() {
@@ -270,32 +277,157 @@ var docs = {
                 description: "Does the component have any nested components? Any custom we don't have? If so, repeat this process for that nested component after this one"
             },
         ]
+    },
+    perfectComponent: {
+        header: 'Steps to Adding a New Component',
+        steps: [
+            {
+                title: 'Find great examples to <i>start</i> with',
+                description: 'These will be added to the moodboard'
+            }
+        ]
     }
 }
 
-var components = {
-    refresher: {
+
+
+var componentList = [
+    {
         stage: 1,
-        name: 'Pull-to-Refresh',
-        template: 'templates/components/dev/input/refresh.tpl',
-        description: '',
-        requirements: '',
-        spec: {
-            responsive: {
-                mobile:true,
-                desktop: true
-            },
-            hifi: false,
+        ref: 'dropdown',
+        cp_link: '',
+        name: "Dropdowns",
+        notes: 'Seems not 100% unified, could be more fluid with another sample tool',
+        sample: {
+            template: '<dropdown ng-model="component.sample.scope"></dropdown>',
+            scope: {
+                options: ['apples', 'bananas', 'oranges'],
+                selectedIndex: 0
+            }
         }
     },
-    tabs: {
+    {
+        id: 2,
+        ref: 'user-icon',
+        name: 'User Icon',
+        notes: 'Add pre-loader states while the image is loading',
+        sample: {
+            template: '<user-icon class="center-xy" size="component.sample.scope.size" url="component.sample.scope.profile_url"> </user-icon>',
+            scope: {
+                profile_url: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200',
+                size: 'medium'
+            }
+        }
+    },
+    {
+        id: 3,
+        ref: 'tooltip',
+        name: 'Tool Tip',
+        notes: 'CSS issues',
+        sample: {
+            template: '<tooltip class="full-x center-xy" direction="component.sample.scope.direction" title="component.sample.scope.title" button-text="component.sample.scope.button_text"/>',
+            scope: {
+                button_text: 'Okay',
+                title: 'This is a tool-tip',
+                direction:'bottom'
+            }
+        }
+    },
+    {
+        id: 4,
+        ref: 'rating-stars',
+        name: 'Rating Stars',
+        sample: {
+            template: '<rating class="center-xy" style="width:100px; height:50px;" avg="component.sample.scope.avg"/>',
+            scope: {
+                avg: 4.5
+            }
+        },
+        notes: 'doesnt show 0.5'
+    },
+    {
+        tabs: 5,
+        ref: 'tabs',
+        name: 'Tabs',
+        sample: {
+            template: '<tabs class="txt-white" tabs="component.sample.scope.tabs" />',
+            scope: {
+                tabs: ['Apples', 'Oranges', 'Bananas'],
+                index: 1
+            }
+        }
+    },
+
+]
+var componentListVanilla = ['user icon', 'tag', 'tooltip', 'ratings', 'tabs',
+     'map marker', 'map', 'profile card', 'mini card', 'color picker', 'input', 'toggle', 'progress', 'request tile', 'open round progress', 'copy url', 'credit tile', 'form popup', 'credit card with edit button', 'countdown', 'button', 'calendar tile', 'credit card', 'school card', 'social network link bar', 'numbered list', 'range inputs', 'ribbon edge', 'pricing tile', 'profile section', 'badges', 'info popup', 'dashboard ticket', 'projector slide']
+//notes for whem compiling
+// make red if status is incomplete
+// tests --> false, then send to jason
+
+var defaultComponentFields = {
+    events: [],
+    states: [],
+    status: 'complete',
+    full_status: {
+         dynamic: true,
+        cross_platform: true,
+        responsive: true,
+        functional: true,
+        hifi: true,
+        tests: true
+    },
+    template_url: '',
+    scope: {},
+    id: 1,
+    ref: 'shortest_name',
+    name: false,
+    layout_ref: [],
+    child_component: [],
+    moodboard_reference: [],
+    core: false,
+    hasCollection: false,
+    notes: '',
+    description: '',
+    assigned: ''
+    //has different mobile form
+    //is a core component
+}
+
+//default components
+
+var defaultComponentStatus = {
+    dynamic: true,
+    cross_platform: true,
+    responsive: true,
+    functional: true,
+    hifi: true,
+    tests: true
+}
+
+var componentDefaults = {
+    states: defaultComponentStatus,
+    fields: defaultComponentFields
+}
+
+
+
+
+var components = [
+    {
+        reference: 'tabs',
         stage: 1,
         template: 'templates/components/dev/containers/tabs.tpl',
         name: 'Tab Bar'
     },
-    steps: {
+    {
         stage: 1,
-        template: 'templates/components/dev/containers/steps.tpl',
+        reference: 'steps',
+        scope: {
+            steps: [{img_base: 'remote/', title: 'Request a Guru', icon_url: 'templates/svg/main/calendar.html', description: 'This is how you would request a guru'}, {img_base: 'remote/' ,title: 'Just Chill', icon_url: 'templates/svg/main/lightbulb.html', description: 'Gurus will fight to meet you - ur the hot shot'}],
+            header: 'Steps to Success'
+        },
+        template: '<step-by-step steps="selected_component.scope.steps" header="selected_component.scope.header"></step-by-step>',
         name: 'Steps Container',
         spec: {
             responsive: {
@@ -305,10 +437,29 @@ var components = {
             hifi: false
         }
     },
-    dropdown: {
+    {
         stage: 1,
+        reference: 'dropdown',
         template: 'templates/components/dev/input/dropdown.tpl',
-        name: "Plain Dropdown"
+        name: "Base Dropdown"
     }
+]
+
+
+
+function compileActions() {
+
+}
+
+function compileComponents() {
+
+}
+
+function compileTests() {
+
+}
+
+function compileAssets() {
+
 }
 
