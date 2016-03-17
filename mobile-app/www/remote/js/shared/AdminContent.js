@@ -176,19 +176,23 @@ function AdminContent($localstorage) {
                     }]
                 },
                 'girls': {
-                    'research': [{project: 'Admin Setup', description: 'Decide tags to use for moodboard, make a list of changes you want to have/make over time.', title: 'Making Dashboard Yours'},
+                    research: [{project: 'Admin Setup', description: 'Decide tags to use for moodboard, make a list of changes you want to have/make over time.', title: 'Making Dashboard Yours'},
                                 {project: 'Components', description: 'Lets finalize a loader that we can use within containers that load images, as well as the main. Our current black one is OK & we can do better.', tite: 'Wrapping up'},
                                 {project: 'Admin Setup', description: 'Ongoing.. If time permits today (no more than 1 hour daily).', tite: 'Wrapping up'}],
                 },
                 'jason': {
-                    'tests': compileTests(['dropdown', 'user icon', 'input', 'input-marker', 'map', 'map marker'])
+                    components: componentList
                 },
                 'gabrielle': {
-                    'components': compileComponents()
+                    components: componentList
+                },
+                'samir': {
+                    components: componentList
                 }
+
             }
             var resultActionArr = [];
-            if (member_name.toLowerCase() === 'jeselle') {
+            // if (member_name.toLowerCase() === 'jeselle') {
                 var actionDict = actionList[member_name.toLowerCase()]
                 var actionDictKeysArr = Object.keys(actionDict);
                 for (var i = 0; i < actionDictKeysArr.length; i++) {
@@ -200,7 +204,7 @@ function AdminContent($localstorage) {
                         resultActionArr.push(indexAction);
                     }
                 }
-            }
+            console.log(resultActionArr.length)
             return resultActionArr;
         }
 
@@ -452,7 +456,7 @@ function compileActions() {
 }
 
 function compileComponents() {
-
+    return compon
 }
 
 function compileTests() {

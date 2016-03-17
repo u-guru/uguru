@@ -27,7 +27,7 @@ angular.module('uguru.components', [])
 
       if (attr.template && attr.template.length) {
         element.html(attr.template);
-        $compile(element)(scope);
+        $compile(element.contents())(scope);
       }
     }
   };

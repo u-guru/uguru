@@ -64,7 +64,7 @@
                                 <h4 class='weight-600 uppercase text-center full-x'> DEMO </h4>
                                 <div class='demo-container flex-wrap-center' id='demo-template' ng-init="component = selected_component">
                                     <!-- <div id='demo-component-template'> </div> -->
-                                    <demo template='selected_component.sample.template'/>
+                                    <demo template='{{selected_component.sample.template}}'/>
                                     <!-- <dropdown ng-model="selected_component.sample.scope"></dropdown> -->
                                 </div>
                             </div>
@@ -119,17 +119,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 1'>
+                        <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== $index' ng-repeat='option in page.layout.sections[0].tabs.options'  ng-init='action_items = option.action_items' ng-if='$index > 0'>
                             <h1 style='height:10%;' class='bg-cerise-50p full-x flex-wrap-center p20xy weight-00'>
                                 Today's Priorities
                             </h1>
-                            <div class='flex-wrap-center full-xy' style='height:90%' ng-init='action_items = page.layout.sections[0].tabs.options[1].action_items'>
-                                <div class='flex-wrap-center relative flex-stretch full-y' id='jeselle-resources'>
+                            <div class='flex-wrap-center full-xy' style='height:90%'>
+                                <div class='flex-wrap-center relative flex-stretch full-xy'>
 
                                     <div class='flex-wrap-center full-x'>
-                                        <div class='full-x text-center'>
-
-                                            <ul class='txt-white'>
+                                        <div class='full-x text-center ugrid-2 flex-wrap-center'>
+                                            <ul class='txt-charcoal'>
                                                 <li ng-repeat='action_item in action_items' ng-if='action_item.action_type === "assets"' class='text-left weight-300 bg-shamrock' ng-click='initAndLaunchAssetCTA($event, action_item)' style='border:4px dashed white;'>
                                                     <div class='action-item p20xy m05xy relative'>
                                                         <h1 class='txt-white weight-600'>{{$index + 1}}. {{action_item.title}} </h1>
@@ -139,6 +138,12 @@
                                                 <li ng-repeat='action_item in action_items' ng-if='action_item.action_type === "research"' class='text-left weight-300 bg-azure' ng-click='initAndLaunchComponentCTA($event, action_item)' style='border:4px dashed white;'>
                                                     <div class='action-item p20xy m05xy relative' style='padding-right:30%;'>
                                                         <h1 class='txt-white weight-600'>{{$index + 1}}. {{action_item.title}} </h1>
+                                                        <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Research + HiFi</small>
+                                                    </div>
+                                                </li>
+                                                <li ng-repeat='action_item in action_items' ng-if='["components"].indexOf(action_item.action_type) > -1' class='text-left weight-300 bg-azure' ng-click='initAndLaunchComponentCTA($event, action_item)' style='border:4px dashed white;'>
+                                                    <div class='action-item p20xy m05xy relative' style='padding-right:30%;'>
+                                                        <h1 class='txt-white weight-600'>{{$index + 1}}. {{action_item.name}} </h1>
                                                         <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Research + HiFi</small>
                                                     </div>
                                                 </li>
@@ -182,7 +187,7 @@
                                 </div> -->
                         </div>
 
-                        <div class='txt-charcoal absolute full-xy flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 2'>
+                       <!--  <div class='txt-charcoal absolute full-xy flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 2'>
                             <h1>
                                 {{page.layout.sections[0].tabs.options[2].title}}'s action items
                             </h1>
@@ -191,7 +196,7 @@
                             <h1>
                                 {{page.layout.sections[0].tabs.options[3].title}}'s action items
                             </h1>
-                        </div>
+                        </div> -->
                         <!-- <div class='flex-wrap-center absolute top-0 left-0 bg-cerise' >
                             The all milestones
                         </div> -->
@@ -223,7 +228,7 @@
                                                 </div>
                                                 <div class='component-mini-demo full-x txt-white bg-slate relative' style='min-height:200px; overflow:hidden;'>
                                                     <!-- <ng-bind src="component.template"/> -->
-                                                    <demo class='flex-wrap-center' template="component.sample.template"/> </demo>
+                                                    <demo class='flex-wrap-center' template="{{component.sample.template}}"/> </demo>
                                                     <!-- <step-by-step steps="component.scope.steps" header="component.scope.header"></step-by-step> -->
                                                 </div>
                                             </div>
