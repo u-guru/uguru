@@ -8,7 +8,9 @@
 					<h2>Profile Picture</h2>
 					<ul>
 						<li>
-							<img id='desktop-settings-profile-img' ng-src="{{user.profile_url}}" id='guru-profile-img' width="100" height="100"/>
+							<!-- <img id='desktop-settings-profile-img' ng-src="{{user.profile_url}}" id='guru-profile-img' width="100" height="100"/> -->
+							<user-icon id='desktop-settings-profile-img' size="large"  url="user.profile_url"> </user-icon>
+
 						</li>
 						<li>
 							<button ng-click="uploadDesktopPhoto()" class="btn-ghost-white">Upload New Photo</button>
