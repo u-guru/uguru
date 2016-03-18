@@ -228,12 +228,13 @@
                 </section>
                 <section class='flex-wrap-center full-xy txt-charcoal absolute left-0' ng-hide='page.layout.sidebar.index !== 1'>
                     <div class='ugrid-{{page.layout.sections[1].tabs.options.length}} flex-wrap-center full-x bg-orange' style='height:10%;'>
-                        <a class='bg bg-robin full-y flex-wrap-center' ng-repeat='option in page.layout.sections[1].tabs.options' ng-click='page.layout.sections[1].tabs.index = $index'>
-                            <span ng-if='option.profile_url' class='user-icon' style="background-image: url({{option.profile_url}}); height:50px; width:50px;"></span>
+                        <!-- <a class='bg bg-robin full-y flex-wrap-center' ng-repeat='option in page.layout.sections[1].tabs.options' ng-click='page.layout.sections[1].tabs.index = $index'>
                             <div class='uppercase full-x text-center uppercase weight-600 flex-wrap-center' style='font-size:18px;'>
                                 <div class='uppercase weight-600'>{{option.title}}</div>
                             </div>
-                        </a>
+                        </a> -->
+                        <tabs options="page.layout.sections[1].tabs.options" index="page.layout.sections[1].tabs.index" key="title"/>
+
                     </div>
                     <div class='milestones-content relative flex-wrap-center full-x bg-smoke' style='height:90%;'>
                         <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0'>
@@ -282,10 +283,11 @@
                 </section>
                 <section class='flex-wrap-center full-xy txt-charcoal absolute left-0' ng-hide='page.layout.sidebar.index !== 2'>
                     <div class='ugrid-{{page.layout.sections[2].tabs.options.length}} flex-wrap-center full-x bg-azure p20xy' style='height:10%;'>
-                        <a class='flex-wrap-center' ng-repeat='option in page.layout.sections[2].tabs.options' ng-click='page.layout.sections[2].tabs.index = $index'>
+                        <tabs options="page.layout.sections[2].tabs.options" index="page.layout.sections[2].tabs.index" key="title"/>
+                        <!-- <a class='flex-wrap-center' ng-repeat='option in page.layout.sections[2].tabs.options' ng-click='page.layout.sections[2].tabs.index = $index'>
 
                             <div class='uppercase full-x txt-white weight-600 text-center uppercase weight-700 p10xy' style='font-size:14px;' ng-bind-html="option.title"></div>
-                        </a>
+                        </a> -->
                     </div>
                     <div class='txt-charcoal relative flex-wrap-center flex-stretch flex-start full-x top-0 left-0' ng-hide='page.layout.sections[2].tabs.index !== $index' ng-repeat='option in page.layout.sections[2].tabs.options' style='height:90%;'>
                         <h1 style='height:10%;' class='bg-cerise-50p full-x flex-wrap-center p20xy weight-00'>

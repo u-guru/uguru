@@ -602,4 +602,4 @@ function compileAssets() {
 
 }
 
-gabrielleSetupList = ['place some svgs @ components > assets', 'filter icon w/ transparent tab bar'. 'standardize the subnavbars'];
+gabrielleSetupList = ['place some svgs @ components > assets', 'filter icon w/ transparent tab bar', 'standardize the subnavbars'];
