@@ -62,7 +62,7 @@
 				</a>
 				<div class='flex-wrap-center full-xy relative flex-stretch'>
 					<div class='header full-x'>
-						<h1 class='full-x p20xy font-4 txt-white bg-robin uppercase text-center weight-900'> {{selected_layout.name}} Layout</h1>
+						<h1 class='full-x p15xy font-4 txt-white bg-robin uppercase text-center weight-900'>{{selected_layout.name}} Layout</h1>
 						<tabs index="selected_layout.index" tabs="['demo', 'details', 'hierarchy', 'states', 'code', 'actions']"/></tabs>
 				    </div>
 				    <div class='tab-content full-xy relative flex-wrap-center bg-charcoal' style='height: calc(100% - 136px);'>
@@ -270,8 +270,8 @@
 					</div>
 				</section>
 				<section class='flex-wrap-center full-xy txt-charcoal absolute left-0' ng-hide='page.layout.sidebar.index !== 1'>
-					<div class='ugrid-{{page.layout.sections[1].tabs.options.length}} flex-wrap-center full-x bg-azure' style='height:10%;'>
-						<a class='flex-wrap-center' ng-repeat='option in page.layout.sections[1].tabs.options' ng-click='page.layout.sections[1].tabs.index = $index'>
+					<div class='ugrid-{{page.layout.sections[1].tabs.options.length}} flex-wrap-center full-x bg-orange' style='height:10%;'>
+						<a class='bg bg-robin full-y flex-wrap-center' ng-repeat='option in page.layout.sections[1].tabs.options' ng-click='page.layout.sections[1].tabs.index = $index'>
 							<span ng-if='option.profile_url' class='user-icon' style="background-image: url({{option.profile_url}}); height:50px; width:50px;"></span>
 							<div class='uppercase full-x text-center uppercase weight-600 flex-wrap-center' style='font-size:18px;'>
 								<div class='uppercase weight-600'>{{option.title}}</div>
@@ -282,11 +282,11 @@
 						<div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0'>
 							<div class='relative flex-wrap-center full-x' style='height:90%'>
 								<div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0' ng-hide='page.layout.sections[1].tabs.index !== $index' ng-repeat='option in page.layout.sections[1].tabs.options'>
-									<h1 style='height:10%;' class='bg-cerise-50p full-x flex-wrap-center p20xy weight-00'>{{option.title}}</h1>
+									<h1 style='height:10%;' class='bg-campus full-x flex-wrap-center p20xy weight-600'>{{option.title}}</h1>
 									<div class='flex-wrap-center full-xy' style='height:90%' ng-if='$index === 0'>
-										<div class='ugrid-4 flex-wrap-center flex-stretch full-xy'>
+										<div class='ugrid-4 flex-wrap-center flex-stretch full-xy padding-15-grid'>
 											<a ng-repeat='component in page.components track by $index' class='relative flex-wrap-center flex-stretch' style='min-height:200px;' ng-click='initAndLaunchComponentCTA($event, component)'>
-												<div class='absolute flex-wrap-center flex-stretch full-x p20xy left-0 top-0'>
+												<div class='relative flex-wrap-center flex-stretch full-xy'>
 													<div class='component-header bg-azure txt-white p20xy full-x'>
 														<div class='full-x uppercase weight-600 text-center'>
 															{{component.name}}
@@ -301,25 +301,17 @@
 											</a>
 										</div>
 									</div>
-									<div class='ugrid-4 flex-wrap-center flex-stretch full-xy' ng-if='$index === 1'>
-										<a ng-repeat='layout in page.layouts track by $index' class='relative flex-wrap-center flex-stretch' style='min-height:200px;' ng-click='initAndLaunchLayoutCTA($event, layout)'>
-											<div class='absolute flex-wrap-center flex-stretch full-x p20xy left-0 top-0'>
-												<div class='component-header bg-azure txt-white p20xy full-x'>
-													<div class='full-x uppercase weight-600 text-center'>
-														{{component.name}}
-													</div>
-												</div>
+									<div class='ugrid-4 flex-wrap-center full-xy' ng-if='$index === 1'>
+                                        <a class='bg bg-robin' ng-repeat='layout in page.layouts track by $index' ng-click='initAndLaunchLayoutCTA($event, layout)'>
+                                            <div class='component-header flex-center full-x uppercase weight-600 text-center' style='min-height:200px;'>
+												{{component.name}}
 											</div>
 										</a>
 									</div>
-									<div class='ugrid-4 flex-wrap-center flex-stretch full-xy' ng-if='$index === 2'>
-										<a ng-repeat='layout in page.layouts track by $index' class='relative flex-wrap-center flex-stretch' style='min-height:200px;' ng-click='initAndLaunchLayoutCTA($event, layout)'>
-											<div class='absolute flex-wrap-center flex-stretch full-x p20xy left-0 top-0'>
-												<div class='component-header bg-azure txt-white p20xy full-x'>
-													<div class='full-x uppercase weight-600 text-center'>
-														{{layout.name}}
-													</div>
-												</div>
+									<div class='ugrid-4 flex-wrap-center full-xy' ng-if='$index === 2'>
+										<a class='bg bg-robin' ng-repeat='layout in page.layouts track by $index' ng-click='initAndLaunchLayoutCTA($event, layout)'>
+											<div class='component-header flex-center full-x uppercase weight-600 text-center' style='min-height:200px;'>
+												{{layout.name}}
 											</div>
 										</a>
 									</div>

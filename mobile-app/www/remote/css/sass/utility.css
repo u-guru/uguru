@@ -312,6 +312,14 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   padding-right: 0;
 }
 
+.padding-15-grid {
+  padding: 7.5px;
+}
+
+.padding-15-grid > * {
+  padding: 7.5px;
+}
+
 [class*="padding-none"] {
   padding: 0;
 }
