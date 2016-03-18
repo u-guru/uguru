@@ -10,7 +10,7 @@
 
     </div>
     <div class='p20xy flex-stretch flex-wrap-center' style='height:80%;'>
-        <tabs class='full-x' index="selected_layout.index" tabs="['High Score List', 'Next Steps']"/> </tabs>
+        <tabs index="selected_layout.index" tabs="['High Score List', 'Next Steps']"/> </tabs>
         <ul class='full-xy flex-wrap-center relative' style='height:75%' ng-if='!selected_layout.index'>
             <li ng-repeat='guru in selected_layout.sample.scope.guru_hs_list' class='full-x p20xy ugrid-3' >
                 <user-icon  url="guru.profile_url"> </user-icon>
