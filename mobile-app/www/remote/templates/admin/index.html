@@ -63,7 +63,7 @@
                 <div class='flex-wrap-center full-xy relative flex-stretch bg-azure' ng-hide='!selected_layout.name'>
                     <div class='header full-x flex-wrap-center relative' style='height:calc(40%);'>
                         <h1 class='full-x p15xy font-4 txt-white uppercase text-center weight-900'>{{selected_layout.name}} Layout</h1>
-                        <tabs class='bg-azure-50p absolute bottom-0 left-0' index="selected_layout.tabIndex" options="['demo', 'details spec', 'components', 'time states', 'action items']"/></tabs>
+                        <tabs class='bg-azure-50p absolute bottom-0 left-0' index="selected_layout.tabIndex" options="['demo', 'details spec', 'components', 'States', 'Action items']"/></tabs>
                     </div>
                     <div class='tab-content full-x relative flex-wrap-center bg-charcoal' style='height: calc(60%);'>
                         <div class='demo-section' ng-if='!selected_layout.tabIndex'>
@@ -90,6 +90,23 @@
                             <div>
                                 <div class='description-container full-x'>
                                     <h1 class='full-x p20xy weight-600 text-center uppercase'>Elements</h1>
+                                    <div class='ugrid-2 full-x'>
+                                        <div class='flex-wrap-center p20xy'  ng-repeat='component in selected_layout.gallery_ref.children'>
+                                            <h1 class='full-x'> {{component.name}} </h1>
+                                            <small class='full-x'> {{component.type}} </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='notes-container full-x'>
+                                    <h1 class='full-x p20xy weight-600 text-center uppercase'>User Story</h1>
+                                    <p class='text-center'> {{selected_layout.name}} is a <span class='weight-700'> {{selected_layout.gallery_ref.parents[0].type}} </span> part of <span class='weight-700'>{{selected_layout.gallery_ref.parents[0].name}}</span> </p>
+                                </div>
+                            </div>
+                        </div>
+                         <div class='details flex-wrap-center ugrid-2 full-xy' ng-if='selected_layout.tabIndex === 3'>
+                            <div>
+                                <div class='description-container full-x'>
+                                    <h1 class='full-x p20xy weight-600 text-center uppercase'>Jeselle States</h1>
                                     <div class='ugrid-2 full-x'>
                                         <div class='flex-wrap-center p20xy'  ng-repeat='component in selected_layout.gallery_ref.children'>
                                             <h1 class='full-x'> {{component.name}} </h1>

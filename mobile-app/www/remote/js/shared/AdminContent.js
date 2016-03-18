@@ -285,13 +285,13 @@ var layoutList = [
                 parents: [{type:'User Story', name: 'Guru Checks Guru Ranking'}],
                 children: [{type: 'component', name: 'Circular Progress Bar'}, {type: 'component', name: 'University Background Image'}, {type: 'container', name: 'High Score List'}, {type: 'container', name: 'Action Item List'}],
             },
-            action_items: [],
+            action_items: [{user: 'Samir', action: 'Create initial spec', status: true}, {user: 'Jeselle', action: 'Implement first iteration HiFi, starting with new components/containers and working outwards.'}],
             details: {
-                description: 'When a Guru clicks on "Guru Ranking tile" on their dashboard, this is the CTA that will popup',
-                notes: 'Any questions or random thoughts after a spec is complete',
-                requirements: 'Requirements will go here and span four-ish lines'
+                description: 'When a Guru clicks on "Guru Ranking tile" on their dashboard, this is the CTA that will popup. There will 3-4 other options, right now it is only showing one.',
+                notes: 'This is the first spec so please ask for as much extra detail you need & I will standardize into the next one.',
+                requirements: 'Isolation to the new components within the container. Get HiFis of the new components first and then work your way outward into the layout. '
             },
-            gallery_states: [],
+            states: [{user: 'Jeselle', states: ['User is not ranked because of pending action items']}],
             bugs: [],
             sample: {
                 template_url: 'templates/components/dev/layouts/guru.ranking.tpl',
