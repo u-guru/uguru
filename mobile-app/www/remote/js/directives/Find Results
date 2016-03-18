@@ -1,0 +1,659 @@
+Searching 589 files for "user-Icon"
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/admin/admin.html:
+   27                  <div class='full-xy flex-wrap-center txt-smoke text-center relative'>
+   28                      <div class='full-x header p15xy bg-{{obj.bg_color}}'>
+   29:                         <span style="height:50px; width:50px; background-image: url({{obj.profile_url}});" class='user-icon' ></span>
+   30                          <h1 class='weight-600 uppercase p05top p20bottom m20top txt-white'>{{obj.name}}'s Action Items</h1>
+   31                          <small class='weight-900 bg-slate p15x m05top p05y lowercase txt-white'>{{obj.role}}</small>
+   ..
+   68                  <div class='bg-gold full-y flex-wrap-center txt-smoke text-center relative'>
+   69                      <div class='full-x header p15xy'>
+   70:                         <span style="height:50px; width:50px; background-image: url({{roleArr[0].profile_url}});" class='user-icon' ></span>
+   71                          <h1 class='weight-400 uppercase p05y txt-white'>Functional</h1>
+   72                          <small class='weight-900 lowercase txt-smoke'>Alpha</small>
+   ..
+   84                  <div class='bg-azure full-y flex-wrap-center txt-smoke text-center relative'>
+   85                      <div class='full-x header p15xy'>
+   86:                         <span style="height:50px; width:50px; background-image: url({{roleArr[1].profile_url}});" class='user-icon' ></span>
+   87                          <h1 class='weight-400 uppercase p05y txt-white'>Fully Tested</h1>
+   88                          <small class='weight-900 lowercase txt-smoke'>Beta</small>
+   ..
+  101                      <div class='full-x header p20bottom p10top m10top' style='height:140px;'>
+  102                          <div>
+  103:                             <span style="height:50px; width:50px; display:inline-block; background-image: url({{roleArr[2].profile_url}});" class='user-icon m10x' ></span>
+  104:                             <span style="height:50px; width:50px; display:inline-block; background-image: url({{roleArr[3].profile_url}});" class='user-icon m10x' ></span>
+  105                          </div>
+  106                          <h1 class='weight-400 uppercase p05xy txt-white'>Sleek</h1>
+  ...
+  153                              <a id='cta-box-role-{{$index}}' ng-repeat='obj in roleArr' class='p15x'>
+  154                                  <h1 class='full-x txt-slate m10bottom text-center weight-600 uppercase' style='font-size:14px;'> {{obj.name}} </h1>
+  155:                                 <span style="height:50px; width:50px; background-image: url({{obj.profile_url}});" class='user-icon' ></span>
+  156                              </a>
+  157                          </div>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/admin/index.html:
+  107  
+  108  
+  109:                             <user-icon size="medium" url="option.profile_url"> </user-icon>
+  110  
+  111:                             <!-- <span ng-if='option.profile_url' class='user-icon' style="background-image: url({{option.profile_url}}); height:50px; width:50px;"></span> -->
+  112  
+  113                              <p class='uppercase full-x text-center uppercase weight-700 p10xy' style='font-size:14px;' ng-bind-html="option.title">
+  ...
+  215                      <div class='ugrid-5 flex-wrap-center full-x bg-azure' style='height:10%;'>
+  216                          <a class='flex-wrap-center' ng-repeat='option in page.layout.sections[1].tabs.options' ng-click='page.layout.sections[1].tabs.index = $index'>
+  217:                             <span ng-if='option.profile_url' class='user-icon' style="background-image: url({{option.profile_url}}); height:50px; width:50px;"></span>
+  218                              <div class='uppercase full-x text-center uppercase weight-600 flex-wrap-center' style='font-size:18px;'>
+  219                                  <div class='uppercase weight-600'>{{option.title}}</div>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/archive/team.archive.html:
+   21  								</li>
+   22  							</ul>
+   23: 							<span class="user-icon" style="background-image: url(https://uguru.me/static/web/images/team/samir.png);"></span>
+   24  						</div>
+   25  						<div class="pf-card-main">
+   ..
+   47  								</li>
+   48  							</ul>
+   49: 							<span class="user-icon" style="background-image: url(http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800);"></span>
+   50  						</div>
+   51  						<div class="pf-card-main">
+   ..
+   73  								</li>
+   74  							</ul>
+   75: 							<span class="user-icon" style="background-image: url(https://uguru.me/static/web/images/team/jason.png);"></span>
+   76  						</div>
+   77  						<div class="pf-card-main">
+   ..
+   99  								</li>
+  100  							</ul>
+  101: 							<span class="user-icon" style="background-image: url(https://uguru.me/static/web/images/team/jeselle.png);"></span>
+  102  						</div>
+  103  						<div class="pf-card-main">
+  ...
+  125  								</li>
+  126  							</ul>
+  127: 							<span class="user-icon" style="background-image: url(https://uguru.me/static/web/images/team/ben.png);"></span>
+  128  						</div>
+  129  						<div class="pf-card-main">
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/bg/1-no-limits-scene.html:
+   66  <!-- <div class="pf-card-outline">
+   67      <div class="pf-card-top">
+   68:         <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+   69      </div>
+   70      <div class="pf-card-main">
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/billing.html:
+   18  							<li>
+   19  								<a>
+   20: 									<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+   21  									<span>{{user.name}}</span>
+   22  								</a>
+   ..
+   24  							<li>
+   25  								<a>
+   26: 									<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+   27  									<span>{{user.name}}</span>
+   28  								</a>
+   ..
+   30  							<li>
+   31  								<a>
+   32: 									<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+   33  									<span>{{user.name}}</span>
+   34  								</a>
+   ..
+   36  							<li>
+   37  								<a>
+   38: 									<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+   39  									<span>{{user.name}}</span>
+   40  								</a>
+   ..
+   43  						<ul id="select-skill" class="ugrid-3">
+   44  							<li>
+   45: 								<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+   46  								<span>{{user.name}}</span>
+   47  							</li>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/components/dev/containers/guru.profile.mini.tpl:
+    4              <div class="pf-card-mini pf-card-mini-delivery">
+    5                  <div class="pf-card-mini-banner"></div>
+    6:                 <span class="user-icon"></span>
+    7              </div>
+    8          </li>
+    .
+   10              <div class="pf-card-mini pf-card-mini-freelancing">
+   11                  <div class="pf-card-mini-banner"></div>
+   12:                 <span class="user-icon"></span>
+   13              </div>
+   14          </li>
+   ..
+   16              <div class="pf-card-mini pf-card-mini-baking">
+   17                  <div class="pf-card-mini-banner"></div>
+   18:                 <span class="user-icon"></span>
+   19              </div>
+   20          </li>
+   ..
+   22              <div class="pf-card-mini pf-card-mini-photography">
+   23                  <div class="pf-card-mini-banner"></div>
+   24:                 <span class="user-icon"></span>
+   25              </div>
+   26          </li>
+   ..
+   28              <div class="pf-card-mini pf-card-mini-tech">
+   29                  <div class="pf-card-mini-banner"></div>
+   30:                 <span class="user-icon"></span>
+   31              </div>
+   32          </li>
+   ..
+   34              <div class="pf-card-mini pf-card-mini-athletic">
+   35                  <div class="pf-card-mini-banner"></div>
+   36:                 <span class="user-icon"></span>
+   37              </div>
+   38          </li>
+   ..
+   42              <div class="pf-card-mini large pf-card-mini-delivery">
+   43                  <div class="pf-card-mini-banner"></div>
+   44:                 <span class="user-icon"></span>
+   45              </div>
+   46          </li>
+   ..
+   48              <div class="pf-card-mini large pf-card-mini-freelancing">
+   49                  <div class="pf-card-mini-banner"></div>
+   50:                 <span class="user-icon"></span>
+   51              </div>
+   52          </li>
+   ..
+   54              <div class="pf-card-mini large pf-card-mini-baking">
+   55                  <div class="pf-card-mini-banner"></div>
+   56:                 <span class="user-icon"></span>
+   57              </div>
+   58          </li>
+   ..
+   60              <div class="pf-card-mini large pf-card-mini-photography">
+   61                  <div class="pf-card-mini-banner"></div>
+   62:                 <span class="user-icon"></span>
+   63              </div>
+   64          </li>
+   ..
+   66              <div class="pf-card-mini large pf-card-mini-tech">
+   67                  <div class="pf-card-mini-banner"></div>
+   68:                 <span class="user-icon"></span>
+   69              </div>
+   70          </li>
+   ..
+   72              <div class="pf-card-mini large pf-card-mini-athletic">
+   73                  <div class="pf-card-mini-banner"></div>
+   74:                 <span class="user-icon"></span>
+   75              </div>
+   76          </li>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/components/dev/containers/guru.profile.tpl:
+    8                  </li>
+    9              </ul>
+   10:             <span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+   11          </div>
+   12          <div class="pf-card-main">
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/components/dev/containers/school.id.tpl:
+    6          <div class="school-id-inside">
+    7              <div class="school-id-top" style="background: #003262;">
+    8:                 <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
+    9              </div>
+   10              <div class="school-id-bottom">
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/components/dev/containers/university.marker.tpl:
+   17                  </a>
+   18                  <a class="marker-guru">
+   19:                     <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+   20                      <span class="marker-guru-course">BIO 1A</span>
+   21                  </a>
+   ..
+   40                  </div>
+   41                  <a class="marker-guru">
+   42:                     <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+   43                      <div>
+   44                          <h1>Gabrielle W</h1>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/components/dev/containers/user.profile.tpl:
+    1  <div class="absolute full-xy top-0 left-0 flex-center-wrap">
+    2      <ul class="flex-center-wrap">
+    3:         <li><span class="user-icon-32" style="background-image: url(http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800);"></span></li>
+    4:         <li><span class="user-icon-64" style="background-image: url(http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800);"></span></li>
+    5:         <li><span class="user-icon" style="background-image: url(http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800);"></span></li>
+    6      </ul>
+    7  </div>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/components/dev/user.icon.tpl:
+    1: <span class="user-icon{{::size}}" style="background-image: url({{::url}});"></span>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/desktop.nav.html:
+   41              </span>
+   42  			<a id="top-settings" class='relative' ng-click='toggleDesktopSettings()'>
+   43: 				<!-- <span class="user-icon" style="background-image: url('{{user.profile_url}}')"></span> -->
+   44: 				<user-icon size="small"  url="user.profile_url"> </user-icon>
+   45  				<svg viewBox="0 0 100 100">
+   46  					<path d="M14,32 L50,68 L86,32"></path>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/desktop.settings.html:
+   10  						<li>
+   11  							<!-- <img id='desktop-settings-profile-img' ng-src="{{user.profile_url}}" id='guru-profile-img' width="100" height="100"/> -->
+   12: 							<user-icon id='desktop-settings-profile-img' size="large"  url="user.profile_url"> </user-icon>
+   13  
+   14  						</li>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/dev/student.messaging.html:
+   12  							<a class='ng-class:{"active":relationship.id === active_relationship.id}'>
+   13  								<!-- <span class="messenger-icon" style="background-image: url({{relationship.guru.profile_url}});"></span> -->
+   14: 								<user-icon class="messenger-icon" size="small" url="relationship.guru.profile_url"> </user-icon>
+   15  								<span class="messenger-label"> {{relationship.guru.name}}</span>
+   16  							</a>
+   ..
+  127  									<div class='message-single-icon' ng-if='message.sender.id !== user.id'>
+  128  										<!-- <span ng-if='user.profile_url' style='background-image: url({{message.sender.profile_url}});' /> -->
+  129: 										<user-icon  ng-if='user.profile_url' size="small" url="message.sender.profile_url"> </user-icon>
+  130  
+  131  									</div>
+  ...
+  146  									<div class='message-single-icon' ng-if='message.sender.id === user.id'>
+  147  										<!-- <span ng-if='user.profile_url' style='background-image: url({{user.profile_url}});' /> -->
+  148: 										<user-icon  ng-if='user.profile_url' size="small" url="user.profile_url"> </user-icon>
+  149  
+  150  									</div>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/guru.html:
+   27                              <div class="pf-card-mini large pf-card-mini-academic">
+   28                                  <div class="pf-card-mini-banner"></div>
+   29:                                 <!-- <span class="user-icon bg-cerise"></span> -->
+   30:                                 <user-icon size="small" > </user-icon>
+   31                                  <span class="pf-name">Christopher W.</span>
+   32                                  <!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+   ..
+   38                              <div class="pf-card-mini large pf-card-mini-academic">
+   39                                  <div class="pf-card-mini-banner"></div>
+   40:                                 <!-- <span class="user-icon bg-cerise"></span> -->
+   41:                                 <user-icon size="small" > </user-icon>
+   42                                  <span class="pf-name">Christopher W.</span>
+   43                                  <!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+   ..
+   49                              <div class="pf-card-mini large pf-card-mini-academic">
+   50                                  <div class="pf-card-mini-banner"></div>
+   51:                                 <!-- <span class="user-icon bg-cerise"></span> -->
+   52:                                 <user-icon size="small" > </user-icon>
+   53                                  <span class="pf-name">Christopher W.</span>
+   54                                  <!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/guru.referrals.container.html:
+   37  	    	<ul class="sidebar-layout-list">
+   38  				<li ng-repeat='referred_user in user.referrals'>
+   39: 					<span class="user-icon" style="background-image: url({{referred_user.receiver.profile_url}});"></span>
+   40  					<div>
+   41  						<h3>You referred <b>{{referred_user.receiver.name}}</b>.</h3>
+   ..
+   44  				</li>
+   45  				<li ng-if='!user.referrals || !user.referrals.length'>
+   46: 					<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+   47  					<div>
+   48  						<span><strong><small>THIS IS AN EXAMPLE</small></strong></span>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/home.desktop.student.html:
+   68  										<div class="pf-card-mini large pf-card-mini-academic">
+   69  											<div class="pf-card-mini-banner"></div>
+   70: 											<!-- <span class="user-icon bg-cerise"></span> -->
+   71: 											<user-icon size="small" > </user-icon>
+   72  											<span class="pf-name">Christopher W.</span>
+   73  											<!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+   ..
+   78  										<div class="pf-card-mini large pf-card-mini-academic">
+   79  											<div class="pf-card-mini-banner"></div>
+   80: 											<!-- <span class="user-icon bg-cerise"></span> -->
+   81: 											<user-icon size="small" > </user-icon>
+   82  											<span class="pf-name">Christopher W.</span>
+   83  											<!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+   ..
+   88  										<div class="pf-card-mini large pf-card-mini-academic">
+   89  											<div class="pf-card-mini-banner"></div>
+   90: 											<!-- <span class="user-icon bg-cerise"></span> -->
+   91: 											<user-icon size="small" > </user-icon>
+   92  											<span class="pf-name">Christopher W.</span>
+   93  											<!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/home.guru.html:
+   99  										<div class="pf-card-mini large pf-card-mini-academic">
+  100  											<div class="pf-card-mini-banner"></div>
+  101: 											<!-- <span class="user-icon bg-cerise"></span> -->
+  102: 											<user-icon size="small" > </user-icon>
+  103  											<span class="pf-name">Christopher W.</span>
+  104  											<!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+  ...
+  109  										<div class="pf-card-mini large pf-card-mini-academic">
+  110  											<div class="pf-card-mini-banner"></div>
+  111: 											<!-- <span class="user-icon bg-cerise"></span> -->
+  112: 											<user-icon size="small" > </user-icon>
+  113  											<span class="pf-name">Christopher W.</span>
+  114  											<!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+  ...
+  119  										<div class="pf-card-mini large pf-card-mini-academic">
+  120  											<div class="pf-card-mini-banner"></div>
+  121: 											<!-- <span class="user-icon bg-cerise"></span> -->
+  122: 											<user-icon size="small" > </user-icon>
+  123  											<span class="pf-name">Christopher W.</span>
+  124  											<!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/home.html:
+  511  										</li>
+  512  									</ul>
+  513: 									<span class="user-icon" style="background-image: url({{::sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
+  514  								</div>
+  515  								<div class="pf-card-main">
+  ...
+  661  										</li>
+  662  									</ul>
+  663: 									<span class="user-icon" style="background-image: url({{::sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
+  664  								</div>
+  665  								<div class="pf-card-main">
+  ...
+  810  										</li>
+  811  									</ul>
+  812: 									<span class="user-icon" style="background-image: url({{::sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
+  813  								</div>
+  814  								<div class="pf-card-main">
+  ...
+  866  							<div class="pf-card-mini large pf-card-mini-tech">
+  867  								<div class="pf-card-mini-banner"></div>
+  868: 								<span class="user-icon" style="background-image: url({{sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
+  869  							</div>
+  870  						</li>
+  ...
+ 1248  								<a class="pf-card-mini large pf-card-mini-{{::category.hex_color}}" id='cta-box-{{::category.hex_color}}'>
+ 1249  									<div class="pf-card-mini-banner"></div>
+ 1250: 									<span class="user-icon" style="background-image: url({{sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
+ 1251  									<span class="pf-card-link" ng-include="::img_base + 'templates/svg/main/external.html'"></span>
+ 1252  								</a>
+ ....
+ 1264  											</li>
+ 1265  										</ul>
+ 1266: 										<span anim-on-show-child anim-on-show-class="rotateIn" anim-on-show-delay="{{$index * 150 + 1000}}" class="user-icon opacity-0"  style="background-image: url({{::sampleMiniProfilesDict[category.hex_color].profile_url}});" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-hide-delay="200"></span>
+ 1267  									</div>
+ 1268  									<div class="pf-card-main">
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/home.mobile.student.html:
+   25                              <div class="pf-card-mini large pf-card-mini-academic">
+   26                                  <div class="pf-card-mini-banner"></div>
+   27:                                 <!-- <span class="user-icon bg-cerise"></span> -->
+   28:                                 <user-icon size="small" > </user-icon>
+   29                                  <span class="pf-name">Christopher W.</span>
+   30                                  <!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+   ..
+   36                              <div class="pf-card-mini large pf-card-mini-academic">
+   37                                  <div class="pf-card-mini-banner"></div>
+   38:                                 <!-- <span class="user-icon bg-cerise"></span> -->
+   39:                                 <user-icon size="small" > </user-icon>
+   40                                  <span class="pf-name">Christopher W.</span>
+   41                                  <!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+   ..
+   47                              <div class="pf-card-mini large pf-card-mini-academic">
+   48                                  <div class="pf-card-mini-banner"></div>
+   49:                                 <!-- <span class="user-icon bg-cerise"></span> -->
+   50:                                 <user-icon size="small" > </user-icon>
+   51                                  <span class="pf-name">Christopher W.</span>
+   52                                  <!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/one.university.html:
+  313  								<a class="pf-card-mini large pf-card-mini-{{category.hex_color}}" id='cta-box-{{category.hex_color}}'>
+  314  									<div class="pf-card-mini-banner"></div>
+  315: 									<span class="user-icon" style="background-image: url({{sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
+  316  									<span class="pf-card-link" ng-include="img_base + 'templates/svg/main/external.html'"></span>
+  317  								</a>
+  ...
+  329  											</li>
+  330  										</ul>
+  331: 										<span class="user-icon" style="background-image: url({{sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
+  332  									</div>
+  333  									<div class="pf-card-main">
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/profile-academic.public.html:
+   25  			<div class="pf-header-color"></div>
+   26  			<div class="pf-header">
+   27: 				<span class="user-icon" style="background-image: url({{::user.profile_url}});"></span>
+   28  				<h1 class="verified">
+   29  					<span class="inline">{{ user.name || 'Nameless Guru' }}</span>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/profile.card.html:
+    8  				</li>
+    9  			</ul>
+   10: 			<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+   11  		</div>
+   12  		<div class="pf-card-main">
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/profile.modal.bakery.html:
+   86  				<ul>
+   87  					<li>
+   88: 						<span class="user-icon"></span>
+   89  						<div>
+   90  							<h4>Reviewer Name</h4>
+   ..
+   94  					</li>
+   95  					<li>
+   96: 						<span class="user-icon"></span>
+   97  						<div>
+   98  							<h4>Reviewer Name</h4>
+   ..
+  102  					</li>
+  103  					<li>
+  104: 						<span class="user-icon"></span>
+  105  						<div>
+  106  							<h4>Reviewer Name</h4>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/profile.modal.html:
+  115  				<ul>
+  116  					<li>
+  117: 						<span class="user-icon"></span>
+  118  						<div>
+  119  							<h4>Reviewer Name</h4>
+  ...
+  123  					</li>
+  124  					<li>
+  125: 						<span class="user-icon"></span>
+  126  						<div>
+  127  							<h4>Reviewer Name</h4>
+  ...
+  131  					</li>
+  132  					<li>
+  133: 						<span class="user-icon"></span>
+  134  						<div>
+  135  							<h4>Reviewer Name</h4>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/profile.modal.photo.html:
+  131  				<ul>
+  132  					<li>
+  133: 						<span class="user-icon"></span>
+  134  						<div>
+  135  							<h4>Reviewer Name</h4>
+  ...
+  139  					</li>
+  140  					<li>
+  141: 						<span class="user-icon"></span>
+  142  						<div>
+  143  							<h4>Reviewer Name</h4>
+  ...
+  147  					</li>
+  148  					<li>
+  149: 						<span class="user-icon"></span>
+  150  						<div>
+  151  							<h4>Reviewer Name</h4>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/profile.public.bakery.html:
+    6  			<div class="pf-banner pf-banner-baking" ng-include="img_base + 'templates/svg/baking.html'"></div>
+    7  			<div class="pf-header">
+    8: 				<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+    9  				<h1 class="verified">
+   10  					<span class="inline">{{ user.name }}</span>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/profile.public.html:
+   29  			</div>
+   30  			<div class="pf-header ng-class:{'pf-header-edit': !profile.public_mode}">
+   31: 				<span class="user-icon" ng-if="profile.public_mode" style="background-image: url({{::user.profile_url}});"></span>
+   32: 				<a class="user-icon-container" ng-click='takeProfilePhoto()' ng-if="::!profile.public_mode">
+   33: 					<span class='user-icon' style="background-image: url({{::user.profile_url}});"></span>
+   34: 					<span class="user-icon-edit">Edit</span>
+   35  				</a>
+   36  				<h1 class="verified">
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/profile.public.photo.html:
+    2  	<aside class="pf-aside">
+    3  		<div class="pf-aside-bg" style="background-image: url('http://40.media.tumblr.com/c61c0a3df18a43b73dba1d48da61500f/tumblr_ny4nr2eJ7G1t3bz68o1_1280.jpg');"></div>
+    4: 		<span class="pf-icon user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
+    5  		<h1 class="pf-name verified">
+    6  			<span>Gabrielle Wee</span>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/rating.html:
+    5  			<ul>
+    6  				<li>
+    7: 					<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+    8  					<!-- <h1>Completed your session with {{user.name}}!</h1> -->
+    9  					<h1>{{user.name}} completed your session!</h1>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/referrals.html:
+   31  					<ul class="sidebar-layout-list">
+   32  						<li ng-if='user.referrals' ng-repeat='referred_user in user.referrals'>
+   33: 							<span class="user-icon" style="background-image: url({{referred_user.receiver.profile_url}});"></span>
+   34  							<div>
+   35  								<h3>You referred <b>{{referred_user.receiver.name}}</b>.</h3>
+   ..
+   38  						</li>
+   39  						<li ng-if='!user.referrals || !user.referrals.length'>
+   40: 							<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+   41  							<div>
+   42  								<h3> You referred <b>Jon Smith</b>.</h3>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/request-guru.html:
+    5  			<header>
+    6  				<div>
+    7: 					<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+    8: 					<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+    9  				</div>
+   10  				<h2><span>Remaining time to confirm:</span>&nbsp;&nbsp;<span>10 min 59 sec</span></h2>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/request-student.html:
+    4  		<div class="main bg-cerise">
+    5  			<header>
+    6: 				<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+    7  			</header>
+    8  			<div class="request-form">
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/splash.access.html:
+    1  <div class="splash-projector-guru" ng-controller='AccessController'>
+    2                                          <div class="splash-logo-guru guru active" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+    3:                                         <span class="user-icon guru" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
+    4                                          <svg class="coach coach-promo active" width="114px" height="98px" viewBox="0 0 228 196">
+    5                                               <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/splash.account.html:
+   25                                                  <div class="school-id-inside">
+   26                                                      <div class="school-id-top" style="background: {{selectedUniversity.school_color_dark}};">
+   27:                                                         <span class="user-icon" style="background-color:transparent; border-color: {{selectedUniversity.school_color_dark}}; background-image: url({{user.profile_url || 'https://uguru.me/static/remote/img/avatar.svg'}});"></span>
+   28                                                      </div>
+   29                                                      <div class="school-id-bottom">
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/splash.hiw.html:
+   33                      <div class="pf-card-outline">
+   34                          <div class="pf-card-top">
+   35:                             <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+   36                          </div>
+   37                          <div class="pf-card-main">
+   ..
+   62                      <div class="pf-card-outline">
+   63                          <div class="pf-card-top">
+   64:                             <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+   65                          </div>
+   66                          <div class="pf-card-main">
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/splash.html:
+  202                              <a class="marker-link" ng-include="img_base + BASE + splash_marker.guru.type"></a>
+  203                              <a id="map-icon-{{$index + 2}}" class="marker-guru opacity-0">
+  204:                                 <!-- <span class="user-icon" style="background-image: url({{splash_marker.guru.profile_url}})"></span> -->
+  205:                                 <user-icon size="small" url="splash_marker.guru.profile_url"> </user-icon>
+  206  
+  207                                  <span class="marker-guru-course">{{splash_marker.guru.subcategory}}</span>
+  ...
+  224                              </div>
+  225                              <a class="marker-guru">
+  226:                                 <!-- <span class="user-icon" style="background-image: url({{splash_marker.guru.profile_url}})"></span> -->
+  227:                                 <user-icon size="small" url="splash_marker.guru.profile_url"> </user-icon>
+  228  
+  229                                  <div>
+  ...
+  256                              <a class="marker-link" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></a>
+  257                              <a id="map-icon-2" class="marker-guru opacity-0">
+  258:                                <!--  <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span> -->
+  259:                                 <user-icon size="small" url="http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256"> </user-icon>
+  260  
+  261                                  <span class="marker-guru-course">BIO 1A</span>
+  ...
+  277                              </div>
+  278                              <a class="marker-guru">
+  279:                            <!--      <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span> -->
+  280:                                 <user-icon size="small" url="http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256"> </user-icon>
+  281  
+  282                                  <div>
+  ...
+  314                                      <div id="map-icon-{{$index + 1}}-translate">
+  315                                          <a class="marker-guru bg-{{selectedCategory.hex_color}}" translate-on-class-delay="{{(selectedUniversity.map.markers.length * 1000 * 0.6) || 1000}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-{{$index + 1}}" translate-on-class="translate-device-guru-profile">
+  316:                                             <span class="user-icon" style="background-image: url('{{marker.guru.profile_url}}')"></span>
+  317:                                             <user-icon size="small" url="marker.guru.profile_url"> </user-icon>
+  318  
+  319                                              <span class="marker-guru-course">{{marker.guru.subcategory}}</span>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/splash.sidebar.html:
+   52                  <div class="school-id-inside">
+   53                      <div class="school-id-top" style="background: {{user.university.school_color_dark}};">
+   54:                         <span class="user-icon" style="border-color: {{user.university.school_color_dark}}; background-image: url({{user.profile_url}});">
+   55                              <svg viewBox="0 0 100 100">
+   56      							 <circle fill="#B8B8BF" cx="50" cy="50" r="50"></circle>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/splash.university.html:
+   17  			<div class="school-id-inside">
+   18  				<div class="school-id-top" style="background: #023360;">
+   19: 					<span class="user-icon" style="border-color: #023360">
+   20  						<svg viewBox="0 0 100 100">
+   21  							 <circle fill="#B8B8BF" cx="50" cy="50" r="50"></circle>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/team.html:
+   24  								</li>
+   25  							</ul> -->
+   26: 							<!-- <span class="user-icon" style="background-image: url(https://uguru.me/static/web/images/team/jeselle.png);"></span> -->
+   27: 							<user-icon size="medium" url="https://uguru.me/static/web/images/team/jeselle.png"> </user-icon>
+   28  						</div>
+   29  						<div class="pf-card-main">
+   ..
+   51  								</li>
+   52  							</ul> -->
+   53: 			<!-- 				<span class="user-icon" style="background-image: url(http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800);"></span> -->
+   54: 							<user-icon size="medium" url="http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800"> </user-icon>
+   55  
+   56  						</div>
+   ..
+   79  								</li>
+   80  							</ul> -->
+   81: 							<!-- <span class="user-icon" style="background-image: url(https://uguru.me/static/web/images/team/jason.png);"></span> -->
+   82: 							<user-icon size="medium" url="https://uguru.me/static/web/images/team/jason.png"> </user-icon>
+   83  
+   84  						</div>
+   ..
+  106  								</li>
+  107  							</ul> -->
+  108: 							<!-- <span class="user-icon" style="background-image: url(https://uguru.me/static/web/images/team/samir.png);"></span> -->
+  109: 							<user-icon size="medium" url="https://uguru.me/static/web/images/team/samir.png"> </user-icon>
+  110  
+  111  						</div>
+
+/Users/Jason-work/Git/uguru/mobile-app/www/remote/templates/timer.html:
+    6  				<h1>You started your session with {{user.name}}.</h1>
+    7  				<div>
+    8: 					<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+    9  					<div>
+   10  						<h3>{{user.name}}</h3>
+
+155 matches across 41 files
