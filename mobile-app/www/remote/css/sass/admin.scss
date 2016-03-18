@@ -5,59 +5,9 @@
 		width: 100%!important;
 		height: 60px;
 	}
-	#cta-modal-selected-layout {
-		.user-ranking {
-			h1 {
-				font-size: 24px;
-			}
-			h2 {
-				font-size: 36px;
-			}
-		}
-		#current-tabs {
-			background: $robin;
-			height: 60px;
-			.tab-bar {
-				background: $robin;
-			}
-		}
-		#admin-ranking-container {
-			@include prefix(justify-content, center, webkit);
-			@include prefix(align-content, flex-start, webkit);
-			@include prefix(align-items, flex-start, webkit);
-		}
-		#high-score, #next-steps {
-			@include flex;
-			@include flex-wrap;
-			@include prefix(align-items, flex-start, webkit);
-			position: relative;
-			width: 100%;
-			overflow: auto;
-			li {
-				.user-icon {
-					width: 64px;
-					height: 64px;
-					border-width: 3px;
-				}
-			}
-		}
-		#high-score {
-			li {
-				> div:nth-child(1) {
-					width: 64px;
-				}
-				> div:nth-child(2) {
-					width: calc(90% - 64px);
-				}
-				> div:nth-child(3) {
-					width: 10%;
-				}
-			}
-		}
-	}
 	> header {
 		@include flex;
-		background: $shamrock;
+		background: mix(mix($shamrock, $robin), $slate, 75%);
 		width: 100%;
 		height: 64px;
 		.admin-logo {
@@ -117,6 +67,138 @@
 				width: 100%;
 				height: 100%;
 				color: $slate;
+			}
+		}
+	}
+	
+	// moodboard
+	.admin-moodboard {
+		width: 100%;
+		height: 90%;
+		> ul {
+			@include flex;
+			@include flex-wrap;
+			li {
+				width: 25%;
+				height: 200px;
+				div {
+					position: relative;
+					width: 100%;
+					height: 100%;
+					background-size: cover;
+					background-position: center center;
+					a {
+						position: absolute;
+						bottom: 15px;
+						left: 15px;
+						display: block;
+						font-size: 18px;
+						font-weight: 600;
+						padding: 5px 10px;
+					}
+				}
+			}
+		}
+	}
+	
+	// colors
+	.admin-colors {
+		@include flex;
+		width: 100%;
+		height: 90%;
+		> ul {
+			> li {
+				> div {
+					position: relative;
+					&.bg-smoke, &.bg-white {
+						color: $campus;
+						div {
+							input {
+								background: $campus;
+								color: white;
+							}
+						}
+					}
+					svg {
+						display: block;
+						width: 100%;
+					}
+					div {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						h1 {
+							width: 100%;
+							font-size: 20px;
+							font-weight: 600;
+							margin-bottom: 5px;
+							text-align: center;
+						}
+						input {
+							padding: 5px;
+							font-size: 16px;
+							font-weight: 600;
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	// ranking
+	#cta-modal-selected-layout {
+		.user-ranking {
+			h1 {
+				font-size: 24px;
+			}
+			h2 {
+				font-size: 36px;
+			}
+		}
+		#current-tabs {
+			background: $robin;
+			height: 60px;
+			.tab-bar {
+				background: $robin;
+			}
+		}
+		#admin-ranking-container {
+			@include prefix(justify-content, center, webkit);
+			@include prefix(align-content, flex-start, webkit);
+			@include prefix(align-items, flex-start, webkit);
+		}
+		#high-score, #next-steps {
+			@include flex;
+			@include flex-wrap;
+			@include prefix(align-items, flex-start, webkit);
+			position: relative;
+			width: 100%;
+			overflow: auto;
+			li {
+				.user-icon {
+					width: 64px;
+					height: 64px;
+					border-width: 3px;
+				}
+			}
+		}
+		#high-score {
+			li {
+				> div:nth-child(1) {
+					width: 64px;
+				}
+				> div:nth-child(2) {
+					width: calc(90% - 64px);
+				}
+				> div:nth-child(3) {
+					width: 10%;
+				}
 			}
 		}
 	}
