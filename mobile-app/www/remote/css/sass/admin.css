@@ -187,12 +187,12 @@
 }
 
 #admin .admin-moodboard > ul li div a.bg-robin:hover, #admin .admin-moodboard > ul li div a.bg-robin:focus {
-  background: rgba(149, 217, 220, 0.75);
+  background: #95d9dc;
   color: #367e82;
 }
 
 #admin .admin-moodboard > ul li div a.bg-robin:active {
-  background: rgba(54, 126, 130, 0.75);
+  background: #367e82;
   color: white;
 }
 
@@ -201,12 +201,12 @@
 }
 
 #admin .admin-moodboard > ul li div a.bg-crimson:hover, #admin .admin-moodboard > ul li div a.bg-crimson:focus {
-  background: rgba(233, 146, 150, 0.75);
+  background: #e99296;
   color: #8a363c;
 }
 
 #admin .admin-moodboard > ul li div a.bg-crimson:active {
-  background: rgba(138, 54, 60, 0.75);
+  background: #8a363c;
   color: white;
 }
 
