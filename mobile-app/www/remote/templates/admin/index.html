@@ -137,7 +137,7 @@
 
 
 
-                            <user-icon size="medium" url="option.profile_url"> </user-icon>
+                            <user-icon size="medium" class='medium' url="samir.png"> </user-icon>
 
                             <!-- <span ng-if='option.profile_url' class='user-icon' style="background-image: url({{option.profile_url}}); height:50px; width:50px;"></span> -->
 
@@ -244,17 +244,16 @@
                 </section>
                 <section class='flex-wrap-center full-xy txt-charcoal absolute left-0' ng-hide='page.layout.sidebar.index !== 1'>
                     <div class='ugrid-{{page.layout.sections[1].tabs.options.length}} flex-wrap-center full-x bg-azure' style='height:10%;'>
-                        <a class='flex-wrap-center' ng-repeat='option in page.layout.sections[1].tabs.options' ng-click='page.layout.sections[1].tabs.index = $index'>
+                        <tabs options="page.layout.sections[1].tabs.options" tab-index="page.layout.sections[1].tabs.index" key="title"/> </tabs>
+                        <!-- <a class='flex-wrap-center' ng-repeat='option in page.layout.sections[1].tabs.options' ng-click='page.layout.sections[1].tabs.index = $index'>
                             <span ng-if='option.profile_url' class='user-icon' style="background-image: url({{option.profile_url}}); height:50px; width:50px;"></span>
                             <div class='uppercase full-x text-center uppercase weight-600 flex-wrap-center' style='font-size:18px;'>
                                 <div class='uppercase weight-600'>{{option.title}}</div>
                             </div>
-                        </a>
+                        </a> -->
                     </div>
                     <div class='milestones-content relative flex-wrap-center full-x bg-smoke' style='height:90%;'>
                         <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0'>
-
-
                             <div class='relative flex-wrap-center full-x' style='height:90%'>
                                 <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0' ng-hide='page.layout.sections[1].tabs.index !== $index' ng-repeat='option in page.layout.sections[1].tabs.options'>
                                     <h1 style='height:10%;' class='bg-cerise-50p full-x flex-wrap-center p20xy weight-00'>

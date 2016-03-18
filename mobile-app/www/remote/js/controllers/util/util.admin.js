@@ -19,7 +19,7 @@ angular.module('uguru.util.controllers')
 			layouts: AdminContent.getLayouts(),
 			user_stories: AdminContent.getUserStories(),
 			defaults: {
-				tabsIndex: 2,
+				tabsIndex: 0,
 				sidebarIndex: 1
 			}
 		}

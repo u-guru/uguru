@@ -52,14 +52,15 @@ angular.module('uguru.components', [])
         url: '=url',
         size: '=size'
     },
+    replace:true,
     restrict: 'E',
     link: function( scope, element, attr ) {
-      if (scope.size && scope.size === 'small') {
+      if (attr.size && attr.size === 'small') {
         scope.size = '-32'
-      } else if (scope.size && scope.size === 'medium'){
+      } else if (attr.size && attr.size === 'medium'){
         scope.size= '-64'
       }
-      if (!scope.url || !scope.url.length) {
+      if (!attr.url || !attr.url.length) {
         scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
       }
     }
@@ -117,13 +118,16 @@ angular.module('uguru.components', [])
   return {
     templateUrl: BASE + 'templates/components/dev/containers/tabs.tpl',
     scope: {
-        options: '=tabs',
+        options: '=',
         key: '=key',
-        index: '=index'
+        tabIndex: '='
     },
     restrict: 'E',
+    // replace: true,
     link: function( scope, element, attr ) {
-      // scope.index = scope.index || 0;
+       // if (!attr.key) {
+       //  scope.key = null;
+       // }
     }
   };
 })
