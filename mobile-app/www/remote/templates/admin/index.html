@@ -71,7 +71,21 @@
                             <demo ng-if='selected_layout.template' style='border: 4px dashed white' class='flex-wrap-center p20xy' template="{{selected_layout.sample.template}}"></demo>
                             <div class='full-xy absolute top-0 left-0' ng-include='img_base + selected_layout.sample.template_url' ng-init='layout = selected_layout.sample.scope' ng-if='selected_layout.sample.template_url'> </div>
                         </div>
-                        <div class='details' ng-if='!selected_layout.index'>
+                        <div class='details flex-wrap-center ugrid-2 full-xy' ng-if='selected_layout.tabIndex === 1'>
+                            <div>
+                                <div class='description-container full-x'>
+                                    <h1 class='full-x p20xy weight-600 text-center uppercase'>Description</h1>
+                                    <p> {{selected_layout.details.description}} </p>
+                                </div>
+                                <div class='notes-container full-x'>
+                                    <h1 class='full-x p20xy weight-600 text-center uppercase'>Notes</h1>
+                                    <p> {{selected_layout.details.notes}} </p>
+                                </div>
+                            </div>
+                            <div class='requirements' ng-if='selected_layout.details.requirements'>
+                                <h1 class='full-x p20xy weight-600 text-center uppercase'>Notes</h1>
+                                <p> {{selected_layout.details.notes}} </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -170,6 +184,22 @@
                                                         {{action_item.name}}
                                                     </h1>
                                                     <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Research + HiFi</small>
+                                                </div>
+                                            </li>
+                                            <li ng-repeat='action_item in action_items' ng-if='["containers"].indexOf(action_item.action_type) > -1' class='text-left weight-300 bg-azure' ng-click='initAndLaunchComponentCTA($event, action_item)' style='border:4px dashed white;'>
+                                                <div class='action-item p20xy m05xy relative' style='padding-right:30%;'>
+                                                    <h1 class='txt-white weight-600'>{{$index + 1}}.
+                                                        {{action_item.name}}
+                                                    </h1>
+                                                    <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Research + HiFi</small>
+                                                </div>
+                                            </li>
+                                            <li ng-repeat='action_item in action_items' ng-if='["layouts"].indexOf(action_item.action_type) > -1' class='text-left weight-300 bg-azure' ng-click='initAndLaunchLayoutCTA($event, action_item)' style='border:4px dashed white;'>
+                                                 <div class='action-item p20xy m05xy relative' style='padding-right:30%;'>
+                                                    <h1 class='txt-white weight-600'>{{$index + 1}}.
+                                                        {{action_item.name}}
+                                                    </h1>
+                                                    <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>HiFi Layout</small>
                                                 </div>
                                             </li>
                                         </ul>

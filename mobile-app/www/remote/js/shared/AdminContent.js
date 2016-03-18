@@ -142,40 +142,7 @@ function AdminContent($localstorage) {
         function getActionItemsFor(member_name) {
             var actionList = {
                 'jeselle': {
-                    layouts: layoutList,
-                    assets: [
-                                {type:'logo', title: 'Guru Wizard', description: ' a wizard cap + glasses can give the “dumbledory” feeling'},
-                                {type:'logo', title: 'Honor Guru', description: ' an honor pledge guru to use for later'},
-                                {type:'logo', title: 'Deputy Guru', description: ' for warning gurus'}],
-                    research: [
-                    {
-                        title: 'Fluid File Icons + Variations',
-                        description: 'Our file icons are good -- but I am curious to see what else is out there in the world. I am not sure where the current ones are, but let me know if Gabrielle sends them you - I can link them in the spec',
-                        requirements: 'See if you can find something over the top - anything you like and can see yourself interfacing with -- add it to the moodboard section. I feel like this is really low hanging fruit that you can personally animate and finish the feature from an idea/research to the final set! <br> I prefer not to finalize the file type list myself because I am not up-to-date with the ratios that certains are currently most used.',
-                        user_story_ref: 'student_explore',
-                        project_details: {size: 'sm - med', type: 'component'},
-                        component_attributes: ['file name'],
-                        use_cases: ['[Student / Guru] User wants to browse/upload files to their dashboard', 'Student/Guru are matched, and want to share files with each other, as well as view all just for between.', 'User wants to delete files - what does that look like?', 'Request Form'],
-                        component_ref: [{'svg': ['profile/document.svg']}, {'html': ['templates/messaging']}],
-                        next_steps: 'hifi',
-                        submission_type: 'Zeplin',
-                        spec_status: 'incomplete'
-                    },
-                    {
-                        title: 'Guru Office Hours',
-                        description: 'All states affiliated with this, including Guru Promote banner page + the HiFi calendar component both mobile & desktop',
-                        requirements: 'Simple focused. We do not need a full calendar functionality. I prefer a much more heavily animated one thats extermely simple, over a less animated but crowded feeling',
-                        user_story_ref: 'guru_oh',
-                        project_details: {size: 'large', type:'user story'},
-                        submission_type: 'Zeplin'
-                    }
-                    ],
-
-                    upcoming: [{
-                        assets: {
-                            type: 'logo', title: 'Security Guru', description: "Let's say a Guru wants to join online office hours, it should show enter passcode, which is a relatively simple state"
-                        }
-                    }]
+                    layouts: layoutList
                 },
                 'girls': {
                     research: [{project: 'Admin Setup', description: 'Decide tags to use for moodboard, make a list of changes you want to have/make over time.', title: 'Making Dashboard Yours'},
