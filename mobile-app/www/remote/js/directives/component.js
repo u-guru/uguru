@@ -38,31 +38,10 @@ angular.module('uguru.components', [])
     templateUrl: BASE + 'templates/components/dev/input/dropdown.tpl',
     scope: {
         dropdown: '=ngModel',
-        tests:'=testArr',
+
     },
     restrict: 'E',
     link: function( scope, element, attr ) {
-        // console.log(scope.dropdown)
-        // var  = ;
-        // console.log("WTF",attr.eventFocus)
-        // console.log("WTF",movable)
-
-        element.find('a').on(attr.event, function() {
-           // focus(attr.eventFocusId);
-             var stack =[]
-             for (var i = 0 ; i < scope.tests.length;++i)
-                if (i != (parseInt(attr.index)) && scope.tests[i].active)
-                    stack.push(i)
-          
-             scope.$apply(function() {
-                  for(var i = 0; i < stack.length;++i)
-                  {
-                      scope.tests[stack[i]].active = false
-                  }
-                  // if (i == (parseInt(attr.index)) && scope.tests[i].active)
-                  //   element.find('ul')[0].focus();
-             });
-         });
 
     }
   };
@@ -76,7 +55,6 @@ angular.module('uguru.components', [])
     },
     replace:true,
     restrict: 'E',
-    replace: true,
     link: function( scope, element, attr ) {
       if (attr.size && attr.size === 'small') {
         scope.size = '-32'

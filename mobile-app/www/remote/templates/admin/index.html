@@ -98,18 +98,20 @@
                 </a>
                 <div class='flex-wrap-center full-xy relative flex-stretch bg-azure'>
                     <div class='header full-x flex-wrap-center relative' style='height:calc(40%);'>
-                        <h1 class='full-x p15xy font-4 txt-white uppercase text-center weight-900'>{{component.name}} Component</h1>
-                        <tabs class='bg-azure-50p absolute bottom-0 left-0' index="selected_layout.index" options="['demo', 'details', 'hierarchy', 'states', 'code', 'actions','actions']"/></tabs>
+                        <h1 class='full-x p15xy font-4 txt-white uppercase text-center weight-900'>{{selected_component.name}} Component</h1>
+                        <tabs class='bg-azure-50p absolute bottom-0 left-0' index="selected_layout.index" options="['demo', 'details', 'hierarchy', 'states', 'code', 'actions']"/></tabs>
                     </div>
                     <div class='tab-content full-x relative flex-wrap-center bg-charcoal' style='height: calc(60%);'>
                         <div class='bg-azure-50p full-xy absolute top-0 left-0 overflow-auto p20xy flex-wrap-center flex-stretch' ng-if='!selected_layout.index'>
                             <div class='playground-container full-x flex-wrap-center'>
-                                <h4 class='uppercase text-center full-x p20xy opacity-50'>{{component.name}} Demo - <span class='weight-800'>TRY ME!</span></h4>
-                                <demo style='border: 4px dashed white' class='flex-wrap-center p20xy' template="{{component.sample.template}}"></demo>
+                                <h4 class='uppercase text-center full-x p20xy opacity-50'>{{selected_component.name}} Demo - <span class='weight-800'>TRY ME!</span></h4>
+                                <demo style='border: 4px dashed white' class='flex-wrap-center p20xy' template="{{selected_component.sample.template}}"></demo>
+                                <!-- <demo class='flex-wrap-center' template="{{selected_component.sample.template}}"></demo> -->
+
                             </div>
                             <div class='scope-container flex-wrap-center flex-end flex-column full-x'>
-                                <small class='lowercase text-center full-x p20xy weight-600 txt-smoke'>{{component.name}} Dev Tools v1.23</small>
-                                {{component.sample.scope}}
+                                <small class='lowercase text-center full-x p20xy weight-600 txt-smoke'>{{selected_component.name}} Dev Tools v1.23</small>
+                                {{selected_component.sample.scope}}
                             </div>
                         </div>
                        <!--  <div  class='bg-smoke full-xy absolute top-0 left-0' ng-if='selected_layout.index === 1'>

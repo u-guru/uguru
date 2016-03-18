@@ -3468,6 +3468,17 @@ input[type=range] {
           border-color: rgba(255, 255, 255, 0.7); }
         .tab-bar.slide > div a:nth-child(5):active ~ hr {
           border-color: white; }
+/*Jason Edit*/
+        .tab-bar.slide > div a:nth-child(6):hover ~ hr, .tab-bar.slide > div a:nth-child(6):focus ~ hr {
+          -webkit-transform: translateX(825px);
+          -moz-transform: translateX(825px);
+          -ms-transform: translateX(825px);
+          -o-transform: translateX(825px);
+          transform: translateX(825px);
+          border-color: rgba(255, 255, 255, 0.7); }
+        .tab-bar.slide > div a:nth-child(6):active ~ hr {
+          border-color: white; }        
+/*End Edit*/
       .tab-bar.slide > div hr {
         -webkit-transition: all 0.15s ease-in-out;
         -o-transition: all 0.15s ease-in-out;
