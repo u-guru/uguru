@@ -19,7 +19,7 @@ angular.module('uguru.util.controllers')
 			layouts: AdminContent.getLayouts(),
 			user_stories: AdminContent.getUserStories(),
 			defaults: {
-				tabsIndex: 3,
+				tabsIndex: 1,
 				sidebarIndex: 0
 			}
 		}
@@ -181,8 +181,8 @@ angular.module('uguru.util.controllers')
 			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = $scope.page.defaults.tabsIndex;
 
 
-			// var layoutElem = document.querySelector('#layout-guru-ranking-layout');
-			// angular.element(layoutElem).triggerHandler('click')
+			var layoutElem = document.querySelector('#layout-guru-ranking-layout');
+			angular.element(layoutElem).triggerHandler('click')
 
 		}, 1000)
 	}

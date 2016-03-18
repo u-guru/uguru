@@ -103,20 +103,40 @@
                                 </div>
                             </div>
                         </div>
-                         <div class='details flex-wrap-center ugrid-2 full-xy' ng-if='selected_layout.tabIndex === 3'>
-                            <div>
-                                <div class='description-container full-x'>
-                                    <h1 class='full-x p20xy weight-600 text-center uppercase'>Jeselle States</h1>
+                         <div class='details flex-wrap-center full-xy' ng-if='selected_layout.tabIndex === 3'>
+                            <div class='full-x'>
+                                <div class='description-container full-x flex-wrap-center flex-stretch'>
+                                    <h1 class='full-x p20xy weight-600 text-center uppercase'>Static States</h1>
                                     <div class='ugrid-2 full-x'>
-                                        <div class='flex-wrap-center p20xy'  ng-repeat='component in selected_layout.gallery_ref.children'>
-                                            <h1 class='full-x'> {{component.name}} </h1>
-                                            <small class='full-x'> {{component.type}} </small>
+                                        <div class='flex-wrap-center p20xy'>
+                                            <ul>
+                                                <li ng-repeat='state in selected_layout.states' class='weight-400 mtop05'>
+                                                    {{$index}}. {{state}}
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class='notes-container full-x'>
-                                    <h1 class='full-x p20xy weight-600 text-center uppercase'>User Story</h1>
-                                    <p class='text-center'> {{selected_layout.name}} is a <span class='weight-700'> {{selected_layout.gallery_ref.parents[0].type}} </span> part of <span class='weight-700'>{{selected_layout.gallery_ref.parents[0].name}}</span> </p>
+                            </div>
+                        </div>
+                        <div class='details flex-wrap-center full-xy' ng-if='selected_layout.tabIndex === 4'>
+                            <div class='full-x'>
+                                <div class='description-container full-x flex-wrap'>
+                                    <h1 class='full-x p20xy weight-600 text-center uppercase'>Action Items</h1>
+                                    <div class='full-x'>
+                                        <div class='flex-wrap-center p20xy text-center'>
+                                            <div class='full-x p20xy'>
+                                                <div class='ugrid-2 full-x' ng-repeat='user_action_obj in selected_layout.action_items'>
+                                                    <h1 class='flex-wrap-center weight-600'> {{user_action_obj.user}} </h1>
+                                                    <ul class='flex-wrap text-left'>
+                                                        <li ng-repeat="item in user_action_obj.action_items" class='weight-400 mtop05 p10xy'>
+                                                            {{item}}
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -240,7 +260,7 @@
                                                     <h1 class='txt-white weight-600'>{{$index + 1}}.
                                                         {{action_item.name}}
                                                     </h1>
-                                                    <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>HiFi Layout</small>
+                                                    <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>HiFi Static</small>
                                                 </div>
                                             </li>
                                         </ul>

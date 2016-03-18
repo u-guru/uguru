@@ -285,13 +285,13 @@ var layoutList = [
                 parents: [{type:'User Story', name: 'Guru Checks Guru Ranking'}],
                 children: [{type: 'component', name: 'Circular Progress Bar'}, {type: 'component', name: 'University Background Image'}, {type: 'container', name: 'High Score List'}, {type: 'container', name: 'Action Item List'}],
             },
-            action_items: [{user: 'Samir', action: 'Create initial spec', status: true}, {user: 'Jeselle', action: 'Implement first iteration HiFi, starting with new components/containers and working outwards.'}],
+            action_items: [{user: 'Jeselle', action_items: ["#1. Resolve impact level - an icon that will show how much a certain action will contribute to their rankings. Scale will be 1-3 or 1-5 based on which one is more elegant design. I'm thinking the phone signal bars (att) with color indicating health like green for great, and just gray for minimal", "High score list (static) for 5-10 items. Feel free to play with the attributes per list item. Right now they are the name, stars, and ranking. Others can include course tags, # of reviews, whatever feels most natural", "Action item list (since lists are fresh). What’s the bare minimum we have to add in the interface to have an action item visually indicate that it will take you the destination (lets say Profile > Guru Profile Photo), without having a button for each item? It cannot be hover because on mobile we don’t have that. You have flexibility to alter copy, i.e. 'Your ranking will be ___ after _____' vs just the pure component."]}],
             details: {
                 description: 'When a Guru clicks on "Guru Ranking tile" on their dashboard, this is the CTA that will popup. There will 3-4 other options, right now it is only showing one.',
                 notes: 'This is the first spec so please ask for as much extra detail you need & I will standardize into the next one.',
                 requirements: 'Isolation to the new components within the container. Get HiFis of the new components first and then work your way outward into the layout. '
             },
-            states: [{user: 'Jeselle', states: ['User is not ranked because of pending action items']}],
+            states: ["Student is not ranked because email is not activated. Grayed out components with overlay with a cta button to action items tab bar ", "Student is ranked and sees their place on the high score list, with the ranking progress indicator"],
             bugs: [],
             sample: {
                 template_url: 'templates/components/dev/layouts/guru.ranking.tpl',
