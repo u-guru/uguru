@@ -283,12 +283,13 @@ var layoutList = [
             },
             gallery_ref: {
                 parents: [{type:'User Story', name: 'Guru Checks Guru Ranking'}],
-                children: [{type: 'component', name: 'Circular Progress Bar'}, {type: 'container', name: 'High Score List'}, {type: 'container', name: 'Action Item List'}],
+                children: [{type: 'component', name: 'Circular Progress Bar'}, {type: 'component', name: 'University Background Image'}, {type: 'container', name: 'High Score List'}, {type: 'container', name: 'Action Item List'}],
             },
             action_items: [],
             details: {
                 description: 'When a Guru clicks on "Guru Ranking tile" on their dashboard, this is the CTA that will popup',
                 notes: 'Any questions or random thoughts after a spec is complete',
+                requirements: 'Requirements will go here and span four-ish lines'
             },
             gallery_states: [],
             bugs: [],

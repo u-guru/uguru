@@ -40,9 +40,16 @@ angular.module('uguru.components', [])
         dropdown: '=ngModel',
 
     },
+    replace: true,
     restrict: 'E',
     link: function( scope, element, attr ) {
-
+      scope.click = function(index) {
+        scope.dropdown.selectedIndex = index;
+        scope.toggle();
+      }
+      scope.toggle = function() {
+        scope.dropdown.active = !scope.dropdown.active;
+      }
     }
   };
 })
