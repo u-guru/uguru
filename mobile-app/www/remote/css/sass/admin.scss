@@ -3,20 +3,57 @@
 #admin {
 	tabs {
 		width: 100%!important;
+		height: 60px;
 	}
-	#current-tabs {
-		background: $robin;
-		.tab-bar {
-			background: $robin;
+	#cta-modal-selected-layout {
+		.user-ranking {
+			h1 {
+				font-size: 24px;
+			}
+			h2 {
+				font-size: 36px;
+			}
 		}
-	}
-	#high-score {
-		@include flex;
-		@include prefix(align-items, flex-start, webkit);
-		position: relative;
-		height: calc(100% - 60px);
-		width: 100%;
-		overflow: auto;
+		#current-tabs {
+			background: $robin;
+			height: 60px;
+			.tab-bar {
+				background: $robin;
+			}
+		}
+		#admin-ranking-container {
+			@include prefix(justify-content, center, webkit);
+			@include prefix(align-content, flex-start, webkit);
+			@include prefix(align-items, flex-start, webkit);
+		}
+		#high-score, #next-steps {
+			@include flex;
+			@include flex-wrap;
+			@include prefix(align-items, flex-start, webkit);
+			position: relative;
+			width: 100%;
+			overflow: auto;
+			li {
+				.user-icon {
+					width: 64px;
+					height: 64px;
+					border-width: 3px;
+				}
+			}
+		}
+		#high-score {
+			li {
+				> div:nth-child(1) {
+					width: 64px;
+				}
+				> div:nth-child(2) {
+					width: calc(90% - 64px);
+				}
+				> div:nth-child(3) {
+					width: 10%;
+				}
+			}
+		}
 	}
 	> header {
 		@include flex;

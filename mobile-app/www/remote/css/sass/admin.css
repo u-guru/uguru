@@ -1,16 +1,35 @@
 #admin tabs {
   width: 100% !important;
+  height: 60px;
 }
 
-#admin #current-tabs {
+#admin #cta-modal-selected-layout .user-ranking h1 {
+  font-size: 24px;
+}
+
+#admin #cta-modal-selected-layout .user-ranking h2 {
+  font-size: 36px;
+}
+
+#admin #cta-modal-selected-layout #current-tabs {
+  background: #2BB3B8;
+  height: 60px;
+}
+
+#admin #cta-modal-selected-layout #current-tabs .tab-bar {
   background: #2BB3B8;
 }
 
-#admin #current-tabs .tab-bar {
-  background: #2BB3B8;
+#admin #cta-modal-selected-layout #admin-ranking-container {
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
 }
 
-#admin #high-score {
+#admin #cta-modal-selected-layout #high-score, #admin #cta-modal-selected-layout #next-steps {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -18,12 +37,32 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   -webkit-align-items: flex-start;
   align-items: flex-start;
   position: relative;
-  height: calc(100% - 60px);
   width: 100%;
   overflow: auto;
+}
+
+#admin #cta-modal-selected-layout #high-score li .user-icon, #admin #cta-modal-selected-layout #next-steps li .user-icon {
+  width: 64px;
+  height: 64px;
+  border-width: 3px;
+}
+
+#admin #cta-modal-selected-layout #high-score li > div:nth-child(1) {
+  width: 64px;
+}
+
+#admin #cta-modal-selected-layout #high-score li > div:nth-child(2) {
+  width: calc(90% - 64px);
+}
+
+#admin #cta-modal-selected-layout #high-score li > div:nth-child(3) {
+  width: 10%;
 }
 
 #admin > header {

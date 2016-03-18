@@ -54,20 +54,20 @@
 					</div>
 				</div>
 			</ion-pane>
-			<ion-pane id='cta-modal-selected-layout' class='show full-xy hide-display cta-modal bg-charcoal absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch'>
+			<ion-pane id='cta-modal-selected-layout' class='full-xy hide-display cta-modal bg-charcoal absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch'>
 				<a ng-click='hideLayoutCTA()' class='absolute top-0 right-0 cta-modal-close close-button high-z-index'>
 					<svg class="p10xy" viewBox="0 0 100 100" stroke='#FFFFFF' stroke-width="5">
 						<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 					</svg>
 				</a>
 				<div class='flex-wrap-center full-xy relative flex-stretch'>
-					<div class='header'>
+					<div class='header full-x'>
 						<h1 class='full-x p20xy font-4 txt-white bg-robin uppercase text-center weight-900'> {{selected_layout.name}} Layout</h1>
-						<tabs index="selected_layout.index" tabs="['demo', 'details', 'hierarchy', 'states', 'code', 'actions']"></tabs>
+						<tabs index="selected_layout.index" tabs="['demo', 'details', 'hierarchy', 'states', 'code', 'actions']"/></tabs>
 				    </div>
 				    <div class='tab-content full-xy relative flex-wrap-center bg-charcoal' style='height: calc(100% - 136px);'>
-        				<div class='bg-smoke flex-wrap-center full-xy absolute top-0 left-0 flex-stretch' ng-include='img_base + "templates/components/dev/layouts/guru.ranking.tpl"' ng-if='!selected_layout.index'></div>
-        				<div class='bg-smoke flex-wrap-center full-xy absolute top-0 left-0 flex-stretch' ng-if='selected_layout.index === 1'>
+        				<div class='bg-smoke full-xy absolute top-0 left-0 overflow-auto' ng-include='img_base + "templates/components/dev/layouts/guru.ranking.tpl"' ng-if='!selected_layout.index'></div>
+        				<div class='bg-smoke full-xy absolute top-0 left-0' ng-if='selected_layout.index === 1'>
         					{{selected_layout.description}}
         				</div>
         			</div>

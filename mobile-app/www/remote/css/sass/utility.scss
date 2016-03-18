@@ -442,6 +442,9 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 .overflow-hidden {
 	overflow: hidden;
 }
+.overflow-auto {
+	overflow: auto;
+}
 [class*="fixed"] {
 	position: fixed!important;
 }
