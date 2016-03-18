@@ -658,6 +658,30 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   justify-content: center;
 }
 
+[class*="flex"][class*="-start"] {
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
+}
+
+[class*="flex"][class*="-end"] {
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+  -webkit-align-content: flex-end;
+  align-content: flex-end;
+}
+
+[class*="flex"][class*="-start-self"] {
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+}
+
+[class*="flex"][class*="-end-self"] {
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+}
+
 .flex-grow {
   -webkit-flex-grow: 1;
   flex-grow: 1;

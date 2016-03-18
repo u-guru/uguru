@@ -87,10 +87,54 @@
 		height: 95%;
 	}
 	
+	// assets
+	.admin-assets {
+		@include prefix(align-content, flex-start, webkit);
+		@include flex-wrap;
+		h1 {
+			width: 100%;
+			padding: 15px 4px 0px;
+			font-size: 24px;
+			font-weight: 600;
+		}
+		h2 {
+			width: 100%;
+			padding: 15px 4px;
+			font-size: 18px;
+			font-weight: 600;
+		}
+		ul {
+			@include flex;
+			@include flex-wrap;
+			@include prefix(align-content, flex-start, webkit);
+			width: 100%;
+			padding: 2px;
+			li {
+				width: 10%;
+				padding: 2px;
+				span {
+					@include flex;
+					@include flex-center;
+					svg {
+						display: block;
+						width: 100%;
+						background: white;
+					}
+				}
+			}
+			&.large {
+				li {
+					width: 12.5%;
+				}
+			}
+			+ ul {
+				margin-top: -4px;
+			}
+		}
+	}
+	
 	// moodboard
 	.admin-moodboard {
-		width: 100%;
-		height: 95%;
 		> ul {
 			@include flex;
 			@include flex-wrap;
@@ -141,9 +185,6 @@
 	
 	// colors
 	.admin-colors {
-		@include flex;
-		width: 100%;
-		height: 95%;
 		> ul {
 			> li {
 				> div {
@@ -182,6 +223,98 @@
 							font-size: 16px;
 							font-weight: 600;
 							text-align: center;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	// components
+	.admin-components {
+		> ul {
+			@include flex;
+			padding: 7.5px;
+			width: 100%;
+			> li {
+				width: 25%;
+				padding: 7.5px;
+				> div {
+					> h1 {
+						padding: 10px 15px 8px;
+						background: $shamrock;
+						font-size: 20px;
+						font-weight: 600;
+						text-align: center;
+						border-top-left-radius: 2px;
+						border-top-right-radius: 2px;
+					}
+					> div {
+						background: $charcoal;
+						position: relative;
+						border: 2px solid $shamrock;
+						height: 200px;
+						border-bottom-left-radius: 2px;
+						border-bottom-right-radius: 2px;
+						> * {
+							@include center-xy;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	// action items
+	.admin-action-items {
+		ul {
+			@include flex;
+			@include flex-wrap;
+			padding: 7.5px;
+			li {
+				width: 50%;
+				padding: 7.5px;
+				.checkbox-container {
+					@include prefix(justify-content, flex-start, webkit);
+					background: $smoke;
+					padding: 15px;
+					label {
+						color: $slate;
+					}
+				}
+			}
+		}
+	}
+	
+	// details
+	.admin-details {
+		padding: 7.5px;
+		> div {
+			padding: 7.5px;
+			> div {
+				background: $smoke;
+				border-radius: 2px;
+				color: $slate;
+				> h1 {
+					font-size: 24px;
+					font-weight: 600;
+					padding: 15px 15px 0;
+				}
+				> div {
+					padding: 15px;
+					font-size: 18px;
+					font-weight: 400;
+				}
+				> ul {
+					font-size: 18px;
+					font-weight: 400;
+					padding: 7.5px;
+					li {
+						padding: 7.5px;
+						div {
+							padding: 15px;
+							background: rgba($campus, .3);
+							border-radius: 2px;
 						}
 					}
 				}
@@ -238,6 +371,13 @@
 					width: 10%;
 				}
 			}
+		}
+		.user-ranking-filler-svg {
+			display: block;
+			margin: 0 auto;
+			width: 126px;
+			height: 110px;
+			margin-bottom: 15px;
 		}
 	}
 }

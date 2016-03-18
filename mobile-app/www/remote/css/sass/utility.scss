@@ -519,6 +519,20 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 	&[class*="-center"] {
 		@include flex-center;
 	}
+	&[class*="-start"] {
+		@include prefix(align-items, flex-start, webkit);
+		@include prefix(align-content, flex-start, webkit);
+	}
+	&[class*="-end"] {
+		@include prefix(align-items, flex-end, webkit);
+		@include prefix(align-content, flex-end, webkit);
+	}
+	&[class*="-start-self"] {
+		@include prefix(align-self, flex-start, webkit);
+	}
+	&[class*="-end-self"] {
+		@include prefix(align-self, flex-end, webkit);
+	}
 }
 .flex-grow {
 	-webkit-flex-grow: 1;
