@@ -18,13 +18,16 @@ angular.module('uguru.util.controllers')
 			layouts: AdminContent.getLayouts(),
 			user_stories: AdminContent.getUserStories(),
 			defaults: {
-				tabsIndex: 1,
+				tabsIndex: 3,
 				sidebarIndex: 0
 			}
 		}
 		// $scope.selected_component = $scope.page.components[4];
 
-
+		$scope.elementCTATabOptions = {
+			components: ['Demo', 'Details', 'States', 'Use Cases', 'Element Map', 'To Do'],
+			layouts: ['Demo', 'Details', 'States', 'Use Cases', 'Element Map', 'To Do'],
+		}
 
 
 		// launchComponentCTAOnLoad('tabs', $scope.selected_component);
@@ -177,8 +180,8 @@ angular.module('uguru.util.controllers')
 			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = $scope.page.defaults.tabsIndex;
 
 
-			var layoutElem = document.querySelector('#layout-guru-ranking-layout');
-			angular.element(layoutElem).triggerHandler('click')
+			// var layoutElem = document.querySelector('#layout-guru-ranking-layout');
+			// angular.element(layoutElem).triggerHandler('click')
 
 		}, 1000)
 	}

@@ -81,10 +81,27 @@
                                     <h1 class='full-x p20xy weight-600 text-center uppercase'>Notes</h1>
                                     <p> {{selected_layout.details.notes}} </p>
                                 </div>
+                                <div class='requirements full-x' ng-if='selected_layout.details.requirements'>
+                                    <h1 class='full-x p20xy weight-600 text-center uppercase'>Requirements</h1>
+                                    <p> {{selected_layout.details.requirements}} </p>
+                                </div>
                             </div>
-                            <div class='requirements' ng-if='selected_layout.details.requirements'>
-                                <h1 class='full-x p20xy weight-600 text-center uppercase'>Notes</h1>
-                                <p> {{selected_layout.details.notes}} </p>
+                        </div>
+                        <div class='details flex-wrap-center ugrid-2 full-xy' ng-if='selected_layout.tabIndex === 2'>
+                            <div>
+                                <div class='description-container full-x'>
+                                    <h1 class='full-x p20xy weight-600 text-center uppercase'>Elements</h1>
+                                    <div class='ugrid-2 full-x'>
+                                        <div class='flex-wrap-center p20xy'  ng-repeat='component in selected_layout.gallery_ref.children'>
+                                            <h1 class='full-x'> {{component.name}} </h1>
+                                            <small class='full-x'> {{component.type}} </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='notes-container full-x'>
+                                    <h1 class='full-x p20xy weight-600 text-center uppercase'>User Story</h1>
+                                    <p class='text-center'> {{selected_layout.name}} is a <span class='weight-700'> {{selected_layout.gallery_ref.parents[0].type}} </span> part of <span class='weight-700'>{{selected_layout.gallery_ref.parents[0].name}}</span> </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -98,21 +115,28 @@
                 </a>
                 <div class='flex-wrap-center full-xy relative flex-stretch bg-azure'>
                     <div class='header full-x flex-wrap-center relative' style='height:calc(40%);'>
-                        <h1 class='full-x p15xy font-4 txt-white uppercase text-center weight-900'>{{selected_component.template}} Component</h1>
-                        <tabs class='bg-azure-50p absolute bottom-0 left-0' index="selected_layout.index" options="['demo', 'details', 'hierarchy', 'states', 'code', 'actions']"/></tabs>
+
+                        <h1 class='full-x p15xy font-4 txt-white uppercase text-center weight-900'>{{selected_component.name}} Component</h1>
+                        <tabs class='bg-azure-50p absolute bottom-0 left-0' index="selected_component.index" options="elementCTATabOptions.components"/></tabs>
                     </div>
                     <div class='tab-content full-x relative flex-wrap-center bg-charcoal' style='height: calc(60%);'>
-                        <div class='bg-azure-50p full-xy absolute top-0 left-0 overflow-auto p20xy flex-wrap-center flex-stretch' ng-if='!selected_layout.index'>
-                            <div class='playground-container full-x flex-wrap-center'>
-                                <h4 class='uppercase text-center full-x p20xy opacity-50'>{{selected_component.name}} Demo - <span class='weight-800'>TRY ME!</span></h4>
-                                <demo style='border: 4px dashed white' class='flex-wrap-center p20xy' template="{{selected_component.sample.template}}"></demo>
-                                <!-- <demo class='flex-wrap-center' template="{{selected_component.sample.template}}"></demo> -->
 
+                        <!-- Demo -->
+                        <div class='bg-azure-50p full-xy absolute top-0 left-0 overflow-auto p20xy flex-wrap-center flex-stretch' ng-if='!selected_component.index'>
+                            <div class='playground-container full-x flex-wrap-center relative'>
+                                <h4 class='uppercase text-center full-x p20xy opacity-50'>{{selected_component.name}} Demo - <span class='weight-800'>TRY ME!</span></h4>
+                                <demo style='border: 4px dashed white' class='flex-wrap-center relative p20xy' ng-if='selected_component.sample' ng-init='component = selected_component' template="{{selected_component.sample.template}}"></demo>
                             </div>
                             <div class='scope-container flex-wrap-center flex-end flex-column full-x'>
                                 <small class='lowercase text-center full-x p20xy weight-600 txt-smoke'>{{selected_component.name}} Dev Tools v1.23</small>
                                 {{selected_component.sample.scope}}
                             </div>
+                        </div>
+
+                        <!-- Details -->
+                        <div class='bg-azure-50p full-xy absolute top-0 left-0 overflow-auto p20xy flex-wrap-center flex-stretch' ng-if='selected_component.index === 1'>
+                            <h1 class='weight-600 uppercase'> {{selected_component.name}} Details </h1>
+                            <p ng-bind-html="selected_component.description">  </p>
                         </div>
                        <!--  <div  class='bg-smoke full-xy absolute top-0 left-0' ng-if='selected_layout.index === 1'>
                             {{selected_layout.description}}
