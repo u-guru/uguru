@@ -95,6 +95,28 @@
 						font-size: 18px;
 						font-weight: 600;
 						padding: 5px 10px;
+						&.bg-robin {
+							background: rgba($robin, .75);
+							&:hover, &:focus {
+								background: rgba(mix($robin, white), .75);
+								color: mix($robin, $slate);
+							}
+							&:active {
+								background: rgba(mix($robin, $slate), .75);
+								color: white;
+							}
+						}
+						&.bg-crimson {
+							background: rgba($crimson, .75);
+							&:hover, &:focus {
+								background: rgba(mix($crimson, white), .75);
+								color: mix($crimson, $slate);
+							}
+							&:active {
+								background: rgba(mix($crimson, $slate), .75);
+								color: white;
+							}
+						}
 					}
 				}
 			}
