@@ -19,15 +19,21 @@ angular.module('uguru.util.controllers')
 			layouts: AdminContent.getLayouts(),
 			user_stories: AdminContent.getUserStories(),
 			defaults: {
-				tabsIndex: 0,
+				tabsIndex: 2,
 				sidebarIndex: 1
 			}
 		}
-		$scope.selected_component = $scope.page.components[2];
+		$scope.selected_component = $scope.page.components[4];
+
+
+
+
+		// launchComponentCTAOnLoad('tabs', $scope.selected_component);
 
 		$scope.initAndLaunchLayoutCTA = function($event, layout) {
 			var targetElem = $event.target;
 			$scope.selected_layout = layout;
+			// $scope.selected_layout = layout;
 			// $timeout(function() {
 			// 	$scope.$apply(function() {
 			// 		$scope.selected_component = component;
@@ -50,35 +56,29 @@ angular.module('uguru.util.controllers')
 			$timeout(function() {
 				var targetElem = document.querySelector('#cta-box-selected-layout');
 				angular.element(targetElem).triggerHandler('click');
-
-				CTAService.showCTAManually(targetElem.id, function() {
-					var modalElem = document.querySelector('#cta-modal-selected-layout');
-					$timeout(function() {
-						modalElem && modalElem.classList.add('show');
-					}, 100);
-				});
-
+				var modalElem = document.querySelector('#cta-modal-selected-layout');
+				modalElem && modalElem.classList.add('show');
 			})
 		}
 
 		$scope.initAndLaunchComponentCTA = function($event, component) {
 			var targetElem = $event.target;
+			$scope.selected_component = component;
+			// $timeout(function() {
+			// 	$scope.$apply(function() {
+			// 		$scope.selected_component = component;
+			// 		var demoComponentContainer = angular.element(document.querySelector('#demo-component-template'));
+			// 		demoComponentContainer.html($scope.selected_component.sample.template);
+			// 		console.log(demoComponentContainer);
+			// 		$compile(demoComponentContainer.contents())($scope);
+			// 	})
+			// })
 
-			$timeout(function() {
-				$scope.$apply(function() {
-					$scope.selected_component = component;
-					var demoComponentContainer = angular.element(document.querySelector('#demo-component-template'));
-					demoComponentContainer.html($scope.selected_component.sample.template);
-					console.log(demoComponentContainer);
-					$compile(demoComponentContainer.contents())($scope);
-				})
-			})
-
-			$timeout(function() {
-				$scope.selected_component = component;
-				var demo = document.querySelector('#demo-template');
-				$compile(demo)($scope);
-			}, 1000)
+			// $timeout(function() {
+			// 	$scope.selected_component = component;
+			// 	var demo = document.querySelector('#demo-template');
+			// 	$compile(demo)($scope);
+			// }, 1000)
 
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-component';
@@ -86,14 +86,15 @@ angular.module('uguru.util.controllers')
 			$timeout(function() {
 				var targetElem = document.querySelector('#cta-box-selected-component');
 				angular.element(targetElem).triggerHandler('click');
+				var modalElem = document.querySelector('#cta-modal-selected-component');
+				modalElem && modalElem.classList.add('show');
+				// CTAService.showCTAManually(targetElem.id, function() {
 
-				CTAService.showCTAManually(targetElem.id, function() {
-					var modalElem = document.querySelector('#cta-modal-selected-component');
-					$timeout(function() {
-						modalElem && modalElem.classList.add('show');
+				// 	$timeout(function() {
+				// 		modalElem && modalElem.classList.add('show');
 
-					}, 100);
-				});
+				// 	}, 100);
+				// });
 
 			})
 		}
@@ -141,6 +142,15 @@ angular.module('uguru.util.controllers')
 			}
 		}
 
+		// function launchComponentCTAOnLoad(ref_id, component) {
+		// 	$timeout(function() {
+		// 		$scope.$on('$ionicView.enter', function() {
+		// 			var componentSelectedElem = document.querySelector('#component-' + ref_id);
+		// 			$scope.initAndLaunchComponentCTA({target: componentSelectedElem}, component)
+		// 		})
+		// 	})
+		// }
+
 		$scope.hideLayoutCTA = function($event) {
 			if ($scope.lastCTABoxTargetElem) {
 				CTAService.closeCTAManually($scope.lastCTABoxTargetElem.id, function() {
@@ -166,6 +176,11 @@ angular.module('uguru.util.controllers')
 		$timeout(function() {
 			$scope.page.layout.sidebar.index = $scope.page.defaults.sidebarIndex;
 			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = $scope.page.defaults.tabsIndex;
+
+
+			// var layoutElem = document.querySelector('#layout-guru-ranking-layout');
+			// angular.element(layoutElem).triggerHandler('click')
+
 		}, 1000)
 	}
 

@@ -321,7 +321,7 @@ var layoutList = [
             gallery_states: [],
             bugs: [],
             sample: {
-                template_url: 'templates/dev/layouts/guru.ranking.tpl',
+                template_url: 'templates/components/dev/layouts/guru.ranking.tpl',
                 scope: {
                     guru_hs_list: [{index: 1, name: 'Jeselle O.', guru_ranking: 1}, {index: 2, name: 'Jason M', guru_ranking: 2}, {index: 2, name: 'Gabrielle W', guru_ranking: 3}, {index: 4, name: 'Gabrielle W', guru_ranking: 4, is_user:true}],
                     user: {
@@ -330,7 +330,9 @@ var layoutList = [
                         name: 'Samir M'
                     },
                     list_index: 0,
-                    header: 'Guru Ranking'
+                    header: 'Guru Ranking',
+                    tabIndex: 0,
+                    tab_options: ['High Score List', 'Next Steps']
                 }
             },
             template_url: 'templates/dev/something.tpl',
@@ -397,9 +399,9 @@ var componentList = [
         ref: 'tabs',
         name: 'Tabs',
         sample: {
-            template: '<tabs class="txt-white" tabs="component.sample.scope.tabs" />',
+            template: '<tabs class="txt-white" key="title" index="component.sample.scope.index" options="component.sample.scope.tabs" />',
             scope: {
-                tabs: ['Apples', 'Oranges', 'Bananas'],
+                tabs: [{title: 'Apples'}, {title: 'Oranges'}, {title: 'Bananas'}],
                 index: 1
             }
         }

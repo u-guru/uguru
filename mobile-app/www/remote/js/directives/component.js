@@ -19,16 +19,17 @@ angular.module('uguru.components', [])
     restrict: 'E'
   };
 })
-.directive("demo", ['$compile', function($compile) {
+.directive("demo", ['$compile', '$timeout', function($compile, $timeout) {
   return {
     restrict: 'E',
     scope: '=',
     link: function(scope, element, attr) {
-
-      if (attr.template && attr.template.length) {
-        element.html(attr.template);
-        $compile(element.contents())(scope);
-      }
+      $timeout(function() {
+        if (attr.template && attr.template.length) {
+          element.html(attr.template);
+          $compile(element.contents())(scope);
+        }
+      }, 1000);
     }
   };
 }])
@@ -91,6 +92,7 @@ angular.module('uguru.components', [])
     scope: {
         avg: '=avg',
     },
+    replace: true,
     restrict: 'E',
     link: function( scope, element, attr ) {
       console.log(scope.avg);
@@ -118,16 +120,19 @@ angular.module('uguru.components', [])
   return {
     templateUrl: BASE + 'templates/components/dev/containers/tabs.tpl',
     scope: {
-        options: '=',
-        key: '=key',
-        tabIndex: '='
+        options: '=options',
+        key: '@?key',
+        tabIndex: '=index'
     },
     restrict: 'E',
-    // replace: true,
+    replace: true,
     link: function( scope, element, attr ) {
-       // if (!attr.key) {
-       //  scope.key = null;
-       // }
+      if (! ('index' in attr)) {
+        scope.tabIndex = 0;
+      }
+      scope.updateTabIndex = function ($index) {
+        scope.tabIndex = $index;
+      }
     }
   };
 })
