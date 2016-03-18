@@ -186,7 +186,8 @@ function AdminContent($localstorage) {
                     components: componentList
                 },
                 'gabrielle': {
-                    components: componentList
+                    components: componentList,
+                    setup: generateSetupActionItems()
                 },
                 'samir': {
                     components: componentList
@@ -241,6 +242,10 @@ function AdminContent($localstorage) {
 
     function initGlosseryContent() {
         return docs;
+    }
+
+    function generateSetupActionItems() {
+        return gabrielleSetupList;
     }
 
     function getComponents() {
@@ -597,3 +602,4 @@ function compileAssets() {
 
 }
 
+gabrielleSetupList = ['place some svgs @ components > assets', 'filter icon w/ transparent tab bar', 'standardize the subnavbars'];

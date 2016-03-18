@@ -72,6 +72,15 @@
 	}
 	
 	// content sections
+	.tab-container {
+		width: 100%;
+		.tab-bar {
+			background: transparent!important;
+		}
+	}
+	.admin-content {
+		height: calc(100% - 60px);
+	}
 	.admin-content-section {
 		@include flex;
 		width: 100%;

@@ -141,6 +141,18 @@
   color: #40484B;
 }
 
+#admin .tab-container {
+  width: 100%;
+}
+
+#admin .tab-container .tab-bar {
+  background: transparent !important;
+}
+
+#admin .admin-content {
+  height: calc(100% - 60px);
+}
+
 #admin .admin-content-section {
   -ms-box-orient: horizontal;
   display: -webkit-box;
