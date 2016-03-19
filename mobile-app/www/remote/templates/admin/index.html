@@ -890,6 +890,134 @@
                             <h2>UX Funnel</h2>
                         </div>
                     </div>
+                    
+                    <div class='admin-content txt-charcoal relative full-x flex-wrap-start top-0 left-0 overflow-auto' ng-hide='page.layout.sections[2].tabs.index !== $index' ng-repeat='option in page.layout.sections[2].tabs.options'>
+                        <h1 style='height:5%;' class='bg-campus full-x flex-wrap-center weight-600 txt-16'>
+                            {{option.header}}
+                        </h1>
+                        <div class="admin-docs admin-reference admin-content-section" ng-if='!page.layout.sections[2].tabs.index'>
+                            <h2>UX Funnel</h2>
+                        </div>
+                        <div class="admin-reference admin-content-section" ng-if='page.layout.sections[2].tabs.index === 1'></div>
+                        <div class="admin-colors admin-reference admin-content-section" ng-if='page.layout.sections[2].tabs.index === 2'>
+                            <ul>
+                                <li>
+                                    <div class="bg-charcoal">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Charcoal</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-slate">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Slate</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-taupe">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Taupe</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-campus">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Campus</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-smoke">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Smoke</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-white">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>White</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <div class="bg-shamrock">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Shamrock</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-robin">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Robin</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-lake">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Lake</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-moxie">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Moxie</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="admin-reference admin-content-section" ng-if='page.layout.sections[2].tabs.index === 3'></div>
+                    </div>
+                    
                 </section>
                 <section class='flex-wrap-center full-xy txt-charcoal' ng-hide='page.layout.sidebar.index !== 3'>
                     <div class="tab-container bg-robin">
