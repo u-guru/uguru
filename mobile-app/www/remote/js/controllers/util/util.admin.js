@@ -69,13 +69,13 @@ angular.module('uguru.util.controllers')
 			$scope.adminItemCTAShown = true;
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.admin_item = {
-				dropdown_options: {index: 0, options: ['Milestone', 'Element Revision', 'New Element or Asset', 'New Action Item', 'New Revision']},
+				dropdown_options: {index: 3, options: ['Milestone', 'Element Revision', 'New Element or Asset', 'New Action Item', 'New Revision']},
 				options: {
 					element: {
 						type: ['Component', 'Container', 'Layouts', 'User Stories', 'Assets'],
-						name: '',
-						description: [],
-						moodboard_refs: [],
+						name: '', // text input field
+						description: [], // text input / textarea
+						moodboard_refs: [], //
 						components_within: [],
 						tags: [],
 					},
@@ -83,6 +83,7 @@ angular.module('uguru.util.controllers')
 						name: '',
 						reference_url: '',
 						best_part: ['Component', 'Container', 'Layouts', 'User Stories', 'Assets'],
+						description: '', // text input / textarea
 						tags: []
 					},
 					element_revision: {
@@ -260,8 +261,8 @@ angular.module('uguru.util.controllers')
 			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = $scope.page.defaults.tabsIndex;
 
 
-			// var layoutElem = document.querySelector('#layout-guru-ranking-layout');
-			// angular.element(layoutElem).triggerHandler('click')
+			var adminItemElem = document.querySelector('#cta-box-admin-item');
+			angular.element(adminItemElem).triggerHandler('click');
 
 		}, 1000)
 	}
