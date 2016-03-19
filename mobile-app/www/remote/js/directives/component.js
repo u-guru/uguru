@@ -143,3 +143,28 @@ angular.module('uguru.components', [])
     }
   };
 })
+.directive("colorPicker", function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/color.picker.tpl',
+    scope: {
+        selectedColor: '=',
+
+    },
+    restrict: 'E',
+    replace: true,
+    link: function( scope, element, attr ) {
+      scope.defaultColorOptions = ['auburn', 'orange', 'gold', 'moola', 'shamrock', 'azure', 'lake', 'cobalt', 'eggplant', 'campus', 'taupe', 'slate', 'charcoal'];
+      scope.showColorPicker = true;
+      if (!scope.selectedColor || !scope.defaultColorOptions.length) {
+        scope.selectedColor = 'shamrock';
+      }
+      scope.setSelectedColor = function(color_option) {
+        scope.selectedColor = color_option;
+      }
+      scope.setAndClose = function(color_option) {
+        scope.selectedColor = color_option;
+        scope.showColorPicker = false;
+      }
+    }
+  };
+})

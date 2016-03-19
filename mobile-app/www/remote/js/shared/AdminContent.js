@@ -368,7 +368,7 @@ var componentList = [
         notes: 'doesnt show 0.5'
     },
     {
-        tabs: 5,
+        id: 5,
         ref: 'tabs',
         name: 'Tabs',
         sample: {
@@ -379,7 +379,17 @@ var componentList = [
             }
         }
     },
-
+    {
+        id: 6,
+        ref: 'color-picker',
+        name: 'Color Picker',
+        sample: {
+            template: '<color-picker class="bg-smoke" selected-color="component.sample.scope.selectedColor"> </color-picker>',
+            scope: {
+                selectedColor:'auburn'
+            }
+        }
+    }
 ]
 
 
