@@ -217,20 +217,22 @@ angular.module('uguru.components', [])
     scope: {
         innerText: '=',
         category: '=',
-        blankNum: '@blankNum',
+        blankNum: '=',
         animArgs: '=',
+        // type: '=',
         desktopMode: '=desktop'
     },
     restrict: 'E',
     replace: true,
     link: function(scope, element, attr) {
-      scope.blankNum = 1;
+      // scope.blankNum = 1;
       if (attr.type && attr.type.toLowerCase() === 'adlib') {
-        scope.type ='adlib';
+        attr.type ='adlib';
       }
-      if (attr.blankNum && attr.blankNum.length) {
-        scope.blankNum = attr.blankNum;
+      if (scope.blankNum && scope.blankNum.length) {
+        scope.blankNum = 1
       }
+      $compile(element.contents())(scope);
     }}
 }])
 .directive('miniProfileCard', function() {
