@@ -29,8 +29,6 @@ angular.module('uguru.components', [])
         if (attr.template && attr.template.length) {
           element.html(attr.template);
           $compile(element.contents())(scope);
-
-          console.log('compile')
         }
       }, 1000);
     }
@@ -111,7 +109,6 @@ angular.module('uguru.components', [])
                 // element.attr('url',scope.url);
                 // $compile(element.contents())(scope);
                 // scope.$apply();
-                console.log("YES",scope)
               }  
           }
       };
