@@ -2512,7 +2512,6 @@ input[type=range] {
 
 /* ---------- TOOLTIPS */
 .tooltip, .guru-popup {
-	position: absolute;
 	z-index: 99;
 	padding: 0 15px;
 	&.tooltip-center,
@@ -2632,6 +2631,7 @@ input[type=range] {
 }
 // tooltips
 .tooltip {
+	min-width: 200px;
 	div {
 		position: relative;
 		background: rgba(white,.9);
@@ -2649,22 +2649,24 @@ input[type=range] {
 		}
 	}
 	button {
+		position: relative;
+		z-index: 10;
 		height: auto;
 		padding: 10px 15px;
 		font-size: 18px;
 		font-weight: 600;
+		color: white;
 		background: $shamrock;
 		border-bottom-left-radius: 2px;
 		border-bottom-right-radius: 2px;
 		line-height: 1;
-		&:hover,
-		&:focus {
-			@include opacity(1);
-			background: $slate;
+		&:hover, &:focus {
+			background: mix($shamrock, white);
+			color: mix($shamrock, $slate);
 		}
-		&.activated,
 		&:active {
-			background: $charcoal;
+			background: mix($shamrock, $slate);
+			color: white;
 		}
 	}
 	&.tooltip-top {
@@ -2680,8 +2682,30 @@ input[type=range] {
 		div {
 			&::after {
 				@include center-x;
-				top: -20px;
+				bottom: -20px;
 				border-top-color: rgba(white,.9);
+			}
+		}
+		button {
+			&::after {
+				@include prefix(transition, all 150ms ease-in-out);
+				@include center-x;
+				content: "";
+				width: 0;
+				height: 0;
+				border: 10px solid transparent;
+				bottom: -20px;
+				border-top-color: $shamrock;
+			}
+			&:hover, &:focus {
+				&::after {
+					border-top-color: mix($shamrock, white);
+				}
+			}
+			&:active {
+				&::after {
+					border-top-color: mix($shamrock, $slate);
+				}
 			}
 		}
 	}
