@@ -208,6 +208,12 @@
 @mixin flex-reset {
 	display: block;
 }
+@mixin flex-stretch {
+	-webkit-align-items: stretch!important;
+	align-items: stretch!important;
+	-webkit-align-content: stretch!important;
+	align-content: stretch!important;
+}
 @mixin flex-stretch-impt {
 	-webkit-align-items:stretch !important;
 	align-items: stretch !important;

@@ -2762,9 +2762,6 @@ input[type=range] {
 				}
 			}
 			&.bg-auburn {
-				+ button {
-					background: $auburn;
-				}
 				li {
 					&:nth-child(1) span {
 						background: lighten($auburn, 20%);
@@ -2796,9 +2793,6 @@ input[type=range] {
 				}
 			}
 			&.bg-orange {
-				+ button {
-					background: $orange;
-				}
 				li {
 					&:nth-child(1) span {
 						background: lighten($orange, 20%);
@@ -2830,9 +2824,6 @@ input[type=range] {
 				}
 			}
 			&.bg-gold {
-				+ button {
-					background: $gold;
-				}
 				li {
 					&:nth-child(1) span {
 						background: lighten($gold, 20%);
@@ -2864,9 +2855,6 @@ input[type=range] {
 				}
 			}
 			&.bg-moola {
-				+ button {
-					background: $moola;
-				}
 				li {
 					&:nth-child(1) span {
 						background: lighten($moola, 20%);
@@ -2898,9 +2886,6 @@ input[type=range] {
 				}
 			}
 			&.bg-shamrock {
-				+ button {
-					background: $shamrock;
-				}
 				li {
 					&:nth-child(1) span {
 						background: lighten($shamrock, 20%);
@@ -2932,9 +2917,6 @@ input[type=range] {
 				}
 			}
 			&.bg-azure {
-				+ button {
-					background: $azure;
-				}
 				li {
 					&:nth-child(1) span {
 						background: lighten($azure, 20%);
@@ -2966,9 +2948,6 @@ input[type=range] {
 				}
 			}
 			&.bg-lake {
-				+ button {
-					background: $lake;
-				}
 				li {
 					&:nth-child(1) span {
 						background: lighten($lake, 20%);
@@ -3000,9 +2979,6 @@ input[type=range] {
 				}
 			}
 			&.bg-cobalt {
-				+ button {
-					background: $cobalt;
-				}
 				li {
 					&:nth-child(1) span {
 						background: lighten($cobalt, 20%);
@@ -3034,9 +3010,6 @@ input[type=range] {
 				}
 			}
 			&.bg-eggplant {
-				+ button {
-					background: $eggplant;
-				}
 				li {
 					&:nth-child(1) span {
 						background: lighten($eggplant, 20%);
@@ -3068,9 +3041,6 @@ input[type=range] {
 				}
 			}
 			&.bg-campus {
-				+ button {
-					background: $campus;
-				}
 				li {
 					&:nth-child(1) span {
 						background: lighten($campus, 20%);
@@ -3102,9 +3072,6 @@ input[type=range] {
 				}
 			}
 			&.bg-taupe {
-				+ button {
-					background: $taupe;
-				}
 				li {
 					&:nth-child(1) span {
 						background: lighten($taupe, 20%);
@@ -3136,9 +3103,6 @@ input[type=range] {
 				}
 			}
 			&.bg-slate {
-				+ button {
-					background: $slate;
-				}
 				li {
 					&:nth-child(1) span {
 						background: lighten($slate, 20%);
@@ -3170,9 +3134,6 @@ input[type=range] {
 				}
 			}
 			&.bg-charcoal {
-				+ button {
-					background: $charcoal;
-				}
 				li {
 					&:nth-child(1) span {
 						background: lighten($charcoal, 20%);

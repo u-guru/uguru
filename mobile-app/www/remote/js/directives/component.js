@@ -143,3 +143,68 @@ angular.module('uguru.components', [])
     }
   };
 })
+.directive("colorPicker", function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/color.picker.tpl',
+    scope: {
+        selectedColor: '=',
+
+    },
+    restrict: 'E',
+    replace: true,
+    link: function( scope, element, attr ) {
+      scope.defaultColorOptions = ['auburn', 'orange', 'gold', 'moola', 'shamrock', 'azure', 'lake', 'cobalt', 'eggplant', 'campus', 'taupe', 'slate', 'charcoal'];
+      scope.showColorPicker = true;
+      if (!scope.selectedColor || !scope.defaultColorOptions.length) {
+        scope.selectedColor = 'shamrock';
+      }
+      scope.setSelectedColor = function(color_option) {
+        scope.selectedColor = color_option;
+      }
+      scope.setAndClose = function(color_option) {
+        scope.selectedColor = color_option;
+        scope.showColorPicker = false;
+      }
+    }
+  };
+})
+.directive('miniProfileCard', function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/guru.profile.mini.tpl',
+  }
+})
+
+.directive('profileCard', function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/guru.profile.tpl',
+  }
+})
+
+.directive('miniProfileCard', function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/guru.pricing.tile.tpl',
+  }
+})
+.directive('pricingTile', function() {
+  return {
+    templateURL: BASE + 'templates/components/dev/containers/pricing.til.tpl'
+  }
+})
+.directive('schoolIdCard', function() {
+  return {
+    templateURL: BASE + 'templates/components/dev/containers/school.id.tpl'
+    //pass in user
+    //pass in user.university
+    //pass in user.profile-url
+    // pass in user.student_courses
+  }
+})
+.directive('universityMarker', function() {
+  return {
+    templateURL: BASE + 'templates/components/dev/containers/university.marker.tpl'
+    //pass in user
+    //pass in user.university
+    //pass in user.profile-url
+    // pass in user.student_courses
+  }
+})
