@@ -2,7 +2,7 @@
     <header>
         <span class="admin-logo" ng-include="img_base + BASE + 'templates/svg/logo-admin.html'"></span>
          <div class='flex-right absolute  top-0 right-0'>
-            <a ng-click='initAndLaunchAdminItemCTA($event)' id='cta-box-admin-item' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
+            <a ng-click='initAndLaunchAdminItemCTA($event)' id='cta-box-admin-item' ng-hide="adminItemCTAShown" class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
                 <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5px">
                     <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
                 </svg>

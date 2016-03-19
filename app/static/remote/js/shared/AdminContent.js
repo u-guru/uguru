@@ -334,12 +334,13 @@ var componentList = [
         name: 'User Icon',
         notes: 'Add pre-loader states while the image is loading',
         sample: {
-            template: '<user-icon class="center-xy" size="component.sample.scope.size" url="component.sample.scope.profile_url"> </user-icon>',
+            template: '<user-icon size="component.sample.scope.size" url="component.sample.scope.profile_url"> </user-icon>',
             scope: {
                 profile_url: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200',
                 size: 'medium'
             }
-        }
+        },
+        bugs: [{assigned:"samir", reason: "doesn't work"}]
     },
     {
         id: 3,
@@ -347,7 +348,7 @@ var componentList = [
         name: 'Tool Tip',
         notes: 'CSS issues',
         sample: {
-            template: '<tooltip class="full-x center-xy" direction="component.sample.scope.direction" title="component.sample.scope.title" button-text="component.sample.scope.button_text"/>',
+            template: '<tooltip direction="component.sample.scope.direction" title="component.sample.scope.title" button-text="component.sample.scope.button_text"/>',
             scope: {
                 button_text: 'Okay',
                 title: 'This is a tool-tip',
@@ -360,7 +361,7 @@ var componentList = [
         ref: 'rating-stars',
         name: 'Rating Stars',
         sample: {
-            template: '<rating class="center-xy" style="width:100px; height:50px;" avg="component.sample.scope.avg"/>',
+            template: '<rating style="width:100px;" avg="component.sample.scope.avg"/>',
             scope: {
                 avg: 4.5
             }
@@ -372,7 +373,7 @@ var componentList = [
         ref: 'tabs',
         name: 'Tabs',
         sample: {
-            template: '<tabs class="txt-white" key="title" index="component.sample.scope.index" options="component.sample.scope.tabs" />',
+            template: '<tabs key="title" index="component.sample.scope.index" options="component.sample.scope.tabs" />',
             scope: {
                 tabs: [{title: 'Apples'}, {title: 'Oranges'}, {title: 'Bananas'}],
                 index: 1
@@ -391,7 +392,20 @@ var componentList = [
         },
         action_items: [{'Gabrielle': 'Place in guru profile under the third tab "which we can call miscellaneous"'}],
         bugs: [{girls: 'resolve inputs and save buttons vs blurs'}],
+    },
+    {
+        id: 7,
+        ref: 'mini-profile-card',
+        name: 'Mini Profile Card',
+        bugs: [{girls: "classes are off, it doesn't make sense that my mini profile card has a 'large option.'"}]
+    },
+    {
+        id: 8,
+        ref: 'profile-card',
+        name: 'Profile Card',
+        bugs: [{girls: "Discuss names convenient for everyone. I.e. PF -Card. "}]
     }
+
 ]
 
 

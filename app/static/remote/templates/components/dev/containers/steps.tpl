@@ -1,4 +1,4 @@
-<div class="home-tiles-main home-tiles-container">
+<div class="home-tiles-main home-tiles-container absolute full-xy">
     <h1 class='p20xy'> {{header}} </h1>
     <div class="home-tiles-main-inside">
         <a class="home-tile" id='cta-box-student-request' ng-repeat='step in steps'>

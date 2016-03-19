@@ -162,34 +162,43 @@ gulp.task('styles', function() {
                 { style: 'compressed' } :
                 { style: 'expanded' };
   var cssStream1 = gulp.src('www/remote/css/ionic.app.min.css');
-  var cssStream2 = gulp.src('www/remote/css/sass/default.css');
-  var cssStream3 = gulp.src('www/remote/css/sass/swiper.css');
-  var cssStream4 = gulp.src('www/remote/css/sass/loading.css');
-  var cssStream5 = gulp.src('www/remote/lib/dropzone/dropzone.min.css');
-  var cssStream6 = gulp.src('www/remote/css/sass/material.css');
-  var cssStream7 = gulp.src('www/remote/css/sass/animate.css');
-  var cssStream8 = gulp.src('www/remote/css/sass/magic.css');
-  var cssStream9 = gulp.src('www/remote/css/sass/animation.css');
-  var cssStream10 = gulp.src('www/remote/css/sass/desktop.css');
-  var cssStream11 = gulp.src('www/remote/css/sass/desktop-student.css');
-  var cssStream12 = gulp.src('www/remote/css/sass/desktop-guru.css');
-  var cssStream13 = gulp.src('www/remote/css/sass/style.css');
-  var cssStream14 = gulp.src('www/remote/css/sass/style-pf.css');
-  var cssStream15 = gulp.src('www/remote/css/sass/style-pf-color.css');
-  var cssStream16 = gulp.src('www/remote/css/sass/style-modals.css');
-  var cssStream17 = gulp.src('www/remote/css/sass/universal.css');
-  var cssStream18 = gulp.src('www/remote/css/sass/splash.css');
-  var cssStream19 = gulp.src('www/remote/css/sass/intercom.css');
-  var cssStream20 = gulp.src('www/remote/css/sass/samir.css');
-  var cssStream21 = gulp.src('www/remote/css/sass/essay.css');
-  var cssStream22 = gulp.src('www/remote/css/sass/angular-fx.css');
+  var cssStream2 = gulp.src('www/remote/css/sass/utility.css');
+  var cssStream3 = gulp.src('www/remote/css/sass/components.css');
+  var cssStream4 = gulp.src('www/remote/css/sass/style.css');
+  var cssStream5 = gulp.src('www/remote/css/sass/swiper.css');
+  var cssStream6 = gulp.src('www/remote/css/sass/loading.css');
+  var cssStream7 = gulp.src('www/remote/lib/dropzone/dropzone.min.css');
+  var cssStream8 = gulp.src('www/remote/css/sass/material.css');
+  var cssStream9 = gulp.src('www/remote/css/sass/animate.css');
+  var cssStream10 = gulp.src('www/remote/css/sass/magic.css');
+  var cssStream11 = gulp.src('www/remote/css/sass/animation.css');
+  var cssStream12 = gulp.src('www/remote/css/sass/desktop.css');
+  var cssStream13 = gulp.src('www/remote/css/sass/universal.css');
+  var cssStream14 = gulp.src('www/remote/css/sass/modals.css');
+  var cssStream15 = gulp.src('www/remote/css/sass/admin.css');
+  var cssStream16 = gulp.src('www/remote/css/sass/home.css');
+  var cssStream17 = gulp.src('www/remote/css/sass/onboarding.css');
+  var cssStream18 = gulp.src('www/remote/css/sass/request.css');
+
+  var cssStream19 = gulp.src('www/remote/css/sass/profile.css');
+  var cssStream20 = gulp.src('www/remote/css/sass/profile-color.css');
+
+  var cssStream21 = gulp.src('www/remote/css/sass/splash.css');
+  var cssStream22 = gulp.src('www/remote/css/sass/splash-animation.css');
+
+  var cssStream23 = gulp.src('www/remote/css/sass/intercom.css');
+  var cssStream24 = gulp.src('www/remote/css/sass/samir.css');
+  var cssStream25 = gulp.src('www/remote/css/sass/essay.css');
+  var cssStream26 = gulp.src('www/remote/css/sass/angular-fx.css');
+
+
 
 
 
   return streamqueue({ objectMode: true }, cssStream1, cssStream2, cssStream3,
     cssStream4, cssStream5, cssStream6, cssStream7, cssStream8, cssStream9, cssStream10,
     cssStream11, cssStream12, cssStream13, cssStream14, cssStream15, cssStream16, cssStream17, cssStream18,
-    cssStream19, cssStream20, cssStream21, cssStream22).pipe(plugins.concat('main.css'))
+    cssStream19, cssStream20, cssStream21, cssStream22, cssStream23, cssStream24, cssStream25, cssStream26).pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS())
     .pipe(plugins.if(build, plugins.rev()))
@@ -415,6 +424,7 @@ gulp.task('templates', function() {
         'templates/components/modals/*html',
         'templates/components/details/*html',
         'templates/components/inputs/*html',
+        'templates/components/**/**/**.html'
 
       ], { cwd: 'www/remote' })
     .pipe(gulp.dest(path.join(targetDir, 'templates')))

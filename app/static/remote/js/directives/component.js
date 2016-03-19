@@ -63,12 +63,12 @@ angular.module('uguru.components', [])
     replace:true,
     restrict: 'E',
     link: function( scope, element, attr ) {
-      if (attr.size && attr.size === 'small') {
+      if (scope.size && scope.size === 'small') {
         scope.size = '-32'
-      } else if (attr.size && attr.size === 'medium'){
+      } else if (scope.size && scope.size === 'medium'){
         scope.size= '-64'
       }
-      if (!attr.url || !attr.url.length) {
+      if (!scope.url || !scope.url.length) {
         scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
       }
     }
@@ -167,4 +167,44 @@ angular.module('uguru.components', [])
       }
     }
   };
+})
+.directive('miniProfileCard', function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/guru.profile.mini.tpl',
+  }
+})
+
+.directive('profileCard', function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/guru.profile.tpl',
+  }
+})
+
+.directive('miniProfileCard', function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/guru.pricing.tile.tpl',
+  }
+})
+.directive('pricingTile', function() {
+  return {
+    templateURL: BASE + 'templates/components/dev/containers/pricing.til.tpl'
+  }
+})
+.directive('schoolIdCard', function() {
+  return {
+    templateURL: BASE + 'templates/components/dev/containers/school.id.tpl'
+    //pass in user
+    //pass in user.university
+    //pass in user.profile-url
+    // pass in user.student_courses
+  }
+})
+.directive('universityMarker', function() {
+  return {
+    templateURL: BASE + 'templates/components/dev/containers/university.marker.tpl'
+    //pass in user
+    //pass in user.university
+    //pass in user.profile-url
+    // pass in user.student_courses
+  }
 })

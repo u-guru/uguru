@@ -261,8 +261,8 @@ angular.module('uguru.util.controllers')
 			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = $scope.page.defaults.tabsIndex;
 
 
-			var adminItemElem = document.querySelector('#cta-box-admin-item');
-			angular.element(adminItemElem).triggerHandler('click');
+			// var adminItemElem = document.querySelector('#cta-box-admin-item');
+			// angular.element(adminItemElem).triggerHandler('click');
 
 		}, 1000)
 	}

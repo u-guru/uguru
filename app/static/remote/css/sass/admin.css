@@ -139,14 +139,16 @@
   flex-flow: row wrap; }
   #admin .admin-assets h1 {
     width: 100%;
-    padding: 15px 4px 0px;
+    padding: 15px 15px 0px;
     font-size: 24px;
-    font-weight: 600; }
+    font-weight: 600;
+    color: #40484B; }
   #admin .admin-assets h2 {
     width: 100%;
-    padding: 15px 4px;
+    padding: 15px;
     font-size: 18px;
-    font-weight: 600; }
+    font-weight: 600;
+    color: #40484B; }
   #admin .admin-assets ul {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -161,10 +163,10 @@
     -webkit-align-content: flex-start;
     align-content: flex-start;
     width: 100%;
-    padding: 2px; }
+    padding: 7.5px; }
     #admin .admin-assets ul li {
-      width: 10%;
-      padding: 2px; }
+      width: calc(100% / 8);
+      padding: 7.5px; }
       #admin .admin-assets ul li span {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -186,7 +188,7 @@
           width: 100%;
           background: white; }
     #admin .admin-assets ul.large li {
-      width: 12.5%; }
+      width: calc(100% / 6); }
     #admin .admin-assets ul + ul {
       margin-top: -4px; }
 #admin .admin-moodboard > ul {
@@ -199,10 +201,17 @@
   display: flex;
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
-  flex-flow: row wrap; }
+  flex-flow: row wrap;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
+  width: 100%;
+  padding: 7.5px; }
   #admin .admin-moodboard > ul li {
     width: 25%;
-    height: 200px; }
+    height: 200px;
+    padding: 7.5px; }
     #admin .admin-moodboard > ul li div {
       position: relative;
       width: 100%;
@@ -278,16 +287,16 @@
       font-size: 16px;
       font-weight: 600;
       text-align: center; }
-#admin .admin-components > h2 {
+#admin .admin-components > h2, #admin .admin-containers > h2 {
   font-weight: 600;
   padding: 15px 15px 0;
   width: 100%; }
-#admin .admin-components > p {
+#admin .admin-components > p, #admin .admin-containers > p {
   font-size: 28px;
   font-weight: 400;
   margin: 0;
   padding: 5px 15px 15px; }
-#admin .admin-components > ul {
+#admin .admin-components > ul, #admin .admin-containers > ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -295,12 +304,15 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   padding: 7.5px;
   width: 100%; }
-  #admin .admin-components > ul > li {
+  #admin .admin-components > ul > li, #admin .admin-containers > ul > li {
     width: 25%;
     padding: 7.5px; }
-    #admin .admin-components > ul > li > div > h1 {
+    #admin .admin-components > ul > li > div > h1, #admin .admin-components > ul > li > div > a, #admin .admin-containers > ul > li > div > h1, #admin .admin-containers > ul > li > div > a {
       padding: 10px 15px;
       background: #69B3A5;
       font-size: 20px;
@@ -308,7 +320,19 @@
       text-align: center;
       border-top-left-radius: 2px;
       border-top-right-radius: 2px; }
-    #admin .admin-components > ul > li > div > h2 {
+      #admin .admin-components > ul > li > div > h1 h1, #admin .admin-components > ul > li > div > a h1, #admin .admin-containers > ul > li > div > h1 h1, #admin .admin-containers > ul > li > div > a h1 {
+        font-weight: 600; }
+    #admin .admin-components > ul > li > div > a:hover, #admin .admin-components > ul > li > div > a:focus, #admin .admin-containers > ul > li > div > a:hover, #admin .admin-containers > ul > li > div > a:focus {
+      background: #b4d9d2;
+      color: #557e78; }
+      #admin .admin-components > ul > li > div > a:hover + div, #admin .admin-components > ul > li > div > a:focus + div, #admin .admin-containers > ul > li > div > a:hover + div, #admin .admin-containers > ul > li > div > a:focus + div {
+        border-color: #b4d9d2; }
+    #admin .admin-components > ul > li > div > a:active, #admin .admin-containers > ul > li > div > a:active {
+      background: #557e78;
+      color: white; }
+      #admin .admin-components > ul > li > div > a:active + div, #admin .admin-containers > ul > li > div > a:active + div {
+        border-color: #557e78; }
+    #admin .admin-components > ul > li > div > h2, #admin .admin-containers > ul > li > div > h2 {
       padding: 10px 15px;
       background: #b4d9d2;
       color: #557e78;
@@ -317,13 +341,19 @@
       text-align: center;
       border-bottom-left-radius: 2px;
       border-bottom-right-radius: 2px; }
-    #admin .admin-components > ul > li > div > div {
-      background: #2B3234;
+    #admin .admin-components > ul > li > div > div, #admin .admin-containers > ul > li > div > div {
+      -webkit-transition: all 150ms ease-in-out;
+      -moz-transition: all 150ms ease-in-out;
+      -ms-transition: all 150ms ease-in-out;
+      -o-transition: all 150ms ease-in-out;
+      transition: all 150ms ease-in-out;
+      overflow: hidden;
+      background: rgba(43, 50, 52, 0.8);
       position: relative;
       border: 2px solid #69B3A5;
       border-top: 0;
       height: 200px; }
-      #admin .admin-components > ul > li > div > div > * {
+      #admin .admin-components > ul > li > div > div > *, #admin .admin-containers > ul > li > div > div > * {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -332,8 +362,12 @@
         -ms-transform: translate(-50%, -50%);
         -o-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%); }
-      #admin .admin-components > ul > li > div > div:empty {
+      #admin .admin-components > ul > li > div > div:empty, #admin .admin-containers > ul > li > div > div:empty {
         display: none; }
+#admin .admin-containers > ul > li {
+  width: 50%; }
+  #admin .admin-containers > ul > li > div > div {
+    height: 400px; }
 #admin .admin-time-states h2 {
   font-weight: 600;
   padding: 15px 15px 0; }

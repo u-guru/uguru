@@ -1,9 +1,13 @@
 <div id="admin" class='full-xy flex-wrap-center flex-stretch absolute'>
     <header>
         <span class="admin-logo" ng-include="img_base + BASE + 'templates/svg/logo-admin.html'"></span>
-        <!--  <div class='flex-right relative' ng-init="navDropdown = {options: ['admin', 'student', 'guru', 'logout'], selectedIndex:0}">
-            <dropdown ng-model="navDropdown" ></dropdown>
-        </div> -->
+         <div class='flex-right absolute  top-0 right-0'>
+            <a ng-click='initAndLaunchAdminItemCTA($event)' id='cta-box-admin-item' ng-hide="adminItemCTAShown" class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
+                <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5px">
+                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                </svg>
+            </a>
+        </div>
     </header>
     <main>
         <aside class='admin-sidebar'>
@@ -14,6 +18,38 @@
             </a>
         </aside>
         <div id='main-admin-content' class="admin-main">
+            <ion-pane id='cta-modal-admin-item' class='full-xy hide-display cta-modal bg-azure absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch'>
+                <a ng-click='hideAdminItemCTA()' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
+                    <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5">
+                        <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                    </svg>
+                </a>
+                <div class='flex-wrap-center full-xy absolute top-0 left-0 flex-stretch bg-charcoal'>
+                    <div class='bg-shamrock-50p txt-white full-x flex-wrap-center relative' style='height:25%;'>
+                        <h1 class='text-center full-x'>I want to ....</h1>
+                        <div class='full-x absolute bottom-0 left-0 p20xy'>
+                            <tabs options="admin_item.dropdown_options.options" index='adminItemIndex'> </tabs>
+                        </div>
+                    </div>
+                    <div class='flex-wrap-center bg-azure-50p flex-stretch relative full-x' style='height:75%;'>
+                        <div class='absolute full-xy flex-wrap-center left-0 top-0' ng-hide='adminItemIndex'>
+                            <h1>Tab option 1</h1>
+                        </div>
+                        <div class='absolute full-xy flex-wrap-center left-0 top-0' ng-hide='adminItemIndex !== 1'>
+                            <h1>Tab option 2</h1>
+                        </div>
+                        <div class='absolute full-xy flex-wrap-center left-0 top-0' ng-hide='adminItemIndex !== 2'>
+                            <h1>Tab option 3</h1>
+                        </div>
+                        <div class='absolute full-xy flex-wrap-center left-0 top-0' ng-hide='adminItemIndex !== 3'>
+                            <h1>Tab option 4</h1>
+                        </div>
+                        <div class='absolute full-xy flex-wrap-center left-0 top0' ng-hide='adminItemIndex !== 4'>
+                            <h1>Tab option 5</h1>
+                        </div>
+                    </div>
+                </div>
+            </ion-pane>
             <ion-pane id='cta-modal-selected-asset-action' class='full-xy hide-display cta-modal bg-azure absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch'>
                 <a ng-click='hideComponentCTA()' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
                     <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5">
@@ -67,14 +103,14 @@
                             <tabs index="selected_layout.tabIndex" options="['demo', 'details spec', 'components', 'time states', 'action items']"/></tabs>
                         </div>
                     </div>
-                    
+
                     <div class='tab-content full-x relative flex-wrap-center bg-slate overflow-auto' style='height: 75%;'>
                         <div class='demo-section full-xy' ng-if='!selected_layout.tabIndex'>
                             <demo ng-if='selected_layout.template' style='border: 4px dashed white' class='flex-wrap-center p20xy' template="{{selected_layout.sample.template}}"></demo>
                             <div class='full-xy absolute top-0 left-0' ng-include='img_base + selected_layout.sample.template_url' ng-init='layout = selected_layout.sample.scope' ng-if='selected_layout.sample.template_url'> </div>
                         </div>
-                        
-                        
+
+
                         <div class='admin-details flex-wrap-start ugrid-2 full-xy' ng-if='selected_layout.tabIndex === 1'>
                             <div class='admin-description-container'>
                                 <div>
@@ -103,7 +139,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class='admin-components flex-wrap-start full-xy' ng-if='selected_layout.tabIndex === 2'>
                             <h2>Elements</h2>
                             <ul>
@@ -118,8 +154,8 @@
                             <h2>User Story</h2>
                             <p>{{selected_layout.name}} is a <span class='weight-900'>{{selected_layout.gallery_ref.parents[0].type}}</span> part of <span class='weight-900'>{{selected_layout.gallery_ref.parents[0].name}}</span></p>
                         </div>
-                        
-                        
+
+
                          <div class='admin-time-states flex-wrap-start full-xy' ng-if='selected_layout.tabIndex === 3'>
                             <h2>Static States</h2>
                             <ol class="numbered-list">
@@ -128,8 +164,8 @@
                                 </li>
                             </ol>
                         </div>
-                        
-                        
+
+
                         <div class="admin-action-items flex-wrap-start full-xy" ng-if='selected_layout.tabIndex === 4'>
                             <div ng-repeat='user_action_obj in selected_layout.action_items'>
                                 <h2>{{user_action_obj.user}}</h2>
@@ -333,36 +369,30 @@
                         <tabs options="page.layout.sections[1].tabs.options" index="page.layout.sections[1].tabs.index" key="title"/>
                     </div>
                     <div class='admin-content milestones-content relative flex-wrap-center full-x bg-smoke'>
-                        <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0'>
-                            <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0 overflow-auto' ng-hide='page.layout.sections[1].tabs.index !== $index' ng-repeat='option in page.layout.sections[1].tabs.options'>
+                        <div class='relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0'>
+                            <div class='relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0 overflow-auto' ng-hide='page.layout.sections[1].tabs.index !== $index' ng-repeat='option in page.layout.sections[1].tabs.options'>
                                 <h1 style='height:5%;' class='bg-campus full-x flex-wrap-center weight-600 txt-16'>{{option.title}}</h1>
-                                <div class='admin-content-section flex-wrap-center' ng-if='$index === 0'>
-                                    <div class='ugrid-4 flex-wrap-center flex-stretch full-xy padding-15-grid'>
-                                        <a ng-repeat='component in page.components track by $index' class='relative flex-wrap-center flex-stretch' style='min-height:200px;'>
-                                            <div class='relative flex-wrap-center flex-stretch full-xy'>
-                                                <div class='component-header bg-azure txt-white p20xy full-x flex-wrap-center' id='component-{{component.ref}}' ng-click='initAndLaunchComponentCTA($event, component)'>
-                                                    <div class='full-x uppercase weight-600 text-center'>
-                                                        {{component.name}}
-                                                    </div>
-                                                    <div class='absolute m15top m20right top-0 right-0 opacity-50'>
-                                                        <i class='ion-arrow-resize icon font-4'> </i>
-                                                    </div>
-                                                </div>
-                                                <div class='component-mini-demo full-x txt-white bg-slate relative' style='min-height:200px; overflow:hidden;'>
+                                <div class='admin-components admin-content-section flex-wrap-start full-x' ng-if='$index === 0'>
+                                    <ul>
+                                        <li ng-repeat='component in page.components track by $index'>
+                                            <div>
+                                                <a id='component-{{component.ref}}' class="block" ng-click='initAndLaunchComponentCTA($event, component)'><h1>{{component.name}} <i class='ion-arrow-resize icon opacity-50'> </i></h1></a>
+                                                <div>
                                                     <!-- <ng-bind src="component.template"/> -->
                                                     <demo class='flex-wrap-center' template="{{component.sample.template}}"></demo>
                                                     <!-- <step-by-step steps="component.scope.steps" header="component.scope.header"></step-by-step> -->
                                                 </div>
                                             </div>
-                                        </a>
-                                    </div>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 1'>
-                                    <a class='bg bg-robin' ng-repeat='layout in page.layouts track by $index' ng-click='initAndLaunchLayoutCTA($event, layout)'>
+                                    <!-- just use the same format from the component list for containers except change admin-components to admin-containers -->
+                                    <!-- <a class='bg bg-robin' ng-repeat='container in page.containers track by $index' ng-click='initAndLaunchLayoutCTA($event, container)'>
                                         <div class='component-header flex-center full-x uppercase weight-600 text-center' style='min-height:200px;'>
-                                            {{component.name}}
+                                            {{container.name}}
                                         </div>
-                                    </a>
+                                    </a> -->
                                 </div>
                                 <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 2'>
                                     <a class='bg bg-robin' ng-repeat='layout in page.layouts track by $index' id='layout-{{layout.ref}}' ng-click='initAndLaunchLayoutCTA($event, layout)'>
@@ -371,7 +401,9 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 3'></div>
+                                <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 3'>
+
+                                </div>
                                 <div class='admin-content-section admin-assets' ng-if='$index === 4'>
                                     <h1>Category Icons - Normal</h1>
                                     <ul class="large">
@@ -400,9 +432,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/freelancing.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Category Icons - Bottom Aligned</h1>
                                     <ul class="large">
                                         <li>
@@ -430,9 +462,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/freelancing-bottom.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Category Icons - Simple</h1>
                                     <ul class="large">
                                         <li>
@@ -451,9 +483,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/tech-simple.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Navigation Icons</h1>
                                     <ul>
                                         <li>
@@ -532,9 +564,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/main/up-circle.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Common Icons</h1>
                                     <ul>
                                         <li>
@@ -697,9 +729,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/main/video.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Food Icons</h1>
                                     <ul>
                                         <li>
@@ -709,9 +741,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/main/coffee.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Will Work For Icons*</h1>
                                     <ul>
                                         <li>
@@ -739,9 +771,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/main/wwf/tickets.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Map Icons*</h1>
                                     <ul>
                                         <li>
@@ -775,9 +807,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/main/map/weight.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Timeline Icons*</h1>
                                     <ul>
                                         <li>
@@ -799,9 +831,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/timeline/professional.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Splash Icons</h1>
                                     <ul class="large">
                                         <li>
@@ -858,9 +890,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/splash/university.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Social Icons</h1>
                                     <ul>
                                         <li>
@@ -894,9 +926,137 @@
                             <h2>UX Funnel</h2>
                         </div>
                     </div>
+
+                    <div class='admin-content txt-charcoal relative full-x flex-wrap-start top-0 left-0 overflow-auto' ng-hide='page.layout.sections[2].tabs.index !== $index' ng-repeat='option in page.layout.sections[2].tabs.options'>
+                        <h1 style='height:5%;' class='bg-campus full-x flex-wrap-center weight-600 txt-16'>
+                            {{option.header}}
+                        </h1>
+                        <div class="admin-docs admin-reference admin-content-section" ng-if='!page.layout.sections[2].tabs.index'>
+                            <h2>UX Funnel</h2>
+                        </div>
+                        <div class="admin-reference admin-content-section" ng-if='page.layout.sections[2].tabs.index === 1'></div>
+                        <div class="admin-colors admin-reference admin-content-section" ng-if='page.layout.sections[2].tabs.index === 2'>
+                            <ul>
+                                <li>
+                                    <div class="bg-charcoal">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Charcoal</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-slate">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Slate</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-taupe">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Taupe</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-campus">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Campus</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-smoke">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Smoke</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-white">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>White</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <div class="bg-shamrock">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Shamrock</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-robin">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Robin</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-lake">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Lake</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-moxie">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Moxie</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="admin-reference admin-content-section" ng-if='page.layout.sections[2].tabs.index === 3'></div>
+                    </div>
+
                 </section>
                 <section class='flex-wrap-center full-xy txt-charcoal' ng-hide='page.layout.sidebar.index !== 3'>
-                    <div class="tab-container">
+                    <div class="tab-container bg-robin">
                         <tabs options="page.layout.sections[3].tabs.options" index="page.layout.sections[3].tabs.index" key="title"/>
                     </div>
                     <div class='admin-content txt-charcoal relative full-x flex-wrap-center flex-stretch flex-start top-0 left-0 overflow-auto' ng-hide='page.layout.sections[3].tabs.index !== $index' ng-repeat='option in page.layout.sections[3].tabs.options'>
@@ -937,235 +1097,8 @@
                                 </li>
                             </ul>
                         </div>
+                        <!-- just use moodboard template from above -->
                         <div class="admin-moodboard admin-content-section" ng-if='page.layout.sections[3].tabs.index === 1'>
-                            <ul>
-                                <li>
-                                    <div class="bg-charcoal">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Charcoal</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-slate">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Slate</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-taupe">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Taupe</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-campus">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Campus</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-smoke">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Smoke</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-white">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>White</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <div class="bg-shamrock">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Shamrock</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-robin">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Robin</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-lake">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Lake</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-moxie">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Moxie</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <div class="bg-charcoal">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Charcoal</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-slate">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Slate</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-taupe">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Taupe</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-campus">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Campus</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-smoke">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Smoke</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-white">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>White</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <div class="bg-shamrock">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Shamrock</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-robin">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Robin</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-lake">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Lake</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="bg-moxie">
-                                        <svg viewBox="0 0 100 50">
-                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <h1>Moxie</h1>
-                                            <input type="text" value="#000000"/>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
                         <div class="admin-moodboard admin-content-section" ng-if='page.layout.sections[3].tabs.index === 2'>
                         </div>
