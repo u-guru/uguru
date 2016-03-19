@@ -135,6 +135,29 @@
 		}
 	}
 	
+	// code container
+	.playground-code-container {
+		@include flex;
+		@include flex-center;
+		width: 100%;
+		max-width: 600px;
+		padding: 7.5px;
+		margin: 15px auto 0;
+		li {
+			width: 50%;
+			padding: 7.5px;
+		}
+		textarea {
+			background: rgba(white, .5);
+			width: 100%;
+			min-height: 200px;
+			padding: 10px 15px;
+			&:focus {
+				background: white;
+			}
+		}
+	}
+	
 	// moodboard
 	.admin-moodboard {
 		> ul {
