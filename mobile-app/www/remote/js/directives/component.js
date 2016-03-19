@@ -174,7 +174,7 @@ angular.module('uguru.components', [])
     scope: {
         innerText: '=',
         category: '=',
-        blankNum: '@blankNum',
+        blankNum: '=',
         animArgs: '=',
         desktopMode: '=desktop'
     },
@@ -188,7 +188,7 @@ angular.module('uguru.components', [])
       if (attr.blankNum && attr.blankNum.length) {
         scope.blankNum = attr.blankNum;
       }
-
+      $compile(element)(scope);
 
     }}
 }])
