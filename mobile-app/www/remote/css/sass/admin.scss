@@ -140,9 +140,14 @@
 		> ul {
 			@include flex;
 			@include flex-wrap;
+			@include prefix(align-items, flex-start, webkit);
+			@include prefix(align-content, flex-start, webkit);
+			width: 100%;
+			padding: 7.5px;
 			li {
 				width: 25%;
 				height: 200px;
+				padding: 7.5px;
 				div {
 					position: relative;
 					width: 100%;
