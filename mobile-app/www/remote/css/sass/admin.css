@@ -201,10 +201,17 @@
   display: flex;
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
-  flex-flow: row wrap; }
+  flex-flow: row wrap;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
+  width: 100%;
+  padding: 7.5px; }
   #admin .admin-moodboard > ul li {
     width: 25%;
-    height: 200px; }
+    height: 200px;
+    padding: 7.5px; }
     #admin .admin-moodboard > ul li div {
       position: relative;
       width: 100%;
