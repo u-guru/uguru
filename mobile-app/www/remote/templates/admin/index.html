@@ -25,15 +25,48 @@
                     </svg>
                 </a>
                 <div class='flex-wrap-center full-xy absolute top-0 left-0 flex-stretch bg-charcoal'>
-                    <div class='bg-shamrock-50p txt-white full-x flex-wrap-center relative' style='height:25%;'>
-                        <h1 class='text-center full-x'>I want to ....</h1>
-                        <div class='full-x absolute bottom-0 left-0 p20xy'>
+                    <div class='bg-robin txt-white full-x flex-wrap-center relative' style='height:25%;'>
+                        <h1 class='full-x p30bottom txt-white text-center weight-600 txt-36'>I want to...</h1>
+                        <div class='tab-container bg-robin absolute bottom-0 left-0'>
                             <tabs options="admin_item.dropdown_options.options" index='adminItemIndex'> </tabs>
                         </div>
                     </div>
-                    <div class='flex-wrap-center bg-azure-50p flex-stretch relative full-x' style='height:75%;'>
-                        <div class='absolute full-xy flex-wrap-center left-0 top-0' ng-hide='adminItemIndex'>
-                            <h1>Tab option 1</h1>
+                    <div class='flex-wrap-center bg-taupe flex-stretch relative full-x' style='height:75%;'>
+                        <div class='absolute full-xy flex-wrap-start left-0 top-0 p15xy overflow-auto' ng-hide='adminItemIndex'>
+                            <form class="admin-update full-x ugrid-2">
+                                <div>
+                                    <h1 class="full-x weight-600 p10bottom">Type</h1>
+                                    <div class="dropdown full-x">
+                                        <div>
+                                            <span>Component</span>
+                                            <a ng-click='toggle()'>
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M14,32 L50,68 L86,32"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!--    didn't know what you wanted for these so i dropped in textareas,
+                                            these can easily be replaced with dropdowns or checklist or whatever you want -->
+                                    <h1 class="full-x weight-600 p10bottom m15top">Moodboard Refs</h1>
+                                    <textarea small></textarea>
+                                    <h1 class="full-x weight-600 p10bottom m15top">Components</h1>
+                                    <textarea small></textarea>
+                                </div>
+                                <div>
+                                    <h1 class="full-x weight-600 p10bottom">Name</h1>
+                                    <input class="full" type="text" />
+                                    <h1 class="full-x weight-600 p10bottom m15top">Description</h1>
+                                    <textarea></textarea>
+                                    <div class="tag-list m15top">
+                                        <!-- use tag list from request -->
+                                        <span class="chip"><input /></span>
+                                    </div>
+                                </div>
+                                <div class="full-x flex-center">
+                                    <button class="bg-robin">Submit</button>
+                                </div>
+                            </form>
                         </div>
                         <div class='absolute full-xy flex-wrap-center left-0 top-0' ng-hide='adminItemIndex !== 1'>
                             <h1>Tab option 2</h1>
@@ -97,7 +130,7 @@
                     </svg>
                 </a>
                 <div class='flex-wrap-center full-xy relative flex-stretch bg-robin' ng-hide='!selected_layout.name'>
-                    <div class='header full-x flex-wrap-center relative third' style='height: 25%'>
+                    <div class='header full-x flex-wrap-center relative' style='height: 25%'>
                         <h1 class='full-x p30bottom txt-white text-center weight-600 txt-36'>{{selected_layout.name}} Layout</h1>
                         <div class='tab-container bg-robin absolute bottom-0 left-0'>
                             <tabs index="selected_layout.tabIndex" options="['demo', 'details spec', 'components', 'time states', 'action items']"/></tabs>
@@ -195,19 +228,41 @@
                         <path stroke-width="5" d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
                     </svg>
                 </a>
-                <div class='flex-wrap-center full-xy relative flex-stretch bg-azure'>
-                    <div class='header full-x flex-wrap-center relative' style='height:calc(40%);'>
-                        <h1 class='full-x p15xy font-4 txt-white uppercase text-center weight-900'>{{selected_component.name}} Component</h1>
-                        <tabs class='bg-azure-50p absolute bottom-0 left-0' index="selected_component.index" options="elementCTATabOptions.components"/></tabs>
+                <div class='flex-wrap-center full-xy relative flex-stretch bg-robin'>
+                    <div class='header full-x flex-wrap-center relative' style='height: 25%'>
+                        <h1 class='full-x p30bottom txt-white text-center weight-600 txt-36'>{{selected_component.name}} Component</h1>
+                        <div class='tab-container bg-robin absolute bottom-0 left-0'>
+                            <tabs index="selected_component.index" options="elementCTATabOptions.components"/></tabs>
+                        </div>
                     </div>
-                    <div class='tab-content full-x relative flex-wrap-center bg-charcoal' style='height: calc(60%);'>
-
+                    
+                    <div class='tab-content full-x relative bg-slate overflow-auto' style='height: 75%;'>
                         <!-- Demo -->
-                        <div class='bg-azure-50p full-xy absolute top-0 left-0 overflow-auto p20xy flex-wrap-center flex-stretch' ng-if='!selected_component.index'>
+                        <div class='full-xy p15xy flex-wrap-start' ng-if='!selected_component.index'>
                             <div class='playground-container full-x flex-wrap-center relative'>
                                 <h4 class='uppercase text-center full-x p20xy opacity-50'>{{selected_component.name}} Demo - <span class='weight-800'>TRY ME!</span></h4>
                                 <demo style='border: 4px dashed white' class='flex-wrap-center relative p20xy' ng-if='selected_component.sample' ng-init='component = selected_component' template="{{selected_component.sample.template}}"></demo>
                             </div>
+                            <ul class="playground-code-container">
+                                <li>
+                                    <textarea><dropdown ng-model="component.sample.scope"></dropdown></textarea>
+                                </li>
+                                <li>
+                                    <textarea><div class="dropdown">
+    <div>
+        <span>{{dropdown.options[dropdown.selectedIndex]}}</span>
+        <a ng-click='toggle()'>
+            <svg viewBox="0 0 100 100">
+                <path d="M14,32 L50,68 L86,32"></path>
+            </svg>
+        </a>
+    </div>
+    <ul ng-class='{"active": dropdown.active}'>
+        <li tabindex ng-if='$index !== dropdown.selectedIndex' ng-click="click($index)" ng-repeat='option in dropdown.options'>{{option}}</li>
+    </ul>
+</div></textarea>
+                                </li>
+                            </ul>
                             <div class='scope-container flex-wrap-center flex-end flex-column full-x'>
                                 <small class='lowercase text-center full-x p20xy weight-600 txt-smoke'>{{selected_component.name}} Dev Tools v1.23</small>
                                 {{selected_component.sample.scope}}
