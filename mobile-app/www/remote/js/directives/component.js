@@ -29,6 +29,7 @@ angular.module('uguru.components', [])
         if (attr.template && attr.template.length) {
           element.html(attr.template);
           $compile(element.contents())(scope);
+
           console.log('compile')
         }
       }, 1000);
@@ -79,7 +80,7 @@ angular.module('uguru.components', [])
     }
   };
 })
-.directive("userIcon", function() {
+.directive("userIcon", ['$compile',function($compile) {
   return {
     templateUrl: BASE + 'templates/components/dev/user.icon.tpl',
     scope: {
@@ -89,17 +90,36 @@ angular.module('uguru.components', [])
     replace:true,
     restrict: 'E',
     link: function( scope, element, attr ) {
+
+      console.log('Check',!scope.url, typeof(scope.url))
       if (attr.size && attr.size === 'small') {
         scope.size = '-32'
       } else if (attr.size && attr.size === 'medium'){
         scope.size= '-64'
       }
-      if (!attr.url || !attr.url.length) {
+
+      if (typeof(scope.url) == 'undefined') {
         scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
       }
+
+      var request = new XMLHttpRequest();  
+      request.open('GET', scope.url , true);
+      request.onreadystatechange = function(){
+          if (request.readyState === 4){
+              if (request.status === 404) {  
+                scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
+                // element.attr('url',scope.url);
+                // $compile(element.contents())(scope);
+                // scope.$apply();
+                console.log("YES",scope)
+              }  
+          }
+      };
+      request.send()
+
     }
   };
-})
+}])
 .directive("tooltip", function() {
   return {
     templateUrl: BASE + 'templates/components/dev/tooltip.tpl',

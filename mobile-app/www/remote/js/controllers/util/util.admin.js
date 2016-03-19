@@ -18,8 +18,8 @@ angular.module('uguru.util.controllers')
 			layouts: AdminContent.getLayouts(),
 			user_stories: AdminContent.getUserStories(),
 			defaults: {
-				tabsIndex: 3,
-				sidebarIndex: 0
+				tabsIndex: 0,
+				sidebarIndex: 1
 			}
 		}
 		// $scope.selected_component = $scope.page.components[4];

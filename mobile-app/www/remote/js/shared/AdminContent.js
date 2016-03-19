@@ -88,6 +88,7 @@ function AdminContent($localstorage) {
             },
             {
                 name: 'Girls',
+                profile_url: 'https://uguru.me/static/web/images/team/jeselle',
                 profile_url_1: 'https://uguru.me/static/web/images/team/jeselle.png',
                 profile_url_2: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200'
             }

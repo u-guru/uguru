@@ -1,30 +1,4 @@
-<style>
-  /*  #splash-nav-bg-overlay{
-        position: absolute !important;
-        left:-1000px !important;
-        top:-50% !important;
-        right:0!important;
-        transform: translate(0px, 0px);
-        height:10000%!important;
-        width: 10000%!important;
-        cursor: default!important;
-        background: black !important;
-    }
-    #test
-    {
-        background-color: red;  
-    }
-    #test.myFocus {  
-            background-color: yellow;  
-        }  
-     #test.myBlur {  
-            background-color: red;  
-        }  */
-</style>
-<!-- <a ng-if='dropdown.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='dropdown.active = !dropdown.active' style='z-index:5'></a>
- -->
- <div class="absolute full-xy top-0 left-0 flex-wrap-center">
-
+<div class="absolute full-xy top-0 left-0 flex-wrap-center">
     <div class="dropdown">
         <div>
             <span>{{dropdown.options[dropdown.selectedIndex]}}</span>
@@ -34,7 +8,6 @@
                 </svg>
             </a>
         </div>
-        
         <ul ng-class='{"active": dropdown.active}'>
             <li tabindex ng-if='$index !== dropdown.selectedIndex' ng-click="click($index)" ng-repeat='option in dropdown.options'>{{option}}</li>
         </ul>
