@@ -364,6 +364,19 @@
   text-align: center;
 }
 
+#admin .admin-components > h2 {
+  font-weight: 600;
+  padding: 15px 15px 0;
+  width: 100%;
+}
+
+#admin .admin-components > p {
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
+  padding: 5px 15px 15px;
+}
+
 #admin .admin-components > ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -382,7 +395,7 @@
 }
 
 #admin .admin-components > ul > li > div > h1 {
-  padding: 10px 15px 8px;
+  padding: 10px 15px;
   background: #69B3A5;
   font-size: 20px;
   font-weight: 600;
@@ -391,13 +404,23 @@
   border-top-right-radius: 2px;
 }
 
+#admin .admin-components > ul > li > div > h2 {
+  padding: 10px 15px;
+  background: #b4d9d2;
+  color: #557e78;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
 #admin .admin-components > ul > li > div > div {
   background: #2B3234;
   position: relative;
   border: 2px solid #69B3A5;
+  border-top: 0;
   height: 200px;
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
 }
 
 #admin .admin-components > ul > li > div > div > * {
@@ -409,6 +432,20 @@
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+#admin .admin-components > ul > li > div > div:empty {
+  display: none;
+}
+
+#admin .admin-time-states h2 {
+  font-weight: 600;
+  padding: 15px 15px 0;
+}
+
+#admin .admin-action-items h2 {
+  font-weight: 600;
+  padding: 15px 15px 0;
 }
 
 #admin .admin-action-items ul {

@@ -232,6 +232,17 @@
 	
 	// components
 	.admin-components {
+		> h2 {
+			font-weight: 600;
+			padding: 15px 15px 0;
+			width: 100%;
+		}
+		> p {
+			font-size: 28px;
+			font-weight: 400;
+			margin: 0;
+			padding: 5px 15px 15px;
+		}
 		> ul {
 			@include flex;
 			padding: 7.5px;
@@ -241,7 +252,7 @@
 				padding: 7.5px;
 				> div {
 					> h1 {
-						padding: 10px 15px 8px;
+						padding: 10px 15px;
 						background: $shamrock;
 						font-size: 20px;
 						font-weight: 600;
@@ -249,15 +260,27 @@
 						border-top-left-radius: 2px;
 						border-top-right-radius: 2px;
 					}
+					> h2 {
+						padding: 10px 15px;
+						background: mix($shamrock, white);
+						color: mix($shamrock, $slate);
+						font-size: 16px;
+						font-weight: 600;
+						text-align: center;
+						border-bottom-left-radius: 2px;
+						border-bottom-right-radius: 2px;
+					}
 					> div {
 						background: $charcoal;
 						position: relative;
 						border: 2px solid $shamrock;
+						border-top: 0;
 						height: 200px;
-						border-bottom-left-radius: 2px;
-						border-bottom-right-radius: 2px;
 						> * {
 							@include center-xy;
+						}
+						&:empty {
+							display: none;
 						}
 					}
 				}
@@ -265,8 +288,20 @@
 		}
 	}
 	
+	// time states
+	.admin-time-states {
+		h2 {
+			font-weight: 600;
+			padding: 15px 15px 0;
+		}
+	}
+	
 	// action items
 	.admin-action-items {
+		h2 {
+			font-weight: 600;
+			padding: 15px 15px 0;
+		}
 		ul {
 			@include flex;
 			@include flex-wrap;

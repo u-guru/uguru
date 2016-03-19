@@ -16,8 +16,8 @@
         </div>
     </div>
     <div id="admin-ranking-container" class='p15x-p15bottom flex-wrap full-x txt-slate'>
-        <tabs id="current-tabs" index="selected_layout.index" options="layout.tab_options"/> </tabs>
-        <ul id="high-score" ng-if='!layout.index'>
+        <tabs id="current-tabs" index="layout.tabIndex" options="layout.tab_options"/> </tabs>
+        <ul id="high-score" ng-if='!layout.tabIndex'>
             <li class='full-x p15xy ugrid-3' ng-repeat='guru in layout.guru_hs_list'>
                 <div class='flex-wrap-center weight-600'><user-icon> </user-icon></div>
                 <div class='flex-wrap weight-600 p20xy relative'>
@@ -31,16 +31,18 @@
                 </div>
             </li>
         </ul>
-        <ul id="next-steps" ng-if='!selected_layout.index'>
-            <li class='full-x p15xy ugrid-3' ng-repeat='action_item in selected_layout.sample.scope.user.ranking_actions' ng-if='selected_layout.index === 1'>
-                <div class='flex-wrap-center weight-600'>
-                    <h1>{{action_item.text}}</h1>
+        <ul id="next-steps" ng-if='layout.tabIndex === 1'>
+            <li class='full-x p15xy ugrid-3' ng-repeat='action_item in layout.user.ranking_actions'>
+                <div class='flex-wrap-center weight-600 text-left txt-white' style='text-align:left;'>
+                    <h1 style='text-align:left'>#{{$index}}.  {{action_item.text}}</h1>
                 </div>
-                <div class='flex-wrap-center weight-600'>
-                    <h1>{{action_item.new_ranking}}</h1>
+                <div class='flex-wrap-center weight-600 text-left txt-white'>
+                    <p class='full-x opacity-50 text-center'> New Rank </p>
+                    <h1 style='text-align:left'>{{action_item.new_ranking}}</h1>
                 </div>
-                <div class='flex-wrap-center weight-600'>
-                    <h1>{{action_item.new_ranking}}</h1>
+                <div class='flex-wrap-center weight-600 text-left txt-white'>
+                    <p class='full-x opacity-50 text-center'> Impact Level </p>
+                    <h1 style='text-align:left'>{{action_item.impact_level}}</h1>
                 </div>
             </li>
         </ul>
