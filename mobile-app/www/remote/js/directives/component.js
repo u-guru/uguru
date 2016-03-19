@@ -36,16 +36,15 @@ angular.module('uguru.components', [])
 }])
 .directive("dropdown", function() {
   return {
-    templateUrl: BASE + 'templates/components/dev/input/dropdown.tpl',
+    templateUrl: getTemplateURL,
     scope: {
- 
         dropdown: '=ngModel'
         // tests:'=testArr',
-
     },
     replace: true,
     restrict: 'E',
     link: function( scope, element, attr ) {
+      scope.click = function(option, index) {
         // // console.log(scope.dropdown)
         // // var  = ;
         // // console.log("WTF",attr.eventFocus)
@@ -57,7 +56,7 @@ angular.module('uguru.components', [])
         //      for (var i = 0 ; i < scope.tests.length;++i)
         //         if (i != (parseInt(attr.index)) && scope.tests[i].active)
         //             stack.push(i)
-          
+
         //      scope.$apply(function() {
         //           for(var i = 0; i < stack.length;++i)
         //           {
@@ -68,15 +67,27 @@ angular.module('uguru.components', [])
         //      });
         //  });
 
-      scope.click = function(index) {
         scope.dropdown.selectedIndex = index;
+        if (scope.dropdown.onOptionClick) {
+          scope.dropdown.onOptionClick(option, index);
+        }
         scope.toggle();
       }
       scope.toggle = function() {
         scope.dropdown.active = !scope.dropdown.active;
+        if (scope.dropdown.onToggle) {
+          scope.dropdown.onToggle(scope.dropdown.active);
+        }
       }
     }
   };
+  function getTemplateURL(elem, attr) {
+    if (attr.type && attr.type.length && attr.type === 'splash') {
+      return BASE + 'templates/components/dev/input/dropdown.splash.tpl'
+    } else {
+      return BASE + 'templates/components/dev/input/dropdown.tpl'
+    }
+  }
 })
 .directive("userIcon", ['$compile',function($compile) {
   return {
@@ -90,26 +101,26 @@ angular.module('uguru.components', [])
     link: function( scope, element, attr ) {
       if (scope.size && scope.size === 'small') {
         scope.size = '-32'
-      } 
+      }
       else if (scope.size && scope.size === 'medium'){
         scope.size= '-64'
       }
       if (!scope.url || !scope.url.length) {
         scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
       }
-      
-      var request = new XMLHttpRequest();  
+
+      var request = new XMLHttpRequest();
       request.open('GET', scope.url , true);
       request.onreadystatechange = function(){
           if (request.readyState === 4){
-              if (request.status === 404) {  
+              if (request.status === 404) {
                 scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
                 // element.attr('url',scope.url);
                 // $compile(element.contents())(scope);
                 // scope.$apply();
                 // console.log('Check',scope.url, typeof(scope.url))
 
-              }  
+              }
           }
       };
       // request.send()
@@ -212,22 +223,35 @@ angular.module('uguru.components', [])
   };
 })
 .directive("tag", ['$compile', '$timeout',  function($compile, $timeout) {
+  function getTemplateURL(elem, attr) {
+    if (attr.type && attr.type === 'splash') {
+      return BASE + 'templates/components/dev/input/tag.tpl'
+    } else
+    if (attr.type && attr.type === 'input') {
+      return BASE + 'templates/components/dev/input/base.tag.input.tpl'
+    }
+    else {
+      return BASE + 'templates/components/dev/input/base.tag.tpl'
+    }
+
+  }
+
   return {
-    templateUrl: BASE + 'templates/components/dev/input/tag.tpl',
+    templateUrl: getTemplateURL,
     scope: {
         innerText: '=',
         category: '=',
         blankNum: '=',
         animArgs: '=',
         // type: '=',
-        desktopMode: '=desktop'
+        desktopMode: '=desktop',
     },
     restrict: 'E',
     replace: true,
     link: function(scope, element, attr) {
-      // scope.blankNum = 1;
-      if (attr.type && attr.type.toLowerCase() === 'adlib') {
-        attr.type ='adlib';
+
+      if (attr.type && attr.type.toLowerCase() === 'splash') {
+        scope.type ='splash';
       }
       if (scope.blankNum && scope.blankNum.length) {
         scope.blankNum = 1
