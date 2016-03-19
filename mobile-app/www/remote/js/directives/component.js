@@ -107,12 +107,12 @@ angular.module('uguru.components', [])
                 // element.attr('url',scope.url);
                 // $compile(element.contents())(scope);
                 // scope.$apply();
-                console.log('Check',scope.url, typeof(scope.url))
+                // console.log('Check',scope.url, typeof(scope.url))
 
               }  
           }
       };
-      request.send()
+      // request.send()
 
     }
   };

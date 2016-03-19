@@ -337,7 +337,7 @@ var componentList = [
         sample: {
             template: '<user-icon size="component.sample.scope.size" url="component.sample.scope.profile_url"> </user-icon>',
             scope: {
-                profile_url: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg',
+                profile_url: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200',
                 size: 'medium'
             }
         },
