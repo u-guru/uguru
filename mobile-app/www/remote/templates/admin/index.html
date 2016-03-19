@@ -333,29 +333,22 @@
                         <tabs options="page.layout.sections[1].tabs.options" index="page.layout.sections[1].tabs.index" key="title"/>
                     </div>
                     <div class='admin-content milestones-content relative flex-wrap-center full-x bg-smoke'>
-                        <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0'>
-                            <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0 overflow-auto' ng-hide='page.layout.sections[1].tabs.index !== $index' ng-repeat='option in page.layout.sections[1].tabs.options'>
+                        <div class='relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0'>
+                            <div class='relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0 overflow-auto' ng-hide='page.layout.sections[1].tabs.index !== $index' ng-repeat='option in page.layout.sections[1].tabs.options'>
                                 <h1 style='height:5%;' class='bg-campus full-x flex-wrap-center weight-600 txt-16'>{{option.title}}</h1>
-                                <div class='admin-content-section flex-wrap-center' ng-if='$index === 0'>
-                                    <div class='ugrid-4 flex-wrap-center flex-stretch full-xy padding-15-grid'>
-                                        <a ng-repeat='component in page.components track by $index' class='relative flex-wrap-center flex-stretch' style='min-height:200px;'>
-                                            <div class='relative flex-wrap-center flex-stretch full-xy'>
-                                                <div class='component-header bg-azure txt-white p20xy full-x flex-wrap-center' id='component-{{component.ref}}' ng-click='initAndLaunchComponentCTA($event, component)'>
-                                                    <div class='full-x uppercase weight-600 text-center'>
-                                                        {{component.name}}
-                                                    </div>
-                                                    <div class='absolute m15top m20right top-0 right-0 opacity-50'>
-                                                        <i class='ion-arrow-resize icon font-4'> </i>
-                                                    </div>
-                                                </div>
-                                                <div class='component-mini-demo full-x txt-white bg-slate relative' style='min-height:200px; overflow:hidden;'>
+                                <div class='admin-components admin-content-section flex-wrap-start full-x' ng-if='$index === 0'>
+                                    <ul>
+                                        <li ng-repeat='component in page.components track by $index'>
+                                            <div>
+                                                <a id='component-{{component.ref}}' class="block" ng-click='initAndLaunchComponentCTA($event, component)'><h1>{{component.name}} <i class='ion-arrow-resize icon opacity-50'> </i></h1></a>
+                                                <div class="component-mini-demo relative">
                                                     <!-- <ng-bind src="component.template"/> -->
                                                     <demo class='flex-wrap-center' template="{{component.sample.template}}"></demo>
                                                     <!-- <step-by-step steps="component.scope.steps" header="component.scope.header"></step-by-step> -->
                                                 </div>
                                             </div>
-                                        </a>
-                                    </div>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 1'>
                                     <a class='bg bg-robin' ng-repeat='layout in page.layouts track by $index' ng-click='initAndLaunchLayoutCTA($event, layout)'>
