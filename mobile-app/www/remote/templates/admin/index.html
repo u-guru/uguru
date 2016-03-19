@@ -1,9 +1,13 @@
 <div id="admin" class='full-xy flex-wrap-center flex-stretch absolute'>
     <header>
         <span class="admin-logo" ng-include="img_base + BASE + 'templates/svg/logo-admin.html'"></span>
-        <!--  <div class='flex-right relative' ng-init="navDropdown = {options: ['admin', 'student', 'guru', 'logout'], selectedIndex:0}">
-            <dropdown ng-model="navDropdown" ></dropdown>
-        </div> -->
+         <div class='flex-right absolute  top-0 right-0'>
+            <a ng-click='initAndLaunchAdminItemCTA($event)' id='cta-box-admin-item' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
+                <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5px">
+                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                </svg>
+            </a>
+        </div>
     </header>
     <main>
         <aside class='admin-sidebar'>
@@ -14,6 +18,21 @@
             </a>
         </aside>
         <div id='main-admin-content' class="admin-main">
+            <ion-pane id='cta-modal-admin-item' class='full-xy hide-display cta-modal bg-azure absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch'>
+                <a ng-click='hideAddAdminItemCTA()' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
+                    <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5">
+                        <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                    </svg>
+                </a>
+                <div class='flex-wrap-center full-xy absolute top-0 left-0 flex-stretch bg-charcoal'>
+                    <div class='bg-shamrock-50p txt-white full-x flex-wrap-center relative' style='height:25%;'>
+                        <h1 class='text-center full-x'>I want to ....</h1>
+                        <div class='full-x absolute bottom-0 left-0 p20xy'>
+                            <tabs options="['Add Moodboard Item', 'Submit Element Revision', 'Create new element', 'Create new Reference', 'New Action Item']"> </tabs>
+                        </div>
+                    </div>
+                </div>
+            </ion-pane>
             <ion-pane id='cta-modal-selected-asset-action' class='full-xy hide-display cta-modal bg-azure absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch'>
                 <a ng-click='hideComponentCTA()' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
                     <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5">
@@ -67,14 +86,14 @@
                             <tabs index="selected_layout.tabIndex" options="['demo', 'details spec', 'components', 'time states', 'action items']"/></tabs>
                         </div>
                     </div>
-                    
+
                     <div class='tab-content full-x relative flex-wrap-center bg-slate overflow-auto' style='height: 75%;'>
                         <div class='demo-section full-xy' ng-if='!selected_layout.tabIndex'>
                             <demo ng-if='selected_layout.template' style='border: 4px dashed white' class='flex-wrap-center p20xy' template="{{selected_layout.sample.template}}"></demo>
                             <div class='full-xy absolute top-0 left-0' ng-include='img_base + selected_layout.sample.template_url' ng-init='layout = selected_layout.sample.scope' ng-if='selected_layout.sample.template_url'> </div>
                         </div>
-                        
-                        
+
+
                         <div class='admin-details flex-wrap-start ugrid-2 full-xy' ng-if='selected_layout.tabIndex === 1'>
                             <div class='admin-description-container'>
                                 <div>
@@ -103,7 +122,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class='admin-components flex-wrap-start full-xy' ng-if='selected_layout.tabIndex === 2'>
                             <h2>Elements</h2>
                             <ul>
@@ -118,8 +137,8 @@
                             <h2>User Story</h2>
                             <p>{{selected_layout.name}} is a <span class='weight-900'>{{selected_layout.gallery_ref.parents[0].type}}</span> part of <span class='weight-900'>{{selected_layout.gallery_ref.parents[0].name}}</span></p>
                         </div>
-                        
-                        
+
+
                          <div class='admin-time-states flex-wrap-start full-xy' ng-if='selected_layout.tabIndex === 3'>
                             <h2>Static States</h2>
                             <ol class="numbered-list">
@@ -128,8 +147,8 @@
                                 </li>
                             </ol>
                         </div>
-                        
-                        
+
+
                         <div class="admin-action-items flex-wrap-start full-xy" ng-if='selected_layout.tabIndex === 4'>
                             <div ng-repeat='user_action_obj in selected_layout.action_items'>
                                 <h2>{{user_action_obj.user}}</h2>
@@ -400,9 +419,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/freelancing.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Category Icons - Bottom Aligned</h1>
                                     <ul class="large">
                                         <li>
@@ -430,9 +449,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/freelancing-bottom.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Category Icons - Simple</h1>
                                     <ul class="large">
                                         <li>
@@ -451,9 +470,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/tech-simple.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Navigation Icons</h1>
                                     <ul>
                                         <li>
@@ -532,9 +551,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/main/up-circle.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Common Icons</h1>
                                     <ul>
                                         <li>
@@ -697,9 +716,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/main/video.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Food Icons</h1>
                                     <ul>
                                         <li>
@@ -709,9 +728,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/main/coffee.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Will Work For Icons*</h1>
                                     <ul>
                                         <li>
@@ -739,9 +758,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/main/wwf/tickets.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Map Icons*</h1>
                                     <ul>
                                         <li>
@@ -775,9 +794,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/main/map/weight.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Timeline Icons*</h1>
                                     <ul>
                                         <li>
@@ -799,9 +818,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/timeline/professional.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Splash Icons</h1>
                                     <ul class="large">
                                         <li>
@@ -858,9 +877,9 @@
                                             <span ng-include="img_base + BASE + 'templates/svg/splash/university.html'"></span>
                                         </li>
                                     </ul>
-                                    
-                                    
-                                    
+
+
+
                                     <h1>Social Icons</h1>
                                     <ul>
                                         <li>

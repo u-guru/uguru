@@ -63,12 +63,12 @@ angular.module('uguru.components', [])
     replace:true,
     restrict: 'E',
     link: function( scope, element, attr ) {
-      if (attr.size && attr.size === 'small') {
+      if (scope.size && scope.size === 'small') {
         scope.size = '-32'
-      } else if (attr.size && attr.size === 'medium'){
+      } else if (scope.size && scope.size === 'medium'){
         scope.size= '-64'
       }
-      if (!attr.url || !attr.url.length) {
+      if (!scope.url || !scope.url.length) {
         scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
       }
     }

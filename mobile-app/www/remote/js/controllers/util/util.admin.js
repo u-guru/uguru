@@ -23,11 +23,11 @@ angular.module('uguru.util.controllers')
 				sidebarIndex: 1
 			}
 		}
-		$scope.selected_component = $scope.page.components[4];
+		// $scope.selected_component = $scope.page.components[4];
 
 		$scope.elementCTATabOptions = {
-			components: ['Demo', 'Details', 'States', 'Use Cases', 'Element Map', 'To Do'],
-			layouts: ['Demo', 'Details', 'States', 'Use Cases', 'Element Map', 'To Do'],
+			components: ['Demo', 'Attributes', 'States', 'Use Cases', 'Element Map', 'To Do'],
+			layouts: ['Demo', 'Attributes', 'States', 'Use Cases', 'Element Map', 'To Do'],
 		}
 
 
@@ -62,6 +62,50 @@ angular.module('uguru.util.controllers')
 				var modalElem = document.querySelector('#cta-modal-selected-layout');
 				modalElem && modalElem.classList.add('show');
 			})
+		}
+
+		$scope.initAndLaunchAdminItemCTA = function($event) {
+			var targetElem = $event.target;
+			$scope.admin_item = {
+				dropdown_options: {index: 0, options: ['Milestone', 'Element Revision', 'New Element or Asset', 'New Action Item', 'New Revision']},
+				options: {
+					element: {
+						type: ['Component', 'Container', 'Layouts', 'User Stories', 'Assets'],
+						name: '',
+						description: [],
+						moodboard_refs: [],
+						components_within: [],
+						tags: [],
+					},
+					moodboard: {
+						name: '',
+						reference_url: '',
+						best_part: ['Component', 'Container', 'Layouts', 'User Stories', 'Assets'],
+						tags: []
+					},
+					element_revision: {
+						select_element: ['Component', 'Container', 'Layouts', 'User Stories', 'Assets'],
+						reference: {
+							codepen_input_field: '',
+							describe_bug_textarea: '',
+						}
+					},
+					new_action_item: {
+						select_section: ['Moodboard', 'Reference', 'Elements', 'Tools'],
+						select_subsection: [], //another subdropdown
+						description: '', //textarea
+						tags: '', //textarea
+						priority: 3, // (1 -- highest, 3 lowest)
+						assign_to: [], //team members array or something easy to click
+					},
+					new_revision: {
+						name: '',
+						description: '',
+						has_subsections: false
+						//pretty open ended
+					}
+				}
+			}
 		}
 
 		$scope.initAndLaunchComponentCTA = function($event, component) {

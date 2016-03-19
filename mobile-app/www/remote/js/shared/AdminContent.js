@@ -339,7 +339,8 @@ var componentList = [
                 profile_url: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200',
                 size: 'medium'
             }
-        }
+        },
+        bugs: [{assigned:"samir", reason: "doesn't work"}]
     },
     {
         id: 3,
@@ -391,7 +392,20 @@ var componentList = [
         },
         action_items: [{'Gabrielle': 'Place in guru profile under the third tab "which we can call miscellaneous"'}],
         bugs: [{girls: 'resolve inputs and save buttons vs blurs'}],
+    },
+    {
+        id: 7,
+        ref: 'mini-profile-card',
+        name: 'Mini Profile Card',
+        bugs: [{girls: "classes are off, it doesn't make sense that my mini profile card has a 'large option.'"}]
+    },
+    {
+        id: 8,
+        ref: 'profile-card',
+        name: 'Profile Card',
+        bugs: [{girls: "Discuss names convenient for everyone. I.e. PF -Card. "}]
     }
+
 ]
 
 
