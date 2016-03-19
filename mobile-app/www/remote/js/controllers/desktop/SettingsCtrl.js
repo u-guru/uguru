@@ -56,6 +56,14 @@ angular.module('uguru.desktop.controllers', [])
     //edit university (modal)
     //loading service
 
+    $scope.flipToEssayHome = function() {
+        LoadingService.showAmbig(null, 2000);
+        $timeout(function() {
+            AnimationService.flip('^.splash');
+        }, 500)
+    }
+
+
     $scope.resetCache = function() {
       LoadingService.showAmbig('Resetting Cache..', 1500, function(){
         $ionicViewSwitcher.nextDirection('back');

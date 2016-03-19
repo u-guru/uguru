@@ -1,3 +1,4 @@
+
 <div id="admin" class='full-xy flex-wrap-center flex-stretch absolute'>
     <header>
         <span class="admin-logo" ng-include="img_base + BASE + 'templates/svg/logo-admin.html'"></span>
@@ -241,14 +242,14 @@
                         <div class='full-xy p15xy flex-wrap-start' ng-if='!selected_component.index'>
                             <div class='playground-container full-x flex-wrap-center relative'>
                                 <h4 class='uppercase text-center full-x p20xy opacity-50'>{{selected_component.name}} Demo - <span class='weight-800'>TRY ME!</span></h4>
-                                <demo style='border: 4px dashed white' class='flex-wrap-center relative p20xy' ng-if='selected_component.sample' ng-init='component = selected_component' template="{{selected_component.sample.template}}"></demo>
+                                <demo class='flex-wrap-center relative p20xy' ng-if='selected_component.sample' ng-init='component = selected_component' template="{{selected_component.sample.template}}"></demo>
                             </div>
                             <ul class="playground-code-container">
                                 <li>
-                                    <textarea><dropdown ng-model="component.sample.scope"></dropdown></textarea>
+                                    <textarea>{{selected_component.sample.template}}</textarea>
                                 </li>
                                 <li>
-                                    <textarea><div class="dropdown">
+                                    <textarea><div class="{{selected_component.ref}}">
     <div>
         <span>{{dropdown.options[dropdown.selectedIndex]}}</span>
         <a ng-click='toggle()'>

@@ -88,6 +88,7 @@ function AdminContent($localstorage) {
             },
             {
                 name: 'Girls',
+                profile_url: 'https://uguru.me/static/web/images/team/jeselle',
                 profile_url_1: 'https://uguru.me/static/web/images/team/jeselle.png',
                 profile_url_2: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200'
             }
@@ -430,7 +431,7 @@ var componentList = [
         ref: 'tag',
         name: 'Tag',
         sample: {
-            template: '<tag desktop="desktopMode" type="adlib" blank-num="component.sample.scope.blankNum" inner-text="component.sample.scope.innerText" category="component.sample.scope.category"> </tag>',
+            template: '<tag desktop="desktopMode" type="splash" blank-num="component.sample.scope.blankNum" inner-text="component.sample.scope.innerText" category="component.sample.scope.category"> </tag>',
             scope: {
                 innerText: 'Midnight',
                 desktopMode: true,
@@ -439,6 +440,33 @@ var componentList = [
                 animArgs: {
                     'li': {delays: ['class-on-activate-delay:1000', 'class-on-load-delay:1000']},
                 }
+            }
+        },
+        bugs: [{girls: 'Whats the different conceptually between a tag and a chip?'}]
+    },
+    {
+        id: 10,
+        ref: 'request-tag-base',
+        name: 'Base Tag',
+        sample: {
+            template: '<tag desktop="desktopMode" category="component.sample.scope.category" inner-text="component.sample.scope.innerText" type="base"> </tag>',
+            scope: {
+                innerText: 'Request Tab',
+                category: {name: 'Academic', hex_color: 'academic', hex_class:'cerise', id:5}
+            }
+        },
+        bugs: [{girls: 'Whats the different conceptually between a tag and a chip?'}]
+    },
+    {
+        id: 11,
+        ref: 'request-tag-base',
+        name: 'Base Tag Input',
+        sample: {
+            template: '<tag desktop="desktopMode" category="component.sample.scope.category" inner-text="component.sample.scope.innerText" type="input"> </tag>',
+            scope: {
+                innerText: 'Tag Input Try Me',
+                category: {name: 'Academic', hex_color: 'academic', hex_class:'azure', id:5},
+
             }
         },
         bugs: [{girls: 'Whats the different conceptually between a tag and a chip?'}]
