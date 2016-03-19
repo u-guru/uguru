@@ -8,6 +8,6 @@
         </a>
     </div>
     <ul ng-class='{"active": dropdown.active}'>
-        <li tabindex ng-if='$index !== dropdown.selectedIndex' ng-click="click($index)" ng-repeat='option in dropdown.options'>{{option}}</li>
+        <li tabindex ng-if='$index !== dropdown.selectedIndex' ng-click="click(option, $index)" ng-repeat='option in dropdown.options'>{{option}}</li>
     </ul>
 </div>

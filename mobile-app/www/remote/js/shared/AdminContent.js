@@ -329,6 +329,26 @@ var componentList = [
         }
     },
     {
+        stage: 1,
+        ref: 'splash.dropdown',
+        cp_link: '',
+        name: "Dropdowns",
+        notes: 'Seems not 100% unified, could be more fluid with another sample tool',
+        sample: {
+            template: '<dropdown type="splash" ng-model="component.sample.scope"></dropdown>',
+            scope: {
+                options: ['apples', 'bananas', 'oranges'],
+                onOptionClick: function(option) {
+                    alert(JSON.stringify(option) + ' ' + 'selected!')
+                },
+                onToggle: function(value) {
+                    alert('Default toggle callback for toggle set to ' + value + '!');
+                },
+                selectedIndex: 0
+            }
+        }
+    },
+    {
         id: 2,
         ref: 'user-icon',
         name: 'User Icon',

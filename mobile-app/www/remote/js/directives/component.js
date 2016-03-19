@@ -35,23 +35,35 @@ angular.module('uguru.components', [])
 }])
 .directive("dropdown", function() {
   return {
-    templateUrl: BASE + 'templates/components/dev/input/dropdown.tpl',
+    templateUrl: getTemplateURL,
     scope: {
-        dropdown: '=ngModel',
-
+        dropdown: '=ngModel'
     },
     replace: true,
     restrict: 'E',
     link: function( scope, element, attr ) {
-      scope.click = function(index) {
+      scope.click = function(option, index) {
         scope.dropdown.selectedIndex = index;
+        if (scope.dropdown.onOptionClick) {
+          scope.dropdown.onOptionClick(option, index);
+        }
         scope.toggle();
       }
       scope.toggle = function() {
         scope.dropdown.active = !scope.dropdown.active;
+        if (scope.dropdown.onToggle) {
+          scope.dropdown.onToggle(scope.dropdown.active);
+        }
       }
     }
   };
+  function getTemplateURL(elem, attr) {
+    if (attr.type && attr.type.length && attr.type === 'splash') {
+      return BASE + 'templates/components/dev/input/dropdown.splash.tpl'
+    } else {
+      return BASE + 'templates/components/dev/input/dropdown.tpl'
+    }
+  }
 })
 .directive("userIcon", function() {
   return {
