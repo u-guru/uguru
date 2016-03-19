@@ -135,6 +135,28 @@
 		}
 	}
 	
+	// admin update
+	.admin-update {
+		padding: 7.5px;
+		> div {
+			padding: 7.5px;
+		}
+		input.full, textarea {
+			width: 100%;
+			padding: 10px 15px;
+			background: rgba(white, .5);
+			&:focus {
+				background: white;
+			}
+		}
+		textarea {
+			min-height: 200px;
+			&[small] {
+				min-height: 100px;
+			}
+		}
+	}
+	
 	// code container
 	.playground-code-container {
 		@include flex;

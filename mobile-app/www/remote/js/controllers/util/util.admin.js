@@ -69,7 +69,7 @@ angular.module('uguru.util.controllers')
 			$scope.adminItemCTAShown = true;
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.admin_item = {
-				dropdown_options: {index: 3, options: ['Milestone', 'Element Revision', 'New Element or Asset', 'New Action Item', 'New Revision']},
+				dropdown_options: {index: 3, options: ['Milestone', 'Element Revision', 'New Element', 'New Action Item', 'New Revision']},
 				options: {
 					element: {
 						type: ['Component', 'Container', 'Layouts', 'User Stories', 'Assets'],
