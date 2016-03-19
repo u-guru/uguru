@@ -178,6 +178,7 @@
   padding: 15px 15px 0px;
   font-size: 24px;
   font-weight: 600;
+  color: #40484B;
 }
 
 #admin .admin-assets h2 {
@@ -185,6 +186,7 @@
   padding: 15px;
   font-size: 18px;
   font-weight: 600;
+  color: #40484B;
 }
 
 #admin .admin-assets ul {
@@ -364,20 +366,20 @@
   text-align: center;
 }
 
-#admin .admin-components > h2 {
+#admin .admin-components > h2, #admin .admin-containers > h2 {
   font-weight: 600;
   padding: 15px 15px 0;
   width: 100%;
 }
 
-#admin .admin-components > p {
+#admin .admin-components > p, #admin .admin-containers > p {
   font-size: 28px;
   font-weight: 400;
   margin: 0;
   padding: 5px 15px 15px;
 }
 
-#admin .admin-components > ul {
+#admin .admin-components > ul, #admin .admin-containers > ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -392,12 +394,12 @@
   width: 100%;
 }
 
-#admin .admin-components > ul > li {
+#admin .admin-components > ul > li, #admin .admin-containers > ul > li {
   width: 25%;
   padding: 7.5px;
 }
 
-#admin .admin-components > ul > li > div > h1, #admin .admin-components > ul > li > div > a {
+#admin .admin-components > ul > li > div > h1, #admin .admin-components > ul > li > div > a, #admin .admin-containers > ul > li > div > h1, #admin .admin-containers > ul > li > div > a {
   padding: 10px 15px;
   background: #69B3A5;
   font-size: 20px;
@@ -407,29 +409,29 @@
   border-top-right-radius: 2px;
 }
 
-#admin .admin-components > ul > li > div > h1 h1, #admin .admin-components > ul > li > div > a h1 {
+#admin .admin-components > ul > li > div > h1 h1, #admin .admin-components > ul > li > div > a h1, #admin .admin-containers > ul > li > div > h1 h1, #admin .admin-containers > ul > li > div > a h1 {
   font-weight: 600;
 }
 
-#admin .admin-components > ul > li > div > a:hover, #admin .admin-components > ul > li > div > a:focus {
+#admin .admin-components > ul > li > div > a:hover, #admin .admin-components > ul > li > div > a:focus, #admin .admin-containers > ul > li > div > a:hover, #admin .admin-containers > ul > li > div > a:focus {
   background: #b4d9d2;
   color: #557e78;
 }
 
-#admin .admin-components > ul > li > div > a:hover + div, #admin .admin-components > ul > li > div > a:focus + div {
+#admin .admin-components > ul > li > div > a:hover + div, #admin .admin-components > ul > li > div > a:focus + div, #admin .admin-containers > ul > li > div > a:hover + div, #admin .admin-containers > ul > li > div > a:focus + div {
   border-color: #b4d9d2;
 }
 
-#admin .admin-components > ul > li > div > a:active {
+#admin .admin-components > ul > li > div > a:active, #admin .admin-containers > ul > li > div > a:active {
   background: #557e78;
   color: white;
 }
 
-#admin .admin-components > ul > li > div > a:active + div {
+#admin .admin-components > ul > li > div > a:active + div, #admin .admin-containers > ul > li > div > a:active + div {
   border-color: #557e78;
 }
 
-#admin .admin-components > ul > li > div > h2 {
+#admin .admin-components > ul > li > div > h2, #admin .admin-containers > ul > li > div > h2 {
   padding: 10px 15px;
   background: #b4d9d2;
   color: #557e78;
@@ -440,7 +442,7 @@
   border-bottom-right-radius: 2px;
 }
 
-#admin .admin-components > ul > li > div > div {
+#admin .admin-components > ul > li > div > div, #admin .admin-containers > ul > li > div > div {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -454,7 +456,7 @@
   height: 200px;
 }
 
-#admin .admin-components > ul > li > div > div > * {
+#admin .admin-components > ul > li > div > div > *, #admin .admin-containers > ul > li > div > div > * {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -465,8 +467,16 @@
   transform: translate(-50%, -50%);
 }
 
-#admin .admin-components > ul > li > div > div:empty {
+#admin .admin-components > ul > li > div > div:empty, #admin .admin-containers > ul > li > div > div:empty {
   display: none;
+}
+
+#admin .admin-containers > ul > li {
+  width: 50%;
+}
+
+#admin .admin-containers > ul > li > div > div {
+  height: 400px;
 }
 
 #admin .admin-time-states h2 {

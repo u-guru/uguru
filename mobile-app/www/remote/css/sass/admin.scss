@@ -96,12 +96,14 @@
 			padding: 15px 15px 0px;
 			font-size: 24px;
 			font-weight: 600;
+			color: $slate;
 		}
 		h2 {
 			width: 100%;
 			padding: 15px;
 			font-size: 18px;
 			font-weight: 600;
+			color: $slate;
 		}
 		ul {
 			@include flex;
@@ -231,7 +233,7 @@
 	}
 	
 	// components
-	.admin-components {
+	.admin-components, .admin-containers {
 		> h2 {
 			font-weight: 600;
 			padding: 15px 15px 0;
@@ -304,6 +306,18 @@
 						&:empty {
 							display: none;
 						}
+					}
+				}
+			}
+		}
+	}
+	.admin-containers {
+		> ul {
+			> li {
+				width: 50%;
+				> div {
+					> div {
+						height: 400px;
 					}
 				}
 			}
