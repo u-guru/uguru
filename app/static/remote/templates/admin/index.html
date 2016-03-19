@@ -1,254 +1,1182 @@
-
-
-<div class='full-xy flex-wrap-center flex-stretch absolute'>
-    <header style='height: 10%;' class='flex-center full-x bg-shamrock'>
-        <div class='ugrid-5 full-x'>
-            <h1 class='flex-wrap-center weight-900'>Uguru Admin</h1>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-           <!--  <div class='flex-right relative' ng-init="navDropdown = {options: ['admin', 'student', 'guru', 'logout'], selectedIndex:0}">
-                <dropdown ng-model="navDropdown" ></dropdown>
-            </div> -->
-        </div>
+<div id="admin" class='full-xy flex-wrap-center flex-stretch absolute'>
+    <header>
+        <span class="admin-logo" ng-include="img_base + BASE + 'templates/svg/logo-admin.html'"></span>
+        <!--  <div class='flex-right relative' ng-init="navDropdown = {options: ['admin', 'student', 'guru', 'logout'], selectedIndex:0}">
+            <dropdown ng-model="navDropdown" ></dropdown>
+        </div> -->
     </header>
-    <main class='bg-charcoal-80p relative full-x flex-wrap-center txt-white' style='height:90%;'>
-        <div class='ugrid-2 full-xy'>
-            <div class='sidebar flex-wrap-center flex-stretch' style='width:20% !important;'>
-                <a class='full-x p20xy flex-wrap-center txt-white' ng-class="{'bg-slate-50p': page.layout.sidebar.index === $index}" ng-repeat='section in page.layout.sections' ng-click='page.layout.sidebar.index = $index;'>
-                    <h1 class='weight-500'>
-                        {{section.title}}
-                    </h1>
+    <main>
+        <aside class='admin-sidebar'>
+            <a class='full-x p20xy flex-wrap-center txt-white' ng-class="{'bg-slate-50p': page.layout.sidebar.index === $index}" ng-repeat='section in page.layout.sections' ng-click='page.layout.sidebar.index = $index;'>
+                <h1 class='weight-500'>
+                    {{section.title}}
+                </h1>
+            </a>
+        </aside>
+        <div id='main-admin-content' class="admin-main">
+            <ion-pane id='cta-modal-selected-asset-action' class='full-xy hide-display cta-modal bg-azure absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch'>
+                <a ng-click='hideComponentCTA()' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
+                    <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5">
+                        <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                    </svg>
                 </a>
-            </div>
-            <div class='relative bg-smoke flex-wrap-center flex-stretch' style='width:80% !important;' id='main-admin-content'>
-                <ion-pane id='cta-modal-selected-asset-action' class='full-xy hide-display cta-modal bg-azure absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch'>
-                    <a ng-click='hideComponentCTA()' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
-                            <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5">
-                                <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                            </svg>
-                    </a>
-                    <div class='flex-wrap-center full-xy absolute top-0 left-0'>
-                            <div class='header full-x p20xy' style='border: 4px dashed white;'>
-                                <h1 class='flex-wrap-center full-x p20xy font-4 txt-white uppercase text-center' style='font-size:40px;'> {{selected_asset.title}}</h1>
-                                <div class='flex-wrap-center uppercase weight-600 full-x'> Asset Type: <b>{{selected_asset.type}}</b> </div>
-                            </div>
+                <div class='flex-wrap-center full-xy absolute top-0 left-0'>
+                    <div class='header full-x p20xy' style='border: 4px dashed white;'>
+                        <h1 class='flex-wrap-center full-x p20xy font-4 txt-white uppercase text-center' style='font-size:40px;'>
+                            {{selected_asset.title}}</h1>
+                        <div class='flex-wrap-center uppercase weight-600 full-x'>
+                            Asset Type:
+                            <b>{{selected_asset.type}}</b>
+                        </div>
+                    </div>
 
-                            <div class='full-x p20xy'>
-                                <div class='text-center uppercase full-x p20xy weight-800'> <u> Description </u></div>
-                                <div class='full-x p20xy text-center weight-400'> {{selected_asset.description}} </div>
+                    <div class='full-x p20xy'>
+                        <div class='text-center uppercase full-x p20xy weight-800'>
+                            <u>
+                                Description
+                            </u>
+                        </div>
+                        <div class='full-x p20xy text-center weight-400'>
+                            {{selected_asset.description}}
+                        </div>
+                    </div>
+                    <div class='bg-charcoal full-x p20xy'>
+                        <h1 class='full-x flex-wrap-center font-4 text-center weight-600'>
+                            Submission
+                        </h1>
+                        <div class='ugrid-4'>
+                            <div>&nbsp;</div>
+                            <input placeholder='ENTER CODEPEN URL HERE' class='bg-smoke p10xy' ng-model='selected_asset.codepen_link'/>
+                            <a class='bg-shamrock txt-white p10xy weight-500' style='weight:50px;'>
+                                Submit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </ion-pane>
+            <ion-pane id='cta-modal-selected-layout' class='full-xy hide-display cta-modal bg-charcoal absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch' >
+                <a ng-click='hideLayoutCTA()' class='absolute top-0 right-0 cta-modal-close close-button high-z-index'>
+                    <svg class="p10xy" viewBox="0 0 100 100" stroke='#FFFFFF' >
+                        <path stroke-width="5" d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                    </svg>
+                </a>
+                <div class='flex-wrap-center full-xy relative flex-stretch bg-robin' ng-hide='!selected_layout.name'>
+                    <div class='header full-x flex-wrap-center relative third' style='height: 25%'>
+                        <h1 class='full-x p30bottom txt-white text-center weight-600 txt-36'>{{selected_layout.name}} Layout</h1>
+                        <div class='tab-container bg-robin absolute bottom-0 left-0'>
+                            <tabs index="selected_layout.tabIndex" options="['demo', 'details spec', 'components', 'time states', 'action items']"/></tabs>
+                        </div>
+                    </div>
+                    
+                    <div class='tab-content full-x relative flex-wrap-center bg-slate overflow-auto' style='height: 75%;'>
+                        <div class='demo-section full-xy' ng-if='!selected_layout.tabIndex'>
+                            <demo ng-if='selected_layout.template' style='border: 4px dashed white' class='flex-wrap-center p20xy' template="{{selected_layout.sample.template}}"></demo>
+                            <div class='full-xy absolute top-0 left-0' ng-include='img_base + selected_layout.sample.template_url' ng-init='layout = selected_layout.sample.scope' ng-if='selected_layout.sample.template_url'> </div>
+                        </div>
+                        
+                        
+                        <div class='admin-details flex-wrap-start ugrid-2 full-xy' ng-if='selected_layout.tabIndex === 1'>
+                            <div class='admin-description-container'>
+                                <div>
+                                    <h1>Description</h1>
+                                    <div> {{selected_layout.details.description}} </div>
+                                </div>
                             </div>
-                            <div class='bg-charcoal full-x p20xy'>
-                                <h1 class='full-x flex-wrap-center font-4 text-center weight-600'>
-                                    Submission
+                            <div class='admin-requirements-container'>
+                                <div>
+                                    <h1>Requirements</h1>
+                                    <div>{{selected_layout.details.requirements}}</div>
+                                    <!-- @samir -->
+                                    <!-- These are a few different things you can use here for lists when you need them -->
+                                    <!-- <ul>
+                                        <li><div>This is a requirement. You can remove this demo later.</div></li>
+                                        <li><div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div></li>
+                                        <li><div>Ded do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></li>
+                                        <li><div>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div></li>
+                                    </ul> -->
+                                    <!-- <ol class="numbered-list">
+                                        <li><div>This is a requirement. You can remove this demo later.</div></li>
+                                        <li><div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div></li>
+                                        <li><div>Ded do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></li>
+                                        <li><div>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div></li>
+                                    </ol> -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='admin-components flex-wrap-start full-xy' ng-if='selected_layout.tabIndex === 2'>
+                            <h2>Elements</h2>
+                            <ul>
+                                <li ng-repeat='component in selected_layout.gallery_ref.children'>
+                                    <div>
+                                        <h1>{{component.name}}</h1>
+                                        <div></div>
+                                        <h2>{{component.type}}</h2>
+                                    </div>
+                                </li>
+                            </ul>
+                            <h2>User Story</h2>
+                            <p>{{selected_layout.name}} is a <span class='weight-900'>{{selected_layout.gallery_ref.parents[0].type}}</span> part of <span class='weight-900'>{{selected_layout.gallery_ref.parents[0].name}}</span></p>
+                        </div>
+                        
+                        
+                         <div class='admin-time-states flex-wrap-start full-xy' ng-if='selected_layout.tabIndex === 3'>
+                            <h2>Static States</h2>
+                            <ol class="numbered-list">
+                                <li ng-repeat='state in selected_layout.states'>
+                                    <div>{{state}}</div>
+                                </li>
+                            </ol>
+                        </div>
+                        
+                        
+                        <div class="admin-action-items flex-wrap-start full-xy" ng-if='selected_layout.tabIndex === 4'>
+                            <div ng-repeat='user_action_obj in selected_layout.action_items'>
+                                <h2>{{user_action_obj.user}}</h2>
+                                <ul>
+                                    <li ng-repeat="item in user_action_obj.action_items">
+                                        <div class="checkbox-container">
+                            				<div>
+                            					<input type="checkbox" id="checkbox-item-1"/>
+                            					<span>
+                            						<svg viewBox="0 0 100 100">
+                            							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                            						</svg>
+                            					</span>
+                            				</div>
+                            				<label for="checkbox-item-1">{{item}}</label>
+                            			</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-pane>
+            <ion-pane id='cta-modal-selected-component' class='full-xy hide-display cta-modal bg-charcoal absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch' ng-init='component = selected_component'>
+                <a ng-click='hideComponentCTA()' class='absolute top-0 right-0 cta-modal-close close-button high-z-index'>
+                    <svg class="p10xy" viewBox="0 0 100 100" stroke='#FFFFFF' >
+                        <path stroke-width="5" d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                    </svg>
+                </a>
+                <div class='flex-wrap-center full-xy relative flex-stretch bg-azure'>
+                    <div class='header full-x flex-wrap-center relative' style='height:calc(40%);'>
+                        <h1 class='full-x p15xy font-4 txt-white uppercase text-center weight-900'>{{selected_component.name}} Component</h1>
+                        <tabs class='bg-azure-50p absolute bottom-0 left-0' index="selected_component.index" options="elementCTATabOptions.components"/></tabs>
+                    </div>
+                    <div class='tab-content full-x relative flex-wrap-center bg-charcoal' style='height: calc(60%);'>
+
+                        <!-- Demo -->
+                        <div class='bg-azure-50p full-xy absolute top-0 left-0 overflow-auto p20xy flex-wrap-center flex-stretch' ng-if='!selected_component.index'>
+                            <div class='playground-container full-x flex-wrap-center relative'>
+                                <h4 class='uppercase text-center full-x p20xy opacity-50'>{{selected_component.name}} Demo - <span class='weight-800'>TRY ME!</span></h4>
+                                <demo style='border: 4px dashed white' class='flex-wrap-center relative p20xy' ng-if='selected_component.sample' ng-init='component = selected_component' template="{{selected_component.sample.template}}"></demo>
+                            </div>
+                            <div class='scope-container flex-wrap-center flex-end flex-column full-x'>
+                                <small class='lowercase text-center full-x p20xy weight-600 txt-smoke'>{{selected_component.name}} Dev Tools v1.23</small>
+                                {{selected_component.sample.scope}}
+                            </div>
+                        </div>
+
+                        <!-- Details -->
+                        <div class='bg-azure-50p full-xy absolute top-0 left-0 overflow-auto p20xy flex-wrap-center flex-stretch' ng-if='selected_component.index === 1'>
+                            <h1 class='weight-600 uppercase'> {{selected_component.name}} Details </h1>
+                            <p ng-bind-html="selected_component.description">  </p>
+                        </div>
+                       <!--  <div  class='bg-smoke full-xy absolute top-0 left-0' ng-if='selected_layout.index === 1'>
+                            {{selected_layout.description}}
+                        </div> -->
+                    </div>
+                </div>
+            </ion-pane>
+
+            <!--Projects -->
+            <section ng-hide='page.layout.sidebar.index'>
+                <div class='ugrid-6 flex-wrap-center full-x bg-azure' style='height:10%;'>
+                    <a class='flex-wrap-center' ng-repeat='option in page.layout.sections[0].tabs.options' ng-click='page.layout.sections[0].tabs.index = $index'>
+
+                        <user-icon size="medium" url="option.profile_url"></user-icon>
+
+                        <!-- <span ng-if='option.profile_url' class='user-icon' style="background-image: url({{option.profile_url}}); height:50px; width:50px;"></span> -->
+
+                        <p class='uppercase full-x text-center uppercase weight-700 p10xy' style='font-size:14px;' ng-bind-html="option.title"></p>
+                    </a>
+                </div>
+                <div class='milestones-content relative flex-wrap-center full-x bg-smoke' style='height:90%; overflow:scroll;'>
+                    <div class='txt-charcoal absolute full-xy font-4 weight-600 flex-stretch flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index'>
+                        <h1 class='p20xy text-center bg-charcoal-50px full-x' ng-bind-html="page.layout.sections[0].tabs.options[0].title"></h1>
+                        <div class='all-user-stories-container flex-wrap-center flex-stretch full-x'>
+                            <div class='ugrid-4 full-x flex-wrap'>
+                                <a class='bg-slate p20xy txt-white flex-wrap-center' ng-repeat='story in page.user_stories'>
+                                    <h4 class='uppercase weight-600 text-center opacity-50 m10xy' style='font-size:18px;'>
+                                        #{{$index + 1}}
+                                    </h4>
+                                    <h1 style='font-size:16px' class='text-center'>
+                                        {{story.title}}
+                                    </h1>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0'
+                        ng-hide='page.layout.sections[0].tabs.index !== $index'
+                        ng-repeat='option in page.layout.sections[0].tabs.options'
+                        ng-init='action_items = option.action_items'
+                        ng-if='$index > 0'>
+                        <h1 style='height:10%;' class='bg-cerise-50p full-x flex-wrap-center p20xy weight-00'>
+                            Today's Priorities
+                        </h1>
+                        <div class='flex-wrap-center full-xy' style='height:90%'>
+                            <div class='flex-wrap-center relative flex-stretch full-xy'>
+
+                                <div class='flex-wrap-center full-x'>
+                                    <div class='full-x text-center ugrid-2 flex-wrap-center'>
+                                        <ul class='txt-charcoal'>
+                                            <li ng-repeat='action_item in action_items' ng-if='action_item.action_type === "assets"' class='text-left weight-300 bg-shamrock' ng-click='initAndLaunchAssetCTA($event, action_item)' style='border:4px dashed white;'>
+                                                <div class='action-item p20xy m05xy relative'>
+                                                    <h1 class='txt-white weight-600'>{{$index + 1}}.
+                                                        {{action_item.title}}
+                                                    </h1>
+                                                    <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Asset</small>
+                                                </div>
+                                            </li>
+                                            <li ng-repeat='action_item in action_items' ng-if='action_item.action_type === "research"' class='text-left weight-300 bg-azure' ng-click='initAndLaunchComponentCTA($event, action_item)' style='border:4px dashed white;'>
+                                                <div class='action-item p20xy m05xy relative' style='padding-right:30%;'>
+                                                    <h1 class='txt-white weight-600'>{{$index + 1}}.
+                                                        {{action_item.title}}
+                                                    </h1>
+                                                    <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Research + HiFi</small>
+                                                </div>
+                                            </li>
+                                            <li ng-repeat='action_item in action_items' ng-if='["components"].indexOf(action_item.action_type) > -1' class='text-left weight-300 bg-azure' ng-click='initAndLaunchComponentCTA($event, action_item)' style='border:4px dashed white;'>
+                                                <div class='action-item p20xy m05xy relative' style='padding-right:30%;'>
+                                                    <h1 class='txt-white weight-600'>{{$index + 1}}.
+                                                        {{action_item.name}}
+                                                    </h1>
+                                                    <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Research + HiFi</small>
+                                                </div>
+                                            </li>
+                                            <li ng-repeat='action_item in action_items' ng-if='["containers"].indexOf(action_item.action_type) > -1' class='text-left weight-300 bg-azure' ng-click='initAndLaunchComponentCTA($event, action_item)' style='border:4px dashed white;'>
+                                                <div class='action-item p20xy m05xy relative' style='padding-right:30%;'>
+                                                    <h1 class='txt-white weight-600'>{{$index + 1}}.
+                                                        {{action_item.name}}
+                                                    </h1>
+                                                    <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Research + HiFi</small>
+                                                </div>
+                                            </li>
+                                            <li ng-repeat='action_item in action_items' ng-if='["layouts"].indexOf(action_item.action_type) > -1' class='text-left weight-300 bg-azure' ng-click='initAndLaunchLayoutCTA($event, action_item)' style='border:4px dashed white;'>
+                                                 <div class='action-item p20xy m05xy relative' style='padding-right:30%;'>
+                                                    <h1 class='txt-white weight-600'>{{$index + 1}}.
+                                                        {{action_item.name}}
+                                                    </h1>
+                                                    <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>HiFi Static</small>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--    <div class='flex-wrap-center flex-stretch full-y' style='overflow:scroll;' id=''>
+                                <div class='flex-wrap-center full-x flex-stretch flex-start'>
+                                        <div class='full-x text-center' ng-repeat='user_story in action_items.research'>
+
+                                            <ul class='p20xy bg-gold txt-slate' style='border:2px dashed white;'>
+                                                <li class='uppercase weight-600 m20xy'>{{user_story.title}}</li>
+                                                <li ng-repeat ='component in user_story.components' class='text-left weight-300 p10xy' ng-click='initAndLaunchComponentCTA($event, component)'>
+                                                    <p class='weight-300'> #{{$index + 1}} {{component.name}} </p>
+                                                </li>
+                                                <li class='p20xy'>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                </div>
+                            </div> -->
+                            <!--    <div class='flex-wrap-center flex-stretch full-y'>
+                                <h1 class='font-4 weight-700 p20xy'>
+                                    HiFi
                                 </h1>
-                                <div class='ugrid-4'>
-                                    <div>&nbsp;</div>
-                                    <input placeholder='ENTER CODEPEN URL HERE' class='bg-smoke p10xy' ng-model='selected_asset.codepen_link'/>
-                                    <a class='bg-shamrock txt-white p10xy weight-500' style='weight:50px;'> Submit </a>
-                                </div>
-                            </div>
-                    </div>
-                </ion-pane>
-                <ion-pane id='cta-modal-selected-component' class='full-xy hide-display cta-modal bg-charcoal absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch'>
-                    <a ng-click='hideComponentCTA()' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
-                            <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5">
-                                <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                            </svg>
-                    </a>
-                    <div class='flex-wrap-center full-xy relative flex-stretch'>
-                        <h1 class='full-x p20xy font-4 txt-white bg-azure uppercase text-center'> {{selected_component.name}} Component</h1>
+                                    <div class='flex-wrap-center full-x flex-stretch flex-start'>
+                                        <div class='full-x text-center' ng-repeat='user_story in action_items.hifi'>
 
-                        <div class='relative flex-wrap-center bg-charcoal p20xy full-x flex-stretch'>
-                            <div class='absolute full-xy flex-wrap-center left-0 top-0'>
-                                <h4 class='weight-600 uppercase text-center full-x'> DEMO </h4>
-                                <div class='demo-container flex-wrap-center' id='demo-template' ng-init="component = selected_component">
-                                    <!-- <div id='demo-component-template'> </div> -->
-                                    <demo template='{{selected_component.sample.template}}'/>
-                                    <!-- <dropdown ng-model="selected_component.sample.scope"></dropdown> -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class='bg-azure full-x flex-wrap-center flex-stretch'>
-                            <h4 class='p10xy uppercase weight-400'> Details </h4>
-                            <div class='p20xy ugrid-2'>
-                                <p class='full-x'> {{selected_component.description}} </p>
-                                <p class='full-x'> {{selected_component.requirements}} </p>
-                            </div>
-                            <div class='ugrid-3 full-x'>
-                                <div class='p20xy'>
-                                    <h1 class='full-x text-center weight-600 p10y'> States </h1>
-                                    <ul>
-                                        <li ng-repeat='state in selected_component.states' class='m10y'>
-                                            <div class='weight-400'>{{$index + 1}}. {{state.name}}</div>
-                                            <span> {{state.description}} </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ion-pane>
-
-                <section class='flex-wrap-center absolute flex-stretch full-xy txt-charcoal top-0 left-0' ng-hide='page.layout.sidebar.index'>
-                    <div class='ugrid-6 flex-wrap-center full-x bg-azure' style='height:10%;'>
-                        <a class='flex-wrap-center' ng-repeat='option in page.layout.sections[0].tabs.options' ng-click='page.layout.sections[0].tabs.index = $index'>
-
-
-
-                            <user-icon size="medium" url="option.profile_url"> </user-icon>
-
-                            <!-- <span ng-if='option.profile_url' class='user-icon' style="background-image: url({{option.profile_url}}); height:50px; width:50px;"></span> -->
-
-                            <p class='uppercase full-x text-center uppercase weight-700 p10xy' style='font-size:14px;' ng-bind-html="option.title">
-
-                            </p>
-                        </a>
-                    </div>
-                    <div class='milestones-content relative flex-wrap-center full-x bg-smoke' style='height:90%; overflow:scroll;'>
-                        <div class='txt-charcoal absolute full-xy font-4 weight-600 flex-stretch flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index'>
-                            <h1 class='p20xy text-center bg-charcoal-50px full-x' ng-bind-html="page.layout.sections[0].tabs.options[0].title">
-                            </h1>
-                            <div class='all-user-stories-container flex-wrap-center flex-stretch full-x'>
-                                <div class='ugrid-4 full-x flex-wrap'>
-                                    <a class='bg-slate p20xy txt-white flex-wrap-center' ng-repeat='story in page.user_stories'>
-                                        <h4 class='uppercase weight-600 text-center opacity-50 m10xy' style='font-size:18px;'> #{{$index + 1}} </h4>
-                                        <h1 style='font-size:16px' class='text-center'> {{story.title}} </h1>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== $index' ng-repeat='option in page.layout.sections[0].tabs.options'  ng-init='action_items = option.action_items' ng-if='$index > 0'>
-                            <h1 style='height:10%;' class='bg-cerise-50p full-x flex-wrap-center p20xy weight-00'>
-                                Today's Priorities
-                            </h1>
-                            <div class='flex-wrap-center full-xy' style='height:90%'>
-                                <div class='flex-wrap-center relative flex-stretch full-xy'>
-
-                                    <div class='flex-wrap-center full-x'>
-                                        <div class='full-x text-center ugrid-2 flex-wrap-center'>
-                                            <ul class='txt-charcoal'>
-                                                <li ng-repeat='action_item in action_items' ng-if='action_item.action_type === "assets"' class='text-left weight-300 bg-shamrock' ng-click='initAndLaunchAssetCTA($event, action_item)' style='border:4px dashed white;'>
-                                                    <div class='action-item p20xy m05xy relative'>
-                                                        <h1 class='txt-white weight-600'>{{$index + 1}}. {{action_item.title}} </h1>
-                                                        <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Asset</small>
-                                                    </div>
+                                            <ul class='p20xy bg-shamrock txt-white' style='border:2px dashed white;'>
+                                                <li class='uppercase weight-600 m20xy'>{{user_story.title}}</li>
+                                                <li ng-repeat ='component in user_story.components' class='text-left weight-300 p10xy' ng-click='page.layout.sections[0].tabs.options[1].selected = component;'>
+                                                    <p class='weight-300'> #{{$index + 1}} {{component.name}} </p>
                                                 </li>
-                                                <li ng-repeat='action_item in action_items' ng-if='action_item.action_type === "research"' class='text-left weight-300 bg-azure' ng-click='initAndLaunchComponentCTA($event, action_item)' style='border:4px dashed white;'>
-                                                    <div class='action-item p20xy m05xy relative' style='padding-right:30%;'>
-                                                        <h1 class='txt-white weight-600'>{{$index + 1}}. {{action_item.title}} </h1>
-                                                        <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Research + HiFi</small>
-                                                    </div>
-                                                </li>
-                                                <li ng-repeat='action_item in action_items' ng-if='["components"].indexOf(action_item.action_type) > -1' class='text-left weight-300 bg-azure' ng-click='initAndLaunchComponentCTA($event, action_item)' style='border:4px dashed white;'>
-                                                    <div class='action-item p20xy m05xy relative' style='padding-right:30%;'>
-                                                        <h1 class='txt-white weight-600'>{{$index + 1}}. {{action_item.name}} </h1>
-                                                        <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Research + HiFi</small>
-                                                    </div>
+                                                <li class='p20xy'>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                             <!--    <div class='flex-wrap-center flex-stretch full-y' style='overflow:scroll;' id=''>
-                                    <div class='flex-wrap-center full-x flex-stretch flex-start'>
-                                            <div class='full-x text-center' ng-repeat='user_story in action_items.research'>
+                            </div> -->
+                        <!-- </div> -->
 
-                                                <ul class='p20xy bg-gold txt-slate' style='border:2px dashed white;'>
-                                                    <li class='uppercase weight-600 m20xy'>{{user_story.title}}</li>
-                                                    <li ng-repeat ='component in user_story.components' class='text-left weight-300 p10xy' ng-click='initAndLaunchComponentCTA($event, component)'>
-                                                        <p class='weight-300'> #{{$index + 1}} {{component.name}} </p>
-                                                    </li>
-                                                    <li class='p20xy'>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                    </div>
-                                </div> -->
-                             <!--    <div class='flex-wrap-center flex-stretch full-y'>
-                                    <h1 class='font-4 weight-700 p20xy'>
-                                        HiFi
-                                    </h1>
-                                        <div class='flex-wrap-center full-x flex-stretch flex-start'>
-                                            <div class='full-x text-center' ng-repeat='user_story in action_items.hifi'>
-
-                                                <ul class='p20xy bg-shamrock txt-white' style='border:2px dashed white;'>
-                                                    <li class='uppercase weight-600 m20xy'>{{user_story.title}}</li>
-                                                    <li ng-repeat ='component in user_story.components' class='text-left weight-300 p10xy' ng-click='page.layout.sections[0].tabs.options[1].selected = component;'>
-                                                        <p class='weight-300'> #{{$index + 1}} {{component.name}} </p>
-                                                    </li>
-                                                    <li class='p20xy'>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-                        </div>
-
-                       <!--  <div class='txt-charcoal absolute full-xy flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 2'>
-                            <h1>
-                                {{page.layout.sections[0].tabs.options[2].title}}'s action items
-                            </h1>
-                        </div>
-                        <div class='txt-charcoal absolute full-xy flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 3'>
-                            <h1>
-                                {{page.layout.sections[0].tabs.options[3].title}}'s action items
-                            </h1>
-                        </div> -->
+                        <!--  <div class='txt-charcoal absolute full-xy flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 2'>
+                        <h1>
+                            {{page.layout.sections[0].tabs.options[2].title}}'s action items
+                        </h1>
+                    </div>
+                    <div class='txt-charcoal absolute full-xy flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 3'>
+                        <h1>
+                            {{page.layout.sections[0].tabs.options[3].title}}'s action items
+                        </h1>
+                    </div> -->
                         <!-- <div class='flex-wrap-center absolute top-0 left-0 bg-cerise' >
-                            The all milestones
-                        </div> -->
-                </div>
+                        The all milestones
+                    </div> -->
+                    </div>
                 </section>
                 <section class='flex-wrap-center full-xy txt-charcoal absolute left-0' ng-hide='page.layout.sidebar.index !== 1'>
-                    <div class='ugrid-{{page.layout.sections[1].tabs.options.length}} flex-wrap-center full-x bg-azure' style='height:10%;'>
-                        <a class='flex-wrap-center' ng-repeat='option in page.layout.sections[1].tabs.options' ng-click='page.layout.sections[1].tabs.index = $index'>
-                            <span ng-if='option.profile_url' class='user-icon' style="background-image: url({{option.profile_url}}); height:50px; width:50px;"></span>
-                            <div class='uppercase full-x text-center uppercase weight-600 flex-wrap-center' style='font-size:18px;'>
-                                <div class='uppercase weight-600'>{{option.title}}</div>
-                            </div>
-                        </a>
+                    <div class='tab-container ugrid-{{page.layout.sections[1].tabs.options.length}} flex-wrap-center full-x bg-robin'>
+                        <tabs options="page.layout.sections[1].tabs.options" index="page.layout.sections[1].tabs.index" key="title"/>
                     </div>
-                    <div class='milestones-content relative flex-wrap-center full-x bg-smoke' style='height:90%;'>
-                        <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0' ng-hide='page.layout.sections[1].tabs.index'>
-                            <h1 style='height:10%;' class='bg-smoke full-x flex-wrap-center p20xy weight-800 txt-charcoal'>
-                                All Components
-                            </h1>
-                            <div class='relative flex-wrap-center full-x' style='height:90%'>
-                                <div class='absolute full-xy top-0 left-0'>
-                                    <div class='ugrid-4 flex-wrap-center flex-stretch full-xy'>
-                                        <a ng-repeat='component in page.components track by $index' class='relative flex-wrap-center flex-stretch' style='min-height:200px;' ng-click='initAndLaunchComponentCTA($event, component)'>
-                                            <div class='absolute flex-wrap-center flex-stretch full-x p20xy left-0 top-0'>
-                                                <div class='component-header bg-azure txt-white p20xy full-x'>
+                    <div class='admin-content milestones-content relative flex-wrap-center full-x bg-smoke'>
+                        <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0'>
+                            <div class='txt-charcoal relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0 overflow-auto' ng-hide='page.layout.sections[1].tabs.index !== $index' ng-repeat='option in page.layout.sections[1].tabs.options'>
+                                <h1 style='height:5%;' class='bg-campus full-x flex-wrap-center weight-600 txt-16'>{{option.title}}</h1>
+                                <div class='admin-content-section flex-wrap-center' ng-if='$index === 0'>
+                                    <div class='ugrid-4 flex-wrap-center flex-stretch full-xy padding-15-grid'>
+                                        <a ng-repeat='component in page.components track by $index' class='relative flex-wrap-center flex-stretch' style='min-height:200px;'>
+                                            <div class='relative flex-wrap-center flex-stretch full-xy'>
+                                                <div class='component-header bg-azure txt-white p20xy full-x flex-wrap-center' id='component-{{component.ref}}' ng-click='initAndLaunchComponentCTA($event, component)'>
                                                     <div class='full-x uppercase weight-600 text-center'>
                                                         {{component.name}}
+                                                    </div>
+                                                    <div class='absolute m15top m20right top-0 right-0 opacity-50'>
+                                                        <i class='ion-arrow-resize icon font-4'> </i>
                                                     </div>
                                                 </div>
                                                 <div class='component-mini-demo full-x txt-white bg-slate relative' style='min-height:200px; overflow:hidden;'>
                                                     <!-- <ng-bind src="component.template"/> -->
-                                                    <demo class='flex-wrap-center' template="{{component.sample.template}}"/> </demo>
+                                                    <demo class='flex-wrap-center' template="{{component.sample.template}}"></demo>
                                                     <!-- <step-by-step steps="component.scope.steps" header="component.scope.header"></step-by-step> -->
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
                                 </div>
+                                <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 1'>
+                                    <a class='bg bg-robin' ng-repeat='layout in page.layouts track by $index' ng-click='initAndLaunchLayoutCTA($event, layout)'>
+                                        <div class='component-header flex-center full-x uppercase weight-600 text-center' style='min-height:200px;'>
+                                            {{component.name}}
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 2'>
+                                    <a class='bg bg-robin' ng-repeat='layout in page.layouts track by $index' id='layout-{{layout.ref}}' ng-click='initAndLaunchLayoutCTA($event, layout)'>
+                                        <div class='component-header flex-center full-x uppercase weight-600 text-center' style='min-height:200px;'>
+                                            {{layout.name}}
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 3'></div>
+                                <div class='admin-content-section admin-assets' ng-if='$index === 4'>
+                                    <h1>Category Icons - Normal</h1>
+                                    <ul class="large">
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/academic.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/baking.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/household.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/photography.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/tech.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/athletic.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/delivery.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/freelancing.html'"></span>
+                                        </li>
+                                    </ul>
+                                    
+                                    
+                                    
+                                    <h1>Category Icons - Bottom Aligned</h1>
+                                    <ul class="large">
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/academic-bottom.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/baking-bottom.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/household-bottom.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/photography-bottom.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/tech-bottom.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/athletic-bottom.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/delivery-bottom.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/freelancing-bottom.html'"></span>
+                                        </li>
+                                    </ul>
+                                    
+                                    
+                                    
+                                    <h1>Category Icons - Simple</h1>
+                                    <ul class="large">
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/household-simple.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/tech-simple.html'"></span>
+                                        </li>
+                                    </ul>
+                                    
+                                    
+                                    
+                                    <h1>Navigation Icons</h1>
+                                    <ul>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/arrow.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/check.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/check-circle.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/dash.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/dash-circle.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/down.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/external.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/left.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/menu.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/menu-circle.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/more.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/mute.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/pause.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/play.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/plus-circle.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/search.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/search-plus.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/share.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/skip.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/switch.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/up.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/up-circle.html'"></span>
+                                        </li>
+                                    </ul>
+                                    
+                                    
+                                    
+                                    <h1>Common Icons</h1>
+                                    <ul>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/airplane.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/attach.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/become.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/calendar.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/camera.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/camera-alt.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/card.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/card-fill.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/clock.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/contacts.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/desktop.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/diploma.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/document.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/edit.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/email.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/experience.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/faq.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/filter.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/gift.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/grades.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/grades-a.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/heart.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/home.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/info.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/internet.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/lightbulb.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/lightning.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/location.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/lock.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/logout.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/message.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/mobile.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/money.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/notifications.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/phone.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/photo.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/popular.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/profile.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/question.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/safety.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/satisfaction.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/shield.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/shield-lock.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/shield-star.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/star-half.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/stats.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/support.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/timeline.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/transcript.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/upcoming.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/user.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/video.html'"></span>
+                                        </li>
+                                    </ul>
+                                    
+                                    
+                                    
+                                    <h1>Food Icons</h1>
+                                    <ul>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/donut.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/coffee.html'"></span>
+                                        </li>
+                                    </ul>
+                                    
+                                    
+                                    
+                                    <h1>Will Work For Icons*</h1>
+                                    <ul>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/wwf/cat.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/wwf/chipotle.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/wwf/dog.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/wwf/dogecoin.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/wwf/gift-card.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/wwf/meal-points.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/wwf/pizza.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/wwf/tickets.html'"></span>
+                                        </li>
+                                    </ul>
+                                    
+                                    
+                                    
+                                    <h1>Map Icons*</h1>
+                                    <ul>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/map/bus-stop.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/map/cafe.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/map/establishment.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/map/grocery.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/map/library.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/map/lodging.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/map/parking.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/map/restaurant.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/map/theater.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/main/map/weight.html'"></span>
+                                        </li>
+                                    </ul>
+                                    
+                                    
+                                    
+                                    <h1>Timeline Icons*</h1>
+                                    <ul>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/timeline/blog.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/timeline/college.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/timeline/high-school.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/timeline/milestone.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/timeline/parent.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/timeline/professional.html'"></span>
+                                        </li>
+                                    </ul>
+                                    
+                                    
+                                    
+                                    <h1>Splash Icons</h1>
+                                    <ul class="large">
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/anytime.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/career.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/earn.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/fees.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/organize.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/pajamas.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/payment.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/profile.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/promotion.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/same.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/save.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/skills.html'"></span>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/account.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/courses.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/demographic.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/promo.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/splash/university.html'"></span>
+                                        </li>
+                                    </ul>
+                                    
+                                    
+                                    
+                                    <h1>Social Icons</h1>
+                                    <ul>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/social/facebook.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/social/instagram.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/social/linkedin.html'"></span>
+                                        </li>
+                                        <li>
+                                            <span ng-include="img_base + BASE + 'templates/svg/social/twitter.html'"></span>
+                                        </li>
+                                    </ul>
+                                    <h2>*unique only</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <section class='flex-wrap-center full-x txt-charcoal' ng-hide='page.layout.sidebar.index !== 2'>
-
-                    <doc steps="::page.glossary.lifecycleComponent.steps" header="::page.glossary.lifecycleComponent.header"></doc>
-
+                <section class='flex-wrap-center full-xy txt-charcoal absolute left-0' ng-hide='page.layout.sidebar.index !== 2'>
+                    <div class="tab-container bg-robin">
+                        <tabs options="page.layout.sections[2].tabs.options" index="page.layout.sections[2].tabs.index" key="title"/>
+                    </div>
+                    <div class='admin-content txt-charcoal relative full-x flex-wrap-center flex-stretch flex-start top-0 left-0 overflow-auto' ng-hide='page.layout.sections[2].tabs.index !== $index' ng-repeat='option in page.layout.sections[2].tabs.options'>
+                        <h1 style='height:5%;' class='bg-campus full-x flex-wrap-center weight-600 txt-16'>
+                            {{option.header}}
+                        </h1>
+                        <div class="admin-docs admin-reference admin-content-section" ng-if='!page.layout.sections[2].tabs.index'>
+                            <h2>UX Funnel</h2>
+                        </div>
+                    </div>
                 </section>
-                <section class='flex-wrap-center full-x txt-charcoal' ng-hide='page.layout.sidebar.index !== 3'>
+                <section class='flex-wrap-center full-xy txt-charcoal' ng-hide='page.layout.sidebar.index !== 3'>
+                    <div class="tab-container">
+                        <tabs options="page.layout.sections[3].tabs.options" index="page.layout.sections[3].tabs.index" key="title"/>
+                    </div>
+                    <div class='admin-content txt-charcoal relative full-x flex-wrap-center flex-stretch flex-start top-0 left-0 overflow-auto' ng-hide='page.layout.sections[3].tabs.index !== $index' ng-repeat='option in page.layout.sections[3].tabs.options'>
+                        <h1 style='height:5%;' class='bg-campus full-x flex-wrap-center weight-600 txt-16'>
+                            {{option.header}}
+                        </h1>
+                        <div class="admin-moodboard admin-content-section" ng-if='!page.layout.sections[3].tabs.index'>
+                            <ul>
+                                <li>
+                                    <div style="background-image: url('https://d13yacurqjgara.cloudfront.net/users/60166/screenshots/2575646/space.jpg')">
+                                        <a class="bg bg-crimson" href="">Moodboard Link</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="background-image: url('https://d13yacurqjgara.cloudfront.net/users/60166/screenshots/2575646/space.jpg')">
+                                        <a class="bg bg-robin" href="">Moodboard Link</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="background-image: url('https://d13yacurqjgara.cloudfront.net/users/60166/screenshots/2575646/space.jpg')">
+                                        <a class="bg bg-robin" href="">Moodboard Link</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="background-image: url('https://d13yacurqjgara.cloudfront.net/users/60166/screenshots/2575646/space.jpg')">
+                                        <a class="bg bg-robin" href="">Moodboard Link</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="background-image: url('https://d13yacurqjgara.cloudfront.net/users/60166/screenshots/2575646/space.jpg')">
+                                        <a class="bg bg-robin" href="">Moodboard Link</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="background-image: url('https://d13yacurqjgara.cloudfront.net/users/60166/screenshots/2575646/space.jpg')">
+                                        <a class="bg bg-robin" href="">Moodboard Link</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="admin-moodboard admin-content-section" ng-if='page.layout.sections[3].tabs.index === 1'>
+                            <ul>
+                                <li>
+                                    <div class="bg-charcoal">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Charcoal</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-slate">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Slate</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-taupe">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Taupe</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-campus">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Campus</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-smoke">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Smoke</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-white">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>White</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <div class="bg-shamrock">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Shamrock</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-robin">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Robin</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-lake">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Lake</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-moxie">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Moxie</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <div class="bg-charcoal">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Charcoal</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-slate">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Slate</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-taupe">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Taupe</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-campus">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Campus</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-smoke">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Smoke</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-white">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>White</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <div class="bg-shamrock">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Shamrock</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-robin">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Robin</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-lake">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Lake</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="bg-moxie">
+                                        <svg viewBox="0 0 100 50">
+                                            <rect x="0" y="0" width="100" height="50" fill="none"></rect>
+                                        </svg>
+                                        <div>
+                                            <h1>Moxie</h1>
+                                            <input type="text" value="#000000"/>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="admin-moodboard admin-content-section" ng-if='page.layout.sections[3].tabs.index === 2'>
+                        </div>
+                        <div class="admin-moodboard admin-content-section" ng-if='page.layout.sections[3].tabs.index === 3'>
+                        </div>
+                        <div class="admin-moodboard admin-content-section" ng-if='page.layout.sections[3].tabs.index === 4'>
+                        </div>
+                    </div>
                 </section>
-                <section class='flex-wrap-center full-x txt-charcoal' ng-hide='page.layout.sidebar.index !== 4'>
-                </section>
-            </div>
+                <section class='flex-wrap-center full-x txt-charcoal' ng-hide='page.layout.sidebar.index !== 4'></section>
+            </section>
         </div>
     </main>
 </div>

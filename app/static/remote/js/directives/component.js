@@ -19,16 +19,17 @@ angular.module('uguru.components', [])
     restrict: 'E'
   };
 })
-.directive("demo", ['$compile', function($compile) {
+.directive("demo", ['$compile', '$timeout', function($compile, $timeout) {
   return {
     restrict: 'E',
     scope: '=',
     link: function(scope, element, attr) {
-
-      if (attr.template && attr.template.length) {
-        element.html(attr.template);
-        $compile(element.contents())(scope);
-      }
+      $timeout(function() {
+        if (attr.template && attr.template.length) {
+          element.html(attr.template);
+          $compile(element.contents())(scope);
+        }
+      }, 1000);
     }
   };
 }])
@@ -39,9 +40,16 @@ angular.module('uguru.components', [])
         dropdown: '=ngModel',
 
     },
+    replace: true,
     restrict: 'E',
     link: function( scope, element, attr ) {
-
+      scope.click = function(index) {
+        scope.dropdown.selectedIndex = index;
+        scope.toggle();
+      }
+      scope.toggle = function() {
+        scope.dropdown.active = !scope.dropdown.active;
+      }
     }
   };
 })
@@ -52,14 +60,15 @@ angular.module('uguru.components', [])
         url: '=url',
         size: '=size'
     },
+    replace:true,
     restrict: 'E',
     link: function( scope, element, attr ) {
-      if (scope.size && scope.size === 'small') {
+      if (attr.size && attr.size === 'small') {
         scope.size = '-32'
-      } else if (scope.size && scope.size === 'medium'){
+      } else if (attr.size && attr.size === 'medium'){
         scope.size= '-64'
       }
-      if (!scope.url || !scope.url.length) {
+      if (!attr.url || !attr.url.length) {
         scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
       }
     }
@@ -90,6 +99,7 @@ angular.module('uguru.components', [])
     scope: {
         avg: '=avg',
     },
+    replace: true,
     restrict: 'E',
     link: function( scope, element, attr ) {
       console.log(scope.avg);
@@ -117,13 +127,44 @@ angular.module('uguru.components', [])
   return {
     templateUrl: BASE + 'templates/components/dev/containers/tabs.tpl',
     scope: {
-        options: '=tabs',
-        key: '=key',
-        index: '=index'
+        options: '=options',
+        key: '@?key',
+        tabIndex: '=index'
     },
     restrict: 'E',
+    replace: true,
     link: function( scope, element, attr ) {
-      scope.index = scope.index || 0;
+      if (! ('index' in attr)) {
+        scope.tabIndex = 0;
+      }
+      scope.updateTabIndex = function ($index) {
+        scope.tabIndex = $index;
+      }
+    }
+  };
+})
+.directive("colorPicker", function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/color.picker.tpl',
+    scope: {
+        selectedColor: '=',
+
+    },
+    restrict: 'E',
+    replace: true,
+    link: function( scope, element, attr ) {
+      scope.defaultColorOptions = ['auburn', 'orange', 'gold', 'moola', 'shamrock', 'azure', 'lake', 'cobalt', 'eggplant', 'campus', 'taupe', 'slate', 'charcoal'];
+      scope.showColorPicker = true;
+      if (!scope.selectedColor || !scope.defaultColorOptions.length) {
+        scope.selectedColor = 'shamrock';
+      }
+      scope.setSelectedColor = function(color_option) {
+        scope.selectedColor = color_option;
+      }
+      scope.setAndClose = function(color_option) {
+        scope.selectedColor = color_option;
+        scope.showColorPicker = false;
+      }
     }
   };
 })

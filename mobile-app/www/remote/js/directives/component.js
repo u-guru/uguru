@@ -168,3 +168,43 @@ angular.module('uguru.components', [])
     }
   };
 })
+.directive('miniProfileCard', function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/guru.profile.mini.tpl',
+  }
+})
+
+.directive('profileCard', function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/guru.profile.tpl',
+  }
+})
+
+.directive('miniProfileCard', function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/guru.pricing.tile.tpl',
+  }
+})
+.directive('pricingTile', function() {
+  return {
+    templateURL: BASE + 'templates/components/dev/containers/pricing.til.tpl'
+  }
+})
+.directive('schoolIdCard', function() {
+  return {
+    templateURL: BASE + 'templates/components/dev/containers/school.id.tpl'
+    //pass in user
+    //pass in user.university
+    //pass in user.profile-url
+    // pass in user.student_courses
+  }
+})
+.directi('universityMarker', function() {
+  return {
+    templateURL: BASE + 'templates/components/dev/containers/university.marker.tpl'
+    //pass in user
+    //pass in user.university
+    //pass in user.profile-url
+    // pass in user.student_courses
+  }
+})

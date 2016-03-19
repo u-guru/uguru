@@ -388,7 +388,9 @@ var componentList = [
             scope: {
                 selectedColor:'auburn'
             }
-        }
+        },
+        action_items: [{'Gabrielle': 'Place in guru profile under the third tab "which we can call miscellaneous"'}],
+        bugs: [{girls: 'resolve inputs and save buttons vs blurs'}],
     }
 ]
 
