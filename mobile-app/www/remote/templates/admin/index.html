@@ -28,12 +28,24 @@
                     <div class='bg-shamrock-50p txt-white full-x flex-wrap-center relative' style='height:25%;'>
                         <h1 class='text-center full-x'>I want to ....</h1>
                         <div class='full-x absolute bottom-0 left-0 p20xy'>
-                            <tabs options="admin_item.dropdown_options.options" index='admin_item.dropdown_options.index'> </tabs>
+                            <tabs options="admin_item.dropdown_options.options" index='adminItemIndex'> </tabs>
                         </div>
                     </div>
-                    <div class='flex-wrap-center bg-azure-50p flex-stretch relative' style='height:75%;'>
-                        <div class=''>
-
+                    <div class='flex-wrap-center bg-azure-50p flex-stretch relative full-x' style='height:75%;'>
+                        <div class='absolute full-xy flex-wrap-center left-0 top-0' ng-hide='adminItemIndex'>
+                            <h1>Tab option 1</h1>
+                        </div>
+                        <div class='absolute full-xy flex-wrap-center left-0 top-0' ng-hide='adminItemIndex !== 1'>
+                            <h1>Tab option 2</h1>
+                        </div>
+                        <div class='absolute full-xy flex-wrap-center left-0 top-0' ng-hide='adminItemIndex !== 2'>
+                            <h1>Tab option 3</h1>
+                        </div>
+                        <div class='absolute full-xy flex-wrap-center left-0 top-0' ng-hide='adminItemIndex !== 3'>
+                            <h1>Tab option 4</h1>
+                        </div>
+                        <div class='absolute full-xy flex-wrap-center left-0 top0' ng-hide='adminItemIndex !== 4'>
+                            <h1>Tab option 5</h1>
                         </div>
                     </div>
                 </div>
@@ -936,7 +948,7 @@
                             <h2>UX Funnel</h2>
                         </div>
                     </div>
-                    
+
                     <div class='admin-content txt-charcoal relative full-x flex-wrap-start top-0 left-0 overflow-auto' ng-hide='page.layout.sections[2].tabs.index !== $index' ng-repeat='option in page.layout.sections[2].tabs.options'>
                         <h1 style='height:5%;' class='bg-campus full-x flex-wrap-center weight-600 txt-16'>
                             {{option.header}}
@@ -1063,7 +1075,7 @@
                         </div>
                         <div class="admin-reference admin-content-section" ng-if='page.layout.sections[2].tabs.index === 3'></div>
                     </div>
-                    
+
                 </section>
                 <section class='flex-wrap-center full-xy txt-charcoal' ng-hide='page.layout.sidebar.index !== 3'>
                     <div class="tab-container bg-robin">
