@@ -93,25 +93,27 @@
 		@include flex-wrap;
 		h1 {
 			width: 100%;
-			padding: 15px 4px 0px;
+			padding: 15px 15px 0px;
 			font-size: 24px;
 			font-weight: 600;
+			color: $slate;
 		}
 		h2 {
 			width: 100%;
-			padding: 15px 4px;
+			padding: 15px;
 			font-size: 18px;
 			font-weight: 600;
+			color: $slate;
 		}
 		ul {
 			@include flex;
 			@include flex-wrap;
 			@include prefix(align-content, flex-start, webkit);
 			width: 100%;
-			padding: 2px;
+			padding: 7.5px;
 			li {
-				width: 10%;
-				padding: 2px;
+				width: calc(100% / 8);
+				padding: 7.5px;
 				span {
 					@include flex;
 					@include flex-center;
@@ -124,7 +126,7 @@
 			}
 			&.large {
 				li {
-					width: 12.5%;
+					width: calc(100% / 6);
 				}
 			}
 			+ ul {
@@ -231,7 +233,7 @@
 	}
 	
 	// components
-	.admin-components {
+	.admin-components, .admin-containers {
 		> h2 {
 			font-weight: 600;
 			padding: 15px 15px 0;
@@ -245,13 +247,14 @@
 		}
 		> ul {
 			@include flex;
+			@include flex-wrap;
 			padding: 7.5px;
 			width: 100%;
 			> li {
 				width: 25%;
 				padding: 7.5px;
 				> div {
-					> h1 {
+					> h1, > a {
 						padding: 10px 15px;
 						background: $shamrock;
 						font-size: 20px;
@@ -259,6 +262,25 @@
 						text-align: center;
 						border-top-left-radius: 2px;
 						border-top-right-radius: 2px;
+						h1 {
+							font-weight: 600;
+						}
+					}
+					> a {
+						&:hover, &:focus {
+							background: mix($shamrock, white);
+							color: mix($shamrock, $slate);
+							+ div {
+								border-color: mix($shamrock, white);
+							}
+						}
+						&:active {
+							background: mix($shamrock, $slate);
+							color: white;
+							+ div {
+								border-color: mix($shamrock, $slate);
+							}
+						}
 					}
 					> h2 {
 						padding: 10px 15px;
@@ -271,7 +293,9 @@
 						border-bottom-right-radius: 2px;
 					}
 					> div {
-						background: $charcoal;
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						overflow: hidden;
+						background: rgba($charcoal, .8);
 						position: relative;
 						border: 2px solid $shamrock;
 						border-top: 0;
@@ -282,6 +306,18 @@
 						&:empty {
 							display: none;
 						}
+					}
+				}
+			}
+		}
+	}
+	.admin-containers {
+		> ul {
+			> li {
+				width: 50%;
+				> div {
+					> div {
+						height: 400px;
 					}
 				}
 			}

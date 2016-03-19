@@ -19,8 +19,8 @@ angular.module('uguru.util.controllers')
 			layouts: AdminContent.getLayouts(),
 			user_stories: AdminContent.getUserStories(),
 			defaults: {
-				tabsIndex: 0,
-				sidebarIndex: 1
+				tabsIndex: 2,
+				sidebarIndex: 2
 			}
 		}
 		// $scope.selected_component = $scope.page.components[4];
@@ -66,6 +66,8 @@ angular.module('uguru.util.controllers')
 
 		$scope.initAndLaunchAdminItemCTA = function($event) {
 			var targetElem = $event.target;
+			$scope.adminItemCTAShown = true;
+			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.admin_item = {
 				dropdown_options: {index: 0, options: ['Milestone', 'Element Revision', 'New Element or Asset', 'New Action Item', 'New Revision']},
 				options: {
@@ -106,6 +108,16 @@ angular.module('uguru.util.controllers')
 					}
 				}
 			}
+
+			$scope.lastCTABoxTargetElem = targetElem;
+			$scope.lastCTABoxTargetElem.id = 'cta-box-admin-item';
+			CTAService.initSingleCTA('#' + targetElem.id, 'body');
+			$timeout(function() {
+				var targetElem = document.querySelector('#cta-box-admin-item');
+				angular.element(targetElem).triggerHandler('click');
+				var modalElem = document.querySelector('#cta-modal-admin-item');
+				modalElem && modalElem.classList.add('show');
+			})
 		}
 
 		$scope.initAndLaunchComponentCTA = function($event, component) {
@@ -169,6 +181,29 @@ angular.module('uguru.util.controllers')
 
 		$scope.hideComponentCTA = function($event) {
 			if ($scope.lastCTABoxTargetElem) {
+				CTAService.closeCTAManually($scope.lastCTABoxTargetElem.id, function() {
+					var modalElem = document.querySelector('#' + $scope.lastCTABoxTargetElem.id.replace('box', 'modal'));
+					$scope.lastCTABoxTargetElem.id = null;
+					if (modalElem) {
+						modalElem.classList.remove('show');
+					}
+					$timeout(function() {
+						$scope.lastCTABoxTargetElem = null;
+					}, 500)
+				})
+				$timeout(function() {
+					if ($scope.lastCTABoxTargetElem) {
+						$scope.lastCTABoxTargetElem.id = null;
+						$scope.lastCTABoxTargetElem = null;
+					}
+				}, 500)
+
+			}
+		}
+
+		$scope.hideAdminItemCTA = function($event) {
+			if ($scope.lastCTABoxTargetElem) {
+				$scope.adminItemCTAShown = false;
 				CTAService.closeCTAManually($scope.lastCTABoxTargetElem.id, function() {
 					var modalElem = document.querySelector('#' + $scope.lastCTABoxTargetElem.id.replace('box', 'modal'));
 					$scope.lastCTABoxTargetElem.id = null;
