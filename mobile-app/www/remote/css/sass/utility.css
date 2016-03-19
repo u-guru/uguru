@@ -446,6 +446,22 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center; }
+  [class*="flex"][class*="-start"] {
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    -webkit-align-content: flex-start;
+    align-content: flex-start; }
+  [class*="flex"][class*="-end"] {
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-align-content: flex-end;
+    align-content: flex-end; }
+  [class*="flex"][class*="-start-self"] {
+    -webkit-align-self: flex-start;
+    align-self: flex-start; }
+  [class*="flex"][class*="-end-self"] {
+    -webkit-align-self: flex-end;
+    align-self: flex-end; }
 
 .flex-grow {
   -webkit-flex-grow: 1;
@@ -499,6 +515,30 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 
 .lettercase {
   text-transform: capitalize; }
+
+.txt-1, .txt-14 {
+  font-size: 14px; }
+
+.txt-2, .txt-16 {
+  font-size: 16px; }
+
+.txt-3, .txt-18 {
+  font-size: 18px; }
+
+.txt-4, .txt-20 {
+  font-size: 20px; }
+
+.txt-5, .txt-24 {
+  font-size: 24px; }
+
+.txt-6, .txt-28 {
+  font-size: 28px; }
+
+.txt-7, .txt-36 {
+  font-size: 36px; }
+
+.txt-8, .txt-48 {
+  font-size: 48px; }
 
 .txt-charcoal {
   color: #2B3234 !important; }

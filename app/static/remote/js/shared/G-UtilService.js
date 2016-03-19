@@ -240,7 +240,7 @@ function GUtilService($timeout) {
     // https://developers.google.com/maps/documentation/javascript/reference?hl=en#Symbol
     //rotation, scale, stroke color, stroke opacity, stroke weight, path, label origin, fillOpacity, fillColor, anchor
     var formatIconSvgUrl = function(iconName,scope) {
-      return scope.img_base + 'templates/svg/map/' + iconName + '.svg'
+      return scope.img_base + 'templates/svg/main/map/' + iconName + '.svg'
     }
     var supportedIcons = ["bus-stop", "cafe", "establishment", "grocery", "library", "lodging", "parking", "restaurant", "theater", "weight"];
 

@@ -25,8 +25,8 @@ angular.module('uguru.util.controllers')
 		// $scope.selected_component = $scope.page.components[4];
 
 		$scope.elementCTATabOptions = {
-			components: ['Demo', 'Details', 'States', 'Use Cases', 'Element Map', 'To Do'],
-			layouts: ['Demo', 'Details', 'States', 'Use Cases', 'Element Map', 'To Do'],
+			components: ['Demo', 'Attributes', 'States', 'Use Cases', 'Element Map', 'To Do'],
+			layouts: ['Demo', 'Attributes', 'States', 'Use Cases', 'Element Map', 'To Do'],
 		}
 
 
@@ -61,6 +61,63 @@ angular.module('uguru.util.controllers')
 			// 	var modalElem = document.querySelector('#cta-modal-selected-layout');
 			// 	modalElem && modalElem.classList.add('show');
 			// })
+		}
+
+		$scope.initAndLaunchAdminItemCTA = function($event) {
+			var targetElem = $event.target;
+			$scope.adminItemCTAShown = true;
+			$scope.lastCTABoxTargetElem = targetElem;
+			$scope.admin_item = {
+				dropdown_options: {index: 3, options: ['Milestone', 'Element Revision', 'New Element', 'New Action Item', 'New Revision']},
+				options: {
+					element: {
+						type: ['Component', 'Container', 'Layouts', 'User Stories', 'Assets'],
+						name: '', // text input field
+						description: [], // text input / textarea
+						moodboard_refs: [], //
+						components_within: [],
+						tags: [],
+					},
+					moodboard: {
+						name: '',
+						reference_url: '',
+						best_part: ['Component', 'Container', 'Layouts', 'User Stories', 'Assets'],
+						description: '', // text input / textarea
+						tags: []
+					},
+					element_revision: {
+						select_element: ['Component', 'Container', 'Layouts', 'User Stories', 'Assets'],
+						reference: {
+							codepen_input_field: '',
+							describe_bug_textarea: '',
+						}
+					},
+					new_action_item: {
+						select_section: ['Moodboard', 'Reference', 'Elements', 'Tools'],
+						select_subsection: [], //another subdropdown
+						description: '', //textarea
+						tags: '', //textarea
+						priority: 3, // (1 -- highest, 3 lowest)
+						assign_to: [], //team members array or something easy to click
+					},
+					new_revision: {
+						name: '',
+						description: '',
+						has_subsections: false
+						//pretty open ended
+					}
+				}
+			}
+
+			$scope.lastCTABoxTargetElem = targetElem;
+			$scope.lastCTABoxTargetElem.id = 'cta-box-admin-item';
+			CTAService.initSingleCTA('#' + targetElem.id, 'body');
+			$timeout(function() {
+				var targetElem = document.querySelector('#cta-box-admin-item');
+				angular.element(targetElem).triggerHandler('click');
+				var modalElem = document.querySelector('#cta-modal-admin-item');
+				modalElem && modalElem.classList.add('show');
+			})
 		}
 
 		$scope.initAndLaunchComponentCTA = function($event, component) {
@@ -144,6 +201,29 @@ angular.module('uguru.util.controllers')
 			}
 		}
 
+		$scope.hideAdminItemCTA = function($event) {
+			if ($scope.lastCTABoxTargetElem) {
+				$scope.adminItemCTAShown = false;
+				CTAService.closeCTAManually($scope.lastCTABoxTargetElem.id, function() {
+					var modalElem = document.querySelector('#' + $scope.lastCTABoxTargetElem.id.replace('box', 'modal'));
+					$scope.lastCTABoxTargetElem.id = null;
+					if (modalElem) {
+						modalElem.classList.remove('show');
+					}
+					$timeout(function() {
+						$scope.lastCTABoxTargetElem = null;
+					}, 500)
+				})
+				$timeout(function() {
+					if ($scope.lastCTABoxTargetElem) {
+						$scope.lastCTABoxTargetElem.id = null;
+						$scope.lastCTABoxTargetElem = null;
+					}
+				}, 500)
+
+			}
+		}
+
 		// function launchComponentCTAOnLoad(ref_id, component) {
 		// 	$timeout(function() {
 		// 		$scope.$on('$ionicView.enter', function() {
@@ -180,8 +260,8 @@ angular.module('uguru.util.controllers')
 			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = $scope.page.defaults.tabsIndex;
 
 
-			// var layoutElem = document.querySelector('#layout-guru-ranking-layout');
-			// angular.element(layoutElem).triggerHandler('click')
+			// var adminItemElem = document.querySelector('#cta-box-admin-item');
+			// angular.element(adminItemElem).triggerHandler('click');
 
 		}, 1000)
 	}

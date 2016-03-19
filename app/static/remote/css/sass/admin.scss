@@ -71,16 +71,128 @@
 		}
 	}
 	
+	// content sections
+	.tab-container {
+		width: 100%;
+		.tab-bar {
+			background: transparent!important;
+		}
+	}
+	.admin-content {
+		height: calc(100% - 60px);
+	}
+	.admin-content-section {
+		@include flex;
+		width: 100%;
+		height: 95%;
+	}
+	
+	// assets
+	.admin-assets {
+		@include prefix(align-content, flex-start, webkit);
+		@include flex-wrap;
+		h1 {
+			width: 100%;
+			padding: 15px 15px 0px;
+			font-size: 24px;
+			font-weight: 600;
+			color: $slate;
+		}
+		h2 {
+			width: 100%;
+			padding: 15px;
+			font-size: 18px;
+			font-weight: 600;
+			color: $slate;
+		}
+		ul {
+			@include flex;
+			@include flex-wrap;
+			@include prefix(align-content, flex-start, webkit);
+			width: 100%;
+			padding: 7.5px;
+			li {
+				width: calc(100% / 8);
+				padding: 7.5px;
+				span {
+					@include flex;
+					@include flex-center;
+					svg {
+						display: block;
+						width: 100%;
+						background: white;
+					}
+				}
+			}
+			&.large {
+				li {
+					width: calc(100% / 6);
+				}
+			}
+			+ ul {
+				margin-top: -4px;
+			}
+		}
+	}
+	
+	// admin update
+	.admin-update {
+		padding: 7.5px;
+		> div {
+			padding: 7.5px;
+		}
+		input.full, textarea {
+			width: 100%;
+			padding: 10px 15px;
+			background: rgba(white, .5);
+			&:focus {
+				background: white;
+			}
+		}
+		textarea {
+			min-height: 200px;
+			&[small] {
+				min-height: 100px;
+			}
+		}
+	}
+	
+	// code container
+	.playground-code-container {
+		@include flex;
+		@include flex-center;
+		width: 100%;
+		max-width: 600px;
+		padding: 7.5px;
+		margin: 15px auto 0;
+		li {
+			width: 50%;
+			padding: 7.5px;
+		}
+		textarea {
+			background: rgba(white, .5);
+			width: 100%;
+			min-height: 200px;
+			padding: 10px 15px;
+			&:focus {
+				background: white;
+			}
+		}
+	}
+	
 	// moodboard
 	.admin-moodboard {
-		width: 100%;
-		height: 90%;
 		> ul {
 			@include flex;
 			@include flex-wrap;
+			@include prefix(align-items, flex-start, webkit);
+			@include prefix(align-content, flex-start, webkit);
+			width: 100%;
+			padding: 7.5px;
 			li {
 				width: 25%;
 				height: 200px;
+				padding: 7.5px;
 				div {
 					position: relative;
 					width: 100%;
@@ -95,6 +207,28 @@
 						font-size: 18px;
 						font-weight: 600;
 						padding: 5px 10px;
+						&.bg-robin {
+							background: rgba($robin, .75);
+							&:hover, &:focus {
+								background: mix($robin, white);
+								color: mix($robin, $slate);
+							}
+							&:active {
+								background: mix($robin, $slate);
+								color: white;
+							}
+						}
+						&.bg-crimson {
+							background: rgba($crimson, .75);
+							&:hover, &:focus {
+								background: mix($crimson, white);
+								color: mix($crimson, $slate);
+							}
+							&:active {
+								background: mix($crimson, $slate);
+								color: white;
+							}
+						}
 					}
 				}
 			}
@@ -103,9 +237,6 @@
 	
 	// colors
 	.admin-colors {
-		@include flex;
-		width: 100%;
-		height: 90%;
 		> ul {
 			> li {
 				> div {
@@ -144,6 +275,167 @@
 							font-size: 16px;
 							font-weight: 600;
 							text-align: center;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	// components
+	.admin-components, .admin-containers {
+		> h2 {
+			font-weight: 600;
+			padding: 15px 15px 0;
+			width: 100%;
+		}
+		> p {
+			font-size: 28px;
+			font-weight: 400;
+			margin: 0;
+			padding: 5px 15px 15px;
+		}
+		> ul {
+			@include flex;
+			@include flex-wrap;
+			padding: 7.5px;
+			width: 100%;
+			> li {
+				width: 25%;
+				padding: 7.5px;
+				> div {
+					> h1, > a {
+						padding: 10px 15px;
+						background: $shamrock;
+						font-size: 20px;
+						font-weight: 600;
+						text-align: center;
+						border-top-left-radius: 2px;
+						border-top-right-radius: 2px;
+						h1 {
+							font-weight: 600;
+						}
+					}
+					> a {
+						&:hover, &:focus {
+							background: mix($shamrock, white);
+							color: mix($shamrock, $slate);
+							+ div {
+								border-color: mix($shamrock, white);
+							}
+						}
+						&:active {
+							background: mix($shamrock, $slate);
+							color: white;
+							+ div {
+								border-color: mix($shamrock, $slate);
+							}
+						}
+					}
+					> h2 {
+						padding: 10px 15px;
+						background: mix($shamrock, white);
+						color: mix($shamrock, $slate);
+						font-size: 16px;
+						font-weight: 600;
+						text-align: center;
+						border-bottom-left-radius: 2px;
+						border-bottom-right-radius: 2px;
+					}
+					> div {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						overflow: hidden;
+						background: rgba($charcoal, .8);
+						position: relative;
+						border: 2px solid $shamrock;
+						border-top: 0;
+						height: 200px;
+						> * {
+							@include center-xy;
+						}
+						&:empty {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+	.admin-containers {
+		> ul {
+			> li {
+				width: 50%;
+				> div {
+					> div {
+						height: 400px;
+					}
+				}
+			}
+		}
+	}
+	
+	// time states
+	.admin-time-states {
+		h2 {
+			font-weight: 600;
+			padding: 15px 15px 0;
+		}
+	}
+	
+	// action items
+	.admin-action-items {
+		h2 {
+			font-weight: 600;
+			padding: 15px 15px 0;
+		}
+		ul {
+			@include flex;
+			@include flex-wrap;
+			padding: 7.5px;
+			li {
+				width: 50%;
+				padding: 7.5px;
+				.checkbox-container {
+					@include prefix(justify-content, flex-start, webkit);
+					background: $smoke;
+					padding: 15px;
+					label {
+						color: $slate;
+					}
+				}
+			}
+		}
+	}
+	
+	// details
+	.admin-details {
+		padding: 7.5px;
+		> div {
+			padding: 7.5px;
+			> div {
+				background: $smoke;
+				border-radius: 2px;
+				color: $slate;
+				> h1 {
+					font-size: 24px;
+					font-weight: 600;
+					padding: 15px 15px 0;
+				}
+				> div {
+					padding: 15px;
+					font-size: 18px;
+					font-weight: 400;
+				}
+				> ul {
+					font-size: 18px;
+					font-weight: 400;
+					padding: 7.5px;
+					li {
+						padding: 7.5px;
+						div {
+							padding: 15px;
+							background: rgba($campus, .3);
+							border-radius: 2px;
 						}
 					}
 				}
@@ -200,6 +492,13 @@
 					width: 10%;
 				}
 			}
+		}
+		.user-ranking-filler-svg {
+			display: block;
+			margin: 0 auto;
+			width: 126px;
+			height: 110px;
+			margin-bottom: 15px;
 		}
 	}
 }

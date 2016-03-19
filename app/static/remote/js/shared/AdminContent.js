@@ -88,6 +88,7 @@ function AdminContent($localstorage) {
             },
             {
                 name: 'Girls',
+                profile_url: 'https://uguru.me/static/web/images/team/jeselle',
                 profile_url_1: 'https://uguru.me/static/web/images/team/jeselle.png',
                 profile_url_2: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200'
             }
@@ -142,40 +143,7 @@ function AdminContent($localstorage) {
         function getActionItemsFor(member_name) {
             var actionList = {
                 'jeselle': {
-                    layouts: layoutList,
-                    assets: [
-                                {type:'logo', title: 'Guru Wizard', description: ' a wizard cap + glasses can give the “dumbledory” feeling'},
-                                {type:'logo', title: 'Honor Guru', description: ' an honor pledge guru to use for later'},
-                                {type:'logo', title: 'Deputy Guru', description: ' for warning gurus'}],
-                    research: [
-                    {
-                        title: 'Fluid File Icons + Variations',
-                        description: 'Our file icons are good -- but I am curious to see what else is out there in the world. I am not sure where the current ones are, but let me know if Gabrielle sends them you - I can link them in the spec',
-                        requirements: 'See if you can find something over the top - anything you like and can see yourself interfacing with -- add it to the moodboard section. I feel like this is really low hanging fruit that you can personally animate and finish the feature from an idea/research to the final set! <br> I prefer not to finalize the file type list myself because I am not up-to-date with the ratios that certains are currently most used.',
-                        user_story_ref: 'student_explore',
-                        project_details: {size: 'sm - med', type: 'component'},
-                        component_attributes: ['file name'],
-                        use_cases: ['[Student / Guru] User wants to browse/upload files to their dashboard', 'Student/Guru are matched, and want to share files with each other, as well as view all just for between.', 'User wants to delete files - what does that look like?', 'Request Form'],
-                        component_ref: [{'svg': ['profile/document.svg']}, {'html': ['templates/messaging']}],
-                        next_steps: 'hifi',
-                        submission_type: 'Zeplin',
-                        spec_status: 'incomplete'
-                    },
-                    {
-                        title: 'Guru Office Hours',
-                        description: 'All states affiliated with this, including Guru Promote banner page + the HiFi calendar component both mobile & desktop',
-                        requirements: 'Simple focused. We do not need a full calendar functionality. I prefer a much more heavily animated one thats extermely simple, over a less animated but crowded feeling',
-                        user_story_ref: 'guru_oh',
-                        project_details: {size: 'large', type:'user story'},
-                        submission_type: 'Zeplin'
-                    }
-                    ],
-
-                    upcoming: [{
-                        assets: {
-                            type: 'logo', title: 'Security Guru', description: "Let's say a Guru wants to join online office hours, it should show enter passcode, which is a relatively simple state"
-                        }
-                    }]
+                    layouts: layoutList
                 },
                 'girls': {
                     research: [{project: 'Admin Setup', description: 'Decide tags to use for moodboard, make a list of changes you want to have/make over time.', title: 'Making Dashboard Yours'},
@@ -316,14 +284,15 @@ var layoutList = [
             },
             gallery_ref: {
                 parents: [{type:'User Story', name: 'Guru Checks Guru Ranking'}],
-                children: [{type: 'component', name: 'Circular Progress Bar'}, {type: 'container', name: 'High Score List'}, {type: 'container', name: 'Action Item List'}],
+                children: [{type: 'component', name: 'Circular Progress Bar'}, {type: 'component', name: 'University Background Image'}, {type: 'container', name: 'High Score List'}, {type: 'container', name: 'Action Item List'}],
             },
-            action_items: [],
+            action_items: [{user: 'Jeselle', action_items: ["#1. Resolve impact level - an icon that will show how much a certain action will contribute to their rankings. Scale will be 1-3 or 1-5 based on which one is more elegant design. I'm thinking the phone signal bars (att) with color indicating health like green for great, and just gray for minimal", "High score list (static) for 5-10 items. Feel free to play with the attributes per list item. Right now they are the name, stars, and ranking. Others can include course tags, # of reviews, whatever feels most natural", "Action item list (since lists are fresh). What’s the bare minimum we have to add in the interface to have an action item visually indicate that it will take you the destination (lets say Profile > Guru Profile Photo), without having a button for each item? It cannot be hover because on mobile we don’t have that. You have flexibility to alter copy, i.e. 'Your ranking will be ___ after _____' vs just the pure component."]}],
             details: {
-                description: 'When a Guru clicks on "Guru Ranking tile" on their dashboard, this is the CTA that will popup',
-                notes: 'Any questions or random thoughts after a spec is complete',
+                description: 'When a Guru clicks on "Guru Ranking tile" on their dashboard, this is the CTA that will popup. There will 3-4 other options, right now it is only showing one.',
+                notes: 'This is the first spec so please ask for as much extra detail you need & I will standardize into the next one.',
+                requirements: 'Isolation to the new components within the container. Get HiFis of the new components first and then work your way outward into the layout. '
             },
-            gallery_states: [],
+            states: ["Student is not ranked because email is not activated. Grayed out components with overlay with a cta button to action items tab bar ", "Student is ranked and sees their place on the high score list, with the ranking progress indicator"],
             bugs: [],
             sample: {
                 template_url: 'templates/components/dev/layouts/guru.ranking.tpl',
@@ -366,12 +335,13 @@ var componentList = [
         name: 'User Icon',
         notes: 'Add pre-loader states while the image is loading',
         sample: {
-            template: '<user-icon class="center-xy" size="component.sample.scope.size" url="component.sample.scope.profile_url"> </user-icon>',
+            template: '<user-icon size="component.sample.scope.size" url="component.sample.scope.profile_url"> </user-icon>',
             scope: {
                 profile_url: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200',
                 size: 'medium'
             }
-        }
+        },
+        bugs: [{assigned:"samir", reason: "doesn't work"}]
     },
     {
         id: 3,
@@ -379,7 +349,7 @@ var componentList = [
         name: 'Tool Tip',
         notes: 'CSS issues',
         sample: {
-            template: '<tooltip class="full-x center-xy" direction="component.sample.scope.direction" title="component.sample.scope.title" button-text="component.sample.scope.button_text"/>',
+            template: '<tooltip direction="component.sample.scope.direction" title="component.sample.scope.title" button-text="component.sample.scope.button_text"/>',
             scope: {
                 button_text: 'Okay',
                 title: 'This is a tool-tip',
@@ -392,7 +362,7 @@ var componentList = [
         ref: 'rating-stars',
         name: 'Rating Stars',
         sample: {
-            template: '<rating class="center-xy" style="width:100px; height:50px;" avg="component.sample.scope.avg"/>',
+            template: '<rating style="width:100px;" avg="component.sample.scope.avg"/>',
             scope: {
                 avg: 4.5
             }
@@ -400,17 +370,42 @@ var componentList = [
         notes: 'doesnt show 0.5'
     },
     {
-        tabs: 5,
+        id: 5,
         ref: 'tabs',
         name: 'Tabs',
         sample: {
-            template: '<tabs class="txt-white" key="title" index="component.sample.scope.index" options="component.sample.scope.tabs" />',
+            template: '<tabs key="title" index="component.sample.scope.index" options="component.sample.scope.tabs" />',
             scope: {
                 tabs: [{title: 'Apples'}, {title: 'Oranges'}, {title: 'Bananas'}],
                 index: 1
             }
         }
     },
+    {
+        id: 6,
+        ref: 'color-picker',
+        name: 'Color Picker',
+        sample: {
+            template: '<color-picker class="bg-smoke" selected-color="component.sample.scope.selectedColor"> </color-picker>',
+            scope: {
+                selectedColor:'auburn'
+            }
+        },
+        action_items: [{'Gabrielle': 'Place in guru profile under the third tab "which we can call miscellaneous"'}],
+        bugs: [{girls: 'resolve inputs and save buttons vs blurs'}],
+    },
+    {
+        id: 7,
+        ref: 'mini-profile-card',
+        name: 'Mini Profile Card',
+        bugs: [{girls: "classes are off, it doesn't make sense that my mini profile card has a 'large option.'"}]
+    },
+    {
+        id: 8,
+        ref: 'profile-card',
+        name: 'Profile Card',
+        bugs: [{girls: "Discuss names convenient for everyone. I.e. PF -Card. "}]
+    }
 
 ]
 

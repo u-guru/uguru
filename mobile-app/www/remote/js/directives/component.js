@@ -88,18 +88,16 @@ angular.module('uguru.components', [])
     replace:true,
     restrict: 'E',
     link: function( scope, element, attr ) {
-
-      console.log('Check',!scope.url, typeof(scope.url))
-      if (attr.size && attr.size === 'small') {
+      if (scope.size && scope.size === 'small') {
         scope.size = '-32'
-      } else if (attr.size && attr.size === 'medium'){
+      } 
+      else if (scope.size && scope.size === 'medium'){
         scope.size= '-64'
       }
-
-      if (typeof(scope.url) == 'undefined') {
+      if (!scope.url || !scope.url.length) {
         scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
       }
-
+      
       var request = new XMLHttpRequest();  
       request.open('GET', scope.url , true);
       request.onreadystatechange = function(){
@@ -109,6 +107,8 @@ angular.module('uguru.components', [])
                 // element.attr('url',scope.url);
                 // $compile(element.contents())(scope);
                 // scope.$apply();
+                console.log('Check',scope.url, typeof(scope.url))
+
               }  
           }
       };
@@ -185,4 +185,69 @@ angular.module('uguru.components', [])
       }
     }
   };
+})
+.directive("colorPicker", function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/color.picker.tpl',
+    scope: {
+        selectedColor: '=',
+
+    },
+    restrict: 'E',
+    replace: true,
+    link: function( scope, element, attr ) {
+      scope.defaultColorOptions = ['auburn', 'orange', 'gold', 'moola', 'shamrock', 'azure', 'lake', 'cobalt', 'eggplant', 'campus', 'taupe', 'slate', 'charcoal'];
+      scope.showColorPicker = true;
+      if (!scope.selectedColor || !scope.defaultColorOptions.length) {
+        scope.selectedColor = 'shamrock';
+      }
+      scope.setSelectedColor = function(color_option) {
+        scope.selectedColor = color_option;
+      }
+      scope.setAndClose = function(color_option) {
+        scope.selectedColor = color_option;
+        scope.showColorPicker = false;
+      }
+    }
+  };
+})
+.directive('miniProfileCard', function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/guru.profile.mini.tpl',
+  }
+})
+
+.directive('profileCard', function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/guru.profile.tpl',
+  }
+})
+
+.directive('miniProfileCard', function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/containers/guru.pricing.tile.tpl',
+  }
+})
+.directive('pricingTile', function() {
+  return {
+    templateURL: BASE + 'templates/components/dev/containers/pricing.til.tpl'
+  }
+})
+.directive('schoolIdCard', function() {
+  return {
+    templateURL: BASE + 'templates/components/dev/containers/school.id.tpl'
+    //pass in user
+    //pass in user.university
+    //pass in user.profile-url
+    // pass in user.student_courses
+  }
+})
+.directive('universityMarker', function() {
+  return {
+    templateURL: BASE + 'templates/components/dev/containers/university.marker.tpl'
+    //pass in user
+    //pass in user.university
+    //pass in user.profile-url
+    // pass in user.student_courses
+  }
 })
