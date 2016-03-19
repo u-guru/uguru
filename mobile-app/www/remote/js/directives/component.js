@@ -199,7 +199,7 @@ angular.module('uguru.components', [])
     // pass in user.student_courses
   }
 })
-.directi('universityMarker', function() {
+.directive('universityMarker', function() {
   return {
     templateURL: BASE + 'templates/components/dev/containers/university.marker.tpl'
     //pass in user
