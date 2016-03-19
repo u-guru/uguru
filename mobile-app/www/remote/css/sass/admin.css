@@ -141,9 +141,104 @@
   color: #40484B;
 }
 
-#admin .admin-moodboard {
+#admin .tab-container {
   width: 100%;
-  height: 90%;
+}
+
+#admin .tab-container .tab-bar {
+  background: transparent !important;
+}
+
+#admin .admin-content {
+  height: calc(100% - 60px);
+}
+
+#admin .admin-content-section {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 95%;
+}
+
+#admin .admin-assets {
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+#admin .admin-assets h1 {
+  width: 100%;
+  padding: 15px 4px 0px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#admin .admin-assets h2 {
+  width: 100%;
+  padding: 15px 4px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#admin .admin-assets ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
+  width: 100%;
+  padding: 2px;
+}
+
+#admin .admin-assets ul li {
+  width: 10%;
+  padding: 2px;
+}
+
+#admin .admin-assets ul li span {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+#admin .admin-assets ul li span svg {
+  display: block;
+  width: 100%;
+  background: white;
+}
+
+#admin .admin-assets ul.large li {
+  width: 12.5%;
+}
+
+#admin .admin-assets ul + ul {
+  margin-top: -4px;
 }
 
 #admin .admin-moodboard > ul {
@@ -182,16 +277,32 @@
   padding: 5px 10px;
 }
 
-#admin .admin-colors {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  width: 100%;
-  height: 90%;
+#admin .admin-moodboard > ul li div a.bg-robin {
+  background: rgba(43, 179, 184, 0.75);
+}
+
+#admin .admin-moodboard > ul li div a.bg-robin:hover, #admin .admin-moodboard > ul li div a.bg-robin:focus {
+  background: #95d9dc;
+  color: #367e82;
+}
+
+#admin .admin-moodboard > ul li div a.bg-robin:active {
+  background: #367e82;
+  color: white;
+}
+
+#admin .admin-moodboard > ul li div a.bg-crimson {
+  background: rgba(211, 36, 44, 0.75);
+}
+
+#admin .admin-moodboard > ul li div a.bg-crimson:hover, #admin .admin-moodboard > ul li div a.bg-crimson:focus {
+  background: #e99296;
+  color: #8a363c;
+}
+
+#admin .admin-moodboard > ul li div a.bg-crimson:active {
+  background: #8a363c;
+  color: white;
 }
 
 #admin .admin-colors > ul > li > div {
@@ -251,6 +362,162 @@
   font-size: 16px;
   font-weight: 600;
   text-align: center;
+}
+
+#admin .admin-components > h2 {
+  font-weight: 600;
+  padding: 15px 15px 0;
+  width: 100%;
+}
+
+#admin .admin-components > p {
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
+  padding: 5px 15px 15px;
+}
+
+#admin .admin-components > ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  padding: 7.5px;
+  width: 100%;
+}
+
+#admin .admin-components > ul > li {
+  width: 25%;
+  padding: 7.5px;
+}
+
+#admin .admin-components > ul > li > div > h1 {
+  padding: 10px 15px;
+  background: #69B3A5;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+#admin .admin-components > ul > li > div > h2 {
+  padding: 10px 15px;
+  background: #b4d9d2;
+  color: #557e78;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+#admin .admin-components > ul > li > div > div {
+  background: #2B3234;
+  position: relative;
+  border: 2px solid #69B3A5;
+  border-top: 0;
+  height: 200px;
+}
+
+#admin .admin-components > ul > li > div > div > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#admin .admin-components > ul > li > div > div:empty {
+  display: none;
+}
+
+#admin .admin-time-states h2 {
+  font-weight: 600;
+  padding: 15px 15px 0;
+}
+
+#admin .admin-action-items h2 {
+  font-weight: 600;
+  padding: 15px 15px 0;
+}
+
+#admin .admin-action-items ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding: 7.5px;
+}
+
+#admin .admin-action-items ul li {
+  width: 50%;
+  padding: 7.5px;
+}
+
+#admin .admin-action-items ul li .checkbox-container {
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  background: #F1F1F1;
+  padding: 15px;
+}
+
+#admin .admin-action-items ul li .checkbox-container label {
+  color: #40484B;
+}
+
+#admin .admin-details {
+  padding: 7.5px;
+}
+
+#admin .admin-details > div {
+  padding: 7.5px;
+}
+
+#admin .admin-details > div > div {
+  background: #F1F1F1;
+  border-radius: 2px;
+  color: #40484B;
+}
+
+#admin .admin-details > div > div > h1 {
+  font-size: 24px;
+  font-weight: 600;
+  padding: 15px 15px 0;
+}
+
+#admin .admin-details > div > div > div {
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+#admin .admin-details > div > div > ul {
+  font-size: 18px;
+  font-weight: 400;
+  padding: 7.5px;
+}
+
+#admin .admin-details > div > div > ul li {
+  padding: 7.5px;
+}
+
+#admin .admin-details > div > div > ul li div {
+  padding: 15px;
+  background: rgba(138, 158, 163, 0.3);
+  border-radius: 2px;
 }
 
 #admin #cta-modal-selected-layout .user-ranking h1 {
@@ -313,4 +580,12 @@
 
 #admin #cta-modal-selected-layout #high-score li > div:nth-child(3) {
   width: 10%;
+}
+
+#admin #cta-modal-selected-layout .user-ranking-filler-svg {
+  display: block;
+  margin: 0 auto;
+  width: 126px;
+  height: 110px;
+  margin-bottom: 15px;
 }

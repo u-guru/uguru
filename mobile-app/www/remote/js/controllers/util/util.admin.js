@@ -19,11 +19,11 @@ angular.module('uguru.util.controllers')
 			layouts: AdminContent.getLayouts(),
 			user_stories: AdminContent.getUserStories(),
 			defaults: {
-				tabsIndex: 1,
-				sidebarIndex: 0
+				tabsIndex: 0,
+				sidebarIndex: 2
 			}
 		}
-		// $scope.selected_component = $scope.page.components[4];
+		$scope.selected_component = $scope.page.components[4];
 
 		$scope.elementCTATabOptions = {
 			components: ['Demo', 'Details', 'States', 'Use Cases', 'Element Map', 'To Do'],

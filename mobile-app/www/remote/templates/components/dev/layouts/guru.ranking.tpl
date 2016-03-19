@@ -2,6 +2,15 @@
     <div class='user-ranking flex-wrap-center full-x'>
         <h1 class='full-x text-center weight-600 txt-robin p15x-p15top'> {{layout.header}}</h1>
         <h4 class='font-4 full-x weight-900 text-center txt-robin p15x-p15bottom-p05top'> Top {{layout.user.guru_ranking}} Percentile</h4>
+        <svg class="user-ranking-filler-svg" viewBox="0 0 126 110">
+            <g fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round">
+                <path d="M104.113322,105 C126.70774,82.2034497 126.617074,45.1514616 103.910813,22.2420684 C81.2045526,-0.667324844 44.4810965,-0.758802108 21.8866782,22.0377482 C-0.707740065,44.8342985 -0.61707391,81.8862866 22.0891867,105" opacity="0.5"></path>
+                <path d="M112.514381,94.2657555 C126.205514,71.7511506 123.323184,41.8281038 103.910813,22.2420684 C81.2045526,-0.667324844 44.4810965,-0.758802108 21.8866782,22.0377482 C-0.707740065,44.8342985 -0.61707391,81.8862866 22.0891867,105"></path>
+            </g>
+            <text font-family="Source Sans Pro" font-size="48" font-weight="900" fill="#FFFFFF">
+                <tspan x="37" y="77">99</tspan>
+            </text>
+        </svg>
         <div class="progress full-x round bg-charcoal txt-shamrock">
             <span style="width: {{r_layout.user.guru_ranking}}%"></span>
         </div>
