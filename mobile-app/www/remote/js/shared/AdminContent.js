@@ -410,11 +410,12 @@ var componentList = [
         ref: 'tag',
         name: 'Tag',
         sample: {
-            template: '<tag type="adlib" blank-num="1" tag-text="component.sample.scope.text" category="component.sample.scope.category"> </tag>',
+            template: '<tag desktop="desktopMode" type="adlib" blank-num="component.sample.scope.blankNum" inner-text="component.sample.scope.innerText" category="component.sample.scope.category"> </tag>',
             scope: {
-                text: 'Midnight',
-                category: {name: 'Academic', hex_color: 'academic', id:5},
+                innerText: 'Midnight',
+                desktopMode: true,
                 blankNum: 1,
+                category: {name: 'Academic', hex_color: 'academic', id:5},
                 animArgs: {
                     'li': {delays: ['class-on-activate-delay:1000', 'class-on-load-delay:1000']},
                 }

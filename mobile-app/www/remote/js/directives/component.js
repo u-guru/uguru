@@ -172,24 +172,23 @@ angular.module('uguru.components', [])
   return {
     templateUrl: BASE + 'templates/components/dev/input/tag.tpl',
     scope: {
-        text: '=tagText',
+        innerText: '=',
         category: '=',
-        animArgs: '='
+        blankNum: '@blankNum',
+        animArgs: '=',
+        desktopMode: '=desktop'
     },
     restrict: 'E',
     replace: true,
     link: function(scope, element, attr) {
-      $timeout(function() {
-        scope.$apply(function() {
-          if (attr.type && attr.type.toLowerCase() === 'adlib') {
-            scope.type ='adlib';
-          }
-          if (attr.blankNum && attr.blankNum.length) {
-            scope.blankNum = attr.blankNum;
-          }
-          $compile(element)(scope);
-        })
-      })
+      scope.blankNum = 1;
+      if (attr.type && attr.type.toLowerCase() === 'adlib') {
+        scope.type ='adlib';
+      }
+      if (attr.blankNum && attr.blankNum.length) {
+        scope.blankNum = attr.blankNum;
+      }
+
 
     }}
 }])
