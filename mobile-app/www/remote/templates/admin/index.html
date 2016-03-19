@@ -246,10 +246,10 @@
                             </div>
                             <ul class="playground-code-container">
                                 <li>
-                                    <textarea><dropdown ng-model="component.sample.scope"></dropdown></textarea>
+                                    <textarea>{{selected_component.sample.template}}</textarea>
                                 </li>
                                 <li>
-                                    <textarea><div class="dropdown">
+                                    <textarea><div class="{{selected_component.ref}}">
     <div>
         <span>{{dropdown.options[dropdown.selectedIndex]}}</span>
         <a ng-click='toggle()'>
