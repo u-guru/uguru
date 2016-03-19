@@ -404,6 +404,23 @@ var componentList = [
         ref: 'profile-card',
         name: 'Profile Card',
         bugs: [{girls: "Discuss names convenient for everyone. I.e. PF -Card. "}]
+    },
+    {
+        id: 9,
+        ref: 'tag',
+        name: 'Tag',
+        sample: {
+            template: '<tag type="adlib" blank-num="1" tag-text="component.sample.scope.text" category="component.sample.scope.category"> </tag>',
+            scope: {
+                text: 'Midnight',
+                category: {name: 'Academic', hex_color: 'academic', id:5},
+                blankNum: 1,
+                animArgs: {
+                    'li': {delays: ['class-on-activate-delay:1000', 'class-on-load-delay:1000']},
+                }
+            }
+        },
+        bugs: [{girls: 'Whats the different conceptually between a tag and a chip?'}]
     }
 
 ]

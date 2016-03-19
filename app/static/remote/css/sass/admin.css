@@ -1,6 +1,8 @@
 #admin tabs {
   width: 100% !important;
-  height: 60px; }
+  height: 60px;
+}
+
 #admin > header {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -11,26 +13,40 @@
   display: flex;
   background: #489896;
   width: 100%;
-  height: 64px; }
-  #admin > header .admin-logo {
-    display: block;
-    height: 100%;
-    padding: 10px; }
-    #admin > header .admin-logo svg {
-      display: block;
-      height: 100%; }
-      #admin > header .admin-logo svg path {
-        -webkit-transition: all 150ms ease-in-out;
-        -moz-transition: all 150ms ease-in-out;
-        -ms-transition: all 150ms ease-in-out;
-        -o-transition: all 150ms ease-in-out;
-        transition: all 150ms ease-in-out; }
-        #admin > header .admin-logo svg path:first-child {
-          fill: rgba(255, 255, 255, 0.8); }
-        #admin > header .admin-logo svg path:last-child {
-          fill: white; }
-      #admin > header .admin-logo svg text {
-        fill: white; }
+  height: 64px;
+}
+
+#admin > header .admin-logo {
+  display: block;
+  height: 100%;
+  padding: 10px;
+}
+
+#admin > header .admin-logo svg {
+  display: block;
+  height: 100%;
+}
+
+#admin > header .admin-logo svg path {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+#admin > header .admin-logo svg path:first-child {
+  fill: rgba(255, 255, 255, 0.8);
+}
+
+#admin > header .admin-logo svg path:last-child {
+  fill: white;
+}
+
+#admin > header .admin-logo svg text {
+  fill: white;
+}
+
 #admin > main {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -54,73 +70,89 @@
   width: 100%;
   height: calc(100% - 64px);
   background: #2B3234;
-  color: white; }
-  #admin > main > aside {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -webkit-align-items: stretch !important;
-    align-items: stretch !important;
-    -webkit-align-content: stretch !important;
-    align-content: stretch !important;
-    width: 20%;
-    height: 100%; }
-    #admin > main > aside a {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      width: 100%; }
-  #admin > main > div {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -webkit-align-items: stretch !important;
-    align-items: stretch !important;
-    -webkit-align-content: stretch !important;
-    align-content: stretch !important;
-    -webkit-justify-content: center;
-    justify-content: center;
-    position: relative;
-    width: 80%;
-    height: 100%;
-    background: #F1F1F1; }
-    #admin > main > div > section {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      color: #40484B; }
+  color: white;
+}
+
+#admin > main > aside {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-items: stretch !important;
+  align-items: stretch !important;
+  -webkit-align-content: stretch !important;
+  align-content: stretch !important;
+  width: 20%;
+  height: 100%;
+}
+
+#admin > main > aside a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#admin > main > div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-items: stretch !important;
+  align-items: stretch !important;
+  -webkit-align-content: stretch !important;
+  align-content: stretch !important;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  width: 80%;
+  height: 100%;
+  background: #F1F1F1;
+}
+
+#admin > main > div > section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: #40484B;
+}
+
 #admin .tab-container {
-  width: 100%; }
-  #admin .tab-container .tab-bar {
-    background: transparent !important; }
+  width: 100%;
+}
+
+#admin .tab-container .tab-bar {
+  background: transparent !important;
+}
+
 #admin .admin-content {
-  height: calc(100% - 60px); }
+  height: calc(100% - 60px);
+}
+
 #admin .admin-content-section {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -130,67 +162,151 @@
   display: -webkit-flex;
   display: flex;
   width: 100%;
-  height: 95%; }
+  height: 95%;
+}
+
 #admin .admin-assets {
   -webkit-align-content: flex-start;
   align-content: flex-start;
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
-  flex-flow: row wrap; }
-  #admin .admin-assets h1 {
-    width: 100%;
-    padding: 15px 15px 0px;
-    font-size: 24px;
-    font-weight: 600;
-    color: #40484B; }
-  #admin .admin-assets h2 {
-    width: 100%;
-    padding: 15px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #40484B; }
-  #admin .admin-assets ul {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -webkit-align-content: flex-start;
-    align-content: flex-start;
-    width: 100%;
-    padding: 7.5px; }
-    #admin .admin-assets ul li {
-      width: calc(100% / 8);
-      padding: 7.5px; }
-      #admin .admin-assets ul li span {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center; }
-        #admin .admin-assets ul li span svg {
-          display: block;
-          width: 100%;
-          background: white; }
-    #admin .admin-assets ul.large li {
-      width: calc(100% / 6); }
-    #admin .admin-assets ul + ul {
-      margin-top: -4px; }
+  flex-flow: row wrap;
+}
+
+#admin .admin-assets h1 {
+  width: 100%;
+  padding: 15px 15px 0px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #40484B;
+}
+
+#admin .admin-assets h2 {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #40484B;
+}
+
+#admin .admin-assets ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
+  width: 100%;
+  padding: 7.5px;
+}
+
+#admin .admin-assets ul li {
+  width: calc(100% / 8);
+  padding: 7.5px;
+}
+
+#admin .admin-assets ul li span {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+#admin .admin-assets ul li span svg {
+  display: block;
+  width: 100%;
+  background: white;
+}
+
+#admin .admin-assets ul.large li {
+  width: calc(100% / 6);
+}
+
+#admin .admin-assets ul + ul {
+  margin-top: -4px;
+}
+
+#admin .admin-update {
+  padding: 7.5px;
+}
+
+#admin .admin-update > div {
+  padding: 7.5px;
+}
+
+#admin .admin-update input.full, #admin .admin-update textarea {
+  width: 100%;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+#admin .admin-update input.full:focus, #admin .admin-update textarea:focus {
+  background: white;
+}
+
+#admin .admin-update textarea {
+  min-height: 200px;
+}
+
+#admin .admin-update textarea[small] {
+  min-height: 100px;
+}
+
+#admin .playground-code-container {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 7.5px;
+  margin: 15px auto 0;
+}
+
+#admin .playground-code-container li {
+  width: 50%;
+  padding: 7.5px;
+}
+
+#admin .playground-code-container textarea {
+  background: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  min-height: 200px;
+  padding: 10px 15px;
+}
+
+#admin .playground-code-container textarea:focus {
+  background: white;
+}
+
 #admin .admin-moodboard > ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -207,95 +323,133 @@
   -webkit-align-content: flex-start;
   align-content: flex-start;
   width: 100%;
-  padding: 7.5px; }
-  #admin .admin-moodboard > ul li {
-    width: 25%;
-    height: 200px;
-    padding: 7.5px; }
-    #admin .admin-moodboard > ul li div {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center center; }
-      #admin .admin-moodboard > ul li div a {
-        position: absolute;
-        bottom: 15px;
-        left: 15px;
-        display: block;
-        font-size: 18px;
-        font-weight: 600;
-        padding: 5px 10px; }
-        #admin .admin-moodboard > ul li div a.bg-robin {
-          background: rgba(43, 179, 184, 0.75); }
-          #admin .admin-moodboard > ul li div a.bg-robin:hover, #admin .admin-moodboard > ul li div a.bg-robin:focus {
-            background: #95d9dc;
-            color: #367e82; }
-          #admin .admin-moodboard > ul li div a.bg-robin:active {
-            background: #367e82;
-            color: white; }
-        #admin .admin-moodboard > ul li div a.bg-crimson {
-          background: rgba(211, 36, 44, 0.75); }
-          #admin .admin-moodboard > ul li div a.bg-crimson:hover, #admin .admin-moodboard > ul li div a.bg-crimson:focus {
-            background: #e99296;
-            color: #8a363c; }
-          #admin .admin-moodboard > ul li div a.bg-crimson:active {
-            background: #8a363c;
-            color: white; }
+  padding: 7.5px;
+}
+
+#admin .admin-moodboard > ul li {
+  width: 25%;
+  height: 200px;
+  padding: 7.5px;
+}
+
+#admin .admin-moodboard > ul li div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+}
+
+#admin .admin-moodboard > ul li div a {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 5px 10px;
+}
+
+#admin .admin-moodboard > ul li div a.bg-robin {
+  background: rgba(43, 179, 184, 0.75);
+}
+
+#admin .admin-moodboard > ul li div a.bg-robin:hover, #admin .admin-moodboard > ul li div a.bg-robin:focus {
+  background: #95d9dc;
+  color: #367e82;
+}
+
+#admin .admin-moodboard > ul li div a.bg-robin:active {
+  background: #367e82;
+  color: white;
+}
+
+#admin .admin-moodboard > ul li div a.bg-crimson {
+  background: rgba(211, 36, 44, 0.75);
+}
+
+#admin .admin-moodboard > ul li div a.bg-crimson:hover, #admin .admin-moodboard > ul li div a.bg-crimson:focus {
+  background: #e99296;
+  color: #8a363c;
+}
+
+#admin .admin-moodboard > ul li div a.bg-crimson:active {
+  background: #8a363c;
+  color: white;
+}
+
 #admin .admin-colors > ul > li > div {
-  position: relative; }
-  #admin .admin-colors > ul > li > div.bg-smoke, #admin .admin-colors > ul > li > div.bg-white {
-    color: #8A9EA3; }
-    #admin .admin-colors > ul > li > div.bg-smoke div input, #admin .admin-colors > ul > li > div.bg-white div input {
-      background: #8A9EA3;
-      color: white; }
-  #admin .admin-colors > ul > li > div svg {
-    display: block;
-    width: 100%; }
-  #admin .admin-colors > ul > li > div div {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; }
-    #admin .admin-colors > ul > li > div div h1 {
-      width: 100%;
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 5px;
-      text-align: center; }
-    #admin .admin-colors > ul > li > div div input {
-      padding: 5px;
-      font-size: 16px;
-      font-weight: 600;
-      text-align: center; }
+  position: relative;
+}
+
+#admin .admin-colors > ul > li > div.bg-smoke, #admin .admin-colors > ul > li > div.bg-white {
+  color: #8A9EA3;
+}
+
+#admin .admin-colors > ul > li > div.bg-smoke div input, #admin .admin-colors > ul > li > div.bg-white div input {
+  background: #8A9EA3;
+  color: white;
+}
+
+#admin .admin-colors > ul > li > div svg {
+  display: block;
+  width: 100%;
+}
+
+#admin .admin-colors > ul > li > div div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#admin .admin-colors > ul > li > div div h1 {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+#admin .admin-colors > ul > li > div div input {
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
 #admin .admin-components > h2, #admin .admin-containers > h2 {
   font-weight: 600;
   padding: 15px 15px 0;
-  width: 100%; }
+  width: 100%;
+}
+
 #admin .admin-components > p, #admin .admin-containers > p {
   font-size: 28px;
   font-weight: 400;
   margin: 0;
-  padding: 5px 15px 15px; }
+  padding: 5px 15px 15px;
+}
+
 #admin .admin-components > ul, #admin .admin-containers > ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -308,72 +462,104 @@
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
   padding: 7.5px;
-  width: 100%; }
-  #admin .admin-components > ul > li, #admin .admin-containers > ul > li {
-    width: 25%;
-    padding: 7.5px; }
-    #admin .admin-components > ul > li > div > h1, #admin .admin-components > ul > li > div > a, #admin .admin-containers > ul > li > div > h1, #admin .admin-containers > ul > li > div > a {
-      padding: 10px 15px;
-      background: #69B3A5;
-      font-size: 20px;
-      font-weight: 600;
-      text-align: center;
-      border-top-left-radius: 2px;
-      border-top-right-radius: 2px; }
-      #admin .admin-components > ul > li > div > h1 h1, #admin .admin-components > ul > li > div > a h1, #admin .admin-containers > ul > li > div > h1 h1, #admin .admin-containers > ul > li > div > a h1 {
-        font-weight: 600; }
-    #admin .admin-components > ul > li > div > a:hover, #admin .admin-components > ul > li > div > a:focus, #admin .admin-containers > ul > li > div > a:hover, #admin .admin-containers > ul > li > div > a:focus {
-      background: #b4d9d2;
-      color: #557e78; }
-      #admin .admin-components > ul > li > div > a:hover + div, #admin .admin-components > ul > li > div > a:focus + div, #admin .admin-containers > ul > li > div > a:hover + div, #admin .admin-containers > ul > li > div > a:focus + div {
-        border-color: #b4d9d2; }
-    #admin .admin-components > ul > li > div > a:active, #admin .admin-containers > ul > li > div > a:active {
-      background: #557e78;
-      color: white; }
-      #admin .admin-components > ul > li > div > a:active + div, #admin .admin-containers > ul > li > div > a:active + div {
-        border-color: #557e78; }
-    #admin .admin-components > ul > li > div > h2, #admin .admin-containers > ul > li > div > h2 {
-      padding: 10px 15px;
-      background: #b4d9d2;
-      color: #557e78;
-      font-size: 16px;
-      font-weight: 600;
-      text-align: center;
-      border-bottom-left-radius: 2px;
-      border-bottom-right-radius: 2px; }
-    #admin .admin-components > ul > li > div > div, #admin .admin-containers > ul > li > div > div {
-      -webkit-transition: all 150ms ease-in-out;
-      -moz-transition: all 150ms ease-in-out;
-      -ms-transition: all 150ms ease-in-out;
-      -o-transition: all 150ms ease-in-out;
-      transition: all 150ms ease-in-out;
-      overflow: hidden;
-      background: rgba(43, 50, 52, 0.8);
-      position: relative;
-      border: 2px solid #69B3A5;
-      border-top: 0;
-      height: 200px; }
-      #admin .admin-components > ul > li > div > div > *, #admin .admin-containers > ul > li > div > div > * {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%); }
-      #admin .admin-components > ul > li > div > div:empty, #admin .admin-containers > ul > li > div > div:empty {
-        display: none; }
+  width: 100%;
+}
+
+#admin .admin-components > ul > li, #admin .admin-containers > ul > li {
+  width: 25%;
+  padding: 7.5px;
+}
+
+#admin .admin-components > ul > li > div > h1, #admin .admin-components > ul > li > div > a, #admin .admin-containers > ul > li > div > h1, #admin .admin-containers > ul > li > div > a {
+  padding: 10px 15px;
+  background: #69B3A5;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+#admin .admin-components > ul > li > div > h1 h1, #admin .admin-components > ul > li > div > a h1, #admin .admin-containers > ul > li > div > h1 h1, #admin .admin-containers > ul > li > div > a h1 {
+  font-weight: 600;
+}
+
+#admin .admin-components > ul > li > div > a:hover, #admin .admin-components > ul > li > div > a:focus, #admin .admin-containers > ul > li > div > a:hover, #admin .admin-containers > ul > li > div > a:focus {
+  background: #b4d9d2;
+  color: #557e78;
+}
+
+#admin .admin-components > ul > li > div > a:hover + div, #admin .admin-components > ul > li > div > a:focus + div, #admin .admin-containers > ul > li > div > a:hover + div, #admin .admin-containers > ul > li > div > a:focus + div {
+  border-color: #b4d9d2;
+}
+
+#admin .admin-components > ul > li > div > a:active, #admin .admin-containers > ul > li > div > a:active {
+  background: #557e78;
+  color: white;
+}
+
+#admin .admin-components > ul > li > div > a:active + div, #admin .admin-containers > ul > li > div > a:active + div {
+  border-color: #557e78;
+}
+
+#admin .admin-components > ul > li > div > h2, #admin .admin-containers > ul > li > div > h2 {
+  padding: 10px 15px;
+  background: #b4d9d2;
+  color: #557e78;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+#admin .admin-components > ul > li > div > div, #admin .admin-containers > ul > li > div > div {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  overflow: hidden;
+  background: rgba(43, 50, 52, 0.8);
+  position: relative;
+  border: 2px solid #69B3A5;
+  border-top: 0;
+  height: 200px;
+}
+
+#admin .admin-components > ul > li > div > div > *, #admin .admin-containers > ul > li > div > div > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#admin .admin-components > ul > li > div > div:empty, #admin .admin-containers > ul > li > div > div:empty {
+  display: none;
+}
+
 #admin .admin-containers > ul > li {
-  width: 50%; }
-  #admin .admin-containers > ul > li > div > div {
-    height: 400px; }
+  width: 50%;
+}
+
+#admin .admin-containers > ul > li > div > div {
+  height: 400px;
+}
+
 #admin .admin-time-states h2 {
   font-weight: 600;
-  padding: 15px 15px 0; }
+  padding: 15px 15px 0;
+}
+
 #admin .admin-action-items h2 {
   font-weight: 600;
-  padding: 15px 15px 0; }
+  padding: 15px 15px 0;
+}
+
 #admin .admin-action-items ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -385,59 +571,93 @@
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  padding: 7.5px; }
-  #admin .admin-action-items ul li {
-    width: 50%;
-    padding: 7.5px; }
-    #admin .admin-action-items ul li .checkbox-container {
-      -webkit-justify-content: flex-start;
-      justify-content: flex-start;
-      background: #F1F1F1;
-      padding: 15px; }
-      #admin .admin-action-items ul li .checkbox-container label {
-        color: #40484B; }
+  padding: 7.5px;
+}
+
+#admin .admin-action-items ul li {
+  width: 50%;
+  padding: 7.5px;
+}
+
+#admin .admin-action-items ul li .checkbox-container {
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  background: #F1F1F1;
+  padding: 15px;
+}
+
+#admin .admin-action-items ul li .checkbox-container label {
+  color: #40484B;
+}
+
 #admin .admin-details {
-  padding: 7.5px; }
-  #admin .admin-details > div {
-    padding: 7.5px; }
-    #admin .admin-details > div > div {
-      background: #F1F1F1;
-      border-radius: 2px;
-      color: #40484B; }
-      #admin .admin-details > div > div > h1 {
-        font-size: 24px;
-        font-weight: 600;
-        padding: 15px 15px 0; }
-      #admin .admin-details > div > div > div {
-        padding: 15px;
-        font-size: 18px;
-        font-weight: 400; }
-      #admin .admin-details > div > div > ul {
-        font-size: 18px;
-        font-weight: 400;
-        padding: 7.5px; }
-        #admin .admin-details > div > div > ul li {
-          padding: 7.5px; }
-          #admin .admin-details > div > div > ul li div {
-            padding: 15px;
-            background: rgba(138, 158, 163, 0.3);
-            border-radius: 2px; }
+  padding: 7.5px;
+}
+
+#admin .admin-details > div {
+  padding: 7.5px;
+}
+
+#admin .admin-details > div > div {
+  background: #F1F1F1;
+  border-radius: 2px;
+  color: #40484B;
+}
+
+#admin .admin-details > div > div > h1 {
+  font-size: 24px;
+  font-weight: 600;
+  padding: 15px 15px 0;
+}
+
+#admin .admin-details > div > div > div {
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+#admin .admin-details > div > div > ul {
+  font-size: 18px;
+  font-weight: 400;
+  padding: 7.5px;
+}
+
+#admin .admin-details > div > div > ul li {
+  padding: 7.5px;
+}
+
+#admin .admin-details > div > div > ul li div {
+  padding: 15px;
+  background: rgba(138, 158, 163, 0.3);
+  border-radius: 2px;
+}
+
 #admin #cta-modal-selected-layout .user-ranking h1 {
-  font-size: 24px; }
+  font-size: 24px;
+}
+
 #admin #cta-modal-selected-layout .user-ranking h2 {
-  font-size: 36px; }
+  font-size: 36px;
+}
+
 #admin #cta-modal-selected-layout #current-tabs {
   background: #2BB3B8;
-  height: 60px; }
-  #admin #cta-modal-selected-layout #current-tabs .tab-bar {
-    background: #2BB3B8; }
+  height: 60px;
+}
+
+#admin #cta-modal-selected-layout #current-tabs .tab-bar {
+  background: #2BB3B8;
+}
+
 #admin #cta-modal-selected-layout #admin-ranking-container {
   -webkit-justify-content: center;
   justify-content: center;
   -webkit-align-content: flex-start;
   align-content: flex-start;
   -webkit-align-items: flex-start;
-  align-items: flex-start; }
+  align-items: flex-start;
+}
+
 #admin #cta-modal-selected-layout #high-score, #admin #cta-modal-selected-layout #next-steps {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -453,22 +673,31 @@
   align-items: flex-start;
   position: relative;
   width: 100%;
-  overflow: auto; }
-  #admin #cta-modal-selected-layout #high-score li .user-icon, #admin #cta-modal-selected-layout #next-steps li .user-icon {
-    width: 64px;
-    height: 64px;
-    border-width: 3px; }
+  overflow: auto;
+}
+
+#admin #cta-modal-selected-layout #high-score li .user-icon, #admin #cta-modal-selected-layout #next-steps li .user-icon {
+  width: 64px;
+  height: 64px;
+  border-width: 3px;
+}
+
 #admin #cta-modal-selected-layout #high-score li > div:nth-child(1) {
-  width: 64px; }
+  width: 64px;
+}
+
 #admin #cta-modal-selected-layout #high-score li > div:nth-child(2) {
-  width: calc(90% - 64px); }
+  width: calc(90% - 64px);
+}
+
 #admin #cta-modal-selected-layout #high-score li > div:nth-child(3) {
-  width: 10%; }
+  width: 10%;
+}
+
 #admin #cta-modal-selected-layout .user-ranking-filler-svg {
   display: block;
   margin: 0 auto;
   width: 126px;
   height: 110px;
-  margin-bottom: 15px; }
-
-/*# sourceMappingURL=admin.css.map */
+  margin-bottom: 15px;
+}

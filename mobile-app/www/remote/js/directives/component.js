@@ -168,6 +168,31 @@ angular.module('uguru.components', [])
     }
   };
 })
+.directive("tag", ['$compile', '$timeout',  function($compile, $timeout) {
+  return {
+    templateUrl: BASE + 'templates/components/dev/input/tag.tpl',
+    scope: {
+        text: '=tagText',
+        category: '=',
+        animArgs: '='
+    },
+    restrict: 'E',
+    replace: true,
+    link: function(scope, element, attr) {
+      $timeout(function() {
+        scope.$apply(function() {
+          if (attr.type && attr.type.toLowerCase() === 'adlib') {
+            scope.type ='adlib';
+          }
+          if (attr.blankNum && attr.blankNum.length) {
+            scope.blankNum = attr.blankNum;
+          }
+          $compile(element)(scope);
+        })
+      })
+
+    }}
+}])
 .directive('miniProfileCard', function() {
   return {
     templateUrl: BASE + 'templates/components/dev/containers/guru.profile.mini.tpl',

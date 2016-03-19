@@ -19,8 +19,8 @@ angular.module('uguru.util.controllers')
 			layouts: AdminContent.getLayouts(),
 			user_stories: AdminContent.getUserStories(),
 			defaults: {
-				tabsIndex: 2,
-				sidebarIndex: 2
+				tabsIndex: 0,
+				sidebarIndex: 1
 			}
 		}
 		// $scope.selected_component = $scope.page.components[4];
@@ -69,7 +69,7 @@ angular.module('uguru.util.controllers')
 			$scope.adminItemCTAShown = true;
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.admin_item = {
-				dropdown_options: {index: 3, options: ['Milestone', 'Element Revision', 'New Element or Asset', 'New Action Item', 'New Revision']},
+				dropdown_options: {index: 3, options: ['Milestone', 'Element Revision', 'New Element', 'New Action Item', 'New Revision']},
 				options: {
 					element: {
 						type: ['Component', 'Container', 'Layouts', 'User Stories', 'Assets'],
