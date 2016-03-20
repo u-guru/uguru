@@ -470,6 +470,14 @@ var componentList = [
             }
         },
         bugs: [{girls: 'Whats the different conceptually between a tag and a chip?'}]
+    },
+    {
+        id: 12,
+        ref: 'svg-icon',
+        name: 'Svg Tag Template',
+        sample: {
+            template: '<svgi name="category.household" size="100x100" stroke="#FFFFFF"> </svgi>'
+        }
     }
 
 ]
