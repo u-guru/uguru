@@ -76,7 +76,7 @@ function AdminContent($localstorage) {
             },
             {
                 name: "Gabrielle",
-                profile_url: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200'
+                profile_url: 'https://uguru.me/static/web/images/team/gabrielle.png'
             },
             {
                 name: "Jason",
@@ -90,7 +90,7 @@ function AdminContent($localstorage) {
                 name: 'Girls',
                 profile_url: 'https://uguru.me/static/web/images/team/jeselle',
                 profile_url_1: 'https://uguru.me/static/web/images/team/jeselle.png',
-                profile_url_2: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200'
+                profile_url_2: 'https://uguru.me/static/web/images/team/gabrielle.png'
             }
         ]
     }
@@ -127,7 +127,7 @@ function AdminContent($localstorage) {
         }
 
         function generateMilestoneTabs(members) {
-            var tabOptions = [{title: 'All User <br> Stories'}];
+            var tabOptions = [{title: 'All'}];
             for (var i = 0; i < members.length; i++) {
                 var indexMember = members[i];
                 tabOptions.push({title: indexMember.name, profile_url: indexMember.profile_url, action_items: getActionItemsFor(indexMember.name)})
@@ -357,7 +357,7 @@ var componentList = [
         sample: {
             template: '<user-icon size="component.sample.scope.size" url="component.sample.scope.profile_url"> </user-icon>',
             scope: {
-                profile_url: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200',
+                profile_url: 'https://uguru.me/static/web/images/team/gabrielle.png',
                 size: 'medium'
             }
         },

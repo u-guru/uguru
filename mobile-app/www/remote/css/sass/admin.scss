@@ -1,5 +1,20 @@
 @import 'mixin';
 
+[class*="user-icon"] {
+	&.jeselle {
+		background-image: url('https://uguru.me/static/web/images/team/jeselle.png')!important;
+	}
+	&.gabrielle {
+		background-image: url('https://uguru.me/static/web/images/team/gabrielle.png')!important;
+	}
+	&.samir {
+		background-image: url('https://uguru.me/static/web/images/team/samir.png')!important;
+	}
+	&.jason {
+		background-image: url('https://uguru.me/static/web/images/team/jason.png')!important;
+	}
+}
+
 #admin {
 	tabs {
 		width: 100%!important;
@@ -7,7 +22,7 @@
 	}
 	> header {
 		@include flex;
-		background: mix(mix($shamrock, $robin), $slate, 75%);
+		background: mix(mix($shamrock, $robin), $slate, 40%);
 		width: 100%;
 		height: 64px;
 		.admin-logo {
@@ -51,6 +66,110 @@
 				@include flex;
 				@include flex-center;
 				width: 100%;
+				font-weight: 600;
+				&:nth-child(1) {
+					color: $shamrock;
+					&:hover, &:focus {
+						color: white;
+					}
+					&:active {
+						color: $shamrock;
+					}
+				}
+				&:nth-child(2) {
+					color: mix($shamrock, $robin);
+					&:hover, &:focus {
+						color: white;
+					}
+					&:active {
+						color: mix($shamrock, $robin);
+					}
+				}
+				&:nth-child(3) {
+					color: mix($shamrock, $lake);
+					&:hover, &:focus {
+						color: white;
+					}
+					&:active {
+						color: mix($shamrock, $lake);
+					}
+				}
+				&:nth-child(4) {
+					color: mix($shamrock, $cobalt);
+					&:hover, &:focus {
+						color: white;
+					}
+					&:active {
+						color: mix($shamrock, $cobalt);
+					}
+				}
+				&:nth-child(5) {
+					color: mix($shamrock, $eggplant);
+					&:hover, &:focus {
+						color: white;
+					}
+					&:active {
+						color: mix($shamrock, $eggplant);
+					}
+				}
+				&.active {
+					color: white;
+					&:nth-child(1) {
+						background: $shamrock;
+						&:hover, &:focus {
+							background: mix($shamrock, white);
+							color: mix($shamrock, $slate);
+						}
+						&:active {
+							background: mix($shamrock, $slate);
+							color: white;
+						}
+					}
+					&:nth-child(2) {
+						background: mix($shamrock, $robin);
+						&:hover, &:focus {
+							background: mix(mix($shamrock, $robin), white);
+							color: mix(mix($shamrock, $robin), $slate);
+						}
+						&:active {
+							background: mix(mix($shamrock, $robin), $slate);
+							color: white;
+						}
+					}
+					&:nth-child(3) {
+						background: mix($shamrock, $lake);
+						&:hover, &:focus {
+							background: mix(mix($shamrock, $lake), white);
+							color: mix(mix($shamrock, $lake), $slate);
+						}
+						&:active {
+							background: mix(mix($shamrock, $lake), $slate);
+							color: white;
+						}
+					}
+					&:nth-child(4) {
+						background: mix($shamrock, $cobalt);
+						&:hover, &:focus {
+							background: mix(mix($shamrock, $cobalt), white);
+							color: mix(mix($shamrock, $cobalt), $slate);
+						}
+						&:active {
+							background: mix(mix($shamrock, $cobalt), $slate);
+							color: white;
+						}
+					}
+					&:nth-child(5) {
+						background: mix($shamrock, $eggplant);
+						&:hover, &:focus {
+							background: mix(mix($shamrock, $eggplant), white);
+							color: mix(mix($shamrock, $eggplant), $slate);
+						}
+						&:active {
+							background: mix(mix($shamrock, $eggplant), $slate);
+							color: white;
+						}
+					}
+				}
 			}
 		}
 		> div {
@@ -67,6 +186,93 @@
 				width: 100%;
 				height: 100%;
 				color: $slate;
+				&#admin-projects {
+					.tab-container {
+						background: mix($shamrock, $slate, 80%);
+						.tab-bar.slide {
+							> div {
+								a {
+									position: relative;
+									> div:first-child {
+										@include flex;
+										@include flex-center;
+										@include center-x;
+										top: -16px;
+										.user-icon-32 {
+											&:nth-child(2), &:nth-child(3) {
+												margin-left: -6px;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				&#admin-components {
+					.tab-container {
+						background: mix(mix($shamrock, $robin), $slate, 80%);
+					}
+				}
+				&#admin-reference {
+					.tab-container {
+						background: mix(mix($shamrock, $lake), $slate, 80%);
+					}
+				}
+				&#admin-moodboard {
+					.tab-container {
+						background: mix(mix($shamrock, $cobalt), $slate, 80%);
+					}
+				}
+				&#admin-tools {
+					.tab-container {
+						background: mix(mix($shamrock, $eggplant), $slate, 80%);
+					}
+				}
+			}
+		}
+	}
+	
+	// user stories 
+	.admin-user-stories {
+		ul {
+			width: 100%;
+			@include flex;
+			@include flex-wrap;
+			padding: 7.5px;
+			li {
+				width: 25%;
+				height: 200px;
+				padding: 7.5px;
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					position: relative;
+					background: mix($shamrock, lighten($slate, 15%));
+					padding: 15px;
+					padding-top: 30px;
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					h4 {
+						@include flex;
+						@include flex-center;
+						@include round;
+						@include center-x;
+						top: 15px;
+						width: 28px;
+						height: 28px;
+						font-size: 18px;
+						font-weight: 900;
+						background: white;
+						color: mix($shamrock, lighten($slate, 15%));
+					}
+					h1 {
+						font-size: 16px;
+						font-weight: 600;
+					}
+				}
 			}
 		}
 	}
@@ -78,8 +284,20 @@
 			background: transparent!important;
 		}
 	}
+	.admin-small-header {
+		@include flex;
+		@include flex-center;
+		height: 5%;
+		background: $slate;
+		width: 100%;
+		font-weight: 600;
+		font-size: 16px;
+		color: white;
+	}
 	.admin-content {
 		height: calc(100% - 60px);
+		position: relative;
+		width: 100%;
 	}
 	.admin-content-section {
 		@include flex;
@@ -105,6 +323,10 @@
 			font-weight: 600;
 			color: $slate;
 		}
+		h1 + h2 {
+			margin-top: 0!important;
+			padding: 5px 15px 0;
+		}
 		ul {
 			@include flex;
 			@include flex-wrap;
@@ -114,13 +336,23 @@
 			li {
 				width: calc(100% / 8);
 				padding: 7.5px;
-				span {
+				span, a {
 					@include flex;
 					@include flex-center;
 					svg {
 						display: block;
 						width: 100%;
 						background: white;
+						border: 2px solid mix($shamrock, $robin);
+						border-bottom-width: 0;
+					}
+					+ span, + a {
+						background: mix($shamrock, $robin);
+						padding: 5px 10px;
+						color: white;
+						font-size: 18px;
+						font-weight: 600;
+						text-transform: lowercase;
 					}
 				}
 			}
@@ -199,6 +431,7 @@
 					height: 100%;
 					background-size: cover;
 					background-position: center center;
+					border-radius: 2px;
 					a {
 						position: absolute;
 						bottom: 15px;
@@ -207,27 +440,15 @@
 						font-size: 18px;
 						font-weight: 600;
 						padding: 5px 10px;
-						&.bg-robin {
-							background: rgba($robin, .75);
-							&:hover, &:focus {
-								background: mix($robin, white);
-								color: mix($robin, $slate);
-							}
-							&:active {
-								background: mix($robin, $slate);
-								color: white;
-							}
+						border-radius: 2px;
+						background: rgba(mix($shamrock, $cobalt), .95);
+						&:hover, &:focus {
+							background: mix(mix($shamrock, $cobalt), white);
+							color: mix(mix($shamrock, $cobalt), $slate);
 						}
-						&.bg-crimson {
-							background: rgba($crimson, .75);
-							&:hover, &:focus {
-								background: mix($crimson, white);
-								color: mix($crimson, $slate);
-							}
-							&:active {
-								background: mix($crimson, $slate);
-								color: white;
-							}
+						&:active {
+							background: mix(mix($shamrock, $cobalt), $slate);
+							color: white;
 						}
 					}
 				}
@@ -283,7 +504,7 @@
 	}
 	
 	// components
-	.admin-components, .admin-containers {
+	.admin-components, .admin-containers, .admin-layouts, .admin-stories {
 		> h2 {
 			font-weight: 600;
 			padding: 15px 15px 0;
@@ -306,7 +527,7 @@
 				> div {
 					> h1, > a {
 						padding: 10px 15px;
-						background: $shamrock;
+						background: mix($shamrock, $robin);
 						font-size: 20px;
 						font-weight: 600;
 						text-align: center;
@@ -318,24 +539,24 @@
 					}
 					> a {
 						&:hover, &:focus {
-							background: mix($shamrock, white);
-							color: mix($shamrock, $slate);
+							background: mix(mix($shamrock, $robin), white);
+							color: mix(mix($shamrock, $robin), $slate);
 							+ div {
-								border-color: mix($shamrock, white);
+								border-color: mix(mix($shamrock, $robin), white);
 							}
 						}
 						&:active {
-							background: mix($shamrock, $slate);
+							background: mix(mix($shamrock, $robin), $slate);
 							color: white;
 							+ div {
-								border-color: mix($shamrock, $slate);
+								border-color: mix(mix($shamrock, $robin), $slate);
 							}
 						}
 					}
 					> h2 {
 						padding: 10px 15px;
-						background: mix($shamrock, white);
-						color: mix($shamrock, $slate);
+						background: mix(mix($shamrock, $robin), white);
+						color: mix(mix($shamrock, $robin), $slate);
 						font-size: 16px;
 						font-weight: 600;
 						text-align: center;
@@ -347,7 +568,7 @@
 						overflow: hidden;
 						background: rgba($charcoal, .8);
 						position: relative;
-						border: 2px solid $shamrock;
+						border: 2px solid mix($shamrock, $robin);
 						border-top: 0;
 						height: 200px;
 						> * {
@@ -373,6 +594,18 @@
 			}
 		}
 	}
+	.admin-layouts, .admin-stories {
+		> ul {
+			> li {
+				width: 100%;
+				> div {
+					> div {
+						height: 400px;
+					}
+				}
+			}
+		}
+	}
 	
 	// time states
 	.admin-time-states {
@@ -383,6 +616,163 @@
 	}
 	
 	// action items
+	.admin-action-item-list {
+		padding: 7.5px;
+		> ul {
+			width: 50%;
+			&:only-child {
+				width: 100%;
+			}
+			> li {
+				width: 100%;
+				padding: 7.5px;
+				> a {
+					@include flex;
+					@include prefix(justify-content, space-between, webkit);
+					background: white;
+					color: lighten($slate, 15%);
+					border: 2px solid $lake;
+					border-radius: 2px;
+					&:hover {
+						color: $lake;
+						background: mix($lake, white, 10%);
+					}
+					> div {
+						@include flex;
+						@include flex-center-vertical;
+						&:first-child {
+							> div {
+								padding: 15px;
+							}
+						}
+						&:last-child {
+							@include flex;
+							@include flex-center-vertical;
+							> div {
+								&:last-child {
+									text-align: center;
+									padding: 15px;
+									padding-left: 0;
+									width: 120px;
+								}
+							}
+						}
+					}
+					* + * {
+						margin-top: 0;
+					}
+					h1 {
+						font-size: 28px;
+						font-weight: 600;
+					}
+					h2 {
+						margin-top: 5px!important;
+						padding: 10px 15px;
+						background: $lake;
+						color: white;
+						font-size: 18px;
+						font-weight: 600;
+					}
+					h3 {
+						font-size: 16px;
+					}
+					ul {
+						@include flex;
+						@include flex-wrap;
+						padding: 12.5px;
+						width: 83px;
+						li {
+							padding: 2.5px;
+							span {
+								border-color: lighten($slate, 15%);
+								width: 24px!important;
+								height: 24px!important;
+							}
+						}
+					}
+					.priority {
+						display: block;
+						text-align: center;
+						margin-top: 5px!important;
+						padding: 10px 15px;
+						font-size: 18px;
+						font-weight: 600;
+						background: $lake;
+						color: white;
+					}
+				}
+				&.type-component {
+					> a {
+						h2 {
+							background: mix($shamrock, $robin);
+						}
+					}
+				}
+				&.type-reference {
+					> a {
+						h2 {
+							background: mix($shamrock, $lake);
+						}
+					}
+				}
+				&.type-moodboard {
+					> a {
+						h2 {
+							background: mix($shamrock, $cobalt);
+						}
+					}
+				}
+				&.type-tools {
+					> a {
+						h2 {
+							background: mix($shamrock, $eggplant);
+						}
+					}
+				}
+				&.type-prioritized {
+					> a {
+						border-color: $crimson;
+						&:hover {
+							color: $crimson;
+							background: mix($crimson, white, 10%)
+						}
+						.priority {
+							background: $crimson;
+						}
+					}
+				}
+				&.type-completed {
+					> a {
+						border-color: $moxie;
+						&:hover {
+							color: $moxie;
+							background: mix($moxie, white, 10%)
+						}
+						.priority {
+							background: $moxie;
+						}
+					}
+				}
+				&.type-future {
+					> a {
+						border-color: lighten($slate, 45%);
+						> * {
+							@include opacity(.5);
+						}
+						&:hover {
+							color: lighten($slate, 45%);
+							background: mix(lighten($slate, 45%), white, 10%)
+						}
+						.priority {
+							background: lighten($slate, 45%);
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	// action items per spec
 	.admin-action-items {
 		h2 {
 			font-weight: 600;
@@ -402,6 +792,67 @@
 					label {
 						color: $slate;
 					}
+				}
+			}
+		}
+	}
+	
+	// docs
+	.admin-docs {
+		ul {
+			@include flex;
+			@include flex-wrap;
+			padding: 7.5px;
+			width: 100%;
+			li {
+				padding: 7.5px;
+			}
+		}
+	}
+	
+	// definition list
+	.admin-definition-list {
+		width: 100%;
+		> div {
+			background: white;
+			h2 {
+				padding: 10px 15px;
+				width: 100%;
+				background: mix($shamrock, $lake);
+				color: white;
+				font-size: 24px;
+				font-weight: 600;
+				text-align: center;
+			}
+		}
+		dl {
+			div {
+				@include flex;
+				@include flex-center;
+				position: relative;
+				padding: 7.5px;
+				dt {
+					width: calc(100% / 3);
+					padding: 7.5px;
+					font-size: 28px;
+					font-weight: 600;
+				}
+				dd {
+					width: calc(100% / 3 * 2);
+					padding: 7.5px;
+					font-size: 18px;
+					font-weight: 400;
+				}
+				&:not(:last-child):after {
+					@include round;
+					content: "";
+					display: block;
+					position: absolute;
+					bottom: -1px;
+					left: 15px;
+					width: calc(100% - 30px);
+					height: 2px;
+					background: rgba($robin, .2);
 				}
 			}
 		}
