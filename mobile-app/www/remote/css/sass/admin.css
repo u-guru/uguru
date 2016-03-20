@@ -672,6 +672,7 @@
   height: 100%;
   background-size: cover;
   background-position: center center;
+  border-radius: 2px;
 }
 
 #admin .admin-moodboard > ul li div a {
@@ -682,33 +683,17 @@
   font-size: 18px;
   font-weight: 600;
   padding: 5px 10px;
+  border-radius: 2px;
+  background: rgba(113, 147, 196, 0.95);
 }
 
-#admin .admin-moodboard > ul li div a.bg-robin {
-  background: rgba(43, 179, 184, 0.75);
+#admin .admin-moodboard > ul li div a:hover, #admin .admin-moodboard > ul li div a:focus {
+  background: #b8c9e2;
+  color: #596e88;
 }
 
-#admin .admin-moodboard > ul li div a.bg-robin:hover, #admin .admin-moodboard > ul li div a.bg-robin:focus {
-  background: #95d9dc;
-  color: #367e82;
-}
-
-#admin .admin-moodboard > ul li div a.bg-robin:active {
-  background: #367e82;
-  color: white;
-}
-
-#admin .admin-moodboard > ul li div a.bg-crimson {
-  background: rgba(211, 36, 44, 0.75);
-}
-
-#admin .admin-moodboard > ul li div a.bg-crimson:hover, #admin .admin-moodboard > ul li div a.bg-crimson:focus {
-  background: #e99296;
-  color: #8a363c;
-}
-
-#admin .admin-moodboard > ul li div a.bg-crimson:active {
-  background: #8a363c;
+#admin .admin-moodboard > ul li div a:active {
+  background: #596e88;
   color: white;
 }
 
@@ -771,20 +756,20 @@
   text-align: center;
 }
 
-#admin .admin-components > h2, #admin .admin-containers > h2 {
+#admin .admin-components > h2, #admin .admin-containers > h2, #admin .admin-layouts > h2, #admin .admin-stories > h2 {
   font-weight: 600;
   padding: 15px 15px 0;
   width: 100%;
 }
 
-#admin .admin-components > p, #admin .admin-containers > p {
+#admin .admin-components > p, #admin .admin-containers > p, #admin .admin-layouts > p, #admin .admin-stories > p {
   font-size: 28px;
   font-weight: 400;
   margin: 0;
   padding: 5px 15px 15px;
 }
 
-#admin .admin-components > ul, #admin .admin-containers > ul {
+#admin .admin-components > ul, #admin .admin-containers > ul, #admin .admin-layouts > ul, #admin .admin-stories > ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -799,14 +784,14 @@
   width: 100%;
 }
 
-#admin .admin-components > ul > li, #admin .admin-containers > ul > li {
+#admin .admin-components > ul > li, #admin .admin-containers > ul > li, #admin .admin-layouts > ul > li, #admin .admin-stories > ul > li {
   width: 25%;
   padding: 7.5px;
 }
 
-#admin .admin-components > ul > li > div > h1, #admin .admin-components > ul > li > div > a, #admin .admin-containers > ul > li > div > h1, #admin .admin-containers > ul > li > div > a {
+#admin .admin-components > ul > li > div > h1, #admin .admin-components > ul > li > div > a, #admin .admin-containers > ul > li > div > h1, #admin .admin-containers > ul > li > div > a, #admin .admin-layouts > ul > li > div > h1, #admin .admin-layouts > ul > li > div > a, #admin .admin-stories > ul > li > div > h1, #admin .admin-stories > ul > li > div > a {
   padding: 10px 15px;
-  background: #69B3A5;
+  background: #4ab3af;
   font-size: 20px;
   font-weight: 600;
   text-align: center;
@@ -814,32 +799,32 @@
   border-top-right-radius: 2px;
 }
 
-#admin .admin-components > ul > li > div > h1 h1, #admin .admin-components > ul > li > div > a h1, #admin .admin-containers > ul > li > div > h1 h1, #admin .admin-containers > ul > li > div > a h1 {
+#admin .admin-components > ul > li > div > h1 h1, #admin .admin-components > ul > li > div > a h1, #admin .admin-containers > ul > li > div > h1 h1, #admin .admin-containers > ul > li > div > a h1, #admin .admin-layouts > ul > li > div > h1 h1, #admin .admin-layouts > ul > li > div > a h1, #admin .admin-stories > ul > li > div > h1 h1, #admin .admin-stories > ul > li > div > a h1 {
   font-weight: 600;
 }
 
-#admin .admin-components > ul > li > div > a:hover, #admin .admin-components > ul > li > div > a:focus, #admin .admin-containers > ul > li > div > a:hover, #admin .admin-containers > ul > li > div > a:focus {
-  background: #b4d9d2;
-  color: #557e78;
+#admin .admin-components > ul > li > div > a:hover, #admin .admin-components > ul > li > div > a:focus, #admin .admin-containers > ul > li > div > a:hover, #admin .admin-containers > ul > li > div > a:focus, #admin .admin-layouts > ul > li > div > a:hover, #admin .admin-layouts > ul > li > div > a:focus, #admin .admin-stories > ul > li > div > a:hover, #admin .admin-stories > ul > li > div > a:focus {
+  background: #a5d9d7;
+  color: #457e7d;
 }
 
-#admin .admin-components > ul > li > div > a:hover + div, #admin .admin-components > ul > li > div > a:focus + div, #admin .admin-containers > ul > li > div > a:hover + div, #admin .admin-containers > ul > li > div > a:focus + div {
-  border-color: #b4d9d2;
+#admin .admin-components > ul > li > div > a:hover + div, #admin .admin-components > ul > li > div > a:focus + div, #admin .admin-containers > ul > li > div > a:hover + div, #admin .admin-containers > ul > li > div > a:focus + div, #admin .admin-layouts > ul > li > div > a:hover + div, #admin .admin-layouts > ul > li > div > a:focus + div, #admin .admin-stories > ul > li > div > a:hover + div, #admin .admin-stories > ul > li > div > a:focus + div {
+  border-color: #a5d9d7;
 }
 
-#admin .admin-components > ul > li > div > a:active, #admin .admin-containers > ul > li > div > a:active {
-  background: #557e78;
+#admin .admin-components > ul > li > div > a:active, #admin .admin-containers > ul > li > div > a:active, #admin .admin-layouts > ul > li > div > a:active, #admin .admin-stories > ul > li > div > a:active {
+  background: #457e7d;
   color: white;
 }
 
-#admin .admin-components > ul > li > div > a:active + div, #admin .admin-containers > ul > li > div > a:active + div {
-  border-color: #557e78;
+#admin .admin-components > ul > li > div > a:active + div, #admin .admin-containers > ul > li > div > a:active + div, #admin .admin-layouts > ul > li > div > a:active + div, #admin .admin-stories > ul > li > div > a:active + div {
+  border-color: #457e7d;
 }
 
-#admin .admin-components > ul > li > div > h2, #admin .admin-containers > ul > li > div > h2 {
+#admin .admin-components > ul > li > div > h2, #admin .admin-containers > ul > li > div > h2, #admin .admin-layouts > ul > li > div > h2, #admin .admin-stories > ul > li > div > h2 {
   padding: 10px 15px;
-  background: #b4d9d2;
-  color: #557e78;
+  background: #a5d9d7;
+  color: #457e7d;
   font-size: 16px;
   font-weight: 600;
   text-align: center;
@@ -847,7 +832,7 @@
   border-bottom-right-radius: 2px;
 }
 
-#admin .admin-components > ul > li > div > div, #admin .admin-containers > ul > li > div > div {
+#admin .admin-components > ul > li > div > div, #admin .admin-containers > ul > li > div > div, #admin .admin-layouts > ul > li > div > div, #admin .admin-stories > ul > li > div > div {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -856,12 +841,12 @@
   overflow: hidden;
   background: rgba(43, 50, 52, 0.8);
   position: relative;
-  border: 2px solid #69B3A5;
+  border: 2px solid #4ab3af;
   border-top: 0;
   height: 200px;
 }
 
-#admin .admin-components > ul > li > div > div > *, #admin .admin-containers > ul > li > div > div > * {
+#admin .admin-components > ul > li > div > div > *, #admin .admin-containers > ul > li > div > div > *, #admin .admin-layouts > ul > li > div > div > *, #admin .admin-stories > ul > li > div > div > * {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -872,7 +857,7 @@
   transform: translate(-50%, -50%);
 }
 
-#admin .admin-components > ul > li > div > div:empty, #admin .admin-containers > ul > li > div > div:empty {
+#admin .admin-components > ul > li > div > div:empty, #admin .admin-containers > ul > li > div > div:empty, #admin .admin-layouts > ul > li > div > div:empty, #admin .admin-stories > ul > li > div > div:empty {
   display: none;
 }
 
@@ -881,6 +866,14 @@
 }
 
 #admin .admin-containers > ul > li > div > div {
+  height: 400px;
+}
+
+#admin .admin-layouts > ul > li, #admin .admin-stories > ul > li {
+  width: 100%;
+}
+
+#admin .admin-layouts > ul > li > div > div, #admin .admin-stories > ul > li > div > div {
   height: 400px;
 }
 

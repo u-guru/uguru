@@ -431,6 +431,7 @@
 					height: 100%;
 					background-size: cover;
 					background-position: center center;
+					border-radius: 2px;
 					a {
 						position: absolute;
 						bottom: 15px;
@@ -439,27 +440,15 @@
 						font-size: 18px;
 						font-weight: 600;
 						padding: 5px 10px;
-						&.bg-robin {
-							background: rgba($robin, .75);
-							&:hover, &:focus {
-								background: mix($robin, white);
-								color: mix($robin, $slate);
-							}
-							&:active {
-								background: mix($robin, $slate);
-								color: white;
-							}
+						border-radius: 2px;
+						background: rgba(mix($shamrock, $cobalt), .95);
+						&:hover, &:focus {
+							background: mix(mix($shamrock, $cobalt), white);
+							color: mix(mix($shamrock, $cobalt), $slate);
 						}
-						&.bg-crimson {
-							background: rgba($crimson, .75);
-							&:hover, &:focus {
-								background: mix($crimson, white);
-								color: mix($crimson, $slate);
-							}
-							&:active {
-								background: mix($crimson, $slate);
-								color: white;
-							}
+						&:active {
+							background: mix(mix($shamrock, $cobalt), $slate);
+							color: white;
 						}
 					}
 				}
@@ -515,7 +504,7 @@
 	}
 	
 	// components
-	.admin-components, .admin-containers {
+	.admin-components, .admin-containers, .admin-layouts, .admin-stories {
 		> h2 {
 			font-weight: 600;
 			padding: 15px 15px 0;
@@ -538,7 +527,7 @@
 				> div {
 					> h1, > a {
 						padding: 10px 15px;
-						background: $shamrock;
+						background: mix($shamrock, $robin);
 						font-size: 20px;
 						font-weight: 600;
 						text-align: center;
@@ -550,24 +539,24 @@
 					}
 					> a {
 						&:hover, &:focus {
-							background: mix($shamrock, white);
-							color: mix($shamrock, $slate);
+							background: mix(mix($shamrock, $robin), white);
+							color: mix(mix($shamrock, $robin), $slate);
 							+ div {
-								border-color: mix($shamrock, white);
+								border-color: mix(mix($shamrock, $robin), white);
 							}
 						}
 						&:active {
-							background: mix($shamrock, $slate);
+							background: mix(mix($shamrock, $robin), $slate);
 							color: white;
 							+ div {
-								border-color: mix($shamrock, $slate);
+								border-color: mix(mix($shamrock, $robin), $slate);
 							}
 						}
 					}
 					> h2 {
 						padding: 10px 15px;
-						background: mix($shamrock, white);
-						color: mix($shamrock, $slate);
+						background: mix(mix($shamrock, $robin), white);
+						color: mix(mix($shamrock, $robin), $slate);
 						font-size: 16px;
 						font-weight: 600;
 						text-align: center;
@@ -579,7 +568,7 @@
 						overflow: hidden;
 						background: rgba($charcoal, .8);
 						position: relative;
-						border: 2px solid $shamrock;
+						border: 2px solid mix($shamrock, $robin);
 						border-top: 0;
 						height: 200px;
 						> * {
@@ -597,6 +586,18 @@
 		> ul {
 			> li {
 				width: 50%;
+				> div {
+					> div {
+						height: 400px;
+					}
+				}
+			}
+		}
+	}
+	.admin-layouts, .admin-stories {
+		> ul {
+			> li {
+				width: 100%;
 				> div {
 					> div {
 						height: 400px;
