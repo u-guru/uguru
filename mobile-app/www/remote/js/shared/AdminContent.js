@@ -462,9 +462,10 @@ var componentList = [
         ref: 'request-tag-base',
         name: 'Base Tag Input',
         sample: {
-            template: '<tag desktop="desktopMode" category="component.sample.scope.category" inner-text="component.sample.scope.innerText" type="input"> </tag>',
+            template: '<tag desktop="desktopMode" category="component.sample.scope.category" inner-text="component.sample.scope.innerText" placeholder="{{component.sample.scope.placeholder}}" type="input"> </tag>',
             scope: {
-                innerText: 'Tag Input Try Me',
+                innerText : '',
+                placeholder: 'Tag Input Try Me',
                 category: {name: 'Academic', hex_color: 'academic', hex_class:'azure', id:5},
 
             }

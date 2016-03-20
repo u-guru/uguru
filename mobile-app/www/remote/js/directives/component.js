@@ -243,7 +243,7 @@ angular.module('uguru.components', [])
         category: '=',
         blankNum: '=',
         animArgs: '=',
-        // type: '=',
+        placeholder: '@',
         desktopMode: '=desktop',
     },
     restrict: 'E',
