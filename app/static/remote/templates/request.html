@@ -1,6 +1,12 @@
 <section id='request' class='desktop-request' elem-ready>
 	<header>
-		<nav class="request-nav arrow-bar tab-bar slide">
+	{{requestForm.nav}}
+
+	<tabs class="txt-white" tabs="['1','2','3','4','5','6']" index="1"/>
+
+
+	<!-- 	<nav class="request-nav arrow-bar tab-bar slide">
+			{{requestForm.nav}}
 			<div>
 				<a ng-click='requestForm.nav.switchTo(0)' ng-class='{active:!requestForm.nav.index}'><span>1</span></a>
 				<a ng-click='requestForm.nav.switchTo(1)' ng-class='{active:requestForm.nav.index === 1}'><span>2</span></a>
@@ -11,7 +17,7 @@
 				<div><span></span></div>
 				<div><span></span></div>
 			</div>
-		</nav>
+		</nav> -->
 		<progress class="bg-slate txt-white" max="6" value="4"></progress>
 		<!-- <progress max="6" value="{{requestForm.validationIndex || 0}}" ng-if='requestForm.validationIndex'></progress> -->
 	</header>

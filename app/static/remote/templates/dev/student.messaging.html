@@ -10,7 +10,8 @@
 					<ul>
 						<li ng-repeat='relationship in user.guru_relationships|filter:student_search.search_text:strict' ng-click='setToActiveRelationship(relationship)'>
 							<a class='ng-class:{"active":relationship.id === active_relationship.id}'>
-								<span class="messenger-icon" style="background-image: url({{relationship.guru.profile_url}});"></span>
+								<!-- <span class="messenger-icon" style="background-image: url({{relationship.guru.profile_url}});"></span> -->
+								<user-icon class="messenger-icon" size="small" url="relationship.guru.profile_url"> </user-icon>
 								<span class="messenger-label"> {{relationship.guru.name}}</span>
 							</a>
 						</li>
@@ -124,7 +125,9 @@
 								</div>
 								<div ng-repeat='message in active_relationship.messages|filter:active_relationship.search_text:strict' class="message-single ng-class:{'left': message.sender.id !== user.id, 'right': user.id === message.sender.id}">
 									<div class='message-single-icon' ng-if='message.sender.id !== user.id'>
-										<span ng-if='user.profile_url' style='background-image: url({{message.sender.profile_url}});' />
+										<!-- <span ng-if='user.profile_url' style='background-image: url({{message.sender.profile_url}});' /> -->
+										<user-icon  ng-if='user.profile_url' size="small" url="message.sender.profile_url"> </user-icon>
+
 									</div>
 									<div class="message-single-content">
 										<div class="message-single-info">
@@ -141,7 +144,9 @@
 										</div>
 									</div>
 									<div class='message-single-icon' ng-if='message.sender.id === user.id'>
-										<span ng-if='user.profile_url' style='background-image: url({{user.profile_url}});' />
+										<!-- <span ng-if='user.profile_url' style='background-image: url({{user.profile_url}});' /> -->
+										<user-icon  ng-if='user.profile_url' size="small" url="user.profile_url"> </user-icon>
+
 									</div>
 								</div>
 								<div id='message-dropzone' class='bg-slate-50p absolute left-0 full-x txt-charcoal weight-400 hide' style='bottom:64px; height:150px;' ng-class="{'show':showAttachments}"> Drag attachments here

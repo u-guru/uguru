@@ -10,7 +10,6 @@ angular.module('uguru.util.controllers')
 	'$timeout',
 	'$compile',
 	function($scope, $state, $stateParams, AdminContent, CTAService, $timeout, $compile) {
-
 		$scope.page = {
 			layout: AdminContent.getMainLayout(),
 			glossary: AdminContent.getGlosseryContent(),
@@ -19,8 +18,8 @@ angular.module('uguru.util.controllers')
 			layouts: AdminContent.getLayouts(),
 			user_stories: AdminContent.getUserStories(),
 			defaults: {
-				tabsIndex: 4,
-				sidebarIndex: 1
+				tabsIndex: 0,
+				sidebarIndex: 0
 			}
 		}
 		// $scope.selected_component = $scope.page.components[4];
@@ -56,12 +55,12 @@ angular.module('uguru.util.controllers')
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-layout';
 			CTAService.initSingleCTA('#' + targetElem.id, '#main-admin-content');
-			$timeout(function() {
-				var targetElem = document.querySelector('#cta-box-selected-layout');
-				angular.element(targetElem).triggerHandler('click');
-				var modalElem = document.querySelector('#cta-modal-selected-layout');
-				modalElem && modalElem.classList.add('show');
-			})
+			// $timeout(function() {
+			// 	var targetElem = document.querySelector('#cta-box-selected-layout');
+			// 	angular.element(targetElem).triggerHandler('click');
+			// 	var modalElem = document.querySelector('#cta-modal-selected-layout');
+			// 	modalElem && modalElem.classList.add('show');
+			// })
 		}
 
 		$scope.initAndLaunchAdminItemCTA = function($event) {

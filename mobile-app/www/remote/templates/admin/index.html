@@ -1,3 +1,4 @@
+
 <div id="admin" class='full-xy flex-wrap-center flex-stretch absolute'>
     <header>
         <span class="admin-logo" ng-include="img_base + BASE + 'templates/svg/logo-admin.html'"></span>
@@ -231,17 +232,17 @@
                             <tabs index="selected_component.index" options="elementCTATabOptions.components"/></tabs>
                         </div>
                     </div>
-                    
+
                     <div class='tab-content full-x relative bg-slate overflow-auto' style='height: 75%;'>
                         <!-- Demo -->
                         <div class='full-xy p15xy flex-wrap-start' ng-if='!selected_component.index'>
                             <div class='playground-container full-x flex-wrap-center relative'>
                                 <h4 class='uppercase text-center full-x p20xy opacity-50'>{{selected_component.name}} Demo - <span class='weight-800'>TRY ME!</span></h4>
-                                <demo style='border: 4px dashed white' class='flex-wrap-center relative p20xy' ng-if='selected_component.sample' ng-init='component = selected_component' template="{{selected_component.sample.template}}"></demo>
+                                <demo class='flex-wrap-center relative p20xy' ng-if='selected_component.sample' ng-init='component = selected_component' template="{{selected_component.sample.template}}"></demo>
                             </div>
                             <ul class="playground-code-container">
                                 <li>
-                                    <textarea><dropdown ng-model="component.sample.scope"></dropdown></textarea>
+                                    <textarea>{{selected_component.sample.template}}</textarea>
                                 </li>
                                 <li>
                                     <textarea><div class="dropdown">
@@ -278,32 +279,36 @@
             </ion-pane>
 
             <!--Projects -->
-            <section ng-hide='page.layout.sidebar.index'>
-                <div class='ugrid-6 flex-wrap-center full-x bg-azure' style='height:10%;'>
-                    <a class='flex-wrap-center' ng-repeat='option in page.layout.sections[0].tabs.options' ng-click='page.layout.sections[0].tabs.index = $index'>
-                        <user-icon size="64" url="option.profile_url" ng-if="$index != 5"></user-icon>
-                        <user-icon size="64" url="option.profile_url" ng-if="$index === 0"></user-icon>
-                        <user-icon size="64" url="option.profile_url" ng-if="$index === 0"></user-icon>
-                        <user-icon class="gabrielle" size="64" url="option.profile_url_1" ng-if="$index === 5"></user-icon>
-                        <user-icon class="jeselle" size="64" url="option.profile_url_2" ng-if="$index === 5"></user-icon>
-
-                        <span ng-bind-html="option.title"></span>
-                    </a>
+            <section id="admin-projects" ng-hide='page.layout.sidebar.index'>
+                <div class='tab-container'>
+                    <div class="tab-bar slide full-x">
+                        <div>
+                            <a ng-repeat='option in page.layout.sections[0].tabs.options' ng-click='page.layout.sections[0].tabs.index = $index'>
+                                <div>
+                                    <user-icon size="-32" url="option.profile_url" ng-if="$index != 5"></user-icon>
+                                    <user-icon size="-32" url="option.profile_url" ng-if="$index === 0"></user-icon>
+                                    <user-icon size="-32" url="option.profile_url" ng-if="$index === 0"></user-icon>
+                                    <user-icon class="gabrielle" size="-32" url="option.profile_url_1" ng-if="$index === 5"></user-icon>
+                                    <user-icon class="jeselle" size="-32" url="option.profile_url_2" ng-if="$index === 5"></user-icon>
+                                </div>
+                                <div ng-bind-html="option.title"></div>
+                            </a>
+                            <hr/>
+                        </div>
+                    </div>
                 </div>
-                <div class='admin-content milestones-content relative flex-wrap-center full-x bg-smoke overflow-auto' style='height:90%;'>
+                <div class='admin-content'>
                     <div class='absolute full-xy flex-wrap-start top-0 left-0' ng-hide='page.layout.sections[0].tabs.index'>
-                        <h1 class='p20xy text-center bg-charcoal-50px full-x' ng-bind-html="page.layout.sections[0].tabs.options[0].title"></h1>
-                        <div class='all-user-stories-container flex-wrap-center flex-stretch full-x'>
-                            <div class='ugrid-4 full-x flex-wrap'>
-                                <a class='bg-slate p20xy txt-white flex-wrap-center' ng-repeat='story in page.user_stories'>
-                                    <h4 class='uppercase weight-600 text-center opacity-50 m10xy' style='font-size:18px;'>
-                                        #{{$index + 1}}
-                                    </h4>
-                                    <h1 style='font-size:16px' class='text-center'>
-                                        {{story.title}}
-                                    </h1>
-                                </a>
-                            </div>
+                        <h1 class='admin-small-header' ng-bind-html="page.layout.sections[0].tabs.options[0].title"></h1>
+                        <div class='admin-user-stories admin-content-section'>
+                            <ul>
+                                <li ng-repeat='story in page.user_stories'>
+                                    <a>
+                                        <h4>{{$index + 1}}</h4>
+                                        <h1>{{story.title}}</h1>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div
@@ -312,7 +317,7 @@
                         ng-repeat='option in page.layout.sections[0].tabs.options'
                         ng-init='action_items = option.action_items'
                         ng-if='$index > 0'>
-                        <h1 style='height:5%;' class='bg-campus full-x flex-wrap-center weight-600 txt-16'>Today's Priorities</h1>
+                        <h1 class="admin-small-header">Today's Priorities</h1>
                         <div class='admin-action-item-list admin-content-section'>
                             <!-- I removed commented out content for now, I put it at the bottom because it was distracting -->
                             <ul>
@@ -587,14 +592,14 @@
                     </div>
                 </div>
             </section>
-            <section class='flex-wrap-center full-xy txt-charcoal absolute left-0' ng-hide='page.layout.sidebar.index !== 1'>
-                <div class='tab-container ugrid-{{page.layout.sections[1].tabs.options.length}} flex-wrap-center full-x bg-robin'>
+            <section id="admin-components" class='flex-wrap-center full-xy absolute left-0' ng-hide='page.layout.sidebar.index !== 1'>
+                <div class='tab-container'>
                     <tabs options="page.layout.sections[1].tabs.options" index="page.layout.sections[1].tabs.index" key="title"/>
                 </div>
-                <div class='admin-content milestones-content relative flex-wrap-center full-x bg-smoke'>
+                <div class='admin-content'>
                     <div class='relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0'>
                         <div class='relative full-xy flex-wrap-center flex-stretch flex-start top-0 left-0 overflow-auto' ng-hide='page.layout.sections[1].tabs.index !== $index' ng-repeat='option in page.layout.sections[1].tabs.options'>
-                            <h1 style='height:5%;' class='bg-campus full-x flex-wrap-center weight-600 txt-16'>{{option.title}}</h1>
+                            <h1 class="admin-small-header">{{option.title}}</h1>
                             <div class='admin-components admin-content-section flex-wrap-start full-x' ng-if='$index === 0'>
                                 <ul>
                                     <li ng-repeat='component in page.components track by $index'>
@@ -1290,14 +1295,12 @@
                     </div>
                 </div>
             </section>
-            <section class='flex-wrap-center full-xy txt-charcoal absolute left-0' ng-hide='page.layout.sidebar.index !== 2'>
-                <div class="tab-container bg-robin">
+            <section id="admin-reference" class='flex-wrap-center full-xy absolute left-0' ng-hide='page.layout.sidebar.index !== 2'>
+                <div class="tab-container">
                     <tabs options="page.layout.sections[2].tabs.options" index="page.layout.sections[2].tabs.index" key="title"/>
                 </div>
-                <div class='admin-content txt-charcoal relative full-x flex-wrap-start top-0 left-0 overflow-auto' ng-hide='page.layout.sections[2].tabs.index !== $index' ng-repeat='option in page.layout.sections[2].tabs.options'>
-                    <h1 style='height:5%;' class='bg-campus full-x flex-wrap-center weight-600 txt-16'>
-                        {{option.header}}
-                    </h1>
+                <div class='admin-content' ng-hide='page.layout.sections[2].tabs.index !== $index' ng-repeat='option in page.layout.sections[2].tabs.options'>
+                    <h1 class="admin-small-header">{{option.header}}</h1>
                     <div class="admin-docs admin-reference admin-content-section" ng-if='!page.layout.sections[2].tabs.index'>
                         <ul>
                             <li class="admin-definition-list">
@@ -1593,14 +1596,12 @@
                     </div>
                 </div>
             </section>
-            <section class='flex-wrap-center full-xy txt-charcoal' ng-hide='page.layout.sidebar.index !== 3'>
-                <div class="tab-container bg-robin">
+            <section id="admin-moodboard" class='flex-wrap-center full-xy' ng-hide='page.layout.sidebar.index !== 3'>
+                <div class="tab-container">
                     <tabs options="page.layout.sections[3].tabs.options" index="page.layout.sections[3].tabs.index" key="title"/>
                 </div>
-                <div class='admin-content txt-charcoal relative full-x flex-wrap-center flex-stretch flex-start top-0 left-0 overflow-auto' ng-hide='page.layout.sections[3].tabs.index !== $index' ng-repeat='option in page.layout.sections[3].tabs.options'>
-                    <h1 style='height:5%;' class='bg-campus full-x flex-wrap-center weight-600 txt-16'>
-                        {{option.header}}
-                    </h1>
+                <div class='admin-content' ng-hide='page.layout.sections[3].tabs.index !== $index' ng-repeat='option in page.layout.sections[3].tabs.options'>
+                    <h1 class="admin-small-header">{{option.header}}</h1>
                     <div class="admin-moodboard admin-content-section" ng-if='!page.layout.sections[3].tabs.index'>
                         <ul>
                             <li>
@@ -1646,12 +1647,10 @@
                     </div>
                 </div>
             </section>
-            <section class='flex-wrap-center full-x txt-charcoal' ng-hide='page.layout.sidebar.index !== 4'></section>
+            <section id="admin-tools" class='flex-wrap-center full-x' ng-hide='page.layout.sidebar.index !== 4'></section>
         </div>
     </main>
 </div>
-
-
                             <!--    <div class='flex-wrap-center flex-stretch full-y' style='overflow:scroll;' id=''>
                                 <div class='flex-wrap-center full-x flex-stretch flex-start'>
                                         <div class='full-x text-center' ng-repeat='user_story in action_items.research'>
@@ -1688,16 +1687,7 @@
                             </div> -->
                         <!-- </div> -->
 
-                        <!--  <div class='txt-charcoal absolute full-xy flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 2'>
-                        <h1>
-                            {{page.layout.sections[0].tabs.options[2].title}}'s action items
-                        </h1>
-                    </div>
-                    <div class='txt-charcoal absolute full-xy flex-wrap-center top-0 left-0' ng-hide='page.layout.sections[0].tabs.index !== 3'>
-                        <h1>
-                            {{page.layout.sections[0].tabs.options[3].title}}'s action items
-                        </h1>
-                    </div> -->
-                        <!-- <div class='flex-wrap-center absolute top-0 left-0 bg-cerise' >
-                        The all milestones
-                    </div> -->
+
+<!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("3e9825a431a4944b5037c7bf6d909690");mixpanel.track("Video play");</script><!-- end Mixpanel -->

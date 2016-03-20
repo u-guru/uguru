@@ -1,0 +1,1 @@
+    <li ><input tabindex="1" class='chip bg-{{category.hex_class}} tag-add' ng-model="innerText" placeholder="tag input" size="{{innerText && innerText.length || 8}}"></li>

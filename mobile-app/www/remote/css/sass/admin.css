@@ -27,7 +27,7 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
-  background: #489896;
+  background: #447373;
   width: 100%;
   height: 64px;
 }
@@ -292,6 +292,147 @@
   color: #40484B;
 }
 
+#admin > main > div > section#admin-projects .tab-container {
+  background: #619e93;
+}
+
+#admin > main > div > section#admin-projects .tab-container .tab-bar.slide > div a {
+  position: relative;
+}
+
+#admin > main > div > section#admin-projects .tab-container .tab-bar.slide > div a > div:first-child {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: -16px;
+}
+
+#admin > main > div > section#admin-projects .tab-container .tab-bar.slide > div a > div:first-child .user-icon-32:nth-child(2), #admin > main > div > section#admin-projects .tab-container .tab-bar.slide > div a > div:first-child .user-icon-32:nth-child(3) {
+  margin-left: -6px;
+}
+
+#admin > main > div > section#admin-components .tab-container {
+  background: #489e9b;
+}
+
+#admin > main > div > section#admin-reference .tab-container {
+  background: #5798a9;
+}
+
+#admin > main > div > section#admin-moodboard .tab-container {
+  background: #6784ac;
+}
+
+#admin > main > div > section#admin-tools .tab-container {
+  background: #757aa0;
+}
+
+#admin .admin-user-stories ul {
+  width: 100%;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding: 7.5px;
+}
+
+#admin .admin-user-stories ul li {
+  width: 25%;
+  height: 200px;
+  padding: 7.5px;
+}
+
+#admin .admin-user-stories ul li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  background: #66918d;
+  padding: 15px;
+  padding-top: 30px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+#admin .admin-user-stories ul li a h4 {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  border-radius: 1000px;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 15px;
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  font-weight: 900;
+  background: white;
+  color: #66918d;
+}
+
+#admin .admin-user-stories ul li a h1 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
 #admin .tab-container {
   width: 100%;
 }
@@ -300,8 +441,34 @@
   background: transparent !important;
 }
 
+#admin .admin-small-header {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 5%;
+  background: #40484B;
+  width: 100%;
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+}
+
 #admin .admin-content {
   height: calc(100% - 60px);
+  position: relative;
+  width: 100%;
 }
 
 #admin .admin-content-section {
@@ -982,7 +1149,7 @@
 #admin .admin-definition-list > div h2 {
   padding: 10px 15px;
   width: 100%;
-  background: #2BB3B8;
+  background: #5dacc1;
   color: white;
   font-size: 24px;
   font-weight: 600;

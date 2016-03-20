@@ -10,7 +10,6 @@ angular.module('uguru.util.controllers')
 	'$timeout',
 	'$compile',
 	function($scope, $state, $stateParams, AdminContent, CTAService, $timeout, $compile) {
-
 		$scope.page = {
 			layout: AdminContent.getMainLayout(),
 			glossary: AdminContent.getGlosseryContent(),
@@ -19,8 +18,8 @@ angular.module('uguru.util.controllers')
 			layouts: AdminContent.getLayouts(),
 			user_stories: AdminContent.getUserStories(),
 			defaults: {
-				tabsIndex: 2,
-				sidebarIndex: 2
+				tabsIndex: 0,
+				sidebarIndex: 1
 			}
 		}
 		// $scope.selected_component = $scope.page.components[4];
@@ -56,12 +55,12 @@ angular.module('uguru.util.controllers')
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-layout';
 			CTAService.initSingleCTA('#' + targetElem.id, '#main-admin-content');
-			$timeout(function() {
-				var targetElem = document.querySelector('#cta-box-selected-layout');
-				angular.element(targetElem).triggerHandler('click');
-				var modalElem = document.querySelector('#cta-modal-selected-layout');
-				modalElem && modalElem.classList.add('show');
-			})
+			// $timeout(function() {
+			// 	var targetElem = document.querySelector('#cta-box-selected-layout');
+			// 	angular.element(targetElem).triggerHandler('click');
+			// 	var modalElem = document.querySelector('#cta-modal-selected-layout');
+			// 	modalElem && modalElem.classList.add('show');
+			// })
 		}
 
 		$scope.initAndLaunchAdminItemCTA = function($event) {
@@ -69,7 +68,7 @@ angular.module('uguru.util.controllers')
 			$scope.adminItemCTAShown = true;
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.admin_item = {
-				dropdown_options: {index: 3, options: ['Milestone', 'Element Revision', 'New Element or Asset', 'New Action Item', 'New Revision']},
+				dropdown_options: {index: 3, options: ['Milestone', 'Element Revision', 'New Element', 'New Action Item', 'New Revision']},
 				options: {
 					element: {
 						type: ['Component', 'Container', 'Layouts', 'User Stories', 'Assets'],

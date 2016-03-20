@@ -22,7 +22,7 @@
 	}
 	> header {
 		@include flex;
-		background: mix(mix($shamrock, $robin), $slate, 75%);
+		background: mix(mix($shamrock, $robin), $slate, 40%);
 		width: 100%;
 		height: 64px;
 		.admin-logo {
@@ -186,6 +186,93 @@
 				width: 100%;
 				height: 100%;
 				color: $slate;
+				&#admin-projects {
+					.tab-container {
+						background: mix($shamrock, $slate, 80%);
+						.tab-bar.slide {
+							> div {
+								a {
+									position: relative;
+									> div:first-child {
+										@include flex;
+										@include flex-center;
+										@include center-x;
+										top: -16px;
+										.user-icon-32 {
+											&:nth-child(2), &:nth-child(3) {
+												margin-left: -6px;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				&#admin-components {
+					.tab-container {
+						background: mix(mix($shamrock, $robin), $slate, 80%);
+					}
+				}
+				&#admin-reference {
+					.tab-container {
+						background: mix(mix($shamrock, $lake), $slate, 80%);
+					}
+				}
+				&#admin-moodboard {
+					.tab-container {
+						background: mix(mix($shamrock, $cobalt), $slate, 80%);
+					}
+				}
+				&#admin-tools {
+					.tab-container {
+						background: mix(mix($shamrock, $eggplant), $slate, 80%);
+					}
+				}
+			}
+		}
+	}
+	
+	// user stories 
+	.admin-user-stories {
+		ul {
+			width: 100%;
+			@include flex;
+			@include flex-wrap;
+			padding: 7.5px;
+			li {
+				width: 25%;
+				height: 200px;
+				padding: 7.5px;
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					position: relative;
+					background: mix($shamrock, lighten($slate, 15%));
+					padding: 15px;
+					padding-top: 30px;
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					h4 {
+						@include flex;
+						@include flex-center;
+						@include round;
+						@include center-x;
+						top: 15px;
+						width: 28px;
+						height: 28px;
+						font-size: 18px;
+						font-weight: 900;
+						background: white;
+						color: mix($shamrock, lighten($slate, 15%));
+					}
+					h1 {
+						font-size: 16px;
+						font-weight: 600;
+					}
+				}
 			}
 		}
 	}
@@ -197,8 +284,20 @@
 			background: transparent!important;
 		}
 	}
+	.admin-small-header {
+		@include flex;
+		@include flex-center;
+		height: 5%;
+		background: $slate;
+		width: 100%;
+		font-weight: 600;
+		font-size: 16px;
+		color: white;
+	}
 	.admin-content {
 		height: calc(100% - 60px);
+		position: relative;
+		width: 100%;
 	}
 	.admin-content-section {
 		@include flex;
@@ -718,7 +817,7 @@
 			h2 {
 				padding: 10px 15px;
 				width: 100%;
-				background: $robin;
+				background: mix($shamrock, $lake);
 				color: white;
 				font-size: 24px;
 				font-weight: 600;

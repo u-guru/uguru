@@ -2429,6 +2429,7 @@ input[type=range] {
 			width: 152px;
 			height: 48px;
 			background: lighten($slate, 10%);
+			color: white;
 			font-size: 28px;
 			font-weight: 600;
 		}
@@ -7304,6 +7305,14 @@ a.category-tile {
 						}
 					}
 				}
+				&:nth-child(6) {
+					&.active {
+						~ hr {
+							@include translate-x(825px);
+							border-color: white;
+						}
+					}
+				}
 
 				&:nth-child(1) {
 					&:hover, &:focus {
@@ -7361,6 +7370,19 @@ a.category-tile {
 					&:hover, &:focus {
 						~ hr {
 							@include translate-x(660px);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(6) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(825px);
 							border-color: rgba(white, .7);
 						}
 					}
