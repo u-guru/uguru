@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('uguru.components', [])
 .directive("doc", function() {
   return {
@@ -27,14 +29,14 @@ angular.module('uguru.components', [])
       $timeout(function() {
 
         if (attr.template && attr.template.length) {
-          element.html(attr.template);
+          element.html(attr.template.replace('"',"'"));
           $compile(element.contents())(scope);
         }
       }, 1000);
     }
   };
 }])
-.directive("dropdown", function() {
+.directive("dropdown", ['$timeout', function($timeout) {
   return {
     templateUrl: getTemplateURL,
     scope: {
@@ -68,6 +70,9 @@ angular.module('uguru.components', [])
         //  });
 
         scope.dropdown.selectedIndex = index;
+        $timeout(function() {
+          scope.$apply();
+        })
         if (scope.dropdown.onOptionClick) {
           scope.dropdown.onOptionClick(option, index);
         }
@@ -88,7 +93,7 @@ angular.module('uguru.components', [])
       return BASE + 'templates/components/dev/input/dropdown.tpl'
     }
   }
-})
+}])
 .directive("userIcon", ['$compile',function($compile) {
   return {
     templateUrl: BASE + 'templates/components/dev/user.icon.tpl',

@@ -19,7 +19,13 @@ function AdminContent($localstorage) {
         getMembers: getMembers,
         getComponents: getComponents,
         getLayouts: getLayouts,
-        getUserStories: getUserStories
+        getUserStories: getUserStories,
+        getBaseObjects: getBaseObjects,
+        getContainers: getContainers
+    }
+
+    function getContainers() {
+        return [];
     }
 
     function initAllContent() {
@@ -32,6 +38,160 @@ function AdminContent($localstorage) {
 
     function getMainLayout() {
         return mainLayout;
+    }
+
+    function getBaseObjects(scope) {
+
+        function onDropdownComponentSelected(section, dropdown_name, scope) {
+
+            return function(option, index) {
+                if (section === 'action_item' && dropdown_name === 'elementDropdown') {
+                    var selectedIndex = scope.page.createObjects[section][dropdown_name].selectedIndex;
+                    if (index === 0) {
+                        scope.page.createObjects[section][dropdown_name].options = ['assets', 'components', 'layouts', 'user_stories', 'containers'];
+                    } else
+                    if (index === 1) {
+                        scope.page.createObjects[section][dropdown_name].options = ['importing assets', 'moodboard setup', 'updating reference'];
+                    } else
+                    if (index === 2) {
+                        scope.page.createObjects[section][dropdown_name].options = ['docs', 'html_css_guide', 'colors', 'themes', 'animation'];
+                    } else
+                    if (index === 3) {
+                        scope.page.createObjects[section][dropdown_name].options = ['Uguru/Internal', 'Components', 'Fluid + Animation', 'Creative / Thematic', 'Library'];
+                    }
+                    return;
+                }
+
+                var newOptions = JSON.parse(JSON.stringify(scope.page[option]));
+                scope.page.createObjects[section][dropdown_name].key= 'ref';
+                console.log(newOptions);
+                scope.page.createObjects[section][dropdown_name].options = newOptions;
+            }
+
+            function updateParentsChildren(new_obj, scope) {
+                var newObjParents = new_obj.parents;
+                new_obj.parent_options = [];
+                for (var i = 0; i < newObjParents.length; i++) {
+                    allParentElements.push({
+                        type: newObjParents[i],
+
+                    })
+                }
+
+                var newObjChildren = new_obj.children;
+                new_obj.parent_options = [];
+                for (var i = 0; i < newObjParents.length; i++) {
+                    allParentElements.push({
+                        type: newObjParents[i],
+
+                    })
+                }
+            }
+        }
+
+
+        return {
+            components: {
+                dropdown: {
+                    options: ['asset', 'component', 'layout', 'user_story', 'container'],
+                    selectedIndex: 0
+                },
+                new: {
+                    type: null,
+                    parents: [],
+                    children: [],
+                    name: '',
+                    description: 'Add description here',
+                    tags: []
+                },
+                parents: {
+                    asset: ['container', 'components', 'layouts'],
+                    component: ['container', 'layouts'],
+                    container: ['layout'],
+                    layout: ['user_story']
+                },
+                children: {
+                    asset: [],
+                    component: ['components', 'assets'],
+                    container: ['components', 'assets'],
+                    layout: ['container' , 'components', 'assets'],
+                    user_story: ['layouts']
+                },
+                moodboard_refs: [],
+                name: '',
+                reference: '',
+                tags: []
+            },
+            action_item: {
+
+                sectionDropdown: {
+                    options: ['HTML Element', 'Admin Setup', 'Reference', 'Moodboard'],
+                    selectedIndex: 0,
+                    onOptionClick: onDropdownComponentSelected('action_item', 'elementDropdown', scope)
+                },
+                elementDropdown: {
+                    options: ['assets', 'components', 'layouts', 'user_stories', 'containers'],
+                    selectedIndex: 0,
+                    onOptionClick: onDropdownComponentSelected('action_item', 'subElementDropdown', scope)
+                },
+                subElementDropdown: {
+                    options: ['--------'],
+                    selectedIndex: 0
+                },
+                new: {
+                    name: '',
+                    description: '',
+                    priority: 0,
+                    assigned_to: [],
+                    status: '',
+                    date_created: '',
+                    status_history: [],
+                    tags: [],
+                    activated: ''
+                }
+            },
+            moodboard: {
+                elementDropdown: {
+                    options: ['assets', 'components', 'layouts', 'user_stories', 'containers'],
+                    selectedIndex: 0,
+                    onOptionClick: onDropdownComponentSelected('moodboard', 'subElementDropdown', scope)
+                },
+                subElementDropdown: {
+                    options: ['--------'],
+                    selectedIndex: 0
+                },
+                new: {
+                    name: '',
+                    description: '',
+                    url: [],
+                    tags: [],
+                    background_image_url: [],
+                    type: '',
+                    element: ''
+                },
+                type: ['Uguru/Internal', 'Components', 'Fluid + Animation', 'Creative / Thematic', 'Library'],
+            },
+            bug_ticket: {
+                elementDropdown: {
+                    options: ['assets', 'components', 'layouts', 'user_stories', 'containers'],
+                    selectedIndex: 0,
+                    onOptionClick: onDropdownComponentSelected('bug_ticket', 'subElementDropdown', scope)
+                },
+                subElementDropdown: {
+                    options: ['--------'],
+                    selectedIndex: 0
+                },
+                new: {
+                    subsection_type: '',
+                    description: '',
+                    steps_reproduce: '',
+                    assigned_to: [],
+                    priority: '',
+                    type: '',
+                    tags: []
+                }
+            }
+        }
     }
 
     function getUserStories() {
@@ -481,6 +641,8 @@ var componentList = [
     }
 
 ]
+
+
 
 
 function getDefaultObjReferenceDict() {

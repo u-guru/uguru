@@ -88,25 +88,68 @@ def loadMostUpdatedElementsJson():
     return _dict
 
 
+### Initialize elements component
 def initBaseComponent():
     mp = Mixpanel('3e9825a431a4944b5037c7bf6d909690')
     elements = loadMostUpdatedElementsJson()
-    # mp.track('4', elements)
     mp.people_set('4', {
         'elements': elements
         })
-    # mp.people_append('4', elements)
+    print 'elements.json updated'
 
-def updateElementComponent(elements):
+
+## Updates one based on changes final step
+def updateElementComponent(_dict):
     mp = Mixpanel('3e9825a431a4944b5037c7bf6d909690')
-    mp.people_append('4', {'$properties': {}})
+    mp.people_set('4', {
+        'elements': _dict
+    })
+
+
+
+
+## Adds a new element to any of the dashboard section
+## todo create cli
+def addNewElement(element, _dict):
+    from elements import base_elements
+    mp_elements_dict = getMostUpdatedMPElements()
+    new_id = len(mp_elements_dict[element]) + 1
+    _dict['id'] = new_id
+    mp_elements_dict[element].append(_dict)
+    updateElementComponent(mp_elements_dict)
+    return mp_elements_dict
 
 def getMostUpdatedMPElements():
     user = formatMPResponse(getQueryDict('engage', {'distinct_id': 4}))
     elements =  user['results'][0]['$properties']['elements']
     return elements
 
+def applyChangeToElement(section, _id, change_dict):
+    elemToChange = None
+    mpRecentElements = getMostUpdatedMPElements()
+    if getMostUpdatedElements.get(section):
+        allSectionElems = mpRecentElements[section]
+        for elem in allSectionElems:
+            if elem.get('id') == _id:
+                elemToChange = elem
+                elemToChange['missing_fields'] = []
+                break
+        if elemToChange:
+            changeDictKeys = change_dict.keys()
+            elemToChange['previous_elem_spec'] = dict(elemToChange)
+            for key in changeDictKeys:
+                if key in elemToChange:
+                    elemToChange[key] = changeDictKeys[key]
+                else:
+                    elemToChange['missing_fields'].append({key: changeDictKeys[key]})
+    mpRecentElements[section] = allSectionElems
+    updateElementComponent(mpRecentElements)
+    return mpRecentElements
 
+
+
+### resolve previous elem spec
+### resolving missing fields
 def resolveElements():
     import json
     _dict = json.load(open('./app/lib/elements.json'))
@@ -114,7 +157,8 @@ def resolveElements():
 
 def saveDictToElementsJson():
     import json
-    _dict = getMostUpdatedElements()
+    _dict = getMostUpdatedMPElements()
+    from pprint import pprint
     with open('./app/lib/elements.json', 'wb') as fp:
         json.dump(_dict, fp, sort_keys = True, indent = 4)
     print "saved to elements.json"
@@ -125,16 +169,9 @@ def resolveDictToElementsJson():
     mp_elements_dict = getMostUpdatedMPElements()
     return master_elements_dict == mp_elements_dict
 
-
-def addNewElement(element, _dict):
-    from elements import base_elements
-    mp_elements_dict = getMostUpdatedMPElements()
-
-    new_id = len(mp_elements_dict[element]) + 1
-    _dict['id'] = new_id
-    mp_elements_dict[element].append(_dict)
-    mp = Mixpanel('3e9825a431a4944b5037c7bf6d909690')
-    mp.people_set('4', {
-        'elements': mp_elements_dict
-    })
-
+import sys
+args = sys.argv
+if 'save' in args:
+    saveDictToElementsJson()
+if 'update' in args:
+    initBaseComponent()

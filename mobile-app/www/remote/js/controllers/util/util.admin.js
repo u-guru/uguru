@@ -9,14 +9,17 @@ angular.module('uguru.util.controllers')
 	'CTAService',
 	'$timeout',
 	'$compile',
-	function($scope, $state, $stateParams, AdminContent, CTAService, $timeout, $compile) {
+	'Restangular',
+	function($scope, $state, $stateParams, AdminContent, CTAService, $timeout, $compile, Restangular) {
 		$scope.page = {
 			layout: AdminContent.getMainLayout(),
 			glossary: AdminContent.getGlosseryContent(),
 			team_members: AdminContent.getMembers(),
 			components: AdminContent.getComponents(),
+			containers: AdminContent.getContainers(),
 			layouts: AdminContent.getLayouts(),
 			user_stories: AdminContent.getUserStories(),
+			createObjects: AdminContent.getBaseObjects($scope),
 			defaults: {
 				tabsIndex: 0,
 				sidebarIndex: 0
@@ -63,12 +66,37 @@ angular.module('uguru.util.controllers')
 			// })
 		}
 
+		function createAdminElement(element_details) {
+
+		}
+
+		function getAdminElements() {
+
+			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(function(response){
+                    	response = JSON.parse(response);
+
+                    	$scope.page.components = response.components;
+                    	$scope.page.layouts = response.layouts;
+                    	$scope.page.moodboard = response.moodboards;
+                    	$scope.page.user_stories = response.user_stories;
+                    	$scope.page.assets = response.assets;
+                    	$scope.page.action_items = response.action_items;
+                    	$scope.page.projects = response.projects;
+
+                    	console.log(response);
+                    }, function(err) {
+                    	console.log('error');
+                    })
+		}
+
+
+
 		$scope.initAndLaunchAdminItemCTA = function($event) {
 			var targetElem = $event.target;
 			$scope.adminItemCTAShown = true;
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.admin_item = {
-				dropdown_options: {index: 3, options: ['Milestone', 'Element Revision', 'New Element', 'New Action Item', 'New Revision']},
+				dropdown_options: {index: 3, options: ['HTML Element', 'Moodboard','Bug Ticket', 'Action Item']},
 				options: {
 					element: {
 						type: ['Component', 'Container', 'Layouts', 'User Stories', 'Assets'],
@@ -113,8 +141,8 @@ angular.module('uguru.util.controllers')
 			$scope.lastCTABoxTargetElem.id = 'cta-box-admin-item';
 			CTAService.initSingleCTA('#' + targetElem.id, 'body');
 			$timeout(function() {
-				var targetElem = document.querySelector('#cta-box-admin-item');
-				angular.element(targetElem).triggerHandler('click');
+				// var targetElem = document.querySelector('#cta-box-admin-item');
+				// angular.element(targetElem).triggerHandler('click');
 				var modalElem = document.querySelector('#cta-modal-admin-item');
 				modalElem && modalElem.classList.add('show');
 			})
@@ -183,6 +211,7 @@ angular.module('uguru.util.controllers')
 			if ($scope.lastCTABoxTargetElem) {
 				CTAService.closeCTAManually($scope.lastCTABoxTargetElem.id, function() {
 					var modalElem = document.querySelector('#' + $scope.lastCTABoxTargetElem.id.replace('box', 'modal'));
+
 					$scope.lastCTABoxTargetElem.id = null;
 					if (modalElem) {
 						modalElem.classList.remove('show');
@@ -202,7 +231,14 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.hideAdminItemCTA = function($event) {
+			console.log('last ctaBox target elem', $scope.lastCTABoxTargetElem);
+			$scope.adminItemCTAShown = false;
+			var modalElem = document.querySelector('#cta-modal-admin-item');
+			console.log(modalElem);
+			modalElem && modalElem.classList.remove('show');
+			// modalElem && modalElem.classList.add('hide');
 			if ($scope.lastCTABoxTargetElem) {
+				console.log('modal elem', modalElem);
 				$scope.adminItemCTAShown = false;
 				CTAService.closeCTAManually($scope.lastCTABoxTargetElem.id, function() {
 					var modalElem = document.querySelector('#' + $scope.lastCTABoxTargetElem.id.replace('box', 'modal'));
@@ -255,13 +291,29 @@ angular.module('uguru.util.controllers')
 			}
 		}
 
+		function initNewBaseObjects() {
+			var templateDict = AdminContent.getBaseObjects($scope);
+			var templateDictKeys = Object.keys(templateDict);
+			var resultObj = {};
+			for (var i = 0; i < templateDictKeys.length; i++) {
+				var templateIndexKey = templateDictKeys[i]
+				var templateIndexObj = templateDict[templateIndexKey];
+				resultObj[templateIndexKey] = JSON.parse(JSON.stringify(templateIndexObj));
+			}
+			return resultObj;
+		}
+
 		$timeout(function() {
 			$scope.page.layout.sidebar.index = $scope.page.defaults.sidebarIndex;
 			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = $scope.page.defaults.tabsIndex;
+			getAdminElements();
 
 
-			// var adminItemElem = document.querySelector('#cta-box-admin-item');
-			// angular.element(adminItemElem).triggerHandler('click');
+			var adminItemElem = document.querySelector('#cta-box-admin-item');
+			angular.element(adminItemElem).triggerHandler('click');
+			initNewBaseObjects();
+			$scope.page.newItems = initNewBaseObjects();
+			console.log('new items', $scope.page.newItems);
 
 		}, 1000)
 	}
