@@ -3421,6 +3421,50 @@ class AdminDevicePushTestView(restful.Resource):
 
         return jsonify(success=[True])
 
+class AdminDashboardView(restful.Resource):
+    ## Gets most updated component list
+    def get(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        from lib.mp_admin import getMostUpdatedMPElements
+        mixpanel_local_elements = getMostUpdatedMPElements()
+
+        return json.dumps(mixpanel_local_elements, indent=4), 200
+
+    def put(self, auth_token):
+
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        if not request.json or not request.json.get('section') or not request.json.get('id'):
+            return "MISSING DATA", 422
+
+        element_section = request.json.get('section')
+        element_id = request.json.get('id')
+        change_details = request.json.get('change_details')
+
+
+
+        from lib.mp_admin import applyChangeToElement
+        mixpanel_local_elements = applyChangeToElement(element_section, element_id, change_details)
+        return jsonify(admin_components=mixpanel_local_elements)
+
+    def post(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+
+        if not request.json or not request.json.get('section') or not request.json.get('id'):
+            return "MISSING DATA", 422
+
+        element_section = request.json.get('section')
+        elem_sepc = request.json.get('elem_spec')
+        from lib.mp_admin import addNewElement
+        addNewElement(element_section, elem_spec)
+        return jsonify(admin_components=mixpanel_local_elements)
+
+
 class AdminUniversityPopularCourseView(restful.Resource):
     @marshal_with(AdminUniversityDeptCourseSerializer)
     def get(self, auth_token, uni_id):
@@ -3435,6 +3479,7 @@ class AdminUniversityPopularCourseView(restful.Resource):
 class AdminUniversityCourseView(restful.Resource):
     def post(self, auth_token, uni_id):
         if not auth_token in APPROVED_ADMIN_TOKENS:
+
             return "UNAUTHORIZED", 401
 
         return jsonify(success=[True])
@@ -3858,6 +3903,7 @@ api.add_resource(AdminUniversityPopularCourseView, '/api/admin/<string:auth_toke
 api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts')
 api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses')
 api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients')
+api.add_resource(AdminDashboardView, '/api/v1/admin/<string:auth_token>/dashboard')
 api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test')
 api.add_resource(AdminAppUpdateView, '/api/admin/app/update')
 api.add_resource(AdminMandrillTemplatesView, '/api/admin/<string:auth_token>/mandrill/templates')
@@ -3926,6 +3972,7 @@ api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/univer
 api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses', subdomain='www')
 api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients', subdomain='www')
 api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test', subdomain='www')
+api.add_resource(AdminDashboardView, '/api/v1/admin/<string:auth_token>/dashboard')
 api.add_resource(AdminAppUpdateView, '/api/admin/app/update', subdomain='www')
 api.add_resource(AdminMandrillTemplatesView, '/api/admin/<string:auth_token>/mandrill/templates', subdomain='www')
 api.add_resource(AdminMandrillCampaignsView, '/api/admin/<string:auth_token>/mandrill/campaigns', subdomain='www')
