@@ -241,27 +241,32 @@
                         <!-- Demo -->
                         <div class='full-xy p15xy flex-wrap-start' ng-if='!selected_component.index'>
                             <div class='playground-container full-x flex-wrap-center relative'>
-                                <h4 class='uppercase text-center full-x p20xy opacity-50'>{{selected_component.name}} Demo - <span class='weight-800'>TRY ME!</span></h4>
+                                <h4 class='uppercase text-center full-x p20xy opacity-50'>{{selected_component.name}} Demo - <span class='weight-800'>TRY ME!</span>
+                                </h4>
                                 <demo class='flex-wrap-center relative p20xy' ng-if='selected_component.sample' ng-init='component = selected_component' template="{{selected_component.sample.template}}"></demo>
+                                
                             </div>
+
                             <ul class="playground-code-container">
                                 <li>
                                     <textarea>{{selected_component.sample.template}}</textarea>
                                 </li>
                                 <li>
-                                    <textarea><div class="{{selected_component.ref}}">
-    <div>
-        <span>{{dropdown.options[dropdown.selectedIndex]}}</span>
-        <a ng-click='toggle()'>
-            <svg viewBox="0 0 100 100">
-                <path d="M14,32 L50,68 L86,32"></path>
-            </svg>
-        </a>
-    </div>
-    <ul ng-class='{"active": dropdown.active}'>
-        <li tabindex ng-if='$index !== dropdown.selectedIndex' ng-click="click($index)" ng-repeat='option in dropdown.options'>{{option}}</li>
-    </ul>
-</div></textarea>
+                                    <textarea>
+                                        <div class="{{selected_component.ref}}">
+                                            <div>
+                                                <span>{{dropdown.options[dropdown.selectedIndex]}}</span>
+                                                <a ng-click='toggle()'>
+                                                    <svg viewBox="0 0 100 100">
+                                                        <path d="M14,32 L50,68 L86,32"></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <ul ng-class='{"active": dropdown.active}'>
+                                                <li tabindex ng-if='$index !== dropdown.selectedIndex' ng-click="click($index)" ng-repeat='option in dropdown.options'>{{option}}</li>
+                                            </ul>
+                                        </div>
+                                    </textarea>
                                 </li>
                             </ul>
                             <div class='scope-container flex-wrap-center flex-end flex-column full-x'>
