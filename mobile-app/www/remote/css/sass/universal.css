@@ -1844,7 +1844,7 @@
   text-transform: none;
 }
 
-#pricing .pricing-other {
+#pricing header ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1852,168 +1852,17 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  position: relative;
-  margin: 0 auto;
-  padding: 15px 0;
-  width: 100%;
-  max-width: 800px;
-  background: #d4ac54;
+  margin: -15px auto 0;
+  overflow-x: auto;
+  padding: 7.5px;
 }
 
-#pricing .pricing-other li {
-  -webkit-transform: translateY(25%);
-  -moz-transform: translateY(25%);
-  -ms-transform: translateY(25%);
-  -o-transform: translateY(25%);
-  transform: translateY(25%);
-  padding: 0 50px;
+#pricing header ul li {
+  padding: 7.5px;
 }
 
-#pricing .pricing-other li div {
-  text-align: center;
-}
-
-#pricing .pricing-other li div h3 {
-  font-size: 36px;
-  font-weight: 700;
-}
-
-#pricing .pricing-other li div h1 {
-  margin-top: 0 !important;
-  padding: 0 !important;
-  font-size: 128px;
-  font-weight: 900;
-}
-
-#pricing .pricing-other:before {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -80px;
-  left: 0;
-  width: calc(100% - 80px);
-  height: 80px;
-  background: #d4ac54;
-}
-
-#pricing .pricing-other:after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -80px;
-  right: 0;
-  width: 0;
-  height: 0;
-  border: 40px solid transparent;
-  border-top-color: #876722;
-  border-left-color: #876722;
-}
-
-#pricing .pricing-uguru {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 815px;
-  margin: 0 auto;
-  color: #40484B;
-  text-align: center;
-}
-
-#pricing .pricing-uguru li {
-  position: relative;
-  width: calc(100% / 3);
-  padding: 0 7.5px;
-}
-
-#pricing .pricing-uguru li div {
-  overflow: hidden;
-  position: relative;
-  padding: 15px 0;
-  background: #F1F1F1;
-  border: 10px solid #696269;
-}
-
-#pricing .pricing-uguru li div h3 {
-  font-size: 24px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-#pricing .pricing-uguru li div h2 {
-  border-radius: 1000px;
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  margin: 15px auto;
-  width: 160px;
-  height: 160px;
-  background: rgba(85, 164, 183, 0.1);
-  font-size: 36px;
-  font-weight: 900;
-}
-
-#pricing .pricing-uguru li div h2 u {
-  display: block;
-  padding-bottom: 8px;
-  padding-right: 2px;
-}
-
-#pricing .pricing-uguru li div span {
-  font-size: 24px;
-  font-weight: 400;
-}
-
-#pricing .pricing-uguru li div svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  fill: rgba(117, 117, 117, 0.1);
-}
-
-#pricing .pricing-uguru li:after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -5px;
-  left: 7.5px;
-  width: calc(100% - 15px);
-  height: 5px;
-  background: rgba(117, 117, 117, 0.2);
+#pricing header ul li .pricing-tile {
+  width: 270px;
 }
 
 #pricing > div {
@@ -2053,7 +1902,23 @@
 }
 
 @media screen and (max-width: 768px) {
-  #pricing > header {
+  #pricing > header > ul {
+    width: 100%;
+  }
+  #pricing > header > ul li:last-child {
+    padding-right: 15px;
+  }
+  #pricing > div {
+    padding-top: 136px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #pricing > header > h1 {
+    padding: 30px;
+    font-size: 36px;
+  }
+  #pricing > header > ul {
     -webkit-flex-direction: row;
     flex-direction: row;
     -webkit-align-items: center;
@@ -2063,37 +1928,9 @@
     -webkit-justify-content: center;
     justify-content: center;
   }
-  #pricing > header > h1 {
-    padding-bottom: 30px;
-  }
-  #pricing > header .pricing-uguru {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  #pricing > header {
-    height: 40%;
-  }
-  #pricing > header h1 {
-    padding: 30px;
-    font-size: 36px;
-  }
-  #pricing > header .pricing-uguru {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-  }
   #pricing > div {
-    padding: 140px 30px 30px;
+    padding: 176px 30px 30px;
     max-width: 860px;
-  }
-  #pricing > div .pricing-uguru {
-    display: none;
   }
   #pricing > div dl dt {
     font-size: 28px;
