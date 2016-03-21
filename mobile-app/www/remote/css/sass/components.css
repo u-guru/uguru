@@ -1,4 +1,4 @@
-/* ---------- HEADERS */
+/* ---------- HEADERS [update or deprecate] */
 header:not(.desktop-header) {
   min-height: 50px;
   position: relative;
@@ -13,8 +13,7 @@ header:not(.desktop-header).compressed-search {
 }
 
 header:not(.desktop-header).compressed-search .header-nav,
-header:not(.desktop-header).compressed-search h1,
-header:not(.desktop-header).compressed-search *[class*="header"] {
+header:not(.desktop-header).compressed-search h1, header:not(.desktop-header).compressed-search *[class*="header"] {
   filter: alpha(opacity=0);
   opacity: 0;
   height: 0;
@@ -322,6 +321,72 @@ h1:not(.verified) span:nth-child(2) {
   right: 0;
 }
 
+/* ---------- LAYOUTS */
+.lyt-1-3-header > header {
+  width: 100%;
+  height: calc(100% / 3);
+}
+
+.lyt-1-3-header > header + * {
+  width: 100%;
+  height: calc(100% / 3 * 2);
+}
+
+.lyt-1-3-sidebar > aside {
+  width: calc(100% / 3);
+  height: 100%;
+}
+
+.lyt-1-3-sidebar > aside + * {
+  width: calc(100% / 3 * 2);
+  height: 100%;
+}
+
+.lyt-reduced-header > header {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  width: 100%;
+  height: 50px;
+}
+
+.lyt-reduced-header > header h1 {
+  font-size: 20px;
+  text-transform: none;
+}
+
+.lyt-reduced-header > header + * {
+  width: 100%;
+  height: calc(100% - 50px);
+}
+
+@media screen and (min-width: 768px) {
+  .lyt-reduced-header > header {
+    height: 100px;
+  }
+  .lyt-reduced-header > header h1 {
+    font-size: 36px;
+  }
+  .lyt-reduced-header > header + * {
+    height: calc(100% - 100px);
+  }
+}
+
 /* ---------- BUTTONS AND INPUT */
 button, input, textarea {
   -webkit-appearance: none;
@@ -383,6 +448,20 @@ a.bg.bg-campus:hover, a.bg.bg-campus:focus {
 
 a.bg.bg-campus:active {
   background: #657377;
+  color: white;
+}
+
+a.bg.bg-rocket {
+  background: #696269;
+}
+
+a.bg.bg-rocket:hover, a.bg.bg-rocket:focus {
+  background: #b4b1b4;
+  color: #55555a;
+}
+
+a.bg.bg-rocket:active {
+  background: #55555a;
   color: white;
 }
 
@@ -644,6 +723,20 @@ button.bg-campus:hover, button.bg-campus:focus {
 
 button.bg-campus:active {
   background: #657377;
+  color: white;
+}
+
+button.bg-rocket {
+  background: #696269;
+}
+
+button.bg-rocket:hover, button.bg-rocket:focus {
+  background: #b4b1b4;
+  color: #55555a;
+}
+
+button.bg-rocket:active {
+  background: #55555a;
   color: white;
 }
 
@@ -959,6 +1052,23 @@ button.disabled {
   border-color: #637074;
   background: #637074;
   color: white;
+}
+
+[class*="btn-ghost"][class*="btn-ghost-rocket"] {
+  color: #696269;
+  border-color: #696269;
+}
+
+[class*="btn-ghost"][class*="btn-ghost-rocket"]:hover, [class*="btn-ghost"][class*="btn-ghost-rocket"]:focus {
+  border-color: #696269;
+  background: #696269;
+  color: white;
+}
+
+[class*="btn-ghost"][class*="btn-ghost-rocket"]:active {
+  border-color: #b4b1b4;
+  background: #b4b1b4;
+  color: #55555a;
 }
 
 [class*="btn-ghost"][class*="btn-ghost-shamrock"] {
@@ -1287,6 +1397,11 @@ button.disabled {
 
 [class*="btn-split"].btn-split-white:active span {
   background: #637074;
+  color: white;
+}
+
+[class*="btn-split"].hvr-rocket:active span {
+  background: #696269;
   color: white;
 }
 
@@ -2036,6 +2151,10 @@ progress[class*="bg-taupe"]::-webkit-progress-bar, div[class="progress"][class*=
   background: #757575;
 }
 
+progress[class*="bg-rocket"]::-webkit-progress-bar, div[class="progress"][class*="bg-rocket"]::-webkit-progress-bar {
+  background: #696269;
+}
+
 progress[class*="bg-moola"]::-webkit-progress-bar, div[class="progress"][class*="bg-moola"]::-webkit-progress-bar {
   background: #81B566;
 }
@@ -2134,6 +2253,16 @@ div[class="progress"][class*="txt-moola"] span {
 
 progress[class*="txt-moola"]::-moz-progress-bar, div[class="progress"][class*="txt-moola"]::-moz-progress-bar {
   background: #81B566;
+}
+
+progress[class*="txt-rocket"]::-webkit-progress-value,
+progress[class*="txt-rocket"] span, div[class="progress"][class*="txt-rocket"]::-webkit-progress-value,
+div[class="progress"][class*="txt-rocket"] span {
+  background: #696269;
+}
+
+progress[class*="txt-rocket"]::-moz-progress-bar, div[class="progress"][class*="txt-rocket"]::-moz-progress-bar {
+  background: #696269;
 }
 
 progress[class*="txt-shamrock"]::-webkit-progress-value,
@@ -2382,6 +2511,28 @@ progress[class*="txt-gold"]::-moz-progress-bar, div[class="progress"][class*="tx
 
 .onboarding-bar.bg-campus .onboarding-step .onboarding-status .top, .onboarding-bar.bg-campus .onboarding-step .onboarding-status .bottom {
   stroke: #8A9EA3;
+}
+
+.onboarding-bar.bg-rocket .progress.white-round {
+  color: #696269;
+}
+
+.onboarding-bar.bg-rocket .progress.white-round::-webkit-progress-value,
+.onboarding-bar.bg-rocket .progress.white-round span {
+  background: #696269;
+}
+
+.onboarding-bar.bg-rocket .progress.white-round::-moz-progress-bar {
+  background: #696269;
+}
+
+.onboarding-bar.bg-rocket .onboarding-step .onboarding-icon {
+  background: white;
+  color: #696269;
+}
+
+.onboarding-bar.bg-rocket .onboarding-step .onboarding-status .top, .onboarding-bar.bg-rocket .onboarding-step .onboarding-status .bottom {
+  stroke: #696269;
 }
 
 .onboarding-bar.bg-shamrock .progress.white-round {

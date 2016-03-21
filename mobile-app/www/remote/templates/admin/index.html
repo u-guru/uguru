@@ -15,8 +15,7 @@
             <a class='full-x p20xy flex-wrap-center bg bg-charcoal' ng-class="{'active': page.layout.sidebar.index === $index}" ng-repeat='section in page.layout.sections' ng-click='page.layout.sidebar.index = $index;'>{{section.title}}</a>
         </aside>
         <div id='main-admin-content' class="admin-main">
-            <ion-pane id='cta-modal-admin-item' class='full-xy hide-display cta-modal bg-azure absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch' ng-include="img_base + BASE + 'templates/admin/index.create.html'">
-            </ion-pane>
+            <ion-pane id='cta-modal-admin-item' class='full-xy hide-display cta-modal bg-azure absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch' ng-include="img_base + BASE + 'templates/admin/index.create.html'"></ion-pane>
             <ion-pane id='cta-modal-selected-asset-action' class='full-xy hide-display cta-modal bg-azure absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch'>
                 <a ng-click='hideComponentCTA()' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
                     <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5">

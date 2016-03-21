@@ -5,34 +5,13 @@
 	height: 100%;
 	overflow: auto;
 	header {
-		@include flex;
-		@include flex-center;
-		@include flex-wrap;
-		height: calc(100% / 3);
 		background: $shamrock;
-		&.has-tabs {
-			h1 {
-				padding-bottom: 60px;
-			}
-		}
-		h1 {
-			font-size: 28px;
-			text-align: center;
-			text-transform: none!important;
-		}
-		.tab-bar {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			background: rgba($slate,.4);
-		}
 	}
 	.main {
 		@include flex;
 		@include flex-wrap;
-		height: calc(100% / 3 * 2);
 		padding: 7.5px;
+		background: $slate;
 		dl {
 			width: 50%;
 			padding: 7.5px;
@@ -40,7 +19,8 @@
 			dt {
 				@include flex;
 				@include flex-center-vertical;
-				background: $shamrock;
+				background: $rocket;
+				border-radius: 2px 2px 0 0;
 				padding: 10px 15px;
 				font-size: 20px;
 				font-weight: 700;
@@ -50,11 +30,16 @@
 					height: 40px;
     				padding-left: 10px;
 					svg {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 						width: 100%;
 						height: 100%;
+						* {
+							stroke-width: 7px;
+						}
 					}
 				}
 				&:not(.active) {
+					border-radius: 2px;
 					.close-button {
 						svg {
 							@include rotate(0);
@@ -70,6 +55,9 @@
 				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 				@include prefix(transform-origin, top center, webkit moz ms o);
 				background: white;
+				border: 2px solid $rocket;
+				border-top: 0;
+				border-radius: 0 0 2px 2px;
 				padding: 10px 15px;
 				color: $slate;
 				font-size: 16px;
@@ -80,11 +68,6 @@
 }
 @media screen and (min-width: 768px) {
 	#faq {
-		header {
-			h1 {
-				font-size: 48px;
-			}
-		}
 		.main {
 			@include prefix(flex-direction, column, wekit moz ms o);
 			height: 100%;
@@ -103,28 +86,13 @@
 	width: 100%;
 	height: 100%;
 	overflow: auto;
-	background: $smoke;
+	background: $slate;
 	header {
 		@include flex;
 		@include flex-center;
-		height: calc(100% / 3);
-		max-height: none;
-		background: white;
-		h1 {
-			color: $lake;
-			font-size: 28px;
-			font-weight: 600;
-			text-transform: none;
-		}
-		&.no-graphic {
-			background: $shamrock;
-			h1 {
-				color: white;
-			}
-		}
+		background: $shamrock;
 	}
-	section {
-		height: calc(100% / 3 * 2);
+	.main {
 		.pf-card-group {
 			> li {
 				.pf-card {
@@ -143,19 +111,6 @@
 					}
 				}
 			}
-		}
-	}
-}
-@media screen and (min-width: 768px) {
-	#team {
-		header {
-			height: 25%;
-			h1 {
-				font-size: 48px;
-			}
-		}
-		section {
-			height: 75%;
 		}
 	}
 }
@@ -1732,7 +1687,7 @@
 	width: 100%;
 	height: 100%;
 	overflow: auto;
-	background: $smoke;
+	background: $slate;
 	header {
 		@include flex;
 		@include flex-wrap;
@@ -1740,7 +1695,7 @@
 		background: $shamrock;
 		> h1 {
 			width: 100%;
-			font-size: 28px;
+			font-size: 20px;
 			font-weight: 600;
 			color: white;
 			text-align: center;
@@ -1813,7 +1768,7 @@
 				position: relative;
 				padding: 15px 0;
 				background: $smoke;
-				border: 10px solid $slate;
+				border: 10px solid $rocket;
 				h3 {
 					font-size: 24px;
 					font-weight: 700;
@@ -1856,7 +1811,7 @@
 				left: 7.5px;
 				width: calc(100% - 15px);
 				height: 5px;
-				background: rgba($taupe,.5);
+				background: rgba($taupe,.2);
 			}
 		}
 	}
@@ -1864,7 +1819,6 @@
 		padding: 15px;
 		width: 100%;
 		margin: auto;
-		color: $slate;
 		.pricing-uguru {
 			@include flex-wrap;
 			margin-top: -20%;
@@ -1911,7 +1865,7 @@
 			height: 40%;
 			h1 {
 				padding: 30px;
-				font-size: 48px;
+				font-size: 36px;
 			}
 			.pricing-uguru {
 				@include flex;
