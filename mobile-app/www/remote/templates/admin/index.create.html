@@ -17,37 +17,39 @@
             <form class="admin-add-edit-form" ng-hide='admin_item.dropdown_options.index'>
                 <ul>
                     <li>
-                        <h1 class="m10bottom">Select a Component Type</h1>
+                        <label class="p10bottom">
+                            <h1>Select a Component Type</h1>
+                        </label>
                         <dropdown class="full-x" ng-model="page.createObjects.components.dropdown"> </dropdown>
                         <div ng-if='page.createObjects.components.dropdown.options[page.createObjects.components.dropdown.selectedIndex] !== "asset"'>
-                            <label for="admin-form-html-children">
-                                <h1 class="m15top">Tap any children</h1>
-                                <h2 class="m10bottom">{{page.createObjects.components.children[page.createObjects.components.dropdown.options[page.createObjects.components.dropdown.selectedIndex]]}}</h2>
+                            <label class="p10bottom-p15top" for="admin-form-html-children">
+                                <h1>Tap any children</h1>
+                                <h2>{{page.createObjects.components.children[page.createObjects.components.dropdown.options[page.createObjects.components.dropdown.selectedIndex]]}}</h2>
                             </label>
                             <textarea id="admin-form-html-children" small></textarea>
                         </div>
                         <div ng-if='page.createObjects.components.dropdown.options[page.createObjects.components.dropdown.selectedIndex] !== "user_story"'>
-                            <label for="admin-form-html-parent">
-                                <h1 class="m15top">Tap any parents</h1>
-                                <h2 class="m10bottom">{{page.createObjects.components.parents[page.createObjects.components.dropdown.options[page.createObjects.components.dropdown.selectedIndex]]}}</h2>
+                            <label class="p10bottom-p15top" for="admin-form-html-parent">
+                                <h1>Tap any parents</h1>
+                                <h2>{{page.createObjects.components.parents[page.createObjects.components.dropdown.options[page.createObjects.components.dropdown.selectedIndex]]}}</h2>
                             </label>
                             <textarea id="admin-form-html-parent" small></textarea>
                         </div>
                     </li>
                     <li>
-                        <label for="admin-form-html-name">
-                            <h1 class="m10bottom">Name</h1>
+                        <label class="p10bottom" for="admin-form-html-name">
+                            <h1>Name</h1>
                         </label>
                         <input id="admin-form-html-name" class="full" placeholder="Give a simple name to component" type="text" />
-                        <label for="admin-form-html-desc">
-                            <h1 class="m15top-m10bottom">Description</h1>
+                        <label class="p15top-p10bottom" for="admin-form-html-desc">
+                            <h1>Description</h1>
                         </label>
                         <textarea id="admin-form-html-desc" ng-model="page.createObjects.components.new.description" placeholder="Provide more details why this component is necessary"></textarea>
-                        <label for="admin-form-html-tag">
-                            <h1 class='m15top-m10bottom' ng-if='page.createObjects.components.new.tags.length > 0'>
+                        <label class='p15top-p10bottom' for="admin-form-html-tag">
+                            <h1 ng-if='page.createObjects.components.new.tags.length > 0'>
                                 {{page.createObjects.components.new.tags.length}} Tag(s) Added
                             </h1>
-                            <h1 class='m15top-m10bottom' ng-if='page.createObjects.components.new.tags.length === 0'>
+                            <h1 ng-if='page.createObjects.components.new.tags.length === 0'>
                                 Add Tags
                             </h1>
                         </label>
@@ -67,17 +69,27 @@
             <form class="admin-add-edit-form" ng-hide='admin_item.dropdown_options.index !== 1'>
                 <ul>
                     <li>
-                        <h1 class="m10bottom">Element Type</h1>
+                        <label class="p10bottom">
+                            <h1>Element Type</h1>
+                        </label>
                         <dropdown class="full-x" ng-model="page.createObjects.moodboard.elementDropdown"> </dropdown>
-                        <h1 class="m15top-m10bottom">Moodboard Type</h1>
+                        <label class="m15top-m10bottom">
+                            <h1>Moodboard Type</h1>
+                        </label>
                         <dropdown class="full-x" ng-model="page.createObjects.moodboard.subElementDropdown"> </dropdown>
-                        <h1 class="m15top-m10bottom">URL</h1>
+                        <label class="m15top-m10bottom">
+                            <h1>URL</h1>
+                        </label>
                         <input class="full" type="text" ng-model="page.createObjects.moodboard.new.url"/>
                     </li>
                     <li>
-                        <h1 class="m10bottom">Name</h1>
+                        <label class="m10bottom">
+                            <h1>Name</h1>
+                        </label>
                         <input class="full" type="text" ng-model="page.createObjects.moodboard.new.name" placeholder="Try to name similar to Uguru ideal element" />
-                        <h1 class="m10bottom-m15top">Description</h1>
+                        <label class="m15top-m10bottom">
+                            <h1>Description</h1>
+                        </label>
                         <textarea ng-model="page.createObjects.moodboard.new.description"></textarea>
                         <label for="admin-form-moodboard-tag">
                             <h1 class='m10bottom-m15top' ng-if='page.createObjects.moodboard.new.tags.length > 0'>

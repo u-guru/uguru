@@ -16,7 +16,7 @@
                     </svg>
                 </a>
                 <a class="marker-guru">
-                    <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                    <span class="user-icon" style="background-image: url('')"></span>
                     <span class="marker-guru-course">BIO 1A</span>
                 </a>
             </div>
@@ -39,7 +39,7 @@
                     <h4>open now &middot; 2.4 miles</h4>
                 </div>
                 <a class="marker-guru">
-                    <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span>
+                    <span class="user-icon" style="background-image: url('')"></span>
                     <div>
                         <h1>Gabrielle W</h1>
                         <h3>Active 10 min ago</h3>

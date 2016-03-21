@@ -72,7 +72,7 @@ angular.module('uguru.util.controllers')
           name: 'Samir M.',
           lastActive: 'Active 10 min ago',
           message: "<p>Hey there<br>, I can tutor you in bio class. We'll get you an A in no time</p>",
-          profile_url: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256',
+          profile_url: 'https://uguru.me/static/web/images/team/gabrielle.png',
           type: 'templates/svg/wwf/' + iconGPlaceMapping('cafe') +  '.html',
           subcategory: 'Bio 1a',
         }

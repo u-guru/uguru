@@ -202,7 +202,7 @@
                             <a class="marker-link" ng-include="img_base + BASE + splash_marker.guru.type"></a>
                             <a id="map-icon-{{$index + 2}}" class="marker-guru opacity-0">
                                 <!-- <span class="user-icon" style="background-image: url({{splash_marker.guru.profile_url}})"></span> -->
-                                <user-icon size="small" url="splash_marker.guru.profile_url"> </user-icon>
+                                <user-icon size="-64" url="splash_marker.guru.profile_url"> </user-icon>
 
                                 <span class="marker-guru-course">{{splash_marker.guru.subcategory}}</span>
                             </a>
@@ -224,7 +224,7 @@
                             </div>
                             <a class="marker-guru">
                                 <!-- <span class="user-icon" style="background-image: url({{splash_marker.guru.profile_url}})"></span> -->
-                                <user-icon size="small" url="splash_marker.guru.profile_url"> </user-icon>
+                                <user-icon size="-64" url="splash_marker.guru.profile_url"> </user-icon>
 
                                 <div>
                                     <h1>{{splash_marker.guru.name}}</h1>
@@ -255,8 +255,7 @@
                         <div class="marker-normal-content">
                             <a class="marker-link" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></a>
                             <a id="map-icon-2" class="marker-guru opacity-0">
-                               <!--  <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span> -->
-                                <user-icon size="small" url="http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256"> </user-icon>
+                                <user-icon size="-64" url="https://uguru.me/static/web/images/team/gabrielle.png"> </user-icon>
 
                                 <span class="marker-guru-course">BIO 1A</span>
                             </a>
@@ -276,8 +275,7 @@
                                 <h4>open now &middot; 2.4 miles</h4>
                             </div>
                             <a class="marker-guru">
-                           <!--      <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span> -->
-                                <user-icon size="small" url="http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256"> </user-icon>
+                                <user-icon size="-64" url="https://uguru.me/static/web/images/team/gabrielle.png"> </user-icon>
 
                                 <div>
                                     <h1>Gabrielle W</h1>
@@ -314,7 +312,7 @@
                                     <div id="map-icon-{{$index + 1}}-translate">
                                         <a class="marker-guru bg-{{selectedCategory.hex_color}}" translate-on-class-delay="{{(selectedUniversity.map.markers.length * 1000 * 0.6) || 1000}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-{{$index + 1}}" translate-on-class="translate-device-guru-profile">
                                             <span class="user-icon" style="background-image: url('{{marker.guru.profile_url}}')"></span>
-                                            <user-icon size="small" url="marker.guru.profile_url"> </user-icon>
+                                            <user-icon size="-64" url="marker.guru.profile_url"> </user-icon>
 
                                             <span class="marker-guru-course">{{marker.guru.subcategory}}</span>
                                         </a>
