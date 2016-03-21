@@ -1,6 +1,6 @@
 @import 'mixin';
 
-/* ---------- HEADERS */
+/* ---------- HEADERS [update or deprecate] */
 // mobile headers
 header:not(.desktop-header) {
 	min-height: 50px;
@@ -11,8 +11,7 @@ header:not(.desktop-header) {
 	&.compressed-search {
 		height: 50px!important;
 		.header-nav,
-		h1,
-		*[class*="header"] {
+		h1, *[class*="header"] {
 			@include opacity(0);
 			height: 0;
 		}
@@ -239,6 +238,56 @@ h1:not(.verified) {
 	}
 }
 
+/* ---------- LAYOUTS */
+.lyt-1-3-header {
+	> header {
+		width: 100%;
+		height: calc(100% / 3);
+		+ * {
+			width: 100%;
+			height: calc(100% / 3 * 2);
+		}
+	}
+}
+.lyt-1-3-sidebar {
+	> aside {
+		width: calc(100% / 3);
+		height: 100%;
+		+ * {
+			width: calc(100% / 3 * 2);
+			height: 100%;
+		}
+	}
+}
+.lyt-reduced-header {
+	> header {
+		@include flex;
+		@include flex-center;
+		@include flex-wrap;
+		width: 100%;
+		height: 50px;
+		h1 {
+			font-size: 20px;
+			text-transform: none;
+		}
+		+ * {
+			width: 100%;
+			height: calc(100% - 50px);
+		}
+	}
+	@media screen and (min-width: 768px) {
+		> header {
+			height: 100px;
+			h1 {
+				font-size: 36px;
+			}
+			+ * {
+				height: calc(100% - 100px);
+			}
+		}
+	}
+}
+
 /* ---------- BUTTONS AND INPUT */
 button, input, textarea {
 	@include appearance;
@@ -288,6 +337,17 @@ a.bg {
 		}
 		&:active {
 			background: mix($campus, $slate);
+			color: white;
+		}
+	}
+	&.bg-rocket {
+		background: $rocket;
+		&:hover, &:focus {
+			background: mix($rocket, white);
+			color: mix($rocket, $slate);
+		}
+		&:active {
+			background: mix($rocket, $slate);
 			color: white;
 		}
 	}
@@ -495,6 +555,17 @@ button {
 		}
 		&:active {
 			background: mix($campus, $slate);
+			color: white;
+		}
+	}
+	&.bg-rocket {
+		background: $rocket;
+		&:hover, &:focus {
+			background: mix($rocket, white);
+			color: mix($rocket, $slate);
+		}
+		&:active {
+			background: mix($rocket, $slate);
 			color: white;
 		}
 	}
@@ -750,6 +821,20 @@ button.disabled {
 			border-color: lighten($slate, 15%);
 			background: lighten($slate, 15%);
 			color: white;
+		}
+	}
+	&[class*="btn-ghost-rocket"] {
+		color: $rocket;
+		border-color: $rocket;
+		&:hover, &:focus {
+			border-color: $rocket;
+			background: $rocket;
+			color: white;
+		}
+		&:active {
+			border-color: mix($rocket, white);
+			background: mix($rocket, white);
+			color: mix($rocket, $slate);
 		}
 	}
 	&[class*="btn-ghost-shamrock"] {
@@ -1029,6 +1114,14 @@ button.disabled {
 		&:active {
 			span {
 				background: lighten($slate, 15%);
+				color: white;
+			}
+		}
+	}
+	&.hvr-rocket {
+		&:active {
+			span {
+				background: $rocket;
 				color: white;
 			}
 		}
@@ -1619,6 +1712,11 @@ progress, div[class="progress"] {
 			background: $taupe;
 		}
 	}
+	&[class*="bg-rocket"] {
+		&::-webkit-progress-bar {
+			background: $rocket;
+		}
+	}
 	&[class*="bg-moola"] {
 		&::-webkit-progress-bar {
 			background: $moola;
@@ -1721,6 +1819,15 @@ progress, div[class="progress"] {
 		}
 		&::-moz-progress-bar {
 			background: $moola;
+		}
+	}
+	&[class*="txt-rocket"] {
+		&::-webkit-progress-value,
+		span {
+			background: $rocket;
+		}
+		&::-moz-progress-bar {
+			background: $rocket;
 		}
 	}
 	&[class*="txt-shamrock"] {
@@ -1898,6 +2005,29 @@ progress, div[class="progress"] {
 			.onboarding-status {
 				.top, .bottom {
 					stroke: $campus;
+				}
+			}
+		}
+	}
+	&.bg-rocket {
+		.progress.white-round {
+			color: $rocket;
+			&::-webkit-progress-value,
+			span {
+				background: $rocket;
+			}
+			&::-moz-progress-bar {
+				background: $rocket;
+			}
+		}
+		.onboarding-step {
+			.onboarding-icon {
+				background: white;
+				color: $rocket;
+			}
+			.onboarding-status {
+				.top, .bottom {
+					stroke: $rocket;
 				}
 			}
 		}
@@ -2429,6 +2559,7 @@ input[type=range] {
 			width: 152px;
 			height: 48px;
 			background: lighten($slate, 10%);
+			color: white;
 			font-size: 28px;
 			font-weight: 600;
 		}
@@ -7304,6 +7435,14 @@ a.category-tile {
 						}
 					}
 				}
+				&:nth-child(6) {
+					&.active {
+						~ hr {
+							@include translate-x(825px);
+							border-color: white;
+						}
+					}
+				}
 
 				&:nth-child(1) {
 					&:hover, &:focus {
@@ -7361,6 +7500,19 @@ a.category-tile {
 					&:hover, &:focus {
 						~ hr {
 							@include translate-x(660px);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(6) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(825px);
 							border-color: rgba(white, .7);
 						}
 					}
@@ -8344,6 +8496,682 @@ a.category-tile {
 			@include round;
 			svg {
 				@include round;
+			}
+		}
+	}
+}
+
+/* ---------- CALENDAR & CALENDAR LEGEND */
+.cal-legend {
+	ul {
+		@include flex;
+		width: 100%;
+		padding: 1px;
+		li {
+			width: calc(100% / 7);
+			min-width: 102px;
+			> span {
+				@include flex-center;
+				text-align: center;
+			}
+		}
+	}
+}
+
+.cal-day, .cal-legend {
+	li {
+		position: relative;
+		width: 100%;
+		// min-width: 110px;
+		min-width: 102px!important;
+		height: 50px;
+		padding: 1px;
+		> span {
+			@include flex;
+			@include flex-center-vertical;
+			width: 100%;
+			height: 100%;
+			border-radius: 2px;
+			padding: 5px;
+			color: lighten($slate, 15%);
+			font-size: 16px;
+			font-weight: 600;
+		}
+		&.has-event {
+			> span {
+				background: white;
+				border-width: 2px!important;
+				border-left-width: 5px!important;
+				border-style: solid;
+				border-color: $campus;
+				color: $campus;
+				span {
+					display: block;
+					line-height: 1.1;
+				}
+			}
+		}
+		&.event-academic {
+			> span {
+				border-color: $cerise;
+				color: $cerise;
+			}
+		}
+		&.event-baking {
+			> span {
+				border-color: $gold;
+				color: $gold;
+			}
+		}
+		&.event-photography {
+			> span {
+				border-color: $moola;
+				color: $moola;
+			}
+		}
+		&.event-household {
+			> span {
+				border-color: $cobalt;
+				color: $cobalt;
+			}
+		}
+		&.event-delivery {
+			> span {
+				border-color: $auburn;
+				color: $auburn;
+			}
+		}
+		&.event-freelancing {
+			> span {
+				border-color: $orange;
+				color: $orange;
+			}
+		}
+		&.event-athletic {
+			> span {
+				border-color: $eggplant;
+				color: $eggplant;
+			}
+		}
+		&.event-tech {
+			> span {
+				border-color: $azure;
+				color: $azure;
+			}
+		}
+	}
+}
+.guru, .cal-legend {
+	.cal-day {
+		li {
+			> span {
+				background: rgba($smoke, .4)!important;
+			}
+			&.student-available {
+				> span {
+					background: $lake!important;
+					color: white!important;
+				}
+			}
+			&.guru-available {
+				> span {
+					background: $shamrock!important;
+					color: white!important;
+				}
+			}
+			&.not-available {
+				> span {
+					background: rgba($smoke, .2)!important;
+				}
+			}
+		}
+		&.not-available {
+			li {
+				> span {
+					background: rgba($smoke, .2)!important;
+				}
+			}
+		}
+	}
+}
+.student, .cal-legend {
+	.cal-day {
+		li {
+			> span {
+				background: rgba(white, .7)!important;
+			}
+			&.has-event > span {
+				background: white!important;
+			}
+			&.student-available {
+				> span {
+					background: mix($lake, white, 40%)!important;
+					color: white!important;
+				}
+			}
+			&.guru-available {
+				> span {
+					background: mix($shamrock, white, 50%)!important;
+					color: white!important;
+				}
+			}
+			&.not-available {
+				> span {
+					background: rgba($slate, .075)!important;
+				}
+			}
+		}
+		&.not-available {
+			li > span {
+				background: rgba($slate, .075)!important;
+			}
+		}
+	}
+}
+.calendar, .cal-legend {
+	&.bg-delivery {
+		li {
+			&.student-available {
+				> span {
+					background: mix($auburn, white, 40%)!important;
+				}
+			}
+			&.guru-available {
+				> span {
+					background: mix($auburn, white, 60%)!important;
+				}
+			}
+		}
+	}
+	&.bg-freelancing {
+		li {
+			&.student-available {
+				> span {
+					background: mix($orange, white, 40%)!important;
+				}
+			}
+			&.guru-available {
+				> span {
+					background: mix($orange, white, 60%)!important;
+				}
+			}
+		}
+	}
+	&.bg-baking {
+		li {
+			&.student-available {
+				> span {
+					background: mix($gold, white, 40%)!important;
+				}
+			}
+			&.guru-available {
+				> span {
+					background: mix($gold, white, 60%)!important;
+				}
+			}
+		}
+	}
+	&.bg-photography {
+		li {
+			&.student-available {
+				> span {
+					background: mix($moola, white, 40%)!important;
+				}
+			}
+			&.guru-available {
+				> span {
+					background: mix($moola, white, 60%)!important;
+				}
+			}
+		}
+	}
+	&.bg-tech {
+		li {
+			&.student-available {
+				> span {
+					background: mix($azure, white, 40%)!important;
+				}
+			}
+			&.guru-available {
+				> span {
+					background: mix($azure, white, 60%)!important;
+				}
+			}
+		}
+	}
+	&.bg-household {
+		li {
+			&.student-available {
+				> span {
+					background: mix($cobalt, white, 40%)!important;
+				}
+			}
+			&.guru-available {
+				> span {
+					background: mix($cobalt, white, 60%)!important;
+				}
+			}
+		}
+	}
+	&.bg-athletic {
+		li {
+			&.student-available {
+				> span {
+					background: mix($eggplant, white, 40%)!important;
+				}
+			}
+			&.guru-available {
+				> span {
+					background: mix($eggplant, white, 60%)!important;
+				}
+			}
+		}
+	}
+	&.bg-academic {
+		li {
+			&.student-available {
+				> span {
+					background: mix($cerise, white, 40%)!important;
+				}
+			}
+			&.guru-available {
+				> span {
+					background: mix($cerise, white, 60%)!important;
+				}
+			}
+		}
+	}
+}
+
+.calendar {
+	width: 100%;
+	margin: 0 auto;
+	background: darken($campus, 15%);
+	color: white;
+	.cal-week {
+		&:not(.active) {
+			.cal-time, .cal-main {
+				display: none;
+			}
+		}
+		&.active {
+			.cal-month {
+				svg {
+					&:last-child {
+						@include rotate(180);
+					}
+				}
+			}
+		}
+		> div {
+			@include flex;
+			@include flex-wrap;
+			width: 100%;
+			.cal-month {
+				margin: 0 0 2px;
+				width: calc(100% + 4px);
+				background: darken($campus, 25%);
+				padding: 15px;
+				font-size: 28px;
+				font-weight: 700;
+				text-align: center;
+				text-transform: none;
+				svg {
+					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+					@include prefix(transform-origin, center, webkit moz ms o);
+					@include svg-stroke(white, 4);
+					display: block;
+					margin: 0 auto;
+					stroke-width: 8px;
+					width: 24px;
+					height: 24px;
+				}
+				span:nth-child(2) {
+					display: block!important;
+				}
+			}
+			.cal-month.has-link {
+				padding: 0;
+				a {
+					display: block;
+					padding: 10px 15px;
+					background: darken($campus, 25%);
+					color: white!important;
+					&:hover, &:focus {
+						background: darken($campus, 15%);
+					}
+					&:active, &.active {
+						background: darken($campus, 20%);
+					}
+				}
+			}
+			.cal-time {
+				width: 80px;
+				padding-top: 30px;
+				li {
+					position: relative;
+					height: 50px;
+					span {
+						display: block;
+						position: absolute;
+						top: -9px;
+						right: 15px;
+						font-size: 18px;
+						font-weight: 600;
+						line-height: 1;
+						text-align: right;
+					}
+				}
+			}
+			.cal-main {
+				overflow: hidden;
+				width: calc(100% - 80px);
+				overflow-x: auto;
+				.cal-date {
+					@include flex;
+					width: 100%;
+					// min-width: 770px;
+					min-width: 720px;
+					height: 30px;
+					padding: 0 1px;
+					li {
+						width: calc(100% / 7);
+						// min-width: 110px;
+						min-width: 102px;
+						font-size: 18px;
+						font-weight: 600;
+						text-align: center;
+						padding: 0 1px;
+						> span {
+							@include flex;
+							@include flex-center;
+							border-radius: 2px;
+							height: 30px;
+							width: 100%;
+							background: lighten($slate, 15%);
+						}
+						&.not-available {
+							> span {
+								background: $crimson;
+							}
+						}
+					}
+				}
+				.cal-events {
+					@include flex;
+					// min-width: 770px;
+					min-width: 720px;
+					padding: 1px;
+					.cal-day {
+						width: calc(100% / 7);
+						li {
+							&.hours-2 {
+								height: 100px;
+							}
+							&.hours-3 {
+								height: 150px;
+							}
+							&.hours-4 {
+								height: 200px;
+							}
+							&.hours-5 {
+								height: 250px;
+							}
+							&.hours-6 {
+								height: 300px;
+							}
+							&.hours-7 {
+								height: 350px;
+							}
+							&.hours-8 {
+								height: 400px;
+							}
+						}
+					}
+				}
+			}
+		}
+		@media screen and (max-width: 768px) {
+			.cal-month {
+				font-size: 20px;
+				font-weight: 600;
+			}
+			.cal-main {
+				overflow-x: auto;
+				.cal-date {
+					li {
+						> span {
+							span:nth-child(2), span:nth-child(3) {
+								display: none!important;
+							}
+						}
+					}
+				}
+				.cal-events {
+					@include flex;
+					@include flex-center;
+					width: 100%;
+					overflow-x: auto;
+					.cal-day {
+						min-width: 102px;
+					}
+				}
+			}
+		}
+	}
+	&.student {
+		.cal-week {
+			background: $smoke;
+			> div {
+				.cal-month {
+					background: $lake;
+					&.has-link {
+						a {
+							background: $lake;
+							color: white;
+							&:hover, &:focus {
+								background: mix($lake, white);
+								color: mix($lake, $slate);
+							}
+							&:active, &.active {
+								background: mix($lake, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+				.cal-time {
+					li {
+						span {
+							color: $slate;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&.bg-delivery {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $auburn;
+					&.has-link {
+						a {
+							background: $auburn;
+							color: white;
+							&:hover, &:focus {
+								background: mix($auburn, white);
+								color: mix($auburn, $slate);
+							}
+							&:active, &.active {
+								background: mix($auburn, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-freelancing {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $orange;
+					&.has-link {
+						a {
+							background: $orange;
+							color: white;
+							&:hover, &:focus {
+								background: mix($orange, white);
+								color: mix($orange, $slate);
+							}
+							&:active, &.active {
+								background: mix($orange, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-baking {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $gold;
+					&.has-link {
+						a {
+							background: $gold;
+							color: white;
+							&:hover, &:focus {
+								background: mix($gold, white);
+								color: mix($gold, $slate);
+							}
+							&:active, &.active {
+								background: mix($gold, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-photography {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $moola;
+					&.has-link {
+						a {
+							background: $moola;
+							color: white;
+							&:hover, &:focus {
+								background: mix($moola, white);
+								color: mix($moola, $slate);
+							}
+							&:active, &.active {
+								background: mix($moola, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-tech {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $azure;
+					&.has-link {
+						a {
+							background: $azure;
+							color: white;
+							&:hover, &:focus {
+								background: mix($azure, white);
+								color: mix($azure, $slate);
+							}
+							&:active, &.active {
+								background: mix($azure, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-household {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $cobalt;
+					&.has-link {
+						a {
+							background: $cobalt;
+							color: white;
+							&:hover, &:focus {
+								background: mix($cobalt, white);
+								color: mix($cobalt, $slate);
+							}
+							&:active, &.active {
+								background: mix($cobalt, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-athletic {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $eggplant;
+					&.has-link {
+						a {
+							background: $eggplant;
+							color: white;
+							&:hover, &:focus {
+								background: mix($eggplant, white);
+								color: mix($eggplant, $slate);
+							}
+							&:active, &.active {
+								background: mix($eggplant, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-academic {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $cerise;
+					&.has-link {
+						a {
+							background: $cerise;
+							color: white;
+							&:hover, &:focus {
+								background: mix($cerise, white);
+								color: mix($cerise, $slate);
+							}
+							&:active, &.active {
+								background: mix($cerise, $slate);
+								color: white;
+							}
+						}
+					}
+				}
 			}
 		}
 	}

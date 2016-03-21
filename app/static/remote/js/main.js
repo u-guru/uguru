@@ -73,19 +73,19 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
 
-  $provide.decorator("$exceptionHandler", function($delegate, $injector) {
+  // $provide.decorator("$exceptionHandler", function($delegate, $injector) {
 
-    return function(exception, cause) {
+  //   return function(exception, cause) {
 
-      Github = $injector.get("Github");
+  //     Github = $injector.get("Github");
 
-      Github.exceptionToGHIssue(exception, cause);
+  //     Github.exceptionToGHIssue(exception, cause);
 
-      // $delegate(exception, cause);
+  //     $delegate(exception, cause);
 
-    };
+  //   };
 
-  });
+  // });
 
 
 

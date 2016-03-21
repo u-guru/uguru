@@ -53,6 +53,9 @@
 					<li>
 						<input tabindex="1" class='chip tag-add' ng-model='requestForm.tags.empty_tag.content' ng-blur='requestForm.tags.add()' ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && requestForm.tags.add()" placeholder="+ add a tag" size="{{requestForm.tags.empty_tag.content.length || 10}}">
 					</li>
+                    <!-- <tag desktop="desktopMode" inner-text="'tag'" type="base"> </tag> -->
+                    <tag desktop="desktopMode" inner-text="" placeholder="+ add a tag" type="input"> </tag>
+
 				</ul>
 				<span class="error hide" ng-class="{'show': requestForm.tags.showError}">Tags must have more than 3 characters</span> 
 			</div>

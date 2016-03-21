@@ -19,7 +19,13 @@ function AdminContent($localstorage) {
         getMembers: getMembers,
         getComponents: getComponents,
         getLayouts: getLayouts,
-        getUserStories: getUserStories
+        getUserStories: getUserStories,
+        getBaseObjects: getBaseObjects,
+        getContainers: getContainers
+    }
+
+    function getContainers() {
+        return [];
     }
 
     function initAllContent() {
@@ -32,6 +38,160 @@ function AdminContent($localstorage) {
 
     function getMainLayout() {
         return mainLayout;
+    }
+
+    function getBaseObjects(scope) {
+
+        function onDropdownComponentSelected(section, dropdown_name, scope) {
+
+            return function(option, index) {
+                if (section === 'action_item' && dropdown_name === 'elementDropdown') {
+                    var selectedIndex = scope.page.createObjects[section][dropdown_name].selectedIndex;
+                    if (index === 0) {
+                        scope.page.createObjects[section][dropdown_name].options = ['assets', 'components', 'layouts', 'user_stories', 'containers'];
+                    } else
+                    if (index === 1) {
+                        scope.page.createObjects[section][dropdown_name].options = ['importing assets', 'moodboard setup', 'updating reference'];
+                    } else
+                    if (index === 2) {
+                        scope.page.createObjects[section][dropdown_name].options = ['docs', 'html_css_guide', 'colors', 'themes', 'animation'];
+                    } else
+                    if (index === 3) {
+                        scope.page.createObjects[section][dropdown_name].options = ['Uguru/Internal', 'Components', 'Fluid + Animation', 'Creative / Thematic', 'Library'];
+                    }
+                    return;
+                }
+
+                var newOptions = JSON.parse(JSON.stringify(scope.page[option]));
+                scope.page.createObjects[section][dropdown_name].key= 'ref';
+                console.log(newOptions);
+                scope.page.createObjects[section][dropdown_name].options = newOptions;
+            }
+
+            function updateParentsChildren(new_obj, scope) {
+                var newObjParents = new_obj.parents;
+                new_obj.parent_options = [];
+                for (var i = 0; i < newObjParents.length; i++) {
+                    allParentElements.push({
+                        type: newObjParents[i],
+
+                    })
+                }
+
+                var newObjChildren = new_obj.children;
+                new_obj.parent_options = [];
+                for (var i = 0; i < newObjParents.length; i++) {
+                    allParentElements.push({
+                        type: newObjParents[i],
+
+                    })
+                }
+            }
+        }
+
+
+        return {
+            components: {
+                dropdown: {
+                    options: ['asset', 'component', 'layout', 'user_story', 'container'],
+                    selectedIndex: 0
+                },
+                new: {
+                    type: null,
+                    parents: [],
+                    children: [],
+                    name: '',
+                    description: 'Add description here',
+                    tags: []
+                },
+                parents: {
+                    asset: ['container', 'components', 'layouts'],
+                    component: ['container', 'layouts'],
+                    container: ['layout'],
+                    layout: ['user_story']
+                },
+                children: {
+                    asset: [],
+                    component: ['components', 'assets'],
+                    container: ['components', 'assets'],
+                    layout: ['container' , 'components', 'assets'],
+                    user_story: ['layouts']
+                },
+                moodboard_refs: [],
+                name: '',
+                reference: '',
+                tags: []
+            },
+            action_item: {
+
+                sectionDropdown: {
+                    options: ['HTML Element', 'Admin Setup', 'Reference', 'Moodboard'],
+                    selectedIndex: 0,
+                    onOptionClick: onDropdownComponentSelected('action_item', 'elementDropdown', scope)
+                },
+                elementDropdown: {
+                    options: ['assets', 'components', 'layouts', 'user_stories', 'containers'],
+                    selectedIndex: 0,
+                    onOptionClick: onDropdownComponentSelected('action_item', 'subElementDropdown', scope)
+                },
+                subElementDropdown: {
+                    options: ['--------'],
+                    selectedIndex: 0
+                },
+                new: {
+                    name: '',
+                    description: '',
+                    priority: 0,
+                    assigned_to: [],
+                    status: '',
+                    date_created: '',
+                    status_history: [],
+                    tags: [],
+                    activated: ''
+                }
+            },
+            moodboard: {
+                elementDropdown: {
+                    options: ['assets', 'components', 'layouts', 'user_stories', 'containers'],
+                    selectedIndex: 0,
+                    onOptionClick: onDropdownComponentSelected('moodboard', 'subElementDropdown', scope)
+                },
+                subElementDropdown: {
+                    options: ['--------'],
+                    selectedIndex: 0
+                },
+                new: {
+                    name: '',
+                    description: '',
+                    url: [],
+                    tags: [],
+                    background_image_url: [],
+                    type: '',
+                    element: ''
+                },
+                type: ['Uguru/Internal', 'Components', 'Fluid + Animation', 'Creative / Thematic', 'Library'],
+            },
+            bug_ticket: {
+                elementDropdown: {
+                    options: ['assets', 'components', 'layouts', 'user_stories', 'containers'],
+                    selectedIndex: 0,
+                    onOptionClick: onDropdownComponentSelected('bug_ticket', 'subElementDropdown', scope)
+                },
+                subElementDropdown: {
+                    options: ['--------'],
+                    selectedIndex: 0
+                },
+                new: {
+                    subsection_type: '',
+                    description: '',
+                    steps_reproduce: '',
+                    assigned_to: [],
+                    priority: '',
+                    type: '',
+                    tags: []
+                }
+            }
+        }
     }
 
     function getUserStories() {
@@ -76,7 +236,7 @@ function AdminContent($localstorage) {
             },
             {
                 name: "Gabrielle",
-                profile_url: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200'
+                profile_url: 'https://uguru.me/static/web/images/team/gabrielle.png'
             },
             {
                 name: "Jason",
@@ -90,7 +250,7 @@ function AdminContent($localstorage) {
                 name: 'Girls',
                 profile_url: 'https://uguru.me/static/web/images/team/jeselle',
                 profile_url_1: 'https://uguru.me/static/web/images/team/jeselle.png',
-                profile_url_2: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200'
+                profile_url_2: 'https://uguru.me/static/web/images/team/gabrielle.png'
             }
         ]
     }
@@ -127,7 +287,7 @@ function AdminContent($localstorage) {
         }
 
         function generateMilestoneTabs(members) {
-            var tabOptions = [{title: 'All User <br> Stories'}];
+            var tabOptions = [{title: 'All'}];
             for (var i = 0; i < members.length; i++) {
                 var indexMember = members[i];
                 tabOptions.push({title: indexMember.name, profile_url: indexMember.profile_url, action_items: getActionItemsFor(indexMember.name)})
@@ -330,6 +490,26 @@ var componentList = [
         }
     },
     {
+        stage: 1,
+        ref: 'splash.dropdown',
+        cp_link: '',
+        name: "Dropdowns",
+        notes: 'Seems not 100% unified, could be more fluid with another sample tool',
+        sample: {
+            template: '<dropdown type="splash" ng-model="component.sample.scope"></dropdown>',
+            scope: {
+                options: ['apples', 'bananas', 'oranges'],
+                onOptionClick: function(option) {
+                    alert(JSON.stringify(option) + ' ' + 'selected!')
+                },
+                onToggle: function(value) {
+                    alert('Default toggle callback for toggle set to ' + value + '!');
+                },
+                selectedIndex: 0
+            }
+        }
+    },
+    {
         id: 2,
         ref: 'user-icon',
         name: 'User Icon',
@@ -337,7 +517,7 @@ var componentList = [
         sample: {
             template: '<user-icon size="component.sample.scope.size" url="component.sample.scope.profile_url"> </user-icon>',
             scope: {
-                profile_url: 'http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200',
+                profile_url: 'https://uguru.me/static/web/images/team/gabrielle.png',
                 size: 'medium'
             }
         },
@@ -411,20 +591,65 @@ var componentList = [
         ref: 'tag',
         name: 'Tag',
         sample: {
-            template: '<tag type="adlib" blank-num="1" tag-text="component.sample.scope.text" category="component.sample.scope.category"> </tag>',
+            template: ' <a id="blank-1" class="blank"> \
+                                <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">\
+                                    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16" stroke-dasharray="16,14"></rect>\
+                                </svg>\
+                                <b class="opacity-0" activate-on-class="blank-1-filled" class-on-activate="opacity-0-impt" class-on-load="fadeIn:anim">{{selectedCategory.splashData.madlib.template.p1}}</b>\
+                            </a>\
+                        <tag desktop="desktopMode" type="splash" blank-num="component.sample.scope.blankNum" inner-text="component.sample.scope.innerText" category="component.sample.scope.category"> </tag>',
             scope: {
-                text: 'Midnight',
-                category: {name: 'Academic', hex_color: 'academic', id:5},
+                innerText: 'Midnight',
+                desktopMode: true,
                 blankNum: 1,
+                category: {name: 'Academic', hex_color: 'academic', id:5},
                 animArgs: {
                     'li': {delays: ['class-on-activate-delay:1000', 'class-on-load-delay:1000']},
                 }
             }
         },
         bugs: [{girls: 'Whats the different conceptually between a tag and a chip?'}]
+    },
+    {
+        id: 10,
+        ref: 'request-tag-base',
+        name: 'Base Tag',
+        sample: {
+            template: '<tag desktop="desktopMode" type="base" inner-text="component.sample.scope.innerText" category="component.sample.scope.category"> </tag>',
+            scope: {
+                innerText: 'Base Tag',
+                category: {name: 'Academic', hex_color: 'academic', hex_class:'cerise', id:5}
+            }
+        },
+        bugs: [{girls: 'Whats the different conceptually between a tag and a chip?'}]
+    },
+    {
+        id: 11,
+        ref: 'request-tag-input',
+        name: 'Base Tag Input',
+        sample: {
+            template: '<tag desktop="desktopMode" type="input"  placeholder="{{component.sample.scope.placeholder}}" inner-text="component.sample.scope.innerText" category="component.sample.scope.category"> </tag>',
+            scope: {
+                innerText : '',
+                placeholder: 'Tag Input Try Me',
+                category: {name: 'Academic', hex_color: 'academic', hex_class:'azure', id:5},
+
+            }
+        },
+        bugs: [{girls: 'Whats the different conceptually between a tag and a chip?'}]
+    },
+    {
+        id: 12,
+        ref: 'svg-icon',
+        name: 'Svg Tag Template',
+        sample: {
+            template: '<svgi name="category.household" size="100x100" stroke="#FFFFFF"> </svgi>'
+        }
     }
 
 ]
+
+
 
 
 function getDefaultObjReferenceDict() {

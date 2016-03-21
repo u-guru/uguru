@@ -1,4 +1,4 @@
-<aside class="splash-sidebar-full bg-slate">
+<aside class="splash-sidebar-full">
     <nav class="splash-sidebar-menu" class-on-activate="null:inject.splash-sidebar-links a[class-on-activate]|activate" class-on-activate-delay="0" class-on-clear="fadeOut:animOut">
         <div>
             <header>
@@ -82,28 +82,17 @@
     </nav>
 
     <section class='splash-sidebar-content' ng-if='desktopMode'>
-        <div class="splash-sidebar-empty">
-            <div class="splash-sidebar-guru splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
-            <div class="splash-sidebar-message">
-                <svg viewBox="0 0 1304 354">
-                    <path d="M2,39.9999987 C2,35.5817214 5.58280463,32 10.0088717,32 L622,32 L652,2 L682,32 L1293.99113,32 C1298.41431,32 1302,35.5800296 1302,39.9999987 L1302,344.000001 C1302,348.418279 1298.41351,352 1293.99365,352 L10.0063476,352 C5.58456393,352 2,348.41997 2,344.000001 L2,39.9999987 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.5" fill="#40484B"></path>
-                    <text font-family="Source Sans Pro" font-size="96" font-weight="600" line-spacing="126" fill="#FFFFFF" text-anchor="middle">
-                        <tspan x="652" y="163">Wanna see something cool?</tspan>
-                        <tspan x="652" y="289">Check it out.</tspan>
-                    </text>
-                </svg>
-            </div>
-        </div>
-        <ion-pane id='cta-modal-pricing' ng-if='desktopMode' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index sidebar-modal' ng-include="::img_base + BASE + 'templates/pricing.html'"> </ion-pane>
+        <div class="splash-sidebar-empty"></div>
+        <ion-pane id='cta-modal-pricing' ng-if='desktopMode' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index sidebar-modal' ng-include="::img_base + BASE + 'templates/pricing.html'"> </ion-pane>
 
-        <ion-pane id='cta-modal-team' ng-if='desktopMode' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index sidebar-modal' ng-include="::img_base + BASE + 'templates/team.html'"> </ion-pane>
+        <ion-pane id='cta-modal-team' ng-if='desktopMode' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index sidebar-modal' ng-include="::img_base + BASE + 'templates/team.html'"> </ion-pane>
 
-        <ion-pane id='cta-modal-become-guru' ng-if='desktopMode' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index sidebar-modal' ng-if='user.university && user.university.id' ng-include="::img_base + BASE + 'templates/desktop.guru.onboarding.html'" ng-controller='DesktopBecomeGuruController'> </ion-pane>
+        <ion-pane id='cta-modal-become-guru' ng-if='desktopMode' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index sidebar-modal' ng-if='user.university && user.university.id' ng-include="::img_base + BASE + 'templates/desktop.guru.onboarding.html'" ng-controller='DesktopBecomeGuruController'> </ion-pane>
 
-        <ion-pane id='cta-modal-account' ng-if='desktopMode' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index sidebar-modal' ng-include="::img_base + BASE + 'templates/desktop.login.html'" ng-controller='AccountPageController'> </ion-pane>
+        <ion-pane id='cta-modal-account' ng-if='desktopMode' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index sidebar-modal' ng-include="::img_base + BASE + 'templates/desktop.login.html'" ng-controller='AccountPageController'> </ion-pane>
 
-        <ion-pane id='cta-modal-intercom' ng-if='desktopMode' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index sidebar-modal' ng-controller='AccountPageController'> </ion-pane>
+        <ion-pane id='cta-modal-intercom' ng-if='desktopMode' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index sidebar-modal' ng-controller='AccountPageController'> </ion-pane>
 
-        <ion-pane id='cta-modal-FAQ' ng-if='desktopMode' class='full-xy hide-display cta-modal bg-smoke fixed top-0 left-0 high-z-index sidebar-modal' ng-include="::img_base + BASE + 'templates/faq.html'"> </ion-pane>
+        <ion-pane id='cta-modal-FAQ' ng-if='desktopMode' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index sidebar-modal' ng-include="::img_base + BASE + 'templates/faq.html'"> </ion-pane>
     </section>
 </aside>

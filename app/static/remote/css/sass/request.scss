@@ -211,9 +211,195 @@
 			overflow: auto;
 		}
 	}
+	&.bg-academic {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cerise;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cerise;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $cerise;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $cerise;
+						}
+						&:before {
+							border-color: $cerise;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $cerise;
+						}
+					}
+				}
+			}
+		}
+	}
 }
-.angular-google-map,
-.angular-google-map-container {
+.angular-google-map, .angular-google-map-container {
 	height: calc(100%)!important;
 	width: calc(100%)!important;
 }
@@ -767,7 +953,7 @@
 								&:hover, &:focus {
 									background: mix($lake, white);
 									color: mix($lake, $slate);
-									border-bottom-color: rgba(mix($shamrock, $slate), .3);
+									border-bottom-color: rgba(mix($lake, $slate), .3);
 								}
 								&:active {
 									background: mix($lake, $slate);
@@ -1281,6 +1467,1551 @@
 					font-size: 64px;
 					font-weight: 900;
 					padding-bottom: 15px;
+				}
+			}
+		}
+	}
+}
+
+.bg-delivery {
+	.request-slide {
+		button.confirm {
+			background: rgba($auburn, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $auburn;
+									&:hover, &:focus {
+										background: mix($auburn, white);
+										color: mix($auburn, $slate);
+										border-bottom-color: rgba(mix($auburn, $slate), .3);
+									}
+									&:active {
+										background: mix($auburn, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $auburn;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color:  rgba($auburn, .5);
+							.instructions {
+								color: $auburn;
+							}
+						}
+						.uploaded {
+							color: $auburn;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $auburn;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($auburn, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($auburn, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($auburn,.98);
+							}
+							&:active {
+								background: rgba(lighten($auburn, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $auburn;
+							span {
+								&:first-child {
+									color: $auburn;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($auburn, white);
+								span {
+									&:first-child {
+										color: mix($auburn, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($auburn, $slate);
+								border-color: mix($auburn, white);
+								span {
+									&:first-child {
+										color: mix($auburn, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $auburn;
+								&:hover, &:focus {
+									background: mix($auburn, white);
+									color: mix($auburn, $slate);
+								}
+								&:active {
+									background: mix($auburn, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $auburn;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $auburn;
+						box-shadow: 0 1px 0 0 $auburn;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $auburn;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			header {
+				background: $auburn;
+			}
+			> div {
+				> a {
+					&:hover, &:focus {
+						background: rgba($auburn, .2);
+					}
+				}
+				.confirm-course {
+					&:hover, &:focus {
+						background: rgba($auburn, .5);
+					}
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $auburn;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $auburn;
+						h1 {
+							color: $auburn;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						background: mix(lighten($slate, 25%), $auburn, 80%);
+						&:before {
+							border-right-color: mix(lighten($slate, 25%), $auburn, 80%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.bg-freelancing {
+	.request-slide {
+		button.confirm {
+			background: rgba($orange, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $orange;
+									&:hover, &:focus {
+										background: mix($orange, white);
+										color: mix($orange, $slate);
+										border-bottom-color: rgba(mix($orange, $slate), .3);
+									}
+									&:active {
+										background: mix($orange, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $orange;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color: rgba($orange, .5);
+							.instructions {
+								color: $orange;
+							}
+						}
+						.uploaded {
+							color: $orange;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $orange;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($orange, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($orange, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($orange,.98);
+							}
+							&:active {
+								background: rgba(lighten($orange, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $orange;
+							span {
+								&:first-child {
+									color: $orange;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($orange, white);
+								span {
+									&:first-child {
+										color: mix($orange, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($orange, $slate);
+								border-color: mix($orange, white);
+								span {
+									&:first-child {
+										color: mix($orange, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $orange;
+								&:hover, &:focus {
+									background: mix($orange, white);
+									color: mix($orange, $slate);
+								}
+								&:active {
+									background: mix($orange, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $orange;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $orange;
+						box-shadow: 0 1px 0 0 $orange;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $orange;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			header {
+				background: $orange;
+			}
+			> div {
+				> a {
+					&:hover, &:focus {
+						background: rgba($orange, .2);
+					}
+				}
+				.confirm-course {
+					&:hover, &:focus {
+						background: rgba($orange, .5);
+					}
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $orange;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $orange;
+						h1 {
+							color: $orange;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						background: mix(lighten($slate, 25%), $orange, 80%);
+						&:before {
+							border-right-color: mix(lighten($slate, 25%), $orange, 80%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.bg-baking {
+	.request-slide {
+		button.confirm {
+			background: rgba($gold, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $gold;
+									&:hover, &:focus {
+										background: mix($gold, white);
+										color: mix($gold, $slate);
+										border-bottom-color: rgba(mix($gold, $slate), .3);
+									}
+									&:active {
+										background: mix($gold, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $gold;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color: rgba($gold, .5);
+							.instructions {
+								color: $gold;
+							}
+						}
+						.uploaded {
+							color: $gold;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $gold;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($gold, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($gold, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($gold,.98);
+							}
+							&:active {
+								background: rgba(lighten($gold, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $gold;
+							span {
+								&:first-child {
+									color: $gold;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($gold, white);
+								span {
+									&:first-child {
+										color: mix($gold, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($gold, $slate);
+								border-color: mix($gold, white);
+								span {
+									&:first-child {
+										color: mix($gold, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $gold;
+								&:hover, &:focus {
+									background: mix($gold, white);
+									color: mix($gold, $slate);
+								}
+								&:active {
+									background: mix($gold, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $gold;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $gold;
+						box-shadow: 0 1px 0 0 $gold;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $gold;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			header {
+				background: $gold;
+			}
+			> div {
+				> a {
+					&:hover, &:focus {
+						background: rgba($gold, .2);
+					}
+				}
+				.confirm-course {
+					&:hover, &:focus {
+						background: rgba($gold, .5);
+					}
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $gold;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $gold;
+						h1 {
+							color: $gold;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						background: mix(lighten($slate, 25%), $gold, 80%);
+						&:before {
+							border-right-color: mix(lighten($slate, 25%), $gold, 80%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.bg-photography {
+	.request-slide {
+		button.confirm {
+			background: rgba($moola, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $moola;
+									&:hover, &:focus {
+										background: mix($moola, white);
+										color: mix($moola, $slate);
+										border-bottom-color: rgba(mix($moola, $slate), .3);
+									}
+									&:active {
+										background: mix($moola, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $moola;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color: rgba($moola, .5);
+							.instructions {
+								color: $moola;
+							}
+						}
+						.uploaded {
+							color: $moola;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $moola;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($moola, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($moola, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($moola,.98);
+							}
+							&:active {
+								background: rgba(lighten($moola, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $moola;
+							span {
+								&:first-child {
+									color: $moola;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($moola, white);
+								span {
+									&:first-child {
+										color: mix($moola, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($moola, $slate);
+								border-color: mix($moola, white);
+								span {
+									&:first-child {
+										color: mix($moola, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $moola;
+								&:hover, &:focus {
+									background: mix($moola, white);
+									color: mix($moola, $slate);
+								}
+								&:active {
+									background: mix($moola, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $moola;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $moola;
+						box-shadow: 0 1px 0 0 $moola;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $moola;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			header {
+				background: $moola;
+			}
+			> div {
+				> a {
+					&:hover, &:focus {
+						background: rgba($moola, .2);
+					}
+				}
+				.confirm-course {
+					&:hover, &:focus {
+						background: rgba($moola, .5);
+					}
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $moola;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $moola;
+						h1 {
+							color: $moola;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						background: mix(lighten($slate, 25%), $moola, 80%);
+						&:before {
+							border-right-color: mix(lighten($slate, 25%), $moola, 80%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.bg-tech {
+	.request-slide {
+		button.confirm {
+			background: rgba($azure, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $azure;
+									&:hover, &:focus {
+										background: mix($azure, white);
+										color: mix($azure, $slate);
+										border-bottom-color: rgba(mix($azure, $slate), .3);
+									}
+									&:active {
+										background: mix($azure, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $azure;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color: rgba($azure, .5);
+							.instructions {
+								color: $azure;
+							}
+						}
+						.uploaded {
+							color: $azure;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $azure;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($azure, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($azure, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($azure,.98);
+							}
+							&:active {
+								background: rgba(lighten($azure, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $azure;
+							span {
+								&:first-child {
+									color: $azure;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($azure, white);
+								span {
+									&:first-child {
+										color: mix($azure, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($azure, $slate);
+								border-color: mix($azure, white);
+								span {
+									&:first-child {
+										color: mix($azure, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $azure;
+								&:hover, &:focus {
+									background: mix($azure, white);
+									color: mix($azure, $slate);
+								}
+								&:active {
+									background: mix($azure, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $azure;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $azure;
+						box-shadow: 0 1px 0 0 $azure;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $azure;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			header {
+				background: $azure;
+			}
+			> div {
+				> a {
+					&:hover, &:focus {
+						background: rgba($azure, .2);
+					}
+				}
+				.confirm-course {
+					&:hover, &:focus {
+						background: rgba($azure, .5);
+					}
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $azure;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $azure;
+						h1 {
+							color: $azure;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						background: mix(lighten($slate, 25%), $azure, 80%);
+						&:before {
+							border-right-color: mix(lighten($slate, 25%), $azure, 80%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.bg-household {
+	.request-slide {
+		button.confirm {
+			background: rgba($cobalt, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $cobalt;
+									&:hover, &:focus {
+										background: mix($cobalt, white);
+										color: mix($cobalt, $slate);
+										border-bottom-color: rgba(mix($cobalt, $slate), .3);
+									}
+									&:active {
+										background: mix($cobalt, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $cobalt;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color: rgba($cobalt, .5);
+							.instructions {
+								color: $cobalt;
+							}
+						}
+						.uploaded {
+							color: $cobalt;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $cobalt;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($cobalt, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($cobalt, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($cobalt,.98);
+							}
+							&:active {
+								background: rgba(lighten($cobalt, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $cobalt;
+							span {
+								&:first-child {
+									color: $cobalt;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($cobalt, white);
+								span {
+									&:first-child {
+										color: mix($cobalt, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($cobalt, $slate);
+								border-color: mix($cobalt, white);
+								span {
+									&:first-child {
+										color: mix($cobalt, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $cobalt;
+								&:hover, &:focus {
+									background: mix($cobalt, white);
+									color: mix($cobalt, $slate);
+								}
+								&:active {
+									background: mix($cobalt, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $cobalt;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $cobalt;
+						box-shadow: 0 1px 0 0 $cobalt;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $cobalt;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			header {
+				background: $cobalt;
+			}
+			> div {
+				> a {
+					&:hover, &:focus {
+						background: rgba($cobalt, .2);
+					}
+				}
+				.confirm-course {
+					&:hover, &:focus {
+						background: rgba($cobalt, .5);
+					}
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $cobalt;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $cobalt;
+						h1 {
+							color: $cobalt;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						background: mix(lighten($slate, 25%), $cobalt, 80%);
+						&:before {
+							border-right-color: mix(lighten($slate, 25%), $cobalt, 80%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.bg-athletic {
+	.request-slide {
+		button.confirm {
+			background: rgba($eggplant, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $eggplant;
+									&:hover, &:focus {
+										background: mix($eggplant, white);
+										color: mix($eggplant, $slate);
+										border-bottom-color: rgba(mix($eggplant, $slate), .3);
+									}
+									&:active {
+										background: mix($eggplant, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $eggplant;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color: rgba($eggplant, .5);
+							.instructions {
+								color: $eggplant;
+							}
+						}
+						.uploaded {
+							color: $eggplant;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $eggplant;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($eggplant, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($eggplant, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($eggplant,.98);
+							}
+							&:active {
+								background: rgba(lighten($eggplant, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $eggplant;
+							span {
+								&:first-child {
+									color: $eggplant;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($eggplant, white);
+								span {
+									&:first-child {
+										color: mix($eggplant, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($eggplant, $slate);
+								border-color: mix($eggplant, white);
+								span {
+									&:first-child {
+										color: mix($eggplant, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $eggplant;
+								&:hover, &:focus {
+									background: mix($eggplant, white);
+									color: mix($eggplant, $slate);
+								}
+								&:active {
+									background: mix($eggplant, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $eggplant;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $eggplant;
+						box-shadow: 0 1px 0 0 $eggplant;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $eggplant;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			header {
+				background: $eggplant;
+			}
+			> div {
+				> a {
+					&:hover, &:focus {
+						background: rgba($eggplant, .2);
+					}
+				}
+				.confirm-course {
+					&:hover, &:focus {
+						background: rgba($eggplant, .5);
+					}
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $eggplant;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $eggplant;
+						h1 {
+							color: $eggplant;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						background: mix(lighten($slate, 25%), $eggplant, 80%);
+						&:before {
+							border-right-color: mix(lighten($slate, 25%), $eggplant, 80%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.bg-academic {
+	.request-slide {
+		button.confirm {
+			background: rgba($cerise, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $cerise;
+									&:hover, &:focus {
+										background: mix($cerise, white);
+										color: mix($cerise, $slate);
+										border-bottom-color: rgba(mix($cerise, $slate), .3);
+									}
+									&:active {
+										background: mix($cerise, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $cerise;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color: rgba($cerise, .5);
+							.instructions {
+								color: $cerise;
+							}
+						}
+						.uploaded {
+							color: $cerise;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $cerise;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($cerise, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($cerise, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($cerise,.98);
+							}
+							&:active {
+								background: rgba(lighten($cerise, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $cerise;
+							span {
+								&:first-child {
+									color: $cerise;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($cerise, white);
+								span {
+									&:first-child {
+										color: mix($cerise, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($cerise, $slate);
+								border-color: mix($cerise, white);
+								span {
+									&:first-child {
+										color: mix($cerise, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $cerise;
+								&:hover, &:focus {
+									background: mix($cerise, white);
+									color: mix($cerise, $slate);
+								}
+								&:active {
+									background: mix($cerise, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $cerise;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $cerise;
+						box-shadow: 0 1px 0 0 $cerise;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $cerise;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			header {
+				background: $cerise;
+			}
+			> div {
+				> a {
+					&:hover, &:focus {
+						background: rgba($cerise, .2);
+					}
+				}
+				.confirm-course {
+					&:hover, &:focus {
+						background: rgba($cerise, .5);
+					}
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $cerise;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $cerise;
+						h1 {
+							color: $cerise;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						background: mix(lighten($slate, 25%), $cerise, 80%);
+						&:before {
+							border-right-color: mix(lighten($slate, 25%), $cerise, 80%);
+						}
+					}
 				}
 			}
 		}

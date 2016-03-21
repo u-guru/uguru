@@ -248,7 +248,7 @@ angular.module('uguru.components', [])
         category: '=',
         blankNum: '=',
         animArgs: '=',
-        // type: '=',
+        placeholder: '@',
         desktopMode: '=desktop',
     },
     restrict: 'E',
@@ -258,15 +258,14 @@ angular.module('uguru.components', [])
       if (attr.type && attr.type.toLowerCase() === 'splash') {
         scope.type ='splash';
       }
+
       if (scope.blankNum && scope.blankNum.length) {
         scope.blankNum = 1
       }
-      // $compile(element.contents())(scope);
 
-      // scope.toggle = function() {
-      //   scope.dropdown.active = !scope.dropdown.active;
-      // }
-      scope.resetMadLibBlankIfActive=function($event){
+      
+      scope.resetMadLibBlankIfActive = function($event){
+          // console.log("WTF")
           var indexTranslateElem = $event.target.parentNode;
           var hasBlankOne = indexTranslateElem.className.indexOf('translate-blank-1') > -1;
           var hasBlankTwo = indexTranslateElem.className.indexOf('translate-blank-2') > -1;

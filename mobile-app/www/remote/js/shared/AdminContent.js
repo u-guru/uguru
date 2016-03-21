@@ -591,7 +591,13 @@ var componentList = [
         ref: 'tag',
         name: 'Tag',
         sample: {
-            template: '<tag desktop="desktopMode" type="splash" blank-num="component.sample.scope.blankNum" inner-text="component.sample.scope.innerText" category="component.sample.scope.category"> </tag>',
+            template: ' <a id="blank-1" class="blank"> \
+                                <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">\
+                                    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16" stroke-dasharray="16,14"></rect>\
+                                </svg>\
+                                <b class="opacity-0" activate-on-class="blank-1-filled" class-on-activate="opacity-0-impt" class-on-load="fadeIn:anim">{{selectedCategory.splashData.madlib.template.p1}}</b>\
+                            </a>\
+                        <tag desktop="desktopMode" type="splash" blank-num="component.sample.scope.blankNum" inner-text="component.sample.scope.innerText" category="component.sample.scope.category"> </tag>',
             scope: {
                 innerText: 'Midnight',
                 desktopMode: true,
@@ -609,9 +615,9 @@ var componentList = [
         ref: 'request-tag-base',
         name: 'Base Tag',
         sample: {
-            template: '<tag desktop="desktopMode" category="component.sample.scope.category" inner-text="component.sample.scope.innerText" type="base"> </tag>',
+            template: '<tag desktop="desktopMode" type="base" inner-text="component.sample.scope.innerText" category="component.sample.scope.category"> </tag>',
             scope: {
-                innerText: 'Request Tab',
+                innerText: 'Base Tag',
                 category: {name: 'Academic', hex_color: 'academic', hex_class:'cerise', id:5}
             }
         },
@@ -619,12 +625,13 @@ var componentList = [
     },
     {
         id: 11,
-        ref: 'request-tag-base',
+        ref: 'request-tag-input',
         name: 'Base Tag Input',
         sample: {
-            template: '<tag desktop="desktopMode" category="component.sample.scope.category" inner-text="component.sample.scope.innerText" type="input"> </tag>',
+            template: '<tag desktop="desktopMode" type="input"  placeholder="{{component.sample.scope.placeholder}}" inner-text="component.sample.scope.innerText" category="component.sample.scope.category"> </tag>',
             scope: {
-                innerText: 'Tag Input Try Me',
+                innerText : '',
+                placeholder: 'Tag Input Try Me',
                 category: {name: 'Academic', hex_color: 'academic', hex_class:'azure', id:5},
 
             }
