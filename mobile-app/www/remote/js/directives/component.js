@@ -253,11 +253,12 @@ angular.module('uguru.components', [])
       if (attr.type && attr.type.toLowerCase() === 'splash') {
         scope.type ='splash';
       }
+
       if (scope.blankNum && scope.blankNum.length) {
         scope.blankNum = 1
       }
-      // $compile(element.contents())(scope);
 
+      
       scope.resetMadLibBlankIfActive = function($event){
           // console.log("WTF")
           var indexTranslateElem = $event.target.parentNode;
