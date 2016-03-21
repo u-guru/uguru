@@ -1,214 +1,208 @@
 <!--Close button-->
-    <a ng-click='hideAdminItemCTA()' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
-        <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5">
+    <a ng-click='hideAdminItemCTA()' class='absolute top-0 right-0 cta-modal-close close-button high-z-index'>
+        <svg viewBox="0 0 100 100" ng-if='desktopMode' stroke='#FFFFFF' stroke-width="5">
             <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
         </svg>
     </a>
 
-    <div class='flex-wrap-center full-xy absolute top-0 left-0 flex-stretch bg-charcoal'>
-        <div class='bg-robin txt-white full-x flex-wrap-center relative' style='height:25%;'>
-            <h1 class='full-x p30bottom txt-white text-center weight-600 txt-36'>I want to create a </h1>
-            <div class='tab-container bg-robin absolute bottom-0 left-0'>
+    <div id="admin-add-edit" class='full-xy absolute top-0 left-0 bg-charcoal'>
+        <header class='bg-rocket flex-wrap-center one-fourth'>
+            <h2 class='p30bottom weight-600 txt-36'>I want to create a </h2>
+            <div class='tab-container bg-rocket absolute bottom-0 left-0'>
                 <tabs options="admin_item.dropdown_options.options" index='admin_item.dropdown_options.index'> </tabs>
             </div>
-        </div>
-        <div class='flex-wrap-center bg-taupe flex-stretch relative full-x' style='height:75%;'>
-            <div class='absolute full-xy flex-wrap-start left-0 top-0 p15xy overflow-auto' ng-hide='admin_item.dropdown_options.index'>
-                <form class="admin-update full-x ugrid-2">
-                    <div>
-                        <h1 class="full-x weight-600 p10bottom">Select a Component Type</h1>
-                        <dropdown ng-model="page.createObjects.components.dropdown"> </dropdown>
-                        <!--    didn't know what you wanted for these so i dropped in textareas,
-                                these can easily be replaced with dropdowns or checklist or whatever you want -->
+        </header>
+        <div class='bg-slate three-fourths'>
+            <!-- HTML ELEMENT -->
+            <form class="admin-add-edit-form" ng-hide='admin_item.dropdown_options.index'>
+                <ul>
+                    <li>
+                        <h1 class="m10bottom">Select a Component Type</h1>
+                        <dropdown class="full-x" ng-model="page.createObjects.components.dropdown"> </dropdown>
                         <div ng-if='page.createObjects.components.dropdown.options[page.createObjects.components.dropdown.selectedIndex] !== "asset"'>
-                            <h1 class="full-x weight-600 p10bottom m15top"> Tap any children {{page.createObjects.components.children[page.createObjects.components.dropdown.options[page.createObjects.components.dropdown.selectedIndex]]}}</h1>
-                            <textarea small></textarea>
+                            <label for="admin-form-html-children">
+                                <h1 class="m15top">Tap any children</h1>
+                                <h2 class="m10bottom">{{page.createObjects.components.children[page.createObjects.components.dropdown.options[page.createObjects.components.dropdown.selectedIndex]]}}</h2>
+                            </label>
+                            <textarea id="admin-form-html-children" small></textarea>
                         </div>
                         <div ng-if='page.createObjects.components.dropdown.options[page.createObjects.components.dropdown.selectedIndex] !== "user_story"'>
-                            <h1 class="full-x weight-600 p10bottom m15top">Tap any parents <br> {{page.createObjects.components.parents[page.createObjects.components.dropdown.options[page.createObjects.components.dropdown.selectedIndex]]}}</h1>
-                            <textarea small></textarea>
+                            <label for="admin-form-html-parent">
+                                <h1 class="m15top">Tap any parents</h1>
+                                <h2 class="m10bottom">{{page.createObjects.components.parents[page.createObjects.components.dropdown.options[page.createObjects.components.dropdown.selectedIndex]]}}</h2>
+                            </label>
+                            <textarea id="admin-form-html-parent" small></textarea>
                         </div>
-                    </div>
-                    <div>
-                        <h1 class="full-x weight-600 p10bottom">Name</h1>
-                        <input class="full" placeholder="Give a simple name to component" type="text" />
-                        <h1 class="full-x weight-600 p10bottom m15top">Description</h1>
-                        <textarea ng-model="page.createObjects.components.new.description" placeholder="Provide more details why this component is necessary"></textarea>
-                    </div>
-                    <div class='full-x'>
-                        <h1 class='full-x weight-600 p20xy m15top text-center' ng-if='page.createObjects.components.new.tags.length > 0'>
-                            {{page.createObjects.components.new.tags.length}} total tags
-                        </h1>
-                        <h1 class='full-x weight-600 p20xy m15top text-center' ng-if='page.createObjects.components.new.tags.length === 0'>
-                            Add tags below
-                        </h1>
-                        <div class="tag-list m15top p20xy flex-wrap-center">
-                            <!-- use tag list from request -->
+                    </li>
+                    <li>
+                        <label for="admin-form-html-name">
+                            <h1 class="m10bottom">Name</h1>
+                        </label>
+                        <input id="admin-form-html-name" class="full" placeholder="Give a simple name to component" type="text" />
+                        <label for="admin-form-html-desc">
+                            <h1 class="m15top-m10bottom">Description</h1>
+                        </label>
+                        <textarea id="admin-form-html-desc" ng-model="page.createObjects.components.new.description" placeholder="Provide more details why this component is necessary"></textarea>
+                        <label for="admin-form-html-tag">
+                            <h1 class='m15top-m10bottom' ng-if='page.createObjects.components.new.tags.length > 0'>
+                                {{page.createObjects.components.new.tags.length}} Tag(s) Added
+                            </h1>
+                            <h1 class='m15top-m10bottom' ng-if='page.createObjects.components.new.tags.length === 0'>
+                                Add Tags
+                            </h1>
+                        </label>
+                        <div class="tag-list">
                             <span ng-if='page.createObjects.components.new.tags.length' ng-repeat="tag in page.createObjects.components.new.tags track by $index" class='chip tag-add flex-wrap-center'>
-                                <input class='m10xy full-x' ng-model='tag'  placeholder="add text here" />
-                                <a class='full-x txt-center mbottom10' style='margin-bottom:-30px;' ng-click="page.createObjects.components.new.tags.splice($index, 1)">Remove</a>
+                                <input id="admin-form-html-tag" ng-model='tag' size="15" placeholder="add text here" />
+                                <a ng-click="page.createObjects.components.new.tags.splice($index, 1)">&times;</a>
                             </span>
-                            <a class="chip" ng-click="page.createObjects.components.new.tags.push('')">+ New Tag </a></span>
+                            <a class="chip" ng-click="page.createObjects.components.new.tags.push('')">+ new tag</a></span>
                         </div>
-                    </div>
-                    <div class="full-x flex-center absolute bottom-0 left-0">
-                        <button class="bg-robin">Submit</button>
-                    </div>
-                </form>
-            </div>
-            <div class='absolute full-xy flex-wrap-start left-0 top-0 p15xy overflow-auto' ng-hide='admin_item.dropdown_options.index !== 1'>
-                <form class="admin-update full-x ugrid-2 flex-wrap-center flex-stretch">
-                    <div class='relative full-y'>
-                        <div class='full-x ugrid-2 p20xy'>
-                            <div>
-                                <h1 class="text-center full-x weight-600 p10bottom">Element Type</h1>
-                                <dropdown style='width:100%;' ng-model="page.createObjects.moodboard.elementDropdown"> </dropdown>
-                            </div>
-                            <div>
-                                <h1 class="text-center full-x weight-600 p10bottom">Moodboard Type</h1>
-                                <dropdown style='width:100%;' ng-model="page.createObjects.moodboard.subElementDropdown"> </dropdown>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h1 class="full-x weight-600 p10bottom">Name</h1>
-                        <input class="full" type="text" ng-model="page.createObjects.moodboard.new.name" placeholder="Try to name similar to Uguru ideal element" />
-                        <h1 class="full-x weight-600 p10top p10bottom">URL</h1>
+                    </li>
+                </ul>
+                <button class="admin-add-edit-submit bg-rocket">Submit</button>
+            </form>
+            
+            <!-- MOODBOARD -->
+            <form class="admin-add-edit-form" ng-hide='admin_item.dropdown_options.index !== 1'>
+                <ul>
+                    <li>
+                        <h1 class="m10bottom">Element Type</h1>
+                        <dropdown class="full-x" ng-model="page.createObjects.moodboard.elementDropdown"> </dropdown>
+                        <h1 class="m15top-m10bottom">Moodboard Type</h1>
+                        <dropdown class="full-x" ng-model="page.createObjects.moodboard.subElementDropdown"> </dropdown>
+                        <h1 class="m15top-m10bottom">URL</h1>
                         <input class="full" type="text" ng-model="page.createObjects.moodboard.new.url"/>
-                        <h1 class="full-x weight-600 p10bottom m15top">Description</h1>
+                    </li>
+                    <li>
+                        <h1 class="m10bottom">Name</h1>
+                        <input class="full" type="text" ng-model="page.createObjects.moodboard.new.name" placeholder="Try to name similar to Uguru ideal element" />
+                        <h1 class="m10bottom-m15top">Description</h1>
                         <textarea ng-model="page.createObjects.moodboard.new.description"></textarea>
-                    </div>
-                </form>
-                <div class='full-x'>
-                        <h1 class='full-x weight-600 p20xy m15top text-center' ng-if='page.createObjects.moodboard.new.tags.length > 0'>
-                            {{page.createObjects.moodboard.new.tags.length}} total tags
-                        </h1>
-                        <h1 class='full-x weight-600 p20xy m15top text-center' ng-if='page.createObjects.moodboard.new.tags.length === 0'>
-                            Add tags below
-                        </h1>
-                        <div class="tag-list m15top p20xy flex-wrap-center">
-                            <!-- use tag list from request -->
-                            <span ng-if='page.createObjects.moodboard.new.tags.length' ng-repeat="tag in page.createObjects.moodboard.new.tags track by $index" class='chip tag-add flex-wrap-center'>
-                                <input class='m10xy full-x' ng-model='tag'  placeholder="add text here" />
-                                <a class='full-x txt-center mbottom10' style='margin-bottom:-30px;' ng-click="page.createObjects.moodboard.new.tags.splice($index, 1)">Remove</a>
+                        <label for="admin-form-moodboard-tag">
+                            <h1 class='m10bottom-m15top' ng-if='page.createObjects.moodboard.new.tags.length > 0'>
+                                {{page.createObjects.moodboard.new.tags.length}} Tag(s) Added
+                            </h1>
+                            <h1 class='m10bottom-m15top' ng-if='page.createObjects.moodboard.new.tags.length === 0'>
+                                Add Tags
+                            </h1>
+                        </label>
+                        <div class="tag-list">
+                            <span ng-if='page.createObjects.moodboard.new.tags.length' ng-repeat="tag in page.createObjects.moodboard.new.tags track by $index" class='chip tag-add'>
+                                <input id="admin-form-moodboard-tag" ng-model='tag' size="15" placeholder="add text here" />
+                                <a ng-click="page.createObjects.moodboard.new.tags.splice($index, 1)">&times;</a>
                             </span>
-                            <a class="chip" ng-click="page.createObjects.moodboard.new.tags.push('')">+ New Tag </a></span>
+                            <a class="chip" ng-click="page.createObjects.moodboard.new.tags.push('')">+ new tag</a></span>
                         </div>
-                </div>
-                <div class="full-x flex-center absolute bottom-0 left-0">
-                    <button class="bg-robin">Submit</button>
-                </div>
+                    </li>
+                </ul>
+                <button class="admin-add-edit-submit bg-rocket">Submit</button>
+            </form>
 
-            </div>
-            <div class='absolute full-xy flex-wrap-start left-0 top-0 p15xy overflow-auto' ng-hide='admin_item.dropdown_options.index !== 2'>
-                <form class="admin-update full-x ugrid-2">
-                    <div class='relative full-y'>
-                        <div class='full-x ugrid-2'>
-                            <div class='dropdown-1'>
-                                <h4 class='text-center p20xy weight-600'> Select an element </h4>
-                                <dropdown style='width:100%;' ng-model="page.createObjects.bug_ticket.elementDropdown"> </dropdown>
-                            </div>
-                            <div class='dropdown-2'>
-                                <h4 class='text-center p20xy weight-600'> Select a sub element </h4>
-                                <dropdown style='width:100%;' ng-model="page.createObjects.bug_ticket.subElementDropdown"> </dropdown>
-                            </div>
-                        </div>
-                        <div class='full-x p20xy'>
-                            <h1 class="full-x weight-600 p10bottom">Title</h1>
-                            <input class="full" type="text" ng-model="page.createObjects.bug_ticket.title" />
-                            <h1 class="full-x weight-600 p10bottom m15top">Short Description</h1>
-                            <textarea ng-model="page.createObjects.bug_ticket.description"></textarea>
-                        </div>
-                    </div>
-                    <div class='bg-charcoal -50p text-center'>
-                        <h1 class="full-x weight-600 p10bottom m15top">Steps to reproduce</h1>
-                        <textarea ng-model="page.createObjects.bug_ticket.steps_reproduce"></textarea>
-                        <h1 class="full-x weight-600 p10bottom m15top">Assign To</h1>
-                        <div class='p20xy ugrid-4'>
-                            <div class='flex-center flex-wrap p20xy' ng-repeat="member in page.team_members.slice(0,4)">
-                                <user-icon class='p20xy' size="-64" url="member.profile_url" ></user-icon>
-                                <small class='full-x text-center weight-400 uppercase p10xy'>
-                                    {{member.name}}
-                                </small>
+            <!-- BUG TICKET -->
+            <form class="admin-add-edit-form" ng-hide='admin_item.dropdown_options.index !== 2'>
+                <ul>
+                    <li class="full-x">
+                        <div class="ugrid-2 bg-charcoal padding-15-grid flex-center">
+                            <label>
+                                <h1>Assign To</h1>
+                            </label>
+                            <div class='flex-right'>
+                                <a class="padding-15-half" ng-repeat="member in page.team_members.slice(0,4)">
+                                    <user-icon size="-32" url="member.profile_url" ></user-icon>
+                                </a>
                             </div>
                         </div>
-                    </div>
-                </form>
-                <div class='full-x'>
-                        <h1 class='full-x weight-600 p20xy m15top text-center' ng-if='page.createObjects.bug_ticket.new.tags.length > 0'>
-                            {{page.createObjects.bug_ticket.new.tags.length}} total tags
-                        </h1>
-                        <h1 class='full-x weight-600 p20xy m15top text-center' ng-if='page.createObjects.bug_ticket.new.tags.length === 0'>
-                            Add tags below
-                        </h1>
-                        <div class="tag-list m15top p20xy flex-wrap-center">
-                            <!-- use tag list from request -->
-                            <span ng-if='page.createObjects.bug_ticket.new.tags.length' ng-repeat="tag in page.createObjects.bug_ticket.new.tags track by $index" class='chip tag-add flex-wrap-center'>
-                                <input class='m10xy full-x' ng-model='tag'  placeholder="add text here" />
-                                <a class='full-x txt-center mbottom10' style='margin-bottom:-30px;' ng-click="page.createObjects.moodboard.new.bug_ticket.splice($index, 1)">Remove</a>
+                    </li>
+                    <li>
+                        <label>
+                            <h1 class="m10bottom">Select an element</h1>
+                        </label>
+                        <dropdown class="full-x" ng-model="page.createObjects.bug_ticket.elementDropdown"> </dropdown>
+                        <label>
+                            <h1 class="m10bottom-m15top">Select a sub element </h1>
+                        </label>
+                        <dropdown class="full-x" ng-model="page.createObjects.bug_ticket.subElementDropdown"> </dropdown>
+                        <label>
+                            <h1 class="m10bottom-m15top">Steps to reproduce</h1>
+                        </label>
+                        <textarea small ng-model="page.createObjects.bug_ticket.steps_reproduce"></textarea>
+                    </li>
+                    <li>
+                        <label>
+                            <h1 class="m10bottom">Title</h1>
+                        </label>
+                        <input class="full" type="text" ng-model="page.createObjects.bug_ticket.title" />
+                        <label>
+                            <h1 class="m10bottom-m15top">Short Description</h1>
+                        </label>
+                        <textarea small ng-model="page.createObjects.bug_ticket.description"></textarea>
+                        <label class="p10bottom-p15top">
+                            <h1 ng-if='page.createObjects.bug_ticket.new.tags.length > 0'>
+                                {{page.createObjects.bug_ticket.new.tags.length}} Tag(s) Added
+                            </h1>
+                            <h1 ng-if='page.createObjects.bug_ticket.new.tags.length === 0'>
+                                Add Tags Below
+                            </h1>
+                        </label>
+                        <div class="tag-list">
+                            <span ng-if='page.createObjects.bug_ticket.new.tags.length' ng-repeat="tag in page.createObjects.bug_ticket.new.tags track by $index" class='chip tag-add'>
+                                <input ng-model='tag' size-"15" placeholder="add text here" />
+                                <a ng-click="page.createObjects.bug_ticket.new.tags.splice($index, 1)">&times;</a>
                             </span>
                             <a class="chip" ng-click="page.createObjects.bug_ticket.new.tags.push('')">+ New Tag </a></span>
                         </div>
-                </div>
-                <div class="full-x flex-center absolute bottom-0 left-0">
-                    <button class="bg-robin">Create</button>
-                </div>
-            </div>
-            <div class='absolute full-xy flex-wrap-center left-0 top-0' ng-hide='admin_item.dropdown_options.index !== 3'>
-                <form class="admin-update full-x ugrid-2">
-                    <div class='relative full-y'>
-                        <div class='full-x ugrid-3'>
-                            <div class='dropdown-1'>
-                                <h4 class='text-center p20xy weight-600'> Action type </h4>
-                                <dropdown style='width:100%;' ng-model="page.createObjects.action_item.sectionDropdown"> </dropdown>
-                            </div>
-                            <div class='dropdown-2'>
-                                <h4 class='text-center p20xy weight-600'> Subaction type </h4>
-                                <dropdown style='width:100%;' ng-model="page.createObjects.action_item.elementDropdown"> </dropdown>
-                            </div>
-                            <div class='dropdown-3' ng-if='!page.createObjects.action_item.sectionDropdown.selectedIndex'>
-                                <h4 class='text-center p20xy weight-600'> Select an element </h4>
-                                <dropdown style='width:100%;' ng-model="page.createObjects.action_item.subElementDropdown"> </dropdown>
+                    </li>
+                </ul>
+                <button class="admin-add-edit-submit bg-rocket">Create</button>
+            </form>
+
+            <!-- ACTION ITEM -->
+            <form class="admin-add-edit-form" ng-hide='admin_item.dropdown_options.index !== 3'>
+                <ul>
+                    <li class="full-x">
+                        <div class="ugrid-2 bg-charcoal padding-15-grid flex-center">
+                            <label>
+                                <h1>Assign To</h1>
+                            </label>
+                            <div class='flex-right'>
+                                <a class="padding-15-half" ng-repeat="member in page.team_members.slice(0,4)">
+                                    <user-icon size="-32" url="member.profile_url" ></user-icon>
+                                </a>
                             </div>
                         </div>
-                        <div class='full-x p20xy'>
-                            <h1 class="full-x weight-600 p10bottom">Title</h1>
-                            <input class="full" type="text" ng-model="page.createObjects.action_item.title" />
-                            <h1 class="full-x weight-600 p10bottom m15top">Short Description</h1>
-                            <textarea ng-model="page.createObjects.action_item.description"></textarea>
-                        </div>
-                    </div>
-                    <div class='bg-charcoal -50p text-center'>
-                        <h1 class="full-x weight-600 p10bottom m15top">Assign To</h1>
-                        <div class='p20xy ugrid-4'>
-                            <div class='flex-center flex-wrap p20xy' ng-repeat="member in page.team_members.slice(0,4)">
-                                <user-icon class='p20xy' size="-64" url="member.profile_url" ></user-icon>
-                                <small class='full-x text-center weight-400 uppercase p10xy'>
-                                    {{member.name}}
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <div class='full-x'>
-                        <h1 class='full-x weight-600 p20xy m15top text-center' ng-if='page.createObjects.action_item.new.tags.length > 0'>
-                            {{page.createObjects.action_item.new.tags.length}} total tags
-                        </h1>
-                        <h1 class='full-x weight-600 p20xy m15top text-center' ng-if='page.createObjects.action_item.new.tags.length === 0'>
-                            Add tags below
-                        </h1>
-                        <div class="tag-list m15top p20xy flex-wrap-center">
-                            <!-- use tag list from request -->
-                            <span ng-if='page.createObjects.action_item.new.tags.length' ng-repeat="tag in page.createObjects.action_item.new.tags track by $index" class='chip tag-add flex-wrap-center'>
-                                <input class='m10xy full-x' ng-model='tag'  placeholder="add text here" />
-                                <a class='full-x txt-center' style='margin-bottom:-30px;' ng-click="page.createObjects.action_item.new.tags.splice($index, 1)">Remove</a>
+                    </li>
+                    <li>
+                        <h1 class="m10bottom">Action type</h1>
+                        <dropdown class="full-x" ng-model="page.createObjects.action_item.sectionDropdown"> </dropdown>
+                        <h1 class="m10bottom-m15top">Subaction type</h1>
+                        <dropdown class="full-x" ng-model="page.createObjects.action_item.elementDropdown"> </dropdown>
+                        <h1 class="m10bottom-m15top">Select an element</h1>
+                        <dropdown class="full-x" ng-model="page.createObjects.action_item.subElementDropdown"> </dropdown>
+                    </li>
+                    <li>
+                        <h1 class="m10bottom">Title</h1>
+                        <input class="full" type="text" ng-model="page.createObjects.action_item.title" />
+                        <h1 class="m10bottom-m15top">Short Description</h1>
+                        <textarea small ng-model="page.createObjects.action_item.description"></textarea>
+                        <label>
+                            <h1 class="m10bottom-m15top" ng-if='page.createObjects.action_item.new.tags.length > 0'>
+                                {{page.createObjects.action_item.new.tags.length}} Tag(s) Added
+                            </h1>
+                            <h1 class="m10bottom-m15top" ng-if='page.createObjects.action_item.new.tags.length === 0'>
+                                Add Tags Below
+                            </h1>
+                        </label>
+                        <div class="tag-list">
+                            <span ng-if='page.createObjects.action_item.new.tags.length' ng-repeat="tag in page.createObjects.action_item.new.tags track by $index" class='chip tag-add'>
+                                <input ng-model='tag' size="15" placeholder="add text here" />
+                                <a ng-click="page.createObjects.action_item.new.tags.splice($index, 1)">&times;</a>
                             </span>
                             <a class="chip" ng-click="page.createObjects.action_item.new.tags.push('')">+ New Tag </a></span>
                         </div>
-                </div>
-                <div class="full-x flex-center absolute bottom-0 left-0">
-                    <button class="bg-robin">Create</button>
-                </div>
-            </div>
+                    </li>
+                </ul>
+                <button class="admin-add-edit-submit bg-rocket">Create</button>
+            </form>
         </div>
     </div>

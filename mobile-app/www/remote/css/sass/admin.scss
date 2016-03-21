@@ -233,6 +233,77 @@
 		}
 	}
 	
+	// add or edit
+	#admin-add-edit {
+		> * {
+			position: relative;
+		}
+		.admin-add-edit-submit {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+		}
+		.admin-add-edit-form {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			> ul {
+				@include flex;
+				@include flex-wrap;
+				padding: 7.5px 7.5px 71.5px;
+				height: 100%;
+				overflow: auto;
+				> li {
+					padding: 7.5px;
+					width: 50%;
+					&.full-x {
+						width: 100%;
+					}
+				}
+			}
+			label {
+				display: block;
+				color: white;
+			}
+			h1 {
+				width: 100%;
+				font-size: 24px;
+				font-weight: 600;
+			}
+			h2 {
+				@include opacity(.5);
+				margin-top: 0!important;
+				width: 100%;
+				font-size: 18px;
+				font-weight: 600;
+			}
+			input.full, textarea {
+				width: 100%;
+				padding: 10px 15px;
+				background: rgba(white, .5);
+				font-size: 16px;
+				&:focus {
+					background: white;
+				}
+				@include placeholder {
+					color: white;
+				}
+				&:focus {
+					@include placeholder {
+						color: $taupe;
+					}
+				}
+			}
+			textarea {
+				min-height: 200px;
+				&[small] {
+					min-height: 100px;
+				}
+			}
+		}
+	}
+	
 	// user stories 
 	.admin-user-stories {
 		ul {
@@ -363,28 +434,6 @@
 			}
 			+ ul {
 				margin-top: -4px;
-			}
-		}
-	}
-	
-	// admin update
-	.admin-update {
-		padding: 7.5px;
-		> div {
-			padding: 7.5px;
-		}
-		input.full, textarea {
-			width: 100%;
-			padding: 10px 15px;
-			background: rgba(white, .5);
-			&:focus {
-				background: white;
-			}
-		}
-		textarea {
-			min-height: 200px;
-			&[small] {
-				min-height: 100px;
 			}
 		}
 	}

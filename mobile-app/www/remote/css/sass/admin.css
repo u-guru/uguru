@@ -346,6 +346,119 @@
   background: #757aa0;
 }
 
+#admin #admin-add-edit > * {
+  position: relative;
+}
+
+#admin #admin-add-edit .admin-add-edit-submit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+#admin #admin-add-edit .admin-add-edit-form {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#admin #admin-add-edit .admin-add-edit-form > ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding: 7.5px 7.5px 71.5px;
+  height: 100%;
+  overflow: auto;
+}
+
+#admin #admin-add-edit .admin-add-edit-form > ul > li {
+  padding: 7.5px;
+  width: 50%;
+}
+
+#admin #admin-add-edit .admin-add-edit-form > ul > li.full-x {
+  width: 100%;
+}
+
+#admin #admin-add-edit .admin-add-edit-form label {
+  display: block;
+  color: white;
+}
+
+#admin #admin-add-edit .admin-add-edit-form h1 {
+  width: 100%;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#admin #admin-add-edit .admin-add-edit-form h2 {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  margin-top: 0 !important;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#admin #admin-add-edit .admin-add-edit-form input.full, #admin #admin-add-edit .admin-add-edit-form textarea {
+  width: 100%;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+}
+
+#admin #admin-add-edit .admin-add-edit-form input.full:focus, #admin #admin-add-edit .admin-add-edit-form textarea:focus {
+  background: white;
+}
+
+#admin #admin-add-edit .admin-add-edit-form input.full::-webkit-input-placeholder, #admin #admin-add-edit .admin-add-edit-form textarea::-webkit-input-placeholder {
+  color: white;
+}
+
+#admin #admin-add-edit .admin-add-edit-form input.full:-moz-placeholder, #admin #admin-add-edit .admin-add-edit-form textarea:-moz-placeholder {
+  color: white;
+}
+
+#admin #admin-add-edit .admin-add-edit-form input.full::-moz-placeholder, #admin #admin-add-edit .admin-add-edit-form textarea::-moz-placeholder {
+  color: white;
+}
+
+#admin #admin-add-edit .admin-add-edit-form input.full:-ms-input-placeholder, #admin #admin-add-edit .admin-add-edit-form textarea:-ms-input-placeholder {
+  color: white;
+}
+
+#admin #admin-add-edit .admin-add-edit-form input.full:focus::-webkit-input-placeholder, #admin #admin-add-edit .admin-add-edit-form textarea:focus::-webkit-input-placeholder {
+  color: #757575;
+}
+
+#admin #admin-add-edit .admin-add-edit-form input.full:focus:-moz-placeholder, #admin #admin-add-edit .admin-add-edit-form textarea:focus:-moz-placeholder {
+  color: #757575;
+}
+
+#admin #admin-add-edit .admin-add-edit-form input.full:focus::-moz-placeholder, #admin #admin-add-edit .admin-add-edit-form textarea:focus::-moz-placeholder {
+  color: #757575;
+}
+
+#admin #admin-add-edit .admin-add-edit-form input.full:focus:-ms-input-placeholder, #admin #admin-add-edit .admin-add-edit-form textarea:focus:-ms-input-placeholder {
+  color: #757575;
+}
+
+#admin #admin-add-edit .admin-add-edit-form textarea {
+  min-height: 200px;
+}
+
+#admin #admin-add-edit .admin-add-edit-form textarea[small] {
+  min-height: 100px;
+}
+
 #admin .admin-user-stories ul {
   width: 100%;
   -ms-box-orient: horizontal;
@@ -575,32 +688,6 @@
 
 #admin .admin-assets ul + ul {
   margin-top: -4px;
-}
-
-#admin .admin-update {
-  padding: 7.5px;
-}
-
-#admin .admin-update > div {
-  padding: 7.5px;
-}
-
-#admin .admin-update input.full, #admin .admin-update textarea {
-  width: 100%;
-  padding: 10px 15px;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-#admin .admin-update input.full:focus, #admin .admin-update textarea:focus {
-  background: white;
-}
-
-#admin .admin-update textarea {
-  min-height: 200px;
-}
-
-#admin .admin-update textarea[small] {
-  min-height: 100px;
 }
 
 #admin .playground-code-container {

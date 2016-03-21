@@ -491,14 +491,20 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 .center-xy {
 	@include center-xy;
 }
-.third {
+.third, .one-third {
 	height: calc(100% / 3);
 }
-.fourth {
+.fourth, .quarter, .one-fourth, .one-quarter {
 	height: 25%;
 }
 .fifth {
 	height: 20%;
+}
+.two-fifths {
+	height: 40%;
+}
+.three-fifths {
+	height: 60%;
 }
 .two-thirds {
 	height: calc(100% / 3 * 2);
@@ -506,6 +512,12 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 }
 .half {
 	height: 50%;
+}
+.three-fourths, .three-quarters {
+	height: 75%;
+}
+.four-fifths {
+	height: 80%;
 }
 .main-50 {
 	height: calc(100% - 50px);
@@ -532,6 +544,9 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 	}
 	&[class*="-end-self"] {
 		@include prefix(align-self, flex-end, webkit);
+	}
+	&[class*="-right"] {
+		@include prefix(justify-content, flex-end, webkit);
 	}
 }
 .flex-grow {
