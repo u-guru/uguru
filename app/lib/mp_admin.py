@@ -113,7 +113,6 @@ def printElementsStats(elements):
 
 ## Updates one based on changes final step
 def updateElementComponent(_dict):
-
     mp = Mixpanel('3e9825a431a4944b5037c7bf6d909690')
     mp.people_set('4', {
         'elements': _dict

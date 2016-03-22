@@ -73,10 +73,11 @@ angular.module('uguru.util.controllers')
 		function getAdminElements() {
 
 			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(function(response){
+                    	console.log(response);
                     	response = JSON.parse(response);
 
-                    	$timeout(function() {
-                    		$scope.$apply(function() {
+                    	// $timeout(function() {
+                    		// $scope.$apply(function() {
                     			$scope.page.components = response.components;
 		                    	$scope.page.layouts = response.layouts;
 		                    	$scope.page.moodboard = response.moodboards;
@@ -84,7 +85,7 @@ angular.module('uguru.util.controllers')
 		                    	$scope.page.assets = response.assets;
 		                    	$scope.page.action_items = response.action_items;
 		                    	$scope.page.projects = response.projects;
-                    		})
+                    		// })
                     		// $timeout(function() {
                     		// 	var allDemoElems = document.querySelectorAll('demo')
                     		// 	for (var i = 0; i < allDemoElems.length; i++) {
@@ -94,7 +95,7 @@ angular.module('uguru.util.controllers')
 
                     		// 	}
                     		// })
-                    	})
+                    	// })
 
 
 
