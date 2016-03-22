@@ -37,13 +37,24 @@ user_stories = [
     {"id": 21, "title": 'Guru checks out Guru Promote', "ref":"guru-ranking", "layouts":[]}
 ]
 
-base_user_story = {"title": '', "ref":"", "layouts":[]}
+base_user_story = {"title": '', "ref":"", "layouts":[], "scenes": [], "transitions": [], "description": ""}
 
-base_component = {'ref': [], 'cp_link': '', 'name': '', 'notes': '', 'sample': ''}
+base_assets = {'ref': [], 'cp_link': '', 'type': 'component', 'name': '', 'notes': '', 'parents': [], 'children': [], 'sample': {'scope': '', 'template': ""}, "bugs": [], "states": []}
+
+base_component = {'ref': [], 'cp_link': '', 'type': 'component', 'name': '', 'notes': '', 'parents': [], 'children': [], 'sample': {'scope': '', 'template': ""}, "bugs": [], "states": []}
+
+base_layout = {'ref': '', 'scenes': [], 'cp_link': '', 'name': '', 'notes': '', 'description': '', 'parents': [], 'children': [], 'template_url': '',  'sample': {'scope': '', 'template': ""}, "bugs": [], "states": []}
+
+base_scenes = {'ref': '', 'type':'', 'scenes': [], 'cp_link': '', 'name': '', 'notes': '', 'description': '', 'children': [], 'parents': [], 'template_url': '', 'sample': {'scope': '', 'template': ""}, "bugs": [], "states":[]}
+
+base_containers = {'ref': '', 'scenes': [], 'cp_link': '', 'name': '', 'notes': '', 'description': '', 'parents': [], 'children': [], 'template_url': ''}
 
 base_elements = {
     'component': base_component,
-    'user_stories': base_user_story
+    'user_stories': base_user_story,
+    'layouts': base_layout,
+    'scenes': base_scenes,
+    'containers': base_containers
 }
 
 component_list = [
