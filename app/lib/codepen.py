@@ -13,19 +13,20 @@ def getAllComponentUrls():
     return all_hyperlinks
 
 def generateSingleComponentCSSFile():
-    all_links = ["%s.scss" % link for link in getAllComponentUrls()]
+    all_links = ["%s.scss" % link for link in getAllComponentUrls() if 'teamuguru' in link]
     result_str = ''
     print 'Grabbing %s css component files in intervals of %s seconds' % (len(all_links), DEFAULT_SLEEP_INTERVAL)
     for css_link in all_links:
         css_response = requests.get(css_link).text
         result_str += '\n\n' + css_response
+        print css_link
         sleep(DEFAULT_SLEEP_INTERVAL)
-    saveFile(result_str, 'components', 'scss', '../')
+    saveFile(result_str.encode('utf-8'), 'components', 'scss', '../')
 
 def saveFile(_str, filename, ext, path):
-    _file = open(filename, 'w')
-    _file.write(path + _str + ext + '\n')
-    print "%s successfully saved @ %s, path" % (ext + lfilename, path)
+    _file = open(filename + '.' + ext, 'w')
+    _file.write(_str)
+    print "%s successfully saved in this directory:" % (filename + '.' + ext)
 
 
 generateSingleComponentCSSFile()

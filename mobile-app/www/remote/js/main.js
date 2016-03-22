@@ -12,8 +12,8 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-  // REST_URL = "http://localhost:5000";
-  REST_URL = "http://192.168.42.70:5000";
+  REST_URL = "http://localhost:5000";
+  // REST_URL = "http://192.168.42.70:5000";
   // BASE_URL = _ipaddress;
 
   // REST_URL = 'https://192.168.0.107:5000';
@@ -73,19 +73,19 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
 
-  $provide.decorator("$exceptionHandler", function($delegate, $injector) {
+  // $provide.decorator("$exceptionHandler", function($delegate, $injector) {
 
-    return function(exception, cause) {
+  //   return function(exception, cause) {
 
-      Github = $injector.get("Github");
+  //     Github = $injector.get("Github");
 
-      Github.exceptionToGHIssue(exception, cause);
+  //     Github.exceptionToGHIssue(exception, cause);
 
-      // $delegate(exception, cause);
+  //     $delegate(exception, cause);
 
-    };
+  //   };
 
-  });
+  // });
 
 
 

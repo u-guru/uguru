@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('uguru.components', [])
 .directive("doc", function() {
   return {
@@ -34,7 +36,7 @@ angular.module('uguru.components', [])
     }
   };
 }])
-.directive("dropdown", function() {
+.directive("dropdown", ['$timeout', function($timeout) {
   return {
     templateUrl: getTemplateURL,
     scope: {
@@ -68,6 +70,9 @@ angular.module('uguru.components', [])
         //  });
 
         scope.dropdown.selectedIndex = index;
+        $timeout(function() {
+          scope.$apply();
+        })
         if (scope.dropdown.onOptionClick) {
           scope.dropdown.onOptionClick(option, index);
         }
@@ -88,7 +93,7 @@ angular.module('uguru.components', [])
       return BASE + 'templates/components/dev/input/dropdown.tpl'
     }
   }
-})
+}])
 .directive("userIcon", ['$compile',function($compile) {
   return {
     templateUrl: BASE + 'templates/components/dev/user.icon.tpl',
@@ -298,6 +303,33 @@ angular.module('uguru.components', [])
 
     }}
 }])
+.directive('svgi', '$timeout', function($timeout) {
+  return {
+    templateUrl: getTemplateURL,
+    restrict: 'E',
+    replace: true,
+    link: function(scope, elem, attr) {
+        if (attr.size && attr.size.length) {
+            var svgElem = elem[0].querySelector('svg');
+            if (svgELem) {
+              console.log(svgElem);
+              svgElem.style.width = attr.size.split('x')[0] + 'px;';
+              svgElem.style.height = attr.size.split('x')[1] + 'px;';
+            }
+        }
+    }
+  }
+  function getTemplateURL(elem, attr) {
+    if (attr && attr.name && attr.name.length) {
+      console.log('svgPath', 'yo');
+      var svgPathSplit = attr.name.split('.');
+      if (svgPathSplit.length > 1) {
+        svgPath = attr.name.replace('.','/') + '.tpl';
+        return BASE + 'templates/components/dev/svg/' + svgPath;
+      }
+    }
+  }
+})
 .directive('miniProfileCard', function() {
   return {
     templateUrl: BASE + 'templates/components/dev/containers/guru.profile.mini.tpl',

@@ -5,7 +5,7 @@
         </svg>
         <div class="school-id-inside">
             <div class="school-id-top" style="background: #003262;">
-                <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
+                <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('');"></span>
             </div>
             <div class="school-id-bottom">
                 <div>

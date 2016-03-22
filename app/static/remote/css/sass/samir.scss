@@ -605,10 +605,9 @@ ul#guru-courses-user-profile {
 }
 
 .pf-card-group, .cta-modal {
-
 	.bg-tech, &.bg-tech {
-	background: $azure;
-	background-color: $azure;
+		background: $azure;
+		background-color: $azure;
 	}
 	.bg-academic, &.bg-academic {
 		background: $cerise;
@@ -630,7 +629,6 @@ ul#guru-courses-user-profile {
 	.pf-card-main {
 		background:white;
 	}
-
 }
 
 #cta-modal-sidebar.full-x {
@@ -789,9 +787,9 @@ header#home-nav-header.splash-header,
 
 #home-splash {
 	ion-pane:not(#cta-modal-sidebar) {
-		width:66.66% !important;
-		right:0;
-		margin-left: 33.33% !important;
+		width: calc(100% / 3 * 2)!important;
+		right: 0;
+		margin-left: calc(100% / 3)!important;
 	}
 }
 

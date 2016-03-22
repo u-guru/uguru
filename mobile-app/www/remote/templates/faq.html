@@ -1,4 +1,4 @@
-<section id="faq">
+<main id="faq" class="lyt-reduced-header">
     <header>
         <a id='guru-profile-cta-close' class='flex-wrap-center p05xy cta-modal-close close-button absolute' ng-class='{"arrow": !desktopMode}' ng-click='!desktopMode && page.modals.faq.hide()'>
             <svg viewBox="0 0 100 100" ng-if='!desktopMode'>
@@ -20,7 +20,7 @@
             </div>
         </div>
     </header>
-    <div class="main">
+    <section class="main">
         <dl ng-repeat="faq in ::page.faq_arr" ng-class='{"full-x" :!desktopMode}' class='relative'>
             <dt ng-click='faq.active = !faq.active' ng-class="{'active': faq.active}" class='high-z-index'>
                 <span>{{faq.question}}</span>
@@ -30,7 +30,7 @@
                     </svg>
                 </a>
             </dt>
-            <dd class='weight-400 left-0 animated' ng-if='faq.active' id='faq-content-{{$index}}' ng-bind-html="faq.answer"></dd>
+            <dd ng-if='faq.active' id='faq-content-{{$index}}' ng-bind-html="faq.answer"></dd>
         </dl>
-    </div>
-</section>
+    </section>
+</main>
