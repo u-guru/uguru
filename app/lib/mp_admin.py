@@ -89,21 +89,68 @@ def loadMostUpdatedElementsJson():
 
 
 ### Initialize elements component
-def initBaseComponent():
+def syncLocalElementsToMP():
     mp = Mixpanel('3e9825a431a4944b5037c7bf6d909690')
     elements = loadMostUpdatedElementsJson()
     mp.people_set('4', {
         'elements': elements
-        })
-    print 'elements.json updated'
+    })
+    print "local elements successfully synced"
+
+def resolveLocalElements():
+    elements = loadMostUpdatedElementsJson()
+    for story in elements['user_stories']:
+        story = updateStoryWithUpdatedBaseFields(story)
+        elements['layouts'] = baseLayoutExistsForUserStory(elements['layouts'], story)
+    saveElementsJson(elements)
+    printElementsStats(elements)
+
+
+def printElementsStats(elements):
+    for key in elements.keys():
+        print "#%s:%s" % (key, len(elements[key]))
 
 
 ## Updates one based on changes final step
 def updateElementComponent(_dict):
+
     mp = Mixpanel('3e9825a431a4944b5037c7bf6d909690')
     mp.people_set('4', {
         'elements': _dict
     })
+
+def updateStoryWithUpdatedBaseFields(story):
+    from elements import base_elements
+    user_story_base = base_elements['user_stories']
+    for key in user_story_base.keys():
+        base_value = user_story_base[key]
+        if key not in story:
+            story[key] = base_value
+            print "adding %s key to %s" % (key, story['title'])
+    return story
+
+
+
+def baseLayoutExistsForUserStory(layouts, user_story):
+    user_story_layouts = user_story['layouts']
+    layout_refs = [layout['ref'] for layout in layouts]
+    for layout in user_story_layouts:
+        if layout not in layout_refs:
+            new_layout =  createNewLayout(layout, len(layouts) + 1)
+            layouts.append(new_layout)
+    return layouts
+
+
+
+def createNewLayout(layout_ref, _id):
+    from elements import base_elements
+    base_layout = dict(base_elements['layouts'])
+    base_layout['id'] = _id
+    base_layout['ref'] = layout_ref
+    return base_layout
+
+
+
 
 
 
@@ -156,12 +203,14 @@ def resolveElements():
     return _dict
 
 def saveDictToElementsJson():
-    import json
     _dict = getMostUpdatedMPElements()
-    from pprint import pprint
+    saveElementsJson(_dict)
+    print "saved to elements.json"
+
+def saveElementsJson(_dict):
+    import json
     with open('./app/lib/elements.json', 'wb') as fp:
         json.dump(_dict, fp, sort_keys = True, indent = 4)
-    print "saved to elements.json"
 
 def resolveDictToElementsJson():
     import json
@@ -171,7 +220,12 @@ def resolveDictToElementsJson():
 
 import sys
 args = sys.argv
-if 'save' in args:
+if 'i' in args:
+    print "\n\nsave -- save locally\nupdate -- update local to MP\nresolve -- resolve & init new elements\n"
+    print "update -- update a specific element [id or ref_id] [elem_type]"
+if 'save' in args and len(args) == 2:
     saveDictToElementsJson()
-if 'update' in args:
-    initBaseComponent()
+if 'update' in args and len(args) == 2:
+    syncLocalElementsToMP()
+if 'resolve' in args and len(args) == 2:
+    resolveLocalElements()

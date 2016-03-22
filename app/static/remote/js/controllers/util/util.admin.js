@@ -15,7 +15,7 @@ angular.module('uguru.util.controllers')
 			layout: AdminContent.getMainLayout(),
 			glossary: AdminContent.getGlosseryContent(),
 			team_members: AdminContent.getMembers(),
-			components: AdminContent.getComponents(),
+			components: [],
 			containers: AdminContent.getContainers(),
 			layouts: AdminContent.getLayouts(),
 			user_stories: AdminContent.getUserStories(),
@@ -75,13 +75,28 @@ angular.module('uguru.util.controllers')
 			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(function(response){
                     	response = JSON.parse(response);
 
-                    	$scope.page.components = response.components;
-                    	$scope.page.layouts = response.layouts;
-                    	$scope.page.moodboard = response.moodboards;
-                    	$scope.page.user_stories = response.user_stories;
-                    	$scope.page.assets = response.assets;
-                    	$scope.page.action_items = response.action_items;
-                    	$scope.page.projects = response.projects;
+                    	$timeout(function() {
+                    		$scope.$apply(function() {
+                    			$scope.page.components = response.components;
+		                    	$scope.page.layouts = response.layouts;
+		                    	$scope.page.moodboard = response.moodboards;
+		                    	$scope.page.user_stories = response.user_stories;
+		                    	$scope.page.assets = response.assets;
+		                    	$scope.page.action_items = response.action_items;
+		                    	$scope.page.projects = response.projects;
+                    		})
+                    		// $timeout(function() {
+                    		// 	var allDemoElems = document.querySelectorAll('demo')
+                    		// 	for (var i = 0; i < allDemoElems.length; i++) {
+                    		// 		demoIndexElem = allDemoElems[i];
+
+                    		// 		$compile(demoIndexElem)($scope);
+
+                    		// 	}
+                    		// })
+                    	})
+
+
 
                     	console.log(response);
                     }, function(err) {
@@ -304,16 +319,10 @@ angular.module('uguru.util.controllers')
 		}
 
 		$timeout(function() {
-			$scope.page.layout.sidebar.index = $scope.page.defaults.sidebarIndex;
+			$scope.page.layout.sidebar.index = 1 || $scope.page.defaults.sidebarIndex;
 			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = $scope.page.defaults.tabsIndex;
 			getAdminElements();
 
-
-			var adminItemElem = document.querySelector('#cta-box-admin-item');
-			angular.element(adminItemElem).triggerHandler('click');
-			initNewBaseObjects();
-			$scope.page.newItems = initNewBaseObjects();
-			console.log('new items', $scope.page.newItems);
 
 		}, 1000)
 	}

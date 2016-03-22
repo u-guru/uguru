@@ -27,9 +27,8 @@ angular.module('uguru.components', [])
     scope: '=',
     link: function(scope, element, attr) {
       $timeout(function() {
-
         if (attr.template && attr.template.length) {
-          element.html(attr.template);
+          element.html(attr.template.replace(/\\"/g, "'"));
           $compile(element.contents())(scope);
         }
       }, 1000);
@@ -263,7 +262,7 @@ angular.module('uguru.components', [])
         scope.blankNum = 1
       }
 
-      
+
       scope.resetMadLibBlankIfActive = function($event){
           // console.log("WTF")
           var indexTranslateElem = $event.target.parentNode;
