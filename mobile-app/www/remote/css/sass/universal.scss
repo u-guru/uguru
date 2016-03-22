@@ -3,13 +3,15 @@
 /* ---------- FAQ */
 #faq {
 	height: 100%;
-	overflow: auto;
+	overflow-x: hidden;
+	overflow-y: auto;
 	header {
 		background: $shamrock;
 	}
 	.main {
 		@include flex;
 		@include flex-wrap;
+		overflow-x: hidden;
 		padding: 7.5px;
 		background: $slate;
 		dl {
@@ -72,7 +74,6 @@
 			@include prefix(flex-direction, column, wekit moz ms o);
 			height: 100%;
 			width: 100%;
-			overflow-x: hidden;
 			padding: 15px;
 			dl {
 				padding: 15px;
@@ -94,6 +95,7 @@
 	}
 	.main {
 		.pf-card-group {
+			max-width: 615px;
 			> li {
 				.pf-card {
 					.pf-card-top {
@@ -1706,10 +1708,17 @@
 			margin: -15px auto 0;
 			overflow-x: auto;
 			padding: 7.5px;
+			&::-webkit-scrollbar { 
+			    display: none; 
+			}
+			&::-moz-scrollbar { 
+			    display: none; 
+			}
 			li {
 				padding: 7.5px;
 				.pricing-tile {
 					width: 270px;
+					border-color: $rocket;
 				}
 			}
 		}
@@ -1718,19 +1727,6 @@
 		padding: 15px;
 		width: 100%;
 		margin: auto;
-		.pricing-uguru {
-			@include flex-wrap;
-			margin-top: -20%;
-			li {
-				width: 100%;
-				padding: 0;
-				margin-bottom: 20px;
-				&:after {
-					left: 0;
-					width: 100%;
-				}
-			}
-		}
 		dl {
 			dt {
 				font-size: 24px;
@@ -1745,7 +1741,7 @@
 		}
 	}
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1070px) {
 	#pricing {
 		> header {
 			> ul {
@@ -1769,12 +1765,9 @@
 				padding: 30px;
 				font-size: 36px;
 			}
-			> ul {
-				@include flex-center;
-			}
 		}
 		> div {
-			padding: 176px 30px 30px;
+			padding: 165px 30px 15px;
 			max-width: 860px;
 			dl {
 				dt {
@@ -1783,6 +1776,15 @@
 				dd {
 					font-size: 24px;
 				}
+			}
+		}
+	}
+}
+@media screen and (min-width: 1070px) {
+	#pricing {
+		> header {
+			> ul {
+				@include flex-center;
 			}
 		}
 	}
