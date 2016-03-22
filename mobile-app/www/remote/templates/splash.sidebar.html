@@ -6,39 +6,39 @@
                 <a class="splash-burger close splash-close cta-modal-close" ng-click='hideSideBar()' class-on-click="null:inject.sidebar-modal|hide" ng-include="::img_base + 'templates/svg/main/plus-circle.html'"></a>
             </header>
             <ul class="splash-sidebar-links">
-                <!-- @gabrielle can we plz discuss why we need this again?-->
                 <!-- <li>
                     <a class="opacity-0" class-on-activate="bounceIn:anim" class-on-activate-delay="50" ng-click='page.sidebar.toggle()'>
                         <span>Home</span>
                     </a>
                 </li> -->
                 <li>
-                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="50" id='cta-box-FAQ' class-on-clear="bounceOut:animOut" ng-click='(!desktopMode && page.modals.faq.show()) || clearAllCTAExcept("FAQ")'>
+                    <a id='cta-box-FAQ' class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="50" class-on-clear="bounceOut:animOut" ng-click='(!desktopMode && page.modals.faq.show()) || clearAllCTAExcept("FAQ")'>
                         <span>FAQ</span>
                     </a>
                 </li>
                 <li>
-                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="100" id='cta-box-pricing' class-on-clear="bounceOut:animOut" ng-click='(!desktopMode && page.modals.pricing.show()) || clearAllCTAExcept("pricing")'>
+                    <a id='cta-box-pricing' class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="100" class-on-clear="bounceOut:animOut" ng-click='(!desktopMode && page.modals.pricing.show()) || clearAllCTAExcept("pricing")'>
                         <span>Pricing</span>
                     </a>
                 </li>
                 <li>
-                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="150" id='cta-box-intercom' class-on-clear="bounceOut:animOut" ng-click='(!desktopMode && page.modals.support() || clearAllCTAExcept("support"))'>
+                    <a id='cta-box-intercom' class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="150" class-on-clear="bounceOut:animOut" ng-click='(!desktopMode && page.modals.support() || clearAllCTAExcept("support"))'>
                         <span>Support</span>
                     </a>
                 </li>
                 <li>
-                    <a class="opacity-0" id='cta-box-team'  class-on-activate="slideInLeft:anim" class-on-activate-delay="200" class-on-clear="bounceOut:animOut" ng-click='(!desktopMode && page.modals.team.show()) || clearAllCTAExcept("team")'>
+                    <a id='cta-box-team' class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="200" class-on-clear="bounceOut:animOut" ng-click='(!desktopMode && page.modals.team.show()) || clearAllCTAExcept("team")'>
                         <span>Team</span>
                     </a>
                 </li>
                 <li ng-click='clearAllCTAExcept()' ng-if='!user || !user.id'>
-                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="250" id='cta-box-account' class-on-clear="bounceOut:animOut" ng-click="showSidebarLogin()" >
+                    <!-- id='cta-box-account' -->
+                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="250" class-on-clear="bounceOut:animOut" ng-click="showSidebarLogin()">
                         <span>Login</span>
                     </a>
                 </li>
                 <li ng-if='user && user.id'>
-                    <a class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="300" id='cta-box-intercom' class-on-clear="bounceOut:animOut" ng-click='logoutUser(true)'>
+                    <a id='cta-box-intercom' class="opacity-0" class-on-activate="slideInLeft:anim" class-on-activate-delay="300" class-on-clear="bounceOut:animOut" ng-click='logoutUser(true)'>
                         <span>Logout</span>
                     </a>
                 </li>
@@ -89,7 +89,7 @@
 
         <ion-pane id='cta-modal-become-guru' ng-if='desktopMode' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index sidebar-modal' ng-if='user.university && user.university.id' ng-include="::img_base + BASE + 'templates/desktop.guru.onboarding.html'" ng-controller='DesktopBecomeGuruController'> </ion-pane>
 
-        <ion-pane id='cta-modal-account' ng-if='desktopMode' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index sidebar-modal' ng-include="::img_base + BASE + 'templates/desktop.login.html'" ng-controller='AccountPageController'> </ion-pane>
+        <!-- <ion-pane id='cta-modal-account' ng-if='desktopMode' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index sidebar-modal' ng-include="::img_base + BASE + 'templates/desktop.login.html'" ng-controller='AccountPageController'> </ion-pane> -->
 
         <ion-pane id='cta-modal-intercom' ng-if='desktopMode' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index sidebar-modal' ng-controller='AccountPageController'> </ion-pane>
 

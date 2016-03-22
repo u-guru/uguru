@@ -1,7 +1,8 @@
 /* ---------- FAQ */
 #faq {
   height: 100%;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 #faq header {
@@ -19,6 +20,7 @@
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
+  overflow-x: hidden;
   padding: 7.5px;
   background: #40484B;
 }
@@ -116,7 +118,6 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-    overflow-x: hidden;
     padding: 15px;
   }
   #faq .main dl {
@@ -149,6 +150,10 @@
   -webkit-justify-content: center;
   justify-content: center;
   background: #69B3A5;
+}
+
+#team .main .pf-card-group {
+  max-width: 615px;
 }
 
 #team .main .pf-card-group > li .pf-card .pf-card-top {
@@ -1857,36 +1862,27 @@
   padding: 7.5px;
 }
 
+#pricing header ul::-webkit-scrollbar {
+  display: none;
+}
+
+#pricing header ul::-moz-scrollbar {
+  display: none;
+}
+
 #pricing header ul li {
   padding: 7.5px;
 }
 
 #pricing header ul li .pricing-tile {
   width: 270px;
+  border-color: #696269;
 }
 
 #pricing > div {
   padding: 15px;
   width: 100%;
   margin: auto;
-}
-
-#pricing > div .pricing-uguru {
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  margin-top: -20%;
-}
-
-#pricing > div .pricing-uguru li {
-  width: 100%;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-#pricing > div .pricing-uguru li:after {
-  left: 0;
-  width: 100%;
 }
 
 #pricing > div dl dt {
@@ -1901,7 +1897,7 @@
   line-height: 1.2;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1070px) {
   #pricing > header > ul {
     width: 100%;
   }
@@ -1918,6 +1914,19 @@
     padding: 30px;
     font-size: 36px;
   }
+  #pricing > div {
+    padding: 165px 30px 15px;
+    max-width: 860px;
+  }
+  #pricing > div dl dt {
+    font-size: 28px;
+  }
+  #pricing > div dl dd {
+    font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 1070px) {
   #pricing > header > ul {
     -webkit-flex-direction: row;
     flex-direction: row;
@@ -1927,15 +1936,5 @@
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
-  }
-  #pricing > div {
-    padding: 176px 30px 30px;
-    max-width: 860px;
-  }
-  #pricing > div dl dt {
-    font-size: 28px;
-  }
-  #pricing > div dl dd {
-    font-size: 24px;
   }
 }
