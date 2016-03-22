@@ -22,6 +22,12 @@ if (LOCAL) {
   img_base = '/static/';
 }
 
+if (window.location.href.indexOf('uguru-rest-test.herokuapp') > -1) {
+  var REST_URL = 'https://uguru-rest-test.herokuapp.com';
+} else if (window.location.href.indexOf('localhost:5000') > -1) {
+  var REST_URL = 'https://uguru-rest-test.herokuapp.com';
+}
+
 
 
 
