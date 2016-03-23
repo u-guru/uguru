@@ -1,5 +1,251 @@
 @import 'mixin';
 
+/* ---------- BUILDER */
+#build {
+	@include flex;
+	height: 100%;
+	> main {
+		width: calc(100% / 3 * 2);
+		height: 100%;
+		background: $smoke;
+		.build-main-top {
+			@include flex;
+			@include flex-center-vertical;
+			@include prefix(justify-content, space-between, webkit);
+			background: $campus;
+			height: 64px;
+			h1 {
+				padding-left: 15px;
+				font-size: 24px;
+				font-weight: 600;
+			}
+			> div {
+				@include flex;
+				@include flex-center-vertical;
+				height: 100%;
+				> div {
+					text-align: center;
+					margin-right: 15px;
+					h2 {
+						width: 100%;
+						font-size: 14px;
+						font-weight: 600;
+						margin-bottom: 5px;
+					}
+					.dropdown {
+						> div {
+							a {
+								svg {
+									background: $moxie;
+								}
+								&:hover, &:focus {
+									svg {
+										background: lighten($moxie, 10%);
+									}
+								}
+								&:active {
+									svg {
+										background: darken($moxie, 10%);
+									}
+								}
+							}
+						}
+						> ul {
+							li {
+								background: rgba(lighten($slate, 5%), .9);
+								&:hover, &:focus {
+									background: rgba(darken($moxie, 10%),.9);
+								}
+								&:active {
+									background: rgba(lighten($moxie, 10%),.9);
+								}
+							}
+						}
+					}
+				}
+			}
+			.build-main-settings {
+				display: block;
+				margin-right: 10px;
+				svg {
+					display: block;
+					width: 36px;
+					height: 36px;
+					* {
+						@include svg-stroke(white, 6);
+					}
+				}
+			}
+		}
+		.build-player {
+			height: calc(100% - 128px);
+		}
+		.build-main-bottom {
+			@include flex;
+			position: relative;
+			height: 64px;
+			background: white;
+			.builder-search-results {
+				position: absolute;
+				top: -36px;
+				left: 0;
+				height: 36px;
+				width: 100%;
+				background: $campus;
+				ul {
+					@include flex;
+					width: 100%;
+					overflow: auto;
+				}
+			}
+			label {
+				@include flex;
+				@include flex-center;
+				width: 64px;
+				height: 100%;
+				background: $moxie;
+				svg {
+					display: block;
+					width: 36px;
+					height: 36px;
+					* {
+						@include svg-stroke(white, 6);
+					}
+				}
+			}
+			input {
+				width: calc(100% - 64px);
+				height: 100%;
+				padding: 0 15px;
+				font-size: 20px;
+			}
+		}
+	}
+	> aside {
+		width: calc(100% / 3);
+		height: 100%;
+		.build-aside-top {
+			height: 64px;
+			background: lighten($slate, 15%);
+			ul {
+				@include flex;
+				width: 100%;
+				height: 100%;
+				overflow: auto;
+				li {
+					position: relative;
+					height: 100%;
+					width: 64px;
+					&:not(:last-child) {
+						&:after {
+							@include round;
+							content: "";
+							display: block;
+							position: absolute;
+							z-index: 10;
+							top: 6px;
+							right: -1px;
+							height: calc(100% - 12px);
+							width: 2px;
+							background: mix(lighten($slate, 15%), white, 70%);
+						}
+					}
+					a {
+						@include flex;
+						@include flex-center;
+						width: 64px;
+						height: 100%;
+						font-size: 28px;
+						font-weight: 600;
+						&:hover, &:focus {
+							background: mix($moxie, white);
+							color: mix($moxie, $slate);
+						}
+						&:active {
+							background: $moxie;
+							color: white;
+						}
+					}
+				}
+			}
+		}
+		.build-element-list {
+			height: calc(100% - 128px);
+			overflow: auto;
+		}
+		.build-aside-bottom {
+			height: 64px;
+			background: lighten($slate, 15%);
+			ul {
+				@include flex;
+				height: 100%;
+				li {
+					height: 100%;
+					a {
+						@include flex;
+						@include flex-center;
+						height: 100%;
+						width: 64px;
+						margin: 0 auto;
+						svg {
+							display: block;
+							width: 48px;
+							height: 48px;
+							* {
+								@include svg-stroke(white, 6);
+							}
+						}
+						&:hover, &:focus {
+							background: mix($moxie, white);
+							svg {
+								* {
+									stroke: mix($moxie, $slate);
+								}
+							}
+						}
+						&:active {
+							background: $moxie;
+							svg {
+								* {
+									stroke: white;
+								}
+							}
+						}
+					}
+					.build-add-element {
+						background: $moxie;
+						svg {
+							width: 36px;
+							height: 36px;
+						}
+						&:active {
+							background: mix($moxie, $slate);
+						}
+					}
+					&:not(:nth-child(3)) {
+						width: 64px;
+					}
+					&:nth-child(2) {
+						svg {
+							@include prefix(transform, rotate(-90deg), webkit moz ms o);
+						}
+					}
+					&:nth-child(3) {
+						width: calc(100% - 192px);
+					}
+					&:nth-child(4) {
+						svg {
+							@include prefix(transform, rotate(90deg), webkit moz ms o);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- DASHBOARD */
+
 [class*="user-icon"] {
 	&.jeselle {
 		background-image: url('https://uguru.me/static/web/images/team/jeselle.png')!important;

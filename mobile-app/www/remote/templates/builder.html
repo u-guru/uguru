@@ -1,0 +1,100 @@
+<ion-view>
+	<div id="build">
+		<main>
+			<nav class="build-main-top">
+				<h1>Scene 1 &rsaquo; Dropdown 1</h1>
+				<div>
+					<div>
+						<h2>Drag</h2>
+						<div class="toggle small">
+							<input type="checkbox" checked />
+							<label>
+								<svg class="square" viewBox="0 0 100 100">
+									<rect x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<svg class="square" viewBox="0 0 100 100">
+									<rect x="0" y="0" width="100" height="100"></rect>
+								</svg>
+							</label>
+						</div>
+					</div>
+					<div>
+						<h2>Resolution</h2>
+						<div class="dropdown small">
+							<div>
+								<span>Desktop 1280x800</span>
+								<a>
+									<svg viewBox="0 0 100 100">
+										<path d="M14,32 L50,68 L86,32"></path>
+									</svg>
+								</a>
+							</div>
+							<ul class="active">
+								<li tabindex>iPhone 6+ 414x736</li>
+								<li tabindex>iPhone 6 375x689</li>
+								<li tabindex>Desktop 1920x1280</li>
+							</ul>
+						</div>
+					</div>
+					<a class="build-main-settings" ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
+				</div>
+			</nav>
+			
+			<div class="build-player"></div>
+			
+			<nav class="build-main-bottom">
+				<div class="builder-search-results">
+					<ul>
+						<li><a>dropdown</a></li>
+						<li><a>tile group</a></li>
+						<li><a>checkbox</a></li>
+						<li><a>profile card</a></li>
+						<li><a>dropdown</a></li>
+						<li><a>tile group</a></li>
+						<li><a>checkbox</a></li>
+						<li><a>profile card</a></li>
+						<li><a>dropdown</a></li>
+						<li><a>tile group</a></li>
+						<li><a>checkbox</a></li>
+						<li><a>profile card</a></li>
+						<li><a>dropdown</a></li>
+						<li><a>tile group</a></li>
+						<li><a>checkbox</a></li>
+						<li><a>profile card</a></li>
+					</ul>
+				</div>
+				<label for="builder-search" ng-include="img_base + BASE + 'templates/svg/main/search.html'"></label>
+				<input id="builder-search" type="text" placeholder="Add component"/>
+			</nav>
+		</main>
+		<aside>
+			<nav class="build-aside-top">
+				<ul>
+					<li><a>0</a></li>
+					<li><a>1</a></li>
+					<li><a>2</a></li>
+					<li><a>3</a></li>
+					<li><a>4</a></li>
+					<li><a>5</a></li>
+					<li><a>6</a></li>
+					<li><a>7</a></li>
+					<li><a>8</a></li>
+					<li><a>9</a></li>
+				</ul>
+			</nav>
+			<div class="build-element-list">
+				<ul>
+					<li></li>
+				</ul>
+			</div>
+			<nav class="build-aside-bottom">
+				<ul>
+					<li><a class="build-add-element" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a></li>
+					<li><a ng-include="img_base + BASE + 'templates/svg/main/arrow.html'"></a></li>
+					<li><a ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a></li>
+					<li><a ng-include="img_base + BASE + 'templates/svg/main/arrow.html'"></a></li>
+				</ul>
+			</nav>
+		</aside>
+	</div>
+</ion-view>

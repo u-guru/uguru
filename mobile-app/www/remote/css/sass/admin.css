@@ -1,3 +1,383 @@
+/* ---------- BUILDER */
+#build {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+}
+
+#build > main {
+  width: calc(100% / 3 * 2);
+  height: 100%;
+  background: #F1F1F1;
+}
+
+#build > main .build-main-top {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  background: #8A9EA3;
+  height: 64px;
+}
+
+#build > main .build-main-top h1 {
+  padding-left: 15px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#build > main .build-main-top > div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+}
+
+#build > main .build-main-top > div > div {
+  text-align: center;
+  margin-right: 15px;
+}
+
+#build > main .build-main-top > div > div h2 {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+#build > main .build-main-top > div > div .dropdown > div a svg {
+  background: #43cb9d;
+}
+
+#build > main .build-main-top > div > div .dropdown > div a:hover svg, #build > main .build-main-top > div > div .dropdown > div a:focus svg {
+  background: #6bd6b2;
+}
+
+#build > main .build-main-top > div > div .dropdown > div a:active svg {
+  background: #2fac82;
+}
+
+#build > main .build-main-top > div > div .dropdown > ul li {
+  background: rgba(76, 85, 89, 0.9);
+}
+
+#build > main .build-main-top > div > div .dropdown > ul li:hover, #build > main .build-main-top > div > div .dropdown > ul li:focus {
+  background: rgba(47, 172, 130, 0.9);
+}
+
+#build > main .build-main-top > div > div .dropdown > ul li:active {
+  background: rgba(107, 214, 178, 0.9);
+}
+
+#build > main .build-main-top .build-main-settings {
+  display: block;
+  margin-right: 10px;
+}
+
+#build > main .build-main-top .build-main-settings svg {
+  display: block;
+  width: 36px;
+  height: 36px;
+}
+
+#build > main .build-main-top .build-main-settings svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#build > main .build-player {
+  height: calc(100% - 128px);
+}
+
+#build > main .build-main-bottom {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  position: relative;
+  height: 64px;
+  background: white;
+}
+
+#build > main .build-main-bottom .builder-search-results {
+  position: absolute;
+  top: -36px;
+  left: 0;
+  height: 36px;
+  width: 100%;
+  background: #8A9EA3;
+}
+
+#build > main .build-main-bottom .builder-search-results ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  overflow: auto;
+}
+
+#build > main .build-main-bottom label {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 64px;
+  height: 100%;
+  background: #43cb9d;
+}
+
+#build > main .build-main-bottom label svg {
+  display: block;
+  width: 36px;
+  height: 36px;
+}
+
+#build > main .build-main-bottom label svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#build > main .build-main-bottom input {
+  width: calc(100% - 64px);
+  height: 100%;
+  padding: 0 15px;
+  font-size: 20px;
+}
+
+#build > aside {
+  width: calc(100% / 3);
+  height: 100%;
+}
+
+#build > aside .build-aside-top {
+  height: 64px;
+  background: #637074;
+}
+
+#build > aside .build-aside-top ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+#build > aside .build-aside-top ul li {
+  position: relative;
+  height: 100%;
+  width: 64px;
+}
+
+#build > aside .build-aside-top ul li:not(:last-child):after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 10;
+  top: 6px;
+  right: -1px;
+  height: calc(100% - 12px);
+  width: 2px;
+  background: #929b9e;
+}
+
+#build > aside .build-aside-top ul li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 64px;
+  height: 100%;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+#build > aside .build-aside-top ul li a:hover, #build > aside .build-aside-top ul li a:focus {
+  background: #a1e5ce;
+  color: #428a74;
+}
+
+#build > aside .build-aside-top ul li a:active {
+  background: #43cb9d;
+  color: white;
+}
+
+#build > aside .build-element-list {
+  height: calc(100% - 128px);
+  overflow: auto;
+}
+
+#build > aside .build-aside-bottom {
+  height: 64px;
+  background: #637074;
+}
+
+#build > aside .build-aside-bottom ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+}
+
+#build > aside .build-aside-bottom ul li {
+  height: 100%;
+}
+
+#build > aside .build-aside-bottom ul li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100%;
+  width: 64px;
+  margin: 0 auto;
+}
+
+#build > aside .build-aside-bottom ul li a svg {
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+
+#build > aside .build-aside-bottom ul li a svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#build > aside .build-aside-bottom ul li a:hover, #build > aside .build-aside-bottom ul li a:focus {
+  background: #a1e5ce;
+}
+
+#build > aside .build-aside-bottom ul li a:hover svg *, #build > aside .build-aside-bottom ul li a:focus svg * {
+  stroke: #428a74;
+}
+
+#build > aside .build-aside-bottom ul li a:active {
+  background: #43cb9d;
+}
+
+#build > aside .build-aside-bottom ul li a:active svg * {
+  stroke: white;
+}
+
+#build > aside .build-aside-bottom ul li .build-add-element {
+  background: #43cb9d;
+}
+
+#build > aside .build-aside-bottom ul li .build-add-element svg {
+  width: 36px;
+  height: 36px;
+}
+
+#build > aside .build-aside-bottom ul li .build-add-element:active {
+  background: #428a74;
+}
+
+#build > aside .build-aside-bottom ul li:not(:nth-child(3)) {
+  width: 64px;
+}
+
+#build > aside .build-aside-bottom ul li:nth-child(2) svg {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+#build > aside .build-aside-bottom ul li:nth-child(3) {
+  width: calc(100% - 192px);
+}
+
+#build > aside .build-aside-bottom ul li:nth-child(4) svg {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+/* ---------- DASHBOARD */
 [class*="user-icon"].jeselle {
   background-image: url("https://uguru.me/static/web/images/team/jeselle.png") !important;
 }
