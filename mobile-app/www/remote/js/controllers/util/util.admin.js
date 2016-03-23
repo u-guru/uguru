@@ -21,8 +21,8 @@ angular.module('uguru.util.controllers')
 			user_stories: AdminContent.getUserStories(),
 			createObjects: AdminContent.getBaseObjects($scope),
 			defaults: {
-				tabsIndex: 2,
-				sidebarIndex: 1
+				tabsIndex: 0,
+				sidebarIndex: 2
 			}
 		}
 		// $scope.selected_component = $scope.page.components[4];
@@ -311,11 +311,7 @@ angular.module('uguru.util.controllers')
 		}
 
 		$timeout(function() {
-<<<<<<< HEAD
-			$scope.page.layout.sidebar.index = 0 || $scope.page.defaults.sidebarIndex;
-=======
 			$scope.page.layout.sidebar.index = $scope.page.defaults.sidebarIndex;
->>>>>>> 4cc51a5ca2c83fc5549e941048d0aae2dcac4c01
 			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = $scope.page.defaults.tabsIndex;
 			getAdminElements();
 
