@@ -85,6 +85,12 @@ angular.module('uguru.util.controllers')
 		                    		var memberTitle = sideBarTabIndex.title.toLowerCase();
 		                    		$scope.page.action_items[memberTitle] = response.action_items[memberTitle];
 		                    	}
+
+
+
+								$scope.selected_scene = $scope.page.scenes[0];
+								var elem = document.querySelector('#cta-modal-selected-scene');
+								elem && elem.classList.add('show')
                     		// })
                     		// $timeout(function() {
                     		// 	var allDemoElems = document.querySelectorAll('demo')
@@ -341,7 +347,6 @@ angular.module('uguru.util.controllers')
 			$scope.page.layout.sidebar.index = $scope.page.defaults.sidebarIndex;
 			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = 2 || $scope.page.defaults.tabsIndex;
 			getAdminElements();
-
 
 		}, 1000)
 	}
