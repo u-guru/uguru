@@ -881,6 +881,9 @@
 				@include flex-center;
 				position: relative;
 				padding: 7.5px;
+				&[deprecate] {
+					color: rgba(mix($shamrock, $lake), .3);
+				}
 				dt {
 					width: calc(100% / 3);
 					padding: 7.5px;
@@ -902,7 +905,7 @@
 					left: 15px;
 					width: calc(100% - 30px);
 					height: 2px;
-					background: rgba($robin, .2);
+					background: rgba(mix($shamrock, $lake), .2);
 				}
 			}
 		}
@@ -1000,6 +1003,42 @@
 			width: 126px;
 			height: 110px;
 			margin-bottom: 15px;
+		}
+	}
+}
+
+.demo-scene {
+	position: relative;
+	width: 100%;
+	> svg {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+	svg {
+		&.crimson {
+			[stroke] {
+				stroke: $crimson!important;
+			}
+			[fill*="#"] {
+				fill: $crimson!important;
+			}
+		}
+		&.moxie {
+			[stroke] {
+				stroke: $moxie!important;
+			}
+			[fill*="#"] {
+				fill: $moxie!important;
+			}
+		}
+		&.gold {
+			[stroke] {
+				stroke: $gold!important;
+			}
+			[fill*="#"] {
+				fill: $gold!important;
+			}
 		}
 	}
 }

@@ -703,6 +703,21 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   justify-content: flex-end;
 }
 
+[class*="flex"][class*="-left"] {
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+[class*="flex"][class*="-middle"] {
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+[class*="flex"][class*="-spaceX"] {
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
 .flex-grow {
   -webkit-flex-grow: 1;
   flex-grow: 1;

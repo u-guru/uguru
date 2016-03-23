@@ -1257,6 +1257,10 @@
   padding: 7.5px;
 }
 
+#admin .admin-definition-list dl div[deprecate] {
+  color: rgba(93, 172, 193, 0.3);
+}
+
 #admin .admin-definition-list dl div dt {
   width: calc(100% / 3);
   padding: 7.5px;
@@ -1280,7 +1284,7 @@
   left: 15px;
   width: calc(100% - 30px);
   height: 2px;
-  background: rgba(43, 179, 184, 0.2);
+  background: rgba(93, 172, 193, 0.2);
 }
 
 #admin .admin-details {
@@ -1393,4 +1397,39 @@
   width: 126px;
   height: 110px;
   margin-bottom: 15px;
+}
+
+.demo-scene {
+  position: relative;
+  width: 100%;
+}
+
+.demo-scene > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.demo-scene svg.crimson [stroke] {
+  stroke: #d3242c !important;
+}
+
+.demo-scene svg.crimson [fill*="#"] {
+  fill: #d3242c !important;
+}
+
+.demo-scene svg.moxie [stroke] {
+  stroke: #43cb9d !important;
+}
+
+.demo-scene svg.moxie [fill*="#"] {
+  fill: #43cb9d !important;
+}
+
+.demo-scene svg.gold [stroke] {
+  stroke: #F6C64E !important;
+}
+
+.demo-scene svg.gold [fill*="#"] {
+  fill: #F6C64E !important;
 }
