@@ -21,8 +21,8 @@ angular.module('uguru.util.controllers')
 			user_stories: AdminContent.getUserStories(),
 			createObjects: AdminContent.getBaseObjects($scope),
 			defaults: {
-				tabsIndex: 0,
-				sidebarIndex: 2
+				tabsIndex: 2,
+				sidebarIndex: 1
 			}
 		}
 		// $scope.selected_component = $scope.page.components[4];
