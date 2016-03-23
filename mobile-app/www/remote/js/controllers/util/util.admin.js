@@ -21,11 +21,12 @@ angular.module('uguru.util.controllers')
 			user_stories: AdminContent.getUserStories(),
 			createObjects: AdminContent.getBaseObjects($scope),
 			defaults: {
-				tabsIndex: 0,
-				sidebarIndex: 0
+				tabsIndex: 2,
+				sidebarIndex: 1
 			}
 		}
 		// $scope.selected_component = $scope.page.components[4];
+
 
 		$scope.elementCTATabOptions = {
 			components: ['Demo', 'Attributes', 'States', 'Use Cases', 'Element Map', 'To Do'],
@@ -38,32 +39,21 @@ angular.module('uguru.util.controllers')
 		$scope.initAndLaunchLayoutCTA = function($event, layout) {
 			var targetElem = $event.target;
 			$scope.selected_layout = layout;
-			// $scope.selected_layout = layout;
-			// $timeout(function() {
-			// 	$scope.$apply(function() {
-			// 		$scope.selected_component = component;
-			// 		var demoComponentContainer = angular.element(document.querySelector('#demo-component-template'));
-			// 		demoComponentContainer.html($scope.selected_component.sample.template);
-			// 		console.log(demoComponentContainer);
-			// 		$compile(demoComponentContainer.contents())($scope);
-			// 	})
-			// })
 
-			// $timeout(function() {
-			// 	$scope.selected_component = component;
-			// 	var demo = document.querySelector('#demo-template');
-			// 	$compile(demo)($scope);
-			// }, 1000)
 
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-layout';
 			CTAService.initSingleCTA('#' + targetElem.id, '#main-admin-content');
-			// $timeout(function() {
-			// 	var targetElem = document.querySelector('#cta-box-selected-layout');
-			// 	angular.element(targetElem).triggerHandler('click');
-			// 	var modalElem = document.querySelector('#cta-modal-selected-layout');
-			// 	modalElem && modalElem.classList.add('show');
-			// })
+		}
+
+		$scope.initAndLaunchSceneCTA = function($event, scene) {
+			var targetElem = $event.target;
+			$scope.selected_scene = scene;
+
+
+			$scope.lastCTABoxTargetElem = targetElem;
+			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-scene';
+			CTAService.initSingleCTA('#' + targetElem.id, 'body');
 		}
 
 		function createAdminElement(element_details) {
@@ -80,6 +70,7 @@ angular.module('uguru.util.controllers')
                     		// $scope.$apply(function() {
                     			$scope.page.components = response.components;
 		                    	$scope.page.layouts = response.layouts;
+		                    	$scope.page.scenes = response.scenes;
 		                    	$scope.page.moodboard = response.moodboards;
 		                    	$scope.page.user_stories = response.user_stories;
 		                    	$scope.page.assets = response.assets;
@@ -320,7 +311,7 @@ angular.module('uguru.util.controllers')
 		}
 
 		$timeout(function() {
-			$scope.page.layout.sidebar.index = 1 || $scope.page.defaults.sidebarIndex;
+			$scope.page.layout.sidebar.index = $scope.page.defaults.sidebarIndex;
 			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = $scope.page.defaults.tabsIndex;
 			getAdminElements();
 
