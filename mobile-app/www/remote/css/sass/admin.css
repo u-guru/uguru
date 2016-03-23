@@ -13,6 +13,7 @@
 #build > main {
   width: calc(100% / 3 * 2);
   height: 100%;
+  overflow: hidden;
   background: #F1F1F1;
 }
 
@@ -112,6 +113,7 @@
 
 #build > main .build-player {
   height: calc(100% - 128px);
+  width: 100%;
 }
 
 #build > main .build-main-bottom {
@@ -146,6 +148,63 @@
   display: flex;
   width: 100%;
   overflow: auto;
+  height: 100%;
+}
+
+#build > main .build-main-bottom .builder-search-results ul::-webkit-scrollbar {
+  display: none;
+}
+
+#build > main .build-main-bottom .builder-search-results ul::-moz-scrollbar {
+  display: none;
+}
+
+#build > main .build-main-bottom .builder-search-results ul li {
+  position: relative;
+  height: 100%;
+}
+
+#build > main .build-main-bottom .builder-search-results ul li:not(:last-child):after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 10;
+  top: 6px;
+  right: -1px;
+  height: calc(100% - 12px);
+  width: 2px;
+  background: #adbbbf;
+}
+
+#build > main .build-main-bottom .builder-search-results ul li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 0 15px;
+  background: #8A9EA3;
+}
+
+#build > main .build-main-bottom .builder-search-results ul li a:hover, #build > main .build-main-bottom .builder-search-results ul li a:focus {
+  background: #c5cfd1;
+  color: #657377;
+}
+
+#build > main .build-main-bottom .builder-search-results ul li a:active {
+  background: #657377;
+  color: white;
 }
 
 #build > main .build-main-bottom label {
@@ -213,6 +272,14 @@
   overflow: auto;
 }
 
+#build > aside .build-aside-top ul::-webkit-scrollbar {
+  display: none;
+}
+
+#build > aside .build-aside-top ul::-moz-scrollbar {
+  display: none;
+}
+
 #build > aside .build-aside-top ul li {
   position: relative;
   height: 100%;
@@ -265,8 +332,304 @@
 }
 
 #build > aside .build-element-list {
+  width: 100%;
   height: calc(100% - 128px);
   overflow: auto;
+  background: #40484B;
+}
+
+#build > aside .build-element-list > ul {
+  padding: 7.5px;
+  counter-reset: li;
+}
+
+#build > aside .build-element-list > ul > li {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding: 7.5px;
+}
+
+#build > aside .build-element-list > ul > li:before {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  content: counter(li);
+  counter-increment: li;
+  width: 48px;
+  height: 48px;
+  font-size: 28px;
+  font-weight: 600;
+  background: #8A9EA3;
+}
+
+#build > aside .build-element-list > ul > li > div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: calc(100% - 48px);
+  height: 48px;
+  background: #637074;
+}
+
+#build > aside .build-element-list > ul > li > div h1 {
+  padding: 0 15px;
+  font-size: 28px;
+  font-weight: 600;
+  width: calc(100% - 48px);
+}
+
+#build > aside .build-element-list > ul > li > div a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: #43cb9d;
+}
+
+#build > aside .build-element-list > ul > li > div a svg {
+  display: block;
+  width: 36px;
+  height: 36px;
+}
+
+#build > aside .build-element-list > ul > li > div a svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#build > aside .build-element-list > ul > li > div a:hover, #build > aside .build-element-list > ul > li > div a:focus {
+  background: #a1e5ce;
+}
+
+#build > aside .build-element-list > ul > li > div a:hover svg *, #build > aside .build-element-list > ul > li > div a:focus svg * {
+  stroke: #428a74;
+}
+
+#build > aside .build-element-list > ul > li > div a:active {
+  background: #428a74;
+}
+
+#build > aside .build-element-list > ul > li > div a:active svg * {
+  stroke: white;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list {
+  width: 100%;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li {
+  background: #4c5559;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child h2 {
+  padding: 15px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  padding: 5px;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li {
+  padding: 5px;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li a {
+  border-radius: 1000px;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: #2B3234;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li a svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li a svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(1) a svg * {
+  stroke: #43cb9d;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(1) a:hover, #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(1) a:focus {
+  background: #43cb9d;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(1) a:hover svg *, #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(1) a:focus svg * {
+  stroke: white;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(1) a:active {
+  background: #a1e5ce;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(1) a:active svg * {
+  stroke: #428a74;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(2) a svg {
+  -webkti-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(2) a svg * {
+  stroke: #d3242c;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(2) a:hover, #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(2) a:focus {
+  background: #d3242c;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(2) a:hover svg *, #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(2) a:focus svg * {
+  stroke: white;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(2) a:active {
+  background: #e99296;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(2) a:active svg * {
+  stroke: #8a363c;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(3) a svg * {
+  stroke: #F6C64E;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(3) a:hover, #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(3) a:focus {
+  background: #F6C64E;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(3) a:hover svg *, #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(3) a:focus svg * {
+  stroke: white;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(3) a:active {
+  background: #fbe3a7;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(3) a:active svg * {
+  stroke: #9b874d;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding: 7.5px;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values li {
+  padding: 7.5px;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values li:not(:only-child) {
+  width: 50%;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values li:only-child {
+  width: 100%;
 }
 
 #build > aside .build-aside-bottom {
@@ -319,7 +682,7 @@
 #build > aside .build-aside-bottom ul li a svg * {
   fill: none;
   stroke: white;
-  stroke-width: 6px;
+  stroke-width: 4px;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -347,6 +710,10 @@
 #build > aside .build-aside-bottom ul li .build-add-element svg {
   width: 36px;
   height: 36px;
+}
+
+#build > aside .build-aside-bottom ul li .build-add-element svg * {
+  stroke-width: 6px;
 }
 
 #build > aside .build-aside-bottom ul li .build-add-element:active {
