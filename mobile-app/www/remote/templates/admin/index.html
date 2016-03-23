@@ -77,17 +77,17 @@
                         </div>
 
 
-                        <div class='admin-details flex-wrap-start ugrid-2 full-xy' ng-if='selected_scene.tabIndex === 1'>
+                        <div class='admin-details flex-wrap-center full-xy' ng-if='selected_scene.tabIndex === 1'>
                             <div class='admin-description-container'>
-                                <div>
+                                <div class='full-x'>
                                     <h1>Fluid States</h1>
                                     <div class='uppercase weight-300 m10y opacity-50'> {{selected_scene.states.length}} total</div>
                                 </div>
                             </div>
-                            <div class='admin-requirements-container relative'>
-                                <div class='absolute full-xy flex-wrap-center'>
+                            <div class='admin-requirements-container relative full-xy'>
+                                <div class='absolute full-xy flex-wrap-center flex-stretch'>
                                     <h1 class='p20xy weight-700'>All FLUID States</h1>
-                                    <ul class='full-x p20xy'>
+                                    <ul class='full-x p20xy flex-wrap-center text-center'>
                                         <li class='full-x ugrid-5 weight-900'>
                                             <div class='flex-wrap-center text-center p20xy'>
                                                 State #
@@ -105,12 +105,14 @@
                                                 Estimated Time
                                             </div>
                                         </li>
-                                        <li class='full-x ugrid-5 weight-700' ng-repeat='state in selected_scene.states'>
+                                    </ul>
+                                    <ul class='full-x flex-wrap-center text-center'>
+                                        <li class='full-x ugrid-5 weight-700' ng-repeat='state in selected_scene.element_states.fluid'>
                                             <div class='flex-wrap-center text-center p20xy'>
                                                 #{{state.index}}
                                             </div>
                                             <div class='flex-wrap-center text-center p20xy'>
-                                                {{state.title}}
+                                                {{state.name}}
                                             </div>
                                             <div class='flex-wrap-center text-center p20xy'>
                                                 {{state.description}}
@@ -119,7 +121,23 @@
                                                 {{state.assigned}}
                                             </div>
                                             <div class='flex-wrap-center text-center p20xy'>
-                                                {{state.estimated_time}}
+                                                {{state.estimated_time}} minutes
+                                            </div>
+                                            <div class="full-x relative flex-wrap-center text-center p20xy ugrid-5" ng-if='state.substates && state.substates.length' ng-repeat="substate in state.substates">
+                                                <ul class='absolute full-xy ugrid-5 left-0 top-0 bg-charcoal-50p'>
+                                                    <li class='flex-wrap-center text-center p20xy'>
+                                                        {{substate.index}} # {{$index + 1}}
+                                                    </li>
+                                                    <li class='flex-wrap-center text-center p20xy'>
+                                                        {{substate.name}} # {{$index + 1}}
+                                                    </li>
+                                                    <li class='flex-wrap-center text-center p20xy'>
+                                                        {{substate.description}} # {{$index + 1}}
+                                                    </li>
+                                                    <li class='flex-wrap-center text-center p20xy'>
+                                                        {{substate.estimated_time}} minutes
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </li>
                                     </ul>
@@ -390,46 +408,38 @@
                         class='absolute full-xy top-0 left-0'
                         ng-hide='page.layout.sections[0].tabs.index !== $index'
                         ng-repeat='option in page.layout.sections[0].tabs.options'
-                        ng-init='action_items = option.action_items'
                         ng-if='$index > 0'>
-                        <h1 class="admin-small-header">Today's Priorities</h1>
+                        <h1 class="admin-small-header uppercase p20xy" >{{option.title}}'s Priorities</h1>
                         <div class='admin-action-item-list admin-content-section'>
                             <!-- I removed commented out content for now, I put it at the bottom because it was distracting -->
                             <ul>
-                                <li class="type-component type-prioritized">
+                                <li class="type-component type-normal" ng-class="{'type-prioritized': action_item.priority > 7 && !action_item.completed, 'type-completed': action_item.completed, 'type-future': !action_item.priority && !action_item.completed}" ng-repeat="action_item in page.action_items[option.title.toLowerCase()]">
                                     <a>
                                         <div>
                                             <div>
-                                                <h1>Title</h1>
-                                                <h2>Component</h2>
+                                                <h1>#{{$index + 1}}. {{action_item.name}}</h1>
+                                                <h2>{{action_item.type}}</h2>
                                             </div>
                                         </div>
                                         <div>
                                             <div>
                                                 <ul>
                                                     <li>
-                                                        <user-icon class="jeselle" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="gabrielle" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="samir" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="jason" size="32"></user-icon>
+                                                        <user-icon src="page.team_members[options.title.toLowerCase()].profile_url" size="32"></user-icon>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div>
-                                                <h3><span>03/16</span> - <span>4 hours</span></h3>
-                                                <span class="priority">Priority</span>
+                                                <h3><span>{{action_item.time_created}}</span> - <span>{{action_item.estimated_time}} hours</span></h3>
+                                                <span class='normal' ng-class="{'priority': action_item.priority > 7, 'completed': action_item.completed, 'future': !action_item.priority || !action_item.completed}">Priority</span>
                                             </div>
                                         </div>
                                     </a>
                                 </li>
+                                <li>
+                                </li>
                                 <li class="type-moodboard type-normal">
-                                    <a>
+                                    <!-- <a>
                                         <div>
                                             <div>
                                                 <h1>Title</h1>
@@ -458,10 +468,10 @@
                                                 <span class="priority">Normal</span>
                                             </div>
                                         </div>
-                                    </a>
+                                    </a> -->
                                 </li>
                                 <li class="type-tools type-completed">
-                                    <a>
+                                    <!-- <a>
                                         <div>
                                             <div>
                                                 <h1>Title</h1>
@@ -490,10 +500,11 @@
                                                 <span class="priority">Complete</span>
                                             </div>
                                         </div>
-                                    </a>
+                                    </a> -->
                                 </li>
                             </ul>
                             <ul>
+                                <!--
                                 <li class="type-reference type-future">
                                     <a>
                                         <div>
@@ -621,7 +632,7 @@
                                             </div>
                                         </div>
                                     </a>
-                                </li>
+                                </li> -->
                                 <!-- <li ng-repeat='action_item in action_items' ng-if='action_item.action_type === "assets"' class='text-left weight-300 bg-shamrock' ng-click='initAndLaunchAssetCTA($event, action_item)' style='border:4px dashed white;'>
                                     <div class='action-item p20xy m05xy relative'>
                                         <h1 class='txt-white weight-600'>{{$index + 1}}.
