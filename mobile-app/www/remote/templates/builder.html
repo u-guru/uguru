@@ -109,11 +109,27 @@
 									<ul class="build-property-values">
 										<li>
 											<h3>X</h3>
-											<input type="tel" placeholder="0"/>
+											<input type="tel" placeholder="0" size="5" />
+											<div>
+												<a>px &dtrif;</a>
+												<ul class="build-property-options">
+													<li><a>%</a></li>
+													<li><a>em</a></li>
+													<li><a>rem</a></li>
+												</ul>
+											</div>
 										</li>
 										<li>
 											<h3>Y</h3>
-											<input type="tel" placeholder="0"/>
+											<input type="tel" placeholder="0" size="5" />
+											<div>
+												<a>px &dtrif;</a>
+												<ul class="build-property-options">
+													<li><a>%</a></li>
+													<li><a>em</a></li>
+													<li><a>rem</a></li>
+												</ul>
+											</div>
 										</li>
 									</ul>
 								</div>
@@ -136,11 +152,109 @@
 								<div>
 									<ul class="build-property-values">
 										<li>
-											<h3>X</h3>
-											<input type="tel" placeholder="0"/>
+											<h3>time</h3>
+											<input type="tel" placeholder="0" size="5" />
+											<div>
+												<a>ms &dtrif;</a>
+												<ul class="build-property-options">
+													<li><a>s</a></li>
+												</ul>
+											</div>
 										</li>
 									</ul>
 								</div>
+							</li>
+							<li>
+								<div>
+									<h2>translate</h2>
+									<ul class="build-property-options">
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/check.html'"></a>
+										</li>
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+										</li>
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+										</li>
+									</ul>
+								</div>
+								<div>
+									<ul class="build-property-values">
+										<li>
+											<h3>X</h3>
+											<input type="tel" placeholder="0" size="5" />
+											<div>
+												<a>px &dtrif;</a>
+												<ul class="build-property-options">
+													<li><a>%</a></li>
+													<li><a>em</a></li>
+													<li><a>rem</a></li>
+												</ul>
+											</div>
+										</li>
+										<li>
+											<h3>Y</h3>
+											<input type="tel" placeholder="0" size="5" />
+											<div>
+												<a>px &dtrif;</a>
+												<ul class="build-property-options">
+													<li><a>%</a></li>
+													<li><a>em</a></li>
+													<li><a>rem</a></li>
+												</ul>
+											</div>
+										</li>
+										<li>
+											<h3>Z</h3>
+											<input type="tel" placeholder="0" size="5" />
+											<div>
+												<a>px &dtrif;</a>
+												<ul class="build-property-options active">
+													<li><a>%</a></li>
+													<li><a>em</a></li>
+													<li><a>rem</a></li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<div>
+									<h2>fill</h2>
+									<ul class="build-property-options">
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/check.html'"></a>
+										</li>
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+										</li>
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+										</li>
+									</ul>
+								</div>
+								<div>
+									<ul class="build-property-values">
+										<li>
+											<h3>#</h3>
+											<input type="text" placeholder="000000" size="12"/>
+											<div>
+												<a>hex &dtrif;</a>
+												<ul class="build-property-options">
+													<li><a>var</a></li>
+													<li><a>rgb</a></li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<a>
+									<h2>add property &dtrif;</h2>
+								</a>
 							</li>
 						</ul>
 					</li>

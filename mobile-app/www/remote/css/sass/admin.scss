@@ -290,7 +290,22 @@
 					.build-property-list {
 						width: 100%;
 						> li {
+							position: relative;
 							background: lighten($slate, 5%);
+							&:not(:last-child) {
+								&:after {
+									@include round;
+									content: "";
+									display: block;
+									position: absolute;
+									z-index: 10;
+									left: 15px;
+									bottom: -1px;
+									width: calc(100% - 30px);
+									height: 2px;
+									background: mix(lighten($slate, 5%), white, 80%);
+								}
+							}
 							> div {
 								&:first-child {
 									@include flex;
@@ -298,8 +313,8 @@
 									@include prefix(justify-content, space-between, webkit);
 									h2 {
 										padding: 15px;
-										 font-size: 24px;
-										 font-weight: 600;
+										font-size: 24px;
+										font-weight: 600;
 									}
 									.build-property-options {
 										@include flex;
@@ -307,28 +322,23 @@
 										li {
 											padding: 5px;
 											a {
-												@include round;
 												@include flex;
 												@include flex-center;
 												width: 24px;
 												height: 24px;
-												background: $charcoal;
+												background: none;
+												border-radius: 2px;
 												svg {
 													display: block;
 													width: 18px;
 													height: 18px;
 													* {
-														@include svg-stroke(white, 10);
+														@include svg-stroke(rgba(white, .5), 10);
 													}
 												}
 											}
 											&:nth-child(1) {
 												a {
-													svg {
-														* {
-															stroke: $moxie;
-														}
-													}
 													&:hover, &:focus {
 														background: $moxie;
 														svg {
@@ -350,10 +360,7 @@
 											&:nth-child(2) {
 												a {
 													svg {
-														@include prefix(transform, rotate(45deg), webkti moz ms o);
-														* {
-															stroke: $crimson;
-														}
+														@include prefix(transform, rotate(45deg), webkit moz ms o);
 													}
 													&:hover, &:focus {
 														background: $crimson;
@@ -375,11 +382,6 @@
 											}
 											&:nth-child(3) {
 												a {
-													svg {
-														* {
-															stroke: $gold;
-														}
-													}
 													&:hover, &:focus {
 														background: $gold;
 														svg {
@@ -406,15 +408,97 @@
 										@include flex;
 										@include flex-wrap;
 										padding: 7.5px;
-										li {
+										margin-top: -15px;
+										> li {
+											@include flex;
+											@include flex-center;
 											padding: 7.5px;
-											&:not(:only-child) {
-												width: 50%;
+											h3 {
+												@include flex;
+												@include flex-center;
+												min-width: 28px;
+												height: 28px;
+												padding: 0 6px;
+												font-size: 20px;
+												font-weight: 600;
+												background: $campus;
+												text-transform: lowercase;
 											}
-											&:only-child {
-												width: 100%;
+											input {
+												@include flex;
+												@include flex-center;
+												height: 28px;
+												font-size: 16px;
+												text-align: center;
+											}
+											div {
+												position: relative;
+												> a {
+													@include flex;
+													@include flex-center-vertical;
+													background: $moxie;
+													height: 28px;
+													font-size: 16px;
+													font-weight: 600;
+													padding: 0 5px;
+													&:hover, &:focus {
+														background: mix($moxie, white);
+														color: mix($moxie, $slate);
+													}
+													&:active {
+														background: mix($moxie, $slate);
+														color: white;
+													}
+												}
+												.build-property-options {
+													position: absolute;
+													top: 28px;
+													left: 0;
+													width: 100%;
+													z-index: 11;
+													&:not(.active) {
+														@include opacity(0);
+														z-index: -11;
+													}
+													li {
+														a {
+															@include flex;
+															@include flex-center;
+															width: 100%;
+															height: 28px;
+															background: rgba($charcoal, .95);
+															font-size: 16px;
+															font-weight: 600;
+															text-align: center;
+															&:hover, &:focus {
+																background: mix($moxie, white);
+																color: mix($moxie, $slate);
+															}
+															&:active {
+																background: mix($moxie, $slate);
+																color: white;
+															}
+														}
+													}
+												}
 											}
 										}
+									}
+								}
+							}
+							&:last-child {
+								> a {
+									@include opacity(.5);
+									display: block;
+									width: 100%;
+									h2 {
+										padding: 15px;
+										font-size: 24px;
+										font-weight: 600;
+										text-align: center;
+									}
+									&:hover, &:focus {
+										@include opacity(1);
 									}
 								}
 							}
@@ -1053,7 +1137,7 @@
 	}
 	
 	// components
-	.admin-components, .admin-containers, .admin-layouts, .admin-stories {
+	.admin-components, .admin-containers, .admin-scenes, .admin-layouts, .admin-stories {
 		> h2 {
 			font-weight: 600;
 			padding: 15px 15px 0;
@@ -1101,6 +1185,10 @@
 								border-color: mix(mix($shamrock, $robin), $slate);
 							}
 						}
+						&:only-child {
+							border-bottom-left-radius: 2px;
+							border-bottom-right-radius: 2px;
+						}
 					}
 					> h2 {
 						padding: 10px 15px;
@@ -1131,22 +1219,10 @@
 			}
 		}
 	}
-	.admin-containers {
+	.admin-containers, .admin-scenes, .admin-layouts, .admin-stories {
 		> ul {
 			> li {
 				width: 50%;
-				> div {
-					> div {
-						height: 400px;
-					}
-				}
-			}
-		}
-	}
-	.admin-layouts, .admin-stories {
-		> ul {
-			> li {
-				width: 100%;
 				> div {
 					> div {
 						height: 400px;
@@ -1164,37 +1240,76 @@
 		}
 	}
 	
+	// states
+	.admin-states {
+		background: $smoke;
+		.admin-states-header {
+			@include flex;
+			@include flex-center;
+			height: 64px;
+			background: $smoke;
+			width: 100%;
+			font-weight: 600;
+			font-size: 16px;
+			color: $slate;
+		}
+	}
+	
 	// action items
 	.admin-action-item-list {
 		padding: 7.5px;
 		> ul {
 			width: 50%;
 			&:only-child {
-				width: 100%;
+				margin: 0 auto;
+				width: 60%;
 			}
 			> li {
 				width: 100%;
 				padding: 7.5px;
-				> a {
+				> div {
+					a {
+						color: lighten($slate, 15%);
+						&:hover, &:focus {
+							color: $lake!important;
+						}
+					}
+				}
+				> a, > div {
 					@include flex;
 					@include prefix(justify-content, space-between, webkit);
+					@include prefix(transition, all 150ms ease-in-out);
 					background: white;
 					color: lighten($slate, 15%);
 					border: 2px solid $lake;
 					border-radius: 2px;
-					&:hover {
+					&:hover, &:focus {
 						color: $lake;
 						background: mix($lake, white, 10%);
+					}
+					&:nth-child(2) {
+						margin-top: 5px;
+						padding: 15px;
+						font-size: 18px;
+						font-weight: 400;
+						line-height: 1.2;
+						color: $slate!important;
+						&:not(.active) {
+							display: none;
+						}
 					}
 					> div {
 						@include flex;
 						@include flex-center-vertical;
-						&:first-child {
+						&:nth-child(1) {
 							> div {
+								@include flex;
+								@include flex-center-vertical;
+								@include flex-wrap;
 								padding: 15px;
 							}
 						}
-						&:last-child {
+						&:nth-child(2) {
 							@include flex;
 							@include flex-center-vertical;
 							> div {
@@ -1211,19 +1326,55 @@
 						margin-top: 0;
 					}
 					h1 {
-						font-size: 28px;
+						width: 100%;
+						font-size: 20px;
 						font-weight: 600;
+						span {
+							display: inline;
+							svg {
+								display: block;
+								width: 20px;
+								height: 20px;
+								* {
+									@include svg-stroke(lighten($slate, 15%), 5);
+								}
+							}
+						}
+					}
+					.checkbox-container {
+						margin-top: 5px;
+						margin-right: 15px;
+						div {
+							input:checked + span {
+								background: $lake;
+								svg {
+									stroke: white;
+								}
+							}
+						}
+						&.complete {
+							div {
+								input:checked + span {
+									background: $moxie;
+									svg {
+										stroke: white;
+									}
+								}
+							}
+						}
 					}
 					h2 {
 						margin-top: 5px!important;
 						padding: 10px 15px;
 						background: $lake;
+						border-radius: 2px;
 						color: white;
 						font-size: 18px;
 						font-weight: 600;
 					}
 					h3 {
 						font-size: 16px;
+						font-weight: 600;
 					}
 					ul {
 						@include flex;
@@ -1247,41 +1398,49 @@
 						font-size: 18px;
 						font-weight: 600;
 						background: $lake;
+						border-radius: 2px;
 						color: white;
 					}
 				}
 				&.type-component {
-					> a {
+					> a, > div {
 						h2 {
 							background: mix($shamrock, $robin);
 						}
 					}
 				}
 				&.type-reference {
-					> a {
+					> a, > div {
 						h2 {
 							background: mix($shamrock, $lake);
 						}
 					}
 				}
 				&.type-moodboard {
-					> a {
+					> a, > div {
 						h2 {
 							background: mix($shamrock, $cobalt);
 						}
 					}
 				}
 				&.type-tools {
-					> a {
+					> a, > div {
 						h2 {
 							background: mix($shamrock, $eggplant);
 						}
 					}
 				}
 				&.type-prioritized {
-					> a {
+					> div {
+						a {
+							&:hover, &:focus {
+								color: $crimson!important;
+							}
+						}
+					}
+					> a, > div {
 						border-color: $crimson;
-						&:hover {
+						&:hover, &:focus {
 							color: $crimson;
 							background: mix($crimson, white, 10%)
 						}
@@ -1291,9 +1450,16 @@
 					}
 				}
 				&.type-completed {
-					> a {
+					> div {
+						a {
+							&:hover, &:focus {
+								color: $moxie!important;
+							}
+						}
+					}
+					> a, > div {
 						border-color: $moxie;
-						&:hover {
+						&:hover, &:focus {
 							color: $moxie;
 							background: mix($moxie, white, 10%)
 						}
@@ -1303,12 +1469,19 @@
 					}
 				}
 				&.type-future {
-					> a {
+					> div {
+						a {
+							&:hover, &:focus {
+								color: lighten($slate, 45%)!important;
+							}
+						}
+					}
+					> a , > div{
 						border-color: lighten($slate, 45%);
 						> * {
 							@include opacity(.5);
 						}
-						&:hover {
+						&:hover, &:focus {
 							color: lighten($slate, 45%);
 							background: mix(lighten($slate, 45%), white, 10%)
 						}

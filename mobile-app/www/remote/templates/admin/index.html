@@ -62,8 +62,8 @@
                         <path stroke-width="5" d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
                     </svg>
                 </a>
-                <div class='flex-wrap-center full-xy relative flex-stretch bg-robin' ng-hide='!selected_scene.name'>
-                    <div class='header full-x flex-wrap-center relative' style='height: 25%'>
+                <div class='flex-wrap-center full-xy relative flex-stretch' ng-hide='!selected_scene.name'>
+                    <div class='header full-x flex-wrap-center relative bg-robin' style='height: 25%'>
                         <h1 class='full-x p30bottom txt-white text-center weight-600 txt-36'>{{selected_scene.name}} scene</h1>
                         <div class='tab-container bg-robin absolute bottom-0 left-0'>
                             <tabs index="selected_scene.tabIndex" options="['demo', 'fluid states', 'components', 'time states', 'action items']"/></tabs>
@@ -76,86 +76,66 @@
                             <div class='full-xy absolute top-0 left-0' ng-include='img_base + selected_scene.sample.template_url' ng-init='scene = selected_scene.sample.scope' ng-if='selected_scene.sample.template_url'> </div>
                         </div>
 
-
-                        <div class='admin-details flex-wrap-center full-xy' ng-if='selected_scene.tabIndex === 1'>
-                            <div class='admin-description-container'>
-                                <div class='full-x'>
-                                    <h1>Fluid States</h1>
-                                    <div class='uppercase weight-300 m10y opacity-50'> {{selected_scene.states.length}} total</div>
-                                </div>
+                        <div class='admin-states flex-wrap-start full-xy' ng-if='selected_scene.tabIndex === 1'>
+                            <div class='admin-states-header'>
+                                <h1>Fluid States</h1>
+                                <div class='uppercase weight-300 m10y opacity-50'>{{selected_scene.states.length}} total</div>
                             </div>
-                            <div class='admin-requirements-container relative full-xy'>
-                                <div class='absolute full-xy flex-wrap-center flex-stretch'>
-                                    <h1 class='p20xy weight-700'>All FLUID States</h1>
-                                    <ul class='full-x p20xy flex-wrap-center text-center'>
-                                        <li class='full-x ugrid-5 weight-900'>
-                                            <div class='flex-wrap-center text-center p20xy'>
-                                                State #
-                                            </div>
-                                            <div class='flex-wrap-center text-center p20xy'>
-                                                Title
-                                            </div>
-                                            <div class='flex-wrap-center text-center p20xy'>
-                                                Description
-                                            </div>
-                                            <div class='flex-wrap-center text-center p20xy'>
-                                                Assigned to
-                                            </div>
-                                            <div class='flex-wrap-center text-center p20xy'>
-                                                Estimated Time
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <ul class='full-x flex-wrap-center text-center'>
-                                        <li class='full-x ugrid-5 weight-700' ng-repeat='state in selected_scene.element_states.fluid'>
-                                            <div class='flex-wrap-center text-center p20xy'>
-                                                #{{state.index}}
-                                            </div>
-                                            <div class='flex-wrap-center text-center p20xy'>
-                                                {{state.name}}
-                                            </div>
-                                            <div class='flex-wrap-center text-center p20xy'>
-                                                {{state.description}}
-                                            </div>
-                                            <div class='flex-wrap-center text-center p20xy'>
-                                                {{state.assigned}}
-                                            </div>
-                                            <div class='flex-wrap-center text-center p20xy'>
-                                                {{state.estimated_time}} minutes
-                                            </div>
-                                            <div class="full-x relative flex-wrap-center text-center p20xy ugrid-5" ng-if='state.substates && state.substates.length' ng-repeat="substate in state.substates">
-                                                <ul class='absolute full-xy ugrid-5 left-0 top-0 bg-charcoal-50p'>
-                                                    <li class='flex-wrap-center text-center p20xy'>
-                                                        {{substate.index}} # {{$index + 1}}
-                                                    </li>
-                                                    <li class='flex-wrap-center text-center p20xy'>
-                                                        {{substate.name}} # {{$index + 1}}
-                                                    </li>
-                                                    <li class='flex-wrap-center text-center p20xy'>
-                                                        {{substate.description}} # {{$index + 1}}
-                                                    </li>
-                                                    <li class='flex-wrap-center text-center p20xy'>
-                                                        {{substate.estimated_time}} minutes
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <!-- @samir -->
-                                    <!-- These are a few different things you can use here for lists when you need them -->
-                                    <!-- <ul>
-                                        <li><div>This is a requirement. You can remove this demo later.</div></li>
-                                        <li><div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div></li>
-                                        <li><div>Ded do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></li>
-                                        <li><div>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div></li>
-                                    </ul> -->
-                                    <!-- <ol class="numbered-list">
-                                        <li><div>This is a requirement. You can remove this demo later.</div></li>
-                                        <li><div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div></li>
-                                        <li><div>Ded do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></li>
-                                        <li><div>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div></li>
-                                    </ol> -->
-                                </div>
+                            <div class='admin-states-container'>
+                                <ul class='full-x p20xy flex-wrap-center text-center'>
+                                    <li class='full-x ugrid-5 weight-900'>
+                                        <div class='flex-wrap-center text-center p20xy'>
+                                            State #
+                                        </div>
+                                        <div class='flex-wrap-center text-center p20xy'>
+                                            Title
+                                        </div>
+                                        <div class='flex-wrap-center text-center p20xy'>
+                                            Description
+                                        </div>
+                                        <div class='flex-wrap-center text-center p20xy'>
+                                            Assigned to
+                                        </div>
+                                        <div class='flex-wrap-center text-center p20xy'>
+                                            Estimated Time
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class='full-x flex-wrap-center text-center'>
+                                    <li class='full-x ugrid-5 weight-700' ng-repeat='state in selected_scene.element_states.fluid'>
+                                        <div class='flex-wrap-center text-center p20xy'>
+                                            #{{state.index}}
+                                        </div>
+                                        <div class='flex-wrap-center text-center p20xy'>
+                                            {{state.name}}
+                                        </div>
+                                        <div class='flex-wrap-center text-center p20xy'>
+                                            {{state.description}}
+                                        </div>
+                                        <div class='flex-wrap-center text-center p20xy'>
+                                            {{state.assigned}}
+                                        </div>
+                                        <div class='flex-wrap-center text-center p20xy'>
+                                            {{state.estimated_time}} minutes
+                                        </div>
+                                        <div class="full-x relative flex-wrap-center text-center p20xy ugrid-5" ng-if='state.substates && state.substates.length' ng-repeat="substate in state.substates">
+                                            <ul class='absolute full-xy ugrid-5 left-0 top-0 bg-charcoal-50p'>
+                                                <li class='flex-wrap-center text-center p20xy'>
+                                                    {{substate.index}} # {{$index + 1}}
+                                                </li>
+                                                <li class='flex-wrap-center text-center p20xy'>
+                                                    {{substate.name}} # {{$index + 1}}
+                                                </li>
+                                                <li class='flex-wrap-center text-center p20xy'>
+                                                    {{substate.description}} # {{$index + 1}}
+                                                </li>
+                                                <li class='flex-wrap-center text-center p20xy'>
+                                                    {{substate.estimated_time}} minutes
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
 
@@ -414,15 +394,26 @@
                             <!-- I removed commented out content for now, I put it at the bottom because it was distracting -->
                             <ul>
                                 <li class="type-component type-normal" ng-class="{'type-prioritized': action_item.priority > 7 && !action_item.completed, 'type-completed': action_item.completed, 'type-future': !action_item.priority && !action_item.completed}" ng-repeat="action_item in page.action_items[option.title.toLowerCase()]">
-                                    <a>
+                                    <div>
                                         <div>
                                             <div>
-                                                <h1>#{{$index + 1}}. {{action_item.name}}</h1>
+                                                <h1><a>{{$index + 1}}. {{action_item.name}} &dtrif;</a></h1>
+                                                <!-- normal "checked" input is blue, adding .complete means it's 100% complete -->
+                                                <div class="checkbox-container complete">
+                                    				<div>
+                                    					<input type="checkbox" id="checkbox-item" checked/>
+                                    					<span>
+                                    						<svg viewBox="0 0 100 100">
+                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                    						</svg>
+                                    					</span>
+                                    				</div>
+                                    			</div>
                                                 <h2>{{action_item.type}}</h2>
                                             </div>
                                         </div>
                                         <div>
-                                            <div>
+                                            <div ng-if="false">
                                                 <ul>
                                                     <li>
                                                         <user-icon src="page.team_members[options.title.toLowerCase()].profile_url" size="32"></user-icon>
@@ -430,16 +421,15 @@
                                                 </ul>
                                             </div>
                                             <div>
-                                                <h3><span>{{action_item.time_created}}</span> - <span>{{action_item.estimated_time}} hours</span></h3>
-                                                <span class='normal' ng-class="{'priority': action_item.priority > 7, 'completed': action_item.completed, 'future': !action_item.priority || !action_item.completed}">Priority</span>
+                                                <h3><span>{{action_item.time_created}}</span> - <span>{{action_item.estimated_time}}min</span></h3>
+                                                <span class='priority' ng-class="{'priority': action_item.priority > 7, 'completed': action_item.completed, 'future': !action_item.priority || !action_item.completed}">Priority</span>
                                             </div>
                                         </div>
-                                    </a>
+                                    </div>
+                                    <div class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
                                 </li>
-                                <li>
-                                </li>
-                                <li class="type-moodboard type-normal">
-                                    <!-- <a>
+                                <!-- <li class="type-moodboard type-normal">
+                                    <a>
                                         <div>
                                             <div>
                                                 <h1>Title</h1>
@@ -468,10 +458,10 @@
                                                 <span class="priority">Normal</span>
                                             </div>
                                         </div>
-                                    </a> -->
-                                </li>
-                                <li class="type-tools type-completed">
-                                    <!-- <a>
+                                    </a>
+                                </li> -->
+                                <!-- <li class="type-tools type-completed">
+                                    <a>
                                         <div>
                                             <div>
                                                 <h1>Title</h1>
@@ -500,180 +490,139 @@
                                                 <span class="priority">Complete</span>
                                             </div>
                                         </div>
-                                    </a> -->
-                                </li>
-                            </ul>
-                            <ul>
-                                <!--
-                                <li class="type-reference type-future">
-                                    <a>
-                                        <div>
-                                            <div>
-                                                <h1>Title</h1>
-                                                <h2>Reference</h2>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div>
-                                                <ul>
-                                                    <li>
-                                                        <user-icon class="jeselle" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="gabrielle" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="samir" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="jason" size="32"></user-icon>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <h3><span>03/16</span> - <span>4 hours</span></h3>
-                                                <span class="priority">Future</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="type-reference type-future">
-                                    <a>
-                                        <div>
-                                            <div>
-                                                <h1>Title</h1>
-                                                <h2>Reference</h2>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div>
-                                                <ul>
-                                                    <li>
-                                                        <user-icon class="jeselle" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="gabrielle" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="samir" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="jason" size="32"></user-icon>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <h3><span>03/16</span> - <span>4 hours</span></h3>
-                                                <span class="priority">Future</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="type-reference type-future">
-                                    <a>
-                                        <div>
-                                            <div>
-                                                <h1>Title</h1>
-                                                <h2>Reference</h2>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div>
-                                                <ul>
-                                                    <li>
-                                                        <user-icon class="jeselle" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="gabrielle" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="samir" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="jason" size="32"></user-icon>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <h3><span>03/16</span> - <span>4 hours</span></h3>
-                                                <span class="priority">Future</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="type-reference type-future">
-                                    <a>
-                                        <div>
-                                            <div>
-                                                <h1>Title</h1>
-                                                <h2>Reference</h2>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div>
-                                                <ul>
-                                                    <li>
-                                                        <user-icon class="jeselle" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="gabrielle" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="samir" size="32"></user-icon>
-                                                    </li>
-                                                    <li>
-                                                        <user-icon class="jason" size="32"></user-icon>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <h3><span>03/16</span> - <span>4 hours</span></h3>
-                                                <span class="priority">Future</span>
-                                            </div>
-                                        </div>
                                     </a>
                                 </li> -->
-                                <!-- <li ng-repeat='action_item in action_items' ng-if='action_item.action_type === "assets"' class='text-left weight-300 bg-shamrock' ng-click='initAndLaunchAssetCTA($event, action_item)' style='border:4px dashed white;'>
-                                    <div class='action-item p20xy m05xy relative'>
-                                        <h1 class='txt-white weight-600'>{{$index + 1}}.
-                                            {{action_item.title}}
-                                        </h1>
-                                        <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Asset</small>
-                                    </div>
-                                </li>
-                                <li ng-repeat='action_item in action_items' ng-if='action_item.action_type === "research"' class='text-left weight-300 bg-azure' ng-click='initAndLaunchComponentCTA($event, action_item)' style='border:4px dashed white;'>
-                                    <div class='action-item p20xy m05xy relative' style='padding-right:30%;'>
-                                        <h1 class='txt-white weight-600'>{{$index + 1}}.
-                                            {{action_item.title}}
-                                        </h1>
-                                        <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Research + HiFi</small>
-                                    </div>
-                                </li>
-                                <li ng-repeat='action_item in action_items' ng-if='["components"].indexOf(action_item.action_type) > -1' class='text-left weight-300 bg-azure' ng-click='initAndLaunchComponentCTA($event, action_item)' style='border:4px dashed white;'>
-                                    <div class='action-item p20xy m05xy relative' style='padding-right:30%;'>
-                                        <h1 class='txt-white weight-600'>{{$index + 1}}.
-                                            {{action_item.name}}
-                                        </h1>
-                                        <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Research + HiFi</small>
-                                    </div>
-                                </li>
-                                <li ng-repeat='action_item in action_items' ng-if='["containers"].indexOf(action_item.action_type) > -1' class='text-left weight-300 bg-azure' ng-click='initAndLaunchComponentCTA($event, action_item)' style='border:4px dashed white;'>
-                                    <div class='action-item p20xy m05xy relative' style='padding-right:30%;'>
-                                        <h1 class='txt-white weight-600'>{{$index + 1}}.
-                                            {{action_item.name}}
-                                        </h1>
-                                        <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>Research + HiFi</small>
-                                    </div>
-                                </li>
-                                <li ng-repeat='action_item in action_items' ng-if='["layouts"].indexOf(action_item.action_type) > -1' class='text-left weight-300 bg-azure' ng-click='initAndLaunchLayoutCTA($event, action_item)' style='border:4px dashed white;'>
-                                     <div class='action-item p20xy m05xy relative' style='padding-right:30%;'>
-                                        <h1 class='txt-white weight-600'>{{$index + 1}}.
-                                            {{action_item.name}}
-                                        </h1>
-                                        <small class='absolute center-y right-0 uppercase bg-smoke absolute txt-azure p10xy weight-600'>HiFi Static</small>
-                                    </div>
-                                </li> -->
                             </ul>
+                            <!-- <ul>
+                                <li class="type-reference type-future">
+                                    <a>
+                                        <div>
+                                            <div>
+                                                <h1>Title</h1>
+                                                <h2>Reference</h2>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <ul>
+                                                    <li>
+                                                        <user-icon class="jeselle" size="32"></user-icon>
+                                                    </li>
+                                                    <li>
+                                                        <user-icon class="gabrielle" size="32"></user-icon>
+                                                    </li>
+                                                    <li>
+                                                        <user-icon class="samir" size="32"></user-icon>
+                                                    </li>
+                                                    <li>
+                                                        <user-icon class="jason" size="32"></user-icon>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <h3><span>03/16</span> - <span>4 hours</span></h3>
+                                                <span class="priority">Future</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="type-reference type-future">
+                                    <a>
+                                        <div>
+                                            <div>
+                                                <h1>Title</h1>
+                                                <h2>Reference</h2>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <ul>
+                                                    <li>
+                                                        <user-icon class="jeselle" size="32"></user-icon>
+                                                    </li>
+                                                    <li>
+                                                        <user-icon class="gabrielle" size="32"></user-icon>
+                                                    </li>
+                                                    <li>
+                                                        <user-icon class="samir" size="32"></user-icon>
+                                                    </li>
+                                                    <li>
+                                                        <user-icon class="jason" size="32"></user-icon>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <h3><span>03/16</span> - <span>4 hours</span></h3>
+                                                <span class="priority">Future</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="type-reference type-future">
+                                    <a>
+                                        <div>
+                                            <div>
+                                                <h1>Title</h1>
+                                                <h2>Reference</h2>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <ul>
+                                                    <li>
+                                                        <user-icon class="jeselle" size="32"></user-icon>
+                                                    </li>
+                                                    <li>
+                                                        <user-icon class="gabrielle" size="32"></user-icon>
+                                                    </li>
+                                                    <li>
+                                                        <user-icon class="samir" size="32"></user-icon>
+                                                    </li>
+                                                    <li>
+                                                        <user-icon class="jason" size="32"></user-icon>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <h3><span>03/16</span> - <span>4 hours</span></h3>
+                                                <span class="priority">Future</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="type-reference type-future">
+                                    <a>
+                                        <div>
+                                            <div>
+                                                <h1>Title</h1>
+                                                <h2>Reference</h2>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <ul>
+                                                    <li>
+                                                        <user-icon class="jeselle" size="32"></user-icon>
+                                                    </li>
+                                                    <li>
+                                                        <user-icon class="gabrielle" size="32"></user-icon>
+                                                    </li>
+                                                    <li>
+                                                        <user-icon class="samir" size="32"></user-icon>
+                                                    </li>
+                                                    <li>
+                                                        <user-icon class="jason" size="32"></user-icon>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <h3><span>03/16</span> - <span>4 hours</span></h3>
+                                                <span class="priority">Future</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul> -->
                         </div>
                     </div>
                 </div>
@@ -690,7 +639,9 @@
                                 <ul>
                                     <li ng-repeat='component in page.components track by $index'>
                                         <div>
-                                            <a id='component-{{component.ref}}' class="block" ng-click='initAndLaunchComponentCTA($event, component)'><h1>{{component.name}} <i class='ion-arrow-resize icon opacity-50'> </i></h1></a>
+                                            <a id='component-{{component.ref}}' class="block" ng-click='initAndLaunchComponentCTA($event, component)'>
+                                                <h1>{{component.name}} <i class='ion-arrow-resize icon opacity-50'> </i></h1>
+                                            </a>
                                             <div>
                                                 <!-- <ng-bind src="component.template"/> -->
                                                 <demo class='flex-wrap-center' template="{{component.sample.template}}"></demo>
@@ -709,20 +660,19 @@
                                     </div>
                                 </a> -->
                             </div>
-                            <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 2'>
-                                <a class='bg bg-robin' ng-repeat='scene in page.scenes track by $index' id='scene-{{scene.ref}}' ng-click='initAndLaunchSceneCTA($event, scene)'>
-                                    <div class='component-header flex-center full-x uppercase weight-600 text-center' style='min-height:200px;'>
-
-                                        <div class='p20xy text-center'>
-                                            <h1>
-                                                {{scene.name}}
-                                            </h1>
-                                            <p ng-if='scene.states.length' class='opacity-50 m20y'>
-                                                {{scene.states.length}} State
-                                            </p>
+                            <div class='admin-scenes admin-content-section flex-wrap-start full-x' ng-if='$index === 2'>
+                                <ul>
+                                    <li ng-repeat='scene in page.scenes track by $index'>
+                                        <div>
+                                            <a id='scene-{{scene.ref}}' class="block" ng-click='initAndLaunchSceneCTA($event, scene)'>
+                                                <h1>{{scene.name}} <i class='ion-arrow-resize icon opacity-50'> </i></h1>
+                                                <!-- <p ng-if='scene.states.length' class='opacity-50 m20y'>
+                                                    {{scene.states.length}} State
+                                                </p> -->
+                                            </a>
                                         </div>
-                                    </div>
-                                </a>
+                                    </li>
+                                </ul>
                             </div>
                             <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 3'>
                                 <a class='bg bg-robin' ng-repeat='layout in page.layouts track by $index' id='layout-{{layout.ref}}' ng-click='initAndLaunchLayoutCTA($event, layout)'>
@@ -731,7 +681,7 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class='admin-content-section admin-assets' ng-if='$index === 4'>
+                            <div class='admin-content-section admin-assets' ng-if='$index === 5'>
                                 <h1>Category Icons - Normal</h1>
                                 <h2>/category/normal</h2>
                                 <ul class="large">
