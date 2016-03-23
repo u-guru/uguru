@@ -369,6 +369,7 @@
 		height: calc(100% - 60px);
 		position: relative;
 		width: 100%;
+		overflow: auto;
 	}
 	.admin-content-section {
 		@include flex;
