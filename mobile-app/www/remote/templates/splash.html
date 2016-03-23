@@ -1,7 +1,7 @@
 <div class='relative' style='height:calc(100%); width:calc(100%);' eval-on-load="onLoad()" ng-class="{'overflow-inherit': !desktopMode && root.vars.showSidebarOneProjector}">
     <!-- @gabrielle, do not not remove  init-wp-parent -->
     <main id='home-splash' init-wp-parent class='splash-landing' bind-wp="s1_top">
-        <ion-pane id='cta-modal-sidebar' class='show full-xy hide-display cta-modal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
+        <ion-pane id='cta-modal-sidebar' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
         <a ng-if='page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()' style='z-index:5'> </a>
         <!-- <div class="school-card opacity-0 absolute hide" class-on-activate="show" id='global-school-card' ng-if='selectedUniversity && selectedUniversity.id'>
             <svg class="rect" viewBox="0 0 300 200">
