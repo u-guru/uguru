@@ -1,7 +1,7 @@
 <div class='relative' style='height:calc(100%); width:calc(100%);' eval-on-load="onLoad()" ng-class="{'overflow-inherit': !desktopMode && root.vars.showSidebarOneProjector}">
     <!-- @gabrielle, do not not remove  init-wp-parent -->
-    <main id='home-splash' init-wp-parent class='splash-landing new hs-view full-xy' style="height:calc(200% !important); width:calc(100%) !important;" bind-wp="s1_top">
-        <ion-pane style='z-index:1001;' id='cta-modal-sidebar' class='full-xy hide-display cta-modal bg-charcoal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
+    <main id='home-splash' init-wp-parent class='splash-landing' bind-wp="s1_top">
+        <ion-pane style='z-index:1001;' id='cta-modal-sidebar' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
         <a ng-if='page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()' style='z-index:5'> </a>
         <!-- <div class="school-card opacity-0 absolute hide" class-on-activate="show" id='global-school-card' ng-if='selectedUniversity && selectedUniversity.id'>
             <svg class="rect" viewBox="0 0 300 200">
@@ -78,8 +78,6 @@
                 <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ng-class="{'m10xy absolute left-0 top-0':!desktopMode}"></a>
                 <div class="right">
                     <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()'>
-                        <!-- @gabrielle whats this? If you dont know delete below-->
-                        <!-- bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut" -->
                         <svg viewBox="0 0 100 100" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" class-on-activate-delay="600">
                             <circle cx="50" cy="50" r="36"></circle>
                             <path d="M31,35.5 L69,35.5"></path>
@@ -202,7 +200,7 @@
                             <a class="marker-link" ng-include="img_base + BASE + splash_marker.guru.type"></a>
                             <a id="map-icon-{{$index + 2}}" class="marker-guru opacity-0">
                                 <!-- <span class="user-icon" style="background-image: url({{splash_marker.guru.profile_url}})"></span> -->
-                                <user-icon size="small" url="splash_marker.guru.profile_url"> </user-icon>
+                                <user-icon size="-64" url="splash_marker.guru.profile_url"> </user-icon>
 
                                 <span class="marker-guru-course">{{splash_marker.guru.subcategory}}</span>
                             </a>
@@ -224,7 +222,7 @@
                             </div>
                             <a class="marker-guru">
                                 <!-- <span class="user-icon" style="background-image: url({{splash_marker.guru.profile_url}})"></span> -->
-                                <user-icon size="small" url="splash_marker.guru.profile_url"> </user-icon>
+                                <user-icon size="-64" url="splash_marker.guru.profile_url"> </user-icon>
 
                                 <div>
                                     <h1>{{splash_marker.guru.name}}</h1>
@@ -255,9 +253,7 @@
                         <div class="marker-normal-content">
                             <a class="marker-link" ng-include="img_base + 'templates/svg/wwf/coffee.html'"></a>
                             <a id="map-icon-2" class="marker-guru opacity-0">
-                               <!--  <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span> -->
-                                <user-icon size="small" url="http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256"> </user-icon>
-
+                                <user-icon size="-64" url="https://uguru.me/static/web/images/team/gabrielle.png"> </user-icon>
                                 <span class="marker-guru-course">BIO 1A</span>
                             </a>
                         </div>
@@ -276,8 +272,7 @@
                                 <h4>open now &middot; 2.4 miles</h4>
                             </div>
                             <a class="marker-guru">
-                           <!--      <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256')"></span> -->
-                                <user-icon size="small" url="http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256"> </user-icon>
+                                <user-icon size="-64" url="https://uguru.me/static/web/images/team/gabrielle.png"> </user-icon>
 
                                 <div>
                                     <h1>Gabrielle W</h1>
@@ -314,7 +309,7 @@
                                     <div id="map-icon-{{$index + 1}}-translate">
                                         <a class="marker-guru bg-{{selectedCategory.hex_color}}" translate-on-class-delay="{{(selectedUniversity.map.markers.length * 1000 * 0.6) || 1000}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-{{$index + 1}}" translate-on-class="translate-device-guru-profile">
                                             <span class="user-icon" style="background-image: url('{{marker.guru.profile_url}}')"></span>
-                                            <user-icon size="small" url="marker.guru.profile_url"> </user-icon>
+                                            <user-icon size="-64" url="marker.guru.profile_url"> </user-icon>
 
                                             <span class="marker-guru-course">{{marker.guru.subcategory}}</span>
                                         </a>
@@ -399,94 +394,13 @@
                             {{selectedCategory.splashData.madlib.template.end}}
                         </h1>
                         <ul class-on-clear="null:inject li[class-on-clear]|clear" class-on-activate="null:inject li[class-on-activate]|activate">
-                            <li class="opacity-0" class-on-load="bounceIn:anim" class-on-load-delay="1000" class-on-clear="fadeOut:animOut" class-on-clear-delay="0" class-on-activate="bounceIn:anim" class-on-activate-delay="1000">
-                                <a class="adlib-1 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled' ng-click='resetMadLibBlankIfActive($event)'>
-                                    <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                        <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
-                                    </svg>
-                                    <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                        <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
-                                    </svg>
-                                    <b>{{selectedCategory.splashData.madlib.blank_one_options[0]}}</b>
-                                </a>
-                            </li>
-                            <li class="opacity-0" class-on-load="bounceIn:anim" class-on-load-delay="1100" class-on-activate="bounceIn:anim" class-on-activate-delay="1100" class-on-clear="fadeOut:animOut" class-on-clear-delay="50">
-                                <a class="adlib-2 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled' ng-click='resetMadLibBlankIfActive($event)'>
-                                    <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                        <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
-                                    </svg>
-                                    <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                        <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
-                                    </svg>
-                                    <b>{{selectedCategory.splashData.madlib.blank_one_options[1]}}</b>
-                                </a>
-                            </li>
-                            <li class="opacity-0" class-on-load="bounceIn:anim" class-on-load-delay="1200" class-on-activate="bounceIn:anim" class-on-activate-delay="1200" class-on-clear="fadeOut:animOut" class-on-clear-delay="100">
-                                <a class="adlib-3 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled' ng-click='resetMadLibBlankIfActive($event)'>
-                                    <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                        <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
-                                    </svg>
-                                    <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                        <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
-                                    </svg>
-                                    <b>{{selectedCategory.splashData.madlib.blank_one_options[2]}}</b>
-                                </a>
-                            </li>
-                            <li class="opacity-0" class-on-load="bounceIn:anim" class-on-load-delay="1300" class-on-activate="bounceIn:anim" class-on-activate-delay="1300" class-on-clear="fadeOut:animOut" class-on-clear-delay="150">
-                                <a class="adlib-4 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-1" translate-to-elem="#blank-1" class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled' ng-click='resetMadLibBlankIfActive($event)'>
-                                    <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                        <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
-                                    </svg>
-                                    <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                        <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
-                                    </svg>
-                                    <b>{{selectedCategory.splashData.madlib.blank_one_options[3]}}</b>
-                                </a>
-                            </li>
-                            <li class="opacity-0" class-on-load="bounceIn:anim" class-on-load-delay="1400" class-on-activate="bounceIn:anim" class-on-activate-delay="1400" class-on-clear="fadeOut:animOut" class-on-clear-delay="200">
-                                <a class="adlib-5 animated bg-{{selectedCategory.hex_color}}"  translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled' ng-click='resetMadLibBlankIfActive($event)'>
-                                    <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                        <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
-                                    </svg>
-                                    <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                        <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
-                                    </svg>
-                                    <b>{{selectedCategory.splashData.madlib.blank_two_options[0]}}</b>
-                                </a>
-                            </li>
-                            <li class="opacity-0" class-on-load="bounceIn:anim" class-on-load-delay="1500" class-on-activate="bounceIn:anim" class-on-activate-delay="1500" class-on-clear="fadeOut:animOut" class-on-clear-delay="250">
-                                <a class="adlib-6 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled' ng-click='resetMadLibBlankIfActive($event)'>
-                                    <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                        <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
-                                    </svg>
-                                    <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                        <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
-                                    </svg>
-                                    <b>{{selectedCategory.splashData.madlib.blank_two_options[1]}}</b>
-                                </a>
-                            </li>
-                            <li class="opacity-0" class-on-load="bounceIn:anim" class-on-load-delay="1600" class-on-activate="bounceIn:anim" class-on-activate-delay="1600" class-on-clear="fadeOut:animOut" class-on-clear-delay="300">
-                                <a class="adlib-7 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled' ng-click='resetMadLibBlankIfActive($event)'>
-                                    <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                        <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
-                                    </svg>
-                                    <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                        <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
-                                    </svg>
-                                    <b>{{selectedCategory.splashData.madlib.blank_two_options[2]}}</b>
-                                </a>
-                            </li>
-                            <li class="opacity-0" class-on-load="bounceIn:anim" class-on-load-delay="1700" class-on-activate="bounceIn:anim" class-on-activate-delay="1700" class-on-clear="fadeOut:animOut" class-on-clear-delay="350">
-                                <a class="adlib-8 animated bg-{{selectedCategory.hex_color}}" translate-on-click="translate-blank-2" translate-to-elem="#blank-2" class-on-click='blank-2-filled:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b#blank-2-text|blank-2-filled' ng-click='resetMadLibBlankIfActive($event)'>
-                                    <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                        <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16"></rect>
-                                    </svg>
-                                    <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                        <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
-                                    </svg>
-                                    <b>{{selectedCategory.splashData.madlib.blank_two_options[3]}}</b>
-                                </a>
-                            </li>
+
+                            <!-- <tag type="adlib" blank-num="'1'" tag-text="wtttf" category="selectedCategory"></tag> -->
+                            <tag desktop="desktopMode" type="splash" blank-num="1" inner-text="option" category="selectedCategory" ng-repeat='option in selectedCategory.splashData.madlib.blank_one_options'> </tag>
+
+
+                            <tag desktop="desktopMode" type="splash" blank-num="2" inner-text="option" category="selectedCategory" ng-repeat='option in selectedCategory.splashData.madlib.blank_two_options'> </tag>
+
                         </ul>
                     </div>
                 </div>

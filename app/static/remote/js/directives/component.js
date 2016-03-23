@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('uguru.components', [])
 .directive("doc", function() {
   return {
@@ -25,27 +27,25 @@ angular.module('uguru.components', [])
     scope: '=',
     link: function(scope, element, attr) {
       $timeout(function() {
-
         if (attr.template && attr.template.length) {
-          element.html(attr.template);
+          element.html(attr.template.replace(/\\"/g, "'"));
           $compile(element.contents())(scope);
         }
       }, 1000);
     }
   };
 }])
-.directive("dropdown", function() {
+.directive("dropdown", ['$timeout', function($timeout) {
   return {
-    templateUrl: BASE + 'templates/components/dev/input/dropdown.tpl',
+    templateUrl: getTemplateURL,
     scope: {
- 
         dropdown: '=ngModel'
         // tests:'=testArr',
-
     },
     replace: true,
     restrict: 'E',
     link: function( scope, element, attr ) {
+      scope.click = function(option, index) {
         // // console.log(scope.dropdown)
         // // var  = ;
         // // console.log("WTF",attr.eventFocus)
@@ -57,7 +57,7 @@ angular.module('uguru.components', [])
         //      for (var i = 0 ; i < scope.tests.length;++i)
         //         if (i != (parseInt(attr.index)) && scope.tests[i].active)
         //             stack.push(i)
-          
+
         //      scope.$apply(function() {
         //           for(var i = 0; i < stack.length;++i)
         //           {
@@ -68,16 +68,31 @@ angular.module('uguru.components', [])
         //      });
         //  });
 
-      scope.click = function(index) {
         scope.dropdown.selectedIndex = index;
+        $timeout(function() {
+          scope.$apply();
+        })
+        if (scope.dropdown.onOptionClick) {
+          scope.dropdown.onOptionClick(option, index);
+        }
         scope.toggle();
       }
       scope.toggle = function() {
         scope.dropdown.active = !scope.dropdown.active;
+        if (scope.dropdown.onToggle) {
+          scope.dropdown.onToggle(scope.dropdown.active);
+        }
       }
     }
   };
-})
+  function getTemplateURL(elem, attr) {
+    if (attr.type && attr.type.length && attr.type === 'splash') {
+      return BASE + 'templates/components/dev/input/dropdown.splash.tpl'
+    } else {
+      return BASE + 'templates/components/dev/input/dropdown.tpl'
+    }
+  }
+}])
 .directive("userIcon", ['$compile',function($compile) {
   return {
     templateUrl: BASE + 'templates/components/dev/user.icon.tpl',
@@ -90,26 +105,26 @@ angular.module('uguru.components', [])
     link: function( scope, element, attr ) {
       if (scope.size && scope.size === 'small') {
         scope.size = '-32'
-      } 
+      }
       else if (scope.size && scope.size === 'medium'){
         scope.size= '-64'
       }
       if (!scope.url || !scope.url.length) {
         scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
       }
-      
-      var request = new XMLHttpRequest();  
+
+      var request = new XMLHttpRequest();
       request.open('GET', scope.url , true);
       request.onreadystatechange = function(){
           if (request.readyState === 4){
-              if (request.status === 404) {  
+              if (request.status === 404) {
                 scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
                 // element.attr('url',scope.url);
                 // $compile(element.contents())(scope);
                 // scope.$apply();
                 // console.log('Check',scope.url, typeof(scope.url))
 
-              }  
+              }
           }
       };
       // request.send()
@@ -212,30 +227,108 @@ angular.module('uguru.components', [])
   };
 })
 .directive("tag", ['$compile', '$timeout',  function($compile, $timeout) {
+  function getTemplateURL(elem, attr) {
+    if (attr.type && attr.type === 'splash') {
+      return BASE + 'templates/components/dev/input/tag.tpl'
+    } else
+    if (attr.type && attr.type === 'input') {
+      return BASE + 'templates/components/dev/input/base.tag.input.tpl'
+    }
+    else {
+      return BASE + 'templates/components/dev/input/base.tag.tpl'
+    }
+
+  }
+
   return {
-    templateUrl: BASE + 'templates/components/dev/input/tag.tpl',
+    templateUrl: getTemplateURL,
     scope: {
-        text: '=tagText',
+        innerText: '=',
         category: '=',
-        animArgs: '='
+        blankNum: '=',
+        animArgs: '=',
+        placeholder: '@',
+        desktopMode: '=desktop',
     },
     restrict: 'E',
     replace: true,
     link: function(scope, element, attr) {
-      $timeout(function() {
-        scope.$apply(function() {
-          if (attr.type && attr.type.toLowerCase() === 'adlib') {
-            scope.type ='adlib';
+
+      if (attr.type && attr.type.toLowerCase() === 'splash') {
+        scope.type ='splash';
+      }
+
+      if (scope.blankNum && scope.blankNum.length) {
+        scope.blankNum = 1
+      }
+
+
+      scope.resetMadLibBlankIfActive = function($event){
+          // console.log("WTF")
+          var indexTranslateElem = $event.target.parentNode;
+          var hasBlankOne = indexTranslateElem.className.indexOf('translate-blank-1') > -1;
+          var hasBlankTwo = indexTranslateElem.className.indexOf('translate-blank-2') > -1;
+          if (indexTranslateElem && indexTranslateElem.className.indexOf('recently-active') === -1 && (hasBlankOne || hasBlankTwo)) {
+            var addLibContainer = document.querySelector(".splash-adlib");
+            if (hasBlankOne) {
+              var blankOneElem = document.querySelector('#blank-1 b');
+              $timeout(function() {
+                addLibContainer.classList.remove('blank-1-filled');
+                blankOneElem.classList.remove('opacity-0-impt');
+                indexTranslateElem.classList.remove('translate-blank-1', 'active');
+              }, 100);
+              blankOneElem.opacity = 1;
+            }
+            if (hasBlankTwo) {
+              var blankTwoElem = document.querySelector('#blank-2 b');
+              $timeout(function() {
+                addLibContainer.classList.remove('blank-2-filled');
+                blankTwoElem.classList.remove('opacity-0-impt');
+                indexTranslateElem.classList.remove('translate-blank-2', 'active');
+              }, 100);
+
+              blankTwoElem.opacity = 1;
+            }
+            indexTranslateElem.style.webkitTransform = null;
+            indexTranslateElem.style.MozTransform = null;
+            indexTranslateElem.style.msTransform = null;
+            indexTranslateElem.style.OTransform = null;
+            indexTranslateElem.style.transform = null;
           }
-          if (attr.blankNum && attr.blankNum.length) {
-            scope.blankNum = attr.blankNum;
-          }
-          $compile(element)(scope);
-        })
-      })
+
+      }
+
+
 
     }}
 }])
+.directive('svgi', '$timeout', function($timeout) {
+  return {
+    templateUrl: getTemplateURL,
+    restrict: 'E',
+    replace: true,
+    link: function(scope, elem, attr) {
+        if (attr.size && attr.size.length) {
+            var svgElem = elem[0].querySelector('svg');
+            if (svgELem) {
+              console.log(svgElem);
+              svgElem.style.width = attr.size.split('x')[0] + 'px;';
+              svgElem.style.height = attr.size.split('x')[1] + 'px;';
+            }
+        }
+    }
+  }
+  function getTemplateURL(elem, attr) {
+    if (attr && attr.name && attr.name.length) {
+      console.log('svgPath', 'yo');
+      var svgPathSplit = attr.name.split('.');
+      if (svgPathSplit.length > 1) {
+        svgPath = attr.name.replace('.','/') + '.tpl';
+        return BASE + 'templates/components/dev/svg/' + svgPath;
+      }
+    }
+  }
+})
 .directive('miniProfileCard', function() {
   return {
     templateUrl: BASE + 'templates/components/dev/containers/guru.profile.mini.tpl',

@@ -27,9 +27,8 @@ angular.module('uguru.components', [])
     scope: '=',
     link: function(scope, element, attr) {
       $timeout(function() {
-
         if (attr.template && attr.template.length) {
-          element.html(attr.template.replace('"',"'"));
+          element.html(attr.template.replace(/\\"/g, "'"));
           $compile(element.contents())(scope);
         }
       }, 1000);
@@ -248,7 +247,7 @@ angular.module('uguru.components', [])
         category: '=',
         blankNum: '=',
         animArgs: '=',
-        // type: '=',
+        placeholder: '@',
         desktopMode: '=desktop',
     },
     restrict: 'E',
@@ -258,15 +257,14 @@ angular.module('uguru.components', [])
       if (attr.type && attr.type.toLowerCase() === 'splash') {
         scope.type ='splash';
       }
+
       if (scope.blankNum && scope.blankNum.length) {
         scope.blankNum = 1
       }
-      // $compile(element.contents())(scope);
 
-      // scope.toggle = function() {
-      //   scope.dropdown.active = !scope.dropdown.active;
-      // }
-      scope.resetMadLibBlankIfActive=function($event){
+
+      scope.resetMadLibBlankIfActive = function($event){
+          // console.log("WTF")
           var indexTranslateElem = $event.target.parentNode;
           var hasBlankOne = indexTranslateElem.className.indexOf('translate-blank-1') > -1;
           var hasBlankTwo = indexTranslateElem.className.indexOf('translate-blank-2') > -1;

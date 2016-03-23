@@ -3,36 +3,17 @@
 /* ---------- FAQ */
 #faq {
 	height: 100%;
-	overflow: auto;
+	overflow-x: hidden;
+	overflow-y: auto;
 	header {
-		@include flex;
-		@include flex-center;
-		@include flex-wrap;
-		height: calc(100% / 3);
 		background: $shamrock;
-		&.has-tabs {
-			h1 {
-				padding-bottom: 60px;
-			}
-		}
-		h1 {
-			font-size: 28px;
-			text-align: center;
-			text-transform: none!important;
-		}
-		.tab-bar {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			background: rgba($slate,.4);
-		}
 	}
 	.main {
 		@include flex;
 		@include flex-wrap;
-		height: calc(100% / 3 * 2);
+		overflow-x: hidden;
 		padding: 7.5px;
+		background: $slate;
 		dl {
 			width: 50%;
 			padding: 7.5px;
@@ -40,7 +21,8 @@
 			dt {
 				@include flex;
 				@include flex-center-vertical;
-				background: $shamrock;
+				background: $rocket;
+				border-radius: 2px 2px 0 0;
 				padding: 10px 15px;
 				font-size: 20px;
 				font-weight: 700;
@@ -50,11 +32,16 @@
 					height: 40px;
     				padding-left: 10px;
 					svg {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 						width: 100%;
 						height: 100%;
+						* {
+							stroke-width: 7px;
+						}
 					}
 				}
 				&:not(.active) {
+					border-radius: 2px;
 					.close-button {
 						svg {
 							@include rotate(0);
@@ -70,6 +57,9 @@
 				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 				@include prefix(transform-origin, top center, webkit moz ms o);
 				background: white;
+				border: 2px solid $rocket;
+				border-top: 0;
+				border-radius: 0 0 2px 2px;
 				padding: 10px 15px;
 				color: $slate;
 				font-size: 16px;
@@ -80,16 +70,10 @@
 }
 @media screen and (min-width: 768px) {
 	#faq {
-		header {
-			h1 {
-				font-size: 48px;
-			}
-		}
 		.main {
 			@include prefix(flex-direction, column, wekit moz ms o);
 			height: 100%;
 			width: 100%;
-			overflow-x: hidden;
 			padding: 15px;
 			dl {
 				padding: 15px;
@@ -103,29 +87,15 @@
 	width: 100%;
 	height: 100%;
 	overflow: auto;
-	background: $smoke;
+	background: $slate;
 	header {
 		@include flex;
 		@include flex-center;
-		height: calc(100% / 3);
-		max-height: none;
-		background: white;
-		h1 {
-			color: $lake;
-			font-size: 28px;
-			font-weight: 600;
-			text-transform: none;
-		}
-		&.no-graphic {
-			background: $shamrock;
-			h1 {
-				color: white;
-			}
-		}
+		background: $shamrock;
 	}
-	section {
-		height: calc(100% / 3 * 2);
+	.main {
 		.pf-card-group {
+			max-width: 615px;
 			> li {
 				.pf-card {
 					.pf-card-top {
@@ -143,19 +113,6 @@
 					}
 				}
 			}
-		}
-	}
-}
-@media screen and (min-width: 768px) {
-	#team {
-		header {
-			height: 25%;
-			h1 {
-				font-size: 48px;
-			}
-		}
-		section {
-			height: 75%;
 		}
 	}
 }
@@ -1732,7 +1689,7 @@
 	width: 100%;
 	height: 100%;
 	overflow: auto;
-	background: $smoke;
+	background: $slate;
 	header {
 		@include flex;
 		@include flex-wrap;
@@ -1740,123 +1697,29 @@
 		background: $shamrock;
 		> h1 {
 			width: 100%;
-			font-size: 28px;
+			font-size: 20px;
 			font-weight: 600;
 			color: white;
 			text-align: center;
 			text-transform: none;
 		}
-	}
-	.pricing-other {
-		@include flex;
-		@include flex-center;
-		position: relative;
-		margin: 0 auto;
-		padding: 15px 0;
-		width: 100%;
-		max-width: 800px;
-		background: #d4ac54;
-		li {
-			@include translate-y(25%);
-			padding: 0 50px;
-			div {
-				text-align: center;
-				h3 {
-					font-size: 36px;
-					font-weight: 700;
-				}
-				h1 {
-					margin-top: 0!important;
-					padding: 0!important;
-					font-size: 128px;
-					font-weight: 900;
-				}
+		ul {
+			@include flex;
+			margin: -15px auto 0;
+			overflow-x: auto;
+			padding: 7.5px;
+			&::-webkit-scrollbar { 
+			    display: none; 
 			}
-		}
-		&:before {
-			content: "";
-			display: block;
-			position: absolute;
-			bottom: -80px;
-			left: 0;
-			width: calc(100% - 80px);
-			height: 80px;
-			background: #d4ac54;
-		}
-		&:after {
-			content: "";
-			display: block;
-			position: absolute;
-			bottom: -80px;
-			right: 0;
-			width: 0;
-			height: 0;
-			border: 40px solid transparent;
-			border-top-color: darken(#d4ac54, 25%);
-			border-left-color: darken(#d4ac54, 25%);
-		}
-	}
-	.pricing-uguru {
-		@include flex;
-		@include flex-center;
-		width: 100%;
-		max-width: 815px;
-		margin: 0 auto;
-		color: $slate;
-		text-align: center;
-		li {
-			position: relative;
-			width: calc(100% / 3);
-			padding: 0 7.5px;
-			div {
-				overflow: hidden;
-				position: relative;
-				padding: 15px 0;
-				background: $smoke;
-				border: 10px solid $slate;
-				h3 {
-					font-size: 24px;
-					font-weight: 700;
-					text-transform: uppercase;
-				}
-				h2 {
-					@include round;
-					@include flex;
-					@include flex-center;
-					margin: 15px auto;
-					width: 160px;
-					height: 160px;
-					background: rgba($azure, .1);
-					font-size: 36px;
-					font-weight: 900;
-					u {
-						display: block;
-						padding-bottom: 8px;
-						padding-right: 2px;
-					}
-				}
-				span {
-					font-size: 24px;
-					font-weight: 400;
-				}
-				svg {
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					fill: rgba($taupe,.1);
-				}
+			&::-moz-scrollbar { 
+			    display: none; 
 			}
-			&:after {
-				content: "";
-				display: block;
-				position: absolute;
-				bottom: -5px;
-				left: 7.5px;
-				width: calc(100% - 15px);
-				height: 5px;
-				background: rgba($taupe,.5);
+			li {
+				padding: 7.5px;
+				.pricing-tile {
+					width: 270px;
+					border-color: $rocket;
+				}
 			}
 		}
 	}
@@ -1864,20 +1727,6 @@
 		padding: 15px;
 		width: 100%;
 		margin: auto;
-		color: $slate;
-		.pricing-uguru {
-			@include flex-wrap;
-			margin-top: -20%;
-			li {
-				width: 100%;
-				padding: 0;
-				margin-bottom: 20px;
-				&:after {
-					left: 0;
-					width: 100%;
-				}
-			}
-		}
 		dl {
 			dt {
 				font-size: 24px;
@@ -1892,37 +1741,34 @@
 		}
 	}
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1070px) {
 	#pricing {
 		> header {
-			@include flex-center;
-			> h1 {
-				padding-bottom: 30px;
+			> ul {
+				width: 100%;
+				li {
+					&:last-child {
+						padding-right: 15px;
+					}
+				}
 			}
-			.pricing-uguru {
-				display: none;
-			}
+		}
+		> div {
+			padding-top: 136px;
 		}
 	}
 }
 @media screen and (min-width: 768px) {
 	#pricing {
 		> header {
-			height: 40%;
-			h1 {
+			> h1 {
 				padding: 30px;
-				font-size: 48px;
-			}
-			.pricing-uguru {
-				@include flex;
+				font-size: 36px;
 			}
 		}
 		> div {
-			padding: 140px 30px 30px;
+			padding: 165px 30px 15px;
 			max-width: 860px;
-			.pricing-uguru {
-				display: none;
-			}
 			dl {
 				dt {
 					font-size: 28px;
@@ -1930,6 +1776,15 @@
 				dd {
 					font-size: 24px;
 				}
+			}
+		}
+	}
+}
+@media screen and (min-width: 1070px) {
+	#pricing {
+		> header {
+			> ul {
+				@include flex-center;
 			}
 		}
 	}

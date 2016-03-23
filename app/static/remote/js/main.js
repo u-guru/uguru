@@ -22,6 +22,12 @@ if (LOCAL) {
   img_base = '/static/';
 }
 
+if (window.location.href.indexOf('uguru-rest-test.herokuapp') > -1) {
+  var REST_URL = 'https://uguru-rest-test.herokuapp.com';
+} else if (window.location.href.indexOf('localhost:5000') > -1) {
+  var REST_URL = 'https://uguru-rest-test.herokuapp.com';
+}
+
 
 
 
@@ -73,19 +79,19 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
 
-  $provide.decorator("$exceptionHandler", function($delegate, $injector) {
+  // $provide.decorator("$exceptionHandler", function($delegate, $injector) {
 
-    return function(exception, cause) {
+  //   return function(exception, cause) {
 
-      Github = $injector.get("Github");
+  //     Github = $injector.get("Github");
 
-      Github.exceptionToGHIssue(exception, cause);
+  //     Github.exceptionToGHIssue(exception, cause);
 
-      // $delegate(exception, cause);
+  //     $delegate(exception, cause);
 
-    };
+  //   };
 
-  });
+  // });
 
 
 

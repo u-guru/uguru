@@ -3,8 +3,9 @@ from app.database import *
 from models import *
 from twilio import *
 from twilio.rest import TwilioRestClient
-from flask import render_template, redirect, url_for, session, request
+from flask import render_template, redirect, url_for, session, request, Response
 import json
+from functools import wraps
 
 # Twilio
 TWILIO_DEFAULT_PHONE = "+15104661138"
@@ -25,6 +26,14 @@ from mixpanel import Mixpanel
 mp = Mixpanel(os.environ['MIXPANEL_TOKEN'])
 
 
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth = request.authorization
+        if 'uguru-rest-test' in request.url and (not auth or not check_auth(auth.username, auth.password)):
+            return authenticate()
+        return f(*args, **kwargs)
+    return decorated
 ################
 ## Bens Views ##
 ################
@@ -379,7 +388,25 @@ def profile_page_new_view_two(username):
         return redirect(url_for('new_home_page'))
     return render_template("web/pages/profile.html", user=user_profile_exists[0])
 
+
+def check_auth(username, password):
+    """This function is called to check if a username /
+    password combination is valid.
+    """
+    if 'uguru-rest-test' in request.url:
+        return username == 'uguru_admin' and password == 'wetrackeverything'
+    else:
+        return True
+
+def authenticate():
+    """Sends a 401 response that enables basic auth"""
+    return Response(
+    'Could not verify your access level for that URL.\n'
+    'You have to login with proper credentials', 401,
+    {'WWW-Authenticate': 'Basic realm="Login Required"'})
+
 @app.route('/')
+@requires_auth
 def new_home_page():
     from flask import send_from_directory, send_file
     print request.remote_addr
