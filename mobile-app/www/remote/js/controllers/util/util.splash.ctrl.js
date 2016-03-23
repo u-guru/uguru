@@ -1937,7 +1937,7 @@ angular.module('uguru.util.controllers')
         var ctaParentElemSelector = '#home-splash';
         CTAService.initSingleCTA("#cta-box-sidebar", ctaParentElemSelector, activateAtShow);
         function activateAtShow(modal_elem) {
-          var sidebarAside = modal_elem.querySelector('.splash-sidebar-menu');
+          var sidebarAside = modal_elem.querySelector('.splash-sidebar-full');
           sidebarAside && sidebarAside.classList.add('activate');
         }
       }

@@ -793,6 +793,55 @@
     				margin: 5px;
     				width:inherit;
 				}
+				.splash-burger {
+					position: relative;
+					&:before {
+						@include prefix(transform, scale(0), webkit moz ms o);
+						@include prefix(transform-origin, center center, webkit moz ms o);
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						@include round;
+						content: "";
+						display: block;
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						margin-top: -15px;
+						margin-left: -15px;
+						width: 30px;
+						height: 30px;
+						background: white;
+					}
+					svg {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						position: relative;
+						z-index: 10;
+					}
+					&:hover, &:focus {
+						&:before {
+							@include prefix(transform, scale(1), webkit moz ms o);
+						}
+						svg {
+							@include prefix(transform, rotate(225deg), webkit moz ms o);
+							circle {
+								fill: none;
+							}
+						}
+					}
+					&:active {
+						&:before {
+							background: lighten($slate, 15%);
+						}
+						svg {
+							circle {
+								stroke: lighten($slate, 15%);
+								fill: none;
+							}
+							path {
+								stroke: white;
+							}
+						}
+					}
+				}
 			}
 			div {
 				width: 100%;
@@ -818,14 +867,40 @@
 					@include flex-wrap;
 					@include flex-center;
 					a {
+						position: relative;
 						padding: 20px 0;
 						width: calc(100% - 34px);
 						font-size: 24px;
 						font-weight: 600;
 						text-align: center;
 						text-transform: uppercase;
-						&:hover, &:focus {
+						&:before {
+							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+							@include prefix(transform, scaleX(0), webkit moz ms o);
+							@include prefix(transform-origin, left center, webkit moz ms o);
+							content: "";
+							display: block;
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
 							background: $shamrock;
+						}
+						span {
+							position: relative;
+							z-index: 10;
+						}
+						&:hover, &:focus {
+							&:before {
+								@include prefix(transform, scaleX(1), webkit moz ms o);
+							}
+						}
+						&:active {
+							color: mix($shamrock, $slate);
+							&:before {
+								background: mix($shamrock, white);
+							}
 						}
 					}
 					&:not(:last-child):after {
@@ -868,6 +943,7 @@
 				@include flex-wrap;
 				@include flex-center;
 				width: 100%;
+				position: relative;
 				.splash-sidebar-message {
 					width: 100%;
 					padding: 0 15px;
@@ -896,9 +972,13 @@
 		@media screen and (min-width: 768px) {
 			.splash-sidebar-menu {
 				width: calc(100% / 3);
+				position: relative;
+				z-index: 10;
 			}
 			.splash-sidebar-content {
 				@include flex;
+				position: relative;
+				z-index: 9;
 			}
 		}
 		@media screen and (min-width: 860px) {
@@ -912,6 +992,40 @@
 				}
 			}
 		}
+	}
+	#cta-modal-sidebar {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		&:not(.show) {
+			@include opacity(0);
+			display: block!important;
+			z-index: -100;
+		}
+		&.show {
+			z-index: 1001;
+		}
+	}
+	
+	.sidebar-modal {
+		&:not(.show-sidebar-cta) {
+			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			@include opacity(0);
+			display: block!important;
+			z-index: -1000;
+		}
+		&.show-sidebar-cta {
+			z-index: 1000;
+		}
+		// &.show {
+		// 	@include prefix(animation, 1s bounceInLeft forwards, webkit moz ms o);
+		// }
+		// &:not(.show) {
+		// 	@include prefix(transition, all 1000ms ease-in-out, webkit moz ms o);
+		// 	@include prefix(animation, 1s bounceOutLeft forwards, webkit moz ms o);
+		// 	&.hide-display {
+		// 		display: block!important;
+		// 		z-index: -1000;
+		// 	}
+		// }
 	}
 	
 	#splash-hero-nav-mobile {

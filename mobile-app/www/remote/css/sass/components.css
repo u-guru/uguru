@@ -4302,11 +4302,7 @@ input[type=range]:focus::-ms-fill-upper {
 .pf-card-group > li .pf-card .pf-card-top .user-icon {
   position: absolute;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
+  margin-left: -48px;
   width: 96px;
   height: 96px;
   bottom: -60px;
@@ -4746,13 +4742,6 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .university-card .school-card-inside .school-card-top .school-card-icon {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
   border-radius: 1000px;
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -4769,6 +4758,9 @@ input[type=range]:focus::-ms-fill-upper {
   align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
+  position: absolute;
+  left: 50%;
+  margin-left: -32px;
   z-index: 5;
   top: 15px;
   width: 64px;
@@ -5139,13 +5131,6 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .school-card .school-card-inside .school-card-top .school-card-icon {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
   border-radius: 1000px;
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -5162,6 +5147,9 @@ input[type=range]:focus::-ms-fill-upper {
   align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
+  position: absolute;
+  left: 50%;
+  margin-left: -42px;
   z-index: 5;
   top: 15px;
   width: 84px;
@@ -5803,11 +5791,7 @@ input[type=range]:focus::-ms-fill-upper {
 .pf-card .pf-card-top .user-icon {
   position: absolute;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
+  margin-left: -64px;
   bottom: -84px;
   border-width: 5px;
 }

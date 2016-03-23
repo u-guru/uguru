@@ -65,6 +65,49 @@
 				font-size: 16px;
 				font-weight: 600;
 			}
+			a {
+				display: block;
+				&:hover, &:focus {
+					dt {
+						background: mix($rocket, white);
+						color: mix($rocket, $slate);
+						.close-button {
+							svg {
+								@include prefix(transform, rotate(90deg), webkit moz ms o);
+								* {
+									stroke: mix($rocket, $slate);
+								}
+							}
+						}
+						&.active {
+							.close-button {
+								svg {
+									@include prefix(transform, rotate(135deg), webkit moz ms o);
+								}
+							}
+						}
+					}
+					+ dd {
+						border-color: mix($rocket, white);
+					}
+				}
+				&:active {
+					dt {
+						background: mix($rocket, $slate);
+						color: white;
+						.close-button {
+							svg {
+								* {
+									stroke: white;
+								}
+							}
+						}
+					}
+					+ dd {
+						border-color: mix($rocket, $slate);
+					}
+				}
+			}
 		}
 	}
 }

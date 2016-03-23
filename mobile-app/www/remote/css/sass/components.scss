@@ -3409,7 +3409,9 @@ input[type=range] {
 			}
 			.pf-card-top {
 				.user-icon {
-					@include center-x;
+					position: absolute;
+					left: 50%;
+					margin-left: -48px;
 					width: 96px;
 					height: 96px;
 					bottom: -60px;
@@ -3715,10 +3717,12 @@ input[type=range] {
 			background-color: $slate;
 			border-radius: 10px 10px 0 0;
 			.school-card-icon {
-				@include center-x;
 				@include round;
 				@include flex;
 				@include flex-center;
+				position: absolute;
+				left: 50%;
+				margin-left: -32px;
 				z-index: 5;
 				top: 15px;
 				width: 64px;
@@ -3980,10 +3984,12 @@ input[type=range] {
 			background-color: $slate;
 			border-radius: 10px 10px 0 0;
 			.school-card-icon {
-				@include center-x;
 				@include round;
 				@include flex;
 				@include flex-center;
+				position: absolute;
+				left: 50%;
+				margin-left: -42px;
 				z-index: 5;
 				top: 15px;
 				width: 84px;
@@ -4436,7 +4442,9 @@ input[type=range] {
 			}
 		}
 		.user-icon {
-			@include center-x;
+			position: absolute;
+			left: 50%;
+			margin-left: -64px;
 			bottom: -84px;
 			border-width: 5px;
 		}
