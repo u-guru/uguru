@@ -56,6 +56,140 @@
                     </div>
                 </div>
             </ion-pane>
+            <ion-pane id='cta-modal-selected-scene' class='full-xy hide-display cta-modal bg-charcoal absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch' >
+                <a ng-click='hideSceneCTA()' class='absolute top-0 right-0 cta-modal-close close-button high-z-index'>
+                    <svg class="p10xy" viewBox="0 0 100 100" stroke='#FFFFFF' >
+                        <path stroke-width="5" d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                    </svg>
+                </a>
+                <div class='flex-wrap-center full-xy relative flex-stretch bg-robin' ng-hide='!selected_scene.name'>
+                    <div class='header full-x flex-wrap-center relative' style='height: 25%'>
+                        <h1 class='full-x p30bottom txt-white text-center weight-600 txt-36'>{{selected_scene.name}} scene</h1>
+                        <div class='tab-container bg-robin absolute bottom-0 left-0'>
+                            <tabs index="selected_scene.tabIndex" options="['demo', 'fluid states', 'components', 'time states', 'action items']"/></tabs>
+                        </div>
+                    </div>
+
+                    <div class='tab-content full-x relative flex-wrap-center bg-slate overflow-auto' style='height: 75%;'>
+                        <div class='demo-section full-xy' ng-if='!selected_scene.tabIndex'>
+                            <demo ng-if='selected_scene.template' style='border: 4px dashed white' class='flex-wrap-center p20xy' template="{{selected_scene.sample.template}}"></demo>
+                            <div class='full-xy absolute top-0 left-0' ng-include='img_base + selected_scene.sample.template_url' ng-init='scene = selected_scene.sample.scope' ng-if='selected_scene.sample.template_url'> </div>
+                        </div>
+
+
+                        <div class='admin-details flex-wrap-start ugrid-2 full-xy' ng-if='selected_scene.tabIndex === 1'>
+                            <div class='admin-description-container'>
+                                <div>
+                                    <h1>Fluid States</h1>
+                                    <div class='uppercase weight-300 m10y opacity-50'> {{selected_scene.states.length}} total</div>
+                                </div>
+                            </div>
+                            <div class='admin-requirements-container relative'>
+                                <div class='absolute full-xy flex-wrap-center'>
+                                    <h1 class='p20xy weight-700'>All FLUID States</h1>
+                                    <ul class='full-x p20xy'>
+                                        <li class='full-x ugrid-5 weight-900'>
+                                            <div class='flex-wrap-center text-center p20xy'>
+                                                State #
+                                            </div>
+                                            <div class='flex-wrap-center text-center p20xy'>
+                                                Title
+                                            </div>
+                                            <div class='flex-wrap-center text-center p20xy'>
+                                                Description
+                                            </div>
+                                            <div class='flex-wrap-center text-center p20xy'>
+                                                Assigned to
+                                            </div>
+                                            <div class='flex-wrap-center text-center p20xy'>
+                                                Estimated Time
+                                            </div>
+                                        </li>
+                                        <li class='full-x ugrid-5 weight-700' ng-repeat='state in selected_scene.states'>
+                                            <div class='flex-wrap-center text-center p20xy'>
+                                                #{{state.index}}
+                                            </div>
+                                            <div class='flex-wrap-center text-center p20xy'>
+                                                {{state.title}}
+                                            </div>
+                                            <div class='flex-wrap-center text-center p20xy'>
+                                                {{state.description}}
+                                            </div>
+                                            <div class='flex-wrap-center text-center p20xy'>
+                                                {{state.assigned}}
+                                            </div>
+                                            <div class='flex-wrap-center text-center p20xy'>
+                                                {{state.estimated_time}}
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <!-- @samir -->
+                                    <!-- These are a few different things you can use here for lists when you need them -->
+                                    <!-- <ul>
+                                        <li><div>This is a requirement. You can remove this demo later.</div></li>
+                                        <li><div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div></li>
+                                        <li><div>Ded do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></li>
+                                        <li><div>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div></li>
+                                    </ul> -->
+                                    <!-- <ol class="numbered-list">
+                                        <li><div>This is a requirement. You can remove this demo later.</div></li>
+                                        <li><div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div></li>
+                                        <li><div>Ded do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></li>
+                                        <li><div>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div></li>
+                                    </ol> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='admin-components flex-wrap-start full-xy' ng-if='selected_scene.tabIndex === 2'>
+                            <h2>Elements</h2>
+                            <ul>
+                                <li ng-repeat='component in selected_scene.gallery_ref.children'>
+                                    <div>
+                                        <h1>{{component.name}}</h1>
+                                        <div></div>
+                                        <h2>{{component.type}}</h2>
+                                    </div>
+                                </li>
+                            </ul>
+                            <h2>User Story</h2>
+                            <p>{{selected_scene.name}} is a <span class='weight-900'>{{selected_scene.gallery_ref.parents[0].type}}</span> part of <span class='weight-900'>{{selected_scene.gallery_ref.parents[0].name}}</span></p>
+                        </div>
+
+
+                         <div class='admin-time-states flex-wrap-start full-xy' ng-if='selected_scene.tabIndex === 3'>
+                            <h2>Static States</h2>
+                            <ol class="numbered-list">
+                                <li ng-repeat='state in selected_scene.states'>
+                                    <div>{{state}}</div>
+                                </li>
+                            </ol>
+                        </div>
+
+
+                        <div class="admin-action-items flex-wrap-start full-xy" ng-if='selected_scene.tabIndex === 4'>
+                            <div ng-repeat='user_action_obj in selected_scene.action_items'>
+                                <h2>{{user_action_obj.user}}</h2>
+                                <ul>
+                                    <li ng-repeat="item in user_action_obj.action_items">
+                                        <div class="checkbox-container">
+                                            <div>
+                                                <input type="checkbox" id="checkbox-item-1"/>
+                                                <span>
+                                                    <svg viewBox="0 0 100 100">
+                                                        <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <label for="checkbox-item-1">{{item}}</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-pane>
             <ion-pane id='cta-modal-selected-layout' class='full-xy hide-display cta-modal bg-charcoal absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch' >
                 <a ng-click='hideLayoutCTA()' class='absolute top-0 right-0 cta-modal-close close-button high-z-index'>
                     <svg class="p10xy" viewBox="0 0 100 100" stroke='#FFFFFF' >
@@ -565,14 +699,26 @@
                                 </a> -->
                             </div>
                             <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 2'>
+                                <a class='bg bg-robin' ng-repeat='scene in page.scenes track by $index' id='scene-{{scene.ref}}' ng-click='initAndLaunchSceneCTA($event, scene)'>
+                                    <div class='component-header flex-center full-x uppercase weight-600 text-center' style='min-height:200px;'>
+
+                                        <div class='p20xy text-center'>
+                                            <h1>
+                                                {{scene.name}}
+                                            </h1>
+                                            <p ng-if='scene.states.length' class='opacity-50 m20y'>
+                                                {{scene.states.length}} State
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 3'>
                                 <a class='bg bg-robin' ng-repeat='layout in page.layouts track by $index' id='layout-{{layout.ref}}' ng-click='initAndLaunchLayoutCTA($event, layout)'>
                                     <div class='component-header flex-center full-x uppercase weight-600 text-center' style='min-height:200px;'>
                                         {{layout.name}}
                                     </div>
                                 </a>
-                            </div>
-                            <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 3'>
-
                             </div>
                             <div class='admin-content-section admin-assets' ng-if='$index === 4'>
                                 <h1>Category Icons - Normal</h1>

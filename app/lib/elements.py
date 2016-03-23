@@ -14,47 +14,59 @@ projects = {
 }
 
 user_stories = [
-    {"id": 1, "title": 'Anonymous User Checks out Uguru', "ref":"splash", "layouts":['mad-lib', 'map-university', '']},
-    {"id": 2, "title": 'Anonymous User Checks out Become Guru/How it Works', "ref":"splash-bg-hiw", "layouts":[]},
-    {"id": 3, "title": 'Anonymous User Gets Started/Signup', "ref":"splash-start", "layouts":[]},
-    {"id": 4, "title": 'Student Explores Dashboard', "ref":"student-dash-first", "layouts":[]},
-    {"id": 5, "title": 'Student Becomes a Guru', "ref":"student-becomes-guru", "layouts":[]},
-    {"id": 6, "title": 'Guru Explores Guru Dashboard', "ref":"guru-dash-first", "layouts":[]},
-    {"id": 7, "title": 'Student Creates/Cancels 1-Many Request', "ref":"student-requests", "layouts":[]},
-    {"id": 8, "title": 'Guru Accepts/Rejects/Cancels 1-Many Student Requests', "ref":"guru-incoming-requests", "layouts":[]},
-    {"id": 9, "title": 'Student receives & Accepts/Rejects/Cancels 1 - many incoming Gurus', "ref":"student-incoming-gurus", "layouts":[]},
-    {"id": 10, "title": 'Student Accepts/Rejects/Cancels Guru', "ref":"student-accept-guru", "layouts":[]},
-    {"id": 11, "title": 'Student & Guru Message/ & Share Location/Files/Contact Info', "ref":"student-guru-message", "layouts":[]},
-    {"id": 12, "title": 'Guru/Student rate each other', "ref":"student-guru-rating", "layouts":[]},
-    {"id": 13, "title": 'Guru Sets-up 1-Many Shops', "ref":"guru-profiles-setup", "layouts":[]},
-    {"id": 14, "title": 'Guru becomes 100% Credibly', "ref":"guru-credibility", "layouts":[]},
-    {"id": 15, "title": 'Student/Guru Refer Each Other', "ref":"student-guru-referrals", "layouts":[]},
-    {"id": 16, "title": 'Guru Bills a Student through Billing/Enhanced Messaging', "ref":"guru-bills-student", "layouts":[]},
-    {"id": 17, "title": 'Student adds card & purchases from Credit Shop', "ref":"student-payments-shop", "layouts":[]},
-    {"id": 18, "title": 'Guru adds Debit Card && Cashes Out', "ref":"guru-cashes-out", "layouts":[]},
-    {"id": 19, "title": 'Student/Guru edit their settings', "ref":"student-guru-settings", "layouts":[]},
-    {"id": 20, "title": 'Guru checks out Guru Ranking', "ref":"guru-promote", "layouts":[]},
-    {"id": 21, "title": 'Guru checks out Guru Promote', "ref":"guru-ranking", "layouts":[]}
+    {"id": 1, "name": 'Anonymous User Checks out Uguru', "ref":"splash", "layouts":['mad-lib', 'map-university', '']},
+    {"id": 2, "name": 'Anonymous User Checks out Become Guru/How it Works', "ref":"splash-bg-hiw", "layouts":[]},
+    {"id": 3, "name": 'Anonymous User Gets Started/Signup', "ref":"splash-start", "layouts":[]},
+    {"id": 4, "name": 'Student Explores Dashboard', "ref":"student-dash-first", "layouts":[]},
+    {"id": 5, "name": 'Student Becomes a Guru', "ref":"student-becomes-guru", "layouts":[]},
+    {"id": 6, "name": 'Guru Explores Guru Dashboard', "ref":"guru-dash-first", "layouts":[]},
+    {"id": 7, "name": 'Student Creates/Cancels 1-Many Request', "ref":"student-requests", "layouts":[]},
+    {"id": 8, "name": 'Guru Accepts/Rejects/Cancels 1-Many Student Requests', "ref":"guru-incoming-requests", "layouts":[]},
+    {"id": 9, "name": 'Student receives & Accepts/Rejects/Cancels 1 - many incoming Gurus', "ref":"student-incoming-gurus", "layouts":[]},
+    {"id": 10, "name": 'Student Accepts/Rejects/Cancels Guru', "ref":"student-accept-guru", "layouts":[]},
+    {"id": 11, "name": 'Student & Guru Message/ & Share Location/Files/Contact Info', "ref":"student-guru-message", "layouts":[]},
+    {"id": 12, "name": 'Guru/Student rate each other', "ref":"student-guru-rating", "layouts":[]},
+    {"id": 13, "name": 'Guru Sets-up 1-Many Shops', "ref":"guru-profiles-setup", "layouts":[]},
+    {"id": 14, "name": 'Guru becomes 100% Credibly', "ref":"guru-credibility", "layouts":[]},
+    {"id": 15, "name": 'Student/Guru Refer Each Other', "ref":"student-guru-referrals", "layouts":[]},
+    {"id": 16, "name": 'Guru Bills a Student through Billing/Enhanced Messaging', "ref":"guru-bills-student", "layouts":[]},
+    {"id": 17, "name": 'Student adds card & purchases from Credit Shop', "ref":"student-payments-shop", "layouts":[]},
+    {"id": 18, "name": 'Guru adds Debit Card && Cashes Out', "ref":"guru-cashes-out", "layouts":[]},
+    {"id": 19, "name": 'Student/Guru edit their settings', "ref":"student-guru-settings", "layouts":[]},
+    {"id": 20, "name": 'Guru checks out Guru Ranking', "ref":"guru-promote", "layouts":[]},
+    {"id": 21, "name": 'Guru checks out Guru Promote', "ref":"guru-ranking", "layouts":[]}
 ]
 
-base_user_story = {"title": '', "ref":"", "layouts":[], "scenes": [], "transitions": [], "description": ""}
+base_user_story = {"name": '', "ref":"", "layouts":[], "scenes": [], "transitions": [], "description": ""}
 
-base_assets = {'ref': [], 'cp_link': '', 'type': 'component', 'name': '', 'notes': '', 'parents': [], 'children': [], 'sample': {'scope': '', 'template': ""}, "bugs": [], "states": []}
+base_bug = {"ref": "", "assigned": [], "type": "", "steps_reproduce": "", "description": "", "name": "", "platform": ""}
+
+base_asset = {'ref': [], 'cp_link': '', 'type': 'component', 'name': '', 'notes': '', 'parents': [], 'children': [], 'sample': {'scope': '', 'template': ""}, "bugs": [], "states": []}
 
 base_component = {'ref': [], 'cp_link': '', 'type': 'component', 'name': '', 'notes': '', 'parents': [], 'children': [], 'sample': {'scope': '', 'template': ""}, "bugs": [], "states": []}
 
-base_layout = {'ref': '', 'scenes': [], 'cp_link': '', 'name': '', 'notes': '', 'description': '', 'parents': [], 'children': [], 'template_url': '',  'sample': {'scope': '', 'template': ""}, "bugs": [], "states": []}
+base_layout = {'ref': '', 'scenes': [], 'cp_link': '', 'name': '', 'notes': '', 'description': '', 'parents': [], 'children': [], 'template_url': '',  'sample': {'scope': '', 'template': ""}, "bugs": []}
 
-base_scenes = {'ref': '', 'type':'', 'scenes': [], 'cp_link': '', 'name': '', 'notes': '', 'description': '', 'children': [], 'parents': [], 'template_url': '', 'sample': {'scope': '', 'template': ""}, "bugs": [], "states":[]}
+base_scene = {'ref': '', 'type':'',  'cp_link': '', 'name': '', 'notes': '', 'description': '', 'children': [], 'parents': [], 'template_url': '', 'sample': {'scope': '', 'template': ""}, "bugs": [], "states":[]}
 
 base_containers = {'ref': '', 'scenes': [], 'cp_link': '', 'name': '', 'notes': '', 'description': '', 'parents': [], 'children': [], 'template_url': ''}
 
+
+element_states = {"dynamic": [], "functional": [], "tested": [], "hifi": [], "type": "", "type_ref":"",  "name": "", "description": "", "priority": 0, "assigned": []}
+single_state = {"assigned": [], "priority": [], "name": "", "description": "", "difficulty": "",  "estimated_time": "", "time_created": "", "role": "", "bug": "", "type": ""}
+base_action = {"priority": 0, "assigned": [], "ref": "", "role": "", "type": [], "difficulty": "", "estimated_time": "",  "time_created": "", "time_complete": "", "time_assigned": "", "name": "",  "description": "", "status":""}
+
 base_elements = {
     'component': base_component,
-    'user_stories': base_user_story,
+    'user_story': base_user_story,
     'layouts': base_layout,
-    'scenes': base_scenes,
-    'containers': base_containers
+    'scenes': base_scene,
+    'containers': base_containers,
+    'bug': base_bug,
+    'assets': base_asset,
+    'state': single_state,
+    'element_states': element_states,
+    "actions": base_action
 }
 
 component_list = [
@@ -109,7 +121,7 @@ component_list = [
             "template": '<tooltip direction="component.sample.scope.direction" title="component.sample.scope.title" button-text="component.sample.scope.button_text"/>',
             "scope": {
                 "button_text": 'Okay',
-                "title": 'This is a tool-tip',
+                "name": 'This is a tool-tip',
                 "direction":'bottom'
             }
         }
@@ -131,9 +143,9 @@ component_list = [
         "ref": 'tabs',
         "name": 'Tabs',
         "sample": {
-            "template": '<tabs key="title" index="component.sample.scope.index" options="component.sample.scope.tabs" />',
+            "template": '<tabs key="name" index="component.sample.scope.index" options="component.sample.scope.tabs" />',
             "scope": {
-                "tabs": [{"title": 'Apples'}, {"title": 'Oranges'}, {"title": 'Bananas'}],
+                "tabs": [{"title": 'title'}, {"title": 'Oranges'}, {"title": 'Bananas'}],
                 "index": 1
             }
         }
