@@ -47,14 +47,15 @@ base_component = {'ref': [], 'cp_link': '', 'type': 'component', 'name': '', 'no
 
 base_layout = {'ref': '', 'scenes': [], 'cp_link': '', 'name': '', 'notes': '', 'description': '', 'parents': [], 'children': [], 'template_url': '',  'sample': {'scope': '', 'template': ""}, "bugs": []}
 
-base_scene = {'ref': '', 'type':'',  'cp_link': '', 'name': '', 'notes': '', 'description': '', 'children': [], 'parents': [], 'template_url': '', 'sample': {'scope': '', 'template': ""}, "bugs": [], "states":[]}
 
 base_containers = {'ref': '', 'scenes': [], 'cp_link': '', 'name': '', 'notes': '', 'description': '', 'parents': [], 'children': [], 'template_url': ''}
 
 
-element_states = {"dynamic": [], "functional": [], "tested": [], "hifi": [], "type": "", "type_ref":"",  "name": "", "description": "", "priority": 0, "assigned": []}
-single_state = {"assigned": [], "priority": [], "name": "", "description": "", "difficulty": "",  "estimated_time": "", "time_created": "", "role": "", "bug": "", "type": ""}
+scene_states = {"fluid": [], "functional": [], "testing": [], "hifi": []}
+single_state = {"assigned": [], "name": "", "description": "", "difficulty": "",  "estimated_time": "", "time_created": "", "ref":"", "substates": []}
+nested_state = {"name": "", "description": "", "difficulty": "",  "estimated_time": "",  "parent_ref":""}
 base_action = {"priority": 0, "assigned": [], "ref": "", "role": "", "type": [], "difficulty": "", "estimated_time": "",  "time_created": "", "time_complete": "", "time_assigned": "", "name": "",  "description": "", "status":""}
+base_scene = {'states': scene_states, 'ref': '', 'type':'',  'cp_link': '', 'name': '', 'notes': '', 'description': '', 'children': [], 'parents': [], 'template_url': '', 'sample': {'scope': '', 'template': ""}, "bugs": [], "states":[]}
 
 base_elements = {
     'component': base_component,
@@ -65,7 +66,8 @@ base_elements = {
     'bug': base_bug,
     'assets': base_asset,
     'state': single_state,
-    'element_states': element_states,
+    'nested_state': nested_state,
+    'element_states': scene_states,
     "actions": base_action
 }
 

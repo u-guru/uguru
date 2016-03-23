@@ -63,7 +63,6 @@ angular.module('uguru.util.controllers')
 		function getAdminElements() {
 
 			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(function(response){
-                    	console.log(response);
                     	response = JSON.parse(response);
 
                     	// $timeout(function() {
@@ -76,6 +75,16 @@ angular.module('uguru.util.controllers')
 		                    	$scope.page.assets = response.assets;
 		                    	$scope.page.action_items = response.action_items;
 		                    	$scope.page.projects = response.projects;
+		                    	$scope.page.action_items = response.action_items;
+
+
+
+		                    	var actionItemsSidebarTabSections = $scope.page.layout.sections[0].tabs.options;
+		                    	for (var i =0; i < actionItemsSidebarTabSections.length; i++){
+		                    		var sideBarTabIndex = actionItemsSidebarTabSections[i];
+		                    		var memberTitle = sideBarTabIndex.title.toLowerCase();
+		                    		$scope.page.action_items[memberTitle] = response.action_items[memberTitle];
+		                    	}
                     		// })
                     		// $timeout(function() {
                     		// 	var allDemoElems = document.querySelectorAll('demo')
@@ -310,9 +319,27 @@ angular.module('uguru.util.controllers')
 			return resultObj;
 		}
 
+
+		function getSceneStateStatus(states, elem, elem_type) {
+			var resultDict = {priority: false, total_time: 0, time_created: states[0].time_created, count: states.length, name: elem.name, type:elem_type,  completed: [], pending: []};
+			for (var i = 0; i < states.length; i++) {
+				var indexState = states[i];
+				if (indexState.completed) {
+					resultDict.completed.push(indexState);
+				}
+				else
+				if (!indexState.completed && indexState.priority) {
+					resultDict.pending.push(indexState);
+					resultDict.priority = true;
+					resultDict.total_time += indexState.estimated_time;
+				}
+			}
+			return resultDict;
+		}
+
 		$timeout(function() {
 			$scope.page.layout.sidebar.index = $scope.page.defaults.sidebarIndex;
-			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = $scope.page.defaults.tabsIndex;
+			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = 2 || $scope.page.defaults.tabsIndex;
 			getAdminElements();
 
 

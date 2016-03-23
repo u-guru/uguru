@@ -247,7 +247,6 @@ def validateCreateArgs(args):
     state_type = title = scene_obj = state_obj = description = priority = difficulty= description = None
     if 'state:' in elem_type:
         state_type = elem_type.split(":")[1]
-        elem_type
 
     scene_ref_id = args[1]
     assigned_to = args[2]
@@ -256,11 +255,11 @@ def validateCreateArgs(args):
     if len(args) > 4:
         description = args[4]
     if len(args) > 5:
-        priority = args[5]
+        eta = int(args[5])
     if len(args) > 6:
-        difficulty = args[6]
+        priority = int(args[6])
     if len(args) > 7:
-        difficulty = args[7]
+        difficulty = int(args[7])
 
     if not elemTypeIsValid(elem_type):
         print "INVALID ELEMENT TYPE: %s" % (len(elem_type))
@@ -273,22 +272,23 @@ def validateCreateArgs(args):
     scene_index = 0
     if scene_ref_id:
         for scene in all_elements['scenes']:
-            print scene['ref'], scene_ref_id
             if scene['ref'] == scene_ref_id or str(scene['id']) == scene_ref_id:
                 scene_obj = scene
-                print scene_obj, scene_index
                 break
             scene_index += 1
 
 
-    currentNumStates = len(all_elements['scenes'][scene_index]['states'])
-    state_obj = addStateToScene(state_type, assigned_to, scene_obj, (currentNumStates + 1), title, description, priority, difficulty)
-    all_elements['scenes'][scene_index]['states'].append(state_obj)
+
+    currentNumStates = len(all_elements['scenes'][scene_index])
+    scene_obj = addStateToScene(state_type, assigned_to, scene_obj, (currentNumStates + 1), title, description, eta, priority, difficulty)
+    all_elements['scenes'][scene_index] = scene_obj
 
     return True, all_elements
 
 def addStateToScene(_type, assign, scene_obj, index, title, description=None, eta=None, priority=None, difficulty=None):
     from elements import base_elements
+
+
     state_obj = base_elements['state']
     state_obj['type'] = _type
     state_obj['assigned'].append(assign)
@@ -299,14 +299,46 @@ def addStateToScene(_type, assign, scene_obj, index, title, description=None, et
     state_obj['difficulty'] = difficulty
     state_obj['index'] = index
     from datetime import datetime
-    state_obj['time_created'] = str(datetime.now())
-    return state_obj
+    date = datetime.now().date()
+    state_obj['time_created'] = "%s/%s" % (date.month, date.day)
 
 
+    if not scene_obj.get('element_states') or not len(scene_obj['element_states'].keys()):
+        scene_obj['element_states'] = base_elements['element_states']
 
-def printAllElementTypes(element_type):
-    all_elements = loadMostUpdatedElementsJson()[element_type]
-    for elem in all_elements:
+    scene_obj['element_states'][_type].append(state_obj)
+    state_obj['ref'] = (scene_obj['name'] + '-state-' + str(len(scene_obj['element_states'][_type]))).replace(' ', '-').lower()
+
+    return scene_obj
+
+def reprocessActionItems(elements):
+    elements['action_items'] = {'samir': [], 'jason': [], 'gabrielle': [], 'jeselle': []}
+    action_item_mapping = {'fluid': 'gabrielle', 'testing': 'jason', 'function': 'samir', 'hifi': 'jeselle'}
+    for key in elements.keys():
+        if key == 'action_items': continue
+        if key == 'scenes' and len(elements[key]):
+            all_scenes = elements[key]
+            for scene in all_scenes:
+                if scene.get('element_states'):
+                    diff_state_keys = scene['element_states'].keys()
+                    for state_key in diff_state_keys:
+                        if scene['element_states'][state_key]:
+                            action_items = scene['element_states'][state_key]
+                            for item in action_items:
+                                member_name = action_item_mapping.get(item['type'])
+                                elements['action_items'][member_name].append(item)
+            # scene_element_state_keys = elements[key]['element_states'].keys()
+            # for key in scene_element_state_keys:
+            #     print key
+
+    member_names = elements['action_items'].keys()
+    for member in member_names:
+        elements['action_items'][member] = sorted(elements['action_items'][member], key=lambda k:k['priority'], reverse=True)
+
+
+def printAllElementTypes(element_type, sub_element=None, grandchild_element=None):
+    all_elements = loadMostUpdatedElementsJson()
+    for elem in all_elements[element_type]:
         print elem['id'], elem['ref'], elem['name']
 
 
@@ -333,6 +365,7 @@ if 'print' in args and args.index('print') == 1 and len(args) == 3:
 if 'create' in args:
     validateResults, elements = validateCreateArgs(args[2:])
     if validateResults:
+        reprocessActionItems(elements)
         saveElementsJson(elements)
         print 'state successfully created and updated in elements.json'
 
