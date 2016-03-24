@@ -627,7 +627,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="desc" ng-class="{'active': action_item.desc_dropdown}" ng-show="action_item.desc_dropdown" ng-bind-html="action_item.description"></div>
+                                    <div class="desc" ng-class="{'active': action_item.desc_dropdown}" ng-show="action_item.desc_dropdown" ng-bind-html="action_item.description + (action_item.description_2 && action_item.description_2) || ''"></div>
                                 </li>
                                 <!-- <li class="type-moodboard type-normal">
                                     <a>
