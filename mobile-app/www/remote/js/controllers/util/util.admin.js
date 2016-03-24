@@ -10,7 +10,8 @@ angular.module('uguru.util.controllers')
 	'$timeout',
 	'$compile',
 	'Restangular',
-	function($scope, $state, $stateParams, AdminContent, CTAService, $timeout, $compile, Restangular) {
+	'$http',
+	function($scope, $state, $stateParams, AdminContent, CTAService, $timeout, $compile, Restangular,$http) {
 		$scope.page = {
 			layout: AdminContent.getMainLayout(),
 			glossary: AdminContent.getGlosseryContent(),
@@ -71,9 +72,58 @@ angular.module('uguru.util.controllers')
 		}
 
 		function getAdminElements() {
+			//Jason TRied
+			// var TravisToken = 'gHCrtop9ngfe4YygHesf'
 
+			// var headers = 	{
+			// 					'Accept' : 'application/vnd.travis-ci.2+json',
+			// 					'User-Agent': 'Uguru/tests/1.0.0',
+			// 					'Host': 'api.travis-ci.com',
+			// 					'Authorization' : 'token '+TravisToken
+			// 				}
+
+			// console.log(headers.Authorization)
+
+			// Restangular.setBaseUrl('https://api.travis-ci.com/repos/sinatra/sinatra/builds')
+			// Restangular.setDefaultHeaders(headers)
+			// Restangular.one('travis').get().then(function(datas)
+			// {
+			// 	console.log("WTF",datas)
+			// })
+
+			// Restangular.allUrl('travis', 'https://api.travis-ci.com/repos/sinatra/sinatra/builds').getList().then(function(datas)
+			// 	{
+			// 		console.log("OKAY",datas)
+			// 	});
+
+			//GET
+			// var baseTravis = Restangular.allUrl('travis', 'https://api.travis-ci.com/').getList();
+			// console.log("HIIHI",baseTravis)
+			// baseTravis.getList().then(function(data) {
+			// 	console.log(baseTravis)
+			// });
+			// $http({
+			// 		method: 'GET',
+			// 		url: 'https://api.travis-ci.com/',
+			// 		headers: 
+			// 			{
+			// 			  'Accept': 'application/vnd.travis-ci.2+json',
+			// 		  	  'Host': 'api.travis-ci.com',
+			// 		  	  'User-Agent': 'Uguru/tests/1.5.3',
+			// 		  	  'Authorization': 'token gHCrtop9ngfe4YygHesf'
+			// 			}
+			// }).then(function successCallback(response) {
+			//     // this callback will be called asynchronously
+			//     // when the response is available
+			//     console.log(response)
+			//   }, function errorCallback(response) {
+			//     // called asynchronously if an error occurs
+			//     // or server returns response with an error status.
+			//     console.log(response)
+
+			//   });
 			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(function(response){
-                    	console.log(response);
+                    	// console.log(response);
                     	response = JSON.parse(response);
 
                     	// $timeout(function() {

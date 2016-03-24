@@ -546,9 +546,9 @@
                             <h1 class="admin-small-header">{{option.title}}</h1>
                             <div class='admin-components admin-content-section flex-wrap-start full-x' ng-if='$index === 0'>
                                 <ul>
-                                    <li ng-repeat='component in page.components track by $index'>
+                                    <li id='component-{{component.ref}}' ng-repeat='component in page.components track by $index'>
                                         <div>
-                                            <a id='component-{{component.ref}}' class="block" ng-click='initAndLaunchComponentCTA($event, component)'><h1>{{component.name}} <i class='ion-arrow-resize icon opacity-50'> </i></h1></a>
+                                            <a  class="block" ng-click='initAndLaunchComponentCTA($event, component)'><h1>{{component.name}} <i class='ion-arrow-resize icon opacity-50'> </i></h1></a>
                                             <div>
                                                 <!-- <ng-bind src="component.template"/> -->
                                                 <demo class='flex-wrap-center' template="{{component.sample.template}}"></demo>
