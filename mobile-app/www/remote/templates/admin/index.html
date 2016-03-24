@@ -70,7 +70,7 @@
                         </div>
                     </div>
 
-                    <div class='tab-content full-x relative flex-wrap-center bg-slate overflow-auto' style='height: 75%;'>
+                    <div class='tab-content full-x relative flex-wrap-center bg-smoke overflow-auto' style='height: 75%;'>
                         <div class='demo-section full-xy' ng-if='!selected_scene.tabIndex'>
                             <demo ng-if='selected_scene.template' style='border: 4px dashed white' class='flex-wrap-center p20xy' template="{{selected_scene.sample.template}}"></demo>
                             <div class='full-xy absolute top-0 left-0' ng-include='img_base + selected_scene.sample.template_url' ng-init='scene = selected_scene.sample.scope' ng-if='selected_scene.sample.template_url'> </div>
@@ -79,59 +79,42 @@
                         <div class='admin-states flex-wrap-start full-xy' ng-if='selected_scene.tabIndex === 1'>
                             <div class='admin-states-header'>
                                 <h1>Fluid States</h1>
-                                <div class='uppercase weight-300 m10y opacity-50'>{{selected_scene.states.length}} total</div>
+                                <div>{{selected_scene.states.length || '0'}} total</div>
                             </div>
                             <div class='admin-states-container'>
-                                <ul class='full-x p20xy flex-wrap-center text-center'>
-                                    <li class='full-x ugrid-5 weight-900'>
-                                        <div class='flex-wrap-center text-center p20xy'>
-                                            State #
-                                        </div>
-                                        <div class='flex-wrap-center text-center p20xy'>
-                                            Title
-                                        </div>
-                                        <div class='flex-wrap-center text-center p20xy'>
-                                            Description
-                                        </div>
-                                        <div class='flex-wrap-center text-center p20xy'>
-                                            Assigned to
-                                        </div>
-                                        <div class='flex-wrap-center text-center p20xy'>
-                                            Estimated Time
-                                        </div>
+                                <ul>
+                                    <li>
+                                        <h1>State #</h1>
+                                    </li>
+                                    <li>
+                                        <h1>Title</h1>
+                                    </li>
+                                    <li>
+                                        <h1>Description</h1>
+                                    </li>
+                                    <li>
+                                        <h1>Assigned to</h1>
+                                    </li>
+                                    <li>
+                                        <h1>Estimated Time</h1>
                                     </li>
                                 </ul>
-                                <ul class='full-x flex-wrap-center text-center'>
-                                    <li class='full-x ugrid-5 weight-700' ng-repeat='state in selected_scene.element_states.fluid'>
-                                        <div class='flex-wrap-center text-center p20xy'>
-                                            #{{state.index}}
-                                        </div>
-                                        <div class='flex-wrap-center text-center p20xy'>
-                                            {{state.name}}
-                                        </div>
-                                        <div class='flex-wrap-center text-center p20xy'>
-                                            {{state.description}}
-                                        </div>
-                                        <div class='flex-wrap-center text-center p20xy'>
-                                            {{state.assigned}}
-                                        </div>
-                                        <div class='flex-wrap-center text-center p20xy'>
-                                            {{state.estimated_time}} minutes
-                                        </div>
-                                        <div class="full-x relative flex-wrap-center text-center p20xy ugrid-5" ng-if='state.substates && state.substates.length' ng-repeat="substate in state.substates">
-                                            <ul class='absolute full-xy ugrid-5 left-0 top-0 bg-charcoal-50p'>
-                                                <li class='flex-wrap-center text-center p20xy'>
-                                                    {{substate.index}} # {{$index + 1}}
-                                                </li>
-                                                <li class='flex-wrap-center text-center p20xy'>
-                                                    {{substate.name}} # {{$index + 1}}
-                                                </li>
-                                                <li class='flex-wrap-center text-center p20xy'>
-                                                    {{substate.description}} # {{$index + 1}}
-                                                </li>
-                                                <li class='flex-wrap-center text-center p20xy'>
-                                                    {{substate.estimated_time}} minutes
-                                                </li>
+                                <ul>
+                                    <li ng-repeat='state in selected_scene.element_states.fluid'>
+                                        <ul>
+                                            <li><span>{{state.index}}</span></li>
+                                            <li>{{state.name}}</li>
+                                            <li>{{state.description}}</li>
+                                            <li>{{state.assigned}}</li>
+                                            <li>{{state.estimated_time}} minutes</li>
+                                        </ul>
+                                        <div ng-if='state.substates && state.substates.length' ng-repeat="substate in state.substates">
+                                            <ul>
+                                                <li><span>{{$index + 1}}</span></li>
+                                                <li>{{substate.name}}</li>
+                                                <li>{{substate.description}}</li>
+                                                <li></li>
+                                                <li>{{substate.estimated_time}} minutes</li>
                                             </ul>
                                         </div>
                                     </li>

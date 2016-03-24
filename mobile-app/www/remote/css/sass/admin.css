@@ -1891,11 +1891,263 @@
   -webkit-justify-content: center;
   justify-content: center;
   height: 64px;
-  background: #F1F1F1;
+  background: #a5d9d7;
   width: 100%;
-  font-weight: 600;
-  font-size: 16px;
+}
+
+#admin .admin-states .admin-states-header h1 {
   color: #40484B;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#admin .admin-states .admin-states-header div {
+  margin-left: 15px;
+  padding: 10px 15px;
+  background: #4ab3af;
+  border-radius: 2px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#admin .admin-states .admin-states-container {
+  width: 100%;
+}
+
+#admin .admin-states .admin-states-container > ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(1) {
+  background: #479391;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(1) li:not(:nth-child(3)) {
+  width: calc(100% / 6);
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(1) li:nth-child(1) {
+  width: calc(100% / 12);
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(1) li:nth-child(2) {
+  width: calc(100% / 12 * 3);
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(1) li:nth-child(3) {
+  width: calc(100% / 3);
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(1) li h1 {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5px;
+  text-align: center;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) {
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  color: #40484B;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li {
+  width: 100%;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 10px 6px;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li:not(:nth-child(3)) {
+  width: calc(100% / 6);
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li:nth-child(1) {
+  width: calc(100% / 12);
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li:nth-child(2) {
+  width: calc(100% / 12 * 3);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li:nth-child(3) {
+  width: calc(100% / 3);
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li:not(:nth-child(5)):after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  right: -1px;
+  height: calc(100% - 20px);
+  width: 2px;
+  background: #a5d9d7;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li span {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 36px;
+  height: 36px;
+  background: #4ab3af;
+  border-radius: 2px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div {
+  width: 100%;
+  background: rgba(99, 112, 116, 0.2);
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul > li {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul > li:not(:nth-child(3)) {
+  width: calc(100% / 6);
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul > li:nth-child(1) {
+  width: calc(100% / 12);
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul > li:nth-child(2) {
+  width: calc(100% / 12 * 3);
+  font-weight: 600;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul > li:nth-child(3) {
+  width: calc(100% / 3);
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul > li:not(:nth-child(5)):after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 10;
+  top: 6px;
+  right: -1px;
+  height: calc(100% - 12px);
+  width: 2px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul > li span {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+  background: #7c8a8f;
+  border-radius: 2px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 #admin .admin-action-item-list {

@@ -1247,11 +1247,168 @@
 			@include flex;
 			@include flex-center;
 			height: 64px;
-			background: $smoke;
+			background: mix(mix($shamrock, $robin), white);
 			width: 100%;
-			font-weight: 600;
-			font-size: 16px;
-			color: $slate;
+			h1 {
+				color: $slate;
+				font-size: 24px;
+				font-weight: 600;
+			}
+			div {
+				margin-left: 15px;
+				padding: 10px 15px;
+				background: mix($shamrock, $robin);
+				border-radius: 2px;
+				color: white;
+				font-size: 20px;
+				font-weight: 600;
+			}
+		}
+		.admin-states-container {
+			width: 100%;
+			> ul {
+				@include flex;
+				width: 100%;
+				&:nth-child(1) {
+					background: mix(mix($robin, $shamrock), $slate, 70%);
+					li {
+						&:not(:nth-child(3)) {
+							width: calc(100% / 6);
+						}
+						&:nth-child(1) {
+							width: calc(100% / 12);
+						}
+						&:nth-child(2) {
+							width: calc(100% / 12 * 3);
+						}
+						&:nth-child(3) {
+							width: calc(100% / 3);
+						}
+						h1 {
+							font-size: 16px;
+							font-weight: 600;
+							padding: 5px;
+							text-align: center;
+						}
+					}
+				}
+				&:nth-child(2) {
+					@include flex-wrap;
+					color: $slate;
+					> li {
+						width: 100%;
+						> ul {
+							@include flex;
+							width: 100%;
+							> li {
+								@include flex;
+								@include flex-center;
+								position: relative;
+								text-align: center;
+								font-size: 16px;
+								font-weight: 400;
+								padding: 10px 6px;
+								&:not(:nth-child(3)) {
+									width: calc(100% / 6);
+								}
+								&:nth-child(1) {
+									width: calc(100% / 12);
+								}
+								&:nth-child(2) {
+									width: calc(100% / 12 * 3);
+									font-weight: 700;
+									font-size: 18px;
+								}
+								&:nth-child(3) {
+									width: calc(100% / 3);
+								}
+								&:not(:nth-child(5)) {
+									&:after {
+										@include round;
+										content: "";
+										display: block;
+										position: absolute;
+										z-index: 10;
+										top: 10px;
+										right: -1px;
+										height: calc(100% - 20px);
+										width: 2px;
+										background: mix(mix($robin, $shamrock), white);
+									}
+								}
+								span {
+									@include flex;
+									@include flex-center;
+									margin: 0 auto;
+									width: 36px;
+									height: 36px;
+									background: mix($robin, $shamrock);
+									border-radius: 2px;
+									color: white;
+									font-size: 20px;
+									font-weight: 600;
+								}
+							}
+						}
+						> div {
+							width: 100%;
+							background: rgba(lighten($slate, 15%), .2);
+							ul {
+								@include flex;
+								width: 100%;
+								> li {
+									@include flex;
+									@include flex-center;
+									position: relative;
+									text-align: center;
+									font-size: 16px;
+									font-weight: 400;
+									padding: 6px;
+									&:not(:nth-child(3)) {
+										width: calc(100% / 6);
+									}
+									&:nth-child(1) {
+										width: calc(100% / 12);
+									}
+									&:nth-child(2) {
+										width: calc(100% / 12 * 3);
+										font-weight: 600;
+									}
+									&:nth-child(3) {
+										width: calc(100% / 3);
+									}
+									&:not(:nth-child(5)) {
+										&:after {
+											@include round;
+											content: "";
+											display: block;
+											position: absolute;
+											z-index: 10;
+											top: 6px;
+											right: -1px;
+											height: calc(100% - 12px);
+											width: 2px;
+											background: rgba(white, .4);
+										}
+									}
+									span {
+										@include flex;
+										@include flex-center;
+										margin: 0 auto;
+										width: 24px;
+										height: 24px;
+										background: lighten($slate, 25%);
+										border-radius: 2px;
+										color: white;
+										font-size: 18px;
+										font-weight: 600;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 	
