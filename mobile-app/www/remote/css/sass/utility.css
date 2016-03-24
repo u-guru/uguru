@@ -126,7 +126,7 @@ input, fieldset {
   height: calc(100% / 3);
 }
 
-.lyt-1-3-header > header + * {
+.lyt-1-3-header > *:not(header) {
   width: 100%;
   height: calc(100% / 3 * 2);
 }
@@ -136,7 +136,7 @@ input, fieldset {
   height: 25%;
 }
 
-.lyt-1-4-header > header + * {
+.lyt-1-4-header > *:not(header) {
   width: 100%;
   height: 75%;
 }
@@ -156,7 +156,7 @@ input, fieldset {
   height: 100%;
 }
 
-.lyt-1-3-sidebar > aside + * {
+.lyt-1-3-sidebar > *:not(aside) {
   width: calc(100% / 3 * 2);
   height: 100%;
 }
@@ -189,7 +189,7 @@ input, fieldset {
   text-transform: none;
 }
 
-.lyt-reduced-header > header + * {
+.lyt-reduced-header > *:not(header) {
   width: 100%;
   height: calc(100% - 50px);
 }
@@ -201,7 +201,7 @@ input, fieldset {
   .lyt-reduced-header > header h1 {
     font-size: 36px;
   }
-  .lyt-reduced-header > header + * {
+  .lyt-reduced-header > *:not(header) {
     height: calc(100% - 100px);
   }
 }
@@ -974,6 +974,11 @@ input, fieldset {
 
 .svg-stroke-8 * {
   stroke-width: 10px;
+}
+
+.underline-dashed {
+  text-decoration: none;
+  border-bottom: 2px dashed;
 }
 
 .text-left, .txt-left {

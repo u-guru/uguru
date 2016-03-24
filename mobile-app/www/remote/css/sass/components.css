@@ -4198,6 +4198,39 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 /* ---------- CARDS */
+[class*="tile-border"] li {
+  position: relative;
+}
+
+[class*="tile-border"] li:not(:last-child):after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+}
+
+[class*="tile-border"][class*="tile-border-side"] li:after {
+  right: -1px;
+  top: 15px;
+  height: calc(100% - 30px);
+  width: 2px;
+}
+
+[class*="tile-border"][class*="tile-border-bottom"] li:after {
+  bottom: -1px;
+  left: 15px;
+  width: calc(100% - 30px);
+  height: 2px;
+}
+
+[class*="tile-border"][class*="dark"] li:after {
+  background: rgba(64, 72, 75, 0.2);
+}
+
+[class*="tile-border"][class*="light"] li:after {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 .pf-card-group {
   -ms-box-orient: horizontal;
   display: -webkit-box;

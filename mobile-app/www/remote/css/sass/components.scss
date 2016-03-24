@@ -3361,6 +3361,53 @@ input[type=range] {
 }
 
 /* ---------- CARDS */
+[class*="tile-border"] {
+	li {
+		position: relative;
+		&:not(:last-child) {
+			&:after {
+				@include round;
+				content: "";
+				display: block;
+				position: absolute;
+			}
+		}
+	}
+	&[class*="tile-border-side"] {
+		li {
+			&:after {
+				right: -1px;
+				top: 15px;
+				height: calc(100% - 30px);
+				width: 2px;
+			}
+		}
+	}
+	&[class*="tile-border-bottom"] {
+		li {
+			&:after {
+				bottom: -1px;
+				left: 15px;
+				width: calc(100% - 30px);
+				height: 2px;
+			}
+		}
+	}
+	&[class*="dark"] {
+		li {
+			&:after {
+				background: rgba($slate, .2);
+			}
+		}
+	}
+	&[class*="light"] {
+		li {
+			&:after {
+				background: rgba(white, .2);
+			}
+		}
+	}
+}
 .pf-card-group {
 	@include flex;
 	@include flex-wrap;
