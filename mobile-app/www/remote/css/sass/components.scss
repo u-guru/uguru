@@ -8391,7 +8391,7 @@ a.category-tile {
 	@include flex-center;
 	div {
 		position: relative;
-		input {
+		input:not([text]) {
 			@include opacity(0);
 			position: absolute;
 			z-index: 12;
@@ -8441,7 +8441,7 @@ a.category-tile {
 			@include round;
 			width: 24px;
 			height: 24px;
-			padding: 4px;
+			padding: 3px;
 			svg {
 				@include round;
 				background: lighten($slate, 10%);

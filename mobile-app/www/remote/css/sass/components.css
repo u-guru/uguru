@@ -10364,7 +10364,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   position: relative;
 }
 
-.checkbox-container div input, .radio-container div input {
+.checkbox-container div input:not([text]), .radio-container div input:not([text]) {
   filter: alpha(opacity=0);
   opacity: 0;
   position: absolute;
@@ -10416,7 +10416,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   border-radius: 1000px;
   width: 24px;
   height: 24px;
-  padding: 4px;
+  padding: 3px;
 }
 
 .radio-container div span svg {

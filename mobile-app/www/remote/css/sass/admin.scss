@@ -93,7 +93,7 @@
 			position: relative;
 			height: 64px;
 			background: white;
-			.builder-search-results {
+			.build-search-results {
 				position: absolute;
 				top: -36px;
 				left: 0;
@@ -297,6 +297,9 @@
 					}
 					.build-property-list {
 						width: 100%;
+						&:not(.active) {
+							display: none;
+						}
 						> li {
 							position: relative;
 							background: lighten($slate, 5%);
@@ -439,6 +442,36 @@
 												font-size: 16px;
 												text-align: center;
 											}
+											.checkbox-container {
+												div {
+													input:checked + span {
+														background: $moxie;
+													}
+												}
+											}
+											.radio-container {
+												div {
+													input:checked + span {
+														svg {
+															background: $moxie;
+														}
+													}
+												}
+											}
+											.radio-container, .checkbox-container {
+												&.full-x {
+													label {
+														width: calc(100% - 24px);
+														input {
+															width: 100%;
+														}
+													}
+													> input {
+														margin-left: 15px;
+														width: calc(100% - 24px - 15px);
+													}
+												}
+											}
 											div {
 												position: relative;
 												> a {
@@ -507,6 +540,92 @@
 									}
 									&:hover, &:focus {
 										@include opacity(1);
+									}
+								}
+								.build-element-search {
+									@include flex;
+									@include flex-wrap;
+									position: relative;
+									height: 72px;
+									background: white;
+									&:not(.active) {
+										display: none;
+									}
+									.build-element-search-results {
+										height: 36px;
+										width: 100%;
+										background: rgba($campus, .95);
+										&:not(.active) {
+											display: none;
+										}
+										ul {
+											@include flex;
+											width: 100%;
+											overflow: auto;
+											height: 100%;
+											&::-webkit-scrollbar { 
+											    display: none; 
+											}
+											&::-moz-scrollbar { 
+											    display: none; 
+											}
+											li {
+												position: relative;
+												height: 100%;
+												&:not(:last-child) {
+													&:after {
+														@include round;
+														content: "";
+														display: block;
+														position: absolute;
+														z-index: 10;
+														top: 6px;
+														right: -1px;
+														height: calc(100% - 12px);
+														width: 2px;
+														background: mix($campus, white, 70%);
+													}
+												}
+												a {
+													@include flex;
+													@include flex-center-vertical;
+													height: 100%;
+													font-size: 16px;
+													font-weight: 600;
+													white-space: nowrap;
+													padding: 0 15px;
+													&:hover, &:focus {
+														background: mix($campus, white);
+														color: mix($campus, $slate);
+													}
+													&:active {
+														background: mix($campus, $slate);
+														color: white;
+													}
+												}
+											}
+										}
+									}
+									label {
+										@include flex;
+										@include flex-center;
+										width: 36px;
+										height: 36px;
+										background: $moxie;
+										svg {
+											display: block;
+											width: 24px;
+											height: 24px;
+											* {
+												@include svg-stroke(white, 8);
+											}
+										}
+									}
+									input {
+										width: calc(100% - 36px);
+										height: 36px;
+										padding: 0 15px;
+										font-size: 18px;
 									}
 								}
 							}

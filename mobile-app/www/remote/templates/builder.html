@@ -194,7 +194,7 @@
 			</div>
 			
 			<nav class="build-main-bottom">
-				<div class="builder-search-results active">
+				<div class="build-search-results active">
 					<ul>
 						<li><a>dropdown</a></li>
 						<li><a>tile group</a></li>
@@ -214,8 +214,8 @@
 						<li><a>profile card</a></li>
 					</ul>
 				</div>
-				<label for="builder-search" ng-include="img_base + BASE + 'templates/svg/main/search.html'"></label>
-				<input id="builder-search" type="text" placeholder="Add component"/>
+				<label for="build-search" ng-include="img_base + BASE + 'templates/svg/main/search.html'"></label>
+				<input id="build-search" type="text" placeholder="Add component"/>
 			</nav>
 		</main>
 		<aside>
@@ -240,9 +240,253 @@
 							<h1>Dropdown 1</h1>
 							<a ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
 						</div>
-						<ul class="build-property-list">
+						<ul class="build-property-list active">
 							<li>
 								<div>
+									<h2>display</h2>
+									<ul class="build-property-options">
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/check.html'"></a>
+										</li>
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+										</li>
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+										</li>
+									</ul>
+								</div>
+								<div>
+									<ul class="build-property-values">
+										<li>
+											<div class="radio-container">
+												<div>
+													<input type="radio" id="display-none" name="display" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="display-none">none</label>
+											</div>
+										</li>
+										<li>
+											<div class="radio-container">
+												<div>
+													<input type="radio" id="display-block" name="display" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="display-block">block</label>
+											</div>
+										</li>
+										<li>
+											<div class="radio-container">
+												<div>
+													<input type="radio" id="display-flex" name="display" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="display-flex">flex</label>
+											</div>
+										</li>
+										<li>
+											<div class="radio-container">
+												<div>
+													<input type="radio" id="display-inline" name="display" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="display-inline">inline</label>
+											</div>
+										</li>
+										<li>
+											<div class="radio-container">
+												<div>
+													<input type="radio" id="display-inline-block" name="display" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="display-inline-block">inline-block</label>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<div>
+									<h2>flex</h2>
+									<ul class="build-property-options">
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/check.html'"></a>
+										</li>
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+										</li>
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+										</li>
+									</ul>
+								</div>
+								<div>
+									<ul class="build-property-values">
+										<li>
+											<div class="checkbox-container">
+												<div>
+													<input type="checkbox" id="flex-wrap" name="flex" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="flex-wrap">flex-wrap</label>
+											</div>
+										</li>
+										<li>
+											<div class="checkbox-container">
+												<div>
+													<input type="checkbox" id="flex-center" name="flex" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="flex-center">flex-center</label>
+											</div>
+										</li>
+										<li>
+											<div class="checkbox-container">
+												<div>
+													<input type="checkbox" id="flex-center-vertical" name="flex" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="flex-center-vertical">flex-center-vertical</label>
+											</div>
+										</li>
+										<li>
+											<div class="checkbox-container">
+												<div>
+													<input type="checkbox" id="flex-stretch" name="flex" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="flex-stretch">flex-stretch</label>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<div>
+									<h2>transition</h2>
+									<ul class="build-property-options">
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/check.html'"></a>
+										</li>
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+										</li>
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+										</li>
+									</ul>
+								</div>
+								<div>
+									<ul class="build-property-values">
+										<li>
+											<div class="radio-container">
+												<div>
+													<input type="radio" id="all-150" name="transition" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="all-150">all 150ms ease-in-out</label>
+											</div>
+										</li>
+										<li>
+											<div class="radio-container">
+												<div>
+													<input type="radio" id="all-300" name="transition" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="all-300">all 300ms ease-in-out</label>
+											</div>
+										</li>
+										<li class="full-x">
+											<div class="radio-container full-x">
+												<div>
+													<input type="radio" id="all-custom" name="transition" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="all-custom"><input type="text" placeholder="enter a transition" value="" /></label>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<div>
+									<h2>transform</h2>
+									<ul class="build-property-options">
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/check.html'"></a>
+										</li>
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+										</li>
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+										</li>
+									</ul>
+								</div>
+								<div>
+									<ul class="build-property-values">
+										<li class="full-x">
+											<input class="full-x" type="text" placeholder="enter a transform" value="translateX(-40px) rotate(45deg)" />
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<div>
+									<!-- @samir
+										 scale and translate are actually part of transform
+										 but i included them separately since we often use them separately.
+										 if i add scale(45deg) and translateX(-40px),
+										 the css should be transform: scale(45deg) translateX(-40px); -->
 									<h2>scale</h2>
 									<ul class="build-property-options">
 										<li>
@@ -288,35 +532,6 @@
 							<li>
 								<div>
 									<h2>animation-delay</h2>
-									<ul class="build-property-options">
-										<li>
-											<a ng-include="img_base + BASE + 'templates/svg/main/check.html'"></a>
-										</li>
-										<li>
-											<a ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
-										</li>
-										<li>
-											<a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
-										</li>
-									</ul>
-								</div>
-								<div>
-									<ul class="build-property-values">
-										<li>
-											<input type="tel" placeholder="0" size="5" />
-											<div>
-												<a>ms &dtrif;</a>
-												<ul class="build-property-options">
-													<li><a>s</a></li>
-												</ul>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<li>
-								<div>
-									<h2>draw-delay</h2>
 									<ul class="build-property-options">
 										<li>
 											<a ng-include="img_base + BASE + 'templates/svg/main/check.html'"></a>
@@ -423,7 +638,7 @@
 												<a>hex &dtrif;</a>
 												<ul class="build-property-options">
 													<li><a>var</a></li>
-													<li><a>rgb</a></li>
+													<li><a>mix</a></li>
 												</ul>
 											</div>
 										</li>
@@ -434,6 +649,123 @@
 								<a>
 									<h2>add property &dtrif;</h2>
 								</a>
+								<div class="build-element-search active">
+									<label for="build-element-search" ng-include="img_base + BASE + 'templates/svg/main/search.html'"></label>
+									<input id="build-element-search" type="text" placeholder="Search properties"/>
+									<div class="build-element-search-results active">
+										<ul>
+											<li><a>dropdown</a></li>
+											<li><a>tile group</a></li>
+											<li><a>checkbox</a></li>
+											<li><a>profile card</a></li>
+											<li><a>dropdown</a></li>
+											<li><a>tile group</a></li>
+											<li><a>checkbox</a></li>
+											<li><a>profile card</a></li>
+											<li><a>dropdown</a></li>
+											<li><a>tile group</a></li>
+											<li><a>checkbox</a></li>
+											<li><a>profile card</a></li>
+											<li><a>dropdown</a></li>
+											<li><a>tile group</a></li>
+											<li><a>checkbox</a></li>
+											<li><a>profile card</a></li>
+										</ul>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<div>
+							<h1>Dropdown 1</h1>
+							<a ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
+						</div>
+						<ul class="build-property-list active">
+							<li>
+								<div>
+									<h2>display</h2>
+									<ul class="build-property-options">
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/check.html'"></a>
+										</li>
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+										</li>
+										<li>
+											<a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+										</li>
+									</ul>
+								</div>
+								<div>
+									<ul class="build-property-values">
+										<li>
+											<div class="radio-container">
+												<div>
+													<input type="radio" id="display-none" name="display" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="display-none">none</label>
+											</div>
+										</li>
+										<li>
+											<div class="radio-container">
+												<div>
+													<input type="radio" id="display-block" name="display" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="display-block">block</label>
+											</div>
+										</li>
+										<li>
+											<div class="radio-container">
+												<div>
+													<input type="radio" id="display-flex" name="display" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="display-flex">flex</label>
+											</div>
+										</li>
+										<li>
+											<div class="radio-container">
+												<div>
+													<input type="radio" id="display-inline" name="display" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="display-inline">inline</label>
+											</div>
+										</li>
+										<li>
+											<div class="radio-container">
+												<div>
+													<input type="radio" id="display-inline-block" name="display" />
+													<span>
+														<svg viewBox="0 0 100 100">
+															<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+														</svg>
+													</span>
+												</div>
+												<label for="display-inline-block">inline-block</label>
+											</div>
+										</li>
+									</ul>
+								</div>
 							</li>
 						</ul>
 					</li>

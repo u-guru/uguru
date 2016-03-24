@@ -144,7 +144,7 @@
   background: white;
 }
 
-#build > main .build-main-bottom .builder-search-results {
+#build > main .build-main-bottom .build-search-results {
   position: absolute;
   top: -36px;
   left: 0;
@@ -153,11 +153,11 @@
   background: rgba(138, 158, 163, 0.95);
 }
 
-#build > main .build-main-bottom .builder-search-results:not(.active) {
+#build > main .build-main-bottom .build-search-results:not(.active) {
   display: none;
 }
 
-#build > main .build-main-bottom .builder-search-results ul {
+#build > main .build-main-bottom .build-search-results ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -170,20 +170,20 @@
   height: 100%;
 }
 
-#build > main .build-main-bottom .builder-search-results ul::-webkit-scrollbar {
+#build > main .build-main-bottom .build-search-results ul::-webkit-scrollbar {
   display: none;
 }
 
-#build > main .build-main-bottom .builder-search-results ul::-moz-scrollbar {
+#build > main .build-main-bottom .build-search-results ul::-moz-scrollbar {
   display: none;
 }
 
-#build > main .build-main-bottom .builder-search-results ul li {
+#build > main .build-main-bottom .build-search-results ul li {
   position: relative;
   height: 100%;
 }
 
-#build > main .build-main-bottom .builder-search-results ul li:not(:last-child):after {
+#build > main .build-main-bottom .build-search-results ul li:not(:last-child):after {
   border-radius: 1000px;
   content: "";
   display: block;
@@ -196,7 +196,7 @@
   background: #adbbbf;
 }
 
-#build > main .build-main-bottom .builder-search-results ul li a {
+#build > main .build-main-bottom .build-search-results ul li a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -215,12 +215,12 @@
   padding: 0 15px;
 }
 
-#build > main .build-main-bottom .builder-search-results ul li a:hover, #build > main .build-main-bottom .builder-search-results ul li a:focus {
+#build > main .build-main-bottom .build-search-results ul li a:hover, #build > main .build-main-bottom .build-search-results ul li a:focus {
   background: #c5cfd1;
   color: #657377;
 }
 
-#build > main .build-main-bottom .builder-search-results ul li a:active {
+#build > main .build-main-bottom .build-search-results ul li a:active {
   background: #657377;
   color: white;
 }
@@ -479,6 +479,10 @@
   width: 100%;
 }
 
+#build > aside .build-element-list > ul > li .build-property-list:not(.active) {
+  display: none;
+}
+
 #build > aside .build-element-list > ul > li .build-property-list > li {
   position: relative;
   background: #4c5559;
@@ -706,6 +710,27 @@
   text-align: center;
 }
 
+#build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li .checkbox-container div input:checked + span {
+  background: #43cb9d;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li .radio-container div input:checked + span svg {
+  background: #43cb9d;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li .radio-container.full-x label, #build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li .checkbox-container.full-x label {
+  width: calc(100% - 24px);
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li .radio-container.full-x label input, #build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li .checkbox-container.full-x label input {
+  width: 100%;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li .radio-container.full-x > input, #build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li .checkbox-container.full-x > input {
+  margin-left: 15px;
+  width: calc(100% - 24px - 15px);
+}
+
 #build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li div {
   position: relative;
 }
@@ -804,6 +829,146 @@
 #build > aside .build-element-list > ul > li .build-property-list > li:last-child > a:hover, #build > aside .build-element-list > ul > li .build-property-list > li:last-child > a:focus {
   filter: alpha(opacity=100);
   opacity: 1;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  position: relative;
+  height: 72px;
+  background: white;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search:not(.active) {
+  display: none;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results {
+  height: 36px;
+  width: 100%;
+  background: rgba(138, 158, 163, 0.95);
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results:not(.active) {
+  display: none;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  overflow: auto;
+  height: 100%;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results ul::-webkit-scrollbar {
+  display: none;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results ul::-moz-scrollbar {
+  display: none;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results ul li {
+  position: relative;
+  height: 100%;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results ul li:not(:last-child):after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 10;
+  top: 6px;
+  right: -1px;
+  height: calc(100% - 12px);
+  width: 2px;
+  background: #adbbbf;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results ul li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 0 15px;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results ul li a:hover, #build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results ul li a:focus {
+  background: #c5cfd1;
+  color: #657377;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results ul li a:active {
+  background: #657377;
+  color: white;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search label {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #43cb9d;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search label svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search label svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search input {
+  width: calc(100% - 36px);
+  height: 36px;
+  padding: 0 15px;
+  font-size: 18px;
 }
 
 #build > aside .build-aside-bottom {
