@@ -1993,7 +1993,7 @@
   justify-content: center;
   position: relative;
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   padding: 10px 6px;
 }
@@ -2009,11 +2009,14 @@
 #admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li:nth-child(2) {
   width: calc(100% / 12 * 3);
   font-weight: 700;
-  font-size: 18px;
 }
 
 #admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li:nth-child(3) {
   width: calc(100% / 3);
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  padding: 10px 15px;
+  text-align: left;
 }
 
 #admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li:not(:nth-child(5)):after {
@@ -2055,12 +2058,26 @@
   font-weight: 600;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div {
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) {
+  position: relative;
   width: 100%;
   background: rgba(99, 112, 116, 0.2);
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul {
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child):not(:nth-last-child(2)):after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 10;
+  left: 6px;
+  bottom: -1px;
+  width: calc(100% - 12px);
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -2071,7 +2088,7 @@
   width: 100%;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul > li {
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -2094,37 +2111,42 @@
   padding: 6px;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul > li:not(:nth-child(3)) {
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:not(:nth-child(3)) {
   width: calc(100% / 6);
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul > li:nth-child(1) {
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(1) {
   width: calc(100% / 12);
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul > li:nth-child(2) {
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(2) {
   width: calc(100% / 12 * 3);
   font-weight: 600;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul > li:nth-child(3) {
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(3) {
   width: calc(100% / 3);
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  padding: 6px 15px;
+  text-align: left;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul > li:not(:nth-child(5)):after {
-  border-radius: 1000px;
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: 10;
-  top: 6px;
-  right: -1px;
-  height: calc(100% - 12px);
-  width: 2px;
-  background: rgba(255, 255, 255, 0.4);
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(3):last-child {
+  width: calc(100% / 3 * 2);
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div ul > li span {
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li span {
+  color: rgba(64, 72, 75, 0.5);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child {
+  width: 100%;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -2140,14 +2162,50 @@
   align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
-  margin: 0 auto;
-  width: 24px;
-  height: 24px;
-  background: #7c8a8f;
+  width: 100%;
+  padding: 7.5px;
+  background: rgba(74, 179, 175, 0.2);
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li {
+  padding: 7.5px;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li a {
+  display: block;
+  padding: 5px 10px;
   border-radius: 2px;
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:first-child a {
+  background: #4ab3af;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:first-child a:hover, #admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:first-child a:focus {
+  background: #a5d9d7;
+  color: #457e7d;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:first-child a:active {
+  background: #457e7d;
+  color: white;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:last-child a {
+  background: #7c8a8f;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:last-child a:hover, #admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:last-child a:focus {
+  background: #bdc4c7;
+  color: #5e696d;
+}
+
+#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:last-child a:active {
+  background: #5e696d;
+  color: white;
 }
 
 #admin .admin-action-item-list {

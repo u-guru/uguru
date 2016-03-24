@@ -71,12 +71,13 @@
                     </div>
 
                     <div class='tab-content full-x relative flex-wrap-center bg-smoke overflow-auto' style='height: 75%;'>
-                        <div class='demo-section full-xy' ng-if='!selected_scene.tabIndex'>
+                        <!-- <div class='demo-section full-xy' ng-if='!selected_scene.tabIndex'>
                             <demo ng-if='selected_scene.template' style='border: 4px dashed white' class='flex-wrap-center p20xy' template="{{selected_scene.sample.template}}"></demo>
                             <div class='full-xy absolute top-0 left-0' ng-include='img_base + selected_scene.sample.template_url' ng-init='scene = selected_scene.sample.scope' ng-if='selected_scene.sample.template_url'> </div>
-                        </div>
+                        </div> -->
 
-                        <div class='admin-states flex-wrap-start full-xy' ng-if='selected_scene.tabIndex === 1'>
+                        <!-- <div class='admin-states flex-wrap-start full-xy' ng-if='selected_scene.tabIndex === 1'> -->
+                        <div class='admin-states flex-wrap-start full-xy' ng-if='!selected_scene.tabIndex'>
                             <div class='admin-states-header'>
                                 <h1>Fluid States</h1>
                                 <div>{{selected_scene.states.length || '0'}} total</div>
@@ -100,6 +101,187 @@
                                     </li>
                                 </ul>
                                 <ul>
+                                    <li>
+                                        <ul>
+                                            <li><span>0</span></li>
+                                            <li>onEnter</li>
+                                            <li>elements enter the scene</li>
+                                            <li>Gabrielle</li>
+                                            <li>-</li>
+                                        </ul>
+                                        <div>
+                                            <ul>
+                                                <li><span>1</span></li>
+                                                <li>-</li>
+                                                <li>as scene opens, guru head is already visible</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><span>2</span></li>
+                                                <li>vanishIn</li>
+                                                <li>uguru logo and menu link vanishIn</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><span>3</span></li>
+                                                <li>draw &amp; fadeIn</li>
+                                                <li>device draws itself in, then fades in color</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><span>4</span></li>
+                                                <li>fade, bounceInUp, &amp; bounceIn</li>
+                                                <li>device fades; adlib bounceInUp while options bounceIn, staggered</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><span>5</span></li>
+                                                <li>draw</li>
+                                                <li>coach draws in</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><span>6</span></li>
+                                                <li>fadeIn, rollIn</li>
+                                                <li>category/school dropdown fadeIn, skip button rollIn</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><span>7</span></li>
+                                                <li>bounceInDown</li>
+                                                <li>school pennant bounceDownIn to device top</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><a>Add State</a></li>
+                                                <li><a>Add Substate</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <ul>
+                                            <li><span>x</span></li>
+                                            <li>adlibs</li>
+                                            <li>different states for adlib options</li>
+                                            <li>Gabrielle</li>
+                                            <li>-</li>
+                                        </ul>
+                                        <div>
+                                            <ul>
+                                                <li><span>1</span></li>
+                                                <li>onHover</li>
+                                                <li>background fills in with category color</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><span>2</span></li>
+                                                <li>onClick</li>
+                                                <li>translates up to blank; flashes color once</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><a>Add State</a></li>
+                                                <li><a>Add Substate</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <ul>
+                                            <li><span>x</span></li>
+                                            <li>category/school dropdown</li>
+                                            <li>changing category/school &rarr; options</li>
+                                            <li>Gabrielle</li>
+                                            <li>-</li>
+                                        </ul>
+                                        <div>
+                                            <ul>
+                                                <li><span>1</span></li>
+                                                <li>link onHover</li>
+                                                <li>background at full opacity</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><span>2</span></li>
+                                                <li>link onClick</li>
+                                                <li>options bounceInDown from behind link</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><span>3</span></li>
+                                                <li>option onHover</li>
+                                                <li>background at full opacity</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><span>4</span></li>
+                                                <li>option onClick</li>
+                                                <li>adlib bounceOutUp, options bounceOutDown staggered,<br/>new adlib bounceInDown, new options bounceInUp staggered</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><a>Add State</a></li>
+                                                <li><a>Add Substate</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <ul>
+                                            <li><span>1</span></li>
+                                            <li>2 options selected</li>
+                                            <li>half-way transition to map</li>
+                                            <li>Gabrielle</li>
+                                            <li>-</li>
+                                        </ul>
+                                        <div>
+                                            <ul>
+                                                <li><span>1</span></li>
+                                                <li>bounceIn</li>
+                                                <li>coach disappears and help bubble bounceIn</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><span>2</span></li>
+                                                <li>fadeIn</li>
+                                                <li>map fadeIn</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><span>3</span></li>
+                                                <li>bounceInUp</li>
+                                                <li>button bounceInUp</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><span>4</span></li>
+                                                <li>draw</li>
+                                                <li>coach draws in</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><a>Add State</a></li>
+                                                <li><a>Add Substate</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul ng-if="false">
                                     <li ng-repeat='state in selected_scene.element_states.fluid'>
                                         <ul>
                                             <li><span>{{state.index}}</span></li>
@@ -115,6 +297,12 @@
                                                 <li>{{substate.description}}</li>
                                                 <li></li>
                                                 <li>{{substate.estimated_time}} minutes</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><a>Add State</a></li>
+                                                <li><a>Add Substate</a></li>
                                             </ul>
                                         </div>
                                     </li>

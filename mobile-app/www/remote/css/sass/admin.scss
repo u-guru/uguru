@@ -1305,7 +1305,7 @@
 								@include flex-center;
 								position: relative;
 								text-align: center;
-								font-size: 16px;
+								font-size: 18px;
 								font-weight: 400;
 								padding: 10px 6px;
 								&:not(:nth-child(3)) {
@@ -1317,10 +1317,12 @@
 								&:nth-child(2) {
 									width: calc(100% / 12 * 3);
 									font-weight: 700;
-									font-size: 18px;
 								}
 								&:nth-child(3) {
 									width: calc(100% / 3);
+									@include prefix(justify-content, flex-start, webkit);
+									padding: 10px 15px;
+									text-align: left;
 								}
 								&:not(:nth-child(5)) {
 									&:after {
@@ -1350,9 +1352,24 @@
 								}
 							}
 						}
-						> div {
+						> div:not(:last-child) {
+							position: relative;
 							width: 100%;
 							background: rgba(lighten($slate, 15%), .2);
+							&:not(:nth-last-child(2)) {
+								&:after {
+									@include round;
+									content: "";
+									display: block;
+									position: absolute;
+									z-index: 10;
+									left: 6px;
+									bottom: -1px;
+									width: calc(100% - 12px);
+									height: 2px;
+									background: rgba(white, .4);
+								}
+							}
 							ul {
 								@include flex;
 								width: 100%;
@@ -1376,32 +1393,64 @@
 									}
 									&:nth-child(3) {
 										width: calc(100% / 3);
-									}
-									&:not(:nth-child(5)) {
-										&:after {
-											@include round;
-											content: "";
-											display: block;
-											position: absolute;
-											z-index: 10;
-											top: 6px;
-											right: -1px;
-											height: calc(100% - 12px);
-											width: 2px;
-											background: rgba(white, .4);
+										@include prefix(justify-content, flex-start, webkit);
+										padding: 6px 15px;
+										text-align: left;
+										&:last-child {
+											width: calc(100% / 3 * 2);
 										}
 									}
 									span {
-										@include flex;
-										@include flex-center;
-										margin: 0 auto;
-										width: 24px;
-										height: 24px;
-										background: lighten($slate, 25%);
-										border-radius: 2px;
-										color: white;
+										color: rgba($slate, .5);
 										font-size: 18px;
 										font-weight: 600;
+									}
+								}
+							}
+						}
+						> div:last-child {
+							width: 100%;
+							ul {
+								@include flex;
+								@include flex-center;
+								width: 100%;
+								padding: 7.5px;
+								background: rgba(mix($robin, $shamrock), .2);
+								li {
+									padding: 7.5px;
+									a {
+										display: block;
+										padding: 5px 10px;
+										border-radius: 2px;
+										color: white;
+										font-size: 16px;
+										font-weight: 600;
+									}
+									&:first-child {
+										a {
+											background: mix($robin, $shamrock);
+											&:hover, &:focus {
+												background: mix(mix($robin, $shamrock), white);
+												color: mix(mix($robin, $shamrock), $slate);
+											}
+											&:active {
+												background: mix(mix($robin, $shamrock), $slate);
+												color: white;
+											}
+										}
+									}
+									&:last-child {
+										a {
+											background: lighten($slate, 25%);
+											&:hover, &:focus {
+												background: mix(lighten($slate, 25%), white);
+												color: mix(lighten($slate, 25%), $slate);
+											}
+											&:active {
+												background: mix(lighten($slate, 25%), $slate);
+												color: white;
+											}
+										}
 									}
 								}
 							}
