@@ -112,8 +112,23 @@
 }
 
 #build > main .build-player {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   height: calc(100% - 128px);
   width: 100%;
+  padding: 7.5px;
+}
+
+#build > main .build-player svg {
+  margin: 7.5px;
 }
 
 #build > main .build-main-bottom {
@@ -135,7 +150,11 @@
   left: 0;
   height: 36px;
   width: 100%;
-  background: #8A9EA3;
+  background: rgba(138, 158, 163, 0.95);
+}
+
+#build > main .build-main-bottom .builder-search-results:not(.active) {
+  display: none;
 }
 
 #build > main .build-main-bottom .builder-search-results ul {
@@ -194,7 +213,6 @@
   font-weight: 600;
   white-space: nowrap;
   padding: 0 15px;
-  background: #8A9EA3;
 }
 
 #build > main .build-main-bottom .builder-search-results ul li a:hover, #build > main .build-main-bottom .builder-search-results ul li a:focus {

@@ -79,8 +79,14 @@
 			}
 		}
 		.build-player {
+			@include flex;
+			@include flex-wrap;
 			height: calc(100% - 128px);
 			width: 100%;
+			padding: 7.5px;
+			svg {
+				margin: 7.5px;
+			}
 		}
 		.build-main-bottom {
 			@include flex;
@@ -93,7 +99,10 @@
 				left: 0;
 				height: 36px;
 				width: 100%;
-				background: $campus;
+				background: rgba($campus, .95);
+				&:not(.active) {
+					display: none;
+				}
 				ul {
 					@include flex;
 					width: 100%;
@@ -130,7 +139,6 @@
 							font-weight: 600;
 							white-space: nowrap;
 							padding: 0 15px;
-							background: $campus;
 							&:hover, &:focus {
 								background: mix($campus, white);
 								color: mix($campus, $slate);
