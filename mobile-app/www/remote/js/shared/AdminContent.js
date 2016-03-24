@@ -828,7 +828,7 @@ function compileActions() {
 }
 
 function compileComponents() {
-    return compon
+
 }
 
 function compileTests() {

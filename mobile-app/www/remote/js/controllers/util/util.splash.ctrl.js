@@ -1328,6 +1328,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.getUniversityPlaces = function(university) {
+      if (!$state.current.name === 'splash-madlib')
       if (university.og_map  && (!university.place_results || !university.place_results.length)) {
         $timeout(function() {
           $scope.$apply(function() {

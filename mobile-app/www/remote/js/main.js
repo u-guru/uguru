@@ -137,7 +137,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/team',
         templateUrl: BASE + 'templates/team.html'
   }).
-  
+
   state('root.build', {
         url: '/build',
         templateUrl: BASE + 'templates/builder.html'
@@ -530,6 +530,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/:categoryId:universityId',
         templateUrl: BASE + 'templates/splash.html',
         params: {category: {name: 'Academic', id:5, hex_color:'academic'}, university: {latitude: "37.8718992", longitude: "-122.2585399",name: 'UC Berkeley', id:2307, school_color_dark: "#023360", school_tiny_name: 'Cal', school_color_light: "#FBB431", short_name: "UC Berkeley"}},
+        controller: "SplashController"
+  }).
+  state('root.demo-templates', {
+        url: '/demo-2',
+        templateUrl: BASE + 'templates/splash.madlib.html',
         controller: "SplashController"
   }).
   state('root.student-conversations', {
