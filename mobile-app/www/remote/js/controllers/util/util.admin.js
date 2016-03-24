@@ -89,8 +89,9 @@ angular.module('uguru.util.controllers')
 
 
 								$scope.selected_scene = $scope.page.scenes[0];
-								var elem = document.querySelector('#cta-modal-selected-scene');
-								elem && elem.classList.add('show')
+								$scope.selected_scene.tabIndex = 1;
+								// var elem = document.querySelector('#cta-modal-selected-scene');
+								// elem && elem.classList.add('show')
                     		// })
                     		// $timeout(function() {
                     		// 	var allDemoElems = document.querySelectorAll('demo')
