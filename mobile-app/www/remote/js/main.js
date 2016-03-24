@@ -138,9 +138,18 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/team.html'
   }).
   
+  // gabrielle new states, can remove if needed
   state('root.build', {
         url: '/build',
         templateUrl: BASE + 'templates/builder.html'
+  }).
+  state('root.guru-validation', {
+        url: '/guru-validation',
+        templateUrl: BASE + 'templates/validation.guru.html'
+  }).
+  state('root.student-validation', {
+        url: '/student-validation',
+        templateUrl: BASE + 'templates/validation.student.html'
   }).
 
   //start essay
