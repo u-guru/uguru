@@ -12,20 +12,20 @@ angular.module('uguru.util.controllers')
 	'Restangular',
 	function($scope, $state, $stateParams, AdminContent, CTAService, $timeout, $compile, Restangular) {
 		$scope.page = {
-			layout: AdminContent.getMainLayout(),
-			glossary: AdminContent.getGlosseryContent(),
-			team_members: AdminContent.getMembers(),
-			components: [],
-			containers: AdminContent.getContainers(),
-			layouts: AdminContent.getLayouts(),
-			user_stories: AdminContent.getUserStories(),
-			createObjects: AdminContent.getBaseObjects($scope),
-			defaults: {
-				tabsIndex: 2,
-				sidebarIndex: 1
+				layout: AdminContent.getMainLayout(),
+				glossary: AdminContent.getGlosseryContent(),
+				team_members: AdminContent.getMembers(),
+				components: [],
+				containers: AdminContent.getContainers(),
+				layouts: AdminContent.getLayouts(),
+				user_stories: AdminContent.getUserStories(),
+				createObjects: AdminContent.getBaseObjects($scope),
+				defaults: {
+					tabsIndex: 1,
+					sidebarIndex: 0
+				}
 			}
-		}
-		// $scope.selected_component = $scope.page.components[4];
+			// $scope.selected_component = $scope.page.components[4];
 
 
 		$scope.elementCTATabOptions = {
@@ -62,54 +62,51 @@ angular.module('uguru.util.controllers')
 
 		function getAdminElements() {
 
-			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(function(response){
-                    	response = JSON.parse(response);
+			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(function(response) {
+				response = JSON.parse(response);
 
-                    	// $timeout(function() {
-                    		// $scope.$apply(function() {
-                    			$scope.page.components = response.components;
-		                    	$scope.page.layouts = response.layouts;
-		                    	$scope.page.scenes = response.scenes;
-		                    	$scope.page.moodboard = response.moodboards;
-		                    	$scope.page.user_stories = response.user_stories;
-		                    	$scope.page.assets = response.assets;
-		                    	$scope.page.action_items = response.action_items;
-		                    	$scope.page.projects = response.projects;
-		                    	$scope.page.action_items = response.action_items;
-
-
-
-		                    	var actionItemsSidebarTabSections = $scope.page.layout.sections[0].tabs.options;
-		                    	for (var i =0; i < actionItemsSidebarTabSections.length; i++){
-		                    		var sideBarTabIndex = actionItemsSidebarTabSections[i];
-		                    		var memberTitle = sideBarTabIndex.title.toLowerCase();
-		                    		$scope.page.action_items[memberTitle] = response.action_items[memberTitle];
-		                    	}
+				// $timeout(function() {
+				// $scope.$apply(function() {
+				$scope.page.components = response.components;
+				$scope.page.layouts = response.layouts;
+				$scope.page.scenes = response.scenes;
+				$scope.page.moodboard = response.moodboards;
+				$scope.page.user_stories = response.user_stories;
+				$scope.page.assets = response.assets;
+				$scope.page.action_items = response.action_items;
+				$scope.page.projects = response.projects;
+				$scope.page.action_items = response.action_items;
 
 
 
-								$scope.selected_scene = $scope.page.scenes[0];
-								$scope.selected_scene.tabIndex = 1;
-								// var elem = document.querySelector('#cta-modal-selected-scene');
-								// elem && elem.classList.add('show')
-                    		// })
-                    		// $timeout(function() {
-                    		// 	var allDemoElems = document.querySelectorAll('demo')
-                    		// 	for (var i = 0; i < allDemoElems.length; i++) {
-                    		// 		demoIndexElem = allDemoElems[i];
-
-                    		// 		$compile(demoIndexElem)($scope);
-
-                    		// 	}
-                    		// })
-                    	// })
+				var actionItemsSidebarTabSections = $scope.page.layout.sections[0].tabs.options;
+				for (var i = 0; i < actionItemsSidebarTabSections.length; i++) {
+					var sideBarTabIndex = actionItemsSidebarTabSections[i];
+					var memberTitle = sideBarTabIndex.title.toLowerCase();
+					$scope.page.action_items[memberTitle] = response.action_items[memberTitle];
+				}
 
 
+				// $scope.selected_scene = $scope.page.scenes[0];
+				// var elem = document.querySelector('#cta-modal-selected-scene');
+				// elem && elem.classList.add('show')
+				// })
+				// $timeout(function() {
+				// 	var allDemoElems = document.querySelectorAll('demo')
+				// 	for (var i = 0; i < allDemoElems.length; i++) {
+				// 		demoIndexElem = allDemoElems[i];
 
-                    	console.log(response);
-                    }, function(err) {
-                    	console.log('error');
-                    })
+				// 		$compile(demoIndexElem)($scope);
+
+				// 	}
+				// })
+				// })
+
+
+				console.log(response);
+			}, function(err) {
+				console.log('error');
+			})
 		}
 
 
@@ -119,7 +116,10 @@ angular.module('uguru.util.controllers')
 			$scope.adminItemCTAShown = true;
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.admin_item = {
-				dropdown_options: {index: 0, options: ['HTML Element', 'Moodboard','Bug Ticket', 'Action Item']},
+				dropdown_options: {
+					index: 0,
+					options: ['HTML Element', 'Moodboard', 'Bug Ticket', 'Action Item']
+				},
 				options: {
 					element: {
 						type: ['Component', 'Container', 'Layouts', 'User Stories', 'Assets'],
@@ -155,7 +155,7 @@ angular.module('uguru.util.controllers')
 						name: '',
 						description: '',
 						has_subsections: false
-						//pretty open ended
+							//pretty open ended
 					}
 				}
 			}
@@ -328,13 +328,21 @@ angular.module('uguru.util.controllers')
 
 
 		function getSceneStateStatus(states, elem, elem_type) {
-			var resultDict = {priority: false, total_time: 0, time_created: states[0].time_created, count: states.length, name: elem.name, type:elem_type,  completed: [], pending: []};
+			var resultDict = {
+				priority: false,
+				total_time: 0,
+				time_created: states[0].time_created,
+				count: states.length,
+				name: elem.name,
+				type: elem_type,
+				completed: [],
+				pending: []
+			};
 			for (var i = 0; i < states.length; i++) {
 				var indexState = states[i];
 				if (indexState.completed) {
 					resultDict.completed.push(indexState);
-				}
-				else
+				} else
 				if (!indexState.completed && indexState.priority) {
 					resultDict.pending.push(indexState);
 					resultDict.priority = true;
@@ -346,7 +354,7 @@ angular.module('uguru.util.controllers')
 
 		$timeout(function() {
 			$scope.page.layout.sidebar.index = $scope.page.defaults.sidebarIndex;
-			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = 2 || $scope.page.defaults.tabsIndex;
+			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index || $scope.page.defaults.tabsIndex;
 			getAdminElements();
 
 		}, 1000)

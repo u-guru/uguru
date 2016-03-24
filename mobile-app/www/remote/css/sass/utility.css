@@ -713,7 +713,7 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   justify-content: center;
 }
 
-[class*="flex"][class*="-spaceX"] {
+[class*="flex"][class*="-space-between"] {
   -webkit-justify-content: space-between;
   justify-content: space-between;
 }

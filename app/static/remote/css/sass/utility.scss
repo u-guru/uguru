@@ -548,6 +548,15 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 	&[class*="-right"] {
 		@include prefix(justify-content, flex-end, webkit);
 	}
+	&[class*="-left"] {
+		@include prefix(justify-content, flex-start, webkit);
+	}
+	&[class*="-middle"] {
+		@include prefix(justify-content, center, webkit);
+	}
+	&[class*="-space-between"] {
+		@include prefix(justify-content, space-between, webkit);
+	}
 }
 .flex-grow {
 	-webkit-flex-grow: 1;

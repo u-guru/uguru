@@ -554,7 +554,7 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 	&[class*="-middle"] {
 		@include prefix(justify-content, center, webkit);
 	}
-	&[class*="-spaceX"] {
+	&[class*="-space-between"] {
 		@include prefix(justify-content, space-between, webkit);
 	}
 }

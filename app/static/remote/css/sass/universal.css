@@ -109,6 +109,52 @@
   font-weight: 600;
 }
 
+#faq .main dl a {
+  display: block;
+}
+
+#faq .main dl a:hover dt, #faq .main dl a:focus dt {
+  background: #b4b1b4;
+  color: #55555a;
+}
+
+#faq .main dl a:hover dt .close-button svg, #faq .main dl a:focus dt .close-button svg {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+#faq .main dl a:hover dt .close-button svg *, #faq .main dl a:focus dt .close-button svg * {
+  stroke: #55555a;
+}
+
+#faq .main dl a:hover dt.active .close-button svg, #faq .main dl a:focus dt.active .close-button svg {
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+#faq .main dl a:hover + dd, #faq .main dl a:focus + dd {
+  border-color: #b4b1b4;
+}
+
+#faq .main dl a:active dt {
+  background: #55555a;
+  color: white;
+}
+
+#faq .main dl a:active dt .close-button svg * {
+  stroke: white;
+}
+
+#faq .main dl a:active + dd {
+  border-color: #55555a;
+}
+
 @media screen and (min-width: 768px) {
   #faq .main {
     -wekit-flex-direction: column;

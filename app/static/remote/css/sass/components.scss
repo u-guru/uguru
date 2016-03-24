@@ -2639,6 +2639,45 @@ input[type=range] {
 			}
 		}
 	}
+	&.small {
+		> div {
+			span {
+				@include flex;
+				@include flex-center;
+				width: 152px;
+				height: 24px;
+				font-size: 16px;
+			}
+			a {
+				width: 24px;
+				height: 24px;
+				svg {
+					padding: 3px;
+					width: 24px;
+					height: 24px;
+				}
+			}
+		}
+		> ul {
+			li {
+				padding: 5px 0 !important;
+				font-weight: 400;
+				font-size: 16px;
+			}
+		}
+		&.full-x {
+			> div {
+				span {
+					width: calc(100% - 24px);
+				}
+			}
+			> ul {
+				li {
+					width: calc(100% - 24px);
+				}
+			}
+		}
+	}
 }
 
 /* ---------- TOOLTIPS */
@@ -3409,7 +3448,9 @@ input[type=range] {
 			}
 			.pf-card-top {
 				.user-icon {
-					@include center-x;
+					position: absolute;
+					left: 50%;
+					margin-left: -48px;
 					width: 96px;
 					height: 96px;
 					bottom: -60px;
@@ -3715,10 +3756,12 @@ input[type=range] {
 			background-color: $slate;
 			border-radius: 10px 10px 0 0;
 			.school-card-icon {
-				@include center-x;
 				@include round;
 				@include flex;
 				@include flex-center;
+				position: absolute;
+				left: 50%;
+				margin-left: -32px;
 				z-index: 5;
 				top: 15px;
 				width: 64px;
@@ -3980,10 +4023,12 @@ input[type=range] {
 			background-color: $slate;
 			border-radius: 10px 10px 0 0;
 			.school-card-icon {
-				@include center-x;
 				@include round;
 				@include flex;
 				@include flex-center;
+				position: absolute;
+				left: 50%;
+				margin-left: -42px;
 				z-index: 5;
 				top: 15px;
 				width: 84px;
@@ -4436,7 +4481,9 @@ input[type=range] {
 			}
 		}
 		.user-icon {
-			@include center-x;
+			position: absolute;
+			left: 50%;
+			margin-left: -64px;
 			bottom: -84px;
 			border-width: 5px;
 		}
@@ -8344,7 +8391,7 @@ a.category-tile {
 	@include flex-center;
 	div {
 		position: relative;
-		input {
+		input:not([text]) {
 			@include opacity(0);
 			position: absolute;
 			z-index: 12;
@@ -8394,7 +8441,7 @@ a.category-tile {
 			@include round;
 			width: 24px;
 			height: 24px;
-			padding: 4px;
+			padding: 3px;
 			svg {
 				@include round;
 				background: lighten($slate, 10%);
@@ -8413,6 +8460,10 @@ a.category-tile {
 // toggles
 .toggle {
 	position: relative;
+	display: block;
+    pointer-events: auto;
+    margin: 0;
+    padding: 0;
 	input {
 		@include opacity(0);
 		position: absolute;
@@ -8467,6 +8518,31 @@ a.category-tile {
 		}
 		svg:first-child {
 			@include prefix(transform, translateX(36px), webkit moz ms o);
+		}
+	}
+	&.small {
+		label {
+			padding: 3px;
+			height: 24px;
+			width: 48px;
+			span {
+				padding: 0 3px;
+			}
+			svg {
+				&:first-child {
+					top: 3px;
+					left: 3px;
+					height: calc(100% - 6px);
+				}
+			}
+		}
+		input:checked + label {
+			span {
+				@include prefix(transform, translateX(-14px), webkit moz ms o);
+			}
+			svg:first-child {
+				@include prefix(transform, translateX(24px), webkit moz ms o);
+			}
 		}
 	}
 	&.white-round {
