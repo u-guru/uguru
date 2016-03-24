@@ -1,4 +1,5 @@
 @import 'mixin';
+
 .desktop-mode {
 	position: absolute;
 	width: 100%;
@@ -4436,6 +4437,243 @@
 }
 
 /* ---------- RANKING */
+#ranking {
+	background: $slate;
+	.main {
+		padding: 0;
+		margin: 0 auto;
+		overflow: auto;
+		> header {
+			max-width: 1000px;
+			margin: 0 auto;
+			h1 {
+				text-align: center;
+				font-size: 48px;
+				font-weight: 600;
+				text-transform: none;
+			}
+		}
+		> div {
+			max-width: 1000px;
+			margin: 0 auto;
+			.ranking-top {
+				@include flex;
+				margin: 0 -15px;
+				height: 380px;
+				padding: 7.5px;
+				li {
+					width: calc(100% / 3);
+					height: 100%;
+					padding: 7.5px;
+					.ranking-tile {
+						background: rgba(lighten($slate, 15%), .5);
+						padding: 15px;
+						border-radius: 2px;
+						h2 {
+							font-size: 20px;
+							font-weight: 600;
+							text-align: center;
+						}
+						header {
+							@include flex;
+							span {
+								display: block;
+								svg {
+									width: 48px;
+									height: 48px;
+									* {
+										stroke-width: 6px;
+										stroke: white;
+									}
+								}
+							}
+							div {
+								margin-left: 15px;
+								h1 {
+									padding: 0;
+									font-size: 36px;
+									font-weight: 900;
+								}
+								h2 {
+									@include opacity(.5);
+									margin: 0;
+								}
+							}
+						}
+						&:not(.large) {
+							height: calc(50% - 7.5px);
+						}
+						&:first-child {
+							margin-bottom: 15px;
+						}
+						&.large {
+							height: 100%;
+							h2 {
+								font-size: 28px;
+							}
+						}
+					}
+				}
+			}
+			.ranking-list {
+				.tab-bar {
+					background: mix($shamrock, $slate);
+					border-radius: 2px;
+					height: 80px;
+					> div {
+						height: 80px;
+						a {
+							height: 80px;
+							font-size: 24px;
+							text-transform: none;
+						}
+					}
+				}
+				.ranking-high-score, .ranking-next-steps {
+					padding: 0;
+					margin: 0 auto;
+					h1 {
+						font-size: 32px;
+						font-weight: 600;
+					}
+					h2, h3 {
+						@include opacity(.5);
+						margin: 0;
+						font-size: 20px;
+					}
+					> li {
+						margin-top: 15px;
+					}
+				}
+				.ranking-high-score > li, .ranking-next-steps > li > a {
+					@include flex;
+					background: $charcoal;
+					border-radius: 2px;
+					padding: 15px;
+				}
+				.ranking-next-steps-check, .ranking-high-score li:before {
+					@include flex;
+					@include flex-center;
+					width: 84px;
+					height: 84px;
+					border-radius: 2px;
+				}
+				.ranking-next-steps {
+					> li {
+						> a {
+							@include flex-center-vertical;
+							padding-right: 10.5px;
+							&:hover, &:focus {
+								background: $shamrock;
+							}
+							.ranking-next-steps-check {
+								background: lighten($slate, 15%);
+								svg {
+									display: block;
+									width: 64px;
+									height: 64px;
+									* {
+										stroke: white;
+										stroke-width: 10px;
+									}
+								}
+							}
+							> div:nth-child(2) {
+								margin-left: 30px;
+								width: calc(100% - 84px - 30px - 120px - 120px - 36px);
+							}
+							> div:nth-child(3), > div:nth-child(4) {
+								width: 120px;
+								text-align: center;
+								h4 {
+									margin-bottom: 5px;
+									font-size: 14px;
+									font-weight: 600;
+									text-transform: uppercase;
+								}
+								span {
+									display: block;
+									width: 100%;
+									svg {
+										display: block;
+										width: 100%;
+									}
+								}
+								div {
+									font-size: 72px;
+									font-weight: 900;
+									line-height: 0.8;
+								}
+							}
+							.ranking-next-steps-link {
+								display: block;
+								svg {
+									display: block;
+									width: 36px;
+									height: 36px;
+									* {
+										@include svg-stroke(white, 6);
+									}
+								}
+							}
+						}
+					}
+				}
+				.ranking-high-score {
+					counter-reset: li;
+					> li {
+						&:before {
+							content: counter(li);
+							counter-increment: li;
+							font-size: 72px;
+							font-weight: 900;
+						}
+						&:nth-child(1) {
+							&:before {
+								background: $first;
+							}
+						}
+						&:nth-child(2) {
+							&:before {
+								background: $second;
+							}
+						}
+						&:nth-child(3) {
+							&:before {
+								background: $third;
+							}
+						}
+						&:last-child {
+							margin-bottom: 15px;
+						}
+						&.current-score {
+							background: lighten($slate, 10%);
+						}
+						.user-icon-72 {
+							margin-top: 6px;
+							margin-left: 30px;
+						}
+						> div:nth-child(2) {
+							width: calc(100% - 150px - 72px - 60px - 84px);
+							margin-left: 30px;
+						}
+						> div:nth-child(3) {
+							width: 150px;
+							text-align: center;
+						}
+						.tag-list {
+							margin-left: -15px;
+						}
+						.rating-stars {
+							max-width: 150px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 #desktop-ranking,
 #mobile-ranking {
 	.main {

@@ -3106,7 +3106,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 /* ---------- USER ICONS */
-.user-icon, .user-icon-64, .user-icon-32 {
+[class*="user-icon"] {
   border-radius: 1000px;
   display: block;
   margin: 0 auto;
@@ -3118,6 +3118,18 @@ input[type=range]:focus::-ms-fill-upper {
   width: 128px;
   height: 128px;
   border: 5px solid white;
+}
+
+.user-icon-96 {
+  width: 96px;
+  height: 96px;
+  border: 4px solid white;
+}
+
+.user-icon-72 {
+  width: 72px;
+  height: 72px;
+  border: 3px solid white;
 }
 
 .user-icon-64 {
@@ -9893,14 +9905,13 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   align-content: center;
   -webkit-align-items: center;
   align-items: center;
-  background: #576267;
   margin-right: 15px;
   border: 0;
   color: white !important;
 }
 
-.tag-list .chip:hover, .pf-tags .chip:hover {
-  background: #637074;
+.tag-list .chip:not([class*="bg"]), .pf-tags .chip:not([class*="bg"]) {
+  background: #576267;
 }
 
 .tag-list .chip svg, .pf-tags .chip svg {
@@ -9934,6 +9945,10 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
 
 .tag-list .chip input:-ms-input-placeholder, .pf-tags .chip input:-ms-input-placeholder {
   color: white !important;
+}
+
+.tag-list a.chip:hover, .pf-tags a.chip:hover {
+  background: #637074;
 }
 
 .tag-list ul, .pf-tags ul {
