@@ -159,6 +159,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/wallet',
         templateUrl: BASE + 'templates/wallet.html'
   }).
+  state('root.request-public', {
+        url: '/request-public',
+        templateUrl: BASE + 'templates/request.public.html'
+  }).
   
   //start essay
   state('root.essay-student-university', {

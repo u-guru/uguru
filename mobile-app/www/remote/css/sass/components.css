@@ -598,6 +598,18 @@ button.normal {
   width: auto;
 }
 
+button.height-54 {
+  height: 54px;
+}
+
+button.height-48 {
+  height: 48px;
+}
+
+button.height-36 {
+  height: 36px;
+}
+
 button:hover, button:focus {
   background: #b4d9d2;
   color: #557e78;
@@ -622,6 +634,21 @@ button.bg-charcoal:active {
   color: white;
 }
 
+button.bg-charcoal.reverse {
+  background: white;
+  color: #2B3234;
+}
+
+button.bg-charcoal.reverse:hover, button.bg-charcoal.reverse:focus {
+  background: #95999a;
+  color: #2B3234;
+}
+
+button.bg-charcoal.reverse:active {
+  background: #606567;
+  color: white;
+}
+
 button.bg-slate {
   background: #40484B;
 }
@@ -632,6 +659,21 @@ button.bg-slate:hover, button.bg-slate:focus {
 }
 
 button.bg-slate:active {
+  background: #707678;
+  color: white;
+}
+
+button.bg-slate.reverse {
+  background: white;
+  color: #40484B;
+}
+
+button.bg-slate.reverse:hover, button.bg-slate.reverse:focus {
+  background: #a0a4a5;
+  color: #40484B;
+}
+
+button.bg-slate.reverse:active {
   background: #707678;
   color: white;
 }
@@ -650,6 +692,21 @@ button.bg-taupe:active {
   color: white;
 }
 
+button.bg-taupe.reverse {
+  background: white;
+  color: #757575;
+}
+
+button.bg-taupe.reverse:hover, button.bg-taupe.reverse:focus {
+  background: #bababa;
+  color: #757575;
+}
+
+button.bg-taupe.reverse:active {
+  background: #989898;
+  color: white;
+}
+
 button.bg-campus {
   background: #8A9EA3;
 }
@@ -660,6 +717,21 @@ button.bg-campus:hover, button.bg-campus:focus {
 }
 
 button.bg-campus:active {
+  background: #657377;
+  color: white;
+}
+
+button.bg-campus.reverse {
+  background: white;
+  color: #8A9EA3;
+}
+
+button.bg-campus.reverse:hover, button.bg-campus.reverse:focus {
+  background: #c5cfd1;
+  color: #657377;
+}
+
+button.bg-campus.reverse:active {
   background: #657377;
   color: white;
 }
@@ -678,6 +750,21 @@ button.bg-rocket:active {
   color: white;
 }
 
+button.bg-rocket.reverse {
+  background: white;
+  color: #696269;
+}
+
+button.bg-rocket.reverse:hover, button.bg-rocket.reverse:focus {
+  background: #b4b1b4;
+  color: #55555a;
+}
+
+button.bg-rocket.reverse:active {
+  background: #55555a;
+  color: white;
+}
+
 button.bg-shamrock {
   background: #69B3A5;
 }
@@ -688,6 +775,21 @@ button.bg-shamrock:hover, button.bg-shamrock:focus {
 }
 
 button.bg-shamrock:active {
+  background: #557e78;
+  color: white;
+}
+
+button.bg-shamrock.reverse {
+  background: white;
+  color: #69B3A5;
+}
+
+button.bg-shamrock.reverse:hover, button.bg-shamrock.reverse:focus {
+  background: #b4d9d2;
+  color: #557e78;
+}
+
+button.bg-shamrock.reverse:active {
   background: #557e78;
   color: white;
 }
@@ -706,6 +808,21 @@ button.bg-robin:active {
   color: white;
 }
 
+button.bg-robin.reverse {
+  background: white;
+  color: #2BB3B8;
+}
+
+button.bg-robin.reverse:hover, button.bg-robin.reverse:focus {
+  background: #95d9dc;
+  color: #367e82;
+}
+
+button.bg-robin.reverse:active {
+  background: #367e82;
+  color: white;
+}
+
 button.bg-lake {
   background: #50A5DD;
 }
@@ -716,6 +833,21 @@ button.bg-lake:hover, button.bg-lake:focus {
 }
 
 button.bg-lake:active {
+  background: #487794;
+  color: white;
+}
+
+button.bg-lake.reverse {
+  background: white;
+  color: #50A5DD;
+}
+
+button.bg-lake.reverse:hover, button.bg-lake.reverse:focus {
+  background: #a8d2ee;
+  color: #487794;
+}
+
+button.bg-lake.reverse:active {
   background: #487794;
   color: white;
 }
@@ -734,6 +866,21 @@ button.bg-moxie:active {
   color: white;
 }
 
+button.bg-moxie.reverse {
+  background: white;
+  color: #43cb9d;
+}
+
+button.bg-moxie.reverse:hover, button.bg-moxie.reverse:focus {
+  background: #a1e5ce;
+  color: #428a74;
+}
+
+button.bg-moxie.reverse:active {
+  background: #428a74;
+  color: white;
+}
+
 button.bg-crimson {
   background: #d3242c;
 }
@@ -744,6 +891,21 @@ button.bg-crimson:hover, button.bg-crimson:focus {
 }
 
 button.bg-crimson:active {
+  background: #8a363c;
+  color: white;
+}
+
+button.bg-crimson.reverse {
+  background: white;
+  color: #d3242c;
+}
+
+button.bg-crimson.reverse:hover, button.bg-crimson.reverse:focus {
+  background: #e99296;
+  color: #8a363c;
+}
+
+button.bg-crimson.reverse:active {
   background: #8a363c;
   color: white;
 }
@@ -762,6 +924,21 @@ button.bg-auburn:active, button.bg-delivery:active {
   color: white;
 }
 
+button.bg-auburn.reverse, button.bg-delivery.reverse {
+  background: white;
+  color: #F04F54;
+}
+
+button.bg-auburn.reverse:hover, button.bg-auburn.reverse:focus, button.bg-delivery.reverse:hover, button.bg-delivery.reverse:focus {
+  background: #f8a7aa;
+  color: #984c50;
+}
+
+button.bg-auburn.reverse:active, button.bg-delivery.reverse:active {
+  background: #984c50;
+  color: white;
+}
+
 button.bg-orange, button.bg-freelancing {
   background: #E5753C;
 }
@@ -772,6 +949,21 @@ button.bg-orange:hover, button.bg-orange:focus, button.bg-freelancing:hover, but
 }
 
 button.bg-orange:active, button.bg-freelancing:active {
+  background: #935f44;
+  color: white;
+}
+
+button.bg-orange.reverse, button.bg-freelancing.reverse {
+  background: white;
+  color: #E5753C;
+}
+
+button.bg-orange.reverse:hover, button.bg-orange.reverse:focus, button.bg-freelancing.reverse:hover, button.bg-freelancing.reverse:focus {
+  background: #f2ba9e;
+  color: #935f44;
+}
+
+button.bg-orange.reverse:active, button.bg-freelancing.reverse:active {
   background: #935f44;
   color: white;
 }
@@ -790,6 +982,21 @@ button.bg-gold:active, button.bg-baking:active {
   color: white;
 }
 
+button.bg-gold.reverse, button.bg-baking.reverse {
+  background: white;
+  color: #F6C64E;
+}
+
+button.bg-gold.reverse:hover, button.bg-gold.reverse:focus, button.bg-baking.reverse:hover, button.bg-baking.reverse:focus {
+  background: #fbe3a7;
+  color: #9b874d;
+}
+
+button.bg-gold.reverse:active, button.bg-baking.reverse:active {
+  background: #9b874d;
+  color: white;
+}
+
 button.bg-moola, button.bg-photography {
   background: #81B566;
 }
@@ -800,6 +1007,21 @@ button.bg-moola:hover, button.bg-moola:focus, button.bg-photography:hover, butto
 }
 
 button.bg-moola:active, button.bg-photography:active {
+  background: #617f59;
+  color: white;
+}
+
+button.bg-moola.reverse, button.bg-photography.reverse {
+  background: white;
+  color: #81B566;
+}
+
+button.bg-moola.reverse:hover, button.bg-moola.reverse:focus, button.bg-photography.reverse:hover, button.bg-photography.reverse:focus {
+  background: #c0dab3;
+  color: #617f59;
+}
+
+button.bg-moola.reverse:active, button.bg-photography.reverse:active {
   background: #617f59;
   color: white;
 }
@@ -818,6 +1040,21 @@ button.bg-azure:active, button.bg-tech:active {
   color: white;
 }
 
+button.bg-azure.reverse, button.bg-tech.reverse {
+  background: white;
+  color: #55A4B7;
+}
+
+button.bg-azure.reverse:hover, button.bg-azure.reverse:focus, button.bg-tech.reverse:hover, button.bg-tech.reverse:focus {
+  background: #aad2db;
+  color: #4b7681;
+}
+
+button.bg-azure.reverse:active, button.bg-tech.reverse:active {
+  background: #4b7681;
+  color: white;
+}
+
 button.bg-cobalt, button.bg-household {
   background: #7872e3;
 }
@@ -828,6 +1065,21 @@ button.bg-cobalt:hover, button.bg-cobalt:focus, button.bg-household:hover, butto
 }
 
 button.bg-cobalt:active, button.bg-household:active {
+  background: #5c5d97;
+  color: white;
+}
+
+button.bg-cobalt.reverse, button.bg-household.reverse {
+  background: white;
+  color: #7872e3;
+}
+
+button.bg-cobalt.reverse:hover, button.bg-cobalt.reverse:focus, button.bg-household.reverse:hover, button.bg-household.reverse:focus {
+  background: #bcb9f1;
+  color: #5c5d97;
+}
+
+button.bg-cobalt.reverse:active, button.bg-household.reverse:active {
   background: #5c5d97;
   color: white;
 }
@@ -846,6 +1098,21 @@ button.bg-eggplant:active, button.bg-athletic:active {
   color: white;
 }
 
+button.bg-eggplant.reverse, button.bg-athletic.reverse {
+  background: white;
+  color: #9A5BC5;
+}
+
+button.bg-eggplant.reverse:hover, button.bg-eggplant.reverse:focus, button.bg-athletic.reverse:hover, button.bg-athletic.reverse:focus {
+  background: #cdade2;
+  color: #6d5288;
+}
+
+button.bg-eggplant.reverse:active, button.bg-athletic.reverse:active {
+  background: #6d5288;
+  color: white;
+}
+
 button.bg-cerise, button.bg-academic {
   background: #e6389b;
 }
@@ -856,6 +1123,21 @@ button.bg-cerise:hover, button.bg-cerise:focus, button.bg-academic:hover, button
 }
 
 button.bg-cerise:active, button.bg-academic:active {
+  background: #934073;
+  color: white;
+}
+
+button.bg-cerise.reverse, button.bg-academic.reverse {
+  background: white;
+  color: #e6389b;
+}
+
+button.bg-cerise.reverse:hover, button.bg-cerise.reverse:focus, button.bg-academic.reverse:hover, button.bg-academic.reverse:focus {
+  background: #f39ccd;
+  color: #934073;
+}
+
+button.bg-cerise.reverse:active, button.bg-academic.reverse:active {
   background: #934073;
   color: white;
 }

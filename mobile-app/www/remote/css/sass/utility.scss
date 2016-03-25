@@ -23,6 +23,94 @@
 	display: block;
 	width: 150px;
 	height: 150px;
+	&.guru-delivery {
+		[fill="#69B3A5"] {
+			fill: $auburn;
+		}
+		[fill="#33534D"] {
+			fill: mix($auburn, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($auburn, $charcoal, 15%);
+		}
+	}
+	&.guru-freelancing {
+		[fill="#69B3A5"] {
+			fill: $orange;
+		}
+		[fill="#33534D"] {
+			fill: mix($orange, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($orange, $charcoal, 15%);
+		}
+	}
+	&.guru-baking {
+		[fill="#69B3A5"] {
+			fill: $gold;
+		}
+		[fill="#33534D"] {
+			fill: mix($gold, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($gold, $charcoal, 15%);
+		}
+	}
+	&.guru-photography {
+		[fill="#69B3A5"] {
+			fill: $moola;
+		}
+		[fill="#33534D"] {
+			fill: mix($moola, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($moola, $charcoal, 15%);
+		}
+	}
+	&.guru-tech {
+		[fill="#69B3A5"] {
+			fill: $azure;
+		}
+		[fill="#33534D"] {
+			fill: mix($azure, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($azure, $charcoal, 15%);
+		}
+	}
+	&.guru-household {
+		[fill="#69B3A5"] {
+			fill: $cobalt;
+		}
+		[fill="#33534D"] {
+			fill: mix($cobalt, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($cobalt, $charcoal, 15%);
+		}
+	}
+	&.guru-athletic {
+		[fill="#69B3A5"] {
+			fill: $eggplant;
+		}
+		[fill="#33534D"] {
+			fill: mix($eggplant, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($eggplant, $charcoal, 15%);
+		}
+	}
+	&.guru-academic {
+		[fill="#69B3A5"] {
+			fill: $cerise;
+		}
+		[fill="#33534D"] {
+			fill: mix($cerise, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($cerise, $charcoal, 15%);
+		}
+	}
 }
 
 @media screen and (max-width: 768px) {
@@ -255,6 +343,16 @@ input, fieldset {
 		margin-left: auto;
 		margin-right: auto;
 	}
+}
+.m-05top {
+	margin-top: -5px;
+}
+.m-10top {
+	margin-top: -10px;
+}
+.m-15x {
+	margin-left: -15px;
+	margin-right: -15px;
 }
 [class*="x"] {
 	&[class*="m05x"] {
@@ -625,6 +723,18 @@ input, fieldset {
 .bottom-64 {
 	bottom: 64px !important;
 }
+.max-800 {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+.max-830 {
+	max-width: 1030px;
+	margin: 0 auto;
+}
+.max-860 {
+	max-width: 1060px;
+	margin: 0 auto;
+}
 .max-1000 {
 	max-width: 1000px;
 	margin: 0 auto;
@@ -742,7 +852,7 @@ input, fieldset {
 	&[class*="-wrap"] {
 		@include flex-wrap;
 	}
-	&[class*="-center"]:not(.flex-center-vertical) {
+	&[class*="flex-center"]:not(.flex-center-vertical) {
 		@include flex-center;
 	}
 	&[class*="center-vertical"] {
@@ -942,12 +1052,14 @@ input, fieldset {
 .lowercase {
 	text-transform: lowercase!important;
 }
-.uppercase,
-[class*="caps"] {
+.uppercase, [class*="caps"] {
 	text-transform: uppercase!important;
 }
 .lettercase {
 	text-transform: capitalize!important;
+}
+.txt-trns-none {
+	text-transform: none!important;
 }
 .txt-1, .txt-14 {
 	font-size: 14px!important;

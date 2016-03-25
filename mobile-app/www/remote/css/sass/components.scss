@@ -459,6 +459,15 @@ button {
 	&.normal {
 		width: auto;
 	}
+	&.height-54 {
+		height: 54px
+	}
+	&.height-48 {
+		height: 48px
+	}
+	&.height-36 {
+		height: 36px
+	}
 	&:hover, &:focus {
 		background: mix($shamrock, white);
 		color: mix($shamrock, $slate);
@@ -477,6 +486,18 @@ button {
 			background: mix($charcoal, white, 75%);
 			color: white;
 		}
+		&.reverse {
+			background: white;
+			color: $charcoal;
+			&:hover, &:focus {
+				background: mix($charcoal, white);
+				color: $charcoal;
+			}
+			&:active {
+				background: mix($charcoal, white, 75%);
+				color: white;
+			}
+		}
 	}
 	&.bg-slate {
 		background: $slate;
@@ -487,6 +508,18 @@ button {
 		&:active {
 			background: mix($slate, white, 75%);
 			color: white;
+		}
+		&.reverse {
+			background: white;
+			color: $slate;
+			&:hover, &:focus {
+				background: mix($slate, white);
+				color: $slate;
+			}
+			&:active {
+				background: mix($slate, white, 75%);
+				color: white;
+			}
 		}
 	}
 	&.bg-taupe {
@@ -499,6 +532,18 @@ button {
 			background: mix($taupe, white, 75%);
 			color: white;
 		}
+		&.reverse {
+			background: white;
+			color: $taupe;
+			&:hover, &:focus {
+				background: mix($taupe, white);
+				color: $taupe;
+			}
+			&:active {
+				background: mix($taupe, white, 75%);
+				color: white;
+			}
+		}
 	}
 	&.bg-campus {
 		background: $campus;
@@ -509,6 +554,18 @@ button {
 		&:active {
 			background: mix($campus, $slate);
 			color: white;
+		}
+		&.reverse {
+			background: white;
+			color: $campus;
+			&:hover, &:focus {
+				background: mix($campus, white);
+				color: mix($campus, $slate);
+			}
+			&:active {
+				background: mix($campus, $slate);
+				color: white;
+			}
 		}
 	}
 	&.bg-rocket {
@@ -521,6 +578,18 @@ button {
 			background: mix($rocket, $slate);
 			color: white;
 		}
+		&.reverse {
+			background: white;
+			color: $rocket;
+			&:hover, &:focus {
+				background: mix($rocket, white);
+				color: mix($rocket, $slate);
+			}
+			&:active {
+				background: mix($rocket, $slate);
+				color: white;
+			}
+		}
 	}
 	&.bg-shamrock {
 		background: $shamrock;
@@ -531,6 +600,18 @@ button {
 		&:active {
 			background: mix($shamrock, $slate);
 			color: white;
+		}
+		&.reverse {
+			background: white;
+			color: $shamrock;
+			&:hover, &:focus {
+				background: mix($shamrock, white);
+				color: mix($shamrock, $slate);
+			}
+			&:active {
+				background: mix($shamrock, $slate);
+				color: white;
+			}
 		}
 	}
 	&.bg-robin {
@@ -543,6 +624,18 @@ button {
 			background: mix($robin, $slate);
 			color: white;
 		}
+		&.reverse {
+			background: white;
+			color: $robin;
+			&:hover, &:focus {
+				background: mix($robin, white);
+				color: mix($robin, $slate);
+			}
+			&:active {
+				background: mix($robin, $slate);
+				color: white;
+			}
+		}
 	}
 	&.bg-lake {
 		background: $lake;
@@ -553,6 +646,18 @@ button {
 		&:active {
 			background: mix($lake, $slate);
 			color: white;
+		}
+		&.reverse {
+			background: white;
+			color: $lake;
+			&:hover, &:focus {
+				background: mix($lake, white);
+				color: mix($lake, $slate);
+			}
+			&:active {
+				background: mix($lake, $slate);
+				color: white;
+			}
 		}
 	}
 	&.bg-moxie {
@@ -565,6 +670,18 @@ button {
 			background: mix($moxie, $slate);
 			color: white;
 		}
+		&.reverse {
+			background: white;
+			color: $moxie;
+			&:hover, &:focus {
+				background: mix($moxie, white);
+				color: mix($moxie, $slate);
+			}
+			&:active {
+				background: mix($moxie, $slate);
+				color: white;
+			}
+		}
 	}
 	&.bg-crimson {
 		background: $crimson;
@@ -575,6 +692,18 @@ button {
 		&:active {
 			background: mix($crimson, $slate);
 			color: white;
+		}
+		&.reverse {
+			background: white;
+			color: $crimson;
+			&:hover, &:focus {
+				background: mix($crimson, white);
+				color: mix($crimson, $slate);
+			}
+			&:active {
+				background: mix($crimson, $slate);
+				color: white;
+			}
 		}
 	}
 	&.bg-auburn, &.bg-delivery {
@@ -587,6 +716,18 @@ button {
 			background: mix($auburn, $slate);
 			color: white;
 		}
+		&.reverse {
+			background: white;
+			color: $auburn;
+			&:hover, &:focus {
+				background: mix($auburn, white);
+				color: mix($auburn, $slate);
+			}
+			&:active {
+				background: mix($auburn, $slate);
+				color: white;
+			}
+		}
 	}
 	&.bg-orange, &.bg-freelancing {
 		background: $orange;
@@ -597,6 +738,18 @@ button {
 		&:active {
 			background: mix($orange, $slate);
 			color: white;
+		}
+		&.reverse {
+			background: white;
+			color: $orange;
+			&:hover, &:focus {
+				background: mix($orange, white);
+				color: mix($orange, $slate);
+			}
+			&:active {
+				background: mix($orange, $slate);
+				color: white;
+			}
 		}
 	}
 	&.bg-gold, &.bg-baking {
@@ -609,6 +762,18 @@ button {
 			background: mix($gold, $slate);
 			color: white;
 		}
+		&.reverse {
+			background: white;
+			color: $gold;
+			&:hover, &:focus {
+				background: mix($gold, white);
+				color: mix($gold, $slate);
+			}
+			&:active {
+				background: mix($gold, $slate);
+				color: white;
+			}
+		}
 	}
 	&.bg-moola, &.bg-photography {
 		background: $moola;
@@ -619,6 +784,18 @@ button {
 		&:active {
 			background: mix($moola, $slate);
 			color: white;
+		}
+		&.reverse {
+			background: white;
+			color: $moola;
+			&:hover, &:focus {
+				background: mix($moola, white);
+				color: mix($moola, $slate);
+			}
+			&:active {
+				background: mix($moola, $slate);
+				color: white;
+			}
 		}
 	}
 	&.bg-azure, &.bg-tech {
@@ -631,6 +808,18 @@ button {
 			background: mix($azure, $slate);
 			color: white;
 		}
+		&.reverse {
+			background: white;
+			color: $azure;
+			&:hover, &:focus {
+				background: mix($azure, white);
+				color: mix($azure, $slate);
+			}
+			&:active {
+				background: mix($azure, $slate);
+				color: white;
+			}
+		}
 	}
 	&.bg-cobalt, &.bg-household {
 		background: $cobalt;
@@ -641,6 +830,18 @@ button {
 		&:active {
 			background: mix($cobalt, $slate);
 			color: white;
+		}
+		&.reverse {
+			background: white;
+			color: $cobalt;
+			&:hover, &:focus {
+				background: mix($cobalt, white);
+				color: mix($cobalt, $slate);
+			}
+			&:active {
+				background: mix($cobalt, $slate);
+				color: white;
+			}
 		}
 	}
 	&.bg-eggplant, &.bg-athletic {
@@ -653,6 +854,18 @@ button {
 			background: mix($eggplant, $slate);
 			color: white;
 		}
+		&.reverse {
+			background: white;
+			color: $eggplant;
+			&:hover, &:focus {
+				background: mix($eggplant, white);
+				color: mix($eggplant, $slate);
+			}
+			&:active {
+				background: mix($eggplant, $slate);
+				color: white;
+			}
+		}
 	}
 	&.bg-cerise, &.bg-academic {
 		background: $cerise;
@@ -663,6 +876,18 @@ button {
 		&:active {
 			background: mix($cerise, $slate);
 			color: white;
+		}
+		&.reverse {
+			background: white;
+			color: $cerise;
+			&:hover, &:focus {
+				background: mix($cerise, white);
+				color: mix($cerise, $slate);
+			}
+			&:active {
+				background: mix($cerise, $slate);
+				color: white;
+			}
 		}
 	}
 }
