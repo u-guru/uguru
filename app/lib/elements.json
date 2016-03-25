@@ -1,0 +1,1278 @@
+{
+    "action_items": {
+        "gabrielle": [
+            {
+                "assigned": [
+                    "gabrielle"
+                ], 
+                "description": "", 
+                "difficulty": 1, 
+                "estimated_time": 10, 
+                "index": 1, 
+                "name": "Format the action items + states", 
+                "priority": 10, 
+                "ref": "admin-tools-1", 
+                "substates": [], 
+                "time_created": "3/23", 
+                "type": "Admin Tools"
+            }, 
+            {
+                "assigned": [
+                    "gabrielle"
+                ], 
+                "description": "", 
+                "difficulty": 2, 
+                "estimated_time": 10, 
+                "index": 14, 
+                "name": "Make action items + states collapsible + 'check'-able", 
+                "priority": 5, 
+                "ref": "mad-lib-state-2", 
+                "substates": [], 
+                "time_created": "3/23", 
+                "type": "Admin Tools"
+            }, 
+            {
+                "assigned": [
+                    "gabrielle"
+                ], 
+                "description": "we need something that staggers it in", 
+                "difficulty": 3, 
+                "estimated_time": 15, 
+                "index": 3, 
+                "name": "Spec states/substates for MadLib Splash Layout (+ mobile)", 
+                "priority": null, 
+                "ref": "admin-tools-3", 
+                "substates": [], 
+                "time_created": "3/23", 
+                "type": "Dynamic Scene"
+            }
+        ], 
+        "jason": [], 
+        "jeselle": [
+            {
+                "assigned": [
+                    "Jeselle"
+                ], 
+                "complete": true, 
+                "desc_dropdown": false, 
+                "description": "Research & Create First Iteration Hi-Fi.", 
+                "difficulty": 3, 
+                "estimated_time": 60, 
+                "index": 1, 
+                "name": "Research & Create First Iteration Hi-Fi", 
+                "priority": 10, 
+                "ref": "create-edit-resource-1", 
+                "time_created": "3/24", 
+                "type": "Hifi Scene"
+            }, 
+            {
+                "assigned": [
+                    "jeselle"
+                ], 
+                "complete": false, 
+                "desc_dropdown": false, 
+                "description": "Research & Create First Iteration Hi-Fi.", 
+                "difficulty": 3, 
+                "estimated_time": 20, 
+                "index": 1, 
+                "name": "Above & Beyond hi-fis for all categories", 
+                "priority": 10, 
+                "ref": "user-content-state-2", 
+                "time_created": "3/24", 
+                "type": "Hifi Scene"
+            }, 
+            {
+                "assigned": [
+                    "Jeselle"
+                ], 
+                "complete": false, 
+                "desc_dropdown": false, 
+                "description": "1. GDoc: List out all general/unique components across category-specific cardlet hifis in a doc + check-in<br><br> 2. Research: What are the best fluid examples of the components we don't have? <br><br>3. Research: For each profile, which third party inte", 
+                "description_2": "se?<br><br>4. Hifi: Uguru General template Hi-Fi (black and white), Don't include anything category specific", 
+                "difficulty": 3, 
+                "estimated_time": 20, 
+                "index": 1, 
+                "name": "Template first, then Category-Specific Create Cardlet", 
+                "priority": 10, 
+                "ref": "create-edit-resource-1", 
+                "time_created": "3/24", 
+                "type": "Hifi Scene"
+            }
+        ], 
+        "samir": []
+    }, 
+    "assets": [], 
+    "components": [
+        {
+            "cp_link": "", 
+            "name": "Dropdowns", 
+            "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
+            "ref": "dropdown", 
+            "sample": {
+                "scope": {
+                    "options": [
+                        "apples", 
+                        "bananas", 
+                        "oranges"
+                    ], 
+                    "selectedIndex": 0
+                }, 
+                "template": "<dropdown ng-model=\"component.sample.scope\"></dropdown>"
+            }, 
+            "stage": 1
+        }, 
+        {
+            "cp_link": "", 
+            "name": "Dropdowns", 
+            "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
+            "ref": "splash.dropdown", 
+            "sample": {
+                "scope": {
+                    "options": [
+                        "apples", 
+                        "bananas", 
+                        "oranges"
+                    ], 
+                    "selectedIndex": 0
+                }, 
+                "template": "<dropdown type=\"splash\" ng-model=\"component.sample.scope\"></dropdown>"
+            }, 
+            "stage": 1
+        }, 
+        {
+            "bugs": [
+                {
+                    "assigned": "samir", 
+                    "reason": "doesn't work"
+                }
+            ], 
+            "id": 2, 
+            "name": "User Icon", 
+            "notes": "Add pre-loader states while the image is loading", 
+            "ref": "user-icon", 
+            "sample": {
+                "scope": {
+                    "profile_url": "http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200", 
+                    "size": "medium"
+                }, 
+                "template": "<user-icon size=\"component.sample.scope.size\" url=\"component.sample.scope.profile_url\"> </user-icon>"
+            }
+        }, 
+        {
+            "id": 3, 
+            "name": "Tool Tip", 
+            "notes": "CSS issues", 
+            "ref": "tooltip", 
+            "sample": {
+                "scope": {
+                    "button_text": "Okay", 
+                    "direction": "bottom", 
+                    "title": "This is a tool-tip"
+                }, 
+                "template": "<tooltip direction=\"component.sample.scope.direction\" title=\"component.sample.scope.title\" button-text=\"component.sample.scope.button_text\"/>"
+            }
+        }, 
+        {
+            "id": 4, 
+            "name": "Rating Stars", 
+            "notes": "doesnt show 0.5", 
+            "ref": "rating-stars", 
+            "sample": {
+                "scope": {
+                    "avg": 4.5
+                }, 
+                "template": "<rating style=\"width:100px;\" avg=\"component.sample.scope.avg\"/>"
+            }
+        }, 
+        {
+            "id": 5, 
+            "name": "Tabs", 
+            "ref": "tabs", 
+            "sample": {
+                "scope": {
+                    "index": 1, 
+                    "tabs": [
+                        {
+                            "title": "Apples"
+                        }, 
+                        {
+                            "title": "Oranges"
+                        }, 
+                        {
+                            "title": "Bananas"
+                        }
+                    ]
+                }, 
+                "template": "<tabs key=\"title\" index=\"component.sample.scope.index\" options=\"component.sample.scope.tabs\" />"
+            }
+        }, 
+        {
+            "action_items": [
+                {
+                    "Gabrielle": "Place in guru profile under the third tab \"which we can call miscellaneous\""
+                }
+            ], 
+            "bugs": [
+                {
+                    "girls": "resolve inputs and save buttons vs blurs"
+                }
+            ], 
+            "id": 6, 
+            "name": "Color Picker", 
+            "ref": "color-picker", 
+            "sample": {
+                "scope": {
+                    "selectedColor": "auburn"
+                }, 
+                "template": "<color-picker class=\"bg-smoke\" selected-color=\"component.sample.scope.selectedColor\"> </color-picker>"
+            }
+        }, 
+        {
+            "bugs": [
+                {
+                    "girls": "classes are off, it doesn't make sense that my mini profile card has a large option."
+                }
+            ], 
+            "id": 7, 
+            "name": "Mini Profile Card", 
+            "ref": "mini-profile-card"
+        }, 
+        {
+            "bugs": [
+                {
+                    "girls": "Discuss names convenient for everyone. I.e. PF -Card."
+                }
+            ], 
+            "id": 8, 
+            "name": "Profile Card", 
+            "ref": "profile-card"
+        }, 
+        {
+            "bugs": [
+                {
+                    "girls": "Whats the different conceptually between a tag and a chip?"
+                }
+            ], 
+            "id": 9, 
+            "name": "Tag", 
+            "ref": "tag", 
+            "sample": {
+                "scope": {
+                    "animArgs": {
+                        "li": {
+                            "delays": [
+                                "class-on-activate-delay:1000", 
+                                "class-on-load-delay:1000"
+                            ]
+                        }
+                    }, 
+                    "blankNum": 1, 
+                    "category": {
+                        "hex_color": "academic", 
+                        "id": 5, 
+                        "name": "Academic"
+                    }, 
+                    "desktopMode": true, 
+                    "innerText": "Midnight"
+                }, 
+                "template": "<tag desktop=\"desktopMode\" type=\"splash\" blank-num=\"component.sample.scope.blankNum\" inner-text=\"component.sample.scope.innerText\" category=\"component.sample.scope.category\"> </tag>"
+            }, 
+            "types": [
+                "mad-lib", 
+                "mad-lib-dash", 
+                "splash"
+            ]
+        }, 
+        {
+            "bugs": [
+                {
+                    "girls": "Whats the different conceptually between a tag and a chip?"
+                }
+            ], 
+            "id": 10, 
+            "name": "Base Tag", 
+            "ref": "request-tag-base", 
+            "sample": {
+                "scope": {
+                    "category": {
+                        "hex_class": "cerise", 
+                        "hex_color": "academic", 
+                        "id": 5, 
+                        "name": "Academic"
+                    }, 
+                    "innerText": "Request Tab"
+                }, 
+                "template": "<tag desktop=\"desktopMode\" category=\"component.sample.scope.category\" inner-text=\"component.sample.scope.innerText\" type=\"base\"> </tag>"
+            }
+        }, 
+        {
+            "id": 11, 
+            "name": "Base Tag Input", 
+            "ref": "request-tag-base", 
+            "sample": {
+                "bugs": [
+                    {
+                        "girls": "Whats the different conceptually between a tag and a chip?"
+                    }
+                ], 
+                "scope": {
+                    "category": {
+                        "hex_class": "azure", 
+                        "hex_color": "academic", 
+                        "id": 5, 
+                        "name": "Academic", 
+                        "placeholder": "{{component.sample.scope.placeholder}}"
+                    }, 
+                    "innerText": "Tag Input Try Me"
+                }, 
+                "template": "<tag desktop=\"desktopMode\" category=\"component.sample.scope.category\" inner-text=\"component.sample.scope.innerText\" type=\"input\"> </tag>"
+            }
+        }
+    ], 
+    "layouts": [
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "cp_link": "", 
+            "description": "", 
+            "id": 1, 
+            "name": "Splash Mad Lib", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "mad-lib", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "cp_link": "", 
+            "description": "", 
+            "id": 2, 
+            "name": "", 
+            "notes": "", 
+            "parents": {
+                "scenes": [], 
+                "user_stories": []
+            }, 
+            "ref": "map-university", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "cp_link": "", 
+            "description": "", 
+            "id": 3, 
+            "name": "", 
+            "notes": "", 
+            "parents": {
+                "scenes": [], 
+                "user_stories": []
+            }, 
+            "ref": "sidebar", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "cp_link": "", 
+            "description": "", 
+            "id": 4, 
+            "name": "", 
+            "notes": "", 
+            "parents": {
+                "scenes": [], 
+                "user_stories": []
+            }, 
+            "ref": "projector-nav", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "cp_link": "", 
+            "description": "", 
+            "id": 5, 
+            "name": "", 
+            "notes": "", 
+            "parents": {
+                "scenes": [], 
+                "user_stories": []
+            }, 
+            "ref": "getting-started", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "id": 6, 
+            "name": "", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "general-content-layout", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "template_url": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "id": 7, 
+            "name": "", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "academic-layout", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "template_url": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "id": 8, 
+            "name": "", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "photo-layout", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "template_url": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "id": 9, 
+            "name": "", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "tech-layout", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "template_url": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "id": 10, 
+            "name": "", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "bakery-layout", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "template_url": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "id": 11, 
+            "name": "", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "household-layout", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "template_url": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "id": 12, 
+            "name": "", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "general-edit-layout", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "template_url": ""
+        }
+    ], 
+    "moodboards": [], 
+    "projects": [], 
+    "scenes": [
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "element_states": {
+                "assigned": [], 
+                "description": "", 
+                "fluid": [
+                    {
+                        "assigned": [
+                            "gabrielle"
+                        ], 
+                        "description": "Preferably you would want to stagger these in.", 
+                        "difficulty": 3, 
+                        "estimated_time": 20, 
+                        "index": 1, 
+                        "name": "On first time transition in", 
+                        "priority": 10, 
+                        "ref": "mad-lib-state-1", 
+                        "substates": [
+                            {
+                                "description": "This is where you would you would clarify substate description", 
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": true, 
+                                "name": "Mad lib substate 1", 
+                                "parent_ref": "mad-lib-state-1", 
+                                "ref": "mad-lib-state-1-substate-1"
+                            }, 
+                            {
+                                "description": "This is where you would you would clarify substate description", 
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": false, 
+                                "name": "Mad lib substate 2", 
+                                "parent_ref": "mad-lib-state-1", 
+                                "ref": "mad-lib-state-1-substate-2"
+                            }, 
+                            {
+                                "description": "This is where you would you would clarify substate description", 
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": false, 
+                                "name": "Mad lib substate 3", 
+                                "parent_ref": "mad-lib-state-1", 
+                                "ref": "mad-lib-state-1-substate-3"
+                            }, 
+                            {
+                                "description": "This is where you would you would clarify substate description", 
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": false, 
+                                "name": "Mad lib substate 1", 
+                                "parent_ref": "mad-lib-state-1", 
+                                "ref": "mad-lib-state-1-substate-4"
+                            }
+                        ], 
+                        "time_created": "3/23", 
+                        "type": "fluid"
+                    }, 
+                    {
+                        "assigned": [
+                            "gabrielle"
+                        ], 
+                        "difficulty": 3, 
+                        "estimated_time": 10, 
+                        "index": 2, 
+                        "name": "On first time transition in", 
+                        "priority": 10, 
+                        "ref": "mad-lib-state-2", 
+                        "substates": [
+                            {
+                                "description": "This is where you would you would clarify substate description", 
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": true, 
+                                "name": "Mad lib substate 1", 
+                                "parent_ref": "mad-lib-state-1", 
+                                "ref": "mad-lib-state-2-substate-1"
+                            }, 
+                            {
+                                "description": "This is where you would you would clarify substate description", 
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": true, 
+                                "name": "Mad lib substate 2", 
+                                "parent_ref": "mad-lib-state-1", 
+                                "ref": "mad-lib-state-2-substate-2"
+                            }
+                        ], 
+                        "time_created": "3/23", 
+                        "type": "fluid"
+                    }
+                ], 
+                "functional": [], 
+                "hifi": [], 
+                "name": "", 
+                "priority": 0, 
+                "testing": [], 
+                "type": ""
+            }, 
+            "id": 1, 
+            "name": "Mad lib", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "mad-lib", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "template_url": "", 
+            "type": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "element_states": {
+                "assigned": [], 
+                "description": "", 
+                "fluid": [], 
+                "functional": [], 
+                "hifi": [], 
+                "name": "", 
+                "priority": 0, 
+                "testing": [], 
+                "type": ""
+            }, 
+            "id": 2, 
+            "name": "Side Menu", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "side-menu", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "template_url": "", 
+            "type": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "element_states": {
+                "assigned": [], 
+                "description": "", 
+                "fluid": [], 
+                "functional": [], 
+                "hifi": [], 
+                "name": "", 
+                "priority": 0, 
+                "testing": [], 
+                "type": ""
+            }, 
+            "id": 3, 
+            "name": "University Map", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "university-map", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "template_url": "", 
+            "type": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "id": 4, 
+            "name": "", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "Mad lib", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "states": [], 
+            "template_url": "", 
+            "type": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "id": 5, 
+            "name": "", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "Side Menu", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "states": [], 
+            "template_url": "", 
+            "type": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "id": 6, 
+            "name": "", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "University Map", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "states": [], 
+            "template_url": "", 
+            "type": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "element_states": {
+                "assigned": [], 
+                "description": "Create the first iteration of hifi category-specific card stacks", 
+                "static": [
+                    {
+                        "assigned": [
+                            "jeselle"
+                        ], 
+                        "description": "Research & Create First Iteration Hi-Fi.", 
+                        "difficulty": 3, 
+                        "estimated_time": 20, 
+                        "index": 1, 
+                        "name": "First iteration hi-fis for all categories", 
+                        "priority": 10, 
+                        "ref": "user-content-state-1", 
+                        "substates": [
+                            {
+                                "description": "How a stack of Academic cards will look", 
+                                "difficulty": 2, 
+                                "estimated_time": 60, 
+                                "is_complete": true, 
+                                "name": "Academic Cardlets View", 
+                                "parent_ref": "user-content-state-1", 
+                                "ref": "user-content-state-1-substate-1"
+                            }, 
+                            {
+                                "description": "How a stack of Household cards will look", 
+                                "difficulty": 2, 
+                                "estimated_time": 60, 
+                                "is_complete": true, 
+                                "name": "Household Cardlets View", 
+                                "parent_ref": "user-content-state-1", 
+                                "ref": "user-content-state-1-substate-2"
+                            }, 
+                            {
+                                "description": "How a stack of Tech cards will look", 
+                                "difficulty": 2, 
+                                "estimated_time": 60, 
+                                "is_complete": true, 
+                                "name": "Tech Cardlets View", 
+                                "parent_ref": "user-content-state-1", 
+                                "ref": "user-content-state-1-substate-3"
+                            }, 
+                            {
+                                "description": "How a stack of Photo cards will look", 
+                                "difficulty": 2, 
+                                "estimated_time": 60, 
+                                "is_complete": true, 
+                                "name": "Photo Cardlets View", 
+                                "parent_ref": "user-content-state-1", 
+                                "ref": "user-content-state-1-substate-4"
+                            }, 
+                            {
+                                "description": "How a stack of Bakery cards will look", 
+                                "difficulty": 2, 
+                                "estimated_time": 60, 
+                                "is_complete": true, 
+                                "name": "Bakery Cardlets View", 
+                                "parent_ref": "user-content-state-1", 
+                                "ref": "user-content-state-1-substate-5"
+                            }
+                        ], 
+                        "time_created": "3/24", 
+                        "type": "static"
+                    }, 
+                    {
+                        "assigned": [
+                            "jeselle"
+                        ], 
+                        "description": "Research & Create First Iteration Hi-Fi.", 
+                        "difficulty": 3, 
+                        "estimated_time": 20, 
+                        "index": 1, 
+                        "name": "First iteration hi-fis for all categories", 
+                        "priority": 10, 
+                        "ref": "user-content-state-1", 
+                        "substates": [
+                            {
+                                "description": "Create an above and academic photo card stack", 
+                                "difficulty": 2, 
+                                "estimated_time": 60, 
+                                "is_complete": true, 
+                                "name": "Academic Cardlets View", 
+                                "parent_ref": "user-content-state-1", 
+                                "ref": "user-content-state-2-substate-1"
+                            }, 
+                            {
+                                "description": "Create an above and beyond household card stack", 
+                                "difficulty": 2, 
+                                "estimated_time": 60, 
+                                "is_complete": true, 
+                                "name": "Household Cardlets View", 
+                                "parent_ref": "user-content-state-2", 
+                                "ref": "user-content-state-2-substate-2"
+                            }, 
+                            {
+                                "description": "Create an above and beyond tech card stack", 
+                                "difficulty": 2, 
+                                "estimated_time": 60, 
+                                "is_complete": true, 
+                                "name": "Tech Cardlets View", 
+                                "parent_ref": "user-content-state-2", 
+                                "ref": "user-content-state-2-substate-3"
+                            }, 
+                            {
+                                "description": "Create an above and beyond photo card stack", 
+                                "difficulty": 2, 
+                                "estimated_time": 60, 
+                                "is_complete": true, 
+                                "name": "2nd Photo Cardlets View", 
+                                "parent_ref": "user-content-state-2", 
+                                "ref": "user-content-state-2-substate-4"
+                            }, 
+                            {
+                                "description": "Create an above and beyond bakery card stack", 
+                                "difficulty": 2, 
+                                "estimated_time": 60, 
+                                "is_complete": true, 
+                                "name": "2nd Bakery Cardlets View", 
+                                "parent_ref": "user-content-state-2", 
+                                "ref": "user-content-state-2-substate-5"
+                            }
+                        ], 
+                        "time_created": "3/24", 
+                        "type": "static"
+                    }
+                ]
+            }, 
+            "id": 7, 
+            "name": "", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "public-view-all-shops", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "template_url": "", 
+            "type": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "element_states": {
+                "assigned": [], 
+                "description": "Create a template + category specific interface that creates a card-let", 
+                "static": [
+                    {
+                        "assigned": [
+                            "Jeselle"
+                        ], 
+                        "description": "Research & Create First Iteration Hi-Fi.", 
+                        "difficulty": 3, 
+                        "estimated_time": 20, 
+                        "index": 1, 
+                        "name": "Template first, then Category-Specific Create Cardlet", 
+                        "priority": 10, 
+                        "ref": "create-edit-resource-1", 
+                        "substates": [
+                            {
+                                "description": "List out all general/unique components across guide in a doc + check-in", 
+                                "difficulty": 2, 
+                                "estimated_time": 60, 
+                                "is_complete": true, 
+                                "name": "List out all general/unique UI components", 
+                                "parent_ref": "create-edit-resource-state-1", 
+                                "ref": "create-edit-resource-1-substate-1"
+                            }, 
+                            {
+                                "description": "What are the best fluid examples of the components we don't have?", 
+                                "difficulty": 2, 
+                                "estimated_time": 60, 
+                                "is_complete": true, 
+                                "name": "Research: best fluid examples online", 
+                                "parent_ref": "create-edit-resource-state-1", 
+                                "ref": "create-edit-resource-1-substate-2"
+                            }, 
+                            {
+                                "description": "Forr each profile, which third party integrations make the most sense to make the attachment/export of previous content to export (what if they already have a blog, etc). Just make a list of platforms (i.e. photo --> upload from flickr)", 
+                                "difficulty": 2, 
+                                "estimated_time": 60, 
+                                "is_complete": true, 
+                                "name": "Research: 3rd party integrations", 
+                                "parent_ref": "create-edit-resource-state-1", 
+                                "ref": "create-edit-resource-1-substate-3"
+                            }, 
+                            {
+                                "description": "Uguru General template Hi-Fi (black and white), Don't include anything category specific", 
+                                "difficulty": 2, 
+                                "estimated_time": 60, 
+                                "is_complete": true, 
+                                "name": "Create Black & White (non-category specific) Hi-Fi of Create Component", 
+                                "parent_ref": "create-edit-resource-state-1", 
+                                "ref": "create-edit-resource-1-substate-4"
+                            }
+                        ]
+                    }
+                ]
+            }, 
+            "id": 8, 
+            "name": "", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "create-edit-resource", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "template_url": "", 
+            "type": ""
+        }, 
+        {
+            "bugs": [], 
+            "children": [], 
+            "cp_link": "", 
+            "description": "", 
+            "id": 9, 
+            "name": "", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "sneak-preview", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "states": [], 
+            "template_url": "", 
+            "type": ""
+        }
+    ], 
+    "tools": {
+        "third_party": {
+            "integrated": [], 
+            "waitlist_ref": [
+                "packer", 
+                "theatre-coachmark"
+            ]
+        }
+    }, 
+    "user_stories": [
+        {
+            "description": "", 
+            "id": 1, 
+            "layouts": [
+                "mad-lib", 
+                "map-university", 
+                "sidebar", 
+                "projector-nav", 
+                "getting-started"
+            ], 
+            "name": "Anonymous User Checks out Uguru", 
+            "ref": "splash", 
+            "scene_transitions": [
+                "Mad Lib --> University"
+            ], 
+            "scenes": [
+                "Mad lib", 
+                "Side Menu", 
+                "University Map"
+            ], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 2, 
+            "layouts": [], 
+            "name": "Anonymous User Getting Starts", 
+            "ref": "splash-getting-started", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 3, 
+            "layouts": [], 
+            "name": "Anonymous User Gets Started/Signup", 
+            "ref": "splash-start", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 4, 
+            "layouts": [], 
+            "name": "Student Explores Dashboard", 
+            "ref": "student-dash-first", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 5, 
+            "layouts": [], 
+            "name": "Student Becomes a Guru", 
+            "ref": "student-becomes-guru", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 6, 
+            "layouts": [], 
+            "name": "Guru Explores Guru Dashboard", 
+            "ref": "guru-dash-first", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 7, 
+            "layouts": [], 
+            "name": "Student Creates/Cancels 1-Many Request", 
+            "ref": "student-requests", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 8, 
+            "layouts": [], 
+            "name": "Guru Accepts/Rejects/Cancels 1-Many Student Requests", 
+            "ref": "guru-incoming-requests", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 9, 
+            "layouts": [], 
+            "name": "Student receives & Accepts/Rejects/Cancels 1 - many incoming Gurus", 
+            "ref": "student-incoming-gurus", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 10, 
+            "layouts": [], 
+            "name": "Student Accepts/Rejects/Cancels Guru", 
+            "ref": "student-accept-guru", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 11, 
+            "layouts": [], 
+            "name": "Student & Guru Message/ & Share Location/Files/Contact Info", 
+            "ref": "student-guru-message", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 12, 
+            "layouts": [], 
+            "name": "Guru/Student rate each other", 
+            "ref": "student-guru-rating", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 13, 
+            "layouts": [], 
+            "name": "Guru Sets-up 1-Many Shops", 
+            "ref": "guru-profiles-setup", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 14, 
+            "layouts": [], 
+            "name": "Guru becomes 100% Credibly", 
+            "ref": "guru-credibility", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 15, 
+            "layouts": [], 
+            "name": "Student/Guru Refer Each Other", 
+            "ref": "student-guru-referrals", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 16, 
+            "layouts": [], 
+            "name": "Guru Bills a Student through Billing/Enhanced Messaging", 
+            "ref": "guru-bills-student", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 17, 
+            "layouts": [], 
+            "name": "Student adds card & purchases from Credit Shop", 
+            "ref": "student-payments-shop", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 18, 
+            "layouts": [], 
+            "name": "Guru adds Debit Card && Cashes Out", 
+            "ref": "guru-cashes-out", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 19, 
+            "layouts": [], 
+            "name": "Student/Guru edit their settings", 
+            "ref": "student-guru-settings", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 20, 
+            "layouts": [], 
+            "name": "Guru checks out Guru Ranking", 
+            "ref": "guru-promote", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 21, 
+            "layouts": [], 
+            "name": "Guru checks out Guru Promote", 
+            "ref": "guru-ranking", 
+            "scenes": [], 
+            "transitions": []
+        }, 
+        {
+            "description": "", 
+            "id": 22, 
+            "layouts": [
+                "general-content-layout", 
+                "academic-layout", 
+                "photo-layout", 
+                "tech-layout", 
+                "bakery-layout", 
+                "household-layout", 
+                "general-edit-layout"
+            ], 
+            "name": "Guru creates shop-specific content", 
+            "ref": "guru-ranking", 
+            "scenes": [
+                "public-view-all-shops", 
+                "create-edit-resource", 
+                "sneak-preview"
+            ], 
+            "transitions": []
+        }
+    ]
+}

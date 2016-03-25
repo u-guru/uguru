@@ -245,10 +245,10 @@ angular.module('uguru.util.controllers')
 					$scope.page.action_items[memberTitle] = response.action_items[memberTitle];
 				}
 
-				$scope.selected_scene = $scope.page.scenes[0];
-				$scope.selected_scene.tabIndex = 1;
-				var modalElem = document.querySelector('#cta-modal-selected-scene');
-				modalElem && modalElem.classList.add('show');
+				// $scope.selected_scene = $scope.page.scenes[0];
+				// $scope.selected_scene.tabIndex = 1;
+				// var modalElem = document.querySelector('#cta-modal-selected-scene');
+				// modalElem && modalElem.classList.add('show');
 
 
 				// $scope.selected_scene = $scope.page.scenes[0];
