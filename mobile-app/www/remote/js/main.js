@@ -521,21 +521,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/dev/student.messaging.html',
         controller: 'DevController'
   }).
-  state('root.demos', {
-        url: '/demos',
-        templateUrl: BASE + 'templates/demos.html',
-        controller: 'DemosController'
-  }).
-  state('root.splash', {
-        url: '/:categoryId:universityId',
-        templateUrl: BASE + 'templates/splash.html',
+  state('root.splash-madlib', {
+        url: '/splash-madlib:categoryId:universityId',
+        templateUrl: BASE + 'templates/splash.madlib.html',
         params: {category: {name: 'Academic', id:5, hex_color:'academic'}, university: {latitude: "37.8718992", longitude: "-122.2585399",name: 'UC Berkeley', id:2307, school_color_dark: "#023360", school_tiny_name: 'Cal', school_color_light: "#FBB431", short_name: "UC Berkeley"}},
-        controller: "SplashController"
-  }).
-  state('root.demos-2', {
-        url: '/demo-2',
-        templateUrl: BASE + 'templates/demos.html',
-        controller: "DemosController"
+        controller: 'SplashController',
   }).
   state('root.student-conversations', {
         url: '/student-conversations',
@@ -553,14 +543,15 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
           throw "Test error";
         }
   }).
-  // state('root.access', {
-  //       url: '/access',
-  //       templateUrl: BASE + 'templates/access.html',
-  //       controller: 'AccessController'
-  // }).
   state('root.guru-conversations', {
         url: '/guru-conversations',
         templateUrl: BASE + 'templates/guru.conversations.html'
+  }).
+  state('root.splash', {
+        url: '/:categoryId:universityId',
+        templateUrl: BASE + 'templates/splash.html',
+        params: {category: {name: 'Academic', id:5, hex_color:'academic'}, university: {latitude: "37.8718992", longitude: "-122.2585399",name: 'UC Berkeley', id:2307, school_color_dark: "#023360", school_tiny_name: 'Cal', school_color_light: "#FBB431", short_name: "UC Berkeley"}},
+        controller: "SplashController"
   });
 
 

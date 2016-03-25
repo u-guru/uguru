@@ -285,7 +285,7 @@ angular.module('uguru.util.controllers')
         args = null;
       }
       var doesSwiperExist = document.querySelector('.header-swiper-back-2') && document.querySelector('.header-swiper-back-2').swiper;
-      if (doesSwiperExist) {
+      if (doesSwiperExist || $state.current.name !== 'root.splash') {
         return;
       }
       var swiperBack2=new Swiper('.header-swiper-back-2',{slidesPerView:'auto',centeredSlides:true,spaceBetween:100,onlyExternal:true,effect:'coverflow',direction:'vertical',speed:600,coverflow:{slideShadows:false}});

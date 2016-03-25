@@ -10,6 +10,7 @@ function CTAService($timeout) {
   var ctaFuncDict = {};
   var ctaOptions = {duration: 0.2, extraTransitionDuration:0};
   var ctaCloseFuncDict = {};
+  var ctaKeyCodeMappings = {'esc': 27};
 
 
 
@@ -39,7 +40,9 @@ function CTAService($timeout) {
     return elem.querySelector('.cta-modal-close');
   }
 
-  var bindCtaToBoxElem = function(box_elem, modal_elem, show_callback, box_selector) {
+  var bindCtaToBoxElem = function(box_elem, modal_elem, show_callback, box_selector, key_triggers) {
+    key_triggers = key_triggers || [];
+    console.log(key_triggers);
     ctaFuncDict[box_selector] = function() {
 
       ctaCloseFuncDict[box_selector]  = cta(box_elem, modal_elem, ctaOptions, function() {
@@ -58,8 +61,20 @@ function CTAService($timeout) {
           modalCloseIcon.addEventListener('click', function() {
             ctaCloseFuncDict[box_selector]();
             hideModalCTA(modal_elem);
-          })
+          });
         }
+
+        window.addEventListener('keydown', function(evt) {
+          evt = evt || window.event;
+          console.log('evt');
+          for (var i = 0; i < key_triggers.length; i++) {
+            var indexKey = key_triggers[i];
+            if (indexKey in ctaKeyCodeMappings && ctaKeyCodeMappings[indexKey] === evt.keyCode) {
+                ctaCloseFuncDict[box_selector]();
+                hideModalCTA(modal_elem);
+            }
+          }
+        });
 
       }, ctaParentDict[box_selector])
 
@@ -68,7 +83,7 @@ function CTAService($timeout) {
     box_elem.addEventListener('click', ctaFuncDict[box_selector]);
   }
 
-  var initSingleCTA = function(boxSelector, parentSelector, show_callback) {
+  var initSingleCTA = function(boxSelector, parentSelector, show_callback, eventTriggers) {
 
     var parentElem = document.querySelector(parentSelector);
     var boxElem = document.querySelector(boxSelector);
@@ -82,7 +97,7 @@ function CTAService($timeout) {
       return false;
     }
     ctaParentDict[boxSelector] = parentSelector;
-    bindCtaToBoxElem(boxElem, modalElem, show_callback, boxSelector);
+    bindCtaToBoxElem(boxElem, modalElem, show_callback, boxSelector, eventTriggers);
 
 
   }

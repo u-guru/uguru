@@ -21,8 +21,8 @@ angular.module('uguru.util.controllers')
 				user_stories: AdminContent.getUserStories(),
 				createObjects: AdminContent.getBaseObjects($scope),
 				defaults: {
-					tabsIndex: 1,
-					sidebarIndex: 0
+					tabsIndex: 3,
+					sidebarIndex: 1
 				}
 			}
 			// $scope.selected_component = $scope.page.components[4];
@@ -46,6 +46,15 @@ angular.module('uguru.util.controllers')
 			CTAService.initSingleCTA('#' + targetElem.id, '#main-admin-content');
 		}
 
+		$scope.initAndLaunchDevToolsCTA = function($event) {
+			var targetElem = $event.target;
+			console.log(targetElem);
+			$scope.lastCTABoxTargetElem = targetElem;
+			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-tool';
+
+			CTAService.initSingleCTA('#' + targetElem.id, '#admin', null, ['esc']);
+		}
+
 		$scope.initAndLaunchSceneCTA = function($event, scene) {
 			var targetElem = $event.target;
 			$scope.selected_scene = scene;
@@ -57,6 +66,10 @@ angular.module('uguru.util.controllers')
 		}
 
 		function createAdminElement(element_details) {
+
+		}
+
+		function updateSceneElements() {
 
 		}
 
@@ -77,6 +90,8 @@ angular.module('uguru.util.controllers')
 				$scope.page.projects = response.projects;
 				$scope.page.action_items = response.action_items;
 
+				console.log('page scenes', $scope.page.scenes);
+
 
 
 				var actionItemsSidebarTabSections = $scope.page.layout.sections[0].tabs.options;
@@ -85,6 +100,11 @@ angular.module('uguru.util.controllers')
 					var memberTitle = sideBarTabIndex.title.toLowerCase();
 					$scope.page.action_items[memberTitle] = response.action_items[memberTitle];
 				}
+
+				$scope.selected_scene = $scope.page.scenes[0];
+				$scope.selected_scene.tabIndex = 2;
+				var modalElem = document.querySelector('#cta-modal-selected-scene');
+				modalElem && modalElem.classList.add('show');
 
 
 				// $scope.selected_scene = $scope.page.scenes[0];
@@ -354,8 +374,12 @@ angular.module('uguru.util.controllers')
 
 		$timeout(function() {
 			$scope.page.layout.sidebar.index = $scope.page.defaults.sidebarIndex;
-			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index || $scope.page.defaults.tabsIndex;
+			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = 2 || $scope.page.defaults.tabsIndex;
 			getAdminElements();
+
+
+
+
 
 		}, 1000)
 	}
