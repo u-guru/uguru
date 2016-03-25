@@ -1,7 +1,7 @@
 <div class='relative' style='height:calc(100%); width:calc(100%);' eval-on-load="onLoad()" ng-class="{'overflow-inherit': !desktopMode && root.vars.showSidebarOneProjector}">
     <!-- @gabrielle, do not not remove  init-wp-parent -->
     <main id='home-splash' init-wp-parent class='splash-landing' bind-wp="s1_top">
-        <ion-pane style='z-index:1001;' id='cta-modal-sidebar' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
+        <ion-pane id='cta-modal-sidebar' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash.sidebar.html'"> </ion-pane>
         <a ng-if='page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()' style='z-index:5'> </a>
         <!-- <div class="school-card opacity-0 absolute hide" class-on-activate="show" id='global-school-card' ng-if='selectedUniversity && selectedUniversity.id'>
             <svg class="rect" viewBox="0 0 300 200">
@@ -425,6 +425,7 @@
 
         <section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
             <a name="back-to-scene-one" id='splash-up-link' class="splash-up-circle" bind-wp="s2_50_top" bind-wp-class="activate, clear" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut, opacity-0" class-on-activate="fadeInDown:anim" class-on-activate-delay="1250" ng-show='projectorPullActivated || singleProjectorActivated' ng-click='closeSingleProjector()' ng-include="img_base + 'templates/svg/main/up-circle.html'"></a>
+            <a class="splash-up-circle" ng-if='page.swipers.main.slides.length <= 1' ng-click='closeSingleProjector()' ng-include="img_base + 'templates/svg/main/up-circle.html'"></a>
             <div class="projector-trigger animated opacity-0" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750" bind-wp="s2_25_top" bind-wp-class="bounceInDown" bind-wp-direction="down">
                 <a id="projector-pull" ng-click='activateProjectorPull();' bind-wp="s2_25_top" bind-wp-class="show-opacity, hide-opacity-impt" bind-wp-direction="down:remove:hide-opacity-impt, up:remove:show-opacity" class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a" class-on-activate="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
                     <svg width="28px" height="224px" viewBox="0 0 56 448">
@@ -508,9 +509,9 @@
                         <!-- next buttons -->
                         <div class="swiper-button-next swiper-button-white" aria-disabled="false" tabindex="0" role="button" aria-label="Next slide"></div>
                         <div class="swiper-button-prev swiper-button-white swiper-button-disabled" aria-disabled="true" tabindex="0" role="button" aria-label="Previous slide"></div>
-                        <a class='absolute top-0 uppercase weight-700 text-center full-x left-0 opacity-50 p20xy' ng-if='page.swipers.main.slides.length <= 1' ng-click="closeSingleProjector()">
+                        <!-- <a class='absolute top-0 uppercase weight-700 text-center full-x left-0 opacity-50 p20xy' ng-if='page.swipers.main.slides.length <= 1' ng-click="closeSingleProjector()">
                             <i style='font-size:100%; left:10px;' class='icon ion-chevron-up'> </i>
-                        </a>
+                        </a> -->
                         <div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
                             <!-- Slide # 1-->
                             <!-- how it works -->

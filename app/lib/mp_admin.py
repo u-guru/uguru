@@ -352,6 +352,13 @@ if 'save' in args and len(args) == 2:
     saveDictToElementsJson()
 if 'update' in args and len(args) == 2:
     syncLocalElementsToMP()
+if 'sync' in args and len(args) == 2:
+    print "syncing local --> MP"
+    syncLocalElementsToMP()
+    from time import sleep
+    sleep(1)
+    print "syncing MP --> Local"
+    saveDictToElementsJson()
 if 'resolve' in args and len(args) == 2:
     resolveLocalElements()
 if 'print' in args and args.index('print') == 1 and len(args) == 3:

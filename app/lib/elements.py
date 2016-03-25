@@ -45,7 +45,20 @@ base_asset = {'ref': [], 'cp_link': '', 'type': 'component', 'name': '', 'notes'
 
 base_component = {'ref': [], 'cp_link': '', 'type': 'component', 'name': '', 'notes': '', 'parents': [], 'children': [], 'sample': {'scope': '', 'template': ""}, "bugs": [], "states": []}
 
-base_layout = {'ref': '', 'scenes': [], 'cp_link': '', 'name': '', 'notes': '', 'description': '', 'parents': [], 'children': [], 'template_url': '',  'sample': {'scope': '', 'template': ""}, "bugs": []}
+base_layout = {
+'ref': '',
+'scenes': [],
+'cp_link': '',
+'name': '',
+'notes': '',
+'description': '',
+'parents': {"scenes": [], "user_stories": []},
+'children': {"components": [], "container": [], "scenes": [], "assets": []},
+'template_url': '',
+'sample': {'scope': '',
+'template': ""},
+"bugs": []
+}
 
 
 base_containers = {'ref': '', 'scenes': [], 'cp_link': '', 'name': '', 'notes': '', 'description': '', 'parents': [], 'children': [], 'template_url': ''}

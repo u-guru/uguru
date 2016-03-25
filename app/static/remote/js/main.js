@@ -137,6 +137,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/team',
         templateUrl: BASE + 'templates/team.html'
   }).
+  
+  state('root.build', {
+        url: '/build',
+        templateUrl: BASE + 'templates/builder.html'
+  }).
 
   //start essay
   state('root.essay-student-university', {
