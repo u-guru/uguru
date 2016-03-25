@@ -532,10 +532,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         params: {category: {name: 'Academic', id:5, hex_color:'academic'}, university: {latitude: "37.8718992", longitude: "-122.2585399",name: 'UC Berkeley', id:2307, school_color_dark: "#023360", school_tiny_name: 'Cal', school_color_light: "#FBB431", short_name: "UC Berkeley"}},
         controller: "SplashController"
   }).
-  state('root.demo-templates', {
+  state('root.demos-2', {
         url: '/demo-2',
-        templateUrl: BASE + 'templates/splash.madlib.html',
-        controller: "SplashController"
+        templateUrl: BASE + 'templates/demos.html',
+        controller: "DemosController"
   }).
   state('root.student-conversations', {
         url: '/student-conversations',

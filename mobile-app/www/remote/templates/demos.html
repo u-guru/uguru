@@ -1,254 +1,112 @@
+<!-- @GABRIELLE-NOTE-EXAMPLE-->
+<!--
 
-        <section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" parallax-parent="p1" parallax-relative-input="false" parallax-clip-relative-input="false" parallax-calibration-threshold="100" parallax-calibration-delay="500" parallax-support-delay="500" parallax-calibrate-x="false" parallax-calibrate-y="true" parallax-invert-x="true" parallax-invert-y="true" parallax-limit-x="false" parallax-limit-y="false" parallax-scalar-x="5.0" parallax-scalar-y="5.0" parallax-friction-x="0.1" parallax-friction-y="0.1" parallax-origin-x="0.5" parallax-origin-y="0.5" style='z-index:10;'>
-            <header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
-                <a ng-if='page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()' style='z-index:5'> </a>
-                <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ng-class="{'m10xy absolute left-0 top-0':!desktopMode}"></a>
-                <div class="right">
-                    <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()'>
-                        <!-- @gabrielle whats this? If you dont know delete below-->
-                        <!-- bind-wp="s2_50_top" bind-wp-class="fadeOut, animated" bind-wp-direction="down, up:remove:fadeOut" -->
-                        <svg viewBox="0 0 100 100" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" class-on-activate-delay="600">
-                            <circle cx="50" cy="50" r="36"></circle>
-                            <path d="M31,35.5 L69,35.5"></path>
-                            <path d="M31,50.5 L69,50.5"></path>
-                            <path d="M31,65.5 L69,65.5"></path>
-                        </svg>
-                    </a>
-                </div>
-            </header>
-            <div>
-            <div class="splash-hero-nav desktop opacity-0 high-z-index" style='z-index:1000;' class-on-load="fadeIn:anim" class-on-load-delay="3000" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim">
-                <div ng-if='desktopMode'>
-                    <a name='category'  class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()'>
-                        <span>{{selectedCategory.name}}</span>
-                        <svg viewBox="0 0 100 100">
-                            <path d="M14,32 L50,68 L86,32"></path>
-                        </svg>
-                    </a>
-                    <div class="splash-hero-nav-categories" ng-class="{'visible':page.dropdowns.category.active}">
-                        <svg viewBox="0 0 396 38">
-                            <path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                        <ul>
-                            <li ng-repeat='category in categories' ng-if='category.id !== selectedCategory.id' ng-click='demoSwitchCategory(category, selectedUniversity)'>
-                                <a class="active bg-{{category.hex_color}}" >
-                                    <span>{{category.name}}</span>
-                                </a>
-                                <svg class="arrow bg-{{category.hex_color}}" viewBox="0 0 60 30">
-                                    <path d="M4,26 L30,0 L56,26"></path>
-                                </svg>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <h2>@</h2>
-                <div>
-                    <a name='university' ng-click="page.dropdowns.university.toggle()" id='dropdown-university'>
-                        <span class="splash-hero-nav-link-bg" style='background-color: {{selectedUniversity.school_color_dark}}'></span>
-                        <span>{{selectedUniversity.short_name || selectedUniversity.name}}</span>
-                        <svg viewBox="0 0 100 100">
-                            <path d="M14,32 L50,68 L86,32"></path>
-                        </svg>
-                    </a>
-                    <div class="splash-hero-nav-schools" ng-class="{'visible':page.dropdowns.university.active}">
-                        <svg viewBox="0 0 396 38">
-                            <path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                        <ul>
-                            <li ng-repeat='university in featured_universities' ng-if='selectedUniversity.id !== university.id'>
-                                <a ng-click='refreshUniversityState(university)'>
-                                    <span class="splash-hero-nav-link-bg" style='background-color: {{university.school_color_dark}}'></span>
-                                    <span>{{university.short_name || university.name}}</span>
-                                </a>
-                                <svg class="arrow school" viewBox="0 0 60 30">
-                                    <path d="M4,26 L30,0 L56,26" fill="{{university.school_color_dark}}"></path>
-                                </svg>
-                            </li>
-                            <li ng-click="transitionToScene3()" >
-                                <a class="bg-shamrock">
-                                    <span>Find your College</span>
-                                </a>
-                            </li>
-                        </ul>
+reference to docs
+
+Parallax: https://github.com/wagerfield/parallax
+
+
+-->
+<ion-view>
+ <!--    <ion-refresher
+        pulling-icon="ion-arrow-down-c"
+        spinner="circles"
+        on-refresh="doRefresh()">
+    </ion-refresher> -->
+    <ion-content class='bg-slate-50p full-xy absolute'>
+        <div class='full-xy flex-wrap-center'
+            parallax-parent="p1"
+            parallax-relative-input="false"
+            parallax-clip-relative-input="false"
+            parallax-calibration-threshold="100"
+            parallax-calibration-delay="500"
+            parallax-support-delay="500"
+            parallax-calibrate-x="false"
+            parallax-calibrate-y="true"
+            parallax-invert-x="true"
+            parallax-invert-y="true"
+            parallax-limit-x="false"
+            parallax-limit-y="false"
+            parallax-scalar-x="10.0"
+            parallax-scalar-y="10.0"
+            parallax-friction-x="0.1"
+            parallax-friction-y="0.1"
+            parallax-origin-x="0.5"
+            parallax-origin-y="0.5"
+            >
+            <div class='flex-wrap-center bg-smoke p20xy high-z-index left-0 txt-smoke weight-500' parallax-parent-ref="p1" parallax-child="0.2" style='height:400px; width:400px;'>
+                <div class='bg-cerise p20xy high-z-index absolute txt-smoke weight-500' parallax-child="0.75" style='height:200px; width:200px;'>
+                    <div parallax-child="1" class='p20xy bg-azure high-z-index left-0 txt-smoke weight-500 activate'
+                        counter
+                        counter-infinite
+                        counter-infinite-time-btwn="10"
+                        init-on-class="counter:activate"
+                        counter-max="59"
+                        counter-min="10"
+                        counter-prefix="March 7, 4:"
+                        counter-suffix="pm"
+                        counter-duration="5"
+                        counter-delay="1000">
                     </div>
                 </div>
             </div>
+
+            <div class='full-x mojs-wrapper p20xy flex-wrap-center' style='height:400px;'>
+
+                <button mo-js class='btn-ghost-white relative flex-wrap-center'>
+                    <span mo-js-child class='weight-400 flex-wrap-center'>
+                        <i style='font-size:30px;' class='ion-thumbsup icon'>
+                        </i>
+                    </span>
+                </button>
             </div>
-            <div class="splash-hero-nav mobile opacity-0 animated" class-on-load="fadeIn:anim" class-on-load-delay="3000" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ng-if='!desktopMode' ng-click='page.dropdowns.university.toggle()'>
-                <div>
-                    <a class-on-click="a:inject.splash-hero-nav-schools|a, active:unique">
-                        <span class="splash-hero-nav-link-bg" style='background-color: {{selectedUniversity.school_color_dark}}'></span>
-                        <span>@ {{selectedUniversity.school_tiny_name}}</span>
-                        <svg viewBox="0 0 100 100">
-                            <path d="M14,32 L50,68 L86,32"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="splash-hero-skip opacity-0" class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a" class-on-activate="rollOut:animOut:keep">
-                <!--@gabrielle-note lol-->
-                <button activate-on-class="c" class-on-activate="null:inject.splash-desktop-cta|bounceInUp, null:inject.splash-mobile-cta|bounceInUp, null:inject.coach-click|show-opacity-impt, null:inject.coach-click path|animate, null:inject.coach-click-path-2|animate, null:inject.coach-click g g|bounceIn, null:inject.coach-help-desktop|bounceIn, null:inject.coach-help-mobile|bounceIn, null:inject.coach-fill|hide, null:inject.coach-scroll|active, null:inject.coach-scroll svg|fadeIn, null:inject.splash-hero-skip|a" class-on-click="null:inject.splash-desktop-cta|bounceInUp, null:inject.splash-mobile-cta|bounceInUp, null:inject.coach-click|show-opacity-impt, null:inject.coach-click path|animate, null:inject.coach-click-path-2|animate, null:inject.coach-click g g|bounceIn, null:inject.coach-help-desktop|bounceIn, null:inject.coach-help-mobile|bounceIn, null:inject.coach-fill|hide, null:inject.coach-scroll|active, null:inject.coach-scroll svg|fadeIn, null:inject.splash-hero-skip|a, null:inject.splash-adlib ul li a|a">Skip</button>
-            </div>
-            <div class="splash-device splash-device-iphone magictime opacity-0 parallax-absolute parallax-50" parallax-parent-ref="p1" parallax-child="0.2" class-on-load="vanishIn:anim" activate-on-class="a" class-on-activate="active:inject.splash-device-search-inside|a, b:inject.splash-device-svg|a" class-on-activate-delay="4000" translate-on-class-delay="500" translate-on-class="translate-device" class-on-clear="null:inject.splash-device-search-inside|clear, null:inject:splash-device-svg|clear">
-                <svg class="splash-device-svg" activate-on-class="a" class-on-activate="active:keep" viewBox="0 0 319 652">
-                    <path d="M2,42.0005693 C2,19.9088649 19.9096817,2 41.9948462,2 L277.005154,2 C299.093697,2 317,19.9012788 317,42.0005693 L317,609.999431 C317,632.091135 299.090318,650 277.005154,650 L41.9948462,650 C19.9063026,650 2,632.098721 2,609.999431 L2,42.0005693 Z M22,80 L298,80 L298,573 L22,573 L22,80 Z" fill="none" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3"></path>
-                    <circle stroke="#F0E0D0" stroke-width="3" fill="none" cx="159" cy="611" r="25"></circle>
-                </svg>
-                    <svg class="coach-click opacity-0 parallax-auto" parallax-parent-ref="p1" parallax-child="0.2" viewBox="0 0 212 75">
-                        <g fill="none">
-                            <path class="opacity-0 coach-click-path-1" d="M126.402476,42.2902799 C126.402476,42.2902799 41.4492178,9.17968707 3.56286124,70.6500409" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <path class="opacity-0 coach-click-path-2" d="M29.8097207,69.5428392 L3.63890408,70.9143936 L2.26734969,44.7435769" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <g class="opacity-0 animated">
-                                <text transform="translate(172.576620, 31.576620) rotate(7) translate(-172.576620, -31.576620)" font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
-                                    <tspan x="134.07662" y="30.5766198">click</tspan>
-                                    <tspan x="135.91662" y="70.5766198"> me!</tspan>
-                                </text>
-                            </g>
-                        </g>
+            <div class='bg-shamrock draw-shapes-wrapper relative right-0 bottom-0 p20xy' style='height:300px;width:300px; overflow:visible'>
+                <div id="draw-shapes-demo" width="100%" height="100%">
+                    <svg class='activate' version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" style='overflow:visible'
+                         viewBox="0 0 152.5 63.5" enable-background="new 0 0 152.5 63.5" xml:space="preserve">
+                        <path id="i0" fill="none" stroke="#000000" d="M22.057,5.69c2.4,0,4.596,0.354,6.588,1.062s3.696,1.71,5.112,3.006
+                            c1.416,1.296,2.52,2.856,3.312,4.68c0.792,1.824,1.188,3.852,1.188,6.084c0,1.92-0.282,3.696-0.846,5.328
+                            c-0.564,1.632-1.32,3.192-2.268,4.68c-0.948,1.488-2.058,2.928-3.33,4.32c-1.272,1.393-2.604,2.808-3.996,4.248L16.081,51.086
+                            c1.152-0.336,2.28-0.594,3.384-0.774c1.104-0.18,2.16-0.27,3.168-0.27h13.356c0.959,0,1.722,0.27,2.286,0.81
+                            c0.563,0.54,0.846,1.254,0.846,2.142v5.328H3.409V55.37c0-0.6,0.126-1.224,0.378-1.872c0.252-0.648,0.654-1.248,1.206-1.8
+                            l15.804-15.84c1.319-1.344,2.502-2.628,3.546-3.852s1.92-2.436,2.628-3.636c0.708-1.2,1.248-2.417,1.62-3.654
+                            c0.372-1.236,0.558-2.538,0.558-3.906c0-1.248-0.18-2.345-0.54-3.294c-0.36-0.948-0.876-1.746-1.548-2.394
+                            c-0.672-0.648-1.47-1.134-2.394-1.458c-0.924-0.324-1.962-0.486-3.114-0.486c-2.136,0-3.894,0.54-5.274,1.62
+                            c-1.38,1.08-2.346,2.532-2.898,4.356c-0.265,0.912-0.661,1.566-1.188,1.962c-0.528,0.396-1.201,0.594-2.016,0.594
+                            c-0.36,0-0.756-0.036-1.188-0.108l-4.68-0.828c0.36-2.496,1.056-4.686,2.088-6.57c1.031-1.884,2.322-3.456,3.87-4.716
+                            c1.548-1.26,3.324-2.208,5.328-2.844C17.599,6.008,19.753,5.69,22.057,5.69z"/>
+                        <path draw-ignore id="i1" fill="none" stroke="#000000" d="M72.205,38.702h6.552v5.148c0,0.48-0.156,0.895-0.468,1.242
+                            c-0.312,0.348-0.769,0.522-1.368,0.522h-4.716v12.708h-7.776V45.614h-21.96c-0.6,0-1.128-0.186-1.584-0.558
+                            c-0.456-0.372-0.744-0.833-0.864-1.386l-0.9-4.5l24.66-32.94h8.424V38.702z M64.429,21.674c0-0.768,0.023-1.596,0.072-2.484
+                            c0.048-0.888,0.132-1.812,0.252-2.772L48.589,38.702h15.84V21.674z"/>
+                        <path class='activate' draw draw-duration="1s" draw-delay="1000" id="i2" fill="none" stroke="#000000" d="M91.166,23.69v34.632H145.5V23.69h-20c0,0,20,0,19.952-8.701
+                            c-0.141-25.291-27.119,3.761-27.119,3.761S91.166-10,91.178,14.995c0.004,8.894,18.447,8.63,18.447,8.63L91.166,23.69z"/>
+                        <path class='activate' draw draw-duration="1s" draw-delay="2000" id="i3" fill="none" stroke="#000000" d="M114.125,22.5c0,0-15.75,10.625-16.25,19.25l5.875-3.882l-0.375,11.243
+                            c3.75-8.36,13.875-20.485,13.875-20.485s8.875,8.5,9.25,18l0.875-9.5L135.5,42.5c-4.125-11.016-14.75-20-14.75-20
+                            s11.983-3.356,15.75-4.625C140.582,16.5,145.393,11.72,139,9c-5.721-2.434-21.506,13.375-21.506,13.375S107.375,11,99.375,8.712
+                            c-6.565-1.877-5.954,7.663-0.25,9.663S114.125,22.5,114.125,22.5z"/>
                     </svg>
-                    <div class="splash-device-button animated">
-                        <button id='desktop-find-guru-button' ng-click='lockFilledBlanksAndgetUniversityPlaces(selectedUniversity)' class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, a:inject.splash-device-search|activate, null:inject.splash-hero-map|opacity-50, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|clear, null:inject.splash-logo-guru|a" class-on-activate="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, null:inject.splash-hero-map|opacity-50, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|clear, null:inject.splash-logo-guru|a">Find My Guru</button>
-                    </div>
-                </div>
-            </div>
-            <div class="splash-hero-content" activate-on-class="a" class-on-activate="active" class-on-activate-delay="1000" style='z-index:100 !important;'>
-                <div class="splash-guru-head">
-                    <div  class="splash-hero-guru splash-logo-guru parallax-static" parallax-parent-ref="p1" parallax-child="0.4" activate-on-class="a" class-on-activate="fadeOut:animOut" class-on-clear="lightSpeedIn:anim" class-on-clear-delay="4000" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
-                    <svg class="coach-help coach-help-desktop opacity-0 animated" viewBox="0 0 340 205">
-                        <g fill="none">
-                            <path d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 Z" fill="#40484b" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <text transform="translate(173.347656, 110.679688) rotate(-19.000000) translate(-173.347656, -110.679688) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
-                                <tspan x="38.8476562" y="109.679688">we can help you</tspan>
-                                <tspan x="91.8676562" y="149.679688">with that!</tspan>
-                            </text>
-                        </g>
-                    </svg>
-                    <svg class="coach-help coach-help-mobile opacity-0 animated" viewBox="0 0 229 196">
-                        <g fill="none">
-                            <path d="M180.350646,159.695545 C180.350646,159.695544 181.232899,177.999995 205.232902,189.000001 C165.52585,201.901604 151.232897,186.999998 142.038937,178.7445 C81.8973532,198.285685 20.829672,176.230522 5.64045374,129.482915 C-9.5487645,82.7353086 26.8923282,28.9976249 87.0339124,9.45643967 C147.175497,-10.0847456 208.243178,11.9704169 223.432396,58.7180238 C235.030692,94.4139086 216.525122,134.185468 180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 Z" fill="#40484b" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <text transform="translate(113.624918, 91.749311) rotate(-21) translate(-113.624918, -91.749311) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
-                                <tspan x="55.1249179" y="90.7493111">we can</tspan>
-                                <tspan x="70.6849179" y="130.749311">help!</tspan>
-                            </text>
-                        </g>
-                    </svg>
-                    <svg class="coach-fill" viewBox="0 0 280 112">
-                        <g fill="none">
-                            <path class="opacity-0" class-on-load="animate:anim:keep" d="M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <path class="opacity-0" class-on-load="animate:anim:keep" d="M37.0997894,99.9330039 L12.6336973,109.324657 L3.24204445,84.8585646" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <g class="opacity-0" class-on-load="bounceIn:anim">
-                                <text transform="translate(187.228115, 32.099551) rotate(-15.000000) translate(-187.228115, -32.099551) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
-                                    <tspan x="146.128115" y="31.0995511">fill in</tspan>
-                                    <tspan x="99.7281154" y="71.0995511">the blanks</tspan>
-                                </text>
-                            </g>
-                        </g>
+                    <br>
+                     <svg class='activate bg-cerise' draw-shapes version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" style="overflow:visible"
+                         viewBox="0 0 152.5 63.5" enable-background="new 0 0 152.5 63.5" xml:space="preserve">
+                        <path id="i0" fill="none" stroke="#FFFFFF" d="M22.057,5.69c2.4,0,4.596,0.354,6.588,1.062s3.696,1.71,5.112,3.006
+                            c1.416,1.296,2.52,2.856,3.312,4.68c0.792,1.824,1.188,3.852,1.188,6.084c0,1.92-0.282,3.696-0.846,5.328
+                            c-0.564,1.632-1.32,3.192-2.268,4.68c-0.948,1.488-2.058,2.928-3.33,4.32c-1.272,1.393-2.604,2.808-3.996,4.248L16.081,51.086
+                            c1.152-0.336,2.28-0.594,3.384-0.774c1.104-0.18,2.16-0.27,3.168-0.27h13.356c0.959,0,1.722,0.27,2.286,0.81
+                            c0.563,0.54,0.846,1.254,0.846,2.142v5.328H3.409V55.37c0-0.6,0.126-1.224,0.378-1.872c0.252-0.648,0.654-1.248,1.206-1.8
+                            l15.804-15.84c1.319-1.344,2.502-2.628,3.546-3.852s1.92-2.436,2.628-3.636c0.708-1.2,1.248-2.417,1.62-3.654
+                            c0.372-1.236,0.558-2.538,0.558-3.906c0-1.248-0.18-2.345-0.54-3.294c-0.36-0.948-0.876-1.746-1.548-2.394
+                            c-0.672-0.648-1.47-1.134-2.394-1.458c-0.924-0.324-1.962-0.486-3.114-0.486c-2.136,0-3.894,0.54-5.274,1.62
+                            c-1.38,1.08-2.346,2.532-2.898,4.356c-0.265,0.912-0.661,1.566-1.188,1.962c-0.528,0.396-1.201,0.594-2.016,0.594
+                            c-0.36,0-0.756-0.036-1.188-0.108l-4.68-0.828c0.36-2.496,1.056-4.686,2.088-6.57c1.031-1.884,2.322-3.456,3.87-4.716
+                            c1.548-1.26,3.324-2.208,5.328-2.844C17.599,6.008,19.753,5.69,22.057,5.69z"/>
+                        <circle id="fill-bg-demo" post-bg="#FFFFFF" post-bg-opacity='1' activate-post-bg-on-class="activate" cx="75" cy="25" r="25" fill="none" stroke="#FFFFFF" />
+                        <line x1="0" y1="-100" x2="200" y2="100" style="stroke:#FFFFFF;stroke-width:2"/>
+                        <rect id="redrect" width="100" height="50" fill="none" stroke="#FFFFFF" />
+                        <polygon id="test" points="100,10 300,20, 170,50" fill="none" stroke="#FFFFFF" width="100" height="50"/>
                     </svg>
                 </div>
-                <div class="splash-adlib" activate-on-class="blank-1-filled, blank-2-filled" class-on-activate="active:keep, animated:inject.splash-hero-skip button|c, null:inject.splash-hero-map|activate">
-                    <div class="splash-adlib-inside" activate-on-class="a" class-on-activate="active:keep">
-                        <h1 class="opacity-0" class-on-clear="lightSpeedOut:animOut" class-on-clear-delay="200" class-on-activate="bounceInUp:anim" class-on-load="bounceInUp:anim">{{selectedCategory.splashData.madlib.template.beginning}}
-                            <a id="blank-1" class="blank">
-                                <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16" stroke-dasharray="16,14"></rect>
-                                </svg>
-                                <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14"></rect>
-                                </svg>
-                                <b class="opacity-0" activate-on-class="blank-1-filled" class-on-activate="opacity-0-impt" class-on-load="fadeIn:anim">{{selectedCategory.splashData.madlib.template.p1}}</b>
-                            </a>
-                            {{selectedCategory.splashData.madlib.template.middle}}
-                            <a id="blank-2" class="blank">
-                                <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                    <rect fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x="2" y="2" width="280" height="84" rx="16" stroke-dasharray="16,14"></rect>
-                                </svg>
-                                <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                    <rect x="2" y="2" width="256" height="72" rx="16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14"></rect>
-                                </svg>
-                                <b id="blank-2-text" class="opacity-0" class-on-load="fadeIn:anim" activate-on-class="blank-2-filled" class-on-activate="opacity-0-impt" class-on-load="fadeIn:anim">{{selectedCategory.splashData.madlib.template.p2}}</b>
-                            </a>
-                            {{selectedCategory.splashData.madlib.template.end}}
-                        </h1>
-                        <ul class-on-clear="null:inject li[class-on-clear]|clear" class-on-activate="null:inject li[class-on-activate]|activate">
-
-                            <!-- <tag type="adlib" blank-num="'1'" tag-text="wtttf" category="selectedCategory"></tag> -->
-                            <tag desktop="desktopMode" type="splash" blank-num="1" inner-text="option" category="selectedCategory" ng-repeat='option in selectedCategory.splashData.madlib.blank_one_options'> </tag>
-
-
-                            <tag desktop="desktopMode" type="splash" blank-num="2" inner-text="option" category="selectedCategory" ng-repeat='option in selectedCategory.splashData.madlib.blank_two_options'> </tag>
-
-                        </ul>
-                    </div>
-                </div>
             </div>
-            <div class="coach-scroll">
-                <svg viewBox="0 0 656 256" class="opacity-0 animated">
-                    <g fill="none">
-                        <rect stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14" x="3" y="3" width="650" height="54" rx="16"></rect>
-                        <text font-family="Source Sans Pro" font-size="32" font-weight="normal" line-spacing="40" fill="#FFFFFF">
-                            <tspan x="42.392" y="40">or scroll down to find uguru at your school!</tspan>
-                        </text>
-                        <path d="M331,58 L331,253.041016" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16,14"></path>
-                    </g>
-                </svg>
-            </div>
-            <div class="splash-hero-progress progress white opacity-0" activate-on-class="a" class-on-activate="active">
-                <span style="width: 15%;"></span>
-            </div>
-            <!-- mobile-->
-            <button ng-click='lockFilledBlanksAndgetUniversityPlaces(selectedUniversity)' class="button-find-guru splash-mobile-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|activate, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.splash-device-search|activate, a:inject.coach-help-mobile|hide, a:inject.splash-adlib|a, a:inject.splash-adlib ul|clear, a:inject.splash-adlib|bounceOutUp:animOut, null:inject.splash-hero-progress|activate, null:inject.splash-hero-progress span|animate">Find My Guru</button>
-        </section>
-
-        <section id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
-            <div ng-if="false" class='header-swipers opacity-0' activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, null:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700" class-on-clear="slideOutUp:animOut">
-                <div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-0">
-                    <div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
-                        <div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
-                        <div class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -117.241px) rotateX(58.6207deg) rotateY(0deg); z-index: 0; transition-duration: 0ms; margin-bottom: 100px;"></div>
-                        <div class="swiper-slide" style="transform: translate3d(0px, 0px, -234.483px) rotateX(117.241deg) rotateY(0deg); z-index: -1; transition-duration: 0ms; margin-bottom: 100px;"></div>
-                        <div class="swiper-slide" style="transform: translate3d(0px, 0px, -351.724px) rotateX(175.862deg) rotateY(0deg); z-index: -3; transition-duration: 0ms; margin-bottom: 100px;"></div>
-                    </div>
-                </div>
-                <div class="swiper-container header-swiper-back-1 swiper-container-horizontal swiper-container-3d swiper-container-coverflow opacity-0">
-                    <div class="swiper-wrapper" style="transform: translate3d(236px, 0px, 0px); transition-duration: 0ms;">
-                        <div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-right: 300px;"></div>
-                        <div class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -135.714px) rotateX(0deg) rotateY(-67.8571deg); z-index: 0; transition-duration: 0ms; margin-right: 300px;"></div>
-                        <div class="swiper-slide" style="transform: translate3d(0px, 0px, -271.429px) rotateX(0deg) rotateY(-135.714deg); z-index: -2; transition-duration: 0ms; margin-right: 300px;"></div>
-                        <div class="swiper-slide" style="transform: translate3d(0px, 0px, -407.143px) rotateX(0deg) rotateY(-203.571deg); z-index: -3; transition-duration: 0ms; margin-right: 300px;"></div>
-                    </div>
-                </div>
-                <div class='main-swipers-container swiper-headers'>
-                    <div class="swiper-container header-swiper-front swiper-container-horizontal swiper-container-3d swiper-container-coverflow">
-                        <!-- pagination -->
-                        <div class="swiper-pagination swiper-pagination-white swiper-pagination-clickable swiper-pagination-bullets opacity-0" style="visibility: hidden">
-                            <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span>
-                            <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span>
-                        </div>
-                        <!-- next buttons -->
-                        <div class="swiper-button-next swiper-button-white" aria-disabled="false" tabindex="0" role="button" aria-label="Next slide"></div>
-                        <div class="swiper-button-prev swiper-button-white swiper-button-disabled" aria-disabled="true" tabindex="0" role="button" aria-label="Previous slide"></div>
-                        <a class='absolute top-0 uppercase weight-700 text-center full-x left-0 opacity-50 p20xy' ng-if='page.swipers.main.slides.length <= 1' ng-click="closeSingleProjector()">
-                            <i style='font-size:100%; left:10px;' class='icon ion-chevron-up'> </i>
-                        </a>
-                        <div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
-                            <!-- Slide # 1-->
-                            <!-- how it works -->
-                            <div id='slide-1' class="swiper-slide" activate-on-class="activate" class-on-activate="null:inject#how-it-works|activate">
-                                <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
-                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
-                                </svg>
-                                <a bind-wp="s2_top" id='desktop-projector-up-link' bind-wp-class="activate, clear" bind-wp-direction="down, up" class-on-activate="fadeInDown:anim" class-on-activate-delay="600" class-on-clear="fadeOutUp:animOut" ng-click='scrollToSection("#home-splash")'>
-                                    <svg class="projector-handle active" ng-class="{'show': projectorPullActivated}" ng-show='projectorPullActivated' width="61px" height="24px" viewBox="0 0 122 48">
-                                        <path d="M116.813759,2 L119.407837,16.1511345 C121.400182,27.0197169 114.265024,37.7105153 103.431627,39.9081948 C103.431627,39.9081948 77.5373297,46 60.9999232,46 C44.4625167,46 18.5495835,39.9045365 18.5495835,39.9045365 C7.74411375,37.6544772 0.597741646,27.0302069 2.59200971,16.1511345 L5.18608711,2" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                </a>
-                                <div class="projector-top"></div>
-
-                                <!-- <div id="hiw" class="projector-content" ng-include="::img_base + BASE + 'templates/splash.hiw.html'" ng-controller="HowItWorksController">
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
+    </ion-content>
+</ion-view>
