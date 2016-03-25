@@ -151,7 +151,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/student-validation',
         templateUrl: BASE + 'templates/validation.student.html'
   }).
-
+  state('root.my-requests', {
+        url: '/my-requests',
+        templateUrl: BASE + 'templates/student.requests.html'
+  }).
+  
   //start essay
   state('root.essay-student-university', {
         url: '/essay-student-university',

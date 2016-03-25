@@ -151,62 +151,62 @@ input, fieldset {
 	@include listless;
 	@include flex;
 	@include flex-wrap;
-	&[class*="-1"] {
+	&[class*="ugrid-1"] {
 		> * {
 			width: 100%;
 		}
 	}
-	&[class*="-2"] {
+	&[class*="ugrid-2"] {
 		> * {
 			width: 50%;
 		}
 	}
-	&[class*="-3"] {
+	&[class*="ugrid-3"] {
 		> * {
 			width: calc(100% / 3);
 		}
 	}
-	&[class*="-4"] {
+	&[class*="ugrid-4"] {
 		> * {
 			width: 25%;
 		}
 	}
-	&[class*="-5"] {
+	&[class*="ugrid-5"] {
 		> * {
 			width: 20%;
 		}
 	}
-	&[class*="-6"] {
+	&[class*="ugrid-6"] {
 		> * {
 			width: calc(100% / 6);
 		}
 	}
-	&[class*="-7"] {
+	&[class*="ugrid-7"] {
 		> * {
 			width: calc(100% / 7);
 		}
 	}
-	&[class*="-8"] {
+	&[class*="ugrid-8"] {
 		> * {
 			width: calc(100% / 8);
 		}
 	}
-	&[class*="-9"] {
+	&[class*="ugrid-9"] {
 		> * {
 			width: calc(100% / 9);
 		}
 	}
-	&[class*="-10"] {
+	&[class*="ugrid-10"] {
 		> * {
 			width: 10%;
 		}
 	}
-	&[class*="-11"] {
+	&[class*="ugrid-11"] {
 		> * {
 			width: calc(100% / 11);
 		}
 	}
-	&[class*="-12"] {
+	&[class*="ugrid-12"] {
 		> * {
 			width: calc(100% / 12);
 		}
@@ -559,7 +559,18 @@ input, fieldset {
 .bottom-64 {
 	bottom: 64px !important;
 }
-//nsubfooter buttons
+.max-1000 {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+.max-1030 {
+	max-width: 1030px;
+	margin: 0 auto;
+}
+.max-1060 {
+	max-width: 1060px;
+	margin: 0 auto;
+}
 .full-x,
 .full-width {
 	width: 100%!important;
