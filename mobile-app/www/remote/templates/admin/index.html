@@ -83,7 +83,7 @@
                         <!-- <div class='admin-states flex-wrap-start full-xy' ng-if='!selected_scene.tabIndex'> -->
                             <div class='admin-states-header'>
                                 <h1>Fluid States</h1>
-                                <div>{{selected_scene.states.length || '0'}} total</div>
+                                <div>{{selected_scene.element_states.fluid.length || '0'}} total</div>
                             </div>
                             <div class='admin-states-container'>
                                 <ul>
@@ -97,29 +97,90 @@
                                         <h1>Description</h1>
                                     </li>
                                     <li>
-                                        <h1>Assigned to</h1>
+                                        <h1>Estimated Time</h1>
                                     </li>
                                     <li>
-                                        <h1>Estimated Time</h1>
+                                        <h1>Progress</h1>
                                     </li>
                                 </ul>
                                 <ul>
                                     <li>
-                                        <ul>
-                                            <li><span>0</span></li>
-                                            <li>onEnter</li>
-                                            <li>elements enter the scene</li>
-                                            <li>Gabrielle</li>
-                                            <li>-</li>
+                                        <ul ng-show="page.toggles.showAddState">
+                                            <li class='opacity-50' ng-click='page.toggles.showAddState = !page.toggles.showAddState'>Close</li>
+                                            <li class='p20x'> <input class='p10xy full-x text-center'placeholder="name" ng-model="newScene.name"/> </input></li>
+                                            <li class='relative'> <textarea rows="2" placeholder="add description here" class='absolute top-0 left-0 full-xy text-center' ng-model="newScene.description"> </textarea></li>
+                                            <li> <input class='full-x p10xy' type="number" placeholder="time (minutes)" min="0" max="59" ng-model="newScene.estimated_time"> </input> </li>
+                                            <li ng-click='createStateElement(newScene, selected_scene, "fluid")' class='flex-wrap-center'> <span class='full-xy p10y'> Save </span> </li>
                                         </ul>
-                                        <div>
+                                    </li>
+                                    <li ng-repeat="scene in selected_scene.element_states.fluid">
+                                        <ul>
+                                            <li><span>{{$index + 1}}</span></li>
+                                            <li ng-click='updateStateField("name", scene.name, scene, selected_scene, "fluid")'>{{scene.name}}</li>
+                                            <li ng-click='updateStateField("description", scene.description, scene, selected_scene, "fluid")'>{{scene.description}}</li>
+                                            <li ng-click='updateStateField("estimated_time", scene.estimated_time, scene, selected_scene, "fluid")'>{{scene.estimated_time}} min</li>
+                                            <li ng-if='scene.substates && scene.substates.length' class='relative'>
+                                                <div class="checkbox-container" ng-class="{'complete': scene.complete, 'opacity-50': !scene.complete}">
+                                                    <div>
+                                                        <input ng-if='scene.complete' ng-model="scene.complete" ng-change="updateStateElement(scene, selected_scene, 'fluid', false)" type="checkbox" id="checkbox-item" checked/>
+                                                        <input ng-if='!scene.complete' type="checkbox" ng-change="updateStateElement(scene, selected_scene, 'fluid', false)" ng-model="scene.complete" id="checkbox-item" />
+                                                        <span>
+                                                            <svg viewBox="0 0 100 100">
+                                                                <path stroke="#FFFFFF" d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <a class='txt-charcoal weight-700 absolute right-0 p10right' ng-click="updateStateElement(scene, selected_scene, 'fluid', true)">
+                                                    x
+                                                </a>
+                                            </li>
+                                            <!-- <li>elements enter the scene</li>
+                                            <li>Gabrielle</li>
+                                            <li>-</li> -->
+                                        </ul>
+                                        <div ng-repeat="substate in scene.substates" ng-if='scene.substates && scene.substates.length'>
                                             <ul>
-                                                <li><span>1</span></li>
-                                                <li>-</li>
-                                                <li>as scene opens, guru head is already visible</li>
+                                                <li><span>{{$index + 1}}</span></li>
+                                                <li ng-click='updateSubStateField("name", substate.name, substate, scene, selected_scene, "fluid")'>{{substate.name}}</li>
+                                                <li ng-click='updateSubStateField("description", substate.description, substate, scene, selected_scene, "fluid")'>{{substate.description}}</li>
+                                                <li ng-click='updateSubStateField("estimated time", substate.estimated_time, substate, scene, selected_scene, "fluid")'>{{substate.estimated_time}} </li>
+                                                <!-- <li>as scene opens, guru head is already visible</li> -->
+                                                <li ng-click="toggleAndSync(substate)">
+
+                                                    <div class="checkbox-container" ng-class="{'complete': substate.complete, 'opacity-50': !substate.complete}">
+                                                        <div>
+                                                            <input ng-if='substate.complete' ng-model="substate.complete" ng-change="updateSubStateElement(substate, scene, selected_scene, 'fluid', false)" type="checkbox" id="checkbox-item" checked/>
+                                                            <input ng-if='!substate.complete' ng-change="updateSubStateElement(substate, scene, selected_scene, 'fluid', false)" ng-model="substate.complete" type="checkbox" id="checkbox-item" />
+                                                            <span>
+                                                                <svg viewBox="0 0 100 100">
+                                                                    <path ng-if='substate.complete' stroke="#FFFFFF" d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <a class='high-z-index txt-charcoal weight-700 absolute right-0 p10right' ng-click='updateSubStateElement(substate, scene, selected_scene, "fluid", true)'>
+                                                        <h1> x </h1>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div>
+                                            <ul ng-show='page.toggles.showAddSubtate && page.toggles.showAddSubtate === scene.ref'>
+                                                <li ng-click="page.toggles.showAddSubtate = !page.toggles.showAddSubtate && scene.ref;"><span>Close</span> </li>
+                                                <li class='p20x'> <input class='p10xy full-x text-center'placeholder="name" ng-model="newSubScene.name"/> </input></li>
+                                                <li class='relative'> <textarea rows="2" placeholder="add description here" class='absolute top-0 left-0 full-xy text-center' ng-model="newSubScene.description"> </textarea></li>
+                                                <li> <input class='full-x p10xy' type="number" placeholder="time (minutes)" min="0" max="59" ng-model="newSubScene.estimated_time"> </input> </li>
+                                                <li class='flex-wrap-center'> <a ng-click='createSubsceneElement(newSubScene, scene, selected_scene, "fluid")'> Save </a> </li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul>
+                                                <li><a ng-click="page.toggles.showAddState = !page.toggles.showAddState">Add State</a></li>
+                                                <li><a ng-click="page.toggles.showAddSubtate = !page.toggles.showAddSubtate && scene.ref;">Add Substate</a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- <div>
                                             <ul>
                                                 <li><span>2</span></li>
                                                 <li>vanishIn</li>
@@ -161,14 +222,9 @@
                                                 <li>school pennant bounceDownIn to device top</li>
                                             </ul>
                                         </div>
-                                        <div>
-                                            <ul>
-                                                <li><a>Add State</a></li>
-                                                <li><a>Add Substate</a></li>
-                                            </ul>
-                                        </div>
+                                        -->
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <ul>
                                             <li><span>x</span></li>
                                             <li>adlibs</li>
@@ -264,8 +320,8 @@
                                         </div>
                                         <div>
                                             <ul>
-                                                <li><a>Add State</a></li>
-                                                <li><a>Add Substate</a></li>
+                                                <li><a ng-click='toggleAddState = !toggleAddState'>Add State</a></li>
+                                                <li><a ng-click='toggleAddSubState = !toggleAddSubState'>Add Substate</a></li>
                                             </ul>
                                         </div>
                                     </li>
@@ -307,38 +363,12 @@
                                         </div>
                                         <div>
                                             <ul>
-                                                <li><a>Add State</a></li>
+                                                <li><a ng-click="addSceneState()">Add State</a></li>
                                                 <li><a>Add Substate</a></li>
                                             </ul>
                                         </div>
                                     </li>
-                                </ul>
-                                <ul class='active'>
-                                    <li ng-repeat='state in selected_scene.element_states.fluid'>
-                                        <ul>
-                                            <li><span>{{state.index}}</span></li>
-                                            <li>{{state.name}}</li>
-                                            <li>{{state.description}}</li>
-                                            <li>{{state.assigned}}</li>
-                                            <li>{{state.estimated_time}} minutes</li>
-                                        </ul>
-                                        <div ng-if='state.substates && state.substates.length' ng-repeat="substate in state.substates">
-                                            <ul>
-                                                <li><span>{{$index + 1}}</span></li>
-                                                <li>{{substate.name}}</li>
-                                                <li>{{substate.description}}</li>
-                                                <li></li>
-                                                <li>{{substate.estimated_time}} minutes</li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <ul>
-                                                <li><a>Add State</a></li>
-                                                <li><a>Add Substate</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
+                                </ul> -->
                             </div>
                         </div>
                         <div class='admin-states flex-wrap-start full-xy' ng-if='selected_scene.tabIndex === 2'>
