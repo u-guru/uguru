@@ -1057,7 +1057,7 @@ input, fieldset {
   flex-flow: row wrap;
 }
 
-[class*="flex"][class*="flex-center"]:not(.flex-center-vertical) {
+[class*="flex"][class*="-center"]:not(.flex-center-vertical) {
   -webkit-flex-direction: row;
   flex-direction: row;
   -webkit-align-items: center;

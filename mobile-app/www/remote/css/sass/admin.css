@@ -2094,6 +2094,226 @@
   font-weight: 600;
 }
 
+#admin .admin-states.admin-states-jason .admin-states-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul {
+  width: 2100px;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:first-child li, #admin .admin-states.admin-states-jason .admin-states-container > ul.title li {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 70px;
+  text-align: center;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:first-child li h1, #admin .admin-states.admin-states-jason .admin-states-container > ul.title li h1 {
+  width: 100%;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:first-child li:nth-child(1), #admin .admin-states.admin-states-jason .admin-states-container > ul.title li:nth-child(1) {
+  width: 150px;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:first-child li:nth-child(2), #admin .admin-states.admin-states-jason .admin-states-container > ul.title li:nth-child(2) {
+  width: 200px;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(3), #admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(4), #admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(5) {
+  position: relative;
+  width: 490px;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(3):after, #admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(4):after, #admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(5):after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 10;
+  left: 5px;
+  bottom: -1px;
+  width: calc(100% - 10px);
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(3) > div, #admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(4) > div, #admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(5) > div {
+  width: 24px;
+  height: 24px;
+  margin: 5px auto;
+  background-position: center;
+  background-size: cover;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(3) > div {
+  background: url(../../img/browsers/chrome_256x256.png) no-repeat center center/cover, url(/static/remote/img/browsers/chrome_256x256.png) center/cover no-repeat;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(4) > div {
+  background: url(../../img/browsers/firefox_256x256.png) no-repeat center center/cover, url(/static/remote/img/browsers/firefox_256x256.png) center/cover no-repeat;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(5) > div {
+  background: url(../../img/browsers/safari_256x256.png) no-repeat center center/cover, url(/static/remote/img/browsers/safari_256x256.png) center/cover no-repeat;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(6), #admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(7) {
+  position: relative;
+  width: 140px;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(6):after, #admin .admin-states.admin-states-jason .admin-states-container > ul.title:first-child li:nth-child(7):after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 10;
+  left: 5px;
+  bottom: -1px;
+  width: calc(100% - 10px);
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:last-child li {
+  width: 100%;
+  font-size: 14px;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:last-child li ul {
+  width: 100%;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:last-child li ul li {
+  width: 70px;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:last-child li ul li:nth-child(1) {
+  width: 150px;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:last-child li ul li:nth-child(2) {
+  width: 200px;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:last-child li .checkbox-container > div input:checked + span {
+  background: #43cb9d;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:last-child li .checkbox-container.pass > div > span {
+  background: #43cb9d;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:last-child li .checkbox-container.pass > div > span svg * {
+  stroke: white;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:last-child li .checkbox-container.fail > div > span {
+  background: #d3242c;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:last-child li .checkbox-container.fail > div > span svg {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:last-child li .checkbox-container.fail > div > span svg * {
+  stroke: white;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:last-child li .checkbox-container.unsure > div > span {
+  background: #F6C64E;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:last-child li .checkbox-container.unsure > div > span svg * {
+  stroke: white;
+}
+
+#admin .admin-states.admin-states-jason .admin-states-container > ul:last-child li div {
+  width: auto !important;
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(1) li:not(:nth-child(3)) {
+  width: calc(100% / 6);
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(1) li:nth-child(1) {
+  width: calc(100% / 12);
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(1) li:nth-child(2) {
+  width: calc(100% / 12 * 3);
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(1) li:nth-child(3) {
+  width: calc(100% / 3);
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > ul > li:not(:nth-child(3)) {
+  width: calc(100% / 6);
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > ul > li:nth-child(1), #admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > ul > li:nth-child(5), #admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > ul > li:nth-child(6) {
+  width: calc(100% / 12);
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > ul > li:nth-child(2) {
+  width: calc(100% / 12 * 3);
+  font-weight: 700;
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > ul > li:nth-child(3) {
+  width: calc(100% / 3);
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  padding: 10px 15px;
+  text-align: left;
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > ul > li:nth-child(5):last-child {
+  width: calc(100% / 6);
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:not(:nth-child(3)) {
+  width: calc(100% / 6);
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(1), #admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(5), #admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(6) {
+  width: calc(100% / 12);
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(2) {
+  width: calc(100% / 12 * 3);
+  font-weight: 600;
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(3) {
+  width: calc(100% / 3);
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(3):last-child {
+  width: calc(100% / 3 * 2);
+}
+
+#admin .admin-states.admin-states-gabrielle .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(5):last-child {
+  width: calc(100% / 6);
+}
+
 #admin .admin-states .admin-states-container {
   width: 100%;
 }
@@ -2109,45 +2329,33 @@
   width: 100%;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(1) {
+#admin .admin-states .admin-states-container > ul:first-child, #admin .admin-states .admin-states-container > ul.title {
   background: #479391;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(1) li:not(:nth-child(3)) {
-  width: calc(100% / 6);
+#admin .admin-states .admin-states-container > ul:first-child li, #admin .admin-states .admin-states-container > ul.title li {
+  background: #479391;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(1) li:nth-child(1) {
-  width: calc(100% / 12);
-}
-
-#admin .admin-states .admin-states-container > ul:nth-child(1) li:nth-child(2) {
-  width: calc(100% / 12 * 3);
-}
-
-#admin .admin-states .admin-states-container > ul:nth-child(1) li:nth-child(3) {
-  width: calc(100% / 3);
-}
-
-#admin .admin-states .admin-states-container > ul:nth-child(1) li h1 {
+#admin .admin-states .admin-states-container > ul:first-child li h1, #admin .admin-states .admin-states-container > ul.title li h1 {
   font-size: 16px;
   font-weight: 600;
   padding: 5px;
   text-align: center;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) {
+#admin .admin-states .admin-states-container > ul:last-child {
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
   color: #40484B;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li {
+#admin .admin-states .admin-states-container > ul:last-child > li {
   width: 100%;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul {
+#admin .admin-states .admin-states-container > ul:last-child > li > ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -2158,7 +2366,7 @@
   width: 100%;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li {
+#admin .admin-states .admin-states-container > ul:last-child > li > ul > li {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -2181,28 +2389,7 @@
   padding: 10px 6px;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li:not(:nth-child(3)) {
-  width: calc(100% / 6);
-}
-
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li:nth-child(1) {
-  width: calc(100% / 12);
-}
-
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li:nth-child(2) {
-  width: calc(100% / 12 * 3);
-  font-weight: 700;
-}
-
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li:nth-child(3) {
-  width: calc(100% / 3);
-  -webkit-justify-content: flex-start;
-  justify-content: flex-start;
-  padding: 10px 15px;
-  text-align: left;
-}
-
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li:not(:nth-child(5)):after {
+#admin .admin-states .admin-states-container > ul:last-child > li > ul > li:not(:last-child):after {
   border-radius: 1000px;
   content: "";
   display: block;
@@ -2215,7 +2402,7 @@
   background: #a5d9d7;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > ul > li span {
+#admin .admin-states .admin-states-container > ul:last-child > li > ul > li > span, #admin .admin-states .admin-states-container > ul:last-child > li > ul > li a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -2234,20 +2421,36 @@
   margin: 0 auto;
   width: 36px;
   height: 36px;
-  background: #4ab3af;
   border-radius: 2px;
   color: white;
   font-size: 20px;
   font-weight: 600;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) {
+#admin .admin-states .admin-states-container > ul:last-child > li > ul > li > span {
+  background: #4ab3af;
+}
+
+#admin .admin-states .admin-states-container > ul:last-child > li > ul > li a {
+  background: #637074;
+}
+
+#admin .admin-states .admin-states-container > ul:last-child > li > ul > li a:hover, #admin .admin-states .admin-states-container > ul:last-child > li > ul > li a:focus {
+  background: #4ab3af;
+}
+
+#admin .admin-states .admin-states-container > ul:last-child > li > ul > li a:active {
+  background: #a5d9d7;
+  color: #457e7d;
+}
+
+#admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child) {
   position: relative;
   width: 100%;
   background: rgba(99, 112, 116, 0.2);
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child):not(:nth-last-child(2)):after {
+#admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child):not(:nth-last-child(2)):after {
   border-radius: 1000px;
   content: "";
   display: block;
@@ -2260,7 +2463,7 @@
   background: rgba(255, 255, 255, 0.4);
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul {
+#admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child) ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -2271,7 +2474,7 @@
   width: 100%;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li {
+#admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child) ul > li {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -2294,42 +2497,55 @@
   padding: 6px;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:not(:nth-child(3)) {
-  width: calc(100% / 6);
-}
-
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(1) {
-  width: calc(100% / 12);
-}
-
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(2) {
-  width: calc(100% / 12 * 3);
-  font-weight: 600;
-}
-
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(3) {
-  width: calc(100% / 3);
+#admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child) ul > li:nth-child(3) {
   -webkit-justify-content: flex-start;
   justify-content: flex-start;
   padding: 6px 15px;
   text-align: left;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li:nth-child(3):last-child {
-  width: calc(100% / 3 * 2);
-}
-
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:not(:last-child) ul > li span {
+#admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child) ul > li span, #admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child) ul > li a {
   color: rgba(64, 72, 75, 0.5);
   font-size: 18px;
   font-weight: 600;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child {
+#admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child) ul > li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 2px;
+}
+
+#admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child) ul > li a:hover, #admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child) ul > li a:focus {
+  background: #4ab3af;
+  color: white;
+}
+
+#admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child) ul > li a:active {
+  background: #a5d9d7;
+  color: #457e7d;
+}
+
+#admin .admin-states .admin-states-container > ul:last-child > li > div:last-child {
   width: 100%;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul {
+#admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -2350,11 +2566,11 @@
   background: rgba(74, 179, 175, 0.2);
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li {
+#admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li {
   padding: 7.5px;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li a {
+#admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li a {
   display: block;
   padding: 5px 10px;
   border-radius: 2px;
@@ -2363,30 +2579,30 @@
   font-weight: 600;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:first-child a {
+#admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:first-child a {
   background: #4ab3af;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:first-child a:hover, #admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:first-child a:focus {
+#admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:first-child a:hover, #admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:first-child a:focus {
   background: #a5d9d7;
   color: #457e7d;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:first-child a:active {
+#admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:first-child a:active {
   background: #457e7d;
   color: white;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:last-child a {
+#admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:last-child a {
   background: #7c8a8f;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:last-child a:hover, #admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:last-child a:focus {
+#admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:last-child a:hover, #admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:last-child a:focus {
   background: #bdc4c7;
   color: #5e696d;
 }
 
-#admin .admin-states .admin-states-container > ul:nth-child(2) > li > div:last-child ul li:last-child a:active {
+#admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:last-child a:active {
   background: #5e696d;
   color: white;
 }

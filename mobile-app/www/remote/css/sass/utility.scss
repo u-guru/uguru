@@ -852,7 +852,7 @@ input, fieldset {
 	&[class*="-wrap"] {
 		@include flex-wrap;
 	}
-	&[class*="flex-center"]:not(.flex-center-vertical) {
+	&[class*="-center"]:not(.flex-center-vertical) {
 		@include flex-center;
 	}
 	&[class*="center-vertical"] {
