@@ -36,7 +36,7 @@
 }
 
 /* ---------- VALIDATION */
-.validate > div.locked:after {
+.validate [class*="section-"].locked:after {
   content: "";
   display: block;
   position: absolute;
@@ -48,44 +48,48 @@
   background: rgba(99, 112, 116, 0.9);
 }
 
-.validate.guru > div.section-1 {
+.validate.guru [class*="section-"].section-1 {
   background: #50736f;
 }
 
-.validate.guru > div.section-2 {
+.validate.guru [class*="section-"].section-2 {
   background: #57837d;
 }
 
-.validate.guru > div.section-3 {
+.validate.guru [class*="section-"].section-3 {
   background: #5d938a;
 }
 
-.validate.guru > div.section-4 {
+.validate.guru [class*="section-"].section-4 {
   background: #63a398;
 }
 
-.validate.guru > div.section-5 {
+.validate.guru [class*="section-"].section-5 {
   background: #67aea1;
 }
 
-.validate.student > div.section-1 {
+.validate.student [class*="section-"].section-1 {
   background: #466d85;
 }
 
-.validate.student > div.section-2 {
+.validate.student [class*="section-"].section-2 {
   background: #497b9b;
 }
 
-.validate.student > div.section-3 {
+.validate.student [class*="section-"].section-3 {
   background: #4b89b1;
 }
 
-.validate.student > div.section-4 {
+.validate.student [class*="section-"].section-4 {
   background: #4e97c7;
 }
 
-.validate.student > div.section-5 {
+.validate.student [class*="section-"].section-5 {
   background: #4fa0d6;
+}
+
+.sidebar-list ul li {
+  min-width: 100px;
 }
 
 .sidebar-list ul li a h2 {
@@ -96,6 +100,7 @@
   content: "";
   display: block;
   position: absolute;
+  z-index: 9;
   top: 0;
   left: 0;
   width: 100%;
@@ -104,12 +109,8 @@
 }
 
 .sidebar-list.guru {
-  background: #69B3A5;
-  color: white;
-}
-
-.sidebar-list.guru header {
   background: #40484B;
+  color: white;
 }
 
 .sidebar-list.guru ul li.complete a .svg-white svg circle {
@@ -313,12 +314,11 @@
 }
 
 .sidebar-list.student {
-  background: #50A5DD;
+  background: #F1F1F1;
   color: white;
 }
 
 .sidebar-list.student header {
-  background: #F1F1F1;
   color: #40484B;
 }
 

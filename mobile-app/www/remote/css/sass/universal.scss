@@ -33,9 +33,10 @@
 		}
 	}
 }
+
 /* ---------- VALIDATION */
 .validate {
-	> div {
+	[class*="section-"] {
 		&.locked {
 			&:after {
 				content: "";
@@ -51,7 +52,7 @@
 		}
 	}
 	&.guru {
-		> div {
+		[class*="section-"] {
 			&.section-1 {
 				background: mix($slate, $shamrock, 60%);
 			}
@@ -70,7 +71,7 @@
 		}
 	}
 	&.student {
-		> div {
+		[class*="section-"] {
 			&.section-1 {
 				background: mix($slate, $lake, 60%);
 			}
@@ -92,6 +93,7 @@
 .sidebar-list {
 	ul {
 		li {
+			min-width: 100px;
 			a {
 				h2 {
 					width: calc(100% - 72px);
@@ -102,6 +104,7 @@
 					content: "";
 					display: block;
 					position: absolute;
+					z-index: 9;
 					top: 0;
 					left: 0;
 					width: 100%;
@@ -112,11 +115,8 @@
 		}
 	}
 	&.guru {
-		background: $shamrock;
+		background: $slate;
 		color: white;
-		header {
-			background: $slate;
-		}
 		ul {
 			li {
 				&.complete {
@@ -375,10 +375,9 @@
 		}
 	}
 	&.student {
-		background: $lake;
+		background: $smoke;
 		color: white;
 		header {
-			background: $smoke;
 			color: $slate;
 		}
 		ul {
