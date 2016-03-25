@@ -73,8 +73,10 @@ angular.module('uguru.util.controllers')
 
 		function getAdminElements() {
 			//Jason TRied
-			// var TravisToken = 'gHCrtop9ngfe4YygHesf'
 
+
+			// var TravisPublicToken = 'gHCrtop9ngfe4YygHesf'
+			   // var TravisProToken = 'xakhz7UAQCdBXfPWqDJNQg'
 			// var headers = 	{
 			// 					'Accept' : 'application/vnd.travis-ci.2+json',
 			// 					'User-Agent': 'Uguru/tests/1.0.0',
@@ -83,12 +85,30 @@ angular.module('uguru.util.controllers')
 			// 				}
 
 			// console.log(headers.Authorization)
-
-			// Restangular.setBaseUrl('https://api.travis-ci.com/repos/sinatra/sinatra/builds')
-			// Restangular.setDefaultHeaders(headers)
-			// Restangular.one('travis').get().then(function(datas)
+			// var headers = {
+			// 				'Authorization': 'token ' + TravisProToken 
+			// 			   }
+			// console.log("HEAD",headers)
+			// // Restangular.setBaseUrl('https://api.travis-ci.com/')
+			// // Restangular.setDefaultHeaders(headers)
+			// var reqTravis = Restangular.oneUrl('travis','https://api.travis-ci.com/',headers)
+			// Restangular.setDefaultHeaders(headers);
+			// // reqTravis.setDefaultHeaders({'Authorization': 'token ' + TravisProToken })
+			// reqTravis.one('config').get().then(function(datas)
 			// {
-			// 	console.log("WTF",datas)
+			// 	console.log("This is Config",datas.config)
+			// })
+			
+			// reqTravis.one('users').get().then(function(datas)
+			// {
+			// 	console.log("User",datas.login)
+			// 	console.log("User",datas.name)
+
+			// })
+			// reqTravis.one('accounts').get().then(function(datas)
+			// {
+			// 	console.log("accounts",datas)
+
 			// })
 
 			// Restangular.allUrl('travis', 'https://api.travis-ci.com/repos/sinatra/sinatra/builds').getList().then(function(datas)
@@ -104,22 +124,22 @@ angular.module('uguru.util.controllers')
 			// });
 			// $http({
 			// 		method: 'GET',
-			// 		url: 'https://api.travis-ci.com/',
-			// 		headers: 
-			// 			{
-			// 			  'Accept': 'application/vnd.travis-ci.2+json',
-			// 		  	  'Host': 'api.travis-ci.com',
-			// 		  	  'User-Agent': 'Uguru/tests/1.5.3',
-			// 		  	  'Authorization': 'token gHCrtop9ngfe4YygHesf'
-			// 			}
+			// 		url: 'https://api.travis-ci.com/'
+			// 		// headers: 
+			// 		// 	{
+			// 		// 	  'Accept': 'application/vnd.travis-ci.2+json',
+			// 		//   	  'Host': 'api.travis-ci.com',
+			// 		//   	  'User-Agent': 'Uguru/tests/1.5.3',
+			// 		//   	  'Authorization': 'token gHCrtop9ngfe4YygHesf'
+			// 		// 	}
 			// }).then(function successCallback(response) {
 			//     // this callback will be called asynchronously
 			//     // when the response is available
-			//     console.log(response)
+			//     console.log("SUC",response)
 			//   }, function errorCallback(response) {
 			//     // called asynchronously if an error occurs
 			//     // or server returns response with an error status.
-			//     console.log(response)
+			//     console.log("RP",response)
 
 			//   });
 			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(function(response){
