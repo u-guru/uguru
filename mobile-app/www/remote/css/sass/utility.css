@@ -10,6 +10,7 @@
   font-family: "Impact Label" !important;
 }
 
+/* ---------- DEFAULT STYLES */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -33,10 +34,28 @@ body, html {
 
 body {
   margin: 0 !important;
+  color: white;
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
   font-size: 24px;
+  background: #2B3234;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+body > section, body > div, body > main {
+  height: 100%;
+}
+
+::-webkit-selection {
+  background: rgba(117, 117, 117, 0.3);
+}
+
+::-moz-selection {
+  background: rgba(117, 117, 117, 0.3);
+}
+
+::selection {
+  background: rgba(117, 117, 117, 0.3);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -45,6 +64,10 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   line-height: 1.2 !important;
+}
+
+i {
+  font-style: normal;
 }
 
 em {
@@ -56,6 +79,11 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
   line-height: initial;
 }
 
+a, a:hover, a:active, a:visited {
+  color: white;
+  text-decoration: none;
+}
+
 a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   -webkit-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
@@ -63,6 +91,14 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   -moz-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
   cursor: pointer;
+}
+
+a svg *, button svg *, *[ng-click] svg *, *[tabindex] svg *, input[type=checkbox] svg * {
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
 
 .noselect {
@@ -78,6 +114,96 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 .icon {
   font-size: 16px;
   line-height: 1;
+}
+
+input, fieldset {
+  border: 0;
+}
+
+/* ---------- LAYOUTS */
+.lyt-1-3-header > header {
+  width: 100%;
+  height: calc(100% / 3);
+}
+
+.lyt-1-3-header > *:not(header) {
+  width: 100%;
+  height: calc(100% / 3 * 2);
+}
+
+.lyt-1-4-header > header {
+  width: 100%;
+  height: 25%;
+}
+
+.lyt-1-4-header > *:not(header) {
+  width: 100%;
+  height: 75%;
+}
+
+.lyt-1-3-sidebar {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.lyt-1-3-sidebar > aside {
+  width: calc(100% / 3);
+  height: 100%;
+}
+
+.lyt-1-3-sidebar > *:not(aside) {
+  width: calc(100% / 3 * 2);
+  height: 100%;
+}
+
+.lyt-reduced-header > header {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  width: 100%;
+  height: 50px;
+}
+
+.lyt-reduced-header > header h1 {
+  font-size: 20px;
+  text-transform: none;
+}
+
+.lyt-reduced-header > *:not(header) {
+  width: 100%;
+  height: calc(100% - 50px);
+}
+
+@media screen and (min-width: 768px) {
+  .lyt-reduced-header > header {
+    height: 100px;
+  }
+  .lyt-reduced-header > header h1 {
+    font-size: 36px;
+  }
+  .lyt-reduced-header > *:not(header) {
+    height: calc(100% - 100px);
+  }
 }
 
 [class*="ugrid-"] {
@@ -96,51 +222,51 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   flex-flow: row wrap;
 }
 
-[class*="ugrid-"][class*="-1"] > * {
+[class*="ugrid-"][class*="ugrid-1"] > * {
   width: 100%;
 }
 
-[class*="ugrid-"][class*="-2"] > * {
+[class*="ugrid-"][class*="ugrid-2"] > * {
   width: 50%;
 }
 
-[class*="ugrid-"][class*="-3"] > * {
+[class*="ugrid-"][class*="ugrid-3"] > * {
   width: calc(100% / 3);
 }
 
-[class*="ugrid-"][class*="-4"] > * {
+[class*="ugrid-"][class*="ugrid-4"] > * {
   width: 25%;
 }
 
-[class*="ugrid-"][class*="-5"] > * {
+[class*="ugrid-"][class*="ugrid-5"] > * {
   width: 20%;
 }
 
-[class*="ugrid-"][class*="-6"] > * {
+[class*="ugrid-"][class*="ugrid-6"] > * {
   width: calc(100% / 6);
 }
 
-[class*="ugrid-"][class*="-7"] > * {
+[class*="ugrid-"][class*="ugrid-7"] > * {
   width: calc(100% / 7);
 }
 
-[class*="ugrid-"][class*="-8"] > * {
+[class*="ugrid-"][class*="ugrid-8"] > * {
   width: calc(100% / 8);
 }
 
-[class*="ugrid-"][class*="-9"] > * {
+[class*="ugrid-"][class*="ugrid-9"] > * {
   width: calc(100% / 9);
 }
 
-[class*="ugrid-"][class*="-10"] > * {
+[class*="ugrid-"][class*="ugrid-10"] > * {
   width: 10%;
 }
 
-[class*="ugrid-"][class*="-11"] > * {
+[class*="ugrid-"][class*="ugrid-11"] > * {
   width: calc(100% / 11);
 }
 
-[class*="ugrid-"][class*="-12"] > * {
+[class*="ugrid-"][class*="ugrid-12"] > * {
   width: calc(100% / 12);
 }
 
@@ -559,6 +685,21 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   bottom: 64px !important;
 }
 
+.max-1000 {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.max-1030 {
+  max-width: 1030px;
+  margin: 0 auto;
+}
+
+.max-1060 {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
 .full-x,
 .full-width {
   width: 100% !important;
@@ -613,7 +754,7 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   height: 25%;
 }
 
-.fifth {
+.fifth, .one-fifth {
   height: 20%;
 }
 
@@ -663,7 +804,7 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   flex-flow: row wrap;
 }
 
-[class*="flex"][class*="-center"] {
+[class*="flex"][class*="-center"]:not(.flex-center-vertical) {
   -webkit-flex-direction: row;
   flex-direction: row;
   -webkit-align-items: center;
@@ -672,6 +813,13 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
+}
+
+[class*="flex"][class*="center-vertical"] {
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
 }
 
 [class*="flex"][class*="-start"] {
@@ -748,17 +896,116 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   flex-direction: column !important;
 }
 
-.text-left {
-  text-align: left;
+.radius-2 {
+  border-radius: 2px;
 }
 
-.text-right {
-  text-align: right;
+.radius-4 {
+  border-radius: 4px;
 }
 
-.text-center,
-.center {
-  text-align: center;
+.round {
+  border-radius: 1000px;
+}
+
+.svg-white svg {
+  display: block;
+}
+
+.svg-white svg * {
+  stroke: white !important;
+}
+
+.svg-36 svg {
+  width: 36px;
+  height: 36px;
+}
+
+.svg-48 svg {
+  width: 48px;
+  height: 48px;
+}
+
+.svg-64 svg {
+  width: 64px;
+  height: 64px;
+}
+
+.svg-72 svg {
+  width: 72px;
+  height: 72px;
+}
+
+.svg-84 svg {
+  width: 84px;
+  height: 84px;
+}
+
+.svg-96 svg {
+  width: 96px;
+  height: 96px;
+}
+
+.svg-128 svg {
+  width: 128px;
+  height: 128px;
+}
+
+.svg-stroke-1 * {
+  stroke-width: 1px;
+}
+
+.svg-stroke-2 * {
+  stroke-width: 2px;
+}
+
+.svg-stroke-3 * {
+  stroke-width: 3px;
+}
+
+.svg-stroke-4 * {
+  stroke-width: 4px;
+}
+
+.svg-stroke-5 * {
+  stroke-width: 5px;
+}
+
+.svg-stroke-6 * {
+  stroke-width: 6px;
+}
+
+.svg-stroke-7 * {
+  stroke-width: 7px;
+}
+
+.svg-stroke-8 * {
+  stroke-width: 8px;
+}
+
+.svg-stroke-9 * {
+  stroke-width: 9px;
+}
+
+.svg-stroke-8 * {
+  stroke-width: 10px;
+}
+
+.underline-dashed {
+  text-decoration: none;
+  border-bottom: 2px dashed;
+}
+
+.text-left, .txt-left {
+  text-align: left !important;
+}
+
+.text-right, .txt-right {
+  text-align: right !important;
+}
+
+.text-center, .txt-center, .center {
+  text-align: center !important;
 }
 
 .space-1 {
@@ -773,49 +1020,61 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
   letter-spacing: 3px;
 }
 
+.line-height-1-2 {
+  line-height: 1.2 !important;
+}
+
 .lowercase {
-  text-transform: lowercase;
+  text-transform: lowercase !important;
 }
 
 .uppercase,
 [class*="caps"] {
-  text-transform: uppercase;
+  text-transform: uppercase !important;
 }
 
 .lettercase {
-  text-transform: capitalize;
+  text-transform: capitalize !important;
 }
 
 .txt-1, .txt-14 {
-  font-size: 14px;
+  font-size: 14px !important;
 }
 
 .txt-2, .txt-16 {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 
 .txt-3, .txt-18 {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 
 .txt-4, .txt-20 {
-  font-size: 20px;
+  font-size: 20px !important;
 }
 
 .txt-5, .txt-24 {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 
 .txt-6, .txt-28 {
-  font-size: 28px;
+  font-size: 28px !important;
 }
 
-.txt-7, .txt-36 {
-  font-size: 36px;
+.txt-7, .txt-32 {
+  font-size: 32px !important;
 }
 
-.txt-8, .txt-48 {
-  font-size: 48px;
+.txt-8, .txt-36 {
+  font-size: 36px !important;
+}
+
+.txt-9, .txt-48 {
+  font-size: 48px !important;
+}
+
+.txt-10, .txt-64 {
+  font-size: 64px !important;
 }
 
 .txt-charcoal {

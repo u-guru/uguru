@@ -321,72 +321,6 @@ h1:not(.verified) span:nth-child(2) {
   right: 0;
 }
 
-/* ---------- LAYOUTS */
-.lyt-1-3-header > header {
-  width: 100%;
-  height: calc(100% / 3);
-}
-
-.lyt-1-3-header > header + * {
-  width: 100%;
-  height: calc(100% / 3 * 2);
-}
-
-.lyt-1-3-sidebar > aside {
-  width: calc(100% / 3);
-  height: 100%;
-}
-
-.lyt-1-3-sidebar > aside + * {
-  width: calc(100% / 3 * 2);
-  height: 100%;
-}
-
-.lyt-reduced-header > header {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  width: 100%;
-  height: 50px;
-}
-
-.lyt-reduced-header > header h1 {
-  font-size: 20px;
-  text-transform: none;
-}
-
-.lyt-reduced-header > header + * {
-  width: 100%;
-  height: calc(100% - 50px);
-}
-
-@media screen and (min-width: 768px) {
-  .lyt-reduced-header > header {
-    height: 100px;
-  }
-  .lyt-reduced-header > header h1 {
-    font-size: 36px;
-  }
-  .lyt-reduced-header > header + * {
-    height: calc(100% - 100px);
-  }
-}
-
 /* ---------- BUTTONS AND INPUT */
 button, input, textarea {
   -webkit-appearance: none;
@@ -658,6 +592,10 @@ button {
   padding-left: 15px;
   padding-right: 15px;
   background: #69B3A5;
+}
+
+button.normal {
+  width: auto;
 }
 
 button:hover, button:focus {
@@ -2829,6 +2767,30 @@ progress[class*="txt-gold"]::-moz-progress-bar, div[class="progress"][class*="tx
   stroke: #e6389b;
 }
 
+.impact-meter {
+  display: block;
+}
+
+.impact-meter svg {
+  display: block;
+}
+
+.impact-meter svg path {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.impact-meter[data-impact="1"] svg path:nth-child(1) {
+  fill: white;
+}
+
+.impact-meter[data-impact="2"] svg path:nth-child(1), .impact-meter[data-impact="2"] svg path:nth-child(2) {
+  fill: #F6C64E;
+}
+
+.impact-meter[data-impact="3"] svg path {
+  fill: #43cb9d;
+}
+
 /* ---------- RANGE INPUTS */
 input[type=range] {
   -webkit-appearance: none;
@@ -3106,7 +3068,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 /* ---------- USER ICONS */
-.user-icon, .user-icon-64, .user-icon-32 {
+[class*="user-icon"] {
   border-radius: 1000px;
   display: block;
   margin: 0 auto;
@@ -3118,6 +3080,18 @@ input[type=range]:focus::-ms-fill-upper {
   width: 128px;
   height: 128px;
   border: 5px solid white;
+}
+
+.user-icon-96 {
+  width: 96px;
+  height: 96px;
+  border: 4px solid white;
+}
+
+.user-icon-72 {
+  width: 72px;
+  height: 72px;
+  border: 3px solid white;
 }
 
 .user-icon-64 {
@@ -4224,6 +4198,39 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 /* ---------- CARDS */
+[class*="tile-border"] li {
+  position: relative;
+}
+
+[class*="tile-border"] li:not(:last-child):after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+}
+
+[class*="tile-border"][class*="tile-border-side"] li:after {
+  right: -1px;
+  top: 15px;
+  height: calc(100% - 30px);
+  width: 2px;
+}
+
+[class*="tile-border"][class*="tile-border-bottom"] li:after {
+  bottom: -1px;
+  left: 15px;
+  width: calc(100% - 30px);
+  height: 2px;
+}
+
+[class*="tile-border"][class*="dark"] li:after {
+  background: rgba(64, 72, 75, 0.2);
+}
+
+[class*="tile-border"][class*="light"] li:after {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 .pf-card-group {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -9893,14 +9900,13 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   align-content: center;
   -webkit-align-items: center;
   align-items: center;
-  background: #576267;
   margin-right: 15px;
   border: 0;
   color: white !important;
 }
 
-.tag-list .chip:hover, .pf-tags .chip:hover {
-  background: #637074;
+.tag-list .chip:not([class*="bg"]), .pf-tags .chip:not([class*="bg"]) {
+  background: #576267;
 }
 
 .tag-list .chip svg, .pf-tags .chip svg {
@@ -9934,6 +9940,10 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
 
 .tag-list .chip input:-ms-input-placeholder, .pf-tags .chip input:-ms-input-placeholder {
   color: white !important;
+}
+
+.tag-list a.chip:hover, .pf-tags a.chip:hover {
+  background: #637074;
 }
 
 .tag-list ul, .pf-tags ul {

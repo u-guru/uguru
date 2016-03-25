@@ -137,12 +137,29 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/team',
         templateUrl: BASE + 'templates/team.html'
   }).
+<<<<<<< HEAD
 
+=======
+  
+  // gabrielle new states, can remove if needed
+>>>>>>> d2edcc81196e8d3b8f26f9587aa0d580c290520f
   state('root.build', {
         url: '/build',
         templateUrl: BASE + 'templates/builder.html'
   }).
-
+  state('root.guru-validation', {
+        url: '/guru-validation',
+        templateUrl: BASE + 'templates/validation.guru.html'
+  }).
+  state('root.student-validation', {
+        url: '/student-validation',
+        templateUrl: BASE + 'templates/validation.student.html'
+  }).
+  state('root.my-requests', {
+        url: '/my-requests',
+        templateUrl: BASE + 'templates/student.requests.html'
+  }).
+  
   //start essay
   state('root.essay-student-university', {
         url: '/essay-student-university',
