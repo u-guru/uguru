@@ -3088,6 +3088,12 @@ input[type=range]:focus::-ms-fill-upper {
   border: 4px solid white;
 }
 
+.user-icon-84 {
+  width: 84px;
+  height: 84px;
+  border: 3px solid white;
+}
+
 .user-icon-72 {
   width: 72px;
   height: 72px;
@@ -3530,6 +3536,10 @@ input[type=range]:focus::-ms-fill-upper {
   border: 10px solid transparent;
 }
 
+.tooltip.white div {
+  background: white;
+}
+
 .tooltip button {
   position: relative;
   z-index: 10;
@@ -3566,6 +3576,10 @@ input[type=range]:focus::-ms-fill-upper {
   border-bottom-color: rgba(255, 255, 255, 0.9);
 }
 
+.tooltip.tooltip-top.white div::after {
+  border-bottom-color: white;
+}
+
 .tooltip.tooltip-bottom div::after {
   position: absolute;
   left: 50%;
@@ -3576,6 +3590,10 @@ input[type=range]:focus::-ms-fill-upper {
   transform: translateX(-50%);
   bottom: -20px;
   border-top-color: rgba(255, 255, 255, 0.9);
+}
+
+.tooltip.tooltip-bottom.white div::after {
+  border-top-color: white;
 }
 
 .tooltip.tooltip-bottom button::after {
@@ -3615,6 +3633,10 @@ input[type=range]:focus::-ms-fill-upper {
   border-right-color: rgba(255, 255, 255, 0.9);
 }
 
+.tooltip.tooltip-left.white div::after {
+  border-right-color: white;
+}
+
 .tooltip.tooltip-right div::after {
   position: absolute;
   top: 50%;
@@ -3625,6 +3647,10 @@ input[type=range]:focus::-ms-fill-upper {
   transform: translateY(-50%);
   right: -20px;
   border-left-color: rgba(255, 255, 255, 0.9);
+}
+
+.tooltip.tooltip-right.white div::after {
+  border-left-color: white;
 }
 
 /* ---------- COLOR PICKER */
@@ -4553,14 +4579,14 @@ input[type=range]:focus::-ms-fill-upper {
 .credit-card .credit-card-inside .credit-card-default svg {
   display: block;
   height: 30px;
-  fill: none;
-  stroke: white;
-  stroke-width: 5px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: white;
   margin-right: -5px;
   margin-bottom: -5px;
+}
+
+.credit-card .credit-card-inside .credit-card-default svg * {
+  stroke-width: 5px;
+  stroke: white !important;
+  fill: white !important;
 }
 
 .credit-card.edit .credit-card-inside .edit {
@@ -4588,11 +4614,15 @@ input[type=range]:focus::-ms-fill-upper {
   margin-right: 15px;
 }
 
-.credit-card.edit .credit-card-inside, .credit-card.short .credit-card-inside {
+.credit-card.edit .credit-card-inside, .credit-card.short .credit-card-inside, .credit-card.x-short .credit-card-inside {
   -webkit-align-content: center;
   align-content: center;
   -webkit-align-items: center;
   align-items: center;
+}
+
+.credit-card.x-short .credit-card-inside {
+  padding: 10px;
 }
 
 .credit-card-back {
@@ -4649,6 +4679,8 @@ input[type=range]:focus::-ms-fill-upper {
   border-radius: 2px;
   font-size: 16px;
   font-weight: 600;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .credit-card-back ul li button.remove {

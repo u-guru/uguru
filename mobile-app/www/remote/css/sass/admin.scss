@@ -709,7 +709,6 @@
 }
 
 /* ---------- DASHBOARD */
-
 [class*="user-icon"] {
 	&.jeselle {
 		background-image: url('https://uguru.me/static/web/images/team/jeselle.png')!important;
@@ -1911,6 +1910,63 @@
 					width: calc(100% - 30px);
 					height: 2px;
 					background: rgba(mix($shamrock, $lake), .2);
+				}
+			}
+		}
+	}
+	
+	// html
+	.admin-html {
+		h2 {
+			width: 100%;
+			padding: 15px 15px 5px;
+			font-weight: 600;
+			font-size: 24px;
+		}
+		ul {
+			@include flex;
+			@include flex-wrap;
+			width: 100%;
+			padding: 7.5px;
+			margin-top: -15px;
+			&.no-input {
+				li {
+					span {
+						@include flex;
+						@include flex-center;
+						height: 34px;
+						font-family: "Source Code Pro", monospace!important;
+						font-size: 14px;
+						font-weight: 600;
+					}
+				}
+			}
+			li {
+				padding: 7.5px;
+				span {
+					display: block;
+					padding: 5px 10px;
+					color: $slate;
+					&:not([class*="bg-"]) {
+						background: white;
+					}
+					&[class*="bg-"] {
+						color: white;
+						input {
+							color: white;
+						}
+					}
+					&:not([class*="weight-"]) {
+						weight: 600;
+						input {
+							font-weight: 600;
+						}
+					}
+				}
+				input {
+					background: none;
+					font-family: "Source Code Pro", monospace!important;
+					cursor: text;
 				}
 			}
 		}

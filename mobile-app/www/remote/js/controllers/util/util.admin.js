@@ -22,7 +22,7 @@ angular.module('uguru.util.controllers')
 				createObjects: AdminContent.getBaseObjects($scope),
 				defaults: {
 					tabsIndex: 0,
-					sidebarIndex: 1
+					sidebarIndex: 2
 				}
 			}
 			// $scope.selected_component = $scope.page.components[4];

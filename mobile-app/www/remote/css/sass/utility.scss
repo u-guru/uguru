@@ -12,6 +12,31 @@
 	font-family: "Impact Label"!important;
 }
 
+.source-code {
+	font-family: "Source Code Pro", monospace!important;
+	* {
+		font-family: "Source Code Pro", monospace!important;
+	}
+}
+
+.guru-head, .guru-head svg {
+	display: block;
+	width: 150px;
+	height: 150px;
+}
+
+@media screen and (max-width: 768px) {
+	.desktop-only {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.mobile-only {
+		display: none;
+	}
+}
+
 /* ---------- DEFAULT STYLES */
 * {
 	@include prefix(box-sizing, border-box, webkit moz);
@@ -83,6 +108,15 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 }
 input, fieldset {
 	border: 0;
+}
+
+.no-scrollbar {
+	&::-webkit-scrollbar { 
+		display: none; 
+	}
+	&::-moz-scrollbar { 
+		display: none; 
+	}
 }
 
 /* ---------- LAYOUTS */
@@ -359,7 +393,7 @@ input, fieldset {
 	padding-left: 0;
 	padding-right: 0;
 }
-.padding-15-grid {
+.p15-grid {
 	padding: 7.5px;
 	> * {
 		padding: 7.5px;
@@ -556,6 +590,33 @@ input, fieldset {
 .right-0 {
 	right: 0!important;
 }
+
+.top-50 {
+	top: 50%!important;
+}
+.bottom-50 {
+	bottom: 50%!important;
+}
+.left-50 {
+	left: 50%!important;
+}
+.right-50 {
+	right: 50%!important;
+}
+
+.top-100 {
+	top: 100%!important;
+}
+.bottom-100 {
+	bottom: 100%!important;
+}
+.left-100 {
+	left: 100%!important;
+}
+.right-50 {
+	right: 100%!important;
+}
+
 .bottom-64 {
 	bottom: 64px !important;
 }
@@ -693,6 +754,9 @@ input, fieldset {
 .radius-4 {
 	border-radius: 4px;
 }
+.radius-10 {
+	border-radius: 10px;
+}
 .round {
 	@include round;
 }
@@ -749,52 +813,52 @@ input, fieldset {
 }
 .svg-stroke-1 {
 	* {
-		stroke-width: 1px;
+		stroke-width: 1px!important;
 	}
 }
 .svg-stroke-2 {
 	* {
-		stroke-width: 2px;
+		stroke-width: 2px!important;
 	}
 }
 .svg-stroke-3 {
 	* {
-		stroke-width: 3px;
+		stroke-width: 3px!important;
 	}
 }
 .svg-stroke-4 {
 	* {
-		stroke-width: 4px;
+		stroke-width: 4px!important;
 	}
 }
 .svg-stroke-5 {
 	* {
-		stroke-width: 5px;
+		stroke-width: 5px!important;
 	}
 }
 .svg-stroke-6 {
 	* {
-		stroke-width: 6px;
+		stroke-width: 6px!important;
 	}
 }
 .svg-stroke-7 {
 	* {
-		stroke-width: 7px;
+		stroke-width: 7px!important;
 	}
 }
 .svg-stroke-8 {
 	* {
-		stroke-width: 8px;
+		stroke-width: 8px!important;
 	}
 }
 .svg-stroke-9 {
 	* {
-		stroke-width: 9px;
+		stroke-width: 9px!important;
 	}
 }
-.svg-stroke-8 {
+.svg-stroke-10 {
 	* {
-		stroke-width: 10px;
+		stroke-width: 10px!important;
 	}
 }
 // TEXT STYLES
@@ -1615,4 +1679,65 @@ input, fieldset {
 }
 .bg-in {
 	background: $instagram;
+}
+
+.border-charcoal {
+	border-color: $charcoal!important;
+}
+.border-slate {
+	border-color: $slate!important;
+}
+.border-taupe {
+	border-color: $taupe!important;
+}
+.border-campus {
+	border-color: $campus!important;
+}
+.border-smoke {
+	border-color: $smoke!important;
+}
+.border-white {
+	border-color: white!important;
+}
+.border-rocket {
+	border-color: $rocket!important;
+}
+.border-shamrock {
+	border-color: $shamrock!important;
+}
+.border-robin {
+	border-color: $robin!important;
+}
+.border-lake {
+	border-color: $lake!important;
+}
+.border-moxie {
+	border-color: $moxie!important;
+}
+.border-crimson {
+	border-color: $crimson!important;
+}
+.border-auburn, .border-delivery {
+	border-color: $auburn!important;
+}
+.border-orange, .border-freelacing {
+	border-color: $orange!important;
+}
+.border-gold, .border-baking {
+	border-color: $gold!important;
+}
+.border-moola, .border-photography {
+	border-color: $moola!important;
+}
+.border-azure, .border-tech {
+	border-color: $azure!important;
+}
+.border-cobalt, .border-household {
+	border-color: $cobalt!important;
+}
+.border-eggplant, .border-athletic {
+	border-color: $eggplant!important;
+}
+.border-cerise, .border-academic {
+	border-color: $cerise!important;
 }

@@ -1,5 +1,38 @@
 @import 'mixin';
 
+/* ---------- WALLET */
+#wallet {
+	.wallet-container {
+		position: relative;
+		&:only-child {
+			margin: 0 auto;
+		}
+		.wallet {
+			height: 100%;
+		}
+		button {
+			position: absolute;
+			z-index: 10;
+			top: 50%;
+			left: 22%;
+			width: auto;
+			padding-left: 15px;
+			padding-right: 15px;
+			height: 52px;
+			border-radius: 2px;
+			background: white;
+			font-size: 18px;
+			color: $moxie;
+			&:hover, &:focus {
+				background: $taupe;
+				color: white;
+			}
+			&:active {
+				background: #A09684;
+			}
+		}
+	}
+}
 /* ---------- VALIDATION */
 .validate {
 	> div {

@@ -2800,6 +2800,87 @@
   background: rgba(93, 172, 193, 0.2);
 }
 
+#admin .admin-html h2 {
+  width: 100%;
+  padding: 15px 15px 5px;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+#admin .admin-html ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  width: 100%;
+  padding: 7.5px;
+  margin-top: -15px;
+}
+
+#admin .admin-html ul.no-input li span {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 34px;
+  font-family: "Source Code Pro", monospace !important;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#admin .admin-html ul li {
+  padding: 7.5px;
+}
+
+#admin .admin-html ul li span {
+  display: block;
+  padding: 5px 10px;
+  color: #40484B;
+}
+
+#admin .admin-html ul li span:not([class*="bg-"]) {
+  background: white;
+}
+
+#admin .admin-html ul li span[class*="bg-"] {
+  color: white;
+}
+
+#admin .admin-html ul li span[class*="bg-"] input {
+  color: white;
+}
+
+#admin .admin-html ul li span:not([class*="weight-"]) {
+  weight: 600;
+}
+
+#admin .admin-html ul li span:not([class*="weight-"]) input {
+  font-weight: 600;
+}
+
+#admin .admin-html ul li input {
+  background: none;
+  font-family: "Source Code Pro", monospace !important;
+  cursor: text;
+}
+
 #admin .admin-details {
   padding: 7.5px;
 }

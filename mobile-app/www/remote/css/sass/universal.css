@@ -1,3 +1,40 @@
+/* ---------- WALLET */
+#wallet .wallet-container {
+  position: relative;
+}
+
+#wallet .wallet-container:only-child {
+  margin: 0 auto;
+}
+
+#wallet .wallet-container .wallet {
+  height: 100%;
+}
+
+#wallet .wallet-container button {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 22%;
+  width: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 52px;
+  border-radius: 2px;
+  background: white;
+  font-size: 18px;
+  color: #43cb9d;
+}
+
+#wallet .wallet-container button:hover, #wallet .wallet-container button:focus {
+  background: #757575;
+  color: white;
+}
+
+#wallet .wallet-container button:active {
+  background: #A09684;
+}
+
 /* ---------- VALIDATION */
 .validate > div.locked:after {
   content: "";

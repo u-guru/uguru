@@ -1814,7 +1814,140 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="admin-reference admin-content-section" ng-if='page.layout.sections[2].tabs.index === 1'></div>
+                    <div class="admin-html admin-reference admin-content-section flex-wrap-start" ng-if='page.layout.sections[2].tabs.index === 1'>
+                    <!-- <div class="admin-html admin-reference admin-content-section flex-wrap-start" ng-if='!page.layout.sections[2].tabs.index'> -->
+                        <h2>Type &rarr; Weight</h2>
+                        <ul>
+        					<li>
+                                <span class="weight-200">.<input readonly="true" onclick="this.select()" size="10" value="weight-200"/></span>
+                            </li>
+                            <li>
+                                <span class="weight-300">.<input readonly="true" onclick="this.select()" size="10" value="weight-300"/></span>
+                            </li>
+                            <li>
+                                <span class="weight-400">.<input readonly="true" onclick="this.select()" size="10" value="weight-400"/></span>
+                            </li>
+                            <li>
+                                <span class="weight-600">.<input readonly="true" onclick="this.select()" size="10" value="weight-600"/></span>
+                            </li>
+        					<li>
+                                <span class="weight-700">.<input readonly="true" onclick="this.select()" size="10" value="weight-700"/></span>
+                            </li>
+                            <li>
+                                <span class="weight-900">.<input readonly="true" onclick="this.select()" size="10" value="weight-900"/></span>
+                            </li>
+            			</ul>
+                        
+                        <h2>Type &rarr; Alignment</h2>
+                        <ul class="ugrid-3">
+        					<li class="txt-left">
+                                <span>.<input readonly="true" onclick="this.select()" size="9" value="txt-left"/></span>
+                            </li>
+                            <li class="txt-center">
+                                <span>.<input readonly="true" onclick="this.select()" size="11" value="txt-center"/></span>
+                            </li>
+                            <li class="txt-right">
+                                <span>.<input readonly="true" onclick="this.select()" size="10" value="txt-right"/></span>
+                            </li>
+            			</ul>
+                        
+                        <div class="flex-wrap full-x">
+                            <div>
+                                <h2>Type &rarr; Spacing</h2>
+                                <ul>
+                					<li><span>.<input readonly="true" class="space-1" onclick="this.select()" size="8" value="space-1"/></span></li>
+                                    <li><span>.<input readonly="true" class="space-2" onclick="this.select()" size="9" value="space-2"/></span></li>
+                                    <li><span>.<input readonly="true" class="space-3" onclick="this.select()" size="10" value="space-3"/></span></li>
+                    			</ul>
+                            </div>
+                            
+                            <div>
+                                <h2>Type &rarr; Capitalization</h2>
+                                <ul>
+                                    <li><span>.<input readonly="true" class="lowercase" onclick="this.select()" size="9" value="lowercase"/></span></li>
+                                    <li><span>.<input readonly="true" class="caps" onclick="this.select()" size="4" value="caps"/></span></li>
+                                    <li><span>.<input readonly="true" class="lettercase" onclick="this.select()" size="10" value="lettercase"/></span></li>
+                    			</ul>
+                            </div>
+                            
+                            <div>
+                                <h2>Type &rarr; Line Height</h2>
+                                <ul>
+                                    <li><span>.<input readonly="true" class="line-height-1-2" onclick="this.select()" size="15" value="line-height-1-2"/></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <h2>Type &rarr; Sizes</h2>
+                        <ul>
+                            <li><span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-1"/></span></li>
+                            <li><span>.<input readonly="true" class="txt-16" onclick="this.select()" size="6" value="txt-2"/></span></li>
+                            <li><span>.<input readonly="true" class="txt-18" onclick="this.select()" size="6" value="txt-3"/></span></li>
+                            <li><span>.<input readonly="true" class="txt-20" onclick="this.select()" size="6" value="txt-4"/></span></li>
+                            <li><span>.<input readonly="true" class="txt-24" onclick="this.select()" size="6" value="txt-5"/></span></li>
+                            <li><span>.<input readonly="true" class="txt-28" onclick="this.select()" size="6" value="txt-6"/></span></li>
+                            <li><span>.<input readonly="true" class="txt-32" onclick="this.select()" size="6" value="txt-7"/></span></li>
+                            <li><span>.<input readonly="true" class="txt-36" onclick="this.select()" size="6" value="txt-8"/></span></li>
+                            <li><span>.<input readonly="true" class="txt-48" onclick="this.select()" size="6" value="txt-9"/></span></li>
+                            <li><span>.<input readonly="true" class="txt-64" onclick="this.select()" size="6" value="txt-10"/></span></li>
+                        </ul>
+                        
+                        <h2>Type &rarr; Colors</h2>
+                        <ul>
+                            <li><span class="bg-slate txt-smoke">.<input readonly="true" class="txt-smoke" onclick="this.select()" size="9" value="txt-smoke"/></span></li>
+                            <li><span class="bg-slate txt-white">.<input readonly="true" class="txt-white" onclick="this.select()" size="9" value="txt-white"/></span></li>
+                            <li><span class="txt-charcoal">.<input readonly="true" class="txt-charcoal" onclick="this.select()" size="12" value="txt-charcoal"/></span></li>
+                            <li><span class="txt-slate">.<input readonly="true" class="txt-slate" onclick="this.select()" size="9" value="txt-slate"/></span></li>
+                            <li><span class="txt-taupe">.<input readonly="true" class="txt-taupe" onclick="this.select()" size="9" value="txt-taupe"/></span></li>
+                            <li><span class="txt-campus">.<input readonly="true" class="txt-campus" onclick="this.select()" size="10" value="txt-campus"/></span></li>
+                            <li><span class="txt-shamrock">.<input readonly="true" class="txt-shamrock" onclick="this.select()" size="12" value="txt-shamrock"/></span></li>
+                            <li><span class="txt-robin">.<input readonly="true" class="txt-robin" onclick="this.select()" size="9" value="txt-robin"/></span></li>
+                            <li><span class="txt-lake">.<input readonly="true" class="txt-lake" onclick="this.select()" size="8" value="txt-lake"/></span></li>
+                            <li><span class="txt-moxie">.<input readonly="true" class="txt-moxie" onclick="this.select()" size="9" value="txt-moxie"/></span></li>
+                            <li><span class="txt-crimson">.<input readonly="true" class="txt-crimson" onclick="this.select()" size="11" value="txt-crimson"/></span></li>
+                            <li><span class="txt-auburn">.<input readonly="true" class="txt-auburn" onclick="this.select()" size="10" value="txt-auburn"/></span></li>
+                            <li><span class="txt-orange">.<input readonly="true" class="txt-orange" onclick="this.select()" size="10" value="txt-orange"/></span></li>
+                            <li><span class="txt-gold">.<input readonly="true" class="txt-gold" onclick="this.select()" size="8" value="txt-gold"/></span></li>
+                            <li><span class="txt-moola">.<input readonly="true" class="txt-moola" onclick="this.select()" size="9" value="txt-moola"/></span></li>
+                            <li><span class="txt-azure">.<input readonly="true" class="txt-azure" onclick="this.select()" size="9" value="txt-azure"/></span></li>
+        					<li><span class="txt-cobalt">.<input readonly="true" class="txt-lake" onclick="this.select()" size="10" value="txt-cobalt"/></span></li>
+                            <li><span class="txt-eggplant">.<input readonly="true" class="txt-eggplant" onclick="this.select()" size="12" value="txt-eggplant"/></span></li>
+                            <li><span class="txt-cerise">.<input readonly="true" class="txt-cerise" onclick="this.select()" size="10" value="txt-cerise"/></span></li>
+            			</ul>
+                        
+                        <h2>Background Colors</h2>
+                        <ul class="no-input">
+                            <li><span class="bg-charcoal-05p">-05p</span></li>
+                            <li><span class="bg-charcoal-10p">-10p</span></li>
+                            <li><span class="bg-charcoal-20p">-20p</span></li>
+                            <li><span class="bg-charcoal-25p">-25p</span></li>
+                            <li><span class="bg-charcoal-50p">-50p</span></li>
+                            <li><span class="bg-charcoal-75p">-75p</span></li>
+                            <li><span class="bg-charcoal-80p">-80p</span></li>
+                            <li><span class="bg-charcoal-90p">-90p</span></li>
+                        </ul>
+                        <ul>
+                            <li><span class="bg-smoke txt-slate">.<input readonly="true" class="txt-slate" onclick="this.select()" size="8" value="bg-smoke"/></span></li>
+                            <li><span class="bg-white txt-slate">.<input readonly="true" class="txt-slate" onclick="this.select()" size="8" value="bg-white"/></span></li>
+                            <li><span class="bg-charcoal">.<input readonly="true" onclick="this.select()" size="11" value="bg-charcoal"/></span></li>
+                            <li><span class="bg-slate">.<input readonly="true" onclick="this.select()" size="8" value="bg-slate"/></span></li>
+                            <li><span class="bg-taupe">.<input readonly="true" onclick="this.select()" size="8" value="bg-taupe"/></span></li>
+                            <li><span class="bg-campus">.<input readonly="true" onclick="this.select()" size="9" value="bg-campus"/></span></li>
+                            <li><span class="bg-shamrock">.<input readonly="true" onclick="this.select()" size="11" value="bg-shamrock"/></span></li>
+                            <li><span class="bg-robin">.<input readonly="true" onclick="this.select()" size="8" value="bg-robin"/></span></li>
+                            <li><span class="bg-lake">.<input readonly="true" onclick="this.select()" size="7" value="bg-lake"/></span></li>
+                            <li><span class="bg-moxie">.<input readonly="true" onclick="this.select()" size="8" value="bg-moxie"/></span></li>
+                            <li><span class="bg-crimson">.<input readonly="true" onclick="this.select()" size="10" value="bg-crimson"/></span></li>
+                            <li><span class="bg-auburn">.<input readonly="true" onclick="this.select()" size="9" value="bg-auburn"/></span></li>
+                            <li><span class="bg-orange">.<input readonly="true" onclick="this.select()" size="9" value="bg-orange"/></span></li>
+                            <li><span class="bg-gold">.<input readonly="true" onclick="this.select()" size="7" value="bg-gold"/></span></li>
+                            <li><span class="bg-moola">.<input readonly="true" onclick="this.select()" size="8" value="bg-moola"/></span></li>
+                            <li><span class="bg-azure">.<input readonly="true" onclick="this.select()" size="8" value="bg-azure"/></span></li>
+                            <li><span class="bg-cobalt">.<input readonly="true" onclick="this.select()" size="9" value="bg-cobalt"/></span></li>
+                            <li><span class="bg-eggplant">.<input readonly="true" onclick="this.select()" size="11" value="bg-eggplant"/></span></li>
+                            <li><span class="bg-cerise">.<input readonly="true" onclick="this.select()" size="9" value="bg-cerise"/></span></li>
+                        </ul>
+                    </div>
                     <div class="admin-colors admin-reference admin-content-section" ng-if='page.layout.sections[2].tabs.index === 2'>
                         <ul>
                             <li>
