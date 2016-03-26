@@ -8,7 +8,7 @@
         <h1>Offer a little cash?</h1>
         <h2>We’ll only charge you afterwards.</h2>
     </header>
-    <div>
+    <div class="max-830">
         <ul class="request-offer">
             <li>
                 <a ng-class="{'active': requestForm.price.selected === 0}" ng-click='requestForm.price.selected = 0;'>
@@ -59,31 +59,49 @@
             </div>
             <ul>
                 <li>
-                    <a class="request-card">
-                        <span class="card-icon"></span>
-                        <span>
-                            <span>&bull;&bull;&bull;&bull; 1234</span>
-                            <span class="default" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
-                        </span>
-                    </a>
+                    <div class="credit-card short">
+        				<svg width="240px" height="50px" viewBox="0 0 240 50">
+        					<rect fill="none" x="0" y="0" width="240" height="50"></rect>
+        				</svg>
+        				<div class="credit-card-inside">
+        					<div class="credit-card-row">
+        						<div class="credit-card-logo" ng-include="img_base + BASE + 'templates/cards/visa-white.html'"></div>
+        						<div class="credit-card-number">
+        							<span>&bull;&bull;&bull;&bull;</span><span>1234</span>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
                 </li>
                 <li>
-                    <a class="request-card">
-                        <span class="card-icon"></span>
-                        <span>
-                            <span>&bull;&bull;&bull;&bull; 1234</span>
-                            <span class="default" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
-                        </span>
-                    </a>
+                    <div class="credit-card short">
+        				<svg width="240px" height="50px" viewBox="0 0 240 50">
+        					<rect fill="none" x="0" y="0" width="240" height="50"></rect>
+        				</svg>
+        				<div class="credit-card-inside">
+        					<div class="credit-card-row">
+        						<div class="credit-card-logo" ng-include="img_base + BASE + 'templates/cards/visa-white.html'"></div>
+        						<div class="credit-card-number">
+        							<span>&bull;&bull;&bull;&bull;</span><span>1234</span>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
                 </li>
                 <li>
-                    <a class="request-card">
-                        <span class="card-icon"></span>
-                        <span>
-                            <span>&bull;&bull;&bull;&bull; 1234</span>
-                            <span class="default" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
-                        </span>
-                    </a>
+                    <div class="credit-card short">
+        				<svg width="240px" height="50px" viewBox="0 0 240 50">
+        					<rect fill="none" x="0" y="0" width="240" height="50"></rect>
+        				</svg>
+        				<div class="credit-card-inside">
+        					<div class="credit-card-row">
+        						<div class="credit-card-logo" ng-include="img_base + BASE + 'templates/cards/visa-white.html'"></div>
+        						<div class="credit-card-number">
+        							<span>&bull;&bull;&bull;&bull;</span><span>1234</span>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
                 </li>
             </ul>
         </div>

@@ -211,6 +211,1315 @@
 			overflow: auto;
 		}
 	}
+	&.bg-delivery {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $auburn;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $auburn;
+						}
+						&:before {
+							border-color: $auburn;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $auburn;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-freelancing {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $orange;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $orange;
+						}
+						&:before {
+							border-color: $orange;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $orange;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-baking {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $gold;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $gold;
+						}
+						&:before {
+							border-color: $gold;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $gold;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-photography {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $moola;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $moola;
+						}
+						&:before {
+							border-color: $moola;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $moola;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-tech {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $azure;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $azure;
+						}
+						&:before {
+							border-color: $azure;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $azure;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-household {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $cobalt;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $cobalt;
+						}
+						&:before {
+							border-color: $cobalt;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $cobalt;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-athletic {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $eggplant;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $eggplant;
+						}
+						&:before {
+							border-color: $eggplant;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $eggplant;
+						}
+					}
+				}
+			}
+		}
+	}
 	&.bg-academic {
 		> header {
 			.request-nav {
@@ -513,6 +1822,7 @@
 }
 .request-slide {
 	width: 100%;
+	height: 100%;
 	text-align: center;
 	header {
 		padding: 15px;
@@ -537,15 +1847,19 @@
 	}
 	&.request-categories {
 		position: relative;
+		overflow: hidden;
 		.request-category, .request-subcategory {
 			height: 100%;
 			background: $smoke;
 		}
 		.request-category {
-			ul {
+			overflow: hidden;
+			.request-category-tiles {
 				height: calc(100% - 87px);
-				li {
-					height: calc(100% / 3);
+				&.mobile {
+					li {
+						height: calc(100% / 3);
+					}
 				}
 			}
 		}
@@ -555,6 +1869,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
+			overflow: auto;
 			&:not(.selected) {
 				@include opacity(0);
 				z-index: -10;
@@ -562,24 +1877,30 @@
 			&.selected {
 				z-index: 10;
 			}
-			ul {
-				@include prefix(align-content, flex-start, webkit);
-				height: calc(100% - 87px - 64px);
-				li {
-					height: 20%;
-					a {
-						.card-icon {
-							width: 75px;
-							height: 75px;
-							svg {
-								* {
-									stroke-width: 3px;
-								}
-								&:not(.normalized) {
-									@include round;
-									background: rgba(white, .5);
+			.request-category-tiles {
+				.card-icon, .category-tile-icon {
+					svg {
+						&:not(.normalized) {
+							@include round;
+							background: rgba(white, .5);
+							* {
+								@include opacity(0);
+							}
+						}
+					}
+				}
+				&.mobile {
+					@include prefix(align-content, flex-start, webkit);
+					height: calc(100% - 87px - 64px);
+					li {
+						height: 20%;
+						a {
+							.card-icon {
+								width: 50px;
+								height: 50px;
+								svg {
 									* {
-										@include opacity(0);
+										stroke-width: 3px;
 									}
 								}
 							}
@@ -678,7 +1999,7 @@
 				}
 			}
 		}
-		ul {
+		.request-category-tiles.mobile {
 			@include flex;
 			@include flex-wrap;
 			border: 1px solid $smoke;
@@ -924,41 +2245,55 @@
 		> div {
 			padding-bottom: 64px;
 			> div {
-				h1 {
+				> h1 {
 					padding: 15px 15px 0;
 					color: $slate;
 					font-size: 16px;
 					font-weight: 600;
 					text-transform: uppercase;
 					text-align: left;
+					@media screen and (min-width: 768px) {
+						font-size: 20px;
+					}
 				}
 				&.request-courses {
-					ul {
-						@include flex;
-						@include flex-wrap;
-						padding: 14px;
-						margin-top: -5px;
-						li {
-							padding: 1px;
-							width: calc(100% / 3);
-							a {
-								display: block;
-								padding: 15px;
-								font-size: 18px;
-								font-weight: 600;
-								background: $lake;
-								border-radius: 2px;
-								border-bottom: 5px solid rgba(white, .3);
-								border-top: 5px solid transparent;
-								&:hover, &:focus {
-									background: mix($lake, white);
-									color: mix($lake, $slate);
-									border-bottom-color: rgba(mix($lake, $slate), .3);
+					.request-course-list {
+						&.desktop {
+							li {
+								.course-card {
+									> svg {
+										width: 100%;
+									}
 								}
-								&:active {
-									background: mix($lake, $slate);
-									color: white;
-									border-bottom-color: rgba(white, .3);
+							}
+						}
+						&.mobile {
+							@include flex;
+							@include flex-wrap;
+							padding: 14px;
+							margin-top: -5px;
+							li {
+								padding: 1px;
+								width: calc(100% / 3);
+								a {
+									display: block;
+									padding: 15px;
+									font-size: 18px;
+									font-weight: 600;
+									background: $lake;
+									border-radius: 2px;
+									border-bottom: 5px solid rgba(white, .3);
+									border-top: 5px solid transparent;
+									&:hover, &:focus {
+										background: mix($lake, white);
+										color: mix($lake, $slate);
+										border-bottom-color: rgba(mix($lake, $slate), .3);
+									}
+									&:active {
+										background: mix($lake, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
 								}
 							}
 						}
@@ -1191,6 +2526,27 @@
 					}
 				}
 			}
+			@media screen and (min-width: 768px) {
+				ul {
+					margin-top: -15px;
+					padding: 7.5px;
+					li {
+						padding: 7.5px;
+						a {
+							padding: 30px;
+							span {
+								&:first-child {
+									font-size: 24px;
+									margin-bottom: 5px;
+								}
+								&:last-child {
+									font-size: 20px;
+								}
+							}
+						}
+					}
+				}
+			}
 			.checkbox-container {
 				@include prefix(justify-content, flex-start, webkit);
 				padding: 10px 15px 15px;
@@ -1232,6 +2588,9 @@
 				input:focus {
 					border-bottom: 1px solid $lake;
 					box-shadow: 0 1px 0 0 $lake;
+				}
+				@media screen and (min-width: 768px) {
+					@include prefix(align-self, flex-start, webkit);
 				}
 			}
 		}
@@ -1327,6 +2686,32 @@
 								font-weight: 600;
 							}
 						}
+					}
+				}
+			}
+			@media screen and (min-width: 768px) {
+				.request-offer {
+					padding: 7.5px;
+					li {
+						padding: 7.5px;
+					}
+				}
+				.request-cards {
+					@include flex;
+					@include flex-center;
+					height: 250px;
+					.request-wallet {
+						height: 100%;
+						.wallet {
+							height: 100%;
+							width: auto;
+						}
+					}
+					ul {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						height: 100%;
 					}
 				}
 			}
@@ -1447,19 +2832,6 @@
 			}
 			.confirm-card {
 				padding: 15px;
-				.request-card {
-					@include flex;
-					@include flex-center-vertical;
-					@include prefix(justify-content, space-between, webkit);
-					background: $slate;
-					border-radius: 10px;
-					padding: 10px 15px;
-					height: 64px;
-					span {
-						font-size: 18px;
-						font-weight: 600;
-					}
-				}
 			}
 			.confirm-amount {
 				h3 {
@@ -1467,6 +2839,18 @@
 					font-size: 64px;
 					font-weight: 900;
 					padding-bottom: 15px;
+				}
+			}
+		}
+		@media screen and (min-width: 768px) {
+			> div {
+				@include flex;
+				@include flex-wrap;
+				a:first-child {
+					width: 100%;
+				}
+				a:not(:first-child) {
+					width: 50%;
 				}
 			}
 		}
@@ -1635,6 +3019,9 @@
 					&:hover, &:focus {
 						background: rgba($auburn, .2);
 					}
+				}
+				.chip {
+					background: $auburn!important;
 				}
 				.confirm-course {
 					&:hover, &:focus {
@@ -1829,6 +3216,9 @@
 						background: rgba($orange, .2);
 					}
 				}
+				.chip {
+					background: $orange!important;
+				}
 				.confirm-course {
 					&:hover, &:focus {
 						background: rgba($orange, .5);
@@ -2021,6 +3411,9 @@
 					&:hover, &:focus {
 						background: rgba($gold, .2);
 					}
+				}
+				.chip {
+					background: $gold!important;
 				}
 				.confirm-course {
 					&:hover, &:focus {
@@ -2215,6 +3608,9 @@
 						background: rgba($moola, .2);
 					}
 				}
+				.chip {
+					background: $moola!important;
+				}
 				.confirm-course {
 					&:hover, &:focus {
 						background: rgba($moola, .5);
@@ -2407,6 +3803,9 @@
 					&:hover, &:focus {
 						background: rgba($azure, .2);
 					}
+				}
+				.chip {
+					background: $azure!important;
 				}
 				.confirm-course {
 					&:hover, &:focus {
@@ -2601,6 +4000,9 @@
 						background: rgba($cobalt, .2);
 					}
 				}
+				.chip {
+					background: $cobalt!important;
+				}
 				.confirm-course {
 					&:hover, &:focus {
 						background: rgba($cobalt, .5);
@@ -2794,6 +4196,9 @@
 						background: rgba($eggplant, .2);
 					}
 				}
+				.chip {
+					background: $eggplant!important;
+				}
 				.confirm-course {
 					&:hover, &:focus {
 						background: rgba($eggplant, .5);
@@ -2986,6 +4391,9 @@
 					&:hover, &:focus {
 						background: rgba($cerise, .2);
 					}
+				}
+				.chip {
+					background: $cerise!important;
 				}
 				.confirm-course {
 					&:hover, &:focus {

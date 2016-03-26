@@ -459,6 +459,12 @@ button {
 	&.normal {
 		width: auto;
 	}
+	&.width-300 {
+		width: 300px;
+	}
+	&.width-400 {
+		width: 400px;
+	}
 	&.height-54 {
 		height: 54px
 	}
@@ -3903,7 +3909,7 @@ input[type=range] {
 				right: 0;
 				background: white;
 				padding: 5px 10px;
-				border-radius: 0 10px 0 10px;
+				border-radius: 0 9px 0 10px;
 				color: #394851;
 				font-size: 14px;
 				font-weight: 600;
@@ -5455,6 +5461,7 @@ input[type=range] {
 .course-card {
 	display: block;
 	position: relative;
+	text-align: center;
 	> svg {
 		background: white;
 		border-radius: 2px;
@@ -5518,7 +5525,7 @@ input[type=range] {
 		font-size: 18px;
 		font-weight: 600;
 		border-radius: 0 2px 0 16px;
-		overdlow: hidden;
+		overflow: hidden;
 		span {
 			@include flex;
 			@include flex-center;
@@ -5530,6 +5537,7 @@ input[type=range] {
 			border-radius: 0 2px 0 16px;
 		}
 		svg {
+			z-index: 11;
 			display: block;
 			width: 100%;
 			height: 100%;
@@ -5546,6 +5554,7 @@ input[type=range] {
 		z-index: 10;
 		width: 100%;
 		height: 100%;
+		cursor: pointer;
 		~ .course-card-count {
 			@include opacity(0);
 			span {
@@ -5878,6 +5887,7 @@ a.course-card {
 		background: rgba(lighten($slate, 15%), .7);
 		border-radius: 2px;
 		border-top: 5px solid transparent;
+		border-bottom: 5px solid white;
 		.category-tile-icon {
 			@include round;
 			width: 72px;
@@ -6065,6 +6075,9 @@ a.course-card {
 		}
 	}
 	&.no-photo {
+		&:not([class*="bg-"]) {
+			background-color: lighten($slate, 15%);
+		}
 		.category-tile-inside {
 			background: none;
 			border-bottom-color: white;
@@ -6813,6 +6826,7 @@ a.category-tile {
 .credit-tile {
 	width: 100%;
 	max-width: 350px;
+	border-radius: 2px;
 	ul {
 		li {
 			&:first-child {
@@ -6829,6 +6843,9 @@ a.category-tile {
 					margin: 0 auto;
 					width: 100px;
 					height: 100px;
+					* {
+						stroke: white;
+					}
 				}
 			}
 			&:last-child {
@@ -6836,7 +6853,7 @@ a.category-tile {
 				text-align: center;
 				h1 {
 					padding-bottom: 15px;
-					font-size: 52px;
+					font-size: 36px;
 					font-weight: 600;
 				}
 				button {
