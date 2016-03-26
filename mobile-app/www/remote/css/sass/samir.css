@@ -842,12 +842,6 @@ header#home-nav-header.splash-header,
   -webkit-perspective: 1000;
 }
 
-#home-splash ion-pane:not(#cta-modal-sidebar) {
-  width: calc(100% / 3 * 2) !important;
-  right: 0;
-  margin-left: calc(100% / 3) !important;
-}
-
 #request main #cta-modal-request-courses {
   z-index: 1000000 !important;
 }

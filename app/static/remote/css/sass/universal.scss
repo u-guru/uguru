@@ -1,5 +1,643 @@
 @import 'mixin';
 
+/* ---------- VALIDATION */
+.validate {
+	> div {
+		&.locked {
+			&:after {
+				content: "";
+				display: block;
+				position: absolute;
+				z-index: 10;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(lighten($slate, 15%), .9);
+			}
+		}
+	}
+	&.guru {
+		> div {
+			&.section-1 {
+				background: mix($slate, $shamrock, 60%);
+			}
+			&.section-2 {
+				background: mix($slate, $shamrock, 45%);
+			}
+			&.section-3 {
+				background: mix($slate, $shamrock, 30%);
+			}
+			&.section-4 {
+				background: mix($slate, $shamrock, 15%);
+			}
+			&.section-5 {
+				background: mix($slate, $shamrock, 5%);
+			}
+		}
+	}
+	&.student {
+		> div {
+			&.section-1 {
+				background: mix($slate, $lake, 60%);
+			}
+			&.section-2 {
+				background: mix($slate, $lake, 45%);
+			}
+			&.section-3 {
+				background: mix($slate, $lake, 30%);
+			}
+			&.section-4 {
+				background: mix($slate, $lake, 15%);
+			}
+			&.section-5 {
+				background: mix($slate, $lake, 5%);
+			}
+		}
+	}
+}
+.sidebar-list {
+	ul {
+		li {
+			a {
+				h2 {
+					width: calc(100% - 72px);
+				}
+			}
+			&.locked {
+				&:after {
+					content: "";
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: rgba(lighten($slate, 15%), .9);
+				}
+			}
+		}
+	}
+	&.guru {
+		background: $shamrock;
+		color: white;
+		header {
+			background: $slate;
+		}
+		ul {
+			li {
+				&.complete {
+					a {
+						.svg-white {
+							svg {
+								circle {
+									stroke: lighten($shamrock, 5%)!important;
+									fill: lighten($shamrock, 5%)!important;
+								}
+							}
+						}
+					}
+				}
+				&:nth-child(1) {
+					a {
+						background: mix($slate, $shamrock, 60%);
+						&:hover, &:focus {
+							background: mix(mix($slate, $shamrock, 60%), white);
+							color: mix(mix($slate, $shamrock, 60%), $slate);
+							.svg-white {
+								* {
+									stroke: mix(mix($slate, $shamrock, 60%), $slate)!important;
+								}
+							}
+						}
+						&:active {
+							background: mix(mix($slate, $shamrock, 60%), $slate);
+							color: white;
+							.svg-white {
+								* {
+									stroke: white!important;
+								}
+							}
+						}
+					}
+					&.complete {
+						a {
+							&:hover, &:focus {
+								.svg-white {
+									circle {
+										fill: mix(mix($slate, $shamrock, 60%), $slate)!important;
+									}
+									path {
+										stroke: white!important;
+									}
+								}
+							}
+							&:active {
+								.svg-white {
+									circle {
+										stroke: white!important;
+										fill: white!important;
+									}
+									path {
+										stroke: mix(mix($slate, $shamrock, 60%), $slate)!important;
+									}
+								}
+							}
+						}
+					}
+				}
+				&:nth-child(2) {
+					a {
+						background: mix($slate, $shamrock, 45%);
+						&:hover, &:focus {
+							background: mix(mix($slate, $shamrock, 45%), white);
+							color: mix(mix($slate, $shamrock, 45%), $slate);
+							.svg-white {
+								* {
+									stroke: mix(mix($slate, $shamrock, 45%), $slate)!important;
+								}
+							}
+						}
+						&:active {
+							background: mix(mix($slate, $shamrock, 45%), $slate);
+							color: white;
+							.svg-white {
+								* {
+									stroke: white!important;
+								}
+							}
+						}
+					}
+					&.complete {
+						a {
+							&:hover, &:focus {
+								.svg-white {
+									circle {
+										fill: mix(mix($slate, $shamrock, 45%), $slate)!important;
+									}
+									path {
+										stroke: white!important;
+									}
+								}
+							}
+							&:active {
+								.svg-white {
+									circle {
+										stroke: white!important;
+										fill: white!important;
+									}
+									path {
+										stroke: mix(mix($slate, $shamrock, 45%), $slate)!important;
+									}
+								}
+							}
+						}
+					}
+				}
+				&:nth-child(3) {
+					a {
+						background: mix($slate, $shamrock, 30%);
+						&:hover, &:focus {
+							background: mix(mix($slate, $shamrock, 30%), white);
+							color: mix(mix($slate, $shamrock, 30%), $slate);
+							.svg-white {
+								* {
+									stroke: mix(mix($slate, $shamrock, 30%), $slate)!important;
+								}
+							}
+						}
+						&:active {
+							background: mix(mix($slate, $shamrock, 30%), $slate);
+							color: white;
+							.svg-white {
+								* {
+									stroke: white!important;
+								}
+							}
+						}
+					}
+					&.complete {
+						a {
+							&:hover, &:focus {
+								.svg-white {
+									circle {
+										fill: mix(mix($slate, $shamrock, 30%), $slate)!important;
+									}
+									path {
+										stroke: white!important;
+									}
+								}
+							}
+							&:active {
+								.svg-white {
+									circle {
+										stroke: white!important;
+										fill: white!important;
+									}
+									path {
+										stroke: mix(mix($slate, $shamrock, 30%), $slate)!important;
+									}
+								}
+							}
+						}
+					}
+				}
+				&:nth-child(4) {
+					a {
+						background: mix($slate, $shamrock, 15%);
+						&:hover, &:focus {
+							background: mix(mix($slate, $shamrock, 15%), white);
+							color: mix(mix($slate, $shamrock, 15%), $slate);
+							.svg-white {
+								* {
+									stroke: mix(mix($slate, $shamrock, 15%), $slate)!important;
+								}
+							}
+						}
+						&:active {
+							background: mix(mix($slate, $shamrock, 15%), $slate);
+							color: white;
+							.svg-white {
+								* {
+									stroke: white!important;
+								}
+							}
+						}
+					}
+					&.complete {
+						a {
+							&:hover, &:focus {
+								.svg-white {
+									circle {
+										fill: mix(mix($slate, $shamrock, 15%), $slate)!important;
+									}
+									path {
+										stroke: white!important;
+									}
+								}
+							}
+							&:active {
+								.svg-white {
+									circle {
+										stroke: white!important;
+										fill: white!important;
+									}
+									path {
+										stroke: mix(mix($slate, $shamrock, 15%), $slate)!important;
+									}
+								}
+							}
+						}
+					}
+				}
+				&:nth-child(5) {
+					a {
+						background: mix($slate, $shamrock, 5%);
+						&:hover, &:focus {
+							background: mix(mix($slate, $shamrock, 5%), white);
+							color: mix(mix($slate, $shamrock, 5%), $slate);
+							.svg-white {
+								* {
+									stroke: mix(mix($slate, $shamrock, 5%), $slate)!important;
+								}
+							}
+						}
+						&:active {
+							background: mix(mix($slate, $shamrock, 5%), $slate);
+							color: white;
+							.svg-white {
+								* {
+									stroke: white!important;
+								}
+							}
+						}
+					}
+					&.complete {
+						a {
+							&:hover, &:focus {
+								.svg-white {
+									circle {
+										fill: mix(mix($slate, $shamrock, 5%), $slate)!important;
+									}
+									path {
+										stroke: white!important;
+									}
+								}
+							}
+							&:active {
+								.svg-white {
+									circle {
+										stroke: white!important;
+										fill: white!important;
+									}
+									path {
+										stroke: mix(mix($slate, $shamrock, 5%), $slate)!important;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.student {
+		background: $lake;
+		color: white;
+		header {
+			background: $smoke;
+			color: $slate;
+		}
+		ul {
+			li {
+				&.complete {
+					a {
+						.svg-white {
+							svg {
+								circle {
+									stroke: lighten($lake, 5%)!important;
+									fill: lighten($lake, 5%)!important;
+								}
+							}
+						}
+					}
+				}
+				&:nth-child(1) {
+					a {
+						background: mix($slate, $lake, 60%);
+						&:hover, &:focus {
+							background: mix(mix($slate, $lake, 60%), white);
+							color: mix(mix($slate, $lake, 60%), $slate);
+							.svg-white {
+								* {
+									stroke: mix(mix($slate, $lake, 60%), $slate)!important;
+								}
+							}
+						}
+						&:active {
+							background: mix(mix($slate, $lake, 60%), $slate);
+							color: white;
+							.svg-white {
+								* {
+									stroke: white!important;
+								}
+							}
+						}
+					}
+					&.complete {
+						a {
+							&:hover, &:focus {
+								.svg-white {
+									circle {
+										fill: mix(mix($slate, $lake, 60%), $slate)!important;
+									}
+									path {
+										stroke: white!important;
+									}
+								}
+							}
+							&:active {
+								.svg-white {
+									circle {
+										stroke: white!important;
+										fill: white!important;
+									}
+									path {
+										stroke: mix(mix($slate, $lake, 60%), $slate)!important;
+									}
+								}
+							}
+						}
+					}
+				}
+				&:nth-child(2) {
+					a {
+						background: mix($slate, $lake, 45%);
+						&:hover, &:focus {
+							background: mix(mix($slate, $lake, 45%), white);
+							color: mix(mix($slate, $lake, 45%), $slate);
+							.svg-white {
+								* {
+									stroke: mix(mix($slate, $lake, 45%), $slate)!important;
+								}
+							}
+						}
+						&:active {
+							background: mix(mix($slate, $lake, 45%), $slate);
+							color: white;
+							.svg-white {
+								* {
+									stroke: white!important;
+								}
+							}
+						}
+					}
+					&.complete {
+						a {
+							&:hover, &:focus {
+								.svg-white {
+									circle {
+										fill: mix(mix($slate, $lake, 45%), $slate)!important;
+									}
+									path {
+										stroke: white!important;
+									}
+								}
+							}
+							&:active {
+								.svg-white {
+									circle {
+										stroke: white!important;
+										fill: white!important;
+									}
+									path {
+										stroke: mix(mix($slate, $lake, 45%), $slate)!important;
+									}
+								}
+							}
+						}
+					}
+				}
+				&:nth-child(3) {
+					a {
+						background: mix($slate, $lake, 30%);
+						&:hover, &:focus {
+							background: mix(mix($slate, $lake, 30%), white);
+							color: mix(mix($slate, $lake, 30%), $slate);
+							.svg-white {
+								* {
+									stroke: mix(mix($slate, $lake, 30%), $slate)!important;
+								}
+							}
+						}
+						&:active {
+							background: mix(mix($slate, $lake, 30%), $slate);
+							color: white;
+							.svg-white {
+								* {
+									stroke: white!important;
+								}
+							}
+						}
+					}
+					&.complete {
+						a {
+							&:hover, &:focus {
+								.svg-white {
+									circle {
+										fill: mix(mix($slate, $lake, 30%), $slate)!important;
+									}
+									path {
+										stroke: white!important;
+									}
+								}
+							}
+							&:active {
+								.svg-white {
+									circle {
+										stroke: white!important;
+										fill: white!important;
+									}
+									path {
+										stroke: mix(mix($slate, $lake, 30%), $slate)!important;
+									}
+								}
+							}
+						}
+					}
+				}
+				&:nth-child(4) {
+					a {
+						background: mix($slate, $lake, 15%);
+						&:hover, &:focus {
+							background: mix(mix($slate, $lake, 15%), white);
+							color: mix(mix($slate, $lake, 15%), $slate);
+							.svg-white {
+								* {
+									stroke: mix(mix($slate, $lake, 15%), $slate)!important;
+								}
+							}
+						}
+						&:active {
+							background: mix(mix($slate, $lake, 15%), $slate);
+							color: white;
+							.svg-white {
+								* {
+									stroke: white!important;
+								}
+							}
+						}
+					}
+					&.complete {
+						a {
+							&:hover, &:focus {
+								.svg-white {
+									circle {
+										fill: mix(mix($slate, $lake, 15%), $slate)!important;
+									}
+									path {
+										stroke: white!important;
+									}
+								}
+							}
+							&:active {
+								.svg-white {
+									circle {
+										stroke: white!important;
+										fill: white!important;
+									}
+									path {
+										stroke: mix(mix($slate, $lake, 15%), $slate)!important;
+									}
+								}
+							}
+						}
+					}
+				}
+				&:nth-child(5) {
+					a {
+						background: mix($slate, $lake, 5%);
+						&:hover, &:focus {
+							background: mix(mix($slate, $lake, 5%), white);
+							color: mix(mix($slate, $lake, 5%), $slate);
+							.svg-white {
+								* {
+									stroke: mix(mix($slate, $lake, 5%), $slate)!important;
+								}
+							}
+						}
+						&:active {
+							background: mix(mix($slate, $lake, 5%), $slate);
+							color: white;
+							.svg-white {
+								* {
+									stroke: white!important;
+								}
+							}
+						}
+					}
+					&.complete {
+						a {
+							&:hover, &:focus {
+								.svg-white {
+									circle {
+										fill: mix(mix($slate, $lake, 5%), $slate)!important;
+									}
+									path {
+										stroke: white!important;
+									}
+								}
+							}
+							&:active {
+								.svg-white {
+									circle {
+										stroke: white!important;
+										fill: white!important;
+									}
+									path {
+										stroke: mix(mix($slate, $lake, 5%), $slate)!important;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+fieldset {
+	margin: 0;
+	&.guru {
+		background: $slate;
+		label {
+			color: $shamrock;
+		}
+		input {
+			background: lighten($slate, 10%);
+			color: white;
+			&:focus {
+				background: white;
+				color: $slate;
+			}
+		}
+	}
+	&.student {
+		background: white;
+		label {
+			color: $lake;
+		}
+		input {
+			background: $smoke;
+			color: $slate;
+			&:focus {
+				background: mix($lake, white, 10%);
+				color: $slate;
+			}
+		}
+	}
+}
+
 /* ---------- FAQ */
 #faq {
 	height: 100%;
@@ -64,6 +702,49 @@
 				color: $slate;
 				font-size: 16px;
 				font-weight: 600;
+			}
+			a {
+				display: block;
+				&:hover, &:focus {
+					dt {
+						background: mix($rocket, white);
+						color: mix($rocket, $slate);
+						.close-button {
+							svg {
+								@include prefix(transform, rotate(90deg), webkit moz ms o);
+								* {
+									stroke: mix($rocket, $slate);
+								}
+							}
+						}
+						&.active {
+							.close-button {
+								svg {
+									@include prefix(transform, rotate(135deg), webkit moz ms o);
+								}
+							}
+						}
+					}
+					+ dd {
+						border-color: mix($rocket, white);
+					}
+				}
+				&:active {
+					dt {
+						background: mix($rocket, $slate);
+						color: white;
+						.close-button {
+							svg {
+								* {
+									stroke: white;
+								}
+							}
+						}
+					}
+					+ dd {
+						border-color: mix($rocket, $slate);
+					}
+				}
 			}
 		}
 	}

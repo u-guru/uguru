@@ -10,22 +10,30 @@ angular.module('uguru.util.controllers')
 	'$timeout',
 	'$compile',
 	'Restangular',
-	function($scope, $state, $stateParams, AdminContent, CTAService, $timeout, $compile, Restangular) {
+	'LoadingService',
+	function($scope, $state, $stateParams, AdminContent, CTAService, $timeout, $compile, Restangular, LoadingService) {
 		$scope.page = {
-			layout: AdminContent.getMainLayout(),
-			glossary: AdminContent.getGlosseryContent(),
-			team_members: AdminContent.getMembers(),
-			components: [],
-			containers: AdminContent.getContainers(),
-			layouts: AdminContent.getLayouts(),
-			user_stories: AdminContent.getUserStories(),
-			createObjects: AdminContent.getBaseObjects($scope),
-			defaults: {
-				tabsIndex: 0,
-				sidebarIndex: 0
+				layout: AdminContent.getMainLayout(),
+				glossary: AdminContent.getGlosseryContent(),
+				team_members: AdminContent.getMembers(),
+				components: [],
+				containers: AdminContent.getContainers(),
+				layouts: AdminContent.getLayouts(),
+				user_stories: AdminContent.getUserStories(),
+				createObjects: AdminContent.getBaseObjects($scope),
+				defaults: {
+					tabsIndex: 2,
+					sidebarIndex: 1
+				},
+				toggles: {
+					showAddState: false,
+					showAddSubstate: false
+				}
 			}
-		}
-		// $scope.selected_component = $scope.page.components[4];
+			// $scope.selected_component = $scope.page.components[4];
+
+		$scope.toggleAddSubstate = false;
+		$scope.toggleAddState = false;
 
 		$scope.elementCTATabOptions = {
 			components: ['Demo', 'Attributes', 'States', 'Use Cases', 'Element Map', 'To Do'],
@@ -38,71 +46,232 @@ angular.module('uguru.util.controllers')
 		$scope.initAndLaunchLayoutCTA = function($event, layout) {
 			var targetElem = $event.target;
 			$scope.selected_layout = layout;
-			// $scope.selected_layout = layout;
-			// $timeout(function() {
-			// 	$scope.$apply(function() {
-			// 		$scope.selected_component = component;
-			// 		var demoComponentContainer = angular.element(document.querySelector('#demo-component-template'));
-			// 		demoComponentContainer.html($scope.selected_component.sample.template);
-			// 		console.log(demoComponentContainer);
-			// 		$compile(demoComponentContainer.contents())($scope);
-			// 	})
-			// })
 
-			// $timeout(function() {
-			// 	$scope.selected_component = component;
-			// 	var demo = document.querySelector('#demo-template');
-			// 	$compile(demo)($scope);
-			// }, 1000)
 
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-layout';
 			CTAService.initSingleCTA('#' + targetElem.id, '#main-admin-content');
-			// $timeout(function() {
-			// 	var targetElem = document.querySelector('#cta-box-selected-layout');
-			// 	angular.element(targetElem).triggerHandler('click');
-			// 	var modalElem = document.querySelector('#cta-modal-selected-layout');
-			// 	modalElem && modalElem.classList.add('show');
-			// })
 		}
 
-		function createAdminElement(element_details) {
+		$scope.initAndLaunchDevToolsCTA = function($event) {
+			var targetElem = $event.target;
+			console.log(targetElem);
+			$scope.lastCTABoxTargetElem = targetElem;
+			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-tool';
 
+			CTAService.initSingleCTA('#' + targetElem.id, '#admin', null, ['esc']);
+		}
+
+		$scope.initAndLaunchSceneCTA = function($event, scene) {
+			var targetElem = $event.target;
+			$scope.selected_scene = scene;
+			$scope.selectedSceneToggleAdd = false;
+
+			$scope.lastCTABoxTargetElem = targetElem;
+			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-scene';
+
+			CTAService.initSingleCTA('#' + targetElem.id, 'body');
+
+			$scope.newScene = {
+				description: '',
+				name: '',
+				estimated_time: 10
+			}
+
+			$scope.newSubScene = {
+				description: '',
+				name: '',
+				estimated_time: 10
+			}
+		}
+
+		function resetInitStateObjects() {
+			$scope.newScene = {
+				description: '',
+				name: '',
+				estimated_time: 10
+			}
+			$scope.newSubScene = {
+				description: '',
+				name: '',
+				estimated_time: 10
+			};
+			$scope.page.toggles.showAddSubstate = false;
+			$scope.page.toggles.showAddState = false;
+		}
+
+		function reprocessAllElements(response, scope) {
+			scope.page.components = response.components;
+			scope.page.layouts = response.layouts;
+			scope.page.scenes = response.scenes;
+			scope.page.moodboard = response.moodboards;
+			scope.page.user_stories = response.user_stories;
+			scope.page.assets = response.assets;
+			scope.page.action_items = response.action_items;
+			scope.page.projects = response.projects;
+			scope.page.action_items = response.action_items;
+
+			var actionItemsSidebarTabSections = scope.page.layout.sections[0].tabs.options;
+			for (var i = 0; i < actionItemsSidebarTabSections.length; i++) {
+				var sideBarTabIndex = actionItemsSidebarTabSections[i];
+				var memberTitle = sideBarTabIndex.title.toLowerCase();
+				if (scope.page.action_items && memberTitle in scope.page.action_items) {
+					scope.page.action_items[memberTitle] = response.action_items[memberTitle];
+				}
+			}
+		}
+
+		$scope.createStateElement = function(state, scene, scene_type) {
+			LoadingService.showAmbig();
+
+			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPOST(JSON.stringify({state: state, scene: scene, type: scene_type}))
+			.then(function(response) {
+				console.log('update scene response receives');
+				LoadingService.showSuccess('Scene ' + state.name + ' successfully saved', 2500);
+				resetInitStateObjects();
+				reprocessAllElements(response.plain().admin_components, $scope);
+			},  function(err) {
+				console.log('error', err);
+				LoadingService.showMsg("Something went wrong tell Samir", 2500);
+			});
+		}
+
+		$scope.createSubsceneElement = function(substate, state, scene, scene_type) {
+			LoadingService.showAmbig();
+			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPOST(JSON.stringify({substate: substate, state: state, scene: scene, type: scene_type}))
+			.then(function(response) {
+				console.log('update substate response receives');
+				LoadingService.showSuccess('Subscene ' + scene.name + ' successfully saved', 2500);
+				resetInitStateObjects();
+				reprocessAllElements(response.plain().admin_components, $scope);
+			},  function(err) {
+				console.log('error', err);
+				LoadingService.showMsg("Something went wrong tell Samir", 2500);
+			});
+		}
+
+		$scope.updateStateField = function(state_field_name, currentValue, state, scene, scene_type) {
+
+			var stateFieldResponse = prompt("Please edit the current value", currentValue);
+			if (stateFieldResponse) {
+				state[state_field_name] = stateFieldResponse;
+				$scope.updateStateElement(state, scene, scene_type, false);
+			}
+
+		}
+
+		$scope.updateSubStateField = function(substate_field_name, currentValue, substate, state, scene, scene_type) {
+
+			var substateFieldResponse = prompt("Please edit the current value", currentValue);
+			if (substateFieldResponse) {
+				substate[substate_field_name] = substateFieldResponse;
+				$scope.updateSubStateElement(substate, state, scene, scene_type, false);
+			}
+
+		}
+
+		$scope.updateStateElement = function(state, scene, scene_type, is_remove) {
+			var action = 'update';
+			if (is_remove && !confirm('Are you sure you want to delete state ' + state.name + '? IMPT - this means ALL SUBSTATES WILL BE DELETED. Are you sure?')) {
+				return;
+			} else if (is_remove) {
+				action = 'remove';
+			}
+			LoadingService.showAmbig();
+			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPUT(JSON.stringify({action:action, state: state, scene: scene, type: scene_type}))
+			.then(function(response) {
+				console.log('update scene response receives');
+				if (is_remove) {
+					LoadingService.showSuccess('State ' + state.name + ' successfully removed', 2500);
+				} else {
+					LoadingService.showSuccess('State ' + state.name + ' successfully updated', 2500);
+				}
+				resetInitStateObjects();
+				reprocessAllElements(response.plain().admin_components, $scope);
+			},  function(err) {
+				console.log('error', err);
+				LoadingService.showMsg("Something went wrong tell Samir", 2500);
+			});
+		}
+
+		$scope.updateSubStateElement = function(substate, state, scene, scene_type, is_remove) {
+			var action = 'update';
+			if (is_remove && !confirm('Are you sure you want to delete substate ' + substate.name + '?')) {
+				return;
+			}  else if (is_remove) {
+				action = 'remove';
+			}
+			LoadingService.showAmbig();
+			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPUT(JSON.stringify({action:action, substate: substate, state: state, scene: scene, type: scene_type}))
+			.then(function(response) {
+				$timeout(function() {
+					if (is_remove) {
+						LoadingService.showSuccess('Substate ' + substate.name + ' successfully removed', 2500);
+					} else {
+						LoadingService.showSuccess('Substate ' + substate.name + ' successfully updated', 2500);
+					}
+				}, 2500)
+				resetInitStateObjects();
+				reprocessAllElements(response.plain().admin_components, $scope);
+			},  function(err) {
+				console.log('error', err);
+				LoadingService.showMsg("Something went wrong tell Samir", 2500);
+			});
 		}
 
 		function getAdminElements() {
+			
 
-			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(function(response){
-                    	console.log(response);
-                    	response = JSON.parse(response);
+			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(function(response) {
+				response = JSON.parse(response);
 
-                    	// $timeout(function() {
-                    		// $scope.$apply(function() {
-                    			$scope.page.components = response.components;
-		                    	$scope.page.layouts = response.layouts;
-		                    	$scope.page.moodboard = response.moodboards;
-		                    	$scope.page.user_stories = response.user_stories;
-		                    	$scope.page.assets = response.assets;
-		                    	$scope.page.action_items = response.action_items;
-		                    	$scope.page.projects = response.projects;
-                    		// })
-                    		// $timeout(function() {
-                    		// 	var allDemoElems = document.querySelectorAll('demo')
-                    		// 	for (var i = 0; i < allDemoElems.length; i++) {
-                    		// 		demoIndexElem = allDemoElems[i];
+				// $timeout(function() {
+				// $scope.$apply(function() {
+				$scope.page.components = response.components;
+				$scope.page.layouts = response.layouts;
+				$scope.page.scenes = response.scenes;
+				$scope.page.moodboard = response.moodboards;
+				$scope.page.user_stories = response.user_stories;
+				$scope.page.assets = response.assets;
+				$scope.page.action_items = response.action_items;
+				$scope.page.projects = response.projects;
+				$scope.page.action_items = response.action_items;
 
-                    		// 		$compile(demoIndexElem)($scope);
+				console.log('page scenes', $scope.page.scenes);
 
-                    		// 	}
-                    		// })
-                    	// })
+				var actionItemsSidebarTabSections = $scope.page.layout.sections[0].tabs.options;
+				for (var i = 0; i < actionItemsSidebarTabSections.length; i++) {
+					var sideBarTabIndex = actionItemsSidebarTabSections[i];
+					var memberTitle = sideBarTabIndex.title.toLowerCase();
+					$scope.page.action_items[memberTitle] = response.action_items[memberTitle];
+				}
+
+				$scope.selected_scene = $scope.page.scenes[0];
+				$scope.selected_scene.tabIndex = 1;
+				var modalElem = document.querySelector('#cta-modal-selected-scene');
+				modalElem && modalElem.classList.add('show');
 
 
+				// $scope.selected_scene = $scope.page.scenes[0];
+				// var elem = document.querySelector('#cta-modal-selected-scene');
+				// elem && elem.classList.add('show')
+				// })
+				// $timeout(function() {
+				// 	var allDemoElems = document.querySelectorAll('demo')
+				// 	for (var i = 0; i < allDemoElems.length; i++) {
+				// 		demoIndexElem = allDemoElems[i];
 
-                    	console.log(response);
-                    }, function(err) {
-                    	console.log('error');
-                    })
+				// 		$compile(demoIndexElem)($scope);
+
+				// 	}
+				// })
+				// })
+
+
+				console.log(response);
+			}, function(err) {
+				console.log('error');
+			})
 		}
 
 
@@ -112,7 +281,10 @@ angular.module('uguru.util.controllers')
 			$scope.adminItemCTAShown = true;
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.admin_item = {
-				dropdown_options: {index: 0, options: ['HTML Element', 'Moodboard','Bug Ticket', 'Action Item']},
+				dropdown_options: {
+					index: 0,
+					options: ['HTML Element', 'Moodboard', 'Bug Ticket', 'Action Item']
+				},
 				options: {
 					element: {
 						type: ['Component', 'Container', 'Layouts', 'User Stories', 'Assets'],
@@ -148,7 +320,7 @@ angular.module('uguru.util.controllers')
 						name: '',
 						description: '',
 						has_subsections: false
-						//pretty open ended
+							//pretty open ended
 					}
 				}
 			}
@@ -159,8 +331,8 @@ angular.module('uguru.util.controllers')
 			$timeout(function() {
 				// var targetElem = document.querySelector('#cta-box-admin-item');
 				// angular.element(targetElem).triggerHandler('click');
-				var modalElem = document.querySelector('#cta-modal-admin-item');
-				modalElem && modalElem.classList.add('show');
+				// var modalElem = document.querySelector('#cta-modal-admin-item');
+				// modalElem && modalElem.classList.add('show');
 			})
 		}
 
@@ -319,10 +491,39 @@ angular.module('uguru.util.controllers')
 			return resultObj;
 		}
 
+
+		function getSceneStateStatus(states, elem, elem_type) {
+			var resultDict = {
+				priority: false,
+				total_time: 0,
+				time_created: states[0].time_created,
+				count: states.length,
+				name: elem.name,
+				type: elem_type,
+				completed: [],
+				pending: []
+			};
+			for (var i = 0; i < states.length; i++) {
+				var indexState = states[i];
+				if (indexState.completed) {
+					resultDict.completed.push(indexState);
+				} else
+				if (!indexState.completed && indexState.priority) {
+					resultDict.pending.push(indexState);
+					resultDict.priority = true;
+					resultDict.total_time += indexState.estimated_time;
+				}
+			}
+			return resultDict;
+		}
+
 		$timeout(function() {
-			$scope.page.layout.sidebar.index = 1 || $scope.page.defaults.sidebarIndex;
-			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index = $scope.page.defaults.tabsIndex;
+			$scope.page.layout.sidebar.index = $scope.page.defaults.sidebarIndex;
+			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index =  $scope.page.defaults.tabsIndex;
 			getAdminElements();
+
+
+
 
 
 		}, 1000)

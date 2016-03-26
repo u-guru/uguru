@@ -100,8 +100,14 @@ def syncLocalElementsToMP():
 def resolveLocalElements():
     elements = loadMostUpdatedElementsJson()
     for story in elements['user_stories']:
-        story = updateStoryWithUpdatedBaseFields(story)
-        elements['layouts'] = baseLayoutExistsForUserStory(elements['layouts'], story)
+        story = updateElemWithUpdatedBaseFields(story, 'user_story')
+        elements['layouts'] = baseElementExistsForParentChildrenRefs(elements['layouts'], story, 'layouts')
+        elements['scenes'] = baseElementExistsForParentChildrenRefs(elements['scenes'], story, 'scenes')
+
+
+    # for scene in elements['scenes']:
+    #     elements['scenes'] = baseElementExistsForUserStory(elements['scenes'], story)
+
     saveElementsJson(elements)
     printElementsStats(elements)
 
@@ -118,34 +124,42 @@ def updateElementComponent(_dict):
         'elements': _dict
     })
 
-def updateStoryWithUpdatedBaseFields(story):
+def updateElemWithUpdatedBaseFields(elem, elem_type):
     from elements import base_elements
-    user_story_base = base_elements['user_stories']
-    for key in user_story_base.keys():
-        base_value = user_story_base[key]
-        if key not in story:
-            story[key] = base_value
-            print "adding %s key to %s" % (key, story['title'])
-    return story
+    user_elem_base = base_elements[elem_type]
+    for key in user_elem_base.keys():
+        base_value = user_elem_base[key]
+        if key not in elem:
+            elem[key] = base_value
+            print "adding %s key to %s" % (key, elem['name'])
+    return elem
 
 
+def baseElementExistsForParentChildrenRefs(all_elem_types, parent, child_type):
+    parent_children = parent[child_type]
+    all_elem_refs = [elem['ref'] for elem in all_elem_types]
+    for elem in parent_children:
+        if elem not in all_elem_refs:
+            new_elem = createNewElem(elem, child_type, len(all_elem_types) + 1)
+            all_elem_types.append(new_elem)
+    return all_elem_types
 
-def baseLayoutExistsForUserStory(layouts, user_story):
+def baseElementExistsForUserStory(elements, user_story):
     user_story_layouts = user_story['layouts']
-    layout_refs = [layout['ref'] for layout in layouts]
-    for layout in user_story_layouts:
-        if layout not in layout_refs:
-            new_layout =  createNewLayout(layout, len(layouts) + 1)
-            layouts.append(new_layout)
-    return layouts
+    elem_refs = [elem['ref'] for elem in elements]
+    for elem in user_story_layouts:
+        if elem not in elem_refs:
+            new_elem =  createNewElem(elem, len(elements) + 1)
+            elements.append(new_layout)
+    return elements
 
 
 
-def createNewLayout(layout_ref, _id):
+def createNewElem(elem_ref, elem_type, _id):
     from elements import base_elements
-    base_layout = dict(base_elements['layouts'])
+    base_layout = dict(base_elements[elem_type])
     base_layout['id'] = _id
-    base_layout['ref'] = layout_ref
+    base_layout['ref'] = elem_ref
     return base_layout
 
 
@@ -217,14 +231,151 @@ def resolveDictToElementsJson():
     mp_elements_dict = getMostUpdatedMPElements()
     return master_elements_dict == mp_elements_dict
 
+def validateCreateArgs(args):
+
+    def elemTypeIsValid(elem_type):
+        return True
+
+    def refIdIsValid(elem_type):
+        return True
+
+    if (len(args)) < 3:
+        print "INSUFFICIENT ARGS: %s, required amt: 3" % (len(args))
+        return False
+
+    elem_type = args[0]
+    state_type = title = scene_obj = state_obj = description = priority = difficulty= description = None
+    if 'state:' in elem_type:
+        state_type = elem_type.split(":")[1]
+
+    scene_ref_id = args[1]
+    assigned_to = args[2]
+    if len(args) > 3:
+        title = args[3]
+    if len(args) > 4:
+        description = args[4]
+    if len(args) > 5:
+        eta = int(args[5])
+    if len(args) > 6:
+        priority = int(args[6])
+    if len(args) > 7:
+        difficulty = int(args[7])
+
+    if not elemTypeIsValid(elem_type):
+        print "INVALID ELEMENT TYPE: %s" % (len(elem_type))
+        return False, None
+    if False and refIdIsValid(ref_id):
+        print "INVALID ELEMENT TYPE: %s" % (len(elem_type))
+        return False, None
+
+    all_elements = loadMostUpdatedElementsJson()
+    scene_index = 0
+    if scene_ref_id:
+        for scene in all_elements['scenes']:
+            if scene['ref'] == scene_ref_id or str(scene['id']) == scene_ref_id:
+                scene_obj = scene
+                break
+            scene_index += 1
+
+
+
+    currentNumStates = len(all_elements['scenes'][scene_index])
+    scene_obj = addStateToScene(state_type, assigned_to, scene_obj, (currentNumStates + 1), title, description, eta, priority, difficulty)
+    all_elements['scenes'][scene_index] = scene_obj
+
+    return True, all_elements
+
+def addStateToScene(_type, assign, scene_obj, index, title, description=None, eta=None, priority=None, difficulty=None):
+    from elements import base_elements
+
+
+    state_obj = base_elements['state']
+    state_obj['type'] = _type
+    state_obj['assigned'].append(assign)
+    state_obj['name'] = title.title()
+    state_obj['description'] = description
+    state_obj['estimated_time'] = eta
+    state_obj['priority'] = priority
+    state_obj['difficulty'] = difficulty
+    state_obj['index'] = index
+    from datetime import datetime
+    date = datetime.now().date()
+    state_obj['time_created'] = "%s/%s" % (date.month, date.day)
+
+
+    if not scene_obj.get('element_states') or not len(scene_obj['element_states'].keys()):
+        scene_obj['element_states'] = base_elements['element_states']
+
+    scene_obj['element_states'][_type].append(state_obj)
+    state_obj['ref'] = (scene_obj['name'] + '-state-' + str(len(scene_obj['element_states'][_type]))).replace(' ', '-').lower()
+
+    return scene_obj
+
+def reprocessActionItems(elements):
+    elements['action_items'] = {'samir': [], 'jason': [], 'gabrielle': [], 'jeselle': []}
+    action_item_mapping = {'fluid': 'gabrielle', 'testing': 'jason', 'function': 'samir', 'hifi': 'jeselle'}
+    for key in elements.keys():
+        if key == 'action_items': continue
+        if key == 'scenes' and len(elements[key]):
+            all_scenes = elements[key]
+            for scene in all_scenes:
+                if scene.get('element_states'):
+                    diff_state_keys = scene['element_states'].keys()
+                    for state_key in diff_state_keys:
+                        if scene['element_states'][state_key]:
+                            action_items = scene['element_states'][state_key]
+                            for item in action_items:
+                                member_name = action_item_mapping.get(item['type'])
+                                elements['action_items'][member_name].append(item)
+            # scene_element_state_keys = elements[key]['element_states'].keys()
+            # for key in scene_element_state_keys:
+            #     print key
+
+    member_names = elements['action_items'].keys()
+    for member in member_names:
+        elements['action_items'][member] = sorted(elements['action_items'][member], key=lambda k:k['priority'], reverse=True)
+
+
+def printAllElementTypes(element_type, sub_element=None, grandchild_element=None):
+    all_elements = loadMostUpdatedElementsJson()
+    for elem in all_elements[element_type]:
+        print elem['id'], elem['ref'], elem['name']
+
+
 import sys
 args = sys.argv
 if 'i' in args:
-    print "\n\nsave -- save locally\nupdate -- update local to MP\nresolve -- resolve & init new elements\n"
+    print """\n\nsave -- save locally\nupdate -- update local to MP\nresolve -- resolve & init new elements\nprint [layouts, |any element type]-- prints any element type\ncreate [state:[hifi, dynamic, functional, test], container, component] -- creates element type\n\n
+    """
     print "update -- update a specific element [id or ref_id] [elem_type]"
 if 'save' in args and len(args) == 2:
     saveDictToElementsJson()
 if 'update' in args and len(args) == 2:
     syncLocalElementsToMP()
+if 'sync' in args and len(args) == 2:
+    print "syncing local --> MP"
+    syncLocalElementsToMP()
+    from time import sleep
+    sleep(1)
+    print "syncing MP --> Local"
+    saveDictToElementsJson()
 if 'resolve' in args and len(args) == 2:
     resolveLocalElements()
+if 'print' in args and args.index('print') == 1 and len(args) == 3:
+    element_type = args[2]
+    print element_type
+    from elements import base_elements
+    if element_type not in base_elements.keys():
+        print "UNSUPPORTED ELEMENT TYPE\n\nHere are the supported ones: %s" % (base_elements.keys())
+    else:
+        printAllElementTypes(element_type)
+if 'create' in args:
+    validateResults, elements = validateCreateArgs(args[2:])
+    if validateResults:
+        reprocessActionItems(elements)
+        saveElementsJson(elements)
+        print 'state successfully created and updated in elements.json'
+
+
+
+

@@ -715,8 +715,10 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                     }
                 }, delay);
                 function classArgsHasInject(args) {
+                  console.log("args",args)
                   var injectArg = null;
                   args.filter(function(word, index) {
+                    console.log("word",index)
                     if (word.indexOf("inject") > -1) {
                       injectArg = args[index];
                       return true

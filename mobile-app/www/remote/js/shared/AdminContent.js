@@ -272,10 +272,10 @@ function AdminContent($localstorage) {
                         admin_setup: initAdminSetup()
                     }
                 },
-                { title: 'Components', tabs: {index: 0, options: [{title: 'Components', header: 'All lightweight components'}, {title:'Containers', header: 'All components that include many other nested components'}, {title: 'Layouts'}, {title: 'User Stories'}, {title: 'Assets'}]}},
+                { title: 'Components', tabs: {index: 0, options: [{title: 'Components', header: 'All lightweight components'}, {title:'Containers', header: 'All components that include many other nested components'}, {title: 'Scenes'}, {title: 'Layouts'}, {title: 'User Stories'}, {title: 'Assets'}]}},
                 { title: 'Reference', tabs: {index:0, options: [{title: 'Docs', header: 'Any rules that we have created ourselves'}, {title: 'HTML/CSS Guide', header: 'Raw HTML, Directives, Base CSS'}, {title: 'Colors', header: 'Color Palettes for different use cases'}, {title: 'Themes + Demographics', header: 'I.e. Guru, Student, Parents'}, {title:'Animation', header: 'Directives + Best Practices'}]}},
                 { title: 'Moodboard', tabs: {index: 0, options: [{title: 'Uguru / Internal', header: 'What are you most proud of?'}, {title: 'Components', header: 'External components we really like'}, {title: 'Fluid + Animation', header: 'External animations/Fluid example we really like'}, {title: 'Creative/Thematic', header: 'Out of this world level'}, {title: 'Library', header: 'Great, specific libraries we really like'}]}},
-                { title: 'Tools', tabs: {index: 0, options: [{title: 'External Exporter'}, {title: 'Internal Editor'}, {title: 'Component Creator'}, {title: 'Asset Importer'}, {title: 'Codepen Tools'}]}}
+                { title: 'Tools', tabs: {index: 0, options: [{title: 'Scene Creator'}]}}
             ],
             sidebar: {
                 index: 0
@@ -638,14 +638,14 @@ var componentList = [
         },
         bugs: [{girls: 'Whats the different conceptually between a tag and a chip?'}]
     },
-    // {
-    //     id: 12,
-    //     ref: 'svg-icon',
-    //     name: 'Svg Tag Template',
-    //     sample: {
-    //         template: '<svgi name="category.household" size="100x100" stroke="#FFFFFF"> </svgi>'
-    //     }
-    // }
+    {
+        id: 12,
+        ref: 'svg-icon',
+        name: 'Svg Tag Template',
+        sample: {
+            template: '<svgi name="category.household" size="100x100" stroke="#FFFFFF"> </svgi>'
+        }
+    }
 
 ]
 
@@ -828,7 +828,7 @@ function compileActions() {
 }
 
 function compileComponents() {
-    return compon
+
 }
 
 function compileTests() {

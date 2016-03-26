@@ -1,36 +1,5 @@
 @import 'mixin';
 
-/* ---------- DEFAULT STYLES */
-a, a:hover, a:active, a:visited {
-	color: white;
-	text-decoration:none;
-}
-i {
-	font-style: normal;
-}
-body {
-	margin: 0;
-	font-family: $font;
-	font-size: 24px;
-	font-weight: 200!important;
-	color: white;
-	background: $charcoal;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	> section, > div, > main {
-		height: 100%;
-	}
-}
-::-webkit-selection {
-	background: rgba($taupe,.3);
-}
-::-moz-selection {
-	background: rgba($taupe,.3);
-}
-::selection {
-	background: rgba($taupe,.3);
-}
-
 body.platform-ios {
 	ul li {
 		&.active, &.activated {

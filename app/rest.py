@@ -3437,32 +3437,83 @@ class AdminDashboardView(restful.Resource):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
 
-        if not request.json or not request.json.get('section') or not request.json.get('id'):
+        if not request.json:
             return "MISSING DATA", 422
 
-        element_section = request.json.get('section')
-        element_id = request.json.get('id')
-        change_details = request.json.get('change_details')
+        obj_type = request.json.get('type')
+        obj_action = request.json.get('action')
+        obj_scene = request.json.get('scene')
+        obj_state = request.json.get('state')
+        obj_substate = request.json.get('substate')
+        if not obj_type or obj_type not in ['fluid', 'bug', 'functional', 'hifi'] or not obj_action or not obj_state or not obj_scene:
+            return "MISSING DATA", 422
 
 
+        if obj_action == 'remove':
 
-        from lib.mp_admin import applyChangeToElement
-        mixpanel_local_elements = applyChangeToElement(element_section, element_id, change_details)
-        return jsonify(admin_components=mixpanel_local_elements)
+            if not obj_substate:
+                print "removing state", obj_state['name'], 'from scene', obj_scene['name']
+            else:
+
+                print "removing substate", obj_substate['name'], 'from state/scene', "%s/%s" % (obj_state['name'],obj_scene['name'])
+
+        elif obj_action == 'update':
+            if not obj_substate:
+                print "updating state", obj_state['name'], 'from scene', obj_scene['name']
+            else:
+                print "updating substate", obj_substate['name'], 'from state/scene', "%s/%s" % (obj_state['name'],obj_scene['name'])
+
+        print obj_type, request.json.get('action'), request.json.get('substate'), request.json.get('state')
+
+        ## TODO create def updateSceneState(scene, new_state, type)
+            ## Resolve update Scene
+            ## Sync
+        ## TODO create def removeSceneState(scene, new_state, type)
+            ## Sync
+
+        ## TODO create def updateSceneSubState(scene, new_state, type)
+            ## Sync
+        ## TODO create def removeSceneState(scene, new_state, type)
+            ## Sync
+
+        return jsonify(admin_components=request.json)
+
+        # from lib.mp_admin import applyChangeToElement
+        # mixpanel_local_elements = applyChangeToElement(element_section, element_id, change_details)
+        # return jsonify(admin_components=mixpanel_local_elements)
 
     def post(self, auth_token):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
 
-
-        if not request.json or not request.json.get('section') or not request.json.get('id'):
+        if not request.json:
             return "MISSING DATA", 422
 
-        element_section = request.json.get('section')
-        elem_sepc = request.json.get('elem_spec')
-        from lib.mp_admin import addNewElement
-        addNewElement(element_section, elem_spec)
-        return jsonify(admin_components=mixpanel_local_elements)
+        obj_type = request.json.get('type')
+        obj_state = request.json.get('state')
+        obj_substate = request.json.get('substate')
+        obj_scene = request.json.get('scene')
+        if not obj_type or obj_type not in ['fluid', 'bug', 'functional', 'hifi'] or not obj_state or not obj_scene:
+            return "MISSING DATA", 422
+
+        ### Create scene case
+        if not obj_substate:
+            print "should be creating state %s" % (obj_state.get('name'))
+            ## TODO create def initSceneState(scene, new_state, type)
+            ## Sync
+
+        else:
+            print "should be creating subscene %s for scene %s" % (obj_substate.get('name'), obj_state.get('name'))
+            ## TODO create def initSceneSubstate(scene, state, new_substate, type)
+            ## Sync
+        from pprint import pprint
+        print request.json
+        return jsonify(admin_components=request.json)
+        # element_section = request.json.get('section')
+        # elem_sepc = request.json.get('elem_spec')
+        # from lib.mp_admin import addNewElement
+        # addNewElement(element_section, elem_spec)
+
 
 
 class AdminUniversityPopularCourseView(restful.Resource):

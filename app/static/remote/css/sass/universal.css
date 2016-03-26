@@ -1,3 +1,530 @@
+/* ---------- VALIDATION */
+.validate > div.locked:after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(99, 112, 116, 0.9);
+}
+
+.validate.guru > div.section-1 {
+  background: #50736f;
+}
+
+.validate.guru > div.section-2 {
+  background: #57837d;
+}
+
+.validate.guru > div.section-3 {
+  background: #5d938a;
+}
+
+.validate.guru > div.section-4 {
+  background: #63a398;
+}
+
+.validate.guru > div.section-5 {
+  background: #67aea1;
+}
+
+.validate.student > div.section-1 {
+  background: #466d85;
+}
+
+.validate.student > div.section-2 {
+  background: #497b9b;
+}
+
+.validate.student > div.section-3 {
+  background: #4b89b1;
+}
+
+.validate.student > div.section-4 {
+  background: #4e97c7;
+}
+
+.validate.student > div.section-5 {
+  background: #4fa0d6;
+}
+
+.sidebar-list ul li a h2 {
+  width: calc(100% - 72px);
+}
+
+.sidebar-list ul li.locked:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(99, 112, 116, 0.9);
+}
+
+.sidebar-list.guru {
+  background: #69B3A5;
+  color: white;
+}
+
+.sidebar-list.guru header {
+  background: #40484B;
+}
+
+.sidebar-list.guru ul li.complete a .svg-white svg circle {
+  stroke: #7abcaf !important;
+  fill: #7abcaf !important;
+}
+
+.sidebar-list.guru ul li:nth-child(1) a {
+  background: #50736f;
+}
+
+.sidebar-list.guru ul li:nth-child(1) a:hover, .sidebar-list.guru ul li:nth-child(1) a:focus {
+  background: #a8b9b7;
+  color: #485e5d;
+}
+
+.sidebar-list.guru ul li:nth-child(1) a:hover .svg-white *, .sidebar-list.guru ul li:nth-child(1) a:focus .svg-white * {
+  stroke: #485e5d !important;
+}
+
+.sidebar-list.guru ul li:nth-child(1) a:active {
+  background: #485e5d;
+  color: white;
+}
+
+.sidebar-list.guru ul li:nth-child(1) a:active .svg-white * {
+  stroke: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(1).complete a:hover .svg-white circle, .sidebar-list.guru ul li:nth-child(1).complete a:focus .svg-white circle {
+  fill: #485e5d !important;
+}
+
+.sidebar-list.guru ul li:nth-child(1).complete a:hover .svg-white path, .sidebar-list.guru ul li:nth-child(1).complete a:focus .svg-white path {
+  stroke: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(1).complete a:active .svg-white circle {
+  stroke: white !important;
+  fill: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(1).complete a:active .svg-white path {
+  stroke: #485e5d !important;
+}
+
+.sidebar-list.guru ul li:nth-child(2) a {
+  background: #57837d;
+}
+
+.sidebar-list.guru ul li:nth-child(2) a:hover, .sidebar-list.guru ul li:nth-child(2) a:focus {
+  background: #abc1be;
+  color: #4c6664;
+}
+
+.sidebar-list.guru ul li:nth-child(2) a:hover .svg-white *, .sidebar-list.guru ul li:nth-child(2) a:focus .svg-white * {
+  stroke: #4c6664 !important;
+}
+
+.sidebar-list.guru ul li:nth-child(2) a:active {
+  background: #4c6664;
+  color: white;
+}
+
+.sidebar-list.guru ul li:nth-child(2) a:active .svg-white * {
+  stroke: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(2).complete a:hover .svg-white circle, .sidebar-list.guru ul li:nth-child(2).complete a:focus .svg-white circle {
+  fill: #4c6664 !important;
+}
+
+.sidebar-list.guru ul li:nth-child(2).complete a:hover .svg-white path, .sidebar-list.guru ul li:nth-child(2).complete a:focus .svg-white path {
+  stroke: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(2).complete a:active .svg-white circle {
+  stroke: white !important;
+  fill: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(2).complete a:active .svg-white path {
+  stroke: #4c6664 !important;
+}
+
+.sidebar-list.guru ul li:nth-child(3) a {
+  background: #5d938a;
+}
+
+.sidebar-list.guru ul li:nth-child(3) a:hover, .sidebar-list.guru ul li:nth-child(3) a:focus {
+  background: #aec9c5;
+  color: #4f6e6b;
+}
+
+.sidebar-list.guru ul li:nth-child(3) a:hover .svg-white *, .sidebar-list.guru ul li:nth-child(3) a:focus .svg-white * {
+  stroke: #4f6e6b !important;
+}
+
+.sidebar-list.guru ul li:nth-child(3) a:active {
+  background: #4f6e6b;
+  color: white;
+}
+
+.sidebar-list.guru ul li:nth-child(3) a:active .svg-white * {
+  stroke: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(3).complete a:hover .svg-white circle, .sidebar-list.guru ul li:nth-child(3).complete a:focus .svg-white circle {
+  fill: #4f6e6b !important;
+}
+
+.sidebar-list.guru ul li:nth-child(3).complete a:hover .svg-white path, .sidebar-list.guru ul li:nth-child(3).complete a:focus .svg-white path {
+  stroke: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(3).complete a:active .svg-white circle {
+  stroke: white !important;
+  fill: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(3).complete a:active .svg-white path {
+  stroke: #4f6e6b !important;
+}
+
+.sidebar-list.guru ul li:nth-child(4) a {
+  background: #63a398;
+}
+
+.sidebar-list.guru ul li:nth-child(4) a:hover, .sidebar-list.guru ul li:nth-child(4) a:focus {
+  background: #b1d1cc;
+  color: #527672;
+}
+
+.sidebar-list.guru ul li:nth-child(4) a:hover .svg-white *, .sidebar-list.guru ul li:nth-child(4) a:focus .svg-white * {
+  stroke: #527672 !important;
+}
+
+.sidebar-list.guru ul li:nth-child(4) a:active {
+  background: #527672;
+  color: white;
+}
+
+.sidebar-list.guru ul li:nth-child(4) a:active .svg-white * {
+  stroke: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(4).complete a:hover .svg-white circle, .sidebar-list.guru ul li:nth-child(4).complete a:focus .svg-white circle {
+  fill: #527672 !important;
+}
+
+.sidebar-list.guru ul li:nth-child(4).complete a:hover .svg-white path, .sidebar-list.guru ul li:nth-child(4).complete a:focus .svg-white path {
+  stroke: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(4).complete a:active .svg-white circle {
+  stroke: white !important;
+  fill: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(4).complete a:active .svg-white path {
+  stroke: #527672 !important;
+}
+
+.sidebar-list.guru ul li:nth-child(5) a {
+  background: #67aea1;
+}
+
+.sidebar-list.guru ul li:nth-child(5) a:hover, .sidebar-list.guru ul li:nth-child(5) a:focus {
+  background: #b3d7d0;
+  color: #547b76;
+}
+
+.sidebar-list.guru ul li:nth-child(5) a:hover .svg-white *, .sidebar-list.guru ul li:nth-child(5) a:focus .svg-white * {
+  stroke: #547b76 !important;
+}
+
+.sidebar-list.guru ul li:nth-child(5) a:active {
+  background: #547b76;
+  color: white;
+}
+
+.sidebar-list.guru ul li:nth-child(5) a:active .svg-white * {
+  stroke: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(5).complete a:hover .svg-white circle, .sidebar-list.guru ul li:nth-child(5).complete a:focus .svg-white circle {
+  fill: #547b76 !important;
+}
+
+.sidebar-list.guru ul li:nth-child(5).complete a:hover .svg-white path, .sidebar-list.guru ul li:nth-child(5).complete a:focus .svg-white path {
+  stroke: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(5).complete a:active .svg-white circle {
+  stroke: white !important;
+  fill: white !important;
+}
+
+.sidebar-list.guru ul li:nth-child(5).complete a:active .svg-white path {
+  stroke: #547b76 !important;
+}
+
+.sidebar-list.student {
+  background: #50A5DD;
+  color: white;
+}
+
+.sidebar-list.student header {
+  background: #F1F1F1;
+  color: #40484B;
+}
+
+.sidebar-list.student ul li.complete a .svg-white svg circle {
+  stroke: #65b0e1 !important;
+  fill: #65b0e1 !important;
+}
+
+.sidebar-list.student ul li:nth-child(1) a {
+  background: #466d85;
+}
+
+.sidebar-list.student ul li:nth-child(1) a:hover, .sidebar-list.student ul li:nth-child(1) a:focus {
+  background: #a3b6c2;
+  color: #435b68;
+}
+
+.sidebar-list.student ul li:nth-child(1) a:hover .svg-white *, .sidebar-list.student ul li:nth-child(1) a:focus .svg-white * {
+  stroke: #435b68 !important;
+}
+
+.sidebar-list.student ul li:nth-child(1) a:active {
+  background: #435b68;
+  color: white;
+}
+
+.sidebar-list.student ul li:nth-child(1) a:active .svg-white * {
+  stroke: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(1).complete a:hover .svg-white circle, .sidebar-list.student ul li:nth-child(1).complete a:focus .svg-white circle {
+  fill: #435b68 !important;
+}
+
+.sidebar-list.student ul li:nth-child(1).complete a:hover .svg-white path, .sidebar-list.student ul li:nth-child(1).complete a:focus .svg-white path {
+  stroke: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(1).complete a:active .svg-white circle {
+  stroke: white !important;
+  fill: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(1).complete a:active .svg-white path {
+  stroke: #435b68 !important;
+}
+
+.sidebar-list.student ul li:nth-child(2) a {
+  background: #497b9b;
+}
+
+.sidebar-list.student ul li:nth-child(2) a:hover, .sidebar-list.student ul li:nth-child(2) a:focus {
+  background: #a4bdcd;
+  color: #456273;
+}
+
+.sidebar-list.student ul li:nth-child(2) a:hover .svg-white *, .sidebar-list.student ul li:nth-child(2) a:focus .svg-white * {
+  stroke: #456273 !important;
+}
+
+.sidebar-list.student ul li:nth-child(2) a:active {
+  background: #456273;
+  color: white;
+}
+
+.sidebar-list.student ul li:nth-child(2) a:active .svg-white * {
+  stroke: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(2).complete a:hover .svg-white circle, .sidebar-list.student ul li:nth-child(2).complete a:focus .svg-white circle {
+  fill: #456273 !important;
+}
+
+.sidebar-list.student ul li:nth-child(2).complete a:hover .svg-white path, .sidebar-list.student ul li:nth-child(2).complete a:focus .svg-white path {
+  stroke: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(2).complete a:active .svg-white circle {
+  stroke: white !important;
+  fill: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(2).complete a:active .svg-white path {
+  stroke: #456273 !important;
+}
+
+.sidebar-list.student ul li:nth-child(3) a {
+  background: #4b89b1;
+}
+
+.sidebar-list.student ul li:nth-child(3) a:hover, .sidebar-list.student ul li:nth-child(3) a:focus {
+  background: #a5c4d8;
+  color: #46697e;
+}
+
+.sidebar-list.student ul li:nth-child(3) a:hover .svg-white *, .sidebar-list.student ul li:nth-child(3) a:focus .svg-white * {
+  stroke: #46697e !important;
+}
+
+.sidebar-list.student ul li:nth-child(3) a:active {
+  background: #46697e;
+  color: white;
+}
+
+.sidebar-list.student ul li:nth-child(3) a:active .svg-white * {
+  stroke: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(3).complete a:hover .svg-white circle, .sidebar-list.student ul li:nth-child(3).complete a:focus .svg-white circle {
+  fill: #46697e !important;
+}
+
+.sidebar-list.student ul li:nth-child(3).complete a:hover .svg-white path, .sidebar-list.student ul li:nth-child(3).complete a:focus .svg-white path {
+  stroke: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(3).complete a:active .svg-white circle {
+  stroke: white !important;
+  fill: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(3).complete a:active .svg-white path {
+  stroke: #46697e !important;
+}
+
+.sidebar-list.student ul li:nth-child(4) a {
+  background: #4e97c7;
+}
+
+.sidebar-list.student ul li:nth-child(4) a:hover, .sidebar-list.student ul li:nth-child(4) a:focus {
+  background: #a7cbe3;
+  color: #477089;
+}
+
+.sidebar-list.student ul li:nth-child(4) a:hover .svg-white *, .sidebar-list.student ul li:nth-child(4) a:focus .svg-white * {
+  stroke: #477089 !important;
+}
+
+.sidebar-list.student ul li:nth-child(4) a:active {
+  background: #477089;
+  color: white;
+}
+
+.sidebar-list.student ul li:nth-child(4) a:active .svg-white * {
+  stroke: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(4).complete a:hover .svg-white circle, .sidebar-list.student ul li:nth-child(4).complete a:focus .svg-white circle {
+  fill: #477089 !important;
+}
+
+.sidebar-list.student ul li:nth-child(4).complete a:hover .svg-white path, .sidebar-list.student ul li:nth-child(4).complete a:focus .svg-white path {
+  stroke: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(4).complete a:active .svg-white circle {
+  stroke: white !important;
+  fill: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(4).complete a:active .svg-white path {
+  stroke: #477089 !important;
+}
+
+.sidebar-list.student ul li:nth-child(5) a {
+  background: #4fa0d6;
+}
+
+.sidebar-list.student ul li:nth-child(5) a:hover, .sidebar-list.student ul li:nth-child(5) a:focus {
+  background: #a7d0eb;
+  color: #487491;
+}
+
+.sidebar-list.student ul li:nth-child(5) a:hover .svg-white *, .sidebar-list.student ul li:nth-child(5) a:focus .svg-white * {
+  stroke: #487491 !important;
+}
+
+.sidebar-list.student ul li:nth-child(5) a:active {
+  background: #487491;
+  color: white;
+}
+
+.sidebar-list.student ul li:nth-child(5) a:active .svg-white * {
+  stroke: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(5).complete a:hover .svg-white circle, .sidebar-list.student ul li:nth-child(5).complete a:focus .svg-white circle {
+  fill: #487491 !important;
+}
+
+.sidebar-list.student ul li:nth-child(5).complete a:hover .svg-white path, .sidebar-list.student ul li:nth-child(5).complete a:focus .svg-white path {
+  stroke: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(5).complete a:active .svg-white circle {
+  stroke: white !important;
+  fill: white !important;
+}
+
+.sidebar-list.student ul li:nth-child(5).complete a:active .svg-white path {
+  stroke: #487491 !important;
+}
+
+fieldset {
+  margin: 0;
+}
+
+fieldset.guru {
+  background: #40484B;
+}
+
+fieldset.guru label {
+  color: #69B3A5;
+}
+
+fieldset.guru input {
+  background: #576267;
+  color: white;
+}
+
+fieldset.guru input:focus {
+  background: white;
+  color: #40484B;
+}
+
+fieldset.student {
+  background: white;
+}
+
+fieldset.student label {
+  color: #50A5DD;
+}
+
+fieldset.student input {
+  background: #F1F1F1;
+  color: #40484B;
+}
+
+fieldset.student input:focus {
+  background: #eef6fc;
+  color: #40484B;
+}
+
 /* ---------- FAQ */
 #faq {
   height: 100%;
@@ -107,6 +634,52 @@
   color: #40484B;
   font-size: 16px;
   font-weight: 600;
+}
+
+#faq .main dl a {
+  display: block;
+}
+
+#faq .main dl a:hover dt, #faq .main dl a:focus dt {
+  background: #b4b1b4;
+  color: #55555a;
+}
+
+#faq .main dl a:hover dt .close-button svg, #faq .main dl a:focus dt .close-button svg {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+#faq .main dl a:hover dt .close-button svg *, #faq .main dl a:focus dt .close-button svg * {
+  stroke: #55555a;
+}
+
+#faq .main dl a:hover dt.active .close-button svg, #faq .main dl a:focus dt.active .close-button svg {
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+#faq .main dl a:hover + dd, #faq .main dl a:focus + dd {
+  border-color: #b4b1b4;
+}
+
+#faq .main dl a:active dt {
+  background: #55555a;
+  color: white;
+}
+
+#faq .main dl a:active dt .close-button svg * {
+  stroke: white;
+}
+
+#faq .main dl a:active + dd {
+  border-color: #55555a;
 }
 
 @media screen and (min-width: 768px) {
