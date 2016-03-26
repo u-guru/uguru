@@ -246,7 +246,7 @@ angular.module('uguru.util.controllers')
 				}
 
 				$scope.selected_scene = $scope.page.scenes[0];
-				$scope.selected_scene.tabIndex = 1;
+				$scope.selected_scene.tabIndex = 2;
 				var modalElem = document.querySelector('#cta-modal-selected-scene');
 				modalElem && modalElem.classList.add('show');
 
