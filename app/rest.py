@@ -3453,6 +3453,8 @@ class AdminDashboardView(restful.Resource):
 
             if not obj_substate:
                 print "removing state", obj_state['name'], 'from scene', obj_scene['name']
+                from lib.mp_admin import removeStateFromScene
+                removeStateFromScene(obj_scene, obj_state, obj_type)
             else:
 
                 print "removing substate", obj_substate['name'], 'from state/scene', "%s/%s" % (obj_state['name'],obj_scene['name'])
