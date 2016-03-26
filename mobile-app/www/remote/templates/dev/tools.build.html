@@ -1,8 +1,8 @@
-<ion-view>
+<ion-view ng-controller="DevToolsController as bldr">
     <div id="build">
         <main>
             <nav class="build-main-top">
-                <h1>Scene 1 &rsaquo; Dropdown 1</h1>
+                <dropdown ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
                 <div>
                     <div>
                         <h2>Drag</h2>
@@ -18,7 +18,7 @@
                             </label>
                         </div>
                     </div>
-                    <div>
+                    <!-- <div>
                         <h2>Resolution</h2>
                         <div class="dropdown small">
                             <div>
@@ -35,7 +35,8 @@
                                 <li tabindex>Desktop 1920x1280</li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
+                    <dropdown ng-model="page.dropdowns.screenSizeOptions"></dropdown>
                     <a class="build-main-settings" ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
                 </div>
             </nav>

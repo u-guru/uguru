@@ -139,7 +139,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.build', {
         url: '/build',
-        templateUrl: BASE + 'templates/builder.html'
+        templateUrl: BASE + 'templates/dev/tools.build.html'
   }).
   state('root.guru-validation', {
         url: '/guru-validation',
@@ -161,7 +161,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/request-public',
         templateUrl: BASE + 'templates/request.public.html'
   }).
-  
+
   //start essay
   state('root.essay-student-university', {
         url: '/essay-student-university',

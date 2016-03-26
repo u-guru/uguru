@@ -135,10 +135,10 @@
                                                 <a ng-click="updateStateElement(scene, selected_scene, 'fluid', true)">&times;</a>
                                             </li>
                                         </ul>
-                                        <div ng-repeat="substate in scene.substates" ng-if='scene.substates && scene.substates.length'>
+                                        <div ng-repeat="substate in scene.substates track by $index" ng-if='scene.substates && scene.substates.length'>
                                             <ul>
                                                 <li><span>{{$index + 1}}</span></li>
-                                                <li ng-click='updateSubStateField("name", substate.name, substate, scene, selected_scene, "fluid")'>{{substate.name}}</li>
+                                                <li ng-click='updateSubStateField("name", substate.name, substate, scene, selected_scene, "fluid")'>{{substate.name}} -- {{substate.re}}</li>
                                                 <li ng-click='updateSubStateField("description", substate.description, substate, scene, selected_scene, "fluid")'>{{substate.description}}</li>
                                                 <li ng-click='updateSubStateField("estimated time", substate.estimated_time, substate, scene, selected_scene, "fluid")'>{{substate.estimated_time}} </li>
                                                 <!-- <li>as scene opens, guru head is already visible</li> -->
@@ -166,7 +166,7 @@
                                                     <a ng-click="page.toggles.showAddSubtate = !page.toggles.showAddSubtate && scene.ref;">&times;</a>
                                                 </li>
                                                 <li>
-                                                    <input class='full-xy p05xy m10x text-center txt-16' placeholder="name" ng-model="newSubScene.name"/> 
+                                                    <input class='full-xy p05xy m10x text-center txt-16' placeholder="name" ng-model="newSubScene.name"/>
                                                 </li>
                                                 <li class='relative'>
                                                     <input class='full-xy p05xy m10x text-center txt-16' placeholder="add description here" ng-model="newSubScene.description"/>
@@ -175,7 +175,7 @@
                                                     <input class='full-xy p05xy m10x text-center txt-16' type="number" placeholder="time (minutes)" min="0" max="59" ng-model="newSubScene.estimated_time">
                                                 </li>
                                                 <li>
-                                                    <button class="radius-2 m10x bg-slate height-36 txt-18" ng-click='createSubsceneElement(newSubScene, scene, selected_scene, "fluid")'>Save</button>
+                                                    <button class="radius-2 m10x bg-slate height-36 txt-18" ng-click='createSubstateElement(newSubScene, scene, selected_scene, "fluid")'>Save</button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -376,362 +376,12 @@
                                 </ul> -->
                             </div>
                         </div>
-                        <div class='admin-states admin-states-jason flex-wrap-start full-xy' ng-if='selected_scene.tabIndex === 2'>
-                            <div class='admin-states-header'>
+                        <div class='admin-states admin-states-jason flex-wrap-start full-xy' ng-if='selected_scene.tabIndex === 2' ng-include="img_base + BASE + 'templates/admin/index.test-states.html'">
+                            <div class='admin-states-header relative'>
                                 <h1>Test States</h1>
-                                <div>0 total</div>
+                                <div>{{selected_scene.element_states.testing.length}}</div>
                             </div>
-                            <div class="admin-states-container no-scrollbar">
-                                <ul class="title">
-                                    <li></li><li></li>
-                                    <li>
-                                        <div></div>
-                                    </li>
-                                    <li>
-                                        <div></div>
-                                    </li>
-                                    <li>
-                                        <div></div>
-                                    </li>
-                                    <li><h1>iOS</h1></li>
-                                    <li><h1>Android</h1></li>
-                                </ul>
-                                <ul class="title">
-                                    <li><h1>Feature</h1></li>
-                                    <li><h1>Scenario</h1></li>
-                                    <li><h1>m-S</h1></li>
-                                    <li><h1>m-M</h1></li>
-                                    <li><h1>m-L</h1></li>
-                                    <li><h1>m-XL</h1></li>
-                                    <li><h1>d-S</h1></li>
-                                    <li><h1>d-M</h1></li>
-                                    <li><h1>d-L</h1></li>
-                                    <li><h1>m-S</h1></li>
-                                    <li><h1>m-M</h1></li>
-                                    <li><h1>m-L</h1></li>
-                                    <li><h1>m-XL</h1></li>
-                                    <li><h1>d-S</h1></li>
-                                    <li><h1>d-M</h1></li>
-                                    <li><h1>d-L</h1></li>
-                                    <li><h1>m-S</h1></li>
-                                    <li><h1>m-M</h1></li>
-                                    <li><h1>m-L</h1></li>
-                                    <li><h1>m-XL</h1></li>
-                                    <li><h1>d-S</h1></li>
-                                    <li><h1>d-M</h1></li>
-                                    <li><h1>d-L</h1></li>
-                                    <li><h1>App</h1></li>
-                                    <li><h1>Safari</h1></li>
-                                    <li><h1>App</h1></li>
-                                    <li><h1>Chrome</li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <ul>
-                                            <li>Feature Name</li>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                                            <li>
-                                                <div class="checkbox-container fail">
-                                    				<div>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container unsure">
-                                    				<div>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,50 L86,50"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container pass">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item" checked/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                            <li>
-                                                <div class="checkbox-container">
-                                    				<div>
-                                    					<input type="checkbox" id="checkbox-item"/>
-                                    					<span>
-                                    						<svg viewBox="0 0 100 100">
-                                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                    						</svg>
-                                    					</span>
-                                    				</div>
-                                    			</div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+
                         </div>
 
                          <div class='admin-time-states flex-wrap-start full-xy' ng-if='selected_scene.tabIndex === 3'>
@@ -830,7 +480,7 @@
                                                     <a ng-click="page.toggles.showAddSubtate = !page.toggles.showAddSubtate && scene.ref;">&times;</a>
                                                 </li>
                                                 <li>
-                                                    <input class='full-xy p05xy m10x text-center txt-16' placeholder="name" ng-model="newSubScene.name"/> 
+                                                    <input class='full-xy p05xy m10x text-center txt-16' placeholder="name" ng-model="newSubScene.name"/>
                                                 </li>
                                                 <li class='relative'>
                                                     <input class='full-xy p05xy m10x text-center txt-16' placeholder="add description here" ng-model="newSubScene.description"/>
@@ -839,7 +489,7 @@
                                                     <input class='full-xy p05xy m10x text-center txt-16' type="number" placeholder="time (minutes)" min="0" max="59" ng-model="newSubScene.estimated_time">
                                                 </li>
                                                 <li>
-                                                    <button class="radius-2 m10x bg-slate height-36 txt-18" ng-click='createSubsceneElement(newSubScene, scene, selected_scene, "fluid")'>Save</button>
+                                                    <button class="radius-2 m10x bg-slate height-36 txt-18" ng-click='createSubstateElement(newSubScene, scene, selected_scene, "fluid")'>Save</button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -2327,7 +1977,7 @@
                                 <span class="weight-900">.<input readonly="true" onclick="this.select()" size="10" value="weight-900"/></span>
                             </li>
             			</ul>
-                        
+
                         <h2>Type &rarr; Alignment</h2>
                         <ul class="ugrid-3">
         					<li class="txt-left">
@@ -2340,7 +1990,7 @@
                                 <span>.<input readonly="true" onclick="this.select()" size="10" value="txt-right"/></span>
                             </li>
             			</ul>
-                        
+
                         <div class="flex-wrap full-x">
                             <div>
                                 <h2>Type &rarr; Spacing</h2>
@@ -2350,7 +2000,7 @@
                                     <li><span>.<input readonly="true" class="space-3" onclick="this.select()" size="10" value="space-3"/></span></li>
                     			</ul>
                             </div>
-                            
+
                             <div>
                                 <h2>Type &rarr; Capitalization</h2>
                                 <ul>
@@ -2359,7 +2009,7 @@
                                     <li><span>.<input readonly="true" class="lettercase" onclick="this.select()" size="10" value="lettercase"/></span></li>
                     			</ul>
                             </div>
-                            
+
                             <div>
                                 <h2>Type &rarr; Line Height</h2>
                                 <ul>
@@ -2367,7 +2017,7 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <h2>Type &rarr; Sizes</h2>
                         <ul>
                             <li><span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-1"/></span></li>
@@ -2381,7 +2031,7 @@
                             <li><span>.<input readonly="true" class="txt-48" onclick="this.select()" size="6" value="txt-9"/></span></li>
                             <li><span>.<input readonly="true" class="txt-64" onclick="this.select()" size="6" value="txt-10"/></span></li>
                         </ul>
-                        
+
                         <h2>Type &rarr; Colors</h2>
                         <ul>
                             <li><span class="bg-slate txt-smoke">.<input readonly="true" class="txt-smoke" onclick="this.select()" size="9" value="txt-smoke"/></span></li>
@@ -2404,7 +2054,7 @@
                             <li><span class="txt-eggplant">.<input readonly="true" class="txt-eggplant" onclick="this.select()" size="12" value="txt-eggplant"/></span></li>
                             <li><span class="txt-cerise">.<input readonly="true" class="txt-cerise" onclick="this.select()" size="10" value="txt-cerise"/></span></li>
             			</ul>
-                        
+
                         <h2>Background Colors</h2>
                         <ul class="no-input">
                             <li><span class="bg-charcoal-05p">-05p</span></li>

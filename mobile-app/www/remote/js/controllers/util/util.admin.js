@@ -22,7 +22,7 @@ angular.module('uguru.util.controllers')
 				user_stories: AdminContent.getUserStories(),
 				createObjects: AdminContent.getBaseObjects($scope),
 				defaults: {
-					tabsIndex: 2,
+					tabsIndex: 1,
 					sidebarIndex: 1
 				},
 				toggles: {
@@ -98,6 +98,8 @@ angular.module('uguru.util.controllers')
 			};
 			$scope.page.toggles.showAddSubstate = false;
 			$scope.page.toggles.showAddState = false;
+			$scope.page.toggles.showAddScenario = false;
+			$scope.page.toggles.showAddStep = false;
 		}
 
 		function reprocessAllElements(response, scope) {
@@ -122,28 +124,30 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.createStateElement = function(state, scene, scene_type) {
-			LoadingService.showAmbig();
+			LoadingService.showAmbig(5000);
 
-			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPOST(JSON.stringify({state: state, scene: scene, type: scene_type}))
+			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPOST(JSON.stringify({state: state, scene: scene, type: scene_type }))
 			.then(function(response) {
 				console.log('update scene response receives');
 				LoadingService.showSuccess('Scene ' + state.name + ' successfully saved', 2500);
 				resetInitStateObjects();
-				reprocessAllElements(response.plain().admin_components, $scope);
+				// reprocessAllElements(response.plain().admin_components, $scope);
+				getAdminElements();
 			},  function(err) {
 				console.log('error', err);
 				LoadingService.showMsg("Something went wrong tell Samir", 2500);
 			});
 		}
 
-		$scope.createSubsceneElement = function(substate, state, scene, scene_type) {
-			LoadingService.showAmbig();
+		$scope.createSubstateElement = function(substate, state, scene, scene_type) {
+			LoadingService.showAmbig(5000);
 			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPOST(JSON.stringify({substate: substate, state: state, scene: scene, type: scene_type}))
 			.then(function(response) {
 				console.log('update substate response receives');
 				LoadingService.showSuccess('Subscene ' + scene.name + ' successfully saved', 2500);
 				resetInitStateObjects();
-				reprocessAllElements(response.plain().admin_components, $scope);
+				// reprocessAllElements(response.plain().admin_components, $scope);
+				getAdminElements();
 			},  function(err) {
 				console.log('error', err);
 				LoadingService.showMsg("Something went wrong tell Samir", 2500);
@@ -177,7 +181,7 @@ angular.module('uguru.util.controllers')
 			} else if (is_remove) {
 				action = 'remove';
 			}
-			LoadingService.showAmbig();
+			LoadingService.showAmbig(5000);
 			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPUT(JSON.stringify({action:action, state: state, scene: scene, type: scene_type}))
 			.then(function(response) {
 				console.log('update scene response receives');
@@ -187,7 +191,7 @@ angular.module('uguru.util.controllers')
 					LoadingService.showSuccess('State ' + state.name + ' successfully updated', 2500);
 				}
 				resetInitStateObjects();
-				reprocessAllElements(response.plain().admin_components, $scope);
+				getAdminElements();
 			},  function(err) {
 				console.log('error', err);
 				LoadingService.showMsg("Something went wrong tell Samir", 2500);
@@ -201,7 +205,7 @@ angular.module('uguru.util.controllers')
 			}  else if (is_remove) {
 				action = 'remove';
 			}
-			LoadingService.showAmbig();
+			LoadingService.showAmbig(null, 10000);
 			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPUT(JSON.stringify({action:action, substate: substate, state: state, scene: scene, type: scene_type}))
 			.then(function(response) {
 				$timeout(function() {
@@ -212,7 +216,7 @@ angular.module('uguru.util.controllers')
 					}
 				}, 2500)
 				resetInitStateObjects();
-				reprocessAllElements(response.plain().admin_components, $scope);
+				getAdminElements();
 			},  function(err) {
 				console.log('error', err);
 				LoadingService.showMsg("Something went wrong tell Samir", 2500);
