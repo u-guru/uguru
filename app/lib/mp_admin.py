@@ -311,6 +311,16 @@ def addStateToScene(_type, assign, scene_obj, index, title, description=None, et
 
     return scene_obj
 
+def removeStateFromScene(r_scene, state, type):
+    import json
+    master_elements_dict = json.load(open('./app/lib/elements.json'))
+    for scene in master_elements_dict['scenes']:
+        if scene['ref'] == r_scene['ref']:
+            print len(master_elements_dict['scenes'])
+            master_elements_dict['scenes'].remove(scene)
+            print len(master_elements_dict['scenes'])
+
+
 def reprocessActionItems(elements):
     elements['action_items'] = {'samir': [], 'jason': [], 'gabrielle': [], 'jeselle': []}
     action_item_mapping = {'fluid': 'gabrielle', 'testing': 'jason', 'function': 'samir', 'hifi': 'jeselle'}
