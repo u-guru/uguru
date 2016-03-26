@@ -6175,10 +6175,21 @@
   background: #40484B;
 }
 
+@media screen and (max-width: 768px) {
+  #ranking {
+    overflow: auto;
+  }
+}
+
 #ranking .main {
   padding: 0;
   margin: 0 auto;
-  overflow: auto;
+}
+
+@media screen and (min-width: 768px) {
+  #ranking .main {
+    overflow: auto;
+  }
 }
 
 #ranking .main > header {
@@ -6198,7 +6209,7 @@
   margin: 0 auto;
 }
 
-#ranking .main > div .ranking-top {
+#ranking .main .ranking-top {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -6211,26 +6222,26 @@
   padding: 7.5px;
 }
 
-#ranking .main > div .ranking-top li {
+#ranking .main .ranking-top li {
   width: calc(100% / 3);
   height: 100%;
   padding: 7.5px;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile {
+#ranking .main .ranking-top li .ranking-tile {
   position: relative;
   background: rgba(99, 112, 116, 0.5);
   padding: 15px;
   border-radius: 2px;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile h2 {
+#ranking .main .ranking-top li .ranking-tile h2 {
   font-size: 20px;
   font-weight: 600;
   text-align: center;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile header {
+#ranking .main .ranking-top li .ranking-tile header {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -6240,45 +6251,45 @@
   display: flex;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile header span {
+#ranking .main .ranking-top li .ranking-tile header span {
   display: block;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile header span svg {
+#ranking .main .ranking-top li .ranking-tile header span svg {
   width: 48px;
   height: 48px;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile header span svg * {
+#ranking .main .ranking-top li .ranking-tile header span svg * {
   stroke-width: 6px;
   stroke: white;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile header div {
+#ranking .main .ranking-top li .ranking-tile header div {
   margin-left: 15px;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile header div h1 {
+#ranking .main .ranking-top li .ranking-tile header div h1 {
   padding: 0;
   font-size: 36px;
   font-weight: 900;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile header div h2 {
+#ranking .main .ranking-top li .ranking-tile header div h2 {
   filter: alpha(opacity=50);
   opacity: 0.5;
   margin: 0;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile svg *[stroke] {
+#ranking .main .ranking-top li .ranking-tile svg *[stroke] {
   stroke: white;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile svg *[fill*="#"] {
+#ranking .main .ranking-top li .ranking-tile svg *[fill*="#"] {
   fill: white;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile .ranking-tile-graph {
+#ranking .main .ranking-top li .ranking-tile .ranking-tile-graph {
   display: block;
   position: absolute;
   left: 15px;
@@ -6286,308 +6297,517 @@
   width: calc(100% - 30px);
 }
 
-#ranking .main > div .ranking-top li .ranking-tile:not(.large) {
+#ranking .main .ranking-top li .ranking-tile:not(.large) {
   height: calc(50% - 7.5px);
 }
 
-#ranking .main > div .ranking-top li .ranking-tile:first-child {
+#ranking .main .ranking-top li .ranking-tile:first-child {
   margin-bottom: 15px;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile.large {
+#ranking .main .ranking-top li .ranking-tile.large {
   height: 100%;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile.large h2 {
+#ranking .main .ranking-top li .ranking-tile.large h2 {
   font-size: 28px;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile.tile-shamrock svg *[stroke] {
+#ranking .main .ranking-top li .ranking-tile.tile-shamrock svg *[stroke] {
   stroke: #69B3A5;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile.tile-shamrock svg *[fill*="#"] {
+#ranking .main .ranking-top li .ranking-tile.tile-shamrock svg *[fill*="#"] {
   fill: #69B3A5;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile.tile-lake svg *[stroke] {
+#ranking .main .ranking-top li .ranking-tile.tile-lake svg *[stroke] {
   stroke: #50A5DD;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile.tile-lake svg *[fill*="#"] {
+#ranking .main .ranking-top li .ranking-tile.tile-lake svg *[fill*="#"] {
   fill: #50A5DD;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile.tile-auburn svg *[stroke] {
+#ranking .main .ranking-top li .ranking-tile.tile-auburn svg *[stroke] {
   stroke: #F04F54;
 }
 
-#ranking .main > div .ranking-top li .ranking-tile.tile-auburn svg *[fill*="#"] {
+#ranking .main .ranking-top li .ranking-tile.tile-auburn svg *[fill*="#"] {
   fill: #F04F54;
 }
 
-#ranking .main > div .ranking-list .tab-bar {
+#ranking .main .ranking-list .tab-bar {
   background: #557e78;
-  border-radius: 2px;
-  height: 80px;
 }
 
-#ranking .main > div .ranking-list .tab-bar > div {
-  height: 80px;
-}
-
-#ranking .main > div .ranking-list .tab-bar > div a {
-  height: 80px;
-  font-size: 24px;
+#ranking .main .ranking-list .tab-bar > div a {
   text-transform: none;
 }
 
-#ranking .main > div .ranking-list .ranking-high-score, #ranking .main > div .ranking-list .ranking-next-steps {
+#ranking .main .ranking-list .tab-bar.tall {
+  height: 80px;
+  border-radius: 2px;
+}
+
+#ranking .main .ranking-list .tab-bar.tall > div {
+  height: 80px;
+}
+
+#ranking .main .ranking-list .tab-bar.tall > div a {
+  height: 80px;
+  font-size: 24px;
+}
+
+#ranking .main .ranking-list .ranking-high-score, #ranking .main .ranking-list .ranking-next-steps {
   padding: 0;
   margin: 0 auto;
 }
 
-#ranking .main > div .ranking-list .ranking-high-score h1, #ranking .main > div .ranking-list .ranking-next-steps h1 {
-  font-size: 32px;
-  font-weight: 600;
+@media screen and (max-width: 768px) {
+  #ranking .main .ranking-list .ranking-high-score, #ranking .main .ranking-list .ranking-next-steps {
+    width: calc(100% - 8px);
+    margin-left: 4px;
+  }
+  #ranking .main .ranking-list .ranking-high-score h1, #ranking .main .ranking-list .ranking-next-steps h1 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  #ranking .main .ranking-list .ranking-high-score h2, #ranking .main .ranking-list .ranking-high-score h3, #ranking .main .ranking-list .ranking-next-steps h2, #ranking .main .ranking-list .ranking-next-steps h3 {
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    margin: 0;
+    font-size: 16px;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li, #ranking .main .ranking-list .ranking-next-steps > li {
+    margin-top: 4px;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li:last-child, #ranking .main .ranking-list .ranking-next-steps > li:last-child {
+    margin-bottom: 4px;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li, #ranking .main .ranking-list .ranking-next-steps > li > a {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    background: #2B3234;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  #ranking .main .ranking-list .ranking-next-steps-check, #ranking .main .ranking-list .ranking-high-score li:before {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 48px;
+    height: 100%;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li {
+    position: relative;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a {
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    height: 140px;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check {
+    position: relative;
+    z-index: 10;
+    background: #637074;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check svg {
+    display: block;
+    width: 48px;
+    height: 48px;
+    padding: 6px;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check svg * {
+    stroke: rgba(255, 255, 255, 0.5);
+    stroke-width: 10px;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check.complete {
+    background: #43cb9d;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check.complete svg * {
+    stroke: white;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    width: calc(100% - 48px - 36px);
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(1) {
+    width: 100%;
+    padding: 0 15px 10px;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(2), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(3) {
+    width: 50%;
+    text-align: center;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(2) h4, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(3) h4 {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(2) .impact-meter, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(3) .impact-meter {
+    width: 100%;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(2) .impact-meter svg, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(3) .impact-meter svg {
+    width: 100%;
+    max-width: 70px;
+    margin: 0 auto;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(2) .impact-meter svg path, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(3) .impact-meter svg path {
+    fill: #95999a;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(2) .impact-meter[data-impact="1"] svg path:nth-child(1), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(3) .impact-meter[data-impact="1"] svg path:nth-child(1) {
+    fill: white;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(2) .impact-meter[data-impact="2"] svg path:nth-child(1), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(2) .impact-meter[data-impact="2"] svg path:nth-child(2), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(3) .impact-meter[data-impact="2"] svg path:nth-child(1), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(3) .impact-meter[data-impact="2"] svg path:nth-child(2) {
+    fill: #F6C64E;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(2) .impact-meter[data-impact="3"] svg path, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(3) .impact-meter[data-impact="3"] svg path {
+    fill: #43cb9d;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(2) div, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(3) div {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 0.8;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-link {
+    display: block;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-link svg {
+    display: block;
+    width: 36px;
+    height: 36px;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-link svg * {
+    fill: none;
+    stroke: white;
+    stroke-width: 6px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:hover, #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:focus {
+    background: #557e78;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:active {
+    background: #b4d9d2;
+    color: #557e78;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:active .ranking-next-steps-link svg * {
+    stroke: #557e78;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li.ranking-next-steps-locked:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(117, 117, 117, 0.8);
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li.ranking-next-steps-locked > a {
+    cursor: default;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li.ranking-next-steps-locked > a .ranking-next-steps-check {
+    background: #757575;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li.ranking-next-steps-locked > a .ranking-next-steps-check svg * {
+    stroke: white;
+    stroke-width: 5px;
+  }
+  #ranking .main .ranking-list .ranking-high-score {
+    counter-reset: li;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li {
+    height: 100px;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li:before {
+    content: counter(li);
+    counter-increment: li;
+    font-size: 36px;
+    font-weight: 900;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li:nth-child(1):before {
+    background: #e8c480;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li:nth-child(2):before {
+    background: #c8bbc9;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li:nth-child(3):before {
+    background: #c5857c;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li.current-score {
+    background: #576267;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li .user-icon-32 {
+    margin-top: 15px;
+    margin-left: 15px;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li > div:nth-child(2) {
+    width: calc(100% - 15px - 32px - 48px - 15px);
+    padding: 15px;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li > div:nth-child(2) .rating-stars {
+    margin: 0;
+    margin-right: 10px;
+  }
 }
 
-#ranking .main > div .ranking-list .ranking-high-score h2, #ranking .main > div .ranking-list .ranking-high-score h3, #ranking .main > div .ranking-list .ranking-next-steps h2, #ranking .main > div .ranking-list .ranking-next-steps h3 {
-  filter: alpha(opacity=50);
-  opacity: 0.5;
-  margin: 0;
-  font-size: 20px;
+@media screen and (min-width: 768px) {
+  #ranking .main .ranking-list .ranking-high-score h1, #ranking .main .ranking-list .ranking-next-steps h1 {
+    font-size: 32px;
+    font-weight: 600;
+  }
+  #ranking .main .ranking-list .ranking-high-score h2, #ranking .main .ranking-list .ranking-high-score h3, #ranking .main .ranking-list .ranking-next-steps h2, #ranking .main .ranking-list .ranking-next-steps h3 {
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    margin: 0;
+    font-size: 20px;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li, #ranking .main .ranking-list .ranking-next-steps > li {
+    margin-top: 15px;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li, #ranking .main .ranking-list .ranking-next-steps > li > a {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    background: #2B3234;
+    border-radius: 2px;
+    padding: 15px;
+  }
+  #ranking .main .ranking-list .ranking-next-steps-check, #ranking .main .ranking-list .ranking-high-score li:before {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 84px;
+    height: 84px;
+    border-radius: 2px;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li {
+    position: relative;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a {
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding-right: 10.5px;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check {
+    position: relative;
+    z-index: 10;
+    background: #637074;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check svg {
+    display: block;
+    width: 64px;
+    height: 64px;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check svg * {
+    stroke: rgba(255, 255, 255, 0.5);
+    stroke-width: 10px;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check.complete {
+    background: #43cb9d;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check.complete svg * {
+    stroke: white;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) {
+    margin-left: 30px;
+    width: calc(100% - 84px - 30px - 120px - 120px - 36px);
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) {
+    width: 120px;
+    text-align: center;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3) h4, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) h4 {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter {
+    width: 100%;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter svg, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter svg {
+    width: 100%;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter svg path, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter svg path {
+    fill: #95999a;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter[data-impact="1"] svg path:nth-child(1), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter[data-impact="1"] svg path:nth-child(1) {
+    fill: white;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter[data-impact="2"] svg path:nth-child(1), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter[data-impact="2"] svg path:nth-child(2), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter[data-impact="2"] svg path:nth-child(1), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter[data-impact="2"] svg path:nth-child(2) {
+    fill: #F6C64E;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter[data-impact="3"] svg path, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter[data-impact="3"] svg path {
+    fill: #43cb9d;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3) div, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) div {
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 0.8;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-link {
+    display: block;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-link svg {
+    display: block;
+    width: 36px;
+    height: 36px;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li > a .ranking-next-steps-link svg * {
+    fill: none;
+    stroke: white;
+    stroke-width: 6px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:hover, #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:focus {
+    background: #557e78;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:active {
+    background: #b4d9d2;
+    color: #557e78;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:active .ranking-next-steps-link svg * {
+    stroke: #557e78;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li.ranking-next-steps-locked:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(117, 117, 117, 0.8);
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li.ranking-next-steps-locked > a {
+    cursor: default;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li.ranking-next-steps-locked > a .ranking-next-steps-check {
+    background: #757575;
+  }
+  #ranking .main .ranking-list .ranking-next-steps > li.ranking-next-steps-locked > a .ranking-next-steps-check svg * {
+    stroke: white;
+    stroke-width: 5px;
+  }
+  #ranking .main .ranking-list .ranking-high-score {
+    counter-reset: li;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li:before {
+    content: counter(li);
+    counter-increment: li;
+    font-size: 72px;
+    font-weight: 900;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li:nth-child(1):before {
+    background: #e8c480;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li:nth-child(2):before {
+    background: #c8bbc9;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li:nth-child(3):before {
+    background: #c5857c;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li:last-child {
+    margin-bottom: 15px;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li.current-score {
+    background: #576267;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li .user-icon-72 {
+    margin-top: 6px;
+    margin-left: 30px;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li > div:nth-child(2) {
+    width: calc(100% - 150px - 72px - 60px - 84px);
+    margin-left: 30px;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li > div:nth-child(3) {
+    width: 150px;
+    text-align: center;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li .tag-list {
+    margin-left: -15px;
+  }
+  #ranking .main .ranking-list .ranking-high-score > li .rating-stars {
+    max-width: 150px;
+  }
 }
 
-#ranking .main > div .ranking-list .ranking-high-score > li, #ranking .main > div .ranking-list .ranking-next-steps > li {
-  margin-top: 15px;
+#ranking .ranking-slider {
+  height: calc(100% - 58px);
 }
 
-#ranking .main > div .ranking-list .ranking-high-score > li, #ranking .main > div .ranking-list .ranking-next-steps > li > a {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  background: #2B3234;
-  border-radius: 2px;
-  padding: 15px;
+#ranking .ranking-slider .ranking-slide {
+  padding-bottom: 30px;
 }
 
-#ranking .main > div .ranking-list .ranking-next-steps-check, #ranking .main > div .ranking-list .ranking-high-score li:before {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  width: 84px;
-  height: 84px;
-  border-radius: 2px;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li {
-  position: relative;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a {
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-align-items: center;
-  align-items: center;
-  padding-right: 10.5px;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check {
-  position: relative;
-  z-index: 10;
-  background: #637074;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check svg {
+#ranking .ranking-slider .ranking-slide span {
   display: block;
-  width: 64px;
-  height: 64px;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check svg * {
-  stroke: rgba(255, 255, 255, 0.5);
-  stroke-width: 10px;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check.complete {
-  background: #43cb9d;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a .ranking-next-steps-check.complete svg * {
-  stroke: white;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(2) {
-  margin-left: 30px;
-  width: calc(100% - 84px - 30px - 120px - 120px - 36px);
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(3), #ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(4) {
-  width: 120px;
-  text-align: center;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(3) h4, #ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(4) h4 {
-  margin-bottom: 5px;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter, #ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter {
-  width: 100%;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter svg, #ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter svg {
-  width: 100%;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter svg path, #ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter svg path {
-  fill: #95999a;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter[data-impact="1"] svg path:nth-child(1), #ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter[data-impact="1"] svg path:nth-child(1) {
-  fill: white;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter[data-impact="2"] svg path:nth-child(1), #ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter[data-impact="2"] svg path:nth-child(2), #ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter[data-impact="2"] svg path:nth-child(1), #ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter[data-impact="2"] svg path:nth-child(2) {
-  fill: #F6C64E;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter[data-impact="3"] svg path, #ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter[data-impact="3"] svg path {
-  fill: #43cb9d;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(3) div, #ranking .main > div .ranking-list .ranking-next-steps > li > a > div:nth-child(4) div {
-  font-size: 72px;
-  font-weight: 900;
-  line-height: 0.8;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a .ranking-next-steps-link {
-  display: block;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a .ranking-next-steps-link svg {
-  display: block;
-  width: 36px;
-  height: 36px;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li > a .ranking-next-steps-link svg * {
-  fill: none;
-  stroke: white;
-  stroke-width: 6px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:hover, #ranking .main > div .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:focus {
-  background: #557e78;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:active {
-  background: #b4d9d2;
-  color: #557e78;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:active .ranking-next-steps-link svg * {
-  stroke: #557e78;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li.ranking-next-steps-locked:after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  margin: 0 auto;
   height: 100%;
-  background: rgba(117, 117, 117, 0.8);
 }
 
-#ranking .main > div .ranking-list .ranking-next-steps > li.ranking-next-steps-locked > a {
-  cursor: default;
+#ranking .ranking-slider .ranking-slide svg {
+  display: block;
+  margin: 0 auto;
+  height: 100%;
 }
 
-#ranking .main > div .ranking-list .ranking-next-steps > li.ranking-next-steps-locked > a .ranking-next-steps-check {
-  background: #757575;
-}
-
-#ranking .main > div .ranking-list .ranking-next-steps > li.ranking-next-steps-locked > a .ranking-next-steps-check svg * {
-  stroke: white;
-  stroke-width: 5px;
-}
-
-#ranking .main > div .ranking-list .ranking-high-score {
-  counter-reset: li;
-}
-
-#ranking .main > div .ranking-list .ranking-high-score > li:before {
-  content: counter(li);
-  counter-increment: li;
-  font-size: 72px;
-  font-weight: 900;
-}
-
-#ranking .main > div .ranking-list .ranking-high-score > li:nth-child(1):before {
-  background: #e8c480;
-}
-
-#ranking .main > div .ranking-list .ranking-high-score > li:nth-child(2):before {
-  background: #c8bbc9;
-}
-
-#ranking .main > div .ranking-list .ranking-high-score > li:nth-child(3):before {
-  background: #c5857c;
-}
-
-#ranking .main > div .ranking-list .ranking-high-score > li:last-child {
-  margin-bottom: 15px;
-}
-
-#ranking .main > div .ranking-list .ranking-high-score > li.current-score {
-  background: #576267;
-}
-
-#ranking .main > div .ranking-list .ranking-high-score > li .user-icon-72 {
-  margin-top: 6px;
-  margin-left: 30px;
-}
-
-#ranking .main > div .ranking-list .ranking-high-score > li > div:nth-child(2) {
-  width: calc(100% - 150px - 72px - 60px - 84px);
-  margin-left: 30px;
-}
-
-#ranking .main > div .ranking-list .ranking-high-score > li > div:nth-child(3) {
-  width: 150px;
-  text-align: center;
-}
-
-#ranking .main > div .ranking-list .ranking-high-score > li .tag-list {
-  margin-left: -15px;
-}
-
-#ranking .main > div .ranking-list .ranking-high-score > li .rating-stars {
-  max-width: 150px;
+#ranking .ranking-slider .slider-pager {
+  bottom: 10px;
 }
 
 #desktop-ranking .main aside,
