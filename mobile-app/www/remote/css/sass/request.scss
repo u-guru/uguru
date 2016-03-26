@@ -2718,15 +2718,6 @@
 		}
 	}
 	&.request-confirm {
-		header {
-			background: $lake;
-			svg {
-				width: 120px;
-			}
-			h1 {
-				text-transform: none;
-			}
-		}
 		> button {
 			position: absolute;
 			bottom: 0;
@@ -2734,7 +2725,7 @@
 		}
 		> div {
 			padding-bottom: 64px;
-			> a {
+			a {
 				display: block;
 				&:hover, &:focus {
 					background: rgba($lake, .2);
@@ -2742,7 +2733,7 @@
 			}
 			.confirm-course {
 				padding: 15px;
-				background: $slate;
+				background: $lake;
 				h1 {
 					font-size: 20px;
 					font-weight: 600;
@@ -2754,7 +2745,7 @@
 					font-weight: 600;
 				}
 				&:hover, &:focus {
-					background: rgba($lake, .5);
+					background: mix($lake, white)!important;
 					color: $slate;
 				}
 			}
@@ -2843,14 +2834,20 @@
 			}
 		}
 		@media screen and (min-width: 768px) {
-			> div {
-				@include flex;
-				@include flex-wrap;
-				a:first-child {
-					width: 100%;
-				}
-				a:not(:first-child) {
-					width: 50%;
+			.confirm-desc {
+				li {
+					a {
+						background: white;
+						&:nth-child(1), &:nth-child(3) {
+							border-radius: 2px 2px 0 0;
+						}
+						&:nth-child(2), &:nth-child(4) {
+							border-radius: 0 0 2px 2px;
+						}
+						&:only-child {
+							border-radius: 2px;
+						}
+					}
 				}
 			}
 		}
@@ -3011,22 +3008,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $auburn;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($auburn, .2);
 					}
 				}
 				.chip {
 					background: $auburn!important;
-				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($auburn, .5);
-					}
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -3207,22 +3196,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $orange;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($orange, .2);
 					}
 				}
 				.chip {
 					background: $orange!important;
-				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($orange, .5);
-					}
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -3403,22 +3384,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $gold;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($gold, .2);
 					}
 				}
 				.chip {
 					background: $gold!important;
-				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($gold, .5);
-					}
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -3599,22 +3572,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $moola;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($moola, .2);
 					}
 				}
 				.chip {
 					background: $moola!important;
-				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($moola, .5);
-					}
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -3795,22 +3760,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $azure;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($azure, .2);
 					}
 				}
 				.chip {
 					background: $azure!important;
-				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($azure, .5);
-					}
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -3991,22 +3948,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $cobalt;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($cobalt, .2);
 					}
 				}
 				.chip {
 					background: $cobalt!important;
-				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($cobalt, .5);
-					}
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -4187,22 +4136,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $eggplant;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($eggplant, .2);
 					}
 				}
 				.chip {
 					background: $eggplant!important;
-				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($eggplant, .5);
-					}
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -4383,22 +4324,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $cerise;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($cerise, .2);
 					}
 				}
 				.chip {
 					background: $cerise!important;
-				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($cerise, .5);
-					}
 				}
 				.confirm-info, .confirm-amount {
 					h1 {

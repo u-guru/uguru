@@ -2594,18 +2594,6 @@
   }
 }
 
-.request-slide.request-confirm header {
-  background: #50A5DD;
-}
-
-.request-slide.request-confirm header svg {
-  width: 120px;
-}
-
-.request-slide.request-confirm header h1 {
-  text-transform: none;
-}
-
 .request-slide.request-confirm > button {
   position: absolute;
   bottom: 0;
@@ -2616,17 +2604,17 @@
   padding-bottom: 64px;
 }
 
-.request-slide.request-confirm > div > a {
+.request-slide.request-confirm > div a {
   display: block;
 }
 
-.request-slide.request-confirm > div > a:hover, .request-slide.request-confirm > div > a:focus {
+.request-slide.request-confirm > div a:hover, .request-slide.request-confirm > div a:focus {
   background: rgba(80, 165, 221, 0.2);
 }
 
 .request-slide.request-confirm > div .confirm-course {
   padding: 15px;
-  background: #40484B;
+  background: #50A5DD;
 }
 
 .request-slide.request-confirm > div .confirm-course h1 {
@@ -2643,7 +2631,7 @@
 }
 
 .request-slide.request-confirm > div .confirm-course:hover, .request-slide.request-confirm > div .confirm-course:focus {
-  background: rgba(80, 165, 221, 0.5);
+  background: #a8d2ee !important;
   color: #40484B;
 }
 
@@ -2760,23 +2748,17 @@
 }
 
 @media screen and (min-width: 768px) {
-  .request-slide.request-confirm > div {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
+  .request-slide.request-confirm .confirm-desc li a {
+    background: white;
   }
-  .request-slide.request-confirm > div a:first-child {
-    width: 100%;
+  .request-slide.request-confirm .confirm-desc li a:nth-child(1), .request-slide.request-confirm .confirm-desc li a:nth-child(3) {
+    border-radius: 2px 2px 0 0;
   }
-  .request-slide.request-confirm > div a:not(:first-child) {
-    width: 50%;
+  .request-slide.request-confirm .confirm-desc li a:nth-child(2), .request-slide.request-confirm .confirm-desc li a:nth-child(4) {
+    border-radius: 0 0 2px 2px;
+  }
+  .request-slide.request-confirm .confirm-desc li a:only-child {
+    border-radius: 2px;
   }
 }
 
@@ -2888,20 +2870,12 @@
   background: #F04F54;
 }
 
-.bg-delivery .request-slide.request-confirm header {
-  background: #F04F54;
-}
-
-.bg-delivery .request-slide.request-confirm > div > a:hover, .bg-delivery .request-slide.request-confirm > div > a:focus {
+.bg-delivery .request-slide.request-confirm > div a:not(.confirm-course):hover, .bg-delivery .request-slide.request-confirm > div a:not(.confirm-course):focus {
   background: rgba(240, 79, 84, 0.2);
 }
 
 .bg-delivery .request-slide.request-confirm > div .chip {
   background: #F04F54 !important;
-}
-
-.bg-delivery .request-slide.request-confirm > div .confirm-course:hover, .bg-delivery .request-slide.request-confirm > div .confirm-course:focus {
-  background: rgba(240, 79, 84, 0.5);
 }
 
 .bg-delivery .request-slide.request-confirm > div .confirm-info h1, .bg-delivery .request-slide.request-confirm > div .confirm-amount h1 {
@@ -3032,20 +3006,12 @@
   background: #E5753C;
 }
 
-.bg-freelancing .request-slide.request-confirm header {
-  background: #E5753C;
-}
-
-.bg-freelancing .request-slide.request-confirm > div > a:hover, .bg-freelancing .request-slide.request-confirm > div > a:focus {
+.bg-freelancing .request-slide.request-confirm > div a:not(.confirm-course):hover, .bg-freelancing .request-slide.request-confirm > div a:not(.confirm-course):focus {
   background: rgba(229, 117, 60, 0.2);
 }
 
 .bg-freelancing .request-slide.request-confirm > div .chip {
   background: #E5753C !important;
-}
-
-.bg-freelancing .request-slide.request-confirm > div .confirm-course:hover, .bg-freelancing .request-slide.request-confirm > div .confirm-course:focus {
-  background: rgba(229, 117, 60, 0.5);
 }
 
 .bg-freelancing .request-slide.request-confirm > div .confirm-info h1, .bg-freelancing .request-slide.request-confirm > div .confirm-amount h1 {
@@ -3176,20 +3142,12 @@
   background: #F6C64E;
 }
 
-.bg-baking .request-slide.request-confirm header {
-  background: #F6C64E;
-}
-
-.bg-baking .request-slide.request-confirm > div > a:hover, .bg-baking .request-slide.request-confirm > div > a:focus {
+.bg-baking .request-slide.request-confirm > div a:not(.confirm-course):hover, .bg-baking .request-slide.request-confirm > div a:not(.confirm-course):focus {
   background: rgba(246, 198, 78, 0.2);
 }
 
 .bg-baking .request-slide.request-confirm > div .chip {
   background: #F6C64E !important;
-}
-
-.bg-baking .request-slide.request-confirm > div .confirm-course:hover, .bg-baking .request-slide.request-confirm > div .confirm-course:focus {
-  background: rgba(246, 198, 78, 0.5);
 }
 
 .bg-baking .request-slide.request-confirm > div .confirm-info h1, .bg-baking .request-slide.request-confirm > div .confirm-amount h1 {
@@ -3320,20 +3278,12 @@
   background: #81B566;
 }
 
-.bg-photography .request-slide.request-confirm header {
-  background: #81B566;
-}
-
-.bg-photography .request-slide.request-confirm > div > a:hover, .bg-photography .request-slide.request-confirm > div > a:focus {
+.bg-photography .request-slide.request-confirm > div a:not(.confirm-course):hover, .bg-photography .request-slide.request-confirm > div a:not(.confirm-course):focus {
   background: rgba(129, 181, 102, 0.2);
 }
 
 .bg-photography .request-slide.request-confirm > div .chip {
   background: #81B566 !important;
-}
-
-.bg-photography .request-slide.request-confirm > div .confirm-course:hover, .bg-photography .request-slide.request-confirm > div .confirm-course:focus {
-  background: rgba(129, 181, 102, 0.5);
 }
 
 .bg-photography .request-slide.request-confirm > div .confirm-info h1, .bg-photography .request-slide.request-confirm > div .confirm-amount h1 {
@@ -3464,20 +3414,12 @@
   background: #55A4B7;
 }
 
-.bg-tech .request-slide.request-confirm header {
-  background: #55A4B7;
-}
-
-.bg-tech .request-slide.request-confirm > div > a:hover, .bg-tech .request-slide.request-confirm > div > a:focus {
+.bg-tech .request-slide.request-confirm > div a:not(.confirm-course):hover, .bg-tech .request-slide.request-confirm > div a:not(.confirm-course):focus {
   background: rgba(85, 164, 183, 0.2);
 }
 
 .bg-tech .request-slide.request-confirm > div .chip {
   background: #55A4B7 !important;
-}
-
-.bg-tech .request-slide.request-confirm > div .confirm-course:hover, .bg-tech .request-slide.request-confirm > div .confirm-course:focus {
-  background: rgba(85, 164, 183, 0.5);
 }
 
 .bg-tech .request-slide.request-confirm > div .confirm-info h1, .bg-tech .request-slide.request-confirm > div .confirm-amount h1 {
@@ -3608,20 +3550,12 @@
   background: #7872e3;
 }
 
-.bg-household .request-slide.request-confirm header {
-  background: #7872e3;
-}
-
-.bg-household .request-slide.request-confirm > div > a:hover, .bg-household .request-slide.request-confirm > div > a:focus {
+.bg-household .request-slide.request-confirm > div a:not(.confirm-course):hover, .bg-household .request-slide.request-confirm > div a:not(.confirm-course):focus {
   background: rgba(120, 114, 227, 0.2);
 }
 
 .bg-household .request-slide.request-confirm > div .chip {
   background: #7872e3 !important;
-}
-
-.bg-household .request-slide.request-confirm > div .confirm-course:hover, .bg-household .request-slide.request-confirm > div .confirm-course:focus {
-  background: rgba(120, 114, 227, 0.5);
 }
 
 .bg-household .request-slide.request-confirm > div .confirm-info h1, .bg-household .request-slide.request-confirm > div .confirm-amount h1 {
@@ -3752,20 +3686,12 @@
   background: #9A5BC5;
 }
 
-.bg-athletic .request-slide.request-confirm header {
-  background: #9A5BC5;
-}
-
-.bg-athletic .request-slide.request-confirm > div > a:hover, .bg-athletic .request-slide.request-confirm > div > a:focus {
+.bg-athletic .request-slide.request-confirm > div a:not(.confirm-course):hover, .bg-athletic .request-slide.request-confirm > div a:not(.confirm-course):focus {
   background: rgba(154, 91, 197, 0.2);
 }
 
 .bg-athletic .request-slide.request-confirm > div .chip {
   background: #9A5BC5 !important;
-}
-
-.bg-athletic .request-slide.request-confirm > div .confirm-course:hover, .bg-athletic .request-slide.request-confirm > div .confirm-course:focus {
-  background: rgba(154, 91, 197, 0.5);
 }
 
 .bg-athletic .request-slide.request-confirm > div .confirm-info h1, .bg-athletic .request-slide.request-confirm > div .confirm-amount h1 {
@@ -3896,20 +3822,12 @@
   background: #e6389b;
 }
 
-.bg-academic .request-slide.request-confirm header {
-  background: #e6389b;
-}
-
-.bg-academic .request-slide.request-confirm > div > a:hover, .bg-academic .request-slide.request-confirm > div > a:focus {
+.bg-academic .request-slide.request-confirm > div a:not(.confirm-course):hover, .bg-academic .request-slide.request-confirm > div a:not(.confirm-course):focus {
   background: rgba(230, 56, 155, 0.2);
 }
 
 .bg-academic .request-slide.request-confirm > div .chip {
   background: #e6389b !important;
-}
-
-.bg-academic .request-slide.request-confirm > div .confirm-course:hover, .bg-academic .request-slide.request-confirm > div .confirm-course:focus {
-  background: rgba(230, 56, 155, 0.5);
 }
 
 .bg-academic .request-slide.request-confirm > div .confirm-info h1, .bg-academic .request-slide.request-confirm > div .confirm-amount h1 {
