@@ -28,7 +28,7 @@
 				</div>
 				<div id="messenger-content">
 					<div class="messenger-header">
-						<h1 class="no-menu"><span class='weight-300'>{{active_relationship.nav.menu_titles[active_relationship.nav.menu.active_index]}} with </span>{{active_relationship.guru.name}}</h1>
+						<h1><span class='weight-600'>{{active_relationship.nav.menu_titles[active_relationship.nav.menu.active_index]}} with </span>{{active_relationship.guru.name}}</h1>
 						<a class='cta-modal-close close-button desktop-header-next'>
 							<svg viewBox="0 0 100 100">
 								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
@@ -36,16 +36,13 @@
 						</a>
 						<div id="message-search" ng-if='false'>
 							<input ng-if='false' placeholder="Search anything" placeholder="Filter" ng-model='active_relationship.search_text' />
-							<!-- BIND -->
 							<a>
 								<svg viewBox="0 0 100 100">
 									<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 								</svg>
 							</a>
 						</div>
-						<!-- BIND -->
 						<nav ng-if='true' id="message-nav" class="ng-class:{'active':active_relationship.msg_nav}">
-							<!-- BIND -->
 							<a ng-click='toggleActiveRelationshipMessageNav()'>
 								<svg class="ng-class:{'active':active_relationship.msg_nav}" viewBox="0 0 100 100">
 									<path d="M14,23 L86,23"></path>
@@ -53,7 +50,6 @@
 									<path d="M14,77 L86,77"></path>
 								</svg>
 							</a>
-							<!-- BIND -->
 							<div class="active">
 								<ul>
 									<li>
@@ -111,15 +107,13 @@
 						</nav>
 					</div>
 					<div id="message-container" class='relative'>
-						<div id="messages" style='padding:0; overflow: auto;'>
-							<div class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 0" style='overflow:auto'>
-								<div class="message-single message-status left center">
-									<!-- <div class='message-single-icon' ng-include="img_base + 'templates/green-guru-svg.html'"> </div> -->
+						<div id="messages">
+							<div class='messages-main overflow-auto' ng-if="active_relationship.nav.menu.active_index === 0">
+								<div class="message-single message-status">
 									<div class="message-single-content">
-										<div class="message-single-info"></div>
-										<div class="message-single-status">
+										<div class="message-single-status margin-auto">
 											This is the beginning of your message thread with
-											<strong>{{active_relationship.guru.name}}</strong>
+											<strong>{{active_relationship.guru.name}}</strong>.
 										</div>
 									</div>
 								</div>
@@ -151,7 +145,7 @@
 								</div>
 								<div id='message-dropzone' class='bg-slate-50p absolute left-0 full-x txt-charcoal weight-400 hide' style='bottom:64px; height:150px;' ng-class="{'show':showAttachments}"> Drag attachments here
 								</div>
-								<div id="message-box" class='bottom-0 right-0 fixed' style='width:70%;'>
+								<div id="message-box" class='bottom-0 right-0 fixed two-thirds-x'>
 									<a ng-click='showAttachments = !showAttachments'>
 										<svg viewBox="0 0 100 100">
 											<path d="M23.9602215,14 C18.4593164,14 14,18.4585633 14,23.9588015 L14,76.0411985 C14,81.5417132 18.4592951,86 23.9602215,86 L76.0397785,86 C81.5406836,86 86,81.5414367 86,76.0411985 L86,23.9588015 C86,18.4582868 81.5407049,14 76.0397785,14 L23.9602215,14 L23.9602215,14 Z M68,50 C68,40.0588745 59.9411255,32 50,32 C40.0588745,32 32,40.0588745 32,50 C32,59.9411255 40.0588745,68 50,68 C59.9411255,68 68,59.9411255 68,50 Z"></path>
@@ -164,22 +158,27 @@
 										</svg>
 									</button>
 								</div>
-						</div>
+							</div>
 
-						<!-- Location -->
-						<div id='messages-main' class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 1">
-							<div class='flex-wrap-center flex-stretch bg-slate full-xy relative'>
-
-								<div class='full-x bg-smoke' style='height:20%;'>
-									<div class='ugrid-2 text-center'>
+							<!-- Location -->
+							<div id='messages-location' class='messages-main' ng-if="active_relationship.nav.menu.active_index === 1">
+								<div class='fourth'>
+									<div class='ugrid-2'>
 										<div class='flex-wrap-center'>
+											<svg width="103px" height="118px" viewBox="0 0 103 118">
+											    <path d="M1.5,3.49753791 C1.5,2.39432819 2.39505147,1.5 3.49753791,1.5 L99.5024621,1.5 C100.605672,1.5 101.5,2.39505147 101.5,3.49753791 L101.5,99.5024621 C101.5,100.605672 100.599654,101.5 99.4925388,101.5 L66.5,101.5 L52.2033622,115.796638 C51.814906,116.185094 51.1867037,116.186704 50.7966378,115.796638 L36.5,101.5 L3.50746124,101.5 C2.39877101,101.5 1.5,100.604949 1.5,99.5024621 L1.5,3.49753791 Z" stroke="#FFFFFF" stroke-width="3" fill="#50A5DD" stroke-linecap="round" stroke-linejoin="round"></path>
+											</svg>
 											<h1 class='txt-charcoal p20xy'>
-												{{user.name}}'s last location shared
+												Your last location shared
 											</h1>
 											<small class='full-x opacity-50 txt-charcoal uppercase'> Last Updated: 2 hours ago </small>
 											<span> </span>
 										</div>
 										<div class='flex-wrap-center'>
+											<svg width="103px" height="118px" viewBox="0 0 103 118">
+											    <path d="M1.5,3.49753791 C1.5,2.39432819 2.39505147,1.5 3.49753791,1.5 L99.5024621,1.5 C100.605672,1.5 101.5,2.39505147 101.5,3.49753791 L101.5,99.5024621 C101.5,100.605672 100.599654,101.5 99.4925388,101.5 L66.5,101.5 L52.2033622,115.796638 C51.814906,116.185094 51.1867037,116.186704 50.7966378,115.796638 L36.5,101.5 L3.50746124,101.5 C2.39877101,101.5 1.5,100.604949 1.5,99.5024621 L1.5,3.49753791 Z" stroke="#FFFFFF" stroke-width="3" fill="#69B3A5
+												" stroke-linecap="round" stroke-linejoin="round"></path>
+											</svg>
 											<h1 class='txt-charcoal p20xy'>
 												{{active_relationship.guru.name}}'s last location shared
 											</h1>
@@ -188,7 +187,7 @@
 										</div>
 									</div>
 								</div>
-								<div class='gmap bg-charcoal flex-wrap-center flex-stretch full-x' style='height:80%;'>
+								<div class='messages-location-map gmap bg-charcoal flex-wrap-center flex-stretch full-x three-fourths'>
 									<div>
 										<h1 class='txt-white uppercase'>
 											Components for this section
@@ -203,80 +202,78 @@
 									</div>
 								</div>
 							</div>
-						</div>
 
-						<!-- Create a request -->
-						<div id='messages-request' class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 2" >
-							<div class='flex-wrap-center flex-stretch full-xy'>
-								<div class='full-x ugrid-4 p20xy' ng-repeat='file in active_relationship.files' ng-class="{'bg-slate': file.user.id === user.id, 'bg-charcoal': file.user.id !== user.id}">
-									<div class='flex-wrap-center'>
-										<h1 ng-bind-html="file.time_created"> </h1>
+							<!-- Create a request -->
+							<div id='messages-request' class='messages-main' ng-if="active_relationship.nav.menu.active_index === 2" >
+								<div class='flex-wrap-center flex-stretch full-xy'>
+									<div class='full-x ugrid-4 p20xy' ng-repeat='file in active_relationship.files' ng-class="{'bg-slate': file.user.id === user.id, 'bg-charcoal': file.user.id !== user.id}">
+										<div class='flex-wrap-center'>
+											<h1 ng-bind-html="file.time_created"> </h1>
 
-									</div>
-									<div class='flex-wrap-center'>
-										{{file.name}}
-									</div>
-									<div class='flex-wrap-center'>
-										{{file.type}} <br>
-										(insert icon)
+										</div>
+										<div class='flex-wrap-center'>
+											{{file.name}}
+										</div>
+										<div class='flex-wrap-center'>
+											{{file.type}} <br>
+											(insert icon)
 
-									</div>
-									<div class='flex-wrap-center' ng-if='file.user.id === user.id'>
-										uploaded by {{user.name}}
-									</div>
-									<div class='flex-wrap-center' ng-if='file.user.id !== user.id'>
-										uploaded by {{active_relationship.guru.name}}
-										(insert profile photo)
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Create a calendar -->
-						<div id='messages-calendar' class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 3">
-							<div class='full-x bg-smoke' style='height:20%;'>
-								<div class='ugrid-2 text-center'>
-									<div class='flex-wrap-center txt-white p20xy bg-shamrock'>
-
-										<h1>
-											{{user.name}}'s Availability
-										</h1>
-										<small class='full-x opacity-50 txt-white uppercase'> Last Updated: 2 hours ago </small>
-										<span> </span>
-									</div>
-									<div class='flex-wrap-center txt-white p20xy bg-azure'>
-										<h1>
-											{{active_relationship.guru.name}}'s last location shared
-										</h1>
-										<small class ='full-x txt-white opacity-50 uppercase'> Last Updated: 5 hours ago </small>
-										<span> </span>
+										</div>
+										<div class='flex-wrap-center' ng-if='file.user.id === user.id'>
+											uploaded by {{user.name}}
+										</div>
+										<div class='flex-wrap-center' ng-if='file.user.id !== user.id'>
+											uploaded by {{active_relationship.guru.name}}
+											(insert profile photo)
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class='full-x bg-slate flex-wrap-center' style='height:80%;'>
-								<h1 class='font-4 txt-white'>
-									14 Day Calendar, 4-5 shown at once, with right arrow on top
-								</h1>
+
+							<!-- Create a calendar -->
+							<div id='messages-calendar' class='messages-main' ng-if="active_relationship.nav.menu.active_index === 3">
+								<div class='full-x bg-smoke' style='height:20%;'>
+									<div class='ugrid-2 text-center'>
+										<div class='flex-wrap-center txt-white p20xy bg-shamrock'>
+
+											<h1>
+												{{user.name}}'s Availability
+											</h1>
+											<small class='full-x opacity-50 txt-white uppercase'> Last Updated: 2 hours ago </small>
+											<span> </span>
+										</div>
+										<div class='flex-wrap-center txt-white p20xy bg-azure'>
+											<h1>
+												{{active_relationship.guru.name}}'s last location shared
+											</h1>
+											<small class ='full-x txt-white opacity-50 uppercase'> Last Updated: 5 hours ago </small>
+											<span> </span>
+										</div>
+									</div>
+								</div>
+								<div class='full-x bg-slate flex-wrap-center' style='height:80%;'>
+									<h1 class='font-4 txt-white'>
+										14 Day Calendar, 4-5 shown at once, with right arrow on top
+									</h1>
+								</div>
+
 							</div>
 
-						</div>
+							<!-- Create a calendar -->
+							<div id='messages-files' class='messages-main' ng-if="active_relationship.nav.menu.active_index === 4">
+							</div>
 
-						<!-- Create a calendar -->
-						<div id='messages-files' class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 4">
-						</div>
+							<!-- Session History -->
+							<div id='messages-history' class='messages-main' ng-if="active_relationship.nav.menu.active_index === 5">
+							</div>
 
-						<!-- Session History -->
-						<div id='messages-history' class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 5">
-						</div>
+							<!-- Session Payments -->
+							<div id='messages-payments' class='messages-main' ng-if="active_relationship.nav.menu.active_index === 6">
+							</div>
 
-						<!-- Session Payments -->
-						<div id='messages-payments' class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 6">
-						</div>
-
-						<!-- Session Options -->
-						<div id='messages-preferences' class='messages-main absolute full-xy p15xy' ng-if="active_relationship.nav.menu.active_index === 7">
-						</div>
-
+							<!-- Session Options -->
+							<div id='messages-preferences' class='messages-main' ng-if="active_relationship.nav.menu.active_index === 7">
+							</div>
 
 					</div>
 				</div>

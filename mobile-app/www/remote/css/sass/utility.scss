@@ -787,6 +787,9 @@ input, fieldset {
 	height: calc(100% / 3 * 2);
 	overflow: auto;
 }
+.two-thirds-x {
+	width: calc(100% / 3 * 2);
+}
 .half {
 	height: 50%;
 }

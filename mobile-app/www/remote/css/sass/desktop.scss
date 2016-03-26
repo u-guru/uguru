@@ -2177,9 +2177,8 @@
 
 /* ---------- MESSAGING */
 #desktop-messaging {
-	background: $slate;
-	.main,
-	.main.mobile-messages-container {
+	background: $smoke;
+	.main, .main.mobile-messages-container {
 		height: 100%;
 		padding: 0;
 		#messenger {
@@ -2189,45 +2188,49 @@
 			background: $smoke;
 			#messenger-sidebar {
 				position: relative;
-				width: 30%;
+				width: calc(100% / 3);
 				height: 100%;
 				background: $shamrock;
 				h1 {
+					@include flex;
+					@include flex-center-vertical;
 					padding: 15px;
-					font-size: 32px;
-					font-weight: 900;
+					height: 64px;
+					font-size: 28px;
+					font-weight: 700;
 				}
 				ul {
-					height: calc(100% - 146px);
+					height: calc(100% - 64px - 64px);
 					overflow: auto;
+					background: rgba(white, .2);
 					li {
+						position: relative;
 						font-weight: 400;
 						text-transform: uppercase;
 						a {
 							@include flex;
 							@include flex-center-vertical;
-							padding: 15px;
-							&.active,
-							&:active,
-							&.active {
-								background: rgba($smoke,.2);
-							}
-							&:hover,
-							&:focus,
-							&.active {
+							height: 64px;
+							padding: 0 15px;
+							&:hover, &:focus {
 								background: rgba($smoke,.4);
+							}
+							&:active, &.active {
+								background: rgba($smoke,.2);
 							}
 							.messenger-icon {
 								@include round;
-								width: 48px;
-								height: 48px;
+								width: 36px;
+								height: 36px;
+								border-width: 3px;
 								background-position: center center;
 								background-size: cover;
 							}
 							.messenger-label {
-								width: calc(100% - 48px);
+								width: calc(100% - 36px);
 								padding-left: 15px;
 								font-weight: 600;
+								text-transform: none;
 							}
 							&.active {
 								.messenger-label {
@@ -2238,13 +2241,19 @@
 					}
 				}
 				#messenger-sidebar-search {
+					@include flex;
+					@include flex-center;
 					position: absolute;
-					bottom: 15px;
-					left: 15px;
-					width: calc(100% - 30px);
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					height: 64px;
+					background: $shamrock;
 					label {
-						@include center-y;
-						left: 15px;
+						position: absolute;
+						top: 50%;
+						margin-top: -12px;
+						left: 30px;
 						svg {
 							@include svg-stroke(rgba($taupe,.5), 8);
 							margin-top: 2px;
@@ -2255,17 +2264,14 @@
 					input {
 						@include round;
 						display: block;
-						width: 100%;
-						height: 48px;
-						padding-left: 51px;
+						width: calc(100% - 30px);
+						height: 36px;
+						padding-left: 48px;
 						padding-right: 15px;
 						font-size: 16px;
 						background: $smoke;
 						border: 0;
-						&:active,
-						&:hover,
-						&:focus,
-						&.active {
+						&:active, &:hover, &:focus, &.active {
 							background: white;
 							@include placeholder {
 								color: $taupe;
@@ -2278,7 +2284,7 @@
 				}
 			}
 			#messenger-content {
-				width: 70%;
+				width: calc(100% / 3 * 2);
 				height: 100%;
 				.messenger-header {
 					@include flex;
@@ -2287,18 +2293,18 @@
 					width: 100%;
 					h1 {
 						padding: 15px;
-						font-size: 32px;
-						font-weight: 700;
-						width: calc(100% - 336px);
-						&.no-menu {
-							width: calc(100% - 68px);
+						font-size: 28px;
+						font-weight: 900;
+						width: calc(100% - 128px);
+						.weight-300 {
+							font-weight: 600!important;
 						}
 					}
 					a {
 						@include flex;
 						@include flex-center;
-						width: 68px;
-						height: 68px;
+						width: 64px;
+						height: 64px;
 						background: $slate;
 						svg {
 							@include svg-stroke(white, 7);
@@ -2306,10 +2312,6 @@
 							height: 36px;
 						}
 					}
-
-					// #{$links} {
-					// 	background: lighten($taupe, 10%);
-					// }
 					#message-search {
 						@include flex;
 						position: relative;
@@ -2330,9 +2332,7 @@
 								@include translate-y(0);
 								@include opacity(1);
 							}
-							&:active,
-							&:hover,
-							&:focus {
+							&:active, &:hover, &:focus {
 								background: white;
 								@include placeholder {
 									color: $taupe;
@@ -2350,10 +2350,12 @@
 							position: relative;
 							z-index: 10;
 							svg {
+								circle {
+									stroke: white;
+								}
 								path {
 									@include transition-type(transform, .15s ease-in-out);
-									&:first-child,
-									&:last-child {
+									&:first-child, &:last-child {
 										@include translate-y(0);
 										@include opacity(1);
 									}
@@ -2400,14 +2402,20 @@
 					}
 				}
 				#message-container {
-					height: calc(100% - 68px);
+					height: calc(100% - 64px);
 					#messages {
-						padding: 15px;
 						height: calc(100% - 64px);
-						overflow: auto;
 						color: $taupe;
 						font-size: 18px;
 						font-weight: 400;
+						.messages-main {
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							padding: 15px;
+						}
 						.message-single {
 							@include flex;
 							margin-bottom: 45px;
@@ -2419,9 +2427,9 @@
 									height: 48px;
 									background-position: center center;
 									background-size: cover;
+									border-width: 3px;
 								}
-								img,
-								svg {
+								img, svg {
 									@include round;
 									width: 48px;
 									height: 48px;
@@ -2488,8 +2496,7 @@
 					#message-box {
 						@include flex;
 						position: relative;
-						a,
-						button {
+						a, button {
 							display: block;
 							width: 64px;
 							height: 64px;
@@ -2501,7 +2508,23 @@
 							}
 						}
 						a {
-							background: $taupe;
+							position: absolute;
+							bottom: 0;
+							left: 0;
+							svg {
+								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+								stroke: rgba($taupe, .3);
+							}
+							&:hover, &:focus {
+								svg {
+									stroke: rgba($taupe, .5);
+								}
+							}
+							&:active {
+								svg {
+									stroke: rgba($taupe, .7);
+								}
+							}
 						}
 						button {
 							padding: 0;
@@ -2511,13 +2534,11 @@
 							display: block;
 							background: lighten($smoke, 5%);
 							border: 0;
-							width: calc(100% - 128px);
+							width: calc(100% - 64px);
 							height: 64px;
-							padding: 15px;
+							padding: 15px 15px 15px 64px;
 							font-size: 18px;
-							&:active,
-							&:hover,
-							&:focus {
+							&:active, &:hover, &:focus {
 								background: white;
 								@include placeholder {
 									color: $taupe;
