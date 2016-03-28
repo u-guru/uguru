@@ -338,6 +338,7 @@
                 "container": [], 
                 "scenes": []
             }, 
+            "controller": "SplashController", 
             "cp_link": "", 
             "description": "", 
             "id": 1, 
@@ -351,7 +352,7 @@
             }, 
             "scenes": [], 
             "states": [], 
-            "template_url": ""
+            "template_url": "splash.madlib.html"
         }, 
         {
             "bugs": [], 
@@ -361,6 +362,7 @@
                 "container": [], 
                 "scenes": []
             }, 
+            "controller": "GMapController", 
             "cp_link": "", 
             "description": "", 
             "id": 2, 
@@ -377,7 +379,7 @@
             }, 
             "scenes": [], 
             "states": [], 
-            "template_url": ""
+            "template_url": "maps.html"
         }, 
         {
             "bugs": [], 
@@ -593,58 +595,6 @@
                         "assigned": [
                             "gabrielle"
                         ], 
-                        "description": "Preferably you would want to stagger these in.", 
-                        "difficulty": 3, 
-                        "estimated_time": 20, 
-                        "index": 1, 
-                        "name": "On first time transition in", 
-                        "priority": 10, 
-                        "ref": "mad-lib-state-1", 
-                        "substates": [
-                            {
-                                "description": "This is where you would you would clarify substate description", 
-                                "difficulty": 2, 
-                                "estimated_time": 5, 
-                                "is_complete": true, 
-                                "name": "Mad lib substate 1", 
-                                "parent_ref": "mad-lib-state-1", 
-                                "ref": "mad-lib-state-1-substate-1"
-                            }, 
-                            {
-                                "description": "This is where you would you would clarify substate description", 
-                                "difficulty": 2, 
-                                "estimated_time": 5, 
-                                "is_complete": false, 
-                                "name": "Mad lib substate 2", 
-                                "parent_ref": "mad-lib-state-1", 
-                                "ref": "mad-lib-state-1-substate-2"
-                            }, 
-                            {
-                                "description": "This is where you would you would clarify substate description", 
-                                "difficulty": 2, 
-                                "estimated_time": 5, 
-                                "is_complete": false, 
-                                "name": "Mad lib substate 3", 
-                                "parent_ref": "mad-lib-state-1", 
-                                "ref": "mad-lib-state-1-substate-3"
-                            }, 
-                            {
-                                "description": "This is where you would you would clarify substate description", 
-                                "difficulty": 2, 
-                                "estimated_time": 5, 
-                                "is_complete": false, 
-                                "name": "Mad lib substate 1", 
-                                "parent_ref": "mad-lib-state-1", 
-                                "ref": "mad-lib-state-1-substate-4"
-                            }
-                        ], 
-                        "time_created": "3/23", 
-                        "type": "fluid"
-                    }, 
-                    {
-                        "assigned": [
-                            "gabrielle"
-                        ], 
                         "difficulty": 3, 
                         "estimated_time": 10, 
                         "index": 2, 
@@ -660,26 +610,58 @@
                                 "name": "Mad lib substate 1", 
                                 "parent_ref": "mad-lib-state-1", 
                                 "ref": "mad-lib-state-2-substate-1"
-                            }, 
-                            {
-                                "description": "This is where you would you would clarify substate description", 
-                                "difficulty": 2, 
-                                "estimated_time": 5, 
-                                "is_complete": true, 
-                                "name": "Mad lib substate 2", 
-                                "parent_ref": "mad-lib-state-1", 
-                                "ref": "mad-lib-state-2-substate-2"
                             }
                         ], 
                         "time_created": "3/23", 
                         "type": "fluid"
+                    }, 
+                    {
+                        "description": "asdsad", 
+                        "estimated_time": 10, 
+                        "name": "sadasd"
+                    }, 
+                    {
+                        "description": "asdasdad", 
+                        "estimated_time": 10, 
+                        "name": "asdasd"
                     }
                 ], 
                 "functional": [], 
                 "hifi": [], 
                 "name": "", 
                 "priority": 0, 
-                "testing": [], 
+                "testing": [
+                    {
+                        "description": "sdfdsfs", 
+                        "estimated_time": 5, 
+                        "id": 1, 
+                        "name": "sdfsdfsd", 
+                        "parent_ref": "mad-lib", 
+                        "priority": 5, 
+                        "ref": "mad-lib-testing-1", 
+                        "substates": []
+                    }, 
+                    {
+                        "description": "sadasdasdas", 
+                        "estimated_time": 5, 
+                        "id": 2, 
+                        "name": "asdasdas", 
+                        "parent_ref": "mad-lib", 
+                        "priority": 5, 
+                        "ref": "mad-lib-testing-2", 
+                        "substates": []
+                    }, 
+                    {
+                        "description": "k", 
+                        "estimated_time": 5, 
+                        "id": 3, 
+                        "name": "testttt", 
+                        "parent_ref": "mad-lib", 
+                        "priority": 5, 
+                        "ref": "mad-lib-testing-3", 
+                        "substates": []
+                    }
+                ], 
                 "type": ""
             }, 
             "id": 1, 

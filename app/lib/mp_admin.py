@@ -311,14 +311,106 @@ def addStateToScene(_type, assign, scene_obj, index, title, description=None, et
 
     return scene_obj
 
-def removeStateFromScene(r_scene, state, type):
+def removeStateFromScene(r_scene, state, _type):
     import json
-    master_elements_dict = json.load(open('./app/lib/elements.json'))
-    for scene in master_elements_dict['scenes']:
+    elements = json.load(open('./app/lib/elements.json'))
+    print len(elements['scenes']);
+    for scene in elements['scenes']:
+        if scene['ref'] == r_scene['ref'] or len(elements['scenes']) > 0:
+            element_states = elements['scenes'][0]
+            if element_states and _type in element_states:
+                print element_states[_type]
+
+def newTestingObj(count, scene_ref):
+    return {
+        'id': count + 1,
+        'ref': scene_ref + '-testing-' + str(count + 1),
+        'parent_ref': scene_ref,
+        'priority': 5,
+        'estimated_time': 5,
+        'name': '',
+        'description': '',
+        'substates': [] ## substates
+    }
+
+
+def modifyStateFromScene(r_scene, r_state, _type, action="edit"):
+    import json
+    elements = json.load(open('./app/lib/elements.json'))
+    # sceneIndex = stateIndex = substateIndex 0
+    for scene in elements['scenes']:
         if scene['ref'] == r_scene['ref']:
-            print len(master_elements_dict['scenes'])
-            master_elements_dict['scenes'].remove(scene)
-            print len(master_elements_dict['scenes'])
+            element_scene = scene
+            if element_scene.get('element_states'):
+                element_states = element_scene['element_states']
+
+                if action == 'create':
+                        from pprint import pprint
+                        print _type
+                        pprint(r_state)
+                        if _type == "testing":
+                            lengthTesting = len(element_scene['element_states'][_type])
+                            testingObj = newTestingObj(lengthTesting, scene['ref'])
+                            testingObj['name'] = r_state['name']
+                            testingObj['description'] = r_state['description']
+                            element_scene['element_states'][_type].append(testingObj)
+                        else:
+                            element_scene['element_states'][_type].append(r_state)
+                        return elements
+
+                if element_states.get(_type):
+                    scene_type_states = element_states[_type]
+
+                    if action == "remove" or action == "update":
+                        for state in scene_type_states:
+                            # find matching state
+                            if state.get('ref') and state.get('ref') == r_state['ref']:
+                                if action == "update":
+                                    main_state_index = scene_type_states.index(state)
+                                    element_scene['element_states'][_type] = [r_state if main_state_index==index else _state for _state in scene_type_states]
+                                elif action == "remove":
+                                    element_scene['element_states'][_type].remove(state)
+                                    return elements
+
+
+def modifySubStateFromScene(r_scene, r_substate, r_state, _type, action="edit"):
+    import json
+    elements = json.load(open('./app/lib/elements.json'))
+    # sceneIndex = stateIndex = substateIndex 0
+    for scene in elements['scenes']:
+        if scene['ref'] == r_scene['ref']:
+            element_scene = scene
+            print 'found', element_scene['ref']
+            if element_scene.get('element_states'):
+                element_states = element_scene['element_states']
+                if element_states.get(_type):
+                    scene_type_states = element_states[_type]
+                    for state in scene_type_states:
+                        if state.get('ref') and state.get('ref') == r_state['ref']:
+                            if action == "create" and state.get('substates'):
+
+                                state['substates'].append(r_substate)
+                                return elements
+                            for substate in state['substates']:
+                                if substate.get('ref') and substate['ref'] == r_substate['ref']:
+                                    if action == "remove":
+                                        state['substates'].remove(substate)
+                                        return elements
+                                    if action == "update":
+                                        substateIndex = state['substates'].index(substate)
+                                        state['substates'] = [r_substate if index==substateIndex else state['substates'][index] for index in range(0, len(state['substates']))]
+                                        return elements
+
+
+            # for substate in element_scene.get(_type):
+            #     print substate
+            #     if (substate.get('ref') == r_substate.get('ref')):
+            #         print
+            #         print substate, 'found the substate'
+            #         print
+    # print len(elements['scenes']);
+    # reprocessActionItems(elements)
+
 
 
 def reprocessActionItems(elements):
