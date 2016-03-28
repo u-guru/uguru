@@ -285,7 +285,7 @@ angular.module('uguru.util.controllers')
         args = null;
       }
       var doesSwiperExist = document.querySelector('.header-swiper-back-2') && document.querySelector('.header-swiper-back-2').swiper;
-      if (doesSwiperExist) {
+      if (doesSwiperExist || $state.current.name !== 'root.splash') {
         return;
       }
       var swiperBack2=new Swiper('.header-swiper-back-2',{slidesPerView:'auto',centeredSlides:true,spaceBetween:100,onlyExternal:true,effect:'coverflow',direction:'vertical',speed:600,coverflow:{slideShadows:false}});
@@ -1328,6 +1328,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.getUniversityPlaces = function(university) {
+      if (!$state.current.name === 'splash-madlib')
       if (university.og_map  && (!university.place_results || !university.place_results.length)) {
         $timeout(function() {
           $scope.$apply(function() {

@@ -201,7 +201,14 @@ angular.module('uguru.util.controllers')
 
 		$scope.updateSubStateElement = function(substate, state, scene, scene_type, is_remove, platform) {
 			if (platform && scene_type === 'testing') {
-				console.log('platform', platform);
+				if (platform.test_status === 'fail' || platform.test_status === 'unsure') {
+					platform.test_status = 'pass';
+					platform.test_client = 'manual';
+				} else {
+					platform.test_status = 'fail';
+					platform.test_client = 'manual';
+				}
+				return;
 			}
 
 			var action = 'update';
@@ -304,16 +311,16 @@ angular.module('uguru.util.controllers')
 				$scope.selected_scene.tabIndex = 2;
 				$scope.selected_scene.element_states.testing[0].ref ='temp 1';
 				$scope.selected_scene.element_states.testing[1].ref ='temp 2';
-				$scope.selected_scene.element_states.testing[0].substates = [
-					{
-						name: 'substate 1',
-						// platforms: $scope.initAllPlatformDict(),
-					},
-					{
-						name: 'substate 2',
-						// platforms: $scope.initAllPlatformDict(),
-					}
-				]
+				// $scope.selected_scene.element_states.testing[0].substates = [
+				// 	{
+				// 		name: 'substate 1',
+				// 		// platforms: $scope.initAllPlatformDict(),
+				// 	},
+				// 	{
+				// 		name: 'substate 2',
+				// 		// platforms: $scope.initAllPlatformDict(),
+				// 	}
+				// ]
 				if ($scope.selected_scene.element_states.testing && $scope.selected_scene.element_states.testing.length) {
 					for (var i = 0; i < $scope.selected_scene.element_states.testing.length; i++) {
 						var testStateIndex = $scope.selected_scene.element_states.testing[i];

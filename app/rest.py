@@ -4068,3 +4068,13 @@ api.add_resource(AdminViewUserAnalytics, '/api/admin/analytics/user', subdomain=
 
 api.add_resource(AdminViewGithubIssues, '/api/admin/<string:auth_token>/github/issues', subdomain='www')
 api.add_resource(AdminViewGithubLabels, '/api/admin/<string:auth_token>/github/labels', subdomain='www')
+
+
+# --> ios, small, 'mad-lib'
+def updateSubstateTesting(platform, windowsize, scene):
+    data = {
+        'success': True
+    }
+    # url = "https://www.uguru-rest.h"
+    #
+    return
