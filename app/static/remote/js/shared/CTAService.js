@@ -12,8 +12,6 @@ function CTAService($timeout) {
   var ctaCloseFuncDict = {};
   var ctaKeyCodeMappings = {'esc': 27};
 
-
-
   var showModalCTA = function(elem) {
     elem.classList.add('show');
   }

@@ -22,7 +22,7 @@ angular.module('uguru.util.controllers')
 				user_stories: AdminContent.getUserStories(),
 				createObjects: AdminContent.getBaseObjects($scope),
 				defaults: {
-					tabsIndex: 1,
+					tabsIndex: 2,
 					sidebarIndex: 1
 				},
 				toggles: {
@@ -141,6 +141,7 @@ angular.module('uguru.util.controllers')
 
 		$scope.createSubstateElement = function(substate, state, scene, scene_type) {
 			LoadingService.showAmbig(5000);
+
 			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPOST(JSON.stringify({substate: substate, state: state, scene: scene, type: scene_type}))
 			.then(function(response) {
 				console.log('update substate response receives');
@@ -198,7 +199,18 @@ angular.module('uguru.util.controllers')
 			});
 		}
 
-		$scope.updateSubStateElement = function(substate, state, scene, scene_type, is_remove) {
+		$scope.updateSubStateElement = function(substate, state, scene, scene_type, is_remove, platform) {
+			if (platform && scene_type === 'testing') {
+				if (platform.test_status === 'fail' || platform.test_status === 'unsure') {
+					platform.test_status = 'pass';
+					platform.test_client = 'manual';
+				} else {
+					platform.test_status = 'fail';
+					platform.test_client = 'manual';
+				}
+				return;
+			}
+
 			var action = 'update';
 			if (is_remove && !confirm('Are you sure you want to delete substate ' + substate.name + '?')) {
 				return;
@@ -223,6 +235,44 @@ angular.module('uguru.util.controllers')
 			});
 		}
 
+		$scope.initAllPlatformDict = function() {
+			browserTypes = ['chrome', 'safari', 'firefox'];
+			browserScreens = ['mobile', 'desktop'];
+			browserStates = ['small', 'medium', 'large', 'xl'];
+
+			resultArr = [];
+			for (var i = 0; i < browserTypes.length; i++) {
+
+				for (var j = 0 ; j < browserScreens.length; j++ ) {
+					for (var k = 0; k < browserStates.length; k++) {
+						if ( j=== 1 && k===3) {
+							continue;
+						}
+						resultArr.push({
+							platform: browserTypes[k],
+							screen_size: browserStates[i],
+							type: browserScreens[j],
+							test_status: 'unsure',
+							test_client: 'manual'
+						})
+					}
+				}
+			}
+
+			var iosVariants = [{platform: 'ios', type: 'app', screen_size:null}, {platform: 'ios', type: 'safari', screen_size:null}];
+			var androidVariants = [{platform: 'android', type: 'app', screen_size:null}, {platform: 'ios', type: 'chrome', screen_size:null}];
+
+			for (var i = 0; i < iosVariants.length; i++) {
+				resultArr.push(iosVariants[i]);
+			}
+
+			for (var i = 0; i < androidVariants.length; i++) {
+				resultArr.push(androidVariants[i]);
+			}
+
+			return resultArr;
+		}
+
 		function getAdminElements() {
 			
 
@@ -230,7 +280,7 @@ angular.module('uguru.util.controllers')
 				response = JSON.parse(response);
 
 				// $timeout(function() {
-				// $scope.$apply(function() {
+
 				$scope.page.components = response.components;
 				$scope.page.layouts = response.layouts;
 				$scope.page.scenes = response.scenes;
@@ -250,10 +300,45 @@ angular.module('uguru.util.controllers')
 					$scope.page.action_items[memberTitle] = response.action_items[memberTitle];
 				}
 
-				$scope.selected_scene = $scope.page.scenes[0];
-				$scope.selected_scene.tabIndex = 2;
+				$timeout(function() {
+					$scope.$apply(function() {})
+				});
+
+				// $scope.selected_scene = $scope.page.scenes[0];
+				// $scope.selected_scene.tabIndex = 2;
 				var modalElem = document.querySelector('#cta-modal-selected-scene');
 				modalElem && modalElem.classList.add('show');
+				$scope.selected_scene = $scope.page.scenes[0];
+				$scope.selected_scene.tabIndex = 2;
+				$scope.selected_scene.element_states.testing[0].ref ='temp 1';
+				$scope.selected_scene.element_states.testing[1].ref ='temp 2';
+				// $scope.selected_scene.element_states.testing[0].substates = [
+				// 	{
+				// 		name: 'substate 1',
+				// 		// platforms: $scope.initAllPlatformDict(),
+				// 	},
+				// 	{
+				// 		name: 'substate 2',
+				// 		// platforms: $scope.initAllPlatformDict(),
+				// 	}
+				// ]
+				if ($scope.selected_scene.element_states.testing && $scope.selected_scene.element_states.testing.length) {
+					for (var i = 0; i < $scope.selected_scene.element_states.testing.length; i++) {
+						var testStateIndex = $scope.selected_scene.element_states.testing[i];
+						console.log('it gets here');
+						if (testStateIndex && testStateIndex.substates && testStateIndex.substates.length) {
+							console.log('it gets here');
+							for (var j = 0; j < testStateIndex.substates.length; j++) {
+								var testSubstateIndex = testStateIndex.substates[j];
+								console.log('substate ' + j + ':', testSubstateIndex.name, testSubstateIndex.platforms);
+								if (testSubstateIndex && (!testSubstateIndex.platforms || !testSubstateIndex.platforms.length)) {
+									testSubstateIndex.platforms = $scope.initAllPlatformDict();
+									console.log('substate ' + j + ':', testSubstateIndex.name, testSubstateIndex.platforms, '\n');
+								}
+							}
+						}
+					}
+				}
 
 
 				// $scope.selected_scene = $scope.page.scenes[0];
@@ -491,6 +576,7 @@ angular.module('uguru.util.controllers')
 				var templateIndexKey = templateDictKeys[i]
 				var templateIndexObj = templateDict[templateIndexKey];
 				resultObj[templateIndexKey] = JSON.parse(JSON.stringify(templateIndexObj));
+
 			}
 			return resultObj;
 		}
@@ -527,7 +613,7 @@ angular.module('uguru.util.controllers')
 			getAdminElements();
 
 
-
+			document.querySelector('')
 
 
 		}, 1000)

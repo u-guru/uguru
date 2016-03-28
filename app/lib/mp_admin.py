@@ -444,6 +444,79 @@ def printAllElementTypes(element_type, sub_element=None, grandchild_element=None
         print elem['id'], elem['ref'], elem['name']
 
 
+def getInteractiveRequirements():
+    return {
+        "all_options": ['state:["hifi", "functional", "fluid", "testing"]', 'substate', 'layouts', 'scene', 'container', 'moodboard', 'project', 'admin'],
+        "required_spec": {
+            "scene": ["name", "description", "template_url", "type"],
+            "state": ["name", "desciption", "template_url", "type", "assigned", "substates:nested"],
+            "type": [],
+            "substate": [],
+            "name": [],
+            "description": [],
+        },
+        "optional_spec": {
+            "state": ["difficulty", "estimated_time", "index", "priority", "notes"],
+        },
+        "sub-state": [],
+        "scene": [],
+        "layouts": [],
+
+    }
+
+def cliFormat(arr_args, action="create"):
+    result_str = "\n\nPlease select an option to %s:\n\n\n" % action
+    index = 0
+    print_args = arr_args + []
+    for arg in print_args:
+        print_args[index] = str(index + 1) + ". " + arg
+        index += 1
+        arg = str(index) + '.' + '  ' + arg
+    from pprint import pprint
+    result_str +=  "\n".join(print_args)
+    print result_str + '\n\n'
+    return arr_args
+
+def cliTemplate(arr_args):
+    option = raw_input("Please choose a number from 1 - %s\n\n>>>  " % len(arr_args))
+    option_type = type(option)
+    try:
+        option = int(option)
+        option_type = int
+    except:
+        pass
+    while option_type != int or (int(option) < 1 and int(option) > len(arr_args)):
+        print "\ninvalid input --", "please try again\n\n".upper()
+        option = raw_input("Please choose a number from 1 - %s\n\n>>>  " % len(arr_args))
+        option_type = type(option)
+        try:
+            option = int(option)
+            option_type = int
+        except:
+            continue
+    selected_option = arr_args[int(option) - 1]
+    return selected_option, int(option) - 1
+
+def cliFormTemplate(arr_args, _type="required"):
+    print "\n\nThese are the %s %s fields to fill out\n\n>>>  " % (len(arr_args), _type)
+    filled_args = []
+    forced_exit = False
+    total_fields = len(arr_args)
+    remaining_args = list(arr_args)
+    while len(filled_args) != total_fields and not forced_exit:
+        prioritized_field = remaining_args[0]
+        option = raw_input("Please add a %s\n\n>>>\n" % prioritized_field)
+        if len(option) > 5:
+            filled_args.append(prioritized_field)
+            remaining_args = remaining_args[1:]
+        print "\n\nstatus:%s filled out of %s -- only %s left!\n\n" % (len(filled_args), len(arr_args), len(remaining_args))
+        index = 1
+        for arg in filled_args:
+            print "#%s. %s\n >>> %s" % (index, arr_args[index - 1], filled_args[index - 1])
+            index += 1
+        print "\n\n"
+    return filled_args
+
 import sys
 args = sys.argv
 if 'i' in args:
@@ -471,7 +544,88 @@ if 'print' in args and args.index('print') == 1 and len(args) == 3:
         print "UNSUPPORTED ELEMENT TYPE\n\nHere are the supported ones: %s" % (base_elements.keys())
     else:
         printAllElementTypes(element_type)
-if 'create' in args:
+
+
+if 'create' in args or '-c' in args:
+    ## 0. Process args && spec
+    ## 1. Create
+    ## 2. Interactive resolve all arguments
+    ## 3. Assign ref accordingly
+    ## 4. Link all refs
+    ## 4. Sync with MP
+    allElementRequirements = getInteractiveRequirements()
+
+    ## arg #1 - select a type
+    if len(args) == 3:
+        all_options = allElementRequirements["all_options"]
+        from pprint import pprint
+
+        all_options = cliFormat(all_options)
+        selected_option, selected_index = cliTemplate(all_options)
+
+        all_requirements = allElementRequirements['required_spec'][selected_option.split(':')[0]]
+        all_reqs = cliFormTemplate(all_requirements)
+        print filled_args, 'filled'
+        import sys
+        sys.exit()
+
+    # arg #2 what are we editing?
+    elif len(args) == 4:
+        pass
+        ## arg #2 - fill out the fields
+    else:
+        import sys
+        sys.exit()
+    validateResults, elements = validateCreateArgs(args[2:])
+    if validateResults:
+        reprocessActionItems(elements)
+        saveElementsJson(elements)
+        print 'state successfully created and updated in elements.json'
+
+if 'get' in args or '-g' in args:
+    if len(args) == 2:
+
+        allElementRequirements = getInteractiveRequirements()
+        all_options = allElementRequirements["all_options"]
+
+        all_options = cliFormat(all_options, action="edit")
+        selected_option, selected_index = cliTemplate(all_options)
+
+        mp_dict = getMostUpdatedMPElements()
+
+        option_arr = mp_dict[selected_option.split(':')[0]]
+        option_arr_keys = [option['ref'] for option in option_arr]
+        from pprint import pprint
+        pprint(option_arr_keys)
+
+
+    if len(args) == 3:
+        selected_option = args[2]
+        mp_dict = getMostUpdatedMPElements()
+
+        option_arr = mp_dict[selected_option.split(':')[0]]
+        option_arr_keys = [option['ref'] for option in option_arr]
+        from pprint import pprint
+        pprint(option_arr_keys)
+
+
+if 'edit' in args or '-e' in args:
+    if len(args) == 3:
+
+        allElementRequirements = getInteractiveRequirements()
+        all_options = allElementRequirements["all_options"]
+
+        all_options = cliFormat(all_options, action="edit")
+        selected_option, selected_index = cliTemplate(all_options)
+
+if 'link' in args or '-l' in args:
+    validateResults, elements = validateCreateArgs(args[2:])
+    if validateResults:
+        reprocessActionItems(elements)
+        saveElementsJson(elements)
+        print 'state successfully created and updated in elements.json'
+
+if 'remove' in args or '-r' in args:
     validateResults, elements = validateCreateArgs(args[2:])
     if validateResults:
         reprocessActionItems(elements)

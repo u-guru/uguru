@@ -128,12 +128,21 @@
             "ref": "splash.dropdown", 
             "sample": {
                 "scope": {
+                    "key": "name", 
+                    "label": "Top Fruits", 
                     "options": [
-                        "apples", 
-                        "bananas", 
-                        "oranges"
+                        {
+                            "name": "apples"
+                        }, 
+                        {
+                            "name": "bananas"
+                        }, 
+                        {
+                            "name": "oranges"
+                        }
                     ], 
-                    "selectedIndex": 0
+                    "selectedIndex": 0, 
+                    "size": "small"
                 }, 
                 "template": "<dropdown type=\"splash\" ng-model=\"component.sample.scope\"></dropdown>"
             }, 
@@ -366,20 +375,23 @@
             "cp_link": "", 
             "description": "", 
             "id": 2, 
-            "name": "", 
+            "name": "Splash Maps", 
             "notes": "", 
             "parents": {
                 "scenes": [], 
                 "user_stories": []
             }, 
-            "ref": "map-university", 
+            "ref": "splash-map-markers", 
             "sample": {
                 "scope": "", 
                 "template": ""
             }, 
             "scenes": [], 
             "states": [], 
-            "template_url": "maps.html"
+            "template_url": "splash.maps.html", 
+            "type": [
+                "Splash Maps"
+            ]
         }, 
         {
             "bugs": [], 
@@ -389,23 +401,24 @@
                 "container": [], 
                 "scenes": []
             }, 
+            "controller": "General 2/3", 
             "cp_link": "", 
             "description": "", 
             "id": 3, 
-            "name": "", 
+            "name": "One Page Pull-Down", 
             "notes": "", 
             "parents": {
                 "scenes": [], 
                 "user_stories": []
             }, 
-            "ref": "sidebar", 
+            "ref": "general-2-3", 
             "sample": {
                 "scope": "", 
                 "template": ""
             }, 
             "scenes": [], 
             "states": [], 
-            "template_url": ""
+            "template_url": "home.desktop.student.html"
         }, 
         {
             "bugs": [], 
@@ -418,13 +431,13 @@
             "cp_link": "", 
             "description": "", 
             "id": 4, 
-            "name": "", 
+            "name": "One Page Pull-Down", 
             "notes": "", 
             "parents": {
                 "scenes": [], 
                 "user_stories": []
             }, 
-            "ref": "projector-nav", 
+            "ref": "one-page-pull-down", 
             "sample": {
                 "scope": "", 
                 "template": ""
@@ -444,7 +457,7 @@
             "cp_link": "", 
             "description": "", 
             "id": 5, 
-            "name": "", 
+            "name": "Getting Started", 
             "notes": "", 
             "parents": {
                 "scenes": [], 
@@ -465,10 +478,10 @@
             "cp_link": "", 
             "description": "", 
             "id": 6, 
-            "name": "", 
+            "name": "Scene Transition #1", 
             "notes": "", 
             "parents": [], 
-            "ref": "general-content-layout", 
+            "ref": "scene-transition-one", 
             "sample": {
                 "scope": "", 
                 "template": ""
@@ -482,10 +495,10 @@
             "cp_link": "", 
             "description": "", 
             "id": 7, 
-            "name": "", 
+            "name": "Full page loader", 
             "notes": "", 
             "parents": [], 
-            "ref": "academic-layout", 
+            "ref": "full-page-loader", 
             "sample": {
                 "scope": "", 
                 "template": ""
@@ -499,10 +512,10 @@
             "cp_link": "", 
             "description": "", 
             "id": 8, 
-            "name": "", 
+            "name": "CTA General Content", 
             "notes": "", 
             "parents": [], 
-            "ref": "photo-layout", 
+            "ref": "cta-general", 
             "sample": {
                 "scope": "", 
                 "template": ""
@@ -516,10 +529,10 @@
             "cp_link": "", 
             "description": "", 
             "id": 9, 
-            "name": "", 
+            "name": "Full Swiper", 
             "notes": "", 
             "parents": [], 
-            "ref": "tech-layout", 
+            "ref": "full-swiper", 
             "sample": {
                 "scope": "", 
                 "template": ""
@@ -584,7 +597,13 @@
     "scenes": [
         {
             "bugs": [], 
-            "children": [], 
+            "children": {
+                "layouts": [
+                    "splash-mad-lib", 
+                    "one-page-pull-down"
+                ]
+            }, 
+            "controller": "", 
             "cp_link": "", 
             "description": "", 
             "element_states": {
@@ -632,43 +651,140 @@
                 "priority": 0, 
                 "testing": [
                     {
-                        "description": "sdfdsfs", 
+                        "description": "All Elements Exist", 
                         "estimated_time": 5, 
                         "id": 1, 
-                        "name": "sdfsdfsd", 
+                        "name": "All Elements Exist", 
                         "parent_ref": "mad-lib", 
                         "priority": 5, 
                         "ref": "mad-lib-testing-1", 
-                        "substates": []
+                        "substates": [
+                            {
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": false, 
+                                "name": "All tags (i.e. midnight) are not empty", 
+                                "parent_ref": "mad-lib-state-1", 
+                                "ref": "mad-lib-testing-1-substate-1", 
+                                "test_client": "manual", 
+                                "test_status": "unsure"
+                            }, 
+                            {
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": false, 
+                                "name": "SVG Icons: Phone, Logo, Sidebar", 
+                                "parent_ref": "mad-lib-state-1", 
+                                "ref": "mad-lib-testing-1-substate-2", 
+                                "test_client": "manual", 
+                                "test_status": "unsure"
+                            }, 
+                            {
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": false, 
+                                "name": "University, Category Dropdowns work 100%", 
+                                "parent_ref": "mad-lib-state-1", 
+                                "ref": "mad-lib-testing-1-substate-3", 
+                                "test_client": "manual", 
+                                "test_status": "unsure"
+                            }
+                        ]
                     }, 
                     {
                         "description": "sadasdasdas", 
                         "estimated_time": 5, 
                         "id": 2, 
-                        "name": "asdasdas", 
+                        "name": "Everything click-able works", 
                         "parent_ref": "mad-lib", 
                         "priority": 5, 
                         "ref": "mad-lib-testing-2", 
-                        "substates": []
+                        "substates": [
+                            {
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": false, 
+                                "name": "Click all 8 tags + re-click to undo", 
+                                "parent_ref": "mad-lib-state-2", 
+                                "ref": "mad-lib-testing-2-substate-1", 
+                                "test_client": "manual", 
+                                "test_status": "unsure"
+                            }, 
+                            {
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": false, 
+                                "name": "Select University Dropdown & Select Option", 
+                                "parent_ref": "mad-lib-state-2", 
+                                "ref": "mad-lib-testing-2-substate-2", 
+                                "test_client": "manual", 
+                                "test_status": "unsure"
+                            }, 
+                            {
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": false, 
+                                "name": "Select Category Dropdown & Select Option", 
+                                "parent_ref": "mad-lib-state-2", 
+                                "ref": "mad-lib-testing-2-substate-3", 
+                                "test_client": "manual", 
+                                "test_status": "unsure"
+                            }
+                        ]
                     }, 
                     {
-                        "description": "k", 
+                        "description": "sadasdasdas", 
                         "estimated_time": 5, 
                         "id": 3, 
-                        "name": "testttt", 
+                        "name": "Select two, fill both options", 
                         "parent_ref": "mad-lib", 
                         "priority": 5, 
                         "ref": "mad-lib-testing-3", 
-                        "substates": []
+                        "substates": [
+                            {
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": false, 
+                                "name": "Verify Guru Logo Bubble Popsup", 
+                                "parent_ref": "mad-lib-state-3", 
+                                "ref": "mad-lib-testing-3-substate-1", 
+                                "test_client": "manual", 
+                                "test_status": "unsure"
+                            }, 
+                            {
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": false, 
+                                "name": "Verify Button Slides-In", 
+                                "parent_ref": "mad-lib-state-3", 
+                                "ref": "mad-lib-testing-3-substate-2", 
+                                "test_client": "manual", 
+                                "test_status": "unsure"
+                            }, 
+                            {
+                                "difficulty": 2, 
+                                "estimated_time": 5, 
+                                "is_complete": false, 
+                                "name": "Select Category Dropdown & Select Option", 
+                                "parent_ref": "mad-lib-state-3", 
+                                "ref": "mad-lib-testing-2-substate-3", 
+                                "test_client": "manual", 
+                                "test_status": "unsure"
+                            }
+                        ]
                     }
                 ], 
                 "type": ""
             }, 
             "id": 1, 
-            "name": "Mad lib", 
+            "name": "Splash Mad lib", 
             "notes": "", 
-            "parents": [], 
-            "ref": "mad-lib", 
+            "parents": {
+                "user_stories": [
+                    "pre-app"
+                ]
+            }, 
+            "ref": "splash-mad-lib", 
             "sample": {
                 "scope": "", 
                 "template": ""
@@ -678,7 +794,12 @@
         }, 
         {
             "bugs": [], 
-            "children": [], 
+            "children": {
+                "layouts": [
+                    "general-2-3", 
+                    "cta-general"
+                ]
+            }, 
             "cp_link": "", 
             "description": "", 
             "element_states": {
@@ -695,7 +816,11 @@
             "id": 2, 
             "name": "Side Menu", 
             "notes": "", 
-            "parents": [], 
+            "parents": {
+                "user_stories": [
+                    "pre-app"
+                ]
+            }, 
             "ref": "side-menu", 
             "sample": {
                 "scope": "", 
@@ -706,7 +831,15 @@
         }, 
         {
             "bugs": [], 
-            "children": [], 
+            "children": {
+                "layouts": [
+                    "general-2-3", 
+                    "cta-general", 
+                    "one-page-pull-down", 
+                    "getting-started", 
+                    "guru-profile"
+                ]
+            }, 
             "cp_link": "", 
             "description": "", 
             "element_states": {
@@ -721,10 +854,10 @@
                 "type": ""
             }, 
             "id": 3, 
-            "name": "University Map", 
+            "name": "Splash Map", 
             "notes": "", 
             "parents": [], 
-            "ref": "university-map", 
+            "ref": "splash-map", 
             "sample": {
                 "scope": "", 
                 "template": ""
@@ -734,50 +867,75 @@
         }, 
         {
             "bugs": [], 
-            "children": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "containers": []
+            }, 
             "cp_link": "", 
             "description": "", 
             "id": 4, 
-            "name": "", 
+            "name": "Become a Guru", 
             "notes": "", 
-            "parents": [], 
-            "ref": "Mad lib", 
+            "parents": {
+                "layouts": [
+                    "full-swiper"
+                ]
+            }, 
+            "ref": "become-guru", 
             "sample": {
                 "scope": "", 
                 "template": ""
             }, 
             "states": [], 
             "template_url": "", 
-            "type": ""
+            "type": "layout:child"
         }, 
         {
             "bugs": [], 
-            "children": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "containers": []
+            }, 
             "cp_link": "", 
             "description": "", 
             "id": 5, 
-            "name": "", 
+            "name": "How it works", 
             "notes": "", 
-            "parents": [], 
-            "ref": "Side Menu", 
+            "parents": {
+                "layouts": [
+                    "full-swiper"
+                ]
+            }, 
+            "ref": "how-it-works", 
             "sample": {
                 "scope": "", 
                 "template": ""
             }, 
             "states": [], 
             "template_url": "", 
-            "type": ""
+            "type": "layout:child"
         }, 
         {
             "bugs": [], 
-            "children": [], 
+            "children": {
+                "layouts": [
+                    "full-swiper", 
+                    "scene-transition-one"
+                ]
+            }, 
             "cp_link": "", 
             "description": "", 
             "id": 6, 
-            "name": "", 
+            "name": "Splash Getting Started", 
             "notes": "", 
-            "parents": [], 
-            "ref": "University Map", 
+            "parents": {
+                "user_stories": [
+                    "pre-app"
+                ]
+            }, 
+            "ref": "getting-started", 
             "sample": {
                 "scope": "", 
                 "template": ""
@@ -1034,17 +1192,27 @@
     }, 
     "user_stories": [
         {
+            "children": {
+                "layouts": [
+                    "mad-lib", 
+                    "map-university", 
+                    "sidebar", 
+                    "projector-nav", 
+                    "getting-started"
+                ], 
+                "scenes": [
+                    "splash-mad-lib", 
+                    "side-menu", 
+                    "splash-map", 
+                    "become-guru", 
+                    "how-it-works", 
+                    "getting-started"
+                ]
+            }, 
             "description": "", 
             "id": 1, 
-            "layouts": [
-                "mad-lib", 
-                "map-university", 
-                "sidebar", 
-                "projector-nav", 
-                "getting-started"
-            ], 
             "name": "Anonymous User Checks out Uguru", 
-            "ref": "splash", 
+            "ref": "pre-app", 
             "scene_transitions": [
                 "Mad Lib --> University"
             ], 

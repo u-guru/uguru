@@ -35,6 +35,20 @@ angular.module('uguru.components', [])
     }
   };
 }])
+// .directive("toggle", ['$timeout', function($timeout) {
+//   return {
+//     templateUrl: BASE + 'templates/components/dev/containers/',
+//     scope: {
+//         label: '=label',
+//         labelPos: '=labelPos',
+//         isOn: '=on',
+//         isOff: '=off'
+//         // tests:'=testArr',
+//     },
+//       replace: true,
+//     }
+//   }
+// ])
 .directive("dropdown", ['$timeout', function($timeout) {
   return {
     templateUrl: getTemplateURL,
@@ -45,37 +59,23 @@ angular.module('uguru.components', [])
     replace: true,
     restrict: 'E',
     link: function( scope, element, attr ) {
+      if (!scope.size) {
+        scope.size = 'small';
+      }
       scope.click = function(option, index) {
-        // // console.log(scope.dropdown)
-        // // var  = ;
-        // // console.log("WTF",attr.eventFocus)
-        // // console.log("WTF",movable)
-
-        // element.find('a').on(attr.event, function() {
-        //    // focus(attr.eventFocusId);
-        //      var stack =[]
-        //      for (var i = 0 ; i < scope.tests.length;++i)
-        //         if (i != (parseInt(attr.index)) && scope.tests[i].active)
-        //             stack.push(i)
-
-        //      scope.$apply(function() {
-        //           for(var i = 0; i < stack.length;++i)
-        //           {
-        //               scope.tests[stack[i]].active = false
-        //           }
-        //           // if (i == (parseInt(attr.index)) && scope.tests[i].active)
-        //           //   element.find('ul')[0].focus();
-        //      });
-        //  });
 
         scope.dropdown.selectedIndex = index;
+
         $timeout(function() {
           scope.$apply();
         })
+
         if (scope.dropdown.onOptionClick) {
           scope.dropdown.onOptionClick(option, index);
         }
+
         scope.toggle();
+
       }
       scope.toggle = function() {
         scope.dropdown.active = !scope.dropdown.active;

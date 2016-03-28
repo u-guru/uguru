@@ -1,0 +1,140 @@
+<div class='admin-states-header relative'>
+        <h1>Test States</h1>
+        <div>{{selected_scene.element_states.testing.length || 0}} total</div>
+
+    </div>
+    <div class="admin-states-container no-scrollbar full-xy flex-wrap flex-stretch">
+        <ul class="title">
+            <li></li><li></li>
+            <li>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+            </li>
+            <li><h1>iOS</h1></li>
+            <li><h1>Android</h1></li>
+        </ul>
+        <ul class="title">
+            <li ng-click="page.toggles.showAddScenario = !page.toggles.showAddScenario"><h4>Add State&nbsp;&nbsp;&nbsp;+ </h4></li>
+            <li ng-click="page.toggles.showAddStep = !page.toggles.showAddStep"><h1>Add Step &nbsp;&nbsp;&nbsp; </h1></li>
+            <li><h1>m-S</h1></li>
+            <li><h1>m-M</h1></li>
+            <li><h1>m-L</h1></li>
+            <li><h1>m-XL</h1></li>
+            <li><h1>d-S</h1></li>
+            <li><h1>d-M</h1></li>
+            <li><h1>d-L</h1></li>
+            <li><h1>m-S</h1></li>
+            <li><h1>m-M</h1></li>
+            <li><h1>m-L</h1></li>
+            <li><h1>m-XL</h1></li>
+            <li><h1>d-S</h1></li>
+            <li><h1>d-M</h1></li>
+            <li><h1>d-L</h1></li>
+            <li><h1>m-S</h1></li>
+            <li><h1>m-M</h1></li>
+            <li><h1>m-L</h1></li>
+            <li><h1>m-XL</h1></li>
+            <li><h1>d-S</h1></li>
+            <li><h1>d-M</h1></li>
+            <li><h1>d-L</h1></li>
+            <li><h1>App</h1></li>
+            <li><h1>Safari</h1></li>
+            <li><h1>App</h1></li>
+            <li><h1>Chrome</li>
+        </ul>
+        <ul class='full-xy relative' style='width:2100px !important;'>
+            <li class='full-x' style='width:2100px !important;'>
+                <ul ng-if="page.toggles.showAddScenario" class='full-x'>
+                    <li>
+                        <a ng-click="page.toggles.showAddScenario = !page.toggles.showAddScenario;">&times;</a>
+                    </li>
+                    <li>
+                        <input class='full-xy p05xy m10x text-center txt-16' placeholder="name" ng-model="newTestState.name"/>
+                    </li>
+                    <li class='relative'>
+                        <input class='full-xy p05xy m10x text-center txt-16' placeholder="add description here" ng-model="newTestState.description"/>
+                    </li>
+                    <li>
+                        <button class="radius-2 m10x bg-slate height-36 txt-18" ng-click='createStateElement(newTestState, selected_scene, "testing")'>Save</button>
+                    </li>
+                </ul>
+                <ul ng-repeat="state in selected_scene.element_states.testing" class='full-x ugrid-2'>
+                    <li style='width:150px;' class='relative'>{{state.name}}</li>
+                    <li style='width: 1950px;' class='relative flex-wrap' ng-if='state.substates'>
+                        <ul  ng-repeat="substate in state.substates" class='ugrid-2 full-x m10y' style='border-bottom: 4
+                        px dashed rgba(0,0,0,0.1); padding-bottom:15px;'>
+                            <li style="width:200px"> <small> {{substate.name}} </small>
+                            </li>
+                            <li ng-repeat="platform in substate.platforms"  style='width: 69px !important; display:inline-block;' >
+                                <div class="checkbox-container {{platform.test_status || 'unsure'}}" ng-click="updateSubStateElement(substate, state, selected_scene, 'testing', false, platform)" style='width: auto !important;'>
+                                    <div class='relative'>
+                                        <span>
+                                            <svg viewBox="0 0 100 100" ng-if='platform.test_status === "unsure"'>
+                                                <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 100 100" ng-if="platform.test_status === 'fail'">
+                                                <path d="M14,50 L86,50"></path>
+                                            </svg>
+                                            <svg viewBox="0 0 100 100" ng-if="platform.test_status === 'pass'">
+                                                <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                            </svg>
+                                        </span>
+                                        <div class='opacity-50 full-x uppercase weight-600 p05xy' style='font-size:10px; margin-left:-7px;'>
+                                            {{platform.test_client}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- <li>
+                                <div class="checkbox-container unsure">
+                                    <div>
+                                        <span>
+                                            <svg viewBox="0 0 100 100">
+                                                <path d="M14,50 L86,50"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="checkbox-container pass">
+                                    <div>
+                                        <input type="checkbox" id="checkbox-item" checked/>
+                                        <span>
+                                            <svg viewBox="0 0 100 100">
+                                                <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li> -->
+                        </ul>
+                        <ul class='ugrid-3 full-x m10y' style='border-bottom: 4
+                        px dashed rgba(0,0,0,0.1); padding-bottom:15px;'>
+                            <li class='relative' style="width:150px; text-align:right;" ng-show="!page.toggles.showAddSubtate" ng-click='page.toggles.showAddSubtate = !page.toggles.showAddSubtate && state.ref;'>
+                                <div class='uppercase opacity-50 weight-600 txt-charcoal' style='max-height:30px;'>
+                                    + &nbsp;&nbsp;&nbsp; Add a substate
+                                </div>
+                            </li>
+                            <li class='relative' style="width:150px; text-align:right;" ng-show="page.toggles.showAddSubtate" ng-click='page.toggles.showAddSubtate = !page.toggles.showAddSubtate'>
+                                <div class='uppercase weight-300 txt-charcoal' style='max-height:30px;'>
+                                    Cancel
+                                </div>
+                            </li>
+
+                            <li class='relative' style="width:300px" ng-show="page.toggles.showAddSubtate && page.toggles.showAddSubtate === state.ref">
+                                    <input class='full-xy p05xy m10x text-center txt-16' placeholder="add substate name" ng-model="newSubScene.name"/>
+                            </li>
+                            <li class='relative bg-azure txt-white' style='width:150px' ng-click='updateSubStateElement(substate, scene, selected_scene, "testing", false)' ng-show="page.toggles.showAddSubtate && page.toggles.showAddSubtate === state.ref">
+                                 <a ng-click='createSubstateElement(newSubScene, scene, selected_scene, "fluid")' class='full-x bg-transparent'>save</a>
+                            </li>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>

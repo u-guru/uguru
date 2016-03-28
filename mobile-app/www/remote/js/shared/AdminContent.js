@@ -485,7 +485,10 @@ var componentList = [
             template: '<dropdown ng-model="component.sample.scope"></dropdown>',
             scope: {
                 options: ['apples', 'bananas', 'oranges'],
-                selectedIndex: 0
+                selectedIndex: 0,
+                key: 'name',
+                label: 'Top Fruits',
+                size: 'small'
             }
         }
     },
