@@ -53,17 +53,17 @@
                 "assigned": [
                     "Jeselle"
                 ], 
-                "complete": true, 
+                "complete": false, 
                 "desc_dropdown": false, 
-                "description": "Research & Create First Iteration Hi-Fi.", 
+                "description": "If a category-specific Guru creates multiple cardlets, how will these impact the public view of their category profile? <br><br>There will be two parts (this one part 1), the initial glance (2-3 mini cards, and a view all state)", 
                 "difficulty": 3, 
                 "estimated_time": 60, 
                 "index": 1, 
-                "name": "Research & Create First Iteration Hi-Fi", 
+                "name": "[Guru Public Profile] Mini Cardlet View", 
                 "priority": 10, 
                 "ref": "create-edit-resource-1", 
-                "time_created": "3/24", 
-                "type": "Hifi Scene"
+                "time_created": "3/28", 
+                "type": "Hifi Container"
             }, 
             {
                 "assigned": [
@@ -71,15 +71,15 @@
                 ], 
                 "complete": false, 
                 "desc_dropdown": false, 
-                "description": "Research & Create First Iteration Hi-Fi.", 
+                "description": "This is the second state, assume that container will take over the entire right section & is one of the tab options", 
                 "difficulty": 3, 
                 "estimated_time": 20, 
                 "index": 1, 
-                "name": "Above & Beyond hi-fis for all categories", 
+                "name": "[Guru Public Profile] Cardlet LIST View", 
                 "priority": 10, 
                 "ref": "user-content-state-2", 
-                "time_created": "3/24", 
-                "type": "Hifi Scene"
+                "time_created": "3/28", 
+                "type": "Hifi Container"
             }, 
             {
                 "assigned": [
@@ -87,16 +87,15 @@
                 ], 
                 "complete": false, 
                 "desc_dropdown": false, 
-                "description": "1. GDoc: List out all general/unique components across category-specific cardlet hifis in a doc + check-in<br><br> 2. Research: What are the best fluid examples of the components we don't have? <br><br>3. Research: For each profile, which third party inte", 
-                "description_2": "se?<br><br>4. Hifi: Uguru General template Hi-Fi (black and white), Don't include anything category specific", 
+                "description": "Within the guru promote CTA, one of the options will be 'Distribute Great Content' or something like that. <br><br> When that is clicked, it will take over the entire page (just like the projector), and there will be a step by step graphic/animation centr", 
                 "difficulty": 3, 
                 "estimated_time": 20, 
                 "index": 1, 
-                "name": "Template first, then Category-Specific Create Cardlet", 
+                "name": "[Guru Promote] Distribute Awesome Content: How it works", 
                 "priority": 10, 
-                "ref": "create-edit-resource-1", 
-                "time_created": "3/24", 
-                "type": "Hifi Scene"
+                "ref": "create-edit-resource-3", 
+                "time_created": "3/28", 
+                "type": "Hifi Container"
             }
         ], 
         "samir": []
@@ -336,6 +335,37 @@
                 }, 
                 "template": "<tag desktop=\"desktopMode\" category=\"component.sample.scope.category\" inner-text=\"component.sample.scope.innerText\" type=\"input\"> </tag>"
             }
+        }
+    ], 
+    "containers": [
+        {
+            "components": [
+                "Background photo", 
+                "Cardlet Title", 
+                "Last Updated Reference", 
+                "SVG Star"
+            ], 
+            "name": "Cardlet Mini Card", 
+            "notes": "Ideally the shape of these should fit the category profile. What appearance should the cardlet set come off as", 
+            "ref": "cardlet-mini-card"
+        }, 
+        {
+            "components": [
+                "Several mini cardlets"
+            ], 
+            "description": "", 
+            "name": "Cardlet Mini Card List", 
+            "notes": "Ideally these would look nice if the collection reflects the theme of the category use-case. I.e. Photography has a stack of poloriod photos", 
+            "ref": "cardlet-mini-card-list"
+        }, 
+        {
+            "components": [
+                "Getting Started Item"
+            ], 
+            "description": "", 
+            "name": "Cardlet Getting Started", 
+            "notes": "", 
+            "ref": "cardlet-getting-started"
         }
     ], 
     "layouts": [
