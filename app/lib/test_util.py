@@ -37,11 +37,24 @@ def loadMostUpdatedElementsJson():
 
 ## client = ['chrome', 'safari', 'firefox', 'ios', 'android']
 ## client_type= ['desktop', 'mobile', 'app', 'device-safari', 'device-chrome']
-## window_size = []
-## test_client = either("travis", "manual") -- if you toggle checkbox on dashboard, it will say manual, if the test is updated from
+## window_size(Optional) = ['small', 'medium', 'large', 'xl'] --> only for browser, not for anything on apps
 ## test_passed = True, False based on your result
-def updateFromTravisClient(client, client_type, test_client="travis", window_size=None, test_passed=False):
-    pass
+def updateFromTravisClient(client, client_type, window_size=None, test_passed=False):
+    import requests
+    test_client="travis"
+    admin_token = "9c1185a5c5e9fc54612808977ee8f548b2258d34"
+    full_url = "https://uguru-rest-test.herokuapp.com/api/v1/admin/" + admin_token + '/dashboard/'
+    try:
+        response = requests.put(url=full_url)
+        ## update went through to the server
+        if response.status == 200:
+            return True
+    ## update went through to the server
+    except:
+        print "ERROR: Something went wrong with Uguru Dashboard update from Travis test -- please let Samir know \n\n%s\n\%s" % (str(client), str(client_type), str(window_size))
+        return False
+
+
 
 ## Uploads a screenshot to amazon and returns URL as property
 def uploadedScreenshotToAmazon(state_ref, file_location):
