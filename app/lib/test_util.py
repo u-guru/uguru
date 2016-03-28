@@ -35,6 +35,18 @@ def loadMostUpdatedElementsJson():
     _dict = json.load(open('./app/lib/elements.json'))
     return _dict
 
+## client = ['chrome', 'safari', 'firefox', 'ios', 'android']
+## client_type= ['desktop', 'mobile', 'app', 'device-safari', 'device-chrome']
+## window_size = []
+## test_client = either("travis", "manual") -- if you toggle checkbox on dashboard, it will say manual, if the test is updated from
+## test_passed = True, False based on your result
+def updateFromTravisClient(client, client_type, test_client="travis", window_size=None, test_passed=False):
+    pass
+
+## Uploads a screenshot to amazon and returns URL as property
+def uploadedScreenshotToAmazon(state_ref, file_location):
+    pass
+
 def unicode_urlencode(params):
     import urllib
     """
