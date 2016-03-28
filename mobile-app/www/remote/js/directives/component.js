@@ -35,6 +35,20 @@ angular.module('uguru.components', [])
     }
   };
 }])
+// .directive("toggle", ['$timeout', function($timeout) {
+//   return {
+//     templateUrl: BASE + 'templates/components/dev/containers/',
+//     scope: {
+//         label: '=label',
+//         labelPos: '=labelPos',
+//         isOn: '=on',
+//         isOff: '=off'
+//         // tests:'=testArr',
+//     },
+//       replace: true,
+//     }
+//   }
+// ])
 .directive("dropdown", ['$timeout', function($timeout) {
   return {
     templateUrl: getTemplateURL,

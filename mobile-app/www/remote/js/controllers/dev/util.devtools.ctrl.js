@@ -14,7 +14,8 @@ angular.module('uguru.dev.controllers')
   function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile) {
 
     $scope.elements = [];
-    $scope.page = {dropdowns:{}};
+    $scope.page = {dropdowns:{}, toggles:{}};
+    $scope.page.toggles = {add_component: false};
     $scope.page.dropdowns.screenSizeOptions = {options: ['Desktop 1280x800', 'Desktop 1920x1280', 'iPhone 6 375x689', 'iPhone 6+ 414x736'], size:'small', selectedIndex: 0};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
     LoadingService.showAmbig('Loading all dependencies...', 2500);
@@ -49,7 +50,7 @@ angular.module('uguru.dev.controllers')
     }
 
     function deletePreviousTemplateIfExists(selector) {
-      var allTemplates = document.querySelectorAll(selector);
+      var allTemplates = document.querySelectorAll(selector)
       for (var i = 0; i < allTemplates.length; i++ ) {
         var indexTemplate = allTemplates[i];
         indexTemplate.parentNode.removeChild(indexTemplate);
