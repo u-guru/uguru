@@ -914,16 +914,16 @@ input, fieldset {
 }
 // radius
 .radius-2 {
-	border-radius: 2px;
+	border-radius: 2px!important;
 }
 .radius-4 {
-	border-radius: 4px;
+	border-radius: 4px!important;
 }
 .radius-10 {
-	border-radius: 10px;
+	border-radius: 10px!important;
 }
 .round {
-	@include round;
+	border-radius: 1000px!important;
 }
 // SVG
 .svg-white {
@@ -1846,6 +1846,67 @@ input, fieldset {
 }
 .bg-in {
 	background: $instagram;
+}
+
+.border-1 {
+	border-width: 1px;
+	border-style: solid;
+}
+.border-2 {
+	border-width: 2px;
+	border-style: solid;
+}
+.border-3 {
+	border-width: 3px;
+	border-style: solid;
+}
+.border-4 {
+	border-width: 4px;
+	border-style: solid;
+}
+.border-5 {
+	border-width: 5px;
+	border-style: solid;
+}
+.border-10 {
+	border-width: 10px;
+	border-style: solid;
+}
+
+.border-5-bottom {
+	border-bottom: 5px solid;
+}
+.border-5-left {
+	border-left: 5px solid;
+}
+.border-5-right {
+	border-right: 5px solid;
+}
+.border-5-top {
+	border-top: 5px solid;
+}
+
+.border-10-bottom {
+	border-bottom: 10px solid;
+}
+.border-10-left {
+	border-left: 10px solid;
+}
+.border-10-right {
+	border-right: 10px solid;
+}
+.border-10-top {
+	border-top: 10px solid;
+}
+
+.border-dashed {
+	border-style: dashed;
+}
+.border-dotted {
+	border-style: dotted;
+}
+.border-double {
+	border-style: double;
 }
 
 .border-charcoal {

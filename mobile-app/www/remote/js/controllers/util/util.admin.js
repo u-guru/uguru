@@ -22,8 +22,8 @@ angular.module('uguru.util.controllers')
 				user_stories: AdminContent.getUserStories(),
 				createObjects: AdminContent.getBaseObjects($scope),
 				defaults: {
-					tabsIndex: 2,
-					sidebarIndex: 1
+					tabsIndex: 1,
+					sidebarIndex: 2
 				},
 				toggles: {
 					showAddState: false,
@@ -247,8 +247,8 @@ angular.module('uguru.util.controllers')
 
 				$scope.selected_scene = $scope.page.scenes[0];
 				$scope.selected_scene.tabIndex = 2;
-				var modalElem = document.querySelector('#cta-modal-selected-scene');
-				modalElem && modalElem.classList.add('show');
+				// var modalElem = document.querySelector('#cta-modal-selected-scene');
+				// modalElem && modalElem.classList.add('show');
 
 
 				// $scope.selected_scene = $scope.page.scenes[0];
