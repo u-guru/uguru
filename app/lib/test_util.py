@@ -37,10 +37,10 @@ def loadMostUpdatedElementsJson():
 
 ## client = ['chrome', 'safari', 'firefox', 'ios', 'android']
 ## client_type= ['desktop', 'mobile', 'app', 'device-safari', 'device-chrome']
-## window_size = []
-## test_client = either("travis", "manual") -- if you toggle checkbox on dashboard, it will say manual, if the test is updated from
+## window_size(Optional) = ['small', 'medium', 'large', 'xl'] --> only for browser, not for anything on apps
 ## test_passed = True, False based on your result
-def updateFromTravisClient(client, client_type, test_client="travis", window_size=None, test_passed=False):
+def updateFromTravisClient(client, client_type, window_size=None, test_passed=False):
+    test_client="travis",
     pass
 
 ## Uploads a screenshot to amazon and returns URL as property
