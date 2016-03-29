@@ -176,8 +176,8 @@ if 'sync' in args and len(args) == 2:
     saveDictToElementsJson()
 
 if 'test' in args and len(args) == 2:
-    updateFromTravisClient('safari', 'desktop', 'splash-mad-lib', 'mad-lib-testing-1', 'mad-lib-testing-1-substate-2', 'large', True)
-
+    # updateFromTravisClient('firefox', 'mobile', 'splash-mad-lib', 'mad-lib-testing-1', 'mad-lib-testing-1-substate-3', 'medium', False)
+    updateFromTravisClient('android', 'app', 'splash-mad-lib', 'mad-lib-testing-1', 'mad-lib-testing-1-substate-3', 'None', True)
 
 
 

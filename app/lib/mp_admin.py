@@ -55,7 +55,7 @@ def unicode_urlencode(params):
     )
 
 def getBasePlatformDict():
-    browserTypes = ['chrome', 'safari', 'firefox'];
+    browserTypes = ['chrome', 'firefox', 'safari'];
     browserScreens = ['mobile', 'desktop'];
     browserStates = ['small', 'medium', 'large', 'xl'];
     platformResultArr = []
@@ -76,6 +76,45 @@ def getBasePlatformDict():
 
                 })
 
+    ios_variants = [
+        {
+            'platform': 'ios',
+            'type': 'app',
+            'screen_size':None,
+            'test_status': 'unsure',
+            'test_client': 'manual',
+            'passed': False
+        },
+        {
+            'platform': 'ios',
+            'type': 'safari',
+            'screen_size':None,
+            'test_status': 'unsure',
+            'test_client': 'manual',
+            'passed': False
+        }
+    ]
+
+    android_variants = [
+        {
+            'platform': 'android',
+            'type': 'app',
+            'screen_size':None,
+            'test_status': 'unsure',
+            'test_client': 'manual',
+            'passed': False
+        },
+        {
+            'platform': 'android',
+            'type': 'chrome',
+            'screen_size':None,
+            'test_status': 'unsure',
+            'test_client': 'manual',
+            'passed': False
+        }
+    ]
+
+    platformResultArr += ios_variants + android_variants
     return platformResultArr
 
 def hash_args(self, args, secret=None):

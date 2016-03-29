@@ -17,7 +17,7 @@ angular.module('uguru.dev.controllers')
     $scope.page = {dropdowns:{}, toggles:{}};
     $scope.page.toggles = {add_component: false};
     $scope.page.compiledTemplates = {};
-    $scope.page.dropdowns.screenSizeOptions = {options: ['Desktop 1280x800', 'Desktop 1920x1280', 'iPhone 6 375x689', 'iPhone 6+ 414x736'], size:'small', selectedIndex: 0};
+    $scope.page.dropdowns.screenSizeOptions = {onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
     LoadingService.showAmbig('Loading all dependencies...', 2500);
 
@@ -28,11 +28,14 @@ angular.module('uguru.dev.controllers')
             $timeout(function() {
               $scope.$apply(function() {
                 $scope.page.dropdowns.templates.options = response.layouts;
+                $scope.page.dropdowns.screenSizeOptions.options = getScreenOptions();
               })
             });
             injectTemplateIntoStage(response.layouts[0].template_url, 'SplashController');
+            $timeout(function() {
 
-            console.log($scope.page.dropdowns.templates.options);
+              // evalSizeDropdownDefaultSelected();
+            }, 5000)
           },
 
           function(error) {
@@ -44,10 +47,33 @@ angular.module('uguru.dev.controllers')
 
     }
 
+    function getScreenOptions() {
+      return[
+          {name:'Mobile S 320x480', ref: 'mobile-s', dimensions: {'width': 320, 'height': 480 }},
+          {name:'Mobile M 320x568', ref: 'mobile-m', dimensions: {'width': 320, 'height': 568 }},
+          {name:'Mobile L 375x667', ref: 'mobile-lg', dimensions: { 'width': 375, 'height': 667 }},
+          {name:'Mobile XL 414x736', ref:'mobile-xl', dimensions: { 'width': 414, 'height': 736}},
+          {name: 'Desktop S 1024x768', ref: 'desktop-s', dimensions: {'width': 1024, 'height': 768}},
+          {name: 'Desktop M 1366x768', ref:'desktop-m',dimensions: {'width': 1366, 'height':768}},
+          {name: 'Desktop L 1920x1080', ref:'desktop-lg', dimensions: {'width': 1920, 'height':1080}}
+      ]
+    }
 
+    function resizeStage(option, index) {
+      var stageWrapper = document.querySelectorAll('#stage-template-container');
+      if (stageWrapper.length > 1) {
+        for (var i = 0 ; i < (stageWrapper.length -1); i++) {
+          var indexStageWrapper = stageWrapper[i];
+          indexStageWrapper.parentNode.removeChild(indexStageWrapper);
+        }
+      }
+      stageWrapper = stageWrapper[0];
 
-    function makeAllElementsDraggable() {
-
+      stageWrapper.setAttribute("style", "height:" + option.dimensions.height +"px !important; width: " + option.dimensions.width + "px !important;");
+      // stageWrapper.style.width = option.dimensions.width + 'px !important;';
+      $timeout(function() {
+        $compile(stageWrapper)($scope);
+      }, 1000)
     }
 
     function injectTemplateDropdown(option, index) {
@@ -106,7 +132,6 @@ angular.module('uguru.dev.controllers')
           }
         }
       }
-      console.log(smallerElements.length, 'elements selected\n\n', smallerElements);
 
       function elementNotAChildOf(elem, arr_selected) {
         for (var i = 0; i < arr_selected.length; i++) {
@@ -114,7 +139,6 @@ angular.module('uguru.dev.controllers')
           var allIndexElementChildren = indexElement.querySelectorAll('*');
           for (var j = 0; j < allIndexElementChildren.length; j++) {
             if (elem === allIndexElementChildren[j]) {
-              console.log('found nested element', elem, 'inside of parent elem', allIndexElementChildren[j])
               return false;
             }
           }
@@ -124,10 +148,13 @@ angular.module('uguru.dev.controllers')
 
     }
 
-    function stageResizer(dimensions, platform) {
+    function evalSizeDropdownDefaultSelected() {
 
-    };
+      var selectedIndex = $scope.page.dropdowns.screenSizeOptions.selectedIndex;
+      var option = $scope.page.dropdowns.screenSizeOptions.options[selectedIndex]
 
+      $scope.page.dropdowns.screenSizeOptions.onOptionClick(option, selectedIndex)
+    }
 
 
     function onDomContentLoad() {
@@ -135,7 +162,6 @@ angular.module('uguru.dev.controllers')
             LoadingService.hide();
         }
         getRecentElementComponents(onDomContentLoad);
-
 
     }
 

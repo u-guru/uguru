@@ -3447,8 +3447,10 @@ class AdminDashboardView(restful.Resource):
         obj_substate = request.json.get('substate')
 
         from pprint import pprint
+        pprint(request.json)
 
         if not obj_type or obj_type not in ['fluid', 'testing', 'functional', 'hifi'] or not obj_action or not obj_state or not obj_scene:
+            print "it happens here"
             return "MISSING DATA", 422
 
         if obj_action == 'update' and obj_type in ['testing']:
@@ -3477,7 +3479,8 @@ class AdminDashboardView(restful.Resource):
                                     if not has_platforms:
                                         substate_to_update['platforms'] = getBasePlatformDict()
                                         has_platforms = substate_to_update['platforms']
-                                    filtered_platforms = [platform for platform in has_platforms if platform.get('platform') == request.json.get('client') and platform.get('type') == request.json.get('client_type') and platform.get('screen_size') == request.json.get('window_size')]
+                                    filtered_platforms = [platform for platform in has_platforms if platform.get('platform') == request.json.get('client') and platform.get('type') == request.json.get('client_type') and ((request.json.get('client') in ['ios', 'android']) or platform.get('screen_size') == request.json.get('window_size'))]
+
                                     if filtered_platforms:
                                         platform_to_update = filtered_platforms[0]
                                         from pprint import pprint
@@ -3499,6 +3502,7 @@ class AdminDashboardView(restful.Resource):
                                         return jsonify(admin_components=elements)
 
                 return "MISSING DATA", 422
+
             else:
                 abort(404)
 
