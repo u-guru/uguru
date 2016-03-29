@@ -3433,7 +3433,7 @@ class AdminDashboardView(restful.Resource):
         return json.dumps(mixpanel_local_elements, indent=4), 200
 
     def put(self, auth_token):
-        from lib.mp_admin import modifyStateFromScene, modifySubStateFromScene, saveElementsJson, syncLocalElementsToMP, saveDictToElementsJson
+        from lib.mp_admin import modifyStateFromScene, getMostUpdatedMPElements, modifySubStateFromScene, saveElementsJson, syncLocalElementsToMP, saveDictToElementsJson, getBasePlatformDict
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
 
@@ -3445,10 +3445,69 @@ class AdminDashboardView(restful.Resource):
         obj_scene = request.json.get('scene')
         obj_state = request.json.get('state')
         obj_substate = request.json.get('substate')
-        if not obj_type or obj_type not in ['fluid', 'bug', 'functional', 'hifi'] or not obj_action or not obj_state or not obj_scene:
+
+        from pprint import pprint
+        pprint(request.json)
+
+        if not obj_type or obj_type not in ['fluid', 'testing', 'functional', 'hifi'] or not obj_action or not obj_state or not obj_scene:
+            print "it happens here"
             return "MISSING DATA", 422
 
-        if obj_action == 'remove':
+        if obj_action == 'update' and obj_type in ['testing']:
+            obj_client_type = request.json.get('test_client')
+            obj_client_status = request.json.get('test_status')
+            scene_ref = obj_scene
+            state_ref = obj_state
+            substate_ref = obj_substate
+            if obj_client_type in ['travis', 'manual']:
+                mixpanel_local_elements = getMostUpdatedMPElements()
+                all_scenes = mixpanel_local_elements['scenes']
+                filtered_scenes = [scene for scene in all_scenes if scene.get('ref') == scene_ref]
+                if filtered_scenes:
+                    scene_to_update = filtered_scenes[0]
+                    has_states = scene_to_update.get('element_states')
+                    if (has_states and has_states.get('testing')):
+                        filtered_states = [state for state in has_states.get('testing') if state.get('ref') == state_ref]
+                        if filtered_states and len(filtered_states):
+                            states_to_update = filtered_states[0]
+                            has_substates = states_to_update.get('substates')
+                            if has_substates:
+                                filtered_substates = [substate for substate in has_substates if substate.get('ref') == substate_ref]
+                                if filtered_substates:
+                                    substate_to_update = filtered_substates[0]
+                                    has_platforms = substate_to_update.get('platforms')
+                                    if not has_platforms:
+                                        substate_to_update['platforms'] = getBasePlatformDict()
+                                        has_platforms = substate_to_update['platforms']
+                                    filtered_platforms = [platform for platform in has_platforms if platform.get('platform') == request.json.get('client') and platform.get('type') == request.json.get('client_type') and ((request.json.get('client') in ['ios', 'android']) or platform.get('screen_size') == request.json.get('window_size'))]
+
+                                    if filtered_platforms:
+                                        platform_to_update = filtered_platforms[0]
+                                        from pprint import pprint
+                                        print "\n\nplatform before:\n\n"
+                                        pprint(platform_to_update)
+                                        platform_to_update['passed'] = obj_client_status
+                                        platform_to_update['test_client'] = obj_client_type
+                                        if platform_to_update['passed']:
+                                            platform_to_update['test_status'] = 'pass'
+                                        else:
+                                            platform_to_update['test_status'] = 'fail'
+
+                                        saveElementsJson(mixpanel_local_elements)
+                                        syncLocalElementsToMP()
+                                        from time import sleep
+                                        sleep(1)
+                                        # print "synced with mixpanel"
+                                        saveDictToElementsJson()
+                                        return jsonify(admin_components=elements)
+
+                return "MISSING DATA", 422
+
+            else:
+                abort(404)
+
+
+        if obj_action == 'remove' and obj_type in ['fluid', 'functional', 'hifi']:
 
             if not obj_substate:
 
@@ -3460,7 +3519,7 @@ class AdminDashboardView(restful.Resource):
                 elements = modifySubStateFromScene(obj_scene, obj_substate, obj_state, obj_type, "remove")
                 print "removing substate", obj_substate['name'], 'from state/scene', "%s/%s" % (obj_state['name'],obj_scene['name'])
 
-        elif obj_action == 'update':
+        elif obj_action == 'update' and obj_type in ['fluid', 'functional', 'hifi']:
 
             if not obj_substate:
 
@@ -3473,22 +3532,7 @@ class AdminDashboardView(restful.Resource):
                 elements = modifySubStateFromScene(obj_scene, obj_substate, obj_state, obj_type, "update")
                 print "saved to elements.json dict"
 
-
         saveElementsJson(elements)
-
-        # print obj_type, request.json.get('action'), request.json.get('substate'), request.json.get('state')
-
-        ## TODO create def updateSceneState(scene, new_state, type)
-            ## Resolve update Scene
-            ## Sync
-        ## TODO create def removeSceneState(scene, new_state, type)
-            ## Sync
-
-        ## TODO create def updateSceneSubState(scene, new_state, type)
-            ## Sync
-        ## TODO create def removeSceneState(scene, new_state, type)
-            ## Sync
-
         syncLocalElementsToMP()
         from time import sleep
         sleep(1)

@@ -54,6 +54,69 @@ def unicode_urlencode(params):
         [(k, isinstance(v, unicode) and v.encode('utf-8') or v) for k, v in params]
     )
 
+def getBasePlatformDict():
+    browserTypes = ['chrome', 'firefox', 'safari'];
+    browserScreens = ['mobile', 'desktop'];
+    browserStates = ['small', 'medium', 'large', 'xl'];
+    platformResultArr = []
+    for b_type in browserTypes:
+        for screen in browserScreens:
+            for b_state in browserStates:
+
+                if screen == "desktop" and b_state == 'xl':
+                    continue
+
+                platformResultArr.append({
+                        'platform': b_type,
+                        'screen_size': b_state,
+                        'type': screen,
+                        'test_status': 'unsure',
+                        'test_client': 'manual',
+                        'passed': False
+
+                })
+
+    ios_variants = [
+        {
+            'platform': 'ios',
+            'type': 'app',
+            'screen_size':None,
+            'test_status': 'unsure',
+            'test_client': 'manual',
+            'passed': False
+        },
+        {
+            'platform': 'ios',
+            'type': 'safari',
+            'screen_size':None,
+            'test_status': 'unsure',
+            'test_client': 'manual',
+            'passed': False
+        }
+    ]
+
+    android_variants = [
+        {
+            'platform': 'android',
+            'type': 'app',
+            'screen_size':None,
+            'test_status': 'unsure',
+            'test_client': 'manual',
+            'passed': False
+        },
+        {
+            'platform': 'android',
+            'type': 'chrome',
+            'screen_size':None,
+            'test_status': 'unsure',
+            'test_client': 'manual',
+            'passed': False
+        }
+    ]
+
+    platformResultArr += ios_variants + android_variants
+    return platformResultArr
+
 def hash_args(self, args, secret=None):
         import hashlib
         """
