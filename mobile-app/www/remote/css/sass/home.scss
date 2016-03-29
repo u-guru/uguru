@@ -952,41 +952,6 @@
 #desktop-student-home {
 	background: $smoke;
 	color: $slate;
-	#top-bar {
-		background: $lake;
-		div:nth-child(2) {
-			div {
-				background: $lake;
-			}
-			#top-menu-links {
-				background: $lake;
-				ul {
-					li {
-						a {
-							&:hover, &:active, &:focus {
-								span {
-									color: $lake;
-								}
-								svg {
-									stroke: $lake;
-								}
-							}
-						}
-						&:last-child {
-							a {
-								span {
-									color: $lake;
-								}
-								svg {
-									stroke: $lake;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
 	.main {
 		.home-tabs {
 			background: lighten(mix($slate, $lake, 90%), 20%);

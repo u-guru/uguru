@@ -315,8 +315,8 @@ input, fieldset {
 }
 
 .lyt-reduced-header > header h1 {
-  font-size: 20px;
-  text-transform: none;
+  font-size: 20px !important;
+  text-transform: none !important;
 }
 
 .lyt-reduced-header > *:not(header) {
@@ -329,7 +329,7 @@ input, fieldset {
     height: 100px;
   }
   .lyt-reduced-header > header h1 {
-    font-size: 36px;
+    font-size: 36px !important;
   }
   .lyt-reduced-header > *:not(header) {
     height: calc(100% - 100px);
@@ -1165,6 +1165,26 @@ input, fieldset {
   border-radius: 10px !important;
 }
 
+.radius-2-top {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.radius-2-bottom {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.radius-2-left {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.radius-2-right {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
 .round {
   border-radius: 1000px !important;
 }
@@ -1347,6 +1367,10 @@ input, fieldset {
 
 .txt-slate {
   color: #40484B !important;
+}
+
+.txt-slate-light {
+  color: #637074 !important;
 }
 
 .txt-taupe {
@@ -2330,33 +2354,65 @@ input, fieldset {
 }
 
 .border-1 {
-  border-width: 1px;
+  border-width: 1px !important;
   border-style: solid;
 }
 
 .border-2 {
-  border-width: 2px;
+  border-width: 2px !important;
   border-style: solid;
 }
 
 .border-3 {
-  border-width: 3px;
+  border-width: 3px !important;
   border-style: solid;
 }
 
 .border-4 {
-  border-width: 4px;
+  border-width: 4px !important;
   border-style: solid;
 }
 
 .border-5 {
-  border-width: 5px;
+  border-width: 5px !important;
   border-style: solid;
 }
 
 .border-10 {
-  border-width: 10px;
+  border-width: 10px !important;
   border-style: solid;
+}
+
+.border-1-bottom {
+  border-bottom: 1px solid;
+}
+
+.border-1-left {
+  border-left: 1px solid;
+}
+
+.border-1-right {
+  border-right: 1px solid;
+}
+
+.border-1-top {
+  border-top: 1px solid;
+}
+
+.border-2-bottom {
+  border-bottom: 2px solid;
+}
+
+.border-2-left {
+  border-left: 2px solid;
+}
+
+.border-2-right {
+  border-right: 2px solid;
+}
+
+.border-2-top {
+  border-top: 2px solid;
 }
 
 .border-5-bottom {

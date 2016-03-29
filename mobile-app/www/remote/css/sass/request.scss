@@ -1,5 +1,127 @@
 @import 'mixin';
 
+/* ---------- RATING */
+#rating {
+	.rating-container {
+		> ul {
+			> li {
+				&.rating-charge {
+					position: relative;
+					&:after {
+						content: "";
+						display: block;
+						position: absolute;
+						bottom: -1px;
+						left: 15px;
+						width: calc(100% - 30px);
+						height: 2px;
+					}
+				}
+				.rating-stars {
+					max-width: 300px;
+				}
+			}
+		}
+	}
+	&.mobile-mode {
+		.rating-container {
+			> ul {
+				padding-bottom: calc(64px + 7.5px);
+			}
+		}
+	}
+	&.guru-mode {
+		&.mobile-mode {
+			.rating-container {
+				background: lighten($slate, 15%);
+			}
+		}
+		.rating-container {
+			> ul {
+				background: lighten($slate, 15%);
+				> li {
+					&.rating-charge {
+						&:after {
+							background: rgba(white, .2);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.student-mode {
+		.rating-container {
+			> ul {
+				background: white;
+				> li {
+					&.rating-charge {
+						&:after {
+							background: rgba($slate, .2);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- CONFIRM */
+#confirm {
+	.spacer {
+		padding-bottom: 64px;
+	}
+	.icon-overlap {
+		.user-icon {
+			margin: 0;
+			+ .user-icon {
+				margin-left: -30px;
+			}
+		}
+		.user-icon-72 {
+			margin: 0;
+			+ .user-icon-72 {
+				margin-left: -15px;
+			}
+		}
+	}
+	.confirm-location {
+		svg {
+			display: block;
+			height: 80px;
+			width: auto;
+		}
+		.location-info {
+			position: relative;
+			background: $smoke;
+			width: calc(100% - 80px - 15px);
+			padding: 10px 15px;
+			margin-left: 15px;
+			border-radius: 2px;
+			&:before {
+				@include center-y;
+				content: "";
+				width: 0;
+				height: 0;
+				left: -30px;
+				border: 15px solid transparent;
+				border-right-color: $smoke;
+			}
+		}
+	}
+	&.mobile-mode.student-mode {
+		background: white!important;
+	}
+	a.opacity-50 {
+		&:hover, &:focus {
+			@include opacity-important(.75);
+		}
+		&:active {
+			@include opacity-important(1);
+		}
+	}
+}
+
+/* ---------- REQUEST */
 #request {
 	height: 100%;
 	> header {
@@ -2727,6 +2849,7 @@
 			padding-bottom: 64px;
 			a {
 				display: block;
+				background: white;
 				&:hover, &:focus {
 					background: rgba($lake, .2);
 				}
@@ -2798,9 +2921,10 @@
 				}
 				.location-info {
 					position: relative;
-					background: mix(lighten($slate, 25%), $lake, 80%);
+					background: $smoke;
 					padding: 10px 15px;
 					margin-left: 15px;
+					width: calc(100% - 80px - 15px);
 					border-radius: 2px;
 					&:before {
 						@include center-y;
@@ -2809,13 +2933,15 @@
 						height: 0;
 						left: -30px;
 						border: 15px solid transparent;
-						border-right-color: mix(lighten($slate, 25%), $lake, 80%);
+						border-right-color: $smoke;
 					}
 					h1 {
+						color: $lake;
 						font-size: 24px;
 						font-weight: 600;
 					}
 					p {
+						color: lighten($slate, 15%);
 						font-size: 18px;
 						font-weight: 400;
 					}
@@ -2837,7 +2963,6 @@
 			.confirm-desc {
 				li {
 					a {
-						background: white;
 						&:nth-child(1), &:nth-child(3) {
 							border-radius: 2px 2px 0 0;
 						}
@@ -3032,9 +3157,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $auburn, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $auburn, 80%);
+						h1 {
+							color: $auburn;
 						}
 					}
 				}
@@ -3220,9 +3344,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $orange, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $orange, 80%);
+						h1 {
+							color: $orange;
 						}
 					}
 				}
@@ -3408,9 +3531,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $gold, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $gold, 80%);
+						h1 {
+							color: $gold;
 						}
 					}
 				}
@@ -3596,9 +3718,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $moola, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $moola, 80%);
+						h1 {
+							color: $moola;
 						}
 					}
 				}
@@ -3784,9 +3905,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $azure, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $azure, 80%);
+						h1 {
+							color: $azure;
 						}
 					}
 				}
@@ -3972,9 +4092,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $cobalt, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $cobalt, 80%);
+						h1 {
+							color: $cobalt;
 						}
 					}
 				}
@@ -4160,9 +4279,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $eggplant, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $eggplant, 80%);
+						h1 {
+							color: $eggplant;
 						}
 					}
 				}
@@ -4348,9 +4466,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $cerise, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $cerise, 80%);
+						h1 {
+							color: $cerise;
 						}
 					}
 				}
