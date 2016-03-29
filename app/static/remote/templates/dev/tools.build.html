@@ -18,31 +18,18 @@
                             </label>
                         </div>
                     </div>
-                    <!-- <div>
-                        <h2>Resolution</h2>
-                        <div class="dropdown small">
-                            <div>
-                                <span>Desktop 1280x800</span>
-                                <a>
-                                    <svg viewBox="0 0 100 100">
-                                        <path d="M14,32 L50,68 L86,32"></path>
-                                    </svg>
-                                </a>
-                            </div>
-                            <ul class="active">
-                                <li tabindex>iPhone 6+ 414x736</li>
-                                <li tabindex>iPhone 6 375x689</li>
-                                <li tabindex>Desktop 1920x1280</li>
-                            </ul>
-                        </div>
-                    </div> -->
                     <dropdown ng-model="page.dropdowns.screenSizeOptions"></dropdown>
                     <a class="build-main-settings" ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
                 </div>
             </nav>
 
-            <div class="build-player">
-                <div class="flex-space-between full-x">
+            <div class="build-player relative">
+                <div class='flex-wrap-center absolute full-xy top-0 left-0 flex-wrap-center'>
+                    <h1 class='uppercase weight-700 txt-charcoal'>
+                        Loading ....
+                    </h1>
+                </div>
+                <!-- <div class="flex-space-between full-x">
                     <svg width="100" height="50" viewBox="0 0 100 50">
                         <g fill="none">
                             <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="47" rx="10"></rect>
@@ -191,7 +178,7 @@
                             </text>
                         </g>
                     </svg>
-                </div>
+                </div> -->
             </div>
 
             <nav class="build-main-bottom" ng-show="">

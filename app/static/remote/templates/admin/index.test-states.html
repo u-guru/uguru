@@ -64,11 +64,11 @@
                     </li>
                 </ul>
                 <ul ng-repeat="state in selected_scene.element_states.testing" class='full-x ugrid-2'>
-                    <li style='width:150px;' class='relative'>{{state.name}}</li>
+                    <li style='width:150px;' class='relative ugrid-2'><div class='text-center'>{{state.name}}</div><div class='full-x lowercase weight-600 txt-charcoal opacity-50' style='font-size:12px'># {{state.ref}}</div> </li>
                     <li style='width: 1950px;' class='relative flex-wrap' ng-if='state.substates'>
                         <ul  ng-repeat="substate in state.substates" class='ugrid-2 full-x m10y' style='border-bottom: 4
                         px dashed rgba(0,0,0,0.1); padding-bottom:15px;'>
-                            <li style="width:200px"> <small> {{substate.name}} </small>
+                            <li style="width:200px" class='text-center ugrid-2'> <div class='full-x'> {{substate.name}}</div> <div class='text-center full-x lowercase weight-600 txt-charcoal opacity-50' style='font-size:12px; width: 100% !important;'># {{substate.ref}}</div>
                             </li>
                             <li ng-repeat="platform in substate.platforms"  style='width: 69px !important; display:inline-block;' >
                                 <div class="checkbox-container {{platform.test_status || 'unsure'}}" ng-click="updateSubStateElement(substate, state, selected_scene, 'testing', false, platform)" style='width: auto !important;'>
