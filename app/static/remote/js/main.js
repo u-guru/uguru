@@ -12,8 +12,8 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-  REST_URL = "http://localhost:5000";
-  // REST_URL = "http://192.168.42.70:5000";
+  // REST_URL = "http://localhost:5000";
+  REST_URL = "http://192.168.42.70:5000";
   // BASE_URL = _ipaddress;
 
   // REST_URL = 'https://192.168.0.107:5000';
@@ -139,7 +139,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.build', {
         url: '/build',
-        templateUrl: BASE + 'templates/dev/tools.build.html'
+        templateUrl: BASE + 'templates/dev/tools.build.html',
+        controller: 'DevToolsController'
   }).
   state('root.guru-validation', {
         url: '/guru-validation',

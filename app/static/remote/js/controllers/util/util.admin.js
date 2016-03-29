@@ -303,12 +303,12 @@ angular.module('uguru.util.controllers')
 					$scope.$apply(function() {})
 				});
 
-				// $scope.selected_scene = $scope.page.scenes[0];
-				// $scope.selected_scene.tabIndex = 2;
-				// var modalElem = document.querySelector('#cta-modal-selected-scene');
-				// modalElem && modalElem.classList.add('show');
-				// $scope.selected_scene = $scope.page.scenes[0];
-				// $scope.selected_scene.tabIndex = 2;
+				$scope.selected_scene = $scope.page.scenes[0];
+				$scope.selected_scene.tabIndex = 2;
+				var modalElem = document.querySelector('#cta-modal-selected-scene');
+				modalElem && modalElem.classList.add('show');
+				$scope.selected_scene = $scope.page.scenes[0];
+				$scope.selected_scene.tabIndex = 2;
 				// $scope.selected_scene.element_states.testing[0].substates = [
 				// 	{
 				// 		name: 'substate 1',
@@ -330,6 +330,7 @@ angular.module('uguru.util.controllers')
 								console.log('substate ' + j + ':', testSubstateIndex.name, testSubstateIndex.platforms);
 								if (testSubstateIndex && (!testSubstateIndex.platforms || !testSubstateIndex.platforms.length)) {
 									testSubstateIndex.platforms = $scope.initAllPlatformDict();
+									console.log(testSubstateIndex.platforms);
 									console.log('substate ' + j + ':', testSubstateIndex.name, testSubstateIndex.platforms, '\n');
 								}
 							}
