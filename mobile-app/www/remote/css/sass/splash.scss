@@ -1004,7 +1004,7 @@
 			z-index: 1001;
 		}
 	}
-	
+
 	.sidebar-modal {
 		&:not(.show-sidebar-cta) {
 			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
@@ -1027,7 +1027,7 @@
 		// 	}
 		// }
 	}
-	
+
 	#splash-hero-nav-mobile {
 		@include flex;
 		@include flex-wrap;
@@ -1293,6 +1293,299 @@
 		}
 	}
 
+	.splash-hero-nav {
+			@include flex;
+			@include flex-center-vertical;
+			position: fixed;
+			z-index: 1001;
+			top: 0;
+			right: 0;
+			a, h2 {
+				@include flex;
+				@include flex-center-vertical;
+				padding: 0 10px;
+				height: 48px;
+				font-weight: 600;
+				font-size: 18px;
+			}
+			a {
+				position: relative;
+				.splash-hero-nav-link-bg {
+					@include opacity(.8);
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					z-index: -1;
+				}
+				&:hover, &:focus {
+					.splash-hero-nav-link-bg {
+						@include opacity(1);
+					}
+				}
+				&.bg-delivery {
+					background: rgba($auburn, .8);
+					&:hover, &:focus {
+						background: $auburn;
+					}
+				}
+				&.bg-freelancing {
+					background: rgba($orange, .8);
+					&:hover, &:focus {
+						background: $orange;
+					}
+				}
+				&.bg-baking {
+					background: rgba($gold, .8);
+					&:hover, &:focus {
+						background: $gold;
+					}
+				}
+				&.bg-photography {
+					background: rgba($moola, .8);
+					&:hover, &:focus {
+						background: $moola;
+					}
+				}
+				&.bg-tech {
+					background: rgba($azure, .8);
+					&:hover, &:focus {
+						background: $azure;
+					}
+				}
+				&.bg-household {
+					background: rgba($cobalt, .8);
+					&:hover, &:focus {
+						background: $cobalt;
+					}
+				}
+				&.bg-athletic {
+					background: rgba($eggplant, .8);
+					&:hover, &:focus {
+						background: $eggplant;
+					}
+				}
+				&.bg-academic {
+					background: rgba($cerise, .8);
+					&:hover, &:focus {
+						background: $cerise;
+					}
+				}
+				&.bg-shamrock {
+					&:hover, &:focus {
+						background: lighten($slate, 20%);
+					}
+				}
+			}
+			> div > div {
+				position: relative;
+				> a {
+					z-index: 1;
+					padding: 0 12px 0 15px;
+					border: 2px solid white;
+					border-radius: 2px;
+					svg {
+						@include svg-stroke(white, 10);
+						display: block;
+						margin-left: 5px;
+						width: 24px;
+						height: 24px;
+					}
+				}
+				> div {
+					@include prefix(transition, 150ms ease-in-out, webkit moz ms o);
+					@include prefix(transform, translateY(-100%), webkit moz ms o);
+					position: absolute;
+					left: 50%;
+					margin-left: -99px;
+					top: 58px;
+					width: 198px;
+					&:not(.visible) {
+						@include opacity(0);
+						visibility: hidden;
+					}
+					&.visible {
+						@include opacity(1);
+						@include prefix(transform, translateY(0), webkit moz ms o);
+					}
+					> svg {
+						position: relative;
+						z-index: 5;
+					}
+					ul {
+						margin-top: -6px;
+						li {
+							position: relative;
+							height: 48px;
+							border: 2px solid white;
+							border-top: 0;
+							font-size: 18px;
+							font-weight: 600;
+							&:first-child {
+								border-top-left-radius: 2px;
+								border-top-right-radius: 2px;
+							}
+							&:last-child {
+								border-bottom-left-radius: 2px;
+								border-bottom-right-radius: 2px;
+							}
+							&:not(:first-child) {
+								a + .arrow {
+									display: none;
+								}
+							}
+							a {
+								@include flex;
+								@include flex-center;
+								height: 100%;
+								width: 100%;
+								padding: 0 15px;
+								svg {
+									@include svg-stroke(white, 10);
+									display: none;
+									margin-left: 5px;
+									width: 24px;
+									height: 24px;
+								}
+								&.active {
+									svg {
+										display: block;
+									}
+								}
+								+ .arrow {
+									@include center-x;
+									display: block;
+									top: -13px;
+									width: 30px;
+									height: 15px;
+									&.school {
+										path {
+											@include opacity(.8);
+										}
+									}
+									path {
+										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+									}
+									&.bg-delivery {
+										path {
+											fill: rgba($auburn, .8);
+										}
+									}
+									&.bg-freelancing {
+										path {
+											fill: rgba($orange, .8);
+										}
+									}
+									&.bg-baking {
+										path {
+											fill: rgba($gold, .8);
+										}
+									}
+									&.bg-photography {
+										path {
+											fill: rgba($moola, .8);
+										}
+									}
+									&.bg-tech {
+										background: none!important;
+										path {
+											fill: rgba($azure, .8);
+										}
+									}
+									&.bg-household {
+										path {
+											fill: rgba($cobalt, .8);
+										}
+									}
+									&.bg-athletic {
+										path {
+											fill: rgba($eggplant, .8);
+										}
+									}
+									&.bg-academic {
+										path {
+											fill: rgba($cerise, .8);
+										}
+									}
+								}
+								&:hover, &:focus {
+									+ .arrow {
+										&.school {
+											path {
+												@include opacity(1);
+											}
+										}
+										&.bg-delivery {
+											path {
+												fill: $auburn;
+											}
+										}
+										&.bg-freelancing {
+											path {
+												fill: $orange;
+											}
+										}
+										&.bg-baking {
+											path {
+												fill: $gold;
+											}
+										}
+										&.bg-photography {
+											path {
+												fill: $moola;
+											}
+										}
+										&.bg-tech {
+											path {
+												fill: $azure;
+											}
+										}
+										&.bg-household {
+											path {
+												fill: $cobalt;
+											}
+										}
+										&.bg-athletic {
+											path {
+												fill: $eggplant;
+											}
+										}
+										&.bg-academic {
+											path {
+												fill: $cerise;
+											}
+										}
+										&.bg-cal {
+											path {
+												fill: #003057;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			&.desktop {
+				width:100%;
+				@include flex;
+				@include flex-right-center;
+				position:absolute;
+				left:0;
+				top:0;
+			}
+			&.mobile {
+				> div {
+					> a {
+						border: 0;
+					}
+				}
+			}
+		}
+
 	// CONTENT SECTIONS
 	> section {
 		position: relative;
@@ -1370,6 +1663,7 @@
 				}
 			}
 		}
+		// HERO header
 
 		// HERO
 		&.splash-hero {
@@ -1390,293 +1684,7 @@
 					height: 70px!important;
 				}
 			}
-			.splash-hero-nav {
-				@include flex;
-				@include flex-center-vertical;
-				position: fixed;
-				z-index: 1001;
-				top: 0;
-				right: 0;
-				a, h2 {
-					@include flex;
-					@include flex-center-vertical;
-					padding: 0 10px;
-					height: 48px;
-					font-weight: 600;
-					font-size: 18px;
-				}
-				a {
-					position: relative;
-					.splash-hero-nav-link-bg {
-						@include opacity(.8);
-						display: block;
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						z-index: -1;
-					}
-					&:hover, &:focus {
-						.splash-hero-nav-link-bg {
-							@include opacity(1);
-						}
-					}
-					&.bg-delivery {
-						background: rgba($auburn, .8);
-						&:hover, &:focus {
-							background: $auburn;
-						}
-					}
-					&.bg-freelancing {
-						background: rgba($orange, .8);
-						&:hover, &:focus {
-							background: $orange;
-						}
-					}
-					&.bg-baking {
-						background: rgba($gold, .8);
-						&:hover, &:focus {
-							background: $gold;
-						}
-					}
-					&.bg-photography {
-						background: rgba($moola, .8);
-						&:hover, &:focus {
-							background: $moola;
-						}
-					}
-					&.bg-tech {
-						background: rgba($azure, .8);
-						&:hover, &:focus {
-							background: $azure;
-						}
-					}
-					&.bg-household {
-						background: rgba($cobalt, .8);
-						&:hover, &:focus {
-							background: $cobalt;
-						}
-					}
-					&.bg-athletic {
-						background: rgba($eggplant, .8);
-						&:hover, &:focus {
-							background: $eggplant;
-						}
-					}
-					&.bg-academic {
-						background: rgba($cerise, .8);
-						&:hover, &:focus {
-							background: $cerise;
-						}
-					}
-					&.bg-shamrock {
-						&:hover, &:focus {
-							background: lighten($slate, 20%);
-						}
-					}
-				}
-				> div {
-					position: relative;
-					> a {
-						z-index: 1;
-						padding: 0 12px 0 15px;
-						border: 2px solid white;
-						border-radius: 2px;
-						svg {
-							@include svg-stroke(white, 10);
-							display: block;
-							margin-left: 5px;
-							width: 24px;
-							height: 24px;
-						}
-					}
-					> div {
-						@include prefix(transition, 150ms ease-in-out, webkit moz ms o);
-						@include prefix(transform, translateY(-100%), webkit moz ms o);
-						position: absolute;
-						left: 50%;
-						margin-left: -99px;
-						top: 58px;
-						width: 198px;
-						&:not(.visible) {
-							@include opacity(0);
-							visibility: hidden;
-						}
-						&.visible {
-							@include opacity(1);
-							@include prefix(transform, translateY(0), webkit moz ms o);
-						}
-						> svg {
-							position: relative;
-							z-index: 5;
-						}
-						ul {
-							margin-top: -6px;
-							li {
-								position: relative;
-								height: 48px;
-								border: 2px solid white;
-								border-top: 0;
-								font-size: 18px;
-								font-weight: 600;
-								&:first-child {
-									border-top-left-radius: 2px;
-									border-top-right-radius: 2px;
-								}
-								&:last-child {
-									border-bottom-left-radius: 2px;
-									border-bottom-right-radius: 2px;
-								}
-								&:not(:first-child) {
-									a + .arrow {
-										display: none;
-									}
-								}
-								a {
-									@include flex;
-									@include flex-center;
-									height: 100%;
-									width: 100%;
-									padding: 0 15px;
-									svg {
-										@include svg-stroke(white, 10);
-										display: none;
-										margin-left: 5px;
-										width: 24px;
-										height: 24px;
-									}
-									&.active {
-										svg {
-											display: block;
-										}
-									}
-									+ .arrow {
-										@include center-x;
-										display: block;
-										top: -13px;
-										width: 30px;
-										height: 15px;
-										&.school {
-											path {
-												@include opacity(.8);
-											}
-										}
-										path {
-											@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-										}
-										&.bg-delivery {
-											path {
-												fill: rgba($auburn, .8);
-											}
-										}
-										&.bg-freelancing {
-											path {
-												fill: rgba($orange, .8);
-											}
-										}
-										&.bg-baking {
-											path {
-												fill: rgba($gold, .8);
-											}
-										}
-										&.bg-photography {
-											path {
-												fill: rgba($moola, .8);
-											}
-										}
-										&.bg-tech {
-											background: none!important;
-											path {
-												fill: rgba($azure, .8);
-											}
-										}
-										&.bg-household {
-											path {
-												fill: rgba($cobalt, .8);
-											}
-										}
-										&.bg-athletic {
-											path {
-												fill: rgba($eggplant, .8);
-											}
-										}
-										&.bg-academic {
-											path {
-												fill: rgba($cerise, .8);
-											}
-										}
-									}
-									&:hover, &:focus {
-										+ .arrow {
-											&.school {
-												path {
-													@include opacity(1);
-												}
-											}
-											&.bg-delivery {
-												path {
-													fill: $auburn;
-												}
-											}
-											&.bg-freelancing {
-												path {
-													fill: $orange;
-												}
-											}
-											&.bg-baking {
-												path {
-													fill: $gold;
-												}
-											}
-											&.bg-photography {
-												path {
-													fill: $moola;
-												}
-											}
-											&.bg-tech {
-												path {
-													fill: $azure;
-												}
-											}
-											&.bg-household {
-												path {
-													fill: $cobalt;
-												}
-											}
-											&.bg-athletic {
-												path {
-													fill: $eggplant;
-												}
-											}
-											&.bg-academic {
-												path {
-													fill: $cerise;
-												}
-											}
-											&.bg-cal {
-												path {
-													fill: #003057;
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				&.desktop {
-					display: none;
-				}
-				&.mobile {
-					> div {
-						> a {
-							border: 0;
-						}
-					}
-				}
-			}
+
 			.splash-hero-map {
 				position: absolute;
 				z-index: 1;
