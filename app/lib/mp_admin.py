@@ -54,6 +54,30 @@ def unicode_urlencode(params):
         [(k, isinstance(v, unicode) and v.encode('utf-8') or v) for k, v in params]
     )
 
+def getBasePlatformDict():
+    browserTypes = ['chrome', 'safari', 'firefox'];
+    browserScreens = ['mobile', 'desktop'];
+    browserStates = ['small', 'medium', 'large', 'xl'];
+    platformResultArr = []
+    for b_type in browserTypes:
+        for screen in browserScreens:
+            for b_state in browserStates:
+
+                if screen == "desktop" and b_state == 'xl':
+                    continue
+
+                platformResultArr.append({
+                        'platform': b_type,
+                        'screen_size': b_state,
+                        'type': screen,
+                        'test_status': 'unsure',
+                        'test_client': 'manual',
+                        'passed': False
+
+                })
+
+    return platformResultArr
+
 def hash_args(self, args, secret=None):
         import hashlib
         """

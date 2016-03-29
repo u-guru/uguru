@@ -695,6 +695,176 @@
                                 "is_complete": false, 
                                 "name": "All tags (i.e. midnight) are not empty", 
                                 "parent_ref": "mad-lib-state-1", 
+                                "platforms": [
+                                    {
+                                        "passed": true, 
+                                        "platform": "chrome", 
+                                        "screen_size": "small", 
+                                        "test_client": "travis", 
+                                        "test_status": "pass", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "chrome", 
+                                        "screen_size": "medium", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "chrome", 
+                                        "screen_size": "large", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "chrome", 
+                                        "screen_size": "xl", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "chrome", 
+                                        "screen_size": "small", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "chrome", 
+                                        "screen_size": "medium", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "chrome", 
+                                        "screen_size": "large", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "safari", 
+                                        "screen_size": "small", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "safari", 
+                                        "screen_size": "medium", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "safari", 
+                                        "screen_size": "large", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "safari", 
+                                        "screen_size": "xl", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "safari", 
+                                        "screen_size": "small", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "safari", 
+                                        "screen_size": "medium", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "safari", 
+                                        "screen_size": "large", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "firefox", 
+                                        "screen_size": "small", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "firefox", 
+                                        "screen_size": "medium", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "firefox", 
+                                        "screen_size": "large", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "firefox", 
+                                        "screen_size": "xl", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "firefox", 
+                                        "screen_size": "small", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "firefox", 
+                                        "screen_size": "medium", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "firefox", 
+                                        "screen_size": "large", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }
+                                ], 
                                 "ref": "mad-lib-testing-1-substate-1", 
                                 "test_client": "manual", 
                                 "test_status": "unsure"
@@ -705,6 +875,176 @@
                                 "is_complete": false, 
                                 "name": "SVG Icons: Phone, Logo, Sidebar", 
                                 "parent_ref": "mad-lib-state-1", 
+                                "platforms": [
+                                    {
+                                        "passed": false, 
+                                        "platform": "chrome", 
+                                        "screen_size": "small", 
+                                        "test_client": "travis", 
+                                        "test_status": "fail", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "chrome", 
+                                        "screen_size": "medium", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "chrome", 
+                                        "screen_size": "large", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "chrome", 
+                                        "screen_size": "xl", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "chrome", 
+                                        "screen_size": "small", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "chrome", 
+                                        "screen_size": "medium", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "chrome", 
+                                        "screen_size": "large", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "safari", 
+                                        "screen_size": "small", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "safari", 
+                                        "screen_size": "medium", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "safari", 
+                                        "screen_size": "large", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "safari", 
+                                        "screen_size": "xl", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "safari", 
+                                        "screen_size": "small", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "safari", 
+                                        "screen_size": "medium", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "safari", 
+                                        "screen_size": "large", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "firefox", 
+                                        "screen_size": "small", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "firefox", 
+                                        "screen_size": "medium", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "firefox", 
+                                        "screen_size": "large", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "firefox", 
+                                        "screen_size": "xl", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "mobile"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "firefox", 
+                                        "screen_size": "small", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "firefox", 
+                                        "screen_size": "medium", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }, 
+                                    {
+                                        "passed": false, 
+                                        "platform": "firefox", 
+                                        "screen_size": "large", 
+                                        "test_client": "manual", 
+                                        "test_status": "unsure", 
+                                        "type": "desktop"
+                                    }
+                                ], 
                                 "ref": "mad-lib-testing-1-substate-2", 
                                 "test_client": "manual", 
                                 "test_status": "unsure"
