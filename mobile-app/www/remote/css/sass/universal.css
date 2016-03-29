@@ -42,6 +42,15 @@
   background: #7c8a8f;
 }
 
+@media screen and (max-width: 768px) {
+  #billing > div > div > ul > li > div .billing-students li {
+    width: 50%;
+  }
+  #billing > div > div > ul > li > div .billing-students li a {
+    width: 100%;
+  }
+}
+
 #billing > div > div > ul > li > div .billing-session h1 {
   background: #576267;
   height: 48px;
