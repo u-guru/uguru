@@ -1311,8 +1311,9 @@ angular.module('uguru.util.controllers')
         $scope.selectedCategory.splashData = ContentService.splashCategoryOptions[$scope.selectedCategory.name];
 
         $scope.selectedUniversity = University.getTargetted()[0];
-
-        Utilities.compileToAngular('body-loading-div', $scope);
+        if ($state.current.name === 'root.splash') {
+          Utilities.compileToAngular('body-loading-div', $scope);
+        }
         $scope.root.loader.body.hide = true;
       }
       initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
