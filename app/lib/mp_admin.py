@@ -54,6 +54,69 @@ def unicode_urlencode(params):
         [(k, isinstance(v, unicode) and v.encode('utf-8') or v) for k, v in params]
     )
 
+def getBasePlatformDict():
+    browserTypes = ['chrome', 'firefox', 'safari'];
+    browserScreens = ['mobile', 'desktop'];
+    browserStates = ['small', 'medium', 'large', 'xl'];
+    platformResultArr = []
+    for b_type in browserTypes:
+        for screen in browserScreens:
+            for b_state in browserStates:
+
+                if screen == "desktop" and b_state == 'xl':
+                    continue
+
+                platformResultArr.append({
+                        'platform': b_type,
+                        'screen_size': b_state,
+                        'type': screen,
+                        'test_status': 'unsure',
+                        'test_client': 'manual',
+                        'passed': False
+
+                })
+
+    ios_variants = [
+        {
+            'platform': 'ios',
+            'type': 'app',
+            'screen_size':None,
+            'test_status': 'unsure',
+            'test_client': 'manual',
+            'passed': False
+        },
+        {
+            'platform': 'ios',
+            'type': 'safari',
+            'screen_size':None,
+            'test_status': 'unsure',
+            'test_client': 'manual',
+            'passed': False
+        }
+    ]
+
+    android_variants = [
+        {
+            'platform': 'android',
+            'type': 'app',
+            'screen_size':None,
+            'test_status': 'unsure',
+            'test_client': 'manual',
+            'passed': False
+        },
+        {
+            'platform': 'android',
+            'type': 'chrome',
+            'screen_size':None,
+            'test_status': 'unsure',
+            'test_client': 'manual',
+            'passed': False
+        }
+    ]
+
+    platformResultArr += ios_variants + android_variants
+    return platformResultArr
+
 def hash_args(self, args, secret=None):
         import hashlib
         """
@@ -311,6 +374,108 @@ def addStateToScene(_type, assign, scene_obj, index, title, description=None, et
 
     return scene_obj
 
+def removeStateFromScene(r_scene, state, _type):
+    import json
+    elements = json.load(open('./app/lib/elements.json'))
+    print len(elements['scenes']);
+    for scene in elements['scenes']:
+        if scene['ref'] == r_scene['ref'] or len(elements['scenes']) > 0:
+            element_states = elements['scenes'][0]
+            if element_states and _type in element_states:
+                print element_states[_type]
+
+def newTestingObj(count, scene_ref):
+    return {
+        'id': count + 1,
+        'ref': scene_ref + '-testing-' + str(count + 1),
+        'parent_ref': scene_ref,
+        'priority': 5,
+        'estimated_time': 5,
+        'name': '',
+        'description': '',
+        'substates': [] ## substates
+    }
+
+
+def modifyStateFromScene(r_scene, r_state, _type, action="edit"):
+    import json
+    elements = json.load(open('./app/lib/elements.json'))
+    # sceneIndex = stateIndex = substateIndex 0
+    for scene in elements['scenes']:
+        if scene['ref'] == r_scene['ref']:
+            element_scene = scene
+            if element_scene.get('element_states'):
+                element_states = element_scene['element_states']
+
+                if action == 'create':
+                        from pprint import pprint
+                        print _type
+                        pprint(r_state)
+                        if _type == "testing":
+                            lengthTesting = len(element_scene['element_states'][_type])
+                            testingObj = newTestingObj(lengthTesting, scene['ref'])
+                            testingObj['name'] = r_state['name']
+                            testingObj['description'] = r_state['description']
+                            element_scene['element_states'][_type].append(testingObj)
+                        else:
+                            element_scene['element_states'][_type].append(r_state)
+                        return elements
+
+                if element_states.get(_type):
+                    scene_type_states = element_states[_type]
+
+                    if action == "remove" or action == "update":
+                        for state in scene_type_states:
+                            # find matching state
+                            if state.get('ref') and state.get('ref') == r_state['ref']:
+                                if action == "update":
+                                    main_state_index = scene_type_states.index(state)
+                                    element_scene['element_states'][_type] = [r_state if main_state_index==index else _state for _state in scene_type_states]
+                                elif action == "remove":
+                                    element_scene['element_states'][_type].remove(state)
+                                    return elements
+
+
+def modifySubStateFromScene(r_scene, r_substate, r_state, _type, action="edit"):
+    import json
+    elements = json.load(open('./app/lib/elements.json'))
+    # sceneIndex = stateIndex = substateIndex 0
+    for scene in elements['scenes']:
+        if scene['ref'] == r_scene['ref']:
+            element_scene = scene
+            print 'found', element_scene['ref']
+            if element_scene.get('element_states'):
+                element_states = element_scene['element_states']
+                if element_states.get(_type):
+                    scene_type_states = element_states[_type]
+                    for state in scene_type_states:
+                        if state.get('ref') and state.get('ref') == r_state['ref']:
+                            if action == "create" and state.get('substates'):
+
+                                state['substates'].append(r_substate)
+                                return elements
+                            for substate in state['substates']:
+                                if substate.get('ref') and substate['ref'] == r_substate['ref']:
+                                    if action == "remove":
+                                        state['substates'].remove(substate)
+                                        return elements
+                                    if action == "update":
+                                        substateIndex = state['substates'].index(substate)
+                                        state['substates'] = [r_substate if index==substateIndex else state['substates'][index] for index in range(0, len(state['substates']))]
+                                        return elements
+
+
+            # for substate in element_scene.get(_type):
+            #     print substate
+            #     if (substate.get('ref') == r_substate.get('ref')):
+            #         print
+            #         print substate, 'found the substate'
+            #         print
+    # print len(elements['scenes']);
+    # reprocessActionItems(elements)
+
+
+
 def reprocessActionItems(elements):
     elements['action_items'] = {'samir': [], 'jason': [], 'gabrielle': [], 'jeselle': []}
     action_item_mapping = {'fluid': 'gabrielle', 'testing': 'jason', 'function': 'samir', 'hifi': 'jeselle'}
@@ -342,6 +507,79 @@ def printAllElementTypes(element_type, sub_element=None, grandchild_element=None
         print elem['id'], elem['ref'], elem['name']
 
 
+def getInteractiveRequirements():
+    return {
+        "all_options": ['state:["hifi", "functional", "fluid", "testing"]', 'substate', 'layouts', 'scene', 'container', 'moodboard', 'project', 'admin'],
+        "required_spec": {
+            "scene": ["name", "description", "template_url", "type"],
+            "state": ["name", "desciption", "template_url", "type", "assigned", "substates:nested"],
+            "type": [],
+            "substate": [],
+            "name": [],
+            "description": [],
+        },
+        "optional_spec": {
+            "state": ["difficulty", "estimated_time", "index", "priority", "notes"],
+        },
+        "sub-state": [],
+        "scene": [],
+        "layouts": [],
+
+    }
+
+def cliFormat(arr_args, action="create"):
+    result_str = "\n\nPlease select an option to %s:\n\n\n" % action
+    index = 0
+    print_args = arr_args + []
+    for arg in print_args:
+        print_args[index] = str(index + 1) + ". " + arg
+        index += 1
+        arg = str(index) + '.' + '  ' + arg
+    from pprint import pprint
+    result_str +=  "\n".join(print_args)
+    print result_str + '\n\n'
+    return arr_args
+
+def cliTemplate(arr_args):
+    option = raw_input("Please choose a number from 1 - %s\n\n>>>  " % len(arr_args))
+    option_type = type(option)
+    try:
+        option = int(option)
+        option_type = int
+    except:
+        pass
+    while option_type != int or (int(option) < 1 and int(option) > len(arr_args)):
+        print "\ninvalid input --", "please try again\n\n".upper()
+        option = raw_input("Please choose a number from 1 - %s\n\n>>>  " % len(arr_args))
+        option_type = type(option)
+        try:
+            option = int(option)
+            option_type = int
+        except:
+            continue
+    selected_option = arr_args[int(option) - 1]
+    return selected_option, int(option) - 1
+
+def cliFormTemplate(arr_args, _type="required"):
+    print "\n\nThese are the %s %s fields to fill out\n\n>>>  " % (len(arr_args), _type)
+    filled_args = []
+    forced_exit = False
+    total_fields = len(arr_args)
+    remaining_args = list(arr_args)
+    while len(filled_args) != total_fields and not forced_exit:
+        prioritized_field = remaining_args[0]
+        option = raw_input("Please add a %s\n\n>>>\n" % prioritized_field)
+        if len(option) > 5:
+            filled_args.append(prioritized_field)
+            remaining_args = remaining_args[1:]
+        print "\n\nstatus:%s filled out of %s -- only %s left!\n\n" % (len(filled_args), len(arr_args), len(remaining_args))
+        index = 1
+        for arg in filled_args:
+            print "#%s. %s\n >>> %s" % (index, arr_args[index - 1], filled_args[index - 1])
+            index += 1
+        print "\n\n"
+    return filled_args
+
 import sys
 args = sys.argv
 if 'i' in args:
@@ -369,7 +607,88 @@ if 'print' in args and args.index('print') == 1 and len(args) == 3:
         print "UNSUPPORTED ELEMENT TYPE\n\nHere are the supported ones: %s" % (base_elements.keys())
     else:
         printAllElementTypes(element_type)
-if 'create' in args:
+
+
+if 'create' in args or '-c' in args:
+    ## 0. Process args && spec
+    ## 1. Create
+    ## 2. Interactive resolve all arguments
+    ## 3. Assign ref accordingly
+    ## 4. Link all refs
+    ## 4. Sync with MP
+    allElementRequirements = getInteractiveRequirements()
+
+    ## arg #1 - select a type
+    if len(args) == 3:
+        all_options = allElementRequirements["all_options"]
+        from pprint import pprint
+
+        all_options = cliFormat(all_options)
+        selected_option, selected_index = cliTemplate(all_options)
+
+        all_requirements = allElementRequirements['required_spec'][selected_option.split(':')[0]]
+        all_reqs = cliFormTemplate(all_requirements)
+        print filled_args, 'filled'
+        import sys
+        sys.exit()
+
+    # arg #2 what are we editing?
+    elif len(args) == 4:
+        pass
+        ## arg #2 - fill out the fields
+    else:
+        import sys
+        sys.exit()
+    validateResults, elements = validateCreateArgs(args[2:])
+    if validateResults:
+        reprocessActionItems(elements)
+        saveElementsJson(elements)
+        print 'state successfully created and updated in elements.json'
+
+if 'get' in args or '-g' in args:
+    if len(args) == 2:
+
+        allElementRequirements = getInteractiveRequirements()
+        all_options = allElementRequirements["all_options"]
+
+        all_options = cliFormat(all_options, action="edit")
+        selected_option, selected_index = cliTemplate(all_options)
+
+        mp_dict = getMostUpdatedMPElements()
+
+        option_arr = mp_dict[selected_option.split(':')[0]]
+        option_arr_keys = [option['ref'] for option in option_arr]
+        from pprint import pprint
+        pprint(option_arr_keys)
+
+
+    if len(args) == 3:
+        selected_option = args[2]
+        mp_dict = getMostUpdatedMPElements()
+
+        option_arr = mp_dict[selected_option.split(':')[0]]
+        option_arr_keys = [option['ref'] for option in option_arr]
+        from pprint import pprint
+        pprint(option_arr_keys)
+
+
+if 'edit' in args or '-e' in args:
+    if len(args) == 3:
+
+        allElementRequirements = getInteractiveRequirements()
+        all_options = allElementRequirements["all_options"]
+
+        all_options = cliFormat(all_options, action="edit")
+        selected_option, selected_index = cliTemplate(all_options)
+
+if 'link' in args or '-l' in args:
+    validateResults, elements = validateCreateArgs(args[2:])
+    if validateResults:
+        reprocessActionItems(elements)
+        saveElementsJson(elements)
+        print 'state successfully created and updated in elements.json'
+
+if 'remove' in args or '-r' in args:
     validateResults, elements = validateCreateArgs(args[2:])
     if validateResults:
         reprocessActionItems(elements)

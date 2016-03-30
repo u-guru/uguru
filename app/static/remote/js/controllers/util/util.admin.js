@@ -10,7 +10,8 @@ angular.module('uguru.util.controllers')
 	'$timeout',
 	'$compile',
 	'Restangular',
-	function($scope, $state, $stateParams, AdminContent, CTAService, $timeout, $compile, Restangular) {
+	'LoadingService',
+	function($scope, $state, $stateParams, AdminContent, CTAService, $timeout, $compile, Restangular, LoadingService) {
 		$scope.page = {
 				layout: AdminContent.getMainLayout(),
 				glossary: AdminContent.getGlosseryContent(),
@@ -23,10 +24,16 @@ angular.module('uguru.util.controllers')
 				defaults: {
 					tabsIndex: 1,
 					sidebarIndex: 0
+				},
+				toggles: {
+					showAddState: false,
+					showAddSubstate: false
 				}
 			}
 			// $scope.selected_component = $scope.page.components[4];
 
+		$scope.toggleAddSubstate = false;
+		$scope.toggleAddState = false;
 
 		$scope.elementCTATabOptions = {
 			components: ['Demo', 'Attributes', 'States', 'Use Cases', 'Element Map', 'To Do'],
@@ -46,18 +53,223 @@ angular.module('uguru.util.controllers')
 			CTAService.initSingleCTA('#' + targetElem.id, '#main-admin-content');
 		}
 
+		$scope.initAndLaunchDevToolsCTA = function($event) {
+			var targetElem = $event.target;
+			console.log(targetElem);
+			$scope.lastCTABoxTargetElem = targetElem;
+			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-tool';
+
+			CTAService.initSingleCTA('#' + targetElem.id, '#admin', null, ['esc']);
+		}
+
 		$scope.initAndLaunchSceneCTA = function($event, scene) {
 			var targetElem = $event.target;
 			$scope.selected_scene = scene;
-
+			$scope.selectedSceneToggleAdd = false;
 
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-scene';
+
 			CTAService.initSingleCTA('#' + targetElem.id, 'body');
+
+			$scope.newScene = {
+				description: '',
+				name: '',
+				estimated_time: 10
+			}
+
+			$scope.newSubScene = {
+				description: '',
+				name: '',
+				estimated_time: 10
+			}
 		}
 
-		function createAdminElement(element_details) {
+		function resetInitStateObjects() {
+			$scope.newScene = {
+				description: '',
+				name: '',
+				estimated_time: 10
+			}
+			$scope.newSubScene = {
+				description: '',
+				name: '',
+				estimated_time: 10
+			};
+			$scope.page.toggles.showAddSubstate = false;
+			$scope.page.toggles.showAddState = false;
+			$scope.page.toggles.showAddScenario = false;
+			$scope.page.toggles.showAddStep = false;
+		}
 
+		function reprocessAllElements(response, scope) {
+			scope.page.components = response.components;
+			scope.page.layouts = response.layouts;
+			scope.page.scenes = response.scenes;
+			scope.page.moodboard = response.moodboards;
+			scope.page.user_stories = response.user_stories;
+			scope.page.assets = response.assets;
+			scope.page.action_items = response.action_items;
+			scope.page.projects = response.projects;
+			scope.page.action_items = response.action_items;
+
+			var actionItemsSidebarTabSections = scope.page.layout.sections[0].tabs.options;
+			for (var i = 0; i < actionItemsSidebarTabSections.length; i++) {
+				var sideBarTabIndex = actionItemsSidebarTabSections[i];
+				var memberTitle = sideBarTabIndex.title.toLowerCase();
+				if (scope.page.action_items && memberTitle in scope.page.action_items) {
+					scope.page.action_items[memberTitle] = response.action_items[memberTitle];
+				}
+			}
+		}
+
+		$scope.createStateElement = function(state, scene, scene_type) {
+			LoadingService.showAmbig(5000);
+
+			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPOST(JSON.stringify({state: state, scene: scene, type: scene_type }))
+			.then(function(response) {
+				console.log('update scene response receives');
+				LoadingService.showSuccess('Scene ' + state.name + ' successfully saved', 2500);
+				resetInitStateObjects();
+				// reprocessAllElements(response.plain().admin_components, $scope);
+				getAdminElements();
+			},  function(err) {
+				console.log('error', err);
+				LoadingService.showMsg("Something went wrong tell Samir", 2500);
+			});
+		}
+
+		$scope.createSubstateElement = function(substate, state, scene, scene_type) {
+			LoadingService.showAmbig(5000);
+
+			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPOST(JSON.stringify({substate: substate, state: state, scene: scene, type: scene_type}))
+			.then(function(response) {
+				console.log('update substate response receives');
+				LoadingService.showSuccess('Subscene ' + scene.name + ' successfully saved', 2500);
+				resetInitStateObjects();
+				// reprocessAllElements(response.plain().admin_components, $scope);
+				getAdminElements();
+			},  function(err) {
+				console.log('error', err);
+				LoadingService.showMsg("Something went wrong tell Samir", 2500);
+			});
+		}
+
+		$scope.updateStateField = function(state_field_name, currentValue, state, scene, scene_type) {
+
+			var stateFieldResponse = prompt("Please edit the current value", currentValue);
+			if (stateFieldResponse) {
+				state[state_field_name] = stateFieldResponse;
+				$scope.updateStateElement(state, scene, scene_type, false);
+			}
+
+		}
+
+		$scope.updateSubStateField = function(substate_field_name, currentValue, substate, state, scene, scene_type) {
+
+			var substateFieldResponse = prompt("Please edit the current value", currentValue);
+			if (substateFieldResponse) {
+				substate[substate_field_name] = substateFieldResponse;
+				$scope.updateSubStateElement(substate, state, scene, scene_type, false);
+			}
+
+		}
+
+		$scope.updateStateElement = function(state, scene, scene_type, is_remove) {
+			var action = 'update';
+			if (is_remove && !confirm('Are you sure you want to delete state ' + state.name + '? IMPT - this means ALL SUBSTATES WILL BE DELETED. Are you sure?')) {
+				return;
+			} else if (is_remove) {
+				action = 'remove';
+			}
+			LoadingService.showAmbig(5000);
+			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPUT(JSON.stringify({action:action, state: state, scene: scene, type: scene_type}))
+			.then(function(response) {
+				console.log('update scene response receives');
+				if (is_remove) {
+					LoadingService.showSuccess('State ' + state.name + ' successfully removed', 2500);
+				} else {
+					LoadingService.showSuccess('State ' + state.name + ' successfully updated', 2500);
+				}
+				resetInitStateObjects();
+				getAdminElements();
+			},  function(err) {
+				console.log('error', err);
+				LoadingService.showMsg("Something went wrong tell Samir", 2500);
+			});
+		}
+
+		$scope.updateSubStateElement = function(substate, state, scene, scene_type, is_remove, platform) {
+			if (platform && scene_type === 'testing') {
+				if (platform.test_status === 'fail' || platform.test_status === 'unsure') {
+					platform.test_status = 'pass';
+					platform.test_client = 'manual';
+				} else {
+					platform.test_status = 'fail';
+					platform.test_client = 'manual';
+				}
+			}
+
+			var action = 'update';
+			if (is_remove && !confirm('Are you sure you want to delete substate ' + substate.name + '?')) {
+				return;
+			}  else if (is_remove) {
+				action = 'remove';
+			}
+			LoadingService.showAmbig(null, 10000);
+			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPUT(JSON.stringify({action:action, substate: substate, state: state, scene: scene, type: scene_type}))
+			.then(function(response) {
+				$timeout(function() {
+					if (is_remove) {
+						LoadingService.showSuccess('Substate ' + substate.name + ' successfully removed', 2500);
+					} else {
+						LoadingService.showSuccess('Substate ' + substate.name + ' successfully updated', 2500);
+					}
+				}, 2500)
+				resetInitStateObjects();
+				getAdminElements();
+			},  function(err) {
+				console.log('error', err);
+				LoadingService.showMsg("Something went wrong tell Samir", 2500);
+			});
+		}
+
+		$scope.initAllPlatformDict = function() {
+			browserTypes = ['chrome', 'safari', 'firefox'];
+			browserScreens = ['mobile', 'desktop'];
+			browserStates = ['small', 'medium', 'large', 'xl'];
+
+			resultArr = [];
+			for (var i = 0; i < browserTypes.length; i++) {
+
+				for (var j = 0 ; j < browserScreens.length; j++ ) {
+					for (var k = 0; k < browserStates.length; k++) {
+						if ( j=== 1 && k===3) {
+							continue;
+						}
+						resultArr.push({
+							platform: browserTypes[k],
+							screen_size: browserStates[i],
+							type: browserScreens[j],
+							test_status: 'unsure',
+							test_client: 'manual'
+						})
+					}
+				}
+			}
+
+			var iosVariants = [{platform: 'ios', type: 'app', screen_size:null}, {platform: 'ios', type: 'safari', screen_size:null}];
+			var androidVariants = [{platform: 'android', type: 'app', screen_size:null}, {platform: 'ios', type: 'chrome', screen_size:null}];
+
+			for (var i = 0; i < iosVariants.length; i++) {
+				resultArr.push(iosVariants[i]);
+			}
+
+			for (var i = 0; i < androidVariants.length; i++) {
+				resultArr.push(androidVariants[i]);
+			}
+
+			return resultArr;
 		}
 
 		function getAdminElements() {
@@ -66,7 +278,7 @@ angular.module('uguru.util.controllers')
 				response = JSON.parse(response);
 
 				// $timeout(function() {
-				// $scope.$apply(function() {
+
 				$scope.page.components = response.components;
 				$scope.page.layouts = response.layouts;
 				$scope.page.scenes = response.scenes;
@@ -77,13 +289,52 @@ angular.module('uguru.util.controllers')
 				$scope.page.projects = response.projects;
 				$scope.page.action_items = response.action_items;
 
-
+				console.log('page scenes', $scope.page.scenes);
 
 				var actionItemsSidebarTabSections = $scope.page.layout.sections[0].tabs.options;
 				for (var i = 0; i < actionItemsSidebarTabSections.length; i++) {
 					var sideBarTabIndex = actionItemsSidebarTabSections[i];
 					var memberTitle = sideBarTabIndex.title.toLowerCase();
 					$scope.page.action_items[memberTitle] = response.action_items[memberTitle];
+				}
+
+				$timeout(function() {
+					$scope.$apply(function() {})
+				});
+
+				$scope.selected_scene = $scope.page.scenes[0];
+				$scope.selected_scene.tabIndex = 2;
+				var modalElem = document.querySelector('#cta-modal-selected-scene');
+				modalElem && modalElem.classList.add('show');
+				$scope.selected_scene = $scope.page.scenes[0];
+				$scope.selected_scene.tabIndex = 2;
+				// $scope.selected_scene.element_states.testing[0].substates = [
+				// 	{
+				// 		name: 'substate 1',
+				// 		// platforms: $scope.initAllPlatformDict(),
+				// 	},
+				// 	{
+				// 		name: 'substate 2',
+				// 		// platforms: $scope.initAllPlatformDict(),
+				// 	}
+				// ]
+				if ($scope.selected_scene.element_states.testing && $scope.selected_scene.element_states.testing.length) {
+					for (var i = 0; i < $scope.selected_scene.element_states.testing.length; i++) {
+						var testStateIndex = $scope.selected_scene.element_states.testing[i];
+						console.log('it gets here');
+						if (testStateIndex && testStateIndex.substates && testStateIndex.substates.length) {
+							console.log('it gets here');
+							for (var j = 0; j < testStateIndex.substates.length; j++) {
+								var testSubstateIndex = testStateIndex.substates[j];
+								console.log('substate ' + j + ':', testSubstateIndex.name, testSubstateIndex.platforms);
+								if (testSubstateIndex && (!testSubstateIndex.platforms || !testSubstateIndex.platforms.length)) {
+									testSubstateIndex.platforms = $scope.initAllPlatformDict();
+									console.log(testSubstateIndex.platforms);
+									console.log('substate ' + j + ':', testSubstateIndex.name, testSubstateIndex.platforms, '\n');
+								}
+							}
+						}
+					}
 				}
 
 
@@ -322,6 +573,7 @@ angular.module('uguru.util.controllers')
 				var templateIndexKey = templateDictKeys[i]
 				var templateIndexObj = templateDict[templateIndexKey];
 				resultObj[templateIndexKey] = JSON.parse(JSON.stringify(templateIndexObj));
+
 			}
 			return resultObj;
 		}
@@ -354,8 +606,12 @@ angular.module('uguru.util.controllers')
 
 		$timeout(function() {
 			$scope.page.layout.sidebar.index = $scope.page.defaults.sidebarIndex;
-			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index || $scope.page.defaults.tabsIndex;
+			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index =  $scope.page.defaults.tabsIndex;
 			getAdminElements();
+
+
+			document.querySelector('')
+
 
 		}, 1000)
 	}
