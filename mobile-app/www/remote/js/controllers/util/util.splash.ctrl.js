@@ -32,6 +32,8 @@ angular.module('uguru.util.controllers')
     ContentService, LoadingService, ContentService, CTAService, User, AccessService,
      AnimationService) {
 
+    $scope.nav = {activate: true};
+
     $scope.demographics = User.demographics;
     $scope.saveDemographic = saveDemographic;
     $scope.clearDemographic = clearDemographic;
