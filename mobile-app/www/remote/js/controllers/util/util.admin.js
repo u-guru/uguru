@@ -23,7 +23,7 @@ angular.module('uguru.util.controllers')
 				createObjects: AdminContent.getBaseObjects($scope),
 				defaults: {
 					tabsIndex: 1,
-					sidebarIndex: 0
+					sidebarIndex: 2
 				},
 				toggles: {
 					showAddState: false,
