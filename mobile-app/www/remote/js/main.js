@@ -481,6 +481,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/courses.html',
         controller: 'CoursesController'
   }).
+  state('root.demo', {
+        url: '/demo',
+        templateUrl: BASE + 'templates/demos.html'
+        // controller: 'gpaController'
+  }).
   state('root.gpa', {
         url: '/gpa',
         templateUrl: BASE + 'templates/dev/gpa.html',

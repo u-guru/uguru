@@ -827,6 +827,7 @@ angular.module('uguru.util.controllers')
             madLibElemInside && madLibElemInside.classList.add('activate');
             madLibElemHeader && madLibElemHeader.classList.add('activate');
             $scope.selectedCategory = category;
+            console.log(category.name);
             $scope.selectedCategory.splashData = ContentService.splashCategoryOptions[category.name];
           }, 1500)
         }, defaultTransitionTimeout);
