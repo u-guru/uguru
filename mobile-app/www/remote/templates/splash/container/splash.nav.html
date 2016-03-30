@@ -9,7 +9,7 @@
         <header class='full-x high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
             <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ng-class="{'m10xy absolute left-0 top-0':!desktopMode}"></a>
             <div class="right">
-                <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()'>
+                <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()' class-on-click="null:inject#splash-one-page-pulldown|activate">
                     <svg viewBox="0 0 100 100" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" class-on-activate-delay="600">
                         <circle cx="50" cy="50" r="36"></circle>
                         <path d="M31,35.5 L69,35.5"></path>
