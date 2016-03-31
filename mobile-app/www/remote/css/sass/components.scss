@@ -2855,8 +2855,12 @@ input[type=range] {
 		width: 200px;
 		overflow: hidden;
 		text-align: center;
+		&:not(.active) {
+			visibility: hidden;
+		}
 		&.active {
 			@include opacity(1);
+			visibility: visible;
 			z-index: 99;
 		}
 		li {
@@ -2919,6 +2923,8 @@ input[type=range] {
 			}
 		}
 		> ul {
+			top: 24px;
+			width: 176px;
 			li {
 				padding: 5px 0 !important;
 				font-weight: 400;

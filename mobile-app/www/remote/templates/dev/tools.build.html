@@ -2,186 +2,42 @@
     <div id="build">
         <main>
             <nav class="build-main-top">
-                <dropdown ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
-                <div>g
-                    <!-- <div>
-                        <h2>Drag</h2>
-                        <div class="toggle small bg-charcoal">
-                            <input type="checkbox" checked />
-                            <label>
-                                <svg class="square" viewBox="0 0 100 100">
-                                    <rect x="0" y="0" width="100" height="100"></rect>
-                                </svg>
-                                <svg class="square" viewBox="0 0 100 100">
-                                    <rect x="0" y="0" width="100" height="100"></rect>
-                                </svg>
-                            </label>
-                        </div>
-                    </div> -->
+                <div>
+                    <h1>Animation</h1>
+                </div>
+                <div>
+                    <div ng-if="false">
+						<h2>Drag</h2>
+						<div class="toggle small">
+							<input type="checkbox" checked />
+							<label>
+								<svg class="square" viewBox="0 0 100 100">
+									<rect x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<svg class="square" viewBox="0 0 100 100">
+									<rect x="0" y="0" width="100" height="100"></rect>
+								</svg>
+							</label>
+						</div>
+					</div>
+                    <div>
+                        <h2>Scene</h2>
+                        <dropdown ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
+                    </div>
                     <dropdown ng-model="page.dropdowns.screenSizeOptions"></dropdown>
-                    <a class="build-main-settings" ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
+                    <a ng-if="false" class="build-main-settings" ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
                 </div>
             </nav>
 
-            <div class="build-player relative">
-                <div class='flex-wrap-center absolute full-xy top-0 left-0 flex-wrap-center'>
+            <div class="build-player">
+                <div class='build-player-container'>
                     <h1 class='uppercase weight-700 txt-charcoal'>
                         Loading ....
                     </h1>
                 </div>
-                <!-- <div class="flex-space-between full-x">
-                    <svg width="100" height="50" viewBox="0 0 100 50">
-                        <g fill="none">
-                            <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="47" rx="10"></rect>
-                            <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                <tspan x="50" y="30">logo</tspan>
-                            </text>
-                        </g>
-                    </svg>
-                    <svg width="100" height="50" viewBox="0 0 100 50">
-                        <g fill="none">
-                            <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="47" rx="10"></rect>
-                            <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                <tspan x="50" y="30">menu</tspan>
-                            </text>
-                        </g>
-                    </svg>
-                </div>
-                <div class="flex-center full-x">
-                    <svg width="100" height="100" viewBox="0 0 100 100">
-                        <g fill="none">
-                            <circle stroke="#637074" stroke-width="3" cx="50" cy="50" r="48.5"></circle>
-                            <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                <tspan x="50" y="54">ryan</tspan>
-                            </text>
-                        </g>
-                    </svg>
-                </div>
-                <div class="flex-center full-x m15top">
-                    <svg width="200" height="50" viewBox="0 0 200 50">
-                        <g fill="none">
-                            <path d="M23.2259184,5.95340971 C24.481859,3.49385944 27.7347336,1.5 30.4909811,1.5 L188.498497,1.5 C194.022175,1.5 196.747033,5.61947272 194.58442,10.7016135 L180.454099,43.9078668 C179.37488,46.4440319 176.262066,48.5 173.499572,48.5 L11.4913933,48.5 C5.97329914,48.5 3.53587345,44.5130812 6.04949493,39.5905724 L23.2259184,5.95340971 Z" stroke="#637074" stroke-width="3"></path>
-                            <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                <tspan x="100" y="30">adlib text</tspan>
-                            </text>
-                        </g>
-                    </svg>
-                    <svg width="100" height="50" viewBox="0 0 100 50">
-                        <g fill="none">
-                            <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="47" rx="10"></rect>
-                            <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                <tspan x="50" y="30">blank</tspan>
-                            </text>
-                        </g>
-                    </svg>
-                    <svg width="200" height="50" viewBox="0 0 200 50">
-                        <g fill="none">
-                            <path d="M23.2259184,5.95340971 C24.481859,3.49385944 27.7347336,1.5 30.4909811,1.5 L188.498497,1.5 C194.022175,1.5 196.747033,5.61947272 194.58442,10.7016135 L180.454099,43.9078668 C179.37488,46.4440319 176.262066,48.5 173.499572,48.5 L11.4913933,48.5 C5.97329914,48.5 3.53587345,44.5130812 6.04949493,39.5905724 L23.2259184,5.95340971 Z" stroke="#637074" stroke-width="3"></path>
-                            <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                <tspan x="100" y="30">adlib text</tspan>
-                            </text>
-                        </g>
-                    </svg>
-                    <svg width="100" height="50" viewBox="0 0 100 50">
-                        <g fill="none">
-                            <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="47" rx="10"></rect>
-                            <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                <tspan x="50" y="30">blank</tspan>
-                            </text>
-                        </g>
-                    </svg>
-                    <svg width="200" height="50" viewBox="0 0 200 50">
-                        <g fill="none">
-                            <path d="M23.2259184,5.95340971 C24.481859,3.49385944 27.7347336,1.5 30.4909811,1.5 L188.498497,1.5 C194.022175,1.5 196.747033,5.61947272 194.58442,10.7016135 L180.454099,43.9078668 C179.37488,46.4440319 176.262066,48.5 173.499572,48.5 L11.4913933,48.5 C5.97329914,48.5 3.53587345,44.5130812 6.04949493,39.5905724 L23.2259184,5.95340971 Z" stroke="#637074" stroke-width="3"></path>
-                            <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                <tspan x="100" y="30">adlib</tspan>
-                            </text>
-                        </g>
-                    </svg>
-                </div>
-                <div class="full-x m15top">
-                    <div class="flex-center full-x">
-                        <svg width="100" height="50" viewBox="0 0 100 50">
-                            <g fill="none">
-                                <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="47" rx="10"></rect>
-                                <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                    <tspan x="50" y="30">option</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                        <svg width="100" height="50" viewBox="0 0 100 50">
-                            <g fill="none">
-                                <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="47" rx="10"></rect>
-                                <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                    <tspan x="50" y="30">option</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                        <svg width="100" height="50" viewBox="0 0 100 50">
-                            <g fill="none">
-                                <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="47" rx="10"></rect>
-                                <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                    <tspan x="50" y="30">option</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                        <svg width="100" height="50" viewBox="0 0 100 50">
-                            <g fill="none">
-                                <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="47" rx="10"></rect>
-                                <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                    <tspan x="50" y="30">option</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="flex-center full-x">
-                        <svg width="100" height="50" viewBox="0 0 100 50">
-                            <g fill="none">
-                                <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="47" rx="10"></rect>
-                                <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                    <tspan x="50" y="30">option</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                        <svg width="100" height="50" viewBox="0 0 100 50">
-                            <g fill="none">
-                                <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="47" rx="10"></rect>
-                                <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                    <tspan x="50" y="30">option</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                        <svg width="100" height="50" viewBox="0 0 100 50">
-                            <g fill="none">
-                                <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="47" rx="10"></rect>
-                                <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                    <tspan x="50" y="30">option</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                        <svg width="100" height="50" viewBox="0 0 100 50">
-                            <g fill="none">
-                                <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="47" rx="10"></rect>
-                                <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                    <tspan x="50" y="30">option</tspan>
-                                </text>
-                            </g>
-                        </svg>
-                    </div>
-                </div>
-                <div class="flex-end-self-right full-x">
-                    <svg width="100" height="100" viewBox="0 0 100 100">
-                        <g fill="none">
-                            <circle stroke="#637074" stroke-width="3" cx="50" cy="50" r="48.5"></circle>
-                            <text font-size="18" font-weight="600" fill="#637074" text-anchor="middle">
-                                <tspan x="50" y="54">skip</tspan>
-                            </text>
-                        </g>
-                    </svg>
-                </div> -->
             </div>
 
-            <nav class="build-main-bottom" ng-show="">
+            <nav class="build-main-bottom" ng-if="false">
                 <div class="build-search-results active">
                     <ul>
                         <li ng-repeat="component in page.components">
@@ -230,109 +86,64 @@
                 </ul>
             </nav>
 
-            <div class='build-aside-center flex-wrap-center full-x relative' style='height:90%;'>
-                <div class='absolute bg-cerise full-xy top-0 left-0 high-z-index ugrid-4' ng-show="selectPropertyActivated">
-                    <a ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property)' class='txt-1 flex-wrap-center p20xy txt-white' ng-repeat='property in component_selected.properties'>{{property.name}} </a>
+            <div class='build-element-list animation'>
+                <div class='fixed bg-slate-90p top-0 right-0' ng-show="selectPropertyActivated">
+                    <ul class="flex-wrap-start p15-grid full-x">
+                        <li ng-repeat='property in component_selected.properties'>
+                            <button ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property)' class='txt-1 bg-moxie normal height-36 radius-2'>{{property.name}}</button>
+                        </li>
+                    </ul>
                 </div>
-                <ul class='full-x flex-wrap'>
-                    <li ng-repeat='component in page.components' class='full-x p20xy' style='border: 2px dashed white;'>
-                        <div class='full-x ugrid-2'>
-                            <div style='width:80%'>
-                                <div class='text-left uppercase weight-500'>
-                                    <h1> {{$index + 1}}. {{component.name}} <span class='opacity-50 weight-700'>{{component.selector}}</span> </h1>
-                                </div>
-                                <div class='full-x text-left uppercase weight-500 mtop10'>
-                                    <div class='txt-4 opacity-50 p10xy underline mtop10'>Time Properties</div>
-                                    <div class='ugrid-3 uppercase txt-3 p10xy uppercase weight-600 mtop20 text-center'>
-                                        <div style='border:1px dashed white;' class='p10xy text-left'> @ T = X </div>
-                                        <div  style='border:1px dashed white;'  class='p10xy'> Property Name </div>
-                                        <div  style='border:1px dashed white;' class='p10xy'> Value </div>
-                                    </div>
-                                    <div class='ugrid-3 uppercase txt-3 p10xy uppercase weight-600 mtop20 text-center' ng-if='component.time_states && component.time_states.length' ng-repeat='time_state in component.time_states'>
-                                        <div style='border:1px dashed white;min-height:75px;' class='p10xy text-left relative ugrid-2 flex-wrap-center'>
-                                            <div style='full-y text-right txt-4 flex-wrap flex-right'>
-                                                @ T = {{time_state.time}}
-                                            </div>
-                                        </div>
-                                        <div  style='border:1px dashed white;'  class='p10xy flex-wrap'>
-                                            <p class='txt-1 text-center full-x opacity-50' style='text-decoration:underline;'> Properties</p>
-                                            <ul class='p05xy full-x'>
-                                                <li ng-repeat='property in time_state.properties' class='p10y txt-1 txt-white' style='border-bottom: 1px dashed white; min-height:30px;'>
-                                                    <div class='bg-shamrock weight-300 txt-white' ng-if='property.type === "css_class"'>
-                                                        {{property.type || 'css'}}
-                                                    </div>
-
-                                                    <div class='bg-cerise weight-300 txt-white' ng-if='property.type === "css_text"'>
-                                                    {{property.type || 'css'}}
-                                                    </div>
-                                                    <div>
-                                                    {{property.name}}
-                                                    </div>
-
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div  style='border:1px dashed white;'  class='p10xy flex-wrap'>
-                                            <p class='txt-1 text-center full-x opacity-50' style='text-decoration:underline;'> Values</p>
-                                            <ul class='p05xy full-x'>
-                                                <li ng-repeat='property in time_state.properties' class='p10y txt-1 txt-white' style='border-bottom: 1px dashed white; min-height:30px;'>
-                                                    {{property.value}}
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-
-
-                                    <h1 class='txt-3 opacity-50'>
-                                        <a ng-click='component.addTimeState(component, component.empty_time_state)'> Add one </a>
-                                    </h1>
-                                    <div class='ugrid-3 uppercase txt-3 p10xy uppercase weight-600 mtop20 text-center'>
-                                        <div style='border:1px dashed white;min-height:75px;' class='p10xy text-left relative ugrid-2 flex-wrap-center'>
-                                            <div style='full-y text-right txt-4 flex-wrap flex-right'>
-                                                @ T =
-                                            </div>
-                                            <input  placeholder="time in s" class='full-y p05xy text-center txt-4 top-0 left-0' ng-model="component.empty_time_state.time">
-                                            </input>
-                                        </div>
-                                        <div  style='border:1px dashed white;'  class='p10xy flex-wrap'>
-                                            <p class='txt-1 text-center full-x opacity-50' style='text-decoration:underline;'> Properties</p>
-                                            <ul class='p05xy full-x'>
-                                                <li ng-repeat='property in component.empty_time_state.properties' class='p10y txt-1 txt-white' style='border-bottom: 1px dashed white; min-height:80px;'>
-                                                    {{property.name || 'sample property'}}
-                                                </li>
-                                            </ul>
-
-                                            <div class='lowercase'>
-                                                <a class='txt-1 text-center full-x' ng-click='component.addPropertyField(component, component.empty_time_state)'>
-                                                    Add CSS
-                                                </a>
-                                                <div class='p05xy txt-1 opacity-50'>or</div>
-                                                <dropdown ng-model="component.css_class_dropdown"></dropdown>
-                                            </div>
-                                        </div>
-                                        <div  style='border:1px dashed white;'  class='p10xy relative'>
-                                            <p class='txt-1 text-center opacity-50 full-x' style='text-decoration:underline;'>
-                                                Values
-                                            </p>
-                                            <ul class='p05xy full-x'>
-                                                <li ng-repeat='property in component.empty_time_state.properties' class='p10y txt-1 txt-white' style='border-bottom: 1px dashed white; min-height:80px;'>
-
-                                                    <input  placeholder="prop value" class='full-xy p05xy text-center txt-4 top-0 left-0' ng-model="property.value">
-                                                    </input>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class='full-x p10xy text-center txt-shamrock weight-600 uppercase' ng-click='component.addTimeState(component, component.empty_time_state)'>
-                                        Save
-                                    </div>
-                                </div>
-                            </div>
-                            <div style='width:20%;' class='component-inject'>
-
-                            </div>
+                <ul>
+                    <li ng-repeat='component in page.components'>
+                        <span>{{$index + 1}}</span>
+                        <div>
+							<h1><span class="lowercase">{{component.name}}</span> &rarr; <span class="opacity-50">{{component.selector}}</span></h1>
+						</div>
+                        <div class="relative">
+                            <div class='component-inject'></div>
+                            <a>&rtrif;</a>
                         </div>
+                        <ul class="build-css-header">
+                            <li>Time</li>
+                            <li>Property</li>
+                            <li>Value</li>
+                        </ul>
+                        <ul class="build-css-list">
+                            <li ng-if='component.time_states && component.time_states.length' ng-repeat='time_state in component.time_states'>
+                                <div><span class="radius-2-left">@T</span><span class="radius-2-right">{{time_state.time}}</span></div>
+                                <div>
+                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_class"'>.{{property.name}}</span>
+                                    <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.name}}</span>
+                                </div>
+                                <div>
+                                    <span ng-repeat='property in time_state.properties' class="radius-2 opacity-50" ng-if='property.type === "css_class"'>{{property.value}}</span>
+                                    <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.value}}</span>
+                                </div>
+                                <div>
+                                    <a ng-repeat='property in time_state.properties'>&times;</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div><span class="radius-2-left">@T</span><input class="radius-2-right" type="tel" ng-model="component.empty_time_state.time" placeholder="time"/></div>
+                                <div>
+                                    <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_class"'>.{{property.name || 'sample property'}}</span>
+                                    <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_text"'>{{property.name || 'sample property'}}</span>
+                                    <button class="bg-campus" ng-click='component.addPropertyField(component, component.empty_time_state)'>CSS</button>
+                                    <dropdown ng-model="component.css_class_dropdown"></dropdown>
+                                </div>
+                                <div>
+                                    <input class="radius-2 opacity-50" disabled ng-repeat='property in component.empty_time_state.properties' placeholder="value" ng-model="property.value" ng-if='property.type === "css_class"'/>
+                                    <input class="radius-2" ng-repeat='property in component.empty_time_state.properties' placeholder="value" ng-model="property.value" ng-if='property.type === "css_text"'/>
+                                </div>
+                                <div>
+                                    <a ng-repeat='property in component.empty_time_state.properties'>&times;</a>
+                                </div>
+                                <div class="full-x">
+                                    <button class='bg-moxie height-36 txt-20 radius-2' ng-click='component.addTimeState(component, component.empty_time_state)'>Save</button>
+                                </div>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>

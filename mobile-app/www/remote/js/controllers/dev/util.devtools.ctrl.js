@@ -121,7 +121,7 @@ angular.module('uguru.dev.controllers')
       if (controller) {
         stageTemplateDiv.setAttribute('ng-controller', controller);
       }
-      stageTemplateDiv.className += 'absolute full-xy top-0 left-0';
+      stageTemplateDiv.className += 'build-player-container';
       stageTemplateParentContainer = document.querySelector('.build-player');
       stageTemplateParentContainer.classList.add('relative')
 
@@ -169,7 +169,7 @@ angular.module('uguru.dev.controllers')
         allAnimElem[i].classList.add(ref);
         var clonedNode = allAnimElem[i].cloneNode(true)
         var componentObj = initComponentObj(clonedNode, allAnimElem[i], ref);
-        componentObj.css_class_dropdown = {label:'select class', key:'_class', options:generateCSSClassOptions(classes, componentObj), onOptionClick:generateTimeStateProperty, size:'small', selectedIndex:0},
+        componentObj.css_class_dropdown = {label:'', key:'_class', options:generateCSSClassOptions(classes, componentObj), onOptionClick:generateTimeStateProperty, size:'small', selectedIndex:0},
         $scope.page.components.push(componentObj);
       }
 
