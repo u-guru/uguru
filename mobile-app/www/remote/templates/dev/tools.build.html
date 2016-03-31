@@ -72,7 +72,7 @@
         </main>
         <aside>
             <nav class="build-aside-top">
-                <ul ng-if="false">
+                <ul>
                     <li><a>0</a></li>
                     <li><a>1</a></li>
                     <li><a>2</a></li>
@@ -86,17 +86,23 @@
                 </ul>
             </nav>
 
-            <div class='build-element-list'>
-                <div class='absolute bg-cerise full-xy top-0 left-0 high-z-index ugrid-4' ng-show="selectPropertyActivated">
-                    <a ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property)' class='txt-1 flex-wrap-center p20xy txt-white' ng-repeat='property in component_selected.properties'>{{property.name}} </a>
+            <div class='build-element-list animation'>
+                <div class='fixed bg-slate-90p top-0 right-0' ng-show="selectPropertyActivated">
+                    <ul class="flex-wrap-start p15-grid full-x">
+                        <li ng-repeat='property in component_selected.properties'>
+                            <button ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property)' class='txt-1 bg-moxie normal height-36 radius-2'>{{property.name}}</button>
+                        </li>
+                    </ul>
                 </div>
                 <ul>
                     <li ng-repeat='component in page.components'>
+                        <span>{{$index + 1}}</span>
                         <div>
 							<h1><span class="lowercase">{{component.name}}</span> &rarr; <span class="opacity-50">{{component.selector}}</span></h1>
 						</div>
-                        <div>
+                        <div class="relative">
                             <div class='component-inject'></div>
+                            <a>&rtrif;</a>
                         </div>
                         <ul class="build-css-header">
                             <li>Time</li>
@@ -104,82 +110,34 @@
                             <li>Value</li>
                         </ul>
                         <ul class="build-css-list">
+                            <li ng-if='component.time_states && component.time_states.length' ng-repeat='time_state in component.time_states'>
+                                <div><span class="radius-2-left">@T</span><span class="radius-2-right">{{time_state.time}}</span></div>
+                                <div>
+                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_class"'>.{{property.name}}</span>
+                                    <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.name}}</span>
+                                </div>
+                                <div>
+                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_class"'>&nbsp;</span>
+                                    <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.value}}</span>
+                                </div>
+                            </li>
                             <li>
-                                <div><span>@T</span><span>1000</span></div>
-                                <div><span>transform</span></div>
-                                <div><span>translate(100px, 100px)</span></div>
+                                <div><span class="radius-2-left">@T</span><input class="radius-2-right" type="tel" ng-model="component.empty_time_state.time"/></div>
+                                <div>
+                                    <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_class"'>.{{property.name || 'sample property'}}</span>
+                                    <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_text"'>{{property.name || 'sample property'}}</span>
+                                    <button class="bg-moxie" ng-click='component.addPropertyField(component, component.empty_time_state)'>CSS</button>
+                                    <dropdown ng-model="component.css_class_dropdown"></dropdown>
+                                </div>
+                                <div>
+                                    <input class="radius-2 opacity-50" disabled ng-repeat='property in component.empty_time_state.properties' placeholder="value" ng-model="property.value" ng-if='property.type === "css_class"'/>
+                                    <input class="radius-2" ng-repeat='property in component.empty_time_state.properties' placeholder="value" ng-model="property.value" ng-if='property.type === "css_text"'/>
+                                </div>
+                                <div class="full-x">
+                                    <button class='bg-moxie height-36 txt-20 radius-2' ng-click='component.addTimeState(component, component.empty_time_state)'>Save</button>
+                                </div>
                             </li>
                         </ul>
-                        <div class='full-x ugrid-2'>
-                            <div style='width:80%'>
-                                <div class='full-x text-left uppercase weight-500 mtop10'>
-                                    <div class='ugrid-3 uppercase txt-3 p10xy uppercase weight-600 mtop20 text-center' ng-if='component.time_states && component.time_states.length' ng-repeat='time_state in component.time_states'>
-                                        <div style='border:1px dashed white;min-height:75px;' class='p10xy text-left relative ugrid-2 flex-wrap-center'>
-                                            <div style='full-y text-right txt-4 flex-wrap flex-right'>
-                                                @ T = {{time_state.time}}
-                                            </div>
-                                        </div>
-                                        <div  style='border:1px dashed white;'  class='p10xy flex-wrap'>
-                                            <p class='txt-1 text-center full-x opacity-50' style='text-decoration:underline;'> Properties</p>
-                                            <ul class='p05xy full-x'>
-                                                <li ng-repeat='property in time_state.properties' class='p10y txt-1 txt-white' style='border-bottom: 1px dashed white; min-height:30px;'></li>
-                                                    {{property.name}}
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div  style='border:1px dashed white;'  class='p10xy flex-wrap'>
-                                            <p class='txt-1 text-center full-x opacity-50' style='text-decoration:underline;'> Values</p>
-                                            <ul class='p05xy full-x'>
-                                                <li ng-repeat='property in time_state.properties' class='p10y txt-1 txt-white' style='border-bottom: 1px dashed white; min-height:30px;'>
-                                                    {{property.value}}
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-
-
-                                    <h1 class='txt-3 opacity-50'>
-                                        <a ng-click='component.addTimeState(component, component.empty_time_state)'> Add one </a>
-                                    </h1>
-                                    <div class='ugrid-3 uppercase txt-3 p10xy uppercase weight-600 mtop20 text-center'>
-                                        <div style='border:1px dashed white;min-height:75px;' class='p10xy text-left relative ugrid-2 flex-wrap-center'>
-                                            <div style='full-y text-right txt-4 flex-wrap flex-right'>
-                                                @ T =
-                                            </div>
-                                            <input  placeholder="time in s" class='full-y p05xy text-center txt-4 top-0 left-0' ng-model="component.empty_time_state.time">
-                                            </input>
-                                        </div>
-                                        <div  style='border:1px dashed white;'  class='p10xy flex-wrap'>
-                                            <p class='txt-1 text-center full-x opacity-50' style='text-decoration:underline;'> Properties</p>
-                                            <ul class='p05xy full-x'>
-                                                <li ng-repeat='property in component.empty_time_state.properties' class='p10y txt-1 txt-white' style='border-bottom: 1px dashed white; min-height:80px;'>
-                                                    {{property.name || 'sample property'}}
-                                                </li>
-                                            </ul>
-                                            <a class='txt-1 text-center full-x' ng-click='component.addPropertyField(component, component.empty_time_state)'>
-                                                +
-                                            </a>
-                                        </div>
-                                        <div  style='border:1px dashed white;'  class='p10xy relative'>
-                                            <p class='txt-1 text-center opacity-50 full-x' style='text-decoration:underline;'>
-                                                Values
-                                            </p>
-                                            <ul class='p05xy full-x'>
-                                                <li ng-repeat='property in component.empty_time_state.properties' class='p10y txt-1 txt-white' style='border-bottom: 1px dashed white; min-height:80px;'>
-
-                                                    <input  placeholder="prop value" class='full-xy p05xy text-center txt-4 top-0 left-0' ng-model="property.value">
-                                                    </input>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class='full-x p10xy text-center txt-shamrock weight-600 uppercase' ng-click='component.addTimeState(component, component.empty_time_state)'>
-                                        Save
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </li>
                 </ul>
             </div>
