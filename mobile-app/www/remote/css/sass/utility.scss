@@ -180,10 +180,10 @@ a, a:hover, a:active, a:visited {
 	text-decoration:none;
 }
 a, button, *[ng-click], *[tabindex], input[type=checkbox] {
-	@include transition(.15s ease-in-out);
+	@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 	cursor: pointer;
 	svg * {
-		@include transition(.15s ease-in-out);
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 	}
 }
 .noselect {

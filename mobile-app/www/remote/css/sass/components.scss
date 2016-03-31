@@ -2946,6 +2946,517 @@ input[type=range] {
 	}
 }
 
+/* ---------- COLOR DROPDOWNS */
+.dropdown-color {
+	position: relative;
+	width: 198px;
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 48px;
+		background: $slate;
+		border-radius: 2px;
+		z-index: -1;
+	}
+	* {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+	}
+	> a {
+		@include prefix(justify-content, space-between, webkit);
+		z-index: 1;
+		padding: 0 12px 0 15px;
+		border: 2px solid white;
+		border-radius: 2px;
+		svg {
+			@include svg-stroke(white, 10);
+			display: block;
+			margin-left: 5px;
+			width: 24px;
+			height: 24px;
+		}
+		&.active {
+			svg {
+				@include prefix(transform, rotate(180deg), webkit mox ms o);
+			}
+		}
+	}
+	a {
+		@include flex;
+		@include flex-center-vertical;
+		position: relative;
+		padding: 0 10px;
+		height: 48px;
+		font-weight: 600;
+		font-size: 18px;
+		&.color {
+			.dropdown-color-bg {
+				@include opacity(.8);
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: -1;
+			}
+			+ .arrow {
+				@include opacity(.8);
+			}
+			&:hover, &:focus, &.active {
+				.dropdown-color-bg {
+					@include opacity(1);
+				}
+				+ .arrow {
+					@include opacity(1);
+				}
+			}
+			&.active {
+				&:hover, &:focus {
+					.dropdown-color-bg {
+						@include opacity(.8);
+					}
+					+ .arrow {
+						@include opacity(.8);
+					}
+				}
+			}
+			&:active {
+				.dropdown-color-bg {
+					background: lighten($slate, 20%)!important;
+				}
+				+ .arrow {
+					@include opacity(1);
+					path {
+						fill: lighten($slate, 20%)!important;
+					}
+				}
+			}
+		}
+		&.bg-charcoal {
+			background: rgba($charcoal, .8);
+			+ .arrow {
+				fill: rgba($charcoal, .8);
+			}
+			&:hover, &:focus {
+				background: $charcoal;
+				+ .arrow {
+					fill: $charcoal;
+				}
+			}
+			&:active {
+				background: mix($charcoal, white);
+				color: $charcoal;
+				+ .arrow {
+					fill: mix($charcoal, white);
+				}
+			}
+		}
+		&.bg-slate {
+			background: rgba($slate, .8);
+			+ .arrow {
+				fill: rgba($slate, .8);
+			}
+			&:hover, &:focus {
+				background: $slate;
+				+ .arrow {
+					fill: $slate;
+				}
+			}
+			&:active {
+				background: mix($slate, white);
+				color: $slate;
+				+ .arrow {
+					fill: mix($slate, white);
+				}
+			}
+		}
+		&.bg-taupe {
+			background: rgba($taupe, .8);
+			+ .arrow {
+				fill: rgba($taupe, .8);
+			}
+			&:hover, &:focus {
+				background: $taupe;
+				+ .arrow {
+					fill: $taupe;
+				}
+			}
+			&:active {
+				background: mix($taupe, white);
+				color: mix($taupe, $slate);
+				+ .arrow {
+					fill: mix($taupe, white);
+				}
+			}
+		}
+		&.bg-campus {
+			background: rgba($campus, .8);
+			+ .arrow {
+				fill: rgba($campus, .8);
+			}
+			&:hover, &:focus {
+				background: $campus;
+				+ .arrow {
+					fill: $campus;
+				}
+			}
+			&:active {
+				background: mix($campus, white);
+				color: mix($campus, $slate);
+				+ .arrow {
+					fill: mix($campus, white);
+				}
+			}
+		}
+		&.bg-rocket {
+			background: rgba($rocket, .8);
+			+ .arrow {
+				fill: rgba($rocket, .8);
+			}
+			&:hover, &:focus {
+				background: $rocket;
+				+ .arrow {
+					fill: $rocket;
+				}
+			}
+			&:active {
+				background: mix($rocket, white);
+				color: mix($rocket, $slate);
+				+ .arrow {
+					fill: mix($rocket, white);
+				}
+			}
+		}
+		&.bg-shamrock {
+			background: rgba($shamrock, .8);
+			+ .arrow {
+				fill: rgba($shamrock, .8);
+			}
+			&:hover, &:focus {
+				background: $shamrock;
+				+ .arrow {
+					fill: $shamrock;
+				}
+			}
+			&:active {
+				background: mix($shamrock, white);
+				color: mix($shamrock, $slate);
+				+ .arrow {
+					fill: mix($shamrock, white);
+				}
+			}
+		}
+		&.bg-robin {
+			background: rgba($robin, .8);
+			+ .arrow {
+				fill: rgba($robin, .8);
+			}
+			&:hover, &:focus {
+				background: $robin;
+				+ .arrow {
+					fill: $robin;
+				}
+			}
+			&:active {
+				background: mix($robin, white);
+				color: mix($robin, $slate);
+				+ .arrow {
+					fill: mix($robin, white);
+				}
+			}
+		}
+		&.bg-lake {
+			background: rgba($lake, .8);
+			+ .arrow {
+				fill: rgba($lake, .8);
+			}
+			&:hover, &:focus {
+				background: $lake;
+				+ .arrow {
+					fill: $lake;
+				}
+			}
+			&:active {
+				background: mix($lake, white);
+				color: mix($lake, $slate);
+				+ .arrow {
+					fill: mix($lake, white);
+				}
+			}
+		}
+		&.bg-moxie {
+			background: rgba($moxie, .8);
+			+ .arrow {
+				fill: rgba($moxie, .8);
+			}
+			&:hover, &:focus {
+				background: $moxie;
+				+ .arrow {
+					fill: $moxie;
+				}
+			}
+			&:active {
+				background: mix($moxie, white);
+				color: mix($moxie, $slate);
+				+ .arrow {
+					fill: mix($moxie, white);
+				}
+			}
+		}
+		&.bg-crimson {
+			background: rgba($crimson, .8);
+			+ .arrow {
+				fill: rgba($crimson, .8);
+			}
+			&:hover, &:focus {
+				background: $crimson;
+				+ .arrow {
+					fill: $crimson;
+				}
+			}
+			&:active {
+				background: mix($crimson, white);
+				color: mix($crimson, $slate);
+				+ .arrow {
+					fill: mix($crimson, white);
+				}
+			}
+		}
+		&.bg-auburn, &.bg-delivery {
+			background: rgba($auburn, .8);
+			+ .arrow {
+				fill: rgba($auburn, .8);
+			}
+			&:hover, &:focus {
+				background: $auburn;
+				+ .arrow {
+					fill: $auburn;
+				}
+			}
+			&:active {
+				background: mix($auburn, white);
+				color: mix($auburn, $slate);
+				+ .arrow {
+					fill: mix($auburn, white);
+				}
+			}
+		}
+		&.bg-orange, &.bg-freelancing {
+			background: rgba($orange, .8);
+			+ .arrow {
+				fill: rgba($orange, .8);
+			}
+			&:hover, &:focus {
+				background: $orange;
+				+ .arrow {
+					fill: $orange;
+				}
+			}
+			&:active {
+				background: mix($orange, white);
+				color: mix($orange, $slate);
+				+ .arrow {
+					fill: mix($orange, white);
+				}
+			}
+		}
+		&.bg-gold, &.bg-baking {
+			background: rgba($gold, .8);
+			+ .arrow {
+				fill: rgba($gold, .8);
+			}
+			&:hover, &:focus {
+				background: $gold;
+				+ .arrow {
+					fill: $gold;
+				}
+			}
+			&:active {
+				background: mix($gold, white);
+				color: mix($gold, $slate);
+				+ .arrow {
+					fill: mix($gold, white);
+				}
+			}
+		}
+		&.bg-moola, &.bg-photography {
+			background: rgba($moola, .8);
+			+ .arrow {
+				fill: rgba($moola, .8);
+			}
+			&:hover, &:focus {
+				background: $moola;
+				+ .arrow {
+					fill: $moola;
+				}
+			}
+			&:active {
+				background: mix($moola, white);
+				color: mix($moola, $slate);
+				+ .arrow {
+					fill: mix($moola, white);
+				}
+			}
+		}
+		&.bg-azure, &.bg-tech {
+			background: rgba($azure, .8);
+			+ .arrow {
+				fill: rgba($azure, .8);
+			}
+			&:hover, &:focus {
+				background: $azure;
+				+ .arrow {
+					fill: $azure;
+				}
+			}
+			&:active {
+				background: mix($azure, white);
+				color: mix($azure, $slate);
+				+ .arrow {
+					fill: mix($azure, white);
+				}
+			}
+		}
+		&.bg-cobalt, &.bg-household {
+			background: rgba($cobalt, .8);
+			+ .arrow {
+				fill: rgba($cobalt, .8);
+			}
+			&:hover, &:focus {
+				background: $cobalt;
+				+ .arrow {
+					fill: $cobalt;
+				}
+			}
+			&:active {
+				background: mix($cobalt, white);
+				color: mix($cobalt, $slate);
+				+ .arrow {
+					fill: mix($cobalt, white);
+				}
+			}
+		}
+		&.bg-eggplant, &.bg-athletic {
+			background: rgba($eggplant, .8);
+			+ .arrow {
+				fill: rgba($eggplant, .8);
+			}
+			&:hover, &:focus {
+				background: $eggplant;
+				+ .arrow {
+					fill: $eggplant;
+				}
+			}
+			&:active {
+				background: mix($eggplant, white);
+				color: mix($eggplant, $slate);
+				+ .arrow {
+					fill: mix($eggplant, white);
+				}
+			}
+		}
+		&.bg-cerise, &.bg-academic {
+			background: rgba($cerise, .8);
+			+ .arrow {
+				fill: rgba($cerise, .8);
+			}
+			&:hover, &:focus {
+				background: $cerise;
+				+ .arrow {
+					fill: $cerise;
+				}
+			}
+			&:active {
+				background: mix($cerise, white);
+				color: mix($cerise, $slate);
+				+ .arrow {
+					fill: mix($cerise, white);
+				}
+			}
+		}
+	}
+	> div {
+		@include prefix(transform-origin, top center, webkit moz ms o);
+		position: absolute;
+		left: 0;
+		top: 58px;
+		width: 100%;
+		&:not(.visible) {
+			@include prefix(transform, translateY(-50%) translateZ(0) scaleY(0), webkit moz ms o);
+			@include opacity(0);
+			visibility: hidden;
+			z-index: -1;
+		}
+		&.visible {
+			@include prefix(transform, translateY(0) translateZ(0) scale(1), webkit moz ms o);
+			@include opacity(1);
+			visibility: visible;
+			z-index: 0;
+		}
+		> svg {
+			display: block;
+			position: relative;
+			z-index: 5;
+			width: 100%;
+			height: auto;
+		}
+		ul {
+			position: relative;
+			z-index: 4;
+			margin-top: -4px;
+			li {
+				position: relative;
+				height: 48px;
+				border: 2px solid white;
+				border-top: 0;
+				font-size: 18px;
+				font-weight: 600;
+				&:first-child {
+					border-topleft-radius: 2px;
+					border-top-right-radius: 2px;
+				}
+				&:last-child {
+					border-bottom-left-radius: 2px;
+					border-bottom-right-radius: 2px;
+				}
+				&:not(:first-child) {
+					a + .arrow {
+						display: none;
+					}
+				}
+				a {
+					@include flex;
+					@include flex-center;
+					height: 100%;
+					width: 100%;
+					padding: 0 15px;
+					text-align: center;
+					svg {
+						@include svg-stroke(white, 10);
+						display: none;
+						margin-left: 5px;
+						width: 24px;
+						height: 24px;
+					}
+					+ .arrow {
+						position: absolute;
+						left: 50%;
+						margin-left: -15px;
+						display: block;
+						top: -13px;
+						width: 30px;
+						height: 15px;
+					}
+				}
+			}
+		}
+	}
+}
+
 /* ---------- TOOLTIPS */
 .tooltip, .guru-popup {
 	z-index: 99;
