@@ -34,7 +34,7 @@ function ContentService(Category) {
 					end: ""
 				},
 				blank_one_options: ["semester", "...idk", "week", "never"],
-				blank_one_options: ["the dishes", "vacuuming", "cleaned the bathroom", "ironed"]
+				blank_two_options: ["the dishes", "vacuuming", "cleaned the bathroom", "ironed"]
 			}
 		},
 		Tech: {
@@ -65,7 +65,7 @@ function ContentService(Category) {
 				blank_two_options: ['virus', '1hr battery life', 'replacement', 'charger']
 			}
 		},
-		Bakery: {
+		Baking: {
 			madlib: {
 				_class: 'bakery-madlib',
 				template: {

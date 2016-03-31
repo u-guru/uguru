@@ -137,6 +137,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/team',
         templateUrl: BASE + 'templates/team.html'
   }).
+  state('root.build-demo', {
+        url: '/build-demo',
+        templateUrl: BASE + 'templates/builder.html'
+  }).
   state('root.build', {
         url: '/build',
         templateUrl: BASE + 'templates/dev/tools.build.html',
@@ -485,6 +489,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/courses',
         templateUrl: BASE + 'templates/courses.html',
         controller: 'CoursesController'
+  }).
+  state('root.demo', {
+        url: '/demo',
+        templateUrl: BASE + 'templates/demos.html'
+        // controller: 'gpaController'
   }).
   state('root.gpa', {
         url: '/gpa',

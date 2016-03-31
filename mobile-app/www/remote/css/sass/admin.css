@@ -122,13 +122,27 @@
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
+  position: relative;
+  overflow: hidden;
   height: calc(100% - 128px);
   width: 100%;
   padding: 7.5px;
 }
 
-#build > main .build-player svg {
-  margin: 7.5px;
+#build > main .build-player:last-child {
+  height: calc(100% - 64px);
+}
+
+#build > main .build-player .build-player-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#build > main .build-player .build-player-container .fixed {
+  position: absolute !important;
 }
 
 #build > main .build-main-bottom {
@@ -270,6 +284,7 @@
 #build > aside {
   width: calc(100% / 3);
   height: 100%;
+  background: #4c5559;
 }
 
 #build > aside .build-aside-top {
@@ -353,7 +368,7 @@
   width: 100%;
   height: calc(100% - 128px);
   overflow: auto;
-  background: #40484B;
+  background: #4c5559;
 }
 
 #build > aside .build-element-list > ul {
@@ -401,6 +416,10 @@
 }
 
 #build > aside .build-element-list > ul > li > div {
+  width: 100%;
+}
+
+#build > aside .build-element-list > ul > li > div:first-child {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -417,14 +436,14 @@
   background: #637074;
 }
 
-#build > aside .build-element-list > ul > li > div h1 {
+#build > aside .build-element-list > ul > li > div:first-child h1 {
   padding: 0 15px;
   font-size: 28px;
   font-weight: 600;
   width: calc(100% - 48px);
 }
 
-#build > aside .build-element-list > ul > li > div a {
+#build > aside .build-element-list > ul > li > div:first-child a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -445,13 +464,13 @@
   background: #43cb9d;
 }
 
-#build > aside .build-element-list > ul > li > div a svg {
+#build > aside .build-element-list > ul > li > div:first-child a svg {
   display: block;
   width: 36px;
   height: 36px;
 }
 
-#build > aside .build-element-list > ul > li > div a svg * {
+#build > aside .build-element-list > ul > li > div:first-child a svg * {
   fill: none;
   stroke: white;
   stroke-width: 6px;
@@ -459,20 +478,115 @@
   stroke-linejoin: round;
 }
 
-#build > aside .build-element-list > ul > li > div a:hover, #build > aside .build-element-list > ul > li > div a:focus {
+#build > aside .build-element-list > ul > li > div:first-child a:hover, #build > aside .build-element-list > ul > li > div:first-child a:focus {
   background: #a1e5ce;
 }
 
-#build > aside .build-element-list > ul > li > div a:hover svg *, #build > aside .build-element-list > ul > li > div a:focus svg * {
+#build > aside .build-element-list > ul > li > div:first-child a:hover svg *, #build > aside .build-element-list > ul > li > div:first-child a:focus svg * {
   stroke: #428a74;
 }
 
-#build > aside .build-element-list > ul > li > div a:active {
+#build > aside .build-element-list > ul > li > div:first-child a:active {
   background: #428a74;
 }
 
-#build > aside .build-element-list > ul > li > div a:active svg * {
+#build > aside .build-element-list > ul > li > div:first-child a:active svg * {
   stroke: white;
+}
+
+#build > aside .build-element-list > ul > li .component-inject {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  background: #40484B;
+}
+
+#build > aside .build-element-list > ul > li .component-inject > *:not(:first-child) {
+  display: none !important;
+}
+
+#build > aside .build-element-list > ul > li .build-css-header {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  background: #77878c;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+#build > aside .build-element-list > ul > li .build-css-header li {
+  position: relative;
+  padding: 5px;
+}
+
+#build > aside .build-element-list > ul > li .build-css-header li:nth-child(1) {
+  width: 25%;
+}
+
+#build > aside .build-element-list > ul > li .build-css-header li:nth-child(2) {
+  width: 30%;
+}
+
+#build > aside .build-element-list > ul > li .build-css-header li:nth-child(3) {
+  width: 45%;
+}
+
+#build > aside .build-element-list > ul > li .build-css-header li:not(:last-child):after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 10;
+  top: 5px;
+  right: -1px;
+  height: calc(100% - 10px);
+  width: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#build > aside .build-element-list > ul > li .build-css-list {
+  width: 100%;
+}
+
+#build > aside .build-element-list > ul > li .build-css-list > li {
+  width: 100%;
+}
+
+#build > aside .build-element-list > ul > li .build-css-list > li > div {
+  font-size: 18px;
+}
+
+#build > aside .build-element-list > ul > li .build-css-list > li > div:nth-child(1) {
+  width: 25%;
 }
 
 #build > aside .build-element-list > ul > li .build-property-list {

@@ -380,6 +380,22 @@
             "controller": "SplashController", 
             "cp_link": "", 
             "description": "", 
+            "element_states": {
+                "fluid": [
+                    {
+                        "name": "on load", 
+                        "selectors": [
+                            "[animate]"
+                        ]
+                    }, 
+                    {
+                        "name": "on tag selected", 
+                        "selectors": [
+                            ".adlib-tag"
+                        ]
+                    }
+                ]
+            }, 
             "id": 1, 
             "name": "Splash Mad Lib", 
             "notes": "", 
@@ -391,7 +407,7 @@
             }, 
             "scenes": [], 
             "states": [], 
-            "template_url": "splash.madlib.html"
+            "template_url": "splash.html"
         }, 
         {
             "bugs": [], 

@@ -4,24 +4,24 @@
 
 
         <!-- Sidebar -->
-        <ion-pane id='cta-modal-sidebar' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash/layout/splash.sidebar.html'"> </ion-pane>
+        <ion-pane id='cta-modal-sidebar' ng-if='sidebar.activate' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash/layout/splash.sidebar.html'"> </ion-pane>
 
         <!-- Mobile + desktop navs -->
-        <div id='splash-desktop-nav' class='full-x' ng-include="img_base + BASE + 'templates/splash/container/splash.nav.html'">
+        <div id='splash-desktop-nav' class='full-x' ng-if='nav.activate' ng-include="img_base + BASE + 'templates/splash/container/splash.nav.html'">
         </div>
         <!-- One page dropdown -->
-        <div id='splash-one-page-pulldown' activate-on-class-delay="5000" class='fixed top-0 left-0 full-xy' ng-include="img_base + 'templates/splash/layout/splash.one.pulldown.html'">
+        <div id='splash-one-page-pulldown' class-on-activate-delay="5000" ng-if='pulldown.activate' class-on-activate="anim:bounceInDown" class='hide relative full-xy high-z-index' ng-include="img_base + 'templates/splash/layout/splash.one.pulldown.html'">
         </div>
 
         <section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" parallax-parent="p1" parallax-relative-input="false" parallax-clip-relative-input="false" parallax-calibration-threshold="100" parallax-calibration-delay="500" parallax-support-delay="500" parallax-calibrate-x="false" parallax-calibrate-y="true" parallax-invert-x="true" parallax-invert-y="true" parallax-limit-x="false" parallax-limit-y="false" parallax-scalar-x="5.0" parallax-scalar-y="5.0" parallax-friction-x="0.1" parallax-friction-y="0.1" parallax-origin-x="0.5" parallax-origin-y="0.5" style='z-index:10;'>
 
 
             <!-- Map Layout -->
-            <div id='splash-map-layout' class='hide' ng-include="img_base + BASE + 'templates/splash/layout/splash.maps.html'">
+            <div id='splash-map-layout' ng-if='map.activate' class='hide' ng-include="img_base + BASE + 'templates/splash/layout/splash.maps.html'">
             </div>
 
             <!-- Device container -->
-            <div id='splash-device-container' ng-include="img_base + BASE + 'templates/splash/container/splash.device.container.html'">
+            <div id='splash-device-container'  ng-include="img_base + BASE + 'templates/splash/container/splash.device.container.html'">
             </div>
 
             <!-- Madlib container -->
@@ -56,10 +56,10 @@
         </section>
         <!--End scene #1 mad lib-->
 
-        <section ng-include="img_base + BASE + 'templates/splash/layout/projector.swiper.html'" id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
+        <section ng-if='project.activate' class='hide'ng-include="img_base + BASE + 'templates/splash/layout/projector.swiper.html'" id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
         </section>
 
-        <section ng-include="img_base + BASE + 'templates/splash/layout/splash.transition.layouts.html'" id='splash-transition-containers'>
+        <section ng-if='false' ng-if='layout.activate' ng-include="img_base + BASE + 'templates/splash/layout/splash.transition.layouts.html'" id='splash-transition-containers'>
 
         </section>
 

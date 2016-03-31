@@ -11,15 +11,17 @@ angular.module('uguru.dev.controllers')
   'LoadingService',
   'Restangular',
   '$compile',
-  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile) {
+  '$sce',
+  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce) {
 
     $scope.elements = [];
     $scope.page = {dropdowns:{}, toggles:{}};
     $scope.page.toggles = {add_component: false};
     $scope.page.compiledTemplates = {};
-    $scope.page.dropdowns.screenSizeOptions = {onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
+    $scope.page.components = [];
+    $scope.page.dropdowns.screenSizeOptions = {label:'autoscale @ 1.5x', onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
-    LoadingService.showAmbig('Loading all dependencies...', 2500);
+    var mostUsedCSSProperties = ["transform", "-webkit-transform", "opacity", "-webkit-animation-name", "animation-name", "-webkit-animation-timing-function", "animation-timing-function", "-webkit-transform-origin", "transform-origin", "visibility", "backface-visibility", "-webkit-backface-visibility", "animation-duration", "-webkit-animation-duration", "-webkit-animation-fill-mode", "-webkit-animation-iteration-count", "animation-iteration-count", "animation-fill-mode", "z-index", "width", "visibility", "top", "float", "position", "margin", "left", "height", "background", "background-color", "display", "border", "color", "padding", "float"];
 
     function getRecentElementComponents(callback) {
         Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(
@@ -99,39 +101,67 @@ angular.module('uguru.dev.controllers')
       if (controller) {
         stageTemplateDiv.setAttribute('ng-controller', controller);
       }
-      stageTemplateDiv.className += 'absolute full-xy top-0 left-0';
+      stageTemplateDiv.className += 'build-player-container';
       stageTemplateParentContainer = document.querySelector('.build-player');
       stageTemplateParentContainer.classList.add('relative')
 
       stageTemplateParentContainer.appendChild(stageTemplateDiv);
       $compile(stageTemplateDiv)($scope);
+      storeTemplateToCache(template_url, stageTemplateDiv);
+    }
+
+    function updateScreenSize(elem_selector) {
+      var elem = document.querySelector(elem_selector);
+      console.log(elem);
+      var selectedDropdownIndex = $scope.page.dropdowns.screenSizeOptions.selectedIndex;
+      var selectedCoords = $scope.page.dropdowns.screenSizeOptions.options[selectedDropdownIndex].dimensions;
+      var stageCoords = {width: elem.getBoundingClientRect().width, height: elem.getBoundingClientRect().height};
+
+      var scaleXRatio = selectedCoords.width / stageCoords.width;
+      var scaleYRatio = selectedCoords.height / stageCoords.height;
+
+      var scaleString = " scale(" + scaleXRatio + ',' + scaleYRatio + ')'
+      console.log(scaleString);
+      elem.style.webkitTransform = scaleString;
+      elem.style.MozTransform = scaleString;
+      elem.style.msTransform = scaleString;
+      elem.style.OTransform = scaleString;
+      elem.style.transform = scaleString;
+
+    }
+
+
+    function storeTemplateToCache(template_url, elem) {
       var templateName = template_url.split('.html')[0];
-      $scope.page.compiledTemplates[templateName] = {pre: stageTemplateDiv};
+      $scope.page.compiledTemplates[templateName] = {pre: elem};
       $timeout(function() {
         var elem = document.querySelector('#stage-template-container')
         $scope.page.compiledTemplates[templateName].post = elem;
         processAllChildComponents(elem);
-      }, 5000)
+      }, 2000)
     }
 
     function processAllChildComponents(template) {
-      var elements = template.querySelectorAll('*')
-      var smallerElements = [];
-      var nestedElementDict = {};
-      var elementBlackList = ['g', 'path', 'tspan', 'circle', 'circle', 'rect', 'text', 'comment'];
-      for (var i = 0; i < elements.length; i++) {
-        var elementIndex = elements[i];
-        if (elementIndex.getBoundingClientRect && elementBlackList.indexOf(elementIndex.nodeName.toLowerCase()) === -1 ) {
-          var elemRectInfo = elementIndex.getBoundingClientRect()
-
-          if (elemRectInfo.height && elemRectInfo.height > 50 && elemRectInfo.height < 700 && elemRectInfo.width && elemRectInfo.width < 700 && elemRectInfo.width > 50) {
-            if (elementNotAChildOf(elementIndex, smallerElements)) {
-              smallerElements.push(elementIndex);
-              // console.log('HEIGHT:' + elemRectInfo.height, 'WIDTH:' + elemRectInfo.width, '\n\n', elementIndex, '\n\n');
-            }
-          }
-        }
+      $scope.page.components = [];
+      allAnimElem = template.querySelectorAll('[anim]');
+      for (var i = 0; i < allAnimElem.length; i++) {
+        ref = 'anim-elem-' + i;
+        allAnimElem[i].classList.add(ref);
+        var clonedNode = allAnimElem[i].cloneNode(true)
+        $scope.page.components.push(initComponentObj(clonedNode, allAnimElem[i], ref));
       }
+
+      $timeout(function() {
+        var allElems = document.querySelectorAll('.component-inject');
+        for (var i = 0; i < $scope.page.components.length; i++) {
+          var componentIndex = $scope.page.components[i];
+          var componentInjectDiv = allElems[i];
+          componentIndex.template.style.opacity = 1;
+          componentIndex.template.style.maxHeight = componentInjectDiv.getBoundingClientRect().height + 'px;'
+          componentIndex.template.style.maxWidth = componentInjectDiv.getBoundingClientRect().width + 'px;'
+          componentInjectDiv.appendChild(componentIndex.template);
+        }
+      }, 1000)
 
       function elementNotAChildOf(elem, arr_selected) {
         for (var i = 0; i < arr_selected.length; i++) {
@@ -145,7 +175,82 @@ angular.module('uguru.dev.controllers')
         }
         return true;
       }
+    }
 
+    function initComponentObj(cloned_elem, elem, selector) {
+      var initProperties = processComputedStyle(window.getComputedStyle(elem));
+      cloned_elem.removeAttribute('anim');
+      return {
+        name: cloned_elem.nodeName,
+        selector: selector,
+        template: cloned_elem,
+        properties: initProperties,
+        time_states: [],
+        addTimeState: function(component, time_state) {
+          // if (time_state.time && time_state.properties && time_state.properties.length) {
+            component.time_states.push(JSON.parse(JSON.stringify(time_state)));
+            time_state.time = null;
+            time_state.properties = [];
+          // }
+        },
+        addPropertyField: function(component, time_state) {
+          $scope.selectPropertyActivated = true;
+          $scope.component_selected = component;
+          console.log($scope.component_selected);
+          $scope.time_state_selected = time_state;
+        },
+        confirmPropertyField:function(component, time_state, property) {
+          if (time_state.properties) {
+            time_state.properties.push({name: property.name, value: 'absolute'})
+          }
+          $scope.selectPropertyActivated = false;
+          $scope.component_selected = null;
+        },
+        empty_time_state: {time:null, properties:[]}
+      }
+    }
+
+    $scope.playPageComponents = function() {
+
+      for (var i = 0; i < $scope.page.components.length; i++) {
+        var indexComponent = $scope.page.components[i];
+        var elemComponent = document.querySelectorAll('[anim].' + indexComponent.selector)[0];
+
+        for (var j = 0; j < indexComponent.time_states.length; j++) {
+          var indexTimeState = indexComponent.time_states[j];
+          applyComponentPropertiesAtTime(indexTimeState, elemComponent);
+        }
+      }
+
+      function applyComponentPropertiesAtTime(time_state, component) {
+        $timeout(function() {
+          for (var i = 0; i < time_state.properties.length; i++) {
+            console.log(time_state.properties[i], 'to be applied at time', time_state.time);
+            component.style[time_state.properties[i].name] = time_state.properties[i].value;
+          }
+        }, parseFloat(time_state.time))
+      }
+
+    }
+
+    function processComputedStyle(_dict) {
+      _dictKeys = Object.keys(_dict);
+      _filteredArrProps = [];
+      for (var i = 0; i < _dictKeys.length; i++) {
+        var indexKey = _dictKeys[i];
+        if (!isDigit(indexKey) && _dict[indexKey] && _dict[indexKey].toString().length) {
+          _filteredArrProps.push({name:indexKey, value:_dict[indexKey]})
+        }
+
+      }
+      _filteredArrProps.sort(function(prop1, prop2) {
+          return mostUsedCSSProperties.indexOf(prop1.name) - mostUsedCSSProperties.indexOf(prop2.name);
+      });
+      return _filteredArrProps.reverse();
+
+      function isDigit(str) {
+        /^\d+$/.test(str);
+      }
     }
 
     function evalSizeDropdownDefaultSelected() {
@@ -158,9 +263,7 @@ angular.module('uguru.dev.controllers')
 
 
     function onDomContentLoad() {
-        function closeLoaderCallback() {
-            LoadingService.hide();
-        }
+
         getRecentElementComponents(onDomContentLoad);
 
     }
