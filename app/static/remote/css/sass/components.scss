@@ -177,11 +177,11 @@ header:not(.desktop-header) {
 	}
 }
 // verified
-h1:not(.verified) {
-	span:nth-child(2) {
-		display: none;
-	}
-}
+// h1:not(.verified) {
+// 	span:nth-child(2) {
+// 		display: none;
+// 	}
+// }
 .verified {
 	@include flex;
 	@include flex-center;
@@ -458,6 +458,12 @@ button {
 	background: $shamrock;
 	&.normal {
 		width: auto;
+	}
+	&.width-300 {
+		width: 300px;
+	}
+	&.width-400 {
+		width: 400px;
 	}
 	&.height-54 {
 		height: 54px
@@ -2730,6 +2736,7 @@ input[type=range] {
 	margin: 0 auto;
 	background-position: center;
 	background-size: cover;
+	background-color: #E3E3E3;
 }
 .user-icon {
 	width: 128px;
@@ -2756,6 +2763,11 @@ input[type=range] {
 	height: 64px;
 	border: 3px solid white;
 }
+.user-icon-48 {
+	width: 48px;
+	height: 48px;
+	border: 3px solid white;
+}
 .user-icon-32 {
 	width: 32px;
 	height: 32px;
@@ -2776,12 +2788,12 @@ input[type=range] {
 }
 
 /* ---------- DROPDOWNS */
-.custom-dropdown, .dropdown {
+.dropdown {
 	position: relative;
 	> div {
 		@include flex;
 		@include flex-center;
-		span {
+		span, input {
 			@include flex;
 			@include flex-center;
 			width: 152px;
@@ -2790,6 +2802,13 @@ input[type=range] {
 			color: white;
 			font-size: 28px;
 			font-weight: 600;
+			text-align: center;
+		}
+		input {
+			&:hover, &:focus {
+				background: white;
+				color: $slate;
+			}
 		}
 		a {
 			display: block;
@@ -2864,6 +2883,19 @@ input[type=range] {
 			width: 100%;
 			li {
 				width: calc(100% - 48px);
+			}
+		}
+	}
+	&.number {
+		> div {
+			span, input {
+				width: 64px;
+			}
+		}
+		> ul {
+			width: calc(64px + 48px);
+			li {
+				width: 64px;
 			}
 		}
 	}
@@ -3834,6 +3866,7 @@ input[type=range] {
 .credit-card {
 	padding: 0!important;
 	background: none!important;
+	color: white!important;
 	.credit-card-inside {
 		@include flex;
 		@include flex-wrap;
@@ -3903,7 +3936,7 @@ input[type=range] {
 				right: 0;
 				background: white;
 				padding: 5px 10px;
-				border-radius: 0 10px 0 10px;
+				border-radius: 0 9px 0 10px;
 				color: #394851;
 				font-size: 14px;
 				font-weight: 600;
@@ -5455,6 +5488,7 @@ input[type=range] {
 .course-card {
 	display: block;
 	position: relative;
+	text-align: center;
 	> svg {
 		background: white;
 		border-radius: 2px;
@@ -5518,7 +5552,7 @@ input[type=range] {
 		font-size: 18px;
 		font-weight: 600;
 		border-radius: 0 2px 0 16px;
-		overdlow: hidden;
+		overflow: hidden;
 		span {
 			@include flex;
 			@include flex-center;
@@ -5530,6 +5564,7 @@ input[type=range] {
 			border-radius: 0 2px 0 16px;
 		}
 		svg {
+			z-index: 11;
 			display: block;
 			width: 100%;
 			height: 100%;
@@ -5546,6 +5581,7 @@ input[type=range] {
 		z-index: 10;
 		width: 100%;
 		height: 100%;
+		cursor: pointer;
 		~ .course-card-count {
 			@include opacity(0);
 			span {
@@ -5878,6 +5914,7 @@ a.course-card {
 		background: rgba(lighten($slate, 15%), .7);
 		border-radius: 2px;
 		border-top: 5px solid transparent;
+		border-bottom: 5px solid white;
 		.category-tile-icon {
 			@include round;
 			width: 72px;
@@ -6065,6 +6102,9 @@ a.course-card {
 		}
 	}
 	&.no-photo {
+		&:not([class*="bg-"]) {
+			background-color: lighten($slate, 15%);
+		}
 		.category-tile-inside {
 			background: none;
 			border-bottom-color: white;
@@ -6813,6 +6853,7 @@ a.category-tile {
 .credit-tile {
 	width: 100%;
 	max-width: 350px;
+	border-radius: 2px;
 	ul {
 		li {
 			&:first-child {
@@ -6829,6 +6870,9 @@ a.category-tile {
 					margin: 0 auto;
 					width: 100px;
 					height: 100px;
+					* {
+						stroke: white;
+					}
 				}
 			}
 			&:last-child {
@@ -6836,7 +6880,7 @@ a.category-tile {
 				text-align: center;
 				h1 {
 					padding-bottom: 15px;
-					font-size: 52px;
+					font-size: 36px;
 					font-weight: 600;
 				}
 				button {
@@ -8468,6 +8512,84 @@ a.category-tile {
 }
 
 /* ---------- ATTACHMENT LISTS */
+.attachment-list-small {
+	ul {
+		@include flex;
+		@include flex-wrap;
+		padding: 7.5px;
+		li {
+			padding: 7.5px;
+			> a, > span {
+				@include flex;
+				@include flex-center-vertical;
+				border-radius: 2px;
+				padding: 5px 10px 5px 5px;
+				span {
+					display: block;
+					&:nth-child(1) {
+						svg {
+							display: block;
+							width: 36px;
+							height: 36px;
+						}
+					}
+					&:nth-child(2) {
+						margin-left: 5px;
+						font-size: 16px;
+						font-weight: 600;
+					}
+				}
+			}
+		}
+	}
+	&.no-padding {
+		ul {
+			li {
+				> a, > span {
+					padding: 0;
+				}
+			}
+		}
+	}
+	&.student {
+		ul {
+			li {
+				> a, > span {
+					background: $smoke;
+					color: $slate;
+				}
+				> a {
+					&:hover, &:focus {
+						background: lighten($slate, 15%);
+						color: white;
+					}
+					&:active {
+						background: $lake;
+					}
+				}
+			}
+		}
+	}
+	&.guru {
+		ul {
+			li {
+				> a, > span {
+					background: lighten($slate, 15%);
+					color: white;
+				}
+				> a {
+					&:hover, &:focus {
+						background: $slate;
+						color: white;
+					}
+					&:active {
+						background: $shamrock;
+					}
+				}
+			}
+		}
+	}
+}
 .attachment-list {
 	width: 100%;
 	min-height: 100px;
@@ -8858,7 +8980,7 @@ a.category-tile {
 		}
 		input:checked + label {
 			span {
-				@include prefix(transform, translateX(-14px), webkit moz ms o);
+				@include prefix(transform, translateX(-18px), webkit moz ms o);
 			}
 			svg:first-child {
 				@include prefix(transform, translateX(24px), webkit moz ms o);
@@ -8895,7 +9017,46 @@ a.category-tile {
 			}
 		}
 	}
+	&.am-pm {
+		input + label {
+			background: mix($lake, $slate, 30%);
+			> span {
+				display: block;
+				position: relative;
+				height: 100%;
+				width: 50%;
+				padding: 0;
+				text-align: center;
+				> span {
+					@include prefix(transform, translate(0)!important, webkit moz ms o);
+					position: absolute;
+					display: block;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					padding: 0;
+				}
+			}
+			.am {
+				@include opacity(0);
+			}
+			.pm {
+				@include opacity(1);
+			}
+		}
+		input:checked + label {
+			background: $gold;
+			.am {
+				@include opacity(1);
+			}
+			.pm {
+				@include opacity(0);
+			}
+		}
+	}
 }
+
 
 /* ---------- CALENDAR & CALENDAR LEGEND */
 .cal-legend {

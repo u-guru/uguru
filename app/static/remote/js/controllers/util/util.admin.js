@@ -23,7 +23,7 @@ angular.module('uguru.util.controllers')
 				createObjects: AdminContent.getBaseObjects($scope),
 				defaults: {
 					tabsIndex: 1,
-					sidebarIndex: 0
+					sidebarIndex: 2
 				},
 				toggles: {
 					showAddState: false,
@@ -303,55 +303,25 @@ angular.module('uguru.util.controllers')
 				});
 
 				$scope.selected_scene = $scope.page.scenes[0];
-				$scope.selected_scene.tabIndex = 2;
-				var modalElem = document.querySelector('#cta-modal-selected-scene');
-				modalElem && modalElem.classList.add('show');
-				$scope.selected_scene = $scope.page.scenes[0];
-				$scope.selected_scene.tabIndex = 2;
-				// $scope.selected_scene.element_states.testing[0].substates = [
-				// 	{
-				// 		name: 'substate 1',
-				// 		// platforms: $scope.initAllPlatformDict(),
-				// 	},
-				// 	{
-				// 		name: 'substate 2',
-				// 		// platforms: $scope.initAllPlatformDict(),
-				// 	}
-				// ]
+				// $scope.selected_scene.tabIndex = 2;
+				// var modalElem = document.querySelector('#cta-modal-selected-scene');
+				// modalElem && modalElem.classList.add('show');
+				// $scope.selected_scene = $scope.page.scenes[0];
+				// $scope.selected_scene.tabIndex = 2;
 				if ($scope.selected_scene.element_states.testing && $scope.selected_scene.element_states.testing.length) {
 					for (var i = 0; i < $scope.selected_scene.element_states.testing.length; i++) {
 						var testStateIndex = $scope.selected_scene.element_states.testing[i];
-						console.log('it gets here');
 						if (testStateIndex && testStateIndex.substates && testStateIndex.substates.length) {
-							console.log('it gets here');
 							for (var j = 0; j < testStateIndex.substates.length; j++) {
 								var testSubstateIndex = testStateIndex.substates[j];
-								console.log('substate ' + j + ':', testSubstateIndex.name, testSubstateIndex.platforms);
 								if (testSubstateIndex && (!testSubstateIndex.platforms || !testSubstateIndex.platforms.length)) {
 									testSubstateIndex.platforms = $scope.initAllPlatformDict();
-									console.log(testSubstateIndex.platforms);
-									console.log('substate ' + j + ':', testSubstateIndex.name, testSubstateIndex.platforms, '\n');
 								}
 							}
 						}
 					}
 				}
 
-
-				// $scope.selected_scene = $scope.page.scenes[0];
-				// var elem = document.querySelector('#cta-modal-selected-scene');
-				// elem && elem.classList.add('show')
-				// })
-				// $timeout(function() {
-				// 	var allDemoElems = document.querySelectorAll('demo')
-				// 	for (var i = 0; i < allDemoElems.length; i++) {
-				// 		demoIndexElem = allDemoElems[i];
-
-				// 		$compile(demoIndexElem)($scope);
-
-				// 	}
-				// })
-				// })
 
 
 				console.log(response);
@@ -608,10 +578,6 @@ angular.module('uguru.util.controllers')
 			$scope.page.layout.sidebar.index = $scope.page.defaults.sidebarIndex;
 			$scope.page.layout.sections[$scope.page.layout.sidebar.index].tabs.index =  $scope.page.defaults.tabsIndex;
 			getAdminElements();
-
-
-			document.querySelector('')
-
 
 		}, 1000)
 	}

@@ -25,22 +25,24 @@ angular.module('uguru.util.controllers')
         }
       }
 
-      if ($scope.root.vars.university) {
-        $scope.university = $scope.root.vars.university;
-      }
-      if ($stateParams.universityObj && !$scope.root.vars.university) {
-        $scope.university = $stateParams.universityObj;
-      }
-      $timeout(function() {
-        var localCacheUniversity = $localstorage.getObject('university');
-        if (localCacheUniversity) {
 
-          $scope.university = localCacheUniversity;
-          $scope.root.vars.university = localCacheUniversity;
-          console.log('getting courses');
-          loadUniversityCourses($scope.university.id);
+      function retrieveCourses() {
+        if ($scope.root.vars.university) {
+          $scope.university = $scope.root.vars.university;
         }
-      });
+        if ($stateParams.universityObj && !$scope.root.vars.university) {
+          $scope.university = $stateParams.universityObj;
+        }
+        $timeout(function() {
+          var localCacheUniversity = $localstorage.getObject('university');
+          if (localCacheUniversity) {
+
+            $scope.university = localCacheUniversity;
+            $scope.root.vars.university = localCacheUniversity;
+            loadUniversityCourses($scope.university.id);
+          }
+        });
+      }
 
       var loadUniversityCourses = function(university_id) {
         if (!$scope.courses.length) {

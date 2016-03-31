@@ -1604,7 +1604,6 @@ angular.module('uguru.util.controllers')
       });
 
     }
-    console.log($scope.user)
     $scope.showComingSoon = function() {
       $scope.progress_active = true;
           $cordovaProgress.showText(false, "Coming Soon!", 'center');

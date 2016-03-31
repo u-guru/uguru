@@ -3,8 +3,8 @@
         <main>
             <nav class="build-main-top">
                 <dropdown ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
-                <div>
-                    <div>
+                <div>g
+                    <!-- <div>
                         <h2>Drag</h2>
                         <div class="toggle small bg-charcoal">
                             <input type="checkbox" checked />
@@ -17,7 +17,7 @@
                                 </svg>
                             </label>
                         </div>
-                    </div>
+                    </div> -->
                     <dropdown ng-model="page.dropdowns.screenSizeOptions"></dropdown>
                     <a class="build-main-settings" ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
                 </div>
@@ -230,11 +230,118 @@
                 </ul>
             </nav>
 
+            <div class='build-aside-center flex-wrap-center full-x relative' style='height:90%;'>
+                <div class='absolute bg-cerise full-xy top-0 left-0 high-z-index ugrid-4' ng-show="selectPropertyActivated">
+                    <a ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property)' class='txt-1 flex-wrap-center p20xy txt-white' ng-repeat='property in component_selected.properties'>{{property.name}} </a>
+                </div>
+                <ul class='full-x flex-wrap'>
+                    <li ng-repeat='component in page.components' class='full-x p20xy' style='border: 2px dashed white;'>
+                        <div class='full-x ugrid-2'>
+                            <div style='width:80%'>
+                                <div class='text-left uppercase weight-500'>
+                                    <h1> {{$index + 1}}. {{component.name}} <span class='opacity-50 weight-700'>{{component.selector}}</span> </h1>
+                                </div>
+                                <div class='full-x text-left uppercase weight-500 mtop10'>
+                                    <div class='txt-4 opacity-50 p10xy underline mtop10'>Time Properties</div>
+                                    <div class='ugrid-3 uppercase txt-3 p10xy uppercase weight-600 mtop20 text-center'>
+                                        <div style='border:1px dashed white;' class='p10xy text-left'> @ T = X </div>
+                                        <div  style='border:1px dashed white;'  class='p10xy'> Property Name </div>
+                                        <div  style='border:1px dashed white;' class='p10xy'> Value </div>
+                                    </div>
+                                    <div class='ugrid-3 uppercase txt-3 p10xy uppercase weight-600 mtop20 text-center' ng-if='component.time_states && component.time_states.length' ng-repeat='time_state in component.time_states'>
+                                        <div style='border:1px dashed white;min-height:75px;' class='p10xy text-left relative ugrid-2 flex-wrap-center'>
+                                            <div style='full-y text-right txt-4 flex-wrap flex-right'>
+                                                @ T = {{time_state.time}}
+                                            </div>
+                                        </div>
+                                        <div  style='border:1px dashed white;'  class='p10xy flex-wrap'>
+                                            <p class='txt-1 text-center full-x opacity-50' style='text-decoration:underline;'> Properties</p>
+                                            <ul class='p05xy full-x'>
+                                                <li ng-repeat='property in time_state.properties' class='p10y txt-1 txt-white' style='border-bottom: 1px dashed white; min-height:30px;'>
+                                                    <div class='bg-shamrock weight-300 txt-white' ng-if='property.type === "css_class"'>
+                                                        {{property.type || 'css'}}
+                                                    </div>
+
+                                                    <div class='bg-cerise weight-300 txt-white' ng-if='property.type === "css_text"'>
+                                                    {{property.type || 'css'}}
+                                                    </div>
+                                                    <div>
+                                                    {{property.name}}
+                                                    </div>
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div  style='border:1px dashed white;'  class='p10xy flex-wrap'>
+                                            <p class='txt-1 text-center full-x opacity-50' style='text-decoration:underline;'> Values</p>
+                                            <ul class='p05xy full-x'>
+                                                <li ng-repeat='property in time_state.properties' class='p10y txt-1 txt-white' style='border-bottom: 1px dashed white; min-height:30px;'>
+                                                    {{property.value}}
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+
+
+                                    <h1 class='txt-3 opacity-50'>
+                                        <a ng-click='component.addTimeState(component, component.empty_time_state)'> Add one </a>
+                                    </h1>
+                                    <div class='ugrid-3 uppercase txt-3 p10xy uppercase weight-600 mtop20 text-center'>
+                                        <div style='border:1px dashed white;min-height:75px;' class='p10xy text-left relative ugrid-2 flex-wrap-center'>
+                                            <div style='full-y text-right txt-4 flex-wrap flex-right'>
+                                                @ T =
+                                            </div>
+                                            <input  placeholder="time in s" class='full-y p05xy text-center txt-4 top-0 left-0' ng-model="component.empty_time_state.time">
+                                            </input>
+                                        </div>
+                                        <div  style='border:1px dashed white;'  class='p10xy flex-wrap'>
+                                            <p class='txt-1 text-center full-x opacity-50' style='text-decoration:underline;'> Properties</p>
+                                            <ul class='p05xy full-x'>
+                                                <li ng-repeat='property in component.empty_time_state.properties' class='p10y txt-1 txt-white' style='border-bottom: 1px dashed white; min-height:80px;'>
+                                                    {{property.name || 'sample property'}}
+                                                </li>
+                                            </ul>
+
+                                            <div class='lowercase'>
+                                                <a class='txt-1 text-center full-x' ng-click='component.addPropertyField(component, component.empty_time_state)'>
+                                                    Add CSS
+                                                </a>
+                                                <div class='p05xy txt-1 opacity-50'>or</div>
+                                                <dropdown ng-model="component.css_class_dropdown"></dropdown>
+                                            </div>
+                                        </div>
+                                        <div  style='border:1px dashed white;'  class='p10xy relative'>
+                                            <p class='txt-1 text-center opacity-50 full-x' style='text-decoration:underline;'>
+                                                Values
+                                            </p>
+                                            <ul class='p05xy full-x'>
+                                                <li ng-repeat='property in component.empty_time_state.properties' class='p10y txt-1 txt-white' style='border-bottom: 1px dashed white; min-height:80px;'>
+
+                                                    <input  placeholder="prop value" class='full-xy p05xy text-center txt-4 top-0 left-0' ng-model="property.value">
+                                                    </input>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class='full-x p10xy text-center txt-shamrock weight-600 uppercase' ng-click='component.addTimeState(component, component.empty_time_state)'>
+                                        Save
+                                    </div>
+                                </div>
+                            </div>
+                            <div style='width:20%;' class='component-inject'>
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
             <nav class="build-aside-bottom">
                 <ul>
                     <li><a class="build-add-element" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a></li>
                     <li><a ng-include="img_base + BASE + 'templates/svg/main/arrow.html'"></a></li>
-                    <li><a ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a></li>
+                    <li><a ng-click='playPageComponents()' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a></li>
                     <li><a ng-include="img_base + BASE + 'templates/svg/main/arrow.html'"></a></li>
                 </ul>
             </nav>
