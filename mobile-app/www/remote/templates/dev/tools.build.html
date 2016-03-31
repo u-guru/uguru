@@ -117,8 +117,11 @@
                                     <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.name}}</span>
                                 </div>
                                 <div>
-                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_class"'>&nbsp;</span>
+                                    <span ng-repeat='property in time_state.properties' class="radius-2 opacity-50" ng-if='property.type === "css_class"'>{{property.value}}</span>
                                     <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.value}}</span>
+                                </div>
+                                <div>
+                                    <a ng-repeat='property in time_state.properties'>&times;</a>
                                 </div>
                             </li>
                             <li>
@@ -126,12 +129,15 @@
                                 <div>
                                     <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_class"'>.{{property.name || 'sample property'}}</span>
                                     <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_text"'>{{property.name || 'sample property'}}</span>
-                                    <button class="bg-moxie" ng-click='component.addPropertyField(component, component.empty_time_state)'>CSS</button>
+                                    <button class="bg-campus" ng-click='component.addPropertyField(component, component.empty_time_state)'>CSS</button>
                                     <dropdown ng-model="component.css_class_dropdown"></dropdown>
                                 </div>
                                 <div>
                                     <input class="radius-2 opacity-50" disabled ng-repeat='property in component.empty_time_state.properties' placeholder="value" ng-model="property.value" ng-if='property.type === "css_class"'/>
                                     <input class="radius-2" ng-repeat='property in component.empty_time_state.properties' placeholder="value" ng-model="property.value" ng-if='property.type === "css_text"'/>
+                                </div>
+                                <div>
+                                    <a ng-repeat='property in component.empty_time_state.properties'>&times;</a>
                                 </div>
                                 <div class="full-x">
                                     <button class='bg-moxie height-36 txt-20 radius-2' ng-click='component.addTimeState(component, component.empty_time_state)'>Save</button>
