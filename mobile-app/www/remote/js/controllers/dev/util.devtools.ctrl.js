@@ -14,6 +14,8 @@ angular.module('uguru.dev.controllers')
   '$sce',
   function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce) {
 
+    var classes = ['animated', 'bounceInUp', 'bounceInDown'];
+
     $scope.elements = [];
     $scope.page = {dropdowns:{}, toggles:{}};
     $scope.page.toggles = {add_component: false};
@@ -22,6 +24,25 @@ angular.module('uguru.dev.controllers')
     $scope.page.dropdowns.screenSizeOptions = {label:'autoscale @ 1.5x', onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
     var mostUsedCSSProperties = ["transform", "-webkit-transform", "opacity", "-webkit-animation-name", "animation-name", "-webkit-animation-timing-function", "animation-timing-function", "-webkit-transform-origin", "transform-origin", "visibility", "backface-visibility", "-webkit-backface-visibility", "animation-duration", "-webkit-animation-duration", "-webkit-animation-fill-mode", "-webkit-animation-iteration-count", "animation-iteration-count", "animation-fill-mode", "z-index", "width", "visibility", "top", "float", "position", "margin", "left", "height", "background", "background-color", "display", "border", "color", "padding", "float"];
+
+    function generateTimeStateProperty(option, index) {
+      var css_class = option._class;
+
+      option.component.confirmPropertyField(option.component, option.component.empty_time_state, {name: css_class}, 'css_class', '--');
+    }
+
+
+    function generateCSSClassOptions(classes_arr, component) {
+      var resultOptionsArr = [];
+      for (var i = 0; i < classes_arr.length; i++) {
+        var indexClass = classes_arr[i];
+        resultOptionsArr.push({
+          _class: indexClass,
+          component: component
+        });
+      }
+      return resultOptionsArr
+    }
 
     function getRecentElementComponents(callback) {
         Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(
@@ -148,7 +169,9 @@ angular.module('uguru.dev.controllers')
         ref = 'anim-elem-' + i;
         allAnimElem[i].classList.add(ref);
         var clonedNode = allAnimElem[i].cloneNode(true)
-        $scope.page.components.push(initComponentObj(clonedNode, allAnimElem[i], ref));
+        var componentObj = initComponentObj(clonedNode, allAnimElem[i], ref);
+        componentObj.css_class_dropdown = {label:'select class', key:'_class', options:generateCSSClassOptions(classes, componentObj), onOptionClick:generateTimeStateProperty, size:'small', selectedIndex:0},
+        $scope.page.components.push(componentObj);
       }
 
       $timeout(function() {
@@ -186,7 +209,7 @@ angular.module('uguru.dev.controllers')
         template: cloned_elem,
         properties: initProperties,
         time_states: [],
-        addTimeState: function(component, time_state) {
+        addTimeState: function(component, time_state, c) {
           // if (time_state.time && time_state.properties && time_state.properties.length) {
             component.time_states.push(JSON.parse(JSON.stringify(time_state)));
             time_state.time = null;
@@ -199,9 +222,9 @@ angular.module('uguru.dev.controllers')
           console.log($scope.component_selected);
           $scope.time_state_selected = time_state;
         },
-        confirmPropertyField:function(component, time_state, property) {
+        confirmPropertyField:function(component, time_state, property, _type, value) {
           if (time_state.properties) {
-            time_state.properties.push({name: property.name, value: 'absolute'})
+            time_state.properties.push({name: property.name, type: _type ||'css_text', value: value || 'absolute'})
           }
           $scope.selectPropertyActivated = false;
           $scope.component_selected = null;
@@ -225,8 +248,13 @@ angular.module('uguru.dev.controllers')
       function applyComponentPropertiesAtTime(time_state, component) {
         $timeout(function() {
           for (var i = 0; i < time_state.properties.length; i++) {
-            console.log(time_state.properties[i], 'to be applied at time', time_state.time);
-            component.style[time_state.properties[i].name] = time_state.properties[i].value;
+            if (time_state.properties[i].type === 'css_text') {
+              console.log('applying css text', time_state.properties[i].name, time_state.properties[i].value);
+              component.style[time_state.properties[i].name] = time_state.properties[i].value;
+            } else if (time_state.properties[i].type === 'css_class') {
+              console.log('adding css class', time_state.properties[i].name);
+              component.classList.add(time_state.properties[i].name);
+            }
           }
         }, parseFloat(time_state.time))
       }

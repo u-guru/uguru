@@ -258,7 +258,17 @@
                                             <p class='txt-1 text-center full-x opacity-50' style='text-decoration:underline;'> Properties</p>
                                             <ul class='p05xy full-x'>
                                                 <li ng-repeat='property in time_state.properties' class='p10y txt-1 txt-white' style='border-bottom: 1px dashed white; min-height:30px;'>
+                                                    <div class='bg-shamrock weight-300 txt-white' ng-if='property.type === "css_class"'>
+                                                        {{property.type || 'css'}}
+                                                    </div>
+
+                                                    <div class='bg-cerise weight-300 txt-white' ng-if='property.type === "css_text"'>
+                                                    {{property.type || 'css'}}
+                                                    </div>
+                                                    <div>
                                                     {{property.name}}
+                                                    </div>
+
                                                 </li>
                                             </ul>
                                         </div>
@@ -292,9 +302,14 @@
                                                     {{property.name || 'sample property'}}
                                                 </li>
                                             </ul>
-                                            <a class='txt-1 text-center full-x' ng-click='component.addPropertyField(component, component.empty_time_state)'>
-                                                +
-                                            </a>
+
+                                            <div class='lowercase'>
+                                                <a class='txt-1 text-center full-x' ng-click='component.addPropertyField(component, component.empty_time_state)'>
+                                                    Add CSS
+                                                </a>
+                                                <div class='p05xy txt-1 opacity-50'>or</div>
+                                                <dropdown ng-model="component.css_class_dropdown"></dropdown>
+                                            </div>
                                         </div>
                                         <div  style='border:1px dashed white;'  class='p10xy relative'>
                                             <p class='txt-1 text-center opacity-50 full-x' style='text-decoration:underline;'>
