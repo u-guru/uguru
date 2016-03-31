@@ -122,7 +122,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div><span class="radius-2-left">@T</span><input class="radius-2-right" type="tel" ng-model="component.empty_time_state.time"/></div>
+                                <div><span class="radius-2-left">@T</span><input class="radius-2-right" type="tel" ng-model="component.empty_time_state.time" placeholder="time"/></div>
                                 <div>
                                     <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_class"'>.{{property.name || 'sample property'}}</span>
                                     <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_text"'>{{property.name || 'sample property'}}</span>
