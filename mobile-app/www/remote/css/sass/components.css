@@ -3661,8 +3661,14 @@ input[type=range]:focus::-ms-fill-upper {
 
 /* ---------- COLOR DROPDOWNS */
 .dropdown-color {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
   position: relative;
-  width: 198px;
 }
 
 .dropdown-color:after {
@@ -4241,9 +4247,10 @@ input[type=range]:focus::-ms-fill-upper {
   -o-transform-origin: top center;
   transform-origin: top center;
   position: absolute;
-  left: 0;
   top: 58px;
-  width: 100%;
+  width: 198px;
+  left: 50%;
+  margin-left: -99px;
 }
 
 .dropdown-color > div:not(.visible) {

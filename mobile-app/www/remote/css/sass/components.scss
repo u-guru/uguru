@@ -2948,8 +2948,8 @@ input[type=range] {
 
 /* ---------- COLOR DROPDOWNS */
 .dropdown-color {
+	@include flex;
 	position: relative;
-	width: 198px;
 	&:after {
 		content: "";
 		display: block;
@@ -3382,9 +3382,10 @@ input[type=range] {
 	> div {
 		@include prefix(transform-origin, top center, webkit moz ms o);
 		position: absolute;
-		left: 0;
 		top: 58px;
-		width: 100%;
+		width: 198px;
+		left: 50%;
+		margin-left: -99px;
 		&:not(.visible) {
 			@include prefix(transform, translateY(-50%) translateZ(0) scaleY(0), webkit moz ms o);
 			@include opacity(0);
