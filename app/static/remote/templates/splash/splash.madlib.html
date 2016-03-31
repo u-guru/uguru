@@ -234,58 +234,5 @@
             <!-- mobile-->
             <button ng-click='lockFilledBlanksAndgetUniversityPlaces(selectedUniversity)' class="button-find-guru splash-mobile-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|activate, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.splash-device-search|activate, a:inject.coach-help-mobile|hide, a:inject.splash-adlib|a, a:inject.splash-adlib ul|clear, a:inject.splash-adlib|bounceOutUp:animOut, null:inject.splash-hero-progress|activate, null:inject.splash-hero-progress span|animate">Find My Guru</button>
         </section>
-
-        <section ng-if="false" id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
-            <div class='header-swipers opacity-0' activate-on-class="a" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, null:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700" class-on-clear="slideOutUp:animOut">
-                <div class="swiper-container header-swiper-back-2 swiper-container-vertical swiper-container-3d swiper-container-coverflow opacity-0">
-                    <div class="swiper-wrapper" style="transform: translate3d(0px, 20px, 0px); transition-duration: 0ms;">
-                        <div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-bottom: 100px;"></div>
-                        <div class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -117.241px) rotateX(58.6207deg) rotateY(0deg); z-index: 0; transition-duration: 0ms; margin-bottom: 100px;"></div>
-                        <div class="swiper-slide" style="transform: translate3d(0px, 0px, -234.483px) rotateX(117.241deg) rotateY(0deg); z-index: -1; transition-duration: 0ms; margin-bottom: 100px;"></div>
-                        <div class="swiper-slide" style="transform: translate3d(0px, 0px, -351.724px) rotateX(175.862deg) rotateY(0deg); z-index: -3; transition-duration: 0ms; margin-bottom: 100px;"></div>
-                    </div>
-                </div>
-                <div class="swiper-container header-swiper-back-1 swiper-container-horizontal swiper-container-3d swiper-container-coverflow opacity-0">
-                    <div class="swiper-wrapper" style="transform: translate3d(236px, 0px, 0px); transition-duration: 0ms;">
-                        <div class="swiper-slide swiper-slide-active" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg); z-index: 1; transition-duration: 0ms; margin-right: 300px;"></div>
-                        <div class="swiper-slide swiper-slide-next" style="transform: translate3d(0px, 0px, -135.714px) rotateX(0deg) rotateY(-67.8571deg); z-index: 0; transition-duration: 0ms; margin-right: 300px;"></div>
-                        <div class="swiper-slide" style="transform: translate3d(0px, 0px, -271.429px) rotateX(0deg) rotateY(-135.714deg); z-index: -2; transition-duration: 0ms; margin-right: 300px;"></div>
-                        <div class="swiper-slide" style="transform: translate3d(0px, 0px, -407.143px) rotateX(0deg) rotateY(-203.571deg); z-index: -3; transition-duration: 0ms; margin-right: 300px;"></div>
-                    </div>
-                </div>
-                <div class='main-swipers-container swiper-headers'>
-                    <div class="swiper-container header-swiper-front swiper-container-horizontal swiper-container-3d swiper-container-coverflow">
-                        <!-- pagination -->
-                        <div class="swiper-pagination swiper-pagination-white swiper-pagination-clickable swiper-pagination-bullets opacity-0" style="visibility: hidden">
-                            <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span>
-                            <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span>
-                        </div>
-                        <!-- next buttons -->
-                        <div class="swiper-button-next swiper-button-white" aria-disabled="false" tabindex="0" role="button" aria-label="Next slide"></div>
-                        <div class="swiper-button-prev swiper-button-white swiper-button-disabled" aria-disabled="true" tabindex="0" role="button" aria-label="Previous slide"></div>
-                        <a class='absolute top-0 uppercase weight-700 text-center full-x left-0 opacity-50 p20xy' ng-if='page.swipers.main.slides.length <= 1' ng-click="closeSingleProjector()">
-                            <i style='font-size:100%; left:10px;' class='icon ion-chevron-up'> </i>
-                        </a>
-                        <div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
-                            <!-- Slide # 1-->
-                            <!-- how it works -->
-                            <div id='slide-1' class="swiper-slide" activate-on-class="activate" class-on-activate="null:inject#how-it-works|activate">
-                                <svg class="projector-line top" width="2px" height="196px" viewBox="0 0 4 392">
-                                    <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
-                                </svg>
-                                <a bind-wp="s2_top" id='desktop-projector-up-link' bind-wp-class="activate, clear" bind-wp-direction="down, up" class-on-activate="fadeInDown:anim" class-on-activate-delay="600" class-on-clear="fadeOutUp:animOut" ng-click='scrollToSection("#home-splash")'>
-                                    <svg class="projector-handle active" ng-class="{'show': projectorPullActivated}" ng-show='projectorPullActivated' width="61px" height="24px" viewBox="0 0 122 48">
-                                        <path d="M116.813759,2 L119.407837,16.1511345 C121.400182,27.0197169 114.265024,37.7105153 103.431627,39.9081948 C103.431627,39.9081948 77.5373297,46 60.9999232,46 C44.4625167,46 18.5495835,39.9045365 18.5495835,39.9045365 C7.74411375,37.6544772 0.597741646,27.0302069 2.59200971,16.1511345 L5.18608711,2" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                </a>
-                                <div class="projector-top"></div>
-
-                                <div id="hiw" class="projector-content" ng-include="::img_base + BASE + 'templates/splash.hiw.html'" ng-controller="HowItWorksController">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div ng-include="img_base + 'templates/splash/projector.swiper.html'"> </div>
 </main>

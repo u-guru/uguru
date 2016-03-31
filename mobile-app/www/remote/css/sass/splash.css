@@ -1571,6 +1571,263 @@
               stroke-linejoin: round; }
           .splash-landing #splash-hero-nav-mobile .splash-hero-nav-category ul li span:last-child {
             padding-top: 5px; }
+  .splash-landing .splash-hero-nav {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    right: 0; }
+    .splash-landing .splash-hero-nav a, .splash-landing .splash-hero-nav h2 {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-align-items: center;
+      align-items: center;
+      padding: 0 10px;
+      height: 48px;
+      font-weight: 600;
+      font-size: 18px; }
+    .splash-landing .splash-hero-nav a {
+      position: relative; }
+      .splash-landing .splash-hero-nav a .splash-hero-nav-link-bg {
+        filter: alpha(opacity=80);
+        opacity: 0.8;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; }
+      .splash-landing .splash-hero-nav a:hover .splash-hero-nav-link-bg, .splash-landing .splash-hero-nav a:focus .splash-hero-nav-link-bg {
+        filter: alpha(opacity=100);
+        opacity: 1; }
+      .splash-landing .splash-hero-nav a.bg-delivery {
+        background: rgba(240, 79, 84, 0.8); }
+        .splash-landing .splash-hero-nav a.bg-delivery:hover, .splash-landing .splash-hero-nav a.bg-delivery:focus {
+          background: #F04F54; }
+      .splash-landing .splash-hero-nav a.bg-freelancing {
+        background: rgba(229, 117, 60, 0.8); }
+        .splash-landing .splash-hero-nav a.bg-freelancing:hover, .splash-landing .splash-hero-nav a.bg-freelancing:focus {
+          background: #E5753C; }
+      .splash-landing .splash-hero-nav a.bg-baking {
+        background: rgba(246, 198, 78, 0.8); }
+        .splash-landing .splash-hero-nav a.bg-baking:hover, .splash-landing .splash-hero-nav a.bg-baking:focus {
+          background: #F6C64E; }
+      .splash-landing .splash-hero-nav a.bg-photography {
+        background: rgba(129, 181, 102, 0.8); }
+        .splash-landing .splash-hero-nav a.bg-photography:hover, .splash-landing .splash-hero-nav a.bg-photography:focus {
+          background: #81B566; }
+      .splash-landing .splash-hero-nav a.bg-tech {
+        background: rgba(85, 164, 183, 0.8); }
+        .splash-landing .splash-hero-nav a.bg-tech:hover, .splash-landing .splash-hero-nav a.bg-tech:focus {
+          background: #55A4B7; }
+      .splash-landing .splash-hero-nav a.bg-household {
+        background: rgba(120, 114, 227, 0.8); }
+        .splash-landing .splash-hero-nav a.bg-household:hover, .splash-landing .splash-hero-nav a.bg-household:focus {
+          background: #7872e3; }
+      .splash-landing .splash-hero-nav a.bg-athletic {
+        background: rgba(154, 91, 197, 0.8); }
+        .splash-landing .splash-hero-nav a.bg-athletic:hover, .splash-landing .splash-hero-nav a.bg-athletic:focus {
+          background: #9A5BC5; }
+      .splash-landing .splash-hero-nav a.bg-academic {
+        background: rgba(230, 56, 155, 0.8); }
+        .splash-landing .splash-hero-nav a.bg-academic:hover, .splash-landing .splash-hero-nav a.bg-academic:focus {
+          background: #e6389b; }
+      .splash-landing .splash-hero-nav a.bg-shamrock:hover, .splash-landing .splash-hero-nav a.bg-shamrock:focus {
+        background: #6f7d82; }
+    .splash-landing .splash-hero-nav > div > div {
+      position: relative; }
+      .splash-landing .splash-hero-nav > div > div > a {
+        z-index: 1;
+        padding: 0 12px 0 15px;
+        border: 2px solid white;
+        border-radius: 2px; }
+        .splash-landing .splash-hero-nav > div > div > a svg {
+          fill: none;
+          stroke: white;
+          stroke-width: 10px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          display: block;
+          margin-left: 5px;
+          width: 24px;
+          height: 24px; }
+      .splash-landing .splash-hero-nav > div > div > div {
+        -webkit-transition: 150ms ease-in-out;
+        -moz-transition: 150ms ease-in-out;
+        -ms-transition: 150ms ease-in-out;
+        -o-transition: 150ms ease-in-out;
+        transition: 150ms ease-in-out;
+        -webkit-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+        transform: translateY(-100%);
+        position: absolute;
+        left: 50%;
+        margin-left: -99px;
+        top: 58px;
+        width: 198px; }
+        .splash-landing .splash-hero-nav > div > div > div:not(.visible) {
+          filter: alpha(opacity=0);
+          opacity: 0;
+          visibility: hidden; }
+        .splash-landing .splash-hero-nav > div > div > div.visible {
+          filter: alpha(opacity=100);
+          opacity: 1;
+          -webkit-transform: translateY(0);
+          -moz-transform: translateY(0);
+          -ms-transform: translateY(0);
+          -o-transform: translateY(0);
+          transform: translateY(0); }
+        .splash-landing .splash-hero-nav > div > div > div > svg {
+          position: relative;
+          z-index: 5; }
+        .splash-landing .splash-hero-nav > div > div > div ul {
+          margin-top: -6px; }
+          .splash-landing .splash-hero-nav > div > div > div ul li {
+            position: relative;
+            height: 48px;
+            border: 2px solid white;
+            border-top: 0;
+            font-size: 18px;
+            font-weight: 600; }
+            .splash-landing .splash-hero-nav > div > div > div ul li:first-child {
+              border-top-left-radius: 2px;
+              border-top-right-radius: 2px; }
+            .splash-landing .splash-hero-nav > div > div > div ul li:last-child {
+              border-bottom-left-radius: 2px;
+              border-bottom-right-radius: 2px; }
+            .splash-landing .splash-hero-nav > div > div > div ul li:not(:first-child) a + .arrow {
+              display: none; }
+            .splash-landing .splash-hero-nav > div > div > div ul li a {
+              -ms-box-orient: horizontal;
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -moz-flex;
+              display: -webkit-flex;
+              display: flex;
+              -webkit-flex-direction: row;
+              flex-direction: row;
+              -webkit-align-items: center;
+              align-items: center;
+              -webkit-align-content: center;
+              align-content: center;
+              -webkit-justify-content: center;
+              justify-content: center;
+              height: 100%;
+              width: 100%;
+              padding: 0 15px; }
+              .splash-landing .splash-hero-nav > div > div > div ul li a svg {
+                fill: none;
+                stroke: white;
+                stroke-width: 10px;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                display: none;
+                margin-left: 5px;
+                width: 24px;
+                height: 24px; }
+              .splash-landing .splash-hero-nav > div > div > div ul li a.active svg {
+                display: block; }
+              .splash-landing .splash-hero-nav > div > div > div ul li a + .arrow {
+                position: absolute;
+                left: 50%;
+                -webkit-transform: translateX(-50%);
+                -moz-transform: translateX(-50%);
+                -ms-transform: translateX(-50%);
+                -o-transform: translateX(-50%);
+                transform: translateX(-50%);
+                display: block;
+                top: -13px;
+                width: 30px;
+                height: 15px; }
+                .splash-landing .splash-hero-nav > div > div > div ul li a + .arrow.school path {
+                  filter: alpha(opacity=80);
+                  opacity: 0.8; }
+                .splash-landing .splash-hero-nav > div > div > div ul li a + .arrow path {
+                  -webkit-transition: all 150ms ease-in-out;
+                  -moz-transition: all 150ms ease-in-out;
+                  -ms-transition: all 150ms ease-in-out;
+                  -o-transition: all 150ms ease-in-out;
+                  transition: all 150ms ease-in-out; }
+                .splash-landing .splash-hero-nav > div > div > div ul li a + .arrow.bg-delivery path {
+                  fill: rgba(240, 79, 84, 0.8); }
+                .splash-landing .splash-hero-nav > div > div > div ul li a + .arrow.bg-freelancing path {
+                  fill: rgba(229, 117, 60, 0.8); }
+                .splash-landing .splash-hero-nav > div > div > div ul li a + .arrow.bg-baking path {
+                  fill: rgba(246, 198, 78, 0.8); }
+                .splash-landing .splash-hero-nav > div > div > div ul li a + .arrow.bg-photography path {
+                  fill: rgba(129, 181, 102, 0.8); }
+                .splash-landing .splash-hero-nav > div > div > div ul li a + .arrow.bg-tech {
+                  background: none !important; }
+                  .splash-landing .splash-hero-nav > div > div > div ul li a + .arrow.bg-tech path {
+                    fill: rgba(85, 164, 183, 0.8); }
+                .splash-landing .splash-hero-nav > div > div > div ul li a + .arrow.bg-household path {
+                  fill: rgba(120, 114, 227, 0.8); }
+                .splash-landing .splash-hero-nav > div > div > div ul li a + .arrow.bg-athletic path {
+                  fill: rgba(154, 91, 197, 0.8); }
+                .splash-landing .splash-hero-nav > div > div > div ul li a + .arrow.bg-academic path {
+                  fill: rgba(230, 56, 155, 0.8); }
+              .splash-landing .splash-hero-nav > div > div > div ul li a:hover + .arrow.school path, .splash-landing .splash-hero-nav > div > div > div ul li a:focus + .arrow.school path {
+                filter: alpha(opacity=100);
+                opacity: 1; }
+              .splash-landing .splash-hero-nav > div > div > div ul li a:hover + .arrow.bg-delivery path, .splash-landing .splash-hero-nav > div > div > div ul li a:focus + .arrow.bg-delivery path {
+                fill: #F04F54; }
+              .splash-landing .splash-hero-nav > div > div > div ul li a:hover + .arrow.bg-freelancing path, .splash-landing .splash-hero-nav > div > div > div ul li a:focus + .arrow.bg-freelancing path {
+                fill: #E5753C; }
+              .splash-landing .splash-hero-nav > div > div > div ul li a:hover + .arrow.bg-baking path, .splash-landing .splash-hero-nav > div > div > div ul li a:focus + .arrow.bg-baking path {
+                fill: #F6C64E; }
+              .splash-landing .splash-hero-nav > div > div > div ul li a:hover + .arrow.bg-photography path, .splash-landing .splash-hero-nav > div > div > div ul li a:focus + .arrow.bg-photography path {
+                fill: #81B566; }
+              .splash-landing .splash-hero-nav > div > div > div ul li a:hover + .arrow.bg-tech path, .splash-landing .splash-hero-nav > div > div > div ul li a:focus + .arrow.bg-tech path {
+                fill: #55A4B7; }
+              .splash-landing .splash-hero-nav > div > div > div ul li a:hover + .arrow.bg-household path, .splash-landing .splash-hero-nav > div > div > div ul li a:focus + .arrow.bg-household path {
+                fill: #7872e3; }
+              .splash-landing .splash-hero-nav > div > div > div ul li a:hover + .arrow.bg-athletic path, .splash-landing .splash-hero-nav > div > div > div ul li a:focus + .arrow.bg-athletic path {
+                fill: #9A5BC5; }
+              .splash-landing .splash-hero-nav > div > div > div ul li a:hover + .arrow.bg-academic path, .splash-landing .splash-hero-nav > div > div > div ul li a:focus + .arrow.bg-academic path {
+                fill: #e6389b; }
+              .splash-landing .splash-hero-nav > div > div > div ul li a:hover + .arrow.bg-cal path, .splash-landing .splash-hero-nav > div > div > div ul li a:focus + .arrow.bg-cal path {
+                fill: #003057; }
+    .splash-landing .splash-hero-nav.desktop {
+      width: 100%;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: flex-end;
+      justify-content: flex-end;
+      position: absolute;
+      left: 0;
+      top: 0; }
+    .splash-landing .splash-hero-nav.mobile > div > a {
+      border: 0; }
   .splash-landing > section {
     position: relative;
     width: 100%;
@@ -1686,247 +1943,6 @@
         @media screen and (min-width: 860px) {
           .splash-landing > section.splash-hero .splash-header {
             height: 70px !important; } }
-      .splash-landing > section.splash-hero .splash-hero-nav {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-align-items: center;
-        align-items: center;
-        position: fixed;
-        z-index: 1001;
-        top: 0;
-        right: 0; }
-        .splash-landing > section.splash-hero .splash-hero-nav a, .splash-landing > section.splash-hero .splash-hero-nav h2 {
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-align-content: center;
-          align-content: center;
-          -webkit-align-items: center;
-          align-items: center;
-          padding: 0 10px;
-          height: 48px;
-          font-weight: 600;
-          font-size: 18px; }
-        .splash-landing > section.splash-hero .splash-hero-nav a {
-          position: relative; }
-          .splash-landing > section.splash-hero .splash-hero-nav a .splash-hero-nav-link-bg {
-            filter: alpha(opacity=80);
-            opacity: 0.8;
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; }
-          .splash-landing > section.splash-hero .splash-hero-nav a:hover .splash-hero-nav-link-bg, .splash-landing > section.splash-hero .splash-hero-nav a:focus .splash-hero-nav-link-bg {
-            filter: alpha(opacity=100);
-            opacity: 1; }
-          .splash-landing > section.splash-hero .splash-hero-nav a.bg-delivery {
-            background: rgba(240, 79, 84, 0.8); }
-            .splash-landing > section.splash-hero .splash-hero-nav a.bg-delivery:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-delivery:focus {
-              background: #F04F54; }
-          .splash-landing > section.splash-hero .splash-hero-nav a.bg-freelancing {
-            background: rgba(229, 117, 60, 0.8); }
-            .splash-landing > section.splash-hero .splash-hero-nav a.bg-freelancing:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-freelancing:focus {
-              background: #E5753C; }
-          .splash-landing > section.splash-hero .splash-hero-nav a.bg-baking {
-            background: rgba(246, 198, 78, 0.8); }
-            .splash-landing > section.splash-hero .splash-hero-nav a.bg-baking:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-baking:focus {
-              background: #F6C64E; }
-          .splash-landing > section.splash-hero .splash-hero-nav a.bg-photography {
-            background: rgba(129, 181, 102, 0.8); }
-            .splash-landing > section.splash-hero .splash-hero-nav a.bg-photography:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-photography:focus {
-              background: #81B566; }
-          .splash-landing > section.splash-hero .splash-hero-nav a.bg-tech {
-            background: rgba(85, 164, 183, 0.8); }
-            .splash-landing > section.splash-hero .splash-hero-nav a.bg-tech:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-tech:focus {
-              background: #55A4B7; }
-          .splash-landing > section.splash-hero .splash-hero-nav a.bg-household {
-            background: rgba(120, 114, 227, 0.8); }
-            .splash-landing > section.splash-hero .splash-hero-nav a.bg-household:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-household:focus {
-              background: #7872e3; }
-          .splash-landing > section.splash-hero .splash-hero-nav a.bg-athletic {
-            background: rgba(154, 91, 197, 0.8); }
-            .splash-landing > section.splash-hero .splash-hero-nav a.bg-athletic:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-athletic:focus {
-              background: #9A5BC5; }
-          .splash-landing > section.splash-hero .splash-hero-nav a.bg-academic {
-            background: rgba(230, 56, 155, 0.8); }
-            .splash-landing > section.splash-hero .splash-hero-nav a.bg-academic:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-academic:focus {
-              background: #e6389b; }
-          .splash-landing > section.splash-hero .splash-hero-nav a.bg-shamrock:hover, .splash-landing > section.splash-hero .splash-hero-nav a.bg-shamrock:focus {
-            background: #6f7d82; }
-        .splash-landing > section.splash-hero .splash-hero-nav > div {
-          position: relative; }
-          .splash-landing > section.splash-hero .splash-hero-nav > div > a {
-            z-index: 1;
-            padding: 0 12px 0 15px;
-            border: 2px solid white;
-            border-radius: 2px; }
-            .splash-landing > section.splash-hero .splash-hero-nav > div > a svg {
-              fill: none;
-              stroke: white;
-              stroke-width: 10px;
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              display: block;
-              margin-left: 5px;
-              width: 24px;
-              height: 24px; }
-          .splash-landing > section.splash-hero .splash-hero-nav > div > div {
-            -webkit-transition: 150ms ease-in-out;
-            -moz-transition: 150ms ease-in-out;
-            -ms-transition: 150ms ease-in-out;
-            -o-transition: 150ms ease-in-out;
-            transition: 150ms ease-in-out;
-            -webkit-transform: translateY(-100%);
-            -moz-transform: translateY(-100%);
-            -ms-transform: translateY(-100%);
-            -o-transform: translateY(-100%);
-            transform: translateY(-100%);
-            position: absolute;
-            left: 50%;
-            margin-left: -99px;
-            top: 58px;
-            width: 198px; }
-            .splash-landing > section.splash-hero .splash-hero-nav > div > div:not(.visible) {
-              filter: alpha(opacity=0);
-              opacity: 0;
-              visibility: hidden; }
-            .splash-landing > section.splash-hero .splash-hero-nav > div > div.visible {
-              filter: alpha(opacity=100);
-              opacity: 1;
-              -webkit-transform: translateY(0);
-              -moz-transform: translateY(0);
-              -ms-transform: translateY(0);
-              -o-transform: translateY(0);
-              transform: translateY(0); }
-            .splash-landing > section.splash-hero .splash-hero-nav > div > div > svg {
-              position: relative;
-              z-index: 5; }
-            .splash-landing > section.splash-hero .splash-hero-nav > div > div ul {
-              margin-top: -6px; }
-              .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li {
-                position: relative;
-                height: 48px;
-                border: 2px solid white;
-                border-top: 0;
-                font-size: 18px;
-                font-weight: 600; }
-                .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li:first-child {
-                  border-top-left-radius: 2px;
-                  border-top-right-radius: 2px; }
-                .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li:last-child {
-                  border-bottom-left-radius: 2px;
-                  border-bottom-right-radius: 2px; }
-                .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li:not(:first-child) a + .arrow {
-                  display: none; }
-                .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a {
-                  -ms-box-orient: horizontal;
-                  display: -webkit-box;
-                  display: -moz-box;
-                  display: -ms-flexbox;
-                  display: -moz-flex;
-                  display: -webkit-flex;
-                  display: flex;
-                  -webkit-flex-direction: row;
-                  flex-direction: row;
-                  -webkit-align-items: center;
-                  align-items: center;
-                  -webkit-align-content: center;
-                  align-content: center;
-                  -webkit-justify-content: center;
-                  justify-content: center;
-                  height: 100%;
-                  width: 100%;
-                  padding: 0 15px; }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a svg {
-                    fill: none;
-                    stroke: white;
-                    stroke-width: 10px;
-                    stroke-linecap: round;
-                    stroke-linejoin: round;
-                    display: none;
-                    margin-left: 5px;
-                    width: 24px;
-                    height: 24px; }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a.active svg {
-                    display: block; }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow {
-                    position: absolute;
-                    left: 50%;
-                    -webkit-transform: translateX(-50%);
-                    -moz-transform: translateX(-50%);
-                    -ms-transform: translateX(-50%);
-                    -o-transform: translateX(-50%);
-                    transform: translateX(-50%);
-                    display: block;
-                    top: -13px;
-                    width: 30px;
-                    height: 15px; }
-                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.school path {
-                      filter: alpha(opacity=80);
-                      opacity: 0.8; }
-                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow path {
-                      -webkit-transition: all 150ms ease-in-out;
-                      -moz-transition: all 150ms ease-in-out;
-                      -ms-transition: all 150ms ease-in-out;
-                      -o-transition: all 150ms ease-in-out;
-                      transition: all 150ms ease-in-out; }
-                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-delivery path {
-                      fill: rgba(240, 79, 84, 0.8); }
-                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-freelancing path {
-                      fill: rgba(229, 117, 60, 0.8); }
-                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-baking path {
-                      fill: rgba(246, 198, 78, 0.8); }
-                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-photography path {
-                      fill: rgba(129, 181, 102, 0.8); }
-                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-tech {
-                      background: none !important; }
-                      .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-tech path {
-                        fill: rgba(85, 164, 183, 0.8); }
-                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-household path {
-                      fill: rgba(120, 114, 227, 0.8); }
-                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-athletic path {
-                      fill: rgba(154, 91, 197, 0.8); }
-                    .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a + .arrow.bg-academic path {
-                      fill: rgba(230, 56, 155, 0.8); }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.school path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.school path {
-                    filter: alpha(opacity=100);
-                    opacity: 1; }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-delivery path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-delivery path {
-                    fill: #F04F54; }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-freelancing path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-freelancing path {
-                    fill: #E5753C; }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-baking path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-baking path {
-                    fill: #F6C64E; }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-photography path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-photography path {
-                    fill: #81B566; }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-tech path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-tech path {
-                    fill: #55A4B7; }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-household path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-household path {
-                    fill: #7872e3; }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-athletic path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-athletic path {
-                    fill: #9A5BC5; }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-academic path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-academic path {
-                    fill: #e6389b; }
-                  .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:hover + .arrow.bg-cal path, .splash-landing > section.splash-hero .splash-hero-nav > div > div ul li a:focus + .arrow.bg-cal path {
-                    fill: #003057; }
-        .splash-landing > section.splash-hero .splash-hero-nav.desktop {
-          display: none; }
-        .splash-landing > section.splash-hero .splash-hero-nav.mobile > div > a {
-          border: 0; }
       .splash-landing > section.splash-hero .splash-hero-map {
         position: absolute;
         z-index: 1;

@@ -134,7 +134,6 @@ angular.module('uguru.rest', [])
                              source.courses = response.plain();
 
                              if (scope && callback) {
-                                console.log('saving courses');
                                 callback(scope, source.courses.slice());
                              }
 

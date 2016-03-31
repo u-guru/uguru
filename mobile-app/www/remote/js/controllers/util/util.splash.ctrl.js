@@ -32,6 +32,8 @@ angular.module('uguru.util.controllers')
     ContentService, LoadingService, ContentService, CTAService, User, AccessService,
      AnimationService) {
 
+    $scope.nav = {activate: true};
+
     $scope.demographics = User.demographics;
     $scope.saveDemographic = saveDemographic;
     $scope.clearDemographic = clearDemographic;
@@ -827,6 +829,7 @@ angular.module('uguru.util.controllers')
             madLibElemInside && madLibElemInside.classList.add('activate');
             madLibElemHeader && madLibElemHeader.classList.add('activate');
             $scope.selectedCategory = category;
+            console.log(category.name);
             $scope.selectedCategory.splashData = ContentService.splashCategoryOptions[category.name];
           }, 1500)
         }, defaultTransitionTimeout);

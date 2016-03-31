@@ -3,10 +3,119 @@
 		<h1>Describe a little more.</h1>
 		<h2>This is filler header content.</h2>
 	</header>
-	<div>
+	<div class="max-830">
 		<div class="request-courses">
 			<h1>Choose a Course</h1>
-			<ul>
+			<ul class="request-course-list desktop p15-grid ugrid-3" ng-if="desktopMode">
+				<li>
+					<div class="course-card">
+						<svg width="240px" height="150px" viewBox="0 0 240 150">
+							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+						</svg>
+						<input type="radio" name="request-course-tile" checked/>
+						<div class="course-card-inside">
+							<h2 style="color: #003262;">BIO 1A</h2>
+							<h1 style="color: #003262;">Introduction to Biology</h1>
+						</div>
+						<div class="course-card-border" style="background: #003262;"></div>
+						<span class="course-card-count">
+							<span style="background: #003262;"></span>
+							<svg viewBox="0 0 100 100">
+								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+							</svg>
+						</span>
+					</div>
+				</li>
+				<li>
+					<div class="course-card">
+						<svg width="240px" height="150px" viewBox="0 0 240 150">
+							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+						</svg>
+						<input type="radio" name="request-course-tile"/>
+						<div class="course-card-inside">
+							<h2 style="color: #003262;">BIO 1A</h2>
+							<h1 style="color: #003262;">Introduction to Biology</h1>
+						</div>
+						<div class="course-card-border" style="background: #003262;"></div>
+						<span class="course-card-count">
+							<span style="background: #003262;"></span>
+							<svg viewBox="0 0 100 100">
+								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+							</svg>
+						</span>
+					</div>
+				</li>
+				<li>
+					<div class="course-card">
+						<svg width="240px" height="150px" viewBox="0 0 240 150">
+							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+						</svg>
+						<input type="radio" name="request-course-tile"/>
+						<div class="course-card-inside">
+							<h2 style="color: #003262;">BIO 1A</h2>
+							<h1 style="color: #003262;">Introduction to Biology</h1>
+						</div>
+						<div class="course-card-border" style="background: #003262;"></div>
+						<span class="course-card-count">
+							<span style="background: #003262;"></span>
+							<svg viewBox="0 0 100 100">
+								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+							</svg>
+						</span>
+					</div>
+				</li>
+				<li>
+					<div class="course-card">
+						<svg width="240px" height="150px" viewBox="0 0 240 150">
+							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+						</svg>
+						<input type="radio" name="request-course-tile"/>
+						<div class="course-card-inside">
+							<h2 style="color: #003262;">BIO 1A</h2>
+							<h1 style="color: #003262;">Introduction to Biology</h1>
+						</div>
+						<div class="course-card-border" style="background: #003262;"></div>
+						<span class="course-card-count">
+							<span style="background: #003262;"></span>
+							<svg viewBox="0 0 100 100">
+								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+							</svg>
+						</span>
+					</div>
+				</li>
+				<li>
+					<div class="course-card">
+						<svg width="240px" height="150px" viewBox="0 0 240 150">
+							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+						</svg>
+						<input type="radio" name="request-course-tile"/>
+						<div class="course-card-inside">
+							<h2 style="color: #003262;">BIO 1A</h2>
+							<h1 style="color: #003262;">Introduction to Biology</h1>
+						</div>
+						<div class="course-card-border" style="background: #003262;"></div>
+						<span class="course-card-count">
+							<span style="background: #003262;"></span>
+							<svg viewBox="0 0 100 100">
+								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+							</svg>
+						</span>
+					</div>
+				</li>
+				<li>
+					<a class="course-card">
+						<svg width="240px" height="150px" viewBox="0 0 240 150">
+							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+						</svg>
+						<div class="course-card-inside">
+							<h1 style="color: #003262;">+ Add One</h1>
+						</div>
+						<div class="course-card-hover" style="background: #003262;"></div>
+						<div class="course-card-border" style="background: #003262;"></div>
+					</a>
+				</li>
+			</ul>
+			<ul class="request-course-list mobile" ng-if="!desktopMode">
 				<li class='course-item' ng-click='requestForm.course = course' ng-repeat='course in user.student_courses'>
 					<a>{{course.short_name}}</a>
 				</li>
@@ -54,7 +163,7 @@
 						<input tabindex="1" class='chip tag-add' ng-model='requestForm.tags.empty_tag.content' ng-blur='requestForm.tags.add()' ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && requestForm.tags.add()" placeholder="+ add a tag" size="{{requestForm.tags.empty_tag.content.length || 10}}">
 					</li>
                     <!-- <tag desktop="desktopMode" inner-text="'tag'" type="base"> </tag> -->
-                    <tag desktop="desktopMode" inner-text="" placeholder="+ add a tag" type="input"> </tag>
+                    <!-- <tag desktop="desktopMode" inner-text="" placeholder="+ add a tag" type="input"> </tag> -->
 
 				</ul>
 				<span class="error hide" ng-class="{'show': requestForm.tags.showError}">Tags must have more than 3 characters</span> 

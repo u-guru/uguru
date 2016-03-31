@@ -10,7 +10,7 @@
 					<ul>
 						<li ng-repeat='relationship in user.student_relationships|filter:student_search.search_text:strict' ng-click='setToActiveRelationship(relationship)'>
 							<a class='ng-class:{"active":relationship.id === active_relationship.id}'>
-								<span class="messenger-icon" style="background-image: url({{relationship.student.profile_url}});"></span>
+								<user-icon class="messenger-icon" size="-32" url="{{relationship.student.profile_url}}" ></user-icon>
 								<span class="messenger-label">{{relationship.student.name}}</span>
 							</a>
 						</li>
@@ -27,7 +27,7 @@
 				</div>
 				<div id="messenger-content">
 					<div class="messenger-header">
-						<h1 class="no-menu">{{active_relationship.student.name}}</h1>
+						<h1>{{active_relationship.student.name}}</h1>
 						<a class='cta-modal-close close-button desktop-header-next'>
 							<svg viewBox="0 0 100 100">
 								<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
@@ -137,8 +137,7 @@
 								</div>
 
 						</div>
-						<div id='message-dropzone' class='bg-slate-50p absolute left-0 full-x txt-charcoal weight-400' style='bottom:64px; height:150px;' ng-class="{'show':showAttachments}"> Drag attachments here
-						</div>
+						<div id='message-dropzone' class='bg-slate-50p absolute left-0 full-x txt-charcoal weight-400' style='bottom:64px; height:150px;' ng-class="{'show':showAttachments}">Drag attachments here</div>
 						<div id="message-box">
 							<a>
 								<svg viewBox="0 0 100 100">

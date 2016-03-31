@@ -693,7 +693,7 @@
                 </div>
             </ion-pane>
 
-            <!--Projects -->
+            <!-- Projects -->
             <section id="admin-projects" ng-hide='page.layout.sidebar.index'>
                 <div class='tab-container'>
                     <div class="tab-bar slide full-x">
@@ -997,11 +997,6 @@
                             <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 1'>
                                 <!--    just use the same format from the component list for the others
                                         except change admin-components to admin-containers, admin-stories, admin-layouts, etc -->
-                                <!-- <a class='bg bg-robin' ng-repeat='container in page.containers track by $index' ng-click='initAndLaunchLayoutCTA($event, container)'>
-                                    <div class='component-header flex-center full-x uppercase weight-600 text-center' style='min-height:200px;'>
-                                        {{container.name}}
-                                    </div>
-                                </a> -->
                             </div>
                             <div class='admin-scenes admin-content-section flex-wrap-start full-x' ng-if='$index === 2'>
                                 <ul>
@@ -1017,12 +1012,16 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class='admin-content-section ugrid-4 flex-wrap-center' ng-if='$index === 3'>
-                                <a class='bg bg-robin' ng-repeat='layout in page.layouts track by $index' id='layout-{{layout.ref}}' ng-click='initAndLaunchLayoutCTA($event, layout)'>
-                                    <div class='component-header flex-center full-x uppercase weight-600 text-center' style='min-height:200px;'>
-                                        {{layout.name}}
-                                    </div>
-                                </a>
+                            <div class='admin-layouts admin-content-section ugrid-4 flex-wrap-start' ng-if='$index === 3'>
+                                <ul>
+                                    <li ng-repeat='layout in page.layouts track by $index'>
+                                        <div>
+                                            <a id='layout-{{layout.ref}}' class="block" ng-click='initAndLaunchLayoutCTA($event, layout)'>
+                                                <h1>{{layout.name}} <i class='ion-arrow-resize icon opacity-50'> </i></h1>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                             <div class='admin-content-section admin-assets' ng-if='$index === 5'>
                                 <h1>Category Icons - Normal</h1>
@@ -1958,7 +1957,52 @@
                         </ul>
                     </div>
                     <div class="admin-html admin-reference admin-content-section flex-wrap-start" ng-if='page.layout.sections[2].tabs.index === 1'>
-                    <!-- <div class="admin-html admin-reference admin-content-section flex-wrap-start" ng-if='!page.layout.sections[2].tabs.index'> -->
+                        <h2>Margin</h2>
+                        <ul class="ugrid-4">
+                            <li>
+                                <div class="bg-campus p15xy">
+                                    <div class="full-xy flex flex-start bg-slate-20p">
+                                        <span class="margin-none">.<input readonly="true" onclick="this.select()" size="11" value="margin-none"/></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="bg-campus p15xy">
+                                    <div class="full-xy flex flex-start bg-slate-20p">
+                                        <span class="margin-auto">.<input readonly="true" onclick="this.select()" size="11" value="margin-auto"/></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="bg-campus p15xy">
+                                    <div class="full-xy flex flex-start bg-slate-20p">
+                                        <span class="m-05top">.<input readonly="true" onclick="this.select()" size="7" value="m-05top"/></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="bg-campus p15xy">
+                                    <div class="full-xy flex flex-start bg-slate-20p">
+                                        <span class="m-10top">.<input readonly="true" onclick="this.select()" size="7" value="m-10top"/></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="bg-campus p15xy">
+                                    <div class="full-xy bg-slate-20p">
+                                        <span class="m-15x">.<input readonly="true" onclick="this.select()" size="5" value="m-15x"/></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="bg-campus p15xy">
+                                    <div class="full-xy bg-slate-20p">
+                                        <span class="m05x">.<input readonly="true" onclick="this.select()" size="4" value="m05x"/></span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        
                         <h2>Type &rarr; Weight</h2>
                         <ul>
         					<li>
@@ -2037,8 +2081,8 @@
 
                         <h2>Type &rarr; Colors</h2>
                         <ul>
-                            <li><span class="bg-slate txt-smoke">.<input readonly="true" class="txt-smoke" onclick="this.select()" size="9" value="txt-smoke"/></span></li>
-                            <li><span class="bg-slate txt-white">.<input readonly="true" class="txt-white" onclick="this.select()" size="9" value="txt-white"/></span></li>
+                            <li><span class="bg-campus txt-smoke">.<input readonly="true" class="txt-smoke" onclick="this.select()" size="9" value="txt-smoke"/></span></li>
+                            <li><span class="bg-campus txt-white">.<input readonly="true" class="txt-white" onclick="this.select()" size="9" value="txt-white"/></span></li>
                             <li><span class="txt-charcoal">.<input readonly="true" class="txt-charcoal" onclick="this.select()" size="12" value="txt-charcoal"/></span></li>
                             <li><span class="txt-slate">.<input readonly="true" class="txt-slate" onclick="this.select()" size="9" value="txt-slate"/></span></li>
                             <li><span class="txt-taupe">.<input readonly="true" class="txt-taupe" onclick="this.select()" size="9" value="txt-taupe"/></span></li>
@@ -2089,6 +2133,168 @@
                             <li><span class="bg-cobalt">.<input readonly="true" onclick="this.select()" size="9" value="bg-cobalt"/></span></li>
                             <li><span class="bg-eggplant">.<input readonly="true" onclick="this.select()" size="11" value="bg-eggplant"/></span></li>
                             <li><span class="bg-cerise">.<input readonly="true" onclick="this.select()" size="9" value="bg-cerise"/></span></li>
+                        </ul>
+                        <ul>
+                            <li><span class="bg-fb">.<input readonly="true" onclick="this.select()" size="5" value="bg-fb"/></span></li>
+                            <li><span class="bg-fb-light">.<input readonly="true" onclick="this.select()" size="11" value="bg-fb-light"/></span></li>
+                            <li><span class="bg-tw">.<input readonly="true" onclick="this.select()" size="5" value="bg-tw"/></span></li>
+                            <li><span class="bg-li">.<input readonly="true" onclick="this.select()" size="5" value="bg-li"/></span></li>
+                            <li><span class="bg-in">.<input readonly="true" onclick="this.select()" size="5" value="bg-in"/></span></li>
+                        </ul>
+                        
+                        <h2>Border &rarr; Widths</h2>
+                        <ul>
+                            <li><span class="border-1 border-slate">.<input readonly="true" onclick="this.select()" size="8" value="border-1"/></span></li>
+                            <li><span class="border-2 border-slate">.<input readonly="true" onclick="this.select()" size="8" value="border-2"/></span></li>
+                            <li><span class="border-3 border-slate">.<input readonly="true" onclick="this.select()" size="8" value="border-3"/></span></li>
+                            <li><span class="border-4 border-slate">.<input readonly="true" onclick="this.select()" size="8" value="border-4"/></span></li>
+                            <li><span class="border-5 border-slate">.<input readonly="true" onclick="this.select()" size="8" value="border-5"/></span></li>
+                            <li><span class="border-10 border-slate">.<input readonly="true" onclick="this.select()" size="9" value="border-10"/></span></li>
+                        </ul>
+                        <ul>
+                            <li><span class="border-5-top">.<input readonly="true" onclick="this.select()" size="12" value="border-5-top"/></span></li>
+                            <li><span class="border-5-bottom">.<input readonly="true" onclick="this.select()" size="15" value="border-5-bottom"/></span></li>
+                            <li><span class="border-5-left">.<input readonly="true" onclick="this.select()" size="13" value="border-5-left"/></span></li>
+                            <li><span class="border-5-right">.<input readonly="true" onclick="this.select()" size="14" value="border-5-right"/></span></li>
+                        </ul>
+                        <ul>
+                            <li><span class="border-10-top">.<input readonly="true" onclick="this.select()" size="13" value="border-10-top"/></span></li>
+                            <li><span class="border-10-bottom">.<input readonly="true" onclick="this.select()" size="16" value="border-10-bottom"/></span></li>
+                            <li><span class="border-10-left">.<input readonly="true" onclick="this.select()" size="14" value="border-10-left"/></span></li>
+                            <li><span class="border-10-right">.<input readonly="true" onclick="this.select()" size="15" value="border-10-right"/></span></li>
+                        </ul>
+                        
+                        <h2>Border &rarr; Styles</h2>
+                        <ul>
+                            <li><span class="border-1 border-dashed">.<input readonly="true" onclick="this.select()" size="13" value="border-dashed"/></span></li>
+                            <li><span class="border-1 border-dotted">.<input readonly="true" onclick="this.select()" size="13" value="border-dotted"/></span></li>
+                            <li><span class="border-3 border-double">.<input readonly="true" onclick="this.select()" size="13" value="border-double"/></span></li>
+                        </ul>
+                        
+                        <h2>Border &rarr; Colors</h2>
+                        <ul class="border">
+                            <li>
+                                <span class="txt-smoke bg-campus">
+                                    .<input class="txt-smoke" readonly="true" onclick="this.select()" size="12" value="border-smoke"/>
+                                    <span class="inside border-smoke"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="txt-white bg-campus">
+                                    .<input class="txt-white" readonly="true" onclick="this.select()" size="12" value="border-white"/>
+                                    <span class="inside border-white"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-charcoal txt-charcoal">
+                                    .<input class="txt-charcoal" readonly="true" onclick="this.select()" size="15" value="border-charcoal"/>
+                                    <span class="inside border-charcoal"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-slate txt-slate">
+                                    .<input class="txt-slate" readonly="true" onclick="this.select()" size="12" value="border-slate"/>
+                                    <span class="inside border-slate"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-taupe txt-taupe">
+                                    .<input class="txt-taupe" readonly="true" onclick="this.select()" size="12" value="border-taupe"/>
+                                    <span class="inside border-taupe"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-campus txt-campus">
+                                    .<input class="txt-campus" readonly="true" onclick="this.select()" size="13" value="border-campus"/>
+                                    <span class="inside border-campus"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-shamrock txt-shamrock">
+                                    .<input class="txt-shamrock" readonly="true" onclick="this.select()" size="15" value="border-shamrock"/>
+                                    <span class="inside border-shamrock"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-robin txt-robin">
+                                    .<input class="txt-robin" readonly="true" onclick="this.select()" size="12" value="border-robin"/>
+                                    <span class="inside border-robin"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-lake txt-lake">
+                                    .<input class="txt-lake" readonly="true" onclick="this.select()" size="11" value="border-lake"/>
+                                    <span class="inside border-lake"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-moxie txt-moxie">
+                                    .<input class="txt-moxie" readonly="true" onclick="this.select()" size="12" value="border-moxie"/>
+                                    <span class="inside border-moxie"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-crimson txt-crimson">
+                                    .<input class="txt-crimson" readonly="true" onclick="this.select()" size="14" value="border-crimson"/>
+                                    <span class="inside border-crimson"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-auburn txt-auburn">
+                                    .<input class="txt-auburn" readonly="true" onclick="this.select()" size="13" value="border-auburn"/>
+                                    <span class="inside border-auburn"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-orange txt-orange">
+                                    .<input class="txt-orange" readonly="true" onclick="this.select()" size="13" value="border-orange"/>
+                                    <span class="inside border-orange"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-gold txt-gold">
+                                    .<input class="txt-gold" readonly="true" onclick="this.select()" size="11" value="border-gold"/>
+                                    <span class="inside border-gold"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-moola txt-moola">
+                                    .<input class="txt-moola" readonly="true" onclick="this.select()" size="12" value="border-moola"/>
+                                    <span class="inside border-moola"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-azure txt-azure">
+                                    .<input class="txt-azure" readonly="true" onclick="this.select()" size="12" value="border-azure"/>
+                                    <span class="inside border-azure"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-cobalt txt-cobalt">
+                                    .<input class="txt-cobalt" readonly="true" onclick="this.select()" size="13" value="border-cobalt"/>
+                                    <span class="inside border-cobalt"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-eggplant txt-eggplant">
+                                    .<input class="txt-eggplant" readonly="true" onclick="this.select()" size="15" value="border-eggplant"/>
+                                    <span class="inside border-eggplant"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="border-cerise txt-cerise">
+                                    .<input class="txt-cerise" readonly="true" onclick="this.select()" size="13" value="border-cerise"/>
+                                    <span class="inside border-cerise"></span>
+                                </span>
+                            </li>
+                        </ul>
+                        
+                        <h2>Border &rarr; Radius</h2>
+                        <ul>
+                            <li><span class="radius-2 bg-campus">.<input readonly="true" onclick="this.select()" size="8" value="radius-2"/></span></li>
+                            <li><span class="radius-4 bg-campus">.<input readonly="true" onclick="this.select()" size="8" value="radius-4"/></span></li>
+                            <li><span class="radius-10 bg-campus">.<input readonly="true" onclick="this.select()" size="9" value="radius-10"/></span></li>
+                            <li><span class="round bg-campus">.<input readonly="true" onclick="this.select()" size="5" value="round"/></span></li>
                         </ul>
                     </div>
                     <div class="admin-colors admin-reference admin-content-section" ng-if='page.layout.sections[2].tabs.index === 2'>

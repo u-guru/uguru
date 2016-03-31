@@ -424,7 +424,10 @@ gulp.task('templates', function() {
         'templates/components/modals/*html',
         'templates/components/details/*html',
         'templates/components/inputs/*html',
-        'templates/components/**/**/**.html'
+        'templates/components/**/**/**.html',
+        'templates/splash/*.html',
+        'templates/splash/**/*.html',
+        'templates/splash/**/**/**.html',
 
       ], { cwd: 'www/remote' })
     .pipe(gulp.dest(path.join(targetDir, 'templates')))

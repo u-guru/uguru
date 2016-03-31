@@ -160,7 +160,6 @@ angular.module('uguru.components', [])
     replace: true,
     restrict: 'E',
     link: function( scope, element, attr ) {
-      console.log(scope.avg);
       if (!scope.avg || typeof(scope.avg) !== "number") {
         scope.avg = 5;
       }
@@ -170,7 +169,6 @@ angular.module('uguru.components', [])
       if (scope.show_half) {
         scope.total_empty_stars.splice(0,1)
       }
-      console.log(scope.show_half);
       function getArraySize(num) {
         var arr =[];
         for (var i = 0; i < num; i++) {
@@ -311,7 +309,6 @@ angular.module('uguru.components', [])
         if (attr.size && attr.size.length) {
             var svgElem = elem[0].querySelector('svg');
             if (svgELem) {
-              console.log(svgElem);
               svgElem.style.width = attr.size.split('x')[0] + 'px;';
               svgElem.style.height = attr.size.split('x')[1] + 'px;';
             }
@@ -320,7 +317,6 @@ angular.module('uguru.components', [])
   }
   function getTemplateURL(elem, attr) {
     if (attr && attr.name && attr.name.length) {
-      console.log('svgPath', 'yo');
       var svgPathSplit = attr.name.split('.');
       if (svgPathSplit.length > 1) {
         svgPath = attr.name.replace('.','/') + '.tpl';
@@ -354,10 +350,6 @@ angular.module('uguru.components', [])
 .directive('schoolIdCard', function() {
   return {
     templateURL: BASE + 'templates/components/dev/containers/school.id.tpl'
-    //pass in user
-    //pass in user.university
-    //pass in user.profile-url
-    // pass in user.student_courses
   }
 })
 .directive('universityMarker', function() {

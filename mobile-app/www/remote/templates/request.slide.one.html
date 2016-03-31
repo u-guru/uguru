@@ -1,10 +1,33 @@
-<section id="request-cta-categories" class="request-slide request-categories" ng-controller="CategoriesController">
+<section class="request-slide request-categories" ng-controller="CategoriesController">
 	<div class="request-category">
 		<header>
 			<h1>Select a request category.</h1>
 			<h2>Don't worry! You can change this.</h2>
 		</header>
-		<ul>
+		<ul class="request-category-tiles desktop max-1030 flex-center-wrap p15-grid" ng-if="desktopMode">
+			<li name='category-menu' ng-repeat='category in ::categories' ng-if='category.is_active'>
+				<a class="category-tile bg-{{category.hex_color}} no-photo">
+					<svg width="240px" height="150px" viewBox="0 0 240 150">
+						<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+					</svg>
+					<div class="category-tile-inside">
+						<div class="category-tile-icon" ng-include="img_base + 'templates/svg/' + category.hex_color + '.html'"></div>
+						<h1>{{::category.name}}</h1>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a class="category-tile no-photo">
+					<svg width="240px" height="150px" viewBox="0 0 240 150">
+						<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+					</svg>
+					<div class="category-tile-inside">
+						<h1>More<br/>Coming Soon</h1>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<ul class="request-category-tiles mobile" ng-if="!desktopMode">
 			<li name='category-menu' ng-repeat='category in ::categories' ng-if='category.is_active'>
 				<a class='bg-{{category.hex_color}}' ng-click='showDesktopSubcategories(category, requestForm)'>
 					<span class="card-icon" ng-include="img_base + 'templates/svg/' + category.hex_color + '.html'"></span>
@@ -18,12 +41,34 @@
 			</li>
 		</ul>
 	</div>
-	<div class='request-subcategory sub-{{::category.hex_color}} ng-class:{"selected":category.id == requestForm.category.id }' ng-repeat='category in ::categories'>
+	<div class='request-subcategory sub-{{::category.hex_color}} ng-class:{"selected":category.id == requestForm.category.id }' ng-repeat='category in ::categories' ng-if="desktopMode">
 		<header>
 			<h1>Select a subcategory</h1>
 			<h2>Don't worry! You can change this.</h2>
 		</header>
-		<ul>
+		<ul class="request-category-tiles desktop max-1030 flex-center-wrap p15-grid">
+			<li name='sub-category' ng-repeat='subcategory in ::category.subcategories'>
+				<a class="category-tile bg-{{::category.hex_color}} no-photo" ng-click='requestForm.setCategory(requestForm, subcategory)'>
+					<svg width="240px" height="150px" viewBox="0 0 240 150">
+						<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+					</svg>
+					<div class="category-tile-inside">
+						<div class="category-tile-icon" ng-include="::img_base + subcategory.icon_url"></div>
+						<h1>{{::subcategory.name}}</h1>
+					</div>
+				</a>
+			</li>
+			<li class="full-x flex-center">
+				<button class='bg-{{::category.hex_color}} normal radius-2 width-300'>Back</button>
+			</li>
+		</ul>
+	</div>
+	<div class='request-subcategory sub-{{::category.hex_color}} ng-class:{"selected":category.id == requestForm.category.id }' ng-repeat='category in ::categories' ng-if="!desktopMode">
+		<header>
+			<h1>Select a subcategory</h1>
+			<h2>Don't worry! You can change this.</h2>
+		</header>
+		<ul class="request-category-tiles mobile">
 			<li name='sub-category' ng-repeat='subcategory in ::category.subcategories'>
 				<a class='bg-{{::category.hex_color}}' ng-click='requestForm.setCategory(requestForm, subcategory)'>
 					<!-- non-normalized icons are temporarily hidden until we get the offical ones in -->
@@ -34,74 +79,4 @@
 		</ul>
 		<button class='bg-{{::category.hex_color}}'>Back</button>
 	</div>
-	<!-- <div id="splash-categories" class="full-xy main active" ng-controller="CategoriesController" anim-on-show="active" anim-on-show-parent>
-		<div class='full-y p15x20y flex-wrap-center'>
-			<div class='p15x p20y'>
-				<h1 class="splash-categories-header opacity-0"
-					anim-on-show-child
-					anim-on-show-class="lightSpeedIn"
-					anim-on-show-delay="250">
-
-					Select a category for your request
-
-				</h1>
-
-				<h2 class="splash-categories-subheader opacity-0"
-
-					anim-on-show-child
-					anim-on-show-class="lightSpeedIn"
-					anim-on-show-delay="500">
-					Don't worry! You can always create another one or change it later into the form
-				</h2>
-
-			</div>
-			<div class='flex-wrap-center'>
-				<ul class='category-card-list'>
-					<li name='category-menu' ng-repeat='category in ::categories' ng-if='category.is_active' ng-click='showDesktopSubcategories(category, requestForm)'>
-						<div style='background-image: url({{categories_img_base + category.background_url}})'>
-							<a class='bg-{{category.hex_color}}' ng-click='launchCategoryModal(category)'>
-								<div>
-									<span class="card-icon" ng-include="img_base + 'templates/svg/' + category.hex_color + '.html'"></span>
-									<span class="card-label">{{::category.name}}</span>
-								</div>
-							</a>
-						</div>
-					</li>
-					<li>
-						<div style='background-image :url({{categories_img_base + categories[0].background_url}})'>
-							<span class='bg-more' ng-click='launchCategoryModal(category)'>
-                                <div>
-									<span class="card-icon" ng-include="::img_base + 'templates/svg/main/plus-circle.html'"></span>
-									<span class="card-label">More Coming Soon!</span>
-								</div>
-							</span>
-						</div>
-					</li>
-					<li class="card-button opacity-0">
-						<button ng-click='goToSignup()'>Start Your Shop</button>
-					</li>
-				</ul>
-				<div class='flex-wrap-center subcategory-card-list sub-{{::category.hex_color}} ng-class:{"selected":category.id == requestForm.category.id, "not-selected": requestForm.category.id && requestForm.category.id !== category.id }' ng-repeat='category in ::categories'>
-					<ul class="category-card-list">
-						<li name='sub-category' ng-repeat='subcategory in ::category.subcategories' ng-click='requestForm.setCategory(requestForm, subcategory)'>
-							<div class="p20x p15y bg-{{::category.hex_color}}">
-								<span class='bg-{{::category.hex_color}}'>
-									<div class='p05xy'>
-										<span class="p05xy card-icon" ng-include="::img_base + subcategory.icon_url"></span>
-										<span class="card-label txt-slate">{{::subcategory.name}}</span>
-									</div>
-								</span>
-								<span class="card-price bg-{{::category.hex_color}}">Free - $10/hr Avg</span>
-							</div>
-						</li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-					</ul>
-					<button ng-click='requestForm.category = {}'>Back</button>
-				</div>
-			</div>
-		</div>
-	</div> -->
 </section>

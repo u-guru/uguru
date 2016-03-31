@@ -160,7 +160,6 @@ angular.module('uguru.directives')
                 var progress = currentFrame/totalFrames;
                 if (progress > 1) {
                   var endTime = new Date().getTime();
-                  console.log(endTime - startTime, 'ms total animation');
                    window.cancelAnimationFrame(requestFrameHandle);
                 } else {
                   currentFrame++;
