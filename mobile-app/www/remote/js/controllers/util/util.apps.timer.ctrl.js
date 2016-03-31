@@ -12,7 +12,7 @@ angular.module('uguru.util.controllers')
 
     var timerOptions = [5, 10, 15, 30, 45, 59];
 
-    $scope.action_items = ["Merge Gabrielle's Changes", "Plan out dev dashboard & Tomorrow", "Prep for Ben", "Jason add state CLI", 'States to dashboard tool', 'Saving/Importing/Exporting', 'Pre-App Templates (layouts, components, assets)', 'prep for ben']
+    $scope.action_items = [ 'Splash Mad-lib', 'All dashboard tools', "Quick n Dirty", 'prep for ben']
     $scope.timer = {hours: 0, minutes:0, seconds:0};
     $scope.timerDropdown = {
       size: 'large',

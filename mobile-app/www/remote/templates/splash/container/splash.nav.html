@@ -70,7 +70,7 @@
                                     <path d="M4,26 L30,0 L56,26" fill="{{university.school_color_dark}}"></path>
                                 </svg>
                             </li>
-                            <li ng-click="transitionToScene3()" >
+                            <li ng-click="activate.pulldown = true; page.dropdowns.university.active = !page.dropdowns.university.active" class-on-click="null:inject#splash-one-page-pulldown|activate, null:inject#splash-university|activate, null:inject#splash-google-map|activate">
                                 <a class="bg-shamrock">
                                     <span>Find your College</span>
                                 </a>
@@ -106,7 +106,7 @@
                 </a>
             </li>
             <li>
-                <a class="bg-find" ng-click="transitionToScene3()">
+                <a class="bg-find" ng-click="activate.pulldown = true;">
                     <span></span>
                     <span>Find your College</span>
                     <span></span>

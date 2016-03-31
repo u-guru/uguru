@@ -1,5 +1,17 @@
 {
     "action_items": {
+        "ben": [
+            {
+                "description": "Together we will create a base script that will allow you to link subjects with their courses. <br> By the end of this project all 200 universities should have a list of subjects with many courses.", 
+                "name": "Link popular courses with subject", 
+                "priority": 10
+            }, 
+            {
+                "description": "", 
+                "name": "Find & Create Popular Tags for Each Subject", 
+                "priority": 10
+            }
+        ], 
         "gabrielle": [
             {
                 "assigned": [
@@ -392,6 +404,82 @@
                         "name": "on tag selected", 
                         "selectors": [
                             ".adlib-tag"
+                        ]
+                    }
+                ], 
+                "testing": [
+                    {
+                        "name": "User interacts with default academic tags", 
+                        "ref": "mad-lib-layout-state-1", 
+                        "substates": [
+                            {
+                                "name": "User clicks first tag", 
+                                "ref": "mad-lib-layout-state-1-substate-1"
+                            }, 
+                            {
+                                "name": "User re-clicks in FILLED tag (goes back to original)", 
+                                "ref": "mad-lib-layout-state-2-susbtate-2"
+                            }, 
+                            {
+                                "name": "User clicks second tag", 
+                                "ref": "mad-lib-layout-state-1-substate-1"
+                            }, 
+                            {
+                                "name": "User re-clicks second tag (goes back to original)", 
+                                "ref": "mad-lib-layout-state-2-susbtate-2"
+                            }
+                        ]
+                    }, 
+                    {
+                        "name": "User switches all categories", 
+                        "ref": "mad-lib-layout-state-2", 
+                        "substates": [
+                            {
+                                "name": "User switches category to bakery", 
+                                "ref": "mad-lib-layout-state-2-substate-1"
+                            }, 
+                            {
+                                "name": "User switches category to household", 
+                                "ref": "mad-lib-layout-state-2-substate-2"
+                            }, 
+                            {
+                                "name": "User switches category to tech", 
+                                "ref": "mad-lib-layout-state-2-substate-3"
+                            }, 
+                            {
+                                "name": "User switches category to photography", 
+                                "ref": "mad-lib-layout-state-2-substate-4"
+                            }, 
+                            {
+                                "name": "User switches category back to academic", 
+                                "ref": "mad-lib-layout-state-2-substate-5"
+                            }
+                        ]
+                    }, 
+                    {
+                        "name": "User switches university", 
+                        "ref": "mad-lib-layout-state-3", 
+                        "substates": []
+                    }, 
+                    {
+                        "name": "User wants to search university", 
+                        "ref": "mad-lib-layout-state-4", 
+                        "substates": [
+                            {
+                                "name": "dropdown takes over entire screen with no CSS errors", 
+                                "ref": "mad-lib-layout-state-4-substate-1"
+                            }, 
+                            {
+                                "name": "Check university cards show", 
+                                "ref": "mad-lib-layout-state-4-substate-2"
+                            }, 
+                            {
+                                "name": "Check cluster bubbles show", 
+                                "ref": "mad-lib-layout-state-4-substate-3"
+                            }, 
+                            {
+                                "ref": "mad-lib-layout-state-4-substate-4"
+                            }
                         ]
                     }
                 ]
@@ -1422,6 +1510,80 @@
                                 "ref": "mad-lib-testing-2-substate-3", 
                                 "test_client": "manual", 
                                 "test_status": "unsure"
+                            }
+                        ]
+                    }, 
+                    {
+                        "name": "User interacts with default academic tags", 
+                        "ref": "mad-lib-layout-state-1", 
+                        "substates": [
+                            {
+                                "name": "User clicks first tag", 
+                                "ref": "mad-lib-layout-state-1-substate-1"
+                            }, 
+                            {
+                                "name": "User re-clicks in FILLED tag (goes back to original)", 
+                                "ref": "mad-lib-layout-state-2-susbtate-2"
+                            }, 
+                            {
+                                "name": "User clicks second tag", 
+                                "ref": "mad-lib-layout-state-1-substate-1"
+                            }, 
+                            {
+                                "name": "User re-clicks second tag (goes back to original)", 
+                                "ref": "mad-lib-layout-state-2-susbtate-2"
+                            }
+                        ]
+                    }, 
+                    {
+                        "name": "User switches all categories", 
+                        "ref": "mad-lib-layout-state-2", 
+                        "substates": [
+                            {
+                                "name": "User switches category to bakery", 
+                                "ref": "mad-lib-layout-state-2-substate-1"
+                            }, 
+                            {
+                                "name": "User switches category to household", 
+                                "ref": "mad-lib-layout-state-2-substate-2"
+                            }, 
+                            {
+                                "name": "User switches category to tech", 
+                                "ref": "mad-lib-layout-state-2-substate-3"
+                            }, 
+                            {
+                                "name": "User switches category to photography", 
+                                "ref": "mad-lib-layout-state-2-substate-4"
+                            }, 
+                            {
+                                "name": "User switches category back to academic", 
+                                "ref": "mad-lib-layout-state-2-substate-5"
+                            }
+                        ]
+                    }, 
+                    {
+                        "name": "User switches university", 
+                        "ref": "mad-lib-layout-state-3", 
+                        "substates": []
+                    }, 
+                    {
+                        "name": "User wants to search university", 
+                        "ref": "mad-lib-layout-state-4", 
+                        "substates": [
+                            {
+                                "name": "dropdown takes over entire screen with no CSS errors", 
+                                "ref": "mad-lib-layout-state-4-substate-1"
+                            }, 
+                            {
+                                "name": "Check university cards show", 
+                                "ref": "mad-lib-layout-state-4-substate-2"
+                            }, 
+                            {
+                                "name": "Check cluster bubbles show", 
+                                "ref": "mad-lib-layout-state-4-substate-3"
+                            }, 
+                            {
+                                "ref": "mad-lib-layout-state-4-substate-4"
                             }
                         ]
                     }
