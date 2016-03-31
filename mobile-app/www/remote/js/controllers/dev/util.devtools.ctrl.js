@@ -31,7 +31,6 @@ angular.module('uguru.dev.controllers')
       option.component.confirmPropertyField(option.component, option.component.empty_time_state, {name: css_class}, 'css_class', '--');
     }
 
-
     function generateCSSClassOptions(classes_arr, component) {
       var resultOptionsArr = [];
       for (var i = 0; i < classes_arr.length; i++) {
