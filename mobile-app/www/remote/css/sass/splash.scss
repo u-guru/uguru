@@ -2259,133 +2259,6 @@
 							margin: 0 15px;
 						}
 					}
-					a {
-						@include flex;
-						@include flex-center;
-						position: relative;
-						width: 130px;
-						height: 38px;
-						padding: 0;
-						border-radius: 8px;
-						font-size: 20px;
-						font-weight: 600;
-						background: rgba($slate, .5);
-						svg {
-							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-							position: absolute;
-							top: 0;
-							left: 0;
-							width: 100%;
-							height: 100%;
-							&.desktop {
-								display: none;
-							}
-						}
-						b {
-							@include prefix(animation-delay, 1200ms, webkit moz ms o);
-							font-weight: 600!important;
-						}
-						&:not(.blank) {
-							&:hover, &:focus, &[class*="translate-blank"] {
-								background: $shamrock;
-								svg {
-									@include opacity(0);
-								}
-								&[class*="translate-blank"] {
-									background-color: $shamrock !important;
-								}
-							}
-							&.bg-delivery {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $auburn;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $auburn !important;
-								}
-							}
-							&.bg-freelancing {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $orange;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $orange !important;
-								}
-							}
-							&.bg-baking {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $gold;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $gold !important;
-								}
-							}
-							&.bg-photography {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $moola;
-									background-color: $azure;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $moola !important;
-								}
-							}
-							&.bg-tech {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $azure;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $azure !important;
-								}
-							}
-							&.bg-household {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $cobalt;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $cobalt !important;
-								}
-							}
-							&.bg-athletic {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $eggplant;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $eggplant !important;
-								}
-							}
-							&.bg-academic {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $cerise;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $cerise !important;
-								}
-							}
-						}
-					}
 					.splash-mobile-cta {
 						margin: 0 15px;
 						background: $shamrock;
@@ -2490,20 +2363,6 @@
 				}
 			}
 
-			@media only screen and (orientation: portrait) {
-				.splash-hero-content {
-					.splash-adlib {
-						a {
-							&[class*="translate-blank-"] {
-								margin-top: -1px!important;
-								&:nth-child(even) {
-									margin-left: -1px!important;
-								}
-							}
-						}
-					}
-				}
-			}
 			@media screen and (max-width: 414px) {
 				.splash-hero-content {
 					margin-top: -15px;
@@ -2645,25 +2504,6 @@
 						}
 						h1 {
 							font-size: 40px;
-						}
-						a {
-							width: 142px;
-							height: 44px;
-							font-size: 24px;
-							&.adlib-1.translate-blank-1 {
-								margin-left: 1px!important;
-							}
-							&.adlib-8.translate-blank-2 {
-								margin-left: -1px!important;
-							}
-							svg {
-								&.mobile {
-									display: none;
-								}
-								&.desktop {
-									display: block;
-								}
-							}
 						}
 						.splash-mobile-cta {
 							display: none;

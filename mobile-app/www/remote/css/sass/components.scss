@@ -8971,6 +8971,462 @@ a.category-tile {
 	}
 }
 
+/* ---------- ADLIB TAGS */
+.tag-adlib-container {
+	position: relative;
+}
+.tag-adlib {
+	@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+	@include flex;
+	@include flex-center;
+	position: relative;
+	width: 130px;
+	height: 38px;
+	padding: 0;
+	border-radius: 8px;
+	font-size: 20px;
+	font-weight: 600;
+	background: rgba($slate, .5);
+	svg {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		&.desktop {
+			display: none;
+		}
+		* {
+			@include svg-stroke(white, 4);
+		}
+	}
+	&.blank, &.ghost {
+		stroke-dasharray: 16, 14;
+	}
+	&.ghost {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		background: none!important;
+		svg {
+			@include opacity-important(.2);
+		}
+		&:not(.active) {
+			@include opacity(0);
+		}
+	}
+	&:not(.blank) {
+		&:hover, &:focus, &.active {
+			background: $shamrock;
+			svg {
+				@include opacity(0);
+			}
+		}
+		&:active {
+			background: mix($shamrock, white);
+			color: mix($shamrock, $slate);
+		}
+		&.active {
+			&:hover, &:focus {
+				background: mix($shamrock, white);
+				color: mix($shamrock, $slate);
+			}
+			&:active {
+				background: mix($shamrock, $slate);
+				color: white;
+			}
+		}
+		+ .ghost {
+			svg {
+				* {
+					fill: rgba($shamrock, .2);
+				}
+			}
+		}
+		&.tag-campus {
+			&:hover, &:focus, &.active {
+				background: $campus;
+			}
+			&:active {
+				background: mix($campus, white);
+				color: mix($campus, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($campus, white);
+					color: mix($campus, $slate);
+				}
+				&:active {
+					background: mix($campus, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($campus, .2);
+					}
+				}
+			}
+		}
+		&.tag-shamrock {
+			&:hover, &:focus, &.active {
+				background: $shamrock;
+			}
+			&:active {
+				background: mix($shamrock, white);
+				color: mix($shamrock, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($shamrock, white);
+					color: mix($shamrock, $slate);
+				}
+				&:active {
+					background: mix($shamrock, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($shamrock, .2);
+					}
+				}
+			}
+		}
+		&.tag-robin {
+			&:hover, &:focus, &.active {
+				background: $robin;
+			}
+			&:active {
+				background: mix($robin, white);
+				color: mix($shamrock, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($robin, white);
+					color: mix($robin, $slate);
+				}
+				&:active {
+					background: mix($robin, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($robin, .2);
+					}
+				}
+			}
+		}
+		&.tag-lake {
+			&:hover, &:focus, &.active {
+				background: $lake;
+			}
+			&:active {
+				background: mix($lake, white);
+				color: mix($lake, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($lake, white);
+					color: mix($lake, $slate);
+				}
+				&:active {
+					background: mix($lake, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($lake, .2);
+					}
+				}
+			}
+		}
+		&.tag-moxie {
+			&:hover, &:focus, &.active {
+				background: $moxie;
+			}
+			&:active {
+				background: mix($moxie, white);
+				color: mix($moxie, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($moxie, white);
+					color: mix($moxie, $slate);
+				}
+				&:active {
+					background: mix($moxie, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($moxie, .2);
+					}
+				}
+			}
+		}
+		&.tag-crimson {
+			&:hover, &:focus, &.active {
+				background: $crimson;
+			}
+			&:active {
+				background: mix($crimson, white);
+				color: mix($crimson, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($crimson, white);
+					color: mix($crimson, $slate);
+				}
+				&:active {
+					background: mix($crimson, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($crimson, .2);
+					}
+				}
+			}
+		}
+		&.tag-auburn, &.tag-delivery {
+			&:hover, &:focus, &.active {
+				background: $auburn;
+			}
+			&:active {
+				background: mix($auburn, white);
+				color: mix($auburn, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($auburn, white);
+					color: mix($auburn, $slate);
+				}
+				&:active {
+					background: mix($auburn, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($auburn, .2);
+					}
+				}
+			}
+		}
+		&.tag-orange, &.tag-freelancing {
+			&:hover, &:focus, &.active {
+				background: $orange;
+			}
+			&:active {
+				background: mix($orange, white);
+				color: mix($orange, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($orange, white);
+					color: mix($orange, $slate);
+				}
+				&:active {
+					background: mix($orange, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($orange, .2);
+					}
+				}
+			}
+		}
+		&.tag-gold, &.tag-baking {
+			&:hover, &:focus, &.active {
+				background: $gold;
+			}
+			&:active {
+				background: mix($gold, white);
+				color: mix($gold, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($gold, white);
+					color: mix($gold, $slate);
+				}
+				&:active {
+					background: mix($gold, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($gold, .2);
+					}
+				}
+			}
+		}
+		&.tag-moola, &.tag-photography {
+			&:hover, &:focus, &.active {
+				background: $moola;
+			}
+			&:active {
+				background: mix($moola, white);
+				color: mix($moola, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($moola, white);
+					color: mix($moola, $slate);
+				}
+				&:active {
+					background: mix($moola, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($moola, .2);
+					}
+				}
+			}
+		}
+		&.tag-azure, &.tag-tech {
+			&:hover, &:focus, &.active {
+				background: $azure;
+			}
+			&:active {
+				background: mix($azure, white);
+				color: mix($azure, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($azure, white);
+					color: mix($azure, $slate);
+				}
+				&:active {
+					background: mix($azure, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($azure, .2);
+					}
+				}
+			}
+		}
+		&.tag-cobalt, &.tag-household {
+			&:hover, &:focus, &.active {
+				background: $cobalt;
+			}
+			&:active {
+				background: mix($cobalt, white);
+				color: mix($cobalt, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($cobalt, white);
+					color: mix($cobalt, $slate);
+				}
+				&:active {
+					background: mix($cobalt, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($cobalt, .2);
+					}
+				}
+			}
+		}
+		&.tag-eggplant, &.tag-athletic {
+			&:hover, &:focus, &.active {
+				background: $eggplant;
+			}
+			&:active {
+				background: mix($eggplant, white);
+				color: mix($eggplant, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($eggplant, white);
+					color: mix($eggplant, $slate);
+				}
+				&:active {
+					background: mix($eggplant, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($eggplant, .2);
+					}
+				}
+			}
+		}
+		&.tag-cerise, &.tag-academic {
+			&:hover, &:focus, &.active {
+				background: $cerise;
+			}
+			&:active {
+				background: mix($cerise, white);
+				color: mix($cerise, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($cerise, white);
+					color: mix($cerise, $slate);
+				}
+				&:active {
+					background: mix($cerise, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($cerise, .2);
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width: 768px) {
+	.tag-adlib {
+		width: 142px;
+		height: 44px;
+		font-size: 24px;
+		svg {
+			&.mobile {
+				display: none;
+			}
+			&.desktop {
+				display: block;
+			}
+		}
+	}
+}
+
 /* ---------- TAG LISTS */
 .tag-list, .pf-tags {
 	@include flex;
