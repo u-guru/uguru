@@ -444,11 +444,22 @@ angular.module('uguru.dev.controllers')
 
 
       component_obj.addTimeState = function(component, time_state, c) {
-          // if (time_state.time && time_state.properties && time_state.properties.length) {
+          if (timeStateAlreadyExists(component, time_state.time)) {
+            var preExistingTimeState = timeStateAlreadyExists(component, time_state.time);
+            for (var i = 0; i < time_state.properties.length; i++) {
+              preExistingTimeState.properties.push(time_state.properties[i]);
+            }
+            LoadingService.showMsg('Time state ' + time_state.time + ' already exists - so just adding to original one', 3000);
+            time_state.time = null;
+            time_state.properties = [];
+          }
+          else if (time_state.time && time_state.properties && time_state.properties.length) {
             component.time_states.push(JSON.parse(JSON.stringify(time_state)));
             time_state.time = null;
             time_state.properties = [];
-          // }
+          } else {
+            LoadingService.showMsg('Please fill the time state and/or add at least one property');
+          }
       }
       component_obj.addPropertyField = function(component, time_state) {
           $scope.selectPropertyActivated = true;
@@ -456,8 +467,13 @@ angular.module('uguru.dev.controllers')
           $scope.time_state_selected = time_state;
         }
       component_obj.confirmPropertyField = confirmPropertyField
-      component_obj.removePropertyField = function(time_state, property_index) {
+      component_obj.removePropertyField = function(component, time_state, property_index, time_index) {
         time_state.properties.splice(property_index, 1);
+        if (!time_state.properties.length) {
+            if (confirm('Also delete time state t=' + time_state.time + '?')) {
+              component.time_states.splice(time_index, 1);
+            }
+        }
       }
 
       if (!component_obj.empty_time_state) {
@@ -467,6 +483,7 @@ angular.module('uguru.dev.controllers')
 
 
     function confirmPropertyField(component, time_state, property, _type, value) {
+
       if (_type === 'css_animation') {
         value = {options:['Animate In', 'Animate Out'], selectedIndex:0, size:'small'};
       }
@@ -475,6 +492,16 @@ angular.module('uguru.dev.controllers')
       }
       $scope.selectPropertyActivated = false;
       $scope.component_selected = null;
+    }
+
+    function timeStateAlreadyExists(component, time) {
+      for (var i =0; i < component.time_states.length; i++) {
+        var indexTimeState = component.time_states[i];
+        if (indexTimeState.time === time) {
+          return indexTimeState
+        }
+      }
+      return;
     }
 
     function initComponentObj(cloned_elem, elem, selector) {
@@ -491,26 +518,41 @@ angular.module('uguru.dev.controllers')
         init_time_state: {
             time: -1,
             properties:[
-              {name: 'opacity', value:0, type: 'css_text'},
-              {name: 'visibility', value:"visible", type: 'css_text'},
-              {name:'display', value:'inherit', type: 'css_text'}
+              {name: 'opacity', value:1, type: 'css_text'},
+              {name: 'visibility', value:"visible", type: 'css_text'}
             ]
         },
         time_states: [],
         addTimeState: function(component, time_state, c) {
-          // if (time_state.time && time_state.properties && time_state.properties.length) {
+          if (timeStateAlreadyExists(component, time_state.time)) {
+            var preExistingTimeState = timeStateAlreadyExists(component, time_state.time);
+            for (var i = 0; i < time_state.properties.length; i++) {
+              preExistingTimeState.properties.push(time_state.properties[i]);
+            }
+            LoadingService.showMsg('Time state ' + time_state.time + ' already exists - so just adding to original one', 3000);
+            time_state.time = null;
+            time_state.properties = [];
+          }
+          else if (time_state.time && time_state.properties && time_state.properties.length) {
             component.time_states.push(JSON.parse(JSON.stringify(time_state)));
             time_state.time = null;
             time_state.properties = [];
-          // }
+          } else {
+            LoadingService.showMsg('Please fill the time state and/or add at least one property');
+          }
         },
         addPropertyField: function(component, time_state) {
           $scope.selectPropertyActivated = true;
           $scope.component_selected = component;
           $scope.time_state_selected = time_state;
         },
-        removePropertyField: function(time_state, property_index) {
+        removePropertyField: function(component, time_state, property_index, time_index) {
           time_state.properties.splice(property_index, 1);
+          if (!time_state.properties.length) {
+            if (confirm('Also delete time state t=' + time_state.time + '?')) {
+              component.time_states.splice(time_index, 1);
+            }
+          }
         },
         confirmPropertyField:confirmPropertyField,
         empty_time_state: {time:null, properties:[]}
@@ -533,9 +575,9 @@ angular.module('uguru.dev.controllers')
     }
 
     $scope.playStateComponents = function(state_components) {
-
-      for (var i = 0; i < $scope.state_components.length; i++) {
-        var indexComponent = $scope.state_components[i];
+      console.log(state_components);
+      for (var i = 0; i < state_components.length; i++) {
+        var indexComponent = state_components[i];
         var elemComponent = document.querySelectorAll('[anim].' + indexComponent.selector)[0];
 
         for (var j = 0; j < indexComponent.time_states.length; j++) {
