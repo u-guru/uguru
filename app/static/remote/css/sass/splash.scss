@@ -1,5 +1,16 @@
 @import 'mixin';
 
+/* ---------- SPLASH UPDATES */
+#splash-one-page-pulldown {
+	@include prefix(transition, all 700ms ease-in-out, webkit moz ms o);
+	@include prefix(transform, translate3d(0,-100%,0), webkit moz ms o);
+	z-index: -1000;
+	&.activate {
+		@include prefix(transform, translate3d(0,0,0), webkit moz ms o);
+		z-index: 1001;
+	}
+}
+
 /* ---------- SPLASH COMPONENTS */
 .splash-logo-guru {
 	svg {
@@ -2916,7 +2927,7 @@
 		}
 
 		// PROJECTOR
-		&#splash-projector {
+		&#splash-projector, #splash-one-page-pulldown {
 			@include flex;
 			@include flex-wrap;
 			@include flex-center;

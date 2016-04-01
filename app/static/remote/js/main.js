@@ -137,6 +137,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/team',
         templateUrl: BASE + 'templates/team.html'
   }).
+  state('root.build-demo', {
+        url: '/build-demo',
+        templateUrl: BASE + 'templates/builder.html'
+  }).
   state('root.build', {
         url: '/build',
         templateUrl: BASE + 'templates/dev/tools.build.html',
@@ -162,11 +166,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/request-public',
         templateUrl: BASE + 'templates/request.public.html'
   }).
-  state('root.credit', {
-        url: '/credit',
-        templateUrl: BASE + 'templates/credit.html'
-  }).
-
 
   //start essay
   state('root.essay-student-university', {
@@ -343,7 +342,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.timer', {
     url:'/timer',
-    templateUrl: BASE + 'templates/timer.html'
+    templateUrl: BASE + 'templates/timer.app.html',
+    controller: 'TimerAppController'
   }).
   state('root.student-home', {
     url:'/student-home',
@@ -485,11 +485,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/courses',
         templateUrl: BASE + 'templates/courses.html',
         controller: 'CoursesController'
-  }).
-  state('root.demo', {
-        url: '/demo',
-        templateUrl: BASE + 'templates/demos.html'
-        // controller: 'gpaController'
   }).
   state('root.gpa', {
         url: '/gpa',

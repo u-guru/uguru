@@ -63,7 +63,6 @@ function CTAService($timeout) {
 
         window.addEventListener('keydown', function(evt) {
           evt = evt || window.event;
-          console.log('evt');
           for (var i = 0; i < key_triggers.length; i++) {
             var indexKey = key_triggers[i];
             if (indexKey in ctaKeyCodeMappings && ctaKeyCodeMappings[indexKey] === evt.keyCode) {

@@ -132,6 +132,28 @@ angular.module('uguru.components', [])
     }
   };
 }])
+.directive("checkbox", function() {
+  return {
+    templateUrl: BASE + 'templates/components/dev/input/checkbox.tpl',
+    scope: {
+        onPropChange: '=onChange',
+        label: '=label',
+        value: '=value',
+        checked:"=checked"
+    },
+    restrict: 'E',
+    link: function( scope, element, attr ) {
+
+      if (!scope.label || !scope.label.length) {
+        scope.label = 'Checkbox Label'
+      }
+      scope.checked = scope.checked || false;
+      if (scope.onPropChange) {
+        // scope.onPropChange(scope, )
+      }
+    }
+  }
+})
 .directive("tooltip", function() {
   return {
     templateUrl: BASE + 'templates/components/dev/tooltip.tpl',
