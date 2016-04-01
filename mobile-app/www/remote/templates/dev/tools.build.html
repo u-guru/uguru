@@ -2,8 +2,11 @@
     <div id="build">
         <main>
             <nav class="build-main-top">
-                <div>
-                    <h1>Animation</h1>
+                <div class='relative left-0 top-0 full-y' style='margin-left:15px;max-height:50px; max-width:50px;'>
+                    <user-icon class='p20xy' style='height:50px; width:50px;' url="user.profile_url"> </user-icon>
+                </div>
+                <div class='absolute left-0' style='margin-left:70px;'>
+                    <h1>{{user.name.split(' ')[0]}}'s Animation</h1>
                 </div>
                 <div>
                     <div ng-if="false">
@@ -93,18 +96,27 @@
                 <div class='fixed bg-slate-90p top-0 right-0 expanded flex-wrap-center flex-stretch' ng-show="selectPropertyActivated">
                     <a class='absolute weight-700 high-index-z bg-charcoal txt-5 p20xy txt-white right-0 m10xy top-0' ng-click='selectPropertyActivated = false;'>Close</a>
                     <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p">
+                        <li class='flex-wrap-center full-x p20xy txt-7 txt-white text-center'>
+                            Common CSS Properties
+                        </li>
                         <li ng-repeat='property in properties.common_css_styles |limitTo:100 track by $index'>
-                            <button ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property)' class='txt-1 bg-moxie normal height-36 radius-2'>{{property}}</button>
+                            <button ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property, "css_text")' class='txt-1 bg-moxie normal height-36 radius-2'>{{property}}</button>
                         </li>
                     </ul>
                     <ul class="flex-wrap-start p15-grid full-x">
+                        <li class='flex-wrap-center full-x p20xy txt-7 txt-white text-center'>
+                            Supported Animation Classes
+                        </li>
                         <li ng-repeat='property in properties.supported_animations | limitTo:100 track by $index'>
-                            <button ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property)' class='txt-1 bg-moxie normal height-36 radius-2'>{{property}}</button>
+                            <button ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property, "css_animation" )' class='txt-1 bg-moxie normal height-36 radius-2'>{{property}}</button>
                         </li>
                     </ul>
                     <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p">
+                        <li class='flex-wrap-center full-x p20xy txt-7 txt-white text-center'>
+                            Supported Regular CSS Classes
+                        </li>
                         <li ng-repeat='property in properties.supported_classes | limitTo:100 track by $index'>
-                            <button ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property)' class='txt-1 bg-moxie normal height-36 radius-2'>{{property}}</button>
+                            <button ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property, "css_class")' class='txt-1 bg-moxie normal height-36 radius-2'>{{property}}</button>
                         </li>
                     </ul>
                 </div>
@@ -145,9 +157,7 @@
                                     <button ng-repeat='property in component.init_time_state.properties' class="bg-campus">{{property.name}}</button>
                                 </div>
                                 <div class='flex-wrap relative flex-start'>
-                                    <checkbox class='flex-start text-left p05y full-x' ng-if='property.name === "opacity"' ng-repeat='property in component.init_time_state.properties' label="property.value || '0'" checked="property.value > 0" on-change="property.onChange(property)"/></checkbox>
-                                    <checkbox class='full-x text-left flex-start'  ng-repeat='property in component.init_time_state.properties' label="property.value" ng-if='property.name === "visibility"' checked="property.value === 'visible'"/></checkbox>
-
+                                    <input class="radius-2" ng-repeat='property in component.init_time_state.properties' placeholder="value" ng-model="property.value"/>
                                 </div>
                                 <div>
                                     <a ng-repeat='property in component.init_time_state.properties' ng-click='component.removePropertyField(component.init_time_state, $index)'>&times;</a>
@@ -156,12 +166,15 @@
                             <li ng-if='component.time_states && component.time_states.length' ng-repeat='time_state in component.time_states'>
                                 <div><span class="radius-2-left">@T</span><span class="radius-2-right">{{time_state.time}}</span></div>
                                 <div>
-                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_class"'>.{{property.name}}</span>
-                                    <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.name}}</span>
+                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2">.{{property.name}}
+                                        <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
+                                    </span>
+                                    <!-- <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.name}}</span> -->
                                 </div>
                                 <div>
                                     <span ng-repeat='property in time_state.properties' class="radius-2 opacity-50" ng-if='property.type === "css_class"'>{{property.value}}</span>
                                     <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.value}}</span>
+                                    <dropdown ng-if='property.type === "css_animation"' ng-repeat="property in time_state.properties" ng-model="property.value"> </dropdown>
                                 </div>
                                 <div>
                                     <a ng-repeat='property in time_state.properties' ng-click='component.removePropertyField(time_state, $index)'>&times;</a>
@@ -172,15 +185,18 @@
                                 <div>
                                     <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_class"'>.{{property.name || 'sample property'}}</span>
                                     <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_text"'>{{property.name || 'sample property'}}</span>
-                                    <button class="bg-campus" ng-click='component.addPropertyField(component, component.empty_time_state)'>CSS</button>
-                                    <dropdown ng-model="component.css_class_dropdown"></dropdown>
+                                    <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_animation"'>{{property.name || 'sample property'}}</span>
+                                    <button class="bg-campus" ng-click='component.addPropertyField(component, component.empty_time_state)'>+ Property</button>
                                 </div>
                                 <div>
-                                    <input class="radius-2 opacity-50" disabled ng-repeat='property in component.empty_time_state.properties' placeholder="value" ng-model="property.value" ng-if='property.type === "css_class"'/>
+                                    <div class="radius-2 opacity-50" disabled ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_class"'>NA</div>
                                     <input class="radius-2" ng-repeat='property in component.empty_time_state.properties' placeholder="value" ng-model="property.value" ng-if='property.type === "css_text"'/>
+                                    <div class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_animation"'>
+                                        <dropdown ng-model="property.value"> </dropdown>
+                                    </div>
                                 </div>
                                 <div>
-                                    <a ng-repeat='property in component.empty_time_state.properties'>&times;</a>
+                                    <a  ng-click='component.removePropertyField(component.empty_time_state, $index)' ng-repeat='property in component.empty_time_state.properties'>&times;</a>
                                 </div>
                                 <div class="full-x">
                                     <button class='bg-moxie height-36 txt-20 radius-2' ng-click='component.addTimeState(component, component.empty_time_state)'>Save</button>

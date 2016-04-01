@@ -12,7 +12,8 @@ angular.module('uguru.dev.controllers')
   'Restangular',
   '$compile',
   '$sce',
-  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce) {
+  'AnimationService',
+  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService) {
 
 
 
@@ -30,7 +31,6 @@ angular.module('uguru.dev.controllers')
 
     var mostUsedCSSProperties = ["transform", "-webkit-transform", "opacity", "-webkit-animation-name", "animation-name", "-webkit-animation-timing-function", "animation-timing-function", "-webkit-transform-origin", "transform-origin", "backface-visibility", "-webkit-backface-visibility", "animation-duration", "-webkit-animation-duration", "-webkit-animation-fill-mode", "-webkit-animation-iteration-count", "animation-iteration-count", "animation-fill-mode", "z-index", "width", "visibility", "top", "float", "position", "margin", "left", "height", "background", "background-color", "display", "border", "color", "padding"];
     var supportedAnimationStyles = [];
-    var masterAnimationClasses = [];
     $scope.properties = {
       common_css_styles: mostUsedCSSProperties,
       supported_animations: getAnimationClasses(['animate', 'animation', 'magic']),
@@ -41,6 +41,7 @@ angular.module('uguru.dev.controllers')
     var utilityClasses = getAnimationClasses(['utility'])
 
     function getAnimationClasses(arr_animation_css_files) {
+      var masterAnimationClasses = [];
       for (var i = 0; i < document.styleSheets.length; i++) {
         var indexStyleSheet = document.styleSheets[i];
         if ('href' in indexStyleSheet && indexStyleSheet.href) {
@@ -60,7 +61,6 @@ angular.module('uguru.dev.controllers')
           }
         }
       }
-      console.log(masterAnimationClasses.length, 'classes exported from', arr_animation_css_files.join(" "), 'css files');
       return masterAnimationClasses;
     }
 
@@ -284,6 +284,11 @@ angular.module('uguru.dev.controllers')
           $scope.current_states = initializeAllStates(ref);
         }
 
+        $timeout(function() {
+          applyInitPropertiesForState($scope.current_states.states[0]);
+        }, 2500)
+
+
           currentTemplate = elem;
           currentRef = ref;
           injectAllAllChildComponentsForOneState($scope.current_states.states[0].components, elem, ref, function() {
@@ -296,6 +301,25 @@ angular.module('uguru.dev.controllers')
           }
         })
       }, 2000)
+    }
+
+    function applyInitPropertiesForState(state) {
+      if (!state.components) {
+        return;
+      }
+      for (var i = 0; i < state.components.length; i++) {
+        var indexComponent = state.components[i];
+
+        if (indexComponent.init_time_state) {
+
+          var indexComponentInitTimeState = indexComponent.init_time_state;
+          if (indexComponentInitTimeState.properties && indexComponentInitTimeState.properties.length) {
+            var elemComponent = document.querySelectorAll('[anim].' + indexComponent.selector)[0];
+
+            applyComponentPropertiesAtTime(indexComponentInitTimeState, elemComponent);
+          }
+        }
+      }
     }
 
     function recursiveClone(elem) {
@@ -398,8 +422,8 @@ angular.module('uguru.dev.controllers')
         component_obj.init_time_state = {
             time: -1,
             properties:[
-              {name: 'opacity', value:0, onChange: onOpacityChange},
-              {name: 'visibility', value:"visible"},
+              {name: 'opacity', value:"1", onPropChange: onOpacityChange, type:'css_text'},
+              {name: 'visibility', value:"visible", type: 'css_text'},
             ]
         }
       }
@@ -431,13 +455,7 @@ angular.module('uguru.dev.controllers')
           $scope.component_selected = component;
           $scope.time_state_selected = time_state;
         }
-      component_obj.confirmPropertyField = function(component, time_state, property, _type, value) {
-          if (time_state.properties) {
-            time_state.properties.push({name: property.name, type: _type ||'css_text', value: value || 'absolute'})
-          }
-          $scope.selectPropertyActivated = false;
-          $scope.component_selected = null;
-        }
+      component_obj.confirmPropertyField = confirmPropertyField
       component_obj.removePropertyField = function(time_state, property_index) {
         time_state.properties.splice(property_index, 1);
       }
@@ -445,6 +463,18 @@ angular.module('uguru.dev.controllers')
       if (!component_obj.empty_time_state) {
          component_obj.empty_time_state = {time:null, properties:[]};
       }
+    }
+
+
+    function confirmPropertyField(component, time_state, property, _type, value) {
+      if (_type === 'css_animation') {
+        value = {options:['Animate In', 'Animate Out'], selectedIndex:0, size:'small'};
+      }
+      if (time_state.properties) {
+        time_state.properties.push({name: property, type: _type ||'css_text', value: value || 'value plz'})
+      }
+      $scope.selectPropertyActivated = false;
+      $scope.component_selected = null;
     }
 
     function initComponentObj(cloned_elem, elem, selector) {
@@ -461,9 +491,9 @@ angular.module('uguru.dev.controllers')
         init_time_state: {
             time: -1,
             properties:[
-              {name: 'opacity', value:0},
-              {name: 'visibility', value:"visible"},
-              {name:'display', value:'inherit'}
+              {name: 'opacity', value:0, type: 'css_text'},
+              {name: 'visibility', value:"visible", type: 'css_text'},
+              {name:'display', value:'inherit', type: 'css_text'}
             ]
         },
         time_states: [],
@@ -516,16 +546,34 @@ angular.module('uguru.dev.controllers')
 
     }
 
+
+
     function applyComponentPropertiesAtTime(time_state, component) {
+        var delay = 0;
+        if (time_state.time === -1) {
+          var delay = 0;
+        } else {
+          delay = parseFloat(time_state.time)
+        }
         $timeout(function() {
           for (var i = 0; i < time_state.properties.length; i++) {
             if (time_state.properties[i].type === 'css_text') {
               component.style[time_state.properties[i].name] = time_state.properties[i].value;
             } else if (time_state.properties[i].type === 'css_class') {
               component.classList.add(time_state.properties[i].name);
+            } else if (time_state.properties[i].type === 'css_animation') {
+              var animationPropertyDropdown = time_state.properties[i].value;
+              var animationPropertyDropdownValue = animationPropertyDropdown.options[animationPropertyDropdown.selectedIndex];
+              if (animationPropertyDropdownValue === "Animate Out") {
+                AnimationService.animateOut(component, time_state.properties[i].name);
+              } else {
+                AnimationService.animateIn(component, time_state.properties[i].name);
+              }
+
+
             }
           }
-        }, parseFloat(time_state.time))
+        }, delay)
       }
 
     function processComputedStyle(_dict) {
