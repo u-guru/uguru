@@ -529,6 +529,9 @@ angular.module('uguru.dev.controllers')
             for (var i = 0; i < time_state.properties.length; i++) {
               preExistingTimeState.properties.push(time_state.properties[i]);
             }
+            LoadingService.showMsg('Time state ' + time_state.time + ' already exists - so just adding to original one', 3000);
+            time_state.time = null;
+            time_state.properties = [];
           }
           else if (time_state.time && time_state.properties && time_state.properties.length) {
             component.time_states.push(JSON.parse(JSON.stringify(time_state)));
