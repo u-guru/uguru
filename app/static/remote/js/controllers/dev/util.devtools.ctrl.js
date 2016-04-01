@@ -491,9 +491,8 @@ angular.module('uguru.dev.controllers')
         init_time_state: {
             time: -1,
             properties:[
-              {name: 'opacity', value:0, type: 'css_text'},
-              {name: 'visibility', value:"visible", type: 'css_text'},
-              {name:'display', value:'inherit', type: 'css_text'}
+              {name: 'opacity', value:1, type: 'css_text'},
+              {name: 'visibility', value:"visible", type: 'css_text'}
             ]
         },
         time_states: [],
