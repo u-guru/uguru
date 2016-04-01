@@ -285,24 +285,24 @@ angular.module('uguru.util.controllers')
         };
 
 
-        if ($state.current.name !== 'root.universities') {
-            if (($scope.university && $scope.university.id)) {
-                University.getPopularCourses($scope.university.id, $scope);
-                University.getMajors($scope.university.id, $scope);
-            } else if ($scope.user.university && $scope.user.university_id) {
-                University.getPopularCourses($scope.user.university_id, $scope);
-                University.getMajors($scope.user.university_id, $scope);
-            }
-        }
+        // if ($state.current.name !== 'root.universities') {
+        //     if (($scope.university && $scope.university.id)) {
+        //         University.getPopularCourses($scope.university.id, $scope);
+        //         University.getMajors($scope.university.id, $scope);
+        //     } else if ($scope.user.university && $scope.user.university_id) {
+        //         University.getPopularCourses($scope.user.university_id, $scope);
+        //         University.getMajors($scope.user.university_id, $scope);
+        //     }
+        // }
 
 
-        var saveCategoriesToRootScope = function(categories) {
+        // var saveCategoriesToRootScope = function(categories) {
 
-            $scope.categories = categories.filter(function(category, index) {
-              return category.is_active;
-            })
-        }
-        $scope.getCategories(saveCategoriesToRootScope)
+        //     $scope.categories = categories.filter(function(category, index) {
+        //       return category.is_active;
+        //     })
+        // }
+        // $scope.getCategories(saveCategoriesToRootScope)
 
         $scope.rootUser = User;
 
@@ -767,52 +767,6 @@ angular.module('uguru.util.controllers')
             }, false);
         });
 
-        // if (window.location.href.indexOf('/profile/') > 0) {
-        //     console.log('redirecting...')
-        //     $state.go('^.profiles', { profileId: window.location.href.split('/profiles/')[1] });
-        // } else if ($scope.user && $scope.user.guru_mode && !$scope.autoRedirects) {
-
-        //     LoadingService.show();
-        //     $ionicViewSwitcher.nextDirection('enter');
-        //     if (LOCAL) {
-        //         $state.go('^.' + _startpage);
-        //     } else {
-        //         if ($scope.desktopMode) {
-        //             $state.go('^.guru-home');
-        //         } else {
-        //             $state.go('^.guru');
-        //         }
-
-        //     }
-
-        //     $timeout(function() {
-        //         LoadingService.hide();
-        //     }, 1000);
-
-        // }
-        // else if ($scope.user && $scope.user.university_id && !$scope.autoRedirects) {
-        //     LoadingService.show();
-        //     $ionicViewSwitcher.nextDirection('enter');
-        //     if (LOCAL) {
-        //         $state.go('^.' + _startpage);
-        //     } else {
-        //         if ($scope.desktopMode) {
-        //             $state.go('^.guru-home');
-        //         } else {
-        //             $state.go('^.guru');
-        //         }
-        //     }
-        //     $timeout(function() {
-        //         LoadingService.hide();
-        //     }, 1000);
-        // }
-
-        // Override consolelog to prevent it frmo logging on the client side
-        if (!$scope.LOCAL && console.log) {
-            // console.log = function() {
-            //     return;
-            // }
-        }
 
         if ($state.current.name !== 'root.home') {
             $timeout(function() {

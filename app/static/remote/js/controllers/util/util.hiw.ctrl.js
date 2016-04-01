@@ -12,45 +12,45 @@ angular.module('uguru.util.controllers')
   'University',
   function($scope, $state, $stateParams, Restangular, AnimationService, $localstorage, $timeout, University){
 
-    if (!$scope.courses) {
-      $scope.courses = [];
-    }
+    // if (!$scope.courses) {
+    //   $scope.courses = [];
+    // }
 
-      $scope.goBackOneLevel = function() {
-        if ($scope.root.vars.university) {
-          var university = $scope.root.vars.university;
-          AnimationService.flip('^.universities', {}, {universityId:university.id, universityObj:university});
-        } else {
-          AnimationService.flip('^.home');
-        }
-      }
+    //   $scope.goBackOneLevel = function() {
+    //     if ($scope.root.vars.university) {
+    //       var university = $scope.root.vars.university;
+    //       AnimationService.flip('^.universities', {}, {universityId:university.id, universityObj:university});
+    //     } else {
+    //       AnimationService.flip('^.home');
+    //     }
+    //   }
 
-      if ($scope.root.vars.university) {
-        $scope.university = $scope.root.vars.university;
-      }
-      if ($stateParams.universityObj && !$scope.root.vars.university) {
-        $scope.university = $stateParams.universityObj;
-      }
-      $timeout(function() {
-        var localCacheUniversity = $localstorage.getObject('university');
-        if (localCacheUniversity) {
+    //   if ($scope.root.vars.university) {
+    //     $scope.university = $scope.root.vars.university;
+    //   }
+    //   if ($stateParams.universityObj && !$scope.root.vars.university) {
+    //     $scope.university = $stateParams.universityObj;
+    //   }
+    //   $timeout(function() {
+    //     var localCacheUniversity = $localstorage.getObject('university');
+    //     if (localCacheUniversity) {
 
-          $scope.university = localCacheUniversity;
-          $scope.root.vars.university = localCacheUniversity;
-          console.log('getting courses');
-          loadUniversityCourses($scope.university.id);
-        }
-      });
+    //       $scope.university = localCacheUniversity;
+    //       $scope.root.vars.university = localCacheUniversity;
+    //       console.log('getting courses');
+    //       loadUniversityCourses($scope.university.id);
+    //     }
+    //   });
 
-      var loadUniversityCourses = function(university_id) {
-        if (!$scope.courses.length) {
-          var loadingCourseCallback = function(scope, courses) {
-            console.log('courses have loaded', courses.length);
-            $scope.university.popular_courses = courses;
-          }
-          University.getPopularCourses(university_id, $scope, loadingCourseCallback);
-        }
-      }
+    //   var loadUniversityCourses = function(university_id) {
+    //     if (!$scope.courses.length) {
+    //       var loadingCourseCallback = function(scope, courses) {
+    //         console.log('courses have loaded', courses.length);
+    //         $scope.university.popular_courses = courses;
+    //       }
+    //       University.getPopularCourses(university_id, $scope, loadingCourseCallback);
+    //     }
+    //   }
 
 
 

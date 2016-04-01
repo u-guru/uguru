@@ -40,7 +40,6 @@ function CTAService($timeout) {
 
   var bindCtaToBoxElem = function(box_elem, modal_elem, show_callback, box_selector, key_triggers) {
     key_triggers = key_triggers || [];
-    console.log(key_triggers);
     ctaFuncDict[box_selector] = function() {
 
       ctaCloseFuncDict[box_selector]  = cta(box_elem, modal_elem, ctaOptions, function() {
@@ -64,7 +63,6 @@ function CTAService($timeout) {
 
         window.addEventListener('keydown', function(evt) {
           evt = evt || window.event;
-          console.log('evt');
           for (var i = 0; i < key_triggers.length; i++) {
             var indexKey = key_triggers[i];
             if (indexKey in ctaKeyCodeMappings && ctaKeyCodeMappings[indexKey] === evt.keyCode) {
@@ -90,8 +88,6 @@ function CTAService($timeout) {
     var modalElem = document.querySelector(modalElemId);
     //if both dont exist dont do anything
     if (!(parentElem && boxElem && modalElem)) {
-      console.log('ERROR: Could not locate elems', boxSelector, parentSelector)
-      console.log(parentElem, boxElem, modalElem);
       return false;
     }
     ctaParentDict[boxSelector] = parentSelector;

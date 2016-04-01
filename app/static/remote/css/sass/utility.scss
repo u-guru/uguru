@@ -247,8 +247,8 @@ input, fieldset {
 		width: 100%;
 		height: 50px;
 		h1 {
-			font-size: 20px;
-			text-transform: none;
+			font-size: 20px!important;
+			text-transform: none!important;
 		}
 	}
 	> *:not(header) {
@@ -259,7 +259,7 @@ input, fieldset {
 		> header {
 			height: 100px;
 			h1 {
-				font-size: 36px;
+				font-size: 36px!important;
 			}
 		}
 		> *:not(header) {
@@ -724,15 +724,15 @@ input, fieldset {
 	bottom: 64px !important;
 }
 .max-800 {
-	max-width: 1000px;
+	max-width: 800px;
 	margin: 0 auto;
 }
 .max-830 {
-	max-width: 1030px;
+	max-width: 830px;
 	margin: 0 auto;
 }
 .max-860 {
-	max-width: 1060px;
+	max-width: 860px;
 	margin: 0 auto;
 }
 .max-1000 {
@@ -786,6 +786,9 @@ input, fieldset {
 .two-thirds {
 	height: calc(100% / 3 * 2);
 	overflow: auto;
+}
+.two-thirds-x {
+	width: calc(100% / 3 * 2);
 }
 .half {
 	height: 50%;
@@ -911,16 +914,34 @@ input, fieldset {
 }
 // radius
 .radius-2 {
-	border-radius: 2px;
+	border-radius: 2px!important;
 }
 .radius-4 {
-	border-radius: 4px;
+	border-radius: 4px!important;
 }
 .radius-10 {
-	border-radius: 10px;
+	border-radius: 10px!important;
 }
+
+.radius-2-top {
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+}
+.radius-2-bottom {
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+.radius-2-left {
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+.radius-2-right {
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+
 .round {
-	@include round;
+	border-radius: 1000px!important;
 }
 // SVG
 .svg-white {
@@ -1096,6 +1117,9 @@ input, fieldset {
 }
 .txt-slate {
 	color: $slate!important;
+}
+.txt-slate-light {
+	color: lighten($slate, 15%)!important;
 }
 .txt-taupe {
 	color: $taupe!important;
@@ -1843,6 +1867,93 @@ input, fieldset {
 }
 .bg-in {
 	background: $instagram;
+}
+
+.border-1 {
+	border-width: 1px!important;
+	border-style: solid;
+}
+.border-2 {
+	border-width: 2px!important;
+	border-style: solid;
+}
+.border-3 {
+	border-width: 3px!important;
+	border-style: solid;
+}
+.border-4 {
+	border-width: 4px!important;
+	border-style: solid;
+}
+.border-5 {
+	border-width: 5px!important;
+	border-style: solid;
+}
+.border-10 {
+	border-width: 10px!important;
+	border-style: solid;
+}
+
+.border-1-bottom {
+	border-bottom: 1px solid;
+}
+.border-1-left {
+	border-left: 1px solid;
+}
+.border-1-right {
+	border-right: 1px solid;
+}
+.border-1-top {
+	border-top: 1px solid;
+}
+
+.border-2-bottom {
+	border-bottom: 2px solid;
+}
+.border-2-left {
+	border-left: 2px solid;
+}
+.border-2-right {
+	border-right: 2px solid;
+}
+.border-2-top {
+	border-top: 2px solid;
+}
+
+.border-5-bottom {
+	border-bottom: 5px solid;
+}
+.border-5-left {
+	border-left: 5px solid;
+}
+.border-5-right {
+	border-right: 5px solid;
+}
+.border-5-top {
+	border-top: 5px solid;
+}
+
+.border-10-bottom {
+	border-bottom: 10px solid;
+}
+.border-10-left {
+	border-left: 10px solid;
+}
+.border-10-right {
+	border-right: 10px solid;
+}
+.border-10-top {
+	border-top: 10px solid;
+}
+
+.border-dashed {
+	border-style: dashed;
+}
+.border-dotted {
+	border-style: dotted;
+}
+.border-double {
+	border-style: double;
 }
 
 .border-charcoal {

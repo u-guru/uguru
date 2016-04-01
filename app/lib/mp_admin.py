@@ -671,6 +671,30 @@ if 'get' in args or '-g' in args:
         from pprint import pprint
         pprint(option_arr_keys)
 
+    if len(args) == 4:
+        selected_option = args[2]
+        selected_suboption = args[3]
+        mp_dict = getMostUpdatedMPElements()
+
+        option_arr = mp_dict[selected_option.split(':')[0]]
+        option_arr_keys = [option['ref'] for option in option_arr]
+        from pprint import pprint
+        print "\n\n found these options, please select one to get more information"
+        pprint(option_arr_keys)
+        print "\n\n"
+        selected_answer = raw_input("Please choose one of these %s to get more information\n\n>>>" % selected_option)
+        while selected_answer not in option_arr_keys:
+            selected_answer = "\n\nIncorrect answer please choose one of these options:\n\n"
+            pprint(option_arr_keys)
+            print "\n\n"
+            selected_answer = raw_input("Please try again!\n\n>>>")
+            print "\n\n"
+        results = [obj for obj in mp_dict[selected_option] if obj.get('ref') == selected_answer]
+        if len(results):
+            next_option = results[0]
+        print "\n\n found these testing states"
+        pprint(next_option['element_states'])
+
 
 if 'edit' in args or '-e' in args:
     if len(args) == 3:

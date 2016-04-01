@@ -33,6 +33,14 @@ angular.module('uguru.util.controllers')
      AnimationService) {
 
     $scope.nav = {activate: true};
+    $scope.mad_lib = {activate: false};
+    $scope.activate = {
+      pulldown: false
+    }
+
+    $timeout(function() {
+      $scope.mad_lib.activate = true;
+    }, 5000)
 
     $scope.demographics = User.demographics;
     $scope.saveDemographic = saveDemographic;
@@ -993,39 +1001,63 @@ angular.module('uguru.util.controllers')
       }
     }
 
-    $scope.closeSingleProjector = function() {
-      $scope.singleProjectorActivate = false;
-      $scope.root.vars.showSidebarOneProjector = $scope.showSidebarOneProjector;
-      if ($scope.page.swipers.main.slides.length > 1) {
-        $scope.scrollToSection('#home-splash');
-      } else {
-        moveProjectorToBottom($scope.page.activeProjectorIndex);
-      }
-    }
+    // $scope.closeSingleProjector = function() {
+    //   $scope.singleProjectorActivate = false;
+    //   $scope.root.vars.showSidebarOneProjector = $scope.showSidebarOneProjector;
+    //   if ($scope.page.swipers.main.slides.length > 1) {
+    //     $scope.scrollToSection('#home-splash');
+    //   } else {
+    //     moveProjectorToBottom($scope.page.activeProjectorIndex);
+    //   }
+    // }
 
-    $scope.switchToHiwScene = function(index) {
-      var currentActive = document.querySelector('.how-scene .hiw-single-scene.active-scene');
-      if (currentActive) {
-        currentActive.classList.remove('active-scene');
-        currentActive.classList.add('clear');
-      }
-      var selectedIndexScene = document.querySelector('.how-scene-' + index);
-      if (selectedIndexScene) {
-        selectedIndexScene.classList.add('active-scene', 'activate');
-      }
-    }
+    // $scope.switchToHiwScene = function(index) {
+    //   var currentActive = document.querySelector('.how-scene .hiw-single-scene.active-scene');
+    //   if (currentActive) {
+    //     currentActive.classList.remove('active-scene');
+    //     currentActive.classList.add('clear');
+    //   }
+    //   var selectedIndexScene = document.querySelector('.how-scene-' + index);
+    //   if (selectedIndexScene) {
+    //     selectedIndexScene.classList.add('active-scene', 'activate');
+    //   }
+    // }
 
-    $scope.switchToBgScene = function(index) {
-      var currentActive = document.querySelector('.bg-scene .bg-single-scene.active-scene');
-      if (currentActive) {
-        currentActive.classList.remove('active-scene');
-        currentActive.classList.add('clear');
+    // $scope.switchToBgScene = function(index) {
+    //   var currentActive = document.querySelector('.bg-scene .bg-single-scene.active-scene');
+    //   if (currentActive) {
+    //     currentActive.classList.remove('active-scene');
+    //     currentActive.classList.add('clear');
+    //   }
+    //   var selectedIndexScene = document.querySelector('.bg-scene-' + index);
+    //   if (selectedIndexScene) {
+    //     selectedIndexScene.classList.add('active-scene', 'activate');
+    //   }
+    // }
+
+    $scope.activate.watcher = $scope.$watch('activate.state', function(newValue, oldValue) {
+      switch (newValue) {
+
+            case 1:
+              //init map
+              break;
+            case 2: //api call
+              console.log(newValue);
+              initSwipers(responsiveSwiperArgs, $scope.desktopMode);
+              break;
+
+            case 3:
+              //activate dropdown
+              break;
+
+            case 4:
+              //activate sidebar
+              break;
       }
-      var selectedIndexScene = document.querySelector('.bg-scene-' + index);
-      if (selectedIndexScene) {
-        selectedIndexScene.classList.add('active-scene', 'activate');
-      }
-    }
+    });
+    $timeout(function() {
+      $scope.activate.dropdown = true;
+    }, 5000)
 
     $scope.onLoad = function() {
 
@@ -1058,8 +1090,6 @@ angular.module('uguru.util.controllers')
           }
         }
       }
-
-      initSwipers(responsiveSwiperArgs, $scope.desktopMode);
 
       $scope.universities = University.getTargetted().slice();
 
@@ -1105,7 +1135,7 @@ angular.module('uguru.util.controllers')
         $timeout(function() {
           $scope.how_it_works = ContentService.generateUniversitySpecificHowItWorks($scope.university);
           $scope.become_guru = ContentService.generateUniversitySpecificBecomeGuruText($scope.university);
-          initHomeMap();
+          // initHomeMap();
           $scope.page.sidebar = SideMenuService.initHomeSideMenu($scope);
           !$scope.desktopMode && SideMenuService.initHomeModals($scope);
           $scope.initCTASplash = initCTASplash;
@@ -1115,191 +1145,191 @@ angular.module('uguru.util.controllers')
     }
 
     // should be university light color
-    function getSelectedUniversityMapStyles(university) {
-      var currentColor = university.school_color_light;
-      var currentDarkColor = university.school_color_dark;
+    // function getSelectedUniversityMapStyles(university) {
+    //   var currentColor = university.school_color_light;
+    //   var currentDarkColor = university.school_color_dark;
 
-      var selectedUniversityMapStyles = [
-          { featureType: 'all', elementType: 'labels', stylers: [
-              { visibility: 'off' }
-          ]},
-          {
-          	"featureType": "administrative",
-          	"elementType": "geometry.stroke",
-          	"stylers": [{
-          		"color": currentDarkColor
-          	}, {
-          		"lightness": 14
-          	}, {
-          		"weight": 1.4
-          	}]
-          }, {
-          	"featureType": "landscape",
-          	"elementType": "all",
-          	"stylers": [{
-          		"color": currentDarkColor
-          	}]
-          }, {
-          	"featureType": "poi",
-          	"elementType": "geometry",
-          	"stylers": [{
-          		"color": currentDarkColor
-          	}, {
-          		"lightness": 10
-          	}]
-          }, {
-          	"featureType": "poi.school",
-          	"elementType": "geometry",
-          	"stylers": [{
-          		"color": currentDarkColor
-          	}, {
-          		"lightness": 15
-          	}]
-          }, {
-          	"featureType": "road.highway",
-          	"elementType": "geometry.fill",
-          	"stylers": [{
-          		"color": currentDarkColor
-          	}, {
-          		"lightness": 80
-          	}]
-          }, {
-          	"featureType": "road.highway",
-          	"elementType": "geometry.stroke",
-          	"stylers": [{
-          		"color": currentDarkColor
-          	}, {
-          		"lightness": 50
-          	}]
-          }, {
-          	"featureType": "road.arterial",
-          	"elementType": "geometry.fill",
-          	"stylers": [{
-          		"color": currentDarkColor
-          	}, {
-          		"lightness": 80
-          	}]
-          }, {
-          	"featureType": "road.arterial",
-          	"elementType": "geometry.stroke",
-          	"stylers": [{
-          		"color": currentDarkColor
-          	}, {
-          		"lightness": 50
-          	}]
-          }, {
-          	"featureType": "road.local",
-          	"elementType": "geometry.fill",
-          	"stylers": [{
-          		"color": currentDarkColor
-          	}, {
-          		"lightness": 80
-          	}]
-          }, {
-          	"featureType": "road.local",
-          	"elementType": "geometry.stroke",
-              "stylers": [{
-          		"color": currentDarkColor
-          	}, {
-          		"lightness": 50
-          	}]
-          }, {
-          	"featureType": "transit",
-          	"elementType": "all",
-          	"stylers": [{
-          		"color": currentDarkColor
-          	}]
-          }, {
-          	"featureType": "water",
-          	"elementType": "all",
-          	"stylers": [{
-          		"color": currentDarkColor
-          	}]
-          }
-      ];
-      return selectedUniversityMapStyles
-    }
+    //   var selectedUniversityMapStyles = [
+    //       { featureType: 'all', elementType: 'labels', stylers: [
+    //           { visibility: 'off' }
+    //       ]},
+    //       {
+    //       	"featureType": "administrative",
+    //       	"elementType": "geometry.stroke",
+    //       	"stylers": [{
+    //       		"color": currentDarkColor
+    //       	}, {
+    //       		"lightness": 14
+    //       	}, {
+    //       		"weight": 1.4
+    //       	}]
+    //       }, {
+    //       	"featureType": "landscape",
+    //       	"elementType": "all",
+    //       	"stylers": [{
+    //       		"color": currentDarkColor
+    //       	}]
+    //       }, {
+    //       	"featureType": "poi",
+    //       	"elementType": "geometry",
+    //       	"stylers": [{
+    //       		"color": currentDarkColor
+    //       	}, {
+    //       		"lightness": 10
+    //       	}]
+    //       }, {
+    //       	"featureType": "poi.school",
+    //       	"elementType": "geometry",
+    //       	"stylers": [{
+    //       		"color": currentDarkColor
+    //       	}, {
+    //       		"lightness": 15
+    //       	}]
+    //       }, {
+    //       	"featureType": "road.highway",
+    //       	"elementType": "geometry.fill",
+    //       	"stylers": [{
+    //       		"color": currentDarkColor
+    //       	}, {
+    //       		"lightness": 80
+    //       	}]
+    //       }, {
+    //       	"featureType": "road.highway",
+    //       	"elementType": "geometry.stroke",
+    //       	"stylers": [{
+    //       		"color": currentDarkColor
+    //       	}, {
+    //       		"lightness": 50
+    //       	}]
+    //       }, {
+    //       	"featureType": "road.arterial",
+    //       	"elementType": "geometry.fill",
+    //       	"stylers": [{
+    //       		"color": currentDarkColor
+    //       	}, {
+    //       		"lightness": 80
+    //       	}]
+    //       }, {
+    //       	"featureType": "road.arterial",
+    //       	"elementType": "geometry.stroke",
+    //       	"stylers": [{
+    //       		"color": currentDarkColor
+    //       	}, {
+    //       		"lightness": 50
+    //       	}]
+    //       }, {
+    //       	"featureType": "road.local",
+    //       	"elementType": "geometry.fill",
+    //       	"stylers": [{
+    //       		"color": currentDarkColor
+    //       	}, {
+    //       		"lightness": 80
+    //       	}]
+    //       }, {
+    //       	"featureType": "road.local",
+    //       	"elementType": "geometry.stroke",
+    //           "stylers": [{
+    //       		"color": currentDarkColor
+    //       	}, {
+    //       		"lightness": 50
+    //       	}]
+    //       }, {
+    //       	"featureType": "transit",
+    //       	"elementType": "all",
+    //       	"stylers": [{
+    //       		"color": currentDarkColor
+    //       	}]
+    //       }, {
+    //       	"featureType": "water",
+    //       	"elementType": "all",
+    //       	"stylers": [{
+    //       		"color": currentDarkColor
+    //       	}]
+    //       }
+    //   ];
+    //   return selectedUniversityMapStyles
+    // }
 
-     $scope.getUniversityPlaces = function(university) {
-      if (university.og_map  && (!university.place_results || !university.place_results.length)) {
-        $timeout(function() {
-          $scope.$apply(function() {
-            GUtilService.getPlaceListByCoords($scope, university.og_map, {latitude: university.latitude, longitude: university.longitude}, updateMarkersOnUniversitySpecificMap);
-          })
-        })
-      }
-      // $scope.map.center = {latitude: university.latitude, university.longitude};
-    }
+    //  $scope.getUniversityPlaces = function(university) {
+    //   if (university.og_map  && (!university.place_results || !university.place_results.length)) {
+    //     $timeout(function() {
+    //       $scope.$apply(function() {
+    //         GUtilService.getPlaceListByCoords($scope, university.og_map, {latitude: university.latitude, longitude: university.longitude}, updateMarkersOnUniversitySpecificMap);
+    //       })
+    //     })
+    //   }
+    //   // $scope.map.center = {latitude: university.latitude, university.longitude};
+    // }
 
-    function translatePhoneToLeft() {
-      var splashDeviceElem = document.querySelector('.splash-device.splash-device-iphone');
-    }
+    // function translatePhoneToLeft() {
+    //   var splashDeviceElem = document.querySelector('.splash-device.splash-device-iphone');
+    // }
 
-    function initializeDynamicSelectedUniversityMap(university) {
-      university.map = {
-        control: {},
-        coords: {latitude: university.latitude, longitude: university.longitude},
-        markers: [],
-        zoom: 16,
-        // options: {styles: selectedUniversityMapStyles, scrollwheel: false, streetViewControl:false, scrollwheel:false, panControl:false,  mapTypeControl:false, style:{}, draggable:false, disableDoubleClickZoom:false, zoomControl: false},
-        options: {styles: getSelectedUniversityMapStyles(university), scrollwheel: false, streetViewControl:false, scrollwheel:false, panControl:false,  mapTypeControl:false, style:{}, draggable:false, disableDoubleClickZoom:false, zoomControl: false},
-        pan: true,
-        refresh: false,
-        events: {tilesloaded: function(map) {
-          university.og_map = map;
-          $scope.selectedUniversity.og_map = map;
-          $scope.getUniversityPlaces($scope.selectedUniversity);
-          function calcMarkerCoords(map) {
-            return function () {
-              var mapBounds = map.getBounds().getSouthWest();
-              var mapCenter = map.getCenter();
-              var dx = mapBounds.lat() - mapCenter.lat();
-              var dy = mapBounds.lng() - mapCenter.lng();
-              var newMarkerLat = mapBounds.lat() - (dx/6);
-              var newMarkerLng = mapBounds.lng() - (dy/6); //purposely dx so its a square
-              return {latitude: newMarkerLat, longitude: newMarkerLng};
-            }
-          }
-          $timeout(function() {
-            $scope.$apply(function() {
-              university.map.marker = generateSelectedUniversityMapMarkerObj(university, calcMarkerCoords(map));
-              university.mapRendered = true;
-              university.map.markers = [];
-            })
-          })
+    // function initializeDynamicSelectedUniversityMap(university) {
+    //   university.map = {
+    //     control: {},
+    //     coords: {latitude: university.latitude, longitude: university.longitude},
+    //     markers: [],
+    //     zoom: 16,
+    //     // options: {styles: selectedUniversityMapStyles, scrollwheel: false, streetViewControl:false, scrollwheel:false, panControl:false,  mapTypeControl:false, style:{}, draggable:false, disableDoubleClickZoom:false, zoomControl: false},
+    //     options: {styles: getSelectedUniversityMapStyles(university), scrollwheel: false, streetViewControl:false, scrollwheel:false, panControl:false,  mapTypeControl:false, style:{}, draggable:false, disableDoubleClickZoom:false, zoomControl: false},
+    //     pan: true,
+    //     refresh: false,
+    //     events: {tilesloaded: function(map) {
+    //       university.og_map = map;
+    //       $scope.selectedUniversity.og_map = map;
+    //       $scope.getUniversityPlaces($scope.selectedUniversity);
+    //       function calcMarkerCoords(map) {
+    //         return function () {
+    //           var mapBounds = map.getBounds().getSouthWest();
+    //           var mapCenter = map.getCenter();
+    //           var dx = mapBounds.lat() - mapCenter.lat();
+    //           var dy = mapBounds.lng() - mapCenter.lng();
+    //           var newMarkerLat = mapBounds.lat() - (dx/6);
+    //           var newMarkerLng = mapBounds.lng() - (dy/6); //purposely dx so its a square
+    //           return {latitude: newMarkerLat, longitude: newMarkerLng};
+    //         }
+    //       }
+    //       $timeout(function() {
+    //         $scope.$apply(function() {
+    //           university.map.marker = generateSelectedUniversityMapMarkerObj(university, calcMarkerCoords(map));
+    //           university.mapRendered = true;
+    //           university.map.markers = [];
+    //         })
+    //       })
 
-        }},
-      }
-      $timeout(function() {
-        if (!$scope.selectedUniversity.courses || !$scope.selectedUniversity.courses.length) {
-          getAllCourses($scope.selectedUniversity);
-        }
-      }, 5000);
-      function generateSelectedUniversityMapMarkerObj(university, calc_coords_func) {
-        obj = university;
-        var universityObj = {
-            school_color_light: obj.school_color_light,
-            banner_url: obj.banner_url,
-            school_color_dark: obj.school_color_dark,
-            name: obj.name,
-            tiny_name: obj.school_tiny_name,
-            city: obj.city,
-            state: obj.state
-        }
-        var markerObj =  {
-          coords: calc_coords_func(),
-          id: university.id,
-          control: {},
-          options: {
-            animation: google.maps.Animation.DROP,
-            icon: {url: generateUniversityImgDataURI(universityObj), size: new google.maps.Size(100, 100)},//, scaledSize: new google.maps.Size(100, 100)
-            labelClass: 'selected-university-svg-icon',
-            labelVisible: false
-          },
-        }
-        return markerObj;
-      }
-    }
+    //     }},
+    //   }
+    //   $timeout(function() {
+    //     if (!$scope.selectedUniversity.courses || !$scope.selectedUniversity.courses.length) {
+    //       getAllCourses($scope.selectedUniversity);
+    //     }
+    //   }, 5000);
+    //   function generateSelectedUniversityMapMarkerObj(university, calc_coords_func) {
+    //     obj = university;
+    //     var universityObj = {
+    //         school_color_light: obj.school_color_light,
+    //         banner_url: obj.banner_url,
+    //         school_color_dark: obj.school_color_dark,
+    //         name: obj.name,
+    //         tiny_name: obj.school_tiny_name,
+    //         city: obj.city,
+    //         state: obj.state
+    //     }
+    //     var markerObj =  {
+    //       coords: calc_coords_func(),
+    //       id: university.id,
+    //       control: {},
+    //       options: {
+    //         animation: google.maps.Animation.DROP,
+    //         icon: {url: generateUniversityImgDataURI(universityObj), size: new google.maps.Size(100, 100)},//, scaledSize: new google.maps.Size(100, 100)
+    //         labelClass: 'selected-university-svg-icon',
+    //         labelVisible: false
+    //       },
+    //     }
+    //     return markerObj;
+    //   }
+    // }
 
     function resolveStateParams() {
       if ($stateParams && $stateParams.category && $stateParams.category.id) {
@@ -1319,169 +1349,169 @@ angular.module('uguru.util.controllers')
         }
         $scope.root.loader.body.hide = true;
       }
-      initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+      // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
     }
 
-    $scope.lockFilledBlanksAndgetUniversityPlaces = function(university) {
-      // panUniversityBy(university);
-      var translateBlankOneElem = document.querySelector('.translate-blank-1');
-      translateBlankOneElem && translateBlankOneElem.parentNode && translateBlankOneElem.parentNode.classList.add('opacity-1-impt');
-      var translateBlankTwoElem = document.querySelector('.translate-blank-2');
-      translateBlankTwoElem && translateBlankTwoElem.parentNode && translateBlankTwoElem.parentNode.classList.add('opacity-1-impt');
-      $scope.getUniversityPlaces(university, true);
-    }
+    // $scope.lockFilledBlanksAndgetUniversityPlaces = function(university) {
+    //   // panUniversityBy(university);
+    //   var translateBlankOneElem = document.querySelector('.translate-blank-1');
+    //   translateBlankOneElem && translateBlankOneElem.parentNode && translateBlankOneElem.parentNode.classList.add('opacity-1-impt');
+    //   var translateBlankTwoElem = document.querySelector('.translate-blank-2');
+    //   translateBlankTwoElem && translateBlankTwoElem.parentNode && translateBlankTwoElem.parentNode.classList.add('opacity-1-impt');
+    //   $scope.getUniversityPlaces(university, true);
+    // }
 
-    $scope.getUniversityPlaces = function(university) {
-      if (!$state.current.name === 'splash-madlib')
-      if (university.og_map  && (!university.place_results || !university.place_results.length)) {
-        $timeout(function() {
-          $scope.$apply(function() {
-            GUtilService.getPlaceListByCoords($scope, university.og_map, {latitude: university.latitude, longitude: university.longitude}, updateMarkersOnUniversitySpecificMap);
-          })
-        })
-      }
-      // $scope.map.center = {latitude: university.latitude, university.longitude};
-    }
+    // $scope.getUniversityPlaces = function(university) {
+    //   if (!$state.current.name === 'splash-madlib')
+    //   if (university.og_map  && (!university.place_results || !university.place_results.length)) {
+    //     $timeout(function() {
+    //       $scope.$apply(function() {
+    //         GUtilService.getPlaceListByCoords($scope, university.og_map, {latitude: university.latitude, longitude: university.longitude}, updateMarkersOnUniversitySpecificMap);
+    //       })
+    //     })
+    //   }
+    //   // $scope.map.center = {latitude: university.latitude, university.longitude};
+    // }
 
-    function panUniversityBy(university) {
-        if (getSceneNumber() > 1) {
-          // university.og_map.setCenterWithOffset(university.map, 0, 250);
-          var viewContainer = document.querySelector('#splash-home');
-          if (viewContainer) {
-            var viewContainerRect = viewContainer.getBoundingClientRect();
-            var thirdWindowWidth = viewContainerRect.width / 3.0;
-            if (thirdWindowWidth) {
-              // console.log('panning map by', thirdWindowWidth, 'pixels')
-              $timeout(function() {
-                $scope.$apply(function() {
-                  var result = calcMarkerCoords(university.og_map);
-                  $scope.selectedUniversity.map.coords = {latitude: result.latitude, longitude: $scope.selectedUniversity.map.coords.longitude};
-                  // $scope.selectedUniversity.map.coords.longitude = $scope.selectedUniversity.map.coords.longitude;
-                })
-              })
-              // markersCopy = university.map.markers.slice();
-              // university.map.markers = [];
-              function calcMarkerCoords(map) {
-                return function () {
-                  var mapBounds = map.getBounds().getSouthWest();
-                  var mapCenter = map.getCenter();
-                  var dx = mapBounds.lat() - mapCenter.lat();
-                  var dy = mapBounds.lng() - mapCenter.lng();
-                  var newMarkerLat = mapBounds.lat() - (dx/1.5);
-                  // var newMarkerLng = mapBounds.lng() - (dy/6); //purposely dx so its a square
-                  return {latitude: newMarkerLat, longitude: mapCenter.lng()};
-                }
-              }
-              // university.map.markers = markersCopy;
-            }
-          }
-        }
-      // }, 5000);
-    }
+    // function panUniversityBy(university) {
+    //     if (getSceneNumber() > 1) {
+    //       // university.og_map.setCenterWithOffset(university.map, 0, 250);
+    //       var viewContainer = document.querySelector('#splash-home');
+    //       if (viewContainer) {
+    //         var viewContainerRect = viewContainer.getBoundingClientRect();
+    //         var thirdWindowWidth = viewContainerRect.width / 3.0;
+    //         if (thirdWindowWidth) {
+    //           // console.log('panning map by', thirdWindowWidth, 'pixels')
+    //           $timeout(function() {
+    //             $scope.$apply(function() {
+    //               var result = calcMarkerCoords(university.og_map);
+    //               $scope.selectedUniversity.map.coords = {latitude: result.latitude, longitude: $scope.selectedUniversity.map.coords.longitude};
+    //               // $scope.selectedUniversity.map.coords.longitude = $scope.selectedUniversity.map.coords.longitude;
+    //             })
+    //           })
+    //           // markersCopy = university.map.markers.slice();
+    //           // university.map.markers = [];
+    //           function calcMarkerCoords(map) {
+    //             return function () {
+    //               var mapBounds = map.getBounds().getSouthWest();
+    //               var mapCenter = map.getCenter();
+    //               var dx = mapBounds.lat() - mapCenter.lat();
+    //               var dy = mapBounds.lng() - mapCenter.lng();
+    //               var newMarkerLat = mapBounds.lat() - (dx/1.5);
+    //               // var newMarkerLng = mapBounds.lng() - (dy/6); //purposely dx so its a square
+    //               return {latitude: newMarkerLat, longitude: mapCenter.lng()};
+    //             }
+    //           }
+    //           // university.map.markers = markersCopy;
+    //         }
+    //       }
+    //     }
+    //   // }, 5000);
+    // }
 
 
-    function addRandomGurusToMarkers(markers) {
-      for (var i = 0; i < markers.length; i ++) {
-        var indexMarker = markers[i];
-        indexMarker.guru = {
-          name: 'Samir M.',
-          lastActive: 'Active 10 min ago',
-          message: "<p>Hey there<br>, I can tutor you in bio class. We'll get you an A in no time</p>",
-          profile_url: 'https://uguru.me/static/web/images/team/gabrielle.png',
-          type: 'templates/svg/wwf/' + iconGPlaceMapping('cafe') +  '.html',
-          subcategory: 'Bio 1a',
-        }
-      }
+    // function addRandomGurusToMarkers(markers) {
+    //   for (var i = 0; i < markers.length; i ++) {
+    //     var indexMarker = markers[i];
+    //     indexMarker.guru = {
+    //       name: 'Samir M.',
+    //       lastActive: 'Active 10 min ago',
+    //       message: "<p>Hey there<br>, I can tutor you in bio class. We'll get you an A in no time</p>",
+    //       profile_url: 'https://uguru.me/static/web/images/team/gabrielle.png',
+    //       type: 'templates/svg/wwf/' + iconGPlaceMapping('cafe') +  '.html',
+    //       subcategory: 'Bio 1a',
+    //     }
+    //   }
 
-      function iconGPlaceMapping(place_type) {
-        var placeIconDict = {
-          'cafe': 'coffee',
-          'meal_takeaway': 'food',
-          'restaurant': 'food',
-          'restaurant': 'coffee',
-        }
-        return placeIconDict[place_type]
-      }
-    }
+    //   function iconGPlaceMapping(place_type) {
+    //     var placeIconDict = {
+    //       'cafe': 'coffee',
+    //       'meal_takeaway': 'food',
+    //       'restaurant': 'food',
+    //       'restaurant': 'coffee',
+    //     }
+    //     return placeIconDict[place_type]
+    //   }
+    // }
 
-    function updateMarkersOnUniversitySpecificMap(university, selectedCategory) {
+    // function updateMarkersOnUniversitySpecificMap(university, selectedCategory) {
 
-      // panUniversityBy(university);
+    //   // panUniversityBy(university);
 
-      $timeout(function() {
+    //   $timeout(function() {
 
-        university.map.markers = [];
-        var markerLabelDivs = [];
-        for (var i = 0; i < 10; i++) {
-          var indexPlace = university.place_results[i];
-          var details = {
-            place_name: indexPlace.name,
-            open_now: indexPlace.opening_hours && indexPlace.opening_hours.open_now,
-            type: indexPlace.types[0],
-          }
-          if (indexPlace.photos && indexPlace.photos.length) {
-            for (var j = 0; j < indexPlace.photos.length; j++) {
-              var indexPhoto = indexPlace.photos[j];
-              if (indexPhoto && indexPhoto.getUrl) {
-                details.place_photo_url = indexPhoto.getUrl({'maxWidth': 260}, {'maxHeight': 90});
-                break;
-              }
-            }
-          }
-          university.map.markers.push(generateMarkerObj(indexPlace.geometry.location.lat(), indexPlace.geometry.location.lng(), i, selectedCategory.hex_color, details));
-        }
+    //     university.map.markers = [];
+    //     var markerLabelDivs = [];
+    //     for (var i = 0; i < 10; i++) {
+    //       var indexPlace = university.place_results[i];
+    //       var details = {
+    //         place_name: indexPlace.name,
+    //         open_now: indexPlace.opening_hours && indexPlace.opening_hours.open_now,
+    //         type: indexPlace.types[0],
+    //       }
+    //       if (indexPlace.photos && indexPlace.photos.length) {
+    //         for (var j = 0; j < indexPlace.photos.length; j++) {
+    //           var indexPhoto = indexPlace.photos[j];
+    //           if (indexPhoto && indexPhoto.getUrl) {
+    //             details.place_photo_url = indexPhoto.getUrl({'maxWidth': 260}, {'maxHeight': 90});
+    //             break;
+    //           }
+    //         }
+    //       }
+    //       university.map.markers.push(generateMarkerObj(indexPlace.geometry.location.lat(), indexPlace.geometry.location.lng(), i, selectedCategory.hex_color, details));
+    //     }
 
-        addRandomGurusToMarkers(university.map.markers);
+    //     addRandomGurusToMarkers(university.map.markers);
 
-        if ($scope.desktopMode) {
-          $timeout(function() {
-            var selectedMarkerElems = document.querySelectorAll('.university-place-marker');
-            if (!selectedMarkerElems) {
-              return;
-            }
-            var splashHeroMarkerElems = document.querySelectorAll('.splash-hero-marker')
-            if (!splashHeroMarkerElems) {
-              return;
-            }
+    //     if ($scope.desktopMode) {
+    //       $timeout(function() {
+    //         var selectedMarkerElems = document.querySelectorAll('.university-place-marker');
+    //         if (!selectedMarkerElems) {
+    //           return;
+    //         }
+    //         var splashHeroMarkerElems = document.querySelectorAll('.splash-hero-marker')
+    //         if (!splashHeroMarkerElems) {
+    //           return;
+    //         }
 
-            for (var i = 0; i < splashHeroMarkerElems.length; i++) {
-              var indexMarker = selectedMarkerElems[i];
-              $compile(indexMarker)($scope);
-              if (!indexMarker) {
-                continue;
-              }
-              indexMarker.id = 'university-place-marker-' + (i + 1);
-              var className = 'splash-hero-marker-' + (i+1);
-              var indexDOMElem = document.querySelector('.' + className);
-              indexDOMElem.classList.add('translate', 'marker-translate', 'a');
-            }
-          }, 2500);
-        }
-      }, 500)
+    //         for (var i = 0; i < splashHeroMarkerElems.length; i++) {
+    //           var indexMarker = selectedMarkerElems[i];
+    //           $compile(indexMarker)($scope);
+    //           if (!indexMarker) {
+    //             continue;
+    //           }
+    //           indexMarker.id = 'university-place-marker-' + (i + 1);
+    //           var className = 'splash-hero-marker-' + (i+1);
+    //           var indexDOMElem = document.querySelector('.' + className);
+    //           indexDOMElem.classList.add('translate', 'marker-translate', 'a');
+    //         }
+    //       }, 2500);
+    //     }
+    //   }, 500)
 
-      function generateMarkerObj(lat, lng, id, cat_hex, details) {
-        var hexColorLookupDict = {'academic': '#e6389b'}
-        var customIcon = {
-          path: google.maps.SymbolPath.CIRCLE,
-          scale: 10,
-          strokeColor:'#e6389b',
-          fillColor: hexColorLookupDict[cat_hex] || '#e6389b',
-          size: new google.maps.Size(25, 25)
-        }
-        return {
-          options: {
-            labelClass: 'university-place-marker',
-            icon: customIcon
-          },
-          coords: {latitude:lat, longitude:lng},
-          id: id,
-          details: details
-          // place: place,
-          // university: university
-        }
-      }
-      // $compile(div)($scope);
-    }
+    //   function generateMarkerObj(lat, lng, id, cat_hex, details) {
+    //     var hexColorLookupDict = {'academic': '#e6389b'}
+    //     var customIcon = {
+    //       path: google.maps.SymbolPath.CIRCLE,
+    //       scale: 10,
+    //       strokeColor:'#e6389b',
+    //       fillColor: hexColorLookupDict[cat_hex] || '#e6389b',
+    //       size: new google.maps.Size(25, 25)
+    //     }
+    //     return {
+    //       options: {
+    //         labelClass: 'university-place-marker',
+    //         icon: customIcon
+    //       },
+    //       coords: {latitude:lat, longitude:lng},
+    //       id: id,
+    //       details: details
+    //       // place: place,
+    //       // university: university
+    //     }
+    //   }
+    //   // $compile(div)($scope);
+    // }
 
     function toggleCategoryDropdown() {
       $scope.page.dropdowns.university.active = false;
@@ -1505,437 +1535,437 @@ angular.module('uguru.util.controllers')
 
     //@gabrielle
     //read other options here https://developers.google.com/maps/documentation/static-maps/intro#MapTypes
-    var staticMapOptions = {
-      scale: 1, //up to 2, only whole values
-      map_type: "roadmap", //hybrid, terrain, satellite, roadmap
-      size: "1280x1280",
-      zoom: 17
-    }
+    // var staticMapOptions = {
+    //   scale: 1, //up to 2, only whole values
+    //   map_type: "roadmap", //hybrid, terrain, satellite, roadmap
+    //   size: "1280x1280",
+    //   zoom: 17
+    // }
 
 
 
-    $scope.mapBounds = {
-      desktop: {
-        northeast: {latitude: 54, longitude:-61.50},
-        southwest: {latitude:15, longitude: -125}
-      },
-      mobile: {
-        northeast: {latitude: 20.70, longitude:-100.50},
-        southwest: {latitude:48.85, longitude: -55.90}
-      }
-    }
+    // $scope.mapBounds = {
+    //   desktop: {
+    //     northeast: {latitude: 54, longitude:-61.50},
+    //     southwest: {latitude:15, longitude: -125}
+    //   },
+    //   mobile: {
+    //     northeast: {latitude: 20.70, longitude:-100.50},
+    //     southwest: {latitude:48.85, longitude: -55.90}
+    //   }
+    // }
 
-    $scope.mapZoom = {
-        initialMobile: 2,
-        initialDesktop: 4,
-        maxZoom: 9,
-        minZoom: 1
-      }
-      var cluster = {
-        style: {
-          xl: {bg_color: '#d3242c', width:128, height:128, textSize: 18, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
-          l: {bg_color: '#df433a', width:96, height:96, textSize: 16, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
-          m: {bg_color: '#eb6248', width:84, height:84, textSize: 14, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
-          s: {bg_color: '#E5753C', width:64, height:64, textSize: 12, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
-        },
-        minClusterSize: 4, //direct correlation
-        zoomOnclick: true,
-        maxZoom: 7,
-        gridSize: 125, //direct correlation
-        customClass: "university-svg-cluster",
-        styleThreshold: [10,30,70,80] //direct correlation
-      }
+    // $scope.mapZoom = {
+    //     initialMobile: 2,
+    //     initialDesktop: 4,
+    //     maxZoom: 9,
+    //     minZoom: 1
+    //   }
+    //   var cluster = {
+    //     style: {
+    //       xl: {bg_color: '#d3242c', width:128, height:128, textSize: 18, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+    //       l: {bg_color: '#df433a', width:96, height:96, textSize: 16, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+    //       m: {bg_color: '#eb6248', width:84, height:84, textSize: 14, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+    //       s: {bg_color: '#E5753C', width:64, height:64, textSize: 12, anchorText:[0,0], anchorIcon: [0,0], textColor: "#FFFFFF", fontWeight: "600"},
+    //     },
+    //     minClusterSize: 4, //direct correlation
+    //     zoomOnclick: true,
+    //     maxZoom: 7,
+    //     gridSize: 125, //direct correlation
+    //     customClass: "university-svg-cluster",
+    //     styleThreshold: [10,30,70,80] //direct correlation
+    //   }
 
-    var styleOptions = [{ featureType: 'water', elementType: 'geometry.fill', stylers: [
-            { color: '#40484b' },
-            { visibility: 'on' }
-        ]},
-        { featureType: 'landscape', elementType: 'geometry', stylers: [
-            { color: '#51595c' },
-            { visibility: 'on' }
-        ]},
-        { featureType: 'administrative', elementType: 'geometry.fill', stylers: [
-            { color: '#51595c' },
-            { visibility: 'on' }
-        ]},
-        { featureType: 'administrative.country', elementType: 'geometry.stroke', stylers: [
-            { color: '#FFFFFF' },
-            { visibility: 'on' }
-        ]},
-        { featureType: 'administrative.province', elementType: 'geometry.stroke', stylers: [
-            { color: '#FFFFFF' },
-            { visibility: 'on' }
-        ]},
-        { featureType: 'road', elementType: 'geometry', stylers: [
-            { color: '#474e51' },
-            { visibility: 'on' }
-        ]},
-        { featureType: 'transit', elementType: 'geometry', stylers: [
-            { color: '#474e51' },
-            { visibility: 'on' }
-        ]},
-        { featureType: 'poi', elementType: 'all', stylers: [ { visibility: 'off' } ]},
-        { featureType: 'all', elementType: 'labels', stylers: [ {visibility: 'off'} ]}
-      ];
+    // var styleOptions = [{ featureType: 'water', elementType: 'geometry.fill', stylers: [
+    //         { color: '#40484b' },
+    //         { visibility: 'on' }
+    //     ]},
+    //     { featureType: 'landscape', elementType: 'geometry', stylers: [
+    //         { color: '#51595c' },
+    //         { visibility: 'on' }
+    //     ]},
+    //     { featureType: 'administrative', elementType: 'geometry.fill', stylers: [
+    //         { color: '#51595c' },
+    //         { visibility: 'on' }
+    //     ]},
+    //     { featureType: 'administrative.country', elementType: 'geometry.stroke', stylers: [
+    //         { color: '#FFFFFF' },
+    //         { visibility: 'on' }
+    //     ]},
+    //     { featureType: 'administrative.province', elementType: 'geometry.stroke', stylers: [
+    //         { color: '#FFFFFF' },
+    //         { visibility: 'on' }
+    //     ]},
+    //     { featureType: 'road', elementType: 'geometry', stylers: [
+    //         { color: '#474e51' },
+    //         { visibility: 'on' }
+    //     ]},
+    //     { featureType: 'transit', elementType: 'geometry', stylers: [
+    //         { color: '#474e51' },
+    //         { visibility: 'on' }
+    //     ]},
+    //     { featureType: 'poi', elementType: 'all', stylers: [ { visibility: 'off' } ]},
+    //     { featureType: 'all', elementType: 'labels', stylers: [ {visibility: 'off'} ]}
+    //   ];
 
-      $scope.universities = University.getTargetted();
+      // $scope.universities = University.getTargetted();
       // $scope.staticUniversityMaps = GUtilService.generateStaticMapUrls($scope.universities.slice(0, 4), staticMapOptions);
       // $scope.search_text = {university: "", matching: []};
 
-      $scope.sidebarGetStarted = function() {
-        LoadingService.show();
-        var modalElemSidebar = document.querySelector('#cta-modal-sidebar');
+      // $scope.sidebarGetStarted = function() {
+      //   LoadingService.show();
+      //   var modalElemSidebar = document.querySelector('#cta-modal-sidebar');
 
 
-        $scope.activateProjectorPull();
-        $scope.projectorPullActivated = true;
+      //   $scope.activateProjectorPull();
+      //   $scope.projectorPullActivated = true;
 
-        $scope.scrollToSection('#splash-projector');
-        var projectTriggerElem = document.querySelector('#projector-pull')
+      //   $scope.scrollToSection('#splash-projector');
+      //   var projectTriggerElem = document.querySelector('#projector-pull')
 
-        $timeout(function() {
-          projectTriggerElem && projectTriggerElem.classList.add('activate');
-          $scope.page.swipers.main.slideTo(2);
-          // toggleGalleryDisplays();
-        }, 1000)
+      //   $timeout(function() {
+      //     projectTriggerElem && projectTriggerElem.classList.add('activate');
+      //     $scope.page.swipers.main.slideTo(2);
+      //     // toggleGalleryDisplays();
+      //   }, 1000)
 
-        $timeout(function() {
-          CTAService.closeCTAManually('#cta-box-sidebar', function() {
-            modalElemSidebar && modalElemSidebar.classList.remove('show');
-            $timeout(function() {
-              LoadingService.hide();
-            }, 1000)
-          })
-        }, 1500)
+      //   $timeout(function() {
+      //     CTAService.closeCTAManually('#cta-box-sidebar', function() {
+      //       modalElemSidebar && modalElemSidebar.classList.remove('show');
+      //       $timeout(function() {
+      //         LoadingService.hide();
+      //       }, 1000)
+      //     })
+      //   }, 1500)
 
-      }
+      // }
 
-      var calcZoom = function() {
-        if ($scope.desktopMode) {
-          return 3;
-        } else {
-          return 2;
-        }
-      }
+      // var calcZoom = function() {
+      //   if ($scope.desktopMode) {
+      //     return 3;
+      //   } else {
+      //     return 2;
+      //   }
+      // }
 
-      var mapDefaults = {
-        zoom: calcZoom(),
-        options: { streetViewControl:false, scrollwheel:false, panControl:false,  minZoom: $scope.mapZoom.minZoom, maxZoom: $scope.mapZoom.maxZoom,
-                   scrollwheel: false, mapTypeControl:false, styles:styleOptions, draggable:true, disableDoubleClickZoom:false, zoomControl: false
-                 }
-      }
+      // var mapDefaults = {
+      //   zoom: calcZoom(),
+      //   options: { streetViewControl:false, scrollwheel:false, panControl:false,  minZoom: $scope.mapZoom.minZoom, maxZoom: $scope.mapZoom.maxZoom,
+      //              scrollwheel: false, mapTypeControl:false, styles:styleOptions, draggable:true, disableDoubleClickZoom:false, zoomControl: false
+      //            }
+      // }
 
-      var generateClusterImgDataURI = function(obj) {
-          var baseSVGURL = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="' + obj.bg_color + '"></circle></svg>'
-          return 'data:image/svg+xml;base64,' + window.btoa(baseSVGURL);
-      }
+      // var generateClusterImgDataURI = function(obj) {
+      //     var baseSVGURL = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="' + obj.bg_color + '"></circle></svg>'
+      //     return 'data:image/svg+xml;base64,' + window.btoa(baseSVGURL);
+      // }
 
-      var generateUniversityImgDataURI = function(obj) {
-        var baseSVGURL = "<svg style='height:25px; width:25px;' viewBox='0 0 73 91' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z' id='Rectangle-1' fill='" + obj.school_color_dark + "'></path><path d='M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z' id='flag' opacity='0.9' fill='" + obj.school_color_dark +"'></path><path d='M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z' id='border' fill='#40484B'></path><text fill='#FFFFFF' font-family='Source Sans Pro' font-size='12.7286934' font-weight='bold'><tspan x='10' y='32' fill='#FFFFFF'>" + obj.tiny_name + "</tspan></text></svg>"
-        return 'data:image/svg+xml;base64,' + window.btoa(baseSVGURL)
-      }
-
-
-      var clusterCalculator = function(markers, num_styles) {
-        //The function used to determine the text to be displayed on a cluster marker and the index indicating which
-        // style to use for the cluster marker.
-
-        var markerValues = markers.values();
-        var universityArr = getUniversitiesFromMarkers(markerValues)
-        var stateDict = getMostCommonStateFromUniversities(universityArr);
-        var getTopXStateStr = processStateDictToStr(stateDict);
-
-        function processStateDictToStr(state_dict) {
-          var results = [];
-          for (var key in state_dict) results.push([key, state_dict[key]]);
-
-          results.sort(function(a, b) {
-              a = a[1];
-              b = b[1];
-
-              return a < b ? -1 : (a > b ? 1 : 0);
-          }).reverse();
-          result_str = "";
-          if (results.length === 1) {
-            return "<span>" + universityArr.length + "</span> <span> schools </span> <span>" + results[0][0] + "</span>"
-          }
-          if (results.length === 2) {
-            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + '</span>';
-          }
-          if (results.length === 3 && universityArr.length >= cluster.styleThreshold[0]) {
-            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + '</span>';
-          }
-          if (results.length === 4 && universityArr.length >= cluster.styleThreshold[1]) {
-            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + ", " + results[3][0] + '</span>';
-          }
-          if (results.length > 4 && universityArr.length >= cluster.styleThreshold[1]) {
-            return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + ", " + results[3][0] + ", " + results[4][0] + '</span>';
-          }
-          return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + '</span>';
-
-        }
-
-        function getUniversitiesFromMarkers(markers) {
-          var arrUniversities = [];
-          for (var i = 0; i < markers.length; i++) {
-            var indexMarker = markers[i];
-            arrUniversities.push(indexMarker.model.university);
-          }
-          return arrUniversities;
-        }
-
-        function getMostCommonStateFromUniversities(universities) {
-          var stateDict = {};
-          for (var i = 0; i < universities.length; i++) {
-            var indexUniversity = universities[i];
-            if (indexUniversity.state) {
-              if (stateDict[indexUniversity.state]) {
-                stateDict[indexUniversity.state] += 1;
-              } else {
-                stateDict[indexUniversity.state] = 1;
-              }
-            }
-          }
-          return stateDict;
-        }
+      // var generateUniversityImgDataURI = function(obj) {
+      //   var baseSVGURL = "<svg style='height:25px; width:25px;' viewBox='0 0 73 91' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z' id='Rectangle-1' fill='" + obj.school_color_dark + "'></path><path d='M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z' id='flag' opacity='0.9' fill='" + obj.school_color_dark +"'></path><path d='M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z' id='border' fill='#40484B'></path><text fill='#FFFFFF' font-family='Source Sans Pro' font-size='12.7286934' font-weight='bold'><tspan x='10' y='32' fill='#FFFFFF'>" + obj.tiny_name + "</tspan></text></svg>"
+      //   return 'data:image/svg+xml;base64,' + window.btoa(baseSVGURL)
+      // }
 
 
+      // var clusterCalculator = function(markers, num_styles) {
+      //   //The function used to determine the text to be displayed on a cluster marker and the index indicating which
+      //   // style to use for the cluster marker.
 
-        if (universityArr.length > cluster.styleThreshold[2]) {
-          var indexNumber = 1
-        } else if (universityArr.length > cluster.styleThreshold[1] && universityArr.length <= cluster.styleThreshold[2]) {
-          var indexNumber = 2
-        } else if (universityArr.length > cluster.styleThreshold[0] && universityArr.length <= cluster.styleThreshold[1]) {
-          var indexNumber = 3
-        } else {
-          var indexNumber = 4
-        }
+      //   var markerValues = markers.values();
+      //   var universityArr = getUniversitiesFromMarkers(markerValues)
+      //   var stateDict = getMostCommonStateFromUniversities(universityArr);
+      //   var getTopXStateStr = processStateDictToStr(stateDict);
 
+      //   function processStateDictToStr(state_dict) {
+      //     var results = [];
+      //     for (var key in state_dict) results.push([key, state_dict[key]]);
 
-        var resultDict = {
-          text: getTopXStateStr,
-          title: '+more',
-          index: indexNumber
-        }
-        return resultDict;
-      }
+      //     results.sort(function(a, b) {
+      //         a = a[1];
+      //         b = b[1];
 
+      //         return a < b ? -1 : (a > b ? 1 : 0);
+      //     }).reverse();
+      //     result_str = "";
+      //     if (results.length === 1) {
+      //       return "<span>" + universityArr.length + "</span> <span> schools </span> <span>" + results[0][0] + "</span>"
+      //     }
+      //     if (results.length === 2) {
+      //       return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + '</span>';
+      //     }
+      //     if (results.length === 3 && universityArr.length >= cluster.styleThreshold[0]) {
+      //       return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + '</span>';
+      //     }
+      //     if (results.length === 4 && universityArr.length >= cluster.styleThreshold[1]) {
+      //       return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + ", " + results[3][0] + '</span>';
+      //     }
+      //     if (results.length > 4 && universityArr.length >= cluster.styleThreshold[1]) {
+      //       return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + ", " + results[2][0] + ", " + results[3][0] + ", " + results[4][0] + '</span>';
+      //     }
+      //     return "<span>" + universityArr.length + "</span> <span>schools</span> <span>" + results[0][0] + ", " + results[1][0] + '</span>';
 
-      var initClusterObj = function(marker_arr) {
-        var options_dict = {
-            minimumClusterSize:cluster.minClusterSize,
-            calculator: clusterCalculator,
-            styles:[
-              {
-                width:cluster.style.xl.width,
-                height:cluster.style.xl.height,
-                url: generateClusterImgDataURI({bg_color:cluster.style.xl.bg_color}),
-                fontFamily: "Source Sans Pro",
-                fontWeight: cluster.style.xl.fontWeight,
-                textColor: cluster.style.xl.textColor,
-                textSize: cluster.style.xl.textSize,
-                anchorText: cluster.style.xl.anchorIcon
-                // anchorIcon: "[0, 0]"
-              },
-              {
-                width:cluster.style.l.width,
-                height:cluster.style.l.height,
-                url: generateClusterImgDataURI({bg_color:cluster.style.l.bg_color}),
-                fontFamily: "Source Sans Pro",
-                fontWeight: cluster.style.l.fontWeight,
-                textColor: cluster.style.l.textColor,
-                textSize: cluster.style.l.textSize,
-                anchorText: cluster.style.l.anchorIcon
-                // anchorText: "[0, 0]"
-              },
-              {
-                width:cluster.style.m.width,
-                height:cluster.style.m.height,
-                url: generateClusterImgDataURI({bg_color:cluster.style.m.bg_color}),
-                fontFamily: "Source Sans Pro",
-                fontWeight: cluster.style.m.fontWeight,
-                textColor: cluster.style.m.textColor,
-                textSize: cluster.style.m.textSize,
-                anchorText: cluster.style.m.anchorIcon
-                // anchorText: "[0, 0]"
-              },
-              {
-                width:cluster.style.s.width,
-                height:cluster.style.s.height,
-                url: generateClusterImgDataURI({bg_color:cluster.style.s.bg_color}),
-                fontFamily: "Source Sans Pro",
-                fontWeight: cluster.style.s.fontWeight,
-                textColor: cluster.style.s.textColor,
-                textSize: cluster.style.s.textSize,
-                anchorText: cluster.style.s.anchorIcon
-              },
-            ],
-            // title: "",
-            zoomOnClick: cluster.zoomOnClick,
-            maxZoom: cluster.maxZoom,
-            gridSize: cluster.gridSize,
-            clusterClass: cluster.customClass,
-            // batchSize:
-            averageCenter: true
-        }
-        return options_dict
-      }
+      //   }
 
-      function hasMapBeenShown() {
-        var splashMap = document.querySelector('#splash-university.opacity-1-impt');
-        return splashMap;
-      }
-      function hideAllClusters(selector) {
-        $timeout(function() {
-          var allClusterElems = document.querySelectorAll(selector) || [];
-          for (var i = 0; i < allClusterElems.length; i++) {
-              var indexCluster = allClusterElems[i];
-              indexCluster.style.opacity = 0;
-              if (!hasMapBeenShown()) {
-                indexCluster.classList.add('opacity-0');
-                indexCluster.setAttribute("class-on-activate", "bounceInUp:anim:keep");
-                indexCluster.setAttribute("class-on-activate-delay", 1500 + (i * 50) + "");
-              } else {
-                indexCluster.classList.add('opacity-1', 'opacity-1-impt');
-              }
-              $compile(indexCluster)($scope);
-          }
-        }, 1000)
-      }
+      //   function getUniversitiesFromMarkers(markers) {
+      //     var arrUniversities = [];
+      //     for (var i = 0; i < markers.length; i++) {
+      //       var indexMarker = markers[i];
+      //       arrUniversities.push(indexMarker.model.university);
+      //     }
+      //     return arrUniversities;
+      //   }
 
-      function setPulseClusters(selector) {
-        $timeout(function() {
-          var allClusterElems = document.querySelectorAll(selector) || [];
-          for (var i = 0; i < allClusterElems.length; i++) {
-            var indexCluster = allClusterElems[i];
-            indexCluster.classList.add('animated', 'pulse');
-          }
-        })
-      }
-
-      var initHomeMap = function() {
-          $scope.map = {
-          center: {latitude: 42.5, longitude: -100},
-          control: {},
-          zoom:  $scope.mapZoom.initialDesktop,
-          dragging: true, //true while map is dragging state, false otherwise
-          refresh: false,
-          options: mapDefaults.options,
-          events: {tilesloaded: onMapRenderCompleteOnce},
-          clusterOptions: initClusterObj(),
-          clusterEvents: {mouseover: function(cluster){ setPulseClusters('.university-svg-cluster') }, clusteringend: function(cluster) {hideAllClusters('.university-svg-cluster')}},
-          bounds: $scope.mapBounds, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
-          pan: true,
-          bounds: $scope.mapBounds.desktop,
-          markers: generateXMarkersFromUniversities(200, $scope.universities),
-          rebuildMarkers: false,
-          window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
-        }
-        if (!$scope.desktopMode) {
-          $scope.map.zoom = $scope.mapZoom.initialMobile
-          $scope.map.bounds = $scope.mapBounds.mobile
-        }
-      }
-
-      var createMarkerObj = function(obj) {
-
-        var universityObj = {
-            school_color_light: obj.school_color_light,
-            banner_url: obj.banner_url,
-            school_color_dark: obj.school_color_dark,
-            name: obj.name,
-            tiny_name: obj.school_tiny_name,
-            city: obj.city,
-            state: obj.state
-        }
-        return {
-          id: obj.id,
-          latitude: obj.latitude,
-          longitude: obj.longitude,
-          icon: {url: generateUniversityImgDataURI(universityObj), size: new google.maps.Size(60, 60), scaledSize: new google.maps.Size(60, 60)},
-          events: {
-            click: onMarkerClick
-          },
-          university: universityObj
-        }
-      }
-
-      var generateXMarkersFromUniversities = function(x, universities_arr, with_interval) {
-
-        var universities_arr = universities_arr.slice(0, x);
-        var marker_obj_arr = [];
-        for (var i = 0; i < universities_arr.length; i++) {
-          marker_obj_arr.push(createMarkerObj(universities_arr[i]));
-        }
-        return marker_obj_arr;
-      }
-
-      var windowCloseButtonIsClicked = function(e) {
-        console.log(e);
-      }
-
-      var defaultWindowOptions = {
-          pixelOffset: new google.maps.Size(0, -10, 'px', 'px'),
-          closeclick: windowCloseButtonIsClicked
-      }
-
-      var closeInfoWindow = function() {
-        $scope.map.window.show = false;
-      }
-
-      var refreshMap = function() {
-        $scope.map.refresh = true;
-        $timeout(function() {
-          $scope.map.refresh = false;
-        })
-      }
+      //   function getMostCommonStateFromUniversities(universities) {
+      //     var stateDict = {};
+      //     for (var i = 0; i < universities.length; i++) {
+      //       var indexUniversity = universities[i];
+      //       if (indexUniversity.state) {
+      //         if (stateDict[indexUniversity.state]) {
+      //           stateDict[indexUniversity.state] += 1;
+      //         } else {
+      //           stateDict[indexUniversity.state] = 1;
+      //         }
+      //       }
+      //     }
+      //     return stateDict;
+      //   }
 
 
 
-      var updateWindowToMarker = function(window_obj, model_obj) {
-        window_obj.coords = {latitude:model_obj.latitude, longitude:model_obj.longitude};
-        window_obj.university = model_obj.university;
-      }
+        // if (universityArr.length > cluster.styleThreshold[2]) {
+        //   var indexNumber = 1
+        // } else if (universityArr.length > cluster.styleThreshold[1] && universityArr.length <= cluster.styleThreshold[2]) {
+        //   var indexNumber = 2
+        // } else if (universityArr.length > cluster.styleThreshold[0] && universityArr.length <= cluster.styleThreshold[1]) {
+        //   var indexNumber = 3
+        // } else {
+        //   var indexNumber = 4
+        // }
 
-      var deleteWindowExtraCSS = function() {
-          var elem = document.querySelector('.gm-style-iw');
-          var children = elem.parentElement.childNodes;
-          for (var i = 0; i < children.length; i++) {
-              var indexChild = children[i];
-              if (indexChild !== elem) {
-                  indexChild.style.display = "none"
-              }
-          }
-      }
 
-      function getUniversityFromOriginalArray(uni_arr, _id) {
-        for (var i = 0; i < uni_arr.length; i++) {
-          var indexUniversity = uni_arr[i];
-          if (indexUniversity.id === _id) {
-            return indexUniversity;
-          }
-        }
-      }
+      //   var resultDict = {
+      //     text: getTopXStateStr,
+      //     title: '+more',
+      //     index: indexNumber
+      //   }
+      //   return resultDict;
+      // }
 
-      var onMarkerClick = function(marker, event_name, model) {
-        LoadingService.showAmbig(null, 10000);
-        $timeout(function() {
-          var origUniversity = getUniversityFromOriginalArray($scope.universities, model.id);
-          origUniversity && $scope.selectUniversityFromMap(origUniversity);
 
-          LoadingService.hide();
-        }, 1000)
-        // updateWindowToMarker($scope.map.window, model);
-        // $scope.map.window.show = true;
-        // $timeout(function() {
-        //   deleteWindowExtraCSS();
-        // }, 100)
-        // $timeout(function() {
-        //   console.log('attempting to compile');
-        //   $compile(document.getElementById('university-info-window-button'))($scope);
-        //   $compile(document.getElementById('university-info-window-close-button'))($scope);
-        // }, 1000)
-      }
+      // var initClusterObj = function(marker_arr) {
+      //   var options_dict = {
+      //       minimumClusterSize:cluster.minClusterSize,
+      //       calculator: clusterCalculator,
+      //       styles:[
+      //         {
+      //           width:cluster.style.xl.width,
+      //           height:cluster.style.xl.height,
+      //           url: generateClusterImgDataURI({bg_color:cluster.style.xl.bg_color}),
+      //           fontFamily: "Source Sans Pro",
+      //           fontWeight: cluster.style.xl.fontWeight,
+      //           textColor: cluster.style.xl.textColor,
+      //           textSize: cluster.style.xl.textSize,
+      //           anchorText: cluster.style.xl.anchorIcon
+      //           // anchorIcon: "[0, 0]"
+      //         },
+      //         {
+      //           width:cluster.style.l.width,
+      //           height:cluster.style.l.height,
+      //           url: generateClusterImgDataURI({bg_color:cluster.style.l.bg_color}),
+      //           fontFamily: "Source Sans Pro",
+      //           fontWeight: cluster.style.l.fontWeight,
+      //           textColor: cluster.style.l.textColor,
+      //           textSize: cluster.style.l.textSize,
+      //           anchorText: cluster.style.l.anchorIcon
+      //           // anchorText: "[0, 0]"
+      //         },
+      //         {
+      //           width:cluster.style.m.width,
+      //           height:cluster.style.m.height,
+      //           url: generateClusterImgDataURI({bg_color:cluster.style.m.bg_color}),
+      //           fontFamily: "Source Sans Pro",
+      //           fontWeight: cluster.style.m.fontWeight,
+      //           textColor: cluster.style.m.textColor,
+      //           textSize: cluster.style.m.textSize,
+      //           anchorText: cluster.style.m.anchorIcon
+      //           // anchorText: "[0, 0]"
+      //         },
+      //         {
+      //           width:cluster.style.s.width,
+      //           height:cluster.style.s.height,
+      //           url: generateClusterImgDataURI({bg_color:cluster.style.s.bg_color}),
+      //           fontFamily: "Source Sans Pro",
+      //           fontWeight: cluster.style.s.fontWeight,
+      //           textColor: cluster.style.s.textColor,
+      //           textSize: cluster.style.s.textSize,
+      //           anchorText: cluster.style.s.anchorIcon
+      //         },
+      //       ],
+      //       // title: "",
+      //       zoomOnClick: cluster.zoomOnClick,
+      //       maxZoom: cluster.maxZoom,
+      //       gridSize: cluster.gridSize,
+      //       clusterClass: cluster.customClass,
+      //       // batchSize:
+      //       averageCenter: true
+      //   }
+      //   return options_dict
+      // }
+
+      // function hasMapBeenShown() {
+      //   var splashMap = document.querySelector('#splash-university.opacity-1-impt');
+      //   return splashMap;
+      // }
+      // function hideAllClusters(selector) {
+      //   $timeout(function() {
+      //     var allClusterElems = document.querySelectorAll(selector) || [];
+      //     for (var i = 0; i < allClusterElems.length; i++) {
+      //         var indexCluster = allClusterElems[i];
+      //         indexCluster.style.opacity = 0;
+      //         if (!hasMapBeenShown()) {
+      //           indexCluster.classList.add('opacity-0');
+      //           indexCluster.setAttribute("class-on-activate", "bounceInUp:anim:keep");
+      //           indexCluster.setAttribute("class-on-activate-delay", 1500 + (i * 50) + "");
+      //         } else {
+      //           indexCluster.classList.add('opacity-1', 'opacity-1-impt');
+      //         }
+      //         $compile(indexCluster)($scope);
+      //     }
+      //   }, 1000)
+      // }
+
+      // function setPulseClusters(selector) {
+      //   $timeout(function() {
+      //     var allClusterElems = document.querySelectorAll(selector) || [];
+      //     for (var i = 0; i < allClusterElems.length; i++) {
+      //       var indexCluster = allClusterElems[i];
+      //       indexCluster.classList.add('animated', 'pulse');
+      //     }
+      //   })
+      // }
+
+      // var initHomeMap = function() {
+      //     $scope.map = {
+      //     center: {latitude: 42.5, longitude: -100},
+      //     control: {},
+      //     zoom:  $scope.mapZoom.initialDesktop,
+      //     dragging: true, //true while map is dragging state, false otherwise
+      //     refresh: false,
+      //     options: mapDefaults.options,
+      //     events: {tilesloaded: onMapRenderCompleteOnce},
+      //     clusterOptions: initClusterObj(),
+      //     clusterEvents: {mouseover: function(cluster){ setPulseClusters('.university-svg-cluster') }, clusteringend: function(cluster) {hideAllClusters('.university-svg-cluster')}},
+      //     bounds: $scope.mapBounds, //Fit the map in the specified bounds. The expression must resolve to an object having both northeast and southwest properties. Each of those properties must have a latitude and a longitude properties.
+      //     pan: true,
+      //     bounds: $scope.mapBounds.desktop,
+      //     markers: generateXMarkersFromUniversities(200, $scope.universities),
+      //     rebuildMarkers: false,
+      //     window: {coords:{}, show:false, university: {}, options:defaultWindowOptions, close:closeInfoWindow}
+      //   }
+      //   if (!$scope.desktopMode) {
+      //     $scope.map.zoom = $scope.mapZoom.initialMobile
+      //     $scope.map.bounds = $scope.mapBounds.mobile
+      //   }
+      // }
+
+      // var createMarkerObj = function(obj) {
+
+      //   var universityObj = {
+      //       school_color_light: obj.school_color_light,
+      //       banner_url: obj.banner_url,
+      //       school_color_dark: obj.school_color_dark,
+      //       name: obj.name,
+      //       tiny_name: obj.school_tiny_name,
+      //       city: obj.city,
+      //       state: obj.state
+      //   }
+      //   return {
+      //     id: obj.id,
+      //     latitude: obj.latitude,
+      //     longitude: obj.longitude,
+      //     icon: {url: generateUniversityImgDataURI(universityObj), size: new google.maps.Size(60, 60), scaledSize: new google.maps.Size(60, 60)},
+      //     events: {
+      //       click: onMarkerClick
+      //     },
+      //     university: universityObj
+      //   }
+      // }
+
+      // var generateXMarkersFromUniversities = function(x, universities_arr, with_interval) {
+
+      //   var universities_arr = universities_arr.slice(0, x);
+      //   var marker_obj_arr = [];
+      //   for (var i = 0; i < universities_arr.length; i++) {
+      //     marker_obj_arr.push(createMarkerObj(universities_arr[i]));
+      //   }
+      //   return marker_obj_arr;
+      // }
+
+      // var windowCloseButtonIsClicked = function(e) {
+      //   console.log(e);
+      // }
+
+      // var defaultWindowOptions = {
+      //     pixelOffset: new google.maps.Size(0, -10, 'px', 'px'),
+      //     closeclick: windowCloseButtonIsClicked
+      // }
+
+      // var closeInfoWindow = function() {
+      //   $scope.map.window.show = false;
+      // }
+
+      // var refreshMap = function() {
+      //   $scope.map.refresh = true;
+      //   $timeout(function() {
+      //     $scope.map.refresh = false;
+      //   })
+      // }
+
+
+
+      // var updateWindowToMarker = function(window_obj, model_obj) {
+      //   window_obj.coords = {latitude:model_obj.latitude, longitude:model_obj.longitude};
+      //   window_obj.university = model_obj.university;
+      // }
+
+      // var deleteWindowExtraCSS = function() {
+      //     var elem = document.querySelector('.gm-style-iw');
+      //     var children = elem.parentElement.childNodes;
+      //     for (var i = 0; i < children.length; i++) {
+      //         var indexChild = children[i];
+      //         if (indexChild !== elem) {
+      //             indexChild.style.display = "none"
+      //         }
+      //     }
+      // }
+
+      // function getUniversityFromOriginalArray(uni_arr, _id) {
+      //   for (var i = 0; i < uni_arr.length; i++) {
+      //     var indexUniversity = uni_arr[i];
+      //     if (indexUniversity.id === _id) {
+      //       return indexUniversity;
+      //     }
+      //   }
+      // }
+
+      // var onMarkerClick = function(marker, event_name, model) {
+      //   LoadingService.showAmbig(null, 10000);
+      //   $timeout(function() {
+      //     var origUniversity = getUniversityFromOriginalArray($scope.universities, model.id);
+      //     origUniversity && $scope.selectUniversityFromMap(origUniversity);
+
+      //     LoadingService.hide();
+      //   }, 1000)
+      //   // updateWindowToMarker($scope.map.window, model);
+      //   // $scope.map.window.show = true;
+      //   // $timeout(function() {
+      //   //   deleteWindowExtraCSS();
+      //   // }, 100)
+      //   // $timeout(function() {
+      //   //   console.log('attempting to compile');
+      //   //   $compile(document.getElementById('university-info-window-button'))($scope);
+      //   //   $compile(document.getElementById('university-info-window-close-button'))($scope);
+      //   // }, 1000)
+      // }
 
       function initCTASplash() {
         $compile(document.querySelector('#cta-box-sidebar'))($scope);
@@ -1947,22 +1977,24 @@ angular.module('uguru.util.controllers')
         }
       }
 
-      function onMapRenderCompleteOnce(map) {
-        if (!$scope.map.og_map) {
-          $scope.mapHasRendered = true;
-          $scope.map.og_map = map;
-          document.querySelector('#splash-university').classList.add('show-map');
-        }
-      }
+      // function onMapRenderCompleteOnce(map) {
+      //   if (!$scope.map.og_map) {
+      //     $scope.mapHasRendered = true;
+      //     $scope.map.og_map = map;
+      //     document.querySelector('#splash-university').classList.add('show-map');
+      //   }
+      // }
 
       function closeAllDropdowns() {
         $scope.page.dropdowns.category.active = false;
         $scope.page.dropdowns.university.active = false;
       }
 
-      $timeout(function() {
-        $scope.selectedUniversity && initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
-      });
+      resolveStateParams();
+
+      // $timeout(function() {
+      //   $scope.selectedUniversity && initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+      // });
 
 
   }

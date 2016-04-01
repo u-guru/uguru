@@ -343,7 +343,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.timer', {
     url:'/timer',
-    templateUrl: BASE + 'templates/timer.html'
+    templateUrl: BASE + 'templates/timer.app.html',
+    controller: 'TimerAppController'
   }).
   state('root.student-home', {
     url:'/student-home',

@@ -1,1 +1,1 @@
-<li><span class="chip bg-{{category.hex_class}}">{{innerText}}</span></li>
+<span class="chip bg-{{category.hex_class}}">{{innerText}}</span>

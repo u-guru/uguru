@@ -1,5 +1,127 @@
 @import 'mixin';
 
+/* ---------- RATING */
+#rating {
+	.rating-container {
+		> ul {
+			> li {
+				&.rating-charge {
+					position: relative;
+					&:after {
+						content: "";
+						display: block;
+						position: absolute;
+						bottom: -1px;
+						left: 15px;
+						width: calc(100% - 30px);
+						height: 2px;
+					}
+				}
+				.rating-stars {
+					max-width: 300px;
+				}
+			}
+		}
+	}
+	&.mobile-mode {
+		.rating-container {
+			> ul {
+				padding-bottom: calc(64px + 7.5px);
+			}
+		}
+	}
+	&.guru-mode {
+		&.mobile-mode {
+			.rating-container {
+				background: lighten($slate, 15%);
+			}
+		}
+		.rating-container {
+			> ul {
+				background: lighten($slate, 15%);
+				> li {
+					&.rating-charge {
+						&:after {
+							background: rgba(white, .2);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.student-mode {
+		.rating-container {
+			> ul {
+				background: white;
+				> li {
+					&.rating-charge {
+						&:after {
+							background: rgba($slate, .2);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- CONFIRM */
+#confirm {
+	.spacer {
+		padding-bottom: 64px;
+	}
+	.icon-overlap {
+		.user-icon {
+			margin: 0;
+			+ .user-icon {
+				margin-left: -30px;
+			}
+		}
+		.user-icon-72 {
+			margin: 0;
+			+ .user-icon-72 {
+				margin-left: -15px;
+			}
+		}
+	}
+	.confirm-location {
+		svg {
+			display: block;
+			height: 80px;
+			width: auto;
+		}
+		.location-info {
+			position: relative;
+			background: $smoke;
+			width: calc(100% - 80px - 15px);
+			padding: 10px 15px;
+			margin-left: 15px;
+			border-radius: 2px;
+			&:before {
+				@include center-y;
+				content: "";
+				width: 0;
+				height: 0;
+				left: -30px;
+				border: 15px solid transparent;
+				border-right-color: $smoke;
+			}
+		}
+	}
+	&.mobile-mode.student-mode {
+		background: white!important;
+	}
+	a.opacity-50 {
+		&:hover, &:focus {
+			@include opacity-important(.75);
+		}
+		&:active {
+			@include opacity-important(1);
+		}
+	}
+}
+
+/* ---------- REQUEST */
 #request {
 	height: 100%;
 	> header {
@@ -209,6 +331,1315 @@
 		.request-slide {
 			height: 100%;
 			overflow: auto;
+		}
+	}
+	&.bg-delivery {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $auburn;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $auburn;
+						}
+						&:before {
+							border-color: $auburn;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $auburn;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-freelancing {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $orange;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $orange;
+						}
+						&:before {
+							border-color: $orange;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $orange;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-baking {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $gold;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $gold;
+						}
+						&:before {
+							border-color: $gold;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $gold;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-photography {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $moola;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $moola;
+						}
+						&:before {
+							border-color: $moola;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $moola;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-tech {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $azure;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $azure;
+						}
+						&:before {
+							border-color: $azure;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $azure;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-household {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $cobalt;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $cobalt;
+						}
+						&:before {
+							border-color: $cobalt;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $cobalt;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-athletic {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: lighten($slate, 15%);
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: lighten($slate, 15%);
+									}
+									&:after {
+										border-color: $eggplant;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $eggplant;
+						}
+						&:before {
+							border-color: $eggplant;
+							border-left-color: lighten($slate, 15%);
+						}
+						&:after {
+							border-color: lighten($slate, 15%);
+							border-left-color: $eggplant;
+						}
+					}
+				}
+			}
 		}
 	}
 	&.bg-academic {
@@ -513,6 +1944,7 @@
 }
 .request-slide {
 	width: 100%;
+	height: 100%;
 	text-align: center;
 	header {
 		padding: 15px;
@@ -537,15 +1969,19 @@
 	}
 	&.request-categories {
 		position: relative;
+		overflow: hidden;
 		.request-category, .request-subcategory {
 			height: 100%;
 			background: $smoke;
 		}
 		.request-category {
-			ul {
+			overflow: hidden;
+			.request-category-tiles {
 				height: calc(100% - 87px);
-				li {
-					height: calc(100% / 3);
+				&.mobile {
+					li {
+						height: calc(100% / 3);
+					}
 				}
 			}
 		}
@@ -555,6 +1991,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
+			overflow: auto;
 			&:not(.selected) {
 				@include opacity(0);
 				z-index: -10;
@@ -562,24 +1999,30 @@
 			&.selected {
 				z-index: 10;
 			}
-			ul {
-				@include prefix(align-content, flex-start, webkit);
-				height: calc(100% - 87px - 64px);
-				li {
-					height: 20%;
-					a {
-						.card-icon {
-							width: 75px;
-							height: 75px;
-							svg {
-								* {
-									stroke-width: 3px;
-								}
-								&:not(.normalized) {
-									@include round;
-									background: rgba(white, .5);
+			.request-category-tiles {
+				.card-icon, .category-tile-icon {
+					svg {
+						&:not(.normalized) {
+							@include round;
+							background: rgba(white, .5);
+							* {
+								@include opacity(0);
+							}
+						}
+					}
+				}
+				&.mobile {
+					@include prefix(align-content, flex-start, webkit);
+					height: calc(100% - 87px - 64px);
+					li {
+						height: 20%;
+						a {
+							.card-icon {
+								width: 50px;
+								height: 50px;
+								svg {
 									* {
-										@include opacity(0);
+										stroke-width: 3px;
 									}
 								}
 							}
@@ -678,7 +2121,7 @@
 				}
 			}
 		}
-		ul {
+		.request-category-tiles.mobile {
 			@include flex;
 			@include flex-wrap;
 			border: 1px solid $smoke;
@@ -924,41 +2367,55 @@
 		> div {
 			padding-bottom: 64px;
 			> div {
-				h1 {
+				> h1 {
 					padding: 15px 15px 0;
 					color: $slate;
 					font-size: 16px;
 					font-weight: 600;
 					text-transform: uppercase;
 					text-align: left;
+					@media screen and (min-width: 768px) {
+						font-size: 20px;
+					}
 				}
 				&.request-courses {
-					ul {
-						@include flex;
-						@include flex-wrap;
-						padding: 14px;
-						margin-top: -5px;
-						li {
-							padding: 1px;
-							width: calc(100% / 3);
-							a {
-								display: block;
-								padding: 15px;
-								font-size: 18px;
-								font-weight: 600;
-								background: $lake;
-								border-radius: 2px;
-								border-bottom: 5px solid rgba(white, .3);
-								border-top: 5px solid transparent;
-								&:hover, &:focus {
-									background: mix($lake, white);
-									color: mix($lake, $slate);
-									border-bottom-color: rgba(mix($lake, $slate), .3);
+					.request-course-list {
+						&.desktop {
+							li {
+								.course-card {
+									> svg {
+										width: 100%;
+									}
 								}
-								&:active {
-									background: mix($lake, $slate);
-									color: white;
-									border-bottom-color: rgba(white, .3);
+							}
+						}
+						&.mobile {
+							@include flex;
+							@include flex-wrap;
+							padding: 14px;
+							margin-top: -5px;
+							li {
+								padding: 1px;
+								width: calc(100% / 3);
+								a {
+									display: block;
+									padding: 15px;
+									font-size: 18px;
+									font-weight: 600;
+									background: $lake;
+									border-radius: 2px;
+									border-bottom: 5px solid rgba(white, .3);
+									border-top: 5px solid transparent;
+									&:hover, &:focus {
+										background: mix($lake, white);
+										color: mix($lake, $slate);
+										border-bottom-color: rgba(mix($lake, $slate), .3);
+									}
+									&:active {
+										background: mix($lake, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
 								}
 							}
 						}
@@ -1191,6 +2648,27 @@
 					}
 				}
 			}
+			@media screen and (min-width: 768px) {
+				ul {
+					margin-top: -15px;
+					padding: 7.5px;
+					li {
+						padding: 7.5px;
+						a {
+							padding: 30px;
+							span {
+								&:first-child {
+									font-size: 24px;
+									margin-bottom: 5px;
+								}
+								&:last-child {
+									font-size: 20px;
+								}
+							}
+						}
+					}
+				}
+			}
 			.checkbox-container {
 				@include prefix(justify-content, flex-start, webkit);
 				padding: 10px 15px 15px;
@@ -1232,6 +2710,9 @@
 				input:focus {
 					border-bottom: 1px solid $lake;
 					box-shadow: 0 1px 0 0 $lake;
+				}
+				@media screen and (min-width: 768px) {
+					@include prefix(align-self, flex-start, webkit);
 				}
 			}
 		}
@@ -1330,18 +2811,35 @@
 					}
 				}
 			}
+			@media screen and (min-width: 768px) {
+				.request-offer {
+					padding: 7.5px;
+					li {
+						padding: 7.5px;
+					}
+				}
+				.request-cards {
+					@include flex;
+					@include flex-center;
+					height: 250px;
+					.request-wallet {
+						height: 100%;
+						.wallet {
+							height: 100%;
+							width: auto;
+						}
+					}
+					ul {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						height: 100%;
+					}
+				}
+			}
 		}
 	}
 	&.request-confirm {
-		header {
-			background: $lake;
-			svg {
-				width: 120px;
-			}
-			h1 {
-				text-transform: none;
-			}
-		}
 		> button {
 			position: absolute;
 			bottom: 0;
@@ -1349,15 +2847,16 @@
 		}
 		> div {
 			padding-bottom: 64px;
-			> a {
+			a {
 				display: block;
+				background: white;
 				&:hover, &:focus {
 					background: rgba($lake, .2);
 				}
 			}
 			.confirm-course {
 				padding: 15px;
-				background: $slate;
+				background: $lake;
 				h1 {
 					font-size: 20px;
 					font-weight: 600;
@@ -1369,7 +2868,7 @@
 					font-weight: 600;
 				}
 				&:hover, &:focus {
-					background: rgba($lake, .5);
+					background: mix($lake, white)!important;
 					color: $slate;
 				}
 			}
@@ -1422,9 +2921,10 @@
 				}
 				.location-info {
 					position: relative;
-					background: mix(lighten($slate, 25%), $lake, 80%);
+					background: $smoke;
 					padding: 10px 15px;
 					margin-left: 15px;
+					width: calc(100% - 80px - 15px);
 					border-radius: 2px;
 					&:before {
 						@include center-y;
@@ -1433,13 +2933,15 @@
 						height: 0;
 						left: -30px;
 						border: 15px solid transparent;
-						border-right-color: mix(lighten($slate, 25%), $lake, 80%);
+						border-right-color: $smoke;
 					}
 					h1 {
+						color: $lake;
 						font-size: 24px;
 						font-weight: 600;
 					}
 					p {
+						color: lighten($slate, 15%);
 						font-size: 18px;
 						font-weight: 400;
 					}
@@ -1447,19 +2949,6 @@
 			}
 			.confirm-card {
 				padding: 15px;
-				.request-card {
-					@include flex;
-					@include flex-center-vertical;
-					@include prefix(justify-content, space-between, webkit);
-					background: $slate;
-					border-radius: 10px;
-					padding: 10px 15px;
-					height: 64px;
-					span {
-						font-size: 18px;
-						font-weight: 600;
-					}
-				}
 			}
 			.confirm-amount {
 				h3 {
@@ -1467,6 +2956,23 @@
 					font-size: 64px;
 					font-weight: 900;
 					padding-bottom: 15px;
+				}
+			}
+		}
+		@media screen and (min-width: 768px) {
+			.confirm-desc {
+				li {
+					a {
+						&:nth-child(1), &:nth-child(3) {
+							border-radius: 2px 2px 0 0;
+						}
+						&:nth-child(2), &:nth-child(4) {
+							border-radius: 0 0 2px 2px;
+						}
+						&:only-child {
+							border-radius: 2px;
+						}
+					}
 				}
 			}
 		}
@@ -1627,19 +3133,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $auburn;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($auburn, .2);
 					}
 				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($auburn, .5);
-					}
+				.chip {
+					background: $auburn!important;
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -1656,9 +3157,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $auburn, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $auburn, 80%);
+						h1 {
+							color: $auburn;
 						}
 					}
 				}
@@ -1820,19 +3320,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $orange;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($orange, .2);
 					}
 				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($orange, .5);
-					}
+				.chip {
+					background: $orange!important;
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -1849,9 +3344,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $orange, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $orange, 80%);
+						h1 {
+							color: $orange;
 						}
 					}
 				}
@@ -2013,19 +3507,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $gold;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($gold, .2);
 					}
 				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($gold, .5);
-					}
+				.chip {
+					background: $gold!important;
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -2042,9 +3531,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $gold, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $gold, 80%);
+						h1 {
+							color: $gold;
 						}
 					}
 				}
@@ -2206,19 +3694,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $moola;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($moola, .2);
 					}
 				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($moola, .5);
-					}
+				.chip {
+					background: $moola!important;
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -2235,9 +3718,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $moola, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $moola, 80%);
+						h1 {
+							color: $moola;
 						}
 					}
 				}
@@ -2399,19 +3881,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $azure;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($azure, .2);
 					}
 				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($azure, .5);
-					}
+				.chip {
+					background: $azure!important;
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -2428,9 +3905,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $azure, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $azure, 80%);
+						h1 {
+							color: $azure;
 						}
 					}
 				}
@@ -2592,19 +4068,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $cobalt;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($cobalt, .2);
 					}
 				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($cobalt, .5);
-					}
+				.chip {
+					background: $cobalt!important;
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -2621,9 +4092,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $cobalt, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $cobalt, 80%);
+						h1 {
+							color: $cobalt;
 						}
 					}
 				}
@@ -2785,19 +4255,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $eggplant;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($eggplant, .2);
 					}
 				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($eggplant, .5);
-					}
+				.chip {
+					background: $eggplant!important;
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -2814,9 +4279,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $eggplant, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $eggplant, 80%);
+						h1 {
+							color: $eggplant;
 						}
 					}
 				}
@@ -2978,19 +4442,14 @@
 			}
 		}
 		&.request-confirm {
-			header {
-				background: $cerise;
-			}
 			> div {
-				> a {
+				a:not(.confirm-course) {
 					&:hover, &:focus {
 						background: rgba($cerise, .2);
 					}
 				}
-				.confirm-course {
-					&:hover, &:focus {
-						background: rgba($cerise, .5);
-					}
+				.chip {
+					background: $cerise!important;
 				}
 				.confirm-info, .confirm-amount {
 					h1 {
@@ -3007,9 +4466,8 @@
 				}
 				.confirm-location {
 					.location-info {
-						background: mix(lighten($slate, 25%), $cerise, 80%);
-						&:before {
-							border-right-color: mix(lighten($slate, 25%), $cerise, 80%);
+						h1 {
+							color: $cerise;
 						}
 					}
 				}
