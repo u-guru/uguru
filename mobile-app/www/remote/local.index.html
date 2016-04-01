@@ -22,13 +22,6 @@
             return loadTime
         }
       }
-      console.log("hi from local.index.html");
-      var onBodyLoad = function() {
-        var bodyLoadTime = calcTimeSinceInit();
-        console.log('================')
-        console.log('Body dom load complete, load time:', bodyLoadTime, 'seconds');
-        console.log('================')
-      }
 
       var injectAndroidMetaContentScript = function() {
         var meta = document.createElement('meta');
@@ -100,7 +93,6 @@
     WINDOWS = null;
     function getMobileOperatingSystem() {
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            console.log(userAgent);
             if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i)) {
                     console.log('injecting windows specific css & js');
                     injectJs('windows.cordova.js');
@@ -110,12 +102,10 @@
               {
                 // Read more here
                 // https://developer.chrome.com/multidevice/user-agent
-                console.log('ANDROID WEBVIEW DEVICE UA:', userAgent, '\n');
                 var androidWebViewAgents = ['Build/KLP', 'Version', 'wv', 'Crosswalk'];
                 for (var i = 0; i < androidWebViewAgents.length; i++ ) {
                   var indexUA = androidWebViewAgents[i];
                   if (userAgent.indexOf(indexUA) > -1) {
-                    console.log('\n\nAndroid device detected\n\n');
                     injectJs('android.cordova.js');
                     injectCss('android.css');
                     injectAndroidMetaContentScript();
@@ -126,7 +116,6 @@
               }
             else if ((!(userAgent.toLowerCase().indexOf('firefox') > -1) && !(userAgent.toLowerCase().indexOf('safari') > -1)) || userAgent.indexOf('iPad') > 0 )
               {
-                console.log('woohoo ios');
                 injectJs('ios.cordova_plugins.js');
                 injectJs('ios.cordova.js');
                 injectCss('ios.css');
@@ -135,7 +124,6 @@
 
               }
             else {
-                console.log('Mobile browser / desktop browser direction!');
                 // injectCss('web.css')
                 return 'unknown';
             }
@@ -264,11 +252,11 @@
     <script type="text/javascript" src="remote/lib/facebook/openfb.js"></script>
     <script type="text/javascript" src="remote/lib/facebook/ngopenfb.js"></script>
 
-    <script type="text/javascript" src="remote/js/directives/angularFastMatcher.js"></script>
+    <!-- <script type="text/javascript" src="remote/js/directives/angularFastMatcher.js"></script> -->
     <script type="text/javascript" src="remote/js/directives/customDirectives.js"></script>
-    <script type="text/javascript" src="remote/js/directives/imageSaver.js"></script>
-    <script type="text/javascript" src="remote/js/directives/uSlideBox.js"></script>
-    <script type="text/javascript" src="remote/js/directives/bindInput.js"></script>
+    <!-- <script type="text/javascript" src="remote/js/directives/imageSaver.js"></script> -->
+    <!-- <script type="text/javascript" src="remote/js/directives/uSlideBox.js"></script> -->
+    <!-- <script type="text/javascript" src="remote/js/directives/bindInput.js"></script> -->
     <script type="text/javascript" src="remote/js/directives/throttle.js"></script>
     <script type="text/javascript" src="remote/js/directives/submit.js"></script>
     <script type="text/javascript" src="remote/js/directives/keyboardfocus.js"></script>
@@ -306,11 +294,11 @@
     <script type="text/javascript" src="remote/js/shared/GeolocationService.js"></script>
     <script type="text/javascript" src="remote/js/services/hardware/push.js"></script>
 
-     <script type="text/javascript" src="remote/js/controllers/student/student.ctrl.js"></script>
     <!-- Uguru student controller-->
-    <script type="text/javascript" src="remote/js/controllers/student/student.request.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.ctrl.js"></script>
+<!--     <script type="text/javascript" src="remote/js/controllers/student/student.request.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/student.request-guru-type.ctrl.js"></script>
-    <script type="text/javascript" src="remote/js/controllers/student/student.request-session-length.ctrl.js"></script>
+    <script type="text/javascript" src="remote/js/controllers/student/student.request-session-length.ctrl.js"></script> -->
     <script type="text/javascript" src="remote/js/controllers/student/student.guru-profile.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/student.guru-available.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/student.active-session.ctrl.js"></script>
@@ -321,8 +309,8 @@
     <script type="text/javascript" src="remote/js/controllers/student/student.session.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/student/student.helper.ctrl.js"></script>
 
-
-     <script type="text/javascript" src="remote/js/controllers/guru/guru.ctrl.js"></script>
+    <!-- Uguru guru controllers -->
+    <script type="text/javascript" src="remote/js/controllers/guru/guru.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.opportunities.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.student-request.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/guru/guru.active-session.ctrl.js"></script>
@@ -502,7 +490,7 @@
     </script>
  -->
   </head>
-  <body ng-app="uguru" animation="slide-left-right-ios7" onload="onBodyLoad()">
+  <body ng-app="uguru" animation="slide-left-right-ios7">
     <script type="text/javascript" src="remote/lib/uLoader/uguru.loader.js">
     </script>
     <!-- <h3>In App Google Maps Plugin</h3>
