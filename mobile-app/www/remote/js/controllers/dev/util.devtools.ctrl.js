@@ -14,7 +14,6 @@ angular.module('uguru.dev.controllers')
   '$sce',
   function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce) {
 
-    var classes = ['animated', 'bounceInUp', 'bounceInDown'];
 
 
     $scope.states = {
@@ -29,6 +28,43 @@ angular.module('uguru.dev.controllers')
       }
     }
 
+    var mostUsedCSSProperties = ["transform", "-webkit-transform", "opacity", "-webkit-animation-name", "animation-name", "-webkit-animation-timing-function", "animation-timing-function", "-webkit-transform-origin", "transform-origin", "backface-visibility", "-webkit-backface-visibility", "animation-duration", "-webkit-animation-duration", "-webkit-animation-fill-mode", "-webkit-animation-iteration-count", "animation-iteration-count", "animation-fill-mode", "z-index", "width", "visibility", "top", "float", "position", "margin", "left", "height", "background", "background-color", "display", "border", "color", "padding"];
+    var supportedAnimationStyles = [];
+    var masterAnimationClasses = [];
+    $scope.properties = {
+      common_css_styles: mostUsedCSSProperties,
+      supported_animations: getAnimationClasses(['animate', 'animation', 'magic']),
+      supported_classes: getAnimationClasses(['utility'])
+    }
+
+    var classes = getAnimationClasses(['animate', 'animation', 'magic']);
+    var utilityClasses = getAnimationClasses(['utility'])
+
+    function getAnimationClasses(arr_animation_css_files) {
+      for (var i = 0; i < document.styleSheets.length; i++) {
+        var indexStyleSheet = document.styleSheets[i];
+        if ('href' in indexStyleSheet && indexStyleSheet.href) {
+          var cssFileName = indexStyleSheet.href.split('/').reverse()[0].replace('.css', '');
+          if (arr_animation_css_files.indexOf(cssFileName) > -1) {
+            var cssRulesObjArr = indexStyleSheet.cssRules;
+            for (var j = 0; j < cssRulesObjArr.length; j++) {
+              var indexRule = cssRulesObjArr[j];
+
+              if (indexRule && indexRule.selectorText && indexRule.selectorText.indexOf('[') === -1 && indexRule.selectorText.indexOf(',') === -1 && indexRule.selectorText.indexOf('*') === -1 && indexRule.selectorText.indexOf('>') === -1 && indexRule.selectorText.indexOf(':') === -1  ) {
+                indexRule.selectorText.replace('.animated.','');
+                if (masterAnimationClasses.indexOf(indexRule.selectorText) === -1 && indexRule.selectorText.indexOf('.animated.') === -1) {
+                  masterAnimationClasses.push(indexRule.selectorText.replace('.', ''));
+                }
+              }
+            }
+          }
+        }
+      }
+      console.log(masterAnimationClasses.length, 'classes exported from', arr_animation_css_files.join(" "), 'css files');
+      return masterAnimationClasses;
+    }
+
+
     $scope.elements = [];
     $scope.current_states =[];
     $scope.page = {dropdowns:{}, toggles:{}};
@@ -36,7 +72,6 @@ angular.module('uguru.dev.controllers')
     $scope.page.compiledTemplates = {};
     $scope.page.dropdowns.screenSizeOptions = {label:'autoscale @ 1.5x', onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
-    var mostUsedCSSProperties = ["transform", "-webkit-transform", "opacity", "-webkit-animation-name", "animation-name", "-webkit-animation-timing-function", "animation-timing-function", "-webkit-transform-origin", "transform-origin", "visibility", "backface-visibility", "-webkit-backface-visibility", "animation-duration", "-webkit-animation-duration", "-webkit-animation-fill-mode", "-webkit-animation-iteration-count", "animation-iteration-count", "animation-fill-mode", "z-index", "width", "visibility", "top", "float", "position", "margin", "left", "height", "background", "background-color", "display", "border", "color", "padding", "float"];
 
     function generateTimeStateProperty(option, index) {
       var css_class = option._class;
@@ -356,6 +391,34 @@ angular.module('uguru.dev.controllers')
       if (!component_obj.time_states) {
           component_obj.time_states = [];
       }
+      if (!component_obj.time_states) {
+          component_obj.properties = mostUsedCSSProperties;
+      }
+      if (!component_obj.init_time_state) {
+        component_obj.init_time_state = {
+            time: -1,
+            properties:[
+              {name: 'opacity', value:0, onChange: onOpacityChange},
+              {name: 'visibility', value:"visible"},
+            ]
+        }
+      }
+
+      function onOpacityChange(property) {
+        return function(scope, value) {
+          if (!value) {
+            scope.value = 0;
+            property.value = 0;
+          }
+          else {
+            scope.value = 1;
+            property.value = 1;
+          }
+        }
+      }
+
+
+
       component_obj.addTimeState = function(component, time_state, c) {
           // if (time_state.time && time_state.properties && time_state.properties.length) {
             component.time_states.push(JSON.parse(JSON.stringify(time_state)));
@@ -394,7 +457,15 @@ angular.module('uguru.dev.controllers')
         collapsed: true,
         expand: false,
         template: cloned_elem,
-        properties: initProperties,
+        properties: mostUsedCSSProperties,
+        init_time_state: {
+            time: -1,
+            properties:[
+              {name: 'opacity', value:0},
+              {name: 'visibility', value:"visible"},
+              {name:'display', value:'inherit'}
+            ]
+        },
         time_states: [],
         addTimeState: function(component, time_state, c) {
           // if (time_state.time && time_state.properties && time_state.properties.length) {
@@ -411,15 +482,17 @@ angular.module('uguru.dev.controllers')
         removePropertyField: function(time_state, property_index) {
           time_state.properties.splice(property_index, 1);
         },
-        confirmPropertyField:function(component, time_state, property, _type, value) {
+        confirmPropertyField:confirmPropertyField,
+        empty_time_state: {time:null, properties:[]}
+      }
+    }
+
+    function removePropertyField(component, time_state, property, _type, value) {
           if (time_state.properties) {
             time_state.properties.push({name: property.name, type: _type ||'css_text', value: value || 'absolute'})
           }
           $scope.selectPropertyActivated = false;
           $scope.component_selected = null;
-        },
-        empty_time_state: {time:null, properties:[]}
-      }
     }
 
     $scope.playOneComponent = function(component) {
