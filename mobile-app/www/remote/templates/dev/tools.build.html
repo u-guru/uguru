@@ -160,10 +160,10 @@
                                     <input class="radius-2" ng-repeat='property in component.init_time_state.properties' placeholder="value" ng-model="property.value"/>
                                 </div>
                                 <div>
-                                    <a ng-repeat='property in component.init_time_state.properties' ng-click='component.removePropertyField(component.init_time_state, $index)'>&times;</a>
+                                    <a ng-repeat='property in component.init_time_state.properties' ng-click='component.removePropertyField(component, component.init_time_state, $index)'>&times;</a>
                                 </div>
                             </li>
-                            <li ng-if='component.time_states && component.time_states.length' ng-repeat='time_state in component.time_states'>
+                            <li ng-if='component.time_states && component.time_states.length' ng-repeat='time_state in component.time_states track by $index'>
                                 <div><span class="radius-2-left">@T</span><span class="radius-2-right">{{time_state.time}}</span></div>
                                 <div>
                                     <span ng-repeat='property in time_state.properties' class="build-class radius-2">.{{property.name}}
@@ -177,7 +177,7 @@
                                     <dropdown ng-if='property.type === "css_animation"' ng-repeat="property in time_state.properties" ng-model="property.value"> </dropdown>
                                 </div>
                                 <div>
-                                    <a ng-repeat='property in time_state.properties' ng-click='component.removePropertyField(time_state, $index)'>&times;</a>
+                                    <a ng-repeat='property in time_state.properties' ng-click='component.removePropertyField(component, time_state, $index, $parent.$index)'>&times;</a>
                                 </div>
                             </li>
                             <li>
@@ -196,7 +196,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <a  ng-click='component.removePropertyField(component.empty_time_state, $index)' ng-repeat='property in component.empty_time_state.properties'>&times;</a>
+                                    <a  ng-click='component.removePropertyField(component, component.empty_time_state, $index)' ng-repeat='property in component.empty_time_state.properties'>&times;</a>
                                 </div>
                                 <div class="full-x">
                                     <button class='bg-moxie height-36 txt-20 radius-2' ng-click='component.addTimeState(component, component.empty_time_state)'>Save</button>
@@ -218,7 +218,7 @@
                 <ul>
                     <li><a class="build-add-element" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a></li>
                     <li><a ng-include="img_base + BASE + 'templates/svg/main/arrow.html'"></a></li>
-                    <li><a ng-click='playPageComponents()' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a></li>
+                    <li><a ng-click='playStateComponents(current_states.states[current_states.selectedIndex].components)' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a></li>
                     <li><a ng-include="img_base + BASE + 'templates/svg/main/arrow.html'"></a></li>
                 </ul>
             </nav>
