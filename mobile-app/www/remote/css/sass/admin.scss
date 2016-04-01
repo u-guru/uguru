@@ -364,6 +364,9 @@
 							bottom: 5px;
 							right: 5px;
 						}
+						.fixed {
+							position: absolute!important;
+						}
 					}
 					.build-css-header {
 						@include flex;
