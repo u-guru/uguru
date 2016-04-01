@@ -186,7 +186,7 @@ a, button, *[ng-click], *[tabindex], input[type=checkbox] {
 		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 	}
 }
-.noselect {
+a[disabled], .noselect {
 	@include prefix(user-select, none, webkit khtml moz ms o);
 	-webkit-touch-callout: none;
 }

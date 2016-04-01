@@ -278,12 +278,14 @@
 					> div {
 						width: 100%;
 					}
+					> div:first-of-type:not([class*="bg-"]) {
+						background: lighten($slate, 15%);
+					}
 					> div:first-of-type {
 						@include flex;
 						@include flex-center-vertical;
 						width: calc(100% - 48px);
 						height: 48px;
-						background: lighten($slate, 15%);
 						h1 {
 							padding: 0 15px;
 							font-size: 28px;
@@ -886,7 +888,7 @@
 							}
 						}
 					}
-					.build-add-element {
+					.build-add-element, .bg.bg-moxie {
 						background: $moxie;
 						svg {
 							width: 36px;

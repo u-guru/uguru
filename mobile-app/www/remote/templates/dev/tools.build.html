@@ -92,7 +92,7 @@
                 </ul>
             </nav>
 
-            <div class='build-element-list animation' style='height:calc(100% - 182px);'>
+            <div class='build-element-list animation'>
                 <div class='fixed bg-slate-90p top-0 right-0 expanded flex-wrap-center flex-stretch' ng-show="selectPropertyActivated">
                     <a class='absolute weight-700 high-index-z bg-charcoal txt-5 p20xy txt-white right-0 m10xy top-0' ng-click='selectPropertyActivated = false;'>Close</a>
                     <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p">
@@ -121,8 +121,12 @@
                     </ul>
                 </div>
                 <ul ng-repeat='current_state in current_states.states' ng-show="current_states.selectedIndex === $index">
-                    <li class='full-x txt-center uppercase bg-shamrock p20xy txt-white weight-600'>State #{{current_states.selectedIndex + 1}}:{{current_states.states[current_states.selectedIndex].name}}</li>
-                    <li class='full-x txt-center uppercase bg-shamrock-50p p20xy txt-white weight-600' ng-if='current_state.gestures'>State gestures: {{current_state.gestures}}</li>
+                    <li>
+                        <div class='full-x txt-center uppercase bg-moxie p15x txt-white weight-600'>State #{{current_states.selectedIndex + 1}}:{{current_states.states[current_states.selectedIndex].name}}</div>
+                    </li>
+                    <li ng-if='current_state.gestures'>
+                        <div class='full-x txt-center uppercase bg-moxie-50p p15x txt-white weight-600'>State gestures: {{current_state.gestures}}</div>
+                    </li>
                     <li ng-repeat='component in current_state.components'>
                         <span>{{$index + 1}}</span>
                         <div class='relative'>
@@ -206,20 +210,14 @@
                     </li>
                 </ul>
             </div>
-            <nav class="build-aside-bottom subbottom bg-charcoal ugrid-2 flex-wrap-center">
-                <a class='bg-shamrock full-y flex-wrap-center' ng-click='saveCurrentStatesToLocalStorage()'>
-                    <span class='txt-5 weight-700'> Save </span>
-                </a>
-                <div class='bg-shamrock-50p full-y flex-wrap-center opacity-50'>
-                    <span class='txt-5 weight-700'> Sync (Coming Soon) </span>
-                </div>
-            </nav>
             <nav class="build-aside-bottom">
                 <ul>
                     <li><a class="build-add-element" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a></li>
                     <li><a ng-include="img_base + BASE + 'templates/svg/main/arrow.html'"></a></li>
                     <li><a ng-click='playPageComponents()' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a></li>
                     <li><a ng-include="img_base + BASE + 'templates/svg/main/arrow.html'"></a></li>
+                    <li><a class="bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/save.html'" ng-click='saveCurrentStatesToLocalStorage()'></a></li>
+                    <li><a class="opacity-50" ng-include="img_base + BASE + 'templates/svg/main/switch.html'" disabled></a></li>
                 </ul>
             </nav>
         </aside>

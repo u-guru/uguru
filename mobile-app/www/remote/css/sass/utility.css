@@ -223,7 +223,7 @@ a svg *, button svg *, *[ng-click] svg *, *[tabindex] svg *, input[type=checkbox
   transition: all 150ms ease-in-out;
 }
 
-.noselect {
+a[disabled], .noselect {
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
