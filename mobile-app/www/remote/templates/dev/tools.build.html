@@ -130,7 +130,8 @@
                     <li ng-repeat='component in current_state.components'>
                         <span>{{$index + 1}}</span>
                         <div class='relative'>
-							<h1><span class="lowercase">{{component.name}}</span> &rarr; <span class="opacity-50">{{component.selector}}</span></h1>
+							<h1><span class="lowercase">{{component.name}}</span></h1>
+                             <!-- &rarr; <span class="opacity-50">{{component.selector}}</span> -->
                             <!-- Collapse component vars-->
                             <a ng-click='component.collapsed = !component.collapsed' ng-class="{'collapse': !component.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
                             <!-- Activate component vars-->
@@ -138,7 +139,7 @@
                             <a ng-click='component.active = !component.active' ng-if='component.active'>on</a>
 						</div>
                         <div class="relative" ng-show='!component.collapsed' ng-class="{'opacity-50': !component.active}" style='min-height:200px;' ng-class="{'height-300': component.expand}">
-                            <div class='absolute full-xy component-inject'></div>
+                            <div class='absolute full-xy component-inject overflow-hidden'></div>
                             <a ng-if='!component.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='component.expand = true;'>Expand</a>
                             <a ng-if='component.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='component.expand = false;'>Reduce</a>
                             <a ng-click='playOneComponent(component)' class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
