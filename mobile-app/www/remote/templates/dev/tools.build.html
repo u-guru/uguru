@@ -130,16 +130,12 @@
                     <li ng-repeat='component in current_state.components'>
                         <span>{{$index + 1}}</span>
                         <div class='relative'>
-							<h1><span class="lowercase">{{component.name}}</span> &rarr; <span class="opacity-50">{{component.selector}}</span>
-                            </h1>
-                            <div class='absolute ugrid-2 right-0 top-0 full-y txt-2 txt-white'>
-                                <!-- Collapse component vars-->
-                                <a class='bg-shamrock-50p txt-white p10xy' style='margin-right:20px;' ng-if='component.collapsed' ng-click='component.collapsed = !component.collapsed'>Show</a>
-                                <a class='bg-shamrock-50p txt-white p10xy' style='margin-right:20px;' ng-if='!component.collapsed' ng-click='component.collapsed = !component.collapsed'>Collapse</a>
-                                <!-- Activate component vars-->
-                                <a class='bg-charcoal txt-white p10xy' ng-click='component.active = !component.active' ng-if='!component.active'>Turn On</a>
-                                <a class='bg-charcoal txt-white p10xy' ng-click='component.active = !component.active' ng-if='component.active'>Turn Off</a>
-                            </div>
+							<h1><span class="lowercase">{{component.name}}</span> &rarr; <span class="opacity-50">{{component.selector}}</span></h1>
+                            <!-- Collapse component vars-->
+                            <a ng-click='component.collapsed = !component.collapsed' ng-class="{'collapse': !component.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
+                            <!-- Activate component vars-->
+                            <a class="opacity-50" ng-click='component.active = !component.active' ng-if='!component.active'>off</a>
+                            <a ng-click='component.active = !component.active' ng-if='component.active'>on</a>
 						</div>
                         <div class="relative" ng-show='!component.collapsed' ng-class="{'opacity-50': !component.active}" style='min-height:200px;' ng-class="{'height-300': component.expand}">
                             <div class='absolute full-xy component-inject'></div>
@@ -155,7 +151,7 @@
                         <ul class="build-css-list" ng-show='!component.collapsed' ng-class="{'opacity-50': !component.active}">
                             <li class='init' ng-if='component.init_time_state && component.init_time_state.time < 0'>
                                 <div class='relative ugrid-2'>
-                                    <span class="radius-2-left full-y flex-wrap-center">@T</span><div class="flex-wrap-center full-y radius-2-right uppercase weight-900 txt-white text-center">init</div>
+                                    <span class="radius-2-left">@T</span><span class="radius-2-right">INIT</span>
                                 </div>
                                 <div>
                                     <button ng-repeat='property in component.init_time_state.properties' class="bg-campus">{{property.name}}</button>
