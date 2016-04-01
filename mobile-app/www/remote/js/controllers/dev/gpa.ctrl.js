@@ -92,7 +92,7 @@ angular.module('uguru.util.controllers')
             $scope.closeAttachActionSheet();
         },
         buttonClicked: function(index) {
-          console.log(index);
+          ;
         }
     });
     }

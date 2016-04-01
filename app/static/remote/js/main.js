@@ -1,5 +1,5 @@
-
 var LOCAL = _local || false; //local to the 8100 codebasebirbirs
+// var DEBUG = _debug || false;
 _startpage = _startpage || '';
 var FIRST_PAGE='^.' + _startpage;
 
@@ -8,6 +8,14 @@ var REST_URL = 'https://uguru.me';
 
 var BASE = '/static/remote/';
 var img_base = '';
+
+// if (!DEBUG)
+// {
+//   // var console = {};
+//   console.log = function(){};
+//   window.console = {};
+// }
+
 if (LOCAL) {
 
   BASE = 'remote/';

@@ -161,7 +161,7 @@ function AccessController($scope, $timeout, $state, $ionicViewSwitcher,
   $scope.accessInputOnBlur = function(e) {
     $scope.inputFocused = false;
     if ($scope.keyboardExists && $scope.redeemRecentlyPressed) {
-      console.log('access Input on Blur prevented');
+      // console.log('access Input on Blur prevented');
       return;
     }
 

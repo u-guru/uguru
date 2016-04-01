@@ -42,17 +42,13 @@ angular.module('uguru.desktop.controllers')
         duration:0.33,
         extraTransitionDuration:1
     }
-
-    console.log('starting to detect object');
     if ($stateParams.universityObj) {
-      console.log('universityObj passed in', $stateParams.universityObj);
       $scope.university = $scope.universityObj;
       $scope.root.vars.university = $scope.university;
       $localstorage.setObject('university', $scope.university);
       $scope.user.university = $scope.university;
     }
     if ($scope.root.vars.university && !$stateParams.universityObj) {
-      console.log('root vars passted in ', $scope.root.vars.university);
       $scope.university = $scope.root.vars.university;
       $localstorage.setObject('university', $scope.university);
       $scope.user.university = $scope.university;
@@ -95,7 +91,6 @@ angular.module('uguru.desktop.controllers')
       $scope.progress.width = 16.66;
       var progressValue = 16.66;
       if ($scope.user.guru_courses && $scope.user.guru_courses.length) {
-        console.log('user has guru courses');
         $scope.progress.width += 16.66;
         progressValue += 16.66;
       }
@@ -103,7 +98,6 @@ angular.module('uguru.desktop.controllers')
       if ($scope.user.guru_subcategories && $scope.user.guru_subcategories.length) {
         $scope.progress.width += 33.3;
         progressValue += 33.3;
-        console.log('user has guru subcategories');
       }
 
       if ($scope.user.profile_url && ($scope.user.profile_url.indexOf('avatar.svg') < 0)) {
@@ -202,7 +196,6 @@ angular.module('uguru.desktop.controllers')
      function getModalCTAElemID(cta_box_elem) {
         elem_id = cta_box_elem.id;
         modalID = elem_id.replace('box', 'modal');
-        console.log('\n\nprocessing box --> modal mapping', elem_id, modalID, '\n\n');
         return modalID;
     }
 
@@ -216,7 +209,6 @@ angular.module('uguru.desktop.controllers')
     }
     var clearAllSearchInputs = function() {
       var inputs = document.querySelectorAll('input');
-      console.log(inputs.length, 'found');
       for (var i = 0; i < inputs.length; i ++) {
         var currentIndexInput = inputs[i];
         currentIndexInput.value = '';
@@ -252,8 +244,6 @@ angular.module('uguru.desktop.controllers')
       else if (index === 1) {
 
         uTracker.track(tracker, 'Become Guru: Courses');
-        console.log("inside courses slide");
-
 
       }
 
@@ -263,7 +253,7 @@ angular.module('uguru.desktop.controllers')
         try {
           $interval.cancel(startScanner)
         } catch (err) {
-          console.log("Error in canceling interval startScanner: " + err);
+          console.error("Error in canceling interval startScanner: " + err);
         }
 
         uTracker.track(tracker, 'Become Guru: Skills');
@@ -352,7 +342,6 @@ angular.module('uguru.desktop.controllers')
 
     var injectClassIntoElement = function(e) {
       element = e.target
-      console.log(element.className);
       if (element.className.indexOf('selected') === -1) {
         element.className += " animated pulse";
         $scope.tempElement = element;
@@ -363,7 +352,6 @@ angular.module('uguru.desktop.controllers')
     }
 
     var incrementProgressBar = function(elemId, value) {
-      console.log(document.querySelector('#become-guru-progress'));
       document.querySelector('#become-guru-progress').setAttribute("value", value);
     }
 

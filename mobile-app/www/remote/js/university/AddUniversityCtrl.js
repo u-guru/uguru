@@ -66,7 +66,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
         //console.log("appStartTime: " + appStartTime);
         var time_ms = appStartTime - start_dom_time;
         appLoadTime = (time_ms / 1000.0).toPrecision(3);
-        console.log("appLoadTime: " + appLoadTime);
+        // console.log("appLoadTime: " + appLoadTime);
         var performance = 'pass';
         if (appLoadTime > 5) performance = 'fail';
         uTracker.track(tracker, "App Launch", {
@@ -244,12 +244,14 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       mixpanel.track("Get GPS Location attempted");
     }
     if (Geolocation.settings.isAllowed === null || Geolocation.settings.isAllowed === false) {
-      console.log("refreshing universities for location!");
+      // console.log("refreshing universities for location!");
       $scope.refresh.universities = 'update';
       LoadingService.showAmbig();
     }
     else if (Geolocation.settings.isAllowed) {
-      console.log("toggling location.isActive");
+      // console.log("toggling location.isActive");
+
+      
       LoadingService.hide()
       Geolocation.settings.isActive = !Geolocation.settings.isActive;
     }

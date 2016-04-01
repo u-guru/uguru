@@ -83,7 +83,7 @@ angular.module('uguru.util.controllers')
                 location.href = window.location.origin + window.location.pathname + window.location.hash;
             },
             function(err) {
-                console.log(err);
+                console.error(err);
             })
         };
 
@@ -98,7 +98,6 @@ angular.module('uguru.util.controllers')
             // width = width || windowWidth;
             height = window.window.innerHeight || window.window.outerHeight;
             width = window.window.innerWidth || window.window.outerWidth;
-            console.log(height, width);
             return height >= desktopHeightLimit && width >= desktopWidthLimit;
         };
         $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth) && !(navigator.userAgent.indexOf('iPad') > 0);
@@ -112,7 +111,6 @@ angular.module('uguru.util.controllers')
         }
         window.addEventListener('native.keyboardshow', keyboardShowHandler);
         function keyboardShowHandler(e){
-            console.log('native hardware keyboard is shown');
             KeyboardService.setDeviceKeyboardState(true);
             $scope.keyboardOpen = true;
         }
@@ -120,7 +118,6 @@ angular.module('uguru.util.controllers')
         window.addEventListener('native.keyboardhide', keyboardHideHandler);
 
         function keyboardHideHandler(e){
-            console.log('native hardware keyboard is hidden');
             KeyboardService.setDeviceKeyboardState(false);
             $scope.keyboardOpen = false;
         }
@@ -165,14 +162,12 @@ angular.module('uguru.util.controllers')
         $ionicPlatform.registerBackButtonAction(function(e) {
             var popup = document.querySelectorAll('.uguru-popup.show')[0];
             if(popup !== null && popup !== undefined) {
-                console.log("found popup");
                 popup.classList.remove('show');
                 e.stopPropagation();
 
                 e.preventDefault();
                 return false;
             } else {
-                console.log("no popup found");
                 $ionicHistory.goBack(-1);
             }
         }, 101);
@@ -254,7 +249,6 @@ angular.module('uguru.util.controllers')
         };
 
         $scope.getMajorsForUniversityId = function(uni_id, callback) {
-            console.log("university id: " + uni_id);
             University.getMajors(uni_id);
         }
 
@@ -274,11 +268,11 @@ angular.module('uguru.util.controllers')
                     }
                 }
                 callback && callback(Category.categories);
-                console.log($scope.categories.length, 'categories loaded', Category.categories);
+                // console.log($scope.categories.length, 'categories loaded', Category.categories);
 
             },
             function() {
-                console.log("Categories NOT successfully loaded");
+                console.error("Categories NOT successfully loaded");
 
             });
 

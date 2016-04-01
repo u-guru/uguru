@@ -113,11 +113,11 @@ angular.module('uguru.guru.controllers')
         mainAboutTabDiv.addEventListener('click', function($event) {
           if ($scope.activeTabIndex === 1 && $scope.page.popups.checkPopupVisible()) {
             var elemClicked = $event.target;
-            if (elemClicked.querySelector('.guru-popup')) {
-              console.log('div was clicked outside of the popup');
-            } else {
-              console.log('div was clicked INSIDE of the popup');
-            }
+            // if (elemClicked.querySelector('.guru-popup')) {
+            //   console.log('div was clicked outside of the popup');
+            // } else {
+            //   console.log('div was clicked INSIDE of the popup');
+            // }
           }
         })
       }
@@ -132,7 +132,7 @@ angular.module('uguru.guru.controllers')
 
     $scope.all_currencies = Currency.updateMasterList($scope.user);
     $timeout(function() {
-      console.log('CURRENCIES', $scope.all_currencies);
+      // console.log('CURRENCIES', $scope.all_currencies);
     }, 2500)
 
     $scope.showEditGuruIntro = false;
@@ -193,9 +193,9 @@ angular.module('uguru.guru.controllers')
 
     function shiftPortfolioItemEditModalToNextRow(elem, successFunction) {
       var elemRect = elem.getBoundingClientRect();
-      console.log(elemRect, elem.offsetTop);
+      // console.log(elemRect, elem.offsetTop);
       var totalVerticalOffsetFromTop = elemRect.height + elemRect.top;
-      console.log(totalVerticalOffsetFromTop + 15);
+      // console.log(totalVerticalOffsetFromTop + 15);
       elem.style.top = totalVerticalOffsetFromTop + 30 + 'px';
     }
 
@@ -208,9 +208,7 @@ angular.module('uguru.guru.controllers')
           $scope.activePortfolioItem.visible = false;
           $scope.editPortfolioItemModal.hide();
         } else {
-          console.log('this is being called 2 ')
           if (!portfolio_item  || !portfolio_item.visible) {
-            console.log('this is being called 3')
             $scope.activePortfolioItem.visible = null;
 
           } else {
@@ -318,11 +316,8 @@ angular.module('uguru.guru.controllers')
     $scope.toggleDesktopIntroduction = function() {
       $scope.showEditGuruIntro = !$scope.showEditGuruIntro;
 
-      console.log('edit mode is currently', $scope.showEditGuruIntro);
-
       if ($scope.showEditGuruIntro) {
         var textArea = document.querySelector('#desktop-guru-introduction-textarea')
-        console.log('edit mode is currently', $scope.showEditGuruIntro, textArea);
         if (textArea) {
           textArea.focus();
           textArea.select();
@@ -655,10 +650,10 @@ angular.module('uguru.guru.controllers')
 
     }
 
-    $scope.focusTag = function() {
-      console.log('input is focused');
-      console.log($scope.activePortfolioItem.tags);
-    }
+    // $scope.focusTag = function() {
+    //   console.log('input is focused');
+    //   console.log($scope.activePortfolioItem.tags);
+    // }
 
     $scope.onEnterBlurInput = function($event) {
       if ($event.keyCode == 13 ||$event.keyCode == 9) {
@@ -979,7 +974,7 @@ angular.module('uguru.guru.controllers')
         $scope.user.updateAttr('fb_id', $scope.user, success.authResponse.accessToken, successCallback , $scope, failureCallback);
       }).catch(function(e)
       {
-        console.log("FAIL");
+        // console.log("FAIL");
         // LoadingService.showMsg('Sorry! This FB account has another account - please contact support', 2000);
         // $scope.loader.showMsg('Unable to Connect with Facebook', 0, 1500);
         LoadingService.hide();
@@ -1232,7 +1227,7 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.confirmPhonePopup = function($event) {
-      console.log("EVENT", $event.target)
+      // console.log("EVENT", $event.target)
       function callback() {
           $scope.validateAndSendPhoneConfirmation();
       }
@@ -1242,7 +1237,7 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.validateAndSendPhoneConfirmation = function() {
-      console.log("Confirm")
+      // console.log("Confirm")
 
       //1. re-verify / verify phone number
       //2. invalid input
@@ -1253,7 +1248,7 @@ angular.module('uguru.guru.controllers')
 
         if(Utilities.validateCode($scope.popupInput.code))
         {
-            console.log('verify code confirm');
+            // console.log('verify code confirm');
             var callbackSuccess = function() {
                 if ($scope.user.phone_number_confirmed)
                   $scope.calcGuruCredibilityProgress();
@@ -1262,7 +1257,7 @@ angular.module('uguru.guru.controllers')
 
 
            var failureCallback = function(err) {
-              console.log("Real FAIL")
+              // console.log("Real FAIL")
               if (!$scope.user.phone_number_confirmed)
               {
                 $scope.loader.showMsg('Invalid Code - please try again?',0, 2000);

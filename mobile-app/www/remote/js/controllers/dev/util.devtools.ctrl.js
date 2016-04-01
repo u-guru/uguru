@@ -60,7 +60,6 @@ angular.module('uguru.dev.controllers')
           }
         }
       }
-      console.log(masterAnimationClasses.length, 'classes exported from', arr_animation_css_files.join(" "), 'css files');
       return masterAnimationClasses;
     }
 

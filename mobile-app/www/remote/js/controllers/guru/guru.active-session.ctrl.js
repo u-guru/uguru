@@ -28,7 +28,6 @@ angular.module('uguru.guru.controllers')
     $ionicPlatform.ready(function() {
 
       if (window.StatusBar) {
-                    // console.log('Extra #1. Styling iOS status bar to black \n\n');
         StatusBar.styleLightContent();
         StatusBar.overlaysWebView(true);
       }
@@ -77,7 +76,6 @@ angular.module('uguru.guru.controllers')
     });
 
     // $scope.$on('$ionicView.beforeEnter', function() {
-    //   console.log('before enter, parsing the session obj..')
     //   $scope.session = JSON.parse($stateParams.sessionObj);
     //   $scope.recursive_delay = 60000;
     //   $scope.guru = {};
@@ -118,7 +116,6 @@ angular.module('uguru.guru.controllers')
 
 
     //   if (!$scope.user.last_position || !$scope.user.last_position.latitude) {
-    //     console.log('no last position on record... starting now every', $scope.recursive_delay, 'seconds');
     //     $scope.getUserRecentLocation($scope.recursive_delay);
     //   }
 
@@ -182,7 +179,6 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.startSessionTimer = function(session) {
-      console.log(session);
 
       var dialogCallBackSuccess = function() {
 
@@ -250,7 +246,7 @@ angular.module('uguru.guru.controllers')
             }, time);
           }
         }, function(err) {
-          console.log(err);
+          console.error(err);
       });
     }
 
@@ -285,7 +281,6 @@ angular.module('uguru.guru.controllers')
             // $scope.user = user.plain();
 
             // // go through all student sessions, pick out this one programmatically
-            // console.log('explaining me the', $scope.session, $scope.session.id);
             // pos = $scope.user.student_sessions.map(function(session) { return session.id; }).indexOf($scope.session.id);
 
             // // yay we found it!
@@ -293,21 +288,12 @@ angular.module('uguru.guru.controllers')
             //   $scope.indexed_session = $scope.user.student_sessions[pos];
             // }
 
-            // console.log(pos);
 
             // //very simple!
 
 
             // $scope.session = $scope.indexed_session;
 
-
-
-
-
-            // console.log($scope.session);
-
-            // //we found it!!
-            // console.log('session found!', $scope.session.id, $scope.session);
 
              pos = user.plain().student_sessions.map(function(session) { return session.student_id; }).indexOf(user.id);
               if (pos !== -1) {
@@ -320,12 +306,10 @@ angular.module('uguru.guru.controllers')
 
             $scope.guru_position = $scope.session.guru_positions[$scope.session.guru_positions.length-2, $scope.session.guru_positions.length -1];
             $scope.student_position = $scope.session.student_positions[$scope.session.student_positions.length-2, $scope.session.student_positions.length-1];
-            console.log($scope.guru_position, $scope.student_position);
             $scope.last_updated = $scope.getCurrentDate();
             $scope.drawGoogleMap($scope.guru_position, $scope.student_position);
             LoadingService.hide();
             if ($state.current.name !== 'root.guru-active-session') {
-              console.log('do not run background script anymore');
               return;
             }
 
@@ -333,8 +317,7 @@ angular.module('uguru.guru.controllers')
               callback(position)
             }
         }, function(err){
-            console.log(err);
-            console.log('error...something happened with the server;')
+            console.error('error...something happened with the server;')
         });
 
     }
@@ -494,18 +477,14 @@ angular.module('uguru.guru.controllers')
 
         $scope.user.last_position = position.coords;
 
-        console.log('user is at ' + $scope.user.last_position.latitude + ',' + $scope.user.last_position.longitude);
-
         $scope.drawGoogleMap($scope.user.last_position, $scope.guru.last_position, true);
         LoadingService.hide();
 
         if ($state.current.name !== 'root.guru-active-session') {
-            console.log('do not run background script anymore');
             return;
         }
 
 
-        console.log('synchronize server locations in 15minutes')
         var semesterLongTAList =  $scope.syncPositionWithServer($scope.user.last_position);
 
         // if (recursive_delay) {
@@ -515,7 +494,6 @@ angular.module('uguru.guru.controllers')
         // }
 
       }, function(err) {
-          console.log('error from gps', err);
           $scope.drawMapWithSchoolCoordinates();
 
       });

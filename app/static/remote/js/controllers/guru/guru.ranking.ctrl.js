@@ -23,7 +23,7 @@ angular.module('uguru.guru.controllers')
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $cordovaStatusbar, $ionicViewSwitcher,
     $ionicActionSheet, $ionicHistory, $ionicPopup, CordovaPushWrapper, LoadingService) {
-    console.log($scope.user.cards);
+    // console.log($scope.user.cards);
     // $scope.data = {
     //   text_notifications:false || $scope.user.text_notifications,
     //   push_notifications: false || ($scope.user.push_notifications && $scope.user.push_notifications_enabled && $scope.user.devices.length)

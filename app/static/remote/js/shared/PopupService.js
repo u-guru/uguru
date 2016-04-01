@@ -21,10 +21,10 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 	};
 
 	function open(popupName, callback, targetElem) {
-		console.log('attempting to open', popupName);
+		// console.log('attempting to open', popupName);
 		$timeout(function() {
 			var popup = controller[popupName];
-			console.log('found popup', popup);
+			// console.log('found popup', popup);
 			if (typeof source !== 'element') {
 				source = document.getElementById('root-nav');
 			}
@@ -44,7 +44,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 		var closeIcon = popup.getElementsByClassName('close-popup-link')[0];
 		// var submitClose = popup.querySelectorAll('button.submit-close')[0];
 		var submitButton = popup.querySelectorAll('button.submit')[0];
-		console.log('submit button', submitButton);
+		// console.log('submit button', submitButton);
 		// console.log(popup);
 		// console.log(closeIcon);
 		// console.log(submitClose);
@@ -110,7 +110,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 	function init(popupName, elemId, callback) {
 		//source = document.getElementById('root-nav');
 		localPopup = document.getElementById(elemId);
-		console.log('\n\npopup initialized\n\n', localPopup);
+		// console.log('\n\npopup initialized\n\n', localPopup);
 		controller[popupName] = localPopup;
 
 		if (localPopup && callback) {
@@ -120,7 +120,7 @@ function PopupService(Utilities, $timeout, $ionicSlideBoxDelegate, DeviceService
 	}
 
 	function initDefaults() {
-		console.log("initializing PopupService");
+		// console.log("initializing PopupService");
 		$timeout(function() {
 			source = document.getElementById('root-nav');
 			editName = document.getElementById('edit-name-uguru-popup');

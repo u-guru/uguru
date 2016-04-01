@@ -114,9 +114,9 @@ angular.module('uguru.student.controllers', [])
             }
         })
 
-        $timeout(function() {
-            console.log($scope.user);
-        }, 500);
+        // $timeout(function() {
+        //     console.log($scope.user);
+        // }, 500);
         function initAllCTAS() {
             //ngAnimate
             var parentRef = '#desktop-student-home'
