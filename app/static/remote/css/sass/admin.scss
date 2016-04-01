@@ -278,17 +278,19 @@
 					> div {
 						width: 100%;
 					}
+					> div:first-of-type:not([class*="bg-"]) {
+						background: lighten($slate, 15%);
+					}
 					> div:first-of-type {
 						@include flex;
 						@include flex-center-vertical;
 						width: calc(100% - 48px);
 						height: 48px;
-						background: lighten($slate, 15%);
 						h1 {
 							padding: 0 15px;
-							font-size: 28px;
+							font-size: 24px;
 							font-weight: 600;
-							width: calc(100% - 48px);
+							width: calc(100% - 48px - 48px);
 						}
 						a {
 							@include flex;
@@ -296,12 +298,18 @@
 							width: 48px;
 							height: 48px;
 							background: $moxie;
+							font-weight: 600;
 							svg {
 								display: block;
 								width: 36px;
 								height: 36px;
 								* {
 									@include svg-stroke(white, 6);
+								}
+							}
+							&.collapse {
+								svg {
+									@include prefix(transform, rotate(180deg), webkit moz ms o);
 								}
 							}
 							&:hover, &:focus {
@@ -317,6 +325,25 @@
 								svg {
 									* {
 										stroke: white;
+									}
+								}
+							}
+							&:last-child {
+								background: $campus;
+								&:hover, &:focus {
+									background: mix($campus, white);
+									svg {
+										* {
+											stroke: mix($campus, $slate);
+										}
+									}
+								}
+								&:active {
+									background: mix($campus, $slate);
+									svg {
+										* {
+											stroke: white;
+										}
 									}
 								}
 							}
@@ -886,7 +913,7 @@
 							}
 						}
 					}
-					.build-add-element {
+					.build-add-element, .bg.bg-moxie {
 						background: $moxie;
 						svg {
 							width: 36px;
