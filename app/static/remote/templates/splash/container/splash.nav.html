@@ -9,7 +9,7 @@
         <header class='full-x high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
             <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ng-class="{'m10xy absolute left-0 top-0':!desktopMode}"></a>
             <div class="right">
-                <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()'>
+                <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()' class-on-click="null:inject#splash-one-page-pulldown|activate">
                     <svg viewBox="0 0 100 100" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" class-on-activate-delay="600">
                         <circle cx="50" cy="50" r="36"></circle>
                         <path d="M31,35.5 L69,35.5"></path>
@@ -70,7 +70,7 @@
                                     <path d="M4,26 L30,0 L56,26" fill="{{university.school_color_dark}}"></path>
                                 </svg>
                             </li>
-                            <li ng-click="transitionToScene3()" >
+                            <li ng-click="activate.pulldown = true; page.dropdowns.university.active = !page.dropdowns.university.active" class-on-click="null:inject#splash-one-page-pulldown|activate, null:inject#splash-university|activate, null:inject#splash-google-map|activate">
                                 <a class="bg-shamrock">
                                     <span>Find your College</span>
                                 </a>
@@ -106,7 +106,7 @@
                 </a>
             </li>
             <li>
-                <a class="bg-find" ng-click="transitionToScene3()">
+                <a class="bg-find" ng-click="activate.pulldown = true;">
                     <span></span>
                     <span>Find your College</span>
                     <span></span>

@@ -33,9 +33,14 @@ angular.module('uguru.util.controllers')
      AnimationService) {
 
     $scope.nav = {activate: true};
+    $scope.mad_lib = {activate: false};
     $scope.activate = {
       pulldown: false
     }
+
+    $timeout(function() {
+      $scope.mad_lib.activate = true;
+    }, 5000)
 
     $scope.demographics = User.demographics;
     $scope.saveDemographic = saveDemographic;

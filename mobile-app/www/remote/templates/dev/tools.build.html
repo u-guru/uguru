@@ -72,7 +72,10 @@
         </main>
         <aside>
             <nav class="build-aside-top">
-                <ul>
+                <ul ng-if='current_states && current_states.states.length'>
+                    <li ng-click='swapInteractiveState($index)' ng-class="{'bg-shamrock': $index === current_states.selectedIndex}" ng-repeat='interactive_state in current_states.states'><a>{{$index + 1}}</a></li>
+                </ul>
+                <ul ng-if='!current_states'>
                     <li><a>0</a></li>
                     <li><a>1</a></li>
                     <li><a>2</a></li>
@@ -86,7 +89,7 @@
                 </ul>
             </nav>
 
-            <div class='build-element-list animation'>
+            <div class='build-element-list animation' style='height:calc(100% - 182px);'>
                 <div class='fixed bg-slate-90p top-0 right-0' ng-show="selectPropertyActivated">
                     <ul class="flex-wrap-start p15-grid full-x">
                         <li ng-repeat='property in component_selected.properties'>
@@ -94,22 +97,35 @@
                         </li>
                     </ul>
                 </div>
-                <ul>
-                    <li ng-repeat='component in page.components'>
+                <ul ng-repeat='current_state in current_states.states' ng-show="current_states.selectedIndex === $index">
+                    <li class='full-x txt-center uppercase bg-shamrock p20xy txt-white weight-600'>State #{{current_states.selectedIndex + 1}}:{{current_states.states[current_states.selectedIndex].name}}</li>
+                    <li class='full-x txt-center uppercase bg-shamrock-50p p20xy txt-white weight-600' ng-if='current_state.gestures'>State gestures: {{current_state.gestures}}</li>
+                    <li ng-repeat='component in current_state.components'>
                         <span>{{$index + 1}}</span>
-                        <div>
-							<h1><span class="lowercase">{{component.name}}</span> &rarr; <span class="opacity-50">{{component.selector}}</span></h1>
+                        <div class='relative'>
+							<h1><span class="lowercase">{{component.name}}</span> &rarr; <span class="opacity-50">{{component.selector}}</span>
+                            </h1>
+                            <div class='absolute ugrid-2 right-0 top-0 full-y txt-2 txt-white'>
+                                <!-- Collapse component vars-->
+                                <a class='bg-shamrock-50p txt-white p10xy' style='margin-right:20px;' ng-if='component.collapsed' ng-click='component.collapsed = !component.collapsed'>Show</a>
+                                <a class='bg-shamrock-50p txt-white p10xy' style='margin-right:20px;' ng-if='!component.collapsed' ng-click='component.collapsed = !component.collapsed'>Collapse</a>
+                                <!-- Activate component vars-->
+                                <a class='bg-charcoal txt-white p10xy' ng-click='component.active = !component.active' ng-if='!component.active'>Turn On</a>
+                                <a class='bg-charcoal txt-white p10xy' ng-click='component.active = !component.active' ng-if='component.active'>Turn Off</a>
+                            </div>
 						</div>
-                        <div class="relative">
-                            <div class='component-inject'></div>
-                            <a>&rtrif;</a>
+                        <div class="relative" ng-show='!component.collapsed' ng-class="{'opacity-50': !component.active}" style='min-height:200px;' ng-class="{'height-300': component.expand}">
+                            <div class='absolute full-xy component-inject'></div>
+                            <a ng-if='!component.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='component.expand = true;'>Expand</a>
+                            <a ng-if='component.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='component.expand = false;'>Reduce</a>
+                            <a ng-click='playOneComponent(component)' class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
                         </div>
-                        <ul class="build-css-header">
+                        <ul class="build-css-header" ng-show='!component.collapsed' ng-class="{'opacity-50': !component.active}">
                             <li>Time</li>
                             <li>Property</li>
                             <li>Value</li>
                         </ul>
-                        <ul class="build-css-list">
+                        <ul class="build-css-list" ng-show='!component.collapsed' ng-class="{'opacity-50': !component.active}">
                             <li ng-if='component.time_states && component.time_states.length' ng-repeat='time_state in component.time_states'>
                                 <div><span class="radius-2-left">@T</span><span class="radius-2-right">{{time_state.time}}</span></div>
                                 <div>
@@ -121,7 +137,7 @@
                                     <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.value}}</span>
                                 </div>
                                 <div>
-                                    <a ng-repeat='property in time_state.properties'>&times;</a>
+                                    <a ng-repeat='property in time_state.properties' ng-click='component.removePropertyField(time_state, $index)'>&times;</a>
                                 </div>
                             </li>
                             <li>
@@ -147,7 +163,14 @@
                     </li>
                 </ul>
             </div>
-
+            <nav class="build-aside-bottom subbottom bg-charcoal ugrid-2 flex-wrap-center">
+                <a class='bg-shamrock full-y flex-wrap-center' ng-click='saveCurrentStatesToLocalStorage()'>
+                    <span class='txt-5 weight-700'> Save </span>
+                </a>
+                <div class='bg-shamrock-50p full-y flex-wrap-center opacity-50'>
+                    <span class='txt-5 weight-700'> Sync (Coming Soon) </span>
+                </div>
+            </nav>
             <nav class="build-aside-bottom">
                 <ul>
                     <li><a class="build-add-element" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a></li>
