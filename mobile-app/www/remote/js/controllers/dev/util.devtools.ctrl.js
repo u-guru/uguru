@@ -316,7 +316,32 @@ angular.module('uguru.dev.controllers')
           if (indexComponentInitTimeState.properties && indexComponentInitTimeState.properties.length) {
             var elemComponent = document.querySelectorAll('[anim].' + indexComponent.selector)[0];
 
-            applyComponentPropertiesAtTime(indexComponentInitTimeState, elemComponent);
+            applyComponentPropertiesAtTime(indexComponent, indexComponentInitTimeState, elemComponent);
+          }
+        }
+      }
+    }
+
+
+
+    $scope.refreshAllComponents = function() {
+      LoadingService.showMsg('Reinitializing all components', 3000);
+      var current_state = $scope.current_states.states[$scope.current_states.selectedIndex];
+      applyInitPropertiesForState(current_state);
+      for (var i = 0; i < current_state.components.length; i++) {
+        var componentIndex = current_state.components[i];
+        var elementIndex = document.querySelector(componentIndex.selector);
+        if (!elementIndex) {
+          console.log('continuging because couldnt find index');
+          continue;
+        }
+        for (var j = 0; j < componentIndex.time_states; j++) {
+          var componentTimeStateIndex = componentIndex.time_states[j];
+          for (var k = 0; k < componentTimeStateIndex.properties; k++) {
+            var propertyIndex = componentTimeStateIndex.properties[k];
+            if (propertyIndex.type === 'css_class') {
+              elementIndex.classList.remove(propertyIndex.name);
+            }
           }
         }
       }
@@ -570,27 +595,36 @@ angular.module('uguru.dev.controllers')
     $scope.playOneComponent = function(component) {
       var elemComponent = document.querySelectorAll('[anim].' + component.selector)[0];
       for (var j = 0; j < component.time_states.length; j++) {
-        applyComponentPropertiesAtTime(component.time_states[j], elemComponent);
+        applyComponentPropertiesAtTime(component, component.time_states[j], elemComponent);
       }
     }
 
     $scope.playStateComponents = function(state_components) {
       console.log(state_components);
+      var max_time_state = 0;
       for (var i = 0; i < state_components.length; i++) {
         var indexComponent = state_components[i];
         var elemComponent = document.querySelectorAll('[anim].' + indexComponent.selector)[0];
 
         for (var j = 0; j < indexComponent.time_states.length; j++) {
           var indexTimeState = indexComponent.time_states[j];
-          applyComponentPropertiesAtTime(indexTimeState, elemComponent);
+          if (indexTimeState.time > max_time_state) {
+            max_time_state = indexTimeState.time;
+          }
+          applyComponentPropertiesAtTime(indexComponent, indexTimeState, elemComponent);
         }
       }
+
+      $timeout(function() {
+        LoadingService.showMsg('Re-initializing components...', 3000);
+        applyInitPropertiesForState($scope.current_states.states[$scope.current_states.selectedIndex]);
+      }, (parseInt(max_time_state) + 2000));
 
     }
 
 
 
-    function applyComponentPropertiesAtTime(time_state, component) {
+    function applyComponentPropertiesAtTime(component, time_state, element) {
         var delay = 0;
         if (time_state.time === -1) {
           var delay = 0;
@@ -599,17 +633,20 @@ angular.module('uguru.dev.controllers')
         }
         $timeout(function() {
           for (var i = 0; i < time_state.properties.length; i++) {
+            if (!component.active) {
+              continue;
+            }
             if (time_state.properties[i].type === 'css_text') {
-              component.style[time_state.properties[i].name] = time_state.properties[i].value;
+              element.style[time_state.properties[i].name] = time_state.properties[i].value;
             } else if (time_state.properties[i].type === 'css_class') {
-              component.classList.add(time_state.properties[i].name);
+              element.classList.add(time_state.properties[i].name);
             } else if (time_state.properties[i].type === 'css_animation') {
               var animationPropertyDropdown = time_state.properties[i].value;
               var animationPropertyDropdownValue = animationPropertyDropdown.options[animationPropertyDropdown.selectedIndex];
               if (animationPropertyDropdownValue === "Animate Out") {
-                AnimationService.animateOut(component, time_state.properties[i].name);
+                AnimationService.animateOut(element, time_state.properties[i].name);
               } else {
-                AnimationService.animateIn(component, time_state.properties[i].name);
+                AnimationService.animateIn(element, time_state.properties[i].name);
               }
 
 
