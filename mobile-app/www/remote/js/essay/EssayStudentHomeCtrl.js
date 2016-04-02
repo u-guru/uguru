@@ -30,9 +30,7 @@ angular.module('uguru.util.controllers')
         $ionicSideMenuDelegate, $ionicBackdrop, $ionicViewSwitcher,
         $ionicActionSheet, $ionicPopover, uTracker, AnimationService, MapService, $ionicSlideBoxDelegate,
         DeviceService, PopupService, LoadingService, TimelineService, Utilities, ScrollService, RequestService) {
-        $timeout(function() {
-            console.log($scope.user)
-        }, 2500)
+
       var CTA_PARENT_DICT = {
             'cta-box-essay-student-request':'#desktop-student-home .main',
             'cta-box-content': '#desktop-student-home .main',

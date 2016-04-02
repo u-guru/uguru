@@ -31,14 +31,12 @@ function AndroidService($rootScope, $state, $cordovaPush,
     // current plugin is deprecated and no longer maintained.
 
       // $cordovaPush.register(androidConfig).then(function(deviceToken) {
-      //   console.log('android notifications', deviceToken);
+      //   return
       // }, function(err){
-      //   console.log(err);
+      //   console.error(err);
       // });
-      // console.log('Extra #2. Android push notifications need to be registered')
       // $rootScope.$on('pushNotificationReceived', function(event, notification) {
       //   CordovaPushWrapper.received($rootScope, event, notification);
-      //   console.log('android notifications registered',event, notification);
       //   if ($scope.user && $scope.user.id) {
       //     payload = {
       //       'push_notifications': true,

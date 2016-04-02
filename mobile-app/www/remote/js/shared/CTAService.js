@@ -21,7 +21,6 @@ function CTAService($timeout) {
   }
 
   var showCTAManually = function(elem_id, cb) {
-    console.log(ctaFuncDict);
     var func = ctaFuncDict[elem_id];
     func && func();
     cb && cb();
@@ -49,7 +48,6 @@ function CTAService($timeout) {
         // $timeout(function() { showModalCTA(modal_elem) });
 
         $timeout(function() {
-          console.log('calling callback');
           show_callback && show_callback(modal_elem);
         })
 

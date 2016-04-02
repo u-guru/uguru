@@ -37,8 +37,6 @@ angular.module('uguru.util.controllers')
           $scope.becomeGuruHeaderActive = true;
           $scope.root.vars.page_cache.essayHomeBecomeGuru = true;
           $localstorage.setObject('page_cache', $scope.root.vars.page_cache);
-        } else {
-          console.log('already shown');
         }
       }, 7000);
     }
@@ -166,7 +164,6 @@ angular.module('uguru.util.controllers')
 
         //       var universityCopy = JSON.parse(JSON.stringify(university_arr[i]));
         //       universityCopy.name = tempShortNameWithCollege;
-        //       console.log(university_arr[i].name, '-->', tempShortNameWithCollege);
         //       landingUniversities.push(universityCopy);
 
         //     }

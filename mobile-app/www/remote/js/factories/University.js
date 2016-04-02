@@ -210,7 +210,6 @@ function hasNoMajors(list) {
 
 
 function removeAlreadyAddedCourses(user_courses) {
-    // console.log('attempting to remove courses');
     return 
 }
 

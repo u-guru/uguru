@@ -25,7 +25,6 @@ angular.module('uguru.util.controllers')
       $scope.request.city_info = location.city_info;
       $scope.request.place_id = location.place_id;
       $scope.request.position = $scope.getGPSCoordsFromPlace(location.local_name, location.city_info, location.description);
-      // console.log(JSON.stringify(google.maps.places.getPlace(location.place_id)));
       $scope.locationModal.hide();
     }
 
@@ -40,9 +39,7 @@ angular.module('uguru.util.controllers')
         if (status == google.maps.GeocoderStatus.OK) {
           $scope.request.position = {latitude: results[0].geometry.location.lat(), longitude: results[0].geometry.location.lng()};
 
-        } else {
-          console.log("Geocode was not successful for the following reason: " + status);
-        }
+        } 
       });
     }
 
@@ -68,7 +65,6 @@ angular.module('uguru.util.controllers')
 
     var events = {
         place_changed: function (autocomplete) {
-          console.log('place_changed is called');
           place = autocomplete.getPlace();
 
 
@@ -79,7 +75,6 @@ angular.module('uguru.util.controllers')
             bounds.extend(place.geometry.location);
 
             var place_id = place.place_id;
-            console.log(place.address_components);
             var name =  place.address_components[0].long_name;
             var latitude = place.geometry.location.lat();
             var longitude = place.geometry.location.lng();
@@ -96,7 +91,6 @@ angular.module('uguru.util.controllers')
         var text = search_input;
         if (!search_input || search_input.length === 0) {
             var text = document.getElementById('location-input').value;
-            console.log('empty arg passed g-query places');
         }
 
         if (!text && !search_input) {
@@ -112,7 +106,6 @@ angular.module('uguru.util.controllers')
               var user_location = new google.maps.LatLng(37.76999,-122.44696);
               $scope.request.position = {longitude: -122.44696, latitude: 37.76999};
             } else {
-              console.log('using user gps position', JSON.stringify($scope.user.recent_position));
               $scope.request.position = {longitude: user_location.coords.longitude, latitude: user_location.coords.latitude};
               var user_location = new google.maps.LatLng(user_location.coords.latitude, user_location.coords.longitude);
             }
@@ -123,7 +116,6 @@ angular.module('uguru.util.controllers')
 
     //each time key is pressed for the input, this function is called
     $scope.autocompleteQuerycallback = function(predictions, status) {
-        console.log(status, predictions[0].terms[0].value);
         if (status != google.maps.places.PlacesServiceStatus.OK) {
           alert(status);
           return;
@@ -134,7 +126,6 @@ angular.module('uguru.util.controllers')
         $scope.root.vars.nearby_locations = [];
         for (var i = 0, prediction; prediction = predictions[i]; i++) {
           //clear the list from before
-          // console.log(predictions);
           var payload = {
             'local_name': prediction.terms[0].value,
             'description': prediction.description,
@@ -214,7 +205,6 @@ angular.module('uguru.util.controllers')
     $ionicPlatform.ready(function() {
 
       if (window.StatusBar && $scope.user.guru_mode) {
-                    // console.log('Extra #1. Styling iOS status bar to black \n\n');
         StatusBar.styleLightContent();
         StatusBar.overlaysWebView(true);
       }

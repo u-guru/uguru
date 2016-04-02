@@ -22,7 +22,6 @@ function Settings($localstorage) {
 	}
 
 	function get(key) {
-		console.log("value of " + key + ": " + settings[key]);
 		if(settings[key]===undefined) {
 			settings[key] = JSON.parse(defaultSettings[key]);
 		}
@@ -31,7 +30,6 @@ function Settings($localstorage) {
 
 	function set(key, value) {
 		settings[key] = value;
-		console.log("setting " + key + " to: " + value);
 		$localstorage.setObject('settings', settings);
 	}
 

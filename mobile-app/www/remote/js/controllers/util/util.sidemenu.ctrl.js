@@ -89,9 +89,6 @@ angular.module('uguru.util.controllers')
 
     ModalService.init('university', $scope);
     var sideMenu = document.querySelectorAll('ion-side-menu')[0];
-    console.log("Set sideMenu width")
-    console.log("Check sideMenu width ", sideMenu.style.width)
-
     $scope.openModal = function(modalName) {
       ModalService.open(modalName, $scope);
     };
@@ -129,7 +126,6 @@ angular.module('uguru.util.controllers')
 
       var chatInputEnterButton = document.querySelectorAll('.intercom-composer-send-button')[0];
       if (chatInputEnterButton) {
-        console.log(chatInputEnterButton);
         chatInputEnterButton.click();
       }
 
@@ -381,7 +377,6 @@ angular.module('uguru.util.controllers')
       if ($scope.user.name) {
         $scope.popupInput.editName = $scope.user.name;
       }
-      // console.log(target)
       PopupService.open('editName', callback,target);
       function callback() {
         if (Utilities.validateName($scope.popupInput.editName)) {
@@ -414,7 +409,6 @@ angular.module('uguru.util.controllers')
                 $scope.closeAttachActionSheet();
             },
             buttonClicked: function(index,$event) {
-              console.log('ayy this should"ved fired NOT');
               // fire profile photo
               if (index === 0) {
                 $scope.closeAttachActionSheet();
@@ -424,7 +418,6 @@ angular.module('uguru.util.controllers')
               }
 
               if (index === 1) {
-                console.log('ayy this should"ved fired');
                 $scope.closeAttachActionSheet();
                 $timeout(function() {
                   $scope.launchEditEmailPopup(target);
@@ -494,7 +487,6 @@ angular.module('uguru.util.controllers')
               if (index === 1) {
                 $scope.closeAttachActionSheet();
                 LoadingService.show();
-                console.log("checking");
                 $timeout(function() {
                   $scope.openModal('university');
                 }, 0);
@@ -543,7 +535,6 @@ angular.module('uguru.util.controllers')
         },
 
         function(err) {
-          console.log(err);
           alert('Something went wrong - please contact Samir');
         }
         );

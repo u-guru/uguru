@@ -43,13 +43,11 @@ function uTracker($timeout) {
 		if(!LOCAL) {
 			switch(tracker) {
 				case 'mp':
-					console.log("initializing mixpanel tracking: " + defaultTokens.mp);
 					mixpanel = window.mixpanel || null;
 					mixpanel.init(token || defaultTokens.mp);
 					break;
 
 				case 'lo':
-					console.log("initializing localytics tracking: " + defaultTokens.lo);
 					// ll('init', token || defaultTokens.lo);
 					// localyticsSession = LocalyticsSession(token || defaultTokens.lo);
 					// localyticsSession.open();

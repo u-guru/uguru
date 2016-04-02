@@ -13,7 +13,6 @@ function UniversityFilterCtrl($scope, UniversityMatcher) {
 	$scope.$watch(
 	  "search_text.university", 
 	  function(newValue, oldValue) {
-	  	//console.log("watching changes");
 	    if (newValue === oldValue) {
 	      return;
 	    }
@@ -55,7 +54,6 @@ function UniversityFilterCtrl($scope, UniversityMatcher) {
 	// $scope.$watch(
 	//   "search_text.university", 
 	//   function(newValue, oldValue) {
-	//   	//console.log("watching changes");
 	//     if (newValue === oldValue) {
 	//       return;
 	//     }
@@ -77,7 +75,7 @@ function UniversityFilterCtrl($scope, UniversityMatcher) {
 
 function bnLineItem() {
 	function link($scope, element, attributes) {
-		console.log("Linked: " + $scope.university.name );
+		// console.log("Linked: " + $scope.university.name );
 	}
 	return ({
 		link: link,

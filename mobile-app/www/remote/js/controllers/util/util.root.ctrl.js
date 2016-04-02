@@ -268,7 +268,6 @@ angular.module('uguru.util.controllers')
                     }
                 }
                 callback && callback(Category.categories);
-                // console.log($scope.categories.length, 'categories loaded', Category.categories);
 
             },
             function() {
@@ -382,10 +381,8 @@ angular.module('uguru.util.controllers')
                 DeviceService.ios.setStatusBarDarkText();
             }
             $ionicSideMenuDelegate.toggleRight();
-            console.log("sideMenuWidth should be: " + sideMenuWidth);
             var sideMenu = document.querySelectorAll('ion-side-menu')[0];
             var mainMenu = document.querySelectorAll('ion-side-menu-content')[0];
-            console.log("Before",sideMenu.style.width);
             if (sideMenu.style.width === (sideMenuWidth + 'px')) {
 
                 sideMenu.style.width = 0 + 'px';
@@ -400,7 +397,6 @@ angular.module('uguru.util.controllers')
             if (!$scope.desktopMode && $state.current.name !== 'root.splash') {
                 var isSideMenuOpen = function(ratio) {
             if (!ratio && ratio !== -1) {
-                console.log('status bar is closing');
                 $scope.sideMenuActive = false;
 
                 if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
@@ -410,7 +406,6 @@ angular.module('uguru.util.controllers')
                 }
 
                 } else {
-                    console.log('status bar is opening');
                     $scope.sideMenuActive = true;
                     // $scope.sideMenuActive = true;
 
@@ -537,7 +532,6 @@ angular.module('uguru.util.controllers')
 
         $scope.togglePaymentSideBarView = function() {
             $scope.root.vars.show_price_fields = !$scope.root.vars.show_price_fields;
-            console.log('this was clicked');
             if ($scope.root.vars.show_price_fields) {
                 $timeout(function() {
 
@@ -559,8 +553,6 @@ angular.module('uguru.util.controllers')
         $scope.requestPushNotifications = function() {
 
             if (!$scope.user.push_notifications) {
-                console.log('push notifications are false');
-
                 payload = {
                     'push_notifications': false
                 };
@@ -576,13 +568,7 @@ angular.module('uguru.util.controllers')
 
             $cordovaPush.register(iosConfig).then(function(deviceToken) {
                 // Success -- send deviceToken to server, and store for future use
-                console.log("deviceToken: " + deviceToken);
-
-                console.log("Register success " + deviceToken);
-
-
                 if ($scope.platform.ios) {
-                    console.log('updating the server...');
                     $scope.user.push_notifications = true;
                     $scope.user.current_device.push_notif = deviceToken;
                     $scope.user.current_device.push_notif_enabled = true;
@@ -596,7 +582,6 @@ angular.module('uguru.util.controllers')
                 }
 
             }, function(err) {
-                console.log(JSON.stringify(err));
                 $scope.user.push_notifications = false;
                 payload = {
                     'push_notifications': false,
@@ -674,8 +659,6 @@ angular.module('uguru.util.controllers')
         };
 
         document.addEventListener("deviceready", function() {
-            console.log('device is ready from the root controller');
-
             PopupService.initDefaults();
             DeviceService.readyDevice($scope);
             setTimeout(function() {
@@ -697,13 +680,10 @@ angular.module('uguru.util.controllers')
             }
 
             document.addEventListener("pause", function() {
-                // console.log('device is paused...');
                 // checkForAppUpdates(Version, $ionicHistory, $templateCache, $localstorage);
             }, false);
 
             document.addEventListener("resume", function() {
-                console.log('device is resuming....');
-
                 DownloadService.testNetworkSpeed();
                 DeviceService.checkUpdates();
             }, false);

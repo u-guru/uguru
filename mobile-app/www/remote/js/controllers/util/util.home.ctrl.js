@@ -786,7 +786,6 @@ angular.module('uguru.util.controllers')
       //            watchersWithoutDuplicates.push(item);
       //       }
       //   });
-      //   console.log(watchersWithoutDuplicates.length);
       // }, 10000);
 
       $scope.scrollNextSection = function() {
@@ -848,10 +847,8 @@ angular.module('uguru.util.controllers')
         })
         $timeout(function() {
           var intercomContainer = document.querySelector('#intercom-container');
-          console.log('attempting intercom container');
           if (intercomContainer) {
             Intercom('hide');
-            console.log('initiating intercom container');
             intercomContainer.style.cssText += ' z-index:1000 !important; visibility:hidden;';
 
           }
@@ -970,7 +967,6 @@ angular.module('uguru.util.controllers')
 
         var academicCTABoxElem = document.getElementById('cta-box-academic');
         // if (!academicCTABoxElem) {
-        //   console.log('checking for categories again in 1 second');
         //   setTimeout(function() {
         //     initProfileCTAS();
         //   }, 1000)
@@ -1369,7 +1365,6 @@ angular.module('uguru.util.controllers')
       }
 
       var windowCloseButtonIsClicked = function(e) {
-        // console.log(e);
         return
       }
 

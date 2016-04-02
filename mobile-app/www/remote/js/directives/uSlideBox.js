@@ -27,10 +27,6 @@ function($parse, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $ion
 
       // //var slidesArray = document.querySelectorAll('u-slide');
       // var slidesArray = document.getElementsByTagName('u-slide');
-      // console.log("slidesArray: " + slidesArray);
-      // console.log("slidesArray.length: " + slidesArray.length);
-      
-
       var slider = new ionic.views.Slider({
         el: $element[0],
         continuous: continuous,
@@ -52,8 +48,7 @@ function($parse, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $ion
 
         var slidesArray = document.querySelectorAll('u-slide');
     		var slide = slidesArray[slideIndex];
-        console.log("slide: " + slide);
-    		var BeforeEnterEvent = new CustomEvent("beforeEnter");
+     		var BeforeEnterEvent = new CustomEvent("beforeEnter");
     		slide.dispatchEvent(BeforeEnterEvent);
     				
           $scope.currentSlide = slideIndex;
@@ -91,7 +86,6 @@ function($parse, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $ion
       });
 
       $scope.$on('slideBox.nextSlide', function() {
-      	console.log("NEXTTT");
         slider.next();
       });
 

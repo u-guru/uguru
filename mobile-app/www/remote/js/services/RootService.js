@@ -33,7 +33,6 @@ angular.module('uguru.root.services', [])
                         return true;
                     }
             }
-            console.log('object not found for key', key, 'value', value);
             return null;
         },
         removeObjectByKey: function(array, key, value) {
@@ -43,7 +42,6 @@ angular.module('uguru.root.services', [])
                         return;
                     }
             }
-            console.log('object not found for key', key, 'value', value);
             return null;
 
         }
@@ -220,7 +218,6 @@ angular.module('uguru.root.services', [])
 
     this.nav = {
         goBack: function() {
-            console.log('root nav go back was clicked');
             $ionicViewSwitcher.nextDirection('back');
             $state.go('^.guru-home');
         }

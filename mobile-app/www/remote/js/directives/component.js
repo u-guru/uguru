@@ -122,7 +122,6 @@ angular.module('uguru.components', [])
                 // element.attr('url',scope.url);
                 // $compile(element.contents())(scope);
                 // scope.$apply();
-                // console.log('Check',scope.url, typeof(scope.url))
 
               }
           }
@@ -284,7 +283,6 @@ angular.module('uguru.components', [])
 
 
       scope.resetMadLibBlankIfActive = function($event){
-          // console.log("WTF")
           var indexTranslateElem = $event.target.parentNode;
           var hasBlankOne = indexTranslateElem.className.indexOf('translate-blank-1') > -1;
           var hasBlankTwo = indexTranslateElem.className.indexOf('translate-blank-2') > -1;

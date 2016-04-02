@@ -84,7 +84,6 @@ function SideMenuService(LoadingService, $timeout, CounterService, CTAService, $
         var intercomContainer = document.querySelector('#intercom-container');
         if (!intercomContainer) {
           $timeout(function() {
-            console.log('attempting to load intercom again');
             showSupport(scope)();
           }, 1000)
           return;
