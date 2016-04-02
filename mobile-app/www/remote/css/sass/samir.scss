@@ -2166,17 +2166,6 @@ header#home-nav-header.splash-header,
 			}
 		}
 
-		.component-inject {
-			position:relative;
-
-			> * {
-				@include center-xy;
-				position:absolute;
-				height:100%;
-				width:100%;
-			}
-		}
-
 
 .height-300 {
 	min-height:300px;
