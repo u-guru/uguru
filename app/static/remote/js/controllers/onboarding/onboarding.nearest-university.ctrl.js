@@ -23,7 +23,6 @@ angular.module('uguru.onboarding.controllers')
     $scope.header_text = 'Nearby Schools';
 
     $scope.$on('$ionicView.beforeEnter', function(){
-        console.log('before view has entered');
         $scope.universities = $scope.static.universities;
 
         if ($scope.platform.ios && window.StatusBar) {
@@ -32,8 +31,6 @@ angular.module('uguru.onboarding.controllers')
     });
 
     $scope.$on('$ionicView.afterEnter', function(){
-        console.log('after view has entered');
-
         $scope.setFocus = function(target) {
           if ($scope.search_text.length === 0 && !$scope.keyboard_force_off) {
             document.getElementsByName("university-input")[0].focus();
@@ -49,8 +46,6 @@ angular.module('uguru.onboarding.controllers')
 
 
         if ($scope.static.nearest_universities.length === 0) {
-            console.log(document.getElementsByName("university-input")[0].focus());
-
             $scope.search_active = ($scope.static.universities && $scope.static.universities.length > 0)
             if ($scope.search_active) {
                 $scope.header_text = 'Select University';

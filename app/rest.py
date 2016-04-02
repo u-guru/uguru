@@ -3421,6 +3421,17 @@ class AdminDevicePushTestView(restful.Resource):
 
         return jsonify(success=[True])
 
+class AdminUIBuilderView(restful.Resource):
+    def get(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        from lib.s3_tools import getAllAdminFiles
+        all_files = getAllAdminFiles()
+
+        return json.dumps(all_files, indent=4), 200
+
+
 class AdminDashboardView(restful.Resource):
     ## Gets most updated component list
     def get(self, auth_token):
@@ -4027,6 +4038,8 @@ api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_toke
 api.add_resource(AdminDashboardView, '/api/v1/admin/<string:auth_token>/dashboard')
 api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test')
 api.add_resource(AdminAppUpdateView, '/api/admin/app/update')
+api.add_resource(AdminUIBuilderView, '/api/v1/admin/<string:auth_token>/build', subdomain='www')
+api.add_resource(AdminDashboardView, '/api/v1/admin/<string:auth_token>/dashboard', subdomain='www')
 api.add_resource(AdminMandrillTemplatesView, '/api/admin/<string:auth_token>/mandrill/templates')
 api.add_resource(AdminMandrillCampaignsView, '/api/admin/<string:auth_token>/mandrill/campaigns')
 api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/<string:auth_token>/mandrill/campaigns/<string:tag>')
@@ -4093,7 +4106,8 @@ api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/univer
 api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses', subdomain='www')
 api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients', subdomain='www')
 api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test', subdomain='www')
-api.add_resource(AdminDashboardView, '/api/v1/admin/<string:auth_token>/dashboard')
+api.add_resource(AdminDashboardView, '/api/v1/admin/<string:auth_token>/dashboard', subdomain='www')
+api.add_resource(AdminUIBuilderView, '/api/v1/admin/<string:auth_token>/build', subdomain='www')
 api.add_resource(AdminAppUpdateView, '/api/admin/app/update', subdomain='www')
 api.add_resource(AdminMandrillTemplatesView, '/api/admin/<string:auth_token>/mandrill/templates', subdomain='www')
 api.add_resource(AdminMandrillCampaignsView, '/api/admin/<string:auth_token>/mandrill/campaigns', subdomain='www')

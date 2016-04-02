@@ -18,7 +18,6 @@ angular.module('uguru.student.controllers')
       $scope.showContactGuru = null;
       if ($stateParams) {
         $scope.guru = JSON.parse($stateParams.guruObj);
-        console.log($scope.guru);
         if ($stateParams.showContactGuru) {
           $scope.showContactGuru = JSON.parse($stateParams.showContactGuru);
         }

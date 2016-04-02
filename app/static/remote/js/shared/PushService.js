@@ -20,8 +20,6 @@ var push = null;
 
   function init() {
 
-      console.log("initalizing Push Service");
-
       var androidSettings = {
         'senderID': '413826461390'
       }
@@ -45,17 +43,13 @@ var push = null;
 
       push.on('registration', function(data) {
               // data.registrationId
-              console.log("heard from pushService");
-              console.log("registrationId: " + data.registrationId);
               uTracker.track(tracker, "Push Registration", {
                 "$Registration_ID": data.registrationId
               });
       });
 
       push.on('notification', function(data) {
-         
-        console.log("message: " + data.message);
-        console.log("title: " + data.title);
+
           // data.message,
           // data.title,
           // data.count,
@@ -65,11 +59,9 @@ var push = null;
       });
 
       push.on('error', function(e) {
-        console.log("error: " + e.message);
+          return
           // e.message
       });
-
-      console.log("finished initializing pushService");
 
   }
 
@@ -83,11 +75,11 @@ var push = null;
     push.unregister(success, error);
 
     function success() {
-      console.log("Successfully unregistered push notifications.");
+      return
     }
 
     function error() {
-      console.log("ERROR: Unable to unregister push notifications.")
+      return
     }
 
   }
@@ -97,10 +89,10 @@ var push = null;
 
     push.setApplicationIconBadgeNumber(successCallback, errorCallback, number);
     function successCallback() {
-        console.log("success with push!");
+      return
     }
     function errorCallback(err) {
-        console.log("error with push: " + err);
+      return
     }
 
 

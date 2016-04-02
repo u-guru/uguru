@@ -180,7 +180,6 @@ angular.module('uguru.desktop.controllers', [])
 
       var chatInputEnterButton = document.querySelectorAll('.intercom-composer-send-button')[0]
       if (chatInputEnterButton) {
-        console.log(chatInputEnterButton);
         chatInputEnterButton.click();
       }
 
@@ -204,7 +203,6 @@ angular.module('uguru.desktop.controllers', [])
 
 
     $scope.confirmPhonePopup = function($event) {
-      console.log("EVENT", $event.target)
       function callback() {
           $scope.validateAndSendPhoneConfirmation();
       }
@@ -242,7 +240,6 @@ angular.module('uguru.desktop.controllers', [])
 
 
     $scope.validateAndSendPhoneConfirmation = function() {
-      console.log("Confirm")
 
       //1. re-verify / verify phone number
       //2. invalid input
@@ -253,7 +250,6 @@ angular.module('uguru.desktop.controllers', [])
 
         if(Utilities.validateCode($scope.popupInput.code))
         {
-            console.log('verify code confirm');
             var callbackSuccess = function() {
                 if ($scope.user.phone_number_confirmed)
                   $scope.calcGuruCredibilityProgress();
@@ -262,7 +258,6 @@ angular.module('uguru.desktop.controllers', [])
 
 
            var failureCallback = function(err) {
-              console.log("Real FAIL")
               if (!$scope.user.phone_number_confirmed)
               {
                 $scope.loader.showMsg('Invalid Code - please try again?',0, 2000);
@@ -279,7 +274,6 @@ angular.module('uguru.desktop.controllers', [])
 
           if(!$scope.popupInput.code)
              $scope.resendPhoneConfirmation();
-            // console.log("Resubmit");
           else
             alert("Please enter a 4 digit code.")
         }
@@ -445,7 +439,6 @@ angular.module('uguru.desktop.controllers', [])
     $scope.launchEditPasswordPopup = function($event) {
 
       function callback() {
-        console.log('callback pressed');
           if ($scope.popupInput.editPasswordOld.length === 0 && $scope.popupInput.editPasswordNew.length === 0) {
 
             alert('Please fill in all fields');
@@ -457,7 +450,6 @@ angular.module('uguru.desktop.controllers', [])
                 new_password : $scope.popupInput.editPasswordNew,
                 old_password: $scope.popupInput.editPasswordOld
             }
-            console.log(payload);
             var successCallback = function() {
               PopupService.close('editPassword');
               $scope.loader.hide();
@@ -530,7 +522,6 @@ angular.module('uguru.desktop.controllers', [])
                 $scope.closeAttachActionSheet();
             },
             buttonClicked: function(index) {
-              console.log('ayy this should"ved fired NOT')
               // fire profile photo
               if (index === 0) {
                 $scope.closeAttachActionSheet();
@@ -540,7 +531,6 @@ angular.module('uguru.desktop.controllers', [])
               }
 
               if (index === 1) {
-                console.log('ayy this should"ved fired')
                 $scope.closeAttachActionSheet();
                 $timeout(function() {
                   $scope.launchEditEmailPopup()
@@ -611,7 +601,6 @@ angular.module('uguru.desktop.controllers', [])
               if (index === 1) {
                 $scope.closeAttachActionSheet();
                 $scope.loader.show();
-                console.log("checking");
                 $timeout(function() {
                   $scope.openModal('university');
                 }, 0);
@@ -660,7 +649,7 @@ angular.module('uguru.desktop.controllers', [])
         },
 
         function(err) {
-          console.log(err);
+          console.error(err);
           alert('Something went wrong - please contact Samir');
         }
         )

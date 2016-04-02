@@ -47,7 +47,6 @@ function GPAService() {
         return 0.0;
 
       default:
-        console.log("Invalid Grade");
         return;
 
     }

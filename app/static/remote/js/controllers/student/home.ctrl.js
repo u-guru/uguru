@@ -190,7 +190,6 @@ angular.module('uguru.student.controllers', [])
             $ionicSlideBoxDelegate.update();
             $scope.root.vars.guru_mode = false;
             if (!$scope.mapInitialized) {
-                console.log('initializing map from load');
                 $scope.mapInitialized = true;
             }
         });

@@ -40,7 +40,6 @@ angular.module('uguru.guru.controllers')
     else if (!$scope.session) {
       $scope.session = JSON.parse($stateParams.sessionObj);
     }
-    console.log($scope.session);
 
     $scope.details = {show: true};
     $scope.new_message = {content: ''};
@@ -79,7 +78,6 @@ angular.module('uguru.guru.controllers')
                 $scope.closeAttachActionSheet();
             },
             buttonClicked: function(index) {
-              console.log(index);
               if (index === 0) {
 
 
@@ -101,7 +99,6 @@ angular.module('uguru.guru.controllers')
 
 
     $scope.cancelSession = function(session) {
-      console.log('calling cancel');
       var dialogCallBackSuccess = function() {
         //guru cancels session
         $scope.session.status = 5;
@@ -438,7 +435,6 @@ angular.module('uguru.guru.controllers')
     }
 
     $scope.getMessagesFromServer = function(time_between, one_time, callback) {
-      console.log('getting message from server');
       Restangular
         .one('user', $scope.user.id).one('sessions', $scope.session.id).one('messages')
         .customGET()
@@ -468,8 +464,7 @@ angular.module('uguru.guru.controllers')
             }
 
         }, function(err){
-            console.log(err);
-            console.log('error...something happened with the server;')
+            console.error('error...something happened with the server;')
       });
 
     }

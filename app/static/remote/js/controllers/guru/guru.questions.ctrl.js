@@ -26,7 +26,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
     $scope.file_index = 0;
 
     $scope.deleteFile = function(index) {
-      console.log('attempt to delete file', index);
       if (confirm('Are you sure you want to delete this photo?')) {
         $scope.proposal.files.splice(index, 1);
         $scope.success.show(0, 750, 'File deleted!');

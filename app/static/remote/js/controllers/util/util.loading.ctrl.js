@@ -11,13 +11,10 @@ angular.module('uguru.util.controllers')
 	function($scope, $state, $stateParams, CounterService, $timeout, $localstorage) {
 		var defaultLoaderSeconds = 5;
 
-		console.log('starting to detect object');
 	    if ($stateParams.universityObj) {
-	      console.log('universityObj passed in', $stateParams.universityObj);
 	      $scope.university = $scope.universityObj;
 	    }
 	    if ($scope.root.vars.university && !$stateParams.universityObj) {
-	      console.log('root vars passted in ', $scope.root.vars.university);
 	      $scope.university = $scope.root.vars.university;
 	    }
 

@@ -38,7 +38,7 @@ angular.module('uguru.util.controllers')
 						$scope.$apply();
 					})
 				}, function() {
-					console.log('Something went wrong');
+					return
 				})
 			} else {
 				$scope.courses = $scope.courses.filter( function( el ) {
@@ -79,7 +79,6 @@ angular.module('uguru.util.controllers')
 
 			if (course) {
 				$scope.user.student_courses.push(course);
-		      	console.log(course, $index, $scope.user.student_courses);
 		      	$timeout(function(){
 		      		$scope.$apply();
 		      	})
@@ -141,7 +140,7 @@ angular.module('uguru.util.controllers')
 		};
 
 		$scope.editCourses = function() {
-			console.log('show delete should be here');
+			return
 		};
 
 
@@ -195,7 +194,6 @@ angular.module('uguru.util.controllers')
 
 			for (var i = 0; i < $scope.courses.length; i++) {
 				if ($scope.courses[i].id === course.id) {
-					console.log("transferring course from source to user");
 					$scope.courses.splice(i, 1);
 				}
 			}
@@ -225,7 +223,6 @@ angular.module('uguru.util.controllers')
 
 
 		$scope.blurSearchInput = function() {
-			console.log($scope.search_text)
 			$timeout(function() {
     			$scope.search_text.input_focused = false;
 			}, 250)

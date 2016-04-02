@@ -99,7 +99,6 @@
       var expYY = $scope.root.vars.cardForm.exp.split(' / ')[1] || $scope.card.exp.split(' / ')[1];
 
       var stripeResponseHandler = function(status, response) {
-        console.log(response);
         if (response.error) {
             LoadingService.hide();
             $scope.error_msg = true;
@@ -215,8 +214,6 @@
       $scope.root.vars.cardForm.number = '**** **** **** ' + card.card_last4;
       $scope.root.vars.cardForm.exp = '** / **';
       $scope.root.vars.cardForm.view_only = true;
-
-      // console.log('payment modal link', paymentModalLink);
       // paymentModalLink.click();
     }
 
@@ -226,8 +223,6 @@
       $scope.root.vars.cardForm.exp = '** / **';
       $scope.root.vars.cardForm.view_only = true;
       $scope.addCardModal.show();
-
-      // console.log('payment modal link', paymentModalLink);
       // paymentModalLink.click();
     }
 
@@ -270,10 +265,6 @@
       var foo = $scope.cardInput.value.split(" ").join(""); // remove hyphens
         var mmInput = $scope.cardMM.value;
         var cardType = $scope.getCardType(foo);
-        // console.log(cardType);
-        if (cardType.length > 0) {
-          console.log
-        }
 
         if (foo.length > 0) {
           foo = foo.match(new RegExp('.{1,4}', 'g')).join(" ");

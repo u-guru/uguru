@@ -23,7 +23,6 @@ angular.module('uguru.guru.controllers')
     $cordovaKeyboard, $ionicModal,$ionicTabsDelegate, $ionicSideMenuDelegate,
     $cordovaStatusbar, $ionicViewSwitcher,
     $ionicActionSheet, $ionicHistory, $ionicPopup, CordovaPushWrapper, LoadingService) {
-    // console.log($scope.user.cards);
     // $scope.data = {
     //   text_notifications:false || $scope.user.text_notifications,
     //   push_notifications: false || ($scope.user.push_notifications && $scope.user.push_notifications_enabled && $scope.user.devices.length)
@@ -187,7 +186,6 @@ angular.module('uguru.guru.controllers')
 
     $scope.registerWindowsPush = function() {
 
-        console.log('we are updating the push notifications on windows device')
         $cordovaPush.register(
             channelHandler,
             errorHandler,
@@ -200,7 +198,6 @@ angular.module('uguru.guru.controllers')
 
         function channelHandler(event) {
 
-            console.log();
             var uri = event.uri;
 
             CordovaPushWrapper.received($rootScope, event, notification);
@@ -227,7 +224,6 @@ angular.module('uguru.guru.controllers')
                 }
             $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
             alert('Please turn your Push Notifications ON in your settings.');
-            console.log("Error Handle :" ,error);
         }
         function onNotificationWP8(e) {
 
@@ -247,8 +243,7 @@ angular.module('uguru.guru.controllers')
         function jsonErrorHandler(error) {
             //document.getElementById('app-status-ul').appendChild(document.createElement(error.code));
             //document.getElementById('app-status-ul').appendChild(document.createElement(error.message));
-            console.log("ERROR: ", error.code);
-            console.log("ERROR: ", error.message);
+            console.error("ERROR: ", error.code, error.message);
         }
 
     }
@@ -263,12 +258,11 @@ angular.module('uguru.guru.controllers')
         $cordovaPush.register(androidConfig).then(
           function(deviceToken) {
 
-            console.log('android notifications', deviceToken);
 
           }, function(err){
 
 
-            console.log(JSON.stringify(err));
+            console.error(JSON.stringify(err));
             $scope.user.push_notifications = false;
             $scope.user.push_notifications_enabled = false;
             $scope.data.push_notifications = false;
@@ -285,7 +279,6 @@ angular.module('uguru.guru.controllers')
 
         $rootScope.$on('pushNotificationReceived', function(event, notification) {
           CordovaPushWrapper.received($rootScope, event, notification);
-          console.log('android notifications registered',event, notification);
           if ($scope.user && $scope.user.id) {
 
             payload = {
@@ -301,7 +294,6 @@ angular.module('uguru.guru.controllers')
 
     $scope.registerIOSPush = function() {
       if (!$scope.user.push_notifications) {
-        console.log('push notifications are false');
 
         payload = {
               'push_notifications': false
@@ -318,18 +310,12 @@ angular.module('uguru.guru.controllers')
 
         $cordovaPush.register(iosConfig).then(function(deviceToken) {
           // Success -- send deviceToken to server, and store for future use
-          console.log("deviceToken: " + deviceToken)
-
-          console.log("Register success " + deviceToken);
-
               if ($scope.user.createObj && !$scope.user.current_device && $scope.platform && $scope.user) {
                   $scope.user.current_device = ionic.Platform.device();
                   $scope.user.current_device.user_id = $scope.user.id;
                   $scope.user.createObj($scope.user, 'device', $scope.user.current_device, $scope);
               }
 
-
-              console.log('updating the server...');
               $scope.data.push_notifications = true;
               $scope.user.push_notifications = true;
               $scope.user.push_notifications_enabled = true;
@@ -344,7 +330,6 @@ angular.module('uguru.guru.controllers')
               $scope.user.updateAttr('push_notifications', $scope.user, payload, null, $scope);
 
         }, function(err) {
-          console.log(JSON.stringify(err));
           $scope.user.push_notifications = false;
           $scope.user.push_notifications_enabled = false;
           $scope.data.push_notifications = false;

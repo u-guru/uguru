@@ -167,11 +167,8 @@ angular.module('uguru.util.controllers')
         if (!$scope.user.guru_subcategories) {
           $scope.user.guru_subcategories = [];
         }
-        console.log(subcategory.name, 'added to user list');
         $scope.user.guru_subcategories.push(subcategory);
         // tempAddList.push(subcategory);
-        console.log("Usr list :",$scope.user.guru_subcategories.length);
-
      }
     }
 
@@ -180,12 +177,10 @@ angular.module('uguru.util.controllers')
       if ($scope.user.id) {
         $scope.user.updateAttr('remove_guru_subcategory', $scope.user, subcategory, null, $scope);
       } else {
-        console.log("remove  :",subcategory);
         var guru_subcategories = $scope.user.guru_subcategories.slice();
         for (var i = 0; i < guru_subcategories.length; i++) {
           if (guru_subcategories[i].id === subcategory.id) {
             $scope.user.guru_subcategories.splice(i, 1);
-            console.log(subcategory.name, 'removed from user list');
           }
         }
 

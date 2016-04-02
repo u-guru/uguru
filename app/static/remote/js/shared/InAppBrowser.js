@@ -24,8 +24,6 @@ function InAppBrowser(DeviceService) {
 	        options+= ',clearcache=yes';
 	        options+= ',clearsessioncache=yes';
 
-	        console.log("options: " + options);
-
 	    var target = '_blank';
 
 		var ref = cordova.InAppBrowser.open(url, target, options);
@@ -76,7 +74,6 @@ function InAppBrowser(DeviceService) {
 			        options+= ',clearcache=yes';
 			        options+= ',clearsessioncache=yes';
 
-			        console.log("options: " + options);
 
 			    var target = '_blank';
 

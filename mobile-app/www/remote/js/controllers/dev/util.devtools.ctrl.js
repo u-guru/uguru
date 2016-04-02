@@ -12,14 +12,16 @@ angular.module('uguru.dev.controllers')
   'Restangular',
   '$compile',
   '$sce',
-  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce) {
+  'AnimationService',
+  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService) {
 
 
 
     $scope.states = {
-      'mad-lib': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', '']
+      'mad-lib': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', '']
     }
-
+    $scope.settings = {activated: false};
     $scope.gestureStates = {
       'mad-lib': {
         'on-load': [],
@@ -30,7 +32,6 @@ angular.module('uguru.dev.controllers')
 
     var mostUsedCSSProperties = ["transform", "-webkit-transform", "opacity", "-webkit-animation-name", "animation-name", "-webkit-animation-timing-function", "animation-timing-function", "-webkit-transform-origin", "transform-origin", "backface-visibility", "-webkit-backface-visibility", "animation-duration", "-webkit-animation-duration", "-webkit-animation-fill-mode", "-webkit-animation-iteration-count", "animation-iteration-count", "animation-fill-mode", "z-index", "width", "visibility", "top", "float", "position", "margin", "left", "height", "background", "background-color", "display", "border", "color", "padding"];
     var supportedAnimationStyles = [];
-    var masterAnimationClasses = [];
     $scope.properties = {
       common_css_styles: mostUsedCSSProperties,
       supported_animations: getAnimationClasses(['animate', 'animation', 'magic']),
@@ -41,6 +42,7 @@ angular.module('uguru.dev.controllers')
     var utilityClasses = getAnimationClasses(['utility'])
 
     function getAnimationClasses(arr_animation_css_files) {
+      var masterAnimationClasses = [];
       for (var i = 0; i < document.styleSheets.length; i++) {
         var indexStyleSheet = document.styleSheets[i];
         if ('href' in indexStyleSheet && indexStyleSheet.href) {
@@ -64,13 +66,47 @@ angular.module('uguru.dev.controllers')
     }
 
 
+    $scope.clearCache = function() {
+      window.sessionStorage.clear();
+      window.localStorage.clear();
+      window.location.reload(true);
+    }
+
     $scope.elements = [];
     $scope.current_states =[];
     $scope.page = {dropdowns:{}, toggles:{}};
     $scope.page.toggles = {add_component: false};
     $scope.page.compiledTemplates = {};
+    $scope.page.dropdowns.fileOptions = {label:'Current Storage', onOptionClick: onFileOptionSelect, options: generateFileOptions(), size:'small', key:'name', selectedIndex: 0};
     $scope.page.dropdowns.screenSizeOptions = {label:'autoscale @ 1.5x', onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
+
+
+    function onFileOptionSelect(option, index) {
+
+    }
+
+    function generateFileOptions() {
+      var dropdownArr = [{name: 'Local storage', _class:'bg-charcoal'}, {name: 'create', _class:'bg-charcoal'}, {name: 'browse', _class:'bg-charcoal'}];
+      var files = getRecentFilesEdited();
+      for (var i = 0; i < files.length; i++) {
+        indexFile = files[i];
+        dropdownArr.push(indexFile);
+      }
+      return dropdownArr;
+    }
+
+    function getRecentFilesEdited() {
+      return [];
+    }
+
+    function saveFile() {
+
+    }
+
+    function getFiles() {
+
+    }
 
     function generateTimeStateProperty(option, index) {
       var css_class = option._class;
@@ -283,6 +319,11 @@ angular.module('uguru.dev.controllers')
           $scope.current_states = initializeAllStates(ref);
         }
 
+        $timeout(function() {
+          applyInitPropertiesForState($scope.current_states.states[0]);
+        }, 2500)
+
+
           currentTemplate = elem;
           currentRef = ref;
           injectAllAllChildComponentsForOneState($scope.current_states.states[0].components, elem, ref, function() {
@@ -295,6 +336,50 @@ angular.module('uguru.dev.controllers')
           }
         })
       }, 2000)
+    }
+
+    function applyInitPropertiesForState(state) {
+      if (!state.components) {
+        return;
+      }
+      for (var i = 0; i < state.components.length; i++) {
+        var indexComponent = state.components[i];
+
+        if (indexComponent.init_time_state) {
+
+          var indexComponentInitTimeState = indexComponent.init_time_state;
+          if (indexComponentInitTimeState.properties && indexComponentInitTimeState.properties.length) {
+            var elemComponent = document.querySelectorAll('[anim].' + indexComponent.selector)[0];
+
+            applyComponentPropertiesAtTime(indexComponent, indexComponentInitTimeState, elemComponent);
+          }
+        }
+      }
+    }
+
+
+
+    $scope.refreshAllComponents = function() {
+      LoadingService.showMsg('Reinitializing all components', 3000);
+      var current_state = $scope.current_states.states[$scope.current_states.selectedIndex];
+      applyInitPropertiesForState(current_state);
+      for (var i = 0; i < current_state.components.length; i++) {
+        var componentIndex = current_state.components[i];
+        var elementIndex = document.querySelector(componentIndex.selector);
+        if (!elementIndex) {
+          console.log('continuging because couldnt find index');
+          continue;
+        }
+        for (var j = 0; j < componentIndex.time_states; j++) {
+          var componentTimeStateIndex = componentIndex.time_states[j];
+          for (var k = 0; k < componentTimeStateIndex.properties; k++) {
+            var propertyIndex = componentTimeStateIndex.properties[k];
+            if (propertyIndex.type === 'css_class') {
+              elementIndex.classList.remove(propertyIndex.name);
+            }
+          }
+        }
+      }
     }
 
     function recursiveClone(elem) {
@@ -397,8 +482,8 @@ angular.module('uguru.dev.controllers')
         component_obj.init_time_state = {
             time: -1,
             properties:[
-              {name: 'opacity', value:0, onChange: onOpacityChange},
-              {name: 'visibility', value:"visible"},
+              {name: 'opacity', value:"1", onPropChange: onOpacityChange, type:'css_text'},
+              {name: 'visibility', value:"visible", type: 'css_text'},
             ]
         }
       }
@@ -419,26 +504,36 @@ angular.module('uguru.dev.controllers')
 
 
       component_obj.addTimeState = function(component, time_state, c) {
-          // if (time_state.time && time_state.properties && time_state.properties.length) {
+          if (timeStateAlreadyExists(component, time_state.time)) {
+            var preExistingTimeState = timeStateAlreadyExists(component, time_state.time);
+            for (var i = 0; i < time_state.properties.length; i++) {
+              preExistingTimeState.properties.push(time_state.properties[i]);
+            }
+            LoadingService.showMsg('Time state ' + time_state.time + ' already exists - so just adding to original one', 3000);
+            time_state.time = null;
+            time_state.properties = [];
+          }
+          else if (time_state.time && time_state.properties && time_state.properties.length) {
             component.time_states.push(JSON.parse(JSON.stringify(time_state)));
             time_state.time = null;
             time_state.properties = [];
-          // }
+          } else {
+            LoadingService.showMsg('Please fill the time state and/or add at least one property');
+          }
       }
       component_obj.addPropertyField = function(component, time_state) {
           $scope.selectPropertyActivated = true;
           $scope.component_selected = component;
           $scope.time_state_selected = time_state;
         }
-      component_obj.confirmPropertyField = function(component, time_state, property, _type, value) {
-          if (time_state.properties) {
-            time_state.properties.push({name: property.name, type: _type ||'css_text', value: value || 'absolute'})
-          }
-          $scope.selectPropertyActivated = false;
-          $scope.component_selected = null;
-        }
-      component_obj.removePropertyField = function(time_state, property_index) {
+      component_obj.confirmPropertyField = confirmPropertyField
+      component_obj.removePropertyField = function(component, time_state, property_index, time_index) {
         time_state.properties.splice(property_index, 1);
+        if (!time_state.properties.length) {
+            if (confirm('Also delete time state t=' + time_state.time + '?')) {
+              component.time_states.splice(time_index, 1);
+            }
+        }
       }
 
       if (!component_obj.empty_time_state) {
@@ -446,11 +541,36 @@ angular.module('uguru.dev.controllers')
       }
     }
 
+
+    function confirmPropertyField(component, time_state, property, _type, value) {
+
+      if (_type === 'css_animation') {
+        value = {options:['Animate In', 'Animate Out'], selectedIndex:0, size:'small'};
+      }
+      if (time_state.properties) {
+        time_state.properties.push({name: property, type: _type ||'css_text', value: value || 'value plz'})
+      }
+      $scope.selectPropertyActivated = false;
+      $scope.component_selected = null;
+    }
+
+    function timeStateAlreadyExists(component, time) {
+      for (var i =0; i < component.time_states.length; i++) {
+        var indexTimeState = component.time_states[i];
+        if (indexTimeState.time === time) {
+          return indexTimeState
+        }
+      }
+      return;
+    }
+
     function initComponentObj(cloned_elem, elem, selector) {
       var initProperties = processComputedStyle(window.getComputedStyle(elem));
       cloned_elem.removeAttribute('anim');
       return {
         name: cloned_elem.nodeName,
+        _id: cloned_elem.id,
+        _class: cloned_elem.classList["0"],
         selector: selector,
         active:false,
         collapsed: true,
@@ -460,26 +580,41 @@ angular.module('uguru.dev.controllers')
         init_time_state: {
             time: -1,
             properties:[
-              {name: 'opacity', value:0},
-              {name: 'visibility', value:"visible"},
-              {name:'display', value:'inherit'}
+              {name: 'opacity', value:1, type: 'css_text'},
+              {name: 'visibility', value:"visible", type: 'css_text'}
             ]
         },
         time_states: [],
         addTimeState: function(component, time_state, c) {
-          // if (time_state.time && time_state.properties && time_state.properties.length) {
+          if (timeStateAlreadyExists(component, time_state.time)) {
+            var preExistingTimeState = timeStateAlreadyExists(component, time_state.time);
+            for (var i = 0; i < time_state.properties.length; i++) {
+              preExistingTimeState.properties.push(time_state.properties[i]);
+            }
+            LoadingService.showMsg('Time state ' + time_state.time + ' already exists - so just adding to original one', 3000);
+            time_state.time = null;
+            time_state.properties = [];
+          }
+          else if (time_state.time && time_state.properties && time_state.properties.length) {
             component.time_states.push(JSON.parse(JSON.stringify(time_state)));
             time_state.time = null;
             time_state.properties = [];
-          // }
+          } else {
+            LoadingService.showMsg('Please fill the time state and/or add at least one property');
+          }
         },
         addPropertyField: function(component, time_state) {
           $scope.selectPropertyActivated = true;
           $scope.component_selected = component;
           $scope.time_state_selected = time_state;
         },
-        removePropertyField: function(time_state, property_index) {
+        removePropertyField: function(component, time_state, property_index, time_index) {
           time_state.properties.splice(property_index, 1);
+          if (!time_state.properties.length) {
+            if (confirm('Also delete time state t=' + time_state.time + '?')) {
+              component.time_states.splice(time_index, 1);
+            }
+          }
         },
         confirmPropertyField:confirmPropertyField,
         empty_time_state: {time:null, properties:[]}
@@ -497,34 +632,64 @@ angular.module('uguru.dev.controllers')
     $scope.playOneComponent = function(component) {
       var elemComponent = document.querySelectorAll('[anim].' + component.selector)[0];
       for (var j = 0; j < component.time_states.length; j++) {
-        applyComponentPropertiesAtTime(component.time_states[j], elemComponent);
+        applyComponentPropertiesAtTime(component, component.time_states[j], elemComponent);
       }
     }
 
     $scope.playStateComponents = function(state_components) {
-
-      for (var i = 0; i < $scope.state_components.length; i++) {
-        var indexComponent = $scope.state_components[i];
+      console.log(state_components);
+      var max_time_state = 0;
+      for (var i = 0; i < state_components.length; i++) {
+        var indexComponent = state_components[i];
         var elemComponent = document.querySelectorAll('[anim].' + indexComponent.selector)[0];
 
         for (var j = 0; j < indexComponent.time_states.length; j++) {
           var indexTimeState = indexComponent.time_states[j];
-          applyComponentPropertiesAtTime(indexTimeState, elemComponent);
+          if (indexTimeState.time > max_time_state) {
+            max_time_state = indexTimeState.time;
+          }
+          applyComponentPropertiesAtTime(indexComponent, indexTimeState, elemComponent);
         }
       }
 
+      $timeout(function() {
+        LoadingService.showMsg('Re-initializing components...', 3000);
+        applyInitPropertiesForState($scope.current_states.states[$scope.current_states.selectedIndex]);
+      }, (parseInt(max_time_state) + 2000));
+
     }
 
-    function applyComponentPropertiesAtTime(time_state, component) {
+
+
+    function applyComponentPropertiesAtTime(component, time_state, element) {
+        var delay = 0;
+        if (time_state.time === -1) {
+          var delay = 0;
+        } else {
+          delay = parseFloat(time_state.time)
+        }
         $timeout(function() {
           for (var i = 0; i < time_state.properties.length; i++) {
+            if (!component.active) {
+              continue;
+            }
             if (time_state.properties[i].type === 'css_text') {
-              component.style[time_state.properties[i].name] = time_state.properties[i].value;
+              element.style[time_state.properties[i].name] = time_state.properties[i].value;
             } else if (time_state.properties[i].type === 'css_class') {
-              component.classList.add(time_state.properties[i].name);
+              element.classList.add(time_state.properties[i].name);
+            } else if (time_state.properties[i].type === 'css_animation') {
+              var animationPropertyDropdown = time_state.properties[i].value;
+              var animationPropertyDropdownValue = animationPropertyDropdown.options[animationPropertyDropdown.selectedIndex];
+              if (animationPropertyDropdownValue === "Animate Out") {
+                AnimationService.animateOut(element, time_state.properties[i].name);
+              } else {
+                AnimationService.animateIn(element, time_state.properties[i].name);
+              }
+
+
             }
           }
-        }, parseFloat(time_state.time))
+        }, delay)
       }
 
     function processComputedStyle(_dict) {

@@ -19,11 +19,6 @@ function InAppMapService(University, $timeout) {
   function displayMap() {
 
   	$timeout(function() {
-		console.log("compare");
-		console.log(typeof lat);
-		console.log(typeof stan.lat);
-
-
 		map.moveCamera({
 		  target: {
 		    lat: 37.4274745,

@@ -56,8 +56,6 @@ function DeviceService($cordovaNgCardIO,
 	};
 
   function isFirstTime() {
-    console.log("isFirstTime");
-
     if(firstTime) {
       firstTime = false;
       return true;
@@ -151,22 +149,18 @@ function DeviceService($cordovaNgCardIO,
 
   // returns string value
   function getPlatform() {
-    //console.log("getPlatform() returns: " + ionic.Platform.platform());
     return ionic.Platform.platform();
   }
 
   function getUUID() {
-    console.log("getUUID() returns: " + ionic.Platform.device().uuid);
     return ionic.Platform.device().uuid;
   }
 
   function getVersion() {
-    console.log("getVersion() returns: " + ionic.Platform.device().version);
     return ionic.Platform.device().version;
   }
 
   function getModel() {
-    console.log("getVersion() returns: " + ionic.Platform.device().model);
     return ionic.Platform.device().model;
   }
 
@@ -176,7 +170,6 @@ function DeviceService($cordovaNgCardIO,
                 ionic.Platform.device().version + "/" +
                 ionic.Platform.device().uuid
                                        ;
-  console.log("Device info: " + info);
     return info;
   }
 
@@ -210,14 +203,7 @@ function DeviceService($cordovaNgCardIO,
 	}
 
 	function onDeviceReady(scope) {
-    console.log("DeviceService.onDeviceReady()");
-    console.log("Cordova File Plugin is ready: " + cordova.file);
-    // console.log("Cordova Badge Plugin is ready: " + cordova.plugins.notification.badge);
-    // console.log("Cordova Media Plugin is ready: " + Media);
-
     if(navigator.splashscreen) {
-      console.log('Showing splash screen @:', calcTimeSinceInit(), 'seconds');
-
       //always show this until we have checked for updates && there are not any
       navigator.splashscreen.show();
     }
@@ -241,8 +227,6 @@ function DeviceService($cordovaNgCardIO,
 	  				break;
 		  	}
         checkUpdates();
-		  	console.log("detected platform: " + getPlatform());
-
 		} else {
 
     }
@@ -254,8 +238,6 @@ function DeviceService($cordovaNgCardIO,
 	function checkUpdates(url) {
     // don't update on local
     if (LOCAL && !url) {
-      console.log("running local: skipping over checkUpdates");
-
         // hide it otherwise it never would on emulators
        $timeout(function() {
           if (navigator && navigator.splashscreen && navigator.splashscreen.hide) {
@@ -265,7 +247,6 @@ function DeviceService($cordovaNgCardIO,
 
       return;
     }
-    console.log("did not detect local, checking for updates");
 
       //set BASE_URL to prompted one
       BASE_URL =  url || BASE_URL;
@@ -274,19 +255,14 @@ function DeviceService($cordovaNgCardIO,
           //if user gets the right version
           function(response) {
                 var serverVersionNumber = JSON.parse(response).version;
-                console.log('server number', serverVersionNumber);
                 var currentVersion = Version.getVersion();
 
                 //if brand new user with no version set
                 if ((typeof currentVersion) === "undefined") {
-                  // console.log('First time opening app - set version to 1.0');
                   currentVersion = 1.0;
                   Version.setVersion(1.0);
                 }
                 if (serverVersionNumber !== currentVersion) {
-
-                  console.log('versions are different...\n');
-
                   //doesn't work so here's my attempt
                   if (navigator && navigator.splashscreen && navigator.splashscreen.show) {
                     navigator.splashscreen.show();
@@ -301,8 +277,6 @@ function DeviceService($cordovaNgCardIO,
 
                   Version.setVersion(serverVersionNumber);
                   $localstorage.set('recently_updated', true);
-
-                  console.log('V' + serverVersionNumber + 'stored to user');
 
                   //if windows
                   if (navigator.userAgent.match(/iemobile/i) || navigator.userAgent.match(/Windows Phone/i)  || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent === 'Win32NT' || WINDOWS) {
@@ -324,8 +298,7 @@ function DeviceService($cordovaNgCardIO,
           },
            //connectivity issues
           function(error) {
-              console.log(error);
-              console.log('Version not loaded');
+              console.error('Version not loaded');
           }
       	);
 	}

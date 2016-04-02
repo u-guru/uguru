@@ -135,7 +135,7 @@ angular.module('uguru.components', [])
   return {
     templateUrl: BASE + 'templates/components/dev/input/checkbox.tpl',
     scope: {
-        onPropChange: '=onChange',
+        onPropChange: '=onPropChange',
         label: '=label',
         value: '=value',
         checked:"=checked"
@@ -147,9 +147,9 @@ angular.module('uguru.components', [])
         scope.label = 'Checkbox Label'
       }
       scope.checked = scope.checked || false;
-      if (scope.onPropChange) {
-        // scope.onPropChange(scope, )
-      }
+      // if (scope.onPropChange) {
+      //   // scope.onPropChange(scope, )
+      // }
     }
   }
 })

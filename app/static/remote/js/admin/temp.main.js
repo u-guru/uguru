@@ -48,8 +48,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
   DeviceService.readyDevice();
   
-  // console.log("Firing event start to GA");
-
   // ga('create', 'UA-67802516-1', 'auto');
   // ga('send', 'event', 'App Start', 'action');
   // ga('send', 'pageview');
@@ -323,6 +321,5 @@ var processSkills = function($scope) {
           }
         }
     }
-    console.log('skills processed');
 }
 

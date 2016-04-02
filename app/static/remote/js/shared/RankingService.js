@@ -60,7 +60,6 @@ function RankingService() {
 
     elem = document.querySelector('#guru-ranking-progress-bar')
     if (elem) {
-      console.log('circle already exists!');
       return;
     }
 
@@ -101,8 +100,7 @@ function RankingService() {
 	function refreshRanking(user) {
     this.options.previousGuruRanking = Math.round(user.current_guru_ranking, 2);
     this.options.currentGuruRanking = Math.round(calcRanking(user), 2);
-    console.log('updating ranking...');
-    console.log('Previous:' + this.options.previousGuruRanking + ' Current:' + this.options.currentGuruRanking);
+
     if (this.options.previousGuruRanking !== this.options.currentGuruRanking) {
       if (guruHomeProgressCircle) {
         guruHomeProgressCircle.set(this.options.currentGuruRanking);
@@ -118,12 +116,10 @@ function RankingService() {
 
         // if (user.current_credibility_percent) {
             newCredibility = Math.round((calcCredibility(user) / 400.0), 2);
-            console.log('credibility', newCredibility)
             base += newCredibility;
         // }
         // if (user.current_profile_percent) {
             newProfile = Math.round(calcProfile(user), 2)
-            console.log('profile', newProfile / 2);
             base += Math.round((newProfile / 2), 2);
         // }
         // cant ever get a hundo (unless premium ;) LOL

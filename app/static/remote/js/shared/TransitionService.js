@@ -20,7 +20,7 @@ function TransitionService() {
 
         for (var i =0; i < transitionEvents.length; i++) {
             consoleLogFunc = function(e) {
-                console.log(e.target.tagName, ' was just transitioned')
+                return
             }
             elemFuncDict[elem.id] = [];
             elem.addEventListener(transitionEvents[i], runFunctionsForEvent);
@@ -30,7 +30,6 @@ function TransitionService() {
 
     function appendFuncToListener(elem, func) {
         if (!elem || !elem.id) {
-            console.log('ERROR:', elem.tagName, elem.className, 'does not have an ID')
             return;
         }
 
@@ -46,7 +45,6 @@ function TransitionService() {
         if (!oneElemFunctionArr || !oneElemFunctionArr.length) {
             return;
         }
-        console.log(e.id, 'just went through a', e.type, 'event:', e);
         for (var i = 0; i < oneElemFunctionArr.length; i++) {
             indexFunction = oneElemFunctionArr[i];
             indexFunction();
