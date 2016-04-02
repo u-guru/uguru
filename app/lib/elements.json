@@ -392,6 +392,30 @@
             "controller": "SplashController", 
             "cp_link": "", 
             "description": "", 
+            "id": 1, 
+            "name": "Splash Mad Lib", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "projector-screen", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": "projector-screen.html"
+        }, 
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "controller": "SplashController", 
+            "cp_link": "", 
+            "description": "", 
             "element_states": {
                 "fluid": [
                     {
@@ -729,6 +753,30 @@
     "moodboards": [], 
     "projects": [], 
     "scenes": [
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "controller": "SplashController", 
+            "cp_link": "", 
+            "description": "", 
+            "id": 1, 
+            "name": "Splash Mad Lib", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "projector-screen", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": "projector-screen.html"
+        }, 
         {
             "bugs": [], 
             "children": {

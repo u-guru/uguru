@@ -18,9 +18,10 @@ angular.module('uguru.dev.controllers')
 
 
     $scope.states = {
-      'mad-lib': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', '']
+      'mad-lib': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', '']
     }
-
+    $scope.settings = {activated: false};
     $scope.gestureStates = {
       'mad-lib': {
         'on-load': [],
@@ -65,13 +66,47 @@ angular.module('uguru.dev.controllers')
     }
 
 
+    $scope.clearCache = function() {
+      window.sessionStorage.clear();
+      window.localStorage.clear();
+      window.location.reload(true);
+    }
+
     $scope.elements = [];
     $scope.current_states =[];
     $scope.page = {dropdowns:{}, toggles:{}};
     $scope.page.toggles = {add_component: false};
     $scope.page.compiledTemplates = {};
+    $scope.page.dropdowns.fileOptions = {label:'Current Storage', onOptionClick: onFileOptionSelect, options: generateFileOptions(), size:'small', key:'name', selectedIndex: 0};
     $scope.page.dropdowns.screenSizeOptions = {label:'autoscale @ 1.5x', onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
+
+
+    function onFileOptionSelect(option, index) {
+
+    }
+
+    function generateFileOptions() {
+      var dropdownArr = [{name: 'Local storage', _class:'bg-charcoal'}, {name: 'create', _class:'bg-charcoal'}, {name: 'browse', _class:'bg-charcoal'}];
+      var files = getRecentFilesEdited();
+      for (var i = 0; i < files.length; i++) {
+        indexFile = files[i];
+        dropdownArr.push(indexFile);
+      }
+      return dropdownArr;
+    }
+
+    function getRecentFilesEdited() {
+      return [];
+    }
+
+    function saveFile() {
+
+    }
+
+    function getFiles() {
+
+    }
 
     function generateTimeStateProperty(option, index) {
       var css_class = option._class;
@@ -534,6 +569,8 @@ angular.module('uguru.dev.controllers')
       cloned_elem.removeAttribute('anim');
       return {
         name: cloned_elem.nodeName,
+        _id: cloned_elem.id,
+        _class: cloned_elem.classList["0"],
         selector: selector,
         active:false,
         collapsed: true,
