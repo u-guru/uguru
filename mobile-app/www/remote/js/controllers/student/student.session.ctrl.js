@@ -73,7 +73,6 @@ angular.module('uguru.student.controllers')
                 $scope.closeAttachActionSheet();
             },
             buttonClicked: function(index) {
-              console.log(index);
               if (index === 0) {
 
                 $scope.closeAttachActionSheet();
@@ -303,7 +302,6 @@ angular.module('uguru.student.controllers')
     }
 
     $scope.getMessagesFromServer = function(time_between, one_time, callback) {
-      console.log('getting message from server');
       Restangular
         .one('user', $scope.user.id).one('sessions', $scope.session.id).one('messages')
         .customGET()
@@ -331,7 +329,6 @@ angular.module('uguru.student.controllers')
             }
 
         }, function(err){
-            console.log(err);
             console.log('error...something happened with the server;')
       });
 

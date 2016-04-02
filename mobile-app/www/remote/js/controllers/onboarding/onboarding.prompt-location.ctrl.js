@@ -28,13 +28,6 @@ angular.module('uguru.onboarding.controllers')
 
     $scope.goToSettings = function() {
       $cordovaDialogs.alert('Go to your iOS Settings > Privacy > Uguru ', 'GO TO SETTINGS');
-      // console.log("why isnt this working");
-
-      // window.location = 'prefs:root=General';
-      // window.open("prefs:root=LOCATION_SERVICES");
-      // $cordovaPreferences.set('location_services', 'true').then(function () {
-      //   console.log('successfully saved!');
-      // });
     }
 
     var callbackSuccess = function($scope, $state) {
@@ -66,17 +59,6 @@ angular.module('uguru.onboarding.controllers')
             $state.go('^.onboarding-nearest-university');
           }
       }
-
-
-      // if ($scope.platform.isIOS()) {
-      //     //do prompt for ios & then run geolocation for background;
-      //     console.log('I am testing through ios app.')
-      // }
-      // else if ($scope.platform.web)  {
-      //         console.log('I am testing through the web.')
-      // } else {
-      //     $state.go('^.onboarding-nearest-university');
-      // }
     }
 
 
@@ -98,9 +80,7 @@ angular.module('uguru.onboarding.controllers')
 
     $scope.checkLocationStatus = function() {
 
-      console.log('current location status is..', $scope.location_error);
       if ($scope.location_error === 'turned-off') {
-        console.log('skipping status check upon user request...');
         return;
       }
 
@@ -111,26 +91,25 @@ angular.module('uguru.onboarding.controllers')
       };
 
 
-      console.log('checking status of user location services...')
 
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
         .then(function (position) {
           $scope.location_error = null;
-          console.log('user has it turned on');
 
         }, function(err) {
           if (err.code === 1) {
             $scope.location_error = 'denied';
-            console.log('user has denied...');
+            return
           }
           if (err.code === 2) {
             $scope.location_error = 'unavailable';
-            console.log('it is unavailable...');
+            return
           }
           if (err.code === 3) {
-            console.log('it is unavailable...');
             $scope.location_error = 'timeout';
+            return
+
           }
       });
     }
@@ -191,7 +170,6 @@ angular.module('uguru.onboarding.controllers')
     }
 
     $scope.$on('$ionicView.beforeEnter', function(){
-        console.log('before view has entered');
         if ($scope.platform.ios && window.StatusBar) {
             StatusBar.styleLightContent();;
         }

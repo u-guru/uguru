@@ -81,9 +81,7 @@ angular.module('uguru.student.controllers')
 
     $scope.checkLocationStatus = function() {
 
-      console.log('current location status is..', $scope.location_error);
       if ($scope.location_error === 'turned-off') {
-        console.log('skipping status check upon user request...');
         return;
       } else {
 
@@ -93,27 +91,24 @@ angular.module('uguru.student.controllers')
           enableHighAccuracy: false, //may cause high errors if true
       };
 
-      console.log('checking status of user location services...')
 
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
         .then(function (position) {
           $scope.location_error = null;
-          console.log('user has it turned on');
 
         }, function(err) {
           if (err.code === 1) {
             $scope.location_error = 'denied';
-            console.log('user has denied...');
           }
           if (err.code === 2) {
             $scope.location_error = 'unavailable';
-            console.log('it is unavailable...');
           }
           if (err.code === 3) {
-            console.log('it is unavailable...');
             $scope.location_error = 'timeout';
           }
+          return
+
       });
     }
 
@@ -129,7 +124,6 @@ angular.module('uguru.student.controllers')
       //     mixpanel.track("Student.home");
 
       $scope.root.vars.request_cache[$scope.course.short_name.toLowerCase().toString()] = $scope.root.vars.request;
-      console.log('course ', $scope.course.short_name, 'saved to local cache here is entire object saved:', $scope.root.vars.request);
       $scope.root.vars.request = null;
       $ionicViewSwitcher.nextDirection('back');
       $state.go('^.student-home');
@@ -194,7 +188,6 @@ angular.module('uguru.student.controllers')
       $timeout(function() {
         $scope.user.createObj($scope.user, 'requests', $scope.request, $scope, null, $scope.failureFunction);
         // User.getUserFromServer($scope, null, $state);
-        console.log('going home...');
 
         $ionicHistory.clearHistory();
         $ionicHistory.clearCache();
@@ -228,14 +221,11 @@ angular.module('uguru.student.controllers')
 
     $scope.requestHelp = function() {
       if (!$scope.user.id) {
-        console.log($scope.root.vars.request);
         $scope.signupModal.show();
-        console.log('show form they are not signed in yet')
         return;
       }
 
       if (!validateRequestForm()) {
-        console.log('form is not validated')
         return;
       };
 
@@ -338,7 +328,6 @@ angular.module('uguru.student.controllers')
 
     $scope.$on('$ionicView.beforeEnter', function(){
       LoadingService.show();
-      console.log($scope.root.vars.request_cache);
       if ($scope.root.vars.request_cache[$scope.course.short_name.toLowerCase().toString()]) {
         $scope.root.vars.request = $scope.root.vars.request_cache[$scope.course.short_name.toLowerCase().toString()]
       }
@@ -367,8 +356,6 @@ angular.module('uguru.student.controllers')
     });
 
     $scope.$on('$ionicView.afterEnter', function(){
-      console.log($state.current.name, 'after enter')
-      console.log('device', JSON.stringify($scope.user.current_device));
       LoadingService.hide();
 
     });
