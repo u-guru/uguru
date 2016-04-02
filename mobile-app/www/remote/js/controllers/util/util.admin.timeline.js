@@ -740,7 +740,6 @@ angular.module('uguru.util.controllers')
 					if (sprintProjects[j].action_items.production) {
 						var productionDict = processAndFilterProductionActionItems(sprintProjects[j].action_items.production);
 						if (productionDict.gabrielle && productionDict.gabrielle.length) {
-							console.log(sprintProjects[j], sprintProjects[j].priority && sprintProjects[j].priority.gabrielle);
 							$scope.roleArr[3].all_projects.push({
 								sprint:indexSprint,
 								name: sprintProjects[j].name,
@@ -774,8 +773,7 @@ angular.module('uguru.util.controllers')
 		}
 
 		var sprintArr = initSprints($scope.sprints)
-		console.log(sprintArr);
-		console.log($scope.roleArr);
+
 		// $scope.projects[0].action_items = getProjectOneActionItems();
 
 		// $scope.projects[0].progress = $scope.calculateProjectProgress($scope.projects[0].action_items);

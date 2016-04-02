@@ -55,7 +55,6 @@ angular.module('uguru.util.controllers')
 
 		$scope.initAndLaunchDevToolsCTA = function($event) {
 			var targetElem = $event.target;
-			console.log(targetElem);
 			$scope.lastCTABoxTargetElem = targetElem;
 			$scope.lastCTABoxTargetElem.id = 'cta-box-selected-tool';
 
@@ -128,13 +127,11 @@ angular.module('uguru.util.controllers')
 
 			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPOST(JSON.stringify({state: state, scene: scene, type: scene_type }))
 			.then(function(response) {
-				console.log('update scene response receives');
 				LoadingService.showSuccess('Scene ' + state.name + ' successfully saved', 2500);
 				resetInitStateObjects();
 				// reprocessAllElements(response.plain().admin_components, $scope);
 				getAdminElements();
 			},  function(err) {
-				console.log('error', err);
 				LoadingService.showMsg("Something went wrong tell Samir", 2500);
 			});
 		}
@@ -144,13 +141,11 @@ angular.module('uguru.util.controllers')
 
 			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPOST(JSON.stringify({substate: substate, state: state, scene: scene, type: scene_type}))
 			.then(function(response) {
-				console.log('update substate response receives');
 				LoadingService.showSuccess('Subscene ' + scene.name + ' successfully saved', 2500);
 				resetInitStateObjects();
 				// reprocessAllElements(response.plain().admin_components, $scope);
 				getAdminElements();
 			},  function(err) {
-				console.log('error', err);
 				LoadingService.showMsg("Something went wrong tell Samir", 2500);
 			});
 		}
@@ -185,7 +180,6 @@ angular.module('uguru.util.controllers')
 			LoadingService.showAmbig(5000);
 			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPUT(JSON.stringify({action:action, state: state, scene: scene, type: scene_type}))
 			.then(function(response) {
-				console.log('update scene response receives');
 				if (is_remove) {
 					LoadingService.showSuccess('State ' + state.name + ' successfully removed', 2500);
 				} else {
@@ -194,7 +188,6 @@ angular.module('uguru.util.controllers')
 				resetInitStateObjects();
 				getAdminElements();
 			},  function(err) {
-				console.log('error', err);
 				LoadingService.showMsg("Something went wrong tell Samir", 2500);
 			});
 		}
@@ -229,7 +222,6 @@ angular.module('uguru.util.controllers')
 				resetInitStateObjects();
 				getAdminElements();
 			},  function(err) {
-				console.log('error', err);
 				LoadingService.showMsg("Something went wrong tell Samir", 2500);
 			});
 		}
@@ -290,7 +282,6 @@ angular.module('uguru.util.controllers')
 				$scope.page.projects = response.projects;
 				$scope.page.action_items = response.action_items;
 
-				console.log('page scenes', $scope.page.scenes);
 
 				var actionItemsSidebarTabSections = $scope.page.layout.sections[0].tabs.options;
 				for (var i = 0; i < actionItemsSidebarTabSections.length; i++) {
@@ -325,9 +316,8 @@ angular.module('uguru.util.controllers')
 
 
 
-				console.log(response);
 			}, function(err) {
-				console.log('error');
+				console.error('error');
 			})
 		}
 
@@ -401,7 +391,6 @@ angular.module('uguru.util.controllers')
 			// 		$scope.selected_component = component;
 			// 		var demoComponentContainer = angular.element(document.querySelector('#demo-component-template'));
 			// 		demoComponentContainer.html($scope.selected_component.sample.template);
-			// 		console.log(demoComponentContainer);
 			// 		$compile(demoComponentContainer.contents())($scope);
 			// 	})
 			// })
@@ -476,14 +465,11 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.hideAdminItemCTA = function($event) {
-			console.log('last ctaBox target elem', $scope.lastCTABoxTargetElem);
 			$scope.adminItemCTAShown = false;
 			var modalElem = document.querySelector('#cta-modal-admin-item');
-			console.log(modalElem);
 			modalElem && modalElem.classList.remove('show');
 			// modalElem && modalElem.classList.add('hide');
 			if ($scope.lastCTABoxTargetElem) {
-				console.log('modal elem', modalElem);
 				$scope.adminItemCTAShown = false;
 				CTAService.closeCTAManually($scope.lastCTABoxTargetElem.id, function() {
 					var modalElem = document.querySelector('#' + $scope.lastCTABoxTargetElem.id.replace('box', 'modal'));

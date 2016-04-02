@@ -329,7 +329,7 @@ angular.module('uguru.student.controllers')
             }
 
         }, function(err){
-            console.log('error...something happened with the server;')
+            console.error('error...something happened with the server;')
       });
 
     }

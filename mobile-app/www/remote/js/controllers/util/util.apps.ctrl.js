@@ -9,7 +9,7 @@ angular.module('uguru.util.controllers')
   function($scope, $state, $timeout, $localstorage, $ionicViewSwitcher) {
 
     $scope.goToFiles = function() {
-      console.log('this works');
+      return
     }
 
     $scope.goToRequest = function() {

@@ -233,7 +233,6 @@ angular.module('uguru.guru.controllers')
     // $scope.$on('$ionicView.beforeEnter', function() {
     //     if (!$scope.root.vars.becomeGuruCached) {
     //       $scope.root.vars.becomeGuruCached = true;
-    //       console.log('become guru first time cache')
     //       LoadingService.showAmbig(null, 10000);
     //     }
     // });

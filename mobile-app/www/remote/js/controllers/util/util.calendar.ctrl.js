@@ -44,10 +44,6 @@ angular.module('uguru.util.controllers')
         calendar_grid = $scope.calendar.data;
       }
 
-      if ($scope.user.guru_mode) {
-        console.log('calendar_grid', calendar_grid);
-      }
-
       var count = 0;
       var todays_date = new Date().getUTCDate()
       $timeout(function() {
@@ -57,7 +53,6 @@ angular.module('uguru.util.controllers')
         event_date = js_time.getUTCDate();
         event_hours = js_time.getUTCHours();
         offset_date = event_date - todays_date;
-        console.log(event_date, offset_date);
         var target = $scope.getElementbyCalenderWidthHeight(offset_date, event_hours);
         if (!color) {
           target.style.background = 'grey';
@@ -74,7 +69,6 @@ angular.module('uguru.util.controllers')
         }
         // else {
           if (target) {
-            // console.log(JSON.stringify(target));
             // target.background = '#68b2a5';
             // target.style.color = 'white';
             // target.childNodes[0].background = '#68b2a5';
@@ -96,7 +90,6 @@ angular.module('uguru.util.controllers')
       for (var i = 0; i < num_columns; i ++) {
           start_time = student_calendar[i]['start_time']
           end_time = student_calendar[i]['end_time']
-          console.log(start_time, end_time);
       }
       return student_calendar;
     }
@@ -134,7 +127,6 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.proposal = JSON.parse($stateParams.proposalObj);
-        console.log('proposal', $scope.proposal);
         //create student_calendar
         $scope.student_calendar = $scope.processStudentCalendar($scope.proposal.student_calendar[0].calendar_events);
 
@@ -156,8 +148,6 @@ angular.module('uguru.util.controllers')
           }
 
           $scope.request = JSON.parse($stateParams.proposalObj);
-          console.log('request',$scope.request);
-
           $scope.student_calendar = $scope.processStudentCalendar($scope.request.student_calendar[0].calendar_events);
           $scope.paint($scope.student_calendar);
           // $scope.paint($scope.guru_calendar, '#68b2a5');
@@ -179,9 +169,7 @@ angular.module('uguru.util.controllers')
 
     $scope.goToConfirmProposal = function() {
 
-      // console.log($scope.formatCalendarEventJson($scope.calendar.data));
       $scope.proposal.guru_calendar = $scope.formatCalendarEventJson($scope.calendar.data).slice();
-      console.log('guru calendar', JSON.stringify($scope.proposal.guru_calendar[0][3]));
         //mixpanel track
       mixpanel.track("Guru.confirm.proposal");
       $state.go('^.guru-confirm-proposal', {proposalObj:JSON.stringify($scope.proposal)});
@@ -321,7 +309,6 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.$on('modal.shown', function(){
-      console.log($scope.student_calendar);
       if ($scope.student_calendar) {
         $scope.calendar.student_request = $scope.student_calendar;
         $scope.processStudentCalendar($scope.calendar.student_request);
@@ -352,7 +339,6 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.triggerCalendarClick = function($event, calendar_x, calendar_y) {
-      console.log($event.target.parentNode);
       $scope.clickCalendarGridElement(null, calendar_x, calendar_y, $event.target.parentNode);
     }
 
@@ -372,7 +358,6 @@ angular.module('uguru.util.controllers')
       }
 
       //A calendar item was selected
-      console.log(targetBgColor, target, target.childNodes);
       //if student mode & clicked
       if (!$scope.user.guru_mode && (!targetBgColor || targetBgColor === 'white')) {
         $scope.calendar.data[calendar_x][calendar_y] = true;
@@ -419,7 +404,7 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.$on('$ionicView.loaded', function() {
-      console.log('loaded');
+      return
     });
 
     $scope.$on('$ionicView.enter', function() {
@@ -429,7 +414,7 @@ angular.module('uguru.util.controllers')
     })
 
     $scope.$on('$ionicView.afterEnter', function() {
-      console.log('after view has loaded');
+      return
     });
 
     $scope.$on('$ionicView.beforeEnter', function(){
@@ -449,7 +434,6 @@ angular.module('uguru.util.controllers')
     // $timeout(function() {
 
     // }, 500);
-    console.log('scrolling halfway...');
 
     ionic.DomUtil.ready(function(){
       // only happens the first time
