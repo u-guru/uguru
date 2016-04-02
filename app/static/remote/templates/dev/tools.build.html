@@ -214,7 +214,7 @@
                     <li><a ng-click='playStateComponents(current_states.states[current_states.selectedIndex].components)' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a></li>
                     <li><a ng-include="img_base + BASE + 'templates/svg/main/arrow.html'"></a></li>
                     <li><a class="bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/save.html'" ng-click='saveCurrentStatesToLocalStorage()'></a></li>
-                    <li><a class="opacity-50" ng-include="img_base + BASE + 'templates/svg/main/switch.html'" disabled></a></li>
+                    <li><a ng-click='refreshAllComponents()' class="opacity-50" ng-include="img_base + BASE + 'templates/svg/main/switch.html'"></a></li>
                 </ul>
             </nav>
         </aside>
