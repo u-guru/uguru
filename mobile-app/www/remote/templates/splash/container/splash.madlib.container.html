@@ -32,7 +32,7 @@
             </g>
         </svg>
     </div>
-    <div class="splash-adlib" activate-on-class="blank-1-filled, blank-2-filled" class-on-activate="active:keep, animated:inject.splash-hero-skip button|c, null:inject.splash-hero-map|activate">
+    <div class="splash-adlib" activate-on-class="blank-1-filled, blank-2-filled" class-on-activate="active:keep, animated:inject.splash-hero-skip button|c, null:inject.splash-hero-map|activate" eval-on-activate="activateMap()">
         <div class="splash-adlib-inside" activate-on-class="a" class-on-activate="active:keep">
             <h1 class="opacity-0" class-on-clear="lightSpeedOut:animOut" class-on-clear-delay="200" class-on-activate="bounceInUp:anim" class-on-load="bounceInUp:anim" anim>{{selectedCategory.splashData.madlib.template.beginning}}
                 <a id="blank-1" class="tag-adlib blank" anim>
@@ -46,7 +46,7 @@
                 </a>
 
                 {{selectedCategory.splashData.madlib.template.middle}}
-                
+
                 <a id="blank-2" class="tag-adlib blank" anim>
                     <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 					    <rect x="2" y="2" width="280" height="84" rx="16"></rect>

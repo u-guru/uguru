@@ -13,10 +13,16 @@ angular.module('uguru.dev.controllers')
   '$compile',
   '$sce',
   'AnimationService',
-  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService) {
+  'KeyboardService',
+  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService, KeyboardService) {
 
+    // KeyboardService.preventDefaultCutPaste();
+    KeyboardService.initCopyPasteFunctionCallbacks();
 
-
+    $scope.selected = {
+      property: null,
+      component: null
+    }
     $scope.states = {
       'mad-lib': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
       'projector-screen-1': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
@@ -197,6 +203,10 @@ angular.module('uguru.dev.controllers')
                 $scope.page.dropdowns.screenSizeOptions.options = getScreenOptions();
               })
             });
+
+            response.layouts.sort(function(val_a, val_b) {
+              return val_b.id - val_a.id
+            }).reverse()
             injectTemplateIntoStage(response.layouts[0].template_url, 'SplashController', response.layouts[0].ref);
             $timeout(function() {
 
