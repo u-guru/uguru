@@ -3,9 +3,7 @@
         <a ng-click='updateTabIndex($index)' ng-repeat='option in options' ng-class="{'active': tabIndex === $index}">{{(option[key] || option)}}</a>
         <hr/>
     </div>
-</div>
-
-<!-- <div class="absolute full-xy top-0 left-0 flex-center-wrap">
+    <!-- <div class="absolute full-xy top-0 left-0 flex-center-wrap">
     <div class="tab-bar slide">
         <div>
             <a class="active">Link 1</a>
@@ -32,3 +30,5 @@
         </div>
     </nav>
 </div> -->
+</div>
+

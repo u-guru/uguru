@@ -22,8 +22,8 @@ angular.module('uguru.util.controllers')
 				user_stories: AdminContent.getUserStories(),
 				createObjects: AdminContent.getBaseObjects($scope),
 				defaults: {
-					tabsIndex: 1,
-					sidebarIndex: 0
+					tabsIndex: 0,
+					sidebarIndex: 1
 				},
 				toggles: {
 					showAddState: false,
@@ -279,8 +279,15 @@ angular.module('uguru.util.controllers')
 				response = JSON.parse(response);
 
 				// $timeout(function() {
+				var parsed_components = [];
+				for (var i = 0 ; i < response.components.length; i++) {
+					var indexComponent = response.components[i];
+					if (indexComponent.sample && indexComponent.active) {
+						parsed_components.push(indexComponent);
+					}
+				}
 
-				$scope.page.components = response.components;
+				$scope.page.components = parsed_components;
 				$scope.page.layouts = response.layouts;
 				$scope.page.scenes = response.scenes;
 				$scope.page.moodboard = response.moodboards;

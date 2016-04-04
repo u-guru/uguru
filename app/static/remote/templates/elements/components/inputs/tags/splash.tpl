@@ -18,10 +18,7 @@
             </svg>
         </span>
     </div>
-</li>
-
-
-<!-- <div class="absolute top-0 left-0 full-xy flex-center">
+    <!-- <div class="absolute top-0 left-0 full-xy flex-center">
     <ul class="flex-wrap-center p15-grid">
         <li>
             <span class="tag-adlib blank">
@@ -79,3 +76,6 @@
         </li>
     </ul>
 </div> -->
+</li>
+
+
