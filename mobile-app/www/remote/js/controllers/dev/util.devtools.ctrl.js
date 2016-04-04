@@ -488,7 +488,7 @@ angular.module('uguru.dev.controllers')
         value = {options:['Animate In', 'Animate Out'], selectedIndex:0, size:'small'};
       }
       if (time_state.properties) {
-        time_state.properties.push({name: property, type: _type ||'css_text', value: value || 'value plz'})
+        time_state.properties.push({name: property, type: _type ||'css_text', value: value || ''})
       }
       $scope.selectPropertyActivated = false;
       $scope.component_selected = null;

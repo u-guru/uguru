@@ -698,6 +698,55 @@
   padding: 0 5px;
 }
 
+#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown-container {
+  width: 100%;
+}
+
+#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown {
+  width: 100%;
+}
+
+#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div span {
+  width: calc(100% - 30px);
+  height: 30px;
+}
+
+#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a {
+  width: 30px;
+  height: 30px;
+}
+
+#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a svg {
+  width: 30px;
+  height: 30px;
+  background: #43cb9d;
+}
+
+#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:hover svg, #build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:focus svg {
+  background: #a1e5ce;
+}
+
+#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:hover svg *, #build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:focus svg * {
+  stroke: #428a74;
+}
+
+#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:active svg {
+  background: #428a74;
+}
+
+#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:active svg * {
+  stroke: white;
+}
+
+#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > ul {
+  width: 100%;
+  top: 30px;
+}
+
+#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > ul li {
+  width: calc(100% - 30px);
+}
+
 #build > aside .build-element-list > ul > li .build-css-list > li > div:nth-child(1) {
   width: 25%;
   padding-right: 5px;
@@ -749,12 +798,12 @@
   margin-top: 10px;
 }
 
-#build > aside .build-element-list > ul > li .build-css-list > li > div:nth-child(2) button:not(:first-child), #build > aside .build-element-list > ul > li .build-css-list > li > div:nth-child(3) button:not(:first-child) {
+#build > aside .build-element-list > ul > li .build-css-list > li > div:nth-child(2) .dropdown-container:not(:first-child), #build > aside .build-element-list > ul > li .build-css-list > li > div:nth-child(3) .dropdown-container:not(:first-child) {
   margin-top: 10px;
 }
 
-#build > aside .build-element-list > ul > li .build-css-list > li > div:nth-child(2) .dropdown, #build > aside .build-element-list > ul > li .build-css-list > li > div:nth-child(3) .dropdown {
-  margin-top: 5px;
+#build > aside .build-element-list > ul > li .build-css-list > li > div:nth-child(2) button:not(:first-child), #build > aside .build-element-list > ul > li .build-css-list > li > div:nth-child(3) button:not(:first-child) {
+  margin-top: 10px;
 }
 
 #build > aside .build-element-list > ul > li .build-css-list > li > div:nth-child(2) > span, #build > aside .build-element-list > ul > li .build-css-list > li > div:nth-child(3) > span {
