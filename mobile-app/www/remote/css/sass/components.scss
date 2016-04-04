@@ -12069,3 +12069,8 @@ a.category-tile {
 #intercom-container {
 	z-index: auto!important;
 }
+
+.svg-pennant {
+	@include prefix(animation-duration, 500ms, webkit moz ms o);
+	height: 182px;
+}

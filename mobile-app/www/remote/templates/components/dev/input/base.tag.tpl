@@ -1,1 +1,0 @@
-<span class="chip bg-{{category.hex_class}}">{{innerText}}</span>

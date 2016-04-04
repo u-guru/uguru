@@ -597,6 +597,104 @@ if 'sync' in args and len(args) == 2:
     sleep(1)
     print "syncing MP --> Local"
     saveDictToElementsJson()
+
+if 'sync' in args and len(args) == 3 and '-e' in args:
+    elem_dict = loadMostUpdatedElementsJson()
+    from pprint import pprint
+    components = elem_dict.get('components')
+    containers = elem_dict.get('containers')
+
+    def getAllFiles(path, wildcard_matcher):
+        import fnmatch
+        import os
+        matches = []
+        for root, dirnames, filenames in os.walk(path):
+            for filename in fnmatch.filter(filenames, wildcard_matcher):
+                matches.append(os.path.join(root, filename))
+        return matches
+
+    def getAllComponentsContainers():
+        matcher = '*.tpl'
+        path = 'mobile-app/www/remote/templates/elements'
+        matches = getAllFiles(path, matcher)
+        match_dict = {'components': [], 'containers': []}
+        for match in matches:
+            if '/elements/components/' in match:
+                nested_path = match.split('/elements/components/')[-1]
+                nested_path_split = nested_path.split('/')
+                tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
+                _id = len(match_dict['components']) + 1
+                ref = "-".join(nested_path_split).replace('.tpl', '')
+                ref = ref.replace('.','-')
+                match_dict['components'].append({
+                    'id': _id,
+                    'ref': ref,
+                    'template_url': 'templates/' + nested_path,
+                    'tags': tags
+                    })
+            elif '/elements/containers/' in match:
+                nested_path = match.split('/elements/containers/')[-1]
+                nested_path_split = nested_path.split('/')
+                tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
+                _id = len(match_dict['containers']) + 1
+                ref = "-".join(nested_path_split).replace('.tpl', '')
+                ref = ref.replace('.','-')
+                match_dict['containers'].append({
+                    'id': _id,
+                    'ref': ref,
+                    'template_url': 'templates/' + nested_path,
+                    'tags': tags
+                    })
+        return match_dict
+
+
+
+
+    match_dict = getAllComponentsContainers()
+    comp_refs = [comp['ref'] for comp in match_dict['components']]
+    count = 0
+
+    for old_comp in components:
+        if old_comp['ref'] in comp_refs:
+            comp_refs_index = comp_refs.index(old_comp['ref'])
+            new_comp_dict = match_dict['components'][comp_refs_index]
+            new_comp_keys = new_comp_dict.keys()
+            for key in old_comp.keys():
+                if key not in new_comp_keys:
+                    new_comp_dict[key] = old_comp[key]
+
+    for old_comp in containers:
+        if old_comp['ref'] in comp_refs:
+            comp_refs_index = comp_refs.index(old_comp['ref'])
+            new_comp_dict = match_dict['containers'][comp_refs_index]
+            new_comp_keys = new_comp_dict.keys()
+            for key in old_comp.keys():
+                if key not in new_comp_keys:
+                    new_comp_dict[key] = old_comp[key]
+
+    elem_dict['components'] = match_dict['components']
+    elem_dict['containers'] = match_dict['containers']
+    print "Saving new dict with %s components and %s containers ... to elements.json" % (len(elem_dict['components']), len(elem_dict['containers']))
+    saveElementsJson(elem_dict)
+    print "syncing to MP..."
+    syncLocalElementsToMP()
+    print "complete!"
+
+    # print
+    # print
+    # for comp in components:
+    #     print comp.get('id'), comp['ref']
+    # print
+    # print
+    # print '----containers----'
+    # print
+    # for comp in match_dict['containers']:
+    #     print comp['id'], comp['ref']
+    # print
+    # for container in containers:
+    #     print container.get('id'), container['ref']
+    sys.exit()
+
 if 'resolve' in args and len(args) == 2:
     resolveLocalElements()
 if 'print' in args and args.index('print') == 1 and len(args) == 3:
