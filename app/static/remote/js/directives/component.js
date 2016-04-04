@@ -94,15 +94,15 @@ angular.module('uguru.components', [])
   };
   function getTemplateURL(elem, attr) {
     if (attr.type && attr.type.length && attr.type === 'splash') {
-      return BASE + 'templates/elements/components/inputs/dropdowns/dropdown.splash.tpl'
+      return BASE + 'templates/elements/components/inputs/dropdowns/splash.tpl'
     } else {
-      return BASE + 'templates/elements/components/inputs/dropdowns/dropdown.splash.tpl'
+      return BASE + 'templates/elements/components/inputs/dropdown.tpl'
     }
   }
 }])
 .directive("userIcon", ['$compile',function($compile) {
   return {
-    templateUrl: BASE + 'templates/elements/user.icon.tpl',
+    templateUrl: BASE + 'templates/elements/components/info/user.icon.tpl',
     scope: {
         url: '=url',
         size: '=size'

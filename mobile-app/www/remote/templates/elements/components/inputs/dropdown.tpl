@@ -14,8 +14,7 @@
             <li tabindex ng-if='$index !== dropdown.selectedIndex' ng-click="click(option, $index)" ng-repeat='option in dropdown.options'>{{(dropdown.key && option[dropdown.key]) || option}}</li>
         </ul>
     </div>
-</div>
-<!--
+    <!--
 <div class="absolute full-xy top-0 left-0 flex-wrap-center">
     <div class="ugrid-2 full-xy flex-center">
         <ul class="demo">
@@ -207,3 +206,4 @@
         </div>
     </div>
 </div> -->
+</div>
