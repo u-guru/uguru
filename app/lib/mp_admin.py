@@ -673,6 +673,11 @@ if 'sync' in args and len(args) == 3 and '-e' in args:
                     new_comp_dict[key] = old_comp[key]
 
     elem_dict['components'] = match_dict['components']
+    for component in elem_dict['components']:
+        needs_name = ''
+        if not component.get('name'):
+             needs_name = "NEEDS NAME"
+        print component['id'], component['ref'], needs_name
     elem_dict['containers'] = match_dict['containers']
     print "Saving new dict with %s components and %s containers ... to elements.json" % (len(elem_dict['components']), len(elem_dict['containers']))
     saveElementsJson(elem_dict)
