@@ -171,6 +171,8 @@ angular.module('uguru.dev.controllers')
         LoadingService.showSuccess('Saved!', 1000);
       }, 2000)
 
+
+
     }
 
     function generateCSSClassOptions(classes_arr, component) {
@@ -556,7 +558,7 @@ angular.module('uguru.dev.controllers')
           }
       }
       component_obj.addPropertyField = function(component, time_state) {
-          $scope.selectPropertyActivated = true;
+          $scope.toggleClassProperties()
           $scope.component_selected = component;
           $scope.time_state_selected = time_state;
         }
@@ -596,6 +598,10 @@ angular.module('uguru.dev.controllers')
         }
       }
       return;
+    }
+
+    $scope.toggleClassProperties = function() {
+      $scope.selectPropertyActivated = !$scope.selectPropertyActivated;
     }
 
     function initComponentObj(cloned_elem, elem, selector) {
@@ -638,7 +644,7 @@ angular.module('uguru.dev.controllers')
           }
         },
         addPropertyField: function(component, time_state) {
-          $scope.selectPropertyActivated = true;
+          $scope.toggleClassProperties();
           $scope.component_selected = component;
           $scope.time_state_selected = time_state;
         },

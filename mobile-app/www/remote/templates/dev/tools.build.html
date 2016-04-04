@@ -93,9 +93,9 @@
                 </ul>
             </nav>
 
-            <div class='build-element-list animation' ng-if='!settings.hideUIEditor'>
+            <div class='build-element-list animation'>
                 <div class='fixed bg-slate-90p top-0 right-0 expanded flex-wrap-center flex-stretch' ng-show="selectPropertyActivated">
-                    <a class='absolute weight-700 high-index-z bg-charcoal txt-5 p20xy txt-white right-0 m10xy top-0' ng-click='selectPropertyActivated = false;'>Close</a>
+                    <a class='absolute weight-700 high-index-z bg-charcoal txt-5 p20xy txt-white right-0 m10xy top-0' ng-click='toggleClassProperties()'>Close</a>
                     <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p">
                         <li class='flex-wrap-center full-x p20xy txt-7 txt-white text-center'>
                             Common CSS Properties
