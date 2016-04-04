@@ -295,7 +295,7 @@ gulp.task('scripts', function() {
       'lib/angular-fx/TweenMax.min.js',
       'lib/angular-fx/ng-fx.min.js',
       'lib/angular-fx/ng-fx-720.min.js',
-      'lib/angular-animate/angular-animate.js',
+      // 'lib/angular-animate/angular-animate.js',
       'lib/ngCordova/dist/ng-cordova.js',
       'lib/progressbar/*.js',
       'lib/parallax/*.js',

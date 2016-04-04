@@ -264,7 +264,14 @@
             "name": "Course Card",
             "ref": "cards-course",
             "sample": {
-                "scope": {}
+                "scope": {
+                    "course": {
+                        "full_name": "beauty and joy of computing",
+                        "name": "CS10",
+                        "description": "UC berkeley's #1 intro computer science course"
+                    }
+                },
+                "template": "<course-card ng-model=\"component.sample.scope.course\"> </course-card>"
             },
             "tags": [
                 "cards",
