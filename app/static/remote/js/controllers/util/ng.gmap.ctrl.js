@@ -307,10 +307,10 @@ angular.module('uguru.util.controllers')
 
 
       // $scope.map.center = {latitude: university.latitude, university.longitude};
-      $scope.$on('$ionicView.loaded', function() {
-        renderUniversityPlacesMap($scope.selectedUniversity);
-      });
+      // $scope.$on('$ionicView.loaded', function() {
 
+      // });
+      renderUniversityPlacesMap($scope.selectedUniversity);
 
       function renderUniversityPlacesMap(university) {
 

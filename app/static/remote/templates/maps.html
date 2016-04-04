@@ -1,5 +1,5 @@
-<div class='bg-charcoal full-xy flex-wrap-center relative' cache-view="false" id='map-parent-wrapper'>
-    <div style='max-height:500px !important;' class='ui-gmap-wrapper full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}'>
+<div class='bg-charcoal full-xy flex-wrap-center relative' id='map-parent-wrapper' ng-controller='GMapController'>
+    <div style='max-height:500px !important;' class='ui-gmap-wrapper full-xy relative zoom-{{map.zoom}} bg-slate'>
         <ui-gmap-google-map  id='{{selectedUniversity.map.domId}}' class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events"  refresh='map.refresh' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
             <ui-gmap-marker coords="selectedUniversity.map.marker.coords" idKey="selectedUniversity.map.marker.id || selectedUniversity.id" options="selectedUniversity.map.marker.options" icon="selectedUniversity.map.marker.icon">
             </ui-gmap-marker>

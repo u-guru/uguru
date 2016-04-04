@@ -22,6 +22,8 @@
 	display: block!important;
 	height: 100%;
 	max-height: 42px;
+	width: 100%;
+	max-width: 109px;
 	svg {
 		display: block;
 		height: 100%;
@@ -459,6 +461,9 @@
 		}
 	}
 	.splash-header {
+		@include flex;
+		@include flex-center-vertical;
+		width: 100%;
 		height: 50px;
 		&:before {
 			@include opacity-important(0);
@@ -492,13 +497,329 @@
 			}
 		}
 		.splash-logo {
-			height: 50px!important;
 			margin: 5px;
-			padding:2px;
-			width:inherit;
+			padding: 2px;
+		}
+	}
+	.splash-hero-nav {
+		&.desktop {
+			@include flex-center-vertical;
+			display: none!important;
+			h2 {
+				@include flex;
+				@include flex-center-vertical;
+				padding: 0 10px;
+				height: 48px;
+				font-weight: 600;
+				font-size: 18px;
+			}
+		}
+		&.mobile {
+			position: absolute;
+			top: 0;
+			right: 0;
+			a {
+				@include flex;
+				@include flex-center;
+				position: relative;
+				height: 42px;
+				padding: 0 10px 0 15px;
+				span {
+					font-size: 18px;
+					font-weight: 600;
+					&:first-child {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+				}
+				svg {
+					display: block;
+					width: 20px;
+					height: 20px;
+					margin-left: 5px;
+					path {
+						@include svg-stroke(white, 10);
+					}
+				}
+			}
+		}
+	}
+	#splash-hero-nav-mobile {
+		@include flex;
+		@include flex-wrap;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		background: rgba($slate, .95);
+		text-align: center;
+		@media screen and (min-width: 768px) {
+			display: none!important;
+		}
+		h1 {
+			padding-top: 15px;
+			font-size: 28px;
+			font-weight: 700;
+		}
+		.splash-hero-nav-school {
+			width: 100%;
+			ul {
+				padding: 7.5px;
+				width: 100%;
+				li {
+					padding: 7.5px;
+					width: 100%;
+					a {
+						@include round;
+						@include flex;
+						@include flex-center;
+						position: relative;
+						width: 100%;
+						height: 48px;
+						border-width: 2px;
+						border-style: solid;
+						span {
+							@include prefix(transition, all 150ms ease-in-out);
+							&:nth-child(1) {
+								@include opacity(.5);
+								@include round;
+								display: block;
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+							}
+							&:nth-child(2) {
+								display: block;
+								position: relative;
+								z-index: 5;
+								font-size: 20px;
+								font-weight: 600;
+							}
+							&:nth-child(3) {
+								position: relative;
+								z-index: 5;
+								svg {
+									display: block;
+									width: 36px;
+									height: 36px;
+									padding: 6px;
+									* {
+										@include svg-stroke(white, 8);
+									}
+								}
+							}
+						}
+						&:not(.active) {
+							span:nth-child(3) {
+								svg {
+									@include prefix(transition, all 150ms ease-in-out);
+									@include opacity(0);
+									display: none;
+								}
+							}
+						}
+						&.bg-find {
+							border-color: white;
+							span:first-child {
+								@include opacity(.2);
+								background: white;
+							}
+							&:hover, &:focus {
+								span:nth-child(2) {
+									color: $slate;
+								}
+							}
+						}
+						&:hover, &:focus {
+							span:nth-child(1) {
+								@include opacity(1);
+							}
+						}
+					}
+				}
+			}
+		}
+		.splash-hero-nav-category {
+			ul {
+				@include flex;
+				@include flex-center;
+				@include flex-wrap;
+				padding: 7.5px;
+				li {
+					width: calc(100% / 3);
+					padding: 7.5px;
+					a {
+						&:not(.active) {
+							span {
+								svg {
+									* {
+										@include opacity(0);
+									}
+								}
+							}
+						}
+						&.bg-delivery {
+							span {
+								svg {
+									background: mix($auburn, $slate);
+									border: 2px solid $auburn;
+								}
+							}
+							&:hover, &:focus, &.active {
+								span {
+									svg {
+										background: $auburn;
+									}
+								}
+							}
+						}
+						&.bg-freelancing {
+							span {
+								svg {
+									background: mix($orange, $slate);
+									border: 2px solid $orange;
+								}
+							}
+							&:hover, &:focus, &.active {
+								span {
+									svg {
+										background: $orange;
+									}
+								}
+							}
+						}
+						&.bg-baking {
+							span {
+								svg {
+									background: mix($gold, $slate);
+									border: 2px solid $gold;
+								}
+							}
+							&:hover, &:focus, &.active {
+								span {
+									svg {
+										background: $gold;
+									}
+								}
+							}
+						}
+						&.bg-photography {
+							span {
+								svg {
+									background: mix($moola, $slate);
+									border: 2px solid $moola;
+								}
+							}
+							&:hover, &:focus, &.active {
+								span {
+									svg {
+										background: $moola;
+									}
+								}
+							}
+						}
+						&.bg-tech {
+							span {
+								svg {
+									background: mix($azure, $slate);
+									border: 2px solid $azure;
+								}
+							}
+							&:hover, &:focus, &.active {
+								span {
+									svg {
+										background: $azure;
+									}
+								}
+							}
+						}
+						&.bg-household {
+							span {
+								svg {
+									background: mix($cobalt, $slate);
+									border: 2px solid $cobalt;
+								}
+							}
+							&:hover, &:focus, &.active {
+								span {
+									svg {
+										background: $cobalt;
+									}
+								}
+							}
+						}
+						&.bg-athletic {
+							span {
+								svg {
+									background: mix($eggplant, $slate);
+									border: 2px solid $eggplant;
+								}
+							}
+							&:hover, &:focus, &.active {
+								span {
+									svg {
+										background: $eggplant;
+									}
+								}
+							}
+						}
+						&.bg-academic {
+							span {
+								svg {
+									background: mix($cerise, $slate);
+									border: 2px solid $cerise;
+								}
+							}
+							&:hover, &:focus, &.active {
+								span {
+									svg {
+										background: $cerise;
+									}
+								}
+							}
+						}
+					}
+					span {
+						display: block;
+						font-size: 16px;
+						font-weight: 600;
+						white-space: nowrap;
+						&:first-child {
+							svg {
+								@include round;
+								width: 48px;
+								height: 48px;
+								padding: 6px;
+								* {
+									@include prefix(transition, all 150ms ease-in-out);
+									@include svg-stroke(white, 6);
+								}
+							}
+						}
+						&:last-child {
+							padding-top: 5px;
+						}
+					}
+				}
+			}
 		}
 	}
 	@media screen and (min-width: 860px) {
+		.splash-hero-nav {
+			&.desktop {
+				@include flex-important;
+			}
+			&.mobile {
+				display: none!important;
+			}
+		}
 		.splash-header {
 			height: 70px;
 			.splash-nav-link {
@@ -620,7 +941,7 @@
 		}
 	}
 
-	// BOTOOM LINKS
+	// BOTTOM LINKS
 	.splash-footer-link {
 		display: block;
 		position: fixed;
@@ -1015,7 +1336,6 @@
 			z-index: 1001;
 		}
 	}
-
 	.sidebar-modal {
 		&:not(.show-sidebar-cta) {
 			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
@@ -1038,564 +1358,6 @@
 		// 	}
 		// }
 	}
-
-	#splash-hero-nav-mobile {
-		@include flex;
-		@include flex-wrap;
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		overflow: auto;
-		background: rgba($slate, .95);
-		text-align: center;
-		@media screen and (min-width: 768px) {
-			display: none!important;
-		}
-		h1 {
-			padding-top: 15px;
-			font-size: 28px;
-			font-weight: 700;
-		}
-		.splash-hero-nav-school {
-			width: 100%;
-			ul {
-				padding: 7.5px;
-				width: 100%;
-				li {
-					padding: 7.5px;
-					width: 100%;
-					a {
-						@include round;
-						@include flex;
-						@include flex-center;
-						position: relative;
-						width: 100%;
-						height: 48px;
-						border-width: 2px;
-						border-style: solid;
-						span {
-							@include prefix(transition, all 150ms ease-in-out);
-							&:nth-child(1) {
-								@include opacity(.5);
-								@include round;
-								display: block;
-								position: absolute;
-								top: 0;
-								left: 0;
-								width: 100%;
-								height: 100%;
-							}
-							&:nth-child(2) {
-								display: block;
-								position: relative;
-								z-index: 5;
-								font-size: 20px;
-								font-weight: 600;
-							}
-							&:nth-child(3) {
-								position: relative;
-								z-index: 5;
-								svg {
-									display: block;
-									width: 36px;
-									height: 36px;
-									padding: 6px;
-									* {
-										@include svg-stroke(white, 8);
-									}
-								}
-							}
-						}
-						&:not(.active) {
-							span:nth-child(3) {
-								svg {
-									@include prefix(transition, all 150ms ease-in-out);
-									@include opacity(0);
-									display: none;
-								}
-							}
-						}
-						&.bg-find {
-							border-color: white;
-							span:first-child {
-								@include opacity(.2);
-								background: white;
-							}
-							&:hover, &:focus {
-								span:nth-child(2) {
-									color: $slate;
-								}
-							}
-						}
-						&:hover, &:focus {
-							span:nth-child(1) {
-								@include opacity(1);
-							}
-						}
-					}
-				}
-			}
-		}
-		.splash-hero-nav-category {
-			ul {
-				@include flex;
-				@include flex-center;
-				@include flex-wrap;
-				padding: 7.5px;
-				li {
-					width: calc(100% / 3);
-					padding: 7.5px;
-					a {
-						&:not(.active) {
-							span {
-								svg {
-									* {
-										@include opacity(0);
-									}
-								}
-							}
-						}
-						&.bg-delivery {
-							span {
-								svg {
-									background: mix($auburn, $slate);
-									border: 2px solid $auburn;
-								}
-							}
-							&:hover, &:focus, &.active {
-								span {
-									svg {
-										background: $auburn;
-									}
-								}
-							}
-						}
-						&.bg-freelancing {
-							span {
-								svg {
-									background: mix($orange, $slate);
-									border: 2px solid $orange;
-								}
-							}
-							&:hover, &:focus, &.active {
-								span {
-									svg {
-										background: $orange;
-									}
-								}
-							}
-						}
-						&.bg-baking {
-							span {
-								svg {
-									background: mix($gold, $slate);
-									border: 2px solid $gold;
-								}
-							}
-							&:hover, &:focus, &.active {
-								span {
-									svg {
-										background: $gold;
-									}
-								}
-							}
-						}
-						&.bg-photography {
-							span {
-								svg {
-									background: mix($moola, $slate);
-									border: 2px solid $moola;
-								}
-							}
-							&:hover, &:focus, &.active {
-								span {
-									svg {
-										background: $moola;
-									}
-								}
-							}
-						}
-						&.bg-tech {
-							span {
-								svg {
-									background: mix($azure, $slate);
-									border: 2px solid $azure;
-								}
-							}
-							&:hover, &:focus, &.active {
-								span {
-									svg {
-										background: $azure;
-									}
-								}
-							}
-						}
-						&.bg-household {
-							span {
-								svg {
-									background: mix($cobalt, $slate);
-									border: 2px solid $cobalt;
-								}
-							}
-							&:hover, &:focus, &.active {
-								span {
-									svg {
-										background: $cobalt;
-									}
-								}
-							}
-						}
-						&.bg-athletic {
-							span {
-								svg {
-									background: mix($eggplant, $slate);
-									border: 2px solid $eggplant;
-								}
-							}
-							&:hover, &:focus, &.active {
-								span {
-									svg {
-										background: $eggplant;
-									}
-								}
-							}
-						}
-						&.bg-academic {
-							span {
-								svg {
-									background: mix($cerise, $slate);
-									border: 2px solid $cerise;
-								}
-							}
-							&:hover, &:focus, &.active {
-								span {
-									svg {
-										background: $cerise;
-									}
-								}
-							}
-						}
-					}
-					span {
-						display: block;
-						font-size: 16px;
-						font-weight: 600;
-						white-space: nowrap;
-						&:first-child {
-							svg {
-								@include round;
-								width: 48px;
-								height: 48px;
-								padding: 6px;
-								* {
-									@include prefix(transition, all 150ms ease-in-out);
-									@include svg-stroke(white, 6);
-								}
-							}
-						}
-						&:last-child {
-							padding-top: 5px;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	.splash-hero-nav {
-			@include flex;
-			@include flex-center-vertical;
-			position: fixed;
-			z-index: 1001;
-			top: 0;
-			right: 0;
-			a, h2 {
-				@include flex;
-				@include flex-center-vertical;
-				padding: 0 10px;
-				height: 48px;
-				font-weight: 600;
-				font-size: 18px;
-			}
-			a {
-				position: relative;
-				.splash-hero-nav-link-bg {
-					@include opacity(.8);
-					display: block;
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					z-index: -1;
-				}
-				&:hover, &:focus {
-					.splash-hero-nav-link-bg {
-						@include opacity(1);
-					}
-				}
-				&.bg-delivery {
-					background: rgba($auburn, .8);
-					&:hover, &:focus {
-						background: $auburn;
-					}
-				}
-				&.bg-freelancing {
-					background: rgba($orange, .8);
-					&:hover, &:focus {
-						background: $orange;
-					}
-				}
-				&.bg-baking {
-					background: rgba($gold, .8);
-					&:hover, &:focus {
-						background: $gold;
-					}
-				}
-				&.bg-photography {
-					background: rgba($moola, .8);
-					&:hover, &:focus {
-						background: $moola;
-					}
-				}
-				&.bg-tech {
-					background: rgba($azure, .8);
-					&:hover, &:focus {
-						background: $azure;
-					}
-				}
-				&.bg-household {
-					background: rgba($cobalt, .8);
-					&:hover, &:focus {
-						background: $cobalt;
-					}
-				}
-				&.bg-athletic {
-					background: rgba($eggplant, .8);
-					&:hover, &:focus {
-						background: $eggplant;
-					}
-				}
-				&.bg-academic {
-					background: rgba($cerise, .8);
-					&:hover, &:focus {
-						background: $cerise;
-					}
-				}
-				&.bg-shamrock {
-					&:hover, &:focus {
-						background: lighten($slate, 20%);
-					}
-				}
-			}
-			> div > div {
-				position: relative;
-				> a {
-					z-index: 1;
-					padding: 0 12px 0 15px;
-					border: 2px solid white;
-					border-radius: 2px;
-					svg {
-						@include svg-stroke(white, 10);
-						display: block;
-						margin-left: 5px;
-						width: 24px;
-						height: 24px;
-					}
-				}
-				> div {
-					@include prefix(transition, 150ms ease-in-out, webkit moz ms o);
-					@include prefix(transform, translateY(-100%), webkit moz ms o);
-					position: absolute;
-					left: 50%;
-					margin-left: -99px;
-					top: 58px;
-					width: 198px;
-					&:not(.visible) {
-						@include opacity(0);
-						visibility: hidden;
-					}
-					&.visible {
-						@include opacity(1);
-						@include prefix(transform, translateY(0), webkit moz ms o);
-					}
-					> svg {
-						position: relative;
-						z-index: 5;
-					}
-					ul {
-						margin-top: -6px;
-						li {
-							position: relative;
-							height: 48px;
-							border: 2px solid white;
-							border-top: 0;
-							font-size: 18px;
-							font-weight: 600;
-							&:first-child {
-								border-top-left-radius: 2px;
-								border-top-right-radius: 2px;
-							}
-							&:last-child {
-								border-bottom-left-radius: 2px;
-								border-bottom-right-radius: 2px;
-							}
-							&:not(:first-child) {
-								a + .arrow {
-									display: none;
-								}
-							}
-							a {
-								@include flex;
-								@include flex-center;
-								height: 100%;
-								width: 100%;
-								padding: 0 15px;
-								svg {
-									@include svg-stroke(white, 10);
-									display: none;
-									margin-left: 5px;
-									width: 24px;
-									height: 24px;
-								}
-								&.active {
-									svg {
-										display: block;
-									}
-								}
-								+ .arrow {
-									@include center-x;
-									display: block;
-									top: -13px;
-									width: 30px;
-									height: 15px;
-									&.school {
-										path {
-											@include opacity(.8);
-										}
-									}
-									path {
-										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-									}
-									&.bg-delivery {
-										path {
-											fill: rgba($auburn, .8);
-										}
-									}
-									&.bg-freelancing {
-										path {
-											fill: rgba($orange, .8);
-										}
-									}
-									&.bg-baking {
-										path {
-											fill: rgba($gold, .8);
-										}
-									}
-									&.bg-photography {
-										path {
-											fill: rgba($moola, .8);
-										}
-									}
-									&.bg-tech {
-										background: none!important;
-										path {
-											fill: rgba($azure, .8);
-										}
-									}
-									&.bg-household {
-										path {
-											fill: rgba($cobalt, .8);
-										}
-									}
-									&.bg-athletic {
-										path {
-											fill: rgba($eggplant, .8);
-										}
-									}
-									&.bg-academic {
-										path {
-											fill: rgba($cerise, .8);
-										}
-									}
-								}
-								&:hover, &:focus {
-									+ .arrow {
-										&.school {
-											path {
-												@include opacity(1);
-											}
-										}
-										&.bg-delivery {
-											path {
-												fill: $auburn;
-											}
-										}
-										&.bg-freelancing {
-											path {
-												fill: $orange;
-											}
-										}
-										&.bg-baking {
-											path {
-												fill: $gold;
-											}
-										}
-										&.bg-photography {
-											path {
-												fill: $moola;
-											}
-										}
-										&.bg-tech {
-											path {
-												fill: $azure;
-											}
-										}
-										&.bg-household {
-											path {
-												fill: $cobalt;
-											}
-										}
-										&.bg-athletic {
-											path {
-												fill: $eggplant;
-											}
-										}
-										&.bg-academic {
-											path {
-												fill: $cerise;
-											}
-										}
-										&.bg-cal {
-											path {
-												fill: #003057;
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			&.desktop {
-				width:100%;
-				@include flex;
-				@include flex-right-center;
-				position:absolute;
-				left:0;
-				top:0;
-			}
-			&.mobile {
-				> div {
-					> a {
-						border: 0;
-					}
-				}
-			}
-		}
 
 	// CONTENT SECTIONS
 	> section {
@@ -2499,133 +2261,6 @@
 							margin: 0 15px;
 						}
 					}
-					a {
-						@include flex;
-						@include flex-center;
-						position: relative;
-						width: 130px;
-						height: 38px;
-						padding: 0;
-						border-radius: 8px;
-						font-size: 20px;
-						font-weight: 600;
-						background: rgba($slate, .5);
-						svg {
-							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-							position: absolute;
-							top: 0;
-							left: 0;
-							width: 100%;
-							height: 100%;
-							&.desktop {
-								display: none;
-							}
-						}
-						b {
-							@include prefix(animation-delay, 1200ms, webkit moz ms o);
-							font-weight: 600!important;
-						}
-						&:not(.blank) {
-							&:hover, &:focus, &[class*="translate-blank"] {
-								background: $shamrock;
-								svg {
-									@include opacity(0);
-								}
-								&[class*="translate-blank"] {
-									background-color: $shamrock !important;
-								}
-							}
-							&.bg-delivery {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $auburn;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $auburn !important;
-								}
-							}
-							&.bg-freelancing {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $orange;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $orange !important;
-								}
-							}
-							&.bg-baking {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $gold;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $gold !important;
-								}
-							}
-							&.bg-photography {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $moola;
-									background-color: $azure;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $moola !important;
-								}
-							}
-							&.bg-tech {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $azure;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $azure !important;
-								}
-							}
-							&.bg-household {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $cobalt;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $cobalt !important;
-								}
-							}
-							&.bg-athletic {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $eggplant;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $eggplant !important;
-								}
-							}
-							&.bg-academic {
-								&:hover, &:focus, &[class*="translate-blank"] {
-									background: $cerise;
-									svg {
-										@include opacity(0);
-									}
-								}
-								&[class*="translate-blank"] {
-									background-color: $cerise !important;
-								}
-							}
-						}
-					}
 					.splash-mobile-cta {
 						margin: 0 15px;
 						background: $shamrock;
@@ -2730,20 +2365,6 @@
 				}
 			}
 
-			@media only screen and (orientation: portrait) {
-				.splash-hero-content {
-					.splash-adlib {
-						a {
-							&[class*="translate-blank-"] {
-								margin-top: -1px!important;
-								&:nth-child(even) {
-									margin-left: -1px!important;
-								}
-							}
-						}
-					}
-				}
-			}
 			@media screen and (max-width: 414px) {
 				.splash-hero-content {
 					margin-top: -15px;
@@ -2885,25 +2506,6 @@
 						}
 						h1 {
 							font-size: 40px;
-						}
-						a {
-							width: 142px;
-							height: 44px;
-							font-size: 24px;
-							&.adlib-1.translate-blank-1 {
-								margin-left: 1px!important;
-							}
-							&.adlib-8.translate-blank-2 {
-								margin-left: -1px!important;
-							}
-							svg {
-								&.mobile {
-									display: none;
-								}
-								&.desktop {
-									display: block;
-								}
-							}
 						}
 						.splash-mobile-cta {
 							display: none;
@@ -5230,241 +4832,6 @@
 	}
 }
 
-// MAP
-.university-svg-icon {
-	@include opacity-important(1);
-	// http://stackoverflow.com/questions/15196630/hide-text-node-in-element-but-not-children
-	visibility: collapse;
-	svg {
-		visibility: visible!important;
-	}
-}
-.show-markers {
-	.university-svg-icon {
-		display: block!important;
-	}
-}
-
-.zoom-5, .zoom-4, .zoom-3, .zoom-2, .zoom-1 {
-	.university-svg-icon {
-		width: 36px;
-		svg {
-			width: 36px;
-			height: auto;
-			text {
-				display: none;
-			}
-		}
-	}
-}
-.zoom-6 {
-	.university-svg-icon {
-		width: 48px;
-		svg {
-			width: 48px;
-			height: auto;
-		}
-	}
-}
-.zoom-7 {
-	.university-svg-icon {
-		width: 64px;
-		svg {
-			width: 64px;
-			height: auto;
-		}
-	}
-}
-
-.university-svg-cluster {
-	img {
-		@include opacity(.8);
-	}
-	div {
-		@include flex;
-		@include flex-wrap;
-		@include flex-center;
-		width: 100%!important;
-		height: 100%!important;
-		line-height: 1.2!important;
-		span {
-			display: block;
-			width: 100%;
-			padding: 0 10px;
-			&:nth-child(1) {
-				font-size: 180%;
-				font-weight: 700!important;
-			}
-			&:nth-child(2) {
-				margin-top: -5%;
-			}
-			&:nth-child(3) {
-				margin-top: 2%;
-				font-size: 75%;
-			}
-		}
-	}
-}
-
-.gm-style {
-	font-family: $font;
-}
-.gm-style-iw {
-	@include prefix(transform, translateX(-50%), webkit moz ms o);
-	position: absolute!important;
-	top: auto!important;
-	bottom: 0!important;
-	left: 50%!important;
-	width: 300px!important;
-	height: 280px!important;
-	> div {
-		display: block!important;
-		max-width: none!important;
-		max-height: none!important;
-		overflow: visible!important;
-		height: 100%;
-		> div {
-			height: calc(100% - 50px);
-			> header, > div {
-				height: 50%;
-			}
-			> header {
-				@include flex-center;
-				background-color: $slate;
-				background-size: cover;
-				background-position: center;
-				h1 {
-					@include center-xy;
-					width: 100%;
-					color: white;
-					font-family: $font;
-					font-size: 24px;
-					line-height: 1.2;
-					text-align: center;
-					text-transform: none!important;
-				}
-				div {
-					@include opacity(.7);
-					content: "";
-					display: block;
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					background-color: $shamrock;
-				}
-			}
-			> div {
-				@include flex;
-				@include flex-center;
-				@include flex-wrap;
-				position: relative;
-				width: 100%;
-				background: white;
-				&:after {
-					@include center-x;
-					content: "";
-					display: block;
-					bottom: -50px;
-					width: 0;
-					height: 0;
-					border: 25px solid transparent;
-					border-top-color: white;
-				}
-			}
-			ul {
-				@include flex;
-				@include flex-center;
-				width: 100%;
-				text-align: center;
-				li {
-					width: calc(100% / 3);
-					h2, span {
-						font-family: $font;
-						text-transform: uppercase;
-					}
-					h2 {
-						color: lighten($slate, 25%);
-						font-size: 18px;
-						font-weight: 600;
-					}
-					span {
-						color: $slate;
-						font-size: 16px;
-						font-weight: 700;
-					}
-				}
-			}
-			button:not([class*="btn-ghost"]) {
-				margin-top: 10px;
-				padding: 10px;
-				padding-left: 15px!important;
-				padding-right: 15px!important;
-				height: auto!important;
-				width: auto!important;
-				background: $shamrock;
-				color: white;
-				font-size: 18px;
-				text-transform: uppercase;
-				&:hover, &:focus {
-					background: lighten($slate, 15%)!important;
-				}
-				&:active {
-					background: lighten($shamrock, 15%)!important;
-				}
-			}
-		}
-	}
-}
-.gm-style-iw ~ * {
-	@include opacity-important(0);
-	display: none!important;
-	visibility: hidden!important;
-	z-index: -999999!important;
-}
-
-.splash-landing > section.splash-hero .splash-hero-map.limited-opacity ui-gmap-google-map {
-	// .angular-google-map-container .gm-style > div:first-child > div:nth-child(1),
-	// .angular-google-map-container .gm-style > div:first-child > div:nth-child(2), {
-	// 	opacity:0.2 !important;
-	// }
-	.angular-google-map-container .gm-style > div:first-child > div:nth-child(3) {
-		.selected-university-svg-icon {
-			@include opacity(0);
-		}
-		.gmnoprint {
-			@include opacity-important(1);
-		}
-	}
-}
-
-// .selected-university-place-marker {
-// 	@include prefix(filter, invert(100%), webkit moz ms o);
-// }
-
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper {
-	.slideshow-thumb-7,
-	.slideshow-thumb-6,
-	.slideshow-thumb-5,
-	.slideshow-thumb-4,
-	.slideshow-thumb-3.progress-active {
-		// @include opacity-important(1);
-		width: 20%!important;
-		background: none!important;
-	}
-}
-
-#intercom-container {
-	position: absolute !important;
-}
-
-.school-id-inside .user-icon
-{
-	background-image: url('https://uguru.me/static/remote/img/avatar.svg');
-    backface-visibility: inherit !important;
-    background-size: cover !important;
-}
 /* ---------- MADE WITH LOVE */
 #made-with-love {
 	position: absolute;
@@ -6385,29 +5752,8 @@ a:hover, a:focus {
 	}
 }
 
-
-#intercom-conversation {
-	width:66.6% !important;
-	position:fixed !important;
-}
-@media screen and (min-width: 768px) {
-	#cta-modal-team {
-		ul {
-			height:100% !important;
-		}
-	}
-}
-
-@media screen and (max-width: 768px) {
-	#intercom-conversation {
-		width: 100%!important;
-		position: fixed!important;
-	}
-}
-
 /* ---------- BECOME GURU */
 /// HTML ///
-
 #bg {
     @include flex;
     @include flex-wrap;
@@ -6552,4 +5898,252 @@ a:hover, a:focus {
             }
         }
     }
+}
+
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper {
+	.slideshow-thumb-7,
+	.slideshow-thumb-6,
+	.slideshow-thumb-5,
+	.slideshow-thumb-4,
+	.slideshow-thumb-3.progress-active {
+		// @include opacity-important(1);
+		width: 20%!important;
+		background: none!important;
+	}
+}
+
+// MAP
+.university-svg-icon {
+	@include opacity-important(1);
+	// http://stackoverflow.com/questions/15196630/hide-text-node-in-element-but-not-children
+	visibility: collapse;
+	svg {
+		visibility: visible!important;
+	}
+}
+.show-markers {
+	.university-svg-icon {
+		display: block!important;
+	}
+}
+.zoom-5, .zoom-4, .zoom-3, .zoom-2, .zoom-1 {
+	.university-svg-icon {
+		width: 36px;
+		svg {
+			width: 36px;
+			height: auto;
+			text {
+				display: none;
+			}
+		}
+	}
+}
+.zoom-6 {
+	.university-svg-icon {
+		width: 48px;
+		svg {
+			width: 48px;
+			height: auto;
+		}
+	}
+}
+.zoom-7 {
+	.university-svg-icon {
+		width: 64px;
+		svg {
+			width: 64px;
+			height: auto;
+		}
+	}
+}
+.university-svg-cluster {
+	img {
+		@include opacity(.8);
+	}
+	div {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		width: 100%!important;
+		height: 100%!important;
+		line-height: 1.2!important;
+		span {
+			display: block;
+			width: 100%;
+			padding: 0 10px;
+			&:nth-child(1) {
+				font-size: 180%;
+				font-weight: 700!important;
+			}
+			&:nth-child(2) {
+				margin-top: -5%;
+			}
+			&:nth-child(3) {
+				margin-top: 2%;
+				font-size: 75%;
+			}
+		}
+	}
+}
+.gm-style {
+	font-family: $font;
+}
+.gm-style-iw {
+	@include prefix(transform, translateX(-50%), webkit moz ms o);
+	position: absolute!important;
+	top: auto!important;
+	bottom: 0!important;
+	left: 50%!important;
+	width: 300px!important;
+	height: 280px!important;
+	> div {
+		display: block!important;
+		max-width: none!important;
+		max-height: none!important;
+		overflow: visible!important;
+		height: 100%;
+		> div {
+			height: calc(100% - 50px);
+			> header, > div {
+				height: 50%;
+			}
+			> header {
+				@include flex-center;
+				background-color: $slate;
+				background-size: cover;
+				background-position: center;
+				h1 {
+					@include center-xy;
+					width: 100%;
+					color: white;
+					font-family: $font;
+					font-size: 24px;
+					line-height: 1.2;
+					text-align: center;
+					text-transform: none!important;
+				}
+				div {
+					@include opacity(.7);
+					content: "";
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: $shamrock;
+				}
+			}
+			> div {
+				@include flex;
+				@include flex-center;
+				@include flex-wrap;
+				position: relative;
+				width: 100%;
+				background: white;
+				&:after {
+					@include center-x;
+					content: "";
+					display: block;
+					bottom: -50px;
+					width: 0;
+					height: 0;
+					border: 25px solid transparent;
+					border-top-color: white;
+				}
+			}
+			ul {
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				text-align: center;
+				li {
+					width: calc(100% / 3);
+					h2, span {
+						font-family: $font;
+						text-transform: uppercase;
+					}
+					h2 {
+						color: lighten($slate, 25%);
+						font-size: 18px;
+						font-weight: 600;
+					}
+					span {
+						color: $slate;
+						font-size: 16px;
+						font-weight: 700;
+					}
+				}
+			}
+			button:not([class*="btn-ghost"]) {
+				margin-top: 10px;
+				padding: 10px;
+				padding-left: 15px!important;
+				padding-right: 15px!important;
+				height: auto!important;
+				width: auto!important;
+				background: $shamrock;
+				color: white;
+				font-size: 18px;
+				text-transform: uppercase;
+				&:hover, &:focus {
+					background: lighten($slate, 15%)!important;
+				}
+				&:active {
+					background: lighten($shamrock, 15%)!important;
+				}
+			}
+		}
+	}
+}
+.gm-style-iw ~ * {
+	@include opacity-important(0);
+	display: none!important;
+	visibility: hidden!important;
+	z-index: -999999!important;
+}
+.splash-landing > section.splash-hero .splash-hero-map.limited-opacity ui-gmap-google-map {
+	// .angular-google-map-container .gm-style > div:first-child > div:nth-child(1),
+	// .angular-google-map-container .gm-style > div:first-child > div:nth-child(2), {
+	// 	opacity:0.2 !important;
+	// }
+	.angular-google-map-container .gm-style > div:first-child > div:nth-child(3) {
+		.selected-university-svg-icon {
+			@include opacity(0);
+		}
+		.gmnoprint {
+			@include opacity-important(1);
+		}
+	}
+}
+
+// .selected-university-place-marker {
+// 	@include prefix(filter, invert(100%), webkit moz ms o);
+// }
+
+// misc
+#intercom-conversation {
+	width:66.6% !important;
+	position:fixed !important;
+}
+@media screen and (min-width: 768px) {
+	#cta-modal-team {
+		ul {
+			height:100% !important;
+		}
+	}
+}
+@media screen and (max-width: 768px) {
+	#intercom-conversation {
+		width: 100%!important;
+		position: fixed!important;
+	}
+}
+#intercom-container {
+	position: absolute !important;
+}
+.school-id-inside .user-icon {
+	background-image: url('https://uguru.me/static/remote/img/avatar.svg');
+    backface-visibility: inherit !important;
+    background-size: cover !important;
 }

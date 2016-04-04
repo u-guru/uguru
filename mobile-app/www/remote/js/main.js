@@ -12,8 +12,8 @@ if (LOCAL) {
 
   BASE = 'remote/';
   BASE_URL = _ipaddress;
-  // REST_URL = "http://localhost:5000";
-  REST_URL = "http://192.168.42.70:5000";
+  REST_URL = "http://localhost:5000";
+  // REST_URL = "http://192.168.42.70:5000";
   // BASE_URL = _ipaddress;
 
   // REST_URL = 'https://192.168.0.107:5000';
@@ -136,10 +136,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.team', {
         url: '/team',
         templateUrl: BASE + 'templates/team.html'
-  }).
-  state('root.build-demo', {
-        url: '/build-demo',
-        templateUrl: BASE + 'templates/builder.html'
   }).
   state('root.build', {
         url: '/build',
@@ -435,7 +431,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.map', {
         url: '/map',
-        templateUrl: BASE + 'templates/maps.html',
+        templateUrl: BASE + 'templates/splash/layout/splash.maps.html',
         controller: 'GMapController'
   }).
   state('root.universities', {
