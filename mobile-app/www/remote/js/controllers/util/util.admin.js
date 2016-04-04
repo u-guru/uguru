@@ -333,7 +333,7 @@ angular.module('uguru.util.controllers')
 
 				console.log(response);
 			}, function(err) {
-				console.log('error');
+				console.log('error', err);
 			})
 		}
 

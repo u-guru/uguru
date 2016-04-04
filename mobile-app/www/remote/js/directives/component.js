@@ -228,6 +228,19 @@ angular.module('uguru.components', [])
     }
   };
 })
+.directive('courseCard', function() {
+  return {
+    templateUrl: BASE + 'templates/elements/components/cards/course.tpl',
+    // scope: {
+    //     course: '=ngModel'
+    // },
+    restrict: 'E',
+    replace: true,
+    link: function(scope, elem, attr) {
+      return;
+    }
+  }
+})
 .directive("pennant", function() {
   return {
     templateUrl: BASE + 'templates/elements/components/info/pennant.tpl',
