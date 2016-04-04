@@ -17,49 +17,127 @@
                 "assigned": [
                     "gabrielle"
                 ], 
-                "description": "", 
+                "description": "There are new updates of which Jeselle will go over (from Saturday). There may not be new updates since Saturday but there's still a good amount working more than Friday. It appears the magic animations are laggy.<br><br>", 
+                "description_2": "Pull from Dev && try to fix the issues Jeselle is having on your local & see if you can resolve or at least pinpoin which CSS properties are causing it.", 
                 "difficulty": 1, 
-                "estimated_time": 10, 
+                "estimated_time": "b4 <11am", 
                 "index": 1, 
-                "name": "Format the action items + states", 
+                "name": "Magic.css Identify Animation Lag w/ Jeselle ['See Description']", 
                 "priority": 10, 
                 "ref": "admin-tools-1", 
                 "substates": [], 
-                "time_created": "3/23", 
-                "type": "Admin Tools"
+                "time_created": "04/04", 
+                "type": "Morning Skills"
+            }, 
+            {
+                "assigned": [
+                    "gabrielle"
+                ], 
+                "description": "For GPA - landing apge only. Feel free to create in codepen.", 
+                "difficulty": 2, 
+                "estimated_time": 120, 
+                "index": 14, 
+                "name": "From Zeplin: Receipts, Parents (100%), GPA Landing Page [See description]", 
+                "priority": 8, 
+                "ref": "mad-lib-state-2", 
+                "substates": [], 
+                "time_created": "04/04", 
+                "type": "HTML Files"
+            }, 
+            {
+                "assigned": [
+                    "gabrielle"
+                ], 
+                "description": "When Samir gets in -- go over 'Steps to import your own component'", 
+                "difficulty": 3, 
+                "estimated_time": 30, 
+                "index": 3, 
+                "name": "Steps to Import your own component from codepen / .tpl file", 
+                "priority": 5, 
+                "ref": "admin-tools-3", 
+                "substates": [], 
+                "time_created": "04/04", 
+                "type": "Lesson"
+            }, 
+            {
+                "assigned": [
+                    "gabrielle"
+                ], 
+                "description": "For remainder of monday. Main states, all internal components transitions in. See polymer elements as great example. Focus on cards & smaller components. <br><br><b> IMPORTANT </b>Do not worry about how", 
+                "description_2": "these components come into the scene (that's the containers job!)", 
+                "difficulty": 3, 
+                "estimated_time": 30, 
+                "index": 5, 
+                "name": "Animating all component-specific like you did for dropdown", 
+                "priority": null, 
+                "ref": "admin-tools-3", 
+                "substates": [], 
+                "time_created": "04/04", 
+                "type": "Upcoming"
             }, 
             {
                 "assigned": [
                     "gabrielle"
                 ], 
                 "description": "", 
-                "difficulty": 2, 
-                "estimated_time": 10, 
-                "index": 14, 
-                "name": "Make action items + states collapsible + 'check'-able", 
-                "priority": 5, 
-                "ref": "mad-lib-state-2", 
+                "difficulty": 3, 
+                "estimated_time": 30, 
+                "index": 3, 
+                "name": "Tuesday: Revisit become Guru", 
+                "priority": null, 
+                "ref": "admin-tools-3", 
                 "substates": [], 
-                "time_created": "3/23", 
-                "type": "Admin Tools"
+                "time_created": "04/04", 
+                "type": "Upcoming"
             }, 
             {
                 "assigned": [
                     "gabrielle"
                 ], 
-                "description": "we need something that staggers it in", 
+                "description": "", 
                 "difficulty": 3, 
-                "estimated_time": 15, 
+                "estimated_time": 30, 
                 "index": 3, 
-                "name": "Spec states/substates for MadLib Splash Layout (+ mobile)", 
+                "name": "Tuesday Morning Skills: Style Guide w/ 2 example code snippets, directive & .tpl + open in codepen", 
                 "priority": null, 
                 "ref": "admin-tools-3", 
                 "substates": [], 
-                "time_created": "3/23", 
-                "type": "Dynamic Scene"
+                "time_created": "04/04", 
+                "type": "Morning Skills"
             }
         ], 
-        "jason": [], 
+        "jason": [
+            {
+                "assigned": [
+                    "jason"
+                ], 
+                "complete": false, 
+                "description": "1. Go to admin side bar > and click 'components'. Only 'prepared' components (i have already made sure they should work) + states are here. Let's test all the states.<br><br> 2. Go to #/build/ & select component from dropdown & start testing each one indi", 
+                "difficulty": 5, 
+                "estimated_time": "1/2 day", 
+                "index": 1, 
+                "name": "[Click to see description] Component Based Testing", 
+                "priority": 10, 
+                "ref": "create-edit-resource-1", 
+                "time_created": "3/28", 
+                "type": "Hifi Container"
+            }, 
+            {
+                "assigned": [
+                    "jason"
+                ], 
+                "description": "", 
+                "difficulty": 3, 
+                "estimated_time": 30, 
+                "index": 3, 
+                "name": "When I get in - we'll go over how to remove files efficiently", 
+                "priority": 8, 
+                "ref": "admin-tools-3", 
+                "substates": [], 
+                "time_created": "04/04", 
+                "type": "Lesson"
+            }
+        ], 
         "jeselle": [
             {
                 "assigned": [
@@ -69,12 +147,12 @@
                 "desc_dropdown": false, 
                 "description": "If a category-specific Guru creates multiple cardlets, how will these impact the public view of their category profile? <br><br>There will be two parts (this one part 1), the initial glance (2-3 mini cards, and a view all state)", 
                 "difficulty": 3, 
-                "estimated_time": 60, 
+                "estimated_time": "b4 11am", 
                 "index": 1, 
-                "name": "[Guru Public Profile] Mini Cardlet View", 
+                "name": "Catch Gabrielle up with dashboard upfrom Saturday + Magic.css issues.", 
                 "priority": 10, 
                 "ref": "create-edit-resource-1", 
-                "time_created": "3/28", 
+                "time_created": "04/04", 
                 "type": "Hifi Container"
             }, 
             {
@@ -83,14 +161,14 @@
                 ], 
                 "complete": false, 
                 "desc_dropdown": false, 
-                "description": "This is the second state, assume that container will take over the entire right section & is one of the tab options", 
+                "description": "Will be uploading updates as you guys request more. You will primarily be focusing on the layouts & entrance of components while Gabrielel will focus on animations within components.", 
                 "difficulty": 3, 
                 "estimated_time": 20, 
                 "index": 1, 
-                "name": "[Guru Public Profile] Cardlet LIST View", 
+                "name": "Continue Layout Based Become-Guru Scenes", 
                 "priority": 10, 
                 "ref": "user-content-state-2", 
-                "time_created": "3/28", 
+                "time_created": "04/04", 
                 "type": "Hifi Container"
             }, 
             {
@@ -99,12 +177,28 @@
                 ], 
                 "complete": false, 
                 "desc_dropdown": false, 
-                "description": "Within the guru promote CTA, one of the options will be 'Distribute Great Content' or something like that. <br><br> When that is clicked, it will take over the entire page (just like the projector), and there will be a step by step graphic/animation centr", 
+                "description": "See /#/ timer on staging to see a bare bones working prototype", 
                 "difficulty": 3, 
                 "estimated_time": 20, 
                 "index": 1, 
-                "name": "[Guru Promote] Distribute Awesome Content: How it works", 
-                "priority": 10, 
+                "name": "[W/Gabrielle] Resolve become a Guru user action workflow", 
+                "priority": null, 
+                "ref": "create-edit-resource-3", 
+                "time_created": "04/04", 
+                "type": "Hifi Container"
+            }, 
+            {
+                "assigned": [
+                    "Jeselle"
+                ], 
+                "complete": false, 
+                "desc_dropdown": false, 
+                "description": "See /#/ timer on staging to see a bare bones working prototype", 
+                "difficulty": 3, 
+                "estimated_time": 20, 
+                "index": 1, 
+                "name": "[Upcoming] Focus Guru Hifi (Straight from Build tool ;) )", 
+                "priority": null, 
                 "ref": "create-edit-resource-3", 
                 "time_created": "3/28", 
                 "type": "Hifi Container"
@@ -115,10 +209,340 @@
     "assets": [], 
     "components": [
         {
+            "id": 1, 
+            "ref": "buttons-button", 
+            "tags": [
+                "buttons", 
+                "button"
+            ], 
+            "template_url": "templates/buttons/button.tpl"
+        }, 
+        {
+            "id": 2, 
+            "ref": "cards-cardlet", 
+            "tags": [
+                "cards", 
+                "cardlet"
+            ], 
+            "template_url": "templates/cards/cardlet.tpl"
+        }, 
+        {
+            "id": 3, 
+            "ref": "cards-course", 
+            "tags": [
+                "cards", 
+                "course"
+            ], 
+            "template_url": "templates/cards/course.tpl"
+        }, 
+        {
+            "id": 4, 
+            "name": "PaymentCard", 
+            "ref": "cards-payment", 
+            "sample": {
+                "scope": {
+                    "card": {
+                        "is_debit": true, 
+                        "is_default": true, 
+                        "last_4": "1232", 
+                        "name": "Samir Makhani", 
+                        "type": "Visa"
+                    }, 
+                    "size": "medium"
+                }, 
+                "template": "<pennant animation=\"component.sample.scope.animation\" text=\"component.sample.scope.text\" text-color=\"component.sample.scope.textColor\" main-fill=\"component.sample.scope.fill\"> </pennant>", 
+                "variations": {
+                    "modes": [
+                        "view", 
+                        "edit"
+                    ], 
+                    "size": [
+                        "default", 
+                        "mini", 
+                        "micro", 
+                        "nano"
+                    ]
+                }
+            }, 
+            "tags": [
+                "cards", 
+                "payment"
+            ], 
+            "template_url": "templates/cards/payment.tpl"
+        }, 
+        {
+            "id": 5, 
+            "ref": "cards-profile-mini", 
+            "tags": [
+                "cards", 
+                "profile.mini"
+            ], 
+            "template_url": "templates/cards/profile.mini.tpl"
+        }, 
+        {
+            "bugs": [
+                {
+                    "girls": "Discuss names convenient for everyone. I.e. PF -Card."
+                }
+            ], 
+            "id": 6, 
+            "name": "Profile Card", 
+            "ref": "cards-profile", 
+            "tags": [
+                "cards", 
+                "profile"
+            ], 
+            "template_url": "templates/cards/profile.tpl"
+        }, 
+        {
+            "id": 7, 
+            "ref": "cards-profile-widget", 
+            "tags": [
+                "cards", 
+                "profile.widget"
+            ], 
+            "template_url": "templates/cards/profile.widget.tpl"
+        }, 
+        {
+            "bugs": [
+                {
+                    "description": "On hover state", 
+                    "member": "Gabrielle", 
+                    "tags": [
+                        "quick", 
+                        "easy", 
+                        "enhance"
+                    ]
+                }
+            ], 
+            "id": 8, 
+            "name": "University Card", 
+            "ref": "cards-university", 
+            "sample": {
+                "scope": {
+                    "university": {
+                        "city": "Berkeley", 
+                        "dark_color": "#003262", 
+                        "light_color": "#FBB431", 
+                        "short_name": "UC Berkeley", 
+                        "state": "Fl", 
+                        "svg_url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg')"
+                    }
+                }, 
+                "template": "<university-card ng-model=\"university\"> </university-card>", 
+                "variations": {
+                    "modes": [], 
+                    "size": []
+                }
+            }, 
+            "tags": [
+                "cards", 
+                "university"
+            ], 
+            "template_url": "templates/cards/university.tpl"
+        }, 
+        {
+            "id": 9, 
+            "name": "User ID Card", 
+            "ref": "cards-user-id", 
+            "sample": {
+                "scope": {
+                    "guru": {
+                        "light_color": "#FBB431", 
+                        "name": "Gabrielle W", 
+                        "short_name": "UC Berkeley", 
+                        "state": "Fl", 
+                        "svg_url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg')", 
+                        "university": {}, 
+                        "year": "sophomore"
+                    }
+                }, 
+                "template": "<university-card ng-model=\"university\"> </university-card>", 
+                "variations": {
+                    "modes": [], 
+                    "size": []
+                }
+            }, 
+            "tags": [
+                "cards", 
+                "user.id"
+            ], 
+            "template_url": "templates/cards/user.id.tpl"
+        }, 
+        {
+            "id": 10, 
+            "ref": "info-attachment", 
+            "tags": [
+                "info", 
+                "attachment"
+            ], 
+            "template_url": "templates/info/attachment.tpl"
+        }, 
+        {
+            "id": 11, 
+            "ref": "info-badge", 
+            "tags": [
+                "info", 
+                "badge"
+            ], 
+            "template_url": "templates/info/badge.tpl"
+        }, 
+        {
+            "id": 12, 
+            "name": "University Pennant", 
+            "ref": "info-pennant", 
+            "sample": {
+                "scope": {
+                    "animation": "bounceInDown", 
+                    "fill": "#69B3A5", 
+                    "text": "Cal", 
+                    "textColor": "#FFFFFF"
+                }, 
+                "template": "<pennant animation=\"component.sample.scope.animation\" text=\"component.sample.scope.text\" text-color=\"component.sample.scope.textColor\" main-fill=\"component.sample.scope.fill\"> </pennant>"
+            }, 
+            "tags": [
+                "info", 
+                "pennant"
+            ], 
+            "template_url": "templates/info/pennant.tpl"
+        }, 
+        {
+            "id": 13, 
+            "ref": "info-profile-section", 
+            "tags": [
+                "info", 
+                "profile.section"
+            ], 
+            "template_url": "templates/info/profile.section.tpl"
+        }, 
+        {
+            "id": 14, 
+            "name": "Rating Stars", 
+            "notes": "doesnt show 0.5", 
+            "ref": "info-rating", 
+            "sample": {
+                "scope": {
+                    "avg": 4.5
+                }, 
+                "template": "<rating style=\"width:100px;\" avg=\"component.sample.scope.avg\"/>"
+            }, 
+            "tags": [
+                "info", 
+                "rating"
+            ], 
+            "template_url": "templates/info/rating.tpl"
+        }, 
+        {
+            "id": 15, 
+            "ref": "info-ribbon", 
+            "tags": [
+                "info", 
+                "ribbon"
+            ], 
+            "template_url": "templates/info/ribbon.tpl"
+        }, 
+        {
+            "id": 16, 
+            "ref": "info-toast", 
+            "tags": [
+                "info", 
+                "toast"
+            ], 
+            "template_url": "templates/info/toast.tpl"
+        }, 
+        {
+            "id": 17, 
+            "name": "Tool Tip", 
+            "notes": "CSS issues", 
+            "ref": "info-tooltip", 
+            "sample": {
+                "scope": {
+                    "button_text": "Okay", 
+                    "direction": "bottom", 
+                    "title": "This is a tool-tip"
+                }, 
+                "template": "<tooltip direction=\"component.sample.scope.direction\" title=\"component.sample.scope.title\" button-text=\"component.sample.scope.button_text\"/>"
+            }, 
+            "tags": [
+                "info", 
+                "tooltip"
+            ], 
+            "template_url": "templates/info/tooltip.tpl"
+        }, 
+        {
+            "bugs": [
+                {
+                    "assigned": "samir", 
+                    "reason": "doesn't work"
+                }
+            ], 
+            "id": 18, 
+            "name": "User Icon", 
+            "notes": "Add pre-loader states while the image is loading", 
+            "ref": "info-user-icon", 
+            "sample": {
+                "scope": {
+                    "profile_url": "http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200", 
+                    "size": "medium"
+                }, 
+                "template": "<user-icon size=\"component.sample.scope.size\" url=\"component.sample.scope.profile_url\"> </user-icon>"
+            }, 
+            "tags": [
+                "info", 
+                "user.icon"
+            ], 
+            "template_url": "templates/info/user.icon.tpl"
+        }, 
+        {
+            "id": 19, 
+            "ref": "inputs-attach-box", 
+            "tags": [
+                "inputs", 
+                "attach.box"
+            ], 
+            "template_url": "templates/inputs/attach.box.tpl"
+        }, 
+        {
+            "id": 20, 
+            "ref": "inputs-checkbox", 
+            "tags": [
+                "inputs", 
+                "checkbox"
+            ], 
+            "template_url": "templates/inputs/checkbox.tpl"
+        }, 
+        {
+            "action_items": [
+                {
+                    "Gabrielle": "Place in guru profile under the third tab \"which we can call miscellaneous\""
+                }
+            ], 
+            "bugs": [
+                {
+                    "girls": "resolve inputs and save buttons vs blurs"
+                }
+            ], 
+            "id": 21, 
+            "name": "Color Picker", 
+            "ref": "inputs-color-picker", 
+            "sample": {
+                "scope": {
+                    "selectedColor": "auburn"
+                }, 
+                "template": "<color-picker class=\"bg-smoke\" selected-color=\"component.sample.scope.selectedColor\"> </color-picker>"
+            }, 
+            "tags": [
+                "inputs", 
+                "color.picker"
+            ], 
+            "template_url": "templates/inputs/color.picker.tpl"
+        }, 
+        {
             "cp_link": "", 
+            "id": 22, 
             "name": "Dropdowns", 
             "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
-            "ref": "dropdown", 
+            "ref": "inputs-dropdown", 
             "sample": {
                 "scope": {
                     "options": [
@@ -130,13 +554,83 @@
                 }, 
                 "template": "<dropdown ng-model=\"component.sample.scope\"></dropdown>"
             }, 
-            "stage": 1
+            "stage": 1, 
+            "tags": [
+                "inputs", 
+                "dropdown"
+            ], 
+            "template_url": "templates/inputs/dropdown.tpl"
+        }, 
+        {
+            "id": 23, 
+            "ref": "inputs-radio", 
+            "tags": [
+                "inputs", 
+                "radio"
+            ], 
+            "template_url": "templates/inputs/radio.tpl"
+        }, 
+        {
+            "id": 24, 
+            "ref": "inputs-slider", 
+            "tags": [
+                "inputs", 
+                "slider"
+            ], 
+            "template_url": "templates/inputs/slider.tpl"
+        }, 
+        {
+            "id": 25, 
+            "ref": "inputs-tab-arrow", 
+            "tags": [
+                "inputs", 
+                "tab.arrow"
+            ], 
+            "template_url": "templates/inputs/tab.arrow.tpl"
+        }, 
+        {
+            "id": 26, 
+            "ref": "inputs-text-copy", 
+            "tags": [
+                "inputs", 
+                "text.copy"
+            ], 
+            "template_url": "templates/inputs/text.copy.tpl"
+        }, 
+        {
+            "id": 27, 
+            "ref": "inputs-text", 
+            "tags": [
+                "inputs", 
+                "text"
+            ], 
+            "template_url": "templates/inputs/text.tpl"
+        }, 
+        {
+            "id": 28, 
+            "ref": "inputs-toggle", 
+            "tags": [
+                "inputs", 
+                "toggle"
+            ], 
+            "template_url": "templates/inputs/toggle.tpl"
+        }, 
+        {
+            "id": 29, 
+            "ref": "inputs-dropdowns-color", 
+            "tags": [
+                "inputs", 
+                "dropdowns", 
+                "color"
+            ], 
+            "template_url": "templates/inputs/dropdowns/color.tpl"
         }, 
         {
             "cp_link": "", 
+            "id": 30, 
             "name": "Dropdowns", 
             "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
-            "ref": "splash.dropdown", 
+            "ref": "inputs-dropdowns-splash", 
             "sample": {
                 "scope": {
                     "key": "name", 
@@ -157,115 +651,23 @@
                 }, 
                 "template": "<dropdown type=\"splash\" ng-model=\"component.sample.scope\"></dropdown>"
             }, 
-            "stage": 1
-        }, 
-        {
-            "bugs": [
-                {
-                    "assigned": "samir", 
-                    "reason": "doesn't work"
-                }
+            "stage": 1, 
+            "tags": [
+                "inputs", 
+                "dropdowns", 
+                "splash"
             ], 
-            "id": 2, 
-            "name": "User Icon", 
-            "notes": "Add pre-loader states while the image is loading", 
-            "ref": "user-icon", 
-            "sample": {
-                "scope": {
-                    "profile_url": "http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200", 
-                    "size": "medium"
-                }, 
-                "template": "<user-icon size=\"component.sample.scope.size\" url=\"component.sample.scope.profile_url\"> </user-icon>"
-            }
+            "template_url": "templates/inputs/dropdowns/splash.tpl"
         }, 
         {
-            "id": 3, 
-            "name": "Tool Tip", 
-            "notes": "CSS issues", 
-            "ref": "tooltip", 
-            "sample": {
-                "scope": {
-                    "button_text": "Okay", 
-                    "direction": "bottom", 
-                    "title": "This is a tool-tip"
-                }, 
-                "template": "<tooltip direction=\"component.sample.scope.direction\" title=\"component.sample.scope.title\" button-text=\"component.sample.scope.button_text\"/>"
-            }
-        }, 
-        {
-            "id": 4, 
-            "name": "Rating Stars", 
-            "notes": "doesnt show 0.5", 
-            "ref": "rating-stars", 
-            "sample": {
-                "scope": {
-                    "avg": 4.5
-                }, 
-                "template": "<rating style=\"width:100px;\" avg=\"component.sample.scope.avg\"/>"
-            }
-        }, 
-        {
-            "id": 5, 
-            "name": "Tabs", 
-            "ref": "tabs", 
-            "sample": {
-                "scope": {
-                    "index": 1, 
-                    "tabs": [
-                        {
-                            "title": "Apples"
-                        }, 
-                        {
-                            "title": "Oranges"
-                        }, 
-                        {
-                            "title": "Bananas"
-                        }
-                    ]
-                }, 
-                "template": "<tabs key=\"title\" index=\"component.sample.scope.index\" options=\"component.sample.scope.tabs\" />"
-            }
-        }, 
-        {
-            "action_items": [
-                {
-                    "Gabrielle": "Place in guru profile under the third tab \"which we can call miscellaneous\""
-                }
+            "id": 31, 
+            "ref": "inputs-pickers-color", 
+            "tags": [
+                "inputs", 
+                "pickers", 
+                "color"
             ], 
-            "bugs": [
-                {
-                    "girls": "resolve inputs and save buttons vs blurs"
-                }
-            ], 
-            "id": 6, 
-            "name": "Color Picker", 
-            "ref": "color-picker", 
-            "sample": {
-                "scope": {
-                    "selectedColor": "auburn"
-                }, 
-                "template": "<color-picker class=\"bg-smoke\" selected-color=\"component.sample.scope.selectedColor\"> </color-picker>"
-            }
-        }, 
-        {
-            "bugs": [
-                {
-                    "girls": "classes are off, it doesn't make sense that my mini profile card has a large option."
-                }
-            ], 
-            "id": 7, 
-            "name": "Mini Profile Card", 
-            "ref": "mini-profile-card"
-        }, 
-        {
-            "bugs": [
-                {
-                    "girls": "Discuss names convenient for everyone. I.e. PF -Card."
-                }
-            ], 
-            "id": 8, 
-            "name": "Profile Card", 
-            "ref": "profile-card"
+            "template_url": "templates/inputs/pickers/color.tpl"
         }, 
         {
             "bugs": [
@@ -273,9 +675,37 @@
                     "girls": "Whats the different conceptually between a tag and a chip?"
                 }
             ], 
-            "id": 9, 
+            "id": 32, 
+            "name": "Base Tag", 
+            "ref": "inputs-tags-base", 
+            "sample": {
+                "scope": {
+                    "category": {
+                        "hex_class": "cerise", 
+                        "hex_color": "academic", 
+                        "id": 5, 
+                        "name": "Academic"
+                    }, 
+                    "innerText": "Request Tab"
+                }, 
+                "template": "<tag desktop=\"desktopMode\" category=\"component.sample.scope.category\" inner-text=\"component.sample.scope.innerText\" type=\"base\"> </tag>"
+            }, 
+            "tags": [
+                "inputs", 
+                "tags", 
+                "base"
+            ], 
+            "template_url": "templates/inputs/tags/base.tpl"
+        }, 
+        {
+            "bugs": [
+                {
+                    "girls": "Whats the different conceptually between a tag and a chip?"
+                }
+            ], 
+            "id": 33, 
             "name": "Tag", 
-            "ref": "tag", 
+            "ref": "inputs-tags-splash", 
             "sample": {
                 "scope": {
                     "animArgs": {
@@ -297,6 +727,12 @@
                 }, 
                 "template": "<tag desktop=\"desktopMode\" type=\"splash\" blank-num=\"component.sample.scope.blankNum\" inner-text=\"component.sample.scope.innerText\" category=\"component.sample.scope.category\"> </tag>"
             }, 
+            "tags": [
+                "inputs", 
+                "tags", 
+                "splash"
+            ], 
+            "template_url": "templates/inputs/tags/splash.tpl", 
             "types": [
                 "mad-lib", 
                 "mad-lib-dash", 
@@ -304,31 +740,19 @@
             ]
         }, 
         {
-            "bugs": [
-                {
-                    "girls": "Whats the different conceptually between a tag and a chip?"
-                }
+            "id": 34, 
+            "ref": "inputs-text-all_inputs", 
+            "tags": [
+                "inputs", 
+                "text", 
+                "all_inputs"
             ], 
-            "id": 10, 
-            "name": "Base Tag", 
-            "ref": "request-tag-base", 
-            "sample": {
-                "scope": {
-                    "category": {
-                        "hex_class": "cerise", 
-                        "hex_color": "academic", 
-                        "id": 5, 
-                        "name": "Academic"
-                    }, 
-                    "innerText": "Request Tab"
-                }, 
-                "template": "<tag desktop=\"desktopMode\" category=\"component.sample.scope.category\" inner-text=\"component.sample.scope.innerText\" type=\"base\"> </tag>"
-            }
+            "template_url": "templates/inputs/text/all_inputs.tpl"
         }, 
         {
-            "id": 11, 
+            "id": 35, 
             "name": "Base Tag Input", 
-            "ref": "request-tag-base", 
+            "ref": "inputs-text-tag", 
             "sample": {
                 "bugs": [
                     {
@@ -346,41 +770,530 @@
                     "innerText": "Tag Input Try Me"
                 }, 
                 "template": "<tag desktop=\"desktopMode\" category=\"component.sample.scope.category\" inner-text=\"component.sample.scope.innerText\" type=\"input\"> </tag>"
-            }
+            }, 
+            "tags": [
+                "inputs", 
+                "text", 
+                "tag"
+            ], 
+            "template_url": "templates/inputs/text/tag.tpl"
+        }, 
+        {
+            "id": 36, 
+            "name": "Map Marker", 
+            "ref": "links-map-marker", 
+            "sample": {
+                "scope": {
+                    "categoryColor": "categoryColor", 
+                    "guru": {
+                        "greeting": "Hey there", 
+                        "guru_introduction": "I can tutor you in any bio class. We\u0102\u02d8\u00c2\u0080\u00c2\u0099ll get you to an A in no time!", 
+                        "last_active_min": "24m", 
+                        "name": "Gabrielle", 
+                        "profile_url": "http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256", 
+                        "skill_name": "CS10"
+                    }, 
+                    "place": {
+                        "distance": 2.4, 
+                        "icon": "place.coffee", 
+                        "name": "Philz Coffee"
+                    }, 
+                    "size": "medium"
+                }, 
+                "template": "<pennant animation=\"component.sample.scope.animation\" text=\"component.sample.scope.text\" text-color=\"component.sample.scope.textColor\" main-fill=\"component.sample.scope.fill\"> </pennant>", 
+                "variations": {
+                    "modes": [
+                        "view", 
+                        "edit"
+                    ], 
+                    "size": [
+                        "default", 
+                        "mini", 
+                        "micro", 
+                        "nano"
+                    ]
+                }
+            }, 
+            "tags": [
+                "links", 
+                "map.marker"
+            ], 
+            "template_url": "templates/links/map.marker.tpl"
+        }, 
+        {
+            "id": 37, 
+            "ref": "progress-arrow", 
+            "tags": [
+                "progress", 
+                "arrow"
+            ], 
+            "template_url": "templates/progress/arrow.tpl"
+        }, 
+        {
+            "id": 38, 
+            "ref": "progress-bar", 
+            "tags": [
+                "progress", 
+                "bar"
+            ], 
+            "template_url": "templates/progress/bar.tpl"
+        }, 
+        {
+            "id": 39, 
+            "ref": "progress-circlular", 
+            "tags": [
+                "progress", 
+                "circlular"
+            ], 
+            "template_url": "templates/progress/circlular.tpl"
+        }, 
+        {
+            "id": 40, 
+            "ref": "progress-countdown", 
+            "tags": [
+                "progress", 
+                "countdown"
+            ], 
+            "template_url": "templates/progress/countdown.tpl"
+        }, 
+        {
+            "id": 41, 
+            "ref": "progress-ranking", 
+            "tags": [
+                "progress", 
+                "ranking"
+            ], 
+            "template_url": "templates/progress/ranking.tpl"
+        }, 
+        {
+            "id": 42, 
+            "ref": "tiles-calendar", 
+            "tags": [
+                "tiles", 
+                "calendar"
+            ], 
+            "template_url": "templates/tiles/calendar.tpl"
+        }, 
+        {
+            "id": 43, 
+            "ref": "tiles-category", 
+            "tags": [
+                "tiles", 
+                "category"
+            ], 
+            "template_url": "templates/tiles/category.tpl"
+        }, 
+        {
+            "id": 44, 
+            "ref": "tiles-credit-student", 
+            "tags": [
+                "tiles", 
+                "credit.student"
+            ], 
+            "template_url": "templates/tiles/credit.student.tpl"
+        }, 
+        {
+            "id": 45, 
+            "ref": "tiles-pricing", 
+            "tags": [
+                "tiles", 
+                "pricing"
+            ], 
+            "template_url": "templates/tiles/pricing.tpl"
+        }, 
+        {
+            "id": 46, 
+            "ref": "tiles-profile", 
+            "tags": [
+                "tiles", 
+                "profile"
+            ], 
+            "template_url": "templates/tiles/profile.tpl"
+        }, 
+        {
+            "id": 47, 
+            "ref": "tiles-request", 
+            "tags": [
+                "tiles", 
+                "request"
+            ], 
+            "template_url": "templates/tiles/request.tpl"
         }
     ], 
     "containers": [
         {
-            "components": [
-                "Background photo", 
-                "Cardlet Title", 
-                "Last Updated Reference", 
-                "SVG Star"
+            "id": 1, 
+            "ref": "calendar", 
+            "tags": [
+                "calendar"
             ], 
-            "name": "Cardlet Mini Card", 
-            "notes": "Ideally the shape of these should fit the category profile. What appearance should the cardlet set come off as", 
-            "ref": "cardlet-mini-card"
+            "template_url": "templates/calendar.tpl"
         }, 
         {
-            "components": [
-                "Several mini cardlets"
+            "id": 2, 
+            "ref": "dashboard-banner", 
+            "tags": [
+                "dashboard.banner"
             ], 
-            "description": "", 
-            "name": "Cardlet Mini Card List", 
-            "notes": "Ideally these would look nice if the collection reflects the theme of the category use-case. I.e. Photography has a stack of poloriod photos", 
-            "ref": "cardlet-mini-card-list"
+            "template_url": "templates/dashboard.banner.tpl"
         }, 
         {
-            "components": [
-                "Getting Started Item"
+            "id": 3, 
+            "ref": "collections-base", 
+            "tags": [
+                "collections", 
+                "base"
             ], 
-            "description": "", 
-            "name": "Cardlet Getting Started", 
-            "notes": "", 
-            "ref": "cardlet-getting-started"
+            "template_url": "templates/collections/base.tpl"
+        }, 
+        {
+            "id": 4, 
+            "ref": "collections-card-list", 
+            "tags": [
+                "collections", 
+                "card.list"
+            ], 
+            "template_url": "templates/collections/card.list.tpl"
+        }, 
+        {
+            "id": 5, 
+            "ref": "collections-cardlet-list", 
+            "tags": [
+                "collections", 
+                "cardlet.list"
+            ], 
+            "template_url": "templates/collections/cardlet.list.tpl"
+        }, 
+        {
+            "id": 6, 
+            "ref": "collections-categories", 
+            "tags": [
+                "collections", 
+                "categories"
+            ], 
+            "template_url": "templates/collections/categories.tpl"
+        }, 
+        {
+            "id": 7, 
+            "ref": "collections-chips", 
+            "tags": [
+                "collections", 
+                "chips"
+            ], 
+            "template_url": "templates/collections/chips.tpl"
+        }, 
+        {
+            "id": 8, 
+            "ref": "collections-list", 
+            "tags": [
+                "collections", 
+                "list"
+            ], 
+            "template_url": "templates/collections/list.tpl"
+        }, 
+        {
+            "id": 9, 
+            "ref": "collections-ordered-list", 
+            "tags": [
+                "collections", 
+                "ordered.list"
+            ], 
+            "template_url": "templates/collections/ordered.list.tpl"
+        }, 
+        {
+            "id": 10, 
+            "ref": "collections-search", 
+            "tags": [
+                "collections", 
+                "search"
+            ], 
+            "template_url": "templates/collections/search.tpl"
+        }, 
+        {
+            "id": 11, 
+            "ref": "collections-tabs", 
+            "tags": [
+                "collections", 
+                "tabs"
+            ], 
+            "template_url": "templates/collections/tabs.tpl"
+        }, 
+        {
+            "id": 12, 
+            "ref": "collections-tags", 
+            "tags": [
+                "collections", 
+                "tags"
+            ], 
+            "template_url": "templates/collections/tags.tpl"
+        }, 
+        {
+            "id": 13, 
+            "ref": "collections-tiles", 
+            "tags": [
+                "collections", 
+                "tiles"
+            ], 
+            "template_url": "templates/collections/tiles.tpl"
+        }, 
+        {
+            "id": 14, 
+            "ref": "collections-custom-sidebar-items", 
+            "tags": [
+                "collections", 
+                "custom", 
+                "sidebar.items"
+            ], 
+            "template_url": "templates/collections/custom/sidebar.items.tpl"
+        }, 
+        {
+            "id": 15, 
+            "ref": "info-docs", 
+            "tags": [
+                "info", 
+                "docs"
+            ], 
+            "template_url": "templates/info/docs.tpl"
+        }, 
+        {
+            "id": 16, 
+            "ref": "info-steps", 
+            "tags": [
+                "info", 
+                "steps"
+            ], 
+            "template_url": "templates/info/steps.tpl"
+        }, 
+        {
+            "id": 17, 
+            "ref": "popup-form", 
+            "tags": [
+                "popup", 
+                "form"
+            ], 
+            "template_url": "templates/popup/form.tpl"
+        }, 
+        {
+            "id": 18, 
+            "ref": "profile-profile-section", 
+            "tags": [
+                "profile", 
+                "profile.section"
+            ], 
+            "template_url": "templates/profile/profile.section.tpl"
+        }, 
+        {
+            "id": 19, 
+            "ref": "swiper-nav", 
+            "tags": [
+                "swiper", 
+                "nav"
+            ], 
+            "template_url": "templates/swiper/nav.tpl"
+        }, 
+        {
+            "id": 20, 
+            "ref": "swiper-projector-slide", 
+            "tags": [
+                "swiper", 
+                "projector.slide"
+            ], 
+            "template_url": "templates/swiper/projector.slide.tpl"
         }
     ], 
     "layouts": [
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "controller": "SplashController", 
+            "cp_link": "", 
+            "description": "", 
+            "id": 2, 
+            "name": "Splash Mad Lib", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "projector-screen-1", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": "projector-screen.html"
+        }, 
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "controller": "SplashController", 
+            "cp_link": "", 
+            "description": "", 
+            "id": 3, 
+            "name": "Splash Mad Lib", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "projector-screen-2", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": "projector-screen-2.html"
+        }, 
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "controller": "SplashController", 
+            "cp_link": "", 
+            "description": "", 
+            "id": 4, 
+            "name": "Splash Mad Lib", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "projector-screen-3", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": "projector-screen-3.html"
+        }, 
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "controller": "SplashController", 
+            "cp_link": "", 
+            "description": "", 
+            "id": 5, 
+            "name": "Splash Mad Lib", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "projector-screen-4", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": "projector-screen-4.html"
+        }, 
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "controller": "SplashController", 
+            "cp_link": "", 
+            "description": "", 
+            "id": 6, 
+            "name": "Splash Mad Lib", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "projector-screen-5", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": "projector-screen-5.html"
+        }, 
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "controller": "SplashController", 
+            "cp_link": "", 
+            "description": "", 
+            "id": 7, 
+            "name": "Splash Mad Lib", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "projector-screen-6", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": "projector-screen-6.html"
+        }, 
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "controller": "SplashController", 
+            "cp_link": "", 
+            "description": "", 
+            "id": 8, 
+            "name": "Splash Mad Lib", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "projector-screen-7", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": "projector-screen-7.html"
+        }, 
+        {
+            "bugs": [], 
+            "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "controller": "SplashController", 
+            "cp_link": "", 
+            "description": "", 
+            "id": 9, 
+            "name": "Splash Mad Lib", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "projector-screen-8", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": "projector-screen-8.html"
+        }, 
         {
             "bugs": [], 
             "children": {
@@ -484,7 +1397,7 @@
                     }
                 ]
             }, 
-            "id": 1, 
+            "id": 0, 
             "name": "Splash Mad Lib", 
             "notes": "", 
             "parents": [], 
@@ -732,6 +1645,30 @@
         {
             "bugs": [], 
             "children": {
+                "assets": [], 
+                "components": [], 
+                "container": [], 
+                "scenes": []
+            }, 
+            "controller": "SplashController", 
+            "cp_link": "", 
+            "description": "", 
+            "id": 1, 
+            "name": "Splash Mad Lib", 
+            "notes": "", 
+            "parents": [], 
+            "ref": "projector-screen", 
+            "sample": {
+                "scope": "", 
+                "template": ""
+            }, 
+            "scenes": [], 
+            "states": [], 
+            "template_url": "projector-screen.html"
+        }, 
+        {
+            "bugs": [], 
+            "children": {
                 "layouts": [
                     "splash-mad-lib", 
                     "one-page-pull-down"
@@ -784,653 +1721,6 @@
                 "name": "", 
                 "priority": 0, 
                 "testing": [
-                    {
-                        "description": "All Elements Exist", 
-                        "estimated_time": 5, 
-                        "id": 1, 
-                        "name": "All Elements Exist", 
-                        "parent_ref": "mad-lib", 
-                        "priority": 5, 
-                        "ref": "mad-lib-testing-1", 
-                        "substates": [
-                            {
-                                "difficulty": 2, 
-                                "estimated_time": 5, 
-                                "is_complete": false, 
-                                "name": "All tags (i.e. midnight) are not empty", 
-                                "parent_ref": "mad-lib-state-1", 
-                                "platforms": [
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "xl", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "xl", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "xl", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "ios", 
-                                        "screen_size": null, 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "app"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "ios", 
-                                        "screen_size": null, 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "safari"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "android", 
-                                        "screen_size": null, 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "app"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "android", 
-                                        "screen_size": null, 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "chrome"
-                                    }
-                                ], 
-                                "ref": "mad-lib-testing-1-substate-1", 
-                                "test_client": "manual", 
-                                "test_status": "unsure"
-                            }, 
-                            {
-                                "difficulty": 2, 
-                                "estimated_time": 5, 
-                                "is_complete": false, 
-                                "name": "SVG Icons: Phone, Logo, Sidebar", 
-                                "parent_ref": "mad-lib-state-1", 
-                                "platforms": [
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "xl", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "xl", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "xl", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "ios", 
-                                        "screen_size": null, 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "app"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "ios", 
-                                        "screen_size": null, 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "safari"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "android", 
-                                        "screen_size": null, 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "app"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "android", 
-                                        "screen_size": null, 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "chrome"
-                                    }
-                                ], 
-                                "ref": "mad-lib-testing-1-substate-2", 
-                                "test_client": "manual", 
-                                "test_status": "unsure"
-                            }, 
-                            {
-                                "difficulty": 2, 
-                                "estimated_time": 5, 
-                                "is_complete": false, 
-                                "name": "University, Category Dropdowns work 100%", 
-                                "parent_ref": "mad-lib-state-1", 
-                                "platforms": [
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "xl", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "chrome", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "xl", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "firefox", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "xl", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "mobile"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "small", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "medium", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "safari", 
-                                        "screen_size": "large", 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "desktop"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "ios", 
-                                        "screen_size": null, 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "app"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "ios", 
-                                        "screen_size": null, 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "safari"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "android", 
-                                        "screen_size": null, 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "app"
-                                    }, 
-                                    {
-                                        "passed": false, 
-                                        "platform": "android", 
-                                        "screen_size": null, 
-                                        "test_client": "manual", 
-                                        "test_status": "unsure", 
-                                        "type": "chrome"
-                                    }
-                                ], 
-                                "ref": "mad-lib-testing-1-substate-3", 
-                                "test_client": "manual", 
-                                "test_status": "unsure"
-                            }
-                        ]
-                    }, 
                     {
                         "description": "sadasdasdas", 
                         "estimated_time": 5, 

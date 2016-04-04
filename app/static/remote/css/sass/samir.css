@@ -1847,25 +1847,89 @@ header#home-nav-header.splash-header,
         .splash-school-search .splash-map-stats > ul li {
           padding: 7.5px; } }
 
-.component-inject {
-  position: relative; }
-  .component-inject > * {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    position: absolute;
-    height: 100%;
-    width: 100%; }
-
 .height-300 {
   min-height: 300px; }
 
 .text-left {
   text-align: left; }
+
+.projector-slide {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  max-width: 900px;
+  max-height: 600px; }
+  .projector-slide .projector-top {
+    position: absolute;
+    top: .2%;
+    left: .8%;
+    width: 98.4%;
+    height: 3.3%;
+    border: 2px solid white;
+    background: rgba(64, 72, 75, 0.95); }
+    .projector-slide .projector-top:before, .projector-slide .projector-top:after {
+      content: "";
+      display: block;
+      position: absolute;
+      border: 2px solid white;
+      border-radius: 2px;
+      top: -20%;
+      width: 1%;
+      min-width: 9px;
+      height: 140%;
+      background: #40484B; }
+    .projector-slide .projector-top:before {
+      left: -1%; }
+    .projector-slide .projector-top:after {
+      right: -1%; }
+  .projector-slide .projector-line {
+    position: absolute;
+    left: 50%;
+    margin-left: -1px;
+    top: -196px; }
+  .projector-slide .projector-content {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: absolute;
+    top: 3.2%;
+    left: 2%;
+    width: 96%;
+    height: 96.2%;
+    border: 2px solid white;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background: rgba(64, 72, 75, 0.95);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2; }
+    .projector-slide .projector-content svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%; }
+  .projector-slide .projector-handle {
+    -webkit-transition: all 150ms ease-in-out;
+    -moz-transition: all 150ms ease-in-out;
+    -ms-transition: all 150ms ease-in-out;
+    -o-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    margin-left: -30.5px; }
 
 /*# sourceMappingURL=samir.css.map */

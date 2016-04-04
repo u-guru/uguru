@@ -1,6 +1,6 @@
 <ion-view ng-controller="DevToolsController as bldr">
     <div id="build">
-        <main>
+        <main ng-class="{'full-x': settings.hideUIEditor }">
             <nav class="build-main-top">
                 <div class='relative left-0 top-0 full-y' style='margin-left:15px;max-height:50px; max-width:50px;'>
                     <user-icon class='p20xy' style='height:50px; width:50px;' url="user.profile_url"> </user-icon>
@@ -23,21 +23,22 @@
 							</label>
 						</div>
 					</div>
+                    <dropdown ng-model="page.dropdowns.fileOptions"></dropdown>
                     <div>
                         <h2>Scene</h2>
                         <dropdown ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
                     </div>
                     <dropdown ng-model="page.dropdowns.screenSizeOptions"></dropdown>
-                    <a class="build-main-settings" ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
+                    <a ng-click='settings.activated = !settings.activated;' class="build-main-settings" ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
                 </div>
             </nav>
 
-            <div class="build-player">
-                <div class='build-player-container'>
+            <div class="build-player bg-charcoal">
+                <!-- <div class='build-player-container'>
                     <h1 class='uppercase weight-700 txt-charcoal'>
                         Loading ....
                     </h1>
-                </div>
+                </div> -->
             </div>
 
             <nav class="build-main-bottom" ng-if="false">
@@ -73,26 +74,26 @@
                 <input id="build-search" type="text" placeholder="Add component"/>
             </nav>
         </main>
-        <aside>
-            <nav class="build-aside-top">
-                <ul ng-if='current_states && current_states.states.length'>
-                    <li ng-click='swapInteractiveState($index)' ng-class="{'bg-shamrock': $index === current_states.selectedIndex}" ng-repeat='interactive_state in current_states.states'><a>{{$index + 1}}</a></li>
+        <aside class='settings relative' ng-if='settings.activated'>
+            <div class='absolute full-xy bg-charcoal'>
+                <ul class='bg-shamrock weight-700 txt-center flex-wrap-center'>
+                    <li class='full-x p20xy txt-7'><a ng-click="clearCache()">Settings</a></li>
                 </ul>
-                <ul ng-if='!current_states'>
-                    <li><a>0</a></li>
-                    <li><a>1</a></li>
-                    <li><a>2</a></li>
-                    <li><a>3</a></li>
-                    <li><a>4</a></li>
-                    <li><a>5</a></li>
-                    <li><a>6</a></li>
-                    <li><a>7</a></li>
-                    <li><a>8</a></li>
-                    <li><a>9</a></li>
+                <ul class='full-x flex-wrap-center ugrid'>
+
+                    <li class='full-x p20xy'><a ng-click="clearCache()">Clear Cache</a></li>
+                    <li class='full-x p20xy'><a ng-click="settings.hideUIEditor = !settings.hideUIEditor">Toggle UI Builder</a></li>
+                </ul>
+            </div>
+        </aside>
+        <aside ng-if='!settings.activated && !settings.hideUIEditor'>
+            <nav class="build-aside-top">
+                <ul ng-if='current_states && current_states.states.length && !settings.activated'>
+                    <li ng-click='swapInteractiveState($index)' ng-class="{'bg-shamrock': $index === current_states.selectedIndex}" ng-repeat='interactive_state in current_states.states'><a>{{$index + 1}}</a></li>
                 </ul>
             </nav>
 
-            <div class='build-element-list animation'>
+            <div class='build-element-list animation' ng-if='!settings.hideUIEditor'>
                 <div class='fixed bg-slate-90p top-0 right-0 expanded flex-wrap-center flex-stretch' ng-show="selectPropertyActivated">
                     <a class='absolute weight-700 high-index-z bg-charcoal txt-5 p20xy txt-white right-0 m10xy top-0' ng-click='selectPropertyActivated = false;'>Close</a>
                     <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p">
@@ -124,22 +125,22 @@
                     <li>
                         <div class='full-x txt-center uppercase bg-moxie p15x txt-white weight-600'>State #{{current_states.selectedIndex + 1}}:{{current_states.states[current_states.selectedIndex].name}}</div>
                     </li>
-                    <li ng-if='current_state.gestures'>
+                    <li ng-if='current_state.gestures && current_state.gestures.length'>
                         <div class='full-x txt-center uppercase bg-moxie-50p p15x txt-white weight-600'>State gestures: {{current_state.gestures}}</div>
                     </li>
                     <li ng-repeat='component in current_state.components'>
                         <span>{{$index + 1}}</span>
                         <div class='relative'>
-							<h1><span class="lowercase">{{component.name}}</span></h1>
+							<h1><span class="lowercase">{{ component._id || component._class || component.name}}</span></h1>
                              <!-- &rarr; <span class="opacity-50">{{component.selector}}</span> -->
+                             <!-- Activate component vars-->
+                             <a class="build-activate opacity-50" ng-click='component.active = !component.active' ng-if='!component.active'>off</a>
+                             <a class="build-activate" ng-click='component.active = !component.active' ng-if='component.active'>on</a>
                             <!-- Collapse component vars-->
                             <a ng-click='component.collapsed = !component.collapsed' ng-class="{'collapse': !component.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
-                            <!-- Activate component vars-->
-                            <a class="opacity-50" ng-click='component.active = !component.active' ng-if='!component.active'>off</a>
-                            <a ng-click='component.active = !component.active' ng-if='component.active'>on</a>
 						</div>
-                        <div class="relative" ng-show='!component.collapsed' ng-class="{'opacity-50': !component.active}" style='min-height:200px;' ng-class="{'height-300': component.expand}">
-                            <div class='absolute full-xy component-inject overflow-hidden'></div>
+                        <div ng-show='!component.collapsed' ng-class="{'opacity-50': !component.active}">
+                            <div class='component-inject overflow-hidden'></div>
                             <a ng-if='!component.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='component.expand = true;'>Expand</a>
                             <a ng-if='component.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='component.expand = false;'>Reduce</a>
                             <a ng-click='playOneComponent(component)' class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
@@ -155,7 +156,7 @@
                                     <span class="radius-2-left">@T</span><span class="radius-2-right">INIT</span>
                                 </div>
                                 <div>
-                                    <button ng-repeat='property in component.init_time_state.properties' class="bg-campus">{{property.name}}</button>
+                                    <span ng-repeat='property in component.init_time_state.properties'>{{property.name}}</span>
                                 </div>
                                 <div class='flex-wrap relative flex-start'>
                                     <input class="radius-2" ng-repeat='property in component.init_time_state.properties' placeholder="value" ng-model="property.value"/>
@@ -167,10 +168,14 @@
                             <li ng-if='component.time_states && component.time_states.length' ng-repeat='time_state in component.time_states track by $index'>
                                 <div><span class="radius-2-left">@T</span><span class="radius-2-right">{{time_state.time}}</span></div>
                                 <div>
-                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2">.{{property.name}}
+                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type != "css_text"'>
+                                        .{{property.name}}
                                         <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
                                     </span>
-                                    <!-- <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.name}}</span> -->
+                                    <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>
+                                        {{property.name}}
+                                        <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
+                                    </span>
                                 </div>
                                 <div>
                                     <span ng-repeat='property in time_state.properties' class="radius-2 opacity-50" ng-if='property.type === "css_class"'>{{property.value}}</span>
@@ -214,7 +219,7 @@
                     <li><a ng-click='playStateComponents(current_states.states[current_states.selectedIndex].components)' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a></li>
                     <li><a ng-include="img_base + BASE + 'templates/svg/main/arrow.html'"></a></li>
                     <li><a class="bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/save.html'" ng-click='saveCurrentStatesToLocalStorage()'></a></li>
-                    <li><a class="opacity-50" ng-include="img_base + BASE + 'templates/svg/main/switch.html'" disabled></a></li>
+                    <li><a ng-click='refreshAllComponents()' class="opacity-50" ng-include="img_base + BASE + 'templates/svg/main/switch.html'"></a></li>
                 </ul>
             </nav>
         </aside>

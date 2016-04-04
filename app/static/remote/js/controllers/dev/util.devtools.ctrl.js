@@ -13,20 +13,47 @@ angular.module('uguru.dev.controllers')
   '$compile',
   '$sce',
   'AnimationService',
-  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService) {
+  'KeyboardService',
+  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService, KeyboardService) {
 
+    // KeyboardService.preventDefaultCutPaste();
+    KeyboardService.initCopyPasteFunctionCallbacks();
 
-
-    $scope.states = {
-      'mad-lib': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', '']
+    $scope.selected = {
+      property: null,
+      component: null
     }
-
+    $scope.states = {
+      'mad-lib': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-1': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-2': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-3': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-4': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-5': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-6': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-7': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-8': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', '']
+    }
+    $scope.settings = {activated: false};
     $scope.gestureStates = {
       'mad-lib': {
         'on-load': [],
         'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}],
         'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}],
-      }
+      },
+      'projector-screen-1': {
+        'on-load': [],
+        'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}],
+        'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}],
+      },
+      'projector-screen-2': { 'on-load': [], 'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}], 'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}]},
+      'projector-screen-3': { 'on-load': [], 'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}], 'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}]},
+      'projector-screen-4': { 'on-load': [], 'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}], 'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}]},
+      'projector-screen-5': { 'on-load': [], 'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}], 'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}]},
+      'projector-screen-6': { 'on-load': [], 'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}], 'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}]},
+      'projector-screen-7': { 'on-load': [], 'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}], 'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}]},
+      'projector-screen-8': { 'on-load': [], 'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}], 'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}]},
+
     }
 
     var mostUsedCSSProperties = ["transform", "-webkit-transform", "opacity", "-webkit-animation-name", "animation-name", "-webkit-animation-timing-function", "animation-timing-function", "-webkit-transform-origin", "transform-origin", "backface-visibility", "-webkit-backface-visibility", "animation-duration", "-webkit-animation-duration", "-webkit-animation-fill-mode", "-webkit-animation-iteration-count", "animation-iteration-count", "animation-fill-mode", "z-index", "width", "visibility", "top", "float", "position", "margin", "left", "height", "background", "background-color", "display", "border", "color", "padding"];
@@ -65,13 +92,47 @@ angular.module('uguru.dev.controllers')
     }
 
 
+    $scope.clearCache = function() {
+      window.sessionStorage.clear();
+      window.localStorage.clear();
+      window.location.reload(true);
+    }
+
     $scope.elements = [];
     $scope.current_states =[];
     $scope.page = {dropdowns:{}, toggles:{}};
     $scope.page.toggles = {add_component: false};
     $scope.page.compiledTemplates = {};
+    $scope.page.dropdowns.fileOptions = {label:'Current Storage', onOptionClick: onFileOptionSelect, options: generateFileOptions(), size:'small', key:'name', selectedIndex: 0};
     $scope.page.dropdowns.screenSizeOptions = {label:'autoscale @ 1.5x', onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
+
+
+    function onFileOptionSelect(option, index) {
+
+    }
+
+    function generateFileOptions() {
+      var dropdownArr = [{name: 'Local storage', _class:'bg-charcoal'}, {name: 'create', _class:'bg-charcoal'}, {name: 'browse', _class:'bg-charcoal'}];
+      var files = getRecentFilesEdited();
+      for (var i = 0; i < files.length; i++) {
+        indexFile = files[i];
+        dropdownArr.push(indexFile);
+      }
+      return dropdownArr;
+    }
+
+    function getRecentFilesEdited() {
+      return [];
+    }
+
+    function saveFile() {
+
+    }
+
+    function getFiles() {
+
+    }
 
     function generateTimeStateProperty(option, index) {
       var css_class = option._class;
@@ -83,11 +144,13 @@ angular.module('uguru.dev.controllers')
 
     $scope.saveCurrentStatesToLocalStorage = function(template_ref) {
       var adminBuildToolsCacheExists = $localstorage.getObject('admin_build')
-      $localstorage.removeObject('admin_build');
-      if (!adminBuildToolsCacheExists || !adminBuildToolsCacheExists.length) {
-        adminBuildToolsCacheExists = {'admin_build': {}};
+      console.log('current local storage', adminBuildToolsCacheExists);
+      if (!adminBuildToolsCacheExists || adminBuildToolsCacheExists.constructor == Array) {
+        adminBuildToolsCacheExists = {};
       }
-      adminBuildToolsCacheExists['admin_build'][$scope.current_states.template_ref] = $scope.current_states;
+      console.log($scope.current_states.template_ref, adminBuildToolsCacheExists);
+      adminBuildToolsCacheExists[$scope.current_states.template_ref] = $scope.current_states;
+
       for (var i = 0; i < $scope.current_states.states.length; i++) {
         var indexState = $scope.current_states.states[i];
         if (indexState.components) {
@@ -101,7 +164,8 @@ angular.module('uguru.dev.controllers')
           }
         }
       }
-      $localstorage.setObject('admin_build', adminBuildToolsCacheExists['admin_build']);
+      $localstorage.setObject('admin_build', adminBuildToolsCacheExists);
+      console.log(adminBuildToolsCacheExists);
       LoadingService.showAmbig(null, 2500);
       $timeout(function() {
         LoadingService.showSuccess('Saved!', 1000);
@@ -139,6 +203,10 @@ angular.module('uguru.dev.controllers')
                 $scope.page.dropdowns.screenSizeOptions.options = getScreenOptions();
               })
             });
+
+            response.layouts.sort(function(val_a, val_b) {
+              return val_b.id - val_a.id
+            }).reverse()
             injectTemplateIntoStage(response.layouts[0].template_url, 'SplashController', response.layouts[0].ref);
             $timeout(function() {
 
@@ -185,8 +253,9 @@ angular.module('uguru.dev.controllers')
     }
 
     function injectTemplateDropdown(option, index) {
+      console.log(option, index);
       if (option.template_url) {
-        injectTemplateIntoStage(option.template_url, option.controller);
+        injectTemplateIntoStage(option.template_url, option.controller, option.ref);
 
       }
     }
@@ -316,7 +385,32 @@ angular.module('uguru.dev.controllers')
           if (indexComponentInitTimeState.properties && indexComponentInitTimeState.properties.length) {
             var elemComponent = document.querySelectorAll('[anim].' + indexComponent.selector)[0];
 
-            applyComponentPropertiesAtTime(indexComponentInitTimeState, elemComponent);
+            applyComponentPropertiesAtTime(indexComponent, indexComponentInitTimeState, elemComponent);
+          }
+        }
+      }
+    }
+
+
+
+    $scope.refreshAllComponents = function() {
+      LoadingService.showMsg('Reinitializing all components', 3000);
+      var current_state = $scope.current_states.states[$scope.current_states.selectedIndex];
+      applyInitPropertiesForState(current_state);
+      for (var i = 0; i < current_state.components.length; i++) {
+        var componentIndex = current_state.components[i];
+        var elementIndex = document.querySelector(componentIndex.selector);
+        if (!elementIndex) {
+          console.log('continuging because couldnt find index');
+          continue;
+        }
+        for (var j = 0; j < componentIndex.time_states; j++) {
+          var componentTimeStateIndex = componentIndex.time_states[j];
+          for (var k = 0; k < componentTimeStateIndex.properties; k++) {
+            var propertyIndex = componentTimeStateIndex.properties[k];
+            if (propertyIndex.type === 'css_class') {
+              elementIndex.classList.remove(propertyIndex.name);
+            }
           }
         }
       }
@@ -509,6 +603,8 @@ angular.module('uguru.dev.controllers')
       cloned_elem.removeAttribute('anim');
       return {
         name: cloned_elem.nodeName,
+        _id: cloned_elem.id,
+        _class: cloned_elem.classList["0"],
         selector: selector,
         active:false,
         collapsed: true,
@@ -570,27 +666,36 @@ angular.module('uguru.dev.controllers')
     $scope.playOneComponent = function(component) {
       var elemComponent = document.querySelectorAll('[anim].' + component.selector)[0];
       for (var j = 0; j < component.time_states.length; j++) {
-        applyComponentPropertiesAtTime(component.time_states[j], elemComponent);
+        applyComponentPropertiesAtTime(component, component.time_states[j], elemComponent);
       }
     }
 
     $scope.playStateComponents = function(state_components) {
       console.log(state_components);
+      var max_time_state = 0;
       for (var i = 0; i < state_components.length; i++) {
         var indexComponent = state_components[i];
         var elemComponent = document.querySelectorAll('[anim].' + indexComponent.selector)[0];
 
         for (var j = 0; j < indexComponent.time_states.length; j++) {
           var indexTimeState = indexComponent.time_states[j];
-          applyComponentPropertiesAtTime(indexTimeState, elemComponent);
+          if (indexTimeState.time > max_time_state) {
+            max_time_state = indexTimeState.time;
+          }
+          applyComponentPropertiesAtTime(indexComponent, indexTimeState, elemComponent);
         }
       }
+
+      $timeout(function() {
+        LoadingService.showMsg('Re-initializing components...', 3000);
+        applyInitPropertiesForState($scope.current_states.states[$scope.current_states.selectedIndex]);
+      }, (parseInt(max_time_state) + 2000));
 
     }
 
 
 
-    function applyComponentPropertiesAtTime(time_state, component) {
+    function applyComponentPropertiesAtTime(component, time_state, element) {
         var delay = 0;
         if (time_state.time === -1) {
           var delay = 0;
@@ -599,17 +704,20 @@ angular.module('uguru.dev.controllers')
         }
         $timeout(function() {
           for (var i = 0; i < time_state.properties.length; i++) {
+            if (!component.active) {
+              continue;
+            }
             if (time_state.properties[i].type === 'css_text') {
-              component.style[time_state.properties[i].name] = time_state.properties[i].value;
+              element.style[time_state.properties[i].name] = time_state.properties[i].value;
             } else if (time_state.properties[i].type === 'css_class') {
-              component.classList.add(time_state.properties[i].name);
+              element.classList.add(time_state.properties[i].name);
             } else if (time_state.properties[i].type === 'css_animation') {
               var animationPropertyDropdown = time_state.properties[i].value;
               var animationPropertyDropdownValue = animationPropertyDropdown.options[animationPropertyDropdown.selectedIndex];
               if (animationPropertyDropdownValue === "Animate Out") {
-                AnimationService.animateOut(component, time_state.properties[i].name);
+                AnimationService.animateOut(element, time_state.properties[i].name);
               } else {
-                AnimationService.animateIn(component, time_state.properties[i].name);
+                AnimationService.animateIn(element, time_state.properties[i].name);
               }
 
 

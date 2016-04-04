@@ -1,33 +1,43 @@
+<div class='bg-charcoal splash-hero-map limited-opacity full-xy flex-wrap-center opacity-50' id='map-parent-wrapper' ng-controller='GMapController'>
+    <div class='ui-gmap-wrapper full-xy relative zoom-{{map.zoom}} bg-slate ng-class:{"invisible":!mapHasRendered}'>
+        <ui-gmap-google-map  id='{{selectedUniversity.map.domId}}' class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events"  refresh='map.refresh' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
+            <ui-gmap-marker coords="selectedUniversity.map.marker.coords" idKey="selectedUniversity.map.marker.id || selectedUniversity.id" options="selectedUniversity.map.marker.options" icon="selectedUniversity.map.marker.icon">
+            </ui-gmap-marker>
+        </ui-gmap-google-map>
+    </div>
+</div>
+
 <!-- @gabrielle-note, the 3000 ms is to generate the static map URL with the right icon-->
-    <div class="splash-hero-map opacity-0 invisible limited-opacity" class-on-clear="slideOutUp:animOut" class-on-activate="active:anim, visible-impt" class-on-activate-delay="250" ng-if='selectedUniversity.map && selectedUniversity.map.coords'>
+  <!--   <div class="splash-hero-map limited-opacity" id='map-parent-wrapper' class-on-clear="slideOutUp:animOut" class-on-activate="active:anim, visible-impt" class-on-activate-delay="250">
+        <div class='ui-gmap-wrapper full-xy relative zoom-{{map.zoom}} bg-slate'>
+            <ui-gmap-google-map id='{{selectedUniversity.map.domId}}'  class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events"  refresh='map.refresh' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
+                <ui-gmap-marker coords="selectedUniversity.map.marker.coords" idKey="selectedUniversity.map.marker.id || selectedUniversity.id" options="selectedUniversity.map.marker.options" icon="selectedUniversity.map.marker.icon">
+                </ui-gmap-marker>
+            </ui-gmap-google-map>
+        </div> -->
         <!-- initial map class: init-university-map -->
-        <ui-gmap-google-map  class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events" id='splash-google-map-selected-university' refresh='map.refresh' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
+       <!--  <ui-gmap-google-map  class='scene-1 full-xy absolute top-0 left-0' center="selectedUniversity.map.coords" events="selectedUniversity.map.events" id='splash-google-map-selected-university' refresh='map.refresh' control="selectedUniversity.map.control" options="selectedUniversity.map.options" pan="selectedUniversity.map.pan" zoom="selectedUniversity.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
             <ui-gmap-marker coords="selectedUniversity.map.marker.coords" idKey="selectedUniversity.map.marker.id || selectedUniversity.id" options="selectedUniversity.map.marker.options" icon="selectedUniversity.map.marker.icon">
             </ui-gmap-marker>
             <ui-gmap-markers models="selectedUniversity.map.markers" coords="'coords'" options="'options'" icon="'options.icon'">
             </ui-gmap-markers>
-        </ui-gmap-google-map>
-        <div class="absolute top-0 left-0 full-xy bg-slate" style="opacity: .5; z-index: 10;"></div>
+        </ui-gmap-google-map> -->
+    <!--     <div class="absolute top-0 left-0 full-xy bg-slate" style="opacity: .5; z-index: 10;"></div>
         <div class="absolute top-0 left-0 full-xy" style="background: #023360; opacity: .4; z-index: 10;"></div>
-    </div>
+    </div> -->
 
-
+<!--
     <div class="splash-hero-skip opacity-0" class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a" class-on-activate="rollOut:animOut:keep">
-        <!--@gabrielle-note lol-->
         <button activate-on-class="c" class-on-activate="null:inject.splash-desktop-cta|bounceInUp, null:inject.splash-mobile-cta|bounceInUp, null:inject.coach-click|show-opacity-impt, null:inject.coach-click path|animate, null:inject.coach-click-path-2|animate, null:inject.coach-click g g|bounceIn, null:inject.coach-help-desktop|bounceIn, null:inject.coach-help-mobile|bounceIn, null:inject.coach-fill|hide, null:inject.coach-scroll|active, null:inject.coach-scroll svg|fadeIn, null:inject.splash-hero-skip|a" class-on-click="null:inject.splash-desktop-cta|bounceInUp, null:inject.splash-mobile-cta|bounceInUp, null:inject.coach-click|show-opacity-impt, null:inject.coach-click path|animate, null:inject.coach-click-path-2|animate, null:inject.coach-click g g|bounceIn, null:inject.coach-help-desktop|bounceIn, null:inject.coach-help-mobile|bounceIn, null:inject.coach-fill|hide, null:inject.coach-scroll|active, null:inject.coach-scroll svg|fadeIn, null:inject.splash-hero-skip|a, null:inject.splash-adlib ul li a|a">Skip</button>
     </div>
 
     <div class="splash-hero-markers opacity-0" class-on-clear="null:inject.splash-hero-marker|clear" activate-on-class="a" class-on-activate="fadeIn:anim:inject.splash-hero-marker|a">
-
-        <!-- splash-marker-first:unique:keep && null:inject#map-icon-2-translate|splash-marker-guru-first:unique:keep are unique to the first marker popping up and should not be used on other map markers. They should also be removed when another map marker is clicked. -->
-        <!-- SPLASH STOCK MARKER ICONS -->
         <div  class="opacity-0 splash-hero-marker-{{$index + 1}} splash-hero-marker bg-{{selectedCategory.hex_color}}" activate-on-class="a"
             class-on-clear="fadeOutRightBig:animOut"
             class-on-clear-delay="100"
             class-on-activate="fadeIn:anim, high-z-index, null:inject.splash-hero-marker-{{$index + 1}} .marker-circle|activate, null:inject.splash-hero-marker-{{$index + 1}} .marker-label|activate" tabindex="{{$index + 1}}"
             class-on-activate-delay="{{ $index * 1000 + 8000}}"
             ng-repeat='splash_marker in selectedUniversity.map.markers' translate-on-class="marker-translate" translate-to-elem="#university-place-marker-{{$index + 1}}">
-            <!-- the delay for .marker-normal should be 3000ms less than the element .marker-guru being translated to it -->
             <div class="marker-normal opacity-0" activate-on-class="a" class-on-activate="move:keep" class-on-activate-delay="2500" class-on-click="null:inject.splash-hero-marker-{{$index + 1}}|splash-marker-active:unique, null:inject#map-icon-{{$index + 2}}-translate|splash-marker-guru-active:unique">
                 <svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
                     <g fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
@@ -40,7 +50,6 @@
                 <div class="marker-normal-content">
                     <a class="marker-link" ng-include="img_base + BASE + splash_marker.guru.type"></a>
                     <a id="map-icon-{{$index + 2}}" class="marker-guru opacity-0">
-                        <!-- <span class="user-icon" style="background-image: url({{splash_marker.guru.profile_url}})"></span> -->
                         <user-icon size="-64" url="splash_marker.guru.profile_url"> </user-icon>
 
                         <span class="marker-guru-course">{{splash_marker.guru.subcategory}}</span>
@@ -62,7 +71,7 @@
                         <h4 ng-if="!splash_marker.details.open_now">&middot; 2.4 miles</h4>
                     </div>
                     <a class="marker-guru">
-                        <!-- <span class="user-icon" style="background-image: url({{splash_marker.guru.profile_url}})"></span> -->
+
                         <user-icon size="-64" url="splash_marker.guru.profile_url"> </user-icon>
 
                         <div>
@@ -130,4 +139,4 @@
             </div>
             <div class="marker-circle"></div>
         </div>
-    </div>
+    </div> -->
