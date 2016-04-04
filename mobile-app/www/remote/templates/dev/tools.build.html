@@ -139,8 +139,8 @@
                             <!-- Collapse component vars-->
                             <a ng-click='component.collapsed = !component.collapsed' ng-class="{'collapse': !component.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
 						</div>
-                        <div ng-show='!component.collapsed' ng-class="{'opacity-50': !component.active}">
-                            <div class='component-inject overflow-hidden'></div>
+                        <div class="relative" ng-show='!component.collapsed' ng-class="{'opacity-50': !component.active}">
+                            <div class='component-inject overflow-hidden' ng-class="{'height-300': component.expand}"></div>
                             <a ng-if='!component.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='component.expand = true;'>Expand</a>
                             <a ng-if='component.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='component.expand = false;'>Reduce</a>
                             <a ng-click='playOneComponent(component)' class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
@@ -192,20 +192,18 @@
                                     <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_class"'>.{{property.name || 'sample property'}}</span>
                                     <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_text"'>{{property.name || 'sample property'}}</span>
                                     <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_animation"'>{{property.name || 'sample property'}}</span>
-                                    <button class="bg-campus" ng-click='component.addPropertyField(component, component.empty_time_state)'>+ Property</button>
+                                    <button class="bg-campus" ng-click='component.addPropertyField(component, component.empty_time_state)'>+ Add</button>
                                 </div>
                                 <div>
-                                    <div class="radius-2 opacity-50" disabled ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_class"'>NA</div>
-                                    <input class="radius-2" ng-repeat='property in component.empty_time_state.properties' placeholder="value" ng-model="property.value" ng-if='property.type === "css_text"'/>
-                                    <div class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_animation"'>
-                                        <dropdown ng-model="property.value"> </dropdown>
-                                    </div>
+                                    <input class="radius-2 opacity-50" disabled ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_class"' value="N/A"/>
+                                    <input class="radius-2" ng-repeat='property in component.empty_time_state.properties' placeholder="value plz" ng-model="property.value" ng-if='property.type === "css_text"'/>
+                                    <dropdown ng-model="property.value" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_animation"'> </dropdown>
                                 </div>
                                 <div>
                                     <a  ng-click='component.removePropertyField(component, component.empty_time_state, $index)' ng-repeat='property in component.empty_time_state.properties'>&times;</a>
                                 </div>
                                 <div class="full-x">
-                                    <button class='bg-moxie height-36 txt-20 radius-2' ng-click='component.addTimeState(component, component.empty_time_state)'>Save</button>
+                                    <button class='bg-moxie height-36 txt-20 radius-2' ng-click='component.addTimeState(component, component.empty_time_state)'>Save and add another</button>
                                 </div>
                             </li>
                         </ul>
