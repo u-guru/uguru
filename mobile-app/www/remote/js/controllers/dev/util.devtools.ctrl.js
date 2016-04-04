@@ -367,7 +367,6 @@ angular.module('uguru.dev.controllers')
         var componentIndex = current_state.components[i];
         var elementIndex = document.querySelector(componentIndex.selector);
         if (!elementIndex) {
-          console.log('continuging because couldnt find index');
           continue;
         }
         for (var j = 0; j < componentIndex.time_states; j++) {
@@ -637,7 +636,6 @@ angular.module('uguru.dev.controllers')
     }
 
     $scope.playStateComponents = function(state_components) {
-      console.log(state_components);
       var max_time_state = 0;
       for (var i = 0; i < state_components.length; i++) {
         var indexComponent = state_components[i];
