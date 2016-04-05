@@ -1,4 +1,4 @@
-<div class="absolute full-xy top-0 left-0 flex-center-wrap">
+
     <div class="uguru pf-card pf-card-household">
         <div class="pf-card-top">
             <ul>
@@ -83,4 +83,3 @@
             </ul>
         </div>
     </div>
-</div>

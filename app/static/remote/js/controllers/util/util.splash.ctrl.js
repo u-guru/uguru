@@ -1044,10 +1044,6 @@ angular.module('uguru.util.controllers')
               //init map
               break;
             case 2: //api call
-<<<<<<< HEAD
-=======
-
->>>>>>> jason-dev
               initSwipers(responsiveSwiperArgs, $scope.desktopMode);
               break;
 
