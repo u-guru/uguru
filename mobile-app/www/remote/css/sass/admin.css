@@ -8,6 +8,31 @@
   display: -webkit-flex;
   display: flex;
   height: 100%;
+  overflow: hidden;
+}
+
+#build .dropdown > div a svg {
+  background: #43cb9d;
+}
+
+#build .dropdown > div a:hover svg, #build .dropdown > div a:focus svg {
+  background: #6bd6b2;
+}
+
+#build .dropdown > div a:active svg {
+  background: #2fac82;
+}
+
+#build .dropdown > ul li {
+  background: rgba(76, 85, 89, 0.9);
+}
+
+#build .dropdown > ul li:hover, #build .dropdown > ul li:focus {
+  background: rgba(47, 172, 130, 0.9);
+}
+
+#build .dropdown > ul li:active {
+  background: rgba(107, 214, 178, 0.9);
 }
 
 #build > main {
@@ -68,30 +93,6 @@
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 5px;
-}
-
-#build > main .build-main-top > div > div .dropdown > div a svg {
-  background: #43cb9d;
-}
-
-#build > main .build-main-top > div > div .dropdown > div a:hover svg, #build > main .build-main-top > div > div .dropdown > div a:focus svg {
-  background: #6bd6b2;
-}
-
-#build > main .build-main-top > div > div .dropdown > div a:active svg {
-  background: #2fac82;
-}
-
-#build > main .build-main-top > div > div .dropdown > ul li {
-  background: rgba(76, 85, 89, 0.9);
-}
-
-#build > main .build-main-top > div > div .dropdown > ul li:hover, #build > main .build-main-top > div > div .dropdown > ul li:focus {
-  background: rgba(47, 172, 130, 0.9);
-}
-
-#build > main .build-main-top > div > div .dropdown > ul li:active {
-  background: rgba(107, 214, 178, 0.9);
 }
 
 #build > main .build-main-top .build-main-settings {
@@ -294,7 +295,7 @@
   background: #637074;
 }
 
-#build > aside .build-aside-top ul {
+#build > aside .build-aside-top > ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -307,21 +308,21 @@
   overflow: auto;
 }
 
-#build > aside .build-aside-top ul::-webkit-scrollbar {
+#build > aside .build-aside-top > ul::-webkit-scrollbar {
   display: none;
 }
 
-#build > aside .build-aside-top ul::-moz-scrollbar {
+#build > aside .build-aside-top > ul::-moz-scrollbar {
   display: none;
 }
 
-#build > aside .build-aside-top ul li {
+#build > aside .build-aside-top > ul > li {
   position: relative;
   height: 100%;
   width: 64px;
 }
 
-#build > aside .build-aside-top ul li:not(:last-child):after {
+#build > aside .build-aside-top > ul > li:not(:last-child):after {
   border-radius: 1000px;
   content: "";
   display: block;
@@ -334,7 +335,7 @@
   background: #929b9e;
 }
 
-#build > aside .build-aside-top ul li a {
+#build > aside .build-aside-top > ul > li a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -356,19 +357,86 @@
   font-weight: 600;
 }
 
-#build > aside .build-aside-top ul li a:hover, #build > aside .build-aside-top ul li a:focus {
+#build > aside .build-aside-top > ul > li a:hover, #build > aside .build-aside-top > ul > li a:focus {
   background: #a1e5ce;
   color: #428a74;
 }
 
-#build > aside .build-aside-top ul li a:active {
+#build > aside .build-aside-top > ul > li a:active, #build > aside .build-aside-top > ul > li a.active {
   background: #43cb9d;
   color: white;
 }
 
+#build > aside .build-aside-state {
+  position: relative;
+  z-index: 10;
+  height: 64px;
+}
+
+#build > aside .build-aside-state > ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+}
+
+#build > aside .build-aside-state > ul > li {
+  width: 50%;
+  height: 100%;
+}
+
+#build > aside .build-aside-state > ul > li > div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 15px;
+}
+
+#build > aside .build-aside-state > ul > li > div h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#build > aside .build-aside-state > ul > li:first-child > div {
+  background: #748489;
+  text-transform: lowercase;
+}
+
+#build > aside .build-aside-state > ul > li:first-child > div h2, #build > aside .build-aside-state > ul > li:first-child > div h1 {
+  width: 100%;
+}
+
+#build > aside .build-aside-state > ul > li:first-child > div h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#build > aside .build-aside-state > ul > li:last-child > div {
+  background: #40484B;
+}
+
 #build > aside .build-element-list {
   width: 100%;
-  height: calc(100% - 128px);
+  height: calc(100% - 128px - 64px);
   overflow: auto;
   background: #4c5559;
 }
@@ -719,23 +787,6 @@
 #build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a svg {
   width: 30px;
   height: 30px;
-  background: #43cb9d;
-}
-
-#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:hover svg, #build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:focus svg {
-  background: #a1e5ce;
-}
-
-#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:hover svg *, #build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:focus svg * {
-  stroke: #428a74;
-}
-
-#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:active svg {
-  background: #428a74;
-}
-
-#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:active svg * {
-  stroke: white;
 }
 
 #build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > ul {
@@ -1368,10 +1419,10 @@
 
 #build > aside .build-aside-bottom {
   height: 64px;
-  background: #637074;
+  background: #748489;
 }
 
-#build > aside .build-aside-bottom ul {
+#build > aside .build-aside-bottom > ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1382,11 +1433,11 @@
   height: 100%;
 }
 
-#build > aside .build-aside-bottom ul li {
+#build > aside .build-aside-bottom > ul > li {
   height: 100%;
 }
 
-#build > aside .build-aside-bottom ul li a {
+#build > aside .build-aside-bottom > ul > li > a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1407,13 +1458,13 @@
   margin: 0 auto;
 }
 
-#build > aside .build-aside-bottom ul li a svg {
+#build > aside .build-aside-bottom > ul > li > a svg {
   display: block;
   width: 48px;
   height: 48px;
 }
 
-#build > aside .build-aside-bottom ul li a svg * {
+#build > aside .build-aside-bottom > ul > li > a svg * {
   fill: none;
   stroke: white;
   stroke-width: 4px;
@@ -1421,61 +1472,78 @@
   stroke-linejoin: round;
 }
 
-#build > aside .build-aside-bottom ul li a:hover, #build > aside .build-aside-bottom ul li a:focus {
+#build > aside .build-aside-bottom > ul > li > a:hover, #build > aside .build-aside-bottom > ul > li > a:focus {
   background: #a1e5ce;
 }
 
-#build > aside .build-aside-bottom ul li a:hover svg *, #build > aside .build-aside-bottom ul li a:focus svg * {
+#build > aside .build-aside-bottom > ul > li > a:hover svg *, #build > aside .build-aside-bottom > ul > li > a:focus svg * {
   stroke: #428a74;
 }
 
-#build > aside .build-aside-bottom ul li a:active {
+#build > aside .build-aside-bottom > ul > li > a:active {
   background: #43cb9d;
 }
 
-#build > aside .build-aside-bottom ul li a:active svg * {
+#build > aside .build-aside-bottom > ul > li > a:active svg * {
   stroke: white;
 }
 
-#build > aside .build-aside-bottom ul li .build-add-element, #build > aside .build-aside-bottom ul li .bg.bg-moxie {
+#build > aside .build-aside-bottom > ul > li .build-add-element {
+  background: #8A9EA3;
+}
+
+#build > aside .build-aside-bottom > ul > li .build-add-element:active {
+  background: #657377;
+}
+
+#build > aside .build-aside-bottom > ul > li .bg.bg-moxie {
   background: #43cb9d;
 }
 
-#build > aside .build-aside-bottom ul li .build-add-element svg, #build > aside .build-aside-bottom ul li .bg.bg-moxie svg {
+#build > aside .build-aside-bottom > ul > li .bg.bg-moxie:active {
+  background: #428a74;
+}
+
+#build > aside .build-aside-bottom > ul > li .build-add-element svg, #build > aside .build-aside-bottom > ul > li .bg.bg-moxie svg {
   width: 36px;
   height: 36px;
 }
 
-#build > aside .build-aside-bottom ul li .build-add-element svg *, #build > aside .build-aside-bottom ul li .bg.bg-moxie svg * {
+#build > aside .build-aside-bottom > ul > li .build-add-element svg *, #build > aside .build-aside-bottom > ul > li .bg.bg-moxie svg * {
   stroke-width: 6px;
 }
 
-#build > aside .build-aside-bottom ul li .build-add-element:active, #build > aside .build-aside-bottom ul li .bg.bg-moxie:active {
-  background: #428a74;
+#build > aside .build-aside-bottom > ul > li.build-play-all {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: calc(100% - 128px - 64px);
 }
 
-#build > aside .build-aside-bottom ul li:not(:nth-child(3)) {
-  width: 64px;
+#build > aside .build-aside-bottom > ul > li.build-play-all > a {
+  margin: 0;
 }
 
-#build > aside .build-aside-bottom ul li:nth-child(2) svg {
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  transform: rotate(-90deg);
+#build > aside .build-aside-bottom > ul > li.build-play-all .dropdown-container {
+  margin-right: 15px;
+  width: calc(100% - 64px - 15px) !important;
 }
 
-#build > aside .build-aside-bottom ul li:nth-child(3) {
-  width: calc(100% - 192px);
-}
-
-#build > aside .build-aside-bottom ul li:nth-child(4) svg {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
+#build > aside .build-aside-bottom > ul > li.build-play-all .dropdown-container .dropdown > ul {
+  top: auto !important;
+  bottom: 24px;
 }
 
 /* ---------- DASHBOARD */
