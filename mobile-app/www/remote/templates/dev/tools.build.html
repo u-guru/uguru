@@ -121,14 +121,17 @@
                         </li>
                     </ul>
                 </div>
-                <ul ng-repeat='current_state in current_states.states' ng-show="current_states.selectedIndex === $index">
-                    <li>
-                        <div class='full-x txt-center uppercase bg-moxie p15x txt-white weight-600'>State #{{current_states.selectedIndex + 1}}:{{current_states.states[current_states.selectedIndex].name}}</div>
+                <ul ng-repeat='current_state in current_states.states' ng-show="current_states.selectedIndex === $index" style='padding:0px;'>
+                    <li class='ugrid-2 full-x flex-wrap'>
+                        <div style='width:50%;' class='p20x text-left uppercase bg-moxie txt-white weight-600'>State #{{current_states.selectedIndex + 1}}:{{current_states.states[current_states.selectedIndex].name}}</div>
+                        <div class='relative' style='width:50%;'>
+                            <dropdown class='absolute full-xy text-center right-0 top-0' ng-model="page.dropdowns.filterOptions"></dropdown>
+                        </div>
                     </li>
                     <li ng-if='current_state.gestures && current_state.gestures.length'>
                         <div class='full-x txt-center uppercase bg-moxie-50p p15x txt-white weight-600'>State gestures: {{current_state.gestures}}</div>
                     </li>
-                    <li ng-repeat='component in current_state.components'>
+                    <li class='15xy' ng-repeat='component in current_state.components' ng-if='page.dropdowns.filterOptions.selectedIndex'>
                         <span>{{$index + 1}}</span>
                         <div class='relative'>
 							<h1><span class="lowercase">{{ component._id || component._class || component.name}}</span></h1>
@@ -168,18 +171,23 @@
                             <li ng-if='component.time_states && component.time_states.length' ng-repeat='time_state in component.time_states track by $index'>
                                 <div><span class="radius-2-left">@T</span><span class="radius-2-right">{{time_state.time}}</span></div>
                                 <div>
-                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type != "css_text"'>
+
+                                    <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>
+                                        {{property.name}}
+                                        <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
+                                    </span>
+                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_class"'>
                                         .{{property.name}}
                                         <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
                                     </span>
-                                    <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>
+                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_animation"'>
                                         {{property.name}}
                                         <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
                                     </span>
                                 </div>
                                 <div>
-                                    <span ng-repeat='property in time_state.properties' class="radius-2 opacity-50" ng-if='property.type === "css_class"'>{{property.value}}</span>
                                     <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.value}}</span>
+                                    <span ng-repeat='property in time_state.properties' class="radius-2 opacity-50" ng-if='property.type === "css_class"'>{{property.value}}</span>
                                     <dropdown ng-if='property.type === "css_animation"' ng-repeat="property in time_state.properties" ng-model="property.value"> </dropdown>
                                 </div>
                                 <div>
@@ -189,18 +197,23 @@
                             <li>
                                 <div><span class="radius-2-left">@T</span><input class="radius-2-right" type="tel" ng-model="component.empty_time_state.time" placeholder="time"/></div>
                                 <div>
-                                    <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_class"'>.{{property.name || 'sample property'}}</span>
-                                    <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_text"'>{{property.name || 'sample property'}}</span>
-                                    <span class="radius-2" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_animation"'>{{property.name || 'sample property'}}</span>
+                                    <span class="radius-2" ng-repeat='property in component.empty_time_state.properties'>{{property.name || 'sample property'}}</span>
                                     <button class="bg-campus" ng-click='component.addPropertyField(component, component.empty_time_state)'>+ Add</button>
                                 </div>
-                                <div>
-                                    <input class="radius-2 opacity-50" disabled ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_class"' value="N/A"/>
-                                    <input class="radius-2" ng-repeat='property in component.empty_time_state.properties' placeholder="value plz" ng-model="property.value" ng-if='property.type === "css_text"'/>
-                                    <dropdown ng-model="property.value" ng-repeat='property in component.empty_time_state.properties' ng-if='property.type === "css_animation"'> </dropdown>
+                                <div class='empty-state-values'>
+                                    <span class='relative' ng-repeat='property in component.empty_time_state.properties' class='radius-2 bg-charcoal'>
+                                        <input ng-keyup="($event.keyCode === 13 || $event.keyCode === 9) && inputAddSaveProperty($event.keyCode, component)" class="radius-2 {{component.selector}}-empty-input {{component.selector}}-empty-input-{{$index}} absolute full-xy top-0 left-0" placeholder="value plz" ng-model="property.value" ng-if='property.type === "css_text"'/>
+                                        <span ng-if='property.type === "css_class"'> NA </span>
+                                        <dropdown ng-model="property.value" ng-if='property.type === "css_animation"'> </dropdown>
+                                    </span>
+
+
+
+
+
                                 </div>
                                 <div>
-                                    <a  ng-click='component.removePropertyField(component, component.empty_time_state, $index)' ng-repeat='property in component.empty_time_state.properties'>&times;</a>
+                                    <a  ng-click='component.removePropertyField(component, component.empty_time_state, $index, $parent.$index, true)' ng-repeat='property in component.empty_time_state.properties'>&times;</a>
                                 </div>
                                 <div class="full-x">
                                     <button class='bg-moxie height-36 txt-20 radius-2' ng-click='component.addTimeState(component, component.empty_time_state)'>Save and add another</button>
