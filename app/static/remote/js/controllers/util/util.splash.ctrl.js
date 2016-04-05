@@ -35,12 +35,11 @@ angular.module('uguru.util.controllers')
     $scope.nav = {activate: true};
     $scope.mad_lib = {activate: false};
     $scope.activate = {
-      pulldown: false
+      pulldown: false,
+      map: false
     }
 
-    $timeout(function() {
-      $scope.mad_lib.activate = true;
-    }, 5000)
+
 
     $scope.demographics = User.demographics;
     $scope.saveDemographic = saveDemographic;
@@ -679,6 +678,8 @@ angular.module('uguru.util.controllers')
         }, 1500);
     }
 
+
+
     function getAllCourses(university) {
       var areCoursesInCache = $localstorage.getObject('selected_university_courses');
       if (university.courses && university.courses.length) {
@@ -1031,6 +1032,11 @@ angular.module('uguru.util.controllers')
     //   }
     // }
 
+    $scope.activateMap = function() {
+      $scope.activate.map = true;
+      // $scope.selectedUniversity && initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+    }
+
     $scope.activate.watcher = $scope.$watch('activate.state', function(newValue, oldValue) {
       switch (newValue) {
 
@@ -1038,6 +1044,10 @@ angular.module('uguru.util.controllers')
               //init map
               break;
             case 2: //api call
+<<<<<<< HEAD
+=======
+
+>>>>>>> jason-dev
               initSwipers(responsiveSwiperArgs, $scope.desktopMode);
               break;
 
@@ -1140,110 +1150,7 @@ angular.module('uguru.util.controllers')
     }
 
     // should be university light color
-    // function getSelectedUniversityMapStyles(university) {
-    //   var currentColor = university.school_color_light;
-    //   var currentDarkColor = university.school_color_dark;
 
-    //   var selectedUniversityMapStyles = [
-    //       { featureType: 'all', elementType: 'labels', stylers: [
-    //           { visibility: 'off' }
-    //       ]},
-    //       {
-    //       	"featureType": "administrative",
-    //       	"elementType": "geometry.stroke",
-    //       	"stylers": [{
-    //       		"color": currentDarkColor
-    //       	}, {
-    //       		"lightness": 14
-    //       	}, {
-    //       		"weight": 1.4
-    //       	}]
-    //       }, {
-    //       	"featureType": "landscape",
-    //       	"elementType": "all",
-    //       	"stylers": [{
-    //       		"color": currentDarkColor
-    //       	}]
-    //       }, {
-    //       	"featureType": "poi",
-    //       	"elementType": "geometry",
-    //       	"stylers": [{
-    //       		"color": currentDarkColor
-    //       	}, {
-    //       		"lightness": 10
-    //       	}]
-    //       }, {
-    //       	"featureType": "poi.school",
-    //       	"elementType": "geometry",
-    //       	"stylers": [{
-    //       		"color": currentDarkColor
-    //       	}, {
-    //       		"lightness": 15
-    //       	}]
-    //       }, {
-    //       	"featureType": "road.highway",
-    //       	"elementType": "geometry.fill",
-    //       	"stylers": [{
-    //       		"color": currentDarkColor
-    //       	}, {
-    //       		"lightness": 80
-    //       	}]
-    //       }, {
-    //       	"featureType": "road.highway",
-    //       	"elementType": "geometry.stroke",
-    //       	"stylers": [{
-    //       		"color": currentDarkColor
-    //       	}, {
-    //       		"lightness": 50
-    //       	}]
-    //       }, {
-    //       	"featureType": "road.arterial",
-    //       	"elementType": "geometry.fill",
-    //       	"stylers": [{
-    //       		"color": currentDarkColor
-    //       	}, {
-    //       		"lightness": 80
-    //       	}]
-    //       }, {
-    //       	"featureType": "road.arterial",
-    //       	"elementType": "geometry.stroke",
-    //       	"stylers": [{
-    //       		"color": currentDarkColor
-    //       	}, {
-    //       		"lightness": 50
-    //       	}]
-    //       }, {
-    //       	"featureType": "road.local",
-    //       	"elementType": "geometry.fill",
-    //       	"stylers": [{
-    //       		"color": currentDarkColor
-    //       	}, {
-    //       		"lightness": 80
-    //       	}]
-    //       }, {
-    //       	"featureType": "road.local",
-    //       	"elementType": "geometry.stroke",
-    //           "stylers": [{
-    //       		"color": currentDarkColor
-    //       	}, {
-    //       		"lightness": 50
-    //       	}]
-    //       }, {
-    //       	"featureType": "transit",
-    //       	"elementType": "all",
-    //       	"stylers": [{
-    //       		"color": currentDarkColor
-    //       	}]
-    //       }, {
-    //       	"featureType": "water",
-    //       	"elementType": "all",
-    //       	"stylers": [{
-    //       		"color": currentDarkColor
-    //       	}]
-    //       }
-    //   ];
-    //   return selectedUniversityMapStyles
-    // }
 
     //  $scope.getUniversityPlaces = function(university) {
     //   if (university.og_map  && (!university.place_results || !university.place_results.length)) {
@@ -1356,17 +1263,7 @@ angular.module('uguru.util.controllers')
     //   $scope.getUniversityPlaces(university, true);
     // }
 
-    // $scope.getUniversityPlaces = function(university) {
-    //   if (!$state.current.name === 'splash-madlib')
-    //   if (university.og_map  && (!university.place_results || !university.place_results.length)) {
-    //     $timeout(function() {
-    //       $scope.$apply(function() {
-    //         GUtilService.getPlaceListByCoords($scope, university.og_map, {latitude: university.latitude, longitude: university.longitude}, updateMarkersOnUniversitySpecificMap);
-    //       })
-    //     })
-    //   }
-    //   // $scope.map.center = {latitude: university.latitude, university.longitude};
-    // }
+
 
     // function panUniversityBy(university) {
     //     if (getSceneNumber() > 1) {
@@ -1986,7 +1883,7 @@ angular.module('uguru.util.controllers')
       resolveStateParams();
 
       // $timeout(function() {
-      //   $scope.selectedUniversity && initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+
       // });
 
 

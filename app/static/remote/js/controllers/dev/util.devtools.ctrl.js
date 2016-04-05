@@ -13,13 +13,26 @@ angular.module('uguru.dev.controllers')
   '$compile',
   '$sce',
   'AnimationService',
-  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService) {
+  'KeyboardService',
+  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService, KeyboardService) {
 
+    // KeyboardService.preventDefaultCutPaste();
+    KeyboardService.initCopyPasteFunctionCallbacks();
 
-
+    $scope.selected = {
+      property: null,
+      component: null
+    }
     $scope.states = {
       'mad-lib': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
-      'projector-screen': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', '']
+      'projector-screen-1': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-2': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-3': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-4': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-5': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-6': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-7': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
+      'projector-screen-8': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', '']
     }
     $scope.settings = {activated: false};
     $scope.gestureStates = {
@@ -27,7 +40,20 @@ angular.module('uguru.dev.controllers')
         'on-load': [],
         'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}],
         'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}],
-      }
+      },
+      'projector-screen-1': {
+        'on-load': [],
+        'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}],
+        'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}],
+      },
+      'projector-screen-2': { 'on-load': [], 'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}], 'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}]},
+      'projector-screen-3': { 'on-load': [], 'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}], 'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}]},
+      'projector-screen-4': { 'on-load': [], 'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}], 'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}]},
+      'projector-screen-5': { 'on-load': [], 'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}], 'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}]},
+      'projector-screen-6': { 'on-load': [], 'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}], 'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}]},
+      'projector-screen-7': { 'on-load': [], 'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}], 'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}]},
+      'projector-screen-8': { 'on-load': [], 'on-first-tag-click': [{selector: '.adlib-tag a', gesture:'click', delay:1500}], 'on-second-tag-click': [{selector: 'a.adlib-2', gesture:'click', delay: 500}]},
+
     }
 
     var mostUsedCSSProperties = ["transform", "-webkit-transform", "opacity", "-webkit-animation-name", "animation-name", "-webkit-animation-timing-function", "animation-timing-function", "-webkit-transform-origin", "transform-origin", "backface-visibility", "-webkit-backface-visibility", "animation-duration", "-webkit-animation-duration", "-webkit-animation-fill-mode", "-webkit-animation-iteration-count", "animation-iteration-count", "animation-fill-mode", "z-index", "width", "visibility", "top", "float", "position", "margin", "left", "height", "background", "background-color", "display", "border", "color", "padding"];
@@ -118,11 +144,13 @@ angular.module('uguru.dev.controllers')
 
     $scope.saveCurrentStatesToLocalStorage = function(template_ref) {
       var adminBuildToolsCacheExists = $localstorage.getObject('admin_build')
-      $localstorage.removeObject('admin_build');
-      if (!adminBuildToolsCacheExists || !adminBuildToolsCacheExists.length) {
-        adminBuildToolsCacheExists = {'admin_build': {}};
+      console.log('current local storage', adminBuildToolsCacheExists);
+      if (!adminBuildToolsCacheExists || adminBuildToolsCacheExists.constructor == Array) {
+        adminBuildToolsCacheExists = {};
       }
-      adminBuildToolsCacheExists['admin_build'][$scope.current_states.template_ref] = $scope.current_states;
+      console.log($scope.current_states.template_ref, adminBuildToolsCacheExists);
+      adminBuildToolsCacheExists[$scope.current_states.template_ref] = $scope.current_states;
+
       for (var i = 0; i < $scope.current_states.states.length; i++) {
         var indexState = $scope.current_states.states[i];
         if (indexState.components) {
@@ -136,7 +164,8 @@ angular.module('uguru.dev.controllers')
           }
         }
       }
-      $localstorage.setObject('admin_build', adminBuildToolsCacheExists['admin_build']);
+      $localstorage.setObject('admin_build', adminBuildToolsCacheExists);
+      console.log(adminBuildToolsCacheExists);
       LoadingService.showAmbig(null, 2500);
       $timeout(function() {
         LoadingService.showSuccess('Saved!', 1000);
@@ -174,6 +203,10 @@ angular.module('uguru.dev.controllers')
                 $scope.page.dropdowns.screenSizeOptions.options = getScreenOptions();
               })
             });
+
+            response.layouts.sort(function(val_a, val_b) {
+              return val_b.id - val_a.id
+            }).reverse()
             injectTemplateIntoStage(response.layouts[0].template_url, 'SplashController', response.layouts[0].ref);
             $timeout(function() {
 
@@ -220,8 +253,9 @@ angular.module('uguru.dev.controllers')
     }
 
     function injectTemplateDropdown(option, index) {
+      console.log(option, index);
       if (option.template_url) {
-        injectTemplateIntoStage(option.template_url, option.controller);
+        injectTemplateIntoStage(option.template_url, option.controller, option.ref);
 
       }
     }

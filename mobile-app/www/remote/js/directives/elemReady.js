@@ -299,7 +299,8 @@ angular.module('uguru.directives')
     }
   }
 }])
-.directive('classOnActivate', ['$timeout', 'AnimationService', function ($timeout, AnimationService) {
+.directive('classOnActivate', ['$timeout', '$parse', 'AnimationService',
+  function ($timeout, $parse, AnimationService) {
   return {
     restrict: 'A',
     link: function(scope, element, attr) {
@@ -353,6 +354,17 @@ angular.module('uguru.directives')
                 }
               }
           }, delay);
+
+          if (attr.evalOnActivate) {
+            $timeout(function() {
+              scope.$apply(function(){
+                var parsedExpr = $parse(attr.evalOnActivate)(scope);
+                console.log(parsedExpr);
+
+              })
+            })
+          }
+
           function classArgsHasInject(args) {
             var injectArg = null;
             args.filter(function(word, index) {

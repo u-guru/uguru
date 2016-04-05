@@ -430,7 +430,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.map', {
         url: '/map',
-        templateUrl: BASE + 'templates/maps.html',
+        templateUrl: BASE + 'templates/splash/layout/splash.maps.html',
         controller: 'GMapController'
   }).
   state('root.universities', {

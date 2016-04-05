@@ -22,8 +22,8 @@ angular.module('uguru.util.controllers')
 				user_stories: AdminContent.getUserStories(),
 				createObjects: AdminContent.getBaseObjects($scope),
 				defaults: {
-					tabsIndex: 1,
-					sidebarIndex: 2
+					tabsIndex: 0,
+					sidebarIndex: 1
 				},
 				toggles: {
 					showAddState: false,
@@ -271,8 +271,15 @@ angular.module('uguru.util.controllers')
 				response = JSON.parse(response);
 
 				// $timeout(function() {
+				var parsed_components = [];
+				for (var i = 0 ; i < response.components.length; i++) {
+					var indexComponent = response.components[i];
+					if (indexComponent.sample && indexComponent.active) {
+						parsed_components.push(indexComponent);
+					}
+				}
 
-				$scope.page.components = response.components;
+				$scope.page.components = parsed_components;
 				$scope.page.layouts = response.layouts;
 				$scope.page.scenes = response.scenes;
 				$scope.page.moodboard = response.moodboards;
@@ -300,19 +307,19 @@ angular.module('uguru.util.controllers')
 				// modalElem && modalElem.classList.add('show');
 				// $scope.selected_scene = $scope.page.scenes[0];
 				// $scope.selected_scene.tabIndex = 2;
-				if ($scope.selected_scene.element_states.testing && $scope.selected_scene.element_states.testing.length) {
-					for (var i = 0; i < $scope.selected_scene.element_states.testing.length; i++) {
-						var testStateIndex = $scope.selected_scene.element_states.testing[i];
-						if (testStateIndex && testStateIndex.substates && testStateIndex.substates.length) {
-							for (var j = 0; j < testStateIndex.substates.length; j++) {
-								var testSubstateIndex = testStateIndex.substates[j];
-								if (testSubstateIndex && (!testSubstateIndex.platforms || !testSubstateIndex.platforms.length)) {
-									testSubstateIndex.platforms = $scope.initAllPlatformDict();
-								}
-							}
-						}
-					}
-				}
+				// if ($scope.selected_scene.element_states.testing && $scope.selected_scene.element_states.testing.length) {
+				// 	for (var i = 0; i < $scope.selected_scene.element_states.testing.length; i++) {
+				// 		var testStateIndex = $scope.selected_scene.element_states.testing[i];
+				// 		if (testStateIndex && testStateIndex.substates && testStateIndex.substates.length) {
+				// 			for (var j = 0; j < testStateIndex.substates.length; j++) {
+				// 				var testSubstateIndex = testStateIndex.substates[j];
+				// 				if (testSubstateIndex && (!testSubstateIndex.platforms || !testSubstateIndex.platforms.length)) {
+				// 					testSubstateIndex.platforms = $scope.initAllPlatformDict();
+				// 				}
+				// 			}
+				// 		}
+				// 	}
+				// }
 
 
 
