@@ -1,4 +1,4 @@
-<div class="dropdown">
+<div class="dropdown-container">
     <h2 ng-if="dropdown.label">{{dropdown.label}}</h2>
     <div class="dropdown {{dropdown.size}}">
         <div>

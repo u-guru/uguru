@@ -106,7 +106,7 @@ angular.module('uguru.dev.controllers')
     $scope.page.dropdowns.fileOptions = {label:'Current Storage', onOptionClick: onFileOptionSelect, options: generateFileOptions(), size:'small', key:'name', selectedIndex: 0};
     $scope.page.dropdowns.screenSizeOptions = {label:'autoscale @ 1.5x', onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
-
+    $scope.page.dropdowns.filterOptions = {label: "sort by", options: ['Time', "Component"], selectedIndex: 1, size:"small"}
 
     function onFileOptionSelect(option, index) {
 
@@ -170,6 +170,8 @@ angular.module('uguru.dev.controllers')
       $timeout(function() {
         LoadingService.showSuccess('Saved!', 1000);
       }, 2000)
+
+
 
     }
 
@@ -554,21 +556,15 @@ angular.module('uguru.dev.controllers')
           } else {
             LoadingService.showMsg('Please fill the time state and/or add at least one property');
           }
+
       }
       component_obj.addPropertyField = function(component, time_state) {
-          $scope.selectPropertyActivated = true;
+          $scope.toggleClassProperties()
           $scope.component_selected = component;
           $scope.time_state_selected = time_state;
         }
       component_obj.confirmPropertyField = confirmPropertyField
-      component_obj.removePropertyField = function(component, time_state, property_index, time_index) {
-        time_state.properties.splice(property_index, 1);
-        if (!time_state.properties.length) {
-            if (confirm('Also delete time state t=' + time_state.time + '?')) {
-              component.time_states.splice(time_index, 1);
-            }
-        }
-      }
+      component_obj.removePropertyField = removePropertyField
 
       if (!component_obj.empty_time_state) {
          component_obj.empty_time_state = {time:null, properties:[]};
@@ -581,8 +577,33 @@ angular.module('uguru.dev.controllers')
       if (_type === 'css_animation') {
         value = {options:['Animate In', 'Animate Out'], selectedIndex:0, size:'small'};
       }
+      if (_type === 'css_text') {
+          if ($scope.component_selected || component) {
+            var elem_component = document.querySelector('.' + component.selector);
+            if (elem_component) {
+              var componentStyles = window.getComputedStyle(elem_component)
+              if (property in componentStyles) {
+                console.log('default value is ', componentStyles[property]);
+                var value = componentStyles[property];
+              }
+            }
+          }
+
+          $timeout(function() {
+            var value = 'some value';
+            var selected_elements = document.querySelectorAll('.' + component.selector + '-empty-input');
+            if (selected_elements && selected_elements.length) {
+              var mostRecentInput = selected_elements[selected_elements.length - 1];
+
+              // mostRecentInput.focus();
+                mostRecentInput.select();
+
+            }
+          }, 100);
+      }
       if (time_state.properties) {
-        time_state.properties.push({name: property, type: _type ||'css_text', value: value || 'value plz'})
+        time_state.properties.push({name: property, type: _type ||'css_text', value: value || ''})
+
       }
       $scope.selectPropertyActivated = false;
       $scope.component_selected = null;
@@ -596,6 +617,10 @@ angular.module('uguru.dev.controllers')
         }
       }
       return;
+    }
+
+    $scope.toggleClassProperties = function() {
+      $scope.selectPropertyActivated = !$scope.selectPropertyActivated;
     }
 
     function initComponentObj(cloned_elem, elem, selector) {
@@ -638,36 +663,49 @@ angular.module('uguru.dev.controllers')
           }
         },
         addPropertyField: function(component, time_state) {
-          $scope.selectPropertyActivated = true;
+
+          $scope.toggleClassProperties();
           $scope.component_selected = component;
           $scope.time_state_selected = time_state;
         },
-        removePropertyField: function(component, time_state, property_index, time_index) {
+        removePropertyField: removePropertyField,
+        confirmPropertyField:confirmPropertyField,
+        empty_time_state: {time:null, properties:[]}
+      }
+    }
+
+    function removePropertyField(component, time_state, property_index, time_index, is_init_time_state) {
+          if (is_init_time_state) {
+            time_state.properties.splice(property_index, 1);
+            if (!time_state.properties.length) {
+              time_state.time = null;
+            }
+            return;
+          }
           time_state.properties.splice(property_index, 1);
           if (!time_state.properties.length) {
             if (confirm('Also delete time state t=' + time_state.time + '?')) {
               component.time_states.splice(time_index, 1);
             }
           }
-        },
-        confirmPropertyField:confirmPropertyField,
-        empty_time_state: {time:null, properties:[]}
       }
-    }
-
-    function removePropertyField(component, time_state, property, _type, value) {
-          if (time_state.properties) {
-            time_state.properties.push({name: property.name, type: _type ||'css_text', value: value || 'absolute'})
-          }
-          $scope.selectPropertyActivated = false;
-          $scope.component_selected = null;
-    }
 
     $scope.playOneComponent = function(component) {
       var elemComponent = document.querySelectorAll('[anim].' + component.selector)[0];
       for (var j = 0; j < component.time_states.length; j++) {
         applyComponentPropertiesAtTime(component, component.time_states[j], elemComponent);
       }
+    }
+
+    $scope.inputAddSaveProperty = function(keycode, component) {
+      if (keycode === 9) {
+        component.addPropertyField(component, component.empty_time_state);
+        return
+      }
+      if (keycode === 13) {
+        component.addTimeState(component, component.empty_time_state);
+      }
+
     }
 
     $scope.playStateComponents = function(state_components) {
