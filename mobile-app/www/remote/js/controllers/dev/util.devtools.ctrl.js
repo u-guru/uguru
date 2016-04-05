@@ -106,7 +106,78 @@ angular.module('uguru.dev.controllers')
     $scope.page.dropdowns.fileOptions = {label:'Current Storage', onOptionClick: onFileOptionSelect, options: generateFileOptions(), size:'small', key:'name', selectedIndex: 0};
     $scope.page.dropdowns.screenSizeOptions = {label:'autoscale @ 1.5x', onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
-    $scope.page.dropdowns.filterOptions = {label: "sort by", options: ['Time', "Component"], selectedIndex: 1, size:"small"}
+    $scope.page.dropdowns.filterOptions = {label: "sort by", options: ['Time', "Component"], selectedIndex: 0, size:"small", onOptionClick: toggleComponentGUIMode}
+
+    if (!$scope.page.dropdowns.filterOptions.selectedIndex) {
+      $timeout(function() {
+        toggleComponentGUIMode('Time', 0);
+      }, 5000)
+    }
+
+    function toggleComponentGUIMode(option, index)  {
+      //component mode
+      console.log(option, index);
+      if (!index) {
+        var time_dict = {};
+        var current_state = $scope.current_states.states[$scope.current_states.selectedIndex];
+        if (!current_state.components.length) {
+          LoadingService.showMsg('Add some time states in component mode before we can sort by time states!', 2500);
+          return;
+        }
+        var state_components = current_state.components;
+
+        time_dict["-1"] = [];
+
+        for (var i = 0; i < state_components.length; i++) {
+          var indexComponent = state_components[i];
+          if (indexComponent.init_time_state) {
+            time_dict["-1"].push(indexComponent);
+          }
+          for (var j = 0; j < indexComponent.time_states.length; j++) {
+            var indexTimeState = indexComponent.time_states[j];
+            var time_string = indexTimeState.time + "";
+            console.log(time_string);
+            if (!(time_string in time_dict)) {
+              time_dict[time_string] = [];
+
+            }
+            time_dict[time_string].push(indexComponent);
+
+          }
+        }
+
+        var time_arr = [];
+        for (var i = 0; i < Object.keys(time_dict).length; i++) {
+          var indexKey = Object.keys(time_dict)[i];
+          console.log('processing', indexKey, time_dict[indexKey])
+          if (time_dict[indexKey] && time_dict[indexKey].length) {
+            if (time_dict[indexKey][0].time_states.length) {
+              var componentDict = {
+                components: time_dict[indexKey],
+                time: time_dict[indexKey][0].time_states[0].time
+              };
+              time_arr.push(componentDict);
+            }
+          }
+        }
+
+        time_arr.sort(function(a, b) {
+          return b.time - a.time
+        })
+
+        if ('-1' in time_dict) {
+          time_arr.push({
+            components: time_dict["-1"],
+            time: "init"
+          })
+        }
+
+        current_state.timeline = time_arr.reverse();
+        console.log(current_state.timeline);
+
+      }
+
+    }
 
     function onFileOptionSelect(option, index) {
 
@@ -207,7 +278,7 @@ angular.module('uguru.dev.controllers')
             });
 
             response.layouts.sort(function(val_a, val_b) {
-              return val_b.id - val_a.id
+              return val_b.id - val_a.id;
             }).reverse()
             injectTemplateIntoStage(response.layouts[0].template_url, 'SplashController', response.layouts[0].ref);
             $timeout(function() {

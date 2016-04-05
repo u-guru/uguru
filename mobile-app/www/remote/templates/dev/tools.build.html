@@ -131,12 +131,101 @@
                     <li ng-if='current_state.gestures && current_state.gestures.length'>
                         <div class='full-x txt-center uppercase bg-moxie-50p p15x txt-white weight-600'>State gestures: {{current_state.gestures}}</div>
                     </li>
+
+                    <!--Timeline-->
+
+                    <li class='bg-smoke 15xy' ng-repeat='time_state in current_state.timeline' ng-if='!page.dropdowns.filterOptions.selectedIndex'>
+                        <span>{{$index + 1}}</span>
+                        <div class='relative'>
+                            <h1><span class="lowercase weight-900"> t = {{ time_state.time || time_state.components[0].time_states[0].time}}<span class='weight-300' ng-if='time_state.time !== "init"'>ms</span></span></h1>
+                            <!-- Collapse component vars-->
+                            <a ng-click='time_state.collapsed = !time_state.collapsed' ng-class="{'collapse': !component.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
+                        </div>
+                        <div class="relative bg-charcoal ugrid-3" ng-show='!time_state.collapsed'>
+                            <h1 class='p20xy full-x txt-3 uppercase weight-400'> # Components: {{time_state.components.length}}  </h1>
+                            <ul class="ugrid-2 build-css-header" ng-show='!component.collapsed'>
+                                <li>Property</li>
+                                <li>Value</li>
+                            </ul>
+                            <ul class='full-x'>
+                                <li ng-repeat='component in time_state.components' class='full-x'>
+                                    <ul class="build-css-list full-x" ng-show='!component.collapsed' >
+                                        <li class='ugrid-2 init full-x relative' ng-if='component.init_time_state && component.init_time_state.time < 0'>
+                                            <div style='width:50%;' class='relative flex-wrap flex-wrap-center'>
+                                                <div class='full-x p10x m05y bg-slate p05y lowercase weight-600 text-center' ng-repeat='property in component.init_time_state.properties'>{{property.name}}</div>
+                                            </div>
+                                            <div class='relative' style="width:50%;">
+                                                <div class='full-x relative' ng-repeat='property in component.init_time_state.properties'>
+                                                    <input class="radius-2 m05top" style='width:80%' placeholder="value" ng-model="property.value"/>
+                                                    <a class='absolute right-0 top-0 txt-5 p10xy' style='width:15%;' class='relative' ng-click='component.removePropertyField(component, component.init_time_state, $index)'>&times;</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li ng-if='component.time_states && component.time_states.length' ng-repeat='nested_time_state in component.time_states track by $index' ng-if='nested_time_state === time_state'>
+                                            <div>
+
+                                                <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>
+                                                    {{property.name}}
+                                                    <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
+                                                </span>
+                                                <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_class"'>
+                                                    .{{property.name}}
+                                                    <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
+                                                </span>
+                                                <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_animation"'>
+                                                    {{property.name}}
+                                                    <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.value}}</span>
+                                                <span ng-repeat='property in time_state.properties' class="radius-2 opacity-50" ng-if='property.type === "css_class"'>{{property.value}}</span>
+                                                <dropdown ng-if='property.type === "css_animation"' ng-repeat="property in time_state.properties" ng-model="property.value"> </dropdown>
+                                            </div>
+                                            <div>
+                                                <a ng-repeat='property in time_state.properties' ng-click='component.removePropertyField(component, time_state, $index, $parent.$index)'>&times;</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="radius-2" ng-repeat='property in component.empty_time_state.properties'>{{property.name || 'sample property'}}</span>
+                                                <button class="bg-campus" ng-click='component.addPropertyField(component, component.empty_time_state)'>+ Add</button>
+                                            </div>
+                                            <div class='empty-state-values'>
+                                                <span class='relative' ng-repeat='property in component.empty_time_state.properties' class='radius-2 bg-charcoal'>
+                                                    <input ng-keyup="($event.keyCode === 13 || $event.keyCode === 9) && inputAddSaveProperty($event.keyCode, component)" class="radius-2 {{component.selector}}-empty-input {{component.selector}}-empty-input-{{$index}} absolute full-xy top-0 left-0" placeholder="value plz" ng-model="property.value" ng-if='property.type === "css_text"'/>
+                                                    <span ng-if='property.type === "css_class"'> NA </span>
+                                                    <dropdown ng-model="property.value" ng-if='property.type === "css_animation"'> </dropdown>
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <a  ng-click='component.removePropertyField(component, component.empty_time_state, $index, $parent.$index, true)' ng-repeat='property in component.empty_time_state.properties'>&times;</a>
+                                            </div>
+                                            <div class="full-x">
+                                                <button class='bg-moxie height-36 txt-20 radius-2' ng-click='component.addTimeState(component, component.empty_time_state)'>Save and add another</button>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <a ng-if='!time_state.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='time_state.expand = true;'>Expand</a>
+                            <a ng-if='time_state.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='time_state.expand = false;'>Reduce</a>
+                            <a ng-click='playOneTime(time_state)' class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
+                        </div>
+                    </li>
+
+                    <!--end timeline-->
+
                     <li class='15xy' ng-repeat='component in current_state.components' ng-if='page.dropdowns.filterOptions.selectedIndex'>
                         <span>{{$index + 1}}</span>
                         <div class='relative'>
 							<h1><span class="lowercase">{{ component._id || component._class || component.name}}</span></h1>
                              <!-- &rarr; <span class="opacity-50">{{component.selector}}</span> -->
                              <!-- Activate component vars-->
+                            <span class='build-activate txt-1' style='max-width:50px; height:100% bg-cerise'>
+                                Component
+                            </span>
+
                              <a class="build-activate opacity-50" ng-click='component.active = !component.active' ng-if='!component.active'>off</a>
                              <a class="build-activate" ng-click='component.active = !component.active' ng-if='component.active'>on</a>
                             <!-- Collapse component vars-->
