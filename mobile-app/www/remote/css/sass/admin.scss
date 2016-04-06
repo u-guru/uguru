@@ -332,15 +332,6 @@
 			height: calc(100% - 128px - 64px);
 			overflow: auto;
 			background: lighten($slate, 5%);
-			> div:first-child {
-				z-index: 2000!important;
-				overflow: auto!important;
-				width: 100%;
-				height: 100%;
-				&:not(.expanded) {
-					width: calc(100% / 3);
-				}
-			}
 			> ul {
 				padding: 7.5px;
 				counter-reset: li;
@@ -1282,8 +1273,96 @@
 			}
 		}
 	}
-	.build-property-options {
+	.build-property-option-list {
 		z-index: 2000;
+		overflow: auto!important;
+		width: 100%;
+		height: 100%;
+		&:not(.expanded) {
+			width: calc(100% / 3);
+		}
+		header {
+			@include flex;
+			@include prefix(justify-content, space-between, webkit);
+			height: 48px;
+			input {
+				@include flex;
+				@include flex-center-vertical;
+				width: 300px;
+				height: 48px;
+				padding: 0 15px;
+				font-size: 18px;
+			}
+			a {
+				@include flex;
+				@include flex-center;
+				width: 48px;
+				height: 48px;
+				svg {
+					@include prefix(transform, rotate(45deg));
+					width: 36px;
+					height: 36px;
+					* {
+						@include svg-stroke(white, 6);
+					}
+				}
+			}
+		}
+		button {
+			@include flex;
+			@include flex-center-vertical;
+			span {
+				@include flex;
+				@include flex-center-vertical;
+				max-height: 19px;
+				svg {
+					@include opacity(.5);
+					width: 18px;
+					height: 18px;
+					margin-right: 5px;
+					* {
+						@include svg-stroke(white, 10);
+					}
+				}
+			}
+			&.starred {
+				&:hover, &:focus {
+					svg {
+						* {
+							stroke: mix($gold, $slate);
+						}
+					}
+				}
+				&:active {
+					svg {
+						* {
+							stroke: white;
+						}
+					}
+				}
+			}
+			&.flagged {
+				&:hover, &:focus {
+					svg {
+						* {
+							stroke: mix($orange, $slate);
+						}
+					}
+				}
+				&:active {
+					svg {
+						* {
+							stroke: white;
+						}
+					}
+				}
+				span {
+					svg {
+						@include prefix(transform, rotate(180deg), webkit moz ms o);
+					}
+				}
+			}
+		}
 	}
 }
 
