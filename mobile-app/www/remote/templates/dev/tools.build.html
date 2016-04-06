@@ -134,6 +134,9 @@
                                 </a>
                                 <a class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
                             </h1>
+                            <span class='build-preview'>
+                                
+                            </span>
                             <a class='build-activate close' ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click='removeTimeState($index)'></a>
                             <!-- Collapse component vars-->
                             <a ng-click='time_state.collapsed = !time_state.collapsed' ng-class="{'collapse': !time_state.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
@@ -238,10 +241,10 @@
                         <div class='relative'>
 							<h1><span class="lowercase">{{ component._id || component._class || component.name}}</span></h1>
                              <!-- &rarr; <span class="opacity-50">{{component.selector}}</span> -->
+                             <span class='build-preview'>
+                                 
+                             </span>
                              <!-- Activate component vars-->
-                            <span class='build-preview'>
-                                
-                            </span>
                              <a class="build-activate opacity-50" ng-click='component.active = !component.active' ng-if='!component.active'>off</a>
                              <a class="build-activate" ng-click='component.active = !component.active' ng-if='component.active'>on</a>
                             <!-- Collapse component vars-->
