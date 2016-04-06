@@ -11,7 +11,6 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
 	var deviceKeyboardExists = false;
 	var deviceKeyboardOpen = false;
 
-
     // function preventDefaultCutPaste() {
     //     document.body.oncopy = function() { alert('yo');return false; }
     //     document.body.oncut = function() { return false; }
@@ -26,6 +25,33 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
         function defaultPasteFunc() {
             return;
         }
+    }
+
+
+
+    function initOptionPressedAndReleasedFunction(on_press, on_release) {
+        var keyupNotRecent;
+        var keydownNotRecent;
+        window.addEventListener("keydown", function(e){
+            evt = (e) ? e : window.event
+            if (evt.metaKey && !keydownNotRecent) {
+                on_press && on_press();
+                keydownNotRecent = true;
+                $timeout(function() {
+                    keydownNotRecent = null;
+                })
+            }
+        })
+
+        document.addEventListener('keyup', function (e){
+            if (e.keyCode === 91 && !keyupNotRecent) {
+                on_release && on_release();
+                keyupNotRecent = true;
+                $timeout(function() {
+                    keyupNotRecent = null;
+                }, 500);
+            }
+        }, false);
     }
 
     function defaultCopyFunction() {
@@ -66,7 +92,7 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
     return {
         setDeviceKeyboardState:setDeviceKeyboardState,
         closeKeyboardIfExists: closeKeyboardIfExists,
-        // preventDefaultCutPaste: preventDefaultCutPaste,
+        initOptionPressedAndReleasedFunction: initOptionPressedAndReleasedFunction,
         initCopyPasteFunctionCallbacks: initCopyPasteFunctionCallbacks
     }
 };
