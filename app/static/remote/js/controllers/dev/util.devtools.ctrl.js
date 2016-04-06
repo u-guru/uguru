@@ -106,7 +106,159 @@ angular.module('uguru.dev.controllers')
     $scope.page.dropdowns.fileOptions = {label:'Current Storage', onOptionClick: onFileOptionSelect, options: generateFileOptions(), size:'small', key:'name', selectedIndex: 0};
     $scope.page.dropdowns.screenSizeOptions = {label:'autoscale @ 1.5x', onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
-    $scope.page.dropdowns.filterOptions = {label: "sort by", options: ['Time', "Component"], selectedIndex: 1, size:"small"}
+    $scope.page.dropdowns.filterOptions = {label: "sort by", options: ['Time', "Component"], selectedIndex: 0, size:"small", onOptionClick: toggleComponentGUIMode}
+
+    if (!$scope.page.dropdowns.filterOptions.selectedIndex) {
+      $timeout(function() {
+        toggleComponentGUIMode('Time', 0);
+      }, 5000)
+    }
+
+    function toggleComponentGUIMode(option, index)  {
+      //component mode
+      console.log(option, index);
+      if (!index) {
+        var time_dict = {};
+        var current_state = $scope.current_states.states[$scope.current_states.selectedIndex];
+        if (!current_state.components.length) {
+          LoadingService.showMsg('Add some time states in component mode before we can sort by time states!', 2500);
+          return;
+        }
+        var state_components = current_state.components;
+
+        time_dict["-1"] = [];
+
+        for (var i = 0; i < state_components.length; i++) {
+          var indexComponent = state_components[i];
+          if (indexComponent.init_time_state) {
+            time_dict["-1"].push(indexComponent);
+          }
+          for (var j = 0; j < indexComponent.time_states.length; j++) {
+            var indexTimeState = indexComponent.time_states[j];
+            var time_string = indexTimeState.time + "";
+            console.log(time_string);
+            if (!(time_string in time_dict)) {
+              time_dict[time_string] = [];
+
+            }
+            time_dict[time_string].push(indexComponent);
+
+          }
+        }
+
+        var time_arr = [];
+        for (var i = 0; i < Object.keys(time_dict).length; i++) {
+          var indexKey = Object.keys(time_dict)[i];
+          console.log('processing', indexKey, time_dict[indexKey])
+          if (time_dict[indexKey] && time_dict[indexKey].length) {
+            if (time_dict[indexKey][0].time_states.length) {
+              var componentDict = {
+                components: time_dict[indexKey],
+                time: time_dict[indexKey][0].time_states[0].time
+              };
+              time_arr.push(componentDict);
+            }
+          }
+        }
+
+
+
+        time_arr.sort(function(a, b) {
+          return b.time - a.time
+        })
+
+        if ('-1' in time_dict) {
+          time_arr.push({
+            components: time_dict["-1"],
+            time: "init"
+          })
+        }
+
+        current_state.timeline = time_arr.reverse();
+        console.log(current_state.timeline);
+        $timeout(function() {
+          renderTimeStateComponents(current_state.timeline);
+        }, 2000)
+      }
+
+    }
+
+    function renderTimeStateComponents(time_arr) {
+      var allTimeStateComponentContainers = document.querySelectorAll('.time-state-component-bar');
+      console.log(allTimeStateComponentContainers, 'containers')
+      for (var i = 0; i < time_arr.length; i ++) {
+          var indexTimeState = time_arr[i];
+          console.log('processing time state', indexTimeState)
+          if (indexTimeState.components && indexTimeState.components.length && allTimeStateComponentContainers.length) {
+
+            var indexContainer = allTimeStateComponentContainers[i];
+            console.log('processing index container', indexContainer)
+            for (var j = 0; j < indexTimeState.components.length; j++) {
+              var indexComponent = indexTimeState.components[j];
+              console.log('processing component...', indexComponent)
+              var indexComponentElement = document.querySelector('.' + indexComponent.selector);
+              var clonedComponentElem = recursiveClone(indexComponentElement);
+              clonedComponentElem.className = clonedComponentElem.className + ' full-xy absolute';
+              var listItemElement = document.createElement("li");
+              //@gabrielle-note --> add your custom class here
+              listItemElement.className = "padding-20xy bg-charcoal";
+              listItemElement.style.cssText = 'max-width:75px; max-height:75px;'
+              listItemElement.appendChild(clonedComponentElem);
+              indexContainer.appendChild(listItemElement);
+            }
+          }
+        }
+    }
+
+    function addNewTimeState() {
+      var currentState = $scope.current_states.states[$scope.current_states.selectedIndex];
+      if (!currentState.timeline) {
+        current_state.timeline = [];
+      }
+      for (var i = 0 ; i < currentState.timeline.length; i++) {
+        var timeIndexState = currentState.timeline[i];
+        if (timeIndexState.time === 'new') {
+          LoadingService.showMsg('Please set a time (in ms) of the recent newly added time state'), 2500;
+        }
+      }
+      currentState.timeline.push({
+        time: 'new',
+        components: []
+      })
+    }
+
+
+
+    function removeTimeState(index) {
+      var currentState = $scope.current_states.states[$scope.current_states.selectedIndex];
+      console.log('removing time state', index, currentState);
+      if (currentState && currentState.timeline && currentState.timeline.length) {
+        console.log('removing time state 2', (currentState.timeline[index].components));
+        var result;
+        if (currentState.timeline[index].components.length > 1 && confirm("Are you sure? All components and properties will be removed from this state")) {
+          result = true;
+        } else if (currentState.timeline[index].components.length === 1) {
+          result = true;
+        }
+        if (result) {
+          console.log('removing..');
+          var tempTimeIndex = currentState.time;
+          currentState.timeline.splice(index, 1);
+          LoadingService.showSuccess('time t = ' + tempTimeIndex + ' succesfully deleted');
+        }
+      }
+    }
+    $scope.removeTimeState = removeTimeState;
+    $scope.addNewTimeState = addNewTimeState;
+
+
+    $scope.editTimeStateTime = function(time_state) {
+      var response = prompt("Please enter a time state & confirm", time_state.time);
+      console.log(time_state.time, typeof(time_state.time));
+      if (response) {
+        time_state.time = response;
+      }
+    };
 
     function onFileOptionSelect(option, index) {
 
@@ -207,7 +359,7 @@ angular.module('uguru.dev.controllers')
             });
 
             response.layouts.sort(function(val_a, val_b) {
-              return val_b.id - val_a.id
+              return val_b.id - val_a.id;
             }).reverse()
             injectTemplateIntoStage(response.layouts[0].template_url, 'SplashController', response.layouts[0].ref);
             $timeout(function() {
@@ -607,6 +759,12 @@ angular.module('uguru.dev.controllers')
       }
       $scope.selectPropertyActivated = false;
       $scope.component_selected = null;
+
+
+      if (!$scope.page.dropdowns.filterOptions) {
+        toggleComponentGUIMode('Time', 0);
+      }
+
     }
 
     function timeStateAlreadyExists(component, time) {
