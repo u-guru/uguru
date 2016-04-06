@@ -174,7 +174,7 @@
                                 <li>Property</li>
                                 <li>Value</li>
                             </ul>
-                            <ul class="build-css-list full-x" ng-repeat='component in time_state.components' ng-show='!component.collapsed' >
+                            <ul class="build-css-list full-x" ng-repeat='component in time_state.components' ng-if='time_state.component_selected === component'>
                                 <li class='init full-x relative' ng-if='component.init_time_state && component.init_time_state.time < 0'>
                                     <div>
                                         <span ng-repeat='property in component.init_time_state.properties'>{{property.name}}</span>
@@ -214,8 +214,8 @@
                                     <div>
                                         <span class="radius-2" ng-repeat='property in component.empty_time_state.properties'>{{property.name}}</span>
                                     </div>
-                                    <div class='empty-state-values'>
-                                        <span class='relative' ng-repeat='property in component.empty_time_state.properties' class='radius-2 bg-charcoal'>
+                                    <div class='empty-state-values' style="overflow:visible;">
+                                        <span class='relative' style='overflow:visible;' ng-repeat='property in component.empty_time_state.properties' class='radius-2 bg-charcoal'>
                                             <input ng-keyup="($event.keyCode === 13 || $event.keyCode === 9) && inputAddSaveProperty($event.keyCode, component)" class="radius-2 {{component.selector}}-empty-input {{component.selector}}-empty-input-{{$index}} absolute full-xy top-0 left-0" placeholder="value plz" ng-model="property.value" ng-if='property.type === "css_text"'/>
                                             <span ng-if='property.type === "css_class"'> NA </span>
                                             <dropdown ng-model="property.value" ng-if='property.type === "css_animation"'> </dropdown>
@@ -312,8 +312,8 @@
                                     <span class="radius-2" ng-repeat='property in component.empty_time_state.properties'>{{property.name || 'sample property'}}</span>
                                     <button class="bg-campus" ng-click='component.addPropertyField(component, component.empty_time_state)'>+ Add</button>
                                 </div>
-                                <div class='empty-state-values'>
-                                    <span class='relative' ng-repeat='property in component.empty_time_state.properties' class='radius-2 bg-charcoal'>
+                                <div class='empty-state-values' style='overflow:visible'>
+                                    <span style="overflow:visible;" class='relative' ng-repeat='property in component.empty_time_state.properties' class='radius-2 bg-charcoal'>
                                         <input ng-keyup="($event.keyCode === 13 || $event.keyCode === 9) && inputAddSaveProperty($event.keyCode, component)" class="radius-2 {{component.selector}}-empty-input {{component.selector}}-empty-input-{{$index}} absolute full-xy top-0 left-0" placeholder="value plz" ng-model="property.value" ng-if='property.type === "css_text"'/>
                                         <span ng-if='property.type === "css_class"'> NA </span>
                                         <dropdown ng-model="property.value" ng-if='property.type === "css_animation"'> </dropdown>

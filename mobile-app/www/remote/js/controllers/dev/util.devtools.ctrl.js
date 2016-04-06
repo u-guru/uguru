@@ -23,6 +23,9 @@ angular.module('uguru.dev.controllers')
       property: null,
       component: null
     }
+
+
+
     $scope.states = {
       'mad-lib': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
       'projector-screen-1': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
@@ -156,6 +159,7 @@ angular.module('uguru.dev.controllers')
                 components: time_dict[indexKey],
                 time: time_dict[indexKey][0].time_states[0].time
               };
+              componentDict.components[0].selected = true;
               time_arr.push(componentDict);
             }
           }
@@ -175,7 +179,11 @@ angular.module('uguru.dev.controllers')
         }
 
         current_state.timeline = time_arr.reverse();
-        console.log(current_state.timeline);
+        for (var i = 0; i < current_state.timeline.length; i++) {
+          var indexTime = current_state.timeline[i];
+          indexTime.component_selected = indexTime.components[0];
+          console.log(indexTime.component_selected);
+        }
         $timeout(function() {
           renderTimeStateComponents(current_state.timeline);
         }, 2000)
@@ -195,7 +203,6 @@ angular.module('uguru.dev.controllers')
             console.log('processing index container', indexContainer)
             for (var j = 0; j < indexTimeState.components.length; j++) {
               var indexComponent = indexTimeState.components[j];
-              console.log('processing component...', indexComponent)
               var indexComponentElement = document.querySelector('.' + indexComponent.selector);
               var clonedComponentElem = recursiveClone(indexComponentElement);
               clonedComponentElem.className = clonedComponentElem.className + ' full-xy absolute';
@@ -205,12 +212,17 @@ angular.module('uguru.dev.controllers')
               var divItemElement = document.createElement("div");
               divItemElement.appendChild(clonedComponentElem);
               var listItemElement = document.createElement("li");
+              listItemElement.setAttribute("ng-click", "time_state.component_selected = component")
+              listItemElement.setAttribute("ng-class", "{'opacity-50': time_state.component_selected != component}");
+              listItemElement.appendChild(playButtonElement);
               listItemElement.appendChild(divItemElement);
               //@gabrielle-note --> add your custom class here
-              listItemElement.className = "padding-20xy bg-charcoal";
+              listItemElement.className = "padding-20xy bg-charcoal p20xy";
               listItemElement.style.cssText = 'max-width:75px; max-height:75px;'
               // listItemElement.
               indexContainer.appendChild(listItemElement);
+
+              $compile(listItemElement)($scope);
             }
           }
         }
@@ -809,7 +821,13 @@ angular.module('uguru.dev.controllers')
         },
         time_states: [],
         addTimeState: function(component, time_state, c) {
-          if (timeStateAlreadyExists(component, time_state.time)) {
+          if (time_state.time === -1) {
+            LoadingService.showMsg('Adding to initial time state..', 1000);
+            for (var i = 0; i < time_state.properties.length; i++) {
+              component.init_time_state.properties.push(time_state.properties[i]);
+            }
+          }
+          else if (timeStateAlreadyExists(component, time_state.time)) {
             var preExistingTimeState = timeStateAlreadyExists(component, time_state.time);
             for (var i = 0; i < time_state.properties.length; i++) {
               preExistingTimeState.properties.push(time_state.properties[i]);
