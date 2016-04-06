@@ -1630,6 +1630,10 @@
   display: none !important;
 }
 
+#build > aside .build-element-list.animation > ul > li.build-timeline > div:first-of-type h1 {
+  width: calc(100% - 48px - 48px);
+}
+
 #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-select {
   -ms-box-orient: horizontal;
   display: -webkit-box;

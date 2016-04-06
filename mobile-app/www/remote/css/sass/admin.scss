@@ -1065,6 +1065,11 @@
 							display: none!important;
 						}
 						&.build-timeline {
+							> div:first-of-type {
+								h1 {
+									width: calc(100% - 48px - 48px);
+								}
+							}
 							.build-css-select {
 								@include flex;
 								> h1 {
