@@ -228,6 +228,19 @@ angular.module('uguru.components', [])
     }
   };
 })
+.directive('courseCard', function() {
+  return {
+    templateUrl: BASE + 'templates/elements/components/cards/course.tpl',
+    scope: {
+        course: '=ngModel'
+    },
+    restrict: 'E',
+    replace: true,
+    link: function(scope, elem, attr) {
+      return;
+    }
+  }
+})
 .directive("pennant", function() {
   return {
     templateUrl: BASE + 'templates/elements/components/info/pennant.tpl',
@@ -370,19 +383,34 @@ angular.module('uguru.components', [])
     }
   }
 })
-.directive('profileCard', function() {
+.directive('profileTile', function() {
   return {
     templateUrl: BASE + 'templates/elements/components/tiles/profile.tpl',
   }
 })
-.directive('pricingTile', function() {
+.directive('profileCard', function() {
   return {
-    templateURL: BASE + 'templates/elements/components/tiles/pricing.tpl'
+    templateUrl: BASE + 'templates/elements/components/cards/profile.tpl'
+  }
+})
+.directive('profileMiniCard', function() {
+  return {
+    templateUrl: BASE + 'templates/elements/components/cards/profile.mini.tpl'
+  }
+})
+.directive('profileWidgetCard', function() {
+  return {
+    templateUrl: BASE + 'templates/elements/components/cards/profile.widget.tpl'
+  }
+})
+.directive('universityCard', function() {
+  return {
+    templateUrl: BASE + 'templates/elements/components/cards/university.tpl'
   }
 })
 .directive('userIdCard', function() {
   return {
-    templateURL: BASE + 'templates/elements/components/cards/user.id.tpl'
+    templateUrl: BASE + 'templates/elements/components/cards/user.id.tpl'
   }
 })
 .directive('universityMarker', function() {
