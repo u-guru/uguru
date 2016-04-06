@@ -238,10 +238,11 @@
                         <div class='relative'>
 							<h1><span class="lowercase">{{ component._id || component._class || component.name}}</span></h1>
                              <!-- &rarr; <span class="opacity-50">{{component.selector}}</span> -->
-                             <!-- Activate component vars-->
-                            <span class='build-preview'>
+                             <span class='build-preview'>
 
-                            </span>
+                             </span>
+                             <!-- Activate component vars-->
+
                              <a class="build-activate opacity-50" ng-click='component.active = !component.active' ng-if='!component.active'>off</a>
                              <a class="build-activate" ng-click='component.active = !component.active' ng-if='component.active'>on</a>
                             <!-- Collapse component vars-->
@@ -348,8 +349,28 @@
             </nav>
         </aside>
 
-        <div class='build-property-options fixed bg-slate-90p top-0 right-0 expanded flex-wrap-center flex-stretch' ng-show="selectPropertyActivated">
-            <a class='absolute weight-700 high-index-z bg-charcoal txt-5 p20xy txt-white right-0 m10xy top-0' ng-click='toggleClassProperties()'>&times;</a>
+        <div class='build-property-option-list fixed bg-slate-90p top-0 right-0 expanded overflow-auto' ng-show="selectPropertyActivated">
+            <header>
+                <input placeholder="filter options"/>
+                <a ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click='toggleClassProperties()'></a>
+            </header>
+            <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p">
+                <li class='flex-wrap-center full-x p20xy txt-7 txt-white text-center'>
+                    Demo
+                </li>
+                <li>
+                    <button class='txt-1 bg-gold starred normal height-36 radius-2'>
+                        <span ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                        <span>Starred</span>
+                    </button>
+                </li>
+                <li>
+                    <button class='txt-1 bg-orange flagged normal height-36 radius-2'>
+                        <span ng-include="img_base + BASE + 'templates/svg/main/info.html'"></span>
+                        <span>Flagged</span>
+                    </button>
+                </li>
+            </ul>
             <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p">
                 <li class='flex-wrap-center full-x p20xy txt-7 txt-white text-center'>
                     Common CSS Properties
