@@ -511,11 +511,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/guru.ranking.html',
         controller: 'GuruRankingController'
   }).
-  state('root.guru-tasks', {
-        url: '/guru-tasks',
-        templateUrl: BASE + 'templates/guru.tasks.html',
-        controller: 'GuruTaskController'
-  }).
+  // state('root.guru-tasks', {
+  //       url: '/guru-tasks',
+  //       templateUrl: BASE + 'templates/guru.tasks.html',
+  //       controller: 'GuruTaskController'
+  // }).
   state('root.guru-profile', {
         url: '/guru-profile',
         templateUrl: BASE + 'templates/guru.profile.html',
