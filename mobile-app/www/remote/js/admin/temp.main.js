@@ -183,11 +183,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         templateUrl: BASE + 'templates/guru.html',
         controller: 'GuruController'
   }).
-  state('root.cashout', {
-        url: '/cashout',
-        templateUrl: BASE + 'templates/guru.cashout.html',
-        controller: 'GuruCashoutController'
-  }).
+  // state('root.cashout', {
+  //       url: '/cashout',
+  //       templateUrl: BASE + 'templates/guru.cashout.html',
+  //       controller: 'GuruCashoutController'
+  // }).
   state('root.guru-questions', {
         url: '/guru-questions',
         templateUrl: BASE + 'templates/guru.questions.html',
