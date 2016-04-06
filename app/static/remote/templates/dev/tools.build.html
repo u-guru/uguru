@@ -185,12 +185,12 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <a ng-click='component.removePropertyField(component, component.init_time_state, $index)'>&times;</a>
+                                        <a  ng-repeat="property in component.init_time_state.properties" ng-click='component.removePropertyField(component, component.init_time_state, $index)'>&times;</a>
                                     </div>
                                 </li>
                                 <li ng-repeat='nested_time_state in component.time_states track by $index' >
-                                    <div>
-                                        <span class="radius-2" ng-repeat='property in nested_time_state.properties' ng-click='component.addPropertyField(component, component.nested_time_state)'>
+                                    <div class='txt-4'>
+                                        <span class="radius-2" ng-if='property.type === "css_text"' ng-repeat='property in nested_time_state.properties' ng-click='component.addPropertyField(component, component.nested_time_state)'>
                                             {{property.name}}
                                             <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
                                         </span>
@@ -198,18 +198,24 @@
                                             .{{property.name}}
                                             <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
                                         </span>
-                                        <span ng-click='component.addPropertyField(component, component.empty_time_state, property.name)' ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_animation"'>
+                                        <span ng-click='component.addPropertyField(component, component.empty_time_state, property.name)' ng-repeat='property in nested_time_state.properties' class="build-class radius-2" ng-if='property.type === "css_animation"'>
                                             .{{property.name}}
                                             <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
                                         </span>
                                     </div>
                                     <div>
-                                        <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.value}}</span>
-                                        <span ng-repeat='property in time_state.properties' class="radius-2 opacity-50" ng-if='property.type === "css_class"'>{{property.value}}</span>
-                                        <dropdown ng-if='property.type === "css_animation"' ng-repeat="property in time_state.properties" ng-model="property.value"> </dropdown>
+
+                                        <span class="radius-2" ng-repeat='property in nested_time_state.properties' ng-if='property.type === "css_text"'>{{property.value}}</span>
+                                        <span ng-repeat='property in nested_time_state.properties' class="radius-2 opacity-50" ng-if='property.type === "css_class"'>{{property.type}}</span>
+                                        <dropdown ng-if='property.type === "css_animation"' ng-repeat="property in nested_time_state.properties" ng-model="property.value"> </dropdown>
+                                        <!-- <div ng-repeat="property in nested_time_state.properties">
+                                            <span class="radius-2" ng-if='property.type === "css_text"'>{{property.value}}</span>
+                                            <span class="radius-2 opacity-50" ng-if='property.type === "css_class"'>{{property.value}}</span>
+                                            <dropdown ng-if='property.type === "css_animation"' ng-model="property.value"> </dropdown>
+                                        </div> -->
                                     </div>
                                     <div>
-                                        <a ng-repeat='property in time_state.properties' ng-click='component.removePropertyField(component, time_state, $index, $parent.$index)'>&times;</a>
+                                        <a ng-repeat='property in nested_time_state.properties' ng-click='component.removePropertyField(component, time_state, $index, $parent.$index)'>&times;</a>
                                     </div>
                                 </li>
                                 <li>
@@ -302,7 +308,7 @@
                                 </div>
                                 <div>
                                     <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>{{property.value}}</span>
-                                    <span ng-repeat='property in time_state.properties' class="radius-2 opacity-50" ng-if='property.type === "css_class"'>{{property.value}}</span>
+                                    <span ng-repeat='property in time_state.properties' class="radius-2 opacity-50" ng-if='property.type === "css_class"'>{{property.type}}</span>
                                     <dropdown ng-if='property.type === "css_animation"' ng-repeat="property in time_state.properties" ng-model="property.value"> </dropdown>
                                 </div>
                                 <div>
@@ -318,7 +324,7 @@
                                 <div class='empty-state-values' style='overflow:visible'>
                                     <span style="overflow:visible;" class='relative' ng-repeat='property in component.empty_time_state.properties' class='radius-2 bg-charcoal'>
                                         <input ng-keyup="($event.keyCode === 13 || $event.keyCode === 9) && inputAddSaveProperty($event.keyCode, component)" class="radius-2 {{component.selector}}-empty-input {{component.selector}}-empty-input-{{$index}} absolute full-xy top-0 left-0" placeholder="value plz" ng-model="property.value" ng-if='property.type === "css_text"'/>
-                                        <span ng-if='property.type === "css_class"'> NA </span>
+                                        <span ng-if='property.type === "css_class"' class='opacity-50'>[css class]</span>
                                         <dropdown ng-model="property.value" ng-if='property.type === "css_animation"'> </dropdown>
                                     </span>
 
@@ -353,7 +359,7 @@
 
         <div class='build-property-option-list fixed bg-slate-90p top-0 right-0 expanded overflow-auto' ng-show="selectPropertyActivated">
             <header>
-                <input ng-keyup="focusFirstTabbableInput(propertySearchText)" placeholder="filter options" ng-model="propertySearchText" id='property-search-input'/>
+                <input placeholder="filter options" ng-model="propertySearchText" id='property-search-input'/>
                 <a ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click='toggleClassProperties()'></a>
             </header>
             <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p">
