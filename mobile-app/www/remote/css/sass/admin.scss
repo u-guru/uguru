@@ -333,12 +333,26 @@
 						width: calc(100% - 48px);
 						height: 48px;
 						h1 {
+							@include flex;
+							@include flex-center-vertical;
+							height: 100%;
 							padding: 0 15px;
 							font-size: 24px;
 							font-weight: 600;
 							width: calc(100% - 48px - 48px);
 						}
-						a {
+						> span {
+							@include flex;
+							@include flex-center;
+							width: 48px;
+							height: 48px;
+							position: relative;
+							overflow: hidden;
+							.fixed {
+								position: absolute!important;
+							}
+						}
+						> a {
 							@include flex;
 							@include flex-center;
 							width: 48px;
@@ -951,6 +965,118 @@
 						&:before {
 							display: none!important;
 						}
+						&.build-timeline {
+							> div {
+								&:first-of-type h1 {
+									width: calc(100% - 96px - 48px);
+								}
+							}
+							.build-css-select {
+								@include flex;
+								> h1 {
+									@include flex;
+									@include flex-center;
+									background: $moxie;
+									width: 48px;
+									height: 48px;
+									font-size: 24px;
+									font-weight: 600;
+								}
+								> ul {
+									@include flex;
+									width: calc(100% - 48px);
+									height: 48px;
+									overflow-x: auto;
+									&::-webkit-scrollbar { 
+									    display: none; 
+									}
+									&::-moz-scrollbar { 
+									    display: none; 
+									}
+									> li {
+										position: relative;
+										min-width: 100px;
+										height: 100%;
+										overflow: hidden;
+										.fixed {
+											position: absolute!important;
+										}
+										&.selected {
+											background: rgba($moxie, .2);
+										}
+									}
+								}
+							}
+							.build-css-header {
+								li {
+									width: 50%;
+									text-align: center;
+								}
+							}
+							.build-css-list {
+								> li {
+									> div {
+										&:nth-child(1), &:nth-child(2) {
+											input, > span, .build-class {
+												@include prefix(justify-content, flex-start, webkit);
+												width: 100%;
+												white-space: nowrap;
+												overflow: auto;
+												border-radius: 2px;
+												text-align: left!important;
+												&::-webkit-scrollbar { 
+													display: none; 
+												}
+												&::-moz-scrollbar { 
+													display: none; 
+												}
+												&:not(:first-child) {
+													margin-top: 10px;
+												}
+											}
+											.dropdown-container {
+												&:not(:first-child) {
+													margin-top: 10px;
+												}
+											}
+											button {
+												&:not(:first-child) {
+													margin-top: 10px;
+												}
+											}
+											> span {
+												background: lighten($slate, 15%);
+												font-weight: 600;
+												text-align: center;
+												&.build-class {
+													background: mix(lighten($slate, 25%), $moxie, 90%)!important;
+													font-weight: 700;
+												}
+											}
+										}
+										&:nth-child(1) {
+											width: 50%;
+										}
+										&:nth-child(2) {
+											width: calc(50% - 30px);
+										}
+										&:nth-child(3) {
+											width: 30px;
+											font-weight: 600;
+											a {
+												@include flex;
+												@include flex-center;
+												width: 30px;
+												height: 30px;
+												&:not(:first-child) {
+													margin-top: 10px;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -1052,6 +1178,9 @@
 				}
 			}
 		}
+	}
+	.build-property-options {
+		z-index: 2000;
 	}
 }
 

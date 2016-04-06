@@ -736,7 +736,7 @@
                                     <div>
                                         <div>
                                             <div>
-                                                <h1><a ng-click="action_item.desc_dropdown = !action_item.desc_dropdown">{{$index + 1}}. {{action_item.name}} &dtrif;</a></h1>
+                                                <h1><a ng-click="action_item.desc_dropdown = !action_item.desc_dropdown">{{$index + 1}}. {{action_item.name}} <span ng-if="!action_item.desc_dropdown">&dtrif;</span><span ng-if="action_item.desc_dropdown">&utrif;</span></a></h1>
                                                 <!-- normal "checked" input is blue, adding .complete means it's 100% complete -->
                                                 <div class="checkbox-container complete">
                                     				<div>
@@ -761,7 +761,7 @@
                                                 </ul>
                                             </div>
                                             <div>
-                                                <h3><span>{{action_item.time_created}}</span> - <span>{{action_item.estimated_time}}min</span></h3>
+                                                <h3><span>{{action_item.time_created}}</span> - <span style="white-space: nowrap;">{{action_item.estimated_time}}</span></h3>
                                                 <span class='priority' ng-class="{'priority': action_item.priority > 7, 'completed': action_item.completed, 'future': !action_item.priority || !action_item.completed}">Priority</span>
                                             </div>
                                         </div>
