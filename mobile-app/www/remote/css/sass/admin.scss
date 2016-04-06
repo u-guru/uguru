@@ -193,6 +193,44 @@
 		width: calc(100% / 3);
 		height: 100%;
 		background: lighten($slate, 5%);
+		&.build-settings {
+			> h1 {
+				@include flex;
+				@include flex-center;
+				height: 64px;
+				padding: 0 15px;
+				background: $moxie;
+				font-size: 28px;
+				font-weight: 600;
+			}
+			> ul {
+				li {
+					@include flex;
+					@include flex-center-vertical;
+					height: 48px;
+					> div, > a {
+						@include flex;
+						@include flex-center-vertical;
+						width: 100%;
+						height: 48px;
+						padding: 0 15px;
+						font-size: 20px;
+						font-weight: 600;
+					}
+					> div {
+						@include prefix(justify-content, space-between, webkit);
+					}
+					> a {
+						&:hover, &:focus {
+							background: $campus;
+						}
+						&:active {
+							background: mix($campus, $slate, 70%);
+						}
+					}
+				}
+			}
+		}
 		.build-aside-top {
 			height: 64px;
 			background: lighten($slate, 15%);

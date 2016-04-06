@@ -74,14 +74,27 @@
                 <input id="build-search" type="text" placeholder="Add component"/>
             </nav>
         </main>
-        <aside class='settings relative' ng-if='settings.activated'>
-            <div class='absolute full-xy bg-charcoal'>
-                <div class="bg-moxie weight-700 txt-center flex-wrap-center full-x p15xy txt-7">Settings</div>
-                <ul>
-                    <li><a class="block p15xy" ng-click="clearCache()">Clear Cache</a></li>
-                    <li><a class="block p15xy" ng-click="settings.hideUIEditor = !settings.hideUIEditor">Toggle UI Builder</a></li>
-                </ul>
-            </div>
+        <aside class='build-settings relative' ng-if='settings.activated'>
+            <h1>Settings</h1>
+            <ul>
+                <li><a ng-click="clearCache()">Clear Cache</a></li>
+                <li>
+                    <div>
+                        <span>Toggle UI Builder</span>
+                        <div class="toggle">
+            				<input type="checkbox" checked ng-click="settings.hideUIEditor = !settings.hideUIEditor" />
+            				<label>
+            					<svg class="square" viewBox="0 0 100 100">
+            						<rect x="0" y="0" width="100" height="100"></rect>
+            					</svg>
+            					<svg class="square" viewBox="0 0 100 100">
+            						<rect x="0" y="0" width="100" height="100"></rect>
+            					</svg>
+            				</label>
+            			</div>
+                    </div>
+                </li>
+            </ul>
         </aside>
         <aside ng-if='!settings.activated && !settings.hideUIEditor'>
             <nav class="build-aside-top">
