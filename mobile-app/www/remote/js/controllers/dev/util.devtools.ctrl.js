@@ -161,6 +161,8 @@ angular.module('uguru.dev.controllers')
           }
         }
 
+
+
         time_arr.sort(function(a, b) {
           return b.time - a.time
         })
@@ -174,10 +176,89 @@ angular.module('uguru.dev.controllers')
 
         current_state.timeline = time_arr.reverse();
         console.log(current_state.timeline);
-
+        $timeout(function() {
+          renderTimeStateComponents(current_state.timeline);
+        }, 2000)
       }
 
     }
+
+    function renderTimeStateComponents(time_arr) {
+      var allTimeStateComponentContainers = document.querySelectorAll('.time-state-component-bar');
+      console.log(allTimeStateComponentContainers, 'containers')
+      for (var i = 0; i < time_arr.length; i ++) {
+          var indexTimeState = time_arr[i];
+          console.log('processing time state', indexTimeState)
+          if (indexTimeState.components && indexTimeState.components.length && allTimeStateComponentContainers.length) {
+
+            var indexContainer = allTimeStateComponentContainers[i];
+            console.log('processing index container', indexContainer)
+            for (var j = 0; j < indexTimeState.components.length; j++) {
+              var indexComponent = indexTimeState.components[j];
+              console.log('processing component...', indexComponent)
+              var indexComponentElement = document.querySelector('.' + indexComponent.selector);
+              var clonedComponentElem = recursiveClone(indexComponentElement);
+              clonedComponentElem.className = clonedComponentElem.className + ' full-xy absolute';
+              var listItemElement = document.createElement("li");
+              //@gabrielle-note --> add your custom class here
+              listItemElement.className = "padding-20xy bg-charcoal";
+              listItemElement.style.cssText = 'max-width:75px; max-height:75px;'
+              listItemElement.appendChild(clonedComponentElem);
+              indexContainer.appendChild(listItemElement);
+            }
+          }
+        }
+    }
+
+    function addNewTimeState() {
+      var currentState = $scope.current_states.states[$scope.current_states.selectedIndex];
+      if (!currentState.timeline) {
+        current_state.timeline = [];
+      }
+      for (var i = 0 ; i < currentState.timeline.length; i++) {
+        var timeIndexState = currentState.timeline[i];
+        if (timeIndexState.time === 'new') {
+          LoadingService.showMsg('Please set a time (in ms) of the recent newly added time state'), 2500;
+        }
+      }
+      currentState.timeline.push({
+        time: 'new',
+        components: []
+      })
+    }
+
+
+
+    function removeTimeState(index) {
+      var currentState = $scope.current_states.states[$scope.current_states.selectedIndex];
+      console.log('removing time state', index, currentState);
+      if (currentState && currentState.timeline && currentState.timeline.length) {
+        console.log('removing time state 2', (currentState.timeline[index].components));
+        var result;
+        if (currentState.timeline[index].components.length > 1 && confirm("Are you sure? All components and properties will be removed from this state")) {
+          result = true;
+        } else if (currentState.timeline[index].components.length === 1) {
+          result = true;
+        }
+        if (result) {
+          console.log('removing..');
+          var tempTimeIndex = currentState.time;
+          currentState.timeline.splice(index, 1);
+          LoadingService.showSuccess('time t = ' + tempTimeIndex + ' succesfully deleted');
+        }
+      }
+    }
+    $scope.removeTimeState = removeTimeState;
+    $scope.addNewTimeState = addNewTimeState;
+
+
+    $scope.editTimeStateTime = function(time_state) {
+      var response = prompt("Please enter a time state & confirm", time_state.time);
+      console.log(time_state.time, typeof(time_state.time));
+      if (response) {
+        time_state.time = response;
+      }
+    };
 
     function onFileOptionSelect(option, index) {
 
@@ -678,6 +759,12 @@ angular.module('uguru.dev.controllers')
       }
       $scope.selectPropertyActivated = false;
       $scope.component_selected = null;
+
+
+      if (!$scope.page.dropdowns.filterOptions) {
+        toggleComponentGUIMode('Time', 0);
+      }
+
     }
 
     function timeStateAlreadyExists(component, time) {

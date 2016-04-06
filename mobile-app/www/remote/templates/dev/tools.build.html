@@ -137,12 +137,15 @@
                     <li class='bg-smoke 15xy' ng-repeat='time_state in current_state.timeline' ng-if='!page.dropdowns.filterOptions.selectedIndex'>
                         <span>{{$index + 1}}</span>
                         <div class='relative'>
-                            <h1><span class="lowercase weight-900"> t = {{ time_state.time || time_state.components[0].time_states[0].time}}<span class='weight-300' ng-if='time_state.time !== "init"'>ms</span></span></h1>
-                            <!-- Collapse component vars-->
+                            <h1><a ng-click='editTimeStateTime(time_state)'> <span class="lowercase weight-900"> t = {{ time_state.time || time_state.components[0].time_states[0].time}}<span class='weight-300' ng-if='time_state.time !== "init" && time_state.time !== "new"'>ms</span></span></a></h1>
                             <a ng-click='time_state.collapsed = !time_state.collapsed' ng-class="{'collapse': !component.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
+                            <a class='relative full-y bg-charcoal bg-charcoal-50p txt-5' ng-click='removeTimeState($index)'>x</a>
                         </div>
                         <div class="relative bg-charcoal ugrid-3" ng-show='!time_state.collapsed'>
-                            <h1 class='p20xy full-x txt-3 uppercase weight-400'> # Components: {{time_state.components.length}}  </h1>
+                            <!-- <h1 class='p20xy full-x txt-3 uppercase weight-400'> # Components: {{time_state.components.length}}  </h1> -->
+                            <ul class='time-state-component-bar p20xy bg-charcoal' style='max-height:100px;'>
+
+                            </ul>
                             <ul class="ugrid-2 build-css-header" ng-show='!component.collapsed'>
                                 <li>Property</li>
                                 <li>Value</li>
@@ -314,7 +317,7 @@
             </div>
             <nav class="build-aside-bottom">
                 <ul>
-                    <li><a class="build-add-element" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a></li>
+                    <li><a class="build-add-element" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click="addNewTimeState()"></a></li>
                     <li><a ng-include="img_base + BASE + 'templates/svg/main/arrow.html'"></a></li>
                     <li><a ng-click='playStateComponents(current_states.states[current_states.selectedIndex].components)' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a></li>
                     <li><a ng-include="img_base + BASE + 'templates/svg/main/arrow.html'"></a></li>
