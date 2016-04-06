@@ -8,6 +8,31 @@
   display: -webkit-flex;
   display: flex;
   height: 100%;
+  overflow: hidden;
+}
+
+#build .dropdown > div a svg {
+  background: #43cb9d;
+}
+
+#build .dropdown > div a:hover svg, #build .dropdown > div a:focus svg {
+  background: #6bd6b2;
+}
+
+#build .dropdown > div a:active svg {
+  background: #2fac82;
+}
+
+#build .dropdown > ul li {
+  background: rgba(76, 85, 89, 0.9);
+}
+
+#build .dropdown > ul li:hover, #build .dropdown > ul li:focus {
+  background: rgba(47, 172, 130, 0.9);
+}
+
+#build .dropdown > ul li:active {
+  background: rgba(107, 214, 178, 0.9);
 }
 
 #build > main {
@@ -68,30 +93,6 @@
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 5px;
-}
-
-#build > main .build-main-top > div > div .dropdown > div a svg {
-  background: #43cb9d;
-}
-
-#build > main .build-main-top > div > div .dropdown > div a:hover svg, #build > main .build-main-top > div > div .dropdown > div a:focus svg {
-  background: #6bd6b2;
-}
-
-#build > main .build-main-top > div > div .dropdown > div a:active svg {
-  background: #2fac82;
-}
-
-#build > main .build-main-top > div > div .dropdown > ul li {
-  background: rgba(76, 85, 89, 0.9);
-}
-
-#build > main .build-main-top > div > div .dropdown > ul li:hover, #build > main .build-main-top > div > div .dropdown > ul li:focus {
-  background: rgba(47, 172, 130, 0.9);
-}
-
-#build > main .build-main-top > div > div .dropdown > ul li:active {
-  background: rgba(107, 214, 178, 0.9);
 }
 
 #build > main .build-main-top .build-main-settings {
@@ -289,12 +290,82 @@
   background: #4c5559;
 }
 
+#build > aside.build-settings > h1 {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 64px;
+  padding: 0 15px;
+  background: #43cb9d;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+#build > aside.build-settings > ul li {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 48px;
+}
+
+#build > aside.build-settings > ul li > div, #build > aside.build-settings > ul li > a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  padding: 0 15px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#build > aside.build-settings > ul li > div {
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+#build > aside.build-settings > ul li > a:hover, #build > aside.build-settings > ul li > a:focus {
+  background: #8A9EA3;
+}
+
+#build > aside.build-settings > ul li > a:active {
+  background: #748489;
+}
+
 #build > aside .build-aside-top {
   height: 64px;
   background: #637074;
 }
 
-#build > aside .build-aside-top ul {
+#build > aside .build-aside-top > ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -307,21 +378,21 @@
   overflow: auto;
 }
 
-#build > aside .build-aside-top ul::-webkit-scrollbar {
+#build > aside .build-aside-top > ul::-webkit-scrollbar {
   display: none;
 }
 
-#build > aside .build-aside-top ul::-moz-scrollbar {
+#build > aside .build-aside-top > ul::-moz-scrollbar {
   display: none;
 }
 
-#build > aside .build-aside-top ul li {
+#build > aside .build-aside-top > ul > li {
   position: relative;
   height: 100%;
   width: 64px;
 }
 
-#build > aside .build-aside-top ul li:not(:last-child):after {
+#build > aside .build-aside-top > ul > li:not(:last-child):after {
   border-radius: 1000px;
   content: "";
   display: block;
@@ -334,7 +405,7 @@
   background: #929b9e;
 }
 
-#build > aside .build-aside-top ul li a {
+#build > aside .build-aside-top > ul > li a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -356,19 +427,86 @@
   font-weight: 600;
 }
 
-#build > aside .build-aside-top ul li a:hover, #build > aside .build-aside-top ul li a:focus {
+#build > aside .build-aside-top > ul > li a:hover, #build > aside .build-aside-top > ul > li a:focus {
   background: #a1e5ce;
   color: #428a74;
 }
 
-#build > aside .build-aside-top ul li a:active {
+#build > aside .build-aside-top > ul > li a:active, #build > aside .build-aside-top > ul > li a.active {
   background: #43cb9d;
   color: white;
 }
 
+#build > aside .build-aside-state {
+  position: relative;
+  z-index: 10;
+  height: 64px;
+}
+
+#build > aside .build-aside-state > ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+}
+
+#build > aside .build-aside-state > ul > li {
+  width: 50%;
+  height: 100%;
+}
+
+#build > aside .build-aside-state > ul > li > div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 15px;
+}
+
+#build > aside .build-aside-state > ul > li > div h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#build > aside .build-aside-state > ul > li:first-child > div {
+  background: #748489;
+  text-transform: lowercase;
+}
+
+#build > aside .build-aside-state > ul > li:first-child > div h2, #build > aside .build-aside-state > ul > li:first-child > div h1 {
+  width: 100%;
+}
+
+#build > aside .build-aside-state > ul > li:first-child > div h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#build > aside .build-aside-state > ul > li:last-child > div {
+  background: #40484B;
+}
+
 #build > aside .build-element-list {
   width: 100%;
-  height: calc(100% - 128px);
+  height: calc(100% - 128px - 64px);
   overflow: auto;
   background: #4c5559;
 }
@@ -453,13 +591,83 @@
 }
 
 #build > aside .build-element-list > ul > li > div:first-of-type h1 {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
   padding: 0 15px;
   font-size: 24px;
   font-weight: 600;
-  width: calc(100% - 48px - 48px);
+  width: calc(100% - 48px - 48px - 48px);
 }
 
-#build > aside .build-element-list > ul > li > div:first-of-type a {
+#build > aside .build-element-list > ul > li > div:first-of-type h1.has-link {
+  padding: 0;
+}
+
+#build > aside .build-element-list > ul > li > div:first-of-type h1.has-link a:first-child {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 0 15px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#build > aside .build-element-list > ul > li > div:first-of-type h1.has-link a:first-child:hover, #build > aside .build-element-list > ul > li > div:first-of-type h1.has-link a:first-child:focus {
+  background: #43cb9d;
+}
+
+#build > aside .build-element-list > ul > li > div:first-of-type h1.has-link a:first-child:active {
+  background: #a1e5ce;
+  color: #428a74;
+}
+
+#build > aside .build-element-list > ul > li > div:first-of-type > span {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+#build > aside .build-element-list > ul > li > div:first-of-type > span .fixed {
+  position: absolute !important;
+}
+
+#build > aside .build-element-list > ul > li > div:first-of-type > a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -481,13 +689,13 @@
   font-weight: 600;
 }
 
-#build > aside .build-element-list > ul > li > div:first-of-type a svg {
+#build > aside .build-element-list > ul > li > div:first-of-type > a svg {
   display: block;
   width: 36px;
   height: 36px;
 }
 
-#build > aside .build-element-list > ul > li > div:first-of-type a svg * {
+#build > aside .build-element-list > ul > li > div:first-of-type > a svg * {
   fill: none;
   stroke: white;
   stroke-width: 6px;
@@ -495,7 +703,7 @@
   stroke-linejoin: round;
 }
 
-#build > aside .build-element-list > ul > li > div:first-of-type a.collapse svg {
+#build > aside .build-element-list > ul > li > div:first-of-type > a.collapse svg {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
@@ -503,39 +711,47 @@
   transform: rotate(180deg);
 }
 
-#build > aside .build-element-list > ul > li > div:first-of-type a:hover, #build > aside .build-element-list > ul > li > div:first-of-type a:focus {
+#build > aside .build-element-list > ul > li > div:first-of-type > a:hover, #build > aside .build-element-list > ul > li > div:first-of-type > a:focus {
   background: #a1e5ce;
 }
 
-#build > aside .build-element-list > ul > li > div:first-of-type a:hover svg *, #build > aside .build-element-list > ul > li > div:first-of-type a:focus svg * {
+#build > aside .build-element-list > ul > li > div:first-of-type > a:hover svg *, #build > aside .build-element-list > ul > li > div:first-of-type > a:focus svg * {
   stroke: #428a74;
 }
 
-#build > aside .build-element-list > ul > li > div:first-of-type a:active {
+#build > aside .build-element-list > ul > li > div:first-of-type > a:active {
   background: #428a74;
 }
 
-#build > aside .build-element-list > ul > li > div:first-of-type a:active svg * {
+#build > aside .build-element-list > ul > li > div:first-of-type > a:active svg * {
   stroke: white;
 }
 
-#build > aside .build-element-list > ul > li > div:first-of-type a.build-activate {
+#build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate {
   background: #8A9EA3;
 }
 
-#build > aside .build-element-list > ul > li > div:first-of-type a.build-activate:hover, #build > aside .build-element-list > ul > li > div:first-of-type a.build-activate:focus {
+#build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate.close svg {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate:hover, #build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate:focus {
   background: #c5cfd1;
 }
 
-#build > aside .build-element-list > ul > li > div:first-of-type a.build-activate:hover svg *, #build > aside .build-element-list > ul > li > div:first-of-type a.build-activate:focus svg * {
+#build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate:hover svg *, #build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate:focus svg * {
   stroke: #657377;
 }
 
-#build > aside .build-element-list > ul > li > div:first-of-type a.build-activate:active {
+#build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate:active {
   background: #657377;
 }
 
-#build > aside .build-element-list > ul > li > div:first-of-type a.build-activate:active svg * {
+#build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate:active svg * {
   stroke: white;
 }
 
@@ -575,6 +791,78 @@
 
 #build > aside .build-element-list > ul > li .component-inject .fixed {
   position: absolute !important;
+}
+
+#build > aside .build-element-list > ul > li .build-save {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+
+#build > aside .build-element-list > ul > li .build-save li {
+  position: relative;
+  width: 50%;
+}
+
+#build > aside .build-element-list > ul > li .build-save li:not(:last-child):after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 10;
+  top: 5px;
+  right: -1px;
+  height: calc(100% - 10px);
+  width: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#build > aside .build-element-list > ul > li .build-save li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 28px;
+  background: #748489;
+}
+
+#build > aside .build-element-list > ul > li .build-save li a svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+#build > aside .build-element-list > ul > li .build-save li a svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#build > aside .build-element-list > ul > li .build-save li a:hover, #build > aside .build-element-list > ul > li .build-save li a:focus {
+  background: #428a74;
+}
+
+#build > aside .build-element-list > ul > li .build-save li a:active {
+  background: #5ca893;
 }
 
 #build > aside .build-element-list > ul > li .build-css-header {
@@ -682,6 +970,10 @@
   font-size: 18px;
 }
 
+#build > aside .build-element-list > ul > li .build-css-list > li > div:empty {
+  padding: 0;
+}
+
 #build > aside .build-element-list > ul > li .build-css-list > li > div > span, #build > aside .build-element-list > ul > li .build-css-list > li > div input, #build > aside .build-element-list > ul > li .build-css-list > li > div .build-class {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -719,23 +1011,6 @@
 #build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a svg {
   width: 30px;
   height: 30px;
-  background: #43cb9d;
-}
-
-#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:hover svg, #build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:focus svg {
-  background: #a1e5ce;
-}
-
-#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:hover svg *, #build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:focus svg * {
-  stroke: #428a74;
-}
-
-#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:active svg {
-  background: #428a74;
-}
-
-#build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > div a:active svg * {
-  stroke: white;
 }
 
 #build > aside .build-element-list > ul > li .build-css-list > li > div .dropdown > ul {
@@ -1366,12 +1641,164 @@
   display: none !important;
 }
 
-#build > aside .build-aside-bottom {
-  height: 64px;
-  background: #637074;
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-select {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
 }
 
-#build > aside .build-aside-bottom ul {
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-select > h1 {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  background: #43cb9d;
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-select > ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: calc(100% - 48px);
+  height: 48px;
+  overflow-x: auto;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-select > ul::-webkit-scrollbar {
+  display: none;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-select > ul::-moz-scrollbar {
+  display: none;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-select > ul > li {
+  position: relative;
+  min-width: 100px;
+  height: 100%;
+  overflow: hidden;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-select > ul > li .fixed {
+  position: absolute !important;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-select > ul > li.selected {
+  background: rgba(67, 203, 157, 0.2);
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-header li {
+  width: 50%;
+  text-align: center;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) input, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) > span, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) .build-class, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) input, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) > span, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) .build-class {
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  white-space: nowrap;
+  overflow: auto;
+  border-radius: 2px;
+  text-align: left !important;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) input::-webkit-scrollbar, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) > span::-webkit-scrollbar, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) .build-class::-webkit-scrollbar, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) input::-webkit-scrollbar, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) > span::-webkit-scrollbar, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) .build-class::-webkit-scrollbar {
+  display: none;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) input::-moz-scrollbar, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) > span::-moz-scrollbar, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) .build-class::-moz-scrollbar, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) input::-moz-scrollbar, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) > span::-moz-scrollbar, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) .build-class::-moz-scrollbar {
+  display: none;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) input:not(:first-child), #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) > span:not(:first-child), #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) .build-class:not(:first-child), #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) input:not(:first-child), #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) > span:not(:first-child), #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) .build-class:not(:first-child) {
+  margin-top: 10px;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) .dropdown-container:not(:first-child), #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) .dropdown-container:not(:first-child) {
+  margin-top: 10px;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) button:not(:first-child), #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) button:not(:first-child) {
+  margin-top: 10px;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) > span, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) > span {
+  background: #637074;
+  font-weight: 600;
+  text-align: center;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) > span.build-class, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) > span.build-class {
+  background: #769090 !important;
+  font-weight: 700;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) {
+  width: 50%;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) {
+  width: calc(50% - 30px);
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(3) {
+  width: 30px;
+  font-weight: 600;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(3) a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+#build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(3) a:not(:first-child) {
+  margin-top: 10px;
+}
+
+#build > aside .build-aside-bottom {
+  height: 64px;
+  background: #748489;
+}
+
+#build > aside .build-aside-bottom > ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1382,11 +1809,11 @@
   height: 100%;
 }
 
-#build > aside .build-aside-bottom ul li {
+#build > aside .build-aside-bottom > ul > li {
   height: 100%;
 }
 
-#build > aside .build-aside-bottom ul li a {
+#build > aside .build-aside-bottom > ul > li > a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -1407,13 +1834,13 @@
   margin: 0 auto;
 }
 
-#build > aside .build-aside-bottom ul li a svg {
+#build > aside .build-aside-bottom > ul > li > a svg {
   display: block;
   width: 48px;
   height: 48px;
 }
 
-#build > aside .build-aside-bottom ul li a svg * {
+#build > aside .build-aside-bottom > ul > li > a svg * {
   fill: none;
   stroke: white;
   stroke-width: 4px;
@@ -1421,61 +1848,82 @@
   stroke-linejoin: round;
 }
 
-#build > aside .build-aside-bottom ul li a:hover, #build > aside .build-aside-bottom ul li a:focus {
+#build > aside .build-aside-bottom > ul > li > a:hover, #build > aside .build-aside-bottom > ul > li > a:focus {
   background: #a1e5ce;
 }
 
-#build > aside .build-aside-bottom ul li a:hover svg *, #build > aside .build-aside-bottom ul li a:focus svg * {
+#build > aside .build-aside-bottom > ul > li > a:hover svg *, #build > aside .build-aside-bottom > ul > li > a:focus svg * {
   stroke: #428a74;
 }
 
-#build > aside .build-aside-bottom ul li a:active {
+#build > aside .build-aside-bottom > ul > li > a:active {
   background: #43cb9d;
 }
 
-#build > aside .build-aside-bottom ul li a:active svg * {
+#build > aside .build-aside-bottom > ul > li > a:active svg * {
   stroke: white;
 }
 
-#build > aside .build-aside-bottom ul li .build-add-element, #build > aside .build-aside-bottom ul li .bg.bg-moxie {
+#build > aside .build-aside-bottom > ul > li .build-add-element {
+  background: #8A9EA3;
+}
+
+#build > aside .build-aside-bottom > ul > li .build-add-element:active {
+  background: #657377;
+}
+
+#build > aside .build-aside-bottom > ul > li .bg.bg-moxie {
   background: #43cb9d;
 }
 
-#build > aside .build-aside-bottom ul li .build-add-element svg, #build > aside .build-aside-bottom ul li .bg.bg-moxie svg {
+#build > aside .build-aside-bottom > ul > li .bg.bg-moxie:active {
+  background: #428a74;
+}
+
+#build > aside .build-aside-bottom > ul > li .build-add-element svg, #build > aside .build-aside-bottom > ul > li .bg.bg-moxie svg {
   width: 36px;
   height: 36px;
 }
 
-#build > aside .build-aside-bottom ul li .build-add-element svg *, #build > aside .build-aside-bottom ul li .bg.bg-moxie svg * {
+#build > aside .build-aside-bottom > ul > li .build-add-element svg *, #build > aside .build-aside-bottom > ul > li .bg.bg-moxie svg * {
   stroke-width: 6px;
 }
 
-#build > aside .build-aside-bottom ul li .build-add-element:active, #build > aside .build-aside-bottom ul li .bg.bg-moxie:active {
-  background: #428a74;
+#build > aside .build-aside-bottom > ul > li.build-play-all {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: calc(100% - 128px - 64px);
 }
 
-#build > aside .build-aside-bottom ul li:not(:nth-child(3)) {
-  width: 64px;
+#build > aside .build-aside-bottom > ul > li.build-play-all > a {
+  margin: 0;
 }
 
-#build > aside .build-aside-bottom ul li:nth-child(2) svg {
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  transform: rotate(-90deg);
+#build > aside .build-aside-bottom > ul > li.build-play-all .dropdown-container {
+  margin-right: 15px;
+  width: calc(100% - 64px - 15px) !important;
 }
 
-#build > aside .build-aside-bottom ul li:nth-child(3) {
-  width: calc(100% - 192px);
+#build > aside .build-aside-bottom > ul > li.build-play-all .dropdown-container .dropdown > ul {
+  top: auto !important;
+  bottom: 24px;
 }
 
-#build > aside .build-aside-bottom ul li:nth-child(4) svg {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
+#build .build-property-options {
+  z-index: 2000;
 }
 
 /* ---------- DASHBOARD */

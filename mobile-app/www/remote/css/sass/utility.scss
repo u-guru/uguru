@@ -805,6 +805,9 @@ input, fieldset {
 }
 
 // z-index
+.z-index-0 {
+	z-index: 0!important;
+}
 .z-index-1 {
 	z-index: 1!important;
 }
@@ -945,10 +948,14 @@ input, fieldset {
 }
 // SVG
 .svg-white {
+	display: block;
 	svg {
 		display: block;
 		* {
+			fill: none!important;
 			stroke: white!important;
+			stroke-linecap: round!important;
+			stroke-linejoin: round!important;
 		}
 	}
 }
