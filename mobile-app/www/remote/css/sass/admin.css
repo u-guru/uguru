@@ -536,7 +536,39 @@
   padding: 0 15px;
   font-size: 24px;
   font-weight: 600;
-  width: calc(100% - 48px - 48px);
+  width: calc(100% - 48px - 48px - 48px);
+}
+
+#build > aside .build-element-list > ul > li > div:first-of-type h1.has-link {
+  padding: 0;
+}
+
+#build > aside .build-element-list > ul > li > div:first-of-type h1.has-link a:first-child {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 0 15px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#build > aside .build-element-list > ul > li > div:first-of-type h1.has-link a:first-child:hover, #build > aside .build-element-list > ul > li > div:first-of-type h1.has-link a:first-child:focus {
+  background: #43cb9d;
+}
+
+#build > aside .build-element-list > ul > li > div:first-of-type h1.has-link a:first-child:active {
+  background: #a1e5ce;
+  color: #428a74;
 }
 
 #build > aside .build-element-list > ul > li > div:first-of-type > span {
@@ -629,6 +661,14 @@
   background: #8A9EA3;
 }
 
+#build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate.close svg {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
 #build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate:hover, #build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate:focus {
   background: #c5cfd1;
 }
@@ -681,6 +721,78 @@
 
 #build > aside .build-element-list > ul > li .component-inject .fixed {
   position: absolute !important;
+}
+
+#build > aside .build-element-list > ul > li .build-save {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+
+#build > aside .build-element-list > ul > li .build-save li {
+  position: relative;
+  width: 50%;
+}
+
+#build > aside .build-element-list > ul > li .build-save li:not(:last-child):after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 10;
+  top: 5px;
+  right: -1px;
+  height: calc(100% - 10px);
+  width: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#build > aside .build-element-list > ul > li .build-save li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 28px;
+  background: #748489;
+}
+
+#build > aside .build-element-list > ul > li .build-save li a svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+#build > aside .build-element-list > ul > li .build-save li a svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#build > aside .build-element-list > ul > li .build-save li a:hover, #build > aside .build-element-list > ul > li .build-save li a:focus {
+  background: #428a74;
+}
+
+#build > aside .build-element-list > ul > li .build-save li a:active {
+  background: #5ca893;
 }
 
 #build > aside .build-element-list > ul > li .build-css-header {
@@ -786,6 +898,10 @@
   align-items: flex-start;
   padding: 10px 0;
   font-size: 18px;
+}
+
+#build > aside .build-element-list > ul > li .build-css-list > li > div:empty {
+  padding: 0;
 }
 
 #build > aside .build-element-list > ul > li .build-css-list > li > div > span, #build > aside .build-element-list > ul > li .build-css-list > li > div input, #build > aside .build-element-list > ul > li .build-css-list > li > div .build-class {
@@ -1453,10 +1569,6 @@
 
 #build > aside .build-element-list.animation > ul > li:before {
   display: none !important;
-}
-
-#build > aside .build-element-list.animation > ul > li.build-timeline > div:first-of-type h1 {
-  width: calc(100% - 96px - 48px);
 }
 
 #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-select {

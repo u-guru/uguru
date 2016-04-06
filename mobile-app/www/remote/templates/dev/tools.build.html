@@ -76,13 +76,10 @@
         </main>
         <aside class='settings relative' ng-if='settings.activated'>
             <div class='absolute full-xy bg-charcoal'>
-                <ul class='bg-shamrock weight-700 txt-center flex-wrap-center'>
-                    <li class='full-x p20xy txt-7'><a ng-click="clearCache()">Settings</a></li>
-                </ul>
-                <ul class='full-x flex-wrap-center ugrid'>
-
-                    <li class='full-x p20xy'><a ng-click="clearCache()">Clear Cache</a></li>
-                    <li class='full-x p20xy'><a ng-click="settings.hideUIEditor = !settings.hideUIEditor">Toggle UI Builder</a></li>
+                <div class="bg-moxie weight-700 txt-center flex-wrap-center full-x p15xy txt-7">Settings</div>
+                <ul>
+                    <li><a class="block p15xy" ng-click="clearCache()">Clear Cache</a></li>
+                    <li><a class="block p15xy" ng-click="settings.hideUIEditor = !settings.hideUIEditor">Toggle UI Builder</a></li>
                 </ul>
             </div>
         </aside>
@@ -118,12 +115,24 @@
                     <li class="build-timeline" ng-repeat='time_state in current_state.timeline' ng-if='!page.dropdowns.filterOptions.selectedIndex'>
                         <span>{{$index + 1}}</span>
                         <div class='relative'>
-                            <h1 class="relative"><span class="lowercase">t = {{ time_state.time || time_state.components[0].time_states[0].time}}<span ng-if='time_state.time !== "init"'>ms</span></span><a class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a></h1>
-                            <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/local.html'"></a>
-                            <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/save.html'"></a>
+                            <h1 class="relative has-link">
+                                <a ng-click='editTimeStateTime(time_state)'>
+                                    <span class="lowercase">t = {{ time_state.time || time_state.components[0].time_states[0].time}}<span ng-if='time_state.time !== "init"'>ms</span></span>
+                                </a>
+                                <a class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
+                            </h1>
+                            <a class='build-activate close' ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click='removeTimeState($index)'></a>
                             <!-- Collapse component vars-->
                             <a ng-click='time_state.collapsed = !time_state.collapsed' ng-class="{'collapse': !time_state.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
                         </div>
+                        <ul class="build-save">
+                            <li>
+                                <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/local.html'"></a>
+                            </li>
+                            <li>
+                                <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/save.html'"></a>
+                            </li>
+                        </ul>
                         <div class="relative" ng-show='!time_state.collapsed'>
                             <div class="build-css-select">
                                 <h1>{{time_state.components.length}}</h1>
@@ -164,7 +173,7 @@
                                         <a ng-click='component.removePropertyField(component, component.init_time_state, $index)'>&times;</a>
                                     </div>
                                 </li>
-                                <li ng-if='component.time_states && component.time_states.length' ng-repeat='nested_time_state in component.time_states track by $index' ng-if='nested_time_state === time_state'>
+                                <li ng-repeat='nested_time_state in component.time_states track by $index' ng-if='nested_time_state === time_state'>
                                     <div>
                                         <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>
                                             {{property.name}}
@@ -189,6 +198,9 @@
                                     </div>
                                 </li>
                                 <li>
+                                    <div>
+                                        <span class="radius-2" ng-repeat='property in component.empty_time_state.properties'>{{property.name}}</span>
+                                    </div>
                                     <div class='empty-state-values'>
                                         <span class='relative' ng-repeat='property in component.empty_time_state.properties' class='radius-2 bg-charcoal'>
                                             <input ng-keyup="($event.keyCode === 13 || $event.keyCode === 9) && inputAddSaveProperty($event.keyCode, component)" class="radius-2 {{component.selector}}-empty-input {{component.selector}}-empty-input-{{$index}} absolute full-xy top-0 left-0" placeholder="value plz" ng-model="property.value" ng-if='property.type === "css_text"'/>
@@ -200,7 +212,7 @@
                                         <a ng-click='component.removePropertyField(component, component.empty_time_state, $index, $parent.$index, true)' ng-repeat='property in component.empty_time_state.properties'>&times;</a>
                                     </div>
                                     <div class="full-x">
-                                        <button class='bg-moxie height-36 txt-20 radius-2' ng-click='component.addTimeState(component, component.empty_time_state)'>Save and add another</button>
+                                        <button class='bg-moxie height-36 txt-20 radius-2' ng-click='component.addPropertyField(component, component.empty_time_state)'>Add</button>
                                     </div>
                                 </li>
                             </ul>
@@ -222,14 +234,14 @@
                             <!-- Collapse component vars-->
                             <a ng-click='component.collapsed = !component.collapsed' ng-class="{'collapse': !component.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
 						</div>
-                        <!-- <ul class="build-save" ng-if="false">
+                        <ul class="build-save">
                             <li>
                                 <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/local.html'"></a>
                             </li>
                             <li>
                                 <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/save.html'"></a>
                             </li>
-                        </ul> -->
+                        </ul>
                         <div class="relative" ng-show='!component.collapsed' ng-class="{'opacity-50': !component.active}">
                             <div class='component-inject overflow-hidden' ng-class="{'height-300': component.expand}"></div>
                             <a ng-if='!component.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='component.expand = true;'>Expand</a>
@@ -312,7 +324,7 @@
             </div>
             <nav class="build-aside-bottom">
                 <ul>
-                    <li><a disabled class="build-add-element opacity-50" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a></li>
+                    <li><a class="build-add-element" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click="addNewTimeState()"></a></li>
                     <li class="build-play-all">
                         <a ng-click='playStateComponents(current_states.states[current_states.selectedIndex].components)' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a>
                         <dropdown class="full-x" size="small" ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
