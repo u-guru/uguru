@@ -199,11 +199,17 @@ angular.module('uguru.dev.controllers')
               var indexComponentElement = document.querySelector('.' + indexComponent.selector);
               var clonedComponentElem = recursiveClone(indexComponentElement);
               clonedComponentElem.className = clonedComponentElem.className + ' full-xy absolute';
+              var playButtonElement = document.createElement("a");
+              playButtonElement.className = "class='high-z-index m05xy right-0 bottom-0 absolute";
+              playButtonElement.innerHTML = "&rtrif;"
+              var divItemElement = document.createElement("div");
+              divItemElement.appendChild(clonedComponentElem);
               var listItemElement = document.createElement("li");
+              listItemElement.appendChild(divItemElement);
               //@gabrielle-note --> add your custom class here
               listItemElement.className = "padding-20xy bg-charcoal";
               listItemElement.style.cssText = 'max-width:75px; max-height:75px;'
-              listItemElement.appendChild(clonedComponentElem);
+              // listItemElement.
               indexContainer.appendChild(listItemElement);
             }
           }

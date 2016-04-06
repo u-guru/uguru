@@ -102,7 +102,7 @@
                     <li ng-repeat='interactive_state in current_states.states'><a ng-click='swapInteractiveState($index)' ng-class="{'active': $index === current_states.selectedIndex}">{{$index + 1}}</a></li>
                 </ul>
             </nav>
-            
+
             <nav class="build-aside-state">
                 <ul ng-repeat='current_state in current_states.states' ng-show="current_states.selectedIndex === $index">
                     <li>
@@ -151,8 +151,8 @@
                                 <h1>{{time_state.components.length}}</h1>
                                 <!-- @samir -->
                                 <!-- component previews go in here <div></div> -->
-                                <ul>
-                                    <li>
+                                <ul class='time-state-component-bar'>
+                                    <!-- <li>
                                         <div></div>
                                         <a class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
                                     </li>
@@ -167,7 +167,7 @@
                                     <li>
                                         <div></div>
                                         <a class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                             <ul class="build-css-header" ng-show='!component.collapsed'>
@@ -240,7 +240,7 @@
                              <!-- &rarr; <span class="opacity-50">{{component.selector}}</span> -->
                              <!-- Activate component vars-->
                             <span class='build-preview'>
-                                
+
                             </span>
                              <a class="build-activate opacity-50" ng-click='component.active = !component.active' ng-if='!component.active'>off</a>
                              <a class="build-activate" ng-click='component.active = !component.active' ng-if='component.active'>on</a>
@@ -347,7 +347,7 @@
                 </ul>
             </nav>
         </aside>
-        
+
         <div class='build-property-options fixed bg-slate-90p top-0 right-0 expanded flex-wrap-center flex-stretch' ng-show="selectPropertyActivated">
             <a class='absolute weight-700 high-index-z bg-charcoal txt-5 p20xy txt-white right-0 m10xy top-0' ng-click='toggleClassProperties()'>&times;</a>
             <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p">
