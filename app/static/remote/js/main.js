@@ -236,11 +236,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/signup.html',
         controller: 'SignupController'
   }).
-  state('root.guru-remote', {
-    url:'/guru-remote',
-    templateUrl: BASE + 'templates/guru.remote.html',
-    controller: 'GuruRemoteController'
-  }).
+  // state('root.guru-remote', {
+  //   url:'/guru-remote',
+  //   templateUrl: BASE + 'templates/guru.remote.html',
+  //   controller: 'GuruRemoteController'
+  // }).
   state('root.content', {
     url:'/content',
     templateUrl: BASE + 'templates/content.general.html'
