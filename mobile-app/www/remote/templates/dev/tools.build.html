@@ -40,9 +40,7 @@
                     </h1>
                 </div> -->
             </div>
-
-            <nav class="build-main-bottom" ng-if="false">
-                <div class="build-search-results active">
+            <!-- <div class="build-search-results active">
                     <ul>
                         <li ng-repeat="component in page.components">
 
@@ -69,9 +67,13 @@
                         <li><a>checkbox</a></li>
                         <li><a>profile card</a></li>
                     </ul>
+                </div> -->
+                <!-- <label for="build-search" ng-include="img_base + BASE + 'templates/svg/main/search.html'"></label>
+                <input id="build-search" type="text" placeholder="Add component"/> -->
+            <nav id='bottom-nav-status-bar' class="opacity-0 build-main-bottom bg-transparent bg-charcoal-50p bottom-0 left-0 high-z-index absolute full-x" style='width:66.6% !important;'>
+                <div class='flex-wrap-center txt-white full-xy absolute uppercase bg-charcoal-50p'>
+                    {{page.status.msg}}
                 </div>
-                <label for="build-search" ng-include="img_base + BASE + 'templates/svg/main/search.html'"></label>
-                <input id="build-search" type="text" placeholder="Add component"/>
             </nav>
         </main>
         <aside class='build-settings relative' ng-if='settings.activated'>
@@ -129,14 +131,23 @@
                         <span>{{$index + 1}}</span>
                         <div class='relative'>
                             <h1 class="relative has-link">
-                                <a ng-click='editTimeStateTime(time_state)'>
-                                    <span class="lowercase">t = {{ time_state.time || time_state.components[0].time_states[0].time}}<span ng-if='time_state.time !== "init"'>ms</span></span>
+                                <a ng-click='editTimeStateTime(timeline, time_state, $event)' ng-if='!time_state.edit_mode' >
+                                    <span class="lowercase">
+                                        t = {{ time_state.time || time_state.components[0].time_states[0].time}}
+                                        <span ng-if='time_state.time !== "init"'>ms</span>
+                                    </span>
                                 </a>
+                                <div class='ugrid-2' ng-if='time_state.edit_mode'>
+                                    <input class='full-y p05xy' placeholder="value" ng-model="time_state.time"/>
+                                    <a ng-click='editTimeStateTime(current_state.timeline, time_state, $event, "sort")' class='txt-2'> Save </a>
+                                    <a class='txt-2' ng-click='editTimeStateTime(current_state.timeline, time_state, $event, "cancel")'> Cancel </a>
+                                </div>
+
                                 <a class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
                             </h1>
                             <a class='build-activate close' ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click='removeTimeState($index)'></a>
                             <!-- Collapse component vars-->
-                            <a ng-click='time_state.collapsed = !time_state.collapsed' ng-class="{'collapse': !time_state.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
+                            <a ng-click='updateTimeStateCollapses(current_state.timeline, time_state)' ng-class="{'collapse': !time_state.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
                         </div>
                         <ul class="build-save">
                             <li>
@@ -152,51 +163,42 @@
                                 <!-- @samir -->
                                 <!-- component previews go in here <div></div> -->
                                 <ul class='time-state-component-bar'>
-                                    <!-- <li>
-                                        <div></div>
+                                    <li ng-click='selectTimeStateComponent(time_state, component, $event)' ng-repeat='component in time_state.components track by $index' class='time-state-component-item'>
+                                        <div class='full-y'></div>
                                         <a class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
                                     </li>
-                                    <li>
-                                        <div></div>
-                                        <a class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
-                                    </li>
-                                    <li class="selected">
-                                        <div></div>
-                                        <a class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
-                                    </li>
-                                    <li>
-                                        <div></div>
-                                        <a class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
-                                    </li> -->
                                 </ul>
                             </div>
                             <ul class="build-css-header" ng-show='!component.collapsed'>
-                                <li>Property</li>
-                                <li>Value</li>
+                                <li>@INIT Property</li>
+                                <li>@INIT Value</li>
                             </ul>
                             <ul class="build-css-list full-x" ng-repeat='component in time_state.components' ng-if='time_state.component_selected === component'>
                                 <li class='init full-x relative' ng-if='component.init_time_state && component.init_time_state.time < 0'>
                                     <div>
                                         <span ng-repeat='property in component.init_time_state.properties'>{{property.name}}</span>
                                     </div>
-                                    <div>
-                                        <input placeholder="value" ng-model="property.value"/>
+                                    <div class='relative flex-wrap-center'>
+                                        <div ng-repeat='property in component.init_time_state.properties'>
+                                            <input ng-if='property.type === "css_text"' placeholder="value" ng-model="property.value"/>
+                                            <span ng-if='property.type !== "css_text"'> -- </span>
+                                        </div>
                                     </div>
                                     <div>
                                         <a ng-click='component.removePropertyField(component, component.init_time_state, $index)'>&times;</a>
                                     </div>
                                 </li>
-                                <li ng-repeat='nested_time_state in component.time_states track by $index' ng-if='nested_time_state === time_state'>
+                                <li ng-repeat='nested_time_state in component.time_states track by $index' >
                                     <div>
-                                        <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>
+                                        <span class="radius-2" ng-repeat='property in nested_time_state.properties' ng-click='component.addPropertyField(component, component.nested_time_state)'>
                                             {{property.name}}
                                             <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
                                         </span>
-                                        <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_class"'>
+                                        <span ng-repeat='property in nested_time_state.properties' class="build-class radius-2" ng-if='property.type === "css_class"'ng-click='component.addPropertyField(component, component.empty_time_state, property.name)'>
                                             .{{property.name}}
                                             <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
                                         </span>
-                                        <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_animation"'>
+                                        <span ng-click='component.addPropertyField(component, component.empty_time_state, property.name)' ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_animation"'>
                                             .{{property.name}}
                                             <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
                                         </span>
@@ -243,10 +245,10 @@
                              </span>
                              <!-- Activate component vars-->
 
-                             <a class="build-activate opacity-50" ng-click='component.active = !component.active' ng-if='!component.active'>off</a>
-                             <a class="build-activate" ng-click='component.active = !component.active' ng-if='component.active'>on</a>
+                            <!--  <a class="build-activate opacity-50" ng-click='component.active = !component.active' ng-if='!component.active'>off</a>
+                             <a class="build-activate" ng-click='component.active = !component.active' ng-if='component.active'>on</a> -->
                             <!-- Collapse component vars-->
-                            <a ng-click='component.collapsed = !component.collapsed' ng-class="{'collapse': !component.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
+                            <a ng-click='updateComponentCollapsed(current_state, component)' ng-class="{'collapse': !component.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
 						</div>
                         <ul class="build-save">
                             <li>
@@ -256,18 +258,18 @@
                                 <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/save.html'"></a>
                             </li>
                         </ul>
-                        <div class="relative" ng-show='!component.collapsed' ng-class="{'opacity-50': !component.active}">
+                        <div class="relative" ng-show='!component.collapsed'>
                             <div class='component-inject overflow-hidden' ng-class="{'height-300': component.expand}"></div>
                             <a ng-if='!component.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='component.expand = true;'>Expand</a>
                             <a ng-if='component.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='component.expand = false;'>Reduce</a>
                             <a ng-click='playOneComponent(component)' class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
                         </div>
-                        <ul class="build-css-header" ng-show='!component.collapsed' ng-class="{'opacity-50': !component.active}">
+                        <ul class="build-css-header" ng-show='!component.collapsed' >
                             <li>Time</li>
                             <li>Property</li>
                             <li>Value</li>
                         </ul>
-                        <ul class="build-css-list" ng-show='!component.collapsed' ng-class="{'opacity-50': !component.active}">
+                        <ul class="build-css-list" ng-show='!component.collapsed'>
                             <li class='init' ng-if='component.init_time_state && component.init_time_state.time < 0'>
                                 <div class='relative'>
                                     <span class="radius-2-left">@T</span><span class="radius-2-right">INIT</span>
@@ -285,15 +287,15 @@
                             <li ng-if='component.time_states && component.time_states.length' ng-repeat='time_state in component.time_states track by $index'>
                                 <div><span class="radius-2-left">@T</span><span class="radius-2-right">{{time_state.time}}</span></div>
                                 <div>
-                                    <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"'>
+                                    <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"' ng-click='component.addPropertyField(component, time_state, property.name)'>
                                         {{property.name}}
                                         <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
                                     </span>
-                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_class"'>
+                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_class"' ng-click='component.addPropertyField(component, time_state, property.name)'>
                                         .{{property.name}}
                                         <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
                                     </span>
-                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_animation"'>
+                                    <span ng-repeat='property in time_state.properties' class="build-class radius-2" ng-if='property.type === "css_animation"' ng-click='component.addPropertyField(component, time_state, property.name)'>
                                         .{{property.name}}
                                         <span class='opacity-50'> &nbsp;&nbsp;&nbsp;[{{property.type.replace('css_','')}}] </span>
                                     </span>
@@ -340,7 +342,7 @@
                 <ul>
                     <li><a class="build-add-element" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click="addNewTimeState()"></a></li>
                     <li class="build-play-all">
-                        <a ng-click='playStateComponents(current_states.states[current_states.selectedIndex].components)' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a>
+                        <a ng-click='playStates(current_states.states[current_states.selectedIndex].components)' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a>
                         <dropdown class="full-x" size="small" ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
                     </li>
                     <li><a class="bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/save.html'" ng-click='saveCurrentStatesToLocalStorage()'></a></li>
@@ -351,48 +353,48 @@
 
         <div class='build-property-option-list fixed bg-slate-90p top-0 right-0 expanded overflow-auto' ng-show="selectPropertyActivated">
             <header>
-                <input placeholder="filter options"/>
+                <input ng-keyup="focusFirstTabbableInput(propertySearchText)" placeholder="filter options" ng-model="propertySearchText" id='property-search-input'/>
                 <a ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click='toggleClassProperties()'></a>
             </header>
             <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p">
-                <li class='flex-wrap-center full-x p20xy txt-7 txt-white text-center'>
-                    Demo
+                <li class='flex-wrap-center full-x p20xy txt-7 txt-white text-center' id='hold-for-demo-text'>
+                    Tap & Hold for Demo
                 </li>
                 <li>
-                    <button class='txt-1 bg-gold starred normal height-36 radius-2'>
+                    <button class='txt-1 bg-gold starred normal height-36 radius-2' tabindex="-1">
                         <span ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
                         <span>Starred</span>
                     </button>
                 </li>
                 <li>
-                    <button class='txt-1 bg-orange flagged normal height-36 radius-2'>
+                    <button class='txt-1 bg-orange flagged normal height-36 radius-2' tabindex="-1">
                         <span ng-include="img_base + BASE + 'templates/svg/main/info.html'"></span>
                         <span>Flagged</span>
                     </button>
                 </li>
             </ul>
-            <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p">
+            <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p properties-list">
                 <li class='flex-wrap-center full-x p20xy txt-7 txt-white text-center'>
-                    Common CSS Properties
+                    Common CSS Properties {{properties.common_css_styles.length}}
                 </li>
-                <li ng-repeat='property in properties.common_css_styles |limitTo:100 track by $index'>
-                    <button ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property, "css_text")' class='txt-1 bg-moxie normal height-36 radius-2'>{{property}}</button>
+                <li ng-repeat='property in properties.common_css_styles | filter:propertySearchText |limitTo:50 track by $index'>
+                    <button on-release="onReleasePropertyDemo()" on-hold="injectPropertyIntoDemo(property, 'css_text')" ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property, "css_text")' class='txt-1 bg-moxie normal height-36 radius-2'>{{property}}</button>
                 </li>
             </ul>
-            <ul class="flex-wrap-start p15-grid full-x">
+            <ul class="flex-wrap-start p15-grid full-x properties-list">
                 <li class='flex-wrap-center full-x p20xy txt-7 txt-white text-center'>
-                    Supported Animation Classes
+                    Supported Animation Classes {{properties.supported_animations.length}}
                 </li>
-                <li ng-repeat='property in properties.supported_animations | limitTo:100 track by $index'>
-                    <button ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property, "css_animation" )' class='txt-1 bg-moxie normal height-36 radius-2'>{{property}}</button>
+                <li ng-repeat='property in properties.supported_animations | filter:propertySearchText | limitTo:50 track by $index'>
+                    <button on-hold="injectPropertyIntoDemo(property, 'css_animation')" ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property, "css_animation" )' class='txt-1 bg-moxie normal height-36 radius-2'>{{property}}</button>
                 </li>
             </ul>
-            <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p">
+            <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p properties-list">
                 <li class='flex-wrap-center full-x p20xy txt-7 txt-white text-center'>
-                    Supported Regular CSS Classes
+                    Supported Regular CSS Classes {{properties.supported_classes.length}}
                 </li>
-                <li ng-repeat='property in properties.supported_classes | limitTo:100 track by $index'>
-                    <button ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property, "css_class")' class='txt-1 bg-moxie normal height-36 radius-2'>{{property}}</button>
+                <li class='property-item' ng-repeat='property in properties.supported_classes | filter:propertySearchText | limitTo:50 track by $index'>
+                    <button on-hold="injectPropertyIntoDemo(property, 'css_class')" ng-click='component_selected.confirmPropertyField(component_selected, time_state_selected, property, "css_class")' class='txt-1 bg-moxie normal height-36 radius-2'>{{property}}</button>
                 </li>
             </ul>
         </div>
