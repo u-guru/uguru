@@ -383,6 +383,16 @@ angular.module('uguru.components', [])
     }
   }
 })
+.directive('albumTile', function() {
+  return {
+    templateUrl: BASE + 'templates/elements/components/tiles/album.tpl',
+    restrict: 'E',
+    replace: "true",
+    scope: {
+        album: '=',
+    }
+  }
+})
 .directive('profileTile', function() {
   return {
     templateUrl: BASE + 'templates/elements/components/tiles/profile.tpl',
@@ -415,10 +425,6 @@ angular.module('uguru.components', [])
 })
 .directive('universityMarker', function() {
   return {
-    templateURL: BASE + 'templates/elements/components/links/map.marker.tpl'
-    //pass in user
-    //pass in user.university
-    //pass in user.profile-url
-    // pass in user.student_courses
+    templateUrl: BASE + 'templates/elements/components/links/map.marker.tpl'
   }
 })
