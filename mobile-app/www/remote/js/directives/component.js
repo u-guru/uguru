@@ -42,21 +42,14 @@ angular.module('uguru.components', [])
 //////////
 // End-CONTAINERS
 //////////
-// .directive("toggle", ['$timeout', function($timeout) {
-//   return {
-//     templateUrl: BASE + 'templates/elements/containers/',
-//     scope: {
-//         label: '=label',
-//         labelPos: '=labelPos',
-//         isOn: '=on',
-//         isOff: '=off'
-//         // tests:'=testArr',
-//     },
-//       replace: true,
-//     }
-//   }
-// ])
-.directive("dropdown", ['$timeout', function($timeout) {
+    .directive("dropdown", ['$timeout', function($timeout) {
+        function getTemplateURL(elem, attr) {
+            if (attr.type && attr.type === 'color') {
+                return BASE + 'templates/elements/components/inputs/dropdowns/color.tpl'
+            } else {
+                return BASE + 'templates/elements/components/inputs/dropdown.tpl'
+            }
+        }
         return {
             templateUrl: getTemplateURL,
             scope: {
@@ -68,6 +61,11 @@ angular.module('uguru.components', [])
             link: function(scope, element, attr) {
                 if (!scope.size) {
                     scope.size = 'small';
+                }
+                if (attr.type && attr.type.toLowerCase() === 'color') {
+                    scope.type = 'color';
+                } else {
+                    scope.type = '';
                 }
                 scope.click = function(option, index) {
 
@@ -92,14 +90,6 @@ angular.module('uguru.components', [])
                 }
             }
         };
-
-        function getTemplateURL(elem, attr) {
-            if (attr.type && attr.type.length && attr.type === 'splash') {
-                return BASE + 'templates/elements/components/inputs/dropdowns/splash.tpl'
-            } else {
-                return BASE + 'templates/elements/components/inputs/dropdown.tpl'
-            }
-        }
     }])
     .directive("userIcon", ['$compile', function($compile) {
         return {
@@ -139,45 +129,18 @@ angular.module('uguru.components', [])
             }
         };
     }])
-    .directive("profileThumb", ['$compile', function($compile) {
+    .directive("profileThumb", function() {
         return {
-            templateUrl: BASE + 'templates/elements/components/info/profile.mini.tpl',
+            templateUrl: BASE + 'templates/elements/components/cards/profile.mini.tpl',
             scope: {
                 color: '=color',
                 url: '=url',
                 size: '=size'
             },
             replace: true,
-            restrict: 'E',
-            link: function(scope, element, attr) {
-                if (scope.size && scope.size === 'small') {
-                    scope.size = '32'
-                } else if (scope.size && scope.size === 'medium') {
-                    scope.size = '64'
-                }
-                if (!scope.url || !scope.url.length) {
-                    scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
-                }
-
-                var request = new XMLHttpRequest();
-                request.open('GET', scope.url, true);
-                request.onreadystatechange = function() {
-                    if (request.readyState === 4) {
-                        if (request.status === 404) {
-                            scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
-                            // element.attr('url',scope.url);
-                            // $compile(element.contents())(scope);
-                            // scope.$apply();
-                            // console.log('Check',scope.url, typeof(scope.url))
-
-                        }
-                    }
-                };
-                // request.send()
-
-            }
+            restrict: 'E'
         };
-    }])
+    })
     .directive("checkbox", function() {
         return {
             templateUrl: BASE + 'templates/elements/components/inputs/checkbox.tpl',
@@ -200,12 +163,34 @@ angular.module('uguru.components', [])
             }
         }
     })
+    .directive("radio", function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/inputs/radio.tpl',
+            scope: {
+                onPropChange: '=onPropChange',
+                label: '=label',
+                value: '=value',
+                checked: "=checked"
+            },
+            restrict: 'E',
+            link: function(scope, element, attr) {
+
+                if (!scope.label || !scope.label.length) {
+                    scope.label = 'Radio Label'
+                }
+                scope.checked = scope.checked || false;
+                // if (scope.onPropChange) {
+                //   // scope.onPropChange(scope, )
+                // }
+            }
+        }
+    })
     .directive("tooltip", function() {
         return {
             templateUrl: BASE + 'templates/elements/components/info/tooltip.tpl',
             scope: {
-                title: '=title',
-                text: '=buttonText',
+                content: '=content',
+                button: '=button',
                 direction: '=direction'
             },
             restrict: 'E',
@@ -450,10 +435,17 @@ angular.module('uguru.components', [])
         return {
             templateUrl: BASE + 'templates/elements/components/tiles/album.tpl',
             restrict: 'E',
-            replace: "true",
+            replace: true,
             scope: {
                 album: '=',
             }
+        }
+    })
+    .directive('profileWidgetCard', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/cards/profile.widget.tpl',
+            restrict: 'E',
+            replace: true
         }
     })
     .directive('profileTile', function() {
@@ -464,11 +456,6 @@ angular.module('uguru.components', [])
     .directive('profileCard', function() {
         return {
             templateUrl: BASE + 'templates/elements/components/cards/profile.tpl'
-        }
-    })
-    .directive('profileWidgetCard', function() {
-        return {
-            templateUrl: BASE + 'templates/elements/components/cards/profile.widget.tpl'
         }
     })
     .directive('universityCard', function() {
@@ -483,6 +470,98 @@ angular.module('uguru.components', [])
     })
     .directive('universityMarker', function() {
         return {
-            templateUrl: BASE + 'templates/elements/components/links/map.marker.tpl'
+            templateUrl: BASE + 'templates/elements/components/links/map.marker.tpl',
+            restrict: 'E',
+            replace: true
+        }
+    })
+    .directive('badge', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/info/badge.tpl',
+            restrict: 'E',
+            replace: true
+        }
+    })
+    .directive('attachList', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/info/attachment.tpl',
+            restrict: 'E',
+            replace: true
+        }
+    })
+    .directive('rangeSlider', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/inputs/slider.tpl',
+            restrict: 'E',
+            replace: true
+        }
+    })
+    .directive('arrowTabs', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/progress/arrow.tpl',
+            restrict: 'E',
+            replace: true
+        }
+    })
+    .directive('progressBar', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/progress/bar.tpl',
+            restrict: 'E',
+            replace: true
+        }
+    })
+    .directive('progressBarCircles', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/progress/circular.tpl',
+            restrict: 'E',
+            replace: true
+        }
+    })
+    .directive('categoryTile', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/tiles/category.tpl',
+            restrict: 'E',
+            replace: true
+        }
+    })
+    .directive('pricingTile', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/tiles/pricing.tpl',
+            restrict: 'E',
+            replace: true
+        }
+    })
+    .directive('requestTile', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/tiles/request.tpl',
+            restrict: 'E',
+            replace: true
+        }
+    })
+    // .directive("toggle", ['$timeout', function($timeout) {
+    //     return {
+    //         templateUrl: BASE + 'templates/elements/containers/',
+    //         scope: {
+    //             label: '=label',
+    //             labelPos: '=labelPos',
+    //             isOn: '=on',
+    //             isOff: '=off'
+    //             // tests:'=testArr',
+    //         },
+    //         replace: true,
+    //     }
+    // }])
+    .directive('toggle', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/inputs/toggle.tpl',
+            restrict: 'E',
+            replace: true
+        }
+    })
+    .directive('inputsAll', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/inputs/text/all_inputs.tpl',
+            restrict: 'E',
+            replace: true
         }
     })

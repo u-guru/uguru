@@ -5874,6 +5874,74 @@ input[type=range] {
 	}
 }
 
+// profile widget
+.pf-aside-widget {
+	position: relative;
+	border: 2px solid white;
+	border-radius: 2px;
+	width: 100%;
+	max-width: 400px;
+	min-height: 100px;
+	background: rgba(lighten($slate, 15%), .3);
+	text-align: center;
+	color: white;
+	.user-icon {
+		border-width: 2px!important;
+		position: absolute!important;
+		top: -64px;
+		left: 50%;
+		margin-left: -64px;
+	}
+	button {
+		@include round;
+		border: 2px solid white;
+		position: absolute!important;
+		bottom: -32px;
+		left: 50%;
+		margin-left: -100px;
+		width: 200px;
+	}
+	> div {
+		padding: 79px 15px 47px;
+		.pf-name {
+			width: 100%;
+			font-size: 20px;
+			font-weight: 600;
+		}
+		.pf-school-name {
+			margin-top: 0;
+			width: 100%;
+			font-size: 16px;
+			font-weight: 400;
+		}
+		.pf-rating {
+			margin-top: 10px;
+			max-width: 200px;
+		}
+		.pf-reviews {
+			width: 100%;
+			font-size: 16px!important;
+			font-weight: 400;
+			text-transform: uppercase;
+		}
+	}
+	@media screen and (min-width:768px) {
+		> div {
+			.pf-name {
+				font-size: 28px;
+			}
+			.pf-school-name {
+				font-size: 20px;
+			}
+		}
+	}
+}
+@media screen and (min-width:1000px) {
+	.pf-aside-widget {
+		width: calc(100% - 30px);
+	}
+}
+
 // student card
 .student-card {
 	position: relative;
@@ -5916,6 +5984,7 @@ input[type=range] {
 	}
 	> svg {
 		display: block;
+		width: 100%;
 		max-width: 100%;
 		height: auto;
 	}
@@ -5980,6 +6049,7 @@ input[type=range] {
 				margin: 0!important;
 				span:first-child {
 					display: block;
+					white-space: nowrap;
 					width: 150px;
 				}
 				span:nth-child(2) {
@@ -9667,7 +9737,7 @@ a.category-tile {
 }
 
 /* ---------- ATTACHMENT LISTS */
-.attachment-list-small {
+.attach-list {
 	ul {
 		@include flex;
 		@include flex-wrap;
@@ -9745,6 +9815,7 @@ a.category-tile {
 		}
 	}
 }
+// [deprecate]
 .attachment-list {
 	width: 100%;
 	min-height: 100px;

@@ -7295,6 +7295,80 @@ input[type=range]:focus::-ms-fill-upper {
   background-color: #55A4B7;
 }
 
+.pf-aside-widget {
+  position: relative;
+  border: 2px solid white;
+  border-radius: 2px;
+  width: 100%;
+  max-width: 400px;
+  min-height: 100px;
+  background: rgba(99, 112, 116, 0.3);
+  text-align: center;
+  color: white;
+}
+
+.pf-aside-widget .user-icon {
+  border-width: 2px !important;
+  position: absolute !important;
+  top: -64px;
+  left: 50%;
+  margin-left: -64px;
+}
+
+.pf-aside-widget button {
+  border-radius: 1000px;
+  border: 2px solid white;
+  position: absolute !important;
+  bottom: -32px;
+  left: 50%;
+  margin-left: -100px;
+  width: 200px;
+}
+
+.pf-aside-widget > div {
+  padding: 79px 15px 47px;
+}
+
+.pf-aside-widget > div .pf-name {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.pf-aside-widget > div .pf-school-name {
+  margin-top: 0;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.pf-aside-widget > div .pf-rating {
+  margin-top: 10px;
+  max-width: 200px;
+}
+
+.pf-aside-widget > div .pf-reviews {
+  width: 100%;
+  font-size: 16px !important;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 768px) {
+  .pf-aside-widget > div .pf-name {
+    font-size: 28px;
+  }
+  .pf-aside-widget > div .pf-school-name {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .pf-aside-widget {
+    width: calc(100% - 30px);
+  }
+}
+
 .student-card {
   position: relative;
   width: 100%;
@@ -7362,6 +7436,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .student-card > svg {
   display: block;
+  width: 100%;
   max-width: 100%;
   height: auto;
 }
@@ -7462,6 +7537,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .student-card .school-id-inside .school-id-bottom h3 span:first-child {
   display: block;
+  white-space: nowrap;
   width: 150px;
 }
 
@@ -11675,7 +11751,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
 }
 
 /* ---------- ATTACHMENT LISTS */
-.attachment-list-small ul {
+.attach-list ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -11689,11 +11765,11 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   padding: 7.5px;
 }
 
-.attachment-list-small ul li {
+.attach-list ul li {
   padding: 7.5px;
 }
 
-.attachment-list-small ul li > a, .attachment-list-small ul li > span {
+.attach-list ul li > a, .attach-list ul li > span {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -11709,51 +11785,51 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   padding: 5px 10px 5px 5px;
 }
 
-.attachment-list-small ul li > a span, .attachment-list-small ul li > span span {
+.attach-list ul li > a span, .attach-list ul li > span span {
   display: block;
 }
 
-.attachment-list-small ul li > a span:nth-child(1) svg, .attachment-list-small ul li > span span:nth-child(1) svg {
+.attach-list ul li > a span:nth-child(1) svg, .attach-list ul li > span span:nth-child(1) svg {
   display: block;
   width: 36px;
   height: 36px;
 }
 
-.attachment-list-small ul li > a span:nth-child(2), .attachment-list-small ul li > span span:nth-child(2) {
+.attach-list ul li > a span:nth-child(2), .attach-list ul li > span span:nth-child(2) {
   margin-left: 5px;
   font-size: 16px;
   font-weight: 600;
 }
 
-.attachment-list-small.no-padding ul li > a, .attachment-list-small.no-padding ul li > span {
+.attach-list.no-padding ul li > a, .attach-list.no-padding ul li > span {
   padding: 0;
 }
 
-.attachment-list-small.student ul li > a, .attachment-list-small.student ul li > span {
+.attach-list.student ul li > a, .attach-list.student ul li > span {
   background: #F1F1F1;
   color: #40484B;
 }
 
-.attachment-list-small.student ul li > a:hover, .attachment-list-small.student ul li > a:focus {
+.attach-list.student ul li > a:hover, .attach-list.student ul li > a:focus {
   background: #637074;
   color: white;
 }
 
-.attachment-list-small.student ul li > a:active {
+.attach-list.student ul li > a:active {
   background: #50A5DD;
 }
 
-.attachment-list-small.guru ul li > a, .attachment-list-small.guru ul li > span {
+.attach-list.guru ul li > a, .attach-list.guru ul li > span {
   background: #637074;
   color: white;
 }
 
-.attachment-list-small.guru ul li > a:hover, .attachment-list-small.guru ul li > a:focus {
+.attach-list.guru ul li > a:hover, .attach-list.guru ul li > a:focus {
   background: #40484B;
   color: white;
 }
 
-.attachment-list-small.guru ul li > a:active {
+.attach-list.guru ul li > a:active {
   background: #69B3A5;
 }
 

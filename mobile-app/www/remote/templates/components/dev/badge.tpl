@@ -1,4 +1,9 @@
-<div class="absolute full-xy top-0 left-0 flex-wrap-center">
+<a class="badge-container click">
+    <span class="badge-left bg-moxie">1</span>
+    <span>Messages</span>
+</a>
+
+<!-- <div class="absolute full-xy top-0 left-0 flex-wrap-center">
     <ul class="demo">
         <li>
             <a class="badge-container click">
@@ -25,4 +30,4 @@
             </div>
         </li>
     </ul>
-</div>
+</div> -->

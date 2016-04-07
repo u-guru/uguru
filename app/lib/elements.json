@@ -320,7 +320,7 @@
             "active": true, 
             "id": 5, 
             "name": "Profile Thumbnail", 
-            "ref": "cards-profile-mini", 
+            "ref": "cards-profile-thumb", 
             "sample": {
                 "scope": {
                     "color": "delivery", 
@@ -331,7 +331,7 @@
             }, 
             "tags": [
                 "cards", 
-                "profile.mini"
+                "profile.thumb"
             ], 
             "template_url": "templates/cards/profile.mini.tpl"
         }, 
@@ -441,11 +441,11 @@
         {
             "active": true, 
             "id": 10, 
-            "name": "Icon Attachment", 
-            "ref": "info-attachment", 
+            "name": "Attach List", 
+            "ref": "info-attach-list", 
             "sample": {
                 "scope": {}, 
-                "template": "<attachment type=\"component.sample.scope.type\"> </attachment>"
+                "template": "<attach-list> </attach-list>"
             }, 
             "tags": [
                 "info", 
@@ -459,7 +459,8 @@
             "name": "Badge", 
             "ref": "info-badge", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<badge> </badge>"
             }, 
             "tags": [
                 "info", 
@@ -486,20 +487,6 @@
                 "pennant"
             ], 
             "template_url": "templates/info/pennant.tpl"
-        }, 
-        {
-            "active": true, 
-            "id": 13, 
-            "name": "Profile Section", 
-            "ref": "info-profile-section", 
-            "sample": {
-                "scope": {}
-            }, 
-            "tags": [
-                "info", 
-                "profile.section"
-            ], 
-            "template_url": "templates/info/profile.section.tpl"
         }, 
         {
             "active": true, 
@@ -542,11 +529,16 @@
         {
             "active": true, 
             "id": 17, 
-            "name": "Tool Tip", 
-            "notes": "CSS issues", 
+            "name": "Tooltip", 
+            "notes": "", 
             "ref": "info-tooltip", 
             "sample": {
-                "scope": {}
+                "scope": {
+                    "button": "Okay", 
+                    "content": "This is a tooltip", 
+                    "direction": "top"
+                }, 
+                "template": "<tooltip button=\"component.sample.scope.button\" content=\"component.sample.scope.content\" direction=\"component.sample.scope.direction\"> </tooltip>"
             }, 
             "tags": [
                 "info", 
@@ -556,12 +548,7 @@
         }, 
         {
             "active": true, 
-            "bugs": [
-                {
-                    "assigned": "samir", 
-                    "reason": "doesn't work"
-                }
-            ], 
+            "bugs": "", 
             "id": 18, 
             "name": "User Icon", 
             "notes": "Add pre-loader states while the image is loading", 
@@ -582,7 +569,7 @@
         {
             "active": true, 
             "id": 19, 
-            "name": "Drag-in Attachment Box", 
+            "name": "Attachment Box", 
             "ref": "inputs-attach-box", 
             "sample": {
                 "scope": {}
@@ -599,7 +586,10 @@
             "name": "Standard Checkbox", 
             "ref": "inputs-checkbox", 
             "sample": {
-                "scope": {}
+                "scope": {
+                    "label": "Checkbox"
+                }, 
+                "template": "<checkbox label=\"component.sample.scope.label\"> </checkbox>"
             }, 
             "tags": [
                 "inputs", 
@@ -662,10 +652,13 @@
         {
             "active": true, 
             "id": 23, 
-            "name": "Standard Radio Input", 
+            "name": "Standard Radio", 
             "ref": "inputs-radio", 
             "sample": {
-                "scope": {}
+                "scope": {
+                    "label": "Radio"
+                }, 
+                "template": "<radio label=\"component.sample.scope.label\"> </radio>"
             }, 
             "tags": [
                 "inputs", 
@@ -677,13 +670,15 @@
             "active": true, 
             "id": 24, 
             "name": "Standard Range Slider", 
-            "ref": "inputs-slider", 
+            "ref": "inputs-range-slider", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<range-slider> </range-slider>"
             }, 
             "tags": [
                 "inputs", 
-                "slider"
+                "slider", 
+                "range"
             ], 
             "template_url": "templates/inputs/slider.tpl"
         }, 
@@ -693,13 +688,14 @@
             "name": "Arrow Tab Bar", 
             "ref": "inputs-tab-arrow", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<tabs-arrow></tabs-arrow>"
             }, 
             "tags": [
                 "inputs", 
                 "tab.arrow"
             ], 
-            "template_url": "templates/inputs/tab.arrow.tpl"
+            "template_url": "templates/progress/arrow.tpl"
         }, 
         {
             "id": 26, 
@@ -731,7 +727,8 @@
             "name": "Standard Toggle", 
             "ref": "inputs-toggle", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<toggle></toggle>"
             }, 
             "tags": [
                 "inputs", 
@@ -741,53 +738,28 @@
         }, 
         {
             "active": true, 
+            "cp_link": "", 
             "id": 29, 
-            "name": "Colorful dropdown", 
+            "name": "Color Dropdowns", 
+            "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
             "ref": "inputs-dropdowns-color", 
             "sample": {
-                "scope": {}
-            }, 
-            "tags": [
-                "inputs", 
-                "dropdowns", 
-                "color"
-            ], 
-            "template_url": "templates/inputs/dropdowns/color.tpl"
-        }, 
-        {
-            "active": true, 
-            "cp_link": "", 
-            "id": 30, 
-            "name": "Dropdowns", 
-            "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
-            "ref": "inputs-dropdowns-splash", 
-            "sample": {
                 "scope": {
-                    "key": "name", 
-                    "label": "Top Fruits", 
                     "options": [
-                        {
-                            "name": "apples"
-                        }, 
-                        {
-                            "name": "bananas"
-                        }, 
-                        {
-                            "name": "oranges"
-                        }
+                        "apples", 
+                        "bananas", 
+                        "oranges"
                     ], 
-                    "selectedIndex": 0, 
-                    "size": "small"
+                    "selectedIndex": 0
                 }, 
-                "template": "<dropdown type=\"splash\" ng-model=\"component.sample.scope\"></dropdown>"
+                "template": "<dropdown type=\"color\" ng-model=\"component.sample.scope\"></dropdown>"
             }, 
             "stage": 1, 
             "tags": [
                 "inputs", 
-                "dropdowns", 
-                "splash"
+                "dropdowns"
             ], 
-            "template_url": "templates/inputs/dropdowns/splash.tpl"
+            "template_url": "templates/inputs/dropdowns/color.tpl"
         }, 
         {
             "id": 31, 
@@ -878,7 +850,8 @@
             "name": "Gallery Inputs", 
             "ref": "inputs-text-all_inputs", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<inputs-gallery></inputs-gallery>"
             }, 
             "tags": [
                 "inputs", 
@@ -927,7 +900,7 @@
                     "categoryColor": "categoryColor", 
                     "guru": {
                         "greeting": "Hey there", 
-                        "guru_introduction": "I can tutor you in any bio class. We\u0102\u02d8\u00c2\u0080\u00c2\u0099ll get you to an A in no time!", 
+                        "guru_introduction": "I can tutor you in any bio class. We can get you to an A in no time!", 
                         "last_active_min": "24m", 
                         "name": "Gabrielle", 
                         "profile_url": "http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256", 
@@ -940,7 +913,7 @@
                     }, 
                     "size": "medium"
                 }, 
-                "template": "", 
+                "template": "<map-marker></map-marker>", 
                 "variations": {
                     "modes": [
                         "view", 
@@ -976,7 +949,8 @@
             "name": "Standard Progress Bar", 
             "ref": "progress-bar", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<progress-bar></progress-bar>"
             }, 
             "tags": [
                 "progress", 
@@ -1060,7 +1034,8 @@
             "name": "Category Tile", 
             "ref": "tiles-category", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<category-tile></category-tile>"
             }, 
             "tags": [
                 "tiles", 
@@ -1085,7 +1060,8 @@
             "name": "Pricing Page Tile", 
             "ref": "tiles-pricing", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<pricing-tile></pricing-tile>"
             }, 
             "tags": [
                 "tiles", 
@@ -1114,7 +1090,8 @@
             "name": "Request Tile", 
             "ref": "tiles-request", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<request-tile></request-tile>"
             }, 
             "tags": [
                 "tiles", 
