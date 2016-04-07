@@ -40,9 +40,10 @@ angular.module('uguru.dev.controllers')
       component: null
     }
 
-
-    $scope.storage = FileService.initUserAdminTool($scope);
-    $scope.storage.get()
+    $timeout(function() {
+      $scope.storage = FileService.initUserAdminTool($scope);
+      $scope.storage.get()
+    })
 
 
     var buildPlayerClickListenerFunc;

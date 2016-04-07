@@ -84,8 +84,8 @@ def formatHourMinute(hour, minute):
     else:
         return result + "am"
 
-def getAllAdminFiles(name="master"):
-    bucket = conn.get_bucket('uguru-admin')
+def getAllAdminFiles(bucket_name="uguru-admin"):
+    bucket = conn.get_bucket(bucket_name)
     result_dict = {}
     for key in bucket.get_all_keys():
         key_root_folder = key.name.split('/')[0]
@@ -147,6 +147,7 @@ if sys.argv and '-i' in sys.argv:
     print "\n\n-- #3.  python -f [folder name] -b [bucket name] -c [create] --#|#| creates a folder within a bucket"
     print "\n\n-- #4.  python -ua [uguru admin] get --#|#-- displays higher level directory details wihtin uguru-admin bucket"
     print "\n\n-- #5.  python -ua [uguru admin] sync -e --#|#-- syncs elements from component directory"
+
 if sys.argv and '-b' in sys.argv and '-c' in sys.argv and len(sys.argv) == 5:
     bucket_name = sys.argv[-3]
     folder_name = sys.argv[-1]
@@ -180,6 +181,11 @@ if sys.argv and '-ua' in sys.argv and 'get' in sys.argv:
         user_files = result.get(name)
         if user_files:
             pprint(user_files)
+
+    if len(sys.argv) == 5:
+        bucket_name = sys.argv[-1]
+        result = getAllAdminFiles(bucket_name)
+        pprint(result)
 
 if sys.argv and '-ua' in sys.argv and 'sync' in sys.argv:
     if len(sys.argv) == 3:
