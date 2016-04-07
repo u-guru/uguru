@@ -6643,11 +6643,17 @@ input[type=range]:focus::-ms-fill-upper {
 
 [class*="pf-thumb"] .top {
   position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
   height: calc(100% / 3);
   background: #69B3A5;
+}
+
+[class*="pf-thumb"] .user-icon {
+  position: relative;
+  z-index: 2;
 }
 
 [class*="pf-thumb"].pf-thumb-36 {

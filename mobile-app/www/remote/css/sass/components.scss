@@ -5171,11 +5171,16 @@ input[type=range] {
 	overflow: hidden;
 	.top {
 		position: absolute;
+		z-index: 1;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: calc(100% / 3);
 		background: $shamrock;
+	}
+	.user-icon {
+		position: relative;
+		z-index: 2;
 	}
 	&.pf-thumb-36 {
 		width: 36px;

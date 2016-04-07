@@ -267,12 +267,12 @@
                 "scope": {
                     "course": {
                         "color": "#003262", 
-                        "description": "UC berkeley's #1 intro computer science course", 
-                        "full_name": "beauty and joy of computing", 
+                        "description": "UC Berkeley's #1 Intro Computer Science Course", 
+                        "full_name": "Beauty and Joy of Computing", 
                         "name": "CS10"
                     }
                 }, 
-                "template": "<course-card ng-model=\"component.sample.scope.course\"> </course-card>"
+                "template": "<course-card ng-model=\"component.sample.scope.course\" type=\"link\"> </course-card><course-card ng-model=\"component.sample.scope.course\" type=\"check\"> </course-card><course-card ng-model=\"component.sample.scope.course\" type=\"hover\"> </course-card>"
             }, 
             "tags": [
                 "cards", 
@@ -319,11 +319,15 @@
         {
             "active": true, 
             "id": 5, 
-            "name": "Profile Mini Card", 
+            "name": "Profile Thumbnail", 
             "ref": "cards-profile-mini", 
             "sample": {
-                "scope": {}, 
-                "template": "<profile-mini-card></profile-mini-card>"
+                "scope": {
+                    "color": "delivery", 
+                    "profile_url": "http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200", 
+                    "size": "72"
+                }, 
+                "template": "<profile-thumb size=\"component.sample.scope.size\" color=\"component.sample.scope.color\" url=\"component.sample.scope.profile_url\"></profile-thumb>"
             }, 
             "tags": [
                 "cards", 
@@ -565,7 +569,7 @@
             "sample": {
                 "scope": {
                     "profile_url": "http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200", 
-                    "size": "medium"
+                    "size": "64"
                 }, 
                 "template": "<user-icon size=\"component.sample.scope.size\" url=\"component.sample.scope.profile_url\"> </user-icon>"
             }, 
