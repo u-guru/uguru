@@ -1,4 +1,4 @@
-<a class="album-tile">
+<!-- <a class="album-tile">
     <div class="album-echo"><div style="background: {{album.bgColor}};"></div></div>
     <div class="album-art animate">
         <svg class="square" viewBox="0 0 100 100">
@@ -14,4 +14,4 @@
         <h1 class="animate" style="background: #020c39;">Midnight<br/>Cramming</h1>
         <h2 class="animate" style="background: #020c39;">{{album.subheader}}</h2>
     </div>
-</a>
+</a> -->

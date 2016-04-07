@@ -15,7 +15,8 @@ angular.module('uguru.dev.controllers')
   'AnimationService',
   'KeyboardService',
   '$interval',
-  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService, KeyboardService, $interval) {
+  'FileService',
+  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService, KeyboardService, $interval, FileService) {
 
     // KeyboardService.preventDefaultCutPaste();
     KeyboardService.initCopyPasteFunctionCallbacks();
@@ -38,6 +39,10 @@ angular.module('uguru.dev.controllers')
       property: null,
       component: null
     }
+
+
+    $scope.storage = FileService.initUserAdminTool($scope);
+    $scope.storage.get()
 
 
     var buildPlayerClickListenerFunc;
@@ -101,6 +106,7 @@ angular.module('uguru.dev.controllers')
                 if (tempWidthDeviant && tempHeightDeviant) {
                   resultDict = {component: indexElem, widthDeviant: tempWidthDeviant, heightDeviant:  tempHeightDeviant, height: thresHeight, width: thresWidth};
                   resultArr.push(resultDict);
+                  //is child of
                 }
               }
             }

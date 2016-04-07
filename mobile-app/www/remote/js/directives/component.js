@@ -383,26 +383,6 @@ angular.module('uguru.components', [])
     }
   }
 })
-.directive('albumTile', function() {
-  return {
-    templateUrl: BASE + 'templates/elements/components/tiles/album.tpl',
-    restrict: 'E',
-    replace: "true",
-    scope: {
-        album: '=',
-    }
-  }
-})
-.directive('profileTile', function() {
-  return {
-    templateUrl: BASE + 'templates/elements/components/tiles/profile.tpl',
-  }
-})
-.directive('profileCard', function() {
-  return {
-    templateUrl: BASE + 'templates/elements/components/cards/profile.tpl'
-  }
-})
 .directive('profileMiniCard', function() {
   return {
     templateUrl: BASE + 'templates/elements/components/cards/profile.mini.tpl'
