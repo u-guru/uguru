@@ -10,7 +10,7 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
 
 	var deviceKeyboardExists = false;
 	var deviceKeyboardOpen = false;
-     var keyupNotRecent;
+    var keyupNotRecent;
     var keydownNotRecent;
     // function preventDefaultCutPaste() {
     //     document.body.oncopy = function() { alert('yo');return false; }

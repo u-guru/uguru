@@ -560,6 +560,77 @@ def cliTemplate(arr_args):
     selected_option = arr_args[int(option) - 1]
     return selected_option, int(option) - 1
 
+def getAllFiles(path, wildcard_matcher):
+    import fnmatch
+    import os
+    matches = []
+    for root, dirnames, filenames in os.walk(path):
+        for filename in fnmatch.filter(filenames, wildcard_matcher):
+            matches.append(os.path.join(root, filename))
+    return matches
+
+def getAllComponentsContainers():
+    matcher = '*.tpl'
+    path = 'mobile-app/www/remote/templates/elements'
+    matches = getAllFiles(path, matcher)
+    match_dict = {'components': [], 'containers': [], 'assets': [], "layouts":[]}
+
+    for match in matches:
+        if '/elements/components/' in match:
+            nested_path = match.split('/elements/components/')[-1]
+            nested_path_split = nested_path.split('/')
+            tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
+            _id = len(match_dict['components']) + 1
+            ref = "-".join(nested_path_split).replace('.tpl', '')
+            ref = ref.replace('.','-')
+            match_dict['components'].append({
+                'id': _id,
+                'ref': ref,
+                'template_url': 'templates/' + nested_path,
+                'tags': tags
+                })
+        elif '/elements/containers/' in match:
+            nested_path = match.split('/elements/containers/')[-1]
+            nested_path_split = nested_path.split('/')
+            tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
+            _id = len(match_dict['containers']) + 1
+            ref = "-".join(nested_path_split).replace('.tpl', '')
+            ref = ref.replace('.','-')
+            match_dict['containers'].append({
+                'id': _id,
+                'ref': ref,
+                'template_url': 'templates/' + nested_path,
+                'tags': tags
+                })
+        elif '/elements/layouts/' in match:
+            nested_path = match.split('/elements/layouts/')[-1]
+            nested_path_split = nested_path.split('/')
+            tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
+            _id = len(match_dict['layouts']) + 1
+            ref = "-".join(nested_path_split).replace('.tpl', '')
+            ref = ref.replace('.','-')
+            match_dict['layouts'].append({
+                'id': _id,
+                'ref': ref,
+                'template_url': 'templates/' + nested_path,
+                'tags': tags
+                })
+        elif '/elements/assets/' in match:
+            nested_path = match.split('/elements/assets/')[-1]
+            nested_path_split = nested_path.split('/')
+            tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
+            _id = len(match_dict['assets']) + 1
+            ref = "-".join(nested_path_split).replace('.tpl', '')
+            ref = ref.replace('.','-')
+            match_dict['assets'].append({
+                'id': _id,
+                'ref': ref,
+                'template_url': 'templates/' + nested_path,
+                'tags': tags
+                })
+    return match_dict
+
+
 def cliFormTemplate(arr_args, _type="required"):
     print "\n\nThese are the %s %s fields to fill out\n\n>>>  " % (len(arr_args), _type)
     filled_args = []
@@ -604,48 +675,9 @@ if 'sync' in args and len(args) == 3 and '-e' in args:
     components = elem_dict.get('components')
     containers = elem_dict.get('containers')
 
-    def getAllFiles(path, wildcard_matcher):
-        import fnmatch
-        import os
-        matches = []
-        for root, dirnames, filenames in os.walk(path):
-            for filename in fnmatch.filter(filenames, wildcard_matcher):
-                matches.append(os.path.join(root, filename))
-        return matches
 
-    def getAllComponentsContainers():
-        matcher = '*.tpl'
-        path = 'mobile-app/www/remote/templates/elements'
-        matches = getAllFiles(path, matcher)
-        match_dict = {'components': [], 'containers': []}
-        for match in matches:
-            if '/elements/components/' in match:
-                nested_path = match.split('/elements/components/')[-1]
-                nested_path_split = nested_path.split('/')
-                tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
-                _id = len(match_dict['components']) + 1
-                ref = "-".join(nested_path_split).replace('.tpl', '')
-                ref = ref.replace('.','-')
-                match_dict['components'].append({
-                    'id': _id,
-                    'ref': ref,
-                    'template_url': 'templates/' + nested_path,
-                    'tags': tags
-                    })
-            elif '/elements/containers/' in match:
-                nested_path = match.split('/elements/containers/')[-1]
-                nested_path_split = nested_path.split('/')
-                tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
-                _id = len(match_dict['containers']) + 1
-                ref = "-".join(nested_path_split).replace('.tpl', '')
-                ref = ref.replace('.','-')
-                match_dict['containers'].append({
-                    'id': _id,
-                    'ref': ref,
-                    'template_url': 'templates/' + nested_path,
-                    'tags': tags
-                    })
-        return match_dict
+
+
 
 
 

@@ -15,7 +15,8 @@ angular.module('uguru.dev.controllers')
   'AnimationService',
   'KeyboardService',
   '$interval',
-  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService, KeyboardService, $interval) {
+  'FileService',
+  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService, KeyboardService, $interval, FileService) {
 
     // KeyboardService.preventDefaultCutPaste();
     KeyboardService.initCopyPasteFunctionCallbacks();
@@ -40,6 +41,10 @@ angular.module('uguru.dev.controllers')
     }
 
 
+    $scope.storage = FileService.initUserAdminTool($scope);
+    $scope.storage.get()
+
+
     var buildPlayerClickListenerFunc;
     function initBuildPlayerClickListener() {
       var elemBuildPlayer = document.querySelector('.build-player');
@@ -47,16 +52,84 @@ angular.module('uguru.dev.controllers')
 
       buildPlayerClickListenerFunc = function(e) {
 
-          var className = e.target && e.target.className;
-          console.log('classname', className, typeof(className));
-          if (className && typeof(className) === 'string') {
-            alert(className);
+
+        console.log(e.target);
+        var parentChildDepth = 5;
+        if (e.target.getBoundingClientRect) {
+          var targetRect = e.target.getBoundingClientRect();
+          var thresHeight = targetRect.height;
+          var thresWidth = targetRect.width;
+          var parent, grandparent, greatGrandparent, siblings;
+          var nearbyElems = [];
+
+          if (e.target.parentNode) {
+            parent = e.target.parentNode;
+            if (parent.childNodes) {
+              nearbyElems = addElemSiblingsToArr(parent.childNodes, nearbyElems);
+              nearbyElems.push(parent);
+            }
+            if (parent.parentNode) {
+              grandparent = parent.parentNode;
+              nearbyElems.push(grandparent);
+              if (grandparent) {
+                greatGrandparent = grandparent.parentNode;
+                nearbyElems.push(greatGrandparent);
+              }
+            }
           }
+          if (e.target.childNodes && e.target.childNodes.length) {
+            for ( var i = 0; i < e.target.childNodes; i++) {
+              var indexChild = e.target.childNodes[i];
+              nearbyElems.push(indexChild);
+              if (indexChild.childNodes) {
+                for (var j = 0; j < indexChild.childNodes.length; j++) {
+                  if (indexChild.childNodes[j]) {
+                    nearbyElems.push(indexChild.childNodes[j]);
+                  }
+                }
+              }
+            }
+          }
+          console.log(nearbyElems.length, 'similar components found');
+          var widthDeviant = thresWidth;
+          var resultArr = [];
+          var heightDeviant = thresHeight;
+          var resultComponentDict = {};
+          for (var i = 0; i < nearbyElems.length; i++) {
+            var indexElem = nearbyElems[i];
+            if (indexElem.getBoundingClientRect) {
+              var indexElemRect = indexElem.getBoundingClientRect();
+              if (indexElemRect.height && indexElemRect.width) {
+                console.log(indexElemRect.height, indexElemRect.width);
+                var tempWidthDeviant = Math.abs(thresWidth - widthDeviant) < (widthDeviant * 0.1)
+                var tempHeightDeviant = Math.abs(thresHeight - heightDeviant) < (heightDeviant * 0.1)
+                if (tempWidthDeviant && tempHeightDeviant) {
+                  resultDict = {component: indexElem, widthDeviant: tempWidthDeviant, heightDeviant:  tempHeightDeviant, height: thresHeight, width: thresWidth};
+                  resultArr.push(resultDict);
+                  //is child of
+                }
+              }
+            }
+          }
+
+
+        }
+
       }
 
       if (elemBuildPlayer) {
         elemBuildPlayer.addEventListener('click', buildPlayerClickListenerFunc);
       }
+    }
+
+    function addElemSiblingsToArr(elemChildren, result) {
+      for (var i = 0; i < elemChildren.length; i++) {
+          var indexChildNode = elemChildren[i];
+          if (indexChildNode) {
+            result.push(indexChildNode);
+          }
+      }
+      return result;
     }
 
     function destroyBuildPlayerClickListener() {
@@ -1211,8 +1284,6 @@ angular.module('uguru.dev.controllers')
               } else {
                 AnimationService.animateIn(element, time_state.properties[i].name);
               }
-
-
             }
           }
         }, delay)
