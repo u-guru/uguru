@@ -109,7 +109,7 @@ gulp.task('Copy Templates',function() {
 });
 gulp.task('Copy SVG Icon',function()
 {
-	return gulp.src('templates/svg/**/*.svg',{ cwd: 'www/remote' })
+	return gulp.src(['templates/svg/main/**/*'],{ cwd: 'www/remote' })
 	   .pipe(svgmin())
 	   .pipe(svgstore({ fileName: 'icons', inlineSvg: true}))
 	   .pipe(gulp.dest(path.join(targetDir, 'svg')))

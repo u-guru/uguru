@@ -19,7 +19,7 @@ from mandrill_webhooks import MandrillWebhooks
 # Logging
 import logging
 import sys
-
+from flask_s3_direct_upload import S3UploadPolicy
 
 def _force_https(app):
     def wrapper(environ, start_response):
@@ -39,6 +39,14 @@ root.addHandler(ch)
 
 
 app = Flask(__name__, static_folder='static')
+app.config['S3_UPLOAD_BUCKET'] = os.environ.get('S3_UPLOAD_BUCKET')
+app.config['S3_UPLOAD_ACCESS_KEY'] = os.environ.get('S3_UPLOAD_ACCESS_KEY')
+app.config['S3_UPLOAD_SECRET_KEY'] = os.environ.get('S3_UPLOAD_SECRET_KEY')
+s3upload = S3UploadPolicy(app)
+
+
+
+
 app.config.from_object('config')
 sslify = SSLify(app)
 mandrill = MandrillWebhooks(app)
