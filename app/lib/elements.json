@@ -266,6 +266,7 @@
             "sample": {
                 "scope": {
                     "course": {
+                        "color": "#003262", 
                         "description": "UC berkeley's #1 intro computer science course", 
                         "full_name": "beauty and joy of computing", 
                         "name": "CS10"
@@ -1024,8 +1025,11 @@
             "ref": "tiles-album", 
             "sample": {
                 "scope": {
-                    "album_1": {
-                        "bgColor": "#020c39"
+                    "album": {
+                        "art": "https://snap-photos.s3.amazonaws.com/img-thumbs/960w/Z3VPU4IDKE.jpg", 
+                        "color": "#020c39", 
+                        "genre": "Intense EDM", 
+                        "title": "Midnight<br/>Cramming"
                     }
                 }, 
                 "template": "<album-tile album=\"component.sample.scope.album\"></album-tile>"
