@@ -10,7 +10,8 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
 
 	var deviceKeyboardExists = false;
 	var deviceKeyboardOpen = false;
-
+     var keyupNotRecent;
+    var keydownNotRecent;
     // function preventDefaultCutPaste() {
     //     document.body.oncopy = function() { alert('yo');return false; }
     //     document.body.oncut = function() { return false; }
@@ -30,8 +31,7 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
 
 
     function initOptionPressedAndReleasedFunction(on_press, on_release) {
-        var keyupNotRecent;
-        var keydownNotRecent;
+
         window.addEventListener("keydown", function(e){
             evt = (e) ? e : window.event
             if (evt.metaKey && !keydownNotRecent) {
@@ -39,7 +39,7 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
                 keydownNotRecent = true;
                 $timeout(function() {
                     keydownNotRecent = null;
-                })
+                }, 1000)
             }
         })
 
@@ -49,7 +49,7 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
                 keyupNotRecent = true;
                 $timeout(function() {
                     keyupNotRecent = null;
-                }, 500);
+                }, 1000);
             }
         }, false);
     }
