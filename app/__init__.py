@@ -20,6 +20,7 @@ from mandrill_webhooks import MandrillWebhooks
 import logging
 import sys
 from flask_s3_direct_upload import S3UploadPolicy
+from pprint import pprint
 
 def _force_https(app):
     def wrapper(environ, start_response):
@@ -39,14 +40,6 @@ root.addHandler(ch)
 
 
 app = Flask(__name__, static_folder='static')
-app.config['S3_UPLOAD_BUCKET'] = os.environ.get('S3_UPLOAD_BUCKET')
-app.config['S3_UPLOAD_ACCESS_KEY'] = os.environ.get('S3_UPLOAD_ACCESS_KEY')
-app.config['S3_UPLOAD_SECRET_KEY'] = os.environ.get('S3_UPLOAD_SECRET_KEY')
-s3upload = S3UploadPolicy(app)
-
-
-
-
 app.config.from_object('config')
 sslify = SSLify(app)
 mandrill = MandrillWebhooks(app)
@@ -63,8 +56,12 @@ try:
         app.config.update(SERVER_NAME='uguru.me')
 except:
     print "some shit went wrong on production"
+app.config['S3_UPLOAD_BUCKET'] = os.environ.get('S3_UPLOAD_BUCKET')
+app.config['S3_UPLOAD_ACCESS_KEY'] = os.environ.get('S3_UPLOAD_ACCESS_KEY')
+app.config['S3_UPLOAD_SECRET_KEY'] = os.environ.get('S3_UPLOAD_SECRET_KEY')
+print "config", pprint(app.config)
 
-
+s3upload = S3UploadPolicy(app)
 # flask-restful
 api = restful.Api(app)
 _force_https(app)
