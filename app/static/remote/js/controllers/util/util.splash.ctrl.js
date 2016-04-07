@@ -26,11 +26,12 @@ angular.module('uguru.util.controllers')
   'User',
   'AccessService',
   'AnimationService',
+  'FileService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal, Category, ScrollService, SideMenuService,
     $stateParams, Utilities, GUtilService, GMapService, University, $compile,
     ContentService, LoadingService, ContentService, CTAService, User, AccessService,
-     AnimationService) {
+     AnimationService, FileService) {
 
     $scope.nav = {activate: true};
     $scope.mad_lib = {activate: false};
@@ -41,6 +42,7 @@ angular.module('uguru.util.controllers')
 
 
 
+    $scope.storage = FileService.initUserAdminTool($scope.user);
     $scope.demographics = User.demographics;
     $scope.saveDemographic = saveDemographic;
     $scope.clearDemographic = clearDemographic;
