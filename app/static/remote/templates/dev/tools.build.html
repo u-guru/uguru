@@ -85,21 +85,37 @@
                         <h1 ng-if='file.type === "folder"' class='weight-700 bg-charcoal uppercase text-center full-x p20xy'>
                             {{file.name}}
                         </h1>
-                        <div ng-if='file.type === "file"' class='relative flex-wrap full-x p10xy' style='margin-top:10px;'>
+                        <div ng-if='file.type === "file"' class='relative flex-wrap full-x p10xy' style='margin-top:10px; height:auto !important;'>
                             <h1 class='full-x txt-5 p20x'> {{file.name.split('/').reverse()[0]}} </h1>
                             <br>
                             <div class='txt-2 weight-300 opacity-50 full-x p20x mtop10'>Last updated {{file.last_modified_formatted}}</div>
-                            <a ng-click="file.collapse = !file.collapse" class="bg-transparent high-z-index bg-slate absolute right-0 top-0 m10xy full-y">
-                                <svg viewBox="0 0 100 100" fill="#FFFFFF" style='width:50px;'>
-                                    <path d="M14,32 L50,68 L86,32"></path>
-                                </svg>
-                            </a>
-                        </div>
-                        <div ng-if='file.collapse' class='flex-wrap full-x p10xy' style='margin-top:10px;'>
-                            <div class='add-one'>
-                                <input class='full-xy' ng-model='file.new_file_name' placeholder='place new file name here'>
-                                </input>
-                                <a class='absolute right-0 top-0 bg-charcoal' ng-click='files.createFile(file.new_file_name)'>
+                            <div ng-if='file.collapse' class='txt-2 weight-300 bg-slate-50p full-x p20xy mtop10 relative'>Your cloned file #1 <a class='m20xy absolute right-0 top-0 opacity-50' ng-include='img_base + BASE + "templates/star.svg.html"' style='height:20px'> </a></div>
+                            <div ng-if='file.collapse' class='txt-2 weight-300 bg-slate-50p full-x p20xy mtop10 relative'>Your cloned file #2 <a class='m20xy absolute right-0 top-0 opacity-50' ng-include='img_base + BASE + "templates/star.svg.html"' style='height:20px'> </a></div>
+                            <div ng-if='file.collapse' class='txt-2 weight-300 bg-slate-50p full-x p20xy mtop10 relative'>Your cloned file #3 <a class='m20xy absolute right-0 top-0 opacity-50' ng-include='img_base + BASE + "templates/star.svg.html"' style='height:20px'> </a></div>
+
+                            <div ng-if='file.add_one' class='ugrid-3 txt-2 weight-300 opacity-50 full-x p20xy mtop10'>
+                                <div>
+                                    <input class='full-y' ng-model='file.new_file_name' placeholder='place new file name here'>
+                                    </input>
+                                </div>
+                                <div class='flex-wrap-center relative'>
+                                    <a class='txt-white bg-charcoal absolute full-xy' ng-click='files.createFile(file.new_file_name)'> save </a>
+                                </div>
+                                <div class='relative'>
+                                    <a class='txt-white bg-charcoal absolute full-xy' ng-click='file.add_one = null'> cancel </a>
+                                </div>
+                            </div>
+                            <div style="width:100px;" class='short-cuts flex-wrap-center absolute right-0 top-0 ugrid-2' style='margin-right:10px;'>
+                                <a ng-click="file.collapse = !file.collapse" class="bg-transparent high-z-index bg-slate full-y" style='margin-right:10px;'>
+                                    <svg viewBox="0 0 100 100" fill="#FFFFFF" style='width:40px;'>
+                                        <path d="M14,32 L50,68 L86,32"></path>
+                                    </svg>
+                                </a>
+                                <a class="build-add-element" ng-click="file.add_one = !file.add_one" style='width:40px;'>
+                                    <svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#FFFFFF" xmlns:xlink="http://www.w3.org/1999/xlink" style='min-width:40px !important;'>
+                                        <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </li>
