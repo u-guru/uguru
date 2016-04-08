@@ -574,6 +574,7 @@ def getAllComponentsContainers():
     path = 'mobile-app/www/remote/templates/elements'
     matches = getAllFiles(path, matcher)
     matches += getAllFiles(path, '*html')
+    matches += getAllFiles(path, '*svg')
     match_dict = {'components': [], 'containers': [], 'assets': [], "layouts":[]}
 
     for match in matches:
@@ -604,7 +605,6 @@ def getAllComponentsContainers():
                 'tags': tags
                 })
         elif '/elements/layouts/' in match:
-            print match
             nested_path = match.split('/elements/layouts/')[-1]
             nested_path_split = nested_path.split('/')
             tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
@@ -618,6 +618,7 @@ def getAllComponentsContainers():
                 'tags': tags
                 })
         elif '/elements/assets/' in match:
+            print match
             nested_path = match.split('/elements/assets/')[-1]
             nested_path_split = nested_path.split('/')
             tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
@@ -726,8 +727,15 @@ if 'sync' in args and len(args) == 3 and '-e' in args:
              needs_name = "NEEDS NAME"
         print 'layouts - ', component['id'], component['ref'], needs_name
 
+    elem_dict['assets'] = match_dict['assets']
+    for component in elem_dict['assets']:
+        needs_name = ''
+        if not component.get('name'):
+             needs_name = "NEEDS NAME"
+        print 'assets - ', component['id'], component['ref'], needs_name
+
     elem_dict['containers'] = match_dict['containers']
-    print "Saving new dict with %s components and %s containers ... to elements.json" % (len(elem_dict['components']), len(elem_dict['containers']))
+    print "Saving new dict with \n\n%s components \n\n%s containers \n\n%s assets \n\n%s layouts to elements.json \n\n" % (len(elem_dict['components']), len(elem_dict['containers']), len(elem_dict['assets']), len(elem_dict['layouts']))
     saveElementsJson(elem_dict)
     print "syncing to MP..."
     syncLocalElementsToMP()

@@ -3,6 +3,7 @@
         <main ng-class="{'full-x': settings.hideUIEditor }">
             <nav class="build-main-top">
                 <div>
+                    <user-icon size='small' url="user.profile_url"></user-icon>
                     <h1>File Name</h1>
                     <dropdown ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
                 </div>
@@ -36,7 +37,11 @@
                 </ul>
             </nav>
 
-            <div class="build-player bg-charcoal">
+            <div class='build-player bg-charcoal bg-charcoal animated tada infinite flex-wrap-center' ng-if='player.hide'>
+                <h1 class='text-7'>{{player.status_message}}</h1>
+                <button ui-sref="^.desktop-login" class='animated pulse infinite'>Login</button>
+            </div>
+            <div class="build-player bg-charcoal" ng-if='!player.hide'>
                 <!-- <div class='build-player-container'>
                     <h1 class='uppercase weight-700 txt-charcoal'>
                         Loading ....
@@ -119,7 +124,7 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                     <!-- <div ng-if='file.add_one' class='ugrid-3 txt-2 weight-300 opacity-50 full-x p20xy mtop10'>
                         <div>
                             <input class='full-y' ng-model='file.new_file_name' placeholder='place new file name here'>
