@@ -10,7 +10,7 @@
 					<ul>
 						<li ng-repeat='relationship in user.student_relationships|filter:student_search.search_text:strict' ng-click='setToActiveRelationship(relationship)'>
 							<a class='ng-class:{"active":relationship.id === active_relationship.id}'>
-								<user-icon class="messenger-icon" size="-32" url="{{relationship.student.profile_url}}" ></user-icon>
+								<user-icon class="messenger-icon" size="32" url="{{relationship.student.profile_url}}" ></user-icon>
 								<span class="messenger-label">{{relationship.student.name}}</span>
 							</a>
 						</li>
