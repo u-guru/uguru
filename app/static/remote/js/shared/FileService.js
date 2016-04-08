@@ -2,18 +2,65 @@ angular
 .module('sharedServices')
 .factory("FileService", [
   'LoadingService',
+  'Restangular',
   FileService
 	]);
 
-function FileService(LoadingService) {
+function FileService(LoadingService, Restangular) {
     var DropzoneDict = {}
     var dropZoneUiEvents = ['drop', 'dragstart', 'dragend', 'dragenter', 'dragover', 'dragleave']; //event first param
     var dropZoneFileEvents = ["totaluploadprogress", "queuecomplete", "maxfilesreached", "complete", "success", "uploadprogress", "thumbnail"]
     return {
         initRequestDropzoneFromSelector: initRequestDropzoneFromSelector,
         initMessageDropzone: initMessageDropzone,
-        DropzoneDict: DropzoneDict
+        DropzoneDict: DropzoneDict,
+        initUserAdminTool: initUserAdminTool
     }
+
+    function initUserAdminTool($scope) {
+
+        return {
+            get: getAllAdminFiles($scope),
+            save: {
+                file: saveAdminFile,
+                folder: saveAdminFolder
+            },
+            create: {
+                folder: createAdminFolder,
+                file: createAdminFile
+            },
+            remove: {
+                folder: removeAdminFolder,
+                file: removeAdminFile
+            }
+        }
+    }
+
+
+    function getAllAdminFiles($scope) {
+        return function() {
+            Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('files').get().then(
+            function(response) {
+                var files = response.plain().admin_files;
+                $scope.files = {
+                    users: {options: Object.keys(files), index:0},
+                    all: files,
+                    switchUser: function(user) {
+                        return
+                    }
+                }
+
+              console.log('all files', response.plain().admin_files);
+            })
+        }
+
+    }
+    function removeAdminFolder () {return};
+    function removeAdminFile () {return};
+    function createAdminFile () {return};
+    function createAdminFolder () {return};
+    function saveAdminFile () {return};
+    function saveAdminFolder () {return};
 
     function initMessageDropzone(scope) {
         var dropzoneElem = new Dropzone('#message-dropzone', getDefaultRequestDropzone());

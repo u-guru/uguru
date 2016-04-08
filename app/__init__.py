@@ -59,7 +59,6 @@ except:
 app.config['S3_UPLOAD_BUCKET'] = os.environ.get('S3_UPLOAD_BUCKET')
 app.config['S3_UPLOAD_ACCESS_KEY'] = os.environ.get('S3_UPLOAD_ACCESS_KEY')
 app.config['S3_UPLOAD_SECRET_KEY'] = os.environ.get('S3_UPLOAD_SECRET_KEY')
-print "config", pprint(app.config)
 
 s3upload = S3UploadPolicy(app)
 # flask-restful
