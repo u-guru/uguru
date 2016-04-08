@@ -93,7 +93,7 @@ def getAllAdminFiles(bucket_name="uguru-admin"):
             'name': key.name,
             'type': 'folder'
         }
-        if ('json' in key.name or '.tpl' in key.name or '.html' in key.name):
+        if ('png' in key.name or 'json' in key.name or '.tpl' in key.name or '.html' in key.name):
             utc_time = formatS3Time(key.last_modified)
             key_dict['type'] = 'file'
             # key_dict['url'] = key.generate_url(10000)
@@ -171,7 +171,6 @@ if sys.argv and '-b' in sys.argv and len(sys.argv) == 6 and '-d' in sys.argv and
     pprint(result)
 
 if sys.argv and '-ua' in sys.argv and 'get' in sys.argv:
-
     if len(sys.argv) == 3:
         result = getAllAdminFiles()
     if len(sys.argv) == 4:
@@ -184,7 +183,7 @@ if sys.argv and '-ua' in sys.argv and 'get' in sys.argv:
 
     if len(sys.argv) == 5:
         bucket_name = sys.argv[-1]
-        result = getAllAdminFiles(bucket_name)
+        result = getAllAdminFiles(bucket_name=bucket_name)
         pprint(result)
 
 if sys.argv and '-ua' in sys.argv and 'sync' in sys.argv:
