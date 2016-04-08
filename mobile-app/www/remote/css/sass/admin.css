@@ -193,6 +193,10 @@
   background: #637074;
 }
 
+#build > main .build-main-top > ul > li.flex .flex:not(.active) {
+  display: none;
+}
+
 #build > main .build-main-top > ul > li.flex input {
   width: 100px;
   height: 32px;
@@ -426,29 +430,122 @@
 }
 
 #build > aside.build-settings > h1 {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
   height: 64px;
-  padding: 0 15px;
-  background: #43cb9d;
-  font-size: 28px;
-  font-weight: 600;
 }
 
-#build > aside.build-settings > ul > li {
+#build > aside.build-settings .back-icon {
+  width: 64px;
+  height: 64px;
+}
+
+#build > aside.build-settings .tab-bar.slide a {
+  width: 25%;
+}
+
+#build > aside.build-settings .tab-bar.slide a:nth-child(1).active ~ hr {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+#build > aside.build-settings .tab-bar.slide a:nth-child(2).active ~ hr {
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+#build > aside.build-settings .tab-bar.slide a:nth-child(3).active ~ hr {
+  -webkit-transform: translateX(200%);
+  -moz-transform: translateX(200%);
+  -ms-transform: translateX(200%);
+  -o-transform: translateX(200%);
+  transform: translateX(200%);
+}
+
+#build > aside.build-settings .tab-bar.slide a:nth-child(4).active ~ hr {
+  -webkit-transform: translateX(300%);
+  -moz-transform: translateX(300%);
+  -ms-transform: translateX(300%);
+  -o-transform: translateX(300%);
+  transform: translateX(300%);
+}
+
+#build > aside.build-settings .tab-bar.slide a:nth-child(1):hover ~ hr, #build > aside.build-settings .tab-bar.slide a:nth-child(1):focus ~ hr {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+#build > aside.build-settings .tab-bar.slide a:nth-child(2):hover ~ hr, #build > aside.build-settings .tab-bar.slide a:nth-child(2):focus ~ hr {
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+#build > aside.build-settings .tab-bar.slide a:nth-child(3):hover ~ hr, #build > aside.build-settings .tab-bar.slide a:nth-child(3):focus ~ hr {
+  -webkit-transform: translateX(200%);
+  -moz-transform: translateX(200%);
+  -ms-transform: translateX(200%);
+  -o-transform: translateX(200%);
+  transform: translateX(200%);
+}
+
+#build > aside.build-settings .tab-bar.slide a:nth-child(4):hover ~ hr, #build > aside.build-settings .tab-bar.slide a:nth-child(4):focus ~ hr {
+  -webkit-transform: translateX(300%);
+  -moz-transform: translateX(300%);
+  -ms-transform: translateX(300%);
+  -o-transform: translateX(300%);
+  transform: translateX(300%);
+}
+
+#build > aside.build-settings .tab-bar.slide hr {
+  width: 25%;
+}
+
+#build > aside.build-settings .build-files-list {
+  height: calc(100% - 64px - 60px);
+}
+
+#build > aside.build-settings .build-files-list .build-files-dropdown > span {
+  width: 32px;
+  height: 32px;
+}
+
+#build > aside.build-settings .build-files-list .build-files-dropdown.active > span svg {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+#build > aside.build-settings .build-files-list .build-files-dropdown:hover, #build > aside.build-settings .build-files-list .build-files-dropdown:focus {
+  background: #748489;
+}
+
+#build > aside.build-settings .build-files-list .build-files-dropdown:active {
+  background: #43cb9d;
+}
+
+#build > aside.build-settings .build-files-list a.opacity-50:hover, #build > aside.build-settings .build-files-list a.opacity-50:focus {
+  filter: alpha(opacity=75) !important;
+  opacity: 0.75 !important;
+}
+
+#build > aside.build-settings .build-files-list a.opacity-50:active {
+  filter: alpha(opacity=100) !important;
+  opacity: 1 !important;
+}
+
+#build > aside.build-settings .build-settings-list > li {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -463,7 +560,7 @@
   height: 48px;
 }
 
-#build > aside.build-settings > ul > li > div, #build > aside.build-settings > ul > li > a {
+#build > aside.build-settings .build-settings-list > li > div, #build > aside.build-settings .build-settings-list > li > a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -480,21 +577,21 @@
   padding: 0 15px;
 }
 
-#build > aside.build-settings > ul > li > div, #build > aside.build-settings > ul > li > a, #build > aside.build-settings > ul > li h2 {
+#build > aside.build-settings .build-settings-list > li > div, #build > aside.build-settings .build-settings-list > li > a, #build > aside.build-settings .build-settings-list > li h2 {
   font-size: 20px;
   font-weight: 600;
 }
 
-#build > aside.build-settings > ul > li > div {
+#build > aside.build-settings .build-settings-list > li > div {
   -webkit-justify-content: space-between;
   justify-content: space-between;
 }
 
-#build > aside.build-settings > ul > li > a:hover, #build > aside.build-settings > ul > li > a:focus {
+#build > aside.build-settings .build-settings-list > li > a:hover, #build > aside.build-settings .build-settings-list > li > a:focus {
   background: #8A9EA3;
 }
 
-#build > aside.build-settings > ul > li > a:active {
+#build > aside.build-settings .build-settings-list > li > a:active {
   background: #748489;
 }
 

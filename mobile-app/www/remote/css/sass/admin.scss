@@ -132,6 +132,11 @@
 						}
 					}
 					&.flex {
+						.flex {
+							&:not(.active) {
+								display: none;
+							}
+						}
 						input {
 							width: 100px;
 							height: 32px;
@@ -304,15 +309,107 @@
 		background: lighten($slate, 5%);
 		&.build-settings {
 			> h1 {
-				@include flex;
-				@include flex-center;
 				height: 64px;
-				padding: 0 15px;
-				background: $moxie;
-				font-size: 28px;
-				font-weight: 600;
 			}
-			> ul {
+			.back-icon {
+				width: 64px;
+				height: 64px;
+			}
+			.tab-bar.slide {
+				a {
+					width: 25%;
+					&:nth-child(1) {
+						&.active {
+							~ hr {
+								@include translate-x(0);
+							}
+						}
+					}
+					&:nth-child(2) {
+						&.active {
+							~ hr {
+								@include translate-x(100%);
+							}
+						}
+					}
+					&:nth-child(3) {
+						&.active {
+							~ hr {
+								@include translate-x(200%);
+							}
+						}
+					}
+					&:nth-child(4) {
+						&.active {
+							~ hr {
+								@include translate-x(300%);
+							}
+						}
+					}
+					&:nth-child(1) {
+						&:hover, &:focus {
+							~ hr {
+								@include translate-x(0);
+							}
+						}
+					}
+					&:nth-child(2) {
+						&:hover, &:focus {
+							~ hr {
+								@include translate-x(100%);
+							}
+						}
+					}
+					&:nth-child(3) {
+						&:hover, &:focus {
+							~ hr {
+								@include translate-x(200%);
+							}
+						}
+					}
+					&:nth-child(4) {
+						&:hover, &:focus {
+							~ hr {
+								@include translate-x(300%);
+							}
+						}
+					}
+				}
+				hr {
+					width: 25%;
+				}
+			}
+			.build-files-list {
+				height: calc(100% - 64px - 60px);
+				.build-files-dropdown {
+					> span {
+						width: 32px;
+						height: 32px;
+					}
+					&.active {
+						> span {
+							svg {
+								@include prefix(transform, rotate(180deg), webkit moz ms o);
+							}
+						}
+					}
+					&:hover, &:focus {
+						background: mix($campus, $slate, 70%);
+					}
+					&:active {
+						background: $moxie;
+					}
+				}
+				a.opacity-50 {
+					&:hover, &:focus {
+						@include opacity-important(.75);
+					}
+					&:active {
+						@include opacity-important(1);
+					}
+				}
+			}
+			.build-settings-list {
 				> li {
 					@include flex;
 					@include flex-center-vertical;
