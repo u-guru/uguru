@@ -19,6 +19,12 @@
 	}
 }
 
+.close-icon {
+	svg {
+		@include prefix(transform, rotate(45deg), webkit moz ms o);
+	}
+}
+
 .guru-head, .guru-head svg {
 	display: block;
 	width: 150px;

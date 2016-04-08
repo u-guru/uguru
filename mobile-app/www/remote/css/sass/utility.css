@@ -18,6 +18,14 @@
   font-family: "Source Code Pro", monospace !important;
 }
 
+.close-icon svg {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
 .guru-head, .guru-head svg {
   display: block;
   width: 150px;

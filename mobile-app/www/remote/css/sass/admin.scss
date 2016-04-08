@@ -56,29 +56,138 @@
 			> div {
 				@include flex;
 				@include flex-center-vertical;
+				> .dropdown-container {
+					margin-left: 15px;
+					.dropdown {
+						> div {
+							span {
+								height: 32px;
+							}
+							a {
+								width: 32px;
+								height: 32px;
+								svg {
+									width: 32px;
+									height: 32px;
+								}
+							}
+						}
+						> ul {
+							width: 100%;
+							top: 32px;
+							li {
+								width: calc(100% - 32px);
+							}
+						}
+					}
+				}
+				h2 {
+					width: 100%;
+					font-size: 14px;
+					font-weight: 600;
+					margin-bottom: 5px;
+				}
+			}
+			> ul {
+				@include flex;
+				@include flex-center-vertical;
 				height: 100%;
-				> div {
-					text-align: center;
-					margin-right: 15px;
-					h2 {
-						width: 100%;
-						font-size: 14px;
-						font-weight: 600;
-						margin-bottom: 5px;
+				padding: 7.5px;
+				> li {
+					position: relative;
+					padding: 7.5px;
+					a {
+						@include flex;
+						@include flex-center;
+						height: 32px;
+						width: 32px;
+						background: rgba(white, .2);
+						border-radius: 2px;
+						svg {
+							display: block;
+							width: 24px;
+							height: 24px;
+							* {
+								@include svg-stroke(white, 6);
+							}
+						}
+						&:hover, &:focus {
+							background: $moxie;
+							svg {
+								* {
+									stroke: white;
+								}
+							}
+						}
+						&:active {
+							background: lighten($slate, 15%);
+						}
+						&.close-icon {
+							&:hover, &:focus {
+								background: $crimson;
+							}
+							&:active {
+								background: lighten($slate, 15%);
+							}
+						}
+					}
+					&.flex {
+						input {
+							width: 100px;
+							height: 32px;
+							padding: 0 10px;
+							border-top-left-radius: 2px;
+							border-bottom-right-radius: 2px;
+						}
+						a.bg {
+							&.bg-moxie {
+								border-radius: 0;
+								background: $moxie;
+								&:hover, &:focus {
+									background: mix($moxie, white);
+									svg {
+										* {
+											stroke: mix($moxie, $slate);
+										}
+									}
+								}
+								&:active {
+									background: mix($moxie, $slate);
+									svg {
+										* {
+											stroke: white;
+										}
+									}
+								}
+							}
+							&.bg-crimson {
+								border-top-left-radius: 0;
+								border-bottom-left-radius: 0;
+								margin-right: 15px;
+								background: $crimson;
+								&:hover, &:focus {
+									background: mix($crimson, white);
+									svg {
+										* {
+											stroke: mix($crimson, $slate);
+										}
+									}
+								}
+								&:active {
+									background: mix($crimson, $slate);
+									svg {
+										* {
+											stroke: white;
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}
 			.build-main-settings {
-				display: block;
 				margin-right: 10px;
-				svg {
-					display: block;
-					width: 36px;
-					height: 36px;
-					* {
-						@include svg-stroke(white, 6);
-					}
-				}
 			}
 		}
 		.build-player {
@@ -204,7 +313,7 @@
 				font-weight: 600;
 			}
 			> ul {
-				li {
+				> li {
 					@include flex;
 					@include flex-center-vertical;
 					height: 48px;
@@ -214,6 +323,8 @@
 						width: 100%;
 						height: 48px;
 						padding: 0 15px;
+					}
+					> div, > a, h2 {
 						font-size: 20px;
 						font-weight: 600;
 					}
@@ -368,7 +479,7 @@
 							padding: 0 15px;
 							font-size: 24px;
 							font-weight: 600;
-							width: calc(100% - 48px - 48px - 48px);
+							width: calc(100% - 48px - 48px);
 							&.has-link {
 								padding: 0;
 								a:first-child {
