@@ -1,73 +1,60 @@
 {
     "action_items": {
-        "ben": [
-            {
-                "description": "Together we will create a base script that will allow you to link subjects with their courses. <br> By the end of this project all 200 universities should have a list of subjects with many courses.", 
-                "name": "Link popular courses with subject", 
-                "priority": 10
-            }, 
-            {
-                "description": "", 
-                "name": "Find & Create Popular Tags for Each Subject", 
-                "priority": 10
-            }
-        ], 
         "gabrielle": [
             {
                 "assigned": [
                     "gabrielle"
                 ], 
-                "description": "There are new updates of which Jeselle will go over (from Saturday). There may not be new updates since Saturday but there's still a good amount working more than Friday. It appears the magic animations are laggy.<br><br>", 
-                "description_2": "Pull from Dev && try to fix the issues Jeselle is having on your local & see if you can resolve or at least pinpoin which CSS properties are causing it.", 
+                "description": "Bonus for finding one that has several platforms", 
                 "difficulty": 1, 
-                "estimated_time": "b4 <11am", 
+                "estimated_time": "Until 10:45am", 
                 "index": 1, 
-                "name": "Magic.css Identify Animation Lag w/ Jeselle ['See Description']", 
+                "name": "Most crazy[1]  + fluid [2] timer app [Chrome or Mac App only]", 
                 "priority": 10, 
                 "ref": "admin-tools-1", 
                 "substates": [], 
-                "time_created": "04/04", 
+                "time_created": "04/08", 
                 "type": "Morning Skills"
             }, 
             {
                 "assigned": [
                     "gabrielle"
                 ], 
-                "description": "Prioritize by need/impact on pre-app + student dashboard workflows. Third party URL references only. Feel free to record in format of your choice. Dig through old zeplins & docs. While Jeselle creates list you should make sure they r cross platform & take", 
+                "description": "Only have 30 minutes. Here are the things that you should consider: colors based on environments, desktop+mobile. Definitely will be used in dashboards & great for indicating things in realtime (1 new message) while doing something else.", 
+                "description_2": "Steps to success <br><br>1. Research HiFi <br> 2. Spec out & make sure color works for all 3. Jeselle -> HiFi while Gabrielle creates barebones directive. Bonus for doing something new/above and beyond", 
                 "difficulty": 1, 
-                "estimated_time": "11-11:30", 
+                "estimated_time": "Until 11:15", 
                 "index": 1, 
-                "name": "[w/ Jeselle + see description] Make master list of 'Animations we wish we had' w/ links to URL", 
+                "name": "Mobile + Desktop Toasts [see description]", 
                 "priority": 10, 
                 "ref": "admin-tools-1", 
                 "substates": [], 
-                "time_created": "04/04", 
+                "time_created": "04/08", 
                 "type": "Morning Skills"
             }, 
             {
                 "assigned": [
-                    "gabrielle"
+                    "jeselle"
                 ], 
-                "description": "For GPA - landing apge only. Feel free to create in codepen.", 
-                "difficulty": 2, 
-                "estimated_time": 120, 
-                "index": 14, 
-                "name": "From Zeplin: Receipts, Parents (100%), GPA Landing Page [See description]", 
-                "priority": 8, 
-                "ref": "mad-lib-state-2", 
-                "substates": [], 
-                "time_created": "04/04", 
-                "type": "HTML Files"
+                "complete": false, 
+                "desc_dropdown": false, 
+                "description": "Use cases --> Rendering content within projector slide, image container. Go through the file list and see if you can eyeball all possible cases for containers, layouts, assets, components", 
+                "difficulty": 3, 
+                "estimated_time": 20, 
+                "index": 1, 
+                "name": "Component/Container/Layout/Asset Specific Loaders --> Final spec", 
+                "priority": 10, 
+                "ref": "user-content-state-2", 
+                "time_created": "04/08", 
+                "type": "Morning Skills"
             }, 
             {
-                "assigned": [
-                    "gabrielle"
-                ], 
-                "description": "When Samir gets in -- go over 'Steps to import your own component'", 
+                "assigned": [], 
+                "description": "Continue polishing one/more section of the UI Aesthetics for the Admin Tool", 
                 "difficulty": 3, 
                 "estimated_time": 30, 
                 "index": 3, 
-                "name": "Steps to Import your own component from codepen / .tpl file", 
+                "name": "Admin UI Tools / Components", 
                 "priority": 5, 
                 "ref": "admin-tools-3", 
                 "substates": [], 
@@ -78,47 +65,32 @@
                 "assigned": [
                     "gabrielle"
                 ], 
-                "description": "For remainder of monday. Main states, all internal components transitions in. See polymer elements as great example. Focus on cards & smaller components. <br><br><b> IMPORTANT </b>Do not worry about how", 
+                "description": "Animation states: onComponentRender, onAttribute Update(for example if a user ID card gets updated", 
                 "description_2": "these components come into the scene (that's the containers job!)", 
                 "difficulty": 3, 
                 "estimated_time": 30, 
                 "index": 5, 
-                "name": "Animating all component-specific like you did for dropdown", 
+                "name": "[See desc] HiFi for all components including animation states", 
                 "priority": null, 
                 "ref": "admin-tools-3", 
                 "substates": [], 
-                "time_created": "04/04", 
+                "time_created": "04/08", 
                 "type": "Upcoming"
             }, 
             {
                 "assigned": [
                     "gabrielle"
                 ], 
-                "description": "", 
+                "description": "See dashboard for prioritized list", 
                 "difficulty": 3, 
                 "estimated_time": 30, 
                 "index": 3, 
-                "name": "Tuesday: Revisit become Guru", 
+                "name": "Continue knocking out components you have not completed yet", 
                 "priority": null, 
                 "ref": "admin-tools-3", 
                 "substates": [], 
                 "time_created": "04/04", 
                 "type": "Upcoming"
-            }, 
-            {
-                "assigned": [
-                    "gabrielle"
-                ], 
-                "description": "<ul><li> 1. Base style guide </li><li> 2. List all the svg icons </li></ul>", 
-                "difficulty": 3, 
-                "estimated_time": 30, 
-                "index": 3, 
-                "name": "Tuesday Morning Skills: Style Guide w/ 2 example code snippets, directive & .tpl + open in codepen", 
-                "priority": null, 
-                "ref": "admin-tools-3", 
-                "substates": [], 
-                "time_created": "04/04", 
-                "type": "Morning Skills"
             }
         ], 
         "jason": [
@@ -156,33 +128,33 @@
         "jeselle": [
             {
                 "assigned": [
-                    "Jeselle"
-                ], 
-                "complete": false, 
-                "desc_dropdown": false, 
-                "description": "If a category-specific Guru creates multiple cardlets, how will these impact the public view of their category profile? <br><br>There will be two parts (this one part 1), the initial glance (2-3 mini cards, and a view all state)", 
-                "difficulty": 3, 
-                "estimated_time": "b4 11am", 
-                "index": 1, 
-                "name": "Catch Gabrielle up with dashboard upfrom Saturday + Magic.css issues.", 
-                "priority": 10, 
-                "ref": "create-edit-resource-1", 
-                "time_created": "04/04", 
-                "type": "Hifi Container"
-            }, 
-            {
-                "assigned": [
                     "jeselle"
                 ], 
-                "description": "Prioritize by need/impact on pre-app + student dashboard workflows. Third party URL references only. Feel free to record in format of your choice. Dig through old zeplins & docs. While Jeselle creates list you should make sure they r cross platform & take", 
+                "description": "Bonus for finding one that has several platforms", 
                 "difficulty": 1, 
-                "estimated_time": "11-11:30", 
+                "estimated_time": "", 
                 "index": 1, 
-                "name": "[w/ Gabrielle + see description] Make master list of 'Animations we wish we had' w/ links to URL", 
+                "name": "Most crazy[1]  + fluid [2] timer app [Chrome or Mac App only]", 
                 "priority": 10, 
                 "ref": "admin-tools-1", 
                 "substates": [], 
-                "time_created": "04/04", 
+                "time_created": "04/08", 
+                "type": "Morning Skills"
+            }, 
+            {
+                "assigned": [
+                    "Jeselle"
+                ], 
+                "description": "Only have 30 minutes. Here are the things that you should consider: colors based on environments, desktop+mobile. Definitely will be used in dashboards & great for indicating things in realtime (1 new message) while doing something else.", 
+                "description_2": "Steps to success <br><br>1. Research HiFi <br> 2. Spec out & make sure color works for all 3. Jeselle -> HiFi while Gabrielle creates barebones directive. Bonus for doing something new/above and beyond", 
+                "difficulty": 1, 
+                "estimated_time": "Until 11:15", 
+                "index": 1, 
+                "name": "Mobile + Desktop Toasts [see description]", 
+                "priority": 10, 
+                "ref": "admin-tools-1", 
+                "substates": [], 
+                "time_created": "04/08", 
                 "type": "Morning Skills"
             }, 
             {
@@ -191,15 +163,15 @@
                 ], 
                 "complete": false, 
                 "desc_dropdown": false, 
-                "description": "Will be uploading updates as you guys request more. You will primarily be focusing on the layouts & entrance of components while Gabrielel will focus on animations within components.", 
+                "description": "Use cases --> Rendering content within projector slide, image container. Go through the file list and see if you can eyeball all possible cases for containers, layouts, assets, components", 
                 "difficulty": 3, 
                 "estimated_time": 20, 
                 "index": 1, 
-                "name": "Continue Layout Based Become-Guru Scenes", 
+                "name": "Component/Container/Layout/Asset Specific Loaders --> Final spec", 
                 "priority": 10, 
                 "ref": "user-content-state-2", 
-                "time_created": "04/04", 
-                "type": "Hifi Container"
+                "time_created": "04/08", 
+                "type": "Morning Skills"
             }, 
             {
                 "assigned": [
@@ -207,31 +179,15 @@
                 ], 
                 "complete": false, 
                 "desc_dropdown": false, 
-                "description": "See /#/ timer on staging to see a bare bones working prototype", 
+                "description": "", 
                 "difficulty": 3, 
                 "estimated_time": 20, 
                 "index": 1, 
-                "name": "[W/Gabrielle] Resolve become a Guru user action workflow", 
+                "name": "All Become a Guru animated states", 
                 "priority": null, 
                 "ref": "create-edit-resource-3", 
-                "time_created": "04/04", 
-                "type": "Hifi Container"
-            }, 
-            {
-                "assigned": [
-                    "Jeselle"
-                ], 
-                "complete": false, 
-                "desc_dropdown": false, 
-                "description": "See /#/ timer on staging to see a bare bones working prototype", 
-                "difficulty": 3, 
-                "estimated_time": 20, 
-                "index": 1, 
-                "name": "[Upcoming] Focus Guru Hifi (Straight from Build tool ;) )", 
-                "priority": null, 
-                "ref": "create-edit-resource-3", 
-                "time_created": "3/28", 
-                "type": "Hifi Container"
+                "time_created": "04/08", 
+                "type": "Hifi Animation"
             }
         ], 
         "samir": []
@@ -266,12 +222,13 @@
             "sample": {
                 "scope": {
                     "course": {
-                        "description": "UC berkeley's #1 intro computer science course", 
-                        "full_name": "beauty and joy of computing", 
+                        "color": "#003262", 
+                        "description": "UC Berkeley's #1 Intro Computer Science Course", 
+                        "full_name": "Beauty and Joy of Computing", 
                         "name": "CS10"
                     }
                 }, 
-                "template": "<course-card ng-model=\"component.sample.scope.course\"> </course-card>"
+                "template": "<course-card ng-model=\"component.sample.scope.course\" type=\"link\"> </course-card><course-card ng-model=\"component.sample.scope.course\" type=\"check\"> </course-card><course-card ng-model=\"component.sample.scope.course\" type=\"hover\"> </course-card>"
             }, 
             "tags": [
                 "cards", 
@@ -318,15 +275,19 @@
         {
             "active": true, 
             "id": 5, 
-            "name": "Profile Mini Card", 
-            "ref": "cards-profile-mini", 
+            "name": "Profile Thumbnail", 
+            "ref": "cards-profile-thumb", 
             "sample": {
-                "scope": {}, 
-                "template": "<profile-mini-card></profile-mini-card>"
+                "scope": {
+                    "color": "delivery", 
+                    "profile_url": "http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200", 
+                    "size": "72"
+                }, 
+                "template": "<profile-thumb size=\"component.sample.scope.size\" color=\"component.sample.scope.color\" url=\"component.sample.scope.profile_url\"></profile-thumb>"
             }, 
             "tags": [
                 "cards", 
-                "profile.mini"
+                "profile.thumb"
             ], 
             "template_url": "templates/cards/profile.mini.tpl"
         }, 
@@ -436,11 +397,11 @@
         {
             "active": true, 
             "id": 10, 
-            "name": "Icon Attachment", 
-            "ref": "info-attachment", 
+            "name": "Attach List", 
+            "ref": "info-attach-list", 
             "sample": {
                 "scope": {}, 
-                "template": "<attachment type=\"component.sample.scope.type\"> </attachment>"
+                "template": "<attach-list> </attach-list>"
             }, 
             "tags": [
                 "info", 
@@ -454,7 +415,8 @@
             "name": "Badge", 
             "ref": "info-badge", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<badge> </badge>"
             }, 
             "tags": [
                 "info", 
@@ -481,20 +443,6 @@
                 "pennant"
             ], 
             "template_url": "templates/info/pennant.tpl"
-        }, 
-        {
-            "active": true, 
-            "id": 13, 
-            "name": "Profile Section", 
-            "ref": "info-profile-section", 
-            "sample": {
-                "scope": {}
-            }, 
-            "tags": [
-                "info", 
-                "profile.section"
-            ], 
-            "template_url": "templates/info/profile.section.tpl"
         }, 
         {
             "active": true, 
@@ -537,11 +485,16 @@
         {
             "active": true, 
             "id": 17, 
-            "name": "Tool Tip", 
-            "notes": "CSS issues", 
+            "name": "Tooltip", 
+            "notes": "", 
             "ref": "info-tooltip", 
             "sample": {
-                "scope": {}
+                "scope": {
+                    "button": "Okay", 
+                    "content": "This is a tooltip", 
+                    "direction": "top"
+                }, 
+                "template": "<tooltip button=\"component.sample.scope.button\" content=\"component.sample.scope.content\" direction=\"component.sample.scope.direction\"> </tooltip>"
             }, 
             "tags": [
                 "info", 
@@ -551,12 +504,7 @@
         }, 
         {
             "active": true, 
-            "bugs": [
-                {
-                    "assigned": "samir", 
-                    "reason": "doesn't work"
-                }
-            ], 
+            "bugs": "", 
             "id": 18, 
             "name": "User Icon", 
             "notes": "Add pre-loader states while the image is loading", 
@@ -564,7 +512,7 @@
             "sample": {
                 "scope": {
                     "profile_url": "http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200", 
-                    "size": "medium"
+                    "size": "64"
                 }, 
                 "template": "<user-icon size=\"component.sample.scope.size\" url=\"component.sample.scope.profile_url\"> </user-icon>"
             }, 
@@ -577,7 +525,7 @@
         {
             "active": true, 
             "id": 19, 
-            "name": "Drag-in Attachment Box", 
+            "name": "Attachment Box", 
             "ref": "inputs-attach-box", 
             "sample": {
                 "scope": {}
@@ -594,7 +542,10 @@
             "name": "Standard Checkbox", 
             "ref": "inputs-checkbox", 
             "sample": {
-                "scope": {}
+                "scope": {
+                    "label": "Checkbox"
+                }, 
+                "template": "<checkbox label=\"component.sample.scope.label\"> </checkbox>"
             }, 
             "tags": [
                 "inputs", 
@@ -657,10 +608,13 @@
         {
             "active": true, 
             "id": 23, 
-            "name": "Standard Radio Input", 
+            "name": "Standard Radio", 
             "ref": "inputs-radio", 
             "sample": {
-                "scope": {}
+                "scope": {
+                    "label": "Radio"
+                }, 
+                "template": "<radio label=\"component.sample.scope.label\"> </radio>"
             }, 
             "tags": [
                 "inputs", 
@@ -672,13 +626,15 @@
             "active": true, 
             "id": 24, 
             "name": "Standard Range Slider", 
-            "ref": "inputs-slider", 
+            "ref": "inputs-range-slider", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<range-slider> </range-slider>"
             }, 
             "tags": [
                 "inputs", 
-                "slider"
+                "slider", 
+                "range"
             ], 
             "template_url": "templates/inputs/slider.tpl"
         }, 
@@ -688,13 +644,14 @@
             "name": "Arrow Tab Bar", 
             "ref": "inputs-tab-arrow", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<tabs-arrow></tabs-arrow>"
             }, 
             "tags": [
                 "inputs", 
                 "tab.arrow"
             ], 
-            "template_url": "templates/inputs/tab.arrow.tpl"
+            "template_url": "templates/progress/arrow.tpl"
         }, 
         {
             "id": 26, 
@@ -726,7 +683,8 @@
             "name": "Standard Toggle", 
             "ref": "inputs-toggle", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<toggle></toggle>"
             }, 
             "tags": [
                 "inputs", 
@@ -736,53 +694,28 @@
         }, 
         {
             "active": true, 
+            "cp_link": "", 
             "id": 29, 
-            "name": "Colorful dropdown", 
+            "name": "Color Dropdowns", 
+            "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
             "ref": "inputs-dropdowns-color", 
             "sample": {
-                "scope": {}
-            }, 
-            "tags": [
-                "inputs", 
-                "dropdowns", 
-                "color"
-            ], 
-            "template_url": "templates/inputs/dropdowns/color.tpl"
-        }, 
-        {
-            "active": true, 
-            "cp_link": "", 
-            "id": 30, 
-            "name": "Dropdowns", 
-            "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
-            "ref": "inputs-dropdowns-splash", 
-            "sample": {
                 "scope": {
-                    "key": "name", 
-                    "label": "Top Fruits", 
                     "options": [
-                        {
-                            "name": "apples"
-                        }, 
-                        {
-                            "name": "bananas"
-                        }, 
-                        {
-                            "name": "oranges"
-                        }
+                        "apples", 
+                        "bananas", 
+                        "oranges"
                     ], 
-                    "selectedIndex": 0, 
-                    "size": "small"
+                    "selectedIndex": 0
                 }, 
-                "template": "<dropdown type=\"splash\" ng-model=\"component.sample.scope\"></dropdown>"
+                "template": "<dropdown type=\"color\" ng-model=\"component.sample.scope\"></dropdown>"
             }, 
             "stage": 1, 
             "tags": [
                 "inputs", 
-                "dropdowns", 
-                "splash"
+                "dropdowns"
             ], 
-            "template_url": "templates/inputs/dropdowns/splash.tpl"
+            "template_url": "templates/inputs/dropdowns/color.tpl"
         }, 
         {
             "id": 31, 
@@ -873,7 +806,8 @@
             "name": "Gallery Inputs", 
             "ref": "inputs-text-all_inputs", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<inputs-gallery></inputs-gallery>"
             }, 
             "tags": [
                 "inputs", 
@@ -922,7 +856,7 @@
                     "categoryColor": "categoryColor", 
                     "guru": {
                         "greeting": "Hey there", 
-                        "guru_introduction": "I can tutor you in any bio class. We\u0102\u02d8\u00c2\u0080\u00c2\u0099ll get you to an A in no time!", 
+                        "guru_introduction": "I can tutor you in any bio class. We can get you to an A in no time!", 
                         "last_active_min": "24m", 
                         "name": "Gabrielle", 
                         "profile_url": "http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256", 
@@ -935,7 +869,7 @@
                     }, 
                     "size": "medium"
                 }, 
-                "template": "", 
+                "template": "<map-marker></map-marker>", 
                 "variations": {
                     "modes": [
                         "view", 
@@ -971,7 +905,8 @@
             "name": "Standard Progress Bar", 
             "ref": "progress-bar", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<progress-bar></progress-bar>"
             }, 
             "tags": [
                 "progress", 
@@ -1024,8 +959,11 @@
             "ref": "tiles-album", 
             "sample": {
                 "scope": {
-                    "album_1": {
-                        "bgColor": "#020c39"
+                    "album": {
+                        "art": "https://snap-photos.s3.amazonaws.com/img-thumbs/960w/Z3VPU4IDKE.jpg", 
+                        "color": "#020c39", 
+                        "genre": "Intense EDM", 
+                        "title": "Midnight<br/>Cramming"
                     }
                 }, 
                 "template": "<album-tile album=\"component.sample.scope.album\"></album-tile>"
@@ -1052,7 +990,8 @@
             "name": "Category Tile", 
             "ref": "tiles-category", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<category-tile></category-tile>"
             }, 
             "tags": [
                 "tiles", 
@@ -1077,7 +1016,8 @@
             "name": "Pricing Page Tile", 
             "ref": "tiles-pricing", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<pricing-tile></pricing-tile>"
             }, 
             "tags": [
                 "tiles", 
@@ -1106,7 +1046,8 @@
             "name": "Request Tile", 
             "ref": "tiles-request", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<request-tile></request-tile>"
             }, 
             "tags": [
                 "tiles", 

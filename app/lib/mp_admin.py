@@ -573,6 +573,7 @@ def getAllComponentsContainers():
     matcher = '*.tpl'
     path = 'mobile-app/www/remote/templates/elements'
     matches = getAllFiles(path, matcher)
+    matches += getAllFiles(path, '*html')
     match_dict = {'components': [], 'containers': [], 'assets': [], "layouts":[]}
 
     for match in matches:
@@ -603,6 +604,7 @@ def getAllComponentsContainers():
                 'tags': tags
                 })
         elif '/elements/layouts/' in match:
+            print match
             nested_path = match.split('/elements/layouts/')[-1]
             nested_path_split = nested_path.split('/')
             tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
@@ -674,13 +676,8 @@ if 'sync' in args and len(args) == 3 and '-e' in args:
     from pprint import pprint
     components = elem_dict.get('components')
     containers = elem_dict.get('containers')
-
-
-
-
-
-
-
+    layouts = elem_dict.get('layouts')
+    assets = elem_dict.get('assets')
 
     match_dict = getAllComponentsContainers()
     comp_refs = [comp['ref'] for comp in match_dict['components']]
@@ -695,10 +692,21 @@ if 'sync' in args and len(args) == 3 and '-e' in args:
                 if key not in new_comp_keys:
                     new_comp_dict[key] = old_comp[key]
 
+    comp_refs = [comp['ref'] for comp in match_dict['containers']]
     for old_comp in containers:
         if old_comp['ref'] in comp_refs:
             comp_refs_index = comp_refs.index(old_comp['ref'])
             new_comp_dict = match_dict['containers'][comp_refs_index]
+            new_comp_keys = new_comp_dict.keys()
+            for key in old_comp.keys():
+                if key not in new_comp_keys:
+                    new_comp_dict[key] = old_comp[key]
+
+    comp_refs = [comp['ref'] for comp in match_dict['layouts']]
+    for old_comp in layouts:
+        if old_comp['ref'] in comp_refs:
+            comp_refs_index = comp_refs.index(old_comp['ref'])
+            new_comp_dict = match_dict['layouts'][comp_refs_index]
             new_comp_keys = new_comp_dict.keys()
             for key in old_comp.keys():
                 if key not in new_comp_keys:
@@ -710,6 +718,14 @@ if 'sync' in args and len(args) == 3 and '-e' in args:
         if not component.get('name'):
              needs_name = "NEEDS NAME"
         print component['id'], component['ref'], needs_name
+
+    elem_dict['layouts'] = match_dict['layouts']
+    for component in elem_dict['layouts']:
+        needs_name = ''
+        if not component.get('name'):
+             needs_name = "NEEDS NAME"
+        print 'layouts - ', component['id'], component['ref'], needs_name
+
     elem_dict['containers'] = match_dict['containers']
     print "Saving new dict with %s components and %s containers ... to elements.json" % (len(elem_dict['components']), len(elem_dict['containers']))
     saveElementsJson(elem_dict)

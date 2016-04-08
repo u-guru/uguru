@@ -602,6 +602,9 @@ angular.module('uguru.dev.controllers')
         Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(
           function(response) {
             response = JSON.parse(response)
+            for (var i = 0; i < response.layouts.length; i++) {
+              console.log(i, response.layouts[i].name, response.layouts[i].template_url)
+            }
             $timeout(function() {
               $scope.$apply(function() {
                 $scope.page.dropdowns.templates.options = response.layouts;

@@ -19,7 +19,6 @@ def generateSingleComponentCSSFile():
     for css_link in all_links:
         css_response = requests.get(css_link).text
         result_str += '\n\n' + css_response
-        print css_link
         sleep(DEFAULT_SLEEP_INTERVAL)
     saveFile(result_str.encode('utf-8'), 'components', 'scss', '../')
 

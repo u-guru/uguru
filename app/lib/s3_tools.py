@@ -140,7 +140,7 @@ def syncMasterTemplatesWithAWS(username="master"):
 import sys
 from pprint import pprint
 if sys.argv and '-i' in sys.argv:
-    get_all_buckets()
+    pprint(get_all_buckets())
     print "\n\n >>> commands \n\n"
     print "\n\n-- #1.  python -i --#|#| retrieves info for commands & all aws folders"
     print "\n\n-- #2.  python -b [bucket name] -c [create] --#|#| creates a bucket"
