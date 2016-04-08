@@ -625,7 +625,7 @@
 									width: 24px;
 									height: 24px;
 									* {
-										@include svg-stroke(white, 8);
+										@include svg-stroke(white, 6);
 									}
 								}
 								&:hover, &:focus {
