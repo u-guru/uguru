@@ -1018,7 +1018,26 @@
             "template_url": "templates/progress/ranking.tpl"
         }, 
         {
+            "active": true, 
             "id": 42, 
+            "name": "Album", 
+            "ref": "tiles-album", 
+            "sample": {
+                "scope": {
+                    "album_1": {
+                        "bgColor": "#020c39"
+                    }
+                }, 
+                "template": "<album-tile album=\"component.sample.scope.album\"></album-tile>"
+            }, 
+            "tags": [
+                "tiles", 
+                "album"
+            ], 
+            "template_url": "templates/tiles/album.tpl"
+        }, 
+        {
+            "id": 43, 
             "name": "Calendar Tile", 
             "ref": "tiles-calendar", 
             "tags": [
@@ -1029,7 +1048,7 @@
         }, 
         {
             "active": true, 
-            "id": 43, 
+            "id": 44, 
             "name": "Category Tile", 
             "ref": "tiles-category", 
             "sample": {
@@ -1043,7 +1062,7 @@
         }, 
         {
             "active": true, 
-            "id": 44, 
+            "id": 45, 
             "name": "Student Credits Tile", 
             "ref": "tiles-credit-student", 
             "tags": [
@@ -1054,7 +1073,7 @@
         }, 
         {
             "active": true, 
-            "id": 45, 
+            "id": 46, 
             "name": "Pricing Page Tile", 
             "ref": "tiles-pricing", 
             "sample": {
@@ -1068,7 +1087,7 @@
         }, 
         {
             "active": true, 
-            "id": 46, 
+            "id": 47, 
             "name": "Profile Tile", 
             "ref": "tiles-profile", 
             "sample": {
@@ -1083,7 +1102,7 @@
         }, 
         {
             "active": true, 
-            "id": 47, 
+            "id": 48, 
             "name": "Request Tile", 
             "ref": "tiles-request", 
             "sample": {

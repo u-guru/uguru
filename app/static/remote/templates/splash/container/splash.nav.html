@@ -4,9 +4,9 @@
 
 <!-- Desktop Nav-->
 <header class='splash-header fixed top-0 left-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
-    <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" anim></a>
+    <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'"  class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" anim></a>
     <div class="right">
-        <div class="splash-hero-nav desktop m10right" class-on-load="fadeIn:anim" class-on-load-delay="3000" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" anim>
+        <div class="splash-hero-nav desktop m10right" class-on-load="fadeIn:anim" class-on-load-delay="3000"  class-on-activate="fadeInDown:anim" anim>
             <div class="dropdown-color">
                 <a name='category' class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()' ng-class="{'active':page.dropdowns.category.active}">
         			<span>{{selectedCategory.name}}</span>
@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <div class="splash-hero-nav mobile opacity-0 animated" class-on-load="fadeIn:anim" class-on-load-delay="3000" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim">
+        <div class="splash-hero-nav mobile opacity-0 animated" class-on-load="fadeIn:anim" class-on-load-delay="3000" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim">
             <a class-on-click="a:inject.splash-hero-nav-schools|a" ng-click='page.dropdowns.university.toggle()'>
                 <span style='background-color: {{selectedUniversity.school_color_dark}}'></span>
                 <span>@ {{selectedUniversity.school_tiny_name}}</span>
@@ -72,7 +72,7 @@
             </a>
         </div>
         <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()' class-on-click="null:inject#splash-one-page-pulldown|activate" anim>
-            <svg viewBox="0 0 100 100" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" class-on-activate-delay="600">
+            <svg viewBox="0 0 100 100" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" class-on-activate-delay="600">
                 <circle cx="50" cy="50" r="36"></circle>
                 <path d="M31,35.5 L69,35.5"></path>
                 <path d="M31,50.5 L69,50.5"></path>

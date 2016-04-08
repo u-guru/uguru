@@ -14,15 +14,133 @@ angular.module('uguru.dev.controllers')
   '$sce',
   'AnimationService',
   'KeyboardService',
-  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService, KeyboardService) {
+  '$interval',
+  'FileService',
+  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService, KeyboardService, $interval, FileService) {
 
     // KeyboardService.preventDefaultCutPaste();
     KeyboardService.initCopyPasteFunctionCallbacks();
+
+    var onCmdPressed = function() {
+      console.log('command key pressed');
+      //component mode
+      if ($scope.page.dropdowns.filterOptions.selectedIndex) {
+        initBuildPlayerClickListener()
+      }
+    }
+
+    var onCmdReleased = function() {
+      destroyBuildPlayerClickListener();
+    }
+
+    KeyboardService.initOptionPressedAndReleasedFunction(onCmdPressed, onCmdReleased);
 
     $scope.selected = {
       property: null,
       component: null
     }
+
+    $timeout(function() {
+      $scope.storage = FileService.initUserAdminTool($scope);
+      $scope.storage.get()
+    })
+
+
+    var buildPlayerClickListenerFunc;
+    function initBuildPlayerClickListener() {
+      var elemBuildPlayer = document.querySelector('.build-player');
+
+
+      buildPlayerClickListenerFunc = function(e) {
+
+
+        console.log(e.target);
+        var parentChildDepth = 5;
+        if (e.target.getBoundingClientRect) {
+          var targetRect = e.target.getBoundingClientRect();
+          var thresHeight = targetRect.height;
+          var thresWidth = targetRect.width;
+          var parent, grandparent, greatGrandparent, siblings;
+          var nearbyElems = [];
+
+          if (e.target.parentNode) {
+            parent = e.target.parentNode;
+            if (parent.childNodes) {
+              nearbyElems = addElemSiblingsToArr(parent.childNodes, nearbyElems);
+              nearbyElems.push(parent);
+            }
+            if (parent.parentNode) {
+              grandparent = parent.parentNode;
+              nearbyElems.push(grandparent);
+              if (grandparent) {
+                greatGrandparent = grandparent.parentNode;
+                nearbyElems.push(greatGrandparent);
+              }
+            }
+          }
+          if (e.target.childNodes && e.target.childNodes.length) {
+            for ( var i = 0; i < e.target.childNodes; i++) {
+              var indexChild = e.target.childNodes[i];
+              nearbyElems.push(indexChild);
+              if (indexChild.childNodes) {
+                for (var j = 0; j < indexChild.childNodes.length; j++) {
+                  if (indexChild.childNodes[j]) {
+                    nearbyElems.push(indexChild.childNodes[j]);
+                  }
+                }
+              }
+            }
+          }
+          console.log(nearbyElems.length, 'similar components found');
+          var widthDeviant = thresWidth;
+          var resultArr = [];
+          var heightDeviant = thresHeight;
+          var resultComponentDict = {};
+          for (var i = 0; i < nearbyElems.length; i++) {
+            var indexElem = nearbyElems[i];
+            if (indexElem.getBoundingClientRect) {
+              var indexElemRect = indexElem.getBoundingClientRect();
+              if (indexElemRect.height && indexElemRect.width) {
+                console.log(indexElemRect.height, indexElemRect.width);
+                var tempWidthDeviant = Math.abs(thresWidth - widthDeviant) < (widthDeviant * 0.1)
+                var tempHeightDeviant = Math.abs(thresHeight - heightDeviant) < (heightDeviant * 0.1)
+                if (tempWidthDeviant && tempHeightDeviant) {
+                  resultDict = {component: indexElem, widthDeviant: tempWidthDeviant, heightDeviant:  tempHeightDeviant, height: thresHeight, width: thresWidth};
+                  resultArr.push(resultDict);
+                  //is child of
+                }
+              }
+            }
+          }
+
+
+        }
+
+      }
+
+      if (elemBuildPlayer) {
+        elemBuildPlayer.addEventListener('click', buildPlayerClickListenerFunc);
+      }
+    }
+
+    function addElemSiblingsToArr(elemChildren, result) {
+      for (var i = 0; i < elemChildren.length; i++) {
+          var indexChildNode = elemChildren[i];
+          if (indexChildNode) {
+            result.push(indexChildNode);
+          }
+      }
+      return result;
+    }
+
+    function destroyBuildPlayerClickListener() {
+      var elemBuildPlayer = document.querySelector('.build-player');
+      if (elemBuildPlayer) {
+        elemBuildPlayer.removeEventListener('click', buildPlayerClickListenerFunc);
+      }
+    }
+
+
     $scope.states = {
       'mad-lib': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
       'projector-screen-1': ['on-load', 'on-first-tag-click', 'on-second-tag-click', 'on-category-swap', 'on-university-swap', 'on-university-search', ''],
@@ -96,17 +214,305 @@ angular.module('uguru.dev.controllers')
       window.sessionStorage.clear();
       window.localStorage.clear();
       window.location.reload(true);
+
+    }
+
+    var userSettings = $localstorage.getObject('user_settings') || getDefaultUserSettings();
+
+    function getDefaultUserSettings() {
+      return {
+        defaultFilter: 1
+      }
     }
 
     $scope.elements = [];
     $scope.current_states =[];
     $scope.page = {dropdowns:{}, toggles:{}};
+
     $scope.page.toggles = {add_component: false};
     $scope.page.compiledTemplates = {};
     $scope.page.dropdowns.fileOptions = {label:'Current Storage', onOptionClick: onFileOptionSelect, options: generateFileOptions(), size:'small', key:'name', selectedIndex: 0};
     $scope.page.dropdowns.screenSizeOptions = {label:'autoscale @ 1.5x', onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
-    $scope.page.dropdowns.filterOptions = {label: "sort by", options: ['Time', "Component"], selectedIndex: 1, size:"small"}
+    $scope.page.dropdowns.filterOptions = {label: "sort by", options: ['Time', "Component"], selectedIndex: userSettings.defaultFilter || 1, size:"small", onOptionClick: toggleComponentGUIMode}
+    $scope.page.status = {show: false}
+
+
+    $scope.showStatus = function(msg) {
+      var footerBar = document.querySelector('#bottom-nav-status-bar');
+      $scope.page.status.show = true;
+      $scope.page.status.msg = msg;
+      $timeout(function() {
+        footerBar.style.opacity = 1;
+      }, 500)
+      AnimationService.animateIn(footerBar, 'bounceInUp')
+
+      $timeout(function() {
+        footerBar.classList.remove('animated', 'bounceInDown')
+        AnimationService.animateOut(footerBar, 'bounceOutDown');
+        $timeout(function() {
+          footerBar.style.opacity = 0;
+        }, 500)
+      }, 3500)
+
+    }
+
+    function toggleComponentGUIMode(option, index)  {
+      //component mode
+      if (!index) {
+        var time_dict = {};
+        var current_state = $scope.current_states.states[$scope.current_states.selectedIndex];
+        if (!current_state.components.length) {
+          LoadingService.showMsg('Add some time states in component mode before we can sort by time states!', 2500);
+          return;
+        }
+        var state_components = current_state.components;
+
+        time_dict["-1"] = [];
+
+        for (var i = 0; i < state_components.length; i++) {
+          var indexComponent = state_components[i];
+          if (indexComponent.init_time_state) {
+            time_dict["-1"].push(indexComponent);
+          }
+          for (var j = 0; j < indexComponent.time_states.length; j++) {
+            var indexTimeState = indexComponent.time_states[j];
+            var time_string = indexTimeState.time + "";
+            if (!(time_string in time_dict)) {
+              time_dict[time_string] = [];
+
+            }
+            time_dict[time_string].push(indexComponent);
+
+          }
+        }
+
+        var time_arr = [];
+        for (var i = 0; i < Object.keys(time_dict).length; i++) {
+          var indexKey = Object.keys(time_dict)[i];
+          if (time_dict[indexKey] && time_dict[indexKey].length) {
+            if (time_dict[indexKey][0].time_states.length) {
+              var componentDict = {
+                components: time_dict[indexKey],
+                time: time_dict[indexKey][0].time_states[0].time
+              };
+              componentDict.components[0].selected = true;
+              time_arr.push(componentDict);
+            }
+          }
+        }
+
+
+
+        time_arr.sort(function(a, b) {
+          return b.time - a.time
+        })
+
+        if ('-1' in time_dict) {
+          time_arr.push({
+            components: time_dict["-1"],
+            time: "init"
+          })
+        }
+
+
+        current_state.timeline = time_arr.reverse();
+        for (var i = 0; i < current_state.timeline.length; i++) {
+          var indexTime = current_state.timeline[i];
+          indexTime.component_selected = indexTime.components[0];
+        }
+        $timeout(function() {
+          renderTimeStateComponents(current_state.timeline);
+        }, 2000)
+      }
+
+    }
+
+    function renderTimeStateComponents(time_arr) {
+      var allTimeStateComponentContainers = document.querySelectorAll('.time-state-component-bar');
+
+
+      for (var i = 0; i < time_arr.length; i ++) {
+          var indexTimeState = time_arr[i];
+          if (indexTimeState.components && indexTimeState.components.length) {
+
+
+
+            var indexContainer = allTimeStateComponentContainers[i];
+            var allTimeStateComponentList = indexContainer.querySelectorAll('.time-state-component-item');
+
+            for (var j = 0; j < indexTimeState.components.length; j++) {
+              var indexComponent = indexTimeState.components[j];
+              var indexComponentElement = document.querySelector('.' + indexComponent.selector);
+              var clonedComponentElem = recursiveClone(indexComponentElement);
+
+              var listItemElement = allTimeStateComponentList[j];
+              clonedComponentElem.className = clonedComponentElem.className + ' full-xy absolute';
+
+              var playButtonElement = document.createElement("a");
+              playButtonElement.className = "high-z-index m05xy right-0 bottom-0 absolute";
+              playButtonElement.innerHTML = "&rtrif;"
+
+              var listItemChild = listItemElement.querySelector('div');
+
+              if (clonedComponentElem) {
+                var clonedComponentElemRect = indexComponentElement.getBoundingClientRect();
+                if (clonedComponentElemRect.height > 50 || clonedComponentElemRect.width > 100) {
+                  var scaleX = 100 / clonedComponentElemRect.width;
+                  var scaleY = 50 / clonedComponentElemRect.height;
+                  var scaleString = " scale(" + 0.50 + ',' + 0.50 + ')'
+                  listItemChild.style.webkitTransform = scaleString;
+                  listItemChild.style.MozTransform = scaleString;
+                  listItemChild.style.msTransform = scaleString;
+                  listItemChild.style.OTransform = scaleString;
+                  listItemChild.style.transform = scaleString;
+                }
+              }
+
+              listItemElement.appendChild(playButtonElement);
+              listItemChild.appendChild(clonedComponentElem);
+
+            }
+          }
+        }
+        // for (var i = 0; i < allTimeStateComponentContainers.length; i++) {
+        //   $compile(angular.element(allTimeStateComponentContainers[i]))($scope);
+        // }
+
+    }
+
+    function addNewTimeState() {
+      var currentState = $scope.current_states.states[$scope.current_states.selectedIndex];
+      if (!currentState.timeline) {
+        current_state.timeline = [];
+      }
+      for (var i = 0 ; i < currentState.timeline.length; i++) {
+        var timeIndexState = currentState.timeline[i];
+        if (timeIndexState.time === 'new') {
+          LoadingService.showMsg('Please set a time (in ms) of the recent newly added time state'), 2500;
+        }
+      }
+      currentState.timeline.push({
+        time: 'new',
+        components: []
+      })
+    }
+
+
+    $scope.onReleasePropertyDemo;
+    $scope.selectTimeStateComponent = function(time_state, component, $event) {
+      time_state.component_selected = component;
+    }
+
+    $scope.injectPropertyIntoDemo = function(property, property_type) {
+      var demoElem = document.querySelector('#hold-for-demo-text');
+      if (!demoElem) {
+        alert('error - please tell samir')
+        return;
+      }
+
+
+      var cancelTimeoutIfRelease = $timeout(function(){
+        $scope.onReleasePropertyDemo = null;
+        $timeout(function() {
+          if (property_type=== 'css_class') {
+            demoElem.classList.add(property);
+          } else if (property_type === 'css_animation') {
+
+            if (property.toLowerCase().indexOf('out') > -1) {
+              AnimationService.animateOut(demoElem, property);
+            } else {
+              demoElem.style.opacity = 0;
+              $timeout(function() {
+                AnimationService.animateIn(demoElem, property);
+              }, 500)
+            }
+          }
+          $interval.cancel(clearInterval);
+          $timeout(function() {
+            demoElem.style.opacity = 1;
+            demoElem.classList.remove('animated', property);
+            demoElem.innerHTML = 'Tap & Hold for Demo';
+          }, 2000)
+
+        }, 333)
+        $timeout.cancel(cancelTimeoutIfRelease);
+
+      }, 1000);
+
+      var counterIndex = 0;
+
+      var clearInterval = $interval(function() {
+        if (counterIndex === 3) {
+          $interval.cancel(clearInterval)
+        }
+        counterIndex += 1;
+        demoElem.innerHTML = 'Demo in ' + (4 - counterIndex) + '....'
+      }, 333);
+      function generateReleasePropertyDemo(timeout_promise) {
+        return function() {
+          $timeout.cancel(timeout_promise)
+          $interval.cancel(timeout_promise);
+          $scope.onReleasePropertyDemo = null;
+          demoElem.innerHTML = 'Tap & Hold for Demo';
+        }
+      }
+
+      $scope.onReleasePropertyDemo = generateReleasePropertyDemo(cancelTimeoutIfRelease);
+    }
+
+    function removeTimeState(index) {
+      var currentState = $scope.current_states.states[$scope.current_states.selectedIndex];
+      if (currentState && currentState.timeline && currentState.timeline.length) {
+        var result;
+        if (currentState.timeline[index].components.length > 1 && confirm("Are you sure? All components and properties will be removed from this state")) {
+          result = true;
+        } else if (currentState.timeline[index].components.length === 1) {
+          result = true;
+        }
+        if (result) {
+          var tempTimeIndex = currentState.time;
+          currentState.timeline.splice(index, 1);
+          LoadingService.showSuccess('time t = ' + tempTimeIndex + ' succesfully deleted');
+        }
+      }
+    }
+    $scope.removeTimeState = removeTimeState;
+    $scope.addNewTimeState = addNewTimeState;
+
+
+    $scope.editTimeStateTime = function(timeline, time_state, $event, arg) {
+      time_state.edit_mode = !time_state.edit_mode;
+      if (time_state.edit_mode) {
+        time_state.previous_time = time_state.time;
+        var inputElement = $event.target;
+        var parentElement = inputElement && inputElement.parentNode;
+        var grandparent = parentElement && parentElement.parentNode;
+        if (inputElement && parentElement && grandparent) {
+          var input = grandparent.querySelector('input');
+          if (input) {
+            $timeout(function() {
+              input.select()
+            }, 500)
+          }
+        }
+      } else {
+        if (arg === 'cancel') {
+          time_state.time = time_state.previous_time || time_state.time;
+          $scope.showStatus('Canceled saving time state t = ' + time_state.time);
+        } else if (arg === 'sort') {
+          timeline.sort(function(a, b) {
+            return b.time - a.time
+          })
+          timeline = timeline.reverse();
+          $scope.showStatus('Editing to t = ' + time_state.time + '... And then re-sorting by time = 0.');
+        }
+      }
+      // var response = prompt("Please enter a time state & confirm", time_state.time);
+      // if (response) {
+      //   time_state.time = response;
+      // }
+    };
 
     function onFileOptionSelect(option, index) {
 
@@ -144,11 +550,9 @@ angular.module('uguru.dev.controllers')
 
     $scope.saveCurrentStatesToLocalStorage = function(template_ref) {
       var adminBuildToolsCacheExists = $localstorage.getObject('admin_build')
-      console.log('current local storage', adminBuildToolsCacheExists);
       if (!adminBuildToolsCacheExists || adminBuildToolsCacheExists.constructor == Array) {
         adminBuildToolsCacheExists = {};
       }
-      console.log($scope.current_states.template_ref, adminBuildToolsCacheExists);
       adminBuildToolsCacheExists[$scope.current_states.template_ref] = $scope.current_states;
 
       for (var i = 0; i < $scope.current_states.states.length; i++) {
@@ -165,7 +569,6 @@ angular.module('uguru.dev.controllers')
         }
       }
       $localstorage.setObject('admin_build', adminBuildToolsCacheExists);
-      console.log(adminBuildToolsCacheExists);
       LoadingService.showAmbig(null, 2500);
       $timeout(function() {
         LoadingService.showSuccess('Saved!', 1000);
@@ -207,7 +610,7 @@ angular.module('uguru.dev.controllers')
             });
 
             response.layouts.sort(function(val_a, val_b) {
-              return val_b.id - val_a.id
+              return val_b.id - val_a.id;
             }).reverse()
             injectTemplateIntoStage(response.layouts[0].template_url, 'SplashController', response.layouts[0].ref);
             $timeout(function() {
@@ -255,7 +658,6 @@ angular.module('uguru.dev.controllers')
     }
 
     function injectTemplateDropdown(option, index) {
-      console.log(option, index);
       if (option.template_url) {
         injectTemplateIntoStage(option.template_url, option.controller, option.ref);
 
@@ -357,6 +759,9 @@ angular.module('uguru.dev.controllers')
 
         $timeout(function() {
           applyInitPropertiesForState($scope.current_states.states[0]);
+          if (!$scope.page.dropdowns.filterOptions.selectedIndex) {
+            toggleComponentGUIMode('Time', 0);
+          }
         }, 2500)
 
 
@@ -403,7 +808,6 @@ angular.module('uguru.dev.controllers')
         var componentIndex = current_state.components[i];
         var elementIndex = document.querySelector(componentIndex.selector);
         if (!elementIndex) {
-          console.log('continuging because couldnt find index');
           continue;
         }
         for (var j = 0; j < componentIndex.time_states; j++) {
@@ -418,8 +822,27 @@ angular.module('uguru.dev.controllers')
       }
     }
 
+    $scope.updateTimeStateCollapses = function(timeline, time_state) {
+      for (var i = 0; i < timeline.length; i++)  {
+        if (timeline[i] !== time_state) {
+          timeline[i].collapsed = true;
+        }
+      }
+      time_state.collapsed = !time_state.collapsed;
+    }
+
+    $scope.updateComponentCollapsed = function(current_state, component) {
+      for (var i = 0; i < current_state.components.length; i++)  {
+        if (current_state.components[i] !== component) {
+          current_state.components[i].collapsed = true;
+        }
+      }
+      component.collapsed = !component.collapsed;
+    }
+
     function recursiveClone(elem) {
       var clonedNode = elem.cloneNode(true);
+      clonedNode.removeAttribute('anim');
       var originalElemChildren = elem.querySelectorAll('*');
       // var clonedNodeChildren = clonedNode.querySelectorAll('*');
       // for (var i =0; i < originalElemChildren.length; i++) {
@@ -467,6 +890,9 @@ angular.module('uguru.dev.controllers')
         for (var i = 0; i < components_arr.length; i++) {
           var componentIndex = components_arr[i];
           var componentInjectDiv = allElems[i];
+          if (!componentInjectDiv) {
+            continue;
+          }
           componentIndex.template.style.opacity = 1;
           componentIndex.template.style.maxHeight = componentInjectDiv.getBoundingClientRect().height + 'px;'
           componentIndex.template.style.maxWidth = componentInjectDiv.getBoundingClientRect().width + 'px;'
@@ -558,10 +984,21 @@ angular.module('uguru.dev.controllers')
           }
 
       }
-      component_obj.addPropertyField = function(component, time_state) {
+      component_obj.addPropertyField = function(component, time_state, previous_property) {
           $scope.toggleClassProperties()
           $scope.component_selected = component;
           $scope.time_state_selected = time_state;
+          $timeout(function() {
+            var elem = document.querySelector('#property-search-input');
+            elem.focus();
+            if (previous_property) {
+              elem.value = previous_property
+              $scope.propertySearchText = previous_property
+              $timeout(function() {
+                elem.select()
+              }, 500)
+            }
+          }, 1000)
         }
       component_obj.confirmPropertyField = confirmPropertyField
       component_obj.removePropertyField = removePropertyField
@@ -573,7 +1010,6 @@ angular.module('uguru.dev.controllers')
 
 
     function confirmPropertyField(component, time_state, property, _type, value) {
-
       if (_type === 'css_animation') {
         value = {options:['Animate In', 'Animate Out'], selectedIndex:0, size:'small'};
       }
@@ -583,7 +1019,6 @@ angular.module('uguru.dev.controllers')
             if (elem_component) {
               var componentStyles = window.getComputedStyle(elem_component)
               if (property in componentStyles) {
-                console.log('default value is ', componentStyles[property]);
                 var value = componentStyles[property];
               }
             }
@@ -607,6 +1042,17 @@ angular.module('uguru.dev.controllers')
       }
       $scope.selectPropertyActivated = false;
       $scope.component_selected = null;
+
+      if (!$scope.page.dropdowns.filterOptions.selectedIndex) {
+        if (!component.empty_time_state.time && component.time_states.length) {
+          component.empty_time_state.time =  parseFloat(component.time_states[0].time);
+        }
+        if (component.empty_time_state.time) {
+          component.addTimeState(component, component.empty_time_state);
+          toggleComponentGUIMode('Time', 0);
+        }
+      }
+
     }
 
     function timeStateAlreadyExists(component, time) {
@@ -645,7 +1091,13 @@ angular.module('uguru.dev.controllers')
         },
         time_states: [],
         addTimeState: function(component, time_state, c) {
-          if (timeStateAlreadyExists(component, time_state.time)) {
+          if (time_state.time === -1) {
+            LoadingService.showMsg('Adding to initial time state..', 1000);
+            for (var i = 0; i < time_state.properties.length; i++) {
+              component.init_time_state.properties.push(time_state.properties[i]);
+            }
+          }
+          else if (timeStateAlreadyExists(component, time_state.time)) {
             var preExistingTimeState = timeStateAlreadyExists(component, time_state.time);
             for (var i = 0; i < time_state.properties.length; i++) {
               preExistingTimeState.properties.push(time_state.properties[i]);
@@ -662,15 +1114,34 @@ angular.module('uguru.dev.controllers')
             LoadingService.showMsg('Please fill the time state and/or add at least one property');
           }
         },
-        addPropertyField: function(component, time_state) {
-
+        addPropertyField: function(component, time_state, previous_property) {
           $scope.toggleClassProperties();
           $scope.component_selected = component;
           $scope.time_state_selected = time_state;
+          $timeout(function() {
+            var elem = document.querySelector('#property-search-input');
+            elem.focus();
+            if (previous_property) {
+              elem.value = previous_property
+              $scope.propertySearchText = previous_property
+              $timeout(function() {
+                elem.select()
+              }, 500)
+            }
+          }, 1000)
         },
         removePropertyField: removePropertyField,
         confirmPropertyField:confirmPropertyField,
         empty_time_state: {time:null, properties:[]}
+      }
+    }
+
+    $scope.focusFirstTabbableInput = function() {
+      var elems = document.querySelectorAll('.properties-list .property-item');
+
+      if (elems && elems.length) {
+        elems[0].setAttribute('tabindex', 0);
+        elems[0].focus();
       }
     }
 
@@ -708,21 +1179,78 @@ angular.module('uguru.dev.controllers')
 
     }
 
-    $scope.playStateComponents = function(state_components) {
-      console.log(state_components);
-      var max_time_state = 0;
-      for (var i = 0; i < state_components.length; i++) {
-        var indexComponent = state_components[i];
-        var elemComponent = document.querySelectorAll('[anim].' + indexComponent.selector)[0];
-
-        for (var j = 0; j < indexComponent.time_states.length; j++) {
-          var indexTimeState = indexComponent.time_states[j];
-          if (indexTimeState.time > max_time_state) {
-            max_time_state = indexTimeState.time;
-          }
-          applyComponentPropertiesAtTime(indexComponent, indexTimeState, elemComponent);
-        }
+    $scope.playStates = function(states) {
+      if ($scope.page.dropdowns.filterOptions.selectedIndex) {
+        $scope.playStateComponents(states);
+      } else if (!$scope.page.dropdowns.filterOptions.selectedIndex) {
+        $scope.playTimeStatesChronologically(states);
       }
+    }
+
+    $scope.playTimeStatesChronologically = function(timeline) {
+      var timeline = $scope.current_states.states[$scope.current_states.selectedIndex].timeline;
+      for (var i = 0; i < timeline.length; i++) {
+        var timeIndex = timeline[i]
+        var delaySeconds;
+        if (timeIndex.time === "-1" || timeIndex.time === "init") {
+          delaySeconds = 0
+        } else {
+          var delaySeconds = parseFloat(timeIndex.time);
+        }
+
+
+        applyTimeStateAtFutureTime(timeIndex, delaySeconds)
+
+      }
+
+      function applyTimeStateAtFutureTime(time_state, delay) {
+        if (!time_state.components) {
+          return;
+        }
+        $timeout(function() {
+          for (var i = 0; i < time_state.components.length; i++) {
+              var indexComponent = time_state.components[i];
+
+              var elemComponent = document.querySelector('[anim].' + indexComponent.selector);
+              var nested_time_state;
+              if (!indexComponent.time_states || !indexComponent.time_states.length) {
+                continue;
+              }
+              for (var j = 0; j < indexComponent.time_states.length; j++) {
+                indexComponentTimeState = indexComponent.time_states[j];
+                var delayStr = delay + "";
+                if (delayStr === indexComponentTimeState.time) {
+                  var nested_time_state = indexComponentTimeState;
+                  nested_time_state.time = delay;
+                }
+              }
+              if (indexComponent && nested_time_state && elemComponent) {
+                applyComponentPropertiesAtTime(indexComponent, nested_time_state, elemComponent);
+              }
+          }
+        }, delay || 0)
+      }
+    }
+
+    $scope.playStateComponents = function(state_components) {
+      applyInitPropertiesForState($scope.current_states.states[$scope.current_states.selectedIndex]);
+      $scope.showStatus('Initializing all components to their original states');
+
+      $timeout(function() {
+        var max_time_state = 0;
+        for (var i = 0; i < state_components.length; i++) {
+          var indexComponent = state_components[i];
+          var elemComponent = document.querySelectorAll('[anim].' + indexComponent.selector)[0];
+
+          for (var j = 0; j < indexComponent.time_states.length; j++) {
+            var indexTimeState = indexComponent.time_states[j];
+            if (indexTimeState.time > max_time_state) {
+              max_time_state = indexTimeState.time;
+            }
+            applyComponentPropertiesAtTime(indexComponent, indexTimeState, elemComponent);
+          }
+        }
+      }, 2000)
 
       $timeout(function() {
         LoadingService.showMsg('Re-initializing components...', 3000);
@@ -734,6 +1262,9 @@ angular.module('uguru.dev.controllers')
 
 
     function applyComponentPropertiesAtTime(component, time_state, element) {
+        if (!time_state.properties || !time_state.properties.length)  {
+          return;
+        }
         var delay = 0;
         if (time_state.time === -1) {
           var delay = 0;
@@ -742,9 +1273,6 @@ angular.module('uguru.dev.controllers')
         }
         $timeout(function() {
           for (var i = 0; i < time_state.properties.length; i++) {
-            if (!component.active) {
-              continue;
-            }
             if (time_state.properties[i].type === 'css_text') {
               element.style[time_state.properties[i].name] = time_state.properties[i].value;
             } else if (time_state.properties[i].type === 'css_class') {
@@ -757,8 +1285,6 @@ angular.module('uguru.dev.controllers')
               } else {
                 AnimationService.animateIn(element, time_state.properties[i].name);
               }
-
-
             }
           }
         }, delay)

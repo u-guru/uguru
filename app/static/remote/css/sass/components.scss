@@ -2945,6 +2945,33 @@ input[type=range] {
 		}
 	}
 }
+.dropdown-container.full-x {
+	.dropdown {
+		> div {
+			span {
+				width: calc(100% - 48px);
+			}
+		}
+		> ul {
+			width: 100%;
+			li {
+				width: calc(100% - 48px);
+			}
+		}
+		&.small {
+			> div {
+				span {
+					width: calc(100% - 24px);
+				}
+			}
+			> ul {
+				li {
+					width: calc(100% - 24px);
+				}
+			}
+		}
+	}
+}
 
 /* ---------- COLOR DROPDOWNS */
 .dropdown-color {
