@@ -572,13 +572,8 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/splash.html',
         params: {category: {name: 'Academic', id:5, hex_color:'academic'}, university: {latitude: "37.8718992", longitude: "-122.2585399",name: 'UC Berkeley', id:2307, school_color_dark: "#023360", school_tiny_name: 'Cal', school_color_light: "#FBB431", short_name: "UC Berkeley"}},
         controller: "SplashController"
-  }).
-  state('root.demoS3', {
-        url: '/demoS3',
-        templateUrl: BASE + 'templates/dev/s3upload.html',
-        controller: ""
   });
-
+  
 
 
   $urlRouterProvider.otherwise('/' + _startpage);
