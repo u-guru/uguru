@@ -205,11 +205,11 @@ input, fieldset {
 }
 
 .no-scrollbar {
-	&::-webkit-scrollbar { 
-		display: none; 
+	&::-webkit-scrollbar {
+		display: none;
 	}
-	&::-moz-scrollbar { 
-		display: none; 
+	&::-moz-scrollbar {
+		display: none;
 	}
 }
 

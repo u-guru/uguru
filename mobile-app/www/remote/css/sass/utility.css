@@ -17,8 +17,7 @@
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
+  transform: rotate(45deg); }
 
 .guru-head, .guru-head svg {
   display: block;
@@ -727,13 +726,12 @@ input, fieldset {
   display: -ms-flexbox;
   display: -moz-flex;
   display: -webkit-flex;
-<<<<<<< HEAD
   display: flex; }
   [class*="flex"][class*="-wrap"] {
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap; }
-  [class*="flex"][class*="-center"]:not(.flex-center-vertical) {
+  [class*="flex"][class*="-center"]:not([class*="-center-vertical"]) {
     -webkit-flex-direction: row;
     flex-direction: row;
     -webkit-align-items: center;
@@ -775,78 +773,6 @@ input, fieldset {
   [class*="flex"][class*="-space-between"] {
     -webkit-justify-content: space-between !important;
     justify-content: space-between !important; }
-=======
-  display: flex;
-}
-
-[class*="flex"][class*="-wrap"] {
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-}
-
-[class*="flex"][class*="-center"]:not([class*="-center-vertical"]) {
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-}
-
-[class*="flex"][class*="center-vertical"] {
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
-
-[class*="flex"][class*="-start"] {
-  -webkit-align-items: flex-start !important;
-  align-items: flex-start !important;
-  -webkit-align-content: flex-start !important;
-  align-content: flex-start !important;
-}
-
-[class*="flex"][class*="-end"] {
-  -webkit-align-items: flex-end !important;
-  align-items: flex-end !important;
-  -webkit-align-content: flex-end !important;
-  align-content: flex-end !important;
-}
-
-[class*="flex"][class*="-start-self"] {
-  -webkit-align-self: flex-start !important;
-  align-self: flex-start !important;
-}
-
-[class*="flex"][class*="-end-self"] {
-  -webkit-align-self: flex-end !important;
-  align-self: flex-end !important;
-}
-
-[class*="flex"][class*="-right"] {
-  -webkit-justify-content: flex-end !important;
-  justify-content: flex-end !important;
-}
-
-[class*="flex"][class*="-left"] {
-  -webkit-justify-content: flex-start !important;
-  justify-content: flex-start !important;
-}
-
-[class*="flex"][class*="-middle"] {
-  -webkit-justify-content: center !important;
-  justify-content: center !important;
-}
-
-[class*="flex"][class*="-space-between"] {
-  -webkit-justify-content: space-between !important;
-  justify-content: space-between !important;
-}
->>>>>>> c4ee69d4719dce38a635fe0b8df3493c0901472e
 
 .flex-grow {
   -webkit-flex-grow: 1;
@@ -900,21 +826,8 @@ input, fieldset {
 .round {
   border-radius: 1000px !important; }
 
-<<<<<<< HEAD
-.svg-white {
-  display: block; }
-  .svg-white svg {
-    display: block; }
-    .svg-white svg * {
-      fill: none !important;
-      stroke: white !important;
-      stroke-linecap: round !important;
-      stroke-linejoin: round !important; }
-=======
 .svg-white:not([class*="flex"]) {
-  display: block;
-}
-
+  display: block; }
 .svg-white[class*="flex"] {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -922,9 +835,7 @@ input, fieldset {
   display: -ms-flexbox;
   display: -moz-flex;
   display: -webkit-flex;
-  display: flex;
-}
-
+  display: flex; }
 .svg-white[class*="flex-center"] {
   -webkit-flex-direction: row;
   flex-direction: row;
@@ -933,25 +844,18 @@ input, fieldset {
   -webkit-align-content: center;
   align-content: center;
   -webkit-justify-content: center;
-  justify-content: center;
-}
-
+  justify-content: center; }
 .svg-white svg {
-  display: block;
-}
-
-.svg-white svg * {
-  fill: none !important;
-  stroke: white !important;
-  stroke-linecap: round !important;
-  stroke-linejoin: round !important;
-}
->>>>>>> c4ee69d4719dce38a635fe0b8df3493c0901472e
+  display: block; }
+  .svg-white svg * {
+    fill: none !important;
+    stroke: white !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important; }
 
 .svg-32 svg {
   width: 32px;
-  height: 32px;
-}
+  height: 32px; }
 
 .svg-36 svg {
   width: 36px;
