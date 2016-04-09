@@ -19,19 +19,39 @@ angular.module('uguru.dev.controllers')
   function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService, KeyboardService, $interval, FileService) {
 
     // KeyboardService.preventDefaultCutPaste();
-    KeyboardService.initCopyPasteFunctionCallbacks();
+    // KeyboardService.initCopyPasteFunctionCallbacks();
     var commandPressed = false;
-    var onCmdPressed = function() {
-      console.log('command key pressed');
-      commandPressed = true;
+    var buildPlayerMouseOutListenerFunc, buildPlayerKeyboardShortCutsFunc,
+    buildPlayerDblClickListenerFunc, buildPlayerMouseOverListenerFunc, buildPlayerMouseDownListenerFunc,
+    buildPlayerMouseOutListenerFunc, buildPlayerMouseUpListenerFunc;
+    var buildPlayerDisplayHideArr = []
+
+    var onCmdPressed = function(e) {
+      if(e.metaKey) {
+        console.log('command key pressed');
+        commandPressed = true;
+        initAllListeners()
+      }
+      if (e.ctrlKey) {
+       console.log('ctrl key pressed');
+       document.addEventListener('keydown', buildPlayerKeyboardShortCutsFunc);
+      }
       //component mode
       if ($scope.page.dropdowns.filterOptions.selectedIndex) {
-        initAllListeners()
+
       }
     }
 
-    var onCmdReleased = function() {
-      commandPressed = false;
+    var onCmdReleased = function(e) {
+
+      if(e.metaKey || e.keyCode === 91) {
+        console.log('command key released');
+        commandPressed = false;
+      }
+      if (e.ctrlKey || e.keyCode == 17) {
+       console.log('ctrl key released');
+      }
+
       destroyAllBuildPlayerListeners();
     }
 
@@ -53,11 +73,66 @@ angular.module('uguru.dev.controllers')
       $scope.storage.get()
     })
 
+    var keyCodeDict = {
+      'ctrl': 17,
+      'enter': 13,
+      'shift': 16,
+      's': 83,
+      'f': 70,
+      'k': 75,
+      '\\': 220,
+      '/': 191
 
-    var buildPlayerMouseOutListenerFunc, buildPlayerKeyboardShortCutsFunc,
-    buildPlayerDblClickListenerFunc, buildPlayerMouseOverListenerFunc, buildPlayerMouseDownListenerFunc,
-    buildPlayerMouseOutListenerFunc, buildPlayerMouseUpListenerFunc;
-    var buildPlayerDisplayHideArr = []
+    }
+
+
+    $scope.shortcuts = [
+      {
+        name: "settings", keys:"ctrl + s", codes: [17, 83]
+      },
+      {
+        name: "view shortcuts", keys:"ctrl + z", codes: [17,191]
+      },
+      {
+        name: "view files", keys:"ctrl + k", codes: [17,70]
+      },
+      {
+        name: "search properties", keys:"ctrl + f", codes: [17,70]
+      },
+      {
+        name: "stage edit mode", keys:"hold CMD + ___"
+      },
+      {
+        name: "temporarily remove component", keys:"hold CMD + double click"
+      }
+    ]
+
+    var buildPlayerKeyboardShortCutsFunc = function(e) {
+
+        if (e.keyCode === 191 || e.keyCode === 90) {
+          console.log('slash clicked');
+          if ($scope.settings.key_shortcuts) {
+            $scope.settings.key_shortcuts = false;
+            $scope.settings.activated = false;
+          } else {
+            $scope.settings.activated = true;
+            $scope.settings.key_shortcuts = true;
+          }
+        }
+        if (e.keyCode === 70) {
+          if ($scope.settings.view_files) {
+            $scope.settings.activated = false;
+            $scope.settings.view_files = false;
+          } else {
+            $scope.settings.activated = true;
+            $scope.settings.view_files = true;
+          }
+        }
+        if (e.keyCode === 83) {
+          $scope.settings.activated = !$scope.settings.activated;
+        }
+      }
+
     function initAllListeners() {
       var elemBuildPlayer = document.querySelector('.build-player');
       var onMouseOverPromise;
@@ -66,6 +141,9 @@ angular.module('uguru.dev.controllers')
       var onMouseDownElem;
       var onMouseDownPromise
       var onMouseUpAddComponent;
+
+
+
       buildPlayerMouseOverListenerFunc = function(e) {
 
         onMouseOverElem = e.target;
@@ -208,7 +286,6 @@ angular.module('uguru.dev.controllers')
         elemBuildPlayer.addEventListener('mouseup', buildPlayerMouseUpListenerFunc);
         elemBuildPlayer.addEventListener('dblclick', buildPlayerDblClickListenerFunc);
         elemBuildPlayer.addEventListener('mouseover', buildPlayerMouseOverListenerFunc);
-        elemBuildPlayer.addEventListener('keyup', buildPlayerKeyboardShortCutsFunc);
       }
     }
 
@@ -734,9 +811,9 @@ angular.module('uguru.dev.controllers')
         Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(
           function(response) {
             response = JSON.parse(response)
-            for (var i = 0; i < response.layouts.length; i++) {
-              console.log(i, response.layouts[i].name, response.layouts[i].template_url)
-            }
+            // for (var i = 0; i < response.layouts.length; i++) {
+            //   console.log(i, response.layouts[i].name, response.layouts[i].template_url)
+            // }
             $timeout(function() {
               $scope.$apply(function() {
                 $scope.page.dropdowns.templates.options = response.layouts;
