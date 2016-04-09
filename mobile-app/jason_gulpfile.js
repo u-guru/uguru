@@ -109,10 +109,14 @@ gulp.task('Copy Templates',function() {
 });
 gulp.task('Copy SVG Icon',function()
 {
+	console.log( targetDir)
 	return gulp.src(['templates/svg/main/**/*'],{ cwd: 'www/remote' })
 	   .pipe(svgmin())
-	   .pipe(svgstore({ fileName: 'icons', inlineSvg: true}))
+	   .pipe(svgstore({ fileName: 'all.svg', inlineSvg: true}))
+	   .pipe(rename({basename: 'allIcons'}))
 	   .pipe(gulp.dest(path.join(targetDir, 'svg')))
+	   .pipe(gulp.dest(path.join(path.resolve('www/remote/templates'), 'svg')))
+
 });
 
 var includes = require('gulp-file-include');
