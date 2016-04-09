@@ -100,32 +100,100 @@ def getAllAdminFiles(bucket_name="uguru-admin"):
             key_dict['url'] = "https://uguru-admin.s3.amazonaws.com/%s" % key.name
             key_dict['last_modified'] = str(utc_time)
             key_dict['last_modified_formatted'] = "%s/%s at %s" % (utc_time.month, utc_time.day, formatHourMinute(utc_time.hour, utc_time.minute))
-            # key.set_acl('public-read')
+
         if not result_dict.get(key_root_folder):
             result_dict[key_root_folder] = {'files':[key_dict]}
         else:
             result_dict[key_root_folder]['files'].append(key_dict)
+
+
+    # for name_key in result_dict.keys():
+    #     user_files = result_dict[name_key]['files']
+    #     tree = {}
+    #     all_folders = []
+    #     for _file in user_files:
+    #         if _file.get('type') == 'folder':
+    #             all_folders.append(_file)
+    #     for folder in all_folders:
+    #         folder_name = folder.get('name').replace(name_key + '/', '')
+    #         if folder_name:
+    #             tree[folder_name] = []
+    #     all_files = [_file for _file in user_files if _file.get('type') == "file"]
+    #     for _file in all_files:
+    #         tree_keys = tree.keys()
+    #         print tree_keys, _file.get('name')
+
+        # for item in user_files:
+
+
+
     return result_dict
 
 def getTemplateFromPath(template_type, url):
     full_root_path = 'mobile-app/www/remote/templates/elements/' +  template_type + '/' + url
-    _file = open(full_root_path)
-    file_string = _file.read()
-    return file_string
+    try:
+        _file = open(full_root_path)
+        file_string = _file.read()
+        return file_string
+    except:
+        return False
 
+def getJsonBasedString(element_arr, url):
+    for elem in element_arr:
+        if elem['template_url'] == url:
+            return elem
+    return False
 
-def syncMasterTemplatesWithAWS(username="master"):
-    from mp_admin import getAllComponentsContainers
+def syncMasterTemplatesWithAWS(username="master", file_type='application/json'):
+    from mp_admin import getAllComponentsContainers, loadMostUpdatedElementsJson
     from pprint import pprint
     match_dict = getAllComponentsContainers()
+    elements_dict = loadMostUpdatedElementsJson()
     for element_type in ["components", "containers", "layouts", "assets"]:
         for component in match_dict[element_type]:
+            full_url = component['template_url']
             url = component['template_url'].replace('templates/', '')
             file_string = getTemplateFromPath(element_type, url)
-            file_type = 'text/html'
-            response = create_static_file('uguru-admin', username, '%s/%s' % (element_type, url), file_string, file_type)
-            if response:
-                print response.name, 'created'
+
+            if not file_string:
+                print "creating html/tpl/svg file: %s" % url
+                response = create_static_file('uguru-admin', username, '%s/%s' % (element_type, url), file_string, file_type)
+            else:
+                print "skipping %s -- ALREADYEXISTS \n\n " % url
+
+            json_url = component['template_url'].replace('templates/', '')
+            json_url_split = json_url.split('/')
+            json_url_path_only = "/".join(json_url_split[0: len(json_url_split) - 1])
+            file_name = url.split("/")[-1].split('.')
+            json_file_name = ".".join(file_name[0:len(file_name) - 1]) + '.json'
+            json_full_url = json_url_path_only + '/' + json_file_name
+
+            # json_file_string = getTemplateFromPath(element_type, json_full_url)
+            # if not json_file_string:
+            element_type_arr = elements_dict[element_type]
+            json_type_string = getJsonBasedString(element_type_arr, full_url)
+            import json
+            json_type_string = json.dumps(json_type_string, indent=4)
+            response = create_static_file('uguru-admin', username, '%s/%s' %(element_type, json_full_url), json_type_string, 'application/json')
+                # print "creating json_file : %s" % json_full_url
+                # response = create_static_file('uguru-admin', username, '%s/%s' % (element_type, json_full_url), json_file_string, 'application/json')
+            # else:
+            #     print "\n\nskipping %s JSON ALREADYE XISTS \n\n " % json_full_url
+
+
+
+            # json_exists = getTemplateFromPath(element_type, json_file_name)
+            # if not json_exists:
+            #     print "creating json file: %s / %s \n\n\n " % (element_type, json_file_name)
+            #     element_type_arr = elements_dict[element_type]
+            #     json_type_string = getJsonBasedString(element_type_arr, full_url)
+            #     response = create_static_file('uguru-admin', username, '%s/%s' %(element_type, json_file_name), json_type_string, 'application/json')
+            # else:
+            #     print "%s json already exists" % json_file_name
+
+
+            # if response:
+            #     print response.name, 'created'
 
     ## todo
     if match_dict.get('assets'):
@@ -173,10 +241,12 @@ if sys.argv and '-b' in sys.argv and len(sys.argv) == 6 and '-d' in sys.argv and
 if sys.argv and '-ua' in sys.argv and 'get' in sys.argv:
 
     if len(sys.argv) == 3:
-        result = getAllAdminFiles()
+        result = getAllAdminFiles("uguru-admin")
+        from pprint import pprint
+        pprint(result)
     if len(sys.argv) == 4:
         name = sys.argv[-1]
-        result = getAllAdminFiles(name)
+        result = getAllAdminFiles("uguru-admin")
 
         user_files = result.get(name)
         if user_files:
@@ -187,18 +257,20 @@ if sys.argv and '-ua' in sys.argv and 'get' in sys.argv:
         result = getAllAdminFiles(bucket_name)
         pprint(result)
 
-if sys.argv and '-ua' in sys.argv and 'sync' in sys.argv:
+if sys.argv and '-ua' in sys.argv and '--init' in sys.argv:
     if len(sys.argv) == 3:
         print "syncing all to master..."
         result = syncMasterTemplatesWithAWS()
 
-    if len(sys.argv) == 4:
+    if len(sys.argv) == 4 and sys.argv[-1] in ['master', 'samir', 'gabrielle', 'jason', 'jeselle']:
         print "username"
         user_name = sys.argv[-1]
         print "syncing all to %s..." % user_name
-        result = syncMasterTemplatesWithAWS(user_name)
+        result = syncMasterTemplatesWithAWS(username=user_name, file_type='text/html')
 
-
+    if len(sys.argv) == 4 and sys.argv[-1] == 'all':
+        for user_name in ['master', 'samir', 'gabrielle', 'jason', 'jeselle']:
+            result = syncMasterTemplatesWithAWS(username=user_name, file_type='text/html')
 # if sys.argv and '-b' in sys.argv and '-k' in sys.argv:
 #     bucket_name = sys.argv[-3]
 #     key_name = sys.argv[-1]

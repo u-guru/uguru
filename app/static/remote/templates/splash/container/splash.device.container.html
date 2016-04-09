@@ -1,5 +1,5 @@
 <div class="splash-device splash-device-iphone magictime opacity-0 parallax-absolute parallax-50" parallax-parent-ref="p1" parallax-child="0.2" class-on-load="vanishIn:anim" activate-on-class="a" class-on-activate="active:inject.splash-device-search-inside|a, b:inject.splash-device-svg|a" class-on-activate-delay="4000" translate-on-class-delay="500" translate-on-class="translate-device" class-on-clear="null:inject.splash-device-search-inside|clear, null:inject:splash-device-svg|clear">
-                <svg class="splash-device-svg" anim activate-on-class="a" class-on-activate="active:keep" viewBox="0 0 319 652">
+                <svg class="splash-device-svg" activate-on-class="a" class-on-activate="active:keep" viewBox="0 0 319 652">
                     <path d="M2,42.0005693 C2,19.9088649 19.9096817,2 41.9948462,2 L277.005154,2 C299.093697,2 317,19.9012788 317,42.0005693 L317,609.999431 C317,632.091135 299.090318,650 277.005154,650 L41.9948462,650 C19.9063026,650 2,632.098721 2,609.999431 L2,42.0005693 Z M22,80 L298,80 L298,573 L22,573 L22,80 Z" fill="none" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3"></path>
                     <circle stroke="#F0E0D0" stroke-width="3" fill="none" cx="159" cy="611" r="25"></circle>
                 </svg>
@@ -17,7 +17,7 @@
                                     <div id="map-icon-{{$index + 1}}-translate">
                                         <a class="marker-guru bg-{{selectedCategory.hex_color}}" translate-on-class-delay="{{(selectedUniversity.map.markers.length * 1000 * 0.6) || 1000}}" activate-on-class-delay="5500" translate-to-elem="#map-icon-{{$index + 1}}" translate-on-class="translate-device-guru-profile">
                                             <span class="user-icon" style="background-image: url('{{marker.guru.profile_url}}')"></span>
-                                            <user-icon size="-64" url="marker.guru.profile_url"> </user-icon>
+                                            <user-icon size="64" url="marker.guru.profile_url"> </user-icon>
 
                                             <span class="marker-guru-course">{{marker.guru.subcategory}}</span>
                                         </a>

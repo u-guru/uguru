@@ -645,7 +645,7 @@
                         <div class='full-xy p15xy flex-wrap-start' ng-if='!selected_component.index'>
                             <div class='playground-container full-x flex-wrap-center relative'>
                                 <h4 class='uppercase text-center full-x p20xy opacity-50'>{{selected_component.name}} Demo - <span class='weight-800'>TRY ME!</span></h4>
-                                <demo class='flex-wrap-center relative p20xy' ng-if='selected_component.sample' ng-init='component = selected_component' template="{{selected_component.sample.template}}"></demo>
+                                <demo class='flex-wrap-center full-x relative p20xy' ng-if='selected_component.sample' ng-init='component = selected_component' template="{{selected_component.sample.template}}"></demo>
                             </div>
                             <ul class="playground-code-container">
                                 <li>
@@ -697,11 +697,11 @@
                         <div>
                             <a ng-repeat='option in page.layout.sections[0].tabs.options' ng-click='page.layout.sections[0].tabs.index = $index'>
                                 <div>
-                                    <user-icon size="-32" url="option.profile_url" ng-if="$index != 5"></user-icon>
-                                    <user-icon size="-32" url="option.profile_url" ng-if="$index === 0"></user-icon>
-                                    <user-icon size="-32" url="option.profile_url" ng-if="$index === 0"></user-icon>
-                                    <user-icon class="gabrielle" size="-32" url="option.profile_url_1" ng-if="$index === 5"></user-icon>
-                                    <user-icon class="jeselle" size="-32" url="option.profile_url_2" ng-if="$index === 5"></user-icon>
+                                    <user-icon size="32" url="option.profile_url" ng-if="$index != 5"></user-icon>
+                                    <user-icon size="32" url="option.profile_url" ng-if="$index === 0"></user-icon>
+                                    <user-icon size="32" url="option.profile_url" ng-if="$index === 0"></user-icon>
+                                    <user-icon class="gabrielle" size="32" url="option.profile_url_1" ng-if="$index === 5"></user-icon>
+                                    <user-icon class="jeselle" size="32" url="option.profile_url_2" ng-if="$index === 5"></user-icon>
                                 </div>
                                 <div ng-bind-html="option.title"></div>
                             </a>
@@ -984,7 +984,7 @@
                                             </a>
                                             <div>
                                                 <!-- <ng-bind src="component.template"/> -->
-                                                <demo class='flex-wrap-center' template="{{component.sample.template}}"></demo>
+                                                <demo class='flex-wrap-center full-x' template="{{component.sample.template}}"></demo>
                                                 <!-- <step-by-step steps="component.scope.steps" header="component.scope.header"></step-by-step> -->
                                             </div>
                                         </div>

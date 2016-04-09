@@ -19,6 +19,12 @@
 	}
 }
 
+.close-icon {
+	svg {
+		@include prefix(transform, rotate(45deg), webkit moz ms o);
+	}
+}
+
 .guru-head, .guru-head svg {
 	display: block;
 	width: 150px;
@@ -199,11 +205,11 @@ input, fieldset {
 }
 
 .no-scrollbar {
-	&::-webkit-scrollbar { 
-		display: none; 
+	&::-webkit-scrollbar {
+		display: none;
 	}
-	&::-moz-scrollbar { 
-		display: none; 
+	&::-moz-scrollbar {
+		display: none;
 	}
 }
 
@@ -858,7 +864,7 @@ input, fieldset {
 	&[class*="-wrap"] {
 		@include flex-wrap;
 	}
-	&[class*="-center"]:not(.flex-center-vertical) {
+	&[class*="-center"]:not([class*="-center-vertical"]) {
 		@include flex-center;
 	}
 	&[class*="center-vertical"] {
@@ -948,7 +954,15 @@ input, fieldset {
 }
 // SVG
 .svg-white {
-	display: block;
+	&:not([class*="flex"]) {
+		display: block;
+	}
+	&[class*="flex"] {
+		@include flex;
+	}
+	&[class*="flex-center"] {
+		@include flex-center;
+	}
 	svg {
 		display: block;
 		* {
@@ -959,6 +973,13 @@ input, fieldset {
 		}
 	}
 }
+.svg-32 {
+	svg {
+		width: 32px;
+		height: 32px;
+	}
+}
+
 .svg-36 {
 	svg {
 		width: 36px;

@@ -192,7 +192,51 @@
         ], 
         "samir": []
     }, 
-    "assets": [], 
+    "assets": [
+        {
+            "id": 1, 
+            "ref": "logo", 
+            "tags": [
+                "logo"
+            ], 
+            "template_url": "templates/logo.tpl"
+        }, 
+        {
+            "id": 2, 
+            "ref": "svg", 
+            "tags": [
+                "svg"
+            ], 
+            "template_url": "templates/svg.tpl"
+        }, 
+        {
+            "id": 3, 
+            "ref": "placeholder-circle", 
+            "tags": [
+                "placeholder", 
+                "circle"
+            ], 
+            "template_url": "templates/placeholder/circle.tpl"
+        }, 
+        {
+            "id": 4, 
+            "ref": "placeholder-square", 
+            "tags": [
+                "placeholder", 
+                "square"
+            ], 
+            "template_url": "templates/placeholder/square.tpl"
+        }, 
+        {
+            "id": 5, 
+            "ref": "social-social", 
+            "tags": [
+                "social", 
+                "social"
+            ], 
+            "template_url": "templates/social/social.tpl"
+        }
+    ], 
     "components": [
         {
             "id": 1, 
@@ -206,6 +250,15 @@
         }, 
         {
             "id": 2, 
+            "ref": "cards-album", 
+            "tags": [
+                "cards", 
+                "album"
+            ], 
+            "template_url": "templates/cards/album.tpl"
+        }, 
+        {
+            "id": 3, 
             "name": "Guru Profile Cardlet", 
             "ref": "cards-cardlet", 
             "tags": [
@@ -215,8 +268,35 @@
             "template_url": "templates/cards/cardlet.tpl"
         }, 
         {
+            "id": 4, 
+            "ref": "cards-course-check", 
+            "tags": [
+                "cards", 
+                "course.check"
+            ], 
+            "template_url": "templates/cards/course.check.tpl"
+        }, 
+        {
+            "id": 5, 
+            "ref": "cards-course-hover", 
+            "tags": [
+                "cards", 
+                "course.hover"
+            ], 
+            "template_url": "templates/cards/course.hover.tpl"
+        }, 
+        {
+            "id": 6, 
+            "ref": "cards-course-link", 
+            "tags": [
+                "cards", 
+                "course.link"
+            ], 
+            "template_url": "templates/cards/course.link.tpl"
+        }, 
+        {
             "active": true, 
-            "id": 3, 
+            "id": 7, 
             "name": "Course Card", 
             "ref": "cards-course", 
             "sample": {
@@ -238,7 +318,7 @@
         }, 
         {
             "active": false, 
-            "id": 4, 
+            "id": 8, 
             "name": "PaymentCard", 
             "ref": "cards-payment", 
             "sample": {
@@ -273,21 +353,11 @@
             "template_url": "templates/cards/payment.tpl"
         }, 
         {
-            "active": true, 
-            "id": 5, 
-            "name": "Profile Thumbnail", 
-            "ref": "cards-profile-thumb", 
-            "sample": {
-                "scope": {
-                    "color": "delivery", 
-                    "profile_url": "http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200", 
-                    "size": "72"
-                }, 
-                "template": "<profile-thumb size=\"component.sample.scope.size\" color=\"component.sample.scope.color\" url=\"component.sample.scope.profile_url\"></profile-thumb>"
-            }, 
+            "id": 9, 
+            "ref": "cards-profile-mini", 
             "tags": [
                 "cards", 
-                "profile.thumb"
+                "profile.mini"
             ], 
             "template_url": "templates/cards/profile.mini.tpl"
         }, 
@@ -298,7 +368,7 @@
                     "girls": "Discuss names convenient for everyone. I.e. PF -Card."
                 }
             ], 
-            "id": 6, 
+            "id": 10, 
             "name": "Profile Card", 
             "ref": "cards-profile", 
             "sample": {
@@ -313,7 +383,7 @@
         }, 
         {
             "active": true, 
-            "id": 7, 
+            "id": 11, 
             "name": "Profile 1/3 Side Card", 
             "ref": "cards-profile-widget", 
             "sample": {
@@ -339,7 +409,7 @@
                     ]
                 }
             ], 
-            "id": 8, 
+            "id": 12, 
             "name": "University Card", 
             "ref": "cards-university", 
             "sample": {
@@ -367,7 +437,7 @@
         }, 
         {
             "active": true, 
-            "id": 9, 
+            "id": 13, 
             "name": "User ID Card", 
             "ref": "cards-user-id", 
             "sample": {
@@ -395,14 +465,8 @@
             "template_url": "templates/cards/user.id.tpl"
         }, 
         {
-            "active": true, 
-            "id": 10, 
-            "name": "Attach List", 
-            "ref": "info-attach-list", 
-            "sample": {
-                "scope": {}, 
-                "template": "<attach-list> </attach-list>"
-            }, 
+            "id": 14, 
+            "ref": "info-attachment", 
             "tags": [
                 "info", 
                 "attachment"
@@ -411,7 +475,7 @@
         }, 
         {
             "active": true, 
-            "id": 11, 
+            "id": 15, 
             "name": "Badge", 
             "ref": "info-badge", 
             "sample": {
@@ -426,7 +490,7 @@
         }, 
         {
             "active": true, 
-            "id": 12, 
+            "id": 16, 
             "name": "University Pennant", 
             "ref": "info-pennant", 
             "sample": {
@@ -445,8 +509,17 @@
             "template_url": "templates/info/pennant.tpl"
         }, 
         {
+            "id": 17, 
+            "ref": "info-profile-section", 
+            "tags": [
+                "info", 
+                "profile.section"
+            ], 
+            "template_url": "templates/info/profile.section.tpl"
+        }, 
+        {
             "active": true, 
-            "id": 14, 
+            "id": 18, 
             "name": "Rating Stars", 
             "notes": "doesnt show 0.5", 
             "ref": "info-rating", 
@@ -463,7 +536,7 @@
             "template_url": "templates/info/rating.tpl"
         }, 
         {
-            "id": 15, 
+            "id": 19, 
             "name": "Card Ribbon", 
             "ref": "info-ribbon", 
             "tags": [
@@ -473,7 +546,7 @@
             "template_url": "templates/info/ribbon.tpl"
         }, 
         {
-            "id": 16, 
+            "id": 20, 
             "name": "Toast", 
             "ref": "info-toast", 
             "tags": [
@@ -484,7 +557,7 @@
         }, 
         {
             "active": true, 
-            "id": 17, 
+            "id": 21, 
             "name": "Tooltip", 
             "notes": "", 
             "ref": "info-tooltip", 
@@ -521,7 +594,7 @@
         {
             "active": true, 
             "bugs": "", 
-            "id": 18, 
+            "id": 22, 
             "name": "User Icon", 
             "notes": "Add pre-loader states while the image is loading", 
             "ref": "info-user-icon", 
@@ -540,7 +613,7 @@
         }, 
         {
             "active": true, 
-            "id": 19, 
+            "id": 23, 
             "name": "Attachment Box", 
             "ref": "inputs-attach-box", 
             "sample": {
@@ -554,7 +627,7 @@
         }, 
         {
             "active": true, 
-            "id": 20, 
+            "id": 24, 
             "name": "Standard Checkbox", 
             "ref": "inputs-checkbox", 
             "sample": {
@@ -581,7 +654,7 @@
                     "girls": "resolve inputs and save buttons vs blurs"
                 }
             ], 
-            "id": 21, 
+            "id": 25, 
             "name": "Color Picker", 
             "ref": "inputs-color-picker", 
             "sample": {
@@ -599,7 +672,7 @@
         {
             "active": true, 
             "cp_link": "", 
-            "id": 22, 
+            "id": 26, 
             "name": "Standard Dropdown", 
             "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
             "ref": "inputs-dropdown", 
@@ -623,7 +696,7 @@
         }, 
         {
             "active": true, 
-            "id": 23, 
+            "id": 27, 
             "name": "Standard Radio", 
             "ref": "inputs-radio", 
             "sample": {
@@ -639,24 +712,17 @@
             "template_url": "templates/inputs/radio.tpl"
         }, 
         {
-            "active": true, 
-            "id": 24, 
-            "name": "Standard Range Slider", 
-            "ref": "inputs-range-slider", 
-            "sample": {
-                "scope": {}, 
-                "template": "<range-slider> </range-slider>"
-            }, 
+            "id": 28, 
+            "ref": "inputs-slider", 
             "tags": [
                 "inputs", 
-                "slider", 
-                "range"
+                "slider"
             ], 
             "template_url": "templates/inputs/slider.tpl"
         }, 
         {
             "active": true, 
-            "id": 25, 
+            "id": 29, 
             "name": "Arrow Tab Bar", 
             "ref": "inputs-tab-arrow", 
             "sample": {
@@ -667,10 +733,10 @@
                 "inputs", 
                 "tab.arrow"
             ], 
-            "template_url": "templates/progress/arrow.tpl"
+            "template_url": "templates/inputs/tab.arrow.tpl"
         }, 
         {
-            "id": 26, 
+            "id": 30, 
             "name": "Copy Text Input", 
             "ref": "inputs-text-copy", 
             "tags": [
@@ -681,7 +747,7 @@
         }, 
         {
             "active": true, 
-            "id": 27, 
+            "id": 31, 
             "name": "Standard Text Input", 
             "ref": "inputs-text", 
             "sample": {
@@ -712,7 +778,7 @@
         }, 
         {
             "active": true, 
-            "id": 28, 
+            "id": 32,
             "name": "Standard Toggle", 
             "ref": "inputs-toggle", 
             "sample": {
@@ -728,7 +794,7 @@
         {
             "active": true, 
             "cp_link": "", 
-            "id": 29, 
+            "id": 33, 
             "name": "Color Dropdowns", 
             "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
             "ref": "inputs-dropdowns-color", 
@@ -746,12 +812,23 @@
             "stage": 1, 
             "tags": [
                 "inputs", 
-                "dropdowns"
+                "dropdowns", 
+                "color"
             ], 
             "template_url": "templates/inputs/dropdowns/color.tpl"
         }, 
         {
-            "id": 31, 
+            "id": 34, 
+            "ref": "inputs-dropdowns-splash", 
+            "tags": [
+                "inputs", 
+                "dropdowns", 
+                "splash"
+            ], 
+            "template_url": "templates/inputs/dropdowns/splash.tpl"
+        }, 
+        {
+            "id": 35, 
             "name": "Color picker", 
             "ref": "inputs-pickers-color", 
             "tags": [
@@ -768,7 +845,7 @@
                     "girls": "Whats the different conceptually between a tag and a chip?"
                 }
             ], 
-            "id": 32, 
+            "id": 36, 
             "name": "Base Tag", 
             "ref": "inputs-tags-base", 
             "sample": {
@@ -797,7 +874,7 @@
                     "girls": "Whats the different conceptually between a tag and a chip?"
                 }
             ], 
-            "id": 33, 
+            "id": 37, 
             "name": "Tag", 
             "ref": "inputs-tags-splash", 
             "sample": {
@@ -835,7 +912,7 @@
         }, 
         {
             "active": true, 
-            "id": 34, 
+            "id": 38, 
             "name": "Gallery Inputs", 
             "ref": "inputs-text-all_inputs", 
             "sample": {
@@ -851,7 +928,7 @@
         }, 
         {
             "active": true, 
-            "id": 35, 
+            "id": 39, 
             "name": "Base Tag Input", 
             "ref": "inputs-text-tag", 
             "sample": {
@@ -881,7 +958,7 @@
         }, 
         {
             "active": true, 
-            "id": 36, 
+            "id": 40, 
             "name": "Map Marker", 
             "ref": "links-map-marker", 
             "sample": {
@@ -923,7 +1000,7 @@
             "template_url": "templates/links/map.marker.tpl"
         }, 
         {
-            "id": 37, 
+            "id": 41, 
             "name": "Progress Arrow Tab", 
             "ref": "progress-arrow", 
             "tags": [
@@ -934,7 +1011,7 @@
         }, 
         {
             "active": true, 
-            "id": 38, 
+            "id": 42, 
             "name": "Standard Progress Bar", 
             "ref": "progress-bar", 
             "sample": {
@@ -948,22 +1025,17 @@
             "template_url": "templates/progress/bar.tpl"
         }, 
         {
-            "active": true, 
-            "id": 39, 
-            "name": "Circular progress bar", 
-            "ref": "progress-circlular", 
-            "sample": {
-                "scope": {}
-            }, 
+            "id": 43, 
+            "ref": "progress-circular", 
             "tags": [
                 "progress", 
-                "circlular"
+                "circular"
             ], 
             "template_url": "templates/progress/circular.tpl"
         }, 
         {
             "active": true, 
-            "id": 40, 
+            "id": 44, 
             "name": "Countdown Progress", 
             "ref": "progress-countdown", 
             "sample": {
@@ -976,7 +1048,7 @@
             "template_url": "templates/progress/countdown.tpl"
         }, 
         {
-            "id": 41, 
+            "id": 45, 
             "name": "Guru Ranking Progress", 
             "ref": "progress-ranking", 
             "tags": [
@@ -987,7 +1059,7 @@
         }, 
         {
             "active": true, 
-            "id": 42, 
+            "id": 46, 
             "name": "Album", 
             "ref": "tiles-album", 
             "sample": {
@@ -1008,7 +1080,7 @@
             "template_url": "templates/tiles/album.tpl"
         }, 
         {
-            "id": 43, 
+            "id": 47, 
             "name": "Calendar Tile", 
             "ref": "tiles-calendar", 
             "tags": [
@@ -1019,7 +1091,7 @@
         }, 
         {
             "active": true, 
-            "id": 44, 
+            "id": 48, 
             "name": "Category Tile", 
             "ref": "tiles-category", 
             "sample": {
@@ -1034,7 +1106,7 @@
         }, 
         {
             "active": true, 
-            "id": 45, 
+            "id": 49, 
             "name": "Student Credits Tile", 
             "ref": "tiles-credit-student", 
             "tags": [
@@ -1045,7 +1117,7 @@
         }, 
         {
             "active": true, 
-            "id": 46, 
+            "id": 50, 
             "name": "Pricing Page Tile", 
             "ref": "tiles-pricing", 
             "sample": {
@@ -1060,7 +1132,7 @@
         }, 
         {
             "active": true, 
-            "id": 47, 
+            "id": 51, 
             "name": "Profile Tile", 
             "ref": "tiles-profile", 
             "sample": {
@@ -1075,7 +1147,7 @@
         }, 
         {
             "active": true, 
-            "id": 48, 
+            "id": 52, 
             "name": "Request Tile", 
             "ref": "tiles-request", 
             "sample": {
@@ -1272,540 +1344,121 @@
     ], 
     "layouts": [
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
+            "id": 1, 
+            "ref": "profiles-academic", 
+            "tags": [
+                "profiles", 
+                "academic"
+            ], 
+            "template_url": "templates/profiles/academic.tpl"
+        }, 
+        {
             "id": 2, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-1", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen.html"
+            "ref": "profiles-baking", 
+            "tags": [
+                "profiles", 
+                "baking"
+            ], 
+            "template_url": "templates/profiles/baking.tpl"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
             "id": 3, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-2", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen-2.html"
+            "ref": "profiles-household", 
+            "tags": [
+                "profiles", 
+                "household"
+            ], 
+            "template_url": "templates/profiles/household.tpl"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
             "id": 4, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-3", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen-3.html"
+            "ref": "profiles-photography", 
+            "tags": [
+                "profiles", 
+                "photography"
+            ], 
+            "template_url": "templates/profiles/photography.tpl"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
             "id": 5, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-4", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen-4.html"
+            "ref": "profiles-tech", 
+            "tags": [
+                "profiles", 
+                "tech"
+            ], 
+            "template_url": "templates/profiles/tech.tpl"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
             "id": 6, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-5", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen-5.html"
+            "ref": "bg-projector-screen-2-html", 
+            "tags": [
+                "bg", 
+                "projector-screen-2.html"
+            ], 
+            "template_url": "templates/bg/projector-screen-2.html"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
             "id": 7, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-6", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen-6.html"
+            "ref": "bg-projector-screen-3-html", 
+            "tags": [
+                "bg", 
+                "projector-screen-3.html"
+            ], 
+            "template_url": "templates/bg/projector-screen-3.html"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
             "id": 8, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-7", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen-7.html"
+            "ref": "bg-projector-screen-4-html", 
+            "tags": [
+                "bg", 
+                "projector-screen-4.html"
+            ], 
+            "template_url": "templates/bg/projector-screen-4.html"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
             "id": 9, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-8", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen-8.html"
+            "ref": "bg-projector-screen-5-html", 
+            "tags": [
+                "bg", 
+                "projector-screen-5.html"
+            ], 
+            "template_url": "templates/bg/projector-screen-5.html"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
-            "element_states": {
-                "fluid": [
-                    {
-                        "name": "on load", 
-                        "selectors": [
-                            "[animate]"
-                        ]
-                    }, 
-                    {
-                        "name": "on tag selected", 
-                        "selectors": [
-                            ".adlib-tag"
-                        ]
-                    }
-                ], 
-                "testing": [
-                    {
-                        "name": "User interacts with default academic tags", 
-                        "ref": "mad-lib-layout-state-1", 
-                        "substates": [
-                            {
-                                "name": "User clicks first tag", 
-                                "ref": "mad-lib-layout-state-1-substate-1"
-                            }, 
-                            {
-                                "name": "User re-clicks in FILLED tag (goes back to original)", 
-                                "ref": "mad-lib-layout-state-2-susbtate-2"
-                            }, 
-                            {
-                                "name": "User clicks second tag", 
-                                "ref": "mad-lib-layout-state-1-substate-1"
-                            }, 
-                            {
-                                "name": "User re-clicks second tag (goes back to original)", 
-                                "ref": "mad-lib-layout-state-2-susbtate-2"
-                            }
-                        ]
-                    }, 
-                    {
-                        "name": "User switches all categories", 
-                        "ref": "mad-lib-layout-state-2", 
-                        "substates": [
-                            {
-                                "name": "User switches category to bakery", 
-                                "ref": "mad-lib-layout-state-2-substate-1"
-                            }, 
-                            {
-                                "name": "User switches category to household", 
-                                "ref": "mad-lib-layout-state-2-substate-2"
-                            }, 
-                            {
-                                "name": "User switches category to tech", 
-                                "ref": "mad-lib-layout-state-2-substate-3"
-                            }, 
-                            {
-                                "name": "User switches category to photography", 
-                                "ref": "mad-lib-layout-state-2-substate-4"
-                            }, 
-                            {
-                                "name": "User switches category back to academic", 
-                                "ref": "mad-lib-layout-state-2-substate-5"
-                            }
-                        ]
-                    }, 
-                    {
-                        "name": "User switches university", 
-                        "ref": "mad-lib-layout-state-3", 
-                        "substates": []
-                    }, 
-                    {
-                        "name": "User wants to search university", 
-                        "ref": "mad-lib-layout-state-4", 
-                        "substates": [
-                            {
-                                "name": "dropdown takes over entire screen with no CSS errors", 
-                                "ref": "mad-lib-layout-state-4-substate-1"
-                            }, 
-                            {
-                                "name": "Check university cards show", 
-                                "ref": "mad-lib-layout-state-4-substate-2"
-                            }, 
-                            {
-                                "name": "Check cluster bubbles show", 
-                                "ref": "mad-lib-layout-state-4-substate-3"
-                            }, 
-                            {
-                                "ref": "mad-lib-layout-state-4-substate-4"
-                            }
-                        ]
-                    }
-                ]
-            }, 
-            "id": 0, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "mad-lib", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "splash.html"
-        }, 
-        {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "GMapController", 
-            "cp_link": "", 
-            "description": "", 
-            "id": 2, 
-            "name": "Splash Maps", 
-            "notes": "", 
-            "parents": {
-                "scenes": [], 
-                "user_stories": []
-            }, 
-            "ref": "splash-map-markers", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "splash.maps.html", 
-            "type": [
-                "Splash Maps"
-            ]
-        }, 
-        {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "General 2/3", 
-            "cp_link": "", 
-            "description": "", 
-            "id": 3, 
-            "name": "One Page Pull-Down", 
-            "notes": "", 
-            "parents": {
-                "scenes": [], 
-                "user_stories": []
-            }, 
-            "ref": "general-2-3", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "home.desktop.student.html"
-        }, 
-        {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "cp_link": "", 
-            "description": "", 
-            "id": 4, 
-            "name": "One Page Pull-Down", 
-            "notes": "", 
-            "parents": {
-                "scenes": [], 
-                "user_stories": []
-            }, 
-            "ref": "one-page-pull-down", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": ""
-        }, 
-        {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "cp_link": "", 
-            "description": "", 
-            "id": 5, 
-            "name": "Getting Started", 
-            "notes": "", 
-            "parents": {
-                "scenes": [], 
-                "user_stories": []
-            }, 
-            "ref": "getting-started", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": ""
-        }, 
-        {
-            "bugs": [], 
-            "children": [], 
-            "cp_link": "", 
-            "description": "", 
-            "id": 6, 
-            "name": "Scene Transition #1", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "scene-transition-one", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "template_url": ""
-        }, 
-        {
-            "bugs": [], 
-            "children": [], 
-            "cp_link": "", 
-            "description": "", 
-            "id": 7, 
-            "name": "Full page loader", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "full-page-loader", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "template_url": ""
-        }, 
-        {
-            "bugs": [], 
-            "children": [], 
-            "cp_link": "", 
-            "description": "", 
-            "id": 8, 
-            "name": "CTA General Content", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "cta-general", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "template_url": ""
-        }, 
-        {
-            "bugs": [], 
-            "children": [], 
-            "cp_link": "", 
-            "description": "", 
-            "id": 9, 
-            "name": "Full Swiper", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "full-swiper", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "template_url": ""
-        }, 
-        {
-            "bugs": [], 
-            "children": [], 
-            "cp_link": "", 
-            "description": "", 
             "id": 10, 
-            "name": "", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "bakery-layout", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "template_url": ""
+            "ref": "bg-projector-screen-6-html", 
+            "tags": [
+                "bg", 
+                "projector-screen-6.html"
+            ], 
+            "template_url": "templates/bg/projector-screen-6.html"
         }, 
         {
-            "bugs": [], 
-            "children": [], 
-            "cp_link": "", 
-            "description": "", 
             "id": 11, 
-            "name": "", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "household-layout", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "template_url": ""
+            "ref": "bg-projector-screen-7-html", 
+            "tags": [
+                "bg", 
+                "projector-screen-7.html"
+            ], 
+            "template_url": "templates/bg/projector-screen-7.html"
         }, 
         {
-            "bugs": [], 
-            "children": [], 
-            "cp_link": "", 
-            "description": "", 
             "id": 12, 
-            "name": "", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "general-edit-layout", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "template_url": ""
+            "ref": "bg-projector-screen-8-html", 
+            "tags": [
+                "bg", 
+                "projector-screen-8.html"
+            ], 
+            "template_url": "templates/bg/projector-screen-8.html"
+        }, 
+        {
+            "id": 13, 
+            "ref": "bg-projector-screen-html", 
+            "tags": [
+                "bg", 
+                "projector-screen.html"
+            ], 
+            "template_url": "templates/bg/projector-screen.html"
         }
     ], 
     "moodboards": [], 

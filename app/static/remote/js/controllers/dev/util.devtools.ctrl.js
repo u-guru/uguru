@@ -20,17 +20,19 @@ angular.module('uguru.dev.controllers')
 
     // KeyboardService.preventDefaultCutPaste();
     KeyboardService.initCopyPasteFunctionCallbacks();
-
+    var commandPressed = false;
     var onCmdPressed = function() {
       console.log('command key pressed');
+      commandPressed = true;
       //component mode
       if ($scope.page.dropdowns.filterOptions.selectedIndex) {
-        initBuildPlayerClickListener()
+        initAllListeners()
       }
     }
 
     var onCmdReleased = function() {
-      destroyBuildPlayerClickListener();
+      commandPressed = false;
+      destroyAllBuildPlayerListeners();
     }
 
     KeyboardService.initOptionPressedAndReleasedFunction(onCmdPressed, onCmdReleased);
@@ -39,6 +41,12 @@ angular.module('uguru.dev.controllers')
       property: null,
       component: null
     }
+    $scope.player = {hide: false, status_message: null};
+
+    if (!$scope.user || !$scope.user.id) {
+      $scope.player.hide = true;
+      $scope.player.status_message = 'Please login first!';
+    }
 
     $timeout(function() {
       $scope.storage = FileService.initUserAdminTool($scope);
@@ -46,15 +54,91 @@ angular.module('uguru.dev.controllers')
     })
 
 
-    var buildPlayerClickListenerFunc;
-    function initBuildPlayerClickListener() {
+    var buildPlayerMouseOutListenerFunc, buildPlayerKeyboardShortCutsFunc,
+    buildPlayerDblClickListenerFunc, buildPlayerMouseOverListenerFunc, buildPlayerMouseDownListenerFunc,
+    buildPlayerMouseOutListenerFunc, buildPlayerMouseUpListenerFunc;
+    var buildPlayerDisplayHideArr = []
+    function initAllListeners() {
       var elemBuildPlayer = document.querySelector('.build-player');
+      var onMouseOverPromise;
+      var onMouseOverElem;
+      var onMouseDown;
+      var onMouseDownElem;
+      var onMouseDownPromise
+      var onMouseUpAddComponent;
+      buildPlayerMouseOverListenerFunc = function(e) {
 
+        onMouseOverElem = e.target;
+        onMouseOverPromise = $timeout(function() {
+          if (onMouseOverElem === e.target && !onMouseDown) {
+            e.target.classList.add('bg-cerise', 'animated', 'pulse', 'infinite');
+          }
+          $timeout(function() {
+           e.target.classList.remove('bg-cerise', 'animated', 'pulse', 'infinite');
+          }, 250)
+        }, 500);
+        //fail safe
+        $timeout(function() {
+          e.target.classList.remove('bg-cerise');
+        }, 1500)
+      }
+
+      buildPlayerMouseOutListenerFunc = function(e) {
+        e.target.classList.remove('animated', 'pulse', 'bg-cerise');
+        $timeout.cancel(onMouseOverPromise);
+        var onMouseOverPromise = null;
+        var onMouseOverElem = null;
+      }
+
+      buildPlayerMouseUpListenerFunc = function(e) {
+        onMouseDown = false;
+        e.target.classList.remove('animated', 'tada', 'bg-azure', 'infinite');
+        if (onMouseUpAddComponent) {
+          onMouseUpAddComponent = false;
+          console.log(onMouseDownElem);
+
+          $timeout(function() {
+            onMouseDownElem = false;
+            $timeout.cancel(onMouseDownPromise);
+          }, 1000);
+        }
+      }
+
+      buildPlayerMouseDownListenerFunc = function(e) {
+        if (!onMouseDown) {
+          onMouseDown = true;
+          e.target.classList.add('animated', 'tada', 'infinite', 'bg-azure');
+          onMouseDownPromise = $timeout(function() {
+            if (onMouseDown && onMouseOverElem === e.target) {
+
+              $timeout(function() {
+                LoadingService.showMsg('adding component... please release lol', 3000);
+                onMouseUpAddComponent = true;
+                onMouseDownElem = e.target;
+                onMouseDownElem.setAttribute('anim', null);
+                $timeout(function() {
+                  $scope.$apply(function() {
+                    addOneComponentFromShortCut(onMouseDownElem);
+                  })
+                })
+              }, 200);
+              // $timeout(function() {
+              //   e.target.classList.remove('animated', 'tada', 'infinite', 'bg-azure');
+              //   var onMouseDown = false;
+              // }, 500)
+            }
+          }, 2000);
+        }
+      }
+
+      buildPlayerDblClickListenerFunc = function(e) {
+        var currentDisplayValue = e.target.style.display;
+        e.target.style.display = "none";
+        buildPlayerDisplayHideArr.push({previous_val: currentDisplayValue, element: e.target});
+      }
 
       buildPlayerClickListenerFunc = function(e) {
 
-
-        console.log(e.target);
         var parentChildDepth = 5;
         if (e.target.getBoundingClientRect) {
           var targetRect = e.target.getBoundingClientRect();
@@ -119,7 +203,12 @@ angular.module('uguru.dev.controllers')
       }
 
       if (elemBuildPlayer) {
-        elemBuildPlayer.addEventListener('click', buildPlayerClickListenerFunc);
+        elemBuildPlayer.addEventListener('mouseout', buildPlayerMouseOutListenerFunc);
+        elemBuildPlayer.addEventListener('mousedown', buildPlayerMouseDownListenerFunc);
+        elemBuildPlayer.addEventListener('mouseup', buildPlayerMouseUpListenerFunc);
+        elemBuildPlayer.addEventListener('dblclick', buildPlayerDblClickListenerFunc);
+        elemBuildPlayer.addEventListener('mouseover', buildPlayerMouseOverListenerFunc);
+        elemBuildPlayer.addEventListener('keyup', buildPlayerKeyboardShortCutsFunc);
       }
     }
 
@@ -137,6 +226,38 @@ angular.module('uguru.dev.controllers')
       var elemBuildPlayer = document.querySelector('.build-player');
       if (elemBuildPlayer) {
         elemBuildPlayer.removeEventListener('click', buildPlayerClickListenerFunc);
+      }
+    }
+
+    function destroyBuildPlayerDblClickListener() {
+      var elemBuildPlayer = document.querySelector('.build-player');
+      if (elemBuildPlayer) {
+        elemBuildPlayer.removeEventListener('dblclick', buildPlayerClickListenerFunc);
+        if (buildPlayerDisplayHideArr && buildPlayerDisplayHideArr.length) {
+          for (var i = 0; i < buildPlayerDisplayHideArr.length; i++) {
+            var indexElementDict = buildPlayerDisplayHideArr[i];
+            indexElementDict.element.style.display = indexElementDict.previous_val;
+          }
+
+        }
+      }
+    }
+
+    function destroyAllBuildPlayerListeners() {
+      var elemBuildPlayer = document.querySelector('.build-player');
+      if (elemBuildPlayer) {
+        elemBuildPlayer.removeEventListener('mousedown', buildPlayerMouseDownListenerFunc);
+        elemBuildPlayer.removeEventListener('mouseup', buildPlayerMouseUpListenerFunc);
+        elemBuildPlayer.removeEventListener('mouseover', buildPlayerMouseOverListenerFunc);
+        elemBuildPlayer.removeEventListener('mouseout', buildPlayerMouseOutListenerFunc);
+        elemBuildPlayer.removeEventListener('dblclick', buildPlayerDblClickListenerFunc);
+        if (buildPlayerDisplayHideArr && buildPlayerDisplayHideArr.length) {
+          for (var i = 0; i < buildPlayerDisplayHideArr.length; i++) {
+            var indexElementDict = buildPlayerDisplayHideArr[i];
+            indexElementDict.element.style.display = indexElementDict.previous_val;
+          }
+
+        }
       }
     }
 
@@ -325,7 +446,6 @@ angular.module('uguru.dev.controllers')
           renderTimeStateComponents(current_state.timeline);
         }, 2000)
       }
-
     }
 
     function renderTimeStateComponents(time_arr) {
@@ -518,6 +638,21 @@ angular.module('uguru.dev.controllers')
 
     }
 
+    function addOneComponentFromShortCut(element) {
+      var template = document.querySelector('#stage-template-container')
+      allAnimElem = template.querySelectorAll('[anim]');
+
+      ref = 'anim-elem-' + (allAnimElem.length + 1);
+      element.classList.add(ref);
+      var clonedNode = recursiveClone(element)
+      var componentObj = initComponentObj(clonedNode, element, ref);
+      componentObj.css_class_dropdown = {label:'animation', key:'_class', options:generateCSSClassOptions(classes, componentObj), onOptionClick:generateTimeStateProperty, size:'small', selectedIndex:0},
+      $scope.current_states.states[0].components.push(componentObj);
+      $timeout(function() {
+        $scope.$apply();
+      })
+    }
+
     function generateFileOptions() {
       var dropdownArr = [{name: 'Local storage', _class:'bg-charcoal'}, {name: 'create', _class:'bg-charcoal'}, {name: 'browse', _class:'bg-charcoal'}];
       var files = getRecentFilesEdited();
@@ -573,9 +708,6 @@ angular.module('uguru.dev.controllers')
       $timeout(function() {
         LoadingService.showSuccess('Saved!', 1000);
       }, 2000)
-
-
-
     }
 
     function generateCSSClassOptions(classes_arr, component) {
@@ -602,6 +734,9 @@ angular.module('uguru.dev.controllers')
         Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(
           function(response) {
             response = JSON.parse(response)
+            for (var i = 0; i < response.layouts.length; i++) {
+              console.log(i, response.layouts[i].name, response.layouts[i].template_url)
+            }
             $timeout(function() {
               $scope.$apply(function() {
                 $scope.page.dropdowns.templates.options = response.layouts;
@@ -673,6 +808,7 @@ angular.module('uguru.dev.controllers')
     }
 
     function injectTemplateIntoStage(template_url, controller, ref) {
+      if (!$scope.user || !$scope.user.id) return;
       deletePreviousTemplateIfExists('#stage-template-container');
 
       var stageTemplateDiv = document.createElement('div');

@@ -3,6 +3,7 @@
         <main ng-class="{'full-x': settings.hideUIEditor }">
             <nav class="build-main-top">
                 <div>
+                    <user-icon size='small' url="user.profile_url"></user-icon>
                     <h1>File Name</h1>
                     <dropdown ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
                 </div>
@@ -36,7 +37,11 @@
                 </ul>
             </nav>
 
-            <div class="build-player bg-charcoal">
+            <div class='build-player bg-charcoal bg-charcoal animated tada infinite flex-wrap-center' ng-if='player.hide'>
+                <h1 class='text-7'>{{player.status_message}}</h1>
+                <button ui-sref="^.desktop-login" class='animated pulse infinite'>Login</button>
+            </div>
+            <div class="build-player bg-charcoal" ng-if='!player.hide'>
                 <!-- <div class='build-player-container'>
                     <h1 class='uppercase weight-700 txt-charcoal'>
                         Loading ....
@@ -80,13 +85,27 @@
             </nav>
         </main>
         <aside class='build-settings relative' ng-if='settings.activated'>
-            <h1 ng-if='!settings.view_files' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>Settings </h1>
+            <h1 ng-if='!settings.view_files && !settings.key_shortcuts' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>Settings </h1>
+            <h1 ng-if='settings.key_shortcuts' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>ShortCuts</h1>
             <h1 ng-if='settings.view_files' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>My Files</h1>
-            <a ng-if='!settings.view_files' class="absolute top-0 left-0 back-icon close-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.activated = false;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+            <a ng-if='!settings.view_files && !settings.key_shortcuts' class="absolute top-0 left-0 back-icon close-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.activated = false;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+            <a ng-if='settings.key_shortcuts' class="absolute top-0 left-0 back-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.key_shortcuts = false;' ng-include="img_base + BASE + 'templates/svg/main/left.html'"></a>
             <a ng-if='settings.view_files' class="absolute top-0 left-0 back-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.view_files = false;' ng-include="img_base + BASE + 'templates/svg/main/left.html'"></a>
             <div ng-if='settings.view_files' class='full-x'>
                  <tabs class='full-x' options="files.users.options" index='files.users.options.index'> </tabs>
             </div>
+            <ul class="build-files-list overflow-auto full-xy" ng-if='settings.key_shortcuts'>
+                <li ng-repeat='shortcut in shortcuts' class='full-x p20xy bg-slate-50p'>
+                    <div class='full-x ugrid-2 full-x text-left'>
+                        <div class='flex-wrap flex-start txt-2 text-left uppercase weight-400 opacity-50'>
+                            {{shortcut.name}}
+                        </div>
+                        <div class='flex-wrap flex-start txt-5 text-left lowercase weight-700'>
+                            {{shortcut.keys}}
+                        </div>
+                    </div>
+                </li>
+            </ul>
             <ul class="build-files-list overflow-auto" ng-if='settings.view_files'>
                 <li ng-repeat='file in files.all[files.users.options[files.users.options.index]]["files"]' ng-if='$index >= 1'>
                     <h1 class="bg-campus p10xy txt-center txt-18 semibold" ng-if='file.type === "folder"'>{{file.name}}</h1>
@@ -119,7 +138,7 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                     <!-- <div ng-if='file.add_one' class='ugrid-3 txt-2 weight-300 opacity-50 full-x p20xy mtop10'>
                         <div>
                             <input class='full-y' ng-model='file.new_file_name' placeholder='place new file name here'>
@@ -134,8 +153,9 @@
                     </div> -->
                 </li>
             </ul>
-            <ul class="build-settings-list" ng-if='!settings.view_files'>
+            <ul class="build-settings-list" ng-if='!settings.view_files && !settings.key_shortcuts'>
                 <li><a ng-click="settings.view_files = true;">View Files</a></li>
+                <li><a ng-click="settings.key_shortcuts = true;">View Shortcuts</a></li>
                 <li>
                     <dropdown ng-model="page.dropdowns.fileOptions"></dropdown>
                 </li>

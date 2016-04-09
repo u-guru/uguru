@@ -2,38 +2,46 @@
     <div id="build">
         <main ng-class="{'full-x': settings.hideUIEditor }">
             <nav class="build-main-top">
-                <div class='relative left-0 top-0 full-y' style='margin-left:15px;max-height:50px; max-width:50px;'>
-                    <user-icon class='p20xy' style='height:50px; width:50px;' url="user.profile_url"> </user-icon>
-                </div>
-                <div class='absolute left-0' style='margin-left:70px;'>
-                    <h1>{{user.name.split(' ')[0]}}'s Animation</h1>
-                </div>
                 <div>
-                    <div ng-if="false">
-						<h2>Drag</h2>
-						<div class="toggle small">
-							<input type="checkbox" checked />
-							<label>
-								<svg class="square" viewBox="0 0 100 100">
-									<rect x="0" y="0" width="100" height="100"></rect>
-								</svg>
-								<svg class="square" viewBox="0 0 100 100">
-									<rect x="0" y="0" width="100" height="100"></rect>
-								</svg>
-							</label>
-						</div>
-					</div>
-                    <dropdown ng-model="page.dropdowns.fileOptions"></dropdown>
-                    <div>
-                        <h2>Scene</h2>
-                        <dropdown ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
-                    </div>
-                    <dropdown ng-model="page.dropdowns.screenSizeOptions"></dropdown>
-                    <a ng-click='settings.activated = !settings.activated;' class="build-main-settings" ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
+                    <user-icon size='small' url="user.profile_url"></user-icon>
+                    <h1>File Name</h1>
+                    <dropdown ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
                 </div>
+                <ul>
+                    <li class="flex">
+                        <div class="flex active">
+                            <input placeholder="name"/>
+                            <a class="bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></a>
+                            <a class="bg bg-crimson close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                        </div>
+                        <a ng-include="img_base + BASE + 'templates/svg/main/branch.html'"></a>
+                    </li>
+                    <li>
+                        <a ng-include="img_base + BASE + 'templates/svg/main/star-arrow.html'"></a>
+                    </li>
+                    <li>
+                        <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                    </li>
+                    <li>
+                        <a ng-include="img_base + BASE + 'templates/svg/main/save-simple.html'"></a>
+                    </li>
+                    <li>
+                        <a ng-include="img_base + BASE + 'templates/svg/main/sync.html'"></a>
+                    </li>
+                    <li>
+                        <a ng-click="settings.activated = !settings.activated; settings.view_files = true;" ng-include="img_base + BASE + 'templates/svg/main/folder.html'"></a>
+                    </li>
+                    <li>
+                        <a ng-click='settings.activated = !settings.activated; settings.view_files = false;' ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
+                    </li>
+                </ul>
             </nav>
 
-            <div class="build-player bg-charcoal">
+            <div class='build-player bg-charcoal bg-charcoal animated tada infinite flex-wrap-center' ng-if='player.hide'>
+                <h1 class='text-7'>{{player.status_message}}</h1>
+                <button ui-sref="^.desktop-login" class='animated pulse infinite'>Login</button>
+            </div>
+            <div class="build-player bg-charcoal" ng-if='!player.hide'>
                 <!-- <div class='build-player-container'>
                     <h1 class='uppercase weight-700 txt-charcoal'>
                         Loading ....
@@ -77,51 +85,74 @@
             </nav>
         </main>
         <aside class='build-settings relative' ng-if='settings.activated'>
-            <h1 ng-if='!settings.view_files' class='relative'>Settings </h1>
-            <h1 ng-if='settings.view_files' class='relative'>My Files <a class='absolute full-y p20xy bg-charcoal-50p txt-white left-0 top-0 flex-wrap-center' ng-click='settings.view_files = false;'>Back</a></h1>
-            <ul ng-if='settings.view_files' class='full-x'>
-                 <tabs class='full-x' style='width:100%;' options="files.users.options" index='files.users.options.index'> </tabs>
-                    <li class='full-x p20y' ng-repeat='file in files.all[files.users.options[files.users.options.index]]["files"]' ng-if='$index >= 1' style='min-height:70px; height:auto !important;'>
-                        <h1 ng-if='file.type === "folder"' class='weight-700 bg-charcoal uppercase text-center full-x p20xy'>
-                            {{file.name}}
-                        </h1>
-                        <div ng-if='file.type === "file"' class='relative flex-wrap full-x p10xy' style='margin-top:10px; height:auto !important;'>
-                            <h1 class='full-x txt-5 p20x'> {{file.name.split('/').reverse()[0]}} </h1>
-                            <br>
-                            <div class='txt-2 weight-300 opacity-50 full-x p20x mtop10'>Last updated {{file.last_modified_formatted}}</div>
-                            <div ng-if='file.collapse' class='txt-2 weight-300 bg-slate-50p full-x p20xy mtop10 relative'>Your cloned file #1 <a class='m20xy absolute right-0 top-0 opacity-50' ng-include='img_base + BASE + "templates/star.svg.html"' style='height:20px'> </a></div>
-                            <div ng-if='file.collapse' class='txt-2 weight-300 bg-slate-50p full-x p20xy mtop10 relative'>Your cloned file #2 <a class='m20xy absolute right-0 top-0 opacity-50' ng-include='img_base + BASE + "templates/star.svg.html"' style='height:20px'> </a></div>
-                            <div ng-if='file.collapse' class='txt-2 weight-300 bg-slate-50p full-x p20xy mtop10 relative'>Your cloned file #3 <a class='m20xy absolute right-0 top-0 opacity-50' ng-include='img_base + BASE + "templates/star.svg.html"' style='height:20px'> </a></div>
+            <h1 ng-if='!settings.view_files' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>Settings </h1>
+            <h1 ng-if='settings.view_files' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>My Files</h1>
+            <a ng-if='!settings.view_files' class="absolute top-0 left-0 back-icon close-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.activated = false;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+            <a ng-if='settings.view_files' class="absolute top-0 left-0 back-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.view_files = false;' ng-include="img_base + BASE + 'templates/svg/main/left.html'"></a>
+            <div ng-if='settings.view_files' class='full-x'>
+                 <tabs class='full-x' options="files.users.options" index='files.users.options.index'> </tabs>
+            </div>
+            <ul class="build-files-list overflow-auto" ng-if='settings.view_files'>
+                <li ng-repeat='file in files.all[files.users.options[files.users.options.index]]["files"]' ng-if='$index >= 1'>
+                    <h1 class="bg-campus p10xy txt-center txt-18 semibold" ng-if='file.type === "folder"'>{{file.name}}</h1>
+                    <div ng-if='file.type === "file"'>
+                        <a class="build-files-dropdown flex-space-between full-x p15xy" ng-click="file.collapse = !file.collapse" ng-class="{'active': file.collapse}">
+                            <div>
+                                <h2 class="txt-20 semibold">{{file.name.split('/').reverse()[0]}}</h2>
+                                <span class="block txt-16 semibold opacity-50">Last updated {{file.last_modified_formatted}}</span>
+                            </div>
+                            <span class="svg-white svg-32 svg-stroke-6" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></span>
+                        </a>
+                        <ul ng-if='file.collapse' class="bg-slate-50p p15-grid">
+                            <li>
+                                <div class="flex-center-vertical-space-between">
+                                    <span class="block txt-20 semibold">Your cloned file #1</span>
+                                    <a class='svg-white svg-32 svg-stroke-6 opacity-50' ng-include='img_base + BASE + "templates/svg/main/star-arrow.html"'></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="flex-center-vertical-space-between">
+                                    <span class="block txt-20 semibold">Your cloned file #2</span>
+                                    <a class='svg-white svg-32 svg-stroke-6 opacity-50' ng-include='img_base + BASE + "templates/svg/main/star-arrow.html"'></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="flex-center-vertical-space-between">
+                                    <span class="block txt-20 semibold">Your cloned file #3</span>
+                                    <a class='svg-white svg-32 svg-stroke-6 opacity-50' ng-include='img_base + BASE + "templates/svg/main/star-arrow.html"'></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                            <div ng-if='file.add_one' class='ugrid-3 txt-2 weight-300 opacity-50 full-x p20xy mtop10'>
-                                <div>
-                                    <input class='full-y' ng-model='file.new_file_name' placeholder='place new file name here'>
-                                    </input>
-                                </div>
-                                <div class='flex-wrap-center relative'>
-                                    <a class='txt-white bg-charcoal absolute full-xy' ng-click='files.createFile(file.new_file_name)'> save </a>
-                                </div>
-                                <div class='relative'>
-                                    <a class='txt-white bg-charcoal absolute full-xy' ng-click='file.add_one = null'> cancel </a>
-                                </div>
-                            </div>
-                            <div style="width:100px;" class='short-cuts flex-wrap-center absolute right-0 top-0 ugrid-2' style='margin-right:10px;'>
-                                <a ng-click="file.collapse = !file.collapse" class="bg-transparent high-z-index bg-slate full-y" style='margin-right:10px;'>
-                                    <svg viewBox="0 0 100 100" fill="#FFFFFF" style='width:40px;'>
-                                        <path d="M14,32 L50,68 L86,32"></path>
-                                    </svg>
-                                </a>
-                                <a class="build-add-element" ng-click="file.add_one = !file.add_one" style='width:40px;'>
-                                    <svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#FFFFFF" xmlns:xlink="http://www.w3.org/1999/xlink" style='min-width:40px !important;'>
-                                        <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                </a>
-                            </div>
+                    <!-- <div ng-if='file.add_one' class='ugrid-3 txt-2 weight-300 opacity-50 full-x p20xy mtop10'>
+                        <div>
+                            <input class='full-y' ng-model='file.new_file_name' placeholder='place new file name here'>
+                            </input>
                         </div>
-                    </li>
+                        <div class='flex-wrap-center relative'>
+                            <a class='txt-white bg-charcoal absolute full-xy' ng-click='files.createFile(file.new_file_name)'> save </a>
+                        </div>
+                        <div class='relative'>
+                            <a class='txt-white bg-charcoal absolute full-xy' ng-click='file.add_one = null'> cancel </a>
+                        </div>
+                    </div> -->
+                </li>
             </ul>
-            <ul ng-if='!settings.view_files'>
+            <ul class="build-settings-list" ng-if='!settings.view_files'>
                 <li><a ng-click="settings.view_files = true;">View Files</a></li>
+                <li>
+                    <dropdown ng-model="page.dropdowns.fileOptions"></dropdown>
+                </li>
+                <li>
+                    <div class="dropdown-container">
+                        <h2>Scene</h2>
+                        <dropdown ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
+                    </div>
+                </li>
+                <li>
+                    <dropdown ng-model="page.dropdowns.screenSizeOptions"></dropdown>
+                </li>
                 <li><a ng-click="clearCache()">Clear Cache</a></li>
                 <li>
                     <div>
@@ -192,15 +223,15 @@
                             <!-- Collapse component vars-->
                             <a ng-click='updateTimeStateCollapses(current_state.timeline, time_state)' ng-class="{'collapse': !time_state.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
                         </div>
-                        <ul class="build-save">
-                            <li>
-                                <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/local.html'"></a>
-                            </li>
-                            <li>
-                                <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/save.html'"></a>
-                            </li>
-                        </ul>
                         <div class="relative" ng-show='!time_state.collapsed'>
+                            <ul class="build-save">
+                                <li>
+                                    <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/commit.html'"></a>
+                                </li>
+                                <li>
+                                    <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/save-simple.html'"></a>
+                                </li>
+                            </ul>
                             <div class="build-css-select">
                                 <h1>{{time_state.components.length}}</h1>
                                 <!-- @samir -->
@@ -299,15 +330,15 @@
                             <!-- Collapse component vars-->
                             <a ng-click='updateComponentCollapsed(current_state, component)' ng-class="{'collapse': !component.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
 						</div>
-                        <ul class="build-save">
-                            <li>
-                                <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/local.html'"></a>
-                            </li>
-                            <li>
-                                <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/save.html'"></a>
-                            </li>
-                        </ul>
                         <div class="relative" ng-show='!component.collapsed'>
+                            <ul class="build-save">
+                                <li>
+                                    <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/commit.html'"></a>
+                                </li>
+                                <li>
+                                    <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/save-simple.html'"></a>
+                                </li>
+                            </ul>
                             <div class='component-inject overflow-hidden' ng-class="{'height-300': component.expand}"></div>
                             <a ng-if='!component.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='component.expand = true;'>Expand</a>
                             <a ng-if='component.expand' class='txt-1 high-z-index absolute bottom-0 left-0 m05xy weight-300 opacity-50' ng-click='component.expand = false;'>Reduce</a>
