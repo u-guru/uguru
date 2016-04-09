@@ -193,6 +193,7 @@ angular.module('uguru.components', [])
                 button: '=button',
                 direction: '=direction'
             },
+            replace: true,
             restrict: 'E',
             link: function(scope, element, attr) {
                 if (!scope.text || !scope.text.length) {
