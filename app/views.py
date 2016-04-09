@@ -16,13 +16,36 @@ es = Elasticsearch()
 # print "DIR es:", pprint (dir(es))
 try:
     res = es.get(index='test_index',doc_type='product',id=1)
-    print 'JSON',pprint(res['_source'])
+    print 'JSON : ',pprint(res['_source'])
 except Exception, e:
-    print ('Failed to upload to ftp: '+ str(e))
+    print ('Failed Request JSON FILE: '+ str(e))
 #Request from Esearch Amazon 
 from requests_aws4auth import AWS4Auth
 # print app.config
 host = app.config['S3_LOCATION']
+host = 'search-uguru-rg6udnaerkjq4hlfkr73hhn5si.us-east-1.es.amazonaws.com'
+S3_ES_ACCESS_KEY = 'AKIAIDACB6IZN7NUQIHA'
+S3_ES_SECRET_KEY= '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'
+try : 
+    awsauth = AWS4Auth(S3_ES_ACCESS_KEY,S3_ES_SECRET_KEY, 'us-east-1', 'es')
+    es = Elasticsearch(
+        hosts=[{'host': host, 'port': 443}],
+        http_auth=awsauth,
+        use_ssl=True,
+        verify_certs=True,
+        connection_class=RequestsHttpConnection
+    )
+    # res = es.get(index='test_index',doc_type='product',id=1)
+    # print res['_source']
+    print 'Server Info: \n ',pprint(es.info())
+    print 
+    print 'Test JSON test_index/product/id : \n'
+    res = es.get(index='test_index',doc_type='product',id=1)
+    print pprint(res['_source'])
+
+except Exception, e: 
+    print ('AMAZON Error : '+ str(e))
+ 
 
 #####END OF DEMO#####
 
