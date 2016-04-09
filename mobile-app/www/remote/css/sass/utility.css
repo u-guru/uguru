@@ -6,6 +6,10 @@
   font-style: normal;
 }
 
+.animate-select {
+    box-shadow: 0 0 5px 2px mix($lake, $lake)!important;
+}
+
 .impact-label, .impact-label * {
   font-family: "Impact Label" !important;
 }
