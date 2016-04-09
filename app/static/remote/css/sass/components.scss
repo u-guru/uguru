@@ -5161,7 +5161,159 @@ input[type=range] {
 		}
 	}
 }
-// mini profile card
+// profile thumb
+[class*="pf-thumb"] {
+	@include flex;
+	@include flex-center;
+	position: relative;
+	border-radius: 2px;
+	background: white;
+	overflow: hidden;
+	.top {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: calc(100% / 3);
+		background: $shamrock;
+	}
+	.user-icon {
+		position: relative;
+		z-index: 2;
+	}
+	&.pf-thumb-36 {
+		width: 36px;
+		height: 36px;
+		.user-icon {
+			width: 24px;
+			height: 24px;
+			border-width: 2px;
+		}
+	}
+	&.pf-thumb-48 {
+		width: 48px;
+		height: 48px;
+		.user-icon {
+			width: 32px;
+			height: 32px;
+			border-width: 2px;
+		}
+	}
+	&.pf-thumb-64 {
+		width: 64px;
+		height: 64px;
+		.user-icon {
+			width: 44px;
+			height: 44px;
+			border-width: 2px;
+		}
+	}
+	&.pf-thumb-72 {
+		width: 72px;
+		height: 72px;
+		.user-icon {
+			width: 48px;
+			height: 48px;
+			border-width: 2px;
+		}
+	}
+	&.pf-thumb-96 {
+		width: 96px;
+		height: 96px;
+		.user-icon {
+			width: 72px;
+			height: 72px;
+			border-width: 3px;
+		}
+	}
+	&.pf-charcoal {
+		.top {
+			background: $charcoal;
+		}
+	}
+	&.pf-slate {
+		.top {
+			background: $slate;
+		}
+	}
+	&.pf-taupe {
+		.top {
+			background: $taupe;
+		}
+	}
+	&.pf-campus {
+		.top {
+			background: $campus;
+		}
+	}
+	&.pf-shamrock {
+		.top {
+			background: $shamrock;
+		}
+	}
+	&.pf-robin {
+		.top {
+			background: $robin;
+		}
+	}
+	&.pf-lake {
+		.top {
+			background: $lake;
+		}
+	}
+	&.pf-moxie {
+		.top {
+			background: $moxie;
+		}
+	}
+	&.pf-crimson {
+		.top {
+			background: $crimson;
+		}
+	}
+	&.pf-auburn, &.pf-delivery {
+		.top {
+			background: $auburn;
+		}
+	}
+	&.pf-orange, &.pf-freelancing {
+		.top {
+			background: $orange;
+		}
+	}
+	&.pf-gold, &.pf-baking {
+		.top {
+			background: $gold;
+		}
+	}
+	&.pf-moola, &.pf-photography {
+		.top {
+			background: $moola;
+		}
+	}
+	&.pf-azure, &.pf-tech {
+		.top {
+			background: $azure;
+		}
+	}
+	&.pf-cobalt, &.pf-household {
+		.top {
+			background: $cobalt;
+		}
+	}
+	&.pf-eggplant, &.pf-athletic {
+		.top {
+			background: $eggplant;
+		}
+	}
+	&.pf-cerise, &.pf-academic {
+		.top {
+			background: $cerise;
+		}
+	}
+}
+// mini profile card [deprecate]
 .pf-card-mini {
 	@include flex;
 	@include flex-wrap;
@@ -5722,6 +5874,74 @@ input[type=range] {
 	}
 }
 
+// profile widget
+.pf-aside-widget {
+	position: relative;
+	border: 2px solid white;
+	border-radius: 2px;
+	width: 100%;
+	max-width: 400px;
+	min-height: 100px;
+	background: rgba(lighten($slate, 15%), .3);
+	text-align: center;
+	color: white;
+	.user-icon {
+		border-width: 2px!important;
+		position: absolute!important;
+		top: -64px;
+		left: 50%;
+		margin-left: -64px;
+	}
+	button {
+		@include round;
+		border: 2px solid white;
+		position: absolute!important;
+		bottom: -32px;
+		left: 50%;
+		margin-left: -100px;
+		width: 200px;
+	}
+	> div {
+		padding: 79px 15px 47px;
+		.pf-name {
+			width: 100%;
+			font-size: 20px;
+			font-weight: 600;
+		}
+		.pf-school-name {
+			margin-top: 0;
+			width: 100%;
+			font-size: 16px;
+			font-weight: 400;
+		}
+		.pf-rating {
+			margin-top: 10px;
+			max-width: 200px;
+		}
+		.pf-reviews {
+			width: 100%;
+			font-size: 16px!important;
+			font-weight: 400;
+			text-transform: uppercase;
+		}
+	}
+	@media screen and (min-width:768px) {
+		> div {
+			.pf-name {
+				font-size: 28px;
+			}
+			.pf-school-name {
+				font-size: 20px;
+			}
+		}
+	}
+}
+@media screen and (min-width:1000px) {
+	.pf-aside-widget {
+		width: calc(100% - 30px);
+	}
+}
+
 // student card
 .student-card {
 	position: relative;
@@ -5764,6 +5984,7 @@ input[type=range] {
 	}
 	> svg {
 		display: block;
+		width: 100%;
 		max-width: 100%;
 		height: auto;
 	}
@@ -5828,6 +6049,7 @@ input[type=range] {
 				margin: 0!important;
 				span:first-child {
 					display: block;
+					white-space: nowrap;
 					width: 150px;
 				}
 				span:nth-child(2) {
@@ -6178,11 +6400,13 @@ input[type=range] {
 				@include flex;
 				@include flex-wrap;
 				@include flex-center;
+				position: relative;
 				width: 100%;
 				height: 100%;
 				padding: 15px;
 				font-size: 18px;
 				font-weight: 600;
+				color: white;
 			}
 		}
 	}
@@ -9513,7 +9737,7 @@ a.category-tile {
 }
 
 /* ---------- ATTACHMENT LISTS */
-.attachment-list-small {
+.attach-list {
 	ul {
 		@include flex;
 		@include flex-wrap;
@@ -9591,6 +9815,7 @@ a.category-tile {
 		}
 	}
 }
+// [deprecate]
 .attachment-list {
 	width: 100%;
 	min-height: 100px;
@@ -11227,6 +11452,159 @@ a.category-tile {
 		label.active {
 			font-size: 20px!important;
 		}
+	}
+}
+
+/* ---------- ALBUM TILES */
+.album-tile {
+	display: block;
+	width: 100%;
+	max-width: 256px;
+	position: relative;
+	* {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+	}
+	.album-echo {
+		@include opacity(0);
+		@include center-xy;
+		width: 100%;
+		height: 100%;
+		border: 2px solid white;
+		border-radius: 2px;
+		z-index: -1;
+		div {
+			@include opacity(.3);
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.album-art {
+		@include opacity(0);
+		position: relative;
+		z-index: 2;
+		&.animate {
+				@include prefix(animation, album-fade 300ms ease-in-out forwards);
+			}
+		> svg {
+			max-width: 100%;
+			&:last-child {
+				@include opacity(0);
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -50px;
+				margin-top: -50px;
+				width: 100px;
+				height: 100px;
+				* {
+					@include svg-stroke(white, 2);
+				}
+			}
+		}
+		> div {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			background-position: center center;
+			border-top-left-radius: 2px;
+			border-top-right-radius: 2px;
+			&:nth-child(3) {
+				@include opacity(0);
+			}
+		}
+	}
+	.album-caption {
+		position: relative;
+		z-index: 1;
+		h1, h2 {
+			@include opacity(0);
+			@include prefix(transform, translateY(-100%) translateZ(0), webkit moz ms o);
+			padding: 5px;
+			margin: 0;
+			font-size: 14px;
+			font-weight: 600;
+			text-align: center;
+		}
+		h1 {
+			@include flex;
+			@include flex-center;
+			min-height: 48px;
+			&.animate {
+				@include prefix(animation, album-title 300ms ease-in-out 450ms forwards);
+			}
+		}
+		h2 {
+			border-bottom-left-radius: 2px;
+			border-bottom-right-radius: 2px;
+			&.animate {
+				@include prefix(animation, album-genre 300ms ease-in-out 750ms forwards);
+			}
+		}
+		@media screen and (min-width: 768px) {
+			h1 {
+				padding: 15px;
+				font-size: 20px;
+			}
+			h2 {
+				padding: 10px;
+				font-size: 16px;
+			}
+		}
+	}
+	&:hover, &:focus {
+		.album-art {
+			> svg {
+				&:last-child {
+					@include opacity(1);
+				}
+			}
+			> div {
+				&:nth-child(3) {
+					@include opacity(.5);
+				}
+			}
+		}
+	}
+	&:active {
+		.album-echo {
+			@include opacity(1);
+			width: calc(100% + 30px);
+			height: calc(100% + 30px);
+		}
+	}
+}
+
+@include keyframes(album-fade) {
+	0% {
+		@include opacity(0);
+	}
+	100% {
+		@include opacity(1);
+	}
+}
+
+@include keyframes(album-title) {
+	0% {
+		@include opacity(0);
+		@include prefix(transform, translateY(-100%) translateZ(0), webkit moz ms o);
+	}
+	100% {
+		@include opacity(1);
+		@include prefix(transform, translateY(0) translateZ(0), webkit moz ms o);
+	}
+}
+
+@include keyframes(album-genre) {
+	0% {
+		@include opacity(0);
+		@include prefix(transform, translateY(-100%) translateZ(0), webkit moz ms o);
+	}
+	100% {
+		@include opacity(.5);
+		@include prefix(transform, translateY(0) translateZ(0), webkit moz ms o);
 	}
 }
 
