@@ -685,19 +685,30 @@
             "name": "Standard Text Input", 
             "ref": "inputs-text", 
             "sample": {
-                "scope": {
-                    "input": {
-                        "label": "Label", 
-                        "placeholder": "This is a basic input"
-                    }
-                }, 
-                "template": "<basic-input input=\"component.sample.scope.input\"></basic-input>"
+                "scope": {}, 
+                "template": "<standard-input></standard-input>"
             }, 
             "tags": [
                 "inputs", 
                 "text"
             ], 
             "template_url": "templates/inputs/text.tpl"
+        }, 
+        {
+            "active": true, 
+            "id": 27, 
+            "name": "Material Text Input", 
+            "ref": "inputs-material", 
+            "sample": {
+                "scope": {}, 
+                "template": "<material-input></material-input>"
+            }, 
+            "tags": [
+                "inputs", 
+                "text", 
+                "material"
+            ], 
+            "template_url": "templates/inputs/material.tpl"
         }, 
         {
             "active": true, 

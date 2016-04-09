@@ -441,14 +441,18 @@ angular.module('uguru.components', [])
             }
         }
     })
-    .directive('inputBasic', function() {
+    .directive('inputStandard', function() {
         return {
             templateUrl: BASE + 'templates/elements/components/inputs/text.tpl',
             restrict: 'E',
-            replace: true,
-            scope: {
-                input: '=',
-            }
+            replace: true
+        }
+    })
+    .directive('inputMaterial', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/inputs/material.tpl',
+            restrict: 'E',
+            replace: true
         }
     })
     .directive('profileWidgetCard', function() {

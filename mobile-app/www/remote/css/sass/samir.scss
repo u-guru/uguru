@@ -604,33 +604,6 @@ ul#guru-courses-user-profile {
 	display:block;
 }
 
-.pf-card-group, .cta-modal {
-	.bg-tech, &.bg-tech {
-		background: $azure;
-		background-color: $azure;
-	}
-	.bg-academic, &.bg-academic {
-		background: $cerise;
-		background-color:$cerise;
-	}
-	.bg-baking, &.bg-baking {
-		background:$gold;
-		background-color: $gold;
-	}
-	.bg-photography, &.bg-photography {
-		background:$moola;
-		background-color: $moola;
-	}
-	.bg-household, &.bg-household{
-		background: $cobalt;
-		background-color: $cobalt;
-	}
-
-	.pf-card-main {
-		background:white;
-	}
-}
-
 #cta-modal-sidebar.full-x {
 	width:100% !important;
 	left:0 !important;

@@ -11881,33 +11881,23 @@ a.category-tile {
 }
 
 /* ---------- TOASTS */
-a.toast {
-	border: 2px solid transparent;
-	padding: 0 13px;
-	.close-icon {
-		top: -2px;
-		right: -2px;
-	}
-	&:hover, &:focus {
-		border-color: rgba(white, .5);
-	}
-	&:active {
-		border-color: white;
-	}
-}
-
 .toast {
 	@include flex;
 	@include flex-wrap;
 	@include flex-center-vertical;
+	-webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+	transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	position: relative;
 	height: 76px;
+	min-width: 400px;
 	max-width: 400px;
 	border-radius: 2px;
 	padding: 0 15px;
 	color: white;
 	font-size: 18px;
 	font-weight: 600;
+	overflow: hidden;
+	border-left: 5px solid white;
 	p, q {
 		width: 100%;
 		line-height: 1.3!important;
@@ -11964,11 +11954,40 @@ a.toast {
 		padding: 0;
 		font-size: 18px;
 	}
+	.toast-overlay {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		@include opacity(0);
+		@include flex;
+		@include flex-center;
+		visibility: hidden;
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		ul {
+			@include flex;
+			@include flex-center;
+			padding: 7.5px;
+			li {
+				padding: 7.5px;
+			}
+		}
+		button {
+			width: auto;
+			padding: 0 10px;
+			height: 32px;
+			font-size: 16px;
+			border-radius: 2px;
+		}
+	}
 	.close-icon {
 		@include opacity(.5);
 		@include flex;
 		@include flex-center;
 		position: absolute;
+		z-index: 11;
 		top: 0;
 		right: 0;
 		padding: 6px;
@@ -12020,9 +12039,15 @@ a.toast {
 			padding: 5px;
 			svg {
 				* {
-					@include svg-stroke($slate, 5);
+					@include svg-stroke(lighten($slate, 15%), 5);
 				}
 			}
+		}
+	}
+	&:hover, &:focus {
+		.toast-overlay {
+			@include opacity(1);
+			visibility: visible;
 		}
 	}
 	&.toast-cta {
@@ -12041,7 +12066,65 @@ a.toast {
 			width: calc(100% - 46px - 15px);
 		}
 	}
+	&:not(.toast-mobile) {
+		@include prefix(animation, notify-bounceInRight 1000ms ease-in-out forwards, webkit moz ms o);
+	}
+	&.toast-mobile {
+		@include prefix(animation, notify-bounceInDown 1000ms ease-in-out forwards, webkit moz ms o);
+		border-radius: 0;
+		border-width: 0;
+		width: 100%;
+		min-width: 0;
+		max-width: none;
+		height: 84px;
+		padding-bottom: 8px;
+		&:after {
+			@include opacity(.3);
+			content: "tap to reveal options";
+			display: block;
+			position: absolute;
+			bottom: 5px;
+			left: 0;
+			width: 100%;
+			font-size: 10px;
+			line-height: 1;
+			text-align: center;
+			white-space: nowrap;
+		}
+	}
+	&.bg-slate {
+		.toast-overlay {
+			background: rgba($slate, .95);
+		}
+	}
+	&.bg-smoke {
+		color: $slate;
+		border-color: $slate;
+		.toast-overlay {
+			background: rgba($smoke, .95);
+		}
+		button {
+			background: $slate;
+			&:hover, &:focus {
+				background: lighten($slate, 25%);
+				color: white;
+			}
+			&:active {
+				background: $charcoal;
+			}
+		}
+		.close-icon {
+			svg {
+				* {
+					stroke: $slate;
+				}
+			}
+		}
+	}
 	&.bg-shamrock {
+		.toast-overlay {
+			background: rgba($shamrock, .95);
+		}
 		button {
 			&:hover, &:focus {
 				color: $shamrock;
@@ -12055,7 +12138,42 @@ a.toast {
 			}
 		}
 	}
+	&.txt-shamrock, &.border-shamrock {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($shamrock, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $shamrock;
+			&:hover, &:focus {
+				background: mix($shamrock, white);
+				color: mix($shamrock, $slate);
+			}
+			&:active {
+				background: mix($shamrock, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-shamrock {
+		color: $shamrock;
+		.close-icon {
+			svg {
+				* {
+					stroke: $shamrock;
+				}
+			}
+		}
+	}
 	&.bg-robin {
+		.toast-overlay {
+			background: rgba($robin, .95);
+		}
 		button {
 			&:hover, &:focus {
 				color: $robin;
@@ -12069,7 +12187,42 @@ a.toast {
 			}
 		}
 	}
+	&.txt-robin, &.border-robin {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($robin, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $robin;
+			&:hover, &:focus {
+				background: mix($robin, white);
+				color: mix($robin, $slate);
+			}
+			&:active {
+				background: mix($robin, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-robin {
+		color: $robin;
+		.close-icon {
+			svg {
+				* {
+					stroke: $robin;
+				}
+			}
+		}
+	}
 	&.bg-lake {
+		.toast-overlay {
+			background: rgba($lake, .95);
+		}
 		button {
 			&:hover, &:focus {
 				color: $lake;
@@ -12083,7 +12236,42 @@ a.toast {
 			}
 		}
 	}
+	&.txt-lake, &.border-lake {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($lake, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $lake;
+			&:hover, &:focus {
+				background: mix($lake, white);
+				color: mix($lake, $slate);
+			}
+			&:active {
+				background: mix($lake, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-lake {
+		color: $lake;
+		.close-icon {
+			svg {
+				* {
+					stroke: $lake;
+				}
+			}
+		}
+	}
 	&.bg-moxie {
+		.toast-overlay {
+			background: rgba($moxie, .95);
+		}
 		button {
 			&:hover, &:focus {
 				color: $moxie;
@@ -12097,7 +12285,42 @@ a.toast {
 			}
 		}
 	}
+	&.txt-moxie, &.border-moxie {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($moxie, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $moxie;
+			&:hover, &:focus {
+				background: mix($moxie, white);
+				color: mix($moxie, $slate);
+			}
+			&:active {
+				background: mix($moxie, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-moxie {
+		color: $moxie;
+		.close-icon {
+			svg {
+				* {
+					stroke: $moxie;
+				}
+			}
+		}
+	}
 	&.bg-crimson {
+		.toast-overlay {
+			background: rgba($crimson, .95);
+		}
 		button {
 			&:hover, &:focus {
 				color: $crimson;
@@ -12111,8 +12334,43 @@ a.toast {
 			}
 		}
 	}
+	&.txt-crimson, &.border-crimson {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($crimson, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $crimson;
+			&:hover, &:focus {
+				background: mix($crimson, white);
+				color: mix($crimson, $slate);
+			}
+			&:active {
+				background: mix($crimson, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-crimson {
+		color: $crimson;
+		.close-icon {
+			svg {
+				* {
+					stroke: $crimson;
+				}
+			}
+		}
+	}
 	&.bg-auburn, &.bg-delivery {
 		background: $auburn;
+		.toast-overlay {
+			background: rgba($auburn, .95);
+		}
 		button {
 			&:hover, &:focus {
 				color: $auburn;
@@ -12126,8 +12384,43 @@ a.toast {
 			}
 		}
 	}
+	&.txt-auburn, &.border-auburn, &.txt-delivery, &.border-delivery {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($auburn, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $auburn;
+			&:hover, &:focus {
+				background: mix($auburn, white);
+				color: mix($auburn, $slate);
+			}
+			&:active {
+				background: mix($auburn, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-auburn, &.txt-delivery {
+		color: $auburn;
+		.close-icon {
+			svg {
+				* {
+					stroke: $auburn;
+				}
+			}
+		}
+	}
 	&.bg-orange, &.bg-freelancing {
 		background: $orange;
+		.toast-overlay {
+			background: rgba($orange, .95);
+		}
 		button {
 			&:hover, &:focus {
 				color: $orange;
@@ -12141,8 +12434,43 @@ a.toast {
 			}
 		}
 	}
+	&.txt-orange, &.border-orange, &.txt-freelancing, &.border-freelancing {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($orange, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $orange;
+			&:hover, &:focus {
+				background: mix($orange, white);
+				color: mix($orange, $slate);
+			}
+			&:active {
+				background: mix($orange, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-orange, &.txt-freelancing {
+		color: $orange;
+		.close-icon {
+			svg {
+				* {
+					stroke: $orange;
+				}
+			}
+		}
+	}
 	&.bg-gold, &.bg-baking {
 		background: $gold;
+		.toast-overlay {
+			background: rgba($gold, .95);
+		}
 		button {
 			&:hover, &:focus {
 				color: $gold;
@@ -12156,8 +12484,43 @@ a.toast {
 			}
 		}
 	}
+	&.txt-gold, &.border-gold, &.txt-baking, &.border-baking {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($gold, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $gold;
+			&:hover, &:focus {
+				background: mix($gold, white);
+				color: mix($gold, $slate);
+			}
+			&:active {
+				background: mix($gold, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-gold, &.txt-baking {
+		color: $gold;
+		.close-icon {
+			svg {
+				* {
+					stroke: $gold;
+				}
+			}
+		}
+	}
 	&.bg-moola, &.bg-photography {
 		background: $moola;
+		.toast-overlay {
+			background: rgba($moola, .95);
+		}
 		button {
 			&:hover, &:focus {
 				color: $moola;
@@ -12171,8 +12534,43 @@ a.toast {
 			}
 		}
 	}
+	&.txt-moola, &.border-moola, &.txt-photography, &.border-photography {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($moola, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $moola;
+			&:hover, &:focus {
+				background: mix($moola, white);
+				color: mix($moola, $slate);
+			}
+			&:active {
+				background: mix($moola, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-moola, &.txt-photogrpahy {
+		color: $moola;
+		.close-icon {
+			svg {
+				* {
+					stroke: $moola;
+				}
+			}
+		}
+	}
 	&.bg-azure, &.bg-tech {
 		background: $azure;
+		.toast-overlay {
+			background: rgba($azure, .95);
+		}
 		button {
 			&:hover, &:focus {
 				color: $azure;
@@ -12186,8 +12584,43 @@ a.toast {
 			}
 		}
 	}
+	&.txt-azure, &.border-azure, &.txt-tech, &.border-tech {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($azure, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $azure;
+			&:hover, &:focus {
+				background: mix($azure, white);
+				color: mix($azure, $slate);
+			}
+			&:active {
+				background: mix($azure, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-azure, &.txt-tech {
+		color: $azure;
+		.close-icon {
+			svg {
+				* {
+					stroke: $azure;
+				}
+			}
+		}
+	}
 	&.bg-cobalt, &.bg-household {
 		background: $cobalt;
+		.toast-overlay {
+			background: rgba($cobalt, .95);
+		}
 		button {
 			&:hover, &:focus {
 				color: $cobalt;
@@ -12201,8 +12634,43 @@ a.toast {
 			}
 		}
 	}
+	&.txt-cobalt, &.border-cobalt, &.txt-household, &.border-household {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($cobalt, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $cobalt;
+			&:hover, &:focus {
+				background: mix($cobalt, white);
+				color: mix($cobalt, $slate);
+			}
+			&:active {
+				background: mix($cobalt, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-cobalt, &.txt-household {
+		color: $cobalt;
+		.close-icon {
+			svg {
+				* {
+					stroke: $cobalt;
+				}
+			}
+		}
+	}
 	&.bg-eggplant, &.bg-athletic {
 		background: $eggplant;
+		.toast-overlay {
+			background: rgba($eggplant, .95);
+		}
 		button {
 			&:hover, &:focus {
 				color: $eggplant;
@@ -12216,17 +12684,84 @@ a.toast {
 			}
 		}
 	}
+	&.txt-eggplant, &.border-eggplant, &.txt-athletic, &.border-athletic {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($eggplant, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $eggplant;
+			&:hover, &:focus {
+				background: mix($eggplant, white);
+				color: mix($eggplant, $slate);
+			}
+			&:active {
+				background: mix($eggplant, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-eggplant, &.txt-athletic {
+		color: $eggplant;
+		.close-icon {
+			svg {
+				* {
+					stroke: $eggplant;
+				}
+			}
+		}
+	}
 	&.bg-cerise, &.bg-academic {
 		background: $cerise;
+		.toast-overlay {
+			background: rgba($cerise, .95);
+		}
 		button {
 			&:hover, &:focus {
-				color: $auburn;
+				color: $cerise;
 			}
 		}
 		.toast-svg {
 			svg {
 				* {
-					stroke: $auburn;
+					stroke: $cerise;
+				}
+			}
+		}
+	}
+	&.txt-cerise, &.border-cerise, &.txt-academic, &.border-academic {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($cerise, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $cerise;
+			&:hover, &:focus {
+				background: mix($cerise, white);
+				color: mix($cerise, $slate);
+			}
+			&:active {
+				background: mix($cerise, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-cerise, &.txt-academic {
+		color: $cerise;
+		.close-icon {
+			svg {
+				* {
+					stroke: $cerise;
 				}
 			}
 		}
