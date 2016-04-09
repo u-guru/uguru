@@ -13620,3 +13620,284 @@ a.category-tile {
 	@include prefix(animation-duration, 500ms, webkit moz ms o);
 	height: 182px;
 }
+
+// university marker
+.university-place-marker {
+	@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+	position: relative;
+	cursor: pointer;
+	max-width: 262px;
+	&.visible {
+		@include opacity-important(1);
+		z-index: 9;
+	}
+	&.bg-academic {
+		.marker-circle {
+			background: $auburn;
+		}
+		.marker-guru {
+			background: rgba($auburn, .3);
+			&:hover, &:focus {
+				background: $auburn;
+			}
+		}
+	}
+	&.bg-freelancing {
+		.marker-circle {
+			background: $orange;
+		}
+		.marker-guru {
+			background: rgba($orange, .3);
+			&:hover, &:focus {
+				background: $orange;
+			}
+		}
+	}
+	&.bg-baking {
+		.marker-circle {
+			background: $gold;
+		}
+		.marker-guru {
+			background: rgba($gold, .3);
+			&:hover, &:focus {
+				background: $gold;
+			}
+		}
+	}
+	&.bg-photography {
+		.marker-circle {
+			background: $moola;
+		}
+		.marker-guru {
+			background: rgba($moola, .3);
+			&:hover, &:focus {
+				background: $moola;
+			}
+		}
+	}
+	&.bg-tech {
+		.marker-circle {
+			background: $azure;
+		}
+		.marker-guru {
+			background: rgba($azure, .3);
+			&:hover, &:focus {
+				background: $azure;
+			}
+		}
+	}
+	&.bg-household {
+		.marker-circle {
+			background: $cobalt;
+		}
+		.marker-guru {
+			background: rgba($cobalt, .3);
+			&:hover, &:focus {
+				background: $cobalt;
+			}
+		}
+	}
+	&.bg-athletic {
+		.marker-circle {
+			background: $eggplant;
+		}
+		.marker-guru {
+			background: rgba($eggplant, .3);
+			&:hover, &:focus {
+				background: $eggplant;
+			}
+		}
+	}
+	&.bg-academic {
+		.marker-circle {
+			background: $cerise;
+		}
+		.marker-guru {
+			background: rgba($cerise, .3);
+			&:hover, &:focus {
+				background: $cerise;
+			}
+		}
+	}
+	.marker-normal {
+		position: relative;
+		.marker-normal-window {
+			.open {
+				@include prefix(transition, stroke-dashoffset 150ms ease-in-out, webkit moz ms o);
+				stroke-dasharray: 80, 80;
+				stroke-dashoffset: 0;
+			}
+			.side {
+				@include prefix(transition, stroke-dashoffset 200ms ease-in-out, webkit moz ms o);
+				stroke-dasharray: 278, 278;
+				stroke-dashoffset: 0;
+			}
+		}
+		.marker-normal-content {
+			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			@include flex;
+			@include flex-wrap;
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			width: calc(100% - 4px);
+			height: calc(100% - 26px);
+			svg {
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+				@include svg-stroke(white, 3);
+				position: absolute;
+				top: 50%;
+				margin-top: -24px;
+				left: 50%;
+				margin-left: -24px;
+				z-index: 2;
+				width: 48px;
+				height: 48px;
+			}
+			.marker-guru {
+				@include opacity(0);
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+				@include round;
+				@include flex;
+				@include flex-center-vertical;
+				@include center-xy;
+				margin-top: 6px;
+				height: 30px;
+				width: 74px;
+				padding-left: 28px;
+				border: 2px solid white;
+				font-size: 10px;
+				font-weight: 600;
+				line-height: 1;
+				text-align: center;
+				.user-icon {
+					position: absolute;
+					top: -2px;
+					left: -2px;
+					width: 30px;
+					height: 30px;
+					border-width: 2px;
+				}
+				.marker-guru-course {
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+		&.move {
+			.marker-normal-window {
+				.open {
+					stroke-dashoffset: 80;
+				}
+			}
+			.marker-normal-content {
+				svg {
+					@include prefix(transform, translateY(-36px), webkit moz ms o);
+				}
+			}
+		}
+	}
+	.marker-expanded {
+		position: absolute;
+		z-index: -1;
+		bottom: 0;
+		left: 50%;
+		margin-left: -131px;
+		.marker-expanded-window {
+			.sides {
+				@include prefix(transition, stroke-dashoffset 300ms ease-in-out, webkit moz ms o);
+				stroke-dasharray: 936, 936;
+				stroke-dashoffset: 936;
+			}
+		}
+		.marker-expanded-content {
+			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			@include opacity(0);
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			width: calc(100% - 4px);
+			height: calc(100% - 26px);
+			.marker-expanded-icon {
+				svg {
+					@include svg-stroke(white, 1.5);
+					@include center-x;
+					top: -50%;
+					margin-top: 75px;
+					width: 100px;
+					height: 100px;
+				}
+			}
+			.marker-location {
+				padding: 40px 0 15px 0;
+				text-align: center;
+				h1 {
+					font-size: 18px;
+					font-weight: 600;
+				}
+				h4 {
+					font-size: 14px;
+					font-weight: 600;
+				}
+			}
+			.marker-guru {
+				@include flex;
+				position: relative;
+				padding: 10px 15px;
+				.user-icon {
+					width: 48px;
+					height: 48px;
+					border-width: 2px;
+				}
+				div {
+					width: calc(100% - 48px);
+					padding-left: 15px;
+					text-align: left;
+				}
+				h1 {
+					font-size: 20px;
+					font-weight: 600;
+				}
+				h3 {
+					@include opacity(.5);
+					margin-top: 0!important;
+					font-size: 14px;
+					font-weight: 600;
+				}
+				svg {
+					@include svg-stroke(white, 8);
+					@include center-y;
+					right: 2px;
+					height: 24px;
+				}
+			}
+			.marker-message {
+				@include flex;
+				@include flex-center-vertical;
+				height: calc(100% - 96px - 68px);
+				padding: 0 15px;
+				p {
+					margin: 0;
+					font-size: 16px;
+					font-weight: 400;
+					text-align: left;
+				}
+			}
+		}
+	}
+	.marker-circle {
+		@include round;
+		@include center-x;
+		margin-top: 3px;
+		width: 10px;
+		height: 10px;
+		border: 2px solid white;
+	}
+	.marker-label {
+		position: absolute;
+		width: 100%;
+		bottom: -35px;
+		font-weight: 600;
+		font-size: 14px;
+	}
+}

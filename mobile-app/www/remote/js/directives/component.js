@@ -235,6 +235,7 @@ angular.module('uguru.components', [])
         };
     })
     .directive("tabs", function() {
+        
         return {
             templateUrl: BASE + 'templates/elements/containers/collections/tabs.tpl',
             scope: {
@@ -254,6 +255,30 @@ angular.module('uguru.components', [])
             }
         };
     })
+    .directive('inputStandard', function() {
+        function getTemplateURL(elem, attr) {
+            if (attr.type && attr.type === 'material') {
+                return BASE + 'templates/elements/components/inputs/material.tpl'
+            }  else {
+                return BASE + 'templates/elements/components/inputs/text.tpl'
+            }
+        }
+        return {
+            templateUrl: getTemplateURL,
+            restrict: 'E',
+            replace: true,
+            scope: {
+                input: '=ngModel'
+            },
+            link: function(scope, elem, attr) {
+                if (attr.type && attr.type.toLowerCase() === 'material') {
+                    scope.type = 'material';
+                } else {
+                    scope.type = '';
+                }
+            }
+        }
+    })
     .directive('courseCard', function() {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'hover') {
@@ -267,7 +292,6 @@ angular.module('uguru.components', [])
             } else {
                 return BASE + 'templates/elements/components/cards/course.tpl'
             }
-
         }
         return {
             templateUrl: getTemplateURL,
@@ -442,20 +466,6 @@ angular.module('uguru.components', [])
             }
         }
     })
-    .directive('inputStandard', function() {
-        return {
-            templateUrl: BASE + 'templates/elements/components/inputs/text.tpl',
-            restrict: 'E',
-            replace: true
-        }
-    })
-    .directive('inputMaterial', function() {
-        return {
-            templateUrl: BASE + 'templates/elements/components/inputs/material.tpl',
-            restrict: 'E',
-            replace: true
-        }
-    })
     .directive('profileWidgetCard', function() {
         return {
             templateUrl: BASE + 'templates/elements/components/cards/profile.widget.tpl',
@@ -511,7 +521,7 @@ angular.module('uguru.components', [])
             replace: true
         }
     })
-    .directive('arrowTabs', function() {
+    .directive('tabsArrow', function() {
         return {
             templateUrl: BASE + 'templates/elements/components/progress/arrow.tpl',
             restrict: 'E',
@@ -569,13 +579,6 @@ angular.module('uguru.components', [])
     .directive('toggle', function() {
         return {
             templateUrl: BASE + 'templates/elements/components/inputs/toggle.tpl',
-            restrict: 'E',
-            replace: true
-        }
-    })
-    .directive('inputsAll', function() {
-        return {
-            templateUrl: BASE + 'templates/elements/components/inputs/text/all_inputs.tpl',
             restrict: 'E',
             replace: true
         }

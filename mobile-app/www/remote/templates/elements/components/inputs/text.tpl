@@ -1,4 +1,4 @@
 <fieldset class="input-basic">
-	<label>Label</label>
-	<input type="text" placeholder="This is a standard input" />
+	<label ng-if="input.label">{{input.label}}</label>
+	<input type="text" placeholder="{{input.placeholder}}" />
 </fieldset>

@@ -1,4 +1,4 @@
 <fieldset>
-	<input class="input-border light" type="text" placeholder="This is an outline input" />
+	<input class="input-border {{input.color}}" type="text" placeholder="{{input.placeholder}}" />
 	<label></label>
 </fieldset>

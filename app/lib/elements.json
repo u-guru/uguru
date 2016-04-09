@@ -751,8 +751,13 @@
             "name": "Standard Text Input", 
             "ref": "inputs-text", 
             "sample": {
-                "scope": {}, 
-                "template": "<standard-input></standard-input>"
+                "scope": {
+                    "input": {
+                        "label": "Label", 
+                        "placeholder": "This is a standard input"
+                    }
+                }, 
+                "template": "<input-standard ng-model=\"component.sample.scope.input\"></input-standard>"
             }, 
             "tags": [
                 "inputs", 
@@ -766,8 +771,14 @@
             "name": "Material Text Input", 
             "ref": "inputs-material", 
             "sample": {
-                "scope": {}, 
-                "template": "<material-input></material-input>"
+                "scope": {
+                    "input": {
+                        "color": "light", 
+                        "placeholder": "This is a material input", 
+                        "type": "material"
+                    }
+                }, 
+                "template": "<input-standard ng-model=\"component.sample.scope.input\" type=\"material\"></input-standard>"
             }, 
             "tags": [
                 "inputs", 
@@ -778,7 +789,7 @@
         }, 
         {
             "active": true, 
-            "id": 32,
+            "id": 32, 
             "name": "Standard Toggle", 
             "ref": "inputs-toggle", 
             "sample": {
@@ -912,22 +923,6 @@
         }, 
         {
             "active": true, 
-            "id": 38, 
-            "name": "Gallery Inputs", 
-            "ref": "inputs-text-all_inputs", 
-            "sample": {
-                "scope": {}, 
-                "template": "<inputs-gallery></inputs-gallery>"
-            }, 
-            "tags": [
-                "inputs", 
-                "text", 
-                "all_inputs"
-            ], 
-            "template_url": "templates/inputs/text/all_inputs.tpl"
-        }, 
-        {
-            "active": true, 
             "id": 39, 
             "name": "Base Tag Input", 
             "ref": "inputs-text-tag", 
@@ -979,7 +974,7 @@
                     }, 
                     "size": "medium"
                 }, 
-                "template": "<map-marker></map-marker>", 
+                "template": "<university-marker></university-marker>", 
                 "variations": {
                     "modes": [
                         "view", 
