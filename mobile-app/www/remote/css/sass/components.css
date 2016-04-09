@@ -1753,6 +1753,487 @@ button.disabled {
   stroke-linejoin: round;
 }
 
+fieldset {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 18px;
+  font-weight: 400;
+  width: 100%;
+  max-width: 400px;
+  min-height: 30px;
+}
+
+fieldset * {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+fieldset input {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+}
+
+fieldset input::-webkit-input-placeholder {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+fieldset input:-moz-placeholder {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+fieldset input::-moz-placeholder {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+fieldset input:-ms-input-placeholder {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+fieldset.input-basic label:first-child {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+fieldset.input-basic input {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+fieldset.input-basic input::-webkit-input-placeholder {
+  color: rgba(64, 72, 75, 0.2);
+}
+
+fieldset.input-basic input:-moz-placeholder {
+  color: rgba(64, 72, 75, 0.2);
+}
+
+fieldset.input-basic input::-moz-placeholder {
+  color: rgba(64, 72, 75, 0.2);
+}
+
+fieldset.input-basic input:-ms-input-placeholder {
+  color: rgba(64, 72, 75, 0.2);
+}
+
+fieldset.input-basic input:hover, fieldset.input-basic input:focus {
+  background: white;
+}
+
+fieldset.input-basic input:focus::-webkit-input-placeholder {
+  color: rgba(64, 72, 75, 0.4);
+}
+
+fieldset.input-basic input:focus:-moz-placeholder {
+  color: rgba(64, 72, 75, 0.4);
+}
+
+fieldset.input-basic input:focus::-moz-placeholder {
+  color: rgba(64, 72, 75, 0.4);
+}
+
+fieldset.input-basic input:focus:-ms-input-placeholder {
+  color: rgba(64, 72, 75, 0.4);
+}
+
+fieldset.input-basic input.dark {
+  background: rgba(64, 72, 75, 0.8);
+  color: white;
+}
+
+fieldset.input-basic input.dark::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+fieldset.input-basic input.dark:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+fieldset.input-basic input.dark::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+fieldset.input-basic input.dark:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+fieldset.input-basic input.dark:hover, fieldset.input-basic input.dark:focus {
+  background: #40484B;
+}
+
+fieldset.input-basic input.dark:focus::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+fieldset.input-basic input.dark:focus:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+fieldset.input-basic input.dark:focus::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+fieldset.input-basic input.dark:focus:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.input-border {
+  position: relative;
+  z-index: 9;
+  background: none;
+  border-bottom: 1px solid !important;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.input-border + label:empty {
+  -webkit-transform: scaleX(0) translateZ(0);
+  -moz-transform: scaleX(0) translateZ(0);
+  -ms-transform: scaleX(0) translateZ(0);
+  -o-transform: scaleX(0) translateZ(0);
+  transform: scaleX(0) translateZ(0);
+  -webkit-transform-origin: 0% 50%;
+  -moz-transform-origin: 0% 50%;
+  -ms-transform-origin: 0% 50%;
+  -o-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 2px;
+}
+
+.input-border:focus + label:empty {
+  -webkit-transform: scaleX(1) translateZ(0);
+  -moz-transform: scaleX(1) translateZ(0);
+  -ms-transform: scaleX(1) translateZ(0);
+  -o-transform: scaleX(1) translateZ(0);
+  transform: scaleX(1) translateZ(0);
+}
+
+.input-border.light {
+  color: white;
+  border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.input-border.light::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.input-border.light:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.input-border.light::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.input-border.light:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.input-border.light:focus::-webkit-input-placeholder {
+  color: white;
+}
+
+.input-border.light:focus:-moz-placeholder {
+  color: white;
+}
+
+.input-border.light:focus::-moz-placeholder {
+  color: white;
+}
+
+.input-border.light:focus:-ms-input-placeholder {
+  color: white;
+}
+
+.input-border.light + label:empty {
+  background: white;
+}
+
+.input-border.light:hover, .input-border.light:focus {
+  border-bottom-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.input-border.light:hover::-webkit-input-placeholder, .input-border.light:focus::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.input-border.light:hover:-moz-placeholder, .input-border.light:focus:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.input-border.light:hover::-moz-placeholder, .input-border.light:focus::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.input-border.light:hover:-ms-input-placeholder, .input-border.light:focus:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.input-border.dark {
+  color: #40484B;
+  border-bottom-color: rgba(64, 72, 75, 0.2) !important;
+}
+
+.input-border.dark::-webkit-input-placeholder {
+  color: rgba(64, 72, 75, 0.2);
+}
+
+.input-border.dark:-moz-placeholder {
+  color: rgba(64, 72, 75, 0.2);
+}
+
+.input-border.dark::-moz-placeholder {
+  color: rgba(64, 72, 75, 0.2);
+}
+
+.input-border.dark:-ms-input-placeholder {
+  color: rgba(64, 72, 75, 0.2);
+}
+
+.input-border.dark:focus::-webkit-input-placeholder {
+  color: #40484B;
+}
+
+.input-border.dark:focus:-moz-placeholder {
+  color: #40484B;
+}
+
+.input-border.dark:focus::-moz-placeholder {
+  color: #40484B;
+}
+
+.input-border.dark:focus:-ms-input-placeholder {
+  color: #40484B;
+}
+
+.input-border.dark + label:empty {
+  background: #40484B;
+}
+
+.input-border.dark:hover, .input-border.dark:focus {
+  border-bottom-color: rgba(64, 72, 75, 0.4) !important;
+}
+
+.input-border.dark:hover::-webkit-input-placeholder, .input-border.dark:focus::-webkit-input-placeholder {
+  color: rgba(64, 72, 75, 0.4);
+}
+
+.input-border.dark:hover:-moz-placeholder, .input-border.dark:focus:-moz-placeholder {
+  color: rgba(64, 72, 75, 0.4);
+}
+
+.input-border.dark:hover::-moz-placeholder, .input-border.dark:focus::-moz-placeholder {
+  color: rgba(64, 72, 75, 0.4);
+}
+
+.input-border.dark:hover:-ms-input-placeholder, .input-border.dark:focus:-ms-input-placeholder {
+  color: rgba(64, 72, 75, 0.4);
+}
+
+.input-border.bg-moxie {
+  color: #43cb9d;
+}
+
+.input-border.bg-moxie:focus::-webkit-input-placeholder {
+  color: #43cb9d;
+}
+
+.input-border.bg-moxie:focus:-moz-placeholder {
+  color: #43cb9d;
+}
+
+.input-border.bg-moxie:focus::-moz-placeholder {
+  color: #43cb9d;
+}
+
+.input-border.bg-moxie:focus:-ms-input-placeholder {
+  color: #43cb9d;
+}
+
+.input-border.bg-moxie + label:empty {
+  background: #43cb9d;
+}
+
+.input-border.bg-crimson {
+  color: #d3242c;
+}
+
+.input-border.bg-crimson:focus::-webkit-input-placeholder {
+  color: #d3242c;
+}
+
+.input-border.bg-crimson:focus:-moz-placeholder {
+  color: #d3242c;
+}
+
+.input-border.bg-crimson:focus::-moz-placeholder {
+  color: #d3242c;
+}
+
+.input-border.bg-crimson:focus:-ms-input-placeholder {
+  color: #d3242c;
+}
+
+.input-border.bg-crimson + label:empty {
+  background: #d3242c;
+}
+
+fieldset.with-icon .input-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+}
+
+fieldset.with-icon .input-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+fieldset.with-icon .input-icon svg * {
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+fieldset.with-icon input {
+  margin-left: 34px;
+  width: calc(100% - 34px);
+}
+
+fieldset.with-icon input + label {
+  width: calc(100% - 34px) !important;
+  left: 34px !important;
+}
+
+fieldset.with-icon input.light ~ .input-icon svg * {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+fieldset.with-icon input.light:hover ~ .input-icon svg * {
+  stroke: rgba(255, 255, 255, 0.4);
+}
+
+fieldset.with-icon input.light:focus ~ .input-icon svg * {
+  stroke: white;
+}
+
+fieldset.with-icon input.dark ~ .input-icon svg * {
+  stroke: rgba(64, 72, 75, 0.2);
+}
+
+fieldset.with-icon input.dark:hover ~ .input-icon svg * {
+  stroke: rgba(64, 72, 75, 0.4);
+}
+
+fieldset.with-icon input.dark:focus ~ .input-icon svg * {
+  stroke: #40484B;
+}
+
+fieldset.large {
+  min-height: 58px;
+  max-width: none;
+}
+
+fieldset.large .input-border {
+  font-size: 36px;
+  border-bottom-width: 2px !important;
+}
+
+fieldset.large .input-border::-webkit-input-placeholder {
+  font-size: 36px;
+}
+
+fieldset.large .input-border:-moz-placeholder {
+  font-size: 36px;
+}
+
+fieldset.large .input-border::-moz-placeholder {
+  font-size: 36px;
+}
+
+fieldset.large .input-border:-ms-input-placeholder {
+  font-size: 36px;
+}
+
+fieldset.large.with-icon .input-icon {
+  width: 58px;
+  height: 58px;
+}
+
+fieldset.large.with-icon .input-icon svg * {
+  stroke-width: 4px;
+}
+
+fieldset.large.with-icon input {
+  margin-left: 68px;
+  width: calc(100% - 68px);
+}
+
+fieldset.large.with-icon input + label {
+  width: calc(100% - 68px) !important;
+  left: 68px !important;
+}
+
 .input-ghost {
   display: block;
   width: 100%;

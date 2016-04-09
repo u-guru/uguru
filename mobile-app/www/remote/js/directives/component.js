@@ -441,6 +441,16 @@ angular.module('uguru.components', [])
             }
         }
     })
+    .directive('inputBasic', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/inputs/text.tpl',
+            restrict: 'E',
+            replace: true,
+            scope: {
+                input: '=',
+            }
+        }
+    })
     .directive('profileWidgetCard', function() {
         return {
             templateUrl: BASE + 'templates/elements/components/cards/profile.widget.tpl',

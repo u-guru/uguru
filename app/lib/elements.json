@@ -685,7 +685,13 @@
             "name": "Standard Text Input", 
             "ref": "inputs-text", 
             "sample": {
-                "scope": {}
+                "scope": {
+                    "input": {
+                        "label": "Label", 
+                        "placeholder": "This is a basic input"
+                    }
+                }, 
+                "template": "<basic-input input=\"component.sample.scope.input\"></basic-input>"
             }, 
             "tags": [
                 "inputs", 
