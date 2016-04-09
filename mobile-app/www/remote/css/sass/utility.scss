@@ -2044,3 +2044,22 @@ input, fieldset {
 .border-cerise, .border-academic {
 	border-color: $cerise!important;
 }
+
+/* ---------- PARALLAX */
+.parallax-absolute {
+	position: absolute!important;
+}
+.parallax-static {
+	position: static!important;
+}
+.parallax-relative {
+	position: relative!important;
+}
+.parallax-50 {
+	top: 50%!important;
+	left: 50%!important;
+}
+.parallax-auto {
+	top: auto!important;
+	left: auto!important;
+}

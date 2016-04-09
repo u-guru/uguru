@@ -504,6 +504,22 @@
         }, 
         {
             "active": true, 
+            "id": 17, 
+            "name": "Toast", 
+            "notes": "", 
+            "ref": "info-toast", 
+            "sample": {
+                "scope": {}, 
+                "template": "<toast> </toast>"
+            }, 
+            "tags": [
+                "info", 
+                "toast"
+            ], 
+            "template_url": "templates/info/toast.tpl"
+        }, 
+        {
+            "active": true, 
             "bugs": "", 
             "id": 18, 
             "name": "User Icon", 

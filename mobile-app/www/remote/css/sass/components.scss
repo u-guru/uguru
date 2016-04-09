@@ -1784,7 +1784,7 @@ input[type=text] {
 
 /* ---------- PROGRESS BARS */
 // regular progress
-progress, div[class="progress"] {
+progress, div[class*="progress"] {
 	@include transition(.15s ease-in-out);
 	@include appearance;
 	width: 100%;
@@ -11608,6 +11608,359 @@ a.category-tile {
 	}
 }
 
+/* ---------- TOASTS */
+a.toast {
+	border: 2px solid transparent;
+	padding: 0 13px;
+	.close-icon {
+		top: -2px;
+		right: -2px;
+	}
+	&:hover, &:focus {
+		border-color: rgba(white, .5);
+	}
+	&:active {
+		border-color: white;
+	}
+}
+
+.toast {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center-vertical;
+	position: relative;
+	height: 76px;
+	max-width: 400px;
+	border-radius: 2px;
+	padding: 0 15px;
+	color: white;
+	font-size: 18px;
+	font-weight: 600;
+	p, q {
+		width: 100%;
+		line-height: 1.3!important;
+	}
+	p {
+		margin: 0;
+	}
+	q {
+		font-style: italic;
+		&:before {
+			content: open-quote;
+		}
+		&:after {
+			content: close-quote;
+		}
+	}
+	input {
+		display: block;
+		margin-top: 5px;
+		height: 32px;
+		padding: 0 10px;
+		border-radius: 2px;
+		color: $slate;
+		width: 100%;
+		font-size: 16px;
+		@include placeholder {
+			color: rgba($slate, .5);
+		}
+		&:focus {
+			@include placeholder {
+				color: rgba($slate, .75);
+			}
+		}
+	}
+	button {
+		background: rgba(white, .3);
+		&:hover, &:focus {
+			background: white;
+			color: lighten($slate, 15%);
+		}
+		&:active {
+			background: $charcoal!important;
+			color: white!important;
+		}
+	}
+	> button {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		border-bottom-right-radius: 2px;
+		border-top-left-radius: 2px;
+		width: 120px;
+		height: 32px;
+		padding: 0;
+		font-size: 18px;
+	}
+	.close-icon {
+		@include opacity(.5);
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 6px;
+		svg {
+			@include prefix(transform, rotate(45deg), webkit moz ms o);
+			display: block;
+			width: 16px;
+			height: 16px;
+			* {
+				@include svg-stroke(white, 10);
+			}
+		}
+		&:hover, &:focus {
+			@include opacity(.75);
+		}
+		&:active {
+			@include opacity(1);
+		}
+	}
+	.input-button {
+		@include flex;
+		margin-top: 5px;
+		input {
+			margin-top: 0;
+			width: calc(100% - 72px - 15px);
+		}
+		button {
+			display: block;
+			height: 32px;
+			width: 72px;
+			margin-left: 15px;
+			padding: 0 10px;
+			font-size: 16px;
+			border-radius: 2px;
+		}
+	}
+	.toast-svg {
+		@include round;
+		display: block;
+		margin: 0;
+		width: 46px;
+		height: 46px;
+		margin-right: 15px;
+		&[class*="user-icon"] {
+			border-width: 2px;
+		}
+		&:not([class*="user-icon"]) {
+			background-color: white;
+			padding: 5px;
+			svg {
+				* {
+					@include svg-stroke($slate, 5);
+				}
+			}
+		}
+	}
+	&.toast-cta {
+		p, q {
+			width: calc(100% - 120px);
+		}
+	}
+	&.toast-input {
+		p {
+			font-size: 14px;
+			line-height: 1!important;
+		}
+	}
+	&.toast-icon {
+		.toast-svg + * {
+			width: calc(100% - 46px - 15px);
+		}
+	}
+	&.bg-shamrock {
+		button {
+			&:hover, &:focus {
+				color: $shamrock;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $shamrock;
+				}
+			}
+		}
+	}
+	&.bg-robin {
+		button {
+			&:hover, &:focus {
+				color: $robin;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $robin;
+				}
+			}
+		}
+	}
+	&.bg-lake {
+		button {
+			&:hover, &:focus {
+				color: $lake;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $lake;
+				}
+			}
+		}
+	}
+	&.bg-moxie {
+		button {
+			&:hover, &:focus {
+				color: $moxie;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $moxie;
+				}
+			}
+		}
+	}
+	&.bg-crimson {
+		button {
+			&:hover, &:focus {
+				color: $crimson;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $crimson;
+				}
+			}
+		}
+	}
+	&.bg-auburn, &.bg-delivery {
+		background: $auburn;
+		button {
+			&:hover, &:focus {
+				color: $auburn;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $auburn;
+				}
+			}
+		}
+	}
+	&.bg-orange, &.bg-freelancing {
+		background: $orange;
+		button {
+			&:hover, &:focus {
+				color: $orange;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $orange;
+				}
+			}
+		}
+	}
+	&.bg-gold, &.bg-baking {
+		background: $gold;
+		button {
+			&:hover, &:focus {
+				color: $gold;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $gold;
+				}
+			}
+		}
+	}
+	&.bg-moola, &.bg-photography {
+		background: $moola;
+		button {
+			&:hover, &:focus {
+				color: $moola;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $moola;
+				}
+			}
+		}
+	}
+	&.bg-azure, &.bg-tech {
+		background: $azure;
+		button {
+			&:hover, &:focus {
+				color: $azure;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $azure;
+				}
+			}
+		}
+	}
+	&.bg-cobalt, &.bg-household {
+		background: $cobalt;
+		button {
+			&:hover, &:focus {
+				color: $cobalt;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $cobalt;
+				}
+			}
+		}
+	}
+	&.bg-eggplant, &.bg-athletic {
+		background: $eggplant;
+		button {
+			&:hover, &:focus {
+				color: $eggplant;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $eggplant;
+				}
+			}
+		}
+	}
+	&.bg-cerise, &.bg-academic {
+		background: $cerise;
+		button {
+			&:hover, &:focus {
+				color: $auburn;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $auburn;
+				}
+			}
+		}
+	}
+}
+
 /* ---------- BADGES */
 .badge-container {
 	@include flex;
@@ -12264,25 +12617,6 @@ a.category-tile {
 			}
 		}
 	}
-}
-
-/* ---------- PARALLAX */
-.parallax-absolute {
-	position: absolute!important;
-}
-.parallax-static {
-	position: static!important;
-}
-.parallax-relative {
-	position: relative!important;
-}
-.parallax-50 {
-	top: 50%!important;
-	left: 50%!important;
-}
-.parallax-auto {
-	top: auto!important;
-	left: auto!important;
 }
 
 /* ---------- MISC */

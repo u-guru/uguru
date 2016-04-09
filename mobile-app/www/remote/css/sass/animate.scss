@@ -105,7 +105,7 @@
 	@include animation-name(rubberBand);
 }
 
-@include keyframes(shake) {
+@include keyframes(shakeLeft) {
 	0%, 100% {
 		@include transform(translate3d(0, 0, 0));
 	}
@@ -116,33 +116,8 @@
 		@include transform(translate3d(10px, 0, 0));
 	}
 }
-.shake {
-	@include animation-name(shake);
-}
-
-@include keyframes(headShake) {
-	0% {
-		@include transform(translateX(0));
-	}
-	6.5% {
-		@include transform(translateX(-6px) rotateY(-9deg));
-	}
-	18.5% {
-		@include transform(translateX(5px) rotateY(7deg));
-	}
-	31.5% {
-		@include transform(translateX(-3px) rotateY(-5deg));
-	}
-	43.5% {
-		@include transform(translateX(2px) rotateY(3deg));
-	}
-	50% {
-		@include transform(translateX(0));
-	}
-}
-.headShake {
-	@include animation-timing-function(ease-in-out);
-	@include animation-name(headShake);
+.shakeLeft {
+	@include animation-name(shakeLeft);
 }
 
 @include keyframes(swing) {

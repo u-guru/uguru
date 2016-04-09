@@ -565,3 +565,10 @@ angular.module('uguru.components', [])
             replace: true
         }
     })
+    .directive('toast', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/info/toast.tpl',
+            restrict: 'E',
+            replace: true
+        }
+    })
