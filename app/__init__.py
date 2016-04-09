@@ -9,6 +9,7 @@ from flask.ext.bcrypt import Bcrypt
 from flask.ext.httpauth import HTTPBasicAuth
 from flask.ext.cors import CORS
 from flask.ext.compress import Compress
+from flask.ext.elasticsearch import FlaskElasticsearch
 import logging
 from logging.handlers import SMTPHandler
 from flask_sslify import SSLify
@@ -35,9 +36,6 @@ formatter = logging.Formatter('%(filename)s:%(lineno)s %(message)s')
 ch.setFormatter(formatter)
 root.addHandler(ch)
 # TODO : Add debug logger
-
-
-
 app = Flask(__name__, static_folder='static')
 app.config.from_object('config')
 sslify = SSLify(app)
@@ -56,11 +54,26 @@ try:
 except:
     print "some shit went wrong on production"
 
+# FlaskElasticsearch
+# from datetime import datetime
+# es = FlaskElasticsearch(app)
+
+# doc = {
+#     'author': 'kimchy',
+#     'text': 'Elasticsearch: cool. bonsai cool.',
+#     'timestamp': datetime.now(),
+# }
+# print "DIR flask es:", pprint (dir(es))
+# print "Type of es.search :", pprint (type(es.search))
+# print "Type of es.teardown :", pprint (type(es.teardown))
+# res = es.search(index="test-index", body={"query": {"match_all": {}}})
+# print("Got %d Hits:" % res['hits']['total'])
 
 # flask-restful
 api = restful.Api(app)
 _force_https(app)
 CORS(app)
+
 
 # flask_becrypt
 flask_bcrypt = Bcrypt(app)

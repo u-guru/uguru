@@ -6,6 +6,25 @@ from twilio.rest import TwilioRestClient
 from flask import render_template, redirect, url_for, session, request, Response
 import json
 from functools import wraps
+from elasticsearch import Elasticsearch, RequestsHttpConnection
+from pprint import pprint
+
+
+###### Demo #######
+#Esearch
+es = Elasticsearch()
+# print "DIR es:", pprint (dir(es))
+try:
+    res = es.get(index='test_index',doc_type='product',id=1)
+    print 'JSON',pprint(res['_source'])
+except Exception, e:
+    print ('Failed to upload to ftp: '+ str(e))
+#Request from Esearch Amazon 
+from requests_aws4auth import AWS4Auth
+# print app.config
+host = app.config['S3_LOCATION']
+
+#####END OF DEMO#####
 
 # Twilio
 TWILIO_DEFAULT_PHONE = "+15104661138"
