@@ -1,3 +1,5 @@
+@import 'mixin';
+
 /*
 ==============================================
 CSS3 ANIMATION CHEAT SHEET
@@ -29,7 +31,7 @@ slideDown
 	animation-timing-function: ease;	
 	-webkit-animation-timing-function: ease;	
 
-	visibility: visible !important;						
+	visibility: visible;					
 }
 
 @keyframes slideDown {
@@ -91,7 +93,7 @@ slideUp
 	animation-timing-function: ease;	
 	-webkit-animation-timing-function: ease;
 
-	visibility: visible !important;			
+	visibility: visible;		
 }
 
 @keyframes slideUp {
@@ -153,7 +155,7 @@ slideLeft
 	animation-timing-function: ease-in-out;	
 	-webkit-animation-timing-function: ease-in-out;		
 
-	visibility: visible !important;	
+	visibility: visible;
 }
 
 @keyframes slideLeft {
@@ -215,7 +217,7 @@ slideRight
 	animation-timing-function: ease-in-out;	
 	-webkit-animation-timing-function: ease-in-out;		
 
-	visibility: visible !important;	
+	visibility: visible;
 }
 
 @keyframes slideRight {
@@ -277,7 +279,7 @@ slideExpandUp
 	animation-timing-function: ease-out;	
 	-webkit-animation-timing-function: ease -out;
 
-	visibility: visible !important;	
+	visibility: visible;
 }
 
 @keyframes slideExpandUp {
@@ -357,7 +359,7 @@ expandUp
 	animation-timing-function: ease;	
 	-webkit-animation-timing-function: ease;		
 
-	visibility: visible !important;	
+	visibility: visible;
 }
 
 @keyframes expandUp {
@@ -406,42 +408,42 @@ fadeIn
 	animation-timing-function: ease-in-out;	
 	-webkit-animation-timing-function: ease-in-out;		
 
-	visibility: visible !important;	
+	visibility: visible;
 }
 
 @keyframes fadeInJA {
 	0% {
 		transform: scale(0);
-		opacity: 0.0;		
+		@include opacity(0);		
 	}
 	60% {
 		transform: scale(1.1);	
 	}
 	80% {
 		transform: scale(0.9);
-		opacity: 1;	
+		@include opacity(1);	
 	}	
 	100% {
 		transform: scale(1);
-		opacity: 1;	
+		@include opacity(1);	
 	}		
 }
 
 @-webkit-keyframes fadeInJA {
 	0% {
 		-webkit-transform: scale(0);
-		opacity: 0.0;		
+		@include opacity(0);		
 	}
 	60% {
 		-webkit-transform: scale(1.1);
 	}
 	80% {
 		-webkit-transform: scale(0.9);
-		opacity: 1;	
+		@include opacity(1);	
 	}	
 	100% {
 		-webkit-transform: scale(1);
-		opacity: 1;	
+		@include opacity(1);	
 	}		
 }
 
@@ -462,7 +464,7 @@ expandOpen
 	animation-timing-function: ease-out;	
 	-webkit-animation-timing-function: ease-out;	
 
-	visibility: visible !important;	
+	visibility: visible;
 }
 
 @keyframes expandOpen {
@@ -518,68 +520,68 @@ bigEntrance
 	animation-timing-function: ease-out;	
 	-webkit-animation-timing-function: ease-out;	
 
-	visibility: visible !important;			
+	visibility: visible;		
 }
 
 @keyframes bigEntrance {
 	0% {
 		transform: scale(0.3) rotate(6deg) translateX(-30%) translateY(30%);
-		opacity: 0.2;
+		@include opacity(.2);
 	}
 	30% {
 		transform: scale(1.03) rotate(-2deg) translateX(2%) translateY(-2%);		
-		opacity: 1;
+		@include opacity(1);
 	}
 	45% {
 		transform: scale(0.98) rotate(1deg) translateX(0%) translateY(0%);
-		opacity: 1;
+		@include opacity(1);
 	}
 	60% {
 		transform: scale(1.01) rotate(-1deg) translateX(0%) translateY(0%);		
-		opacity: 1;
+		@include opacity(1);
 	}	
 	75% {
 		transform: scale(0.99) rotate(1deg) translateX(0%) translateY(0%);
-		opacity: 1;
+		@include opacity(1);
 	}
 	90% {
 		transform: scale(1.01) rotate(0deg) translateX(0%) translateY(0%);		
-		opacity: 1;
+		@include opacity(1);
 	}	
 	100% {
 		transform: scale(1) rotate(0deg) translateX(0%) translateY(0%);
-		opacity: 1;
+		@include opacity(1);
 	}		
 }
 
 @-webkit-keyframes bigEntrance {
 	0% {
 		-webkit-transform: scale(0.3) rotate(6deg) translateX(-30%) translateY(30%);
-		opacity: 0.2;
+		@include opacity(.2);
 	}
 	30% {
 		-webkit-transform: scale(1.03) rotate(-2deg) translateX(2%) translateY(-2%);		
-		opacity: 1;
+		@include opacity(1);
 	}
 	45% {
 		-webkit-transform: scale(0.98) rotate(1deg) translateX(0%) translateY(0%);
-		opacity: 1;
+		@include opacity(1);
 	}
 	60% {
 		-webkit-transform: scale(1.01) rotate(-1deg) translateX(0%) translateY(0%);		
-		opacity: 1;
+		@include opacity(1);
 	}	
 	75% {
 		-webkit-transform: scale(0.99) rotate(1deg) translateX(0%) translateY(0%);
-		opacity: 1;
+		@include opacity(1);
 	}
 	90% {
 		-webkit-transform: scale(1.01) rotate(0deg) translateX(0%) translateY(0%);		
-		opacity: 1;
+		@include opacity(1);
 	}	
 	100% {
 		-webkit-transform: scale(1) rotate(0deg) translateX(0%) translateY(0%);
-		opacity: 1;
+		@include opacity(1);
 	}				
 }
 
@@ -603,7 +605,7 @@ hatch
 	-ms-transform-origin: 50% 100%;
 	-webkit-transform-origin: 50% 100%; 
 
-	visibility: visible !important;		
+	visibility: visible;	
 }
 
 @keyframes hatch {
@@ -740,30 +742,30 @@ pulse
 @keyframes pulseJA {
 	0% {
 		transform: scale(0.9);
-		opacity: 0.7;		
+		@include opacity(.7);		
 	}
 	50% {
 		transform: scale(1);
-		opacity: 1;	
+		@include opacity(1);	
 	}	
 	100% {
 		transform: scale(0.9);
-		opacity: 0.7;	
+		@include opacity(.7);	
 	}			
 }
 
 @-webkit-keyframes pulseJA {
 	0% {
 		-webkit-transform: scale(0.95);
-		opacity: 0.7;		
+		@include opacity(.7);		
 	}
 	50% {
 		-webkit-transform: scale(1);
-		opacity: 1;	
+		@include opacity(1);	
 	}	
 	100% {
 		-webkit-transform: scale(0.95);
-		opacity: 0.7;	
+		@include opacity(.7);	
 	}			
 }
 
