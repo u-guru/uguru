@@ -4,6 +4,10 @@ var appName = '<%= ngModulName %>';
 
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
+var svgmin      = require('gulp-svgmin');
+var svgstore    = require('gulp-svgstore');
+var cheerio     = require('gulp-cheerio');
+
 var del = require('del');
 var beep = require('beepbeep');
 var express = require('express');
@@ -466,6 +470,17 @@ gulp.task('images', function() {
     .on('error', errorHandler);
 });
 
+gulp.task('Copy SVG Icon',function()
+{
+  console.log( targetDir)
+  return gulp.src(['templates/svg/main/**/*'],{ cwd: 'www/remote' })
+     .pipe(svgmin())
+     .pipe(svgstore())
+     .pipe(rename({basename: 'allIcons'}))
+     .pipe(gulp.dest(path.join(targetDir, 'svg')))
+     .pipe(gulp.dest(path.join(path.resolve('www/remote/templates'), 'svg')))
+     .on('error', errorHandler);
+});
 
 
 
