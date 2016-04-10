@@ -546,9 +546,15 @@
             "template_url": "templates/info/ribbon.tpl"
         }, 
         {
+            "active": true, 
             "id": 20, 
             "name": "Toast", 
+            "notes": "", 
             "ref": "info-toast", 
+            "sample": {
+                "scope": {}, 
+                "template": "<toast> </toast>"
+            }, 
             "tags": [
                 "info", 
                 "toast"
@@ -574,22 +580,6 @@
                 "tooltip"
             ], 
             "template_url": "templates/info/tooltip.tpl"
-        }, 
-        {
-            "active": true, 
-            "id": 17, 
-            "name": "Toast", 
-            "notes": "", 
-            "ref": "info-toast", 
-            "sample": {
-                "scope": {}, 
-                "template": "<toast> </toast>"
-            }, 
-            "tags": [
-                "info", 
-                "toast"
-            ], 
-            "template_url": "templates/info/toast.tpl"
         }, 
         {
             "active": true, 
@@ -697,6 +687,21 @@
         {
             "active": true, 
             "id": 27, 
+            "name": "Material Text Input", 
+            "ref": "inputs-material", 
+            "sample": {
+                "scope": {}, 
+                "template": "<material-input></material-input>"
+            }, 
+            "tags": [
+                "inputs", 
+                "material"
+            ], 
+            "template_url": "templates/inputs/material.tpl"
+        }, 
+        {
+            "active": true, 
+            "id": 28, 
             "name": "Standard Radio", 
             "ref": "inputs-radio", 
             "sample": {
@@ -712,7 +717,7 @@
             "template_url": "templates/inputs/radio.tpl"
         }, 
         {
-            "id": 28, 
+            "id": 29, 
             "ref": "inputs-slider", 
             "tags": [
                 "inputs", 
@@ -722,7 +727,7 @@
         }, 
         {
             "active": true, 
-            "id": 29, 
+            "id": 30, 
             "name": "Arrow Tab Bar", 
             "ref": "inputs-tab-arrow", 
             "sample": {
@@ -736,7 +741,7 @@
             "template_url": "templates/inputs/tab.arrow.tpl"
         }, 
         {
-            "id": 30, 
+            "id": 31, 
             "name": "Copy Text Input", 
             "ref": "inputs-text-copy", 
             "tags": [
@@ -747,7 +752,7 @@
         }, 
         {
             "active": true, 
-            "id": 31, 
+            "id": 32, 
             "name": "Standard Text Input", 
             "ref": "inputs-text", 
             "sample": {
@@ -762,23 +767,7 @@
         }, 
         {
             "active": true, 
-            "id": 28, 
-            "name": "Material Text Input", 
-            "ref": "inputs-material", 
-            "sample": {
-                "scope": {}, 
-                "template": "<material-input></material-input>"
-            }, 
-            "tags": [
-                "inputs", 
-                "text", 
-                "material"
-            ], 
-            "template_url": "templates/inputs/material.tpl"
-        }, 
-        {
-            "active": true, 
-            "id": 32,
+            "id": 33, 
             "name": "Standard Toggle", 
             "ref": "inputs-toggle", 
             "sample": {
@@ -794,7 +783,7 @@
         {
             "active": true, 
             "cp_link": "", 
-            "id": 33, 
+            "id": 34, 
             "name": "Color Dropdowns", 
             "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
             "ref": "inputs-dropdowns-color", 
@@ -818,7 +807,7 @@
             "template_url": "templates/inputs/dropdowns/color.tpl"
         }, 
         {
-            "id": 34, 
+            "id": 35, 
             "ref": "inputs-dropdowns-splash", 
             "tags": [
                 "inputs", 
@@ -828,7 +817,7 @@
             "template_url": "templates/inputs/dropdowns/splash.tpl"
         }, 
         {
-            "id": 35, 
+            "id": 36, 
             "name": "Color picker", 
             "ref": "inputs-pickers-color", 
             "tags": [
@@ -845,7 +834,7 @@
                     "girls": "Whats the different conceptually between a tag and a chip?"
                 }
             ], 
-            "id": 36, 
+            "id": 37, 
             "name": "Base Tag", 
             "ref": "inputs-tags-base", 
             "sample": {
@@ -874,7 +863,7 @@
                     "girls": "Whats the different conceptually between a tag and a chip?"
                 }
             ], 
-            "id": 37, 
+            "id": 38, 
             "name": "Tag", 
             "ref": "inputs-tags-splash", 
             "sample": {
@@ -912,7 +901,7 @@
         }, 
         {
             "active": true, 
-            "id": 38, 
+            "id": 39, 
             "name": "Gallery Inputs", 
             "ref": "inputs-text-all_inputs", 
             "sample": {
@@ -928,7 +917,7 @@
         }, 
         {
             "active": true, 
-            "id": 39, 
+            "id": 40, 
             "name": "Base Tag Input", 
             "ref": "inputs-text-tag", 
             "sample": {
@@ -958,7 +947,7 @@
         }, 
         {
             "active": true, 
-            "id": 40, 
+            "id": 41, 
             "name": "Map Marker", 
             "ref": "links-map-marker", 
             "sample": {
@@ -1000,7 +989,7 @@
             "template_url": "templates/links/map.marker.tpl"
         }, 
         {
-            "id": 41, 
+            "id": 42, 
             "name": "Progress Arrow Tab", 
             "ref": "progress-arrow", 
             "tags": [
@@ -1011,7 +1000,7 @@
         }, 
         {
             "active": true, 
-            "id": 42, 
+            "id": 43, 
             "name": "Standard Progress Bar", 
             "ref": "progress-bar", 
             "sample": {
@@ -1025,7 +1014,7 @@
             "template_url": "templates/progress/bar.tpl"
         }, 
         {
-            "id": 43, 
+            "id": 44, 
             "ref": "progress-circular", 
             "tags": [
                 "progress", 
@@ -1035,7 +1024,7 @@
         }, 
         {
             "active": true, 
-            "id": 44, 
+            "id": 45, 
             "name": "Countdown Progress", 
             "ref": "progress-countdown", 
             "sample": {
@@ -1048,7 +1037,7 @@
             "template_url": "templates/progress/countdown.tpl"
         }, 
         {
-            "id": 45, 
+            "id": 46, 
             "name": "Guru Ranking Progress", 
             "ref": "progress-ranking", 
             "tags": [
@@ -1059,7 +1048,7 @@
         }, 
         {
             "active": true, 
-            "id": 46, 
+            "id": 47, 
             "name": "Album", 
             "ref": "tiles-album", 
             "sample": {
@@ -1080,7 +1069,7 @@
             "template_url": "templates/tiles/album.tpl"
         }, 
         {
-            "id": 47, 
+            "id": 48, 
             "name": "Calendar Tile", 
             "ref": "tiles-calendar", 
             "tags": [
@@ -1091,7 +1080,7 @@
         }, 
         {
             "active": true, 
-            "id": 48, 
+            "id": 49, 
             "name": "Category Tile", 
             "ref": "tiles-category", 
             "sample": {
@@ -1106,7 +1095,7 @@
         }, 
         {
             "active": true, 
-            "id": 49, 
+            "id": 50, 
             "name": "Student Credits Tile", 
             "ref": "tiles-credit-student", 
             "tags": [
@@ -1117,7 +1106,7 @@
         }, 
         {
             "active": true, 
-            "id": 50, 
+            "id": 51, 
             "name": "Pricing Page Tile", 
             "ref": "tiles-pricing", 
             "sample": {
@@ -1132,7 +1121,7 @@
         }, 
         {
             "active": true, 
-            "id": 51, 
+            "id": 52, 
             "name": "Profile Tile", 
             "ref": "tiles-profile", 
             "sample": {
@@ -1147,7 +1136,7 @@
         }, 
         {
             "active": true, 
-            "id": 52, 
+            "id": 53, 
             "name": "Request Tile", 
             "ref": "tiles-request", 
             "sample": {
@@ -1390,6 +1379,14 @@
         }, 
         {
             "id": 6, 
+            "ref": "splash-html", 
+            "tags": [
+                "splash.html"
+            ], 
+            "template_url": "templates/splash.html"
+        }, 
+        {
+            "id": 7, 
             "ref": "bg-projector-screen-2-html", 
             "tags": [
                 "bg", 
@@ -1398,7 +1395,7 @@
             "template_url": "templates/bg/projector-screen-2.html"
         }, 
         {
-            "id": 7, 
+            "id": 8, 
             "ref": "bg-projector-screen-3-html", 
             "tags": [
                 "bg", 
@@ -1407,7 +1404,7 @@
             "template_url": "templates/bg/projector-screen-3.html"
         }, 
         {
-            "id": 8, 
+            "id": 9, 
             "ref": "bg-projector-screen-4-html", 
             "tags": [
                 "bg", 
@@ -1416,7 +1413,7 @@
             "template_url": "templates/bg/projector-screen-4.html"
         }, 
         {
-            "id": 9, 
+            "id": 10, 
             "ref": "bg-projector-screen-5-html", 
             "tags": [
                 "bg", 
@@ -1425,7 +1422,7 @@
             "template_url": "templates/bg/projector-screen-5.html"
         }, 
         {
-            "id": 10, 
+            "id": 11, 
             "ref": "bg-projector-screen-6-html", 
             "tags": [
                 "bg", 
@@ -1434,7 +1431,7 @@
             "template_url": "templates/bg/projector-screen-6.html"
         }, 
         {
-            "id": 11, 
+            "id": 12, 
             "ref": "bg-projector-screen-7-html", 
             "tags": [
                 "bg", 
@@ -1443,7 +1440,7 @@
             "template_url": "templates/bg/projector-screen-7.html"
         }, 
         {
-            "id": 12, 
+            "id": 13, 
             "ref": "bg-projector-screen-8-html", 
             "tags": [
                 "bg", 
@@ -1452,7 +1449,7 @@
             "template_url": "templates/bg/projector-screen-8.html"
         }, 
         {
-            "id": 13, 
+            "id": 14, 
             "ref": "bg-projector-screen-html", 
             "tags": [
                 "bg", 

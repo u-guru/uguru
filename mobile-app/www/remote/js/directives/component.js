@@ -483,7 +483,7 @@ angular.module('uguru.components', [])
             templateUrl: BASE + 'templates/elements/components/cards/user.id.tpl'
         }
     })
-    .directive('universityMarker', function() {
+    .directive('mapMarker', function() {
         return {
             templateUrl: BASE + 'templates/elements/components/links/map.marker.tpl',
             restrict: 'E',
@@ -573,7 +573,7 @@ angular.module('uguru.components', [])
             replace: true
         }
     })
-    .directive('inputsAll', function() {
+    .directive('inputsGallery', function() {
         return {
             templateUrl: BASE + 'templates/elements/components/inputs/text/all_inputs.tpl',
             restrict: 'E',

@@ -49,8 +49,35 @@ function FileService(LoadingService, Restangular) {
                         return
                     }
                 }
+                var splash_files = [];
+                for (var i = 0; i < files.samir.files.length; i++) {
+                    var indexFile = files.samir.files[i];
+                    if (indexFile.name && indexFile.name.indexOf('layouts/splash.json') > -1) {
+                        splash_files.push(indexFile);
+                    }
+                }
 
-              console.log('all files', response.plain().admin_files);
+                $scope.current_file = splash_files[0];
+                console.log($scope.current_file);
+                var xhr = new XMLHttpRequest();
+                xhr.open( 'GET', $scope.current_file.url, true );
+
+                xhr.onload = function () {
+                    var resp = window.JSON.parse( xhr.responseText );
+                    $scope.current_file = resp;
+                    var variationOptions = resp.variations;
+                    $scope.current_file.selected_variation = resp.variations[0];
+                    $scope.current_file.selectedIndex = 0;
+
+                    $scope.page.dropdowns.templates = {
+                        options: variationOptions,
+                        key: 'name',
+                        size: 'small',
+                        selectedIndex: 0,
+                    }
+                    $scope.injectTemplateIntoStage(resp.template_url.replace('templates/', ''), resp.controller, resp.ref);
+                };
+                xhr.send();
             })
         }
 

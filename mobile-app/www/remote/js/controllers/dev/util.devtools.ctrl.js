@@ -26,6 +26,8 @@ angular.module('uguru.dev.controllers')
     buildPlayerMouseOutListenerFunc, buildPlayerMouseUpListenerFunc;
     var buildPlayerDisplayHideArr = []
 
+    $scope.current_file = {};
+
     var onCmdPressed = function(e) {
       if(e.metaKey) {
         console.log('command key pressed');
@@ -81,29 +83,33 @@ angular.module('uguru.dev.controllers')
       'f': 70,
       'k': 75,
       '\\': 220,
-      '/': 191
+      '/': 191,
+      'space': 32
 
     }
 
 
     $scope.shortcuts = [
-      {
-        name: "settings", keys:"ctrl + s", codes: [17, 83]
-      },
+      // {
+      //   name: "settings", keys:"shift + s", codes: [17, 83]
+      // },
       {
         name: "view shortcuts", keys:"ctrl + z", codes: [17,191]
       },
       {
-        name: "view files", keys:"ctrl + k", codes: [17,70]
-      },
-      {
-        name: "search properties", keys:"ctrl + f", codes: [17,70]
+        name: "view files", keys:"ctrl + f", codes: [17,70]
       },
       {
         name: "stage edit mode", keys:"hold CMD + ___"
       },
       {
         name: "temporarily remove component", keys:"hold CMD + double click"
+      },
+      {
+        name: "play scene/element", keys:"space"
+      },
+      {
+        name: "save", keys:"ctrl + s"
       }
     ]
 
@@ -129,7 +135,10 @@ angular.module('uguru.dev.controllers')
           }
         }
         if (e.keyCode === 83) {
-          $scope.settings.activated = !$scope.settings.activated;
+          $scope.saveCurrentStatesToLocalStorage()
+        }
+        if (e.keyCode === 32) {
+          $scope.playStates(current_states.states[current_states.selectedIndex].components)
         }
       }
 
@@ -170,7 +179,7 @@ angular.module('uguru.dev.controllers')
 
       buildPlayerMouseUpListenerFunc = function(e) {
         onMouseDown = false;
-        e.target.classList.remove('animated', 'tada', 'bg-azure', 'infinite');
+        e.target.classList.remove('animated', 'animate-select');
         if (onMouseUpAddComponent) {
           onMouseUpAddComponent = false;
           console.log(onMouseDownElem);
@@ -185,7 +194,7 @@ angular.module('uguru.dev.controllers')
       buildPlayerMouseDownListenerFunc = function(e) {
         if (!onMouseDown) {
           onMouseDown = true;
-          e.target.classList.add('animated', 'tada', 'infinite', 'bg-azure');
+          e.target.classList.add('animated', 'infinite', 'animate-select');
           onMouseDownPromise = $timeout(function() {
             if (onMouseDown && onMouseOverElem === e.target) {
 
@@ -716,18 +725,25 @@ angular.module('uguru.dev.controllers')
     }
 
     function addOneComponentFromShortCut(element) {
+      var clonedNode = recursiveClone(element)
+      console.log(element, clonedNode);
+      // $scope.current_fileinitComponentObj
       var template = document.querySelector('#stage-template-container')
       allAnimElem = template.querySelectorAll('[anim]');
 
-      ref = 'anim-elem-' + (allAnimElem.length + 1);
+      var ref = 'anim-elem-' + (allAnimElem.length + 1);
       element.classList.add(ref);
-      var clonedNode = recursiveClone(element)
+      element.setAttribute('anim', null);
       var componentObj = initComponentObj(clonedNode, element, ref);
-      componentObj.css_class_dropdown = {label:'animation', key:'_class', options:generateCSSClassOptions(classes, componentObj), onOptionClick:generateTimeStateProperty, size:'small', selectedIndex:0},
-      $scope.current_states.states[0].components.push(componentObj);
+      $scope.current_file.selected_variation.components.push(componentObj);
       $timeout(function() {
-        $scope.$apply();
-      })
+        $scope.swapInteractiveState(0);
+      }, 2000);
+      // componentObj.css_class_dropdown = {label:'animation', key:'_class', options:generateCSSClassOptions(classes, componentObj), onOptionClick:generateTimeStateProperty, size:'small', selectedIndex:0},
+      // $scope.current_states.states[0].components.push(componentObj);
+      // $timeout(function() {
+      //   $scope.$apply();
+      // })
     }
 
     function generateFileOptions() {
@@ -824,11 +840,9 @@ angular.module('uguru.dev.controllers')
             response.layouts.sort(function(val_a, val_b) {
               return val_b.id - val_a.id;
             }).reverse()
-            injectTemplateIntoStage(response.layouts[0].template_url, 'SplashController', response.layouts[0].ref);
-            $timeout(function() {
 
-              // evalSizeDropdownDefaultSelected();
-            }, 5000)
+            // injectTemplateIntoStage(response.layouts[0].template_url, 'SplashController', response.layouts[0].ref);
+
           },
 
           function(error) {
@@ -900,7 +914,13 @@ angular.module('uguru.dev.controllers')
 
       stageTemplateParentContainer.appendChild(stageTemplateDiv);
       $compile(stageTemplateDiv)($scope);
-      storeTemplateToCache(template_url, stageTemplateDiv, ref);
+      // storeTemplateToCache(template_url, stageTemplateDiv, ref);
+    }
+
+    $scope.injectTemplateIntoStage = injectTemplateIntoStage;
+
+    function initFileObj(properties) {
+      var template_url = ''
     }
 
     function updateScreenSize(elem_selector) {
@@ -927,12 +947,12 @@ angular.module('uguru.dev.controllers')
 
     $scope.swapInteractiveState = function($index) {
       LoadingService.showAmbig(null, 2500);
-      $scope.current_states.selectedIndex = $index;
-      injectAllAllChildComponentsForOneState($scope.current_states.states[$index].components, null, null, function() {
+      $scope.current_file.selectedIndex = $index;
+      injectAllAllChildComponentsForOneState($scope.current_file.selected_variation.components, null, null, function() {
         LoadingService.hide()
       });
 
-      if ($scope.current_states.states[$index].gestures)  {
+      if ($scope.current_file.variations[$index].gestures)  {
         var stateGestures = $scope.current_states.states[$index].gestures;
         for (var i = 0; i < stateGestures.length; i++) {
           var indexGesture = stateGestures[i];
@@ -1076,7 +1096,9 @@ angular.module('uguru.dev.controllers')
       if (!ref_link) {
         ref_link = currentRef
       }
-
+      if (!template) {
+        template = document.querySelector('#stage-template-container');
+      }
       allAnimElem = template.querySelectorAll('[anim]');
       if (!components_arr.length) {
         for (var i = 0; i < allAnimElem.length; i++) {
