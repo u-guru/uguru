@@ -1454,12 +1454,12 @@ fieldset {
 	padding: 0;
 	border: 0;
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 400!important;
 	width: 100%;
-	max-width: 400px;
 	min-height: 30px;
 	* {
 		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		font-weight: 400!important;
 	}
 	input {
 		display: block;
@@ -6973,6 +6973,7 @@ a.course-card {
 			width: 100%;
 			font-size: 20px;
 			font-weight: 600;
+			text-transform: capitalize!important;
 		}
 	}
 	.category-tile-count {

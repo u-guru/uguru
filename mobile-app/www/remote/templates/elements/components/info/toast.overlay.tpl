@@ -1,4 +1,14 @@
-<div class="toast toast-icon">
+<div class="toast toast-icon toast-hover">
+	<div class="toast-overlay">
+		<ul>
+			<li>
+				<button>Reply</button>
+			</li>
+			<li>
+				<button>Send Location</button>
+			</li>
+		</ul>
+	</div>
 	<user-icon class="toast-svg" size="48"></user-icon>
 	<div>
 		<p>{{toast.content}}</p>

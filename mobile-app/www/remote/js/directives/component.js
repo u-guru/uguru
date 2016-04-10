@@ -255,6 +255,30 @@ angular.module('uguru.components', [])
             }
         };
     })
+    .directive('toast', function() {
+        function getTemplateURL(elem, attr) {
+            if (attr.type && attr.type === 'overlay') {
+                return BASE + 'templates/elements/components/info/toast.overlay.tpl'
+            }  else {
+                return BASE + 'templates/elements/components/info/toast.tpl'
+            }
+        }
+        return {
+            templateUrl: getTemplateURL,
+            restrict: 'E',
+            replace: true,
+            scope: {
+                toast: '=ngModel'
+            },
+            link: function(scope, elem, attr) {
+                if (attr.type && attr.type.toLowerCase() === 'overlay') {
+                    scope.type = 'overlay';
+                } else {
+                    scope.type = '';
+                }
+            }
+        }
+    })
     .directive('inputStandard', function() {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'material') {
@@ -462,7 +486,7 @@ angular.module('uguru.components', [])
             restrict: 'E',
             replace: true,
             scope: {
-                album: '=',
+                album: '=ngModel'
             }
         }
     })
@@ -504,7 +528,13 @@ angular.module('uguru.components', [])
         return {
             templateUrl: BASE + 'templates/elements/components/info/badge.tpl',
             restrict: 'E',
-            replace: true
+            replace: true,
+            scope: {
+                color: '=color',
+                label: '=label',
+                direction: '=direction',
+                count: '=count'
+            }
         }
     })
     .directive('attachList', function() {
@@ -546,7 +576,10 @@ angular.module('uguru.components', [])
         return {
             templateUrl: BASE + 'templates/elements/components/tiles/category.tpl',
             restrict: 'E',
-            replace: true
+            replace: true,
+            scope: {
+                tile: '=ngModel'
+            },
         }
     })
     .directive('pricingTile', function() {
@@ -579,13 +612,6 @@ angular.module('uguru.components', [])
     .directive('toggle', function() {
         return {
             templateUrl: BASE + 'templates/elements/components/inputs/toggle.tpl',
-            restrict: 'E',
-            replace: true
-        }
-    })
-    .directive('toast', function() {
-        return {
-            templateUrl: BASE + 'templates/elements/components/info/toast.tpl',
             restrict: 'E',
             replace: true
         }

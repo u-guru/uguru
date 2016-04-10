@@ -479,8 +479,13 @@
             "name": "Badge", 
             "ref": "info-badge", 
             "sample": {
-                "scope": {}, 
-                "template": "<badge> </badge>"
+                "scope": {
+                    "color": "moxie", 
+                    "count": "1", 
+                    "direction": "left", 
+                    "label": "Badge"
+                }, 
+                "template": "<badge count=\"component.sample.scope.count\" label=\"component.sample.scope.label\" direction=\"component.sample.scope.direction\" color=\"component.sample.scope.color\"> </badge>"
             }, 
             "tags": [
                 "info", 
@@ -546,16 +551,6 @@
             "template_url": "templates/info/ribbon.tpl"
         }, 
         {
-            "id": 20, 
-            "name": "Toast", 
-            "ref": "info-toast", 
-            "tags": [
-                "info", 
-                "toast"
-            ], 
-            "template_url": "templates/info/toast.tpl"
-        }, 
-        {
             "active": true, 
             "id": 21, 
             "name": "Tooltip", 
@@ -582,8 +577,57 @@
             "notes": "", 
             "ref": "info-toast", 
             "sample": {
-                "scope": {}, 
-                "template": "<toast> </toast>"
+                "scope": {
+                    "toast": {
+                        "content": "Gabrielle sent you a new message!", 
+                        "overlay": true, 
+                        "quote": "I'm at the library, where are you?"
+                    }
+                }, 
+                "template": "<toast class=\"bg-moxie\" ng-model=\"component.sample.scope.toast\"> </toast>"
+            }, 
+            "tags": [
+                "info", 
+                "toast"
+            ], 
+            "template_url": "templates/info/toast.tpl"
+        }, 
+        {
+            "active": true, 
+            "id": 17, 
+            "name": "Toast with Overlay", 
+            "notes": "", 
+            "ref": "info-toast-overlay", 
+            "sample": {
+                "scope": {
+                    "toast": {
+                        "content": "Gabrielle sent you a new message!", 
+                        "quote": "I'm at the library, where are you?"
+                    }
+                }, 
+                "template": "<toast class=\"bg-smoke txt-moxie\" ng-model=\"component.sample.scope.toast\" type=\"overlay\"> </toast>"
+            }, 
+            "tags": [
+                "info", 
+                "toast", 
+                "overlay"
+            ], 
+            "template_url": "templates/info/toast.tpl"
+        }, 
+        {
+            "active": true, 
+            "id": 18, 
+            "name": "Mobile Toast", 
+            "notes": "", 
+            "ref": "info-toast-mobile", 
+            "sample": {
+                "scope": {
+                    "toast": {
+                        "content": "Gabrielle sent you a new message!", 
+                        "quote": "I'm at the library, where are you?"
+                    }
+                }, 
+                "template": "<toast class=\"toast-mobile bg-smoke txt-crimson\" ng-model=\"component.sample.scope.toast\"> </toast>"
             }, 
             "tags": [
                 "info", 
@@ -935,12 +979,9 @@
                 "scope": {
                     "category": {
                         "hex_class": "azure", 
-                        "hex_color": "academic", 
-                        "id": 5, 
-                        "name": "Academic", 
-                        "placeholder": "{{component.sample.scope.placeholder}}"
+                        "placeholder": "Try Me"
                     }, 
-                    "innerText": "Tag Input Try Me"
+                    "innerText": "Try Me"
                 }, 
                 "template": "<tag desktop=\"desktopMode\" category=\"component.sample.scope.category\" inner-text=\"component.sample.scope.innerText\" type=\"input\"> </tag>"
             }, 
@@ -1066,7 +1107,7 @@
                         "title": "Midnight<br/>Cramming"
                     }
                 }, 
-                "template": "<album-tile album=\"component.sample.scope.album\"></album-tile>"
+                "template": "<album-tile ng-model=\"component.sample.scope.album\"></album-tile>"
             }, 
             "tags": [
                 "tiles", 
@@ -1090,8 +1131,12 @@
             "name": "Category Tile", 
             "ref": "tiles-category", 
             "sample": {
-                "scope": {}, 
-                "template": "<category-tile></category-tile>"
+                "scope": {
+                    "tile": {
+                        "category": "household"
+                    }
+                }, 
+                "template": "<category-tile ng-model=\"component.sample.scope.tile\"></category-tile>"
             }, 
             "tags": [
                 "tiles", 

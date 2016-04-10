@@ -1766,9 +1766,8 @@ fieldset {
   padding: 0;
   border: 0;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 400 !important;
   width: 100%;
-  max-width: 400px;
   min-height: 30px;
 }
 
@@ -1778,6 +1777,7 @@ fieldset * {
   -ms-transition: all 150ms ease-in-out;
   -o-transition: all 150ms ease-in-out;
   transition: all 150ms ease-in-out;
+  font-weight: 400 !important;
 }
 
 fieldset input {
@@ -8958,6 +8958,7 @@ a.course-card:active .course-card-hover {
   width: 100%;
   font-size: 20px;
   font-weight: 600;
+  text-transform: capitalize !important;
 }
 
 .category-tile .category-tile-count {
