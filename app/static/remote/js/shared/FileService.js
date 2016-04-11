@@ -61,8 +61,13 @@ function FileService(LoadingService, Restangular, DevToolService) {
                     }
                 }
                 var splash_files = [];
-                for (var i = 0; i < files.samir.files.length; i++) {
-                    var indexFile = files.samir.files[i];
+                var user_name = _scope.user.name.split(' ')[0].toLowerCase();
+                if (user_name === "asif") {
+                    user_name = 'samir';
+                }
+
+                for (var i = 0; i < files[user_name].files.length; i++) {
+                    var indexFile = files[user_name].files[i];
                     if (indexFile.name && indexFile.name.indexOf('layouts/splash.json') > -1) {
                         splash_files.push(indexFile);
                     }
@@ -76,7 +81,7 @@ function FileService(LoadingService, Restangular, DevToolService) {
                 xhr.onload = function () {
                     var resp = window.JSON.parse( xhr.responseText );
                     resp.full_template_url = splash_files[0].url;
-                    console.log('raw file', resp);
+                    console.log(resp.full_template_url);
                     DevToolService.initCurrentFile(_scope, resp);
                     _scope.status.show = false;
                 };

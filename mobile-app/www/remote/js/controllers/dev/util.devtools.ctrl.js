@@ -87,6 +87,7 @@ angular.module('uguru.dev.controllers')
       'enter': 13,
       'shift': 16,
       's': 83,
+      'p': 80,
       'f': 70,
       'k': 75,
       '\\': 220,
@@ -143,6 +144,13 @@ angular.module('uguru.dev.controllers')
         }
         if (e.keyCode === 83) {
           $scope.saveCurrentStatesToLocalStorage()
+        }
+        if (e.keyCode === 80) {
+          //timeline mode
+          if (!$scope.page.dropdowns.modes.selectedIndex) {
+            console.log('playing..');
+            $scope.playStates($scope.current_file.selected_variation.scene_states)
+          }
         }
         if (e.keyCode === 32) {
           $scope.playStates(current_states.states[current_states.selectedIndex].components)
@@ -603,19 +611,24 @@ angular.module('uguru.dev.controllers')
     }
 
     function addNewTimeState() {
-      var currentState = $scope.current_states.states[$scope.current_states.selectedIndex];
-      if (!currentState.timeline) {
-        current_state.timeline = [];
+      var currentSceneState = $scope.current_file.selected_variation.selected_scene_state;
+      if (!currentSceneState.time_states.length) {
+        currentSceneState.time_states = [];
       }
-      for (var i = 0 ; i < currentState.timeline.length; i++) {
-        var timeIndexState = currentState.timeline[i];
+      for (var i = 0 ; i < currentSceneState.time_states.length; i++) {
+        var timeIndexState = currentSceneState.time_states[i];
+        if (timeIndexState.focused) {
+          timeIndexState.focused = false;
+        }
         if (timeIndexState.time === 'new') {
           LoadingService.showMsg('Please set a time (in ms) of the recent newly added time state'), 2500;
         }
       }
-      currentState.timeline.push({
+      currentSceneState.time_states.push({
         time: 'new',
-        components: []
+        components: [],
+        focused: true,
+        edit_mode: true
       })
     }
 
@@ -754,7 +767,7 @@ angular.module('uguru.dev.controllers')
       // $scope.current_file.selected_variation.components.push(componentObj);
       time_state.components.push(componentObj);
 
-      $scope.saveCurrentStatesToLocalStorage();
+      // $scope.saveCurrentStatesToLocalStorage();
     }
 
     function addOneComponentFromShortCut(element) {
@@ -1503,30 +1516,31 @@ angular.module('uguru.dev.controllers')
     }
 
     $scope.playStates = function(states) {
-      if ($scope.page.dropdowns.filterOptions.selectedIndex) {
+      if ($scope.page.dropdowns.modes.selectedIndex === 1) {
         $scope.playStateComponents(states);
-      } else if (!$scope.page.dropdowns.filterOptions.selectedIndex) {
+      } else if ($scope.page.dropdowns.modes.selectedIndex === 0) {
+        console.log('playing chronologically');
         $scope.playTimeStatesChronologically(states);
       }
     }
 
     $scope.playTimeStatesChronologically = function(timeline) {
-      var timeline = $scope.current_states.states[$scope.current_states.selectedIndex].timeline;
+      var timeline = $scope.current_file.selected_variation.selected_scene_state.time_states;
       for (var i = 0; i < timeline.length; i++) {
         var timeIndex = timeline[i]
+
         var delaySeconds;
-        if (timeIndex.time === "-1" || timeIndex.time === "init") {
+        if (!timeIndex.time|| timeIndex.time === "-1" || timeIndex.time === "init") {
           delaySeconds = 0
         } else {
           var delaySeconds = parseFloat(timeIndex.time);
         }
-
-
         applyTimeStateAtFutureTime(timeIndex, delaySeconds)
 
       }
 
       function applyTimeStateAtFutureTime(time_state, delay) {
+        $scope.showStatusMsg(['Starting t = '  + delay])
         if (!time_state.components) {
           return;
         }
