@@ -108,31 +108,56 @@
             </div>
             <div ng-if='settings.user_mode' class='full-x'>
                  <tabs class='full-x txt-2' options="page.dropdowns.user_settings.options" index='page.dropdowns.user_settings.selectedIndex'> </tabs>
+                 <ul class="build-files-list overflow-auto full-xy flex-wrap-center flex-stretch">
+                    <li class='header p20xy bg-charcoal-80p full-x'>
+                        <h1 ng-if='!page.dropdowns.user_settings.selectedIndex' class='weight-700 text-center full-x'>
+                            Prioritized Elements
+                        </h1>
+                        <h1 ng-if='page.dropdowns.user_settings.selectedIndex === 1' class='weight-700 text-center full-x'>
+                            Recent History
+                        </h1>
+                        <h1 ng-if='page.dropdowns.user_settings.selectedIndex === 2' class='weight-700 text-center full-x'>
+                            Documentation / Tutorials
+                        </h1>
+                        <h1 ng-if='page.dropdowns.user_settings.selectedIndex === 3' class='weight-700 text-center full-x'>
+                            My Components
+                        </h1>
+                    </li>
+                    <li ng-if='!page.dropdowns.user_settings.selectedIndex' class='p20xy' style='min-height:50px; width:100%;'>
+                        <ul>
+                            <li class='full-x' ng-repeat='file in ["splash.html", "maps.html", ]'>
+                                <div>
+                                    <a class="build-files-dropdown flex-space-between full-x p15xy" ng-class="{'active': file.collapse}">
+                                        <div>
+                                            <h2 class="txt-20 semibold">#{{$index}} {{file}}</h2>
+                                            <span class="block txt-16 semibold opacity-50">Last updated 3/24 @ 20:54pm</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li ng-if='page.dropdowns.user_settings.selectedIndex === 1' class='full-x'>
+                        <ul class='full-xy'>
+                            <li class='full-x' ng-repeat='file in ["splash.html", "maps.html", "become-guru-1", "become-guru-2", "become-guru-3"]'>
+                                <div>
+                                    <a class="build-files-dropdown flex-space-between full-x p15xy" ng-class="{'active': file.collapse}">
+                                        <div class='relative full-x'>
+                                            <h2 class="txt-20 semibold">#{{$index}} {{file}}</h2>
+                                            <span class="block txt-16 semibold opacity-50">Last updated 3/24 @ 20:54pm</span>
+                                            <span class='absolute p10xy right-0 top-0'><user-icon style='height:50px; width:50px;'> </user-icon></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li ng-if='page.dropdowns.user_settings.selectedIndex === 2'>
+                    </li>
+                    <li ng-if='page.dropdowns.user_settings.selectedIndex === 3'>
+                    </li>
+                </ul>
             </div>
-            <ul class="build-files-list overflow-auto full-xy" ng-if='settings.user_mode'>
-                <div class='header'>
-                    <h1 ng-if='!page.dropdowns.user_settings.selectedIndex'>
-                        Prioritized
-                    </h1>
-                    <h1 ng-if='page.dropdowns.user_settings.selectedIndex === 1'>
-                        History
-                    </h1>
-                    <h1 ng-if='page.dropdowns.user_settings.selectedIndex === 2'>
-                        Docs
-                    </h1>
-                    <h1 ng-if='page.dropdowns.user_settings.selectedIndex === 3'>
-                        Components
-                    </h1>
-                </div>
-                <li ng-if='!page.dropdowns.user_settings.selectedIndex' class='flex-wrap-center'>
-                </li>
-                <li ng-if='page.dropdowns.user_settings.selectedIndex === 1'>
-                </li>
-                <li ng-if='page.dropdowns.user_settings.selectedIndex === 2'>
-                </li>
-                <li ng-if='page.dropdowns.user_settings.selectedIndex === 3'>
-                </li>
-            </ul>
             <ul class="build-files-list overflow-auto full-xy" ng-if='settings.key_shortcuts'>
                 <li ng-repeat='shortcut in shortcuts' class='full-x p20xy bg-slate-50p'>
                     <div class='full-x ugrid-2 full-x text-left'>
