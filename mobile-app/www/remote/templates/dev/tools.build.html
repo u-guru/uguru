@@ -10,7 +10,7 @@
                         <user-icon ng-click='settings.user_mode' size='36' url="user.profile_url"></user-icon>
                     </a>
                     <h1>{{current_file.name || 'Loading'}}</h1>
-                    <dropdown class="build-variations" ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
+                    <dropdown class="build-variations double" ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
                 </div>
                 <ul>
                     <li>
@@ -362,8 +362,7 @@
                     </div> -->
                 </li>
             </ul>
-            <ul class="build-settings-list" ng-if='false'>
-            <!-- <ul class="build-settings-list" ng-if='!settings.view_files && !settings.key_shortcuts && !settings.user_mode'> -->
+            <ul class="build-settings-list" ng-if='!settings.view_files && !settings.key_shortcuts && !settings.user_mode'>
                 <li><a ng-click="settings.view_files = true;">View Files</a></li>
                 <li><a ng-click="settings.key_shortcuts = true;">View Shortcuts</a></li>
                 <li>
