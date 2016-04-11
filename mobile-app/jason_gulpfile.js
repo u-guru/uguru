@@ -109,36 +109,36 @@ gulp.task('Copy Templates',function() {
 });
 gulp.task('Copy SVG Icon',function()
 {
-	console.log( targetDir)
+	var FileCount = 0
 	return gulp.src([
-					 // 'templates/svg/apply/**/*',
-					 // 'templates/svg/ext/**/*',
-					 // 'templates/svg/main/**/*',
-					 // 'templates/svg/map/**/*',
-					 // 'templates/svg/social/**/*',
-					 // 'templates/svg/splash/**/*',
-					 // 'templates/svg/subcategories/**/*',
-					 // 'templates/svg/timeline/**/*',
-					 // 'templates/svg/wwf/**/*',
-					 // // 'templates/svg/*',
-					 // '!templates/svg/allIcons.svg',
-					 'templates/svg/guru-head.html',
-					 'templates/svg/logo-subtitle.html',
-					 'templates/svg/main-logo.html',
-					 'templates/svg/logo-title.html'
+					 'templates/svg/apply/**/*',
+					 'templates/svg/ext/**/*',
+					 'templates/svg/main/**/*',
+					 'templates/svg/map/**/*',
+					 'templates/svg/social/**/*',
+					 'templates/svg/splash/**/*',
+					 'templates/svg/subcategories/**/*',
+					 'templates/svg/timeline/**/*',
+					 'templates/svg/wwf/**/*',
+					 'templates/svg/*',
+					 // 'templates/svg/allIcons.svg',
+					 // 'templates/svg/guru-head.html',
+					 // 'templates/svg/logo-subtitle.html',
+					 // 'templates/svg/main-logo.html',
+					 // 'templates/svg/logo-title.html'
 					],{ cwd: 'www/remote', base:'templates/svg' })
 	   .pipe(svgmin())
 	   .pipe(rename(function (path) {
 	     var name = path.dirname.split('/').slice(5);
 	     name.push(path.basename);
 	     path.basename = name.join('-');
+	     ++FileCount
 	   }))
 	   .pipe(svgstore({inlineSvg: true}))
 	   .pipe(rename({basename: 'allIcons'}))
 	   .pipe(gulp.dest(path.join(targetDir, 'svg')))
 	   .pipe(gulp.dest(path.join(path.resolve('www/remote/templates'), 'svg')))
 	   .on('error', errorHandler);
-
 });
 
 var includes = require('gulp-file-include');
