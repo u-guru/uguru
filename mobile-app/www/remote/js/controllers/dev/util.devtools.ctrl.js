@@ -16,7 +16,8 @@ angular.module('uguru.dev.controllers')
   'KeyboardService',
   '$interval',
   'FileService',
-  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService, KeyboardService, $interval, FileService) {
+  'DevToolService',
+  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService, KeyboardService, $interval, FileService, DevToolService) {
 
     // KeyboardService.preventDefaultCutPaste();
     // KeyboardService.initCopyPasteFunctionCallbacks();
@@ -26,7 +27,8 @@ angular.module('uguru.dev.controllers')
     buildPlayerMouseOutListenerFunc, buildPlayerMouseUpListenerFunc;
     var buildPlayerDisplayHideArr = []
 
-    $scope.current_file = {};
+    $scope.current_file = {selected_variation:{components:[]}};
+
 
     var onCmdPressed = function(e) {
       if(e.metaKey) {
@@ -65,14 +67,19 @@ angular.module('uguru.dev.controllers')
     }
     $scope.player = {hide: false, status_message: null};
 
+    $scope.status = {
+      show: true,
+      msg: 'loading..'
+    }
+
     if (!$scope.user || !$scope.user.id) {
       $scope.player.hide = true;
       $scope.player.status_message = 'Please login first!';
     }
 
     $timeout(function() {
-      $scope.storage = FileService.initUserAdminTool($scope);
-      $scope.storage.get()
+      $scope.fileUtility = FileService.initUserAdminTool();
+      $scope.fileUtility.get($scope);
     })
 
     var keyCodeDict = {
@@ -199,7 +206,7 @@ angular.module('uguru.dev.controllers')
             if (onMouseDown && onMouseOverElem === e.target) {
 
               $timeout(function() {
-                LoadingService.showMsg('adding component... please release lol', 3000);
+
                 onMouseUpAddComponent = true;
                 onMouseDownElem = e.target;
                 onMouseDownElem.setAttribute('anim', null);
@@ -214,7 +221,7 @@ angular.module('uguru.dev.controllers')
               //   var onMouseDown = false;
               // }, 500)
             }
-          }, 2000);
+          }, 1000);
         }
       }
 
@@ -421,6 +428,9 @@ angular.module('uguru.dev.controllers')
       window.sessionStorage.clear();
       window.localStorage.clear();
       window.location.reload(true);
+    }
+
+    $scope.onWidthRangeSliderChange = function(value) {
 
     }
 
@@ -438,10 +448,12 @@ angular.module('uguru.dev.controllers')
 
     $scope.page.toggles = {add_component: false};
     $scope.page.compiledTemplates = {};
+    $scope.page.mode = DevToolService.getBuildToolModes($scope);
     $scope.page.dropdowns.fileOptions = {label:'Current Storage', onOptionClick: onFileOptionSelect, options: generateFileOptions(), size:'small', key:'name', selectedIndex: 0};
     $scope.page.dropdowns.screenSizeOptions = {label:'autoscale @ 1.5x', onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
     $scope.page.dropdowns.filterOptions = {label: "sort by", options: ['Time', "Component"], selectedIndex: userSettings.defaultFilter || 1, size:"small", onOptionClick: toggleComponentGUIMode}
+    $scope.page.dropdowns.modes = {label: "modes", options: ['Time States', 'All Components'], selectedIndex: 0, size: 'small'}
     $scope.page.status = {show: false}
 
 
@@ -724,10 +736,28 @@ angular.module('uguru.dev.controllers')
 
     }
 
+    function addComponentToTimeState(time_state, element) {
+      var clonedNode = recursiveClone(element);
+
+
+
+      var template = document.querySelector('#stage-template-container');
+      if (template && template.firstChild) {
+        template = template.firstChild;
+      }
+      var ref = 'time-state-' + (time_state.time || 'null') + '-' + (time_state.components.length + 1);
+
+      var componentObj = initComponentObj(clonedNode, element, ref);
+      $scope.current_file.selected_variation.components.push(componentObj);
+
+      var componentListView = document.querySelector('#file-component-list');
+      $scope.saveCurrentStatesToLocalStorage();
+    }
+
     function addOneComponentFromShortCut(element) {
       var clonedNode = recursiveClone(element)
       console.log(element, clonedNode);
-      // $scope.current_fileinitComponentObj
+
       var template = document.querySelector('#stage-template-container')
       allAnimElem = template.querySelectorAll('[anim]');
 
@@ -736,9 +766,12 @@ angular.module('uguru.dev.controllers')
       element.setAttribute('anim', null);
       var componentObj = initComponentObj(clonedNode, element, ref);
       $scope.current_file.selected_variation.components.push(componentObj);
-      $timeout(function() {
-        $scope.swapInteractiveState(0);
-      }, 2000);
+      console.log($scope.current_file.selected_variation);
+      var componentListView = document.querySelector('#file-component-list');
+      $scope.saveCurrentStatesToLocalStorage();
+      // $timeout(function() {
+      //   $scope.swapInteractiveState(0);
+      // }, 2000);
       // componentObj.css_class_dropdown = {label:'animation', key:'_class', options:generateCSSClassOptions(classes, componentObj), onOptionClick:generateTimeStateProperty, size:'small', selectedIndex:0},
       // $scope.current_states.states[0].components.push(componentObj);
       // $timeout(function() {
@@ -776,31 +809,30 @@ angular.module('uguru.dev.controllers')
 
 
 
-    $scope.saveCurrentStatesToLocalStorage = function(template_ref) {
+    $scope.saveCurrentStatesToLocalStorage = function(template_ref, show_loader) {
+      $scope.current_file.selected_variation.lasted_updated = (new Date()).getTime();
       var adminBuildToolsCacheExists = $localstorage.getObject('admin_build')
       if (!adminBuildToolsCacheExists || adminBuildToolsCacheExists.constructor == Array) {
         adminBuildToolsCacheExists = {};
       }
-      adminBuildToolsCacheExists[$scope.current_states.template_ref] = $scope.current_states;
+      adminBuildToolsCacheExists[$scope.current_file.ref] = $scope.current_file;
 
-      for (var i = 0; i < $scope.current_states.states.length; i++) {
-        var indexState = $scope.current_states.states[i];
-        if (indexState.components) {
-          for (var j = 0; j < indexState.components.length; j++) {
-            var indexComponent = indexState.components[j];
-            indexComponent.addPropertyField = null;
-            indexComponent.confirmPropertyField = null;
-            indexComponent.css_class_dropdown = null;
-            indexComponent.properties = null;
-            indexComponent.template = null;
-          }
-        }
+      for (var i = 0; i < $scope.current_file.selected_variation.components.length; i++) {
+        var indexComponent = $scope.current_file.selected_variation.components[i];
+        indexComponent.addPropertyField = null;
+        indexComponent.confirmPropertyField = null;
+        indexComponent.css_class_dropdown = null;
+        indexComponent.properties = null;
+        indexComponent.template = null;
       }
+
       $localstorage.setObject('admin_build', adminBuildToolsCacheExists);
-      LoadingService.showAmbig(null, 2500);
-      $timeout(function() {
-        LoadingService.showSuccess('Saved!', 1000);
-      }, 2000)
+      if (show_loader) {
+        LoadingService.showAmbig(null, 2500);
+        $timeout(function() {
+          LoadingService.showSuccess('Saved!', 1000);
+        }, 2000)
+      }
     }
 
     function generateCSSClassOptions(classes_arr, component) {
@@ -864,6 +896,59 @@ angular.module('uguru.dev.controllers')
           {name: 'Desktop M 1366x768', ref:'desktop-m',dimensions: {'width': 1366, 'height':768}},
           {name: 'Desktop L 1920x1080', ref:'desktop-lg', dimensions: {'width': 1920, 'height':1080}}
       ]
+    }
+    $scope.clonedVariationInputName  = null;
+    $scope.saveVariationName = function(variation) {
+
+      var selectedIndex = $scope.page.dropdowns.templates.selectedIndex;
+      if (selectedIndex || selectedIndex > -1) {
+        var selectedOption = $scope.page.dropdowns.templates.options[selectedIndex]
+
+        if (selectedOption && $scope.current_file.selected_variation.name && $scope.current_file.selected_variation.name.length) {
+          selectedOption.name = $scope.current_file.selected_variation.name
+          $scope.showStatusMsg(["Saving .. " + selectedOption.name]);
+          variation.edit_mode = false;
+          variation.name_cache = null;
+        }
+      }
+    }
+
+    $scope.showStatusMsg = function(chained_msg_arr, duration, offset) {
+      duration = duration || 2500;
+      offset = offset || 2500;
+      for (var i = 0; i < chained_msg_arr.length; i++) {
+        var indexMsg = chained_msg_arr[i];
+        showMsgForXMilliseconds(indexMsg, offset * i, duration, i === (chained_msg_arr.length - 1));
+      }
+      function showMsgForXMilliseconds(msg, offset, duration, hide_after) {
+        $timeout(function() {
+          $scope.status.msg = msg;
+          $scope.status.show = true;
+          if (hide_after) {
+            $timeout(function() {
+              $scope.status.show = false;
+            }, duration)
+          }
+        }, offset);
+      }
+    }
+
+    $scope.saveClonedVariationName = function(variation) {
+      console.log(variation, $scope.page.dropdowns.templates);
+      var selectedIndex = $scope.page.dropdowns.templates.selectedIndex;
+      if (selectedIndex || selectedIndex > -1) {
+        var selectedOption = $scope.page.dropdowns.templates.options[selectedIndex]
+        if (selectedOption && $scope.clonedVariationInputName && $scope.clonedVariationInputName.length) {
+          selectedOption.name = $scope.clonedVariationInputName;
+          $scope.clonedVariationInputName = null;
+        } else if (selectedOption && (!$scope.clonedVariationInputName || !$scope.clonedVariationInputName.length)) {
+          $scope.status.msg = 'Please enter a valid name';
+          $scope.status.show = true;
+          $timeout(function() {
+            $scope.status.show = false;
+          }, 2500);
+        }
+      }
     }
 
     function resizeStage(option, index) {
@@ -952,21 +1037,21 @@ angular.module('uguru.dev.controllers')
         LoadingService.hide()
       });
 
-      if ($scope.current_file.variations[$index].gestures)  {
-        var stateGestures = $scope.current_states.states[$index].gestures;
-        for (var i = 0; i < stateGestures.length; i++) {
-          var indexGesture = stateGestures[i];
-          var elem = document.querySelector(indexGesture.selector);
-          var delay = indexGesture.delay || 0
-          var gesture = indexGesture.gesture;
-          if (elem && gesture) {
-            $timeout(function() {
-              angular.element(elem).triggerHandler(gesture);
-            }, delay + 1000);
-          }
+      // if ($scope.current_file.variations[$index].gestures)  {
+      //   var stateGestures = $scope.current_states.states[$index].gestures;
+      //   for (var i = 0; i < stateGestures.length; i++) {
+      //     var indexGesture = stateGestures[i];
+      //     var elem = document.querySelector(indexGesture.selector);
+      //     var delay = indexGesture.delay || 0
+      //     var gesture = indexGesture.gesture;
+      //     if (elem && gesture) {
+      //       $timeout(function() {
+      //         angular.element(elem).triggerHandler(gesture);
+      //       }, delay + 1000);
+      //     }
 
-        }
-      }
+      //   }
+      // }
       // $scope.current_states.selectedIndex = $index;
       // // $scope.current_states = $scope.current_states.states[$index].components;
       // var allElems = document.querySelectorAll('.component-inject');

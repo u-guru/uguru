@@ -479,8 +479,13 @@
             "name": "Badge", 
             "ref": "info-badge", 
             "sample": {
-                "scope": {}, 
-                "template": "<badge> </badge>"
+                "scope": {
+                    "color": "moxie", 
+                    "count": "1", 
+                    "direction": "left", 
+                    "label": "Badge"
+                }, 
+                "template": "<badge count=\"component.sample.scope.count\" label=\"component.sample.scope.label\" direction=\"component.sample.scope.direction\" color=\"component.sample.scope.color\"> </badge>"
             }, 
             "tags": [
                 "info", 
@@ -547,22 +552,6 @@
         }, 
         {
             "active": true, 
-            "id": 20, 
-            "name": "Toast", 
-            "notes": "", 
-            "ref": "info-toast", 
-            "sample": {
-                "scope": {}, 
-                "template": "<toast> </toast>"
-            }, 
-            "tags": [
-                "info", 
-                "toast"
-            ], 
-            "template_url": "templates/info/toast.tpl"
-        }, 
-        {
-            "active": true, 
             "id": 21, 
             "name": "Tooltip", 
             "notes": "", 
@@ -580,6 +569,71 @@
                 "tooltip"
             ], 
             "template_url": "templates/info/tooltip.tpl"
+        }, 
+        {
+            "active": true, 
+            "id": 17, 
+            "name": "Toast", 
+            "notes": "", 
+            "ref": "info-toast", 
+            "sample": {
+                "scope": {
+                    "toast": {
+                        "content": "Gabrielle sent you a new message!", 
+                        "overlay": true, 
+                        "quote": "I'm at the library, where are you?"
+                    }
+                }, 
+                "template": "<toast class=\"bg-moxie\" ng-model=\"component.sample.scope.toast\"> </toast>"
+            }, 
+            "tags": [
+                "info", 
+                "toast"
+            ], 
+            "template_url": "templates/info/toast.tpl"
+        }, 
+        {
+            "active": true, 
+            "id": 17, 
+            "name": "Toast with Overlay", 
+            "notes": "", 
+            "ref": "info-toast-overlay", 
+            "sample": {
+                "scope": {
+                    "toast": {
+                        "content": "Gabrielle sent you a new message!", 
+                        "quote": "I'm at the library, where are you?"
+                    }
+                }, 
+                "template": "<toast class=\"bg-smoke txt-moxie\" ng-model=\"component.sample.scope.toast\" type=\"overlay\"> </toast>"
+            }, 
+            "tags": [
+                "info", 
+                "toast", 
+                "overlay"
+            ], 
+            "template_url": "templates/info/toast.tpl"
+        }, 
+        {
+            "active": true, 
+            "id": 18, 
+            "name": "Mobile Toast", 
+            "notes": "", 
+            "ref": "info-toast-mobile", 
+            "sample": {
+                "scope": {
+                    "toast": {
+                        "content": "Gabrielle sent you a new message!", 
+                        "quote": "I'm at the library, where are you?"
+                    }
+                }, 
+                "template": "<toast class=\"toast-mobile bg-smoke txt-crimson\" ng-model=\"component.sample.scope.toast\"> </toast>"
+            }, 
+            "tags": [
+                "info", 
+                "toast"
+            ], 
+            "template_url": "templates/info/toast.tpl"
         }, 
         {
             "active": true, 
@@ -687,21 +741,6 @@
         {
             "active": true, 
             "id": 27, 
-            "name": "Material Text Input", 
-            "ref": "inputs-material", 
-            "sample": {
-                "scope": {}, 
-                "template": "<material-input></material-input>"
-            }, 
-            "tags": [
-                "inputs", 
-                "material"
-            ], 
-            "template_url": "templates/inputs/material.tpl"
-        }, 
-        {
-            "active": true, 
-            "id": 28, 
             "name": "Standard Radio", 
             "ref": "inputs-radio", 
             "sample": {
@@ -717,7 +756,7 @@
             "template_url": "templates/inputs/radio.tpl"
         }, 
         {
-            "id": 29, 
+            "id": 28, 
             "ref": "inputs-slider", 
             "tags": [
                 "inputs", 
@@ -727,7 +766,7 @@
         }, 
         {
             "active": true, 
-            "id": 30, 
+            "id": 29, 
             "name": "Arrow Tab Bar", 
             "ref": "inputs-tab-arrow", 
             "sample": {
@@ -741,7 +780,7 @@
             "template_url": "templates/inputs/tab.arrow.tpl"
         }, 
         {
-            "id": 31, 
+            "id": 30, 
             "name": "Copy Text Input", 
             "ref": "inputs-text-copy", 
             "tags": [
@@ -752,12 +791,17 @@
         }, 
         {
             "active": true, 
-            "id": 32, 
+            "id": 31, 
             "name": "Standard Text Input", 
             "ref": "inputs-text", 
             "sample": {
-                "scope": {}, 
-                "template": "<standard-input></standard-input>"
+                "scope": {
+                    "input": {
+                        "label": "Label", 
+                        "placeholder": "This is a standard input"
+                    }
+                }, 
+                "template": "<input-standard ng-model=\"component.sample.scope.input\"></input-standard>"
             }, 
             "tags": [
                 "inputs", 
@@ -767,7 +811,29 @@
         }, 
         {
             "active": true, 
-            "id": 33, 
+            "id": 28, 
+            "name": "Material Text Input", 
+            "ref": "inputs-material", 
+            "sample": {
+                "scope": {
+                    "input": {
+                        "color": "light", 
+                        "placeholder": "This is a material input", 
+                        "type": "material"
+                    }
+                }, 
+                "template": "<input-standard ng-model=\"component.sample.scope.input\" type=\"material\"></input-standard>"
+            }, 
+            "tags": [
+                "inputs", 
+                "text", 
+                "material"
+            ], 
+            "template_url": "templates/inputs/material.tpl"
+        }, 
+        {
+            "active": true, 
+            "id": 32, 
             "name": "Standard Toggle", 
             "ref": "inputs-toggle", 
             "sample": {
@@ -783,7 +849,7 @@
         {
             "active": true, 
             "cp_link": "", 
-            "id": 34, 
+            "id": 33, 
             "name": "Color Dropdowns", 
             "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
             "ref": "inputs-dropdowns-color", 
@@ -807,7 +873,7 @@
             "template_url": "templates/inputs/dropdowns/color.tpl"
         }, 
         {
-            "id": 35, 
+            "id": 34, 
             "ref": "inputs-dropdowns-splash", 
             "tags": [
                 "inputs", 
@@ -817,7 +883,7 @@
             "template_url": "templates/inputs/dropdowns/splash.tpl"
         }, 
         {
-            "id": 36, 
+            "id": 35, 
             "name": "Color picker", 
             "ref": "inputs-pickers-color", 
             "tags": [
@@ -834,7 +900,7 @@
                     "girls": "Whats the different conceptually between a tag and a chip?"
                 }
             ], 
-            "id": 37, 
+            "id": 36, 
             "name": "Base Tag", 
             "ref": "inputs-tags-base", 
             "sample": {
@@ -863,7 +929,7 @@
                     "girls": "Whats the different conceptually between a tag and a chip?"
                 }
             ], 
-            "id": 38, 
+            "id": 37, 
             "name": "Tag", 
             "ref": "inputs-tags-splash", 
             "sample": {
@@ -902,22 +968,6 @@
         {
             "active": true, 
             "id": 39, 
-            "name": "Gallery Inputs", 
-            "ref": "inputs-text-all_inputs", 
-            "sample": {
-                "scope": {}, 
-                "template": "<inputs-gallery></inputs-gallery>"
-            }, 
-            "tags": [
-                "inputs", 
-                "text", 
-                "all_inputs"
-            ], 
-            "template_url": "templates/inputs/text/all_inputs.tpl"
-        }, 
-        {
-            "active": true, 
-            "id": 40, 
             "name": "Base Tag Input", 
             "ref": "inputs-text-tag", 
             "sample": {
@@ -929,12 +979,9 @@
                 "scope": {
                     "category": {
                         "hex_class": "azure", 
-                        "hex_color": "academic", 
-                        "id": 5, 
-                        "name": "Academic", 
-                        "placeholder": "{{component.sample.scope.placeholder}}"
+                        "placeholder": "Try Me"
                     }, 
-                    "innerText": "Tag Input Try Me"
+                    "innerText": "Try Me"
                 }, 
                 "template": "<tag desktop=\"desktopMode\" category=\"component.sample.scope.category\" inner-text=\"component.sample.scope.innerText\" type=\"input\"> </tag>"
             }, 
@@ -947,7 +994,7 @@
         }, 
         {
             "active": true, 
-            "id": 41, 
+            "id": 40, 
             "name": "Map Marker", 
             "ref": "links-map-marker", 
             "sample": {
@@ -968,7 +1015,7 @@
                     }, 
                     "size": "medium"
                 }, 
-                "template": "<map-marker></map-marker>", 
+                "template": "<university-marker></university-marker>", 
                 "variations": {
                     "modes": [
                         "view", 
@@ -989,7 +1036,7 @@
             "template_url": "templates/links/map.marker.tpl"
         }, 
         {
-            "id": 42, 
+            "id": 41, 
             "name": "Progress Arrow Tab", 
             "ref": "progress-arrow", 
             "tags": [
@@ -1000,7 +1047,7 @@
         }, 
         {
             "active": true, 
-            "id": 43, 
+            "id": 42, 
             "name": "Standard Progress Bar", 
             "ref": "progress-bar", 
             "sample": {
@@ -1014,7 +1061,7 @@
             "template_url": "templates/progress/bar.tpl"
         }, 
         {
-            "id": 44, 
+            "id": 43, 
             "ref": "progress-circular", 
             "tags": [
                 "progress", 
@@ -1024,7 +1071,7 @@
         }, 
         {
             "active": true, 
-            "id": 45, 
+            "id": 44, 
             "name": "Countdown Progress", 
             "ref": "progress-countdown", 
             "sample": {
@@ -1037,7 +1084,7 @@
             "template_url": "templates/progress/countdown.tpl"
         }, 
         {
-            "id": 46, 
+            "id": 45, 
             "name": "Guru Ranking Progress", 
             "ref": "progress-ranking", 
             "tags": [
@@ -1048,7 +1095,7 @@
         }, 
         {
             "active": true, 
-            "id": 47, 
+            "id": 46, 
             "name": "Album", 
             "ref": "tiles-album", 
             "sample": {
@@ -1060,7 +1107,7 @@
                         "title": "Midnight<br/>Cramming"
                     }
                 }, 
-                "template": "<album-tile album=\"component.sample.scope.album\"></album-tile>"
+                "template": "<album-tile ng-model=\"component.sample.scope.album\"></album-tile>"
             }, 
             "tags": [
                 "tiles", 
@@ -1069,7 +1116,7 @@
             "template_url": "templates/tiles/album.tpl"
         }, 
         {
-            "id": 48, 
+            "id": 47, 
             "name": "Calendar Tile", 
             "ref": "tiles-calendar", 
             "tags": [
@@ -1080,12 +1127,16 @@
         }, 
         {
             "active": true, 
-            "id": 49, 
+            "id": 48, 
             "name": "Category Tile", 
             "ref": "tiles-category", 
             "sample": {
-                "scope": {}, 
-                "template": "<category-tile></category-tile>"
+                "scope": {
+                    "tile": {
+                        "category": "household"
+                    }
+                }, 
+                "template": "<category-tile ng-model=\"component.sample.scope.tile\"></category-tile>"
             }, 
             "tags": [
                 "tiles", 
@@ -1095,7 +1146,7 @@
         }, 
         {
             "active": true, 
-            "id": 50, 
+            "id": 49, 
             "name": "Student Credits Tile", 
             "ref": "tiles-credit-student", 
             "tags": [
@@ -1106,7 +1157,7 @@
         }, 
         {
             "active": true, 
-            "id": 51, 
+            "id": 50, 
             "name": "Pricing Page Tile", 
             "ref": "tiles-pricing", 
             "sample": {
@@ -1121,7 +1172,7 @@
         }, 
         {
             "active": true, 
-            "id": 52, 
+            "id": 51, 
             "name": "Profile Tile", 
             "ref": "tiles-profile", 
             "sample": {
@@ -1136,7 +1187,7 @@
         }, 
         {
             "active": true, 
-            "id": 53, 
+            "id": 52, 
             "name": "Request Tile", 
             "ref": "tiles-request", 
             "sample": {
@@ -1379,14 +1430,6 @@
         }, 
         {
             "id": 6, 
-            "ref": "splash-html", 
-            "tags": [
-                "splash.html"
-            ], 
-            "template_url": "templates/splash.html"
-        }, 
-        {
-            "id": 7, 
             "ref": "bg-projector-screen-2-html", 
             "tags": [
                 "bg", 
@@ -1395,7 +1438,7 @@
             "template_url": "templates/bg/projector-screen-2.html"
         }, 
         {
-            "id": 8, 
+            "id": 7, 
             "ref": "bg-projector-screen-3-html", 
             "tags": [
                 "bg", 
@@ -1404,7 +1447,7 @@
             "template_url": "templates/bg/projector-screen-3.html"
         }, 
         {
-            "id": 9, 
+            "id": 8, 
             "ref": "bg-projector-screen-4-html", 
             "tags": [
                 "bg", 
@@ -1413,7 +1456,7 @@
             "template_url": "templates/bg/projector-screen-4.html"
         }, 
         {
-            "id": 10, 
+            "id": 9, 
             "ref": "bg-projector-screen-5-html", 
             "tags": [
                 "bg", 
@@ -1422,7 +1465,7 @@
             "template_url": "templates/bg/projector-screen-5.html"
         }, 
         {
-            "id": 11, 
+            "id": 10, 
             "ref": "bg-projector-screen-6-html", 
             "tags": [
                 "bg", 
@@ -1431,7 +1474,7 @@
             "template_url": "templates/bg/projector-screen-6.html"
         }, 
         {
-            "id": 12, 
+            "id": 11, 
             "ref": "bg-projector-screen-7-html", 
             "tags": [
                 "bg", 
@@ -1440,7 +1483,7 @@
             "template_url": "templates/bg/projector-screen-7.html"
         }, 
         {
-            "id": 13, 
+            "id": 12, 
             "ref": "bg-projector-screen-8-html", 
             "tags": [
                 "bg", 
@@ -1449,7 +1492,7 @@
             "template_url": "templates/bg/projector-screen-8.html"
         }, 
         {
-            "id": 14, 
+            "id": 13, 
             "ref": "bg-projector-screen-html", 
             "tags": [
                 "bg", 

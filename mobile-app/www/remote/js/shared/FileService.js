@@ -3,10 +3,11 @@ angular
 .factory("FileService", [
   'LoadingService',
   'Restangular',
+  'DevToolService',
   FileService
 	]);
 
-function FileService(LoadingService, Restangular) {
+function FileService(LoadingService, Restangular, DevToolService) {
     var DropzoneDict = {}
     var dropZoneUiEvents = ['drop', 'dragstart', 'dragend', 'dragenter', 'dragover', 'dragleave']; //event first param
     var dropZoneFileEvents = ["totaluploadprogress", "queuecomplete", "maxfilesreached", "complete", "success", "uploadprogress", "thumbnail"]
@@ -17,10 +18,11 @@ function FileService(LoadingService, Restangular) {
         initUserAdminTool: initUserAdminTool
     }
 
-    function initUserAdminTool($scope) {
+    function initUserAdminTool() {
 
         return {
-            get: getAllAdminFiles($scope),
+            //gets all files
+            get: getAllAdminFiles(),
             save: {
                 file: saveAdminFile,
                 folder: saveAdminFolder
@@ -36,13 +38,22 @@ function FileService(LoadingService, Restangular) {
         }
     }
 
+    function getUserSettings(user_name) {
+        //last_file_opened
+        //last_10_files_edited
+        //variations
+        //--previous fork reference
+    }
 
-    function getAllAdminFiles($scope) {
-        return function() {
+
+
+
+    function getAllAdminFiles() {
+        return function(_scope) {
             Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('files').get().then(
             function(response) {
                 var files = response.plain().admin_files;
-                $scope.files = {
+                _scope.files = {
                     users: {options: Object.keys(files), index:0},
                     all: files,
                     switchUser: function(user) {
@@ -57,25 +68,17 @@ function FileService(LoadingService, Restangular) {
                     }
                 }
 
-                $scope.current_file = splash_files[0];
-                console.log($scope.current_file);
+                // _scope.current_file = splash_files[0];
+                // console.log(_scope.current_file);
                 var xhr = new XMLHttpRequest();
-                xhr.open( 'GET', $scope.current_file.url, true );
+                xhr.open( 'GET', splash_files[0].url, true );
 
                 xhr.onload = function () {
                     var resp = window.JSON.parse( xhr.responseText );
-                    $scope.current_file = resp;
-                    var variationOptions = resp.variations;
-                    $scope.current_file.selected_variation = resp.variations[0];
-                    $scope.current_file.selectedIndex = 0;
-
-                    $scope.page.dropdowns.templates = {
-                        options: variationOptions,
-                        key: 'name',
-                        size: 'small',
-                        selectedIndex: 0,
-                    }
-                    $scope.injectTemplateIntoStage(resp.template_url.replace('templates/', ''), resp.controller, resp.ref);
+                    resp.full_template_url = splash_files[0].url;
+                    console.log('raw file', resp);
+                    DevToolService.initCurrentFile(_scope, resp);
+                    _scope.status.show = false;
                 };
                 xhr.send();
             })
@@ -88,6 +91,32 @@ function FileService(LoadingService, Restangular) {
     function createAdminFolder () {return};
     function saveAdminFile () {return};
     function saveAdminFolder () {return};
+
+    function sceneState() {
+        function autoInit() {
+        }
+        function goNext() {
+
+        }
+        function triggerScene() {
+
+        }
+    }
+
+    function variationUtility () {
+        function promote() {
+        }
+        function fork() {
+        }
+    }
+    function updateUserSettings() {
+        return {
+        }
+        //takes a recent edited component obj &&
+        function updateRecentlyEditedComponents() {
+
+        }
+    }
 
     function initMessageDropzone(scope) {
         var dropzoneElem = new Dropzone('#message-dropzone', getDefaultRequestDropzone());
