@@ -6,8 +6,10 @@
                     {{status.msg}}
                 </div>
                 <div>
-                    <user-icon size='small' url="user.profile_url"></user-icon>
-                    <h1 class='txt-2 uppercase weight-900'>{{current_file.name || 'Loading'}}</h1>
+                    <a ng-click='settings.user_mode = !settings.user_mode; settings.activated = true;'>
+                        <user-icon ng-click='settings.user_mode' style='height:50px;width:50px; margin-left:10px;' size='small' url="user.profile_url"></user-icon>
+                    </a>
+                    <h1 style='margin-left:10px;' class='txt-2 uppercase weight-900'>{{current_file.name || 'Loading'}}</h1>
                     <dropdown ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
                 </div>
                 <ul>
@@ -95,15 +97,42 @@
             </nav>
         </main>
         <aside class='build-settings relative' ng-if='settings.activated'>
-            <h1 ng-if='!settings.view_files && !settings.key_shortcuts' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>Settings </h1>
+            <h1 ng-if='!settings.view_files && !settings.key_shortcuts && !settings.user_mode' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>Settings </h1>
             <h1 ng-if='settings.key_shortcuts' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>ShortCuts</h1>
             <h1 ng-if='settings.view_files' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>My Files</h1>
-            <a ng-if='!settings.view_files && !settings.key_shortcuts' class="absolute top-0 left-0 back-icon close-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.activated = false;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+            <a ng-if='!settings.view_files && !settings.key_shortcuts && !settings.user_mode' class="absolute top-0 left-0 back-icon close-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.activated = false;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
             <a ng-if='settings.key_shortcuts' class="absolute top-0 left-0 back-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.key_shortcuts = false;' ng-include="img_base + BASE + 'templates/svg/main/left.html'"></a>
             <a ng-if='settings.view_files' class="absolute top-0 left-0 back-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.view_files = false;' ng-include="img_base + BASE + 'templates/svg/main/left.html'"></a>
             <div ng-if='settings.view_files' class='full-x'>
                  <tabs class='full-x' options="files.users.options" index='files.users.options.index'> </tabs>
             </div>
+            <div ng-if='settings.user_mode' class='full-x'>
+                 <tabs class='full-x txt-2' options="page.dropdowns.user_settings.options" index='page.dropdowns.user_settings.selectedIndex'> </tabs>
+            </div>
+            <ul class="build-files-list overflow-auto full-xy" ng-if='settings.user_mode'>
+                <div class='header'>
+                    <h1 ng-if='!page.dropdowns.user_settings.selectedIndex'>
+                        Prioritized
+                    </h1>
+                    <h1 ng-if='page.dropdowns.user_settings.selectedIndex === 1'>
+                        History
+                    </h1>
+                    <h1 ng-if='page.dropdowns.user_settings.selectedIndex === 2'>
+                        Docs
+                    </h1>
+                    <h1 ng-if='page.dropdowns.user_settings.selectedIndex === 3'>
+                        Components
+                    </h1>
+                </div>
+                <li ng-if='!page.dropdowns.user_settings.selectedIndex' class='flex-wrap-center'>
+                </li>
+                <li ng-if='page.dropdowns.user_settings.selectedIndex === 1'>
+                </li>
+                <li ng-if='page.dropdowns.user_settings.selectedIndex === 2'>
+                </li>
+                <li ng-if='page.dropdowns.user_settings.selectedIndex === 3'>
+                </li>
+            </ul>
             <ul class="build-files-list overflow-auto full-xy" ng-if='settings.key_shortcuts'>
                 <li ng-repeat='shortcut in shortcuts' class='full-x p20xy bg-slate-50p'>
                     <div class='full-x ugrid-2 full-x text-left'>
@@ -163,7 +192,7 @@
                     </div> -->
                 </li>
             </ul>
-            <ul class="build-settings-list" ng-if='!settings.view_files && !settings.key_shortcuts'>
+            <ul class="build-settings-list" ng-if='!settings.view_files && !settings.key_shortcuts && !settings.user_mode'>
                 <li><a ng-click="settings.view_files = true;">View Files</a></li>
                 <li><a ng-click="settings.key_shortcuts = true;">View Shortcuts</a></li>
                 <li>
