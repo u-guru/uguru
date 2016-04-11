@@ -42,13 +42,24 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
 
 
         _scope.page.dropdowns.templates = {
-            options: _scope.current_file.variations,
+            options: formatVariationsWithLastUpdated(_scope.current_file.variations),
             key: 'name',
             size: 'small',
             selectedIndex: returnIndex,
             label: formatLastUpdated(_scope.current_file.selected_variation.last_updated)
         }
         _scope.injectTemplateIntoStage(_scope.current_file.template_url.replace('templates/', ''), _scope.current_file.controller, _scope.current_file.ref);
+    }
+
+    function formatVariationsWithLastUpdated(variation_arr) {
+        var resultArr =[];
+        for (var i = 0; i < variation_arr.length; i++) {
+            var indexVariation = variation_arr[i];
+            resultArr.push({
+                name: indexVariation.name + '<br>' + formatLastUpdated(indexVariation.last_updated)
+            })
+        }
+        return resultArr;
     }
 
     function formatLastUpdated(utc_ms) {
