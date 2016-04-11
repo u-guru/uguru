@@ -11733,6 +11733,116 @@ a.category-tile {
 	}
 }
 
+/* ---------- COMPONENT TILES */
+.component-tile {
+	position: relative;
+	width: 100%;
+	max-width: 300px;
+	* {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+	}
+	> div {
+		position: relative;
+		border: 2px solid lighten($slate, 15%);
+		border-radius: 2px;
+		> label {
+			@include opacity(0);
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 10;
+			width: 36px;
+			height: 36px;
+			background: lighten($slate, 15%);
+			border-bottom-left-radius: 2px;
+			svg {
+				@include center-xy;
+				display: block;
+				width: 24px;
+				height: 24px;
+				* {
+					@include svg-stroke(white, 8);
+				}
+			}
+		}
+		> div {
+			position: relative;
+			background: rgba($slate, .5);
+			> svg {
+				display: block;
+				width: 100%;
+			}
+			> div {
+				@include flex;
+				@include flex-center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+		}
+		> aside {
+			background: lighten($slate, 15%);
+			padding: 10px 0 8px;
+			text-align: center;
+			h2 {
+				font-weight: 600;
+				font-size: 20px;
+			}
+			h3 {
+				@include opacity(.5);
+				margin: 0;
+				font-size: 14px;
+			}
+		}
+	}
+	> a, > input {
+		display: block;
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	> input {
+		&:hover {
+			+ div {
+				> label {
+					@include opacity(.5);
+				}
+			}
+		}
+		&:checked {
+			+ div {
+				> label {
+					@include opacity(1);
+				}
+			}
+		}
+	}
+	> a {
+		&:hover, &:focus {
+			+ div {
+				border-color: $moxie;
+				> aside {
+					background: $moxie;
+				}
+			}
+		}
+		&:active {
+			+ div {
+				border-color: $campus;
+				> aside {
+					background: $campus;
+				}
+			}
+		}
+	}
+}
+
 /* ---------- ALBUM TILES */
 .album-tile {
 	display: block;
