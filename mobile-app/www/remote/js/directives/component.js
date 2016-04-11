@@ -235,7 +235,7 @@ angular.module('uguru.components', [])
         };
     })
     .directive("tabs", function() {
-        
+
         return {
             templateUrl: BASE + 'templates/elements/containers/collections/tabs.tpl',
             scope: {
@@ -517,7 +517,7 @@ angular.module('uguru.components', [])
             templateUrl: BASE + 'templates/elements/components/cards/user.id.tpl'
         }
     })
-    .directive('universityMarker', function() {
+    .directive('mapMarker', function() {
         return {
             templateUrl: BASE + 'templates/elements/components/links/map.marker.tpl',
             restrict: 'E',
@@ -616,4 +616,19 @@ angular.module('uguru.components', [])
             restrict: 'E',
             replace: true
         }
+    })
+    .directive('inputsGallery', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/inputs/text/all_inputs.tpl',
+            restrict: 'E',
+            replace: true
+        }
+    })
+    .directive('toast', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/info/toast.tpl',
+            restrict: 'E',
+            replace: true
+        }
+
     })

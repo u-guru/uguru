@@ -496,24 +496,6 @@ ul#guru-courses-user-profile {
 .hide-display.show {
   display: block; }
 
-.pf-card-group .bg-tech, .pf-card-group.bg-tech, .cta-modal .bg-tech, .cta-modal.bg-tech {
-  background: #55A4B7;
-  background-color: #55A4B7; }
-.pf-card-group .bg-academic, .pf-card-group.bg-academic, .cta-modal .bg-academic, .cta-modal.bg-academic {
-  background: #e6389b;
-  background-color: #e6389b; }
-.pf-card-group .bg-baking, .pf-card-group.bg-baking, .cta-modal .bg-baking, .cta-modal.bg-baking {
-  background: #F6C64E;
-  background-color: #F6C64E; }
-.pf-card-group .bg-photography, .pf-card-group.bg-photography, .cta-modal .bg-photography, .cta-modal.bg-photography {
-  background: #81B566;
-  background-color: #81B566; }
-.pf-card-group .bg-household, .pf-card-group.bg-household, .cta-modal .bg-household, .cta-modal.bg-household {
-  background: #7872e3;
-  background-color: #7872e3; }
-.pf-card-group .pf-card-main, .cta-modal .pf-card-main {
-  background: white; }
-
 #cta-modal-sidebar.full-x {
   width: 100% !important;
   left: 0 !important; }
@@ -1931,5 +1913,8 @@ header#home-nav-header.splash-header,
     bottom: -20px;
     left: 50%;
     margin-left: -30.5px; }
+
+.border-white-dashed {
+  border: 2px dashed #F1F1F1; }
 
 /*# sourceMappingURL=samir.css.map */

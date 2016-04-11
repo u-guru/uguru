@@ -1,33 +1,43 @@
-<ion-view ng-controller="DevToolsController as bldr">
+<ion-view >
     <div id="build">
         <main ng-class="{'full-x': settings.hideUIEditor }">
-            <nav class="build-main-top">
+            <nav class="build-main-top relative">
+                <div style='z-index:2000;' ng-class="{'opacity-0 fadeInDownBig animated': status.show, 'opacity-1 animated bounceOutUp animated': !status.show}" class='opacity-1 absolute full-xy bg-charcoal-80p high-z-index flex-wrap-center txt-7 uppercase weight-700'>
+                    {{status.msg}}
+                </div>
                 <div>
                     <user-icon size='small' url="user.profile_url"></user-icon>
-                    <h1>File Name</h1>
+                    <h1 class='txt-2 uppercase weight-900'>{{current_file.name || 'Loading'}}</h1>
                     <dropdown ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
                 </div>
                 <ul>
+                    <li>
+                        <!-- <a ng-include="img_base + BASE + 'templates/svg/main/sync.html'"></a> -->
+                        <a ng-if='!current_file.selected_variation.edit_mode' ng-click='current_file.methods.variation.editName(current_file)' ng-include="img_base + BASE + 'templates/svg/main/edit.html'"></a>
+                    </li>
                     <li class="flex">
-                        <div class="flex active">
-                            <input placeholder="name"/>
-                            <a class="bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></a>
-                            <a class="bg bg-crimson close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                        <div class="flex" ng-class="{'active':!current_file.selected_variation.name && !current_file.selected_variation.edit_mode}">
+                            <input ng-model='clonedVariationInputName' placeholder="name"/>
+                            <a class="bg bg-moxie" ng-click='saveClonedVariationName(current_file.selected_variation)' ng-include="img_base + BASE + 'templates/svg/main/check.html'"></a>
+                            <a class="bg bg-crimson close-icon" ng-click='cancelVariationFork(current_file.selected_variation)' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                         </div>
-                        <a ng-include="img_base + BASE + 'templates/svg/main/branch.html'"></a>
+                        <div class="flex" ng-class="{'active':current_file.selected_variation.edit_mode}">
+                            <input ng-model='current_file.selected_variation.name' placeholder="name"/>
+                            <a class="bg bg-moxie" ng-click='saveVariationName(current_file.selected_variation)' ng-include="img_base + BASE + 'templates/svg/main/check.html'"></a>
+                            <a class="bg bg-crimson close-icon" ng-click='current_file.methods.variation.cancelName(current_file)' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                        </div>
+                        <a ng-click='current_file.methods.variation.fork(current_file)' ng-include="img_base + BASE + 'templates/svg/main/branch.html'"></a>
                     </li>
                     <li>
-                        <a ng-include="img_base + BASE + 'templates/svg/main/star-arrow.html'"></a>
+                        <a ng-click='current_file.methods.variation.promote(current_file)' ng-include="img_base + BASE + 'templates/svg/main/star-arrow.html'"></a>
                     </li>
                     <li>
-                        <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                        <a ng-click='current_file.methods.variation.archive(current_file)' class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                     </li>
                     <li>
-                        <a ng-include="img_base + BASE + 'templates/svg/main/save-simple.html'"></a>
+                        <a ng-click='current_file.methods.save(current_file)' ng-include="img_base + BASE + 'templates/svg/main/save-simple.html'"></a>
                     </li>
-                    <li>
-                        <a ng-include="img_base + BASE + 'templates/svg/main/sync.html'"></a>
-                    </li>
+
                     <li>
                         <a ng-click="settings.activated = !settings.activated; settings.view_files = true;" ng-include="img_base + BASE + 'templates/svg/main/folder.html'"></a>
                     </li>
@@ -85,13 +95,27 @@
             </nav>
         </main>
         <aside class='build-settings relative' ng-if='settings.activated'>
-            <h1 ng-if='!settings.view_files' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>Settings </h1>
+            <h1 ng-if='!settings.view_files && !settings.key_shortcuts' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>Settings </h1>
+            <h1 ng-if='settings.key_shortcuts' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>ShortCuts</h1>
             <h1 ng-if='settings.view_files' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>My Files</h1>
-            <a ng-if='!settings.view_files' class="absolute top-0 left-0 back-icon close-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.activated = false;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+            <a ng-if='!settings.view_files && !settings.key_shortcuts' class="absolute top-0 left-0 back-icon close-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.activated = false;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+            <a ng-if='settings.key_shortcuts' class="absolute top-0 left-0 back-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.key_shortcuts = false;' ng-include="img_base + BASE + 'templates/svg/main/left.html'"></a>
             <a ng-if='settings.view_files' class="absolute top-0 left-0 back-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.view_files = false;' ng-include="img_base + BASE + 'templates/svg/main/left.html'"></a>
             <div ng-if='settings.view_files' class='full-x'>
                  <tabs class='full-x' options="files.users.options" index='files.users.options.index'> </tabs>
             </div>
+            <ul class="build-files-list overflow-auto full-xy" ng-if='settings.key_shortcuts'>
+                <li ng-repeat='shortcut in shortcuts' class='full-x p20xy bg-slate-50p'>
+                    <div class='full-x ugrid-2 full-x text-left'>
+                        <div class='flex-wrap flex-start txt-2 text-left uppercase weight-400 opacity-50'>
+                            {{shortcut.name}}
+                        </div>
+                        <div class='flex-wrap flex-start txt-5 text-left lowercase weight-700'>
+                            {{shortcut.keys}}
+                        </div>
+                    </div>
+                </li>
+            </ul>
             <ul class="build-files-list overflow-auto" ng-if='settings.view_files'>
                 <li ng-repeat='file in files.all[files.users.options[files.users.options.index]]["files"]' ng-if='$index >= 1'>
                     <h1 class="bg-campus p10xy txt-center txt-18 semibold" ng-if='file.type === "folder"'>{{file.name}}</h1>
@@ -139,8 +163,9 @@
                     </div> -->
                 </li>
             </ul>
-            <ul class="build-settings-list" ng-if='!settings.view_files'>
+            <ul class="build-settings-list" ng-if='!settings.view_files && !settings.key_shortcuts'>
                 <li><a ng-click="settings.view_files = true;">View Files</a></li>
+                <li><a ng-click="settings.key_shortcuts = true;">View Shortcuts</a></li>
                 <li>
                     <dropdown ng-model="page.dropdowns.fileOptions"></dropdown>
                 </li>
@@ -172,68 +197,88 @@
                 </li>
             </ul>
         </aside>
-        <aside ng-if='!settings.activated && !settings.hideUIEditor'>
+        <aside ng-if='!settings.activated && !settings.hideUIEditor' class='relative'>
             <nav class="build-aside-top">
-                <ul ng-if='current_states && current_states.states.length && !settings.activated'>
-                    <li ng-repeat='interactive_state in current_states.states'><a ng-click='swapInteractiveState($index)' ng-class="{'active': $index === current_states.selectedIndex}">{{$index + 1}}</a></li>
+                <ul ng-if='current_file.selected_variation.scene_states && current_file.selected_variation.scene_states.length && !settings.activated'>
+                    <li ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index'><a ng-click='page.mode.scene.switchTo(current_file.selected_variation, $index)' ng-class="{'active': scene_state.active}">{{$index + 1}}</a></li>
                 </ul>
             </nav>
 
             <nav class="build-aside-state">
-                <ul ng-repeat='current_state in current_states.states' ng-show="current_states.selectedIndex === $index">
+                <ul ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index' ng-if="scene_state.active">
                     <li>
                         <div>
-                            <h2>State #{{current_states.selectedIndex + 1}}</h2>
-                            <h1>{{current_states.states[current_states.selectedIndex].name}}</h1>
+                            <h2>State #{{$index + 1}}</h2>
+                            <h1 class='uppercase opacity-80'>{{scene_state.name}}</h1>
                         </div>
                     </li>
                     <li>
                         <div>
-                            <dropdown class='full-x' ng-model="page.dropdowns.filterOptions"></dropdown>
+                            <dropdown class='full-x' ng-model="page.dropdowns.modes"></dropdown>
                         </div>
                     </li>
-                    <!-- <li ng-if='current_state.gestures && current_state.gestures.length'>
-                        <div class='full-x txt-center uppercase bg-moxie-50p p15x txt-white weight-600'>State gestures: {{current_state.gestures}}</div>
-                    </li> -->
                 </ul>
             </nav>
+            <div class='absolute full-xy bg-charcoal-90p flex-wrap-center flex-stretch high-z-index' ng-if='current_file.selected_variation.selected_scene_state.component_mode'>
+                <div class='header text-center uppercase relative full-x'>
+                    <div class='full-xy absolute'>
+                        <h1 class='weight-700'> Add Component Mode </h1>
+                        <div class='txt-2 uppercase opacity-50 weight-500'>
+                            Press ESC to exit<br> double tap to add
+                        </div>
+                    </div>
+                </div>
+                <div class='full-x bg-slate-50p p20xy flex-wrap-center text-center'>
+                    <h1 class='full-x text-center'>
+                            Only show components within the dimensions
+                    </h1>
+                    <div ng-init="width = 50; height = 50;" class='full-x p20xy'>
+                        <small class='txt-1'> width: {{width}}px </small>
+                        <input ng-change="onWidthRangeSliderChange(width)" type="range" min="0" max="500" ng-model="width"/>
+                        <small class='txt-1'> height: {{height}}px </small>
+                        <input type="range" min="0" max="500" ng-model="height"/>
+                    </div>
+                </div>
+            </div>
+            <div class='build-element-list animation relative'>
+                <ul ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index' ng-if='scene_state.active' class='relative full-y'>
 
-            <div class='build-element-list animation'>
-                <ul ng-repeat='current_state in current_states.states' ng-show="current_states.selectedIndex === $index">
                     <!-- timeline -->
-                    <li class="build-timeline" ng-repeat='time_state in current_state.timeline' ng-if='!page.dropdowns.filterOptions.selectedIndex'>
-                        <span>{{$index + 1}}</span>
-                        <div class='relative'>
+                    <li class="build-timeline" ng-repeat='time_state in scene_state.time_states' ng-if='!page.dropdowns.modes.selectedIndex'>
+                        <div class='relative full-x'>
                             <h1 class="relative has-link">
                                 <a ng-click='editTimeStateTime(timeline, time_state, $event)' ng-if='!time_state.edit_mode' >
                                     <span class="lowercase">
-                                        t = {{ time_state.time || time_state.components[0].time_states[0].time}}
-                                        <span ng-if='time_state.time !== "init"'>ms</span>
+
+                                        <span class='txt-6 uppercase' ng-if='!time_state.time'>T = Init</span>
+                                        <span ng-if='time_state.time'>T: {{time_state.time}}</span>
                                     </span>
                                 </a>
                                 <div class='ugrid-2' ng-if='time_state.edit_mode'>
                                     <input class='full-y p05xy' placeholder="value" ng-model="time_state.time"/>
-                                    <a ng-click='editTimeStateTime(current_state.timeline, time_state, $event, "sort")' class='txt-2'> Save </a>
-                                    <a class='txt-2' ng-click='editTimeStateTime(current_state.timeline, time_state, $event, "cancel")'> Cancel </a>
+                                    <a ng-click='editTimeStateTime(current_file.selected_variation.timeline, time_state, $event, "sort")' class='txt-2'> Save </a>
+                                    <a class='txt-2' ng-click='editTimeStateTime(current_file.selected_variation.timeline, time_state, $event, "cancel")'> Cancel </a>
                                 </div>
 
-                                <a class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
                             </h1>
-                            <a class='build-activate close' ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click='removeTimeState($index)'></a>
-                            <!-- Collapse component vars-->
-                            <a ng-click='updateTimeStateCollapses(current_state.timeline, time_state)' ng-class="{'collapse': !time_state.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
+                            <a ng-if='time_state.time' class='build-activate close'  ng-click='removeTimeState($index)'></a>
+                            <a ng-click='updateTimeStateCollapses(current_file.selected_variation.timeline, time_state)' ng-include="img_base + BASE + 'templates/svg/main/external.html'" ng-if="time_state.components.length"></a>
+                            <a ng-if='time_state.components.length' class='high-z-index right-0 bottom-0 absolute bg-charcoal-impt'>&rtrif;</a>
                         </div>
-                        <div class="relative" ng-show='!time_state.collapsed'>
-                            <ul class="build-save">
+                        <div class="relative" ng-show='time_state.focused'>
+                            <h1 class='full-x p20xy text-center relative uppercase border-white-dashed'>
+                                <a ng-click='page.mode.component.initMode(scene_state, time_state)'> + Add Components </a>
+                            </h1>
+                            <!-- <ul class="build-save">
                                 <li>
                                     <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/commit.html'"></a>
                                 </li>
                                 <li>
                                     <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/save-simple.html'"></a>
                                 </li>
-                            </ul>
-                            <div class="build-css-select">
-                                <h1>{{time_state.components.length}}</h1>
+                            </ul> -->
+                            <div class="build-css-select full-x">
+
                                 <!-- @samir -->
                                 <!-- component previews go in here <div></div> -->
                                 <ul class='time-state-component-bar'>
@@ -243,11 +288,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <ul class="build-css-header" ng-show='!component.collapsed'>
-                                <li>@INIT Property</li>
-                                <li>@INIT Value</li>
-                            </ul>
-                            <ul class="build-css-list full-x" ng-repeat='component in time_state.components' ng-if='time_state.component_selected === component'>
+                            <ul class="build-css-list full-x" ng-repeat='component in time_state.components'>
                                 <li class='init full-x relative' ng-if='component.init_time_state && component.init_time_state.time < 0'>
                                     <div>
                                         <span ng-repeat='property in component.init_time_state.properties'>{{property.name}}</span>
@@ -315,7 +356,7 @@
                     </li>
                     <!--end timeline-->
 
-                    <li ng-repeat='component in current_state.components' ng-if='page.dropdowns.filterOptions.selectedIndex'>
+                    <li id='file-component-list' ng-show='time_state.selected_variation.components.length' ng-repeat='component in current_file.selected_variation.components'>
                         <span>{{$index + 1}}</span>
                         <div class='relative'>
 							<h1><span class="lowercase">{{ component._id || component._class || component.name}}</span></h1>
@@ -328,7 +369,7 @@
                             <!--  <a class="build-activate opacity-50" ng-click='component.active = !component.active' ng-if='!component.active'>off</a>
                              <a class="build-activate" ng-click='component.active = !component.active' ng-if='component.active'>on</a> -->
                             <!-- Collapse component vars-->
-                            <a ng-click='updateComponentCollapsed(current_state, component)' ng-class="{'collapse': !component.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
+                            <a ng-click='updateComponentCollapsed(current_file, component)' ng-class="{'collapse': !component.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
 						</div>
                         <div class="relative" ng-show='!component.collapsed'>
                             <ul class="build-save">
@@ -364,7 +405,7 @@
                                     <a ng-repeat='property in component.init_time_state.properties' ng-click='component.removePropertyField(component, component.init_time_state, $index)'>&times;</a>
                                 </div>
                             </li>
-                            <li ng-if='component.time_states && component.time_states.length' ng-repeat='time_state in component.time_states track by $index'>
+                            <li ng-if='component.time_states && current_file.selected_variation.time_states.length' ng-repeat='time_state in component.time_states track by $index'>
                                 <div><span class="radius-2-left">@T</span><span class="radius-2-right">{{time_state.time}}</span></div>
                                 <div>
                                     <span class="radius-2" ng-repeat='property in time_state.properties' ng-if='property.type === "css_text"' ng-click='component.addPropertyField(component, time_state, property.name)'>
@@ -419,14 +460,19 @@
                 </ul>
             </div>
             <nav class="build-aside-bottom">
-                <ul>
-                    <li><a class="build-add-element" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click="addNewTimeState()"></a></li>
-                    <li class="build-play-all">
-                        <a ng-click='playStates(current_states.states[current_states.selectedIndex].components)' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a>
+                <ul class='relative' style='width:100%;'>
+                    <li class='flex-wrap-center full-x' ng-click="addNewTimeState()">
+                        <a class="build-add-element absolute left-0" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                        <div class='flex-wrap-center weight-700 text-center uppercase'>
+                            Add Time State
+                        </div>
+                    </li>
+                    <!-- <li class="build-play-all">
+                        <a ng-click='playStates(current_file.variations[current_file.selectedIndex].components)' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a>
                         <dropdown class="full-x" size="small" ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
                     </li>
                     <li><a class="bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/save.html'" ng-click='saveCurrentStatesToLocalStorage()'></a></li>
-                    <li><a ng-click='refreshAllComponents()' class="opacity-50" ng-include="img_base + BASE + 'templates/svg/main/switch.html'"></a></li>
+                    <li><a ng-click='refreshAllComponents()' class="opacity-50" ng-include="img_base + BASE + 'templates/svg/main/switch.html'"></a></li> -->
                 </ul>
             </nav>
         </aside>

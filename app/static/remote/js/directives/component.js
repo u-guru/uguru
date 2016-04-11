@@ -193,6 +193,7 @@ angular.module('uguru.components', [])
                 button: '=button',
                 direction: '=direction'
             },
+            replace: true,
             restrict: 'E',
             link: function(scope, element, attr) {
                 if (!scope.text || !scope.text.length) {
@@ -234,6 +235,7 @@ angular.module('uguru.components', [])
         };
     })
     .directive("tabs", function() {
+
         return {
             templateUrl: BASE + 'templates/elements/containers/collections/tabs.tpl',
             scope: {
@@ -253,6 +255,54 @@ angular.module('uguru.components', [])
             }
         };
     })
+    .directive('toast', function() {
+        function getTemplateURL(elem, attr) {
+            if (attr.type && attr.type === 'overlay') {
+                return BASE + 'templates/elements/components/info/toast.overlay.tpl'
+            }  else {
+                return BASE + 'templates/elements/components/info/toast.tpl'
+            }
+        }
+        return {
+            templateUrl: getTemplateURL,
+            restrict: 'E',
+            replace: true,
+            scope: {
+                toast: '=ngModel'
+            },
+            link: function(scope, elem, attr) {
+                if (attr.type && attr.type.toLowerCase() === 'overlay') {
+                    scope.type = 'overlay';
+                } else {
+                    scope.type = '';
+                }
+            }
+        }
+    })
+    .directive('inputStandard', function() {
+        function getTemplateURL(elem, attr) {
+            if (attr.type && attr.type === 'material') {
+                return BASE + 'templates/elements/components/inputs/material.tpl'
+            }  else {
+                return BASE + 'templates/elements/components/inputs/text.tpl'
+            }
+        }
+        return {
+            templateUrl: getTemplateURL,
+            restrict: 'E',
+            replace: true,
+            scope: {
+                input: '=ngModel'
+            },
+            link: function(scope, elem, attr) {
+                if (attr.type && attr.type.toLowerCase() === 'material') {
+                    scope.type = 'material';
+                } else {
+                    scope.type = '';
+                }
+            }
+        }
+    })
     .directive('courseCard', function() {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'hover') {
@@ -266,7 +316,6 @@ angular.module('uguru.components', [])
             } else {
                 return BASE + 'templates/elements/components/cards/course.tpl'
             }
-
         }
         return {
             templateUrl: getTemplateURL,
@@ -437,7 +486,7 @@ angular.module('uguru.components', [])
             restrict: 'E',
             replace: true,
             scope: {
-                album: '=',
+                album: '=ngModel'
             }
         }
     })
@@ -468,7 +517,7 @@ angular.module('uguru.components', [])
             templateUrl: BASE + 'templates/elements/components/cards/user.id.tpl'
         }
     })
-    .directive('universityMarker', function() {
+    .directive('mapMarker', function() {
         return {
             templateUrl: BASE + 'templates/elements/components/links/map.marker.tpl',
             restrict: 'E',
@@ -479,7 +528,13 @@ angular.module('uguru.components', [])
         return {
             templateUrl: BASE + 'templates/elements/components/info/badge.tpl',
             restrict: 'E',
-            replace: true
+            replace: true,
+            scope: {
+                color: '=color',
+                label: '=label',
+                direction: '=direction',
+                count: '=count'
+            }
         }
     })
     .directive('attachList', function() {
@@ -496,7 +551,7 @@ angular.module('uguru.components', [])
             replace: true
         }
     })
-    .directive('arrowTabs', function() {
+    .directive('tabsArrow', function() {
         return {
             templateUrl: BASE + 'templates/elements/components/progress/arrow.tpl',
             restrict: 'E',
@@ -521,7 +576,10 @@ angular.module('uguru.components', [])
         return {
             templateUrl: BASE + 'templates/elements/components/tiles/category.tpl',
             restrict: 'E',
-            replace: true
+            replace: true,
+            scope: {
+                tile: '=ngModel'
+            },
         }
     })
     .directive('pricingTile', function() {
@@ -558,10 +616,18 @@ angular.module('uguru.components', [])
             replace: true
         }
     })
-    .directive('inputsAll', function() {
+    .directive('inputsGallery', function() {
         return {
             templateUrl: BASE + 'templates/elements/components/inputs/text/all_inputs.tpl',
             restrict: 'E',
             replace: true
         }
+    })
+    .directive('toast', function() {
+        return {
+            templateUrl: BASE + 'templates/elements/components/info/toast.tpl',
+            restrict: 'E',
+            replace: true
+        }
+
     })

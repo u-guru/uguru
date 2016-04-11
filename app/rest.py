@@ -3458,20 +3458,27 @@ class AdminFileView(restful.Resource):
 
 
         from lib.s3_tools import getAllAdminFiles, create_static_file, create_folder
+        from pprint import pprint
         file_json = request.json.get('file')
-        folder_json = request.json.get('folder')
-        if folder_json.get('folder'):
-            folder_name = folder_json.get('name')
-            if folder_name:
-                create_folder('uguru-admin', folder_name)
+        # folder_json = request.json.get('folder')
+        # if folder_json.get('folder'):
+        #     folder_name = folder_json.get('name')
+        #     if folder_name:
+        #         create_folder('uguru-admin', folder_name)
 
-        if file_json and file_json.get('file'):
-            file_name = file_json.get('name')
-            file_path = file_json.get('path')
-            file_headers = file_json.get('content_type')
-            file_content = file_json.get('content')
+        if file_json:
+            full_url = file_json.get('full_template_url')
+            if ".json" in full_url:
+                file_headers = "application/json"
+                file_name = full_url.split('/')[-1]
+                file_path = "/".join(full_url.split('com/')[1:])
+                file_path = file_path.replace('/' + file_name, "")
+                file_contents = json.dumps(file_json, indent=4)
+                # print file_name, file_headers
 
-            if (file_content and file_headers and file_name and file_path):
+
+
+            if (file_contents and file_headers and file_name and file_path):
                 response = create_static_file('uguru-admin', file_path, file_name, file_contents, file_headers)
                 if response:
                     return jsonify(admin_files=getAllAdminFiles())
