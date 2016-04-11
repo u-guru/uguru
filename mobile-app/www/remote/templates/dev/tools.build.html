@@ -6,11 +6,11 @@
                     {{status.msg}}
                 </div>
                 <div>
-                    <a ng-click='settings.user_mode = !settings.user_mode; settings.activated = true;'>
-                        <user-icon ng-click='settings.user_mode' style='height:50px;width:50px; margin-left:10px;' size='small' url="user.profile_url"></user-icon>
+                    <a class="block m15left" ng-click='settings.user_mode = !settings.user_mode; settings.activated = true;'>
+                        <user-icon ng-click='settings.user_mode' size='48' url="user.profile_url"></user-icon>
                     </a>
-                    <h1 style='margin-left:10px;' class='txt-2 uppercase weight-900'>{{current_file.name || 'Loading'}}</h1>
-                    <dropdown ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
+                    <h1>{{current_file.name || 'Loading'}}</h1>
+                    <dropdown class="build-variations" ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
                 </div>
                 <ul>
                     <li>
