@@ -191,6 +191,7 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
             },
             time_state: {
                 init: getTimeBaseObj,
+                getFocused: getFocusedTimeState(_scope),
                 add: addTimeState,
                 edit: editTimeState,
                 remove: removeTimeState,
@@ -247,6 +248,17 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
             }
         }
 
+    }
+
+    function getFocusedTimeState(_scope) {
+        return function(selected_scene) {
+            for (var i = 0; i < selected_scene.time_states.length; i++) {
+                var indexTimeState = selected_scene.time_states[i];
+                if (indexTimeState && indexTimeState.focused) {
+                    return indexTimeState;
+                }
+            }
+        }
     }
 
     //mode function

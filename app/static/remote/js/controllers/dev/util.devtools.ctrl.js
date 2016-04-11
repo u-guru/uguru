@@ -16,22 +16,46 @@ angular.module('uguru.dev.controllers')
   'KeyboardService',
   '$interval',
   'FileService',
-  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService, KeyboardService, $interval, FileService) {
+  'DevToolService',
+  function($scope, $state, $timeout, $localstorage, LoadingService, Restangular, $compile, $sce, AnimationService, KeyboardService, $interval, FileService, DevToolService) {
 
     // KeyboardService.preventDefaultCutPaste();
-    KeyboardService.initCopyPasteFunctionCallbacks();
+    // KeyboardService.initCopyPasteFunctionCallbacks();
     var commandPressed = false;
-    var onCmdPressed = function() {
-      console.log('command key pressed');
-      commandPressed = true;
+    var buildPlayerMouseOutListenerFunc, buildPlayerKeyboardShortCutsFunc,
+    buildPlayerDblClickListenerFunc, buildPlayerMouseOverListenerFunc, buildPlayerMouseDownListenerFunc,
+    buildPlayerMouseOutListenerFunc, buildPlayerMouseUpListenerFunc;
+    var buildPlayerDisplayHideArr = []
+
+    $scope.current_file = {selected_variation:{components:[]}};
+
+
+    var onCmdPressed = function(e) {
+      if(e.metaKey) {
+        console.log('command key pressed');
+        commandPressed = true;
+        initAllListeners()
+      }
+      if (e.ctrlKey) {
+       console.log('ctrl key pressed');
+       document.addEventListener('keydown', buildPlayerKeyboardShortCutsFunc);
+      }
       //component mode
       if ($scope.page.dropdowns.filterOptions.selectedIndex) {
-        initAllListeners()
+
       }
     }
 
-    var onCmdReleased = function() {
-      commandPressed = false;
+    var onCmdReleased = function(e) {
+
+      if(e.metaKey || e.keyCode === 91) {
+        console.log('command key released');
+        commandPressed = false;
+      }
+      if (e.ctrlKey || e.keyCode == 17) {
+       console.log('ctrl key released');
+      }
+
       destroyAllBuildPlayerListeners();
     }
 
@@ -43,21 +67,88 @@ angular.module('uguru.dev.controllers')
     }
     $scope.player = {hide: false, status_message: null};
 
+    $scope.status = {
+      show: true,
+      msg: 'loading..'
+    }
+
     if (!$scope.user || !$scope.user.id) {
       $scope.player.hide = true;
       $scope.player.status_message = 'Please login first!';
     }
 
     $timeout(function() {
-      $scope.storage = FileService.initUserAdminTool($scope);
-      $scope.storage.get()
+      $scope.fileUtility = FileService.initUserAdminTool();
+      $scope.fileUtility.get($scope);
     })
 
+    var keyCodeDict = {
+      'ctrl': 17,
+      'enter': 13,
+      'shift': 16,
+      's': 83,
+      'f': 70,
+      'k': 75,
+      '\\': 220,
+      '/': 191,
+      'space': 32
 
-    var buildPlayerMouseOutListenerFunc, buildPlayerKeyboardShortCutsFunc,
-    buildPlayerDblClickListenerFunc, buildPlayerMouseOverListenerFunc, buildPlayerMouseDownListenerFunc,
-    buildPlayerMouseOutListenerFunc, buildPlayerMouseUpListenerFunc;
-    var buildPlayerDisplayHideArr = []
+    }
+
+
+    $scope.shortcuts = [
+      // {
+      //   name: "settings", keys:"shift + s", codes: [17, 83]
+      // },
+      {
+        name: "view shortcuts", keys:"ctrl + z", codes: [17,191]
+      },
+      {
+        name: "view files", keys:"ctrl + f", codes: [17,70]
+      },
+      {
+        name: "stage edit mode", keys:"hold CMD + ___"
+      },
+      {
+        name: "temporarily remove component", keys:"hold CMD + double click"
+      },
+      {
+        name: "play scene/element", keys:"space"
+      },
+      {
+        name: "save", keys:"ctrl + s"
+      }
+    ]
+
+    var buildPlayerKeyboardShortCutsFunc = function(e) {
+
+        if (e.keyCode === 191 || e.keyCode === 90) {
+          console.log('slash clicked');
+          if ($scope.settings.key_shortcuts) {
+            $scope.settings.key_shortcuts = false;
+            $scope.settings.activated = false;
+          } else {
+            $scope.settings.activated = true;
+            $scope.settings.key_shortcuts = true;
+          }
+        }
+        if (e.keyCode === 70) {
+          if ($scope.settings.view_files) {
+            $scope.settings.activated = false;
+            $scope.settings.view_files = false;
+          } else {
+            $scope.settings.activated = true;
+            $scope.settings.view_files = true;
+          }
+        }
+        if (e.keyCode === 83) {
+          $scope.saveCurrentStatesToLocalStorage()
+        }
+        if (e.keyCode === 32) {
+          $scope.playStates(current_states.states[current_states.selectedIndex].components)
+        }
+      }
+
     function initAllListeners() {
       var elemBuildPlayer = document.querySelector('.build-player');
       var onMouseOverPromise;
@@ -66,6 +157,9 @@ angular.module('uguru.dev.controllers')
       var onMouseDownElem;
       var onMouseDownPromise
       var onMouseUpAddComponent;
+
+
+
       buildPlayerMouseOverListenerFunc = function(e) {
 
         onMouseOverElem = e.target;
@@ -92,7 +186,7 @@ angular.module('uguru.dev.controllers')
 
       buildPlayerMouseUpListenerFunc = function(e) {
         onMouseDown = false;
-        e.target.classList.remove('animated', 'tada', 'bg-azure', 'infinite');
+        e.target.classList.remove('animated', 'animate-select');
         if (onMouseUpAddComponent) {
           onMouseUpAddComponent = false;
           console.log(onMouseDownElem);
@@ -107,27 +201,30 @@ angular.module('uguru.dev.controllers')
       buildPlayerMouseDownListenerFunc = function(e) {
         if (!onMouseDown) {
           onMouseDown = true;
-          e.target.classList.add('animated', 'tada', 'infinite', 'bg-azure');
+          e.target.classList.add('animated', 'infinite', 'pulse', 'animate-select');
           onMouseDownPromise = $timeout(function() {
             if (onMouseDown && onMouseOverElem === e.target) {
 
               $timeout(function() {
-                LoadingService.showMsg('adding component... please release lol', 3000);
+
                 onMouseUpAddComponent = true;
                 onMouseDownElem = e.target;
                 onMouseDownElem.setAttribute('anim', null);
                 $timeout(function() {
                   $scope.$apply(function() {
-                    addOneComponentFromShortCut(onMouseDownElem);
+                    // addOneComponentFromShortCut(onMouseDownElem);
+                    var time_state = $scope.page.mode.time_state.getFocused($scope.current_file.selected_variation.selected_scene_state);
+                    console.log('yo');
+                    addComponentToTimeState(time_state, onMouseDownElem);
                   })
                 })
               }, 200);
-              // $timeout(function() {
-              //   e.target.classList.remove('animated', 'tada', 'infinite', 'bg-azure');
-              //   var onMouseDown = false;
-              // }, 500)
+              $timeout(function() {
+                e.target.classList.remove('animated', 'tada', 'infinite', 'bg-azure');
+                var onMouseDown = false;
+              }, 500)
             }
-          }, 2000);
+          }, 1000);
         }
       }
 
@@ -208,7 +305,6 @@ angular.module('uguru.dev.controllers')
         elemBuildPlayer.addEventListener('mouseup', buildPlayerMouseUpListenerFunc);
         elemBuildPlayer.addEventListener('dblclick', buildPlayerDblClickListenerFunc);
         elemBuildPlayer.addEventListener('mouseover', buildPlayerMouseOverListenerFunc);
-        elemBuildPlayer.addEventListener('keyup', buildPlayerKeyboardShortCutsFunc);
       }
     }
 
@@ -335,6 +431,9 @@ angular.module('uguru.dev.controllers')
       window.sessionStorage.clear();
       window.localStorage.clear();
       window.location.reload(true);
+    }
+
+    $scope.onWidthRangeSliderChange = function(value) {
 
     }
 
@@ -352,10 +451,12 @@ angular.module('uguru.dev.controllers')
 
     $scope.page.toggles = {add_component: false};
     $scope.page.compiledTemplates = {};
+    $scope.page.mode = DevToolService.getBuildToolModes($scope);
     $scope.page.dropdowns.fileOptions = {label:'Current Storage', onOptionClick: onFileOptionSelect, options: generateFileOptions(), size:'small', key:'name', selectedIndex: 0};
     $scope.page.dropdowns.screenSizeOptions = {label:'autoscale @ 1.5x', onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
     $scope.page.dropdowns.filterOptions = {label: "sort by", options: ['Time', "Component"], selectedIndex: userSettings.defaultFilter || 1, size:"small", onOptionClick: toggleComponentGUIMode}
+    $scope.page.dropdowns.modes = {label: "modes", options: ['Time States', 'All Components'], selectedIndex: 0, size: 'small'}
     $scope.page.status = {show: false}
 
 
@@ -638,19 +739,47 @@ angular.module('uguru.dev.controllers')
 
     }
 
+    function addComponentToTimeState(time_state, element) {
+      var clonedNode = recursiveClone(element);
+
+
+
+      var template = document.querySelector('#stage-template-container');
+      if (template && template.firstChild) {
+        template = template.firstChild;
+      }
+      var ref = 'time-state-' + (time_state.time || 'null') + '-' + (time_state.components.length + 1);
+
+      var componentObj = initComponentObj(clonedNode, element, ref);
+      // $scope.current_file.selected_variation.components.push(componentObj);
+      time_state.components.push(componentObj);
+
+      $scope.saveCurrentStatesToLocalStorage();
+    }
+
     function addOneComponentFromShortCut(element) {
+      var clonedNode = recursiveClone(element)
+      console.log(element, clonedNode);
+
       var template = document.querySelector('#stage-template-container')
       allAnimElem = template.querySelectorAll('[anim]');
 
-      ref = 'anim-elem-' + (allAnimElem.length + 1);
+      var ref = 'anim-elem-' + (allAnimElem.length + 1);
       element.classList.add(ref);
-      var clonedNode = recursiveClone(element)
+      element.setAttribute('anim', null);
       var componentObj = initComponentObj(clonedNode, element, ref);
-      componentObj.css_class_dropdown = {label:'animation', key:'_class', options:generateCSSClassOptions(classes, componentObj), onOptionClick:generateTimeStateProperty, size:'small', selectedIndex:0},
-      $scope.current_states.states[0].components.push(componentObj);
-      $timeout(function() {
-        $scope.$apply();
-      })
+      $scope.current_file.selected_variation.components.push(componentObj);
+      console.log($scope.current_file.selected_variation);
+      var componentListView = document.querySelector('#file-component-list');
+      $scope.saveCurrentStatesToLocalStorage();
+      // $timeout(function() {
+      //   $scope.swapInteractiveState(0);
+      // }, 2000);
+      // componentObj.css_class_dropdown = {label:'animation', key:'_class', options:generateCSSClassOptions(classes, componentObj), onOptionClick:generateTimeStateProperty, size:'small', selectedIndex:0},
+      // $scope.current_states.states[0].components.push(componentObj);
+      // $timeout(function() {
+      //   $scope.$apply();
+      // })
     }
 
     function generateFileOptions() {
@@ -683,31 +812,30 @@ angular.module('uguru.dev.controllers')
 
 
 
-    $scope.saveCurrentStatesToLocalStorage = function(template_ref) {
+    $scope.saveCurrentStatesToLocalStorage = function(template_ref, show_loader) {
+      $scope.current_file.selected_variation.lasted_updated = (new Date()).getTime();
       var adminBuildToolsCacheExists = $localstorage.getObject('admin_build')
       if (!adminBuildToolsCacheExists || adminBuildToolsCacheExists.constructor == Array) {
         adminBuildToolsCacheExists = {};
       }
-      adminBuildToolsCacheExists[$scope.current_states.template_ref] = $scope.current_states;
+      adminBuildToolsCacheExists[$scope.current_file.ref] = $scope.current_file;
 
-      for (var i = 0; i < $scope.current_states.states.length; i++) {
-        var indexState = $scope.current_states.states[i];
-        if (indexState.components) {
-          for (var j = 0; j < indexState.components.length; j++) {
-            var indexComponent = indexState.components[j];
-            indexComponent.addPropertyField = null;
-            indexComponent.confirmPropertyField = null;
-            indexComponent.css_class_dropdown = null;
-            indexComponent.properties = null;
-            indexComponent.template = null;
-          }
-        }
+      for (var i = 0; i < $scope.current_file.selected_variation.components.length; i++) {
+        var indexComponent = $scope.current_file.selected_variation.components[i];
+        indexComponent.addPropertyField = null;
+        indexComponent.confirmPropertyField = null;
+        indexComponent.css_class_dropdown = null;
+        indexComponent.properties = null;
+        indexComponent.template = null;
       }
+
       $localstorage.setObject('admin_build', adminBuildToolsCacheExists);
-      LoadingService.showAmbig(null, 2500);
-      $timeout(function() {
-        LoadingService.showSuccess('Saved!', 1000);
-      }, 2000)
+      if (show_loader) {
+        LoadingService.showAmbig(null, 2500);
+        $timeout(function() {
+          LoadingService.showSuccess('Saved!', 1000);
+        }, 2000)
+      }
     }
 
     function generateCSSClassOptions(classes_arr, component) {
@@ -734,9 +862,9 @@ angular.module('uguru.dev.controllers')
         Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').get().then(
           function(response) {
             response = JSON.parse(response)
-            for (var i = 0; i < response.layouts.length; i++) {
-              console.log(i, response.layouts[i].name, response.layouts[i].template_url)
-            }
+            // for (var i = 0; i < response.layouts.length; i++) {
+            //   console.log(i, response.layouts[i].name, response.layouts[i].template_url)
+            // }
             $timeout(function() {
               $scope.$apply(function() {
                 $scope.page.dropdowns.templates.options = response.layouts;
@@ -747,11 +875,9 @@ angular.module('uguru.dev.controllers')
             response.layouts.sort(function(val_a, val_b) {
               return val_b.id - val_a.id;
             }).reverse()
-            injectTemplateIntoStage(response.layouts[0].template_url, 'SplashController', response.layouts[0].ref);
-            $timeout(function() {
 
-              // evalSizeDropdownDefaultSelected();
-            }, 5000)
+            // injectTemplateIntoStage(response.layouts[0].template_url, 'SplashController', response.layouts[0].ref);
+
           },
 
           function(error) {
@@ -773,6 +899,59 @@ angular.module('uguru.dev.controllers')
           {name: 'Desktop M 1366x768', ref:'desktop-m',dimensions: {'width': 1366, 'height':768}},
           {name: 'Desktop L 1920x1080', ref:'desktop-lg', dimensions: {'width': 1920, 'height':1080}}
       ]
+    }
+    $scope.clonedVariationInputName  = null;
+    $scope.saveVariationName = function(variation) {
+
+      var selectedIndex = $scope.page.dropdowns.templates.selectedIndex;
+      if (selectedIndex || selectedIndex > -1) {
+        var selectedOption = $scope.page.dropdowns.templates.options[selectedIndex]
+
+        if (selectedOption && $scope.current_file.selected_variation.name && $scope.current_file.selected_variation.name.length) {
+          selectedOption.name = $scope.current_file.selected_variation.name
+          $scope.showStatusMsg(["Saving .. " + selectedOption.name]);
+          variation.edit_mode = false;
+          variation.name_cache = null;
+        }
+      }
+    }
+
+    $scope.showStatusMsg = function(chained_msg_arr, duration, offset) {
+      duration = duration || 2500;
+      offset = offset || 2500;
+      for (var i = 0; i < chained_msg_arr.length; i++) {
+        var indexMsg = chained_msg_arr[i];
+        showMsgForXMilliseconds(indexMsg, offset * i, duration, i === (chained_msg_arr.length - 1));
+      }
+      function showMsgForXMilliseconds(msg, offset, duration, hide_after) {
+        $timeout(function() {
+          $scope.status.msg = msg;
+          $scope.status.show = true;
+          if (hide_after) {
+            $timeout(function() {
+              $scope.status.show = false;
+            }, duration)
+          }
+        }, offset);
+      }
+    }
+
+    $scope.saveClonedVariationName = function(variation) {
+      console.log(variation, $scope.page.dropdowns.templates);
+      var selectedIndex = $scope.page.dropdowns.templates.selectedIndex;
+      if (selectedIndex || selectedIndex > -1) {
+        var selectedOption = $scope.page.dropdowns.templates.options[selectedIndex]
+        if (selectedOption && $scope.clonedVariationInputName && $scope.clonedVariationInputName.length) {
+          selectedOption.name = $scope.clonedVariationInputName;
+          $scope.clonedVariationInputName = null;
+        } else if (selectedOption && (!$scope.clonedVariationInputName || !$scope.clonedVariationInputName.length)) {
+          $scope.status.msg = 'Please enter a valid name';
+          $scope.status.show = true;
+          $timeout(function() {
+            $scope.status.show = false;
+          }, 2500);
+        }
+      }
     }
 
     function resizeStage(option, index) {
@@ -823,7 +1002,13 @@ angular.module('uguru.dev.controllers')
 
       stageTemplateParentContainer.appendChild(stageTemplateDiv);
       $compile(stageTemplateDiv)($scope);
-      storeTemplateToCache(template_url, stageTemplateDiv, ref);
+      // storeTemplateToCache(template_url, stageTemplateDiv, ref);
+    }
+
+    $scope.injectTemplateIntoStage = injectTemplateIntoStage;
+
+    function initFileObj(properties) {
+      var template_url = ''
     }
 
     function updateScreenSize(elem_selector) {
@@ -850,26 +1035,26 @@ angular.module('uguru.dev.controllers')
 
     $scope.swapInteractiveState = function($index) {
       LoadingService.showAmbig(null, 2500);
-      $scope.current_states.selectedIndex = $index;
-      injectAllAllChildComponentsForOneState($scope.current_states.states[$index].components, null, null, function() {
+      $scope.current_file.selectedIndex = $index;
+      injectAllAllChildComponentsForOneState($scope.current_file.selected_variation.components, null, null, function() {
         LoadingService.hide()
       });
 
-      if ($scope.current_states.states[$index].gestures)  {
-        var stateGestures = $scope.current_states.states[$index].gestures;
-        for (var i = 0; i < stateGestures.length; i++) {
-          var indexGesture = stateGestures[i];
-          var elem = document.querySelector(indexGesture.selector);
-          var delay = indexGesture.delay || 0
-          var gesture = indexGesture.gesture;
-          if (elem && gesture) {
-            $timeout(function() {
-              angular.element(elem).triggerHandler(gesture);
-            }, delay + 1000);
-          }
+      // if ($scope.current_file.variations[$index].gestures)  {
+      //   var stateGestures = $scope.current_states.states[$index].gestures;
+      //   for (var i = 0; i < stateGestures.length; i++) {
+      //     var indexGesture = stateGestures[i];
+      //     var elem = document.querySelector(indexGesture.selector);
+      //     var delay = indexGesture.delay || 0
+      //     var gesture = indexGesture.gesture;
+      //     if (elem && gesture) {
+      //       $timeout(function() {
+      //         angular.element(elem).triggerHandler(gesture);
+      //       }, delay + 1000);
+      //     }
 
-        }
-      }
+      //   }
+      // }
       // $scope.current_states.selectedIndex = $index;
       // // $scope.current_states = $scope.current_states.states[$index].components;
       // var allElems = document.querySelectorAll('.component-inject');
@@ -999,7 +1184,9 @@ angular.module('uguru.dev.controllers')
       if (!ref_link) {
         ref_link = currentRef
       }
-
+      if (!template) {
+        template = document.querySelector('#stage-template-container');
+      }
       allAnimElem = template.querySelectorAll('[anim]');
       if (!components_arr.length) {
         for (var i = 0; i < allAnimElem.length; i++) {

@@ -201,7 +201,7 @@ angular.module('uguru.dev.controllers')
       buildPlayerMouseDownListenerFunc = function(e) {
         if (!onMouseDown) {
           onMouseDown = true;
-          e.target.classList.add('animated', 'infinite', 'animate-select');
+          e.target.classList.add('animated', 'infinite', 'pulse', 'animate-select');
           onMouseDownPromise = $timeout(function() {
             if (onMouseDown && onMouseOverElem === e.target) {
 
@@ -212,14 +212,17 @@ angular.module('uguru.dev.controllers')
                 onMouseDownElem.setAttribute('anim', null);
                 $timeout(function() {
                   $scope.$apply(function() {
-                    addOneComponentFromShortCut(onMouseDownElem);
+                    // addOneComponentFromShortCut(onMouseDownElem);
+                    var time_state = $scope.page.mode.time_state.getFocused($scope.current_file.selected_variation.selected_scene_state);
+                    console.log('yo');
+                    addComponentToTimeState(time_state, onMouseDownElem);
                   })
                 })
               }, 200);
-              // $timeout(function() {
-              //   e.target.classList.remove('animated', 'tada', 'infinite', 'bg-azure');
-              //   var onMouseDown = false;
-              // }, 500)
+              $timeout(function() {
+                e.target.classList.remove('animated', 'tada', 'infinite', 'bg-azure');
+                var onMouseDown = false;
+              }, 500)
             }
           }, 1000);
         }
@@ -748,9 +751,9 @@ angular.module('uguru.dev.controllers')
       var ref = 'time-state-' + (time_state.time || 'null') + '-' + (time_state.components.length + 1);
 
       var componentObj = initComponentObj(clonedNode, element, ref);
-      $scope.current_file.selected_variation.components.push(componentObj);
+      // $scope.current_file.selected_variation.components.push(componentObj);
+      time_state.components.push(componentObj);
 
-      var componentListView = document.querySelector('#file-component-list');
       $scope.saveCurrentStatesToLocalStorage();
     }
 

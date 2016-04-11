@@ -1,5 +1,5 @@
 <div class="dropdown-container">
-    <h2 ng-if="dropdown.label">{{dropdown.label}}</h2>
+    <h2 ng-if="dropdown.label" ng-bind-html="dropdown.label"></h2>
     <div class="dropdown {{dropdown.size}}">
         <div>
             <span ng-if='!dropdown.key'>{{dropdown.options[dropdown.selectedIndex]}}</span>
@@ -11,7 +11,7 @@
             </a>
         </div>
         <ul ng-class='{"active": dropdown.active }'>
-            <li tabindex ng-if='$index !== dropdown.selectedIndex' ng-click="click(option, $index)" ng-repeat='option in dropdown.options'>{{(dropdown.key && option[dropdown.key]) || option}}</li>
+            <li tabindex ng-if='$index !== dropdown.selectedIndex' ng-click="click(option, $index)" ng-repeat='option in dropdown.options track by $index'>{{(dropdown.key && option[dropdown.key]) || option}}</li>
         </ul>
     </div>
 </div>
