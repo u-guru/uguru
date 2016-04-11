@@ -8,10 +8,18 @@
                         </a>
                         <div class="projector-top"></div>
                         <div id="splash-courses" class="projector-content" ng-controller="CoursesController">
-                            <div class="splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'" class-on-activate="pulse:anim:keep:inject.slide-courses-container|activate" class-on-activate-delay="1000" ></div>
+                            <div class="splash-logo-guru" class-on-activate="pulse:anim:keep:inject.slide-courses-container|activate" class-on-activate-delay="1000" >
+                                <svg>
+                                  <use xlink:href="#svg-guru-head"/>
+                                </svg>  
+                            </span>
                             <!-- @samir -->
                             <!-- course count is inside the svg -->
-                            <div ng-include="img_base + 'templates/svg/backpack-text.html'"></div>
+                            <div>
+                                <svg>
+                                  <use xlink:href="#svg-backpack-text"/>
+                                </svg>  
+                            </div>
                             <form>
                                 <div class="input-field large white">
                                     <i class="material-icons prefix">

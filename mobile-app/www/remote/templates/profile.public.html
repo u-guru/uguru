@@ -8,16 +8,52 @@
 	<section>
 		<!--Left third -->
 		<div class="pf-banner-container">
-			<a class="pf-banner pf-banner-{{::user.academic_shop.category.hex_color}} ng-class:{'pf-banner-edit':!profile.public_mode, 'active': isActive}" ng-include="::img_base + 'templates/svg/' + user.academic_shop.category.hex_color + '.html'" ng-init="isActive = false" ng-click="isActive = !isActive"></a>
+			<a class="pf-banner pf-banner-{{::user.academic_shop.category.hex_color}} ng-class:{'pf-banner-edit':!profile.public_mode, 'active': isActive}" ng-init="isActive = false" ng-click="isActive = !isActive">
+				<svg>
+                  <use xlink:href="" ng-href="#svg-{{ user.academic_shop.category.hex_color }}"/>
+                </svg>
+			</a>
 			<div>
-				<a class="pf-banner pf-banner-academic" ng-include="::img_base + 'templates/svg/academic.html'"></a>
-				<a class="pf-banner pf-banner-photo" ng-include="::img_base + 'templates/svg/photography.html'"></a>
-				<a class="pf-banner pf-banner-baking" ng-include="::img_base + 'templates/svg/baking.html'"></a>
-				<a class="pf-banner pf-banner-household" ng-include="::img_base + 'templates/svg/household.html'"></a>
-				<a class="pf-banner pf-banner-delivery" ng-include="::img_base + BASE + 'templates/svg/delivery.html'"></a>
-				<a class="pf-banner pf-banner-freelancing" ng-include="::img_base + 'templates/svg/freelancing.html'"></a>
-				<a class="pf-banner pf-banner-athletic" ng-include="::img_base + 'templates/svg/athletic.html'"></a>
-				<a class="pf-banner pf-banner-tech" ng-include="::img_base + 'templates/svg/tech.html'"></a>
+				<a class="pf-banner pf-banner-academic">
+					<svg>
+			          <use xlink:href="#svg-academic"/>
+			        </svg>	
+        		</a>
+				<a class="pf-banner pf-banner-photo">
+					<svg>
+			          <use xlink:href="#svg-photography"/>
+			        </svg>	
+	        	</a>
+				<a class="pf-banner pf-banner-baking" >
+					<svg>
+			          <use xlink:href="#svg-baking"/>
+			        </svg>	
+	        	</a>
+				<a class="pf-banner pf-banner-household">
+					<svg>
+			          <use xlink:href="#svg-household"/>
+			        </svg>	
+	        	</a>
+				<a class="pf-banner pf-banner-delivery">
+					<svg>
+			          <use xlink:href="#svg-delivery"/>
+			        </svg>	
+	        	</a>
+				<a class="pf-banner pf-banner-freelancing">
+					<svg>
+			          <use xlink:href="#svg-freelancing"/>
+			        </svg>	
+	        	</a>
+				<a class="pf-banner pf-banner-athletic">
+					<svg>
+			          <use xlink:href="#svg-athletic"/>
+			        </svg>	
+	        	</a>
+				<a class="pf-banner pf-banner-tech">
+					<svg>
+			          <use xlink:href="#svg-tech"/>
+			        </svg>	
+	        	</a>
 			</div>
 		</div>
 		<header class="third">
@@ -40,7 +76,11 @@
 					</span>
 				</h1>
 				<h2 class="pf-school">{{::user.university.short_name || user.university.name}}</h2>
-				<ul class="pf-rating default" data-rating="{{::user.guru_rating.int}}" data-half="user.guru_rating.half" ng-include="::img_base + 'templates/svg/rating.html'"></ul>
+				<ul class="pf-rating default" data-rating="{{::user.guru_rating.int}}" data-half="user.guru_rating.half" >
+					<svg>
+			          <use xlink:href="#svg-rating"/>
+			        </svg>	
+				</ul>
 				<span class="pf-review-amt">{{::user.guru_ratings.length}} Reviews</span>
 				<!-- <button class="btn-ghost-white">Contact</button> -->
 				<div class='pf-textarea-container relative'>
@@ -122,7 +162,11 @@
 				</ul>
 				<ul class="pf-links">
 					<li>
-						<a class="bg-li" name='soc-linkedin' ng-click='showPagePopup("linkedin")' ng-include="::img_base + BASE + 'templates/svg/social/linkedin.html'"></a>
+						<a class="bg-li" name='soc-linkedin' ng-click='showPagePopup("linkedin")' ng-click='showPagePopup("linkedin")'>
+							<svg>
+					          <use xlink:href="#svg-social-linkedin"/>
+					        </svg>	
+				        </a>
 						<div class="guru-popup hide ng-class:{'show':pagePopups.linkedin}">
 							<h1>Edit your LinkedIn URL</h1>
 							<div class="with-button">
@@ -137,7 +181,11 @@
 						</div>
 					</li>
 					<li>
-						<a class="bg-fb" name='soc-facebook' ng-click='showPagePopup("facebook")' ng-include="::img_base + BASE + 'templates/svg/social/facebook.html'"></a>
+						<a class="bg-fb" name='soc-facebook' ng-click='showPagePopup("facebook")'>
+							<svg>
+					          <use xlink:href="#svg-social-facebook"/>
+					        </svg>	
+			        	</a>
 						<div class="guru-popup hide ng-class:{'show':pagePopups.facebook}">
 							<h1>Edit your Facebook URL</h1>
 							<div class="with-button">
@@ -152,7 +200,11 @@
 						</div>
 					</li>
 					<li>
-						<a class="bg-tw" name='soc-twitter' ng-click='showPagePopup("twitter")' ng-include="::img_base + BASE + 'templates/svg/social/twitter.html'"></a>
+						<a class="bg-tw" name='soc-twitter' ng-click='showPagePopup("twitter")'>
+							<svg>
+					          <use xlink:href="#svg-social-twitter"/>
+					        </svg>	
+			        	</a>
 						<div class="guru-popup hide ng-class:{'show':pagePopups.twitter}">
 							<h1>Edit your Twitter URL</h1>
 							<div class="with-button">
@@ -168,7 +220,11 @@
 						</div>
 					</li>
 					<li>
-						<a class="bg-in" name='soc-instagram' ng-click='showPagePopup("instagram")' ng-include="::img_base + BASE + 'templates/svg/social/instagram.html'"></a>
+						<a class="bg-in" name='soc-instagram' ng-click='showPagePopup("instagram")'>
+							<svg>
+					          <use xlink:href="#svg-social-instagram"/>
+					        </svg>	
+					     </a>
 						<div class="guru-popup hide ng-class:{'show':pagePopups.instagram}">
 							<h1>Edit your Instagram URL</h1>
 							<div class="with-button">
@@ -296,7 +352,11 @@
 					<h1>Will Work For</h1>
 					<ul class="pf-list-x ugrid-3">
 						<li name="currency-check" ng-repeat='currency in ::(all_currencies||user.all_currencies)' ng-if="::((currency.active && profile.public_mode) || !profile.public_mode)">
-							<span ng-include="::img_base + BASE + 'templates/svg/wwf/' + currency.icon_url"></span>
+							<span>
+								<svg>
+		                          <use xlink:href="" ng-href="#svg-wwf-{{ currency.icon_url }}"/>
+		                        </svg>
+							</span>
 							<span>{{::currency.name}}</span>
 							<div ng-if='::!profile.public_mode'>
 								<input type="checkbox" ng-change='updateGuruCurrency(::currency, ::currency.active)' ng-model="::currency.active" />
@@ -466,7 +526,11 @@
 						</a>
 						<span class="pf-check-label">
 							<span name='portfolio-item-course-short_name'>{{:: (portfolio_item.full_name|| portfolio_item.name|| portfolio_item.course.short_name)}}</span>
-							<ul class="pf-rating" data-rating="{{::portfolio_item.rounded_avg_rating}}" data-half="{{::portfolio_item.half_stars}}" ng-include="::img_base + 'templates/svg/rating.html'"></ul>
+							<ul class="pf-rating" data-rating="{{::portfolio_item.rounded_avg_rating}}" data-half="{{::portfolio_item.half_stars}}" >
+								<svg>
+		                          <use xlink:href="#svg-rating"/>
+		                        </svg>		
+							</ul>
 							<span class="pf-review-amt">{{::portfolio_item.avg_rating}}</span>
 						</span>
 						<div class="guru-popup hide ng-class: ::{'show':portfolio_item.showRemovePopup}">

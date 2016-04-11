@@ -60,7 +60,11 @@
               </h1>
           </div>
           <div class='container'>
-              <div ng-fx-speed="slow" ngfx-bounce-in-up="true" class='helicopter-container' ng-include="img_base + BASE + 'templates/svg/gurucopter.html'"></div>
+              <div ng-fx-speed="slow" ngfx-bounce-in-up="true" class='helicopter-container'>
+                <svg class="icon">
+                  <use xlink:href="#svg-gurucopter" />
+                </svg>
+              </div>
           </div>
           <div class='full-x txt-charcoal footer-text full-x text-center txt-slate'>
               <p class='text-center weight-900' id='loading-counter'>

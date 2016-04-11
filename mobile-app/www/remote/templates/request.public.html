@@ -16,7 +16,11 @@
     </div> -->
     <div class="full-x max-800 bg-white">
         <header class="bg-charcoal txt-center p30bottom">
-            <div class="guru-head margin-auto guru-academic" ng-include="img_base + BASE + 'templates/svg/guru-head.html'"></div>
+            <div class="guru-head margin-auto guru-academic" >
+                <svg class="icon">
+                  <use xlink:href="#svg-guru-head" />
+                </svg>
+            </div>
             <h2 class="txt-28 semibold"><strong class="black">Anonymous</strong> requests <strong class="black">1-on-1 Help</strong></h2>
         </header>
         <div class="bg-lake txt-center p15xy">
@@ -45,19 +49,31 @@
                     <ul>
                         <li>
                             <a>
-                                <span ng-include="img_base + BASE + 'templates/svg/ext/pdf-fill.html'"></span>
+                                <span>
+                                    <svg class="icon">
+                                      <use xlink:href="#svg-ext-pdf-fill" />
+                                    </svg>
+                                </span>
                                 <span>vet-ethics-guide.pdf</span>
                             </a>
                         </li>
                         <li>
                             <a>
-                                <span ng-include="img_base + BASE + 'templates/svg/ext/doc-fill.html'"></span>
+                                <span>
+                                    <svg class="icon">
+                                      <use xlink:href="#svg-ext-doc-fill" />
+                                    </svg>
+                                </span>
                                 <span>file.doc</span>
                             </a>
                         </li>
                         <li>
                             <a>
-                                <span ng-include="img_base + BASE + 'templates/svg/ext/jpg-fill.html'"></span>
+                                <span>
+                                    <svg class="icon">
+                                      <use xlink:href="#svg-ext-jpg-fill" />
+                                    </svg>
+                                </span>
                                 <span>image.jpg</span>
                             </a>
                         </li>

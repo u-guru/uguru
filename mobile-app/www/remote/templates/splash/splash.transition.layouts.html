@@ -9,7 +9,11 @@
             </div>
             <div class="next-content">
                 <div class="next-guru">
-                    <div class="splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+                    <div class="splash-logo-guru" >
+                        <svg>
+                          <use xlink:href="#svg-guru-head"/>
+                        </svg>  
+                    </div>
                     <svg class="coach-next-steps" width="114px" height="98px" viewBox="0 0 228 196">
                          <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
                          <text transform="translate(113.612466, 96.294134) rotate(20.000000) translate(-113.612466, -96.294134) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
@@ -33,7 +37,11 @@
 <div class="onboarding-success mo-js-wrapper opacity-0" >
     <div class="mojs-wrapper" mo-js>
         <a mo-js-child></a>
-        <div class="guru" ng-include="img_base + 'templates/svg/guru-success.html'"></div>
+        <div class="guru">
+            <svg>
+              <use xlink:href="#svg-guru-head"/>
+            </svg>  
+        </div>
     </div>
     <h1>Congrats!</h1>
     <h2>Your Account is Ready</h2>
@@ -64,7 +72,11 @@
 
 <!-- Transition #4 Wanna see something cool? -->
 <div ng-if='false'>
-    <div class="splash-projector-guru splash-logo-guru" activate-on-class="a" class-on-activate="bounceOut:animOut" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+    <div class="splash-projector-guru splash-logo-guru" activate-on-class="a" class-on-activate="bounceOut:animOut">
+        <svg>
+          <use xlink:href="#svg-guru-head"/>
+        </svg>  
+    </div>
     <div class="splash-projector-message desktop" activate-on-class="a" class-on-activate="bounceOut:animOut" class-on-activate-delay="250">
         <svg viewBox="0 0 1304 354">
             <path d="M2,39.9999987 C2,35.5817214 5.58280463,32 10.0088717,32 L622,32 L652,2 L682,32 L1293.99113,32 C1298.41431,32 1302,35.5800296 1302,39.9999987 L1302,344.000001 C1302,348.418279 1298.41351,352 1293.99365,352 L10.0063476,352 C5.58456393,352 2,348.41997 2,344.000001 L2,39.9999987 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.5" fill="#40484B"></path>
@@ -116,7 +128,11 @@
                 </div>
                 <div class="swiper-slide slideshow-thumb-3 opacity-0" ng-class="{'progress-active':page.swipers.galleryIndex, 'slideshow-thumb-getting-started': page.swipers.main.activeIndex >= 2, 'complete': user.demographic && user.demographic.selected}"  class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="500">
                     <a class="onboarding-step active" ng-if='page.swipers.galleryIndex' ng-click='page.swipers.main.slideTo(2)'>
-                        <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/demographic.html'"></span>
+                        <span class="onboarding-icon" >
+                            <svg>
+                              <use xlink:href="#svg-splash-demographic"/>
+                            </svg>  
+                        </span>
                         <svg class="onboarding-status" viewBox="0 0 160 160">
                              <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
                                   <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
@@ -129,7 +145,11 @@
                 </div>
                 <div class="swiper-slide slideshow-thumb-4 slideshow-thumb-getting-started opacity-0" ng-class="{'complete': user && user.university && user.university.id}" class-on-clear="bounceOutDown:animOut" class-on-activate="bounceInUp:anim" class-on-activate-delay="600" >
                     <a class="onboarding-step active" ng-if='page.swipers.galleryIndex' ng-click='page.swipers.main.slideTo(3)'>
-                        <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/university.html'"></span>
+                        <span class="onboarding-icon" >
+                            <svg>
+                              <use xlink:href="#svg-splash-university"/>
+                            </svg>  
+                        </span>
                         <svg class="onboarding-status" viewBox="0 0 160 160">
                              <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
                                   <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
@@ -142,7 +162,12 @@
                 </div>
                 <div class="swiper-slide slideshow-thumb-5 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="700" ng-class="{'complete': user && user.id}">
                     <a class="onboarding-step" ng-if='page.swipers.galleryIndex' ng-click='page.swipers.main.slideTo(4)'>
-                        <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/account.html'"></span>
+                        <span class="onboarding-icon">
+                            <svg>
+                              <use xlink:href="#svg-splash-accpimt"/>
+                            </svg>  
+                        </span>
+
                         <svg class="onboarding-status" viewBox="0 0 160 160">
                              <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
                                   <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
@@ -155,7 +180,11 @@
                 </div>
                 <div class="swiper-slide slideshow-thumb-6 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="800" ng-class="{'complete': user && user.student_courses.length}">
                      <a class="onboarding-step" ng-if='page.swipers.galleryIndex' ng-click='page.swipers.main.slideTo(5)'>
-                        <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/courses.html'"></span>
+                        <span class="onboarding-icon">
+                            <svg>
+                              <use xlink:href="#svg-splash-course"/>
+                            </svg>  
+                        </span>
                         <svg class="onboarding-status" viewBox="0 0 160 160">
                              <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
                                   <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
@@ -168,7 +197,11 @@
                 </div>
                  <div class="swiper-slide slideshow-thumb-7 slideshow-thumb-getting-started opacity-0" class-on-clear="bounceOutDown:animOut" activate-on-class="a" class-on-activate="bounceInUp:anim" class-on-activate-delay="900" ng-class="{'complete': user && user.access_code}">
                     <a class="onboarding-step" ng-if='page.swipers.galleryIndex' ng-click='page.swipers.main.slideTo(6)'>
-                        <span class="onboarding-icon" ng-include="::img_base + BASE + 'templates/svg/splash/promo.html'"></span>
+                        <span class="onboarding-icon">
+                            <svg>
+                              <use xlink:href="#svg-splash-promo"/>
+                            </svg>  
+                        </span>
                         <svg class="onboarding-status" viewBox="0 0 160 160">
                              <g fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
                                   <circle class="bg" stroke="#606669" cx="80" cy="80" r="70"></circle>
@@ -180,8 +213,16 @@
                     </a>
                 </div>
             </div>
-        <a name="back-to-scene-one" id='splash-up-link' class="splash-up-circle"  class-on-clear="fadeOutUp:animOut, opacity-0" class-on-activate="fadeInDown:anim" class-on-activate-delay="1250" ng-show='projectorPullActivated || singleProjectorActivated' ng-click='closeSingleProjector()' ng-include="img_base + 'templates/svg/main/up-circle.html'"></a>
-        <a class="splash-up-circle" ng-if='page.swipers.main.slides.length <= 1' ng-click='closeSingleProjector()' ng-include="img_base + 'templates/svg/main/up-circle.html'"></a>
+        <a name="back-to-scene-one" id='splash-up-link' class="splash-up-circle"  class-on-clear="fadeOutUp:animOut, opacity-0" class-on-activate="fadeInDown:anim" class-on-activate-delay="1250" ng-show='projectorPullActivated || singleProjectorActivated' ng-click='closeSingleProjector()'>
+            <svg>
+              <use xlink:href="#svg-main-up-circle"/>
+            </svg>  
+        </a>
+        <a class="splash-up-circle" ng-if='page.swipers.main.slides.length <= 1' ng-click='closeSingleProjector()' >
+            <svg>
+              <use xlink:href="#svg-main-up-circle"/>
+            </svg>  
+        </a>
         <div class="projector-trigger animated opacity-0 activate" activate-on-class="a" class-on-activate="bounceOutDown:animOut" class-on-activate-delay="750" >
             <a id="projector-pull" ng-click='activateProjectorPull();'  class-on-click="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a" class-on-activate="a:inject.header-swipers|a, a:inject.projector-trigger|a, a:inject.splash-projector-message.desktop|a, a:inject.splash-projector-message.mobile|a, a:inject.splash-projector-guru|a, a:inject.splash-projector-footer.center|a, a:inject.splash-projector-footer.right|a">
                 <svg width="28px" height="224px" viewBox="0 0 56 448">

@@ -3,7 +3,11 @@
 		<header class="third flex-center">
 			<div class="pf-header-bg" style="background-image: url({{user.profile_url}});"></div>
 			<div class="pf-header-color"></div>
-			<div class="pf-banner pf-banner-baking" ng-include="img_base + 'templates/svg/baking.html'"></div>
+			<div class="pf-banner pf-banner-baking" >								
+				<svg>
+                  <use xlink:href="#svg-baking"/>
+                </svg>
+			</div>
 			<div class="pf-header">
 				<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
 				<h1 class="verified">
@@ -13,7 +17,11 @@
 					</span>
 				</h1>
 				<h2 class="pf-school">{{user.university.short_name || user.university.name}}</h2>
-				<ul class="pf-rating default" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+				<ul class="pf-rating default" data-rating="4" data-half="true">								
+					<svg>
+		              <use xlink:href="#svg-rating"/>
+		            </svg>
+				</ul>
 				<span class="pf-review-amt">{{user.guru_ratings.length}} Reviews</span>
 				<!-- <button class="btn-ghost-white">Contact</button> -->
 				<div class="pf-header-desc">
@@ -102,7 +110,11 @@
 					<div class="pf-check-container">
 						<span>
 							<span>Checklist Item</span>
-							<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+							<ul class="pf-rating" data-rating="4" data-half="true" >								
+								<svg>
+				                  <use xlink:href="#svg-rating"/>
+				                </svg>
+							</ul>
 							<span class="pf-review-amt">3 Reviews</span>
 						</span>
 					</div>
@@ -111,7 +123,11 @@
 					<div class="pf-check-container">
 						<span>
 							<span>Checklist Item</span>
-							<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+							<ul class="pf-rating" data-rating="4" data-half="true">								
+								<svg>
+				                  <use xlink:href="#svg-rating"/>
+				                </svg>
+							</ul>
 							<span class="pf-review-amt">3 Reviews</span>
 						</span>
 					</div>
@@ -120,7 +136,11 @@
 					<div class="pf-check-container">
 						<span>
 							<span>Checklist Item</span>
-							<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+							<ul class="pf-rating" data-rating="4" data-half="true">								
+								<svg>
+				                  <use xlink:href="#svg-rating"/>
+				                </svg>
+							</ul>
 							<span class="pf-review-amt">3 Reviews</span>
 						</span>
 					</div>
@@ -129,7 +149,11 @@
 					<div class="pf-check-container">
 						<span>
 							<span>Checklist Item</span>
-							<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+							<ul class="pf-rating" data-rating="4" data-half="true">								
+								<svg>
+				                  <use xlink:href="#svg-rating"/>
+				                </svg>
+							</ul>
 							<span class="pf-review-amt">3 Reviews</span>
 						</span>
 					</div>

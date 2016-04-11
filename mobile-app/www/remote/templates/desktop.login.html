@@ -10,7 +10,11 @@
 	<main class="desktop-forms desktop-mode desktop-signup ng-class:{'desktop-login':root.vars.loginMode}">
 
 		<aside>
-			<span ng-include="img_base + BASE + 'templates/svg/main-logo-static.html'"></span>
+			<span>
+				<svg class="icon">
+				  <use xlink:href="#svg-main-logo-static" />
+				</svg>
+			</span>
 			<div class="hide ng-class:{'show':!root.vars.loginMode}">
 				<h1>Got an account?</h1>
 				<p>Sweet! You can login to your account by clicking on the button below.</p>

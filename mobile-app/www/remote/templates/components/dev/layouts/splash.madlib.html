@@ -2,7 +2,11 @@
         <section id='splash-home' class='splash-hero' class-on-clear="null:inject.splash-hero-markers|clear" parallax-parent="p1" parallax-relative-input="false" parallax-clip-relative-input="false" parallax-calibration-threshold="100" parallax-calibration-delay="500" parallax-support-delay="500" parallax-calibrate-x="false" parallax-calibrate-y="true" parallax-invert-x="true" parallax-invert-y="true" parallax-limit-x="false" parallax-limit-y="false" parallax-scalar-x="5.0" parallax-scalar-y="5.0" parallax-friction-x="0.1" parallax-friction-y="0.1" parallax-origin-x="0.5" parallax-origin-y="0.5" style='z-index:10;'>
             <header class='high-z-index splash-header fixed top-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
                 <a ng-if='page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()' style='z-index:5'> </a>
-                <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'" bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ng-class="{'m10xy absolute left-0 top-0':!desktopMode}"></a>
+                <a class="splash-logo" ng-click='scrollToSection("#splash-home")' bind-wp="s2_50_top" bind-wp-class="clear, activate" bind-wp-direction="down, up" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ng-class="{'m10xy absolute left-0 top-0':!desktopMode}">
+                    <svg class="icon">
+                      <use xlink:href="#svg-logo-subtitle" />
+                    </svg>
+                </a>
                 <div class="right">
                     <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()'>
                         <!-- @gabrielle whats this? If you dont know delete below-->
@@ -113,7 +117,11 @@
             </div>
             <div class="splash-hero-content" activate-on-class="a" class-on-activate="active" class-on-activate-delay="1000" style='z-index:100 !important;'>
                 <div class="splash-guru-head">
-                    <div  class="splash-hero-guru splash-logo-guru parallax-static" parallax-parent-ref="p1" parallax-child="0.4" activate-on-class="a" class-on-activate="fadeOut:animOut" class-on-clear="lightSpeedIn:anim" class-on-clear-delay="4000" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+                    <div  class="splash-hero-guru splash-logo-guru parallax-static" parallax-parent-ref="p1" parallax-child="0.4" activate-on-class="a" class-on-activate="fadeOut:animOut" class-on-clear="lightSpeedIn:anim" class-on-clear-delay="4000">
+                        <svg class="icon">
+                          <use xlink:href="#svg-guru-head"/>
+                        </svg>
+                    </span>
                     <svg class="coach-help coach-help-desktop opacity-0 animated" viewBox="0 0 340 205">
                         <g fill="none">
                             <path d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 Z" fill="#40484b" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>

@@ -61,7 +61,11 @@
     <h2 class='hide ng-class:{"show":!user.student_courses.length}'>Link <span>{{university.short_name}}</span> courses to your account</h2>
 	<div class="ugrid-2">
 		<div class="login-backpack">
-			<span ng-include="img_base + 'templates/svg/backpack.html'"></span>
+			<span>
+                <svg class="icon">
+                  <use xlink:href="#svg-backpack"/>
+                </svg>
+            </span>
 			<b>{{user.student_courses.length}}</b>
 			<a ng-click='showGoBackToUniversityPage()'>+ add more</a>
 		</div>

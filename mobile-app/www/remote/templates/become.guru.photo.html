@@ -11,7 +11,12 @@
         <div class="main default">
             <div id="profile-icon" ng-click='showAttachActionSheet()'>
                 <span class="profile-icon-img" ng-if='photoUploaded || user.profile_url' alt="" style="background-image: url('{{user.profile_url}}');"></span>
-                <span class="profile-icon-svg" ng-include="img_base + BASE + 'templates/svg/main/photo.html'"></span>
+                <span class="profile-icon-svg">
+                	<svg>
+                	  <use xlink:href="#svg-main-photo" />
+                	</svg>
+                </span>
+
                 <h1 ng-if='!user.profile_url'>Upload Photo</h1>
                 <h1 ng-if='user.profile_url'>Edit Photo</h1>
             </div>

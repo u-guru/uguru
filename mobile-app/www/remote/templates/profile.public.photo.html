@@ -7,7 +7,11 @@
 			<span ng-include="::img_base + 'templates/credibility.verified.svg.html'"></span>
 		</h1>
 		<h2 class="pf-school-name">UC Berkeley</h2>
-		<ul class="pf-rating rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul>
+		<ul class="pf-rating rating-stars" data-rating="4" data-half="true" >
+				<svg>
+	              <use xlink:href="#svg-rating"/>
+	            </svg>		
+        </ul>
 		<h3 class="pf-reviews"><span>72</span> reviews</h3>
 	</aside>
 	<div class="pf-rest">
@@ -164,7 +168,11 @@
 		<div class="pf-modal-main">
 			<p class="pf-modal-desc">Fusce vehicula dolor arcu, sit amet blandit dolor nec. Donec viverra.</p>
 			<p class="pf-modal-price">$15/hr</p>
-			<ul class="pf-rating rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul>
+			<ul class="pf-rating rating-stars" data-rating="4" data-half="true">
+				<svg>
+                  <use xlink:href="#svg-rating"/>
+                </svg>		
+            </ul>
 			<h3 class="pf-reviews"><span>72</span> reviews</h3>
 			<ul class="pf-modal-gallery pf-portfolio-items">
 				<li class="pf-portfolio-item">

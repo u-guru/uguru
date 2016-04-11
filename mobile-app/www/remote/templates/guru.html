@@ -1,7 +1,15 @@
 <ion-view class='uguru-view guru-view bg-charcoal guru-view-mobile'>
 	<section id="mobile-guru-home" class="mobile-home">
-		<a class="nav-icon-burger left-0" ng-click='referralsModal.show()' ng-include="img_base + 'templates/svg/main/gift.html'"></a>
-		<a class="nav-icon-burger" name='active-side' ng-click='toggleRightSideMenu()' ng-include="img_base + 'templates/svg/main/menu-circle.html'"></a>
+		<a class="nav-icon-burger left-0" ng-click='referralsModal.show()'>
+            <svg class="icon">
+              <use xlink:href="#svg-main-gift" />
+            </svg>      
+        </a>
+		<a class="nav-icon-burger" name='active-side' ng-click='toggleRightSideMenu()'>
+            <svg class="icon">
+              <use xlink:href="#svg-main-menu-circle" />
+            </svg>      
+        </a>
 		<div class="home-top">
 			<h1 ng-if="user.first_name">Hello {{user.first_name}}!</h1>
             <div class="toggle white-round" ng-if='!user || !user.id' ng-click='signupModal.show()'>
@@ -65,15 +73,27 @@
                     </div>
                     <ul class="home-ticket-icon-bar">
                         <li class="academic">
-                            <span ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></span>
+                            <span>
+                                <svg class="icon">
+                                  <use xlink:href="#svg-academic-simple" />
+                                </svg>
+                            </span>
                             <span>1-on-1 Help</span>
                         </li>
                         <li class="baking">
-                            <span ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></span>
+                            <span>
+                                <svg class="icon">
+                                  <use xlink:href="#svg-balomg-simple" />
+                                </svg>
+                            </span>
                             <span>Birthday Cake</span>
                         </li>
                         <li class="photography">
-                            <span ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></span>
+                            <span>
+                                <svg class="icon">
+                                  <use xlink:href="#svg-photography-simple" />
+                                </svg>
+                            </span>
                             <span>Graduation</span>
                         </li>
                     </ul>
@@ -84,11 +104,41 @@
                         <h2>Activate your UC Berkeley Email to create a real request</h2>
                     </div>
                     <ul class="home-ticket-icon-bar">
-                        <li class="academic" ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></li>
-                        <li class="baking" ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></li>
-                        <li class="photography" ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></li>
-                        <li class="household" ng-include="img_base + BASE + 'templates/svg/household-simple.html'"></li>
-                        <li class="tech" ng-include="img_base + BASE + 'templates/svg/tech-simple.html'"></li>
+                        <li class="academic" >
+                            <span>
+                                <svg class="icon">
+                                  <use xlink:href="#svg-academic-simple" />
+                                </svg>
+                            </span>
+                        </li>
+                        <li class="baking">
+                            <span>
+                                <svg class="icon">
+                                  <use xlink:href="#svg-baking-simple" />
+                                </svg>
+                            </span>
+                        </li>
+                        <li class="photography">
+                            <span>
+                                <svg class="icon">
+                                  <use xlink:href="#svg-photography-simple" />
+                                </svg>
+                            </span>
+                        </li>
+                        <li class="household">
+                            <span>
+                                <svg class="icon">
+                                  <use xlink:href="#svg-household-simple" />
+                                </svg>
+                            </span>
+                        </li>
+                        <li class="tech">
+                            <span>
+                                <svg class="icon">
+                                  <use xlink:href="#svg-tech-simple" />
+                                </svg>
+                            </span>
+                        </li>
                     </ul>
                 </ion-slide>
                 <ion-slide class="home-ticket-inside">
@@ -96,14 +146,22 @@
                         <h1>You are currently in demo mode.</h1>
                         <h2>Activate your UC Berkeley Email to create a real request</h2>
                     </div>
-                    <span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/email.html'"></span>
+                    <span class="home-ticket-icon">
+                        <svg class="icon">
+                          <use xlink:href="#svg-main-email" />
+                        </svg>
+                    </span>
                 </ion-slide>
                 <ion-slide class="home-ticket-inside">
                     <div>
                         <h1>Make a Referral</h1>
                         <h2>Skip the line by inviting a friend to Uguru</h2>
                     </div>
-                    <span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/gift.html'"></span>
+                    <span class="home-ticket-icon">
+                        <svg class="icon">
+                          <use xlink:href="#svg-tech-gift" />
+                        </svg>
+                    </span>
                 </ion-slide>
             </ion-slide-box>
         </div>
@@ -139,7 +197,11 @@
             <ul>
 				<li>
                     <a>
-                        <span ng-include="img_base + 'templates/svg/main/profile.html'"></span>
+                        <span>
+                            <svg class="icon">
+                              <use xlink:href="#svg-main-profile" />
+                            </svg>
+                        </span>
                         <span>Profile</span>
                     </a>
                 </li>
@@ -156,13 +218,21 @@
                 </li>
 				<li>
                     <a>
-                        <span ng-include="img_base + 'templates/svg/main/shield-star.html'"></span>
+                        <span>
+                            <svg class="icon">
+                              <use xlink:href="#svg-main-shield-star" />
+                            </svg>
+                        </span>
                         <span>Credibility</span>
                     </a>
                 </li>
                 <li>
                     <a ng-click='studentRequestModal.show()'>
-                        <span ng-include="img_base + 'templates/svg/main/stats.html'"></span>
+                        <span>
+                            <svg class="icon">
+                              <use xlink:href="#svg-main-stats" />
+                            </svg>
+                        </span>
                         <span>Ranking</span>
                     </a>
                 </li>

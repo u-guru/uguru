@@ -82,7 +82,11 @@
 		<!-- END Home Page CTAS -->
 
 		<header class='splash-header fixed top-0' id='home-nav-header' bind-wp="university" bind-wp-class="bg-charcoal" bind-wp-direction="down">
-			<a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="::img_base + 'templates/svg/logo-subtitle.html'"></a>
+			<a class="splash-logo" ng-click='scrollToSection("#splash-home")'>
+				<svg>
+                  <use xlink:href="#svg-logo-subtitle"/>
+                </svg>
+            </a>
 			<div class="ugrid-3" id='translate-to'>
 				<a name='browse-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 1}" ng-click='scrollToSection("#splash-university")'>Search Schools</a>
 				<a name='how-scroll' class="splash-nav-link ng-class:{'active':page.scroll.section_index === 2}" ng-click='scrollToSection("#splash-browse")'>How It Works</a>
@@ -173,21 +177,53 @@
 
 					<div class="splash-scene-markers">
 						<span class="splash-marker opacity-0 ng-class:{'animated bounceIn':subscene}" style="top: calc(70px + 5%); right: 15%;">
-							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
-							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+							<span>
+								<svg>
+				                  <use xlink:href="#svg-main-message"/>
+				                </svg>
+				            </span>
+							<span>
+								<svg>
+				                  <use xlink:href="#svg-main-desktop"/>
+				                </svg>
+				            </span>
 							<span class="splash-marker-label opacity-0">Rachel's Location</span>
 						</span>
 						<span class="splash-marker opacity-0 ng-class:{'animated bounceIn':subscene}" style="top: calc(70px + 10%); left: 5%;">
-							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
-							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+							<span>
+								<svg>
+				                  <use xlink:href="#svg-main-message"/>
+				                </svg>
+				            </span>
+							<span>
+								<svg>
+				                  <use xlink:href="#svg-main-desktop"/>
+				                </svg>
+				            </span>
 						</span>
 						<span class="splash-marker opacity-0 ng-class:{'animated bounceIn':subscene}" style="top: calc(70px + 25%); right: 5%;">
-							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
-							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+							<span>
+								<svg>
+				                  <use xlink:href="#svg-main-message"/>
+				                </svg>
+				            </span>
+							<span>
+								<svg>
+				                  <use xlink:href="#svg-main-desktop"/>
+				                </svg>
+				            </span>
 						</span>
 						<span class="splash-marker opacity-0 ng-class:{'animated bounceIn':subscene}" style="top: calc(70px + 40%); left: 15%;">
-							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
-							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+							<span>
+								<svg>
+				                  <use xlink:href="#svg-main-message"/>
+				                </svg>
+				            </span>
+							<span>
+								<svg>
+				                  <use xlink:href="#svg-main-desktop"/>
+				                </svg>
+				            </span>
 						</span>
 					</div>
 
@@ -221,7 +257,11 @@
 									<div class="device-header" style="background: #023360">
 										<div style='url("https://farm8.staticflickr.com/7318/9357094656_965041bc2b_k.jpg") center center / cover!important;'></div>
 										<h1>Discover Academia @</h1>
-										<span class="device-logo" ng-include="img_base + 'templates/svg/logo-subtitle-cal.html'"></span></span>
+										<span class="device-logo">
+											<svg>
+							                  <use xlink:href="#svg-logo-subtitle-cal"/>
+							                </svg>
+							            </span>
 									</div>
 									<div class="device-content">
 										<div class="device-trending">
@@ -402,7 +442,11 @@
 					<header class="splash-scene-header">
 						<ul>
 							<li>
-								<a class="splash-header-close close-button opacity-0 ng-class:{'animated bounceIn':subscene, 'show-opacity':subscene}" ng-include="img_base + 'templates/svg/main/plus.html'" ng-click="subscene = true;"></a>
+								<a class="splash-header-close close-button opacity-0 ng-class:{'animated bounceIn':subscene, 'show-opacity':subscene}" ng-click="subscene = true;">
+									<svg>
+					                  <use xlink:href="#svg-main-plus"/>
+					                </svg>
+					            </a>
 							</li>
 						</ul>
 					</header>
@@ -417,21 +461,53 @@
 					<div class="splash-scene-markers">
 						<div class="splash-scene-overlay opacity-0" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="7800"></div>
 						<span class="splash-marker opacity-0" style="top: calc(70px + 5%); right: 15%;" anim-on-show-child anim-on-show-class="bounceIn, active:keep" anim-on-show-delay="5400, 7800">
-							<span anim-on-show-child anim-on-show-class="pulse:keep, infinite:keep, animated:keep" anim-on-show-delay="7800, 7800, 7800" ng-include="img_base + 'templates/svg/main/message.html'"></span>
-							<span anim-on-show-child anim-on-show-class="pulse:keep, infinite:keep, animated:keep" anim-on-show-delay="7800" ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+							<span anim-on-show-child anim-on-show-class="pulse:keep, infinite:keep, animated:keep" anim-on-show-delay="7800, 7800, 7800">
+									<svg>
+					                  <use xlink:href="#svg-main-message"/>
+					                </svg>
+			                </span>
+							<span anim-on-show-child anim-on-show-class="pulse:keep, infinite:keep, animated:keep" anim-on-show-delay="7800">
+									<svg>
+					                  <use xlink:href="#svg-main-desktop"/>
+					                </svg>
+			                </span>
 							<span class="splash-marker-label opacity-0" anim-on-show-child anim-on-show-class="fadeIn" anim-on-show-delay="7800, 7800, 7800">Rachel's Location</span>
 						</span>
 						<span class="splash-marker opacity-0" style="top: calc(70px + 10%); left: 5%;" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="5800">
-							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
-							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+							<span>
+								<svg>
+				                  <use xlink:href="#svg-main-message"/>
+				                </svg>
+				            </span>
+							<span>
+								<svg>
+				                  <use xlink:href="#svg-main-desktop"/>
+				                </svg>
+				            </span>
 						</span>
 						<span class="splash-marker opacity-0" style="top: calc(70px + 25%); right: 5%;" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="6200">
-							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
-							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+							<span>
+								<svg>
+				                  <use xlink:href="#svg-main-message"/>
+				                </svg>
+				            </span>
+							<span>
+								<svg>
+				                  <use xlink:href="#svg-main-desktop"/>
+				                </svg>
+				            </span>
 						</span>
 						<span class="splash-marker opacity-0" style="top: calc(70px + 40%); left: 15%;" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="6200">
-							<span ng-include="img_base + 'templates/svg/main/message.html'"></span>
-							<span ng-include="img_base + 'templates/svg/main/desktop.html'"></span>
+							<span>
+								<svg>
+				                  <use xlink:href="#svg-main-message"/>
+				                </svg>
+				            </span>
+							<span>
+								<svg>
+				                  <use xlink:href="#svg-main-desktop"/>
+				                </svg>
+				            </span>
 						</span>
 					</div>
 
@@ -480,14 +556,22 @@
 								<h1>It’s <u>midnight</u> and I’m craving <u>fresh&nbsp;cookies</u>.</h1>>
 							</div>
 							<button disabled class="opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="400">At UC Berkeley</button>
-							<a class="active pause opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="550" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a>
+							<a class="active pause opacity-0" anim-on-show-child anim-on-show-class="bounceInUp" anim-on-show-delay="550">
+									<svg>
+					                  <use xlink:href="#svg-main-play-pause"/>
+					                </svg>
+					        </a>
 						</div>
 					</div>
 
 					<header class="splash-scene-header">
 						<ul>
 							<li>
-								<a class="splash-header-close close-button opacity-0" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="6500" ng-include="img_base + 'templates/svg/main/plus.html'"></a>
+								<a class="splash-header-close close-button opacity-0" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="6500">
+										<svg>
+						                  <use xlink:href="#svg-main-play-plus"/>
+						                </svg>
+						        </a>
 							</li>
 						</ul>
 					</header>
@@ -875,21 +959,42 @@
 			<footer class="splash-scene-footer">
 				<ul>
 					<li translate-on-click translate-to-elem="#translate-to" translate-x-offset="200" translate-y-offset="200" id='example-translate-elem'>
-						<a class="splash-footer-share" ng-include="img_base + 'templates/svg/main/share.html'"></a>
+						<a class="splash-footer-share">
+								<svg>
+				                  <use xlink:href="#svg-main-share"/>
+				                </svg>
+				        </a>
 					</li>
 					<li>
-						<a class="splash-footer-play-pause" ng-include="img_base + 'templates/svg/main/play-pause.html'"></a>
+						<a class="splash-footer-play-pause" >
+								<svg>
+				                  <use xlink:href="#svg-main-play-pause"/>
+				                </svg>
+				        </a>
+
 					</li>
 					<li>
-						<a class="splash-footer-mute" ng-include="img_base + 'templates/svg/main/mute.html'"></a>
+						<a class="splash-footer-mute">
+								<svg>
+				                  <use xlink:href="#svg-main-mute"/>
+				                </svg>
+				        </a>
 					</li>
 				</ul>
 				<ul>
 					<li>
-						<a ng-click='topHomeSlider.previous()' ng-include="img_base + 'templates/svg/main/left.html'"></a>
+						<a ng-click='topHomeSlider.previous()' >
+								<svg>
+				                  <use xlink:href="#svg-main-left"/>
+				                </svg>
+				        </a>
 					</li>
 					<li>
-						<a ng-click='topHomeSlider.next()' ng-include="img_base + 'templates/svg/main/right.html'"></a>
+						<a ng-click='topHomeSlider.next()' >
+							<svg>
+			                  <use xlink:href="#svg-main-right"/>
+			                </svg>
+				        </a>
 					</li>
 				</ul>
 			</footer>
@@ -1039,8 +1144,16 @@
 									<div class="opacity-0" anim-first-enter-down-child anim-first-enter-down-class="bounceIn" anim-first-enter-down-delay="{{[2200, 2400, 2600, 2800, 3000][$index]}}">
 										<span class="school-card-icon" style="background-image: url({{university.svg_url || university.seal_url || university.logo_url}}); border-color: {{university.school_color_one}};">
 											<span class="school-card-icon-bg" style="background-color: {{university.school_color_one}};"></span>
-											<span class="school-card-state" ng-include="img_base + 'templates/svg/main/check.html'"></span>
-											<span class="school-card-state" ng-include="img_base + 'templates/svg/main/plus.html'"></span>
+											<span class="school-card-state" >
+													<svg>
+									                  <use xlink:href="#svg-main-check"/>
+									                </svg>
+									        </span>
+											<span class="school-card-state">
+													<svg>
+									                  <use xlink:href="#svg-main-plus"/>
+									                </svg>
+									        </span>
 										</span>
 									</div>
 								</div>
@@ -1108,7 +1221,11 @@
 											<rect x="0" y="0" width="100" height="100"></rect>
 										</svg>
 										<div class='flex-wrap-center full-xy'>
-											<span ng-include="::img_base + 'templates/svg/' + hiw_item.icon_src"></span>
+											<span>
+													<svg>
+									                  <use xlink:href="" ng-href="#svg-{{ hiw_item.icon_src }}"/>
+									                </svg>
+									         </span>
 											<h1 class='full-x' ng-bind-html="::hiw_item.header"></h1>
 											<p ng-bind-html="::hiw_item.content"></p>
 										</div>
@@ -1120,7 +1237,11 @@
 											<rect x="0" y="0" width="100" height="100"></rect>
 										</svg>
 										<div class='flex-wrap-center full-xy'>
-											<span ng-include="::img_base + 'templates/svg/' + hiw_item.icon_src"></span>
+											 <span>
+													<svg>
+									                  <use xlink:href="" ng-href="#svg-{{ hiw_item.icon_src }}"/>
+									                </svg>
+									         </span>
 											<h1 class='full-x' ng-bind-html="::hiw_item.header"></h1>
 											<p ng-bind-html="::hiw_item.content"></p>
 										</div>
@@ -1149,7 +1270,11 @@
 									</svg>
 									<div>
 										<div>
-											<span class="hiw-icon opacity-0" ng-include="::img_base + 'templates/svg/' + hiw_item.icon_src" anim-enter-down-child anim-enter-down-class="bounceIn" anim-enter-down-delay="1000" anim-first-enter-down-child anim-first-enter-down-class="bounceIn" anim-first-enter-down-delay="{{::[1200, 900, 1300][$index]}}" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="{{::[1200, 900, 1300][$index]}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200"></span>
+											<span class="hiw-icon opacity-0" anim-enter-down-child anim-enter-down-class="bounceIn" anim-enter-down-delay="1000" anim-first-enter-down-child anim-first-enter-down-class="bounceIn" anim-first-enter-down-delay="{{::[1200, 900, 1300][$index]}}" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="{{::[1200, 900, 1300][$index]}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">
+													<svg>
+									                  <use xlink:href="" ng-href="#svg-{{ hiw_item.icon_src }}"/>
+									                </svg>
+									         </span>
 											<h1 ng-bind-html="::hiw_item.header"></h1>
 											<p ng-bind-html="::hiw_item.content"></p>
 										</div>
@@ -1169,7 +1294,11 @@
 									</svg>
 									<div>
 										<div>
-											<span class="hiw-icon" ng-include="::img_base + 'templates/svg/' + hiw_item.icon_src" anim-enter-down-child anim-enter-down-class="bounceIn" anim-enter-down-delay="1000" anim-first-enter-down-child anim-first-enter-down-class="bounceIn" anim-first-enter-down-delay="{{::[1100, 1400, 1000][$index]}}" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="{{::[1100, 1400, 1000][$index]}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200"></span>
+											<span class="hiw-icon" anim-enter-down-child anim-enter-down-class="bounceIn" anim-enter-down-delay="1000" anim-first-enter-down-child anim-first-enter-down-class="bounceIn" anim-first-enter-down-delay="{{::[1100, 1400, 1000][$index]}}" anim-on-show-child anim-on-show-class="bounceIn" anim-on-show-delay="{{::[1100, 1400, 1000][$index]}}" anim-on-hide-child anim-on-hide-class="fadeOut" anim-on-show-delay="200">
+													<svg>
+									                  <use xlink:href="" ng-href="#svg-{{ hiw_item.icon_src }}"/>
+									                </svg>
+									         </span>
 											<h1 ng-bind-html="::hiw_item.header"></h1>
 											<p ng-bind-html="::hiw_item.content"></p>
 										</div>
@@ -1248,7 +1377,11 @@
 								<a class="pf-card-mini large pf-card-mini-{{::category.hex_color}}" id='cta-box-{{::category.hex_color}}'>
 									<div class="pf-card-mini-banner"></div>
 									<span class="user-icon" style="background-image: url({{sampleMiniProfilesDict[category.hex_color].profile_url}});"></span>
-									<span class="pf-card-link" ng-include="::img_base + 'templates/svg/main/external.html'"></span>
+									<span class="pf-card-link">
+										<svg>
+				                          <use xlink:href="#svg-main-external"/>
+				                        </svg>
+				                    </span>
 								</a>
 							</li>
 						</ul>
@@ -1344,7 +1477,11 @@
 										<rect x="0" y="0" width="100" height="100"></rect>
 									</svg>
 									<div class='flex-wrap-center full-xy'>
-										<span ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
+										<span>
+											<svg>
+					                          <use xlink:href="" ng-href="#svg-{{ bg_item.icon_src }}"/>
+					                        </svg>
+					                    </span>
 										<h1 class='full-x' ng-bind-html="::bg_item.header"></h1>
 										<p ng-bind-html="::bg_item.content"></p>
 									</div>
@@ -1356,7 +1493,11 @@
 										<rect x="0" y="0" width="100" height="100"></rect>
 									</svg>
 									<div class='flex-wrap-center full-xy'>
-										<span ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
+										<span>
+												<svg>
+						                          <use xlink:href="" ng-href="#svg-{{ bg_item.icon_src }}"/>
+						                        </svg>
+										</span>
 										<h1 class='full-x' ng-bind-html="::bg_item.header"></h1>
 										<p ng-bind-html="::bg_item.content"></p>
 									</div>
@@ -1383,7 +1524,11 @@
 								</svg>
 								<div>
 									<div>
-										<span class="postit-icon" ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
+										<span class="postit-icon">
+											<svg>
+					                          <use xlink:href="" ng-href="#svg-{{ bg_item.icon_src }}"/>
+					                        </svg>
+										</span>
 										<h1 ng-bind-html="::bg_item.header"></h1>
 										<p ng-bind-html="::bg_item.content"></p>
 									</div>
@@ -1403,7 +1548,11 @@
 								</svg>
 								<div>
 									<div>
-										<span class="postit-icon" ng-include="::img_base + 'templates/svg/' + bg_item.icon_src"></span>
+										<span class="postit-icon">
+											<svg>
+					                          <use xlink:href="" ng-href="#svg-{{ bg_item.icon_src }}"/>
+					                        </svg>
+										</span>
 										<h1 ng-bind-html="::bg_item.header"></h1>
 										<p ng-bind-html="::bg_item.content"></p>
 									</div>
@@ -1424,7 +1573,11 @@
 				<ul>
 					<li>proudly made&nbsp;with</li>
 					<li>
-						<span ng-include="::img_base + 'templates/svg/main/heart.html'"></span>
+						<span ng-include="::img_base + 'templates/svg/main/heart.html'">
+							<svg>
+	                          <use xlink:href="#svg-main-heart"/>
+	                        </svg>
+						</span>
 					</li>
 					<li>by college students</li>
 				</ul>

@@ -56,7 +56,11 @@
             </li>
             <li class="post post-{{event.category}}" ng-repeat='event in timeline.events' tabindex>
                 <span class="post-icon">
-                    <span ng-include="img_base + 'templates/svg/timeline/' + event.category + '.html'"></span>
+                    <span>
+                        <svg>
+                          <use xlink:href="" ng-href="#svg-timeline-{{event.category}}"/>
+                        </svg>  
+                    </span>    
                     <span>{{event.formatted_category || event.category}}</span>
                 </span>
                 <article class="post-content">

@@ -19,7 +19,11 @@
             </a>
         </header>
         <header class='splash-header ng-class:{"become-guru-active": becomeGuruHeaderActive}'>
-            <a class="splash-logo" ng-click='scrollToSection("#essay-header")' ng-include="img_base + 'templates/svg/logo-hs.html'"></a>
+            <a class="splash-logo" ng-click='scrollToSection("#essay-header")'>
+                <svg class="icon">
+                  <use xlink:href="#svg-logo-hs"/>
+                </svg>
+            </a>
             <a name='price-scroll' ng-click='scrollToSection("#essay-pricing")'>Pricing</a>
             <a name='how-scroll' ng-click='scrollToSection("#essay-how-it-works")'>How It Works</a>
             <!-- <a ng-click='scrollToSection("#timeline")'>Timeline</a> -->
@@ -41,7 +45,11 @@
                 </h1>
                 <button ng-click='goToUniversity()'>{{callToAction.extendedText}}</button>
             </div>
-            <a class='arrow-down-next' ng-click='scrollToSection("#essay-pricing")' ng-include="img_base + 'templates/svg/main/down.html'"></a>
+            <a class='arrow-down-next' ng-click='scrollToSection("#essay-pricing")'>
+                <svg class="icon">
+                  <use xlink:href="#svg-main-down"/>
+                </svg>
+            </a>
         </section>
         <section class="essay-pricing" id='essay-pricing'>
             <header>
@@ -58,15 +66,24 @@
                             <div class="ticket-bot">
                                 <ul>
                                     <li>
-                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-icon">
+                                              <use xlink:href="#svg-main-plus-circle"/>
+                                            </svg>
+                                        </span>
                                         <span class="ticket-info">Unlimited File Storage and Sharing within Messages</span>
                                     </li>
                                     <li>
-                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-icon">
+                                              <use xlink:href="#svg-main-plus-circle"/>
+                                            </svg>
+                                        </span>
                                         <span class="ticket-info">Guaranteed within-24hr response until app deadline</span>
                                     </li>
                                     <li>
-                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-icon">
+                                              <use xlink:href="#svg-main-plus-circle"/>
+                                            </svg>
+                                        </span>
                                         <span class="ticket-info">Private Messaging Thread</span>
                                     </li>
                                 </ul>
@@ -83,15 +100,24 @@
                             <div class="ticket-bot">
                                 <ul>
                                     <li>
-                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-icon">
+                                              <use xlink:href="#svg-main-plus-circle"/>
+                                            </svg>
+                                        </span>
                                         <span class="ticket-info">Private Messaging Thread</span>
                                     </li>
                                     <li>
-                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-icon">
+                                              <use xlink:href="#svg-main-plus-circle"/>
+                                            </svg>
+                                        </span>
                                         <span class="ticket-info">Attach necessary files</span>
                                     </li>
                                     <li>
-                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-icon" >
+                                              <use xlink:href="#svg-main-plus-circle"/>
+                                            </svg>
+                                        </span>
                                         <span class="ticket-info">Guaranteed 24 hour reply</span>
                                     </li>
                                 </ul>
@@ -108,15 +134,24 @@
                             <div class="ticket-bot">
                                 <ul>
                                     <li>
-                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-icon">
+                                              <use xlink:href="#svg-main-plus-circle"/>
+                                            </svg>
+                                        </span>
                                         <span class="ticket-info">Clarify exactly what you need beforehand</span>
                                     </li>
                                     <li>
-                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-icon">
+                                              <use xlink:href="#svg-main-plus-circle"/>
+                                            </svg>
+                                        </span>
                                         <span class="ticket-info">Guaranteed <i>at least</i> 10 comments and 30m spent</span>
                                     </li>
                                     <li>
-                                        <span class="ticket-icon" ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                                        <span class="ticket-icon" >
+                                              <use xlink:href="#svg-main-plus-circle"/>
+                                            </svg>
+                                        </span>
                                         <span class="ticket-info">24 hour Q&A period with Guru after completion</span>
                                     </li>
                                 </ul>
@@ -155,9 +190,18 @@
                 </ul>
                 <ul class='ugrid-3 text-center'>
                     <li class="hiw-{{hiw_item.svg_url}}" ng-repeat="hiw_item in how_it_works.bottom_half">
-                        <span class="hiw-icon" ng-include='img_base + "templates/svg/main/shield-lock.html"'></span>
-                        <span class="hiw-icon" ng-include='img_base + "templates/svg/main/satisfaction.html"'></span>
-                        <span class="hiw-icon" ng-include='img_base + "templates/svg/main/safety.html"'></span>
+                        <span class="hiw-icon" >
+                              <use xlink:href="#svg-main-shield-lock"/>
+                            </svg>
+                        </span>
+                        <span class="hiw-icon">
+                              <use xlink:href="#svg-main-satisfaction"/>
+                            </svg>
+                        </span>
+                        <span class="hiw-icon" >
+                              <use xlink:href="#svg-main-safety"/>
+                            </svg>
+                        </span>
                         <h1>{{hiw_item.header}}.</h1>
                         <p>{{hiw_item.content}}</p>
                     </li>

@@ -1,7 +1,11 @@
 <ion-view class='uguru-view desktop-login-view bg-charcoal' id='essay-student-login'>
 	<main id='desktop-signup' class="desktop-forms desktop-mode">
 		<aside>
-			<span ng-include="img_base + BASE + 'templates/svg/main-logo-static.html'"></span>
+			<span>
+				<svg class="icon">
+				  <use xlink:href="#svg-main-logo-static" />
+				</svg>
+			</span>
 			<div>
 				<h1>
 					<span class="hide ng-class:{'show':!page.toggles.login.active}">

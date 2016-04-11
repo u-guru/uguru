@@ -1,7 +1,11 @@
 
 <div id="admin" class='full-xy flex-wrap-center flex-stretch absolute'>
     <header>
-        <span class="admin-logo" ng-include="img_base + BASE + 'templates/svg/logo-admin.html'"></span>
+        <span class="admin-logo" >
+            <svg class="icon">
+              <use xlink:href="#svg-logo-admin" />
+            </svg>
+        </span>
          <div class='flex-right absolute top-0 right-0'>
             <a ng-click='initAndLaunchAdminItemCTA($event)' id='cta-box-admin-item' ng-hide="adminItemCTAShown" class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
                 <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5px">
@@ -15,7 +19,9 @@
             <a class='full-x p20xy flex-wrap-center bg bg-charcoal' ng-class="{'active': page.layout.sidebar.index === $index}" ng-repeat='section in page.layout.sections' ng-click='page.layout.sidebar.index = $index;'>{{section.title}}</a>
         </aside>
         <div id='main-admin-content' class="admin-main">
-            <ion-pane id='cta-modal-admin-item' class='full-xy hide-display cta-modal bg-azure absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch' ng-include="img_base + BASE + 'templates/admin/index.create.html'"></ion-pane>
+            <ion-pane id='cta-modal-admin-item' class='full-xy hide-display cta-modal bg-azure absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch' ng-include="img_base + BASE + 'templates/admin/index.create" />
+                                            </svg>
+                                        </ion-pane>
             <ion-pane id='cta-modal-selected-asset-action' class='full-xy hide-display cta-modal bg-azure absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch'>
                 <a ng-click='hideComponentCTA()' class='absolute top-0 right-0 m20xy cta-modal-close close-icon high-z-index'>
                     <svg viewBox="0 0 100 100" ng-if='desktopMode' style='height:20px; width:20px;' stroke='#FFFFFF' fill="#FFFFFF" stroke-width="5">
@@ -56,7 +62,9 @@
                     </div>
                 </div>
             </ion-pane>
-            <ion-pane id='cta-modal-selected-tool' class='fixed full-xy hide-display cta-modal bg-charcoal absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch' ng-include="img_base + BASE + 'templates/dev/tools.build.html'">
+            <ion-pane id='cta-modal-selected-tool' class='fixed full-xy hide-display cta-modal bg-charcoal absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch' ng-include="img_base + BASE + 'templates/dev/tools.build" />
+                                            </svg>
+                                        
 
             </ion-pane>
             <ion-pane id='cta-modal-selected-scene' class='full-xy hide-display cta-modal bg-charcoal absolute top-0 left-0 high-z-index flex-wrap-center flex-stretch' >
@@ -376,7 +384,9 @@
                                 </ul> -->
                             </div>
                         </div>
-                        <div class='admin-states admin-states-jason flex-wrap-start full-xy' ng-if='selected_scene.tabIndex === 2' ng-include="img_base + BASE + 'templates/admin/index.test-states.html'">
+                        <div class='admin-states admin-states-jason flex-wrap-start full-xy' ng-if='selected_scene.tabIndex === 2' ng-include="img_base + BASE + 'templates/admin/index.test-states" />
+                                            </svg>
+                                        
                             <div class='admin-states-header relative'>
                                 <h1>Test States</h1>
                                 <div>{{selected_scene.element_states.testing.length}}</div>
@@ -1028,35 +1038,67 @@
                                 <h2>/category/normal</h2>
                                 <ul class="large">
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/academic.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-academic" />
+                                            </svg>
+                                        </span>
                                         <span>academic</span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/baking.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-baking" />
+                                            </svg>
+                                        </span>
                                         <span>baking</span
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/household.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-household" />
+                                            </svg>
+                                        </span>
                                         <span>household</span
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/photography.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-photography" />
+                                            </svg>
+                                        </span>
                                         <span>photography</span
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/tech.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-tech" />
+                                            </svg>
+                                        </span>
                                         <span>tech</span
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/athletic.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-athletic" />
+                                            </svg>
+                                        </span>
                                         <span>athletic</span
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/delivery.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-delivery" />
+                                            </svg>
+                                        </span>
                                         <span>delivery</span
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/freelancing.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-freelancing" />
+                                            </svg>
+                                        </span>
                                         <span>freelancing</span
                                     </li>
                                 </ul>
@@ -1067,35 +1109,67 @@
                                 <h2>/category/bottom</h2>
                                 <ul class="large">
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/academic-bottom.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-academic-bottom" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/baking-bottom.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-baking-bottom" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/household-bottom.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-household-bottom" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/photography-bottom.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-photography-bottom" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/tech-bottom.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-tech-bottom" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/athletic-bottom.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-athletic-bottom" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/delivery-bottom.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-delivery-bottom" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/freelancing-bottom.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-freelancing-bottom" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                 </ul>
@@ -1106,23 +1180,43 @@
                                 <h2>/category/simple</h2>
                                 <ul class="large">
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-freelancing-simple" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-baking-simple" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/household-simple.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-household-simple" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-photography-simple" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/tech-simple.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-tech-simple" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                 </ul>
@@ -1133,103 +1227,203 @@
                                 <h2>/nav</h2>
                                 <ul>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/arrow.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-arrow" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/check.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-check" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-check-circle" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                       
+                                         <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-dash" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-dash-circle" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-down" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-external" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-left" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-menu" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-circle" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-more" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-mute" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-pasue" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-play" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-plus" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-plus-circle" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-search" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-right" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-search-plus" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-share" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>           
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-skip" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-settings" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/check-circle.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-switch" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/dash.html'"></span>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-up" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/dash-circle.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/down.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/external.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/left.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/menu.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/menu-circle.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/more.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/mute.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/pause.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/play.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/plus-circle.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/search.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/search-plus.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/share.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/skip.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/switch.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/up.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/up-circle.html'"></span>
+                                    <li>                                        
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-up-circle" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                 </ul>
@@ -1240,218 +1434,435 @@
                                 <h2>/general</h2>
                                 <ul>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/airplane.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-airplane" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/attach.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-attach" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/become.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-become" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/calendar.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-calendar" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/camera.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-camera" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/camera-alt.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-camera-alt" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/card.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-card" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/card-fill.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-card-fill" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/clock.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-clock" />
+                                            </svg>
+                                        </span
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/contacts.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-contacts" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/desktop.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-desktop" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/diploma.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-diploma" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/document.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-document" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/edit.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-edit" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/email.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-email" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/experience.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-experience" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/faq.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-faq" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/filter.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-filter" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/gift.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-gift" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/grades.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-grades" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/grades-a.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-grades-a" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/heart.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-heart" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/home.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-home" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/info.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-info" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/internet.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-internet" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/lightbulb.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-lightbulb.html" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/lightning.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-lighting" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/location.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-location" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/lock.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-lock" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/logout.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-logout" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/message.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-message" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/mobile.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-mobile" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/money.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-money" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/notifications.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-notifications" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/phone.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-phone" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/photo.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-photo" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/popular.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-popular" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/profile.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-profile" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/question.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-question" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/safety.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-safety" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/satisfaction.html'"></span>
-                                        <span></span>
-                                    </li><li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/save.html'"></span>
-                                        <span></span>
-                                    </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/shield.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-satisfaction" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/shield-lock.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-save" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/shield-star.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-shield" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-shield-lock" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/star-half.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-shield-star" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/stats.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-star" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/support.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-star-half" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/timeline.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-stats" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/transcript.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-support" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/upcoming.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-timeline" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/user.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-transcript" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/video.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-upcoming" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-user" />
+                                            </svg>
+                                        </span>
+                                        <span></span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-video" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                 </ul>
@@ -1462,11 +1873,19 @@
                                 <h2>/food</h2>
                                 <ul>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/donut.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-dount" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/coffee.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-coffee" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                 </ul>
@@ -1477,35 +1896,69 @@
                                 <h2>/wwf</h2>
                                 <ul>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/wwf/cat.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-wwf-cat" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/wwf/chipotle.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-wwf-chipotle" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/wwf/dog.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-wwf-dog" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/wwf/dogecoin.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-wwf-dogecoin" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/wwf/gift-card.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-wwf-gift-card" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/wwf/meal-points.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-wwf-meal-points" />
+                                            </svg>
+                                        </span>="wwf/meal-points" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/wwf/pizza.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-wwf-pizza" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/wwf/tickets.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-wwf-tickets" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                 </ul>
@@ -1516,39 +1969,75 @@
                                 <h2>/map</h2>
                                 <ul>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/map/bus-stop.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-map-bus-stop" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/map/establishment.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-map-establishment" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/map/grocery.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-map-grocery" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/map/library.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-map-library" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/map/lodging.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-map-lodging" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/map/parking.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-map-parking" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/map/restaurant.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-map-restaurant" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/map/theater.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-map-theater" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                     <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/main/map/weight.html'"></span>
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-main-map-weight" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                 </ul>
@@ -1558,28 +2047,52 @@
                                 <h1>Timeline Icons*</h1>
                                 <h2>/timeline</h2>
                                 <ul>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/timeline/blog.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-timeline-blog" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/timeline/college.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-timeline-college" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/timeline/high-school.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-timeline-high-school" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/timeline/milestone.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-timeline-milestone" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/timeline/parent.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-timeline-parent" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/timeline/professional.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-timeline-professional" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                 </ul>
@@ -1589,74 +2102,142 @@
                                 <h1>Splash Icons</h1>
                                 <h2>/splash</h2>
                                 <ul class="large">
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/anytime.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-anytime" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/career.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-career" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/earn.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-earn" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/fees.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-fees" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/organize.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-organize" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/pajamas.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-pajamas" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/payment.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-payment" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/profile.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-profile" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/promotion.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-promotion" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/same.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-same" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/save.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-save" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/skills.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-skills" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                 </ul>
                                 <ul>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/account.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-account" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/courses.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-courses" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/demographic.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-demographic" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/promo.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-promo" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/splash/university.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-splash-university" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                 </ul>
@@ -1666,20 +2247,36 @@
                                 <h1>Social Icons</h1>
                                 <h2>/social</h2>
                                 <ul>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/social/facebook.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-social-facebook" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/social/instagram.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-social-instagram" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/social/linkedin.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-social-linkedin" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
-                                    <li>
-                                        <span ng-include="img_base + BASE + 'templates/svg/social/twitter.html'"></span>
+
+                                        <span>
+                                            <svg class="icon">
+                                              <use xlink:href="#svg-social-twitter" />
+                                            </svg>
+                                        </span>
                                         <span></span>
                                     </li>
                                 </ul>
@@ -2602,7 +3199,9 @@
                     </div>
                 </div>
             </section>
-            <section id="admin-tools" class='flex-wrap-center full-x' ng-hide='page.layout.sidebar.index !== 4'  ng-include="img_base + BASE + 'templates/admin/index.tools.html'">
+            <section id="admin-tools" class='flex-wrap-center full-x' ng-hide='page.layout.sidebar.index !== 4'  ng-include="img_base + BASE + 'templates/admin/index.tools" />
+                                            </svg>
+                                        
 
             </section>
         </div>

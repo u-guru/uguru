@@ -1,6 +1,10 @@
 <ion-view class='uguru-view home-view'>
     <section id="mobile-student-home" class="mobile-home">
-        <a id="nav-icon-burger" class="nav-icon-burger" ng-if='user || user.id' ng-click='toggleRightSideMenu()' ng-include="img_base + 'templates/svg/main/menu-circle.html'"></a>
+        <a id="nav-icon-burger" class="nav-icon-burger" ng-if='user || user.id' ng-click='toggleRightSideMenu()' >
+            <svg>
+              <use xlink:href="#svg-main-meny-circle"/>
+            </svg>
+        </a>
         <div class="home-top">
             <div class="toggle round" ng-if='!user || !user.id' ng-click='signupModal.show()'>
                 <input type="checkbox" checked />
@@ -63,15 +67,27 @@
                     </div>
                     <ul class="home-ticket-icon-bar">
                         <li class="academic">
-                            <span ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></span>
+                            <span>
+                                <svg>
+                                  <use xlink:href="#svg-academic-simple"/>
+                                </svg>
+                            </span>
                             <span>1-on-1 Help</span>
                         </li>
                         <li class="baking">
-                            <span ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></span>
+                            <span >
+                                <svg>
+                                  <use xlink:href="#svg-baking-simple"/>
+                                </svg>
+                            </span>
                             <span>Birthday Cake</span>
                         </li>
                         <li class="photography">
-                            <span ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></span>
+                            <span>
+                                <svg>
+                                  <use xlink:href="#svg-photography-simple"/>
+                                </svg>
+                            </span>
                             <span>Graduation</span>
                         </li>
                     </ul>
@@ -82,11 +98,31 @@
                         <h2>Activate your UC Berkeley Email to create a real request</h2>
                     </div>
                     <ul class="home-ticket-icon-bar">
-                        <li class="academic" ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></li>
-                        <li class="baking" ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></li>
-                        <li class="photography" ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></li>
-                        <li class="household" ng-include="img_base + BASE + 'templates/svg/household-simple.html'"></li>
-                        <li class="tech" ng-include="img_base + BASE + 'templates/svg/tech-simple.html'"></li>
+                        <li class="academic">
+                                <svg>
+                                  <use xlink:href="#svg-academic-simple"/>
+                                </svg>
+                        </li>
+                        <li class="baking">
+                                <svg>
+                                  <use xlink:href="#svg-baking-simple"/>
+                                </svg>
+                        </li>
+                        <li class="photography">
+                                <svg>
+                                  <use xlink:href="#svg-photography-simple"/>
+                                </svg>
+                        </li>
+                        <li class="household">
+                                <svg>
+                                  <use xlink:href="#svg-household-simple"/>
+                                </svg>
+                        </li>
+                        <li class="tech">
+                                <svg>
+                                  <use xlink:href="#svg-tech-simple"/>
+                                </svg>
+                        </li>
                     </ul>
                 </ion-slide>
                 <ion-slide class="home-ticket-inside">
@@ -94,14 +130,23 @@
                         <h1>You are currently in demo mode.</h1>
                         <h2>Activate your UC Berkeley Email to create a real request</h2>
                     </div>
-                    <span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/email.html'"></span>
+                    <span class="home-ticket-icon">
+                            <svg>
+                              <use xlink:href="#svg-main-simple"/>
+                            </svg>
+                    </span>
+
                 </ion-slide>
                 <ion-slide class="home-ticket-inside">
                     <div>
                         <h1>Make a Referral</h1>
                         <h2>Skip the line by inviting a friend to Uguru</h2>
                     </div>
-                    <span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/gift.html'"></span>
+                    <span class="home-ticket-icon" >
+                            <svg>
+                              <use xlink:href="#svg-main-gift"/>
+                            </svg>
+                    </span>
                 </ion-slide>
             </ion-slide-box>
         </div>
@@ -131,37 +176,61 @@
             <ul>
                 <li>
                     <a ng-click='studentRequestModal.show()'>
-                        <span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
+                        <span>
+                                <svg>
+                                  <use xlink:href="#svg-main-calendar"/>
+                                </svg>
+                        </span>
                         <span>Request</span>
                     </a>
                 </li>
                 <li>
                     <a>
-                        <span ng-include="img_base + 'templates/svg/main/become.html'"></span>
+                        <span>
+                                <svg>
+                                  <use xlink:href="#svg-main-become"/>
+                                </svg>
+                        </span>
                         <span>Become Guru</span>
                     </a>
                 </li>
                 <li>
                     <a>
-                        <span ng-include="img_base + 'templates/svg/main/lightbulb.html'"></span>
+                        <span>
+                                <svg>
+                                  <use xlink:href="#svg-main-lightbulb"/>
+                                </svg>
+                        </span>
                         <span>Quick Solver</span>
                     </a>
                 </li>
                 <li>
                     <a ng-click='studentCoursesModal.show();'>
-                        <span ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                        <span>
+                                <svg>
+                                  <use xlink:href="#svg-plus-circle"/>
+                                </svg>
+                        </span>
                         <span>Add Courses</span>
                     </a>
                 </li>
                 <li>
                     <a>
-                        <span ng-include="img_base + 'templates/svg/main/lightning.html'"></span>
+                        <span>
+                                <svg>
+                                  <use xlink:href="#svg-main-lighting"/>
+                                </svg>
+                        </span>
                         <span>Powerups</span>
                     </a>
                 </li>
                 <li>
                     <a>
-                        <span ng-include="img_base + 'templates/svg/main/more.html'"></span>
+                        <span>
+                                <svg>
+                                  <use xlink:href="#svg-main-more"/>
+                                </svg>
+                        </span>
                         <span>View More</span>
                     </a>
                 </li>

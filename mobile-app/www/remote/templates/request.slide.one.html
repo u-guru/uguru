@@ -11,7 +11,11 @@
 						<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 					</svg>
 					<div class="category-tile-inside">
-						<div class="category-tile-icon" ng-include="img_base + 'templates/svg/' + category.hex_color + '.html'"></div>
+						<div class="category-tile-icon">
+							<svg>
+			                  <use xlink:href="" ng-href="#svg-{{category.hex_color}}"/>
+			                </svg>
+						</div>
 						<h1>{{::category.name}}</h1>
 					</div>
 				</a>
@@ -30,7 +34,11 @@
 		<ul class="request-category-tiles mobile" ng-if="!desktopMode">
 			<li name='category-menu' ng-repeat='category in ::categories' ng-if='category.is_active'>
 				<a class='bg-{{category.hex_color}}' ng-click='showDesktopSubcategories(category, requestForm)'>
-					<span class="card-icon" ng-include="img_base + 'templates/svg/' + category.hex_color + '.html'"></span>
+					<span class="card-icon">
+						<svg>
+		                  <use xlink:href="" ng-href="#svg-{{category.hex_color}}"/>
+		                </svg>
+					</span>
 					<span class="card-label">{{::category.name}}</span>
 				</a>
 			</li>

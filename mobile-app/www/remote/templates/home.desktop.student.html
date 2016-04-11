@@ -54,7 +54,11 @@
 
 			<div class="home-main">
 				<div class="home-tiles-top">
-					<div class="home-tiles-guru" ng-include="img_base + BASE + 'templates/svg/tour-guru.html'"></div>
+					<div class="home-tiles-guru">
+						<svg>
+                          <use xlink:href="#svg-tour-guru"/>
+                        </svg>
+                    </div>
 					<div class="home-tiles-daily">
 						<div class="home-ticket"><div></div></div>
 						<ion-slide-box show-pager="false" class="home-ticket-content">
@@ -104,15 +108,27 @@
 								</div>
 								<ul class="home-ticket-icon-bar">
 									<li class="academic">
-										<span ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></span>
+										<span>
+											<svg>
+					                          <use xlink:href="#svg-academic-simple"/>
+					                        </svg>
+					                    </span>
 										<span>1-on-1 Help</span>
 									</li>
 									<li class="baking">
-										<span ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></span>
+										<span >
+											<svg>
+					                          <use xlink:href="#svg-baking-simple"/>
+					                        </svg>
+					                    </span>
 										<span>Birthday Cake</span>
 									</li>
 									<li class="photography">
-										<span ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></span>
+										<span>
+											<svg>
+					                          <use xlink:href="#svg-photography-simple"/>
+					                        </svg>
+					                    </span>
 										<span>Graduation</span>
 									</li>
 								</ul>
@@ -124,11 +140,31 @@
 									<h2>Activate your UC Berkeley Email to create a real request</h2>
 								</div>
 								<ul class="home-ticket-icon-bar">
-									<li class="academic" ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></li>
-									<li class="baking" ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></li>
-									<li class="photography" ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></li>
-									<li class="household" ng-include="img_base + BASE + 'templates/svg/household-simple.html'"></li>
-									<li class="tech" ng-include="img_base + BASE + 'templates/svg/tech-simple.html'"></li>
+									<li class="academic">
+											<svg>
+					                          <use xlink:href="#svg-academic-simple"/>
+					                        </svg>
+				                    </li>
+									<li class="baking">
+											<svg>
+					                          <use xlink:href="#svg-baking-simple"/>
+					                        </svg>
+				                    </li>
+									<li class="photography">
+											<svg>
+					                          <use xlink:href="#svg-photography-simple"/>
+					                        </svg>
+				                    </li>
+									<li class="household">
+											<svg>
+					                          <use xlink:href="#svg-household-simple"/>
+					                        </svg>
+				                    </li>
+									<li class="tech">
+											<svg>
+					                          <use xlink:href="#svg-tech-simple"/>
+					                        </svg>
+				                    </li>
 								</ul>
 								<button class="bg-lake semibold">Activate my Student Email</button>
 							</ion-slide>
@@ -137,7 +173,11 @@
 									<h1>You are currently in demo mode.</h1>
 									<h2>Activate your UC Berkeley Email to create a real request</h2>
 								</div>
-								<span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/email.html'"></span>
+								<span class="home-ticket-icon" >
+										<svg>
+				                          <use xlink:href="#svg-main-email"/>
+				                        </svg>
+			                    </span>
 								<button class="bg-lake semibold">Activate my Student Email</button>
 							</ion-slide>
 							<ion-slide class="home-ticket-inside">
@@ -145,23 +185,43 @@
 									<h1>Make a Referral</h1>
 									<h2>Skip the line by inviting a friend to Uguru</h2>
 								</div>
-								<span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/gift.html'"></span>
+								<span class="home-ticket-icon">
+										<svg>
+				                          <use xlink:href="#svg-main-gift"/>
+				                        </svg>
+			                    </span>
 								<button class="bg-lake semibold">Refer a Friend</button>
 							</ion-slide>
 						</ion-slide-box>
 					</div>
 					<div class="home-tiles-powerups home-tiles-container">
 						<a class="home-tile gpa">
-							<div class="home-tile-inside" ng-include="img_base + BASE + 'templates/svg/gpa.html'"></div>
+							<div class="home-tile-inside">
+									<svg>
+			                          <use xlink:href="#svg-gpa"/>
+			                        </svg>
+		                    </div>
 						</a>
 						<a class="home-tile munchies">
-							<div class="home-tile-inside" ng-include="img_base + BASE + 'templates/svg/munchies.html'"></div>
+							<div class="home-tile-inside">
+									<svg>
+			                          <use xlink:href="#svg-machines"/>
+			                        </svg>
+		                    </div>
 						</a>
 						<a class="home-tile sound">
-							<div class="home-tile-inside" ng-include="img_base + BASE + 'templates/svg/sound.html'"></div>
+							<div class="home-tile-inside">
+									<svg>
+			                          <use xlink:href="#svg-sound"/>
+			                        </svg>
+		                    </div>
 						</a>
 						<a class="home-tile transit">
-							<div class="home-tile-inside" ng-include="img_base + BASE + 'templates/svg/transit.html'"></div>
+							<div class="home-tile-inside">
+									<svg>
+			                          <use xlink:href="#svg-transit"/>
+			                        </svg>
+		                    </div>
 						</a>
 					</div>
 				</div>
@@ -170,7 +230,11 @@
 						<a class="home-tile" id='cta-box-student-request'>
 							<div class="home-tile-inside">
 								<div>
-									<span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
+									<span>
+											<svg>
+					                          <use xlink:href="#svg-main-calendar"/>
+					                        </svg>
+				                    </span>
 									<h1>Request a Guru</h1>
 									<h2>Your peers who aced<br/>your current courses!</h2>
 								</div>
@@ -182,7 +246,11 @@
 			                        <rect x="0" y="0" width="100" height="100"></rect>
 			                    </svg>
 								<div>
-									<span ng-include="img_base + 'templates/svg/main/lightbulb.html'"></span>
+									<span>
+											<svg>
+					                          <use xlink:href="#svg-main-lightbulb"/>
+					                        </svg>
+				                    </span>
 									<h1>Quick Solver</h1>
 									<h2>Take a photo or<br/>ask a question</h2>
 								</div>
@@ -191,7 +259,11 @@
 						<a class="home-tile" ng-click='goToDesktopBecomeGuru()'>
 							<div class="home-tile-inside">
 								<div>
-									<span ng-include="img_base + 'templates/svg/main/become.html'"></span>
+									<span>
+											<svg>
+					                          <use xlink:href="#svg-main-become"/>
+					                        </svg>
+				                    </span>
 									<h1>Become a Guru</h1>
 									<h2>Done early?<br/>Return the favor!</h2>
 								</div>
@@ -200,7 +272,11 @@
 						<a id='cta-box-student-courses' class="cta-box home-tile">
 							<div class="home-tile-inside">
 								<div>
-									<span ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+									<span>
+											<svg>
+					                          <use xlink:href="#svg-main-plus-circle"/>
+					                        </svg>
+				                    </span>
 									<h1>
 										<span class='ng-class:{"hide":user.student_courses.length}'>Add Your Courses</span>
 										<span class='hide ng-class:{"show":user.student_courses.length}' data-courses="{{user.student_courses.length}}">

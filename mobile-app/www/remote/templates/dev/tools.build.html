@@ -29,7 +29,11 @@
                         <dropdown ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
                     </div>
                     <dropdown ng-model="page.dropdowns.screenSizeOptions"></dropdown>
-                    <a ng-click='settings.activated = !settings.activated;' class="build-main-settings" ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
+                    <a ng-click='settings.activated = !settings.activated;' class="build-main-settings">
+                        <svg class="icon">
+                          <use xlink:href="#svg-main-settings" />
+                        </svg>
+                    </a>
                 </div>
             </nav>
 
@@ -188,16 +192,32 @@
 
                                 <a class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
                             </h1>
-                            <a class='build-activate close' ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click='removeTimeState($index)'></a>
+                            <a class='build-activate close' ng-click='removeTimeState($index)'>
+                                <svg class="icon">
+                                  <use xlink:href="#svg-main-pluslay" />
+                                </svg>
+                            </a>
                             <!-- Collapse component vars-->
-                            <a ng-click='updateTimeStateCollapses(current_state.timeline, time_state)' ng-class="{'collapse': !time_state.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
+                            <a ng-click='updateTimeStateCollapses(current_state.timeline, time_state)' ng-class="{'collapse': !time_state.collapsed}">
+                                <svg class="icon">
+                                  <use xlink:href="#svg-main-down" />
+                                </svg>
+                            </a>
                         </div>
                         <ul class="build-save">
                             <li>
-                                <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/local.html'"></a>
+                                <a class="build-activate">
+                                    <svg class="icon">
+                                      <use xlink:href="#svg-main-local" />
+                                    </svg>
+                                </a>
                             </li>
                             <li>
-                                <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/save.html'"></a>
+                                <a class="build-activate">
+                                    <svg class="icon">
+                                      <use xlink:href="#svg-main-save" />
+                                    </svg>
+                                </a>
                             </li>
                         </ul>
                         <div class="relative" ng-show='!time_state.collapsed'>
@@ -297,14 +317,26 @@
                             <!--  <a class="build-activate opacity-50" ng-click='component.active = !component.active' ng-if='!component.active'>off</a>
                              <a class="build-activate" ng-click='component.active = !component.active' ng-if='component.active'>on</a> -->
                             <!-- Collapse component vars-->
-                            <a ng-click='updateComponentCollapsed(current_state, component)' ng-class="{'collapse': !component.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
+                            <a ng-click='updateComponentCollapsed(current_state, component)' ng-class="{'collapse': !component.collapsed}">
+                                <svg class="icon">
+                                  <use xlink:href="#svg-main-down" />
+                                </svg>
+                            </a>
 						</div>
                         <ul class="build-save">
                             <li>
-                                <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/local.html'"></a>
+                                <a class="build-activate">
+                                    <svg class="icon">
+                                      <use xlink:href="#svg-main-local" />
+                                    </svg>
+                                </a>
                             </li>
                             <li>
-                                <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/save.html'"></a>
+                                <a class="build-activate">
+                                    <svg class="icon">
+                                      <use xlink:href="#svg-main-save" />
+                                    </svg>
+                                </a>
                             </li>
                         </ul>
                         <div class="relative" ng-show='!component.collapsed'>
@@ -389,13 +421,35 @@
             </div>
             <nav class="build-aside-bottom">
                 <ul>
-                    <li><a class="build-add-element" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click="addNewTimeState()"></a></li>
+                    <li>
+                        <a class="build-add-element" ng-hide-"!page.toggles.add_component" ng-click="addNewTimeState()">
+                            <svg class="icon">
+                              <use xlink:href="#svg-main-plus" />
+                            </svg>
+                        </a>
+                    </li>
                     <li class="build-play-all">
-                        <a ng-click='playStates(current_states.states[current_states.selectedIndex].components)' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a>
+                        <a ng-click='playStates(current_states.states[current_states.selectedIndex].components)'>
+                            <svg class="icon">
+                              <use xlink:href="#svg-main-play" />
+                            </svg>
+                        </a>
                         <dropdown class="full-x" size="small" ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
                     </li>
-                    <li><a class="bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/save.html'" ng-click='saveCurrentStatesToLocalStorage()'></a></li>
-                    <li><a ng-click='refreshAllComponents()' class="opacity-50" ng-include="img_base + BASE + 'templates/svg/main/switch.html'"></a></li>
+                    <li>
+                        <a class="bg bg-moxie" ng-click='saveCurrentStatesToLocalStorage()'>
+                            <svg class="icon">
+                              <use xlink:href="#svg-main-save" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a ng-click='refreshAllComponents()' class="opacity-50">
+                            <svg class="icon">
+                              <use xlink:href="#svg-main-switch" />
+                            </svg>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </aside>
@@ -403,7 +457,11 @@
         <div class='build-property-option-list fixed bg-slate-90p top-0 right-0 expanded overflow-auto' ng-show="selectPropertyActivated">
             <header>
                 <input placeholder="filter options" ng-model="propertySearchText" id='property-search-input'/>
-                <a ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click='toggleClassProperties()'></a>
+                <a ng-click='toggleClassProperties()'>
+                    <svg class="icon">
+                      <use xlink:href="#svg-main-plus" />
+                    </svg>
+                </a>
             </header>
             <ul class="flex-wrap-start p15-grid full-x bg-charcoal-50p">
                 <li class='flex-wrap-center full-x p20xy txt-7 txt-white text-center' id='hold-for-demo-text'>
@@ -411,13 +469,21 @@
                 </li>
                 <li>
                     <button class='txt-1 bg-gold starred normal height-36 radius-2' tabindex="-1">
-                        <span ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                        <span>
+                            <svg class="icon">
+                              <use xlink:href="#svg-main-star" />
+                            </svg>
+                        </span>
                         <span>Starred</span>
                     </button>
                 </li>
                 <li>
                     <button class='txt-1 bg-orange flagged normal height-36 radius-2' tabindex="-1">
-                        <span ng-include="img_base + BASE + 'templates/svg/main/info.html'"></span>
+                        <span>
+                            <svg class="icon">
+                              <use xlink:href="#svg-main-play" />
+                            </svg>
+                        </span>
                         <span>Flagged</span>
                     </button>
                 </li>

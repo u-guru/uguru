@@ -3,7 +3,6 @@
         <a class="back-link absolute top-0 left-0 m30xy" ng-if="desktopMode &amp;&amp; !user.id" href='https://www.uguru.me'>
             Home
         </a>
-        <span ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
         <span > 
             <svg id='main-logo' class="icon">
               <use xlink:href="#svg-main-logo" />
@@ -11,7 +10,6 @@
         </span>
         <div class="main">
             <div id="desktop-access-code" ng-init='getLoadTime()'>
-                <!-- <span ng-include="img_base + BASE + 'templates/svg/logo-title.html'"></span> -->
                 <span >
                     <svg class="icon">
                       <use xlink:href="#svg-logo-title" />

@@ -17,7 +17,11 @@
 				</span>
 			</h1>
 			<h2 class="pf-school">{{user.university.short_name}}</h2>
-			<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+			<ul class="pf-rating" data-rating="4" data-half="true">								
+				<svg>
+                  <use xlink:href="#svg-rating"/>
+                </svg>
+			</ul>
 			<span class="pf-review-amt">3 Reviews</span>
 			<ul class="pf-card-thumbs">
 				<!-- BIND -->

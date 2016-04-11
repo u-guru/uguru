@@ -4,18 +4,12 @@
 
 <!-- Desktop Nav-->
 <header class='splash-header fixed top-0 left-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
-    <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'"  class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" anim>
-       <!--  <svg class="icon">
-          <use xlink:href="#svg-logo-subtitle" />
-        </svg> -->
-    </a>
-    <a class="splash-logo">
+    <a class="splash-logo" ng-click='scrollToSection("#splash-home")' class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" anim>
      <svg>
        <use xlink:href="#svg-logo-subtitle" />
      </svg>
     </a>
     <div class="right">
-
         <div class="splash-hero-nav desktop m10right" class-on-load="fadeIn:anim" class-on-load-delay="3000"  class-on-activate="fadeInDown:anim" anim>
             <div class="dropdown-color">
                 <a name='category' class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()' ng-class="{'active':page.dropdowns.category.active}">
@@ -99,7 +93,11 @@
         <ul>
             <li ng-repeat='category in categories'>
                 <a class="bg-{{category.hex_color}}" ng-click='demoSwitchCategory(category, selectedUniversity)' ng-class="{'active':category.id == selectedCategory.id}">
-                    <span ng-include="img_base + 'templates/svg/main/check.html'"></span>
+                    <span>
+                        <svg>
+                          <use xlink:href="#svg-main-check"/>
+                        </svg>  
+                    </span>
                     <span>{{category.name}}</span>
                 </a>
             </li>
@@ -112,7 +110,11 @@
                 <a ng-click='refreshUniversityState(university)' ng-class="{'active':university.id == selectedUniversity.id}" style="border-color: {{university.school_color_dark}}">
                     <span style="background: {{university.school_color_dark}}"></span>
                     <span>{{university.short_name || university.name}}</span>
-                    <span ng-include="img_base + 'templates/svg/main/check.html'"></span>
+                    <span >
+                        <svg>
+                          <use xlink:href="#svg-main-check"/>
+                        </svg>  
+                    </span>
                 </a>
             </li>
             <li>

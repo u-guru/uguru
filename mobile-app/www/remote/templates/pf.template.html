@@ -3,7 +3,11 @@
 		<header class="third text-center flex-center-wrap bg-shamrock">
 			<div>
 				<h1 class="pf-title txt-white">Header Title</h1>
-				<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul>
+				<ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'">
+					<svg>
+			          <use xlink:href="#svg-rating"/>
+			        </svg>
+		        </ul>
 			</div>
 		</header>
 		<div class="pf-tabs tab-bar">

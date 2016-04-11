@@ -5,7 +5,11 @@
 	<u-slide u-before-enter='beforeEnter()' u-after-enter='afterEnter()'>
 		<ion-view class='uguru-view university-view'>
 			<main id="desktop-university" class="desktop-mode desktop-search ng-class:{'hs-view':root.vars.hs_mode}" ng-if='desktopMode'>
-			    <span data-velocity id="main-logo-container" ng-include="img_base + BASE + 'templates/svg/main-logo.html'"></span>
+			    <span data-velocity id="main-logo-container">
+			    	<svg class="icon">
+			    	  <use xlink:href="#svg-main-logo" />
+			    	</svg
+			    </span>
 				<header data-velocity class="desktop-header">
 					<a name='university-head-back' class="desktop-header-back" ng-click='backToAccess()'>
 						<svg viewBox="0 0 100 100">

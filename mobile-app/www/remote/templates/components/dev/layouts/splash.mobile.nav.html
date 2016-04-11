@@ -4,7 +4,11 @@
         <ul>
             <li ng-repeat='category in categories'>
                 <a class="bg-{{category.hex_color}}" ng-click='demoSwitchCategory(category, selectedUniversity)' ng-class="{'active':category.id == selectedCategory.id}">
-                    <span ng-include="img_base + 'templates/svg/main/check.html'"></span>
+                    <span>
+                        <svg class="icon">
+                          <use xlink:href="#svg-main-check"/>
+                        </svg>
+                    </span>
                     <span>{{category.name}}</span>
                 </a>
             </li>
@@ -17,7 +21,11 @@
                 <a ng-click='refreshUniversityState(university)' ng-class="{'active':university.id == selectedUniversity.id}" style="border-color: {{university.school_color_dark}}">
                     <span style="background: {{university.school_color_dark}}"></span>
                     <span>{{university.short_name || university.name}}</span>
-                    <span ng-include="img_base + 'templates/svg/main/check.html'"></span>
+                    <span>
+                        <svg class="icon">
+                          <use xlink:href="#svg-main-check"/>
+                        </svg>
+                    </span>
                 </a>
             </li>
             <li>

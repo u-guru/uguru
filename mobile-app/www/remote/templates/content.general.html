@@ -31,7 +31,11 @@
 				</div>
 			</div>
 			<div id='content-info'>
-				<span id="general-top" ng-include="img_base + BASE + 'templates/svg/main-logo-static.html'"></span>
+				<span id="general-top">
+					<svg class="icon">
+					  <use xlink:href="#svg-main-logo-static" />
+					</svg>
+				</span>
 				<h1>{{sidebar_content.active_section.header}}</h1>
 				<ol class="general-list">
 					<li ng-repeat='subsection in sidebar_content.active_section.paragraphs'>
@@ -68,7 +72,11 @@
 		<ol class="general-list">
 			<li ng-repeat='subsection in sidebar_content.active_section.paragraphs'>
 				<div>
-					<span class="general-list-icon" ng-include="img_base + BASE + 'templates/svg/main-logo-static.html'"></span>
+					<span class="general-list-icon">
+						<svg class="icon">
+						  <use xlink:href="#svg-main-logo-static" />
+						</svg>
+					</span>
 					<div>
 						<h3>{{subsection.subheader}}</h3>
 						<p ng-bind-html="subsection.text"></p>
