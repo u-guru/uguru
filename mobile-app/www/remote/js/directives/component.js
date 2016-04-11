@@ -578,7 +578,8 @@ angular.module('uguru.components', [])
             restrict: 'E',
             replace: true,
             scope: {
-                tile: '=ngModel'
+                tile: '=ngModel',
+                img_base: '=imgBase'
             },
         }
     })

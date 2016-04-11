@@ -1136,7 +1136,7 @@
                         "category": "household"
                     }
                 }, 
-                "template": "<category-tile ng-model=\"component.sample.scope.tile\"></category-tile>"
+                "template": "<category-tile ng-model=\"component.sample.scope.tile\" img-base=\"img_base\"></category-tile>"
             }, 
             "tags": [
                 "tiles", 

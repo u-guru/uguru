@@ -56,7 +56,7 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
         for (var i = 0; i < variation_arr.length; i++) {
             var indexVariation = variation_arr[i];
             resultArr.push({
-                name: indexVariation.name + '<br>' + formatLastUpdated(indexVariation.last_updated)
+                name: indexVariation.name + '<br/>' + formatLastUpdated(indexVariation.last_updated)
             })
         }
         return resultArr;
@@ -65,7 +65,7 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
     function formatLastUpdated(utc_ms) {
         var date = new Date(utc_ms);
 
-        return "<span class='opacity-50 uppercase'>last updated: &nbsp;&nbsp;</span>" + (date.getMonth() + 1) + "/" + date.getUTCDate() + " @ " + date.getUTCHours() % 12 + ":" + date.getUTCMinutes();
+        return "<span><span class='opacity-50'>updated:&nbsp;</span>" + (date.getMonth() + 1) + "/" + date.getUTCDate() + " @ " + date.getUTCHours() % 12 + ":" + date.getUTCMinutes(); + "</span>"
     }
 
     function getLatestVariationIndex(file) {

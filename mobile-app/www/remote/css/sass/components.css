@@ -3933,7 +3933,7 @@ input[type=range]:focus::-ms-fill-upper {
   justify-content: center;
 }
 
-.dropdown > div span, .dropdown > div input {
+.dropdown > div > span, .dropdown > div > input {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -4065,7 +4065,7 @@ input[type=range]:focus::-ms-fill-upper {
   background: rgba(139, 196, 185, 0.9);
 }
 
-.dropdown.full-x > div span {
+.dropdown.full-x > div > span {
   width: calc(100% - 48px);
 }
 
@@ -4077,7 +4077,7 @@ input[type=range]:focus::-ms-fill-upper {
   width: calc(100% - 48px);
 }
 
-.dropdown.number > div span, .dropdown.number > div input {
+.dropdown.number > div > span, .dropdown.number > div > input {
   width: 64px;
 }
 
@@ -4089,7 +4089,7 @@ input[type=range]:focus::-ms-fill-upper {
   width: 64px;
 }
 
-.dropdown.small > div span {
+.dropdown.small > div > span {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -4132,7 +4132,7 @@ input[type=range]:focus::-ms-fill-upper {
   font-size: 16px;
 }
 
-.dropdown.small.full-x > div span {
+.dropdown.small.full-x > div > span {
   width: calc(100% - 24px);
 }
 
@@ -4140,7 +4140,7 @@ input[type=range]:focus::-ms-fill-upper {
   width: calc(100% - 24px);
 }
 
-.dropdown-container.full-x .dropdown > div span {
+.dropdown-container.full-x .dropdown > div > span {
   width: calc(100% - 48px);
 }
 
@@ -4152,7 +4152,7 @@ input[type=range]:focus::-ms-fill-upper {
   width: calc(100% - 48px);
 }
 
-.dropdown-container.full-x .dropdown.small > div span {
+.dropdown-container.full-x .dropdown.small > div > span {
   width: calc(100% - 24px);
 }
 
