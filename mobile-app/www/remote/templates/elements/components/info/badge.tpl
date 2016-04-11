@@ -1,4 +1,4 @@
 <a class="badge-container click">
-    <span class="badge-left bg-moxie">1</span>
-    <span>Messages</span>
+    <span class="badge-{{::direction}} bg-{{::color}}">{{::count}}</span>
+    <span>{{::label}}</span>
 </a>
