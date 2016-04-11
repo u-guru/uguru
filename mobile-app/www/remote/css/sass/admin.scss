@@ -50,7 +50,7 @@
 			z-index: 1999!important;
 			h1 {
 				padding-left: 15px;
-				font-size: 24px;
+				font-size: 18px;
 				font-weight: 600;
 			}
 			> div {
@@ -357,8 +357,25 @@
 				height: 64px;
 			}
 			.tab-bar.slide {
+				> div {
+					width: 100%!important;
+				}
+				&.ugrid-4 {
+					> div {
+						a, hr {
+							width: 25%;
+						}
+					}
+				}
+				&.ugrid-5 {
+					> div {
+						a, hr {
+							width: 20%;
+						}
+					}
+				}
 				a {
-					width: 25%;
+					font-size: 16px;
 					&:nth-child(1) {
 						&.active {
 							~ hr {
@@ -416,8 +433,116 @@
 						}
 					}
 				}
-				hr {
-					width: 25%;
+			}
+			a.opacity-50 {
+				&:hover, &:focus {
+					@include opacity-important(.75);
+				}
+				&:active {
+					@include opacity-important(1);
+				}
+			}
+			.build-docs {
+				height: calc(100% - 64px);
+				ul {
+					height: calc(100% - 60px);
+				}
+			}
+			.build-docs-priority {
+				li {
+					.checkbox-container {
+						@include prefix(justify-content, flex-start, webkit);
+						> div {
+							border-top-left-radius: 2px;
+							border-bottom-left-radius: 2px;
+							overflow: hidden;
+							height: 64px;
+							div {
+								height: 32px;
+								border-top-left-radius: 2px;
+							}
+							span {
+								border-radius: 0;
+							}
+							input:checked + span {
+								background: $moxie;
+							}
+						}
+						label {
+							width: calc(100% - 32px);
+							height: 64px;
+							line-height: 1.2;
+						}
+					}
+				}
+			}
+			.build-docs-history {
+				li {
+					.build-file {
+						.build-file-index {
+							width: 32px;
+							height: 64px;
+							+ div {
+								width: calc(100% - 32px - 32px - 11px);
+							}
+						}
+						a {
+							> span {
+								width: 32px;
+								height: 32px;
+								margin-right: 11px;
+							}
+							&.active {
+								> span {
+									svg {
+										@include prefix(transform, rotate(180deg), webkit moz ms o);
+									}
+								}
+							}
+							&:hover, &:focus {
+								background: mix($campus, $slate, 70%);
+							}
+							&:active {
+								background: $moxie;
+							}
+						}
+					}
+				}
+			}
+			.build-docs-tuts {
+				li {
+					> div {
+						h2 {
+							span {
+								height: 32px;
+								&:first-child {
+									width: 32px;
+								}
+								&:only-child {
+									width: 100%;
+									background: $campus;
+								}
+							}
+						}
+						> div {
+							p, ol, ul {
+								margin-bottom: 0;
+								line-height: 1.2;
+								&:not(:first-child) {
+									margin-top: 15px;
+								}
+							}
+							ol, ul {
+								margin-left: 45px;
+							}
+							ul {
+								list-style: disc!important;
+							}
+							ol {
+								list-style: decimal!important;
+							}
+						}
+					}
 				}
 			}
 			.build-files-list {
@@ -439,14 +564,6 @@
 					}
 					&:active {
 						background: $moxie;
-					}
-				}
-				a.opacity-50 {
-					&:hover, &:focus {
-						@include opacity-important(.75);
-					}
-					&:active {
-						@include opacity-important(1);
 					}
 				}
 			}
