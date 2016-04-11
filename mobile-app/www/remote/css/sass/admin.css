@@ -58,6 +58,33 @@
   line-height: 1;
 }
 
+#build .dropdown-container.no-header h2 {
+  display: none !important;
+}
+
+#build .dropdown-container.height-32 .dropdown > div > span {
+  height: 32px;
+}
+
+#build .dropdown-container.height-32 .dropdown > div a {
+  width: 32px;
+  height: 32px;
+}
+
+#build .dropdown-container.height-32 .dropdown > div a svg {
+  width: 32px;
+  height: 32px;
+}
+
+#build .dropdown-container.height-32 .dropdown > ul {
+  width: 100%;
+  top: 32px;
+}
+
+#build .dropdown-container.height-32 .dropdown > ul li {
+  width: calc(100% - 32px);
+}
+
 #build .dropdown > div a svg {
   background: #43cb9d;
 }
@@ -154,10 +181,6 @@
 
 #build > main .build-main-top > div > .dropdown-container .dropdown > ul li {
   width: calc(100% - 32px);
-}
-
-#build > main .build-main-top > div > .dropdown-container.build-variations h2 {
-  display: none !important;
 }
 
 #build > main .build-main-top > div h2 {
@@ -587,53 +610,53 @@
   height: calc(100% - 60px);
 }
 
-#build > aside.build-settings .build-docs-priority li .checkbox-container {
+#build > aside.build-settings .build-docs .build-docs-priority li .checkbox-container {
   -webkit-justify-content: flex-start;
   justify-content: flex-start;
 }
 
-#build > aside.build-settings .build-docs-priority li .checkbox-container > div {
+#build > aside.build-settings .build-docs .build-docs-priority li .checkbox-container > div {
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
   overflow: hidden;
   height: 64px;
 }
 
-#build > aside.build-settings .build-docs-priority li .checkbox-container > div div {
+#build > aside.build-settings .build-docs .build-docs-priority li .checkbox-container > div div {
   height: 32px;
   border-top-left-radius: 2px;
 }
 
-#build > aside.build-settings .build-docs-priority li .checkbox-container > div span {
+#build > aside.build-settings .build-docs .build-docs-priority li .checkbox-container > div span {
   border-radius: 0;
 }
 
-#build > aside.build-settings .build-docs-priority li .checkbox-container > div input:checked + span {
+#build > aside.build-settings .build-docs .build-docs-priority li .checkbox-container > div input:checked + span {
   background: #43cb9d;
 }
 
-#build > aside.build-settings .build-docs-priority li .checkbox-container label {
+#build > aside.build-settings .build-docs .build-docs-priority li .checkbox-container label {
   width: calc(100% - 32px);
   height: 64px;
   line-height: 1.2;
 }
 
-#build > aside.build-settings .build-docs-history li .build-file .build-file-index {
+#build > aside.build-settings .build-docs .build-docs-history li .build-file .build-file-index {
   width: 32px;
   height: 64px;
 }
 
-#build > aside.build-settings .build-docs-history li .build-file .build-file-index + div {
+#build > aside.build-settings .build-docs .build-docs-history li .build-file .build-file-index + div {
   width: calc(100% - 32px - 32px - 11px);
 }
 
-#build > aside.build-settings .build-docs-history li .build-file a > span {
+#build > aside.build-settings .build-docs .build-docs-history li .build-file a > span {
   width: 32px;
   height: 32px;
   margin-right: 11px;
 }
 
-#build > aside.build-settings .build-docs-history li .build-file a.active > span svg {
+#build > aside.build-settings .build-docs .build-docs-history li .build-file a.active > span svg {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
@@ -641,46 +664,105 @@
   transform: rotate(180deg);
 }
 
-#build > aside.build-settings .build-docs-history li .build-file a:hover, #build > aside.build-settings .build-docs-history li .build-file a:focus {
+#build > aside.build-settings .build-docs .build-docs-history li .build-file a:hover, #build > aside.build-settings .build-docs .build-docs-history li .build-file a:focus {
   background: #748489;
 }
 
-#build > aside.build-settings .build-docs-history li .build-file a:active {
+#build > aside.build-settings .build-docs .build-docs-history li .build-file a:active {
   background: #43cb9d;
 }
 
-#build > aside.build-settings .build-docs-tuts li > div h2 span {
+#build > aside.build-settings .build-docs .build-docs-tuts li > div h2 span {
   height: 32px;
 }
 
-#build > aside.build-settings .build-docs-tuts li > div h2 span:first-child {
+#build > aside.build-settings .build-docs .build-docs-tuts li > div h2 span:first-child {
   width: 32px;
 }
 
-#build > aside.build-settings .build-docs-tuts li > div h2 span:only-child {
+#build > aside.build-settings .build-docs .build-docs-tuts li > div h2 span:only-child {
   width: 100%;
   background: #8A9EA3;
 }
 
-#build > aside.build-settings .build-docs-tuts li > div > div p, #build > aside.build-settings .build-docs-tuts li > div > div ol, #build > aside.build-settings .build-docs-tuts li > div > div ul {
+#build > aside.build-settings .build-docs .build-docs-tuts li > div > div p, #build > aside.build-settings .build-docs .build-docs-tuts li > div > div ol, #build > aside.build-settings .build-docs .build-docs-tuts li > div > div ul {
   margin-bottom: 0;
   line-height: 1.2;
 }
 
-#build > aside.build-settings .build-docs-tuts li > div > div p:not(:first-child), #build > aside.build-settings .build-docs-tuts li > div > div ol:not(:first-child), #build > aside.build-settings .build-docs-tuts li > div > div ul:not(:first-child) {
+#build > aside.build-settings .build-docs .build-docs-tuts li > div > div p:not(:first-child), #build > aside.build-settings .build-docs .build-docs-tuts li > div > div ol:not(:first-child), #build > aside.build-settings .build-docs .build-docs-tuts li > div > div ul:not(:first-child) {
   margin-top: 15px;
 }
 
-#build > aside.build-settings .build-docs-tuts li > div > div ol, #build > aside.build-settings .build-docs-tuts li > div > div ul {
+#build > aside.build-settings .build-docs .build-docs-tuts li > div > div ol, #build > aside.build-settings .build-docs .build-docs-tuts li > div > div ul {
   margin-left: 45px;
 }
 
-#build > aside.build-settings .build-docs-tuts li > div > div ul {
+#build > aside.build-settings .build-docs .build-docs-tuts li > div > div ul {
   list-style: disc !important;
 }
 
-#build > aside.build-settings .build-docs-tuts li > div > div ol {
+#build > aside.build-settings .build-docs .build-docs-tuts li > div > div ol {
   list-style: decimal !important;
+}
+
+#build > aside.build-settings .build-docs .build-docs-components {
+  height: calc(100% - 60px - 64px);
+}
+
+#build > aside.build-settings .build-docs .build-docs-components + input {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 64px;
+  width: 100%;
+  padding: 0 15px;
+  font-size: 20px;
+  color: rgba(64, 72, 75, 0.75);
+}
+
+#build > aside.build-settings .build-docs .build-docs-components + input::-webkit-input-placeholder {
+  color: rgba(64, 72, 75, 0.5);
+}
+
+#build > aside.build-settings .build-docs .build-docs-components + input:-moz-placeholder {
+  color: rgba(64, 72, 75, 0.5);
+}
+
+#build > aside.build-settings .build-docs .build-docs-components + input::-moz-placeholder {
+  color: rgba(64, 72, 75, 0.5);
+}
+
+#build > aside.build-settings .build-docs .build-docs-components + input:-ms-input-placeholder {
+  color: rgba(64, 72, 75, 0.5);
+}
+
+#build > aside.build-settings .build-docs .build-docs-components + input:focus {
+  color: #40484B;
+}
+
+#build > aside.build-settings .build-docs .build-docs-components + input:focus::-webkit-input-placeholder {
+  color: rgba(64, 72, 75, 0.75);
+}
+
+#build > aside.build-settings .build-docs .build-docs-components + input:focus:-moz-placeholder {
+  color: rgba(64, 72, 75, 0.75);
+}
+
+#build > aside.build-settings .build-docs .build-docs-components + input:focus::-moz-placeholder {
+  color: rgba(64, 72, 75, 0.75);
+}
+
+#build > aside.build-settings .build-docs .build-docs-components + input:focus:-ms-input-placeholder {
+  color: rgba(64, 72, 75, 0.75);
 }
 
 #build > aside.build-settings .build-files-list {
