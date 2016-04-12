@@ -460,6 +460,9 @@
 		}
 		&:focus, &.selected {
 			header {
+				span {
+					background: $charcoal!important;
+				}
 				h1, ul {
 					background: $moxie!important;
 				}
@@ -624,6 +627,20 @@
 		}
 		&.expanded {
 			height: 300px;
+		}
+	}
+	.build-item-component-properties {
+		ul {
+			li {
+				div {
+					h2 {
+						width: 25%;
+					}
+					.range-container {
+						width: 75%;
+					}
+				}
+			}
 		}
 	}
 	> aside {

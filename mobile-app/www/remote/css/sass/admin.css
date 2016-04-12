@@ -696,6 +696,10 @@
   transition: all 150ms ease-in-out;
 }
 
+#build .build-item-state:focus header span, #build .build-item-state.selected header span, #build .build-item-component:focus header span, #build .build-item-component.selected header span {
+  background: #2B3234 !important;
+}
+
 #build .build-item-state:focus header h1, #build .build-item-state:focus header ul, #build .build-item-state.selected header h1, #build .build-item-state.selected header ul, #build .build-item-component:focus header h1, #build .build-item-component:focus header ul, #build .build-item-component.selected header h1, #build .build-item-component.selected header ul {
   background: #43cb9d !important;
 }
@@ -911,6 +915,14 @@
 
 #build .build-item-component-preview.expanded {
   height: 300px;
+}
+
+#build .build-item-component-properties ul li div h2 {
+  width: 25%;
+}
+
+#build .build-item-component-properties ul li div .range-container {
+  width: 75%;
 }
 
 #build > aside {

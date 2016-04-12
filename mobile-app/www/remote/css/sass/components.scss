@@ -2898,39 +2898,6 @@ input[type=range] {
 	}
 }
 
-/* ---------- NUMBERED LISTS */
-.numbered-list {
-	padding: 7.5px;
-	font-size: 20px;
-	font-weight: 600;
-	line-height: 1.2;
-	counter-reset: li;
-	> li {
-		@include flex;
-		@include flex-wrap;
-		padding: 7.5px;
-		&:before {
-			@include flex;
-			@include flex-center;
-			width: 40px;
-			height: 40px;
-			content: counter(li);
-			counter-increment: li;
-			background: $lake;
-			color: white;
-			border-radius: 2px;
-			font-weight: 600;
-			text-align: center;
-		}
-		> div {
-			@include flex;
-			@include flex-center-vertical;
-			width: calc(100% - 40px);
-			padding-left: 15px;
-		}
-	}
-}
-
 input[type="range"] {
 	&[size="small"], &[size="2"] {
 		&::-webkit-slider-runnable-track {
@@ -3086,7 +3053,7 @@ input[type="range"] {
 				position: relative;
 				z-index: 10;
 				margin-top: -8px;
-				width: 18px;
+				width: 4px;
 				height: 18px;
 				&:after {
 					display: none;
@@ -3097,7 +3064,7 @@ input[type="range"] {
 				position: relative;
 				z-index: 10;
 				margin-top: -8px;
-				width: 18px;
+				width: 4px;
 				height: 18px;
 				&:after {
 					display: none;
@@ -3108,12 +3075,45 @@ input[type="range"] {
 				position: relative;
 				z-index: 10;
 				margin-top: -8px;
-				width: 18px;
+				width: 4px;
 				height: 18px;
 				&:after {
 					display: none;
 				}
 			}
+		}
+	}
+}
+
+/* ---------- NUMBERED LISTS */
+.numbered-list {
+	padding: 7.5px;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.2;
+	counter-reset: li;
+	> li {
+		@include flex;
+		@include flex-wrap;
+		padding: 7.5px;
+		&:before {
+			@include flex;
+			@include flex-center;
+			width: 40px;
+			height: 40px;
+			content: counter(li);
+			counter-increment: li;
+			background: $lake;
+			color: white;
+			border-radius: 2px;
+			font-weight: 600;
+			text-align: center;
+		}
+		> div {
+			@include flex;
+			@include flex-center-vertical;
+			width: calc(100% - 40px);
+			padding-left: 15px;
 		}
 	}
 }
