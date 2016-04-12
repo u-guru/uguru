@@ -86,7 +86,7 @@
   margin-left: 15px;
 }
 
-#build > main .build-main-top > div > .dropdown-container .dropdown > div span {
+#build > main .build-main-top > div > .dropdown-container .dropdown > div > span {
   height: 32px;
 }
 
@@ -107,6 +107,57 @@
 
 #build > main .build-main-top > div > .dropdown-container .dropdown > ul li {
   width: calc(100% - 32px);
+}
+
+#build > main .build-main-top > div > .dropdown-container.build-variations h2 {
+  display: none !important;
+}
+
+#build > main .build-main-top > div > .dropdown-container.build-variations .dropdown > div > span {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 32px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+#build > main .build-main-top > div > .dropdown-container.build-variations .dropdown > div > span > span {
+  display: block;
+  height: auto;
+}
+
+#build > main .build-main-top > div > .dropdown-container.build-variations .dropdown > div > span > span:last-child {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+#build > main .build-main-top > div > .dropdown-container.build-variations .dropdown > ul li {
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+#build > main .build-main-top > div > .dropdown-container.build-variations .dropdown > ul li > span {
+  font-weight: 400;
+}
+
+#build > main .build-main-top > div > .dropdown-container.build-variations .dropdown > ul li > span:last-child {
+  font-size: 12px;
+  line-height: 1;
 }
 
 #build > main .build-main-top > div h2 {

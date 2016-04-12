@@ -464,7 +464,7 @@ angular.module('uguru.dev.controllers')
     $scope.page.dropdowns.screenSizeOptions = {label:'autoscale @ 1.5x', onOptionClick: resizeStage, options: [], size:'small', key:'name', selectedIndex: 4};
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
     $scope.page.dropdowns.filterOptions = {label: "sort by", options: ['Time', "Component"], selectedIndex: userSettings.defaultFilter || 1, size:"small", onOptionClick: toggleComponentGUIMode}
-    $scope.page.dropdowns.modes = {label: "modes", options: ['Time States', 'All Components'], selectedIndex: 0, size: 'small'}
+    $scope.page.dropdowns.user_settings = {options:['Prioritized', 'History', 'Docs', 'Components'], selectedIndex: 0};
     $scope.page.status = {show: false}
 
 
