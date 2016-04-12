@@ -266,23 +266,101 @@
 		}
 		.build-player {
 			@include flex;
+			@include flex-center;
 			@include flex-wrap;
 			position: relative;
 			overflow: auto;
 			height: calc(100% - 64px);
 			width: 100%;
-			padding: 7.5px;
-			&:last-child {
-				height: calc(100% - 64px);
-			}
 			.build-player-container {
-				position: absolute;
-				top: 0;
-				left: 0;
+				@include prefix(transform-origin, center center, webkit moz ms o);
+				overflow: hidden;
 				width: 100%;
 				height: 100%;
 				.fixed {
 					position: absolute!important;
+				}
+				&.mobile-s {
+					width: 320px!important;
+					height: 480px!important;
+				}
+				&.mobile-m {
+					width: 320px!important;
+					height: 568px!important;
+				}
+				&.mobile-l {
+					width: 375px!important;
+					height: 667px!important;
+					@media screen and (max-height: 750px) {
+						@include prefix(transform, scale(.9), webkit moz ms o);
+					}
+					@media screen and (max-height: 700px) {
+						@include prefix(transform, scale(.8), webkit moz ms o);
+					}
+				}
+				&.mobile-xl {
+					width: 414px!important;
+					height: 736px!important;
+					@media screen and (max-height: 800px) {
+						@include prefix(transform, scale(.9), webkit moz ms o);
+					}
+					@media screen and (max-height: 750px) {
+						@include prefix(transform, scale(.8), webkit moz ms o);
+					}
+				}
+				&.desktop-s {
+					position: absolute;
+					top: 50%;
+					margin-top: -384px;
+					left: 50%;
+					margin-left: -512px;
+					width: 1024px!important;
+					height: 768px!important;
+					@media screen and (max-width: 1550px), screen and (max-height: 850px) {
+						@include prefix(transform, scale(.9), webkit moz ms o);
+					}
+					@media screen and (max-width: 1280px), screen and (max-height: 800px) {
+						@include prefix(transform, scale(.8), webkit moz ms o);
+					}
+					@media screen and (max-width: 1280px), screen and (max-height: 750px) {
+						@include prefix(transform, scale(.7), webkit moz ms o);
+					}
+				}
+				&.desktop-m {
+					position: absolute;
+					top: 50%;
+					margin-top: -384px;
+					left: 50%;
+					margin-left: -683px;
+					width: 1366px!important;
+					height: 768px!important;
+					@media screen and (max-width: 1550px), screen and (max-height: 850px) {
+						@include prefix(transform, scale(.8), webkit moz ms o);
+					}
+					@media screen and (max-width: 1280px), screen and (max-height: 800px) {
+						@include prefix(transform, scale(.7), webkit moz ms o);
+					}
+					@media screen and (max-width: 1280px), screen and (max-height: 750px) {
+						@include prefix(transform, scale(.6), webkit moz ms o);
+					}
+				}
+				&.desktop-l {
+					position: absolute;
+					top: 50%;
+					margin-top: -540px;
+					left: 50%;
+					margin-left: -960px;
+					width: 1920px!important;
+					height: 1080px!important;
+					@media screen and (max-width: 1550px), screen and (max-height: 850px) {
+						@include prefix(transform, scale(.6), webkit moz ms o);
+					}
+					@media screen and (max-width: 1280px), screen and (max-height: 800px) {
+						@include prefix(transform, scale(.5), webkit moz ms o);
+					}
+					@media screen and (max-width: 1280px), screen and (max-height: 750px) {
+						@include prefix(transform, scale(.4), webkit moz ms o);
+					}
 				}
 			}
 		}

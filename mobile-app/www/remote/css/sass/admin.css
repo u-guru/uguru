@@ -335,6 +335,14 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
@@ -342,23 +350,201 @@
   overflow: auto;
   height: calc(100% - 64px);
   width: 100%;
-  padding: 7.5px;
-}
-
-#build > main .build-player:last-child {
-  height: calc(100% - 64px);
 }
 
 #build > main .build-player .build-player-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+  -webkit-transform-origin: center center;
+  -moz-transform-origin: center center;
+  -ms-transform-origin: center center;
+  -o-transform-origin: center center;
+  transform-origin: center center;
+  overflow: hidden;
   width: 100%;
   height: 100%;
 }
 
 #build > main .build-player .build-player-container .fixed {
   position: absolute !important;
+}
+
+#build > main .build-player .build-player-container.mobile-s {
+  width: 320px !important;
+  height: 480px !important;
+}
+
+#build > main .build-player .build-player-container.mobile-m {
+  width: 320px !important;
+  height: 568px !important;
+}
+
+#build > main .build-player .build-player-container.mobile-l {
+  width: 375px !important;
+  height: 667px !important;
+}
+
+@media screen and (max-height: 750px) {
+  #build > main .build-player .build-player-container.mobile-l {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+@media screen and (max-height: 700px) {
+  #build > main .build-player .build-player-container.mobile-l {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+
+#build > main .build-player .build-player-container.mobile-xl {
+  width: 414px !important;
+  height: 736px !important;
+}
+
+@media screen and (max-height: 800px) {
+  #build > main .build-player .build-player-container.mobile-xl {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+@media screen and (max-height: 750px) {
+  #build > main .build-player .build-player-container.mobile-xl {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+
+#build > main .build-player .build-player-container.desktop-s {
+  position: absolute;
+  top: 50%;
+  margin-top: -384px;
+  left: 50%;
+  margin-left: -512px;
+  width: 1024px !important;
+  height: 768px !important;
+}
+
+@media screen and (max-width: 1550px), screen and (max-height: 850px) {
+  #build > main .build-player .build-player-container.desktop-s {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+@media screen and (max-width: 1280px), screen and (max-height: 800px) {
+  #build > main .build-player .build-player-container.desktop-s {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 1280px), screen and (max-height: 750px) {
+  #build > main .build-player .build-player-container.desktop-s {
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -o-transform: scale(0.7);
+    transform: scale(0.7);
+  }
+}
+
+#build > main .build-player .build-player-container.desktop-m {
+  position: absolute;
+  top: 50%;
+  margin-top: -384px;
+  left: 50%;
+  margin-left: -683px;
+  width: 1366px !important;
+  height: 768px !important;
+}
+
+@media screen and (max-width: 1550px), screen and (max-height: 850px) {
+  #build > main .build-player .build-player-container.desktop-m {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 1280px), screen and (max-height: 800px) {
+  #build > main .build-player .build-player-container.desktop-m {
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -o-transform: scale(0.7);
+    transform: scale(0.7);
+  }
+}
+
+@media screen and (max-width: 1280px), screen and (max-height: 750px) {
+  #build > main .build-player .build-player-container.desktop-m {
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+    -o-transform: scale(0.6);
+    transform: scale(0.6);
+  }
+}
+
+#build > main .build-player .build-player-container.desktop-l {
+  position: absolute;
+  top: 50%;
+  margin-top: -540px;
+  left: 50%;
+  margin-left: -960px;
+  width: 1920px !important;
+  height: 1080px !important;
+}
+
+@media screen and (max-width: 1550px), screen and (max-height: 850px) {
+  #build > main .build-player .build-player-container.desktop-l {
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+    -o-transform: scale(0.6);
+    transform: scale(0.6);
+  }
+}
+
+@media screen and (max-width: 1280px), screen and (max-height: 800px) {
+  #build > main .build-player .build-player-container.desktop-l {
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+}
+
+@media screen and (max-width: 1280px), screen and (max-height: 750px) {
+  #build > main .build-player .build-player-container.desktop-l {
+    -webkit-transform: scale(0.4);
+    -moz-transform: scale(0.4);
+    -ms-transform: scale(0.4);
+    -o-transform: scale(0.4);
+    transform: scale(0.4);
+  }
 }
 
 #build > main .build-main-bottom {
