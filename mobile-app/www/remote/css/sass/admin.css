@@ -689,6 +689,29 @@
   background: #4c5559;
 }
 
+#build > aside .build-aside-preview {
+  width: 320px;
+  height: 200px;
+  position: relative;
+  z-index: 2000;
+  background: #40484B;
+}
+
+#build > aside .build-aside-preview > div {
+  position: absolute;
+  top: 50%;
+  margin-top: -400px;
+  left: 50%;
+  margin-left: -640px;
+  width: 1280px;
+  height: 800px;
+  -webkit-transform: scale(0.25);
+  -moz-transform: scale(0.25);
+  -ms-transform: scale(0.25);
+  -o-transform: scale(0.25);
+  transform: scale(0.25);
+}
+
 #build > aside.build-settings > h1 {
   height: 64px;
 }

@@ -454,6 +454,23 @@
 		width: calc(100% / 3);
 		height: 100%;
 		background: lighten($slate, 5%);
+		.build-aside-preview {
+			width: 320px;
+			height: 200px;
+			position: relative;
+			z-index: 2000;
+			background: $slate;
+			> div {
+				position: absolute;
+				top: 50%;
+				margin-top: -400px;
+				left: 50%;
+				margin-left: -640px;
+				width: 1280px;
+				height: 800px;
+				@include prefix(transform, scale(.25), webkit moz ms o);
+			}
+		}
 		&.build-settings {
 			> h1 {
 				height: 64px;

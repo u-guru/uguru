@@ -506,9 +506,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="build-aside-preview">
+                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                </div>
                 <div class='full-x bg-slate-50p p20xy flex-wrap-center text-center'>
                     <h1 class='full-x text-center'>
-                            Only show components within the dimensions
+                        Only show components within the dimensions
                     </h1>
                     <div ng-init="width = 50; height = 50;" class='full-x p20xy'>
                         <small class='txt-1'> width: {{width}}px </small>
@@ -562,7 +565,7 @@
                                 <ul class='time-state-component-bar'>
                                     <li ng-click='selectTimeStateComponent(time_state, component, $event)' ng-repeat='component in time_state.components track by $index' class='time-state-component-item'>
                                         <div class='full-y'></div>
-                                        <a class='high-z-index m05xy right-0 bottom-0 absolute'>&rtrif;</a>
+                                        <a class='z-index-10 m05xy right-0 bottom-0 absolute'>&rtrif;</a>
                                     </li>
                                 </ul>
                             </div>
