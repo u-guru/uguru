@@ -14460,14 +14460,32 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   height: 100%;
 }
 
+.component-tile > input:hover + div {
+  border-color: #43cb9d;
+}
+
 .component-tile > input:hover + div > label {
   filter: alpha(opacity=50);
   opacity: 0.5;
+  background: #43cb9d;
+}
+
+.component-tile > input:hover + div > aside {
+  background: #43cb9d;
+}
+
+.component-tile > input:checked + div {
+  border-color: #43cb9d;
 }
 
 .component-tile > input:checked + div > label {
   filter: alpha(opacity=100);
   opacity: 1;
+  background: #43cb9d;
+}
+
+.component-tile > input:checked + div > aside {
+  background: #43cb9d;
 }
 
 .component-tile > a:hover + div, .component-tile > a:focus + div {

@@ -11810,15 +11810,25 @@ a.category-tile {
 	> input {
 		&:hover {
 			+ div {
+				border-color: $moxie;
 				> label {
 					@include opacity(.5);
+					background: $moxie;
+				}
+				> aside {
+					background: $moxie;
 				}
 			}
 		}
 		&:checked {
 			+ div {
+				border-color: $moxie;
 				> label {
 					@include opacity(1);
+					background: $moxie;
+				}
+				> aside {
+					background: $moxie;
 				}
 			}
 		}
