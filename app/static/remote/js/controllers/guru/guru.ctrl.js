@@ -344,12 +344,12 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.contentModal = modal;
           });
 
-          $ionicModal.fromTemplateUrl(BASE + 'templates/balance.mobile.modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-          }).then(function(modal) {
-            $scope.balanceModal = modal;
-          });
+          // $ionicModal.fromTemplateUrl(BASE + 'templates/balance.mobile.modal.html', {
+          //   scope: $scope,
+          //   animation: 'slide-in-up'
+          // }).then(function(modal) {
+          //   $scope.balanceModal = modal;
+          // });
 
           $ionicModal.fromTemplateUrl(BASE + 'templates/profile.public.mobile.modal.html', {
             scope: $scope,
