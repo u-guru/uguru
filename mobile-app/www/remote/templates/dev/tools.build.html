@@ -927,29 +927,29 @@
                 </div>
                 <div class='fixed top-0 right-0 full-y bg-charcoal-90p high-z-index overflow-auto' style="width: calc(100% / 3); padding-bottom: 64px;">
                     <input type="text" placeholder="Filter" class="high-z-index flex-center-vertical fixed bottom-0 right-0 txt-18 p15x" style="width: calc(100% / 3); height: 64px;"/>
-                    <div class='header text-center uppercase relative'>
-                        <h1 class='weight-700 bg-moxie flex-center' style="height: 64px"> Add Component Mode </h1>
+                    <div class='header text-center relative'>
+                        <h1 class='weight-700 bg-moxie flex-center' style="height: 64px">Add Component Mode</h1>
                     </div>
                     <div>
                         <h2 class="bg-campus p10xy txt-16 semibold">Shortcuts</h2>
                         <ul class='flex-wrap txt-16 weight-500 p15-grid'>
                             <li>
-                                <div class="bg-slate p15xy">
+                                <div class="bg-slate p15x-p10y">
                                     Double tap to select
                                 </div>
                             </li>
                             <li>
-                                <div class="bg-slate p15xy">
+                                <div class="bg-slate p15x-p10y">
                                     Hold to hide
                                 </div>
                             </li>
                             <li>
-                                <div class="bg-slate p15xy">
+                                <div class="bg-slate p15x-p10y">
                                     Escape to exit
                                 </div>
                             </li>
                             <li>
-                                <div class="bg-slate p15xy">
+                                <div class="bg-slate p15x-p10y">
                                     Double tap command to return
                                 </div>
                             </li>
@@ -1014,24 +1014,30 @@
                     </div>
                     <div>
                         <h2 class="bg-campus p10xy txt-16 semibold">Add Property</h2>
-                        <ul class="ugrid-2 p15-grid">
-                            <li style="width: 40%;">
+                        <ul class="flex p15-grid">
+                            <li style="width: calc(50% - 51px)">
                                 <fieldset class="input-basic">
                                 	<label>Name</label>
                                 	<input type="text" placeholder="opacity" />
                                 </fieldset>
                             </li>
-                            <li style="width: 40%;">
+                            <li style="width: calc(50% - 51px)">
                                 <fieldset class="input-basic">
                                 	<label>Value</label>
                                 	<input type="text" placeholder="1" />
                                 </fieldset>
                             </li>
-                            <li style="width: 10%;">
-                                <a>&check;</a>
+                            <li style="width: 51px">
+                                <fieldset class="input-basic">
+                                    <label>&nbsp;</label>
+                                    <a class="flex-center bg bg-moxie radius-2 svg-white svg-24 svg-stroke-6" style="width: 36px; height: 36px" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></a>
+                                </fieldset>
                             </li>
-                            <li style="width: 10%;">
-                                <a>&times;</a>
+                            <li style="width: 51px">
+                                <fieldset class="input-basic">
+                                    <label>&nbsp;</label>
+                                    <a class="flex-center bg bg-crimson radius-2 svg-white svg-24 svg-stroke-6 close-icon" style="width: 36px; height: 36px" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                                </fieldset>
                             </li>
                         </ul>
                     </div>
@@ -1331,7 +1337,7 @@
                                     </li>
                                 </ul>
                                 <div class="p15x-p15bottom">
-                                    <button class="height-36 txt-18 bg-moxie radius-2">Add</button>
+                                    <button class="height-36 txt-18 bg-moxie radius-2">Add Property</button>
                                 </div>
                             </div>
                         </div>

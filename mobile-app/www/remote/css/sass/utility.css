@@ -6,10 +6,6 @@
   font-style: normal;
 }
 
-.animate-select {
-    box-shadow: 0 0 5px 2px mix($lake, $lake)!important;
-}
-
 .impact-label, .impact-label * {
   font-family: "Impact Label" !important;
 }
@@ -1239,6 +1235,11 @@ input, fieldset {
   stroke: white !important;
   stroke-linecap: round !important;
   stroke-linejoin: round !important;
+}
+
+.svg-24 svg {
+  width: 24px;
+  height: 24px;
 }
 
 .svg-32 svg {
