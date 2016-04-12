@@ -544,7 +544,7 @@
                             </h1>
                             <a ng-if='time_state.time' class='build-activate close'  ng-click='removeTimeState($index)'></a>
                             <a ng-click='updateTimeStateCollapses(current_file.selected_variation.timeline, time_state)' ng-include="img_base + BASE + 'templates/svg/main/external.html'" ng-if="time_state.components.length"></a>
-                            <a ng-if='time_state.components.length' class='high-z-index right-0 bottom-0 absolute bg-charcoal-impt'>&rtrif;</a>
+                            <a ng-if='time_state.components.length' class='z-index-10 right-0 bottom-0 absolute bg-charcoal-impt'>&rtrif;</a>
                         </div>
                         <div class="relative" ng-show='time_state.focused'>
                             <h1 class='full-x p20xy text-center relative uppercase border-white-dashed'>
