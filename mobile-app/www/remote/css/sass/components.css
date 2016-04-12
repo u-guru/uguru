@@ -3728,6 +3728,18 @@ input[type="range"][size="large"]::-ms-track, input[type="range"][size="10"]::-m
   visibility: hidden;
 }
 
+.range-container.ugrid-2 > div:nth-child(1) {
+  padding-right: 7.5px;
+}
+
+.range-container.ugrid-2 > div:nth-child(2) {
+  padding-left: 7.5px;
+}
+
+.range-container.ugrid-2 > div:nth-child(2) span {
+  visibility: visible;
+}
+
 .range-container input[type="range"]::-webkit-slider-thumb {
   border-radius: 1000px;
   position: relative;

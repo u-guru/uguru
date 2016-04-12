@@ -917,12 +917,53 @@
   height: 300px;
 }
 
-#build .build-item-component-properties ul li div h2 {
-  width: 25%;
+#build .build-item-component-properties ul li > div > div:first-child {
+  width: 35%;
 }
 
-#build .build-item-component-properties ul li div .range-container {
-  width: 75%;
+#build .build-item-component-properties ul li > div > div:first-child input[type=text] {
+  background: #637074;
+}
+
+#build .build-item-component-properties ul li > div > div:first-child input[type=text]::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#build .build-item-component-properties ul li > div > div:first-child input[type=text]:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#build .build-item-component-properties ul li > div > div:first-child input[type=text]::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#build .build-item-component-properties ul li > div > div:first-child input[type=text]:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#build .build-item-component-properties ul li > div > div:first-child input[type=text]:focus {
+  background: white;
+  color: #40484B;
+}
+
+#build .build-item-component-properties ul li > div > div:first-child input[type=text]:focus::-webkit-input-placeholder {
+  color: rgba(64, 72, 75, 0.5);
+}
+
+#build .build-item-component-properties ul li > div > div:first-child input[type=text]:focus:-moz-placeholder {
+  color: rgba(64, 72, 75, 0.5);
+}
+
+#build .build-item-component-properties ul li > div > div:first-child input[type=text]:focus::-moz-placeholder {
+  color: rgba(64, 72, 75, 0.5);
+}
+
+#build .build-item-component-properties ul li > div > div:first-child input[type=text]:focus:-ms-input-placeholder {
+  color: rgba(64, 72, 75, 0.5);
+}
+
+#build .build-item-component-properties ul li > div .range-container {
+  width: 65%;
 }
 
 #build > aside {

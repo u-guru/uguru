@@ -2960,6 +2960,19 @@ input[type="range"] {
 			}
 		}
 	}
+	&.ugrid-2 {
+		> div {
+			&:nth-child(1) {
+				padding-right: 7.5px;
+			}
+			&:nth-child(2) {
+				padding-left: 7.5px;
+				span {
+					visibility: visible;
+				}
+			}
+		}
+	}
 	input[type="range"] {
 		&::-webkit-slider-thumb {
 			@include round;

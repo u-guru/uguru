@@ -632,12 +632,25 @@
 	.build-item-component-properties {
 		ul {
 			li {
-				div {
-					h2 {
-						width: 25%;
+				> div {
+					> div:first-child {
+						width: 35%;
+						input[type=text] {
+							background: lighten($slate, 15%);
+							@include placeholder {
+								color: rgba(white, .5);
+							}
+							&:focus {
+								background: white;
+								color: $slate;
+								@include placeholder {
+									color: rgba($slate, .5);
+								}
+							}
+						}
 					}
 					.range-container {
-						width: 75%;
+						width: 65%;
 					}
 				}
 			}

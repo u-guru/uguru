@@ -1174,8 +1174,13 @@
                             <div class="build-item-component-properties bg-charcoal-50p">
                                 <ul class="p15-grid">
                                     <li>
-                                        <div class="flex-center-vertical">
-                                            <h2 class="txt-18">opacity</h2>
+                                        <div class="flex-center-vertical-wrap txt-16">
+                                            <div>
+                                                <h2 class="txt-16 semibold">opacity</h2>
+                                                <div class="flex-center-vertical m05top">
+                                                    <input class="p05xy radius-2 txt-white" size="4" type="text" placeholder="0.1"/>
+                                                </div>
+                                            </div>
                                             <div class="range-container small">
                                                 <div>
                                                     <span>0</span>
@@ -1186,25 +1191,145 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <h2>transform</h2>
+                                        <div class="flex-center-vertical-wrap txt-16">
+                                            <div>
+                                                <h2 class="txt-16 semibold">transform</h2>
+                                            </div>
+                                            <div>
+                                                <input class="p05xy radius-2" type="text" placeholder="scale(.5) translate(-50%, -50%)"/>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li>
-                                        <h2>translate</h2>
+                                        <div class="flex-center-vertical-wrap txt-16">
+                                            <div>
+                                                <h2 class="txt-16 semibold">translate</h2>
+                                                <div class="flex-center-vertical m05top">
+                                                    <span>(</span>
+                                                    <input class="p05xy radius-2 txt-white" size="3" type="text" placeholder="-50"/>
+                                                    <span>%</span><span>,&nbsp;</span>
+                                                    <input class="p05xy radius-2 txt-white" size="3" type="text" placeholder="-50"/>
+                                                    <span>%</span><span>)</span>
+                                                </div>
+                                            </div>
+                                            <div class="range-container small ugrid-2">
+                                                <div>
+                                                    <span>0</span>
+                                                    <input class="range-slider" type="range" size="2" min="0" max="25" value="0"/>
+                                                    <span>1</span>
+                                                </div>
+                                                <div>
+                                                    <span>0</span>
+                                                    <input class="range-slider" type="range" size="2" min="0" max="25" value="0"/>
+                                                    <span>1</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li>
-                                        <h2>rotate</h2>
+                                        <div class="flex-center-vertical-wrap txt-16">
+                                            <div>
+                                                <h2 class="txt-16 semibold">rotate</h2>
+                                                <div class="flex-center-vertical m05top">
+                                                    <input class="p05xy radius-2 txt-white" size="4" type="text" placeholder="-50"/>
+                                                    <span>&deg;</span>
+                                                </div>
+                                            </div>
+                                            <div class="range-container small">
+                                                <div>
+                                                    <span>0</span>
+                                                    <input class="range-slider" type="range" size="2" min="0" max="25" value="0"/>
+                                                    <span>1</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li>
-                                        <h2>scale</h2>
+                                        <div class="flex-center-vertical-wrap txt-16">
+                                            <div>
+                                                <h2 class="txt-16 semibold">scale</h2>
+                                                <div class="flex-center-vertical m05top">
+                                                    <input class="p05xy radius-2 txt-white" size="3" type="text" placeholder="2"/>
+                                                    <span>,&nbsp;</span>
+                                                    <input class="p05xy radius-2 txt-white" size="3" type="text" placeholder="3"/>
+                                                </div>
+                                            </div>
+                                            <div class="range-container small ugrid-2">
+                                                <div>
+                                                    <span>0</span>
+                                                    <input class="range-slider" type="range" size="2" min="0" max="25" value="0"/>
+                                                    <span>1</span>
+                                                </div>
+                                                <div>
+                                                    <span>0</span>
+                                                    <input class="range-slider" type="range" size="2" min="0" max="25" value="0"/>
+                                                    <span>1</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li>
-                                        <h2>transform-origin</h2>
+                                        <div class="flex-center-vertical-wrap txt-16">
+                                            <div>
+                                                <h2 class="txt-16 semibold">origin</h2>
+                                                <div class="flex-center-vertical m05top">
+                                                    <input class="p05xy radius-2 txt-white" size="3" type="text" placeholder="50"/>
+                                                    <span>%</span><span>&nbsp;</span>
+                                                    <input class="p05xy radius-2 txt-white" size="3" type="text" placeholder="50"/>
+                                                    <span>%</span>
+                                                </div>
+                                            </div>
+                                            <div class="range-container small ugrid-2">
+                                                <div>
+                                                    <span>0</span>
+                                                    <input class="range-slider" type="range" size="2" min="0" max="25" value="0"/>
+                                                    <span>1</span>
+                                                </div>
+                                                <div>
+                                                    <span>0</span>
+                                                    <input class="range-slider" type="range" size="2" min="0" max="25" value="0"/>
+                                                    <span>1</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li>
-                                        <h2>animation</h2>
+                                        <div class="flex-center-vertical-wrap txt-16">
+                                            <div>
+                                                <h2 class="txt-16 semibold">animation</h2>
+                                            </div>
+                                            <div>
+                                                <input class="p05xy radius-2" type="text" placeholder="animation 150ms ease-in-out"/>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li>
-                                        <h2>animation-delay</h2>
+                                        <div class="flex-center-vertical-wrap txt-16">
+                                            <div>
+                                                <h2 class="txt-16 semibold">fill-mode</h2>
+                                            </div>
+                                            <div>
+                                                <dropdown class="height-32"></dropdown>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="flex-center-vertical-wrap txt-16">
+                                            <div>
+                                                <h2 class="txt-16 semibold">delay</h2>
+                                                <div class="flex-center-vertical m05top">
+                                                    <input class="p05xy radius-2 txt-white" size="4" type="text" placeholder="5000"/>
+                                                    <span>ms</span>
+                                                </div>
+                                            </div>
+                                            <div class="range-container small">
+                                                <div>
+                                                    <span>0</span>
+                                                    <input class="range-slider" type="range" size="2" min="0" max="25" value="0"/>
+                                                    <span>1</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </li>
                                 </ul>
                                 <div class="p15x-p15bottom">
