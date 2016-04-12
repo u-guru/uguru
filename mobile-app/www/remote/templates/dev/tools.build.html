@@ -97,12 +97,12 @@
             <h1 ng-if='settings.key_shortcuts' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>Shortcuts</h1>
             <h1 ng-if='settings.view_files' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>My Files</h1>
             <h1 ng-if='settings.user_mode' class='relative flex-center bg-moxie p15x bg-moxie txt-28 semibold'>Docs</h1>
-            
+
             <a ng-if='!settings.view_files && !settings.key_shortcuts' class="absolute top-0 left-0 back-icon close-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.activated = false;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
-            
+
             <a ng-if='settings.key_shortcuts' class="absolute top-0 left-0 back-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.key_shortcuts = false;' ng-include="img_base + BASE + 'templates/svg/main/left.html'"></a>
             <a ng-if='settings.view_files' class="absolute top-0 left-0 back-icon svg-white svg-36 svg-stroke-6 flex-center" ng-click='settings.view_files = false;' ng-include="img_base + BASE + 'templates/svg/main/left.html'"></a>
-            
+
             <div ng-if='settings.user_mode' class='build-docs'>
                 <tabs class='ugrid-4' options="page.dropdowns.user_settings.options" index='page.dropdowns.user_settings.selectedIndex'> </tabs>
                 <ul class="build-docs-priority p15-grid overflow-auto" ng-if='!page.dropdowns.user_settings.selectedIndex'>
@@ -373,10 +373,10 @@
             			</div>
                     </li>
                 </ul>
-                
+
                 <input type="text" placeholder="Filter" ng-if='page.dropdowns.user_settings.selectedIndex === 3' />
             </div>
-            
+
             <ul class="p15-grid overflow-auto full-xy" ng-if='settings.key_shortcuts'>
                 <li ng-repeat='shortcut in shortcuts'>
                     <div class='bg-slate-50p flex-center-vertical p15xy'>
@@ -389,7 +389,7 @@
                     </div>
                 </li>
             </ul>
-            
+
             <div ng-if='settings.view_files' class='full-x'>
                  <tabs class='ugrid-5' options="files.users.options" index='files.users.options.index'> </tabs>
             </div>
@@ -440,7 +440,7 @@
                     </div> -->
                 </li>
             </ul>
-            
+
             <ul class="build-settings-list" ng-if='!settings.view_files && !settings.key_shortcuts && !settings.user_mode'>
                 <li><a ng-click="settings.view_files = true;">View Files</a></li>
                 <li><a ng-click="settings.key_shortcuts = true;">View Shortcuts</a></li>
@@ -512,7 +512,7 @@
             </nav>
 
             <!-- 2 -->
-            
+
             <div ng-if='current_file.selected_variation.selected_scene_state.component_mode'>
                 <div class="high-z-index fixed bottom-0 left-0 bg-charcoal full-y overflow-auto" style="width: calc(100% / 3 * 2); z-index: 2000;">
                     <h1 class="txt-28 semibold p15top-p15x"><span>100</span> Components Found</h1>
@@ -1145,7 +1145,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="build-element-container">
                 <ul class="p15-grid">
                     <li>
@@ -1169,12 +1169,12 @@
                                 </ul>
                             </header>
                             <div class="build-item-component-preview bg-charcoal-75p">
-                                
+
                             </div>
                             <div class="build-item-component-properties bg-charcoal-50p">
                                 <ul class="p15-grid">
                                     <li>
-                                    
+
                                     </li>
                                 </ul>
                                 <div class="p15x-p15bottom">
@@ -1400,7 +1400,7 @@
                     </li>
                 </ul>
             </div>
-            
+
             <div class='build-element-list animation relative' ng-if="false">
                 <ul ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index' ng-if='!current_file.selected_variation.selected_scene_state'>
                     <li class="build-timeline">

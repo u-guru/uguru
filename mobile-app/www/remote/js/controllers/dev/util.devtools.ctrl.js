@@ -907,11 +907,11 @@ angular.module('uguru.dev.controllers')
       return[
           {name:'Mobile S 320x480', ref: 'mobile-s', dimensions: {'width': 320, 'height': 480 }},
           {name:'Mobile M 320x568', ref: 'mobile-m', dimensions: {'width': 320, 'height': 568 }},
-          {name:'Mobile L 375x667', ref: 'mobile-lg', dimensions: { 'width': 375, 'height': 667 }},
+          {name:'Mobile L 375x667', ref: 'mobile-l', dimensions: { 'width': 375, 'height': 667 }},
           {name:'Mobile XL 414x736', ref:'mobile-xl', dimensions: { 'width': 414, 'height': 736}},
           {name: 'Desktop S 1024x768', ref: 'desktop-s', dimensions: {'width': 1024, 'height': 768}},
           {name: 'Desktop M 1366x768', ref:'desktop-m',dimensions: {'width': 1366, 'height':768}},
-          {name: 'Desktop L 1920x1080', ref:'desktop-lg', dimensions: {'width': 1920, 'height':1080}}
+          {name: 'Desktop L 1920x1080', ref:'desktop-l', dimensions: {'width': 1920, 'height':1080}}
       ]
     }
     $scope.clonedVariationInputName  = null;
@@ -969,20 +969,27 @@ angular.module('uguru.dev.controllers')
     }
 
     function resizeStage(option, index) {
-      var stageWrapper = document.querySelectorAll('#stage-template-container');
-      if (stageWrapper.length > 1) {
-        for (var i = 0 ; i < (stageWrapper.length -1); i++) {
-          var indexStageWrapper = stageWrapper[i];
-          indexStageWrapper.parentNode.removeChild(indexStageWrapper);
-        }
-      }
-      stageWrapper = stageWrapper[0];
+      var template_url = $scope.current_file.template_url.replace('templates/', '');
+      var current_controller = $scope.current_file.controller;
+      var current_ref = $scope.current_file.ref;
+      $scope.desktopMode = false;
+      $scope.injectTemplateIntoStage(template_url, current_controller, current_ref, option.ref);
 
-      stageWrapper.setAttribute("style", "height:" + option.dimensions.height +"px !important; width: " + option.dimensions.width + "px !important;");
-      // stageWrapper.style.width = option.dimensions.width + 'px !important;';
-      $timeout(function() {
-        $compile(stageWrapper)($scope);
-      }, 1000)
+
+      // var stageWrapper = document.querySelectorAll('#stage-template-container');
+      // if (stageWrapper.length > 1) {
+      //   for (var i = 0 ; i < (stageWrapper.length -1); i++) {
+      //     var indexStageWrapper = stageWrapper[i];
+      //     indexStageWrapper.parentNode.removeChild(indexStageWrapper);
+      //   }
+      // }
+      // stageWrapper = stageWrapper[0];
+
+      // stageWrapper.setAttribute("style", "height:" + option.dimensions.height +"px !important; width: " + option.dimensions.width + "px !important;");
+      // // stageWrapper.style.width = option.dimensions.width + 'px !important;';
+      // $timeout(function() {
+      //   $compile(stageWrapper)($scope);
+      // }, 1000)
     }
 
     function injectTemplateDropdown(option, index) {
@@ -1000,22 +1007,42 @@ angular.module('uguru.dev.controllers')
       }
     }
 
-    function injectTemplateIntoStage(template_url, controller, ref) {
+    function injectTemplateIntoStage(template_url, controller, ref, screen_size_class) {
+      screen_size_class = screen_size_class || '';
       if (!$scope.user || !$scope.user.id) return;
       deletePreviousTemplateIfExists('#stage-template-container');
 
       var stageTemplateDiv = document.createElement('div');
       stageTemplateDiv.id = 'stage-template-container'
+
       stageTemplateDiv.setAttribute('ng-include', 'img_base + BASE + "templates/' + template_url + '"');
       if (controller) {
         stageTemplateDiv.setAttribute('ng-controller', controller);
       }
       stageTemplateDiv.className += 'build-player-container';
+      if (screen_size_class) {
+        console.log('making this a', screen_size_class)
+        stageTemplateDiv.className = stageTemplateDiv.className + ' '  + screen_size_class;
+      }
       stageTemplateParentContainer = document.querySelector('.build-player');
       stageTemplateParentContainer.classList.add('relative')
 
-      stageTemplateParentContainer.appendChild(stageTemplateDiv);
-      $compile(stageTemplateDiv)($scope);
+      if (screen_size_class.indexOf('mobile') === -1) {
+        stageTemplateParentContainer.appendChild(stageTemplateDiv);
+        $compile(stageTemplateDiv)($scope);
+      } else if (screen_size_class.indexOf('mobile') > -1) {
+        console.log('is a mobile');
+        var iFrameWrapperElem = document.createElement('iframe');
+        $compile(stageTemplateDiv)($scope);
+        // iFrameWrapperElem.setAttribute('ng-include', 'img_base + BASE + "templates/' + template_url + '"');
+        // iFrameWrapperElem.setAttribute('ng-controller', controller);
+        iFrameWrapperElem.src = 'data:text/html;charset=utf-8,' + encodeURI(stageTemplateDiv.innerHTML);
+        stageTemplateDiv.innerHTML = null;
+        stageTemplateDiv.appendChild(iFrameWrapperElem);
+        stageTemplateParentContainer.appendChild(stageTemplateDiv);
+
+      }
+
       // storeTemplateToCache(template_url, stageTemplateDiv, ref);
     }
 
