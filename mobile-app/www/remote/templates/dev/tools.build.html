@@ -1168,9 +1168,7 @@
                                     </li>
                                 </ul>
                             </header>
-                            <div class="build-item-component-preview bg-charcoal-75p">
-                                
-                            </div>
+                            <div class="build-item-component-preview bg-charcoal-75p"></div>
                             <div class="build-item-component-properties bg-charcoal-50p">
                                 <ul class="p15-grid">
                                     <li>
@@ -1551,6 +1549,9 @@
                                     </li>
                                 </ul>
                             </div>
+                            <div class="build-item-component-add bg-charcoal-50p p15x-p15bottom">
+                                <button class='bg-moxie height-36 txt-18 radius-2'  ng-click='page.mode.component.initMode(current_file.selected_variation.selected_scene_state, time_state)'>Add Component</button>
+                            </div>
                         </div>
                     </li>
                 </ul>
@@ -1564,17 +1565,15 @@
                             <h1 class="relative has-link full-x">
                                 <a>
                                     <span class="lowercase">
-
                                         <span class='txt-4 weight-500 lowercase opacity-50' ng-if='!time_state.time'>State #{{$index + 1}}:</span>
                                         <span class='txt-4 weight-700 uppercase txt-white' ng-if='!time_state.time'>{{scene_state.name}}</span>
                                     </span>
                                 </a>
                             </h1>
-                            <a ng-include="img_base + BASE + 'templates/svg/main/external.html'" class='build-activate absolute close top-0 right-0 full-y bg-shamrock'ng-click='page.mode.scene.switchTo(current_file.selected_variation, $index)'></a>
+                            <a ng-include="img_base + BASE + 'templates/svg/main/external.html'" class='build-activate absolute close top-0 right-0 full-y bg-shamrock' ng-click='page.mode.scene.switchTo(current_file.selected_variation, $index)'></a>
                         </div>
                         <div class="txt-center bg-slate-50p relative">
                             <ul class="build-css-header text-left">
-
                                 <li>{{scene_state.time_states.length}} time states total</li>
                             </ul>
                         </div>
