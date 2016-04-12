@@ -3578,9 +3578,9 @@
 			}
 			li {
 				padding: 7.5px;
-				div {
+				> div:not(.size-auto) {
 					position: relative;
-					height: 100px;
+					height: 120px;
 					border-radius: 2px;
 				}
 				span:not(.inside) {
@@ -3590,6 +3590,9 @@
 					border-radius: 2px;
 					&:not([class*="bg-"]) {
 						background: white;
+					}
+					&[class*="flex"] {
+						@include flex-important;
 					}
 					&[class*="bg-"] {
 						color: white;

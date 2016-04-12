@@ -5064,9 +5064,9 @@
   padding: 7.5px;
 }
 
-#admin .admin-html ul li div {
+#admin .admin-html ul li > div:not(.size-auto) {
   position: relative;
-  height: 100px;
+  height: 120px;
   border-radius: 2px;
 }
 
@@ -5079,6 +5079,16 @@
 
 #admin .admin-html ul li span:not(.inside):not([class*="bg-"]) {
   background: white;
+}
+
+#admin .admin-html ul li span:not(.inside)[class*="flex"] {
+  -ms-box-orient: horizontal !important;
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
+  display: -moz-flex !important;
+  display: -webkit-flex !important;
+  display: flex !important;
 }
 
 #admin .admin-html ul li span:not(.inside)[class*="bg-"] {
