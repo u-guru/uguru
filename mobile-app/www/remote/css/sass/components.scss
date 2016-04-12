@@ -246,6 +246,11 @@ button, input, textarea {
 
 // buttons
 a.bg {
+	svg {
+		* {
+			stroke: white;
+		}
+	}
 	&.bg-charcoal {
 		background: $charcoal;
 		&:hover, &:focus {
@@ -456,6 +461,11 @@ button {
 	padding-left: 15px;
 	padding-right: 15px;
 	background: $shamrock;
+	svg {
+		* {
+			stroke: white;
+		}
+	}
 	&.normal {
 		width: auto;
 	}
@@ -477,31 +487,66 @@ button {
 	&:hover, &:focus {
 		background: mix($shamrock, white);
 		color: mix($shamrock, $slate);
+		svg {
+			* {
+				stroke: mix($shamrock, $slate);
+			}
+		}
 	}
 	&:active {
 		background: mix($shamrock, $slate);
 		color: white;
+		svg {
+			* {
+				stroke: white;
+			}
+		}
 	}
 	&.bg-charcoal {
 		background: $charcoal;
 		&:hover, &:focus {
 			background: mix($charcoal, white);
 			color: $charcoal;
+			svg {
+				* {
+					stroke: $charcoal;
+				}
+			}
 		}
 		&:active {
 			background: mix($charcoal, white, 75%);
 			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
 		}
 		&.reverse {
 			background: white;
 			color: $charcoal;
+			svg {
+				* {
+					stroke: $charcoal;
+				}
+			}
 			&:hover, &:focus {
 				background: mix($charcoal, white);
 				color: $charcoal;
+				svg {
+					* {
+						stroke: $charcoal;
+					}
+				}
 			}
 			&:active {
 				background: mix($charcoal, white, 75%);
 				color: white;
+				svg {
+					* {
+						stroke: white;
+					}
+				}
 			}
 		}
 	}
@@ -510,21 +555,46 @@ button {
 		&:hover, &:focus {
 			background: mix($slate, white);
 			color: $slate;
+			svg {
+				* {
+					stroke: $slate;
+				}
+			}
 		}
 		&:active {
 			background: mix($slate, white, 75%);
 			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
 		}
 		&.reverse {
 			background: white;
 			color: $slate;
+			svg {
+				* {
+					stroke: $slate;
+				}
+			}
 			&:hover, &:focus {
 				background: mix($slate, white);
 				color: $slate;
+				svg {
+					* {
+						stroke: $slate;
+					}
+				}
 			}
 			&:active {
 				background: mix($slate, white, 75%);
 				color: white;
+				svg {
+					* {
+						stroke: white;
+					}
+				}
 			}
 		}
 	}
@@ -533,10 +603,20 @@ button {
 		&:hover, &:focus {
 			background: mix($taupe, white);
 			color: $taupe;
+			svg {
+				* {
+					stroke: $taupe;
+				}
+			}
 		}
 		&:active {
 			background: mix($taupe, white, 75%);
 			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
 		}
 		&.reverse {
 			background: white;
@@ -544,10 +624,20 @@ button {
 			&:hover, &:focus {
 				background: mix($taupe, white);
 				color: $taupe;
+				svg {
+					* {
+						stroke: $taupe;
+					}
+				}
 			}
 			&:active {
 				background: mix($taupe, white, 75%);
 				color: white;
+				svg {
+					* {
+						stroke: white;
+					}
+				}
 			}
 		}
 	}

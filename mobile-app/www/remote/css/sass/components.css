@@ -325,6 +325,10 @@ button, input, textarea {
   font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
 }
 
+a.bg svg * {
+  stroke: white;
+}
+
 a.bg.bg-charcoal {
   background: #2B3234;
 }
@@ -590,6 +594,10 @@ button {
   background: #69B3A5;
 }
 
+button svg * {
+  stroke: white;
+}
+
 button.normal {
   width: auto;
 }
@@ -619,9 +627,17 @@ button:hover, button:focus {
   color: #557e78;
 }
 
+button:hover svg *, button:focus svg * {
+  stroke: #557e78;
+}
+
 button:active {
   background: #557e78;
   color: white;
+}
+
+button:active svg * {
+  stroke: white;
 }
 
 button.bg-charcoal {
@@ -633,9 +649,17 @@ button.bg-charcoal:hover, button.bg-charcoal:focus {
   color: #2B3234;
 }
 
+button.bg-charcoal:hover svg *, button.bg-charcoal:focus svg * {
+  stroke: #2B3234;
+}
+
 button.bg-charcoal:active {
   background: #606567;
   color: white;
+}
+
+button.bg-charcoal:active svg * {
+  stroke: white;
 }
 
 button.bg-charcoal.reverse {
@@ -643,14 +667,26 @@ button.bg-charcoal.reverse {
   color: #2B3234;
 }
 
+button.bg-charcoal.reverse svg * {
+  stroke: #2B3234;
+}
+
 button.bg-charcoal.reverse:hover, button.bg-charcoal.reverse:focus {
   background: #95999a;
   color: #2B3234;
 }
 
+button.bg-charcoal.reverse:hover svg *, button.bg-charcoal.reverse:focus svg * {
+  stroke: #2B3234;
+}
+
 button.bg-charcoal.reverse:active {
   background: #606567;
   color: white;
+}
+
+button.bg-charcoal.reverse:active svg * {
+  stroke: white;
 }
 
 button.bg-slate {
@@ -662,9 +698,17 @@ button.bg-slate:hover, button.bg-slate:focus {
   color: #40484B;
 }
 
+button.bg-slate:hover svg *, button.bg-slate:focus svg * {
+  stroke: #40484B;
+}
+
 button.bg-slate:active {
   background: #707678;
   color: white;
+}
+
+button.bg-slate:active svg * {
+  stroke: white;
 }
 
 button.bg-slate.reverse {
@@ -672,14 +716,26 @@ button.bg-slate.reverse {
   color: #40484B;
 }
 
+button.bg-slate.reverse svg * {
+  stroke: #40484B;
+}
+
 button.bg-slate.reverse:hover, button.bg-slate.reverse:focus {
   background: #a0a4a5;
   color: #40484B;
 }
 
+button.bg-slate.reverse:hover svg *, button.bg-slate.reverse:focus svg * {
+  stroke: #40484B;
+}
+
 button.bg-slate.reverse:active {
   background: #707678;
   color: white;
+}
+
+button.bg-slate.reverse:active svg * {
+  stroke: white;
 }
 
 button.bg-taupe {
@@ -691,9 +747,17 @@ button.bg-taupe:hover, button.bg-taupe:focus {
   color: #757575;
 }
 
+button.bg-taupe:hover svg *, button.bg-taupe:focus svg * {
+  stroke: #757575;
+}
+
 button.bg-taupe:active {
   background: #989898;
   color: white;
+}
+
+button.bg-taupe:active svg * {
+  stroke: white;
 }
 
 button.bg-taupe.reverse {
@@ -706,9 +770,17 @@ button.bg-taupe.reverse:hover, button.bg-taupe.reverse:focus {
   color: #757575;
 }
 
+button.bg-taupe.reverse:hover svg *, button.bg-taupe.reverse:focus svg * {
+  stroke: #757575;
+}
+
 button.bg-taupe.reverse:active {
   background: #989898;
   color: white;
+}
+
+button.bg-taupe.reverse:active svg * {
+  stroke: white;
 }
 
 button.bg-campus {
