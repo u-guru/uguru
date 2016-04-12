@@ -85,6 +85,18 @@
   width: calc(100% - 32px);
 }
 
+#build .dropdown-container.height-32.full-x .dropdown {
+  width: 100%;
+}
+
+#build .dropdown-container.height-32.full-x .dropdown > div {
+  width: 100%;
+}
+
+#build .dropdown-container.height-32.full-x .dropdown > div > span {
+  width: calc(100% - 32px);
+}
+
 #build .dropdown > div a svg {
   background: #43cb9d;
 }
@@ -962,7 +974,7 @@
   color: rgba(64, 72, 75, 0.5);
 }
 
-#build .build-item-component-properties ul li > div .range-container {
+#build .build-item-component-properties ul li > div .range-container, #build .build-item-component-properties ul li > div > div:last-child {
   width: 65%;
 }
 

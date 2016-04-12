@@ -1196,7 +1196,7 @@
                                                 <h2 class="txt-16 semibold">transform</h2>
                                             </div>
                                             <div>
-                                                <input class="p05xy radius-2" type="text" placeholder="scale(.5) translate(-50%, -50%)"/>
+                                                <input class="p05xy radius-2 full-x" type="text" placeholder="scale(.5) translate(-50%, -50%)"/>
                                             </div>
                                         </div>
                                     </li>
@@ -1299,7 +1299,7 @@
                                                 <h2 class="txt-16 semibold">animation</h2>
                                             </div>
                                             <div>
-                                                <input class="p05xy radius-2" type="text" placeholder="animation 150ms ease-in-out"/>
+                                                <input class="p05xy radius-2 full-x" type="text" placeholder="animation 150ms ease-in-out"/>
                                             </div>
                                         </div>
                                     </li>
@@ -1309,7 +1309,7 @@
                                                 <h2 class="txt-16 semibold">fill-mode</h2>
                                             </div>
                                             <div>
-                                                <dropdown class="height-32"></dropdown>
+                                                <dropdown class="height-32 full-x"></dropdown>
                                             </div>
                                         </div>
                                     </li>
@@ -1795,19 +1795,17 @@
                 </ul>
             </div>
             <nav class="build-aside-bottom" ng-if='current_file.selected_variation.selected_scene_state'>
-                <ul class='relative' style='width:100%;'>
-                    <li class='flex-wrap-center full-x' ng-click="addNewTimeState()">
-                        <a class="build-add-element absolute left-0" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
-                        <div class='flex-wrap-center weight-700 text-center uppercase'>
-                            Add Time State
-                        </div>
+                <ul class="flex-space-between">
+                    <li>
+                        <a class="build-add-element" ng-click="addNewTimeState()" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                     </li>
-                    <!-- <li class="build-play-all">
-                        <a ng-click='playStates(current_file.variations[current_file.selectedIndex].components)' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a>
-                        <dropdown class="full-x" size="small" ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
+                    <li>
+                        <a ng-click='refreshAllComponents()' ng-include="img_base + BASE + 'templates/svg/main/switch.html'"></a>
                     </li>
-                    <li><a class="bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/save.html'" ng-click='saveCurrentStatesToLocalStorage()'></a></li>
-                    <li><a ng-click='refreshAllComponents()' class="opacity-50" ng-include="img_base + BASE + 'templates/svg/main/switch.html'"></a></li> -->
+                    <li>
+                        <a class="build-add-element" ng-click='playStates(current_file.variations[current_file.selectedIndex].components)' ng-include="img_base + BASE + 'templates/svg/main/play.html'"></a>
+                    </li>
+                    <!-- 3 -->
                 </ul>
             </nav>
         </aside>

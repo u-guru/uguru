@@ -72,6 +72,17 @@
 					}
 				}
 			}
+			&.full-x {
+				.dropdown {
+					width: 100%;
+					> div {
+						width: 100%;
+						> span {
+							width: calc(100% - 32px);
+						}
+					}
+				}
+			}
 		}
 	}
 	.dropdown {
@@ -649,7 +660,7 @@
 							}
 						}
 					}
-					.range-container {
+					.range-container, > div:last-child {
 						width: 65%;
 					}
 				}
