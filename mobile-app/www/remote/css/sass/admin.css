@@ -692,6 +692,7 @@
 #build > aside .build-aside-preview {
   width: 320px;
   height: 200px;
+  overflow: hidden;
   position: relative;
   z-index: 2000;
   background: #40484B;
