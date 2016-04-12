@@ -476,57 +476,962 @@
             </ul>
         </aside>
         <aside ng-if='!settings.activated && !settings.hideUIEditor' class='relative'>
-            <nav class="build-aside-top">
-                <ul ng-if='current_file.selected_variation.scene_states && current_file.selected_variation.scene_states.length && !settings.activated'>
-                    <li ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index'><a ng-click='page.mode.scene.switchTo(current_file.selected_variation, $index)' ng-class="{'active': scene_state.active}">{{$index + 1}}</a></li>
-                </ul>
+            <nav class="build-aside-top relative" style="height: 96px;">
+                <div class='txt-2 weight-700 uppercase text-center full-x' style="height: 96px;">
+                    <a class='flex-wrap-center full-x' ng-click='page.mode.scene.clearSelectedScene(current_file.selected_variation)' ng-class="{'bg-moxie full-x': current_file.selected_variation.selected_scene_state.name}" style="height: 32px">
+                        <span ng-if='current_file.selected_variation.selectedSceneIndex > -1'>
+                            State #{{current_file.selected_variation.selectedSceneIndex + 1}}
+                        </span>
+                        <span class='opacity-50' ng-if='current_file.selected_variation.selected_scene_state'>
+                            &nbsp;&rarr;&nbsp;
+                        </span>
+                        <span class='opacity-50' ng-if='current_file.selected_variation.selected_scene_state'>
+                            {{current_file.selected_variation.selected_scene_state.name}}
+                        </span>
+                    </a>
+                    <a class='flex-wrap-center' ng-click='page.mode.time_state.clearTimeState(current_file.selected_variation)' style="height: 32px" ng-class="{'bg-moxie-50p full-x': current_file.selected_variation.selected_time_state}">
+                        <span>Time States</span>
+                        <span class='opacity-50' ng-if='current_file.selected_variation.selected_scene_state && !current_file.selected_variation.selected_time_state'>
+                            &nbsp;&rarr;&nbsp;
+                        </span>
+                        <span class='opacity-50' ng-if='current_file.selected_variation.selected_time_state && current_file.selected_variation.selected_time_state.time > -1'>
+                            &nbsp;&rarr;&nbsp;
+                        </span>
+                        <span class='opacity-50' ng-if='current_file.selected_variation.selected_scene_state && !current_file.selected_variation.selected_time_state'>
+                            {{current_file.selected_variation.selected_scene_state.time_states.length}} Total
+                        </span>
+                        <span class='opacity-50' ng-if='current_file.selected_variation.selected_time_state && current_file.selected_variation.selected_time_state.time > -1'>
+                            T = {{current_file.selected_variation.selected_time_state.time || 'INIT'}}
+                        </span>
+                    </a>
+                    <a class='flex-wrap-center bg-moxie-25p' style="height: 32px">
+                        Components
+                    </a>
+                </div>
+                <!-- 1 -->
             </nav>
 
-            <nav class="build-aside-state">
-                <ul ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index' ng-if="scene_state.active">
-                    <li>
-                        <div>
-                            <h2>State #{{$index + 1}}</h2>
-                            <h1 class='uppercase opacity-80'>{{scene_state.name}}</h1>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <dropdown class='full-x' ng-model="page.dropdowns.modes"></dropdown>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-            <div class='absolute full-xy bg-charcoal-90p flex-wrap-center flex-stretch high-z-index' ng-if='current_file.selected_variation.selected_scene_state.component_mode'>
-                <div class='header text-center uppercase relative full-x'>
-                    <div class='full-xy absolute'>
-                        <h1 class='weight-700'> Add Component Mode </h1>
-                        <div class='txt-2 uppercase opacity-50 weight-500'>
-                            Press ESC to exit<br> double tap to add
-                        </div>
+            <!-- 2 -->
+            
+            <div ng-if='current_file.selected_variation.selected_scene_state.component_mode'>
+                <div class="high-z-index fixed bottom-0 left-0 bg-charcoal full-y overflow-auto" style="width: calc(100% / 3 * 2); z-index: 2000;">
+                    <h1 class="txt-28 semibold p15top-p15x"><span>100</span> Components Found</h1>
+                    <ul class="flex-wrap p15-grid ugrid-6">
+                        <li>
+                            <div class="component-tile">
+                				<a></a>
+                				<div>
+                					<div>
+                						<svg class="square" viewBox="0 0 100 100">
+                							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                						</svg>
+                						<div>
+                							<div class="checkbox-container">
+                								<div>
+                									<input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                									<span>
+                										<svg viewBox="0 0 100 100">
+                											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                										</svg>
+                									</span>
+                								</div>
+                								<label for="checkbox-item">Checkbox</label>
+                							</div>
+                						</div>
+                					</div>
+                					<aside>
+                						<h2>Name</h2>
+                						<h3>Component</h3>
+                					</aside>
+                				</div>
+                			</div>
+                        </li>
+                        <li>
+                            <div class="component-tile">
+                				<a></a>
+                				<div>
+                					<div>
+                						<svg class="square" viewBox="0 0 100 100">
+                							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                						</svg>
+                						<div>
+                							<div class="checkbox-container">
+                								<div>
+                									<input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                									<span>
+                										<svg viewBox="0 0 100 100">
+                											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                										</svg>
+                									</span>
+                								</div>
+                								<label for="checkbox-item">Checkbox</label>
+                							</div>
+                						</div>
+                					</div>
+                					<aside>
+                						<h2>Name</h2>
+                						<h3>Component</h3>
+                					</aside>
+                				</div>
+                			</div>
+                        </li>
+                        <li>
+                            <div class="component-tile">
+                				<a></a>
+                				<div>
+                					<div>
+                						<svg class="square" viewBox="0 0 100 100">
+                							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                						</svg>
+                						<div>
+                							<div class="checkbox-container">
+                								<div>
+                									<input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                									<span>
+                										<svg viewBox="0 0 100 100">
+                											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                										</svg>
+                									</span>
+                								</div>
+                								<label for="checkbox-item">Checkbox</label>
+                							</div>
+                						</div>
+                					</div>
+                					<aside>
+                						<h2>Name</h2>
+                						<h3>Component</h3>
+                					</aside>
+                				</div>
+                			</div>
+                        </li>
+                        <li>
+                            <div class="component-tile">
+                				<a></a>
+                				<div>
+                					<div>
+                						<svg class="square" viewBox="0 0 100 100">
+                							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                						</svg>
+                						<div>
+                							<div class="checkbox-container">
+                								<div>
+                									<input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                									<span>
+                										<svg viewBox="0 0 100 100">
+                											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                										</svg>
+                									</span>
+                								</div>
+                								<label for="checkbox-item">Checkbox</label>
+                							</div>
+                						</div>
+                					</div>
+                					<aside>
+                						<h2>Name</h2>
+                						<h3>Component</h3>
+                					</aside>
+                				</div>
+                			</div>
+                        </li>
+                        <li>
+                            <div class="component-tile">
+                				<a></a>
+                				<div>
+                					<div>
+                						<svg class="square" viewBox="0 0 100 100">
+                							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                						</svg>
+                						<div>
+                							<div class="checkbox-container">
+                								<div>
+                									<input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                									<span>
+                										<svg viewBox="0 0 100 100">
+                											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                										</svg>
+                									</span>
+                								</div>
+                								<label for="checkbox-item">Checkbox</label>
+                							</div>
+                						</div>
+                					</div>
+                					<aside>
+                						<h2>Name</h2>
+                						<h3>Component</h3>
+                					</aside>
+                				</div>
+                			</div>
+                        </li>
+                        <li>
+                            <div class="component-tile">
+                				<a></a>
+                				<div>
+                					<div>
+                						<svg class="square" viewBox="0 0 100 100">
+                							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                						</svg>
+                						<div>
+                							<div class="checkbox-container">
+                								<div>
+                									<input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                									<span>
+                										<svg viewBox="0 0 100 100">
+                											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                										</svg>
+                									</span>
+                								</div>
+                								<label for="checkbox-item">Checkbox</label>
+                							</div>
+                						</div>
+                					</div>
+                					<aside>
+                						<h2>Name</h2>
+                						<h3>Component</h3>
+                					</aside>
+                				</div>
+                			</div>
+                        </li>
+                        <li>
+                            <div class="component-tile">
+                				<a></a>
+                				<div>
+                					<div>
+                						<svg class="square" viewBox="0 0 100 100">
+                							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                						</svg>
+                						<div>
+                							<div class="checkbox-container">
+                								<div>
+                									<input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                									<span>
+                										<svg viewBox="0 0 100 100">
+                											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                										</svg>
+                									</span>
+                								</div>
+                								<label for="checkbox-item">Checkbox</label>
+                							</div>
+                						</div>
+                					</div>
+                					<aside>
+                						<h2>Name</h2>
+                						<h3>Component</h3>
+                					</aside>
+                				</div>
+                			</div>
+                        </li>
+                        <li>
+                            <div class="component-tile">
+                				<a></a>
+                				<div>
+                					<div>
+                						<svg class="square" viewBox="0 0 100 100">
+                							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                						</svg>
+                						<div>
+                							<div class="checkbox-container">
+                								<div>
+                									<input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                									<span>
+                										<svg viewBox="0 0 100 100">
+                											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                										</svg>
+                									</span>
+                								</div>
+                								<label for="checkbox-item">Checkbox</label>
+                							</div>
+                						</div>
+                					</div>
+                					<aside>
+                						<h2>Name</h2>
+                						<h3>Component</h3>
+                					</aside>
+                				</div>
+                			</div>
+                        </li>
+                        <li>
+                            <div class="component-tile">
+                				<a></a>
+                				<div>
+                					<div>
+                						<svg class="square" viewBox="0 0 100 100">
+                							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                						</svg>
+                						<div>
+                							<div class="checkbox-container">
+                								<div>
+                									<input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                									<span>
+                										<svg viewBox="0 0 100 100">
+                											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                										</svg>
+                									</span>
+                								</div>
+                								<label for="checkbox-item">Checkbox</label>
+                							</div>
+                						</div>
+                					</div>
+                					<aside>
+                						<h2>Name</h2>
+                						<h3>Component</h3>
+                					</aside>
+                				</div>
+                			</div>
+                        </li>
+                        <li>
+                            <div class="component-tile">
+                				<a></a>
+                				<div>
+                					<div>
+                						<svg class="square" viewBox="0 0 100 100">
+                							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                						</svg>
+                						<div>
+                							<div class="checkbox-container">
+                								<div>
+                									<input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                									<span>
+                										<svg viewBox="0 0 100 100">
+                											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                										</svg>
+                									</span>
+                								</div>
+                								<label for="checkbox-item">Checkbox</label>
+                							</div>
+                						</div>
+                					</div>
+                					<aside>
+                						<h2>Name</h2>
+                						<h3>Component</h3>
+                					</aside>
+                				</div>
+                			</div>
+                        </li>
+                        <li>
+                            <div class="component-tile">
+                				<a></a>
+                				<div>
+                					<div>
+                						<svg class="square" viewBox="0 0 100 100">
+                							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                						</svg>
+                						<div>
+                							<div class="checkbox-container">
+                								<div>
+                									<input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                									<span>
+                										<svg viewBox="0 0 100 100">
+                											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                										</svg>
+                									</span>
+                								</div>
+                								<label for="checkbox-item">Checkbox</label>
+                							</div>
+                						</div>
+                					</div>
+                					<aside>
+                						<h2>Name</h2>
+                						<h3>Component</h3>
+                					</aside>
+                				</div>
+                			</div>
+                        </li>
+                        <li>
+                            <div class="component-tile">
+                				<a></a>
+                				<div>
+                					<div>
+                						<svg class="square" viewBox="0 0 100 100">
+                							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                						</svg>
+                						<div>
+                							<div class="checkbox-container">
+                								<div>
+                									<input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                									<span>
+                										<svg viewBox="0 0 100 100">
+                											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                										</svg>
+                									</span>
+                								</div>
+                								<label for="checkbox-item">Checkbox</label>
+                							</div>
+                						</div>
+                					</div>
+                					<aside>
+                						<h2>Name</h2>
+                						<h3>Component</h3>
+                					</aside>
+                				</div>
+                			</div>
+                        </li>
+                        <li>
+                            <div class="component-tile">
+                				<a></a>
+                				<div>
+                					<div>
+                						<svg class="square" viewBox="0 0 100 100">
+                							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                						</svg>
+                						<div>
+                							<div class="checkbox-container">
+                								<div>
+                									<input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                									<span>
+                										<svg viewBox="0 0 100 100">
+                											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                										</svg>
+                									</span>
+                								</div>
+                								<label for="checkbox-item">Checkbox</label>
+                							</div>
+                						</div>
+                					</div>
+                					<aside>
+                						<h2>Name</h2>
+                						<h3>Component</h3>
+                					</aside>
+                				</div>
+                			</div>
+                        </li>
+                        <li>
+                            <div class="component-tile">
+                				<a></a>
+                				<div>
+                					<div>
+                						<svg class="square" viewBox="0 0 100 100">
+                							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                						</svg>
+                						<div>
+                							<div class="checkbox-container">
+                								<div>
+                									<input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                									<span>
+                										<svg viewBox="0 0 100 100">
+                											<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                										</svg>
+                									</span>
+                								</div>
+                								<label for="checkbox-item">Checkbox</label>
+                							</div>
+                						</div>
+                					</div>
+                					<aside>
+                						<h2>Name</h2>
+                						<h3>Component</h3>
+                					</aside>
+                				</div>
+                			</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class='fixed top-0 right-0 full-y bg-charcoal-90p high-z-index overflow-auto' style="width: calc(100% / 3); padding-bottom: 64px;">
+                    <input type="text" placeholder="Filter" class="high-z-index flex-center-vertical fixed bottom-0 right-0 txt-18 p15x" style="width: calc(100% / 3); height: 64px;"/>
+                    <div class='header text-center uppercase relative'>
+                        <h1 class='weight-700 bg-moxie flex-center' style="height: 64px"> Add Component Mode </h1>
                     </div>
-                </div>
-                <div class="build-aside-preview">
-                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                </div>
-                <div class='full-x bg-slate-50p p20xy flex-wrap-center text-center'>
-                    <h1 class='full-x text-center'>
-                        Only show components within the dimensions
-                    </h1>
-                    <div ng-init="width = 50; height = 50;" class='full-x p20xy'>
-                        <small class='txt-1'> width: {{width}}px </small>
-                        <input ng-change="onWidthRangeSliderChange(width)" type="range" min="0" max="500" ng-model="width"/>
-                        <small class='txt-1'> height: {{height}}px </small>
-                        <input type="range" min="0" max="500" ng-model="height"/>
+                    <div>
+                        <h2 class="bg-campus p10xy txt-16 semibold">Shortcuts</h2>
+                        <ul class='flex-wrap txt-16 weight-500 p15-grid'>
+                            <li>
+                                <div class="bg-slate p15xy">
+                                    Double tap to select
+                                </div>
+                            </li>
+                            <li>
+                                <div class="bg-slate p15xy">
+                                    Hold to hide
+                                </div>
+                            </li>
+                            <li>
+                                <div class="bg-slate p15xy">
+                                    Escape to exit
+                                </div>
+                            </li>
+                            <li>
+                                <div class="bg-slate p15xy">
+                                    Double tap command to return
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="build-aside-tags">
+                        <h2 class="bg-campus p10xy txt-16 semibold">Tags</h2>
+                        <ul class="flex-wrap p15-grid">
+                            <li>
+                                <div class="checkbox-container small">
+                                    <div>
+                                        <input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                                        <span>
+                                            <svg viewBox="0 0 100 100">
+                                                <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <label for="checkbox-item">checkbox label</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="checkbox-container small">
+                                    <div>
+                                        <input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                                        <span>
+                                            <svg viewBox="0 0 100 100">
+                                                <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <label for="checkbox-item">checkbox label</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="checkbox-container small">
+                                    <div>
+                                        <input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                                        <span>
+                                            <svg viewBox="0 0 100 100">
+                                                <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <label for="checkbox-item">checkbox label</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="checkbox-container small">
+                                    <div>
+                                        <input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                                        <span>
+                                            <svg viewBox="0 0 100 100">
+                                                <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <label for="checkbox-item">checkbox label</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="bg-campus p10xy txt-16 semibold">Add Property</h2>
+                        <ul class="ugrid-2 p15-grid">
+                            <li style="width: 40%;">
+                                <fieldset class="input-basic">
+                                	<label>Name</label>
+                                	<input type="text" placeholder="opacity" />
+                                </fieldset>
+                            </li>
+                            <li style="width: 40%;">
+                                <fieldset class="input-basic">
+                                	<label>Value</label>
+                                	<input type="text" placeholder="1" />
+                                </fieldset>
+                            </li>
+                            <li style="width: 10%;">
+                                <a>&check;</a>
+                            </li>
+                            <li style="width: 10%;">
+                                <a>&times;</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="bg-campus p10xy txt-16 semibold">Only show components within the dimensions</h2>
+                        <div class="flex">
+                            <div style="width: calc((100% - 160px) / 2)" class="p05xy">
+                                <ul>
+                                    <li>
+                                        <h2 class="txt-14 semibold">offset x: <span>100px</span></h2>
+                                        <div>
+                                            <div class="range-container small">
+                                                <div>
+                                                    <span>0</span>
+                                                    <input class="range-slider" type="range" size="2" min="0" max="25" value="0"/>
+                                                    <span>25</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h2 class="txt-14 semibold">offset : <span>100px</span></h2>
+                                        <div>
+                                            <div class="range-container small">
+                                                <div>
+                                                    <span>0</span>
+                                                    <input class="range-slider" type="range" size="2" min="0" max="25" value="0"/>
+                                                    <span>25</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="build-aside-preview margin-auto m05top">
+                                    <div class="build-aside-preview-border" style="width: 200px; height: 200px; left: 50%; top: 50%; margin-left: -100px; margin-top: -100px"></div>
+                                    <div class="build-aside-preview-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                                </div>
+                                <div class="txt-14 m05top txt-center semibold">Content Size:&nbsp;<span>{{width}}</span>&nbsp;&times;&nbsp;<span>{{height}}</span>px</div>
+                            </div>
+                            <div style="width: calc((100% - 160px) / 2)"  class="p05xy">
+                                <ul>
+                                    <li>
+                                        <div class="checkbox-container small flex-left">
+                                            <div>
+                                                <input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                                                <span>
+                                                    <svg viewBox="0 0 100 100">
+                                                        <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <label for="checkbox-item" class="txt-14">similar size</label>
+                                        </div>
+                                        <div class="full-x">
+                                            <h2 class="txt-14 semibold m05top">Error</h2>
+                                            <div>
+                                                <div class="range-container small">
+                                                    <div>
+                                                        <span>0</span>
+                                                        <input class="range-slider" type="range" size="2" min="0" max="25" value="0"/>
+                                                        <span>25</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="checkbox-container small flex-left">
+                                            <div>
+                                                <input type="checkbox" id="checkbox-item" ng-model="checkbox.value" on-change="onChange && onChange()"/>
+                                                <span>
+                                                    <svg viewBox="0 0 100 100">
+                                                        <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <label for="checkbox-item" class="txt-14">location&nbsp;bounds</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <ul class="ugrid-2 p15-grid" ng-init="width = 50; height = 50;">
+                            <li>
+                                <h2 class="txt-14 semibold">width</h2>
+                                <div>
+                                    <div class="range-container small">
+                                        <div>
+                                            <span>0</span>
+                                            <input class="range-slider" ng-change="onWidthRangeSliderChange(width)" type="range" size="2" min="0" max="500" ng-model="width" value="0"/>
+                                            <span>25</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <h2 class="txt-14 semibold">height</h2>
+                                <div>
+                                    <div class="range-container small">
+                                        <div>
+                                            <span>0</span>
+                                            <input class="range-slider" type="range" size="2" min="0" max="500" ng-model="height" value="0"/>
+                                            <span>25</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class='build-element-list animation relative'>
-                <ul ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index' ng-if='scene_state.active' class='relative full-y'>
-
-                    <!-- timeline -->
-                    <li class="build-timeline" ng-repeat='time_state in scene_state.time_states' ng-if='!page.dropdowns.modes.selectedIndex'>
+            
+            <div class="build-element-container">
+                <ul class="p15-grid">
+                    <li>
+                        <div class="build-item-component" tabindex="1">
+                            <header class="flex-center-vertical">
+                                <span class="bg-campus flex-center txt-16 semibold">1</span>
+                                <h1 class="p10x bg-charcoal flex-center-vertical txt-24 txt-trns-none">Component name</h1>
+                                <ul class="flex-center-vertical bg-charcoal">
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/moon.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
+                                    </li>
+                                </ul>
+                            </header>
+                            <div class="build-item-component-preview bg-charcoal-75p">
+                                
+                            </div>
+                            <div class="build-item-component-properties bg-charcoal-50p">
+                                <ul class="p15-grid">
+                                    <li>
+                                    
+                                    </li>
+                                </ul>
+                                <div class="p15x-p15bottom">
+                                    <button class="height-36 txt-18 bg-moxie radius-2">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="build-item-state" tabindex="1">
+                            <header class="flex-center-vertical">
+                                <span class="bg-campus flex-center txt-16 semibold">1</span>
+                                <h1 class="p10x bg-charcoal flex-center-vertical txt-24 txt-trns-none">State name</h1>
+                                <ul class="flex-center-vertical bg-charcoal">
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/moon.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
+                                    </li>
+                                </ul>
+                            </header>
+                            <div class="bg-charcoal-50p txt-18 line-height-1-2 semibold p15x-p10y">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="build-item-state selected" tabindex="1">
+                            <header class="flex-center-vertical">
+                                <span class="bg-campus flex-center txt-16 semibold">1</span>
+                                <h1 class="p10x bg-charcoal flex-center-vertical txt-24 txt-trns-none">State name</h1>
+                                <ul class="flex-center-vertical bg-charcoal">
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/moon.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
+                                    </li>
+                                </ul>
+                            </header>
+                            <div class="bg-charcoal-50p txt-18 line-height-1-2 semibold p15x-p10y">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="build-item-state inactive" tabindex="1">
+                            <header class="flex-center-vertical">
+                                <span class="bg-campus flex-center txt-16 semibold">1</span>
+                                <h1 class="p10x bg-charcoal flex-center-vertical txt-24 txt-trns-none">State name</h1>
+                                <ul class="flex-center-vertical bg-charcoal">
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/moon.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
+                                    </li>
+                                </ul>
+                            </header>
+                            <div class="bg-charcoal-50p txt-18 line-height-1-2 semibold p15x-p10y">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="build-item-state" tabindex="1">
+                            <header class="flex-center-vertical">
+                                <span class="bg-campus flex-center txt-16 semibold">T</span>
+                                <h1 class="p10x bg-charcoal flex-center-vertical txt-24 txt-trns-none">
+                                    <div>1000</div>
+                                    <div class="toggle am-pm m10left">
+                            			<input type="checkbox" class="z-index-10" checked />
+                            			<label>
+                            				<svg class="square" viewBox="0 0 100 100">
+                            					<rect x="0" y="0" width="100" height="100"></rect>
+                            				</svg>
+                            				<svg class="square" viewBox="0 0 100 100">
+                            					<rect x="0" y="0" width="100" height="100"></rect>
+                            				</svg>
+                            				<span>
+                            					<span class="am">ms</span>
+                            					<span class="pm">s</span>
+                            				</span>
+                            			</label>
+                            		</div>
+                                </h1>
+                                <ul class="flex-center-vertical bg-charcoal">
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/moon.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
+                                    </li>
+                                </ul>
+                            </header>
+                            <div class="bg-moxie-50p txt-18 line-height-1-2 semibold p15x-p10y txt-center">
+                                100 Components
+                            </div>
+                            <div class="build-item-component-list bg-charcoal-50p">
+                                <ul class="ugrid-2 p15-grid">
+                                    <li>
+                                        <div class="component-tile">
+                                            <a></a>
+                            				<div>
+                                                <ul>
+                                                    <li>
+                                                        <a ng-include="img_base + BASE + 'templates/svg/main/moon.html'"></a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                                                    </li>
+                                                    <li>
+                                                        <a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+                                                    </li>
+                                                    <li>
+                                                        <a ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
+                                                    </li>
+                                                </ul>
+                            					<div>
+                            						<svg class="square" viewBox="0 0 100 100">
+                            							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                            						</svg>
+                            						<div>
+                            							<!-- component goes in here -->
+                                                        <!-- http://codepen.io/teamuguru/pen/550e8f8e7227df7c4bf72a6b94b0bda2?editors=1100 -->
+                            						</div>
+                            					</div>
+                            					<aside>
+                            						<h2>Name</h2>
+                            						<h3>Component</h3>
+                            					</aside>
+                            				</div>
+                            			</div>
+                                    </li>
+                                    <li>
+                                        <div class="component-tile">
+                                            <a></a>
+                            				<div>
+                            					<div>
+                            						<svg class="square" viewBox="0 0 100 100">
+                            							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                            						</svg>
+                            						<div>
+                            							<!-- component goes in here -->
+                                                        <!-- http://codepen.io/teamuguru/pen/550e8f8e7227df7c4bf72a6b94b0bda2?editors=1100 -->
+                            						</div>
+                            					</div>
+                            					<aside>
+                            						<h2>Name</h2>
+                            						<h3>Component</h3>
+                            					</aside>
+                            				</div>
+                            			</div>
+                                    </li>
+                                    <li>
+                                        <div class="component-tile">
+                                            <a></a>
+                            				<div>
+                            					<div>
+                            						<svg class="square" viewBox="0 0 100 100">
+                            							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                            						</svg>
+                            						<div>
+                            							<!-- component goes in here -->
+                                                        <!-- http://codepen.io/teamuguru/pen/550e8f8e7227df7c4bf72a6b94b0bda2?editors=1100 -->
+                            						</div>
+                            					</div>
+                            					<aside>
+                            						<h2>Name</h2>
+                            						<h3>Component</h3>
+                            					</aside>
+                            				</div>
+                            			</div>
+                                    </li>
+                                    <li>
+                                        <div class="component-tile">
+                                            <a></a>
+                            				<div>
+                            					<div>
+                            						<svg class="square" viewBox="0 0 100 100">
+                            							<rect x="0" y="0" width="100" height="100" fill="none"></rect>
+                            						</svg>
+                            						<div>
+                            							<!-- component goes in here -->
+                                                        <!-- http://codepen.io/teamuguru/pen/550e8f8e7227df7c4bf72a6b94b0bda2?editors=1100 -->
+                            						</div>
+                            					</div>
+                            					<aside>
+                            						<h2>Name</h2>
+                            						<h3>Component</h3>
+                            					</aside>
+                            				</div>
+                            			</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class='build-element-list animation relative' ng-if="false">
+                <ul ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index' ng-if='!current_file.selected_variation.selected_scene_state'>
+                    <li class="build-timeline">
                         <div class='relative full-x'>
+                        <!-- <div class='relative full-x' ng-init=''> -->
+                            <h1 class="relative has-link full-x">
+                                <a>
+                                    <span class="lowercase">
+
+                                        <span class='txt-4 weight-500 lowercase opacity-50' ng-if='!time_state.time'>State #{{$index + 1}}:</span>
+                                        <span class='txt-4 weight-700 uppercase txt-white' ng-if='!time_state.time'>{{scene_state.name}}</span>
+                                    </span>
+                                </a>
+                            </h1>
+                            <a ng-include="img_base + BASE + 'templates/svg/main/external.html'" class='build-activate absolute close top-0 right-0 full-y bg-shamrock'ng-click='page.mode.scene.switchTo(current_file.selected_variation, $index)'></a>
+                        </div>
+                        <div class="txt-center bg-slate-50p relative">
+                            <ul class="build-css-header text-left">
+
+                                <li>{{scene_state.time_states.length}} time states total</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+
+                <ul ng-if='current_file.selected_variation.selected_scene_state && !current_file.selected_time_state' class='relative full-y'>
+                    <!-- timeline -->
+                    <li class="build-timeline" ng-repeat='time_state in current_file.selected_variation.selected_scene_state.time_states' ng-if='!page.dropdowns.modes.selectedIndex'>
+                        <div class='relative full-x'>
+                        <!-- <div class='relative full-x' ng-init=''> -->
                             <h1 class="relative has-link">
                                 <a ng-click='editTimeStateTime(timeline, time_state, $event)' ng-if='!time_state.edit_mode' >
                                     <span class="lowercase">
@@ -542,24 +1447,18 @@
                                 </div>
 
                             </h1>
-                            <a ng-if='time_state.time' class='build-activate close'  ng-click='removeTimeState($index)'></a>
-                            <a ng-click='updateTimeStateCollapses(current_file.selected_variation.timeline, time_state)' ng-include="img_base + BASE + 'templates/svg/main/external.html'" ng-if="time_state.components.length"></a>
-                            <a ng-if='time_state.components.length' class='z-index-10 right-0 bottom-0 absolute bg-charcoal-impt'>&rtrif;</a>
+                            <a ng-include="img_base + BASE + 'templates/svg/main/plus.html'" class='build-activate absolute close top-0 right-0 full-y' style='margin-right:155px;'  ng-click='page.mode.time_state.remove(current_file.selected_variation, $index)'></a>
+                            <a style='margin-right:100px;' class='absolute top-0 right-0 full-y' ng-click='page.mode.component.initMode(current_file.selected_variation.selected_scene_state, time_state)' ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-if="time_state.components.length"></a>
+                            <a class='right-0' ng-click='page.mode.time_state.switchTo(current_file.selected_variation, $index)' ng-include="img_base + BASE + 'templates/svg/main/external.html'" ng-if="time_state.components.length"></a>
+                            <a ng-if='time_state.components.length && current_file.selected_variation.selected_time_state' class='z-index-10 right-0 bottom-0 absolute bg-charcoal-impt'>&rtrif;</a>
                         </div>
-                        <div class="relative" ng-show='time_state.focused'>
-                            <h1 class='full-x p20xy text-center relative uppercase border-white-dashed'>
-                                <a ng-click='page.mode.component.initMode(scene_state, time_state)'> + Add Components </a>
-                            </h1>
-                            <!-- <ul class="build-save">
-                                <li>
-                                    <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/commit.html'"></a>
-                                </li>
-                                <li>
-                                    <a class="build-activate" ng-include="img_base + BASE + 'templates/svg/main/save-simple.html'"></a>
-                                </li>
-                            </ul> -->
+                        <div class="txt-center bg-slate-50p relative">
+                            <ul class="build-css-header text-left">
+                                <li>{{time_state.components.length}} components total</li>
+                            </ul>
+                        </div>
+                        <div class="relative" ng-show='current_file.selected_variation.selected_time_state'>
                             <div class="build-css-select full-x">
-
                                 <!-- @samir -->
                                 <!-- component previews go in here <div></div> -->
                                 <ul class='time-state-component-bar'>
@@ -740,7 +1639,7 @@
                     </li>
                 </ul>
             </div>
-            <nav class="build-aside-bottom">
+            <nav class="build-aside-bottom" ng-if='current_file.selected_variation.selected_scene_state'>
                 <ul class='relative' style='width:100%;'>
                     <li class='flex-wrap-center full-x' ng-click="addNewTimeState()">
                         <a class="build-add-element absolute left-0" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>

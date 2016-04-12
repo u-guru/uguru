@@ -60,7 +60,7 @@
 					margin-left: 15px;
 					.dropdown {
 						> div {
-							span {
+							> span {
 								height: 32px;
 							}
 							a {
@@ -77,6 +77,47 @@
 							top: 32px;
 							li {
 								width: calc(100% - 32px);
+							}
+						}
+					}
+					&.build-variations {
+						h2 {
+							display: none!important;
+						}
+						.dropdown {
+							> div {
+								> span {
+									@include flex;
+									@include flex-wrap;
+									@include flex-center-vertical;
+									height: 32px;
+									font-size: 12px;
+									font-weight: 600;
+									line-height: 1.3;
+									> span {
+										display: block;
+										height: auto;
+										&:last-child {
+											font-size: 10px;
+											font-weight: 400;
+											line-height: 1;
+										}
+									}
+								}
+							}
+							> ul {
+								li {
+									font-size: 14px;
+									line-height: 1.3;
+									font-weight: 600;
+									> span {
+										font-weight: 400;
+										&:last-child {
+											font-size: 12px;
+											line-height: 1;
+										}
+									}
+								}
 							}
 						}
 					}

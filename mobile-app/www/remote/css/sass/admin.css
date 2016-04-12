@@ -683,6 +683,236 @@
   font-size: 20px;
 }
 
+#build .build-element-container {
+  height: calc(100% - 96px - 64px);
+  overflow: auto;
+}
+
+#build .build-item-state *, #build .build-item-component * {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+#build .build-item-state:focus header h1, #build .build-item-state:focus header ul, #build .build-item-state.selected header h1, #build .build-item-state.selected header ul, #build .build-item-component:focus header h1, #build .build-item-component:focus header ul, #build .build-item-component.selected header h1, #build .build-item-component.selected header ul {
+  background: #43cb9d !important;
+}
+
+#build .build-item-state.inactive header > span, #build .build-item-state.inactive header .toggle, #build .build-item-state.inactive header h1, #build .build-item-state.inactive header ul li:not(:first-child), #build .build-item-component.inactive header > span, #build .build-item-component.inactive header .toggle, #build .build-item-component.inactive header h1, #build .build-item-component.inactive header ul li:not(:first-child) {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+
+#build .build-item-state.inactive header ul, #build .build-item-component.inactive header ul {
+  background: rgba(43, 50, 52, 0.5) !important;
+}
+
+#build .build-item-state.inactive header ul li:first-child a, #build .build-item-component.inactive header ul li:first-child a {
+  background: #456477;
+}
+
+#build .build-item-state.inactive header ul li:first-child a:hover, #build .build-item-state.inactive header ul li:first-child a:focus, #build .build-item-component.inactive header ul li:first-child a:hover, #build .build-item-component.inactive header ul li:first-child a:focus {
+  background: #43cb9d;
+}
+
+#build .build-item-state.inactive header ul li:first-child a:hover svg *, #build .build-item-state.inactive header ul li:first-child a:focus svg *, #build .build-item-component.inactive header ul li:first-child a:hover svg *, #build .build-item-component.inactive header ul li:first-child a:focus svg * {
+  stroke: white;
+}
+
+#build .build-item-state.inactive header ul li:first-child a:active, #build .build-item-component.inactive header ul li:first-child a:active {
+  background: #637074;
+}
+
+#build .build-item-state.inactive div, #build .build-item-component.inactive div {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+
+#build .build-item-state.inactive:focus header ul, #build .build-item-state.inactive.selected header ul, #build .build-item-component.inactive:focus header ul, #build .build-item-component.inactive.selected header ul {
+  background: rgba(67, 203, 157, 0.5) !important;
+}
+
+#build .build-item-state header, #build .build-item-component header {
+  min-height: 0 !important;
+}
+
+#build .build-item-state header > span, #build .build-item-component header > span {
+  height: 48px;
+  width: 28px;
+}
+
+#build .build-item-state header .toggle.am-pm input + label, #build .build-item-state header .toggle.am-pm input:checked + label, #build .build-item-component header .toggle.am-pm input + label, #build .build-item-component header .toggle.am-pm input:checked + label {
+  background: #40484B;
+}
+
+#build .build-item-state header h1, #build .build-item-component header h1 {
+  height: 48px;
+  width: calc(100% - 28px - 168px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#build .build-item-state header ul, #build .build-item-component header ul {
+  height: 48px;
+  padding: 4px;
+}
+
+#build .build-item-state header ul li, #build .build-item-component header ul li {
+  padding: 4px;
+}
+
+#build .build-item-state header ul li a, #build .build-item-component header ul li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+#build .build-item-state header ul li a svg, #build .build-item-component header ul li a svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+#build .build-item-state header ul li a svg *, #build .build-item-component header ul li a svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#build .build-item-state header ul li a:hover, #build .build-item-state header ul li a:focus, #build .build-item-component header ul li a:hover, #build .build-item-component header ul li a:focus {
+  background: #43cb9d;
+}
+
+#build .build-item-state header ul li a:hover svg *, #build .build-item-state header ul li a:focus svg *, #build .build-item-component header ul li a:hover svg *, #build .build-item-component header ul li a:focus svg * {
+  stroke: white;
+}
+
+#build .build-item-state header ul li a:active, #build .build-item-component header ul li a:active {
+  background: #637074;
+}
+
+#build .build-item-state header ul li a.close-icon:hover, #build .build-item-state header ul li a.close-icon:focus, #build .build-item-component header ul li a.close-icon:hover, #build .build-item-component header ul li a.close-icon:focus {
+  background: #d3242c;
+}
+
+#build .build-item-state header ul li a.close-icon:active, #build .build-item-component header ul li a.close-icon:active {
+  background: #637074;
+}
+
+#build .build-item-state .component-tile:hover > div, #build .build-item-component .component-tile:hover > div {
+  border-color: #43cb9d;
+}
+
+#build .build-item-state .component-tile:hover > div aside, #build .build-item-component .component-tile:hover > div aside {
+  background: #43cb9d;
+}
+
+#build .build-item-state .component-tile > div > ul, #build .build-item-component .component-tile > div > ul {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  position: absolute;
+  z-index: 11;
+  top: 0;
+  right: 0;
+  padding: 6px;
+}
+
+#build .build-item-state .component-tile > div > ul li a, #build .build-item-component .component-tile > div > ul li a {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  display: block;
+}
+
+#build .build-item-state .component-tile > div > ul li a svg, #build .build-item-component .component-tile > div > ul li a svg {
+  width: 24px;
+  height: 24px;
+}
+
+#build .build-item-state .component-tile > div > ul li a svg *, #build .build-item-component .component-tile > div > ul li a svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#build .build-item-state .component-tile > div > ul li a:hover, #build .build-item-state .component-tile > div > ul li a:focus, #build .build-item-component .component-tile > div > ul li a:hover, #build .build-item-component .component-tile > div > ul li a:focus {
+  filter: alpha(opacity=75);
+  opacity: 0.75;
+}
+
+#build .build-item-state .component-tile > div > ul li a:active, #build .build-item-component .component-tile > div > ul li a:active {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+#build .build-item-state .component-tile:hover > div > ul, #build .build-item-component .component-tile:hover > div > ul {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+#build .build-item-state .component-tile > a:hover + div > ul, #build .build-item-state .component-tile > a:focus + div > ul, #build .build-item-component .component-tile > a:hover + div > ul, #build .build-item-component .component-tile > a:focus + div > ul {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+#build .build-item-component-preview {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  height: 150px;
+}
+
+#build .build-item-component-preview .fixed {
+  position: absolute !important;
+}
+
+#build .build-item-component-preview.expanded {
+  height: 300px;
+}
+
 #build > aside {
   width: calc(100% / 3);
   height: 100%;
@@ -690,15 +920,25 @@
 }
 
 #build > aside .build-aside-preview {
-  width: 320px;
-  height: 200px;
+  width: 160px;
+  height: 100px;
   overflow: hidden;
   position: relative;
-  z-index: 2000;
+  z-index: 100;
   background: #40484B;
 }
 
-#build > aside .build-aside-preview > div {
+#build > aside .build-aside-preview .build-aside-preview-border {
+  -webkit-transform: scale(0.125);
+  -moz-transform: scale(0.125);
+  -ms-transform: scale(0.125);
+  -o-transform: scale(0.125);
+  transform: scale(0.125);
+  position: absolute;
+  border: 10px solid #e6389b;
+}
+
+#build > aside .build-aside-preview .build-aside-preview-content {
   position: absolute;
   top: 50%;
   margin-top: -400px;
@@ -706,11 +946,15 @@
   margin-left: -640px;
   width: 1280px;
   height: 800px;
-  -webkit-transform: scale(0.25);
-  -moz-transform: scale(0.25);
-  -ms-transform: scale(0.25);
-  -o-transform: scale(0.25);
-  transform: scale(0.25);
+  -webkit-transform: scale(0.125);
+  -moz-transform: scale(0.125);
+  -ms-transform: scale(0.125);
+  -o-transform: scale(0.125);
+  transform: scale(0.125);
+}
+
+#build > aside .build-aside-preview .build-aside-preview-content .fixed {
+  position: absolute !important;
 }
 
 #build > aside.build-settings > h1 {

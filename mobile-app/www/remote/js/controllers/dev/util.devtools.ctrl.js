@@ -465,6 +465,7 @@ angular.module('uguru.dev.controllers')
     $scope.page.dropdowns.templates = {options:[], key:'ref', selectedIndex:0, size:'small', onOptionClick: injectTemplateDropdown};
     $scope.page.dropdowns.filterOptions = {label: "sort by", options: ['Time', "Component"], selectedIndex: userSettings.defaultFilter || 1, size:"small", onOptionClick: toggleComponentGUIMode}
     $scope.page.dropdowns.user_settings = {options:['Prioritized', 'History', 'Docs', 'Components'], selectedIndex: 0};
+    $scope.page.dropdowns.modes = {options:[{name: "States"}, {name: "T = X"}, {name: "Components"}], key: "name", selectedIndex: 0};
     $scope.page.status = {show: false}
 
 

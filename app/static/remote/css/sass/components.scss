@@ -3065,7 +3065,7 @@ input[type=range] {
 	> div {
 		@include flex;
 		@include flex-center;
-		span, input {
+		> span, > input {
 			@include flex;
 			@include flex-center;
 			width: 152px;
@@ -3151,7 +3151,7 @@ input[type=range] {
 	}
 	&.full-x {
 		> div {
-			span {
+			> span {
 				width: calc(100% - 48px);
 			}
 		}
@@ -3164,7 +3164,7 @@ input[type=range] {
 	}
 	&.number {
 		> div {
-			span, input {
+			> span, > input {
 				width: 64px;
 			}
 		}
@@ -3177,7 +3177,7 @@ input[type=range] {
 	}
 	&.small {
 		> div {
-			span {
+			> span {
 				@include flex;
 				@include flex-center;
 				width: 152px;
@@ -3205,7 +3205,7 @@ input[type=range] {
 		}
 		&.full-x {
 			> div {
-				span {
+				> span {
 					width: calc(100% - 24px);
 				}
 			}
@@ -3220,7 +3220,7 @@ input[type=range] {
 .dropdown-container.full-x {
 	.dropdown {
 		> div {
-			span {
+			> span {
 				width: calc(100% - 48px);
 			}
 		}
@@ -3232,7 +3232,7 @@ input[type=range] {
 		}
 		&.small {
 			> div {
-				span {
+				> span {
 					width: calc(100% - 24px);
 				}
 			}

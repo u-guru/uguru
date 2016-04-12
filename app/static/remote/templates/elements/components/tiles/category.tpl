@@ -5,7 +5,7 @@
                 <rect x="0" y="0" width="240" height="150" fill="none"></rect>
             </svg>
             <div class="category-tile-inside">
-                <div class="category-tile-icon" ng-include="img_base + BASE + 'templates/svg/household-simple.html'"></div>
+                <div class="category-tile-icon" ng-include="img_base + BASE + 'templates/svg/' + tile.category + '-simple.html'"></div>
                 <h1>{{tile.category}}</h1>
             </div>
         </a>

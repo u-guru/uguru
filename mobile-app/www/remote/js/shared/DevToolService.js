@@ -30,8 +30,8 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
         _scope.current_file.controller = file.controller;
         _scope.current_file.id = file.id;
         _scope.current_file.selectedIndex = returnIndex;
-        _scope.current_file.selectedSceneIndex = 0;
-        _scope.current_file.selected_variation.selected_scene_state = _scope.current_file.selected_variation.scene_states[_scope.current_file.selectedSceneIndex];
+        _scope.current_file.selected_variation.selectedSceneIndex = 0;
+        _scope.current_file.selected_variation.selected_scene_state = _scope.current_file.selected_variation.scene_states[_scope.current_file.selected_variation.selectedSceneIndex];
         _scope.current_file.template_url = file.template_url;
         _scope.current_file.methods = getFileMethods(_scope)
 
@@ -189,6 +189,22 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
         }
     }
 
+    function clearSceneState(_scope) {
+        return function(variation) {
+            variation.selected_scene_state = null;
+            variation.selectedSceneIndex = null;
+            variation.selected_time_state = null;
+            variation.selectedTimeIndex = null;
+        }
+    }
+
+    function clearTimeState(_scope) {
+        return function(variation) {
+            variation.selected_time_state = null;
+            variation.selectedTimeIndex = null;
+        }
+    }
+
     function getBuildToolModes(_scope) {
         var modeFuncDict = {
             scene: {
@@ -199,6 +215,7 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
                 destroyKeys: destroySceneKeys,
                 forwardTo: forwardToScene,
                 getComponents: getAllSceneComponents,
+                clearSelectedScene: clearSceneState(_scope)
             },
             time_state: {
                 init: getTimeBaseObj,
@@ -210,7 +227,9 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
                 initKeys: initTimeStateModeKeys,
                 destroyKeys: destroyTimeStateModeKeys,
                 play: playTimeState,
-                forwardTo: playTimeStatesUntil
+                forwardTo: playTimeStatesUntil,
+                switchTo: switchToTimeState(_scope),
+                clearTimeState: clearTimeState(_scope)
             },
             component: {
                 initMode: switchToComponentMode(_scope),
@@ -284,9 +303,19 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
                 variation.scene_states[i].component_mode = false;
             }
             variation.selected_scene_state = variation.scene_states[index];
+            variation.selectedSceneIndex = index;
             variation.selected_scene_state.active = true;
         }
     };
+
+
+    function switchToTimeState(_scope) {
+        return function(variation, index) {
+            variation.selected_time_state = variation.selected_scene_state.time_states[index];
+            variation.selectedTimeIndex = index;
+        }
+    }
+
     function playScene(_scope) {
         return function(scene) {
             if (!scene.components || !scene.components.length) {
