@@ -1,4 +1,3 @@
-
 <div id="admin" class='full-xy flex-wrap-center flex-stretch absolute'>
     <header>
         <span class="admin-logo" ng-include="img_base + BASE + 'templates/svg/logo-admin.html'"></span>
@@ -1957,7 +1956,25 @@
                         </ul>
                     </div>
                     <div class="admin-html admin-reference admin-content-section flex-wrap-start" ng-if='page.layout.sections[2].tabs.index === 1'>
-                        <h2>Margin</h2>
+                        <h2>Z-Index</h2>
+                        <ul>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-1"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-2"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-3"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-4"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-5"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-6"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-7"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-8"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-9"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="10" value="z-index-10"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="10" value="z-index-99"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="11" value="z-index-100"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="11" value="z-index-999"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="12" value="z-index-1000"/></span></li>
+                        </ul>
+                        
+                        <h2>Margin (combinable)</h2>
                         <ul class="ugrid-4">
                             <li>
                                 <div class="bg-campus p15xy">
@@ -1998,6 +2015,44 @@
                                 <div class="bg-campus p15xy">
                                     <div class="full-xy bg-slate-20p">
                                         <span class="m05x">.<input readonly="true" onclick="this.select()" size="4" value="m05x"/></span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <h2>Padding (combinable)</h2>
+                        <ul class="ugrid-4">
+                            <li>
+                                <div class="bg-campus">
+                                    <div class="full-xy flex flex-start bg-slate-20p">
+                                        <span class="padding-none">.<input readonly="true" onclick="this.select()" size="12" value="padding-none"/></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="bg-campus p05top">
+                                    <div class="full-xy flex flex-start bg-slate-20p">
+                                        <span>.<input readonly="true" onclick="this.select()" size="6" value="p05top"/></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="bg-campus p15x">
+                                    <div class="full-xy bg-slate-20p">
+                                        <span>.<input readonly="true" onclick="this.select()" size="4" value="p15x"/></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="bg-campus p15-grid">
+                                    <div class="full-x bg-slate-20p">
+                                        <span>.<input readonly="true" onclick="this.select()" size="8" value="p15-grid"/></span>
+                                    </div>
+                                    <div class="full-x bg-slate-20p">
+                                        <span></span>
+                                    </div>
+                                    <div class="full-x bg-slate-20p">
+                                        <span></span>
                                     </div>
                                 </div>
                             </li>
@@ -2067,16 +2122,46 @@
 
                         <h2>Type &rarr; Sizes</h2>
                         <ul>
-                            <li><span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-1"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-16" onclick="this.select()" size="6" value="txt-2"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-18" onclick="this.select()" size="6" value="txt-3"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-20" onclick="this.select()" size="6" value="txt-4"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-24" onclick="this.select()" size="6" value="txt-5"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-28" onclick="this.select()" size="6" value="txt-6"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-32" onclick="this.select()" size="6" value="txt-7"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-36" onclick="this.select()" size="6" value="txt-8"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-48" onclick="this.select()" size="6" value="txt-9"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-64" onclick="this.select()" size="6" value="txt-10"/></span></li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-14"/></span>
+                                <span class="m05top bg-campus txt-14">.<input readonly="true" class="txt-14" onclick="this.select()" size="5" value="txt-1"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-16"/></span>
+                                <span class="m05top bg-campus txt-16">.<input readonly="true" class="txt-16" onclick="this.select()" size="5" value="txt-2"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-18"/></span>
+                                <span class="m05top bg-campus txt-18">.<input readonly="true" class="txt-18" onclick="this.select()" size="5" value="txt-3"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-20"/></span>
+                                <span class="m05top bg-campus txt-20">.<input readonly="true" class="txt-20" onclick="this.select()" size="5" value="txt-4"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-24"/></span>
+                                <span class="m05top bg-campus txt-24">.<input readonly="true" class="txt-24" onclick="this.select()" size="5" value="txt-5"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-28"/></span>
+                                <span class="m05top bg-campus txt-28">.<input readonly="true" class="txt-28" onclick="this.select()" size="5" value="txt-6"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-14"/></span>
+                                <span class="m05top bg-campus txt-32">.<input readonly="true" class="txt-32" onclick="this.select()" size="5" value="txt-7"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-36"/></span>
+                                <span class="m05top bg-campus txt-36">.<input readonly="true" class="txt-36" onclick="this.select()" size="5" value="txt-8"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-48"/></span>
+                                <span class="m05top bg-campus txt-48">.<input readonly="true" class="txt-48" onclick="this.select()" size="5" value="txt-9"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-64"/></span>
+                                <span class="m05top bg-campus txt-64">.<input readonly="true" class="txt-64" onclick="this.select()" size="6" value="txt-10"/></span>
+                            </li>
                         </ul>
 
                         <h2>Type &rarr; Colors</h2>
@@ -2292,9 +2377,150 @@
                         <h2>Border &rarr; Radius</h2>
                         <ul>
                             <li><span class="radius-2 bg-campus">.<input readonly="true" onclick="this.select()" size="8" value="radius-2"/></span></li>
+                            <li><span class="radius-2-top bg-campus">.<input readonly="true" onclick="this.select()" size="12" value="radius-2-top"/></span></li>
+                            <li><span class="radius-2-bottom bg-campus">.<input readonly="true" onclick="this.select()" size="15" value="radius-2-bottom"/></span></li>
+                            <li><span class="radius-2-left bg-campus">.<input readonly="true" onclick="this.select()" size="13" value="radius-2-left"/></span></li>
+                            <li><span class="radius-2-right bg-campus">.<input readonly="true" onclick="this.select()" size="14" value="radius-2-right"/></span></li>
                             <li><span class="radius-4 bg-campus">.<input readonly="true" onclick="this.select()" size="8" value="radius-4"/></span></li>
+                            <li><span class="radius-4-top bg-campus">.<input readonly="true" onclick="this.select()" size="12" value="radius-4-top"/></span></li>
+                            <li><span class="radius-4-bottom bg-campus">.<input readonly="true" onclick="this.select()" size="15" value="radius-4-bottom"/></span></li>
+                            <li><span class="radius-4-left bg-campus">.<input readonly="true" onclick="this.select()" size="13" value="radius-4-left"/></span></li>
+                            <li><span class="radius-4-right bg-campus">.<input readonly="true" onclick="this.select()" size="14" value="radius-4-right"/></span></li>
                             <li><span class="radius-10 bg-campus">.<input readonly="true" onclick="this.select()" size="9" value="radius-10"/></span></li>
+                            <li><span class="radius-10-top bg-campus">.<input readonly="true" onclick="this.select()" size="13" value="radius-10-top"/></span></li>
+                            <li><span class="radius-10-bottom bg-campus">.<input readonly="true" onclick="this.select()" size="16" value="radius-10-bottom"/></span></li>
+                            <li><span class="radius-10-left bg-campus">.<input readonly="true" onclick="this.select()" size="14" value="radius-10-left"/></span></li>
+                            <li><span class="radius-10-right bg-campus">.<input readonly="true" onclick="this.select()" size="15" value="radius-10-right"/></span></li>
                             <li><span class="round bg-campus">.<input readonly="true" onclick="this.select()" size="5" value="round"/></span></li>
+                        </ul>
+                        
+                        <h2>SVG &rarr; Size + Container Size</h2>
+                        <ul>
+                            <li>
+                                <div class="svg-24-18 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-24-18"/></span>
+                                <span class="m05top bg-campus">.<input readonly="true" onclick="this.select()" size="7" value="svg-xxs"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-32-24 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-32-24"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-36-24 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-36-24"/></span>
+                                <span class="m05top bg-campus">.<input readonly="true" onclick="this.select()" size="6" value="svg-xs"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-48-36 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-48-36"/></span>
+                                <span class="m05top bg-campus">.<input readonly="true" onclick="this.select()" size="5" value="svg-s"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-64-48 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-64-48"/></span>
+                                <span class="m05top bg-campus">.<input readonly="true" onclick="this.select()" size="5" value="svg-m"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-72-52 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-72-52"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-84-64 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-84-64"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-96-72 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-96-72"/></span>
+                                <span class="m05top bg-campus">.<input readonly="true" onclick="this.select()" size="5" value="svg-l"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-128-96 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="10" value="svg-128-96"/></span>
+                                <span class="m05top bg-campus">.<input readonly="true" onclick="this.select()" size="6" value="svg-xl"/></span>
+                            </li>
+                        
+                        <h2>SVG &rarr; Size Only</h2>
+                        <ul>
+                            <li>
+                                <span class="svg-24 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-24"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-32 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-32"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-36 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-36"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-48"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-64 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-64"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-72 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-72"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-84 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-84"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-96 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-96"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-128 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="7" value="svg-128"/></span>
+                            </li>
+                        </ul>
+                        
+                        <h2>SVG &rarr; Stroke-Width</h2>
+                        <ul>
+                            <li>
+                                <span class="svg-48 svg-stroke-1 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-1"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-2 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-2"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-3 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-3"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-4 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-4"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-5 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-5"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-6 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-6"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-7 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-7"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-8 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-8"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-9 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-9"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-10 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="13" value="svg-stroke-10"/></span>
+                            </li>
                         </ul>
                     </div>
                     <div class="admin-colors admin-reference admin-content-section" ng-if='page.layout.sections[2].tabs.index === 2'>
@@ -2599,9 +2825,7 @@
                     </div>
                 </div>
             </section>
-            <section id="admin-tools" class='flex-wrap-center full-x' ng-hide='page.layout.sidebar.index !== 4'  ng-include="img_base + BASE + 'templates/admin/index.tools.html'">
-
-            </section>
+            <section id="admin-tools" class='flex-wrap-center full-x' ng-hide='page.layout.sidebar.index !== 4' ng-include="img_base + BASE + 'templates/admin/index.tools.html'"></section>
         </div>
     </main>
 </div>
