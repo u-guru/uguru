@@ -1555,7 +1555,7 @@
 
             <div class='build-element-list animation relative full-x overflow-auto right-0 relative' style='overflow:hidden;' ng-if='!current_file.selected_variation.selected_scene_state || !current_file.selected_variation.selected_time_state' >
                 <ul class='p15-grid flex-wrap-center flex-stretch flex-wrap absolute full-xy' ng-if='!current_file.selected_variation.selected_scene_state'>
-                    <li ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index' class='full-x m10y flex-center'>
+                    <li ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index' class='full-x m10y flex-center' ng-click='showStatusMsg(["test"])' ng-keydown="$event.keyCode === 13 && showStatusMsg(['Displaying Time States for ' + scene_state.name + '...']) && page.mode.time_state.switchTo(current_file.selected_variation, $index)">
                         <div class="build-item-state full-x flex-wrap" style='height:auto;' tabindex="1">
                             <header class="flex-center-vertical full-x">
                                 <span class="bg-campus flex-center txt-16 semibold">{{$index + 1}}</span>
@@ -1564,13 +1564,13 @@
                                     <li>
                                         <a ng-include="img_base + BASE + 'templates/svg/main/moon.html'"></a>
                                     </li>
-                                    <li>
+                                    <li ng-click='removeTimeState(current_file.selected_variation, $index)'>
                                         <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                                     </li>
-                                    <li>
+                                    <li ng-click='showStatusMsg(["[Coming soon] Adding to my collection..."])'>
                                         <a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
                                     </li>
-                                    <li>
+                                    <li ng-click='page.mode.time_state.switchTo(current_file.selected_variation, $index)'>
                                         <a ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
                                     </li>
                                 </ul>
@@ -1605,7 +1605,7 @@
                             </h1>
                             <a ng-include="img_base + BASE + 'templates/svg/main/plus.html'" class='build-activate absolute close top-0 right-0 full-y' style='margin-right:155px;'  ng-click='removeTimeState(current_file.selected_variation, $index)'></a>
                            <!--  <a style='margin-right:100px;' class='absolute top-0 right-0 full-y' ng-click='page.mode.component.initMode(current_file.selected_variation.selected_scene_state, time_state)' ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-if="time_state.components.length"></a> -->
-                            <a class='right-0' ng-click='page.mode.time_state.switchTo(current_file.selected_variation, $index)' ng-include="img_base + BASE + 'templates/svg/main/external.html'"></a>
+                            <a class='right-0' ng-click='' ng-include="img_base + BASE + 'templates/svg/main/external.html'"></a>
                             <a ng-if='time_state.components.length && current_file.selected_variation.selected_time_state' class='z-index-10 right-0 bottom-0 absolute bg-charcoal-impt'>&rtrif;</a>
                         </div>
                         <div class="txt-center bg-slate-50p relative">
