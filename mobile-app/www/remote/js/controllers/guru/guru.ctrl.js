@@ -52,23 +52,24 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   }, 1500)
 
   var CTA_PARENT_DICT = {
-    'cta-box-profile':'.guru-home-container',
-    'cta-box-credibility':'.guru-home-container',
-    'cta-box-students': '.guru-home-container',
-    'cta-box-balance': '.guru-home-container',
+    'cta-box-profile':'#desktop-guru-home',
+    'cta-box-credibility':'#desktop-guru-home',
+    'cta-box-students': '#desktop-guru-home',
+    'cta-box-balance': '#desktop-guru-home',
     'cta-box-profile-contact': '.pf-type',
     'cta-box-profile-experiences': '.pf-tab-container',
     'cta-box-profile-languages': '.pf-tab-container',
     'cta-box-profile-pi-item': '.pf-tab-item',
     'cta-box-profile-skills': '.pf-type',
     'cta-box-referrals': '#desktop-guru-home',
-    'cta-box-support': '.guru-home-container',
-    'cta-box-signup': '.guru-home-container',
+    'cta-box-ranking': '#desktop-guru-home',
+    'cta-box-support': '#desktop-guru-home',
+    'cta-box-signup': '#desktop-guru-home',
     'cta-box-payments': '#desktop-balance',
-    'cta-box-billing': '.guru-home-container',
-    'cta-box-tour': '.guru-home-container',
-    'cta-box-content': '.guru-home-container',
-    'cta-box-proposals': '.guru-home-container'
+    'cta-box-billing': '#desktop-guru-home',
+    'cta-box-tour': '#desktop-guru-home',
+    'cta-box-content': '#desktop-guru-home',
+    'cta-box-proposals': '#desktop-guru-home'
   }
 
   $scope.launchCtaDict = {};
@@ -199,6 +200,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         function addEventListenerToCTABox(box_elem, modal_elem_id, index) {
             $scope.launchCtaDict[box_elem.id] = function() {
                 var modal_elem = document.querySelector('#' + modal_elem_id);
+                console.log("CHECK ", modal_elem)
+
                 var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
 
                     $timeout(function() {
@@ -216,7 +219,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 }, CTA_PARENT_DICT[box_elem.id]);
 
               }
-
             box_elem.addEventListener('click', $scope.launchCtaDict[box_elem.id]);
         }
 

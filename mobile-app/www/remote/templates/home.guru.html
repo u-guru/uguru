@@ -3,7 +3,7 @@
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		
 		<div id="desktop-guru-home-main" class="main">
-			<ion-pane id='cta-modal-credibility' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/guru.shield-star.html'">
+			<ion-pane id='cta-modal-credibility' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/guru.credibility.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
 
@@ -16,6 +16,10 @@
 			</ion-pane>
 
 			<ion-pane id='cta-modal-balance' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/balance.html'">
+				<!-- <div ></div> -->
+			</ion-pane>
+			
+			<ion-pane id='cta-modal-ranking' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/guru.ranking.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
 
@@ -184,7 +188,7 @@
 				</div>
 				<div class="home-tiles-main home-tiles-container">
 					<div class="home-tiles-main-inside">
-						<a class="home-tile">
+						<a id='cta-box-profile'  class="home-tile cta-box">
 							<div class="home-tile-inside">
 								<div>
 									<span ng-include="img_base + 'templates/svg/main/profile.html'"></span>
@@ -193,7 +197,7 @@
 								</div>
 							</div>
 						</a>
-						<a class="home-tile">
+						<a id='cta-box-balance' class="home-tile cta-box">
 							<div class="home-tile-inside">
 								<svg class="square" viewBox="0 0 100 100">
 			                        <rect x="0" y="0" width="100" height="100"></rect>
@@ -210,7 +214,7 @@
 								</div>
 							</div>
 						</a>
-						<a class="home-tile">
+						<a id='cta-box-credibility' class="home-tile cta-box">
 							<div class="home-tile-inside">
 								<div>
 									<span ng-include="img_base + 'templates/svg/main/shield-star.html'"></span>
@@ -219,7 +223,7 @@
 								</div>
 							</div>
 						</a>
-						<a class="home-tile">
+						<a id='cta-box-ranking' class="home-tile cta-box">
 							<div class="home-tile-inside">
 								<div>
 									<span ng-include="img_base + 'templates/svg/main/stats.html'"></span>
