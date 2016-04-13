@@ -23,51 +23,34 @@ slideDown
   -webkit-animation-duration: 1s;
   animation-timing-function: ease;
   -webkit-animation-timing-function: ease;
-  visibility: visible;
-}
+  visibility: visible; }
 
 @keyframes slideDown {
   0% {
-    transform: translateY(-100%);
-  }
+    transform: translateY(-100%); }
   50% {
-    transform: translateY(8%);
-  }
+    transform: translateY(8%); }
   65% {
-    transform: translateY(-4%);
-  }
+    transform: translateY(-4%); }
   80% {
-    transform: translateY(4%);
-  }
+    transform: translateY(4%); }
   95% {
-    transform: translateY(-2%);
-  }
+    transform: translateY(-2%); }
   100% {
-    transform: translateY(0%);
-  }
-}
-
+    transform: translateY(0%); } }
 @-webkit-keyframes slideDown {
   0% {
-    -webkit-transform: translateY(-100%);
-  }
+    -webkit-transform: translateY(-100%); }
   50% {
-    -webkit-transform: translateY(8%);
-  }
+    -webkit-transform: translateY(8%); }
   65% {
-    -webkit-transform: translateY(-4%);
-  }
+    -webkit-transform: translateY(-4%); }
   80% {
-    -webkit-transform: translateY(4%);
-  }
+    -webkit-transform: translateY(4%); }
   95% {
-    -webkit-transform: translateY(-2%);
-  }
+    -webkit-transform: translateY(-2%); }
   100% {
-    -webkit-transform: translateY(0%);
-  }
-}
-
+    -webkit-transform: translateY(0%); } }
 /*
 ==============================================
 slideUp
@@ -80,51 +63,34 @@ slideUp
   -webkit-animation-duration: 1s;
   animation-timing-function: ease;
   -webkit-animation-timing-function: ease;
-  visibility: visible;
-}
+  visibility: visible; }
 
 @keyframes slideUp {
   0% {
-    transform: translateY(100%);
-  }
+    transform: translateY(100%); }
   50% {
-    transform: translateY(-8%);
-  }
+    transform: translateY(-8%); }
   65% {
-    transform: translateY(4%);
-  }
+    transform: translateY(4%); }
   80% {
-    transform: translateY(-4%);
-  }
+    transform: translateY(-4%); }
   95% {
-    transform: translateY(2%);
-  }
+    transform: translateY(2%); }
   100% {
-    transform: translateY(0%);
-  }
-}
-
+    transform: translateY(0%); } }
 @-webkit-keyframes slideUp {
   0% {
-    -webkit-transform: translateY(100%);
-  }
+    -webkit-transform: translateY(100%); }
   50% {
-    -webkit-transform: translateY(-8%);
-  }
+    -webkit-transform: translateY(-8%); }
   65% {
-    -webkit-transform: translateY(4%);
-  }
+    -webkit-transform: translateY(4%); }
   80% {
-    -webkit-transform: translateY(-4%);
-  }
+    -webkit-transform: translateY(-4%); }
   95% {
-    -webkit-transform: translateY(2%);
-  }
+    -webkit-transform: translateY(2%); }
   100% {
-    -webkit-transform: translateY(0%);
-  }
-}
-
+    -webkit-transform: translateY(0%); } }
 /*
 ==============================================
 slideLeft
@@ -137,51 +103,34 @@ slideLeft
   -webkit-animation-duration: 1s;
   animation-timing-function: ease-in-out;
   -webkit-animation-timing-function: ease-in-out;
-  visibility: visible;
-}
+  visibility: visible; }
 
 @keyframes slideLeft {
   0% {
-    transform: translateX(150%);
-  }
+    transform: translateX(150%); }
   50% {
-    transform: translateX(-8%);
-  }
+    transform: translateX(-8%); }
   65% {
-    transform: translateX(4%);
-  }
+    transform: translateX(4%); }
   80% {
-    transform: translateX(-4%);
-  }
+    transform: translateX(-4%); }
   95% {
-    transform: translateX(2%);
-  }
+    transform: translateX(2%); }
   100% {
-    transform: translateX(0%);
-  }
-}
-
+    transform: translateX(0%); } }
 @-webkit-keyframes slideLeft {
   0% {
-    -webkit-transform: translateX(150%);
-  }
+    -webkit-transform: translateX(150%); }
   50% {
-    -webkit-transform: translateX(-8%);
-  }
+    -webkit-transform: translateX(-8%); }
   65% {
-    -webkit-transform: translateX(4%);
-  }
+    -webkit-transform: translateX(4%); }
   80% {
-    -webkit-transform: translateX(-4%);
-  }
+    -webkit-transform: translateX(-4%); }
   95% {
-    -webkit-transform: translateX(2%);
-  }
+    -webkit-transform: translateX(2%); }
   100% {
-    -webkit-transform: translateX(0%);
-  }
-}
-
+    -webkit-transform: translateX(0%); } }
 /*
 ==============================================
 slideRight
@@ -194,51 +143,34 @@ slideRight
   -webkit-animation-duration: 1s;
   animation-timing-function: ease-in-out;
   -webkit-animation-timing-function: ease-in-out;
-  visibility: visible;
-}
+  visibility: visible; }
 
 @keyframes slideRight {
   0% {
-    transform: translateX(-150%);
-  }
+    transform: translateX(-150%); }
   50% {
-    transform: translateX(8%);
-  }
+    transform: translateX(8%); }
   65% {
-    transform: translateX(-4%);
-  }
+    transform: translateX(-4%); }
   80% {
-    transform: translateX(4%);
-  }
+    transform: translateX(4%); }
   95% {
-    transform: translateX(-2%);
-  }
+    transform: translateX(-2%); }
   100% {
-    transform: translateX(0%);
-  }
-}
-
+    transform: translateX(0%); } }
 @-webkit-keyframes slideRight {
   0% {
-    -webkit-transform: translateX(-150%);
-  }
+    -webkit-transform: translateX(-150%); }
   50% {
-    -webkit-transform: translateX(8%);
-  }
+    -webkit-transform: translateX(8%); }
   65% {
-    -webkit-transform: translateX(-4%);
-  }
+    -webkit-transform: translateX(-4%); }
   80% {
-    -webkit-transform: translateX(4%);
-  }
+    -webkit-transform: translateX(4%); }
   95% {
-    -webkit-transform: translateX(-2%);
-  }
+    -webkit-transform: translateX(-2%); }
   100% {
-    -webkit-transform: translateX(0%);
-  }
-}
-
+    -webkit-transform: translateX(0%); } }
 /*
 ==============================================
 slideExpandUp
@@ -251,69 +183,46 @@ slideExpandUp
   -webkit-animation-duration: 1.6s;
   animation-timing-function: ease-out;
   -webkit-animation-timing-function: ease -out;
-  visibility: visible;
-}
+  visibility: visible; }
 
 @keyframes slideExpandUp {
   0% {
-    transform: translateY(100%) scaleX(0.5);
-  }
+    transform: translateY(100%) scaleX(0.5); }
   30% {
-    transform: translateY(-8%) scaleX(0.5);
-  }
+    transform: translateY(-8%) scaleX(0.5); }
   40% {
-    transform: translateY(2%) scaleX(0.5);
-  }
+    transform: translateY(2%) scaleX(0.5); }
   50% {
-    transform: translateY(0%) scaleX(1.1);
-  }
+    transform: translateY(0%) scaleX(1.1); }
   60% {
-    transform: translateY(0%) scaleX(0.9);
-  }
+    transform: translateY(0%) scaleX(0.9); }
   70% {
-    transform: translateY(0%) scaleX(1.05);
-  }
+    transform: translateY(0%) scaleX(1.05); }
   80% {
-    transform: translateY(0%) scaleX(0.95);
-  }
+    transform: translateY(0%) scaleX(0.95); }
   90% {
-    transform: translateY(0%) scaleX(1.02);
-  }
+    transform: translateY(0%) scaleX(1.02); }
   100% {
-    transform: translateY(0%) scaleX(1);
-  }
-}
-
+    transform: translateY(0%) scaleX(1); } }
 @-webkit-keyframes slideExpandUp {
   0% {
-    -webkit-transform: translateY(100%) scaleX(0.5);
-  }
+    -webkit-transform: translateY(100%) scaleX(0.5); }
   30% {
-    -webkit-transform: translateY(-8%) scaleX(0.5);
-  }
+    -webkit-transform: translateY(-8%) scaleX(0.5); }
   40% {
-    -webkit-transform: translateY(2%) scaleX(0.5);
-  }
+    -webkit-transform: translateY(2%) scaleX(0.5); }
   50% {
-    -webkit-transform: translateY(0%) scaleX(1.1);
-  }
+    -webkit-transform: translateY(0%) scaleX(1.1); }
   60% {
-    -webkit-transform: translateY(0%) scaleX(0.9);
-  }
+    -webkit-transform: translateY(0%) scaleX(0.9); }
   70% {
-    -webkit-transform: translateY(0%) scaleX(1.05);
-  }
+    -webkit-transform: translateY(0%) scaleX(1.05); }
   80% {
-    -webkit-transform: translateY(0%) scaleX(0.95);
-  }
+    -webkit-transform: translateY(0%) scaleX(0.95); }
   90% {
-    -webkit-transform: translateY(0%) scaleX(1.02);
-  }
+    -webkit-transform: translateY(0%) scaleX(1.02); }
   100% {
-    -webkit-transform: translateY(0%) scaleX(1);
-  }
-}
-
+    -webkit-transform: translateY(0%) scaleX(1); } }
 /*
 ==============================================
 expandUp
@@ -326,39 +235,26 @@ expandUp
   -webkit-animation-duration: 0.7s;
   animation-timing-function: ease;
   -webkit-animation-timing-function: ease;
-  visibility: visible;
-}
+  visibility: visible; }
 
 @keyframes expandUp {
   0% {
-    transform: translateY(100%) scale(0.6) scaleY(0.5);
-  }
+    transform: translateY(100%) scale(0.6) scaleY(0.5); }
   60% {
-    transform: translateY(-7%) scaleY(1.12);
-  }
+    transform: translateY(-7%) scaleY(1.12); }
   75% {
-    transform: translateY(3%);
-  }
+    transform: translateY(3%); }
   100% {
-    transform: translateY(0%) scale(1) scaleY(1);
-  }
-}
-
+    transform: translateY(0%) scale(1) scaleY(1); } }
 @-webkit-keyframes expandUp {
   0% {
-    -webkit-transform: translateY(100%) scale(0.6) scaleY(0.5);
-  }
+    -webkit-transform: translateY(100%) scale(0.6) scaleY(0.5); }
   60% {
-    -webkit-transform: translateY(-7%) scaleY(1.12);
-  }
+    -webkit-transform: translateY(-7%) scaleY(1.12); }
   75% {
-    -webkit-transform: translateY(3%);
-  }
+    -webkit-transform: translateY(3%); }
   100% {
-    -webkit-transform: translateY(0%) scale(1) scaleY(1);
-  }
-}
-
+    -webkit-transform: translateY(0%) scale(1) scaleY(1); } }
 /*
 ==============================================
 fadeIn
@@ -371,51 +267,38 @@ fadeIn
   -webkit-animation-duration: 1.5s;
   animation-timing-function: ease-in-out;
   -webkit-animation-timing-function: ease-in-out;
-  visibility: visible;
-}
+  visibility: visible; }
 
 @keyframes fadeInJA {
   0% {
     transform: scale(0);
     filter: alpha(opacity=0);
-    opacity: 0;
-  }
+    opacity: 0; }
   60% {
-    transform: scale(1.1);
-  }
+    transform: scale(1.1); }
   80% {
     transform: scale(0.9);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
+    opacity: 1; }
   100% {
     transform: scale(1);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
-}
-
+    opacity: 1; } }
 @-webkit-keyframes fadeInJA {
   0% {
     -webkit-transform: scale(0);
     filter: alpha(opacity=0);
-    opacity: 0;
-  }
+    opacity: 0; }
   60% {
-    -webkit-transform: scale(1.1);
-  }
+    -webkit-transform: scale(1.1); }
   80% {
     -webkit-transform: scale(0.9);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
+    opacity: 1; }
   100% {
     -webkit-transform: scale(1);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
-}
-
+    opacity: 1; } }
 /*
 ==============================================
 expandOpen
@@ -428,45 +311,30 @@ expandOpen
   -webkit-animation-duration: 1.2s;
   animation-timing-function: ease-out;
   -webkit-animation-timing-function: ease-out;
-  visibility: visible;
-}
+  visibility: visible; }
 
 @keyframes expandOpen {
   0% {
-    transform: scale(1.8);
-  }
+    transform: scale(1.8); }
   50% {
-    transform: scale(0.95);
-  }
+    transform: scale(0.95); }
   80% {
-    transform: scale(1.05);
-  }
+    transform: scale(1.05); }
   90% {
-    transform: scale(0.98);
-  }
+    transform: scale(0.98); }
   100% {
-    transform: scale(1);
-  }
-}
-
+    transform: scale(1); } }
 @-webkit-keyframes expandOpen {
   0% {
-    -webkit-transform: scale(1.8);
-  }
+    -webkit-transform: scale(1.8); }
   50% {
-    -webkit-transform: scale(0.95);
-  }
+    -webkit-transform: scale(0.95); }
   80% {
-    -webkit-transform: scale(1.05);
-  }
+    -webkit-transform: scale(1.05); }
   90% {
-    -webkit-transform: scale(0.98);
-  }
+    -webkit-transform: scale(0.98); }
   100% {
-    -webkit-transform: scale(1);
-  }
-}
-
+    -webkit-transform: scale(1); } }
 /*
 ==============================================
 bigEntrance
@@ -479,85 +347,66 @@ bigEntrance
   -webkit-animation-duration: 1.6s;
   animation-timing-function: ease-out;
   -webkit-animation-timing-function: ease-out;
-  visibility: visible;
-}
+  visibility: visible; }
 
 @keyframes bigEntrance {
   0% {
     transform: scale(0.3) rotate(6deg) translateX(-30%) translateY(30%);
     filter: alpha(opacity=20);
-    opacity: 0.2;
-  }
+    opacity: 0.2; }
   30% {
     transform: scale(1.03) rotate(-2deg) translateX(2%) translateY(-2%);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
+    opacity: 1; }
   45% {
     transform: scale(0.98) rotate(1deg) translateX(0%) translateY(0%);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
+    opacity: 1; }
   60% {
     transform: scale(1.01) rotate(-1deg) translateX(0%) translateY(0%);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
+    opacity: 1; }
   75% {
     transform: scale(0.99) rotate(1deg) translateX(0%) translateY(0%);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
+    opacity: 1; }
   90% {
     transform: scale(1.01) rotate(0deg) translateX(0%) translateY(0%);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
+    opacity: 1; }
   100% {
     transform: scale(1) rotate(0deg) translateX(0%) translateY(0%);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
-}
-
+    opacity: 1; } }
 @-webkit-keyframes bigEntrance {
   0% {
     -webkit-transform: scale(0.3) rotate(6deg) translateX(-30%) translateY(30%);
     filter: alpha(opacity=20);
-    opacity: 0.2;
-  }
+    opacity: 0.2; }
   30% {
     -webkit-transform: scale(1.03) rotate(-2deg) translateX(2%) translateY(-2%);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
+    opacity: 1; }
   45% {
     -webkit-transform: scale(0.98) rotate(1deg) translateX(0%) translateY(0%);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
+    opacity: 1; }
   60% {
     -webkit-transform: scale(1.01) rotate(-1deg) translateX(0%) translateY(0%);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
+    opacity: 1; }
   75% {
     -webkit-transform: scale(0.99) rotate(1deg) translateX(0%) translateY(0%);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
+    opacity: 1; }
   90% {
     -webkit-transform: scale(1.01) rotate(0deg) translateX(0%) translateY(0%);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
+    opacity: 1; }
   100% {
     -webkit-transform: scale(1) rotate(0deg) translateX(0%) translateY(0%);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
-}
-
+    opacity: 1; } }
 /*
 ==============================================
 hatch
@@ -573,57 +422,38 @@ hatch
   transform-origin: 50% 100%;
   -ms-transform-origin: 50% 100%;
   -webkit-transform-origin: 50% 100%;
-  visibility: visible;
-}
+  visibility: visible; }
 
 @keyframes hatch {
   0% {
-    transform: rotate(0deg) scaleY(0.6);
-  }
+    transform: rotate(0deg) scaleY(0.6); }
   20% {
-    transform: rotate(-2deg) scaleY(1.05);
-  }
+    transform: rotate(-2deg) scaleY(1.05); }
   35% {
-    transform: rotate(2deg) scaleY(1);
-  }
+    transform: rotate(2deg) scaleY(1); }
   50% {
-    transform: rotate(-2deg);
-  }
+    transform: rotate(-2deg); }
   65% {
-    transform: rotate(1deg);
-  }
+    transform: rotate(1deg); }
   80% {
-    transform: rotate(-1deg);
-  }
+    transform: rotate(-1deg); }
   100% {
-    transform: rotate(0deg);
-  }
-}
-
+    transform: rotate(0deg); } }
 @-webkit-keyframes hatch {
   0% {
-    -webkit-transform: rotate(0deg) scaleY(0.6);
-  }
+    -webkit-transform: rotate(0deg) scaleY(0.6); }
   20% {
-    -webkit-transform: rotate(-2deg) scaleY(1.05);
-  }
+    -webkit-transform: rotate(-2deg) scaleY(1.05); }
   35% {
-    -webkit-transform: rotate(2deg) scaleY(1);
-  }
+    -webkit-transform: rotate(2deg) scaleY(1); }
   50% {
-    -webkit-transform: rotate(-2deg);
-  }
+    -webkit-transform: rotate(-2deg); }
   65% {
-    -webkit-transform: rotate(1deg);
-  }
+    -webkit-transform: rotate(1deg); }
   80% {
-    -webkit-transform: rotate(-1deg);
-  }
+    -webkit-transform: rotate(-1deg); }
   100% {
-    -webkit-transform: rotate(0deg);
-  }
-}
-
+    -webkit-transform: rotate(0deg); } }
 /*
 ==============================================
 bounce
@@ -638,51 +468,34 @@ bounce
   -webkit-animation-timing-function: ease;
   transform-origin: 50% 100%;
   -ms-transform-origin: 50% 100%;
-  -webkit-transform-origin: 50% 100%;
-}
+  -webkit-transform-origin: 50% 100%; }
 
 @keyframes bounceJA {
   0% {
-    transform: translateY(0%) scaleY(0.6);
-  }
+    transform: translateY(0%) scaleY(0.6); }
   60% {
-    transform: translateY(-100%) scaleY(1.1);
-  }
+    transform: translateY(-100%) scaleY(1.1); }
   70% {
-    transform: translateY(0%) scaleY(0.95) scaleX(1.05);
-  }
+    transform: translateY(0%) scaleY(0.95) scaleX(1.05); }
   80% {
-    transform: translateY(0%) scaleY(1.05) scaleX(1);
-  }
+    transform: translateY(0%) scaleY(1.05) scaleX(1); }
   90% {
-    transform: translateY(0%) scaleY(0.95) scaleX(1);
-  }
+    transform: translateY(0%) scaleY(0.95) scaleX(1); }
   100% {
-    transform: translateY(0%) scaleY(1) scaleX(1);
-  }
-}
-
+    transform: translateY(0%) scaleY(1) scaleX(1); } }
 @-webkit-keyframes bounceJA {
   0% {
-    -webkit-transform: translateY(0%) scaleY(0.6);
-  }
+    -webkit-transform: translateY(0%) scaleY(0.6); }
   60% {
-    -webkit-transform: translateY(-100%) scaleY(1.1);
-  }
+    -webkit-transform: translateY(-100%) scaleY(1.1); }
   70% {
-    -webkit-transform: translateY(0%) scaleY(0.95) scaleX(1.05);
-  }
+    -webkit-transform: translateY(0%) scaleY(0.95) scaleX(1.05); }
   80% {
-    -webkit-transform: translateY(0%) scaleY(1.05) scaleX(1);
-  }
+    -webkit-transform: translateY(0%) scaleY(1.05) scaleX(1); }
   90% {
-    -webkit-transform: translateY(0%) scaleY(0.95) scaleX(1);
-  }
+    -webkit-transform: translateY(0%) scaleY(0.95) scaleX(1); }
   100% {
-    -webkit-transform: translateY(0%) scaleY(1) scaleX(1);
-  }
-}
-
+    -webkit-transform: translateY(0%) scaleY(1) scaleX(1); } }
 /*
 ==============================================
 pulse
@@ -694,45 +507,34 @@ pulse
   animation-duration: 1.5s;
   -webkit-animation-duration: 1.5s;
   animation-iteration-count: infinite;
-  -webkit-animation-iteration-count: infinite;
-}
+  -webkit-animation-iteration-count: infinite; }
 
 @keyframes pulseJA {
   0% {
     transform: scale(0.9);
     filter: alpha(opacity=70);
-    opacity: 0.7;
-  }
+    opacity: 0.7; }
   50% {
     transform: scale(1);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
+    opacity: 1; }
   100% {
     transform: scale(0.9);
     filter: alpha(opacity=70);
-    opacity: 0.7;
-  }
-}
-
+    opacity: 0.7; } }
 @-webkit-keyframes pulseJA {
   0% {
     -webkit-transform: scale(0.95);
     filter: alpha(opacity=70);
-    opacity: 0.7;
-  }
+    opacity: 0.7; }
   50% {
     -webkit-transform: scale(1);
     filter: alpha(opacity=100);
-    opacity: 1;
-  }
+    opacity: 1; }
   100% {
     -webkit-transform: scale(0.95);
     filter: alpha(opacity=70);
-    opacity: 0.7;
-  }
-}
-
+    opacity: 0.7; } }
 /*
 ==============================================
 floating
@@ -744,33 +546,22 @@ floating
   animation-duration: 1.5s;
   -webkit-animation-duration: 1.5s;
   animation-iteration-count: infinite;
-  -webkit-animation-iteration-count: infinite;
-}
+  -webkit-animation-iteration-count: infinite; }
 
 @keyframes floating {
   0% {
-    transform: translateY(0%);
-  }
+    transform: translateY(0%); }
   50% {
-    transform: translateY(8%);
-  }
+    transform: translateY(8%); }
   100% {
-    transform: translateY(0%);
-  }
-}
-
+    transform: translateY(0%); } }
 @-webkit-keyframes floating {
   0% {
-    -webkit-transform: translateY(0%);
-  }
+    -webkit-transform: translateY(0%); }
   50% {
-    -webkit-transform: translateY(8%);
-  }
+    -webkit-transform: translateY(8%); }
   100% {
-    -webkit-transform: translateY(0%);
-  }
-}
-
+    -webkit-transform: translateY(0%); } }
 /*
 ==============================================
 tossing
@@ -782,33 +573,22 @@ tossing
   animation-duration: 2.5s;
   -webkit-animation-duration: 2.5s;
   animation-iteration-count: infinite;
-  -webkit-animation-iteration-count: infinite;
-}
+  -webkit-animation-iteration-count: infinite; }
 
 @keyframes tossing {
   0% {
-    transform: rotate(-4deg);
-  }
+    transform: rotate(-4deg); }
   50% {
-    transform: rotate(4deg);
-  }
+    transform: rotate(4deg); }
   100% {
-    transform: rotate(-4deg);
-  }
-}
-
+    transform: rotate(-4deg); } }
 @-webkit-keyframes tossing {
   0% {
-    -webkit-transform: rotate(-4deg);
-  }
+    -webkit-transform: rotate(-4deg); }
   50% {
-    -webkit-transform: rotate(4deg);
-  }
+    -webkit-transform: rotate(4deg); }
   100% {
-    -webkit-transform: rotate(-4deg);
-  }
-}
-
+    -webkit-transform: rotate(-4deg); } }
 /*
 ==============================================
 pullUp
@@ -823,57 +603,38 @@ pullUp
   -webkit-animation-timing-function: ease-out;
   transform-origin: 50% 100%;
   -ms-transform-origin: 50% 100%;
-  -webkit-transform-origin: 50% 100%;
-}
+  -webkit-transform-origin: 50% 100%; }
 
 @keyframes pullUp {
   0% {
-    transform: scaleY(0.1);
-  }
+    transform: scaleY(0.1); }
   40% {
-    transform: scaleY(1.02);
-  }
+    transform: scaleY(1.02); }
   60% {
-    transform: scaleY(0.98);
-  }
+    transform: scaleY(0.98); }
   80% {
-    transform: scaleY(1.01);
-  }
+    transform: scaleY(1.01); }
   100% {
-    transform: scaleY(0.98);
-  }
+    transform: scaleY(0.98); }
   80% {
-    transform: scaleY(1.01);
-  }
+    transform: scaleY(1.01); }
   100% {
-    transform: scaleY(1);
-  }
-}
-
+    transform: scaleY(1); } }
 @-webkit-keyframes pullUp {
   0% {
-    -webkit-transform: scaleY(0.1);
-  }
+    -webkit-transform: scaleY(0.1); }
   40% {
-    -webkit-transform: scaleY(1.02);
-  }
+    -webkit-transform: scaleY(1.02); }
   60% {
-    -webkit-transform: scaleY(0.98);
-  }
+    -webkit-transform: scaleY(0.98); }
   80% {
-    -webkit-transform: scaleY(1.01);
-  }
+    -webkit-transform: scaleY(1.01); }
   100% {
-    -webkit-transform: scaleY(0.98);
-  }
+    -webkit-transform: scaleY(0.98); }
   80% {
-    -webkit-transform: scaleY(1.01);
-  }
+    -webkit-transform: scaleY(1.01); }
   100% {
-    -webkit-transform: scaleY(1);
-  }
-}
-
+    -webkit-transform: scaleY(1); } }
 /*
 ==============================================
 pullDown
@@ -888,57 +649,38 @@ pullDown
   -webkit-animation-timing-function: ease-out;
   transform-origin: 50% 0%;
   -ms-transform-origin: 50% 0%;
-  -webkit-transform-origin: 50% 0%;
-}
+  -webkit-transform-origin: 50% 0%; }
 
 @keyframes pullDown {
   0% {
-    transform: scaleY(0.1);
-  }
+    transform: scaleY(0.1); }
   40% {
-    transform: scaleY(1.02);
-  }
+    transform: scaleY(1.02); }
   60% {
-    transform: scaleY(0.98);
-  }
+    transform: scaleY(0.98); }
   80% {
-    transform: scaleY(1.01);
-  }
+    transform: scaleY(1.01); }
   100% {
-    transform: scaleY(0.98);
-  }
+    transform: scaleY(0.98); }
   80% {
-    transform: scaleY(1.01);
-  }
+    transform: scaleY(1.01); }
   100% {
-    transform: scaleY(1);
-  }
-}
-
+    transform: scaleY(1); } }
 @-webkit-keyframes pullDown {
   0% {
-    -webkit-transform: scaleY(0.1);
-  }
+    -webkit-transform: scaleY(0.1); }
   40% {
-    -webkit-transform: scaleY(1.02);
-  }
+    -webkit-transform: scaleY(1.02); }
   60% {
-    -webkit-transform: scaleY(0.98);
-  }
+    -webkit-transform: scaleY(0.98); }
   80% {
-    -webkit-transform: scaleY(1.01);
-  }
+    -webkit-transform: scaleY(1.01); }
   100% {
-    -webkit-transform: scaleY(0.98);
-  }
+    -webkit-transform: scaleY(0.98); }
   80% {
-    -webkit-transform: scaleY(1.01);
-  }
+    -webkit-transform: scaleY(1.01); }
   100% {
-    -webkit-transform: scaleY(1);
-  }
-}
-
+    -webkit-transform: scaleY(1); } }
 /*
 ==============================================
 stretchLeft
@@ -953,57 +695,38 @@ stretchLeft
   -webkit-animation-timing-function: ease-out;
   transform-origin: 100% 0%;
   -ms-transform-origin: 100% 0%;
-  -webkit-transform-origin: 100% 0%;
-}
+  -webkit-transform-origin: 100% 0%; }
 
 @keyframes stretchLeft {
   0% {
-    transform: scaleX(0.3);
-  }
+    transform: scaleX(0.3); }
   40% {
-    transform: scaleX(1.02);
-  }
+    transform: scaleX(1.02); }
   60% {
-    transform: scaleX(0.98);
-  }
+    transform: scaleX(0.98); }
   80% {
-    transform: scaleX(1.01);
-  }
+    transform: scaleX(1.01); }
   100% {
-    transform: scaleX(0.98);
-  }
+    transform: scaleX(0.98); }
   80% {
-    transform: scaleX(1.01);
-  }
+    transform: scaleX(1.01); }
   100% {
-    transform: scaleX(1);
-  }
-}
-
+    transform: scaleX(1); } }
 @-webkit-keyframes stretchLeft {
   0% {
-    -webkit-transform: scaleX(0.3);
-  }
+    -webkit-transform: scaleX(0.3); }
   40% {
-    -webkit-transform: scaleX(1.02);
-  }
+    -webkit-transform: scaleX(1.02); }
   60% {
-    -webkit-transform: scaleX(0.98);
-  }
+    -webkit-transform: scaleX(0.98); }
   80% {
-    -webkit-transform: scaleX(1.01);
-  }
+    -webkit-transform: scaleX(1.01); }
   100% {
-    -webkit-transform: scaleX(0.98);
-  }
+    -webkit-transform: scaleX(0.98); }
   80% {
-    -webkit-transform: scaleX(1.01);
-  }
+    -webkit-transform: scaleX(1.01); }
   100% {
-    -webkit-transform: scaleX(1);
-  }
-}
-
+    -webkit-transform: scaleX(1); } }
 /*
 ==============================================
 stretchRight
@@ -1018,53 +741,37 @@ stretchRight
   -webkit-animation-timing-function: ease-out;
   transform-origin: 0% 0%;
   -ms-transform-origin: 0% 0%;
-  -webkit-transform-origin: 0% 0%;
-}
+  -webkit-transform-origin: 0% 0%; }
 
 @keyframes stretchRight {
   0% {
-    transform: scaleX(0.3);
-  }
+    transform: scaleX(0.3); }
   40% {
-    transform: scaleX(1.02);
-  }
+    transform: scaleX(1.02); }
   60% {
-    transform: scaleX(0.98);
-  }
+    transform: scaleX(0.98); }
   80% {
-    transform: scaleX(1.01);
-  }
+    transform: scaleX(1.01); }
   100% {
-    transform: scaleX(0.98);
-  }
+    transform: scaleX(0.98); }
   80% {
-    transform: scaleX(1.01);
-  }
+    transform: scaleX(1.01); }
   100% {
-    transform: scaleX(1);
-  }
-}
-
+    transform: scaleX(1); } }
 @-webkit-keyframes stretchRight {
   0% {
-    -webkit-transform: scaleX(0.3);
-  }
+    -webkit-transform: scaleX(0.3); }
   40% {
-    -webkit-transform: scaleX(1.02);
-  }
+    -webkit-transform: scaleX(1.02); }
   60% {
-    -webkit-transform: scaleX(0.98);
-  }
+    -webkit-transform: scaleX(0.98); }
   80% {
-    -webkit-transform: scaleX(1.01);
-  }
+    -webkit-transform: scaleX(1.01); }
   100% {
-    -webkit-transform: scaleX(0.98);
-  }
+    -webkit-transform: scaleX(0.98); }
   80% {
-    -webkit-transform: scaleX(1.01);
-  }
+    -webkit-transform: scaleX(1.01); }
   100% {
-    -webkit-transform: scaleX(1);
-  }
-}
+    -webkit-transform: scaleX(1); } }
+
+/*# sourceMappingURL=aguilar.css.map */

@@ -144,7 +144,7 @@ angular.module('uguru.dev.controllers')
         }
         if (e.keyCode === 83) {
           // $scope.saveCurrentStatesToLocalStorage()
-          $scope.current_file.methods.save($scope.current_file, $scope.current_user);
+          $scope.current_file.methods.save($scope.current_file, $scope.user);
         }
         if (e.keyCode === 80) {
           //timeline mode
@@ -697,25 +697,82 @@ angular.module('uguru.dev.controllers')
       $scope.onReleasePropertyDemo = generateReleasePropertyDemo(cancelTimeoutIfRelease);
     }
 
-    function removeTimeState(index) {
-      var currentState = $scope.current_states.states[$scope.current_states.selectedIndex];
-      if (currentState && currentState.timeline && currentState.timeline.length) {
-        var result;
-        if (currentState.timeline[index].components.length > 1 && confirm("Are you sure? All components and properties will be removed from this state")) {
-          result = true;
-        } else if (currentState.timeline[index].components.length === 1) {
-          result = true;
-        }
-        if (result) {
-          var tempTimeIndex = currentState.time;
-          currentState.timeline.splice(index, 1);
-          LoadingService.showSuccess('time t = ' + tempTimeIndex + ' succesfully deleted');
-        }
-      }
-    }
-    $scope.removeTimeState = removeTimeState;
+    // function removeTimeState(index) {
+    //   var currentState = $scope.current_states.states[$scope.current_states.selectedIndex];
+    //   if (currentState && currentState.timeline && currentState.timeline.length) {
+    //     var result;
+    //     if (currentState.timeline[index].components.length > 1 && confirm("Are you sure? All components and properties will be removed from this state")) {
+    //       result = true;
+    //     } else if (currentState.timeline[index].components.length === 1) {
+    //       result = true;
+    //     }
+    //     if (result) {
+    //       var tempTimeIndex = currentState.time;
+    //       currentState.timeline.splice(index, 1);
+    //       LoadingService.showSuccess('time t = ' + tempTimeIndex + ' succesfully deleted');
+    //     }
+    //   }
+    // }
+    // $scope.removeTimeState = removeTimeState;
     $scope.addNewTimeState = addNewTimeState;
 
+
+    $scope.cancelTimeState = function(selected_scene_state, index) {
+      $scope.showStatusMsg(['Canceling...', 'Canceled! Plz make another']);
+      $timeout(function() {
+        selected_scene_state.time_states.splice(index, 1);
+        $scope.current_file.methods.save($scope.current_file, $scope.user);
+      }, 1500);
+    }
+
+    $scope.removeTimeState = function(selected_variation, index) {
+      console.log('removing time state', selected_variation, index);
+      var time_state = selected_variation.selected_scene_state.time_states[index];
+      if (!time_state) {
+        return;
+      }
+      if (time_state.components && time_state.components.length && !confirm('Are you sure you will lose all components tied with this time state?')) {
+        return;
+      }
+
+      //resume original plan of attack
+      $scope.showStatusMsg(['Removing time T = ' + time_state.time, 'Syncing to server....']);
+      $timeout(function() {
+        $scope.current_file.selected_variation.selected_scene_state.time_states.splice(index, 1);
+      }, 750)
+      $timeout(function() {
+        $scope.current_file.methods.save($scope.current_file, $scope.user);
+      }, 1500)
+
+    }
+
+
+    $scope.addElementState = function() {
+      if (!$scope.current_file.selected_variation.selected_scene_state) {
+        $scope.showStatusMsg(['Sorry - you cant add custom states yet!']);
+        return
+      }
+
+      if ($scope.current_file.selected_variation.selected_scene_state && !$scope.current_file.selected_variation.selected_time_state) {
+        $scope.addNewTimeState();
+        return;
+      }
+
+      if ($scope.current_file.selected_variation.selected_scene_state && $scope.current_file.selected_variation.selected_time_state && !$scope.current_file.selected_variation.selected_component) {
+        // $scope.current_file
+      }
+
+    }
+
+    $scope.saveTimeState = function(selected_variation, time_state)  {
+      if (time_state && time_state.time) {
+        $scope.current_file.selected_variation.selected_time_state = time_state;
+        $scope.current_file.selected_variation.selected_time_state.edit_mode = false;
+        $scope.showStatusMsg(['Time state T = ' + time_state.time + ' successfully saved!']);
+        $scope.current_file.methods.save($scope.current_file, $scope.user);
+        time_state.edit_mode = false;
+      }
+    }
 
     $scope.editTimeStateTime = function(timeline, time_state, $event, arg) {
       time_state.edit_mode = !time_state.edit_mode;
@@ -1077,7 +1134,7 @@ angular.module('uguru.dev.controllers')
 
     $scope.swapInteractiveState = function($index) {
       LoadingService.showAmbig(null, 2500);
-      $scope.current_file.selectedIndex = $index;
+      $scope.current_file.selectedVariationIndex = $index;
       injectAllAllChildComponentsForOneState($scope.current_file.selected_variation.components, null, null, function() {
         LoadingService.hide()
       });

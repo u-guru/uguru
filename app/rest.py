@@ -3481,7 +3481,7 @@ class AdminFileView(restful.Resource):
             if (file_contents and file_headers and file_name and file_path):
                 response = create_static_file('uguru-admin', file_path, file_name, file_contents, file_headers)
                 if response:
-                    return jsonify(admin_files=getAllAdminFiles())
+                    return json.dumps(file_json, indent=4), 200
 
         abort(404)
 
