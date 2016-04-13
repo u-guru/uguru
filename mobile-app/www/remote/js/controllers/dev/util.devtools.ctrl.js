@@ -143,7 +143,8 @@ angular.module('uguru.dev.controllers')
           }
         }
         if (e.keyCode === 83) {
-          $scope.saveCurrentStatesToLocalStorage()
+          // $scope.saveCurrentStatesToLocalStorage()
+          $scope.current_file.methods.save($scope.current_file, $scope.current_user);
         }
         if (e.keyCode === 80) {
           //timeline mode
