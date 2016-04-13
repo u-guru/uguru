@@ -14828,6 +14828,70 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   background: #8A9EA3;
 }
 
+.component-tile:hover > div {
+  border-color: #43cb9d;
+}
+
+.component-tile:hover > div aside {
+  background: #43cb9d;
+}
+
+.component-tile > div > ul {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  position: absolute;
+  z-index: 11;
+  top: 0;
+  right: 0;
+  padding: 6px;
+}
+
+.component-tile > div > ul li a {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  display: block;
+}
+
+.component-tile > div > ul li a svg {
+  width: 24px;
+  height: 24px;
+}
+
+.component-tile > div > ul li a svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.component-tile > div > ul li a:hover, .component-tile > div > ul li a:focus {
+  filter: alpha(opacity=75);
+  opacity: 0.75;
+}
+
+.component-tile > div > ul li a:active {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.component-tile:hover > div > ul {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.component-tile > a:hover + div > ul, .component-tile > a:focus + div > ul {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
 /* ---------- ALBUM TILES */
 .album-tile {
   display: block;

@@ -12153,6 +12153,56 @@ a.category-tile {
 		}
 	}
 }
+.component-tile {
+	&:hover {
+		> div {
+			border-color: $moxie;
+			aside {
+				background: $moxie;
+			}
+		}
+	}
+	> div > ul {
+		@include opacity(0);
+		@include flex;
+		position: absolute;
+		z-index: 11;
+		top: 0;
+		right: 0;
+		padding: 6px;
+		li {
+			a {
+				@include opacity(.5);
+				display: block;
+				svg {
+					width: 24px;
+					height: 24px;
+					* {
+						@include svg-stroke(white, 8);
+					}
+				}
+				&:hover, &:focus {
+					@include opacity(.75);
+				}
+				&:active {
+					@include opacity(1);
+				}
+			}
+		}
+	}
+	&:hover {
+		> div > ul {
+			@include opacity(1);
+		}
+	}
+	> a:hover, > a:focus {
+		+ div {
+			> ul {
+				@include opacity(1);
+			}
+		}
+	}
+}
 
 /* ---------- ALBUM TILES */
 .album-tile {
