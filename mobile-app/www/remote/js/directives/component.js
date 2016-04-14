@@ -7,6 +7,20 @@ angular.module('uguru.components', [])
 /////////
 ///Capitalize first character of the word
 /////////
+.directive("charsMode",function()
+{
+    return{
+      require : 'ngModel',
+      scope:{
+        'localModel':'=ngModel'
+      },
+      link: function(scope, element, attrs,modelCtrl) {
+          console.log("Attrs :",modelCtrl)
+          console.log("scope localModel :")
+
+      }
+    };
+})
 .directive("capitalize",function($parse){
   return{
     require : 'ngModel',
