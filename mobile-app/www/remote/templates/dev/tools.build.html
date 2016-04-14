@@ -525,7 +525,7 @@
 
             <!-- 2 -->
 
-            <div ng-if='current_file.selected_variation.selected_time_state && !current_file.selected_variation.selected_component'>
+            <div ng-if='current_file.selected_variation.selected_time_state.add_component'>
                 <div class="high-z-index fixed bottom-0 left-0 bg-charcoal full-y overflow-auto" style="width: calc(100% / 3 * 2); z-index: 2000;">
                     <h1 class="txt-28 semibold p15top-p15x"><span>100</span> Components Found</h1>
                     <ul class="flex-wrap p15-grid ugrid-6">
@@ -937,7 +937,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class='fixed top-0 right-0 full-y bg-charcoal-90p high-z-index overflow-auto' style="width: calc(100% / 3); padding-bottom: 64px;" ng-if='false'>
+                <div class='fixed top-0 right-0 full-y bg-charcoal-90p high-z-index overflow-auto' style="width: calc(100% / 3); padding-bottom: 64px;" ng-if='current_file.selected_variation.selected_time_state.add_component' ng-keyup="onAddComponentModeKeyboardSwitch($event, current_file.selected_variation.selected_time_state)" tabindex="100">
                     <input type="text" placeholder="Filter" class="high-z-index flex-center-vertical fixed bottom-0 right-0 txt-18 p15x" style="width: calc(100% / 3); height: 64px;"/>
                     <div class='header text-center relative'>
                         <h1 class='weight-700 bg-moxie flex-center' style="height: 64px">Add Component Mode</h1>
@@ -1164,14 +1164,91 @@
                 </div>
             </div>
 
-            <div class="build-element-container" ng-if="current_file.selected_variation.selected_time_state">
-                <div class="build-item-component-list bg-charcoal-50p" ng-if='current_file.selected_variation.selected_time_state && !current_file.selected_variation.selected_component'>
-                    <div class="bg-moxie-50p txt-18 line-height-1-2 semibold p15x-p10y txt-center">
-                        {{current_file.selected_variation.selected_time_state.length}} Components
-                    </div>
-                    <ul class="ugrid-2 p15-grid">
-                        <li>
-                            <div class="component-tile" ng-repeat="component in current_file.selected_variation.selected_time_state">
+
+            <!-- SCENE LIST VIEW-->
+            <div class='build-element-list animation relative full-x overflow-auto right-0 relative'  ng-hide='!current_file.selected_variation.selected_scene_state && !current_file.selected_variation.selected_time_state && !current_file.selected_variation.selected_component' >
+                <ul class='p15-grid flex-wrap-center flex-stretch flex-wrap absolute full-xy' ng-if='!current_file.selected_variation.selected_scene_state'>
+                    <li ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index' class='full-x m10y flex-center'  ng-keydown="onStateKeyboardSwitch($event, current_file)">
+                        <div class="build-item-state full-x flex-wrap" style='height:auto;' tabindex="1">
+                            <header class="flex-center-vertical full-x">
+                                <span class="bg-campus flex-center txt-16 semibold">{{$index + 1}}</span>
+                                <h1 style='height:48px;' class="p10x bg-charcoal flex-center-vertical txt-24 txt-trns-none">{{scene_state.name}}</h1>
+                                <ul class="flex-center-vertical bg-charcoal">
+                                    <li ng-click='showStatusMsg(["[Coming soon] Adding snoozing during play mode..."])'>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/moon.html'"></a>
+                                    </li>
+                                    <li ng-click='removeTimeState(current_file.selected_variation, $index)'>
+                                        <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                                    </li>
+                                    <li ng-click='showStatusMsg(["[Coming soon] Adding to my collection..."])'>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+                                    </li>
+                                    <li ng-click='page.mode.time_state.switchTo(current_file.selected_variation, $index)'>
+                                        <a ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
+                                    </li>
+                                </ul>
+                            </header>
+                            <div class="bg-charcoal-50p full-x txt-18 line-height-1-2 semibold p15x-p10y">
+                                {{scene_state.description || 'a description would go here if it was a description'}}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+
+
+                <!-- TIME STATE LIST VIEW-->
+                <ul ng-if='current_file.selected_variation.selected_scene_state && !current_file.selected_variation.selected_time_state' class='relative full-y'>
+
+                    <li class="full-x m10y flex-center" ng-repeat='time_state in current_file.selected_variation.selected_scene_state.time_states' >
+                        <div class="build-item-state full-x flex-wrap" tabindex="1" style='height:auto'>
+                            <!-- TODO TIME HEADER-->
+                            <header class="flex-center-vertical full-x">
+                                <span class="bg-campus flex-center txt-16 semibold">T</span>
+                                <h1 class="p10x bg-charcoal flex-center-vertical txt-24 txt-trns-none full-y">
+                                    <div ng-if="time_state.time">{{time_state.time}}</div>
+                                    <div ng-if="!time_state.time">Intital</div>
+                                    <div class="toggle am-pm m10left">
+                                        <input type="checkbox" class="z-index-10" checked />
+                                        <label>
+                                            <svg class="square" viewBox="0 0 100 100">
+                                                <rect x="0" y="0" width="100" height="100"></rect>
+                                            </svg>
+                                            <svg class="square" viewBox="0 0 100 100">
+                                                <rect x="0" y="0" width="100" height="100"></rect>
+                                            </svg>
+                                            <span>
+                                                <span class="am">ms</span>
+                                                <span class="pm">s</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </h1>
+                                <ul class="flex-center-vertical bg-charcoal">
+                                    <li>
+                                        <a ng-click='showStatusMsg(["[Coming soon] Adding snoozing during play mode..."])' ng-include="img_base + BASE + 'templates/svg/main/moon.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a ng-click='showStatusMsg(["[Coming soon] Adding to my collection..."])' ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
+                                    </li>
+                                    <li>
+                                        <a ng-click='selectAndSaveTimeState(current_file.selected_variation, time_state)' ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
+                                    </li>
+                                </ul>
+                            </header>
+                            <div class="bg-charcoal-50p full-x txt-18 line-height-1-2 semibold p15x-p10y">
+                                {{time_state.components.length}} total components
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <ul ng-if='current_file.selected_variation.selected_scene_state && current_file.selected_variation.selected_time_state && !current_file.selected_variation.selected_component'  class="ugrid-2 p15-grid" style='height:calc(100% - 100px)'>
+                        <li ng-repeat="component in current_file.selected_variation.selected_time_state.components">
+                            <div class="component-tile" >
                                 <a></a>
                                 <div>
                                     <ul>
@@ -1204,70 +1281,15 @@
                                 </div>
                             </div>
                         </li>
-                        <li>
-                            <div class="component-tile">
-                                <a></a>
-                                <div>
-                                    <div>
-                                        <svg class="square" viewBox="0 0 100 100">
-                                            <rect x="0" y="0" width="100" height="100" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <!-- component goes in here -->
-                                            <!-- http://codepen.io/teamuguru/pen/550e8f8e7227df7c4bf72a6b94b0bda2?editors=1100 -->
-                                        </div>
-                                    </div>
-                                    <aside>
-                                        <h2>Name</h2>
-                                        <h3>Component</h3>
-                                    </aside>
-                                </div>
+                         <li class='full-x flex-end flex-wrap-center p10xy absolute bottom-0 left-0 mbottom20'>
+                            <div class="build-item-component-add bg-charcoal-50p p20xy full-x">
+                                <button class='bg-moxie height-36 txt-18 radius-2'  ng-click='current_file.selected_variation.selected_time_state.add_component = true;'>Add Component</button>
                             </div>
                         </li>
-                        <li>
-                            <div class="component-tile">
-                                <a></a>
-                                <div>
-                                    <div>
-                                        <svg class="square" viewBox="0 0 100 100">
-                                            <rect x="0" y="0" width="100" height="100" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <!-- component goes in here -->
-                                            <!-- http://codepen.io/teamuguru/pen/550e8f8e7227df7c4bf72a6b94b0bda2?editors=1100 -->
-                                        </div>
-                                    </div>
-                                    <aside>
-                                        <h2>Name</h2>
-                                        <h3>Component</h3>
-                                    </aside>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="component-tile">
-                                <a></a>
-                                <div>
-                                    <div>
-                                        <svg class="square" viewBox="0 0 100 100">
-                                            <rect x="0" y="0" width="100" height="100" fill="none"></rect>
-                                        </svg>
-                                        <div>
-                                            <!-- component goes in here -->
-                                            <!-- http://codepen.io/teamuguru/pen/550e8f8e7227df7c4bf72a6b94b0bda2?editors=1100 -->
-                                        </div>
-                                    </div>
-                                    <aside>
-                                        <h2>Name</h2>
-                                        <h3>Component</h3>
-                                    </aside>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <ul class="p15-grid">
-                    <li ng-if='current_file.selected_variation.selected_component'>
+
+                </ul>
+                <ul class="p15-grid" ng-if='current_file.selected_variation.selected_scene_state && current_file.selected_variation.selected_time_state && current_file.selected_variation.selected_component'>
+                    <li>
                         <div class="build-item-component" tabindex="1">
                             <header class="flex-center-vertical">
                                 <span class="bg-campus flex-center txt-16 semibold">1</span>
@@ -1456,167 +1478,10 @@
                         </div>
                     </li>
 
-                    <li>
-                        <div class="build-item-state selected" tabindex="1">
-                            <header class="flex-center-vertical">
-                                <span class="bg-campus flex-center txt-16 semibold">1</span>
-                                <h1 class="p10x bg-charcoal flex-center-vertical txt-24 txt-trns-none">State name</h1>
-                                <ul class="flex-center-vertical bg-charcoal">
-                                    <li>
-                                        <a ng-include="img_base + BASE + 'templates/svg/main/moon.html'"></a>
-                                    </li>
-                                    <li>
-                                        <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
-                                    </li>
-                                    <li>
-                                        <a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
-                                    </li>
-                                    <li>
-                                        <a ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
-                                    </li>
-                                </ul>
-                            </header>
-                            <div class="bg-charcoal-50p txt-18 line-height-1-2 semibold p15x-p10y">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="build-item-state inactive" tabindex="1">
-                            <header class="flex-center-vertical">
-                                <span class="bg-campus flex-center txt-16 semibold">1</span>
-                                <h1 class="p10x bg-charcoal flex-center-vertical txt-24 txt-trns-none">State name</h1>
-                                <ul class="flex-center-vertical bg-charcoal">
-                                    <li>
-                                        <a ng-include="img_base + BASE + 'templates/svg/main/moon.html'"></a>
-                                    </li>
-                                    <li>
-                                        <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
-                                    </li>
-                                    <li>
-                                        <a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
-                                    </li>
-                                    <li>
-                                        <a ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
-                                    </li>
-                                </ul>
-                            </header>
-                            <div class="bg-charcoal-50p txt-18 line-height-1-2 semibold p15x-p10y">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="build-item-state" tabindex="1">
-                            <!-- TODO TIME HEADER-->
-                            <!-- <header class="flex-center-vertical">
-                                <span class="bg-campus flex-center txt-16 semibold">T</span>
-                                <h1 class="p10x bg-charcoal flex-center-vertical txt-24 txt-trns-none">
-                                    <div>1000</div>
-                                    <div class="toggle am-pm m10left">
-                            			<input type="checkbox" class="z-index-10" checked />
-                            			<label>
-                            				<svg class="square" viewBox="0 0 100 100">
-                            					<rect x="0" y="0" width="100" height="100"></rect>
-                            				</svg>
-                            				<svg class="square" viewBox="0 0 100 100">
-                            					<rect x="0" y="0" width="100" height="100"></rect>
-                            				</svg>
-                            				<span>
-                            					<span class="am">ms</span>
-                            					<span class="pm">s</span>
-                            				</span>
-                            			</label>
-                            		</div>
-                                </h1>
-                                <ul class="flex-center-vertical bg-charcoal">
-                                    <li>
-                                        <a ng-include="img_base + BASE + 'templates/svg/main/moon.html'"></a>
-                                    </li>
-                                    <li>
-                                        <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
-                                    </li>
-                                    <li>
-                                        <a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
-                                    </li>
-                                    <li>
-                                        <a ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
-                                    </li>
-                                </ul>
-                            </header> -->
 
-                            <div class="build-item-component-add bg-charcoal-50p p15x-p15bottom">
-                                <button class='bg-moxie height-36 txt-18 radius-2'  ng-click='page.mode.component.initMode(current_file.selected_variation.selected_scene_state, time_state)'>Add Component</button>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
-            </div>
-
-            <div class='build-element-list animation relative full-x overflow-auto right-0 relative' style='overflow:hidden;' ng-if='!current_file.selected_variation.selected_scene_state || !current_file.selected_variation.selected_time_state' >
-                <ul class='p15-grid flex-wrap-center flex-stretch flex-wrap absolute full-xy' ng-if='!current_file.selected_variation.selected_scene_state'>
-                    <li ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index' class='full-x m10y flex-center' ng-click='showStatusMsg(["test"])' ng-keydown="$event.keyCode === 13 && showStatusMsg(['Displaying Time States for ' + scene_state.name + '...']) && page.mode.time_state.switchTo(current_file.selected_variation, $index)">
-                        <div class="build-item-state full-x flex-wrap" style='height:auto;' tabindex="1">
-                            <header class="flex-center-vertical full-x">
-                                <span class="bg-campus flex-center txt-16 semibold">{{$index + 1}}</span>
-                                <h1 style='height:48px;' class="p10x bg-charcoal flex-center-vertical txt-24 txt-trns-none">{{scene_state.name}}</h1>
-                                <ul class="flex-center-vertical bg-charcoal">
-                                    <li>
-                                        <a ng-include="img_base + BASE + 'templates/svg/main/moon.html'"></a>
-                                    </li>
-                                    <li ng-click='removeTimeState(current_file.selected_variation, $index)'>
-                                        <a class="close-icon" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
-                                    </li>
-                                    <li ng-click='showStatusMsg(["[Coming soon] Adding to my collection..."])'>
-                                        <a ng-include="img_base + BASE + 'templates/svg/main/star.html'"></a>
-                                    </li>
-                                    <li ng-click='page.mode.time_state.switchTo(current_file.selected_variation, $index)'>
-                                        <a ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
-                                    </li>
-                                </ul>
-                            </header>
-                            <div class="bg-charcoal-50p full-x txt-18 line-height-1-2 semibold p15x-p10y">
-                                {{scene_state.description || 'a description would go here if it was a description'}}
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-
-
-                <ul ng-if='current_file.selected_variation.selected_scene_state && !current_file.selected_variation.selected_time_state' class='relative full-y'>
-                    <!-- timeline -->
-                    <li class="build-timeline" ng-repeat='time_state in current_file.selected_variation.selected_scene_state.time_states' ng-if='!page.dropdowns.modes.selectedIndex'>
-                        <div class='relative full-x'>
-                        <!-- <div class='relative full-x' ng-init=''> -->
-                            <h1 class="relative has-link">
-                                <a ng-click='editTimeStateTime(timeline, time_state, $event)' ng-if='!time_state.edit_mode' >
-                                    <span class="lowercase">
-
-                                        <span class='txt-6 uppercase' ng-if='!time_state.time'>T = Init</span>
-                                        <span ng-if='time_state.time' class='uppercase'>T: {{time_state.time}}</span>
-                                    </span>
-                                </a>
-                                <div class='ugrid-2' ng-if='time_state.edit_mode'>
-                                    <input class='full-y p05xy' placeholder="value" ng-model="time_state.time"/>
-                                    <a ng-click='saveTimeState(current_file.selected_variation, time_state)' class='txt-2'> Save </a>
-                                    <a class='txt-2' ng-click='cancelTimeState(current_file.selected_variation.selected_scene_state, $index)'> Cancel </a>
-                                </div>
-
-                            </h1>
-                            <a ng-include="img_base + BASE + 'templates/svg/main/plus.html'" class='build-activate absolute close top-0 right-0 full-y' style='margin-right:155px;'  ng-click='removeTimeState(current_file.selected_variation, $index)'></a>
-                           <!--  <a style='margin-right:100px;' class='absolute top-0 right-0 full-y' ng-click='page.mode.component.initMode(current_file.selected_variation.selected_scene_state, time_state)' ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-if="time_state.components.length"></a> -->
-                            <a class='right-0' ng-click='' ng-include="img_base + BASE + 'templates/svg/main/external.html'"></a>
-                            <a ng-if='time_state.components.length && current_file.selected_variation.selected_time_state' class='z-index-10 right-0 bottom-0 absolute bg-charcoal-impt'>&rtrif;</a>
-                        </div>
-                        <div class="txt-center bg-slate-50p relative">
-                            <ul class="build-css-header text-left">
-                                <li>{{time_state.components.length}} components total</li>
-                            </ul>
-                        </div>
-                        <div class="relative" ng-show='current_file.selected_variation.selected_time_state'>
+                  <!--       <div class="relative" ng-show='current_file.selected_variation.selected_time_state'>
                             <div class="build-css-select full-x">
-                                <!-- @samir -->
-                                <!-- component previews go in here <div></div> -->
                                 <ul class='time-state-component-bar'>
                                     <li ng-click='selectTimeStateComponent(time_state, component, $event)' ng-repeat='component in time_state.components track by $index' class='time-state-component-item'>
                                         <div class='full-y'></div>
@@ -1659,11 +1524,7 @@
                                         <span class="radius-2" ng-repeat='property in nested_time_state.properties' ng-if='property.type === "css_text"'>{{property.value}}</span>
                                         <span ng-repeat='property in nested_time_state.properties' class="radius-2 opacity-50" ng-if='property.type === "css_class"'>{{property.type}}</span>
                                         <dropdown ng-if='property.type === "css_animation"' ng-repeat="property in nested_time_state.properties" ng-model="property.value"> </dropdown>
-                                        <!-- <div ng-repeat="property in nested_time_state.properties">
-                                            <span class="radius-2" ng-if='property.type === "css_text"'>{{property.value}}</span>
-                                            <span class="radius-2 opacity-50" ng-if='property.type === "css_class"'>{{property.value}}</span>
-                                            <dropdown ng-if='property.type === "css_animation"' ng-model="property.value"> </dropdown>
-                                        </div> -->
+
                                     </div>
                                     <div>
                                         <a ng-repeat='property in nested_time_state.properties' ng-click='component.removePropertyField(component, time_state, $index, $parent.$index)'>&times;</a>
@@ -1689,22 +1550,16 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
+                    </li> -->
                     <!--end timeline-->
 
-                    <li id='file-component-list' ng-show='time_state.selected_variation.components.length' ng-repeat='component in current_file.selected_variation.components'>
+                    <!-- <li id='file-component-list' ng-show='time_state.selected_variation.components.length' ng-repeat='component in current_file.selected_variation.components'>
                         <span>{{$index + 1}}</span>
                         <div class='relative'>
 							<h1><span class="lowercase">{{ component._id || component._class || component.name}}</span></h1>
-                             <!-- &rarr; <span class="opacity-50">{{component.selector}}</span> -->
                              <span class='build-preview'>
 
                              </span>
-                             <!-- Activate component vars-->
-
-                            <!--  <a class="build-activate opacity-50" ng-click='component.active = !component.active' ng-if='!component.active'>off</a>
-                             <a class="build-activate" ng-click='component.active = !component.active' ng-if='component.active'>on</a> -->
-                            <!-- Collapse component vars-->
                             <a ng-click='updateComponentCollapsed(current_file, component)' ng-class="{'collapse': !component.collapsed}" ng-include="img_base + BASE + 'templates/svg/main/down.html'"></a>
 						</div>
                         <div class="relative" ng-show='!component.collapsed'>
@@ -1790,7 +1645,7 @@
                                 <div class="full-x">
                                     <button class='bg-moxie height-36 txt-20 radius-2' ng-click='component.addTimeState(component, component.empty_time_state)'>Save and add another</button>
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
                 </ul>

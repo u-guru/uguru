@@ -1756,6 +1756,17 @@
                                     </div>
                                 </div>
                             </li>
+                            <li class="admin-definition-list" ng-if='reference.animation.terms'>
+                                <div>
+                                    <h2>Animation Terminology</h2>
+                                    <dl>
+                                        <div ng-repeat="term in reference.animation.terms"class=''>
+                                            <dt ng-bind-html="term.name" class='p20xy'></dt>
+                                            <dd ng-bind-html="term.description"</dd>
+                                        </div>
+                                    </dl>
+                                </div>
+                            </li>
                             <li class="admin-definition-list">
                                 <div>
                                     <h2>Animation Placeholders</h2>
@@ -1973,7 +1984,7 @@
                             <li><span>.<input readonly="true" onclick="this.select()" size="11" value="z-index-999"/></span></li>
                             <li><span>.<input readonly="true" onclick="this.select()" size="12" value="z-index-1000"/></span></li>
                         </ul>
-                        
+
                         <h2>Margin (combinable)</h2>
                         <ul class="ugrid-4">
                             <li>
@@ -2019,7 +2030,7 @@
                                 </div>
                             </li>
                         </ul>
-                        
+
                         <h2>Padding (combinable)</h2>
                         <ul class="ugrid-4">
                             <li>
@@ -2057,7 +2068,7 @@
                                 </div>
                             </li>
                         </ul>
-                        
+
                         <h2>Type &rarr; Weight</h2>
                         <ul>
         					<li>
@@ -2226,7 +2237,7 @@
                             <li><span class="bg-li">.<input readonly="true" onclick="this.select()" size="5" value="bg-li"/></span></li>
                             <li><span class="bg-in">.<input readonly="true" onclick="this.select()" size="5" value="bg-in"/></span></li>
                         </ul>
-                        
+
                         <h2>Border &rarr; Widths</h2>
                         <ul>
                             <li><span class="border-1 border-slate">.<input readonly="true" onclick="this.select()" size="8" value="border-1"/></span></li>
@@ -2248,14 +2259,14 @@
                             <li><span class="border-10-left">.<input readonly="true" onclick="this.select()" size="14" value="border-10-left"/></span></li>
                             <li><span class="border-10-right">.<input readonly="true" onclick="this.select()" size="15" value="border-10-right"/></span></li>
                         </ul>
-                        
+
                         <h2>Border &rarr; Styles</h2>
                         <ul>
                             <li><span class="border-1 border-dashed">.<input readonly="true" onclick="this.select()" size="13" value="border-dashed"/></span></li>
                             <li><span class="border-1 border-dotted">.<input readonly="true" onclick="this.select()" size="13" value="border-dotted"/></span></li>
                             <li><span class="border-3 border-double">.<input readonly="true" onclick="this.select()" size="13" value="border-double"/></span></li>
                         </ul>
-                        
+
                         <h2>Border &rarr; Colors</h2>
                         <ul class="border">
                             <li>
@@ -2373,7 +2384,7 @@
                                 </span>
                             </li>
                         </ul>
-                        
+
                         <h2>Border &rarr; Radius</h2>
                         <ul>
                             <li><span class="radius-2 bg-campus">.<input readonly="true" onclick="this.select()" size="8" value="radius-2"/></span></li>
@@ -2393,7 +2404,7 @@
                             <li><span class="radius-10-right bg-campus">.<input readonly="true" onclick="this.select()" size="15" value="radius-10-right"/></span></li>
                             <li><span class="round bg-campus">.<input readonly="true" onclick="this.select()" size="5" value="round"/></span></li>
                         </ul>
-                        
+
                         <h2>SVG &rarr; Size + Container Size</h2>
                         <ul>
                             <li>
@@ -2439,7 +2450,7 @@
                                 <span class="m05top bg-campus">.<input readonly="true" onclick="this.select()" size="6" value="svg-xl"/></span>
                             </li>
                         </ul>
-                        
+
                         <h2>SVG &rarr; Size Only</h2>
                         <ul>
                             <li>
@@ -2479,7 +2490,7 @@
                                 <span class="m05top">.<input readonly="true" onclick="this.select()" size="7" value="svg-128"/></span>
                             </li>
                         </ul>
-                        
+
                         <h2>SVG &rarr; Stroke-Width</h2>
                         <ul>
                             <li>

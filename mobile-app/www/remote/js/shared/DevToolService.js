@@ -50,6 +50,7 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
             }
             _scope.injectTemplateIntoStage(_scope.current_file.template_url.replace('templates/', ''), _scope.current_file.controller, _scope.current_file.ref);
         }
+        return _scope.current_file;
     }
 
     function formatVariationsWithLastUpdated(variation_arr) {
@@ -155,12 +156,15 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
 
     function saveFileWithServer(_scope) {
         return function(file, user) {
+            var tempSelected
             var user_first_name = _scope.user.name.split(' ')[0].toLowerCase();
             var temp_current_file = cloneDictionary(file);
+            var tempSelected = {};
             var tempSelectedVariation = null;
             _scope.showStatusMsg(["Syncing " + user_first_name + "'s remote folder"]);
             if (file.selectedVariationIndex > -1) {
                 file.variations[file.selectedVariationIndex] = cloneDictionary(file.selected_variation);
+                tempSelected = {variation: file.selected_variation};
                 file.selected_variation = null
                 tempSelectedVariation = file.variations[file.selectedVariationIndex];
                 console.log('old selected variation', tempSelectedVariation);
@@ -171,6 +175,7 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
                 if (currentTimeStates && currentTimeStates.length && tempSelectedVariation.selectedTimeIndex > -1) {
                     currentTimeStates[tempSelectedVariation.selectedTimeIndex] = cloneDictionary(tempSelectedVariation.selected_time_state);
                 }
+                tempSelected.time_state = cloneDictionary(tempSelectedVariation.selected_time_state);
                 tempSelectedVariation.selected_time_state = null;
                 tempSelectedVariation.selectedTimeIndex = null;
             }
@@ -178,17 +183,31 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
             if (tempSelectedVariation.selected_scene_state || tempSelectedVariation.selectedSceneIndex > -1) {
                 tempSelectedVariation.scene_states[tempSelectedVariation.selectedSceneIndex] = cloneDictionary(tempSelectedVariation.selected_scene_state);
 
+                tempSelected.scene_state = cloneDictionary(tempSelectedVariation.selected_scene_state);
                 tempSelectedVariation.selected_scene_state = null;
                 tempSelectedVariation.selectedSceneIndex = null;
             }
 
             _scope.current_file.methods = null;
             _scope.current_file = temp_current_file;
+            $timeout(function() {
+                _scope.current_file.selected_variation.selected_scene_state = tempSelected.scene_state;
+                _scope.current_file.selected_variation.selected_time_state = tempSelected.time_state;
+                _scope.$apply();
+                console.log(_scope.current_file);
+            })
             Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('files').
             customPOST(JSON.stringify({file: file})).then(
                 function (response) {
 
-                    initCurrentFile(_scope, JSON.parse(response), true)
+                    var current_file = initCurrentFile(_scope, JSON.parse(response), true);
+                    $timeout(function() {
+                        _scope.current_file.selected_variation.selected_scene_state = tempSelected.scene_state;
+                        _scope.current_file.selected_variation.selected_time_state = tempSelected.time_state;
+                        _scope.$apply();
+                        console.log(_scope.current_file);
+                    })
+
                 },
                 function(error) {
                     console.log('error', error);

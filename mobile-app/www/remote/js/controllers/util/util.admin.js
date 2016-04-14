@@ -22,7 +22,7 @@ angular.module('uguru.util.controllers')
 				user_stories: AdminContent.getUserStories(),
 				createObjects: AdminContent.getBaseObjects($scope),
 				defaults: {
-					tabsIndex: 1,
+					tabsIndex: 0,
 					sidebarIndex: 2
 				},
 				toggles: {
@@ -34,6 +34,8 @@ angular.module('uguru.util.controllers')
 
 		$scope.toggleAddSubstate = false;
 		$scope.toggleAddState = false;
+
+		$scope.reference = AdminContent.getReference();
 
 		$scope.elementCTATabOptions = {
 			components: ['Demo', 'Attributes', 'States', 'Use Cases', 'Element Map', 'To Do'],

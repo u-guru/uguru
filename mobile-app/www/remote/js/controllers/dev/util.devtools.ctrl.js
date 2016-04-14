@@ -760,9 +760,66 @@ angular.module('uguru.dev.controllers')
 
       if ($scope.current_file.selected_variation.selected_scene_state && $scope.current_file.selected_variation.selected_time_state && !$scope.current_file.selected_variation.selected_component) {
         // $scope.current_file
+        return;
       }
 
     }
+
+
+
+    $scope.onStateKeyboardSwitch = function($event) {
+
+          var kc = $event.keyCode;
+          //enter pressed
+          if (kc === 13) {
+            $scope.showStatusMsg(['Displaying Time States for ' + scene_state.name + '...']) && $scope.page.mode.time_state.switchTo($scope.current_file.selected_variation, $index)
+            return;
+          }
+          //tab pressed
+          if (kc === 9) {
+            $scope.showStatusMsg(['Applying ' + scene_state])
+            return;
+          }
+
+          //escape pressed
+
+          if (kc === 69) {
+             return;
+          }
+
+          //p pressed
+          if (kc === 82) {
+            return;
+          }
+          //r refreshed
+          if (kc === 82) {
+            return;
+          }
+
+          //h pressed
+          if (kc === 72) {
+            $scope.showStatusMsg(['Shortcuts: r=refresh, h=help, p=play', '[continued]tab="focus next", enter="select and see times"'], 1000, 2500)
+          }
+          //s pressed
+          if (kc === 83) {
+            $scope.current_file.methods.save($scope.current_file, $scope.user);
+          }
+
+    }
+
+    $scope.onTimeStateKeyboardSwitch = function($event, variation, scene_state, time_state, mode_name) {
+
+    };
+
+    $scope.onComponentKeyboardSwitch = function($event, variation, scene_state, time_state, mode_name) {
+
+    };
+
+    $scope.onAddComponentModeKeyboardSwitch = function($event, time_state) {
+      if ($event.keyCode === 27) {
+        time_state.add_component = false;
+      }
+    };
 
     $scope.saveTimeState = function(selected_variation, time_state)  {
       if (time_state && time_state.time) {
@@ -771,6 +828,16 @@ angular.module('uguru.dev.controllers')
         $scope.showStatusMsg(['Time state T = ' + time_state.time + ' successfully saved!']);
         $scope.current_file.methods.save($scope.current_file, $scope.user);
         time_state.edit_mode = false;
+      }
+    }
+
+    $scope.selectAndSaveTimeState = function(selected_variation, time_state)  {
+      if (time_state && time_state.time) {
+        $scope.current_file.selected_variation.selected_time_state = time_state;
+        $scope.current_file.selected_variation.selected_time_state.edit_mode = false;
+        time_state.edit_mode = false;
+        $scope.current_file.methods.save($scope.current_file, $scope.user);
+
       }
     }
 

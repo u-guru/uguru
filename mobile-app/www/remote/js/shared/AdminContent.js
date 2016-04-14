@@ -21,7 +21,39 @@ function AdminContent($localstorage) {
         getLayouts: getLayouts,
         getUserStories: getUserStories,
         getBaseObjects: getBaseObjects,
-        getContainers: getContainers
+        getContainers: getContainers,
+        getReference: getReference
+    }
+
+    function getReference() {
+        return {animation: getAnimationReference()}
+        function getAnimationReference() {
+            return {
+                terms: getAnimationTerms()
+            }
+
+
+            function getAnimationTerms() {
+                return [
+                    {
+                        name: "Skit",
+                        description: "Has many scenes with a over-arching theme, with many components per scene. Formerly 'scene'."
+                    },
+                    {
+                        name: "Scene",
+                        description: "One part of a skit that has a particular goal. A skit must have at least two scenes. Each scene has many components. Components cannot be in two scenes at the same time."
+                    },
+                    {
+                        name: "Actor",
+                        description: "AKA, a component that contributes to scene or overall skit plot. If an actor is hired for more than one scene, we must make it a directive. <br><br> If an actor becomes famous , as in, is part of more than 3 scenes), we must make create a standard base costume (directive) for the actor. <br><br> This is to prevent redressing the actor again and again for the several scenes they are now regularly part of."
+                    },
+                    {
+                        name: "Costumes & Props",
+                        description: "Methods to make a component look good. <br><br> <b>Costumes</b>: a set of props, or CSS properties bundled together to save time and avoid repitition. <br><br> <b>Props:</b> single attribute, or CSS property, to enhance the actor & serve solely that purpose/characteristic. <br>"
+                    }
+                ]
+            }
+        }
     }
 
     function getContainers() {
