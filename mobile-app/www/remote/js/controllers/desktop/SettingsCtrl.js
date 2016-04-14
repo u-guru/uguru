@@ -419,7 +419,7 @@ angular.module('uguru.desktop.controllers', [])
 
       function callback() {
         if (Utilities.validateEmail($scope.popupInput.editEmail)) {
-            $scope.user.email = $scope.popupInput.editEmail
+            $scope.user.email = $scope.popupInput.editEmail.toLowerCase()
         } else {
           alert('Please enter a valid email.');
           return;

@@ -4,6 +4,34 @@
 // CONTAINERS
 //////////
 angular.module('uguru.components', [])
+/////////
+///Capitalize first character of the word
+/////////
+.directive("capitalize",function($parse){
+  return{
+    require : 'ngModel',
+    link: function(scope, element, attrs, modelCtrl) {
+    var capitalize = function(inputValue) {
+           if (inputValue === undefined) { inputValue = ''; }
+           var arryInput = inputValue.split(' ')
+           var capitalizeValue = arryInput[0].charAt(0).toUpperCase() + arryInput[0].substring(1);
+           for(var i = 1 ; i < arryInput.length; ++ i)
+           {
+              arryInput[i] = arryInput[i].charAt(0).toUpperCase() + arryInput[i].substring(1);
+              capitalizeValue = capitalizeValue.concat(" "+arryInput[i])
+           }
+           if(capitalizeValue !== inputValue) {
+              modelCtrl.$setViewValue(capitalizeValue);
+              modelCtrl.$render();
+            }         
+            return capitalizeValue;
+         }
+         modelCtrl.$parsers.push(capitalize);
+         // capitalize(scope[attrs.ngModel]); // capitalize initial value
+         capitalize($parse(attrs.ngModel)(scope)); // capitalize initial value
+    }
+  };
+})
 .directive("doc", function() {
   return {
     templateUrl: BASE + 'templates/elements/containers/info/docs.tpl',
