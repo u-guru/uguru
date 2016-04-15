@@ -325,6 +325,14 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       })
 
         $scope.initMobileModals = function() {
+
+          $ionicModal.fromTemplateUrl(BASE + 'templates/billing.mobile.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.billingModal = modal;
+          });
+
           $ionicModal.fromTemplateUrl(BASE + 'templates/referrals.mobile.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -347,18 +355,25 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             $scope.contentModal = modal;
           });
 
-          // $ionicModal.fromTemplateUrl(BASE + 'templates/balance.mobile.modal.html', {
-          //   scope: $scope,
-          //   animation: 'slide-in-up'
-          // }).then(function(modal) {
-          //   $scope.balanceModal = modal;
-          // });
+          $ionicModal.fromTemplateUrl(BASE + 'templates/balance.mobile.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.balanceModal = modal;
+          });
 
           $ionicModal.fromTemplateUrl(BASE + 'templates/profile.public.mobile.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
           }).then(function(modal) {
             $scope.profileModal = modal;
+          });
+
+          $ionicModal.fromTemplateUrl(BASE + 'templates/ranking.mobile.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.rankingModal = modal;
           });
 
           $ionicModal.fromTemplateUrl(BASE + 'templates/credibility.mobile.modal.html', {
@@ -535,6 +550,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 				LoadingService.showMsg('You need an account to do that!', 2500)
 			}
 		}
+    $scope.showRankingModal = function(){
+      if($scope.user && $scope.user.id){
+        $scope.rankingModal.show();
+      }else{
+        LoadingService.showMsg('You need an account to do that!', 2500)
+      }
+    }
 
 		$scope.showCredibilityModal = function() {
 			if ($scope.user && $scope.user.id) {
@@ -543,7 +565,14 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 				LoadingService.showMsg('You need an account to do that!', 2500)
 			}
 		}
-
+    $scope.showBillingModal = function()
+    {
+      if ($scope.user && $scope.user.id) {
+        $scope.billingModal.show();
+      } else {
+        LoadingService.showMsg('You need an account to do that!', 2500)
+      }
+    }
 		$scope.$on('$ionicView.loaded', function() {
 			$scope.root.vars.showDesktopSettings = false;
 		})
