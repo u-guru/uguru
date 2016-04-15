@@ -124,7 +124,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/inappmap.html',
         controller: 'InAppMapController'
   }).
-
+  state('root.keys', {
+        url: '/keys',
+        templateUrl: BASE + 'templates/admin/keys.html',
+        controller: 'KeyToolController'
+  }).
 
   state('root.university', {
         url: '/university',
