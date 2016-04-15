@@ -22,7 +22,23 @@ function AdminContent($localstorage) {
         getUserStories: getUserStories,
         getBaseObjects: getBaseObjects,
         getContainers: getContainers,
-        getReference: getReference
+        getReference: getReference,
+        getTempActionList: getTempActionList
+    }
+
+    function getTempActionList() {
+        return {
+            gabrielle: {
+                polishing: {
+                    components: {
+                        "user-icon": "Needs to have 4 types, xs, s, m, l, xl - or propose at least 3 provide future flexibility. We can promote the 3 most used, but I feel like there will be many times where we might need one tinier, one larger."
+                    },
+                    learning: {
+                        "matrices": "Become more familiar with how the values are computed to the extent it's as simple as hex codes(will take time)"
+                    }
+                }
+            }
+        }
     }
 
     function getReference() {
@@ -276,7 +292,8 @@ function AdminContent($localstorage) {
             },
             {
                 name: 'Samir',
-                profile_url: 'https://uguru.me/static/web/images/team/samir.png'
+                profile_url: 'https://uguru.me/static/web/images/team/samir.png',
+                responsibilities: "Dev, Product Specs, Everything else"
             },
             {
                 name: 'Girls',
@@ -305,7 +322,7 @@ function AdminContent($localstorage) {
                     }
                 },
                 { title: 'Components', tabs: {index: 0, options: [{title: 'Components', header: 'All lightweight components'}, {title:'Containers', header: 'All components that include many other nested components'}, {title: 'Scenes'}, {title: 'Layouts'}, {title: 'User Stories'}, {title: 'Assets'}]}},
-                { title: 'Reference', tabs: {index:0, options: [{title: 'Docs', header: 'Any rules that we have created ourselves'}, {title: 'HTML/CSS Guide', header: 'Raw HTML, Directives, Base CSS'}, {title: 'Colors', header: 'Color Palettes for different use cases'}, {title: 'Themes + Demographics', header: 'I.e. Guru, Student, Parents'}, {title:'Animation', header: 'Directives + Best Practices'}]}},
+                { title: 'Reference', tabs: {index:0, options: [{title: 'Docs', header: 'Any rules that we have created ourselves'}, {title: 'HTML/CSS Guide', header: 'Raw HTML, Directives, Base CSS'}, {title: 'Colors', header: 'Color Palettes for different use cases'}, {title: 'Themes + Demographics', header: 'I.e. Guru, Student, Parents'}, {title:'Animation', header: 'Directives + Best Practices'}, {title:'Responsibilities', header: 'Responsibilities filtered by individual'}]}},
                 { title: 'Moodboard', tabs: {index: 0, options: [{title: 'Uguru / Internal', header: 'What are you most proud of?'}, {title: 'Components', header: 'External components we really like'}, {title: 'Fluid + Animation', header: 'External animations/Fluid example we really like'}, {title: 'Creative/Thematic', header: 'Out of this world level'}, {title: 'Library', header: 'Great, specific libraries we really like'}]}},
                 { title: 'Tools', tabs: {index: 0, options: [{title: 'Scene Creator'}]}}
             ],

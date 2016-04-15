@@ -63,6 +63,36 @@ def get_folder_contents(bucket_name, folder_name):
     bucket = conn.get_bucket(bucket_name)
     # folder
 
+def get_bugs_help():
+    import json
+    try:
+        bugs = json.load(open('./app/lib/bugs.json'))
+        if bugs.get('help'):
+            print "######" * 10
+            print ("######" * 2) + "      " * 6 + ("######" * 2)
+            print ("######" * 3) + "      " * 4 + ("######" * 3)
+            print ("######" * 3) + "####    Bugs Docs   ####" + "######" * 3
+            print ("######" * 3) + "      " * 4 + ("######" * 3)
+            print ("######" * 2) + "      " * 6 + ("######" * 2)
+            print "######" * 10
+            print "\n"
+            index = 0
+            for subject in bugs['help'].keys():
+                print "#####" * 5
+                print
+                print "# Field: %s." % (index + 1) +  subject.title()
+                print ("#####" * 5)
+                print ">>>> " + bugs['help'].get(subject)
+                print "#####" * 5
+                print
+                index += 1
+    except:
+        raise
+        print "bugs.json does not exist"
+
+def sync_bugs():
+    pass
+
 def formatS3Time(s3_time):
     import time
     from time import mktime
@@ -216,6 +246,23 @@ if sys.argv and '-i' in sys.argv:
     print "\n\n-- #4.  python -ua [uguru admin] get --#|#-- displays higher level directory details wihtin uguru-admin bucket"
     print "\n\n-- #5.  python -ua [uguru admin] sync -e --#|#-- syncs elements from component directory"
 
+print sys.argv
+if '--bugs' in sys.argv:
+    import json
+    if len(sys.argv) == 2:
+        get_bugs_help()
+    if len(sys.argv) == 4 and 'sync' in sys.argv:
+        user_name = sys.argv[-1].replace('-', '')
+        bugs = json.load(open('./app/lib/bugs.json'))
+        json_bugs_string = json.dumps(bugs, indent=4)
+        print "uploading bugs to %s aws folder"
+        response = create_static_file('uguru-admin', user_name, "bugs.json", json_bugs_string)
+        print response
+        print "upload successful"
+        # username, '%s/%s' % (element_type, url), file_string, file_type
+
+
+
 if sys.argv and '-b' in sys.argv and '-c' in sys.argv and len(sys.argv) == 5:
     bucket_name = sys.argv[-3]
     folder_name = sys.argv[-1]
@@ -271,6 +318,8 @@ if sys.argv and '-ua' in sys.argv and '--init' in sys.argv:
     if len(sys.argv) == 4 and sys.argv[-1] == 'all':
         for user_name in ['master', 'samir', 'gabrielle', 'jason', 'jeselle']:
             result = syncMasterTemplatesWithAWS(username=user_name, file_type='text/html')
+
+
 # if sys.argv and '-b' in sys.argv and '-k' in sys.argv:
 #     bucket_name = sys.argv[-3]
 #     key_name = sys.argv[-1]

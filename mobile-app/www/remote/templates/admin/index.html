@@ -2784,7 +2784,24 @@
                             </div>
                         </div>
                     </div>
-                </div>
+
+                    <div class="admin-reference admin-content-section p15xy" ng-if='page.layout.sections[2].tabs.index === 5'>
+                        <div class="admin-definition-list">
+                            <div>
+                                <h2>Responsibilities in prioritized order</h2>
+                                <dl>
+                                    <div ng-repeat="member in page.team_members" ng-if='member.name !== "Girls"'>
+                                        <dt>
+                                            <user-icon size="small" style='height:50px; width:50px;' url="member.profile_url"></user-icon
+                                            >
+                                            <div class='full-x txt-3 lowercase weight-600 txt-charcoal-50p'>{{member.name}}</div>
+                                        </dt>
+                                        <dd>{{member.responsibilities}}</dd>
+                                    </div>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
             </section>
             <section id="admin-moodboard" class='flex-wrap-center full-xy' ng-hide='page.layout.sidebar.index !== 3'>
                 <div class="tab-container">
@@ -2838,6 +2855,8 @@
                 </div>
             </section>
             <section id="admin-tools" class='flex-wrap-center full-x' ng-hide='page.layout.sidebar.index !== 4' ng-include="img_base + BASE + 'templates/admin/index.tools.html'"></section>
+
+
         </div>
     </main>
 </div>

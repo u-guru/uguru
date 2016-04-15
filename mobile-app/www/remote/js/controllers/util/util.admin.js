@@ -22,7 +22,7 @@ angular.module('uguru.util.controllers')
 				user_stories: AdminContent.getUserStories(),
 				createObjects: AdminContent.getBaseObjects($scope),
 				defaults: {
-					tabsIndex: 0,
+					tabsIndex: 5,
 					sidebarIndex: 2
 				},
 				toggles: {
