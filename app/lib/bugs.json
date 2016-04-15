@@ -1,0 +1,23 @@
+{
+    "help": {
+        "file_names": "Name of the file",
+        "file_type": "Name of the file",
+        "title": "Less than 5 words example of the bug",
+        "tags": "arr[String] Try your best to tag each bugs with key words like 'controller', 'css', 'no idea'. Anything that gives me more of an idea",
+        "screenshot": "[String] A link to the screenshot",
+        "priority": "[Bool], let's keep it simple. Priority should be anything that gets in the way of significant testing, or doesn't work for the user.",
+        "notes": "Anything extra to help clarify",
+        "platforms": "Which platforms does it work on? Clarify and make sure you check all first.",
+        "difficulty": 10,
+        "resolved": false
+    },
+    "bugs": [
+        {
+            "file_names": ["splash.html"],
+            "file_type": "html",
+            "title": "CTA not working on dashboard",
+            "tags": ["Annoying", "js-console-error"],
+            "notes": "asldkadj aksldjk alsjdlkasjdkla"
+        }
+    ]
+}
