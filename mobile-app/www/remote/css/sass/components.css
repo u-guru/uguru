@@ -4244,16 +4244,16 @@ input[type="range"][size="large"]::-ms-track, input[type="range"][size="10"]::-m
   margin: 0;
 }
 
-.range-container.small {
-  padding-top: 8px;
-  padding-bottom: 8px;
+.range-container.small input[type="range"] {
+  padding-top: 9px;
+  padding-bottom: 9px;
 }
 
 .range-container.small input[type="range"]::-webkit-slider-thumb {
   border-radius: 1000px;
   position: relative;
   z-index: 10;
-  margin-top: -8px;
+  margin-top: -9px;
   width: 4px;
   height: 18px;
 }
@@ -4801,6 +4801,93 @@ input[type="range"][size="large"]::-ms-track, input[type="range"][size="10"]::-m
 
 .dropdown-container.full-x .dropdown.small > ul li {
   width: calc(100% - 24px);
+}
+
+.dropdown-container.double .dropdown > div > span {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 32px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.dropdown-container.double .dropdown > div > span > span {
+  display: block;
+  height: auto;
+}
+
+.dropdown-container.double .dropdown > div > span > span:last-child {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.dropdown-container.double .dropdown > ul li {
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.dropdown-container.double .dropdown > ul li > span {
+  font-weight: 400;
+}
+
+.dropdown-container.double .dropdown > ul li > span:last-child {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.dropdown-container.no-header h2 {
+  display: none !important;
+}
+
+.dropdown-container.height-32 .dropdown > div > span {
+  height: 32px;
+}
+
+.dropdown-container.height-32 .dropdown > div a {
+  width: 32px;
+  height: 32px;
+}
+
+.dropdown-container.height-32 .dropdown > div a svg {
+  width: 32px;
+  height: 32px;
+  padding: 8px 6px 6px;
+}
+
+.dropdown-container.height-32 .dropdown > ul {
+  width: 100%;
+  top: 32px;
+}
+
+.dropdown-container.height-32 .dropdown > ul li {
+  width: calc(100% - 32px);
+}
+
+.dropdown-container.height-32.full-x .dropdown {
+  width: 100%;
+}
+
+.dropdown-container.height-32.full-x .dropdown > div {
+  width: 100%;
+}
+
+.dropdown-container.height-32.full-x .dropdown > div > span {
+  width: calc(100% - 32px);
 }
 
 /* ---------- COLOR DROPDOWNS */
