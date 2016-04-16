@@ -83,6 +83,8 @@ angular.module('uguru.util.controllers')
 			$scope.danceMoves = [];
 			$scope.selectedDanceMove = initDanceMove($scope.page.actor);
 			$scope.danceMoves.push($scope.selectedDanceMove);
+			$scope.danceMoves.push(initDanceMove($scope.page.actor));
+			$scope.danceMoves.push(initDanceMove($scope.page.actor));
 			browserPrefix = getBrowserPrefix();
 		}
 
@@ -149,6 +151,9 @@ angular.module('uguru.util.controllers')
 		//TODO
 		// - previous transform state should be detected
 
+		// - show the 50px
+		// - when it goes to the next move, how do I see
+		// - i cant see where i'm at
 
 
 		function initAll() {
