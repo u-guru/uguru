@@ -114,6 +114,21 @@ def formatHourMinute(hour, minute):
     else:
         return result + "am"
 
+def getBugsFile(key_name="jason", bucket_name="uguru-admin", sorter="priority"):
+    bucket = conn.get_bucket(bucket_name)
+    all_keys = bucket.get_all_keys()
+    for key in all_keys:
+        if key_name in key.name and 'bugs.json' in key.name:
+            import requests, json
+            arr = json.loads(requests.get(url = "https://uguru-admin.s3.amazonaws.com/%s" % key.name).text)
+
+            arr['bugs'] = sorted(arr['bugs'], key=lambda k:k[sorter], reverse=True)
+            index = 1
+            for item in arr['bugs']:
+                print "#%s\n%s:%s\n%s\n\n" % (index, sorter, item[sorter], item['title'])
+                index += 1
+
+
 def getAllAdminFiles(bucket_name="uguru-admin"):
     bucket = conn.get_bucket(bucket_name)
     result_dict = {}
@@ -252,12 +267,23 @@ if '--bugs' in sys.argv:
                             "cmd": "prints all the commands",
                             "sync [name|samir|jason]": "uploads your file to s3 cloud",
                             "verify [name|samir|jason]": "shows all bugs printed in order of priority & difficulty",
-                            "pull [name|samir|jason]": "pulls most updated bugs for one person to your local repo"
+                            "pull [name|samir|jason]": "pulls most updated bugs for one person to your local repo",
                         }
     import json
 
     if len(sys.argv) == 2:
         get_bugs_help()
+
+    if len(sys.argv) == 4 and 'verify' in sys.argv:
+
+        bugs_file = getBugsFile()
+
+    if len(sys.argv) == 4 and 'pull' in sys.argv:
+
+        bugs_file = getBugsFile()
+
+        # bugs = json.load(open('./app/lib/bugs.json'))
+        # bugs = sorted()
 
     if len(sys.argv) == 3 and 'cmd' in sys.argv:
         print "#####" * 8
