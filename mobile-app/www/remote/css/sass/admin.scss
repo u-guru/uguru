@@ -113,14 +113,34 @@
 				height: 100%;
 				border: 2px solid rgba($slate, .1);
 				&.new {
-					background: none!important;
+					position: relative;
+					&:before, &:after {
+						@include round;
+						content: "";
+						display: block;
+						position: absolute;
+						top: 50%;
+						margin-top: -4px;
+						height: 8px;
+						width: 4px;
+					}
+					&:before {
+						left: -3px;
+					}
+					&:after {
+						right: -3px;
+					}
 				}
 			}
 			&:nth-child(1) {
 				div {
 					background: $auburn;
 					&.new {
+						background: rgba($auburn, .2);
 						border-color: $auburn;
+						&:before, &:after {
+							background: $auburn;
+						}
 					}
 				}
 			}
@@ -128,7 +148,11 @@
 				div {
 					background: $orange;
 					&.new {
+						background: rgba($orange, .2);
 						border-color: $orange;
+						&:before, &:after {
+							background: $orange;
+						}
 					}
 				}
 			}
@@ -136,7 +160,11 @@
 				div {
 					background: $gold;
 					&.new {
+						background: rgba($gold, .2);
 						border-color: $gold;
+						&:before, &:after {
+							background: $gold;
+						}
 					}
 				}
 			}
@@ -144,7 +172,11 @@
 				div {
 					background: $moola;
 					&.new {
+						background: rgba($moola, .2);
 						border-color: $moola;
+						&:before, &:after {
+							background: $moola;
+						}
 					}
 				}
 			}
@@ -152,7 +184,11 @@
 				div {
 					background: $azure;
 					&.new {
+						background: rgba($azure, .2);
 						border-color: $azure;
+						&:before, &:after {
+							background: $azure;
+						}
 					}
 				}
 			}
@@ -182,6 +218,9 @@
 				label {
 					padding-left: 5px;
 					font-size: 16px;
+				}
+				input:checked + span {
+					background: $moxie;
 				}
 			}
 		}
