@@ -119,7 +119,7 @@
 								</div>
 								<div ng-repeat='message in active_relationship.messages|filter:active_relationship.search_text:strict' class="message-single ng-class:{'left': message.sender.id !== user.id, 'right': user.id === message.sender.id}">
 									<div class='message-single-icon' ng-if='message.sender.id !== user.id'>
-										<user-icon ng-if='user.profile_url' size="-48" url="message.sender.profile_url"> </user-icon>
+										<user-icon ng-if='user.profile_url' size="48" url="message.sender.profile_url"> </user-icon>
 									</div>
 									<div class="message-single-content">
 										<div class="message-single-info">
@@ -136,7 +136,7 @@
 										</div>
 									</div>
 									<div class='message-single-icon' ng-if='message.sender.id === user.id'>
-										<user-icon size="-48" url="user.profile_url"> </user-icon>
+										<user-icon size="48" url="user.profile_url"> </user-icon>
 									</div>
 								</div>
 								<div id='message-dropzone' class='bg-slate-50p absolute left-0 full-x weight-400 hide' style='bottom:64px; height:150px;' ng-class="{'show':showAttachments}"> Drag attachments here
@@ -165,7 +165,7 @@
 											    <path d="M1.5,3.49753791 C1.5,2.39432819 2.39505147,1.5 3.49753791,1.5 L99.5024621,1.5 C100.605672,1.5 101.5,2.39505147 101.5,3.49753791 L101.5,99.5024621 C101.5,100.605672 100.599654,101.5 99.4925388,101.5 L66.5,101.5 L52.2033622,115.796638 C51.814906,116.185094 51.1867037,116.186704 50.7966378,115.796638 L36.5,101.5 L3.50746124,101.5 C2.39877101,101.5 1.5,100.604949 1.5,99.5024621 L1.5,3.49753791 Z" stroke="#FFFFFF" stroke-width="3" fill="#50A5DD" stroke-linecap="round" stroke-linejoin="round"></path>
 											</svg>
 											<div class="absolute top-0 flex-center">
-												<user-icon size="-64"></user-icon>
+												<user-icon size="64"></user-icon>
 											</div>
 											<h2 class='txt-24 full-x weight-600 m15top'>Your last location shared</h2>
 											<span class='full-x opacity-50 txt-16 semibold uppercase block'> Last Updated: 2 hours ago </span>
@@ -176,7 +176,7 @@
 												" stroke-linecap="round" stroke-linejoin="round"></path>
 											</svg>
 											<div class="absolute top-0 flex-center">
-												<user-icon size="-64"></user-icon>
+												<user-icon size="64"></user-icon>
 											</div>
 											<h2 class='txt-24 full-x weight-600 m15top'>{{active_relationship.guru.name}}'s last location shared</h2>
 											<span class='full-x opacity-50 txt-16 semibold uppercase block'> Last Updated: 5 hours ago </span>
@@ -214,11 +214,11 @@
 										<div ng-bind-html="file.time_created"></div>
 										<div ng-if='file.user.id === user.id'>
 											<span>{{user.name}}</span>
-											<user-icon size="-32"></user-icon>
+											<user-icon size="32"></user-icon>
 										</div>
 										<div ng-if='file.user.id !== user.id'>
 											<span>{{active_relationship.guru.name}}</span>
-											<user-icon size="-32"></user-icon>
+											<user-icon size="32"></user-icon>
 										</div>
 									</li>
 								</ul>
@@ -230,14 +230,14 @@
 									<div class='ugrid-2 p15bottom'>
 										<div class='flex-wrap-center txt-center relative'>
 											<div class="calendar-tile bg-lake">
-												<user-icon size="-64"></user-icon>
+												<user-icon size="64"></user-icon>
 											</div>
 											<h2 class='txt-24 full-x weight-600 m15top'>Your Availability</h2>
 											<span class='full-x opacity-50 txt-16 semibold uppercase block'> Last Updated: 2 hours ago </span>
 										</div>
 										<div class='flex-wrap-center txt-center relative'>
 											<div class="calendar-tile bg-shamrock">
-												<user-icon size="-64"></user-icon>
+												<user-icon size="64"></user-icon>
 											</div>
 											<h2 class='txt-24 full-x weight-600 m15top'>{{active_relationship.guru.name}}'s Availability</h2>
 											<span class='full-x opacity-50 txt-16 semibold uppercase block'> Last Updated: 5 hours ago </span>
@@ -258,7 +258,7 @@
 						            <li>
 						                <div class="flex-center-vertical bg-white p15-grid">
 						                    <div class="p15left">
-						                        <user-icon size="-84" class="border-slate"></user-icon>
+						                        <user-icon size="84" class="border-slate"></user-icon>
 						                    </div>
 						                    <div class="full-x">
 						                        <h2 class="txt-slate semibold txt-24"><strong class="black">You</strong> requested <strong class="black">1-on-1 help</strong> from <strong class="black">Guru</strong></h2>
@@ -417,7 +417,7 @@
 					</div>
 					<div ng-repeat='message in active_relationship.messages|filter:active_relationship.search_text:strict' class="message-single ng-class:{'left': message.sender.id !== user.id, 'right': user.id === message.sender.id}">
 						<div class='message-single-icon' ng-if='message.sender.id !== user.id'>
-							<user-icon ng-if='user.profile_url' size="-32" url="message.sender.profile_url"> </user-icon>
+							<user-icon ng-if='user.profile_url' size="32" url="message.sender.profile_url"> </user-icon>
 						</div>
 						<div class="message-single-content">
 							<div class="message-single-info">
@@ -434,7 +434,7 @@
 							</div>
 						</div>
 						<div class='message-single-icon' ng-if='message.sender.id === user.id'>
-							<user-icon size="-32" url="user.profile_url"> </user-icon>
+							<user-icon size="32" url="user.profile_url"> </user-icon>
 						</div>
 					</div>
 					<div id='message-dropzone' class='bg-slate-50p absolute left-0 full-x weight-400 hide' style='bottom:64px; height:150px;' ng-class="{'show':showAttachments}"> Drag attachments here

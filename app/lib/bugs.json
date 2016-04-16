@@ -1,0 +1,139 @@
+{
+    "help": {
+        "file_names": "Name of the file",
+        "file_type": "Name of the file",
+        "title": "Less than 5 words example of the bug",
+        "tags": "arr[String] Try your best to tag each bugs with key words like 'controller', 'css', 'no idea'. Anything that gives me more of an idea",
+        "screenshot": "[String] A link to the screenshot",
+        "priority": "[Bool], let's keep it simple. Priority should be anything that gets in the way of significant testing, or doesn't work for the user.",
+        "notes": "Anything extra to help clarify",
+        "platforms": "Which platforms does it work on? Clarify and make sure you check all first.",
+        "impact_file":"arr[String] which files is impacted follow by order",
+        "error_msg": "error_msg from test",
+        "element" : "element cause this"
+    },
+    "bugs": [
+        {
+            "title": "CTA screensize is incorrect",
+            "tag": ["css","guru-dashboard","desktop"],
+            "priority": true,
+            "notes": "unable to contiune the test since CTA screensize is not correct",
+            "platforms": ["Chrome"],
+            "impact_file":[
+                "templates/profile.public.html",
+                "templates/guru.credibility.html",
+                "templates/referrals.html",
+                "templates/billing.html",
+                "templates/balance.html",
+                "templates/guru.ranking.html"
+            ]
+
+        },
+        {
+            "screenshot": "./app/lib/screen_shot/guru-account/accountmain.png",
+            "title": "Guru account setting button location",
+            "tag": ["css","guru-account","desktop"],
+            "priority": true,
+            "notes": "buttons is not at correct location", 
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/templates/desktop.settings.html"
+            ]
+        },
+        {
+            "title": "CTA Credibility file name",
+            "tag": ["missing files","guru-credibility","no idea","desktop"],
+            "priority": false,
+            "notes": "not sure which file name we using",
+            "platforms": ["Chrome","Firefox","Safari"]
+        },
+        {
+            "title": "Guru account Email Inputs",
+            "tag": ["function","guru-account","desktop","mobile"],
+            "priority": true,
+            "notes": "Caps and Lowcaser email should be the same, always lowercase,", 
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/templates/desktop.settings.html",
+                "templates/components.side-menu.html"
+            ]
+        },
+        {
+            "title": "Guru account Name Inputs",
+            "tag": ["function","guru-account","desktop","mobile"],
+            "priority": true,
+            "notes": "1st character of each word from the name should be caps,ex: enter 'jason huang' should convert 'Jason Huang' right away", 
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/templates/desktop.settings.html"
+            ]
+        },
+        {
+            "title": "Guru account University Search",
+            "tag": ["function","guru-account","desktop-m","mobile-m"],
+            "priority": true,
+            "notes": "search University with key word won't filter out the university list",
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/templates/desktop.settings.html"
+            ]
+        },
+        {
+            "screenshot": "./app/lib/screen_shot/guru-account/university.png",
+            "title": "Guru account University Input",
+            "tag": ["css","guru-account","desktop"],
+            "priority": false,
+            "notes": "university input is incorrect",
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/templates/desktop.settings.html"
+            ]
+        },
+        {
+            "title": "Guru account save button",
+            "tag": ["no idea" ,"css","guru-account","desktop"],
+            "priority": false,
+            "notes": "go back to guru/student home page after it is saved?",
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/templates/desktop.settings.html"
+            ]
+        },
+        {
+            "title": "Sidebar setting account save button",
+            "tag": ["no idea" ,"css","guru-account","desktop"],
+            "priority": false,
+            "notes": "go back to guru/student home page after it is saved?",
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/templates/desktop.settings.html"
+            ]
+        },
+        {
+            "screenshot": "./app/lib/screen_shot/mobile-m/[FAIL]/guru_home_account_setting/guru-account/2016-04-15 17/07/41.png",
+            "title": "Unable to closing password popup",
+            "tag": ["css","sidebar","mobile-m"],
+            "priority": false,
+            "notes": "with mobile-m screen screensize unable to close the popup",
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/components.side-menu.html"
+            ],
+            "element: " : "[name='notifi-modal']",
+            "error_msg": "unknown error: Element is not clickable at point (232, 305). Other element would receive the click: <a>...</a>\n"       
+        },
+        {
+            "title": "notification checkmark issue",
+            "tag": ["function","notification","mobile-m"],
+            "priority": false,
+            "notes": "second time click the same notifications; if it is active then it will deactive -> active-> and then deactive  ",
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/notifications.modal.html:"
+            ],
+            "element: " : "[name='notifi-modal']",
+            "error_msg": "unknown error:  Element( notifications-circle ng-class:{'active':user.email_notifications} active ) is still  active"       
+        }
+        
+    ]
+}

@@ -2,17 +2,125 @@ angular
 .module('sharedServices')
 .factory("FileService", [
   'LoadingService',
+  'Restangular',
+  'DevToolService',
   FileService
 	]);
 
-function FileService(LoadingService) {
+function FileService(LoadingService, Restangular, DevToolService) {
     var DropzoneDict = {}
     var dropZoneUiEvents = ['drop', 'dragstart', 'dragend', 'dragenter', 'dragover', 'dragleave']; //event first param
     var dropZoneFileEvents = ["totaluploadprogress", "queuecomplete", "maxfilesreached", "complete", "success", "uploadprogress", "thumbnail"]
     return {
         initRequestDropzoneFromSelector: initRequestDropzoneFromSelector,
         initMessageDropzone: initMessageDropzone,
-        DropzoneDict: DropzoneDict
+        DropzoneDict: DropzoneDict,
+        initUserAdminTool: initUserAdminTool
+    }
+
+    function initUserAdminTool() {
+
+        return {
+            //gets all files
+            get: getAllAdminFiles(),
+            save: {
+                file: saveAdminFile,
+                folder: saveAdminFolder
+            },
+            create: {
+                folder: createAdminFolder,
+                file: createAdminFile
+            },
+            remove: {
+                folder: removeAdminFolder,
+                file: removeAdminFile
+            }
+        }
+    }
+
+    function getUserSettings(user_name) {
+        //last_file_opened
+        //last_10_files_edited
+        //variations
+        //--previous fork reference
+    }
+
+
+
+
+    function getAllAdminFiles() {
+        return function(_scope) {
+            Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('files').get().then(
+            function(response) {
+                var files = response.plain().admin_files;
+                _scope.files = {
+                    users: {options: Object.keys(files), index:0},
+                    all: files,
+                    switchUser: function(user) {
+                        return
+                    }
+                }
+                var splash_files = [];
+                var user_name = _scope.user.name.split(' ')[0].toLowerCase();
+                if (user_name === "asif") {
+                    user_name = 'samir';
+                }
+
+                for (var i = 0; i < files[user_name].files.length; i++) {
+                    var indexFile = files[user_name].files[i];
+                    if (indexFile.name && indexFile.name.indexOf('layouts/splash.json') > -1) {
+                        splash_files.push(indexFile);
+                    }
+                }
+
+                // _scope.current_file = splash_files[0];
+                // console.log(_scope.current_file);
+                var xhr = new XMLHttpRequest();
+                xhr.open( 'GET', splash_files[0].url, true );
+
+                xhr.onload = function () {
+                    var resp = window.JSON.parse( xhr.responseText );
+                    resp.full_template_url = splash_files[0].url;
+                    console.log(resp.full_template_url);
+                    DevToolService.initCurrentFile(_scope, resp);
+                    _scope.status.show = false;
+                };
+                xhr.send();
+            })
+        }
+
+    }
+    function removeAdminFolder () {return};
+    function removeAdminFile () {return};
+    function createAdminFile () {return};
+    function createAdminFolder () {return};
+    function saveAdminFile () {return};
+    function saveAdminFolder () {return};
+
+    function sceneState() {
+        function autoInit() {
+        }
+        function goNext() {
+
+        }
+        function triggerScene() {
+
+        }
+    }
+
+    function variationUtility () {
+        function promote() {
+        }
+        function fork() {
+        }
+    }
+    function updateUserSettings() {
+        return {
+        }
+        //takes a recent edited component obj &&
+        function updateRecentlyEditedComponents() {
+
+        }
     }
 
     function initMessageDropzone(scope) {

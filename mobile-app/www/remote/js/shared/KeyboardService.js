@@ -10,8 +10,8 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
 
 	var deviceKeyboardExists = false;
 	var deviceKeyboardOpen = false;
-
-
+    var keyupNotRecent;
+    var keydownNotRecent;
     // function preventDefaultCutPaste() {
     //     document.body.oncopy = function() { alert('yo');return false; }
     //     document.body.oncut = function() { return false; }
@@ -28,26 +28,68 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
         }
     }
 
+
+
+    function initOptionPressedAndReleasedFunction(on_press, on_release) {
+
+        window.addEventListener("keydown", function(e){
+            evt = (e) ? e : window.event
+            if (evt.metaKey && !keydownNotRecent) {
+                on_press && on_press(e);
+                keydownNotRecent = true;
+                $timeout(function() {
+                    keydownNotRecent = null;
+                }, 1000)
+            }
+            if ((evt.ctrlKey || evt.keyCode === 17) && !keyupNotRecent) {
+                on_press && on_press(e);
+                keydownNotRecent = true;
+                $timeout(function() {
+                    keydownNotRecent = null;
+                }, 1000)
+            }
+        })
+
+        document.addEventListener('keyup', function (e){
+            if (e.keyCode === 91 && !keyupNotRecent) {
+                on_release && on_release(e);
+                keyupNotRecent = true;
+                $timeout(function() {
+                    keyupNotRecent = null;
+                }, 1000);
+            }
+            if ((evt.ctrlKey || evt.keyCode === 17) && !keyupNotRecent) {
+                on_release && on_release(e);
+                keyupNotRecent = true;
+                $timeout(function() {
+                    keyupNotRecent = null;
+                }, 1000);
+            }
+        }, false);
+    }
+
     function defaultCopyFunction() {
-        var controlPressed = false;
+        var cmdPressed = false;
+        var ctrlPressed = false;
 
             window.addEventListener("keydown", function(e){
                 evt = (e) ? e : window.event
                 if (evt.ctrlKey) {
-                    controlPressed = true;
-                    console.log('Control pressed');
+                    cmdPressed = true;
+                    console.log('CMD pressed');
                 }
             })
             window.addEventListener("keyup", function(e){
                 evt = (e) ? e : window.event; // Some cross-browser compatibility.
+                // control key
                 if (evt.ctrlKey) {
-                    console.log('Control released');
+                    console.log('ctrl key pressed');
                 }
-                if((evt.ctrlKey || evt.metaKey || evt.keyCode == 224 || evt.keyCode == 93 || evt.which == 91 )&& (evt.which == 67))
+                if((evt.metaKey || evt.keyCode == 224 || evt.keyCode == 93 || evt.which == 91 )&& (evt.which == 67))
                 {
 
-                    controlPressed = false;
-                    console.log("Is Control Press?", controlPressed);
+                    cmdPressed = false;
+                    console.log("Is Control Press?", cmdPressed);
                     return false;
                     // Manual Copy / Paste / Cut code here.
                 }
@@ -66,7 +108,7 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
     return {
         setDeviceKeyboardState:setDeviceKeyboardState,
         closeKeyboardIfExists: closeKeyboardIfExists,
-        // preventDefaultCutPaste: preventDefaultCutPaste,
+        initOptionPressedAndReleasedFunction: initOptionPressedAndReleasedFunction,
         initCopyPasteFunctionCallbacks: initCopyPasteFunctionCallbacks
     }
 };

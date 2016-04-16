@@ -3432,6 +3432,63 @@ class AdminUIBuilderView(restful.Resource):
         return json.dumps(all_files, indent=4), 200
 
 
+class AdminFileView(restful.Resource):
+
+    def get(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+        from lib.s3_tools import getAllAdminFiles
+        return jsonify(admin_files=getAllAdminFiles())
+
+    def delete(self, auth_token):
+        from lib.s3_tools import getAllAdminFiles, delete_key
+        file_json = request.json.get('file')
+        if file_json and file_json.get('key'):
+            key = file_json['key']
+            if key:
+                response = delete_key('uguru-admin', key)
+                if response:
+                    return jsonify(admin_files=getAllAdminFiles())
+        abort(404)
+
+    def post(self, auth_token):
+        if not auth_token in APPROVED_ADMIN_TOKENS:
+            return "UNAUTHORIZED", 401
+
+
+        from lib.s3_tools import getAllAdminFiles, create_static_file, create_folder
+        from pprint import pprint
+        file_json = request.json.get('file')
+        # folder_json = request.json.get('folder')
+        # if folder_json.get('folder'):
+        #     folder_name = folder_json.get('name')
+        #     if folder_name:
+        #         create_folder('uguru-admin', folder_name)
+
+        if file_json:
+            full_url = file_json.get('full_template_url')
+            if ".json" in full_url:
+                file_headers = "application/json"
+                file_name = full_url.split('/')[-1]
+                file_path = "/".join(full_url.split('com/')[1:])
+                file_path = file_path.replace('/' + file_name, "")
+                file_contents = json.dumps(file_json, indent=4)
+                # print file_name, file_headers
+
+
+
+            if (file_contents and file_headers and file_name and file_path):
+                response = create_static_file('uguru-admin', file_path, file_name, file_contents, file_headers)
+                if response:
+                    return json.dumps(file_json, indent=4), 200
+
+        abort(404)
+
+
+
+        return jsonify(admin_components=getAllAdminFiles())
+
 class AdminDashboardView(restful.Resource):
     ## Gets most updated component list
     def get(self, auth_token):
@@ -4037,9 +4094,9 @@ api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>
 api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients')
 api.add_resource(AdminDashboardView, '/api/v1/admin/<string:auth_token>/dashboard')
 api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test')
+api.add_resource(AdminFileView, '/api/v1/admin/<string:auth_token>/files')
 api.add_resource(AdminAppUpdateView, '/api/admin/app/update')
 api.add_resource(AdminUIBuilderView, '/api/v1/admin/<string:auth_token>/build', subdomain='www')
-api.add_resource(AdminDashboardView, '/api/v1/admin/<string:auth_token>/dashboard', subdomain='www')
 api.add_resource(AdminMandrillTemplatesView, '/api/admin/<string:auth_token>/mandrill/templates')
 api.add_resource(AdminMandrillCampaignsView, '/api/admin/<string:auth_token>/mandrill/campaigns')
 api.add_resource(AdminMandrillCampaignDetailedView, '/api/admin/<string:auth_token>/mandrill/campaigns/<string:tag>')
@@ -4106,6 +4163,7 @@ api.add_resource(AdminUniversityDeptView, '/api/admin/<string:auth_token>/univer
 api.add_resource(AdminUniversityDeptCoursesView, '/api/admin/<string:auth_token>/universities/<int:uni_id>/depts/<int:dept_id>/courses', subdomain='www')
 api.add_resource(AdminUniversityAddRecipientsView, '/api/admin/<string:auth_token>/university/<int:uni_id>/recipients', subdomain='www')
 api.add_resource(AdminSendView, '/api/admin/<string:auth_token>/send_test', subdomain='www')
+api.add_resource(AdminFileView, '/api/v1/admin/<string:auth_token>/files', subdomain='www')
 api.add_resource(AdminDashboardView, '/api/v1/admin/<string:auth_token>/dashboard', subdomain='www')
 api.add_resource(AdminUIBuilderView, '/api/v1/admin/<string:auth_token>/build', subdomain='www')
 api.add_resource(AdminAppUpdateView, '/api/admin/app/update', subdomain='www')
