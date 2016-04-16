@@ -32,10 +32,14 @@
 		height: 100%;
 		width: 2px;
 		background: white;
-		&:before {
+		cursor: pointer;
+		&:before, &:after {
 			content: "";
 			display: block;
 			position: absolute;
+			cursor: pointer;
+		}
+		&:before {
 			top: -15px;
 			left: 50%;
 			margin-left: -5px;
@@ -45,9 +49,6 @@
 			background: white;
 		}
 		&:after {
-			content: "";
-			display: block;
-			position: absolute;
 			top: -8px;
 			left: 50%;
 			margin-left: -5px;
@@ -113,6 +114,7 @@
 				height: 100%;
 				border-radius: 2px;
 				border: 2px solid rgba($slate, .1);
+				cursor: pointer;
 				&.new {
 					position: relative;
 					&:before, &:after {

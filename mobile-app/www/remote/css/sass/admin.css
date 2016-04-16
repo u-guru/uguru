@@ -44,12 +44,17 @@
   height: 100%;
   width: 2px;
   background: white;
+  cursor: pointer;
 }
 
-.anim-timeline [class*="anim-end"]:before {
+.anim-timeline [class*="anim-end"]:before, .anim-timeline [class*="anim-end"]:after {
   content: "";
   display: block;
   position: absolute;
+  cursor: pointer;
+}
+
+.anim-timeline [class*="anim-end"]:before {
   top: -15px;
   left: 50%;
   margin-left: -5px;
@@ -60,9 +65,6 @@
 }
 
 .anim-timeline [class*="anim-end"]:after {
-  content: "";
-  display: block;
-  position: absolute;
   top: -8px;
   left: 50%;
   margin-left: -5px;
@@ -159,6 +161,7 @@
   height: 100%;
   border-radius: 2px;
   border: 2px solid rgba(64, 72, 75, 0.1);
+  cursor: pointer;
 }
 
 .anim-timeline ul li div.new {
