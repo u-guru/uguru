@@ -1,4 +1,4 @@
-<div class='flex-wrap-center bg-cerise lyt-reduced-header'>
+<div class='flex-wrap-center bg-cerise lyt-reduced-header' ng-keydown="keydownShortcuts()">
     <header class='bg-campus flex-center' style="height: 64px;">
         <h1>Keyframe tool</h1>
     </header>
@@ -48,7 +48,7 @@
                     <div class="range-container small full-x m15right">
                         <div>
                             <span>0</span>
-                            <input class="range-slider" type="range" size="2" min="0" max="25" value="0"/>
+                            <input class="range-slider" type="range" size="2" min="0" max="100" value="0" ng-model="selectedDanceMove.translateX"/>
                             <span>1</span>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                     <div class="range-container small full-x m15right">
                         <div>
                             <span>0</span>
-                            <input class="range-slider" type="range" size="2" min="0" max="25" value="0"/>
+                            <input class="range-slider" type="range" size="2" min="0" max="100" />
                             <span>1</span>
                         </div>
                     </div>
