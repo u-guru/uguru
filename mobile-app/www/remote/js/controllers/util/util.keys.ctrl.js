@@ -5,21 +5,48 @@ angular.module('uguru.util.controllers')
 	'$scope',
 	'$state',
 	'$stateParams',
-
-	function($scope, $state, $stateParams) {
+	'$timeout',
+	function($scope, $state, $stateParams, $timeout) {
 
 		var keyboardSpec = {
 			//toggle properties
 		}
 
-		$scope.player = function() {
+		$scope.player = initAnimationPlayer();
+
+
+		function initAnimationPlayer() {
 			return {
-				start: playDanceMoves,
-				pause: pauseDanceMoves,
+				play: playElemAnimation,
+				pause: pauseDanceMoveElem,
+				reset: resetDanceMoveElem,
+				resume: resumeDanceMoveElem,
+				replay: resetDanceMoveElem,
 				setMode: {
 					options: [{name: "fast", speed: 250}, {name: "medium", speed:1000}, {name: "slow", "speed": 2000}],
 					selectedIndex: 0
-				},
+				}
+			}
+
+			function playElemAnimation(elem, anim_name, browserPrefix) {
+				elem.style[browserPrefix + "AnimationName"] = anim_name
+			}
+
+			function pauseDanceMoveElem(elem, browserPrefix) {
+				elem.style[browserPrefix + "AnimationPlayState"]="paused";
+			}
+
+
+			function resumeDanceMoveElem(elem, browserPrefix) {
+				elem.style[browserPrefix + "AnimationPlayState"] ="running";
+			}
+
+			function resetDanceMoveElem(elem, browserPrefix, replay) {
+				var elemCacheAnim = elem.animation;
+				elem[browserPrefix + animation] = null;
+				elem.offsetWidth = elem.offsetWidth;
+				elem[browserPrefix + animation] = elemCacheAnim;
+				!replay && pauseDanceScript(elem, browserPrefix)
 			}
 		}
 
@@ -77,14 +104,41 @@ angular.module('uguru.util.controllers')
 		    return null;
 		}
 
+		function initAnimation(anim_name, browserPrefix) {
+			var lastSheet = document.styleSheets[document.styleSheets.length - 1];
+			var indexOfRuleInSheet = lastSheet.insertRule("@-" + browserPrefix + "-keyframes " + anim_name + " { } ");
+			return lastSheet.cssRules[indexOfRuleInSheet];
+		}
+
+		$timeout(function() {
+			var keyFrameRule = findKeyframesRule('bounceInUp');
+			$scope.page.actor.classList.add('animated');
+
+			$scope.selectedDanceMove.keyframeAnimation = initAnimation("samir", browserPrefix);
+
+
+
+			$scope.page.actor.style.webkitAnimationDuration = "5s";
+			$timeout(function() {
+				$scope.player.play($scope.page.actor, "bounceInUp", browserPrefix);
+				$timeout(function() {
+					$scope.player.pause($scope.page.actor, browserPrefix);
+				}, 2500)
+
+				$timeout(function() {
+					$scope.player.resume($scope.page.actor, browserPrefix);
+				}, 5000)
+
+			}, 1000)
+
+		}, 1000);
+
 		function initView() {
 			$scope.page = {actor: null}
 			$scope.page.actor = document.querySelector('#rect-svg');
 			$scope.danceMoves = [];
 			$scope.selectedDanceMove = initDanceMove($scope.page.actor);
 			$scope.danceMoves.push($scope.selectedDanceMove);
-			$scope.danceMoves.push(initDanceMove($scope.page.actor));
-			$scope.danceMoves.push(initDanceMove($scope.page.actor));
 			browserPrefix = getBrowserPrefix();
 		}
 
@@ -130,6 +184,7 @@ angular.module('uguru.util.controllers')
 				this.originY = 50;
 				this.originZ = 50;
 				this.transformStyle = "preserve-3d";
+				this.keyframeAnimation = null;
 			};
 			return new defaultDanceMove();
 		}

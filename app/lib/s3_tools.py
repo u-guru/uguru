@@ -80,9 +80,9 @@ def get_bugs_help():
             for subject in bugs['help'].keys():
                 print "#####" * 5
                 print
-                print "# Field: %s." % (index + 1) +  subject.title()
+                print "# Field: %s." % str((index + 1)) +  str(subject.title())
                 print ("#####" * 5)
-                print ">>>> " + bugs['help'].get(subject)
+                print ">>>> " + str(bugs['help'].get(subject))
                 print "#####" * 5
                 print
                 index += 1
@@ -248,9 +248,35 @@ if sys.argv and '-i' in sys.argv:
 
 print sys.argv
 if '--bugs' in sys.argv:
+    supported_commands= {
+                            "cmd": "prints all the commands",
+                            "sync [name|samir|jason]": "uploads your file to s3 cloud",
+                            "verify [name|samir|jason]": "shows all bugs printed in order of priority & difficulty",
+                            "pull [name|samir|jason]": "pulls most updated bugs for one person to your local repo"
+                        }
     import json
+
     if len(sys.argv) == 2:
         get_bugs_help()
+
+    if len(sys.argv) == 3 and 'cmd' in sys.argv:
+        print "#####" * 8
+        print "#####" * 2 + " Supported Commands " + "#####" * 2
+        print "#####" * 8
+        print
+        print
+        index = 1
+        for cmd in supported_commands.keys():
+            print "\n\n"
+            print "##" * 3
+            print "# Command #%s: %s" % (str(index), cmd)
+            print "##" * 3
+            print "# " + supported_commands[cmd]
+            print "#"
+            print "# Example:\n"
+            print "#\n>>> python ./s3_tools.py --bugs %s" % (cmd)
+            index += 1
+
     if len(sys.argv) == 4 and 'sync' in sys.argv:
         user_name = sys.argv[-1].replace('-', '')
         bugs = json.load(open('./app/lib/bugs.json'))
@@ -291,10 +317,12 @@ if sys.argv and '-ua' in sys.argv and 'get' in sys.argv:
         result = getAllAdminFiles("uguru-admin")
         from pprint import pprint
         pprint(result)
+
+
+
     if len(sys.argv) == 4:
         name = sys.argv[-1]
         result = getAllAdminFiles("uguru-admin")
-
         user_files = result.get(name)
         if user_files:
             pprint(user_files)
