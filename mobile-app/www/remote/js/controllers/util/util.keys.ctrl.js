@@ -190,14 +190,35 @@ angular.module('uguru.util.controllers')
 			var anim = initAnimation("strobe", browserPrefix);
 			var property_dict_1 = transformPropertiesObj();
 			var property_dict_2 = transformPropertiesObj();
+
+
+			//dictionary 1
 			property_dict_1.opacity = 0;
+
+
+			//dictionary 2
 			property_dict_2.opacity = 1;
+			property_dict_1["background-color"] = '#FFFFFF'
+			property_dict_2["background-color"] = '#FF0000'
+
+
+
 			var rulesLength = anim.cssRules.length;
 			var properties = [];
+
+
 			for (var i = 0 ; i < rulesLength + 1; i++) {
 				var indexProperty = (i % 2)  ? property_dict_1 : property_dict_2 ;
-				console.log('adding opacity value', indexProperty.opacity, 'at keyframe', i + '%');
+
+
+
+				if (i === 50) {
+					property_dict_2["transform"] = 'translateX(100px)'
+				}
+
+
 				addKFRule(anim, i, indexProperty, browserPrefix, i);
+
 				properties.push(indexProperty);
 			}
 
@@ -227,9 +248,15 @@ angular.module('uguru.util.controllers')
 
 			$scope.animation = sampleStrobeKFObj();
 			$scope.animation.selected_keyframe = $scope.animation.properties[0];
+			$scope.animationDuration = "5s";
+			$scope.animationDurationVal = "5";
+
+
+			//may not work
+			$scope.animationKeyFrames = 100;
 			console.log($scope.animation.selected_keyframe);
 
-			player.play($scope.player, actor, "strobe", browserPrefix)
+			// player.play($scope.player, actor, "strobe", browserPrefix)
 			// player.play(actor, sampleStrobeKFObj();
 
 			// $timeout(function() {
