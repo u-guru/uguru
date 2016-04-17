@@ -13,40 +13,75 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.player = initAnimationPlayer();
+		$scope.sampleAnimations = {options: ["strobe", "bounceInUp"], selectedIndex: 0, size: "small"};
 
+
+		$scope.setActiveKeyFrame = function(value) {
+			$scope.animation.selected_keyframe = $scope.animation.properties[value];
+		}
 
 		function initAnimationPlayer() {
 			return {
 				play: playElemAnimation,
+				set: setAnimProperty,
+				status: 0,
 				pause: pauseDanceMoveElem,
 				reset: resetDanceMoveElem,
 				resume: resumeDanceMoveElem,
 				replay: resetDanceMoveElem,
+				currentFrame: 0,
 				setMode: {
 					options: [{name: "fast", speed: 250}, {name: "medium", speed:1000}, {name: "slow", "speed": 2000}],
 					selectedIndex: 0
 				}
 			}
 
-			function playElemAnimation(elem, anim_name, browserPrefix) {
-				elem.style[browserPrefix + "AnimationName"] = anim_name
+
+
+			function playElemAnimation(player, elem, anim_name) {
+				elem = elem || $scope.actor;
+
+				player = player || $scope.player;
+				anim_name = $scope.sampleAnimations.options[$scope.sampleAnimations.selectedIndex];
+
+
+				elem.style.webkitAnimationDuration = $scope.animationDuration;
+				if (!player.status) {
+					player.status = 1;
+					elem.style[browserPrefix + "AnimationName"] = anim_name
+				}
+				else if (player.status === 1) {
+					return
+				}
+				else if (player.status === 2) {
+
+					resumeDanceMoveElem(player, elem, browserPrefix);
+				}
 			}
 
-			function pauseDanceMoveElem(elem, browserPrefix) {
+			function pauseDanceMoveElem(player, elem) {
+				elem = elem || $scope.actor;
+				player = player || $scope.player;
+				player.status = 2;
+				anim_name = $scope.sampleAnimations.options[$scope.sampleAnimations.selectedIndex];
 				elem.style[browserPrefix + "AnimationPlayState"]="paused";
 			}
 
 
-			function resumeDanceMoveElem(elem, browserPrefix) {
+			function resumeDanceMoveElem(player, elem) {
+				elem = elem || $scope.actor;
+				player.status = 1;
 				elem.style[browserPrefix + "AnimationPlayState"] ="running";
 			}
 
-			function resetDanceMoveElem(elem, browserPrefix, replay) {
-				var elemCacheAnim = elem.animation;
-				elem[browserPrefix + animation] = null;
+			function resetDanceMoveElem(player, elem, replay) {
+				elem = elem || $scope.actor;
+				player = player || $scope.player;
+				anim_name = $scope.sampleAnimations.options[$scope.sampleAnimations.selectedIndex];
+				elem.style[browserPrefix + "AnimationName"] = null;
 				elem.offsetWidth = elem.offsetWidth;
-				elem[browserPrefix + animation] = elemCacheAnim;
-				!replay && pauseDanceScript(elem, browserPrefix)
+				elem.style[browserPrefix + "AnimationName"] = anim_name;
+
 			}
 		}
 
@@ -56,6 +91,10 @@ angular.module('uguru.util.controllers')
 				var indexDanceMove = dance_moves[i]
 				execDanceMove(elem, indexDanceMove);
 			}
+		}
+
+		function setAnimProperty(elem, property, val) {
+
 		}
 
 		function execDanceMove(elem, dance_obj) {
@@ -104,40 +143,120 @@ angular.module('uguru.util.controllers')
 		    return null;
 		}
 
-		function initAnimation(anim_name, browserPrefix) {
+		function initAnimation(anim_name, browserPrefix, num_keyframes) {
+			num_keyframes = num_keyframes || 200;
 			var lastSheet = document.styleSheets[document.styleSheets.length - 1];
 			var indexOfRuleInSheet = lastSheet.insertRule("@-" + browserPrefix + "-keyframes " + anim_name + " { } ");
-			return lastSheet.cssRules[indexOfRuleInSheet];
+			var anim = lastSheet.cssRules[indexOfRuleInSheet];
+			initKFWithXInterval(anim, 200);
+			return anim;
+		}
+
+		function initKFWithXInterval(anim, max_bound) {
+			for (var i = 0; i < max_bound; i++) {
+				addKFRule(anim, i, {}, browserPrefix, i);
+			}
+		}
+
+		function insertPropertiesAtXKF(anim, property_dict, browserPrefix) {
+			return;
+		}
+
+
+		function addKFRule(anim, percentage, property_dict, browserPrefix, index) {
+			var property_keys = Object.keys(property_dict);
+			var result_property_str = '';
+			for (var i = 0; i < property_keys.length; i++) {
+				var indexProperty = property_keys[i];
+				var indexValue = property_dict[indexProperty];
+				result_property_str += indexProperty + ":" + indexValue + ";";
+
+			}
+
+			anim.appendRule(percentage + "% {" + result_property_str + " }", index);
+		}
+
+		function readAndInjectKeyFrames(anim, keyframe_rules) {
+
+		}
+
+		function getBaseTransformDict() {
+			return {
+
+			}
+		}
+
+		function sampleStrobeKFObj() {
+			var anim = initAnimation("strobe", browserPrefix);
+			var property_dict_1 = transformPropertiesObj();
+			var property_dict_2 = transformPropertiesObj();
+			property_dict_1.opacity = 0;
+			property_dict_2.opacity = 1;
+			var rulesLength = anim.cssRules.length;
+			var properties = [];
+			for (var i = 0 ; i < rulesLength + 1; i++) {
+				var indexProperty = (i % 2)  ? property_dict_1 : property_dict_2 ;
+				console.log('adding opacity value', indexProperty.opacity, 'at keyframe', i + '%');
+				addKFRule(anim, i, indexProperty, browserPrefix, i);
+				properties.push(indexProperty);
+			}
+
+			return {obj: anim, properties: properties};
+		}
+
+
+		//guis to create
+		// slider - num animation keyframes
+		$scope.animationDuration = "5s";
+		$scope.animationDurationVal = "5";
+		$scope.animationKeyFrames = 100;
+
+		$scope.animDurationChange = function(value) {
+			$scope.animationDuration = value + 's';
 		}
 
 		$timeout(function() {
 			var keyFrameRule = findKeyframesRule('bounceInUp');
-			$scope.page.actor.classList.add('animated');
-
-			$scope.selectedDanceMove.keyframeAnimation = initAnimation("samir", browserPrefix);
+			$scope.actor.classList.add('animated');
 
 
 
-			$scope.page.actor.style.webkitAnimationDuration = "5s";
-			$timeout(function() {
-				$scope.player.play($scope.page.actor, "bounceInUp", browserPrefix);
-				$timeout(function() {
-					$scope.player.pause($scope.page.actor, browserPrefix);
-				}, 2500)
+			var anim = $scope.selectedDanceMove.kf_obj;
+			var actor = $scope.actor;
+			var player = $scope.player;
 
-				$timeout(function() {
-					$scope.player.resume($scope.page.actor, browserPrefix);
-				}, 5000)
+			$scope.animation = sampleStrobeKFObj();
+			$scope.animation.selected_keyframe = $scope.animation.properties[0];
+			console.log($scope.animation.selected_keyframe);
 
-			}, 1000)
+			player.play($scope.player, actor, "strobe", browserPrefix)
+			// player.play(actor, sampleStrobeKFObj();
+
+			// $timeout(function() {
+			// 	$scope.player.play($scope.actor, "samir", browserPrefix);
+			// }, 7500)
+
+
+
+			// $scope.actor.style.webkitAnimationDuration = "5s";
+			// $timeout(function() {
+			// 	$scope.player.play($scope.actor, "bounceInUp", browserPrefix);
+			// 	$timeout(function() {
+			// 		$scope.player.pause($scope.actor, browserPrefix);
+			// 	}, 2500)
+
+			// 	$timeout(function() {
+			// 		$scope.player.resume($scope.actor, browserPrefix);
+			// 	}, 5000)
+
+			// }, 1000)
 
 		}, 1000);
 
 		function initView() {
-			$scope.page = {actor: null}
-			$scope.page.actor = document.querySelector('#rect-svg');
+			$scope.actor = document.querySelector('#rect-svg');
 			$scope.danceMoves = [];
-			$scope.selectedDanceMove = initDanceMove($scope.page.actor);
+			$scope.selectedDanceMove = initDanceMove($scope.actor);
 			$scope.danceMoves.push($scope.selectedDanceMove);
 			browserPrefix = getBrowserPrefix();
 		}
@@ -162,6 +281,30 @@ angular.module('uguru.util.controllers')
 			}
 
 
+		function transformPropertiesObj(actor) {
+			var transformObj = function()
+			{
+				this.transformPerspective = 0;
+				this.translateX = 0;
+				this.translateY = 0;
+				this.translateZ = 0;
+				this.scale3DX = 1;
+				this.scale3DY = 1;
+				this.scale3DZ = 1;
+				this.skewX = 0;
+				this.skewY = 0;
+				this.rotate3DX = 0;
+				this.rotate3DY = 0;
+				this.rotate3DZ = 0;
+				this.rotate3DAngle = 0;
+				this.originX = 50;
+				this.originY = 50;
+				this.originZ = 50;
+				this.transformStyle = "preserve-3d";
+
+			};
+			return new transformObj();
+		}
 
 
 
@@ -184,7 +327,9 @@ angular.module('uguru.util.controllers')
 				this.originY = 50;
 				this.originZ = 50;
 				this.transformStyle = "preserve-3d";
-				this.keyframeAnimation = null;
+				this.kf_obj = null;
+				this.kf_rules = [];
+				this.kf_rule_cache = {};
 			};
 			return new defaultDanceMove();
 		}
@@ -194,11 +339,11 @@ angular.module('uguru.util.controllers')
 
 			function danceShortCutKeys(e) {
 				if (e.keyCode === 32)  {
-					playDanceMoves($scope.page.actor, $scope.danceMoves);
+					playDanceMoves($scope.actor, $scope.danceMoves);
 				}
 
 				if (e.keyCode === 82)  {
-					$scope.page.actor.style[browserPrefix + 'Transform'] = '';
+					$scope.actor.style[browserPrefix + 'Transform'] = '';
 				}
 			}
 		}
