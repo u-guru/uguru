@@ -325,7 +325,7 @@ if '--bugs' in sys.argv:
             filters = sys.argv[-1]
         bugs_file = getBugsFile(sorter = filters)
 
-    if len(sys.argv) == 4 or len(sys.argv) == 5 and 'pull' in sys.argv:
+    if (len(sys.argv) == 4 or len(sys.argv) == 5 ) and 'pull' in sys.argv:
         filters = None
         if len(sys.argv) == 5:
             filters = sys.argv[-1]

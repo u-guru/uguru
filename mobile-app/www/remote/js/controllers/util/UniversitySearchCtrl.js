@@ -13,7 +13,6 @@ angular.module('uguru.util.controllers')
 	]);
 
 function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $compile, LoadingService) {
-
   var uniSearch = this;
 
   uniSearch.user = $scope.user;
@@ -28,7 +27,6 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $co
   })
 
   uniSearch.selectUniversityFromSearch = function(university) {
-
       $scope.selectUniversityGettingStarted(university);
       LoadingService.showAmbig(null, 1000, function() {
         uniSearch.layout.edit_mode = true;
@@ -50,7 +48,7 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $co
   }
 
   function determineEditMode() {
-    return !(uniSearch.user && (uniSearch.user.id || uniSearch.user.auth_token))
+    return (uniSearch.user && (uniSearch.user.id || uniSearch.user.auth_token))
 
   }
 

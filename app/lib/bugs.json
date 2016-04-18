@@ -218,6 +218,99 @@
             "impact_file":[
                 "templates/profile.public.html"
             ]
+        },
+        {  
+            "rank": 5000000,
+            "screenshot":"",
+            "title": "Search UCD have incorrect result",
+            "tag": ["function","database","university search","desktop"],
+            "priority": true,
+            "notes": "when searching UCD no result is shown",
+            "platforms": ["Chrome"],
+            "impact_file":[
+                "js/controllers/util/UniversitySearchCtrl.js"
+            ]
+        },
+        {  
+            "rank": 99999900,
+            "screenshot":"",
+            "title": "unsure uniSearch.layout.edit_mode true or false in splash/university",
+            "tag": ["function","university search","desktop"],
+            "priority": true,
+            "notes": "determineEditMode() should return true or false when user is exsit ",
+            "platforms": ["Chrome"],
+            "impact_file":[
+                "js/controllers/util/UniversitySearchCtrl.js"
+            ]
+        },
+        {
+            "rank": 10,
+            "screenshot":"https://teamuguru.slack.com/files/jason/F11L4FWR0/screen_shot_2016-04-18_at_11.42.11_am.png",
+            "title": "placeholder of #request-search-input",
+            "tag": ["css","university search","desktop"],
+            "priority": false,
+            "notes": "enter the inputs should hide the placeholder",
+            "impact_file":[
+                "templates/university.search.html"
+            ]
+        },
+        {
+            "rank": 3,
+            "title": "invisible click cluster, CA area",
+            "tag": ["css","university search","desktop"],
+            "priority": false,
+            "notes": "there is an extra cluster when you click cluster,CA area",
+            "impact_file":[
+                "templates/university.search.html"
+            ]
+        },
+        {
+            "rank": 10000000,
+            "screenshot":"https://teamuguru.slack.com/files/jason/F11KBNH3M/screen_shot_2016-04-18_at_1.23.18_pm.png",
+            "title": "no google map, school list is shown in mobile-m",
+            "tag": ["css","university search","mobile"],
+            "priority": false,
+            "notes": "i don't see any google map, school list exist",
+            "impact_file":[
+                "templates/university.search.html"
+            ]
+        },
+        {
+            "rank": 40,
+            "screenshot":"https://teamuguru.slack.com/files/jason/F11MAS8HF/screen_shot_2016-04-18_at_2.05.30_pm.png",
+            "title": "able to scroll down the page, when active search university ",
+            "tag": ["css","university search","desktop"],
+            "priority": false,
+            "notes": "when active search university , able to scroll down, when #splash-one-page-pulldown is active",
+            "impact_file":[
+                "templates/splash.html",
+                "templates/university.search.html"
+            ]
+        },
+        {
+            "rank": 30,
+            "screenshot":"https://teamuguru.slack.com/files/jason/F11LZUPAQ/screen_shot_2016-04-18_at_2.21.09_pm.png",
+            "title": "flash of droppdown when active #splash-one-page-pulldown",
+            "tag": ["css","animation","splash"],
+            "priority": false,
+            "notes": "when #splash-one-page-pulldown is animating, a flash of university droppdown is shown",
+            "impact_file":[
+                "templates/splash.html",
+                "templates/university.search.html"
+            ]
+        },
+        {
+            "rank": 30,
+            "screenshot":"https://teamuguru.slack.com/files/jason/F11LZUPAQ/screen_shot_2016-04-18_at_2.21.09_pm.png",
+            "title": ".splash-university-selected appears after select university",
+            "tag": ["css","animation","splash"],
+            "priority": false,
+            "notes": "as selecting the university, you are able to see .splash-university-selected before #splash-one-page-pulldown deactive",
+            "impact_file":[
+                "templates/splash.html",
+                "templates/university.search.html"
+            ]
         }
+
     ]
 }
