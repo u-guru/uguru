@@ -27,19 +27,104 @@ angular.module('uguru.util.controllers')
   'AccessService',
   'AnimationService',
   'FileService',
+  'KeyboardService',
   function($scope, $state, $timeout, $localstorage, $ionicPlatform,
     $cordovaKeyboard, $ionicModal, Category, ScrollService, SideMenuService,
     $stateParams, Utilities, GUtilService, GMapService, University, $compile,
     ContentService, LoadingService, ContentService, CTAService, User, AccessService,
-     AnimationService, FileService) {
+     AnimationService, FileService, KeyboardService) {
 
     $scope.nav = {activate: true};
     $scope.mad_lib = {activate: false};
     $scope.activate = {
-      pulldown: false,
-      map: false
+      searchUniversity: false,
+      map: false,
+      projector: false
     }
 
+
+    var keyboardListener;
+    var closeOnEscape;
+    $scope.deactivateUniversitySearch = function() {
+      $scope.activate.searchUniversity = false;
+      $timeout(function() {
+        $scope.$apply();
+      });
+    }
+    $scope.activateUniversitySearch = function() {
+      $scope.activate.searchUniversity = true;
+      $timeout(function() {
+        $scope.$apply()
+      });
+      var closeOnEscape = function(e) {
+        console.log(e.keyCode);
+        if (e.keyCode === 27) {
+          $scope.activate.searchUniversity = false;
+          $timeout(function() {
+            $scope.$apply();
+          })
+          document.removeEventListener('keydown', keyboardListener);
+        }
+      }
+
+      KeyboardService.initKeyboardKeydownFunc(closeOnEscape)
+    }
+
+    // todo all states functions
+    // 1. Define the transition functions
+
+    $scope.transitions = {
+      getStarted: {
+        active: false,
+        activate: transitionToGetStarted
+      },
+      searchUniversity: {
+        active: false,
+        activate: showSearchSchools
+      },
+      sidebar: {
+        active: false,
+        activate: launchSidebarCTA
+      },
+      maps: {
+        active: false,
+        activate: initMapState
+      }
+    }
+
+    // 2. Define the validation and edge cases
+    // HTML - what exact components barebones<<<<<
+    // JS -
+
+    // 3. Delegate everything else until later
+    // Random thoughts for later
+    // - Nicer modules
+    // - Animtion
+    // - Graphics
+    // - movie scenes
+
+
+    function transitionToGetStarted() {
+      console.log('transition to get get started clicked;');
+      $scope.transitions.getStarted.active = true;
+      return;
+    }
+
+    function showSearchSchools() {
+      console.log('transition to search schoolsclicked;');
+      //add to dropdown function
+      return;
+    }
+
+    function launchSidebarCTA() {
+
+      console.log('transition to get get started clicked;');
+      return;
+    }
+
+    function initMapState() {
+      console.log('transition to map state initiated');
+    }
 
 
     $scope.storage = FileService.initUserAdminTool($scope.user);
@@ -697,12 +782,49 @@ angular.module('uguru.util.controllers')
       }
     }
 
-
+    $scope.shakeElemIfChildIsDisabled = function() {
+      var translateBlankOneElem = document.querySelectorAll('.translate-blank-1');
+      var translateBlankTwoElem = document.querySelectorAll('.translate-blank-2');
+      if (!translateBlankTwoElem.length) {
+        var blankTwo = document.querySelector('#blank-2');
+        blankTwo && AnimationService.animateIn(blankTwo, 'tada')
+      } else {
+        var blankOne = document.querySelector('#blank-1');
+        blankOne && AnimationService.animateIn(blankOne, 'tada')
+      }
+    }
     $scope.resetMadLibBlankIfActive = function ($event){
 
       var indexTranslateElem = $event.target.parentNode;
       var hasBlankOne = indexTranslateElem.className.indexOf('translate-blank-1') > -1;
       var hasBlankTwo = indexTranslateElem.className.indexOf('translate-blank-2') > -1;
+      var desktopCTAButton = document.querySelector('#desktop-find-guru-button');
+      var desktopCTAButtonUnveiled = desktopCTAButton.classList.contains('bounceInUp');
+      areBothBlanksFilled();
+
+      function areBothBlanksFilled() {
+        $timeout(function() {
+          var translateBlankOneElem = document.querySelectorAll('.translate-blank-1');
+          var translateBlankTwoElem = document.querySelectorAll('.translate-blank-2');
+          var total = translateBlankOneElem.length + translateBlankTwoElem.length;
+          var invisibleCTAButton = document.querySelector('#desktop-find-guru-button-disabled');
+          if (total === 2) {
+            desktopCTAButton && desktopCTAButton.removeAttribute('disabled');
+            if (invisibleCTAButton) {
+              invisibleCTAButton.classList.add('hide');
+            }
+          } else if (total < 2) {
+            desktopCTAButton && desktopCTAButton.setAttribute('disabled','');
+            var invisibleCTAButton = document.querySelector('#desktop-find-guru-button-disabled');
+
+            if (invisibleCTAButton) {
+              invisibleCTAButton.classList.remove('hide');
+            }
+            $compile(desktopCTAButton.parentNode)($scope);
+          }
+        }, 500)
+      }
+
       if (indexTranslateElem && indexTranslateElem.className.indexOf('recently-active') === -1 && (hasBlankOne || hasBlankTwo)) {
         var addLibContainer = document.querySelector(".splash-adlib");
         if (hasBlankOne) {
@@ -883,34 +1005,37 @@ angular.module('uguru.util.controllers')
 
 
     $scope.refreshUniversityState = function(university) {
-      var currentSceneNumber = getSceneNumber();
-      $localstorage.setObject('selected_university_courses', null);
       $scope.selectedUniversity = university;
-      initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
       $scope.page.dropdowns.university.active = false;
       $timeout(function(){
         getAllCourses($scope.selectedUniversity);
+        $localstorage.setObject('selected_university_courses', null);
       });
-      if (currentSceneNumber !== 2) {
-        return;
-      }
-      LoadingService.showAmbig(null, 10000);
-      var args = [
-        ['.splash-hero-map', 'activate'],
-        ['.splash-hero-markers', 'a'],
-        ['.splash-device', 'a'],
-        ['.coach-help-desktop', 'a'],
-      ]
-      clearAnimationArgs(args);
-      $scope.getUniversityPlaces($scope.selectedUniversity)
-      $timeout(function() {
-        LoadingService.hide();
-        for (var i = 0; i < args.length; i++) {
-          var argIndexInjectClass = args[i][0]
-          var argIndexElem = document.querySelector(argIndexInjectClass);
-          argIndexElem && argIndexElem.classList.add(args[i][1]);
+      if ($scope.activate.map) {
+        initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+
+        var currentSceneNumber = getSceneNumber();
+        if (currentSceneNumber !== 2) {
+          return;
         }
-      }, 5000)
+        LoadingService.showAmbig(null, 10000);
+        var args = [
+          ['.splash-hero-map', 'activate'],
+          ['.splash-hero-markers', 'a'],
+          ['.splash-device', 'a'],
+          ['.coach-help-desktop', 'a'],
+        ]
+        clearAnimationArgs(args);
+        $scope.getUniversityPlaces($scope.selectedUniversity)
+        $timeout(function() {
+          LoadingService.hide();
+          for (var i = 0; i < args.length; i++) {
+            var argIndexInjectClass = args[i][0]
+            var argIndexElem = document.querySelector(argIndexInjectClass);
+            argIndexElem && argIndexElem.classList.add(args[i][1]);
+          }
+        }, 5000)
+      }
     }
 
     $scope.transitionToScene3 = function() {
@@ -932,14 +1057,12 @@ angular.module('uguru.util.controllers')
     $scope.selectUniversityGettingStarted = function(university) {
       $scope.selectedUniversity = university;
       $scope.user.university = $scope.selectedUniversity;
+
       $scope.refreshUniversityState(university);
     }
 
     $scope.selectUniversityFromMap = function(university, bool) {
-      if ($scope.page.swipers.main.activeIndex === 3 && $scope.page.swipers.main.slides.length > 5) {
-        $scope.selectUniversityGettingStarted(university);
-        return;
-      }
+
       $scope.selectedUniversity = university;
       $scope.refreshUniversityState(university);
       activateMapElem();
@@ -947,13 +1070,6 @@ angular.module('uguru.util.controllers')
       if (getSceneNumber() === 1) {
         moveProjectorToBottom(0);
       }
-      $timeout(function() {
-        var dropdownUniversity = document.querySelector('#dropdown-university')
-        dropdownUniversity && dropdownUniversity.classList.add('animated', 'tada');
-        $timeout(function() {
-          dropdownUniversity && dropdownUniversity.classList.remove('animated', 'tada');
-        }, 750);
-      }, 750);
     }
 
     $scope.scrollToSection = function(section_selector) {
@@ -1257,14 +1373,15 @@ angular.module('uguru.util.controllers')
       // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
     }
 
-    // $scope.lockFilledBlanksAndgetUniversityPlaces = function(university) {
-    //   // panUniversityBy(university);
-    //   var translateBlankOneElem = document.querySelector('.translate-blank-1');
-    //   translateBlankOneElem && translateBlankOneElem.parentNode && translateBlankOneElem.parentNode.classList.add('opacity-1-impt');
-    //   var translateBlankTwoElem = document.querySelector('.translate-blank-2');
-    //   translateBlankTwoElem && translateBlankTwoElem.parentNode && translateBlankTwoElem.parentNode.classList.add('opacity-1-impt');
-    //   $scope.getUniversityPlaces(university, true);
-    // }
+    $scope.lockFilledBlanksAndgetUniversityPlaces = function(university) {
+      // panUniversityBy(university);
+
+      var translateBlankOneElem = document.querySelector('.translate-blank-1');
+      translateBlankOneElem && translateBlankOneElem.parentNode && translateBlankOneElem.parentNode.classList.add('opacity-1-impt');
+      var translateBlankTwoElem = document.querySelector('.translate-blank-2');
+      translateBlankTwoElem && translateBlankTwoElem.parentNode && translateBlankTwoElem.parentNode.classList.add('opacity-1-impt');
+      $scope.getUniversityPlaces(university, true);
+    }
 
 
 
