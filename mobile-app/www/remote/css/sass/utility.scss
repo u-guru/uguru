@@ -245,6 +245,28 @@ input, fieldset {
 		height: 100%;
 	}
 }
+.lyt-30-70-sidebar {
+	@include flex;
+	> aside {
+		width: 30%;
+		height: 100%;
+	}
+	> *:not(aside) {
+		width: 70%;
+		height: 100%;
+	}
+}
+.lyt-1-4-sidebar {
+	@include flex;
+	> aside {
+		width: 25%;
+		height: 100%;
+	}
+	> *:not(aside) {
+		width: 75%;
+		height: 100%;
+	}
+}
 .lyt-reduced-header {
 	> header {
 		@include flex;

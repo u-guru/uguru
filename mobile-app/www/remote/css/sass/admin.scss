@@ -1,90 +1,240 @@
 @import 'mixin';
 
-/* ---------- BUILDER */
-#build {
+/* ---------- KEYFRAMES */
+.anim-timeline {
 	@include flex;
-	height: 100%;
-	overflow: hidden;
-	.dropdown-container {
-		&.double {
-			.dropdown {
-				> div {
-					> span {
-						@include flex;
-						@include flex-wrap;
-						@include flex-center-vertical;
-						height: 32px;
-						font-size: 12px;
-						font-weight: 600;
-						line-height: 1.3;
-						> span {
-							display: block;
-							height: auto;
-							&:last-child {
-								font-size: 10px;
-								font-weight: 400;
-								line-height: 1;
-							}
-						}
-					}
+	@include flex-wrap;
+	position: relative;
+	width: 100%;
+	height: 75px;
+	background: darken($slate, 3%);
+	.anim-player {
+		position: relative;
+		width: calc(100% - 15px);
+	}
+	[class*="anim-bound"] {
+		position: absolute;
+		top: 0;
+		z-index: 2;
+		height: 100%;
+		background: rgba($charcoal, .5);
+		&.anim-bound-left {
+			left: 0;
+		}
+		&.anim-bound-right {
+			right: 0;
+		}
+	}
+	[class*="anim-end"] {
+		position: absolute;
+		top: 0;
+		z-index: 3;
+		height: 100%;
+		width: 2px;
+		background: white;
+		cursor: pointer;
+		&:before, &:after {
+			content: "";
+			display: block;
+			position: absolute;
+			cursor: pointer;
+		}
+		&:before {
+			top: -15px;
+			left: 50%;
+			margin-left: -5px;
+			border-radius: 100%;
+			width: 10px;
+			height: 10px;
+			background: white;
+		}
+		&:after {
+			top: -8px;
+			left: 50%;
+			margin-left: -5px;
+			width: 0;
+			height: 0;
+			border: 5px solid transparent;
+			border-top-color: white;
+		}
+		&.anim-end-left {
+			margin-left: -1px;
+		}
+		&.anim-end-right {
+			margin-right: -1px;
+		}
+	}
+	ul {
+		&.anim-label {
+			width: 15px;
+			font-size: 12px;
+			li {
+				@include flex;
+				@include flex-center;
+				width: 15px;
+				&:nth-child(1) {
+					background: mix($slate, $auburn, 50%);
 				}
-				> ul {
-					li {
-						font-size: 14px;
-						line-height: 1.3;
-						font-weight: 600;
-						> span {
-							font-weight: 400;
-							&:last-child {
-								font-size: 12px;
-								line-height: 1;
-							}
-						}
-					}
+				&:nth-child(2) {
+					background: mix($slate, $orange, 50%);
+				}
+				&:nth-child(3) {
+					background: mix($slate, $gold, 50%);
+				}
+				&:nth-child(4) {
+					background: mix($slate, $moola, 50%);
+				}
+				&:nth-child(5) {
+					background: mix($slate, $azure, 50%);
 				}
 			}
 		}
-		&.no-header {
-			h2 {
-				display: none!important;
+		&.anim-border {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			li {
+				&:not(:first-child) {
+					border-top: 1px solid rgba(white, .1);
+				}
+				&:not(:last-child) {
+					border-bottom: 1px solid rgba(white, .1);
+				}
 			}
 		}
-		&.height-32 {
-			.dropdown {
-				> div {
-					> span {
-						height: 32px;
+		&.anim-track {
+			width: 100%;
+		}
+		li {
+			@include flex;
+			height: 15px;
+			div {
+				height: 100%;
+				border-radius: 2px;
+				border: 2px solid rgba($slate, .1);
+				cursor: pointer;
+				&.new {
+					position: relative;
+					&:before, &:after {
+						@include round;
+						content: "";
+						display: block;
+						position: absolute;
+						top: 50%;
+						margin-top: -4px;
+						height: 8px;
+						width: 4px;
 					}
-					a {
-						width: 32px;
-						height: 32px;
-						svg {
-							width: 32px;
-							height: 32px;
+					&:before {
+						left: -3px;
+					}
+					&:after {
+						right: -3px;
+					}
+				}
+			}
+			&:nth-child(1) {
+				div {
+					background: $auburn;
+					&.new {
+						background: rgba($auburn, .2);
+						border-color: $auburn;
+						&:before, &:after {
+							background: $auburn;
 						}
 					}
 				}
-				> ul {
-					width: 100%;
-					top: 32px;
-					li {
-						width: calc(100% - 32px);
+			}
+			&:nth-child(2) {
+				div {
+					background: $orange;
+					&.new {
+						background: rgba($orange, .2);
+						border-color: $orange;
+						&:before, &:after {
+							background: $orange;
+						}
 					}
 				}
 			}
-			&.full-x {
-				.dropdown {
-					width: 100%;
-					> div {
-						width: 100%;
-						> span {
-							width: calc(100% - 32px);
+			&:nth-child(3) {
+				div {
+					background: $gold;
+					&.new {
+						background: rgba($gold, .2);
+						border-color: $gold;
+						&:before, &:after {
+							background: $gold;
+						}
+					}
+				}
+			}
+			&:nth-child(4) {
+				div {
+					background: $moola;
+					&.new {
+						background: rgba($moola, .2);
+						border-color: $moola;
+						&:before, &:after {
+							background: $moola;
+						}
+					}
+				}
+			}
+			&:nth-child(5) {
+				div {
+					background: $azure;
+					&.new {
+						background: rgba($azure, .2);
+						border-color: $azure;
+						&:before, &:after {
+							background: $azure;
 						}
 					}
 				}
 			}
 		}
 	}
+	.anim-controls {
+		@include flex;
+		@include prefix(justify-content, space-between, webkit);
+		width: 100%;
+		padding: 2px;
+		background: lighten($slate, 15%);
+		> div {
+			padding: 2px;
+			button {
+				width: 24px;
+				height: 24px;
+				border-radius: 2px;
+				padding: 0;
+				font-size: 18px;
+				line-height: 1;
+			}
+			.checkbox-container {
+				span {
+					width: 24px;
+					height: 24px;
+				}
+				label {
+					padding-left: 5px;
+					font-size: 16px;
+				}
+				input:checked + span {
+					background: $moxie;
+				}
+			}
+		}
+	}
+}
+
+/* ---------- BUILDER */
+#build {
+	@include flex;
+	height: 100%;
+	overflow: hidden;
 	.dropdown {
 		> div {
 			a {

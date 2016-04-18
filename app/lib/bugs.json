@@ -10,12 +10,14 @@
         "platforms": "Which platforms does it work on? Clarify and make sure you check all first.",
         "impact_file":"arr[String] which files is impacted follow by order",
         "error_msg": "error_msg from test",
-        "element" : "element cause this"
-        "rank" : " 0 to 10,000,000, the more number it has the more improtant"
+        "element" : "element cause this",
+        "rank" : " 0 to 10,000,000, the more number it has the more improtant",
+        "difficulty": 10,
+        "resolved": false
     },
     "bugs": [
         {  
-            "rank": 9999998,
+            "rank": 10000000,
             "screenshot":"https://teamuguru.slack.com/files/jason/F119LP9TL/chrome.png",
             "title": "CTA screensize is incorrect",
             "tag": ["css","guru-dashboard","desktop"],
@@ -33,6 +35,7 @@
 
         },
         { 
+            "difficulty": 10,
             "rank": 9999997,
             "screenshot": "https://teamuguru.slack.com/files/jason/F117T7VK5/2016-04-16_11_28_04.png",
             "title": "Profile droppdown",
@@ -48,7 +51,7 @@
         {
             "rank": 9000000,
             "screenshot": "https://teamuguru.slack.com/files/jason/F119L89BL/accountmain.png",
-            "title": "Guru account setting button location",
+            "title": "Guru account setting button incorrect  qlocation",
             "tag": ["css","guru-account","desktop"],
             "priority": true,
             "notes": "buttons is not at correct location", 
@@ -66,7 +69,7 @@
             "platforms": ["Chrome","Firefox","Safari"]
         },
         {
-            "rank": 10000000,
+            "rank": 9999998,
             "title": "Guru account Email Inputs",
             "tag": ["function","guru-account","desktop","mobile"],
             "priority": true,
@@ -144,7 +147,7 @@
             "impact_file":[
                 "templates/components.side-menu.html"
             ],
-            "element: " : "[name='notifi-modal']",
+            "element: " : ["[name='notifi-modal']"],
             "error_msg": "unknown error: Element is not clickable at point (232, 305). Other element would receive the click: <a>...</a>\n"       
         },
         {
@@ -157,9 +160,64 @@
             "impact_file":[
                 "templates/notifications.modal.html:"
             ],
-            "element: " : "[name='notifi-modal']",
+            "element: " : ["[name='notifi-modal']"],
             "error_msg": "unknown error:  Element( notifications-circle ng-class:{'active':user.email_notifications} active ) is still  active"       
+        },
+        {
+            "rank": 9900000,
+            "title": "guru setting action sheet",
+            "tag": ["function","notification","mobile-m"],
+            "priority": false,
+            "notes": "unable to open setting action sheet without refresh the browser after login",
+            "impact_file":[
+                "templates/components.side-menu.html"
+            ],
+            "element: " : ["[name='notifi-modal']"],
+            "error_msg": "unknown error:  Element( notifications-circle ng-class:{'active':user.email_notifications} active ) is still  active"       
+        },
+        {
+            "rank": 5,
+            "title": "missing profile description checkmark",
+            "tag": ["css","profile","mobile-m","desktop-m"],
+            "priority": false,
+            "notes": "missing a checkmark for guru profile description",
+            "impact_file":[
+                "templates/profile.public.html"
+            ],
+            "element: " : [
+                            "[name ='guru.edit.intro']",
+                            "[name ='guru.mobile.edit.intro']"
+                            ]
+        },
+        {
+            "rank": 9990000,
+            "title": "Guru add/edit their public link",
+            "tag": ["function","profile","mobile-m"],
+            "priority": false,
+            "notes": "empty public link -> no error msg , using the same public link:jason-> error link exist msg & new link -> no checkmark shown",
+            "impact_file":[
+                "templates/profile.public.html"
+            ]
+        },
+        {
+            "rank": 9990000,
+            "title": "Guru add/edit their public link",
+            "tag": ["function","profile","mobile-m"],
+            "priority": false,
+            "notes": "empty public link -> no error msg , using the same public link:jason-> error link exist msg & new link -> no checkmark shown",
+            "impact_file":[
+                "templates/profile.public.html"
+            ]
+        },
+        {
+            "rank": 9990000,
+            "title": "Guru add/edit their public link",
+            "tag": ["function","profile","desktop-m"],
+            "priority": false,
+            "notes": "empty public link -> no error msg , using the same public link:jason-> error link exist msg",
+            "impact_file":[
+                "templates/profile.public.html"
+            ]
         }
-        
     ]
 }
