@@ -23,6 +23,22 @@
     2. Back button
 -->
 
+    <div class="splash-school-loader-container">
+        <div class="splash-school-loader">
+            <div>
+                <span class="splash-school-loader-counter activate" counter
+                init-on-class="counter:activate"
+                counter-max="165"
+                counter-min="0"
+                counter-duration="2"
+                counter-delay="1000"></span>
+                <span>schools found</span>
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 
     <div class-on-clear="slideOutUp:animOut" ng-if='!uniSearch.layout.edit_mode' class='splash-school-search absolute left-0 top-0 full-xy flex-wrap-center show-splash-university' id='splash-university' activate-on-class="show-splash-university" class-on-activate="opacity-1-impt:inject#splash-university [class-on-activate]|activate, opacity-1-impt:inject" class-on-activate-delay="1500" style='overflow:hidden;'>
         <header>
@@ -36,27 +52,24 @@
         </div>
         <div class="splash-zoom opacity-0 absolute high-z-index" class-on-activate="fadeIn:anim" class-on-activate-delay="1000">Tap to Zoom</div>
             <div class="splash-school-search-form" ng-controller="AddUniversityCtrl">
-                <div class="opacity-0" class-on-activate="bounceInDown:anim" class-on-activate-delay="1000">
+                <div class="opacity-0 p15xy max-1030" class-on-activate="bounceInDown:anim" class-on-activate-delay="1000">
                     <form>
-                        <div class="input-field large white">
-                            <i class="material-icons prefix">
-                                    <svg viewBox="0 0 100 100">
-                                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
-                                    </svg>
-                                </i>
-                            <input id='request-search-input' name='request-search-input' autocomplete="off" type="text" fast-matcher fast-matcher-source="universities" fast-matcher-output="filtered_universities" fast-matcher-properties="short_name, full_name, tiny_name, variations"
-                                ng-model="search_text.university" ng-focus='focusUniversitySearchInput' />
-                            <label for="request-search-input">
-                                <span ng-show='universities.length'>search {{universities.length}} supported schools</span>
-                            </label>
+                        <fieldset class="large with-icon full-x">
+            				<input class="input-border light" type="search" id='request-search-input' name='request-search-input' autocomplete="off" fast-matcher fast-matcher-source="universities" fast-matcher-output="filtered_universities" fast-matcher-properties="short_name, full_name, tiny_name, variations" ng-model="search_text.university" ng-focus='focusUniversitySearchInput' placeholder="search {{universities.length}} supported schools"/>
+            				<label></label>
+            				<span class="input-icon">
+            					<svg viewBox="0 0 100 100">
+            						<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+            					</svg>
+            				</span>
                             <a class="side-icon desktop-input-close-icon activated" ng-click="search_text.university = '';" ng-if="search_text.university.trim().length > 0">
                                 <i class="icon ion-close-circled txt-white"></i>
                             </a>
-                        </div>
+            			</fieldset>
                     </form>
                 </div>
-                <ul class="splash-school-desktop opacity-0" class-on-activate="zoomInDown:anim" class-on-activate-delay="3000">
-                    <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' ng-click='uniSearch.selectUniversityFromSearch(university)'>
+                <ul class="splash-school-desktop" class-on-activate="null:inject.splash-school-desktop li|activate">
+                    <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' ng-click='uniSearch.selectUniversityFromSearch(university)' class="matrix-0" class-on-activate="u-bounceIn:anim" class-on-activate-delay="3000">
                         <div class="school-card"> <!-- ng-class="{'activate':$index < 5}" class-on-activate="magictime:anim, boingInUp:anim, null:inject.school-card-icon-container|a" -->
                             <svg class="rect" viewBox="0 0 300 200">
                                 <rect x="0" y="0" width="300" height="200" fill="none"></rect>
@@ -85,6 +98,7 @@
                         </div>
                     </li>
                 </ul>
+            </div>
         </div>
     </div>
     <a class='absolute high-z-index bottom-0 right-0' ng-click='deactivateUniversitySearch()'>

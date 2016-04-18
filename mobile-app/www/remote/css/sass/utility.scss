@@ -181,6 +181,9 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 	height: initial;
 	line-height: initial;
 }
+.transition-150 {
+	@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+}
 a, a:hover, a:active, a:visited {
 	color: white;
 	text-decoration:none;
@@ -787,6 +790,11 @@ input, fieldset {
 	width: 100%!important;
 	height: 100%!important;
 }
+.max-xy {
+	max-width: 100%!important;
+	max-height: 100%!important;
+}
+
 .center-x {
 	@include center-x;
 }
@@ -865,6 +873,10 @@ input, fieldset {
 }
 .z-index-10 {
 	z-index: 10!important;
+}
+
+.z-index--1000 {
+	z-index: -1000!important;
 }
 
 .z-index-99 {
