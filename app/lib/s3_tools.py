@@ -51,12 +51,12 @@ def delete_key(bucket_name, folder_name):
 
 
 def create_static_file(bucket_name, path, file_name,
-    file_contents="{}", file_metadata='application/json'):
+    file_contents="{}", file_metadata='application/json', perm='public-read'):
     bucket = conn.get_bucket(bucket_name)
     key = bucket.new_key("/".join([path,file_name]))
     key.set_contents_from_string(file_contents)
     key.set_metadata('Content-Type', file_metadata)
-    key.set_acl('public-read')
+    key.set_acl(perm)
     return key
 
 def get_folder_contents(bucket_name, folder_name):
@@ -128,6 +128,18 @@ def getBugsFile(key_name="jason", bucket_name="uguru-admin", sorter="rank"):
                 print "#%s\n%s:%s\n%s\n\n" % (index, sorter, item[sorter], item['title'])
                 index += 1
 
+            return arr
+
+def getActionsFile(key_name="jason", bucket_name="uguru-admin", sorter="priority"):
+    bucket = conn.get_bucket(bucket_name)
+    all_keys = bucket.get_all_keys()
+    for key in all_keys:
+        if key_name in key.name and 'actions.json' in key.name:
+            import requests, json
+            url = "https://uguru-admin.s3.amazonaws.com/%s" % key.name
+            print url
+            _dict = json.loads(requests.get(url = url).text)
+            return _dict
 
 def getAllAdminFiles(bucket_name="uguru-admin"):
     bucket = conn.get_bucket(bucket_name)
@@ -262,6 +274,39 @@ if sys.argv and '-i' in sys.argv:
     print "\n\n-- #5.  python -ua [uguru admin] sync -e --#|#-- syncs elements from component directory"
 
 print sys.argv
+
+if '--action' in sys.argv or '-a' in sys.argv:
+    if len(sys.argv) == 4 and 'sync' in sys.argv:
+        import json
+
+        user_name = sys.argv[-1].replace('-', '')
+        if user_name != 'all':
+            action_items = json.load(open('./app/lib/todo/%s.json' % user_name ))
+            processed_action_items = processAndPrioritizeActions(action_items)
+            json_bugs_string = json.dumps(processed_action_items, indent=4)
+            print "uploading bugs to %s aws folder"
+            response = create_static_file('uguru-admin', user_name, "actions.json", json_bugs_string)
+            print response
+            print "upload successful"
+        else:
+            for user_name in ['samir', 'jason', 'gabrielle', 'jeselle']:
+                print "uploading bugs to %s aws folder" % user_name
+                bugs = json.load(open('./app/lib/todo/%s.json' % user_name ))
+                json_bugs_string = json.dumps(bugs, indent=4)
+                response = create_static_file('uguru-admin', user_name, "actions.json", json_bugs_string, perm="public-read-write")
+                print response
+                print "upload successful"
+
+    if len(sys.argv) == 4 and 'pull' in sys.argv:
+
+
+        user_name = sys.argv[-1]
+        actions_dict = getActionsFile(key_name=user_name)
+        from pprint import pprint
+        pprint(actions_dict)
+        print "Pulled results from s3 to app/lib/todo/%s.json" % user_name
+
+
 if '--bugs' in sys.argv:
     supported_commands= {
                             "cmd": "prints all the commands",
@@ -274,13 +319,22 @@ if '--bugs' in sys.argv:
     if len(sys.argv) == 2:
         get_bugs_help()
 
-    if len(sys.argv) == 4 and 'verify' in sys.argv:
+    if (len(sys.argv) == 4 or len(sys.argv) == 5) and 'verify' in sys.argv:
+        filters = None
+        if len(sys.argv) == 5:
+            filters = sys.argv[-1]
+        bugs_file = getBugsFile(sorter = filters)
 
-        bugs_file = getBugsFile()
-
-    if len(sys.argv) == 4 and 'pull' in sys.argv:
-
-        bugs_file = getBugsFile()
+    if len(sys.argv) == 4 or len(sys.argv) == 5 and 'pull' in sys.argv:
+        filters = None
+        if len(sys.argv) == 5:
+            filters = sys.argv[-1]
+        bugs_arr = getBugsFile(sorter = filters)
+        filename = 'bugs-%s.json' % sys.argv[-2]
+        with open('app/lib/' + filename, 'wb') as fp:
+            json.dump(bugs_arr, fp, sort_keys = True, indent = 4)
+        print
+        print "Pulled results from s3 to app/lib/%s" % filename
 
         # bugs = json.load(open('./app/lib/bugs.json'))
         # bugs = sorted()
