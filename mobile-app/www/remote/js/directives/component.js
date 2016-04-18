@@ -400,6 +400,7 @@ angular.module('uguru.components', [])
                 animArgs: '=',
                 placeholder: '@',
                 desktopMode: '=desktop',
+                click: "=ngClick"
             },
             restrict: 'E',
             replace: true,
@@ -414,40 +415,40 @@ angular.module('uguru.components', [])
                 }
 
 
-                scope.resetMadLibBlankIfActive = function($event) {
-                    // console.log("WTF")
-                    var indexTranslateElem = $event.target.parentNode;
-                    var hasBlankOne = indexTranslateElem.className.indexOf('translate-blank-1') > -1;
-                    var hasBlankTwo = indexTranslateElem.className.indexOf('translate-blank-2') > -1;
-                    if (indexTranslateElem && indexTranslateElem.className.indexOf('recently-active') === -1 && (hasBlankOne || hasBlankTwo)) {
-                        var addLibContainer = document.querySelector(".splash-adlib");
-                        if (hasBlankOne) {
-                            var blankOneElem = document.querySelector('#blank-1 b');
-                            $timeout(function() {
-                                addLibContainer.classList.remove('blank-1-filled');
-                                blankOneElem.classList.remove('opacity-0-impt');
-                                indexTranslateElem.classList.remove('translate-blank-1', 'active');
-                            }, 100);
-                            blankOneElem.opacity = 1;
-                        }
-                        if (hasBlankTwo) {
-                            var blankTwoElem = document.querySelector('#blank-2 b');
-                            $timeout(function() {
-                                addLibContainer.classList.remove('blank-2-filled');
-                                blankTwoElem.classList.remove('opacity-0-impt');
-                                indexTranslateElem.classList.remove('translate-blank-2', 'active');
-                            }, 100);
+                // scope.resetMadLibBlankIfActive = function($event) {
+                //     // console.log("WTF")
+                //     var indexTranslateElem = $event.target.parentNode;
+                //     var hasBlankOne = indexTranslateElem.className.indexOf('translate-blank-1') > -1;
+                //     var hasBlankTwo = indexTranslateElem.className.indexOf('translate-blank-2') > -1;
+                //     if (indexTranslateElem && indexTranslateElem.className.indexOf('recently-active') === -1 && (hasBlankOne || hasBlankTwo)) {
+                //         var addLibContainer = document.querySelector(".splash-adlib");
+                //         if (hasBlankOne) {
+                //             var blankOneElem = document.querySelector('#blank-1 b');
+                //             $timeout(function() {
+                //                 addLibContainer.classList.remove('blank-1-filled');
+                //                 blankOneElem.classList.remove('opacity-0-impt');
+                //                 indexTranslateElem.classList.remove('translate-blank-1', 'active');
+                //             }, 100);
+                //             blankOneElem.opacity = 1;
+                //         }
+                //         if (hasBlankTwo) {
+                //             var blankTwoElem = document.querySelector('#blank-2 b');
+                //             $timeout(function() {
+                //                 addLibContainer.classList.remove('blank-2-filled');
+                //                 blankTwoElem.classList.remove('opacity-0-impt');
+                //                 indexTranslateElem.classList.remove('translate-blank-2', 'active');
+                //             }, 100);
 
-                            blankTwoElem.opacity = 1;
-                        }
-                        indexTranslateElem.style.webkitTransform = null;
-                        indexTranslateElem.style.MozTransform = null;
-                        indexTranslateElem.style.msTransform = null;
-                        indexTranslateElem.style.OTransform = null;
-                        indexTranslateElem.style.transform = null;
-                    }
+                //             blankTwoElem.opacity = 1;
+                //         }
+                //         indexTranslateElem.style.webkitTransform = null;
+                //         indexTranslateElem.style.MozTransform = null;
+                //         indexTranslateElem.style.msTransform = null;
+                //         indexTranslateElem.style.OTransform = null;
+                //         indexTranslateElem.style.transform = null;
+                //     }
 
-                }
+                // }
 
 
 

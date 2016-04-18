@@ -1917,4 +1917,8 @@ header#home-nav-header.splash-header,
 .border-white-dashed {
   border: 2px dashed #F1F1F1; }
 
+button[disabled] {
+  background-color: rgba(105, 179, 165, 0.5);
+  color: #F1F1F1 rgba, 0.8; }
+
 /*# sourceMappingURL=samir.css.map */

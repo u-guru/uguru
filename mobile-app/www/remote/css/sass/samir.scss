@@ -2226,3 +2226,9 @@ header#home-nav-header.splash-header,
 .border-white-dashed {
 	border: 2px dashed $smoke;
 }
+
+
+button[disabled] {
+	background-color: rgba($shamrock, 0.5);
+	color: $smoke(rgba, 0.8);
+}

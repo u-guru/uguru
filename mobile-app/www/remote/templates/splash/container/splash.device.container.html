@@ -38,7 +38,8 @@
                             </g>
                         </g>
                     </svg>
-                    <div class="splash-device-button animated">
+                    <div class="splash-device-button animated relative">
+                        <button id='desktop-find-guru-button-disabled' ng-click='shakeElemIfChildIsDisabled()' style='height:54px; width:100%' class='absolute high-z-index bg-transparent top-0 left-0 hide'> &nbsp;&nbsp; </button>
                         <button id='desktop-find-guru-button' ng-click='lockFilledBlanksAndgetUniversityPlaces(selectedUniversity)' class="button-find-guru splash-desktop-cta opacity-0 animated" class-on-click="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, a:inject.splash-device-search|activate, null:inject.splash-hero-map|opacity-50, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|clear, null:inject.splash-logo-guru|a" class-on-activate="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, null:inject.splash-hero-map|opacity-50, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|clear, null:inject.splash-logo-guru|a">Find My Guru</button>
                     </div>
                 </div>

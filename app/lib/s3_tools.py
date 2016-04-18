@@ -128,6 +128,8 @@ def getBugsFile(key_name="jason", bucket_name="uguru-admin", sorter="priority"):
                 print "#%s\n%s:%s\n%s\n\n" % (index, sorter, item[sorter], item['title'])
                 index += 1
 
+            return arr
+
 
 def getAllAdminFiles(bucket_name="uguru-admin"):
     bucket = conn.get_bucket(bucket_name)
@@ -274,13 +276,22 @@ if '--bugs' in sys.argv:
     if len(sys.argv) == 2:
         get_bugs_help()
 
-    if len(sys.argv) == 4 and 'verify' in sys.argv:
+    if (len(sys.argv) == 4 or len(sys.argv) == 5) and 'verify' in sys.argv:
+        filters = None
+        if len(sys.argv) == 5:
+            filters = sys.argv[-1]
+        bugs_file = getBugsFile(sorter = filters)
 
-        bugs_file = getBugsFile()
-
-    if len(sys.argv) == 4 and 'pull' in sys.argv:
-
-        bugs_file = getBugsFile()
+    if len(sys.argv) == 4 or len(sys.argv) == 5 and 'pull' in sys.argv:
+        filters = None
+        if len(sys.argv) == 5:
+            filters = sys.argv[-1]
+        bugs_arr = getBugsFile(sorter = filters)
+        filename = 'bugs-%s.json' % sys.argv[-2]
+        with open('app/lib/' + filename, 'wb') as fp:
+            json.dump(bugs_arr, fp, sort_keys = True, indent = 4)
+        print
+        print "Pulled results from s3 to app/lib/%s" % filename
 
         # bugs = json.load(open('./app/lib/bugs.json'))
         # bugs = sorted()
