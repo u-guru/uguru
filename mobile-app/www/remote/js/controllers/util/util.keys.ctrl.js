@@ -133,7 +133,7 @@ angular.module('uguru.util.controllers')
 			var origin = dance_obj.originX+"% "+dance_obj.originY+"%"+" "+dance_obj.originZ+"%";
 
 
-			var csstext =  'transform: scale(' + (dance_obj.scale3DX || 1.0 )  + ', ' + (dance_obj.scale3DY || 1.0) + ') translate3d(' + (dance_obj.translateX || 0) + unit + ', ' + (dance_obj.translateY || 0) +unit + ', ' + (dance_obj.translateZ || 0) + 'px);'
+			var csstext =  'transform: rotate3d(' + dance_obj.rotate3DX +', ' + dance_obj.rotate3DY + ', ' + dance_obj.rotate3DZ + ', ' + dance_obj.rotate3DAngle + 'deg) scale(' + (dance_obj.scale3DX || 1.0 )  + ', ' + (dance_obj.scale3DY || 1.0) + ') translate3d(' + (dance_obj.translateX || 0) + unit + ', ' + (dance_obj.translateY || 0) +unit + ', ' + (dance_obj.translateZ || 0) + 'px);'
 			// var csstext = browserPrefix + "-transform: "+perspective+translate +scale + rotate + "; "
 			// 	+ browserPrefix + "-transform-origin: " + origin + "; "
 			// 	+ browserPrefix + "-transform-style: " + dance_obj.transformStyle+";"
@@ -216,9 +216,9 @@ angular.module('uguru.util.controllers')
 
 		$scope.applyPropertyChange = function(value, property) {
 			//set
-			$timeout(function() {
-				editKeyframeAtX($scope.animation, $scope.player.currentFrame, property, value);
-			}, 500)
+			// $timeout(function() {
+			editKeyframeAtX($scope.animation, $scope.player.currentFrame, property, value);
+			// }, 500)
 			// var cssRuleAtKeyFrameX = findCSSRuleByIndex($scope.animation.obj, value);
 			// var transformObjAtX = $scope.animation.selected_keyframe;
 			// console.log('value of ' + property, 'set to', parseInt(value));
@@ -331,32 +331,7 @@ angular.module('uguru.util.controllers')
 		//todo find all keyframes
 		// var keyFrameRule = findKeyframesRule('bounceInUp');
 
-		function initView() {
-			browserPrefix = getBrowserPrefix();
 
-			$scope.actor = document.querySelector('#rect-svg');
-			$scope.actor.classList.add('animated');
-
-			var actor = $scope.actor;
-			var player = $scope.player;
-
-			$scope.animation = initAnimation("strobe", browserPrefix, $scope.animationKeyFrames);
-
-			//sets translateX of keyframe
-			console.log('initializd animation', $scope.animation);
-			editKeyframeAtX($scope.animation, 0, 'translateX', 10)
-
-
-			// $scope.animation.obj.deleteRule('0%');
-			// $scope.animation.obj.deleteRule('5%');
-			console.log('modified animation', $scope.animation.obj.cssRules.length, $scope.animation.obj.cssText);
-			// $localstorage.setObject('saved_animations', [$scope.animation]);
-
-			$scope.animation.selected_keyframe = $scope.animation.properties['0%'];
-			$scope.animation.selected_index = 0;
-			$scope.animationKeyFrames = 10;
-
-		}
 
 
 		function getBrowserPrefix() {
@@ -452,10 +427,41 @@ angular.module('uguru.util.controllers')
 		// - when it goes to the next move, how do I see
 		// - i cant see where i'm at
 
-
 		function initAll() {
 			initView()
 			initKeyboardListeners();
+		}
+
+		function initView() {
+			browserPrefix = getBrowserPrefix();
+
+			$scope.actor = document.querySelector('#rect-svg');
+			$scope.actor.classList.add('animated');
+
+			var actor = $scope.actor;
+			var player = $scope.player;
+			if ($scope.user) {
+				$scope.animationName = $scope.user.name.split(' ')[0].toLowerCase() + '-sample';
+			} else {
+				$scope.animationName = 'animation-name'
+			}
+
+			$scope.animation = initAnimation($scope.animationName, browserPrefix, $scope.animationKeyFrames);
+
+			//sets translateX of keyframe
+			console.log('initializd animation', $scope.animation);
+			editKeyframeAtX($scope.animation, 0, 'translateX', 10)
+
+
+			// $scope.animation.obj.deleteRule('0%');
+			// $scope.animation.obj.deleteRule('5%');
+			console.log('modified animation', $scope.animation.obj.cssRules.length, $scope.animation.obj.cssText);
+			// $localstorage.setObject('saved_animations', [$scope.animation]);
+
+			$scope.animation.selected_keyframe = $scope.animation.properties['0%'];
+			$scope.animation.selected_index = 0;
+			$scope.animationKeyFrames = 10;
+
 		}
 
 		var browserPrefix;

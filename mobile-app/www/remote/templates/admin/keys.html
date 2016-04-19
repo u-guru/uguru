@@ -15,22 +15,22 @@
             <div class='full-x p20xy bg-azure-50p weight-900 uppercase ugrid-4 text-center'>
                 <div class='p20x'>
                     <div class='txt-1 full-x text-center '>Animation Name</div>
-                    <input ng-model='animationName' placeholder="animation name" type='text'  /> </input>
+                    <input class='full-x' ng-model='animationName' placeholder="animation name" type='text'  /> </input>
                 </div>
                 <div class='p20x'>
                     <div class='txt-1 full-x text-center'>Num Keyframes</div>
                     <input ng-model='animationKeyFrames' type='number' class='full-x' placeholder="num keyframes"/> </input>
                 </div>
-                <a ng-click='layout.index = 2'>Export</a>
-                <a ng-click='layout.index = 1'>Import</a>
+                <a ng-click='layout.index = 2' class='opacity-50'>Import</a>
+                <a ng-click='layout.index = 1'>Export</a>
             </div>
             <div class='bg-slate flex-wrap-center' style="height: calc(100% - 75px - 32px)" ng-if='layout.index == 2'>
                 <h1 class='txt-7 p20xy txt-smoke'> </h1>
             </div>
-            <div class='bg-slate flex-wrap-center' style="height: calc(100% - 75px - 32px)" ng-if='layout.index == 1'>
-                <textarea placeholder="exportable css to cut and post goes here" selected>
-
+            <div class='relative bg-slate flex-wrap-center' style="height: calc(100% - 75px - 32px); padding:10%;" ng-if='layout.index == 1' style='padding:10%;'>
+                <textarea placeholder="exportable css to cut and post goes here" class='full-xy' ng-model="animation.obj.cssText">
                 </textarea>
+                <a class='absolute top-0 right-0 full-x txt-white txt-7 weight-300 uppercase' ng-click='layout.index = 0;'>Close</a>
             </div>
             <div class='bg-slate flex-wrap-center flex-stretch' style="height: calc(100% - 75px - 32px)" ng-if='!layout.index'>
                 <div class='flex-wrap-center'>
