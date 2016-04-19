@@ -3958,7 +3958,7 @@ input[type=range] {
   -moz-appearance: none;
   appearance: none;
   width: 100%;
-  background: #2B3234;
+  background: none !important;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -4132,6 +4132,10 @@ input[type="range"][size="large"]::-ms-track, input[type="range"][size="10"]::-m
 
 .range-container.ugrid-2 > div:nth-child(2) span {
   visibility: visible;
+}
+
+.range-container input[type="range"] {
+  background: none !important;
 }
 
 .range-container input[type="range"]::-webkit-slider-thumb {
