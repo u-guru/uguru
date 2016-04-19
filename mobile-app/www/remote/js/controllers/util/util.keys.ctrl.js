@@ -132,8 +132,19 @@ angular.module('uguru.util.controllers')
 			var rotate = "rotate3d("+dance_obj.rotate3DX+", "+dance_obj.rotate3DY+", "+dance_obj.rotate3DZ+", "+dance_obj.rotate3DAngle+"deg)";
 			var origin = dance_obj.originX+"% "+dance_obj.originY+"%"+" "+dance_obj.originZ+"%";
 
+			var backgroundColor = dance_obj.backgroundColor || '#ffffff';
+			var color = dance_obj.color || "#ffffff";
+			var fill = dance_obj.fill || '#ffffff';
+			var opacity = dance_obj.opacity || 1.0;
+			var strokeOpacity = dance_obj.strokeOpacity || 1.0;
+			var strokeWidth = dance_obj.strokeWidth || 1.0;
+			var strokeDashArray = dance_obj.strokeDashArray || 1.0;
+			var strokeDashOffset = dance_obj.strokeWidth || 1.0;
 
-			var csstext =  'transform: rotate3d(' + dance_obj.rotate3DX +', ' + dance_obj.rotate3DY + ', ' + dance_obj.rotate3DZ + ', ' + dance_obj.rotate3DAngle + 'deg) scale(' + (dance_obj.scale3DX || 1.0 )  + ', ' + (dance_obj.scale3DY || 1.0) + ') translate3d(' + (dance_obj.translateX || 0) + unit + ', ' + (dance_obj.translateY || 0) +unit + ', ' + (dance_obj.translateZ || 0) + 'px);'
+			var csstext =  'transform: skew(' + (dance_obj.skewX || 0)+ 'deg, ' + (dance_obj.skewY || 0) +'deg) rotate3d(' + dance_obj.rotate3DX +', ' + dance_obj.rotate3DY + ', ' + dance_obj.rotate3DZ + ', ' + (dance_obj.rotate3DAngle || 30) + 'deg) scale(' + (dance_obj.scale3DX || 1.0 )  + ', ' + (dance_obj.scale3DY || 1.0) + ') translate3d(' + (dance_obj.translateX || 0) + unit + ', ' + (dance_obj.translateY || 0) +unit + ', ' + (dance_obj.translateZ || 0) + 'px);'
+
+			//@gabrielle-note
+			csstext = 'color:' + (color) + '; fill: ' + (fill) + '; stroke-width: ' + (strokeWidth) + ';stroke-dasharray:' + (strokeDashArray) + '; stroke-opacity:' + (strokeOpacity)+ '; stroke-dashoffset:' + (strokeDashOffset) + ';background-color:' + (backgroundColor) + ';' + csstext;
 			// var csstext = browserPrefix + "-transform: "+perspective+translate +scale + rotate + "; "
 			// 	+ browserPrefix + "-transform-origin: " + origin + "; "
 			// 	+ browserPrefix + "-transform-style: " + dance_obj.transformStyle+";"
@@ -262,7 +273,7 @@ angular.module('uguru.util.controllers')
 
 			//dictionary 2
 			property_dict_2.opacity = 1;
-			property_dict_1["background-color"] = '#FFFFFF'
+			property_dict_1["background-color"] = '#ffffff'
 			property_dict_2["background-color"] = '#FF0000'
 
 
@@ -372,6 +383,16 @@ angular.module('uguru.util.controllers')
 				this.originX = 50;
 				this.originY = 50;
 				this.originZ = 50;
+				this.opacity = 1;
+				this.backgroundColor = null;
+				this.color = null;
+				this.fill = null;
+				this.fillOpacity = null;
+				this.stroke = null;
+				this.strokeWidth = null;
+				this.strokeDashArray = null;
+				this.strokeDashOffset = null;
+				this.strokeOpacity = null;
 				this.transformStyle = "preserve-3d";
 
 			};
