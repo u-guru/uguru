@@ -154,7 +154,7 @@
                     <li class="flex-center-vertical-wrap-space-between m15bottom">
                         <h2 class="txt-18 semibold m15right">translateX</h2>
                         <div class="flex-center-vertical">
-                            <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" placeholder="0"  ng-change="applyPropertyChange(animation.selected_keyframe.translateX, 'translateX')" ng-model='animation.selected_keyframe.translateX'/>
+                            <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" placeholder="0" ng-change="applyPropertyChange(animation.selected_keyframe.translateX, 'translateX')" ng-model='animation.selected_keyframe.translateX'/>
                             <span class="bg-campus block txt-16 p05xy radius-2-right">%&nbsp;&dtrif;</span>
                         </div>
                         <div class="range-container small full-x m10top">
@@ -223,13 +223,13 @@
                         <h2 class="txt-18 semibold m15right">rotate</h2>
                         <div class="flex-center-vertical">
                             <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DAngle, 'rotate3DAngle')" ng-model="animation.selected_keyframe.rotate3DAngle" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" placeholder="0"/>
-                            <span class="bg-campus block txt-16 p05xy radius-2-right">deg</span>
+                            <span class="bg-campus block txt-16 p05xy radius-2-right">&deg;</span>
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
-                                <span>0</span>
-                                <input class="range-slider" type="range" size="2" min="0" max="100" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DAngle, 'rotate3DAngle')" ng-model="animation.selected_keyframe.rotate3DAngle"/>
-                                <span>100</span>
+                                <span>-180</span>
+                                <input class="range-slider" type="range" size="2" min="-180" max="180" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DAngle, 'rotate3DAngle')" ng-model="animation.selected_keyframe.rotate3DAngle"/>
+                                <span>180</span>
                             </div>
                         </div>
                     </li>
@@ -237,13 +237,13 @@
                         <h2 class="txt-18 semibold m15right">rotateX</h2>
                         <div class="flex-center-vertical">
                             <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DX, 'rotate3DX')" ng-model="animation.selected_keyframe.rotate3DX" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" placeholder="0"/>
-                            <span class="bg-campus block txt-16 p05xy radius-2-right">deg</span>
+                            <span class="bg-campus block txt-16 p05xy radius-2-right">&deg;</span>
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
-                                <span>0</span>
-                                <input class="range-slider" type="range" size="2" min="0" max="100" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DX, 'rotate3DX')" ng-model="animation.selected_keyframe.rotate3DX"/>
-                                <span>100</span>
+                                <span>-180</span>
+                                <input class="range-slider" type="range" size="2" min="-180" max="180" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DX, 'rotate3DX')" ng-model="animation.selected_keyframe.rotate3DX"/>
+                                <span>180</span>
                             </div>
                         </div>
                     </li>
@@ -251,13 +251,13 @@
                         <h2 class="txt-18 semibold m15right">rotateY</h2>
                         <div class="flex-center-vertical">
                             <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DY, 'rotate3DY')" class="radius-2-left txt-center p05xy" ng-model="animation.selected_keyframe.rotate3DY" size="4" style="height: 30px;" placeholder="0"/>
-                            <span class="bg-campus block txt-16 p05xy radius-2-right">deg</span>
+                            <span class="bg-campus block txt-16 p05xy radius-2-right">&deg;</span>
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
-                                <span>0</span>
-                                <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DY, 'rotate3DY')" ng-model="animation.selected_keyframe.rotate3DY" class="range-slider" type="range" size="2" min="0" max="100" list="numbers"/>
-                                <span>100</span>
+                                <span>-180</span>
+                                <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DY, 'rotate3DY')" ng-model="animation.selected_keyframe.rotate3DY" class="range-slider" type="range" size="2" min="-180" max="180" list="numbers"/>
+                                <span>180</span>
                             </div>
                         </div>
                     </li>
@@ -265,13 +265,13 @@
                         <h2 class="txt-18 semibold m15right">rotateZ</h2>
                         <div class="flex-center-vertical">
                             <input class="radius-2-left txt-center p05xy" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DZ, 'rotate3DZ')" size="4" style="height: 30px;" placeholder="0" ng-model="animation.selected_keyframe.rotate3DZ"/>
-                            <span class="bg-campus block txt-16 p05xy radius-2-right">deg</span>
+                            <span class="bg-campus block txt-16 p05xy radius-2-right">&deg;</span>
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
-                                <span>0</span>
-                                <input class="range-slider" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DZ, 'rotate3DZ')" ng-model="animation.selected_keyframe.rotate3DZ" type="range" size="2" min="0" max="100" list="numbers"/>
-                                <span>100</span>
+                                <span>-180</span>
+                                <input class="range-slider" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DZ, 'rotate3DZ')" ng-model="animation.selected_keyframe.rotate3DZ" type="range" size="2" min="-180" max="180" list="numbers"/>
+                                <span>180</span>
                             </div>
                         </div>
                     </li>
@@ -279,13 +279,13 @@
                         <h2 class="txt-18 semibold m15right">skewX</h2>
                         <div class="flex-center-vertical">
                             <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" placeholder="0" ng-model="animation.selected_keyframe.skewX" ng-change="applyPropertyChange(animation.selected_keyframe.skewX, 'skewX')"/>
-                            <span class="bg-campus block txt-16 p05xy radius-2-right">deg</span>
+                            <span class="bg-campus block txt-16 p05xy radius-2-right">&deg;</span>
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
-                                <span>0</span>
-                                <input class="range-slider" type="range" size="2" min="0" max="100" list="numbers" ng-model="animation.selected_keyframe.skewX" ng-change="applyPropertyChange(animation.selected_keyframe.skewX, 'skewX')"/>
-                                <span>100</span>
+                                <span>-180</span>
+                                <input class="range-slider" type="range" size="2" min="-180" max="180" list="numbers" ng-model="animation.selected_keyframe.skewX" ng-change="applyPropertyChange(animation.selected_keyframe.skewX, 'skewX')"/>
+                                <span>180</span>
                             </div>
                         </div>
                     </li>
@@ -293,25 +293,25 @@
                         <h2 class="txt-18 semibold m15right">skewY</h2>
                         <div class="flex-center-vertical">
                             <input ng-model="animation.selected_keyframe.skewY" ng-change="applyPropertyChange(animation.selected_keyframe.skewY, 'skewY')" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" placeholder="0"/>
-                            <span class="bg-campus block txt-16 p05xy radius-2-right">deg</span>
+                            <span class="bg-campus block txt-16 p05xy radius-2-right">&deg;</span>
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
-                                <span>0</span>
-                                <input class="range-slider" type="range" size="2" min="0" max="180" list="numbers" ng-model="animation.selected_keyframe.skewY" ng-change="applyPropertyChange(animation.selected_keyframe.skewY, 'skewY')"/>
-                                <span>100</span>
+                                <span>-180</span>
+                                <input class="range-slider" type="range" size="2" min="-180" max="180" list="numbers" ng-model="animation.selected_keyframe.skewY" ng-change="applyPropertyChange(animation.selected_keyframe.skewY, 'skewY')"/>
+                                <span>180</span>
                             </div>
                         </div>
                     </li>
                     <li class="flex-center-vertical-wrap-space-between m15bottom">
                         <h2 class="txt-18 semibold m15right">opacity</h2>
                         <div class="flex-center-vertical">
-                            <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" placeholder="0" ng-model='animation.selected_keyframe.opacity'/>
+                            <input ng-model="animation.selected_keyframe.opacity" ng-change="applyPropertyChange(animation.selected_keyframe.opacity, 'opacity')" class="radius-2-left txt-center p05xy" size="4" style="height: 30px" placeholder="0" ng-model='animation.selected_keyframe.opacity'/>
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
                                 <span>0</span>
-                                <input class="range-slider" type="range" size="2" min="0" max="1" list="numbers" ng-model='animation.selected_keyframe.opacity'/>
+                                <input ng-model="animation.selected_keyframe.opacity" ng-change="applyPropertyChange(animation.selected_keyframe.opacity, 'opacity')" class="range-slider" type="range" size="2" min="0" max="1" step="0.01" list="numbers" />
                                 <span>100</span>
                             </div>
                         </div>
@@ -319,30 +319,30 @@
                     <li class="flex-center-vertical-space-between m15bottom">
                         <h2 class="txt-18 semibold m15right">background-color</h2>
                         <div class="flex-center-vertical">
-                            <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input class="txt-center bg-smoke" size="4" placeholder="#000000" type="color" style="padding: 1px 2px!important; height: 30px; width: 60px;"/>
+                            <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input ng-model="animation.selected_keyframe.backgroundColor" ng-change="applyPropertyChange(animation.selected_keyframe.backgroundColor, 'backgroundColor')" class="txt-center" size="4" placeholder="#000000" type="color" style="padding: 1px 2px!important; height: 30px; width: 60px;"/>
                         </div>
                     </li>
                     <li class="flex-center-vertical-space-between m15bottom">
                         <h2 class="txt-18 semibold m15right">color</h2>
                         <div class="flex-center-vertical">
-                            <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input class="txt-center bg-smoke" size="4" placeholder="#000000" type="color" style="padding: 1px 2px!important; height: 30px; width: 60px;"/>
+                            <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input ng-model="animation.selected_keyframe.color" ng-change="applyPropertyChange(animation.selected_keyframe.color, 'color')" class="txt-center" size="4" placeholder="#000000" type="color" style="padding: 1px 2px!important; height: 30px; width: 60px;"/>
                         </div>
                     </li>
                     <li class="flex-center-vertical-space-between m15bottom">
                         <h2 class="txt-18 semibold m15right">fill</h2>
                         <div class="flex-center-vertical">
-                            <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input class="txt-center bg-smoke" size="4" placeholder="#000000" type="color" style="padding: 1px 2px!important; height: 30px; width: 60px;"/>
+                            <span  class="bg-campus block txt-16 p05xy radius-2-left">#</span><input ng-model="animation.selected_keyframe.fill" ng-change="applyPropertyChange(animation.selected_keyframe.fill, 'fill')" class="txt-center" size="4" placeholder="#000000" type="color" style="padding: 1px 2px!important; height: 30px; width: 60px;"/>
                         </div>
                     </li>
                     <li class="flex-center-vertical-wrap-space-between m15bottom">
                         <h2 class="txt-18 semibold m15right">fill-opacity</h2>
                         <div class="flex-center-vertical">
-                            <input class="radius-2 txt-center p05xy" size="4" style="height: 30px;" placeholder="0"/>
+                            <input class="radius-2-left txt-center p05xy" ng-model="animation.selected_keyframe.fillOpacity" ng-change="applyPropertyChange(animation.selected_keyframe.fillOpacity, 'fillOpacity')" size="4" style="height: 30px;" placeholder="0"/>
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
                                 <span>0</span>
-                                <input class="range-slider" type="range" size="2" min="0" max="1" list="numbers"/>
+                                <input class="range-slider" ng-model="animation.selected_keyframe.fillOpacity" ng-change="applyPropertyChange(animation.selected_keyframe.fillOpacity, 'fillOpacity')" type="range" size="2" min="0" max="1" step="0.01" list="numbers"/>
                                 <span>100</span>
                             </div>
                         </div>
@@ -350,18 +350,18 @@
                     <li class="flex-center-vertical-space-between m15bottom">
                         <h2 class="txt-18 semibold m15right">stroke</h2>
                         <div class="flex-center-vertical">
-                            <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input class="txt-center bg-smoke" size="4" placeholder="#000000" type="color" style="padding: 1px 2px!important; height: 30px; width: 60px;"/>
+                            <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input ng-model="animation.selected_keyframe.fillStroke" ng-change="applyPropertyChange(animation.selected_keyframe.fillStroke, 'fillStroke')" class="txt-center" size="4" placeholder="#000000" type="color" style="padding: 1px 2px!important; height: 30px; width: 60px;"/>
                         </div>
                     </li>
                     <li class="flex-center-vertical-wrap-space-between m15bottom">
                         <h2 class="txt-18 semibold m15right">stroke-opacity</h2>
                         <div class="flex-center-vertical">
-                            <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" placeholder="0"/>
+                            <input ng-model="animation.selected_keyframe.strokeOpacity" ng-change="applyPropertyChange(animation.selected_keyframe.strokeOpacity, 'strokeOpacity')" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" placeholder="0"/>
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
                                 <span>0</span>
-                                <input class="range-slider" type="range" size="2" min="0" max="1" list="numbers"/>
+                                <input ng-model="animation.selected_keyframe.strokeOpacity" ng-change="applyPropertyChange(animation.selected_keyframe.strokeOpacity, 'strokeOpacity')" class="range-slider" type="range" size="2" min="0" max="1" step="0.01" list="numbers"/>
                                 <span>100</span>
                             </div>
                         </div>
@@ -369,12 +369,12 @@
                     <li class="flex-center-vertical-wrap-space-between m15bottom">
                         <h2 class="txt-18 semibold m15right">stroke-width</h2>
                         <div class="flex-center-vertical">
-                            <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" placeholder="0"/><span class="bg-campus block txt-16 p05xy radius-2-right">px</span>
+                            <input ng-model="animation.selected_keyframe.strokeWidth" ng-change="applyPropertyChange(animation.selected_keyframe.strokeWidth, 'strokeWidth')" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" placeholder="0"/><span class="bg-campus block txt-16 p05xy radius-2-right">px</span>
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
                                 <span>0</span>
-                                <input class="range-slider" type="range" size="2" min="0" max="1" list="numbers"/>
+                                <input ng-model="animation.selected_keyframe.strokeWidth" ng-change="applyPropertyChange(animation.selected_keyframe.strokeWidth, 'strokeWidth')" class="range-slider" type="range" size="2" min="0" max="1" step="0.01" list="numbers"/>
                                 <span>100</span>
                             </div>
                         </div>
@@ -382,26 +382,26 @@
                     <li class="flex-center-vertical-wrap-space-between m15bottom">
                         <h2 class="txt-18 semibold m15right">stroke-dasharray</h2>
                         <div class="flex-center-vertical">
-                            <input class="radius-2 txt-center p05xy" size="4" style="height: 30px;" placeholder="0"/>
+                            <input ng-model="animation.selected_keyframe.strokeDashArray" ng-change="applyPropertyChange(animation.selected_keyframe.strokeDashArray, 'strokeDashArray')" class="radius-2 txt-center p05xy" size="4" style="height: 30px;" placeholder="0"/>
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
                                 <span>0</span>
-                                <input class="range-slider" type="range" size="2" min="0" max="1" list="numbers"/>
-                                <span>100</span>
+                                <input ng-model="animation.selected_keyframe.strokeDashArray" ng-change="applyPropertyChange(animation.selected_keyframe.strokeDashArray, 'strokeDashArray')" class="range-slider" type="range" size="2" min="0" max="700" list="numbers"/>
+                                <span>700</span>
                             </div>
                         </div>
                     </li>
                     <li class="flex-center-vertical-wrap-space-between m15bottom">
                         <h2 class="txt-18 semibold m15right">stroke-dashoffset</h2>
                         <div class="flex-center-vertical">
-                            <input class="radius-2 txt-center p05xy" size="4" style="height: 30px;" placeholder="0"/>
+                            <input ng-model="animation.selected_keyframe.strokeDashOffset" ng-change="applyPropertyChange(animation.selected_keyframe.strokeDashOffset, 'strokeDashOffset')" class="radius-2 txt-center p05xy" size="4" style="height: 30px;" placeholder="0"/>
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
-                                <span>0</span>
-                                <input class="range-slider" type="range" size="2" min="0" max="1" list="numbers"/>
-                                <span>100</span>
+                                <span>-700</span>
+                                <input ng-model="animation.selected_keyframe.strokeDashOffset" ng-change="applyPropertyChange(animation.selected_keyframe.strokeDashOffset, 'strokeDashOffset')" class="range-slider" type="range" size="2" min="-700" max="700" list="numbers"/>
+                                <span>700</span>
                             </div>
                         </div>
                     </li>
