@@ -8,7 +8,7 @@
         <div id='splash-desktop-nav' class='full-x' ng-if='nav.activate' ng-include="img_base + BASE + 'templates/splash/container/splash.nav.html'">
         </div>
         <!-- One page dropdown -->
-        <div id='splash-one-page-pulldown' ng-if="activate.searchUniversity" ng-class="{'activate': activate.searchUniversity}" class='relative full-xy high-z-index' ng-include="img_base + 'templates/splash/layout/university.search.html'">
+        <div id='splash-one-page-pulldown' ng-if="activate.searchUniversity" ng-class="{'activate': activate.searchUniversity}" class='relative full-xy high-z-index bg-slate' ng-include="img_base + 'templates/splash/layout/university.search.html'">
         </div>
 
         <section class="splash-faq fixed top-0 left-0 full-xy lyt-1-3-sidebar opacity-0 z-index--1000" class-on-activate="z-index-1000, fadeIn:anim" class-on-activate-delay="1800">
@@ -50,7 +50,7 @@
             <!-- @gabrielle can we see if we can we fit this within the button container? -->
             <button ng-click='lockFilledBlanksAndgetUniversityPlaces(selectedUniversity)' class="button-find-guru splash-mobile-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|activate, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.splash-device-search|activate, a:inject.coach-help-mobile|hide, a:inject.splash-adlib|a, a:inject.splash-adlib ul|clear, a:inject.splash-adlib|bounceOutUp:animOut, null:inject.splash-hero-progress|activate, null:inject.splash-hero-progress span|animate">Find My Guru</button>
             
-            <div class="splash-hero-support">
+            <div class="splash-hero-support opacity-0" class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a" class-on-activate="rollOut:animOut:keep">
                 <a class-on-click="null:inject.splash-guru-hat|activate, null:inject.splash-faq|activate, null:inject#guru-head-container|activate">
                     <svg width="64px" height="64px" viewBox="0 0 64 64">
                         <g fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -62,7 +62,6 @@
             </div>
 
             <div class="splash-hero-skip opacity-0" class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a" class-on-activate="rollOut:animOut:keep">
-                <!--@gabrielle-note lol-->
                 <button activate-on-class="c" class-on-activate="null:inject.splash-desktop-cta|bounceInUp, null:inject.splash-mobile-cta|bounceInUp, null:inject.coach-click|show-opacity-impt, null:inject.coach-click path|animate, null:inject.coach-click-path-2|animate, null:inject.coach-click g g|bounceIn, null:inject.coach-help-desktop|bounceIn, null:inject.coach-help-mobile|bounceIn, null:inject.coach-fill|hide, null:inject.coach-scroll|active, null:inject.coach-scroll svg|fadeIn, null:inject.splash-hero-skip|a" class-on-click="null:inject.splash-desktop-cta|bounceInUp, null:inject.splash-mobile-cta|bounceInUp, null:inject.coach-click|show-opacity-impt, null:inject.coach-click path|animate, null:inject.coach-click-path-2|animate, null:inject.coach-click g g|bounceIn, null:inject.coach-help-desktop|bounceIn, null:inject.coach-help-mobile|bounceIn, null:inject.coach-fill|hide, null:inject.coach-scroll|active, null:inject.coach-scroll svg|fadeIn, null:inject.splash-hero-skip|a, null:inject.splash-adlib ul li a|a">Skip</button>
             </div>
             <!-- end Splash adlib-->
@@ -86,8 +85,22 @@
             <div class="splash-hero-progress progress white opacity-0" activate-on-class="a" class-on-activate="active">
                 <span style="width: 15%;"></span>
             </div>
+            
+            
 
-            <a ng-click='transitions.getStarted.activate()' class='absolute bottom-0 m20y center-x opacity-50 uppercase weight-700'>Get Started</a>
+            <a ng-click='transitions.getStarted.activate()' class='block absolute bottom-0 center-x m05bottom'>
+                <svg class="block" width="152px" height="76px" viewBox="0 0 304 152">
+                    <g fill="none">
+                        <g opacity="0.5">
+                            <path d="M1.99999984,4.00041262 C1.99999993,2.89561523 2.88740431,2 3.99505333,2 L300.004947,2 C301.106784,2 302,2.89304264 302,4.00041262 L301.999993,90.2300561 C301.999993,91.3348535 301.112589,92.2304687 300.00494,92.2304687 L3.99504632,92.2304687 C2.89320879,92.2304687 1.99999306,91.3374261 1.99999315,90.2300561 L1.99999984,4.00041262 Z" stroke="#FFFFFF" stroke-width="4"></path>
+                            <path d="M177,126 L153,150 L129,126 M153,94 L153,150" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <text font-family="Source Sans Pro" font-size="40" font-weight="600" fill="#FFFFFF">
+                            <tspan x="36" y="60">GET STARTED</tspan>
+                        </text>
+                    </g>
+                </svg>
+            </a>
 
         </section>
         <!--End scene #1 mad lib-->

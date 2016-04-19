@@ -18,116 +18,6 @@
   font-family: "Source Code Pro", monospace !important;
 }
 
-.close-icon svg {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.guru-head, .guru-head svg {
-  display: block;
-  width: 150px;
-  height: 150px;
-}
-
-.guru-head.guru-delivery [fill="#69B3A5"], .guru-head svg.guru-delivery [fill="#69B3A5"] {
-  fill: #F04F54;
-}
-
-.guru-head.guru-delivery [fill="#33534D"], .guru-head svg.guru-delivery [fill="#33534D"] {
-  fill: #493639;
-}
-
-.guru-head.guru-delivery [stroke="#33534D"], .guru-head svg.guru-delivery [stroke="#33534D"] {
-  stroke: #493639;
-}
-
-.guru-head.guru-freelancing [fill="#69B3A5"], .guru-head svg.guru-freelancing [fill="#69B3A5"] {
-  fill: #E5753C;
-}
-
-.guru-head.guru-freelancing [fill="#33534D"], .guru-head svg.guru-freelancing [fill="#33534D"] {
-  fill: #473c35;
-}
-
-.guru-head.guru-freelancing [stroke="#33534D"], .guru-head svg.guru-freelancing [stroke="#33534D"] {
-  stroke: #473c35;
-}
-
-.guru-head.guru-baking [fill="#69B3A5"], .guru-head svg.guru-baking [fill="#69B3A5"] {
-  fill: #F6C64E;
-}
-
-.guru-head.guru-baking [fill="#33534D"], .guru-head svg.guru-baking [fill="#33534D"] {
-  fill: #494838;
-}
-
-.guru-head.guru-baking [stroke="#33534D"], .guru-head svg.guru-baking [stroke="#33534D"] {
-  stroke: #494838;
-}
-
-.guru-head.guru-photography [fill="#69B3A5"], .guru-head svg.guru-photography [fill="#69B3A5"] {
-  fill: #81B566;
-}
-
-.guru-head.guru-photography [fill="#33534D"], .guru-head svg.guru-photography [fill="#33534D"] {
-  fill: #38463c;
-}
-
-.guru-head.guru-photography [stroke="#33534D"], .guru-head svg.guru-photography [stroke="#33534D"] {
-  stroke: #38463c;
-}
-
-.guru-head.guru-tech [fill="#69B3A5"], .guru-head svg.guru-tech [fill="#69B3A5"] {
-  fill: #55A4B7;
-}
-
-.guru-head.guru-tech [fill="#33534D"], .guru-head svg.guru-tech [fill="#33534D"] {
-  fill: #314348;
-}
-
-.guru-head.guru-tech [stroke="#33534D"], .guru-head svg.guru-tech [stroke="#33534D"] {
-  stroke: #314348;
-}
-
-.guru-head.guru-household [fill="#69B3A5"], .guru-head svg.guru-household [fill="#69B3A5"] {
-  fill: #7872e3;
-}
-
-.guru-head.guru-household [fill="#33534D"], .guru-head svg.guru-household [fill="#33534D"] {
-  fill: #373c4e;
-}
-
-.guru-head.guru-household [stroke="#33534D"], .guru-head svg.guru-household [stroke="#33534D"] {
-  stroke: #373c4e;
-}
-
-.guru-head.guru-athletic [fill="#69B3A5"], .guru-head svg.guru-athletic [fill="#69B3A5"] {
-  fill: #9A5BC5;
-}
-
-.guru-head.guru-athletic [fill="#33534D"], .guru-head svg.guru-athletic [fill="#33534D"] {
-  fill: #3c384a;
-}
-
-.guru-head.guru-athletic [stroke="#33534D"], .guru-head svg.guru-athletic [stroke="#33534D"] {
-  stroke: #3c384a;
-}
-
-.guru-head.guru-academic [fill="#69B3A5"], .guru-head svg.guru-academic [fill="#69B3A5"] {
-  fill: #e6389b;
-}
-
-.guru-head.guru-academic [fill="#33534D"], .guru-head svg.guru-academic [fill="#33534D"] {
-  fill: #473343;
-}
-
-.guru-head.guru-academic [stroke="#33534D"], .guru-head svg.guru-academic [stroke="#33534D"] {
-  stroke: #473343;
-}
-
 @media screen and (max-width: 768px) {
   .desktop-only {
     display: none;
@@ -2929,4 +2819,208 @@ input, fieldset {
 .parallax-auto {
   top: auto !important;
   left: auto !important;
+}
+
+/* ---------- SVG SPECIFIC */
+.close-icon svg {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.link-burger {
+  display: block;
+  width: 42px;
+  height: 42px;
+}
+
+.link-burger.close svg {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.link-burger svg {
+  height: 100%;
+  width: 100%;
+}
+
+.link-burger svg g, .link-burger svg circle, .link-burger svg path {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  fill: none;
+  stroke: white;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.link-burger:hover, .link-burger:focus {
+  background: none;
+}
+
+.link-burger:hover svg circle, .link-burger:focus svg circle {
+  fill: white;
+}
+
+.link-burger:hover svg path, .link-burger:focus svg path {
+  stroke: #40484B;
+}
+
+.link-logo {
+  display: block !important;
+  height: 100%;
+  max-height: 42px;
+  width: 100%;
+  max-width: 109px;
+}
+
+.link-logo svg {
+  display: block;
+  height: 100%;
+}
+
+.link-logo svg path {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.link-logo svg path:first-child {
+  fill: rgba(255, 255, 255, 0.8);
+}
+
+.link-logo svg path:last-child {
+  fill: white;
+}
+
+.link-logo svg text {
+  fill: white;
+}
+
+.link-logo:hover, .link-logo:focus {
+  background: none !important;
+}
+
+.link-logo:hover svg path:first-child, .link-logo:focus svg path:first-child {
+  fill: white;
+}
+
+.link-logo:hover svg path:last-child, .link-logo:focus svg path:last-child {
+  fill: rgba(255, 255, 255, 0.8);
+}
+
+.link-logo:hover svg text, .link-logo:focus svg text {
+  fill: #F1F1F1;
+}
+
+.guru-head, .guru-head svg {
+  display: block;
+  width: 150px;
+  height: 150px;
+}
+
+.guru-head.guru-delivery [fill="#69B3A5"], .guru-head svg.guru-delivery [fill="#69B3A5"] {
+  fill: #F04F54;
+}
+
+.guru-head.guru-delivery [fill="#33534D"], .guru-head svg.guru-delivery [fill="#33534D"] {
+  fill: #493639;
+}
+
+.guru-head.guru-delivery [stroke="#33534D"], .guru-head svg.guru-delivery [stroke="#33534D"] {
+  stroke: #493639;
+}
+
+.guru-head.guru-freelancing [fill="#69B3A5"], .guru-head svg.guru-freelancing [fill="#69B3A5"] {
+  fill: #E5753C;
+}
+
+.guru-head.guru-freelancing [fill="#33534D"], .guru-head svg.guru-freelancing [fill="#33534D"] {
+  fill: #473c35;
+}
+
+.guru-head.guru-freelancing [stroke="#33534D"], .guru-head svg.guru-freelancing [stroke="#33534D"] {
+  stroke: #473c35;
+}
+
+.guru-head.guru-baking [fill="#69B3A5"], .guru-head svg.guru-baking [fill="#69B3A5"] {
+  fill: #F6C64E;
+}
+
+.guru-head.guru-baking [fill="#33534D"], .guru-head svg.guru-baking [fill="#33534D"] {
+  fill: #494838;
+}
+
+.guru-head.guru-baking [stroke="#33534D"], .guru-head svg.guru-baking [stroke="#33534D"] {
+  stroke: #494838;
+}
+
+.guru-head.guru-photography [fill="#69B3A5"], .guru-head svg.guru-photography [fill="#69B3A5"] {
+  fill: #81B566;
+}
+
+.guru-head.guru-photography [fill="#33534D"], .guru-head svg.guru-photography [fill="#33534D"] {
+  fill: #38463c;
+}
+
+.guru-head.guru-photography [stroke="#33534D"], .guru-head svg.guru-photography [stroke="#33534D"] {
+  stroke: #38463c;
+}
+
+.guru-head.guru-tech [fill="#69B3A5"], .guru-head svg.guru-tech [fill="#69B3A5"] {
+  fill: #55A4B7;
+}
+
+.guru-head.guru-tech [fill="#33534D"], .guru-head svg.guru-tech [fill="#33534D"] {
+  fill: #314348;
+}
+
+.guru-head.guru-tech [stroke="#33534D"], .guru-head svg.guru-tech [stroke="#33534D"] {
+  stroke: #314348;
+}
+
+.guru-head.guru-household [fill="#69B3A5"], .guru-head svg.guru-household [fill="#69B3A5"] {
+  fill: #7872e3;
+}
+
+.guru-head.guru-household [fill="#33534D"], .guru-head svg.guru-household [fill="#33534D"] {
+  fill: #373c4e;
+}
+
+.guru-head.guru-household [stroke="#33534D"], .guru-head svg.guru-household [stroke="#33534D"] {
+  stroke: #373c4e;
+}
+
+.guru-head.guru-athletic [fill="#69B3A5"], .guru-head svg.guru-athletic [fill="#69B3A5"] {
+  fill: #9A5BC5;
+}
+
+.guru-head.guru-athletic [fill="#33534D"], .guru-head svg.guru-athletic [fill="#33534D"] {
+  fill: #3c384a;
+}
+
+.guru-head.guru-athletic [stroke="#33534D"], .guru-head svg.guru-athletic [stroke="#33534D"] {
+  stroke: #3c384a;
+}
+
+.guru-head.guru-academic [fill="#69B3A5"], .guru-head svg.guru-academic [fill="#69B3A5"] {
+  fill: #e6389b;
+}
+
+.guru-head.guru-academic [fill="#33534D"], .guru-head svg.guru-academic [fill="#33534D"] {
+  fill: #473343;
+}
+
+.guru-head.guru-academic [stroke="#33534D"], .guru-head svg.guru-academic [stroke="#33534D"] {
+  stroke: #473343;
 }
