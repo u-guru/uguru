@@ -131,7 +131,9 @@ angular.module('uguru.util.controllers')
 			var scale = "scale3d("+dance_obj.scale3DX+", "+dance_obj.scale3DY+", "+dance_obj.scale3DZ+") ";
 			var rotate = "rotate3d("+dance_obj.rotate3DX+", "+dance_obj.rotate3DY+", "+dance_obj.rotate3DZ+", "+dance_obj.rotate3DAngle+"deg)";
 			var origin = dance_obj.originX+"% "+dance_obj.originY+"%"+" "+dance_obj.originZ+"%";
-			var csstext = 'transform:translate3d(' + (dance_obj.translateX || 0) + unit + ', ' + (dance_obj.translateY || 0) +unit + ', ' + (dance_obj.translateZ || 0) + 'px);'
+
+
+			var csstext =  'transform: scale(' + (dance_obj.scale3DX || 1.0 )  + ', ' + (dance_obj.scale3DY || 1.0) + ') translate3d(' + (dance_obj.translateX || 0) + unit + ', ' + (dance_obj.translateY || 0) +unit + ', ' + (dance_obj.translateZ || 0) + 'px);'
 			// var csstext = browserPrefix + "-transform: "+perspective+translate +scale + rotate + "; "
 			// 	+ browserPrefix + "-transform-origin: " + origin + "; "
 			// 	+ browserPrefix + "-transform-style: " + dance_obj.transformStyle+";"
