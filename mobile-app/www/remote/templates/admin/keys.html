@@ -154,8 +154,8 @@
                         <h2 class="txt-18 semibold m15right">translateX</h2>
                         <div class="range-container small full-x m15right">
                             <div>
-                                <span>0</span>
-                                <input ng-change="applyPropertyChange(animation.selected_keyframe.translateX, 'translateX')" ng-model='animation.selected_keyframe.translateX' class="range-slider" type="range" size="2" min="0" max="100" list="numbers" />
+                                <span>-100</span>
+                                <input ng-change="applyPropertyChange(animation.selected_keyframe.translateX, 'translateX')" ng-model='animation.selected_keyframe.translateX' class="range-slider" type="range" size="2" min="-100" max="100" list="numbers" />
                                 <span>100</span>
                             </div>
                         </div>
@@ -168,8 +168,8 @@
                         <h2 class="txt-18 semibold m15right">translateY</h2>
                         <div class="range-container small full-x m15right">
                             <div>
-                                <span>0</span>
-                                <input class="range-slider" type="range" size="2" min="0" max="100" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.translateY, 'translateY')" ng-model='animation.selected_keyframe.translateY'/>
+                                <span>-100</span>
+                                <input class="range-slider" type="range" size="2" min="-100" max="100" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.translateY, 'translateY')" ng-model='animation.selected_keyframe.translateY'/>
                                 <span>100</span>
                             </div>
                         </div>
@@ -182,8 +182,8 @@
                         <h2 class="txt-18 semibold m15right">translateZ</h2>
                         <div class="range-container small full-x m15right">
                             <div>
-                                <span>0</span>
-                                <input class="range-slider" type="range" size="2" min="0" max="100" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.translateZ, 'translateZ')" ng-model="animation.selected_keyframe.translateZ"/>
+                                <span>-100</span>
+                                <input class="range-slider" type="range" size="2" min="-100" max="100" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.translateZ, 'translateZ')" ng-model="animation.selected_keyframe.translateZ"/>
                                 <span>100</span>
                             </div>
                         </div>
@@ -314,6 +314,74 @@
                         </div>
                         <div class="flex-center-vertical">
                             <input class="radius-2-left txt-center p05xy" size="4" placeholder="0" ng-model='animation.selected_keyframe.opacity'/>
+                        </div>
+                    </li>
+                    <li class="flex-center-vertical">
+                        <h2 class="txt-18 semibold m15right">background-color</h2>
+                        <div class="flex-center-vertical">
+                            <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input class="txt-center" size="4" placeholder="#000000" type="color" style="padding: 0!important; height: 30px; width: 60px;"/>
+                        </div>
+                    </li>
+                    <li class="flex-center-vertical">
+                        <h2 class="txt-18 semibold m15right">color</h2>
+                        <div class="flex-center-vertical">
+                            <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input class="txt-center" size="4" placeholder="#000000" type="color" style="padding: 0!important; height: 30px; width: 60px;"/>
+                        </div>
+                    </li>
+                    <li class="flex-center-vertical">
+                        <h2 class="txt-18 semibold m15right">fill</h2>
+                        <div class="flex-center-vertical">
+                            <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input class="txt-center" size="4" placeholder="#000000" type="color" style="padding: 0!important; height: 30px; width: 60px;"/>
+                        </div>
+                    </li>
+                    <li class="flex-center-vertical">
+                        <h2 class="txt-18 semibold m15right">fill-opacity</h2>
+                        <div class="range-container small full-x m15right">
+                            <div>
+                                <span>0</span>
+                                <input class="range-slider" type="range" size="2" min="0" max="1" list="numbers"/>
+                                <span>100</span>
+                            </div>
+                        </div>
+                        <div class="flex-center-vertical">
+                            <input class="radius-2-left txt-center p05xy" size="4" placeholder="0"/>
+                        </div>
+                    </li>
+                    <li class="flex-center-vertical">
+                        <h2 class="txt-18 semibold m15right">stroke</h2>
+                        <div class="flex-center-vertical">
+                            <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input class="txt-center" size="4" placeholder="#000000" type="color" style="padding: 0!important; height: 30px; width: 60px;"/>
+                        </div>
+                    </li>
+                    <li class="flex-center-vertical">
+                        <h2 class="txt-18 semibold m15right">stroke-opacity</h2>
+                        <div class="range-container small full-x m15right">
+                            <div>
+                                <span>0</span>
+                                <input class="range-slider" type="range" size="2" min="0" max="1" list="numbers"/>
+                                <span>100</span>
+                            </div>
+                        </div>
+                        <div class="flex-center-vertical">
+                            <input class="radius-2-left txt-center p05xy" size="4" placeholder="0"/>
+                        </div>
+                    </li>
+                    <li class="flex-center-vertical">
+                        <h2 class="txt-18 semibold m15right">stroke-width</h2>
+                        <div class="flex-center-vertical">
+                            <input class="radius-2-left txt-center p05xy" size="4" placeholder="0"/><span class="bg-campus block txt-16 p05xy radius-2-right">px</span>
+                        </div>
+                    </li>
+                    <li class="flex-center-vertical">
+                        <h2 class="txt-18 semibold m15right">stroke-dasharray</h2>
+                        <div class="flex-center-vertical">
+                            <input class="radius-2 txt-center p05xy" size="4" placeholder="0"/>
+                        </div>
+                    </li>
+                    <li class="flex-center-vertical">
+                        <h2 class="txt-18 semibold m15right">stroke-dashoffset</h2>
+                        <div class="flex-center-vertical">
+                            <input class="radius-2 txt-center p05xy" size="4" placeholder="0"/>
                         </div>
                     </li>
                 </ul>
