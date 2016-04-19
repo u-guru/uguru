@@ -153,11 +153,16 @@ def loadMostUpdatedElementsJson():
 
 ### Initialize elements component
 def syncLocalElementsToMP():
-    mp = Mixpanel('3e9825a431a4944b5037c7bf6d909690')
+    import json
+    from s3_tools import create_static_file
     elements = loadMostUpdatedElementsJson()
-    mp.people_set('4', {
-        'elements': elements
-    })
+    create_static_file(bucket_name="uguru-admin", path="master", file_name="elements.json",
+    file_contents=json.dumps(elements, indent=4), file_metadata='application/json', perm='public-read')
+    # mp = Mixpanel('3e9825a431a4944b5037c7bf6d909690')
+
+    # mp.people_set('4', {
+    #     'elements': elements
+    # })
     print "local elements successfully synced"
 
 def resolveLocalElements():
@@ -243,8 +248,10 @@ def addNewElement(element, _dict):
     return mp_elements_dict
 
 def getMostUpdatedMPElements():
-    user = formatMPResponse(getQueryDict('engage', {'distinct_id': 4}))
-    elements =  user['results'][0]['$properties']['elements']
+    import json
+    # user = formatMPResponse(getQueryDict('engage', {'distinct_id': 4}))
+    # elements =  user['results'][0]['$properties']['elements']
+    elements = json.loads(requests.get('https://s3.amazonaws.com/uguru-admin/master/elements.json').text)
     return elements
 
 def applyChangeToElement(section, _id, change_dict):
@@ -575,6 +582,7 @@ def getAllComponentsContainers():
     matches = getAllFiles(path, matcher)
     matches += getAllFiles(path, '*html')
     matches += getAllFiles(path, '*svg')
+    matches += getAllFiles(path, '*json')
     match_dict = {'components': [], 'containers': [], 'assets': [], "layouts":[]}
 
     for match in matches:
@@ -672,7 +680,7 @@ if 'sync' in args and len(args) == 2:
     print "syncing MP --> Local"
     saveDictToElementsJson()
 
-if 'sync' in args and len(args) == 3 and '-e' in args:
+if 'sync' in args and len(args) == 3 and ('-e' in args or 'files' in args):
     elem_dict = loadMostUpdatedElementsJson()
     from pprint import pprint
     components = elem_dict.get('components')
@@ -855,14 +863,40 @@ if 'get' in args or '-g' in args:
         pprint(next_option['element_states'])
 
 
-if 'edit' in args or '-e' in args:
-    if len(args) == 3:
+if 'edit' in args and ('--json' in args or '-j' in args):
+    if len(args) == 6 and args[-2] == "tests":
+        user_name = args[-1]
+        import json
+        from pprint import pprint
+        path = args[-3]
+        json_element_dict = json.load(open(path))
+        scene_states = json_element_dict['scene_states']
+        for scene in scene_states:
+            if scene.get('tests'):
+                scene['tests'] = None
+        for variation in json_element_dict['variations']:
+            if variation.get('scene_states'):
+                variation['scene_states'] = scene_states
+            if variation.get('selected_scene_state'):
+                variation['selected_scene_state'] = None
+        if json_element_dict.get('selected_scene_state'):
+            json_element_dict['selected_scene_state'] = None
+        if json_element_dict.get('selected_variation'):
+            s_variation = json_element_dict['selected_variation']
 
-        allElementRequirements = getInteractiveRequirements()
-        all_options = allElementRequirements["all_options"]
+            if s_variation.get('selected_scene_state'):
+                s_variation['selected_scene_state'] = None
+        for scene in scene_states:
+            scene['tests'] = getBasePlatformDict()
+        with open(path, 'wb') as fp:
+            json.dump(json_element_dict, fp, sort_keys = True, indent = 4)
+        print "successfully updated scene states for %s with tests in path %s" % (path.split('/')[-1], path)
 
-        all_options = cliFormat(all_options, action="edit")
-        selected_option, selected_index = cliTemplate(all_options)
+
+
+
+
+
 
 if 'link' in args or '-l' in args:
     validateResults, elements = validateCreateArgs(args[2:])
