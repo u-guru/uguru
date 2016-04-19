@@ -82,6 +82,7 @@ function FileService(LoadingService, Restangular, DevToolService) {
 
                 xhr.onload = function () {
                     var resp = window.JSON.parse( xhr.responseText );
+                    console.log(indexFile.name, resp)
                     resp.full_template_url = splash_files[0].url;
                     console.log(resp.full_template_url);
                     DevToolService.initCurrentFile(_scope, resp);
