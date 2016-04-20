@@ -4,33 +4,33 @@
     </header>
     <main class='lyt-30-70-sidebar relative' style="height: calc(100% - 48px);">
         <section>
-            <ul class='full-x p15-grid flex-center-vertical bg-campus weight-900 txt-center'>
+            <ul class='full-x p15-grid flex-center-vertical bg-campus txt-center'>
                 <li>
-                    <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-moxie" ng-click='player.pause()' ng-include="img_base + BASE + 'templates/svg/main/pause.html'">Pause</a>
+                    <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.pause()' ng-include="img_base + BASE + 'templates/svg/main/pause.html'">Pause</a>
                 </li>
                 <li>
-                    <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-moxie" ng-click='player.play()' ng-include="img_base + BASE + 'templates/svg/main/play.html'">Play</a>
+                    <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.play()' ng-include="img_base + BASE + 'templates/svg/main/play.html'">Play</a>
                 </li>
                 <li>
-                    <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-moxie" ng-click='player.reset()' ng-include="img_base + BASE + 'templates/svg/main/switch.html'">Reset</a>
+                    <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.reset()' ng-include="img_base + BASE + 'templates/svg/main/switch.html'">Reset</a>
                 </li>
                 <li class="m15x">
-                    <div class='txt-1 txt-center'>Preset</div>
+                    <div class='txt-1 txt-center full-x semibold'>Preset</div>
                     <dropdown class="height-32" ng-model="sampleAnimations" selected-index="0"> </dropdown>
                 </li>
                 <li>
-                    <div class='txt-1 txt-center'>Name</div>
+                    <div class='txt-1 txt-center full-x semibold'>Name</div>
                     <input class="radius-2 flex-center p05xy" size="15" style="height: 32px;" ng-model='animationName' placeholder="animation name" type='text' />
                 </li>
                 <li class="flex-wrap-center">
-                    <div class='txt-1 txt-center full-x'># KF</div>
+                    <div class='txt-1 txt-center full-x semibold'># KF</div>
                     <input class="radius-2 flex-center p05xy" size="4" style="height: 32px; width: 50px" ng-model='animationKeyFrames' type='text' placeholder=""/>
                 </li>
                 <li>
-                    <a ng-click='layout.index = 2' class='opacity-50'>Import</a>
+                    <a ng-click='layout.index = 2' class='opacity-50 weight-900'>Import</a>
                 </li>
                 <li>
-                    <a ng-click='layout.index = 1'>Export</a>
+                    <a ng-click='layout.index = 1' class="weight-900">Export</a>
                 </li>
             </ul>
             <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 118px)" ng-if='layout.index == 2'>
