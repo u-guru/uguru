@@ -36,7 +36,7 @@
             <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 118px)" ng-if='layout.index == 2'>
                 <h1 class='txt-7 p20xy txt-smoke'> </h1>
             </div>
-            <div class='relative bg-slate' style="height: calc(100% - 82px - 118px);" ng-if='layout.index == 1'>
+            <div class='relative bg-slate-25p' style="height: calc(100% - 82px - 118px);" ng-if='layout.index == 1'>
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                 <div class="full-xy ugrid-2 p15-grid">
                     <div class="full-y">
@@ -328,10 +328,17 @@
                         <h2 class="txt-18 semibold">Current KF #</h2>
                         <input class="radius-2 txt-center p05xy m15left" size="4" style="height: 30px;" ng-model="player.currentFrame" placeholder="0"/>
                     </div>
+                    <li class="flex-center-vertical">
+                        <h2 class="txt-18 semibold">Duration</h2>
+                        <div class="flex-center-vertical m15left">
+                            <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" ng-model="animationDurationVal" placeholder="0"/>
+                            <span class="bg-campus block txt-16 p05xy radius-2-right">s</span>
+                        </div>
+                    </li>
                     <div class="p15right flex-center-vertical">
-                        <h2 class="txt-18 semibold">Total # KF: <span class='weight-900'>{{animationKeyFrames}}</span></h2>
+                        <h2 class="txt-18 semibold">Total # KF</h2>
                         <!-- <span class='txt-18 opacity-50 block p10left'>edit disabled</span> -->
-                        <!-- <input disabled class="radius-2 txt-center p05xy" size="4" style="height: 30px;" ng-model="animationKeyFrames" placeholder="0"/> -->
+                        <input disabled class="radius-2 txt-center p05xy opacity-50 m15left" size="4" style="height: 30px;" ng-model="animationKeyFrames" placeholder="{{animationKeyFrames}}"/>
                     </div>
                 </div>
                 <div class="range-container small full-x">
@@ -408,22 +415,6 @@
         </section>
         <aside class='bg-charcoal'>
             <div class="overflow-auto no-scrollbar" style="height: calc(100% - 64px)">
-                <ul class="p15-grid bg-robinp">
-                    <li class="flex-center-vertical-wrap-space-between">
-                        <h2 class="txt-18 semibold">Duration</h2>
-                        <div class="flex-center-vertical">
-                            <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" ng-model="animationDurationVal" placeholder="0"/>
-                            <span class="bg-slate block txt-16 p05xy radius-2-right">s</span>
-                        </div>
-                        <div class="range-container small full-x m15top">
-                            <div>
-                                <span>0</span>
-                                <input class="range-slider bg-robin" type="range" size="2" min="0" max="60" list="numbers" ng-change="animDurationChange(animationDurationVal)" ng-model="animationDurationVal"/>
-                                <span>60</span>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
                 <ul class="p15-grid">
                     <li class="flex-center-vertical-wrap-space-between">
                         <h2 class="txt-18 semibold m15right">translateX</h2>
