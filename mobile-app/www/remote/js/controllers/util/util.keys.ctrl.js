@@ -575,6 +575,7 @@ angular.module('uguru.util.controllers')
 			var desiredIndex = getNthSortedKeyText($scope.animation.obj, $scope.animation.selected_index);
 			console.log('about to apply property change', value, property, desiredIndex);
 			editKeyframeAtX($scope.animation, desiredIndex, property, value);
+			console.log($scope.animation.obj.cssRules);
 			// }, 500)
 			// var cssRuleAtKeyFrameX = findCSSRuleByIndex($scope.animation.obj, value);
 			// var transformObjAtX = $scope.animation.selected_keyframe;

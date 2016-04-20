@@ -595,7 +595,7 @@
                         <div class="range-container small full-x m10top">
                             <div>
                                 <span>-2</span>
-                                <input class="range-slider" type="range" size="2" min="-2" max="2" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DX, 'rotate3DX')" ng-model="animation.selected_keyframe.rotate3DX"/>
+                                <input class="range-slider" type="range" size="2" min="-180" max="180" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DX, 'rotate3DX')" ng-model="animation.selected_keyframe.rotate3DX"/>
                                 <span>2</span>
                             </div>
                         </div>
@@ -608,7 +608,7 @@
                         <div class="range-container small full-x m10top">
                             <div>
                                 <span>-2</span>
-                                <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DY, 'rotate3DY')" ng-model="animation.selected_keyframe.rotate3DY" class="range-slider" type="range" size="2" min="-2" max="2" list="numbers"/>
+                                <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DY, 'rotate3DY')" ng-model="animation.selected_keyframe.rotate3DY" class="range-slider" type="range" size="2" min="-180" max="180" list="numbers"/>
                                 <span>180</span>
                             </div>
                         </div>
@@ -620,9 +620,9 @@
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
-                                <span>-2</span>
-                                <input class="range-slider" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DZ, 'rotate3DZ')" ng-model="animation.selected_keyframe.rotate3DZ" type="range" size="2" min="-2" max="2" list="numbers"/>
-                                <span>2</span>
+                                <span>0</span>
+                                <input class="range-slider" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DZ, 'rotate3DZ')" ng-model="animation.selected_keyframe.rotate3DZ" type="range" size="2" min="-180" max="180" list="numbers"/>
+                                <span>360</span>
                             </div>
                         </div>
                     </li>
