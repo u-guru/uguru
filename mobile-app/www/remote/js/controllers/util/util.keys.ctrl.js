@@ -660,8 +660,8 @@ angular.module('uguru.util.controllers')
 			console.log($scope.animation.obj.cssText);
 		}
 
-		function editKeyframeAtX(anim, keyframe_percent, property, value) {
-			console.log('editing..');
+		function editKeyframeAtX(anim, keyframe_percent, property, value, clear_css_text) {
+
 			var percentage = keyframe_percent + '%'
 			anim.obj.deleteRule(percentage);
 			transformObj = anim.properties[percentage];
@@ -670,8 +670,15 @@ angular.module('uguru.util.controllers')
 
 
 
-			var css_text = transformObjToCssText(transformObj, property);
-			anim.obj.appendRule(percentage + '{' +  css_text + '}', keyframe_percent);
+
+			if (!clear_css_text) {
+				var css_text = transformObjToCssText(transformObj, property);
+				anim.obj.appendRule(percentage + '{' +  css_text + '}', keyframe_percent);
+			} else {
+				var css_text = transformObjToCssText(transformObj, property);
+				var css_text = " ";
+				anim.obj.appendRule(percentage + '{' + css_text +  '}', keyframe_percent);
+			}
 
 			// css_text = css_text.replace('transform:', '').replace(';', '');
 			// $scope.actor.style[browserPrefix + 'Transform'] = css_text;
@@ -760,6 +767,17 @@ angular.module('uguru.util.controllers')
 
 			}
 
+		function cloneTransformPropertiesObj(anim_obj) {
+			var emptyTransformObj = transformPropertiesObj();
+			var transformObjCloneKeys = Object.keys(anim_obj);
+			for (var i = 0; i < transformObjCloneKeys.length; i++) {
+				var propertyIndex = transformObjCloneKeys[i];
+				emptyTransformObj[propertyIndex] = anim_obj[propertyIndex];
+				console.log('copying', propertyIndex);
+			}
+			return emptyTransformObj;
+		}
+
 
 		function transformPropertiesObj(actor) {
 			var transformObj = function()
@@ -798,7 +816,48 @@ angular.module('uguru.util.controllers')
 			return new transformObj();
 		}
 
+		$scope.resetKFByIndex = function(kf_index) {
+			if (confirm('are you sure? all current properties will be wiped out')) {
+				var newTransformObj = transformPropertiesObj();
+				var percentIndex = getNthSortedKeyText($scope.animation.obj, parseInt(kf_index));
 
+				var propertiesModified = $scope.animation.selected_keyframe.modified;
+				$scope.animation.selected_keyframe = newTransformObj;
+				$scope.animation.properties[percentIndex + '%'] = $scope.animation.selected_keyframe;
+
+
+				var propertiesInitiallyModified = Object.keys(propertiesModified);
+
+				for(var i = 0; i < propertiesInitiallyModified.length; i++) {
+					var indexProperty = propertiesInitiallyModified[i];
+					editKeyframeAtX($scope.animation, percentIndex, indexProperty, $scope.animation.selected_keyframe[indexProperty]);
+				}
+				$scope.animation.selected_keyframe.modified = {};
+
+
+				console.log($scope.animation.obj.cssRules)
+
+			}
+		}
+
+		$scope.applyCurrentKFtoAnother = function(kf_index) {
+			if (parseInt(kf_index) !== $scope.animation.selected_index) {
+				if (confirm('are you sure? any properties @ T = ' + kf_index + ' will be overridden')) {
+					var clonedTransformObj = cloneTransformPropertiesObj($scope.animation.selected_keyframe);
+					var percentIndex = getNthSortedKeyText($scope.animation.obj, parseInt(kf_index));
+					$scope.animation.properties[percentIndex + '%'] = clonedTransformObj;
+					var propertiesModified = $scope.animation.properties[percentIndex + '%'].modified;
+					var propertiesModifiedList = Object.keys(propertiesModified);
+					if (propertiesModifiedList && propertiesModifiedList.length) {
+						console.log('applying properties from t=', $scope.animation.selected_index, 'to kf percentage:', percentIndex, propertiesModifiedList)
+						for(var i = 0; i < propertiesModifiedList.length; i++) {
+							var indexProperty = propertiesModifiedList[i];
+							editKeyframeAtX($scope.animation, percentIndex, indexProperty, propertiesModified[indexProperty]);
+						}
+					}
+				}
+			}
+		}
 
 		function initDanceMove(actor) {
 			var defaultDanceMove = function()
@@ -880,6 +939,7 @@ angular.module('uguru.util.controllers')
 
 			$scope.animation.selected_keyframe = $scope.animation.properties['0%'];
 			$scope.animation.selected_index = 0;
+			$scope.animation.flex_selected_index = 0;
 
 			console.log('initializd animation', $scope.animation);
 			editKeyframeAtX($scope.animation, 0, 'translateX', 10)
