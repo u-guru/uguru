@@ -744,10 +744,14 @@
                             </div>
                         </div>
                     </li>
-                    <li class="flex-center-vertical">
+                    <li class="flex-center-vertical-wrap-space-between">
                         <h2 class="txt-18 semibold m15right">KF#</h2>
-                        <div class="flex-center-vertical">
-                            <input ng-change="movePropertiesToKeyframeIndex(animation.flex_selected_index)" ng-model="animation.selected_index" class="radius-2 txt-center p05xy" size="4" placeholder="0"/>
+                        <div class='range-container small full-x m10top'>
+                            <div>
+                                <span>{{animation.selected_index}}</span>
+                                <input ng-model="animation.flex_selected_index" ng-change="applyPropertyChange(animation.selected_index, 'strokeDashOffset')" class="range-slider" type="range" size="2" min="0" max="animation.kf_count" list="numbers"/>
+                                <span>{{animation.kf_count}}</span>
+                            </div>
                         </div>
                     </li>
                 </ul>
