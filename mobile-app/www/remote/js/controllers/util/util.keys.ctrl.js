@@ -292,7 +292,7 @@ angular.module('uguru.util.controllers')
 				player = player || $scope.player;
 				$scope.timer.pause($scope.timer);
 				player.status = 2;
-				anim_name = $scope.sampleAnimations.options[$scope.sampleAnimations.selectedIndex];
+				anim_name = $scope.animation.attr.name;
 				elem.style[browserPrefix + "AnimationPlayState"]="paused";
 			}
 
@@ -307,7 +307,7 @@ angular.module('uguru.util.controllers')
 			function resetDanceMoveElem(player, elem, replay) {
 				elem = elem || $scope.actor;
 				player = player || $scope.player;
-				anim_name = $scope.sampleAnimations.options[$scope.sampleAnimations.selectedIndex];
+				anim_name = $scope.animation.attr.name;
 				elem.style[browserPrefix + "AnimationName"] = null;
 				elem.offsetWidth = elem.offsetWidth;
 				$scope.timer.reset($scope.timer);
