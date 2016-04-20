@@ -347,7 +347,7 @@
                         <input class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animationKeyFrames}}" list="numbers" ng-change="setActiveKeyFrame(player.currentFrame)" ng-model="player.currentFrame">
                         <span>{{animationKeyFrames}}</span>
                     </div>
-                    <progress class="bg-shamrock-20p txt-white full-x" max="{{animationDuration.replace('s', '')}}" value="{{timer.time}}"></progress>
+                    <progress class="white-round full-x" max="{{animationDuration.replace('s', '')}}" value="{{timer.time}}"></progress>
                 </div>
             </div>
             <div class="anim-timeline" ng-if="false">

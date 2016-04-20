@@ -2326,10 +2326,9 @@ progress, div[class*="progress"] {
 	border: 0;
 	color: $shamrock;
 	background: $slate;
-	.round {
+	&.round {
 		@include round;
-		&::-webkit-progress-value,
-		span {
+		&::-webkit-progress-value, span {
 			@include round;
 		}
 		&::-moz-progress-bar {

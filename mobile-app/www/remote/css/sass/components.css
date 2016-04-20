@@ -3106,17 +3106,15 @@ progress, div[class*="progress"] {
   background: #40484B;
 }
 
-progress .round, div[class*="progress"] .round {
+progress.round, div[class*="progress"].round {
   border-radius: 1000px;
 }
 
-progress .round::-webkit-progress-value,
-progress .round span, div[class*="progress"] .round::-webkit-progress-value,
-div[class*="progress"] .round span {
+progress.round::-webkit-progress-value, progress.round span, div[class*="progress"].round::-webkit-progress-value, div[class*="progress"].round span {
   border-radius: 1000px;
 }
 
-progress .round::-moz-progress-bar, div[class*="progress"] .round::-moz-progress-bar {
+progress.round::-moz-progress-bar, div[class*="progress"].round::-moz-progress-bar {
   border-radius: 1000px;
 }
 
