@@ -334,7 +334,7 @@
                 </div>
             </div>
             <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 118px)" ng-if='!layout.index'>
-                <div class='flex-wrap-center'>
+                <div class='flex-wrap-center' style="perspective: 1000;">
                     <svg id='rect-svg' class="transition-150-linear" width="200px" height="200px" viewBox="0 0 200 200">
                         <g fill="none" fill-rule="evenodd">
                             <g class="munchies-card">
@@ -582,9 +582,9 @@
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
-                                <span>-2</span>
+                                <span>-180</span>
                                 <input class="range-slider" type="range" size="2" min="-180" max="180" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DX, 'rotate3DX')" ng-model="animation.selected_keyframe.rotate3DX"/>
-                                <span>2</span>
+                                <span>180</span>
                             </div>
                         </div>
                     </li>
@@ -595,7 +595,7 @@
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
-                                <span>-2</span>
+                                <span>-180</span>
                                 <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DY, 'rotate3DY')" ng-model="animation.selected_keyframe.rotate3DY" class="range-slider" type="range" size="2" min="-180" max="180" list="numbers"/>
                                 <span>180</span>
                             </div>
@@ -608,9 +608,9 @@
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
-                                <span>0</span>
+                                <span>-180</span>
                                 <input class="range-slider" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DZ, 'rotate3DZ')" ng-model="animation.selected_keyframe.rotate3DZ" type="range" size="2" min="-180" max="180" list="numbers"/>
-                                <span>360</span>
+                                <span>180</span>
                             </div>
                         </div>
                     </li>

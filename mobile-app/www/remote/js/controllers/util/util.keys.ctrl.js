@@ -917,7 +917,7 @@ angular.module('uguru.util.controllers')
 
 			$scope.actor = document.querySelector('#rect-svg');
 			$scope.actor.classList.add('animated');
-			$scope.animationKeyFrames = 16;
+			$scope.animationKeyFrames = 100;
 
 			var actor = $scope.actor;
 			var player = $scope.player;
@@ -927,7 +927,7 @@ angular.module('uguru.util.controllers')
 				$scope.animationName = 'animation-name'
 			}
 
-			$scope.animation = initAnimation($scope.animationName, browserPrefix, 16, 5);
+			$scope.animation = initAnimation($scope.animationName, browserPrefix, 100, 5);
 
 			//sets translateX of keyframe
 
