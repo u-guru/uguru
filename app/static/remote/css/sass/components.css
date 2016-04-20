@@ -3106,17 +3106,15 @@ progress, div[class*="progress"] {
   background: #40484B;
 }
 
-progress .round, div[class*="progress"] .round {
+progress.round, div[class*="progress"].round {
   border-radius: 1000px;
 }
 
-progress .round::-webkit-progress-value,
-progress .round span, div[class*="progress"] .round::-webkit-progress-value,
-div[class*="progress"] .round span {
+progress.round::-webkit-progress-value, progress.round span, div[class*="progress"].round::-webkit-progress-value, div[class*="progress"].round span {
   border-radius: 1000px;
 }
 
-progress .round::-moz-progress-bar, div[class*="progress"] .round::-moz-progress-bar {
+progress.round::-moz-progress-bar, div[class*="progress"].round::-moz-progress-bar {
   border-radius: 1000px;
 }
 
@@ -3958,7 +3956,7 @@ input[type=range] {
   -moz-appearance: none;
   appearance: none;
   width: 100%;
-  background: #2B3234;
+  background: none !important;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -4132,6 +4130,10 @@ input[type="range"][size="large"]::-ms-track, input[type="range"][size="10"]::-m
 
 .range-container.ugrid-2 > div:nth-child(2) span {
   visibility: visible;
+}
+
+.range-container input[type="range"] {
+  background: none !important;
 }
 
 .range-container input[type="range"]::-webkit-slider-thumb {
