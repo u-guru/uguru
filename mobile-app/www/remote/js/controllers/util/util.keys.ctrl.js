@@ -585,7 +585,6 @@ angular.module('uguru.util.controllers')
 			$scope.animation.selected_index = 0;
 
 
-
 		}
 
 		var browserPrefix;
