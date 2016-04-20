@@ -56,8 +56,8 @@
                     </div>
                     <div class="range-container small full-x m15right">
                         <div>
-                            <span>0</span>
-                            <input class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animationKeyFrames}}" list="numbers" ng-change="setActiveKeyFrame(player.currentFrame)" ng-model="player.currentFrame"> </input>
+                            <span>{{animation.selected_index}}</span>
+                            <input class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animationKeyFrames - 1}}" list="numbers" ng-change="setActiveKeyFrame(player.currentFrame)" ng-model="player.currentFrame"> </input>
                             <span>{{animationKeyFrames}}</span>
                         </div>
                         <progress class="bg-shamrock-20p txt-white full-x" max="{{animationDuration.replace('s', '')}}" value="{{timer.time}}"></progress>
@@ -385,13 +385,19 @@
                             <input  ng-model="animation.selected_keyframe.strokeDashOffset" ng-change="applyPropertyChange(animation.selected_keyframe.strokeDashOffset, 'strokeDashOffset')" class="radius-2 txt-center p05xy" size="4" placeholder="0"/>
                         </div>
                     </li>
+                    <li class="flex-center-vertical">
+                        <h2 class="txt-18 semibold m15right">KF#</h2>
+                        <div class="flex-center-vertical">
+                            <input ng-change="movePropertiesToKeyframeIndex(animation.flex_selected_index)" ng-model="animation.selected_index" class="radius-2 txt-center p05xy" size="4" placeholder="0"/>
+                        </div>
+                    </li>
                 </ul>
 
             </div>
 
             <div class="flex-wrap-center flex-wrap bg-moxie" style="height: 128px">
                 <h1 class="semibold txt-24 opacity-50 uppercase text-center">you are editing keyframe #&nbsp;</h1> <br>
-                <h1 style='font-size:80px' class="text-center semibold full-x margin-none">{{player.currentFrame}}</h1>
+                <h1 style='font-size:80px' class="text-center semibold full-x margin-none">{{animation.selected_index + 1}}</h1>
             </div>
         </aside>
     </main>
