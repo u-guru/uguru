@@ -22,7 +22,8 @@ angular.module('uguru.util.controllers')
 
 		$scope.setActiveKeyFrame = function(value) {
 			$scope.animation.selected_index = parseInt(value);
-			console.log(findCSSRuleByIndex($scope.animation.obj, parseInt(value)));
+			$scope.animation.flex_selected_index = parseInt(value);
+
 			$scope.animation.selected_keyframe = $scope.animation.properties[value + '%'];
 			var allProperties = Object.keys($scope.animation.properties[value + '%']);
 			console.log('all properties', allProperties);
@@ -301,8 +302,9 @@ angular.module('uguru.util.controllers')
 		}
 
 		function initKFWithXInterval(anim, max_bound) {
-			for (var i = 0; i < max_bound; i++) {
-				addKFRule(anim, i, {}, browserPrefix, i);
+			var scaling_value = 100.0 / max_bound;
+			for (var i = 0; i < max_bound + 1; i++) {
+				addKFRule(anim,  (i*1.0 * scaling_value), {}, browserPrefix, i);
 			}
 		}
 
@@ -404,7 +406,7 @@ angular.module('uguru.util.controllers')
 		// slider - num animation keyframes
 		$scope.animationDuration = "5s";
 		$scope.animationDurationVal = "5";
-		$scope.animationKeyFrames = 100;
+		$scope.animationKeyFrames = 16;
 		$scope.animationCache = $localstorage.getObject('saved_animations') || [];
 		console.log($scope.animationCache);
 
@@ -580,6 +582,7 @@ angular.module('uguru.util.controllers')
 
 			$scope.animation.selected_keyframe = $scope.animation.properties['0%'];
 			$scope.animation.selected_index = 0;
+			$scope.animationKeyFrames = 16;
 
 		}
 
