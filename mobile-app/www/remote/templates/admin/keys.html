@@ -322,6 +322,29 @@
                     </a>
                 </div> -->
             </div>
+            <!-- <li class="full-x p20xy flex-wrap-center" style='bottom:100px;'>
+                <div class="flex-center-vertical-space-between m05bottom ugrid-3 flex-wrap-center full-x">
+                    <div class='ugrid-2'>
+                        <div>
+                            <h2 class="txt-18 semibold">Total# KF: <span class='weight-900'>{{animationKeyFrames}}</span>
+                            </h2>
+                            <small class='txt-1 opacity-50 full-x'>edit disabled</small>
+                        </div>
+                        <div>
+                            <h2 class="txt-18 semibold">Current KF#</h2>
+                            <input class="radius-2 txt-center p05xy" size="4" ng-model="player.currentFrame" placeholder="0"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="range-container small full-x m15right">
+                    <div>
+                        <span>{{animation.selected_index}}</span>
+                        <input class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animationKeyFrames - 1}}" list="numbers" ng-change="setActiveKeyFrame(player.currentFrame)" ng-model="player.currentFrame"> </input>
+                        <span>{{animationKeyFrames}}</span>
+                    </div>
+                    <progress class="bg-shamrock-20p txt-white full-x" max="{{animationDuration.replace('s', '')}}" value="{{timer.time}}"></progress>
+                </div>
+            </li> -->
             <div class="full-x flex-wrap-start p15-grid bg-slate">
                 <div class="flex-space-between full-x">
                     <div class="flex-center-vertical">
@@ -343,8 +366,8 @@
                 </div>
                 <div class="range-container small full-x">
                     <div>
-                        <span>0</span>
-                        <input class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animationKeyFrames}}" list="numbers" ng-change="setActiveKeyFrame(player.currentFrame)" ng-model="player.currentFrame">
+                        <span>{{animation.selected_index}}</span>
+                        <input class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animationKeyFrames - 1}}" list="numbers" ng-change="setActiveKeyFrame(player.currentFrame)" ng-model="player.currentFrame"> </input>
                         <span>{{animationKeyFrames}}</span>
                     </div>
                     <progress class="white-round full-x" max="{{animationDuration.replace('s', '')}}" value="{{timer.time}}"></progress>
@@ -667,12 +690,17 @@
                             </div>
                         </div>
                     </li>
+                    <li class="flex-center-vertical">
+                        <h2 class="txt-18 semibold m15right">KF#</h2>
+                        <div class="flex-center-vertical">
+                            <input ng-change="movePropertiesToKeyframeIndex(animation.flex_selected_index)" ng-model="animation.selected_index" class="radius-2 txt-center p05xy" size="4" placeholder="0"/>
+                        </div>
+                    </li>
                 </ul>
 
             </div>
-
             <div class="flex-wrap-center flex-wrap bg-moxie" style="height: 64px">
-                <h1 class="semibold txt-36 opacity-50 uppercase txt-center">keyframe #&nbsp;</h1> <br>
+                <h1 class="semibold txt-36 opacity-50 uppercase txt-center">keyframe #&nbsp;</h1>
                 <h1 class="text-center txt-48 semibold margin-none">{{player.currentFrame}}</h1>
             </div>
         </aside>

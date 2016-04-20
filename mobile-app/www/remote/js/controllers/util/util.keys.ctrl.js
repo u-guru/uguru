@@ -21,7 +21,23 @@ angular.module('uguru.util.controllers')
 
 
 		$scope.setActiveKeyFrame = function(value) {
+			$scope.animation.selected_index = parseInt(value);
+			console.log(findCSSRuleByIndex($scope.animation.obj, parseInt(value)));
 			$scope.animation.selected_keyframe = $scope.animation.properties[value + '%'];
+			var allProperties = Object.keys($scope.animation.properties[value + '%']);
+			console.log('all properties', allProperties);
+			for(var i = 0; i < allProperties.length; i++) {
+				var indexProperty = allProperties[i]
+				var propertyValue = $scope.animation.selected_keyframe[indexProperty]
+				$scope.applyPropertyChange(propertyValue, indexProperty)
+			}
+			$timeout(function() {
+				$scope.$apply();
+			})
+		}
+
+		$scope.movePropertiesToKeyframeIndex = function(index) {
+			console.log('proposing to move to keyframe index', index);
 		}
 
 		function initAnimationTimer() {
