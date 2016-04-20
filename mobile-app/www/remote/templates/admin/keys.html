@@ -69,6 +69,7 @@
                             <input class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animationKeyFrames}}" list="numbers" ng-change="setActiveKeyFrame(player.currentFrame)" ng-model="player.currentFrame">
                             <span>{{animationKeyFrames}}</span>
                         </div>
+                        <progress class="bg-shamrock-20p txt-white full-x" max="{{animationDuration.replace('s', '')}}" value="{{timer.time}}"></progress>
                     </div>
                 </li>
                 <!-- <div class='absolute left-0 bottom-0 ugrid-{{animationNameArr.length + 1}}' style='width:66.6%'>

@@ -7,19 +7,93 @@ angular.module('uguru.util.controllers')
 	'$stateParams',
 	'$timeout',
 	'$localstorage',
-	function($scope, $state, $stateParams, $timeout, $localstorage) {
+	'$interval',
+	function($scope, $state, $stateParams, $timeout, $localstorage, $interval) {
 
 		var keyboardSpec = {
 			//toggle properties
 		}
 
 		$scope.player = initAnimationPlayer();
+		$scope.timer = initAnimationTimer()
 		$scope.layout = {index: 0};
 		$scope.sampleAnimations = {options: ["strobe", "bounceInUp"], selectedIndex: 0, size: "small"};
 
 
 		$scope.setActiveKeyFrame = function(value) {
 			$scope.animation.selected_keyframe = $scope.animation.properties[value + '%'];
+		}
+
+		function initAnimationTimer() {
+
+
+			function timerSetDuration(timer, time) {
+				timer.duration = time;
+			}
+
+			function startTimer(timer, duration) {
+				if (duration && duration.indexOf('s') > -1) {
+					duration = parseInt(duration.replace('s', ''));
+				}
+				timer.time = 0;
+				timer.duration = duration || 5;
+				$scope.player.currentFrame = 0;
+				timer.promise = $interval(function() {
+					if (timer.time < timer.duration) {
+						timer.time += 1
+						console.log('current time into animation is', timer.time);
+						updateFramesIfNecessary(timer.time);
+					} else {
+						resetTimer(timer);
+					}
+				}, 1000);
+			}
+
+			function resumeTimer(timer) {
+				$interval.cancel(timer.promise);
+				timer.promise = $interval(function() {
+					if (timer.time < timer.duration) {
+						timer.time += 1
+						console.log('current time into animation is', timer.time);
+						updateFramesIfNecessary(timer.time);
+					} else {
+						resetTimer(timer);
+					}
+				}, 1000);
+			}
+
+			function updateFramesIfNecessary(time_s, duration, num_keyframes) {
+				return;
+			}
+
+			function pauseTimer(timer) {
+
+				$interval.cancel(timer.promise);
+				timer.paused = true;
+
+			}
+
+			function resetTimer(timer) {
+				timer.time = null;
+				timer.paused = null;
+				if (timer.promise) {
+					$interval.cancel(timer.promise);
+					timer.promise = null;
+
+				}
+			}
+
+			return {
+				setDuration: timerSetDuration,
+				promise: null,
+				start: startTimer,
+				resume: resumeTimer,
+				pause: pauseTimer,
+				reset: resetTimer,
+				time: null,
+				duration: 5,
+			}
+
 		}
 
 		function initAnimationPlayer() {
@@ -50,7 +124,13 @@ angular.module('uguru.util.controllers')
 
 
 				elem.style.webkitAnimationDuration = $scope.animationDuration;
-				elem.style[browserPrefix + "AnimationName"] = "strobe"
+
+				elem.style[browserPrefix + "AnimationName"] = $scope.animationName
+
+				if (!$scope.timer.paused) {
+					$scope.timer.start($scope.timer, $scope.animationDuration);
+				}
+
 				if (!player.status) {
 					player.status = 1;
 
@@ -66,6 +146,7 @@ angular.module('uguru.util.controllers')
 			function pauseDanceMoveElem(player, elem) {
 				elem = elem || $scope.actor;
 				player = player || $scope.player;
+				$scope.timer.pause($scope.timer);
 				player.status = 2;
 				anim_name = $scope.sampleAnimations.options[$scope.sampleAnimations.selectedIndex];
 				elem.style[browserPrefix + "AnimationPlayState"]="paused";
@@ -75,6 +156,7 @@ angular.module('uguru.util.controllers')
 			function resumeDanceMoveElem(player, elem) {
 				elem = elem || $scope.actor;
 				player.status = 1;
+				$scope.timer.resume($scope.timer);
 				elem.style[browserPrefix + "AnimationPlayState"] ="running";
 			}
 
@@ -84,6 +166,7 @@ angular.module('uguru.util.controllers')
 				anim_name = $scope.sampleAnimations.options[$scope.sampleAnimations.selectedIndex];
 				elem.style[browserPrefix + "AnimationName"] = null;
 				elem.offsetWidth = elem.offsetWidth;
+				$scope.timer.reset($scope.timer);
 			}
 		}
 
@@ -384,15 +467,15 @@ angular.module('uguru.util.controllers')
 				this.originY = 50;
 				this.originZ = 50;
 				this.opacity = 1;
-				this.backgroundColor = null;
-				this.color = null;
-				this.fill = null;
-				this.fillOpacity = null;
-				this.stroke = null;
-				this.strokeWidth = null;
-				this.strokeDashArray = null;
-				this.strokeDashOffset = null;
-				this.strokeOpacity = null;
+				// this.backgroundColor = null;
+				// this.color = null;
+				// this.fill = null;
+				// this.fillOpacity = null;
+				// this.stroke = null;
+				// this.strokeWidth = null;
+				// this.strokeDashArray = null;
+				// this.strokeDashOffset = null;
+				// this.strokeOpacity = null;
 				this.transformStyle = "preserve-3d";
 
 			};
