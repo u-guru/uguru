@@ -6,7 +6,7 @@
 	@include flex-wrap;
 	position: relative;
 	width: 100%;
-	height: 75px;
+	height: calc(75px + 32px);
 	background: darken($slate, 3%);
 	.anim-player {
 		position: relative;

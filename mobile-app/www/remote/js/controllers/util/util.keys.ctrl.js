@@ -388,7 +388,7 @@ angular.module('uguru.util.controllers')
 		// slider - num animation keyframes
 		$scope.animationDuration = "5s";
 		$scope.animationDurationVal = "5";
-		$scope.animationKeyFrames = 10;
+		$scope.animationKeyFrames = 100;
 		$scope.animationCache = $localstorage.getObject('saved_animations') || [];
 		console.log($scope.animationCache);
 
@@ -564,7 +564,6 @@ angular.module('uguru.util.controllers')
 
 			$scope.animation.selected_keyframe = $scope.animation.properties['0%'];
 			$scope.animation.selected_index = 0;
-			$scope.animationKeyFrames = 10;
 
 		}
 
