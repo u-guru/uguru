@@ -12,7 +12,7 @@
   flex-flow: row wrap;
   position: relative;
   width: 100%;
-  height: 75px;
+  height: calc(75px + 32px);
   background: #394043;
 }
 

@@ -15,7 +15,9 @@ function FileService(LoadingService, Restangular, DevToolService) {
         initRequestDropzoneFromSelector: initRequestDropzoneFromSelector,
         initMessageDropzone: initMessageDropzone,
         DropzoneDict: DropzoneDict,
-        initUserAdminTool: initUserAdminTool
+        initUserAdminTool: initUserAdminTool,
+        getS3JsonFile: getS3JsonFile,
+        postS3JsonFile: postS3JsonFile
     }
 
     function initUserAdminTool() {
@@ -80,6 +82,7 @@ function FileService(LoadingService, Restangular, DevToolService) {
 
                 xhr.onload = function () {
                     var resp = window.JSON.parse( xhr.responseText );
+                    console.log(indexFile.name, resp)
                     resp.full_template_url = splash_files[0].url;
                     console.log(resp.full_template_url);
                     DevToolService.initCurrentFile(_scope, resp);
@@ -254,6 +257,29 @@ function FileService(LoadingService, Restangular, DevToolService) {
 
     function dragzoneOnDrop() {
 
+    }
+
+    function getS3JsonFile(first_name, url, cb) {
+        var xhr = new XMLHttpRequest();
+        xhr.open( 'GET', url, true );
+
+        xhr.onload = function () {
+            var resp = window.JSON.parse( xhr.responseText );
+            cb && cb(first_name, resp);
+        };
+        xhr.send();
+    }
+
+    function postS3JsonFile(data, first_name, url, cb) {
+        var xhr = new XMLHttpRequest();
+        xhr.open( 'PUT', url, true );
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.onload = function () {
+            console.log(xhr.status)
+            var resp =  xhr.responseText;
+            cb && cb(first_name, resp);
+        };
+        xhr.send(data);
     }
 
     function getDefaultRequestDropzone(elem) {

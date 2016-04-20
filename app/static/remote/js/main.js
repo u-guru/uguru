@@ -124,7 +124,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/inappmap.html',
         controller: 'InAppMapController'
   }).
-
+  state('root.keys', {
+        url: '/keys',
+        templateUrl: BASE + 'templates/admin/keys.html',
+        controller: 'KeyToolController'
+  }).
 
   state('root.university', {
         url: '/university',
@@ -165,7 +169,14 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/credit',
         templateUrl: BASE + 'templates/credit.html'
   }).
-
+  state('root.splash-university', {
+        url: '/splash/university',
+        templateUrl: BASE + 'templates/splash/layout/university.search.html'
+  }).
+  state('root.splash-hiw', {
+        url: '/splash/hiw',
+        templateUrl: BASE + 'templates/splash/swiper/splash.hiw.container.html'
+  }).
 
   //start essay
   state('root.essay-student-university', {

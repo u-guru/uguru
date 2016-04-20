@@ -28,6 +28,13 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
         }
     }
 
+    function initKeyboardKeydownFunc(cb, parent_elem) {
+        parent_elem = parent_elem || document;
+        parent_elem.addEventListener('keydown', function(e) {
+            cb && cb(e);
+        })
+    }
+
 
 
     function initOptionPressedAndReleasedFunction(on_press, on_release) {
@@ -109,7 +116,8 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
         setDeviceKeyboardState:setDeviceKeyboardState,
         closeKeyboardIfExists: closeKeyboardIfExists,
         initOptionPressedAndReleasedFunction: initOptionPressedAndReleasedFunction,
-        initCopyPasteFunctionCallbacks: initCopyPasteFunctionCallbacks
+        initCopyPasteFunctionCallbacks: initCopyPasteFunctionCallbacks,
+        initKeyboardKeydownFunc: initKeyboardKeydownFunc
     }
 };
 

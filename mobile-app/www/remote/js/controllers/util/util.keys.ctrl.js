@@ -239,7 +239,7 @@ angular.module('uguru.util.controllers')
 			var strokeOpacity = dance_obj.strokeOpacity || 1.0;
 			var strokeWidth = dance_obj.strokeWidth || 1.0;
 			var strokeDashArray = dance_obj.strokeDashArray || 1.0;
-			var strokeDashOffset = dance_obj.strokeWidth || 1.0;
+			var strokeDashOffset = dance_obj.strokeDashOffset || 1.0;
 
 			var csstext =  'transform: skew(' + (dance_obj.skewX || 0)+ 'deg, ' + (dance_obj.skewY || 0) +'deg) rotate3d(' + dance_obj.rotate3DX +', ' + dance_obj.rotate3DY + ', ' + dance_obj.rotate3DZ + ', ' + (dance_obj.rotate3DAngle || 30) + 'deg) scale(' + (dance_obj.scale3DX || 1.0 )  + ', ' + (dance_obj.scale3DY || 1.0) + ') translate3d(' + (dance_obj.translateX || 0) + unit + ', ' + (dance_obj.translateY || 0) +unit + ', ' + (dance_obj.translateZ || 0) + 'px);'
 
@@ -406,7 +406,7 @@ angular.module('uguru.util.controllers')
 		// slider - num animation keyframes
 		$scope.animationDuration = "5s";
 		$scope.animationDurationVal = "5";
-		$scope.animationKeyFrames = 16;
+		$scope.animationKeyFrames = 100;
 		$scope.animationCache = $localstorage.getObject('saved_animations') || [];
 		console.log($scope.animationCache);
 
@@ -559,6 +559,7 @@ angular.module('uguru.util.controllers')
 
 			$scope.actor = document.querySelector('#rect-svg');
 			$scope.actor.classList.add('animated');
+			$scope.animationKeyFrames = 16;
 
 			var actor = $scope.actor;
 			var player = $scope.player;
@@ -582,7 +583,8 @@ angular.module('uguru.util.controllers')
 
 			$scope.animation.selected_keyframe = $scope.animation.properties['0%'];
 			$scope.animation.selected_index = 0;
-			$scope.animationKeyFrames = 16;
+
+
 
 		}
 

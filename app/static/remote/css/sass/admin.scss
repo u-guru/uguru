@@ -1,5 +1,235 @@
 @import 'mixin';
 
+/* ---------- KEYFRAMES */
+.anim-timeline {
+	@include flex;
+	@include flex-wrap;
+	position: relative;
+	width: 100%;
+	height: 75px;
+	background: darken($slate, 3%);
+	.anim-player {
+		position: relative;
+		width: calc(100% - 15px);
+	}
+	[class*="anim-bound"] {
+		position: absolute;
+		top: 0;
+		z-index: 2;
+		height: 100%;
+		background: rgba($charcoal, .5);
+		&.anim-bound-left {
+			left: 0;
+		}
+		&.anim-bound-right {
+			right: 0;
+		}
+	}
+	[class*="anim-end"] {
+		position: absolute;
+		top: 0;
+		z-index: 3;
+		height: 100%;
+		width: 2px;
+		background: white;
+		cursor: pointer;
+		&:before, &:after {
+			content: "";
+			display: block;
+			position: absolute;
+			cursor: pointer;
+		}
+		&:before {
+			top: -15px;
+			left: 50%;
+			margin-left: -5px;
+			border-radius: 100%;
+			width: 10px;
+			height: 10px;
+			background: white;
+		}
+		&:after {
+			top: -8px;
+			left: 50%;
+			margin-left: -5px;
+			width: 0;
+			height: 0;
+			border: 5px solid transparent;
+			border-top-color: white;
+		}
+		&.anim-end-left {
+			margin-left: -1px;
+		}
+		&.anim-end-right {
+			margin-right: -1px;
+		}
+	}
+	ul {
+		&.anim-label {
+			width: 15px;
+			font-size: 12px;
+			li {
+				@include flex;
+				@include flex-center;
+				width: 15px;
+				&:nth-child(1) {
+					background: mix($slate, $auburn, 50%);
+				}
+				&:nth-child(2) {
+					background: mix($slate, $orange, 50%);
+				}
+				&:nth-child(3) {
+					background: mix($slate, $gold, 50%);
+				}
+				&:nth-child(4) {
+					background: mix($slate, $moola, 50%);
+				}
+				&:nth-child(5) {
+					background: mix($slate, $azure, 50%);
+				}
+			}
+		}
+		&.anim-border {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			li {
+				&:not(:first-child) {
+					border-top: 1px solid rgba(white, .1);
+				}
+				&:not(:last-child) {
+					border-bottom: 1px solid rgba(white, .1);
+				}
+			}
+		}
+		&.anim-track {
+			width: 100%;
+		}
+		li {
+			@include flex;
+			height: 15px;
+			div {
+				height: 100%;
+				border-radius: 2px;
+				border: 2px solid rgba($slate, .1);
+				cursor: pointer;
+				&.new {
+					position: relative;
+					&:before, &:after {
+						@include round;
+						content: "";
+						display: block;
+						position: absolute;
+						top: 50%;
+						margin-top: -4px;
+						height: 8px;
+						width: 4px;
+					}
+					&:before {
+						left: -3px;
+					}
+					&:after {
+						right: -3px;
+					}
+				}
+			}
+			&:nth-child(1) {
+				div {
+					background: $auburn;
+					&.new {
+						background: rgba($auburn, .2);
+						border-color: $auburn;
+						&:before, &:after {
+							background: $auburn;
+						}
+					}
+				}
+			}
+			&:nth-child(2) {
+				div {
+					background: $orange;
+					&.new {
+						background: rgba($orange, .2);
+						border-color: $orange;
+						&:before, &:after {
+							background: $orange;
+						}
+					}
+				}
+			}
+			&:nth-child(3) {
+				div {
+					background: $gold;
+					&.new {
+						background: rgba($gold, .2);
+						border-color: $gold;
+						&:before, &:after {
+							background: $gold;
+						}
+					}
+				}
+			}
+			&:nth-child(4) {
+				div {
+					background: $moola;
+					&.new {
+						background: rgba($moola, .2);
+						border-color: $moola;
+						&:before, &:after {
+							background: $moola;
+						}
+					}
+				}
+			}
+			&:nth-child(5) {
+				div {
+					background: $azure;
+					&.new {
+						background: rgba($azure, .2);
+						border-color: $azure;
+						&:before, &:after {
+							background: $azure;
+						}
+					}
+				}
+			}
+		}
+	}
+	.anim-controls {
+		@include flex;
+		@include prefix(justify-content, space-between, webkit);
+		width: 100%;
+		padding: 2px;
+		background: lighten($slate, 15%);
+		> div {
+			padding: 2px;
+			button {
+				width: 24px;
+				height: 24px;
+				border-radius: 2px;
+				padding: 0;
+				font-size: 18px;
+				line-height: 1;
+			}
+			.checkbox-container {
+				span {
+					width: 24px;
+					height: 24px;
+				}
+				label {
+					padding-left: 5px;
+					font-size: 16px;
+				}
+				input:checked + span {
+					background: $moxie;
+				}
+			}
+		}
+	}
+}
+
 /* ---------- BUILDER */
 #build {
 	@include flex;
@@ -50,7 +280,7 @@
 			z-index: 1999!important;
 			h1 {
 				padding-left: 15px;
-				font-size: 24px;
+				font-size: 18px;
 				font-weight: 600;
 			}
 			> div {
@@ -77,47 +307,6 @@
 							top: 32px;
 							li {
 								width: calc(100% - 32px);
-							}
-						}
-					}
-					&.build-variations {
-						h2 {
-							display: none!important;
-						}
-						.dropdown {
-							> div {
-								> span {
-									@include flex;
-									@include flex-wrap;
-									@include flex-center-vertical;
-									height: 32px;
-									font-size: 12px;
-									font-weight: 600;
-									line-height: 1.3;
-									> span {
-										display: block;
-										height: auto;
-										&:last-child {
-											font-size: 10px;
-											font-weight: 400;
-											line-height: 1;
-										}
-									}
-								}
-							}
-							> ul {
-								li {
-									font-size: 14px;
-									line-height: 1.3;
-									font-weight: 600;
-									> span {
-										font-weight: 400;
-										&:last-child {
-											font-size: 12px;
-											line-height: 1;
-										}
-									}
-								}
 							}
 						}
 					}
@@ -238,23 +427,101 @@
 		}
 		.build-player {
 			@include flex;
+			@include flex-center;
 			@include flex-wrap;
 			position: relative;
 			overflow: auto;
 			height: calc(100% - 64px);
 			width: 100%;
-			padding: 7.5px;
-			&:last-child {
-				height: calc(100% - 64px);
-			}
 			.build-player-container {
-				position: absolute;
-				top: 0;
-				left: 0;
+				@include prefix(transform-origin, center center, webkit moz ms o);
+				overflow: hidden;
 				width: 100%;
 				height: 100%;
 				.fixed {
 					position: absolute!important;
+				}
+				&.mobile-s {
+					width: 320px!important;
+					height: 480px!important;
+				}
+				&.mobile-m {
+					width: 320px!important;
+					height: 568px!important;
+				}
+				&.mobile-l {
+					width: 375px!important;
+					height: 667px!important;
+					@media screen and (max-height: 750px) {
+						@include prefix(transform, scale(.9), webkit moz ms o);
+					}
+					@media screen and (max-height: 700px) {
+						@include prefix(transform, scale(.8), webkit moz ms o);
+					}
+				}
+				&.mobile-xl {
+					width: 414px!important;
+					height: 736px!important;
+					@media screen and (max-height: 800px) {
+						@include prefix(transform, scale(.9), webkit moz ms o);
+					}
+					@media screen and (max-height: 750px) {
+						@include prefix(transform, scale(.8), webkit moz ms o);
+					}
+				}
+				&.desktop-s {
+					position: absolute;
+					top: 50%;
+					margin-top: -384px;
+					left: 50%;
+					margin-left: -512px;
+					width: 1024px!important;
+					height: 768px!important;
+					@media screen and (max-width: 1550px), screen and (max-height: 850px) {
+						@include prefix(transform, scale(.9), webkit moz ms o);
+					}
+					@media screen and (max-width: 1280px), screen and (max-height: 800px) {
+						@include prefix(transform, scale(.8), webkit moz ms o);
+					}
+					@media screen and (max-width: 1280px), screen and (max-height: 750px) {
+						@include prefix(transform, scale(.7), webkit moz ms o);
+					}
+				}
+				&.desktop-m {
+					position: absolute;
+					top: 50%;
+					margin-top: -384px;
+					left: 50%;
+					margin-left: -683px;
+					width: 1366px!important;
+					height: 768px!important;
+					@media screen and (max-width: 1550px), screen and (max-height: 850px) {
+						@include prefix(transform, scale(.8), webkit moz ms o);
+					}
+					@media screen and (max-width: 1280px), screen and (max-height: 800px) {
+						@include prefix(transform, scale(.7), webkit moz ms o);
+					}
+					@media screen and (max-width: 1280px), screen and (max-height: 750px) {
+						@include prefix(transform, scale(.6), webkit moz ms o);
+					}
+				}
+				&.desktop-l {
+					position: absolute;
+					top: 50%;
+					margin-top: -540px;
+					left: 50%;
+					margin-left: -960px;
+					width: 1920px!important;
+					height: 1080px!important;
+					@media screen and (max-width: 1550px), screen and (max-height: 850px) {
+						@include prefix(transform, scale(.6), webkit moz ms o);
+					}
+					@media screen and (max-width: 1280px), screen and (max-height: 800px) {
+						@include prefix(transform, scale(.5), webkit moz ms o);
+					}
+					@media screen and (max-width: 1280px), screen and (max-height: 750px) {
+						@include prefix(transform, scale(.4), webkit moz ms o);
+					}
 				}
 			}
 		}
@@ -344,10 +611,192 @@
 			}
 		}
 	}
+	.build-element-container {
+		height: calc(100% - 96px - 64px);
+		overflow: auto;
+	}
+	.build-item-state, .build-item-component {
+		* {
+			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		}
+		&:focus, &.selected {
+			header {
+				span {
+					background: $charcoal!important;
+				}
+				h1, ul {
+					background: $moxie!important;
+				}
+			}
+		}
+		&.inactive {
+			header {
+				> span, .toggle, h1, ul li:not(:first-child) {
+					@include opacity(.5);
+				}
+				ul {
+					background: rgba($charcoal, .5)!important;
+					li:first-child {
+						a {
+							background: mix($lake, $slate, 30%);
+							&:hover, &:focus {
+								background: $moxie;
+								svg {
+									* {
+										stroke: white;
+									}
+								}
+							}
+							&:active {
+								background: lighten($slate, 15%);
+							}
+						}
+					}
+				}
+			}
+			div {
+				@include opacity(.5);
+			}
+			&:focus, &.selected {
+				header {
+					ul {
+						background: rgba($moxie, .5)!important;
+					}
+				}
+			}
+		}
+		header {
+			min-height: 0!important;
+			> span {
+				height: 48px;
+				width: 28px;
+			}
+			.toggle.am-pm {
+				input + label, input:checked + label {
+					background: $slate;
+				}
+			}
+			h1 {
+				height: 48px;
+				width: calc(100% - 28px - 168px);
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			ul {
+				height: 48px;
+				padding: 4px;
+				li {
+					padding: 4px;
+					a {
+						@include flex;
+						@include flex-center;
+						height: 32px;
+						width: 32px;
+						background: rgba(white, .2);
+						border-radius: 2px;
+						svg {
+							display: block;
+							width: 24px;
+							height: 24px;
+							* {
+								@include svg-stroke(white, 6);
+							}
+						}
+						&:hover, &:focus {
+							background: $moxie;
+							svg {
+								* {
+									stroke: white;
+								}
+							}
+						}
+						&:active {
+							background: lighten($slate, 15%);
+						}
+						&.close-icon {
+							&:hover, &:focus {
+								background: $crimson;
+							}
+							&:active {
+								background: lighten($slate, 15%);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.build-item-component-preview {
+		@include flex;
+		@include flex-center;
+		overflow: hidden;
+		width: 100%;
+		height: 150px;
+		.fixed {
+			position: absolute!important;
+		}
+		&.expanded {
+			height: 300px;
+		}
+	}
+	.build-item-component-properties {
+		ul {
+			li {
+				> div {
+					> div:first-child {
+						width: 35%;
+						input[type=text] {
+							background: lighten($slate, 15%);
+							@include placeholder {
+								color: rgba(white, .5);
+							}
+							&:focus {
+								background: white;
+								color: $slate;
+								@include placeholder {
+									color: rgba($slate, .5);
+								}
+							}
+						}
+					}
+					.range-container, > div:last-child {
+						width: 65%;
+					}
+				}
+			}
+		}
+	}
 	> aside {
 		width: calc(100% / 3);
 		height: 100%;
 		background: lighten($slate, 5%);
+		.build-aside-preview {
+			width: 160px;
+			height: 100px;
+			overflow: hidden;
+			position: relative;
+			z-index: 100;
+			background: $slate;
+			.build-aside-preview-border {
+				@include prefix(transform, scale(.125), webkit moz ms o);
+				position: absolute;
+				border: 10px solid $cerise;
+			}
+			.build-aside-preview-content {
+				position: absolute;
+				top: 50%;
+				margin-top: -400px;
+				left: 50%;
+				margin-left: -640px;
+				width: 1280px;
+				height: 800px;
+				@include prefix(transform, scale(.125), webkit moz ms o);
+				.fixed {
+					position: absolute!important;
+				}
+			}
+		}
 		&.build-settings {
 			> h1 {
 				height: 64px;
@@ -357,8 +806,25 @@
 				height: 64px;
 			}
 			.tab-bar.slide {
+				> div {
+					width: 100%!important;
+				}
+				&.ugrid-4 {
+					> div {
+						a, hr {
+							width: 25%;
+						}
+					}
+				}
+				&.ugrid-5 {
+					> div {
+						a, hr {
+							width: 20%;
+						}
+					}
+				}
 				a {
-					width: 25%;
+					font-size: 16px;
 					&:nth-child(1) {
 						&.active {
 							~ hr {
@@ -416,8 +882,137 @@
 						}
 					}
 				}
-				hr {
-					width: 25%;
+			}
+			a.opacity-50 {
+				&:hover, &:focus {
+					@include opacity-important(.75);
+				}
+				&:active {
+					@include opacity-important(1);
+				}
+			}
+			.build-docs {
+				height: calc(100% - 64px);
+				ul {
+					height: calc(100% - 60px);
+				}
+				.build-docs-priority {
+					li {
+						.checkbox-container {
+							@include prefix(justify-content, flex-start, webkit);
+							> div {
+								border-top-left-radius: 2px;
+								border-bottom-left-radius: 2px;
+								overflow: hidden;
+								height: 64px;
+								div {
+									height: 32px;
+									border-top-left-radius: 2px;
+								}
+								span {
+									border-radius: 0;
+								}
+								input:checked + span {
+									background: $moxie;
+								}
+							}
+							label {
+								width: calc(100% - 32px);
+								height: 64px;
+								line-height: 1.2;
+							}
+						}
+					}
+				}
+				.build-docs-history {
+					li {
+						.build-file {
+							.build-file-index {
+								width: 32px;
+								height: 64px;
+								+ div {
+									width: calc(100% - 32px - 32px - 11px);
+								}
+							}
+							a {
+								> span {
+									width: 32px;
+									height: 32px;
+									margin-right: 11px;
+								}
+								&.active {
+									> span {
+										svg {
+											@include prefix(transform, rotate(180deg), webkit moz ms o);
+										}
+									}
+								}
+								&:hover, &:focus {
+									background: mix($campus, $slate, 70%);
+								}
+								&:active {
+									background: $moxie;
+								}
+							}
+						}
+					}
+				}
+				.build-docs-tuts {
+					li {
+						> div {
+							h2 {
+								span {
+									height: 32px;
+									&:first-child {
+										width: 32px;
+									}
+									&:only-child {
+										width: 100%;
+										background: $campus;
+									}
+								}
+							}
+							> div {
+								p, ol, ul {
+									margin-bottom: 0;
+									line-height: 1.2;
+									&:not(:first-child) {
+										margin-top: 15px;
+									}
+								}
+								ol, ul {
+									margin-left: 45px;
+								}
+								ul {
+									list-style: disc!important;
+								}
+								ol {
+									list-style: decimal!important;
+								}
+							}
+						}
+					}
+				}
+				.build-docs-components {
+					height: calc(100% - 60px - 64px);
+					+ input {
+						@include flex;
+						@include flex-center-vertical;
+						height: 64px;
+						width: 100%;
+						padding: 0 15px;
+						font-size: 20px;
+						color: rgba($slate, .75);
+						@include placeholder {
+							color: rgba($slate, .5);
+						}
+						&:focus {
+							color: $slate;
+							@include placeholder {
+								color: rgba($slate, .75);
+							}
+						}
+					}
 				}
 			}
 			.build-files-list {
@@ -439,14 +1034,6 @@
 					}
 					&:active {
 						background: $moxie;
-					}
-				}
-				a.opacity-50 {
-					&:hover, &:focus {
-						@include opacity-important(.75);
-					}
-					&:active {
-						@include opacity-important(1);
 					}
 				}
 			}
@@ -3091,9 +3678,9 @@
 			}
 			li {
 				padding: 7.5px;
-				div {
+				> div:not(.size-auto) {
 					position: relative;
-					height: 100px;
+					height: 120px;
 					border-radius: 2px;
 				}
 				span:not(.inside) {
@@ -3103,6 +3690,9 @@
 					border-radius: 2px;
 					&:not([class*="bg-"]) {
 						background: white;
+					}
+					&[class*="flex"] {
+						@include flex-important;
 					}
 					&[class*="bg-"] {
 						color: white;

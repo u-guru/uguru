@@ -726,6 +726,7 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                     }
                 }, delay);
                 function classArgsHasInject(args) {
+                  if (!args || args.length) return false;
                   var injectArg = null;
                   args.filter(function(word, index) {
                     if (word.indexOf("inject") > -1) {
@@ -733,7 +734,7 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                       return true
                     };
                   })
-                  return injectArg.replace("inject", "");
+                  return (args && injectArg.replace("inject", ""));
                 }
               });
             }

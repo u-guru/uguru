@@ -31,7 +31,7 @@
                 </div>
             </div>
             <h2>@</h2>
-            <div class="dropdown-color">
+            <div class="dropdown-color" id='dropdown-university'>
                 <a class="color" name='university' ng-click="page.dropdowns.university.toggle()" ng-class="{'active':page.dropdowns.university.active}">
                     <div class="dropdown-color-bg" style='background-color: {{selectedUniversity.school_color_dark}}'></div>
                     <span>{{selectedUniversity.short_name || selectedUniversity.name}}</span>
@@ -54,7 +54,8 @@
                             </svg>
                         </li>
                         <li>
-                            <a class="bg-shamrock" ng-click="transitionToScene3()">
+                            <a class="bg-shamrock" ng-click="activateUniversitySearch()" class-on-click="null:inject.splash-school-loader-counter|activate, null:inject.splash-school-loader-container|activate">
+                                <span class="dropdown-color-icon" ng-include="img_base + 'templates/svg/main/search.html'"></span>
                                 <span>Find your College</span>
                             </a>
                         </li>
@@ -71,7 +72,8 @@
                 </svg>
             </a>
         </div>
-        <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()' class-on-click="null:inject#splash-one-page-pulldown|activate" >
+        <a class="splash-burger" ng-include="img_base + 'templates/svg/main/lightning.html'"></a>
+        <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()'>
             <svg viewBox="0 0 100 100" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" class-on-activate-delay="600">
                 <circle cx="50" cy="50" r="36"></circle>
                 <path d="M31,35.5 L69,35.5"></path>
@@ -95,7 +97,7 @@
             </li>
         </ul>
     </div>
-    <div class="splash-hero-nav-school">
+    <div class="splash-hero-nav-school" id='dropdown-university'>
         <h1>University</h1>
         <ul>
             <li ng-repeat='university in featured_universities'>
@@ -106,7 +108,7 @@
                 </a>
             </li>
             <li>
-                <a class="bg-find" ng-click="activate.pulldown = true;">
+                <a class="bg-find" ng-click="activateUniversitySearch()">
                     <span></span>
                     <span>Find your College</span>
                     <span></span>

@@ -1,5 +1,132 @@
 @import 'mixin';
 
+.splash-hero-support {
+	padding: 15px;
+	a {
+		@include opacity(.5);
+		@include rotate(15);
+		display: block;
+		width: 64px;
+		height: 64px;
+		svg {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		&:hover, &:focus {
+			@include opacity(.75);
+		}
+		&:active {
+			@include opacity(1);
+		}
+	}
+}
+.splash-hero-skip {
+	padding: 15px;
+	button {
+		@include opacity(.5);
+		@include rotate(-15);
+		@include round;
+		width: 64px;
+		height: 64px;
+		background: none;
+		border: 2px solid white;
+		font-size: 20px;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: white!important;
+		&:hover, &:focus {
+			@include opacity(.75);
+		}
+		&:active {
+			@include opacity(1);
+		}
+	}
+}
+
+.splash-school-loader-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: rgba($slate, .95);
+}
+
+.splash-school-loader {
+	@include round;
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	top: 50%;
+	margin-top: -100px;
+	left: 50%;
+	margin-left: -100px;
+	border: 2px solid $shamrock;
+	background: rgba($slate, .95);
+	span {
+		display: block;
+		width: 100%;
+		margin: 0 auto;
+		text-align: center;
+		line-height: 1;
+		&:first-child {
+			font-size: 48px;
+			font-weight: 600;
+		}
+		&:last-child {
+			font-size: 20px;
+
+		}
+	}
+	div {
+		@include round;
+		width: 200px;
+		height: 200px;
+		position: absolute;
+		top: 50%;
+		margin-top: -100px;
+		left: 50%;
+		margin-left: -100px;
+		border: 2px solid $shamrock;
+		&:not(:first-child) {
+			background: rgba($shamrock, .2);
+			animation: ping 1500ms ease-in-out infinite;
+			&:nth-child(3) {
+				animation-delay: 600ms;
+			}
+			&:nth-child(4) {
+				animation-delay: 1200ms;
+			}
+			&:nth-child(5) {
+				animation-delay: 1800ms;
+			}
+		}
+		&:first-child {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			z-index: 10;
+			background: rgba($slate, .9);
+		}
+	}
+}
+
+@keyframes ping {
+	0% {
+		transform: scale(1,1);
+		opacity: 0.0;
+	}
+	40% {
+		opacity: 1.0;
+	}
+	100% {
+		transform: scale(2, 2);
+		opacity: 0.0;
+	}
+}
+
 /* ---------- SPLASH UPDATES */
 #splash-one-page-pulldown {
 	@include prefix(transition, all 700ms ease-in-out, webkit moz ms o);
@@ -1839,6 +1966,34 @@
 					}
 				}
 			}
+			.splash-hero-support {
+				position: absolute;
+				z-index: 10;
+				bottom: 0;
+				left: 0;
+				padding: 15px;
+				&.rollIn {
+					@include prefix(animation-name, rollInRight, webkit moz ms o);
+				}
+				a {
+					@include opacity(.5);
+					@include rotate(15);
+					display: block;
+					width: 64px;
+					height: 64px;
+					svg {
+						display: block;
+						width: 100%;
+						height: 100%;
+					}
+					&:hover, &:focus {
+						@include opacity(.75);
+					}
+					&:active {
+						@include opacity(1);
+					}
+				}
+			}
 			.splash-hero-skip {
 				position: absolute;
 				z-index: 10;
@@ -1859,6 +2014,13 @@
 					font-size: 20px;
 					font-weight: 600;
 					text-transform: uppercase;
+					color: white!important;
+					&:hover, &:focus {
+						@include opacity(.75);
+					}
+					&:active {
+						@include opacity(1);
+					}
 				}
 			}
 			.splash-device {

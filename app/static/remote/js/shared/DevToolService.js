@@ -19,7 +19,7 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
 
     function setupUserSession() {return;};
 
-    function initCurrentFile(_scope, file)  {
+    function initCurrentFile(_scope, file, skip_first_time)  {
 
         var returnIndex = getLatestVariationIndex(file)
         _scope.current_file.selected_variation = file.variations[returnIndex];
@@ -29,9 +29,9 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
         _scope.current_file.full_template_url = file.full_template_url;
         _scope.current_file.controller = file.controller;
         _scope.current_file.id = file.id;
-        _scope.current_file.selectedIndex = returnIndex;
-        _scope.current_file.selectedSceneIndex = 0;
-        _scope.current_file.selected_variation.selected_scene_state = _scope.current_file.selected_variation.scene_states[_scope.current_file.selectedSceneIndex];
+        _scope.current_file.selectedVariationIndex = returnIndex;
+        _scope.current_file.selected_variation.selectedSceneIndex = 0;
+        _scope.current_file.selected_variation.selected_scene_state = _scope.current_file.selected_variation.scene_states[_scope.current_file.selected_variation.selectedSceneIndex];
         _scope.current_file.template_url = file.template_url;
         _scope.current_file.methods = getFileMethods(_scope)
 
@@ -40,15 +40,17 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
             _scope.current_file.selected_variation.last_updated = new Date().getTime();
         }
 
-
-        _scope.page.dropdowns.templates = {
+        if (!skip_first_time) {
+            _scope.page.dropdowns.templates = {
             options: formatVariationsWithLastUpdated(_scope.current_file.variations),
             key: 'name',
             size: 'small',
             selectedIndex: returnIndex,
             label: formatLastUpdated(_scope.current_file.selected_variation.last_updated)
+            }
+            _scope.injectTemplateIntoStage(_scope.current_file.template_url.replace('templates/', ''), _scope.current_file.controller, _scope.current_file.ref);
         }
-        _scope.injectTemplateIntoStage(_scope.current_file.template_url.replace('templates/', ''), _scope.current_file.controller, _scope.current_file.ref);
+        return _scope.current_file;
     }
 
     function formatVariationsWithLastUpdated(variation_arr) {
@@ -96,28 +98,30 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
             clonedVariation.name = null;
 
             $timeout(function() {
-                _scope.current_file.selectedIndex = _scope.current_file.variations.length; //only because offset = 1
+                _scope.current_file.selectedVariationIndex = _scope.current_file.variations.length; //only because offset = 1
                 _scope.current_file.selected_variation = clonedVariation;
                 _scope.current_file.variations.push(clonedVariation);
 
                 _scope.status.msg = "Please add a name";
                 _scope.page.dropdowns.templates.options = _scope.current_file.variations;
-                _scope.page.dropdowns.templates.selectedIndex = _scope.current_file.selectedIndex;
+                _scope.page.dropdowns.templates.selectedIndex = _scope.current_file.selectedVariationIndex;
                 $timeout(function() {
                     _scope.status.show = false;
 
                 }, 2000)
             }, 2000)
 
-            function cloneDictionary(_dict) {
-                var newDict = {};
-                for (var i = 0; i < Object.keys(_dict).length; i++) {
-                    indexKey = Object.keys(_dict)[i]
-                    newDict[indexKey] = _dict[indexKey]
-                }
-                return newDict;
-            }
+
         }
+    }
+
+    function cloneDictionary(_dict) {
+        var newDict = {};
+        for (var i = 0; i < Object.keys(_dict).length; i++) {
+            indexKey = Object.keys(_dict)[i]
+            newDict[indexKey] = _dict[indexKey]
+        }
+        return newDict;
     }
 
     function getFileMethods(_scope) {
@@ -152,13 +156,58 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
 
     function saveFileWithServer(_scope) {
         return function(file, user) {
+            var tempSelected
             var user_first_name = _scope.user.name.split(' ')[0].toLowerCase();
+            var temp_current_file = cloneDictionary(file);
+            var tempSelected = {};
+            var tempSelectedVariation = null;
             _scope.showStatusMsg(["Syncing " + user_first_name + "'s remote folder"]);
+            if (file.selectedVariationIndex > -1) {
+                file.variations[file.selectedVariationIndex] = cloneDictionary(file.selected_variation);
+                tempSelected = {variation: file.selected_variation};
+                file.selected_variation = null
+                tempSelectedVariation = file.variations[file.selectedVariationIndex];
+                console.log('old selected variation', tempSelectedVariation);
+            }
+
+            if (tempSelectedVariation.selected_time_state && tempSelectedVariation.selectedTimeIndex > -1 && tempSelectedVariation.selectedSceneIndex > -1) {
+                var currentTimeStates = tempSelectedVariation.scene_states[tempSelectedVariation.selectedSceneIndex].time_states
+                if (currentTimeStates && currentTimeStates.length && tempSelectedVariation.selectedTimeIndex > -1) {
+                    currentTimeStates[tempSelectedVariation.selectedTimeIndex] = cloneDictionary(tempSelectedVariation.selected_time_state);
+                }
+                tempSelected.time_state = cloneDictionary(tempSelectedVariation.selected_time_state);
+                tempSelectedVariation.selected_time_state = null;
+                tempSelectedVariation.selectedTimeIndex = null;
+            }
+
+            if (tempSelectedVariation.selected_scene_state || tempSelectedVariation.selectedSceneIndex > -1) {
+                tempSelectedVariation.scene_states[tempSelectedVariation.selectedSceneIndex] = cloneDictionary(tempSelectedVariation.selected_scene_state);
+
+                tempSelected.scene_state = cloneDictionary(tempSelectedVariation.selected_scene_state);
+                tempSelectedVariation.selected_scene_state = null;
+                tempSelectedVariation.selectedSceneIndex = null;
+            }
+
             _scope.current_file.methods = null;
+            _scope.current_file = temp_current_file;
+            $timeout(function() {
+                _scope.current_file.selected_variation.selected_scene_state = tempSelected.scene_state;
+                _scope.current_file.selected_variation.selected_time_state = tempSelected.time_state;
+                _scope.$apply();
+                console.log(_scope.current_file);
+            })
             Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('files').
-            customPOST(JSON.stringify({file: _scope.current_file})).then(
+            customPOST(JSON.stringify({file: file})).then(
                 function (response) {
-                    console.log('success', response);
+
+                    var current_file = initCurrentFile(_scope, JSON.parse(response), true);
+                    $timeout(function() {
+                        _scope.current_file.selected_variation.selected_scene_state = tempSelected.scene_state;
+                        _scope.current_file.selected_variation.selected_time_state = tempSelected.time_state;
+                        _scope.$apply();
+                        console.log(_scope.current_file);
+                    })
+
                 },
                 function(error) {
                     console.log('error', error);
@@ -189,6 +238,22 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
         }
     }
 
+    function clearSceneState(_scope) {
+        return function(variation) {
+            variation.selected_scene_state = null;
+            variation.selectedSceneIndex = null;
+            variation.selected_time_state = null;
+            variation.selectedTimeIndex = null;
+        }
+    }
+
+    function clearTimeState(_scope) {
+        return function(variation) {
+            variation.selected_time_state = null;
+            variation.selectedTimeIndex = null;
+        }
+    }
+
     function getBuildToolModes(_scope) {
         var modeFuncDict = {
             scene: {
@@ -199,6 +264,7 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
                 destroyKeys: destroySceneKeys,
                 forwardTo: forwardToScene,
                 getComponents: getAllSceneComponents,
+                clearSelectedScene: clearSceneState(_scope)
             },
             time_state: {
                 init: getTimeBaseObj,
@@ -210,7 +276,9 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
                 initKeys: initTimeStateModeKeys,
                 destroyKeys: destroyTimeStateModeKeys,
                 play: playTimeState,
-                forwardTo: playTimeStatesUntil
+                forwardTo: playTimeStatesUntil,
+                switchTo: switchToTimeState(_scope),
+                clearTimeState: clearTimeState(_scope)
             },
             component: {
                 initMode: switchToComponentMode(_scope),
@@ -284,9 +352,19 @@ function DevToolService($state, $timeout, $localstorage, Restangular) {
                 variation.scene_states[i].component_mode = false;
             }
             variation.selected_scene_state = variation.scene_states[index];
+            variation.selectedSceneIndex = index;
             variation.selected_scene_state.active = true;
         }
     };
+
+
+    function switchToTimeState(_scope) {
+        return function(variation, index) {
+            variation.selected_time_state = variation.selected_scene_state.time_states[index];
+            variation.selectedTimeIndex = index;
+        }
+    }
+
     function playScene(_scope) {
         return function(scene) {
             if (!scene.components || !scene.components.length) {
