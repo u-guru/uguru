@@ -107,6 +107,14 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
   transition: all 150ms ease-in-out;
 }
 
+.transition-150-linear {
+  -webkit-transition: all 150ms linear;
+  -moz-transition: all 150ms linear;
+  -ms-transition: all 150ms linear;
+  -o-transition: all 150ms linear;
+  transition: all 150ms linear;
+}
+
 a, a:hover, a:active, a:visited {
   color: white;
   text-decoration: none;

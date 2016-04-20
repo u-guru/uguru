@@ -84,6 +84,9 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 .transition-150 {
 	@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 }
+.transition-150-linear {
+	@include prefix(transition, all 150ms linear, webkit moz ms o);
+}
 a, a:hover, a:active, a:visited {
 	color: white;
 	text-decoration:none;
