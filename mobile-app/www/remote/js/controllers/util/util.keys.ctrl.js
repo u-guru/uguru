@@ -273,6 +273,8 @@ angular.module('uguru.util.controllers')
 
 				elem.style[browserPrefix + "AnimationName"] = $scope.animation.attr.name;
 
+
+
 				if (!$scope.timer.paused) {
 					$scope.timer.start($scope.timer, $scope.animation.attr.duration);
 				}
@@ -627,7 +629,6 @@ angular.module('uguru.util.controllers')
 			}
 
 			function initMyAnimationDropdown(my_animations) {
-				// var my_animations = {};
 
 				var animationNameArr = Object.keys(my_animations.animations);
 				if (!animationNameArr.length) {
@@ -1070,6 +1071,14 @@ angular.module('uguru.util.controllers')
 
 		function initView() {
 			browserPrefix = getBrowserPrefix();
+			if (browserPrefix === 'webkit') {
+				console.log(document.querySelector('svg#rect-svg'));
+					document.querySelector('svg#rect-svg').addEventListener( 'webkitAnimationEnd',
+    				function( event ) { $scope.player.reset(); $scope.animation.selected_keyframe = $scope.animation.properties['0%']; $timeout(function(){$scope.$apply();})}, false );
+				} else {
+					document.querySelector('svg#rect-svg').addEventListener( 'animationend',
+    				function( event ) { $scope.player.reset(); $scope.animation.selected_keyframe = $scope.animation.properties['0%']; $timeout(function(){$scope.$apply();})  }, false );
+				}
 			LoadingService.showAmbig(null, 10000);
 			$timeout(function(){
 				getS3Animations()
