@@ -35,6 +35,12 @@
                 <li>
                     <a ng-click='layout.index = 1' class="weight-900">Export</a>
                 </li>
+                <li>
+                    <a ng-click='saveAnimationsToServer(animation)' class="weight-900">Save</a>
+                </li>
+                <li>
+                    <dropdown ng-model="myAnimationDropdown"> </dropdown>
+                </li>
 
             </ul>
             <ul style='width:70%; top: 80px;' class='absolute left-0 p15-grid flex-center-vertical bg-campus txt-center bg-azure' ng-if='player.settings'>
@@ -392,7 +398,7 @@
                 <div class="flex-center-vertical-space-between m05bottom ugrid-3 flex-wrap-center full-x">
                     <div class='ugrid-2'>
                         <div>
-                            <h2 class="txt-18 semibold">Total# KF: <span class='weight-900'>{{animationKeyFrames}}</span>
+                            <h2 class="txt-18 semibold">Total# KF: <span class='weight-900'>{{animation.kf_count}}</span>
                             </h2>
                             <small class='txt-1 opacity-50 full-x'>edit disabled</small>
                         </div>
@@ -405,8 +411,8 @@
                 <div class="range-container small full-x m15right">
                     <div>
                         <span>{{animation.selected_index}}</span>
-                        <input class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animationKeyFrames - 1}}" list="numbers" ng-change="setActiveKeyFrame(player.currentFrame)" ng-model="player.currentFrame"> </input>
-                        <span>{{animationKeyFrames}}</span>
+                        <input class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animation.kf_count - 1}}" list="numbers" ng-change="setActiveKeyFrame(player.currentFrame)" ng-model="player.currentFrame"> </input>
+                        <span>{{animation.kf_count}}</span>
                     </div>
                     <progress class="bg-shamrock-20p txt-white full-x" max="{{animationDuration.replace('s', '')}}" value="{{timer.time}}"></progress>
                 </div>
@@ -427,14 +433,14 @@
                     <div class="p15right flex-center-vertical">
                         <h2 class="txt-18 semibold">Total # KF</h2>
                         <!-- <span class='txt-18 opacity-50 block p10left'>edit disabled</span> -->
-                        <input disabled class="radius-2 txt-center p05xy opacity-50 m15left" size="4" style="height: 30px;" ng-model="animationKeyFrames" placeholder="{{animationKeyFrames}}"/>
+                        <input disabled class="radius-2 txt-center p05xy opacity-50 m15left" size="4" style="height: 30px;" ng-model="animation.kf_count" placeholder="{{animation.kf_count}}"/>
                     </div>
                 </div>
                 <div class="range-container small full-x">
                     <div>
                         <span>{{animation.selected_index}}</span>
-                        <input class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animationKeyFrames - 1}}" list="numbers" ng-change="setActiveKeyFrame(player.currentFrame)" ng-model="player.currentFrame"> </input>
-                        <span>{{animationKeyFrames}}</span>
+                        <input class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animation.kf_count}}" list="numbers" ng-change="setActiveKeyFrame(player.currentFrame)" ng-model="player.currentFrame"> </input>
+                        <span>{{animation.kf_count}}</span>
                     </div>
                     <progress class="white-round full-x" max="{{animation.attr.durationVal}}" value="{{timer.time}}"></progress>
                 </div>
