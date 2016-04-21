@@ -13,6 +13,11 @@
   margin: 0;
 }
 
+#keys .size-150 {
+  width: 150px;
+  height: 150px;
+}
+
 .anim-timeline {
   -ms-box-orient: horizontal;
   display: -webkit-box;
