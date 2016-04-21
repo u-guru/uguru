@@ -177,7 +177,7 @@ angular.module('uguru.util.controllers')
 				if (duration && duration.indexOf('s') > -1) {
 					duration = parseInt(duration.replace('s', ''));
 				}
-				timer.time = 0;
+				timer.time = 1;
 				timer.duration = duration || 5;
 				$scope.player.currentFrame = 0;
 				timer.promise = $interval(function() {
@@ -271,7 +271,15 @@ angular.module('uguru.util.controllers')
 
 				elem.style.webkitAnimationDuration = $scope.animation.attr.duration;
 
+				$scope.player.reset();
+				$scope.animation.selected_keyframe = $scope.animation.properties['0%'];
+				$scope.animation.selected_index = 0;
+				$scope.animation.flex_selected_index = 0;
+
+
+
 				elem.style[browserPrefix + "AnimationName"] = $scope.animation.attr.name;
+
 
 
 
