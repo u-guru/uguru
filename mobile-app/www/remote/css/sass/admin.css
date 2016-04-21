@@ -1,4 +1,18 @@
 /* ---------- KEYFRAMES */
+#keys .dropdown-container h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+#keys input[type=number]::-webkit-inner-spin-button,
+#keys input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
 .anim-timeline {
   -ms-box-orient: horizontal;
   display: -webkit-box;
