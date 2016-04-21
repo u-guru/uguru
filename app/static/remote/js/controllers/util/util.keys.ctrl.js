@@ -334,10 +334,13 @@ angular.module('uguru.util.controllers')
 			function resetDanceMoveElem(player, elem, replay) {
 				elem = elem || $scope.actor;
 				player = player || $scope.player;
+				player.status = 0;
 				anim_name = $scope.animation.attr.name;
 				elem.style[browserPrefix + "AnimationName"] = null;
 				elem.offsetWidth = elem.offsetWidth;
 				$scope.timer.reset($scope.timer);
+
+
 			}
 		}
 
@@ -1187,10 +1190,30 @@ angular.module('uguru.util.controllers')
 			if (browserPrefix === 'webkit') {
 
 				elem.addEventListener( 'webkitAnimationEnd',
-				function( event ) { $scope.player.reset(); $scope.animation.selected_keyframe = $scope.animation.properties['0%']; $timeout(function(){$scope.$apply();})}, false );
+				function( event ) {
+					$scope.player.reset();
+					// var keyPercent = getNthSortedKeyText($scope.animation.obj, 0);
+					$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
+					$scope.animation.selected_index = Object.keys($scope.animation.properties).indexOf($scope.animation.selected_percent);
+					$scope.setActiveKeyFrame($scope.animation.selected_index)
+					console.log($scope.animation.selected_index);
+
+					// $scope.animation.selected_percent = keyPercent + '%';
+					$timeout(function(){$scope.$apply();})
+				}, false );
 			} else {
 				elem.addEventListener( 'animationend',
-				function( event ) { $scope.player.reset(); $scope.animation.selected_keyframe = $scope.animation.properties['0%']; $timeout(function(){$scope.$apply();})  }, false );
+				function( event ) {
+					$scope.player.reset();
+					// var keyPercent = getNthSortedKeyText($scope.animation.obj, 0);
+					$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
+					$scope.animation.selected_index = Object.keys($scope.animation.properties).indexOf($scope.animation.selected_percent);
+					$scope.setActiveKeyFrame($scope.animation.selected_index)
+					// $scope.setActiveKeyFrame($scope.animation.selected_index)
+					// $scope.animation.selected_keyframe = $scope.animation.properties[keyPercent + '%'];
+					// $scope.animation.selected_percent = keyPercent + '%';
+					$timeout(function(){$scope.$apply();})
+				}, false );
 			}
 		}
 
