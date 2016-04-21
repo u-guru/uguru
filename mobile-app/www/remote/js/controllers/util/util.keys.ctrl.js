@@ -865,9 +865,32 @@ angular.module('uguru.util.controllers')
 			}
 		}
 
-		$scope.clearAllProperties = function(kf_obj) {
-			console.log(kf_obj);
-			if (!kf_obj.confirmed) {
+		$scope.clearAllFrames = function() {
+			var propertiesDict = $scope.animation.properties;
+			var propertiesDictKeys = Object.keys(propertiesDict);
+			LoadingService.showMsg('Clearing all animations....', 2500);
+			for (var i = 0; i < propertiesDictKeys.length; i++) {
+				var indexPropertyPercentage = propertiesDictKeys[i];
+				var kfProperty = propertiesDict[indexPropertyPercentage];
+				$scope.clearAllProperties(kfProperty, true);
+			}
+			$timeout(function() {
+
+				var firstPercentage = getNthSortedKeyText($scope.animation.obj, 0);
+				$scope.animation.selected_keyframe = $scope.animation.properties[firstPercentage + '%'];
+				$scope.animation.selected_percent = firstPercentage + '%';
+				$scope.animation.selected_index = 0;
+				$timeout(function() {
+					LoadingService.showSuccess('All properties across all keyframes cleared!', 2000);
+				}, 500)
+				$scope.$apply()
+			});
+		}
+
+		$scope.clearAllProperties = function(kf_obj, skip_confirm) {
+			if (skip_confirm) {
+				kf_obj.confirmed = true;
+			} else if (!skip_confirm && !kf_obj.confirmed) {
 				kf_obj.confirmed = true;
 				return;
 			}
@@ -877,6 +900,7 @@ angular.module('uguru.util.controllers')
 				selected_kf_properties = Object.keys(kf_obj.modified);
 				for (var i = 0; i < selected_kf_properties.length; i++) {
 					var indexProperty = selected_kf_properties[i];
+
 					$scope.clearProperty(kf_obj, indexProperty);
 				}
 			}
@@ -1064,11 +1088,9 @@ angular.module('uguru.util.controllers')
 		}
 
 
-		$scope.clearAllAnimations = function(kf_index) {
-			for (var i = 0; i < Object.keys($scope.animation.properties).length; i++) {
-				$scope.resetKFByIndex(i, true);
-			}
-		}
+
+
+
 		$scope.resetKFByIndex = function(kf_index, show_confirm) {
 			if (show_confirm || confirm('are you sure? all current properties will be wiped out')) {
 				var newTransformObj = transformPropertiesObj();
@@ -1179,8 +1201,10 @@ angular.module('uguru.util.controllers')
 			},1000);
 		}
 
+
 		function initView() {
 			browserPrefix = getBrowserPrefix();
+
 
 			//turn off for now
 			false && loadAllS3Files();

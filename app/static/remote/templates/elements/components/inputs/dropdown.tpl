@@ -12,7 +12,7 @@
         </div>
         <ul ng-class='{"active": dropdown.active }'>
             <li tabindex ng-if='dropdown.key && $index !== dropdown.selectedIndex' ng-click="click(option, $index)" ng-repeat='option in dropdown.options track by $index' ng-bind-html="(dropdown.key && option[dropdown.key]) || option"></li>
-            <li tabindex ng-if='!dropdown.key && $index !== dropdown.selectedIndex' ng-click="click(option, $index)" ng-repeat='option in dropdown.options track by $index'> {{option}}></li>
+            <li tabindex ng-if='!dropdown.key && $index !== dropdown.selectedIndex' ng-click="click(option, $index)" ng-repeat='option in dropdown.options track by $index'> {{option}}</li>
         </ul>
     </div>
 </div>
