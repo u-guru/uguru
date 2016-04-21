@@ -5,14 +5,14 @@
     <main class='lyt-30-70-sidebar relative' style="height: calc(100% - 48px);">
         <section>
             <ul class='full-x p15-grid flex-center-vertical bg-campus txt-center'>
-                <li>
+                <li ng-if='player.status'>
                     <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.pause()' ng-include="img_base + BASE + 'templates/svg/main/pause.html'">Pause</a>
                 </li>
-                <li>
-                    <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.play()' ng-include="img_base + BASE + 'templates/svg/main/play.html'">Play</a>
+                <li ng-if='!player.status'>
+                    <a ng-disabled="player.status" class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.play()' ng-include="img_base + BASE + 'templates/svg/main/play.html'">Play</a>
                 </li>
                 <li>
-                    <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.reset()' ng-include="img_base + BASE + 'templates/svg/main/switch.html'">Reset</a>
+                    <a ng-disabled='!player.status' id='reset-link' class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.reset()' ng-include="img_base + BASE + 'templates/svg/main/switch.html'">Reset</a>
                 </li>
                 <li>
                     <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.toggleSettings()' ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
@@ -345,7 +345,11 @@
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 118px); overflow: hidden;" ng-show='!layout.index'>
+=======
+            <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 118px)" ng-show='!layout.index'>
+>>>>>>> 451528d358b54291406f6dd5ed731ca039f7575d
                 <div class='flex-wrap-center' style="perspective: 1000;">
                     <svg id="rect-svg" class="head" width="150px" height="150px" viewBox="0 0 150 150">
                         <g fill="none" fill-rule="evenodd">
@@ -400,7 +404,8 @@
             <div class="full-x flex-wrap-start p15-grid bg-slate">
                 <div class="flex-space-between full-x relative">
                     <li class='relative flex-center-vertical' style='bottom:20px;left:10px;'>
-                        <h2 style='font-size:50px;' class="opacity-50 weight-900 absolute left-0 top-0">{{animation.selected_percent}}</h2>
+                        <h2 ng-show='!player.status' style='font-size:50px;' class="opacity-50 weight-900 absolute left-0 top-0">{{animation.selected_percent}}</h2>
+                        <h2 ng-show='player.status' style='font-size:100px; padding-bottom:30px; margin-top:-50px;' class=" weight-900 absolute txt-azure left-0 top-0">{{timer.time}}s</h2>
                     </li>
                     <li class="flex-center-vertical">
                         <h2 class="txt-18 semibold">Duration</h2>
