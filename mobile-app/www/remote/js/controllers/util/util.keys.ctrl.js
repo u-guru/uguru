@@ -42,14 +42,14 @@ angular.module('uguru.util.controllers')
 		}
 
 		function setAnimationDirectionFunc(option, index) {
+			$scope.animation.attr.direction = option;
+		}
+
+		function setAnimationTimeFunc(option, index) {
 			if (index === $scope.animationTimingFunc.options.length - 1) {
 				option = "cubic-bezier(0.1, 0.7, 1.0, 0.1)";
 			}
 			$scope.animation.attr.timing_function = option;
-		}
-
-		function setAnimationTimeFunc(option, index) {
-			$scope.animation.attr.direction = option;
 		}
 
 
@@ -284,8 +284,20 @@ angular.module('uguru.util.controllers')
 				anim_name = $scope.animation.attr.name;
 
 
-				elem.style.webkitAnimationDuration = $scope.animation.attr.duration;
+				elem.style[browserPrefix + 'AnimationDuration'] = $scope.animation.attr.duration;
+				elem.style['animationDuration'] = $scope.animation.attr.duration;
+				elem.style[browserPrefix + 'AnimationIterationCount'] = $scope.animation.attr.iteration_count;
+				elem.style['animationIterationCount'] = $scope.animation.attr.iteration_count;
+				elem.style[browserPrefix + 'AnimationTimingFunction'] = $scope.animation.attr.timing_function;
+				elem.style['animationTimingFunction'] = $scope.animation.attr.timing_function;
+				elem.style[browserPrefix + 'AnimationFillMode'] = $scope.animation.attr.fill_mode;
+				elem.style['animationFillMode'] = $scope.animation.attr.fill_mode;
+				elem.style[browserPrefix + 'AnimationDirection'] = $scope.animation.attr.direction;
+				elem.style['animationDirection'] = $scope.animation.attr.direction;
+				elem.style[browserPrefix + 'AnimationDelay'] = $scope.animation.attr.delay;
+				elem.style['animationDelay'] = $scope.animation.attr.delay;
 
+				console.log($scope.animation.attr.delay, $scope.animation.attr.iteration_count, $scope.animation.attr.direction, $scope.animation.attr.duration, $scope.animation.attr.fill_mode, $scope.animation.attr.timing_function);
 				$scope.player.reset();
 				$scope.animation.selected_keyframe = $scope.animation.properties['0%'];
 				$scope.animation.selected_index = 0;
@@ -517,6 +529,11 @@ angular.module('uguru.util.controllers')
 		    return allRuleObjs
 		}
 
+		$scope.updateAnimationName = function(animation) {
+			animation.obj.name = animation.attr.name;
+			console.log(animation.obj);
+		}
+
 		function initAnimation(anim_name, browserPrefix, num_keyframes, duration) {
 			num_keyframes = num_keyframes || 100;
 			duration = (duration || 5) + 's';
@@ -528,13 +545,14 @@ angular.module('uguru.util.controllers')
 			var attr = {
 				name: anim_name,
 				play_state: "running",
-				delay: 0,
+				delay: '0s',
+				delayVal: 0,
 				direction: "normal",
 				iteration_count: 1,
 				timing_function: "ease",
 				duration: duration,
 				durationVal: parseInt(duration.replace('s')),
-				fill_mode: null
+				fill_mode: "forwards"
 			}
 			return {obj: anim, selected_keyframe:properties['0%'], selected_percent:'0%', selected_index: 0, flex_selected_index:0, properties: properties, kf_count: num_keyframes, attr:attr};
 		}
@@ -601,7 +619,8 @@ angular.module('uguru.util.controllers')
 			var attr = {
 				name: attr.name,
 				play_state: attr.play_state,
-				delay: attr.delay,
+				delay: attr.delay + 's',
+				delayVal: attr.delay,
 				direction: attr.direction,
 				iteration_count: attr.iteration_count,
 				timing_function: attr.timing_function,

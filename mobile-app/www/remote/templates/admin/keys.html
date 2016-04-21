@@ -37,10 +37,10 @@
                 </li> -->
 
             </ul>
-            <ul style='width:70%; top: 80px;' class='absolute left-0 p15-grid flex-center-vertical bg-campus txt-center bg-azure' ng-if='player.settings'>
+            <ul style='width:70%; top: 80px;' class='high-z-index absolute left-0 p15-grid flex-center-vertical bg-campus txt-center bg-azure' ng-if='player.settings'>
                 <li>
                     <div class='txt-1 txt-center full-x semibold'>Name</div>
-                    <input class="radius-2 flex-center p05xy" size="15" style="height: 32px;" ng-model='animation.attr.name' placeholder="animation name" type='text' />
+                    <input class="radius-2 flex-center p05xy" size="15" style="height: 32px;" ng-model='animation.attr.name' ng-blur="updateAnimationName(animation)" placeholder="animation name" type='text' />
                 </li>
                 <li class="flex-wrap-center">
                     <div class='txt-1 txt-center full-x semibold'># KF</div>
@@ -48,7 +48,7 @@
                 </li>
                 <li class="flex-wrap-center">
                     <div class='txt-1 txt-center full-x semibold'>Delay</div>
-                    <input class="radius-2 flex-center p05xy" size="4" style="height: 32px; width: 50px" ng-model='animation.attr.delay' type='number' placeholder=""/>
+                    <input ng-change="animation.attr.delay = animation.attr.delayVal + 's'" class="radius-2 flex-center p05xy" size="4" style="height: 32px; width: 50px" ng-model='animation.attr.delayVal' type='number' placeholder=""/>
                 </li>
 
                 <li class="flex-wrap-center">
