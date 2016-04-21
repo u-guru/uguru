@@ -8,7 +8,9 @@ angular.module('uguru.util.controllers')
 	'$timeout',
 	'$localstorage',
 	'$interval',
-	function($scope, $state, $stateParams, $timeout, $localstorage, $interval) {
+	'FileService',
+	'LoadingService',
+	function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService, LoadingService) {
 
 		var keyboardSpec = {
 			//toggle properties
@@ -546,6 +548,43 @@ angular.module('uguru.util.controllers')
 			}
 
 
+		function reconstructAnimationFromProperties(attr, properties, kf_count) {
+			var lastSheet = document.styleSheets[document.styleSheets.length - 1];
+			var indexOfRuleInSheet = lastSheet.insertRule("@-" + browserPrefix + "-keyframes " + attr.name + " { } ");
+			var anim = lastSheet.cssRules[indexOfRuleInSheet];
+			initKFWithXInterval(anim, kf_count);
+			var attr = {
+				name: attr.name,
+				play_state: attr.play_state,
+				delay: attr.delay,
+				direction: attr.direction,
+				iteration_count: attr.iteration_count,
+				timing_function: attr.timing_function,
+				duration: attr.duration,
+				durationVal: parseInt(attr.duration.replace('s')),
+				fill_mode: attr.fill_mode
+			}
+
+			var propertyKeys = Object.keys(properties);
+			var animation = {obj: anim,  properties: properties, kf_count: kf_count, attr:attr};
+			for (var i = 0; i < propertyKeys.length; i++) {
+				var indexPropertyKeyPercent = propertyKeys[i];
+				var modifiedDict = properties[indexPropertyKeyPercent].modified;
+				var modifiedDictKeys = Object.keys(modifiedDict);
+
+				if (modifiedDictKeys.length) {
+					console.log('modified dict has keys', modifiedDict)
+					for (var j = 0; j < modifiedDictKeys.length; j++) {
+						var indexModifiedKey = modifiedDictKeys[j];
+						var indexModifiedValue = modifiedDict[indexModifiedKey];
+						editKeyframeAtX(animation, indexPropertyKeyPercent.replace('%',''), indexModifiedKey, indexModifiedValue);
+					}
+				}
+			}
+
+			return animation
+		}
+
 		function addKFRule(anim, percentage, property_dict, browserPrefix, index) {
 			var property_keys = Object.keys(property_dict);
 			var result_property_str = '';
@@ -557,6 +596,123 @@ angular.module('uguru.util.controllers')
 			}
 
 			anim.appendRule(percentage + "% {" + result_property_str + " }", index);
+		}
+
+		function getS3Animations() {
+
+			var first_name = $scope.user.name.split(' ')[0].toLowerCase();
+			if (first_name === 'asif') {
+				first_name = 'samir';
+			}
+			var animation_url = 'https://s3.amazonaws.com/uguru-admin/master/animations.json';
+			getS3JsonFile(first_name, animation_url, s3_callback);
+
+			function s3_callback(first_name, _dict) {
+				$scope.animationDict = _dict;
+				$scope.my_animations = $scope.animationDict[first_name];
+				if ($scope.my_animations.last_edited) {
+					var serverAnimation = $scope.my_animations.last_edited;
+					$scope.animation = reconstructAnimationFromProperties(serverAnimation.attr, serverAnimation.properties, serverAnimation.kf_count);
+					$scope.animation.selected_keyframe = $scope.animation.properties['0%'];
+					$scope.animation.selected_index = 0;
+					$scope.animation.flex_selected_index = 0;
+					$timeout(function() {
+						$scope.$apply();
+					})
+				}
+
+				$scope.myAnimationDropdown = initMyAnimationDropdown($scope.my_animations);
+				LoadingService.hide();
+				// saveS3Animations();
+			}
+
+			function initMyAnimationDropdown(my_animations) {
+				// var my_animations = {};
+
+				var animationNameArr = Object.keys(my_animations.animations);
+				if (!animationNameArr.length) {
+					animationNameArr.push($scope.my_animations.last_edited.attr.name);
+				}
+				animationNameArr.push('+');
+				return {
+					options: animationNameArr,
+					onOptionClick: savePreviousAndSelectAnimation,
+					size: 'small',
+					label: 'my animations',
+					selectedIndex: 0
+				}
+
+				function savePreviousAndSelectAnimation(option, index) {
+					$scope.saveAnimationsToServer($scope.animation);;
+					if (option === '+') {
+						$scope.animation = initAnimation('new', browserPrefix, 100, 5);
+						$scope.animation.selected_keyframe = $scope.animation.properties['0%'];
+						$scope.animation.selected_index = 0;
+						$scope.animation.flex_selected_index = 0;
+						$scope.myAnimationDropdown.options.push('new');
+						$scope.myAnimationDropdown.selectedIndex = $scope.myAnimationDropdown.options.length - 1;
+						$scope.player.toggleSettings();
+					} else {
+						var serverAnimation = $scope.my_animations.animations[option];
+						$scope.animation = reconstructAnimationFromProperties(serverAnimation.attr, serverAnimation.properties, serverAnimation.kf_count);
+						$scope.animation.selected_keyframe = $scope.animation.properties['0%'];
+						$scope.animation.selected_index = 0;
+						$scope.animation.flex_selected_index = 0;
+					}
+					$timeout(function() {
+						$scope.$apply();
+					})
+				}
+
+			}
+
+			function getS3JsonFile(first_name, url, cb) {
+		        var xhr = new XMLHttpRequest();
+		        xhr.open( 'GET', url, true );
+
+		        xhr.onload = function () {
+		            console.log(xhr);
+		            var resp = JSON.parse( xhr.responseText );
+		            cb && cb(first_name, resp);
+		        };
+		        xhr.send();
+		    }
+		}
+
+		$scope.saveAnimationsToServer = function(animation) {
+			$scope.my_animations.last_edited = animation;
+			var animationName = $scope.animation.attr.name;
+			LoadingService.showMsg('Saving....');
+			if ($scope.my_animations.last_edited) {
+				$scope.my_animations.animations[animationName] = animation;
+			}
+
+
+			var first_name = $scope.user.name.split(' ')[0].toLowerCase();
+			if (first_name === 'asif') {
+				first_name = 'samir';
+			}
+			console.log($scope.animationDict);
+			// $scope.animationDict[first_name]['animations'][fileName] = $scope.animation;
+
+			saveS3Animations();
+    	}
+
+		function saveS3Animations() {
+
+			var animation_url = 'https://s3.amazonaws.com/uguru-admin/master/animations.json';
+			var first_name = $scope.user.name.split(' ')[0].toLowerCase();
+			if (first_name === 'asif') {
+				first_name = 'samir';
+			}
+			function post_callback(first_name, resp) {
+				console.log('file successfully saved', resp);
+				LoadingService.hide();
+				$timeout(function() {
+					LoadingService.showSuccess('Saved!', 1000);
+				})
+			}
+			FileService.postS3JsonFile(JSON.stringify($scope.animationDict), first_name, animation_url, post_callback);
 		}
 
 		$scope.applyPropertyChange = function(value, property) {
@@ -914,6 +1070,10 @@ angular.module('uguru.util.controllers')
 
 		function initView() {
 			browserPrefix = getBrowserPrefix();
+			LoadingService.showAmbig(null, 10000);
+			$timeout(function(){
+				getS3Animations()
+			},1000);
 
 			$scope.actor = document.querySelector('#rect-svg');
 			$scope.actor.classList.add('animated');

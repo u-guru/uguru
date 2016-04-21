@@ -255,9 +255,7 @@ function FileService(LoadingService, Restangular, DevToolService) {
         }
     }
 
-    function dragzoneOnDrop() {
 
-    }
 
     function getS3JsonFile(first_name, url, cb) {
         var xhr = new XMLHttpRequest();
