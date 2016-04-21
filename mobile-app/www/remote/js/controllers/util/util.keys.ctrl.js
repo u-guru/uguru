@@ -266,12 +266,12 @@ angular.module('uguru.util.controllers')
 
 				elem = elem || $scope.actor;
 				player = player || $scope.player;
-				anim_name = $scope.animationNames;
+				anim_name = $scope.animation.attr.name;
 
 
 				elem.style.webkitAnimationDuration = $scope.animation.attr.duration;
 
-				elem.style[browserPrefix + "AnimationName"] = $scope.animationName
+				elem.style[browserPrefix + "AnimationName"] = $scope.animation.attr.name;
 
 				if (!$scope.timer.paused) {
 					$scope.timer.start($scope.timer, $scope.animation.attr.duration);
