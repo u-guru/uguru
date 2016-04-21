@@ -1847,4 +1847,7 @@ button[disabled] {
 .inline {
   display: inline-block; }
 
+#reset-link[disabled="disabled"] {
+  opacity: 0.5; }
+
 /*# sourceMappingURL=samir.css.map */
