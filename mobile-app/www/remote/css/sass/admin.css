@@ -1,8 +1,12 @@
 /* ---------- KEYFRAMES */
 #keys .dropdown-container h2 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   margin-bottom: 5px;
+}
+
+#keys .dropdown-container .dropdown.small > div > span {
+  width: 128px;
 }
 
 #keys input[type=number]::-webkit-inner-spin-button,
