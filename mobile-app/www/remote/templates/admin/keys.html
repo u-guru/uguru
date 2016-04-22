@@ -24,7 +24,7 @@
                 </ul>
                 <ul class='p15-grid flex-center-vertical txt-center'>
                     <li>
-                        <a ng-click='layout.index = 2' class='opacity-50 weight-900'>Import</a>
+                        <a id='import-button' ng-click='layout.index = 2' class='opacity-50 weight-900'>Import</a>
                     </li>
                     <li>
                         <a id='export-button' ng-click='renderAnimationCSSText()' class="weight-900">Export</a>
@@ -79,7 +79,16 @@
                 </li>
             </ul>
             <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 136px)" ng-show='layout.index == 2'>
-                <h1 class='txt-7 p20xy txt-smoke'> </h1>
+                <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                <div class="full-xy ugrid-2 p15-grid">
+                    <div class="full-y flex-wrap-center full-x flex-stretch" style='height:90% !important; width:50% !important;'>
+                        <textarea  id='import-textarea' class='block full-xy radius-2 txt-18 p10y-p15x' placeholder="importable css to cut and post goes here" ng-model="animationDict.importTextarea"></textarea>
+                        <button ng-click='importFromCSSText(animationDict.importTextarea, animationDict.importInput)'> Import </button>
+                    </div>
+                    <div class='flex-wrap-center' style='width:50% !important; '>
+                        <input class='full-x p20xy' ng-model='animationDict.importInput'/>
+                    </div>
+                </div>
             </div>
             <div class='relative bg-slate-25p' style="height: calc(100% - 82px - 136px);" ng-show='layout.index === 1'>
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
@@ -295,7 +304,7 @@
                             <li class="flex-center-vertical-wrap-space-between">
                                 <h2 class="txt-18 semibold m15right">stroke</h2>
                                 <div class="flex-center-vertical">
-                                    <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input ng-model="animation.selected_keyframe.fillStroke" ng-change="applyPropertyChange(animation.selected_keyframe.fillStroke, 'fillStroke')" class="txt-center" size="4" placeholder="FFFFFF" type="color" style="padding: 1px 2px!important; height: 30px; width: 60px;"/>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input ng-model="animation.selected_keyframe.stroke" ng-change="applyPropertyChange(animation.selected_keyframe.stroke, 'stroke')" class="txt-center" size="4" placeholder="FFFFFF" type="color" style="padding: 1px 2px!important; height: 30px; width: 60px;"/>
                                 </div>
                             </li>
                             <li class="flex-center-vertical-wrap-space-between">
@@ -356,7 +365,14 @@
             </div>
             <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 136px); overflow: hidden;" ng-show='!layout.index'>
                 <div class='flex-wrap-center' style="perspective: 1000;">
-                    <div id="rect-svg" class="bg-white radius-4 size-150"></div>
+                    <!-- <svg width="180px" height="180px" fill="#FFFFFF" viewBox="0 0 100 100" id='rect-svg' class='radius-4'>
+                        <tspan> yo </tspan>
+                        <rect x="0" y="0" width="100" fill="inherit" height="100"></rect>
+                    </svg> -->
+                    <!-- <div id="rect-svg" class="bg-white radius-4 size-150 flex-wrap-center">Yo</div> -->
+                    <svg id='rect-svg'class='size-150 radius-4' viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path d="M77.7071855,34.003249 C72.1666671,24.4442603 61.8219498,18.0006703 50,18.0000001 L50,8 L50,18 L49.9981554,18 C38.1779324,18 27.8332606,24.4437373 22.2927152,34.0031916 L22.2927152,34.0031916 L13.626933,29 L22.2927152,34.0031916 C19.5635175,38.7120495 17.9999998,44.1769094 17.9999998,50 C17.9999998,55.8230906 19.5635175,61.2879505 22.2927152,65.9968084 L13.626933,71 L22.2927152,65.9968084 C27.8332606,75.5562627 38.1779324,82 49.9981554,82 L50,92 L50,82 C61.8219498,81.9993298 72.1666671,75.5557397 77.7071855,65.996751 L86.373067,71 L77.7071855,65.996751 C80.4364952,61.2879061 82.0000002,55.823067 82.0000002,50 C82.0000002,44.176933 80.4364952,38.7120939 77.7071855,34.003249 L86.373067,29 L77.7071855,34.003249 Z M49.9989624,68 C40.0749409,68 31.9999999,59.925059 31.9999999,50 C31.9999999,40.074941 40.0749409,32 49.9989624,32 C59.9250591,32 68.0000001,40.074941 68.0000001,50 C68.0000001,59.925059 59.9250591,68 49.9989624,68 L49.9989624,68 L49.9989624,68 Z"></path>
+                    </svg>
                 </div>
                 <!-- <div class='absolute left-0 bottom-0 ugrid-{{animationNameArr.length + 1}}' style='width:66.6%'>
                     <a class='bg-cerise p20xy txt-white txt-center'>Add</a>
@@ -680,7 +696,7 @@
                     <li class="flex-center-vertical-wrap-space-between">
                         <h2 class="txt-18 semibold m15right">stroke</h2>
                         <div class="flex-center-vertical">
-                            <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input ng-model="animation.selected_keyframe.fillStroke" ng-change="applyPropertyChange(animation.selected_keyframe.fillStroke, 'fillStroke')" class="txt-center" size="4" placeholder="FFFFFF" type="color" style="padding: 1px 2px!important; height: 30px; width: 60px;"/>
+                            <span class="bg-campus block txt-16 p05xy radius-2-left">#</span><input ng-model="animation.selected_keyframe.stroke" ng-change="applyPropertyChange(animation.selected_keyframe.stroke, 'stroke')" class="txt-center" size="4" placeholder="FFFFFF" type="color" style="padding: 1px 2px!important; height: 30px; width: 60px;"/>
                         </div>
                     </li>
                     <li class="flex-center-vertical-wrap-space-between">
