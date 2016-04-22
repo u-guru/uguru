@@ -43,9 +43,10 @@
                     <input class="radius-2 flex-center p05xy txt-center" size="15" style="height: 32px;" ng-model='animation.attr.name' ng-blur="updateAnimationName(animation)" placeholder="animation name" type='text' />
                 </li>
                 <li class="flex-wrap-center">
-                    <div class='txt-1 txt-center full-x semibold'># KF</div>
-                    <input class="radius-2 flex-center p05xy txt-center" size="4" style="height: 32px; width: 50px" ng-model='animation.kf_count' type='number' placeholder=""/>
+                    <div class='txt-1 txt-center full-x semibold'># Intervals</div>
+                    <input class="radius-2 flex-center p05xy txt-center" size="4" style="height: 32px; width: 50px" ng-blur="updateNumIntervals(animation.attr.kf_intervals)" ng-model='animation.attr.kf_intervals' type='number' placeholder=""/>
                 </li>
+
                 <li class="flex-wrap-center">
                     <div class='txt-1 txt-center full-x semibold'>Delay</div>
                     <input ng-change="animation.attr.delay = animation.attr.delayVal + 's'" class="radius-2 flex-center p05xy txt-center" size="4" style="height: 32px; width: 50px" ng-model='animation.attr.delayVal' type='number' placeholder=""/>
@@ -400,8 +401,8 @@
                 </div>
                 <div class="range-container small full-x">
                     <div>
-                        <input ng-mouseup="setActiveKeyFrame(animation.selected_index)"  class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animation.kf_count}}" list="numbers" ng-model="animation.selected_index"> </input>
-                        <span>{{animation.kf_count}}</span>
+                        <input ng-mouseup="setActiveKeyFrame(animation.selected_kf_index)"  class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animation.attr.kf_intervals}}" list="numbers"  ng-model="animation.selected_kf_index"> </input>
+                        <span>{{animation.kf_count}}%</span>
                     </div>
                     <progress class="white-round full-x" max="{{animation.attr.durationVal}}" value="{{timer.time}}"></progress>
                 </div>
