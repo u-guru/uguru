@@ -2,11 +2,16 @@
     <!-- @gabrielle, do not not remove  init-wp-parent -->
     <main id='home-splash' init-wp-parent class='splash-landing' bind-wp="s1_top">
         <!-- Sidebar -->
-        <ion-pane id='cta-modal-sidebar' ng-if='transitions.sidebar.active' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash/layout/splash.sidebar.html'"> </ion-pane>
+        <ion-pane id='cta-modal-sidebar' ng-show='activate.sidebar' class='full-xy hide-display cta-modal fixed top-0 left-0 high-z-index' ng-include="img_base + BASE + 'templates/splash/layout/splash.sidebar.html'"> </ion-pane>
 
         <!-- Mobile + desktop navs -->
         <div id='splash-desktop-nav' class='full-x' ng-if='nav.activate' ng-include="img_base + BASE + 'templates/splash/container/splash.nav.html'">
         </div>
+
+        <!-- Powerups CTA -->
+        <div id='cta-modal-powerups' class='full-x bg-charcoal-50p' ng-controller="PowerupController" ng-if='activate.powerups' ng-include="img_base + BASE + 'templates/elements/layouts/powerups.html'">
+        </div>
+
         <!-- One page dropdown -->
         <div id='splash-one-page-pulldown' ng-if="activate.searchUniversity" ng-class="{'activate': activate.searchUniversity}" class='relative full-xy high-z-index bg-slate' ng-include="img_base + 'templates/splash/layout/university.search.html'">
         </div>
@@ -49,7 +54,7 @@
 
             <!-- @gabrielle can we see if we can we fit this within the button container? -->
             <button ng-click='lockFilledBlanksAndgetUniversityPlaces(selectedUniversity)' class="button-find-guru splash-mobile-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|activate, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.splash-device-search|activate, a:inject.coach-help-mobile|hide, a:inject.splash-adlib|a, a:inject.splash-adlib ul|clear, a:inject.splash-adlib|bounceOutUp:animOut, null:inject.splash-hero-progress|activate, null:inject.splash-hero-progress span|animate">Find My Guru</button>
-            
+
             <div class="splash-hero-support opacity-0" class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a" class-on-activate="rollOut:animOut:keep">
                 <a class-on-click="null:inject.splash-guru-hat|activate, null:inject.splash-faq|activate, null:inject#guru-head-container|activate">
                     <svg width="64px" height="64px" viewBox="0 0 64 64">
@@ -85,8 +90,8 @@
             <div class="splash-hero-progress progress white opacity-0" activate-on-class="a" class-on-activate="active">
                 <span style="width: 15%;"></span>
             </div>
-            
-            
+
+
 
             <a ng-click='transitions.getStarted.activate()' class='block absolute bottom-0 center-x m05bottom opacity-50'>
                 <svg class="block" width="152px" height="76px" viewBox="0 0 304 152">
