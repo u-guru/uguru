@@ -11,7 +11,8 @@ angular.module('uguru.util.controllers')
 	'FileService',
 	'LoadingService',
 	'KeyboardService',
-	function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService, LoadingService, KeyboardService) {
+	'$compile',
+	function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService, LoadingService, KeyboardService, $compile) {
 
 		var defaults = {
 			KF_COUNT: 100,
@@ -37,7 +38,53 @@ angular.module('uguru.util.controllers')
 			}
 		}
 
+		$scope.pageDom = {stageHtml: "", animElemSelector: "stage-elem", stageCss: ""};
+		$scope.goToEditPageDom = function() {
+			$scope.layout.index = 3;
+			$scope.pageDom.stageHtml = document.querySelector('#stage-container').innerHTML;
+		}
 
+		$scope.updatePageDom = function() {
+
+			LoadingService.showAmbig('Updating..', 1000, function() {
+				LoadingService.showSuccess('Saved!', 1500);
+				$scope.layout.index = 0;
+			});
+
+			if ($scope.pageDom.stageHtml && $scope.pageDom.stageHtml.length) {
+				var stageElem = document.querySelector('#stage-container');
+				stageElem.innerHTML = $scope.pageDom.stageHtml;
+				$compile(stageElem)($scope);
+				$timeout(function() {
+					$scope.$apply();
+				})
+			}
+
+			if ($scope.pageDom.animElemSelector && $scope.pageDom.animElemSelector.length && $scope.pageDom.animElemSelector !== $scope.actor.id) {
+				var newAnimationElem = document.querySelector('#' + $scope.pageDom.animElemSelector);
+				if (newAnimationElem) {
+					$scope.actor = newAnimationElem;
+				}
+			}
+
+			if ($scope.pageDom.stageCss && $scope.pageDom.stageCss.length) {
+				var previousStyle = document.querySelector('#stage-css');
+				var stageElem = document.querySelector('#stage-container');
+				if (previousStyle) {
+					previousStyle.parentNode.removeChild(previousStyle);
+				}
+				var style = document.createElement("style");
+				style.setAttribute('id', 'stage-css');
+				style.innerHTML = $scope.pageDom.stageCss;
+				document.getElementsByTagName("head")[0].appendChild(style);
+				$compile(stageElem)($scope);
+			} else {
+				var previousStyle = document.querySelector('#stage-css');
+				if (previousStyle) {
+					previousStyle.parentNode.removeChild(previousStyle);
+				}
+			}
+		}
 
 		function setAnimationFillMode(option, index) {
 			$scope.animation.attr.fill_mode = option;
@@ -1103,7 +1150,7 @@ angular.module('uguru.util.controllers')
 		}
 
 
-		$scope.actor = document.querySelector('#rect-svg');
+		$scope.actor = document.querySelector('#stage-elem');
 
 		//todo find all keyframes
 		// var keyFrameRule = findKeyframesRule('bounceInUp');
@@ -1323,7 +1370,7 @@ angular.module('uguru.util.controllers')
 			false && loadAllS3Files();
 
 
-			$scope.actor = document.querySelector('#rect-svg');
+			$scope.actor = document.querySelector('#stage-elem');
 			initAnimationListener($scope.actor);
 
 			$scope.animation = initAnimation('sample-animation', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
