@@ -21,6 +21,7 @@ angular.module('uguru.util.controllers')
 
 		$scope.player = initAnimationPlayer();
 		$scope.timer = initAnimationTimer()
+		$scope.animationDict = {importTextarea:'', importInput: ''};
 		$scope.layout = {index: 0};
 		$scope.animationDirectionOptions = {options: ["normal", "reverse", "alternate", "alternate-reverse"], selectedIndex: 0, size: "small", onOptionClick: setAnimationDirectionFunc};
 		$scope.animationTimingFunc = {options: ["ease", "ease-in", "ease-out", "ease-in-out", "linear", "set-start", "step-end", "cubic"], selectedIndex: 0, size: "small", onOptionClick: setAnimationTimeFunc};
@@ -79,12 +80,12 @@ angular.module('uguru.util.controllers')
 			var cssToChange;
 			if (true) {
 				var transformProperties = Object.keys(propertyDictCssMap);
-				var nonTransformProperties = ['opacity'];
+				var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 				var cssToChange = {transform: {}, etc: {}};
-				for (var i = 0; i < currentPropertiesModified.length; i++) {
+				for (var i = 0; i < currentPropertiesModified.length - 1; i++) {
 					var indexPropertyName = currentPropertiesModified[i]
 					console.log('traversing all keyframes from t=0 to t=', newValue - 1, 'to search for the last ', indexPropertyName, 'edit, if it exists');
-					for (var j = 0; j < newValue; j++) {
+					for (var j = 0; j < newValue - 1; j++) {
 						console.log('checking t=', j, 'for traces of', indexPropertyName);
 						var previousIndexPercentValue = getNthSortedKeyText($scope.animation.obj, j);
 						var previousIndexProperty = $scope.animation.properties[previousIndexPercentValue + '%'];
@@ -127,7 +128,6 @@ angular.module('uguru.util.controllers')
 					}
 				}
 			}
-			console.log('\n\n');
 
 			//leave it & override all the new ones
 			//for each property, check the last one it was edited, apply it to that
@@ -136,12 +136,12 @@ angular.module('uguru.util.controllers')
 			var percentValue = getNthSortedKeyText($scope.animation.obj, newValue);
 			var proposedKeyframe = $scope.animation.properties[percentValue + '%'];
 			$scope.animation.selected_keyframe = proposedKeyframe;
-			console.log($scope.animation.selected_keyframe);
+
 
 
 			if (true) {
 				var transformProperties = Object.keys(propertyDictCssMap);
-				var nonTransformProperties = ['opacity'];
+				var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 				var cssToChange = {transform: [], etc: {}};
 				var newPropertiesToModify = Object.keys($scope.animation.selected_keyframe.modified);
 
@@ -171,6 +171,7 @@ angular.module('uguru.util.controllers')
 					var nonTransformProperties = Object.keys(cssToChange.etc);
 					for (var i = 0 ; i < nonTransformProperties.length; i++) {
 						var indexProperty = nonTransformProperties[i];
+						console.log(indexProperty);
 						var indexValue = cssToChange.etc[indexProperty];
 						console.log('setting', indexProperty, 'to', indexValue);
 						$scope.actor.style[indexProperty] = indexValue;
@@ -477,11 +478,42 @@ angular.module('uguru.util.controllers')
 				csstext = "transform: " + csstext + ';'
 			}
 
-			var nonTransformProperties = ['opacity']
-			for (var i = 0; i < nonTransformProperties.length; i++) {
-				var indexProperty = nonTransformProperties[i];
-				if (indexProperty === 'opacity' && typeof(dance_obj.opacity) === "number") {
-					csstext += ('opacity:' + dance_obj.opacity + ';')
+			var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color']
+			for (var i = 0; i < modifiedPropertyKeys.length; i++) {
+				var indexProperty = modifiedPropertyKeys[i];
+				// var indexProperty = nonTransformProperties[i];
+				if (nonTransformProperties.indexOf(indexProperty) > -1) {
+
+					if (indexProperty === 'opacity' && typeof(dance_obj.opacity) === "number") {
+						csstext += ('opacity:' + dance_obj.opacity + ';')
+					}
+					if (indexProperty === 'fill') {
+						csstext += ('fill:' + dance_obj.fill + ';');
+					}
+					if (indexProperty === 'backgroundColor') {
+						csstext += ('background-color:' + dance_obj.backgroundColor + ';');
+					}
+					if (indexProperty === 'strokeDashOffset') {
+						csstext += ('stroke-dashoffset:' + dance_obj.strokeDashOffset + ';');
+					}
+					if (indexProperty === 'strokeDashArray') {
+						csstext += ('stroke-dasharray:' + dance_obj.strokeDashArray + ';');
+					}
+					if (indexProperty === 'strokeWidth') {
+						csstext += ('stroke-width:' + dance_obj.strokeWidth + ';');
+					}
+					if (indexProperty === 'strokeOpacity') {
+						csstext += ('stroke-opacity:' + dance_obj.strokeOpacity + ';');
+					}
+					if (indexProperty === 'color') {
+						csstext += ('color:' + dance_obj.color + ';');
+					}
+					if (indexProperty === 'stroke') {
+						csstext += ('stroke:' + dance_obj.stroke + ';');
+					}
+					if (indexProperty === 'fillOpacity') {
+						csstext += ('fill-opacity:' + dance_obj.fillOpacity + ';');
+					}
 				}
 			}
 
@@ -549,6 +581,25 @@ angular.module('uguru.util.controllers')
 
 			anim.cssText = css_text;
 			return anim
+		}
+
+		function initAnimationFromAnimObj(anim_obj) {
+
+			var properties = initDictWithXProperties(anim_obj);
+			var attr = {
+				name: anim_obj.name,
+				play_state: "running",
+				delay: '0s',
+				delayVal: 0,
+				direction: "normal",
+				iteration_count: 1,
+				timing_function: "ease",
+				duration: defaults.DURATION + 's',
+				durationVal: defaults.DURATION,
+				fill_mode: "forwards",
+				kf_intervals: defaults.KF_INTERVALS
+			}
+			return {obj: anim_obj, selected_keyframe:properties['0%'], selected_kf_index:0, selected_percent:'0%', selected_index: 0, flex_selected_index:0, properties: properties, kf_count: defaults.KF_COUNT, attr:attr};
 		}
 
 		function initAnimation(anim_name, browserPrefix, num_keyframes, duration) {
@@ -999,7 +1050,7 @@ angular.module('uguru.util.controllers')
 			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX', 'rotate3DAngle': 'rotate'};
 			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'deg', 'skewY': 'deg', 'rotate3DZ':'deg', 'rotate3DY': 'deg', 'rotate3DX': 'deg', 'rotate3DAngle': 'deg'};
 			var transformProperties = Object.keys(propertyDictCssMap);
-			var nonTransformProperties = ['opacity'];
+			var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 			var cssToChange = {transform: {}, etc: {}};
 			var newPropertiesToModify = Object.keys($scope.animation.selected_keyframe.modified);
 
@@ -1014,7 +1065,8 @@ angular.module('uguru.util.controllers')
 					cssToChange.transform[propertyDictCssMap[indexPropertyName]] = '(' + propertyValue + cssUnit + ')';
 				} else {
 					cssVar = indexPropertyName;
-					cssValue = newPropertiesToModify[indexPropertyName];
+					cssValue = propertyValue
+					console.log(cssVar, cssValue);
 					var cssUnit = '';
 					cssToChange.etc[cssVar] = cssValue;
 				}
@@ -1113,15 +1165,15 @@ angular.module('uguru.util.controllers')
 				this.opacity = 1;
 				this.edited = false;
 				this.modified = {};
-				// this.backgroundColor = null;
-				// this.color = null;
-				// this.fill = null;
-				// this.fillOpacity = null;
-				// this.stroke = null;
-				// this.strokeWidth = null;
-				// this.strokeDashArray = null;
-				// this.strokeDashOffset = null;
-				// this.strokeOpacity = null;
+				this.backgroundColor = '#FFFFFF';
+				this.color = '#FFFFFF';
+				this.fill = '#FFFFFF';
+				this.fillOpacity = 1;
+				this.stroke = 1;
+				this.strokeWidth = 10;
+				this.strokeDashArray = "5,5";
+				this.strokeDashOffset = 1;
+				this.strokeOpacity = 1;
 				this.transformStyle = "preserve-3d";
 
 			};
@@ -1294,7 +1346,6 @@ angular.module('uguru.util.controllers')
 				var indexKeyStyle = indexKFRule.cssText;
 				if (!(indexKeyStyle.indexOf('{ }') > -1)) {
 					tempAnim.appendRule(indexKeyStyle, 0)
-
 				}
 			}
 			var animClassText = generateClassText($scope.animation);
@@ -1315,20 +1366,83 @@ angular.module('uguru.util.controllers')
 
 		injectStyleSheet();
 
+		function importAnimationFromRawCssText(css_text, name) {
+			var style = document.createElement("style");
+			style.setAttribute('id', name);
+			style.innerHTML = css_text;
+			var newAnim;
+			document.getElementsByTagName("head")[0].appendChild(style);
+			for (var i = 0; i < document.styleSheets.length; i++) {
+				var indexStyleSheet = document.styleSheets[i];
+				if (indexStyleSheet.ownerNode && indexStyleSheet.ownerNode.id === name) {
+
+					var animToClone = indexStyleSheet.cssRules[0];
+					var lastSheet = document.styleSheets[document.styleSheets.length - 1];
+					var indexOfRuleInSheet = lastSheet.insertRule("@-" + browserPrefix + "-keyframes " + animToClone.name + " { } ");
+					var newAnim = lastSheet.cssRules[indexOfRuleInSheet];
+					var cssRulesToClone = animToClone.cssRules;
+					for (var j = 0;j < cssRulesToClone.length; j++) {
+						var indexKeyFrame = cssRulesToClone.item(j);
+						newAnim.appendRule(indexKeyFrame.cssText, j);
+					}
+					// console.log(animToClone, Object.keys(cssRulesToClone));
+
+				}
+			}
+			return newAnim;
+		}
+
+		$scope.importFromCSSText = function(css_text, name) {
+			console.log(css_text, name);
+			// var css_text = "@keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); } 2.92% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -135.218, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -135.218, 0, 0, 1); } 3.37% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -114.871, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -114.871, 0, 0, 1); } 3.47% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -110.596, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -110.596, 0, 0, 1); } 4.58% { -webkit-transform: matrix3d(2.061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -68.65, 0, 0, 1); transform: matrix3d(2.061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -68.65, 0, 0, 1); } 5.69% { -webkit-transform: matrix3d(2.321, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -36.551, 0, 0, 1); transform: matrix3d(2.321, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -36.551, 0, 0, 1); } 5.76% { -webkit-transform: matrix3d(2.32, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -34.768, 0, 0, 1); transform: matrix3d(2.32, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -34.768, 0, 0, 1); } 7.41% { -webkit-transform: matrix3d(1.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -3.804, 0, 0, 1); transform: matrix3d(1.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -3.804, 0, 0, 1); } 7.51% { -webkit-transform: matrix3d(1.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2.454, 0, 0, 1); transform: matrix3d(1.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2.454, 0, 0, 1); } 7.88% { -webkit-transform: matrix3d(1.771, 0, 0, 0, 0, 1.062, 0, 0, 0, 0, 1, 0, 2.008, 0, 0, 1); transform: matrix3d(1.771, 0, 0, 0, 0, 1.062, 0, 0, 0, 0, 1, 0, 2.008, 0, 0, 1); } 8.68% { -webkit-transform: matrix3d(1.408, 0, 0, 0, 0, 1.181, 0, 0, 0, 0, 1, 0, 9.646, 0, 0, 1); transform: matrix3d(1.408, 0, 0, 0, 0, 1.181, 0, 0, 0, 0, 1, 0, 9.646, 0, 0, 1); } 10.03% { -webkit-transform: matrix3d(0.982, 0, 0, 0, 0, 1.333, 0, 0, 0, 0, 1, 0, 16.853, 0, 0, 1); transform: matrix3d(0.982, 0, 0, 0, 0, 1.333, 0, 0, 0, 0, 1, 0, 16.853, 0, 0, 1); } 10.85% { -webkit-transform: matrix3d(0.822, 0, 0, 0, 0, 1.398, 0, 0, 0, 0, 1, 0, 18.613, 0, 0, 1); transform: matrix3d(0.822, 0, 0, 0, 0, 1.398, 0, 0, 0, 0, 1, 0, 18.613, 0, 0, 1); } 11.53% { -webkit-transform: matrix3d(0.732, 0, 0, 0, 0, 1.439, 0, 0, 0, 0, 1, 0, 18.992, 0, 0, 1); transform: matrix3d(0.732, 0, 0, 0, 0, 1.439, 0, 0, 0, 0, 1, 0, 18.992, 0, 0, 1); } 12.22% { -webkit-transform: matrix3d(0.672, 0, 0, 0, 0, 1.469, 0, 0, 0, 0, 1, 0, 18.618, 0, 0, 1); transform: matrix3d(0.672, 0, 0, 0, 0, 1.469, 0, 0, 0, 0, 1, 0, 18.618, 0, 0, 1); } 14.18% { -webkit-transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 15.054, 0, 0, 1); transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 15.054, 0, 0, 1); } 14.37% { -webkit-transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 14.604, 0, 0, 1); transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 14.604, 0, 0, 1); } 19.23% { -webkit-transform: matrix3d(0.737, 0, 0, 0, 0, 1.371, 0, 0, 0, 0, 1, 0, 3.855, 0, 0, 1); transform: matrix3d(0.737, 0, 0, 0, 0, 1.371, 0, 0, 0, 0, 1, 0, 3.855, 0, 0, 1); } 20.01% { -webkit-transform: matrix3d(0.763, 0, 0, 0, 0, 1.338, 0, 0, 0, 0, 1, 0, 2.724, 0, 0, 1); transform: matrix3d(0.763, 0, 0, 0, 0, 1.338, 0, 0, 0, 0, 1, 0, 2.724, 0, 0, 1); } 23.05% { -webkit-transform: matrix3d(0.856, 0, 0, 0, 0, 1.211, 0, 0, 0, 0, 1, 0, 0.036, 0, 0, 1); transform: matrix3d(0.856, 0, 0, 0, 0, 1.211, 0, 0, 0, 0, 1, 0, 0.036, 0, 0, 1); } 25.75% { -webkit-transform: matrix3d(0.923, 0, 0, 0, 0, 1.114, 0, 0, 0, 0, 1, 0, -0.709, 0, 0, 1); transform: matrix3d(0.923, 0, 0, 0, 0, 1.114, 0, 0, 0, 0, 1, 0, -0.709, 0, 0, 1); } 26.94% { -webkit-transform: matrix3d(0.947, 0, 0, 0, 0, 1.078, 0, 0, 0, 0, 1, 0, -0.76, 0, 0, 1); transform: matrix3d(0.947, 0, 0, 0, 0, 1.078, 0, 0, 0, 0, 1, 0, -0.76, 0, 0, 1); } 31.58% { -webkit-transform: matrix3d(1.009, 0, 0, 0, 0, 0.987, 0, 0, 0, 0, 1, 0, -0.406, 0, 0, 1); transform: matrix3d(1.009, 0, 0, 0, 0, 0.987, 0, 0, 0, 0, 1, 0, -0.406, 0, 0, 1); } 31.73% { -webkit-transform: matrix3d(1.01, 0, 0, 0, 0, 0.986, 0, 0, 0, 0, 1, 0, -0.392, 0, 0, 1); transform: matrix3d(1.01, 0, 0, 0, 0, 0.986, 0, 0, 0, 0, 1, 0, -0.392, 0, 0, 1); } 37.32% { -webkit-transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.03, 0, 0, 1); transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.03, 0, 0, 1); } 38.15% { -webkit-transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.008, 0, 0, 1); transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.008, 0, 0, 1); } 42.35% { -webkit-transform: matrix3d(1.022, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0.03, 0, 0, 1); transform: matrix3d(1.022, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0.03, 0, 0, 1); } 48.9% { -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, 0.009, 0, 0, 1); transform: matrix3d(1.007, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, 0.009, 0, 0, 1); } 57.77% { -webkit-transform: matrix3d(0.998, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); transform: matrix3d(0.998, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); } 60.47% { -webkit-transform: matrix3d(0.998, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); transform: matrix3d(0.998, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); } 69.36% { -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.999, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 83.61% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } ";
+			var js_anim_obj = importAnimationFromRawCssText(css_text, name);
+			var final_obj = initAnimationFromAnimObj(js_anim_obj);
+			$scope.animationDropdown.options[0] = name;
+			$scope.animation = final_obj;
+			console.log(final_obj.obj);
+			return final_obj;
+
+		}
+
 		$timeout(function() {
 
 			$timeout(function() {
 
-				var arr = getAllKeyFrameAnimations();
-				var randomKeyFrameAnimation = arr[0];
-				randomKeyFrameAnimation.name = "samir"
+				// $scope.animation = $scope.importFromCSSText($scope.animationDict.importTextarea, $scope.animationDict.importInput);
+				// importAnimationFromRawCssText(initAnimationFromAnimObj, css_text);
+				// var arr = getAllKeyFrameAnimations();
+				// for (var i = 0; i < arr.length ; i++) {
+				// 	console.log(arr[i].name);
+				// }
+				// var tempAnim = arr[0]
+				// $scope.importFromCSSText(tempAnim.cssText, tempAnim.name);
+				// console.log(arr.length);
+				// var randomKeyFrameAnimation = arr[0];
+				// randomKeyFrameAnimation.name = "samir"
 
-				var style = document.createElement("style");
-				style.setAttribute('id', 'testtesttest');
+				// var style = document.createElement("style");
+				// style.setAttribute('id', 'testtesttest');
 
-				style.innerHTML = randomKeyFrameAnimation.cssText + '\n\n' + arr[1].cssText + '\n\n' + arr[2].cssText;
-				document.getElementsByTagName("head")[0].appendChild(style);
-				console.log(document.styleSheets);
+				// style.innerHTML = randomKeyFrameAnimation.cssText + '\n\n' + arr[1].cssText + '\n\n' + arr[2].cssText;
+				// document.getElementsByTagName("head")[0].appendChild(style);
+				// for (var i = 0; i < document.styleSheets.length; i++) {
+				// 	var indexStyleSheet = document.styleSheets[i];
+				// 	if (indexStyleSheet.ownerNode && indexStyleSheet.ownerNode.id === "testtesttest") {
+				// 		console.log(indexStyleSheet)
+				// 		var animToClone = indexStyleSheet.cssRules[0];
+				// 		var lastSheet = document.styleSheets[document.styleSheets.length - 1];
+				// 		var indexOfRuleInSheet = lastSheet.insertRule("@-" + browserPrefix + "-keyframes " + animToClone.name + " { } ");
+				// 		var newAnim = lastSheet.cssRules[indexOfRuleInSheet];
+				// 		var cssRulesToClone = animToClone.cssRules;
+				// 		for (var j = 0;j < cssRulesToClone.length; j++) {
+				// 			var indexKeyFrame = cssRulesToClone.item(j);
+				// 			newAnim.appendRule(indexKeyFrame.cssText, j);
+				// 		}
+				// 		console.log(newAnim);
+				// 		// console.log(animToClone, Object.keys(cssRulesToClone));
+
+				// 	}
+				// }
 
 			}, 2000);
 			initAll();
