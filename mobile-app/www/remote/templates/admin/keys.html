@@ -16,7 +16,7 @@
                         <a ng-disabled='!player.status' id='reset-link' class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.reset()' ng-include="img_base + BASE + 'templates/svg/main/switch.html'">Reset</a>
                     </li>
                     <li>
-                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.toggleSettings()' ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
+                        <a id='settings-button' class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.toggleSettings()' ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
                     </li>
                     <li>
                         <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='clearAllFrames()'><i class='icon ion-trash-a txt-36'></i></a>
@@ -27,7 +27,7 @@
                         <a ng-click='layout.index = 2' class='opacity-50 weight-900'>Import</a>
                     </li>
                     <li>
-                        <a ng-click='layout.index = 1' class="weight-900">Export</a>
+                        <a id='export-button' ng-click='renderAnimationCSSText()' class="weight-900">Export</a>
                     </li>
                     <li ng-if='false'>
                         <a ng-click='saveAnimationsToServer(animation)' class="weight-900">Save</a>
@@ -91,7 +91,7 @@
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                 <div class="full-xy ugrid-2 p15-grid">
                     <div class="full-y">
-                        <textarea class='block full-xy radius-2 txt-18 p10y-p15x' placeholder="exportable css to cut and post goes here" ng-model="animation.obj.cssText"></textarea>
+                        <textarea  id='export-textarea' class='block full-xy radius-2 txt-18 p10y-p15x' placeholder="exportable css to cut and post goes here" ng-model="animation.exportable_kf.fullText"></textarea>
                     </div>
                     <div class="overflow-auto full-y"  style="padding: 0!important;">
                         <h1 class="semibold p7-5">Defaults</h1>

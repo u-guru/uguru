@@ -542,6 +542,15 @@ angular.module('uguru.util.controllers')
 			console.log(animation.obj);
 		}
 
+		function initAnimationFromCSSText(anim_name, browserPrefix, css_text) {
+			var lastSheet = document.styleSheets[document.styleSheets.length - 1];
+			var indexOfRuleInSheet = lastSheet.insertRule("@-" + browserPrefix + "-keyframes " + anim_name + " { } ");
+			var anim = lastSheet.cssRules[indexOfRuleInSheet];
+
+			anim.cssText = css_text;
+			return anim
+		}
+
 		function initAnimation(anim_name, browserPrefix, num_keyframes, duration) {
 			num_keyframes = num_keyframes || 100;
 			duration = (duration || 5) + 's';
@@ -1265,7 +1274,7 @@ angular.module('uguru.util.controllers')
 			$scope.actor = document.querySelector('#rect-svg');
 			initAnimationListener($scope.actor);
 
-			$scope.animation = initAnimation('animation', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
+			$scope.animation = initAnimation('sample-animation', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
 			$scope.animationDropdown = {options:[$scope.animation.attr.name, '+'], selectedIndex: 0, label:'temp-animation', size:'small'};
 
 
@@ -1274,12 +1283,40 @@ angular.module('uguru.util.controllers')
 
 
 		}
+		$scope.renderAnimationCSSText = function() {
+			$scope.layout.index = 1;
+
+			var tempAnim = initAnimationFromCSSText($scope.animation.obj.name, browserPrefix, $scope.animation.obj.cssText);
+			var cssRulesLength = $scope.animation.obj.cssRules.length;
+			for (var i = 0; i < cssRulesLength; i++) {
+				var indexKFRule = $scope.animation.obj.cssRules.item(i);
+				var indexKeyText = indexKFRule.keyText;
+				var indexKeyStyle = indexKFRule.cssText;
+				if (!(indexKeyStyle.indexOf('{ }') > -1)) {
+					tempAnim.appendRule(indexKeyStyle, 0)
+
+				}
+			}
+			var animClassText = generateClassText($scope.animation);
+			$scope.animation.exportable_kf = {obj: tempAnim, className: tempAnim.name, classText: animClassText, fullText: animClassText + tempAnim.cssText };
+
+			$timeout(function() {
+				// angular.element(document.querySelector('#export-textarea')).select()
+				document.querySelector('#export-textarea').select();
+				// window.prompt("Copy to clipboard: Ctrl+C, Enter", $scope.animation.exportable_kf.fullText);
+				document.execCommand('copy')
+			}, 1000)
+			function generateClassText(anim) {
+				 return "." + anim.obj.name + "\n{\n   " + ' animation:  ' + anim.obj.name + '  ' + anim.attr.duration  + '  ' + anim.attr.timing_function + '  ' + anim.attr.delay + '  ' + anim.attr.iteration_count + '  ' + anim.attr.direction + ';\n    ' + browserPrefix + '-' + ' animation:  ' + anim.obj.name + '  ' + anim.attr.duration  + '  ' + anim.attr.timing_function + '  ' + anim.attr.delay + '  ' + anim.attr.iteration_count + '  ' + anim.attr.direction + ';\n}\n\n'
+			}
+		}
 
 		var browserPrefix;
 
 		injectStyleSheet();
 
 		$timeout(function() {
+
 			$timeout(function() {
 
 				var arr = getAllKeyFrameAnimations();
@@ -1295,6 +1332,7 @@ angular.module('uguru.util.controllers')
 
 			}, 2000);
 			initAll();
+
 		}, 2000)
 
 	}
