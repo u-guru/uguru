@@ -1170,8 +1170,8 @@ angular.module('uguru.util.controllers')
 				this.fill = '#FFFFFF';
 				this.fillOpacity = 1;
 				this.stroke = 1;
-				this.strokeWidth = 10;
-				this.strokeDashArray = "5,5";
+				this.strokeWidth = 1;
+				this.strokeDashArray = "5";
 				this.strokeDashOffset = 1;
 				this.strokeOpacity = 1;
 				this.transformStyle = "preserve-3d";
