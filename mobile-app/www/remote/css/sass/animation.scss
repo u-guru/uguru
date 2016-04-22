@@ -1015,3 +1015,26 @@
 	@include animation-timing-function(ease-in-out);
 	@include animation-name(headShake);
 }
+
+@keyframes ping {
+	0% {
+		transform: scale(1,1);
+		opacity: 0.0;
+	}
+	40% {
+		opacity: 1.0;
+	}
+	100% {
+		transform: scale(2, 2);
+		opacity: 0.0;
+	}
+}
+
+@include keyframes(hover-success) {
+	0% {
+		@include prefix(transform, translateY(3px), webkit moz ms o);
+	}
+	100% {
+		@include prefix(transform, translateY(-3px), webkit moz ms o);
+	}
+}

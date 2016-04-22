@@ -53,7 +53,6 @@
 	z-index: 9999;
 	background: rgba($slate, .95);
 }
-
 .splash-school-loader {
 	@include round;
 	width: 200px;
@@ -110,31 +109,6 @@
 			z-index: 10;
 			background: rgba($slate, .9);
 		}
-	}
-}
-
-@keyframes ping {
-	0% {
-		transform: scale(1,1);
-		opacity: 0.0;
-	}
-	40% {
-		opacity: 1.0;
-	}
-	100% {
-		transform: scale(2, 2);
-		opacity: 0.0;
-	}
-}
-
-/* ---------- SPLASH UPDATES */
-#splash-one-page-pulldown {
-	@include prefix(transition, all 700ms ease-in-out, webkit moz ms o);
-	@include prefix(transform, translate3d(0,-100%,0), webkit moz ms o);
-	z-index: -1000;
-	&.activate {
-		@include prefix(transform, translate3d(0,0,0), webkit moz ms o);
-		z-index: 1001;
 	}
 }
 
@@ -213,145 +187,113 @@
 	}
 }
 .splash-burger {
-	@include center-xy;
-	height: 100%;
-	max-width: 42px;
-	max-height: 42px;
-	&.close {
-		svg {
-			@include prefix(transform, rotate(45deg), webkit moz ms o);
-		}
+	@include flex;
+	@include flex-center;
+	width: 42px;
+	height: 42px;
+	position: relative;
+	&:before {
+		@include prefix(transform, scale(0), webkit moz ms o);
+		@include prefix(transform-origin, center center, webkit moz ms o);
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		@include round;
+		content: "";
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -15px;
+		margin-left: -15px;
+		width: 30px;
+		height: 30px;
+		background: white;
+	}
+	* {
+		@include prefix(transform-origin, center center, webkit moz ms o);
 	}
 	svg {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 		height: 100%;
 		width: auto;
+		position: relative;
+		z-index: 10;
 		g, circle, path {
 			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 			@include svg-stroke(white, 4);
+		}
+		g:not(.path) > path, .path {
+			@include prefix(transform, rotate(0deg), webkit moz ms o);
 		}
 	}
 	&:hover, &:focus {
 		background: none;
 		svg {
-			circle {
-				fill: white;
+			g:not(.path) > path, .path {
+				@include prefix(transform, rotate(180deg), webkit moz ms o);
 			}
 			path {
 				stroke: $slate;
 			}
 		}
+		&:before {
+			@include prefix(transform, scale(1), webkit moz ms o);
+		}
 	}
-	@media screen and (min-width: 768px) {
-		@include reset-pos;
-		margin: 0 15px 0 0!important;
-	}
-}
-.postit {
-	position: relative;
-	margin: auto;
-	overflow: hidden;
-	.square {
-		display: block;
-		width: 100%;
-		height: auto;
-		fill: none;
-	}
-	> div {
-		@include flex;
-		@include flex-center;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		overflow: hidden;
-		border: 2px solid white;
-		border-radius: 2px;
-		background: rgba(lighten($slate, 5%), .9);
-		padding: 15px;
-		text-align: center;
-		&:hover {
-			span {
-				svg {
-					@include animation-name(opacity-scale);
-					@include animation-iteration-count(infinite);
-					* {
-						@include animation-iteration-count(infinite);
-					}
-					path[opacity="0.5"]:not([stroke]), circle[opacity="0.5"] {
-						@include animation-name(opacity-pulse);
-					}
-					path[opacity="0.5"][stroke], path.special[opacity="0.5"]:not([stroke]) {
-						@include animation-name(opacity-pulse-stroke);
-					}
-				}
+	&:active {
+		&:before {
+			background: lighten($slate, 15%);
+		}
+		svg {
+			circle {
+				stroke: lighten($slate, 15%);
+			}
+			path {
+				stroke: white;
 			}
 		}
-		span {
-			@include round;
-			display: block;
-			position: relative;
-			z-index: 9;
-			margin: 0 auto;
-			width: 96px;
-			height: 96px;
+	}
+	&.close {
+		svg {
+			@include prefix(transform, rotate(225deg), webkit moz ms o);
+		}
+		&:hover, &:focus {
 			svg {
-				@include animation-fill-mode(forwards);
-				@include prefix(transition, all .3s ease-in-out, webkit moz ms o);
-				@include animation-duration(.9s);
-				@include transform-origin(center);
-				display: block;
-				width: 100%;
-				height: 100%;
-				* {
-					@include animation-fill-mode(forwards);
-					@include prefix(transition, all .3s ease-in-out, webkit moz ms o);
-					@include animation-duration(.9s);
-					@include transform-origin(center);
+				@include prefix(transform, rotate(45deg), webkit moz ms o);
+			}
+		}
+	}
+	&#cta-box-powerups {
+		&:not(.active) {
+			svg {
+				circle {
+					stroke: $gold;
 				}
-				&.animate {
-					@include animation-name(opacity-scale);
-					@include animation-iteration-count(1);
-					* {
-						@include animation-iteration-count(1);
-					}
-					path[opacity="0.5"]:not([stroke]), circle[opacity="0.5"] {
-						@include animation-name(opacity-pulse);
-					}
-					path[opacity="0.5"][stroke], path.special[opacity="0.5"]:not([stroke]) {
-						@include animation-name(opacity-pulse-stroke);
+				path {
+					fill: $gold;
+					stroke: $gold;
+				}
+			}
+			&:hover, &:focus {
+				svg {
+					circle {
+						stroke: white;
 					}
 				}
 			}
 		}
-		h1 {
-			max-height: 24px!important;
-			overflow: hidden!important;
-			font-size: 20px;
-			font-weight: 600;
-		}
-		p {
-			max-height: 38px!important;
-			overflow: hidden!important;
-			margin: 5px 0;
-			font-size: 16px;
-			font-weight: 400;
+	}
+	&#cta-box-sidebar {
+		@include center-xy;
+		@media screen and (min-width: 860px) {
+			@include prefix(transform, none!important, webkit moz ms o);
+			position: relative!important;
+			top: auto!important;
+			left: auto!important;
+			margin: 0 15px 0 0!important;
 		}
 	}
-}
-.tape {
-	@include animation-fill-mode(forwards);
-	@include prefix(transition, all .3s ease-in-out, webkit moz ms o);
-	@include animation-duration(.6s);
-	@include animation-iteration-count(1);
-	@include transform-origin(center);
-	display: block;
-	position: absolute;
-	z-index: 40;
-	width: 30px;
-	height: auto;
-	path {
-		fill: rgba(white, .4);
+	@media screen and (min-width: 860px) {
+		margin: 0 15px 0 0!important;
 	}
 }
 
@@ -441,15 +383,6 @@
 		&:active {
 			background: lighten($shamrock, 35%)!important;
 		}
-	}
-}
-
-@include keyframes(hover-success) {
-	0% {
-		@include prefix(transform, translateY(3px), webkit moz ms o);
-	}
-	100% {
-		@include prefix(transform, translateY(-3px), webkit moz ms o);
 	}
 }
 
@@ -590,6 +523,7 @@
 	.splash-header {
 		@include flex;
 		@include flex-center-vertical;
+		@include prefix(justify-content, space-between);
 		width: 100%;
 		height: 50px;
 		&:before {
@@ -613,15 +547,10 @@
 			}
 		}
 		.right {
+			@include flex;
+			@include flex-center-vertical;
+			@include prefix(justify-content, flex-end, webkit);
 			height: 100%;
-			.splash-nav-link {
-				@include flex;
-				@include flex-center-vertical;
-				position: absolute;
-				top: 0;
-				right: 0;
-				height: 100%;
-			}
 		}
 		.splash-logo {
 			margin: 5px;
@@ -642,15 +571,15 @@
 			}
 		}
 		&.mobile {
-			position: absolute;
-			top: 0;
-			right: 0;
+			padding: 5px;
 			a {
 				@include flex;
 				@include flex-center;
 				position: relative;
 				height: 42px;
 				padding: 0 10px 0 15px;
+				border-radius: 2px;
+				border: 2px solid white;
 				span {
 					font-size: 18px;
 					font-weight: 600;
@@ -1250,56 +1179,7 @@
 				.splash-logo {
 					height: 50px!important;
     				margin: 5px;
-    				width:inherit;
-				}
-				.splash-burger {
-					position: relative;
-					&:before {
-						@include prefix(transform, scale(0), webkit moz ms o);
-						@include prefix(transform-origin, center center, webkit moz ms o);
-						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						@include round;
-						content: "";
-						display: block;
-						position: absolute;
-						top: 50%;
-						left: 50%;
-						margin-top: -15px;
-						margin-left: -15px;
-						width: 30px;
-						height: 30px;
-						background: white;
-					}
-					svg {
-						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						position: relative;
-						z-index: 10;
-					}
-					&:hover, &:focus {
-						&:before {
-							@include prefix(transform, scale(1), webkit moz ms o);
-						}
-						svg {
-							@include prefix(transform, rotate(225deg), webkit moz ms o);
-							circle {
-								fill: none;
-							}
-						}
-					}
-					&:active {
-						&:before {
-							background: lighten($slate, 15%);
-						}
-						svg {
-							circle {
-								stroke: lighten($slate, 15%);
-								fill: none;
-							}
-							path {
-								stroke: white;
-							}
-						}
-					}
+    				width: inherit;
 				}
 			}
 			div {
@@ -5109,375 +4989,168 @@
 	}
 }
 
-/* ---------- HOW IT WORKS */
-/// HTML ///
-.circle-nav {
-	ul {
-		@include flex;
-		@include flex-center;
-		padding: 15px;
-		li {
-			width: 130px;
+/* ---------- Projector Animation [deprecate] */
+.splash-landing {
+	/* ---------- HOW IT WORKS */
+	/// HTML ///
+	.circle-nav {
+		ul {
+			@include flex;
+			@include flex-center;
 			padding: 15px;
-			a {
-				display: block;
-				svg {
-					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			li {
+				width: 130px;
+				padding: 15px;
+				a {
 					display: block;
-					width: 100%;
-					* {
-						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-					}
-				}
-				h1 {
-					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-					@include opacity(0);
-					padding-top: 5px;
-					width: 100%;
-					font-size: 14px;
-					font-weight: 600;
-					text-align: center;
-				}
-				&:hover, &:focus, &:active, &.active-circle {
-					@include prefix(transform, scale(1.25), webkit moz ms o);
 					svg {
-						.bg-slate, .fade {
-							@include opacity(0);
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						display: block;
+						width: 100%;
+						* {
+							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 						}
 					}
 					h1 {
-						@include opacity(1);
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						@include opacity(0);
+						padding-top: 5px;
+						width: 100%;
+						font-size: 14px;
+						font-weight: 600;
+						text-align: center;
+					}
+					&:hover, &:focus, &:active, &.active-circle {
+						@include prefix(transform, scale(1.25), webkit moz ms o);
+						svg {
+							.bg-slate, .fade {
+								@include opacity(0);
+							}
+						}
+						h1 {
+							@include opacity(1);
+						}
 					}
 				}
 			}
 		}
 	}
-}
-#hiw {
-	@include flex;
-	@include flex-wrap;
-	header {
-		@include opacity(0);
-		@include flex-center;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		min-height: 0!important;
-		h1 {
-			@include opacity(0);
-			padding: 15px;
-			text-align: center;
-			font-size: 28px;
-			font-weight: 600;
-			text-transform: capitalize;
-		}
-	}
-	.main {
+	#hiw {
 		@include flex;
 		@include flex-wrap;
-		padding: 0;
-		margin-top: 15px;
-		width: 100%;
-		height: 100%;
-		.how-scene {
-			@include flex;
+		header {
+			@include opacity(0);
 			@include flex-center;
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
+			min-height: 0!important;
+			h1 {
+				@include opacity(0);
+				padding: 15px;
+				text-align: center;
+				font-size: 28px;
+				font-weight: 600;
+				text-transform: capitalize;
+			}
+		}
+		.main {
+			@include flex;
+			@include flex-wrap;
+			padding: 0;
+			margin-top: 15px;
+			width: 100%;
 			height: 100%;
-			> div {
-				transition: all 150ms ease-in-out;
+			.how-scene {
+				@include flex;
+				@include flex-center;
 				position: absolute;
 				top: 0;
 				left: 0;
 				width: 100%;
 				height: 100%;
-				overflow: hidden;
-			}
-			.active-scene {
-				z-index: 10;
-			}
-			.how-scene-6 {
-				svg {
-					@include center-x;
-					display: block;
-					top: 0;
-					width: 100%;
-					min-width: 600px;
-					max-width: 800px;
-					height: 100%;
-				}
-			}
-			.how-scene-5 {
-				.hiw-student-run {
-					@include opacity(.05);
-					position: absolute;
-					top: 0;
-					height: 100%;
-					max-height: 400px;
-					width: auto;
-				}
-				.ugrid-2 {
-					@include flex-center;
+				> div {
+					transition: all 150ms ease-in-out;
 					position: absolute;
 					top: 0;
 					left: 0;
 					width: 100%;
-					padding: 7.5px;
-					> li {
-						padding: 7.5px;
-						max-width: 350px;
-						.pf-card-outline {
-							.pf-card-main {
-								.pf-card-content {
-									.pf-courses {
-										li {
-											&:nth-child(1) {
-												.pf-course, .pf-course:before {
-													@include prefix(animation-duration, 3000ms!important, webkit moz ms o);
-												}
-											}
-											&:nth-child(2) {
-												.pf-course, .pf-course:before {
-													@include prefix(animation-delay, 200ms!important, webkit moz ms o);
-												}
-											}
-											&:nth-child(3) {
-												.pf-course, .pf-course:before {
-													@include prefix(animation-delay, 400ms!important, webkit moz ms o);
-												}
-											}
-											&:nth-child(4) {
-												.pf-course, .pf-course:before {
-													@include prefix(animation-delay, 400ms!important, webkit moz ms o);
-												}
-											}
-											&:nth-child(5) {
-												.pf-course, .pf-course:before {
-													@include prefix(animation-delay, 600ms!important, webkit moz ms o);
-												}
-											}
-											&:nth-child(6) {
-												.pf-course, .pf-course:before {
-													@include prefix(animation-delay, 800ms!important, webkit moz ms o);
-												}
-											}
-											&:nth-child(7) {
-												.pf-course, .pf-course:before {
-													@include prefix(animation-delay, 1000ms!important, webkit moz ms o);
-												}
-											}
-										}
-									}
-								}
-							}
-						}
+					height: 100%;
+					overflow: hidden;
+				}
+				.active-scene {
+					z-index: 10;
+				}
+				.how-scene-6 {
+					svg {
+						@include center-x;
+						display: block;
+						top: 0;
+						width: 100%;
+						min-width: 600px;
+						max-width: 800px;
+						height: 100%;
 					}
 				}
-			}
-			.how-scene-4 {
-				background: mix($auburn, $orange);
-				svg {
-					display: block;
-					position: absolute;
-					&[class*="desktop"] {
-						display: none;
+				.how-scene-5 {
+					.hiw-student-run {
+						@include opacity(.05);
+						position: absolute;
+						top: 0;
+						height: 100%;
+						max-height: 400px;
+						width: auto;
+					}
+					.ugrid-2 {
+						@include flex-center;
+						position: absolute;
 						top: 0;
 						left: 0;
 						width: 100%;
-						height: auto;
-						max-height: 400px;
-						.guru-1, .guru-2, .guru-3, .guru-4, .guru-5 {
-							@include prefix(transform, scale(0), webkit moz ms o);
-							@include prefix(transform-origin, 50% 50%, webkit moz ms o);
-						}
-					}
-					&.graph {
-						position: absolute;
-						top: 0;
-						left: 50%;
-						@include prefix(transform, translateX(-50%), webkit moz ms o);
-						height: calc(100% - 229px);
-						* {
-							stroke-width: 4px;
-						}
-						.point {
-							@include prefix(animation, 1000ms point-graph ease-in-out forwards, webkit moz ms o);
-						}
-					}
-				}
-			}
-			.how-scene-3 {
-				svg {
-					display: block;
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: auto;
-					max-height: 400px;
-					.guru {
-						@include prefix(transition, all 300ms ease-in, webkit moz ms o);
-					}
-					.guru-academic {
-						@include prefix(transform, translateX(211.5%), webkit moz ms o);
-					}
-					.guru-baking {
-						@include prefix(transform, translateX(105.75%), webkit moz ms o);
-					}
-					.guru-household {
-						@include prefix(transform, translateX(-105.75%), webkit moz ms o);
-					}
-					.guru-tech {
-						@include prefix(transform, translateX(-211.5%), webkit moz ms o);
-					}
-				}
-			}
-			.how-scene-2 {
-				background: mix($moola, $slate, 90%);
-				.ugrid-2 {
-					@include center-x;
-					top: 30%;
-					width: 100%;
-					text-align: center;
-					> div {
-						position: relative;
-					}
-					h1 {
-						font-size: 28px;
-						font-weight: 600;
-					}
-					h2 {
-						margin-top: 5px!important;
-						font-size: 48px;
-						font-weight: 900;
-					}
-				}
-				.hiw-svg-container {
-					position: absolute!important;
-					top: 0;
-					left: 0;
-					width: 100%;
-					@media screen and (max-width: 768px) {
-						top: 90px;
-					}
-					svg {
-						position: absolute;
-						top: 0;
-						left: 50%;
-						margin-left: -100px;
-						width: 200px!important;
-						height: 200px!important;
-						* {
-							stroke-width: 8px;
-						}
-					}
-				}
-			}
-			.how-scene-1 {
-				background: mix($lake, $slate, 40%);
-				svg {
-					display: block;
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: auto;
-					max-height: 400px;
-					&:not([class*="mobile"]) {
-						display: none;
-					}
-				}
-			}
-		}
-		.circle-nav {
-			position: absolute;
-			z-index: 11;
-			bottom: -115px;
-			left: 0;
-			width: 100%;
-		}
-		.how-props {
-			@include flex;
-			@include flex-wrap;
-			@include flex-center;
-			position: absolute;
-			z-index: 11;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			padding: 7.5px;
-			li {
-				width: calc(100% / 3);
-				text-align: center;
-				padding: 7.5px;
-				a {
-					@include flex;
-					@include flex-wrap;
-					@include flex-center;
-					margin: 0 auto;
-					div {
-						width: 100%;
-						max-width: 50px;
-					}
-					svg {
-						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						border-radius: 5px;
-						background: lighten($slate, 5%);
-						* {
-							stroke-width: 4px!important;
-						}
-					}
-					h1 {
-						padding-top: 10px;
-						width: 100%;
-						font-size: 14px;
-						font-weight: 600;
-					}
-					&:hover {
-						svg {
-							background: lighten($slate, 15%);
-						}
-					}
-				}
-			}
-		}
-	}
-	@media screen and (max-width: 768px) {
-		.main {
-			.how-scene {
-				.how-scene-3 {
-					.ugrid-5 {
-						li:not(:first-child) {
-							@include opacity(0);
-						}
-						li:first-child {
-							@include prefix(animation, 1000ms guru-switch infinite forwards, webkit moz ms o);
-						}
-					}
-				}
-			}
-		}
-	}
-	@media screen and (min-width: 768px) {
-		header {
-			@include opacity(1);
-		}
-		.main {
-			.how-scene {
-				.how-scene-5 {
-					.ugrid-2 {
+						padding: 7.5px;
 						> li {
+							padding: 7.5px;
+							max-width: 350px;
 							.pf-card-outline {
 								.pf-card-main {
 									.pf-card-content {
 										.pf-courses {
 											li {
-												&:not(:first-child) {
-													display: block;
+												&:nth-child(1) {
+													.pf-course, .pf-course:before {
+														@include prefix(animation-duration, 3000ms!important, webkit moz ms o);
+													}
+												}
+												&:nth-child(2) {
+													.pf-course, .pf-course:before {
+														@include prefix(animation-delay, 200ms!important, webkit moz ms o);
+													}
+												}
+												&:nth-child(3) {
+													.pf-course, .pf-course:before {
+														@include prefix(animation-delay, 400ms!important, webkit moz ms o);
+													}
+												}
+												&:nth-child(4) {
+													.pf-course, .pf-course:before {
+														@include prefix(animation-delay, 400ms!important, webkit moz ms o);
+													}
+												}
+												&:nth-child(5) {
+													.pf-course, .pf-course:before {
+														@include prefix(animation-delay, 600ms!important, webkit moz ms o);
+													}
+												}
+												&:nth-child(6) {
+													.pf-course, .pf-course:before {
+														@include prefix(animation-delay, 800ms!important, webkit moz ms o);
+													}
+												}
+												&:nth-child(7) {
+													.pf-course, .pf-course:before {
+														@include prefix(animation-delay, 1000ms!important, webkit moz ms o);
+													}
 												}
 											}
 										}
@@ -5488,589 +5161,799 @@
 					}
 				}
 				.how-scene-4 {
+					background: mix($auburn, $orange);
 					svg {
+						display: block;
+						position: absolute;
 						&[class*="desktop"] {
-							display: block;
-							top: auto;
-							bottom: 178px;
+							display: none;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: auto;
+							max-height: 400px;
+							.guru-1, .guru-2, .guru-3, .guru-4, .guru-5 {
+								@include prefix(transform, scale(0), webkit moz ms o);
+								@include prefix(transform-origin, 50% 50%, webkit moz ms o);
+							}
 						}
 						&.graph {
-							display: none;
+							position: absolute;
+							top: 0;
+							left: 50%;
+							@include prefix(transform, translateX(-50%), webkit moz ms o);
+							height: calc(100% - 229px);
+							* {
+								stroke-width: 4px;
+							}
+							.point {
+								@include prefix(animation, 1000ms point-graph ease-in-out forwards, webkit moz ms o);
+							}
 						}
 					}
 				}
 				.how-scene-3 {
-					background: #69867C;
 					svg {
-						&.guru {
-							position: static!important;
-							top: auto!important;
-							margin-top: 50px;
-							left: auto!important;
-							max-width: 80%;
+						display: block;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: auto;
+						max-height: 400px;
+						.guru {
+							@include prefix(transition, all 300ms ease-in, webkit moz ms o);
 						}
-						&.conveyor {
-							top: auto;
-							bottom: 178px;
+						.guru-academic {
+							@include prefix(transform, translateX(211.5%), webkit moz ms o);
+						}
+						.guru-baking {
+							@include prefix(transform, translateX(105.75%), webkit moz ms o);
+						}
+						.guru-household {
+							@include prefix(transform, translateX(-105.75%), webkit moz ms o);
+						}
+						.guru-tech {
+							@include prefix(transform, translateX(-211.5%), webkit moz ms o);
 						}
 					}
 				}
 				.how-scene-2 {
+					background: mix($moola, $slate, 90%);
 					.ugrid-2 {
+						@include center-x;
+						top: 30%;
+						width: 100%;
+						text-align: center;
+						> div {
+							position: relative;
+						}
 						h1 {
-							font-size: 36px;
+							font-size: 28px;
+							font-weight: 600;
 						}
 						h2 {
-							font-size: 64px;
+							margin-top: 5px!important;
+							font-size: 48px;
+							font-weight: 900;
 						}
 					}
 					.hiw-svg-container {
+						position: absolute!important;
+						top: 0;
+						left: 0;
+						width: 100%;
+						@media screen and (max-width: 768px) {
+							top: 90px;
+						}
 						svg {
-							top: 100px;
+							position: absolute;
+							top: 0;
+							left: 50%;
+							margin-left: -100px;
+							width: 200px!important;
+							height: 200px!important;
+							* {
+								stroke-width: 8px;
+							}
 						}
 					}
 				}
 				.how-scene-1 {
+					background: mix($lake, $slate, 40%);
 					svg {
-						&[class*="mobile"] {
+						display: block;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: auto;
+						max-height: 400px;
+						&:not([class*="mobile"]) {
 							display: none;
 						}
-						&:not([class*="mobile"]) {
-							display: block;
-						}
 					}
 				}
+			}
+			.circle-nav {
+				position: absolute;
+				z-index: 11;
+				bottom: -115px;
+				left: 0;
+				width: 100%;
 			}
 			.how-props {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				position: absolute;
+				z-index: 11;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				padding: 7.5px;
 				li {
-					width: calc(100% / 6);
+					width: calc(100% / 3);
+					text-align: center;
+					padding: 7.5px;
 					a {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						margin: 0 auto;
 						div {
-							max-width: 100px;
+							width: 100%;
+							max-width: 50px;
+						}
+						svg {
+							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+							border-radius: 5px;
+							background: lighten($slate, 5%);
+							* {
+								stroke-width: 4px!important;
+							}
 						}
 						h1 {
-							font-size: 16px;
+							padding-top: 10px;
+							width: 100%;
+							font-size: 14px;
+							font-weight: 600;
+						}
+						&:hover {
+							svg {
+								background: lighten($slate, 15%);
+							}
+						}
+					}
+				}
+			}
+		}
+		@media screen and (max-width: 768px) {
+			.main {
+				.how-scene {
+					.how-scene-3 {
+						.ugrid-5 {
+							li:not(:first-child) {
+								@include opacity(0);
+							}
+							li:first-child {
+								@include prefix(animation, 1000ms guru-switch infinite forwards, webkit moz ms o);
+							}
+						}
+					}
+				}
+			}
+		}
+		@media screen and (min-width: 768px) {
+			header {
+				@include opacity(1);
+			}
+			.main {
+				.how-scene {
+					.how-scene-5 {
+						.ugrid-2 {
+							> li {
+								.pf-card-outline {
+									.pf-card-main {
+										.pf-card-content {
+											.pf-courses {
+												li {
+													&:not(:first-child) {
+														display: block;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					.how-scene-4 {
+						svg {
+							&[class*="desktop"] {
+								display: block;
+								top: auto;
+								bottom: 178px;
+							}
+							&.graph {
+								display: none;
+							}
+						}
+					}
+					.how-scene-3 {
+						background: #69867C;
+						svg {
+							&.guru {
+								position: static!important;
+								top: auto!important;
+								margin-top: 50px;
+								left: auto!important;
+								max-width: 80%;
+							}
+							&.conveyor {
+								top: auto;
+								bottom: 178px;
+							}
+						}
+					}
+					.how-scene-2 {
+						.ugrid-2 {
+							h1 {
+								font-size: 36px;
+							}
+							h2 {
+								font-size: 64px;
+							}
+						}
+						.hiw-svg-container {
+							svg {
+								top: 100px;
+							}
+						}
+					}
+					.how-scene-1 {
+						svg {
+							&[class*="mobile"] {
+								display: none;
+							}
+							&:not([class*="mobile"]) {
+								display: block;
+							}
+						}
+					}
+				}
+				.how-props {
+					li {
+						width: calc(100% / 6);
+						a {
+							div {
+								max-width: 100px;
+							}
+							h1 {
+								font-size: 16px;
+							}
 						}
 					}
 				}
 			}
 		}
 	}
-}
 
-/// SCENES ///
-// open 24/7
-.hiw-open-24-7-active, .hiw-open-24-7-active-mobile {
-	* {
-		@include prefix(transition, all 300ms ease-in-out, webkit moz ms o);
-	}
-	.fade {
-		&:not(.visible) {
-			@include opacity(0);
-		}
-		&.visible {
-			@include opacity(1);
-		}
-		&.night-sky {
-			@include prefix(transition-delay, 500ms, webkit moz ms o);
-		}
-	}
-	&:not(.start) {
-		rect, polygon, circle, path, text {
-			&.draw {
-				fill: rgba(0,0,0,0)!important;
-			}
-		}
-	}
-}
-.active-scene {
+	/// SCENES ///
+	// open 24/7
 	.hiw-open-24-7-active, .hiw-open-24-7-active-mobile {
-		&.start {
-			.open-now-text {
-				@include prefix(animation, 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards, webkit moz ms o);
+		* {
+			@include prefix(transition, all 300ms ease-in-out, webkit moz ms o);
+		}
+		.fade {
+			&:not(.visible) {
+				@include opacity(0);
 			}
-			.clock {
-				.minute-hand {
-					@include prefix(animation, 2000ms hiw-minute-hand ease-in 500ms infinite forwards, webkit moz ms o);
-					@include prefix(transform-origin, 50% 100%, webkit moz ms o);
-				}
-				.hour-hand {
-					@include prefix(transform-origin, 0% 50%, webkit moz ms o);
-					@include prefix(animation, 12000ms hiw-hour-hand 2000ms ease-in infinite forwards, webkit moz ms o);
+			&.visible {
+				@include opacity(1);
+			}
+			&.night-sky {
+				@include prefix(transition-delay, 500ms, webkit moz ms o);
+			}
+		}
+		&:not(.start) {
+			rect, polygon, circle, path, text {
+				&.draw {
+					fill: rgba(0,0,0,0)!important;
 				}
 			}
-			.outside-day {
-				@include prefix(animation, 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards, webkit moz ms o);
-				.sun {
-					@include prefix(transform, translateY(0), webkit moz ms o);
-					@include prefix(animation, 12000ms hiw-open-24-7-sun-shift 2000ms ease-in infinite forwards, webkit moz ms o);
+		}
+	}
+	.active-scene {
+		.hiw-open-24-7-active, .hiw-open-24-7-active-mobile {
+			&.start {
+				.open-now-text {
+					@include prefix(animation, 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards, webkit moz ms o);
 				}
-			}
-			.outside-night {
-				.moon, .crater {
-					@include prefix(transform, translateY(20px), webkit moz ms o);
-					@include prefix(animation, 12000ms hiw-open-24-7-moon-shift 2000ms ease-in infinite forwards, webkit moz ms o);
+				.clock {
+					.minute-hand {
+						@include prefix(animation, 2000ms hiw-minute-hand ease-in 500ms infinite forwards, webkit moz ms o);
+						@include prefix(transform-origin, 50% 100%, webkit moz ms o);
+					}
+					.hour-hand {
+						@include prefix(transform-origin, 0% 50%, webkit moz ms o);
+						@include prefix(animation, 12000ms hiw-hour-hand 2000ms ease-in infinite forwards, webkit moz ms o);
+					}
 				}
-				polygon[class*="star-"] {
-					@include prefix(transform, scale(0), webkit moz ms o);
-					@include prefix(transform-origin, 50% 50%, webkit moz ms o);
-					@include prefix(animation, 12000ms hiw-open-24-7-star-scale 2000ms ease-in infinite forwards, webkit moz ms o);
-					&.star-1, &.star-7, &.star-8, &.star-19 {
-						@include prefix(animation-delay, 2200ms, webkit moz ms o);
+				.outside-day {
+					@include prefix(animation, 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards, webkit moz ms o);
+					.sun {
+						@include prefix(transform, translateY(0), webkit moz ms o);
+						@include prefix(animation, 12000ms hiw-open-24-7-sun-shift 2000ms ease-in infinite forwards, webkit moz ms o);
 					}
-					&.star-2, &.star-9, &.star-10, &.star-20 {
-						@include prefix(animation-delay, 2400ms, webkit moz ms o);
+				}
+				.outside-night {
+					.moon, .crater {
+						@include prefix(transform, translateY(20px), webkit moz ms o);
+						@include prefix(animation, 12000ms hiw-open-24-7-moon-shift 2000ms ease-in infinite forwards, webkit moz ms o);
 					}
-					&.star-3, &.star-11, &.star-12, &.star-21 {
-						@include prefix(animation-delay, 2600ms, webkit moz ms o);
-					}
-					&.star-4, &.star-13, &.star-14, &.star-22 {
-						@include prefix(animation-delay, 2800ms, webkit moz ms o);
-					}
-					&.star-5, &.star-15, &.star-16, &.star-23 {
-						@include prefix(animation-delay, 3000ms, webkit moz ms o);
-					}
-					&.star-6, &.star-17, &.star-18, &.star-24 {
-						@include prefix(animation-delay, 3200ms, webkit moz ms o);
+					polygon[class*="star-"] {
+						@include prefix(transform, scale(0), webkit moz ms o);
+						@include prefix(transform-origin, 50% 50%, webkit moz ms o);
+						@include prefix(animation, 12000ms hiw-open-24-7-star-scale 2000ms ease-in infinite forwards, webkit moz ms o);
+						&.star-1, &.star-7, &.star-8, &.star-19 {
+							@include prefix(animation-delay, 2200ms, webkit moz ms o);
+						}
+						&.star-2, &.star-9, &.star-10, &.star-20 {
+							@include prefix(animation-delay, 2400ms, webkit moz ms o);
+						}
+						&.star-3, &.star-11, &.star-12, &.star-21 {
+							@include prefix(animation-delay, 2600ms, webkit moz ms o);
+						}
+						&.star-4, &.star-13, &.star-14, &.star-22 {
+							@include prefix(animation-delay, 2800ms, webkit moz ms o);
+						}
+						&.star-5, &.star-15, &.star-16, &.star-23 {
+							@include prefix(animation-delay, 3000ms, webkit moz ms o);
+						}
+						&.star-6, &.star-17, &.star-18, &.star-24 {
+							@include prefix(animation-delay, 3200ms, webkit moz ms o);
+						}
 					}
 				}
 			}
 		}
 	}
-}
 
-// affordable to all
-.active-scene {
-	.ugrid-2.animate {
-		> div {
-			&:first-child {
-				.hiw-svg-container {
-					svg {
-						@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
-					}
-					&:nth-child(1) {
+	// affordable to all
+	.active-scene {
+		.ugrid-2.animate {
+			> div {
+				&:first-child {
+					.hiw-svg-container {
 						svg {
-							@include prefix(animation, #{"300ms dollar-1 forwards, 1000ms dollar-1-hover 300ms linear infinite alternate forwards"}, webkit moz ms o);
+							@include prefix(transform, translate(0%, -80%) scale(1), webkit moz ms o);
+						}
+						&:nth-child(1) {
+							svg {
+								@include prefix(animation, #{"300ms dollar-1 forwards, 1000ms dollar-1-hover 300ms linear infinite alternate forwards"}, webkit moz ms o);
+							}
+						}
+						&:nth-child(2) {
+							svg {
+								@include prefix(animation, #{"300ms dollar-2 200ms forwards, 1000ms dollar-2-hover 500ms linear infinite alternate forwards"}, webkit moz ms o);
+							}
+						}
+						&:nth-child(3) {
+							svg {
+								@include prefix(animation, #{"300ms dollar-3 400ms forwards, 1000ms dollar-3-hover 700ms linear infinite alternate forwards"}, webkit moz ms o);
+							}
+						}
+						&:nth-child(4) {
+							svg {
+								@include prefix(animation, #{"300ms dollar-4 600ms forwards, 1000ms dollar-4-hover 900ms linear infinite alternate forwards"}, webkit moz ms o);
+							}
+						}
+						&:nth-child(5) {
+							svg {
+								@include prefix(animation, #{"300ms dollar-5 800ms forwards, 1000ms dollar-5-hover 1100ms linear infinite alternate forwards"}, webkit moz ms o);
+							}
+						}
+						&:nth-child(6) {
+							svg {
+								@include prefix(animation, #{"300ms dollar-6 1000ms forwards, 1000ms dollar-6-hover 1300ms linear infinite alternate forwards"}, webkit moz ms o);
+							}
+						}
+						&:nth-child(7) {
+							svg {
+								@include prefix(animation, #{"300ms dollar-7 1200ms forwards, 1000ms dollar-7-hover 1500ms linear infinite alternate forwards"}, webkit moz ms o);
+							}
 						}
 					}
-					&:nth-child(2) {
+				}
+				&:last-child {
+					.hiw-svg-container {
 						svg {
-							@include prefix(animation, #{"300ms dollar-2 200ms forwards, 1000ms dollar-2-hover 500ms linear infinite alternate forwards"}, webkit moz ms o);
-						}
-					}
-					&:nth-child(3) {
-						svg {
-							@include prefix(animation, #{"300ms dollar-3 400ms forwards, 1000ms dollar-3-hover 700ms linear infinite alternate forwards"}, webkit moz ms o);
-						}
-					}
-					&:nth-child(4) {
-						svg {
-							@include prefix(animation, #{"300ms dollar-4 600ms forwards, 1000ms dollar-4-hover 900ms linear infinite alternate forwards"}, webkit moz ms o);
-						}
-					}
-					&:nth-child(5) {
-						svg {
-							@include prefix(animation, #{"300ms dollar-5 800ms forwards, 1000ms dollar-5-hover 1100ms linear infinite alternate forwards"}, webkit moz ms o);
-						}
-					}
-					&:nth-child(6) {
-						svg {
-							@include prefix(animation, #{"300ms dollar-6 1000ms forwards, 1000ms dollar-6-hover 1300ms linear infinite alternate forwards"}, webkit moz ms o);
-						}
-					}
-					&:nth-child(7) {
-						svg {
-							@include prefix(animation, #{"300ms dollar-7 1200ms forwards, 1000ms dollar-7-hover 1500ms linear infinite alternate forwards"}, webkit moz ms o);
+							@include prefix(animation, #{"300ms dollar-8 forwards, 1000ms dollar-8-hover 300ms linear infinite alternate forwards"}, webkit moz ms o);
 						}
 					}
 				}
 			}
-			&:last-child {
-				.hiw-svg-container {
-					svg {
-						@include prefix(animation, #{"300ms dollar-8 forwards, 1000ms dollar-8-hover 300ms linear infinite alternate forwards"}, webkit moz ms o);
-					}
+		}
+	}
+
+	// not just tutoring
+	.active-scene {
+		&.how-scene-3 {
+			svg {
+				.guru-hover {
+					@include prefix(transform, translateX(0)!important, webkit moz ms o);
+					@include prefix(animation, 1000ms guru-hover linear infinite alternate forwards, webkit moz ms o);
+				}
+				.subcat-move-1 {
+					@include prefix(animation, 200000ms subcat-move linear infinite forwards, webkit moz ms o);
 				}
 			}
 		}
+		.conveyor {
+			@include prefix(animation, 1200000ms hiw-conveyor-belt forwards, webkit moz ms o);
+		}
 	}
-}
 
-// not just tutoring
-.active-scene {
-	&.how-scene-3 {
-		svg {
-			.guru-hover {
-				@include prefix(transform, translateX(0)!important, webkit moz ms o);
-				@include prefix(animation, 1000ms guru-hover linear infinite alternate forwards, webkit moz ms o);
+	// instant and in person
+	.active-scene {
+		.graph-desktop {
+			.point {
+				@include prefix(animation, 1000ms point-graph-desktop ease-in-out forwards, webkit moz ms o);
 			}
-			.subcat-move-1 {
-				@include prefix(animation, 200000ms subcat-move linear infinite forwards, webkit moz ms o);
+			.guru-1, .guru-2, .guru-3, .guru-4, .guru-5 {
+				@include prefix(transform, scale(0), webkit moz ms o);
+				@include prefix(animation, 200ms bounceIn forwards, webkit moz ms o);
+				@include prefix(transform-origin, 50% 50%, webkit moz ms o);
 			}
-		}
-	}
-	.conveyor {
-		@include prefix(animation, 1200000ms hiw-conveyor-belt forwards, webkit moz ms o);
-	}
-}
-
-// instant and in person
-.active-scene {
-	.graph-desktop {
-		.point {
-			@include prefix(animation, 1000ms point-graph-desktop ease-in-out forwards, webkit moz ms o);
-		}
-		.guru-1, .guru-2, .guru-3, .guru-4, .guru-5 {
-			@include prefix(transform, scale(0), webkit moz ms o);
-			@include prefix(animation, 200ms bounceIn forwards, webkit moz ms o);
-			@include prefix(transform-origin, 50% 50%, webkit moz ms o);
-		}
-		.guru-2 {
-			@include prefix(animation-delay, 200ms, webkit moz ms o);
-		}
-		.guru-3 {
-			@include prefix(animation-delay, 400ms, webkit moz ms o);
-		}
-		.guru-4 {
-			@include prefix(animation-delay, 800ms, webkit moz ms o);
-		}
-		.guru-5 {
-			@include prefix(animation-delay, 1000ms, webkit moz ms o);
-		}
-	}
-}
-
-/// HOVER ///
-// open 24/7
-.hiw-open-container {
-	path[class*="time-"] {
-		@include prefix(transition, all 300ms ease-in-out);
-		@include opacity(0);
-	}
-	.hour-hand, .minute-hand, .clock-base {
-		fill: lighten($slate, 5%);
-	}
-	.minute-hand, .hour-hand {
-		@include prefix(transition, all 300ms ease-in-out);
-	}
-	.minute-hand {
-		@include prefix(transform-origin, 50% 100%, webkit moz ms o);
-	}
-	.hour-hand {
-		@include prefix(transform-origin, 0% 50%, webkit moz ms o);
-	}
-}
-// affordable to all
-.hiw-affordable-container {
-	.hiw-affordable-to-all {
-		path {
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-		}
-		.right {
-			@include prefix(transform-origin, 50% 50%, webkit moz ms o);
-		}
-		.left {
-			@include prefix(transform-origin, 50% 50%, webkit moz ms o);
-		}
-	}
-}
-// not just tutoring
-.hiw-beyond-tutoring-container {
-	.academic {
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-		@include prefix(transform, scale(1), webkit moz ms o);
-		@include prefix(transform-origin, 50% 50%, webkit moz ms o);
-	}
-	.shirt {
-		@include opacity(0);
-	}
-}
-// everyone wins
-.hiw-everyone-container {
-	.hiw-everyone-wins {
-		.platform {
-			fill: lighten($slate, 5%);
-		}
-		.person {
-			fill: none!important;
-		}
-		.circle {
-			@include opacity(0);
-		}
-		g, .platform {
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-			@include prefix(transition-delay, 0ms!important, webkit moz ms o);
-		}
-		.platform-1-50 {
-			.left, .right {
-				stroke-dashoffset: 0;
+			.guru-2 {
+				@include prefix(animation-delay, 200ms, webkit moz ms o);
+			}
+			.guru-3 {
+				@include prefix(animation-delay, 400ms, webkit moz ms o);
+			}
+			.guru-4 {
+				@include prefix(animation-delay, 800ms, webkit moz ms o);
+			}
+			.guru-5 {
+				@include prefix(animation-delay, 1000ms, webkit moz ms o);
 			}
 		}
-		.platform-2-90 {
-			@include prefix(transform, translateY(40px), webkit moz ms o);
-		}
-		.platform-3-110 {
-			@include prefix(transform, translateY(60px), webkit moz ms o);
-		}
 	}
-}
-// student run
-.hiw-student-run-container {
-	.hiw-student-run {
-		path[class*="person-"] {
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-			fill: lighten($slate, 5%);
-		}
-	}
-}
-// instant and in person
-.hiw-instant-container {
-	.boom {
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-		fill: lighten($slate, 5%);
-	}
-}
 
-a:hover, a:focus {
+	/// HOVER ///
 	// open 24/7
 	.hiw-open-container {
 		path[class*="time-"] {
-			@include opacity(1);
+			@include prefix(transition, all 300ms ease-in-out);
+			@include opacity(0);
 		}
 		.hour-hand, .minute-hand, .clock-base {
-			fill: lighten($slate, 15%);
+			fill: lighten($slate, 5%);
+		}
+		.minute-hand, .hour-hand {
+			@include prefix(transition, all 300ms ease-in-out);
 		}
 		.minute-hand {
-			@include prefix(animation, 2000ms hiw-minute-hand ease-in 500ms infinite forwards, webkit moz ms o);
+			@include prefix(transform-origin, 50% 100%, webkit moz ms o);
 		}
 		.hour-hand {
-			@include prefix(animation, 12000ms hiw-hour-hand 2000ms ease-in infinite forwards, webkit moz ms o);
+			@include prefix(transform-origin, 0% 50%, webkit moz ms o);
 		}
 	}
 	// affordable to all
 	.hiw-affordable-container {
 		.hiw-affordable-to-all {
-			.s-right, .s-left {
-				@include prefix(animation, 1000ms hiw-affordable-path-widen ease-in infinite alternate forwards, webkit moz ms o);
+			path {
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 			}
 			.right {
-				@include prefix(animation, 1000ms hiw-move-right ease-in infinite alternate forwards, webkit moz ms o);
-				.line-right {
-					@include prefix(animation, 1000ms hiw-line-right ease-in infinite alternate forwards, webkit moz ms o);
-					@include prefix(transform, translate(-5px), webkit moz ms o);
-				}
+				@include prefix(transform-origin, 50% 50%, webkit moz ms o);
 			}
 			.left {
-				@include prefix(animation, 1000ms hiw-move-left ease-in infinite alternate forwards, webkit moz ms o);
-				.line-left {
-					@include prefix(animation, 1000ms hiw-line-left ease-in infinite alternate forwards, webkit moz ms o);
-					@include prefix(transform, translate(5px), webkit moz ms o);
-				}
+				@include prefix(transform-origin, 50% 50%, webkit moz ms o);
 			}
 		}
 	}
 	// not just tutoring
 	.hiw-beyond-tutoring-container {
 		.academic {
-			@include prefix(animation, 1000ms hiw-beyond-tutoring-academic ease-in 500ms infinite alternate forwards, webkit moz ms o);
+			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			@include prefix(transform, scale(1), webkit moz ms o);
+			@include prefix(transform-origin, 50% 50%, webkit moz ms o);
 		}
 		.shirt {
-			@include prefix(animation, 1000ms hiw-beyond-tutoring-shirt ease-in 500ms infinite alternate forwards, webkit moz ms o);
-		}
-	}
-	// instant and in person
-	.hiw-instant-container {
-		.boom {
-			fill: lighten($slate, 15%);
-		}
-		.grip {
-			@include prefix(animation, 1000ms hiw-grip ease-in infinite alternate forwards, webkit moz ms o);
-		}
-	}
-	// student run
-	.hiw-student-run-container {
-		.hiw-student-run {
-			path[class*="person-"] {
-				fill: lighten($slate, 15%);
-			}
-			.hat {
-				@include prefix(animation, 1000ms hiw-student-run-hat 1000ms ease-in infinite alternate forwards, webkit moz ms o);
-			}
+			@include opacity(0);
 		}
 	}
 	// everyone wins
 	.hiw-everyone-container {
 		.hiw-everyone-wins {
 			.platform {
-				fill: lighten($slate, 15%);
+				fill: lighten($slate, 5%);
 			}
-			.platform-3-110 {
-				@include prefix(transform, translateY(0), webkit moz ms o);
+			.person {
+				fill: none!important;
+			}
+			.circle {
+				@include opacity(0);
+			}
+			g, .platform {
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+				@include prefix(transition-delay, 0ms!important, webkit moz ms o);
+			}
+			.platform-1-50 {
+				.left, .right {
+					stroke-dashoffset: 0;
+				}
 			}
 			.platform-2-90 {
-				@include prefix(transform, translateY(0), webkit moz ms o);
+				@include prefix(transform, translateY(40px), webkit moz ms o);
+			}
+			.platform-3-110 {
+				@include prefix(transform, translateY(60px), webkit moz ms o);
 			}
 		}
 	}
-}
+	// student run
+	.hiw-student-run-container {
+		.hiw-student-run {
+			path[class*="person-"] {
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+				fill: lighten($slate, 5%);
+			}
+		}
+	}
+	// instant and in person
+	.hiw-instant-container {
+		.boom {
+			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			fill: lighten($slate, 5%);
+		}
+	}
 
-/* ---------- BECOME GURU */
-/// HTML ///
-#bg {
-    @include flex;
-    @include flex-wrap;
-    header {
-        @include opacity(0);
-        @include flex-center;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        min-height: 0!important;
-        h1 {
-            padding: 15px;
-            text-align: center;
-            font-size: 28px;
-            font-weight: 600;
-            text-transform: capitalize!important;
-        }
-    }
-    .main {
-        @include flex;
-        @include flex-wrap;
-        padding: 0;
-        margin-top: 15px;
-        width: 100%;
-        height: 100%;
-        .bg-scene {
-            @include flex;
-            @include flex-center;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            > div {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-            }
-			svg {
-				max-height: 400px;
+	a:hover, a:focus {
+		// open 24/7
+		.hiw-open-container {
+			path[class*="time-"] {
+				@include opacity(1);
 			}
-			.bg-scene-1 {
-				background: #F2B65A;
+			.hour-hand, .minute-hand, .clock-base {
+				fill: lighten($slate, 15%);
 			}
-			.bg-scene-2 {
-				background: #8DA09C;
+			.minute-hand {
+				@include prefix(animation, 2000ms hiw-minute-hand ease-in 500ms infinite forwards, webkit moz ms o);
 			}
-			.bg-scene-3 {
-				background: #89A1B5;
+			.hour-hand {
+				@include prefix(animation, 12000ms hiw-hour-hand 2000ms ease-in infinite forwards, webkit moz ms o);
 			}
-			.bg-scene-4 {
-				background: #F39185;
-			}
-			.bg-scene-5 {
-				background: #07113C;
-			}
-			.bg-scene-6 {
-				background: #81B88C;
-			}
-			.bg-scene-7 {
-				background: #40484B;
-			}
-			.bg-scene-8 {
-				background: #637074;
-			}
-        }
-        .bg-props {
-            @include flex;
-			@include flex-center;
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			padding: 7.5px;
-			li {
-				width: calc(100% / 4);
-				text-align: center;
-				padding: 7.5px;
-				a {
-					@include flex;
-					@include flex-wrap;
-					@include flex-center;
-					margin: 0 auto;
-					div {
-						width: 100%;
-						max-width: 50px;
+		}
+		// affordable to all
+		.hiw-affordable-container {
+			.hiw-affordable-to-all {
+				.s-right, .s-left {
+					@include prefix(animation, 1000ms hiw-affordable-path-widen ease-in infinite alternate forwards, webkit moz ms o);
+				}
+				.right {
+					@include prefix(animation, 1000ms hiw-move-right ease-in infinite alternate forwards, webkit moz ms o);
+					.line-right {
+						@include prefix(animation, 1000ms hiw-line-right ease-in infinite alternate forwards, webkit moz ms o);
+						@include prefix(transform, translate(-5px), webkit moz ms o);
 					}
-					svg {
-						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						border-radius: 5px;
-						background: lighten($slate, 5%);
-						* {
-							stroke-width: 4px!important;
-						}
-					}
-					h1 {
-						padding-top: 10px;
-						width: 100%;
-						font-size: 14px;
-						font-weight: 600;
-					}
-					&:hover {
-						svg {
-							background: lighten($slate, 15%);
-						}
+				}
+				.left {
+					@include prefix(animation, 1000ms hiw-move-left ease-in infinite alternate forwards, webkit moz ms o);
+					.line-left {
+						@include prefix(animation, 1000ms hiw-line-left ease-in infinite alternate forwards, webkit moz ms o);
+						@include prefix(transform, translate(5px), webkit moz ms o);
 					}
 				}
 			}
-        }
-    }
-	@media screen and (max-width: 768px) {
-        .main {
-            .bg-props {
-				@include flex-wrap;
+		}
+		// not just tutoring
+		.hiw-beyond-tutoring-container {
+			.academic {
+				@include prefix(animation, 1000ms hiw-beyond-tutoring-academic ease-in 500ms infinite alternate forwards, webkit moz ms o);
+			}
+			.shirt {
+				@include prefix(animation, 1000ms hiw-beyond-tutoring-shirt ease-in 500ms infinite alternate forwards, webkit moz ms o);
+			}
+		}
+		// instant and in person
+		.hiw-instant-container {
+			.boom {
+				fill: lighten($slate, 15%);
+			}
+			.grip {
+				@include prefix(animation, 1000ms hiw-grip ease-in infinite alternate forwards, webkit moz ms o);
+			}
+		}
+		// student run
+		.hiw-student-run-container {
+			.hiw-student-run {
+				path[class*="person-"] {
+					fill: lighten($slate, 15%);
+				}
+				.hat {
+					@include prefix(animation, 1000ms hiw-student-run-hat 1000ms ease-in infinite alternate forwards, webkit moz ms o);
+				}
+			}
+		}
+		// everyone wins
+		.hiw-everyone-container {
+			.hiw-everyone-wins {
+				.platform {
+					fill: lighten($slate, 15%);
+				}
+				.platform-3-110 {
+					@include prefix(transform, translateY(0), webkit moz ms o);
+				}
+				.platform-2-90 {
+					@include prefix(transform, translateY(0), webkit moz ms o);
+				}
 			}
 		}
 	}
-    @media screen and (min-width: 768px) {
-        header {
-            @include opacity(1);
-        }
-        .main {
-            .bg-props {
-				height: 163px;
-				overflow-x: auto;
-                li {
-                    width: calc(100% / 4);
-                    a {
-                        div {
-							width: 100px;
-                            max-width: 100px;
-                        }
-                        h1 {
-                            font-size: 16px;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper {
-	.slideshow-thumb-7,
-	.slideshow-thumb-6,
-	.slideshow-thumb-5,
-	.slideshow-thumb-4,
-	.slideshow-thumb-3.progress-active {
-		// @include opacity-important(1);
-		width: 20%!important;
-		background: none!important;
+	/* ---------- BECOME GURU */
+	/// HTML ///
+	#bg {
+	    @include flex;
+	    @include flex-wrap;
+	    header {
+	        @include opacity(0);
+	        @include flex-center;
+	        position: absolute;
+	        top: 0;
+	        left: 0;
+	        width: 100%;
+	        min-height: 0!important;
+	        h1 {
+	            padding: 15px;
+	            text-align: center;
+	            font-size: 28px;
+	            font-weight: 600;
+	            text-transform: capitalize!important;
+	        }
+	    }
+	    .main {
+	        @include flex;
+	        @include flex-wrap;
+	        padding: 0;
+	        margin-top: 15px;
+	        width: 100%;
+	        height: 100%;
+	        .bg-scene {
+	            @include flex;
+	            @include flex-center;
+	            position: absolute;
+	            top: 0;
+	            left: 0;
+	            width: 100%;
+	            height: 100%;
+	            > div {
+	                position: absolute;
+	                top: 0;
+	                left: 0;
+	                width: 100%;
+	                height: 100%;
+	                overflow: hidden;
+	            }
+				svg {
+					max-height: 400px;
+				}
+				.bg-scene-1 {
+					background: #F2B65A;
+				}
+				.bg-scene-2 {
+					background: #8DA09C;
+				}
+				.bg-scene-3 {
+					background: #89A1B5;
+				}
+				.bg-scene-4 {
+					background: #F39185;
+				}
+				.bg-scene-5 {
+					background: #07113C;
+				}
+				.bg-scene-6 {
+					background: #81B88C;
+				}
+				.bg-scene-7 {
+					background: #40484B;
+				}
+				.bg-scene-8 {
+					background: #637074;
+				}
+	        }
+	        .bg-props {
+	            @include flex;
+				@include flex-center;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				padding: 7.5px;
+				li {
+					width: calc(100% / 4);
+					text-align: center;
+					padding: 7.5px;
+					a {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						margin: 0 auto;
+						div {
+							width: 100%;
+							max-width: 50px;
+						}
+						svg {
+							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+							border-radius: 5px;
+							background: lighten($slate, 5%);
+							* {
+								stroke-width: 4px!important;
+							}
+						}
+						h1 {
+							padding-top: 10px;
+							width: 100%;
+							font-size: 14px;
+							font-weight: 600;
+						}
+						&:hover {
+							svg {
+								background: lighten($slate, 15%);
+							}
+						}
+					}
+				}
+	        }
+	    }
+		@media screen and (max-width: 768px) {
+	        .main {
+	            .bg-props {
+					@include flex-wrap;
+				}
+			}
+		}
+	    @media screen and (min-width: 768px) {
+	        header {
+	            @include opacity(1);
+	        }
+	        .main {
+	            .bg-props {
+					height: 163px;
+					overflow-x: auto;
+	                li {
+	                    width: calc(100% / 4);
+	                    a {
+	                        div {
+								width: 100px;
+	                            max-width: 100px;
+	                        }
+	                        h1 {
+	                            font-size: 16px;
+	                        }
+	                    }
+	                }
+	            }
+	        }
+	    }
+	}
+
+	> section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper {
+		.slideshow-thumb-7,
+		.slideshow-thumb-6,
+		.slideshow-thumb-5,
+		.slideshow-thumb-4,
+		.slideshow-thumb-3.progress-active {
+			// @include opacity-important(1);
+			width: 20%!important;
+			background: none!important;
+		}
 	}
 }
 
@@ -6285,8 +6168,8 @@ a:hover, a:focus {
 
 // misc
 #intercom-conversation {
-	width:66.6% !important;
-	position:fixed !important;
+	width: calc(100% / 3 * 2) !important;
+	position: fixed !important;
 }
 @media screen and (min-width: 768px) {
 	#cta-modal-team {

@@ -81,7 +81,7 @@
                     <dropdown class="height-32" ng-model="animationFillMode" selected-index="0"> </dropdown>
                 </li>
             </ul>
-            <div class='bg-slate flex-wrap-center p10x' style="height: calc(100% - 82px - 136px)" ng-show='layout.index == 3'>
+            <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 136px)" ng-show='layout.index == 3'>
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                 <div class="full-xy ugrid-2 p15-grid" style='height:90% !important; '>
                     <div class="full-y flex-wrap-center full-x flex-stretch" style='width:50% !important;'>
@@ -387,7 +387,7 @@
                     </div>
                 </div>
             </div>
-            <div id='stage-container' class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 136px); overflow: hidden;" ng-show='!layout.index'>
+            <div id='stage-container' class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 136px); width: 100%; overflow: hidden;" ng-show='!layout.index'>
                 <div class='flex-wrap-center' style="perspective: 1000;">
                     <!-- <svg width="180px" height="180px" fill="#FFFFFF" viewBox="0 0 100 100" id='rect-svg' class='radius-4'>
                         <tspan> yo </tspan>

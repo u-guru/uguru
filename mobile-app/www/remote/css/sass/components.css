@@ -18282,3 +18282,213 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   left: 50%;
   margin-left: -30.5px;
 }
+
+.postit {
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+}
+
+.postit .square {
+  display: block;
+  width: 100%;
+  height: auto;
+  fill: none;
+}
+
+.postit > div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 2px solid white;
+  border-radius: 2px;
+  background: rgba(76, 85, 89, 0.9);
+  padding: 15px;
+  text-align: center;
+}
+
+.postit > div:hover span svg {
+  -webkit-animation-name: opacity-scale;
+  -moz-animation-name: opacity-scale;
+  -o-animation-name: opacity-scale;
+  animation-name: opacity-scale;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.postit > div:hover span svg * {
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.postit > div:hover span svg path[opacity="0.5"]:not([stroke]), .postit > div:hover span svg circle[opacity="0.5"] {
+  -webkit-animation-name: opacity-pulse;
+  -moz-animation-name: opacity-pulse;
+  -o-animation-name: opacity-pulse;
+  animation-name: opacity-pulse;
+}
+
+.postit > div:hover span svg path[opacity="0.5"][stroke], .postit > div:hover span svg path.special[opacity="0.5"]:not([stroke]) {
+  -webkit-animation-name: opacity-pulse-stroke;
+  -moz-animation-name: opacity-pulse-stroke;
+  -o-animation-name: opacity-pulse-stroke;
+  animation-name: opacity-pulse-stroke;
+}
+
+.postit > div span {
+  border-radius: 1000px;
+  display: block;
+  position: relative;
+  z-index: 9;
+  margin: 0 auto;
+  width: 96px;
+  height: 96px;
+}
+
+.postit > div span svg {
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-animation-duration: 0.9s;
+  -moz-animation-duration: 0.9s;
+  -o-animation-duration: 0.9s;
+  animation-duration: 0.9s;
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.postit > div span svg * {
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-animation-duration: 0.9s;
+  -moz-animation-duration: 0.9s;
+  -o-animation-duration: 0.9s;
+  animation-duration: 0.9s;
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+}
+
+.postit > div span svg.animate {
+  -webkit-animation-name: opacity-scale;
+  -moz-animation-name: opacity-scale;
+  -o-animation-name: opacity-scale;
+  animation-name: opacity-scale;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+.postit > div span svg.animate * {
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+.postit > div span svg.animate path[opacity="0.5"]:not([stroke]), .postit > div span svg.animate circle[opacity="0.5"] {
+  -webkit-animation-name: opacity-pulse;
+  -moz-animation-name: opacity-pulse;
+  -o-animation-name: opacity-pulse;
+  animation-name: opacity-pulse;
+}
+
+.postit > div span svg.animate path[opacity="0.5"][stroke], .postit > div span svg.animate path.special[opacity="0.5"]:not([stroke]) {
+  -webkit-animation-name: opacity-pulse-stroke;
+  -moz-animation-name: opacity-pulse-stroke;
+  -o-animation-name: opacity-pulse-stroke;
+  animation-name: opacity-pulse-stroke;
+}
+
+.postit > div h1 {
+  max-height: 24px !important;
+  overflow: hidden !important;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.postit > div p {
+  max-height: 38px !important;
+  overflow: hidden !important;
+  margin: 5px 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.tape {
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-animation-duration: 0.6s;
+  -moz-animation-duration: 0.6s;
+  -o-animation-duration: 0.6s;
+  animation-duration: 0.6s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+  display: block;
+  position: absolute;
+  z-index: 40;
+  width: 30px;
+  height: auto;
+}
+
+.tape path {
+  fill: rgba(255, 255, 255, 0.4);
+}

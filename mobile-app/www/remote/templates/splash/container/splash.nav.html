@@ -6,7 +6,7 @@
 <header class='splash-header fixed top-0 left-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim">
     <a class="splash-logo" ng-click='scrollToSection("#splash-home")' ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'"  class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" ></a>
     <div class="right">
-        <div class="splash-hero-nav desktop m10right" class-on-load="fadeIn:anim" class-on-load-delay="3000"  class-on-activate="fadeInDown:anim" >
+        <div class="splash-hero-nav desktop m15right" class-on-load="fadeIn:anim" class-on-load-delay="3000"  class-on-activate="fadeInDown:anim" >
             <div class="dropdown-color">
                 <a name='category' class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()' ng-class="{'active':page.dropdowns.category.active}">
         			<span>{{selectedCategory.name}}</span>
@@ -72,15 +72,8 @@
                 </svg>
             </a>
         </div>
-        <a class="splash-burger" id='cta-box-powerups' ng-click='activatePowerups()'  ng-include="img_base + 'templates/svg/main/lightning.html'"></a>
-        <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()'>
-            <svg viewBox="0 0 100 100" class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" class-on-activate-delay="600">
-                <circle cx="50" cy="50" r="36"></circle>
-                <path d="M31,35.5 L69,35.5"></path>
-                <path d="M31,50.5 L69,50.5"></path>
-                <path d="M31,65.5 L69,65.5"></path>
-            </svg>
-        </a>
+        <a class="splash-burger" id='cta-box-powerups' ng-click='activatePowerups()' ng-include="img_base + 'templates/svg/main/lightning-circle.html'"></a>
+        <a name='sidebar' class="splash-burger" id='cta-box-sidebar' ng-click='initCTASplash()' class-on-clear="fadeOutUp:animOut" class-on-activate="fadeInDown:anim" class-on-activate-delay="600" ng-include="img_base + 'templates/svg/main/menu-circle.html'"></a>
     </div>
 </header>
 

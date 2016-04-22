@@ -1378,7 +1378,7 @@ angular.module('uguru.util.controllers')
 
 
 
-			editKeyframeAtX($scope.animation, 0, 'translateX', 10)
+			// editKeyframeAtX($scope.animation, 0, 'translateX', 10)
 
 
 		}
