@@ -1,6 +1,6 @@
 <li class-on-load="bounceIn:anim" class-on-load-delay="1000" class-on-clear="fadeOut:animOut" class-on-clear-delay="0" class-on-activate="bounceIn:anim" class-on-activate-delay="1000">
     <div class="tag-adlib-container">
-        <a class="tag-adlib adlib-{{blankNum}} animated tag-{{category.hex_color}}" translate-on-click="translate-blank-{{blankNum}}" translate-to-elem="#blank-{{blankNum}}" class-on-click='translate-blank-{{blankNum}}:unique:inject.splash-adlib|blank-{{blankNum}}-filled, translate-blank-{{blankNum}}:unique:inject.splash-adlib b|blank-{{blankNum}}-filled' ng-click='resetMadLibBlankIfActive($event)'>
+        <a class="tag-adlib adlib-{{blankNum}} animated tag-{{category.hex_color}}" translate-on-click="translate-blank-{{blankNum}}" translate-to-elem="#blank-{{blankNum}}" class-on-click='translate-blank-{{blankNum}}:unique:inject.splash-adlib|blank-{{blankNum}}-filled, translate-blank-{{blankNum}}:unique:inject.splash-adlib b|blank-{{blankNum}}-filled' ng-click='click($event)'>
             <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                 <rect x="2" y="2" width="280" height="84" rx="16"></rect>
             </svg>

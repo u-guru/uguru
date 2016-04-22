@@ -10,8 +10,8 @@ var img_base = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  REST_URL = "http://localhost:5000";
-  // REST_URL = "http://192.168.42.70:5000";
+  // REST_URL = "http://localhost:5000";
+  REST_URL = "http://192.168.42.70:5000";
   // BASE_URL = _ipaddress;
 
   // REST_URL = 'https://192.168.0.107:5000';
@@ -123,7 +123,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/inappmap.html',
         controller: 'InAppMapController'
   }).
-
+  state('root.keys', {
+        url: '/keys',
+        templateUrl: BASE + 'templates/admin/keys.html',
+        controller: 'KeyToolController'
+  }).
 
   state('root.university', {
         url: '/university',
@@ -159,6 +163,14 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.request-public', {
         url: '/request-public',
         templateUrl: BASE + 'templates/request.public.html'
+  }).
+  state('root.credit', {
+        url: '/credit',
+        templateUrl: BASE + 'templates/credit.html'
+  }).
+  state('root.splash-university', {
+        url: '/splash/university',
+        templateUrl: BASE + 'templates/splash/layout/university.search.html'
   }).
 
   //start essay

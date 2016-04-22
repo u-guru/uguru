@@ -310,7 +310,143 @@
                 "templates/splash.html",
                 "templates/university.search.html"
             ]
+        },
+        {
+            "rank": 20,
+            "screenshot":"",
+            "title": "Wait too long for switching category",
+            "tag": ["css","timing","animation","splash"],
+            "priority": false,
+            "notes": "Wait 2-3 second to have action after click different category",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 20,
+            "screenshot":"",
+            "title": "category doesn't update after switch",
+            "tag": ["css","timing","animation","splash"],
+            "platforms": ["Firefox"],
+            "priority": false,
+            "notes": "nothing change at situation : #blank-1 filled #blank-2 filled and unfilled",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 10000000,
+            "screenshot":"",
+            "title": "browser freezed",
+            "tag": ["function","Crash","splash","mobile"],
+            "platforms": ["Firefox"],
+            "priority": false,
+            "notes": "fill #blank1, #blank-2, and then unselect one of the blank-> wait couples second and click Find my Guru-> browser freezed",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 0,
+            "screenshot":"",
+            "title": "div.splash-adlib li should contain 8 in the list",
+            "tag": ["function","splash","desktop"],
+            "platforms": ["Firefox"],
+            "priority": false,
+            "notes": "",
+            "error_msg":"The list of element (div.splash-adlib li) should have 8 element(s) in it, only 16 element(s) is in the list'",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 0,
+            "screenshot":"",
+            "title": "On Components Enter (browser render)",
+            "tag": ["function","splash","desktop-m","desktop-s"],
+            "platforms": ["Firefox"],
+            "priority": false,
+            "notes": "",
+            "error_msg":"The list of element (div.splash-adlib li) should have 8 element(s) in it, only 16 element(s) is in the list'",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 0,
+            "screenshot":"",
+            "title": " Scenario: Click Green button anyways ",
+            "tag": ["function","splash","desktop-s"],
+            "platforms": ["Safari"],
+            "priority": false,
+            "notes": "TimeoutException usually cuz there are extra element has the same but that element is invisible",
+            "error_msg":"splash-device-button button', 'TimeoutException'",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 30000,
+            "screenshot":"",
+            "title": "On Components Enter (browser render)",
+            "tag": ["function","splash","mobile-s"],
+            "platforms": ["Chrome","Firefox","Safari"],
+            "priority": false,
+            "notes": "Too many madlib tags",
+            "error_msg":"The list of element (div.splash-adlib li) should have 8 element(s) in it, only 16 element(s) is in the list'",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 30000,
+            "screenshot":"",
+            "title": "On Components Enter (browser render)",
+            "tag": ["function","splash","mobile-s"],
+            "platforms": ["Chrome"],
+            "priority": false,
+            "notes": "",
+            "error_msg":"Element is not clickable at point (122, 274). Other element would receive the click <path d='M280'</path>",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 30000,
+            "screenshot":"",
+            "title": "Click Green button anyways",
+            "tag": ["function","splash","mobile-s"],
+            "platforms": ["Chrome"],
+            "priority": false,
+            "notes": "TimeoutException usually cuz there are extra element has the same but that element is invisible",
+            "error_msg":".button-find-guru.splash-mobile-cta', 'TimeoutException', '",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 30000,
+            "screenshot":"",
+            "title": "Click Green button anyways",
+            "tag": ["function","splash","mobile"],
+            "platforms": ["Chrome","Firefox","Safari","ios","android","ios-safari","android-chrome"],
+            "priority": false,
+            "notes": "madlib-tags doesn't shake in mobile version if blanks doesn't filled out",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 30000,
+            "screenshot":"",
+            "title": "Change to search one university",
+            "tag": ["function","splash","mobile"],
+            "platforms": ["Chrome","Firefox","Safari","ios","android","ios-safari","android-chrome"],
+            "priority": false,
+            "notes": "no list, no map is render on mobile version",
+            "impact_file":[
+                "templates/university.search.html"            
+            ]
         }
-
     ]
 }
