@@ -1136,6 +1136,10 @@ angular.module('uguru.util.controllers')
       }
     }
 
+    $scope.showSupportMainSplashSection = function() {
+      Intercom('show');
+    }
+
     // $scope.closeSingleProjector = function() {
     //   $scope.singleProjectorActivate = false;
     //   $scope.root.vars.showSidebarOneProjector = $scope.showSidebarOneProjector;
