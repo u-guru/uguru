@@ -55,7 +55,7 @@
             <!-- @gabrielle can we see if we can we fit this within the button container? -->
             <button ng-click='lockFilledBlanksAndgetUniversityPlaces(selectedUniversity)' class="button-find-guru splash-mobile-cta opacity-0 animated" class-on-click="a:inject.splash-device-button|bounceOutDown, a:inject.splash-mobile-cta|bounceOutDown, a:inject.coach-click|hide, a:inject.splash-hero-map|activate, a:inject.splash-hero-markers|a, a:inject.splash-device|a, a:inject.splash-device-search|activate, a:inject.coach-help-mobile|hide, a:inject.splash-adlib|a, a:inject.splash-adlib ul|clear, a:inject.splash-adlib|bounceOutUp:animOut, null:inject.splash-hero-progress|activate, null:inject.splash-hero-progress span|animate">Find My Guru</button>
 
-            <div class="splash-hero-support opacity-0" class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a" class-on-activate="rollOut:animOut:keep">
+            <div class="splash-hero-support opacity-0" ng-click='showSupportMainSplashSection()' class-on-load="rollIn:anim" class-on-load-delay="5000" activate-on-class="a" class-on-click="null:inject#cta-modal-intercom|activate" class-on-activate="rollOut:animOut:keep">
                 <a class-on-click="null:inject.splash-guru-hat|activate, null:inject.splash-faq|activate, null:inject#guru-head-container|activate">
                     <svg width="64px" height="64px" viewBox="0 0 64 64">
                         <g fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
