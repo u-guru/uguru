@@ -14,8 +14,9 @@ angular.module('uguru.util.controllers')
 	function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService, LoadingService, KeyboardService) {
 
 		var defaults = {
-			KF_COUNT: 10,
-			DURATION: 5
+			KF_COUNT: 100,
+			DURATION: 5,
+			KF_INTERVALS:5
 		}
 
 		$scope.player = initAnimationPlayer();
@@ -41,6 +42,11 @@ angular.module('uguru.util.controllers')
 			$scope.animation.attr.fill_mode = option;
 		}
 
+		$scope.updateNumIntervals = function(num_intervals) {
+			defaults.KF_INTERVALS = num_intervals;
+			$scope.setActiveKeyFrame(0);
+		}
+
 		function setAnimationDirectionFunc(option, index) {
 			$scope.animation.attr.direction = option;
 		}
@@ -59,11 +65,12 @@ angular.module('uguru.util.controllers')
 
 			var oldValue = $scope.animation.selected_index;
 
-			var newValue = parseInt(value);
-			var newPercentValue = getNthSortedKeyText($scope.animation.obj, parseInt(value));
-			$scope.animation.selected_index = parseInt(value);
+			var newValue = Math.floor(parseInt(value) * (100/defaults.KF_INTERVALS));
+			var newPercentValue = getNthSortedKeyText($scope.animation.obj, newValue);
+			$scope.animation.selected_kf_index = value;
+			$scope.animation.selected_index = newValue;
 			$scope.animation.selected_percent = newPercentValue + '%';
-			$scope.animation.flex_selected_index = parseInt(value);
+			$scope.animation.flex_selected_index = newValue;
 
 			//going backwards
 			//for each property, check the last one it was edited, apply it to that
@@ -126,9 +133,10 @@ angular.module('uguru.util.controllers')
 			//for each property, check the last one it was edited, apply it to that
 
 			//clear all values;
-			var percentValue = getNthSortedKeyText($scope.animation.obj, value);
+			var percentValue = getNthSortedKeyText($scope.animation.obj, newValue);
 			var proposedKeyframe = $scope.animation.properties[percentValue + '%'];
 			$scope.animation.selected_keyframe = proposedKeyframe;
+			console.log($scope.animation.selected_keyframe);
 
 
 			if (true) {
@@ -534,6 +542,15 @@ angular.module('uguru.util.controllers')
 			console.log(animation.obj);
 		}
 
+		function initAnimationFromCSSText(anim_name, browserPrefix, css_text) {
+			var lastSheet = document.styleSheets[document.styleSheets.length - 1];
+			var indexOfRuleInSheet = lastSheet.insertRule("@-" + browserPrefix + "-keyframes " + anim_name + " { } ");
+			var anim = lastSheet.cssRules[indexOfRuleInSheet];
+
+			anim.cssText = css_text;
+			return anim
+		}
+
 		function initAnimation(anim_name, browserPrefix, num_keyframes, duration) {
 			num_keyframes = num_keyframes || 100;
 			duration = (duration || 5) + 's';
@@ -552,9 +569,10 @@ angular.module('uguru.util.controllers')
 				timing_function: "ease",
 				duration: duration,
 				durationVal: parseInt(duration.replace('s')),
-				fill_mode: "forwards"
+				fill_mode: "forwards",
+				kf_intervals: defaults.KF_INTERVALS
 			}
-			return {obj: anim, selected_keyframe:properties['0%'], selected_percent:'0%', selected_index: 0, flex_selected_index:0, properties: properties, kf_count: num_keyframes, attr:attr};
+			return {obj: anim, selected_keyframe:properties['0%'], selected_kf_index:0, selected_percent:'0%', selected_index: 0, flex_selected_index:0, properties: properties, kf_count: num_keyframes, attr:attr};
 		}
 
 
@@ -626,11 +644,12 @@ angular.module('uguru.util.controllers')
 				timing_function: attr.timing_function,
 				duration: attr.duration,
 				durationVal: parseInt(attr.duration.replace('s')),
-				fill_mode: attr.fill_mode
+				fill_mode: attr.fill_mode,
+				kf_intervals: defaults.KF_INTERVALS
 			}
 
 			var propertyKeys = Object.keys(properties);
-			var animation = {obj: anim,  properties: properties, kf_count: kf_count, attr:attr};
+			var animation = {obj: anim,  properties: properties, kf_count: kf_count, attr:attr, kf_intervals: defaults.KF_INTERVALS};
 			for (var i = 0; i < propertyKeys.length; i++) {
 				var indexPropertyKeyPercent = propertyKeys[i];
 				var modifiedDict = properties[indexPropertyKeyPercent].modified;
@@ -1255,7 +1274,7 @@ angular.module('uguru.util.controllers')
 			$scope.actor = document.querySelector('#rect-svg');
 			initAnimationListener($scope.actor);
 
-			$scope.animation = initAnimation('animation', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
+			$scope.animation = initAnimation('sample-animation', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
 			$scope.animationDropdown = {options:[$scope.animation.attr.name, '+'], selectedIndex: 0, label:'temp-animation', size:'small'};
 
 
@@ -1264,12 +1283,40 @@ angular.module('uguru.util.controllers')
 
 
 		}
+		$scope.renderAnimationCSSText = function() {
+			$scope.layout.index = 1;
+
+			var tempAnim = initAnimationFromCSSText($scope.animation.obj.name, browserPrefix, $scope.animation.obj.cssText);
+			var cssRulesLength = $scope.animation.obj.cssRules.length;
+			for (var i = 0; i < cssRulesLength; i++) {
+				var indexKFRule = $scope.animation.obj.cssRules.item(i);
+				var indexKeyText = indexKFRule.keyText;
+				var indexKeyStyle = indexKFRule.cssText;
+				if (!(indexKeyStyle.indexOf('{ }') > -1)) {
+					tempAnim.appendRule(indexKeyStyle, 0)
+
+				}
+			}
+			var animClassText = generateClassText($scope.animation);
+			$scope.animation.exportable_kf = {obj: tempAnim, className: tempAnim.name, classText: animClassText, fullText: animClassText + tempAnim.cssText };
+
+			$timeout(function() {
+				// angular.element(document.querySelector('#export-textarea')).select()
+				document.querySelector('#export-textarea').select();
+				// window.prompt("Copy to clipboard: Ctrl+C, Enter", $scope.animation.exportable_kf.fullText);
+				document.execCommand('copy')
+			}, 1000)
+			function generateClassText(anim) {
+				 return "." + anim.obj.name + "\n{\n   " + ' animation:  ' + anim.obj.name + '  ' + anim.attr.duration  + '  ' + anim.attr.timing_function + '  ' + anim.attr.delay + '  ' + anim.attr.iteration_count + '  ' + anim.attr.direction + ';\n    ' + browserPrefix + '-' + ' animation:  ' + anim.obj.name + '  ' + anim.attr.duration  + '  ' + anim.attr.timing_function + '  ' + anim.attr.delay + '  ' + anim.attr.iteration_count + '  ' + anim.attr.direction + ';\n}\n\n'
+			}
+		}
 
 		var browserPrefix;
 
 		injectStyleSheet();
 
 		$timeout(function() {
+
 			$timeout(function() {
 
 				var arr = getAllKeyFrameAnimations();
@@ -1285,6 +1332,7 @@ angular.module('uguru.util.controllers')
 
 			}, 2000);
 			initAll();
+
 		}, 2000)
 
 	}
