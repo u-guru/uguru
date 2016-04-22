@@ -48,10 +48,6 @@
                     <input class="radius-2 flex-center p05xy txt-center" size="15" style="height: 32px;" ng-model='animation.attr.name' ng-blur="updateAnimationName(animation)" placeholder="animation name" type='text' />
                 </li>
                 <li class="flex-wrap-center">
-
-                    <div class='txt-1 txt-center full-x semibold'># Intervals</div>
-                    <input class="radius-2 flex-center p05xy txt-center" size="4" style="height: 32px; width: 50px" ng-blur="updateNumIntervals(animation.attr.kf_intervals)" ng-model='animation.attr.kf_intervals' type='number' placeholder=""/>
-
                     <div class='txt-1 txt-center full-x semibold'>Duration</div>
                     <div class="flex-center-vertical">
                         <input class="radius-2-left txt-center p05xy" size="4" style="height: 32px;" ng-model="animation.attr.durationVal" ng-change="animDurationChange(animation.attr.durationVal)" placeholder="0"/>
@@ -61,9 +57,7 @@
                 <li class="flex-wrap-center">
                     <div class='txt-1 txt-center full-x semibold'>Timing Function</div>
                     <dropdown class="height-32" ng-model="animationTimingFunc" selected-index="0"> </dropdown>
-
                 </li>
-
                 <li class="flex-wrap-center">
                     <div class='txt-1 txt-center full-x semibold'>Delay</div>
                     <div class="flex-center-vertical">
@@ -84,10 +78,10 @@
                     <dropdown class="height-32" ng-model="animationFillMode" selected-index="0"> </dropdown>
                 </li>
             </ul>
-            <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 118px)" ng-show='layout.index == 2'>
+            <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 136px)" ng-show='layout.index == 2'>
                 <h1 class='txt-7 p20xy txt-smoke'> </h1>
             </div>
-            <div class='relative bg-slate-25p' style="height: calc(100% - 82px - 118px);" ng-show='layout.index === 1'>
+            <div class='relative bg-slate-25p' style="height: calc(100% - 82px - 136px);" ng-show='layout.index === 1'>
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                 <div class="full-xy ugrid-2 p15-grid">
                     <div class="full-y">
@@ -360,7 +354,7 @@
                     </div>
                 </div>
             </div>
-            <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 118px); overflow: hidden;" ng-show='!layout.index'>
+            <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 136px); overflow: hidden;" ng-show='!layout.index'>
                 <div class='flex-wrap-center' style="perspective: 1000;">
                     <div id="rect-svg" class="bg-white radius-4 size-150"></div>
                 </div>
@@ -371,41 +365,26 @@
                     </a>
                 </div> -->
             </div>
-            <!-- <li class="full-x p20xy flex-wrap-center" style='bottom:100px;'>
-                <div class="flex-center-vertical-space-between m05bottom ugrid-3 flex-wrap-center full-x">
-                    <div class='ugrid-2'>
-                        <div>
-                            <h2 class="txt-18 semibold">Total# KF: <span class='weight-900'>{{animation.kf_count}}</span>
-                            </h2>
-                            <small class='txt-1 opacity-50 full-x'>edit disabled</small>
-                        </div>
-                        <div>
-                            <h2 class="txt-18 semibold">Current KF#</h2>
-                            <input class="radius-2 txt-center p05xy" size="4" ng-model="player.currentFrame" placeholder="0"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="range-container small full-x m15right">
-                    <div>
-                        <span>{{animation.selected_index}}</span>
-                        <input class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animation.kf_count - 1}}" list="numbers" ng-change="setActiveKeyFrame(player.currentFrame)" ng-model="player.currentFrame"> </input>
-                        <span>{{animation.kf_count}}</span>
-                    </div>
-                    <progress class="bg-shamrock-20p txt-white full-x" max="{{animationDuration.replace('s', '')}}" value="{{timer.time}}"></progress>
-                </div>
-            </li> -->
             <div class="full-x flex-wrap-start p15-grid bg-slate">
-                <div class="flex-space-between full-x relative">
-                    <li class='relative flex-center-vertical' style='bottom:20px;left:10px;'>
-                        <h2 ng-show='!player.status' style='font-size:50px;' class="opacity-50 weight-900 absolute left-0 top-0">{{animation.selected_percent}}</h2>
-                        <h2 ng-show='player.status' style='font-size:100px; padding-bottom:30px; margin-top:-50px;' class=" weight-900 absolute txt-azure left-0 top-0">{{timer.time}}s</h2>
+                <ul class="flex-space-between full-x relative">
+                    <li class='flex-center-vertical' style="height: 45px;">
+                        <div class="relative full-y">
+                            <h2 ng-show='!player.status' class="opacity-50 weight-900 txt-36 absolute bottom-0 left-0">{{animation.selected_percent}}</h2>
+                            <h2 ng-show='player.status' class="weight-900 txt-azure txt-36 absolute bottom-0 left-0">{{timer.time}}s</h2>
+                        </div>
                     </li>
-                    <div class="p15right flex-center-vertical">
-                        <h2 class="txt-18 semibold">Total # KF</h2>
-                        <!-- <span class='txt-18 opacity-50 block p10left'>edit disabled</span> -->
-                        <input disabled class="radius-2 txt-center p05xy opacity-50 m15left" size="4" style="height: 30px;" ng-model="animation.kf_count" placeholder="{{animation.kf_count}}"/>
-                    </div>
-                </div>
+                    <li class="flex-center-vertical">
+                        <div class="p15right flex-center-vertical">
+                            <h2 class="txt-18 semibold"># Intervals</h2>
+                            <input class="radius-2 flex-center p05xy txt-center m05left" size="4" style="height: 30px; width: 50px" ng-blur="updateNumIntervals(animation.attr.kf_intervals)" ng-model='animation.attr.kf_intervals' type='number' placeholder=""/>
+                        </div>
+                        <div class="p15right flex-center-vertical">
+                            <h2 class="txt-18 semibold">Total # KF</h2>
+                            <!-- <span class='txt-18 opacity-50 block p10left'>edit disabled</span> -->
+                            <input disabled class="radius-2 txt-center p05xy opacity-50 m05left" size="4" style="height: 30px;" ng-model="animation.kf_count" placeholder="{{animation.kf_count}}"/>
+                        </div>
+                    </li>
+                </ul>
                 <div class="range-container small full-x">
                     <div>
                         <input ng-mouseup="setActiveKeyFrame(animation.selected_kf_index)"  class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animation.attr.kf_intervals}}" list="numbers"  ng-model="animation.selected_kf_index"> </input>
