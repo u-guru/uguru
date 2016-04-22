@@ -14,8 +14,9 @@ angular.module('uguru.util.controllers')
 	function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService, LoadingService, KeyboardService) {
 
 		var defaults = {
-			KF_COUNT: 10,
-			DURATION: 5
+			KF_COUNT: 100,
+			DURATION: 5,
+			KF_INTERVALS:5
 		}
 
 		$scope.player = initAnimationPlayer();
@@ -41,6 +42,11 @@ angular.module('uguru.util.controllers')
 			$scope.animation.attr.fill_mode = option;
 		}
 
+		$scope.updateNumIntervals = function(num_intervals) {
+			defaults.KF_INTERVALS = num_intervals;
+			$scope.setActiveKeyFrame(0);
+		}
+
 		function setAnimationDirectionFunc(option, index) {
 			$scope.animation.attr.direction = option;
 		}
@@ -59,11 +65,12 @@ angular.module('uguru.util.controllers')
 
 			var oldValue = $scope.animation.selected_index;
 
-			var newValue = parseInt(value);
-			var newPercentValue = getNthSortedKeyText($scope.animation.obj, parseInt(value));
-			$scope.animation.selected_index = parseInt(value);
+			var newValue = Math.floor(parseInt(value) * (100/defaults.KF_INTERVALS));
+			var newPercentValue = getNthSortedKeyText($scope.animation.obj, newValue);
+			$scope.animation.selected_kf_index = value;
+			$scope.animation.selected_index = newValue;
 			$scope.animation.selected_percent = newPercentValue + '%';
-			$scope.animation.flex_selected_index = parseInt(value);
+			$scope.animation.flex_selected_index = newValue;
 
 			//going backwards
 			//for each property, check the last one it was edited, apply it to that
@@ -126,9 +133,10 @@ angular.module('uguru.util.controllers')
 			//for each property, check the last one it was edited, apply it to that
 
 			//clear all values;
-			var percentValue = getNthSortedKeyText($scope.animation.obj, value);
+			var percentValue = getNthSortedKeyText($scope.animation.obj, newValue);
 			var proposedKeyframe = $scope.animation.properties[percentValue + '%'];
 			$scope.animation.selected_keyframe = proposedKeyframe;
+			console.log($scope.animation.selected_keyframe);
 
 
 			if (true) {
@@ -552,9 +560,10 @@ angular.module('uguru.util.controllers')
 				timing_function: "ease",
 				duration: duration,
 				durationVal: parseInt(duration.replace('s')),
-				fill_mode: "forwards"
+				fill_mode: "forwards",
+				kf_intervals: defaults.KF_INTERVALS
 			}
-			return {obj: anim, selected_keyframe:properties['0%'], selected_percent:'0%', selected_index: 0, flex_selected_index:0, properties: properties, kf_count: num_keyframes, attr:attr};
+			return {obj: anim, selected_keyframe:properties['0%'], selected_kf_index:0, selected_percent:'0%', selected_index: 0, flex_selected_index:0, properties: properties, kf_count: num_keyframes, attr:attr};
 		}
 
 
@@ -626,11 +635,12 @@ angular.module('uguru.util.controllers')
 				timing_function: attr.timing_function,
 				duration: attr.duration,
 				durationVal: parseInt(attr.duration.replace('s')),
-				fill_mode: attr.fill_mode
+				fill_mode: attr.fill_mode,
+				kf_intervals: defaults.KF_INTERVALS
 			}
 
 			var propertyKeys = Object.keys(properties);
-			var animation = {obj: anim,  properties: properties, kf_count: kf_count, attr:attr};
+			var animation = {obj: anim,  properties: properties, kf_count: kf_count, attr:attr, kf_intervals: defaults.KF_INTERVALS};
 			for (var i = 0; i < propertyKeys.length; i++) {
 				var indexPropertyKeyPercent = propertyKeys[i];
 				var modifiedDict = properties[indexPropertyKeyPercent].modified;
