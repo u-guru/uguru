@@ -1757,6 +1757,48 @@
                                     </div>
                                 </div>
                             </li>
+                            <li class="admin-definition-list">
+                                <div>
+                                    <h2>Rendering Notes</h2>
+                                    <dl>
+                                        <div>
+                                            <h1 class="semibold txt-center p15xy flex-center">
+                                                <span class="block p05y-p10x radius-2 bg-gold txt-white">Javascript</span> &nbsp;&rarr;&nbsp; 
+                                                <span class="block p05y-p10x radius-2 bg-cobalt txt-white">Style</span> &nbsp;&rarr;&nbsp; 
+                                                <span class="block p05y-p10x radius-2 bg-cobalt txt-white">Layout</span> &nbsp;&rarr;&nbsp; 
+                                                <span class="block p05y-p10x radius-2 bg-moola txt-white">Paint</span> &nbsp;&rarr;&nbsp;
+                                                <span class="block p05y-p10x radius-2 bg-moola txt-white">Composite</span></h1>
+                                        </div>
+                                        <div>
+                                            <dt class="flex"><span class="block p05y-p10x radius-2 bg-gold txt-white">Javascript</span></dt>
+                                            <dd>Handles work that results in visual changes.</dd>
+                                        </div>
+                                        <div>
+                                            <dt class="flex"><span class="block p05y-p10x radius-2 bg-cobalt txt-white">Style</span></dt>
+                                            <dd>Applies CSS rules to appropriate elements based on matching selectors.</dd>
+                                        </div>
+                                        <div>
+                                            <dt class="flex"><span class="block p05y-p10x radius-2 bg-cobalt txt-white">Layout</span></dt>
+                                            <dd>Calculates space and position of each element on the screen.<br/><em>Layout is skipped if a "paint-only" property like text color is used.</em></dd>
+                                        </div>
+                                        <div>
+                                            <dt class="flex"><span class="block p05y-p10x radius-2 bg-moola txt-white">Paint</span></dt>
+                                            <dd>Draw calls for all elements, including text, colors, images, etc. <br/><em>Paint is skipped if the property doesn't require either layout or paint, such as transform.</em></dd>
+                                        </div>
+                                        <div>
+                                            <dt class="flex"><span class="block p05y-p10x radius-2 bg-moola txt-white">Composite</span></dt>
+                                            <dd>Drawing elements on screen in correct order.<br/><em>Elements meant to be animated should be promoted with&nbsp;<strong>will-change: transform</strong>&nbsp;and/or&nbsp;<strong>transform: translateZ(0)</strong>, which changes composite order.</em></dd>
+                                        </div>
+                                        <div>
+                                            <dt class="flex"><span class="block p05y-p10x radius-2 bg-moola txt-white">Rasterize</span></dt>
+                                            <dd>Visually fills in pixels of all elements, including text, colors, images, etc.<br/><em>Rasterize is skipped if the property doesn't require either layout or paint, such as transform.</em></dd>
+                                        </div>
+                                        <!-- <div>
+                                            <div class="txt-18 padding-15-half full-x flex-left-center-vertical"></div>
+                                        </div> -->
+                                    </dl>
+                                </div>
+                            </li>
                             <li class="admin-definition-list" ng-if='reference.animation.terms'>
                                 <div>
                                     <h2>Animation Terminology</h2>

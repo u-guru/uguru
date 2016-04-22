@@ -172,6 +172,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/splash/university',
         templateUrl: BASE + 'templates/splash/layout/university.search.html'
   }).
+  state('root.splash-hiw', {
+        url: '/splash/hiw',
+        templateUrl: BASE + 'templates/splash/swiper/splash.hiw.container.html'
+  }).
 
   //start essay
   // state('root.essay-student-university', {
@@ -440,7 +444,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'PublicProfileController'
   }).
   state('root.map', {
-        url: '/map',
+        url: '/splash/maps',
         templateUrl: BASE + 'templates/splash/layout/splash.maps.html',
         controller: 'GMapController'
   }).

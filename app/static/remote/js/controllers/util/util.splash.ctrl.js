@@ -39,7 +39,9 @@ angular.module('uguru.util.controllers')
     $scope.activate = {
       searchUniversity: false,
       map: false,
-      projector: false
+      projector: false,
+      powerups: false,
+      sidebar: false
     }
 
 
@@ -60,6 +62,24 @@ angular.module('uguru.util.controllers')
         console.log(e.keyCode);
         if (e.keyCode === 27) {
           $scope.activate.searchUniversity = false;
+          $timeout(function() {
+            $scope.$apply();
+          })
+          document.removeEventListener('keydown', keyboardListener);
+        }
+      }
+
+      KeyboardService.initKeyboardKeydownFunc(closeOnEscape)
+    }
+
+    $scope.activatePowerups = function() {
+      $scope.activate.powerups = true;
+      $timeout(function() {
+        $scope.$apply()
+      });
+      var closeOnEscape = function(e) {
+        if (e.keyCode === 27) {
+          $scope.activate.powerups = false;
           $timeout(function() {
             $scope.$apply();
           })
@@ -1126,17 +1146,7 @@ angular.module('uguru.util.controllers')
     //   }
     // }
 
-    // $scope.switchToHiwScene = function(index) {
-    //   var currentActive = document.querySelector('.how-scene .hiw-single-scene.active-scene');
-    //   if (currentActive) {
-    //     currentActive.classList.remove('active-scene');
-    //     currentActive.classList.add('clear');
-    //   }
-    //   var selectedIndexScene = document.querySelector('.how-scene-' + index);
-    //   if (selectedIndexScene) {
-    //     selectedIndexScene.classList.add('active-scene', 'activate');
-    //   }
-    // }
+
 
     // $scope.switchToBgScene = function(index) {
     //   var currentActive = document.querySelector('.bg-scene .bg-single-scene.active-scene');
@@ -1974,12 +1984,20 @@ angular.module('uguru.util.controllers')
 
       function initCTASplash() {
         $compile(document.querySelector('#cta-box-sidebar'))($scope);
+        $scope.activate.sidebar = true;
         var ctaParentElemSelector = '#home-splash';
         CTAService.initSingleCTA("#cta-box-sidebar", ctaParentElemSelector, activateAtShow);
         function activateAtShow(modal_elem) {
           var sidebarAside = modal_elem.querySelector('.splash-sidebar-full');
+          sidebarAside && sidebarAside.classList.remove('activate');
           sidebarAside && sidebarAside.classList.add('activate');
         }
+
+        // CTAService.initSingleCTA("#cta-box-powerups", ctaParentElemSelector, activateAtShow);
+        // function activateAtShow(modal_elem) {
+        //   var sidebarAside = modal_elem.querySelector('.splash-powerups');
+        //   sidebarAside && sidebarAside.classList.add('activate');
+        // }
       }
 
       // function onMapRenderCompleteOnce(map) {

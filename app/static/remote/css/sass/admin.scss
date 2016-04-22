@@ -1,12 +1,37 @@
 @import 'mixin';
 
 /* ---------- KEYFRAMES */
+#keys {
+	.dropdown-container {
+		h2 {
+			font-size: 14px;
+			font-weight: 600;
+			margin-bottom: 5px;
+		}
+		.dropdown.small {
+			> div {
+				> span {
+					width: 128px;
+				}
+			}
+		}
+	}
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+		@include appearance;
+		margin: 0; 
+	}
+	.size-150 {
+		width: 150px;
+		height: 150px;
+	}
+}
 .anim-timeline {
 	@include flex;
 	@include flex-wrap;
 	position: relative;
 	width: 100%;
-	height: 75px;
+	height: calc(75px + 32px);
 	background: darken($slate, 3%);
 	.anim-player {
 		position: relative;

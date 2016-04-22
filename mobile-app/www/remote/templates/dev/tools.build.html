@@ -1166,7 +1166,7 @@
 
 
             <!-- SCENE LIST VIEW-->
-            <div class='build-element-list animation relative full-x overflow-auto right-0 relative'  ng-hide='!current_file.selected_variation.selected_scene_state && !current_file.selected_variation.selected_time_state && !current_file.selected_variation.selected_component' >
+            <div class='build-element-list animation relative full-x overflow-auto right-0 relative' >
                 <ul class='p15-grid flex-wrap-center flex-stretch flex-wrap absolute full-xy' ng-if='!current_file.selected_variation.selected_scene_state'>
                     <li ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index' class='full-x m10y flex-center'  ng-keydown="onStateKeyboardSwitch($event, current_file)">
                         <div class="build-item-state full-x flex-wrap" style='height:auto;' tabindex="1">

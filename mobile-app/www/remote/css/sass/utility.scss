@@ -19,106 +19,6 @@
 	}
 }
 
-.close-icon {
-	svg {
-		@include prefix(transform, rotate(45deg), webkit moz ms o);
-	}
-}
-
-.guru-head, .guru-head svg {
-	display: block;
-	width: 150px;
-	height: 150px;
-	&.guru-delivery {
-		[fill="#69B3A5"] {
-			fill: $auburn;
-		}
-		[fill="#33534D"] {
-			fill: mix($auburn, $charcoal, 15%);
-		}
-		[stroke="#33534D"] {
-			stroke: mix($auburn, $charcoal, 15%);
-		}
-	}
-	&.guru-freelancing {
-		[fill="#69B3A5"] {
-			fill: $orange;
-		}
-		[fill="#33534D"] {
-			fill: mix($orange, $charcoal, 15%);
-		}
-		[stroke="#33534D"] {
-			stroke: mix($orange, $charcoal, 15%);
-		}
-	}
-	&.guru-baking {
-		[fill="#69B3A5"] {
-			fill: $gold;
-		}
-		[fill="#33534D"] {
-			fill: mix($gold, $charcoal, 15%);
-		}
-		[stroke="#33534D"] {
-			stroke: mix($gold, $charcoal, 15%);
-		}
-	}
-	&.guru-photography {
-		[fill="#69B3A5"] {
-			fill: $moola;
-		}
-		[fill="#33534D"] {
-			fill: mix($moola, $charcoal, 15%);
-		}
-		[stroke="#33534D"] {
-			stroke: mix($moola, $charcoal, 15%);
-		}
-	}
-	&.guru-tech {
-		[fill="#69B3A5"] {
-			fill: $azure;
-		}
-		[fill="#33534D"] {
-			fill: mix($azure, $charcoal, 15%);
-		}
-		[stroke="#33534D"] {
-			stroke: mix($azure, $charcoal, 15%);
-		}
-	}
-	&.guru-household {
-		[fill="#69B3A5"] {
-			fill: $cobalt;
-		}
-		[fill="#33534D"] {
-			fill: mix($cobalt, $charcoal, 15%);
-		}
-		[stroke="#33534D"] {
-			stroke: mix($cobalt, $charcoal, 15%);
-		}
-	}
-	&.guru-athletic {
-		[fill="#69B3A5"] {
-			fill: $eggplant;
-		}
-		[fill="#33534D"] {
-			fill: mix($eggplant, $charcoal, 15%);
-		}
-		[stroke="#33534D"] {
-			stroke: mix($eggplant, $charcoal, 15%);
-		}
-	}
-	&.guru-academic {
-		[fill="#69B3A5"] {
-			fill: $cerise;
-		}
-		[fill="#33534D"] {
-			fill: mix($cerise, $charcoal, 15%);
-		}
-		[stroke="#33534D"] {
-			stroke: mix($cerise, $charcoal, 15%);
-		}
-	}
-}
-
 @media screen and (max-width: 768px) {
 	.desktop-only {
 		display: none;
@@ -180,6 +80,12 @@ em {
 input[type=search], input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=tel], input[type=color], textarea {
 	height: initial;
 	line-height: initial;
+}
+.transition-150 {
+	@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+}
+.transition-150-linear {
+	@include prefix(transition, all 150ms linear, webkit moz ms o);
 }
 a, a:hover, a:active, a:visited {
 	color: white;
@@ -528,7 +434,7 @@ input, fieldset {
 [class*="padding-none"] {
 	padding: 0;
 }
-[class*="padding-15-half"] {
+[class*="padding-15-half"], [class*="p7-5"] {
 	padding: 7.5px;
 }
 [class*="padding-none-impt"] {
@@ -787,6 +693,11 @@ input, fieldset {
 	width: 100%!important;
 	height: 100%!important;
 }
+.max-xy {
+	max-width: 100%!important;
+	max-height: 100%!important;
+}
+
 .center-x {
 	@include center-x;
 }
@@ -865,6 +776,10 @@ input, fieldset {
 }
 .z-index-10 {
 	z-index: 10!important;
+}
+
+.z-index--1000 {
+	z-index: -1000!important;
 }
 
 .z-index-99 {
@@ -2210,4 +2125,175 @@ input, fieldset {
 .parallax-auto {
 	top: auto!important;
 	left: auto!important;
+}
+
+/* ---------- SVG SPECIFIC */
+.close-icon {
+	svg {
+		@include prefix(transform, rotate(45deg), webkit moz ms o);
+	}
+}
+
+.link-burger {
+	display: block;
+	width: 42px;
+	height: 42px;
+	&.close {
+		svg {
+			@include prefix(transform, rotate(45deg), webkit moz ms o);
+		}
+	}
+	svg {
+		height: 100%;
+		width: 100%;
+		g, circle, path {
+			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			@include svg-stroke(white, 4);
+		}
+	}
+	&:hover, &:focus {
+		background: none;
+		svg {
+			circle {
+				fill: white;
+			}
+			path {
+				stroke: $slate;
+			}
+		}
+	}
+}
+
+.link-logo {
+	display: block!important;
+	height: 100%;
+	max-height: 42px;
+	width: 100%;
+	max-width: 109px;
+	svg {
+		display: block;
+		height: 100%;
+		path {
+			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			&:first-child {
+				fill: rgba(white,.8);
+			}
+			&:last-child {
+				fill: white;
+			}
+		}
+		text {
+			fill: white;
+		}
+	}
+	&:hover, &:focus {
+		background: none!important;
+		svg {
+			path {
+				&:first-child {
+					fill: white;
+				}
+				&:last-child {
+					fill: rgba(white,.8);
+				}
+			}
+			text {
+				fill: $smoke;
+			}
+		}
+	}
+}
+
+.guru-head, .guru-head svg {
+	display: block;
+	width: 150px;
+	height: 150px;
+	&.guru-delivery {
+		[fill="#69B3A5"] {
+			fill: $auburn;
+		}
+		[fill="#33534D"] {
+			fill: mix($auburn, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($auburn, $charcoal, 15%);
+		}
+	}
+	&.guru-freelancing {
+		[fill="#69B3A5"] {
+			fill: $orange;
+		}
+		[fill="#33534D"] {
+			fill: mix($orange, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($orange, $charcoal, 15%);
+		}
+	}
+	&.guru-baking {
+		[fill="#69B3A5"] {
+			fill: $gold;
+		}
+		[fill="#33534D"] {
+			fill: mix($gold, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($gold, $charcoal, 15%);
+		}
+	}
+	&.guru-photography {
+		[fill="#69B3A5"] {
+			fill: $moola;
+		}
+		[fill="#33534D"] {
+			fill: mix($moola, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($moola, $charcoal, 15%);
+		}
+	}
+	&.guru-tech {
+		[fill="#69B3A5"] {
+			fill: $azure;
+		}
+		[fill="#33534D"] {
+			fill: mix($azure, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($azure, $charcoal, 15%);
+		}
+	}
+	&.guru-household {
+		[fill="#69B3A5"] {
+			fill: $cobalt;
+		}
+		[fill="#33534D"] {
+			fill: mix($cobalt, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($cobalt, $charcoal, 15%);
+		}
+	}
+	&.guru-athletic {
+		[fill="#69B3A5"] {
+			fill: $eggplant;
+		}
+		[fill="#33534D"] {
+			fill: mix($eggplant, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($eggplant, $charcoal, 15%);
+		}
+	}
+	&.guru-academic {
+		[fill="#69B3A5"] {
+			fill: $cerise;
+		}
+		[fill="#33534D"] {
+			fill: mix($cerise, $charcoal, 15%);
+		}
+		[stroke="#33534D"] {
+			stroke: mix($cerise, $charcoal, 15%);
+		}
+	}
 }
