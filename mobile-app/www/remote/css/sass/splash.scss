@@ -53,13 +53,22 @@
 	width: 100%;
 	height: 100%;
 	z-index: 9999;
-	background: rgba($slate, .95);
+	background: $slate;
 	#echo-loader {
 		* {
 			transform-origin: center center;
 		}
 		#echo-loader-echo {
-			animation: ping 1500ms ease-in-out infinite;
+			&.active {
+				animation: ping 1500ms ease-in-out infinite, echo-loader-main 5s ease-in-out forwards;
+			}
+		}
+		#echo-loader-main {
+			stroke-dasharray: 629;
+			stroke-dashoffset: 629;
+			&.active {
+				animation: echo-loader-main 5s ease-in-out forwards;
+			}
 		}
 	}
 }
@@ -2530,7 +2539,7 @@
 		}
 
 		// PROJECTOR
-		&#splash-projector, #splash-one-page-pulldown {
+		&#splash-projector {
 			@include flex;
 			@include flex-wrap;
 			@include flex-center;
