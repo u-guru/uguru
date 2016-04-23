@@ -285,8 +285,8 @@ li {
 	&:before {
 		@include prefix(transform, scale(0), webkit moz ms o);
 		@include prefix(transform-origin, center center, webkit moz ms o);
-		@include prefix(transition, all 150ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
-		@include prefix(transition, all 150ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
+		@include prefix(transition, all 300ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+		@include prefix(transition, all 300ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
 		@include round;
 		content: "";
 		display: block;
@@ -303,15 +303,15 @@ li {
 		@include prefix(transform-origin, center center, webkit moz ms o);
 	}
 	svg {
-		@include prefix(transition, all 150ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
-		@include prefix(transition, all 150ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
+		@include prefix(transition, all 300ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+		@include prefix(transition, all 300ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
 		height: 100%;
 		width: auto;
 		position: relative;
 		z-index: 10;
 		g, circle, path {
-			@include prefix(transition, all 150ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
-			@include prefix(transition, all 150ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
+			@include prefix(transition, all 300ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+			@include prefix(transition, all 300ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
 			@include svg-stroke(white, 4);
 		}
 		g:not(.path) > path, .path {

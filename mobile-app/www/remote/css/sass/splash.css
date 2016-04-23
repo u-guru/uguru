@@ -429,16 +429,16 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   -ms-transform-origin: center center;
   -o-transform-origin: center center;
   transform-origin: center center;
-  -webkit-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  -moz-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  -ms-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  -o-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  -webkit-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  -moz-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  -ms-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  -o-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -webkit-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -moz-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -ms-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -o-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -webkit-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -moz-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -ms-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -o-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
   border-radius: 1000px;
   content: "";
   display: block;
@@ -461,16 +461,16 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
 }
 
 .splash-burger svg {
-  -webkit-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  -moz-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  -ms-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  -o-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  -webkit-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  -moz-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  -ms-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  -o-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -webkit-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -moz-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -ms-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -o-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -webkit-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -moz-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -ms-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -o-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
   height: 100%;
   width: auto;
   position: relative;
@@ -478,16 +478,16 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
 }
 
 .splash-burger svg g, .splash-burger svg circle, .splash-burger svg path {
-  -webkit-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  -moz-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  -ms-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  -o-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-  -webkit-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  -moz-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  -ms-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  -o-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -webkit-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -moz-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -ms-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -o-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -webkit-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -moz-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -ms-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -o-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
   fill: none;
   stroke: white;
   stroke-width: 4px;
