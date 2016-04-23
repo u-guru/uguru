@@ -307,29 +307,32 @@ def updateFromTravisClient(client, client_type, window_size, filename, scene_ind
     full_url = "http://localhost:5000/api/v1/admin/" + admin_token + '/dashboard'
     test_index = getTestIndexFromClientAndType(client, client_type, window_size)
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-    try:
-        import json
-        json_dump = json.dumps({
-            'scene': {'index': scene_index},
-            'test_index': test_index,
-            'filename': filename,
-            'test_passed': test_passed,
-            'filename':filename,
-            'test_client': 'travis'
-            })
-        try:
-            response = requests.put(url=full_url, data=json_dump, headers=headers).text
-            return True
-        except:
-            return False
+    # try:
+    import json
+    json_dump = json.dumps({
+        'scene': {'index': scene_index},
+        'test_index': test_index,
+        'test_update': True,
+        'filename': filename,
+        'test_passed': test_passed,
+        'filename':filename,
+        'test_client': 'travis'
+        })
+
+    response = requests.put(url=full_url, data=json_dump, headers=headers)
+    print type(response.status_code)
+    return response.status_code
+        # raise
+        # return True
+
         # pprint(response.__dict__)
         ## update went through to the server
 
     ## update went through to the server
-    except:
-        print "ERROR: Something went wrong with Uguru Dashboard update from Travis test -- please let Samir know \n\n%s\n%s\n%s" % (str(client), str(client_type), str(window_size))
-        raise
-        return False
+    # except:
+    #     print "ERROR: Something went wrong with Uguru Dashboard update from Travis test -- please let Samir know \n\n%s\n%s\n%s" % (str(client), str(client_type), str(window_size))
+    #     raise
+    #     return False
 
 def uguruAPI(arg='', _json=None, _type='get'):
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
@@ -440,6 +443,25 @@ if 'test' in args and len(args) == 2:
     ## -arg4 filename
     ## -arg5 scene #1 (i.e. scene = 1 for "on components enter (browser render) ")
     updateFromTravisClient('android', 'app', None, 'layouts/splash.json', 1, True)
+    ## returns the integer(python type) 200 type<'int'> if successfull
+
+if 'supported' in args and len(args) == 2:
+    supported_files = ['layouts/splash.json']
+    for _file in supported_files:
+        print _file
+
+if 'status' in args and len(args) == 4:
+    import json, requests
+    file_name = args[-2]
+    scene_index = int(args[-1])
+
+    response = json.loads(requests.get('https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json').text)
+    from pprint import pprint
+    scene_states = response.get('scene_states')
+    index = 1
+    for test in scene_states[scene_index - 1]['tests']:
+        print "%s. %s %s %s" % (index, test['platform'].upper(), test['type'].upper(), str(test['passed']).upper())
+        index += 1
 
 
 
