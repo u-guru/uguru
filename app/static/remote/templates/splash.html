@@ -13,8 +13,9 @@
         </div>
 
         <!-- One page dropdown -->
-        <div id='splash-one-page-pulldown' ng-if="activate.searchUniversity" ng-class="{'activate': activate.searchUniversity}" class='relative full-xy high-z-index bg-slate' ng-include="img_base + 'templates/splash/layout/university.search.html'">
+        <div id='splash-one-page-pulldown' class='fixed top-0 left-0 full-xy high-z-index bg-slate' ng-include="img_base + 'templates/splash/layout/university.search.html'">
         </div>
+        <!-- ng-if="activate.searchUniversity" ng-class="{'activate': activate.searchUniversity}" -->
 
         <section class="splash-faq fixed top-0 left-0 full-xy lyt-1-3-sidebar opacity-0 z-index--1000" class-on-activate="z-index-1000, fadeIn:anim" class-on-activate-delay="1800">
             <div>

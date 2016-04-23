@@ -65,75 +65,6 @@
 }
 
 .splash-school-loader-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  background: rgba(64, 72, 75, 0.95);
-}
-
-.splash-school-loader {
-  border-radius: 1000px;
-  width: 200px;
-  height: 200px;
-  position: absolute;
-  top: 50%;
-  margin-top: -100px;
-  left: 50%;
-  margin-left: -100px;
-  border: 2px solid #69B3A5;
-  background: rgba(64, 72, 75, 0.95);
-}
-
-.splash-school-loader span {
-  display: block;
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  line-height: 1;
-}
-
-.splash-school-loader span:first-child {
-  font-size: 48px;
-  font-weight: 600;
-}
-
-.splash-school-loader span:last-child {
-  font-size: 20px;
-}
-
-.splash-school-loader div {
-  border-radius: 1000px;
-  width: 200px;
-  height: 200px;
-  position: absolute;
-  top: 50%;
-  margin-top: -100px;
-  left: 50%;
-  margin-left: -100px;
-  border: 2px solid #69B3A5;
-}
-
-.splash-school-loader div:not(:first-child) {
-  background: rgba(105, 179, 165, 0.2);
-  animation: ping 1500ms ease-in-out infinite;
-}
-
-.splash-school-loader div:not(:first-child):nth-child(3) {
-  animation-delay: 600ms;
-}
-
-.splash-school-loader div:not(:first-child):nth-child(4) {
-  animation-delay: 1200ms;
-}
-
-.splash-school-loader div:not(:first-child):nth-child(5) {
-  animation-delay: 1800ms;
-}
-
-.splash-school-loader div:first-child {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -141,9 +72,6 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
   -webkit-flex-direction: row;
   flex-direction: row;
   -webkit-align-items: center;
@@ -152,8 +80,21 @@
   align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
-  z-index: 10;
-  background: rgba(64, 72, 75, 0.9);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: rgba(64, 72, 75, 0.95);
+}
+
+.splash-school-loader-container #echo-loader * {
+  transform-origin: center center;
+}
+
+.splash-school-loader-container #echo-loader #echo-loader-echo {
+  animation: ping 1500ms ease-in-out infinite;
 }
 
 /* ---------- SPLASH COMPONENTS */

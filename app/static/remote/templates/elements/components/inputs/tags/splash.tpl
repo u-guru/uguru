@@ -1,5 +1,4 @@
-<li class-on-clear="fadeOut:animOut" class-on-clear-delay="0"
-    class-on-activate="bounceIn:anim" class-on-activate-delay="1000">
+<li class-on-clear="fadeOut:animOut" class-on-clear-delay="0">
     <div class="tag-adlib-container">
         <a class="tag-adlib adlib-{{blankNum}} animated tag-{{category.hex_color}}"
             translate-on-click="translate-blank-{{blankNum}}" translate-to-elem="#blank-{{blankNum}}"
