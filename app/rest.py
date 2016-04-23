@@ -3502,11 +3502,39 @@ class AdminDashboardView(restful.Resource):
 
     def put(self, auth_token):
         from lib.mp_admin import modifyStateFromScene, getMostUpdatedMPElements, modifySubStateFromScene, saveElementsJson, syncLocalElementsToMP, saveDictToElementsJson, getBasePlatformDict
+        from pprint import pprint
+
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
 
         if not request.json:
             return "MISSING DATA", 422
+
+        if 'test_update' in request.json:
+            print "test update received"
+            scene = request.json.get('scene')
+            scene_index = int(scene.get('index'))
+            test_index = int(request.json.get('test_index'))
+            import requests, json
+            current_splash_json = json.loads(requests.get(url = 'https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json').text)
+            scene_states_arr = current_splash_json.get('scene_states')
+            index_scene = scene_states_arr[scene_index - 1]
+            print "received update to process scene:%s with test index%s" % (index_scene['name'], test_index)
+            try:
+                update_test_state = scene['tests'][test_index]['passed']
+                current_splash_json.get('scene_states')[scene_index - 1]['tests'][test_index]['passed'] = scene['tests'][test_index]['passed']
+
+                pprint(current_splash_json.get('scene_states')[scene_index - 1]['tests'][test_index])
+                filename = request.json.get('filename')
+                print "filename", filename
+                from app.lib.s3_tools import create_static_file
+                create_static_file('uguru-admin', 'master', filename, json.dumps(current_splash_json, indent=4))
+                # index_test = index_scene[test_index]
+                print "scene:",scene_index, "test:", test_index
+                return json.dumps(current_splash_json, indent=4), 200
+            except:
+                abort(404)
+
         elements = {}
         obj_type = request.json.get('type')
         obj_action = request.json.get('action')
@@ -3515,10 +3543,8 @@ class AdminDashboardView(restful.Resource):
         obj_substate = request.json.get('substate')
 
         from pprint import pprint
-        pprint(request.json)
 
         if not obj_type or obj_type not in ['fluid', 'testing', 'functional', 'hifi'] or not obj_action or not obj_state or not obj_scene:
-            print "it happens here"
             return "MISSING DATA", 422
 
         if obj_action == 'update' and obj_type in ['testing']:
