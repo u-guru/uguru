@@ -445,7 +445,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         controller: 'PublicProfileController'
   }).
   state('root.map', {
-        url: '/map',
+        url: '/splash/maps',
         templateUrl: BASE + 'templates/splash/layout/splash.maps.html',
         controller: 'GMapController'
   }).
