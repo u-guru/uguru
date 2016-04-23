@@ -45,69 +45,21 @@
 }
 
 .splash-school-loader-container {
-	position: fixed;
+	@include flex;
+	@include flex-center;
+	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	z-index: 9999;
 	background: rgba($slate, .95);
-}
-.splash-school-loader {
-	@include round;
-	width: 200px;
-	height: 200px;
-	position: absolute;
-	top: 50%;
-	margin-top: -100px;
-	left: 50%;
-	margin-left: -100px;
-	border: 2px solid $shamrock;
-	background: rgba($slate, .95);
-	span {
-		display: block;
-		width: 100%;
-		margin: 0 auto;
-		text-align: center;
-		line-height: 1;
-		&:first-child {
-			font-size: 48px;
-			font-weight: 600;
+	#echo-loader {
+		* {
+			transform-origin: center center;
 		}
-		&:last-child {
-			font-size: 20px;
-
-		}
-	}
-	div {
-		@include round;
-		width: 200px;
-		height: 200px;
-		position: absolute;
-		top: 50%;
-		margin-top: -100px;
-		left: 50%;
-		margin-left: -100px;
-		border: 2px solid $shamrock;
-		&:not(:first-child) {
-			background: rgba($shamrock, .2);
+		#echo-loader-echo {
 			animation: ping 1500ms ease-in-out infinite;
-			&:nth-child(3) {
-				animation-delay: 600ms;
-			}
-			&:nth-child(4) {
-				animation-delay: 1200ms;
-			}
-			&:nth-child(5) {
-				animation-delay: 1800ms;
-			}
-		}
-		&:first-child {
-			@include flex;
-			@include flex-wrap;
-			@include flex-center;
-			z-index: 10;
-			background: rgba($slate, .9);
 		}
 	}
 }

@@ -1,37 +1,6 @@
-<div ng-controller='UniversitySearchController as uniSearch' class="bg-slate">
+<div ng-controller='UniversitySearchController as uniSearch' class="bg-slate-90p">
     <!-- If user has already selected university-->
-    <div class="splash-university-selected relative full-xy" ng-if='uniSearch.layout.edit_mode' ng-include="img_base + BASE + 'templates/splash/container/university.selected.html'"></div>
-
-    <!-- If user needs to select university -->
-
-
-    <!--TODO:
-
-    Events/Actions/Transitions
-    - [] onEnter via the controller
-    - [] onExit
-    - [] onDomReady
-    - [] onMapReady
-    - [] onEditUniversity: "edit mode"
-    - [] onSelectUniversity
-
-
-    Components
-    1. Loader
-    2. Back button
--->
-
-    <div class="splash-school-loader-container" class-on-activate="fadeOut:animOut, z-index--1000:keep" class-on-activate-delay="2000">
-        <div class="splash-school-loader">
-            <div>
-                <span class="splash-school-loader-counter" counter init-on-class="counter:activate" counter-max="165" counter-min="0" counter-duration="2" counter-delay="1000">0</span>
-                <span>schools found</span>
-            </div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
+    <!-- <div class="splash-university-selected relative full-xy" ng-if='uniSearch.layout.edit_mode' ng-include="img_base + BASE + 'templates/splash/container/university.selected.html'"></div> -->
 
     <div class="projector-slide absolute center-xy">
         <svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
@@ -39,6 +8,21 @@
         </svg>
         <div class="projector-top"></div>
         <div class="projector-content">
+            <div class="splash-school-loader-container" class-on-activate="fadeOut:animOut, z-index--1000:keep" class-on-activate-delay="2000">
+                <svg id="echo-loader" width="300px" height="300px" viewBox="0 0 300 300">
+                    <g fill="none">
+                        <circle id="echo-loader-echo" stroke="#69B3A5" fill-opacity="0.2" fill="#69B3A5" cx="150" cy="150" r="50"></circle>
+                        <circle id="echo-loader-track" stroke-opacity="0.4" stroke="#FFFFFF" stroke-width="2" fill="#40484B" cx="150" cy="150" r="100"></circle>
+                        <path d="M150,250 C205.228475,250 250,205.228475 250,150 C250,94.771525 205.228475,50 150,50 C94.771525,50 50,94.771525 50,150 C50,205.228475 94.771525,250 150,250 L150,250 Z" id="echo-loader-main" stroke="#69B3A5" stroke-width="2"></path>
+                        <text id="echo-loader-number" font-family="Source Sans Pro" font-size="48" font-weight="600" fill="#FFFFFF" text-anchor="middle">
+                            <tspan x="150" y="149">0</tspan>
+                        </text>
+                        <text id="echo-loader-label" font-family="Source Sans Pro" font-size="20" font-weight="normal" fill="#FFFFFF" text-anchor="middle">
+                            <tspan x="150" y="176">schools found</tspan>
+                        </text>
+                    </g>
+                </svg>
+            </div>
             <div class-on-clear="slideOutUp:animOut" ng-if='!uniSearch.layout.edit_mode' class='splash-school-search absolute left-0 top-0 full-xy flex-wrap-center show-splash-university' id='splash-university' activate-on-class="show-splash-university" class-on-activate="opacity-1-impt:inject#splash-university [class-on-activate]|activate, opacity-1-impt:inject"
                 class-on-activate-delay="1500" style='overflow:hidden;'>
                 <div class='splash-map zoom-{{uniSearch.layout.map.zoom}} bg-slate' style="height:calc(100%);" class-on-activate="fadeIn:anim" class-on-activate-delay="400">
