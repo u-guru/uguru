@@ -1,5 +1,6 @@
 @import 'mixin';
 
+/* ---------- SPLASH UNIVERSITY SEARCH */
 .splash-school-search-form {
 	fieldset {
 		input {
@@ -33,28 +34,6 @@
 			width: 100%;
 			height: 100%;
 		}
-		&:hover, &:focus {
-			@include opacity(.75);
-		}
-		&:active {
-			@include opacity(1);
-		}
-	}
-}
-.splash-hero-skip {
-	padding: 15px;
-	button {
-		@include opacity(.5);
-		@include rotate(-15);
-		@include round;
-		width: 64px;
-		height: 64px;
-		background: none;
-		border: 2px solid white;
-		font-size: 20px;
-		font-weight: 600;
-		text-transform: uppercase;
-		color: white!important;
 		&:hover, &:focus {
 			@include opacity(.75);
 		}
@@ -99,6 +78,28 @@
 }
 
 /* ---------- SPLASH COMPONENTS */
+.splash-hero-skip {
+	padding: 15px;
+	button {
+		@include opacity(.5);
+		@include rotate(-15);
+		@include round;
+		width: 64px;
+		height: 64px;
+		background: none;
+		border: 2px solid white;
+		font-size: 20px;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: white!important;
+		&:hover, &:focus {
+			@include opacity(.75);
+		}
+		&:active {
+			@include opacity(1);
+		}
+	}
+}
 .splash-logo-guru {
 	svg {
 		display: block;
@@ -181,7 +182,8 @@
 	&:before {
 		@include prefix(transform, scale(0), webkit moz ms o);
 		@include prefix(transform-origin, center center, webkit moz ms o);
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		@include prefix(transition, all 150ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+		@include prefix(transition, all 150ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
 		@include round;
 		content: "";
 		display: block;
@@ -485,6 +487,41 @@
 	}
 
 	// HEADERS
+	#dropdown-university {
+		> div {
+			> ul {
+				li:last-child {
+					a {
+						span {
+							transition-timing-function: cubic-bezier(.77,0,.05,1);
+							transition-timing-function: cubic-bezier(.77,-0.22,.05,1.27);
+						}
+						.dropdown-color-icon {
+							transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 72, 0, 0, 1);
+							transition-duration: 300ms;
+							transition-delay: 150ms;
+						}
+						span:not(.dropdown-color-icon) span {
+							transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 20, 0, 1);
+							transition-duration: 300ms;
+							transition-delay: 0;
+						}
+						&:hover {
+							.dropdown-color-icon, span:not(.dropdown-color-icon) span {
+								transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+							}
+							.dropdown-color-icon {
+								transition-delay: 0;
+							}
+							span:not(.dropdown-color-icon) span {
+								transition-delay: 300ms;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	> header {
 		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 		@include flex;

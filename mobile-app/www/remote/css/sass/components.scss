@@ -4290,6 +4290,9 @@ input[type="range"] {
 				&:last-child {
 					border-bottom-left-radius: 2px;
 					border-bottom-right-radius: 2px;
+					a {
+						padding: 0!important;
+					}
 				}
 				&:not(:first-child) {
 					a + .arrow {
