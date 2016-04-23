@@ -3810,7 +3810,8 @@ input[type="range"] {
 		z-index: -1;
 	}
 	* {
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		@include prefix(transition, all 150ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+		@include prefix(transition, all 150ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
 	}
 	> a {
 		@include prefix(justify-content, space-between, webkit);

@@ -173,6 +173,33 @@
 		height: 70px;
 	}
 }
+// bose scale hover for round links, currently not used
+.scale-hover {
+	position: relative;
+	svg {
+		@include prefix(transition, all 150ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+		@include prefix(transition, all 150ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
+		&:last-child {
+			@include prefix(transform, scale(0), webkit moz ms o);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	&:hover, &:focus {
+		svg {
+			&:first-child {
+				@include prefix(transform, scale(0), webkit moz ms o);
+			}
+			&:last-child {
+				@include prefix(transform, scale(1), webkit moz ms o);
+			}
+		}
+	}
+}
+// end bose scale hover
 .splash-burger {
 	@include flex;
 	@include flex-center;
@@ -200,13 +227,15 @@
 		@include prefix(transform-origin, center center, webkit moz ms o);
 	}
 	svg {
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		@include prefix(transition, all 150ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+		@include prefix(transition, all 150ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
 		height: 100%;
 		width: auto;
 		position: relative;
 		z-index: 10;
 		g, circle, path {
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			@include prefix(transition, all 150ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+			@include prefix(transition, all 150ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
 			@include svg-stroke(white, 4);
 		}
 		g:not(.path) > path, .path {

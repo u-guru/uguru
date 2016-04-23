@@ -249,6 +249,52 @@
   }
 }
 
+.scale-hover {
+  position: relative;
+}
+
+.scale-hover svg {
+  -webkit-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -moz-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -ms-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -o-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -webkit-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -moz-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -ms-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -o-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+}
+
+.scale-hover svg:last-child {
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.scale-hover:hover svg:first-child, .scale-hover:focus svg:first-child {
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+
+.scale-hover:hover svg:last-child, .scale-hover:focus svg:last-child {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
 .splash-burger {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -313,11 +359,16 @@
 }
 
 .splash-burger svg {
-  -webkit-transition: all 150ms ease-in-out;
-  -moz-transition: all 150ms ease-in-out;
-  -ms-transition: all 150ms ease-in-out;
-  -o-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
+  -webkit-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -moz-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -ms-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -o-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -webkit-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -moz-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -ms-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -o-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
   height: 100%;
   width: auto;
   position: relative;
@@ -325,11 +376,16 @@
 }
 
 .splash-burger svg g, .splash-burger svg circle, .splash-burger svg path {
-  -webkit-transition: all 150ms ease-in-out;
-  -moz-transition: all 150ms ease-in-out;
-  -ms-transition: all 150ms ease-in-out;
-  -o-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
+  -webkit-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -moz-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -ms-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -o-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -webkit-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -moz-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -ms-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -o-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
   fill: none;
   stroke: white;
   stroke-width: 4px;
