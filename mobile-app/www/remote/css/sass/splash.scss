@@ -1,65 +1,82 @@
 @import 'mixin';
 
-/* ---------- SPLASH UNIVERSITY SEARCH */
-li.animated-start {
-	@include prefix(transform, matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), webkit moz ms o);
-	.tag-adlib:not(.blank):not(.ghost) {
-		.desktop {
-			rect {
-				@include opacity(0);
-				stroke-dasharray: 728;
-				stroke-dashoffset: 728;
-			}
-		}
-		.mobile {
-			rect {
-				@include opacity(0);
-				stroke-dasharray: 656;
-				stroke-dashoffset: 656;
-			}
-		}
-		b {
-			@include prefix(transform, matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), webkit moz ms o);
-		}
+.tag-adlib:not(.blank):not(.ghost) {
+	i {
+		display: block;
+		font-style: normal;
+		@include prefix(transition, all 300ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+		@include prefix(transition, all 300ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
 	}
-}
-li.animated {
-	@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out forwards, webkit moz ms o);
-	.tag-adlib:not(.blank):not(.ghost) {
-		.desktop {
-			rect {
-				animation: tag-adlib-desktop 800ms linear 500ms forwards;
-			}
-		}
-		.mobile {
-			rect {
-				animation: tag-adlib-mobile 800ms linear 500ms forwards;
-			}
-		}
-		b {
-			@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out 500ms forwards, webkit moz ms o);
-		}
-	}
-}
-li.animated-clear {
-	@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
-	.tag-adlib:not(.blank):not(.ghost) {
-		.desktop {
-			rect {
-				animation: tag-adlib-desktop 800ms linear reverse forwards;
-			}
-		}
-		.mobile {
-			rect {
-				animation: tag-adlib-mobile 800ms linear reverse forwards;
-			}
-		}
-		b {
-			@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+	&:hover {
+		i {
+			@include prefix(transform, scale(1.1)!important, webkit moz ms o);
 		}
 	}
 }
 
+/* ---------- SPLASH ADLIB TAGS */
+li {
+	&.animated-start {
+		@include prefix(transform, matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), webkit moz ms o);
+		.tag-adlib:not(.blank):not(.ghost) {
+			.desktop {
+				rect {
+					@include opacity(0);
+					stroke-dasharray: 728;
+					stroke-dashoffset: 728;
+				}
+			}
+			.mobile {
+				rect {
+					@include opacity(0);
+					stroke-dasharray: 656;
+					stroke-dashoffset: 656;
+				}
+			}
+			b {
+				@include prefix(transform, matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), webkit moz ms o);
+			}
+		}
+	}
+	&.animated {
+		@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+		.tag-adlib:not(.blank):not(.ghost) {
+			.desktop {
+				rect {
+					animation: tag-adlib-desktop 800ms linear 500ms forwards;
+				}
+			}
+			.mobile {
+				rect {
+					animation: tag-adlib-mobile 800ms linear 500ms forwards;
+				}
+			}
+			b {
+				@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out 500ms forwards, webkit moz ms o);
+			}
+		}
+	}
+	&.animated-clear {
+		@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+		.tag-adlib:not(.blank):not(.ghost) {
+			.desktop {
+				rect {
+					animation: tag-adlib-desktop 800ms linear reverse forwards;
+				}
+			}
+			.mobile {
+				rect {
+					animation: tag-adlib-mobile 800ms linear reverse forwards;
+				}
+			}
+			b {
+				@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+			}
+		}
+	}
+}
+
+/* ---------- SPLASH UNIVERSITY SEARCH */
 .splash-school-search-form {
 	fieldset {
 		input {
@@ -575,6 +592,22 @@ li.animated-clear {
 	}
 
 	// HEADERS
+	#dropdown-university, #dropdown-categories {
+		a {
+			span {
+				transition-timing-function: cubic-bezier(.77,0,.05,1);
+				transition-timing-function: cubic-bezier(.77,-0.22,.05,1.27);
+				transition-duration: 600ms;
+			}
+			&:hover, &:focus  {
+				span {
+					span {
+						transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -20, 0, 1);
+					}
+				}
+			}
+		}
+	}
 	#dropdown-university {
 		> div {
 			> ul {
@@ -594,7 +627,7 @@ li.animated-clear {
 							transition-duration: 300ms;
 							transition-delay: 0;
 						}
-						&:hover {
+						&:hover, &:focus {
 							.dropdown-color-icon, span:not(.dropdown-color-icon) span {
 								transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 							}

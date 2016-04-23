@@ -14,9 +14,12 @@
     <div class="right">
         <div class="splash-hero-nav desktop m15right"
             class-on-activate="u-slideInDown:anim">
-            <div class="dropdown-color matrix-0" class-on-load="u-slideInDown" class-on-load-delay="150">
+            <div id="dropdown-categories" class="dropdown-color matrix-0" class-on-load="u-slideInDown" class-on-load-delay="150">
                 <a name='category' class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()' ng-class="{'active':page.dropdowns.category.active}">
-        			<span>{{selectedCategory.name}}</span>
+        			<span>
+                        <span>{{selectedCategory.name}}</span>
+                        <span>{{selectedCategory.name}}</span>
+                    </span>
         			<svg viewBox="0 0 100 100">
         				<path d="M14,32 L50,68 L86,32"></path>
         			</svg>
@@ -28,7 +31,10 @@
                     <ul>
                         <li ng-repeat='category in categories' ng-if='category.id !== selectedCategory.id'>
                             <a class="bg-{{category.hex_color}}" ng-click='demoSwitchCategory(category, selectedUniversity)'>
-                                <span>{{category.name}}</span>
+                                <span>
+                                    <span>{{category.name}}</span>
+                                    <span>{{category.name}}</span>
+                                </span>
                             </a>
                             <svg class="arrow" viewBox="0 0 60 30">
                                 <path d="M4,26 L30,0 L56,26"></path>
@@ -41,7 +47,10 @@
             <div id='dropdown-university' class="dropdown-color matrix-0" class-on-load="u-slideInDown" class-on-load-delay="450">
                 <a class="color" name='university' ng-click="page.dropdowns.university.toggle()" ng-class="{'active':page.dropdowns.university.active}">
                     <div class="dropdown-color-bg" style='background-color: {{selectedUniversity.school_color_dark}}'></div>
-                    <span>{{selectedUniversity.short_name || selectedUniversity.name}}</span>
+                    <span>
+                        <span>{{selectedUniversity.short_name || selectedUniversity.name}}</span>
+                        <span>{{selectedUniversity.short_name || selectedUniversity.name}}</span>
+                    </span>
         			<svg viewBox="0 0 100 100">
         				<path d="M14,32 L50,68 L86,32"></path>
         			</svg>
@@ -54,7 +63,10 @@
                         <li ng-repeat='university in featured_universities' ng-if='selectedUniversity.id !== university.id'>
                             <a class="color" ng-click='refreshUniversityState(university)'>
                                 <div class="dropdown-color-bg" style='background-color: {{university.school_color_dark}}'></div>
-                                <span>{{university.short_name || university.name}}</span>
+                                <span>
+                                    <span>{{university.short_name || university.name}}</span>
+                                    <span>{{university.short_name || university.name}}</span>
+                                </span>
                             </a>
                             <svg class="arrow" viewBox="0 0 60 30">
                                 <path d="M4,26 L30,0 L56,26" fill="{{university.school_color_dark}}"></path>

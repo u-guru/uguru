@@ -10,7 +10,7 @@
             <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
                 <rect x="2" y="2" width="256" height="72" rx="16"></rect>
             </svg>
-            <b>{{innerText}}</b>
+            <b><i>{{innerText}}</i></b>
         </a>
         <span class="tag-adlib ghost active">
             <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
