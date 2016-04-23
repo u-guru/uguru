@@ -66,102 +66,20 @@
                 {{selectedCategory.splashData.madlib.template.end}}
             </h1>
             <ul class-on-clear="null:inject li[class-on-clear]|clear" class-on-activate="null:inject li[class-on-activate]|activate">
-                <!-- <li class="tag-adlib matrix-0" class-on-load="u-bounceIn" class-on-load-delay="1000"> -->
-                <!-- <li class="tag-adlib matrix-0" class-on-load="u-bounceIn" class-on-load-delay="1000">
-                    <div class="tag-adlib-container">
-                        <a class="tag-adlib animated tag-academic">
-                            <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                <rect x="2" y="2" width="280" height="84" rx="16"></rect>
-                            </svg>
-                            <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                <rect x="2" y="2" width="256" height="72" rx="16"></rect>
-                            </svg>
-                            <b>demo</b>
-                        </a>
-                        <span class="tag-adlib ghost active">
-                            <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                <rect x="2" y="2" width="280" height="84" rx="16"></rect>
-                            </svg>
-                            <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                <rect x="2" y="2" width="256" height="72" rx="16"></rect>
-                            </svg>
-                        </span>
-                    </div>
-                </li>
-                <li class="tag-adlib matrix-0" class-on-load="u-bounceIn" class-on-load-delay="1150">
-                    <div class="tag-adlib-container">
-                        <a class="tag-adlib animated tag-academic">
-                            <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                <rect x="2" y="2" width="280" height="84" rx="16"></rect>
-                            </svg>
-                            <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                <rect x="2" y="2" width="256" height="72" rx="16"></rect>
-                            </svg>
-                            <b>demo</b>
-                        </a>
-                        <span class="tag-adlib ghost active">
-                            <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                <rect x="2" y="2" width="280" height="84" rx="16"></rect>
-                            </svg>
-                            <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                <rect x="2" y="2" width="256" height="72" rx="16"></rect>
-                            </svg>
-                        </span>
-                    </div>
-                </li>
-                <li class="tag-adlib matrix-0" class-on-load="u-bounceIn" class-on-load-delay="1300">
-                    <div class="tag-adlib-container">
-                        <a class="tag-adlib animated tag-academic">
-                            <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                <rect x="2" y="2" width="280" height="84" rx="16"></rect>
-                            </svg>
-                            <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                <rect x="2" y="2" width="256" height="72" rx="16"></rect>
-                            </svg>
-                            <b>demo</b>
-                        </a>
-                        <span class="tag-adlib ghost active">
-                            <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                <rect x="2" y="2" width="280" height="84" rx="16"></rect>
-                            </svg>
-                            <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                <rect x="2" y="2" width="256" height="72" rx="16"></rect>
-                            </svg>
-                        </span>
-                    </div>
-                </li>
-                <li class="tag-adlib matrix-0" class-on-load="u-bounceIn" class-on-load-delay="1450">
-                    <div class="tag-adlib-container">
-                        <a class="tag-adlib animated tag-academic">
-                            <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                <rect x="2" y="2" width="280" height="84" rx="16"></rect>
-                            </svg>
-                            <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                <rect x="2" y="2" width="256" height="72" rx="16"></rect>
-                            </svg>
-                            <b>demo</b>
-                        </a>
-                        <span class="tag-adlib ghost active">
-                            <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                                <rect x="2" y="2" width="280" height="84" rx="16"></rect>
-                            </svg>
-                            <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                                <rect x="2" y="2" width="256" height="72" rx="16"></rect>
-                            </svg>
-                        </span>
-                    </div>
-                </li> -->
-                
-                <tag class='adlib-tag matrix-0 m30top'
+                <tag class='adlib-tag animated-start'
                     ng-click="resetMadLibBlankIfActive"
                     desktop="desktopMode" type="splash" blank-num="1" inner-text="option" category="selectedCategory"
                     ng-repeat='option in selectedCategory.splashData.madlib.blank_one_options'
-                    class-on-load="u-bounceIn-subtle" class-on-load-delay="{{[1000, 1150, 1300, 1450][$index]}}"> </tag>
-                <tag class="adlib-tag matrix-0"
+                    class-on-load="animated" class-on-load-delay="{{[1000, 1150, 1300, 1450][$index]}}"
+                    class-on-activate="animated" class-on-activate-delay="{{[1000, 1150, 1300, 1450][$index]}}"
+                    class-on-clear="animated-clear"> </tag>
+                <tag class="adlib-tag animated-start"
                     ng-click="resetMadLibBlankIfActive"
                     desktop="desktopMode" type="splash" blank-num="2" inner-text="option" category="selectedCategory"
                     ng-repeat='option in selectedCategory.splashData.madlib.blank_two_options'
-                    class-on-load="u-bounceIn-subtle" class-on-load-delay="{{[1600, 1750, 1900, 2050][$index]}}"> </tag>
+                    class-on-load="animated" class-on-load-delay="{{[1600, 1750, 1900, 2050][$index]}}"
+                    class-on-activate="animated" class-on-activate-delay="{{[1600, 1750, 1900, 2050][$index]}}"
+                    class-on-clear="animated-clear"> </tag>
             </ul>
         </div>
     </div>

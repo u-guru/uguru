@@ -1,4 +1,82 @@
 /* ---------- SPLASH UNIVERSITY SEARCH */
+li.animated-start {
+  -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  -moz-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  -ms-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  -o-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+}
+
+li.animated-start .tag-adlib:not(.blank):not(.ghost) .desktop rect {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  stroke-dasharray: 728;
+  stroke-dashoffset: 728;
+}
+
+li.animated-start .tag-adlib:not(.blank):not(.ghost) .mobile rect {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  stroke-dasharray: 656;
+  stroke-dashoffset: 656;
+}
+
+li.animated-start .tag-adlib:not(.blank):not(.ghost) b {
+  -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  -moz-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  -ms-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  -o-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+}
+
+li.animated {
+  -webkit-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
+  -moz-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
+  -ms-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
+  -o-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
+  animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
+}
+
+li.animated .tag-adlib:not(.blank):not(.ghost) .desktop rect {
+  animation: tag-adlib-desktop 800ms linear 500ms forwards;
+}
+
+li.animated .tag-adlib:not(.blank):not(.ghost) .mobile rect {
+  animation: tag-adlib-mobile 800ms linear 500ms forwards;
+}
+
+li.animated .tag-adlib:not(.blank):not(.ghost) b {
+  -webkit-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
+  -moz-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
+  -ms-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
+  -o-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
+  animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
+}
+
+li.animated-clear {
+  -webkit-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  -moz-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  -ms-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  -o-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+}
+
+li.animated-clear .tag-adlib:not(.blank):not(.ghost) .desktop rect {
+  animation: tag-adlib-desktop 800ms linear reverse forwards;
+}
+
+li.animated-clear .tag-adlib:not(.blank):not(.ghost) .mobile rect {
+  animation: tag-adlib-mobile 800ms linear reverse forwards;
+}
+
+li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
+  -webkit-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  -moz-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  -ms-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  -o-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+}
+
 .splash-school-search-form fieldset input::selection {
   background: white !important;
   color: #40484B !important;

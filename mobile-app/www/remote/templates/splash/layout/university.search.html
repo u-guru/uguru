@@ -2,7 +2,9 @@
     <!-- If user has already selected university-->
     <!-- <div class="splash-university-selected relative full-xy" ng-if='uniSearch.layout.edit_mode' ng-include="img_base + BASE + 'templates/splash/container/university.selected.html'"></div> -->
     <div class="splash-projector-bg bg-slate-75p absolute top-0 left-0 full-xy opacity-0 activate" class-on-activate="fadeIn:anim"></div>
-    <div class="splash-projector-school projector-slide matrix-0 activate" class-on-activate="u-slideInDown, null:inject#echo-loader-echo|activate, null:inject#echo-loader-main|activate, null:inject#echo-loader-number tspan|activate, null:inject#echo-loader|clear, null:inject.splash-school-loader-container|clear, null:inject#splash-school-search-guru|activate, null:inject.coach-support|activate">
+    <div class="splash-projector-school projector-slide matrix-0 activate"
+        class-on-activate="u-slideInDown, null:inject#echo-loader-echo|activate, null:inject#echo-loader-main|activate, null:inject#echo-loader-number tspan|activate, null:inject#echo-loader|clear, null:inject.splash-school-loader-container|clear, null:inject#splash-school-search-guru|activate, null:inject.coach-support|activate"
+        class-on-clear="bounceOutUp:animOut">
         <svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
             <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
         </svg>
@@ -58,7 +60,7 @@
                                 <svg class="rect" viewBox="0 0 300 200">
                                     <rect x="0" y="0" width="300" height="200" fill="none"></rect>
                                 </svg>
-                                <input type="radio" name="school-card" ng-click='uniSearch.selectUniversityFromSearch(university)' class-on-click="null:inject.splash-school-desktop li|clear, null:inject#splash-school-search-guru|clear" />
+                                <input type="radio" name="school-card" ng-click='uniSearch.selectUniversityFromSearch(university)' class-on-click="null:inject.splash-school-desktop li|clear, null:inject.splash-projector-school|clear, null:inject.adlib-tag|activate" />
                                 <div class="school-card-inside">
                                     <div class="school-card-top" style="background-color: {{university.school_color_one}};">
                                         <div class="school-card-icon-container">
