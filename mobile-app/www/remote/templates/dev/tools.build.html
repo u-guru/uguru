@@ -5,14 +5,16 @@
                 <div style='z-index:2000;' ng-class="{'opacity-0 fadeInDownBig animated': status.show, 'opacity-1 animated bounceOutUp animated': !status.show}" class='opacity-1 absolute full-xy bg-charcoal-80p high-z-index flex-wrap-center txt-7 uppercase weight-700'>
                     {{status.msg}}
                 </div>
-                <div>
+                <div ng-controller="AdminController" class='fixed flex-wrap-center full-xy bg-charcoal txt-white' ng-if='selected_test_scene && selected_test_scene.showTestsScreen' ng-include="img_base + BASE + 'templates/admin/index.test-states.html'">
+                </div>
+                <div ng-if='!selected_test_scene || !selected_test_scene.showTestsScreen'>
                     <a class="block m15left" ng-click='settings.user_mode = !settings.user_mode; settings.activated = true;'>
                         <user-icon ng-click='settings.user_mode' size='36' url="user.profile_url"></user-icon>
                     </a>
                     <h1>{{current_file.name || 'Loading'}}</h1>
                     <dropdown class="no-header double" ng-if="page.dropdowns.templates" ng-model="page.dropdowns.templates"></dropdown>
                 </div>
-                <ul>
+                <ul ng-if='!selected_test_scene || !selected_test_scene.showTestsScreen'>
                     <li>
                         <!-- <a ng-include="img_base + BASE + 'templates/svg/main/sync.html'"></a> -->
                         <a ng-if='!current_file.selected_variation.edit_mode' ng-click='current_file.methods.variation.editName(current_file)' ng-include="img_base + BASE + 'templates/svg/main/edit.html'"></a>
@@ -1168,7 +1170,7 @@
             <!-- SCENE LIST VIEW-->
             <div class='build-element-list animation relative full-x overflow-auto right-0 relative' >
                 <ul class='p15-grid flex-wrap-center flex-stretch flex-wrap absolute full-xy' ng-if='!current_file.selected_variation.selected_scene_state'>
-                    <li ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index' class='full-x m10y flex-center'  ng-keydown="onStateKeyboardSwitch($event, current_file)">
+                    <li ng-repeat='scene_state in current_file.selected_variation.scene_states track by $index' class='full-x m10y flex-center'  ng-keydown="onStateKeyboardSwitch($event, current_file)" on-double-tap="showTestsForScene(scene_state)">
                         <div class="build-item-state full-x flex-wrap" style='height:auto;' tabindex="1">
                             <header class="flex-center-vertical full-x">
                                 <span class="bg-campus flex-center txt-16 semibold">{{$index + 1}}</span>

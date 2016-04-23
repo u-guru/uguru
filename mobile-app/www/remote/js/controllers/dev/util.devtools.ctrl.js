@@ -640,6 +640,16 @@ angular.module('uguru.dev.controllers')
       time_state.component_selected = component;
     }
 
+    $scope.showTestsForScene = function(scene_state) {
+      console.log(scene_state);
+      $scope.selected_test_scene = scene_state;
+      $scope.selected_test_scene.showTestsScreen = true;
+      $timeout(function() {
+        $scope.$apply();
+      })
+      // $scope.showTestsScreen = true;
+    }
+
     $scope.injectPropertyIntoDemo = function(property, property_type) {
       var demoElem = document.querySelector('#hold-for-demo-text');
       if (!demoElem) {

@@ -151,7 +151,6 @@ function SideMenuService(LoadingService, $timeout, CounterService, CTAService, $
     }
 
     function initSideMenuCTAs(scope, parent_ref) {
-
       CTAService.initSingleCTA('#cta-box-pricing', parent_ref, initPricingCounters(scope));
       CTAService.initSingleCTA('#cta-box-FAQ', parent_ref);
       CTAService.initSingleCTA('#cta-box-signup', parent_ref);

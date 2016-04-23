@@ -78,7 +78,6 @@ function CTAService($timeout) {
   }
 
   var initSingleCTA = function(boxSelector, parentSelector, show_callback, eventTriggers) {
-
     var parentElem = document.querySelector(parentSelector);
     var boxElem = document.querySelector(boxSelector);
 
