@@ -9,7 +9,7 @@
 	}
 	&:hover {
 		i {
-			@include prefix(transform, scale(1.1)!important, webkit moz ms o);
+			@include prefix(transform, scale(1.05)!important, webkit moz ms o);
 		}
 	}
 }
