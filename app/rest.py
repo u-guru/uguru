@@ -3515,24 +3515,27 @@ class AdminDashboardView(restful.Resource):
             scene = request.json.get('scene')
             scene_index = int(scene.get('index'))
             test_index = int(request.json.get('test_index'))
+            test_passed = request.json.get('test_passed')
             import requests, json
             current_splash_json = json.loads(requests.get(url = 'https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json').text)
             scene_states_arr = current_splash_json.get('scene_states')
             index_scene = scene_states_arr[scene_index - 1]
             print "received update to process scene:%s with test index%s" % (index_scene['name'], test_index)
             try:
-                update_test_state = scene['tests'][test_index]['passed']
-                current_splash_json.get('scene_states')[scene_index - 1]['tests'][test_index]['passed'] = scene['tests'][test_index]['passed']
+                # update_test_state = scene['tests'][test_index]['passed']
+                current_splash_json.get('scene_states')[scene_index - 1]['tests'][test_index]['passed'] = test_passed
 
                 pprint(current_splash_json.get('scene_states')[scene_index - 1]['tests'][test_index])
                 filename = request.json.get('filename')
                 print "filename", filename
                 from app.lib.s3_tools import create_static_file
+                # pprint()
                 create_static_file('uguru-admin', 'master', filename, json.dumps(current_splash_json, indent=4))
                 # index_test = index_scene[test_index]
                 print "scene:",scene_index, "test:", test_index
                 return json.dumps(current_splash_json, indent=4), 200
             except:
+                raise
                 abort(404)
 
         elements = {}
