@@ -1,5 +1,25 @@
 @import 'mixin';
 
+.splash-school-search-form {
+	fieldset {
+		input {
+			&::selection {
+				background: white!important;
+				color: $slate!important;
+			}
+			&::-moz-selection {
+				background: white!important;
+				color: $slate!important;
+			}
+			&:focus {
+				@include placeholder {
+					color: rgba(white, .4)!important;
+				}
+			}
+		}
+	}
+}
+
 .splash-hero-support {
 	padding: 15px;
 	a {
@@ -44,6 +64,10 @@
 	}
 }
 
+.coach-support {
+	transform-origin: 338px 161px;
+}
+
 .splash-school-loader-container {
 	@include flex;
 	@include flex-center;
@@ -64,6 +88,7 @@
 			}
 		}
 		#echo-loader-main {
+			@include prefix(transform, rotateY(180deg), webkit moz ms o);
 			stroke-dasharray: 629;
 			stroke-dashoffset: 629;
 			&.active {
@@ -3809,12 +3834,6 @@
 				left: 0;
 				z-index: 2;
 				width: 100%;
-				.input-field {
-					margin: 15px auto;
-					input, label {
-						font-weight: 600;
-					}
-				}
 				.splash-school-desktop {
 					@include flex;
 					@include flex-wrap;
