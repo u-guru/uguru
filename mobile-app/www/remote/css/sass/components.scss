@@ -4256,13 +4256,11 @@ input[type="range"] {
 		left: 50%;
 		margin-left: -99px;
 		&:not(.visible) {
-			@include prefix(transform, translateY(-50%) translateZ(0) scaleY(0), webkit moz ms o);
 			@include opacity(0);
 			visibility: hidden;
 			z-index: -1;
 		}
 		&.visible {
-			@include prefix(transform, translateY(0) translateZ(0) scale(1), webkit moz ms o);
 			@include opacity(1);
 			visibility: visible;
 			z-index: 0;

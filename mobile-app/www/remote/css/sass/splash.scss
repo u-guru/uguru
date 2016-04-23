@@ -283,9 +283,12 @@
 		}
 	}
 	&#cta-box-sidebar {
-		@include center-xy;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -21px;
+		margin-top: -21px;
 		@media screen and (min-width: 860px) {
-			@include prefix(transform, none!important, webkit moz ms o);
 			position: relative!important;
 			top: auto!important;
 			left: auto!important;
@@ -1920,6 +1923,10 @@
 					&.active {
 						@include opacity(.8);
 					}
+					.rotated {
+						@include prefix(transform-origin, center center, webkit moz ms o);
+						@include prefix(transform, rotate(180deg), webkit mos ms o);
+					}
 				}
 				&.splash-device-iphone {
 					svg {
@@ -2350,22 +2357,22 @@
 	    			right: -100px;
 					width: 140px;
 					path {
-						&:nth-child(1) {
-							stroke-dasharray: 137;
-							stroke-dashoffset: 137;
-						}
-						&:nth-child(2) {
-							stroke-dasharray: 53;
-							stroke-dashoffset: 53;
-						}
-						&.animate {
-							&:nth-child(1) {
-								@include prefix(animation, coach-click-2 200ms ease-in 2500ms 1 forwards, webkit moz ms o);
-							}
-							&:nth-child(2) {
-								@include prefix(animation, coach-click-1 100ms ease-in 2700ms 1 forwards, webkit moz ms o);
-							}
-						}
+						// &:nth-child(1) {
+						// 	stroke-dasharray: 137;
+						// 	stroke-dashoffset: 137;
+						// }
+						// &:nth-child(2) {
+						// 	stroke-dasharray: 53;
+						// 	stroke-dashoffset: 53;
+						// }
+						// &.animate {
+						// 	&:nth-child(1) {
+						// 		@include prefix(animation, coach-click-2 200ms ease-in 2500ms 1 forwards, webkit moz ms o);
+						// 	}
+						// 	&:nth-child(2) {
+						// 		@include prefix(animation, coach-click-1 100ms ease-in 2700ms 1 forwards, webkit moz ms o);
+						// 	}
+						// }
 					}
 					g g {
 						@include prefix(animation-delay, 3000ms, webkit moz ms o);

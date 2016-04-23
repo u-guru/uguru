@@ -1,4 +1,8 @@
 /* ---------- KEYFRAMES */
+#stage-container .fixed {
+  position: absolute !important;
+}
+
 #keys .dropdown-container h2 {
   font-size: 14px;
   font-weight: 600;

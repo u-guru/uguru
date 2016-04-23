@@ -1,10 +1,20 @@
-<div class="splash-device splash-device-iphone magictime opacity-0 parallax-absolute parallax-50" parallax-parent-ref="p1" parallax-child="0.2" class-on-load="vanishIn:anim" activate-on-class="a" class-on-activate="active:inject.splash-device-search-inside|a, b:inject.splash-device-svg|a" class-on-activate-delay="4000" translate-on-class-delay="500" translate-on-class="translate-device" class-on-clear="null:inject.splash-device-search-inside|clear, null:inject:splash-device-svg|clear">
-    <svg class="splash-device-svg" activate-on-class="a" class-on-activate="active:keep" viewBox="0 0 319 652">
-        <path d="M2,42.0005693 C2,19.9088649 19.9096817,2 41.9948462,2 L277.005154,2 C299.093697,2 317,19.9012788 317,42.0005693 L317,609.999431 C317,632.091135 299.090318,650 277.005154,650 L41.9948462,650 C19.9063026,650 2,632.098721 2,609.999431 L2,42.0005693 Z M22,80 L298,80 L298,573 L22,573 L22,80 Z" fill="none" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3"></path>
-        <circle stroke="#F0E0D0" stroke-width="3" fill="none" cx="159" cy="611" r="25"></circle>
+<div class="splash-device splash-device-iphone parallax-absolute parallax-50"
+    parallax-parent-ref="p1" parallax-child="0.2"
+    activate-on-class="a" class-on-activate="active:inject.splash-device-search-inside|a, b:inject.splash-device-svg|a" class-on-activate-delay="4000"
+    translate-on-class-delay="500" translate-on-class="translate-device"
+    class-on-clear="null:inject.splash-device-search-inside|clear, null:inject:splash-device-svg|clear">
+    <svg class="splash-device-svg" activate-on-class="a" class-on-activate="active:keep" viewBox="0 0 318 651">
+        <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#F0E0D0" stroke-width="3">
+            <circle cx="158.5" cy="610.5" r="25" class-on-load="activate"
+            draw draw-duration="500ms" draw-delay="500ms"></circle>
+            <rect class="rotated" x="1.5" y="1.5" width="315" height="648" rx="40" class-on-load="activate"
+            draw draw-duration="800ms" draw-delay="0ms"></rect>
+            <rect x="21.5" y="79.5" width="276" height="493" class-on-load="activate"
+            draw draw-duration="1000ms" draw-delay="0ms"></rect>
+        </g>
     </svg>
     <div class="splash-device-profile opacity-0" activate-on-class="a" class-on-activate="fadeIn:anim, high-z-index:keep" ng-include="img_base + 'templates/profile.public.photo.html'"></div>
-    <div class="splash-device-content"  activate-on-class="a" class-on-activate="fadeOut:animOut">
+    <div class="splash-device-content" activate-on-class="a" class-on-activate="fadeOut:animOut">
         <div class="splash-device-search" class-on-activate="fadeIn:anim" class-on-activate-delay="6000" class-on-clear="slideOutDown:animOut" class-on-clear-delay="1500">
             <div class="splash-device-search-inside opacity-0" activate-on-class="a" class-on-activate="bounceInUp:anim, null:inject.splash-device-adlib|a, null:inject.splash-device-search-inside h1.device-counter|activate, null:inject.splash-device-search-inside p|a, null:inject.splash-device-search-gurus li|a, null:inject.splash-device-search-courses li|a, null:inject.splash-device-found|a, null:inject.map-guru-icon|a" class-on-clear="null:inject.splash-device-adlib|clear, null:inject.splash-device-search-inside p|clear, null:inject.splash-device-search-gurus li|clear, null:inject.splash-device-search-courses li|clear, null:inject.splash-device-found|a, null:inject.map-guru-icon|clear">
                 <!-- null:inject.splash-device-search-gurus .marker-guru|activate -->

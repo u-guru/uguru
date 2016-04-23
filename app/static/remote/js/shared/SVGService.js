@@ -42,7 +42,6 @@ function SVGService() {
       drawShape();
 
       var requestFrameHandle = 0;
-
       function drawShape() {
         var progress = current_frame/total_frames;
           if (progress > 1) {

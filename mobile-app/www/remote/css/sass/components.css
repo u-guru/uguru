@@ -5530,11 +5530,6 @@ input[type="range"][size="large"]::-ms-track, input[type="range"][size="10"]::-m
 }
 
 .dropdown-color > div:not(.visible) {
-  -webkit-transform: translateY(-50%) translateZ(0) scaleY(0);
-  -moz-transform: translateY(-50%) translateZ(0) scaleY(0);
-  -ms-transform: translateY(-50%) translateZ(0) scaleY(0);
-  -o-transform: translateY(-50%) translateZ(0) scaleY(0);
-  transform: translateY(-50%) translateZ(0) scaleY(0);
   filter: alpha(opacity=0);
   opacity: 0;
   visibility: hidden;
@@ -5542,11 +5537,6 @@ input[type="range"][size="large"]::-ms-track, input[type="range"][size="10"]::-m
 }
 
 .dropdown-color > div.visible {
-  -webkit-transform: translateY(0) translateZ(0) scale(1);
-  -moz-transform: translateY(0) translateZ(0) scale(1);
-  -ms-transform: translateY(0) translateZ(0) scale(1);
-  -o-transform: translateY(0) translateZ(0) scale(1);
-  transform: translateY(0) translateZ(0) scale(1);
   filter: alpha(opacity=100);
   opacity: 1;
   visibility: visible;

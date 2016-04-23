@@ -423,20 +423,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  margin-left: -21px;
+  margin-top: -21px;
 }
 
 @media screen and (min-width: 860px) {
   .splash-burger#cta-box-sidebar {
-    -webkit-transform: none !important;
-    -moz-transform: none !important;
-    -ms-transform: none !important;
-    -o-transform: none !important;
-    transform: none !important;
     position: relative !important;
     top: auto !important;
     left: auto !important;
@@ -2916,6 +2908,19 @@
   opacity: 0.8;
 }
 
+.splash-landing > section.splash-hero .splash-device .splash-device-svg .rotated {
+  -webkit-transform-origin: center center;
+  -moz-transform-origin: center center;
+  -ms-transform-origin: center center;
+  -o-transform-origin: center center;
+  transform-origin: center center;
+  -webkit-transform: rotate(180deg);
+  -mos-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
 .splash-landing > section.splash-hero .splash-device.splash-device-iphone svg {
   max-width: 320px;
 }
@@ -3609,32 +3614,6 @@
   top: 85px;
   right: -100px;
   width: 140px;
-}
-
-.splash-landing > section.splash-hero .splash-guru-head .coach-fill path:nth-child(1) {
-  stroke-dasharray: 137;
-  stroke-dashoffset: 137;
-}
-
-.splash-landing > section.splash-hero .splash-guru-head .coach-fill path:nth-child(2) {
-  stroke-dasharray: 53;
-  stroke-dashoffset: 53;
-}
-
-.splash-landing > section.splash-hero .splash-guru-head .coach-fill path.animate:nth-child(1) {
-  -webkit-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
-  -moz-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
-  -ms-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
-  -o-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
-  animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
-}
-
-.splash-landing > section.splash-hero .splash-guru-head .coach-fill path.animate:nth-child(2) {
-  -webkit-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
-  -moz-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
-  -ms-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
-  -o-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
-  animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
 }
 
 .splash-landing > section.splash-hero .splash-guru-head .coach-fill g g {

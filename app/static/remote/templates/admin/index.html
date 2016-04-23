@@ -1762,9 +1762,9 @@
                                     <dl>
                                         <div>
                                             <h1 class="semibold txt-center p15xy flex-center">
-                                                <span class="block p05y-p10x radius-2 bg-gold txt-white">Javascript</span> &nbsp;&rarr;&nbsp; 
-                                                <span class="block p05y-p10x radius-2 bg-cobalt txt-white">Style</span> &nbsp;&rarr;&nbsp; 
-                                                <span class="block p05y-p10x radius-2 bg-cobalt txt-white">Layout</span> &nbsp;&rarr;&nbsp; 
+                                                <span class="block p05y-p10x radius-2 bg-gold txt-white">Javascript</span> &nbsp;&rarr;&nbsp;
+                                                <span class="block p05y-p10x radius-2 bg-cobalt txt-white">Style</span> &nbsp;&rarr;&nbsp;
+                                                <span class="block p05y-p10x radius-2 bg-cobalt txt-white">Layout</span> &nbsp;&rarr;&nbsp;
                                                 <span class="block p05y-p10x radius-2 bg-moola txt-white">Paint</span> &nbsp;&rarr;&nbsp;
                                                 <span class="block p05y-p10x radius-2 bg-moola txt-white">Composite</span></h1>
                                         </div>
@@ -2821,6 +2821,41 @@
                                     <div>
                                         <dt>class-on-activate-delay</dt>
                                         <dd>Delays class(es) being added</dd>
+                                    </div>
+                                    <div>
+                                        <dt><a class='txt-charcoal' href='#/demo'>draw</a></dt>
+                                        <dd>
+                                            <h4 class='weight-600'> Draws any singular line, polgyon, path, rect, circle with these options:  </h4>
+                                            <br>
+                                            <ul class='weight-400' style='padding-left:20px'>
+                                                <li>1. draw-duration: 1000ms, 1s (default) </li>
+                                                <li>2. draw-start-frame:  0</li>
+                                                <li>3. draw-delay:  1000ms, 1ms [default == 0] </li>
+                                            </ul>
+                                        </dd>
+                                    </div>
+                                    <div>
+                                        <dt>draw-shapes</dt>
+                                        <dd>
+                                            <h4 class='weight-600'> Draws all svg shapes within all childnodes (at any depth) of this element  </h4>
+                                            <br>
+                                            <h4>
+                                                Applies the same options as draw, but can be declared on the same element 'draw-shape' is declared on
+                                            </h4>
+                                            <h4>
+                                                If a child has "Draw" already, it's attributes will already be ignored, and the child's draw preferences (i.e. drawStartFrame), will override that of it's parent with the "draw-shape" directive
+                                            </h4>
+                                        </dd>
+                                    </div>
+                                    <div>
+                                        <dt>draw-ignore</dt>
+                                        <dd>
+                                            <h4 class='weight-600'>   </h4>
+                                            <br>
+                                            <h4>
+                                                Skips the request for a particular element, or a group of elements (just apply to highest parent where the children do not need to be drawn) a parent container that has decladed "draw-shapes"
+                                            </h4>
+                                        </dd>
                                     </div>
                                 </dl>
                             </div>

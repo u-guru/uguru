@@ -15,7 +15,22 @@ Parallax: https://github.com/wagerfield/parallax
     </ion-refresher> -->
     <album-tile></album-tile>
     <ion-content class='bg-slate-50p full-xy absolute'>
-        <div class='full-xy flex-wrap-center'
+                <button class='bottom-0 absolute left-0 full-x' onclick="rerun();">Again!</button>
+                <div class='flex-wrap-center' width="100%" height="100%">
+                <div class='ugrid-5 flex-wrap-center'>
+                    <svg class='activate' style='height:200px; width:200px;' draw-start-frame="30" draw-duration="10s" stroke="#FFFFFF" fill="none" draw-shapes width="120" height="120"
+                         viewPort="0 0 120 120" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg">
+
+                        <line x1="20" y1="100"
+                              x2="100" y2="20"
+                              stroke="white"
+                              stroke-width="2"/>
+
+                    </svg>
+                </div>
+            </div>
+        <!-- <div class='full-xy flex-wrap-center'
             parallax-parent="p1"
             parallax-relative-input="false"
             parallax-clip-relative-input="false"
@@ -60,7 +75,7 @@ Parallax: https://github.com/wagerfield/parallax
                         </i>
                     </span>
                 </button>
-            </div>
-        </div>
+            </div> -->
+        <!-- </div> -->
     </ion-content>
 </ion-view>

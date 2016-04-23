@@ -24,8 +24,8 @@ angular.module('uguru.util.controllers')
 				user_stories: AdminContent.getUserStories(),
 				createObjects: AdminContent.getBaseObjects($scope),
 				defaults: {
-					tabsIndex: 0,
-					sidebarIndex: 1
+					tabsIndex: 4,
+					sidebarIndex: 2
 				},
 				toggles: {
 					showAddState: false,
