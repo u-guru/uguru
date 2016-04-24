@@ -61,11 +61,7 @@
 }
 
 li.animated-start {
-  -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  -moz-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  -ms-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  -o-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  opacity: 0;
 }
 
 li.animated-start .tag-adlib:not(.blank):not(.ghost) .desktop rect {
@@ -83,11 +79,7 @@ li.animated-start .tag-adlib:not(.blank):not(.ghost) .mobile rect {
 }
 
 li.animated-start .tag-adlib:not(.blank):not(.ghost) b {
-  -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  -moz-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  -ms-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  -o-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  opacity: 0;
 }
 
 li.animated {
@@ -99,11 +91,11 @@ li.animated {
 }
 
 li.animated .tag-adlib:not(.blank):not(.ghost) .desktop rect {
-  animation: tag-adlib-desktop 800ms linear 500ms forwards;
+  animation: tag-adlib-desktop 800ms linear 2500ms forwards;
 }
 
 li.animated .tag-adlib:not(.blank):not(.ghost) .mobile rect {
-  animation: tag-adlib-mobile 800ms linear 500ms forwards;
+  animation: tag-adlib-mobile 800ms linear 2500ms forwards;
 }
 
 li.animated .tag-adlib:not(.blank):not(.ghost) b {

@@ -1,5 +1,304 @@
 @import 'mixin';
 
+#cta-modal-powerups {
+	header {
+		span {
+			svg {
+				circle {
+					fill: $gold;
+					stroke: $gold;
+				}
+				path {
+					fill: white;
+					stroke: white;
+				}
+			}
+		}
+		h1 {
+			margin-top: -15px;
+		}
+	}
+	ul {
+		width: 100%;
+		li {
+			width: 50%;
+			max-width: 300px;
+			@media screen and (min-width: 768px) {
+				width: 25%;
+			}
+			a {
+				width: 100%;
+				max-width: 300px;
+			}
+		}
+	}
+	.hanger {
+		opacity: 0;
+	}
+}
+
+// .sound-card {
+// 	animation: sound-card-enter 1000ms ease-in-out forwards;
+// 	transform-origin: bottom center;
+// } 
+// 
+// .bob {
+// 	animation: bob 1000ms ease-in-out infinite forwards;
+// 	transform-origin: bottom center;
+// }
+// 
+//  .sound-note-3 {
+// 	animation: sound-note-3 1000ms cubic-bezier(.32,-0.35,.39,1) 1750ms infinite ;
+// 	 transform-origin: center;
+// 	 
+// }
+// 
+//  .sound-headphones-muffs {
+// animation: sound-headphones-muffs 900ms ease-in-out 2000ms infinite forwards;
+// transform-origin: bottom center;
+// } 
+// 
+// .sound-note-2, .sound-note-1
+// {
+//     animation:  sound-note-2  1000ms  ease-in-out  1750ms infinite;
+// 	transform-origin: right center;
+// 	
+// }
+// 
+// .sound-card-bg
+// {
+// animation: sound-card-bg 750ms ease-in-out 4000ms;
+// transform-origin: center center;
+// }
+// 
+// @-webkit-keyframes sound-card-bg { 
+//   0% { transform: scale(1); opacity: 1; }
+//   50% { transform: scaleX(30); opacity: 1; }
+//   100% { transform: scaleX(30) scaleY(30); opacity: 1; }
+// }
+// 
+// @-webkit-keyframes sound-note-2 { 
+//   0% { transform: translateX(30%) translateY(30%) scaleX(0.5) scaleY(0.5); opacity: 0; }
+//   50% { opacity: 1; }
+// 	 100% { transform: translateY(-30%) translateX(-10%); }
+// }
+// 
+// @keyframes sound-headphones-muffs {
+// 	0% { 
+// 	transform: scaleY(0.9) scaleX(0.95);
+// 	}
+// 	50% {
+// 		transform: scaleY(1.1) scaleX(1);
+// 	}
+// 	100% {
+// 		transform: scaleY(0.9) scaleX(0.95);
+// 	}
+// }
+// 
+// @-webkit-keyframes sound-note-3 { 
+//   0% { transform: scaleX(0.33) scaleY(0.5) translateX(-50%); opacity: 0; }
+//   50% {  opacity: 1; }
+//   100% { transform: translateY(-50%) scale(1);  }
+// }
+// 
+// @keyframes bob {
+// 	0% {
+// 		transform: translateY(0%) rotate(1deg);
+// 	}
+// 	50% {
+// 		transform: translateY(5%) rotate(-0.5deg);
+// 	}
+// 	100% {
+// 		transform: translateY(0%) rotate(1deg);
+// 	}
+// }
+// 
+// @keyframes sound-card-enter {
+//   100% { transform: translateY(0%); opacity: 1; }
+//   0% { transform: translateX(0%) translateY(100%) scaleX(0.25) scaleY(0.25); opacity: 0; }
+//   60% { transform: translateY(60%); }
+//   50% { transform: translateY(-60%); }
+//   70% { transform: translateY(-30%); }
+//   80% { transform: translateY(30%); }
+// }
+// 
+// .train
+// {
+//   animation:  train  1s  ease  0s  1  normal;
+// 	transform-origin: center;
+// }
+// 
+// .transit-train-vehicle
+// {
+//     animation:  transit-train-vehicle  1s  ease  500ms  infinite normal;
+//     webkit-animation:  transit-train-vehicle  1s  ease  500ms  infinite  normal;
+// 	transform-origin: center;
+// }
+// 
+// .safety {
+// 	animation:  safety 1000ms  ease  750ms  infinite normal;
+// }
+// 
+// @-webkit-keyframes safety { 
+//   0% { transform: translateY(-5%)}
+//   80% { transform:  translateY(5%); opacity: 1; }
+//   100% { transform: translateY(0%); opacity: 1; }
+// 
+// }
+// 
+// @-webkit-keyframes transit-train-vehicle { 
+//   0% { transform: rotateZ(2deg); opacity: 1; }
+//   20% { transform: rotateZ(-2deg); opacity: 1; }
+//   80% { transform:  rotateZ(2deg); opacity: 1; }
+//   100% { transform: rotateZ(0deg); opacity: 1; }
+//   60% { transform: rotateZ(-1deg); opacity: 1; }
+// }
+// 
+// @-webkit-keyframes train { 
+//   0% { transform: translateX(-50%) scaleX(0.25) scaleY(0.25); opacity: 1; }
+//   100% { transform: scaleX(1) scaleY(1) translateX(1%); opacity: 1; }
+//   50% { transform: scaleX(1) scaleY(1) translateX(2%); opacity: 1; }
+// }
+// 
+// .chef,
+// .hat,
+// .cake {
+// 	opacity:0;
+// }
+// 
+// .munchies-container-outline,
+// .munchies-container-fill
+// {
+//     animation:  munchies-container-outline  0.5s  cubic-bezier(0, 1.2, 1, 1.2)  0.5s  1  forwards normal;
+//     transform-origin: center;
+// 	opacity: 0;
+// }
+// 
+// .hat {
+// 	animation: hat 0.5s cubic-bezier(0, 1.2, 1, 1.2)  0.75s  1  forwards normal;
+// }
+// 
+// @keyframes hat {
+// 	0% {
+// 		opacity: 0;
+// 		transform: translateX(10%);
+// 	}
+// 	100% {
+// 		opacity: 1;
+// 		transform: translateX(0%);
+// 	}
+// }
+// 
+// @-webkit-keyframes munchies-container-outline { 
+//   0% {
+// 		opacity:0;
+// 		transform: translateX(10%) scaleX(0.2) scaleY(0.2);
+// 	}
+// 	  1% { 
+// 			opacity:0.1;
+// 	}
+//   33% { transform: scaleY(0.2) scaleX(1.2); }
+//   66% { transform: scaleY(1.2) scaleX(1); }
+//   100% { transform: scaleX(1) scaleY(1);
+// 	opacity: 1;}
+// }
+
+/* ---------- SPLASH ADLIB TAGS */
+.tag-adlib:not(.blank):not(.ghost) {
+	i {
+		display: block;
+		font-style: normal;
+		@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+		@include prefix(transition, all 600ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
+	}
+	&:hover {
+		i {
+			@include prefix(transform, scale(1.05)!important, webkit moz ms o);
+		}
+	}
+}
+li {
+	&.animated-start {
+		opacity: 0;
+		.tag-adlib:not(.blank):not(.ghost) {
+			.desktop {
+				rect {
+					@include opacity(0);
+					stroke-dasharray: 728;
+					stroke-dashoffset: 728;
+				}
+			}
+			.mobile {
+				rect {
+					@include opacity(0);
+					stroke-dasharray: 656;
+					stroke-dashoffset: 656;
+				}
+			}
+			b {
+				opacity: 0;
+			}
+		}
+	}
+	&.animated {
+		@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+		.tag-adlib:not(.blank):not(.ghost) {
+			.desktop {
+				rect {
+					animation: tag-adlib-desktop 800ms linear 2500ms forwards;
+				}
+			}
+			.mobile {
+				rect {
+					animation: tag-adlib-mobile 800ms linear 2500ms forwards;
+				}
+			}
+			b {
+				@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out 500ms forwards, webkit moz ms o);
+			}
+		}
+	}
+	&.animated-clear {
+		@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+		.tag-adlib:not(.blank):not(.ghost) {
+			.desktop {
+				rect {
+					animation: tag-adlib-desktop 800ms linear reverse forwards;
+				}
+			}
+			.mobile {
+				rect {
+					animation: tag-adlib-mobile 800ms linear reverse forwards;
+				}
+			}
+			b {
+				@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+			}
+		}
+	}
+}
+
+/* ---------- SPLASH UNIVERSITY SEARCH */
+.splash-school-search-form {
+	fieldset {
+		input {
+			&::selection {
+				background: white!important;
+				color: $slate!important;
+			}
+			&::-moz-selection {
+				background: white!important;
+				color: $slate!important;
+			}
+			&:focus {
+				@include placeholder {
+					color: rgba(white, .4)!important;
+				}
+			}
+		}
+	}
+}
+
 .splash-hero-support {
 	padding: 15px;
 	a {
@@ -21,6 +320,42 @@
 		}
 	}
 }
+
+.coach-support {
+	transform-origin: 338px 161px;
+}
+
+.splash-school-loader-container {
+	@include flex;
+	@include flex-center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: $slate;
+	#echo-loader {
+		* {
+			transform-origin: center center;
+		}
+		#echo-loader-echo {
+			&.active {
+				animation: ping 1500ms ease-in-out infinite, echo-loader-main 5s ease-in-out forwards;
+			}
+		}
+		#echo-loader-main {
+			@include prefix(transform, rotateY(180deg), webkit moz ms o);
+			stroke-dasharray: 629;
+			stroke-dashoffset: 629;
+			&.active {
+				animation: echo-loader-main 5s ease-in-out forwards;
+			}
+		}
+	}
+}
+
+/* ---------- SPLASH COMPONENTS */
 .splash-hero-skip {
 	padding: 15px;
 	button {
@@ -43,28 +378,6 @@
 		}
 	}
 }
-
-.splash-school-loader-container {
-	@include flex;
-	@include flex-center;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: rgba($slate, .95);
-	#echo-loader {
-		* {
-			transform-origin: center center;
-		}
-		#echo-loader-echo {
-			animation: ping 1500ms ease-in-out infinite;
-		}
-	}
-}
-
-/* ---------- SPLASH COMPONENTS */
 .splash-logo-guru {
 	svg {
 		display: block;
@@ -138,6 +451,33 @@
 		height: 70px;
 	}
 }
+// bose scale hover for round links, currently not used
+.scale-hover {
+	position: relative;
+	svg {
+		@include prefix(transition, all 150ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+		@include prefix(transition, all 150ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
+		&:last-child {
+			@include prefix(transform, scale(0), webkit moz ms o);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	&:hover, &:focus {
+		svg {
+			&:first-child {
+				@include prefix(transform, scale(0), webkit moz ms o);
+			}
+			&:last-child {
+				@include prefix(transform, scale(1), webkit moz ms o);
+			}
+		}
+	}
+}
+// end bose scale hover
 .splash-burger {
 	@include flex;
 	@include flex-center;
@@ -147,7 +487,8 @@
 	&:before {
 		@include prefix(transform, scale(0), webkit moz ms o);
 		@include prefix(transform-origin, center center, webkit moz ms o);
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		@include prefix(transition, all 300ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+		@include prefix(transition, all 300ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
 		@include round;
 		content: "";
 		display: block;
@@ -164,13 +505,15 @@
 		@include prefix(transform-origin, center center, webkit moz ms o);
 	}
 	svg {
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		@include prefix(transition, all 300ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+		@include prefix(transition, all 300ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
 		height: 100%;
 		width: auto;
 		position: relative;
 		z-index: 10;
 		g, circle, path {
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			@include prefix(transition, all 300ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+			@include prefix(transition, all 300ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
 			@include svg-stroke(white, 4);
 		}
 		g:not(.path) > path, .path {
@@ -215,21 +558,45 @@
 		}
 	}
 	&#cta-box-powerups {
-		&:not(.active) {
+		position: fixed;
+		right: 0;
+		top: 4px;
+		z-index: 2000;
+		@media screen and (min-width: 860px) {
+			right: 57px;
+			top: 14px;
+		}
+		svg {
+			circle {
+				stroke: $gold;
+			}
+			path {
+				fill: $gold;
+				stroke: $gold;
+			}
+			&.powerup-activated {
+				@include prefix(transform, scale(3.05) translateY(14px) translateX(-178px), webkit moz ms o);
+			}
+		}
+		&:hover, &:focus {
 			svg {
 				circle {
-					stroke: $gold;
-				}
-				path {
-					fill: $gold;
-					stroke: $gold;
+					stroke: white;
 				}
 			}
-			&:hover, &:focus {
-				svg {
-					circle {
-						stroke: white;
-					}
+		}
+		&.powerup-activated {
+			&:before {
+				@include prefix(animation, powerup-before-scaleUp 1000ms ease-in-out forwards, webkit moz ms o);
+			}
+			svg {
+				circle {
+					fill: $gold!important;
+					stroke: $gold!important;
+				}
+				path {
+					fill: white!important;
+					stroke: white!important;
 				}
 			}
 		}
@@ -451,6 +818,57 @@
 	}
 
 	// HEADERS
+	#dropdown-university, #dropdown-categories {
+		a {
+			span {
+				transition-timing-function: cubic-bezier(.77,0,.05,1);
+				transition-timing-function: cubic-bezier(.77,-0.22,.05,1.27);
+				transition-duration: 600ms;
+			}
+			&:hover, &:focus  {
+				span {
+					span {
+						transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -20, 0, 1);
+					}
+				}
+			}
+		}
+	}
+	#dropdown-university {
+		> div {
+			> ul {
+				li:last-child {
+					a {
+						span {
+							transition-timing-function: cubic-bezier(.77,0,.05,1);
+							transition-timing-function: cubic-bezier(.77,-0.22,.05,1.27);
+						}
+						.dropdown-color-icon {
+							transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 72, 0, 0, 1);
+							transition-duration: 300ms;
+							transition-delay: 150ms;
+						}
+						span:not(.dropdown-color-icon) span {
+							transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 20, 0, 1);
+							transition-duration: 300ms;
+							transition-delay: 0;
+						}
+						&:hover, &:focus {
+							.dropdown-color-icon, span:not(.dropdown-color-icon) span {
+								transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+							}
+							.dropdown-color-icon {
+								transition-delay: 0;
+							}
+							span:not(.dropdown-color-icon) span {
+								transition-delay: 300ms;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	> header {
 		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 		@include flex;
@@ -516,6 +934,11 @@
 		&.desktop {
 			@include flex-center-vertical;
 			display: none!important;
+			.splash-hero-nav-container {
+				@include flex;
+				@include flex-center-vertical;
+				padding-right: 57px;
+			}
 			h2 {
 				@include flex;
 				@include flex-center-vertical;
@@ -2530,7 +2953,7 @@
 		}
 
 		// PROJECTOR
-		&#splash-projector, #splash-one-page-pulldown {
+		&#splash-projector {
 			@include flex;
 			@include flex-wrap;
 			@include flex-center;
@@ -3800,12 +4223,6 @@
 				left: 0;
 				z-index: 2;
 				width: 100%;
-				.input-field {
-					margin: 15px auto;
-					input, label {
-						font-weight: 600;
-					}
-				}
 				.splash-school-desktop {
 					@include flex;
 					@include flex-wrap;

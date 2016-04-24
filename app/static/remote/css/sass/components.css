@@ -4918,11 +4918,16 @@ input[type="range"][size="large"]::-ms-track, input[type="range"][size="10"]::-m
 }
 
 .dropdown-color * {
-  -webkit-transition: all 150ms ease-in-out;
-  -moz-transition: all 150ms ease-in-out;
-  -ms-transition: all 150ms ease-in-out;
-  -o-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
+  -webkit-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -moz-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -ms-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -o-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -webkit-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -moz-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -ms-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -o-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
 }
 
 .dropdown-color > a {
@@ -5573,6 +5578,10 @@ input[type="range"][size="large"]::-ms-track, input[type="range"][size="10"]::-m
 .dropdown-color > div ul li:last-child {
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
+}
+
+.dropdown-color > div ul li:last-child a {
+  padding: 0 !important;
 }
 
 .dropdown-color > div ul li:not(:first-child) a + .arrow {

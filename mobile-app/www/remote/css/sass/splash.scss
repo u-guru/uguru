@@ -219,7 +219,7 @@
 }
 li {
 	&.animated-start {
-		@include prefix(transform, matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), webkit moz ms o);
+		opacity: 0;
 		.tag-adlib:not(.blank):not(.ghost) {
 			.desktop {
 				rect {
@@ -236,7 +236,7 @@ li {
 				}
 			}
 			b {
-				@include prefix(transform, matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), webkit moz ms o);
+				opacity: 0;
 			}
 		}
 	}
@@ -245,12 +245,12 @@ li {
 		.tag-adlib:not(.blank):not(.ghost) {
 			.desktop {
 				rect {
-					animation: tag-adlib-desktop 800ms linear 500ms forwards;
+					animation: tag-adlib-desktop 800ms linear 2500ms forwards;
 				}
 			}
 			.mobile {
 				rect {
-					animation: tag-adlib-mobile 800ms linear 500ms forwards;
+					animation: tag-adlib-mobile 800ms linear 2500ms forwards;
 				}
 			}
 			b {

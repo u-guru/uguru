@@ -5,12 +5,12 @@
     class-on-clear="null:inject.splash-device-search-inside|clear, null:inject:splash-device-svg|clear">
     <svg class="splash-device-svg" activate-on-class="a" class-on-activate="active:keep" viewBox="0 0 318 651">
         <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#F0E0D0" stroke-width="3">
-            <circle cx="158.5" cy="610.5" r="25" class-on-load="activate"
-            draw draw-duration="500ms" draw-delay="500ms"></circle>
-            <rect class="rotated" x="1.5" y="1.5" width="315" height="648" rx="40" class-on-load="activate"
-            draw draw-duration="800ms" draw-delay="0ms"></rect>
-            <rect x="21.5" y="79.5" width="276" height="493" class-on-load="activate"
-            draw draw-duration="1000ms" draw-delay="0ms"></rect>
+            <circle cx="158.5" cy="610.5" r="25" class-on-load="activate" class-on-load-delay="3500"
+            draw draw-duration="500ms" draw-delay="6500ms"></circle>
+            <rect class="rotated" x="1.5" y="1.5" width="315" height="648" rx="40" class-on-load="activate" class-on-load-delay="3000ms"
+            draw draw-duration="800ms"  draw-delay="6000ms"></rect>
+            <rect x="21.5" y="79.5" width="276" height="493" class-on-load="activate" class-on-load-delay="3000"
+            draw draw-duration="1000ms" draw-delay="6000ms"></rect>
         </g>
     </svg>
     <div class="splash-device-profile opacity-0" activate-on-class="a" class-on-activate="fadeIn:anim, high-z-index:keep" ng-include="img_base + 'templates/profile.public.photo.html'"></div>

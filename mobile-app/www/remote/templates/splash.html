@@ -9,7 +9,7 @@
         </div>
 
         <!-- Powerups CTA -->
-        <div id='cta-modal-powerups' class='activate full-xy flex-wrap-center fixed top-0 left-0 z-index-1000' ng-controller="PowerupController" class-on-activate="null:inject#powerups-container|activate" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.html'">
+        <div id='cta-modal-powerups' class='activate full-xy flex-wrap-center fixed top-0 left-0 z-index-1000' ng-controller="PowerupController" class-on-activate="null:inject#powerups-container|activate" ng-if='activate.powerups' ng-include="img_base + BASE + 'templates/elements/layouts/powerups.html'">
         </div>
         <!-- ng-if='activate.powerups' -->
 
