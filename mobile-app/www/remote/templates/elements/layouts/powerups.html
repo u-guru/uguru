@@ -1,6 +1,29 @@
-<div class='full-xy bg-charcoal-80p flex-wrap-center absolute top-0 left-0 high-z-index'>
-    Powerups
-     <div class="splash-hero-skip absolute bottom-0 right-0">
-        <button ng-click='activate.powerups = !activate.powerups'>Back</button>
+<div id="powerups-container" class="full-xy bg-slate opacity-0" class-on-activate="fadeIn:anim, null:inject#powerup-icons li|activate"  class-on-activate-delay="2000">
+    <header class="flex-center-wrap p15xy">
+        <span class="svg-128" ng-include="img_base + 'templates/svg/main/lightning-circle.html'"></span>
+        <h1 class="txt-48 semibold full-x txt-center">Powerups</h1>
+    </header>
+    <div class="flex-center-wrap">
+        <ul id="powerup-icons" class="flex-center">
+            <li class="matrix-0 opacity-0" class-on-activate="u-bounceIn-subtle, null:inject.powerup-icon-tag-1|activate" class-on-activate-delay="500">
+                <a class="block loader-powerup-gpa" ng-include="img_base + 'templates/elements/assets/powerups/gpa-card.tpl'"></a>
+                <a class="powerup-icon-tag-1 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</a>
+            </li>
+            <li class="matrix-0 opacity-0" class-on-activate="u-bounceIn-subtle, null:inject.powerup-icon-tag-2|activate" class-on-activate-delay="1500">
+                <a class="block loader-powerup-munchies" ng-include="img_base + 'templates/elements/assets/powerups/munchies-card.tpl'"></a>
+                <a class="powerup-icon-tag-2 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</a>
+            </li>
+            <li class="matrix-0 opacity-0" class-on-activate="u-bounceIn-subtle, null:inject.powerup-icon-tag-3|activate" class-on-activate-delay="2500">
+                <a class="block loader-powerup-sound" ng-include="img_base + 'templates/elements/assets/powerups/sound-card.tpl'"></a>
+                <a class="powerup-icon-tag-3 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</a>
+            </li>
+            <li class="matrix-0 opacity-0" class-on-activate="u-bounceIn-subtle, null:inject.powerup-icon-tag-4|activate" class-on-activate-delay="3500">
+                <a class="block loader-powerup-transit" ng-include="img_base + 'templates/elements/assets/powerups/transit-card.tpl'"></a>
+                <a class="powerup-icon-tag-4 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</a>
+            </li>
+        </ul>
     </div>
+</div>
+<div class="splash-hero-skip absolute bottom-0 right-0">
+   <button ng-click='activate.powerups = !activate.powerups'>Back</button>
 </div>
