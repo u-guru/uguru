@@ -1,35 +1,42 @@
 <!-- @GABRIELLE-NOTE-EXAMPLE-->
 <!--
-
 reference to docs
-
 Parallax: https://github.com/wagerfield/parallax
-
-
 -->
 <ion-view>
- <!--    <ion-refresher
+    <style>
+        #body-loading-div {
+            display: none!important;
+        }
+    </style>
+    <!-- <ion-refresher
         pulling-icon="ion-arrow-down-c"
         spinner="circles"
         on-refresh="doRefresh()">
     </ion-refresher> -->
-    <album-tile></album-tile>
-    <ion-content class='bg-slate-50p full-xy absolute'>
-                <button class='bottom-0 absolute left-0 full-x' onclick="rerun();">Again!</button>
-                <div class='flex-wrap-center' width="100%" height="100%">
-                <div class='ugrid-5 flex-wrap-center'>
-                    <svg class='activate' style='height:200px; width:200px;' draw-start-frame="30" draw-duration="10s" stroke="#FFFFFF" fill="none" draw-shapes width="120" height="120"
-                         viewPort="0 0 120 120" version="1.1"
-                         xmlns="http://www.w3.org/2000/svg">
-
-                        <line x1="20" y1="100"
-                              x2="100" y2="20"
-                              stroke="white"
-                              stroke-width="2"/>
-
-                    </svg>
-                </div>
+    <!-- <album-tile></album-tile> -->
+    <ion-content class='bg-slate-50p full-xy absolute flex-center'>
+        <div class="full-xy">
+            <div class="bg-charcoal" style="height: 69px"></div>
+            <div class="full-x flex-center bg-slate" style="height: calc(100% - 74px)">
+                <a class="block loader-powerup-gpa activate matrix-0" class-on-activate="u-bounceInUp" style="width: 400px; height: 400px" ng-include="img_base + 'templates/elements/assets/powerups/gpa-card.tpl'"></a>
             </div>
+        </div>
+        <!-- <button class='bottom-0 absolute left-0 full-x' onclick="rerun();">Again!</button>
+            <div class='flex-wrap-center' width="100%" height="100%">
+            <div class='ugrid-5 flex-wrap-center'>
+                <svg class='activate' style='height:200px; width:200px;' draw-start-frame="30" draw-duration="10s" stroke="#FFFFFF" fill="none" draw-shapes width="120" height="120"
+                     viewPort="0 0 120 120" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg">
+
+                    <line x1="20" y1="100"
+                          x2="100" y2="20"
+                          stroke="white"
+                          stroke-width="2"/>
+
+                </svg>
+            </div>
+        </div> -->
         <!-- <div class='full-xy flex-wrap-center'
             parallax-parent="p1"
             parallax-relative-input="false"
