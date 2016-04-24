@@ -291,12 +291,12 @@ def getTestIndexFromClientAndType(client, client_type, window_size):
     if (client == 'ios'):
         if (client_type == 'app'):
             return 21
-        if (client_type == 'device-safari'):
+        if (client_type == 'safari'):
             return 22
     if (client == 'android'):
         if (client_type == 'app'):
             return 23
-        if (client_type == 'device-chrome'):
+        if (client_type == 'chrome'):
             return 24
 
 
