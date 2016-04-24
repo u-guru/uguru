@@ -1,21 +1,23 @@
-<div ng-controller='UniversitySearchController as uniSearch' class="bg-slate-90p">
+<div ng-controller='UniversitySearchController as uniSearch' class="full-xy flex-center relative">
     <!-- If user has already selected university-->
     <!-- <div class="splash-university-selected relative full-xy" ng-if='uniSearch.layout.edit_mode' ng-include="img_base + BASE + 'templates/splash/container/university.selected.html'"></div> -->
-
-    <div class="projector-slide absolute center-xy">
+    <div class="splash-projector-bg bg-slate-75p absolute top-0 left-0 full-xy opacity-0 activate" class-on-activate="fadeIn:anim"></div>
+    <div class="splash-projector-school projector-slide matrix-0 activate"
+        class-on-activate="u-slideInDown, null:inject#echo-loader-echo|activate, null:inject#echo-loader-main|activate, null:inject#echo-loader-number tspan|activate, null:inject#echo-loader|clear, null:inject.splash-school-loader-container|clear, null:inject#splash-school-search-guru|activate, null:inject.coach-support|activate"
+        class-on-clear="bounceOutUp:animOut">
         <svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
             <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
         </svg>
         <div class="projector-top"></div>
         <div class="projector-content">
-            <div class="splash-school-loader-container" class-on-activate="fadeOut:animOut, z-index--1000:keep" class-on-activate-delay="2000">
-                <svg id="echo-loader" width="300px" height="300px" viewBox="0 0 300 300">
+            <div class="splash-school-loader-container" class-on-clear="fadeOut:animOut, z-index--1000:keep, null:inject.splash-school-desktop|activate" class-on-clear-delay="6000">
+                <svg id="echo-loader" width="300px" height="300px" viewBox="0 0 300 300" class-on-clear="u-bounceOut" class-on-clear-delay="5500">
                     <g fill="none">
-                        <circle id="echo-loader-echo" stroke="#69B3A5" fill-opacity="0.2" fill="#69B3A5" cx="150" cy="150" r="50"></circle>
+                        <circle id="echo-loader-echo" class-on-activate="active" class-on-activate-delay="300" stroke="#69B3A5" fill-opacity="0.2" fill="#69B3A5" cx="150" cy="150" r="50"></circle>
                         <circle id="echo-loader-track" stroke-opacity="0.4" stroke="#FFFFFF" stroke-width="2" fill="#40484B" cx="150" cy="150" r="100"></circle>
-                        <path d="M150,250 C205.228475,250 250,205.228475 250,150 C250,94.771525 205.228475,50 150,50 C94.771525,50 50,94.771525 50,150 C50,205.228475 94.771525,250 150,250 L150,250 Z" id="echo-loader-main" stroke="#69B3A5" stroke-width="2"></path>
+                        <path d="M150,250 C205.228475,250 250,205.228475 250,150 C250,94.771525 205.228475,50 150,50 C94.771525,50 50,94.771525 50,150 C50,205.228475 94.771525,250 150,250 L150,250 Z" class-on-activate="active" class-on-activate-delay="300" id="echo-loader-main" stroke="#69B3A5" stroke-width="2"></path>
                         <text id="echo-loader-number" font-family="Source Sans Pro" font-size="48" font-weight="600" fill="#FFFFFF" text-anchor="middle">
-                            <tspan x="150" y="149">0</tspan>
+                            <tspan x="150" y="149" counter init-on-class="counter:activate" counter-max="196" counter-min="0" counter-duration="4.8" counter-delay="300">0</tspan>
                         </text>
                         <text id="echo-loader-label" font-family="Source Sans Pro" font-size="20" font-weight="normal" fill="#FFFFFF" text-anchor="middle">
                             <tspan x="150" y="176">schools found</tspan>
@@ -23,8 +25,8 @@
                     </g>
                 </svg>
             </div>
-            <div class-on-clear="slideOutUp:animOut" ng-if='!uniSearch.layout.edit_mode' class='splash-school-search absolute left-0 top-0 full-xy flex-wrap-center show-splash-university' id='splash-university' activate-on-class="show-splash-university" class-on-activate="opacity-1-impt:inject#splash-university [class-on-activate]|activate, opacity-1-impt:inject"
-                class-on-activate-delay="1500" style='overflow:hidden;'>
+            <!-- ng-if='!uniSearch.layout.edit_mode' -->
+            <div class-on-clear="slideOutUp:animOut" class='splash-school-search absolute left-0 top-0 full-xy flex-wrap-center show-splash-university overflow-hidden' id='splash-university' activate-on-class="show-splash-university" class-on-activate="opacity-1-impt:inject#splash-university [class-on-activate]|activate, opacity-1-impt:inject" class-on-activate-delay="1500">
                 <div class='splash-map zoom-{{uniSearch.layout.map.zoom}} bg-slate' style="height:calc(100%);" class-on-activate="fadeIn:anim" class-on-activate-delay="400">
                     <ui-gmap-google-map id="splash-google-map" class='opacity-0 full-xy absolute top-0 left-0' center="uniSearch.layout.map.center" refresh='uniSearch.layout.map.refresh' bounds="mapBounds" bounces="uniSearch.layout.map.bounds" events="uniSearch.layout.map.events"
                         options='uniSearch.layout.map.options' control="uniSearch.layout.map.control" pan="true" zoom="uniSearch.layout.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
@@ -34,11 +36,11 @@
                 </div>
                 <div class="splash-zoom opacity-0 absolute high-z-index" class-on-activate="fadeIn:anim" class-on-activate-delay="1000">Tap to Zoom</div>
                 <div class="splash-school-search-form" ng-controller="AddUniversityCtrl">
-                    <div class="opacity-0 p15xy max-1030" class-on-activate="bounceInDown:anim" class-on-activate-delay="1000">
+                    <div class="matrix-0 p15xy max-1030" class-on-activate="u-slideInDown" class-on-activate-delay="8000">
                         <form>
                             <fieldset class="large with-icon full-x">
                                 <input class="input-border light" type="search" id='request-search-input' name='request-search-input' autocomplete="off" fast-matcher fast-matcher-source="universities" fast-matcher-output="filtered_universities" fast-matcher-properties="short_name, full_name, tiny_name, variations"
-                                    ng-model="search_text.university" ng-focus='focusUniversitySearchInput' placeholder="search {{universities.length}} supported schools" />
+                                ng-model="search_text.university" ng-focus='focusUniversitySearchInput' placeholder="search {{universities.length}} supported schools" />
                                 <label></label>
                                 <span class="input-icon">
                     					<svg viewBox="0 0 100 100">
@@ -52,13 +54,13 @@
                         </form>
                     </div>
                     <ul class="splash-school-desktop" class-on-activate="null:inject.splash-school-desktop li|activate">
-                        <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' class="matrix-0" class-on-activate="u-bounceIn:keep" class-on-activate-delay="{{1000 + (300 * ($index + 1)) }}">
+                        <li ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' class="matrix-0" class-on-activate="u-bounceIn-subtle" class-on-activate-delay="{{4800 + (150 * ($index + 1)) }}">
                             <div class="school-card">
                                 <!-- ng-class="{'activate':$index < 5}" class-on-activate="magictime:anim, boingInUp:anim, null:inject.school-card-icon-container|a" -->
                                 <svg class="rect" viewBox="0 0 300 200">
                                     <rect x="0" y="0" width="300" height="200" fill="none"></rect>
                                 </svg>
-                                <input type="radio" name="school-card" ng-click='uniSearch.selectUniversityFromSearch(university)' class-on-click="null:inject.splash-school-desktop li|clear, null:inject#splash-school-search-guru|activate" />
+                                <input type="radio" name="school-card" ng-click='uniSearch.selectUniversityFromSearch(university)' class-on-click="null:inject.splash-school-desktop li|clear, null:inject.splash-projector-school|clear, null:inject.adlib-tag|activate" />
                                 <div class="school-card-inside">
                                     <div class="school-card-top" style="background-color: {{university.school_color_one}};">
                                         <div class="school-card-icon-container">
@@ -85,14 +87,14 @@
                 </div>
             </div>
             <div class="absolute bottom-0 left-0 z-index-1000">
-                <div id="splash-school-search-guru" class="guru-head" ng-include="img_base + 'templates/svg/guru-head.html'" class="transition-150" translate-on-class="activate" translate-on-class-delay="1500" translate-to-elem="#splash-guru-head"></div>
-                <svg class="absolute" viewBox="0 0 340 205" style="top: -40px; left: -160px; width: 170px;">
-                    <g fill="none">
-                        <path d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 Z"
-                            fill="#40484b" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <text transform="translate(173.347656, 110.679688) rotate(-19.000000) translate(-173.347656, -110.679688) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
-                            <tspan x="38.8476562" y="109.679688">we can help you</tspan>
-                            <tspan x="91.8676562" y="149.679688">with that!</tspan>
+                <div id="splash-school-search-guru" class="guru-head matrix-0" class-on-activate="u-rotateScaleUpLeft" class-on-activate-delay="8000" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
+                <svg class="coach-support absolute matrix-0" class-on-activate="u-bounceIn-subtle" class-on-activate-delay="8500" viewBox="0 0 340 205" style="top: -40px; left: -160px; width: 170px;">
+                    <g stroke="none" fill="none">
+                        <path class="coach-support-bubble" d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 L197.223004,186.289595 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.5" fill="#40484b"></path>
+                        <text class="coach-support-text" fill="#FFFFFF" transform="translate(166.576345, 98.330683) rotate(-19.000000) translate(-166.576345, -98.330683) " font-family="Source Sans Pro" font-size="32" font-weight="normal">
+                            <tspan x="93.4243446" y="89.3306827">search </tspan>
+                            <tspan x="187.888345" y="89.3306827" font-family="Source Sans Pro" font-weight="900">196</tspan>
+                            <tspan x="38.4323446" y="129.330683">supported schools!</tspan>
                         </text>
                     </g>
                 </svg>

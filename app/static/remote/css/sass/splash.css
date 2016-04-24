@@ -1,3 +1,132 @@
+.tag-adlib:not(.blank):not(.ghost) i {
+  display: block;
+  font-style: normal;
+  -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
+  -moz-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
+  -ms-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
+  -o-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
+  -webkit-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -moz-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -ms-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -o-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+}
+
+.tag-adlib:not(.blank):not(.ghost):hover i {
+  -webkit-transform: scale(1.05) !important;
+  -moz-transform: scale(1.05) !important;
+  -ms-transform: scale(1.05) !important;
+  -o-transform: scale(1.05) !important;
+  transform: scale(1.05) !important;
+}
+
+/* ---------- SPLASH ADLIB TAGS */
+li.animated-start {
+  -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  -moz-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  -ms-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  -o-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+}
+
+li.animated-start .tag-adlib:not(.blank):not(.ghost) .desktop rect {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  stroke-dasharray: 728;
+  stroke-dashoffset: 728;
+}
+
+li.animated-start .tag-adlib:not(.blank):not(.ghost) .mobile rect {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  stroke-dasharray: 656;
+  stroke-dashoffset: 656;
+}
+
+li.animated-start .tag-adlib:not(.blank):not(.ghost) b {
+  -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  -moz-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  -ms-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  -o-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+}
+
+li.animated {
+  -webkit-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
+  -moz-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
+  -ms-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
+  -o-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
+  animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
+}
+
+li.animated .tag-adlib:not(.blank):not(.ghost) .desktop rect {
+  animation: tag-adlib-desktop 800ms linear 500ms forwards;
+}
+
+li.animated .tag-adlib:not(.blank):not(.ghost) .mobile rect {
+  animation: tag-adlib-mobile 800ms linear 500ms forwards;
+}
+
+li.animated .tag-adlib:not(.blank):not(.ghost) b {
+  -webkit-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
+  -moz-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
+  -ms-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
+  -o-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
+  animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
+}
+
+li.animated-clear {
+  -webkit-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  -moz-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  -ms-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  -o-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+}
+
+li.animated-clear .tag-adlib:not(.blank):not(.ghost) .desktop rect {
+  animation: tag-adlib-desktop 800ms linear reverse forwards;
+}
+
+li.animated-clear .tag-adlib:not(.blank):not(.ghost) .mobile rect {
+  animation: tag-adlib-mobile 800ms linear reverse forwards;
+}
+
+li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
+  -webkit-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  -moz-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  -ms-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  -o-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+  animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
+}
+
+/* ---------- SPLASH UNIVERSITY SEARCH */
+.splash-school-search-form fieldset input::selection {
+  background: white !important;
+  color: #40484B !important;
+}
+
+.splash-school-search-form fieldset input::-moz-selection {
+  background: white !important;
+  color: #40484B !important;
+}
+
+.splash-school-search-form fieldset input:focus::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.splash-school-search-form fieldset input:focus:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.splash-school-search-form fieldset input:focus::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.splash-school-search-form fieldset input:focus:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
 .splash-hero-support {
   padding: 15px;
 }
@@ -31,6 +160,58 @@
   opacity: 1;
 }
 
+.coach-support {
+  transform-origin: 338px 161px;
+}
+
+.splash-school-loader-container {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: #40484B;
+}
+
+.splash-school-loader-container #echo-loader * {
+  transform-origin: center center;
+}
+
+.splash-school-loader-container #echo-loader #echo-loader-echo.active {
+  animation: ping 1500ms ease-in-out infinite, echo-loader-main 5s ease-in-out forwards;
+}
+
+.splash-school-loader-container #echo-loader #echo-loader-main {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  stroke-dasharray: 629;
+  stroke-dashoffset: 629;
+}
+
+.splash-school-loader-container #echo-loader #echo-loader-main.active {
+  animation: echo-loader-main 5s ease-in-out forwards;
+}
+
+/* ---------- SPLASH COMPONENTS */
 .splash-hero-skip {
   padding: 15px;
 }
@@ -64,40 +245,6 @@
   opacity: 1;
 }
 
-.splash-school-loader-container {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  background: rgba(64, 72, 75, 0.95);
-}
-
-.splash-school-loader-container #echo-loader * {
-  transform-origin: center center;
-}
-
-.splash-school-loader-container #echo-loader #echo-loader-echo {
-  animation: ping 1500ms ease-in-out infinite;
-}
-
-/* ---------- SPLASH COMPONENTS */
 .splash-logo-guru svg {
   display: block;
   width: 150px;
@@ -204,6 +351,52 @@
   }
 }
 
+.scale-hover {
+  position: relative;
+}
+
+.scale-hover svg {
+  -webkit-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -moz-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -ms-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -o-transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
+  -webkit-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -moz-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -ms-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -o-transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+}
+
+.scale-hover svg:last-child {
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.scale-hover:hover svg:first-child, .scale-hover:focus svg:first-child {
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+
+.scale-hover:hover svg:last-child, .scale-hover:focus svg:last-child {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
 .splash-burger {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -236,11 +429,16 @@
   -ms-transform-origin: center center;
   -o-transform-origin: center center;
   transform-origin: center center;
-  -webkit-transition: all 150ms ease-in-out;
-  -moz-transition: all 150ms ease-in-out;
-  -ms-transition: all 150ms ease-in-out;
-  -o-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
+  -webkit-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -moz-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -ms-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -o-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -webkit-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -moz-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -ms-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -o-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
   border-radius: 1000px;
   content: "";
   display: block;
@@ -263,11 +461,16 @@
 }
 
 .splash-burger svg {
-  -webkit-transition: all 150ms ease-in-out;
-  -moz-transition: all 150ms ease-in-out;
-  -ms-transition: all 150ms ease-in-out;
-  -o-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
+  -webkit-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -moz-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -ms-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -o-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -webkit-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -moz-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -ms-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -o-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
   height: 100%;
   width: auto;
   position: relative;
@@ -275,11 +478,16 @@
 }
 
 .splash-burger svg g, .splash-burger svg circle, .splash-burger svg path {
-  -webkit-transition: all 150ms ease-in-out;
-  -moz-transition: all 150ms ease-in-out;
-  -ms-transition: all 150ms ease-in-out;
-  -o-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
+  -webkit-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -moz-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -ms-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -o-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -webkit-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -moz-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -ms-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -o-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
   fill: none;
   stroke: white;
   stroke-width: 4px;
@@ -708,6 +916,45 @@
     width: calc(100% - 320px);
     padding-left: 15px;
   }
+}
+
+.splash-landing #dropdown-university a span, .splash-landing #dropdown-categories a span {
+  transition-timing-function: cubic-bezier(0.77, 0, 0.05, 1);
+  transition-timing-function: cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition-duration: 600ms;
+}
+
+.splash-landing #dropdown-university a:hover span span, .splash-landing #dropdown-university a:focus span span, .splash-landing #dropdown-categories a:hover span span, .splash-landing #dropdown-categories a:focus span span {
+  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -20, 0, 1);
+}
+
+.splash-landing #dropdown-university > div > ul li:last-child a span {
+  transition-timing-function: cubic-bezier(0.77, 0, 0.05, 1);
+  transition-timing-function: cubic-bezier(0.77, -0.22, 0.05, 1.27);
+}
+
+.splash-landing #dropdown-university > div > ul li:last-child a .dropdown-color-icon {
+  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 72, 0, 0, 1);
+  transition-duration: 300ms;
+  transition-delay: 150ms;
+}
+
+.splash-landing #dropdown-university > div > ul li:last-child a span:not(.dropdown-color-icon) span {
+  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 20, 0, 1);
+  transition-duration: 300ms;
+  transition-delay: 0;
+}
+
+.splash-landing #dropdown-university > div > ul li:last-child a:hover .dropdown-color-icon, .splash-landing #dropdown-university > div > ul li:last-child a:hover span:not(.dropdown-color-icon) span, .splash-landing #dropdown-university > div > ul li:last-child a:focus .dropdown-color-icon, .splash-landing #dropdown-university > div > ul li:last-child a:focus span:not(.dropdown-color-icon) span {
+  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+}
+
+.splash-landing #dropdown-university > div > ul li:last-child a:hover .dropdown-color-icon, .splash-landing #dropdown-university > div > ul li:last-child a:focus .dropdown-color-icon {
+  transition-delay: 0;
+}
+
+.splash-landing #dropdown-university > div > ul li:last-child a:hover span:not(.dropdown-color-icon) span, .splash-landing #dropdown-university > div > ul li:last-child a:focus span:not(.dropdown-color-icon) span {
+  transition-delay: 300ms;
 }
 
 .splash-landing > header {
@@ -3800,7 +4047,7 @@
   }
 }
 
-.splash-landing > section#splash-projector, .splash-landing > section #splash-one-page-pulldown {
+.splash-landing > section#splash-projector {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -3825,18 +4072,18 @@
   overflow: hidden;
 }
 
-.splash-landing > section#splash-projector .projector-trigger, .splash-landing > section #splash-one-page-pulldown .projector-trigger {
+.splash-landing > section#splash-projector .projector-trigger {
   position: absolute;
   top: -60px;
   left: 50%;
   margin-left: -14px;
 }
 
-.splash-landing > section#splash-projector #projector-pull, .splash-landing > section #splash-one-page-pulldown #projector-pull {
+.splash-landing > section#splash-projector #projector-pull {
   display: block;
 }
 
-.splash-landing > section#splash-projector .coach-projector, .splash-landing > section #splash-one-page-pulldown .coach-projector {
+.splash-landing > section#splash-projector .coach-projector {
   display: block;
   position: absolute;
   bottom: 30px;
@@ -3845,45 +4092,45 @@
   height: 36px;
 }
 
-.splash-landing > section#splash-projector .splash-projector-message, .splash-landing > section #splash-one-page-pulldown .splash-projector-message {
+.splash-landing > section#splash-projector .splash-projector-message {
   width: 100%;
   padding: 0 15px;
 }
 
-.splash-landing > section#splash-projector .splash-projector-message svg, .splash-landing > section #splash-one-page-pulldown .splash-projector-message svg {
+.splash-landing > section#splash-projector .splash-projector-message svg {
   display: block;
   margin: 0 auto;
   width: 100%;
 }
 
-.splash-landing > section#splash-projector .splash-projector-message.desktop, .splash-landing > section #splash-one-page-pulldown .splash-projector-message.desktop {
+.splash-landing > section#splash-projector .splash-projector-message.desktop {
   display: none;
 }
 
-.splash-landing > section#splash-projector .splash-projector-message.desktop svg, .splash-landing > section #splash-one-page-pulldown .splash-projector-message.desktop svg {
+.splash-landing > section#splash-projector .splash-projector-message.desktop svg {
   max-width: 642px;
 }
 
-.splash-landing > section#splash-projector .splash-projector-message.mobile svg, .splash-landing > section #splash-one-page-pulldown .splash-projector-message.mobile svg {
+.splash-landing > section#splash-projector .splash-projector-message.mobile svg {
   max-width: 347px;
 }
 
-.splash-landing > section#splash-projector .splash-projector-footer, .splash-landing > section #splash-one-page-pulldown .splash-projector-footer {
+.splash-landing > section#splash-projector .splash-projector-footer {
   position: absolute;
   bottom: 15px;
 }
 
-.splash-landing > section#splash-projector .splash-projector-footer.center, .splash-landing > section #splash-one-page-pulldown .splash-projector-footer.center {
+.splash-landing > section#splash-projector .splash-projector-footer.center {
   width: 150px;
   right: 50%;
   margin-right: -75px;
 }
 
-.splash-landing > section#splash-projector .splash-projector-footer.right, .splash-landing > section #splash-one-page-pulldown .splash-projector-footer.right {
+.splash-landing > section#splash-projector .splash-projector-footer.right {
   right: 15px;
 }
 
-.splash-landing > section#splash-projector .splash-projector-footer a, .splash-landing > section #splash-one-page-pulldown .splash-projector-footer a {
+.splash-landing > section#splash-projector .splash-projector-footer a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -3904,7 +4151,7 @@
   justify-content: center;
 }
 
-.splash-landing > section#splash-projector .splash-projector-footer a svg, .splash-landing > section #splash-one-page-pulldown .splash-projector-footer a svg {
+.splash-landing > section#splash-projector .splash-projector-footer a svg {
   fill: none;
   stroke: white;
   stroke-width: 4px;
@@ -3914,7 +4161,7 @@
   height: 50px;
 }
 
-.splash-landing > section#splash-projector .splash-projector-footer a span, .splash-landing > section #splash-one-page-pulldown .splash-projector-footer a span {
+.splash-landing > section#splash-projector .splash-projector-footer a span {
   display: block;
   width: 100%;
   margin-top: -5px;
@@ -3923,23 +4170,23 @@
   text-align: center;
 }
 
-.splash-landing > section#splash-projector .header-swipers, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs, .splash-landing > section #splash-one-page-pulldown .header-swipers, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs {
+.splash-landing > section#splash-projector .header-swipers, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs {
   z-index: -2;
 }
 
-.splash-landing > section#splash-projector .header-swipers.active, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs.active, .splash-landing > section #splash-one-page-pulldown .header-swipers.active, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs.active {
+.splash-landing > section#splash-projector .header-swipers.active, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs.active {
   z-index: 2;
 }
 
-.splash-landing > section#splash-projector .main-swipers-container, .splash-landing > section #splash-one-page-pulldown .main-swipers-container {
+.splash-landing > section#splash-projector .main-swipers-container {
   height: 100%;
 }
 
-.splash-landing > section#splash-projector .main-swipers-container .swiper-slide, .splash-landing > section #splash-one-page-pulldown .main-swipers-container .swiper-slide {
+.splash-landing > section#splash-projector .main-swipers-container .swiper-slide {
   overflow: visible !important;
 }
 
-.splash-landing > section#splash-projector .header-swiper-front, .splash-landing > section #splash-one-page-pulldown .header-swiper-front {
+.splash-landing > section#splash-projector .header-swiper-front {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -3951,21 +4198,21 @@
   padding: 3% 0 9.5%;
 }
 
-.splash-landing > section#splash-projector .projector-line, .splash-landing > section #splash-one-page-pulldown .projector-line {
+.splash-landing > section#splash-projector .projector-line {
   position: absolute;
   left: 50%;
   margin-left: -1px;
 }
 
-.splash-landing > section#splash-projector .projector-line.top, .splash-landing > section #splash-one-page-pulldown .projector-line.top {
+.splash-landing > section#splash-projector .projector-line.top {
   top: -196px;
 }
 
-.splash-landing > section#splash-projector .projector-line.bottom, .splash-landing > section #splash-one-page-pulldown .projector-line.bottom {
+.splash-landing > section#splash-projector .projector-line.bottom {
   bottom: -196px;
 }
 
-.splash-landing > section#splash-projector .projector-handle, .splash-landing > section #splash-one-page-pulldown .projector-handle {
+.splash-landing > section#splash-projector .projector-handle {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -3977,12 +4224,12 @@
   margin-left: -30.5px;
 }
 
-.splash-landing > section#splash-projector .projector-handle:not(.active), .splash-landing > section #splash-one-page-pulldown .projector-handle:not(.active) {
+.splash-landing > section#splash-projector .projector-handle:not(.active) {
   filter: alpha(opacity=0);
   opacity: 0;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs {
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -4004,34 +4251,34 @@
   max-width: 600px;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab {
   height: 60px;
   max-width: 300px;
   margin: 0 auto;
   background: none !important;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper {
   background: none !important;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper > div, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper > div {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper > div {
   width: calc(100% / 3);
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper > div:before, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper > div:before {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper > div:before {
   left: -15px;
   border-color: #69B3A5;
   border-left-color: #40484B;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper > div:after, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper > div:after {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper > div:after {
   right: -15px;
   border-color: #40484B;
   border-left-color: #69B3A5;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide {
   position: relative;
   z-index: 10;
   margin: 0 !important;
@@ -4040,85 +4287,85 @@
   line-height: 1.2;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide.third, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide.third {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide.third {
   width: calc(100% / 3) !important;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:not(.third), .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:not(.third) {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:not(.third) {
   width: 20% !important;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:not(.third) + hr hr, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:not(.third) + hr hr {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:not(.third) + hr hr {
   width: 20%;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1).active ~ div:before, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1).active ~ div:before {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1).active ~ div:before {
   border-color: #69B3A5;
   border-left-color: #40484B;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1).active ~ div:after, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1).active ~ div:after {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1).active ~ div:after {
   border-color: #40484B;
   border-left-color: #69B3A5;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2).active ~ div:before, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2).active ~ div:before {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2).active ~ div:before {
   border-color: #69B3A5;
   border-left-color: #40484B;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2).active ~ div:after, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2).active ~ div:after {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2).active ~ div:after {
   border-color: #40484B;
   border-left-color: #69B3A5;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3).active ~ div:before, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3).active ~ div:before {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3).active ~ div:before {
   border-color: #69B3A5;
   border-left-color: #40484B;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3).active ~ div:after, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3).active ~ div:after {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3).active ~ div:after {
   border-color: #40484B;
   border-left-color: #69B3A5;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):hover ~ div:before, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):focus ~ div:before, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):hover ~ div:before, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):focus ~ div:before {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):hover ~ div:before, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):focus ~ div:before {
   border-color: #69B3A5;
   border-left-color: #40484B;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):hover ~ div:after, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):focus ~ div:after, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):hover ~ div:after, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):focus ~ div:after {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):hover ~ div:after, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(1):focus ~ div:after {
   border-color: #40484B;
   border-left-color: #69B3A5;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):hover ~ div:before, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):focus ~ div:before, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):hover ~ div:before, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):focus ~ div:before {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):hover ~ div:before, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):focus ~ div:before {
   border-color: #69B3A5;
   border-left-color: #40484B;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):hover ~ div:after, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):focus ~ div:after, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):hover ~ div:after, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):focus ~ div:after {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):hover ~ div:after, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(2):focus ~ div:after {
   border-color: #40484B;
   border-left-color: #69B3A5;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):hover ~ div:before, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):focus ~ div:before, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):hover ~ div:before, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):focus ~ div:before {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):hover ~ div:before, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):focus ~ div:before {
   border-color: #69B3A5;
   border-left-color: #40484B;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):hover ~ div:after, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):focus ~ div:after, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):hover ~ div:after, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):focus ~ div:after {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):hover ~ div:after, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-tab .swiper-gallery-wrapper a.swiper-slide:nth-child(3):focus ~ div:after {
   border-color: #40484B;
   border-left-color: #69B3A5;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .progress.white-round, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .progress.white-round {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .progress.white-round {
   position: absolute;
   top: 35px;
   background: #606669 !important;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper {
   -webkit-transform: translate3d(0px, 0px, 0px) !important;
   -moz-transform: translate3d(0px, 0px, 0px) !important;
   -ms-transform: translate3d(0px, 0px, 0px) !important;
@@ -4128,7 +4375,7 @@
   height: 100% !important;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -4139,11 +4386,11 @@
   text-align: center;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide:not(.slideshow-thumb-getting-started), .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide:not(.slideshow-thumb-getting-started) {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide:not(.slideshow-thumb-getting-started) {
   width: 33% !important;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -4164,23 +4411,23 @@
   background: none;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step .progress-step-icon, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step .progress-step-icon {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step .progress-step-icon {
   height: 100%;
   width: 80px;
   background: none;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step .progress-step-icon svg, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step .progress-step-icon svg {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step .progress-step-icon svg {
   display: block;
   width: 80px;
   height: 80px;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step .progress-step-icon svg *, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step .progress-step-icon svg * {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step .progress-step-icon svg * {
   stroke-width: 6px;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:hover .progress-step-icon svg .bg, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:focus .progress-step-icon svg .bg, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:hover .progress-step-icon svg .bg, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:focus .progress-step-icon svg .bg {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:hover .progress-step-icon svg .bg, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:focus .progress-step-icon svg .bg {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -4189,11 +4436,11 @@
   fill: #89969b !important;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:hover .progress-step-icon svg *:not(.bg), .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:focus .progress-step-icon svg *:not(.bg), .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:hover .progress-step-icon svg *:not(.bg), .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:focus .progress-step-icon svg *:not(.bg) {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:hover .progress-step-icon svg *:not(.bg), .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step:focus .progress-step-icon svg *:not(.bg) {
   fill: rgba(64, 72, 75, 0.5);
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step h1, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step h1 {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .progress-step h1 {
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -4209,7 +4456,7 @@
   white-space: nowrap;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step {
   border-radius: 1000px;
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -4232,7 +4479,7 @@
   height: 80px;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step h1, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step h1 {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step h1 {
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -4248,7 +4495,7 @@
   white-space: nowrap;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-icon, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-icon {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-icon {
   border-radius: 1000px;
   fill: none;
   stroke: white;
@@ -4261,13 +4508,13 @@
   background: #9FA3A5;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-icon svg, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-icon svg {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-icon svg {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-icon svg *, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-icon svg * {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-icon svg * {
   fill: none;
   stroke: white;
   stroke-width: 3px;
@@ -4275,7 +4522,7 @@
   stroke-linejoin: round;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-status, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-status {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-status {
   position: absolute;
   top: 0;
   left: 0;
@@ -4283,7 +4530,7 @@
   height: 100%;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-status .top, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-status .bottom, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-status .top, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-status .bottom {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-status .top, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide .onboarding-step .onboarding-status .bottom {
   -webkit-transition: stroke-dashoffset 300ms ease-in-out;
   -moz-transition: stroke-dashoffset 300ms ease-in-out;
   -ms-transition: stroke-dashoffset 300ms ease-in-out;
@@ -4295,17 +4542,17 @@
   stroke-dashoffset: 220;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.complete .onboarding-step .onboarding-icon, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.complete .onboarding-step .onboarding-icon {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.complete .onboarding-step .onboarding-icon {
   background: #557e78;
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.complete .onboarding-step .onboarding-status .top, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.complete .onboarding-step .onboarding-status .bottom, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.complete .onboarding-step .onboarding-status .top, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.complete .onboarding-step .onboarding-status .bottom {
+.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.complete .onboarding-step .onboarding-status .top, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper div.swiper-slide.complete .onboarding-step .onboarding-status .bottom {
   filter: alpha(opacity=100);
   opacity: 1;
   stroke-dashoffset: 0;
 }
 
-.splash-landing > section#splash-projector .projector-top, .splash-landing > section #splash-one-page-pulldown .projector-top {
+.splash-landing > section#splash-projector .projector-top {
   position: absolute;
   top: .2%;
   left: .8%;
@@ -4315,7 +4562,7 @@
   background: rgba(64, 72, 75, 0.95);
 }
 
-.splash-landing > section#splash-projector .projector-top:before, .splash-landing > section#splash-projector .projector-top:after, .splash-landing > section #splash-one-page-pulldown .projector-top:before, .splash-landing > section #splash-one-page-pulldown .projector-top:after {
+.splash-landing > section#splash-projector .projector-top:before, .splash-landing > section#splash-projector .projector-top:after {
   content: "";
   display: block;
   position: absolute;
@@ -4328,15 +4575,15 @@
   background: #40484B;
 }
 
-.splash-landing > section#splash-projector .projector-top:before, .splash-landing > section #splash-one-page-pulldown .projector-top:before {
+.splash-landing > section#splash-projector .projector-top:before {
   left: -1%;
 }
 
-.splash-landing > section#splash-projector .projector-top:after, .splash-landing > section #splash-one-page-pulldown .projector-top:after {
+.splash-landing > section#splash-projector .projector-top:after {
   right: -1%;
 }
 
-.splash-landing > section#splash-projector .projector-content, .splash-landing > section #splash-one-page-pulldown .projector-content {
+.splash-landing > section#splash-projector .projector-content {
   position: absolute;
   top: 3.2%;
   left: 2%;
@@ -4352,13 +4599,13 @@
   line-height: 1.2;
 }
 
-.splash-landing > section#splash-projector .projector-content .btn-ghost-white, .splash-landing > section #splash-one-page-pulldown .projector-content .btn-ghost-white {
+.splash-landing > section#splash-projector .projector-content .btn-ghost-white {
   padding-top: 0;
   padding-bottom: 0;
   height: 54px;
 }
 
-.splash-landing > section#splash-projector .projector-content .splash-projector-guru, .splash-landing > section #splash-one-page-pulldown .projector-content .splash-projector-guru {
+.splash-landing > section#splash-projector .projector-content .splash-projector-guru {
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -4369,7 +4616,7 @@
   top: 0;
 }
 
-.splash-landing > section#splash-projector .projector-content .splash-projector-guru .splash-logo-guru, .splash-landing > section #splash-one-page-pulldown .projector-content .splash-projector-guru .splash-logo-guru {
+.splash-landing > section#splash-projector .projector-content .splash-projector-guru .splash-logo-guru {
   -webkit-transform: rotate(-7deg);
   -moz-transform: rotate(-7deg);
   -ms-transform: rotate(-7deg);
@@ -4382,7 +4629,7 @@
   trasnform-origin: center;
 }
 
-.splash-landing > section#splash-projector .projector-content .splash-projector-guru .coach, .splash-landing > section #splash-one-page-pulldown .projector-content .splash-projector-guru .coach {
+.splash-landing > section#splash-projector .projector-content .splash-projector-guru .coach {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -4393,12 +4640,12 @@
   right: -95px;
 }
 
-.splash-landing > section#splash-projector .projector-content .splash-projector-guru .coach:not(.active), .splash-landing > section #splash-one-page-pulldown .projector-content .splash-projector-guru .coach:not(.active) {
+.splash-landing > section#splash-projector .projector-content .splash-projector-guru .coach:not(.active) {
   filter: alpha(opacity=0);
   opacity: 0;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-selected, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-school .splash-university-selected {
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-selected {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -4412,17 +4659,17 @@
   background: rgba(64, 72, 75, 0.95);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-selected.active, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-school .splash-university-selected.active {
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-selected.active {
   z-index: 10;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-selected:not(.active), .splash-landing > section #splash-one-page-pulldown .projector-content#splash-school .splash-university-selected:not(.active) {
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-selected:not(.active) {
   filter: alpha(opacity=0);
   opacity: 0;
   z-index: -10;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-school .splash-university-content {
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -4442,18 +4689,18 @@
   padding: 70px 15px 15px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .coach-edit-school, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-school .splash-university-content .coach-edit-school {
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .coach-edit-school {
   position: absolute;
   bottom: 15px;
   left: 50%;
   margin-left: -82px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-school .splash-university-content .school-id-card {
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card {
   position: relative;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card .school-id-link, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-school .splash-university-content .school-id-card .school-id-link {
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card .school-id-link {
   filter: alpha(opacity=0);
   opacity: 0;
   -ms-box-orient: horizontal;
@@ -4483,13 +4730,13 @@
   font-weight: 600;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card .school-id-link:hover, .splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card .school-id-link:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-school .splash-university-content .school-id-card .school-id-link:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-school .splash-university-content .school-id-card .school-id-link:focus {
+.splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card .school-id-link:hover, .splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card .school-id-link:focus {
   filter: alpha(opacity=100);
   opacity: 1;
 }
 
 @media screen and (min-width: 414px) {
-  .splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-school .splash-university-content .school-id-card {
+  .splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card {
     -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);
     -ms-transform: scale(1.2);
@@ -4499,7 +4746,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-school .splash-university-content .school-id-card {
+  .splash-landing > section#splash-projector .projector-content#splash-school .splash-university-content .school-id-card {
     -webkit-transform: scale(1.5);
     -moz-transform: scale(1.5);
     -ms-transform: scale(1.5);
@@ -4508,37 +4755,37 @@
   }
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup {
+.splash-landing > section#splash-projector .projector-content#splash-signup {
   padding: 0 !important;
   overflow: visible !important;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .btn-login-fb {
+.splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb {
   background: #3b5998;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .btn-login-fb:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .btn-login-fb:focus {
+.splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb:focus {
   background: white;
   color: #3b5998;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-login, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .btn-login-login {
+.splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-login {
   background: #69B3A5;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-login:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-login:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .btn-login-login:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .btn-login-login:focus {
+.splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-login:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-login:focus {
   background: white;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .btn-forgot-pw, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .btn-forgot-pw {
+.splash-landing > section#splash-projector .projector-content#splash-signup .btn-forgot-pw {
   background: #637074;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .btn-forgot-pw:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .btn-forgot-pw:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .btn-forgot-pw:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .btn-forgot-pw:focus {
+.splash-landing > section#splash-projector .projector-content#splash-signup .btn-forgot-pw:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .btn-forgot-pw:focus {
   background: white;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-content {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -4551,13 +4798,13 @@
   padding: 0;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content:not(.active), .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-content:not(.active) {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content:not(.active) {
   filter: alpha(opacity=0);
   opacity: 0;
   z-index: -10;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .btn-splash-login, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-content .btn-splash-login {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .btn-splash-login {
   filter: alpha(opacity=50);
   opacity: 0.5;
   position: absolute;
@@ -4565,26 +4812,26 @@
   right: 15px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .btn-splash-login:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .btn-splash-login:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-content .btn-splash-login:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-content .btn-splash-login:focus {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .btn-splash-login:hover, .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .btn-splash-login:focus {
   filter: alpha(opacity=100);
   opacity: 1;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-content .input-field {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field {
   width: 100%;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field input, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-content .input-field input {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field input {
   color: white;
   height: 36px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field a:not(.active) svg, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-content .input-field a:not(.active) svg {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field a:not(.active) svg {
   filter: alpha(opacity=0);
   opacity: 0;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-content .input-field svg {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg {
   fill: none;
   stroke: white;
   stroke-width: 5px;
@@ -4598,7 +4845,7 @@
   height: 30px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.clear, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-content .input-field svg.clear {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.clear {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -4606,11 +4853,11 @@
   transform: rotate(45deg);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.verified circle, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-content .input-field svg.verified circle {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.verified circle {
   fill: #43cb9d;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.error, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-content .input-field svg.error {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.error {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -4618,11 +4865,11 @@
   transform: rotate(45deg);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.error circle, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-content .input-field svg.error circle {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-content .input-field svg.error circle {
   fill: #d3242c;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-login-content .login-buttons, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-login-content .login-buttons {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-login-content .login-buttons {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -4645,11 +4892,11 @@
   max-width: 500px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-login-content .login-buttons button, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-login-content .login-buttons button {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-login-content .login-buttons button {
   margin: 7.5px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-content .splash-signup-inside {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -4659,7 +4906,7 @@
   display: flex;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
   position: relative;
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -4676,7 +4923,7 @@
   height: 51px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -4688,44 +4935,44 @@
   width: calc(100% - 30px);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field:not(.active), .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field:not(.active) {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field:not(.active) {
   filter: alpha(opacity=0);
   opacity: 0;
   z-index: -10;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field small.form-error, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field small.form-error {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field small.form-error {
   margin-top: -10px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside button, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-content .splash-signup-inside button {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside button {
   bottom: 15px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside button.btn-login-login, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-content .splash-signup-inside button.btn-login-login {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside button.btn-login-login {
   margin-right: 10px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside button.btn-login-fb, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-content .splash-signup-inside button.btn-login-fb {
+.splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside button.btn-login-fb {
   margin-left: 10px;
 }
 
 @media screen and (max-width: 768px) {
-  .splash-landing > section#splash-projector .projector-content#splash-signup .btn-ghost-white, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .btn-ghost-white {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .btn-ghost-white {
     padding-left: 20px;
     padding-right: 20px;
     white-space: nowrap;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .btn-splash-login, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .btn-splash-login {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .btn-splash-login {
     display: none;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .btn-login-fb {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .btn-login-fb {
     display: none;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-projector-guru, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-projector-guru {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-projector-guru {
     display: none;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-buttons {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -4741,37 +4988,37 @@
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-buttons li {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li {
     width: 50%;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li button, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-buttons li button {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li button {
     font-size: 16px !important;
     font-weight: 600;
     line-height: 1.2;
     height: 50px;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li:nth-child(1) button, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-buttons li:nth-child(1) button {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li:nth-child(1) button {
     background: #7aa59f;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li.login:nth-child(1) button, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-buttons li.login:nth-child(1) button {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li.login:nth-child(1) button {
     background: #43cb9d;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li:nth-child(2) button, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-buttons li:nth-child(2) button {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li:nth-child(2) button {
     background: #3b5998;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li:nth-child(3) button, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-buttons li:nth-child(3) button {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li:nth-child(3) button {
     background: #7aa59f;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li:nth-child(4) button, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-buttons li:nth-child(4) button {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons li:nth-child(4) button {
     background: #637074;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-login-content .input-field, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-login-content .input-field {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-login-content .input-field {
     padding: 0 15px;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-login-content .login-buttons, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-login-content .login-buttons {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-login-content .login-buttons {
     display: none;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-content .splash-signup-inside {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside {
     -webkit-flex-direction: row;
     flex-direction: row;
     -webkit-align-items: center;
@@ -4785,24 +5032,24 @@
     flex-flow: row wrap;
     padding-top: 15px;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
     width: 100%;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-content {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-content {
     padding: 150px 30px 15px;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-buttons {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-buttons {
     display: none;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .input-field input, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .input-field input {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .input-field input {
     height: 64px !important;
     font-size: 48px;
     font-weight: 300;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .input-field svg, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .input-field svg {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .input-field svg {
     fill: none;
     stroke: white;
     stroke-width: 4px;
@@ -4812,27 +5059,27 @@
     width: 50px;
     height: 50px;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .input-field small.form-error, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .input-field small.form-error {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .input-field small.form-error {
     margin-top: -10px;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
     width: calc(100% - 240px);
     height: 160px;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field {
     left: 30px;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field small.form-error, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field small.form-error {
+  .splash-landing > section#splash-projector .projector-content#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field small.form-error {
     margin-top: -10px;
   }
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access {
+.splash-landing > section#splash-projector .projector-content#splash-access {
   overflow: visible !important;
   padding: 0 !important;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .guru, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .guru {
+.splash-landing > section#splash-projector .projector-content#splash-access .guru {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -4840,12 +5087,12 @@
   transition: all 150ms ease-in-out;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .guru:not(.active), .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .guru:not(.active) {
+.splash-landing > section#splash-projector .projector-content#splash-access .guru:not(.active) {
   filter: alpha(opacity=0);
   opacity: 0;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .user-icon, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .user-icon {
+.splash-landing > section#splash-projector .projector-content#splash-access .user-icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -4859,7 +5106,7 @@
   height: 110px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -4881,19 +5128,19 @@
   padding: 200px 15px 15px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-inside, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-inside {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-inside {
   position: relative;
   width: 100%;
   max-width: 652px;
 }
 
 @media screen and (min-width: 768px) {
-  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-inside, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-inside {
+  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-inside {
     height: 119px;
   }
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -4926,7 +5173,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code {
+  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code {
     max-width: 652px;
     height: 119px;
     font-size: 48px;
@@ -4935,7 +5182,7 @@
   }
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code::-webkit-input-placeholder, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code::-webkit-input-placeholder {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code::-webkit-input-placeholder {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -4943,7 +5190,7 @@
   transition: all 150ms ease-in-out;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:-moz-placeholder, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code:-moz-placeholder {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:-moz-placeholder {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -4951,7 +5198,7 @@
   transition: all 150ms ease-in-out;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code::-moz-placeholder, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code::-moz-placeholder {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code::-moz-placeholder {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -4959,7 +5206,7 @@
   transition: all 150ms ease-in-out;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:-ms-input-placeholder, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code:-ms-input-placeholder {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:-ms-input-placeholder {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -4967,25 +5214,25 @@
   transition: all 150ms ease-in-out;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code + div {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.mobile, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.mobile {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.mobile {
   display: block;
   max-width: 347px;
   margin: 0 auto;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.desktop, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.desktop {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.desktop {
   display: none;
   max-width: 100%;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble path, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble path {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble path {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -4994,58 +5241,58 @@
 }
 
 @media screen and (min-width: 768px) {
-  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.mobile, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.mobile {
+  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.mobile {
     display: none;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.desktop, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.desktop {
+  .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .splash-access-bubble.desktop {
     display: block;
   }
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div button, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code + div button {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div button {
   display: block;
   margin: 15px auto;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate {
   background: #69B3A5;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate:hover, .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate:focus {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate:hover, .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-activate:focus {
   background: white;
   color: #69B3A5;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip {
   background: #637074;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip:hover, .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip:focus {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip:hover, .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code + div .btn-access-skip:focus {
   background: white;
   color: #69B3A5;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus::-webkit-input-placeholder, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code:focus::-webkit-input-placeholder {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus::-webkit-input-placeholder {
   color: white;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus:-moz-placeholder, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code:focus:-moz-placeholder {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus:-moz-placeholder {
   color: white;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus::-moz-placeholder, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code:focus::-moz-placeholder {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus::-moz-placeholder {
   color: white;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus:-ms-input-placeholder, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code:focus:-ms-input-placeholder {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus:-ms-input-placeholder {
   color: white;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus + div .splash-access-bubble path, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-access .splash-access-content .splash-access-code:focus + div .splash-access-bubble path {
+.splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus + div .splash-access-bubble path {
   fill: #637074;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -5066,7 +5313,7 @@
   height: 100%;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -5101,17 +5348,17 @@
   width: 100%;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul:not(.active), .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul:not(.active) {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul:not(.active) {
   filter: alpha(opacity=0);
   opacity: 0;
   z-index: -10;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li {
   padding: 7.5px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a {
   border-radius: 1000px;
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -5135,141 +5382,141 @@
   font-size: 18px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman {
   background: rgba(80, 165, 221, 0.5);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:focus {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:focus {
   background: #50A5DD;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:active, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:active {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:active {
   background: #6f7d82;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore {
   background: rgba(86, 169, 207, 0.5);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:focus {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:focus {
   background: #56a9cf;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:active, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:active {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:active {
   background: #6f7d82;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr {
   background: rgba(93, 172, 193, 0.5);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:focus {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:focus {
   background: #5dacc1;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:active, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:active {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:active {
   background: #6f7d82;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr {
   background: rgba(99, 176, 179, 0.5);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:focus {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:focus {
   background: #63b0b3;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:active, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:active {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:active {
   background: #6f7d82;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad {
   background: rgba(105, 179, 165, 0.5);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:focus {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:focus {
   background: #69B3A5;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:active, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:active {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:active {
   background: #6f7d82;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college {
   background: rgba(231, 75, 164, 0.5);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:focus {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:focus {
   background: #e74ba4;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:active, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:active {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:active {
   background: #6f7d82;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum {
   background: rgba(132, 127, 228, 0.5);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:focus {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:focus {
   background: #847fe4;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:active, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:active {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:active {
   background: #6f7d82;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs {
   background: rgba(230, 129, 78, 0.5);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:focus {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:focus {
   background: #e6814e;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:active, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:active {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:active {
   background: #6f7d82;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent {
   background: rgba(43, 179, 184, 0.5);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:focus {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:focus {
   background: #2bb3b8;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:active, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:active {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:active {
   background: #6f7d82;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other {
   background: rgba(99, 112, 116, 0.5);
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:focus {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:focus {
   background: #637074;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:active, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:active {
+.splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:active {
   background: #6f7d82;
 }
 
 @media screen and (min-width: 768px) {
-  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul {
+  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul {
     max-width: 80%;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li {
+  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li {
     padding: 15px;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-demographic .splash-demographic-content ul li a {
+  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a {
     width: 150px;
     height: 150px;
     font-size: 24px;
   }
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses {
+.splash-landing > section#splash-projector .projector-content#splash-courses {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -5288,14 +5535,14 @@
   padding: 0 !important;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .splash-logo-guru, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .splash-logo-guru {
+.splash-landing > section#splash-projector .projector-content#splash-courses .splash-logo-guru {
   position: absolute;
   bottom: -30px;
   left: -30px;
   display: block;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .backpack, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .backpack {
+.splash-landing > section#splash-projector .projector-content#splash-courses .backpack {
   position: absolute;
   bottom: -15px;
   right: -15px;
@@ -5304,35 +5551,35 @@
   height: 100px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses form, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses form {
+.splash-landing > section#splash-projector .projector-content#splash-courses form {
   -webkit-align-self: flex-start;
   align-self: flex-start;
   width: 100%;
   padding: 0 15px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .input-field, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .input-field {
+.splash-landing > section#splash-projector .projector-content#splash-courses .input-field {
   width: 100%;
   margin: 0 auto;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .input-field input, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .input-field input {
+.splash-landing > section#splash-projector .projector-content#splash-courses .input-field input {
   margin-bottom: 0;
 }
 
 @media screen and (min-width: 768px) {
-  .splash-landing > section#splash-projector .projector-content#splash-courses .input-field, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .input-field {
+  .splash-landing > section#splash-projector .projector-content#splash-courses .input-field {
     margin: 15px auto 0;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-courses .input-field label:not(.active), .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .input-field label:not(.active) {
+  .splash-landing > section#splash-projector .projector-content#splash-courses .input-field label:not(.active) {
     top: 0;
   }
-  .splash-landing > section#splash-projector .projector-content#splash-courses .input-field .prefix, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .input-field .prefix {
+  .splash-landing > section#splash-projector .projector-content#splash-courses .input-field .prefix {
     top: 9px;
   }
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses ul, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses ul {
+.splash-landing > section#splash-projector .projector-content#splash-courses ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -5351,11 +5598,11 @@
   max-width: 750px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses ul li, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses ul li {
+.splash-landing > section#splash-projector .projector-content#splash-courses ul li {
   padding: 7.5px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-search, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-search {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search {
   -webkit-align-self: flex-start;
   align-self: flex-start;
   -webkit-flex-direction: row;
@@ -5368,12 +5615,12 @@
   justify-content: center;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-search li {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li {
   width: calc(100% / 3);
   max-width: 250px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-search li a {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -5391,17 +5638,17 @@
 }
 
 @media screen and (min-width: 768px) {
-  .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-search li a {
+  .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a {
     height: 100px;
   }
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-search li a div {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div {
   width: 100%;
   height: 100%;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-name, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-search li a div .course-name {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-name {
   display: block;
   margin: 15px auto 5px;
   font-size: 14px;
@@ -5409,7 +5656,7 @@
   text-transform: uppercase;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-name:only-child, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-search li a div .course-name:only-child {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-name:only-child {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -5432,7 +5679,7 @@
   border-bottom-style: solid;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-search li a div .course-title {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title {
   display: block;
   margin: 0 auto;
   padding: 0 15px 15px;
@@ -5443,7 +5690,7 @@
   font-size: 18px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title:only-child, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-search li a div .course-title:only-child {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title:only-child {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -5464,32 +5711,32 @@
 }
 
 @media screen and (min-width: 768px) {
-  .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title:only-child, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-search li a div .course-title:only-child {
+  .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title:only-child {
     font-size: 24px;
   }
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title:only-child span, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-search li a div .course-title:only-child span {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title:only-child span {
   height: auto !important;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title span, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-search li a div .course-title span {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a div .course-title span {
   display: block;
   height: 44px;
   overflow: hidden;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a:hover, .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a:focus, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-search li a:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-search li a:focus {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a:hover, .splash-landing > section#splash-projector .projector-content#splash-courses .course-search li a:focus {
   background: white;
   color: #40484B;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-selected {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected {
   -webkit-align-self: flex-end;
   align-self: flex-end;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-selected li a {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -5501,7 +5748,7 @@
   border-radius: 2px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a > span, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-selected li a > span {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a > span {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -5528,7 +5775,7 @@
   font-size: 18px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a > span svg, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-selected li a > span svg {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a > span svg {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -5550,51 +5797,51 @@
   margin-left: 5px;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:hover, .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:active, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-selected li a:hover, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-selected li a:active {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:hover, .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:active {
   background: white;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:hover > span, .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:active > span, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-selected li a:hover > span, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-selected li a:active > span {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:hover > span, .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:active > span {
   color: #40484B;
 }
 
-.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:hover > span svg, .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:active > span svg, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-selected li a:hover > span svg, .splash-landing > section #splash-one-page-pulldown .projector-content#splash-courses .course-selected li a:active > span svg {
+.splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:hover > span svg, .splash-landing > section#splash-projector .projector-content#splash-courses .course-selected li a:active > span svg {
   stroke: #40484B;
 }
 
 @media screen and (max-width: 320px) {
-  .splash-landing > section#splash-projector .splash-projector-message, .splash-landing > section #splash-one-page-pulldown .splash-projector-message {
+  .splash-landing > section#splash-projector .splash-projector-message {
     padding-top: 45px;
   }
 }
 
 @media screen and (max-width: 414px) and (max-height: 736px) {
-  .splash-landing > section#splash-projector .header-swiper-front, .splash-landing > section #splash-one-page-pulldown .header-swiper-front {
+  .splash-landing > section#splash-projector .header-swiper-front {
     padding: 20% 0 30%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .splash-landing > section#splash-projector .swiper-button-next, .splash-landing > section#splash-projector .swiper-button-prev, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-nav, .splash-landing > section #splash-one-page-pulldown .swiper-button-next, .splash-landing > section #splash-one-page-pulldown .swiper-button-prev, .splash-landing > section #splash-one-page-pulldown .swiper-front-gallery-thumbs#swiper-gallery-nav {
+  .splash-landing > section#splash-projector .swiper-button-next, .splash-landing > section#splash-projector .swiper-button-prev, .splash-landing > section#splash-projector .swiper-front-gallery-thumbs#swiper-gallery-nav {
     filter: alpha(opacity=0);
     opacity: 0;
     z-index: -9;
     visibility: hidden;
   }
-  .splash-landing > section#splash-projector .projector-content, .splash-landing > section #splash-one-page-pulldown .projector-content {
+  .splash-landing > section#splash-projector .projector-content {
     left: 5%;
     width: 90%;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .splash-landing > section#splash-projector .splash-projector-message.desktop, .splash-landing > section #splash-one-page-pulldown .splash-projector-message.desktop {
+  .splash-landing > section#splash-projector .splash-projector-message.desktop {
     display: block;
   }
-  .splash-landing > section#splash-projector .splash-projector-message.mobile, .splash-landing > section #splash-one-page-pulldown .splash-projector-message.mobile {
+  .splash-landing > section#splash-projector .splash-projector-message.mobile {
     display: none;
   }
-  .splash-landing > section#splash-projector .projector-content, .splash-landing > section #splash-one-page-pulldown .projector-content {
+  .splash-landing > section#splash-projector .projector-content {
     padding: 15px;
   }
 }
@@ -5624,14 +5871,6 @@
   left: 0;
   z-index: 2;
   width: 100%;
-}
-
-.splash-landing > section .splash-school-search .splash-school-search-form .input-field {
-  margin: 15px auto;
-}
-
-.splash-landing > section .splash-school-search .splash-school-search-form .input-field input, .splash-landing > section .splash-school-search .splash-school-search-form .input-field label {
-  font-weight: 600;
 }
 
 .splash-landing > section .splash-school-search .splash-school-search-form .splash-school-desktop {
