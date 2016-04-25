@@ -639,7 +639,7 @@ directive("classOnLoad", ["$timeout", 'AnimationService', function ($timeout, An
                           }
                           AnimationService.animateIn(element[0], indexClass);
                         } else {
-                          element[0].classList.add(indexClass);
+                          indexClass && element[0].classList.add(indexClass);
                         }
                       }
                       scope.$apply();

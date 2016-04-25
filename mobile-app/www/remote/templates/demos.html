@@ -3,7 +3,9 @@
 reference to docs
 Parallax: https://github.com/wagerfield/parallax
 -->
-<ion-view>
+
+
+<ion-view ng-controller='DemosController'>
     <style>
         #body-loading-div {
             display: none!important;
@@ -15,11 +17,14 @@ Parallax: https://github.com/wagerfield/parallax
         on-refresh="doRefresh()">
     </ion-refresher> -->
     <!-- <album-tile></album-tile> -->
-    <ion-content class='bg-slate-50p full-xy absolute flex-center'>
-        <div class="full-xy">
+    <ion-content class='bg-slate-50p full-xy flex-center relative' >
+        <div class='flex-wrap-center absolute full-xy top-0 left-0'>
+            <h1 class='text-36 txt-white'> {{status}}</h1>
+        </div>
+        <div class="full-xy" ng-if='renderContent'>
             <div class="bg-charcoal" style="height: 69px"></div>
-            <div class="full-x flex-center bg-slate" style="height: calc(100% - 74px)">
-                <a class="block loader-powerup-gpa activate matrix-0" class-on-activate="u-bounceInUp" style="width: 400px; height: 400px" ng-include="img_base + 'templates/elements/assets/powerups/gpa-card.tpl'"></a>
+            <div class="full-x flex-center bg-slate" style="height: calc(100% - 74px)" ng-show='show'>
+                <a class="block loader-powerup-gpa" ng-class="{'matrix-0': _class}" id='animate-class'  class-on-activate="u-bounceInUp" style="width: 400px; height: 400px" ng-include="img_base + 'templates/elements/assets/powerups/gpa-card.tpl'"></a>
             </div>
         </div>
         <!-- <button class='bottom-0 absolute left-0 full-x' onclick="rerun();">Again!</button>
