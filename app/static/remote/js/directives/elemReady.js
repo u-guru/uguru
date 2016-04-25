@@ -102,11 +102,10 @@ angular.module('uguru.directives')
       if (SVGService.supportedShapes.indexOf(nodeName) > -1) {
         var drawElement = element[0]
         var drawDelay = attr.drawDelay || 0;
-        var drawStartFrame = attr.drawStartFrame || 0;
+        var drawStartFrame = parseInt(attr.drawStartFrame) || 0;
         var drawDuration = SVGService.computeDrawDuration(attr.drawDuration);
 
         var drawPathLength = SVGService.getTotalPathLength(drawElement);
-
         drawElement.style.strokeDasharray = drawPathLength + ' ' + drawPathLength;
         drawElement.style.strokeDashoffset = drawPathLength;
         scope.$watch(function() {

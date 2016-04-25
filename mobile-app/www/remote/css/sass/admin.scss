@@ -1,6 +1,11 @@
 @import 'mixin';
 
 /* ---------- KEYFRAMES */
+#stage-container {
+	.fixed {
+		position: absolute!important;
+	}
+}
 #keys {
 	.dropdown-container {
 		h2 {

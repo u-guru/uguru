@@ -45,43 +45,43 @@
                     </li> -->
                 </ul>
             </div>
-            <ul style='top: 78px;' class='high-z-index absolute left-0 full-x p15-grid flex-center-vertical txt-center bg-charcoal-90p' ng-if='player.settings'>
+            <ul style='top: 78px;' class='high-z-index absolute left-0 full-x p15-grid flex-center txt-center bg-charcoal-90p' ng-if='player.settings'>
                 <li>
                     <div class='txt-1 txt-center full-x semibold'>Name</div>
                     <input class="radius-2 flex-center p05xy txt-center" size="15" style="height: 32px;" ng-model='animation.attr.name' ng-blur="updateAnimationName(animation)" placeholder="animation name" type='text' />
                 </li>
-                <li class="flex-wrap-center">
+                <li>
                     <div class='txt-1 txt-center full-x semibold'>Duration</div>
                     <div class="flex-center-vertical">
                         <input class="radius-2-left txt-center p05xy" size="4" style="height: 32px;" ng-model="animation.attr.durationVal" ng-change="animDurationChange(animation.attr.durationVal)" placeholder="0"/>
                         <span class="bg-campus flex-center txt-16 p05xy radius-2-right" style="height: 32px">ms</span>
                     </div>
                 </li>
-                <li class="flex-wrap-center">
+                <li>
                     <div class='txt-1 txt-center full-x semibold'>Timing Function</div>
                     <dropdown class="height-32" ng-model="animationTimingFunc" selected-index="0"> </dropdown>
                 </li>
-                <li class="flex-wrap-center">
+                <li>
                     <div class='txt-1 txt-center full-x semibold'>Delay</div>
                     <div class="flex-center-vertical">
                         <input ng-change="animation.attr.delay = animation.attr.delayVal + 's'" class="radius-2-left flex-center p05xy txt-center" size="4" style="height: 32px;" ng-model='animation.attr.delayVal' type='' placeholder=""/>
                         <span class="bg-campus flex-center txt-16 p05xy radius-2-right" style="height: 32px">ms</span>
                     </div>
                 </li>
-                <li class="flex-wrap-center">
+                <li>
                     <div class='txt-1 txt-center full-x semibold'>Count</div>
                     <input class="radius-2 flex-center p05xy txt-center" size="4" style="height: 32px;" ng-model='animation.attr.iteration_count' type='' placeholder=""/>
                 </li>
-                <li class="flex-wrap-center">
+                <li>
                     <div class='txt-1 txt-center full-x semibold'>Direction</div>
                     <dropdown class="height-32" ng-model="animationDirectionOptions" selected-index="0"> </dropdown>
                 </li>
-                <li class="flex-wrap-center">
+                <li>
                     <div class='txt-1 txt-center full-x semibold'>Fill Mode</div>
                     <dropdown class="height-32" ng-model="animationFillMode" selected-index="0"> </dropdown>
                 </li>
             </ul>
-            <div class='bg-slate flex-wrap-center p10x' style="height: calc(100% - 82px - 136px)" ng-show='layout.index == 3'>
+            <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 136px)" ng-show='layout.index == 3'>
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                 <div class="full-xy ugrid-2 p15-grid" style='height:90% !important; '>
                     <div class="full-y flex-wrap-center full-x flex-stretch" style='width:50% !important;'>
@@ -347,13 +347,13 @@
                             <li class="flex-center-vertical-wrap-space-between">
                                 <h2 class="txt-18 semibold m15right">stroke-width</h2>
                                 <div class="flex-center-vertical">
-                                    <input ng-model="animation.selected_keyframe.strokeWidth" ng-change="applyPropertyChange(animation.selected_keyframe.strokeWidth, 'strokeWidth')" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="0.01" placeholder="0"/><span class="bg-campus block txt-16 p05xy radius-2-right">px</span>
+                                    <input ng-model="animation.selected_keyframe.strokeWidth" ng-change="applyPropertyChange(animation.selected_keyframe.strokeWidth, 'strokeWidth')" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="0.5" placeholder="0"/><span class="bg-campus block txt-16 p05xy radius-2-right">px</span>
                                 </div>
                                 <div class="range-container small full-x m10top">
                                     <div>
                                         <span>0</span>
-                                        <input ng-model="animation.selected_keyframe.strokeWidth" ng-change="applyPropertyChange(animation.selected_keyframe.strokeWidth, 'strokeWidth')" class="range-slider" type="range" size="2" min="0" max="1" step="0.01" list="numbers"/>
-                                        <span>100</span>
+                                        <input ng-model="animation.selected_keyframe.strokeWidth" ng-change="applyPropertyChange(animation.selected_keyframe.strokeWidth, 'strokeWidth')" class="range-slider" type="range" size="2" min="0" max="10" step="0.5" list="numbers"/>
+                                        <span>10</span>
                                     </div>
                                 </div>
                             </li>
@@ -387,7 +387,7 @@
                     </div>
                 </div>
             </div>
-            <div id='stage-container' class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 136px); overflow: hidden;" ng-show='!layout.index'>
+            <div id='stage-container' class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 136px); width: 100%; overflow: hidden;" ng-show='!layout.index'>
                 <div class='flex-wrap-center' style="perspective: 1000;">
                     <!-- <svg width="180px" height="180px" fill="#FFFFFF" viewBox="0 0 100 100" id='rect-svg' class='radius-4'>
                         <tspan> yo </tspan>
@@ -739,13 +739,13 @@
                     <li class="flex-center-vertical-wrap-space-between">
                         <h2 class="txt-18 semibold m15right">stroke-width</h2>
                         <div class="flex-center-vertical">
-                            <input ng-model="animation.selected_keyframe.strokeWidth" ng-change="applyPropertyChange(animation.selected_keyframe.strokeWidth, 'strokeWidth')" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="0.01" placeholder="0"/><span class="bg-campus block txt-16 p05xy radius-2-right">px</span>
+                            <input ng-model="animation.selected_keyframe.strokeWidth" ng-change="applyPropertyChange(animation.selected_keyframe.strokeWidth, 'strokeWidth')" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="0.5" placeholder="0"/><span class="bg-campus block txt-16 p05xy radius-2-right">px</span>
                         </div>
                         <div class="range-container small full-x m10top">
                             <div>
                                 <span>0</span>
-                                <input ng-model="animation.selected_keyframe.strokeWidth" ng-change="applyPropertyChange(animation.selected_keyframe.strokeWidth, 'strokeWidth')" class="range-slider" type="range" size="2" min="0" max="1" step="0.01" list="numbers"/>
-                                <span>100</span>
+                                <input ng-model="animation.selected_keyframe.strokeWidth" ng-change="applyPropertyChange(animation.selected_keyframe.strokeWidth, 'strokeWidth')" class="range-slider" type="range" size="2" min="0" max="10" step="0.5" list="numbers"/>
+                                <span>10</span>
                             </div>
                         </div>
                     </li>

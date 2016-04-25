@@ -24,8 +24,8 @@ angular.module('uguru.util.controllers')
 				user_stories: AdminContent.getUserStories(),
 				createObjects: AdminContent.getBaseObjects($scope),
 				defaults: {
-					tabsIndex: 0,
-					sidebarIndex: 1
+					tabsIndex: 4,
+					sidebarIndex: 2
 				},
 				toggles: {
 					showAddState: false,
@@ -196,38 +196,42 @@ angular.module('uguru.util.controllers')
 			});
 		}
 
-		$scope.updateSubStateElement = function(substate, state, scene, scene_type, is_remove, platform) {
-			if (platform && scene_type === 'testing') {
-				if (platform.test_status === 'fail' || platform.test_status === 'unsure') {
-					platform.test_status = 'pass';
-					platform.test_client = 'manual';
-				} else {
-					platform.test_status = 'fail';
-					platform.test_client = 'manual';
-				}
-			}
+		$scope.filename = 'layouts/splash.json'
 
-			var action = 'update';
-			if (is_remove && !confirm('Are you sure you want to delete substate ' + substate.name + '?')) {
-				return;
-			}  else if (is_remove) {
-				action = 'remove';
-			}
-			LoadingService.showAmbig(null, 10000);
-			Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPUT(JSON.stringify({action:action, substate: substate, state: state, scene: scene, type: scene_type}))
-			.then(function(response) {
-				$timeout(function() {
-					if (is_remove) {
-						LoadingService.showSuccess('Substate ' + substate.name + ' successfully removed', 2500);
-					} else {
-						LoadingService.showSuccess('Substate ' + substate.name + ' successfully updated', 2500);
-					}
-				}, 2500)
-				resetInitStateObjects();
-				getAdminElements();
-			},  function(err) {
-				LoadingService.showMsg("Something went wrong tell Samir", 2500);
-			});
+		$scope.updateSubStateElement = function(index, test_state, platform_json, value, filename) {
+			// if (platform && scene_type === 'testing') {
+			// 	if (platform.test_status === 'fail' || platform.test_status === 'unsure') {
+			// 		platform.test_status = 'pass';
+			// 		platform.test_client = 'manual';
+			// 	} else {
+			// 		platform.test_status = 'fail';
+			// 		platform.test_client = 'manual';
+			// 	}
+			// }
+
+			// var action = 'update';
+			// if (is_remove && !confirm('Are you sure you want to delete substate ' + substate.name + '?')) {
+			// 	return;
+			// }  else if (is_remove) {
+			// 	action = 'remove';
+			// }
+			console.log("filename",filename)
+			$timeout(function() {
+				platform_json.passed = value;
+				LoadingService.showAmbig(null, 10000);
+				Restangular.one('admin', '9c1185a5c5e9fc54612808977ee8f548b2258d34').one('dashboard').customPUT(JSON.stringify({filename: filename, test_index: index, test_update:platform_json, scene:test_state}))
+				.then(function(response) {
+					$timeout(function() {
+						console.log('response', response)
+						LoadingService.hide();
+					}, 2500)
+					resetInitStateObjects();
+					getAdminElements();
+				},  function(err) {
+					console.log('error', err);
+					LoadingService.showMsg("Something went wrong tell Samir", 2500);
+				});
+			}, 100)
 		}
 
 		$scope.initAllPlatformDict = function() {
