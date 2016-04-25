@@ -1,4 +1,4 @@
-<div id="powerups-container" class="full-xy bg-slate opacity-0" class-on-activate="fadeIn:anim, null:inject#powerup-icons li|activate"  class-on-activate-delay="2000">
+<div id="powerups-container" class="full-xy bg-slate opacity-0" class-on-activate="fadeIn:anim, null:inject#powerup-icons li|activate"  class-on-activate-delay="300">
     <header class="flex-center-wrap p15xy">
         <span class="svg-128" ng-include="img_base + 'templates/svg/main/lightning-circle.html'"></span>
         <h1 class="txt-48 semibold full-x txt-center">Powerups</h1>
@@ -6,20 +6,28 @@
     <div class="flex-center-wrap">
         <ul id="powerup-icons" class="flex-center">
             <li class="matrix-0 opacity-0" class-on-activate="u-bounceIn-subtle, null:inject.powerup-icon-tag-1|activate" class-on-activate-delay="500">
-                <a class="block loader-powerup-gpa" ng-include="img_base + 'templates/elements/assets/powerups/gpa-card.tpl'"></a>
-                <a class="powerup-icon-tag-1 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</a>
+                <div id="powerup-gpa-container">
+                    <a id="powerup-gpa-icon" class="block loader-powerup-gpa" ng-include="img_base + 'templates/elements/assets/powerups/gpa-card.tpl'"></a>
+                    <a id="powerup-gpa-label" class="powerup-icon-tag-1 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</a>
+                </div>
             </li>
             <li class="matrix-0 opacity-0" class-on-activate="u-bounceIn-subtle, null:inject.powerup-icon-tag-2|activate" class-on-activate-delay="1500">
-                <a class="block loader-powerup-munchies" ng-include="img_base + 'templates/elements/assets/powerups/munchies-card.tpl'"></a>
-                <a class="powerup-icon-tag-2 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</a>
+                <div>
+                    <a id="powerup-munchies-icon" class="block loader-powerup-munchies" ng-include="img_base + 'templates/elements/assets/powerups/munchies-card.tpl'"></a>
+                    <a id="powerup-munchies-label" class="powerup-icon-tag-2 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</a>
+                </div>
             </li>
             <li class="matrix-0 opacity-0" class-on-activate="u-bounceIn-subtle, null:inject.powerup-icon-tag-3|activate" class-on-activate-delay="2500">
-                <a class="block loader-powerup-sound" ng-include="img_base + 'templates/elements/assets/powerups/sound-card.tpl'"></a>
-                <a class="powerup-icon-tag-3 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</a>
+                <div>
+                    <a id="powerup-sound-icon" class="block loader-powerup-sound" ng-include="img_base + 'templates/elements/assets/powerups/sound-card.tpl'"></a>
+                    <a id="powerup-sound-label" class="powerup-icon-tag-3 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</a>
+                </div>
             </li>
             <li class="matrix-0 opacity-0" class-on-activate="u-bounceIn-subtle, null:inject.powerup-icon-tag-4|activate" class-on-activate-delay="3500">
-                <a class="block loader-powerup-transit" ng-include="img_base + 'templates/elements/assets/powerups/transit-card.tpl'"></a>
-                <a class="powerup-icon-tag-4 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</a>
+                <div>
+                    <a id="powerup-transit-icon" class="block loader-powerup-transit" ng-include="img_base + 'templates/elements/assets/powerups/transit-card.tpl'"></a>
+                    <a id="powerup-transit-label" class="powerup-icon-tag-4 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</a>
+                </div>
             </li>
         </ul>
     </div>

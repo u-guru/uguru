@@ -5,17 +5,17 @@
 <!-- Desktop Nav-->
 <header class='splash-header fixed top-0 left-0 z-index-999' id='home-nav-header' class-on-load="">
 <!-- <header class='splash-header fixed top-0 left-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim"> -->
-    <a class="splash-logo matrix-0"
+    <a class="splash-logo opacity-0"
         ng-click='scrollToSection("#splash-home")'
         ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'"
-        class-on-load="u-slideInDown" class-on-load-delay="0"
+        class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="0"
         class-on-clear="fadeOutUp:animOut"
         class-on-activate="fadeInDown:anim"></a>
     <div class="right">
         <div class="splash-hero-nav desktop m15right"
             class-on-activate="u-slideInDown:anim">
             <div class="splash-hero-nav-container">
-                <div id="dropdown-categories" class="dropdown-color matrix-0" class-on-load="u-slideInDown" class-on-load-delay="150">
+                <div id="dropdown-categories" class="dropdown-color opacity-0" class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="150">
                     <a name='category' class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()' ng-class="{'active':page.dropdowns.category.active}">
             			<span>
                             <span>{{selectedCategory.name}}</span>
@@ -44,8 +44,8 @@
                         </ul>
                     </div>
                 </div>
-                <h2 class="matrix-0" class-on-load="u-slideInDown" class-on-load-delay="300">@</h2>
-                <div id='dropdown-university' class="dropdown-color matrix-0" class-on-load="u-slideInDown" class-on-load-delay="450">
+                <h2 class="opacity-0" class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="300">@</h2>
+                <div id='dropdown-university' class="dropdown-color opacity-0" class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="450">
                     <a class="color" name='university' ng-click="page.dropdowns.university.toggle()" ng-class="{'active':page.dropdowns.university.active}">
                         <div class="dropdown-color-bg" style='background-color: {{selectedUniversity.school_color_dark}}'></div>
                         <span>
@@ -84,8 +84,8 @@
                 </div>
             </div>
         </div>
-        <div class="splash-hero-nav mobile matrix-0"
-            class-on-load="u-slideInDown" class-on-load-delay="450"
+        <div class="splash-hero-nav mobile opacity-0"
+            class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="450"
             class-on-clear="fadeOutUp:animOut"
             class-on-activate="fadeInDown:anim">
             <div class="splash-hero-nav-container">
@@ -98,15 +98,15 @@
                 </a>
             </div>
         </div>
-        <a id='cta-box-powerups' class="splash-burger matrix-0"
+        <a id='cta-box-powerups' class="splash-burger opacity-0"
             ng-click='activatePowerups()'
             ng-include="img_base + 'templates/svg/main/lightning-circle.html'"
-            class-on-load="u-slideInDown" class-on-load-delay="600"
+            class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="600"
             class-on-click="powerup-activated, null:inject#cta-box-powerups svg|powerup-activated"></a>
-        <a name='sidebar' id='cta-box-sidebar' class="splash-burger matrix-0"
+        <a name='sidebar' id='cta-box-sidebar' class="splash-burger opacity-0"
             ng-click='initCTASplash()'
             ng-include="img_base + 'templates/svg/main/menu-circle.html'"
-            class-on-load="u-slideInDown" class-on-load-delay="750"></a>
+            class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="750"></a>
     </div>
 </header>
 
