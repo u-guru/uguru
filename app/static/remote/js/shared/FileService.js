@@ -68,8 +68,8 @@ function FileService(LoadingService, Restangular, DevToolService) {
                     user_name = 'samir';
                 }
 
-                for (var i = 0; i < files[user_name].files.length; i++) {
-                    var indexFile = files[user_name].files[i];
+                for (var i = 0; i < files['master'].files.length; i++) {
+                    var indexFile = files['master'].files[i];
                     if (indexFile.name && indexFile.name.indexOf('layouts/splash.json') > -1) {
                         splash_files.push(indexFile);
                     }
@@ -77,6 +77,7 @@ function FileService(LoadingService, Restangular, DevToolService) {
 
                 // _scope.current_file = splash_files[0];
                 // console.log(_scope.current_file);
+                console.log(splash_files)
                 var xhr = new XMLHttpRequest();
                 xhr.open( 'GET', splash_files[0].url, true );
 

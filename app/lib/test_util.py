@@ -35,44 +35,304 @@ def loadMostUpdatedElementsJson():
     _dict = json.load(open('./app/lib/elements.json'))
     return _dict
 
+
+# "tests": [
+#                         {
+#                             "screen_size": "small",
+#                             "platform": "chrome",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "mobile"
+#                         },
+#                         {
+#                             "screen_size": "medium",
+#                             "platform": "chrome",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "mobile"
+#                         },
+#                         {
+#                             "screen_size": "large",
+#                             "platform": "chrome",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "mobile"
+#                         },
+#                         {
+#                             "screen_size": "xl",
+#                             "platform": "chrome",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "mobile"
+#                         },
+#                         {
+#                             "screen_size": "small",
+#                             "platform": "chrome",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "desktop"
+#                         },
+#                         {
+#                             "screen_size": "medium",
+#                             "platform": "chrome",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "desktop"
+#                         },
+#                         {
+#                             "screen_size": "large",
+#                             "platform": "chrome",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "desktop"
+#                         },
+#                         {
+#                             "screen_size": "small",
+#                             "platform": "firefox",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "mobile"
+#                         },
+#                         {
+#                             "screen_size": "medium",
+#                             "platform": "firefox",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "mobile"
+#                         },
+#                         {
+#                             "screen_size": "large",
+#                             "platform": "firefox",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "mobile"
+#                         },
+#                         {
+#                             "screen_size": "xl",
+#                             "platform": "firefox",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "mobile"
+#                         },
+#                         {
+#                             "screen_size": "small",
+#                             "platform": "firefox",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "desktop"
+#                         },
+#                         {
+#                             "screen_size": "medium",
+#                             "platform": "firefox",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "desktop"
+#                         },
+#                         {
+#                             "screen_size": "large",
+#                             "platform": "firefox",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "desktop"
+#                         },
+#                         {
+#                             "screen_size": "small",
+#                             "platform": "safari",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "mobile"
+#                         },
+#                         {
+#                             "screen_size": "medium",
+#                             "platform": "safari",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "mobile"
+#                         },
+#                         {
+#                             "screen_size": "large",
+#                             "platform": "safari",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "mobile"
+#                         },
+#                         {
+#                             "screen_size": "xl",
+#                             "platform": "safari",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "mobile"
+#                         },
+#                         {
+#                             "screen_size": "small",
+#                             "platform": "safari",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "desktop"
+#                         },
+#                         {
+#                             "screen_size": "medium",
+#                             "platform": "safari",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "desktop"
+#                         },
+#                         {
+#                             "screen_size": "large",
+#                             "platform": "safari",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "desktop"
+#                         },
+#                         {
+#                             "screen_size": null,
+#                             "platform": "ios",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "app"
+#                         },
+#                         {
+#                             "screen_size": null,
+#                             "platform": "ios",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "safari"
+#                         },
+#                         {
+#                             "screen_size": null,
+#                             "platform": "android",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "app"
+#                         },
+#                         {
+#                             "screen_size": null,
+#                             "platform": "android",
+#                             "test_client": "manual",
+#                             "passed": false,
+#                             "test_status": "unsure",
+#                             "type": "chrome"
+#                         }
+
 ## client = ['chrome', 'safari', 'firefox', 'ios', 'android']
 ## client_type= ['desktop', 'mobile', 'app', 'device-safari', 'device-chrome']
 ## window_size(Optional) = ['small', 'medium', 'large', 'xl'] --> only for browser, not for anything on apps
 ## test_passed = True, False based on your result
-def updateFromTravisClient(client, client_type, scene_ref, state_ref, substate_ref=None, window_size=None, test_passed=False):
+def getTestIndexFromClientAndType(client, client_type, window_size):
+    if (client == 'chrome'):
+        if (client_type == 'mobile') and window_size == 'small':
+            return 0
+        if (client_type == 'mobile') and window_size == 'medium':
+            return 1
+        if (client_type == 'mobile') and window_size == 'large':
+            return 2
+        if (client_type == 'mobile') and window_size == 'xl':
+            return 3
+        if (client_type == 'desktop') and window_size == 'small':
+            return 4
+        if (client_type == 'desktop') and window_size == 'medium':
+            return 5
+        if (client_type == 'desktop') and window_size == 'large':
+            return 6
+    if (client == 'firefox'):
+        if (client_type == 'mobile' and window_size =='small'):
+            return 7
+        if (client_type == 'mobile' and window_size =='medium'):
+            return 8
+        if (client_type == 'mobile' and window_size =='large'):
+            return 9
+        if (client_type == 'mobile' and window_size =='xl'):
+            return 10
+        if (client_type == 'desktop' and window_size =='small'):
+            return 11
+        if (client_type == 'desktop' and window_size =='medium'):
+            return 12
+        if (client_type == 'desktop' and window_size =='large'):
+            return 13
+    if (client == 'safari'):
+        if (client_type == 'mobile' and window_size =='small'):
+            return 14
+        if (client_type == 'mobile' and window_size =='medium'):
+            return 15
+        if (client_type == 'mobile' and window_size =='large'):
+            return 16
+        if (client_type == 'mobile' and window_size =='xl'):
+            return 17
+        if (client_type == 'desktop' and window_size =='small'):
+            return 18
+        if (client_type == 'desktop' and window_size =='medium'):
+            return 19
+        if (client_type == 'desktop' and window_size =='large'):
+            return 20
+    if (client == 'ios'):
+        if (client_type == 'app'):
+            return 21
+        if (client_type == 'safari'):
+            return 22
+    if (client == 'android'):
+        if (client_type == 'app'):
+            return 23
+        if (client_type == 'chrome'):
+            return 24
+
+
+def updateFromTravisClient(client, client_type, window_size, filename, scene_index, test_passed=False):
     import requests
     test_client="travis"
     admin_token = "9c1185a5c5e9fc54612808977ee8f548b2258d34"
     full_url = "http://localhost:5000/api/v1/admin/" + admin_token + '/dashboard'
+    test_index = getTestIndexFromClientAndType(client, client_type, window_size)
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-    try:
-        import json
-        json_dump = json.dumps({
-            'client': client,
-            'client_type': client_type,
-            'window_size': str(window_size),
-            'test_results': test_passed,
-            'type': 'testing',
-            'action': 'update',
-            'scene': scene_ref,
-            'state': state_ref,
-            'substate': substate_ref,
-            'test_client': 'travis',
-            'test_status': test_passed
-            })
-        try:
-            response = requests.put(url=full_url, data=json_dump, headers=headers).text
-            return True
-        except:
-            return False
+    # try:
+    import json
+    json_dump = json.dumps({
+        'scene': {'index': scene_index},
+        'test_index': test_index,
+        'test_update': True,
+        'filename': filename,
+        'test_passed': test_passed,
+        'filename':filename,
+        'test_client': 'travis'
+        })
+
+    response = requests.put(url=full_url, data=json_dump, headers=headers)
+    print type(response.status_code)
+    return response.status_code
+        # raise
+        # return True
+
         # pprint(response.__dict__)
         ## update went through to the server
 
     ## update went through to the server
-    except:
-        print "ERROR: Something went wrong with Uguru Dashboard update from Travis test -- please let Samir know \n\n%s\n%s\n%s" % (str(client), str(client_type), str(window_size))
-        raise
-        return False
+    # except:
+    #     print "ERROR: Something went wrong with Uguru Dashboard update from Travis test -- please let Samir know \n\n%s\n%s\n%s" % (str(client), str(client_type), str(window_size))
+    #     raise
+    #     return False
 
 def uguruAPI(arg='', _json=None, _type='get'):
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
@@ -177,7 +437,31 @@ if 'sync' in args and len(args) == 2:
 
 if 'test' in args and len(args) == 2:
     # updateFromTravisClient('firefox', 'mobile', 'splash-mad-lib', 'mad-lib-testing-1', 'mad-lib-testing-1-substate-3', 'medium', False)
-    updateFromTravisClient('android', 'app', 'splash-mad-lib', 'mad-lib-testing-1', 'mad-lib-testing-1-substate-3', 'None', True)
+    ## -arg1 client
+    ## -arg2 client_type
+    ## -arg3 window-size (None for mobile device)
+    ## -arg4 filename
+    ## -arg5 scene #1 (i.e. scene = 1 for "on components enter (browser render) ")
+    updateFromTravisClient('android', 'app', None, 'layouts/splash.json', 1, True)
+    ## returns the integer(python type) 200 type<'int'> if successfull
+
+if 'supported' in args and len(args) == 2:
+    supported_files = ['layouts/splash.json']
+    for _file in supported_files:
+        print _file
+
+if 'status' in args and len(args) == 4:
+    import json, requests
+    file_name = args[-2]
+    scene_index = int(args[-1])
+
+    response = json.loads(requests.get('https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json').text)
+    from pprint import pprint
+    scene_states = response.get('scene_states')
+    index = 1
+    for test in scene_states[scene_index - 1]['tests']:
+        print "%s. %s %s %s" % (index, test['platform'].upper(), test['type'].upper(), str(test['passed']).upper())
+        index += 1
 
 
 
