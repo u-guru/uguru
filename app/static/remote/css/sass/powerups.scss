@@ -1,0 +1,99 @@
+@import 'mixin';
+
+#cta-modal-powerups {
+	header {
+		span {
+			svg {
+				circle {
+					fill: $gold;
+					stroke: $gold;
+				}
+				path {
+					fill: white;
+					stroke: white;
+				}
+			}
+		}
+		h1 {
+			margin-top: -15px;
+		}
+	}
+	ul {
+		width: 100%;
+		li {
+			width: 50%;
+			max-width: 300px;
+			@media screen and (min-width: 768px) {
+				width: 25%;
+			}
+			a {
+				@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+				@include prefix(transition, all 600ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
+			}
+			div {
+				width: 100%;
+				max-width: 300px;
+			}
+		}
+	}
+	.hanger {
+		opacity: 0;
+	}
+}
+
+// GENERAL
+.landing-container {
+	.powerup-icon {
+		width: 300px;
+		height: 300px;
+		.hanger {
+			display: none!important;
+		}
+	}
+	.landing-demo {
+		position: relative;
+		> svg {
+			width: 318px;
+			stroke-width: 3px;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+		> div {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -136px;
+			margin-top: -245.5px;
+			width: 273.5px;
+			height: 490px;
+		}
+	}
+	.landing-content {
+		margin-top: -120px;
+		padding-top: 135px;
+	}
+	&.landing-gpa {
+		background: mix(white, mix($azure, $robin), 30%);
+		> div {
+			background: mix(white, mix($azure, $robin), 30%);
+		}
+		.landing-demo {
+			> svg {
+				* {
+					stroke: lighten($slate, 15%);
+				}
+				circle {
+					fill: mix(mix(white, mix($azure, $robin), 30%), lighten($slate, 15%), 40%);
+				}
+				rect {
+					&:first-child {
+						fill: mix(mix(white, mix($azure, $robin), 30%), lighten($slate, 15%), 70%);
+					}
+					&:last-child {
+						fill: white;
+					}
+				}
+			}
+		}
+	}
+}

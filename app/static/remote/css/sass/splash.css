@@ -1,3 +1,4 @@
+/* ---------- SPLASH ADLIB TAGS */
 .tag-adlib:not(.blank):not(.ghost) i {
   display: block;
   font-style: normal;
@@ -21,13 +22,8 @@
   transform: scale(1.05) !important;
 }
 
-/* ---------- SPLASH ADLIB TAGS */
 li.animated-start {
-  -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  -moz-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  -ms-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  -o-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  opacity: 0;
 }
 
 li.animated-start .tag-adlib:not(.blank):not(.ghost) .desktop rect {
@@ -45,11 +41,7 @@ li.animated-start .tag-adlib:not(.blank):not(.ghost) .mobile rect {
 }
 
 li.animated-start .tag-adlib:not(.blank):not(.ghost) b {
-  -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  -moz-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  -ms-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  -o-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  opacity: 0;
 }
 
 li.animated {
@@ -61,11 +53,11 @@ li.animated {
 }
 
 li.animated .tag-adlib:not(.blank):not(.ghost) .desktop rect {
-  animation: tag-adlib-desktop 800ms linear 500ms forwards;
+  animation: tag-adlib-desktop 800ms linear 2500ms forwards;
 }
 
 li.animated .tag-adlib:not(.blank):not(.ghost) .mobile rect {
-  animation: tag-adlib-mobile 800ms linear 500ms forwards;
+  animation: tag-adlib-mobile 800ms linear 2500ms forwards;
 }
 
 li.animated .tag-adlib:not(.blank):not(.ghost) b {
@@ -555,17 +547,57 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform: rotate(45deg);
 }
 
-.splash-burger#cta-box-powerups:not(.active) svg circle {
+.splash-burger#cta-box-powerups {
+  position: fixed;
+  right: 0;
+  top: 4px;
+  z-index: 2000;
+}
+
+@media screen and (min-width: 860px) {
+  .splash-burger#cta-box-powerups {
+    right: 57px;
+    top: 14px;
+  }
+}
+
+.splash-burger#cta-box-powerups svg circle {
   stroke: #F6C64E;
 }
 
-.splash-burger#cta-box-powerups:not(.active) svg path {
+.splash-burger#cta-box-powerups svg path {
   fill: #F6C64E;
   stroke: #F6C64E;
 }
 
-.splash-burger#cta-box-powerups:not(.active):hover svg circle, .splash-burger#cta-box-powerups:not(.active):focus svg circle {
+.splash-burger#cta-box-powerups svg.powerup-activated {
+  -webkit-transform: scale(3.05) translateY(14px) translateX(-178px);
+  -moz-transform: scale(3.05) translateY(14px) translateX(-178px);
+  -ms-transform: scale(3.05) translateY(14px) translateX(-178px);
+  -o-transform: scale(3.05) translateY(14px) translateX(-178px);
+  transform: scale(3.05) translateY(14px) translateX(-178px);
+}
+
+.splash-burger#cta-box-powerups:hover svg circle, .splash-burger#cta-box-powerups:focus svg circle {
   stroke: white;
+}
+
+.splash-burger#cta-box-powerups.powerup-activated:before {
+  -webkit-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+  -moz-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+  -ms-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+  -o-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+  animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+}
+
+.splash-burger#cta-box-powerups.powerup-activated svg circle {
+  fill: #F6C64E !important;
+  stroke: #F6C64E !important;
+}
+
+.splash-burger#cta-box-powerups.powerup-activated svg path {
+  fill: white !important;
+  stroke: white !important;
 }
 
 .splash-burger#cta-box-sidebar {
@@ -1077,6 +1109,21 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   -webkit-align-items: center;
   align-items: center;
   display: none !important;
+}
+
+.splash-landing .splash-hero-nav.desktop .splash-hero-nav-container {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  padding-right: 57px;
 }
 
 .splash-landing .splash-hero-nav.desktop h2 {

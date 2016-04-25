@@ -1,4 +1,8 @@
 /* ---------- KEYFRAMES */
+#stage-container {
+  position: relative !important;
+}
+
 #stage-container .fixed {
   position: absolute !important;
 }
