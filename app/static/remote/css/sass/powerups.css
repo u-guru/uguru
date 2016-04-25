@@ -28,6 +28,19 @@
 }
 
 #cta-modal-powerups ul li a {
+  -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
+  -moz-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
+  -ms-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
+  -o-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
+  -webkit-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -moz-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -ms-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -o-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+}
+
+#cta-modal-powerups ul li div {
   width: 100%;
   max-width: 300px;
 }
