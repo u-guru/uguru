@@ -11,7 +11,7 @@ if (LOCAL) {
 
   BASE = 'remote/';
   // REST_URL = "http://localhost:5000";
-  REST_URL = "http://192.168.42.70:5000";
+  REST_URL = "http://192.168.12.134:5000";
   // BASE_URL = _ipaddress;
 
   // REST_URL = 'https://192.168.0.107:5000';
@@ -35,10 +35,10 @@ var stats = new Stats();
 
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
-  'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
+  'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers','uguru.version',
   'uguru.util.controllers', 'uguru.dev.controllers', 'uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'uguru.components',
-  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps'])
+  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps','uguru.gpa.controllers','guru.food.controllers'])
 
 
 .run(function($ionicPlatform, $localstorage,
@@ -496,11 +496,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/courses.html',
         controller: 'CoursesController'
   }).
-  state('root.gpa', {
-        url: '/gpa',
-        templateUrl: BASE + 'templates/dev/gpa.html',
-        controller: 'gpaController'
-  }).
+  // state('root.gpa', {
+  //       url: '/gpa',
+  //       templateUrl: BASE + 'templates/dev/archives/gpa.html',
+  //       controller: 'gpaController'
+  // }).
   state('root.student-session', {
         url: '/student-session:sessionObj',
         templateUrl: BASE + 'templates/student.session.html',
@@ -581,6 +581,22 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.guru-conversations', {
         url: '/guru-conversations',
         templateUrl: BASE + 'templates/guru.conversations.html'
+  }).
+  //GPA GURU
+  state('root.intro', {
+        url: '/intro',
+        templateUrl: BASE + 'templates/dev/gpa/university.html'
+        // controller: 'AddUniversityCtrl'
+  }).
+  state('root.gpa-home', {
+        url: '/gpa-home',
+        templateUrl: BASE + 'templates/dev/gpa/gpa.home.html',
+        controller: 'GPAController'
+  }).
+  state('root.grub-home', {
+        url: '/grub-home',
+        templateUrl: BASE + 'templates/dev/food/grub.home.html',
+        // controller: 'GrubHomeCtrl'
   }).
   state('root.splash', {
         url: '/:categoryId:universityId',
