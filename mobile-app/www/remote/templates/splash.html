@@ -11,7 +11,7 @@
         <div id='cta-modal-powerups' class='activate full-xy flex-wrap-center fixed top-0 left-0 z-index-1000' ng-controller="PowerupController" class-on-activate="null:inject#powerups-container|activate" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.html'"></div>
         <!-- ng-if='activate.powerups' -->
         
-        <div class='full-xy flex-wrap-center fixed top-0 left-0 z-index--1000 opacity-0' ng-include="img_base + BASE + 'templates/elements/layouts/powerups.gpa.html'"></div>
+        <div id="powerup-landing-gpa" class='full-xy flex-wrap-center fixed top-0 left-0 z-index--1000 opacity-0' class-on-activate="high-z-index:keep, fadeIn:anim" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.gpa.html'"></div>
 
         <!-- One page dropdown -->
         <div id='splash-one-page-pulldown' ng-if="activate.searchUniversity" ng-class="{'activate': activate.searchUniversity}" class='fixed top-0 left-0 full-xy high-z-index' ng-include="img_base + 'templates/splash/layout/university.search.html'"></div>

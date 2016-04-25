@@ -6,25 +6,25 @@
     <div class="flex-center-wrap">
         <ul id="powerup-icons" class="flex-center">
             <li class="matrix-0 opacity-0" class-on-activate="u-bounceIn-subtle, null:inject.powerup-icon-tag-1|activate" class-on-activate-delay="500">
-                <a id="powerup-gpa-container" class="block" class-on-click="relative, high-z-index, null:inject#powerup-munchies-container|clear, null:inject#powerup-sound-container|clear, null:inject#powerup-transit-container|clear" translate-on-click translate-to-elem="#powerup-landing-icon" class-on-clear="fadeOut:animOut">
+                <a id="powerup-gpa-container" class="block relative" class-on-click="null:inject#powerup-munchies-container|clear, null:inject#powerup-sound-container|clear, null:inject#powerup-transit-container|clear, null:inject#powerup-landing-gpa|activate" translate-on-click translate-to-elem="#powerup-landing-icon" class-on-clear="fadeOut:animOut">
                     <div id="powerup-gpa-icon" class="block loader-powerup-gpa" ng-include="img_base + 'templates/elements/assets/powerups/gpa-card.tpl'"></div>
                     <div id="powerup-gpa-label" class="powerup-icon-tag-1 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</div>
                 </a>
             </li>
             <li class="matrix-0 opacity-0" class-on-activate="u-bounceIn-subtle, null:inject.powerup-icon-tag-2|activate" class-on-activate-delay="1500">
-                <a id="powerup-munchies-container" class="block" class-on-clear="fadeOut:animOut, opacity-0">
+                <a id="powerup-munchies-container" class="block relative" class-on-click="null:inject#powerup-gpa-container|clear, null:inject#powerup-sound-container|clear, null:inject#powerup-transit-container|clear" translate-on-click translate-to-elem="#powerup-landing-icon" class-on-clear="fadeOut:animOut">
                     <div id="powerup-munchies-icon" class="block loader-powerup-munchies" ng-include="img_base + 'templates/elements/assets/powerups/munchies-card.tpl'"></div>
                     <div id="powerup-munchies-label" class="powerup-icon-tag-2 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</div>
                 </a>
             </li>
             <li class="matrix-0 opacity-0" class-on-activate="u-bounceIn-subtle, null:inject.powerup-icon-tag-3|activate" class-on-activate-delay="2500">
-                <a id="powerup-sound-container" class="block" class-on-clear="fadeOut:animOut">
+                <a id="powerup-sound-container" class="block relative" class-on-click="null:inject#powerup-munchies-container|clear, null:inject#powerup-gpa-container|clear, null:inject#powerup-transit-container|clear" translate-on-click translate-to-elem="#powerup-landing-icon" class-on-clear="fadeOut:animOut">
                     <div id="powerup-sound-icon" class="block loader-powerup-sound" ng-include="img_base + 'templates/elements/assets/powerups/sound-card.tpl'"></div>
                     <div id="powerup-sound-label" class="powerup-icon-tag-3 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</div>
                 </a>
             </li>
             <li class="matrix-0 opacity-0" class-on-activate="u-bounceIn-subtle, null:inject.powerup-icon-tag-4|activate" class-on-activate-delay="3500">
-                <a id="powerup-transit-container" class="block" class-on-clear="fadeOut:animOut">
+                <a id="powerup-transit-container" class="block relative" class-on-click="null:inject#powerup-munchies-container|clear, null:inject#powerup-sound-container|clear, null:inject#powerup-gpa-container|clear" translate-on-click translate-to-elem="#powerup-landing-icon" class-on-clear="fadeOut:animOut">
                     <div id="powerup-transit-icon" class="block loader-powerup-transit" ng-include="img_base + 'templates/elements/assets/powerups/transit-card.tpl'"></div>
                     <div id="powerup-transit-label" class="powerup-icon-tag-4 block lowercase txt-center txt-28 semibold m15top matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</div>
                 </a>
