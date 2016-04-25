@@ -1,41 +1,3 @@
-#cta-modal-powerups header span svg circle {
-  fill: #F6C64E;
-  stroke: #F6C64E;
-}
-
-#cta-modal-powerups header span svg path {
-  fill: white;
-  stroke: white;
-}
-
-#cta-modal-powerups header h1 {
-  margin-top: -15px;
-}
-
-#cta-modal-powerups ul {
-  width: 100%;
-}
-
-#cta-modal-powerups ul li {
-  width: 50%;
-  max-width: 300px;
-}
-
-@media screen and (min-width: 768px) {
-  #cta-modal-powerups ul li {
-    width: 25%;
-  }
-}
-
-#cta-modal-powerups ul li a {
-  width: 100%;
-  max-width: 300px;
-}
-
-#cta-modal-powerups .hanger {
-  opacity: 0;
-}
-
 /* ---------- SPLASH ADLIB TAGS */
 .tag-adlib:not(.blank):not(.ghost) i {
   display: block;
@@ -64,6 +26,20 @@ li.animated-start {
   opacity: 0;
 }
 
+li.animated-start .tag-adlib:not(.blank):not(.ghost) .desktop rect {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  stroke-dasharray: 728;
+  stroke-dashoffset: 728;
+}
+
+li.animated-start .tag-adlib:not(.blank):not(.ghost) .mobile rect {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  stroke-dasharray: 656;
+  stroke-dashoffset: 656;
+}
+
 li.animated-start .tag-adlib:not(.blank):not(.ghost) b {
   opacity: 0;
 }
@@ -74,6 +50,14 @@ li.animated {
   -ms-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
   -o-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
   animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
+}
+
+li.animated .tag-adlib:not(.blank):not(.ghost) .desktop rect {
+  animation: tag-adlib-desktop 800ms linear 2500ms forwards;
+}
+
+li.animated .tag-adlib:not(.blank):not(.ghost) .mobile rect {
+  animation: tag-adlib-mobile 800ms linear 2500ms forwards;
 }
 
 li.animated .tag-adlib:not(.blank):not(.ghost) b {

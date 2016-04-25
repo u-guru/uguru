@@ -1,0 +1,96 @@
+#cta-modal-powerups header span svg circle {
+  fill: #F6C64E;
+  stroke: #F6C64E;
+}
+
+#cta-modal-powerups header span svg path {
+  fill: white;
+  stroke: white;
+}
+
+#cta-modal-powerups header h1 {
+  margin-top: -15px;
+}
+
+#cta-modal-powerups ul {
+  width: 100%;
+}
+
+#cta-modal-powerups ul li {
+  width: 50%;
+  max-width: 300px;
+}
+
+@media screen and (min-width: 768px) {
+  #cta-modal-powerups ul li {
+    width: 25%;
+  }
+}
+
+#cta-modal-powerups ul li a {
+  width: 100%;
+  max-width: 300px;
+}
+
+#cta-modal-powerups .hanger {
+  opacity: 0;
+}
+
+.landing-container .powerup-icon {
+  width: 300px;
+  height: 300px;
+}
+
+.landing-container .powerup-icon .hanger {
+  display: none !important;
+}
+
+.landing-container .landing-demo {
+  position: relative;
+}
+
+.landing-container .landing-demo > svg {
+  width: 318px;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.landing-container .landing-demo > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -136px;
+  margin-top: -245.5px;
+  width: 273.5px;
+  height: 490px;
+}
+
+.landing-container .landing-content {
+  margin-top: -120px;
+  padding-top: 135px;
+}
+
+.landing-container.landing-gpa {
+  background: #79c5cd;
+}
+
+.landing-container.landing-gpa > div {
+  background: #79c5cd;
+}
+
+.landing-container.landing-gpa .landing-demo > svg * {
+  stroke: #637074;
+}
+
+.landing-container.landing-gpa .landing-demo > svg circle {
+  fill: #6c9298;
+}
+
+.landing-container.landing-gpa .landing-demo > svg rect:first-child {
+  fill: #72abb2;
+}
+
+.landing-container.landing-gpa .landing-demo > svg rect:last-child {
+  fill: white;
+}
