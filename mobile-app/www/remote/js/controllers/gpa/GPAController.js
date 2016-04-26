@@ -9,11 +9,12 @@ angular.module('uguru.gpa.controllers',[])
 	'PopupService',
 	'TransitionService',
 	'DeviceService',
+	'Restangular',
 	GPAController]);
 
 
 function GPAController($scope, ModalService, GPAService, $localstorage,
-	$timeout, PopupService, TransitionService, DeviceService) {
+	$timeout, PopupService, TransitionService, DeviceService, Restangular) {
 
 	$scope.toggleHeader = function(index) {
 		if ($scope.data.headerSelected === index && !$scope.transitioning) {
@@ -121,7 +122,7 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 			// $scope.course.name = $scope.selectedCourse.short_name;
 			// $scope.course.id = $scope.selectedCourse.id;
 
-			console.log("SET COURSE NAME FOR DEMO")		
+			console.log("SET COURSE NAME FOR DEMO")
 			$scope.course.name = "DEMO"
 			$scope.course.id = 1234
 			$scope.course.semester = $scope.course.semester.toUpperCase()
@@ -165,14 +166,16 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	})
 
-
+	$scope.$on('$ionicView.loaded', function() {
+		loadCourses(2307);
+	})
 
 	$scope.$on('$ionicView.beforeEnter', function() {
 		console.log("beforeENTER")
 		console.log($scope.universities)
 
 		// initBeforeEnterActions();
-		// init GPA grade 
+		// init GPA grade
 		// $scope.user.grades = GPAService.init]
 		$scope.overall = GPAService.init($scope.user.grades);
 		console.log($scope.overall)
@@ -239,7 +242,21 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	    PopupService.open('welcomeUser');
 	}
 
+	$scope.courses = [];
+	function loadCourses(uni_id) {
+		$timeout(function() {
+			Restangular.one('universities', uni_id).customGET('popular_courses').then(function(response) {
 
+
+				$scope.courses = response.plain();
+
+	            console.log($scope.courses.length, 'loaded')
+
+	             }, function(err) {
+	                 console.error("Error getting popularCourses: " + err);
+	        });
+	   	}, 0);
+	}
 
 }
 
