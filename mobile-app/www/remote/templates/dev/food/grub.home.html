@@ -21,7 +21,7 @@
 					</svg>
 				</a>
 				<div class="search-field">
-					<input type="text" name='grub-search-input' id='grub-search-input' ng-model='search_text.grub' placeholder='search for grub!' />
+					<input type="text" name='grub-search-input' id='grub-search-input' fast-matcher fast-matcher-source="availableFilters" fast-matcher-output="search_text.grub" fast-matcher-properties="name" ng-model='search_text.grub' placeholder='search for grub!' />
 				</div>
 				<a class="header-nav-next grub-search-icon" thr-click="openSearch()">
 					<svg viewBox="0 0 100 100">

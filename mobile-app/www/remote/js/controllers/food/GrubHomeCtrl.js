@@ -22,16 +22,14 @@ function GrubHomeCtrl($rootScope, $scope, University, InAppMapService, $timeout,
 	];
 
 	$scope.selectedFilters = [];
-
-
-	if (University.selected !== null) {
+	console.log("University," ,University.selected == {})
+	if (University.selected == {}) {
 		console.log("using selected universigty coords");
 		$scope.map = { center: { latitude: University.selected.latitude, longitude: University.selected.longitude }, zoom: 14 };		
 	} else {
 		console.log("using default coords");
 		$scope.map = { center: { latitude: 37.8718992, longitude: -122.2585399 }, zoom: 14 };	
 	}
-	
 	$scope.isBrowser = !DeviceService.doesCordovaExist();
 	console.log("isBrowser: " + $scope.isBrowser);
 	
@@ -295,68 +293,68 @@ angular.module('uguru.directives')
         }
       );
 
-      $scope.$parent.$watch(
-        'search_text.grub',
-        function(newValue, oldValue) {
+     //  $scope.$parent.$watch(
+     //    'search_text.grub',
+     //    function(newValue, oldValue) {
 
-          if(newValue.length < oldValue.length) {
-            if(queryPromise) {
-              $timeout.cancel(queryPromise);
-            }
-            queryPromise = $timeout(function() {
-              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-              queryPromise = null;
-            }, 90);
-          }
+     //      if(newValue.length < oldValue.length) {
+     //        if(queryPromise) {
+     //          $timeout.cancel(queryPromise);
+     //        }
+     //        queryPromise = $timeout(function() {
+     //          $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+     //          queryPromise = null;
+     //        }, 90);
+     //      }
 
-          else if(newValue.length === 1) {
+     //      else if(newValue.length === 1) {
 
-            if(queryPromise) {
-              $timeout.cancel(queryPromise);
-            }
-            queryPromise = $timeout(function() {
-              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-              queryPromise = null;
-            }, 75);
-          }
+     //        if(queryPromise) {
+     //          $timeout.cancel(queryPromise);
+     //        }
+     //        queryPromise = $timeout(function() {
+     //          $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+     //          queryPromise = null;
+     //        }, 75);
+     //      }
 
-          else if(newValue.length === 0) {
+     //      else if(newValue.length === 0) {
 
-            if(queryPromise) {
-              $timeout.cancel(queryPromise);
-            }
-            queryPromise = $timeout(function() {
-              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-              queryPromise = null;
-            }, 50);
-          }
+     //        if(queryPromise) {
+     //          $timeout.cancel(queryPromise);
+     //        }
+     //        queryPromise = $timeout(function() {
+     //          $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+     //          queryPromise = null;
+     //        }, 50);
+     //      }
 
-          else {
-            if(queryPromise) {
-              $timeout.cancel(queryPromise);
-            }
-            queryPromise = $timeout(function() {
-              $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
-              queryPromise = null;
+     //      else {
+     //        if(queryPromise) {
+     //          $timeout.cancel(queryPromise);
+     //        }
+     //        queryPromise = $timeout(function() {
+     //          $scope.listScope = Utilities.nickMatcher(newValue, $scope.source, 'name');
+     //          queryPromise = null;
 
-            }, 50);
-          }
+     //        }, 50);
+     //      }
 
-          if (DeviceService.doesCordovaExist()) {
+     //      if (DeviceService.doesCordovaExist()) {
           	
-          	if(mapPromise) {
-          	  $timeout.cancel(mapPromise);
-          	}
-          	mapPromise = $timeout(function() {
-			  InAppMapService.plotMarkers($scope.listScope);  
-          	  mapPromise = null;
+     //      	if(mapPromise) {
+     //      	  $timeout.cancel(mapPromise);
+     //      	}
+     //      	mapPromise = $timeout(function() {
+			  // InAppMapService.plotMarkers($scope.listScope);  
+     //      	  mapPromise = null;
 
-          	}, 1000);
+     //      	}, 1000);
           	
-          }
-        }
+     //      }
+     //    }
 
-      );
+     //  );
     }, 250);
 
   }
