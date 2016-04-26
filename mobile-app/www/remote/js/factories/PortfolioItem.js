@@ -29,7 +29,6 @@ angular.module('uguru.rest')
     }
 
     function validateFields(pi_obj) {
-        console.log('validaitng..', pi_obj)
         if (!pi_obj.course || !pi_obj.course.id) {
             LoadingService.showMsg('Please add a course to complete', 2000);
             return false

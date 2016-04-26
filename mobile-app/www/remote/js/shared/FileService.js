@@ -130,11 +130,10 @@ function FileService(LoadingService, Restangular, DevToolService) {
     function initMessageDropzone(scope) {
         var dropzoneElem = new Dropzone('#message-dropzone', getDefaultRequestDropzone());
         dropzoneElem.on("addedfile", function(file) {
-                console.log('user added file', file);
+                return
             });
 
             dropzoneElem.on("success", function(file, server_response) {
-                console.log('file successfully sent', server_response);
                 var messagePayload = {
                     message: {
                         relationship_id: scope.active_relationship.id,
@@ -170,11 +169,10 @@ function FileService(LoadingService, Restangular, DevToolService) {
                     fileExtension = fileNameSplit.slice(-1)[0];
                     LoadingService.showMsg('Sorry, we no longer can accept bare .' + fileExtension + ' file types, please either compress & resubmit or submit another file type.', 5000)
                 }
-                console.log('file has error', file, errorMessage, xml_error);
             })
 
             dropzoneElem.on("uploadprogress", function(file, progress, bytesSent) {
-                console.log('progress-update:', progress, '+ bytes sent:', bytesSent);
+                return
             })
         return dropzoneElem;
         // Dropzone.options.messageDropzone = {
@@ -188,7 +186,6 @@ function FileService(LoadingService, Restangular, DevToolService) {
         //   },
         //   init: function() {
         //     this.on("addedfile", function(file) {
-        //         console.log('user added file', file);
         //     });
         //   }
         // };
@@ -196,7 +193,6 @@ function FileService(LoadingService, Restangular, DevToolService) {
 
     function initRequestDropzoneFromSelector(elem_selector, scope) {
         if (elem_selector && !DropzoneDict[elem_selector]) {
-            console.log('initializing');
             var dropzoneElem = new Dropzone(elem_selector, getDefaultRequestDropzone());
             //stor in global
             DropzoneDict[elem_selector] = dropzoneElem;
@@ -204,24 +200,20 @@ function FileService(LoadingService, Restangular, DevToolService) {
             //init event listeners
             //full docs are here http://www.dropzonejs.com/#event-list
             dropzoneElem.on("addedfile", function(file) {
-                console.log('user added file', file);
+                return
             });
             dropzoneElem.on("removedfile", function(file) {
-                console.log('user removed file', file);
                 if (scope.requestForm && scope.requestForm.files && scope.requestForm.files.length) {
                     for (var i = 0; i < scope.requestForm.files.length; i++) {
                         var indexRequestFile = scope.requestForm.files[i];
                         if (indexRequestFile.name === file.name) {
                             var removedFile = scope.requestForm.files.splice(i, 1);
                             scope.$apply();
-                            console.log('file moved from request list', removedFile);
                         }
                     }
                 }
             });
             dropzoneElem.on("success", function(file, server_response) {
-                console.log('file successfully sent', server_response);
-                console.log(dropzoneElem.options);
                 if (scope.requestForm && scope.requestForm.files) {
                     scope.requestForm.files.push(server_response);
                     scope.root.vars.getUserFromServer(scope);
@@ -247,11 +239,10 @@ function FileService(LoadingService, Restangular, DevToolService) {
                     fileExtension = fileNameSplit.slice(-1)[0];
                     LoadingService.showMsg('Sorry, we no longer can accept bare .' + fileExtension + ' file types, please either compress & resubmit or submit another file type.', 5000)
                 }
-                console.log('file has error', file, errorMessage, xml_error);
             })
 
             dropzoneElem.on("uploadprogress", function(file, progress, bytesSent) {
-                console.log('progress-update:', progress, '+ bytes sent:', bytesSent);
+                return
             })
         }
     }

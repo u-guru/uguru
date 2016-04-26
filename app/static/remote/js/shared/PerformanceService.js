@@ -25,8 +25,6 @@ function PerformanceService(uTracker, DownloadService) {
 		var time_ms = appStartTime - start_dom_time;
 		var time_s = (time_ms / 1000.0).toPrecision(3);
 		appLoadTime = time_s;
-		console.log("appLoadTime: " + appLoadTime);
-
 		uTracker.track(tracker, "App Launch", {
 		  "$App_Load_Time": appLoadTime
 		});
@@ -45,7 +43,6 @@ function PerformanceService(uTracker, DownloadService) {
 
 		// removing the first item since we're measuring response and not render time, which 
 		// won't be noticeable since we're rendering steps ahead
-		console.log("listResponseTimes: " + listResponseTimes.toString());
 		listResponseTimes.shift();
 		if(listResponseTimes.length > 0) {
 			var total = 0;
@@ -53,7 +50,6 @@ function PerformanceService(uTracker, DownloadService) {
 				total += listResponseTimes[i];
 			}
 			var mean = Math.round((total/listResponseTimes.length));
-			console.log(target + " mean response time: " + mean);
 			var propertyName = "$" + target;
 			var performance = 'pass';
 			if(mean < 500) performance = 'fail';

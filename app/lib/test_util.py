@@ -304,7 +304,7 @@ def updateFromTravisClient(client, client_type, window_size, filename, scene_ind
     import requests
     test_client="travis"
     admin_token = "9c1185a5c5e9fc54612808977ee8f548b2258d34"
-    full_url = "http://localhost:5000/api/v1/admin/" + admin_token + '/dashboard'
+    full_url = "http://192.168.42.70:5000/api/v1/admin/" + admin_token + '/dashboard'
     test_index = getTestIndexFromClientAndType(client, client_type, window_size)
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
     # try:

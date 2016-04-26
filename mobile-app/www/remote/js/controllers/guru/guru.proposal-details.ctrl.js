@@ -90,7 +90,6 @@ angular.module('uguru.guru.controllers')
       //   $state.go('^.^.student.add-payment');
       //   return;
       // }
-      console.log('this button was clicked');
       proposalObj = $scope.proposal;
       proposalObj.status = 2; //guru accepted
       proposalObj.proposal = true;
@@ -153,7 +152,6 @@ angular.module('uguru.guru.controllers')
 
     $scope.showGoogleMap = function() {
       if (!$scope.proposal.request.position || !$scope.proposal.request.position.latitude || !$scope.proposal.request.position.longitude) {
-        console.log('no coordinates... forget about it');
         return;
       }
 

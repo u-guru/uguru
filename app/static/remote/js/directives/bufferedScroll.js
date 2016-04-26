@@ -2,8 +2,6 @@ angular.module('uguru.directives')
 .directive('bufferedScroll', function ($parse, $timeout) {
 	return function ($scope, element, attrs) {
 		var handler = $parse(attrs.bufferedScroll);
-		//console.log("inside directive");
-		//console.log("directive element: " + element);
 		angular.element(element).bind('scroll', function () {
 			var scrollTop = element[0].scrollTop;
 			var scrollHeight = element[0].scrollHeight;
@@ -13,7 +11,6 @@ angular.module('uguru.directives')
 					handler($scope);
 				});
 				// $scope.$apply(function() {
-				// 	//console.log("directive handler");
 				// 	handler($scope);
 				// });
 			}

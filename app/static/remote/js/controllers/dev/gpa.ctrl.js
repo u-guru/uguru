@@ -92,7 +92,7 @@ angular.module('uguru.util.controllers')
             $scope.closeAttachActionSheet();
         },
         buttonClicked: function(index) {
-          console.log(index);
+          ;
         }
     });
     }
@@ -119,7 +119,7 @@ angular.module('uguru.util.controllers')
         $scope.tempCourse = course;
         $scope.tempCourse.removeButton = true;
       }
-          $ionicModal.fromTemplateUrl(BASE + 'templates/dev/gpa.modal.html', {
+          $ionicModal.fromTemplateUrl(BASE + 'templates/dev/archives/gpa.modal.html', {
               scope: $scope,
               animation: 'slide-in-up'
           }).then(function(modal) {

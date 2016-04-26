@@ -81,7 +81,6 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
             sendExceptionGH: Github.getExceptionToGithubIssue(),
             defaultSendEmail: Github.getExceptionToDefaultEmail()
         }
-        console.log("Admin Exception Options:\n", adminScope.options);
         adminActionSheetOptions = {
             buttons: [{text:'Reset To Access'}, {text:'Reset Cache & Logout'}, {text:'Reset Cache & Stay'}, {text:'RC & Stay w/University'}, {text:'Github Exceptions : <strong>' + adminScope.options.sendExceptionGH + '</strong>'}, {text:'Github Emails : <strong>' + adminScope.options.sendExceptionEmail +'</strong>' }] ,
             // buttons: [{text:'Reset To Access'}, {text:'Reset Cache & Logout'}, {text:'Reset Cache & Stay'}, {text:'RC & Stay w/University'}, {text:'Github Exceptions : <strong>' + adminScope.options.sendExceptionGH + '</strong>'}, {text:'Github Emails : <strong>' + adminScope.options.sendExceptionEmail +'</strong>' }, {text:'Default Email : <strong>' + adminScope.options.defaultSendEmail +'</strong>' }, {text:'Test Exception Options'}, {text:'Update App from..'}, {text: 'Card Reader'}, {text: 'Share the secret'}, {text: 'Open Calendar'}, {text: 'Display Badge Count'}, {text: 'Clear Badge Count'}, {text: 'Check FB App Availability'}, {text: 'Record Audio (5s)'}, {text: 'Play Audio'}, {text:'Display google maps in app'}, {text: 'Display a toast'}],
@@ -157,7 +156,6 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
                     break;
 
                 case 1:
-                    console.log(scope.user);
                     resetCache(scope, true, true);
                     // if (scope.user && scope.user.id) {
                     //     resetCache(scope, true, false);
@@ -215,7 +213,6 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
                     if (confirm('Set Github Issue Creation to ' + !currentVal + '?')) {
                         Github.toggleExceptionToGithubIssue();
                         adminScope.options.sendExceptionGH = Github.getExceptionToGithubIssue();
-                        console.log('setExceptionToGithubIssue', adminScope.options.sendExceptionGH)
                         adminScope.loader.showSuccess('Github Issue Creation set to ' +  adminScope.options.sendExceptionGH)
                         reinitializeAdminActionSheet()
                         currentActionSheet();
@@ -227,7 +224,6 @@ function AdminService($localstorage, $ionicActionSheet, DeviceService, $timeout,
                     if (confirm('Set Exception Emails to ' + !currentVal + '?')) {
                         Github.toggleExceptionToEmail()
                         adminScope.options.sendExceptionEmail = Github.getExceptionToEmail();
-                        console.log('setExceptionToGithubEmail', adminScope.options.sendExceptionEmail)
                         adminScope.loader.showSuccess('Exception email Creation set to ' +  adminScope.options.sendExceptionEmail)
                         reinitializeAdminActionSheet()
                         currentActionSheet();

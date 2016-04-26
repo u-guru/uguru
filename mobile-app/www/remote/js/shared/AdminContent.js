@@ -112,7 +112,6 @@ function AdminContent($localstorage) {
 
                 var newOptions = JSON.parse(JSON.stringify(scope.page[option]));
                 scope.page.createObjects[section][dropdown_name].key= 'ref';
-                console.log(newOptions);
                 scope.page.createObjects[section][dropdown_name].options = newOptions;
             }
 

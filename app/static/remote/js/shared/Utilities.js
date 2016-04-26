@@ -69,7 +69,6 @@ function Utilities($rootScope, Settings, User, $compile) {
 	    states[Connection.CELL]     = 'Cell generic connection';
 	    states[Connection.NONE]     = 'No network connection';
 
-	    console.log('Connection type: ' + states[networkState]);
 
 	    return networkState;
 	}
@@ -95,15 +94,15 @@ function Utilities($rootScope, Settings, User, $compile) {
 
 	function readError(type, code) {
 		if(type==='geolocation') {
+			Settings.location = false;
 			switch(code) {
-				case 1: console.log('user denied permission');
+				case 1: return 'user denied permission';
 					break;
-				case 2: console.log('user position is unavailable');
+				case 2: return 'user position is unavailable';
 					break;
-				case 3: console.log('GPS timed out');
+				case 3: return 'GPS timed out'
 					break;
 			}
-			Settings.location = false;
 		}
 	}
 
@@ -233,9 +232,6 @@ function Utilities($rootScope, Settings, User, $compile) {
 		var size_b = size
 		if(size_b === undefined) size_b = 300,000,000;
 		var free = getFreeSpace(size_b);
-		if (free === false) {
-			console.log("No space available.");
-		}
 		return free;
 	}
 
@@ -244,11 +240,9 @@ function Utilities($rootScope, Settings, User, $compile) {
 		var size_mb = size_b/1000/1000;
 		cordova.exec(function(result) {
 			var space_mb = result/1000;
-		    //console.log("Free Disk Space: " + space_mb + "mb");
-		    if(space_mb > size_mb) {
+			    if(space_mb > size_mb) {
 		    	return true;
 		    } else {
-		    	console.log("low on space: " + space_mb + 'mb');
 		    	uTracker.track('Low Disk Space', {
 		    		'$Free_Space': space_mb,
 		    		'$File_Size': size_mb
@@ -256,7 +250,6 @@ function Utilities($rootScope, Settings, User, $compile) {
 		    	return false;
 		    }
 		}, function(error) {
-		    console.log("Error: " + error);
 		    uTracker.track('Callback Error', {
 		    	'$Message': error
 		    });

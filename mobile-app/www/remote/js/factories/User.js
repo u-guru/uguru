@@ -562,7 +562,6 @@ angular.module('uguru.user', [])
                         user.active_proposals.push(index_proposal);
                     } else
                     if (index_proposal.status === 2) {
-                        console.log('pending proposal', index_proposal);
                         user.pending_proposals.push(index_proposal);
                     }
                 }
@@ -712,7 +711,6 @@ angular.module('uguru.user', [])
             if (!$scope.user.academic_shop.title) {
                 $scope.user.academic_shop.title = user.first_name + "’s Academic Shop"
             }
-            console.log('printing out user w/ academic shop', $scope.user);
         }
 
         $scope.user.guru_currencies = user.guru_currencies;
@@ -883,7 +881,6 @@ angular.module('uguru.user', [])
             return delegateActionsFromProcessedUser(user);
         },
         update: function(user) {
-        console.log('user saved remotely!');
            return Restangular
                 .one('user')
                 .customPUT(JSON.stringify(user));
@@ -1353,20 +1350,15 @@ angular.module('uguru.user', [])
         getUserFromServer: function($scope, callback, $state) {
 
             // if ($scope && $scope.root && $scope.root.vars.fetch_user_server_mutex) {
-            //     // console.log('There is already a server process updating the user');
-            //     // console.log('Exiting...');
             //     $scope.$broadcast('scroll.refreshComplete');
             //     return;
             // } else if ($scope && $scope.root && !$scope.root.vars.fetch_user_server_mutex) {
-            //     // console.log('No mutex set, setting to true');
-            //     // console.log('Mutex on, fetching user');
             //     $scope.root.vars.fetch_user_server_mutex = true;
             // }
 
             if ($scope) {
                 var scope_user_id = $scope.user.id;
             } else {
-                console.log('accessing user from local..')
                 scope_user_id = $localstorage.getObject('user')['id']
             }
 
@@ -1382,7 +1374,6 @@ angular.module('uguru.user', [])
                         $localstorage.setObject('user', $scope.user);
 
                         if (callback) {
-                            console.log('calling scope callback', $scope.user)
                             callback($scope);
                         }
 
@@ -1391,12 +1382,10 @@ angular.module('uguru.user', [])
                         }
 
                         // if ($scope.user && $scope.user.incoming_requests && $scope.user.incoming_requests.length > 0) {
-                        //     console.log('incoming request exists');
                         //     $scope.root.vars.processIncomingRequests($scope.user.incoming_requests);
                         // }
 
                         //  if ($scope.user && $scope.user.active_proposals && $scope.user.active_proposals.length > 0) {
-                        //     console.log('active proposal exists');
                         //     $scope.root.vars.processActiveProposalsGuru($scope.user.active_proposals);
                         //  }
 
@@ -1406,8 +1395,7 @@ angular.module('uguru.user', [])
 
                 },
                 function(error) {
-                    console.log(error);
-                    console.log('err...something went wrong');
+                    console.error('err...something went wrong');
                 }
             )
             if (!$state) {
@@ -1452,11 +1440,10 @@ angular.module('uguru.user', [])
                             }
 
                         } else {
-                            console.log(JSON.stringify(err));
                             if (callback_failure) {
                                 callback_failure($scope);
                             }
-                            console.log('error...something happened with the server;')
+                            console.error('error...something happened with the server;')
                         }
                     });
             } else if (param === 'cards') {
@@ -1476,10 +1463,7 @@ angular.module('uguru.user', [])
                         }
 
                     }, function(err){
-                        alert('Your card information is incorrect. Please try again');
-                        console.log(err);
                         LoadingService.showMsg(err);
-                        console.log('error...something happened with the server;')
                     });
             } else if (param === 'bank_transfer') {
                 Restangular
@@ -1498,9 +1482,7 @@ angular.module('uguru.user', [])
                         }
 
                     }, function(err){
-                        console.log(JSON.stringify(err));
-                        console.log(err);
-                        console.log('error...something happened with the server;')
+                        console.error('error...something happened with the server;')
                     });
             } else if (param === 'files') {
                 Restangular
@@ -1508,7 +1490,6 @@ angular.module('uguru.user', [])
                     .withHttpConfig({transformRequest: angular.identity})
                     .customPOST(payload,'',undefined,{'Content-Type': undefined})
                     .then(function(file){
-                        console.log(JSON.stringify(file.plain()));
 
 
                             if ($ionicSideMenuDelegate.isOpen() && $state.current.name === 'root.home') {
@@ -1546,8 +1527,7 @@ angular.module('uguru.user', [])
 
 
                     }, function(err){
-                        console.log(err);
-                        console.log('error...something happened with the server;')
+                        console.error('error...something happened with the server;')
                     });
             } else if (param === 'sessions') {
                 Restangular
@@ -1560,15 +1540,12 @@ angular.module('uguru.user', [])
                         delegateActionsFromProcessedUser($scope);
 
                         $localstorage.setObject('user', processed_user);
-                        console.log('student has accepted guru');
-                        console.log(processed_user)
                         if (callback_success) {
                             callback_success($scope, processed_user)
                         }
 
                     }, function(err){
-                        console.log(err);
-                        console.log('error...something happened with the server;')
+                        console.error('error...something happened with the server;')
                     });
             }
 
@@ -1584,8 +1561,7 @@ angular.module('uguru.user', [])
                         }
 
                     }, function(err){
-                        console.log(err);
-                        console.log('error...something happened with the server;')
+                        console.error('error...something happened with the server;')
                     });
             }
 
@@ -1612,8 +1588,7 @@ angular.module('uguru.user', [])
 
 
                     }, function(err){
-                        console.log(err);
-                        console.log('error...something happened with the server;')
+                        console.error('error...something happened with the server;')
                     });
             }
 
@@ -1639,10 +1614,9 @@ angular.module('uguru.user', [])
 
                     }, function(err){
                     if (err.status === 409) {
-                            console.log('already have an active request');
+                            console.error('already have an active request');
                         } else {
-                            console.log(err);
-                            console.log('error...something happened with the server;')
+                            console.error('error...something happened with the server;')
                         }
                     });
             }
@@ -1663,10 +1637,9 @@ angular.module('uguru.user', [])
 
                     }, function(err){
                     if (err.status === 409 ) {
-                            console.log('already have an active request');
+                            console.error('already have an active request');
                         } else {
-                            console.log(err);
-                            console.log('error...something happened with the server;')
+                            console.error('error...something happened with the server;')
                         }
                     });
             }
@@ -1685,10 +1658,9 @@ angular.module('uguru.user', [])
 
                     }, function(err){
                     if (err.status === 409 ) {
-                            console.log('already have an active request');
+                            console.error('already have an active request');
                         } else {
-                            console.log(err);
-                            console.log('error...something happened with the server;')
+                            console.error('error...something happened with the server;')
                         }
                     });
             }
@@ -1698,7 +1670,6 @@ angular.module('uguru.user', [])
                     .customPUT(JSON.stringify(payload))
                     .then(function(user){
                         var processed_user = processResults(user.plain());
-                        console.log(processed_user)
                         assignPropertiesToRootScope($scope, processed_user)
                         delegateActionsFromProcessedUser($scope);
 
@@ -1709,11 +1680,10 @@ angular.module('uguru.user', [])
                         }
 
                     }, function(err){
-                        console.log(err);
                     if (err.status === 409 ) {
-                            console.log('already have an active request');
+                            console.error('already have an active request');
                         } else if (err.status === 400) {
-                            console.log(err);
+                            console.error(err);
                             LoadingService.showMsg('Insufficient funds on card. Please try again or contact support.', 2500);
                         }
                     });
@@ -1723,11 +1693,8 @@ angular.module('uguru.user', [])
                     .one('devices', userObj.id)
                     .customPUT(JSON.stringify(payload))
                     .then(function(device){
-                        console.log('device returned from server');
-                        //console.log(JSON.stringify(device));
                         $scope.user.current_device = device;
                         $scope.user.push_notifications = $scope.user.current_device.push_notif_enabled;
-                        console.log('user push notifications are now', $scope.user.push_notifications);
                         if (!$scope.user.devices) {
                             $scope.user.devices = []
                         }
@@ -1739,10 +1706,9 @@ angular.module('uguru.user', [])
                     function(err) {
 
                         if (err.status === 409 ) {
-                            console.log('already have an active request');
+                            console.error('already have an active request');
                         } else {
-                            console.log(JSON.stringify(err, err.status));
-                            console.log('error...something happened with the server;')
+                            console.error('error...something happened with the server;')
                         }
 
                     });
@@ -1764,19 +1730,16 @@ angular.module('uguru.user', [])
 
             }, function(err){
 
-                    console.log(err);
-                    console.log('error...something happened with the server;')
+                    console.error('error...something happened with the server;')
             });
 
         },
         updateAttrUser: function(arg, user, obj, success_callback, $scope, failure_callback) {
 
             if (!user.id && arg !== 'forgot_password') {
-              console.log('user has not created an account yet.')
 
               //save to local
               $localstorage.setObject('user', user);
-              console.log('saved user to local storage');
 
               if (success_callback) {
                 success_callback();
@@ -1801,7 +1764,7 @@ angular.module('uguru.user', [])
                     delegateActionsFromProcessedUser($scope);
                     $localstorage.setObject('user', $scope.user);
                 }
-                console.log(user);
+
                 if (success_callback) {
                     success_callback();
                 }
@@ -1814,8 +1777,7 @@ angular.module('uguru.user', [])
                 if (failure_callback) {
                     failure_callback(err);
                 } else {
-                    console.log(JSON.stringify(err));
-                    console.log('error...something happened with the server;')
+                    console.error('error...something happened with the server;')
                 }
             })
         },

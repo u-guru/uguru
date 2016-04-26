@@ -44,7 +44,6 @@ angular.module('uguru.student.controllers')
     $scope.requestPushNotifications = function() {
 
       if (!$scope.user.push_notifications) {
-        console.log('push notifications are false');
         $scope.user.updateAttr('push_notifications', $scope.user, $scope.user.push_notifications, null, $scope);
         return;
       }
@@ -56,14 +55,7 @@ angular.module('uguru.student.controllers')
       }
 
       $cordovaPush.register(iosConfig).then(function(deviceToken) {
-        // Success -- send deviceToken to server, and store for future use
-        console.log("deviceToken: " + deviceToken)
-
-        console.log("Register success " + deviceToken);
-
-
         if ($scope.platform.ios) {
-          console.log('updating the server...');
             $scope.user.push_notifications = true;
             $scope.user.current_device.push_notif = deviceToken;
             $scope.user.current_device.push_notif_enabled = true;
@@ -76,7 +68,7 @@ angular.module('uguru.student.controllers')
         }
 
       }, function(err) {
-        console.log(err);
+        console.error(err);
       });
 
     };

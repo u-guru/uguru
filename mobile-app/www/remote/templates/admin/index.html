@@ -646,6 +646,7 @@
                                 <h4 class='uppercase text-center full-x p20xy opacity-50'>{{selected_component.name}} Demo - <span class='weight-800'>TRY ME!</span></h4>
                                 <demo class='flex-wrap-center full-x relative p20xy' ng-if='selected_component.sample' ng-init='component = selected_component' template="{{selected_component.sample.template}}"></demo>
                             </div>
+
                             <ul class="playground-code-container">
                                 <li>
                                     <textarea>{{selected_component.sample.template}}</textarea>
@@ -976,9 +977,9 @@
                             <h1 class="admin-small-header">{{option.title}}</h1>
                             <div class='admin-components admin-content-section flex-wrap-start full-x' ng-if='$index === 0'>
                                 <ul>
-                                    <li ng-repeat='component in page.components track by $index'>
+                                    <li id='component-{{component.ref}}' ng-repeat='component in page.components track by $index'>
                                         <div>
-                                            <a id='component-{{component.ref}}' class="block" ng-click='initAndLaunchComponentCTA($event, component)'>
+                                            <a class="block" ng-click='initAndLaunchComponentCTA($event, component)'>
                                                 <h1>{{component.name}} <i class='ion-arrow-resize icon opacity-50'> </i></h1>
                                             </a>
                                             <div>

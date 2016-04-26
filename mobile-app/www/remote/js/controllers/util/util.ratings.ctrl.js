@@ -17,7 +17,6 @@ angular.module('uguru.util.controllers')
     $ionicPlatform.ready(function() {
 
       if (window.StatusBar && $scope.user.guru_mode) {
-                    // console.log('Extra #1. Styling iOS status bar to black \n\n');
         StatusBar.styleLightContent();
         StatusBar.overlaysWebView(true);
       }
@@ -43,7 +42,6 @@ angular.module('uguru.util.controllers')
       $scope.showGreenStars(starNumber, $event.target);
       $scope.starsSelected = starNumber;
       $scope.root.vars.starsSelected = starNumber;
-      console.log(starNumber);
       $scope.showSubmitButton = true;
     }
 
@@ -77,7 +75,6 @@ angular.module('uguru.util.controllers')
  	// $ionicModal) {
 
   //   var starOne = document.getElementById("starOne");
-  //   console.log(starOne);
     //starOne.setAttribute("class", "icon ion-star green");
 
 

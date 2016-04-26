@@ -798,7 +798,7 @@ angular.module('uguru.util.controllers')
         University.getPopularCoursesPromise(university.id).then(function(courses) {
           university.courses = courses.plain();
           $localstorage.setObject('selected_university_courses', university.courses);
-        }, function(err) {console.log('ERROR FETCHING COURSES', err)});
+        }, function(err) {console.error('ERROR FETCHING COURSES', err)});
       }
     }
 
@@ -915,7 +915,6 @@ angular.module('uguru.util.controllers')
               if (indexKeyElems && indexKeyElems.length) {
                 for (var j = 0; j < indexKeyElems.length; j++) {
                   var indexElem = indexKeyElems[j];
-                  console.log('applying', indexElem, 'with class', indexClass);
                   if (indexClass.indexOf('remove:') > -1) {
                     indexElem.classList.remove(indexClass.replace('remove:', ''));
                   } else
@@ -945,7 +944,6 @@ angular.module('uguru.util.controllers')
 
     $scope.demoSwitchCategory = function(category, university) {
       var sceneNumber = getSceneNumber();
-      console.log('scene number', sceneNumber);
       $scope.page.dropdowns.category.toggle();
       if (sceneNumber > 1) {
 
@@ -982,7 +980,6 @@ angular.module('uguru.util.controllers')
             madLibElemInside && madLibElemInside.classList.add('activate');
             madLibElemHeader && madLibElemHeader.classList.add('activate');
             $scope.selectedCategory = category;
-            console.log(category.name);
             $scope.selectedCategory.splashData = ContentService.splashCategoryOptions[category.name];
           }, 1500)
         }, defaultTransitionTimeout);
@@ -1128,7 +1125,6 @@ angular.module('uguru.util.controllers')
       var modalElems = document.querySelectorAll('.splash-sidebar-full .cta-modal');
       for (var i = 0; i < modalElems.length; i++) {
         var indexModalElem = modalElems[i];
-        console.log(cta_arg, 'removing show from', indexModalElem.id);
         if (cta_arg && indexModalElem.id.indexOf(cta_arg) > -1) {
           continue;
         } else {
@@ -1180,7 +1176,6 @@ angular.module('uguru.util.controllers')
               //init map
               break;
             case 2: //api call
-
               initSwipers(responsiveSwiperArgs, $scope.desktopMode);
               break;
 
@@ -1407,7 +1402,6 @@ angular.module('uguru.util.controllers')
     //         var viewContainerRect = viewContainer.getBoundingClientRect();
     //         var thirdWindowWidth = viewContainerRect.width / 3.0;
     //         if (thirdWindowWidth) {
-    //           // console.log('panning map by', thirdWindowWidth, 'pixels')
     //           $timeout(function() {
     //             $scope.$apply(function() {
     //               var result = calcMarkerCoords(university.og_map);
@@ -1927,7 +1921,7 @@ angular.module('uguru.util.controllers')
       // }
 
       // var windowCloseButtonIsClicked = function(e) {
-      //   console.log(e);
+          // return
       // }
 
       // var defaultWindowOptions = {
@@ -1987,7 +1981,6 @@ angular.module('uguru.util.controllers')
       //   //   deleteWindowExtraCSS();
       //   // }, 100)
       //   // $timeout(function() {
-      //   //   console.log('attempting to compile');
       //   //   $compile(document.getElementById('university-info-window-button'))($scope);
       //   //   $compile(document.getElementById('university-info-window-close-button'))($scope);
       //   // }, 1000)

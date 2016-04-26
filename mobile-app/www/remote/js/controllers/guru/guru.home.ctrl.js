@@ -32,7 +32,6 @@ angular.module('uguru.guru.controllers')
 		University, $templateCache, $ionicHistory, Popup, $popover, Popover,
 		$ionicBackdrop, User, Camera, $cordovaPush, $ionicViewSwitcher, $cordovaStatusbar,
 		$ionicPlatform, LoadingService) {
-		//console.log($scope.user)
 		$scope.topTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-top');
 		$scope.bottomTabsDelegate = $ionicTabsDelegate.$getByHandle('student-home-tabs-bottom');
 		$scope.base_url = BASE;
@@ -41,7 +40,6 @@ angular.module('uguru.guru.controllers')
 		$ionicPlatform.ready(function() {
 
 			if (window.StatusBar) {
-				// console.log('Extra #1. Styling iOS status bar to black \n\n');
 				StatusBar.styleLightContent();
 				StatusBar.overlaysWebView(true);
 			}
@@ -134,21 +132,18 @@ angular.module('uguru.guru.controllers')
 
 		$scope.registerPush = function() {
 			if (!$scope.user.current_device.push_notif_enabled && !$scope.user.current_device.push_notif) {
-				console.log('user turning OFF first time, never even said yes');
 				// $scope.user.current_device.push_notif_enabled = false;
 				$scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
 			}
 
 			//if user is turning off push notifications because they are annoyed
 			if (!$scope.user.current_device.push_notif_enabled && $scope.user.current_device.push_notif) {
-				console.log('user turning OFF push by choice');
 				// $scope.user.current_device.push_notif_enabled = false;
 				$scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
 			}
 
 			//if user is turning it back on again
 			if ($scope.user.current_device.push_notif_enabled && $scope.user.current_device.push_notif) {
-				console.log('user turning on push.. again');
 				// $scope.user.current_device.push_notif_enabled = true;
 				var iosConfig = {
 					"badge": true,
@@ -156,17 +151,10 @@ angular.module('uguru.guru.controllers')
 					"alert": true,
 				}
 
-				console.log('user turning on push for the first time');
-
 				// $scope.user.current_device.push_notif_enabled = true;
 				$cordovaPush.register(iosConfig).then(function(deviceToken) {
 					// Success -- send deviceToken to server, and store for future use
-					console.log("deviceToken: " + deviceToken)
-
-					console.log("Register success " + deviceToken);
-
 					if ($scope.platform.ios) {
-						console.log('updating the server...');
 						$scope.user.push_notifications = true;
 						$scope.user.current_device.push_notif = deviceToken;
 						$scope.user.current_device.push_notif_enabled = true;
@@ -174,7 +162,6 @@ angular.module('uguru.guru.controllers')
 					}
 
 				}, function(err) {
-					console.log('there is an error');
 					alert("Please go to your Settings > Notifications > Uguru and 'Allow Notifications'");
 				});
 			}
@@ -188,13 +175,9 @@ angular.module('uguru.guru.controllers')
 					"alert": true,
 				}
 
-				console.log('user turning on push for the first time');
 				// $scope.user.current_device.push_notif_enabled = true;
 				$cordovaPush.register(iosConfig).then(function(deviceToken) {
 					// Success -- send deviceToken to server, and store for future use
-					console.log("deviceToken: " + deviceToken)
-
-					console.log("Register success " + deviceToken);
 					$scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
 					if ($scope.platform.ios) {
 						$scope.user.push_notifications = true;
@@ -204,7 +187,6 @@ angular.module('uguru.guru.controllers')
 					}
 
 				}, function(err) {
-					console.log('there is an error');
 					alert("Please go to your Settings > Notifications > Uguru and 'Allow Notifications'");
 				});
 			}
@@ -248,8 +230,6 @@ angular.module('uguru.guru.controllers')
 		}
 
 		$scope.showButtonPressed = function($event, class_name) {
-			// console.log($event.target);
-			// console.log($event.target.name)
 			// $event.target.classList.add('active');
 			document.getElementsByClassName(class_name)[0].classList.add('active')
 				// $event.target.classList.add('active')
@@ -292,7 +272,7 @@ angular.module('uguru.guru.controllers')
 		}
 
 		$scope.addGreenbar = function() {
-			console.log('this was clicked');
+			return
 		}
 
 		$scope.goToBecomeGuru = function() {
@@ -446,7 +426,7 @@ angular.module('uguru.guru.controllers')
 		});
 
 		$scope.onCardInputSelect = function() {
-			console.log('it detects its ebeen tapped');
+			return
 		}
 
 		$scope.$on('modal.hidden', function() {
@@ -486,12 +466,10 @@ angular.module('uguru.guru.controllers')
 				$scope.bottomTabsDelegate.select($scope.root.vars.guru_selected_index);
 			}
 
-			console.log('guru home view before Enter');
 			if (window.StatusBar) {
 				StatusBar.styleLightContent();
 			}
 
-			console.log(JSON.stringify($scope.user.current_device));
 		});
 
 		$scope.$on('$ionicView.enter', function() {
@@ -531,7 +509,7 @@ angular.module('uguru.guru.controllers')
 				LoadingService.showSuccess('Your support message has been submitted. We will get back to you very soon!', 2000);
 				$scope.supportModal.hide();
 			}, function(err) {
-				console.log('error from server', err);
+				console.error('error from server', err);
 			});
 		}
 

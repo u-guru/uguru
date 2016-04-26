@@ -14,7 +14,6 @@ angular.module('uguru.guru.controllers')
  	$ionicModal, $stateParams, $ionicHistory) {
 
     $scope.proposal = JSON.parse($stateParams.proposalObj);
-    console.log('confirm proposal', $scope.proposal);
     $scope.goBack = function() {
       $ionicHistory.goBack();
     }
@@ -24,7 +23,6 @@ angular.module('uguru.guru.controllers')
       //   $state.go('^.^.student.add-payment');
       //   return;
       // }
-      console.log('this button was clicked');
       proposalObj = $scope.proposal;
       proposalObj.status = 2; //guru accepted
       proposalObj.proposal = true;
@@ -36,7 +34,6 @@ angular.module('uguru.guru.controllers')
         $scope.user.pending_proposals = [];
       }
       $scope.user.pending_proposals.push(proposalObj);
-      console.log('server-ready-calendar', JSON.stringify(proposalObj.guru_calendar));
       $scope.user.updateObj($scope.user, 'requests', proposalObj, $scope);
       alert("Student request accepted. We'll let you know if they choose you! \n See below for progress");
         //Mixpanel Track

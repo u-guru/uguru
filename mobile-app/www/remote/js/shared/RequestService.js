@@ -68,7 +68,6 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     for (var i = 0; i < arr_events.length; i++) {
       arr_events[i].start_time = applyTZOffsetToTime(arr_events[i].start_time);
       arr_events[i].end_time = applyTZOffsetToTime(arr_events[i].end_time);
-      console.log(arr_events[i].start_time, arr_events[i].end_time)
     }
   }
 
@@ -212,12 +211,10 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
         .customPOST(JSON.stringify(payload))
         .then(sessionPostSuccess, sessionPostFailure);
       function sessionPostSuccess(user) {
-        console.log('success - here is the user obj', user);
         success && success();
       }
 
       function sessionPostFailure(err) {
-          console.log('error when sending request to form', err);
           failure && failure();
       }
   }
@@ -231,12 +228,10 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
         .then(proposalPUTSuccess, proposalPUTFailure);
 
     function proposalPUTSuccess(user) {
-      console.log('success - here is the user obj', user);
       success && success();
     }
 
     function proposalPUTFailure(err) {
-        console.log('error when sending request to form', err);
         failure && failure();
     }
   }
@@ -309,8 +304,6 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
   function sendRequestToServer(payload) {
     var userObj = payload.user;
     payload.user = null;
-    console.log('requestObj', payload);
-    console.log('userObj', userObj);
     Restangular
         .one('user', userObj.id).one('requests')
         .customPOST(JSON.stringify(payload))
@@ -318,11 +311,11 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
   }
 
   function requestPostSuccess(user) {
-    console.log('success - here is the user obj', user);
+    return
   }
 
   function requestPostError(err) {
-      console.log('error when sending request to form', err);
+      console.error('error when sending request to form', err);
   }
 
   function cancelRequest(form) {
@@ -383,7 +376,7 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       map: {center: {latitude: lat, longitude: long}, options: getRequestMapOptions(), zoom:15, pan:true, control:{}, marker: getDefaultMarker(lat, long, color, scope)},
       nav: {
         index: 0,
-        next: function() {if (scope.requestForm.nav.index === 2) {initMapReadyFunction(scope); scope.requestForm.mapReady = true;}; slide_box.enableSlide(true); slide_box.next(); slide_box.enableSlide(false); scope.requestForm.nav.index += 1; console.log('current requestForm', scope.requestForm); updateValidationIndex(scope); },
+        next: function() {if (scope.requestForm.nav.index === 2) {initMapReadyFunction(scope); scope.requestForm.mapReady = true;}; slide_box.enableSlide(true); slide_box.next(); slide_box.enableSlide(false); scope.requestForm.nav.index += 1; updateValidationIndex(scope); },
         previous: function() {slide_box.enableSlide(true); slide_box.previous(); slide_box.enableSlide(false); scope.requestForm.nav.index -= 1; updateValidationIndex(scope); },
         switchTo: function(index) {slide_box.enableSlide(true); slide_box.slide(index, 250); slide_box.enableSlide(false); scope.requestForm.nav.index = index; updateValidationIndex(scope); if (scope.requestForm.nav.index === 3) {initMapReadyFunction(scope); scope.requestForm.mapReady = true;}},
       },
@@ -421,7 +414,6 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     }
 
     function validate(requestForm) {
-      console.log('validating...');
       var errorArr = validateRequestForm(requestForm);
       if (!errorArr.length) {
         confirmRequest(requestForm);

@@ -571,11 +571,11 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
 }
 
 .splash-burger#cta-box-powerups svg.powerup-activated {
-  -webkit-transform: scale(3.05) translateY(14px) translateX(-178px);
-  -moz-transform: scale(3.05) translateY(14px) translateX(-178px);
-  -ms-transform: scale(3.05) translateY(14px) translateX(-178px);
-  -o-transform: scale(3.05) translateY(14px) translateX(-178px);
-  transform: scale(3.05) translateY(14px) translateX(-178px);
+  -webkit-transform: scale(3.0476) translateY(14px) translateX(-179px);
+  -moz-transform: scale(3.0476) translateY(14px) translateX(-179px);
+  -ms-transform: scale(3.0476) translateY(14px) translateX(-179px);
+  -o-transform: scale(3.0476) translateY(14px) translateX(-179px);
+  transform: scale(3.0476) translateY(14px) translateX(-179px);
 }
 
 .splash-burger#cta-box-powerups:hover svg circle, .splash-burger#cta-box-powerups:focus svg circle {

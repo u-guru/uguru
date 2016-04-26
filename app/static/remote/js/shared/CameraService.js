@@ -32,7 +32,6 @@ function CameraService($timeout, DeviceService, LoadingService) {
   function takePicture(successCallback, sourceIndex, errorCallback) {
 
     if (typeof successCallback === 'undefined') {
-      console.log("Camera Error: No success callback was passed!");
       return;
     } else {
       function cameraSuccess(imageData) {
@@ -41,10 +40,10 @@ function CameraService($timeout, DeviceService, LoadingService) {
         
         navigator.camera.cleanup(cleanupSuccess, cleanupError);
         function cleanupSuccess() {
-          console.log("Camera cleanup success.");
+            return
         }
         function cleanupError(err) {
-          console.log("Camera cleanup failed: " + err);
+            return
         }
       }
 
@@ -86,12 +85,10 @@ function CameraService($timeout, DeviceService, LoadingService) {
   // function takePicture($scope, index, elemId, callbackSuccess) {
 
     
-  //   console.log("inside Camera: takePictre();")
   //   navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
 
   //   function cameraSuccess(imageData) {
   //     navigator.camera.cleanup()
-  //     // console.log("imageData: " + imageData);
 
   //     if (elemId) {
   //       var image = document.getElementById(elemId);
@@ -132,7 +129,6 @@ function CameraService($timeout, DeviceService, LoadingService) {
   //   }
 
   //   function cameraError(err) {
-  //     console.log(err);
   //     if ('No camera available' === err) {
   //       alert('Sorry! It appears that there is no Camera or Photo Library Accessible. Please contact support.');
   //     }

@@ -59,7 +59,6 @@ angular.module('uguru.onboarding.controllers', [])
 
     $scope.togglePersonGuru = function() {
 
-      console.log('we are about to launch the location picker and are on the platform', JSON.stringify($scope.platform));
       if (!$scope.platform.mobile) {
           //mixpanel track
           mixpanel.track("Onboarding.nearest");
@@ -87,7 +86,6 @@ angular.module('uguru.onboarding.controllers', [])
           // if (ionic.Platform && ionic.Platform.device()) {
           //   $scope.user.current_device = ionic.Platform.device();
           // }
-          // console.log('launching location service on ios.');
 
           // Temporary
           //mixpanel track
@@ -96,7 +94,7 @@ angular.module('uguru.onboarding.controllers', [])
           // Geolocation.getUserPosition($scope, callbackSuccess, failureCallback, $state);
       }
       else if ($scope.platform.web)  {
-              console.log('I am testing through the web.')
+        return
       } else {
           //mixpanel track
           mixpanel.track("Onboarding.nearest");
@@ -123,9 +121,7 @@ angular.module('uguru.onboarding.controllers', [])
 
     $scope.checkLocationStatus = function() {
 
-      console.log('current location status is..', $scope.location_error);
       if ($scope.location_error === 'turned-off') {
-        console.log('skipping status check upon user request...');
         return;
       }
 
@@ -136,26 +132,24 @@ angular.module('uguru.onboarding.controllers', [])
       };
 
 
-      console.log('checking status of user location services...')
 
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
         .then(function (position) {
           $scope.location_error = null;
-          console.log('user has it turned on');
-
         }, function(err) {
           if (err.code === 1) {
             $scope.location_error = 'denied';
-            console.log('user has denied...');
+            return
           }
           if (err.code === 2) {
             $scope.location_error = 'unavailable';
-            console.log('it is unavailable...');
+            return
           }
           if (err.code === 3) {
-            console.log('it is unavailable...');
             $scope.location_error = 'timeout';
+            return
+
           }
       });
     }

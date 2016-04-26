@@ -8,16 +8,1290 @@
         "priority": "[Bool], let's keep it simple. Priority should be anything that gets in the way of significant testing, or doesn't work for the user.",
         "notes": "Anything extra to help clarify",
         "platforms": "Which platforms does it work on? Clarify and make sure you check all first.",
+        "impact_file":"arr[String] which files is impacted follow by order",
+        "error_msg": "error_msg from test",
+        "element" : "element cause this",
+        "rank" : " 0 to 10,000,000, the more number it has the more improtant",
         "difficulty": 10,
         "resolved": false
     },
     "bugs": [
         {
-            "file_names": ["splash.html"],
-            "file_type": "html",
-            "title": "CTA not working on dashboard",
-            "tags": ["Annoying", "js-console-error"],
-            "notes": "asldkadj aksldjk alsjdlkasjdkla"
+            "screenshot": [
+                "ERROR"
+            ], 
+            "title": "On Components Enter (browser render)", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "#body-loading-div", 
+            "priority": false, 
+            "platforms": [
+                "android-chrome"
+            ], 
+            "step": "I am visiting \"splash\"", 
+            "tag": [
+                "element", 
+                "UnexpectedAlertPresentException"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                []
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12DF12TF/2016-04-20_15_29_24.png", 
+                "https://teamuguru.slack.com/files/jason/F12DQSQD8/2016-04-20_15_26_44.png"
+            ], 
+            "title": "Change just one university that is not the saerch button", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "#dropdown-university .bg-shamrock", 
+            "priority": false, 
+            "platforms": [
+                "safari"
+            ], 
+            "step": "I click the element with css selector \"#dropdown-university .bg-shamrock\"", 
+            "tag": [
+                "click", 
+                "TimeoutException", 
+                "desktop-lg", 
+                "desktop-m"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                ""
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12DCURQQ/2016-04-20_15_28_28.png", 
+                "https://teamuguru.slack.com/files/jason/F12DDM2TH/2016-04-20_15_25_49.png"
+            ], 
+            "title": "Click Green button anyways", 
+            "notes": "", 
+            "rank": 0, 
+            "element": ".splash-device-button button", 
+            "priority": false, 
+            "platforms": [
+                "safari"
+            ], 
+            "step": "I click the element with css selector \".splash-device-button button\"", 
+            "tag": [
+                "click", 
+                "TimeoutException", 
+                "desktop-lg", 
+                "desktop-m"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                ""
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12D51UPQ/2016-04-20_15_21_26.png", 
+                "https://teamuguru.slack.com/files/jason/F12BW3QDR/2016-04-20_15_18_00.png", 
+                "https://teamuguru.slack.com/files/jason/F12DC4339/2016-04-20_15_19_44.png"
+            ], 
+            "title": "Switch from academic category to houhsehold", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "[name='category'] span.ng-binding", 
+            "priority": false, 
+            "platforms": [
+                "firefox"
+            ], 
+            "step": "I check element \"[name='category'] span.ng-binding\" contain text \"Household\"", 
+            "tag": [
+                "input", 
+                "text", 
+                "desktop-lg", 
+                "desktop-m", 
+                "desktop-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "Element ([name='category'] span.ng-binding) with text ( Academic ) does not contain text ( Household )"
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12D52NHL/2016-04-20_15_21_19.png", 
+                "https://teamuguru.slack.com/files/jason/F12DC4VHD/2016-04-20_15_19_36.png", 
+                "https://teamuguru.slack.com/files/jason/F12DH73FB/2016-04-20_15_17_53.png"
+            ], 
+            "title": "Switch from academic category to photography", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "[name='category'] span.ng-binding", 
+            "priority": false, 
+            "platforms": [
+                "firefox"
+            ], 
+            "step": "I check element \"[name='category'] span.ng-binding\" contain text \"Photography\"", 
+            "tag": [
+                "input", 
+                "text", 
+                "desktop-lg", 
+                "desktop-m", 
+                "desktop-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "Element ([name='category'] span.ng-binding) with text ( Academic ) does not contain text ( Photography )"
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12D53J3G/2016-04-20_15_21_12.png", 
+                "https://teamuguru.slack.com/files/jason/F12DBPJA3/2016-04-20_15_17_46.png", 
+                "https://teamuguru.slack.com/files/jason/F12DAQZME/2016-04-20_15_19_29.png"
+            ], 
+            "title": "Switch from academic category to tech", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "[name='category'] span.ng-binding", 
+            "priority": false, 
+            "platforms": [
+                "firefox"
+            ], 
+            "step": "I check element \"[name='category'] span.ng-binding\" contain text \"Tech\"", 
+            "tag": [
+                "input", 
+                "text", 
+                "desktop-lg", 
+                "desktop-m", 
+                "desktop-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "Element ([name='category'] span.ng-binding) with text ( Academic ) does not contain text ( Tech )"
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12DDBKJ9/2016-04-20_15_21_04.png", 
+                "https://teamuguru.slack.com/files/jason/F12DC7CEB/2016-04-20_15_19_21.png", 
+                "https://teamuguru.slack.com/files/jason/F12BW566P/2016-04-20_15_17_38.png"
+            ], 
+            "title": "Switch from academic category to baking", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "[name='category'] span.ng-binding", 
+            "priority": false, 
+            "platforms": [
+                "firefox"
+            ], 
+            "step": "I check element \"[name='category'] span.ng-binding\" contain text \"Baking\"", 
+            "tag": [
+                "input", 
+                "text", 
+                "desktop-lg", 
+                "desktop-m", 
+                "desktop-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "Element ([name='category'] span.ng-binding) with text ( Academic ) does not contain text ( Baking )"
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12BZQHD1/2016-04-20_15_33_30.png", 
+                "https://teamuguru.slack.com/files/jason/F12DDBK9N/2016-04-20_15_30_16.png", 
+                "https://teamuguru.slack.com/files/jason/F12D7K9RC/2016-04-20_15_31_52.png"
+            ], 
+            "title": "User Clicks Mad Lib Tag[0-4]", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-adlib li:nth-of-type(2) a", 
+            "priority": false, 
+            "platforms": [
+                "chrome"
+            ], 
+            "step": "I click the element with css selector \"div.splash-adlib li:nth-of-type(2) a\"", 
+            "tag": [
+                "click", 
+                "WebDriverException", 
+                "mobile-xl", 
+                "mobile-m", 
+                "mobile-lg"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "unknown error: Element is not clickable at point (129, 402). Other element would receive the click: <div class=\"move-up\">...</div>\n  "
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12D5QP9S/2016-04-20_15_33_30.png", 
+                "https://teamuguru.slack.com/files/jason/F12DFQPN1/2016-04-20_15_31_53.png", 
+                "https://teamuguru.slack.com/files/jason/F12D77XSS/2016-04-20_15_30_16.png"
+            ], 
+            "title": "User Clicks Mad Second Tag[0-4]", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-adlib li:nth-of-type(5) a", 
+            "priority": false, 
+            "platforms": [
+                "chrome"
+            ], 
+            "step": "I click the element with css selector \"div.splash-adlib li:nth-of-type(5) a\"", 
+            "tag": [
+                "click", 
+                "WebDriverException", 
+                "mobile-xl", 
+                "mobile-m", 
+                "mobile-lg"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "unknown error: Element is not clickable at point (272, 349). Other element would receive the click: <div class=\"move-up\">...</div>\n  "
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12DFD223/2016-04-20_15_33_30.png", 
+                "https://teamuguru.slack.com/files/jason/F12DFPZHT/2016-04-20_15_31_53.png", 
+                "https://teamuguru.slack.com/files/jason/F12DEME4X/2016-04-20_15_30_16.png"
+            ], 
+            "title": "User clicks Second Madlib Tag again (to unclick).", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-adlib li:nth-of-type(5) a", 
+            "priority": false, 
+            "platforms": [
+                "chrome"
+            ], 
+            "step": "I click the element with css selector \"div.splash-adlib li:nth-of-type(5) a\"", 
+            "tag": [
+                "click", 
+                "WebDriverException", 
+                "mobile-xl", 
+                "mobile-m", 
+                "mobile-lg"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "unknown error: Element is not clickable at point (272, 349). Other element would receive the click: <div class=\"pageload-overlay show pageload-loading\" data-opening=\"M -18 -26.90625 L -18 86.90625 L 98 86.90625 L 98 -26.90625 L -18 -26.90625 Z M 40 29.96875 C 40.01804 29.96875 40.03125 29.98196 40.03125 30 C 40.03125 30.01804 40.01804 30.03125 40 30.03125 C 39.98196 30.03125 39.96875 30.01804 39.96875 30 C 39.96875 29.98196 39.98196 29.96875 40 29.96875 Z\">...</div>\n  "
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12DSTDA5/2016-04-20_16_00_02.png", 
+                "https://teamuguru.slack.com/files/jason/F12BZPXA7/2016-04-20_15_33_56.png", 
+                "https://teamuguru.slack.com/files/jason/F12DL536D/2016-04-20_15_30_42.png", 
+                "https://teamuguru.slack.com/files/jason/F12DF1U8P/2016-04-20_15_32_19.png"
+            ], 
+            "title": "Click Green button anyways", 
+            "notes": "", 
+            "rank": 0, 
+            "element": ".button-find-guru.splash-mobile-cta", 
+            "priority": false, 
+            "platforms": [
+                "safari", 
+                "chrome"
+            ], 
+            "step": "I click the element with css selector \".button-find-guru.splash-mobile-cta\"", 
+            "tag": [
+                "click", 
+                "TimeoutException", 
+                "mobile-s", 
+                "mobile-m", 
+                "mobile-xl", 
+                "mobile-lg"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                ""
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12DBRSJ0/2016-04-20_16_00_30.png"
+            ], 
+            "title": "Switch from academic category to baking", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "[name='all_dropdown']", 
+            "priority": false, 
+            "platforms": [
+                "safari"
+            ], 
+            "step": "I click the element with css selector \"[name='all_dropdown']\"", 
+            "tag": [
+                "click", 
+                "TimeoutException", 
+                "mobile-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                ""
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12DMD9GF/2016-04-20_16_01_01.png"
+            ], 
+            "title": "Switch from academic category to tech", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-hero-nav .a", 
+            "priority": false, 
+            "platforms": [
+                "safari"
+            ], 
+            "step": "I click the element with css selector \"div.splash-hero-nav .a\"", 
+            "tag": [
+                "click", 
+                "TimeoutException", 
+                "mobile-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                ""
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12DN4Z8D/2016-04-20_16_01_37.png"
+            ], 
+            "title": "Switch from academic category to photography", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-hero-nav a.a", 
+            "priority": false, 
+            "platforms": [
+                "safari"
+            ], 
+            "step": "I click the element with css selector \"div.splash-hero-nav a.a\"", 
+            "tag": [
+                "click", 
+                "TimeoutException", 
+                "mobile-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                ""
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12DL1672/2016-04-20_16_02_04.png"
+            ], 
+            "title": "Switch from academic category to houhsehold", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-hero-nav a.a", 
+            "priority": false, 
+            "platforms": [
+                "safari"
+            ], 
+            "step": "I click the element with css selector \"div.splash-hero-nav a.a\"", 
+            "tag": [
+                "click", 
+                "TimeoutException", 
+                "mobile-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                ""
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12DL0QJU/2016-04-20_16_02_32.png"
+            ], 
+            "title": "Change to search one university", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-hero-nav a.a", 
+            "priority": false, 
+            "platforms": [
+                "safari"
+            ], 
+            "step": "I click the element with css selector \"div.splash-hero-nav a.a\"", 
+            "tag": [
+                "click", 
+                "TimeoutException", 
+                "mobile-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                ""
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12C5NBFD/2016-04-20_16_02_58.png"
+            ], 
+            "title": "Change just one university that is not the saerch button", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-hero-nav a.a", 
+            "priority": false, 
+            "platforms": [
+                "safari"
+            ], 
+            "step": "I click the element with css selector \"div.splash-hero-nav a.a\"", 
+            "tag": [
+                "click", 
+                "TimeoutException", 
+                "mobile-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                ""
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12DQJVGX/2016-04-20_16_16_34.png", 
+                "https://teamuguru.slack.com/files/jason/F12DLULG0/2016-04-20_16_06_07.png", 
+                "https://teamuguru.slack.com/files/jason/F12DUC2KT/2016-04-20_16_10_23.png", 
+                "https://teamuguru.slack.com/files/jason/F12DPPABZ/2016-04-20_16_14_07.png", 
+                "https://teamuguru.slack.com/files/jason/F12DRGQAD/2016-04-20_15_55_47.png", 
+                "https://teamuguru.slack.com/files/jason/F12DKPYRF/2016-04-20_15_28_02.png", 
+                "https://teamuguru.slack.com/files/jason/F12DN73S9/2016-04-20_15_59_33.png", 
+                "https://teamuguru.slack.com/files/jason/F12DCD8E4/2016-04-20_15_25_23.png", 
+                "https://teamuguru.slack.com/files/jason/F12DTB3CZ/2016-04-20_16_04_03.png", 
+                "https://teamuguru.slack.com/files/jason/F12DMBNDN/2016-04-20_16_08_12.png"
+            ], 
+            "title": "User clicks Second Madlib Tag again (to unclick).", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-adlib li:nth-of-type(5) a", 
+            "priority": false, 
+            "platforms": [
+                "ios-safari", 
+                "ios", 
+                "safari"
+            ], 
+            "step": "I verify that the element with css selector \"div.splash-adlib li:nth-of-type(5) a\" does not have a style \"translate\"", 
+            "tag": [
+                "css", 
+                "style", 
+                "attr_value", 
+                "mobile-s", 
+                "mobile-m", 
+                "mobile-xl", 
+                "desktop-m", 
+                "desktop-lg", 
+                "mobile-lg"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "Element( div.splash-adlib li:nth-of-type(5) a ) [style ='-webkit-transform: translate(14px, -115px) scale(1, 1);'] contain translate"
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12DGLDA8/2016-04-20_16_25_05.png", 
+                "https://teamuguru.slack.com/files/jason/F12C8USH1/2016-04-20_16_16_38.png", 
+                "https://teamuguru.slack.com/files/jason/F12DLQUSH/2016-04-20_15_55_47.png", 
+                "https://teamuguru.slack.com/files/jason/F12DRR4S1/2016-04-20_16_20_36.png", 
+                "https://teamuguru.slack.com/files/jason/F12DEDRML/2016-04-20_16_04_04.png", 
+                "https://teamuguru.slack.com/files/jason/F12C6LPHR/2016-04-20_16_06_08.png", 
+                "https://teamuguru.slack.com/files/jason/F12DPESMB/2016-04-20_16_08_13.png", 
+                "https://teamuguru.slack.com/files/jason/F12E10Q2W/2016-04-20_16_14_10.png", 
+                "https://teamuguru.slack.com/files/jason/F12E06DCJ/2016-04-20_16_10_25.png"
+            ], 
+            "title": "Click Green button anyways", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "#blank-2", 
+            "priority": false, 
+            "platforms": [
+                "android-chrome", 
+                "android", 
+                "ios", 
+                "ios-safari", 
+                "safari"
+            ], 
+            "step": "I verify that the element with css selector \"#blank-2\" has a class \"tada\"", 
+            "tag": [
+                "css", 
+                "class", 
+                "attr_value", 
+                "mobile-s", 
+                "mobile-m", 
+                "mobile-xl", 
+                "mobile-lg"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "Element( #blank-2 ) [ class ='tag-adlib blank'] does not contain tada"
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12E3E3TL/2016-04-20_16_27_24.png"
+            ], 
+            "title": "Press escape key or click close to go back.", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "#splash-one-page-pulldown", 
+            "priority": false, 
+            "platforms": [
+                "android-chrome"
+            ], 
+            "step": "I verify element \"#splash-one-page-pulldown\" does not exist", 
+            "tag": [
+                "element", 
+                "existence", 
+                "mobile-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "Element should not exist"
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F12DQQYQY/2016-04-20_16_27_30.png", 
+                "https://teamuguru.slack.com/files/jason/F12DZ4L3C/2016-04-20_16_05_17.png", 
+                "https://teamuguru.slack.com/files/jason/F12DU53CH/2016-04-20_16_09_29.png", 
+                "https://teamuguru.slack.com/files/jason/F12DF0DJB/2016-04-20_15_32_54.png", 
+                "https://teamuguru.slack.com/files/jason/F12DER0BY/2016-04-20_16_07_18.png", 
+                "https://teamuguru.slack.com/files/jason/F12C4D6KV/2016-04-20_15_56_58.png", 
+                "https://teamuguru.slack.com/files/jason/F12DL3ZLZ/2016-04-20_15_31_16.png", 
+                "https://teamuguru.slack.com/files/jason/F12DR2R55/2016-04-20_16_21_36.png", 
+                "https://teamuguru.slack.com/files/jason/F12DSJCUA/2016-04-20_15_34_31.png"
+            ], 
+            "title": "Finally - fill in the blank (from earlier step).", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-adlib li:nth-of-type(1) a", 
+            "priority": false, 
+            "platforms": [
+                "android-chrome", 
+                "chrome", 
+                "android", 
+                "safari"
+            ], 
+            "step": "I click the element with css selector \"div.splash-adlib li:nth-of-type(1) a\"", 
+            "tag": [
+                "click", 
+                "WebDriverException", 
+                "mobile-s", 
+                "mobile-m", 
+                "mobile-xl", 
+                "TimeoutException", 
+                "mobile-lg"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "unknown error: Element is not clickable at point (116, 266). Other element would receive the click: <li ng-repeat=\"university in featured_universities\" class=\"\">...</li>\n  "
+            ]
+        }, 
+        {
+            "screenshot": [], 
+            "title": "browser freezed", 
+            "notes": "fill #blank1, #blank-2, and then unselect one of the blank-> wait couples second and click Find my Guru-> browser freezed", 
+            "rank": 10000000, 
+            "priority": false, 
+            "platforms": [
+                "Firefox"
+            ], 
+            "step": "", 
+            "tag": [
+                "function", 
+                "Crash", 
+                "splash", 
+                "mobile"
+            ], 
+            "impact_file": [
+                "templates/splash.html"
+            ], 
+            "error_msg": []
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F135P9RNF/2016-04-23_13_35_27.png", 
+                "https://teamuguru.slack.com/files/jason/F12DLH3AM/2016-04-20_15_31_52.png", 
+                "https://teamuguru.slack.com/files/jason/F12BW5L11/2016-04-20_15_17_09.png", 
+                "https://teamuguru.slack.com/files/jason/F12DDBVPS/2016-04-20_15_30_15.png", 
+                "https://teamuguru.slack.com/files/jason/F12DYN9PU/2016-04-20_15_59_28.png", 
+                "https://teamuguru.slack.com/files/jason/F12BZQT7V/2016-04-20_15_33_29.png", 
+                "https://teamuguru.slack.com/files/jason/F12DU6A3B/2016-04-20_16_08_00.png", 
+                "https://teamuguru.slack.com/files/jason/F12DT19D3/2016-04-20_16_23_46.png", 
+                "https://teamuguru.slack.com/files/jason/F12DQK555/2016-04-20_16_15_57.png", 
+                "https://teamuguru.slack.com/files/jason/F12DZHWG2/2016-04-20_16_05_57.png", 
+                "https://teamuguru.slack.com/files/jason/F12BWJ9S7/2016-04-20_15_18_51.png", 
+                "https://teamuguru.slack.com/files/jason/F12DEE3GE/2016-04-20_16_03_53.png", 
+                "https://teamuguru.slack.com/files/jason/F12DDMC5A/2016-04-20_16_11_49.png", 
+                "https://teamuguru.slack.com/files/jason/F12DCLH7Y/2016-04-20_15_55_36.png"
+            ], 
+            "title": "On Components Enter (browser render)", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-adlib li", 
+            "priority": false, 
+            "platforms": [
+                "firefox", 
+                "chrome", 
+                "android-chrome", 
+                "ios-safari", 
+                "safari"
+            ], 
+            "step": "I verify that the selector \"div.splash-adlib li\" contains 8 element", 
+            "tag": [
+                "css", 
+                "item count", 
+                "desktop-m", 
+                "mobile-m", 
+                "mobile-xl", 
+                "mobile-lg", 
+                "mobile-s", 
+                "desktop-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "The list of element (div.splash-adlib li) should have 8 element(s) in it, only 16 element(s) is in the list"
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F1374GYLX/2016-04-23_13_35_43.png", 
+                "https://teamuguru.slack.com/files/jason/F12DLU8UQ/2016-04-20_16_06_16.png", 
+                "https://teamuguru.slack.com/files/jason/F12DPEMCM/2016-04-20_16_08_21.png", 
+                "https://teamuguru.slack.com/files/jason/F12DQH2FR/2016-04-20_16_16_59.png", 
+                "https://teamuguru.slack.com/files/jason/F12DMT6T1/2016-04-20_16_04_12.png", 
+                "https://teamuguru.slack.com/files/jason/F12DL4XCZ/2016-04-20_15_30_49.png", 
+                "https://teamuguru.slack.com/files/jason/F12D7UG94/2016-04-20_15_34_03.png", 
+                "https://teamuguru.slack.com/files/jason/F12DT0QTX/2016-04-20_16_25_33.png", 
+                "https://teamuguru.slack.com/files/jason/F12C5S01Z/2016-04-20_15_55_56.png", 
+                "https://teamuguru.slack.com/files/jason/F12D5CMSQ/2016-04-20_15_32_26.png"
+            ], 
+            "title": "Switch from academic category to baking", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-adlib li", 
+            "priority": false, 
+            "platforms": [
+                "firefox", 
+                "chrome", 
+                "android-chrome", 
+                "ios-safari", 
+                "safari"
+            ], 
+            "step": "I verify that the selector \"div.splash-adlib li\" contains 8 element", 
+            "tag": [
+                "css", 
+                "item count", 
+                "desktop-m", 
+                "mobile-m", 
+                "mobile-xl", 
+                "mobile-lg", 
+                "mobile-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "The list of element (div.splash-adlib li) should have 8 element(s) in it, only 16 element(s) is in the list"
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F1374GVK9/2016-04-23_13_35_51.png", 
+                "https://teamuguru.slack.com/files/jason/F12DZ5290/2016-04-20_16_04_21.png", 
+                "https://teamuguru.slack.com/files/jason/F12E0074J/2016-04-20_16_08_29.png", 
+                "https://teamuguru.slack.com/files/jason/F12DAEB8C/2016-04-20_15_56_04.png", 
+                "https://teamuguru.slack.com/files/jason/F12DLU2GY/2016-04-20_16_06_24.png", 
+                "https://teamuguru.slack.com/files/jason/F12DQGHSB/2016-04-20_16_17_27.png", 
+                "https://teamuguru.slack.com/files/jason/F12DXLUKT/2016-04-20_16_26_02.png", 
+                "https://teamuguru.slack.com/files/jason/F12DS7X7U/2016-04-20_15_32_33.png", 
+                "https://teamuguru.slack.com/files/jason/F12BZPJRZ/2016-04-20_15_34_10.png", 
+                "https://teamuguru.slack.com/files/jason/F12DDAK16/2016-04-20_15_30_56.png"
+            ], 
+            "title": "Switch from academic category to tech", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-adlib li", 
+            "priority": false, 
+            "platforms": [
+                "firefox", 
+                "chrome", 
+                "android-chrome", 
+                "ios-safari", 
+                "safari"
+            ], 
+            "step": "I verify that the selector \"div.splash-adlib li\" contains 8 element", 
+            "tag": [
+                "css", 
+                "item count", 
+                "desktop-m", 
+                "mobile-m", 
+                "mobile-xl", 
+                "mobile-lg", 
+                "mobile-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "The list of element (div.splash-adlib li) should have 8 element(s) in it, only 16 element(s) is in the list"
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F135P9FJ7/2016-04-23_13_35_59.png", 
+                "https://teamuguru.slack.com/files/jason/F12D5PK7E/2016-04-20_15_34_17.png", 
+                "https://teamuguru.slack.com/files/jason/F12DC922Y/2016-04-20_16_04_29.png", 
+                "https://teamuguru.slack.com/files/jason/F12C7374K/2016-04-20_16_08_38.png", 
+                "https://teamuguru.slack.com/files/jason/F12DAE612/2016-04-20_15_56_13.png", 
+                "https://teamuguru.slack.com/files/jason/F12DH2KPG/2016-04-20_16_17_57.png", 
+                "https://teamuguru.slack.com/files/jason/F12D76X8E/2016-04-20_15_31_02.png", 
+                "https://teamuguru.slack.com/files/jason/F12DT03E1/2016-04-20_16_26_31.png", 
+                "https://teamuguru.slack.com/files/jason/F12DF0VRV/2016-04-20_15_32_39.png", 
+                "https://teamuguru.slack.com/files/jason/F12C6L70T/2016-04-20_16_06_32.png"
+            ], 
+            "title": "Switch from academic category to photography", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-adlib li", 
+            "priority": false, 
+            "platforms": [
+                "firefox", 
+                "chrome", 
+                "android-chrome", 
+                "ios-safari", 
+                "safari"
+            ], 
+            "step": "I verify that the selector \"div.splash-adlib li\" contains 8 element", 
+            "tag": [
+                "css", 
+                "item count", 
+                "desktop-m", 
+                "mobile-m", 
+                "mobile-xl", 
+                "mobile-lg", 
+                "mobile-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "The list of element (div.splash-adlib li) should have 8 element(s) in it, only 16 element(s) is in the list"
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F13733Y5N/2016-04-23_13_36_07.png", 
+                "https://teamuguru.slack.com/files/jason/F12DF0NGP/2016-04-20_15_32_46.png", 
+                "https://teamuguru.slack.com/files/jason/F12BZNRHR/2016-04-20_15_34_24.png", 
+                "https://teamuguru.slack.com/files/jason/F12DLQ82Z/2016-04-20_15_56_21.png", 
+                "https://teamuguru.slack.com/files/jason/F12DRT534/2016-04-20_15_31_09.png", 
+                "https://teamuguru.slack.com/files/jason/F12DETNGL/2016-04-20_16_18_27.png", 
+                "https://teamuguru.slack.com/files/jason/F12DGK47N/2016-04-20_16_26_53.png", 
+                "https://teamuguru.slack.com/files/jason/F12DCLSHJ/2016-04-20_16_06_39.png", 
+                "https://teamuguru.slack.com/files/jason/F12DU5B5X/2016-04-20_16_08_47.png", 
+                "https://teamuguru.slack.com/files/jason/F12DED3HC/2016-04-20_16_04_39.png"
+            ], 
+            "title": "Switch from academic category to houhsehold", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "div.splash-adlib li", 
+            "priority": false, 
+            "platforms": [
+                "firefox", 
+                "chrome", 
+                "android-chrome", 
+                "ios-safari", 
+                "safari"
+            ], 
+            "step": "I verify that the selector \"div.splash-adlib li\" contains 8 element", 
+            "tag": [
+                "css", 
+                "item count", 
+                "desktop-m", 
+                "mobile-m", 
+                "mobile-xl", 
+                "mobile-lg", 
+                "mobile-s"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "The list of element (div.splash-adlib li) should have 8 element(s) in it, only 16 element(s) is in the list"
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F137G407L/2016-04-23_13_36_21.png"
+            ], 
+            "title": "Change to search one university", 
+            "notes": "", 
+            "rank": 0, 
+            "element": ".splash-school-loader-container", 
+            "priority": false, 
+            "platforms": [
+                "firefox"
+            ], 
+            "step": "I verify element \".splash-school-loader-container\" does not exist", 
+            "tag": [
+                "element", 
+                "existence", 
+                "desktop-m"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                "Element should not exist"
+            ]
+        }, 
+        {
+            "screenshot": [
+                "https://teamuguru.slack.com/files/jason/F1375JGA1/2016-04-23_13_36_25.png", 
+                "https://teamuguru.slack.com/files/jason/F136ZSUQZ/2016-04-23_11_22_27.png", 
+                "https://teamuguru.slack.com/files/jason/F136ZVA0Z/2016-04-23_11_23_26.png", 
+                "https://teamuguru.slack.com/files/jason/F136Y914Z/2016-04-23_11_03_39.png"
+            ], 
+            "title": "Finally - fill in the blank (from earlier step).", 
+            "notes": "", 
+            "rank": 0, 
+            "element": "#splash-google-map-selected-university", 
+            "priority": false, 
+            "platforms": [
+                "firefox", 
+                "chrome"
+            ], 
+            "step": "I verify element \"#splash-google-map-selected-university\" exist", 
+            "tag": [
+                "element", 
+                "NoSuchElementException", 
+                "desktop-m"
+            ], 
+            "impact_file": [], 
+            "error_msg": [
+                []
+            ]
+        },
+        {  
+            "rank": 10000000,
+            "screenshot":"https://teamuguru.slack.com/files/jason/F119LP9TL/chrome.png",
+            "title": "CTA screensize is incorrect",
+            "tag": ["css","guru-dashboard","desktop"],
+            "priority": true,
+            "notes": "unable to contiune the test since CTA screensize is not correct",
+            "platforms": ["Chrome"],
+            "impact_file":[
+                "templates/profile.public.html",
+                "templates/guru.credibility.html",
+                "templates/referrals.html",
+                "templates/billing.html",
+                "templates/balance.html",
+                "templates/guru.ranking.html"
+            ]
+
+        },
+        { 
+            "difficulty": 10,
+            "rank": 9999997,
+            "screenshot": "https://teamuguru.slack.com/files/jason/F117T7VK5/2016-04-16_11_28_04.png",
+            "title": "Profile droppdown",
+            "tag": ["css","droppdown","mobile-m"],
+            "priority": true,
+            "notes": "looking at droppdown does not feel it is a droppdown",
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/profile.public.html:"
+            ],
+            "element: " : "[name='alumni-dropdown']"
+        },
+        {
+            "rank": 9000000,
+            "screenshot": "https://teamuguru.slack.com/files/jason/F119L89BL/accountmain.png",
+            "title": "Guru account setting button incorrect  qlocation",
+            "tag": ["css","guru-account","desktop"],
+            "priority": true,
+            "notes": "buttons is not at correct location", 
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/templates/desktop.settings.html"
+            ]
+        },
+        {
+            "rank": 80000,
+            "title": "CTA Credibility file name",
+            "tag": ["missing files","guru-credibility","no idea","desktop"],
+            "priority": false,
+            "notes": "not sure which file name we using",
+            "platforms": ["Chrome","Firefox","Safari"]
+        },
+        {
+            "rank": 9999998,
+            "title": "Guru account Email Inputs",
+            "tag": ["function","guru-account","desktop","mobile"],
+            "priority": true,
+            "notes": "Caps and Lowcaser email should be the same, always lowercase,", 
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/templates/desktop.settings.html",
+                "templates/components.side-menu.html"
+            ]
+        },
+        {
+            "rank": 9999996,
+            "title": "Guru account Name Inputs",
+            "tag": ["function","guru-account","desktop","mobile"],
+            "priority": true,
+            "notes": "1st character of each word from the name should be caps,ex: enter 'jason huang' should convert 'Jason Huang' right away", 
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/templates/desktop.settings.html"
+            ]
+        },
+        {
+            "rank": 9999999,
+            "title": "Guru account University Search",
+            "tag": ["function","guru-account","desktop-m","mobile-m"],
+            "priority": true,
+            "notes": "search University with key word won't filter out the university list",
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/templates/desktop.settings.html"
+            ]
+        },
+        {
+            "rank": 9990000,
+            "screenshot": "https://teamuguru.slack.com/files/jason/F118YUAA0/university.png",
+            "title": "Guru account University Input",
+            "tag": ["css","guru-account","desktop"],
+            "priority": false,
+            "notes": "university input is incorrect",
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/templates/desktop.settings.html"
+            ]
+        },
+        {
+            "rank": 10,
+            "title": "Guru account save button",
+            "tag": ["no idea" ,"css","guru-account","desktop"],
+            "priority": false,
+            "notes": "go back to guru/student home page after it is saved?",
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/templates/desktop.settings.html"
+            ]
+        },
+        {
+            "rank": 1,
+            "title": "Sidebar setting account save button",
+            "tag": ["no idea" ,"css","guru-account","desktop"],
+            "priority": false,
+            "notes": "go back to guru/student home page after it is saved?",
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/templates/desktop.settings.html"
+            ]
+        },
+        {
+            "rank": 2,
+            "screenshot": "https://teamuguru.slack.com/files/jason/F119EALKB/2016-04-15_17_07_41.png",
+            "title": "Unable to closing password popup",
+            "tag": ["css","sidebar","mobile-m"],
+            "priority": false,
+            "notes": "with mobile-m screen screensize unable to close the popup",
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/components.side-menu.html"
+            ],
+            "element: " : ["[name='notifi-modal']"],
+            "error_msg": "unknown error: Element is not clickable at point (232, 305). Other element would receive the click: <a>...</a>\n"       
+        },
+        {
+            "rank": 9300000,
+            "title": "notification checkmark issue",
+            "tag": ["function","notification","mobile-m"],
+            "priority": false,
+            "notes": "second time click the same notifications; if it is active then it will deactive -> active-> and then deactive  ",
+            "platforms": ["Chrome","Firefox","Safari"],
+            "impact_file":[
+                "templates/notifications.modal.html:"
+            ],
+            "element: " : ["[name='notifi-modal']"],
+            "error_msg": "unknown error:  Element( notifications-circle ng-class:{'active':user.email_notifications} active ) is still  active"       
+        },
+        {
+            "rank": 9900000,
+            "title": "guru setting action sheet",
+            "tag": ["function","notification","mobile-m"],
+            "priority": false,
+            "notes": "unable to open setting action sheet without refresh the browser after login",
+            "impact_file":[
+                "templates/components.side-menu.html"
+            ],
+            "element: " : ["[name='notifi-modal']"],
+            "error_msg": "unknown error:  Element( notifications-circle ng-class:{'active':user.email_notifications} active ) is still  active"       
+        },
+        {
+            "rank": 5,
+            "title": "missing profile description checkmark",
+            "tag": ["css","profile","mobile-m","desktop-m"],
+            "priority": false,
+            "notes": "missing a checkmark for guru profile description",
+            "impact_file":[
+                "templates/profile.public.html"
+            ],
+            "element: " : [
+                            "[name ='guru.edit.intro']",
+                            "[name ='guru.mobile.edit.intro']"
+                            ]
+        },
+        {
+            "rank": 9990000,
+            "title": "Guru add/edit their public link",
+            "tag": ["function","profile","mobile-m"],
+            "priority": false,
+            "notes": "empty public link -> no error msg , using the same public link:jason-> error link exist msg & new link -> no checkmark shown",
+            "impact_file":[
+                "templates/profile.public.html"
+            ]
+        },
+        {
+            "rank": 9990000,
+            "title": "Guru add/edit their public link",
+            "tag": ["function","profile","mobile-m"],
+            "priority": false,
+            "notes": "empty public link -> no error msg , using the same public link:jason-> error link exist msg & new link -> no checkmark shown",
+            "impact_file":[
+                "templates/profile.public.html"
+            ]
+        },
+        {
+            "rank": 9990000,
+            "title": "Guru add/edit their public link",
+            "tag": ["function","profile","desktop-m"],
+            "priority": false,
+            "notes": "empty public link -> no error msg , using the same public link:jason-> error link exist msg",
+            "impact_file":[
+                "templates/profile.public.html"
+            ]
+        },
+        {  
+            "rank": 5000000,
+            "screenshot":"",
+            "title": "Search UCD have incorrect result",
+            "tag": ["function","database","university search","desktop"],
+            "priority": true,
+            "notes": "when searching UCD no result is shown",
+            "platforms": ["Chrome"],
+            "impact_file":[
+                "js/controllers/util/UniversitySearchCtrl.js"
+            ]
+        },
+        {  
+            "rank": 99999900,
+            "screenshot":"",
+            "title": "unsure uniSearch.layout.edit_mode true or false in splash/university",
+            "tag": ["function","university search","desktop"],
+            "priority": true,
+            "notes": "determineEditMode() should return true or false when user is exsit ",
+            "platforms": ["Chrome"],
+            "impact_file":[
+                "js/controllers/util/UniversitySearchCtrl.js"
+            ]
+        },
+        {
+            "rank": 10,
+            "screenshot":"https://teamuguru.slack.com/files/jason/F11L4FWR0/screen_shot_2016-04-18_at_11.42.11_am.png",
+            "title": "placeholder of #request-search-input",
+            "tag": ["css","university search","desktop"],
+            "priority": false,
+            "notes": "enter the inputs should hide the placeholder",
+            "impact_file":[
+                "templates/university.search.html"
+            ]
+        },
+        {
+            "rank": 3,
+            "title": "invisible click cluster, CA area",
+            "tag": ["css","university search","desktop"],
+            "priority": false,
+            "notes": "there is an extra cluster when you click cluster,CA area",
+            "impact_file":[
+                "templates/university.search.html"
+            ]
+        },
+        {
+            "rank": 10000000,
+            "screenshot":"https://teamuguru.slack.com/files/jason/F11KBNH3M/screen_shot_2016-04-18_at_1.23.18_pm.png",
+            "title": "no google map, school list is shown in mobile-m",
+            "tag": ["css","university search","mobile"],
+            "priority": false,
+            "notes": "i don't see any google map, school list exist",
+            "impact_file":[
+                "templates/university.search.html"
+            ]
+        },
+        {
+            "rank": 40,
+            "screenshot":"https://teamuguru.slack.com/files/jason/F11MAS8HF/screen_shot_2016-04-18_at_2.05.30_pm.png",
+            "title": "able to scroll down the page, when active search university ",
+            "tag": ["css","university search","desktop"],
+            "priority": false,
+            "notes": "when active search university , able to scroll down, when #splash-one-page-pulldown is active",
+            "impact_file":[
+                "templates/splash.html",
+                "templates/university.search.html"
+            ]
+        },
+        {
+            "rank": 30,
+            "screenshot":"https://teamuguru.slack.com/files/jason/F11LZUPAQ/screen_shot_2016-04-18_at_2.21.09_pm.png",
+            "title": "flash of droppdown when active #splash-one-page-pulldown",
+            "tag": ["css","animation","splash"],
+            "priority": false,
+            "notes": "when #splash-one-page-pulldown is animating, a flash of university droppdown is shown",
+            "impact_file":[
+                "templates/splash.html",
+                "templates/university.search.html"
+            ]
+        },
+        {
+            "rank": 30,
+            "screenshot":"https://teamuguru.slack.com/files/jason/F11LZUPAQ/screen_shot_2016-04-18_at_2.21.09_pm.png",
+            "title": ".splash-university-selected appears after select university",
+            "tag": ["css","animation","splash"],
+            "priority": false,
+            "notes": "as selecting the university, you are able to see .splash-university-selected before #splash-one-page-pulldown deactive",
+            "impact_file":[
+                "templates/splash.html",
+                "templates/university.search.html"
+            ]
+        },
+        {
+            "rank": 20,
+            "screenshot":"",
+            "title": "Wait too long for switching category",
+            "tag": ["css","timing","animation","splash"],
+            "priority": false,
+            "notes": "Wait 2-3 second to have action after click different category",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 20,
+            "screenshot":"",
+            "title": "category doesn't update after switch",
+            "tag": ["css","timing","animation","splash"],
+            "platforms": ["Firefox"],
+            "priority": false,
+            "notes": "nothing change at situation : #blank-1 filled #blank-2 filled and unfilled",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 10000000,
+            "screenshot":"",
+            "title": "browser freezed",
+            "tag": ["function","Crash","splash","mobile"],
+            "platforms": ["Firefox"],
+            "priority": false,
+            "notes": "fill #blank1, #blank-2, and then unselect one of the blank-> wait couples second and click Find my Guru-> browser freezed",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 0,
+            "screenshot":"",
+            "title": "div.splash-adlib li should contain 8 in the list",
+            "tag": ["function","splash","desktop"],
+            "platforms": ["Firefox"],
+            "priority": false,
+            "notes": "",
+            "error_msg":"The list of element (div.splash-adlib li) should have 8 element(s) in it, only 16 element(s) is in the list'",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 0,
+            "screenshot":"",
+            "title": "On Components Enter (browser render)",
+            "tag": ["function","splash","desktop-m","desktop-s"],
+            "platforms": ["Firefox"],
+            "priority": false,
+            "notes": "",
+            "error_msg":"The list of element (div.splash-adlib li) should have 8 element(s) in it, only 16 element(s) is in the list'",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 0,
+            "screenshot":"",
+            "title": " Scenario: Click Green button anyways ",
+            "tag": ["function","splash","desktop-s"],
+            "platforms": ["Safari"],
+            "priority": false,
+            "notes": "TimeoutException usually cuz there are extra element has the same but that element is invisible",
+            "error_msg":"splash-device-button button', 'TimeoutException'",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 30000,
+            "screenshot":"",
+            "title": "On Components Enter (browser render)",
+            "tag": ["function","splash","mobile-s"],
+            "platforms": ["Chrome","Firefox","Safari"],
+            "priority": false,
+            "notes": "Too many madlib tags",
+            "error_msg":"The list of element (div.splash-adlib li) should have 8 element(s) in it, only 16 element(s) is in the list'",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 30000,
+            "screenshot":"",
+            "title": "On Components Enter (browser render)",
+            "tag": ["function","splash","mobile-s"],
+            "platforms": ["Chrome"],
+            "priority": false,
+            "notes": "",
+            "error_msg":"Element is not clickable at point (122, 274). Other element would receive the click <path d='M280'</path>",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 30000,
+            "screenshot":"",
+            "title": "Click Green button anyways",
+            "tag": ["function","splash","mobile-s"],
+            "platforms": ["Chrome"],
+            "priority": false,
+            "notes": "TimeoutException usually cuz there are extra element has the same but that element is invisible",
+            "error_msg":".button-find-guru.splash-mobile-cta', 'TimeoutException', '",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 30000,
+            "screenshot":"",
+            "title": "Click Green button anyways",
+            "tag": ["function","splash","mobile"],
+            "platforms": ["Chrome","Firefox","Safari","ios","android","ios-safari","android-chrome"],
+            "priority": false,
+            "notes": "madlib-tags doesn't shake in mobile version if blanks doesn't filled out",
+            "impact_file":[
+                "templates/splash.html"            
+            ]
+        },
+        {
+            "rank": 30000,
+            "screenshot":"",
+            "title": "Change to search one university",
+            "tag": ["function","splash","mobile"],
+            "platforms": ["Chrome","Firefox","Safari","ios","android","ios-safari","android-chrome"],
+            "priority": false,
+            "notes": "no list, no map is render on mobile version",
+            "impact_file":[
+                "templates/university.search.html"            
+            ]
         }
     ]
 }

@@ -129,7 +129,6 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.deleteFile = function(index) {
-      console.log('attempt to delete file', index);
       if (confirm('Are you sure you want to delete this photo?')) {
         $scope.request.files.splice(index, 1);
         $scope.success.show(0, 750, 'File deleted!');

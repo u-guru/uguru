@@ -71,7 +71,6 @@ angular.module('uguru.directives')
           }, function() {
 
             if (element[0].classList.contains('activate') || ('activatePostBgOnClass' in attr && element[0].classList.contains(attr.activatePostBgOnClass) > -1)) {
-              console.log('it works', element[0].nodeName);
               var elementOpacity = parseFloat(attr.postBgOpacity) || 1;
               var elementNodeName = element[0].nodeName;
               element[0].style.transition = 'all 150ms ease-in-out';
@@ -86,10 +85,8 @@ angular.module('uguru.directives')
               } else {
                 var elemFill = 'rgba("' + (attr.postBg || '#FFFFFF')  + ',' + elementOpacity + '")'
                  if (['circle', 'rect', 'polygon', 'path', 'line'].indexOf(elementNodeName.toLowerCase())) {
-                    console.log(elemFill);
                     element[0].style.fill = elemFill;
                   }
-                console.log(element[0].style);
               }
             }
           })
@@ -191,7 +188,6 @@ angular.module('uguru.directives')
                  if (!parsedIndexArg || !parsedIndexArg.length) continue;
                  var indexArg = parallaxArgs[i];
                  elemParallaxArgs.push(parsedIndexArg);
-                 // console.log('setting', elemParallaxArgs[i], 'to', parseArg(attr[parsedIndexArg], parallaxArgsType[i]) || ('default ' + elemParallax[indexArg]))
                  elemParallax[indexArg] = parseArg(attr[parsedIndexArg], parallaxArgsType[i]) || elemParallax[indexArg]
               }
               $timeout(function() {
@@ -201,9 +197,6 @@ angular.module('uguru.directives')
               })
 
               scope.root.parallax[attr.parallaxParent] = elemParallax
-              $timeout(function() {
-                // console.log(elemParallax)
-              })
             }
           })
           function parseArg(arg, _type) {
@@ -409,7 +402,6 @@ angular.module('uguru.directives')
             return (element.attr('class') && element.attr('class').indexOf(initCounterClass) > -1) || "";
 
           },function(elem_has_init_counter_class) {
-            console.log('starting_counter', elem_has_init_counter_class)
             if (elem_has_init_counter_class) {
               $timeout(function() {
                 scope.$apply(function() {
@@ -419,7 +411,6 @@ angular.module('uguru.directives')
               if (!element[0].id) {
                 var numCounterElems = document.querySelectorAll('[counter]').length + 1
                 element[0].id = 'counter-' + numCounterElems;
-                console.log('setting id for counter directive');
               }
               var counterArgs = {
                   useEasing : false,
@@ -583,7 +574,6 @@ angular.module('uguru.directives')
                 var scaleY = (attr.scaleXOnClick && parseFloat(attr.scaleYOnClick)) || 1.0;
                 var transFormString = "translate(" + translateX + "px, " + translateY + "px)"
                 var scaleString = " scale(" + scaleX + ',' + scaleY + ')'
-                // console.log(transFormString, translateElemCoords);
                 element[0].style.webkitTransform = transFormString + scaleString;
                 element[0].style.MozTransform = transFormString + scaleString;
                 element[0].style.msTransform = transFormString + scaleString;
@@ -599,7 +589,6 @@ angular.module('uguru.directives')
                 }
                 //deactivate other directives with transforms towards the same element "translate-to-elem";
                 var allTranslateOnClickElems = document.querySelectorAll('.' + injectOnTranslateClass + ".active");
-                // console.log('allTranslateOnClickElems', allTranslateOnClickElems.length, 'found:\n', allTranslateOnClickElems);
                 element[0].classList.add(injectOnTranslateClass, 'active', 'recently-active');
                 for (var i = 0; i < allTranslateOnClickElems.length; i++) {
                   var indexTranslateElem  = allTranslateOnClickElems[i];
@@ -715,7 +704,6 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                           }
                         }
                         // var otherClassElems = document.querySelectorAll('.' + indexClass);
-                        // console.log(otherClassElems);
                         // for (var j = 0; j < otherClassElems.length; j++) {
                         //   var otherElemIndex = otherClassElems[j];
                         //   if (otherElemIndex !== element[0]) {
@@ -759,7 +747,6 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
             if (!scope.page.waypoints[attr.animEnterDown]) {
                 scope.page.waypoints[attr.animEnterDown] = {};
             }
-            console.log('anim exit down value has changed');
             $timeout(function() {
               scope.$watch('page.waypoints.' + attr.animEnterDown + '.activated', function(isActive) {
                 var hasFirstTimeEnter = scope.page.waypoints[attr.animEnterDown].hasFirstTimeEnter;
@@ -799,14 +786,12 @@ directive("animFirstEnterDown", ["AnimationService", "$timeout", function (Anima
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
-            // console.log(element[0].attributes);
             $timeout(function() {
               if (!scope.page.waypoints[attr.animFirstEnterDown]) {
                 scope.page.waypoints[attr.animFirstEnterDown] = {};
               }
               scope.page.waypoints[attr.animFirstEnterDown].hasFirstTimeEnter = true;
               scope.$watch('page.waypoints.' + attr.animFirstEnterDown + '.direction', function(isActive) {
-                // console.log(element[0], 'activated for first time enter down');
                 var direction = scope.page.waypoints[attr.animFirstEnterDown].direction;
                 var firstTimeActivated = scope.page.waypoints[attr.animFirstEnterDown].firstTimeEnterActivated;
                 if ((isActive &&  direction === 'down' && !firstTimeActivated)) {
@@ -859,7 +844,6 @@ directive("initWpParent", function () {
           restrict: 'A',
           link: function(scope, element, attr) {
               scope.page.waypoints.parent = '#' + element[0].id || '.' + element[0].class
-              // console.log('wp parent declared', scope.page.waypoints.parent);
           }
       }
 }).
@@ -886,7 +870,6 @@ directive("animOnShow", ["AnimationService", "$timeout", function (AnimationServ
           link: function(scope, element, attr) {
               $timeout(function() {
                 scope.$watch(function() {return element.attr('class'); }, function(newValue){
-                  // console.log('animOnShow triggered', newValue, element.hasClass(attr.animOnShow));
                   if (element.hasClass('show') || (attr.animOnShow && attr.animOnShow.length
                     && element.hasClass(attr.animOnShow) && (attr.animOnShow === attr.animOnHide || !element.hasClass(attr.animOnHide)))) {
                     AnimationService.applyAnimateInDirective(element[0], 'on-show');
@@ -966,7 +949,7 @@ directive("initWp", ['$timeout', 'ScrollService', '$state', function ($timeout, 
 
                 if (elemHasManyWp.length > 1) {
                   if (elemHasManyOffset.length !== elemHasManyWp.length) {
-                    console.log('ERROR: waypoint declaration for element', element[0].id || element[0].class, 'has more/less offsets declared than wp vars');
+                    console.error('ERROR: waypoint declaration for element', element[0].id || element[0].class, 'has more/less offsets declared than wp vars');
                     return;
                   }
                   for (var i = 0; i < elemHasManyWp.length; i++) {

@@ -36,7 +36,6 @@ angular.module('uguru.util.controllers')
                         pulse.classList.add('animated', 'pulse');
 
                         setTimeout(function() {
-                          console.log('shit is pulsating 3 second has passed');
                           pulse.classList.remove('animated', 'pulse');
                           $scope.closeContactGuruModal();
                         }, 2000);

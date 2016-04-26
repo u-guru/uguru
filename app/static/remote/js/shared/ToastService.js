@@ -20,11 +20,11 @@ function ToastService() {
       window.plugins.toast.show(message, duration, position, success, error);
 
       function success() {
-        console.log("toast success!");
+        return
       }
 
       function error(err) {
-        console.log("toast error: " + err);
+        return
       }
 
 

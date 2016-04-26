@@ -50,7 +50,7 @@
 					<!-- @samir -->
 					<!-- BIND -->
 					<!-- add .checkmark to activate animation, parent must have .relative -->
-					<svg class="loader center-bottom" viewBox="0 0 100 100">
+					<svg name='intro_checkmark' class="loader center-bottom" viewBox="0 0 100 100">
 					  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
 					  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
 					</svg>
@@ -193,8 +193,12 @@
 				</ul>
 				<div class='pf-textarea-container relative'>
 					<p class="pf-header-desc ng-class:{'hide': !profile.public_mode}">{{::user.guru_introduction || 'Add an introduction about your past guru-ing experience'}}</p>
-					<textarea class="pf-header-desc hide ng-class:{'show': !profile.public_mode}" ng-keyup="onEnterBlurInput($event)" maxlength="140" ng-blur="saveGuruIntroductionBehindScenes()" placeholder="Add an introduction about your past guru-ing experience" ng-model='user.guru_introduction' rows="4"></textarea>
+					<textarea name ="guru.mobile.edit.intro" class="pf-header-desc hide ng-class:{'show': !profile.public_mode}" ng-keyup="onEnterBlurInput($event)" maxlength="140" ng-blur="saveGuruIntroductionBehindScenes()" placeholder="Add an introduction about your past guru-ing experience" ng-model='user.guru_introduction' rows="4"></textarea>
 					<span class='pf-character-count absolute bottom-0 txt-charcoal hide weight-700 ng-class:{"show":!profile.public_mode}'>{{140 - user.guru_introduction.length}}</span>
+					<svg name='intro_checkmark' class="loader center-bottom " viewBox="0 0 100 100">
+					  <line x1="39.71" x2="25" y1="67.65" y2="52.94"/>
+					  <line x1="39.71" x2="75" y1="67.65" y2="32.35"/>
+					</svg>
 				</div>
 				<div class="pf-list p15top relative">
 					<h1 class='relative'>About</h1>

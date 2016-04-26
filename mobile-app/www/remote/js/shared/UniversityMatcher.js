@@ -45,11 +45,9 @@ function UniversityMatcher(University, $q) {
 	function init() {
 		uniDictionary = {};
 		var alphabet = "abcdefghijklmnopqrstuvwxyz";
-		//console.log("alphabet.length: " + alphabet.length);
 		for(var i=0; i<alphabet.length; i++) {
 			var letter = alphabet[i];
 			uniDictionary[letter] = match(letter, list);
-			//console.log("uniDictionary." + letter + ": " + uniDictionary[letter].length);
 		}
 	}
 
@@ -58,13 +56,11 @@ function UniversityMatcher(University, $q) {
 	function cachedMatch(input) {
 		var input = input.toLowerCase();
 		if(input.length===0) {
-			console.log("empty input, returning whole list");
 			return list;
 		}
 		// if input is just one letter then we can return the matching list from the uniDictionary
 		// property then we also store that list in a cachedDictionary
 		else if(input.length===1) {
-			console.log("single letter input: " + input);
 			cachedInput = input;
 			return uniDictionary[input];
 		}
@@ -74,17 +70,12 @@ function UniversityMatcher(University, $q) {
 		else if(cachedInput && input.length > cachedInput.length && input.indexOf(cachedInput) === 0) {
 
 			cachedInput = input;
-			// console.log('uniDictionary[input]: ' + uniDictionary[input]);
 			if(uniDictionary[input]!== undefined) {
-				// console.log("extending");
-				// console.log("found matching dictionary: uniDictionary['" + input + "']");
 				cachedDictionary = uniDictionary[input];
 				return cachedDictionary;
 			} else {
-				// console.log("input extended and creating new cache dictionary");
 				cachedInput = input;
 				var subInput = input.substring(0, input.length -1);
-				// console.log("subInput: " + subInput);
 				uniDictionary[input] = match(input, uniDictionary[subInput]);
 				cachedDictionary = uniDictionary[input]
 				return cachedDictionary;
@@ -95,13 +86,10 @@ function UniversityMatcher(University, $q) {
 		else if(cachedInput && input.length > 1 && input.length < cachedInput.length && cachedInput.indexOf(input) === 0) {
 
 			cachedInput = input;
-			// console.log('uniDictionary[input]: ' + uniDictionary[input]);
 			if(uniDictionary[input]!== undefined) {
-				// console.log("found matching dictionary: uniDictionary['" + input + "']");
 				cachedDictionary = uniDictionary[input];
 				return cachedDictionary;
 			} else {
-				// console.log("couldn't match dictionary: uniDictionary['" + input + "']");
 				uniDictionary[input] = match(input, list);
 				cachedDictionary = uniDictionary[input]
 				return cachedDictionary;
@@ -109,7 +97,6 @@ function UniversityMatcher(University, $q) {
 		}
 		// in the event they do some weird stuff then we can just go back to searching by the first letter
 		else if(input.length > 1) {
-			console.log("query fallback");
 			cachedInput = input;
 			uniDictionary[input] = match(input, list);
 			cachedDictionary = uniDictionary[input];

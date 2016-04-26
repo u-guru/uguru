@@ -15,7 +15,6 @@ angular.module('uguru.student.controllers')
     $scope.indexToValueMinutes = [null, 0, 15, 30, 45];
 
     $scope.validateForm = function() {
-      // console.log($scope.root.vars.request._length.hours, $scope.root.vars.request._length.minutes);
       if (($scope.root.vars.request._length.hours !== null) && ($scope.root.vars.request._length.minutes !==null)) {
         $ionicHistory.goBack();
       } else {

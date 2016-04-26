@@ -17,8 +17,6 @@ angular.module('uguru.rest')
         }
         all_user_currencies = user.guru_currencies.slice();
         all_currencies_copy = getAll().slice();
-        console.log(getAll())
-
         all_currency_names = getNamesOfCurrencies(all_currencies_copy)
         all_user_currency_names = getNamesOfCurrencies(all_user_currencies)
 

@@ -20,10 +20,6 @@ angular.module('uguru.guru.controllers')
       return result;
     }
 
-
-
-    // console.log(JSON.stringify($scope.user.guru_score_opportunities));
-
     $scope.$on('$ionicView.loaded', function(){
       $scope.guru_opportunities = $scope.process_guru_opportunities($scope.user.guru_score_opportunities)
     });

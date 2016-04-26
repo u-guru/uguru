@@ -32,9 +32,6 @@ angular.module('uguru.root.services')
             }
 
             $cordovaPush.register(config).then(function (result) {
-                console.log("Register success " + result);
-                console.log(JSON.stringify(result));
-
                 if ($scope.platform.ios) {
                     $scope.user.push_notifications = true;
                     $scope.user.current_device.push_notif = result;
@@ -50,7 +47,6 @@ angular.module('uguru.root.services')
                     //we do not have their token
                     $scope.user.current_device.push_notif_enabled = false;
                     $scope.user.updateObj($scope.user.current_device, 'devices', $scope.user.current_device, $scope);
-                    console.log("Register error " + err)
                     if (callback) {
                         callback();
                     }
@@ -96,7 +92,6 @@ angular.module('uguru.root.services')
         }
 
         function handleWindows(token, $scope) {
-            console.log('windows push notification token:', token.uri);
             if (!$scope.user) {
                 $scope.user = $localstorage.getObject('user');
             }
@@ -120,7 +115,6 @@ angular.module('uguru.root.services')
 
             if (notification.event == "registered") {
                 var regId = notification.regid;
-                console.log(regId);
                 if (!$scope.user) {
                     $scope.user = $localstorage.getObject('user');
                 }
@@ -168,9 +162,8 @@ angular.module('uguru.root.services')
 
                 if (notification.badge) {
                     $cordovaPush.setBadgeNumber(notification.badge).then(function (result) {
-                        console.log("Set badge success " + result)
                     }, function (err) {
-                        console.log("Set badge error " + err)
+                        return     
                     });
                 }
             }

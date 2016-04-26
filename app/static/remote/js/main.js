@@ -1,4 +1,3 @@
-
 var LOCAL = _local || false; //local to the 8100 codebasebirbirs
 _startpage = _startpage || '';
 var FIRST_PAGE='^.' + _startpage;
@@ -11,7 +10,8 @@ var img_base = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  REST_URL = "http://localhost:5000";
+  // REST_URL = "http://localhost:5000";
+  REST_URL = "http://192.168.12.134:5000";
   // REST_URL = "http://192.168.42.70:5000";
   // BASE_URL = _ipaddress;
 
@@ -36,10 +36,11 @@ var stats = new Stats();
 
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
-  'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
+  'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers','uguru.version',
   'uguru.util.controllers', 'uguru.dev.controllers', 'uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'uguru.components',
-  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps'])
+  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps','uguru.gpa.controllers','guru.food.controllers',
+  'uguru.sound.controllers','uguru.transit.controllers','transit.services','base64','guru.food.services'])
 
 
 .run(function($ionicPlatform, $localstorage,
@@ -179,36 +180,36 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
 
   //start essay
-  state('root.essay-student-university', {
-        url: '/essay-student-university',
-        templateUrl: BASE + 'templates/essay.university.desktop.html',
-        controller: 'EssayStudentUniversityController',
-  }).
-  state('root.essay-student-home-desktop', {
-        url: '/essay-student-home-desktop',
-        templateUrl: BASE + 'templates/essay.home.desktop.student.html',
-        controller: 'EssayStudentHomeController',
-  }).
-  state('root.essay-student-home-mobile', {
-        url: '/essay-student-home-mobile',
-        templateUrl: BASE + 'templates/essay.home.mobile.student.html',
-        controller: 'EssayStudentHomeController',
-  }).
-  state('root.essay-student-login', {
-        url: '/essay-student-login',
-        templateUrl: BASE + 'templates/essay.student.login.html',
-        controller: 'SignupController',
-  }).
-  state('root.essay-guru-access', {
-        url: '/essay-university',
-        templateUrl: BASE + 'templates/university.html',
-        controller: 'AddUniversityCtrl',
-  }).
-  state('root.essay-home', {
-        url: '/essay-home',
-        templateUrl: BASE + 'templates/essay.student.home.html',
-        controller: "EssayStudentController"
-  }).
+  // state('root.essay-student-university', {
+  //       url: '/essay-student-university',
+  //       templateUrl: BASE + 'templates/essay.university.desktop.html',
+  //       controller: 'EssayStudentUniversityController',
+  // }).
+  // state('root.essay-student-home-desktop', {
+  //       url: '/essay-student-home-desktop',
+  //       templateUrl: BASE + 'templates/essay.home.desktop.student.html',
+  //       controller: 'EssayStudentHomeController',
+  // }).
+  // state('root.essay-student-home-mobile', {
+  //       url: '/essay-student-home-mobile',
+  //       templateUrl: BASE + 'templates/essay.home.mobile.student.html',
+  //       controller: 'EssayStudentHomeController',
+  // }).
+  // state('root.essay-student-login', {
+  //       url: '/essay-student-login',
+  //       templateUrl: BASE + 'templates/essay.student.login.html',
+  //       controller: 'SignupController',
+  // }).
+  // state('root.essay-guru-access', {
+  //       url: '/essay-university',
+  //       templateUrl: BASE + 'templates/university.html',
+  //       controller: 'AddUniversityCtrl',
+  // }).
+  // state('root.essay-home', {
+  //       url: '/essay-home',
+  //       templateUrl: BASE + 'templates/essay.student.home.html',
+  //       controller: "EssayStudentController"
+  // }).
   //end essay
 
   state('root.timeline', {
@@ -252,11 +253,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/signup.html',
         controller: 'SignupController'
   }).
-  state('root.guru-remote', {
-    url:'/guru-remote',
-    templateUrl: BASE + 'templates/guru.remote.html',
-    controller: 'GuruRemoteController'
-  }).
+  // state('root.guru-remote', {
+  //   url:'/guru-remote',
+  //   templateUrl: BASE + 'templates/guru.remote.html',
+  //   controller: 'GuruRemoteController'
+  // }).
   state('root.content', {
     url:'/content',
     templateUrl: BASE + 'templates/content.general.html'
@@ -424,11 +425,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     templateUrl: BASE + 'templates/guru.experiences.container.html',
     controller: 'ExperiencesController'
   }).
-  state('root.cards', {
-        url: '/cards',
-        templateUrl: BASE + 'templates/cards.html',
-        controller: 'CardListController'
-  }).
+  // state('root.cards', {
+  //       url: '/cards',
+  //       templateUrl: BASE + 'templates/cards.html',
+  //       controller: 'CardListController'
+  // }).
   state('root.payments', {
         url: '/payments:cardObj',
         templateUrl: BASE + 'templates/payments.html',
@@ -464,11 +465,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/one.university.animations.html',
         controller: 'OneUniversityController'
   }).
-  state('root.cashout', {
-        url: '/cashout',
-        templateUrl: BASE + 'templates/guru.cashout.html',
-        controller: 'GuruCashoutController'
-  }).
+  // state('root.cashout', {
+  //       url: '/cashout',
+  //       templateUrl: BASE + 'templates/guru.cashout.html',
+  //       controller: 'GuruCashoutController'
+  // }).
   state('root.guru-questions', {
         url: '/guru-questions',
         templateUrl: BASE + 'templates/guru.questions.html',
@@ -497,16 +498,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/courses.html',
         controller: 'CoursesController'
   }).
-  state('root.demo', {
-        url: '/demo',
-        templateUrl: BASE + 'templates/demos.html'
-        // controller: 'gpaController'
-  }).
-  state('root.gpa', {
-        url: '/gpa',
-        templateUrl: BASE + 'templates/dev/gpa.html',
-        controller: 'gpaController'
-  }).
+  // state('root.gpa', {
+  //       url: '/gpa',
+  //       templateUrl: BASE + 'templates/dev/archives/gpa.html',
+  //       controller: 'gpaController'
+  // }).
   state('root.student-session', {
         url: '/student-session:sessionObj',
         templateUrl: BASE + 'templates/student.session.html',
@@ -522,6 +518,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/onboarding.html',
         controller: 'OnboardingController'
   }).
+    state('root.munchies', {
+        url: '/munchies',
+        templateUrl: BASE + 'templates/elements/layouts/powerups.munchies.html'
+  }).
   state('root.browse', {
         url: '/browse',
         templateUrl: BASE + 'templates/browse.html',
@@ -532,11 +532,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/guru.ranking.html',
         controller: 'GuruRankingController'
   }).
-  state('root.guru-tasks', {
-        url: '/guru-tasks',
-        templateUrl: BASE + 'templates/guru.tasks.html',
-        controller: 'GuruTaskController'
-  }).
+  // state('root.guru-tasks', {
+  //       url: '/guru-tasks',
+  //       templateUrl: BASE + 'templates/guru.tasks.html',
+  //       controller: 'GuruTaskController'
+  // }).
   state('root.guru-profile', {
         url: '/guru-profile',
         templateUrl: BASE + 'templates/guru.profile.html',
@@ -587,6 +587,45 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.guru-conversations', {
         url: '/guru-conversations',
         templateUrl: BASE + 'templates/guru.conversations.html'
+  }).
+  //GPA GURU
+  state('root.intro', {
+        url: '/gpa-intro',
+        templateUrl: BASE + 'templates/dev/gpa/university.html',
+        controller: 'AddUniversityCtrl'
+  }).
+  state('root.gpa-home', {
+        url: '/gpa-home',
+        templateUrl: BASE + 'templates/dev/gpa/gpa.home.html',
+        controller: 'GPAController'
+  }).
+  state('root.grub-home', {
+        url: '/grub-home',
+        templateUrl: BASE + 'templates/dev/food/grub.home.html',
+        controller: 'GrubHomeCtrl'
+  }).
+  // state('sound-intro', {
+  //   url: '/sound-intro',
+  //   templateUrl: BASE + 'templates/dev/sound/intro.html',
+  //   controller: 'IntroCtrl'
+  // }).
+  state('sound-home', {
+    url: '/sound-home',
+    templateUrl: BASE + 'templates/dev/sound/music.home.html',
+    controller: 'MusicHomeCtrl'
+  }).
+  state('sound-playlist', {
+    url: '/playlist/:genre',
+    params: {
+      'genre': null
+    },
+    templateUrl: BASE + 'templates/dev/sound/playlist.html',
+    controller: 'PlaylistCtrl'
+  }).
+  state('root.transit-home', {
+        url: '/transit-home',
+        templateUrl: BASE + 'templates/dev/transit/transit.home.html',
+        controller: 'TransitHomeCtrl'
   }).
   state('root.splash', {
         url: '/:categoryId:universityId',

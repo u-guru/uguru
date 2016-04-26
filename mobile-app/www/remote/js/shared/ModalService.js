@@ -31,8 +31,6 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 	}
 
 	function open(modalName, $scope) {
-		console.log("opening " + modalName);
-
 		if (DeviceService.doesCordovaExist() && DeviceService.isIOSDevice()) {
 			if (window.StatusBar) {
 				window.StatusBar.styleLightContent();
@@ -57,7 +55,6 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 	}
 
 	function close(modalName) {
-		console.log("closing " + modalName);
 
 		if(DeviceService.doesCordovaExist() && cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.close();
@@ -71,7 +68,6 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 	var clickClose;
 	function attachListeners(modal) {
 
-		console.log("modal: " + modal);
 		var closeLink = modal.getElementsByClassName('header-down')[0];
 
 		clickClose = function() {
@@ -100,9 +96,17 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 		}
 		switch (modalName) {
 			case 'university':
+				console.log("initlizing university modal..",modalName)
 				$ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', options).then(function(modal) {
 				    university = modal;
 				    controller.university = university;
+				});
+				break;
+			case 'course':
+			console.log("initlizing course modal..");
+				$ionicModal.fromTemplateUrl(BASE + 'templates/dev/gpa/addcourse.modal.html', options).then(function(modal) {
+				    course = modal;
+				    controller.course = course;
 				});
 				break;
 			default: break;

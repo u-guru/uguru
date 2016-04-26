@@ -97,8 +97,6 @@ angular.module('uguru.guru.controllers')
         if ($scope.user.id) {
           $scope.root.vars.profile_url_changed = true;
         }
-        console.log("going into takePicture from Camera");
-
         CameraService.takePicture(successCallback, index);
 
         function successCallback(imageData) {
@@ -145,7 +143,6 @@ angular.module('uguru.guru.controllers')
 
 
       } else {
-        console.log("not going thru the callback route!");
         var element = document.getElementById('file-input-web')
         element.click();
       }

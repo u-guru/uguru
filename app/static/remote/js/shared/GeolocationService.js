@@ -54,7 +54,6 @@ function Geolocation($timeout, University, Utilities, Settings, LoadingService) 
     function geoSuccess(position) {
       coordinates.lat = position.coords.latitude;
       coordinates.lon = position.coords.longitude;
-      console.log('location found!', position.coords.latitude, position.coords.longitude);
       isLocated = true;
 
       if (list) {
@@ -72,7 +71,6 @@ function Geolocation($timeout, University, Utilities, Settings, LoadingService) 
 
     }
     function geoError(error) {
-        console.log("geolocationError: " + error.code);
         LoadingService.hide();
         switch(error.code) {
           case 1: // PERMISSION_DENIED

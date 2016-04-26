@@ -19,7 +19,6 @@
   $ionicSideMenuDelegate, $ionicActionSheet, CardService) {
 
     $scope.data = {card_exists: false};
-    // console.log();
     // $scope.user_cards = [{card_last4:'2121',card_type:'Visa', id:1}, {card_last4:'3121',card_type:'Discover', id:2}, {card_last4:'4121',card_type:'Mastercard', id:3}]
     // $scope.user.name = 'Samir Makhani';
 
@@ -58,7 +57,6 @@
         for (var i =0; i < $scope.user.transfer_cards.length; i++) {
 
         var indexCard = $scope.user.transfer_cards[i];
-        console.log('instantiation cards')
             cardObj = CardService.userCardObj($scope.user.name, indexCard.card_last4, indexCard.id, indexCard.card_type)
             CardService.initCardView('', cardObj);
 
@@ -84,12 +82,7 @@
 
       $scope.$on('modal.shown', function() {
         $timeout(function() {
-
-
-          console.log($scope.editCard);
-
           cardObj = CardService.userCardObj($scope.user.name, $scope.editCard.card_last4, $scope.editCard.id, $scope.editCard.card_type)
-          console.log(cardObj);
           CardService.initCardView('card-modal-wrapper', cardObj);
 
           // if ($scope.editCard.id) {

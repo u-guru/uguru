@@ -63,10 +63,8 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
   var appStartTime;
   $scope.getLoadTime = function() {
         appStartTime = Date.now();
-        //console.log("appStartTime: " + appStartTime);
         var time_ms = appStartTime - start_dom_time;
         appLoadTime = (time_ms / 1000.0).toPrecision(3);
-        console.log("appLoadTime: " + appLoadTime);
         var performance = 'pass';
         if (appLoadTime > 5) performance = 'fail';
         uTracker.track(tracker, "App Launch", {
@@ -101,7 +99,6 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       stats.begin();
       stats.end();
       fpsArray.push(stats.getFPS());
-      //console.log("FPS: " + stats.getFPS());
       if (!stopLoop) {
         requestAnimationFrame(update);
       } else {
@@ -112,8 +109,6 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
         //we are disregarding the first value since it's most likely 0 due to initial transition
         fpsArray.shift();
         var meanFPS = Math.round(total / (fpsArray.length));
-        console.log("meanFPS: " + meanFPS);
-        //console.log("fpsArray: " + fpsArray);
         var performance = 'pass';
         if(meanFPS < 10) performance = 'fail';
         uTracker.track(tracker, "Entered Access Code", {
@@ -244,12 +239,10 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
       mixpanel.track("Get GPS Location attempted");
     }
     if (Geolocation.settings.isAllowed === null || Geolocation.settings.isAllowed === false) {
-      console.log("refreshing universities for location!");
       $scope.refresh.universities = 'update';
       LoadingService.showAmbig();
     }
     else if (Geolocation.settings.isAllowed) {
-      console.log("toggling location.isActive");
       LoadingService.hide()
       Geolocation.settings.isActive = !Geolocation.settings.isActive;
     }
@@ -282,7 +275,6 @@ function AddUniversityCtrl($rootScope, $scope, $state, $timeout, University, $io
 // 				$scope.$parent.$watch(
 // 					'refresh.universities',
 // 					function(newValue, oldValue) {
-// 						console.log("heard something!", newValue, oldValue);
 // 						if (newValue === 'update') {
 
 

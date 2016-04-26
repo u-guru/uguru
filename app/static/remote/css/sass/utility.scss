@@ -87,6 +87,10 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 .transition-150-linear {
 	@include prefix(transition, all 150ms linear, webkit moz ms o);
 }
+[translate-on-click] {
+	@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
+	@include prefix(transition, all 600ms cubic-bezier(.77,-0.22,.05,1.27)!important, webkit moz ms o);
+}
 a, a:hover, a:active, a:visited {
 	color: white;
 	text-decoration:none;

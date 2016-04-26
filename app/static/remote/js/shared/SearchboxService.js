@@ -28,8 +28,6 @@ function SearchboxService(GUtilService, $timeout) {
             if (status == google.maps.GeocoderStatus.OK) {
               var positionObj = {latitude: results[0].geometry.location.lat(), longitude: results[0].geometry.location.lng()};
               return positionObj;
-            } else {
-              console.log("Geocode was not successful for the following reason: " + status);
             }
           });
       }
@@ -92,7 +90,6 @@ function SearchboxService(GUtilService, $timeout) {
 
 
         function displaySuggestionsCallback(predictions, status) {
-          console.log(predictions, status);
           if (status != google.maps.places.PlacesServiceStatus.OK) {
             alert(status);
             return;
@@ -102,7 +99,6 @@ function SearchboxService(GUtilService, $timeout) {
             var new_markers;
             scope.page.dropdowns.location_search.predictions = predictions;
             scope.page.predictionMarkers = []
-            console.log(scope.page.predictionMarkers)
             // scope.instantiateAllMarkers(predictions);
             scope.page.dropdowns.location_search.predictions.forEach(function(prediction, index) {
               successCallback = function(placesResult, status) {

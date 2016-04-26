@@ -39,7 +39,6 @@ angular.module('uguru.rest')
             return sendToEmail;
         }
         function getExceptionToEmail() {
-            console.log(sendToEmail)
             return sendToEmail;
         }
         function getExceptionToDefaultEmail() {
@@ -48,13 +47,11 @@ angular.module('uguru.rest')
         function toggleExceptionToEmail() {
             bool = !getExceptionToEmail();
             setExceptionToEmail(bool);
-            console.log('Default Email:', defaultGHEmail, 'Val:', bool);
             return bool;
         }
         function toggleExceptionToGithubIssue() {
             bool = !getExceptionToGithubIssue();
             setExceptionToGithubIssue(bool);
-            console.log('Create GH Issues from Exceptions:', bool);
         }
         function getExceptionToGithubIssue() {
         	return sendToGH;
@@ -108,10 +105,10 @@ angular.module('uguru.rest')
 		    if (sendToGH || sendToEmail) {
                 post(ghObj).then(
 			        function(response) {
-			          console.log(response);
+                        return
 			        },
 			        function(err) {
-			          console.log(JSON.stringify(err));
+			          console.error(JSON.stringify(err));
 			        }
 		    	)
 		    }

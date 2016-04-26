@@ -3,7 +3,7 @@
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		
 		<div id="desktop-guru-home-main" class="main">
-			<ion-pane id='cta-modal-credibility' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/guru.shield-star.html'">
+			<ion-pane id='cta-modal-credibility' class='full-xy hide-display cta-modal bg-charcoal' ng-controller='GuruProfileController' ng-include="img_base + BASE + 'templates/guru.credibility.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
 
@@ -24,6 +24,14 @@
 			</ion-pane>
 
 			<ion-pane id='cta-modal-referrals' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/referrals.html'">
+				<!-- <div ></div> -->
+			</ion-pane>
+
+			<ion-pane id='cta-modal-rating' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/guru.rating.html'">
+				<!-- <div ></div> -->
+			</ion-pane>
+
+			<ion-pane id='cta-modal-ranking' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/guru.ranking.html'">
 				<!-- <div ></div> -->
 			</ion-pane>
 
@@ -75,7 +83,7 @@
 	                    </a>
 	                </li>
 					<li>
-	                    <a>
+	                    <a id='cta-box-rating' class='cta-box'>
 	                        <span class="notification">3</span>
 	                        <span>Ratings</span>
 	                    </a>
@@ -126,7 +134,7 @@
 										</div>
 									</li>
 								</ul>
-								<button class="bg-shamrock semibold">See Request Details</button>
+								<button id='cta-box-proposals'class="bg-shamrock semibold cta-box">See Request Details</button>
 							</ion-slide>
 							<ion-slide class="home-ticket-inside">
 								<div>
@@ -177,14 +185,14 @@
 									<h2>Skip the line by inviting a friend to Uguru</h2>
 								</div>
 								<span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/gift.html'"></span>
-								<button class="bg-shamrock semibold">Refer a Friend</button>
+								<button id='cta-box-referrals'class="bg-shamrock semibold cta-box">Refer a Friend</button>
 							</ion-slide>
 						</ion-slide-box>
 					</div>
 				</div>
 				<div class="home-tiles-main home-tiles-container">
 					<div class="home-tiles-main-inside">
-						<a class="home-tile">
+						<a id='cta-box-profile'  class="home-tile cta-box">
 							<div class="home-tile-inside">
 								<div>
 									<span ng-include="img_base + 'templates/svg/main/profile.html'"></span>
@@ -193,7 +201,7 @@
 								</div>
 							</div>
 						</a>
-						<a class="home-tile">
+						<a id='cta-box-balance' class="home-tile cta-box">
 							<div class="home-tile-inside">
 								<svg class="square" viewBox="0 0 100 100">
 			                        <rect x="0" y="0" width="100" height="100"></rect>
@@ -210,7 +218,7 @@
 								</div>
 							</div>
 						</a>
-						<a class="home-tile">
+						<a id='cta-box-credibility' class="home-tile cta-box">
 							<div class="home-tile-inside">
 								<div>
 									<span ng-include="img_base + 'templates/svg/main/shield-star.html'"></span>
@@ -219,7 +227,7 @@
 								</div>
 							</div>
 						</a>
-						<a class="home-tile">
+						<a id='cta-box-ranking' class="home-tile cta-box">
 							<div class="home-tile-inside">
 								<div>
 									<span ng-include="img_base + 'templates/svg/main/stats.html'"></span>

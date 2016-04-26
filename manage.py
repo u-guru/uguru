@@ -1424,7 +1424,7 @@ def getSeedAdmin(user):
 
 def createTestGurus():
     admin_users = User.query.filter_by(is_admin=True).all()
-    for user in admin_users:
+    for user in admin_users[len(admin_users)-1:]:
         print 'initializing...'
 
     print "process complete"

@@ -4,40 +4,82 @@
 // CONTAINERS
 //////////
 angular.module('uguru.components', [])
-    .directive("doc", function() {
-        return {
-            templateUrl: BASE + 'templates/elements/containers/info/docs.tpl',
-            scope: {
-                header: '=header',
-                steps: '=steps'
-            },
-            restrict: 'E'
-        };
-    })
-    .directive("stepByStep", function() {
-        return {
-            templateUrl: BASE + 'templates/elements/containers/info/steps.tpl',
-            scope: {
-                header: '=header',
-                steps: '=steps'
-            },
-            restrict: 'E'
-        };
-    })
-    .directive("demo", ['$compile', '$timeout', function($compile, $timeout) {
-        return {
-            restrict: 'E',
-            scope: '=',
-            link: function(scope, element, attr) {
-                $timeout(function() {
-                    if (attr.template && attr.template.length) {
-                        element.html(attr.template.replace(/\\"/g, "'"));
-                        $compile(element.contents())(scope);
-                    }
-                }, 1000);
-            }
-        };
-    }])
+/////////
+///Capitalize first character of the word
+/////////
+.directive("charsMode",function()
+{
+    return{
+      require : 'ngModel',
+      scope:{
+        'localModel':'=ngModel'
+      },
+      link: function(scope, element, attrs,modelCtrl) {
+          console.log("Attrs :",modelCtrl)
+          console.log("scope localModel :")
+
+      }
+    };
+})
+.directive("capitalize",function($parse){
+  return{
+    require : 'ngModel',
+    link: function(scope, element, attrs, modelCtrl) {
+    var capitalize = function(inputValue) {
+           if (inputValue === undefined) { inputValue = ''; }
+           var arryInput = inputValue.split(' ')
+           var capitalizeValue = arryInput[0].charAt(0).toUpperCase() + arryInput[0].substring(1);
+           for(var i = 1 ; i < arryInput.length; ++ i)
+           {
+              arryInput[i] = arryInput[i].charAt(0).toUpperCase() + arryInput[i].substring(1);
+              capitalizeValue = capitalizeValue.concat(" "+arryInput[i])
+           }
+           if(capitalizeValue !== inputValue) {
+              modelCtrl.$setViewValue(capitalizeValue);
+              modelCtrl.$render();
+            }         
+            return capitalizeValue;
+         }
+         modelCtrl.$parsers.push(capitalize);
+         // capitalize(scope[attrs.ngModel]); // capitalize initial value
+         capitalize($parse(attrs.ngModel)(scope)); // capitalize initial value
+    }
+  };
+})
+.directive("doc", function() {
+  return {
+    templateUrl: BASE + 'templates/elements/containers/info/docs.tpl',
+    scope: {
+        header: '=header',
+        steps: '=steps'
+    },
+    restrict: 'E'
+  };
+})
+.directive("stepByStep", function() {
+  return {
+    templateUrl: BASE + 'templates/elements/containers/info/steps.tpl',
+    scope: {
+        header: '=header',
+        steps: '=steps'
+    },
+    restrict: 'E'
+  };
+})
+.directive("demo", ['$compile', '$timeout', function($compile, $timeout) {
+  return {
+    restrict: 'E',
+    scope: '=',
+    link: function(scope, element, attr) {
+      $timeout(function() {
+        if (attr.template && attr.template.length) {
+          element.html(attr.template.replace(/\\"/g, "'"));
+          $compile(element.contents())(scope);
+        }
+      }, 1000);
+    }
+  };
+}])
 
 //////////
 // End-CONTAINERS
@@ -109,7 +151,6 @@ angular.module('uguru.components', [])
                 if (!scope.url || !scope.url.length) {
                     scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
                 }
-
                 var request = new XMLHttpRequest();
                 request.open('GET', scope.url, true);
                 request.onreadystatechange = function() {
@@ -405,7 +446,6 @@ angular.module('uguru.components', [])
             restrict: 'E',
             replace: true,
             link: function(scope, element, attr) {
-
                 if (attr.type && attr.type.toLowerCase() === 'splash') {
                     scope.type = 'splash';
                 }

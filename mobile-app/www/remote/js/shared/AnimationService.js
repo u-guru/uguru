@@ -80,7 +80,6 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
           } else {
             section_var.elements.push(elem);
           }
-          // console.log(indexSelector, 'added to section var', css_arr[i], delay_arr[i]);
         }
      }
 
@@ -126,7 +125,6 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
     }
 
     function applyAnimateInDirective(element, type) {
-    	console.log(element, type);
     	var children = element.querySelectorAll("[anim-" + type + "-child]");
       	if (children.length) {
         	for (var i = 0; i < children.length; i++) {
@@ -170,7 +168,6 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 
 	function animateIn(elem, css_class, delay) {
 		if (!elem || !css_class) {
-			console.log('WARNING: no class sent for ' + elem);
 			return;
 		}
 		var cssClassArgs = getCSSArgs(css_class)
@@ -195,7 +192,6 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	function animateOut(elem, css_class, delay) {
 
 		if (!elem || !css_class) {
-			console.log('WARNING: no class sent for ' + elem);
 			return;
 		}
 		var cssClassArgs = getCSSArgs(css_class)
@@ -265,7 +261,6 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 				  if (!start) start = timestamp;
 				  var progress = timestamp - start;
 				  fpsArray.push(stats.getFPS());
-				  //console.log("FPS: " + stats.getFPS());
 				  if(progress < 200) {
 				    requestAnimationFrame(step);
 				  } else {
@@ -276,9 +271,6 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 				  	//we are disregarding the first value since it's most likely 0 due to initial transition
 				  	fpsArray.shift();
 				  	var meanFPS = Math.round(total / (fpsArray.length));
-				  	console.log("meanFPS: " + meanFPS);
-				  	//console.log("fpsArray: " + fpsArray);
-
 			  		if(target !== undefined) {
 			  			var performance = 'pass';
 			  			if(meanFPS < 10) performance = 'fail';
@@ -338,7 +330,7 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	}
 
 	function errorMsg(error) {
-		console.log("Error with AnimationService: " + error);
+		console.error("Error with AnimationService: " + error);
 	}
 
 }

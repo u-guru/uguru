@@ -174,8 +174,6 @@ angular.module('uguru.util.controllers')
 
     $scope.exploreFirst = function()
     {
-      console.log('CHECK,',$scope.root.vars.guru_mode);
-
       if($scope.root.vars.guru_mode)
         $state.go('^.guru')
       else
@@ -226,7 +224,6 @@ angular.module('uguru.util.controllers')
       }
 
       var failureCallback = function(err) {
-        console.log('failure allback');
         LoadingService.showMsg('The email ' + $scope.signupForm.email + ' does not exist in our records.\n Try again?', 3000);
         $scope.signupForm.email = '';
 
@@ -323,7 +320,7 @@ angular.module('uguru.util.controllers')
         $scope.supportTicket.description = '';
         $scope.support_index = 0;
       }, function(err) {
-        console.log('error from server', err);
+        console.error('error from server', err);
       } );
     }
 
@@ -777,7 +774,6 @@ angular.module('uguru.util.controllers')
 
       LoadingService.show();
       if (payment) {
-        console.log('passing payments', payment);
         $scope.root.vars.editCardClicked = true;
         $ionicViewSwitcher.nextDirection('back');
         $state.go('^.payments', {cardObj:JSON.stringify(payment)})
@@ -1038,8 +1034,6 @@ angular.module('uguru.util.controllers')
       if (!version) {
         version = "v2.0";
       }
-      console.log(appId);
-      console.log(version);
       FB.init({
         appId: appId,
         cookie: true,
@@ -1135,25 +1129,19 @@ angular.module('uguru.util.controllers')
         }
 
         $scope.facebookApiGetDetails(successCallback);
-        console.log('Getting Facebook information...');
     }
 
     var facebookAuthFailureCallback = function(error) {
         $scope.facebookResponseReceived = true;
         LoadingService.hide();
         $scope.error = error;
-        console.error('FB CONNECT FAILED...');
-        console.log('Error from logging from facebook:' + JSON.stringify(error));
         $scope.success.show(0, 1500, 'Something unexpected happened.. Please contact support!');
         ngFB.logout().then(
           function() {
-            console.log('Facebook logout successful');
+            return
           },
           function(err) {
-            console.log("Facebook error from logging out -- couldn't successfully logout");
-            if (err) {
-              console.log('Here is the returned error stringified', JSON.stringify(err));
-            }
+              console.error('Here is the returned error stringified', JSON.stringify(err));
           });
 
         if ($scope.signupModal && $scope.signupModal.isShown()) {
@@ -1210,7 +1198,6 @@ angular.module('uguru.util.controllers')
       $state.go('^.home');
     }
     $scope.postFbGraphApiSuccess = function(success, callback) {
-      console.log('fb info', success);
         $scope.user.first_name = success.first_name;
         $scope.user.last_name = success.last_name;
         $scope.user.name = success.name;
@@ -1237,12 +1224,10 @@ angular.module('uguru.util.controllers')
      $scope.facebookApiGetDetails = function (callback) {
       var successCallback = function(success) {
         $scope.postFbGraphApiSuccess(success, callback)
-        console.log('Facebook is success');
       }
 
       ngFB.api({path: '/me'}).then(
         function(user) {
-            console.log(JSON.stringify(user));
             successCallback(user)
         },
         function(){
@@ -1336,7 +1321,6 @@ angular.module('uguru.util.controllers')
         $scope.user.last_name = $scope.signupForm.last_name;
         $scope.user.email = $scope.signupForm.email;
         $scope.user.password = $scope.signupForm.password;
-        console.log($scope.user);
         return true
 
     }
@@ -1549,7 +1533,6 @@ angular.module('uguru.util.controllers')
 
           var redirectToGuruHome = function() {
           if ($scope.desktopMode) {
-              console.log('detecting signup')
               LoadingService.showSuccess('Account Successfully Created', 2500);
               $state.go('^.guru-home');
             } else {
@@ -1579,7 +1562,6 @@ angular.module('uguru.util.controllers')
 
       },
       function(err){
-        console.log(err);
           // LoadingService.hide();
         if (err.status === 409) {
           // alert('Email already exists in our system! Login?')

@@ -1351,3 +1351,39 @@
         @include prefix(transform, scale(100), webkit moz ms o);
     }
 }
+
+.u-scaleOut {
+    @include prefix(transform-origin, center, webkit moz ms o);
+    @include prefix(animation, u-scaleOut 500ms cubic-bezier(.77,0,.05,1) forwards, webkit moz ms o);
+    @include prefix(animation, u-scaleOut 500ms cubic-bezier(.77,-0.22,.05,1.27) forwards, webkit moz ms o);
+}
+
+@include keyframes(u-scaleOut) {
+    0% {;
+        @include prefix(transform, scale(1), webkit moz ms o);
+    }
+    100% {
+        @include prefix(transform, scale(0), webkit moz ms o);
+    }
+}
+
+@keyframes powerup-loader { 
+  0% { stroke: white; stroke-dashoffset: 378; }
+  20% { stroke: mix(mix(white, mix($azure, $robin), 30%), $slate, 85%); }
+  40% { stroke: mix(mix(white, mix($auburn, $orange), 30%), $slate, 85%); }
+  60% { stroke: mix(mix(white, mix($eggplant, $cobalt), 30%), $slate, 85%); }
+  80% { stroke: mix(mix(white, mix($moxie, $moola), 30%), $slate, 85%); }
+  100% { stroke: white; stroke-dashoffset: 0; }
+}
+
+@include keyframes(powerup-scaleUp-subtle) {
+    0% {
+        @include prefix(transform, scale(1), webkit moz ms o);
+    }
+    50% {
+        @include prefix(transform, scale(0.95), webkit moz ms o);
+    }
+    100% {
+        @include prefix(transform, scale(1), webkit moz ms o);
+    }
+}

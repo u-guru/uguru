@@ -70,7 +70,6 @@ angular.module('uguru.util.controllers')
             // $scope.actual_map.setZoom(17);
             var formatted_address = results[0].formatted_address;
             $scope.root.vars.request.address = formatted_address;
-            console.log($scope.root.vars.request.location);
             $scope.requestPosition.coords.latitude = latCoord;
             $scope.requestPosition.coords.longitude = longCoord;
             $timeout(function() {
@@ -97,12 +96,10 @@ angular.module('uguru.util.controllers')
     $scope.fixInput = function() {
       $timeout(function() {
             container = document.getElementsByClassName('pac-container');
-            console.log(container);
             // disable ionic data tab
             angular.element(container).attr('data-tap-disabled', 'true');
             // leave input field if google-address-entry is selected
             angular.element(container).on("click", function(){
-                console.log('it was clicked');
                 document.getElementById('type-selector').blur();
             });
 
@@ -167,8 +164,6 @@ angular.module('uguru.util.controllers')
     };
 
     $scope.$on('$ionicView.enter', function() {
-
-      console.log('entering view');
       var posOptions = {
         timeout: 10000,
         enableHighAccuracy: false, //may cause high errors if true
@@ -185,7 +180,6 @@ angular.module('uguru.util.controllers')
 
           //show & let them know we couldn't find it
           LoadingService.hide();
-          console.log(JSON.stringify(error));
           $scope.requestPosition = { coords: { latitude: $scope.user.university.latitude, longitude: $scope.user.university.longitude}};
           $scope.success.show(0, 2000, "Sorry! We couldn't detect a strong enough GPS signal.");
           $scope.showGoogleMap();

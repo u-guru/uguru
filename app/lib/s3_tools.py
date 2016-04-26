@@ -114,17 +114,19 @@ def formatHourMinute(hour, minute):
     else:
         return result + "am"
 
-def getBugsFile(key_name="jason", bucket_name="uguru-admin", sorter="priority"):
+def getBugsFile(key_name="jason", bucket_name="uguru-admin", sorter="rank"):
+    # sorter = "rank"
     bucket = conn.get_bucket(bucket_name)
     all_keys = bucket.get_all_keys()
     for key in all_keys:
         if key_name in key.name and 'bugs.json' in key.name:
             import requests, json
             arr = json.loads(requests.get(url = "https://uguru-admin.s3.amazonaws.com/%s" % key.name).text)
-
+            print "https://uguru-admin.s3.amazonaws.com/%s" % key.name
             arr['bugs'] = sorted(arr['bugs'], key=lambda k:k[sorter], reverse=True)
             index = 1
             for item in arr['bugs']:
+                print "#%s\n%s" % (index,sorter)
                 print "#%s\n%s:%s\n%s\n\n" % (index, sorter, item[sorter], item['title'])
                 index += 1
 
@@ -320,12 +322,12 @@ if '--bugs' in sys.argv:
         get_bugs_help()
 
     if (len(sys.argv) == 4 or len(sys.argv) == 5) and 'verify' in sys.argv:
-        filters = None
+        filters = 'rank'
         if len(sys.argv) == 5:
             filters = sys.argv[-1]
         bugs_file = getBugsFile(sorter = filters)
 
-    if len(sys.argv) == 4 or len(sys.argv) == 5 and 'pull' in sys.argv:
+    if (len(sys.argv) == 4 or len(sys.argv) == 5 ) and 'pull' in sys.argv:
         filters = None
         if len(sys.argv) == 5:
             filters = sys.argv[-1]

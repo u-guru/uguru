@@ -101,7 +101,6 @@ angular.module('uguru.student.controllers')
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
 
       if ($state.current.name !== 'root.active-student-session') {
-        console.log('do not run background script anymore... quitting');
         return;
       }
 
@@ -110,18 +109,15 @@ angular.module('uguru.student.controllers')
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
         .then(function (position) {
-          console.log('syncing new location wit the server');
           $scope.syncPositionWithServer(position);
           $scope.student_position = position;
-          console.log('results returned student position, which is', JSON.stringify(position));
           if (time && $state.current.name === 'root.student-active-session') {
-            console.log('we are still in state', $state.current.name, 'so lets sync again in', time, 'seconds');
             $timeout(function() {
                 $scope.getCurrentPositionAndSync(time)
             }, time);
           }
         }, function(err) {
-          console.log(err);
+          console.error(err);
       });
     }
 
@@ -160,11 +156,9 @@ angular.module('uguru.student.controllers')
             $scope.guru_position = $scope.session.guru_positions[$scope.session.guru_positions.length-2, $scope.session.guru_positions.length -1];
             $scope.student_position = $scope.session.student_positions[$scope.session.student_positions.length-2, $scope.session.student_positions.length-1];
             $scope.last_updated = $scope.getCurrentDate();
-            console.log('drawing map with both student & guru');
             $scope.drawGoogleMap($scope.student_position, $scope.guru_position);
 
             if ($state.current.name !== 'root.active-student-session') {
-              console.log('do not run background script anymore');
               return;
             }
 
@@ -172,8 +166,7 @@ angular.module('uguru.student.controllers')
               callback(position)
             }
         }, function(err){
-            console.log(err);
-            console.log('error...something happened with the server;')
+            console.error('error...something happened with the server;')
         });
 
     }
@@ -320,17 +313,14 @@ angular.module('uguru.student.controllers')
 
         $scope.user.last_position = position.coords;
 
-        console.log('user is at ' + $scope.user.last_position.latitude + ',' + $scope.user.last_position.longitude);
 
         $scope.drawGoogleMap($scope.user.last_position, $scope.guru.last_position, true);
         LoadingService.hide();
 
 
         if ($state.current.name !== 'root.active-student-session') {
-            console.log('do not run background script anymore');
             return;
         }
-        console.log('rechecking the location in', recursive_delay, 'seconds');
         if (recursive_delay) {
           $timeout(function() {
             $scope.getUserRecentLocation(recursive_delay);
@@ -338,10 +328,7 @@ angular.module('uguru.student.controllers')
         }
 
       }, function(err) {
-          console.log('error from gps', err);
-
           $scope.drawMapWithSchoolCoordinates();
-
       });
 
     }

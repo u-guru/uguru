@@ -86,8 +86,6 @@ angular.module('uguru.util.controllers')
 
         $scope.turnStatusBarBlack = function() {
           if (window.StatusBar) {
-                      // console.log('Extra #1. Styling iOS status bar to black \n\n');
-
             StatusBar.styleDefault();
             StatusBar.overlaysWebView(true);
           }

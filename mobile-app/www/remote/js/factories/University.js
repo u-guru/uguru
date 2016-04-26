@@ -60,7 +60,6 @@ angular.module('uguru.rest', [])
         printUniversityDateDist : function(universities_dist_dict) {
                 for (var j = 0; j < Object.keys(universities_dist_dict).length; j++) {
                     var indexKey = Object.keys(universities_dist_dict)[j];
-                    console.log(indexKey, universities_dist_dict[indexKey].length, 'universities');
                 }
         },
         initUniversitiesSplash : function(scope, map_options) {
@@ -105,7 +104,6 @@ angular.module('uguru.rest', [])
 
                     function(response) {
 
-                        console.log("Success in getMajors()");
                         source.majors = response.plain();
                         $timeout(function() {
                             $localstorage.set(uni_id + ' majors', source.majors);
@@ -113,10 +111,8 @@ angular.module('uguru.rest', [])
                                 '$Downloaded_Majors': uni_id
                             });
                         }, 1000);
-                        console.log("length of majors in callback: " + source.majors.length);
-
                     }, function(err) {
-                        console.log("Error getting majors: " + err);
+                        console.error("Error getting majors: " + err);
                     });
             }, 0);
 
@@ -138,7 +134,7 @@ angular.module('uguru.rest', [])
                              }
 
                      }, function(err) {
-                         console.log("Error getting popularCourses: " + err);
+                         console.error("Error getting popularCourses: " + err);
                      });
              }, 0);
          },
@@ -157,7 +153,7 @@ angular.module('uguru.rest', [])
                         // $timeout(function() {
 
                     }, function(err) {
-                        console.log("Error getting courses: " + err);
+                        console.error("Error getting courses: " + err);
                     });
             }, 0);
         },
@@ -174,7 +170,6 @@ angular.module('uguru.rest', [])
                     allAccessCodes.push(formattedCode);
                 }
             }
-            console.log(allAccessCodes.length, 'access codes found');
             return allAccessCodes;
         },
         getSorted: function() {
@@ -215,7 +210,7 @@ function hasNoMajors(list) {
 
 
 function removeAlreadyAddedCourses(user_courses) {
-    console.log('attempting to remove courses');
+    return 
 }
 
 var targettedUniversities = [{
