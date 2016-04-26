@@ -734,7 +734,7 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                 return true
               };
             })
-            return injectArg && injectArg.replace("inject", "");
+            return injectArg.replace("inject", "");
           }
                 // function classArgsHasInject(args) {
                 //   console.log('inject args', args);
