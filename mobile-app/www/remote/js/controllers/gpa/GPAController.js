@@ -169,7 +169,7 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	$scope.$on('$ionicView.beforeEnter', function() {
 		console.log("beforeENTER")
-		console.log($scope.universities)
+		console.log($scope.user)
 
 		// initBeforeEnterActions();
 		// init GPA grade 
