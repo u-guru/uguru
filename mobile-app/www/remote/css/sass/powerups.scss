@@ -1,6 +1,11 @@
 @import 'mixin';
 
 #cta-modal-powerups {
+	#powerups-container {
+		&.fadeIn {
+			@include prefix(animation-duration, 250ms!important, webkit moz ms o);
+		}
+	}
 	header {
 		span {
 			svg {
@@ -29,6 +34,9 @@
 			}
 			a {
 				position: relative;
+				&.fadeOut {
+					@include prefix(animation-duration, 500ms!important, webkit moz ms o);
+				}
 				&:before {
 					@include round;
 					content: "";

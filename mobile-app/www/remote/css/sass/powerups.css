@@ -1,3 +1,11 @@
+#cta-modal-powerups #powerups-container.fadeIn {
+  -webkit-animation-duration: 250ms !important;
+  -moz-animation-duration: 250ms !important;
+  -ms-animation-duration: 250ms !important;
+  -o-animation-duration: 250ms !important;
+  animation-duration: 250ms !important;
+}
+
 #cta-modal-powerups header span svg circle {
   fill: #F6C64E;
   stroke: #F6C64E;
@@ -30,6 +38,14 @@
 
 #cta-modal-powerups ul li a {
   position: relative;
+}
+
+#cta-modal-powerups ul li a.fadeOut {
+  -webkit-animation-duration: 500ms !important;
+  -moz-animation-duration: 500ms !important;
+  -ms-animation-duration: 500ms !important;
+  -o-animation-duration: 500ms !important;
+  animation-duration: 500ms !important;
 }
 
 #cta-modal-powerups ul li a:before {
