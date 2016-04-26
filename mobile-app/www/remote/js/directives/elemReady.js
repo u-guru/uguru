@@ -291,7 +291,7 @@ angular.module('uguru.directives')
                 return true
               };
             })
-            return injectArg.replace("inject", "");
+            return (injectArg && injectArg.replace("inject", ""));
           }
         }
       })
@@ -372,7 +372,7 @@ angular.module('uguru.directives')
                 return true
               };
             })
-            return injectArg.replace("inject", "");
+            return (injectArg && injectArg.replace("inject", ""));
           }
         }
       })
@@ -628,7 +628,7 @@ directive("classOnLoad", ["$timeout", 'AnimationService', function ($timeout, An
                           }
                           AnimationService.animateIn(element[0], indexClass);
                         } else {
-                          element[0].classList.add(indexClass);
+                          indexClass && element[0].classList.add(indexClass);
                         }
                       }
                       scope.$apply();
@@ -663,6 +663,7 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
           restrict: 'A',
           link: function(scope, element, attr) {
               element.on("click", function() {
+                console.log(element[0], 'clicked');
                 var delay = attr.classOnClickDelay || 0;
                 var classes = attr.classOnClick.split(", ");
                 $timeout(function() {
@@ -712,17 +713,29 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                       }
                     }
                 }, delay);
-                function classArgsHasInject(args) {
-                  if (!args || args.length) return false;
-                  var injectArg = null;
-                  args.filter(function(word, index) {
-                    if (word.indexOf("inject") > -1) {
-                      injectArg = args[index];
-                      return true
-                    };
-                  })
-                  return (args && injectArg.replace("inject", ""));
-                }
+          function classArgsHasInject(args) {
+            var injectArg = null;
+            args.filter(function(word, index) {
+              console.log(word);
+              if (word.indexOf("inject") > -1) {
+                injectArg = args[index];
+                return true
+              };
+            })
+            return injectArg && injectArg.replace("inject", "");
+          }
+                // function classArgsHasInject(args) {
+                //   console.log('inject args', args);
+                //   if (!args || args.length) return false;
+                //   var injectArg = null;
+                //   args.filter(function(word, index) {
+                //     if (word.indexOf("inject") > -1) {
+                //       injectArg = args[index];
+                //       return true
+                //     };
+                //   })
+                //   return (args && injectArg && injectArg.replace("inject", ""));
+                // }
               });
             }
           }

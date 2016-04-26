@@ -1,5 +1,6 @@
 @import 'mixin';
 
+/* ---------- SPLASH ADLIB TAGS */
 .tag-adlib:not(.blank):not(.ghost) {
 	i {
 		display: block;
@@ -13,11 +14,9 @@
 		}
 	}
 }
-
-/* ---------- SPLASH ADLIB TAGS */
 li {
 	&.animated-start {
-		@include prefix(transform, matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), webkit moz ms o);
+		opacity: 0;
 		.tag-adlib:not(.blank):not(.ghost) {
 			.desktop {
 				rect {
@@ -34,7 +33,7 @@ li {
 				}
 			}
 			b {
-				@include prefix(transform, matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), webkit moz ms o);
+				opacity: 0;
 			}
 		}
 	}
@@ -43,12 +42,12 @@ li {
 		.tag-adlib:not(.blank):not(.ghost) {
 			.desktop {
 				rect {
-					animation: tag-adlib-desktop 800ms linear 500ms forwards;
+					animation: tag-adlib-desktop 800ms linear 2500ms forwards;
 				}
 			}
 			.mobile {
 				rect {
-					animation: tag-adlib-mobile 800ms linear 500ms forwards;
+					animation: tag-adlib-mobile 800ms linear 2500ms forwards;
 				}
 			}
 			b {
@@ -356,21 +355,45 @@ li {
 		}
 	}
 	&#cta-box-powerups {
-		&:not(.active) {
+		position: fixed;
+		right: 0;
+		top: 4px;
+		z-index: 2000;
+		@media screen and (min-width: 860px) {
+			right: 57px;
+			top: 14px;
+		}
+		svg {
+			circle {
+				stroke: $gold;
+			}
+			path {
+				fill: $gold;
+				stroke: $gold;
+			}
+			&.powerup-activated {
+				@include prefix(transform, scale(3.0476) translateY(14px) translateX(-179px), webkit moz ms o);
+			}
+		}
+		&:hover, &:focus {
 			svg {
 				circle {
-					stroke: $gold;
-				}
-				path {
-					fill: $gold;
-					stroke: $gold;
+					stroke: white;
 				}
 			}
-			&:hover, &:focus {
-				svg {
-					circle {
-						stroke: white;
-					}
+		}
+		&.powerup-activated {
+			&:before {
+				@include prefix(animation, powerup-before-scaleUp 1000ms ease-in-out forwards, webkit moz ms o);
+			}
+			svg {
+				circle {
+					fill: $gold!important;
+					stroke: $gold!important;
+				}
+				path {
+					fill: white!important;
+					stroke: white!important;
 				}
 			}
 		}
@@ -708,6 +731,11 @@ li {
 		&.desktop {
 			@include flex-center-vertical;
 			display: none!important;
+			.splash-hero-nav-container {
+				@include flex;
+				@include flex-center-vertical;
+				padding-right: 57px;
+			}
 			h2 {
 				@include flex;
 				@include flex-center-vertical;

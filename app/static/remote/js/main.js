@@ -11,7 +11,8 @@ if (LOCAL) {
 
   BASE = 'remote/';
   // REST_URL = "http://localhost:5000";
-  REST_URL = "http://192.168.42.70:5000";
+  REST_URL = "http://192.168.12.134:5000";
+  // REST_URL = "http://192.168.42.70:5000";
   // BASE_URL = _ipaddress;
 
   // REST_URL = 'https://192.168.0.107:5000';
@@ -35,10 +36,11 @@ var stats = new Stats();
 
 
 angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
-  'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers', 'uguru.version',
+  'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers','uguru.version',
   'uguru.util.controllers', 'uguru.dev.controllers', 'uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'uguru.components',
-  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps'])
+  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps','uguru.gpa.controllers','guru.food.controllers',
+  'uguru.sound.controllers','uguru.transit.controllers','transit.services','base64','guru.food.services'])
 
 
 .run(function($ionicPlatform, $localstorage,
@@ -496,11 +498,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/courses.html',
         controller: 'CoursesController'
   }).
-  state('root.gpa', {
-        url: '/gpa',
-        templateUrl: BASE + 'templates/dev/gpa.html',
-        controller: 'gpaController'
-  }).
+  // state('root.gpa', {
+  //       url: '/gpa',
+  //       templateUrl: BASE + 'templates/dev/archives/gpa.html',
+  //       controller: 'gpaController'
+  // }).
   state('root.student-session', {
         url: '/student-session:sessionObj',
         templateUrl: BASE + 'templates/student.session.html',
@@ -515,6 +517,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/onboarding',
         templateUrl: BASE + 'templates/onboarding.html',
         controller: 'OnboardingController'
+  }).
+    state('root.munchies', {
+        url: '/munchies',
+        templateUrl: BASE + 'templates/elements/layouts/powerups.munchies.html'
   }).
   state('root.browse', {
         url: '/browse',
@@ -566,11 +572,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/student-conversations',
         templateUrl: BASE + 'templates/student.conversations.html'
   }).
-  // state('root.bill-student', {
-  //       url: '/bill-student',
-  //       templateUrl: BASE + 'templates/guru.bill-student.html',
-  //       controller: 'BillStudentController'
-  // }).
+  state('root.bill-student', {
+        url: '/bill-student',
+        templateUrl: BASE + 'templates/guru.bill-student.html',
+        controller: 'BillStudentController'
+  }).
   state('root.test-error', {
         url: '/test-error',
         templateUrl: BASE + 'templates/guru.bill-student.html',
@@ -581,6 +587,45 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.guru-conversations', {
         url: '/guru-conversations',
         templateUrl: BASE + 'templates/guru.conversations.html'
+  }).
+  //GPA GURU
+  state('root.intro', {
+        url: '/gpa-intro',
+        templateUrl: BASE + 'templates/dev/gpa/university.html',
+        controller: 'AddUniversityCtrl'
+  }).
+  state('root.gpa-home', {
+        url: '/gpa-home',
+        templateUrl: BASE + 'templates/dev/gpa/gpa.home.html',
+        controller: 'GPAController'
+  }).
+  state('root.grub-home', {
+        url: '/grub-home',
+        templateUrl: BASE + 'templates/dev/food/grub.home.html',
+        controller: 'GrubHomeCtrl'
+  }).
+  // state('sound-intro', {
+  //   url: '/sound-intro',
+  //   templateUrl: BASE + 'templates/dev/sound/intro.html',
+  //   controller: 'IntroCtrl'
+  // }).
+  state('sound-home', {
+    url: '/sound-home',
+    templateUrl: BASE + 'templates/dev/sound/music.home.html',
+    controller: 'MusicHomeCtrl'
+  }).
+  state('sound-playlist', {
+    url: '/playlist/:genre',
+    params: {
+      'genre': null
+    },
+    templateUrl: BASE + 'templates/dev/sound/playlist.html',
+    controller: 'PlaylistCtrl'
+  }).
+  state('root.transit-home', {
+        url: '/transit-home',
+        templateUrl: BASE + 'templates/dev/transit/transit.home.html',
+        controller: 'TransitHomeCtrl'
   }).
   state('root.splash', {
         url: '/:categoryId:universityId',

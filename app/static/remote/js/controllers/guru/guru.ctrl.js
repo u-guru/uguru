@@ -39,7 +39,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   };
 
   $scope.profile = {edit_mode:true, showCredibility:false};
-
+  console.log("USER",$scope.user)
   $scope.activePortfolioItem = {};
 
   if (!$scope.user.id) {
