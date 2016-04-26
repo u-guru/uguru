@@ -10,11 +10,12 @@ angular.module('uguru.gpa.controllers',[])
 	'TransitionService',
 	'DeviceService',
 	'Restangular',
+	'User',
 	GPAController]);
 
 
 function GPAController($scope, ModalService, GPAService, $localstorage,
-	$timeout, PopupService, TransitionService, DeviceService, Restangular) {
+	$timeout, PopupService, TransitionService, DeviceService, Restangular, User) {
 
 	$scope.toggleHeader = function(index) {
 		if ($scope.data.headerSelected === index && !$scope.transitioning) {
@@ -141,10 +142,9 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 			$scope.search_text.course = '';
 
 			// Set up gpa but not working right -- Jason
-			$scope.overall = GPAService.init($scope.user.grades);
-			initSidebarGPAHomeTransition();
-			setIOSStatusBarToLightText();
-			console.log($scope.overall.averageGPA);
+			// initSidebarGPAHomeTransition();
+			// setIOSStatusBarToLightText();
+			// console.log($scope.overall.averageGPA);
 
 			$scope.closeModal('course');
 		}
@@ -168,6 +168,18 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	$scope.$on('$ionicView.loaded', function() {
 		loadCourses(2307);
+		$scope.overall = GPAService.init($scope.user.grades);
+		if (!$scope.user) {
+			$scope.user = User.initUser();
+			console.log('user initialized', $scope.user);
+			$scope.user.grades = [];
+			return;
+		}
+		if (!$scope.user.grades) {
+			console.log('user initialized', $scope.user);
+			$scope.user.grades = [];
+			return;
+		}
 	})
 
 	$scope.$on('$ionicView.beforeEnter', function() {
