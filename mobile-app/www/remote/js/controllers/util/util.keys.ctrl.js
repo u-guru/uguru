@@ -22,6 +22,7 @@ angular.module('uguru.util.controllers')
 
 		$scope.player = initAnimationPlayer();
 		$scope.timer = initAnimationTimer()
+		$scope.defaults = {};
 		$scope.animationDict = {importTextarea:'', importInput: ''};
 		$scope.layout = {index: 0};
 		$scope.animationDirectionOptions = {options: ["normal", "reverse", "alternate", "alternate-reverse"], selectedIndex: 0, size: "small", onOptionClick: setAnimationDirectionFunc};
@@ -1361,6 +1362,88 @@ angular.module('uguru.util.controllers')
 			},1000);
 		}
 
+		$scope.updateDefaults = function(value, property) {
+
+			if (property in $scope.defaults.properties && property in $scope.defaults.units) {
+				$scope.defaults.properties[property] = parseInt(value);
+				$localstorage.setObject('defaults', $scope.defaults);
+				LoadingService.showSuccess(property + ' with value of ' + value + $scope.defaults.units[property].default + ' saved as default & cached', 2500);
+				console.log($localstorage.getObject('defaults'));
+			}
+		}
+
+		function getDefaults () {
+
+			var defaults =  {
+				units: {
+					translateX: { options: ['px', '%'], selected: '%', default: '%'},
+					translateY: { options: ['px', '%'], selected: '%', default: '%'},
+					translateZ: { options: ['px', '%'], selected: '%', default: '%'},
+					transformOriginX: { options: ['px', '%'], selected: '%', default: '%'},
+					transformOriginY: { options: ['px', '%'], selected: '%', default: '%'},
+					transformOriginZ: { options: ['px'], selected: 'px', default: 'px'},
+				},
+				properties: {
+					transformOriginX: 50,
+					transformOriginY: 50,
+					transformOriginZ: 0,
+					translateX: 0,
+					translateY: 0,
+					translateZ: 0,
+					scaleX: 1,
+					scaleY: 1,
+					rotate: '0deg',
+					rotateX: '0deg',
+					rotateY: '0deg',
+					rotateZ: '0deg',
+					skewX: '0deg',
+					skewY: '0deg',
+					opacity: 1,
+					backgroundColor: '#FFFFFF',
+					color: '#FFFFFF',
+					fill: '#FFFFFF',
+					fillOpacity: 1,
+					strokeWidth: 1,
+					strokeDasharray: 5,
+					strokeDashoffset: 1
+				}
+			}
+			console.log($localstorage.getObject('defaults'));
+			if (!$localstorage.getObject('defaults') || ($localstorage.getObject('defaults') === [] && !$localstorage.getObject('defaults').length)) {
+
+				$localstorage.setObject('defaults', defaults)
+				defaults = $localstorage.getObject('defaults');
+				return defaults;
+
+			} else {
+				defaults = $localstorage.getObject('defaults');
+				console.log(defaults);
+				return defaults;
+			}
+			$timeout(function() {
+				$scope.$apply();
+			})
+
+		}
+
+		function applyDefaultProperties(defaults) {
+			var properties = defaults.properties;
+			var units = defaults.units;
+			if (units && properties) {
+				var propertyNames = Object.keys(properties);
+				var currentlySupported = ['transformOriginX', 'transformOriginY', 'transformOriginZ'];
+				for (var i = 0; i < propertyNames.length; i++) {
+					var indexProperty = propertyNames[i];
+					if (currentlySupported.indexOf(indexProperty) > -1 && indexProperty.indexOf("transformOrigin") > -1) {
+						var transformOriginValue = properties['transformOriginX'] + units['transformOriginX'].default + " " + properties['transformOriginY'] + units['transformOriginY'].default + " " + properties['transformOriginZ'] + units['transformOriginZ'].default;
+						console.log('transform origin set to', transformOriginValue);
+						$scope.actor.style.transformOrigin = transformOriginValue;
+						$scope.actor.style[browserPrefix + 'TransformOrigin'] = transformOriginValue;
+					}
+				}
+			}
+		}
+
 
 		function initView() {
 			browserPrefix = getBrowserPrefix();
@@ -1368,8 +1451,8 @@ angular.module('uguru.util.controllers')
 
 			//turn off for now
 			false && loadAllS3Files();
-
-
+			$scope.defaults = getDefaults();
+			applyDefaultProperties($scope.defaults);
 			$scope.actor = document.querySelector('#stage-elem');
 			initAnimationListener($scope.actor);
 
@@ -1405,7 +1488,7 @@ angular.module('uguru.util.controllers')
 				document.execCommand('copy')
 			}, 1000)
 			function generateClassText(anim) {
-				 return "." + anim.obj.name + "\n{\n   " + ' animation:  ' + anim.obj.name + '  ' + anim.attr.duration  + '  ' + anim.attr.timing_function + '  ' + anim.attr.delay + '  ' + anim.attr.iteration_count + '  ' + anim.attr.direction + ';\n    ' + browserPrefix + '-' + ' animation:  ' + anim.obj.name + '  ' + anim.attr.duration  + '  ' + anim.attr.timing_function + '  ' + anim.attr.delay + '  ' + anim.attr.iteration_count + '  ' + anim.attr.direction + ';\n}\n\n'
+				 return "." + anim.obj.name + "\n{\n   " + ' animation:  ' + anim.obj.name + '  ' + anim.attr.duration  + '  ' + anim.attr.timing_function + ' ' + anim.attr.delay + ' ' + anim.attr.iteration_count + ' ' + anim.attr.direction + ';\n    ' + browserPrefix + '-' + 'animation:  ' + anim.obj.name + ' ' + anim.attr.duration  + ' ' + anim.attr.timing_function + ' ' + anim.attr.delay + ' ' + anim.attr.iteration_count + ' ' + anim.attr.direction + ';\n}\n\n'
 			}
 		}
 
@@ -1453,7 +1536,7 @@ angular.module('uguru.util.controllers')
 		$timeout(function() {
 
 			$timeout(function() {
-
+				angular.element(document.querySelector('#export-button')).triggerHandler('click');
 				// $scope.animation = $scope.importFromCSSText($scope.animationDict.importTextarea, $scope.animationDict.importInput);
 				// importAnimationFromRawCssText(initAnimationFromAnimObj, css_text);
 				// var arr = getAllKeyFrameAnimations();
@@ -1490,7 +1573,7 @@ angular.module('uguru.util.controllers')
 				// 	}
 				// }
 
-			}, 2000);
+			});
 			initAll();
 
 		}, 2000)
