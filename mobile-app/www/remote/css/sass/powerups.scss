@@ -191,14 +191,14 @@
 		.landing-demo {
 			> svg {
 				* {
-					stroke: white;
+					stroke: lighten($slate, 15%);
 				}
 				circle {
-					fill: mix(white, mix($auburn, $orange), 80%);
+					fill: mix(mix(white, mix($auburn, $orange), 30%), lighten($slate, 15%), 40%);
 				}
 				rect {
 					&:first-child {
-						fill: mix(white, mix($auburn, $orange), 50%);
+						fill: mix(mix(white, mix($auburn, $orange), 30%), lighten($slate, 15%), 70%);
 					}
 					&:last-child {
 						fill: white;
@@ -208,6 +208,9 @@
 		}
 		.landing-content {
 			background: #a68787;
+			.landing-color {
+				background: #a68787;
+			}
 		}
 	}
 	&.landing-sound {

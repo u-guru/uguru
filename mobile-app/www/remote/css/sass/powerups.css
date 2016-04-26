@@ -217,15 +217,15 @@
 }
 
 .landing-container.landing-munchies .landing-demo > svg * {
-  stroke: white;
+  stroke: #637074;
 }
 
 .landing-container.landing-munchies .landing-demo > svg circle {
-  fill: #fbe0da;
+  fill: #9c7d79;
 }
 
 .landing-container.landing-munchies .landing-demo > svg rect:first-child {
-  fill: #f5b1a4;
+  fill: #c6877c;
 }
 
 .landing-container.landing-munchies .landing-demo > svg rect:last-child {
@@ -233,6 +233,10 @@
 }
 
 .landing-container.landing-munchies .landing-content {
+  background: #a68787;
+}
+
+.landing-container.landing-munchies .landing-content .landing-color {
   background: #a68787;
 }
 

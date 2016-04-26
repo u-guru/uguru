@@ -11,7 +11,7 @@
 
     //@gabrielle-note
     //here is the selector string
-    var svgShapeSelector = 'svg.demo-1 path';
+    var svgShapeSelector = 'svg.demo-2 path';
 
     $timeout(function() {
 

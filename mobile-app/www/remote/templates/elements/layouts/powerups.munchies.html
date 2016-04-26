@@ -1,14 +1,14 @@
 <style>
-    svg.demo-1 path {
-      stroke-dashoffset: 1000;
-      stroke-dasharray: 1000;
-  }
+    /*svg.demo-1 path {
+        stroke-dashoffset: 1000;
+        stroke-dasharray: 1000;
+    }*/
 </style>
 <!-- @gabrielle-note, didnt have chance to make directive, so as long as you add the class 'demo-1', see @gabrielle note for the selectors for util.munchies.ctrl.js -->
-<ion-view ng-controller='MunchiesController'>
-	<ion-content class="full-xy absolute" id='munchie-scroll-container'>
+<ion-view class="landing-munchies landing-container full-xy p15xy" ng-controller='MunchiesController'>
+	<ion-content class="full-xy absolute overflow-auto" style="height: 100%;" id='munchie-scroll-container'>
 		<!--Your original stuff!-->
-        <div class="landing-munchies landing-container full-xy p15xy overflow-auto txt-center">
+        <div class="landing-munchies landing-container full-xy txt-center" style="height: 100%;">
         	<div id="powerup-landing-icon" class="powerup-icon margin-auto" ng-include="img_base + 'templates/elements/assets/powerups/munchies-card.tpl'"></div>
         	<h1 class="txt-48 black m15top">Munchies Guru</h1>
         	<h2 class="txt-28 semibold margin-none">The answer to a hangry campus.</h2>
@@ -33,9 +33,24 @@
                 <div ng-include="img_base + 'templates/elements/assets/powerups/munchies/line-4.svg'"></div>
                 <div ng-include="img_base + 'templates/elements/assets/powerups/munchies/line-5.svg'"></div>
                 <div class="absolute top-0 left-0 full-xy">
-                    <div ng-include="img_base + 'templates/elements/assets/powerups/munchies/phone-1.svg'"></div>
+                    <div style="padding-left: 570px; margin-top: 100px;" ng-include="img_base + 'templates/elements/assets/powerups/munchies/phone-1.svg'"></div>
+                    <div class="flex full-x">
+                        <span class="block landing-color p15xy txt-28 semibold">
+                            Find the Best Food on Campus
+                        </span>
+                    </div>
                     <div ng-include="img_base + 'templates/elements/assets/powerups/munchies/phone-2.svg'"></div>
+                    <div class="flex full-x">
+                        <span class="block landing-color p15xy txt-28 semibold">
+                            Filter Results at Your Convenience
+                        </span>
+                    </div>
                     <div ng-include="img_base + 'templates/elements/assets/powerups/munchies/phone-3.svg'"></div>
+                    <div class="flex full-x">
+                        <span class="block landing-color p15xy txt-28 semibold">
+                            Get the Scoop on Your Next Meal
+                        </span>
+                    </div>
                     <!-- <div ng-include="img_base + 'templates/elements/assets/powerups/munchies/pizza.png'"></div>
                     <div ng-include="img_base + 'templates/elements/assets/powerups/munchies/coffee.png'"></div>
                     <div ng-include="img_base + 'templates/elements/assets/powerups/munchies/sushi.png'"></div> -->
