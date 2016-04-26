@@ -298,7 +298,7 @@ angular.module('uguru.directives')
                 return true
               };
             })
-            return injectArg && injectArg.replace("inject", "");
+            return (injectArg && injectArg.replace("inject", ""));
           }
         }
       })
@@ -379,7 +379,7 @@ angular.module('uguru.directives')
                 return true
               };
             })
-            return injectArg && injectArg.replace("inject", "");
+            return (injectArg && injectArg.replace("inject", ""));
           }
         }
       })

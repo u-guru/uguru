@@ -522,6 +522,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/onboarding.html',
         controller: 'OnboardingController'
   }).
+    state('root.munchies', {
+        url: '/munchies',
+        templateUrl: BASE + 'templates/elements/layouts/powerups.munchies.html'
+  }).
   state('root.browse', {
         url: '/browse',
         templateUrl: BASE + 'templates/browse.html',
@@ -577,6 +581,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/guru.bill-student.html',
         controller: 'BillStudentController'
   }).
+
   state('root.test-error', {
         url: '/test-error',
         templateUrl: BASE + 'templates/guru.bill-student.html',

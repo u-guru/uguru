@@ -372,7 +372,7 @@ li {
 				stroke: $gold;
 			}
 			&.powerup-activated {
-				@include prefix(transform, scale(3.05) translateY(14px) translateX(-178px), webkit moz ms o);
+				@include prefix(transform, scale(3.0476) translateY(14px) translateX(-179px), webkit moz ms o);
 			}
 		}
 		&:hover, &:focus {

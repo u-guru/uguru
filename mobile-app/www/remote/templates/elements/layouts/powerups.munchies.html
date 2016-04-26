@@ -1,0 +1,43 @@
+<style>
+    svg.demo-1 path {
+      stroke-dashoffset: 1000;
+      stroke-dasharray: 1000;
+    }
+
+</style>
+<!-- @gabrielle-note, didnt have chance to make directive, so as long as you add the class 'demo-1', see @gabrielle note for the selectors for util.munchies.ctrl.js -->
+<ion-view class="landing-munchies landing-container full-xy txt-center" ng-controller='MunchiesController'>
+	<svg class='demo-1 full-x high-z-index fixed top-0 left-0' fill="none" viewBox="0 0 100 1" xmlns="http://www.w3.org/2000/svg">
+  		<path stroke="white" stroke-width="5" d="M0 0 H100"/>
+  	</svg>
+  	<svg class='demo-1 left-0 high-z-index fixed top-0' fill="none" style="width:10px;"  viewBox="0 0 1 100" xmlns="http://www.w3.org/2000/svg">
+  		<path stroke="white" stroke-width="5" d="M0 0 V100"/>
+  	</svg>
+	<ion-content class="full-xy absolute z-index-2" id='munchie-scroll-container'>
+
+		<!--Your original stuff!-->
+		<section class='full-x' style='height:100%;'>
+			<div id="munchies-landing-icon" class="powerup-icon margin-auto" ng-include="img_base + 'templates/elements/assets/powerups/munchies-card.tpl'"></div>
+			<h1 class="txt-48 black m15top">Munchies Guru</h1>
+			<h2 class="txt-28 semibold margin-none">The answer to a hangry campus.</h2>
+			<div class='landing-demo full-x m30top relative high-z-index'>
+				<svg viewBox="0 0 318 651">
+					<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
+					<circle cx="158.5" cy="610.5" r="25"></circle>
+					<rect x="21.5" y="79.5" width="276" height="493"></rect>
+				</svg>
+				<div class="landing-content bg-transparent max-800 relative z-index-1 p15xy radius-4" ng-if='false'>
+					<h1 class="txt-slate txt-36 semibold">Preview the App</h1>
+				</div>
+			</div>
+		</section>
+		<!-- End your original stuff-->
+
+
+		<section class='top-0 left-0 full-x bg-charcoal' style='height:100%;'>
+			yo
+		</section>
+		<section class='top-0 left-0 full-x bg-azure' style='height:100%;'>
+		</section>
+	</ion-content>
+</ion-view>

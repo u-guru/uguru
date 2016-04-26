@@ -115,6 +115,19 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
   transition: all 150ms linear;
 }
 
+[translate-on-click] {
+  -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+  -moz-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+  -ms-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+  -o-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+  transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+  -webkit-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
+  -moz-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
+  -ms-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
+  -o-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
+  transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
+}
+
 a, a:hover, a:active, a:visited {
   color: white;
   text-decoration: none;
