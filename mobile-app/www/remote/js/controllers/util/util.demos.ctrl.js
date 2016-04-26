@@ -9,38 +9,51 @@ angular.module('uguru.util.controllers')
   '$interval',
   function($scope, $state, $timeout, SVGService, LoadingService, $interval) {
 
-    $scope.timer = 5;
-    $scope.renderContent = false;
-    $scope.show = false;
-    $scope._class = false;
-    $scope.status = 'Starting..'
-    $interval(function() {
-      if ($scope.timer === 4) {
-        $scope.renderContent = true;
-        $scope.status = 'rendering'
-        $timeout(function() {
-          $scope.$apply();
-        })
+//     $(document).ready(function() {
+//   //variable for the 'stroke-dashoffset' unit
+//   var $dashOffset = $(".path").css("stroke-dashoffset");
+//   //on a scroll event - execute function
+//   $(window).scroll(function() {
+//     //calculate how far down the page the user is
+//     var $percentageComplete = (($(window).scrollTop() / ($("html").height() - $(window).height())) * 100);
+//     //convert dashoffset pixel value to interger
+//     var $newUnit = parseInt($dashOffset, 10);
+//     //get the value to be subtracted from the 'stroke-dashoffset'
+//     var $offsetUnit = $percentageComplete * ($newUnit / 100);
+//     //set the new value of the dashoffset to create the drawing effect
+//     $(".path").css("stroke-dashoffset", $newUnit - $offsetUnit);
+//   });
+// });
+    $timeout(function() {
+
+
+      var parentContainer = document.querySelector('ion-content');
+      var elements = document.querySelectorAll('svg .path');
+      var initialOffset = 1000;
+      var pageHeight = parentContainer.scrollHeight;
+      var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+      for (var i = 0; i < elements.length; i++) {
+        var indexelement = elements[i];
+        indexelement.style.strokeDashoffset = initialOffset;
       }
-      if ($scope.timer === 3) {
-        $scope.show = true;
-        $scope.status = 'painting'
-        $timeout(function() {
-          $scope.$apply();
-        })
-      }
-      if ($scope.timer === 2) {
-        $scope._class = true;
-        $timeout(function() {
-          $scope.$apply();
-        })
-      }
-      if (!$scope.timer) {
-        var elem = document.querySelector('#animate-class')
-        elem.classList.add('activate');
-      }
-      $scope.timer --;
-    }, 1000)
+
+
+      // var pathLength = SVGService.getTotalPathLength(element);
+      parentContainer.addEventListener('scroll', function() {
+        var viewPortScrollTop = parentContainer.scrollTop;
+        var percentage = ((viewPortScrollTop / (pageHeight - viewPortHeight)) * 100);
+
+        for (var i = 0; i < elements.length; i++) {
+          var indexElement = elements[i];
+          var currentStrokeDashoffset = parseInt(indexElement.style.strokeDashoffset, 10);
+          var offsetScaledPercent = percentage * (currentStrokeDashoffset / 100);
+          indexElement.style.strokeDashoffset = initialOffset - offsetScaledPercent;
+        }
+      })
+
+    }, 2000)
+
+
 
     // $timeout(function() {
     //     var fillBgDemo = document.querySelector('#fill-bg-demo');
