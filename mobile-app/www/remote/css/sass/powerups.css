@@ -49,6 +49,14 @@
   opacity: 0;
 }
 
+.gpa-card-bg.active {
+  -webkit-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+  -moz-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+  -ms-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+  -o-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+  animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+}
+
 .landing-container .powerup-icon {
   width: 300px;
   height: 300px;

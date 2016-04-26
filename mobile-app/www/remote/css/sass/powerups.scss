@@ -41,6 +41,12 @@
 	}
 }
 
+.gpa-card-bg {
+	&.active {
+		@include prefix(animation, powerup-before-scaleUp 1000ms ease-in-out forwards, webkit moz ms o);
+	}
+}
+
 // GENERAL
 .landing-container {
 	.powerup-icon {
