@@ -217,15 +217,15 @@
 }
 
 .landing-container.landing-munchies .landing-demo > svg * {
-  stroke: #637074;
+  stroke: white;
 }
 
 .landing-container.landing-munchies .landing-demo > svg circle {
-  fill: #9c7d79;
+  fill: #fbe0da;
 }
 
 .landing-container.landing-munchies .landing-demo > svg rect:first-child {
-  fill: #c6877c;
+  fill: #f5b1a4;
 }
 
 .landing-container.landing-munchies .landing-demo > svg rect:last-child {
