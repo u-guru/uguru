@@ -19,6 +19,7 @@
 #cta-modal-powerups ul li {
   width: 50%;
   max-width: 300px;
+  padding-bottom: 35px;
 }
 
 @media screen and (min-width: 768px) {
@@ -28,35 +29,66 @@
 }
 
 #cta-modal-powerups ul li a {
-  -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
-  -moz-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
-  -ms-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
-  -o-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
-  transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1);
-  -webkit-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  -moz-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  -ms-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  -o-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-  transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
   position: relative;
 }
 
 #cta-modal-powerups ul li a:before {
+  border-radius: 1000px;
   content: "";
   display: block;
   position: absolute;
   z-index: 1;
   top: 50%;
   left: 50%;
-  margin-top: -50px;
+  margin-top: -26px;
   margin-left: -50px;
   width: 100px;
   height: 100px;
 }
 
 #cta-modal-powerups ul li a > div {
-  position: relative;
   z-index: 2;
+  width: 100%;
+}
+
+#cta-modal-powerups ul li a > div:first-child {
+  position: relative;
+  height: 100%;
+  max-width: 300px;
+  max-height: 300px;
+}
+
+#cta-modal-powerups ul li a > div.powerup-icon-tag {
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  position: absolute;
+  bottom: -35px;
+}
+
+#cta-modal-powerups ul li a > div [class*="container-outline-track"] {
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+#cta-modal-powerups ul li a > div [class*="container-outline-track"].active {
+  -webkit-animation: powerup-loader 2000ms ease-in-out forwards;
+  -moz-animation: powerup-loader 2000ms ease-in-out forwards;
+  -ms-animation: powerup-loader 2000ms ease-in-out forwards;
+  -o-animation: powerup-loader 2000ms ease-in-out forwards;
+  animation: powerup-loader 2000ms ease-in-out forwards;
+  stroke-dasharray: 378;
+  stroke-dashoffset: 378;
 }
 
 #cta-modal-powerups ul li a#powerup-gpa-container:before {
@@ -76,41 +108,22 @@
 }
 
 #cta-modal-powerups ul li a.active:before {
-  -webkit-animation: powerup-before-scaleUp 1000ms ease-in-out 2000ms forwards;
-  -moz-animation: powerup-before-scaleUp 1000ms ease-in-out 2000ms forwards;
-  -ms-animation: powerup-before-scaleUp 1000ms ease-in-out 2000ms forwards;
-  -o-animation: powerup-before-scaleUp 1000ms ease-in-out 2000ms forwards;
-  animation: powerup-before-scaleUp 1000ms ease-in-out 2000ms forwards;
-}
-
-#cta-modal-powerups ul li div {
-  width: 100%;
-  max-width: 300px;
+  -webkit-animation: powerup-before-scaleUp 1000ms ease-in-out 3500ms forwards;
+  -moz-animation: powerup-before-scaleUp 1000ms ease-in-out 3500ms forwards;
+  -ms-animation: powerup-before-scaleUp 1000ms ease-in-out 3500ms forwards;
+  -o-animation: powerup-before-scaleUp 1000ms ease-in-out 3500ms forwards;
+  animation: powerup-before-scaleUp 1000ms ease-in-out 3500ms forwards;
 }
 
 #cta-modal-powerups .hanger {
   opacity: 0;
 }
 
-.gpa-card-bg {
-  -webkit-transform-origin: center;
-  -moz-transform-origin: center;
-  -ms-transform-origin: center;
-  -o-transform-origin: center;
-  transform-origin: center;
-}
-
-.gpa-card-bg.active {
-  -webkit-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
-  -moz-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
-  -ms-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
-  -o-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
-  animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
-}
-
 .landing-container .powerup-icon {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+  max-height: 300px;
 }
 
 .landing-container .powerup-icon .hanger {
@@ -164,5 +177,77 @@
 }
 
 .landing-container.landing-gpa .landing-demo > svg rect:last-child {
+  fill: white;
+}
+
+.landing-container.landing-gpa {
+  background: #79c5cd;
+}
+
+.landing-container.landing-gpa > div {
+  background: #79c5cd;
+}
+
+.landing-container.landing-gpa .landing-demo > svg * {
+  stroke: #637074;
+}
+
+.landing-container.landing-gpa .landing-demo > svg circle {
+  fill: #6c9298;
+}
+
+.landing-container.landing-gpa .landing-demo > svg rect:first-child {
+  fill: #72abb2;
+}
+
+.landing-container.landing-gpa .landing-demo > svg rect:last-child {
+  fill: white;
+}
+
+.landing-container.landing-munchies {
+  background: #f1917f;
+}
+
+.landing-container.landing-munchies > div {
+  background: #f1917f;
+}
+
+.landing-container.landing-munchies .landing-demo > svg * {
+  stroke: #637074;
+}
+
+.landing-container.landing-munchies .landing-demo > svg circle {
+  fill: #9c7d79;
+}
+
+.landing-container.landing-munchies .landing-demo > svg rect:first-child {
+  fill: #c6877c;
+}
+
+.landing-container.landing-munchies .landing-demo > svg rect:last-child {
+  fill: white;
+}
+
+.landing-container.landing-sound {
+  background: #ac95e1;
+}
+
+.landing-container.landing-sound > div {
+  background: #ac95e1;
+}
+
+.landing-container.landing-sound .landing-demo > svg * {
+  stroke: #637074;
+}
+
+.landing-container.landing-sound .landing-demo > svg circle {
+  fill: #807fa0;
+}
+
+.landing-container.landing-sound .landing-demo > svg rect:first-child {
+  fill: #968ac0;
+}
+
+.landing-container.landing-sound .landing-demo > svg rect:last-child {
   fill: white;
 }

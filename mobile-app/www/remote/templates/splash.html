@@ -8,10 +8,18 @@
         <div id='splash-desktop-nav' class='full-x' ng-if='nav.activate' ng-include="img_base + BASE + 'templates/splash/container/splash.nav.html'"></div>
 
         <!-- Powerups CTA -->
-        <div id='cta-modal-powerups' class='activate full-xy flex-wrap-center fixed top-0 left-0 z-index-1000' ng-controller="PowerupController" class-on-activate="null:inject#powerups-container|activate" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.html'"></div>
+        <div id='cta-modal-powerups' class='activate full-xy flex-wrap-center fixed top-0 left-0 z-index-1000' ng-controller="PowerupController" ng-if='activate.powerups' class-on-activate="null:inject#powerups-container|activate" class-on-clear="fadeOut:animOut, z-index--1000" class-on-clear-delay="4000" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.html'"></div>
         <!-- ng-if='activate.powerups' -->
+        <!-- class-on-clear="fadeOut:animOut, z-index--1000" class-on-clear-delay="2500" -->
         
-        <div id="powerup-landing-gpa" class='full-xy flex-wrap-center fixed top-0 left-0 z-index--1000 opacity-0' class-on-activate="high-z-index:keep, fadeIn:anim" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.gpa.html'"></div>
+        <div id="powerup-landing-gpa" class='full-xy flex-wrap-center fixed top-0 left-0 z-index--1000 opacity-0' class-on-activate="z-index-1000:keep, fadeIn:anim" class-on-activate-delay="3500" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.gpa.html'"></div>
+        <!-- class-on-activate="z-index-1000:keep, fadeIn:anim" class-on-activate-delay="2000" -->
+        
+        <div id="powerup-landing-munchies" class='full-xy flex-wrap-center fixed top-0 left-0 z-index--1000 opacity-0' class-on-activate="z-index-1000:keep, fadeIn:anim" class-on-activate-delay="3500" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.munchies.html'"></div>
+        
+        <div id="powerup-landing-sound" class='full-xy flex-wrap-center fixed top-0 left-0 z-index--1000 opacity-0' class-on-activate="z-index-1000:keep, fadeIn:anim" class-on-activate-delay="3500" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.sound.html'"></div>
+        
+        <div id="powerup-landing-transit" class='full-xy flex-wrap-center fixed top-0 left-0 z-index--1000 opacity-0' class-on-activate="z-index-1000:keep, fadeIn:anim" class-on-activate-delay="3500" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.transit.html'"></div>
 
         <!-- One page dropdown -->
         <div id='splash-one-page-pulldown' ng-if="activate.searchUniversity" ng-class="{'activate': activate.searchUniversity}" class='fixed top-0 left-0 full-xy high-z-index' ng-include="img_base + 'templates/splash/layout/university.search.html'"></div>
