@@ -38,6 +38,49 @@
   -ms-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
   -o-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
   transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  position: relative;
+}
+
+#cta-modal-powerups ul li a:before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+  width: 100px;
+  height: 100px;
+}
+
+#cta-modal-powerups ul li a > div {
+  position: relative;
+  z-index: 2;
+}
+
+#cta-modal-powerups ul li a#powerup-gpa-container:before {
+  background: #79c5cd;
+}
+
+#cta-modal-powerups ul li a#powerup-munchies-container:before {
+  background: #f1917f;
+}
+
+#cta-modal-powerups ul li a#powerup-sound-container:before {
+  background: #ac95e1;
+}
+
+#cta-modal-powerups ul li a#powerup-transit-container:before {
+  background: #91d3a8;
+}
+
+#cta-modal-powerups ul li a.active:before {
+  -webkit-animation: powerup-before-scaleUp 1000ms ease-in-out 2000ms forwards;
+  -moz-animation: powerup-before-scaleUp 1000ms ease-in-out 2000ms forwards;
+  -ms-animation: powerup-before-scaleUp 1000ms ease-in-out 2000ms forwards;
+  -o-animation: powerup-before-scaleUp 1000ms ease-in-out 2000ms forwards;
+  animation: powerup-before-scaleUp 1000ms ease-in-out 2000ms forwards;
 }
 
 #cta-modal-powerups ul li div {
@@ -47,6 +90,14 @@
 
 #cta-modal-powerups .hanger {
   opacity: 0;
+}
+
+.gpa-card-bg {
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
 }
 
 .gpa-card-bg.active {

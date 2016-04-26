@@ -29,6 +29,48 @@
 			a {
 				@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
 				@include prefix(transition, all 600ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
+				position: relative;
+				&:before {
+					content: "";
+					display: block;
+					position: absolute;
+					z-index: 1;
+					top: 50%;
+					left: 50%;
+					margin-top: -50px;
+					margin-left: -50px;
+					width: 100px;
+					height: 100px;
+				}
+				> div {
+					position: relative;
+					z-index: 2;
+				}
+				&#powerup-gpa-container {
+					&:before {
+						background: mix(white, mix($azure, $robin), 30%);
+					}
+				}
+				&#powerup-munchies-container {
+					&:before {
+						background: mix(white, mix($auburn, $orange), 30%);
+					}
+				}
+				&#powerup-sound-container {
+					&:before {
+						background: mix(white, mix($eggplant, $cobalt), 30%);
+					}
+				}
+				&#powerup-transit-container {
+					&:before {
+						background: mix(white, mix($moxie, $moola), 30%);
+					}
+				}
+				&.active {
+					&:before {
+						@include prefix(animation, powerup-before-scaleUp 1000ms ease-in-out 2000ms forwards, webkit moz ms o);
+					}
+				}
 			}
 			div {
 				width: 100%;
@@ -42,6 +84,7 @@
 }
 
 .gpa-card-bg {
+	@include prefix(transform-origin, center, webkit moz ms o);
 	&.active {
 		@include prefix(animation, powerup-before-scaleUp 1000ms ease-in-out forwards, webkit moz ms o);
 	}
