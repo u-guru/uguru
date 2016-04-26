@@ -58,7 +58,7 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 // ================= THIS SECTION IS FOR THE ADD COURSE MODAL ==================
 
 	ModalService.init('course', $scope);
-
+	ModalService.init('university', $scope);
 	$scope.search_text = {
 		course: '',
 		selected_course: null,
@@ -165,12 +165,11 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	$scope.$on('$ionicView.beforeEnter', function() {
 		console.log("beforeENTER")
-		console.log($scope.user.grade_dict);
-
 		// initBeforeEnterActions();
 		// init GPA grade 
 		// $scope.user.grades = GPAService.init]
 		$scope.overall = GPAService.init($scope.user.grades);
+		console.log($scope.overall)
 
 	})
 

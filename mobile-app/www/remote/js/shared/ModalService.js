@@ -96,13 +96,13 @@ function ModalService($rootScope, uTracker, Utilities, $timeout, DeviceService, 
 		}
 		switch (modalName) {
 			case 'university':
+				console.log("initlizing university modal..",modalName)
 				$ionicModal.fromTemplateUrl(BASE + 'templates/university.modal.html', options).then(function(modal) {
 				    university = modal;
 				    controller.university = university;
 				});
 				break;
 			case 'course':
-			
 			console.log("initlizing course modal..");
 				$ionicModal.fromTemplateUrl(BASE + 'templates/dev/gpa/addcourse.modal.html', options).then(function(modal) {
 				    course = modal;

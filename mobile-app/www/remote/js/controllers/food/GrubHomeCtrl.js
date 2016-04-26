@@ -33,9 +33,9 @@ function GrubHomeCtrl($rootScope, $scope, University, InAppMapService, $timeout,
 	$scope.isBrowser = !DeviceService.doesCordovaExist();
 	console.log("isBrowser: " + $scope.isBrowser);
 	
-	$timeout(function() {
-		InAppMapService.displayMap();	
-	}, 2000);
+	// $timeout(function() {
+	// 	InAppMapService.displayMap();	
+	// }, 2000);
 
 	$scope.search_text = {
 		grub: ''
@@ -254,22 +254,22 @@ function GrubHomeCtrl($rootScope, $scope, University, InAppMapService, $timeout,
 
 	};
 
-	// query yelp with $scope.input.search
-	$scope.search = function() {
+	// // query yelp with $scope.input.search
+	// $scope.search = function() {
 
-	}
+	// }
 
-	$scope.initMap = function() {
-		console.log("initializing gmaps...");
-		// InAppMapService.displayMap();
+	// $scope.initMap = function() {
+	// 	console.log("initializing gmaps...");
+	// 	// InAppMapService.displayMap();
 
-	}
+	// }
 
 
-	$scope.openMap = function() {
-		console.log("clicked on toggleWalkingDistance()");
-		InAppMapService.enlarge();
-	};
+	// $scope.openMap = function() {
+	// 	console.log("clicked on toggleWalkingDistance()");
+	// 	// InAppMapService.enlarge();
+	// };
 
 
 }
