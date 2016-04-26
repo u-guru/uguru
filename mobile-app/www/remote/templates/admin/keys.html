@@ -127,15 +127,20 @@
                                 <h2 class="txt-18 semibold m15right">transform-origin</h2>
                                 <div class="flex-center-vertical">
                                     <span class="bg-campus block txt-16 p05xy radius-2-left">x</span>
-                                    <input class="radius-2-right txt-center p05xy" size="6" style="height: 30px;" placeholder="center"/>
+                                    <input class="radius-2-right txt-center p05xy" size="6" ng-model='defaults.properties.transformOriginX' ng-blur="updateDefaults(defaults.properties.transformOriginX, 'transformOriginX')" style="height: 30px;" placeholder="center"/>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-right">{{defaults.units.transformOriginY.default}}&nbsp;&dtrif;</span>
                                     <span class="bg-campus block txt-16 p05xy radius-2-left m15left">y</span>
-                                    <input class="radius-2-right txt-center p05xy" size="6" style="height: 30px;" placeholder="center"/>
+                                    <input class="radius-2-right txt-center p05xy" ng-model='defaults.properties.transformOriginY' ng-blur="updateDefaults(defaults.properties.transformOriginY, 'transformOriginY')" size="6" style="height: 30px;" placeholder="center"/>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-right">{{defaults.units.transformOriginY.default}}&nbsp;&dtrif;</span>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-left m15left">z</span>
+                                    <input class="radius-2-right txt-center p05xy" ng-blur="updateDefaults(defaults.properties.transformOriginZ, 'transformOriginZ')" ng-model='defaults.properties.transformOriginZ' size="6" style="height: 30px;" placeholder="center"/>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-right">{{defaults.units.transformOriginZ.default}}&nbsp;&dtrif;</span>
                                 </div>
                             </li>
                             <li class="flex-center-vertical-wrap-space-between">
                                 <h2 class="txt-18 semibold m15right">translateX</h2>
                                 <div class="flex-center-vertical">
-                                    <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="1" placeholder="0" ng-change="applyPropertyChange(animation.selected_keyframe.translateX, 'translateX')" ng-model='animation.selected_keyframe.translateX'/>
+                                    <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="number"  ng-model='defaults.properties.tranformOriginY'  step="1" placeholder="0" ng-mouseup="updateDefaults(defaults.properties.transformOriginX, 'transformOriginX')" ng-model='animation.selected_keyframe.translateX'/>
                                     <span class="bg-campus block txt-16 p05xy radius-2-right">%&nbsp;&dtrif;</span>
                                 </div>
                                 <div class="range-container small full-x m10top">
