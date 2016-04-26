@@ -217,6 +217,7 @@ function GrubHomeCtrl($rootScope, $scope, University, InAppMapService, $timeout,
 
 
 	$scope.openDetails = function(details) {
+		console.log(details)
 		$scope.isActive = {
 			menu: false,
 			info: false,
