@@ -56,7 +56,6 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 
 // ================= THIS SECTION IS FOR THE ADD COURSE MODAL ==================
-
 	ModalService.init('course', $scope);
 	ModalService.init('university', $scope);
 	$scope.search_text = {
@@ -112,16 +111,19 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	};
 
 	$scope.submitCourse = function() {
-
-		if ($scope.selectedCourse &&
+		if ($scope.selectedCourse ||
 			selectedGrade  &&
 			$scope.course.units  &&
 			$scope.course.year &&
 			$scope.course.semester ) {
 
 			$scope.course.grade = selectedGrade;
-			$scope.course.name = $scope.selectedCourse.short_name;
-			$scope.course.id = $scope.selectedCourse.id;
+			// $scope.course.name = $scope.selectedCourse.short_name;
+			// $scope.course.id = $scope.selectedCourse.id;
+
+			console.log("SET COURSE NAME FOR DEMO")		
+			$scope.course.name = "DEMO"
+			$scope.course.id = 1234
 			$scope.course.semester = $scope.course.semester.toUpperCase()
 
 
@@ -129,6 +131,8 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 			//save to local storage
 			console.log('grade', $scope.course);
+			console.log('USER GRADES', $scope.user.grades);
+
 			$scope.user.grades.push($scope.course);
 			$localstorage.setObject('user', $scope.user);
 
@@ -165,6 +169,8 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	$scope.$on('$ionicView.beforeEnter', function() {
 		console.log("beforeENTER")
+		console.log($scope.universities)
+
 		// initBeforeEnterActions();
 		// init GPA grade 
 		// $scope.user.grades = GPAService.init]
