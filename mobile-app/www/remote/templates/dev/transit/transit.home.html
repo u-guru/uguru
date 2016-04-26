@@ -1,7 +1,14 @@
+<!-- The main css file -->
+<link href="remote/css/dev/transit/material.css" rel="stylesheet">
+<link href="remote/css/dev/transit/default.css" rel="stylesheet">
+<link href="remote/css/dev/transit/desktop.css" rel="stylesheet">
+<link href="remote/css/dev/transit/style.css" rel="stylesheet">
+<link href="remote/css/dev/transit/nick.css" rel="stylesheet">
+
 <ion-view class='uguru-view home-view'>
 	<!-- <a id='side-menu-left-overlay' ng-click='toggleRightSideMenu()' class='ng-class:{"active":sideMenuActive}'></a> -->
-	<section id="transit-home" class="desktop-mode desktop-home">
-		<nav class='main-nav'ng-include="img_base + BASE + 'templates/desktop.nav.html'" ng-if='desktopMode'></nav>
+	<section id="transit-home" class="full-xy student-home">
+		<nav class="absolute top-0 left-0 full-x" ng-include="img_base + BASE + 'templates/dev/transit/desktop.nav.html'"></nav>
 	
 		<header id="home-header" class="mobile-only text-center active">
 			<div class="header-nav">
@@ -36,8 +43,8 @@
 			<div class='custom-gmaps-container'>
 				<ui-gmap-google-map ng-if='isBrowser' center='map.center' zoom='map.zoom'>
 
-				<ui-gmap-polyline path="p.path"
-				               fit="false"></ui-gmap-polyline>
+<!-- 				<ui-gmap-polyline path="p.path"
+				               fit="false"></ui-gmap-polyline> -->
 
 					<!-- <ui-gmap-marker ng-repeat='restaurant in restaurants' coords="{latitude: restaurant.latitude, longitude: restaurant.longitude}" idkey="restaurant.id" options='restaurant.options'>
 					</ui-gmap-marker> -->

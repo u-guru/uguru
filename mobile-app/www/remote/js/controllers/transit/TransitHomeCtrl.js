@@ -83,7 +83,7 @@ function TransitHomeCtrl($scope, $timeout, University,
 	};
 
 
-	if (University.selected !== null) {
+	if (University.selected =={}) {
 		console.log("using selected universigty coords");
 		$scope.map = { center: { latitude: University.selected.latitude, longitude: University.selected.longitude }, zoom: 14 };		
 	} else {
