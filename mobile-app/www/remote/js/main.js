@@ -39,7 +39,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'uguru.util.controllers', 'uguru.dev.controllers', 'uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'uguru.components',
   'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps','uguru.gpa.controllers','guru.food.controllers',
-  'uguru.sound.controllers','uguru.transit.controllers','transit.services','base64'])
+  'uguru.sound.controllers','uguru.transit.controllers','transit.services','base64','guru.food.services'])
 
 
 .run(function($ionicPlatform, $localstorage,
@@ -585,9 +585,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   //GPA GURU
   state('root.intro', {
-        url: '/intro',
-        templateUrl: BASE + 'templates/dev/gpa/university.html'
-        // controller: 'AddUniversityCtrl'
+        url: '/gpa-intro',
+        templateUrl: BASE + 'templates/dev/gpa/university.html',
+        controller: 'AddUniversityCtrl'
   }).
   state('root.gpa-home', {
         url: '/gpa-home',
@@ -597,13 +597,13 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.grub-home', {
         url: '/grub-home',
         templateUrl: BASE + 'templates/dev/food/grub.home.html',
-        // controller: 'GrubHomeCtrl'
+        controller: 'GrubHomeCtrl'
   }).
-  state('sound-intro', {
-    url: '/sound-intro',
-    templateUrl: BASE + 'templates/dev/sound/intro.html',
-    controller: 'IntroCtrl'
-  }).
+  // state('sound-intro', {
+  //   url: '/sound-intro',
+  //   templateUrl: BASE + 'templates/dev/sound/intro.html',
+  //   controller: 'IntroCtrl'
+  // }).
   state('sound-home', {
     url: '/sound-home',
     templateUrl: BASE + 'templates/dev/sound/music.home.html',

@@ -13,7 +13,7 @@ angular.module('guru.food.controllers', [])
 
 
 function GrubHomeCtrl($rootScope, $scope, University, InAppMapService, $timeout, Restaurant, ModalService, $ionicModal, DeviceService) {
-
+	console.log("HI")
 	$scope.availableFilters = [
 		{name: 'Open Now'},
 		{name: '< 2 Blocks'},
@@ -34,7 +34,7 @@ function GrubHomeCtrl($rootScope, $scope, University, InAppMapService, $timeout,
 	
 	$scope.isBrowser = !DeviceService.doesCordovaExist();
 	console.log("isBrowser: " + $scope.isBrowser);
-
+	
 	$timeout(function() {
 		InAppMapService.displayMap();	
 	}, 2000);
@@ -194,7 +194,7 @@ function GrubHomeCtrl($rootScope, $scope, University, InAppMapService, $timeout,
 	}
 	var restaurantModal;
 	console.log("initializing restaurant modal..");
-	$ionicModal.fromTemplateUrl(BASE + 'templates/food/restaurant.details.modal.html', options).then(function(modal) {
+	$ionicModal.fromTemplateUrl(BASE + 'templates/dev/food/restaurant.details.modal.html', options).then(function(modal) {
 	    restaurantModal = modal;
 	});
 
