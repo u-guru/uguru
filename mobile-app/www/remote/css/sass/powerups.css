@@ -176,10 +176,6 @@
   background: #79c5cd;
 }
 
-.landing-container.landing-gpa > div {
-  background: #79c5cd;
-}
-
 .landing-container.landing-gpa .landing-demo > svg * {
   stroke: #637074;
 }
@@ -196,27 +192,23 @@
   fill: white;
 }
 
-.landing-container.landing-gpa {
-  background: #79c5cd;
+.landing-container.landing-transit {
+  background: #91d3a8;
 }
 
-.landing-container.landing-gpa > div {
-  background: #79c5cd;
-}
-
-.landing-container.landing-gpa .landing-demo > svg * {
+.landing-container.landing-transit .landing-demo > svg * {
   stroke: #637074;
 }
 
-.landing-container.landing-gpa .landing-demo > svg circle {
-  fill: #6c9298;
+.landing-container.landing-transit .landing-demo > svg circle {
+  fill: #769789;
 }
 
-.landing-container.landing-gpa .landing-demo > svg rect:first-child {
-  fill: #72abb2;
+.landing-container.landing-transit .landing-demo > svg rect:first-child {
+  fill: #83b598;
 }
 
-.landing-container.landing-gpa .landing-demo > svg rect:last-child {
+.landing-container.landing-transit .landing-demo > svg rect:last-child {
   fill: white;
 }
 
@@ -224,31 +216,27 @@
   background: #f1917f;
 }
 
-.landing-container.landing-munchies > div {
-  background: #f1917f;
-}
-
 .landing-container.landing-munchies .landing-demo > svg * {
-  stroke: #637074;
+  stroke: white;
 }
 
 .landing-container.landing-munchies .landing-demo > svg circle {
-  fill: #9c7d79;
+  fill: #fbe0da;
 }
 
 .landing-container.landing-munchies .landing-demo > svg rect:first-child {
-  fill: #c6877c;
+  fill: #f5b1a4;
 }
 
 .landing-container.landing-munchies .landing-demo > svg rect:last-child {
   fill: white;
 }
 
-.landing-container.landing-sound {
-  background: #ac95e1;
+.landing-container.landing-munchies .landing-content {
+  background: #a68787;
 }
 
-.landing-container.landing-sound > div {
+.landing-container.landing-sound {
   background: #ac95e1;
 }
 

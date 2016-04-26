@@ -146,9 +146,6 @@
 	}
 	&.landing-gpa {
 		background: mix(white, mix($azure, $robin), 30%);
-		> div {
-			background: mix(white, mix($azure, $robin), 30%);
-		}
 		.landing-demo {
 			> svg {
 				* {
@@ -168,22 +165,19 @@
 			}
 		}
 	}
-	&.landing-gpa {
-		background: mix(white, mix($azure, $robin), 30%);
-		> div {
-			background: mix(white, mix($azure, $robin), 30%);
-		}
+	&.landing-transit {
+		background: mix(white, mix($moola, $moxie), 30%);
 		.landing-demo {
 			> svg {
 				* {
 					stroke: lighten($slate, 15%);
 				}
 				circle {
-					fill: mix(mix(white, mix($azure, $robin), 30%), lighten($slate, 15%), 40%);
+					fill: mix(mix(white, mix($moola, $moxie), 30%), lighten($slate, 15%), 40%);
 				}
 				rect {
 					&:first-child {
-						fill: mix(mix(white, mix($azure, $robin), 30%), lighten($slate, 15%), 70%);
+						fill: mix(mix(white, mix($moola, $moxie), 30%), lighten($slate, 15%), 70%);
 					}
 					&:last-child {
 						fill: white;
@@ -194,20 +188,17 @@
 	}
 	&.landing-munchies {
 		background: mix(white, mix($auburn, $orange), 30%);
-		> div {
-			background: mix(white, mix($auburn, $orange), 30%);
-		}
 		.landing-demo {
 			> svg {
 				* {
-					stroke: lighten($slate, 15%);
+					stroke: white;
 				}
 				circle {
-					fill: mix(mix(white, mix($auburn, $orange), 30%), lighten($slate, 15%), 40%);
+					fill: mix(white, mix($auburn, $orange), 80%);
 				}
 				rect {
 					&:first-child {
-						fill: mix(mix(white, mix($auburn, $orange), 30%), lighten($slate, 15%), 70%);
+						fill: mix(white, mix($auburn, $orange), 50%);
 					}
 					&:last-child {
 						fill: white;
@@ -215,12 +206,12 @@
 				}
 			}
 		}
+		.landing-content {
+			background: #a68787;
+		}
 	}
 	&.landing-sound {
 		background: mix(white, mix($cobalt, $eggplant), 30%);
-		> div {
-			background: mix(white, mix($cobalt, $eggplant), 30%);
-		}
 		.landing-demo {
 			> svg {
 				* {
