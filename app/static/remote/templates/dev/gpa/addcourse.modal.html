@@ -17,7 +17,10 @@
 			        <form>
 			            <div class="input-field">
 			                <input name="search-courses" id="course-input-1" type="text" ng-model="search_text.course">
-			                <label for="search-courses">search courses</label>
+			                <label for="search-courses" ng-if="!search_text.course">search courses</label>
+			                <a ng-click='resetSelectedCourse()' class="side-icon major-input-close" ng-if="search_text.course" style='z-index:10000;'>
+			                	<i class='icon ion-close-circled'> </i>
+			                </a>
 			            </div>
 			        </form>
 				</div>
@@ -35,10 +38,15 @@
 
 			<div class='onboarding-search-container bg-azure full-xy' ng-show='search_text.course && search_text.course.length'>
 				<ul class='full-xy absolute bg-azure'>
-					<li thr-click='selectCourse(course)' ng-repeat='course in courses | filter:search_text.course'>
+					<li thr-click='selectCourse(course)' ng-repeat='course in courses | filter:search_text.course | limitTo:16'>
 						<label>
 							<span class="course-name">{{course.short_name}}</span>
 							<span class="course-title" ng-if='course.title'>{{course.title}}</span>
+						</label>
+					</li>
+					<li ng-click='addCourse(search_text.course)' ng-if="!(courses | filter:search_text.course).length">
+						<label>
+							<span class="course-name capitalized">Add A New Course Name: {{search_text.course}}</span>
 						</label>
 					</li>
 				</ul>

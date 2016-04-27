@@ -34,8 +34,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers','uguru.version',
   'uguru.util.controllers', 'uguru.dev.controllers', 'uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'uguru.components',
-  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps','uguru.gpa.controllers','guru.food.controllers',
-  'uguru.sound.controllers','uguru.transit.controllers','transit.services','base64','guru.food.services'])
+  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps','uguru.gpa.controllers'])
 
 
 .run(function($ionicPlatform, $localstorage,
@@ -594,34 +593,34 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/dev/gpa/gpa.home.html',
         controller: 'GPAController'
   }).
-  state('root.grub-home', {
-        url: '/grub-home',
-        templateUrl: BASE + 'templates/dev/food/grub.home.html',
-        controller: 'GrubHomeCtrl'
-  }).
+  // state('root.grub-home', {
+  //       url: '/grub-home',
+  //       templateUrl: BASE + 'templates/dev/food/grub.home.html',
+  //       controller: 'GrubHomeCtrl'
+  // }).
   // state('sound-intro', {
   //   url: '/sound-intro',
   //   templateUrl: BASE + 'templates/dev/sound/intro.html',
   //   controller: 'IntroCtrl'
   // }).
-  state('sound-home', {
-    url: '/sound-home',
-    templateUrl: BASE + 'templates/dev/sound/music.home.html',
-    controller: 'MusicHomeCtrl'
-  }).
-  state('sound-playlist', {
-    url: '/playlist/:genre',
-    params: {
-      'genre': null
-    },
-    templateUrl: BASE + 'templates/dev/sound/playlist.html',
-    controller: 'PlaylistCtrl'
-  }).
-  state('root.transit-home', {
-        url: '/transit-home',
-        templateUrl: BASE + 'templates/dev/transit/transit.home.html',
-        controller: 'TransitHomeCtrl'
-  }).
+  // state('sound-home', {
+  //   url: '/sound-home',
+  //   templateUrl: BASE + 'templates/dev/sound/music.home.html',
+  //   controller: 'MusicHomeCtrl'
+  // }).
+  // state('sound-playlist', {
+  //   url: '/playlist/:genre',
+  //   params: {
+  //     'genre': null
+  //   },
+  //   templateUrl: BASE + 'templates/dev/sound/playlist.html',
+  //   controller: 'PlaylistCtrl'
+  // }).
+  // state('root.transit-home', {
+  //       url: '/transit-home',
+  //       templateUrl: BASE + 'templates/dev/transit/transit.home.html',
+  //       controller: 'TransitHomeCtrl'
+  // }).
   state('root.splash', {
         url: '/:categoryId:universityId',
         templateUrl: BASE + 'templates/splash.html',
