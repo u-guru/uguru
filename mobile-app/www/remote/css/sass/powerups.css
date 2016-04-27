@@ -148,9 +148,10 @@
 
 .landing-container .landing-demo {
   position: relative;
+  width: 318px;
 }
 
-.landing-container .landing-demo > svg {
+.landing-container .landing-demo > svg:not(.coach) {
   width: 318px;
   stroke-width: 3px;
   stroke-linecap: round;
@@ -176,19 +177,64 @@
   background: #79c5cd;
 }
 
-.landing-container.landing-gpa .landing-demo > svg * {
+.landing-container.landing-gpa .landing-demo > svg:not(.coach) * {
   stroke: #637074;
 }
 
-.landing-container.landing-gpa .landing-demo > svg circle {
+.landing-container.landing-gpa .landing-demo > svg:not(.coach) circle {
   fill: #6c9298;
 }
 
-.landing-container.landing-gpa .landing-demo > svg rect:first-child {
+.landing-container.landing-gpa .landing-demo > svg:not(.coach) rect:first-child {
   fill: #72abb2;
 }
 
-.landing-container.landing-gpa .landing-demo > svg rect:last-child {
+.landing-container.landing-gpa .landing-demo > svg:not(.coach) rect:last-child {
+  fill: white;
+}
+
+.landing-container.landing-gpa .gpa-landing-hands svg:first-child {
+  left: -125px;
+}
+
+.landing-container.landing-gpa .gpa-landing-hands svg:last-child {
+  right: -125px;
+  -webkit-backface-visibility: visible;
+  -moz-backface-visibility: visible;
+  -ms-backface-visibility: visible;
+  -o-backface-visibility: visible;
+  backface-visibility: visible;
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+}
+
+.landing-container.landing-gpa .gpa-landing-preview svg {
+  width: calc(318px * 0.75);
+  height: calc(651px * 0.75);
+}
+
+.landing-container.landing-gpa .gpa-landing-preview svg * {
+  stroke: #637074;
+  stroke-width: 6px;
+}
+
+.landing-container.landing-gpa .gpa-landing-preview svg circle {
+  fill: #6c9298;
+}
+
+.landing-container.landing-gpa .gpa-landing-preview svg rect:first-child {
+  fill: #72abb2;
+}
+
+.landing-container.landing-gpa .gpa-landing-preview svg rect:last-child {
   fill: white;
 }
 
@@ -196,19 +242,19 @@
   background: #91d3a8;
 }
 
-.landing-container.landing-transit .landing-demo > svg * {
+.landing-container.landing-transit .landing-demo > svg:not(.coach) * {
   stroke: #637074;
 }
 
-.landing-container.landing-transit .landing-demo > svg circle {
+.landing-container.landing-transit .landing-demo > svg:not(.coach) circle {
   fill: #769789;
 }
 
-.landing-container.landing-transit .landing-demo > svg rect:first-child {
+.landing-container.landing-transit .landing-demo > svg:not(.coach) rect:first-child {
   fill: #83b598;
 }
 
-.landing-container.landing-transit .landing-demo > svg rect:last-child {
+.landing-container.landing-transit .landing-demo > svg:not(.coach) rect:last-child {
   fill: white;
 }
 
@@ -216,19 +262,19 @@
   background: #f1917f;
 }
 
-.landing-container.landing-munchies .landing-demo > svg * {
+.landing-container.landing-munchies .landing-demo > svg:not(.coach) * {
   stroke: white;
 }
 
-.landing-container.landing-munchies .landing-demo > svg circle {
+.landing-container.landing-munchies .landing-demo > svg:not(.coach) circle {
   fill: #fbe0da;
 }
 
-.landing-container.landing-munchies .landing-demo > svg rect:first-child {
+.landing-container.landing-munchies .landing-demo > svg:not(.coach) rect:first-child {
   fill: #f5b1a4;
 }
 
-.landing-container.landing-munchies .landing-demo > svg rect:last-child {
+.landing-container.landing-munchies .landing-demo > svg:not(.coach) rect:last-child {
   fill: white;
 }
 
@@ -244,19 +290,19 @@
   background: #ac95e1;
 }
 
-.landing-container.landing-sound .landing-demo > svg * {
+.landing-container.landing-sound .landing-demo > svg:not(.coach) * {
   stroke: #637074;
 }
 
-.landing-container.landing-sound .landing-demo > svg circle {
+.landing-container.landing-sound .landing-demo > svg:not(.coach) circle {
   fill: #807fa0;
 }
 
-.landing-container.landing-sound .landing-demo > svg rect:first-child {
+.landing-container.landing-sound .landing-demo > svg:not(.coach) rect:first-child {
   fill: #968ac0;
 }
 
-.landing-container.landing-sound .landing-demo > svg rect:last-child {
+.landing-container.landing-sound .landing-demo > svg:not(.coach) rect:last-child {
   fill: white;
 }
 
