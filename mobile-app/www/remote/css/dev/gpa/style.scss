@@ -547,92 +547,72 @@
 
 /* ---------- DEMOGRAPHIC */
 #demographic {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
 	background: $smoke;
-	header {
-		background: lighten($gpa, 40%);
-		&::before {
-			@include opacity(.1);
-			background: url(../../img/hall.jpg) no-repeat center center / cover;
-		}
-		h1 {
-			font-size: 28px!important;
-			text-transform: lowercase;
-			color: $gpa;
-		}
-	}
 	#demo-grid {
 		ul {
 			@include flex;
 			@include flex-center;
 			@include flex-wrap;
 			height: 100%;
+			width: 100%;
 			li {
 				position: relative;
 				height: 50%;
+				width: 25%;
 				font-weight: 600;
 				a {
-					display: block;
 					position: relative;
 					width: 100%;
 					height: 100%;
-					background: none;
+					background: mix(white, $gpa, 30%);
+					border: 3px solid mix(white, $gpa, 30%);
+					border-radius: 2px;
+					font-size: 36px;
+					text-transform: lowercase;
 					svg {
 						width: 100%;
 					}
-					span {
-						@include center-xy;
+					> span {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						position: absolute;
+						top: 0;
+						left: 0;
 						width: 100%;
+						height: 100%;
 						text-align: center;
 					}
-				}
-				&.demo-hs a {
-					background: lighten($gpa, 25%);
-				}
-				&.demo-college a {
-					background: $gpa;
-				}
-				&.demo-alum a {
-					background: lighten($gpa, 10%);
-				}
-				&.demo-parent a {
-					background: darken($gpa, 20%);
-				}
-				a:hover {
-					background: lighten($gpa, 37%)!important;
-					color: $gpa!important;
-				}
-				a:active, a:focus {
-					background: white!important;
-					color: $gpa!important;
+					&:hover {
+						background: white;
+						color: $gpa;
+					}
+					&:active, &:focus {
+						background: $gpa;
+						border-color: $gpa;
+						color: white;
+					}
 				}
 			}
 		}
 	}
-	@media screen and (min-width:700px) and (min-height:575px) {
+	@media screen and (min-width:768px) and (min-height:575px) {
 		h1 {
 			color: $gpa!important;
 		}
 		#demo-grid {
 			height: auto;
+			margin: 0 auto;
+			max-width: 1060px;
 			ul {
 				padding: 15px;
 				li {
-					height: 230px;
-					width: 230px;
 					padding: 15px;
 				}
 			}
-		}
-	}
-	@media screen and (min-width:960px) {
-		header {
-			height: calc(100% - 230px);
-			h1 {
-				font-size: 48px!important;
-			}
-		}
-		#demo-grid {
-			width: 100%;
 		}
 	}
 }
