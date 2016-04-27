@@ -34,9 +34,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers','uguru.version',
   'uguru.util.controllers', 'uguru.dev.controllers', 'uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'uguru.components',
-  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps','uguru.gpa.controllers'])
+  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps','uguru.gpa.controllers','guru.food.controllers','guru.food.services'])
 
-
+  // 'uguru.sound.controllers','base64','uguru.transit.controllers','transit.services',
 .run(function($ionicPlatform, $localstorage,
   $state, $ionicHistory,
    Version, $rootScope,
@@ -582,7 +582,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/guru-conversations',
         templateUrl: BASE + 'templates/guru.conversations.html'
   }).
-  //GPA GURU
+  // GPA GURU
   state('root.intro', {
         url: '/gpa-intro',
         templateUrl: BASE + 'templates/dev/gpa/university.html',
@@ -598,16 +598,16 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/dev/gpa/gpa.home.html',
         controller: 'GPAController'
   }).
-  // state('root.grub-home', {
-  //       url: '/grub-home',
-  //       templateUrl: BASE + 'templates/dev/food/grub.home.html',
-  //       controller: 'GrubHomeCtrl'
-  // }).
-  // state('sound-intro', {
-  //   url: '/sound-intro',
-  //   templateUrl: BASE + 'templates/dev/sound/intro.html',
-  //   controller: 'IntroCtrl'
-  // }).
+  state('root.grub-home', {
+        url: '/grub-home',
+        templateUrl: BASE + 'templates/dev/food/grub.home.html',
+        controller: 'GrubHomeCtrl'
+  }).
+  state('sound-intro', {
+    url: '/sound-intro',
+    templateUrl: BASE + 'templates/dev/sound/intro.html',
+    controller: 'IntroCtrl'
+  }).
   // state('sound-home', {
   //   url: '/sound-home',
   //   templateUrl: BASE + 'templates/dev/sound/music.home.html',

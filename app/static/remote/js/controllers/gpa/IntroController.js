@@ -1,4 +1,4 @@
-angular.module('uguru.gpa.controllers', [])
+angular.module('uguru.gpa.controllers')
 .controller('IntroController', [
 	'$scope',
 	'$ionicSlideBoxDelegate',
