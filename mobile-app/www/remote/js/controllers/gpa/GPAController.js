@@ -78,12 +78,25 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	$scope.clearSearchInput = function() {
 		$scope.search_text.course = '';
 	};
-
+	$scope.resetDefault  =function()
+	{
+	  $scope.overall = GPAService.defaultValue();
+	  $scope.user.grades = []
+	  $localstorage.removeObject('user')
+	}
 	$scope.selectedCourse = null;
 
 	$scope.selectCourse = function(course) {
 		$scope.selectedCourse = course;
 		$scope.search_text.course = null;
+	}
+	$scope.addCourse = function(course){
+		$scope.selectedCourse = {
+			'short_name':course
+		}
+		console.log("ADD COURSE NAME :",$scope.selectedCourse)
+		$scope.search_text.course = null;
+
 	}
 
 	$scope.openModal = function(modalName, course) {
@@ -113,33 +126,28 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	};
 
 	$scope.submitCourse = function() {
-		if ($scope.selectedCourse ||
+		if ($scope.selectedCourse &&
 			selectedGrade  &&
 			$scope.course.units  &&
 			$scope.course.year &&
 			$scope.course.semester ) {
 
 			$scope.course.grade = selectedGrade;
-			// $scope.course.name = $scope.selectedCourse.short_name;
-			// $scope.course.id = $scope.selectedCourse.id;
-
-			console.log("SET COURSE NAME FOR DEMO")
-			$scope.course.name = "DEMO"
-			$scope.course.id = 1234
-			$scope.course.semester = $scope.course.semester.toUpperCase()
-
+			$scope.course.name = $scope.selectedCourse.short_name;
+			$scope.course.id = $scope.selectedCourse.id;
 
 			// GPAService.addCourse($scope.course);
-
-			//save to local storage
 			console.log('grade', $scope.course);
+			console.log('Before USER GRADES', $scope.user.grades);
+			
+			$scope.user.grades.push($scope.course);
+			// $localstorage.setObject('user', $scope.user);
+			//save to local storage
 			console.log('USER GRADES', $scope.user.grades);
 
-			$scope.user.grades.push($scope.course);
-			$localstorage.setObject('user', $scope.user);
-
 			selectedGrade = '';
-			$scope.search_text.course = '';
+			$scope.resetSelectedCourse();
+			// $scope.overall = GPAService.init($scope.user.grades);
 
 			// Set up gpa but not working right -- Jason
 			// initSidebarGPAHomeTransition();
@@ -168,6 +176,7 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	$scope.$on('$ionicView.loaded', function() {
 		loadCourses(2307);
+
 		$scope.overall = GPAService.init($scope.user.grades);
 		if (!$scope.user) {
 			$scope.user = User.initUser();
@@ -190,7 +199,6 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 		// init GPA grade
 		// $scope.user.grades = GPAService.init]
 		$scope.overall = GPAService.init($scope.user.grades);
-		console.log($scope.overall)
 
 	})
 
