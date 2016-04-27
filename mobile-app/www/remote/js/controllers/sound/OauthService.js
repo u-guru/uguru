@@ -1,4 +1,4 @@
-angular.module('uguru.sound.controllers')
+angular.module('uguru.apps.controllers')
 .factory('OauthService', [
     '$http',
     '$base64',
@@ -25,10 +25,10 @@ function OauthService($http, $base64, Utilities) {
         soundcloud: {
             clientID: 'c970a66ab4784eda175306f788804ece',
             clientSecret: '9e618139ee94a6cb94e1d28bfe9536eb',
-        
+
             // redirectURI: 'https://www.uguru.me/localhost',
             redirectURI: 'http://localhost:8100',
-            
+
             authURL: 'https://soundcloud.com/connect',
             tokenURL: 'https://api.soundcloud.com/oauth2/token',
             userURL: 'https://api.soundcloud.com/users',
@@ -106,7 +106,7 @@ function OauthService($http, $base64, Utilities) {
             var options = 'location=no,hardwareback=no,zoom=no,toolbar=no,';
             var target = '_blank';
 
-            
+
             var ref = cordova.InAppBrowser.open(url, target, options);
 
 
@@ -114,15 +114,15 @@ function OauthService($http, $base64, Utilities) {
 
                 var url = e.url;
                 console.log("url: " + url);
-                
+
                 var code = url.split('code=')[1];
                 console.log("code: " + code);
-                
+
                 if(code.indexOf('#') !== -1) {
                     console.log("detected #, stripping it out...");
-                    code = code.substring(0, code.length - 1);    
+                    code = code.substring(0, code.length - 1);
                     }
-                
+
 
                 if(code !== undefined) {
                     console.log("found code");
@@ -159,7 +159,7 @@ function OauthService($http, $base64, Utilities) {
 
 
                             $http(authorizationRequest).then(function(response) {
-                                
+
                                 token = response.data;
                                 console.log("token response");
                                 console.log(response);
@@ -190,11 +190,11 @@ function OauthService($http, $base64, Utilities) {
         else {
 
             console.log("cordova not detected");
-            
+
              if (typeof savedCode === 'undefined') {
                 document.location = url;
              }
-             
+
             else if (typeof savedCode !== 'undefined') {
                 console.log("found code");
 
@@ -219,14 +219,14 @@ function OauthService($http, $base64, Utilities) {
                 $http.defaults.headers.common.Authorization = 'Basic ' + encodedAuth;
 
                 return $http(authorizationRequest).then(function(response) {
-                    
+
                     var token = response.data;
                     apiKeys[providerName].token = token.access_token;
                     console.log("Fetching access token success! " + token.access_token);
 
                     $http.defaults.headers.common.Authorization = 'Bearer ' + token.access_token;
 
-                    
+
 
                 }, defaultErrorCallback);
             }

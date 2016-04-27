@@ -1,4 +1,4 @@
-angular.module('uguru.sound.controllers')
+angular.module('uguru.apps.controllers')
 .controller('IntroCtrl', [
 	'$scope',
 	'$state',

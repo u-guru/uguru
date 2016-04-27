@@ -1,4 +1,4 @@
-angular.module('uguru.gpa.controllers', [])
+angular.module('uguru.apps.controllers')
 .controller('IntroController', [
 	'$scope',
 	'$ionicSlideBoxDelegate',
@@ -8,8 +8,8 @@ angular.module('uguru.gpa.controllers', [])
 
 
 function IntroController($scope, $ionicSlideBoxDelegate, uTracker,$ionicSideMenuDelegate) {
-	
-	//Init 
+
+	//Init
 	$ionicSideMenuDelegate.canDragContent(false);
 
 

@@ -1,4 +1,4 @@
-angular.module('guru.food.controllers')
+angular.module('uguru.apps.controllers')
 .controller('GrubDetailsCtrl', [
 	'$scope',
 	GrubDetailsCtrl]);
@@ -16,7 +16,7 @@ function GrubDetailsCtrl($scope) {
 	}
 
 
-	
+
 
 }
 

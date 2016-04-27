@@ -1,4 +1,4 @@
-angular.module('guru.food.controllers', [])
+angular.module('uguru.apps.controllers')
 .controller('GrubHomeCtrl', [
 	'$rootScope',
 	'$scope',
@@ -25,16 +25,16 @@ function GrubHomeCtrl($rootScope, $scope, University, InAppMapService, $timeout,
 	console.log("University," ,University.selected == {})
 	if (University.selected == {}) {
 		console.log("using selected universigty coords");
-		$scope.map = { center: { latitude: University.selected.latitude, longitude: University.selected.longitude }, zoom: 14 };		
+		$scope.map = { center: { latitude: University.selected.latitude, longitude: University.selected.longitude }, zoom: 14 };
 	} else {
 		console.log("using default coords");
-		$scope.map = { center: { latitude: 37.8718992, longitude: -122.2585399 }, zoom: 14 };	
+		$scope.map = { center: { latitude: 37.8718992, longitude: -122.2585399 }, zoom: 14 };
 	}
 	$scope.isBrowser = !DeviceService.doesCordovaExist();
 	console.log("isBrowser: " + $scope.isBrowser);
-	
+
 	// $timeout(function() {
-	// 	InAppMapService.displayMap();	
+	// 	InAppMapService.displayMap();
 	// }, 2000);
 
 	$scope.search_text = {
@@ -51,22 +51,22 @@ function GrubHomeCtrl($rootScope, $scope, University, InAppMapService, $timeout,
   		console.log("heard school changed!");
   		if (University.selected !== null) {
   			console.log("using selected universigty coords");
-  			$scope.map = { center: { latitude: University.selected.latitude, longitude: University.selected.longitude }, zoom: 14 };		
+  			$scope.map = { center: { latitude: University.selected.latitude, longitude: University.selected.longitude }, zoom: 14 };
   		} else {
   			console.log("using default coords");
-  			$scope.map = { center: { latitude: 37.8718992, longitude: -122.2585399 }, zoom: 14 };	
+  			$scope.map = { center: { latitude: 37.8718992, longitude: -122.2585399 }, zoom: 14 };
   		}
 
   		triggerNick();
 
   	});
-	
+
 	function toggleHeader() {
-		
+
 		var header = document.querySelector('#home-header');
 		var desktopHeader = document.querySelector('#top-bar');
 		var foodList = document.querySelector('#home-container');
-		
+
 		if (header.classList.contains('active')) {
 			header.classList.remove('active');
 			desktopHeader.classList.remove('active');
@@ -77,27 +77,27 @@ function GrubHomeCtrl($rootScope, $scope, University, InAppMapService, $timeout,
 			foodList.classList.add('active');
 		}
 	}
-	
+
 	$scope.openDropdown = function() {
 		console.log("clicked openDropdown()");
-		
+
 		var dropdownMenu = document.querySelector('#top-menu-links');
-		
+
 		if (dropdownMenu.classList.contains('active') ) {
 			dropdownMenu.classList.remove('active');
 		} else {
 			dropdownMenu.classList.add('active');
 		}
 	};
-	
+
 
 	$scope.openSearch = function() {
 		console.log("clicked openSearch()");
-		
+
 		var searchInput = document.querySelector('#grub-search-input');
 		var desktopSearchInput = document.querySelector('#desktop-search-input');
 		var homeTitle = document.querySelector('#grub-title');
-		
+
 		if (searchInput.classList.contains('active') ) {
 			searchInput.classList.remove('active');
 			desktopSearchInput.classList.remove('active');
@@ -110,14 +110,14 @@ function GrubHomeCtrl($rootScope, $scope, University, InAppMapService, $timeout,
 
 		// if (window.getComputedStyle(searchInput).opacity === '0') {
 		// 	searchInput.style.opacity = '1';
-		// 	homeTitle.style.opacity = '0';	
+		// 	homeTitle.style.opacity = '0';
 		// 	searchInput.focus();
-		// } 
+		// }
 		// else {
 		// 	searchInput.style.visibility = '0';
-		// 	homeTitle.style.visibility = '1';	
+		// 	homeTitle.style.visibility = '1';
 		// }
-			
+
 	};
 
 
@@ -207,10 +207,10 @@ function GrubHomeCtrl($rootScope, $scope, University, InAppMapService, $timeout,
 		}
 
 		$timeout(function() {
-			
+
 			restaurantModal.show();
 		}, 0);
-		
+
 		toggleHeader();
 
 	};
@@ -342,16 +342,16 @@ angular.module('uguru.directives')
      //      }
 
      //      if (DeviceService.doesCordovaExist()) {
-          	
+
      //      	if(mapPromise) {
      //      	  $timeout.cancel(mapPromise);
      //      	}
      //      	mapPromise = $timeout(function() {
-			  // InAppMapService.plotMarkers($scope.listScope);  
+			  // InAppMapService.plotMarkers($scope.listScope);
      //      	  mapPromise = null;
 
      //      	}, 1000);
-          	
+
      //      }
      //    }
 
