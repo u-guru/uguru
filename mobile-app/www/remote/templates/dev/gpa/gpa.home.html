@@ -84,9 +84,108 @@
 					<span>Add Courses</span>
 				</div>
 			</div> -->
-			<div id="home-courses" ng-if="overall.averageGPA">
+			<div id="home-courses">
 				<ul class="semester-list">
-					<li class="semester-item ng-class:{'active':$index == data.headerActive, 'selected': $index == data.headerSelected}" ng-repeat='semester in overall.semesterArr'>
+					<li class="semester-item active">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+								<h3>U.S. History / Civics / American Government</h3>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="semester-item active">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+								<h3>U.S. History / Civics / American Government</h3>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="semester-item active">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+								<h3>U.S. History / Civics / American Government</h3>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="semester-item active small">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="semester-item active small">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="semester-item active small">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!-- <li class="semester-item ng-class:{'active':$index == data.headerActive, 'selected': $index == data.headerSelected}" ng-repeat='semester in overall.semesterArr'>
 						<div>
 							<h2 ng-click='toggleHeader($index)' class="section-header">
 								<span>{{semester.semester + ' ' + semester.year}}</span>
@@ -96,7 +195,6 @@
 									</svg>
 								</a>
 							</h2>
-							<!-- Gabrielle - what is this? -->
 							<div class="gpa-container">
 								<div>
 									<h1 class="gpa">{{semester.gpa}}</h2>
@@ -115,7 +213,7 @@
 								</li>
 							</ul>
 						</div>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 		</div>
