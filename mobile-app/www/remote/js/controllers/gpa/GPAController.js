@@ -9,11 +9,13 @@ angular.module('uguru.gpa.controllers',[])
 	'PopupService',
 	'TransitionService',
 	'DeviceService',
+	'Restangular',
+	'User',
 	GPAController]);
 
 
 function GPAController($scope, ModalService, GPAService, $localstorage,
-	$timeout, PopupService, TransitionService, DeviceService) {
+	$timeout, PopupService, TransitionService, DeviceService, Restangular, User) {
 
 	$scope.toggleHeader = function(index) {
 		if ($scope.data.headerSelected === index && !$scope.transitioning) {
@@ -121,7 +123,7 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 			// $scope.course.name = $scope.selectedCourse.short_name;
 			// $scope.course.id = $scope.selectedCourse.id;
 
-			console.log("SET COURSE NAME FOR DEMO")		
+			console.log("SET COURSE NAME FOR DEMO")
 			$scope.course.name = "DEMO"
 			$scope.course.id = 1234
 			$scope.course.semester = $scope.course.semester.toUpperCase()
@@ -140,10 +142,9 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 			$scope.search_text.course = '';
 
 			// Set up gpa but not working right -- Jason
-			$scope.overall = GPAService.init($scope.user.grades);
-			initSidebarGPAHomeTransition();
-			setIOSStatusBarToLightText();
-			console.log($scope.overall.averageGPA);
+			// initSidebarGPAHomeTransition();
+			// setIOSStatusBarToLightText();
+			// console.log($scope.overall.averageGPA);
 
 			$scope.closeModal('course');
 		}
@@ -165,14 +166,28 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	})
 
-
+	$scope.$on('$ionicView.loaded', function() {
+		loadCourses(2307);
+		$scope.overall = GPAService.init($scope.user.grades);
+		if (!$scope.user) {
+			$scope.user = User.initUser();
+			console.log('user initialized', $scope.user);
+			$scope.user.grades = [];
+			return;
+		}
+		if (!$scope.user.grades) {
+			console.log('user initialized', $scope.user);
+			$scope.user.grades = [];
+			return;
+		}
+	})
 
 	$scope.$on('$ionicView.beforeEnter', function() {
 		console.log("beforeENTER")
 		console.log($scope.universities)
 
 		// initBeforeEnterActions();
-		// init GPA grade 
+		// init GPA grade
 		// $scope.user.grades = GPAService.init]
 		$scope.overall = GPAService.init($scope.user.grades);
 		console.log($scope.overall)
@@ -239,7 +254,21 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	    PopupService.open('welcomeUser');
 	}
 
+	$scope.courses = [];
+	function loadCourses(uni_id) {
+		$timeout(function() {
+			Restangular.one('universities', uni_id).customGET('popular_courses').then(function(response) {
 
+
+				$scope.courses = response.plain();
+
+	            console.log($scope.courses.length, 'loaded')
+
+	             }, function(err) {
+	                 console.error("Error getting popularCourses: " + err);
+	        });
+	   	}, 0);
+	}
 
 }
 

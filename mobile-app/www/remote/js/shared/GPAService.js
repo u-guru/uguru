@@ -48,7 +48,9 @@ function GPAService() {
   }
 
   function init(userCourses) {
-    
+    if (!userCourses) {
+      userCourses = [];
+    };
     if(!userCourses.length)
     {
       console.log("Default overall grades");
@@ -58,7 +60,7 @@ function GPAService() {
     for (var i = 0; i < userCourses.length; i ++) {
          var course = userCourses[i];
          var courseSemester = course.semester.toUpperCase()+','+course.year
-      //Adding New semester 
+      //Adding New semester
       if(semesterNames.indexOf(courseSemester) < 0 )
       {
           semesterNames.push(courseSemester);
