@@ -19,14 +19,14 @@
 
 		<div id="home-container" class="text-center">
 			<div id="home-gpa" class="gpa-container">
-				<div>
+				<div class="opacity-0" class-on-load="u-bounceInUp-subtle-2">
 					<h1 id="home-overall-gpa" class="gpa">{{overall.averageGPA | number: 1}}</h1>
 					<!-- <h1 id="home-overall-gpa" ng-if="!overall.averageGPA" class="gpa">4.0</h2> -->
 					<h2 ng-if="!overall.semesterArr.length">Add some courses to get&nbsp;started!</h1>
 					<h2 ng-if="overall.semesterArr.length">{{slogan()}}</h2>
 				</div>
 				<nav id="semester-slider">
-					<ul>
+					<ul class="opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="2500">
 						<li>
 							<a href="#" class="nav">
 								<svg viewBox="0 0 100 100">
@@ -85,7 +85,7 @@
 					<span>Add Courses</span>
 				</div>
 				<ul class="semester-list">
-					<li class="semester-item active">
+					<li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
 						<div>
 							<div class="semester-item-course">
 								<h1>CIV 123</h1>
@@ -102,7 +102,7 @@
 							</div>
 						</div>
 					</li>
-					<li class="semester-item active">
+					<li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1250">
 						<div>
 							<div class="semester-item-course">
 								<h1>CIV 123</h1>
@@ -119,7 +119,7 @@
 							</div>
 						</div>
 					</li>
-					<li class="semester-item active">
+					<li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1500">
 						<div>
 							<div class="semester-item-course">
 								<h1>CIV 123</h1>
@@ -136,7 +136,7 @@
 							</div>
 						</div>
 					</li>
-					<li class="semester-item active small">
+					<li class="semester-item active small opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1750">
 						<div>
 							<div class="semester-item-course">
 								<h1>CIV 123</h1>
@@ -152,7 +152,7 @@
 							</div>
 						</div>
 					</li>
-					<li class="semester-item active small">
+					<li class="semester-item active small opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="2000">
 						<div>
 							<div class="semester-item-course">
 								<h1>CIV 123</h1>
@@ -168,7 +168,7 @@
 							</div>
 						</div>
 					</li>
-					<li class="semester-item active small">
+					<li class="semester-item active small opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="2250">
 						<div>
 							<div class="semester-item-course">
 								<h1>CIV 123</h1>

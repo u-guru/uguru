@@ -1197,6 +1197,7 @@
 }
 
 .powerup-demographic .demo-grid ul li {
+  transform-origin: center top;
   position: relative;
   height: 50%;
   width: 25%;
