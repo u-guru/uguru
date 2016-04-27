@@ -190,7 +190,11 @@ gulp.task('styles', function() {
   var cssStream24 = gulp.src('www/remote/css/sass/samir.css');
   var cssStream25 = gulp.src('www/remote/css/sass/essay.css');
   var cssStream26 = gulp.src('www/remote/css/sass/angular-fx.css');
-
+  var cssStream27 = gulp.src('www/remote/css/sass/powerups.css');
+  var cssDevGPA = gulp.src('www/remote/css/dev/gpa/style.css');
+  // var cssDevFood = gulp.src('www/remote/css/sass/angular-fx.css');
+  // var cssDevSound= gulp.src('www/remote/css/sass/angular-fx.css');
+  // var cssDevTransit= gulp.src('www/remote/css/sass/angular-fx.css');
 
 
 
@@ -198,7 +202,9 @@ gulp.task('styles', function() {
   return streamqueue({ objectMode: true }, cssStream1, cssStream2, cssStream3,
     cssStream4, cssStream5, cssStream6, cssStream7, cssStream8, cssStream9, cssStream10,
     cssStream11, cssStream12, cssStream13, cssStream14, cssStream15, cssStream16, cssStream17, cssStream18,
-    cssStream19, cssStream20, cssStream21, cssStream22, cssStream23, cssStream24, cssStream25, cssStream26).pipe(plugins.concat('main.css'))
+    cssStream19, cssStream20, cssStream21, cssStream22, cssStream23, cssStream24, cssStream25, cssStream26,
+    cssStream27, cssDevGPA)
+    .pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS())
     .pipe(plugins.if(build, plugins.rev()))
@@ -350,11 +356,11 @@ gulp.task('scripts', function() {
       "js/controllers/food/GrubHomeCtrl.js",
       "js/controllers/food/GrubDetailsCtrl.js",
       "js/controllers/food/GrubFiltersCtrl.js",
-      "js/controllers/food/restaurants.js"
-      // "js/controllers/sound/MusicHomeCtrl.js",
-      // "js/controllers/sound/*.js",
-
-      // "js/controllers/transit/*.js",
+      "js/controllers/food/restaurants.js",
+      "js/controllers/sound/MusicHomeCtrl.js",
+      "js/controllers/sound/*.js",
+      "js/controllers/transit/TransitHomeCtrl.js",
+      "js/controllers/transit/*.js"
       ], { cwd: 'www/remote' })
     // .src(['templates.js', 'app.js', '**/*.js'], { cwd: 'app/scripts' })
 
