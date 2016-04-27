@@ -34,6 +34,7 @@ angular.module('uguru.util.controllers')
     ContentService, LoadingService, ContentService, CTAService, User, AccessService,
      AnimationService, FileService, KeyboardService) {
 
+    $scope.root.triggers.runSequence(['click:#cta-box-powerupss:2000', 'click:#powerup-gpa-container:2000'])
     $scope.nav = {activate: true};
     $scope.mad_lib = {activate: false};
     $scope.activate = {
