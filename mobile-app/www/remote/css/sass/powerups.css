@@ -1112,16 +1112,7 @@
   stroke-width: 9px;
 }
 
-[class*="powerup"] .tour-guru svg:first-child {
-  display: block;
-}
-
-[class*="powerup"] .tour-guru svg:first-child > g > ellipse {
-  -webkit-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
-  -moz-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
-  -ms-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
-  -o-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
-  animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+[class*="powerup"] .tour-guru {
   -webkit-transform-origin: center center;
   -moz-transform-origin: center center;
   -ms-transform-origin: center center;
@@ -1129,7 +1120,40 @@
   transform-origin: center center;
 }
 
-[class*="powerup"] .tour-guru svg:first-child .guru-body {
+[class*="powerup"] .tour-guru svg:first-child > g > ellipse {
+  -webkit-transform-origin: center center;
+  -moz-transform-origin: center center;
+  -ms-transform-origin: center center;
+  -o-transform-origin: center center;
+  transform-origin: center center;
+}
+
+[class*="powerup"] .tour-guru svg.absolute {
+  transform-origin: bottom left;
+}
+
+[class*="powerup"] .tour-guru.on-enter svg:first-child > g > ellipse {
+  animation: tour-shadow 500ms cubic-bezier(0, 1.6, 1, 1.6) forwards;
+}
+
+[class*="powerup"] .tour-guru.on-enter svg.absolute {
+  animation: u-rotateScaleUpLeft 2000ms ease-in-out 2000ms forwards;
+  opacity: 0;
+}
+
+[class*="powerup"] .tour-guru.active svg:first-child {
+  display: block;
+}
+
+[class*="powerup"] .tour-guru.active svg:first-child > g > ellipse {
+  -webkit-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+  -moz-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+  -ms-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+  -o-animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+  animation: tour-guru-shadow-hover 1000ms linear infinite alternate;
+}
+
+[class*="powerup"] .tour-guru.active svg:first-child .guru-body {
   -webkit-animation: tour-guru-hover 1000ms linear infinite alternate;
   -moz-animation: tour-guru-hover 1000ms linear infinite alternate;
   -ms-animation: tour-guru-hover 1000ms linear infinite alternate;
@@ -1148,14 +1172,6 @@
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
   background: #F1F1F1;
 }
 
@@ -1192,16 +1208,17 @@
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  height: 100%;
   width: 100%;
+  padding: 1px;
 }
 
 .powerup-demographic .demo-grid ul li {
   transform-origin: center top;
   position: relative;
   height: 50%;
-  width: 25%;
+  width: 50%;
   font-weight: 600;
+  padding: 1px;
 }
 
 .powerup-demographic .demo-grid ul li a {
@@ -1209,7 +1226,7 @@
   width: 100%;
   height: 100%;
   border-radius: 2px;
-  font-size: 36px;
+  font-size: 28px;
   text-transform: lowercase;
 }
 
@@ -1266,7 +1283,55 @@
   width: 100%;
 }
 
-@media screen and (min-width: 768px) and (min-height: 575px) {
+@media screen and (max-width: 768px) {
+  .powerup-demographic {
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: space-between;
+    align-items: space-between;
+    -webkit-align-content: space-between;
+    align-content: space-between;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .powerup-demographic .demo-header {
+    height: 40%;
+  }
+  .powerup-demographic .demo-grid {
+    height: 60%;
+  }
+  .powerup-demographic .tour-guru {
+    margin-top: 15px;
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  .powerup-demographic h1 {
+    margin-top: -45px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .powerup-demographic {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .powerup-demographic h1 {
+    font-size: 48px;
+  }
   .powerup-demographic .demo-grid {
     height: auto;
     margin: 0 auto;
@@ -1277,6 +1342,10 @@
   }
   .powerup-demographic .demo-grid ul li {
     padding: 15px;
+    width: 25%;
+  }
+  .powerup-demographic .demo-grid ul li a {
+    font-size: 36px;
   }
 }
 

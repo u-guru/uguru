@@ -196,23 +196,23 @@
 }
 
 #home-container #home-courses {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
   height: 50%;
+  background: #79c5cd;
   overflow: auto;
 }
 
 #home-container #home-courses .semester-list {
-  width: 100%;
-}
-
-#home-container #home-courses .semester-list .semester-item {
-  background: rgba(64, 172, 184, 0.5);
-}
-
-#home-container #home-courses .semester-list .semester-item .header-close {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   -webkit-flex-direction: row;
   flex-direction: row;
   -webkit-align-items: center;
@@ -221,53 +221,18 @@
   align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 50px;
-  height: 50px;
-}
-
-#home-container #home-courses .semester-list .semester-item .header-close svg {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-  width: 28px;
-  height: 28px;
-}
-
-#home-container #home-courses .semester-list .semester-item .header-close svg path {
-  fill: none;
-  stroke: white;
-  stroke-width: 7px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-#home-container #home-courses .semester-list .semester-item:not(.active) ul {
-  height: 0;
-  overflow: hidden;
-  padding-bottom: 1px;
-}
-
-#home-container #home-courses .semester-list .semester-item .gpa-container {
-  display: none;
-}
-
-#home-container #home-courses .semester-list .semester-item.selected {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 13;
   width: 100%;
-  height: 100%;
-  background: #9bd6dc;
+  max-width: 1030px;
+  margin: 0 auto;
+  padding: 1px;
 }
 
-#home-container #home-courses .semester-list .semester-item.selected .header-close {
+#home-container #home-courses .semester-list .semester-item {
+  width: 100%;
+  padding: 1px;
+}
+
+.semester-item > div {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -275,17 +240,54 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  padding: 15px;
+  background: rgba(99, 112, 116, 0.75);
+  border-radius: 2px;
 }
 
-#home-container #home-courses .semester-list .semester-item.selected .section-header {
-  height: auto;
-  padding: 15px;
+.semester-item > div.small {
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.semester-item > div h1 {
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.semester-item > div .semester-item-course {
+  text-align: left;
+  width: calc(100% - 64px);
+  padding-right: 15px;
+}
+
+.semester-item > div .semester-item-course h3 {
+  margin: 0;
   font-size: 20px;
   font-weight: 600;
-  letter-spacing: 0;
 }
 
-#home-container #home-courses .semester-list .semester-item.selected .gpa-container {
+.semester-item > div .semester-item-grade {
+  position: relative;
+  background: white;
+  border-radius: 2px;
+  padding: 5px;
+  color: #40acb8;
+  height: 64px;
+  width: 64px;
+}
+
+.semester-item > div .semester-item-grade > svg {
+  display: block;
+  width: 100%;
+}
+
+.semester-item > div .semester-item-grade > div {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -293,81 +295,36 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
-  padding-bottom: 45px;
-}
-
-#home-container #home-courses .semester-list .semester-item:not(.selected) .gpa-container {
-  height: 0;
-  overflow: hidden;
-}
-
-#home-container #home-courses .semester-list .semester-item:not(.selected) ul li {
-  display: none;
-}
-
-#home-container #home-courses .semester-list .semester-item:not(.selected) ul li:nth-child(1), #home-container #home-courses .semester-list .semester-item:not(.selected) ul li:nth-child(2) {
-  display: block;
-}
-
-#home-container #home-courses .semester-list .semester-item div .section-header {
-  background: #40acb8;
-}
-
-#home-container #home-courses .semester-list .semester-item div ul {
-  padding-bottom: 15px;
-}
-
-#home-container #home-courses .semester-list .semester-item div ul:empty {
-  padding-bottom: 1px;
-}
-
-#home-container #home-courses .semester-list .semester-item div ul li {
-  position: relative;
-  margin: 15px 15px 0;
-  padding: 20px;
-  background: white;
-  color: #40acb8;
-}
-
-#home-container #home-courses .semester-list .semester-item div ul li h3 {
-  font-weight: 600;
-  text-align: left;
-}
-
-#home-container #home-courses .semester-list .semester-item div ul li .mobile-only {
-  display: block;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 58px;
-  height: 58px;
-  background: rgba(64, 172, 184, 0.75);
-}
-
-#home-container #home-courses .semester-list .semester-item div ul li .mobile-only span {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
-  display: block;
-  width: 100%;
-  color: white;
-  font-weight: 600;
-  text-align: center;
-}
-
-#home-container #home-courses .semester-list .semester-item div ul li .mobile-only .semester-course-grade {
   top: 0;
-  padding-top: 10px;
-  font-size: 32px;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-#home-container #home-courses .semester-list .semester-item div ul li .mobile-only .semester-course-credits {
-  bottom: 0;
+.semester-item > div .semester-item-grade h2 {
+  width: 100%;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.semester-item > div .semester-item-grade span {
+  width: 100%;
+  display: block;
+  margin-top: -5px;
   font-size: 14px;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -381,79 +338,21 @@
   #home-container #home-gpa #semester-slider {
     display: block;
   }
-  #home-container #home-courses {
-    overflow: hidden;
-    position: static;
-  }
   #home-container #home-courses .semester-list {
-    background: #79c5cd;
     height: 100%;
+    padding: 7.5px;
   }
   #home-container #home-courses .semester-list .semester-item {
-    background: none;
-  }
-  #home-container #home-courses .semester-list .semester-item:not(.active) {
-    display: none;
-  }
-  #home-container #home-courses .semester-list .semester-item .section-header {
-    display: none;
-  }
-  #home-container #home-courses .semester-list .semester-item div ul {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    max-width: 1230px;
-    margin: 0 auto;
-    padding: 15px 0;
-  }
-  #home-container #home-courses .semester-list .semester-item div ul li {
-    display: block !important;
-    width: calc(100% / 3 - 30px);
-    margin: 15px;
-    padding: 0;
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  #home-container #home-courses .semester-list .semester-item div ul li h3 {
-    padding: 15px 15px 0;
-    text-align: center;
-  }
-  #home-container #home-courses .semester-list .semester-item div ul li h3 + span {
-    filter: alpha(opacity=50);
-    opacity: 0.5;
-    display: block;
-    padding-bottom: 15px;
-    font-size: 18px;
-    font-weight: 900;
-    text-align: center;
-    text-transform: uppercase;
-  }
-  #home-container #home-courses .semester-list .semester-item div ul li div {
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    background: rgba(64, 172, 184, 0.5);
-    padding: 15px;
-    color: white;
-    font-size: 36px;
-    font-weight: 900;
-    text-align: center;
+    width: calc(100% / 3);
+    padding: 7.5px;
   }
 }
 
 /* ---------- GRADE MODAL */
+#powerup-gpa-add {
+  background: #79c5cd !important;
+}
+
 .add-modal section header {
   height: calc(100% / 6);
 }
@@ -727,125 +626,97 @@
   }
 }
 
+#powerup-gpa-title .powerup-title {
+  background: #79c5cd !important;
+}
+
 /* ---------- DEMOGRAPHIC */
-#demographic {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  background: #F1F1F1;
+#powerup-gpa-demographic .powerup-back span {
+  color: #40acb8;
 }
 
-#demographic #demo-grid ul {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  height: 100%;
-  width: 100%;
+#powerup-gpa-demographic .powerup-back span svg * {
+  stroke: #40acb8;
 }
 
-#demographic #demo-grid ul li {
-  position: relative;
-  height: 50%;
-  width: 25%;
-  font-weight: 600;
+#powerup-gpa-demographic .powerup-back:hover span, #powerup-gpa-demographic .powerup-back:focus span {
+  color: #79c5cd;
 }
 
-#demographic #demo-grid ul li a {
-  position: relative;
-  width: 100%;
-  height: 100%;
+#powerup-gpa-demographic .powerup-back:hover span svg *, #powerup-gpa-demographic .powerup-back:focus span svg * {
+  stroke: #79c5cd;
+}
+
+#powerup-gpa-demographic .powerup-back:active span {
+  color: #637074;
+}
+
+#powerup-gpa-demographic .powerup-back:active span svg * {
+  stroke: #637074;
+}
+
+#powerup-gpa-demographic .demo-grid ul li a {
   background: #79c5cd;
   border: 3px solid #79c5cd;
-  border-radius: 2px;
-  font-size: 36px;
-  text-transform: lowercase;
 }
 
-#demographic #demo-grid ul li a svg {
-  width: 100%;
-}
-
-#demographic #demo-grid ul li a > span {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
-
-#demographic #demo-grid ul li a:hover {
+#powerup-gpa-demographic .demo-grid ul li a:hover {
   background: white;
   color: #40acb8;
 }
 
-#demographic #demo-grid ul li a:active, #demographic #demo-grid ul li a:focus {
+#powerup-gpa-demographic .demo-grid ul li a:hover > span svg * {
+  stroke: #40acb8;
+}
+
+#powerup-gpa-demographic .demo-grid ul li a:active, #powerup-gpa-demographic .demo-grid ul li a:focus {
   background: #40acb8;
   border-color: #40acb8;
   color: white;
 }
 
+#powerup-gpa-demographic .demo-grid ul li a:active > span svg *, #powerup-gpa-demographic .demo-grid ul li a:focus > span svg * {
+  stroke: white;
+}
+
 @media screen and (min-width: 768px) and (min-height: 575px) {
-  #demographic h1 {
+  #powerup-gpa-demographic h1 {
     color: #40acb8 !important;
   }
-  #demographic #demo-grid {
-    height: auto;
-    margin: 0 auto;
-    max-width: 1060px;
-  }
-  #demographic #demo-grid ul {
-    padding: 15px;
-  }
-  #demographic #demo-grid ul li {
-    padding: 15px;
-  }
+}
+
+#powerup-gpa-welcome {
+  background: #79c5cd;
+}
+
+#powerup-gpa-welcome .powerup-back span {
+  color: white;
+}
+
+#powerup-gpa-welcome .powerup-back span svg * {
+  stroke: white;
+}
+
+#powerup-gpa-welcome .powerup-back:hover span, #powerup-gpa-welcome .powerup-back:focus span {
+  color: #b3dee3;
+}
+
+#powerup-gpa-welcome .powerup-back:hover span svg *, #powerup-gpa-welcome .powerup-back:focus span svg * {
+  stroke: #b3dee3;
+}
+
+#powerup-gpa-welcome .powerup-back:active span {
+  color: #637074;
+}
+
+#powerup-gpa-welcome .powerup-back:active span svg * {
+  stroke: #637074;
+}
+
+#powerup-gpa-welcome button:hover, #powerup-gpa-welcome button:focus {
+  color: #40acb8;
+}
+
+#powerup-gpa-welcome button:active {
+  color: white;
 }

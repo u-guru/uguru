@@ -27,21 +27,20 @@
 		</div>
 		<nav id="top-menu-links" class="ng-class:{'active':root.vars.showDesktopSettings}">
 			<ul>
-				<ul>
-					<li tabindex ng-click="openModal('university')">
-						<span>Edit University</span>
-					</li>
-					<li tabindex>
-						<span>Default Units</span>
-						<input type="number" placeholder="4"/>
-					</li>
-					<li tabindex>
-						<span>Section</span>
-						<input type="number" placeholder="2"/>
-					</li>
-					<li tabindex ng-click='clearStorage()'>
-						<span>Clear Courses</span>
-					</li>
+				<li tabindex ng-click="openModal('university')">
+					<span>Edit University</span>
+				</li>
+				<li tabindex>
+					<span>Default Units</span>
+					<input type="number" placeholder="4"/>
+				</li>
+				<li tabindex>
+					<span>Section</span>
+					<input type="number" placeholder="2"/>
+				</li>
+				<li tabindex ng-click='resetDefault()'>
+					<span>Clear Courses</span>
+				</li>
 			</ul>
 		</nav>
 	</div>

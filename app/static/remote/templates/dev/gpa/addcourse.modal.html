@@ -1,4 +1,4 @@
-<ion-modal-view hide-nav-bar='true' class='uguru-view add-modal bg-azure' style='padding-top:20px;'>
+<ion-modal-view id="powerup-gpa-add" hide-nav-bar='true' class='uguru-view add-modal'>
 	<ion-content class='full-height' scroll='false'>
 		<section id="add-course" class="full-xy">
 			<header>
@@ -17,8 +17,12 @@
 			        <form>
 			            <div class="input-field">
 			                <input name="search-courses" id="course-input-1" type="text" ng-model="search_text.course">
-			                <label for="search-courses">search courses</label>
+			                <label for="search-courses" ng-if="!search_text.course">search courses</label>
+			                <a ng-click='resetSelectedCourse()' class="side-icon major-input-close" ng-if="search_text.course" style='z-index:10000;'>
+			                	<i class='icon ion-close-circled'> </i>
+			                </a>
 			            </div>
+
 			        </form>
 				</div>
 				<div id="selected-course" class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p15x" ng-show='selectedCourse'>
@@ -26,9 +30,15 @@
 						<i class='icon ion-close-circled'> </i>
 					</a>
 					<form>
-						<div class="input-field">
-							<input type="text" ng-model="selectedCourse.short_name" disabled />
-						</div>
+						<fieldset class="large with-icon full-x m15bottom">
+							<input class="input-border light" type="search" placeholder="A large search input"/>
+							<label></label>
+							<span class="input-icon">
+								<svg viewBox="0 0 100 100">
+									<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+								</svg>
+							</span>
+						</fieldset>
 					</form>
 				</div>
 			</header>
@@ -39,6 +49,11 @@
 						<label>
 							<span class="course-name">{{course.short_name}}</span>
 							<span class="course-title" ng-if='course.title'>{{course.title}}</span>
+						</label>
+					</li>
+					<li ng-click='addCourse(search_text.course)' ng-if="!(courses | filter:search_text.course).length">
+						<label>
+							<span class="course-name capitalized">Add A New Course Name: {{search_text.course}}</span>
 						</label>
 					</li>
 				</ul>

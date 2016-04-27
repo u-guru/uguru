@@ -226,6 +226,7 @@
   }
   100% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1;
   }
 }
 
@@ -661,6 +662,7 @@
 @keyframes u-slideInDown {
   0% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -200, 0, 1);
+    opacity: 0;
   }
   4.3% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -97.146, 0, 1);
@@ -688,6 +690,7 @@
   }
   100% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1;
   }
 }
 
@@ -9911,5 +9914,32 @@
     -ms-transform: scale(1);
     -o-transform: scale(1);
     transform: scale(1);
+  }
+}
+
+@keyframes demo-guru {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  1% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes tour-shadow {
+  0% {
+    transform: scaleX(0.2);
+    opacity: 0;
+  }
+  1% {
+    opacity: 0.1;
+  }
+  100% {
+    transfrom: scaleX(1);
   }
 }

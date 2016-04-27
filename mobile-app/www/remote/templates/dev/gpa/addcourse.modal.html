@@ -1,4 +1,4 @@
-<ion-modal-view id="powerup-gpa-add" hide-nav-bar='true' class='uguru-view add-modal'>
+<ion-modal-view id="powerup-gpa-add" class="opacity-0" class-on-activate="fadeIn:anim" hide-nav-bar='true' class='uguru-view add-modal'>
 	<ion-content class='full-height' scroll='false'>
 		<section id="add-course" class="full-xy">
 			<header>
@@ -132,6 +132,11 @@
 						<label>
 							<span class="course-name">{{course.short_name}}</span>
 							<span class="course-title" ng-if='course.title'>{{course.title}}</span>
+						</label>
+					</li>
+					<li ng-click='addCourse(search_text.course)' ng-if="!(courses | filter:search_text.course).length">
+						<label>
+							<span class="course-name capitalized">Add A New Course Name: {{search_text.course}}</span>
 						</label>
 					</li>
 				</ul>
