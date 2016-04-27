@@ -277,75 +277,74 @@
 #powerup-icons {
 	li.active {
 		.loader-powerup-gpa {
+			.gpa-guru, .multiply, .plus, .minus, .equal, .divide {
+				opacity: 0;
+			}
 			.gpa-guru {
 				animation: gpa-guru 1000ms linear forwards;
-				opacity: 0;
 			}
 			.multiply {
 				animation: multiply-enter 500ms linear 100ms forwards;
-				opacity: 0;
 			}
 			.plus {
 				animation: plus-enter 500ms linear 200ms forwards;
-				opacity: 0;
 			}
 			.minus {
 				animation: minus-enter 500ms linear 300ms forwards;
 				transform-origin: bottom right;
-				opacity: 0;
 			}
 			.equal {
 				animation: equal-enter 500ms linear 400ms forwards;
-				opacity: 0;
 			}
 			.divide {
 				animation: divide-enter 500ms linear 450ms forwards;
-				opacity: 0;
 			}
 		}
 	}
 }
 
-#powerup-gpa-container.hover:hover, #powerup-gpa-container.hover:focus, #powerup-gpa-container.active {
+#powerup-gpa-container.hover, #powerup-gpa-container.active {
 	.loader-powerup-gpa {
-		.multiply {
+		.multiply, .minus, .gpa-sign-divide, .gpa-btn-divide, .divide, .equal, .plus, .gpa-btn-equal, .gpa-btn-plus, .gpa-sign-equal, .gpa-sign-plus {
 			opacity: 1;
+			animation-play-state: paused!important;
+		}
+		.multiply {
 			animation: bob-hover 500ms ease-in-out infinite alternate;
 		}
 		.minus {
-			opacity: 1;
 			animation: bob-hover 650ms ease-in-out infinite alternate;
 		}
 		.gpa-sign-divide {
-			opacity: 1;
 			animation: sign-divide-hover 3000ms ease-in-out infinite reverse;
 			transform-origin: center center;
 		}
 		.gpa-btn-divide {
-			opacity: 1;
 			animation: btn-divide-hover 5000ms linear infinite reverse;
 			transform-origin: center center;
 		}
 		.divide {
-			opacity: 1;
 			animation: bob-hover 750ms ease-in-out infinite alternate;
 		}
-		.equal,
-		.plus {
-			opacity: 1;
-			animation: equal-pulse 750ms ease-in-out infinite alternate;		
+		.equal, .plus {
+			animation: equal-pulse 750ms ease-in-out infinite alternate;	
 		}
 		.gpa-btn-equal,
 		.gpa-btn-plus {
-			opacity: 1;
 			animation: btn-divide-hover 7500ms linear infinite reverse;
-			transform-origin: center center;		
+			transform-origin: center center;
 		}
 		.gpa-sign-equal,
 		.gpa-sign-plus {
-			opacity: 1;
 			animation: sign-equal-hover 2000ms ease-in-out  infinite forwards;
 			transform-origin: center center;	
+		}
+	}
+}
+#powerup-gpa-container.hover:hover, #powerup-gpa-container.hover:focus, #powerup-gpa-container.active {
+	.loader-powerup-gpa {
+		.multiply, .minus, .gpa-sign-divide, .gpa-btn-divide, .divide, .equal, .plus, .gpa-btn-equal, .gpa-btn-plus, .gpa-sign-equal, .gpa-sign-plus {
+			animation-play-state: running!important;
 		}
 	}
 }
