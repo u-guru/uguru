@@ -1,5 +1,5 @@
 
-    <div class='header-swipers opacity-0' class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, null:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700" class-on-clear="slideOutUp:animOut">
+    <div class='header-swipers opacity-0 activate' ng-controller="GettingStartedController" class-on-activate="bounceInDown:anim:inject#splash-university|show-splash-university, active:keep, null:inject.swiper-front-gallery-thumbs|a" class-on-activate-delay="700" class-on-clear="slideOutUp:animOut">
 
         <!-- The 3d swipers-->
         <div ng-include="img_base + BASE + 'templates/splash/swiper/splash.swiper.helpers.container.html'">
@@ -8,7 +8,7 @@
         <div class='main-swipers-container swiper-headers'>
             <div class="swiper-container header-swiper-front swiper-container-horizontal swiper-container-3d swiper-container-coverflow">
                 <!-- pagination -->
-                <div class="swiper-pagination swiper-pagination-white swiper-pagination-clickable swiper-pagination-bullets opacity-0" style="visibility: hidden">
+                <div class="swiper-pagination swiper-pagination-white swiper-pagination-clickable swiper-pagination-bullets">
                     <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span>
                     <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span>
                 </div>
@@ -21,7 +21,7 @@
                 <div class="swiper-wrapper" style="transform: translate3d(256px, 0px, 0px); transition-duration: 0ms;">
                     <!-- Slide # 1-->
                     <!-- how it works -->
-                    <div id='slide-1' class="swiper-slide" activate-on-class="activate" class-on-activate="null:inject#how-it-works|activate" ng-include="img_base + BASE + 'templates/splash/swiper/splash.hiw.container.html'">
+                    <div id='slide-1' class="swiper-slide activate" activate-on-class="activate" class-on-activate="null:inject#how-it-works|activate" ng-include="img_base + BASE + 'templates/splash/swiper/splash.hiw.container.html'">
 
                     </div>
                     <!-- become a guru -->
@@ -54,7 +54,7 @@
             </div>
         </div>
 
-        <div id='splash-swiper-progress-container' ng-include="img_base + BASE + 'templates/splash/swiper/splash.swiper.progress.container.html'">
+        <div id='splash-swiper-progress-container' style='max-height:200px; position:absolute; height:200px;' ng-include="img_base + BASE + 'templates/splash/swiper/splash.swiper.progress.container.html'">
 
         </div>
     </div>
