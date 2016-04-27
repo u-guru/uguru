@@ -584,10 +584,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/guru.conversations.html'
   }).
   //GPA GURU
-  state('root.intro', {
-        url: '/gpa-intro',
-        templateUrl: BASE + 'templates/dev/gpa/university.html',
-        controller: 'AddUniversityCtrl'
+  state('root.gpa-welcome', {
+        url: '/gpa-welcome',
+        templateUrl: BASE + 'templates/dev/gpa/welcome.gpa.html',
+        controller: 'GPAController'
   }).
   state('root.gpa-demographic', {
         url: '/gpa-demographic',
