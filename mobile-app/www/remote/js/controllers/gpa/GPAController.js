@@ -78,12 +78,20 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	$scope.clearSearchInput = function() {
 		$scope.search_text.course = '';
 	};
+
 	$scope.resetDefault  =function()
 	{
-	  $scope.overall = GPAService.defaultValue();
-	  $scope.user.grades = []
-	  $localstorage.removeObject('user')
+	  if(confirm("Are You Sure ?"))
+	  {
+	  	$scope.overall = GPAService.defaultValue();
+	  	$scope.user.grades = []
+	  	// $localstorage.removeObject('user')
+	  	$scope.overall = GPAService.init(angular.copy($scope.user.grades));
+	  	$localstorage.setObject('user', $scope.user);
+	  	$scope.root.vars.showDesktopSettings = !$scope.root.vars.showDesktopSettings;
+	  }
 	}
+
 	$scope.selectedCourse = null;
 
 	$scope.selectCourse = function(course) {
@@ -118,11 +126,19 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 		$scope.search_text = {course: ''};
 		$scope.selectedCourse = null;
 	}
+	$scope.resetGPAFourm = function(){
+		$scope.resetSelectedCourse()
+		var gradesInputs = document.querySelectorAll('#grade-options li input');
+		for (var i = 0; i < gradesInputs.length ; ++i )
+			gradesInputs[i].checked = false;
 
+		$scope.course.units = ""
+		$scope.course.year = ""
+		$scope.course.semester =""
+	}
 	$scope.closeModal = function(modalName) {
 		// console.log("closing modal: " + modalName);
 		ModalService.close(modalName);
-
 	};
 
 	$scope.submitCourse = function() {
@@ -136,32 +152,23 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 			$scope.course.name = $scope.selectedCourse.short_name;
 			$scope.course.id = $scope.selectedCourse.id;
 
-			// GPAService.addCourse($scope.course);
-			console.log('grade', $scope.course);
-			console.log('Before USER GRADES', $scope.user.grades);
-			
-			$scope.user.grades.push($scope.course);
-			// $localstorage.setObject('user', $scope.user);
-			//save to local storage
-			console.log('USER GRADES', $scope.user.grades);
-
-			selectedGrade = '';
-			$scope.resetSelectedCourse();
-			// $scope.overall = GPAService.init($scope.user.grades);
-
-			// Set up gpa but not working right -- Jason
-			// initSidebarGPAHomeTransition();
-			// setIOSStatusBarToLightText();
-			// console.log($scope.overall.averageGPA);
+			var newCourse = angular.copy($scope.course);
+			$scope.user.grades.push(newCourse);
+			$localstorage.setObject('user', $scope.user);
+			$scope.overall = GPAService.init(angular.copy($scope.user.grades));
 
 			$scope.closeModal('course');
-		}
+			$scope.resetGPAFourm();
+			selectedGrade = '';
+			$scope.resetSelectedCourse();
+			console.log('USER GRADES', $scope.user.grades);
+
+		}	
 		 else {
 		 	$scope.loader.showMsg('Please make sure all fields are valid.')
 			// alert("");
 		}
 	};
-
 	$scope.setGrade = function(grade) {
 		selectedGrade = grade;
 		console.log("Setting grade to: " + selectedGrade);
@@ -176,16 +183,16 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 
 	$scope.$on('$ionicView.loaded', function() {
 		loadCourses(2307);
-
+		console.log("cehck", $scope.user.grades)
 		$scope.overall = GPAService.init($scope.user.grades);
 		if (!$scope.user) {
 			$scope.user = User.initUser();
-			console.log('user initialized', $scope.user);
+			console.log('user initialized 1', $scope.user);
 			$scope.user.grades = [];
 			return;
 		}
 		if (!$scope.user.grades) {
-			console.log('user initialized', $scope.user);
+			console.log('user initialized 2', $scope.user);
 			$scope.user.grades = [];
 			return;
 		}
