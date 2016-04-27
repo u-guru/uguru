@@ -24,16 +24,16 @@
                 </ul>
                 <ul class='p15-grid flex-center-vertical txt-center'>
                     <li>
-                        <a id='import-button' ng-click='layout.index = 2' class='weight-900'>Import</a>
+                        <a id='import-button' ng-click='layout.index = 1' class='weight-900'>Import</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a id='import-button' ng-click='goToEditPageDom()' class='weight-900'>Edit</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a id='export-button' ng-click='renderAnimationCSSText()' class="weight-900">Export</a>
                     </li>
-                    <li ng-if='false'>
-                        <a ng-click='saveAnimationsToServer(animation)' class="weight-900">Save</a>
+                    <li>
+                        <a ng-click='saveAnimationClass(animation)' class="weight-900">Save</a>
                     </li>
                 </ul>
                 <ul class='p15-grid flex-center-vertical txt-center'>
@@ -81,40 +81,82 @@
                     <dropdown class="height-32" ng-model="animationFillMode" selected-index="0"> </dropdown>
                 </li>
             </ul>
-            <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 136px)" ng-show='layout.index == 3'>
+            <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 136px)" ng-if='layout.index === 1'>
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
-                <div class="full-xy ugrid-2 p15-grid" style='height:90% !important; '>
-                    <div class="full-y flex-wrap-center full-x flex-stretch" style='width:50% !important;'>
-                        <textarea  id='import-textarea' class='block full-xy radius-2 txt-18 p10y-p15x' placeholder="importable css to cut and post goes here" ng-model="pageDom.stageHtml"></textarea>
+                <tabs class='full-x absolute left-0' options='["Cut N Paste", "Animation Class", "Html Template"]' index="importLayoutIndex"> </tabs>
+                <div class='full-x tabs-options' style='height:calc(100% - 60px - 60px)' >
+                    <div class="full-xy ugrid-2 p15-grid" ng-if='importLayoutIndex === 0'>
+                        <div class="full-y flex-wrap-center full-x flex-stretch" style='height:90% !important; width:50% !important;'>
+                            <textarea  id='import-textarea' class='block full-xy radius-2 txt-18 p10y-p15x' placeholder="importable css to cut and post goes here" ng-model="animationDict.importTextarea"></textarea>
+                            <button ng-click='importFromCSSText(animationDict.importTextarea, animationDict.importInput)'> Import </button>
+                        </div>
+                        <div class='flex-wrap-center flex-stretch' style='width:50% !important; '>
+                            <div class='full-x' style='max-height:100px'>
+                                <h1> Animation Name </h1>
+                                <input class='full-x p20xy' ng-model='animationDict.importInput'/>
+                            </div>
+                            <div class='full-x flex-wrap-center'>
+                                <h1> Class Text </h1>
+                                <textarea placeholder="Paste Class Text Here" class='full-x p20xy' ng-model='animationDict.importClassText'/> </textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-azure full-xy ugrid-2 p15-grid flex-stretch" ng-init="animationImportSearchText" ng-if='importLayoutIndex === 1'>
+                        <div class='flex-wrap-center ugrid-2 full-x'>
+                            <h1 class='full-x text-7 txt-white text-center'>Import an Animation Class</h1>
+                            <input ng-model="animationImportSearchText" placeholder="search predefined animation" type='search'> </input>
+                        </div>
+                        <ul class='flex-wrap-center ugrid-4 full-x'>
+                            <li class='m05x p10x bg-white txt-azure relative flex-wrap-center' ng-repeat='animation in imports.animations | filter: animationImportSearchText:name | limitTo: 16 track by $index' style='min-height:40px;' ng-click="importFromCSSText(animation.cssText, animation.name, animation.classText)">
+                                <div class='absolute ugrid-2 full-xy flex-wrap-center left-0'>
+                                    <span class='full-y flex-wrap-center txt-center txt-1 uppercase weight-700 bg-cerise-50p' style='width:20%;'>
+                                        {{animation.owner}}
+                                    </span>
+                                    <h4 class='txt-2 text-center flex-wrap-center full-y' style='width:80%'>
+                                        {{animation.name}}
+                                    </h4>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-azure full-xy ugrid-2 p15-grid flex-stretch relative" ng-if='importLayoutIndex === 2'>
+                        <div class='flex-wrap-center flex-stretch full-xy absolute full-xy top-0 left-0' ng-init="goToEditPageDom()">
+                            <a class='bg-charcoal absolute top-0 left-0 flex-center svg-48-36 svg-white svg-stroke-6 z-index-1000' ng-click='resetStageDom();' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                            <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                            <div>
+                                <h1 class='txt-7'> HTML Importer</h1>
+                            </div>
+                            <div class="full-xy ugrid-2 p15-grid relative" style='height:75%;'>
+                                <div class="flex-wrap-center full-x flex-stretch" style='height:75%; width:50% !important;'>
+                                    <h1> HTML Text</h1>
+                                    <textarea  id='import-textarea' class='block full-xy radius-2 txt-1 p10y-p15x' placeholder="importable css to cut and post goes here" ng-model="pageDom.stageHtml"></textarea>
 
-                    </div>
-                    <div class='flex-wrap-center flex-stretch full-y' style='width:50% !important; '>
-                        <div class='full-x'>
-                            <h1> Element to Animate </h1>
-                            <input class='full-x p20xy' ng-model='pageDom.
-                            animElemSelector'/>
-                        </div>
-                        <div style='height:75%' class='full-x flex-wrap-center flex-stretch'>
-                            <h1 class='full-x' style='max-height:10%;'> Extra css </h1>
-                            <textarea placeholder=".sample-css \n{\n display: block; \n}\n" class='full-x p10xy txt-4' style='height:90%;' ng-model='pageDom.stageCss'> </textarea>
-                        </div>
-                    </div>
-                </div>
-                <button ng-click='updatePageDom(pageDom.stageHtml, pageDom.animElemSelector)'> Update </button>
-            </div>
-            <div class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 136px)" ng-show='layout.index == 2'>
-                <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
-                <div class="full-xy ugrid-2 p15-grid">
-                    <div class="full-y flex-wrap-center full-x flex-stretch" style='height:90% !important; width:50% !important;'>
-                        <textarea  id='import-textarea' class='block full-xy radius-2 txt-18 p10y-p15x' placeholder="importable css to cut and post goes here" ng-model="animationDict.importTextarea"></textarea>
-                        <button ng-click='importFromCSSText(animationDict.importTextarea, animationDict.importInput)'> Import </button>
-                    </div>
-                    <div class='flex-wrap-center' style='width:50% !important; '>
-                        <input class='full-x p20xy' ng-model='animationDict.importInput'/>
+                                </div>
+                                <div class='flex-wrap-center flex-stretch' style='width:50% !important; '>
+                                    <div class='full-x'>
+                                        <h1> Stage Name </h1>
+                                        <input class='full-x p20xy' ng-model='pageDom.
+                                        stageName'/>
+                                    </div>
+                                    <div class='full-x'>
+                                        <h1> Element to Animate </h1>
+                                        <input class='full-x p20xy' ng-model='pageDom.
+                                        animElemSelector'/>
+                                    </div>
+                                    <div style='height:75%' class='full-x flex-wrap-center flex-stretch'>
+                                        <h1 class='full-x' style='max-height:10%;'> Extra css </h1>
+                                        <textarea placeholder=".sample-css \n{\n display: block; \n}\n" class='full-x p10xy txt-4' style='height:90%;' ng-model='pageDom.stageCss'> </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class='full-x absolute bottom-0 left-0' ng-click='updatePageDom(pageDom.stageHtml, pageDom.animElemSelector)'> Update </button>
+                        <div>
                     </div>
                 </div>
             </div>
-            <div class='relative bg-slate-25p' style="height: calc(100% - 82px - 136px);" ng-show='layout.index === 1'>
+            </div>
+            </div>
+            <div class='relative bg-slate-25p' style="height: calc(100% - 82px - 136px);" ng-show='layout.index === 2'>
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                 <div class="full-xy ugrid-2 p15-grid">
                     <div class="full-y">
@@ -133,7 +175,7 @@
                                     <input class="radius-2-right txt-center p05xy" ng-model='defaults.properties.transformOriginY' ng-blur="updateDefaults(defaults.properties.transformOriginY, 'transformOriginY')" size="6" style="height: 30px;" placeholder="center"/>
                                     <span class="bg-campus block txt-16 p05xy radius-2-right">{{defaults.units.transformOriginY.default}}&nbsp;&dtrif;</span>
                                     <span class="bg-campus block txt-16 p05xy radius-2-left m15left">z</span>
-                                    <input class="radius-2-right txt-center p05xy" ng-blur="updateDefaults(defaults.properties.transformOriginZ, 'transformOriginZ')" ng-model='defaults.properties.transformOriginZ' size="6" style="height: 30px;" placeholder="center"/>
+                                    <input class="radius-2-right txt-center p05xy" ng-blur="updateDefaults(defaults.properties.transformOriginZ , 'transformOriginZ')" ng-model='defaults.properties.transformOriginZ' size="6" style="height: 30px;" placeholder="center"/>
                                     <span class="bg-campus block txt-16 p05xy radius-2-right">{{defaults.units.transformOriginZ.default}}&nbsp;&dtrif;</span>
                                 </div>
                             </li>
@@ -410,6 +452,7 @@
                     </a>
                 </div> -->
             </div>
+
             <div class="full-x flex-wrap-start p15-grid bg-slate">
                 <ul class="flex-space-between full-x relative">
                     <li class='flex-center-vertical' style="height: 45px;">
@@ -501,8 +544,21 @@
             	</div>
             </div>
         </section>
-        <aside class='bg-charcoal'>
-            <div class="overflow-auto no-scrollbar" style="height: calc(100% - 64px)">
+        <aside class='bg-charcoal relative'>
+            <div class="flex-wrap-center left-0 top-0 absolute full-x" style="height: 64px">
+                <tabs style='overflow-x:scroll;' class='absolute full-xy bg-azure-50p top-0 right-0 txt-3' options="['Stage Elements', 'keyframes', 'triggers']" index="asideTabIndex"> </tabs>
+            </div>
+            <div class="overflow-auto no-scrollbar" style="height: calc(100% - 128px); top:64px;" ng-hide='asideTabIndex !== 2'>
+            </div>
+            <div class="overflow-auto no-scrollbar flex-wrap-center flex-stretch" style="height: calc(100% - 128px); top:64px;" ng-hide='asideTabIndex'>
+                <div class='flex-wrap-center' style="height: calc(100% - 128px); top:64px;">
+                    <dropdown ng-model="shapesDropdown"> </dropdown>
+                </div>
+                <div class='element-toolboard flex-wrap-center full-x absolute bottom-0 left-0 ugrid'>
+                    <button  ng-click='resetStageDom()' class='flex-start text-center'>Reset</button>
+                </div>
+            </div>
+            <div class="overflow-auto no-scrollbar absolute left-0" style="height: calc(100% - 128px); top:64px;" ng-hide='asideTabIndex !== 1'>
                 <ul class="p15-grid">
                     <li class="flex-center-vertical-wrap-space-between">
                         <h2 class="txt-18 semibold m15right">translateX &nbsp;&nbsp;
@@ -802,7 +858,7 @@
                 </ul>
 
             </div>
-            <div class="flex-wrap-center flex-wrap bg-moxie" style="height: 64px">
+            <div class="absolute bottom-0 left-0 flex-wrap-center flex-wrap bg-moxie full-x" style="height: 64px" ng-hide='asideTabIndex !== 1'>
                 <h1 class="semibold txt-36 opacity-50 uppercase txt-center">keyframe #&nbsp;</h1>
                 <h1 class="text-center txt-48 semibold margin-none">{{timer.time}}</h1>
             </div>

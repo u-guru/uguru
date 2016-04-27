@@ -31,7 +31,7 @@
         </div>
     </div>
     <ion-list ng-show='studentCourseInput.value.length > 0'>
-        <ion-item class='item-button-right request-form-item course-item major-item' ng-repeat='course in matchingCourses' ng-click='addSelectedStudentCourse(course, course_search_text)'>
+        <ion-item class='item-button-right request-form-item course-item major-item' ng-repeat='course in matchingCourses.slice(0, 16) | limitTo:16' ng-click='addSelectedStudentCourse(course, course_search_text)'>
           <p class='semibold'><span>{{course.short_name}}</span> <span class='course-title'> {{course.title}} </span> </p>
         </ion-item>
     </ion-list>
