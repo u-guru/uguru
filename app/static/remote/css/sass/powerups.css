@@ -223,7 +223,7 @@
 
 .landing-container.landing-gpa .gpa-landing-preview svg * {
   stroke: #637074;
-  stroke-width: 6px;
+  stroke-width: 3px;
 }
 
 .landing-container.landing-gpa .gpa-landing-preview svg circle {
@@ -236,6 +236,10 @@
 
 .landing-container.landing-gpa .gpa-landing-preview svg rect:last-child {
   fill: white;
+}
+
+.landing-container.landing-gpa .landing-action {
+  background: #6c9298;
 }
 
 .landing-container.landing-transit {
@@ -1081,4 +1085,33 @@
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     opacity: 1;
   }
+}
+
+#powerup-gpa-title .powerup-title {
+  background: #79c5cd !important;
+}
+
+.powerup-title .powerup-house .powerup-house-svg {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.powerup-title .powerup-house .powerup-house-svg.active {
+  -webkit-transform-origin: center bottom;
+  -moz-transform-origin: center bottom;
+  -ms-transform-origin: center bottom;
+  -o-transform-origin: center bottom;
+  transform-origin: center bottom;
+  -webkit-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+  -moz-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+  -ms-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+  -o-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+  animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
+}
+
+.powerup-demographic .tour-guru svg {
+  display: block;
+  height: 200px;
 }

@@ -184,7 +184,7 @@
 				height: calc(651px * 0.75);
 				* {
 					stroke: lighten($slate, 15%);
-					stroke-width: 6px;
+					stroke-width: 3px;
 				}
 				circle {
 					fill: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
@@ -198,6 +198,9 @@
 					}
 				}
 			}
+		}
+		.landing-action {
+			background: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
 		}
 	}
 	&.landing-transit {
@@ -621,4 +624,35 @@
   69.36% { transform: matrix3d(0.999, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   83.61% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity: 1; } 
+}
+
+#powerup-gpa-title {
+	.powerup-title {
+		background: mix(white, $gpa, 30%)!important;
+	}
+}
+.powerup-title {
+	.powerup-house {
+		.powerup-house-svg {
+			display: block;
+			width: 100%;
+			max-width: 500px;
+			height: auto;
+			&.active {
+				@include prefix(transform-origin, center bottom, webkit moz ms o);
+				@include prefix(animation, powerup-before-scaleUp 1000ms ease-in-out forwards, webkit moz ms o);
+			}
+		}
+		.coach-click {
+			
+		}
+	}
+}
+.powerup-demographic {
+	.tour-guru {
+		svg {
+			display: block;
+			height: 200px;
+		}
+	}
 }
