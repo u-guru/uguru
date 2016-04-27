@@ -512,8 +512,8 @@ li {
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 	button:not([class*="btn-ghost"]) {
-		padding-left: 0!important;
-		padding-right: 0!important;
+		// padding-left: 0!important;
+		// padding-right: 0!important;
 		@media screen and (max-width: 768px) {
 			font-size: 22px!important;
 		}

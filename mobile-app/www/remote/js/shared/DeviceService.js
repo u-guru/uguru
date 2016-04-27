@@ -52,7 +52,8 @@ function DeviceService($cordovaNgCardIO,
     isFirefoxBrowser: isFirefoxBrowser,
     isChromeBrowser: isChromeBrowser,
     isIEBrowser: isIEBrowser,
-    isSafariBrowser: isSafariBrowser
+    isSafariBrowser: isSafariBrowser,
+    runTriggerSequence:runTriggerSequence
 	};
 
   function isFirstTime() {
@@ -60,7 +61,38 @@ function DeviceService($cordovaNgCardIO,
       firstTime = false;
       return true;
     } else return false;
+  }
 
+
+  function runTriggerSequence(arr_triggers) {
+    var currentDelay = 0;
+    var supportedTriggers = ['click'];
+    for (var i = 0; i < arr_triggers.length; i++) {
+      var indexTriggerString = arr_triggers[i];
+      var indexTriggerSplit = indexTriggerString.split(':');
+      if (indexTriggerSplit.length ===3) {
+        var indexTrigger = indexTriggerSplit[0];
+        var indexSelector = indexTriggerSplit[1];
+        var indexDelay = indexTriggerSplit[2];
+        var element = angular.element(indexSelector);
+        if (!element) {
+          console.log('TRIGGER ELEMENT ERROR:ELEMENT WITH SELECTOR DOES NOT EXIST:', indexSelector);
+          return;
+        }
+        if (supportedTrigger.indexOf(indexTrigger) === -1) {
+          console.log('TRIGGER ELEMENT ERROR:TRIGGER NOT SUPPORTED (YET):', indexTrigger);
+          return;
+        }
+        currentDelay += parseInt(currentDelay);
+        $timeout(function() {
+          console.log(indexTrigger +'ing', 'element', indexSelector, 'in about', currentDelay, 'seconds');
+          angular.element(element).triggerHandler(indexTrigger);
+        }, currentDelay)
+      } else {
+        console.log('TRIGGER ERROR:INSUFFICIENT ARGS FOR ARG:', indexTriggerString);
+        return;
+      }
+    }
   }
 
 	function isMobile() {

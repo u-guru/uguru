@@ -1,18 +1,31 @@
-
-<nav id="top-bar">
+<nav id="top-bar" ng-controller='DesktopSettingsController'>
+	<div id='top-menu-background-overlay' class='absolute full-xy bg-charcoal ng-class:{"active":root.vars.showDesktopSettings}' ng-click='toggleDesktopSettings()'>
+	</div>
 	<div>
-		<a id="top-logo">
-			<span>GPA Guru</span>
-			<svg viewBox="0 0 100 100">
-				<path d="M14,32 L50,68 L86,32"></path>
-			</svg>
-		</a>
-		<a id="top-request" thr-click="openModal('course')">
-			<svg viewBox="0 0 100 100">
-			    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-			</svg>
-		</a>
-		<nav id="top-menu-links" class="active">
+		<div class='ng-class:{"active":root.vars.showDesktopSettings}'>
+			<a id="top-logo" href='#/gpa-home'>
+				<svg viewBox="0 0 372 104" ng-include="img_base + BASE + 'templates/svg.icon.logo.html'">
+				</svg>
+			</a>
+			<a id="top-request" thr-click="openModal('course')">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+			<a id="top-settings" class='relative' ng-click='toggleDesktopSettings()'>
+				<!-- <span class="user-icon" style="background-image: url('{{user.profile_url}}')"></span> -->
+				<user-icon size="small" url="user.profile_url"> </user-icon>
+				<svg viewBox="0 0 100 100">
+					<path d="M14,32 L50,68 L86,32"></path>
+				</svg>
+			</a>
+			<!-- <a id="top-request">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a> -->
+		</div>
+		<nav id="top-menu-links" class="ng-class:{'active':root.vars.showDesktopSettings}">
 			<ul>
 				<li tabindex ng-click="openModal('university')">
 					<span>Edit University</span>

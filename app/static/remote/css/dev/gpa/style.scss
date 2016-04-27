@@ -1,763 +1,32 @@
-@import 'mixin';
+@import '../../sass/mixin';
 
-/* ---------- DEFAULT STYLES */
-a, a:hover, a:active, a:visited {
-	color: white;
-	text-decoration:none;
-}
-i {
-	font-style: normal;
-}
-body {
-	margin: 0;
-	font-family: $font;
-	font-size: 24px;
-	font-weight: 200!important;
-	color: white;
-	background: $charcoal;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	> section, > div, > main {
-		height: 100%;
-	}
-}
-::-webkit-selection {
-	background: rgba(white,.2);
-}
-::-moz-selection {
-	background: rgba(white,.2);
-}
-::selection {
-	background: rgba(white,.2);
-}
-
-body.platform-ios {
-	ul li {
-		&.active, &.activated {
-			background: rgba(white,.2);
-		}
-		::selection {
-			 background: rgba(255, 255, 255, 0.1);
-		}
-		a.active, a.activated {
-			background: rgba(white,.2);
-		}
-		a:hover, .list .list-item a:hover {
-			 background: rgba(255, 255, 255, 0.1);
-		}
-	}
-
-	ion-view.uguru-view, ion-modal-view ion-content {
-		padding-top:20px;
-	}
-	ion-view.uguru-view.demographic-view {
-		padding-top:0px;
-	}
-	.university-view .header-nav {
-		padding-top:20px;
-	}
-}
-
-
-section, main {
-	height: 100%;
-}
-main, #top-bar, .desktop-only, .desktop-search {
-	display: none;
-}
-@media screen and (min-width:700px) and (min-height:575px) {
-	main, .desktop-only, .desktop-search {
-		@include flex;
-	}
+#gpa-home {
+	background: $smoke;
 	#top-bar {
-		display: block;
-	}
-	main + section, .mobile-only {
-		display: none!important;
-	}
-}
-.view-container {
-	position: inherit;
-}
-
-/* ---------- MISCELLANEOUS */
-.uguru-view {
-	* {
-		font-family: $font!important;
-	}
-	.request {
-		&#request {
-			header {
-				&::before {
-					background: url(../images/schools.jpg) no-repeat center center / cover;
-				}
-				.request-header {
-					h1 {
-						padding-top: 20px;
-						width: 100%;
-						text-align: center;
-						font-size: 24px;
-					}
-					.request-icon {
-						@include round;
-						@include flex;
-						@include flex-center;
-						width: 80px;
-						height: 80px;
-						background: $shamrock;
-						margin: 0 auto;
-						svg {
-							@include reset-pos;
-							@include rotate(45);
-							width: 30px;
-							height: 30px;
-						}
-					}
-				}
+		background: $gpa!important;
+		div:nth-child(2) {
+			div {
+				background: $gpa!important;
 			}
-			#request-content {
-				height: calc(100% / 3 * 2);
-			}
-			#request-list {
-				height: calc(100% - 64px);
-				overflow: auto;
-				li {
-					padding: 15px;
-					border-bottom: 1px solid $charcoal;
-					.request-info {
-						width: 100%;
-						h3 {
-							font-size: 24px;
-							font-weight: 600;
-						}
-						.request-loc {
-							display: block;
-							font-size: 16px;
-							font-weight: 400;
-						}
-					}
-					.request-icon {
-						div {
-							@include round;
-							width: 50px;
-							height: 50px;
-							background: $campus;
-						}
-					}
-				}
-			}
-		}
-		#request-tabs {
-			ul {
-				@include listless;
-				@include flex;
-				@include flex-center;
-				li {
-					width: 50%;
-					a {
-						@include flex;
-						@include flex-wrap;
-						@include flex-center;
-						width: 100%;
-						color: white;
-						padding: 10px;
-						height: 64px;
-					}
-					&.active {
-						a {
-							background: $slate;
-						}
-					}
-					h3 {
-						width: 100%;
-						font-size: 18px;
-						font-weight: 600;
-						text-align: center;
-						text-transform: uppercase;
-					}
-					span {
-						@include round;
-						@include flex;
-						@include flex-center;
-						background: white;
-						width: 20px;
-						height: 20px;
-						margin-bottom: 3px;
-						color: $charcoal;
-						font-size: 12px;
-						line-height: 20px;
-					}
-				}
-			}
-		}
-	}
-	@media screen and (max-width:320px) {
-		body {
-			font-size: 20px;
-		}
-		#start-container {
-			font-size: 24px!important;
-		}
-		#skills-list.onboarding-list a {
-			font-size: 16px!important;
-		}
-		#skills-list.onboarding-list  .skill-icon {
-			margin-bottom: 10px;
-			width: 40px!important;
-			height: 40px!important;
-		}
-		.input-search-ghost {
-			input {
-				font-size: 18px;
-			}
-			&::before {
-				@include center-y;
-				display: block;
-				background: url(../../img/svg/search.svg) no-repeat center center/cover,
-							url(/static/remote/img/svg/search.svg) center/cover no-repeat;
-				width: 14px;
-				height: 14px;
-			}
-		}
-		#loading svg {
-			max-width: 200px;
-		}
-	}
-}
-
-
-
-/* ---------- MODALS & POPUPS */
-// POPUP
-.close-popup-link {
-	position: absolute;
-	top: 6px;
-	right: 6px;
-	width: 30px;
-	height: 30px;
-	svg {
-		@include rotate(45);
-		path {
-			stroke-width: 5px;
-		}
-	}
-}
-.uguru-popup {
-	@include opacity(0);
-	@include flex;
-	@include flex-center;
-	@include transition(250ms ease);
-	position: fixed;
-	z-index: 100;
-	visibility: hidden;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba($charcoal, .9);
-	pointer-events: none;
-	.uguru-popup-content {
-		@include transition(250ms ease);
-		position: relative;
-		margin: 0 15px;
-		z-index: 2;
-		width: 100%;
-		background: white;
-		border-radius: 5px;
-		color: $slate;
-		.guru-logo-container {
-			@include flex;
-			@include flex-center;
-			position: absolute;
-			top: -60px;
-			z-index: 5;
-			width: 100%;
-			height: auto;
-			margin: 0 auto;
-			.svg-logo-wrapper {
-				@include round;
-				width: 120px;
-				height: 120px;
-				background: white;
-				svg {
-					@include round;
-					display: block;
-					max-width: 120px;
-					max-height: 120px;
-					padding: 20px;
-					z-index: 3;
-					border: 3px solid white;
-				}
-			}
-			.svg-logo-wrapper:not(.tour-guru) {
-				svg {
-					background: $shamrock;
-					path {
-						fill: white;
-					}
-				}
-			}
-			.tour-guru {
-				svg {
-					background: rgba($shamrock,.3);
-					padding: 15px;
-					*[fill="#1D0E02"] {
-						fill: $charcoal!important;
-					}
-				}
-			}
-		}
-		.content-wrapper {
-			position: relative;
-			padding: 70px 0 0;
-			text-align: center;
-			.content-body {
-				@include flex;
-				@include flex-wrap;
-				padding: 0 15px 15px;
-				#guru-ranking-popup-progress-bar {
-					position: relative;
-					width: 150px;
-					height: 150px;
-					margin: 0 auto 10px;
-					svg {
-						path {
-							stroke-linecap: round!important;
-						}
-					}
-					.progressbar-text {
-						display: none;
-					}
-					#popup-percentile {
-						@include center-xy;
-						#popup-percentile-ranking {
-							position: relative;
-							font-size: 44px;
-							font-weight: 600;
-							line-height: 1;
-							text-align: center;
-							&::after {
-								content: "th";
-								display: block;
-								position: absolute;
-								top: -1px;
-								right: -1px;
-								font-size: 12px;
-								font-weight: 400;
-								line-height: 28px;
-								text-transform: uppercase;
-							}
-						}
-						#popup-percentile-label {
-							font-size: 12px;
-							font-weight: 400;
-							letter-spacing: 1px;
-							line-height: 15px;
-							text-transform: uppercase;
-						}
-					}
-				}
-				h2 {
-					@include opacity(.9);
-					width: 100%;
-					margin-bottom: 10px;
-					color: $slate;
-					font-weight: 700;
-					font-size: 20px;
-					text-align: center;
-					text-transform: uppercase;
-				}
-				p {
-					@include opacity(.8);
-					color: $charcoal;
-					font-weight: 400;
-					font-size: 16px;
-					margin: 0 auto;
-				}
-			}
-			.content-footer {
-				height: 64px;
-				button {
-					background: $shamrock!important;
-					border-radius: 0 0 5px 5px;
-					position: absolute;
-				    width: 100%;
-				    left: 0;
-				    bottom: 0;
-				}
-			}
-		}
-	}
-	&.show {
-		@include opacity(1);
-		@include flex;
-		visibility: visible;
-		pointer-events: auto;
-	}
-	input {
-		font-size: 16px;
-		text-align: center;
-		width: calc(100% - 30px);
-	}
-}
-.guru-mode {
-	background: rgba(white, .9);
-	.close-popup-link {
-		svg {
-			path {
-				stroke: $charcoal;
-			}
-		}
-	}
-	.uguru-popup-content {
-		background: $slate;
-		color: white;
-		.guru-logo-container {
-			.svg-logo-wrapper {
-				background: $slate;
-				svg {
-					border: 3px solid $slate;
-				}
-			}
-			.tour-guru {
-				svg {
-					background: white;
-				}
-			}
-		}
-		.content-wrapper {
-			.content-body {
-				h2, p {
-					color: white;
-				}
+			#top-logo {
+		    	width: calc(100% - 212px + 64px)!important;
 			}
 		}
 	}
 }
-#confirm-phone-uguru-popup {
-	.svg-logo-wrapper svg, button {
-		background: $eggplant!important;
-	}
-}
-#confirm-email-uguru-popup {
-	.svg-logo-wrapper svg, button {
-		background: $lake!important;
-	}
-}
-
-@media screen and (min-width:700px) and (min-height:575px) {
-	.modal {
-		top: 0;
-		left: 0;
-		height: 100%;
-		width: 100%;
-	}
-}
-
-/* ---------- SIDEBAR & MENUS */
-// SIDEBAR
-#side-menu-left-overlay {
-	background: rgba($charcoal, .8);
-	width: 100%;
-	height: 100%;
-	z-index: 20;
-	position: absolute;
-	right: 0;
-	height: 110%;//due to ios status bar, playing it safe
-    bottom: 0;
-}
-.menu {
-	max-width: 80%!important;
-}
-.side-menu-list {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	z-index: 20;
-	button {
-		background: darken($azure, 15%);
-	}
-	.list {
-		@include flex-column;
-		height: 100%;
-		background: white;
-		color: $azure;
-	}
-	.list-item {
-		position: relative;
-		height: 64px;
-		font-size: 18px;
-		font-weight: 600;
-		text-transform: uppercase;
-		color: $azure;
-		text-align: left;
-		&.active, &.activated {
-			background: rgba($azure, .2);
-		}
-		.list-item-detail {
-			display: block;
-			width: 100%;
-			text-align: left;
-			padding: 0 15px;
-		}
-		input {
-			@include center-y;
-			right: 0;
-			padding: 0;
-			display: block;
-			width: 50px;
-			text-align: right;
-			color: darken($azure, 15%);
-			font-size: 18px;
-			font-weight: 900;
-			@include placeholder {
-				color: rgba($taupe,.5);
-			}
-		}
-	}
-	.list-item-title {
-		-webkit-align-items: flex-start;
-		align-items: flex-start;
-		background: darken($azure, 15%);
-		color: white!important;
-		height: 200px!important;
-		.list-item-detail {
-			padding-top: 15px;
-			text-align: center;
-			text-transform: uppercase;
-		}
-	}
-}
-
-
-
-/* ---------- SETTING UP APP */
-// ACCESS
-.access-view {
-	background: $shamrock;
-	#access-data {
-		height: calc(100% - 64px);
-	}
-	#access-logo {
-		@include flex;
-		@include flex-wrap;
-		@include flex-bottom;
-		height: 70%;
-		svg {
-			display: block;
-			max-height: 70%;
-		}
-	}
-	#access-code {
-		@include flex;
-		@include flex-center;
-	}
-	#access-start {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-	}
-	p {
-		margin: 0 0 15px;
-		font-size: smaller;
-	}
-	button:active {
-		background: rgba($charcoal,.7);
-	}
-}
-
-// UNIVERSITY
-.university-view {
-	background: white;
-	header:not(.desktop-header).third:not(.flex-center-wrap), header {
-		background: lighten($azure, 40%);
-		svg {
-			path {
-				stroke: $azure!important;
-			}
-		}
-		&::before {
-			@include opacity(.1);
-			background: url(../../img/hall.jpg) no-repeat center center / cover;
-		}
-		h1 {
-			font-size: 28px!important;
-			text-transform: lowercase;
-			color: $azure;
-		}
-		// .geolocation-icon {
-		// 	margin-top: 3px;
-		// 	// To add hella space to tap it (it's responsive & equalizes)
-		// 	padding: 30px;
-    	// 	margin-right: -30px;
-		// }
-		.side-icon {
-			color: $azure;
-		}
-		.onboarding-search {
-			&::before {
-				display: none;
-			}
-			.input-field {
-				margin-top: 0;
-				* {
-					color: $azure!important;
-					border-color: $azure!important;
-					outline-color: $azure!important;
-				}
-				input {
-					margin: 0;
-				}
-			}
-		}
-	}
-	#school-list.onboarding-list, #school-list-modal {
-		ul {
-			li {
-				margin-left: 1px;
-				margin-right: 1px;
-				width: calc(100% - 2px);
-				&:first-child {
-					margin-top: 1px;
-				}
-				a {
-					background: $azure;
-					font-weight: 300;
-					border: 0;
-					.school-icon {
-						img {
-							@include round;
-							border: 0!important;
-							margin: 10px;
-							width: 44px;
-							height: 44px;
-							background: white;
-						}
-					}
-					.school-name {
-						display: block;
-						width: calc(100% - 69px);
-						padding-right: 5px;
-						b, i {
-							display: block;
-							width: 100%;
-							line-height: 1.2;
-						}
-						b {
-							font-size: 20px;
-							font-weight: 400;
-						}
-						i {
-							font-size: 16px;
-							font-style: normal;
-							font-weight: 300;
-						}
-						.school-title {
-							display: block;
-							width: 100%;
-							overflow: hidden;
-							white-space: nowrap;
-							text-overflow: ellipsis;
-						}
-						.school-city {
-							text-transform: capitalize;
-						}
-						.school-state {
-							text-transform: uppercase;
-						}
-						.school-distance {
-							float: right;
-						    bottom: 0;
-						    font-size:12px;
-						    padding-top: 5px;
-						    font-weight: 500;
-						}
-					}
-				}
-				a:hover {
-					background: $smoke;
-					color: $azure;
-				}
-				a:focus, a:active, a.active, a.activated {
-					background: rgba($azure, .2);
-					color: $azure;
-				}
-			}
-		}
-	}
-}
-
-
-/* ---------- GURU ONBOARDING */
-// ONBOARDING
-.onboarding {
-	header {
-		h1:not(header .header-nav a h1) {
-			text-align: center;
-		}
-	}
-	.onboarding-list {
-		height: calc(100% / 3 * 2);
-		overflow: auto;
-	}
-}
-
-
-
-
-
-/* ---------- TITLE */
-.title-view {
-	img {
-		display: block;
-		width: 100%;
-		max-width: 414px;
-		margin: 0 auto;
-	}
-	ul {
-		@include center-x;
-		bottom: 30px;
-		width: 100%;
-		max-width: 414px;
-		padding: 0 15px;
-		li {
-			padding: 0 15px;
-			button:hover {
-				background: rgba(white,.8);
-			}
-			button:active, button:focus {
-				background: rgba(white,.4);
-			}
-		}
-	}
-	@media screen and (min-width:400px) and (min-height:700px) {
-		h1 {
-			font-size: 32px!important;
-		}
-	}
-	@media screen and (min-width:800px) and (min-height:700px) {
-		h1 {
-			font-size: 48px!important;
-		}
-	}
-}
-
-
-
 
 /* ---------- HOME */
 #home-container {
 	#home-gpa {
 		h1, h2 {
-			color: $azure;
+			color: $gpa;
 		}
 	}
 	.gpa-container {
 		@include flex;
 		@include flex-center;
 		@include flex-wrap;
-		padding: 15px;
-		height: 45%;
+		height: 50%;
 		.gpa {
 			font-size: 160px;
 			font-weight: 600;
@@ -766,56 +35,10 @@ main, #top-bar, .desktop-only, .desktop-search {
 		h2 {
 			font-weight: 600;
 		}
-	}
-	#home-add {
-		height: 50%;
-		@include flex;
-		@include flex-wrap;
-		@include flex-center;
-		button {
-			@include round;
-			display: block;
-			margin: 0 auto;
-			width: 100px;
-			height: 100px;
-			padding: 10px;
-			svg {
-				@include svg-stroke(white, 4);
-				display: block;
-				width: 100%;
-				height: 100%;
-			}
-		}
-		button:hover {
-			background: white;
-			svg {
-				stroke: $azure;
-			}
-		}
-		button:active, button:focus {
-			background: darken($azure, 10%);
-			svg {
-				stroke: white;
-			}
-		}
-		span {
-			display: block;
-			margin: 15px auto 0;
-			width: 100%;
-			color: rgba($slate,.4);
-			font-weight: 600;
-		}
-	}
-	#home-courses {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		max-height: 60%;
-		overflow: auto;
 		#semester-slider {
 			display: none;
-			background: rgba($azure,.6);
+			background: lighten($slate, 15%);
+			width: 100%;
 			ul {
 				@include flex;
 				@include flex-center;
@@ -854,10 +77,57 @@ main, #top-bar, .desktop-only, .desktop-search {
 				}
 			}
 		}
+	}
+	#home-add {
+		height: 50%;
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		button {
+			@include round;
+			display: block;
+			margin: 0 auto;
+			width: 100px;
+			height: 100px;
+			padding: 10px;
+			svg {
+				@include svg-stroke(white, 4);
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		button:hover {
+			background: white;
+			svg {
+				stroke: $gpa;
+			}
+		}
+		button:active, button:focus {
+			background: darken($gpa, 10%);
+			svg {
+				stroke: white;
+			}
+		}
+		span {
+			display: block;
+			margin: 15px auto 0;
+			width: 100%;
+			color: rgba($slate,.4);
+			font-weight: 600;
+		}
+	}
+	#home-courses {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 50%;
+		overflow: auto;
 		.semester-list {
 			width: 100%;
 			.semester-item {
-				background: rgba($azure,.5);
+				background: rgba($gpa,.5);
 				.header-close {
 					@include flex-center;
 					display: none;
@@ -896,7 +166,7 @@ main, #top-bar, .desktop-only, .desktop-search {
 					z-index: 13;
 					width: 100%;
 					height: 100%;
-					background: lighten($azure, 25%);
+					background: lighten($gpa, 25%);
 					.header-close {
 						@include flex;
 					}
@@ -928,7 +198,7 @@ main, #top-bar, .desktop-only, .desktop-search {
 				}
 				div {
 					.section-header {
-						background: $azure;
+						background: $gpa;
 					}
 					ul {
 						padding-bottom: 15px;
@@ -940,7 +210,7 @@ main, #top-bar, .desktop-only, .desktop-search {
 							margin: 15px 15px 0;
 							padding: 20px;
 							background: white;
-							color: $azure;
+							color: $gpa;
 							h3 {
 								font-weight: 600;
 								text-align: left;
@@ -952,7 +222,7 @@ main, #top-bar, .desktop-only, .desktop-search {
 								right: 5px;
 								width: 58px;
 								height: 58px;
-								background: rgba($azure, .75);
+								background: rgba($gpa, .75);
 								span {
 									@include center-x;
 									display: block;
@@ -981,25 +251,21 @@ main, #top-bar, .desktop-only, .desktop-search {
 }
 @media screen and (min-width:700px) and (min-height:575px) {
 	#home-container {
-		margin-top: 64px;
 		height: calc(100% - 64px)!important;
 		#home-gpa {
-			height: 35%;
-			div {
-				margin-top: -2%;
+			> div {
+				height: calc(100% - 90px);
 			}
-		}
-		#home-courses {
-			height: 65%;
-			max-height: 65%;
-			overflow: hidden;
-			position: static;
 			#semester-slider {
 				display: block;
 			}
+		}
+		#home-courses {
+			overflow: hidden;
+			position: static;
 			.semester-list {
-				background: $azure;
-				height: calc(100% - 90px);
+				background: mix($gpa, white, 70%);
+				height: 100%;
 				.semester-item {
 					background: none;
 					&:not(.active) {
@@ -1037,7 +303,7 @@ main, #top-bar, .desktop-only, .desktop-search {
 								}
 								div {
 									@include flex-center;
-									background: rgba($azure,.5);
+									background: rgba($gpa,.5);
 									padding: 15px;
 									color: white;
 									font-size: 36px;
@@ -1065,7 +331,7 @@ main, #top-bar, .desktop-only, .desktop-search {
 		bottom: 0;
 		left: 0;
 		background: white;
-		color: $azure;
+		color: $gpa;
 		font-weight: 900;
 		text-transform: uppercase;
 	}
@@ -1081,7 +347,7 @@ main, #top-bar, .desktop-only, .desktop-search {
 			    padding: 15px;
 			    margin: 0 15px;
 				background: white;
-				color: $azure;
+				color: $gpa;
 				font-weight: 600;
 				font-size: 20px;
 				span {
@@ -1153,7 +419,7 @@ main, #top-bar, .desktop-only, .desktop-search {
 			width: 100%;
 			height: 100%;
 			background: white;
-			color: $azure;
+			color: $gpa;
 			font-size: 24px;
 			font-weight: 600;
 		}
@@ -1281,117 +547,100 @@ main, #top-bar, .desktop-only, .desktop-search {
 
 /* ---------- DEMOGRAPHIC */
 #demographic {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
 	background: $smoke;
-	header {
-		background: lighten($azure, 40%);
-		&::before {
-			@include opacity(.1);
-			background: url(../../img/hall.jpg) no-repeat center center / cover;
-		}
-		h1 {
-			font-size: 28px!important;
-			text-transform: lowercase;
-			color: $azure;
-		}
-	}
 	#demo-grid {
 		ul {
 			@include flex;
 			@include flex-center;
 			@include flex-wrap;
 			height: 100%;
+			width: 100%;
 			li {
 				position: relative;
 				height: 50%;
+				width: 25%;
 				font-weight: 600;
 				a {
-					display: block;
 					position: relative;
 					width: 100%;
 					height: 100%;
-					background: none;
-					svg {
+					background: mix(white, $gpa, 30%);
+					border: 3px solid mix(white, $gpa, 30%);
+					border-radius: 2px;
+					font-size: 36px;
+					text-transform: lowercase;
+					> svg {
 						width: 100%;
 					}
-					span {
-						@include center-xy;
+					> span {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						position: absolute;
+						top: 0;
+						left: 0;
 						width: 100%;
+						height: 100%;
 						text-align: center;
+						svg {
+							width: 100px;
+							height: 100px;
+							* {
+								@include svg-stroke(white, 3);
+							}
+						}
+						span {
+							display: block;
+							margin-bottom: 15px;
+							&:last-child {
+								width: 100%;
+							}
+						}
 					}
-				}
-				&.demo-hs a {
-					background: lighten($azure, 25%);
-				}
-				&.demo-college a {
-					background: $azure;
-				}
-				&.demo-alum a {
-					background: lighten($azure, 10%);
-				}
-				&.demo-parent a {
-					background: darken($azure, 20%);
-				}
-				a:hover {
-					background: lighten($azure, 37%)!important;
-					color: $azure!important;
-				}
-				a:active, a:focus {
-					background: white!important;
-					color: $azure!important;
+					&:hover {
+						background: white;
+						color: $gpa;
+						> span {
+							svg {
+								* {
+									stroke: $gpa;
+								}
+							}
+						}
+					}
+					&:active, &:focus {
+						background: $gpa;
+						border-color: $gpa;
+						color: white;
+						> span {
+							svg {
+								* {
+									stroke: white;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 	}
-	@media screen and (min-width:700px) and (min-height:575px) {
-		header {
-			display: block;
-			height: calc(100% - 445px);
-			background: none;
-			h1 {
-				@include flex;
-				@include flex-center;
-				padding: 0;
-				width: 100%;
-				height: 50%;
-			}
-			&:before {
-				display: none;
-			}
+	@media screen and (min-width:768px) and (min-height:575px) {
+		h1 {
+			color: $gpa!important;
 		}
 		#demo-grid {
-			@include center-xy;
 			height: auto;
-			width: 490px;
-			height: 490px;
+			margin: 0 auto;
+			max-width: 1060px;
 			ul {
 				padding: 15px;
 				li {
-					height: 230px;
-					width: 230px;
 					padding: 15px;
 				}
 			}
 		}
 	}
-	@media screen and (min-width:960px) {
-		header {
-			height: calc(100% - 230px);
-			h1 {
-				font-size: 48px!important;
-			}
-		}
-		#demo-grid {
-			width: 100%;
-		}
-	}
-}
-
-
-#intercom-container {
-	display:none !important;
-}
-
-
-.university-close-icon {
-	z-index:100 !important;
 }

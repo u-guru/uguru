@@ -765,11 +765,6 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   -webkit-overflow-scrolling: touch;
 }
 
-.splash-landing button:not([class*="btn-ghost"]) {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
 @media screen and (max-width: 768px) {
   .splash-landing button:not([class*="btn-ghost"]) {
     font-size: 22px !important;

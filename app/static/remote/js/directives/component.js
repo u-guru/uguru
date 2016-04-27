@@ -20,6 +20,39 @@ angular.module('uguru.components', [])
 
       }
     };
+}).
+directive('draggable', function($document) {
+  return function(scope, element, attr) {
+    var startX = 0, startY = 0, x = 0, y = 0;
+    element.css({
+     position: 'relative',
+     cursor: 'pointer',
+     display: 'block',
+     width: '100px'
+    });
+    element.on('mousedown', function(event) {
+      // Prevent default dragging of selected content
+      event.preventDefault();
+      startX = event.screenX - x;
+      startY = event.screenY - y;
+      $document.on('mousemove', mousemove);
+      $document.on('mouseup', mouseup);
+    });
+
+    function mousemove(event) {
+      y = event.screenY - startY;
+      x = event.screenX - startX;
+      element.css({
+        top: y + 'px',
+        left:  x + 'px'
+      });
+    }
+
+    function mouseup() {
+      $document.off('mousemove', mousemove);
+      $document.off('mouseup', mouseup);
+    }
+  };
 })
 .directive("capitalize",function($parse){
   return{
@@ -37,7 +70,7 @@ angular.module('uguru.components', [])
            if(capitalizeValue !== inputValue) {
               modelCtrl.$setViewValue(capitalizeValue);
               modelCtrl.$render();
-            }         
+            }
             return capitalizeValue;
          }
          modelCtrl.$parsers.push(capitalize);
@@ -275,14 +308,15 @@ angular.module('uguru.components', [])
             }
         };
     })
-    .directive("tabs", function() {
+    .directive("tabs", ['$parse', function($parse) {
 
         return {
             templateUrl: BASE + 'templates/elements/containers/collections/tabs.tpl',
             scope: {
                 options: '=options',
                 key: '@?key',
-                tabIndex: '=index'
+                tabIndex: '=index',
+
             },
             restrict: 'E',
             replace: true,
@@ -295,7 +329,7 @@ angular.module('uguru.components', [])
                 }
             }
         };
-    })
+    }])
     .directive('toast', function() {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'overlay') {

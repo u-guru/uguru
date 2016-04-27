@@ -343,6 +343,7 @@ gulp.task('scripts', function() {
       "js/controllers/util/*js",
       "js/controllers/dev/util.dev.ctrl.js",
       "js/controllers/dev/util.devtools.ctrl.js",
+      "js/controllers/gpa/IntroController.js",
       "js/controllers/gpa/GPAController.js",
       // "js/controllers/food/*.js",
       // "js/controllers/transit/*.js",
