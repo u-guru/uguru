@@ -1,3 +1,4 @@
+<div id="powerup-gpa-title" class="fixed top-0 left-0 full-xy z-index--1000 opacity-0" class-on-activate="fadeIn:anim, z-index-1000:keep" class-on-activate-delay="" ng-include="img_base + 'templates/dev/gpa/title.html'"></div>
 <div class="landing-gpa landing-container full-xy p15xy overflow-auto txt-center" class-on-activate="null:inject.landing-gpa .landing-demo|activate, null:inject.landing-gpa .coach|activate" class-on-activate-delay="4250">
 	<div id="powerup-landing-icon" class="powerup-icon margin-auto" ng-include="img_base + 'templates/elements/assets/powerups/gpa-card.tpl'"></div>
 	<h1 class="txt-48 black m15top">GPA Guru</h1>
@@ -37,36 +38,70 @@
 			</svg>
 		</div>
 	</div>
-	<div class="landing-content bg-white max-1000 relative z-index-1 p15xy radius-4">
-		<h1 class="txt-slate txt-48 semibold">Preview the App</h1>
-		<ul class="gpa-landing-preview flex-center p15-grid">
-			<li>
-				<div class="relative">
-					<svg viewBox="0 0 318 651">
-						<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
-						<circle cx="158.5" cy="610.5" r="25"></circle>
-						<rect x="21.5" y="79.5" width="276" height="493"></rect>
-					</svg>
-				</div>
-			</li>
-			<li>
-				<div class="relative">
-					<svg viewBox="0 0 318 651">
-						<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
-						<circle cx="158.5" cy="610.5" r="25"></circle>
-						<rect x="21.5" y="79.5" width="276" height="493"></rect>
-					</svg>
-				</div>
-			</li>
-			<li>
-				<div class="relative">
-					<svg viewBox="0 0 318 651">
-						<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
-						<circle cx="158.5" cy="610.5" r="25"></circle>
-						<rect x="21.5" y="79.5" width="276" height="493"></rect>
-					</svg>
-				</div>
-			</li>
-		</ul>
+	<div class="landing-content bg-white max-1000 relative z-index-1 radius-4">
+		<h1 class="txt-slate txt-48 semibold p15top">Preview the App</h1>
+		<div class="p30y">
+			<ul class="gpa-landing-preview flex-center p15-grid">
+				<li>
+					<div class="relative">
+						<svg viewBox="0 0 318 651">
+							<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
+							<circle cx="158.5" cy="610.5" r="25"></circle>
+							<rect x="21.5" y="79.5" width="276" height="493"></rect>
+						</svg>
+					</div>
+				</li>
+				<li>
+					<div class="relative">
+						<svg viewBox="0 0 318 651">
+							<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
+							<circle cx="158.5" cy="610.5" r="25"></circle>
+							<rect x="21.5" y="79.5" width="276" height="493"></rect>
+						</svg>
+					</div>
+				</li>
+				<li>
+					<div class="relative">
+						<svg viewBox="0 0 318 651">
+							<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
+							<circle cx="158.5" cy="610.5" r="25"></circle>
+							<rect x="21.5" y="79.5" width="276" height="493"></rect>
+						</svg>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="landing-action txt-center radius-4-bottom p15xy">
+			<h1 class="txt-white txt-48 semibold">Featured Actions</h1>
+			<ul class="ugrid-3 p15-grid">
+				<li class="flex-center-wrap">
+					<span class="svg-white svg-stroke-4 svg-128" ng-include="img_base + 'templates/svg/main/grades-a.html'"></span>
+					<h2 class="full-x txt-white txt-28 semibold line-height-1-2">
+						Search From<br/>University Courses
+					</h2> 
+				</li>
+				<li class="flex-center-wrap">
+					<span class="svg-white svg-stroke-4 svg-128" ng-include="img_base + 'templates/svg/main/grades-a.html'"></span>
+					<h2 class="full-x txt-white txt-28 semibold line-height-1-2">
+						Calculate<br/>Course Grades
+					</h2> 
+				</li>
+				<li class="flex-center-wrap">
+					<span class="svg-white svg-stroke-4 svg-128" ng-include="img_base + 'templates/svg/main/grades-a.html'"></span>
+					<h2 class="full-x txt-white txt-28 semibold line-height-1-2">
+						Track Your<br/>Cumulative GPA
+					</h2> 
+				</li>
+			</ul>
+			<button id="gpa-try-button" class="m30y bg-azure reverse radius-2 normal p30x" class-on-click="null:inject#powerup-gpa-title|activate">Try It Now on Desktop</button>
+			<ul class="flex-center p15-grid full-x line-height-1-2">
+				<li class="txt-24 semibold">
+					Android<br/>Play Store
+				</li>
+				<li class="txt-24 semibold">
+					iOS<br/>Coming Soon
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>

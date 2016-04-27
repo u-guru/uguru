@@ -26,8 +26,7 @@
 		@include flex;
 		@include flex-center;
 		@include flex-wrap;
-		padding: 15px;
-		height: 45%;
+		height: 50%;
 		.gpa {
 			font-size: 160px;
 			font-weight: 600;
@@ -35,6 +34,48 @@
 		}
 		h2 {
 			font-weight: 600;
+		}
+		#semester-slider {
+			display: none;
+			background: lighten($slate, 15%);
+			width: 100%;
+			ul {
+				@include flex;
+				@include flex-center;
+				max-width: 1200px;
+				margin: 0 auto;
+				li {
+					a {
+						@include flex;
+						@include flex-center;
+						width: 128px;
+						height: 90px;
+						color: rgba(white,.5);
+						font-size: 20px;
+						font-weight: 600;
+						line-height: 1.2;
+						text-transform: uppercase;
+						&:not(.nav) {
+							border-top: 5px solid transparent;
+							border-bottom: 5px solid transparent;
+						}
+						svg {
+							@include svg-stroke(rgba(white,.5), 7);
+							width: 50px;
+						}
+						&:hover, &:active, &:focus, &.active {
+							color: white;
+							border-bottom-color: white;
+							svg {
+								stroke: white;
+							}
+						}
+						&.active {
+							font-weight: 900;
+						}
+					}
+				}
+			}
 		}
 	}
 	#home-add {
@@ -81,49 +122,8 @@
 		bottom: 0;
 		left: 0;
 		width: 100%;
-		max-height: 60%;
+		height: 50%;
 		overflow: auto;
-		#semester-slider {
-			display: none;
-			background: rgba($gpa,.6);
-			ul {
-				@include flex;
-				@include flex-center;
-				max-width: 1200px;
-				margin: 0 auto;
-				li {
-					a {
-						@include flex;
-						@include flex-center;
-						width: 128px;
-						height: 90px;
-						color: rgba(white,.5);
-						font-size: 20px;
-						font-weight: 600;
-						line-height: 1.2;
-						text-transform: uppercase;
-						&:not(.nav) {
-							border-top: 5px solid transparent;
-							border-bottom: 5px solid transparent;
-						}
-						svg {
-							@include svg-stroke(rgba(white,.5), 7);
-							width: 50px;
-						}
-						&:hover, &:active, &:focus, &.active {
-							color: white;
-							border-bottom-color: white;
-							svg {
-								stroke: white;
-							}
-						}
-						&.active {
-							font-weight: 900;
-						}
-					}
-				}
-			}
-		}
 		.semester-list {
 			width: 100%;
 			.semester-item {
@@ -251,25 +251,21 @@
 }
 @media screen and (min-width:700px) and (min-height:575px) {
 	#home-container {
-		margin-top: 64px;
 		height: calc(100% - 64px)!important;
 		#home-gpa {
-			height: 35%;
-			div {
-				margin-top: -2%;
+			> div {
+				height: calc(100% - 90px);
 			}
-		}
-		#home-courses {
-			height: 65%;
-			max-height: 65%;
-			overflow: hidden;
-			position: static;
 			#semester-slider {
 				display: block;
 			}
+		}
+		#home-courses {
+			overflow: hidden;
+			position: static;
 			.semester-list {
-				background: $gpa;
-				height: calc(100% - 90px);
+				background: mix($gpa, white, 70%);
+				height: 100%;
 				.semester-item {
 					background: none;
 					&:not(.active) {
@@ -613,26 +609,11 @@
 		}
 	}
 	@media screen and (min-width:700px) and (min-height:575px) {
-		header {
-			display: block;
-			height: calc(100% - 445px);
-			background: none;
-			h1 {
-				@include flex;
-				@include flex-center;
-				padding: 0;
-				width: 100%;
-				height: 50%;
-			}
-			&:before {
-				display: none;
-			}
+		h1 {
+			color: $gpa!important;
 		}
 		#demo-grid {
-			@include center-xy;
 			height: auto;
-			width: 490px;
-			height: 490px;
 			ul {
 				padding: 15px;
 				li {
