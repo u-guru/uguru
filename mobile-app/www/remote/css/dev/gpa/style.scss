@@ -572,7 +572,7 @@
 					border-radius: 2px;
 					font-size: 36px;
 					text-transform: lowercase;
-					svg {
+					> svg {
 						width: 100%;
 					}
 					> span {
@@ -585,15 +585,43 @@
 						width: 100%;
 						height: 100%;
 						text-align: center;
+						svg {
+							width: 100px;
+							height: 100px;
+							* {
+								@include svg-stroke(white, 3);
+							}
+						}
+						span {
+							display: block;
+							margin-bottom: 15px;
+							&:last-child {
+								width: 100%;
+							}
+						}
 					}
 					&:hover {
 						background: white;
 						color: $gpa;
+						> span {
+							svg {
+								* {
+									stroke: $gpa;
+								}
+							}
+						}
 					}
 					&:active, &:focus {
 						background: $gpa;
 						border-color: $gpa;
 						color: white;
+						> span {
+							svg {
+								* {
+									stroke: white;
+								}
+							}
+						}
 					}
 				}
 			}

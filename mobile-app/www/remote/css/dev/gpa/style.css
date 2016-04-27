@@ -791,7 +791,7 @@
   text-transform: lowercase;
 }
 
-#demographic #demo-grid ul li a svg {
+#demographic #demo-grid ul li a > svg {
   width: 100%;
 }
 
@@ -822,15 +822,45 @@
   text-align: center;
 }
 
+#demographic #demo-grid ul li a > span svg {
+  width: 100px;
+  height: 100px;
+}
+
+#demographic #demo-grid ul li a > span svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#demographic #demo-grid ul li a > span span {
+  display: block;
+  margin-bottom: 15px;
+}
+
+#demographic #demo-grid ul li a > span span:last-child {
+  width: 100%;
+}
+
 #demographic #demo-grid ul li a:hover {
   background: white;
   color: #40acb8;
+}
+
+#demographic #demo-grid ul li a:hover > span svg * {
+  stroke: #40acb8;
 }
 
 #demographic #demo-grid ul li a:active, #demographic #demo-grid ul li a:focus {
   background: #40acb8;
   border-color: #40acb8;
   color: white;
+}
+
+#demographic #demo-grid ul li a:active > span svg *, #demographic #demo-grid ul li a:focus > span svg * {
+  stroke: white;
 }
 
 @media screen and (min-width: 768px) and (min-height: 575px) {
