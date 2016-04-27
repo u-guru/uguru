@@ -184,7 +184,7 @@
 				height: calc(651px * 0.75);
 				* {
 					stroke: lighten($slate, 15%);
-					stroke-width: 6px;
+					stroke-width: 3px;
 				}
 				circle {
 					fill: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
@@ -198,6 +198,9 @@
 					}
 				}
 			}
+		}
+		.landing-action {
+			background: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
 		}
 	}
 	&.landing-transit {
@@ -621,4 +624,151 @@
   69.36% { transform: matrix3d(0.999, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   83.61% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity: 1; } 
+}
+
+.powerup-title {
+	.powerup-house {
+		.powerup-house-svg {
+			display: block;
+			width: 100%;
+			max-width: 500px;
+			height: auto;
+			&.active {
+				@include prefix(transform-origin, center bottom, webkit moz ms o);
+				@include prefix(animation, powerup-before-scaleUp 1000ms ease-in-out forwards, webkit moz ms o);
+			}
+		}
+	}
+}
+
+.powerup-back {
+	span {
+		svg {
+			display: block;
+			width: 28px;
+			height: 28px;
+			margin-right: 5px;
+			* {
+				stroke-width: 9px;
+			}
+		}
+	}
+}
+
+[class*="powerup"] {
+	.tour-guru {
+		svg:first-child {
+			display: block;
+			> g > ellipse {
+				@include prefix(animation, tour-guru-shadow-hover 1000ms linear infinite alternate, webkit moz ms o);
+				@include prefix(transform-origin, center center, webkit moz ms o);
+			}
+			.guru-body {
+				@include prefix(animation, tour-guru-hover 1000ms linear infinite alternate, webkit moz ms o);
+			}
+		}
+	}
+}
+
+.powerup-demographic {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	background: $smoke;
+	.tour-guru {
+		svg:first-child {
+			height: 200px;
+		}
+		svg.absolute {
+			@include prefix(animation, tour-guru-hover 1000ms linear infinite alternate, webkit moz ms o);
+			top: 0;
+			margin-left: -5px;
+		}
+	}
+	.demo-grid {
+		ul {
+			@include flex;
+			@include flex-center;
+			@include flex-wrap;
+			height: 100%;
+			width: 100%;
+			li {
+				position: relative;
+				height: 50%;
+				width: 25%;
+				font-weight: 600;
+				a {
+					position: relative;
+					width: 100%;
+					height: 100%;
+					border-radius: 2px;
+					font-size: 36px;
+					text-transform: lowercase;
+					> svg {
+						width: 100%;
+					}
+					> span {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						text-align: center;
+						svg {
+							width: 100px;
+							height: 100px;
+							* {
+								@include svg-stroke(white, 3);
+							}
+						}
+						span {
+							display: block;
+							margin-bottom: 15px;
+							&:last-child {
+								width: 100%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	@media screen and (min-width:768px) and (min-height:575px) {
+		.demo-grid {
+			height: auto;
+			margin: 0 auto;
+			max-width: 1060px;
+			ul {
+				padding: 15px;
+				li {
+					padding: 15px;
+				}
+			}
+		}
+	}
+}
+
+.powerup-welcome {
+	.tour-guru {
+		svg {
+			height: 400px;
+		}
+	}
+	button {
+		width: auto;
+		padding: 0 50px;
+		background: none;
+		border-radius: 2px;
+		border: 3px solid white;
+		&:hover, &:focus {
+			background: white;
+		}
+		&:active {
+			background: lighten($slate, 15%);
+			border: lighten($slate, 15%);
+		}
+	}
 }

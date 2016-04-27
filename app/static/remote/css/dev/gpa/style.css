@@ -38,8 +38,7 @@
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  padding: 15px;
-  height: 45%;
+  height: 50%;
 }
 
 #home-container .gpa-container .gpa {
@@ -50,6 +49,84 @@
 
 #home-container .gpa-container h2 {
   font-weight: 600;
+}
+
+#home-container .gpa-container #semester-slider {
+  display: none;
+  background: #637074;
+  width: 100%;
+}
+
+#home-container .gpa-container #semester-slider ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#home-container .gpa-container #semester-slider ul li a {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 128px;
+  height: 90px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+#home-container .gpa-container #semester-slider ul li a:not(.nav) {
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+#home-container .gpa-container #semester-slider ul li a svg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 7px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 50px;
+}
+
+#home-container .gpa-container #semester-slider ul li a:hover, #home-container .gpa-container #semester-slider ul li a:active, #home-container .gpa-container #semester-slider ul li a:focus, #home-container .gpa-container #semester-slider ul li a.active {
+  color: white;
+  border-bottom-color: white;
+}
+
+#home-container .gpa-container #semester-slider ul li a:hover svg, #home-container .gpa-container #semester-slider ul li a:active svg, #home-container .gpa-container #semester-slider ul li a:focus svg, #home-container .gpa-container #semester-slider ul li a.active svg {
+  stroke: white;
+}
+
+#home-container .gpa-container #semester-slider ul li a.active {
+  font-weight: 900;
 }
 
 #home-container #home-add {
@@ -123,85 +200,8 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  max-height: 60%;
+  height: 50%;
   overflow: auto;
-}
-
-#home-container #home-courses #semester-slider {
-  display: none;
-  background: rgba(64, 172, 184, 0.6);
-}
-
-#home-container #home-courses #semester-slider ul {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-#home-container #home-courses #semester-slider ul li a {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  width: 128px;
-  height: 90px;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-#home-container #home-courses #semester-slider ul li a:not(.nav) {
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-}
-
-#home-container #home-courses #semester-slider ul li a svg {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.5);
-  stroke-width: 7px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  width: 50px;
-}
-
-#home-container #home-courses #semester-slider ul li a:hover, #home-container #home-courses #semester-slider ul li a:active, #home-container #home-courses #semester-slider ul li a:focus, #home-container #home-courses #semester-slider ul li a.active {
-  color: white;
-  border-bottom-color: white;
-}
-
-#home-container #home-courses #semester-slider ul li a:hover svg, #home-container #home-courses #semester-slider ul li a:active svg, #home-container #home-courses #semester-slider ul li a:focus svg, #home-container #home-courses #semester-slider ul li a.active svg {
-  stroke: white;
-}
-
-#home-container #home-courses #semester-slider ul li a.active {
-  font-weight: 900;
 }
 
 #home-container #home-courses .semester-list {
@@ -373,27 +373,21 @@
 
 @media screen and (min-width: 700px) and (min-height: 575px) {
   #home-container {
-    margin-top: 64px;
     height: calc(100% - 64px) !important;
   }
-  #home-container #home-gpa {
-    height: 35%;
+  #home-container #home-gpa > div {
+    height: calc(100% - 90px);
   }
-  #home-container #home-gpa div {
-    margin-top: -2%;
+  #home-container #home-gpa #semester-slider {
+    display: block;
   }
   #home-container #home-courses {
-    height: 65%;
-    max-height: 65%;
     overflow: hidden;
     position: static;
   }
-  #home-container #home-courses #semester-slider {
-    display: block;
-  }
   #home-container #home-courses .semester-list {
-    background: #40acb8;
-    height: calc(100% - 90px);
+    background: #79c5cd;
+    height: 100%;
   }
   #home-container #home-courses .semester-list .semester-item {
     background: none;
@@ -735,23 +729,25 @@
 
 /* ---------- DEMOGRAPHIC */
 #demographic {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   background: #F1F1F1;
-}
-
-#demographic header {
-  background: #d4edf0;
-}
-
-#demographic header::before {
-  filter: alpha(opacity=10);
-  opacity: 0.1;
-  background: url(../../img/hall.jpg) no-repeat center center/cover;
-}
-
-#demographic header h1 {
-  font-size: 28px !important;
-  text-transform: lowercase;
-  color: #40acb8;
 }
 
 #demographic #demo-grid ul {
@@ -774,125 +770,82 @@
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
   height: 100%;
+  width: 100%;
 }
 
 #demographic #demo-grid ul li {
   position: relative;
   height: 50%;
+  width: 25%;
   font-weight: 600;
 }
 
 #demographic #demo-grid ul li a {
-  display: block;
   position: relative;
   width: 100%;
   height: 100%;
-  background: none;
+  background: #79c5cd;
+  border: 3px solid #79c5cd;
+  border-radius: 2px;
+  font-size: 36px;
+  text-transform: lowercase;
 }
 
 #demographic #demo-grid ul li a svg {
   width: 100%;
 }
 
-#demographic #demo-grid ul li a span {
+#demographic #demo-grid ul li a > span {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
   text-align: center;
 }
 
-#demographic #demo-grid ul li.demo-hs a {
-  background: #9bd6dc;
-}
-
-#demographic #demo-grid ul li.demo-college a {
-  background: #40acb8;
-}
-
-#demographic #demo-grid ul li.demo-alum a {
-  background: #62bec9;
-}
-
-#demographic #demo-grid ul li.demo-parent a {
-  background: #26656c;
-}
-
 #demographic #demo-grid ul li a:hover {
-  background: #c9e9ec !important;
-  color: #40acb8 !important;
+  background: white;
+  color: #40acb8;
 }
 
 #demographic #demo-grid ul li a:active, #demographic #demo-grid ul li a:focus {
-  background: white !important;
-  color: #40acb8 !important;
+  background: #40acb8;
+  border-color: #40acb8;
+  color: white;
 }
 
-@media screen and (min-width: 700px) and (min-height: 575px) {
-  #demographic header {
-    display: block;
-    height: calc(100% - 445px);
-    background: none;
-  }
-  #demographic header h1 {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    padding: 0;
-    width: 100%;
-    height: 50%;
-  }
-  #demographic header:before {
-    display: none;
+@media screen and (min-width: 768px) and (min-height: 575px) {
+  #demographic h1 {
+    color: #40acb8 !important;
   }
   #demographic #demo-grid {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
     height: auto;
-    width: 490px;
-    height: 490px;
+    margin: 0 auto;
+    max-width: 1060px;
   }
   #demographic #demo-grid ul {
     padding: 15px;
   }
   #demographic #demo-grid ul li {
-    height: 230px;
-    width: 230px;
     padding: 15px;
-  }
-}
-
-@media screen and (min-width: 960px) {
-  #demographic header {
-    height: calc(100% - 230px);
-  }
-  #demographic header h1 {
-    font-size: 48px !important;
-  }
-  #demographic #demo-grid {
-    width: 100%;
   }
 }

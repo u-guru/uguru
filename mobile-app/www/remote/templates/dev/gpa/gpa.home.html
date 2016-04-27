@@ -17,7 +17,7 @@
 			<h1 class="text-center">GPA Calculator</h1>
 		</header>
 
-		<div id="home-container" class="main-50 text-center">
+		<div id="home-container" class="text-center">
 			<div id="home-gpa" class="gpa-container">
 				<div>
 					<h1 id="home-overall-gpa" class="gpa">{{overall.averageGPA | number: 1}}</h1>
@@ -25,21 +25,6 @@
 					<h2 ng-if="!overall.semesterArr.length">Quick, enter some courses in to get&nbsp;started!</h1>
 					<h2 ng-if="overall.semesterArr.length">{{slogan()}}</h2>
 				</div>
-			</div>
-
-			<div id="home-add" ng-if="!overall.semesterArr.length">
-				<div>
-					<button class="home-button bg-azure" thr-click="openModal('course')">
-						<svg viewBox="0 0 100 100">
-						    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-						</svg>
-					</button>
-					<span>Add Courses</span>
-				</div>
-			</div>
-
-
-			<div id="home-courses" ng-if="overall.averageGPA">
 				<nav id="semester-slider">
 					<ul>
 						<li>
@@ -88,8 +73,119 @@
 						</li>
 					</ul>
 				</nav>
+			</div>
+			<!-- <div id="home-add" ng-if="!overall.semesterArr.length">
+				<div>
+					<button class="home-button bg-azure" thr-click="openModal('course')">
+						<svg viewBox="0 0 100 100">
+						    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+						</svg>
+					</button>
+					<span>Add Courses</span>
+				</div>
+			</div> -->
+			<div id="home-courses">
 				<ul class="semester-list">
-					<li class="semester-item ng-class:{'active':$index == data.headerActive, 'selected': $index == data.headerSelected}" ng-repeat='semester in overall.semesterArr'>
+					<li class="semester-item active">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+								<h3>U.S. History / Civics / American Government</h3>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="semester-item active">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+								<h3>U.S. History / Civics / American Government</h3>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="semester-item active">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+								<h3>U.S. History / Civics / American Government</h3>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="semester-item active small">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="semester-item active small">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="semester-item active small">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!-- <li class="semester-item ng-class:{'active':$index == data.headerActive, 'selected': $index == data.headerSelected}" ng-repeat='semester in overall.semesterArr'>
 						<div>
 							<h2 ng-click='toggleHeader($index)' class="section-header">
 								<span>{{semester.semester + ' ' + semester.year}}</span>
@@ -99,7 +195,6 @@
 									</svg>
 								</a>
 							</h2>
-							<!-- Gabrielle - what is this? -->
 							<div class="gpa-container">
 								<div>
 									<h1 class="gpa">{{semester.gpa}}</h2>
@@ -118,12 +213,12 @@
 								</li>
 							</ul>
 						</div>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 		</div>
 	</section>
 
 	<!-- Make this into a directive -->
-	<div class='uguru-popup' id='gpa-home-popup' ng-include="img_base + 'templates/dev/gpa/welcome.gpa.html'"> </div>
+	<!-- <div class='uguru-popup' id='gpa-home-popup' ng-include="img_base + 'templates/dev/gpa/welcome.gpa.html'"> </div> -->
 </ion-view>
