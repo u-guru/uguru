@@ -303,7 +303,7 @@
 	}
 }
 
-#powerup-gpa-container.hover, #powerup-gpa-container.active {
+#powerup-gpa-container.hover, #powerup-gpa-container.active, #powerup-landing-icon.active {
 	.loader-powerup-gpa {
 		.multiply, .minus, .gpa-sign-divide, .gpa-btn-divide, .divide, .equal, .plus, .gpa-btn-equal, .gpa-btn-plus, .gpa-sign-equal, .gpa-sign-plus {
 			opacity: 1;
@@ -336,16 +336,28 @@
 		}
 		.gpa-sign-equal,
 		.gpa-sign-plus {
-			animation: sign-equal-hover 2000ms ease-in-out  infinite forwards;
+			animation: sign-equal-hover 2000ms ease-in-out infinite forwards;
 			transform-origin: center center;	
 		}
 	}
 }
-#powerup-gpa-container.hover:hover, #powerup-gpa-container.hover:focus, #powerup-gpa-container.active {
+#powerup-gpa-container.hover:hover, #powerup-gpa-container.hover:focus, #powerup-gpa-container.active, #powerup-landing-icon.active {
 	.loader-powerup-gpa {
 		.multiply, .minus, .gpa-sign-divide, .gpa-btn-divide, .divide, .equal, .plus, .gpa-btn-equal, .gpa-btn-plus, .gpa-sign-equal, .gpa-sign-plus {
 			animation-play-state: running!important;
 		}
+	}
+}
+
+#powerup-landing-icon {
+	.gpa-guru-eyebrow-right {
+		transform-origin: right top;
+	}
+	.gpa-guru-eyebrow-left {
+		transform-origin: left top;
+	}
+	.wiggle {
+		animation: wiggle 500ms linear alternate 4 forwards;
 	}
 }
 
