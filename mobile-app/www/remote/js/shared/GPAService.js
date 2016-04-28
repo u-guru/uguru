@@ -135,9 +135,42 @@ function GPAService() {
       indexSemesterValue = semesterDict[indexSemesterKey];
       resultsArr.push(indexSemesterValue);
     }
+    resultsArr.sort(compareValue)
     return resultsArr;
   }
+  function compareValue(a,b){
 
+
+      if (a.year == b.year)
+      {
+        var aValue = setPriority(a.semester);
+        var bValue = setPriority(b.semester);
+
+        return bValue - aValue
+      }
+      else
+      {
+        return b.year - a.year
+      }
+
+  }
+  function setPriority(str)
+  {
+      switch (str.toLowerCase()) {
+        case "fall":
+            return 1
+        case "summer":
+            return 2
+        case "spring":
+            return 3
+        case "winter":
+            return 0
+        default:
+          console.error("ERROR Semester")
+          return 
+             break;
+        }
+  }
   function calcGPAFromSemesterArr(semesterArr) {
     console.log(semesterArr)
     var total_points = 0;

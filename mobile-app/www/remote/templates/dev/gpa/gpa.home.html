@@ -27,7 +27,7 @@
 				</div>
 				<nav id="semester-slider">
 					<ul class="opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="2500" ng-init="start = 0; isMax=false;currentIndex = -1">
-						<li>
+						<li name='arrowL' >
 							<a href="#" class="nav">
 								<svg ng-if='start != 0' ng-click='preList(4)' viewBox="0 0 100 100">
 									<path d="M68,86 L32,50 L68,14"></path>
@@ -59,8 +59,8 @@
 								<span>Fall<br/>2014</span>
 							</a>
 						</li> -->
-						<li>
-							<a href="#" >
+						<li name='arrowR'>
+							<a href="#" class="nav">
 								<svg class="nav" ng-if='overall.semesterArr.length && !isMax' ng-click='nextList(4)'
 									 viewBox="0 0 100 100">
 									<path d="M32,86 L68,50 L32,14"></path>

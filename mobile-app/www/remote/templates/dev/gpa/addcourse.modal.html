@@ -63,13 +63,14 @@
 							<span class="course-title" ng-if='course.title'>{{course.title}}</span>
 						</label> -->
 					</li>
-					<li ng-click='addCourse(search_text.course)' ng-if="!(courses | filter:search_text.course).length">
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000"  ng-click='addCourse(search_text.course)' ng-if="!(courses | filter:search_text.course).length">
 						<a class="course-card" thr-click='selectCourse(course)'>
 							<svg width="240px" height="150px" viewBox="0 0 240 150">
 								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 							</svg>
 							<div class="course-card-inside">
-								<h2 style="color: #003262;">Add A New Course Name: {{search_text.course}}</h2>
+								<h2 style="color: #003262;">Add A New Course:</h2>
+								<h1 style="color: #003262;">{{search_text.course}}</h1>
 								<!-- <h1 style="color: #003262;">{{course.title}}</h1> -->
 							</div>
 							<div class="course-card-hover" style="background: #003262;"></div>
