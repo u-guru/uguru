@@ -16,7 +16,7 @@
 					</a>
 			        <form>
 						<fieldset class="large with-icon full-x m15bottom">
-							<input class="input-border light" type="search" placeholder="search for your courses"/>
+							<input class="input-border light" ng-model= "search_text.course" type="search" placeholder="search for your courses"/>
 							<label></label>
 							<span class="input-icon">
 								<svg viewBox="0 0 100 100">
@@ -43,105 +43,128 @@
 					</form>
 				</div> -->
 			</header>
-
-			<div class='onboarding-search-container full-xy' ng-if="false">
+			<!-- stagger each by 250, starting with 1000 -->
+			<div class='onboarding-search-container bg-azure full-xy' ng-show='search_text.course && search_text.course.length'>
 				<ul class='full-xy absolute'>
-					<!-- stagger each by 250, starting with 1000 -->
-					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
-						<a class="course-card">
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000"  ng-repeat='course in courses | filter:search_text.course | limitTo:16'>
+						<a class="course-card" thr-click='selectCourse(course)'>
 							<svg width="240px" height="150px" viewBox="0 0 240 150">
 								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 							</svg>
 							<div class="course-card-inside">
-								<h2 style="color: #003262;">BIO 1A</h2>
-								<h1 style="color: #003262;">Introduction to Biology</h1>
+								<h2 style="color: #003262;">{{course.short_name}}</h2>
+								<h1 style="color: #003262;">{{course.title}}</h1>
 							</div>
 							<div class="course-card-hover" style="background: #003262;"></div>
 							<div class="course-card-border" style="background: #003262;"></div>
 						</a>
+		<!-- 				<label>
+							<span class="course-name">{{course.short_name}}</span>
+							<span class="course-title" ng-if='course.title'>{{course.title}}</span>
+						</label> -->
 					</li>
-					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
-						<a class="course-card">
+					<li ng-click='addCourse(search_text.course)' ng-if="!(courses | filter:search_text.course).length">
+						<a class="course-card" thr-click='selectCourse(course)'>
 							<svg width="240px" height="150px" viewBox="0 0 240 150">
 								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 							</svg>
 							<div class="course-card-inside">
-								<h2 style="color: #003262;">BIO 1A</h2>
-								<h1 style="color: #003262;">Introduction to Biology</h1>
+								<h2 style="color: #003262;">Add A New Course Name: {{search_text.course}}</h2>
+								<!-- <h1 style="color: #003262;">{{course.title}}</h1> -->
 							</div>
 							<div class="course-card-hover" style="background: #003262;"></div>
 							<div class="course-card-border" style="background: #003262;"></div>
 						</a>
-					</li>
-					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
-						<a class="course-card">
-							<svg width="240px" height="150px" viewBox="0 0 240 150">
-								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-							</svg>
-							<div class="course-card-inside">
-								<h2 style="color: #003262;">BIO 1A</h2>
-								<h1 style="color: #003262;">Introduction to Biology</h1>
-							</div>
-							<div class="course-card-hover" style="background: #003262;"></div>
-							<div class="course-card-border" style="background: #003262;"></div>
-						</a>
-					</li>
-					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
-						<a class="course-card">
-							<svg width="240px" height="150px" viewBox="0 0 240 150">
-								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-							</svg>
-							<div class="course-card-inside">
-								<h2 style="color: #003262;">BIO 1A</h2>
-								<h1 style="color: #003262;">Introduction to Biology</h1>
-							</div>
-							<div class="course-card-hover" style="background: #003262;"></div>
-							<div class="course-card-border" style="background: #003262;"></div>
-						</a>
-					</li>
-					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
-						<a class="course-card">
-							<svg width="240px" height="150px" viewBox="0 0 240 150">
-								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-							</svg>
-							<div class="course-card-inside">
-								<h2 style="color: #003262;">BIO 1A</h2>
-								<h1 style="color: #003262;">Introduction to Biology</h1>
-							</div>
-							<div class="course-card-hover" style="background: #003262;"></div>
-							<div class="course-card-border" style="background: #003262;"></div>
-						</a>
-					</li>
-					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
-						<a class="course-card">
-							<svg width="240px" height="150px" viewBox="0 0 240 150">
-								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-							</svg>
-							<div class="course-card-inside">
-								<h2 style="color: #003262;">BIO 1A</h2>
-								<h1 style="color: #003262;">Introduction to Biology</h1>
-							</div>
-							<div class="course-card-hover" style="background: #003262;"></div>
-							<div class="course-card-border" style="background: #003262;"></div>
-						</a>
+						<!-- <label>
+							<span class="course-name">Add A New Course Name: {{search_text.course}}</span>
+						</label> -->
 					</li>
 				</ul>
 			</div>
-			<!-- <div class='onboarding-search-container bg-azure full-xy' ng-show='search_text.course && search_text.course.length'>
+
+		<!-- 	<div class='onboarding-search-container full-xy' ng-if="true">
 				<ul class='full-xy absolute'>
-					<li thr-click='selectCourse(course)' ng-repeat='course in courses | filter:search_text.course | limitTo:16'>
-						<label>
-							<span class="course-name">{{course.short_name}}</span>
-							<span class="course-title" ng-if='course.title'>{{course.title}}</span>
-						</label>
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
+						<a class="course-card">
+							<svg width="240px" height="150px" viewBox="0 0 240 150">
+								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+							</svg>
+							<div class="course-card-inside">
+								<h2 style="color: #003262;">BIO 1A</h2>
+								<h1 style="color: #003262;">Introduction to Biology</h1>
+							</div>
+							<div class="course-card-hover" style="background: #003262;"></div>
+							<div class="course-card-border" style="background: #003262;"></div>
+						</a>
 					</li>
-					<li ng-click='addCourse(search_text.course)' ng-if="!(courses | filter:search_text.course).length">
-						<label>
-							<span class="course-name">Add A New Course Name: {{search_text.course}}</span>
-						</label>
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
+						<a class="course-card">
+							<svg width="240px" height="150px" viewBox="0 0 240 150">
+								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+							</svg>
+							<div class="course-card-inside">
+								<h2 style="color: #003262;">BIO 1A</h2>
+								<h1 style="color: #003262;">Introduction to Biology</h1>
+							</div>
+							<div class="course-card-hover" style="background: #003262;"></div>
+							<div class="course-card-border" style="background: #003262;"></div>
+						</a>
+					</li>
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
+						<a class="course-card">
+							<svg width="240px" height="150px" viewBox="0 0 240 150">
+								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+							</svg>
+							<div class="course-card-inside">
+								<h2 style="color: #003262;">BIO 1A</h2>
+								<h1 style="color: #003262;">Introduction to Biology</h1>
+							</div>
+							<div class="course-card-hover" style="background: #003262;"></div>
+							<div class="course-card-border" style="background: #003262;"></div>
+						</a>
+					</li>
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
+						<a class="course-card">
+							<svg width="240px" height="150px" viewBox="0 0 240 150">
+								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+							</svg>
+							<div class="course-card-inside">
+								<h2 style="color: #003262;">BIO 1A</h2>
+								<h1 style="color: #003262;">Introduction to Biology</h1>
+							</div>
+							<div class="course-card-hover" style="background: #003262;"></div>
+							<div class="course-card-border" style="background: #003262;"></div>
+						</a>
+					</li>
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
+						<a class="course-card">
+							<svg width="240px" height="150px" viewBox="0 0 240 150">
+								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+							</svg>
+							<div class="course-card-inside">
+								<h2 style="color: #003262;">BIO 1A</h2>
+								<h1 style="color: #003262;">Introduction to Biology</h1>
+							</div>
+							<div class="course-card-hover" style="background: #003262;"></div>
+							<div class="course-card-border" style="background: #003262;"></div>
+						</a>
+					</li>
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
+						<a class="course-card">
+							<svg width="240px" height="150px" viewBox="0 0 240 150">
+								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+							</svg>
+							<div class="course-card-inside">
+								<h2 style="color: #003262;">BIO 1A</h2>
+								<h1 style="color: #003262;">Introduction to Biology</h1>
+							</div>
+							<div class="course-card-hover" style="background: #003262;"></div>
+							<div class="course-card-border" style="background: #003262;"></div>
+						</a>
 					</li>
 				</ul>
 			</div> -->
+			
 			<ul id="grade-options" ng-show='!search_text.course || search_text.course.length == 0'>
 				<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
 					<svg viewBox="0 0 100 100">

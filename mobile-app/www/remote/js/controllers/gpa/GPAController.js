@@ -74,6 +74,93 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	};
 
 	var selectedGrade = '';
+	$scope.selectSemester= function(index)
+	{
+		console.log(index)
+	}
+	
+	$scope.preList = function(range){
+		$scope.start -= range
+		if (($scope.overall.semesterArr.length - $scope.start - range ) > 0 )
+			$scope.isMax =false
+	}
+
+	$scope.nextList = function(range){
+		$scope.start += range
+		if (($scope.overall.semesterArr.length - $scope.start - range ) < 0 )
+			$scope.isMax =true
+	}
+	$scope.convertGrade=function(x)
+	{
+		var actualGrade
+		switch (true) {
+			    case (x == 4):
+			        actualGrade = "A";
+			        break;
+			    case (x >=3  && x < 4):
+			        actualGrade = "B";
+			        break;
+			    case (x >=2  && x < 3):
+			   		actualGrade = "C";
+			        break;
+		        case (x >=1  && x < 2):
+		      		actualGrade = "D";
+		            break;
+		        case (x < 1):
+		        	actualGrade = "F";
+		        	break;
+		       	default:
+		       	     actualGrade = "null";
+		       	     break;
+	        }
+    	return actualGrade;
+
+		// switch (x) {
+		//     case (x >= 4):
+		//         actualGrade = "A";
+		//         break;
+		//     case (x >= 3.7 && x < 4):
+		//         actualGrade = "A-";
+		//         break;
+		//     case (x >= 3.3 && x < 3.7):
+		//    		actualGrade = "B+";
+		//         break;
+	 //        case (x >= 3.7 && x < 3.3):
+	 //      		actualGrade = "B";
+	 //            break;
+	 //        case (x >= 3.7 && x < 3.0):
+	 //        	actualGrade = "B-";
+	 //            break;
+		//     case (x >= 3.3 && x < 3.7):
+		//    		actualGrade = "B+";
+		//         break;
+	 //        case (x >= 3.7 && x < 3.3):
+	 //      		actualGrade = "B";
+	 //            break;
+	 //        case (x >= 3.7 && x < 3.0):
+	 //        	actualGrade = "B-";
+	 //            break;
+  //   	    case (x >= 3.3 && x < 3.7):
+  //   	   		actualGrade = "B+";
+  //   	        break;
+  //           case (x >= 3.7 && x < 3.3):
+  //         		actualGrade = "B";
+  //               break;
+  //           case (x >= 3.7 && x < 3.0):
+  //           	actualGrade = "B-";
+  //               break;
+  //   	    case (x >= 3.3 && x < 3.7):
+  //   	   		actualGrade = "B+";
+  //   	        break;
+  //           case (x >= 3.7 && x < 3.3):
+  //         		actualGrade = "B";
+  //               break;
+  //           case (x >= 3.7 && x < 3.0):
+  //           	actualGrade = "B-";
+  //               break;
+		// }
+
+	}
 
 	$scope.clearSearchInput = function() {
 		$scope.search_text.course = '';
