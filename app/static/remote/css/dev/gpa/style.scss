@@ -1,6 +1,9 @@
 @import '../../sass/mixin';
 
 /* ---------- HOME */
+.gpa-view {
+	background: $gpa!important;
+}
 #gpa-home {
 	background: $smoke;
 	#top-bar {
@@ -513,9 +516,7 @@
 }
 
 #powerup-gpa-title {
-	.powerup-title {
-		background: mix(white, $gpa, 30%)!important;
-	}
+	background: mix(white, $gpa, 30%)!important;
 }
 
 /* ---------- DEMOGRAPHIC */
@@ -556,7 +557,7 @@
 				a {
 					background: mix(white, $gpa, 30%);
 					border: 3px solid mix(white, $gpa, 30%);
-					&:hover {
+					&.active, &:hover, &:focus {
 						background: white;
 						color: $gpa;
 						> span {
@@ -567,7 +568,7 @@
 							}
 						}
 					}
-					&:active, &:focus {
+					&:active {
 						background: $gpa;
 						border-color: $gpa;
 						color: white;

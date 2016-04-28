@@ -27,9 +27,11 @@ directive('draggable', function($document) {
     element.css({
      position: 'relative',
      cursor: 'pointer',
-     display: 'block',
-     width: '100px'
+     display: 'block'
     });
+    if (!element[0].style.width) {
+        width: '100px';
+    }
     element.on('mousedown', function(event) {
       // Prevent default dragging of selected content
       event.preventDefault();

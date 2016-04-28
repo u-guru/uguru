@@ -1,4 +1,8 @@
 /* ---------- HOME */
+.gpa-view {
+  background: #40acb8 !important;
+}
+
 #gpa-home {
   background: #F1F1F1;
 }
@@ -714,7 +718,7 @@
   }
 }
 
-#powerup-gpa-title .powerup-title {
+#powerup-gpa-title {
   background: #79c5cd !important;
 }
 
@@ -748,22 +752,22 @@
   border: 3px solid #79c5cd;
 }
 
-#powerup-gpa-demographic .demo-grid ul li a:hover {
+#powerup-gpa-demographic .demo-grid ul li a.active, #powerup-gpa-demographic .demo-grid ul li a:hover, #powerup-gpa-demographic .demo-grid ul li a:focus {
   background: white;
   color: #40acb8;
 }
 
-#powerup-gpa-demographic .demo-grid ul li a:hover > span svg * {
+#powerup-gpa-demographic .demo-grid ul li a.active > span svg *, #powerup-gpa-demographic .demo-grid ul li a:hover > span svg *, #powerup-gpa-demographic .demo-grid ul li a:focus > span svg * {
   stroke: #40acb8;
 }
 
-#powerup-gpa-demographic .demo-grid ul li a:active, #powerup-gpa-demographic .demo-grid ul li a:focus {
+#powerup-gpa-demographic .demo-grid ul li a:active {
   background: #40acb8;
   border-color: #40acb8;
   color: white;
 }
 
-#powerup-gpa-demographic .demo-grid ul li a:active > span svg *, #powerup-gpa-demographic .demo-grid ul li a:focus > span svg * {
+#powerup-gpa-demographic .demo-grid ul li a:active > span svg * {
   stroke: white;
 }
 

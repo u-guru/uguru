@@ -352,12 +352,15 @@
 #powerup-landing-icon {
 	.gpa-guru-eyebrow-right {
 		transform-origin: right top;
+		&.wiggle {
+			animation: wiggle-right 100ms ease alternate 6 forwards;
+		}
 	}
 	.gpa-guru-eyebrow-left {
 		transform-origin: left top;
-	}
-	.wiggle {
-		animation: wiggle 500ms linear alternate 4 forwards;
+		&.wiggle {
+			animation: wiggle-left 100ms ease alternate 6 forwards;
+		}
 	}
 }
 
@@ -639,14 +642,20 @@
 
 .powerup-title {
 	.powerup-house {
+		&.active {
+			* {
+				transition: all 1000ms ease-in-out;
+				opacity: 0;
+			}
+		}
 		.powerup-house-svg {
 			display: block;
 			width: 100%;
 			max-width: 500px;
 			height: auto;
 			&.active {
-				@include prefix(transform-origin, center bottom, webkit moz ms o);
-				@include prefix(animation, powerup-before-scaleUp 1000ms ease-in-out forwards, webkit moz ms o);
+				@include prefix(transform-origin, center, webkit moz ms o);
+				@include prefix(animation, powerup-house-scaleUp 1000ms ease-in-out forwards, webkit moz ms o);
 			}
 		}
 	}
@@ -669,6 +678,13 @@
 [class*="powerup"] {
 	.tour-guru {
 		@include prefix(transform-origin, center center, webkit moz ms o);
+		.translate {
+			svg {
+				@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
+				@include prefix(transition, all 600ms cubic-bezier(.77,-0.22,.05,1.27)!important, webkit moz ms o);
+				@include prefix(transform, scale(2), webkit moz ms o);
+			}
+		}
 		svg:first-child {
 			> g > ellipse {
 				@include prefix(transform-origin, center center, webkit moz ms o);
@@ -717,6 +733,9 @@
 		}
 	}
 	.demo-grid {
+		.demographic-z-index-1000 {
+			z-index: 1000!important;
+		}
 		ul {
 			@include flex;
 			@include flex-center;
