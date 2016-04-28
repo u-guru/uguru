@@ -55,7 +55,7 @@ angular.module('uguru.util.controllers')
 				stageHtml: html,
 				stageName: stage_name,
 				animElemSelector: anim_selector,
-				stageCSS: css,
+				stageCss: css,
 				time_states: [{time: 1000, actions: []}]
 			}
 		}
@@ -321,7 +321,26 @@ angular.module('uguru.util.controllers')
 			return div;
 		}
 
+		$scope.selectComponentElement = function(component, $index, $event) {
+			$scope.stage.components.splice($index, 1);
+			if (!$scope.asideTabIndex) {
+				$scope.onTSActionComponentSelected(component.selector)
+			} else {
+				$scope.addAnimatableElement(component);
 
+			}
+		}
+
+		$scope.addAnimatableElement = function(component) {
+			if (!$scope.stage.anim_elements) {
+				$scope.stage.anim_elements = [{selector: '#stage-elem', type:$scope.actor.nodeName}];
+			}
+			$scope.stage.anim_elements.push(component);
+		}
+
+		$scope.swapFocusedAnimatedElem = function(anim_elem) {
+			var newAnimElem = document.querySelector(anim_elem.selector);
+		}
 
 		$scope.setAnimatableElement = function($event) {
 
@@ -412,8 +431,10 @@ angular.module('uguru.util.controllers')
 			}
 			var clonedNode = stageElem.cloneNode(true);
 			clonedNode.id = 'stage-elem-clone';
-			clonedNode.style.minWidth = "200px";
-			clonedNode.style.minHeight = "200px";
+			clonedNode.style.minWidth = "150px";
+			clonedNode.style.minHeight = "150px";
+			clonedNode.style.maxWidth = "200px";
+			clonedNode.style.maxHeight = "200px";
 			var asideElementContainer = document.querySelector('#stage-elem-clone-container')
 			if (asideElementContainer) {
 				asideElementContainer.innerHTML = '';
@@ -480,7 +501,7 @@ angular.module('uguru.util.controllers')
 				}
 				var style = document.createElement("style");
 				style.setAttribute('id', 'stage-css');
-				style.innerHTML = $scope.pageDom.stageCss;
+				style.innerHTML = $scope.stage.stageCss;
 				document.getElementsByTagName("head")[0].appendChild(style);
 				$compile(stageElem)($scope);
 			} else {
@@ -2121,15 +2142,69 @@ angular.module('uguru.util.controllers')
 
 
 
-		$scope.asideTabIndex = 0;
+		$scope.asideTabIndex = 2;
 		$scope.importLayoutIndex = 3;
+		$scope.showChildrenOfParentElemOnClick = function() {
+			$scope.stage.selectComponentMode = true;
+			var allShapes = ['path', 'line', 'polygon', 'polyline', 'g', 'rect', 'ellipse', 'circle'];
+			allChildActorElems = $scope.actor.querySelectorAll('*');
+			$scope.stage.components = [];
+			for (var i = 0; i < allChildActorElems.length; i++) {
+				$scope.stage.components.push({selector: '[draggable-clone-' + i + ']'});
+			}
+			$timeout(function() {
+				var allContainers = document.querySelectorAll('.cloned-animatable-elem-container')
+				for (var i = 0; i < allChildActorElems.length; i++) {
+					var indexElem = allChildActorElems[i];
+					console.log(indexElem);
+					indexElem.setAttribute('draggable-' + i, null);
+					var clonedNode = indexElem.cloneNode(true);
+					clonedNode.removeAttribute('draggable');
+					clonedNode.setAttribute('draggable-clone', null);
+					clonedNode.setAttribute('draggable-clone-' + i, null);
+					var indexContainer = allContainers[i];
+					$scope.stage.components[i].type = indexElem.nodeName;
+					if (allShapes.indexOf(clonedNode.nodeName) > - 1) {
+						var parentSVG = findParentSVG(indexElem);
+						var clonedParentSVG = parentSVG.cloneNode(true);
+						clonedParentSVG.innerHTML = "";
+						clonedParentSVG.style.minWidth = '100px';
+						clonedParentSVG.style.minHeight = '100px';
+						clonedParentSVG.className += " absolute flex-wrap-center full-xy"
+						clonedParentSVG.appendChild(clonedNode);
+						indexContainer.appendChild(clonedParentSVG);
+						secondClonedParent = clonedParentSVG.cloneNode(true);
+						indexContainer.appendChild(secondClonedParent);
+					} else {
+						clonedNode.style.minWidth = '100px';
+						clonedNode.style.minHeight = '100px';
+						clonedNode.className += " absolute flex-wrap-center full-xy"
+						indexContainer.appendChild(clonedNode);
+						secondClonedNode = clonedNode.cloneNode(true);
+						indexContainer.appendChild(secondClonedNode);
+
+					}
+				}
+			}, 100)
+
+			$timeout(function() {
+				$scope.$apply();
+			})
+		}
+
+		function findParentSVG(elem) {
+			return (elem.nodeName === 'svg' && elem) || findParentSVG(elem.parentNode);
+		}
 
 		$scope.asideTabIndexwatcher = $scope.$watch('asideTabIndex', function(new_val, old_val) {
 			switch (new_val) {
 
             case 2:
               //init map
-             updateStageElemCloneAside();
+             	updateStageElemCloneAside();
+
+
+
          }
 		});
 
@@ -2150,9 +2225,10 @@ angular.module('uguru.util.controllers')
 		$timeout(function() {
 
 			initAll();
-			// $timeout(function() {
-			// 	angular.element(document.querySelector('#import-button')).triggerHandler('click');
-			// }, 1500)
+			$timeout(function() {
+				// angular.element(document.querySelector('#import-button')).triggerHandler('click');
+				$scope.importCodepenTemplate('http://codepen.io/teamuguru/pen/29ce58caa079980bb9375afa30efcb57');
+			}, 1500)
 
 		}, 2000)
 
