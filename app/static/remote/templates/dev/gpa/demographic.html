@@ -1,6 +1,7 @@
-<ion-view class='uguru-view demographic-view full-xy' ion-scroll='false' ng-controller='IntroController' cache-view='!LOCAL'>
+<ion-view class='uguru-view demographic-view full-xy' ion-scroll='false'>
+	<!--  ng-controller='IntroController' cache-view='!LOCAL' -->
 	<section id="powerup-gpa-demographic" class="onboarding bg-white powerup-demographic">
-		<a class="powerup-back absolute top-0 left-0 flex-center p15xy semibold txt-20">
+		<a class="powerup-back absolute top-0 left-0 flex-center p15xy semibold txt-20 opacity-0" class-on-load="u-bounceIn-subtle:anim" class-on-load-delay="3000">
 			<span>
 				<svg viewBox="0 0 100 100">
 					<path d="M68,86 L32,50 L68,14" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
@@ -8,9 +9,9 @@
 			</span>
 			<span>Back</span>
 		</a>
-		<div class="flex-center-wrap text-center">
-			<div class="tour-guru p30y relative flex-center">
-				<svg viewBox="0 0 150 250" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<div class="demo-header" class="flex-center-wrap text-center">
+			<div class="tour-guru p30y relative flex-center opacity-0" class-on-load="on-enter:anim, active:keep">
+				<svg viewBox="0 0 150 250" class="relative z-index-10 opacity-0" class-on-load="u-slideInDown:anim" class-on-load-delay="1500">
 				    <g fill-rule="evenodd" fill="none">
 				        <ellipse fill="#2B3234" opacity="0.1" cx="75" cy="240.937063" rx="54" ry="8.93706294"></ellipse>
 				        <g class="guru-body">
@@ -55,7 +56,7 @@
 				    </g>
 				</svg>
 			</div>
-			<h1 class="full-x txt-48 semibold">Select Your Demographic</h1>
+			<h1 class="full-x semibold opacity-0" class-on-load="u-bounceIn-subtle:anim">Select Your Demographic</h1>
 		</div>
 		<div class="demo-grid onboarding-list">
 			<ul class="list list-item-half relative">
@@ -67,7 +68,7 @@
 					</a>
 				</li>
 				
-				<li class="demo-hs">
+				<li class="demo-hs opacity-0" class-on-load="u-bounceInUp-subtle:anim" class-on-load-delay="250">
 					<a translate-on-click translate-to-elem="#powerup-demo-click-pos">
 						<svg viewBox="0 0 100 100">
 							<rect fill="none" x="0" y="0" width="100" height="100"></rect>
@@ -82,7 +83,7 @@
 						</span>
 					</a>
 				</li>
-				<li class="demo-college">
+				<li class="demo-college opacity-0" class-on-load="u-bounceInUp-subtle:anim" class-on-load-delay="500">
 					<a translate-on-click translate-to-elem="#powerup-demo-click-pos">
 						<svg viewBox="0 0 100 100">
 							<rect fill="none" x="0" y="0" width="100" height="100"></rect>
@@ -97,7 +98,7 @@
 						</span>
 					</a>
 				</li>
-				<li class="demo-alum">
+				<li class="demo-alum opacity-0" class-on-load="u-bounceInUp-subtle:anim" class-on-load-delay="750">
 					<a translate-on-click translate-to-elem="#powerup-demo-click-pos">
 						<svg viewBox="0 0 100 100">
 							<rect fill="none" x="0" y="0" width="100" height="100"></rect>
@@ -112,7 +113,7 @@
 						</span>
 					</a>
 				</li>
-				<li class="demo-parent">
+				<li class="demo-parent opacity-0" class-on-load="u-bounceInUp-subtle:anim" class-on-load-delay="1000">
 					<a translate-on-click translate-to-elem="#powerup-demo-click-pos">
 						<svg viewBox="0 0 100 100">
 							<rect fill="none" x="0" y="0" width="100" height="100"></rect>

@@ -363,6 +363,10 @@ li {
 			right: 57px;
 			top: 14px;
 		}
+		div[translate-on-click] {
+			@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
+			@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1.27)!important, webkit moz ms o);
+		}
 		svg {
 			circle {
 				stroke: $gold;
@@ -371,9 +375,9 @@ li {
 				fill: $gold;
 				stroke: $gold;
 			}
-			&.powerup-activated {
-				@include prefix(transform, scale(3.0476) translateY(14px) translateX(-179px), webkit moz ms o);
-			}
+			// &.powerup-activated {
+			// 	@include prefix(transform, scale(3.0476) translateY(14px) translateX(-179px), webkit moz ms o);
+			// }
 		}
 		&:hover, &:focus {
 			svg {
