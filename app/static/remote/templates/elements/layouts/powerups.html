@@ -1,12 +1,12 @@
 <div id="powerups-container" class="full-xy bg-slate opacity-0" class-on-activate="fadeIn:anim, null:inject#powerup-icons li|activate"  class-on-activate-delay="500">
     <header class="flex-center-wrap p15xy relative z-index-0" class-on-clear="fadeOut:animOut">
-        <span class="svg-128" ng-include="img_base + 'templates/svg/main/lightning-circle.html'"></span>
+        <span id="powerup-all-icon" class="svg-128" ng-include="img_base + 'templates/svg/main/lightning-circle.html'"></span>
         <h1 class="txt-48 semibold full-x txt-center">Powerups</h1>
     </header>
     <div class="flex-center-wrap z-index-2">
         <ul id="powerup-icons" class="flex-center">
             <li class="matrix-0 opacity-0" class-on-activate="active:anim, u-bounceIn-subtle, null:inject#powerup-gpa-label|activate, null:inject#powerup-gpa-container|activate" class-on-activate-delay="500">
-                <a id="powerup-gpa-container" class="block relative high-z-index" class-on-activate="hover:keep" class-on-activate-delay="500" class-on-click="active:keep, null:inject#powerups-container header|activate, null:inject#powerup-munchies-container|clear, null:inject#powerup-sound-container|clear, null:inject#powerup-transit-container|clear, null:inject#powerup-landing-gpa|activate, null:inject#cta-modal-powerups|clear, null:inject#powerups-container header|clear, null:inject.gpa-card-bg|clear, null:inject.gpa-container-outline-track|activate, null:inject.landing-gpa|activate" translate-on-click translate-to-elem="#powerup-landing-icon" class-on-clear="fadeOut:animOut" ng-mouse-leave="onMouseLeave($event)">
+                <a id="powerup-gpa-container" class="block relative high-z-index" class-on-activate="hover:keep" class-on-activate-delay="500" class-on-click="active:keep, null:inject#powerups-container header|activate, null:inject#powerup-munchies-container|clear, null:inject#powerup-sound-container|clear, null:inject#powerup-transit-container|clear, null:inject#powerup-landing-gpa|activate, null:inject#cta-modal-powerups|clear, null:inject#powerups-container header|clear, null:inject.gpa-card-bg|clear, null:inject.gpa-container-outline-track|activate, null:inject.landing-gpa|activate, null:inject#powerup-landing-icon|activate" translate-on-click translate-to-elem="#powerup-landing-icon" class-on-clear="fadeOut:animOut" ng-mouse-leave="onMouseLeave($event)">
                     <div id="powerup-gpa-icon" class="block loader-powerup-gpa" ng-include="img_base + 'templates/elements/assets/powerups/gpa-card.tpl'"></div>
                     <div id="powerup-gpa-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold matrix-0 opacity-0" class-on-activate="u-powerup-label-slideInUp" class-on-activate-delay="250">Lorem Ipsum</div>
                 </a>

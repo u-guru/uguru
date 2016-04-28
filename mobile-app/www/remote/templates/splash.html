@@ -8,7 +8,7 @@
         <div id='splash-desktop-nav' class='full-x' ng-if='nav.activate' ng-include="img_base + BASE + 'templates/splash/container/splash.nav.html'"></div>
 
         <!-- Powerups CTA -->
-        <div id='cta-modal-powerups' class='activate full-xy flex-wrap-center fixed top-0 left-0 z-index-1000' ng-controller="PowerupController" ng-if='activate.powerups' class-on-activate="null:inject#powerups-container|activate" class-on-clear="fadeOut:animOut, z-index--1000" class-on-clear-delay="4000" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.html'"></div>
+        <div id='cta-modal-powerups' class='full-xy flex-wrap-center fixed top-0 left-0 z-index--1000 opacity-0' ng-controller="PowerupController" class-on-activate="fadeIn:anim, z-index-1000, null:inject#powerups-container|activate" class-on-clear="fadeOut:animOut, z-index--1000" class-on-clear-delay="4000" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.html'"></div>
         <!-- ng-if='activate.powerups' -->
         <!-- class-on-clear="fadeOut:animOut, z-index--1000" class-on-clear-delay="2500" -->
 

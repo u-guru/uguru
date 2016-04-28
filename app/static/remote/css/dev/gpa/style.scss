@@ -1,9 +1,14 @@
 @import '../../sass/mixin';
 
+/* ---------- HOME */
 #gpa-home {
 	background: $smoke;
 	#top-bar {
+		display: none!important;
 		background: $gpa!important;
+		@media screen and (min-width:768px) {
+			display: block!important;
+		}
 		div:nth-child(2) {
 			div {
 				background: $gpa!important;
@@ -12,11 +17,48 @@
 		    	width: calc(100% - 212px + 64px)!important;
 			}
 		}
+		#top-menu-links {
+			background: mix($gpa, white, 80%);
+			ul {
+				li {
+					position: relative;
+					input {
+						@include flex;
+						@include flex-center;
+						position: absolute;
+					    top: 7px;
+					    right: 7px;
+					    width: 36px;
+					    height: 36px;
+						border-radius: 2px;
+						font-size: 20px;
+						text-align: center;
+						&::-webkit-inner-spin-button, &::-webkit-outer-spin-button { 
+ 							@include appearance;
+  							margin: 0;
+						}
+					}
+					a {
+						&:hover, &:active, &:focus {
+							background: white;
+							span {
+								color: $gpa;
+							}
+							svg {
+								stroke: $gpa;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	header.mobile-only {
+		background: $gpa;
 	}
 }
-
-/* ---------- HOME */
 #home-container {
+	height: calc(100% - 50px);
 	#home-gpa {
 		h1, h2 {
 			color: $gpa;
@@ -26,9 +68,9 @@
 		@include flex;
 		@include flex-center;
 		@include flex-wrap;
-		height: 50%;
+		height: 40%;
 		.gpa {
-			font-size: 160px;
+			font-size: 128px;
 			font-weight: 600;
 			line-height: 1;
 		}
@@ -78,50 +120,53 @@
 			}
 		}
 	}
-	#home-add {
-		height: 50%;
-		@include flex;
-		@include flex-wrap;
-		@include flex-center;
-		button {
-			@include round;
-			display: block;
-			margin: 0 auto;
-			width: 100px;
-			height: 100px;
-			padding: 10px;
-			svg {
-				@include svg-stroke(white, 4);
-				display: block;
-				width: 100%;
-				height: 100%;
-			}
-		}
-		button:hover {
-			background: white;
-			svg {
-				stroke: $gpa;
-			}
-		}
-		button:active, button:focus {
-			background: darken($gpa, 10%);
-			svg {
-				stroke: white;
-			}
-		}
-		span {
-			display: block;
-			margin: 15px auto 0;
-			width: 100%;
-			color: rgba($slate,.4);
-			font-weight: 600;
-		}
-	}
 	#home-courses {
 		width: 100%;
-		height: 50%;
+		height: 60%;
 		background: mix($gpa, white, 70%);
 		overflow: auto;
+		#home-add {
+			height: 100%;
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			button {
+				@include round;
+				@include flex;
+				@include flex-center;
+				margin: 0 auto;
+				width: 100px;
+				height: 100px;
+				padding: 10px;
+				background: white;
+				svg {
+					display: block;
+					width: 72px;
+					height: 72px;
+					* {
+						@include svg-stroke($gpa, 6);
+					}
+				}
+				&:hover {
+					background: $gpa;
+					svg {
+						* {
+							stroke: white;
+						}
+					}
+				}
+				&:active {
+					background: mix($gpa, lighten($slate, 15%));
+				}
+			}
+			span {
+				display: block;
+				margin: 15px auto 0;
+				width: 100%;
+				color: white;
+				font-weight: 600;
+			}
+		}
 		.semester-list {
 			@include flex;
 			@include flex-wrap;
@@ -138,15 +183,17 @@
 	}
 }
 .semester-item {
+	&.small {
+		> div {
+			@include flex-center-vertical;
+		}
+	}
 	> div {
 		@include flex;
 		@include prefix(justify-content, space-between, webkit);
 		padding: 15px;
 		background: rgba(lighten($slate, 15%), .75);
 		border-radius: 2px;
-		&.small {
-			@include flex-center-vertical;
-		}
 		h1 {
 			font-size: 32px;
 			font-weight: 600;
@@ -200,18 +247,23 @@
 		}
 	}
 }
-@media screen and (min-width:700px) and (min-height:575px) {
+@media screen and (min-width:768px) and (min-height:575px) {
 	#home-container {
-		height: calc(100% - 64px)!important;
+		height: calc(100% - 64px);
 		#home-gpa {
+			height: 50%;
 			> div {
 				height: calc(100% - 90px);
+			}
+			.gpa {
+				font-size: 160px!important;
 			}
 			#semester-slider {
 				display: block;
 			}
 		}
 		#home-courses {
+			height: 50%;
 			.semester-list {
 				height: 100%;
 				padding: 7.5px;
@@ -245,28 +297,17 @@
 	}
 	.onboarding-search-container {
 		ul {
+			@include flex;
+			@include flex-wrap;
+			@include prefix(justify-content, center, webkit);
+			@include prefix(align-content, flex-start, webkit);
+			padding: 7.5px;
+			width: 100%;
+			max-width: 830px;
+			margin: 0 auto;
 			li {
-				position: relative;
-				margin-top: 15px;
-			}
-			label {
-			    display: block;
-			    width: calc(100% - 30px);
-			    padding: 15px;
-			    margin: 0 15px;
-				background: white;
-				color: $gpa;
-				font-weight: 600;
-				font-size: 20px;
-				span {
-					display: block;
-					&:first-child {
-						font-size: 14px;
-					}
-					&:only-child {
-						font-size: 20px;
-					}
-				}
+				padding: 7.5px;
+				width: 50%;
 			}
 		}
 	}
@@ -327,6 +368,7 @@
 			width: 100%;
 			height: 100%;
 			background: white;
+			border-radius: 2px;
 			color: $gpa;
 			font-size: 24px;
 			font-weight: 600;
@@ -345,14 +387,10 @@
 		width: 100%;
 		padding: 15px;
 		margin-bottom: 15px;
-		background: rgba(black,.1);
+		background: rgba(lighten($slate, 15%),.75);
+		border-radius: 2px;
 		> * {
 			width: 50%;
-		}
-		a {
-			right: 10px;
-    		width: auto;
-    		top: 33%;
 		}
 		h1 {
 			font-weight: 600;
@@ -368,10 +406,40 @@
 			@include placeholder {
 				color: rgba(white,.5);
 			}
+			&::-webkit-inner-spin-button, &::-webkit-outer-spin-button { 
+				@include appearance;
+				margin: 0;
+			}
 		}
 	}
 }
-@media screen and (min-width:700px) and (min-height:575px) {
+@media screen and (max-width:768px) {
+	.add-modal {
+		section {
+			.onboarding-search-container {
+				ul {
+					li {
+						.course-card {
+							svg {
+								display: none!important;
+							}
+							.course-card-inside {
+								background: rgba(white, .5);
+								position: relative!important;
+								top: auto!important;
+								left: auto!important;
+								h1 {
+									font-size: 20px!important;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width:768px) and (min-height:575px) {
 	.add-modal {
 		section {
 			position: static;
@@ -428,17 +496,8 @@
 			.onboarding-search-container {
 				margin-top: -15px;
 				ul {
-					@include flex;
-					@include flex-wrap;
-					padding: 7.5px;
-					width: 830px!important;
 					li {
-						width: calc(100% / 3);
-						margin: 0;
-						label {
-							width: auto;
-							margin: 7.5px!important;
-						}
+						width: auto;
 					}
 				}
 			}
@@ -524,10 +583,8 @@
 			}
 		}
 	}
-	@media screen and (min-width:768px) and (min-height:575px) {
-		h1 {
-			color: $gpa!important;
-		}
+	h1 {
+		color: $gpa!important;
 	}
 }
 

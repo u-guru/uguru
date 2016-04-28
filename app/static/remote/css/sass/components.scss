@@ -1828,32 +1828,34 @@ fieldset {
 			}
 		}
 	}
-	&.large {
-		min-height: 58px;
-		max-width: none;
-		.input-border {
-			font-size: 36px;
-			border-bottom-width: 2px!important;
-			@include placeholder {
+	@media screen and (min-width: 768px) {
+		&.large {
+			min-height: 58px;
+			max-width: none;
+			.input-border {
 				font-size: 36px;
-			}
-		}
-		&.with-icon {
-			.input-icon {
-				width: 58px;
-				height: 58px;
-				svg {
-					* {
-						stroke-width: 4px;
-					}
+				border-bottom-width: 2px!important;
+				@include placeholder {
+					font-size: 36px;
 				}
 			}
-			input {
-				margin-left: 68px;
-				width: calc(100% - 68px);
-				+ label {
-					width: calc(100% - 68px)!important;
-					left: 68px!important;
+			&.with-icon {
+				.input-icon {
+					width: 58px;
+					height: 58px;
+					svg {
+						* {
+							stroke-width: 4px;
+						}
+					}
+				}
+				input {
+					margin-left: 68px;
+					width: calc(100% - 68px);
+					+ label {
+						width: calc(100% - 68px)!important;
+						left: 68px!important;
+					}
 				}
 			}
 		}
