@@ -1,6 +1,6 @@
 <ion-modal-view id="powerup-gpa-add" hide-nav-bar='true' class='uguru-view add-modal'>
 	<ion-content class='full-height' scroll='false'>
-		<section id="add-course" class="full-xy">
+		<section id="add-course" class="full-xy opacity-0" class-on-load="fadeIn:anim">
 			<header>
 				<h1 class="text-center">Add Courses</h1>
 				<div class="header-nav">
@@ -10,13 +10,13 @@
 						</svg>
 					</a>
 				</div>
-				<div ng-if='!selectedCourse' class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p15x" keyboard-focus>
+				<div ng-if='!selectedCourse' class="onboarding-search input-search-ghost absolute left-0 bottom-0 full-x p15x opacity-0" keyboard-focus  class-on-load="u-bounceInUp-subtle" class-on-load-delay="3500">
 					<a ng-click='clearSearchInput();' class="mobile-only major-input-close side-icon" ng-if='search_text.course.length > 0'>
 						<i class='icon ion-close-circled'> </i>
 					</a>
 			        <form>
 						<fieldset class="large with-icon full-x m15bottom">
-							<input class="input-border light" type="search" placeholder="A large search input"/>
+							<input class="input-border light" type="search" placeholder="search for your courses"/>
 							<label></label>
 							<span class="input-icon">
 								<svg viewBox="0 0 100 100">
@@ -26,7 +26,7 @@
 						</fieldset>
 			        </form>
 				</div>
-				<div id="selected-course" class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p15x" ng-show='selectedCourse'>
+				<!-- <div id="selected-course" class="onboarding-search input-search-ghost absolute center-x bottom-0 full-x p15x" ng-show='selectedCourse'>
 					<a ng-click='resetSelectedCourse()' class="side-icon major-input-close" ng-if='selectedCourse' style='z-index:10000;'>
 						<i class='icon ion-close-circled'> </i>
 					</a>
@@ -41,49 +41,137 @@
 							</span>
 						</fieldset>
 					</form>
-				</div>
+				</div> -->
 			</header>
 
-			<div class='onboarding-search-container bg-azure full-xy' ng-show='search_text.course && search_text.course.length'>
-				<ul class='full-xy absolute bg-azure'>
+			<div class='onboarding-search-container full-xy' ng-if="false">
+				<ul class='full-xy absolute'>
+					<!-- stagger each by 250, starting with 1000 -->
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
+						<a class="course-card">
+							<svg width="240px" height="150px" viewBox="0 0 240 150">
+								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+							</svg>
+							<div class="course-card-inside">
+								<h2 style="color: #003262;">BIO 1A</h2>
+								<h1 style="color: #003262;">Introduction to Biology</h1>
+							</div>
+							<div class="course-card-hover" style="background: #003262;"></div>
+							<div class="course-card-border" style="background: #003262;"></div>
+						</a>
+					</li>
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
+						<a class="course-card">
+							<svg width="240px" height="150px" viewBox="0 0 240 150">
+								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+							</svg>
+							<div class="course-card-inside">
+								<h2 style="color: #003262;">BIO 1A</h2>
+								<h1 style="color: #003262;">Introduction to Biology</h1>
+							</div>
+							<div class="course-card-hover" style="background: #003262;"></div>
+							<div class="course-card-border" style="background: #003262;"></div>
+						</a>
+					</li>
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
+						<a class="course-card">
+							<svg width="240px" height="150px" viewBox="0 0 240 150">
+								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+							</svg>
+							<div class="course-card-inside">
+								<h2 style="color: #003262;">BIO 1A</h2>
+								<h1 style="color: #003262;">Introduction to Biology</h1>
+							</div>
+							<div class="course-card-hover" style="background: #003262;"></div>
+							<div class="course-card-border" style="background: #003262;"></div>
+						</a>
+					</li>
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
+						<a class="course-card">
+							<svg width="240px" height="150px" viewBox="0 0 240 150">
+								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+							</svg>
+							<div class="course-card-inside">
+								<h2 style="color: #003262;">BIO 1A</h2>
+								<h1 style="color: #003262;">Introduction to Biology</h1>
+							</div>
+							<div class="course-card-hover" style="background: #003262;"></div>
+							<div class="course-card-border" style="background: #003262;"></div>
+						</a>
+					</li>
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
+						<a class="course-card">
+							<svg width="240px" height="150px" viewBox="0 0 240 150">
+								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+							</svg>
+							<div class="course-card-inside">
+								<h2 style="color: #003262;">BIO 1A</h2>
+								<h1 style="color: #003262;">Introduction to Biology</h1>
+							</div>
+							<div class="course-card-hover" style="background: #003262;"></div>
+							<div class="course-card-border" style="background: #003262;"></div>
+						</a>
+					</li>
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
+						<a class="course-card">
+							<svg width="240px" height="150px" viewBox="0 0 240 150">
+								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+							</svg>
+							<div class="course-card-inside">
+								<h2 style="color: #003262;">BIO 1A</h2>
+								<h1 style="color: #003262;">Introduction to Biology</h1>
+							</div>
+							<div class="course-card-hover" style="background: #003262;"></div>
+							<div class="course-card-border" style="background: #003262;"></div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- <div class='onboarding-search-container bg-azure full-xy' ng-show='search_text.course && search_text.course.length'>
+				<ul class='full-xy absolute'>
 					<li thr-click='selectCourse(course)' ng-repeat='course in courses | filter:search_text.course | limitTo:16'>
 						<label>
 							<span class="course-name">{{course.short_name}}</span>
 							<span class="course-title" ng-if='course.title'>{{course.title}}</span>
 						</label>
 					</li>
+					<li ng-click='addCourse(search_text.course)' ng-if="!(courses | filter:search_text.course).length">
+						<label>
+							<span class="course-name capitalized">Add A New Course Name: {{search_text.course}}</span>
+						</label>
+					</li>
 				</ul>
-			</div>
+			</div> -->
 			<ul id="grade-options" ng-show='!search_text.course || search_text.course.length == 0'>
-				<li>
+				<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
 					<svg viewBox="0 0 100 100">
 						<rect fill="none" x="0" y="0" width="100" height="100"></rect>
 					</svg>
 					<input name="grade" type="radio" thr-click="setGrade('A')" value="A" />
 					<label>A</label>
 				</li>
-				<li>
+				<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1250">
 					<svg viewBox="0 0 100 100">
 						<rect fill="none" x="0" y="0" width="100" height="100"></rect>
 					</svg>
 					<input name="grade" type="radio" thr-click="setGrade('B')" value="B" />
 					<label>B</label>
 				</li>
-				<li>
+				<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1500">
 					<svg viewBox="0 0 100 100">
 						<rect fill="none" x="0" y="0" width="100" height="100"></rect>
 					</svg>
 					<input name="grade" type="radio" thr-click="setGrade('C')" value="C" />
 					<label>C</label>
 				</li>
-				<li>
+				<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1750">
 					<svg viewBox="0 0 100 100">
 						<rect fill="none" x="0" y="0" width="100" height="100"></rect>
 					</svg>
 					<input name="grade" type="radio" thr-click="setGrade('D')" value="D" />
 					<label>D</label>
 				</li>
-				<li>
+				<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="2000">
 					<svg viewBox="0 0 100 100">
 						<rect fill="none" x="0" y="0" width="100" height="100"></rect>
 					</svg>
@@ -93,21 +181,21 @@
 			</ul>
 
 			<ul class="course-input-form">
-				<li>
+				<li class="opacity-0" class-on-load="u-bounceInUp-subtle" class-on-load-delay="2250">
 					<h1>Units</h1>
 					<input type="number" ng-model="course.units" placeholder="4" min="1" />
 				</li>
-				<li>
+				<li class="opacity-0" class-on-load="u-bounceInUp-subtle" class-on-load-delay="2500">
 					<h1>Year</h1>
 					<input type="number" ng-model="course.year" placeholder="2015" min="1"/>
 				</li>
-				<li>
+				<li class="opacity-0" class-on-load="u-bounceInUp-subtle" class-on-load-delay="2750">
 					<h1>Semester</h1>
 					<input type="text" ng-model="course.semester" placeholder="Winter" />
 				</li>
 			</ul>
 
-			<button ng-show='!search_text.course || search_text.course.length == 0' ng-click='submitCourse()'>Submit</button>
+			<button ng-show='!search_text.course || search_text.course.length == 0' ng-click='submitCourse()' class="opacity-0" class-on-load="u-bounceInUp-subtle" class-on-load-delay="3500">Submit</button>
 		</section>
 	</ion-content>
 </ion-modal-view>

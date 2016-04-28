@@ -34,9 +34,14 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers','uguru.version',
   'uguru.util.controllers', 'uguru.dev.controllers', 'uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'uguru.components',
+<<<<<<< HEAD
   'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps','uguru.apps.controllers',
   ,'transit.services','base64','guru.food.services'])
 
+=======
+  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps','uguru.gpa.controllers','guru.food.controllers','guru.food.services',
+  'uguru.sound.controllers','base64','uguru.transit.controllers','transit.services'])
+>>>>>>> 45a6f6545d58b0de922a34095d519bd7ea360a2d
 
 .run(function($ionicPlatform, $localstorage,
   $state, $ionicHistory,
@@ -609,11 +614,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/dev/food/grub.home.html',
         controller: 'GrubHomeCtrl'
   }).
-  // state('sound-intro', {
-  //   url: '/sound-intro',
-  //   templateUrl: BASE + 'templates/dev/sound/intro.html',
-  //   controller: 'IntroCtrl'
-  // }).
+  state('sound-intro', {
+    url: '/sound-intro',
+    templateUrl: BASE + 'templates/dev/sound/intro.html',
+    controller: 'IntroCtrl'
+  }).
   state('sound-home', {
     url: '/sound-home',
     templateUrl: BASE + 'templates/dev/sound/music.home.html',

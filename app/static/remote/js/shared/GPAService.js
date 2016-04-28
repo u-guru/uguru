@@ -48,6 +48,7 @@ function GPAService() {
   }
 
   function init(userCourses) {
+    console.log("User : ",userCourses)
     if (!userCourses) {
       userCourses = [];
     };
@@ -67,7 +68,6 @@ function GPAService() {
           semesterDict[courseSemester] = initSemesterObj(course);
           console.log('init deemster obj', semesterDict);
           // console.log( semesterDict[courseSemester]['courses'])
-
       }
       else
       {
@@ -75,16 +75,26 @@ function GPAService() {
           // recalcSemesterStats(courseSemester);
       }
     }
-    // semesterArr = semesterDictToArr();
-    // averageGPA = calcGPAFromSemesterArr(semesterArr);
+    semesterArr = semesterDictToArr();
+    averageGPA = getOverallGPA(semesterArr);
     // averageGPA.toFixed(1);
-
+    overall.averageGPA = averageGPA
+    overall.semesterArr = semesterArr;
+    console.log("overall",overall)
     // overall.averageGPA = averageGPA;
     // console.log(semesterArr);
     // overall.semesterArr = semesterArr;
     return overall;
   }
 
+  function getOverallGPA(semesterArr){
+    var totalSemester = semesterArr.length;
+    var semester_total_gpa = 0;
+    for (var i = 0;i <semesterArr.length ;++i)
+        semester_total_gpa += parseInt(semesterArr[i]['gpa'])
+    avgGPA = semester_total_gpa / totalSemester
+    return avgGPA
+  }
   function semesterDictToArr() {
     var semesterKeyArr = Object.keys(semesterDict);
     var resultsArr = []
@@ -97,6 +107,7 @@ function GPAService() {
   }
 
   function calcGPAFromSemesterArr(semesterArr) {
+    console.log(semesterArr)
     var total_points = 0;
     var semester_units = 0;
     for (var i = 0; i < semesterArr.length; i ++) {

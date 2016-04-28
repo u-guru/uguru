@@ -348,9 +348,20 @@ gulp.task('scripts', function() {
       "js/controllers/sound/*.js",
       "js/controllers/transit/*.js",
       "js/controllers/util/*js",
-      "js/controllers/dev/*js",
+      "js/controllers/dev/util.dev.ctrl.js",
+      "js/controllers/dev/util.devtools.ctrl.js",
       "js/controllers/desktop/SettingsCtrl.js",
       "js/controllers/desktop/*",
+      "js/controllers/gpa/GPAController.js",
+      "js/controllers/gpa/IntroController.js",
+      "js/controllers/food/GrubHomeCtrl.js",
+      "js/controllers/food/GrubDetailsCtrl.js",
+      "js/controllers/food/GrubFiltersCtrl.js",
+      "js/controllers/food/restaurants.js",
+      "js/controllers/sound/MusicHomeCtrl.js",
+      "js/controllers/sound/*.js",
+      "js/controllers/transit/TransitHomeCtrl.js",
+      "js/controllers/transit/*.js"
       ], { cwd: 'www/remote' })
     // .src(['templates.js', 'app.js', '**/*.js'], { cwd: 'app/scripts' })
 

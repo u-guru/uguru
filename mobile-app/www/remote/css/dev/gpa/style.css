@@ -1,9 +1,21 @@
+/* ---------- HOME */
+.gpa-view {
+  background: #40acb8 !important;
+}
+
 #gpa-home {
   background: #F1F1F1;
 }
 
 #gpa-home #top-bar {
+  display: none !important;
   background: #40acb8 !important;
+}
+
+@media screen and (min-width: 768px) {
+  #gpa-home #top-bar {
+    display: block !important;
+  }
 }
 
 #gpa-home #top-bar div:nth-child(2) div {
@@ -14,7 +26,67 @@
   width: calc(100% - 212px + 64px) !important;
 }
 
-/* ---------- HOME */
+#gpa-home #top-bar #top-menu-links {
+  background: #66bdc6;
+}
+
+#gpa-home #top-bar #top-menu-links ul li {
+  position: relative;
+}
+
+#gpa-home #top-bar #top-menu-links ul li input {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 36px;
+  height: 36px;
+  border-radius: 2px;
+  font-size: 20px;
+  text-align: center;
+}
+
+#gpa-home #top-bar #top-menu-links ul li input::-webkit-inner-spin-button, #gpa-home #top-bar #top-menu-links ul li input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+#gpa-home #top-bar #top-menu-links ul li a:hover, #gpa-home #top-bar #top-menu-links ul li a:active, #gpa-home #top-bar #top-menu-links ul li a:focus {
+  background: white;
+}
+
+#gpa-home #top-bar #top-menu-links ul li a:hover span, #gpa-home #top-bar #top-menu-links ul li a:active span, #gpa-home #top-bar #top-menu-links ul li a:focus span {
+  color: #40acb8;
+}
+
+#gpa-home #top-bar #top-menu-links ul li a:hover svg, #gpa-home #top-bar #top-menu-links ul li a:active svg, #gpa-home #top-bar #top-menu-links ul li a:focus svg {
+  stroke: #40acb8;
+}
+
+#gpa-home header.mobile-only {
+  background: #40acb8;
+}
+
+#home-container {
+  height: calc(100% - 50px);
+}
+
 #home-container #home-gpa h1, #home-container #home-gpa h2 {
   color: #40acb8;
 }
@@ -38,11 +110,11 @@
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  height: 50%;
+  height: 40%;
 }
 
 #home-container .gpa-container .gpa {
-  font-size: 160px;
+  font-size: 128px;
   font-weight: 600;
   line-height: 1;
 }
@@ -129,8 +201,15 @@
   font-weight: 900;
 }
 
-#home-container #home-add {
-  height: 50%;
+#home-container #home-courses {
+  width: 100%;
+  height: 60%;
+  background: #79c5cd;
+  overflow: auto;
+}
+
+#home-container #home-courses #home-add {
+  height: 100%;
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -151,55 +230,62 @@
   justify-content: center;
 }
 
-#home-container #home-add button {
+#home-container #home-courses #home-add button {
   border-radius: 1000px;
-  display: block;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   margin: 0 auto;
   width: 100px;
   height: 100px;
   padding: 10px;
-}
-
-#home-container #home-add button svg {
-  fill: none;
-  stroke: white;
-  stroke-width: 4px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-#home-container #home-add button:hover {
   background: white;
 }
 
-#home-container #home-add button:hover svg {
+#home-container #home-courses #home-add button svg {
+  display: block;
+  width: 72px;
+  height: 72px;
+}
+
+#home-container #home-courses #home-add button svg * {
+  fill: none;
   stroke: #40acb8;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-#home-container #home-add button:active, #home-container #home-add button:focus {
-  background: #338992;
+#home-container #home-courses #home-add button:hover {
+  background: #40acb8;
 }
 
-#home-container #home-add button:active svg, #home-container #home-add button:focus svg {
+#home-container #home-courses #home-add button:hover svg * {
   stroke: white;
 }
 
-#home-container #home-add span {
+#home-container #home-courses #home-add button:active {
+  background: #528e96;
+}
+
+#home-container #home-courses #home-add span {
   display: block;
   margin: 15px auto 0;
   width: 100%;
-  color: rgba(64, 72, 75, 0.4);
+  color: white;
   font-weight: 600;
-}
-
-#home-container #home-courses {
-  width: 100%;
-  height: 50%;
-  background: #79c5cd;
-  overflow: auto;
 }
 
 #home-container #home-courses .semester-list {
@@ -232,6 +318,13 @@
   padding: 1px;
 }
 
+.semester-item.small > div {
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
 .semester-item > div {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -245,13 +338,6 @@
   padding: 15px;
   background: rgba(99, 112, 116, 0.75);
   border-radius: 2px;
-}
-
-.semester-item > div.small {
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-align-items: center;
-  align-items: center;
 }
 
 .semester-item > div h1 {
@@ -328,15 +414,24 @@
   text-transform: uppercase;
 }
 
-@media screen and (min-width: 700px) and (min-height: 575px) {
+@media screen and (min-width: 768px) and (min-height: 575px) {
   #home-container {
-    height: calc(100% - 64px) !important;
+    height: calc(100% - 64px);
+  }
+  #home-container #home-gpa {
+    height: 50%;
   }
   #home-container #home-gpa > div {
     height: calc(100% - 90px);
   }
+  #home-container #home-gpa .gpa {
+    font-size: 160px !important;
+  }
   #home-container #home-gpa #semester-slider {
     display: block;
+  }
+  #home-container #home-courses {
+    height: 50%;
   }
   #home-container #home-courses .semester-list {
     height: 100%;
@@ -367,32 +462,30 @@
   text-transform: uppercase;
 }
 
+.add-modal .onboarding-search-container ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
+  padding: 7.5px;
+  width: 100%;
+  max-width: 830px;
+  margin: 0 auto;
+}
+
 .add-modal .onboarding-search-container ul li {
-  position: relative;
-  margin-top: 15px;
-}
-
-.add-modal .onboarding-search-container ul label {
-  display: block;
-  width: calc(100% - 30px);
-  padding: 15px;
-  margin: 0 15px;
-  background: white;
-  color: #40acb8;
-  font-weight: 600;
-  font-size: 20px;
-}
-
-.add-modal .onboarding-search-container ul label span {
-  display: block;
-}
-
-.add-modal .onboarding-search-container ul label span:first-child {
-  font-size: 14px;
-}
-
-.add-modal .onboarding-search-container ul label span:only-child {
-  font-size: 20px;
+  padding: 7.5px;
+  width: 50%;
 }
 
 .add-modal .onboarding-search::before {
@@ -473,6 +566,7 @@
   width: 100%;
   height: 100%;
   background: white;
+  border-radius: 2px;
   color: #40acb8;
   font-size: 24px;
   font-weight: 600;
@@ -499,17 +593,12 @@
   width: 100%;
   padding: 15px;
   margin-bottom: 15px;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(99, 112, 116, 0.75);
+  border-radius: 2px;
 }
 
 .course-input-form li > * {
   width: 50%;
-}
-
-.course-input-form li a {
-  right: 10px;
-  width: auto;
-  top: 33%;
 }
 
 .course-input-form li h1 {
@@ -542,7 +631,29 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
-@media screen and (min-width: 700px) and (min-height: 575px) {
+.course-input-form li input::-webkit-inner-spin-button, .course-input-form li input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .add-modal section .onboarding-search-container ul li .course-card svg {
+    display: none !important;
+  }
+  .add-modal section .onboarding-search-container ul li .course-card .course-card-inside {
+    background: rgba(255, 255, 255, 0.5);
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  .add-modal section .onboarding-search-container ul li .course-card .course-card-inside h1 {
+    font-size: 20px !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (min-height: 575px) {
   .add-modal section {
     position: static;
     max-width: 830px;
@@ -595,27 +706,8 @@
   .add-modal section .onboarding-search-container {
     margin-top: -15px;
   }
-  .add-modal section .onboarding-search-container ul {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    padding: 7.5px;
-    width: 830px !important;
-  }
   .add-modal section .onboarding-search-container ul li {
-    width: calc(100% / 3);
-    margin: 0;
-  }
-  .add-modal section .onboarding-search-container ul li label {
     width: auto;
-    margin: 7.5px !important;
   }
   .add-modal section #grade-options {
     margin-top: -15px;
@@ -626,7 +718,7 @@
   }
 }
 
-#powerup-gpa-title .powerup-title {
+#powerup-gpa-title {
   background: #79c5cd !important;
 }
 
@@ -660,29 +752,27 @@
   border: 3px solid #79c5cd;
 }
 
-#powerup-gpa-demographic .demo-grid ul li a:hover {
+#powerup-gpa-demographic .demo-grid ul li a.active, #powerup-gpa-demographic .demo-grid ul li a:hover, #powerup-gpa-demographic .demo-grid ul li a:focus {
   background: white;
   color: #40acb8;
 }
 
-#powerup-gpa-demographic .demo-grid ul li a:hover > span svg * {
+#powerup-gpa-demographic .demo-grid ul li a.active > span svg *, #powerup-gpa-demographic .demo-grid ul li a:hover > span svg *, #powerup-gpa-demographic .demo-grid ul li a:focus > span svg * {
   stroke: #40acb8;
 }
 
-#powerup-gpa-demographic .demo-grid ul li a:active, #powerup-gpa-demographic .demo-grid ul li a:focus {
+#powerup-gpa-demographic .demo-grid ul li a:active {
   background: #40acb8;
   border-color: #40acb8;
   color: white;
 }
 
-#powerup-gpa-demographic .demo-grid ul li a:active > span svg *, #powerup-gpa-demographic .demo-grid ul li a:focus > span svg * {
+#powerup-gpa-demographic .demo-grid ul li a:active > span svg * {
   stroke: white;
 }
 
-@media screen and (min-width: 768px) and (min-height: 575px) {
-  #powerup-gpa-demographic h1 {
-    color: #40acb8 !important;
-  }
+#powerup-gpa-demographic h1 {
+  color: #40acb8 !important;
 }
 
 #powerup-gpa-welcome {

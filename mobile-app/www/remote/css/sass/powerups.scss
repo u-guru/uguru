@@ -277,75 +277,89 @@
 #powerup-icons {
 	li.active {
 		.loader-powerup-gpa {
+			.gpa-guru, .multiply, .plus, .minus, .equal, .divide {
+				opacity: 0;
+			}
 			.gpa-guru {
 				animation: gpa-guru 1000ms linear forwards;
-				opacity: 0;
 			}
 			.multiply {
 				animation: multiply-enter 500ms linear 100ms forwards;
-				opacity: 0;
 			}
 			.plus {
 				animation: plus-enter 500ms linear 200ms forwards;
-				opacity: 0;
 			}
 			.minus {
 				animation: minus-enter 500ms linear 300ms forwards;
 				transform-origin: bottom right;
-				opacity: 0;
 			}
 			.equal {
 				animation: equal-enter 500ms linear 400ms forwards;
-				opacity: 0;
 			}
 			.divide {
 				animation: divide-enter 500ms linear 450ms forwards;
-				opacity: 0;
 			}
 		}
 	}
 }
 
-#powerup-gpa-container.hover:hover, #powerup-gpa-container.hover:focus, #powerup-gpa-container.active {
+#powerup-gpa-container.hover, #powerup-gpa-container.active, #powerup-landing-icon.active {
 	.loader-powerup-gpa {
-		.multiply {
+		.multiply, .minus, .gpa-sign-divide, .gpa-btn-divide, .divide, .equal, .plus, .gpa-btn-equal, .gpa-btn-plus, .gpa-sign-equal, .gpa-sign-plus {
 			opacity: 1;
+			animation-play-state: paused!important;
+		}
+		.multiply {
 			animation: bob-hover 500ms ease-in-out infinite alternate;
 		}
 		.minus {
-			opacity: 1;
 			animation: bob-hover 650ms ease-in-out infinite alternate;
 		}
 		.gpa-sign-divide {
-			opacity: 1;
 			animation: sign-divide-hover 3000ms ease-in-out infinite reverse;
 			transform-origin: center center;
 		}
 		.gpa-btn-divide {
-			opacity: 1;
 			animation: btn-divide-hover 5000ms linear infinite reverse;
 			transform-origin: center center;
 		}
 		.divide {
-			opacity: 1;
 			animation: bob-hover 750ms ease-in-out infinite alternate;
 		}
-		.equal,
-		.plus {
-			opacity: 1;
-			animation: equal-pulse 750ms ease-in-out infinite alternate;		
+		.equal, .plus {
+			animation: equal-pulse 750ms ease-in-out infinite alternate;	
 		}
 		.gpa-btn-equal,
 		.gpa-btn-plus {
-			opacity: 1;
 			animation: btn-divide-hover 7500ms linear infinite reverse;
-			transform-origin: center center;		
+			transform-origin: center center;
 		}
 		.gpa-sign-equal,
 		.gpa-sign-plus {
-			opacity: 1;
-			animation: sign-equal-hover 2000ms ease-in-out  infinite forwards;
+			animation: sign-equal-hover 2000ms ease-in-out infinite forwards;
 			transform-origin: center center;	
+		}
+	}
+}
+#powerup-gpa-container.hover:hover, #powerup-gpa-container.hover:focus, #powerup-gpa-container.active, #powerup-landing-icon.active {
+	.loader-powerup-gpa {
+		.multiply, .minus, .gpa-sign-divide, .gpa-btn-divide, .divide, .equal, .plus, .gpa-btn-equal, .gpa-btn-plus, .gpa-sign-equal, .gpa-sign-plus {
+			animation-play-state: running!important;
+		}
+	}
+}
+
+#powerup-landing-icon {
+	.gpa-guru-eyebrow-right {
+		transform-origin: right top;
+		&.wiggle {
+			animation: wiggle-right 100ms ease alternate 6 forwards;
+		}
+	}
+	.gpa-guru-eyebrow-left {
+		transform-origin: left top;
+		&.wiggle {
+			animation: wiggle-left 100ms ease alternate 6 forwards;
 		}
 	}
 }
@@ -628,14 +642,20 @@
 
 .powerup-title {
 	.powerup-house {
+		&.active {
+			* {
+				transition: all 1000ms ease-in-out;
+				opacity: 0;
+			}
+		}
 		.powerup-house-svg {
 			display: block;
 			width: 100%;
 			max-width: 500px;
 			height: auto;
 			&.active {
-				@include prefix(transform-origin, center bottom, webkit moz ms o);
-				@include prefix(animation, powerup-before-scaleUp 1000ms ease-in-out forwards, webkit moz ms o);
+				@include prefix(transform-origin, center, webkit moz ms o);
+				@include prefix(animation, powerup-house-scaleUp 1000ms ease-in-out forwards, webkit moz ms o);
 			}
 		}
 	}
@@ -657,14 +677,42 @@
 
 [class*="powerup"] {
 	.tour-guru {
+		@include prefix(transform-origin, center center, webkit moz ms o);
+		.translate {
+			svg {
+				@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
+				@include prefix(transition, all 600ms cubic-bezier(.77,-0.22,.05,1.27)!important, webkit moz ms o);
+				@include prefix(transform, scale(2), webkit moz ms o);
+			}
+		}
 		svg:first-child {
-			display: block;
 			> g > ellipse {
-				@include prefix(animation, tour-guru-shadow-hover 1000ms linear infinite alternate, webkit moz ms o);
 				@include prefix(transform-origin, center center, webkit moz ms o);
 			}
-			.guru-body {
-				@include prefix(animation, tour-guru-hover 1000ms linear infinite alternate, webkit moz ms o);
+		}
+		svg.absolute {
+			transform-origin: bottom left;
+		}
+		&.on-enter {
+			svg:first-child {
+				> g > ellipse {
+					animation: tour-shadow 500ms cubic-bezier(0,1.6,1,1.6) forwards;
+				}
+			}
+			svg.absolute {
+				animation: u-rotateScaleUpLeft 2000ms ease-in-out 2000ms forwards;
+				opacity: 0;
+			}
+		}
+		&.active {
+			svg:first-child {
+				display: block;
+				> g > ellipse {
+					@include prefix(animation, tour-guru-shadow-hover 1000ms linear infinite alternate, webkit moz ms o);
+				}
+				.guru-body {
+					@include prefix(animation, tour-guru-hover 1000ms linear infinite alternate, webkit moz ms o);
+				}
 			}
 		}
 	}
@@ -673,7 +721,6 @@
 .powerup-demographic {
 	@include flex;
 	@include flex-wrap;
-	@include flex-center;
 	background: $smoke;
 	.tour-guru {
 		svg:first-child {
@@ -686,23 +733,28 @@
 		}
 	}
 	.demo-grid {
+		.demographic-z-index-1000 {
+			z-index: 1000!important;
+		}
 		ul {
 			@include flex;
 			@include flex-center;
 			@include flex-wrap;
-			height: 100%;
 			width: 100%;
+			padding: 1px;
 			li {
+				transform-origin: center top;
 				position: relative;
 				height: 50%;
-				width: 25%;
+				width: 50%;
 				font-weight: 600;
+				padding: 1px;
 				a {
 					position: relative;
 					width: 100%;
 					height: 100%;
 					border-radius: 2px;
-					font-size: 36px;
+					font-size: 28px;
 					text-transform: lowercase;
 					> svg {
 						width: 100%;
@@ -736,7 +788,34 @@
 			}
 		}
 	}
-	@media screen and (min-width:768px) and (min-height:575px) {
+	@media screen and (max-width:768px) {
+		@include prefix(justify-content, center, webkit);
+		@include prefix(align-items, space-between, webkit);
+		@include prefix(align-content, space-between, webkit);
+	}
+	@media screen and (max-width:768px) {
+		.demo-header {
+			height: 40%;
+		}
+		.demo-grid {
+			height: 60%;
+		}
+		.tour-guru {
+			margin-top: 15px;
+			@include prefix(transform, scale(0.8), webkit moz ms o);
+		}
+		h1 {
+			margin-top: -45px;
+			margin-bottom: 30px;
+		}
+	}
+	@media screen and (min-width:768px) {
+		@include flex-center;
+	}
+	@media screen and (min-width:768px) {
+		h1 {
+			font-size: 48px;
+		}
 		.demo-grid {
 			height: auto;
 			margin: 0 auto;
@@ -745,6 +824,10 @@
 				padding: 15px;
 				li {
 					padding: 15px;
+					width: 25%;
+					a {
+						font-size: 36px;
+					}
 				}
 			}
 		}

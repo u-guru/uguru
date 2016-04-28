@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 angular.module('uguru.apps.controllers')
+=======
+angular.module('uguru.gpa.controllers')
+>>>>>>> 45a6f6545d58b0de922a34095d519bd7ea360a2d
 .controller('IntroController', [
 	'$scope',
 	'$ionicSlideBoxDelegate',

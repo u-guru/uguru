@@ -159,7 +159,7 @@
                             <input ng-model="animationHTMLTemplateSearchText" placeholder="search predefined stage template" type='search'> </input>
                         </div>
                         <ul class='flex-wrap-center ugrid-4 full-x'>
-                            <li class='m05x p10x bg-white txt-azure relative flex-wrap-center' ng-repeat='stage_template in imports.stages | filter: animationHTMLTemplateSearchText:name | limitTo: 16 track by $index' style='min-height:40px;' ng-click="stage = stage_template;importPageDom(stage_template)">
+                            <li class='m05x p10x bg-white txt-azure relative flex-wrap-center' ng-repeat='stage_template in imports.stages | filter: animationHTMLTemplateSearchText:name | limitTo: 16 track by $index' style='min-height:40px;' ng-click="importPageDom(stage_template)">
                                 <div class='absolute ugrid-2 full-xy flex-wrap-center left-0'>
                                     <span class='full-y flex-wrap-center txt-center txt-1 uppercase weight-700 bg-cerise-50p' style='width:20%;'>
                                         {{stage_template.owner}}

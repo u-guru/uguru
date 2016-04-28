@@ -521,7 +521,7 @@ angular.module('uguru.directives')
                 var translateElemCoords = {height: translateElemBounding.height, width: translateElemBounding.width, top: translateElemBounding.top, left: translateElemBounding.left};
                 var injectOnTranslateClass = 'translate-active';
                 if (!element[0].style.webkitTransform && !element[0].style.MozTransform && !element[0].style.msTransform && !element[0].style.OTransform && !element[0].style.transform) {
-                  var translateY = parseInt(translateElemCoords.top - elemCoords.top + elemCoords.height - translateElemCoords.height) + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
+                  var translateY = parseInt(translateElemCoords.top - elemCoords.top) + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
                   var translateX = parseInt(translateElemCoords.left - elemCoords.left) + ((attr.translateXOffset && parseInt(attr.translateXOffset)) || 0);
                   var transFormString = "translate(" + translateX + "px, " + translateY + "px)"
                   var delay = attr.translateOnClassDelay || 0;
@@ -573,7 +573,7 @@ angular.module('uguru.directives')
               var injectOnTranslateClass = attr.translateOnClick || 'translate-active';
               var scaleString = "";
               if (!element[0].style.webkitTransform && !element[0].style.MozTransform && !element[0].style.msTransform && !element[0].style.OTransform && !element[0].style.transform) {
-                var translateY = parseInt(translateElemCoords.top - elemCoords.top + elemCoords.height - translateElemCoords.height) + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
+                var translateY = parseInt(translateElemCoords.top - elemCoords.top) + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
                 var translateX = parseInt(translateElemCoords.left - elemCoords.left) + ((attr.translateXOffset && parseInt(attr.translateXOffset)) || 0);
                 var scaleX = (attr.scaleXOnClick && parseFloat(attr.scaleXOnClick)) || 1.0;
                 var scaleY = (attr.scaleXOnClick && parseFloat(attr.scaleYOnClick)) || 1.0;
