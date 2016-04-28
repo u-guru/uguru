@@ -1,5 +1,9 @@
 @import 'mixin';
 
+.hover-subtle {
+    @include prefix(animation, tour-guru-hover 1000ms linear infinite alternate, webkit moz ms o);
+}
+
 .matrix-0 {
     @include prefix(transform, matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), webkit moz ms o);
 }

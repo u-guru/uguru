@@ -1,3 +1,11 @@
+.hover-subtle {
+  -webkit-animation: tour-guru-hover 1000ms linear infinite alternate;
+  -moz-animation: tour-guru-hover 1000ms linear infinite alternate;
+  -ms-animation: tour-guru-hover 1000ms linear infinite alternate;
+  -o-animation: tour-guru-hover 1000ms linear infinite alternate;
+  animation: tour-guru-hover 1000ms linear infinite alternate;
+}
+
 .matrix-0 {
   -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
   -moz-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);

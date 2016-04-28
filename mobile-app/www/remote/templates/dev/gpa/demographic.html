@@ -1,7 +1,7 @@
 <ion-view class='uguru-view demographic-view full-xy' ion-scroll='false'>
 	<!--  ng-controller='IntroController' cache-view='!LOCAL' -->
 	<!-- welcome container -->
-	<div id="powerup-gpa-welcome-container" class="fixed top-0 left-0 full-xy z-index--1000 opacity-0" class-on-activate="fadeIn:anim, z-index-1000:keep, null:inject#powerup-gpa-welcome|activate" class-on-activate-delay="1500" ng-include="img_base + 'templates/dev/gpa/welcome.gpa.html'"></div>
+	<div id="powerup-gpa-welcome-container" class="fixed top-0 left-0 full-xy z-index--1000 opacity-0" class-on-activate="fadeIn:anim, z-index-1000:keep, null:inject#powerup-gpa-welcome|activate" class-on-activate-delay="2000" ng-include="img_base + 'templates/dev/gpa/welcome.gpa.html'"></div>
 	
 	<section id="powerup-gpa-demographic" class="onboarding bg-white powerup-demographic" class-on-activate="null:inject#powerup-gpa-demographic .powerup-back|activate, null:inject#powerup-gpa-demographic .tour-guru|activate, null:inject#powerup-gpa-demographic h1|activate, null:inject#powerup-gpa-demographic .demo-grid li|activate">
 		<a class="powerup-back absolute top-0 left-0 flex-center p15xy semibold txt-20 opacity-0" class-on-activate="u-bounceIn-subtle:anim" class-on-activate-delay="3000">
@@ -13,7 +13,7 @@
 			<span>Back</span>
 		</a>
 		<div class="demo-header" class="flex-center-wrap text-center">
-			<div class="tour-guru p30y relative flex-center opacity-0" class-on-activate="on-enter:anim, active:keep, null:inject#powerup-gpa-demographic .tour-guru .relative|activate">
+			<div class="tour-guru p30y relative flex-center opacity-0" class-on-activate="on-enter:anim, active:keep, null:inject#powerup-gpa-welcome .tour-guru|activate, null:inject#powerup-gpa-demographic .tour-guru .relative|activate">
 				<div class="null" class-on-activate="translate" class-on-activate-delay="1500" translate-on-class="translate" translate-to-elem="#powerup-gpa-welcome-guru">
 					<svg viewBox="0 0 150 250" class="relative z-index-10 opacity-0" class-on-activate="u-slideInDown:anim" class-on-activate-delay="1500">
 					    <g fill-rule="evenodd" fill="none">

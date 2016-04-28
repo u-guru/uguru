@@ -1244,11 +1244,11 @@
   -ms-transform-origin: 50% 300px;
   -o-transform-origin: 50% 300px;
   transform-origin: 50% 300px;
-  -webkit-animation: powerup-house-scaleUp 1000ms ease-in-out forwards;
-  -moz-animation: powerup-house-scaleUp 1000ms ease-in-out forwards;
-  -ms-animation: powerup-house-scaleUp 1000ms ease-in-out forwards;
-  -o-animation: powerup-house-scaleUp 1000ms ease-in-out forwards;
-  animation: powerup-house-scaleUp 1000ms ease-in-out forwards;
+  -webkit-animation: powerup-house-scaleUp 1000ms ease-out forwards;
+  -moz-animation: powerup-house-scaleUp 1000ms ease-out forwards;
+  -ms-animation: powerup-house-scaleUp 1000ms ease-out forwards;
+  -o-animation: powerup-house-scaleUp 1000ms ease-out forwards;
+  animation: powerup-house-scaleUp 1000ms ease-out forwards;
 }
 
 .powerup-back span svg {
@@ -1271,6 +1271,11 @@
 }
 
 [class*="powerup"] .tour-guru .translate svg {
+  -webkit-transform-origin: left top;
+  -moz-transform-origin: left top;
+  -ms-transform-origin: left top;
+  -o-transform-origin: left top;
+  transform-origin: left top;
   -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
   -moz-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
   -ms-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
