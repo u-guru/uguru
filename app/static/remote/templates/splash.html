@@ -11,14 +11,14 @@
         <div id='cta-modal-powerups' class='full-xy flex-wrap-center fixed top-0 left-0 z-index--1000' ng-controller="PowerupController" class-on-activate="" class-on-clear="fadeOut:animOut, z-index--1000" class-on-clear-delay="4000" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.html'"></div>
         <!-- ng-if='activate.powerups' -->
         <!-- class-on-clear="fadeOut:animOut, z-index--1000" class-on-clear-delay="2500" -->
-        
+
         <div id="powerup-landing-gpa" class='full-xy flex-wrap-center fixed top-0 left-0 z-index--1000 opacity-0' class-on-activate="z-index-1000:keep, fadeIn:anim" class-on-activate-delay="3500" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.gpa.html'"></div>
         <!-- class-on-activate="z-index-1000:keep, fadeIn:anim" class-on-activate-delay="2000" -->
-        
+
         <div id="powerup-landing-munchies" class='full-xy flex-wrap-center fixed top-0 left-0 z-index--1000 opacity-0' class-on-activate="z-index-1000:keep, fadeIn:anim" class-on-activate-delay="3500" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.munchies.html'"></div>
-        
+
         <div id="powerup-landing-sound" class='full-xy flex-wrap-center fixed top-0 left-0 z-index--1000 opacity-0' class-on-activate="z-index-1000:keep, fadeIn:anim" class-on-activate-delay="3500" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.sound.html'"></div>
-        
+
         <div id="powerup-landing-transit" class='full-xy flex-wrap-center fixed top-0 left-0 z-index--1000 opacity-0' class-on-activate="z-index-1000:keep, fadeIn:anim" class-on-activate-delay="3500" ng-include="img_base + BASE + 'templates/elements/layouts/powerups.transit.html'"></div>
 
         <!-- One page dropdown -->
@@ -115,7 +115,7 @@
 
         </section>
         <!--End scene #1 mad lib-->
-        <section ng-if='projector.activate' class='hide'ng-include="img_base + BASE + 'templates/splash/layout/projector.swiper.html'" id='splash-projector' init-wp="s2_50_top, s2_25_top, s2_top" wp-offset="50%, 25%, 1%">
+        <section  ng-include="img_base + BASE + 'templates/splash/layout/projector.swiper.html'" id='splash-projector'>
         </section>
 
         <section ng-if='false' ng-if='layout.activate' ng-include="img_base + BASE + 'templates/splash/layout/splash.transition.layouts.html'" id='splash-transition-containers'>

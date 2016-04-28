@@ -1,4 +1,4 @@
-angular.module('uguru.transit.controllers', [])
+angular.module('uguru.apps.controllers')
 .controller('TransitHomeCtrl', [
 	'$scope',
 	'$timeout',
@@ -14,7 +14,7 @@ function TransitHomeCtrl($scope, $timeout, University,
 						 DeviceService, Routes, InAppMapService, $ionicModal) {
 
 
-	$scope.map = { center: { latitude: 37.7931632, longitude: -122.3967035 }, zoom: 14 };	
+	$scope.map = { center: { latitude: 37.7931632, longitude: -122.3967035 }, zoom: 14 };
 
 
 	$scope.selectedProviders = {
@@ -24,9 +24,9 @@ function TransitHomeCtrl($scope, $timeout, University,
 	};
 
 	$scope.p = {
-		path: Routes.getAll[0].directions 
+		path: Routes.getAll[0].directions
 	};
-	
+
 
 
 	$scope.routesSource = Routes.getAll.slice();
@@ -85,28 +85,28 @@ function TransitHomeCtrl($scope, $timeout, University,
 
 	if (University.selected =={}) {
 		console.log("using selected universigty coords");
-		$scope.map = { center: { latitude: University.selected.latitude, longitude: University.selected.longitude }, zoom: 14 };		
+		$scope.map = { center: { latitude: University.selected.latitude, longitude: University.selected.longitude }, zoom: 14 };
 	} else {
 		console.log("using default coords");
-		$scope.map = { center: { latitude: 37.8718992, longitude: -122.2585399 }, zoom: 14 };	
+		$scope.map = { center: { latitude: 37.8718992, longitude: -122.2585399 }, zoom: 14 };
 	}
-	
+
 	$scope.isBrowser = !DeviceService.doesCordovaExist();
 	console.log("isBrowser: " + $scope.isBrowser);
 
 
 	$timeout(function() {
-		InAppMapService.displayMap();	
+		InAppMapService.displayMap();
 	}, 2000);
 
 
 	$scope.openSearch = function() {
 		console.log("clicked openSearch()");
-		
+
 		var searchInput = document.querySelector('#grub-search-input');
 		var desktopSearchInput = document.querySelector('#desktop-search-input');
 		var homeTitle = document.querySelector('#grub-title');
-		
+
 		if (searchInput.classList.contains('active') ) {
 			searchInput.classList.remove('active');
 			desktopSearchInput.classList.remove('active');
@@ -118,8 +118,8 @@ function TransitHomeCtrl($scope, $timeout, University,
 		}
 	};
 
-	
-	
+
+
 
 	var options = {
 		scope: $scope,
@@ -143,12 +143,12 @@ function TransitHomeCtrl($scope, $timeout, University,
 		};
 
 		$timeout(function() {
-			
+
 			routeModal.show();
 			var transportBar = document.querySelector('.transport-list');
 			transportBar.style.visibility = 'hidden';
 		}, 0);
-		
+
 		// toggleHeader();
 
 	};
@@ -227,16 +227,16 @@ function TransitHomeCtrl($scope, $timeout, University,
 //           }
 
 //      //      if (DeviceService.doesCordovaExist()) {
-          	
+
 //      //      	if(mapPromise) {
 //      //      	  $timeout.cancel(mapPromise);
 //      //      	}
 //      //      	mapPromise = $timeout(function() {
-// 			  // InAppMapService.plotMarkers($scope.listScope);  
+// 			  // InAppMapService.plotMarkers($scope.listScope);
 //      //      	  mapPromise = null;
 
 //      //      	}, 1000);
-          	
+
 //      //      }
 //         }
 

@@ -103,7 +103,28 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.setAnimatableElement = function($event) {
+
+
+
 			var elem = $event.target;
+
+			if (['polgyon', 'rect', 'circle', 'path', 'text'].indexOf(elem.nodeName) > -1) {
+				var elem = elem.parentNode;
+				if (['polgyon', 'rect', 'circle', 'path', 'text'].indexOf(elem.nodeName) > -1) {
+					var elem = elem.parentNode;
+					if (['polgyon', 'rect', 'circle', 'path', 'text'].indexOf(elem.nodeName) > -1) {
+						var elem = elem.parentNode;
+					}
+				}
+			}
+			var allCurrentStageElems = document.querySelectorAll('#stage-elem');
+			console.log('clearing all that are stage elems');
+			for (var i = 0; i < allCurrentStageElems.length; i++) {
+				var indexCurrentStageElem = allCurrentStageElems[i];
+				console.log('removing id stage-elem for elem', indexCurrentStageElem);
+				indexCurrentStageElem.id = null;
+			}
+
 			elem.id = $scope.pageDom.animElemSelector;
 			$scope.actor = elem;
 			console.log('this was called');
@@ -692,18 +713,48 @@ angular.module('uguru.util.controllers')
 		    return null;
 		}
 
-		function getAllKeyFrameAnimations() {
+		function exportExternalCSSKeyFrameFiles(css_file_names) {
 			var ss = document.styleSheets;
 			var allRuleObjs = [];
+			var allRuleDict = {};
+			var count = 0;
 		    for (var i = 0; i < ss.length; ++i) {
+		    	var styleSheetName;
+		    	if (ss[i].href) {
+		    		var styleSheetName = ss[i].href.split('/').reverse()[0].replace('.css', '');
+		    		if (css_file_names.indexOf(styleSheetName) > -1) {
+		    			allRuleDict[styleSheetName] = [];
+		    		}
+		    	}
 		    	if (ss[i].cssRules && ss[i].cssRules.length) {
 		    		for (var j = 0; j < ss[i].cssRules.length; ++j) {
-		            	if (ss[i].cssRules[j].type == window.CSSRule.WEBKIT_KEYFRAMES_RULE) {allRuleObjs.push(ss[i].cssRules[j]) }
+		            	if (ss[i].cssRules[j].type == window.CSSRule.WEBKIT_KEYFRAMES_RULE) {
+		            		allRuleObjs.push(ss[i].cssRules[j]);
+		            		if (styleSheetName in allRuleDict) {
+		            			var indexCssRule = ss[i].cssRules[j];
+		            			var rawCSSText = indexCssRule.cssText;
+		            			var animationName = indexCssRule.name;
+		            			console.log('processing', animationName);
+		            			var js_anim_obj = importAnimationFromRawCssText(rawCSSText, animationName);
+		            			var final_obj = initAnimationFromAnimObj(js_anim_obj);
+		            			$scope.saveAnimationClass(final_obj, styleSheetName);
+
+		      //       			var js_anim_obj = importAnimationFromRawCssText(indexCssRule.css_text, name);
+
+
+		            		}
+		            	}
 		        	}
 		    	}
 		    }
+		    console.log($scope.imports.animations.length);
+		    $timeout(function() {
+		    	$scope.$apply()
+		    })
 		    return allRuleObjs
 		}
+
+
 
 		$scope.updateAnimationName = function(animation) {
 			animation.obj.name = animation.attr.name;
@@ -1538,7 +1589,7 @@ angular.module('uguru.util.controllers')
 
 		function initView() {
 			browserPrefix = getBrowserPrefix();
-
+			// $scope.importFromCSSText()
 
 			//turn off for now
 			false && loadAllS3Files();
@@ -1562,21 +1613,21 @@ angular.module('uguru.util.controllers')
 
 
 		}
-		$scope.renderAnimationCSSText = function() {
+		$scope.renderAnimationCSSText = function(animation) {
 			$scope.layout.index = 2;
 
-			var tempAnim = initAnimationFromCSSText($scope.animation.obj.name, browserPrefix, $scope.animation.obj.cssText);
-			var cssRulesLength = $scope.animation.obj.cssRules.length;
+			var tempAnim = initAnimationFromCSSText(animation.obj.name, browserPrefix, animation.obj.cssText);
+			var cssRulesLength = animation.obj.cssRules.length;
 			for (var i = 0; i < cssRulesLength; i++) {
-				var indexKFRule = $scope.animation.obj.cssRules.item(i);
+				var indexKFRule = animation.obj.cssRules.item(i);
 				var indexKeyText = indexKFRule.keyText;
 				var indexKeyStyle = indexKFRule.cssText;
 				if (!(indexKeyStyle.indexOf('{ }') > -1)) {
 					tempAnim.appendRule(indexKeyStyle, 0)
 				}
 			}
-			var animClassText = generateClassText($scope.animation);
-			$scope.animation.exportable_kf = {obj: tempAnim, className: tempAnim.name, classText: animClassText, fullText: animClassText + tempAnim.cssText, cssText: tempAnim.cssText};
+			var animClassText = generateClassText(animation);
+			animation.exportable_kf = {obj: tempAnim, className: tempAnim.name, classText: animClassText, fullText: animClassText + tempAnim.cssText, cssText: tempAnim.cssText};
 
 			$timeout(function() {
 				// angular.element(document.querySelector('#export-textarea')).select()
@@ -1591,17 +1642,17 @@ angular.module('uguru.util.controllers')
 
 
 		$scope.exports = {animations: []};
-		$scope.saveAnimationClass = function() {
-			if (!$scope.animation.exportable_kf) {
-				$scope.renderAnimationCSSText();
+		$scope.saveAnimationClass = function(animation, owner) {
+			if (!animation.exportable_kf) {
+				$scope.renderAnimationCSSText(animation);
 			}
-			if ($scope.animation.exportable_kf.className.length && $scope.animation.exportable_kf.classText.length) {
+			if (animation.exportable_kf.className.length && animation.exportable_kf.classText.length) {
 				var payloadDict = {
-					name: $scope.animation.exportable_kf.className,
-					owner: $scope.user.name.split(' ')[0].toLowerCase(),
+					name: animation.exportable_kf.className,
+					owner: owner || $scope.user.name.split(' ')[0].toLowerCase(),
 					lastUpdated: (new Date()).getTime(),
-					classText: $scope.animation.exportable_kf.classText,
-					cssText: $scope.animation.exportable_kf.cssText
+					classText: animation.exportable_kf.classText,
+					cssText: animation.exportable_kf.cssText
 				}
 
 				var animationIndex = checkIfAnimationAlreadyExists(payloadDict, $scope.imports.animations)
@@ -1680,6 +1731,16 @@ angular.module('uguru.util.controllers')
 			// }
 		}
 
+		function processAnimations(animation_arr) {
+			for (var i = 0; i < animation_arr.length; i++) {
+				var indexAnimation = animation_arr[i];
+				if (indexAnimation.owner === 'asif') {
+					indexAnimation.owner = 'samir';
+				}
+			}
+			return animation_arr
+		}
+
 		function saveToMasterS3(filename, url, obj) {
 			console.log('about to save to master with url', url + filename, obj);
 			FileService.postS3JsonFile(JSON.stringify(obj), null, url + filename, function(name, resp) {console.log('resp', resp)});
@@ -1688,7 +1749,7 @@ angular.module('uguru.util.controllers')
 		function importAnimations() {
 			$scope.imports = $localstorage.getObject('imports');
 			var animation_url = 'https://s3.amazonaws.com/uguru-admin/master/animations.json';
-			FileService.getS3JsonFile(null, animation_url, function(name, resp) {console.log('import anim resp', resp)});
+			FileService.getS3JsonFile(null, animation_url, function(name, resp) {$scope.imports.animations = processAnimations(resp);});
 		}
 
 		function importStageHtml() {

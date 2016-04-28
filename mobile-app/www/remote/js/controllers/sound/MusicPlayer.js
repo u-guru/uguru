@@ -1,4 +1,4 @@
-angular.module('uguru.sound.controllers')
+angular.module('uguru.apps.controllers')
 .factory('MusicPlayer', [
     'Utilities',
     MusicPlayer]);
@@ -11,7 +11,7 @@ function MusicPlayer(Utilities) {
 
     var tracks = [];
 
-    var previews = [];    
+    var previews = [];
 
 
     return {

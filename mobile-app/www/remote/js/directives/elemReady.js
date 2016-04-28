@@ -506,6 +506,10 @@ angular.module('uguru.directives')
         scope.$watch(function() {
           return element.attr('class');
         },function(value) {
+            if (!element.attr('class')) {
+              console.log('ERROR TRANSLATE-ON-CLASS', 'needs at least one class to provide translate-on-class-functionality');
+              return
+            }
             var classNames = element.attr('class').split(' ');
 
               if (((classNames.indexOf('activate') > -1 && !('translateOnClass' in attr)) || classNames.indexOf(attr.translateOnClass) > -1) && attr.translateToElem) {
