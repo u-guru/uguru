@@ -553,8 +553,9 @@ angular.module('uguru.directives')
     // add 'translate-to-y'="200" to add 200px Y offset (origin = bottom left);
     // add 'scale-x-on-click'="1.3" scales x by 1.3
     // add 'translate-on-click-duration'="2.0" scales x by 1.3
+    // add 'translate-on-click-delay'="1000" sets transition duration to 1000ms
     // add 'scale-y-on-click'="0.7" scales y by 0.7
-    // add 'translate-back-class'="untransform-class-name1, untransform-class-name-2" adds the argument/class(es) when the transform is set to null (when element with attribute transforms)
+    // add [NOT SUPPORTED YET] 'translate-back-class'="untransform-class-name1, untransform-class-name-2" adds the argument/class(es) when the transform is set to null (when element with attribute transforms)
     return {
         restrict: 'A',
         link: function(scope, element, attr) {
@@ -579,6 +580,14 @@ angular.module('uguru.directives')
                 element[0].style.msTransform = transFormString + scaleString;
                 element[0].style.OTransform = transFormString + scaleString;
                 element[0].style.transform = transFormString + scaleString;
+                if (attr.translateOnClickDelay && attr.translateOnClickDelay.length) {
+                  var translateDelay = parseInt(attr.translateOnClickDelay);
+                  element[0].style.webkitTransitionDelay = translateDelay + "ms";
+                  element[0].style.MozTransitionDelay = translateDelay + "ms";
+                  element[0].style.msTransitionDelay = translateDelay + "ms";
+                  element[0].style.OTransitionDelay = translateDelay + "ms";
+                  element[0].style.transitionDelay = translateDelay + "ms";
+                }
                 if (attr.translateOnClickDuration && attr.translateOnClickDuration.length) {
                   var translateDuration = parseInt(attr.translateOnClickDuration);
                   element[0].style.webkitTransitionDuration = translateDuration + "ms";
