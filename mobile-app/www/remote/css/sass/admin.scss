@@ -8,6 +8,105 @@
 	}
 }
 #keys {
+	#import-button {
+		svg {
+			@include prefix(transform, rotate(180deg), webkit moz ms o);
+		}
+	}
+	#keys-aside-menu.tab-bar.slide {
+		> div {
+			width: 100%!important;
+		}
+		> div {
+			a, hr {
+				width: calc(100% / 3);
+			}
+		}
+		a {
+			font-size: 16px;
+			&:nth-child(1) {
+				&.active {
+					~ hr {
+						@include translate-x(0);
+					}
+				}
+			}
+			&:nth-child(2) {
+				&.active {
+					~ hr {
+						@include translate-x(100%);
+					}
+				}
+			}
+			&:nth-child(3) {
+				&.active {
+					~ hr {
+						@include translate-x(200%);
+					}
+				}
+			}
+			&:nth-child(4) {
+				&.active {
+					~ hr {
+						@include translate-x(300%);
+					}
+				}
+			}
+			&:nth-child(1) {
+				&:hover, &:focus {
+					~ hr {
+						@include translate-x(0);
+					}
+				}
+			}
+			&:nth-child(2) {
+				&:hover, &:focus {
+					~ hr {
+						@include translate-x(100%);
+					}
+				}
+			}
+			&:nth-child(3) {
+				&:hover, &:focus {
+					~ hr {
+						@include translate-x(200%);
+					}
+				}
+			}
+			&:nth-child(4) {
+				&:hover, &:focus {
+					~ hr {
+						@include translate-x(300%);
+					}
+				}
+			}
+		}
+	}
+	#keys-toolbar {
+		a {
+			color: white!important;
+			+ div {
+				@include prefix(transition, all 300ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
+				@include prefix(transition, all 300ms cubic-bezier(.77,0,.05,1.27)!important, webkit moz ms o);
+				@include prefix(transform-origin, center top, webkit moz ms o);
+				@include prefix(transform, scaleY(0), webkit moz ms o);
+				@include opacity(0);
+				z-index: -1000;
+				&:hover, &.active {
+					@include opacity(1);
+					@include prefix(transform, scaleY(1), webkit moz ms o);
+					z-index: 100;
+				}
+			}
+			&:hover, &:focus, &.active {
+				+ div {
+					@include opacity(1);
+					@include prefix(transform, scaleY(1), webkit moz ms o);
+					z-index: 100;
+				}
+			}
+		}
+	}
 	.dropdown-container {
 		h2 {
 			font-size: 14px;
@@ -17,7 +116,7 @@
 		.dropdown.small {
 			> div {
 				> span {
-					width: 128px;
+					width: 160px;
 				}
 			}
 		}
