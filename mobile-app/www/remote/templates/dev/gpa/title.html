@@ -3,7 +3,7 @@
 	<div id="powerup-gpa-demographic-container" class="fixed top-0 left-0 full-xy z-index--1000 opacity-0" class-on-activate="fadeIn:anim, z-index-1000:keep, null:inject#powerup-gpa-demographic|activate" class-on-activate-delay="1000" ng-include="img_base + 'templates/dev/gpa/demographic.html'"></div>
 	
 	<section id="powerup-gpa-title" class="powerup-title full-xy flex-center-wrap" class-on-activate="null:inject#powerup-gpa-house|activate" class-on-clear="fadeOut:animOut">
-		<a id="powerup-gpa-house" class="powerup-house full-x flex-center relative opacity-0" class-on-click="null:inject#powerup-gpa-demographic-container|activate, null:inject#powerup-gpa-house .powerup-house-svg|clear, null:inject.powerup-title|clear" class-on-activate="u-bounceIn-subtle:anim">
+		<a id="powerup-gpa-house" class="powerup-house full-x flex-center relative opacity-0" class-on-click="null:inject#powerup-gpa-demographic-container|activate, null:inject#powerup-gpa-house .powerup-house-svg|clear, null:inject.powerup-title|clear" class-on-activate="u-bounceIn-subtle:anim" class-on-load="u-bounceIn-subtle:anim">
 			<svg class="powerup-house-svg" class-on-clear="active" viewBox="0 0 378 322">
 			    <g fill="none" fill-rule="evenodd">
 			        <rect id="gpa-title-btn-multiply" stroke="#78898C" stroke-width="3" fill="#B6C3C5" x="319.469598" y="77.9212596" width="34.9460666" height="34.9964112" rx="5.47945205"></rect>

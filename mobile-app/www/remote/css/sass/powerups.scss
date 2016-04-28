@@ -390,23 +390,23 @@
 				opacity: 0;
 			}
 			.gpa-guru {
-				animation: gpa-guru 1000ms linear forwards;
+				animation: gpa-guru 1000ms ease-in-out forwards;
 			}
 			.multiply {
-				animation: multiply-enter 500ms linear 100ms forwards;
+				animation: multiply-enter 500ms ease-in-out 50ms forwards;
 			}
 			.plus {
-				animation: plus-enter 500ms linear 200ms forwards;
+				animation: plus-enter 500ms ease-in-out 100ms forwards;
 			}
 			.minus {
-				animation: minus-enter 500ms linear 300ms forwards;
+				animation: minus-enter 500ms ease-in-out 150ms forwards;
 				transform-origin: bottom right;
 			}
 			.equal {
-				animation: equal-enter 500ms linear 400ms forwards;
+				animation: equal-enter 500ms ease-in-out 200ms forwards;
 			}
 			.divide {
-				animation: divide-enter 500ms linear 450ms forwards;
+				animation: divide-enter 500ms ease-in-out 50ms forwards;
 			}
 		}
 	}
@@ -763,7 +763,7 @@
 			max-width: 500px;
 			height: auto;
 			&.active {
-				@include prefix(transform-origin, center, webkit moz ms o);
+				@include prefix(transform-origin, 50% 300px, webkit moz ms o);
 				@include prefix(animation, powerup-house-scaleUp 1000ms ease-in-out forwards, webkit moz ms o);
 			}
 		}

@@ -549,8 +549,8 @@ angular.module('uguru.directives')
 .directive('translateOnClick', ['$timeout', function ($timeout) {
     // add 'translate-to-click' to element to "declare" directive. "translate-active" is added to element if element does not have transform properties && transforms
     // add 'translate-to-elem'="#sample-selector" to element to link destination element
-    // add 'translate-to-x'="200" to add 200px X offset (origin = bottom left);
-    // add 'translate-to-y'="200" to add 200px Y offset (origin = bottom left);
+    // add 'translate-x-offset'="200" to add 200px X offset (origin = bottom left);
+    // add 'translate-y-offset'="200" to add 200px Y offset (origin = bottom left);
     // add 'scale-x-on-click'="1.3" scales x by 1.3
     // add 'translate-on-click-duration'="2.0" scales x by 1.3
     // add 'translate-on-click-delay'="1000" sets transition duration to 1000ms
