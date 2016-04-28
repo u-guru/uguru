@@ -84,7 +84,12 @@
 	}
 	#keys-toolbar {
 		a {
-			color: white!important;
+			&:hover, &:focus {
+				background: $moxie;
+			}
+			&:active {
+				background: $robin;
+			}
 			+ div {
 				@include prefix(transition, all 300ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
 				@include prefix(transition, all 300ms cubic-bezier(.77,0,.05,1.27)!important, webkit moz ms o);
