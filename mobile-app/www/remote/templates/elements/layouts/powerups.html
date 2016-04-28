@@ -4,7 +4,7 @@
         <h1 class="txt-48 semibold full-x txt-center">Powerups</h1>
     </header>
     <div class="flex-center-wrap z-index-2">
-        <ul id="powerup-icons" class="flex-center">
+        <ul id="powerup-icons" class="flex-center-wrap">
             <li class="matrix-0 opacity-0" class-on-activate="active:anim, u-bounceIn-subtle, null:inject#powerup-gpa-label|activate, null:inject#powerup-gpa-container|activate" class-on-activate-delay="500">
                 <a id="powerup-gpa-container" class="block relative high-z-index" class-on-activate="hover:keep" class-on-activate-delay="500" class-on-click="active:keep, null:inject#powerups-container header|activate, null:inject#powerup-munchies-container|clear, null:inject#powerup-sound-container|clear, null:inject#powerup-transit-container|clear, null:inject#powerup-landing-gpa|activate, null:inject#cta-modal-powerups|clear, null:inject#powerups-container header|clear, null:inject.gpa-card-bg|clear, null:inject.gpa-container-outline-track|activate, null:inject.landing-gpa|activate, null:inject#powerup-landing-icon|activate" translate-on-click translate-to-elem="#powerup-landing-icon" class-on-clear="fadeOut:animOut" ng-mouse-leave="onMouseLeave($event)">
                     <div id="powerup-gpa-icon" class="block loader-powerup-gpa" ng-include="img_base + 'templates/elements/assets/powerups/gpa-card.tpl'"></div>
