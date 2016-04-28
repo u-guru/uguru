@@ -1,4 +1,4 @@
-angular.module('uguru.gpa.controllers',[])
+angular.module('uguru.apps.controllers',[])
 .controller('GPAController', [
 	'$scope',
 	'ModalService',

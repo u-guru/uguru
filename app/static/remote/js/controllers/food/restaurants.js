@@ -16,7 +16,7 @@ function Restaurant() {
             "icon": 'http://icons.iconarchive.com/icons/sonya/swarm/32/Pizza-icon.png',
 
         },
-        
+
         "id": 1,
         "city": "Berkeley",
         "open": true,
@@ -53,7 +53,7 @@ function Restaurant() {
         "longitude": -122.2608894,
         "website": 'www.fatslice.com',
         "phone": '510-435-1278',
-        
+
     },
     {
         "name": "Lousiana Kitchen",
@@ -63,7 +63,7 @@ function Restaurant() {
             "icon": 'http://icons.iconarchive.com/icons/aha-soft/desktop-buffet/32/Steak-icon.png',
 
         },
-        
+
         "id": 1,
         "city": "Berkeley",
         "open": true,
@@ -100,7 +100,7 @@ function Restaurant() {
         "longitude": -122.2688143,
         "website": 'www.lousianakitchen.com',
         "phone": '510-435-1278',
-        
+
     },
 
 
@@ -110,7 +110,7 @@ function Restaurant() {
         "slogan": "Yikes! 2hr wait",
         "type": 'mexican',
         "options": {
-            "icon": 'http://icons.iconarchive.com/icons/iconmuseo/fast-food/32/tacos-icon.png',    
+            "icon": 'http://icons.iconarchive.com/icons/iconmuseo/fast-food/32/tacos-icon.png',
         },
         "id": 2,
         "city": "Berkeley",
@@ -152,7 +152,7 @@ function Restaurant() {
         "longitude": -122.2758044,
         "website": 'www.laburrita.com',
         "phone": '510-435-1278'
-        
+
     },
     {
         "name": "Top Dog",
@@ -161,7 +161,7 @@ function Restaurant() {
         "options": {
             "icon": 'http://icons.iconarchive.com/icons/sonya/swarm/32/Hot-Dog-icon.png'
         },
-        
+
         "id": 3,
         "city": "Berkeley",
         "open": true,
@@ -198,16 +198,16 @@ function Restaurant() {
         "longitude": -122.2595921,
         "website": 'www.topdog.com',
         "phone": '510-435-1278'
-        
+
     },
     {
         "name": "Pasta Bene",
         "slogan": "Next batch in 5 min",
         "type": 'pasta',
         "options": {
-            "icon": 'http://icons.iconarchive.com/icons/icons-land/3d-food/32/Dish-Pasta-Spaghetti-icon.png',    
+            "icon": 'http://icons.iconarchive.com/icons/icons-land/3d-food/32/Dish-Pasta-Spaghetti-icon.png',
         },
-        
+
         "id": 4,
         "city": "Berkeley",
         "open": true,
@@ -244,17 +244,17 @@ function Restaurant() {
         "longitude": -122.2604351,
         "website": 'www.pastabene.com',
         "phone": '510-435-1278'
-        
+
     },
     {
         "name": "Gypsy's",
         "slogan": "Free samples!",
         "type": 'pasta',
         "options": {
-            "icon": 'http://icons.iconarchive.com/icons/icons-land/3d-food/32/Dish-Pasta-Spaghetti-icon.png', 
+            "icon": 'http://icons.iconarchive.com/icons/icons-land/3d-food/32/Dish-Pasta-Spaghetti-icon.png',
 
         },
-        
+
         "id": 5,
         "city": "Berkeley",
         "open": true,

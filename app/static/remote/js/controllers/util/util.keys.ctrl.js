@@ -103,7 +103,28 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.setAnimatableElement = function($event) {
+
+
+
 			var elem = $event.target;
+
+			if (['polgyon', 'rect', 'circle', 'path', 'text'].indexOf(elem.nodeName) > -1) {
+				var elem = elem.parentNode;
+				if (['polgyon', 'rect', 'circle', 'path', 'text'].indexOf(elem.nodeName) > -1) {
+					var elem = elem.parentNode;
+					if (['polgyon', 'rect', 'circle', 'path', 'text'].indexOf(elem.nodeName) > -1) {
+						var elem = elem.parentNode;
+					}
+				}
+			}
+			var allCurrentStageElems = document.querySelectorAll('#stage-elem');
+			console.log('clearing all that are stage elems');
+			for (var i = 0; i < allCurrentStageElems.length; i++) {
+				var indexCurrentStageElem = allCurrentStageElems[i];
+				console.log('removing id stage-elem for elem', indexCurrentStageElem);
+				indexCurrentStageElem.id = null;
+			}
+
 			elem.id = $scope.pageDom.animElemSelector;
 			$scope.actor = elem;
 			console.log('this was called');

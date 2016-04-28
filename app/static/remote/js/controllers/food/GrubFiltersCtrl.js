@@ -1,4 +1,4 @@
-angular.module('guru.food.controllers')
+angular.module('uguru.apps.controllers')
 .controller('GrubFiltersCtrl', [
 	'$scope',
 	GrubFiltersCtrl
@@ -33,7 +33,7 @@ function GrubFiltersCtrl($scope) {
 		$scope.availableFilters.push(filter);
 
 	};
-	
+
 
 
 }

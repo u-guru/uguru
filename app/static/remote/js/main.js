@@ -34,8 +34,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers','uguru.version',
   'uguru.util.controllers', 'uguru.dev.controllers', 'uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'uguru.components',
-  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps','uguru.gpa.controllers','guru.food.controllers','guru.food.services',
-  'uguru.sound.controllers','base64','uguru.transit.controllers','transit.services'])
+  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps','uguru.apps.controllers','transit.services','base64','guru.food.services'])
 
 .run(function($ionicPlatform, $localstorage,
   $state, $ionicHistory,
@@ -630,6 +629,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/transit-home',
         templateUrl: BASE + 'templates/dev/transit/transit.home.html',
         controller: 'TransitHomeCtrl'
+  }).
+  state('root.getting-started', {
+        url: '/getting-started',
+        templateUrl: BASE + 'templates/.html',
+        params: {category: {name: 'Academic', id:5, hex_color:'academic'}, university: {latitude: "37.8718992", longitude: "-122.2585399",name: 'UC Berkeley', id:2307, school_color_dark: "#023360", school_tiny_name: 'Cal', school_color_light: "#FBB431", short_name: "UC Berkeley"}},
   }).
   state('root.splash', {
         url: '/:categoryId:universityId',
