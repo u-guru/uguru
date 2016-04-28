@@ -472,8 +472,8 @@
                     </h1>
                     <div class='all-components-container full-xy'>
                         <ul class='ugrid-3 flex-wrap-center full-xy absolute'>
-                            <li ng-click='onTSActionComponentSelected(component.selector)' class='relative flex-wrap-center cloned-animatable-elem-container' style='min-height:100px; min-width:100px;' ng-repeat='component in stage.components'>
-                                {{component.selector}}
+                            <li ng-click='selectComponentElement(component, $index, $event)' class='relative flex-wrap-center cloned-animatable-elem-container' style='min-height:100px; min-width:100px;' ng-repeat='component in stage.components track by $index'>
+                                <h1 class='full-x'> {{component.selector}}, {{component.type}} </h1>
                             </li>
                         <ul>
                     </div>
@@ -621,8 +621,23 @@
             </div>
             <div class="overflow-auto no-scrollbar relative" style="height: calc(100% - 64px); top:64px;" ng-hide='asideTabIndex !== 2'>
                 <div class='flex-wrap-center flex-stretch full-xy absolute'>
-                    <h1 class='p20xy txt-7 weight-700 uppercase absolute full-x left-0 txt-white text-center top-0'>Selected Keyframe Elem</h1>
-                    <div class='relative full-x bg-azure' id='stage-elem-clone-container' style='height:40%; min-height:250px;min-width:250px; position:relative;overflow:hidden; top:64px; padding-top:50px'>
+                    <h1 class='p20xy txt-7 weight-700 uppercase absolute full-x left-0 txt-white text-center top-0'>Selected Keyframe</h1>
+
+                    <div class='flex-wrap-center relative full-x bg-azure' id='stage-elem-clone-container' style='height:25%; min-height:150px;min-width:150px; position:relative;overflow:hidden; top:64px; padding-top:50px'>
+                    </div>
+                    <div class='flex-wrap-center'>
+                        <ul class='full-x'>
+                            <li class='full-x p10xy' ng-repeat='anim_element in stage.anim_elements track by $index'> {{anim_element.type}} {{anim_element.selector}}
+                                <a> Focus </a>  <a ng-click='stage.anim_elements.splice($index, 1)'> Remove </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class='element-toolboard flex-wrap-center full-x absolute bottom-0 left-0 ugrid-3'>
+                        <button class='full-x bg-azure flex-start text-center relative' ng-click='showChildrenOfParentElemOnClick()'>
+                            <span class='flex-wrap-center'> + Selected Child </span>
+                        </button>
+                        <!-- <button  ng-click='initStageTimeState()' class='bg-charcoal flex-start text-center'>+ Time</button>
+                        <button  ng-click='playStageTimeStates()' class='flex-start text-center'>Play</button> -->
                     </div>
                 </div>
             </div>
