@@ -30,7 +30,7 @@
                         <a id='import-button' ng-click='goToEditPageDom()' class='weight-900'>Edit</a>
                     </li> -->
                     <li>
-                        <a id='export-button' ng-click='renderAnimationCSSText()' class="weight-900">Export</a>
+                        <a id='export-button' ng-click='renderAnimationCSSText(animation)' class="weight-900">Export</a>
                     </li>
                     <li>
                         <a ng-click='saveAnimationClass(animation)' class="weight-900">Save</a>
@@ -88,7 +88,7 @@
                     <div class="full-xy ugrid-2 p15-grid" ng-if='importLayoutIndex === 0'>
                         <div class="full-y flex-wrap-center full-x flex-stretch" style='height:90% !important; width:50% !important;'>
                             <textarea  id='import-textarea' class='block full-xy radius-2 txt-18 p10y-p15x' placeholder="importable css to cut and post goes here" ng-model="animationDict.importTextarea"></textarea>
-                            <button ng-click='importFromCSSText(animationDict.importTextarea, animationDict.importInput)'> Import </button>
+                            <button ng-click='importFromCSSText(animationDict.importTextarea, animationDict.importInput, animationDict.importClassText)'> Import </button>
                         </div>
                         <div class='flex-wrap-center flex-stretch' style='width:50% !important; '>
                             <div class='full-x' style='max-height:100px'>
