@@ -74,11 +74,12 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	};
 
 	var selectedGrade = '';
-	$scope.selectSemester= function(index)
+
+	$scope.getSemester= function(index)
 	{
-		console.log(index)
+		$scope.currentIndex = index
 	}
-	
+
 	$scope.preList = function(range){
 		$scope.start -= range
 		if (($scope.overall.semesterArr.length - $scope.start - range ) > 0 )

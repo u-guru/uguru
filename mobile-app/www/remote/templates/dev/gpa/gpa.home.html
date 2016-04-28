@@ -26,7 +26,7 @@
 					<h2 ng-if="overall.semesterArr.length">{{slogan()}}</h2>
 				</div>
 				<nav id="semester-slider">
-					<ul class="opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="2500" ng-init="start = 0; isMax=false;">
+					<ul class="opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="2500" ng-init="start = 0; isMax=false;currentIndex = -1">
 						<li>
 							<a href="#" class="nav">
 								<svg ng-if='start != 0' ng-click='preList(4)' viewBox="0 0 100 100">
@@ -35,12 +35,12 @@
 							</a>
 						</li>
 						<li>
-							<a class="active" href="#">
+							<a class="active" href="#" ng-click="currentIndex = -1">
 								<span>Cumulative<br/>GPA</span>
 							</a>
 						</li>
 						<li ng-repeat='semester in overall.semesterArr  | limitTo:4:start track by $index'>
-							<a href="#" ng-click="selectSemester($index+start)">
+							<a href="#" ng-click="getSemester($index+start)">
 								<span>{{semester.semester}}<br/>{{semester.year}}</span>
 							</a>
 						</li>
@@ -81,11 +81,10 @@
 					<span>Add Courses</span>
 				</div>
 				<ul class="semester-list">
-					<li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000" ng-repeat='semester in overall.semesterArr'>
+					<li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000" ng-repeat='semester in overall.semesterArr' ng-if= "currentIndex < 0">
 						<div>
 							<div class="semester-item-course">
 								<h1>{{semester.semester}} {{semester.year}}</h1>
-								<!-- <h3>{{U.S. History / Civics / American Government}}</h3> -->
 							</div>
 							<div class="semester-item-grade">
 								<svg viewBox="0 0 100 100">
@@ -98,25 +97,24 @@
 							</div>
 						</div>
 					</li>
-
-					<!-- <li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
+					 <li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000" ng-repeat='course in overall.semesterArr[currentIndex].courses'  ng-if= "currentIndex >= 0">
 						<div>
 							<div class="semester-item-course">
-								<h1>CIV 123</h1>
-								<h3>U.S. History / Civics / American Government</h3>
+								<h1>{{course.name}}</h1>
+								<h3>{{course.title}}</h3>
 							</div>
 							<div class="semester-item-grade">
 								<svg viewBox="0 0 100 100">
 									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
 								</svg>
 								<div>
-									<h2>A+</h2>
-									<span>3 Cred</span>
+									<h2>{{course.grade}}</h2>
+									<span>{{course.units}} Cred</span>
 								</div>
 							</div>
 						</div>
 					</li>
-					<li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1250">
+					<!--<li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1250">
 						<div>
 							<div class="semester-item-course">
 								<h1>CIV 123</h1>

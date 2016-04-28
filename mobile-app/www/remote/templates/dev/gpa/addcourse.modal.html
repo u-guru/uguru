@@ -16,7 +16,7 @@
 					</a>
 			        <form>
 						<fieldset class="large with-icon full-x m15bottom">
-							<input class="input-border light" ng-model= "search_text.course" type="search" placeholder="search for your courses"/>
+							<input id='course-input-1' class="input-border light" ng-model= "search_text.course" type="search" placeholder="search for your courses"/>
 							<label></label>
 							<span class="input-icon">
 								<svg viewBox="0 0 100 100">
@@ -46,7 +46,7 @@
 			<!-- stagger each by 250, starting with 1000 -->
 			<div class='onboarding-search-container bg-azure full-xy' ng-show='search_text.course && search_text.course.length'>
 				<ul class='full-xy absolute'>
-					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000"  ng-repeat='course in courses | filter:search_text.course | limitTo:16'>
+					<li class="opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000"  ng-repeat='course in courses | filter:search_text.course | limitTo:6'>
 						<a class="course-card" thr-click='selectCourse(course)'>
 							<svg width="240px" height="150px" viewBox="0 0 240 150">
 								<rect x="0" y="0" width="240" height="150" fill="none"></rect>
