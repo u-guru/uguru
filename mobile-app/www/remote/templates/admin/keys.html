@@ -485,43 +485,40 @@
             </div>
             <div class='select-component-mode bg-slate relative' ng-if='stage.selectComponentMode' style="height: calc(100% - 82px - 136px); width: 100%; overflow: hidden;" ng-show='!layout.index'>
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='cancelTimeStateActionComponentInputFocused()' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
-                <div class='flex-wrap-center-start full-xy overflow-auto no-scrollbar'>
-                    <h1 class='txt-36 full-x txt-center semibold p15x-p15top'>
+                <div class='full-xy overflow-auto no-scrollbar'>
+                    <h1 class='txt-36 txt-center semibold p15x-p15top'>
                         Select a component to animate at at T={{stage.selectComponentModeTime}}
                     </h1>
                     <div class='all-components-container'>
-                        <ul id="keys-select-components" class='ugrid-3 p15-grid'>
+                        <ul id="keys-select-components" class='ugrid-3 p15-grid full-x'>
                             <li ng-repeat='component in stage.components track by $index'>
                                 <a class="block p15-grid bg-white-10p radius-2" ng-click='selectComponentElement(component, $index, $event)'>
                                     <h1 class='full-x semibold txt-18 txt-center m05bottom'> {{component.selector}}, {{component.type}} </h1>
-                                    <div class="flex-center cloned-animatable-elem-container"></div>
+                                    <div class="flex-center cloned-animatable-elem-container relative preview-container"></div>
                                 </a>
                             </li>
                         <ul>
                     </div>
                 </div>
             </div>
-            <div class='search-animation-mode relative bg-charcoal' ng-if='stage.searchAnimationMode' class='bg-slate flex-wrap-center' style="height: calc(100% - 82px - 136px); width: 100%; overflow: hidden;">
+            <div class='search-animation-mode relative bg-charcoal' ng-if='stage.searchAnimationMode' class='bg-slate' style="height: calc(100% - 82px - 136px); width: 100%; overflow: hidden;">
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='cancelTimeStateActionAnimationClassInputFocused()' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
-                <div class='flex-wrap-center flex-stretch absolute full-xy flex-start'>
-                    <h1 class='txt-36 full-x text-center p20xy'>
-                        Search an animation Class
-                        <div class='flex-wrap-center ugrid-2 full-x'>
-                            <h1 class='full-x text-7 txt-white text-center'>Import an Animation Class</h1>
-                            <input ng-model="animationImportSearchText" placeholder="search predefined animation" type='search'> </input>
-                        </div>
-                    </h1>
-                    <div class='all-components-container full-x'>
-                        <ul class='flex-wrap-center ugrid-4 full-x'>
-                            <li class='m05x p10x bg-white txt-azure relative flex-wrap-center' ng-repeat='animation in imports.animations | filter: animationImportSearchText:name | limitTo: 16 track by $index' style='min-height:40px;' ng-click="onTSActionAnimationClassSelected(animation)">
-                                <div class='absolute ugrid-2 full-xy flex-wrap-center left-0'>
-                                    <span class='full-y flex-wrap-center txt-center txt-1 uppercase weight-700 bg-cerise-50p' style='width:20%;'>
+                <div>
+                    <div class="p15x-p15top">
+                        <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>Search/Import Animation Classes</h1>
+                        <input ng-model="animationImportSearchText" class='p15x radius-2 txt-18 height-48 width-50p' style="padding-top: 0; padding-bottom: 0;" placeholder="search predefined animation" type='search'/>
+                    </div>
+                    <div class="all-components-container">
+                        <ul class='flex-wrap full-x p15-grid'>
+                            <li ng-repeat='animation in imports.animations | filter: animationImportSearchText:name | limitTo: 16 track by $index'>
+                                <a class="flex" ng-click="importPageDom(stage_template)">
+                                    <span class='bg-robin radius-2-left flex-center-vertical p10x txt-1 uppercase weight-700 height-36'>
                                         {{animation.owner}}
                                     </span>
-                                    <h4 class='txt-2 text-center flex-wrap-center full-y' style='width:80%'>
+                                    <h4 class='radius-2-right flex-center-vertical p10x txt-2 semibold bg-white txt-slate height-36'>
                                         {{animation.name}}
                                     </h4>
-                                </div>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -646,13 +643,13 @@
                     <h1 class='p15xy txt-20 weight-700 uppercase full-x txt-white txt-center'>Selected Keyframe</h1>
                     <div class='flex-wrap-center relative full-x bg-white-25p p15xy preview-container' id='stage-elem-clone-container'></div>
                     <ul class="p15-grid">
-                        <li class="aside-anim-element-item" ng-repeat='anim_element in stage.anim_elements track by $index'>
+                        <li ng-repeat='anim_element in stage.anim_elements track by $index'>
                             <div class="flex full-x">
                                 <div class="flex" style="width: calc(100% - 72px)">
                                     <span class="flex-center-vertical p10x bg-campus radius-2-left semibold txt-18 height-36">{{anim_element.type}}</span>
-                                    <span class="full-x flex-center-vertical p10x bg-white-25p semibold txt-18 height-36">
-                                        <div class="relative preview-container"></div>
-                                        <span>{{anim_element.selector}}</span>
+                                    <span class="full-x flex-center-vertical bg-white-10p semibold txt-18 height-36">
+                                        <div class="relative preview-container aside-anim-element-item height-36 width-36 bg-white-10p"></div>
+                                        <span class="p10x" style="width: calc(100% - 36px);">{{anim_element.selector}}</span>
                                     </span>
                                 </div>
                                 <a class="flex-center svg-white svg-36-24 svg-stroke-8 bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/search.html'" ng-click='swapFocusedAnimatedElem(anim_element)'></a>
@@ -662,43 +659,43 @@
                     </ul>
                 </div>
                 <div class='element-toolboard full-x absolute bottom-0 left-0'>
-                    <button class='full-x bg-azure' ng-click='showChildrenOfParentElemOnClick()'>+ Selected Child</button>
+                    <button class='full-x bg-robin' ng-click='showChildrenOfParentElemOnClick()'>+ Selected Child</button>
                     <!-- <button  ng-click='initStageTimeState()' class='bg-charcoal flex-start text-center'>+ Time</button>
                     <button  ng-click='playStageTimeStates()' class='flex-start text-center'>Play</button> -->
                 </div>
             </div>
-            <div class="absolute left-0 full-x overflow-auto no-scrollbar flex-wrap-center flex-stretch" style="height: calc(100% - 64px); top:64px;" ng-hide='asideTabIndex' >
+            <div class="full-x overflow-auto no-scrollbar flex-wrap-center" style="height: calc(100% - 60px); padding-bottom: 64px;" ng-hide='asideTabIndex' >
                 <div class='flex-start full-x bg-slate relative' style='height:10%;'>
                     <div class='header flex-wrap-center absolute full-xy top-0 left-0 p20xy'>
                         <dropdown class='text-center' ng-model="shapesDropdown"> </dropdown>
                         <div class='custom-component-input'> </div>
                     </div>
                 </div>
-                <div class='time-states-container full-x left-0 flex-wrap-center flex-start relative' style='height:calc(90%);'>
-                    <div class='absolute full-xy left-0 top-0' style='bottom:64px; height:calc(100% - 64px);'>
+                <div class='time-states-container full-x flex-wrap-start relative' style='height:calc(90%);'>
+                    <div class="full-x" style='height:calc(100% - 64px);'>
                         <ul class='full-xy'>
-                            <li class='full-x' ng-repeat="time_state in stage.time_states track by $index">
-                                <div class='full-x ugrid-3'>
-                                    <div class='txt-5 bg-shamrock flex-wrap-center weight-600 relative txt-white' style='width:25%; height:50px;'>
+                            <li ng-repeat="time_state in stage.time_states track by $index">
+                                <div class='full-x flex'>
+                                    <div class='txt-5 bg-shamrock flex-wrap-center weight-600 relative txt-white height-64 width-25p'>
                                         <span ng-if='!time_state.editMode' class='flex-wrap-center absolute full-xy top-0 left-0 txt-3' ng-click='time_state.editMode = !time_state.editMode'>
                                             T:{{time_state.time}}ms
                                         </span>
                                         <input ng-blur="onTimeStateBlur(time_state)" class='left-0 time-input txt-7 weight-600 txt-center absolute full-xy bg-charcoal txt-white p05xy' ng-if='time_state.editMode' ng-model='time_state.time'> </input>
                                     </div>
-                                    <div style='width:50%; height:50px;' class='txt-1 flex-wrap-center text-center relative'>
-                                            <span ng-if='!time_state.editDescription' class='flex-wrap-center bg-slate absolute full-xy top-0 left-0 p05xy p10left weight-400 p05left text-left' style='line-height:1.2em;' ng-click='time_state.editDescription = true'>
-                                            {{time_state.description || 'Time state description goes here - click to eidt'}}
-                                            </span>
-                                            <textarea ng-if='time_state.editDescription' ng-blur="time_state.editDescription = false;" class='full-xy bg-slate txt-white p05xy absolute left-0 top-0 full-y' rows="3"  ng-model='time_state.description'> </textarea>
+                                    <div class='txt-1 flex-wrap-center text-center relative height-64' style="width: calc(75% - 128px);">
+                                        <span ng-if='!time_state.editDescription' class='flex-wrap-center bg-slate absolute full-xy top-0 left-0 p05xy p10left weight-400 p05left text-left line-height-1-2' ng-click='time_state.editDescription = true'>
+                                        {{time_state.description || 'Time state description goes here - click to eidt'}}
+                                        </span>
+                                        <textarea ng-if='time_state.editDescription' ng-blur="time_state.editDescription = false;" class='full-xy bg-slate txt-white p05xy absolute left-0 top-0' rows="3"  ng-model='time_state.description'> </textarea>
                                     </div>
-                                    <div class='relative flex-wrap-center text-center' style='width:25%; height:50px;'>
+                                    <div class='relative flex-wrap-center text-center height-64' style="width: 128px;">
                                         <a ng-click='removeTimeState(time_state, $index)' class='bg-auburn absolute full-xy top-0 left-0 flex-wrap-center ugrid-2' ng-if='time_state.confirmRemoveTimeState'>
                                             Confirm?
                                         </a>
-                                        <div class='absolute full-xy top-0 left-0 flex-wrap-center ugrid-2' ng-if='!time_state.confirmRemoveTimeState'>
-                                            <a  class='svg-48-36 full-y bg-auburn-50p flex-center svg-white svg-stroke-6 close-icon z-index-1000' ng-click='time_state.confirmRemoveTimeState = true;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                                        <div class='flex' ng-if='!time_state.confirmRemoveTimeState'>
+                                            <a class='svg-64-48 bg-auburn-50p flex-center svg-white svg-stroke-6 close-icon z-index-1000' ng-click='time_state.confirmRemoveTimeState = true;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
 
-                                            <a class='svg-48-36 full-y bg-shamrock-50p flex-center svg-white svg-stroke-6 z-index-1000' ng-click='addActionToTimeState(time_state)' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                                            <a class='svg-64-48 bg-shamrock-50p flex-center svg-white svg-stroke-6 z-index-1000' ng-click='addActionToTimeState(time_state)' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                                         </div>
                                     </div>
                                 </div>

@@ -475,8 +475,6 @@ angular.module('uguru.util.controllers')
 				var stageContainer = document.querySelector('#stage-container');
 				stageContainer.innerHTML = $scope.pageDom.stageHtml;
 				if (stageContainer.firstChild) {
-					stageContainer.firstChild.style.minWidth = "500px";
-					stageContainer.firstChild.style.minHeight = "500px";
 					var stageElem = document.querySelector('#stage-elem');
 					if (!stageElem) {
 						stageElem = stageContainer.firstChild;
@@ -2246,6 +2244,7 @@ angular.module('uguru.util.controllers')
 						clonedElem.style.minHeight = "50px;"
 						clonedElem.style.minWidth = "50px;"
 						clonedElem.className += ""
+						allAnimElemItemContainers[i].innerHTML = "";
 						if (allShapes.indexOf(clonedElem.nodeName) > -1) {
 							var parentSVG = findParentSVG(elem);
 							var clonedParentSVG = parentSVG.cloneNode(true);

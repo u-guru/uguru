@@ -1,5 +1,6 @@
 .preview-container {
   position: relative !important;
+  overflow: hidden !important;
 }
 
 .preview-container .fixed {
@@ -13,6 +14,14 @@
 
 #stage-container .fixed {
   position: absolute !important;
+}
+
+#keys .aside-anim-element-item > * {
+  position: relative !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
 }
 
 #keys #stage-elem-clone-container {
@@ -180,12 +189,23 @@
   background: white;
 }
 
-#keys #keys-select-components li a:hover, #keys #keys-select-components li a:focus {
+#keys #keys-select-components li > a:hover, #keys #keys-select-components li > a:focus {
   background: rgba(255, 255, 255, 0.3);
 }
 
-#keys #keys-select-components li a:active {
+#keys #keys-select-components li > a:active {
   background: rgba(255, 255, 255, 0.5);
+}
+
+#keys #keys-select-components li > a > div {
+  position: relative;
+  height: 115px;
+}
+
+#keys #keys-select-components li > a > div > * {
+  min-width: none;
+  min-height: none;
+  max-height: 100px;
 }
 
 #keys .dropdown-container h2 {
