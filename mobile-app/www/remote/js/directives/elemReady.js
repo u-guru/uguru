@@ -106,7 +106,7 @@ angular.module('uguru.directives')
         var drawDuration = SVGService.computeDrawDuration(attr.drawDuration);
 
         var drawPathLength = SVGService.getTotalPathLength(drawElement);
-        drawElement.style.strokeDasharray = drawPathLength + ' ' + drawPathLength;
+        drawElement.style.strokeDasharray = drawPathLength;
         drawElement.style.strokeDashoffset = drawPathLength;
         scope.$watch(function() {
           return element.attr('class');

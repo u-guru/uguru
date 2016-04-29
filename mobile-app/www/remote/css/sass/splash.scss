@@ -14,66 +14,66 @@
 		}
 	}
 }
-li {
-	&.animated-start {
-		opacity: 0;
-		.tag-adlib:not(.blank):not(.ghost) {
-			.desktop {
-				rect {
-					@include opacity(0);
-					stroke-dasharray: 728;
-					stroke-dashoffset: 728;
-				}
-			}
-			.mobile {
-				rect {
-					@include opacity(0);
-					stroke-dasharray: 656;
-					stroke-dashoffset: 656;
-				}
-			}
-			b {
-				opacity: 0;
-			}
-		}
-	}
-	&.animated {
-		@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out forwards, webkit moz ms o);
-		.tag-adlib:not(.blank):not(.ghost) {
-			.desktop {
-				rect {
-					animation: tag-adlib-desktop 800ms linear 2500ms forwards;
-				}
-			}
-			.mobile {
-				rect {
-					animation: tag-adlib-mobile 800ms linear 2500ms forwards;
-				}
-			}
-			b {
-				@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out 500ms forwards, webkit moz ms o);
-			}
-		}
-	}
-	&.animated-clear {
-		@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
-		.tag-adlib:not(.blank):not(.ghost) {
-			.desktop {
-				rect {
-					animation: tag-adlib-desktop 800ms linear reverse forwards;
-				}
-			}
-			.mobile {
-				rect {
-					animation: tag-adlib-mobile 800ms linear reverse forwards;
-				}
-			}
-			b {
-				@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
-			}
-		}
-	}
-}
+// li {
+// 	&.animated-start {
+// 		opacity: 0;
+// 		.tag-adlib:not(.blank):not(.ghost) {
+// 			.desktop {
+// 				rect {
+// 					@include opacity(0);
+// 					stroke-dasharray: 728;
+// 					stroke-dashoffset: 728;
+// 				}
+// 			}
+// 			.mobile {
+// 				rect {
+// 					@include opacity(0);
+// 					stroke-dasharray: 656;
+// 					stroke-dashoffset: 656;
+// 				}
+// 			}
+// 			b {
+// 				opacity: 0;
+// 			}
+// 		}
+// 	}
+// 	&.animated {
+// 		@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+// 		.tag-adlib:not(.blank):not(.ghost) {
+// 			.desktop {
+// 				rect {
+// 					animation: tag-adlib-desktop 800ms linear 2500ms forwards;
+// 				}
+// 			}
+// 			.mobile {
+// 				rect {
+// 					animation: tag-adlib-mobile 800ms linear 2500ms forwards;
+// 				}
+// 			}
+// 			b {
+// 				@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out 500ms forwards, webkit moz ms o);
+// 			}
+// 		}
+// 	}
+// 	&.animated-clear {
+// 		@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+// 		.tag-adlib:not(.blank):not(.ghost) {
+// 			.desktop {
+// 				rect {
+// 					animation: tag-adlib-desktop 800ms linear reverse forwards;
+// 				}
+// 			}
+// 			.mobile {
+// 				rect {
+// 					animation: tag-adlib-mobile 800ms linear reverse forwards;
+// 				}
+// 			}
+// 			b {
+// 				@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+// 			}
+// 		}
+// 	}
+// }
 
 /* ---------- SPLASH UNIVERSITY SEARCH */
 .splash-school-search-form {
@@ -2095,12 +2095,30 @@ li {
 				margin-top: -306px;
 				.splash-device-svg {
 					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-					@include prefix(transition-delay, 500ms, webkit moz ms o);
-					@include opacity(.2);
 					display: block;
 					width: 100%;
+					&.animate {
+						@include opacity-important(.2);
+						circle {
+							@include prefix(animation, device-drawIn-1 250ms ease-in-out 1500ms forwards, webkit moz ms o);
+							stroke-dasharray: 158;
+							stroke-dashoffset: 158;
+						}
+						rect {
+							&:nth-child(2) {
+								@include prefix(animation, device-drawIn-2 1000ms ease-in-out 1000ms forwards, webkit moz ms o);
+								stroke-dasharray: 1926;
+								stroke-dashoffset: 1926;
+							}
+							&:nth-child(3) {
+								@include prefix(animation, device-drawIn-3 750ms ease-in-out 1250ms forwards, webkit moz ms o);
+								stroke-dasharray: 1538;
+								stroke-dashoffset: 1538;
+							}
+						}
+					}
 					&.active {
-						@include opacity(.8);
+						@include opacity-important(.8);
 					}
 					.rotated {
 						@include prefix(transform-origin, center center, webkit moz ms o);

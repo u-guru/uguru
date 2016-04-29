@@ -22,76 +22,6 @@
   transform: scale(1.05) !important;
 }
 
-li.animated-start {
-  opacity: 0;
-}
-
-li.animated-start .tag-adlib:not(.blank):not(.ghost) .desktop rect {
-  filter: alpha(opacity=0);
-  opacity: 0;
-  stroke-dasharray: 728;
-  stroke-dashoffset: 728;
-}
-
-li.animated-start .tag-adlib:not(.blank):not(.ghost) .mobile rect {
-  filter: alpha(opacity=0);
-  opacity: 0;
-  stroke-dasharray: 656;
-  stroke-dashoffset: 656;
-}
-
-li.animated-start .tag-adlib:not(.blank):not(.ghost) b {
-  opacity: 0;
-}
-
-li.animated {
-  -webkit-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
-  -moz-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
-  -ms-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
-  -o-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
-  animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
-}
-
-li.animated .tag-adlib:not(.blank):not(.ghost) .desktop rect {
-  animation: tag-adlib-desktop 800ms linear 2500ms forwards;
-}
-
-li.animated .tag-adlib:not(.blank):not(.ghost) .mobile rect {
-  animation: tag-adlib-mobile 800ms linear 2500ms forwards;
-}
-
-li.animated .tag-adlib:not(.blank):not(.ghost) b {
-  -webkit-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
-  -moz-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
-  -ms-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
-  -o-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
-  animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
-}
-
-li.animated-clear {
-  -webkit-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  -moz-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  -ms-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  -o-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-}
-
-li.animated-clear .tag-adlib:not(.blank):not(.ghost) .desktop rect {
-  animation: tag-adlib-desktop 800ms linear reverse forwards;
-}
-
-li.animated-clear .tag-adlib:not(.blank):not(.ghost) .mobile rect {
-  animation: tag-adlib-mobile 800ms linear reverse forwards;
-}
-
-li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
-  -webkit-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  -moz-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  -ms-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  -o-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-}
-
 /* ---------- SPLASH UNIVERSITY SEARCH */
 .splash-school-search-form fieldset input::selection {
   background: white !important;
@@ -3133,20 +3063,48 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   -ms-transition: all 150ms ease-in-out;
   -o-transition: all 150ms ease-in-out;
   transition: all 150ms ease-in-out;
-  -webkit-transition-delay: 500ms;
-  -moz-transition-delay: 500ms;
-  -ms-transition-delay: 500ms;
-  -o-transition-delay: 500ms;
-  transition-delay: 500ms;
-  filter: alpha(opacity=20);
-  opacity: 0.2;
   display: block;
   width: 100%;
 }
 
+.splash-landing > section.splash-hero .splash-device .splash-device-svg.animate {
+  filter: alpha(opacity=20) !important;
+  opacity: 0.2 !important;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-svg.animate circle {
+  -webkit-animation: device-drawIn-1 250ms ease-in-out 1500ms forwards;
+  -moz-animation: device-drawIn-1 250ms ease-in-out 1500ms forwards;
+  -ms-animation: device-drawIn-1 250ms ease-in-out 1500ms forwards;
+  -o-animation: device-drawIn-1 250ms ease-in-out 1500ms forwards;
+  animation: device-drawIn-1 250ms ease-in-out 1500ms forwards;
+  stroke-dasharray: 158;
+  stroke-dashoffset: 158;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-svg.animate rect:nth-child(2) {
+  -webkit-animation: device-drawIn-2 1000ms ease-in-out 1000ms forwards;
+  -moz-animation: device-drawIn-2 1000ms ease-in-out 1000ms forwards;
+  -ms-animation: device-drawIn-2 1000ms ease-in-out 1000ms forwards;
+  -o-animation: device-drawIn-2 1000ms ease-in-out 1000ms forwards;
+  animation: device-drawIn-2 1000ms ease-in-out 1000ms forwards;
+  stroke-dasharray: 1926;
+  stroke-dashoffset: 1926;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-svg.animate rect:nth-child(3) {
+  -webkit-animation: device-drawIn-3 750ms ease-in-out 1250ms forwards;
+  -moz-animation: device-drawIn-3 750ms ease-in-out 1250ms forwards;
+  -ms-animation: device-drawIn-3 750ms ease-in-out 1250ms forwards;
+  -o-animation: device-drawIn-3 750ms ease-in-out 1250ms forwards;
+  animation: device-drawIn-3 750ms ease-in-out 1250ms forwards;
+  stroke-dasharray: 1538;
+  stroke-dashoffset: 1538;
+}
+
 .splash-landing > section.splash-hero .splash-device .splash-device-svg.active {
-  filter: alpha(opacity=80);
-  opacity: 0.8;
+  filter: alpha(opacity=80) !important;
+  opacity: 0.8 !important;
 }
 
 .splash-landing > section.splash-hero .splash-device .splash-device-svg .rotated {

@@ -14,66 +14,66 @@
 		}
 	}
 }
-li {
-	&.animated-start {
-		opacity: 0;
-		.tag-adlib:not(.blank):not(.ghost) {
-			.desktop {
-				rect {
-					@include opacity(0);
-					stroke-dasharray: 728;
-					stroke-dashoffset: 728;
-				}
-			}
-			.mobile {
-				rect {
-					@include opacity(0);
-					stroke-dasharray: 656;
-					stroke-dashoffset: 656;
-				}
-			}
-			b {
-				opacity: 0;
-			}
-		}
-	}
-	&.animated {
-		@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out forwards, webkit moz ms o);
-		.tag-adlib:not(.blank):not(.ghost) {
-			.desktop {
-				rect {
-					animation: tag-adlib-desktop 800ms linear 2500ms forwards;
-				}
-			}
-			.mobile {
-				rect {
-					animation: tag-adlib-mobile 800ms linear 2500ms forwards;
-				}
-			}
-			b {
-				@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out 500ms forwards, webkit moz ms o);
-			}
-		}
-	}
-	&.animated-clear {
-		@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
-		.tag-adlib:not(.blank):not(.ghost) {
-			.desktop {
-				rect {
-					animation: tag-adlib-desktop 800ms linear reverse forwards;
-				}
-			}
-			.mobile {
-				rect {
-					animation: tag-adlib-mobile 800ms linear reverse forwards;
-				}
-			}
-			b {
-				@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
-			}
-		}
-	}
-}
+// li {
+// 	&.animated-start {
+// 		opacity: 0;
+// 		.tag-adlib:not(.blank):not(.ghost) {
+// 			.desktop {
+// 				rect {
+// 					@include opacity(0);
+// 					stroke-dasharray: 728;
+// 					stroke-dashoffset: 728;
+// 				}
+// 			}
+// 			.mobile {
+// 				rect {
+// 					@include opacity(0);
+// 					stroke-dasharray: 656;
+// 					stroke-dashoffset: 656;
+// 				}
+// 			}
+// 			b {
+// 				opacity: 0;
+// 			}
+// 		}
+// 	}
+// 	&.animated {
+// 		@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+// 		.tag-adlib:not(.blank):not(.ghost) {
+// 			.desktop {
+// 				rect {
+// 					animation: tag-adlib-desktop 800ms linear 2500ms forwards;
+// 				}
+// 			}
+// 			.mobile {
+// 				rect {
+// 					animation: tag-adlib-mobile 800ms linear 2500ms forwards;
+// 				}
+// 			}
+// 			b {
+// 				@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out 500ms forwards, webkit moz ms o);
+// 			}
+// 		}
+// 	}
+// 	&.animated-clear {
+// 		@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+// 		.tag-adlib:not(.blank):not(.ghost) {
+// 			.desktop {
+// 				rect {
+// 					animation: tag-adlib-desktop 800ms linear reverse forwards;
+// 				}
+// 			}
+// 			.mobile {
+// 				rect {
+// 					animation: tag-adlib-mobile 800ms linear reverse forwards;
+// 				}
+// 			}
+// 			b {
+// 				@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+// 			}
+// 		}
+// 	}
+// }
 
 /* ---------- SPLASH UNIVERSITY SEARCH */
 .splash-school-search-form {
