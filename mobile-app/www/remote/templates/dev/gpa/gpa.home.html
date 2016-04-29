@@ -26,13 +26,14 @@
 					<h2 ng-if="overall.semesterArr.length">{{slogan()}}</h2>
 				</div>
 				<nav id="semester-slider">
-					<ul class="opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="2500" ng-init="start = 0; isMax=false;currentIndex = -1">
+					<ul class="opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="2500" ng-init="start = 0; isMax=false;currentIndex = -1; emptyCounts= 0">
 						<li name='arrowL' >
-							<a href="#" class="nav">
-								<svg ng-if='start != 0' ng-click='preList(4)' viewBox="0 0 100 100">
+							<a href="#" class="nav" ng-if='start != 0' ng-click='preList(4)' >
+								<svg viewBox="0 0 100 100">
 									<path d="M68,86 L32,50 L68,14"></path>
 								</svg>
 							</a>
+							<a  ng-if='start === 0' ></a>
 						</li>
 						<li>
 							<a class="active" href="#" ng-click="currentIndex = -1">
@@ -44,28 +45,15 @@
 								<span>{{semester.semester}}<br/>{{semester.year}}</span>
 							</a>
 						</li>
-						<!-- <li>
-							<a href="#">
-								<span>Spring<br/>2015</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span>Winter<br/>2014</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span>Fall<br/>2014</span>
-							</a>
-						</li> -->
+						<!-- You can remove this  -->
+						<!-- <li ng-repeat='x in [1,2,3,4] | limitTo:emptyCounts'><a></a></li> -->
 						<li name='arrowR'>
-							<a href="#" class="nav">
-								<svg class="nav" ng-if='overall.semesterArr.length && !isMax' ng-click='nextList(4)'
-									 viewBox="0 0 100 100">
+							<a href="#" class="nav" ng-if='overall.semesterArr.length && !isMax' ng-click='nextList(4)'>
+								<svg class="nav" viewBox="0 0 100 100">
 									<path d="M32,86 L68,50 L32,14"></path>
 								</svg>
 							</a>
+							<a ng-if='overall.semesterArr.length && isMax'></a>
 						</li>
 					</ul>
 				</nav>
@@ -91,7 +79,8 @@
 									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
 								</svg>
 								<div>
-									<h2>{{convertGrade(semester.gpa)}}</h2>
+									<!-- <h2>{{convertGrade(semester.gpa)}}</h2> -->
+									<h2>{{semester.gpa}}</h2>
 									<span>Total {{semester.total_points}} Units</span>
 								</div>
 							</div>

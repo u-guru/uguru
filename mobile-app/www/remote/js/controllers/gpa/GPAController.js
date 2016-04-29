@@ -74,7 +74,11 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	};
 
 	var selectedGrade = '';
-
+	$scope.countEmptyList = function()
+	{
+		var totalNumber = 4 - document.querySelectorAll('#semester-slider span.ng-binding').length;
+		return totalNumber
+	}
 	$scope.getSemester= function(index)
 	{
 		$scope.currentIndex = index
@@ -90,6 +94,7 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 		$scope.start += range
 		if (($scope.overall.semesterArr.length - $scope.start - range ) < 0 )
 			$scope.isMax =true
+		$scope.emptyCounts = 4- $scope.overall.semesterArr.length%4;
 	}
 	$scope.convertGrade=function(x)
 	{
@@ -284,6 +289,9 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 			$scope.user.grades = [];
 			return;
 		}
+		if ($scope.overall.semesterArr.length <= 4)
+			$scope.totalNumber = 4- $scope.overall.semesterArr.length;
+		
 	})
 
 	$scope.$on('$ionicView.beforeEnter', function() {
