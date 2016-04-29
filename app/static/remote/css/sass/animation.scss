@@ -1546,6 +1546,19 @@
 		opacity: 0.1;
 	}
 	100% {
-		transfrom: scaleX(1);
+		transform: scaleX(1);
 	}
+}
+
+@keyframes device-drawIn-1 {
+	0% { stroke-dashoffset: 158; }
+	100% { stroke-dashoffset: 0; }
+}
+@keyframes device-drawIn-2 {
+	0% { stroke-dashoffset: 1926; }
+	100% { stroke-dashoffset: 0; }
+}
+@keyframes device-drawIn-3 {
+	0% { stroke-dashoffset: 1538; }
+	100% { stroke-dashoffset: 0; }
 }

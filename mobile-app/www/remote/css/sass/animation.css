@@ -9664,17 +9664,13 @@
 
 @-webkit-keyframes powerup-before-scaleUp {
   0% {
-    filter: alpha(opacity=100);
-    opacity: 1;
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
     -ms-transform: scale(0);
     -o-transform: scale(0);
     transform: scale(0);
   }
-  60%, 70% {
-    filter: alpha(opacity=100);
-    opacity: 1;
+  60%, 90% {
     -webkit-transform: scale(200);
     -moz-transform: scale(200);
     -ms-transform: scale(200);
@@ -9682,8 +9678,6 @@
     transform: scale(200);
   }
   100% {
-    filter: alpha(opacity=0);
-    opacity: 0;
     -webkit-transform: scale(200);
     -moz-transform: scale(200);
     -ms-transform: scale(200);
@@ -9694,17 +9688,13 @@
 
 @-moz-keyframes powerup-before-scaleUp {
   0% {
-    filter: alpha(opacity=100);
-    opacity: 1;
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
     -ms-transform: scale(0);
     -o-transform: scale(0);
     transform: scale(0);
   }
-  60%, 70% {
-    filter: alpha(opacity=100);
-    opacity: 1;
+  60%, 90% {
     -webkit-transform: scale(200);
     -moz-transform: scale(200);
     -ms-transform: scale(200);
@@ -9712,8 +9702,6 @@
     transform: scale(200);
   }
   100% {
-    filter: alpha(opacity=0);
-    opacity: 0;
     -webkit-transform: scale(200);
     -moz-transform: scale(200);
     -ms-transform: scale(200);
@@ -9724,17 +9712,13 @@
 
 @-ms-keyframes powerup-before-scaleUp {
   0% {
-    filter: alpha(opacity=100);
-    opacity: 1;
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
     -ms-transform: scale(0);
     -o-transform: scale(0);
     transform: scale(0);
   }
-  60%, 70% {
-    filter: alpha(opacity=100);
-    opacity: 1;
+  60%, 90% {
     -webkit-transform: scale(200);
     -moz-transform: scale(200);
     -ms-transform: scale(200);
@@ -9742,8 +9726,6 @@
     transform: scale(200);
   }
   100% {
-    filter: alpha(opacity=0);
-    opacity: 0;
     -webkit-transform: scale(200);
     -moz-transform: scale(200);
     -ms-transform: scale(200);
@@ -9754,17 +9736,13 @@
 
 @keyframes powerup-before-scaleUp {
   0% {
-    filter: alpha(opacity=100);
-    opacity: 1;
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
     -ms-transform: scale(0);
     -o-transform: scale(0);
     transform: scale(0);
   }
-  60%, 70% {
-    filter: alpha(opacity=100);
-    opacity: 1;
+  60%, 90% {
     -webkit-transform: scale(200);
     -moz-transform: scale(200);
     -ms-transform: scale(200);
@@ -9772,8 +9750,6 @@
     transform: scale(200);
   }
   100% {
-    filter: alpha(opacity=0);
-    opacity: 0;
     -webkit-transform: scale(200);
     -moz-transform: scale(200);
     -ms-transform: scale(200);

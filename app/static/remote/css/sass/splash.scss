@@ -2095,12 +2095,30 @@
 				margin-top: -306px;
 				.splash-device-svg {
 					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-					@include prefix(transition-delay, 500ms, webkit moz ms o);
-					@include opacity(.2);
 					display: block;
 					width: 100%;
+					&.animate {
+						@include opacity-important(.2);
+						circle {
+							@include prefix(animation, device-drawIn-1 250ms ease-in-out 1500ms forwards, webkit moz ms o);
+							stroke-dasharray: 158;
+							stroke-dashoffset: 158;
+						}
+						rect {
+							&:nth-child(2) {
+								@include prefix(animation, device-drawIn-2 1000ms ease-in-out 1000ms forwards, webkit moz ms o);
+								stroke-dasharray: 1926;
+								stroke-dashoffset: 1926;
+							}
+							&:nth-child(3) {
+								@include prefix(animation, device-drawIn-3 750ms ease-in-out 1250ms forwards, webkit moz ms o);
+								stroke-dasharray: 1538;
+								stroke-dashoffset: 1538;
+							}
+						}
+					}
 					&.active {
-						@include opacity(.8);
+						@include opacity-important(.8);
 					}
 					.rotated {
 						@include prefix(transform-origin, center center, webkit moz ms o);

@@ -1,13 +1,10 @@
 #cta-modal-powerups #powerups-container {
-  overflow: auto;
-}
-
-#cta-modal-powerups #powerups-container.fadeIn {
   -webkit-animation-duration: 250ms !important;
   -moz-animation-duration: 250ms !important;
   -ms-animation-duration: 250ms !important;
   -o-animation-duration: 250ms !important;
   animation-duration: 250ms !important;
+  overflow: auto;
 }
 
 #cta-modal-powerups header span svg circle {
@@ -1244,11 +1241,11 @@
   -ms-transform-origin: 50% 300px;
   -o-transform-origin: 50% 300px;
   transform-origin: 50% 300px;
-  -webkit-animation: powerup-house-scaleUp 1000ms ease-out forwards;
-  -moz-animation: powerup-house-scaleUp 1000ms ease-out forwards;
-  -ms-animation: powerup-house-scaleUp 1000ms ease-out forwards;
-  -o-animation: powerup-house-scaleUp 1000ms ease-out forwards;
-  animation: powerup-house-scaleUp 1000ms ease-out forwards;
+  -webkit-animation: powerup-house-scaleUp 3000ms ease-out forwards;
+  -moz-animation: powerup-house-scaleUp 3000ms ease-out forwards;
+  -ms-animation: powerup-house-scaleUp 3000ms ease-out forwards;
+  -o-animation: powerup-house-scaleUp 3000ms ease-out forwards;
+  animation: powerup-house-scaleUp 3000ms ease-out forwards;
 }
 
 .powerup-back span svg {
