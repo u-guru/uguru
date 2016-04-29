@@ -2246,6 +2246,7 @@ angular.module('uguru.util.controllers')
 						clonedElem.style.minHeight = "50px;"
 						clonedElem.style.minWidth = "50px;"
 						clonedElem.className += " absolute left-0"
+						allAnimElemItemContainers.innerHTML = "";
 						if (allShapes.indexOf(clonedElem.nodeName) > -1) {
 							var parentSVG = findParentSVG(elem);
 							var clonedParentSVG = parentSVG.cloneNode(true);
