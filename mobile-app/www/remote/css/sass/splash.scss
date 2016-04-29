@@ -725,6 +725,9 @@ li {
 			@include flex-center-vertical;
 			@include prefix(justify-content, flex-end, webkit);
 			height: 100%;
+			@media screen and (max-width: 768px) {
+			    padding-right: 40px;
+			}
 		}
 		.splash-logo {
 			margin: 5px;

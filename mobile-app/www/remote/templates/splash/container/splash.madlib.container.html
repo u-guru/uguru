@@ -66,20 +66,20 @@
                 {{selectedCategory.splashData.madlib.template.end}}
             </h1>
             <ul class-on-clear="null:inject li[class-on-clear]|clear" class-on-activate="null:inject li[class-on-activate]|activate">
-                <tag class='adlib-tag animated-start'
+                <tag class='adlib-tag opacity-0'
                     ng-click="resetMadLibBlankIfActive"
                     desktop="desktopMode" type="splash" blank-num="1" inner-text="option" category="selectedCategory"
                     ng-repeat='option in selectedCategory.splashData.madlib.blank_one_options'
-                    class-on-load="animated" class-on-load-delay="{{[1000, 1150, 1300, 1450][$index]}}"
-                    class-on-activate="animated" class-on-activate-delay="{{[1000, 1150, 1300, 1450][$index]}}"
-                    class-on-clear="animated-clear"> </tag>
-                <tag class="adlib-tag animated-start"
+                    class-on-load="bounceInUp-subtle:anim" class-on-load-delay="{{[1000, 1150, 1300, 1450][$index]}}"
+                    class-on-activate="bounceInUp-subtle:anim" class-on-activate-delay="{{[1000, 1150, 1300, 1450][$index]}}"
+                    class-on-clear="fadeOut:animOut"> </tag>
+                <tag class="adlib-tag opacity-0"
                     ng-click="resetMadLibBlankIfActive"
                     desktop="desktopMode" type="splash" blank-num="2" inner-text="option" category="selectedCategory"
                     ng-repeat='option in selectedCategory.splashData.madlib.blank_two_options'
-                    class-on-load="animated" class-on-load-delay="{{[1600, 1750, 1900, 2050][$index]}}"
-                    class-on-activate="animated" class-on-activate-delay="{{[1600, 1750, 1900, 2050][$index]}}"
-                    class-on-clear="animated-clear"> </tag>
+                    class-on-load="bounceInUp-subtle:anim" class-on-load-delay="{{[1600, 1750, 1900, 2050][$index]}}"
+                    class-on-activate="bounceInUp-subtle:anim" class-on-activate-delay="{{[1600, 1750, 1900, 2050][$index]}}"
+                    class-on-clear="fadeOut:animOut"> </tag>
             </ul>
         </div>
     </div>

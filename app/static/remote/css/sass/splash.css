@@ -1098,6 +1098,12 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   height: 100%;
 }
 
+@media screen and (max-width: 768px) {
+  .splash-landing .splash-header .right {
+    padding-right: 40px;
+  }
+}
+
 .splash-landing .splash-header .splash-logo {
   margin: 5px;
   padding: 2px;
