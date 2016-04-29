@@ -68,12 +68,37 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	$scope.course = {
 		name: '',
 		grade: '',
+		actualGrade:'',
 		units: '',
 		year: '',
 		semester: ''
 	};
 
 	var selectedGrade = '';
+
+	$scope.toggleCutOffGrade = function(){
+		$scope.user.isCutOffGrade = !$scope.user.isCutOffGrade;
+		$scope.user.grades = GPAService.switchGrade($scope.user.grades,$scope.user.isCutOffGrade)
+		$localstorage.setObject('user', $scope.user);
+		$scope.overall = GPAService.init(angular.copy($scope.user.grades));
+		$scope.root.vars.showDesktopSettings = !$scope.root.vars.showDesktopSettings;
+
+	}
+
+	$scope.SelectAll= function(id)
+	{
+	    document.getElementById(id).focus();
+	    document.getElementById(id).select();
+	}
+	$scope.verifyInputs= function()
+	{
+		initDefaultValue()
+		$localstorage.setObject('user', $scope.user);
+	}
+	$scope.update = function()
+	{
+		$localstorage.setObject('user', $scope.user);
+	}
 	$scope.countEmptyList = function()
 	{
 		var totalNumber = 4 - document.querySelectorAll('#semester-slider span.ng-binding').length;
@@ -96,77 +121,6 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 			$scope.isMax =true
 		$scope.emptyCounts = 4- $scope.overall.semesterArr.length%4;
 	}
-	$scope.convertGrade=function(x)
-	{
-		var actualGrade
-		switch (true) {
-			    case (x == 4):
-			        actualGrade = "A";
-			        break;
-			    case (x >=3  && x < 4):
-			        actualGrade = "B";
-			        break;
-			    case (x >=2  && x < 3):
-			   		actualGrade = "C";
-			        break;
-		        case (x >=1  && x < 2):
-		      		actualGrade = "D";
-		            break;
-		        case (x < 1):
-		        	actualGrade = "F";
-		        	break;
-		       	default:
-		       	     actualGrade = "null";
-		       	     break;
-	        }
-    	return actualGrade;
-
-		// switch (x) {
-		//     case (x >= 4):
-		//         actualGrade = "A";
-		//         break;
-		//     case (x >= 3.7 && x < 4):
-		//         actualGrade = "A-";
-		//         break;
-		//     case (x >= 3.3 && x < 3.7):
-		//    		actualGrade = "B+";
-		//         break;
-	 //        case (x >= 3.7 && x < 3.3):
-	 //      		actualGrade = "B";
-	 //            break;
-	 //        case (x >= 3.7 && x < 3.0):
-	 //        	actualGrade = "B-";
-	 //            break;
-		//     case (x >= 3.3 && x < 3.7):
-		//    		actualGrade = "B+";
-		//         break;
-	 //        case (x >= 3.7 && x < 3.3):
-	 //      		actualGrade = "B";
-	 //            break;
-	 //        case (x >= 3.7 && x < 3.0):
-	 //        	actualGrade = "B-";
-	 //            break;
-  //   	    case (x >= 3.3 && x < 3.7):
-  //   	   		actualGrade = "B+";
-  //   	        break;
-  //           case (x >= 3.7 && x < 3.3):
-  //         		actualGrade = "B";
-  //               break;
-  //           case (x >= 3.7 && x < 3.0):
-  //           	actualGrade = "B-";
-  //               break;
-  //   	    case (x >= 3.3 && x < 3.7):
-  //   	   		actualGrade = "B+";
-  //   	        break;
-  //           case (x >= 3.7 && x < 3.3):
-  //         		actualGrade = "B";
-  //               break;
-  //           case (x >= 3.7 && x < 3.0):
-  //           	actualGrade = "B-";
-  //               break;
-		// }
-
-	}
 
 	$scope.clearSearchInput = function() {
 		$scope.search_text.course = '';
@@ -179,6 +133,7 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	  	$scope.overall = GPAService.defaultValue();
 	  	$scope.user.grades = []
 	  	// $localstorage.removeObject('user')
+	  	initDefaultValue(true)
 	  	$scope.overall = GPAService.init(angular.copy($scope.user.grades));
 	  	$localstorage.setObject('user', $scope.user);
 	  	$scope.root.vars.showDesktopSettings = !$scope.root.vars.showDesktopSettings;
@@ -201,7 +156,9 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	}
 
 	$scope.openModal = function(modalName, course) {
-		// console.log("opening modal: " + modalName);
+		console.log("opening modal: " + modalName);
+		initDefaultValue()
+
 		if (modalName == 'course' && (!$scope.user.university || !$scope.user.university.name)) {
 			ModalService.open('university', $scope);
 			return
@@ -211,9 +168,13 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 			$scope.course = course;
 			$scope.selectedCourse = course;
 		}
-		ModalService.open(modalName, $scope);
-
 	};
+
+	$scope.closeModal = function(modalName) {
+		console.log("closing modal: " + modalName);
+		ModalService.close(modalName);
+	};
+
 
 	$scope.resetSelectedCourse = function() {
 		$scope.search_text = {course: ''};
@@ -229,12 +190,20 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 		$scope.course.year = ""
 		$scope.course.semester =""
 	}
-	$scope.closeModal = function(modalName) {
-		// console.log("closing modal: " + modalName);
-		ModalService.close(modalName);
-	};
+
 
 	$scope.submitCourse = function() {
+
+		if (!$scope.course.units){
+			$scope.course.units = $scope.user.defaultCourseUnits
+		}
+		if (!$scope.course.year){
+			$scope.course.year = $scope.user.defaultYear
+		}	
+		if (!$scope.course.semester){
+			$scope.course.semester = $scope.user.defaultSeason
+		}	
+
 		if ($scope.selectedCourse &&
 			selectedGrade  &&
 			$scope.course.units  &&
@@ -242,6 +211,7 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 			$scope.course.semester ) {
 
 			$scope.course.grade = selectedGrade;
+			$scope.course.actualGrade = GPAService.getActualGrade(selectedGrade)
 			$scope.course.name = $scope.selectedCourse.short_name;
 			$scope.course.id = $scope.selectedCourse.id;
 
@@ -277,6 +247,7 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	$scope.$on('$ionicView.loaded', function() {
 		loadCourses(2307);
 		console.log("cehck", $scope.user.grades)
+		initDefaultValue()
 		$scope.overall = GPAService.init($scope.user.grades);
 		if (!$scope.user) {
 			$scope.user = User.initUser();
@@ -291,13 +262,12 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 		}
 		if ($scope.overall.semesterArr.length <= 4)
 			$scope.totalNumber = 4- $scope.overall.semesterArr.length;
-		
+
 	})
 
 	$scope.$on('$ionicView.beforeEnter', function() {
 		console.log("beforeENTER")
-		console.log($scope.user)
-
+		console.log("User Info",$scope.user)
 		// initBeforeEnterActions();
 		// init GPA grade
 		// $scope.user.grades = GPAService.init]
@@ -309,7 +279,44 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	// * Helper Functions  #
 	// ********************#
 
+	var initDefaultValue = function(force=false)
+	{
 
+		if (!$scope.user.defaultCourseUnits || force){
+			$scope.user.defaultCourseUnits = 4;
+			console.log("Set default units to :",$scope.user.defaultCourseUnits)
+		}
+
+		if (!$scope.user.defaultTerm|| force){
+			$scope.user.defaultTerm = 4;
+			console.log("Set default terms to :",$scope.user.defaultTerm)
+		}
+
+		if ($scope.user.defaultYear === undefined || !$scope.user.defaultYear || force){
+			$scope.user.defaultYear = new Date().getFullYear()
+		}
+		if ($scope.user.defaultSeason === undefined || !$scope.user.defaultSeason|| force){
+			$scope.user.defaultSeason = getCurrentSeason()
+		}
+
+		if ($scope.user.isCutOffGrade === undefined|| force){
+			$scope.user.isCutOffGrade = false;
+			console.log("Set default isCutOffGrade to :",$scope.user.isCutOffGrade)
+		}
+	}
+	var getCurrentSeason = function() {
+		var currentMonth = new Date().getMonth()
+		var season =''
+		if (currentMonth>=3 && currentMonth<=5)
+		  season = "Spring";
+		else if (currentMonth>=6 && currentMonth<=8)
+		  season = "Summer";
+		else if (currentMonth>=9 && currentMonth<=11)
+		  season = "Fall";
+		else
+		  season = "Winter";
+		return season
+	}
 	// all possible things that need to be initialized on enter should go here.
 	var initEnterActions = function() {
 		hasWelcomePopupBeenShown();

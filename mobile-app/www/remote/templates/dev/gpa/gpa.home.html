@@ -20,7 +20,7 @@
 		<div id="home-container" class="text-center">
 			<div id="home-gpa" class="gpa-container">
 				<div class="opacity-0" class-on-load="u-bounceInUp-subtle-2">
-					<h1 id="home-overall-gpa" class="gpa">{{overall.averageGPA | number: 1}}</h1>
+					<h1 id="home-overall-gpa" class="gpa">{{overall.averageGPA | number: 2}}</h1>
 					<!-- <h1 id="home-overall-gpa" ng-if="!overall.averageGPA" class="gpa">4.0</h2> -->
 					<h2 ng-if="!overall.semesterArr.length">Add some courses to get&nbsp;started!</h1>
 					<h2 ng-if="overall.semesterArr.length">{{slogan()}}</h2>
@@ -33,7 +33,7 @@
 									<path d="M68,86 L32,50 L68,14"></path>
 								</svg>
 							</a>
-							<a  ng-if='start === 0' ></a>
+							<!-- <a  ng-if='start === 0' ></a> -->
 						</li>
 						<li>
 							<a class="active" href="#" ng-click="currentIndex = -1">
@@ -48,12 +48,12 @@
 						<!-- You can remove this  -->
 						<!-- <li ng-repeat='x in [1,2,3,4] | limitTo:emptyCounts'><a></a></li> -->
 						<li name='arrowR'>
-							<a href="#" class="nav" ng-if='overall.semesterArr.length && !isMax' ng-click='nextList(4)'>
+							<a href="#" class="nav" ng-if='overall.semesterArr.length > 4 && overall.semesterArr.length && !isMax' ng-click='nextList(4)'>
 								<svg class="nav" viewBox="0 0 100 100">
 									<path d="M32,86 L68,50 L32,14"></path>
 								</svg>
 							</a>
-							<a ng-if='overall.semesterArr.length && isMax'></a>
+							<!-- <a ng-if='overall.semesterArr.length && isMax'></a> -->
 						</li>
 					</ul>
 				</nav>
@@ -80,7 +80,7 @@
 								</svg>
 								<div>
 									<!-- <h2>{{convertGrade(semester.gpa)}}</h2> -->
-									<h2>{{semester.gpa}}</h2>
+									<h2>{{semester.gpa | number:2}}</h2>
 									<span>Total {{semester.total_points}} Units</span>
 								</div>
 							</div>

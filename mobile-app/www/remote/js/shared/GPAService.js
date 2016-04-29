@@ -33,8 +33,10 @@ function GPAService() {
     syncCoursesFromCache: syncCoursesFromCache,
     getAllCourses: getAllCourses,
     init: init,
+    switchGrade: switchGrade,
     recalcSemesterStats:recalcSemesterStats,
-    defaultValue : defaultValue
+    defaultValue : defaultValue,
+    getActualGrade: getActualGrade
 
   };
 
@@ -46,9 +48,25 @@ function GPAService() {
       };
       return overall;
   }
+  function switchGrade(courses,isCutOff)
+  {
+    for (var i = 0 ; i< courses.length;++i)
+    {
+      if (isCutOff){
+        courses[i].grade = gradeLookup(courses[i].actualGrade)
+      }
+      else{
+        courses[i].grade = courses[i].grade.charAt(0)
+      }
 
-  function init(userCourses) {
+    }
+    return courses
+
+  }
+  function init(userCourses,isCutOffGrade = false) {
     console.log("User : ",userCourses)
+    console.log("isCutOffGrade : ",isCutOffGrade)
+
     semesterNames = []
 
     if (!userCourses) {
@@ -70,12 +88,12 @@ function GPAService() {
       {
           semesterNames.push(courseSemester);
           semesterDict[courseSemester] = initSemesterObj(course);
-          console.log('init deemster obj', semesterDict);
+          console.log('Add new semester', semesterDict);
           // console.log( semesterDict[courseSemester]['courses'])
       }
       else
       { 
-          console.log("Course",course)
+          console.log("Add Course",course)
           semesterDict[courseSemester]['courses'].push(course);
           semesterDict[courseSemester]['gpa'] = getSemesterGPA(semesterDict[courseSemester]['courses'])
           console.log( semesterDict[courseSemester]['gpa'])
@@ -170,6 +188,40 @@ function GPAService() {
           return 
              break;
         }
+  }
+  function getActualGrade(grade){
+
+    var isPostive = 0
+    var gradePoint = 0
+
+    console.log("index")
+    if (grade.indexOf("+") > 0 && grade.indexOf("-") < 0)
+      isPostive = 1
+    else if(grade.indexOf("+") < 0 && grade.indexOf("-") > 0)
+      isPostive = -1
+    else 
+      isPostive = 0
+    gradeSyn = grade.charAt(0)
+    switch (gradeSyn) {
+          case 'A':
+            gradePoint = 4
+              break;
+          case 'B':
+            gradePoint = 3
+              break;
+          case 'C':
+            gradePoint = 2
+              break;
+            case 'D':
+            gradePoint = 1
+                break;
+            default:
+              gradePoint = 0
+                 break;
+          }
+    
+        gradePoint += 0.3 * isPostive
+        return gradePoint
   }
   function calcGPAFromSemesterArr(semesterArr) {
     console.log(semesterArr)
