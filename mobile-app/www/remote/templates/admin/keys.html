@@ -646,13 +646,16 @@
                     <h1 class='p15xy txt-20 weight-700 uppercase full-x txt-white txt-center'>Selected Keyframe</h1>
                     <div class='flex-wrap-center relative full-x bg-white-25p p15xy preview-container' id='stage-elem-clone-container'></div>
                     <ul class="p15-grid">
-                        <li ng-repeat='anim_element in stage.anim_elements track by $index'>
+                        <li class="aside-anim-element-item" ng-repeat='anim_element in stage.anim_elements track by $index'>
                             <div class="flex full-x">
                                 <div class="flex" style="width: calc(100% - 72px)">
                                     <span class="flex-center-vertical p10x bg-campus radius-2-left semibold txt-18 height-36">{{anim_element.type}}</span>
-                                    <span class="full-x flex-center-vertical p10x bg-white-25p semibold txt-18 height-36">{{anim_element.selector}}</span>
+                                    <span class="full-x flex-center-vertical p10x bg-white-25p semibold txt-18 height-36">
+                                        <div class="relative preview-container"></div>
+                                        <span>{{anim_element.selector}}</span>
+                                    </span>
                                 </div>
-                                <a class="flex-center svg-white svg-36-24 svg-stroke-8 bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/search.html'"></a>
+                                <a class="flex-center svg-white svg-36-24 svg-stroke-8 bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/search.html'" ng-click='swapFocusedAnimatedElem(anim_element)'></a>
                                 <a class="flex-center close-button svg-white svg-36-24 svg-stroke-8 bg bg-crimson radius-2-right" ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click='stage.anim_elements.splice($index, 1)'></a>
                             </div>
                         </li>
