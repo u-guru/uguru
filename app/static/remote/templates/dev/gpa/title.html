@@ -1,9 +1,9 @@
 <ion-view class='uguru-view title-view full-xy gpa-view'>
 	<!-- demographic container -->
-	<div id="powerup-gpa-demographic-container" class="fixed top-0 left-0 full-xy z-index--1000 opacity-0" class-on-activate="fadeIn:anim, z-index-1000:keep, null:inject#powerup-gpa-demographic|activate" class-on-activate-delay="1000" ng-include="img_base + 'templates/dev/gpa/demographic.html'"></div>
+	<div id="powerup-gpa-demographic-container" class="fixed top-0 left-0 full-xy z-index--1000 opacity-0" class-on-activate="fadeIn:anim, z-index-1000:keep, null:inject#powerup-gpa-demographic|activate" class-on-activate-delay="500" ng-include="img_base + 'templates/dev/gpa/demographic.html'"></div>
 	
-	<section id="powerup-gpa-title" class="powerup-title full-xy flex-center-wrap" class-on-activate="null:inject#powerup-gpa-house|activate, null:inject#powerup-gpa-title h1|activate" class-on-clear="fadeOut:animOut">
-		<a id="powerup-gpa-house" class="powerup-house full-x flex-center relative opacity-0" class-on-click="null:inject#powerup-gpa-demographic-container|activate, null:inject#powerup-gpa-house .powerup-house-svg|clear, null:inject.powerup-title|clear" class-on-activate="u-bounceIn-subtle:anim, null:inject#powerup-gpa-house .powerup-house-svg .hover-init|activate, null:inject#powerup-gpa-house .coach-enter|activate">
+	<section id="powerup-gpa-title" class="powerup-title full-xy flex-center-wrap" class-on-activate="null:inject#powerup-gpa-house|activate, null:inject#powerup-gpa-title h1|activate" class-on-activate-delay="500" class-on-clear="fadeOut:animOut" class-on-clear-delay="500">
+		<a id="powerup-gpa-house" class="powerup-house full-x flex-center relative opacity-0" class-on-click="null:inject#powerup-gpa-demographic-container|activate, null:inject#powerup-gpa-house .powerup-house-svg|clear, null:inject.powerup-title|clear, null:inject#powerup-gpa-title h1|clear, null:inject#powerup-gpa-house .transition-150|clear" class-on-activate="u-bounceIn-subtle:anim, null:inject#powerup-gpa-house .powerup-house-svg .hover-init|activate, null:inject#powerup-gpa-house .coach-enter|activate">
 			<svg class="powerup-house-svg" class-on-clear="active" viewBox="0 0 378 322">
 			    <g fill="none" fill-rule="evenodd">
 			        <rect class="hover-init" class-on-activate="hover-subtle:keep" class-on-activate-delay="0" id="gpa-title-btn-multiply" stroke="#78898C" stroke-width="3" fill="#B6C3C5" x="319.469598" y="77.9212596" width="34.9460666" height="34.9964112" rx="5.47945205"></rect>
@@ -26,17 +26,19 @@
 			        <path class="hover-init" class-on-activate="hover-subtle:keep" class-on-activate-delay="450" d="M18.0340776,181.810938 L47.6354517,181.810938 C47.9760431,181.810938 48.252147,181.119683 48.252147,180.266978 C48.252147,179.414273 47.9760431,178.723019 47.6354517,178.723019 L18.0340776,178.723019 C17.6934862,178.723019 17.4173823,179.414273 17.4173823,180.266978 C17.4173823,181.119683 17.6934862,181.810938 18.0340776,181.810938 L18.0340776,181.810938 L18.0340776,181.810938 L18.0340776,181.810938 L18.0340776,181.810938 Z M18.0340776,166.371344 L47.6354517,166.371344 C47.9760431,166.371344 48.252147,165.68009 48.252147,164.827385 C48.252147,163.97468 47.9760431,163.283426 47.6354517,163.283426 L18.0340776,163.283426 C17.6934862,163.283426 17.4173823,163.97468 17.4173823,164.827385 C17.4173823,165.68009 17.6934862,166.371344 18.0340776,166.371344 L18.0340776,166.371344 L18.0340776,166.371344 L18.0340776,166.371344 L18.0340776,166.371344 Z" id="gpa-title-sign-equal" fill="#78898C"></path>
 			    </g>
 			</svg>
-			<svg class="coach-enter absolute bottom-0 opacity-0" class-on-activate="u-rotateScaleUpLeft" class-on-activate-delay="1000" style="margin-left: -60px;" width="120px" height="46px" viewBox="0 0 241 92">
-			    <g fill="none" fill-rule="evenodd">
-			        <path d="M120.543455,67.8345231 C120.543455,67.8345231 29.5163691,73.0725677 12.4796868,2.903259" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-			        <polyline stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" points="36.0997894 12.0669961 11.6336973 2.675343 2.24204445 27.1414354"></polyline>
-			        <text fill="#FFFFFF" transform="translate(184.218598, 51.879263) rotate(-15.000000) translate(-184.218598, -51.879263) " font-family="Source Sans Pro" font-size="32" font-weight="600" line-spacing="32">
-			            <tspan x="129.718598" y="50.8792627">click</tspan>
-			            <tspan x="129.718598" y="82.8792627">to enter</tspan>
-			        </text>
-			    </g>
-			</svg>
+			<div class="transition-150" class-on-clear="hide-opacity-impt">
+				<svg class="coach-enter absolute bottom-0 opacity-0" class-on-activate="u-rotateScaleUpLeft" class-on-activate-delay="1000" style="margin-left: -60px;" width="120px" height="46px" viewBox="0 0 241 92">
+				    <g fill="none" fill-rule="evenodd">
+				        <path d="M120.543455,67.8345231 C120.543455,67.8345231 29.5163691,73.0725677 12.4796868,2.903259" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+				        <polyline stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" points="36.0997894 12.0669961 11.6336973 2.675343 2.24204445 27.1414354"></polyline>
+				        <text fill="#FFFFFF" transform="translate(184.218598, 51.879263) rotate(-15.000000) translate(-184.218598, -51.879263) " font-family="Source Sans Pro" font-size="32" font-weight="600" line-spacing="32">
+				            <tspan x="129.718598" y="50.8792627">click</tspan>
+				            <tspan x="129.718598" y="82.8792627">to enter</tspan>
+				        </text>
+				    </g>
+				</svg>
+			</div>
 		</a>
-		<h1 class="m30top full-x lowercase txt-36 weight-600 text-center opacity-0" class-on-activate="u-bounceInUp-subtle:anim">A Uguru Powerup</h1>
+		<h1 class="m30top full-x lowercase txt-36 weight-600 text-center opacity-0" class-on-activate="u-bounceInUp-subtle:anim" class-on-clear="hide-opacity-impt">A Uguru Powerup</h1>
 	</section>
 </ion-view>

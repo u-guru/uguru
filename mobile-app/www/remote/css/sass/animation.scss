@@ -1559,3 +1559,20 @@
 	0% { stroke-dashoffset: 1538; }
 	100% { stroke-dashoffset: 0; }
 }
+
+@include keyframes(powerup-gpa-bounceOutUp) {
+	20% {
+		@include transform(translate3d(0, -10px, 0));
+	}
+	40%, 45%, 100% {
+		@include opacity(1);
+		@include transform(translate3d(0, 20px, 0));
+	}
+	100% {
+		@include opacity(0);
+		@include transform(translate3d(0, -2000px, 0));
+	}
+}
+.powerup-gpa-bounceOutUp {
+	@include animation-name(powerup-gpa-bounceOutUp);
+}

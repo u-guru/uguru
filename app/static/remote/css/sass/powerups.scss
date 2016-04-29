@@ -2,10 +2,8 @@
 
 #cta-modal-powerups {
 	#powerups-container {
+		@include prefix(animation-duration, 250ms!important, webkit moz ms o);
 		overflow: auto;
-		&.fadeIn {
-			@include prefix(animation-duration, 250ms!important, webkit moz ms o);
-		}
 	}
 	header {
 		span {
@@ -764,7 +762,7 @@
 			height: auto;
 			&.active {
 				@include prefix(transform-origin, 50% 300px, webkit moz ms o);
-				@include prefix(animation, powerup-house-scaleUp 1000ms ease-out forwards, webkit moz ms o);
+				@include prefix(animation, powerup-house-scaleUp 3000ms ease-out forwards, webkit moz ms o);
 			}
 		}
 	}

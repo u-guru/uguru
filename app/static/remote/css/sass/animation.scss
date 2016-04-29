@@ -1465,15 +1465,12 @@
 
 @include keyframes(powerup-before-scaleUp) {
     0% {
-        @include opacity(1);
         @include prefix(transform, scale(0), webkit moz ms o);
     }
-    60%, 70% {
-        @include opacity(1);
+    60%, 90% {
         @include prefix(transform, scale(200), webkit moz ms o);
     }
     100% {
-        @include opacity(0);
         @include prefix(transform, scale(200), webkit moz ms o);
     }
 }
