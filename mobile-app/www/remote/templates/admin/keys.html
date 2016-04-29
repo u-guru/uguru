@@ -22,10 +22,7 @@
                         <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='clearAllFrames()'><i class='icon ion-trash-a txt-36'></i></a>
                     </li>
                     <li class="relative">
-                        <a id='import-button' class="bg bg-slate radius-2 flex-center-vertical" ng-click='layout.index = 1'>
-                            <span class="svg-white flex-center svg-48-36 svg-stroke-6" ng-include="img_base + BASE + 'templates/svg/main/share.html'"></span>
-                            <!-- <span class="p10right">&dtrif;</span> -->
-                        </a>
+                        <a id='import-button' class="bg bg-slate radius-2 flex-center-vertical" ng-click='layout.index = 1'><span class="svg-white flex-center svg-48-36 svg-stroke-6" ng-include="img_base + BASE + 'templates/svg/main/share.html'"></span><span class="p10right">&dtrif;</span></a>
                         <!-- <div class="absolute txt-left">
                             <ul>
                                 <li><a class="block radius-2 p15x-p10y bg bg-charcoal txt-18 semibold m05top">Animation</a></li>
@@ -36,10 +33,7 @@
                         </div> -->
                     </li>
                     <li>
-                        <a id='export-button' class="bg bg-slate radius-2 flex-center-vertical" ng-click='renderAnimationCSSText(animation)'>
-                            <span class="svg-white flex-center svg-48-36 svg-stroke-6" ng-include="img_base + BASE + 'templates/svg/main/share.html'"></span>
-                            <!-- <span class="p10right">&dtrif;</span> -->
-                        </a>
+                        <a id='export-button' class="bg bg-slate radius-2 flex-center-vertical" ng-click='renderAnimationCSSText(animation)'><span class="svg-white flex-center svg-48-36 svg-stroke-6" ng-include="img_base + BASE + 'templates/svg/main/share.html'"></span><span class="p10right">&dtrif;</span></a>
                         <!-- <div class="absolute txt-left">
                             <ul>
                                 <li><a class="block radius-2 p15x-p10y bg bg-charcoal txt-18 semibold m05top">Animation</a></li>
@@ -50,10 +44,7 @@
                         </div> -->
                     </li>
                     <!-- <li>
-                        <a id='save-button' class="bg bg-slate radius-2 flex-center-vertical">
-                            <span class="svg-white flex-center svg-48-36 svg-stroke-6" ng-include="img_base + BASE + 'templates/svg/main/save-simple.html'"></span>
-                            <span class="p10right">&dtrif;</span>
-                        </a>
+                        <a id='save-button' class="bg bg-slate radius-2 flex-center-vertical"><span class="svg-white flex-center svg-48-36 svg-stroke-6" ng-include="img_base + BASE + 'templates/svg/main/save-simple.html'"></span><span class="p10right">&dtrif;</span></a>
                         <div class="absolute txt-left">
                             <ul>
                                 <li><a class="block radius-2 p15x-p10y bg bg-charcoal txt-18 semibold m05top">Animation</a></li>
@@ -517,7 +508,7 @@
                     </div>
                     <div class="all-components-container">
                         <ul class='flex-wrap full-x p15-grid'>
-                            <li ng-repeat='animation in imports.animations | filter: animationImportSearchText:name | limitTo: 16 track by $index'>
+                            <li ng-repeat='animation in imports.animations | filter: animationImportSearchText:name | limitTo: 100 track by $index'>
                                 <a class="flex" ng-click="onTSActionAnimationClassSelected(animation)">
                                     <span class='bg-robin radius-2-left flex-center-vertical p10x txt-1 uppercase weight-700 height-36'>
                                         {{animation.owner}}

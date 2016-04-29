@@ -256,7 +256,7 @@ function FileService(LoadingService, Restangular, DevToolService) {
             var resp = xhr.responseText;
             cb && cb(resp);
         }
-        xhr.open( 'GET',"http://crossorigin.me/" +  url, true );;
+        xhr.open( 'GET',"https://crossorigin.me/" +  url, true );;
         xhr.send();
     }
     function getS3JsonFile(first_name, url, cb) {
