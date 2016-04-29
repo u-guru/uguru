@@ -322,7 +322,6 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.selectComponentElement = function(component, $index, $event) {
-			$scope.stage.components.splice($index, 1);
 			if (!$scope.asideTabIndex) {
 				$scope.onTSActionComponentSelected(component.selector)
 			} else {
@@ -335,7 +334,23 @@ angular.module('uguru.util.controllers')
 			if (!$scope.stage.anim_elements) {
 				$scope.stage.anim_elements = [{selector: '#stage-elem', type:$scope.actor.nodeName}];
 			}
+			var stageContainer = document.querySelector('#stage-container');
+			var numDraggable = stageContainer.querySelectorAll('[draggable]').length;
+			if (component.orig_elem) {
+				component.orig_elem.setAttribute("draggable", null);
+				component.orig_elem.setAttribute("draggable-" + numDraggable, null);
+				component.selector = "[draggable-" + numDraggable + ']';
+				$timeout(function() {
+					$compile(component.orig_elem)($scope);
+					$scope.$apply();
+					component.orig_elem = null;
+				})
+			}
 			$scope.stage.anim_elements.push(component);
+			$timeout(function() {
+				renderAsideAnimatableElems();
+				$scope.$apply();
+			}, 100)
 		}
 
 		$scope.swapFocusedAnimatedElem = function(anim_elem) {
@@ -2146,7 +2161,7 @@ angular.module('uguru.util.controllers')
 		$scope.importLayoutIndex = 3;
 		$scope.showChildrenOfParentElemOnClick = function() {
 			$scope.stage.selectComponentMode = true;
-			var allShapes = ['path', 'line', 'polygon', 'polyline', 'g', 'rect', 'ellipse', 'circle'];
+			var allShapes = ['path', 'line', 'polygon', 'polyline', 'g', 'rect', 'ellipse', 'circle', 'tspan', 'text'];
 			allChildActorElems = $scope.actor.querySelectorAll('*');
 			$scope.stage.components = [];
 			for (var i = 0; i < allChildActorElems.length; i++) {
@@ -2156,14 +2171,12 @@ angular.module('uguru.util.controllers')
 				var allContainers = document.querySelectorAll('.cloned-animatable-elem-container')
 				for (var i = 0; i < allChildActorElems.length; i++) {
 					var indexElem = allChildActorElems[i];
-					console.log(indexElem);
-					indexElem.setAttribute('draggable-' + i, null);
 					var clonedNode = indexElem.cloneNode(true);
-					clonedNode.removeAttribute('draggable');
-					clonedNode.setAttribute('draggable-clone', null);
-					clonedNode.setAttribute('draggable-clone-' + i, null);
+					// clonedNode.setAttribute('draggable-clone', null);
+					// clonedNode.setAttribute('draggable-clone-' + i, null);
 					var indexContainer = allContainers[i];
 					$scope.stage.components[i].type = indexElem.nodeName;
+					$scope.stage.components[i].orig_elem = indexElem;
 					if (allShapes.indexOf(clonedNode.nodeName) > - 1) {
 						var parentSVG = findParentSVG(indexElem);
 						var clonedParentSVG = parentSVG.cloneNode(true);
@@ -2202,11 +2215,56 @@ angular.module('uguru.util.controllers')
             case 2:
               //init map
              	updateStageElemCloneAside();
-
+             	renderAsideAnimatableElems();
 
 
          }
 		});
+
+		function renderAsideAnimatableElems() {
+			if (!$scope.stage) {
+				return;
+			}
+			if (!$scope.stage.anim_elements) {
+				$scope.stage.anim_elements = [];
+			}
+			var allShapes = ['path', 'line', 'polygon', 'polyline', 'g', 'rect', 'ellipse', 'circle', 'tspan', 'text'];
+			var allAnimElemItemContainers = document.querySelectorAll('.aside-anim-element-item');
+			for (var i = 0; i < $scope.stage.anim_elements.length; i++) {
+				var indexAnimElem = $scope.stage.anim_elements[i];
+				if(indexAnimElem.selector) {
+					console.log('searching for...', indexAnimElem.selector);
+					var stageContainer = document.querySelector('#stage-container');
+					var dragAttribute = indexAnimElem.selector.replace('[', '').replace('', ']') + "";
+					var elem = stageContainer.querySelector(indexAnimElem.selector)
+					if (elem) {
+						var clonedElem = elem.cloneNode(true);
+						clonedElem.removeAttribute('draggable');
+						clonedElem.removeAttribute(dragAttribute);
+						clonedElem.style.maxHeight = "50px;"
+						clonedElem.style.maxWidth = "50px;"
+						clonedElem.style.minHeight = "50px;"
+						clonedElem.style.minWidth = "50px;"
+						clonedElem.className += " absolute left-0"
+						if (allShapes.indexOf(clonedElem.nodeName) > -1) {
+							var parentSVG = findParentSVG(elem);
+							var clonedParentSVG = parentSVG.cloneNode(true);
+							clonedParentSVG.innerHTML = "";
+							clonedParentSVG.appendChild(clonedElem);
+							allAnimElemItemContainers[i].appendChild(clonedParentSVG);
+						} else {
+							allAnimElemItemContainers[i].appendChild(clonedElem);
+						}
+
+
+
+
+
+					}
+				}
+
+			}
+		}
 
 		$scope.importFromCSSText = function(css_text, name, class_text) {
 			// var css_text = "@keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); } 2.92% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -135.218, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -135.218, 0, 0, 1); } 3.37% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -114.871, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -114.871, 0, 0, 1); } 3.47% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -110.596, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -110.596, 0, 0, 1); } 4.58% { -webkit-transform: matrix3d(2.061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -68.65, 0, 0, 1); transform: matrix3d(2.061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -68.65, 0, 0, 1); } 5.69% { -webkit-transform: matrix3d(2.321, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -36.551, 0, 0, 1); transform: matrix3d(2.321, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -36.551, 0, 0, 1); } 5.76% { -webkit-transform: matrix3d(2.32, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -34.768, 0, 0, 1); transform: matrix3d(2.32, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -34.768, 0, 0, 1); } 7.41% { -webkit-transform: matrix3d(1.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -3.804, 0, 0, 1); transform: matrix3d(1.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -3.804, 0, 0, 1); } 7.51% { -webkit-transform: matrix3d(1.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2.454, 0, 0, 1); transform: matrix3d(1.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2.454, 0, 0, 1); } 7.88% { -webkit-transform: matrix3d(1.771, 0, 0, 0, 0, 1.062, 0, 0, 0, 0, 1, 0, 2.008, 0, 0, 1); transform: matrix3d(1.771, 0, 0, 0, 0, 1.062, 0, 0, 0, 0, 1, 0, 2.008, 0, 0, 1); } 8.68% { -webkit-transform: matrix3d(1.408, 0, 0, 0, 0, 1.181, 0, 0, 0, 0, 1, 0, 9.646, 0, 0, 1); transform: matrix3d(1.408, 0, 0, 0, 0, 1.181, 0, 0, 0, 0, 1, 0, 9.646, 0, 0, 1); } 10.03% { -webkit-transform: matrix3d(0.982, 0, 0, 0, 0, 1.333, 0, 0, 0, 0, 1, 0, 16.853, 0, 0, 1); transform: matrix3d(0.982, 0, 0, 0, 0, 1.333, 0, 0, 0, 0, 1, 0, 16.853, 0, 0, 1); } 10.85% { -webkit-transform: matrix3d(0.822, 0, 0, 0, 0, 1.398, 0, 0, 0, 0, 1, 0, 18.613, 0, 0, 1); transform: matrix3d(0.822, 0, 0, 0, 0, 1.398, 0, 0, 0, 0, 1, 0, 18.613, 0, 0, 1); } 11.53% { -webkit-transform: matrix3d(0.732, 0, 0, 0, 0, 1.439, 0, 0, 0, 0, 1, 0, 18.992, 0, 0, 1); transform: matrix3d(0.732, 0, 0, 0, 0, 1.439, 0, 0, 0, 0, 1, 0, 18.992, 0, 0, 1); } 12.22% { -webkit-transform: matrix3d(0.672, 0, 0, 0, 0, 1.469, 0, 0, 0, 0, 1, 0, 18.618, 0, 0, 1); transform: matrix3d(0.672, 0, 0, 0, 0, 1.469, 0, 0, 0, 0, 1, 0, 18.618, 0, 0, 1); } 14.18% { -webkit-transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 15.054, 0, 0, 1); transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 15.054, 0, 0, 1); } 14.37% { -webkit-transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 14.604, 0, 0, 1); transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 14.604, 0, 0, 1); } 19.23% { -webkit-transform: matrix3d(0.737, 0, 0, 0, 0, 1.371, 0, 0, 0, 0, 1, 0, 3.855, 0, 0, 1); transform: matrix3d(0.737, 0, 0, 0, 0, 1.371, 0, 0, 0, 0, 1, 0, 3.855, 0, 0, 1); } 20.01% { -webkit-transform: matrix3d(0.763, 0, 0, 0, 0, 1.338, 0, 0, 0, 0, 1, 0, 2.724, 0, 0, 1); transform: matrix3d(0.763, 0, 0, 0, 0, 1.338, 0, 0, 0, 0, 1, 0, 2.724, 0, 0, 1); } 23.05% { -webkit-transform: matrix3d(0.856, 0, 0, 0, 0, 1.211, 0, 0, 0, 0, 1, 0, 0.036, 0, 0, 1); transform: matrix3d(0.856, 0, 0, 0, 0, 1.211, 0, 0, 0, 0, 1, 0, 0.036, 0, 0, 1); } 25.75% { -webkit-transform: matrix3d(0.923, 0, 0, 0, 0, 1.114, 0, 0, 0, 0, 1, 0, -0.709, 0, 0, 1); transform: matrix3d(0.923, 0, 0, 0, 0, 1.114, 0, 0, 0, 0, 1, 0, -0.709, 0, 0, 1); } 26.94% { -webkit-transform: matrix3d(0.947, 0, 0, 0, 0, 1.078, 0, 0, 0, 0, 1, 0, -0.76, 0, 0, 1); transform: matrix3d(0.947, 0, 0, 0, 0, 1.078, 0, 0, 0, 0, 1, 0, -0.76, 0, 0, 1); } 31.58% { -webkit-transform: matrix3d(1.009, 0, 0, 0, 0, 0.987, 0, 0, 0, 0, 1, 0, -0.406, 0, 0, 1); transform: matrix3d(1.009, 0, 0, 0, 0, 0.987, 0, 0, 0, 0, 1, 0, -0.406, 0, 0, 1); } 31.73% { -webkit-transform: matrix3d(1.01, 0, 0, 0, 0, 0.986, 0, 0, 0, 0, 1, 0, -0.392, 0, 0, 1); transform: matrix3d(1.01, 0, 0, 0, 0, 0.986, 0, 0, 0, 0, 1, 0, -0.392, 0, 0, 1); } 37.32% { -webkit-transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.03, 0, 0, 1); transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.03, 0, 0, 1); } 38.15% { -webkit-transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.008, 0, 0, 1); transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.008, 0, 0, 1); } 42.35% { -webkit-transform: matrix3d(1.022, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0.03, 0, 0, 1); transform: matrix3d(1.022, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0.03, 0, 0, 1); } 48.9% { -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, 0.009, 0, 0, 1); transform: matrix3d(1.007, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, 0.009, 0, 0, 1); } 57.77% { -webkit-transform: matrix3d(0.998, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); transform: matrix3d(0.998, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); } 60.47% { -webkit-transform: matrix3d(0.998, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); transform: matrix3d(0.998, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); } 69.36% { -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.999, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 83.61% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } ";

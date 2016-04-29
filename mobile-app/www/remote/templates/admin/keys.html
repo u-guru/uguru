@@ -627,8 +627,8 @@
                     </div>
                     <div class='flex-wrap-center'>
                         <ul class='full-x'>
-                            <li class='full-x p10xy' ng-repeat='anim_element in stage.anim_elements track by $index'> {{anim_element.type}} {{anim_element.selector}}
-                                <a> Focus </a>  <a ng-click='stage.anim_elements.splice($index, 1)'> Remove </a>
+                            <li class='full-x p10xy aside-anim-element-item' ng-repeat='anim_element in stage.anim_elements track by $index'> {{anim_element.type}} {{anim_element.selector}}
+                                <a ng-click='swapFocusedAnimatedElem(anim_element)'> Focus </a>  <a ng-click='stage.anim_elements.splice($index, 1)'> Remove </a>
                             </li>
                         </ul>
                     </div>
