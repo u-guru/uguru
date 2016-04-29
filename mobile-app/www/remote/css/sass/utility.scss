@@ -750,6 +750,100 @@ input, fieldset {
 	overflow: auto;
 }
 
+.height-24 {
+	height: 24px;
+}
+.height-32 {
+	height: 32px;
+}
+.height-36 {
+	height: 36px;
+}
+.height-48 {
+	height: 48px;
+}
+.height-64 {
+	height: 64px;
+}
+.height-72 {
+	height: 72px;
+}
+.height-84 {
+	height: 84px;
+}
+.height-96 {
+	height: 96px;
+}
+.height-128 {
+	height: 128px;
+}
+
+.height-10p {
+	height: 10%;
+}
+.height-25p {
+	height: 25%;
+}
+.height-33p {
+	height: calc(100% / 3);
+}
+.height-50p {
+	height: 50%;
+}
+.height-66p {
+	height: calc(100% / 3 * 2);
+}
+.height-75p {
+	height: 75%;
+}
+
+.width-24 {
+	width: 24px;
+}
+.width-32 {
+	width: 32px;
+}
+.width-36 {
+	width: 36px;
+}
+.width-48 {
+	width: 48px;
+}
+.width-64 {
+	width: 64px;
+}
+.width-72 {
+	width: 72px;
+}
+.width-84 {
+	width: 84px;
+}
+.width-96 {
+	width: 96px;
+}
+.width-128 {
+	width: 128px;
+}
+
+.width-10p {
+	width: 10%;
+}
+.width-25p {
+	width: 25%;
+}
+.width-33p {
+	width: calc(100% / 3);
+}
+.width-50p {
+	width: 50%;
+}
+.width-66p {
+	width: calc(100% / 3 * 2);
+}
+.width-75p {
+	width: 75%;
+}
+
 // z-index
 .z-index-0 {
 	z-index: 0!important;

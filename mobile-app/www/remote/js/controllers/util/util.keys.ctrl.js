@@ -2228,9 +2228,9 @@ angular.module('uguru.util.controllers')
 			$timeout(function() {
 				// angular.element(document.querySelector('#import-button')).triggerHandler('click');
 				$scope.importCodepenTemplate('http://codepen.io/teamuguru/pen/29ce58caa079980bb9375afa30efcb57');
-			}, 1500)
+			}, 0)
 
-		}, 2000)
+		}, 500)
 
 	}
 

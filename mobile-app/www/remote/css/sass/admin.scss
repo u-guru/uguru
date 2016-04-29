@@ -1,5 +1,12 @@
 @import 'mixin';
 
+.preview-container {
+	position: relative!important;
+	.fixed {
+		position: absolute!important;
+	}
+}
+
 /* ---------- KEYFRAMES */
 #stage-container {
 	position: relative!important;
@@ -8,6 +15,9 @@
 	}
 }
 #keys {
+	#stage-elem-clone-container {
+		min-height: 300px;
+	}
 	#import-button {
 		svg {
 			@include prefix(transform, rotate(180deg), webkit moz ms o);
@@ -84,6 +94,7 @@
 	}
 	#keys-toolbar {
 		a {
+			color: white!important;
 			&:hover, &:focus {
 				background: $moxie;
 			}
@@ -108,6 +119,32 @@
 					@include opacity(1);
 					@include prefix(transform, scaleY(1), webkit moz ms o);
 					z-index: 100;
+				}
+			}
+		}
+	}
+	#keys-select-components {
+		li {
+			svg {
+				display: block;
+				width: 100px;
+				height: 100px;
+				border-radius: 2px;
+				&:first-child {
+					background: black;
+					margin-right: 7.5px;
+				}
+				&:last-child {
+					margin-left: 7.5px;
+					background: white;
+				}
+			}
+			a {
+				&:hover, &:focus {
+					background: rgba(white, .3);
+				}
+				&:active {
+					background: rgba(white, .5);
 				}
 			}
 		}

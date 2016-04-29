@@ -3758,6 +3758,7 @@ input[type="range"] {
 		}
 	}
 	&.height-32 {
+		height: auto;
 		.dropdown {
 			> div {
 				> span {
