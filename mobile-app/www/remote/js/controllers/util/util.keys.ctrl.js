@@ -1066,11 +1066,11 @@ angular.module('uguru.util.controllers')
 		            			var indexCssRule = ss[i].cssRules[j];
 		            			var rawCSSText = indexCssRule.cssText;
 		            			var animationName = indexCssRule.name;
-		            			console.log('processing', animationName);
+		            			// console.log('processing', animationName);
 		            			var js_anim_obj = importAnimationFromRawCssText(rawCSSText, animationName);
 		            			var final_obj = initAnimationFromAnimObj(js_anim_obj);
 		            			$scope.saveAnimationClass(final_obj, styleSheetName);
-
+		            			console.log(final_obj);
 		      //       			var js_anim_obj = importAnimationFromRawCssText(indexCssRule.css_text, name);
 
 
@@ -2285,6 +2285,7 @@ angular.module('uguru.util.controllers')
 
 			initAll();
 			$timeout(function() {
+				// exportExternalCSSKeyFrameFiles(['animate'])
 				// angular.element(document.querySelector('#import-button')).triggerHandler('click');
 				$scope.importCodepenTemplate('http://codepen.io/teamuguru/pen/29ce58caa079980bb9375afa30efcb57');
 			}, 1500)
