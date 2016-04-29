@@ -1,4 +1,8 @@
 /* ---------- HOME */
+.gpa-view {
+  background: #40acb8 !important;
+}
+
 #gpa-home {
   background: #F1F1F1;
 }
@@ -284,16 +288,6 @@
   font-weight: 600;
 }
 
-<<<<<<< HEAD
-#home-container #home-courses {
-  width: 100%;
-  height: 50%;
-  background: #79c5cd;
-  overflow: auto;
-}
-
-=======
->>>>>>> 45a6f6545d58b0de922a34095d519bd7ea360a2d
 #home-container #home-courses .semester-list {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -313,19 +307,6 @@
   align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
-<<<<<<< HEAD
-  width: 100%;
-  max-width: 1030px;
-  margin: 0 auto;
-  padding: 1px;
-}
-
-#home-container #home-courses .semester-list .semester-item {
-  width: 100%;
-  padding: 1px;
-}
-
-=======
   width: 100%;
   max-width: 1030px;
   margin: 0 auto;
@@ -344,7 +325,6 @@
   align-items: center;
 }
 
->>>>>>> 45a6f6545d58b0de922a34095d519bd7ea360a2d
 .semester-item > div {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -358,16 +338,6 @@
   padding: 15px;
   background: rgba(99, 112, 116, 0.75);
   border-radius: 2px;
-<<<<<<< HEAD
-}
-
-.semester-item > div.small {
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-align-items: center;
-  align-items: center;
-=======
->>>>>>> 45a6f6545d58b0de922a34095d519bd7ea360a2d
 }
 
 .semester-item > div h1 {
@@ -460,12 +430,9 @@
   #home-container #home-gpa #semester-slider {
     display: block;
   }
-<<<<<<< HEAD
-=======
   #home-container #home-courses {
     height: 50%;
   }
->>>>>>> 45a6f6545d58b0de922a34095d519bd7ea360a2d
   #home-container #home-courses .semester-list {
     height: 100%;
     padding: 7.5px;
@@ -751,7 +718,7 @@
   }
 }
 
-#powerup-gpa-title .powerup-title {
+#powerup-gpa-title {
   background: #79c5cd !important;
 }
 
@@ -778,7 +745,6 @@
 
 #powerup-gpa-demographic .powerup-back:active span svg * {
   stroke: #637074;
-<<<<<<< HEAD
 }
 
 #powerup-gpa-demographic .demo-grid ul li a {
@@ -786,43 +752,27 @@
   border: 3px solid #79c5cd;
 }
 
-=======
-}
-
-#powerup-gpa-demographic .demo-grid ul li a {
-  background: #79c5cd;
-  border: 3px solid #79c5cd;
-}
-
->>>>>>> 45a6f6545d58b0de922a34095d519bd7ea360a2d
-#powerup-gpa-demographic .demo-grid ul li a:hover {
+#powerup-gpa-demographic .demo-grid ul li a.active, #powerup-gpa-demographic .demo-grid ul li a:hover, #powerup-gpa-demographic .demo-grid ul li a:focus {
   background: white;
   color: #40acb8;
 }
 
-#powerup-gpa-demographic .demo-grid ul li a:hover > span svg * {
+#powerup-gpa-demographic .demo-grid ul li a.active > span svg *, #powerup-gpa-demographic .demo-grid ul li a:hover > span svg *, #powerup-gpa-demographic .demo-grid ul li a:focus > span svg * {
   stroke: #40acb8;
 }
 
-#powerup-gpa-demographic .demo-grid ul li a:active, #powerup-gpa-demographic .demo-grid ul li a:focus {
+#powerup-gpa-demographic .demo-grid ul li a:active {
   background: #40acb8;
   border-color: #40acb8;
   color: white;
 }
 
-#powerup-gpa-demographic .demo-grid ul li a:active > span svg *, #powerup-gpa-demographic .demo-grid ul li a:focus > span svg * {
+#powerup-gpa-demographic .demo-grid ul li a:active > span svg * {
   stroke: white;
 }
 
-<<<<<<< HEAD
-@media screen and (min-width: 768px) and (min-height: 575px) {
-  #powerup-gpa-demographic h1 {
-    color: #40acb8 !important;
-  }
-=======
 #powerup-gpa-demographic h1 {
   color: #40acb8 !important;
->>>>>>> 45a6f6545d58b0de922a34095d519bd7ea360a2d
 }
 
 #powerup-gpa-welcome {

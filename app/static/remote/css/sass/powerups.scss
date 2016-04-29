@@ -2,6 +2,7 @@
 
 #cta-modal-powerups {
 	#powerups-container {
+		overflow: auto;
 		&.fadeIn {
 			@include prefix(animation-duration, 250ms!important, webkit moz ms o);
 		}
@@ -25,13 +26,10 @@
 	}
 	ul {
 		width: 100%;
+		margin-top: -40px;
 		li {
-			width: 50%;
-			max-width: 300px;
+			width: 300px;
 			padding-bottom: 35px;
-			@media screen and (min-width: 768px) {
-				width: 25%;
-			}
 			a {
 				position: relative;
 				&.fadeOut {
@@ -106,6 +104,18 @@
 			}
 		}
 	}
+	@media screen and (max-width: 768px) {
+		header {
+			h1 {
+				font-size: 36px!important;
+			}
+		}
+	}
+	@media screen and (min-width: 768px) {
+		ul {
+			margin-top: 0;
+		}
+	}
 	.hanger {
 		opacity: 0;
 	}
@@ -113,6 +123,7 @@
 
 // GENERAL
 .landing-container {
+	overflow-x: hidden!important;
 	.powerup-icon {
 		width: 100%;
 		height: 100%;
@@ -141,9 +152,64 @@
 			height: 490px;
 		}
 	}
+	@media screen and (max-width:768px) {
+		.powerup-icon {
+			margin-top: -50px;
+		}
+		h1.powerup-header {
+			margin-top: 0;
+			font-size: 28px!important;
+		}
+		h2.powerup-header {
+			margin-top: 0;
+			font-size: 20px!important;
+		}
+		.landing-demo {
+			width: 200px;
+			> svg:not(.coach) {
+				width: 200px;
+			}
+			> div {
+				margin-left: -86px;
+				margin-top: -155px;
+				width: 172px;
+				height: 310px;
+			}
+			.coach {
+				display: none;
+			}
+		}
+	}
 	.landing-content {
 		margin-top: -120px;
 		padding-top: 135px;
+		@media screen and (max-width:768px) {
+			h1 {
+				font-size: 28px!important;
+			}
+		}
+	}
+	.landing-action {
+		@media screen and (max-width:768px) {
+			.ugrid-3 {
+				li {
+					width: 100%;
+					.svg-128 {
+						svg {
+							width: 64px;
+							height: 64px;
+						}
+						+ h2 {
+							width: calc(100% - 64px)!important;
+							margin-top: 0;
+							padding-top: 0;
+							text-align: left;
+							font-size: 20px!important;
+						}
+					}
+				}
+			}
+		}
 	}
 	&.landing-gpa {
 		background: mix(white, $gpa, 30%);
@@ -166,22 +232,65 @@
 			}
 		}
 		.gpa-landing-hands {
+			width: 2px;
+    		margin-left: -1px;
+    		left: 50%;
 			svg {
 				&:first-child {
-					left: -125px;
+					left: 80px;
 				}
 				&:last-child {
-					right: -125px;
+					right: 80px;
 					@include prefix(backface-visibility, visible, webkit moz ms o);
 					@include prefix(transform, rotateY(180deg), webkit moz ms o);
 					@include prefix(transform-origin, center, webkit moz ms o);
 				}
+				@media screen and (max-width:768px) {
+					&:first-child {
+						max-height: 200px;
+    					left: -200px;
+					}
+					&:last-child {
+						max-height: 200px;
+    					right: -200px;
+					}
+				}
+				@media screen and (max-width:414px) {
+					&:first-child, &:last-child {
+						max-height: 100px;
+						top: -250px;
+						bottom: auto!important;
+					}
+					&:first-child {
+						left: -360px;
+					}
+					&:last-child {
+						right: -360px;
+					}
+				}
 			}
 		}
 		.gpa-landing-preview {
+			li {
+				&:first-child, &:last-child {
+					@include opacity(0.75);
+					@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
+					@include prefix(transition, all 600ms cubic-bezier(.77,-0.22,.05,1.27)!important, webkit moz ms o);
+				}
+				&:first-child {
+					transform: translateX(100%);
+				}
+				&:last-child {
+					transform: translateX(-100%);
+				}
+			}
 			svg {
 				width: calc(318px * 0.75);
 				height: calc(651px * 0.75);
+				@media screen and (max-width:768px) {
+					width: calc(318px * 0.5);
+					height: calc(651px * 0.5);
+				}
 				* {
 					stroke: lighten($slate, 15%);
 					stroke-width: 3px;
@@ -281,23 +390,23 @@
 				opacity: 0;
 			}
 			.gpa-guru {
-				animation: gpa-guru 1000ms linear forwards;
+				animation: gpa-guru 1000ms ease-in-out forwards;
 			}
 			.multiply {
-				animation: multiply-enter 500ms linear 100ms forwards;
+				animation: multiply-enter 500ms ease-in-out 50ms forwards;
 			}
 			.plus {
-				animation: plus-enter 500ms linear 200ms forwards;
+				animation: plus-enter 500ms ease-in-out 100ms forwards;
 			}
 			.minus {
-				animation: minus-enter 500ms linear 300ms forwards;
+				animation: minus-enter 500ms ease-in-out 150ms forwards;
 				transform-origin: bottom right;
 			}
 			.equal {
-				animation: equal-enter 500ms linear 400ms forwards;
+				animation: equal-enter 500ms ease-in-out 200ms forwards;
 			}
 			.divide {
-				animation: divide-enter 500ms linear 450ms forwards;
+				animation: divide-enter 500ms ease-in-out 50ms forwards;
 			}
 		}
 	}
@@ -352,12 +461,15 @@
 #powerup-landing-icon {
 	.gpa-guru-eyebrow-right {
 		transform-origin: right top;
+		&.wiggle {
+			animation: wiggle-right 100ms ease alternate 6 forwards;
+		}
 	}
 	.gpa-guru-eyebrow-left {
 		transform-origin: left top;
-	}
-	.wiggle {
-		animation: wiggle 500ms linear alternate 4 forwards;
+		&.wiggle {
+			animation: wiggle-left 100ms ease alternate 6 forwards;
+		}
 	}
 }
 
@@ -639,14 +751,20 @@
 
 .powerup-title {
 	.powerup-house {
+		&.active {
+			* {
+				transition: all 1000ms ease-in-out;
+				opacity: 0;
+			}
+		}
 		.powerup-house-svg {
 			display: block;
 			width: 100%;
 			max-width: 500px;
 			height: auto;
 			&.active {
-				@include prefix(transform-origin, center bottom, webkit moz ms o);
-				@include prefix(animation, powerup-before-scaleUp 1000ms ease-in-out forwards, webkit moz ms o);
+				@include prefix(transform-origin, 50% 300px, webkit moz ms o);
+				@include prefix(animation, powerup-house-scaleUp 1000ms ease-out forwards, webkit moz ms o);
 			}
 		}
 	}
@@ -662,8 +780,6 @@
 			* {
 				stroke-width: 9px;
 			}
-<<<<<<< HEAD
-=======
 		}
 	}
 }
@@ -671,6 +787,14 @@
 [class*="powerup"] {
 	.tour-guru {
 		@include prefix(transform-origin, center center, webkit moz ms o);
+		.translate {
+			svg {
+				@include prefix(transform-origin, left top, webkit moz ms o);
+				@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
+				@include prefix(transition, all 600ms cubic-bezier(.77,-0.22,.05,1.27)!important, webkit moz ms o);
+				@include prefix(transform, scale(2), webkit moz ms o);
+			}
+		}
 		svg:first-child {
 			> g > ellipse {
 				@include prefix(transform-origin, center center, webkit moz ms o);
@@ -700,23 +824,6 @@
 					@include prefix(animation, tour-guru-hover 1000ms linear infinite alternate, webkit moz ms o);
 				}
 			}
->>>>>>> 45a6f6545d58b0de922a34095d519bd7ea360a2d
-		}
-	}
-}
-
-<<<<<<< HEAD
-[class*="powerup"] {
-	.tour-guru {
-		svg:first-child {
-			display: block;
-			> g > ellipse {
-				@include prefix(animation, tour-guru-shadow-hover 1000ms linear infinite alternate, webkit moz ms o);
-				@include prefix(transform-origin, center center, webkit moz ms o);
-			}
-			.guru-body {
-				@include prefix(animation, tour-guru-hover 1000ms linear infinite alternate, webkit moz ms o);
-			}
 		}
 	}
 }
@@ -724,18 +831,9 @@
 .powerup-demographic {
 	@include flex;
 	@include flex-wrap;
-	@include flex-center;
 	background: $smoke;
 	.tour-guru {
 		svg:first-child {
-=======
-.powerup-demographic {
-	@include flex;
-	@include flex-wrap;
-	background: $smoke;
-	.tour-guru {
-		svg:first-child {
->>>>>>> 45a6f6545d58b0de922a34095d519bd7ea360a2d
 			height: 200px;
 		}
 		svg.absolute {
@@ -745,19 +843,13 @@
 		}
 	}
 	.demo-grid {
+		.demographic-z-index-1000 {
+			z-index: 1000!important;
+		}
 		ul {
 			@include flex;
 			@include flex-center;
 			@include flex-wrap;
-<<<<<<< HEAD
-			height: 100%;
-			width: 100%;
-			li {
-				position: relative;
-				height: 50%;
-				width: 25%;
-				font-weight: 600;
-=======
 			width: 100%;
 			padding: 1px;
 			li {
@@ -767,17 +859,12 @@
 				width: 50%;
 				font-weight: 600;
 				padding: 1px;
->>>>>>> 45a6f6545d58b0de922a34095d519bd7ea360a2d
 				a {
 					position: relative;
 					width: 100%;
 					height: 100%;
 					border-radius: 2px;
-<<<<<<< HEAD
-					font-size: 36px;
-=======
 					font-size: 28px;
->>>>>>> 45a6f6545d58b0de922a34095d519bd7ea360a2d
 					text-transform: lowercase;
 					> svg {
 						width: 100%;
@@ -811,9 +898,6 @@
 			}
 		}
 	}
-<<<<<<< HEAD
-	@media screen and (min-width:768px) and (min-height:575px) {
-=======
 	@media screen and (max-width:768px) {
 		@include prefix(justify-content, center, webkit);
 		@include prefix(align-items, space-between, webkit);
@@ -842,7 +926,6 @@
 		h1 {
 			font-size: 48px;
 		}
->>>>>>> 45a6f6545d58b0de922a34095d519bd7ea360a2d
 		.demo-grid {
 			height: auto;
 			margin: 0 auto;
@@ -851,13 +934,10 @@
 				padding: 15px;
 				li {
 					padding: 15px;
-<<<<<<< HEAD
-=======
 					width: 25%;
 					a {
 						font-size: 36px;
 					}
->>>>>>> 45a6f6545d58b0de922a34095d519bd7ea360a2d
 				}
 			}
 		}
