@@ -511,7 +511,7 @@
                     <div class="all-components-container">
                         <ul class='flex-wrap full-x p15-grid'>
                             <li ng-repeat='animation in imports.animations | filter: animationImportSearchText:name | limitTo: 16 track by $index'>
-                                <a class="flex" ng-click="importPageDom(stage_template)">
+                                <a class="flex" ng-click="onTSActionAnimationClassSelected(animation)">
                                     <span class='bg-robin radius-2-left flex-center-vertical p10x txt-1 uppercase weight-700 height-36'>
                                         {{animation.owner}}
                                     </span>

@@ -4850,7 +4850,7 @@ input[type="range"][size="large"]::-ms-track, input[type="range"][size="10"]::-m
 }
 
 .dropdown-container.height-32 {
-  height: auto;
+  height: auto !important;
 }
 
 .dropdown-container.height-32 .dropdown > div > span {
