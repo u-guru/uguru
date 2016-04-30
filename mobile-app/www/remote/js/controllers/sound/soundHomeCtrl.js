@@ -5,6 +5,18 @@ angular.module('uguru.apps.controllers')
 				SoundController]
 			);
 function SoundController($scope, SoundPlayListService) {
+	$scope.$on('$ionicView.beforeEnter', function() {
+		console.log("before enter")
+		SoundPlayListService.init()
 
-	console.log("Sound load")
+	})
+	// $scope.$on('$ionicView.loaded', function() {
+	// 	console.log("loaded")
+	// })
+	// setTimeout(function() {
+	// 	var result = SoundPlayListService.search("motivation")
+	// 	console.log("Result",result)
+
+	// }, 2000);
+
 };
