@@ -36,17 +36,20 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
     }
 
 
-
-    function initOptionPressedAndReleasedFunction(on_press, on_release) {
+    function initOptionPressedAndReleasedFunction(on_press, on_release, code, key, immediate, delay) {
 
         window.addEventListener("keydown", function(e){
+            var delay = 0;
+            if (!immediate) {
+                delay = delay || 250;
+            }
             evt = (e) ? e : window.event
-            if (evt.metaKey && evt.keyCode === 91 && !keydownNotRecent) {
+            if (((key && evt[key])||true) && evt.keyCode === code && !keydownNotRecent) {
                 on_press && on_press(e);
                 keydownNotRecent = true;
                 $timeout(function() {
                     keydownNotRecent = null;
-                }, 1000)
+                }, delay)
             }
             // if ((evt.ctrlKey && evt.keyCode === 17) && !keyupNotRecent) {
             //     on_press && on_press(e);
@@ -59,13 +62,17 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
 
         document.addEventListener('keyup', function (e){
 
-            if (e.keyCode === 91 && !keyupNotRecent) {
+            if (((key && evt[key])||true) && e.keyCode === code && !keyupNotRecent) {
+                var delay = 0;
+                if (!immediate) {
+                    delay = delay || 250;
+                }
                 console.log('command released', e);
                 on_release && on_release(e);
                 keyupNotRecent = true;
                 $timeout(function() {
                     keyupNotRecent = null;
-                }, 1000);
+                }, delay);
             }
             // if ((evt.ctrlKey || evt.keyCode === 17) && !keyupNotRecent) {
             //     on_release && on_release(e);
