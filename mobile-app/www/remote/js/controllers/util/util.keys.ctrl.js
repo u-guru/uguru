@@ -20,8 +20,20 @@ angular.module('uguru.util.controllers')
 			KF_INTERVALS:5,
 			SHAPE_DICT: getShapeDict()
 		}
+		//@gabrielle
+		var ctrlShortcuts = [
 
-
+			{	letter: 's',
+				description: 'Saves animation + stage',
+				keyCode: 83,
+				func: saveAll
+			},
+			{	letter: 't',
+				description:'Toggles sidebar tab forward',
+				keyCode: 84,
+				func: toggleTabForward
+			}
+		]
 
 		$scope.player = initAnimationPlayer();
 		$scope.timer = initAnimationTimer()
@@ -64,23 +76,22 @@ angular.module('uguru.util.controllers')
 		var parentViewContainer = document.querySelector('#keys');
 		var cmdPressed;
 		var ctrlPressed;
-		var saveAll = function(e) {console.log('ctrl', e.keyCode, 'pressed');$scope.saveStageHtml();  $scope.saveAnimationClass($scope.animation, $scope.user.name.split(' ')[0].toLowerCase())};
-		var toggleTabForward = function(e) {console.log('right-arrow', e.keyCode, 'pressed'); $scope.asideTabIndex = Math.abs(($scope.asideTabIndex + 1) % 3)};
+		function saveAll(e) {console.log('ctrl', e.keyCode, 'pressed');$scope.saveStageHtml();  $scope.saveAnimationClass($scope.animation, $scope.user.name.split(' ')[0].toLowerCase())};
+		function toggleTabForward(e) {console.log('right-arrow', e.keyCode, 'pressed'); $scope.asideTabIndex = Math.abs(($scope.asideTabIndex + 1) % 3)};
 
 
 		$scope.keyShortcuts = {
-				ctrl: [
-					{letter: 's', description: 'Saves animation + stage', keyCode: 83, func: saveAll},
-					{letter: 't', description:'Toggles sidebar tab forward', keyCode: 83, func: toggleTabForward}
-				]
+				ctrl: ctrlShortcuts
 		}
 		function initShortCuts() {
 			KeyboardService.initOptionPressedAndReleasedFunction(on_pressed_cmd, on_released_cmd, 91, 'metaKey', null, 1000);
 			KeyboardService.initOptionPressedAndReleasedFunction(on_pressed_ctrl, on_released_ctrl, 17, 'ctrlKey', null,  100);
 			function on_pressed_ctrl(e) {
 				ctrlPressed = true;
-				initKeyboardFunctionOnce('s', 83, saveAll);
-				initKeyboardFunctionOnce('t', 88, toggleTabForward);
+				for (var i = 0; i < $scope.keyShortcuts.ctrl.length; i++) {
+					var indexKeyshortcut = $scope.keyShortcuts.ctrl[i];
+					initKeyboardFunctionOnce(indexKeyshortcut.letter, indexKeyshortcut.keyCode, indexKeyshortcut.func);
+				}
 			}
 
 			function on_released_ctrl(e) {
