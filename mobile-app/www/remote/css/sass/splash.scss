@@ -163,10 +163,12 @@
 		height: 64px;
 		background: none;
 		border: 2px solid white;
+		padding: 0!important;
 		font-size: 20px;
 		font-weight: 600;
 		text-transform: uppercase;
 		color: white!important;
+		white-space: nowrap;
 		&:hover, &:focus {
 			@include opacity(.75);
 		}
@@ -5225,7 +5227,7 @@
 }
 
 /* ---------- Projector Animation [deprecate] */
-.splash-landing {
+// .splash-landing {
 	/* ---------- HOW IT WORKS */
 	/// HTML ///
 	.circle-nav {
@@ -6190,7 +6192,7 @@
 			background: none!important;
 		}
 	}
-}
+// }
 
 // MAP
 .university-svg-icon {
