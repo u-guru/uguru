@@ -32,6 +32,42 @@ angular.module('uguru.util.controllers')
 				description:'Toggles sidebar tab forward',
 				keyCode: 84,
 				func: toggleTabForward
+			},
+			{
+				letter: 'i',
+				description:'Opens import window',
+				keyCode: 73,
+				func: function() { $scope.root.triggers.runSequence(['click:#import-button:0']) }
+			},
+			{
+				letter: 'd',
+				description:'Imports codepen and opens child selector',
+				keyCode: 68,
+				func: function() { $scope.root.triggers.runSequence(['click:#import-codepen-button:0', 'click:#select-child-button:50']) }
+			},
+			{
+				letter: 'e',
+				description:'Opens export window',
+				keyCode: 69,
+				func: function() { $scope.root.triggers.runSequence(['click:#export-button:0']) }
+			},
+			{
+				letter: 'space',
+				description:'Plays stage',
+				keyCode: 32,
+				func: function() { $scope.root.triggers.runSequence(['click:#play-stage-button:0']) }
+			},
+			{
+				letter: 'p',
+				description:'Plays keyframes',
+				keyCode: 80,
+				func: function() { $scope.root.triggers.runSequence(['click:#play-keyframes-button:0']) }
+			},
+			{
+				letter: 'n',
+				description:'Adds new time state',
+				keyCode: 78,
+				func: function() { $scope.root.triggers.runSequence(['click:#add-time-state-button:0']) }
 			}
 		]
 
