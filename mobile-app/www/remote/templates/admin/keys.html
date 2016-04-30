@@ -2,6 +2,20 @@
     <header class='bg-slate flex-center height-48'>
         <h1 class="txt-20 caps semibold">Keyframe tool</h1>
     </header>
+    <div style='opacity:0.85;' class='absolute flex-wrap-center flex-stretch highest-z-index full-xy bg-charcoal' ng-if='showShortcuts'>
+        <h1 class='p20xy txt-7 text-center bg-azure full-x weight-600'>Keyboard Shortcuts</h1>
+        <ul class='full-xy width-50 flex-wrap-center' style='left:25%;'>
+            <li class='full-x ugrid-2'>
+                <div class='txt-7 flex-wrap-center text-right p10xy weight-900'> Hold CMD for > 1 second: </div>
+                <div class='txt-7 flex-wrap-center text-right p10xy '> show shortcuts! </div>
+            </li>
+            <hr class='full-x'>
+            <li ng-repeat='shortcut in keyShortcuts.ctrl track by $index' class='full-x ugrid-2'>
+                <div class='txt-7 flex-wrap-center text-right p10xy weight-900'> CTRL + {{shortcut.letter}}: </div>
+                <div class='txt-7 flex-wrap-center p10xy text-center'> {{shortcut.description}}: </div>
+            </li>
+        </ul>
+    </div>
     <main class='lyt-30-70-sidebar relative' style="height: calc(100% - 48px);">
         <section class="relative">
             <div id="keys-toolbar" class="flex-center-vertical-space-between bg-campus">
