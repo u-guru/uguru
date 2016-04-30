@@ -30,7 +30,7 @@ angular.module('uguru.util.controllers')
 		$scope.imports = {animations: [], stages:[]};
 		$scope.layout = {index: 0};
 		$scope.shapesDropdown = {options: Object.keys(defaults.SHAPE_DICT), label: "Inject Shape", size: "normal", selectedIndex:0, onOptionClick: addSVGPlaceholder}
-		$scope.saveDropdown = {options: ['choose one', 'stage', 'animation', 'both'], label: "Save", size: "small", selectedIndex:0, onOptionClick: saveDropdownOnClick}
+		$scope.stageDropdown = initStageDropdown()
 		$scope.animationDirectionOptions = {options: ["normal", "reverse", "alternate", "alternate-reverse"], selectedIndex: 0, size: "small", onOptionClick: setAnimationDirectionFunc};
 		$scope.animationTimingFunc = {options: ["ease", "ease-in", "ease-out", "ease-in-out", "linear", "set-start", "step-end", "cubic"], selectedIndex: 0, size: "small", onOptionClick: setAnimationTimeFunc};
 		$scope.animationFillMode = {options: ["forwards","none", "backwards", "both"], selectedIndex: 0, size:'small', onOptionClick:setAnimationFillMode};
@@ -60,15 +60,117 @@ angular.module('uguru.util.controllers')
 			}
 		}
 
+		var callbackKeyDownFunc;
+		var parentViewContainer = document.querySelector('#keys');
+		var cmdPressed;
 		function initShortCuts() {
 			KeyboardService.initOptionPressedAndReleasedFunction(on_pressed, on_released);
 			function on_pressed(e) {
-				// console.log('ctrl key pressed');
+				//save all
+				//view short cuts
+				//import
+				//left --> toggle aside
+				console.log('cmd pressed');
+				cmdPressed = true;
+				$timeout(function() {
+					if (cmdPressed) {
+						$scope.showShortcuts = true;
+					}
+				}, 1000)
+
 			}
 			function on_released(e) {
-				// console.log('ctrl key released');
+				cmdPressed = false;
+				$scope.showShortcuts = false;
+				parentViewContainer.removeEventListener(callbackKeyDownFunc, function(e) {console.log(e, 'keydown event listener removed')});
+
 			}
 		}
+
+		function findStageByName(stage_name) {
+			if (!$scope.imports.stages || !$scope.imports.stages.length) {
+				console.log('stages from amazon not yet loaded.. trying again in 2seconds')
+				$timeout(function() {
+					initStageDropdown();
+				}, 2000)
+				return;
+			}
+			for (var i = 0; i < $scope.imports.stages.length; i++) {
+				var stageIndex = $scope.imports.stages[i];
+				if (stageIndex.stageName === stage_name) {
+					return stageIndex;
+				}
+			}
+		}
+
+		function initStageDropdown() {
+			var lastActiveStageName = $localstorage.getObject('last_stage_active');
+			if (lastActiveStageName && lastActiveStageName.length) {
+				LoadingService.showAmbig('Loading..' + lastActiveStageName, 2500);
+				var lastUsedStage = findStageByName(lastActiveStageName);
+				if (lastUsedStage) {
+					var stageOptions = [lastActiveStageName, 'save', 'save and import', 'save and clear'];
+					var stageLabel = 'Active Stage'
+					$scope.stageDropdown = {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:true, size:'small'};
+					importPageDom(lastUsedStage);
+					return;
+				}
+
+			} else {
+				var stageOptions = ['none', 'import stage', 'create new stage'];
+				var stageLabel = "Current Stage"
+				$scope.stageDropdown = {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:false, size:'small'};
+				return {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:false, size:'small'};
+			}
+
+			// if (lastActiveStage)
+			// var stageInactiveOptions = ['import stage', 'init stage', 'clear stage'];
+			//if init stage, ask for name right away
+		}
+
+		function onStageDropdownClick(option, index) {
+				if ($scope.stageDropdown.stageActive) {
+					switch (index) {
+						case 1:
+							$scope.saveStageHtml();
+							$scope.stageDropdown.selectedIndex = 0;
+							break
+						case 2:
+							$scope.saveStageHtml();
+							$timeout(function() {
+								$scope.layout.index = 1;
+								$scope.importLayoutIndex = 3;
+								$scope.stageDropdown.selectedIndex = 0;
+							}, 1500);
+							break;
+						case 3:
+							$scope.saveStageHtml();
+							$timeout(function() {
+								$scope.stage = null;
+								$scope.resetStageDom();
+								$localstorage.setObject('last_stage_active', null);
+								$scope.stageDropdown.selectedIndex = 0;
+								var stageOptions = ['none', 'import stage', 'create new stage'];
+								var stageLabel = "Current Stage"
+								$scope.stageDropdown = {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:false, size:'small'};
+							}, 1500);
+							break;
+					}
+				} else {
+					switch (index) {
+						case 1:
+							$scope.layout.index = 1;
+							$scope.importLayoutIndex = 3;
+							$scope.stageDropdown.selectedIndex = 0;
+							return;
+						case 2:
+							$scope.layout.index = 1;
+							$scope.importLayoutIndex = 3;
+							$scope.stageDropdown.selectedIndex = 0;
+							return;
+					}
+				}
+			}
 
 		function saveDropdownOnClick(option, index) {
 			if (index === 1) {
@@ -108,6 +210,7 @@ angular.module('uguru.util.controllers')
 				$timeout(function() {
 					for (var i = 0; i < allDraggableElems.length; i++) {
 						var indexElem = allDraggableElems[i];
+						$scope.stage.components[i]._class = indexElem.getAttribute('class');
 						indexElem.setAttribute('draggable-' + i, null);
 						var clonedNode = indexElem.cloneNode(true);
 						clonedNode.removeAttribute('draggable');
@@ -116,7 +219,30 @@ angular.module('uguru.util.controllers')
 
 						var allContainers = document.querySelectorAll('.cloned-animatable-elem-container')
 						var indexContainer = allContainers[i];
-						indexContainer.appendChild(clonedNode);
+						var allShapes = ['path', 'line', 'polygon', 'polyline', 'g', 'rect', 'ellipse', 'circle', 'tspan', 'text'];
+						if (allShapes.indexOf(clonedNode.nodeName) > -1) {
+							var parentSVG = findParentSVG(indexElem);
+							var clonedParentSVG = parentSVG.cloneNode(true);
+							clonedParentSVG.innerHTML = "";
+							clonedParentSVG.appendChild(clonedNode);
+							clonedParentSVG.className += ' absolute';
+							clonedParentSVG.style.minWidth = "100px";
+							clonedParentSVG.style.minHeight = "100px";
+							clonedParentSVG.style.maxWidth = "200px";
+							clonedParentSVG.style.maxHeight = "200px";
+							indexContainer.appendChild(clonedParentSVG);
+							secondClonedParent = clonedParentSVG.cloneNode(true)
+							indexContainer.appendChild(secondClonedParent);
+						} else {
+							clonedNode.className += ' absolute';
+							clonedNode.style.minWidth = "100px";
+							clonedNode.style.minHeight = "100px";
+							clonedNode.style.maxWidth = "200px";
+							clonedNode.style.maxHeight = "200px";
+							indexContainer.appendChild(clonedNode);
+							secondClonedNode = clonedNode.cloneNode(true)
+							indexContainer.appendChild(secondClonedNode);
+						}
 					}
 				})
 			})
@@ -354,7 +480,17 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.swapFocusedAnimatedElem = function(anim_elem) {
-			var newAnimElem = document.querySelector(anim_elem.selector);
+			$scope.actor.id = null;
+			$scope.actor = null;
+			// $scope.actor.setAttribute(anim_elem.replace('[','').replace(']', ''), null);
+			// $scope.actor.setAttribute('draggable', null);
+			var newStageElem = document.querySelector(anim_elem.selector);
+			$scope.setAnimatableElement({target:newStageElem});
+			$timeout(function() {
+				updateStageElemCloneAside();
+            	renderAsideAnimatableElems();
+			})
+
 		}
 
 		$scope.setAnimatableElement = function($event) {
@@ -363,44 +499,32 @@ angular.module('uguru.util.controllers')
 
 			var elem = $event.target;
 
-			if (['polgyon', 'rect', 'circle', 'path', 'text'].indexOf(elem.nodeName) > -1) {
-				var elem = elem.parentNode;
-				if (['polgyon', 'rect', 'circle', 'path', 'text'].indexOf(elem.nodeName) > -1) {
-					var elem = elem.parentNode;
-					if (['polgyon', 'rect', 'circle', 'path', 'text'].indexOf(elem.nodeName) > -1) {
-						var elem = elem.parentNode;
-					}
-				}
-			}
 			var allCurrentStageElems = document.querySelectorAll('#stage-elem');
-			console.log('clearing all that are stage elems');
 			for (var i = 0; i < allCurrentStageElems.length; i++) {
 				var indexCurrentStageElem = allCurrentStageElems[i];
 				console.log('removing id stage-elem for elem', indexCurrentStageElem);
 				indexCurrentStageElem.id = null;
 			}
 
-			elem.id = $scope.pageDom.animElemSelector;
+			elem.id = $scope.pageDom.animElemSelector || '#stage-elem';
 			$scope.actor = elem;
-			console.log('this was called');
 			LoadingService.showMsg('updating...', 1000, function() {
 				LoadingService.showSuccess('Complete!', 1000);
 			})
 			var stageElem = document.querySelector('#stage-container');
-			console.log(elem);
-			elem.style.stroke = 'white';
-			if (elem.nodeName === 'svg') {
-				var allInnerElements = elem.querySelectorAll('polgyon, rect, circle, path, text');
-				for (var i = 0; i < allInnerElements.length; i++) {
-					var indexElem = allInnerElements[i];
-					if (indexElem.nodeName === 'text') {
-						indexElem.style.fill = 'white';
-					} else {
-						indexElem.style.stroke = 'white';
-					}
+			// elem.style.stroke = 'white';
+			// if (elem.nodeName === 'svg') {
+			// 	var allInnerElements = elem.querySelectorAll('polgyon, rect, circle, path, text');
+			// 	for (var i = 0; i < allInnerElements.length; i++) {
+			// 		var indexElem = allInnerElements[i];
+			// 		if (indexElem.nodeName === 'text') {
+			// 			indexElem.style.fill = 'white';
+			// 		} else {
+			// 			indexElem.style.stroke = 'white';
+			// 		}
 
-				}
-			}
+			// 	}
+			// }
 			$compile(stageElem)($scope);
 			elem.classList.add('animated', 'pulse');
 			$timeout(function() {
@@ -408,7 +532,7 @@ angular.module('uguru.util.controllers')
 			}, 1000)
 		}
 
-		$scope.importPageDom = function(stage_template) {
+		function importPageDom(stage_template) {
 
 			$scope.stage = stage_template;
 			for (var i = 0; i < $scope.stage.time_states.length; i++) {
@@ -423,12 +547,18 @@ angular.module('uguru.util.controllers')
 						var js_anim_obj = importAnimationFromRawCssText(cssText, animName);
 						var final_obj = initAnimationFromAnimObj(js_anim_obj);
 						indexAction.animation = final_obj;
-						console.log(indexAction.animation.obj.name, indexAction.animation.obj)
 					}
 				}
 			}
+			$localstorage.setObject('last_stage_active', $scope.stage.stageName);
+			if (!$scope.stageDropdown.stageActive) {
+				$timeout(function() {
+					initStageDropdown();
+				})
+			}
 			$scope.updatePageDom(stage_template.stageName, stage_template.stageHtml, stage_template.stageCss, stage_template.animElemSelector.replace('#', ''));
 		}
+		$scope.importPageDom = importPageDom;
 
 		function findAnimationByName(name, animation_arr) {
 			for (var i = 0; i < animation_arr.length; i++) {
@@ -445,15 +575,33 @@ angular.module('uguru.util.controllers')
 				stageElem = stageContainer.firstChild;
 			}
 			var clonedNode = stageElem.cloneNode(true);
-			clonedNode.id = 'stage-elem-clone';
-			clonedNode.style.minWidth = "150px";
-			clonedNode.style.minHeight = "150px";
-			clonedNode.style.maxWidth = "200px";
-			clonedNode.style.maxHeight = "200px";
 			var asideElementContainer = document.querySelector('#stage-elem-clone-container')
+
 			if (asideElementContainer) {
 				asideElementContainer.innerHTML = '';
-				asideElementContainer.appendChild(clonedNode);
+				var allShapes = ['path', 'line', 'polygon', 'polyline', 'g', 'rect', 'ellipse', 'circle', 'tspan', 'text'];
+				if (allShapes.indexOf(clonedNode.nodeName) > -1) {
+					var parentSVG = findParentSVG(stageElem);
+					var clonedParentSVG = parentSVG.cloneNode(true);
+					clonedParentSVG.innerHTML = "";
+					clonedParentSVG.appendChild(clonedNode);
+					clonedParentSVG.id = 'stage-elem-clone';
+					clonedParentSVG.className += ' absolute';
+					clonedParentSVG.style.minWidth = "150px";
+					clonedParentSVG.style.minHeight = "150px";
+					clonedParentSVG.style.maxWidth = "200px";
+					clonedParentSVG.style.maxHeight = "200px";
+					asideElementContainer.appendChild(clonedParentSVG);
+				}
+				else {
+					clonedNode.id = 'stage-elem-clone';
+					clonedNode.style.minWidth = "150px";
+					clonedNode.style.minHeight = "150px";
+					clonedNode.className += ' absolute';
+					clonedNode.style.maxWidth = "200px";
+					clonedNode.style.maxHeight = "200px";
+					asideElementContainer.appendChild(clonedNode);
+				}
 			}
 			$timeout(function() {
 				$scope.$apply();
@@ -466,25 +614,36 @@ angular.module('uguru.util.controllers')
 			$scope.pageDom.stageName = stage_name || $scope.pageDom.stageName;
 			$scope.pageDom.animElemSelector = anim_selector || $scope.pageDom.animElemSelector;
 
-			LoadingService.showAmbig('Updating..', 1000, function() {
-				LoadingService.showSuccess('Saved!', 1500);
-				$scope.layout.index = 0;
-			});
-
+			LoadingService.showAmbig(null, 1000);
 			if ($scope.pageDom.stageHtml && $scope.pageDom.stageHtml.length) {
 				var stageContainer = document.querySelector('#stage-container');
 				stageContainer.innerHTML = $scope.pageDom.stageHtml;
 				if (stageContainer.firstChild) {
 					var stageElem = document.querySelector('#stage-elem');
-					if (!stageElem) {
-						stageElem = stageContainer.firstChild;
-						stageElem.id = 'stage-elem'
-						$scope.actor = stageElem
+					if (stageElem) {
+						$scope.actor = stageElem;
 						stageElem.setAttribute("draggable", true);
+						updateStageElemCloneAside();
+					} else {
+						$scope.actor = stageContainer.firstChild;
+						stageContainer.firstChild.setAttribute("draggable", true);
+						updateStageElemCloneAside();
+					}
+					if (stageContainer.children && stageContainer.children.length === 1) {
+						var firstChild = stageContainer.children[0];
+						var firstChildDimensions = firstChild.getBoundingClientRect();
+						console.log(firstChild);
+						if (!firstChildDimensions.height || !firstChildDimensions.width) {
+							firstChild.className += ' absolute';
+							firstChild.style.height = "75%";
+							firstChild.style.width = "75%";
+							firstChild.style.right = "12.5%";
+							firstChild.style.top = "12.5%";
+						}
 					}
 				}
-				$compile(stageElem)($scope);
-				updateStageElemCloneAside();
+				$compile(stageContainer)($scope);
+				$scope.asideTabIndex = 0;
 				// var clonedNode = stageElem.cloneNode(true);
 				// clonedNode.id = 'stage-elem-clone';
 				// clonedNode.style.minWidth = "200px";
@@ -548,13 +707,16 @@ angular.module('uguru.util.controllers')
 
 
 		$scope.setActiveKeyFrame = function(value) {
+
 			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX', 'rotate3DAngle': 'rotate'};
 			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'deg', 'skewY': 'deg', 'rotate3DZ':'deg', 'rotate3DY': 'deg', 'rotate3DX': 'deg', 'rotate3DAngle': 'deg'};
 
 			var oldValue = $scope.animation.selected_index;
 
 			var newValue = Math.floor(parseInt(value) * (100/defaults.KF_INTERVALS));
+
 			var newPercentValue = getNthSortedKeyText($scope.animation.obj, newValue);
+			console.log(newPercentValue);
 			$scope.animation.selected_kf_index = value;
 			$scope.animation.selected_index = newValue;
 			$scope.animation.selected_percent = newPercentValue + '%';
@@ -567,7 +729,7 @@ angular.module('uguru.util.controllers')
 			var cssToChange;
 			if (true) {
 				var transformProperties = Object.keys(propertyDictCssMap);
-				var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
+				var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'transformOrigin', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 				var cssToChange = {transform: {}, etc: {}};
 				for (var i = 0; i < currentPropertiesModified.length - 1; i++) {
 					var indexPropertyName = currentPropertiesModified[i]
@@ -575,7 +737,11 @@ angular.module('uguru.util.controllers')
 					for (var j = 0; j < newValue - 1; j++) {
 						console.log('checking t=', j, 'for traces of', indexPropertyName);
 						var previousIndexPercentValue = getNthSortedKeyText($scope.animation.obj, j);
+						if (!previousIndexPercentValue) {
+							continue;
+						}
 						var previousIndexProperty = $scope.animation.properties[previousIndexPercentValue + '%'];
+						console.log(previousIndexProperty)
 						var previousPropertyModifiedKeys = Object.keys(previousIndexProperty.modified);
 						if (previousPropertyModifiedKeys.indexOf(indexPropertyName) > -1) {
 							if (indexPropertyName in propertyDictCssMap) {
@@ -800,8 +966,8 @@ angular.module('uguru.util.controllers')
 				$scope.animation.flex_selected_index = 0;
 
 
-
-				elem.style[browserPrefix + "AnimationName"] = $scope.animation.attr.name;
+				$scope.animation.obj.name = $scope.animation.obj.name + '-edit';
+				elem.style[browserPrefix + "AnimationName"] = $scope.animation.obj.name;
 
 
 
@@ -930,6 +1096,7 @@ angular.module('uguru.util.controllers')
 						case "translateZ":
 							csstext += 'translateZ(' + dance_obj.translateZ  + 'px' + ') '
 							break;
+
 						case "scale3DX":
 							csstext += 'scaleX(' + dance_obj.scale3DX  + ') '
 							break
@@ -1181,18 +1348,23 @@ angular.module('uguru.util.controllers')
 		}
 
 		function getNthSortedKeyText(anim, index) {
+				console.log(anim, index);
 				var keyTexts = [];
 				for (var i = 0; i < anim.cssRules.length; i++) {
 					var cssIndexKFRule = anim.cssRules.item(i);
+					console.log(cssIndexKFRule)
 					if (cssIndexKFRule) {
 						var keyText = cssIndexKFRule.keyText;
-						keyTexts.push(parseFloat(keyText.replace('%')));
+						keyTexts.push(parseFloat(keyText.replace('%', '')));
 					}
 				}
+				console.log('before sort', keyTexts.slice())
 				keyTexts.sort(function(a, b) {
 					return b - a;
-				});
-				return keyTexts.reverse()[index]
+				}).reverse();
+				console.log('after sort', keyTexts.slice())
+				// console.log(keyTexts.slice(), index, keyTexts.reverse(), keyTexts.reverse())
+				return keyTexts[keyTexts.indexOf(index)];
 				// anim.cssRules.item(index)
 			}
 
@@ -1543,6 +1715,7 @@ angular.module('uguru.util.controllers')
 
 			var percentage = keyframe_percent + '%'
 			anim.obj.deleteRule(percentage);
+			console.log('properties', anim.properties, keyframe_percent);
 			transformObj = anim.properties[percentage];
 			transformObj.edited = true;
 			transformObj[property] = value;
@@ -1570,13 +1743,14 @@ angular.module('uguru.util.controllers')
 			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX', 'rotate3DAngle': 'rotate'};
 			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'deg', 'skewY': 'deg', 'rotate3DZ':'deg', 'rotate3DY': 'deg', 'rotate3DX': 'deg', 'rotate3DAngle': 'deg'};
 			var transformProperties = Object.keys(propertyDictCssMap);
-			var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
+			var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'transformOrigin', 'transformOrigin', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 			var cssToChange = {transform: {}, etc: {}};
 			var newPropertiesToModify = Object.keys($scope.animation.selected_keyframe.modified);
 
 			for(var i = 0; i < newPropertiesToModify.length; i++) {
 				var indexPropertyName = newPropertiesToModify[i];
 
+				console.log(indexPropertyName);
 				var propertyValue = $scope.animation.selected_keyframe[indexPropertyName]
 
 				if (indexPropertyName in propertyDictCssMap) {
@@ -1752,6 +1926,9 @@ angular.module('uguru.util.controllers')
 				this.translateX = 0;
 				this.translateY = 0;
 				this.translateZ = 0;
+				this.transformOriginX = '50%';
+				this.transformOriginY = '50%';
+				this.transformOriginZ = 0;
 				this.scale3DX = 1;
 				this.scale3DY = 1;
 				this.scale3DZ = 1;
@@ -1916,6 +2093,20 @@ angular.module('uguru.util.controllers')
 			}
 		}
 
+		function hardCodeStageDimensions() {
+			$timeout(function() {
+				var stageContainer = document.querySelector('#stage-container');
+				var stageDimensions = stageContainer.getBoundingClientRect();
+				console.log(stageDimensions);
+				var height = stageDimensions.height;
+				var width = stageDimensions.width;
+				stageContainer.style.height = height + 'px;'
+				stageContainer.style.width = width + 'px;'
+				console.log(stageContainer);
+			}, 3000)
+
+		}
+
 
 		function initView() {
 			browserPrefix = getBrowserPrefix();
@@ -1925,6 +2116,8 @@ angular.module('uguru.util.controllers')
 			false && loadAllS3Files();
 			importAnimations();
 			importStageHtml();
+			initShortCuts();
+			hardCodeStageDimensions();
 
 			$scope.defaults = getDefaults();
 			applyDefaultProperties($scope.defaults);
@@ -2019,18 +2212,18 @@ angular.module('uguru.util.controllers')
 			}
 		}
 
-		$scope.saveStageHtml = function() {
+		$scope.saveStageHtml = function(ignore_loader) {
 
 			console.log($scope.imports);
-			if ($scope.stage && $scope.stage.time_states) {
+			if ($scope.stage && $scope.stage.stageName) {
 				$scope.stage.stageHtml = document.querySelector('#stage-container').innerHTML;
 				var stageIndex = checkIfStageAlreadyExists($scope.stage, $scope.imports.stages)
 
 				if (stageIndex < 0) {
-					LoadingService.showMsg('Adding ' + $scope.stage.stageName + ' stage to server', 2500);
+					!ignore_loader && LoadingService.showMsg('Adding ' + $scope.stage.stageName + ' stage to server', 2500);
 					$scope.imports.stages.push($scope.stage);
 				} else {
-					LoadingService.showMsg('Updating ' + $scope.stage.stageName + ' animation to server', 2500);
+					!ignore_loader &&  LoadingService.showMsg('Updating ' + $scope.stage.stageName + ' animation to server', 2500);
 					var removedElem = $scope.imports.stages.splice(stageIndex, 1);
 					console.log('removed', removedElem && removedElem.stageName);
 					$scope.imports.stages.push($scope.stage);
@@ -2068,10 +2261,14 @@ angular.module('uguru.util.controllers')
 			return animation_arr
 		}
 		var tempStage = {};
-		$scope.importCodepenTemplate = function(url) {
-			if (!url) {
+		$scope.importCodepenTemplate = function(url, name) {
+			tempState = {};
+			if (!url || !name) {
+				LoadingService.showMsg('Please add a name to the template so we can save it!', 2000);
 				return;
 			}
+
+
 			$timeout(function() {
 				FileService.getCodepenAssets('html', url + '.html', htmlCallback);
 			})
@@ -2081,35 +2278,79 @@ angular.module('uguru.util.controllers')
 
 			$timeout(function() {
 				LoadingService.hide();
-				tempStage.name = 'Codepen Export';
+				tempStage.name = name;
 				$scope.stage = initNewStage(tempStage.name, tempStage.html, tempStage.css);
 
 
 				$scope.updatePageDom($scope.stage.stageName, $scope.stage.stageHtml, $scope.stage.stageCss);
-				$timeout(function() {
-					LoadingService.showSuccess('Successfully loaded');
-				}, 1000);
+				var stageOptions = [tempStage.name, 'save', 'save and import', 'save and clear'];
+				var stageLabel = 'Active Stage'
+				$scope.stageDropdown = {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:true, size:'small'};
+				// $scope.saveStageHtml(true);
+
 			}, 3000);
 			LoadingService.showAmbig('Importing...', 2500);
 			function cssCallback(resp) {
-				console.log('css', resp)
 				tempStage.css = resp;
 			}
 			function htmlCallback(resp) {
-				console.log('html', resp)
 				tempStage.html = resp;
 			}
 		}
 
 		function saveToMasterS3(filename, url, obj) {
 			console.log('about to save to master with url', url + filename, obj);
-			FileService.postS3JsonFile(JSON.stringify(obj), null, url + filename, function(name, resp) {console.log('resp', resp)});
+			FileService.postS3JsonFile(JSON.stringify(obj), null, url + filename, function(name, resp) {});
 		}
 
 		function importAnimations() {
 			$scope.imports = $localstorage.getObject('imports');
 			var animation_url = 'https://s3.amazonaws.com/uguru-admin/master/animations.json';
 			FileService.getS3JsonFile(null, animation_url, function(name, resp) {$scope.imports.animations = processAnimations(resp);});
+		}
+
+		function defaultStates() {
+			var preAppStates = {
+
+				'templates/splash.html':'SplashController',
+				'templates/elements/layouts/powerups.html': 'PowerupController',
+				'templates/maps.html': 'GMapController',
+				'templates/splash/swiper/splash.hiw.container.html': 'HowItWorksController',
+				'templates/splash/swiper/splash.account.container.html': 'SignupController',
+				'templates/splash/swiper/splash.demographics.container.html': 'DemographicController',
+				'templates/splash/swiper/splash.courses.container.html': 'CoursesController',
+				'templates/splash/swiper/splash.access.container.html': 'AccessController',
+				'templates/splash/layout/university.search.html': 'UniversitySearchController',
+				'templates/splash/layout/splash.sidebar.html': 'SidebarController',
+			}
+			allTemplates = Object.keys(preAppStates);
+			for (var i = 0; i < allTemplates.length; i++) {
+				var html = '<div ng-include="img_base + ' + "'" + allTemplates[i] + "'" + '" ng-controller="' + preAppStates[allTemplates[i]] + '"> </div>'
+				preAppStates[allTemplates[i]] = {controller: preAppStates[allTemplates[i]], owner: 'samir', url: allTemplates[i] + "", html:html};
+			}
+			preAppStates[allTemplates[0]].name = 'Splash';
+			preAppStates[allTemplates[1]].name = 'Splash Powerups';
+			preAppStates[allTemplates[2]].name = 'Splash Maps';
+			preAppStates[allTemplates[3]].name = 'Splash Hiw';
+			preAppStates[allTemplates[4]].name = 'Splash Account';
+			preAppStates[allTemplates[5]].name = 'Splash Demographics';
+			preAppStates[allTemplates[6]].name = 'Splash Courses';
+			preAppStates[allTemplates[7]].name = 'Splash Access';
+			preAppStates[allTemplates[8]].name = 'Splash Search University';
+			preAppStates[allTemplates[9]].name = 'Splash Sidebar';
+			for (var i = 0; i < allTemplates.length; i++) {
+				var template = preAppStates[allTemplates[i]];
+				$scope.imports.stages.push(initNewStage(template.name, template.html, ''));
+			}
+			// $scope.saveStageHtml();
+		}
+
+		function processStages(stages) {
+			for (var i = 0; i < stages.length; i++) {
+				var indexStage = stages[i];
+				indexStage.owner = 'samir';
+			}
+
 		}
 
 		function importStageHtml() {
@@ -2119,7 +2360,7 @@ angular.module('uguru.util.controllers')
 				$localstorage.setObject('imports', $scope.imports);
 			}
 			var animation_url = 'https://s3.amazonaws.com/uguru-admin/master/stages.json';
-			FileService.getS3JsonFile(null, animation_url, function(name, resp) {console.log('import stage resp', resp); $scope.imports.stages = resp;});
+			FileService.getS3JsonFile(null, animation_url, function(name, resp) { $scope.imports.stages = resp; processStages($scope.imports.stages);});
 		}
 
 
@@ -2175,6 +2416,7 @@ angular.module('uguru.util.controllers')
 					var indexContainer = allContainers[i];
 					$scope.stage.components[i].type = indexElem.nodeName;
 					$scope.stage.components[i].orig_elem = indexElem;
+					$scope.stage.components[i]._class = indexElem.getAttribute('class');
 					if (allShapes.indexOf(clonedNode.nodeName) > - 1) {
 						var parentSVG = findParentSVG(indexElem);
 						var clonedParentSVG = parentSVG.cloneNode(true);
@@ -2283,10 +2525,10 @@ angular.module('uguru.util.controllers')
 
 			initAll();
 			$timeout(function() {
-				// exportExternalCSSKeyFrameFiles(['animate'])
+				// exportExternalCSSKeyFrameFiles(['animation'])
 				// angular.element(document.querySelector('#import-button')).triggerHandler('click');
-				$scope.importCodepenTemplate('http://codepen.io/teamuguru/pen/29ce58caa079980bb9375afa30efcb57');
-			}, 0)
+				// $scope.importCodepenTemplate('http://codepen.io/teamuguru/pen/29ce58caa079980bb9375afa30efcb57');
+			}, 5000)
 
 		}, 500)
 

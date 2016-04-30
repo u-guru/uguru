@@ -57,7 +57,7 @@
                 </ul>
                 <ul class='p15-grid flex-center-vertical txt-center'>
                     <li>
-                        <dropdown class='height-32' ng-model="saveDropdown"> </dropdown>
+                        <dropdown class='height-32' ng-model="stageDropdown"> </dropdown>
                     </li>
                     <li>
                         <dropdown class="height-32" ng-model="animationDropdown"> </dropdown>
@@ -124,23 +124,25 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bg-azure full-xy ugrid-2 p15-grid flex-stretch" ng-init="animationImportSearchText" ng-if='importLayoutIndex === 1'>
+                    <div class="bg-azure full-xy ugrid-2 p15-grid flex-stretch overflow-auto" ng-init="animationImportSearchText" ng-if='importLayoutIndex === 1'>
                         <div class='flex-wrap-center ugrid-2 full-x'>
                             <h1 class='full-x text-7 txt-white text-center'>Import an Animation Class</h1>
                             <input ng-model="animationImportSearchText" placeholder="search predefined animation" type='search'> </input>
                         </div>
-                        <ul class='flex-wrap-center ugrid-4 full-x'>
-                            <li class='m05x p10x bg-white txt-azure relative flex-wrap-center' ng-repeat='animation in imports.animations | filter: animationImportSearchText:name | limitTo: 16 track by $index' style='min-height:40px;' ng-click="importFromCSSText(animation.cssText, animation.name, animation.classText)">
-                                <div class='absolute ugrid-2 full-xy flex-wrap-center left-0'>
-                                    <span class='full-y flex-wrap-center txt-center txt-1 uppercase weight-700 bg-cerise-50p' style='width:20%;'>
-                                        {{animation.owner}}
-                                    </span>
-                                    <h4 class='txt-2 text-center flex-wrap-center full-y' style='width:80%'>
-                                        {{animation.name}}
-                                    </h4>
-                                </div>
-                            </li>
-                        </ul>
+                        <div>
+                            <ul class='flex-wrap full-x p15-grid'>
+                                <li ng-repeat='animation in imports.animations | filter: animationImportSearchText:name | limitTo: 16 track by $index'>
+                                    <a class="flex" ng-click="importFromCSSText(animation.cssText, animation.name, animation.classText)">
+                                        <span class='bg-robin radius-2-left flex-center-vertical p10x txt-1 uppercase weight-700 height-36'>
+                                            {{animation.owner}}
+                                        </span>
+                                        <h4 class='radius-2-right flex-center-vertical p10x txt-2 semibold bg-white txt-slate height-36'>
+                                            {{animation.name}}
+                                        </h4>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="bg-azure full-xy ugrid-2 p15-grid flex-stretch relative" ng-if='importLayoutIndex === 2'>
                         <div class='flex-wrap-center flex-stretch full-xy absolute full-xy top-0 left-0' ng-init="goToEditPageDom()">
@@ -175,13 +177,20 @@
                         </div>
                     </div>
                     <div class="bg-campus-50p full-xy overflow-auto" ng-init="animationHTMLTemplateSearchText" ng-if='importLayoutIndex === 3'>
-                        <div class="p15xy">
-                            <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>Import from Codepen</h1>
-                            <div class='flex full-x'>
-                                <input class='p15x radius-2-left txt-18 height-48 width-50p' style='padding-top: 0; padding-bottom: 0;' ng-model="importCodepenUrl" placeholder="http://codepen.io/teamuguru/pen/d75c38eadaa88ef1972842c4e85c9f0d.html" type='search'> </input>
-                                <button style='max-width: 200px;' class='height-48 full-x bg-moxie radius-2-right' ng-click='importCodepenTemplate(importCodepenUrl)'> Import </button>
+                        <div class="ugrid-2 p15-grid">
+                            <div class="flex-wrap">
+                                <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>1. Import from Codepen</h1>
+                                <input class='flex-center-vertical full-x p15x radius-2 txt-18 height-48' style='padding-top: 0; padding-bottom: 0;' ng-model="importCodepenUrl" placeholder="http://codepen.io/teamuguru/pen/d75c38eadaa88ef1972842c4e85c9f0d.html" type='search'> </input>
+                            </div>
+                            <div class="flex-wrap">
+                                <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>2. Set stage name</h1>
+                                <input class='flex-center-vertical p15x radius-2-left txt-18 height-48 width-75p' style='padding-top: 0; padding-bottom: 0;' ng-model="importStageName" placeholder="stage name"> </input>
+                                <div class="width-25p">
+                                    <button class='height-48 bg-moxie radius-2-right' ng-click='importCodepenTemplate(importCodepenUrl, importStageName)'> Import </button>
+                                </div>
                             </div>
                         </div>
+                        <hr class='full-x opacity-50'>
                         <div class="p15x-p15top">
                             <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>Import an HTML Template</h1>
                             <input ng-model="animationHTMLTemplateSearchText" class='p15x radius-2 txt-18 height-48 width-50p' style="padding-top: 0; padding-bottom: 0;" placeholder="search predefined stage template" type='search'/>
@@ -229,7 +238,7 @@
                             <li class="flex-center-vertical-wrap-space-between">
                                 <h2 class="txt-18 semibold m15right">translateX</h2>
                                 <div class="flex-center-vertical">
-                                    <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="number"  ng-model='defaults.properties.tranformOriginY'  step="1" placeholder="0" ng-mouseup="updateDefaults(defaults.properties.transformOriginX, 'transformOriginX')" ng-model='animation.selected_keyframe.translateX'/>
+                                    <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="number"  ng-model='defaults.properties.translateX'  step="1" placeholder="0" ng-mouseup="updateDefaults(defaults.properties.translateX, 'translateX')" ng-model='animation.selected_keyframe.translateX'/>
                                     <span class="bg-campus block txt-16 p05xy radius-2-right">%&nbsp;&dtrif;</span>
                                 </div>
                                 <div class="range-container small full-x m10top">
@@ -376,6 +385,48 @@
                                 </div>
                             </li>
                             <li class="flex-center-vertical-wrap-space-between">
+                                <h2 class="txt-18 semibold m15right">transformOriginX</h2>
+                                <div class="flex-center-vertical">
+                                    <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="number"  ng-model='defaults.properties.tranformOriginX'  step="1" placeholder="0" ng-mouseup="updateDefaults(defaults.properties.transformOriginX, 'transformOriginX')" ng-model='animation.selected_keyframe.transformOriginX'/>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-right">%&nbsp;&dtrif;</span>
+                                </div>
+                                <div class="range-container small full-x m10top">
+                                    <div>
+                                        <span>-100</span>
+                                        <input ng-change="applyPropertyChange(animation.selected_keyframe.transformOriginX, 'transformOriginX')" ng-model='animation.selected_keyframe.transformOriginX' class="range-slider" type="range" size="2" min="-100" max="100" list="numbers" />
+                                        <span>100</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="flex-center-vertical-wrap-space-between">
+                                <h2 class="txt-18 semibold m15right">transformOriginY</h2>
+                                <div class="flex-center-vertical">
+                                    <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="number"  ng-model='defaults.properties.tranformOriginY'  step="1" placeholder="0" ng-mouseup="updateDefaults(defaults.properties.transformOriginY, 'transformOriginY')" ng-model='animation.selected_keyframe.transformOriginY'/>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-right">%&nbsp;&dtrif;</span>
+                                </div>
+                                <div class="range-container small full-x m10top">
+                                    <div>
+                                        <span>-100</span>
+                                        <input ng-change="applyPropertyChange(animation.selected_keyframe.transformOriginY, 'transformOriginY')" ng-model='animation.selected_keyframe.transformOriginY' class="range-slider" type="range" size="2" min="-100" max="100" list="numbers" />
+                                        <span>100</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="flex-center-vertical-wrap-space-between">
+                                <h2 class="txt-18 semibold m15right">transformOriginZ</h2>
+                                <div class="flex-center-vertical">
+                                    <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="number"  ng-model='defaults.properties.tranformOriginZ'  step="1" placeholder="0" ng-mouseup="updateDefaults(defaults.properties.transformOriginZ, 'transformOriginZ')" ng-model='animation.selected_keyframe.transformOriginZ'/>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-right">px</span>
+                                </div>
+                                <div class="range-container small full-x m10top">
+                                    <div>
+                                        <span>-100</span>
+                                        <input ng-change="applyPropertyChange(animation.selected_keyframe.transformOriginZ, 'transformOriginZ')" ng-model='animation.selected_keyframe.transformOriginZ' class="range-slider" type="range" size="2" min="-100" max="100" list="numbers" />
+                                        <span>100</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="flex-center-vertical-wrap-space-between">
                                 <h2 class="txt-18 semibold m15right">opacity</h2>
                                 <div class="flex-center-vertical">
                                     <input ng-model="animation.selected_keyframe.opacity" ng-change="applyPropertyChange(animation.selected_keyframe.opacity, 'opacity')" class="radius-2 txt-center p05xy" size="4" style="height: 30px;" type="" step="0.01" placeholder="0" ng-model='animation.selected_keyframe.opacity'/>
@@ -485,13 +536,13 @@
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='cancelTimeStateActionComponentInputFocused()' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                 <div class='full-xy overflow-auto no-scrollbar'>
                     <h1 class='txt-36 txt-center semibold p15x-p15top'>
-                        Select a component to animate at at T={{stage.selectComponentModeTime}}
+                        Select a component to animate at T={{stage.selectComponentModeTime}}
                     </h1>
                     <div class='all-components-container'>
                         <ul id="keys-select-components" class='ugrid-3 p15-grid full-x'>
                             <li ng-repeat='component in stage.components track by $index'>
                                 <a class="block p15-grid bg-white-10p radius-2" ng-click='selectComponentElement(component, $index, $event)'>
-                                    <h1 class='full-x semibold txt-18 txt-center m05bottom'> {{component.selector}}, {{component.type}} </h1>
+                                    <h1 class='full-x semibold txt-18 txt-center m05bottom' style="height: 36px;"> {{component._class}} </h1>
                                     <div class="flex-center cloned-animatable-elem-container relative preview-container"></div>
                                 </a>
                             </li>
@@ -634,24 +685,26 @@
         </section>
         <aside class='bg-charcoal relative'>
             <div class="full-x">
-                <tabs id="keys-aside-menu" class='full-xy bg-robin-50p' options="['States', 'keyframes', 'Elements']" index="asideTabIndex"> </tabs>
+                <tabs id="keys-aside-menu" class='full-xy bg-robin-50p' options="['Stage', 'keyframes', 'Elements']" index="asideTabIndex"> </tabs>
             </div>
             <div class="relative" style="height: calc(100% - 60px); padding-bottom: 64px;" ng-hide='asideTabIndex !== 2'>
                 <div class="full-y overflow-auto no-scrollbar">
-                    <h1 class='p15xy txt-20 weight-700 uppercase full-x txt-white txt-center'>Selected Keyframe</h1>
+                    <h1 class='p15xy txt-20 weight-700 uppercase full-x txt-white txt-center'>Selected Animated Components</h1>
                     <div class='flex-wrap-center relative full-x bg-white-25p p15xy preview-container' id='stage-elem-clone-container'></div>
                     <ul class="p15-grid">
                         <li ng-repeat='anim_element in stage.anim_elements track by $index'>
                             <div class="flex full-x">
-                                <div class="flex" style="width: calc(100% - 72px)">
-                                    <span class="flex-center-vertical p10x bg-campus radius-2-left semibold txt-18 height-36">{{anim_element.type}}</span>
-                                    <span class="full-x flex-center-vertical bg-white-10p semibold txt-18 height-36">
-                                        <div class="relative preview-container aside-anim-element-item height-36 width-36 bg-white-10p"></div>
-                                        <span class="p10x" style="width: calc(100% - 36px);">{{anim_element.selector}}</span>
+                                <div class="flex" style="width: calc(100% - 128px)">
+                                    <span class="radius-2-left flex-center-vertical bg-white-10p semibold txt-18 height-64">
+                                        <div class="relative preview-container aside-anim-element-item height-64 width-64 bg-white-10p"></div>
+                                        <!-- <span class="p10x">{{anim_element.selector}}</span> -->
                                     </span>
+                                    <span class="flex-center-vertical p10x bg-campus-50p semibold txt-18 height-64" style="width: calc(100% - 64px);">{{anim_element.class}}</span>
                                 </div>
-                                <a class="flex-center svg-white svg-36-24 svg-stroke-8 bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/search.html'" ng-click='swapFocusedAnimatedElem(anim_element)'></a>
-                                <a class="flex-center close-button svg-white svg-36-24 svg-stroke-8 bg bg-crimson radius-2-right" ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click='stage.anim_elements.splice($index, 1)'></a>
+                                <a class="flex-center svg-white svg-64-48 svg-stroke-8 bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/search.html'" ng-click='swapFocusedAnimatedElem(anim_element)'></a>
+                                <div class="width-64 height-64 overflow-hidden radius-2-right">
+                                    <a class="flex-center close-button svg-white svg-64-48 svg-stroke-8 bg bg-crimson" ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click='stage.anim_elements.splice($index, 1)'></a>
+                                </div>
                             </div>
                         </li>
                     </ul>
@@ -697,17 +750,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class='full-x flex-wrap'>
-                                    <ul class='full-x bg-azure-50p' ng-if='time_state.actions && time_state.actions.length'>
-                                        <li class='ugrid-3 full-x flex-wrap-center text-center' ng-repeat='action in time_state.actions' style='height:50px;'>
-                                            <div style='width:40%; height:50px;' class='input-container bg-shamrock-50p relative'>
-                                                <input class='full-xy action-input absolute left-0 p10xy bg-azure-20p weight-600 txt-white ' placeholder="select a component" ng-focus="onTimeStateActionComponentInputFocused(time_state, action)" ng-model='action.selector'> </input>
+                                <div>
+                                    <ul class='p15-grid' ng-if='time_state.actions && time_state.actions.length'>
+                                        <li class='full-x flex-wrap-center txt-center' ng-repeat='action in time_state.actions'>
+                                            <div class="width-64 height-64 preview-container bg-white-10p radius-2-left"></div>
+                                            <div style='width: calc(50% - 64px);' class='input-container relative height-64'>
+                                                <input class='full-xy action-input p15x flex-center-vertical weight-600 bg-robin txt-white txt-18' placeholder="select a component" ng-focus="onTimeStateActionComponentInputFocused(time_state, action)" ng-model='action.selector'> </input>
                                             </div>
-                                            <div style='width:40%; height:50px;' class='input-container bg-shamrock-50p relative' style='height:70px;'>
-                                                <input class='full-xy action-input absolute left-0 p10xy bg-azure-20p weight-600 txt-white ' placeholder="add an animation" ng-focus="onTimeStateActionAnimationClassInputFocused(time_state, action)"  ng-model='action.animation.attr.name'> </input>
+                                            <div style='width: calc(50% - 64px);' class='input-container relative height-64'>
+                                                <input class='full-xy action-input p15x flex-center-vertical weight-600 bg-campus txt-white txt-18' placeholder="add an animation" ng-focus="onTimeStateActionAnimationClassInputFocused(time_state, action)"  ng-model='action.animation.attr.name'> </input>
                                             </div>
-                                            <div style='width:20%; height:50px;' class='relative flex-wrap-center bg-auburn-50p'>
-                                                <a ng-click='time_state.actions.splice($index, 1)' class='absolute full-xy flex-wrap-center top-0 left-0'>
+                                            <div class='relative flex-wrap-center height-64 width-64 radius-2-right overflow-hidden'>
+                                                <a ng-click='time_state.actions.splice($index, 1)' class='bg bg-crimson full-xy flex-center'>
                                                     <i class='txt-5 icon ion-trash-a'> </i>
                                                 </a>
                                             </div>
@@ -728,7 +782,7 @@
                     <button  ng-click='playStageTimeStates()' class='flex-start text-center'>Play</button>
                 </div>
             </div>
-            <div class="overflow-auto no-scrollbar absolute left-0" style="height: calc(100% - 128px); top:64px;" ng-hide='asideTabIndex !== 1'>
+            <div class="overflow-auto no-scrollbar absolute left-0 full-x" style="height: calc(100% - 128px); top:64px;" ng-hide='asideTabIndex !== 1'>
                 <ul class="p15-grid">
                     <li class="flex-center-vertical-wrap-space-between">
                         <h2 class="txt-18 semibold m15right">translateX &nbsp;&nbsp;
