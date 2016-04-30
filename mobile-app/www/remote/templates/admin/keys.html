@@ -177,18 +177,20 @@
                         </div>
                     </div>
                     <div class="bg-campus-50p full-xy overflow-auto" ng-init="animationHTMLTemplateSearchText" ng-if='importLayoutIndex === 3'>
-                        <div class="p15xy ugrid-2">
-                            <div class='relative'>
+                        <div class="ugrid-2 p15-grid">
+                            <div class="flex-wrap">
                                 <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>1. Import from Codepen</h1>
-                                <input class='full-x p15x radius-2-left txt-18 height-48 width-75p' style='padding-top: 0; padding-bottom: 0;' ng-model="importCodepenUrl" placeholder="http://codepen.io/teamuguru/pen/d75c38eadaa88ef1972842c4e85c9f0d.html" type='search'> </input>
+                                <input class='flex-center-vertical full-x p15x radius-2 txt-18 height-48' style='padding-top: 0; padding-bottom: 0;' ng-model="importCodepenUrl" placeholder="http://codepen.io/teamuguru/pen/d75c38eadaa88ef1972842c4e85c9f0d.html" type='search'> </input>
                             </div>
-                            <div>
+                            <div class="flex-wrap">
                                 <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>2. Set stage name</h1>
-                                <input class='p15x radius-2-left txt-18 height-48 width-20p' style='padding-top: 0; padding-bottom: 0;' ng-model="importStageName" placeholder="stage name"> </input>
-                                <button style='max-width: 200px;' class='height-48 full-x bg-moxie radius-2-right' ng-click='importCodepenTemplate(importCodepenUrl, importStageName)'> Import </button>
+                                <input class='flex-center-vertical p15x radius-2-left txt-18 height-48 width-75p' style='padding-top: 0; padding-bottom: 0;' ng-model="importStageName" placeholder="stage name"> </input>
+                                <div class="width-25p">
+                                    <button class='height-48 bg-moxie radius-2-right' ng-click='importCodepenTemplate(importCodepenUrl, importStageName)'> Import </button>
+                                </div>
                             </div>
                         </div>
-                        <hr class='full-x'>
+                        <hr class='full-x opacity-50'>
                         <div class="p15x-p15top">
                             <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>Import an HTML Template</h1>
                             <input ng-model="animationHTMLTemplateSearchText" class='p15x radius-2 txt-18 height-48 width-50p' style="padding-top: 0; padding-bottom: 0;" placeholder="search predefined stage template" type='search'/>
@@ -540,7 +542,7 @@
                         <ul id="keys-select-components" class='ugrid-3 p15-grid full-x'>
                             <li ng-repeat='component in stage.components track by $index'>
                                 <a class="block p15-grid bg-white-10p radius-2" ng-click='selectComponentElement(component, $index, $event)'>
-                                    <h1 class='full-x semibold txt-18 txt-center m05bottom'> {{component._class}} </h1>
+                                    <h1 class='full-x semibold txt-18 txt-center m05bottom' style="height: 36px;"> {{component._class}} </h1>
                                     <div class="flex-center cloned-animatable-elem-container relative preview-container"></div>
                                 </a>
                             </li>
