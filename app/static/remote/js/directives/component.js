@@ -27,7 +27,8 @@ directive('draggable', function($document) {
     element.css({
      position: 'relative',
      cursor: 'pointer',
-     display: 'block'
+     minWidth: '100px',
+     minHeight: '100px'
     });
     if (!element[0].style.width) {
         width: '100px';

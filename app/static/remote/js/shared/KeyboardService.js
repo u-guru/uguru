@@ -41,37 +41,39 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
 
         window.addEventListener("keydown", function(e){
             evt = (e) ? e : window.event
-            if (evt.metaKey && !keydownNotRecent) {
+            if (evt.metaKey && evt.keyCode === 91 && !keydownNotRecent) {
                 on_press && on_press(e);
                 keydownNotRecent = true;
                 $timeout(function() {
                     keydownNotRecent = null;
                 }, 1000)
             }
-            if ((evt.ctrlKey || evt.keyCode === 17) && !keyupNotRecent) {
-                on_press && on_press(e);
-                keydownNotRecent = true;
-                $timeout(function() {
-                    keydownNotRecent = null;
-                }, 1000)
-            }
+            // if ((evt.ctrlKey && evt.keyCode === 17) && !keyupNotRecent) {
+            //     on_press && on_press(e);
+            //     keydownNotRecent = true;
+            //     $timeout(function() {
+            //         keydownNotRecent = null;
+            //     }, 1000)
+            // }
         })
 
         document.addEventListener('keyup', function (e){
+
             if (e.keyCode === 91 && !keyupNotRecent) {
+                console.log('command released', e);
                 on_release && on_release(e);
                 keyupNotRecent = true;
                 $timeout(function() {
                     keyupNotRecent = null;
                 }, 1000);
             }
-            if ((evt.ctrlKey || evt.keyCode === 17) && !keyupNotRecent) {
-                on_release && on_release(e);
-                keyupNotRecent = true;
-                $timeout(function() {
-                    keyupNotRecent = null;
-                }, 1000);
-            }
+            // if ((evt.ctrlKey || evt.keyCode === 17) && !keyupNotRecent) {
+            //     on_release && on_release(e);
+            //     keyupNotRecent = true;
+            //     $timeout(function() {
+            //         keyupNotRecent = null;
+            //     }, 1000);
+            // }
         }, false);
     }
 

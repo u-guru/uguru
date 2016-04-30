@@ -275,7 +275,6 @@ function FileService(LoadingService, Restangular, DevToolService) {
         xhr.open( 'PUT', url, true );
         xhr.setRequestHeader("Content-type", "application/json");
         xhr.onload = function () {
-            console.log(xhr.status)
             var resp =  xhr.responseText;
             cb && cb(first_name, resp);
         };

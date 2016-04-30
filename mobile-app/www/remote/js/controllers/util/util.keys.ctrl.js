@@ -273,8 +273,8 @@ angular.module('uguru.util.controllers')
 							clonedParentSVG.innerHTML = "";
 							clonedParentSVG.appendChild(clonedNode);
 							clonedParentSVG.className += ' absolute';
-							clonedParentSVG.style.minWidth = "150px";
-							clonedParentSVG.style.minHeight = "150px";
+							clonedParentSVG.style.minWidth = "100px";
+							clonedParentSVG.style.minHeight = "100px";
 							clonedParentSVG.style.maxWidth = "200px";
 							clonedParentSVG.style.maxHeight = "200px";
 							indexContainer.appendChild(clonedParentSVG);
@@ -282,8 +282,8 @@ angular.module('uguru.util.controllers')
 							indexContainer.appendChild(secondClonedParent);
 						} else {
 							clonedNode.className += ' absolute';
-							clonedNode.style.minWidth = "150px";
-							clonedNode.style.minHeight = "150px";
+							clonedNode.style.minWidth = "100px";
+							clonedNode.style.minHeight = "100px";
 							clonedNode.style.maxWidth = "200px";
 							clonedNode.style.maxHeight = "200px";
 							indexContainer.appendChild(clonedNode);

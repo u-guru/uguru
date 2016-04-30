@@ -22,76 +22,6 @@
   transform: scale(1.05) !important;
 }
 
-li.animated-start {
-  opacity: 0;
-}
-
-li.animated-start .tag-adlib:not(.blank):not(.ghost) .desktop rect {
-  filter: alpha(opacity=0);
-  opacity: 0;
-  stroke-dasharray: 728;
-  stroke-dashoffset: 728;
-}
-
-li.animated-start .tag-adlib:not(.blank):not(.ghost) .mobile rect {
-  filter: alpha(opacity=0);
-  opacity: 0;
-  stroke-dasharray: 656;
-  stroke-dashoffset: 656;
-}
-
-li.animated-start .tag-adlib:not(.blank):not(.ghost) b {
-  opacity: 0;
-}
-
-li.animated {
-  -webkit-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
-  -moz-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
-  -ms-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
-  -o-animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
-  animation: u-bounceIn-subtle 1000ms ease-in-out forwards;
-}
-
-li.animated .tag-adlib:not(.blank):not(.ghost) .desktop rect {
-  animation: tag-adlib-desktop 800ms linear 2500ms forwards;
-}
-
-li.animated .tag-adlib:not(.blank):not(.ghost) .mobile rect {
-  animation: tag-adlib-mobile 800ms linear 2500ms forwards;
-}
-
-li.animated .tag-adlib:not(.blank):not(.ghost) b {
-  -webkit-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
-  -moz-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
-  -ms-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
-  -o-animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
-  animation: u-bounceIn-subtle 1000ms ease-in-out 500ms forwards;
-}
-
-li.animated-clear {
-  -webkit-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  -moz-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  -ms-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  -o-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-}
-
-li.animated-clear .tag-adlib:not(.blank):not(.ghost) .desktop rect {
-  animation: tag-adlib-desktop 800ms linear reverse forwards;
-}
-
-li.animated-clear .tag-adlib:not(.blank):not(.ghost) .mobile rect {
-  animation: tag-adlib-mobile 800ms linear reverse forwards;
-}
-
-li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
-  -webkit-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  -moz-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  -ms-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  -o-animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-  animation: u-bounceOut-subtle 1000ms ease-in-out forwards;
-}
-
 /* ---------- SPLASH UNIVERSITY SEARCH */
 .splash-school-search-form fieldset input::selection {
   background: white !important;
@@ -221,10 +151,12 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   height: 64px;
   background: none;
   border: 2px solid white;
+  padding: 0 !important;
   font-size: 20px;
   font-weight: 600;
   text-transform: uppercase;
   color: white !important;
+  white-space: nowrap;
 }
 
 .splash-hero-skip button:hover, .splash-hero-skip button:focus {
@@ -561,6 +493,10 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   }
 }
 
+.splash-burger#cta-box-powerups:before {
+  display: none !important;
+}
+
 .splash-burger#cta-box-powerups div[translate-on-click] {
   -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
   -moz-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
@@ -572,6 +508,55 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   -ms-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1.27) !important;
   -o-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1.27) !important;
   transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1.27) !important;
+  position: relative;
+}
+
+.splash-burger#cta-box-powerups div[translate-on-click]:before {
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  -webkit-transform-origin: center center;
+  -moz-transform-origin: center center;
+  -ms-transform-origin: center center;
+  -o-transform-origin: center center;
+  transform-origin: center center;
+  -webkit-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -moz-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -ms-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -o-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  -webkit-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -moz-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -ms-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  -o-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  margin-top: -15px;
+  margin-left: -15px;
+  width: 30px;
+  height: 30px;
+  background: #F6C64E;
+}
+
+.splash-burger#cta-box-powerups:hover div[translate-on-click]:before, .splash-burger#cta-box-powerups:focus div[translate-on-click]:before {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
+.splash-burger#cta-box-powerups svg {
+  position: relative;
+  z-index: 2;
 }
 
 .splash-burger#cta-box-powerups svg circle {
@@ -584,10 +569,15 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
 }
 
 .splash-burger#cta-box-powerups:hover svg circle, .splash-burger#cta-box-powerups:focus svg circle {
+  stroke: #F6C64E;
+}
+
+.splash-burger#cta-box-powerups:hover svg path, .splash-burger#cta-box-powerups:focus svg path {
+  fill: white;
   stroke: white;
 }
 
-.splash-burger#cta-box-powerups.powerup-activated:before {
+.splash-burger#cta-box-powerups.powerup-activated div[translate-on-click]:before, .splash-burger#cta-box-powerups.powerup-activated:hover div[translate-on-click]:before, .splash-burger#cta-box-powerups.powerup-activated:focus div[translate-on-click]:before, .splash-burger#cta-box-powerups.powerup-activated:active div[translate-on-click]:before {
   -webkit-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
   -moz-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
   -ms-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
@@ -595,12 +585,12 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
 }
 
-.splash-burger#cta-box-powerups.powerup-activated svg circle {
+.splash-burger#cta-box-powerups.powerup-activated svg circle, .splash-burger#cta-box-powerups.powerup-activated:hover svg circle, .splash-burger#cta-box-powerups.powerup-activated:focus svg circle, .splash-burger#cta-box-powerups.powerup-activated:active svg circle {
   fill: #F6C64E !important;
   stroke: #F6C64E !important;
 }
 
-.splash-burger#cta-box-powerups.powerup-activated svg path {
+.splash-burger#cta-box-powerups.powerup-activated svg path, .splash-burger#cta-box-powerups.powerup-activated:hover svg path, .splash-burger#cta-box-powerups.powerup-activated:focus svg path, .splash-burger#cta-box-powerups.powerup-activated:active svg path {
   fill: white !important;
   stroke: white !important;
 }
@@ -3133,20 +3123,48 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   -ms-transition: all 150ms ease-in-out;
   -o-transition: all 150ms ease-in-out;
   transition: all 150ms ease-in-out;
-  -webkit-transition-delay: 500ms;
-  -moz-transition-delay: 500ms;
-  -ms-transition-delay: 500ms;
-  -o-transition-delay: 500ms;
-  transition-delay: 500ms;
-  filter: alpha(opacity=20);
-  opacity: 0.2;
   display: block;
   width: 100%;
 }
 
+.splash-landing > section.splash-hero .splash-device .splash-device-svg.animate {
+  filter: alpha(opacity=20) !important;
+  opacity: 0.2 !important;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-svg.animate circle {
+  -webkit-animation: device-drawIn-1 1250ms ease-in-out 2500ms forwards;
+  -moz-animation: device-drawIn-1 1250ms ease-in-out 2500ms forwards;
+  -ms-animation: device-drawIn-1 1250ms ease-in-out 2500ms forwards;
+  -o-animation: device-drawIn-1 1250ms ease-in-out 2500ms forwards;
+  animation: device-drawIn-1 1250ms ease-in-out 2500ms forwards;
+  stroke-dasharray: 158;
+  stroke-dashoffset: 158;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-svg.animate rect:nth-child(2) {
+  -webkit-animation: device-drawIn-2 2000ms ease-in-out 2000ms forwards;
+  -moz-animation: device-drawIn-2 2000ms ease-in-out 2000ms forwards;
+  -ms-animation: device-drawIn-2 2000ms ease-in-out 2000ms forwards;
+  -o-animation: device-drawIn-2 2000ms ease-in-out 2000ms forwards;
+  animation: device-drawIn-2 2000ms ease-in-out 2000ms forwards;
+  stroke-dasharray: 1926;
+  stroke-dashoffset: 1926;
+}
+
+.splash-landing > section.splash-hero .splash-device .splash-device-svg.animate rect:nth-child(3) {
+  -webkit-animation: device-drawIn-3 1750ms ease-in-out 2250ms forwards;
+  -moz-animation: device-drawIn-3 1750ms ease-in-out 2250ms forwards;
+  -ms-animation: device-drawIn-3 1750ms ease-in-out 2250ms forwards;
+  -o-animation: device-drawIn-3 1750ms ease-in-out 2250ms forwards;
+  animation: device-drawIn-3 1750ms ease-in-out 2250ms forwards;
+  stroke-dasharray: 1538;
+  stroke-dashoffset: 1538;
+}
+
 .splash-landing > section.splash-hero .splash-device .splash-device-svg.active {
-  filter: alpha(opacity=80);
-  opacity: 0.8;
+  filter: alpha(opacity=80) !important;
+  opacity: 0.8 !important;
 }
 
 .splash-landing > section.splash-hero .splash-device .splash-device-svg .rotated {
@@ -3855,6 +3873,32 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   top: 85px;
   right: -100px;
   width: 140px;
+}
+
+.splash-landing > section.splash-hero .splash-guru-head .coach-fill path:nth-child(1) {
+  stroke-dasharray: 137;
+  stroke-dashoffset: 137;
+}
+
+.splash-landing > section.splash-hero .splash-guru-head .coach-fill path:nth-child(2) {
+  stroke-dasharray: 53;
+  stroke-dashoffset: 53;
+}
+
+.splash-landing > section.splash-hero .splash-guru-head .coach-fill path.animate:nth-child(1), .splash-landing > section.splash-hero .splash-guru-head .coach-fill path.activate:nth-child(1) {
+  -webkit-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+  -moz-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+  -ms-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+  -o-animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+  animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+}
+
+.splash-landing > section.splash-hero .splash-guru-head .coach-fill path.animate:nth-child(2), .splash-landing > section.splash-hero .splash-guru-head .coach-fill path.activate:nth-child(2) {
+  -webkit-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+  -moz-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+  -ms-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+  -o-animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+  animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
 }
 
 .splash-landing > section.splash-hero .splash-guru-head .coach-fill g g {
@@ -7477,12 +7521,8 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
 }
 
 /* ---------- Projector Animation [deprecate] */
-.splash-landing {
-  /* ---------- HOW IT WORKS */
-  /* ---------- BECOME GURU */
-}
-
-.splash-landing .circle-nav ul {
+/* ---------- HOW IT WORKS */
+.circle-nav ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -7501,16 +7541,16 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   padding: 15px;
 }
 
-.splash-landing .circle-nav ul li {
+.circle-nav ul li {
   width: 130px;
   padding: 15px;
 }
 
-.splash-landing .circle-nav ul li a {
+.circle-nav ul li a {
   display: block;
 }
 
-.splash-landing .circle-nav ul li a svg {
+.circle-nav ul li a svg {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -7520,7 +7560,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   width: 100%;
 }
 
-.splash-landing .circle-nav ul li a svg * {
+.circle-nav ul li a svg * {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -7528,7 +7568,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transition: all 150ms ease-in-out;
 }
 
-.splash-landing .circle-nav ul li a h1 {
+.circle-nav ul li a h1 {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -7543,7 +7583,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   text-align: center;
 }
 
-.splash-landing .circle-nav ul li a:hover, .splash-landing .circle-nav ul li a:focus, .splash-landing .circle-nav ul li a:active, .splash-landing .circle-nav ul li a.active-circle {
+.circle-nav ul li a:hover, .circle-nav ul li a:focus, .circle-nav ul li a:active, .circle-nav ul li a.active-circle {
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);
   -ms-transform: scale(1.25);
@@ -7551,17 +7591,17 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform: scale(1.25);
 }
 
-.splash-landing .circle-nav ul li a:hover svg .bg-slate, .splash-landing .circle-nav ul li a:hover svg .fade, .splash-landing .circle-nav ul li a:focus svg .bg-slate, .splash-landing .circle-nav ul li a:focus svg .fade, .splash-landing .circle-nav ul li a:active svg .bg-slate, .splash-landing .circle-nav ul li a:active svg .fade, .splash-landing .circle-nav ul li a.active-circle svg .bg-slate, .splash-landing .circle-nav ul li a.active-circle svg .fade {
+.circle-nav ul li a:hover svg .bg-slate, .circle-nav ul li a:hover svg .fade, .circle-nav ul li a:focus svg .bg-slate, .circle-nav ul li a:focus svg .fade, .circle-nav ul li a:active svg .bg-slate, .circle-nav ul li a:active svg .fade, .circle-nav ul li a.active-circle svg .bg-slate, .circle-nav ul li a.active-circle svg .fade {
   filter: alpha(opacity=0);
   opacity: 0;
 }
 
-.splash-landing .circle-nav ul li a:hover h1, .splash-landing .circle-nav ul li a:focus h1, .splash-landing .circle-nav ul li a:active h1, .splash-landing .circle-nav ul li a.active-circle h1 {
+.circle-nav ul li a:hover h1, .circle-nav ul li a:focus h1, .circle-nav ul li a:active h1, .circle-nav ul li a.active-circle h1 {
   filter: alpha(opacity=100);
   opacity: 1;
 }
 
-.splash-landing #hiw {
+#hiw {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -7574,7 +7614,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   flex-flow: row wrap;
 }
 
-.splash-landing #hiw header {
+#hiw header {
   filter: alpha(opacity=0);
   opacity: 0;
   -webkit-flex-direction: row;
@@ -7592,7 +7632,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   min-height: 0 !important;
 }
 
-.splash-landing #hiw header h1 {
+#hiw header h1 {
   filter: alpha(opacity=0);
   opacity: 0;
   padding: 15px;
@@ -7602,7 +7642,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   text-transform: capitalize;
 }
 
-.splash-landing #hiw .main {
+#hiw .main {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -7619,7 +7659,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   height: 100%;
 }
 
-.splash-landing #hiw .main .how-scene {
+#hiw .main .how-scene {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -7642,7 +7682,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   height: 100%;
 }
 
-.splash-landing #hiw .main .how-scene > div {
+#hiw .main .how-scene > div {
   transition: all 150ms ease-in-out;
   position: absolute;
   top: 0;
@@ -7652,11 +7692,11 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   overflow: hidden;
 }
 
-.splash-landing #hiw .main .how-scene .active-scene {
+#hiw .main .how-scene .active-scene {
   z-index: 10;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-6 svg {
+#hiw .main .how-scene .how-scene-6 svg {
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -7672,7 +7712,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   height: 100%;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-5 .hiw-student-run {
+#hiw .main .how-scene .how-scene-5 .hiw-student-run {
   filter: alpha(opacity=5);
   opacity: 0.05;
   position: absolute;
@@ -7682,7 +7722,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   width: auto;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 {
+#hiw .main .how-scene .how-scene-5 .ugrid-2 {
   -webkit-flex-direction: row;
   flex-direction: row;
   -webkit-align-items: center;
@@ -7698,12 +7738,12 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   padding: 7.5px;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li {
+#hiw .main .how-scene .how-scene-5 .ugrid-2 > li {
   padding: 7.5px;
   max-width: 350px;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(1) .pf-course, .splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(1) .pf-course:before {
+#hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(1) .pf-course, #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(1) .pf-course:before {
   -webkit-animation-duration: 3000ms !important;
   -moz-animation-duration: 3000ms !important;
   -ms-animation-duration: 3000ms !important;
@@ -7711,7 +7751,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-duration: 3000ms !important;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(2) .pf-course, .splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(2) .pf-course:before {
+#hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(2) .pf-course, #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(2) .pf-course:before {
   -webkit-animation-delay: 200ms !important;
   -moz-animation-delay: 200ms !important;
   -ms-animation-delay: 200ms !important;
@@ -7719,7 +7759,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 200ms !important;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(3) .pf-course, .splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(3) .pf-course:before {
+#hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(3) .pf-course, #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(3) .pf-course:before {
   -webkit-animation-delay: 400ms !important;
   -moz-animation-delay: 400ms !important;
   -ms-animation-delay: 400ms !important;
@@ -7727,7 +7767,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 400ms !important;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(4) .pf-course, .splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(4) .pf-course:before {
+#hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(4) .pf-course, #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(4) .pf-course:before {
   -webkit-animation-delay: 400ms !important;
   -moz-animation-delay: 400ms !important;
   -ms-animation-delay: 400ms !important;
@@ -7735,7 +7775,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 400ms !important;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(5) .pf-course, .splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(5) .pf-course:before {
+#hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(5) .pf-course, #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(5) .pf-course:before {
   -webkit-animation-delay: 600ms !important;
   -moz-animation-delay: 600ms !important;
   -ms-animation-delay: 600ms !important;
@@ -7743,7 +7783,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 600ms !important;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(6) .pf-course, .splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(6) .pf-course:before {
+#hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(6) .pf-course, #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(6) .pf-course:before {
   -webkit-animation-delay: 800ms !important;
   -moz-animation-delay: 800ms !important;
   -ms-animation-delay: 800ms !important;
@@ -7751,7 +7791,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 800ms !important;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(7) .pf-course, .splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(7) .pf-course:before {
+#hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(7) .pf-course, #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:nth-child(7) .pf-course:before {
   -webkit-animation-delay: 1000ms !important;
   -moz-animation-delay: 1000ms !important;
   -ms-animation-delay: 1000ms !important;
@@ -7759,16 +7799,16 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 1000ms !important;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-4 {
+#hiw .main .how-scene .how-scene-4 {
   background: #eb6248;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-4 svg {
+#hiw .main .how-scene .how-scene-4 svg {
   display: block;
   position: absolute;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-4 svg[class*="desktop"] {
+#hiw .main .how-scene .how-scene-4 svg[class*="desktop"] {
   display: none;
   top: 0;
   left: 0;
@@ -7777,7 +7817,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   max-height: 400px;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .guru-1, .splash-landing #hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .guru-2, .splash-landing #hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .guru-3, .splash-landing #hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .guru-4, .splash-landing #hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .guru-5 {
+#hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .guru-1, #hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .guru-2, #hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .guru-3, #hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .guru-4, #hiw .main .how-scene .how-scene-4 svg[class*="desktop"] .guru-5 {
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -7790,7 +7830,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform-origin: 50% 50%;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-4 svg.graph {
+#hiw .main .how-scene .how-scene-4 svg.graph {
   position: absolute;
   top: 0;
   left: 50%;
@@ -7802,11 +7842,11 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   height: calc(100% - 229px);
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-4 svg.graph * {
+#hiw .main .how-scene .how-scene-4 svg.graph * {
   stroke-width: 4px;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-4 svg.graph .point {
+#hiw .main .how-scene .how-scene-4 svg.graph .point {
   -webkit-animation: 1000ms point-graph ease-in-out forwards;
   -moz-animation: 1000ms point-graph ease-in-out forwards;
   -ms-animation: 1000ms point-graph ease-in-out forwards;
@@ -7814,7 +7854,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 1000ms point-graph ease-in-out forwards;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-3 svg {
+#hiw .main .how-scene .how-scene-3 svg {
   display: block;
   position: absolute;
   top: 0;
@@ -7824,7 +7864,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   max-height: 400px;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-3 svg .guru {
+#hiw .main .how-scene .how-scene-3 svg .guru {
   -webkit-transition: all 300ms ease-in;
   -moz-transition: all 300ms ease-in;
   -ms-transition: all 300ms ease-in;
@@ -7832,7 +7872,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transition: all 300ms ease-in;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-3 svg .guru-academic {
+#hiw .main .how-scene .how-scene-3 svg .guru-academic {
   -webkit-transform: translateX(211.5%);
   -moz-transform: translateX(211.5%);
   -ms-transform: translateX(211.5%);
@@ -7840,7 +7880,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform: translateX(211.5%);
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-3 svg .guru-baking {
+#hiw .main .how-scene .how-scene-3 svg .guru-baking {
   -webkit-transform: translateX(105.75%);
   -moz-transform: translateX(105.75%);
   -ms-transform: translateX(105.75%);
@@ -7848,7 +7888,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform: translateX(105.75%);
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-3 svg .guru-household {
+#hiw .main .how-scene .how-scene-3 svg .guru-household {
   -webkit-transform: translateX(-105.75%);
   -moz-transform: translateX(-105.75%);
   -ms-transform: translateX(-105.75%);
@@ -7856,7 +7896,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform: translateX(-105.75%);
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-3 svg .guru-tech {
+#hiw .main .how-scene .how-scene-3 svg .guru-tech {
   -webkit-transform: translateX(-211.5%);
   -moz-transform: translateX(-211.5%);
   -ms-transform: translateX(-211.5%);
@@ -7864,11 +7904,11 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform: translateX(-211.5%);
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-2 {
+#hiw .main .how-scene .how-scene-2 {
   background: #7baa63;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-2 .ugrid-2 {
+#hiw .main .how-scene .how-scene-2 .ugrid-2 {
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -7881,22 +7921,22 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   text-align: center;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-2 .ugrid-2 > div {
+#hiw .main .how-scene .how-scene-2 .ugrid-2 > div {
   position: relative;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-2 .ugrid-2 h1 {
+#hiw .main .how-scene .how-scene-2 .ugrid-2 h1 {
   font-size: 28px;
   font-weight: 600;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-2 .ugrid-2 h2 {
+#hiw .main .how-scene .how-scene-2 .ugrid-2 h2 {
   margin-top: 5px !important;
   font-size: 48px;
   font-weight: 900;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-2 .hiw-svg-container {
+#hiw .main .how-scene .how-scene-2 .hiw-svg-container {
   position: absolute !important;
   top: 0;
   left: 0;
@@ -7904,12 +7944,12 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
 }
 
 @media screen and (max-width: 768px) {
-  .splash-landing #hiw .main .how-scene .how-scene-2 .hiw-svg-container {
+  #hiw .main .how-scene .how-scene-2 .hiw-svg-container {
     top: 90px;
   }
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-2 .hiw-svg-container svg {
+#hiw .main .how-scene .how-scene-2 .hiw-svg-container svg {
   position: absolute;
   top: 0;
   left: 50%;
@@ -7918,15 +7958,15 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   height: 200px !important;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-2 .hiw-svg-container svg * {
+#hiw .main .how-scene .how-scene-2 .hiw-svg-container svg * {
   stroke-width: 8px;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-1 {
+#hiw .main .how-scene .how-scene-1 {
   background: #466d85;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-1 svg {
+#hiw .main .how-scene .how-scene-1 svg {
   display: block;
   position: absolute;
   top: 0;
@@ -7936,11 +7976,11 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   max-height: 400px;
 }
 
-.splash-landing #hiw .main .how-scene .how-scene-1 svg:not([class*="mobile"]) {
+#hiw .main .how-scene .how-scene-1 svg:not([class*="mobile"]) {
   display: none;
 }
 
-.splash-landing #hiw .main .circle-nav {
+#hiw .main .circle-nav {
   position: absolute;
   z-index: 11;
   bottom: -115px;
@@ -7948,7 +7988,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   width: 100%;
 }
 
-.splash-landing #hiw .main .how-props {
+#hiw .main .how-props {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -7975,13 +8015,13 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   padding: 7.5px;
 }
 
-.splash-landing #hiw .main .how-props li {
+#hiw .main .how-props li {
   width: calc(100% / 3);
   text-align: center;
   padding: 7.5px;
 }
 
-.splash-landing #hiw .main .how-props li a {
+#hiw .main .how-props li a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -8003,12 +8043,12 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   margin: 0 auto;
 }
 
-.splash-landing #hiw .main .how-props li a div {
+#hiw .main .how-props li a div {
   width: 100%;
   max-width: 50px;
 }
 
-.splash-landing #hiw .main .how-props li a svg {
+#hiw .main .how-props li a svg {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -8018,27 +8058,27 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   background: #4c5559;
 }
 
-.splash-landing #hiw .main .how-props li a svg * {
+#hiw .main .how-props li a svg * {
   stroke-width: 4px !important;
 }
 
-.splash-landing #hiw .main .how-props li a h1 {
+#hiw .main .how-props li a h1 {
   padding-top: 10px;
   width: 100%;
   font-size: 14px;
   font-weight: 600;
 }
 
-.splash-landing #hiw .main .how-props li a:hover svg {
+#hiw .main .how-props li a:hover svg {
   background: #637074;
 }
 
 @media screen and (max-width: 768px) {
-  .splash-landing #hiw .main .how-scene .how-scene-3 .ugrid-5 li:not(:first-child) {
+  #hiw .main .how-scene .how-scene-3 .ugrid-5 li:not(:first-child) {
     filter: alpha(opacity=0);
     opacity: 0;
   }
-  .splash-landing #hiw .main .how-scene .how-scene-3 .ugrid-5 li:first-child {
+  #hiw .main .how-scene .how-scene-3 .ugrid-5 li:first-child {
     -webkit-animation: 1000ms guru-switch infinite forwards;
     -moz-animation: 1000ms guru-switch infinite forwards;
     -ms-animation: 1000ms guru-switch infinite forwards;
@@ -8048,62 +8088,62 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
 }
 
 @media screen and (min-width: 768px) {
-  .splash-landing #hiw header {
+  #hiw header {
     filter: alpha(opacity=100);
     opacity: 1;
   }
-  .splash-landing #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:not(:first-child) {
+  #hiw .main .how-scene .how-scene-5 .ugrid-2 > li .pf-card-outline .pf-card-main .pf-card-content .pf-courses li:not(:first-child) {
     display: block;
   }
-  .splash-landing #hiw .main .how-scene .how-scene-4 svg[class*="desktop"] {
+  #hiw .main .how-scene .how-scene-4 svg[class*="desktop"] {
     display: block;
     top: auto;
     bottom: 178px;
   }
-  .splash-landing #hiw .main .how-scene .how-scene-4 svg.graph {
+  #hiw .main .how-scene .how-scene-4 svg.graph {
     display: none;
   }
-  .splash-landing #hiw .main .how-scene .how-scene-3 {
+  #hiw .main .how-scene .how-scene-3 {
     background: #69867C;
   }
-  .splash-landing #hiw .main .how-scene .how-scene-3 svg.guru {
+  #hiw .main .how-scene .how-scene-3 svg.guru {
     position: static !important;
     top: auto !important;
     margin-top: 50px;
     left: auto !important;
     max-width: 80%;
   }
-  .splash-landing #hiw .main .how-scene .how-scene-3 svg.conveyor {
+  #hiw .main .how-scene .how-scene-3 svg.conveyor {
     top: auto;
     bottom: 178px;
   }
-  .splash-landing #hiw .main .how-scene .how-scene-2 .ugrid-2 h1 {
+  #hiw .main .how-scene .how-scene-2 .ugrid-2 h1 {
     font-size: 36px;
   }
-  .splash-landing #hiw .main .how-scene .how-scene-2 .ugrid-2 h2 {
+  #hiw .main .how-scene .how-scene-2 .ugrid-2 h2 {
     font-size: 64px;
   }
-  .splash-landing #hiw .main .how-scene .how-scene-2 .hiw-svg-container svg {
+  #hiw .main .how-scene .how-scene-2 .hiw-svg-container svg {
     top: 100px;
   }
-  .splash-landing #hiw .main .how-scene .how-scene-1 svg[class*="mobile"] {
+  #hiw .main .how-scene .how-scene-1 svg[class*="mobile"] {
     display: none;
   }
-  .splash-landing #hiw .main .how-scene .how-scene-1 svg:not([class*="mobile"]) {
+  #hiw .main .how-scene .how-scene-1 svg:not([class*="mobile"]) {
     display: block;
   }
-  .splash-landing #hiw .main .how-props li {
+  #hiw .main .how-props li {
     width: calc(100% / 6);
   }
-  .splash-landing #hiw .main .how-props li a div {
+  #hiw .main .how-props li a div {
     max-width: 100px;
   }
-  .splash-landing #hiw .main .how-props li a h1 {
+  #hiw .main .how-props li a h1 {
     font-size: 16px;
   }
 }
 
-.splash-landing .hiw-open-24-7-active *, .splash-landing .hiw-open-24-7-active-mobile * {
+.hiw-open-24-7-active *, .hiw-open-24-7-active-mobile * {
   -webkit-transition: all 300ms ease-in-out;
   -moz-transition: all 300ms ease-in-out;
   -ms-transition: all 300ms ease-in-out;
@@ -8111,17 +8151,17 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transition: all 300ms ease-in-out;
 }
 
-.splash-landing .hiw-open-24-7-active .fade:not(.visible), .splash-landing .hiw-open-24-7-active-mobile .fade:not(.visible) {
+.hiw-open-24-7-active .fade:not(.visible), .hiw-open-24-7-active-mobile .fade:not(.visible) {
   filter: alpha(opacity=0);
   opacity: 0;
 }
 
-.splash-landing .hiw-open-24-7-active .fade.visible, .splash-landing .hiw-open-24-7-active-mobile .fade.visible {
+.hiw-open-24-7-active .fade.visible, .hiw-open-24-7-active-mobile .fade.visible {
   filter: alpha(opacity=100);
   opacity: 1;
 }
 
-.splash-landing .hiw-open-24-7-active .fade.night-sky, .splash-landing .hiw-open-24-7-active-mobile .fade.night-sky {
+.hiw-open-24-7-active .fade.night-sky, .hiw-open-24-7-active-mobile .fade.night-sky {
   -webkit-transition-delay: 500ms;
   -moz-transition-delay: 500ms;
   -ms-transition-delay: 500ms;
@@ -8129,11 +8169,11 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transition-delay: 500ms;
 }
 
-.splash-landing .hiw-open-24-7-active:not(.start) rect.draw, .splash-landing .hiw-open-24-7-active:not(.start) polygon.draw, .splash-landing .hiw-open-24-7-active:not(.start) circle.draw, .splash-landing .hiw-open-24-7-active:not(.start) path.draw, .splash-landing .hiw-open-24-7-active:not(.start) text.draw, .splash-landing .hiw-open-24-7-active-mobile:not(.start) rect.draw, .splash-landing .hiw-open-24-7-active-mobile:not(.start) polygon.draw, .splash-landing .hiw-open-24-7-active-mobile:not(.start) circle.draw, .splash-landing .hiw-open-24-7-active-mobile:not(.start) path.draw, .splash-landing .hiw-open-24-7-active-mobile:not(.start) text.draw {
+.hiw-open-24-7-active:not(.start) rect.draw, .hiw-open-24-7-active:not(.start) polygon.draw, .hiw-open-24-7-active:not(.start) circle.draw, .hiw-open-24-7-active:not(.start) path.draw, .hiw-open-24-7-active:not(.start) text.draw, .hiw-open-24-7-active-mobile:not(.start) rect.draw, .hiw-open-24-7-active-mobile:not(.start) polygon.draw, .hiw-open-24-7-active-mobile:not(.start) circle.draw, .hiw-open-24-7-active-mobile:not(.start) path.draw, .hiw-open-24-7-active-mobile:not(.start) text.draw {
   fill: transparent !important;
 }
 
-.splash-landing .active-scene .hiw-open-24-7-active.start .open-now-text, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .open-now-text {
+.active-scene .hiw-open-24-7-active.start .open-now-text, .active-scene .hiw-open-24-7-active-mobile.start .open-now-text {
   -webkit-animation: 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards;
   -moz-animation: 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards;
   -ms-animation: 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards;
@@ -8141,7 +8181,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 12000ms hiw-open-24-7-text-flash 2000ms ease-in infinite forwards;
 }
 
-.splash-landing .active-scene .hiw-open-24-7-active.start .clock .minute-hand, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .clock .minute-hand {
+.active-scene .hiw-open-24-7-active.start .clock .minute-hand, .active-scene .hiw-open-24-7-active-mobile.start .clock .minute-hand {
   -webkit-animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
   -moz-animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
   -ms-animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
@@ -8154,7 +8194,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform-origin: 50% 100%;
 }
 
-.splash-landing .active-scene .hiw-open-24-7-active.start .clock .hour-hand, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .clock .hour-hand {
+.active-scene .hiw-open-24-7-active.start .clock .hour-hand, .active-scene .hiw-open-24-7-active-mobile.start .clock .hour-hand {
   -webkit-transform-origin: 0% 50%;
   -moz-transform-origin: 0% 50%;
   -ms-transform-origin: 0% 50%;
@@ -8167,7 +8207,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards;
 }
 
-.splash-landing .active-scene .hiw-open-24-7-active.start .outside-day, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-day {
+.active-scene .hiw-open-24-7-active.start .outside-day, .active-scene .hiw-open-24-7-active-mobile.start .outside-day {
   -webkit-animation: 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards;
   -moz-animation: 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards;
   -ms-animation: 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards;
@@ -8175,7 +8215,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 12000ms hiw-open-24-7-day-shift 2000ms ease-in infinite forwards;
 }
 
-.splash-landing .active-scene .hiw-open-24-7-active.start .outside-day .sun, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-day .sun {
+.active-scene .hiw-open-24-7-active.start .outside-day .sun, .active-scene .hiw-open-24-7-active-mobile.start .outside-day .sun {
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
@@ -8188,7 +8228,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 12000ms hiw-open-24-7-sun-shift 2000ms ease-in infinite forwards;
 }
 
-.splash-landing .active-scene .hiw-open-24-7-active.start .outside-night .moon, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night .crater, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night .moon, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night .crater {
+.active-scene .hiw-open-24-7-active.start .outside-night .moon, .active-scene .hiw-open-24-7-active.start .outside-night .crater, .active-scene .hiw-open-24-7-active-mobile.start .outside-night .moon, .active-scene .hiw-open-24-7-active-mobile.start .outside-night .crater {
   -webkit-transform: translateY(20px);
   -moz-transform: translateY(20px);
   -ms-transform: translateY(20px);
@@ -8201,7 +8241,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 12000ms hiw-open-24-7-moon-shift 2000ms ease-in infinite forwards;
 }
 
-.splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"], .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"] {
+.active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"], .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"] {
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -8219,7 +8259,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 12000ms hiw-open-24-7-star-scale 2000ms ease-in infinite forwards;
 }
 
-.splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-1, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-7, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-8, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-19, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-1, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-7, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-8, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-19 {
+.active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-1, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-7, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-8, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-19, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-1, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-7, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-8, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-19 {
   -webkit-animation-delay: 2200ms;
   -moz-animation-delay: 2200ms;
   -ms-animation-delay: 2200ms;
@@ -8227,7 +8267,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 2200ms;
 }
 
-.splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-2, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-9, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-10, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-20, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-2, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-9, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-10, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-20 {
+.active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-2, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-9, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-10, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-20, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-2, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-9, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-10, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-20 {
   -webkit-animation-delay: 2400ms;
   -moz-animation-delay: 2400ms;
   -ms-animation-delay: 2400ms;
@@ -8235,7 +8275,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 2400ms;
 }
 
-.splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-3, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-11, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-12, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-21, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-3, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-11, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-12, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-21 {
+.active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-3, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-11, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-12, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-21, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-3, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-11, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-12, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-21 {
   -webkit-animation-delay: 2600ms;
   -moz-animation-delay: 2600ms;
   -ms-animation-delay: 2600ms;
@@ -8243,7 +8283,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 2600ms;
 }
 
-.splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-4, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-13, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-14, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-22, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-4, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-13, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-14, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-22 {
+.active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-4, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-13, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-14, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-22, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-4, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-13, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-14, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-22 {
   -webkit-animation-delay: 2800ms;
   -moz-animation-delay: 2800ms;
   -ms-animation-delay: 2800ms;
@@ -8251,7 +8291,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 2800ms;
 }
 
-.splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-5, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-15, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-16, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-23, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-5, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-15, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-16, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-23 {
+.active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-5, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-15, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-16, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-23, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-5, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-15, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-16, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-23 {
   -webkit-animation-delay: 3000ms;
   -moz-animation-delay: 3000ms;
   -ms-animation-delay: 3000ms;
@@ -8259,7 +8299,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 3000ms;
 }
 
-.splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-6, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-17, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-18, .splash-landing .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-24, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-6, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-17, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-18, .splash-landing .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-24 {
+.active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-6, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-17, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-18, .active-scene .hiw-open-24-7-active.start .outside-night polygon[class*="star-"].star-24, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-6, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-17, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-18, .active-scene .hiw-open-24-7-active-mobile.start .outside-night polygon[class*="star-"].star-24 {
   -webkit-animation-delay: 3200ms;
   -moz-animation-delay: 3200ms;
   -ms-animation-delay: 3200ms;
@@ -8267,7 +8307,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 3200ms;
 }
 
-.splash-landing .active-scene .ugrid-2.animate > div:first-child .hiw-svg-container svg {
+.active-scene .ugrid-2.animate > div:first-child .hiw-svg-container svg {
   -webkit-transform: translate(0%, -80%) scale(1);
   -moz-transform: translate(0%, -80%) scale(1);
   -ms-transform: translate(0%, -80%) scale(1);
@@ -8275,7 +8315,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform: translate(0%, -80%) scale(1);
 }
 
-.splash-landing .active-scene .ugrid-2.animate > div:first-child .hiw-svg-container:nth-child(1) svg {
+.active-scene .ugrid-2.animate > div:first-child .hiw-svg-container:nth-child(1) svg {
   -webkit-animation: 300ms dollar-1 forwards, 1000ms dollar-1-hover 300ms linear infinite alternate forwards;
   -moz-animation: 300ms dollar-1 forwards, 1000ms dollar-1-hover 300ms linear infinite alternate forwards;
   -ms-animation: 300ms dollar-1 forwards, 1000ms dollar-1-hover 300ms linear infinite alternate forwards;
@@ -8283,7 +8323,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 300ms dollar-1 forwards, 1000ms dollar-1-hover 300ms linear infinite alternate forwards;
 }
 
-.splash-landing .active-scene .ugrid-2.animate > div:first-child .hiw-svg-container:nth-child(2) svg {
+.active-scene .ugrid-2.animate > div:first-child .hiw-svg-container:nth-child(2) svg {
   -webkit-animation: 300ms dollar-2 200ms forwards, 1000ms dollar-2-hover 500ms linear infinite alternate forwards;
   -moz-animation: 300ms dollar-2 200ms forwards, 1000ms dollar-2-hover 500ms linear infinite alternate forwards;
   -ms-animation: 300ms dollar-2 200ms forwards, 1000ms dollar-2-hover 500ms linear infinite alternate forwards;
@@ -8291,7 +8331,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 300ms dollar-2 200ms forwards, 1000ms dollar-2-hover 500ms linear infinite alternate forwards;
 }
 
-.splash-landing .active-scene .ugrid-2.animate > div:first-child .hiw-svg-container:nth-child(3) svg {
+.active-scene .ugrid-2.animate > div:first-child .hiw-svg-container:nth-child(3) svg {
   -webkit-animation: 300ms dollar-3 400ms forwards, 1000ms dollar-3-hover 700ms linear infinite alternate forwards;
   -moz-animation: 300ms dollar-3 400ms forwards, 1000ms dollar-3-hover 700ms linear infinite alternate forwards;
   -ms-animation: 300ms dollar-3 400ms forwards, 1000ms dollar-3-hover 700ms linear infinite alternate forwards;
@@ -8299,7 +8339,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 300ms dollar-3 400ms forwards, 1000ms dollar-3-hover 700ms linear infinite alternate forwards;
 }
 
-.splash-landing .active-scene .ugrid-2.animate > div:first-child .hiw-svg-container:nth-child(4) svg {
+.active-scene .ugrid-2.animate > div:first-child .hiw-svg-container:nth-child(4) svg {
   -webkit-animation: 300ms dollar-4 600ms forwards, 1000ms dollar-4-hover 900ms linear infinite alternate forwards;
   -moz-animation: 300ms dollar-4 600ms forwards, 1000ms dollar-4-hover 900ms linear infinite alternate forwards;
   -ms-animation: 300ms dollar-4 600ms forwards, 1000ms dollar-4-hover 900ms linear infinite alternate forwards;
@@ -8307,7 +8347,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 300ms dollar-4 600ms forwards, 1000ms dollar-4-hover 900ms linear infinite alternate forwards;
 }
 
-.splash-landing .active-scene .ugrid-2.animate > div:first-child .hiw-svg-container:nth-child(5) svg {
+.active-scene .ugrid-2.animate > div:first-child .hiw-svg-container:nth-child(5) svg {
   -webkit-animation: 300ms dollar-5 800ms forwards, 1000ms dollar-5-hover 1100ms linear infinite alternate forwards;
   -moz-animation: 300ms dollar-5 800ms forwards, 1000ms dollar-5-hover 1100ms linear infinite alternate forwards;
   -ms-animation: 300ms dollar-5 800ms forwards, 1000ms dollar-5-hover 1100ms linear infinite alternate forwards;
@@ -8315,7 +8355,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 300ms dollar-5 800ms forwards, 1000ms dollar-5-hover 1100ms linear infinite alternate forwards;
 }
 
-.splash-landing .active-scene .ugrid-2.animate > div:first-child .hiw-svg-container:nth-child(6) svg {
+.active-scene .ugrid-2.animate > div:first-child .hiw-svg-container:nth-child(6) svg {
   -webkit-animation: 300ms dollar-6 1000ms forwards, 1000ms dollar-6-hover 1300ms linear infinite alternate forwards;
   -moz-animation: 300ms dollar-6 1000ms forwards, 1000ms dollar-6-hover 1300ms linear infinite alternate forwards;
   -ms-animation: 300ms dollar-6 1000ms forwards, 1000ms dollar-6-hover 1300ms linear infinite alternate forwards;
@@ -8323,7 +8363,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 300ms dollar-6 1000ms forwards, 1000ms dollar-6-hover 1300ms linear infinite alternate forwards;
 }
 
-.splash-landing .active-scene .ugrid-2.animate > div:first-child .hiw-svg-container:nth-child(7) svg {
+.active-scene .ugrid-2.animate > div:first-child .hiw-svg-container:nth-child(7) svg {
   -webkit-animation: 300ms dollar-7 1200ms forwards, 1000ms dollar-7-hover 1500ms linear infinite alternate forwards;
   -moz-animation: 300ms dollar-7 1200ms forwards, 1000ms dollar-7-hover 1500ms linear infinite alternate forwards;
   -ms-animation: 300ms dollar-7 1200ms forwards, 1000ms dollar-7-hover 1500ms linear infinite alternate forwards;
@@ -8331,7 +8371,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 300ms dollar-7 1200ms forwards, 1000ms dollar-7-hover 1500ms linear infinite alternate forwards;
 }
 
-.splash-landing .active-scene .ugrid-2.animate > div:last-child .hiw-svg-container svg {
+.active-scene .ugrid-2.animate > div:last-child .hiw-svg-container svg {
   -webkit-animation: 300ms dollar-8 forwards, 1000ms dollar-8-hover 300ms linear infinite alternate forwards;
   -moz-animation: 300ms dollar-8 forwards, 1000ms dollar-8-hover 300ms linear infinite alternate forwards;
   -ms-animation: 300ms dollar-8 forwards, 1000ms dollar-8-hover 300ms linear infinite alternate forwards;
@@ -8339,7 +8379,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 300ms dollar-8 forwards, 1000ms dollar-8-hover 300ms linear infinite alternate forwards;
 }
 
-.splash-landing .active-scene.how-scene-3 svg .guru-hover {
+.active-scene.how-scene-3 svg .guru-hover {
   -webkit-transform: translateX(0) !important;
   -moz-transform: translateX(0) !important;
   -ms-transform: translateX(0) !important;
@@ -8352,7 +8392,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 1000ms guru-hover linear infinite alternate forwards;
 }
 
-.splash-landing .active-scene.how-scene-3 svg .subcat-move-1 {
+.active-scene.how-scene-3 svg .subcat-move-1 {
   -webkit-animation: 200000ms subcat-move linear infinite forwards;
   -moz-animation: 200000ms subcat-move linear infinite forwards;
   -ms-animation: 200000ms subcat-move linear infinite forwards;
@@ -8360,7 +8400,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 200000ms subcat-move linear infinite forwards;
 }
 
-.splash-landing .active-scene .conveyor {
+.active-scene .conveyor {
   -webkit-animation: 1200000ms hiw-conveyor-belt forwards;
   -moz-animation: 1200000ms hiw-conveyor-belt forwards;
   -ms-animation: 1200000ms hiw-conveyor-belt forwards;
@@ -8368,7 +8408,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 1200000ms hiw-conveyor-belt forwards;
 }
 
-.splash-landing .active-scene .graph-desktop .point {
+.active-scene .graph-desktop .point {
   -webkit-animation: 1000ms point-graph-desktop ease-in-out forwards;
   -moz-animation: 1000ms point-graph-desktop ease-in-out forwards;
   -ms-animation: 1000ms point-graph-desktop ease-in-out forwards;
@@ -8376,7 +8416,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 1000ms point-graph-desktop ease-in-out forwards;
 }
 
-.splash-landing .active-scene .graph-desktop .guru-1, .splash-landing .active-scene .graph-desktop .guru-2, .splash-landing .active-scene .graph-desktop .guru-3, .splash-landing .active-scene .graph-desktop .guru-4, .splash-landing .active-scene .graph-desktop .guru-5 {
+.active-scene .graph-desktop .guru-1, .active-scene .graph-desktop .guru-2, .active-scene .graph-desktop .guru-3, .active-scene .graph-desktop .guru-4, .active-scene .graph-desktop .guru-5 {
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -8394,7 +8434,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform-origin: 50% 50%;
 }
 
-.splash-landing .active-scene .graph-desktop .guru-2 {
+.active-scene .graph-desktop .guru-2 {
   -webkit-animation-delay: 200ms;
   -moz-animation-delay: 200ms;
   -ms-animation-delay: 200ms;
@@ -8402,7 +8442,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 200ms;
 }
 
-.splash-landing .active-scene .graph-desktop .guru-3 {
+.active-scene .graph-desktop .guru-3 {
   -webkit-animation-delay: 400ms;
   -moz-animation-delay: 400ms;
   -ms-animation-delay: 400ms;
@@ -8410,7 +8450,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 400ms;
 }
 
-.splash-landing .active-scene .graph-desktop .guru-4 {
+.active-scene .graph-desktop .guru-4 {
   -webkit-animation-delay: 800ms;
   -moz-animation-delay: 800ms;
   -ms-animation-delay: 800ms;
@@ -8418,7 +8458,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 800ms;
 }
 
-.splash-landing .active-scene .graph-desktop .guru-5 {
+.active-scene .graph-desktop .guru-5 {
   -webkit-animation-delay: 1000ms;
   -moz-animation-delay: 1000ms;
   -ms-animation-delay: 1000ms;
@@ -8426,21 +8466,21 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation-delay: 1000ms;
 }
 
-.splash-landing .hiw-open-container path[class*="time-"] {
+.hiw-open-container path[class*="time-"] {
   transition: all 300ms ease-in-out;
   filter: alpha(opacity=0);
   opacity: 0;
 }
 
-.splash-landing .hiw-open-container .hour-hand, .splash-landing .hiw-open-container .minute-hand, .splash-landing .hiw-open-container .clock-base {
+.hiw-open-container .hour-hand, .hiw-open-container .minute-hand, .hiw-open-container .clock-base {
   fill: #4c5559;
 }
 
-.splash-landing .hiw-open-container .minute-hand, .splash-landing .hiw-open-container .hour-hand {
+.hiw-open-container .minute-hand, .hiw-open-container .hour-hand {
   transition: all 300ms ease-in-out;
 }
 
-.splash-landing .hiw-open-container .minute-hand {
+.hiw-open-container .minute-hand {
   -webkit-transform-origin: 50% 100%;
   -moz-transform-origin: 50% 100%;
   -ms-transform-origin: 50% 100%;
@@ -8448,7 +8488,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform-origin: 50% 100%;
 }
 
-.splash-landing .hiw-open-container .hour-hand {
+.hiw-open-container .hour-hand {
   -webkit-transform-origin: 0% 50%;
   -moz-transform-origin: 0% 50%;
   -ms-transform-origin: 0% 50%;
@@ -8456,7 +8496,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform-origin: 0% 50%;
 }
 
-.splash-landing .hiw-affordable-container .hiw-affordable-to-all path {
+.hiw-affordable-container .hiw-affordable-to-all path {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -8464,7 +8504,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transition: all 150ms ease-in-out;
 }
 
-.splash-landing .hiw-affordable-container .hiw-affordable-to-all .right {
+.hiw-affordable-container .hiw-affordable-to-all .right {
   -webkit-transform-origin: 50% 50%;
   -moz-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
@@ -8472,7 +8512,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform-origin: 50% 50%;
 }
 
-.splash-landing .hiw-affordable-container .hiw-affordable-to-all .left {
+.hiw-affordable-container .hiw-affordable-to-all .left {
   -webkit-transform-origin: 50% 50%;
   -moz-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
@@ -8480,7 +8520,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform-origin: 50% 50%;
 }
 
-.splash-landing .hiw-beyond-tutoring-container .academic {
+.hiw-beyond-tutoring-container .academic {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -8498,25 +8538,25 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform-origin: 50% 50%;
 }
 
-.splash-landing .hiw-beyond-tutoring-container .shirt {
+.hiw-beyond-tutoring-container .shirt {
   filter: alpha(opacity=0);
   opacity: 0;
 }
 
-.splash-landing .hiw-everyone-container .hiw-everyone-wins .platform {
+.hiw-everyone-container .hiw-everyone-wins .platform {
   fill: #4c5559;
 }
 
-.splash-landing .hiw-everyone-container .hiw-everyone-wins .person {
+.hiw-everyone-container .hiw-everyone-wins .person {
   fill: none !important;
 }
 
-.splash-landing .hiw-everyone-container .hiw-everyone-wins .circle {
+.hiw-everyone-container .hiw-everyone-wins .circle {
   filter: alpha(opacity=0);
   opacity: 0;
 }
 
-.splash-landing .hiw-everyone-container .hiw-everyone-wins g, .splash-landing .hiw-everyone-container .hiw-everyone-wins .platform {
+.hiw-everyone-container .hiw-everyone-wins g, .hiw-everyone-container .hiw-everyone-wins .platform {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -8529,11 +8569,11 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transition-delay: 0ms !important;
 }
 
-.splash-landing .hiw-everyone-container .hiw-everyone-wins .platform-1-50 .left, .splash-landing .hiw-everyone-container .hiw-everyone-wins .platform-1-50 .right {
+.hiw-everyone-container .hiw-everyone-wins .platform-1-50 .left, .hiw-everyone-container .hiw-everyone-wins .platform-1-50 .right {
   stroke-dashoffset: 0;
 }
 
-.splash-landing .hiw-everyone-container .hiw-everyone-wins .platform-2-90 {
+.hiw-everyone-container .hiw-everyone-wins .platform-2-90 {
   -webkit-transform: translateY(40px);
   -moz-transform: translateY(40px);
   -ms-transform: translateY(40px);
@@ -8541,7 +8581,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform: translateY(40px);
 }
 
-.splash-landing .hiw-everyone-container .hiw-everyone-wins .platform-3-110 {
+.hiw-everyone-container .hiw-everyone-wins .platform-3-110 {
   -webkit-transform: translateY(60px);
   -moz-transform: translateY(60px);
   -ms-transform: translateY(60px);
@@ -8549,7 +8589,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform: translateY(60px);
 }
 
-.splash-landing .hiw-student-run-container .hiw-student-run path[class*="person-"] {
+.hiw-student-run-container .hiw-student-run path[class*="person-"] {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -8558,7 +8598,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   fill: #4c5559;
 }
 
-.splash-landing .hiw-instant-container .boom {
+.hiw-instant-container .boom {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -8567,16 +8607,16 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   fill: #4c5559;
 }
 
-.splash-landing a:hover .hiw-open-container path[class*="time-"], .splash-landing a:focus .hiw-open-container path[class*="time-"] {
+a:hover .hiw-open-container path[class*="time-"], a:focus .hiw-open-container path[class*="time-"] {
   filter: alpha(opacity=100);
   opacity: 1;
 }
 
-.splash-landing a:hover .hiw-open-container .hour-hand, .splash-landing a:hover .hiw-open-container .minute-hand, .splash-landing a:hover .hiw-open-container .clock-base, .splash-landing a:focus .hiw-open-container .hour-hand, .splash-landing a:focus .hiw-open-container .minute-hand, .splash-landing a:focus .hiw-open-container .clock-base {
+a:hover .hiw-open-container .hour-hand, a:hover .hiw-open-container .minute-hand, a:hover .hiw-open-container .clock-base, a:focus .hiw-open-container .hour-hand, a:focus .hiw-open-container .minute-hand, a:focus .hiw-open-container .clock-base {
   fill: #637074;
 }
 
-.splash-landing a:hover .hiw-open-container .minute-hand, .splash-landing a:focus .hiw-open-container .minute-hand {
+a:hover .hiw-open-container .minute-hand, a:focus .hiw-open-container .minute-hand {
   -webkit-animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
   -moz-animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
   -ms-animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
@@ -8584,7 +8624,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
 }
 
-.splash-landing a:hover .hiw-open-container .hour-hand, .splash-landing a:focus .hiw-open-container .hour-hand {
+a:hover .hiw-open-container .hour-hand, a:focus .hiw-open-container .hour-hand {
   -webkit-animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards;
   -moz-animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards;
   -ms-animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards;
@@ -8592,7 +8632,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 12000ms hiw-hour-hand 2000ms ease-in infinite forwards;
 }
 
-.splash-landing a:hover .hiw-affordable-container .hiw-affordable-to-all .s-right, .splash-landing a:hover .hiw-affordable-container .hiw-affordable-to-all .s-left, .splash-landing a:focus .hiw-affordable-container .hiw-affordable-to-all .s-right, .splash-landing a:focus .hiw-affordable-container .hiw-affordable-to-all .s-left {
+a:hover .hiw-affordable-container .hiw-affordable-to-all .s-right, a:hover .hiw-affordable-container .hiw-affordable-to-all .s-left, a:focus .hiw-affordable-container .hiw-affordable-to-all .s-right, a:focus .hiw-affordable-container .hiw-affordable-to-all .s-left {
   -webkit-animation: 1000ms hiw-affordable-path-widen ease-in infinite alternate forwards;
   -moz-animation: 1000ms hiw-affordable-path-widen ease-in infinite alternate forwards;
   -ms-animation: 1000ms hiw-affordable-path-widen ease-in infinite alternate forwards;
@@ -8600,7 +8640,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 1000ms hiw-affordable-path-widen ease-in infinite alternate forwards;
 }
 
-.splash-landing a:hover .hiw-affordable-container .hiw-affordable-to-all .right, .splash-landing a:focus .hiw-affordable-container .hiw-affordable-to-all .right {
+a:hover .hiw-affordable-container .hiw-affordable-to-all .right, a:focus .hiw-affordable-container .hiw-affordable-to-all .right {
   -webkit-animation: 1000ms hiw-move-right ease-in infinite alternate forwards;
   -moz-animation: 1000ms hiw-move-right ease-in infinite alternate forwards;
   -ms-animation: 1000ms hiw-move-right ease-in infinite alternate forwards;
@@ -8608,7 +8648,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 1000ms hiw-move-right ease-in infinite alternate forwards;
 }
 
-.splash-landing a:hover .hiw-affordable-container .hiw-affordable-to-all .right .line-right, .splash-landing a:focus .hiw-affordable-container .hiw-affordable-to-all .right .line-right {
+a:hover .hiw-affordable-container .hiw-affordable-to-all .right .line-right, a:focus .hiw-affordable-container .hiw-affordable-to-all .right .line-right {
   -webkit-animation: 1000ms hiw-line-right ease-in infinite alternate forwards;
   -moz-animation: 1000ms hiw-line-right ease-in infinite alternate forwards;
   -ms-animation: 1000ms hiw-line-right ease-in infinite alternate forwards;
@@ -8621,7 +8661,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform: translate(-5px);
 }
 
-.splash-landing a:hover .hiw-affordable-container .hiw-affordable-to-all .left, .splash-landing a:focus .hiw-affordable-container .hiw-affordable-to-all .left {
+a:hover .hiw-affordable-container .hiw-affordable-to-all .left, a:focus .hiw-affordable-container .hiw-affordable-to-all .left {
   -webkit-animation: 1000ms hiw-move-left ease-in infinite alternate forwards;
   -moz-animation: 1000ms hiw-move-left ease-in infinite alternate forwards;
   -ms-animation: 1000ms hiw-move-left ease-in infinite alternate forwards;
@@ -8629,7 +8669,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 1000ms hiw-move-left ease-in infinite alternate forwards;
 }
 
-.splash-landing a:hover .hiw-affordable-container .hiw-affordable-to-all .left .line-left, .splash-landing a:focus .hiw-affordable-container .hiw-affordable-to-all .left .line-left {
+a:hover .hiw-affordable-container .hiw-affordable-to-all .left .line-left, a:focus .hiw-affordable-container .hiw-affordable-to-all .left .line-left {
   -webkit-animation: 1000ms hiw-line-left ease-in infinite alternate forwards;
   -moz-animation: 1000ms hiw-line-left ease-in infinite alternate forwards;
   -ms-animation: 1000ms hiw-line-left ease-in infinite alternate forwards;
@@ -8642,7 +8682,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform: translate(5px);
 }
 
-.splash-landing a:hover .hiw-beyond-tutoring-container .academic, .splash-landing a:focus .hiw-beyond-tutoring-container .academic {
+a:hover .hiw-beyond-tutoring-container .academic, a:focus .hiw-beyond-tutoring-container .academic {
   -webkit-animation: 1000ms hiw-beyond-tutoring-academic ease-in 500ms infinite alternate forwards;
   -moz-animation: 1000ms hiw-beyond-tutoring-academic ease-in 500ms infinite alternate forwards;
   -ms-animation: 1000ms hiw-beyond-tutoring-academic ease-in 500ms infinite alternate forwards;
@@ -8650,7 +8690,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 1000ms hiw-beyond-tutoring-academic ease-in 500ms infinite alternate forwards;
 }
 
-.splash-landing a:hover .hiw-beyond-tutoring-container .shirt, .splash-landing a:focus .hiw-beyond-tutoring-container .shirt {
+a:hover .hiw-beyond-tutoring-container .shirt, a:focus .hiw-beyond-tutoring-container .shirt {
   -webkit-animation: 1000ms hiw-beyond-tutoring-shirt ease-in 500ms infinite alternate forwards;
   -moz-animation: 1000ms hiw-beyond-tutoring-shirt ease-in 500ms infinite alternate forwards;
   -ms-animation: 1000ms hiw-beyond-tutoring-shirt ease-in 500ms infinite alternate forwards;
@@ -8658,11 +8698,11 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 1000ms hiw-beyond-tutoring-shirt ease-in 500ms infinite alternate forwards;
 }
 
-.splash-landing a:hover .hiw-instant-container .boom, .splash-landing a:focus .hiw-instant-container .boom {
+a:hover .hiw-instant-container .boom, a:focus .hiw-instant-container .boom {
   fill: #637074;
 }
 
-.splash-landing a:hover .hiw-instant-container .grip, .splash-landing a:focus .hiw-instant-container .grip {
+a:hover .hiw-instant-container .grip, a:focus .hiw-instant-container .grip {
   -webkit-animation: 1000ms hiw-grip ease-in infinite alternate forwards;
   -moz-animation: 1000ms hiw-grip ease-in infinite alternate forwards;
   -ms-animation: 1000ms hiw-grip ease-in infinite alternate forwards;
@@ -8670,11 +8710,11 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 1000ms hiw-grip ease-in infinite alternate forwards;
 }
 
-.splash-landing a:hover .hiw-student-run-container .hiw-student-run path[class*="person-"], .splash-landing a:focus .hiw-student-run-container .hiw-student-run path[class*="person-"] {
+a:hover .hiw-student-run-container .hiw-student-run path[class*="person-"], a:focus .hiw-student-run-container .hiw-student-run path[class*="person-"] {
   fill: #637074;
 }
 
-.splash-landing a:hover .hiw-student-run-container .hiw-student-run .hat, .splash-landing a:focus .hiw-student-run-container .hiw-student-run .hat {
+a:hover .hiw-student-run-container .hiw-student-run .hat, a:focus .hiw-student-run-container .hiw-student-run .hat {
   -webkit-animation: 1000ms hiw-student-run-hat 1000ms ease-in infinite alternate forwards;
   -moz-animation: 1000ms hiw-student-run-hat 1000ms ease-in infinite alternate forwards;
   -ms-animation: 1000ms hiw-student-run-hat 1000ms ease-in infinite alternate forwards;
@@ -8682,11 +8722,11 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   animation: 1000ms hiw-student-run-hat 1000ms ease-in infinite alternate forwards;
 }
 
-.splash-landing a:hover .hiw-everyone-container .hiw-everyone-wins .platform, .splash-landing a:focus .hiw-everyone-container .hiw-everyone-wins .platform {
+a:hover .hiw-everyone-container .hiw-everyone-wins .platform, a:focus .hiw-everyone-container .hiw-everyone-wins .platform {
   fill: #637074;
 }
 
-.splash-landing a:hover .hiw-everyone-container .hiw-everyone-wins .platform-3-110, .splash-landing a:focus .hiw-everyone-container .hiw-everyone-wins .platform-3-110 {
+a:hover .hiw-everyone-container .hiw-everyone-wins .platform-3-110, a:focus .hiw-everyone-container .hiw-everyone-wins .platform-3-110 {
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
@@ -8694,7 +8734,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform: translateY(0);
 }
 
-.splash-landing a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, .splash-landing a:focus .hiw-everyone-container .hiw-everyone-wins .platform-2-90 {
+a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-everyone-container .hiw-everyone-wins .platform-2-90 {
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
@@ -8702,7 +8742,8 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   transform: translateY(0);
 }
 
-.splash-landing #bg {
+/* ---------- BECOME GURU */
+#bg {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -8715,7 +8756,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   flex-flow: row wrap;
 }
 
-.splash-landing #bg header {
+#bg header {
   filter: alpha(opacity=0);
   opacity: 0;
   -webkit-flex-direction: row;
@@ -8733,7 +8774,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   min-height: 0 !important;
 }
 
-.splash-landing #bg header h1 {
+#bg header h1 {
   padding: 15px;
   text-align: center;
   font-size: 28px;
@@ -8741,7 +8782,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   text-transform: capitalize !important;
 }
 
-.splash-landing #bg .main {
+#bg .main {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -8758,7 +8799,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   height: 100%;
 }
 
-.splash-landing #bg .main .bg-scene {
+#bg .main .bg-scene {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -8781,7 +8822,7 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   height: 100%;
 }
 
-.splash-landing #bg .main .bg-scene > div {
+#bg .main .bg-scene > div {
   position: absolute;
   top: 0;
   left: 0;
@@ -8790,43 +8831,43 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   overflow: hidden;
 }
 
-.splash-landing #bg .main .bg-scene svg {
+#bg .main .bg-scene svg {
   max-height: 400px;
 }
 
-.splash-landing #bg .main .bg-scene .bg-scene-1 {
+#bg .main .bg-scene .bg-scene-1 {
   background: #F2B65A;
 }
 
-.splash-landing #bg .main .bg-scene .bg-scene-2 {
+#bg .main .bg-scene .bg-scene-2 {
   background: #8DA09C;
 }
 
-.splash-landing #bg .main .bg-scene .bg-scene-3 {
+#bg .main .bg-scene .bg-scene-3 {
   background: #89A1B5;
 }
 
-.splash-landing #bg .main .bg-scene .bg-scene-4 {
+#bg .main .bg-scene .bg-scene-4 {
   background: #F39185;
 }
 
-.splash-landing #bg .main .bg-scene .bg-scene-5 {
+#bg .main .bg-scene .bg-scene-5 {
   background: #07113C;
 }
 
-.splash-landing #bg .main .bg-scene .bg-scene-6 {
+#bg .main .bg-scene .bg-scene-6 {
   background: #81B88C;
 }
 
-.splash-landing #bg .main .bg-scene .bg-scene-7 {
+#bg .main .bg-scene .bg-scene-7 {
   background: #40484B;
 }
 
-.splash-landing #bg .main .bg-scene .bg-scene-8 {
+#bg .main .bg-scene .bg-scene-8 {
   background: #637074;
 }
 
-.splash-landing #bg .main .bg-props {
+#bg .main .bg-props {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -8849,13 +8890,13 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   padding: 7.5px;
 }
 
-.splash-landing #bg .main .bg-props li {
+#bg .main .bg-props li {
   width: calc(100% / 4);
   text-align: center;
   padding: 7.5px;
 }
 
-.splash-landing #bg .main .bg-props li a {
+#bg .main .bg-props li a {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -8877,12 +8918,12 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   margin: 0 auto;
 }
 
-.splash-landing #bg .main .bg-props li a div {
+#bg .main .bg-props li a div {
   width: 100%;
   max-width: 50px;
 }
 
-.splash-landing #bg .main .bg-props li a svg {
+#bg .main .bg-props li a svg {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
   -ms-transition: all 150ms ease-in-out;
@@ -8892,23 +8933,23 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
   background: #4c5559;
 }
 
-.splash-landing #bg .main .bg-props li a svg * {
+#bg .main .bg-props li a svg * {
   stroke-width: 4px !important;
 }
 
-.splash-landing #bg .main .bg-props li a h1 {
+#bg .main .bg-props li a h1 {
   padding-top: 10px;
   width: 100%;
   font-size: 14px;
   font-weight: 600;
 }
 
-.splash-landing #bg .main .bg-props li a:hover svg {
+#bg .main .bg-props li a:hover svg {
   background: #637074;
 }
 
 @media screen and (max-width: 768px) {
-  .splash-landing #bg .main .bg-props {
+  #bg .main .bg-props {
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
@@ -8916,31 +8957,31 @@ li.animated-clear .tag-adlib:not(.blank):not(.ghost) b {
 }
 
 @media screen and (min-width: 768px) {
-  .splash-landing #bg header {
+  #bg header {
     filter: alpha(opacity=100);
     opacity: 1;
   }
-  .splash-landing #bg .main .bg-props {
+  #bg .main .bg-props {
     height: 163px;
     overflow-x: auto;
   }
-  .splash-landing #bg .main .bg-props li {
+  #bg .main .bg-props li {
     width: calc(100% / 4);
   }
-  .splash-landing #bg .main .bg-props li a div {
+  #bg .main .bg-props li a div {
     width: 100px;
     max-width: 100px;
   }
-  .splash-landing #bg .main .bg-props li a h1 {
+  #bg .main .bg-props li a h1 {
     font-size: 16px;
   }
 }
 
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-7,
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-6,
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-5,
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-4,
-.splash-landing > section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-3.progress-active {
+> section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-7,
+> section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-6,
+> section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-5,
+> section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-4,
+> section#splash-projector .swiper-front-gallery-thumbs .swiper-gallery-wrapper .slideshow-thumb-3.progress-active {
   width: 20% !important;
   background: none !important;
 }

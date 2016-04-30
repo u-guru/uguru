@@ -25,7 +25,11 @@
 }
 
 #keys #stage-elem-clone-container {
-  min-height: 300px;
+  min-height: 200px;
+}
+
+#keys #stage-elem-clone-container > .absolute {
+  position: relative !important;
 }
 
 #keys #import-button svg {

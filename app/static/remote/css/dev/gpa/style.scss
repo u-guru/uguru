@@ -517,6 +517,12 @@
 
 #powerup-gpa-title {
 	background: mix(white, $gpa, 30%)!important;
+	.powerup-title-inside {
+		background: rgba(#637074, 0);
+		&.bg-switch {
+			background: rgba(#637074, 0.5);
+		}
+	}
 }
 
 /* ---------- DEMOGRAPHIC */
@@ -590,7 +596,10 @@
 }
 
 #powerup-gpa-welcome {
-	background: mix(white, $gpa, 30%);
+	background: $smoke;
+	> div {
+		background: mix(white, $gpa, 30%);
+	}
 	.powerup-back {
 		span {
 			color: white;

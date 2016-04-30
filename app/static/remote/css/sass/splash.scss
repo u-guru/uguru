@@ -14,66 +14,66 @@
 		}
 	}
 }
-li {
-	&.animated-start {
-		opacity: 0;
-		.tag-adlib:not(.blank):not(.ghost) {
-			.desktop {
-				rect {
-					@include opacity(0);
-					stroke-dasharray: 728;
-					stroke-dashoffset: 728;
-				}
-			}
-			.mobile {
-				rect {
-					@include opacity(0);
-					stroke-dasharray: 656;
-					stroke-dashoffset: 656;
-				}
-			}
-			b {
-				opacity: 0;
-			}
-		}
-	}
-	&.animated {
-		@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out forwards, webkit moz ms o);
-		.tag-adlib:not(.blank):not(.ghost) {
-			.desktop {
-				rect {
-					animation: tag-adlib-desktop 800ms linear 2500ms forwards;
-				}
-			}
-			.mobile {
-				rect {
-					animation: tag-adlib-mobile 800ms linear 2500ms forwards;
-				}
-			}
-			b {
-				@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out 500ms forwards, webkit moz ms o);
-			}
-		}
-	}
-	&.animated-clear {
-		@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
-		.tag-adlib:not(.blank):not(.ghost) {
-			.desktop {
-				rect {
-					animation: tag-adlib-desktop 800ms linear reverse forwards;
-				}
-			}
-			.mobile {
-				rect {
-					animation: tag-adlib-mobile 800ms linear reverse forwards;
-				}
-			}
-			b {
-				@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
-			}
-		}
-	}
-}
+// li {
+// 	&.animated-start {
+// 		opacity: 0;
+// 		.tag-adlib:not(.blank):not(.ghost) {
+// 			.desktop {
+// 				rect {
+// 					@include opacity(0);
+// 					stroke-dasharray: 728;
+// 					stroke-dashoffset: 728;
+// 				}
+// 			}
+// 			.mobile {
+// 				rect {
+// 					@include opacity(0);
+// 					stroke-dasharray: 656;
+// 					stroke-dashoffset: 656;
+// 				}
+// 			}
+// 			b {
+// 				opacity: 0;
+// 			}
+// 		}
+// 	}
+// 	&.animated {
+// 		@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+// 		.tag-adlib:not(.blank):not(.ghost) {
+// 			.desktop {
+// 				rect {
+// 					animation: tag-adlib-desktop 800ms linear 2500ms forwards;
+// 				}
+// 			}
+// 			.mobile {
+// 				rect {
+// 					animation: tag-adlib-mobile 800ms linear 2500ms forwards;
+// 				}
+// 			}
+// 			b {
+// 				@include prefix(animation, u-bounceIn-subtle 1000ms ease-in-out 500ms forwards, webkit moz ms o);
+// 			}
+// 		}
+// 	}
+// 	&.animated-clear {
+// 		@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+// 		.tag-adlib:not(.blank):not(.ghost) {
+// 			.desktop {
+// 				rect {
+// 					animation: tag-adlib-desktop 800ms linear reverse forwards;
+// 				}
+// 			}
+// 			.mobile {
+// 				rect {
+// 					animation: tag-adlib-mobile 800ms linear reverse forwards;
+// 				}
+// 			}
+// 			b {
+// 				@include prefix(animation, u-bounceOut-subtle 1000ms ease-in-out forwards, webkit moz ms o);
+// 			}
+// 		}
+// 	}
+// }
 
 /* ---------- SPLASH UNIVERSITY SEARCH */
 .splash-school-search-form {
@@ -163,10 +163,12 @@ li {
 		height: 64px;
 		background: none;
 		border: 2px solid white;
+		padding: 0!important;
 		font-size: 20px;
 		font-weight: 600;
 		text-transform: uppercase;
 		color: white!important;
+		white-space: nowrap;
 		&:hover, &:focus {
 			@include opacity(.75);
 		}
@@ -363,11 +365,42 @@ li {
 			right: 57px;
 			top: 14px;
 		}
+		&:before {
+			display: none!important;
+		}
 		div[translate-on-click] {
 			@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
 			@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1.27)!important, webkit moz ms o);
+			position: relative;
+			&:before {
+				@include prefix(transform, scale(0), webkit moz ms o);
+				@include prefix(transform-origin, center center, webkit moz ms o);
+				@include prefix(transition, all 300ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
+				@include prefix(transition, all 300ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
+				@include round;
+				content: "";
+				display: block;
+				position: absolute;
+				z-index: 1;
+				top: 50%;
+				left: 50%;
+				margin-top: -15px;
+				margin-left: -15px;
+				width: 30px;
+				height: 30px;
+				background: $gold;
+			}
+		}
+		&:hover, &:focus {
+			div[translate-on-click] {
+				&:before {
+					@include prefix(transform, scale(1), webkit moz ms o);
+				}
+			}
 		}
 		svg {
+			position: relative;
+			z-index: 2;
 			circle {
 				stroke: $gold;
 			}
@@ -382,13 +415,19 @@ li {
 		&:hover, &:focus {
 			svg {
 				circle {
+					stroke: $gold;
+				}
+				path {
+					fill: white;
 					stroke: white;
 				}
 			}
 		}
-		&.powerup-activated {
-			&:before {
-				@include prefix(animation, powerup-before-scaleUp 1000ms ease-in-out forwards, webkit moz ms o);
+		&.powerup-activated, &.powerup-activated:hover, &.powerup-activated:focus, &.powerup-activated:active {
+			div[translate-on-click] {
+				&:before {
+					@include prefix(animation, powerup-before-scaleUp 1000ms ease-in-out forwards, webkit moz ms o);
+				}
 			}
 			svg {
 				circle {
@@ -2095,12 +2134,30 @@ li {
 				margin-top: -306px;
 				.splash-device-svg {
 					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-					@include prefix(transition-delay, 500ms, webkit moz ms o);
-					@include opacity(.2);
 					display: block;
 					width: 100%;
+					&.animate {
+						@include opacity-important(.2);
+						circle {
+							@include prefix(animation, device-drawIn-1 1250ms ease-in-out 2500ms forwards, webkit moz ms o);
+							stroke-dasharray: 158;
+							stroke-dashoffset: 158;
+						}
+						rect {
+							&:nth-child(2) {
+								@include prefix(animation, device-drawIn-2 2000ms ease-in-out 2000ms forwards, webkit moz ms o);
+								stroke-dasharray: 1926;
+								stroke-dashoffset: 1926;
+							}
+							&:nth-child(3) {
+								@include prefix(animation, device-drawIn-3 1750ms ease-in-out 2250ms forwards, webkit moz ms o);
+								stroke-dasharray: 1538;
+								stroke-dashoffset: 1538;
+							}
+						}
+					}
 					&.active {
-						@include opacity(.8);
+						@include opacity-important(.8);
 					}
 					.rotated {
 						@include prefix(transform-origin, center center, webkit moz ms o);
@@ -2536,22 +2593,22 @@ li {
 	    			right: -100px;
 					width: 140px;
 					path {
-						// &:nth-child(1) {
-						// 	stroke-dasharray: 137;
-						// 	stroke-dashoffset: 137;
-						// }
-						// &:nth-child(2) {
-						// 	stroke-dasharray: 53;
-						// 	stroke-dashoffset: 53;
-						// }
-						// &.animate {
-						// 	&:nth-child(1) {
-						// 		@include prefix(animation, coach-click-2 200ms ease-in 2500ms 1 forwards, webkit moz ms o);
-						// 	}
-						// 	&:nth-child(2) {
-						// 		@include prefix(animation, coach-click-1 100ms ease-in 2700ms 1 forwards, webkit moz ms o);
-						// 	}
-						// }
+						&:nth-child(1) {
+							stroke-dasharray: 137;
+							stroke-dashoffset: 137;
+						}
+						&:nth-child(2) {
+							stroke-dasharray: 53;
+							stroke-dashoffset: 53;
+						}
+						&.animate, &.activate {
+							&:nth-child(1) {
+								@include prefix(animation, coach-click-2 200ms ease-in 2500ms 1 forwards, webkit moz ms o);
+							}
+							&:nth-child(2) {
+								@include prefix(animation, coach-click-1 100ms ease-in 2700ms 1 forwards, webkit moz ms o);
+							}
+						}
 					}
 					g g {
 						@include prefix(animation-delay, 3000ms, webkit moz ms o);
@@ -5170,7 +5227,7 @@ li {
 }
 
 /* ---------- Projector Animation [deprecate] */
-.splash-landing {
+// .splash-landing {
 	/* ---------- HOW IT WORKS */
 	/// HTML ///
 	.circle-nav {
@@ -6135,7 +6192,7 @@ li {
 			background: none!important;
 		}
 	}
-}
+// }
 
 // MAP
 .university-svg-icon {

@@ -26,7 +26,10 @@
 		}
 	}
 	#stage-elem-clone-container {
-		min-height: 300px;
+		min-height: 200px;
+		> .absolute {
+			position: relative!important;
+		}
 	}
 	#import-button {
 		svg {

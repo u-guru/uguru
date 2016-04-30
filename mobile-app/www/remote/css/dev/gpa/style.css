@@ -722,6 +722,14 @@
   background: #79c5cd !important;
 }
 
+#powerup-gpa-title .powerup-title-inside {
+  background: rgba(99, 112, 116, 0);
+}
+
+#powerup-gpa-title .powerup-title-inside.bg-switch {
+  background: rgba(99, 112, 116, 0.5);
+}
+
 /* ---------- DEMOGRAPHIC */
 #powerup-gpa-demographic .powerup-back span {
   color: #40acb8;
@@ -776,6 +784,10 @@
 }
 
 #powerup-gpa-welcome {
+  background: #F1F1F1;
+}
+
+#powerup-gpa-welcome > div {
   background: #79c5cd;
 }
 

@@ -895,6 +895,16 @@ input, fieldset {
 .z-index-1000 {
 	z-index: 1000!important;
 }
+.z-index-1001 {
+	z-index: 1001!important;
+}
+.z-index-2000 {
+	z-index: 2000!important;
+}
+
+.z-index--2000 {
+	z-index: -2000!important;
+}
 
 // flex
 [class*="flex"] {
