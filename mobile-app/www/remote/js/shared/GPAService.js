@@ -1,5 +1,4 @@
-angular
-.module('sharedServices')
+angular.module('sharedServices')
 .factory("GPAService", [
   GPAService
   ]);
