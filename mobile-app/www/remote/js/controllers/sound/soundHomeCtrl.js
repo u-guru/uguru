@@ -13,10 +13,13 @@ function SoundController($scope, SoundPlayListService) {
 	// $scope.$on('$ionicView.loaded', function() {
 	// 	console.log("loaded")
 	// })
-	// setTimeout(function() {
-	// 	var result = SoundPlayListService.search("motivation")
-	// 	console.log("Result",result)
-
-	// }, 2000);
+	setTimeout(function() {
+		var results = SoundPlayListService.search("motivation")
+		// console.log("Result",results)
+		// for(var i in results.items) {
+		//     var item = results.items[i];
+		//     Logger.log('[%s] Title: %s', item.id.videoId, item.snippet.title);
+		//   }
+	}, 2000);
 
 };

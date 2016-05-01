@@ -6,9 +6,8 @@ angular.module('sharedServices')
 	SoundPlayListService
 	]);
 function SoundPlayListService($localstorage) {
-
 	var youTubeKey = 'AIzaSyBBHJz6xWQVLt7qtcedo_J1U9mwVKTH7T0';
-	// var youTubeKey = 'sound-guru'
+    var OAUTH2_CLIENT_ID = '60923915370-3lqvbkb9vrqnitjpmsu7ajhhhe9vpnrh.apps.googleusercontent.com'
 	var OAUTH2_SCOPES = [
 						  'https://www.googleapis.com/auth/youtube'
 						];
@@ -18,23 +17,36 @@ function SoundPlayListService($localstorage) {
 	}
 	function init(postInitiation){
 
-		console.log("Authorizing music service",Gapi)
+		console.log("Authorizing music service",gapi)
 
-		// setTimeout(checkAuth, 1);
+		// setTimeout(checkAuth,500);
+		window.setTimeout(checkAuth, 500);
+
+		 // setTimeout(loadAPIClientInterfaces,500);
 
 		// GAuth.setClient(youTubeKey);
 		// GAuth.setScope(OAUTH2_SCOPES[0]); // default scope is only https://www.googleapis.com/auth/userinfo.email
 
 	}
 	function search(text){
-		console.log("GAPI")
+		console.log("search",text)
+		var request = gapi.client.youtube.search.list({
+			q: text,
+			part: 'snippet'
+		});
+		request.execute(function(response) {
+		  var str = JSON.stringify(response.result);
+		  // $('#search-container').html('<pre>' + str + '</pre>');
+		  console.log(str)
+
+		});
 	}
 
 	function checkAuth() {
 	  console.log("Authorizing api...")
 
 	  gapi.auth.authorize({
-	    client_id: youTubeKey,
+	    client_id: OAUTH2_CLIENT_ID,
 	    scope: OAUTH2_SCOPES,
 	    immediate: true
 	  }, handleAuthResult);
@@ -43,8 +55,6 @@ function SoundPlayListService($localstorage) {
 	  if (authResult && !authResult.error) {
 	    // Authorization was successful. Hide authorization prompts and show
 	    // content that should be visible after authorization succeeds.
-	    // $('.pre-auth').hide();
-	    // $('.post-auth').show();
 	    console.log("successful!")
 	    loadAPIClientInterfaces();
 	  } else {
@@ -52,11 +62,15 @@ function SoundPlayListService($localstorage) {
 	    // client flow. The current function is called when that flow completes.
 	    console.log("Failed!")
 	      gapi.auth.authorize({
-	        client_id: youTubeKey,
+	        client_id: OAUTH2_CLIENT_ID,
 	        scope: OAUTH2_SCOPES,
 	        immediate: false
 	        }, handleAuthResult);
 	  }
 	}
-
+	function loadAPIClientInterfaces() {
+	  // gapi.client.setApiKey(youTubeKey);
+	  gapi.client.load('youtube', 'v3');
+	  console.log("done",gapi)
+	}
 };
