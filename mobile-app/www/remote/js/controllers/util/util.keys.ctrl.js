@@ -1,3 +1,4 @@
+
 angular.module('uguru.util.controllers')
 
 .controller('KeyToolController', [
@@ -12,7 +13,8 @@ angular.module('uguru.util.controllers')
 	'LoadingService',
 	'KeyboardService',
 	'$compile',
-	function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService, LoadingService, KeyboardService, $compile) {
+	'AnimationService',
+	function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService, LoadingService, KeyboardService, $compile, AnimationService) {
 
 		var defaults = {
 			KF_COUNT: 100,
@@ -636,7 +638,7 @@ angular.module('uguru.util.controllers')
 			$localstorage.setObject('last_stage_active', $scope.stage.stageName);
 			if (!$scope.stageDropdown.stageActive) {
 				$timeout(function() {
-					initStageDropdown();
+					// initStageDropdown();
 				})
 			}
 			$scope.updatePageDom(stage_template.stageName, stage_template.stageHtml, stage_template.stageCss, stage_template.animElemSelector.replace('#', ''));
@@ -1449,11 +1451,9 @@ angular.module('uguru.util.controllers')
 						keyTexts.push(parseFloat(keyText.replace('%', '')));
 					}
 				}
-				console.log('before sort', keyTexts.slice())
 				keyTexts.sort(function(a, b) {
 					return b - a;
 				}).reverse();
-				console.log('after sort', keyTexts.slice())
 				// console.log(keyTexts.slice(), index, keyTexts.reverse(), keyTexts.reverse())
 				return keyTexts[keyTexts.indexOf(index)];
 				// anim.cssRules.item(index)
@@ -1789,6 +1789,7 @@ angular.module('uguru.util.controllers')
 			}
 			var defaultValue = getDefaultValue(property);
 			editKeyframeAtX($scope.animation, percent_value, property, defaultValue);
+
 			editKeyframeAtX($scope.animation, percent_value, property, null);
 			kf[property] = defaultValue;
 
@@ -1810,8 +1811,6 @@ angular.module('uguru.util.controllers')
 			transformObj = anim.properties[percentage];
 			transformObj.edited = true;
 			transformObj[property] = value;
-
-
 
 
 
@@ -2198,10 +2197,113 @@ angular.module('uguru.util.controllers')
 
 		}
 
+		function convertDecomposeToDistinctProps(js_obj) {
+			resultTransformObj = new transformPropertiesObj();
+			resultTransformObj.skewX = js_obj.skew[0];
+			resultTransformObj.skewY = js_obj.skew[1];
+			resultTransformObj.scale3DX = js_obj.scale[0]; //m11
+			resultTransformObj.scale3DY = js_obj.scale[1]; //m22
+			resultTransformObj.scale3DZ = js_obj.scale[2]; //m33
+			resultTransformObj.translateX = js_obj.translate[0]; //m21
+			resultTransformObj.translateY = js_obj.translate[1]; //
+			resultTransformObj.translateZ = js_obj.translate[2];
+			resultTransformObj.rotate3DX = js_obj.rotate[0];
+			resultTransformObj.rotate3DY = js_obj.rotate[1];
+			resultTransformObj.rotate3DZ = js_obj.rotate[2];
+
+			if (resultTransformObj.skewX) {
+				resultTransformObj.modified['skewX'] = true;
+			}
+			if (resultTransformObj.skewY) {
+				resultTransformObj.modified['skewY'] = true;
+			}
+			if (resultTransformObj.scale3DX) {
+				resultTransformObj.modified['scale3DX'] = true;
+			}
+			if (resultTransformObj.scale3DY) {
+				resultTransformObj.modified['scale3DY'] = true;
+			}
+			if (resultTransformObj.scale3DZ) {
+				resultTransformObj.modified['scale3DZ'] = true;
+			}
+			if (resultTransformObj.translateX) {
+				resultTransformObj.modified['translateX'] = true;
+			}
+			if (resultTransformObj.translateY) {
+				resultTransformObj.modified['translateY'] = true;
+			}
+			if (resultTransformObj.translateZ) {
+				resultTransformObj.modified['translateZ'] = true;
+			}
+			if (resultTransformObj.translateZ) {
+				resultTransformObj.modified['translateZ'] = true;
+			}
+
+			return resultTransformObj;
+		}
+
+
+		function convertMatrixIntoTransformProperties(js_obj) {
+			console.log('processing', js_obj.cssRules.length, 'items');
+			for (var i = 0; i < js_obj.cssRules.length; i++) {
+				var indexRule = js_obj.cssRules[i];
+				var matrixTransform = indexRule.style.transform || indexRule.style.WebkitTransform || indexRule.style.MozTransform || indexRule.style.msTransform || indexRule.style.OTransform;
+				if (matrixTransform) {
+					dMatrix = dynamics.initMatrixFromTransform(matrixTransform)
+					console.log(dMatrix);
+					// var originalMatrix = new WebKitCSSMatrix(matrixTransform);
+					// // console.log(matrixTransform, '--->', decomposedMatrix.format(), '\n');
+					// var transformDict = convertDecomposeToDistinctProps(decomposedMatrix);
+
+				}
+			}
+		}
+
 
 		function initView() {
 			browserPrefix = getBrowserPrefix();
-			// $scope.importFromCSSText()
+			var bounceJS = "@-webkit-keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 2.8% { -webkit-transform: matrix3d(0.128, -0.992, 0, 0, 0.992, 0.128, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.128, -0.992, 0, 0, 0.992, 0.128, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 5.61% { -webkit-transform: matrix3d(-0.713, 0.701, 0, 0, -0.701, -0.713, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-0.713, 0.701, 0, 0, -0.701, -0.713, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 8.41% { -webkit-transform: matrix3d(0.183, -0.983, 0, 0, 0.983, 0.183, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.183, -0.983, 0, 0, 0.983, 0.183, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 11.11% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 16.62% { -webkit-transform: matrix3d(0.7, -0.714, 0, 0, 0.714, 0.7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.7, -0.714, 0, 0, 0.714, 0.7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 33.33% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 38.84% { -webkit-transform: matrix3d(0.999, -0.032, 0, 0, 0.032, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.999, -0.032, 0, 0, 0.032, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 55.66% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 61.06% { -webkit-transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 77.88% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 83.28% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }"
+			var partA = "@keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 2.8% { -webkit-transform: matrix3d(0.128, -0.992, 0, 0, 0.992, 0.128, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.128, -0.992, 0, 0, 0.992, 0.128, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 5.61% { -webkit-transform: matrix3d(-0.713, 0.701, 0, 0, -0.701, -0.713, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-0.713, 0.701, 0, 0, -0.701, -0.713, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 8.41% { -webkit-transform: matrix3d(0.183, -0.983, 0, 0, 0.983, 0.183, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.183, -0.983, 0, 0, 0.983, 0.183, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 11.11% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 16.62% { -webkit-transform: matrix3d(0.7, -0.714, 0, 0, 0.714, 0.7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.7, -0.714, 0, 0, 0.714, 0.7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 33.33% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 38.84% { -webkit-transform: matrix3d(0.999, -0.032, 0, 0, 0.032, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.999, -0.032, 0, 0, 0.032, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 55.66% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 61.06% { -webkit-transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 77.88% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 83.28% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }";
+			var fullBounceJS = bounceJS + partA;
+			js_obj = importAnimationFromRawCssText(fullBounceJS, 'bounce-js');
+			var final_obj = initAnimationFromAnimObj(js_obj);
+			var all_properties = Object.keys(final_obj.properties);
+			for (var i = 0; i < all_properties.length; i++) {
+				var propertyKey = all_properties[i];
+				for (var j = 0; j < js_obj.cssRules.length; j++) {
+					var indexRule = js_obj.cssRules.item(j);
+					var keyText = indexRule.keyText;
+					if (indexRule.keyText === propertyKey) {
+						var matrixTransform = indexRule.style.transform || indexRule.style.WebkitTransform || indexRule.style.MozTransform || indexRule.style.msTransform || indexRule.style.OTransform;
+						if (matrixTransform) {
+							dMatrix = dynamics.initMatrixFromTransform(matrixTransform)
+							console.log(dMatrix, matrixTransform, '\n');
+							// var decomposedMatrix = dMatrix.decompose();
+
+
+							// var css_text = 'transform:': 'translate3d('  + decomposedMatrix.translate[0] +'px, '  +  decomposedMatrix.translate[1] + 'px, '  +  decomposedMatrix.translate[2] + 'px)';
+							// var css_text = transformObjToCssText(transformObj, property);
+
+
+							// var transformDict = convertDecomposeToDistinctProps(decomposedMatrix);
+							// final_obj.properties[propertyKey] = transformDict;
+							// for (var k = 0; k < final_obj.propertys)
+						}
+					}
+				}
+				// final_obj.properties[propertyKey] =
+			}
+
+			$scope.animation = final_obj;
+			$scope.animationDropdown = {options:[$scope.animation.attr.name, '+'], selectedIndex: 0, label:'temp-animation', size:'small'};
+			$scope.animationDropdown.options[0] = name;
+			// var cssText = js_obj.cssRules.item(0).cssText;
+			// console.log('processing', cssText);
+			// if (cssText.indexOf('matrix3d') > -1) {
+			// 	console.log('processing transform matrix 3d..', cssText);
+			// 	var js_obj = convertMatrixIntoTransformProperties(js_obj)
+			// }
+
 
 			//turn off for now
 			false && loadAllS3Files();
@@ -2215,8 +2317,7 @@ angular.module('uguru.util.controllers')
 			$scope.actor = document.querySelector('#stage-elem');
 			initAnimationListener($scope.actor);
 
-			$scope.animation = initAnimation('sample-animation-2', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
-			$scope.animationDropdown = {options:[$scope.animation.attr.name, '+'], selectedIndex: 0, label:'temp-animation', size:'small'};
+			// $scope.animation = initAnimation('sample-animation-2', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
 			// $scope.resetStageDom();
 			// $scope.addSVGPlaceholder('circle');
 			// $scope.addSVGPlaceholder('square');
@@ -2229,7 +2330,7 @@ angular.module('uguru.util.controllers')
 
 		}
 		$scope.renderAnimationCSSText = function(animation) {
-			// $scope.layout.index = 2;
+			$scope.layout.index = 2;
 
 			var tempAnim = initAnimationFromCSSText(animation.obj.name, browserPrefix, animation.obj.cssText);
 			var cssRulesLength = animation.obj.cssRules.length;
@@ -2599,8 +2700,10 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.importFromCSSText = function(css_text, name, class_text) {
+
 			// var css_text = "@keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); } 2.92% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -135.218, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -135.218, 0, 0, 1); } 3.37% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -114.871, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -114.871, 0, 0, 1); } 3.47% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -110.596, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -110.596, 0, 0, 1); } 4.58% { -webkit-transform: matrix3d(2.061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -68.65, 0, 0, 1); transform: matrix3d(2.061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -68.65, 0, 0, 1); } 5.69% { -webkit-transform: matrix3d(2.321, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -36.551, 0, 0, 1); transform: matrix3d(2.321, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -36.551, 0, 0, 1); } 5.76% { -webkit-transform: matrix3d(2.32, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -34.768, 0, 0, 1); transform: matrix3d(2.32, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -34.768, 0, 0, 1); } 7.41% { -webkit-transform: matrix3d(1.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -3.804, 0, 0, 1); transform: matrix3d(1.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -3.804, 0, 0, 1); } 7.51% { -webkit-transform: matrix3d(1.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2.454, 0, 0, 1); transform: matrix3d(1.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2.454, 0, 0, 1); } 7.88% { -webkit-transform: matrix3d(1.771, 0, 0, 0, 0, 1.062, 0, 0, 0, 0, 1, 0, 2.008, 0, 0, 1); transform: matrix3d(1.771, 0, 0, 0, 0, 1.062, 0, 0, 0, 0, 1, 0, 2.008, 0, 0, 1); } 8.68% { -webkit-transform: matrix3d(1.408, 0, 0, 0, 0, 1.181, 0, 0, 0, 0, 1, 0, 9.646, 0, 0, 1); transform: matrix3d(1.408, 0, 0, 0, 0, 1.181, 0, 0, 0, 0, 1, 0, 9.646, 0, 0, 1); } 10.03% { -webkit-transform: matrix3d(0.982, 0, 0, 0, 0, 1.333, 0, 0, 0, 0, 1, 0, 16.853, 0, 0, 1); transform: matrix3d(0.982, 0, 0, 0, 0, 1.333, 0, 0, 0, 0, 1, 0, 16.853, 0, 0, 1); } 10.85% { -webkit-transform: matrix3d(0.822, 0, 0, 0, 0, 1.398, 0, 0, 0, 0, 1, 0, 18.613, 0, 0, 1); transform: matrix3d(0.822, 0, 0, 0, 0, 1.398, 0, 0, 0, 0, 1, 0, 18.613, 0, 0, 1); } 11.53% { -webkit-transform: matrix3d(0.732, 0, 0, 0, 0, 1.439, 0, 0, 0, 0, 1, 0, 18.992, 0, 0, 1); transform: matrix3d(0.732, 0, 0, 0, 0, 1.439, 0, 0, 0, 0, 1, 0, 18.992, 0, 0, 1); } 12.22% { -webkit-transform: matrix3d(0.672, 0, 0, 0, 0, 1.469, 0, 0, 0, 0, 1, 0, 18.618, 0, 0, 1); transform: matrix3d(0.672, 0, 0, 0, 0, 1.469, 0, 0, 0, 0, 1, 0, 18.618, 0, 0, 1); } 14.18% { -webkit-transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 15.054, 0, 0, 1); transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 15.054, 0, 0, 1); } 14.37% { -webkit-transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 14.604, 0, 0, 1); transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 14.604, 0, 0, 1); } 19.23% { -webkit-transform: matrix3d(0.737, 0, 0, 0, 0, 1.371, 0, 0, 0, 0, 1, 0, 3.855, 0, 0, 1); transform: matrix3d(0.737, 0, 0, 0, 0, 1.371, 0, 0, 0, 0, 1, 0, 3.855, 0, 0, 1); } 20.01% { -webkit-transform: matrix3d(0.763, 0, 0, 0, 0, 1.338, 0, 0, 0, 0, 1, 0, 2.724, 0, 0, 1); transform: matrix3d(0.763, 0, 0, 0, 0, 1.338, 0, 0, 0, 0, 1, 0, 2.724, 0, 0, 1); } 23.05% { -webkit-transform: matrix3d(0.856, 0, 0, 0, 0, 1.211, 0, 0, 0, 0, 1, 0, 0.036, 0, 0, 1); transform: matrix3d(0.856, 0, 0, 0, 0, 1.211, 0, 0, 0, 0, 1, 0, 0.036, 0, 0, 1); } 25.75% { -webkit-transform: matrix3d(0.923, 0, 0, 0, 0, 1.114, 0, 0, 0, 0, 1, 0, -0.709, 0, 0, 1); transform: matrix3d(0.923, 0, 0, 0, 0, 1.114, 0, 0, 0, 0, 1, 0, -0.709, 0, 0, 1); } 26.94% { -webkit-transform: matrix3d(0.947, 0, 0, 0, 0, 1.078, 0, 0, 0, 0, 1, 0, -0.76, 0, 0, 1); transform: matrix3d(0.947, 0, 0, 0, 0, 1.078, 0, 0, 0, 0, 1, 0, -0.76, 0, 0, 1); } 31.58% { -webkit-transform: matrix3d(1.009, 0, 0, 0, 0, 0.987, 0, 0, 0, 0, 1, 0, -0.406, 0, 0, 1); transform: matrix3d(1.009, 0, 0, 0, 0, 0.987, 0, 0, 0, 0, 1, 0, -0.406, 0, 0, 1); } 31.73% { -webkit-transform: matrix3d(1.01, 0, 0, 0, 0, 0.986, 0, 0, 0, 0, 1, 0, -0.392, 0, 0, 1); transform: matrix3d(1.01, 0, 0, 0, 0, 0.986, 0, 0, 0, 0, 1, 0, -0.392, 0, 0, 1); } 37.32% { -webkit-transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.03, 0, 0, 1); transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.03, 0, 0, 1); } 38.15% { -webkit-transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.008, 0, 0, 1); transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.008, 0, 0, 1); } 42.35% { -webkit-transform: matrix3d(1.022, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0.03, 0, 0, 1); transform: matrix3d(1.022, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0.03, 0, 0, 1); } 48.9% { -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, 0.009, 0, 0, 1); transform: matrix3d(1.007, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, 0.009, 0, 0, 1); } 57.77% { -webkit-transform: matrix3d(0.998, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); transform: matrix3d(0.998, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); } 60.47% { -webkit-transform: matrix3d(0.998, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); transform: matrix3d(0.998, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); } 69.36% { -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.999, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 83.61% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } ";
 			var js_anim_obj = importAnimationFromRawCssText(css_text, name);
+
 			var final_obj = initAnimationFromAnimObj(js_anim_obj);
 			$scope.animationDict.importClassText = class_text;
 			$scope.animationDict.importTextarea = css_text;
