@@ -2171,3 +2171,7 @@ button[disabled] {
 #reset-link[disabled="disabled"] {
 	opacity:0.5;
 }
+
+.highest-z-index {
+	z-index:1000000000000;
+}

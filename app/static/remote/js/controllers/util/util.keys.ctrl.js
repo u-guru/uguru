@@ -20,8 +20,56 @@ angular.module('uguru.util.controllers')
 			KF_INTERVALS:5,
 			SHAPE_DICT: getShapeDict()
 		}
+		//@gabrielle
+		var ctrlShortcuts = [
 
-
+			{	letter: 's',
+				description: 'Saves animation + stage',
+				keyCode: 83,
+				func: saveAll
+			},
+			{	letter: 't',
+				description:'Toggles sidebar tab forward',
+				keyCode: 84,
+				func: toggleTabForward
+			},
+			{
+				letter: 'i',
+				description:'Opens import window',
+				keyCode: 73,
+				func: function() { $scope.root.triggers.runSequence(['click:#import-button:0']) }
+			},
+			{
+				letter: 'd',
+				description:'Imports codepen and opens child selector',
+				keyCode: 68,
+				func: function() { $scope.root.triggers.runSequence(['click:#import-codepen-button:0', 'click:#select-child-button:50']) }
+			},
+			{
+				letter: 'e',
+				description:'Opens export window',
+				keyCode: 69,
+				func: function() { $scope.root.triggers.runSequence(['click:#export-button:0']) }
+			},
+			{
+				letter: 'space',
+				description:'Plays stage',
+				keyCode: 32,
+				func: function() { $scope.root.triggers.runSequence(['click:#play-stage-button:0']) }
+			},
+			{
+				letter: 'p',
+				description:'Plays keyframes',
+				keyCode: 80,
+				func: function() { $scope.root.triggers.runSequence(['click:#play-keyframes-button:0']) }
+			},
+			{
+				letter: 'n',
+				description:'Adds new time state',
+				keyCode: 78,
+				func: function() { $scope.root.triggers.runSequence(['click:#add-time-state-button:0']) }
+			}
+		]
 
 		$scope.player = initAnimationPlayer();
 		$scope.timer = initAnimationTimer()
@@ -63,9 +111,31 @@ angular.module('uguru.util.controllers')
 		var callbackKeyDownFunc;
 		var parentViewContainer = document.querySelector('#keys');
 		var cmdPressed;
+		var ctrlPressed;
+		function saveAll(e) {console.log('ctrl', e.keyCode, 'pressed');$scope.saveStageHtml();  $scope.saveAnimationClass($scope.animation, $scope.user.name.split(' ')[0].toLowerCase())};
+		function toggleTabForward(e) {console.log('right-arrow', e.keyCode, 'pressed'); $scope.asideTabIndex = Math.abs(($scope.asideTabIndex + 1) % 3)};
+
+
+		$scope.keyShortcuts = {
+				ctrl: ctrlShortcuts
+		}
 		function initShortCuts() {
-			KeyboardService.initOptionPressedAndReleasedFunction(on_pressed, on_released);
-			function on_pressed(e) {
+			KeyboardService.initOptionPressedAndReleasedFunction(on_pressed_cmd, on_released_cmd, 91, 'metaKey', null, 1000);
+			KeyboardService.initOptionPressedAndReleasedFunction(on_pressed_ctrl, on_released_ctrl, 17, 'ctrlKey', null,  100);
+			function on_pressed_ctrl(e) {
+				ctrlPressed = true;
+				for (var i = 0; i < $scope.keyShortcuts.ctrl.length; i++) {
+					var indexKeyshortcut = $scope.keyShortcuts.ctrl[i];
+					initKeyboardFunctionOnce(indexKeyshortcut.letter, indexKeyshortcut.keyCode, indexKeyshortcut.func);
+				}
+			}
+
+			function on_released_ctrl(e) {
+				ctrlPressed = false;
+				console.log('ctrl', ctrlPressed)
+			}
+
+			function on_pressed_cmd(e) {
 				//save all
 				//view short cuts
 				//import
@@ -74,17 +144,30 @@ angular.module('uguru.util.controllers')
 				cmdPressed = true;
 				$timeout(function() {
 					if (cmdPressed) {
+						console.log('should be showing shortcuts');
 						$scope.showShortcuts = true;
 					}
 				}, 1000)
 
 			}
-			function on_released(e) {
+			function on_released_cmd(e) {
 				cmdPressed = false;
 				$scope.showShortcuts = false;
 				parentViewContainer.removeEventListener(callbackKeyDownFunc, function(e) {console.log(e, 'keydown event listener removed')});
 
 			}
+		}
+
+		function initKeyboardFunctionOnce(key, code, cb_pressed) {
+			console.log('initializing', key, code);
+			var defaultOnRelease = function(e) {
+				console.log(key, e.keyCode, 'released');
+				$timeout(function() {
+					document.removeEventListener('keyup', cb_pressed);
+					document.removeEventListener('keydown', defaultOnRelease);
+				}, 2500);
+			}
+			KeyboardService.initOptionPressedAndReleasedFunction(cb_pressed, defaultOnRelease, code, null, true, 100);
 		}
 
 		function findStageByName(stage_name) {
@@ -625,9 +708,17 @@ angular.module('uguru.util.controllers')
 						stageElem.setAttribute("draggable", true);
 						updateStageElemCloneAside();
 					} else {
-						$scope.actor = stageContainer.firstChild;
-						stageContainer.firstChild.setAttribute("draggable", true);
-						updateStageElemCloneAside();
+						if (stageContainer && stageContainer.firstChild) {
+							$scope.actor = stageContainer.firstChild;
+							if (stageContainer.firstChild.setAttribute) {
+								stageContainer.firstChild.setAttribute("draggable", true);
+								updateStageElemCloneAside();
+							}
+						} else {
+							$timeout(function() {
+								$scope.updatePageDom(stage_name, stage_html, stage_css, anim_selector);
+							}, 1000)
+						}
 					}
 					if (stageContainer.children && stageContainer.children.length === 1) {
 						var firstChild = stageContainer.children[0];
@@ -2138,7 +2229,7 @@ angular.module('uguru.util.controllers')
 
 		}
 		$scope.renderAnimationCSSText = function(animation) {
-			$scope.layout.index = 2;
+			// $scope.layout.index = 2;
 
 			var tempAnim = initAnimationFromCSSText(animation.obj.name, browserPrefix, animation.obj.cssText);
 			var cssRulesLength = animation.obj.cssRules.length;

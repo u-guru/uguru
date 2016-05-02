@@ -33,8 +33,10 @@ function GPAService() {
     syncCoursesFromCache: syncCoursesFromCache,
     getAllCourses: getAllCourses,
     init: init,
+    switchGrade: switchGrade,
     recalcSemesterStats:recalcSemesterStats,
-    defaultValue : defaultValue
+    defaultValue : defaultValue,
+    getActualGrade: getActualGrade
 
   };
 
@@ -46,9 +48,27 @@ function GPAService() {
       };
       return overall;
   }
+  function switchGrade(courses,isCutOff)
+  {
+    for (var i = 0 ; i< courses.length;++i)
+    {
+      if (isCutOff){
+        courses[i].grade = gradeLookup(courses[i].actualGrade)
+      }
+      else{
+        courses[i].grade = courses[i].grade.charAt(0)
+      }
 
-  function init(userCourses) {
+    }
+    return courses
+
+  }
+  function init(userCourses,isCutOffGrade = false) {
     console.log("User : ",userCourses)
+    console.log("isCutOffGrade : ",isCutOffGrade)
+
+    semesterNames = []
+
     if (!userCourses) {
       userCourses = [];
     };
@@ -57,41 +77,71 @@ function GPAService() {
       console.log("Default overall grades");
       return defaultValue();
     }
-
+    console.log("semesterNames", semesterNames)
+    console.log("userCourses", userCourses)
     for (var i = 0; i < userCourses.length; i ++) {
-         var course = userCourses[i];
-         var courseSemester = course.semester.toUpperCase()+','+course.year
+
+       var course = userCourses[i];
+       var courseSemester = course.semester.toUpperCase()+','+course.year
       //Adding New semester
       if(semesterNames.indexOf(courseSemester) < 0 )
       {
           semesterNames.push(courseSemester);
           semesterDict[courseSemester] = initSemesterObj(course);
-          console.log('init deemster obj', semesterDict);
+          console.log('Add new semester', semesterDict);
           // console.log( semesterDict[courseSemester]['courses'])
       }
       else
-      {
+      { 
+          console.log("Add Course",course)
           semesterDict[courseSemester]['courses'].push(course);
-          // recalcSemesterStats(courseSemester);
+          semesterDict[courseSemester]['gpa'] = getSemesterGPA(semesterDict[courseSemester]['courses'])
+          console.log( semesterDict[courseSemester]['gpa'])
+          semesterDict[courseSemester]['total_points'] = getTotalUnits(semesterDict[courseSemester]['courses']) 
+ 
       }
     }
     semesterArr = semesterDictToArr();
     averageGPA = getOverallGPA(semesterArr);
-    // averageGPA.toFixed(1);
     overall.averageGPA = averageGPA
     overall.semesterArr = semesterArr;
-    console.log("overall",overall)
-    // overall.averageGPA = averageGPA;
-    // console.log(semesterArr);
-    // overall.semesterArr = semesterArr;
+    console.log("OVER, ",overall)
     return overall;
   }
 
+  function initSemesterObj(course) {
+    return {
+          year: course.year,
+          total_points: course.units,
+          courses: [course],
+          gpa: parseFloat(reverseGradeLookup(course.grade).toFixed(1)),
+          avg_letter_grade:course.grade,
+          semester: course.semester
+    }
+
+  }
+  function getTotalUnits(courses){
+    var semesterUnits = 0;
+    for (var i = 0 ; i < courses.length; ++i)
+      semesterUnits += courses[i].units
+    return semesterUnits
+  }
+  function getSemesterGPA(courses) {
+
+      var semesterGrade = 0;
+      var semesterUnits = 0;
+      for (var i = 0 ; i < courses.length; ++i)
+      {
+        semesterUnits += courses[i].units
+        semesterGrade += parseFloat(reverseGradeLookup(courses[i].grade).toFixed(1)) * courses[i].units
+      }
+    return semesterGrade/semesterUnits
+  }
   function getOverallGPA(semesterArr){
     var totalSemester = semesterArr.length;
     var semester_total_gpa = 0;
     for (var i = 0;i <semesterArr.length ;++i)
-        semester_total_gpa += parseInt(semesterArr[i]['gpa'])
+        semester_total_gpa += semesterArr[i]['gpa']
     avgGPA = semester_total_gpa / totalSemester
     return avgGPA
   }
@@ -103,9 +153,76 @@ function GPAService() {
       indexSemesterValue = semesterDict[indexSemesterKey];
       resultsArr.push(indexSemesterValue);
     }
+    resultsArr.sort(compareValue)
     return resultsArr;
   }
+  function compareValue(a,b){
 
+
+      if (a.year == b.year)
+      {
+        var aValue = setPriority(a.semester);
+        var bValue = setPriority(b.semester);
+
+        return bValue - aValue
+      }
+      else
+      {
+        return b.year - a.year
+      }
+
+  }
+  function setPriority(str)
+  {
+      switch (str.toLowerCase()) {
+        case "fall":
+            return 1
+        case "summer":
+            return 2
+        case "spring":
+            return 3
+        case "winter":
+            return 0
+        default:
+          console.error("ERROR Semester")
+          return 
+             break;
+        }
+  }
+  function getActualGrade(grade){
+
+    var isPostive = 0
+    var gradePoint = 0
+
+    console.log("index")
+    if (grade.indexOf("+") > 0 && grade.indexOf("-") < 0)
+      isPostive = 1
+    else if(grade.indexOf("+") < 0 && grade.indexOf("-") > 0)
+      isPostive = -1
+    else 
+      isPostive = 0
+    gradeSyn = grade.charAt(0)
+    switch (gradeSyn) {
+          case 'A':
+            gradePoint = 4
+              break;
+          case 'B':
+            gradePoint = 3
+              break;
+          case 'C':
+            gradePoint = 2
+              break;
+            case 'D':
+            gradePoint = 1
+                break;
+            default:
+              gradePoint = 0
+                 break;
+          }
+    
+        gradePoint += 0.3 * isPostive
+        return gradePoint
+  }
   function calcGPAFromSemesterArr(semesterArr) {
     console.log(semesterArr)
     var total_points = 0;
@@ -115,7 +232,7 @@ function GPAService() {
       var semester_grades = semesterArr[i].grades;
       for (var j = 0; j < semester_grades.length; j++) {
         var indexGrade = semester_grades[j];
-        semester_units += parseInt(indexGrade.units);
+        semester_units += parseFloat(indexGrade.units);
       }
     }
     console.log('preGPA calc', total_points, semester_units);
@@ -143,18 +260,6 @@ function GPAService() {
 
   }
 
-  function initSemesterObj(course) {
-
-    return {
-          year: course.year,
-          total_points: course.units * reverseGradeLookup(course.grade),
-          courses: [course],
-          gpa: reverseGradeLookup(course.grade).toFixed(1),
-          avg_letter_grade:course.grade,
-          semester: course.semester
-    }
-
-  }
 
   function gradeLookup(numerical_grade) {
     var letterGrades = ['A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F'];
@@ -196,24 +301,24 @@ function GPAService() {
     return addedCourses;
   }
 
-  function getSemesterGPA(semester) {
+  // function getSemesterGPA(semester) {
 
-    var semesterPoints = 0;
-    var semesterUnits = 0;
+  //   var semesterPoints = 0;
+  //   var semesterUnits = 0;
 
-    for (var i = 0; i < addedCourses.length; i++) {
+  //   for (var i = 0; i < addedCourses.length; i++) {
 
-      if (addedCourses[i].semester === semester) {
+  //     if (addedCourses[i].semester === semester) {
 
-          semesterPoints += addedCourses[i].points;
-          semesterUnits += addedCourses[i].units;
-      }
-    }
-    if (semesterUnits !== 0) {
-      return (semesterPoints / semesterUnits);
-    } else {
-      return 0.0;
-    }
+  //         semesterPoints += addedCourses[i].points;
+  //         semesterUnits += addedCourses[i].units;
+  //     }
+  //   }
+  //   if (semesterUnits !== 0) {
+  //     return (semesterPoints / semesterUnits);
+  //   } else {
+  //     return 0.0;
+  //   }
 
   }
 
@@ -309,7 +414,7 @@ function GPAService() {
     }
 
 
-  }
+
 
 
 }
