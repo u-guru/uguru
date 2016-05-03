@@ -434,84 +434,84 @@
   fill: white;
 }
 
+#powerup-icons li .loader-powerup-gpa .gpa-guru, #powerup-icons li .loader-powerup-gpa .multiply, #powerup-icons li .loader-powerup-gpa .plus, #powerup-icons li .loader-powerup-gpa .minus, #powerup-icons li .loader-powerup-gpa .equal, #powerup-icons li .loader-powerup-gpa .divide {
+  opacity: 0;
+}
+
 #powerup-icons li.active .loader-powerup-gpa .gpa-guru, #powerup-icons li.active .loader-powerup-gpa .multiply, #powerup-icons li.active .loader-powerup-gpa .plus, #powerup-icons li.active .loader-powerup-gpa .minus, #powerup-icons li.active .loader-powerup-gpa .equal, #powerup-icons li.active .loader-powerup-gpa .divide {
   opacity: 0;
 }
 
+#powerup-icons li.active .loader-powerup-gpa * {
+  transform-origin: center center;
+}
+
 #powerup-icons li.active .loader-powerup-gpa .gpa-guru {
-  animation: gpa-guru 1000ms ease-in-out forwards;
+  animation: u-bounceIn-subtle 1000ms linear 0ms forwards;
 }
 
 #powerup-icons li.active .loader-powerup-gpa .multiply {
-  animation: multiply-enter 500ms ease-in-out 50ms forwards;
+  animation: u-bounceIn-subtle 865ms linear 500ms forwards;
 }
 
 #powerup-icons li.active .loader-powerup-gpa .plus {
-  animation: plus-enter 500ms ease-in-out 100ms forwards;
+  animation: u-bounceIn-subtle 865ms linear 950ms forwards;
 }
 
 #powerup-icons li.active .loader-powerup-gpa .minus {
-  animation: minus-enter 500ms ease-in-out 150ms forwards;
-  transform-origin: bottom right;
+  animation: u-bounceIn-subtle 865ms linear 650ms forward;
 }
 
 #powerup-icons li.active .loader-powerup-gpa .equal {
-  animation: equal-enter 500ms ease-in-out 200ms forwards;
+  animation: u-bounceIn-subtle 1000ms linear 1000ms forwards;
 }
 
 #powerup-icons li.active .loader-powerup-gpa .divide {
-  animation: divide-enter 500ms ease-in-out 50ms forwards;
+  animation: u-bounceIn-subtle 500ms linear 1150ms forwards;
 }
 
-#powerup-gpa-container.hover .loader-powerup-gpa .multiply, #powerup-gpa-container.hover .loader-powerup-gpa .minus, #powerup-gpa-container.hover .loader-powerup-gpa .gpa-sign-divide, #powerup-gpa-container.hover .loader-powerup-gpa .gpa-btn-divide, #powerup-gpa-container.hover .loader-powerup-gpa .divide, #powerup-gpa-container.hover .loader-powerup-gpa .equal, #powerup-gpa-container.hover .loader-powerup-gpa .plus, #powerup-gpa-container.hover .loader-powerup-gpa .gpa-btn-equal, #powerup-gpa-container.hover .loader-powerup-gpa .gpa-btn-plus, #powerup-gpa-container.hover .loader-powerup-gpa .gpa-sign-equal, #powerup-gpa-container.hover .loader-powerup-gpa .gpa-sign-plus, #powerup-gpa-container.active .loader-powerup-gpa .multiply, #powerup-gpa-container.active .loader-powerup-gpa .minus, #powerup-gpa-container.active .loader-powerup-gpa .gpa-sign-divide, #powerup-gpa-container.active .loader-powerup-gpa .gpa-btn-divide, #powerup-gpa-container.active .loader-powerup-gpa .divide, #powerup-gpa-container.active .loader-powerup-gpa .equal, #powerup-gpa-container.active .loader-powerup-gpa .plus, #powerup-gpa-container.active .loader-powerup-gpa .gpa-btn-equal, #powerup-gpa-container.active .loader-powerup-gpa .gpa-btn-plus, #powerup-gpa-container.active .loader-powerup-gpa .gpa-sign-equal, #powerup-gpa-container.active .loader-powerup-gpa .gpa-sign-plus, #powerup-landing-icon.active .loader-powerup-gpa .multiply, #powerup-landing-icon.active .loader-powerup-gpa .minus, #powerup-landing-icon.active .loader-powerup-gpa .gpa-sign-divide, #powerup-landing-icon.active .loader-powerup-gpa .gpa-btn-divide, #powerup-landing-icon.active .loader-powerup-gpa .divide, #powerup-landing-icon.active .loader-powerup-gpa .equal, #powerup-landing-icon.active .loader-powerup-gpa .plus, #powerup-landing-icon.active .loader-powerup-gpa .gpa-btn-equal, #powerup-landing-icon.active .loader-powerup-gpa .gpa-btn-plus, #powerup-landing-icon.active .loader-powerup-gpa .gpa-sign-equal, #powerup-landing-icon.active .loader-powerup-gpa .gpa-sign-plus {
-  opacity: 1;
-  animation-play-state: paused !important;
-}
-
-#powerup-gpa-container.hover .loader-powerup-gpa .multiply, #powerup-gpa-container.active .loader-powerup-gpa .multiply, #powerup-landing-icon.active .loader-powerup-gpa .multiply {
-  animation: bob-hover 500ms ease-in-out infinite alternate;
-}
-
-#powerup-gpa-container.hover .loader-powerup-gpa .minus, #powerup-gpa-container.active .loader-powerup-gpa .minus, #powerup-landing-icon.active .loader-powerup-gpa .minus {
-  animation: bob-hover 650ms ease-in-out infinite alternate;
-}
-
-#powerup-gpa-container.hover .loader-powerup-gpa .gpa-sign-divide, #powerup-gpa-container.active .loader-powerup-gpa .gpa-sign-divide, #powerup-landing-icon.active .loader-powerup-gpa .gpa-sign-divide {
-  animation: sign-divide-hover 3000ms ease-in-out infinite reverse;
+#powerup-gpa-container.active .loader-powerup-gpa *, #powerup-landing-icon.active .loader-powerup-gpa * {
   transform-origin: center center;
 }
 
-#powerup-gpa-container.hover .loader-powerup-gpa .gpa-btn-divide, #powerup-gpa-container.active .loader-powerup-gpa .gpa-btn-divide, #powerup-landing-icon.active .loader-powerup-gpa .gpa-btn-divide {
-  animation: btn-divide-hover 5000ms linear infinite reverse;
-  transform-origin: center center;
+#powerup-gpa-container.active .loader-powerup-gpa .multiply, #powerup-gpa-container.active .loader-powerup-gpa .minus, #powerup-gpa-container.active .loader-powerup-gpa .gpa-sign-divide, #powerup-gpa-container.active .loader-powerup-gpa .gpa-btn-divide, #powerup-gpa-container.active .loader-powerup-gpa .divide, #powerup-gpa-container.active .loader-powerup-gpa .equal, #powerup-gpa-container.active .loader-powerup-gpa .plus, #powerup-gpa-container.active .loader-powerup-gpa .gpa-btn-equal, #powerup-gpa-container.active .loader-powerup-gpa .gpa-btn-plus, #powerup-gpa-container.active .loader-powerup-gpa .gpa-sign-equal, #powerup-gpa-container.active .loader-powerup-gpa .gpa-sign-plus, #powerup-landing-icon.active .loader-powerup-gpa .multiply, #powerup-landing-icon.active .loader-powerup-gpa .minus, #powerup-landing-icon.active .loader-powerup-gpa .gpa-sign-divide, #powerup-landing-icon.active .loader-powerup-gpa .gpa-btn-divide, #powerup-landing-icon.active .loader-powerup-gpa .divide, #powerup-landing-icon.active .loader-powerup-gpa .equal, #powerup-landing-icon.active .loader-powerup-gpa .plus, #powerup-landing-icon.active .loader-powerup-gpa .gpa-btn-equal, #powerup-landing-icon.active .loader-powerup-gpa .gpa-btn-plus, #powerup-landing-icon.active .loader-powerup-gpa .gpa-sign-equal, #powerup-landing-icon.active .loader-powerup-gpa .gpa-sign-plus {
+  opacity: 1 !important;
 }
 
-#powerup-gpa-container.hover .loader-powerup-gpa .divide, #powerup-gpa-container.active .loader-powerup-gpa .divide, #powerup-landing-icon.active .loader-powerup-gpa .divide {
-  animation: bob-hover 750ms ease-in-out infinite alternate;
+#powerup-gpa-container.active .loader-powerup-gpa .multiply, #powerup-landing-icon.active .loader-powerup-gpa .multiply {
+  animation: bob-hover 1100ms ease-in-out 4 alternate forwards !important;
 }
 
-#powerup-gpa-container.hover .loader-powerup-gpa .equal, #powerup-gpa-container.hover .loader-powerup-gpa .plus, #powerup-gpa-container.active .loader-powerup-gpa .equal, #powerup-gpa-container.active .loader-powerup-gpa .plus, #powerup-landing-icon.active .loader-powerup-gpa .equal, #powerup-landing-icon.active .loader-powerup-gpa .plus {
-  animation: equal-pulse 750ms ease-in-out infinite alternate;
+#powerup-gpa-container.active .loader-powerup-gpa .minus, #powerup-landing-icon.active .loader-powerup-gpa .minus {
+  animation: bob-hover 1100ms ease-in-out 4 alternate forwards !important;
 }
 
-#powerup-gpa-container.hover .loader-powerup-gpa .gpa-btn-equal,
-#powerup-gpa-container.hover .loader-powerup-gpa .gpa-btn-plus, #powerup-gpa-container.active .loader-powerup-gpa .gpa-btn-equal,
+#powerup-gpa-container.active .loader-powerup-gpa .gpa-sign-divide, #powerup-landing-icon.active .loader-powerup-gpa .gpa-sign-divide {
+  animation: sign-divide-hover 2200ms ease-in-out 2 reverse forwards !important;
+}
+
+#powerup-gpa-container.active .loader-powerup-gpa .gpa-btn-divide, #powerup-landing-icon.active .loader-powerup-gpa .gpa-btn-divide {
+  animation: btn-divide-hover 2200ms linear 2 reverse forwards !important;
+}
+
+#powerup-gpa-container.active .loader-powerup-gpa .divide, #powerup-landing-icon.active .loader-powerup-gpa .divide {
+  animation: bob-hover 1100ms ease-in-out 4 alternate forwards !important;
+}
+
+#powerup-gpa-container.active .loader-powerup-gpa .equal, #powerup-gpa-container.active .loader-powerup-gpa .plus, #powerup-landing-icon.active .loader-powerup-gpa .equal, #powerup-landing-icon.active .loader-powerup-gpa .plus {
+  animation: equal-pulse 1100ms ease-in-out 4 alternate forwards !important;
+}
+
+#powerup-gpa-container.active .loader-powerup-gpa .gpa-btn-equal,
 #powerup-gpa-container.active .loader-powerup-gpa .gpa-btn-plus, #powerup-landing-icon.active .loader-powerup-gpa .gpa-btn-equal,
 #powerup-landing-icon.active .loader-powerup-gpa .gpa-btn-plus {
-  animation: btn-divide-hover 7500ms linear infinite reverse;
-  transform-origin: center center;
+  animation: btn-divide-hover 2200ms linear 2 reverse forwards !important;
 }
 
-#powerup-gpa-container.hover .loader-powerup-gpa .gpa-sign-equal,
-#powerup-gpa-container.hover .loader-powerup-gpa .gpa-sign-plus, #powerup-gpa-container.active .loader-powerup-gpa .gpa-sign-equal,
+#powerup-gpa-container.active .loader-powerup-gpa .gpa-sign-equal,
 #powerup-gpa-container.active .loader-powerup-gpa .gpa-sign-plus, #powerup-landing-icon.active .loader-powerup-gpa .gpa-sign-equal,
 #powerup-landing-icon.active .loader-powerup-gpa .gpa-sign-plus {
-  animation: sign-equal-hover 2000ms ease-in-out infinite forwards;
-  transform-origin: center center;
-}
-
-#powerup-gpa-container.hover:hover .loader-powerup-gpa .multiply, #powerup-gpa-container.hover:hover .loader-powerup-gpa .minus, #powerup-gpa-container.hover:hover .loader-powerup-gpa .gpa-sign-divide, #powerup-gpa-container.hover:hover .loader-powerup-gpa .gpa-btn-divide, #powerup-gpa-container.hover:hover .loader-powerup-gpa .divide, #powerup-gpa-container.hover:hover .loader-powerup-gpa .equal, #powerup-gpa-container.hover:hover .loader-powerup-gpa .plus, #powerup-gpa-container.hover:hover .loader-powerup-gpa .gpa-btn-equal, #powerup-gpa-container.hover:hover .loader-powerup-gpa .gpa-btn-plus, #powerup-gpa-container.hover:hover .loader-powerup-gpa .gpa-sign-equal, #powerup-gpa-container.hover:hover .loader-powerup-gpa .gpa-sign-plus, #powerup-gpa-container.hover:focus .loader-powerup-gpa .multiply, #powerup-gpa-container.hover:focus .loader-powerup-gpa .minus, #powerup-gpa-container.hover:focus .loader-powerup-gpa .gpa-sign-divide, #powerup-gpa-container.hover:focus .loader-powerup-gpa .gpa-btn-divide, #powerup-gpa-container.hover:focus .loader-powerup-gpa .divide, #powerup-gpa-container.hover:focus .loader-powerup-gpa .equal, #powerup-gpa-container.hover:focus .loader-powerup-gpa .plus, #powerup-gpa-container.hover:focus .loader-powerup-gpa .gpa-btn-equal, #powerup-gpa-container.hover:focus .loader-powerup-gpa .gpa-btn-plus, #powerup-gpa-container.hover:focus .loader-powerup-gpa .gpa-sign-equal, #powerup-gpa-container.hover:focus .loader-powerup-gpa .gpa-sign-plus, #powerup-gpa-container.active .loader-powerup-gpa .multiply, #powerup-gpa-container.active .loader-powerup-gpa .minus, #powerup-gpa-container.active .loader-powerup-gpa .gpa-sign-divide, #powerup-gpa-container.active .loader-powerup-gpa .gpa-btn-divide, #powerup-gpa-container.active .loader-powerup-gpa .divide, #powerup-gpa-container.active .loader-powerup-gpa .equal, #powerup-gpa-container.active .loader-powerup-gpa .plus, #powerup-gpa-container.active .loader-powerup-gpa .gpa-btn-equal, #powerup-gpa-container.active .loader-powerup-gpa .gpa-btn-plus, #powerup-gpa-container.active .loader-powerup-gpa .gpa-sign-equal, #powerup-gpa-container.active .loader-powerup-gpa .gpa-sign-plus, #powerup-landing-icon.active .loader-powerup-gpa .multiply, #powerup-landing-icon.active .loader-powerup-gpa .minus, #powerup-landing-icon.active .loader-powerup-gpa .gpa-sign-divide, #powerup-landing-icon.active .loader-powerup-gpa .gpa-btn-divide, #powerup-landing-icon.active .loader-powerup-gpa .divide, #powerup-landing-icon.active .loader-powerup-gpa .equal, #powerup-landing-icon.active .loader-powerup-gpa .plus, #powerup-landing-icon.active .loader-powerup-gpa .gpa-btn-equal, #powerup-landing-icon.active .loader-powerup-gpa .gpa-btn-plus, #powerup-landing-icon.active .loader-powerup-gpa .gpa-sign-equal, #powerup-landing-icon.active .loader-powerup-gpa .gpa-sign-plus {
-  animation-play-state: running !important;
+  animation: sign-equal-hover 2200ms ease-in-out 2 forwards !important;
 }
 
 #powerup-landing-icon .gpa-guru-eyebrow-right {
@@ -550,10 +550,10 @@
 
 @keyframes bob-hover {
   0% {
-    transform: translateY(20%);
+    transform: translateY(0);
   }
   100% {
-    transform: translateY(0);
+    transform: translateY(20%);
   }
 }
 
@@ -688,6 +688,7 @@
   }
   100% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1;
   }
 }
 
