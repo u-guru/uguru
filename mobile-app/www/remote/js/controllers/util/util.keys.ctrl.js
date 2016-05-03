@@ -2345,8 +2345,19 @@ angular.module('uguru.util.controllers')
 			uguru_anim_obj.selected_index = 0;
 			uguru_anim_obj.num_keyframes = uguru_anim_obj.obj.cssRules.length;
 			$compile(elem)($scope);
+			$scope.asideTabIndex = 1;
+
 			$timeout(function() {
 				$scope.$apply()
+				LoadingService.showAmbig('Playing in 3', 300, function() {
+					LoadingService.showAmbig('Playing in 2', 300, function() {
+						LoadingService.showAmbig('Playing in 1', 300, function() {
+							$timeout(function() {
+								$scope.player.play();
+							}, 1250)
+						})
+					})
+				});
 			}, 1000);
 		}
 
