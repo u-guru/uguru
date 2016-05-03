@@ -147,6 +147,7 @@ angular.module('uguru.desktop.controllers', [])
 
 
     $scope.root.vars.showDesktopSettings = false;
+    
     $scope.toggleDesktopSettings = function() {
         $scope.root.vars.showDesktopSettings = !$scope.root.vars.showDesktopSettings;
     }

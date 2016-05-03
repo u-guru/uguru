@@ -34,9 +34,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   'ngAnimate',  'ngFx',  '720kb.fx', 'uguru.student.controllers','uguru.guru.controllers','uguru.version',
   'uguru.util.controllers', 'uguru.dev.controllers', 'uguru.desktop.controllers', 'uguru.rest', 'uguru.user', 'uguru.root.services',
   'mgcrea.ngStrap', 'ionic.device', 'sharedServices', 'uguru.directives', 'monospaced.elastic', 'uguru.components',
-  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps','uguru.apps.controllers',
-  ,'transit.services','base64','guru.food.services'])
-
+  'angularMoment','ngOpenFB', 'nemLogging', 'uiGmapgoogle-maps','uguru.apps.controllers','transit.services','base64','guru.food.services'])
 
 .run(function($ionicPlatform, $localstorage,
   $state, $ionicHistory,

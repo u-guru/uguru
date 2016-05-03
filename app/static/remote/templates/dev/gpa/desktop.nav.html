@@ -7,12 +7,12 @@
 				<svg viewBox="0 0 372 104" ng-include="img_base + BASE + 'templates/svg.icon.logo.html'">
 				</svg>
 			</a>
-			<a id="top-request" thr-click="openModal('course')">
+			<a id="top-request" thr-click="openModal('course');verifyInputs();">
 				<svg viewBox="0 0 100 100">
 				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 				</svg>
 			</a>
-			<a id="top-settings" class='relative' ng-click='toggleDesktopSettings()'>
+			<a id="top-settings" class='relative' ng-click='toggleDesktopSettings(); verifyInputs();'>
 				<!-- <span class="user-icon" style="background-image: url('{{user.profile_url}}')"></span> -->
 				<user-icon size="small" url="user.profile_url"> </user-icon>
 				<svg viewBox="0 0 100 100">
@@ -27,7 +27,7 @@
 		</div>
 		<nav id="top-menu-links" class="ng-class:{'active':root.vars.showDesktopSettings}">
 			<ul>
-				<li tabindex ng-click="openModal('university')">
+				<li tabindex ng-click="openModal('university');verifyInputs();">
 					<a>
 						<span>Edit University</span>
 					</a>
@@ -36,15 +36,40 @@
 					<a>
 						<span>Default Units</span>
 					</a>
-					<input type="number" placeholder="4"/>
+					<input id="default-unit" type="number" ng-model="user.defaultCourseUnits" min="1" ng-click="SelectAll('default-unit')" ng-change="update()" />
 				</li>
 				<li tabindex>
 					<a>
-						<span>Section</span>
+						<span>Terms</span>
 					</a>
-					<input type="number" placeholder="2"/>
+					<input id="default-term" type="number" ng-model="user.defaultTerm" min="1" ng-click="SelectAll('default-term')" ng-change="update()"/>
 				</li>
-				<li tabindex ng-click='clearStorage()'>
+				<li tabindex>
+					<a>
+						<span>Years</span>
+					</a>
+					<input id="default-year" type="number" ng-model="user.defaultYear" ng-click="SelectAll('default-year')" ng-change="update()"/>
+				</li>
+				<li tabindex>
+					<a>
+						<span>Season</span>
+					</a>
+					<input id="default-season" type="text" ng-model="user.defaultSeason" ng-required="string" ng-click="SelectAll('default-season')" ng-change="update()" />
+				</li>
+				<li tabindex>
+					<a>
+						<span>Cut-off Grade</span>
+					</a>
+				
+					<a ng-click='toggleCutOffGrade()'>
+						{{user.isCutOffGrade}}
+						<svg viewBox="0 0 100 100">
+                            <circle class='notifications-circle ng-class:{"active":user.isCutOffGrade}' cx="50" cy="50" r="36"></circle>
+                            <path class='notifications-path ng-class:{"active":user.isCutOffGrade}' d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                        </svg>
+					</a>
+				</li>
+				<li tabindex ng-click='resetDefault()'>
 					<a>
 						<span>Clear Courses</span>
 					</a>
