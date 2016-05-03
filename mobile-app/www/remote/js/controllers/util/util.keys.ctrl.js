@@ -1327,6 +1327,7 @@ angular.module('uguru.util.controllers')
 		function initAnimationFromAnimObj(anim_obj) {
 
 			var properties = initDictWithXProperties(anim_obj);
+			console.log(properties.length, 'keyframes initiated');
 			var attr = {
 				name: anim_obj.name,
 				play_state: "running",
@@ -2222,6 +2223,7 @@ angular.module('uguru.util.controllers')
 				}
 			}
 		}
+
 
 
 		function initView() {
