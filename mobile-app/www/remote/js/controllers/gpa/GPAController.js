@@ -279,8 +279,10 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	// * Helper Functions  #
 	// ********************#
 
-	var initDefaultValue = function(force=false)
-	{
+	var initDefaultValue = function(force)
+	{	
+		if (force === undefined)
+			force = false
 
 		if (!$scope.user.defaultCourseUnits || force){
 			$scope.user.defaultCourseUnits = 4;
@@ -303,7 +305,7 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 			$scope.user.isCutOffGrade = false;
 			console.log("Set default isCutOffGrade to :",$scope.user.isCutOffGrade)
 		}
-	}
+	};
 	var getCurrentSeason = function() {
 		var currentMonth = new Date().getMonth()
 		var season =''

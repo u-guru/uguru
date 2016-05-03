@@ -6,7 +6,7 @@ angular.module('uguru.directives')
 		$scope.$watch(
 		'search_text.course',
 		function(newValue, oldValue) {
-
+			
 		  if(newValue.length < oldValue.length) {
 		    if(queryPromise) {
 		      $timeout.cancel(queryPromise);

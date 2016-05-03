@@ -18,9 +18,8 @@ function SoundPlayListService($localstorage) {
 	function init(postInitiation){
 
 		console.log("Authorizing music service",gapi)
-
-		// setTimeout(checkAuth,500);
-		window.setTimeout(checkAuth, 500);
+		setTimeout(checkAuth,2500);
+		// window.setTimeout(checkAuth, 1000);
 
 		 // setTimeout(loadAPIClientInterfaces,500);
 
@@ -34,17 +33,17 @@ function SoundPlayListService($localstorage) {
 			q: text,
 			part: 'snippet'
 		});
+		// return request
 		request.execute(function(response) {
 		  var str = JSON.stringify(response.result);
 		  // $('#search-container').html('<pre>' + str + '</pre>');
-		  console.log(str)
-
+		  console.log("response",response.result)
+		  return response.result
 		});
 	}
 
 	function checkAuth() {
-	  console.log("Authorizing api...")
-
+	  console.log("Authorizing api...",gapi)
 	  gapi.auth.authorize({
 	    client_id: OAUTH2_CLIENT_ID,
 	    scope: OAUTH2_SCOPES,
