@@ -73,8 +73,8 @@
                     <li>
                         <dropdown class='height-32' ng-model="stageDropdown"> </dropdown>
                     </li>
-                    <li>
-                        <dropdown class="height-32" ng-model="animationDropdown"> </dropdown>
+                    <li ng-if='animationDropdown'>
+                        <dropdown id='animation-name-dropdown' class="height-32" ng-model="animationDropdown"> </dropdown>
                     </li>
                     <!-- <li>
                         <a ng-click='clearAllAnimations()' class="weight-900">Clear All</a>
