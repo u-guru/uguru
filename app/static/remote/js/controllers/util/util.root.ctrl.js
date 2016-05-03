@@ -96,8 +96,9 @@ angular.module('uguru.util.controllers')
             initHeight();
             // height = height || windowHeight;
             // width = width || windowWidth;
-            height = window.window.innerHeight || window.window.outerHeight;
-            width = window.window.innerWidth || window.window.outerWidth;
+            // var height = window.window.innerHeight || window.window.outerHeight;
+             height = window.window.innerHeight || window.window.outerHeight;
+             width = window.window.innerWidth || window.window.outerWidth;
             return height >= desktopHeightLimit && width >= desktopWidthLimit;
         };
         $scope.desktopMode = $scope.isDesktopMode(windowHeight, windowWidth) && !(navigator.userAgent.indexOf('iPad') > 0);
