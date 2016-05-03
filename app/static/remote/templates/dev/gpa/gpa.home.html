@@ -1,4 +1,4 @@
-<ion-view class='uguru-view home-view bg-azure'>
+<ion-view class='uguru-view home-view'>
 	<section id='gpa-home' class="desktop-mode desktop-home">
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/dev/gpa/desktop.nav.html'" ng-if='desktopMode'></nav>
 		<header class="mobile-only">
@@ -20,52 +20,40 @@
 		<div id="home-container" class="text-center">
 			<div id="home-gpa" class="gpa-container">
 				<div class="opacity-0" class-on-load="u-bounceInUp-subtle-2">
-					<h1 id="home-overall-gpa" class="gpa">{{overall.averageGPA | number: 1}}</h1>
+					<h1 id="home-overall-gpa" class="gpa">{{overall.averageGPA | number: 2}}</h1>
 					<!-- <h1 id="home-overall-gpa" ng-if="!overall.averageGPA" class="gpa">4.0</h2> -->
 					<h2 ng-if="!overall.semesterArr.length">Add some courses to get&nbsp;started!</h1>
 					<h2 ng-if="overall.semesterArr.length">{{slogan()}}</h2>
 				</div>
 				<nav id="semester-slider">
-					<ul class="opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="2500" ng-init="start = 0; isMax=false;">
-						<li>
-							<a href="#" class="nav">
-								<svg ng-if='start != 0' ng-click='preList(4)' viewBox="0 0 100 100">
+					<ul class="opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="2500" ng-init="start = 0; isMax=false;currentIndex = -1; emptyCounts= 0">
+						<li name='arrowL' >
+							<a href="#" class="nav" ng-if='start != 0' ng-click='preList(4)' >
+								<svg viewBox="0 0 100 100">
 									<path d="M68,86 L32,50 L68,14"></path>
 								</svg>
 							</a>
+							<!-- <a  ng-if='start === 0' ></a> -->
 						</li>
 						<li>
-							<a class="active" href="#">
+							<a class="active" href="#" ng-click="currentIndex = -1">
 								<span>Cumulative<br/>GPA</span>
 							</a>
 						</li>
 						<li ng-repeat='semester in overall.semesterArr  | limitTo:4:start track by $index'>
-							<a href="#" ng-click="selectSemester($index+start)">
+							<a href="#" ng-click="getSemester($index+start)">
 								<span>{{semester.semester}}<br/>{{semester.year}}</span>
 							</a>
 						</li>
-						<!-- <li>
-							<a href="#">
-								<span>Spring<br/>2015</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span>Winter<br/>2014</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span>Fall<br/>2014</span>
-							</a>
-						</li> -->
-						<li>
-							<a href="#" >
-								<svg class="nav" ng-if='overall.semesterArr.length && !isMax' ng-click='nextList(4)'
-									 viewBox="0 0 100 100">
+						<!-- You can remove this  -->
+						<!-- <li ng-repeat='x in [1,2,3,4] | limitTo:emptyCounts'><a></a></li> -->
+						<li name='arrowR'>
+							<a href="#" class="nav" ng-if='overall.semesterArr.length > 4 && overall.semesterArr.length && !isMax' ng-click='nextList(4)'>
+								<svg class="nav" viewBox="0 0 100 100">
 									<path d="M32,86 L68,50 L32,14"></path>
 								</svg>
 							</a>
+							<!-- <a ng-if='overall.semesterArr.length && isMax'></a> -->
 						</li>
 					</ul>
 				</nav>
@@ -81,42 +69,41 @@
 					<span>Add Courses</span>
 				</div>
 				<ul class="semester-list">
-					<li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000" ng-repeat='semester in overall.semesterArr'>
+					<li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000" ng-repeat='semester in overall.semesterArr' ng-if= "currentIndex < 0">
 						<div>
 							<div class="semester-item-course">
 								<h1>{{semester.semester}} {{semester.year}}</h1>
-								<!-- <h3>{{U.S. History / Civics / American Government}}</h3> -->
 							</div>
 							<div class="semester-item-grade">
 								<svg viewBox="0 0 100 100">
 									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
 								</svg>
 								<div>
-									<h2>{{convertGrade(semester.gpa)}}</h2>
+									<!-- <h2>{{convertGrade(semester.gpa)}}</h2> -->
+									<h2>{{semester.gpa | number:2}}</h2>
 									<span>Total {{semester.total_points}} Units</span>
 								</div>
 							</div>
 						</div>
 					</li>
-
-					<!-- <li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000">
+					 <li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000" ng-repeat='course in overall.semesterArr[currentIndex].courses'  ng-if= "currentIndex >= 0">
 						<div>
 							<div class="semester-item-course">
-								<h1>CIV 123</h1>
-								<h3>U.S. History / Civics / American Government</h3>
+								<h1>{{course.name}}</h1>
+								<h3>{{course.title}}</h3>
 							</div>
 							<div class="semester-item-grade">
 								<svg viewBox="0 0 100 100">
 									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
 								</svg>
 								<div>
-									<h2>A+</h2>
-									<span>3 Cred</span>
+									<h2>{{course.grade}}</h2>
+									<span>{{course.units}} Cred</span>
 								</div>
 							</div>
 						</div>
 					</li>
-					<li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1250">
+					<!--<li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1250">
 						<div>
 							<div class="semester-item-course">
 								<h1>CIV 123</h1>

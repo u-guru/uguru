@@ -1,5 +1,9 @@
 @import 'mixin';
 
+.hover-subtle {
+    @include prefix(animation, tour-guru-hover 1000ms linear infinite alternate, webkit moz ms o);
+}
+
 .matrix-0 {
     @include prefix(transform, matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), webkit moz ms o);
 }
@@ -1461,15 +1465,12 @@
 
 @include keyframes(powerup-before-scaleUp) {
     0% {
-        @include opacity(1);
         @include prefix(transform, scale(0), webkit moz ms o);
     }
-    60%, 70% {
-        @include opacity(1);
+    60%, 90% {
         @include prefix(transform, scale(200), webkit moz ms o);
     }
     100% {
-        @include opacity(0);
         @include prefix(transform, scale(200), webkit moz ms o);
     }
 }
@@ -1542,6 +1543,36 @@
 		opacity: 0.1;
 	}
 	100% {
-		transfrom: scaleX(1);
+		transform: scaleX(1);
 	}
+}
+
+@keyframes device-drawIn-1 {
+	0% { stroke-dashoffset: 158; }
+	100% { stroke-dashoffset: 0; }
+}
+@keyframes device-drawIn-2 {
+	0% { stroke-dashoffset: 1926; }
+	100% { stroke-dashoffset: 0; }
+}
+@keyframes device-drawIn-3 {
+	0% { stroke-dashoffset: 1538; }
+	100% { stroke-dashoffset: 0; }
+}
+
+@include keyframes(powerup-gpa-bounceOutUp) {
+	20% {
+		@include transform(translate3d(0, -10px, 0));
+	}
+	40%, 45%, 100% {
+		@include opacity(1);
+		@include transform(translate3d(0, 20px, 0));
+	}
+	100% {
+		@include opacity(0);
+		@include transform(translate3d(0, -2000px, 0));
+	}
+}
+.powerup-gpa-bounceOutUp {
+	@include animation-name(powerup-gpa-bounceOutUp);
 }

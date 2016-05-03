@@ -1,9 +1,9 @@
-<div ng-controller="HowItWorksController as hiw">
+
 <header>
     <h1>{{hiw.header}}</h1>
 </header>
 <div class="main">
-    <div class="how-scene">
+    <div class="how-scene absolute full-xy">
         <div class="how-scene-1 hiw-single-scene opacity-0 activate" class-on-activate="fadeIn:anim, null:inject.hiw-open-24-7-active|activate, null:inject.hiw-open-24-7-active .draw|activate, null:inject.hiw-open-24-7-active .fade|activate" class-on-activate-delay="" class-on-clear="fadeOut:animOut" ng-include="::img_base + 'templates/hiw/1-open-24-7-scene.html'"></div>
         <div class="how-scene-2 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim, null:inject.how-scene-2 .ugrid-2|activate" class-on-activate-delay="" class-on-clear="fadeOut:animOut">
             <div class="ugrid-2" class-on-activate="animate:keep">
@@ -92,7 +92,7 @@
         </div>
         <div class="how-scene-6 hiw-single-scene opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="750" class-on-clear="fadeOut:animOut" ng-include="::img_base + 'templates/hiw/6-everyone-wins-scene.html'"></div>
     </div>
-    <nav class="circle-nav">
+    <nav class="circle-nav left-0 full-x absolute" style='z-index:11; bottom:-115px; '>
 		<ul>
 			<li>
 				<a class-on-click="active-circle:unique" ng-click='hiw.switchScene(1)'>
@@ -261,5 +261,4 @@
             </a>
         </li>
     </ul> -->
-</div>
 </div>

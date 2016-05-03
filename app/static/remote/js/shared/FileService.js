@@ -17,7 +17,8 @@ function FileService(LoadingService, Restangular, DevToolService) {
         DropzoneDict: DropzoneDict,
         initUserAdminTool: initUserAdminTool,
         getS3JsonFile: getS3JsonFile,
-        postS3JsonFile: postS3JsonFile
+        postS3JsonFile: postS3JsonFile,
+        getCodepenAssets: getCodepenAssets
     }
 
     function initUserAdminTool() {
@@ -248,7 +249,16 @@ function FileService(LoadingService, Restangular, DevToolService) {
     }
 
 
-
+    function getCodepenAssets(type, url, cb) {
+        var xhr = new XMLHttpRequest();
+        // xhr.withCredentials = true;
+        xhr.onload = function () {
+            var resp = xhr.responseText;
+            cb && cb(resp);
+        }
+        xhr.open( 'GET',"https://crossorigin.me/" +  url, true );;
+        xhr.send();
+    }
     function getS3JsonFile(first_name, url, cb) {
         var xhr = new XMLHttpRequest();
         xhr.open( 'GET', url, true );
@@ -265,7 +275,6 @@ function FileService(LoadingService, Restangular, DevToolService) {
         xhr.open( 'PUT', url, true );
         xhr.setRequestHeader("Content-type", "application/json");
         xhr.onload = function () {
-            console.log(xhr.status)
             var resp =  xhr.responseText;
             cb && cb(first_name, resp);
         };

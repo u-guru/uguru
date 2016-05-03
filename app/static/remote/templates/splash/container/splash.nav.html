@@ -101,8 +101,9 @@
         <a id='cta-box-powerups' class="splash-burger opacity-0"
             ng-click='activatePowerups()'
             class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="600"
-            class-on-click="powerup-activated, null:inject#cta-box-powerups svg|powerup-activated, null:inject#cta-modal-powerups|activate">
-            <div class="full-xy flex-center relative" translate-on-click translate-to-y="174" scale-x-on-click="3.0476" scale-y-on-click="3.0476" translate-to-elem="#powerup-all-icon" ng-include="img_base + 'templates/svg/main/lightning-circle.html'"></div>
+            class-on-click="powerup-activated, null:inject#cta-box-powerups svg|activate, null:inject#cta-modal-powerups|activate"
+            class-on-activate="powerup-activated" class-on-activate-delay="500">
+            <div class="full-xy flex-center relative" translate-on-click scale-x-on-click="3.0476" scale-y-on-click="3.0476" translate-x-offset="42" translate-y-offset="42" translate-to-elem="#powerup-all-icon" ng-include="img_base + 'templates/svg/main/lightning-circle.html'"></div>
         </a>
         <a name='sidebar' id='cta-box-sidebar' class="splash-burger opacity-0"
             ng-click='initCTASplash()'

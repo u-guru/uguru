@@ -34,7 +34,7 @@ angular.module('uguru.util.controllers')
     ContentService, LoadingService, ContentService, CTAService, User, AccessService,
      AnimationService, FileService, KeyboardService) {
 
-    $scope.root.triggers.runSequence(['click:#cta-box-powerups:100', 'click:#powerup-gpa-container:100', 'click:#gpa-try-button:100', 'click:#powerup-gpa-house:100'])
+    // $scope.root.triggers.runSequence(['click:#cta-box-powerups:100', 'click:#powerup-gpa-container:100', 'click:#gpa-try-button:100', 'click:#powerup-gpa-house:100'])
     $scope.nav = {activate: true};
     $scope.mad_lib = {activate: false};
     $scope.activate = {
@@ -883,66 +883,6 @@ angular.module('uguru.util.controllers')
       }
     }
 
-
-
-    $scope.rewindUniversityMapScene = function(callback) {
-      var removeAddDict = {
-        'splash-device-button': 'remove:bounceOutDown',
-        'splash-device-button button': 'remove:opacity-0',
-        'splash-device-button button': 'remove:bounceInUp',
-        'splash-hero-progress span': 'remove:animate',
-        'coach-click': 'remove:hide',
-        'coach-help-mobile': 'remove:hide',
-        'splash-mobile-cta': 'add:bounceInUp',
-        // 'splash-device-button': 'add:bounceInUp',
-        'splash-hero-map': 'add:clear',
-        'splash-hero-markers': 'add:clear',
-        'splash-device': 'add:clear',
-        'splash-adlib': 'remove:active',
-        'splash-adlib': 'remove:animated',
-        'splash-device-search': 'add:clear',
-        'splash-hero-guru': 'add:clear',
-        // 'splash-hero-progress': 'add:clear'
-      }
-
-
-        $timeout(function() {
-          $scope.$apply(function() {
-            var removeDictKeys = Object.keys(removeAddDict);
-            for (var i = 0; i < removeDictKeys.length; i++) {
-              var indexKey = removeDictKeys[i];
-              var indexClass = removeAddDict[removeDictKeys[i]]
-              var indexKeyElems = document.querySelectorAll('.' + indexKey);
-              if (indexKeyElems && indexKeyElems.length) {
-                for (var j = 0; j < indexKeyElems.length; j++) {
-                  var indexElem = indexKeyElems[j];
-                  if (indexClass.indexOf('remove:') > -1) {
-                    indexElem.classList.remove(indexClass.replace('remove:', ''));
-                  } else
-                  if (indexClass.indexOf('add:') > -1) {
-                    indexElem.classList.add(indexClass.replace('add:', ''))
-                  }
-                }
-              }
-            }
-          })
-        })
-
-
-      //   'coach-help-mobile': 'clear',
-      //   'splash-adlib': 'clear',
-      //   'splash-adlib ul': 'activate',
-      //   'splash-hero-progress': 'clear',
-      // }
-      $timeout(function() {
-          var contentElem = document.querySelector('.splash-hero-content');
-          contentElem && contentElem.classList.remove('active');
-      }, 1000)
-      $timeout(function() {
-        callback && callback();
-      }, 3000);
-    }
-
     $scope.demoSwitchCategory = function(category, university) {
       var sceneNumber = getSceneNumber();
       $scope.page.dropdowns.category.toggle();
@@ -1141,30 +1081,6 @@ angular.module('uguru.util.controllers')
       Intercom('show');
     }
 
-    // $scope.closeSingleProjector = function() {
-    //   $scope.singleProjectorActivate = false;
-    //   $scope.root.vars.showSidebarOneProjector = $scope.showSidebarOneProjector;
-    //   if ($scope.page.swipers.main.slides.length > 1) {
-    //     $scope.scrollToSection('#home-splash');
-    //   } else {
-    //     moveProjectorToBottom($scope.page.activeProjectorIndex);
-    //   }
-    // }
-
-
-
-    // $scope.switchToBgScene = function(index) {
-    //   var currentActive = document.querySelector('.bg-scene .bg-single-scene.active-scene');
-    //   if (currentActive) {
-    //     currentActive.classList.remove('active-scene');
-    //     currentActive.classList.add('clear');
-    //   }
-    //   var selectedIndexScene = document.querySelector('.bg-scene-' + index);
-    //   if (selectedIndexScene) {
-    //     selectedIndexScene.classList.add('active-scene', 'activate');
-    //   }
-    // }
-
     $scope.activateMap = function() {
       $scope.activate.map = true;
       // $scope.selectedUniversity && initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
@@ -1189,12 +1105,8 @@ angular.module('uguru.util.controllers')
               break;
       }
     });
-    $timeout(function() {
-      $scope.activate.dropdown = true;
-    }, 5000)
 
     $scope.onLoad = function() {
-
 
       resolveStateParams();
 
@@ -1226,7 +1138,7 @@ angular.module('uguru.util.controllers')
       }
 
       $scope.universities = University.getTargetted().slice();
-
+      initSwipers(responsiveSwiperArgs, $scope.desktopMode);
 
       $timeout(function() {
         // $timeout(function() {
@@ -1277,6 +1189,97 @@ angular.module('uguru.util.controllers')
         }, 1500);
       })
     }
+
+    function resolveStateParams() {
+      if ($stateParams && $stateParams.category && $stateParams.category.id) {
+        // $scope.root.loader.body.hide = true;
+        // Utilities.compileToAngular('body-loading-div', $scope);
+        $scope.selectedCategory = $stateParams.category;
+        $scope.selectedCategory.splashData = ContentService.splashCategoryOptions[$scope.selectedCategory.name];
+        $scope.selectedUniversity = $stateParams.university || University.getTargetted()[0];
+
+      } else {
+        $scope.selectedCategory = ($scope.categories && $scope.categories[0]) || {name: 'Academic', hex_color: 'academic', id:5, splashData: ContentService.splashCategoryOptions['Academic']};
+        $scope.selectedCategory.splashData = ContentService.splashCategoryOptions[$scope.selectedCategory.name];
+
+        $scope.selectedUniversity = University.getTargetted()[0];
+        if ($state.current.name === 'root.splash') {
+          Utilities.compileToAngular('body-loading-div', $scope);
+        }
+        $scope.root.loader.body.hide = true;
+      }
+      // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
+    }
+
+    $scope.lockFilledBlanksAndgetUniversityPlaces = function(university) {
+      // panUniversityBy(university);
+
+      var translateBlankOneElem = document.querySelector('.translate-blank-1');
+      translateBlankOneElem && translateBlankOneElem.parentNode && translateBlankOneElem.parentNode.classList.add('opacity-1-impt');
+      var translateBlankTwoElem = document.querySelector('.translate-blank-2');
+      translateBlankTwoElem && translateBlankTwoElem.parentNode && translateBlankTwoElem.parentNode.classList.add('opacity-1-impt');
+      $scope.getUniversityPlaces(university, true);
+    }
+
+    function toggleCategoryDropdown() {
+      $scope.page.dropdowns.university.active = false;
+      $scope.page.dropdowns.category.active = !$scope.page.dropdowns.category.active;
+    }
+
+    function toggleUniversityDropdown() {
+      $scope.page.dropdowns.university.active = !$scope.page.dropdowns.university.active;
+      $scope.page.dropdowns.category.active = false;
+    }
+
+    function initCTASplash() {
+        $compile(document.querySelector('#cta-box-sidebar'))($scope);
+        $scope.activate.sidebar = true;
+        var ctaParentElemSelector = '#home-splash';
+        CTAService.initSingleCTA("#cta-box-sidebar", ctaParentElemSelector, activateAtShow);
+        function activateAtShow(modal_elem) {
+          var sidebarAside = modal_elem.querySelector('.splash-sidebar-full');
+          sidebarAside && sidebarAside.classList.remove('activate');
+          sidebarAside && sidebarAside.classList.add('activate');
+        }
+
+        // CTAService.initSingleCTA("#cta-box-powerups", ctaParentElemSelector, activateAtShow);
+        // function activateAtShow(modal_elem) {
+        //   var sidebarAside = modal_elem.querySelector('.splash-powerups');
+        //   sidebarAside && sidebarAside.classList.add('activate');
+        // }
+      }
+      function closeAllDropdowns() {
+          $scope.page.dropdowns.category.active = false;
+          $scope.page.dropdowns.university.active = false;
+      }
+
+      resolveStateParams();
+
+    // $scope.closeSingleProjector = function() {
+    //   $scope.singleProjectorActivate = false;
+    //   $scope.root.vars.showSidebarOneProjector = $scope.showSidebarOneProjector;
+    //   if ($scope.page.swipers.main.slides.length > 1) {
+    //     $scope.scrollToSection('#home-splash');
+    //   } else {
+    //     moveProjectorToBottom($scope.page.activeProjectorIndex);
+    //   }
+    // }
+
+
+
+    // $scope.switchToBgScene = function(index) {
+    //   var currentActive = document.querySelector('.bg-scene .bg-single-scene.active-scene');
+    //   if (currentActive) {
+    //     currentActive.classList.remove('active-scene');
+    //     currentActive.classList.add('clear');
+    //   }
+    //   var selectedIndexScene = document.querySelector('.bg-scene-' + index);
+    //   if (selectedIndexScene) {
+    //     selectedIndexScene.classList.add('active-scene', 'activate');
+    //   }
+    // }
+
+
 
     // should be university light color
 
@@ -1361,37 +1364,6 @@ angular.module('uguru.util.controllers')
     //     return markerObj;
     //   }
     // }
-
-    function resolveStateParams() {
-      if ($stateParams && $stateParams.category && $stateParams.category.id) {
-        // $scope.root.loader.body.hide = true;
-        // Utilities.compileToAngular('body-loading-div', $scope);
-        $scope.selectedCategory = $stateParams.category;
-        $scope.selectedCategory.splashData = ContentService.splashCategoryOptions[$scope.selectedCategory.name];
-        $scope.selectedUniversity = $stateParams.university || University.getTargetted()[0];
-
-      } else {
-        $scope.selectedCategory = ($scope.categories && $scope.categories[0]) || {name: 'Academic', hex_color: 'academic', id:5, splashData: ContentService.splashCategoryOptions['Academic']};
-        $scope.selectedCategory.splashData = ContentService.splashCategoryOptions[$scope.selectedCategory.name];
-
-        $scope.selectedUniversity = University.getTargetted()[0];
-        if ($state.current.name === 'root.splash') {
-          Utilities.compileToAngular('body-loading-div', $scope);
-        }
-        $scope.root.loader.body.hide = true;
-      }
-      // initializeDynamicSelectedUniversityMap($scope.selectedUniversity);
-    }
-
-    $scope.lockFilledBlanksAndgetUniversityPlaces = function(university) {
-      // panUniversityBy(university);
-
-      var translateBlankOneElem = document.querySelector('.translate-blank-1');
-      translateBlankOneElem && translateBlankOneElem.parentNode && translateBlankOneElem.parentNode.classList.add('opacity-1-impt');
-      var translateBlankTwoElem = document.querySelector('.translate-blank-2');
-      translateBlankTwoElem && translateBlankTwoElem.parentNode && translateBlankTwoElem.parentNode.classList.add('opacity-1-impt');
-      $scope.getUniversityPlaces(university, true);
-    }
 
 
 
@@ -1534,15 +1506,7 @@ angular.module('uguru.util.controllers')
     //   // $compile(div)($scope);
     // }
 
-    function toggleCategoryDropdown() {
-      $scope.page.dropdowns.university.active = false;
-      $scope.page.dropdowns.category.active = !$scope.page.dropdowns.category.active;
-    }
 
-    function toggleUniversityDropdown() {
-      $scope.page.dropdowns.university.active = !$scope.page.dropdowns.university.active;
-      $scope.page.dropdowns.category.active = false;
-    }
 
 
     // phonePosition phoneWidth * 1.25
@@ -1987,24 +1951,6 @@ angular.module('uguru.util.controllers')
       //   // }, 1000)
       // }
 
-      function initCTASplash() {
-        $compile(document.querySelector('#cta-box-sidebar'))($scope);
-        $scope.activate.sidebar = true;
-        var ctaParentElemSelector = '#home-splash';
-        CTAService.initSingleCTA("#cta-box-sidebar", ctaParentElemSelector, activateAtShow);
-        function activateAtShow(modal_elem) {
-          var sidebarAside = modal_elem.querySelector('.splash-sidebar-full');
-          sidebarAside && sidebarAside.classList.remove('activate');
-          sidebarAside && sidebarAside.classList.add('activate');
-        }
-
-        // CTAService.initSingleCTA("#cta-box-powerups", ctaParentElemSelector, activateAtShow);
-        // function activateAtShow(modal_elem) {
-        //   var sidebarAside = modal_elem.querySelector('.splash-powerups');
-        //   sidebarAside && sidebarAside.classList.add('activate');
-        // }
-      }
-
       // function onMapRenderCompleteOnce(map) {
       //   if (!$scope.map.og_map) {
       //     $scope.mapHasRendered = true;
@@ -2013,12 +1959,6 @@ angular.module('uguru.util.controllers')
       //   }
       // }
 
-      function closeAllDropdowns() {
-        $scope.page.dropdowns.category.active = false;
-        $scope.page.dropdowns.university.active = false;
-      }
-
-      resolveStateParams();
 
       // $timeout(function() {
 

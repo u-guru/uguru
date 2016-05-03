@@ -1,3 +1,4 @@
+
 angular.module('uguru.util.controllers')
 
 .controller('KeyToolController', [
@@ -12,7 +13,8 @@ angular.module('uguru.util.controllers')
 	'LoadingService',
 	'KeyboardService',
 	'$compile',
-	function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService, LoadingService, KeyboardService, $compile) {
+	'AnimationService',
+	function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService, LoadingService, KeyboardService, $compile, AnimationService) {
 
 		var defaults = {
 			KF_COUNT: 100,
@@ -20,8 +22,56 @@ angular.module('uguru.util.controllers')
 			KF_INTERVALS:5,
 			SHAPE_DICT: getShapeDict()
 		}
+		//@gabrielle
+		var ctrlShortcuts = [
 
-
+			{	letter: 's',
+				description: 'Saves animation + stage',
+				keyCode: 83,
+				func: saveAll
+			},
+			{	letter: 't',
+				description:'Toggles sidebar tab forward',
+				keyCode: 84,
+				func: toggleTabForward
+			},
+			{
+				letter: 'i',
+				description:'Opens import window',
+				keyCode: 73,
+				func: function() { $scope.root.triggers.runSequence(['click:#import-button:0']) }
+			},
+			{
+				letter: 'd',
+				description:'Imports codepen and opens child selector',
+				keyCode: 68,
+				func: function() { $scope.root.triggers.runSequence(['click:#import-codepen-button:0', 'click:#select-child-button:50']) }
+			},
+			{
+				letter: 'e',
+				description:'Opens export window',
+				keyCode: 69,
+				func: function() { $scope.root.triggers.runSequence(['click:#export-button:0']) }
+			},
+			{
+				letter: 'space',
+				description:'Plays stage',
+				keyCode: 32,
+				func: function() { $scope.root.triggers.runSequence(['click:#play-stage-button:0']) }
+			},
+			{
+				letter: 'p',
+				description:'Plays keyframes',
+				keyCode: 80,
+				func: function() { $scope.root.triggers.runSequence(['click:#play-keyframes-button:0']) }
+			},
+			{
+				letter: 'n',
+				description:'Adds new time state',
+				keyCode: 78,
+				func: function() { $scope.root.triggers.runSequence(['click:#add-time-state-button:0']) }
+			}
+		]
 
 		$scope.player = initAnimationPlayer();
 		$scope.timer = initAnimationTimer()
@@ -30,7 +80,7 @@ angular.module('uguru.util.controllers')
 		$scope.imports = {animations: [], stages:[]};
 		$scope.layout = {index: 0};
 		$scope.shapesDropdown = {options: Object.keys(defaults.SHAPE_DICT), label: "Inject Shape", size: "normal", selectedIndex:0, onOptionClick: addSVGPlaceholder}
-		$scope.saveDropdown = {options: ['choose one', 'stage', 'animation', 'both'], label: "Save", size: "small", selectedIndex:0, onOptionClick: saveDropdownOnClick}
+		$scope.stageDropdown = initStageDropdown()
 		$scope.animationDirectionOptions = {options: ["normal", "reverse", "alternate", "alternate-reverse"], selectedIndex: 0, size: "small", onOptionClick: setAnimationDirectionFunc};
 		$scope.animationTimingFunc = {options: ["ease", "ease-in", "ease-out", "ease-in-out", "linear", "set-start", "step-end", "cubic"], selectedIndex: 0, size: "small", onOptionClick: setAnimationTimeFunc};
 		$scope.animationFillMode = {options: ["forwards","none", "backwards", "both"], selectedIndex: 0, size:'small', onOptionClick:setAnimationFillMode};
@@ -38,7 +88,7 @@ angular.module('uguru.util.controllers')
 
 		function getHIWStage() {
 			return {
-				owner: 'Samir',
+				owner: 'samir',
 				stageHtml: '<span class="initiator"> <svg id="stage-elem" on-double-tap="setAnimatableElement($event)" draggable width="100" height="100" viewBox="0 0 100 100"> <g fill="none"> <polygon stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="50 1.5 98.5 25.75 98.5 74.25 50 98.5 1.5 74.25 1.5 25.75 "></polygon> <text font-size="18" font-weight="600" fill="rgba(255,255,255,0.8)" text-anchor="middle"> <tspan x="50" y="55">Library Icon</tspan> </text> </g> </svg><svg on-double-tap="setAnimatableElement($event)" draggable width="100" height="100" viewBox="0 0 100 100"> <g fill="none"> <polygon stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="50 1.5 98.5 25.75 98.5 74.25 50 98.5 1.5 74.25 1.5 25.75 "></polygon> <text font-size="18" font-weight="600" fill="rgba(255,255,255,0.8)" text-anchor="middle"> <tspan x="50" y="55">Campus Stadium</tspan> </text> </g> </svg><svg on-double-tap="setAnimatableElement($event)" draggable width="100" height="100" viewBox="0 0 100 100"> <g fill="none"> <polygon stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="50 1.5 98.5 25.75 98.5 74.25 50 98.5 1.5 74.25 1.5 25.75 "></polygon> <text font-size="18" font-weight="600" fill="rgba(255,255,255,0.8)" text-anchor="middle"> <tspan x="50" y="55">Campus Tower</tspan> </text> </g> </svg> <svg on-double-tap="setAnimatableElement($event)" draggable width="200" height="100" viewBox="0 0 200 100"> <g fill="none"> <rect stroke="rgba(255,255,255,0.8)" stroke-width="3" x="1.5" y="1.5" width="197" height="97" rx="10"></rect> <text font-size="18" font-weight="600" fill="rgba(255,255,255,0.8)" text-anchor="middle"> <tspan x="100" y="55">Uguru Billboard</tspan> </text> </g> </svg></span>',
 				stageName: 'HIW-Stage-1',
 				animElemSelector: '#stage-elem',
@@ -46,15 +96,166 @@ angular.module('uguru.util.controllers')
 				time_states: [{time: 1000, actions:[]}]
 			}
 		}
-		function initShortCuts() {
-			KeyboardService.initOptionPressedAndReleasedFunction(on_pressed, on_released);
-			function on_pressed(e) {
-				// console.log('ctrl key pressed');
-			}
-			function on_released(e) {
-				// console.log('ctrl key released');
+
+		function initNewStage(stage_name, html, css, anim_selector) {
+			var anim_selector = anim_selector || '#stage-elem';
+			var firstName = $scope.user && $scope.user.name && $scope.user.name.split(' ')[0].toLowerCase();
+			return {
+				owner: firstName || 'samir',
+				stageHtml: html,
+				stageName: stage_name,
+				animElemSelector: anim_selector,
+				stageCss: css,
+				time_states: [{time: 1000, actions: []}]
 			}
 		}
+
+		var callbackKeyDownFunc;
+		var parentViewContainer = document.querySelector('#keys');
+		var cmdPressed;
+		var ctrlPressed;
+		function saveAll(e) {console.log('ctrl', e.keyCode, 'pressed');$scope.saveStageHtml();  $scope.saveAnimationClass($scope.animation, $scope.user.name.split(' ')[0].toLowerCase())};
+		function toggleTabForward(e) {console.log('right-arrow', e.keyCode, 'pressed'); $scope.asideTabIndex = Math.abs(($scope.asideTabIndex + 1) % 3)};
+
+
+		$scope.keyShortcuts = {
+				ctrl: ctrlShortcuts
+		}
+		function initShortCuts() {
+			KeyboardService.initOptionPressedAndReleasedFunction(on_pressed_cmd, on_released_cmd, 91, 'metaKey', null, 1000);
+			KeyboardService.initOptionPressedAndReleasedFunction(on_pressed_ctrl, on_released_ctrl, 17, 'ctrlKey', null,  100);
+			function on_pressed_ctrl(e) {
+				ctrlPressed = true;
+				for (var i = 0; i < $scope.keyShortcuts.ctrl.length; i++) {
+					var indexKeyshortcut = $scope.keyShortcuts.ctrl[i];
+					initKeyboardFunctionOnce(indexKeyshortcut.letter, indexKeyshortcut.keyCode, indexKeyshortcut.func);
+				}
+			}
+
+			function on_released_ctrl(e) {
+				ctrlPressed = false;
+				console.log('ctrl', ctrlPressed)
+			}
+
+			function on_pressed_cmd(e) {
+				//save all
+				//view short cuts
+				//import
+				//left --> toggle aside
+				console.log('cmd pressed');
+				cmdPressed = true;
+				$timeout(function() {
+					if (cmdPressed) {
+						console.log('should be showing shortcuts');
+						$scope.showShortcuts = true;
+					}
+				}, 1000)
+
+			}
+			function on_released_cmd(e) {
+				cmdPressed = false;
+				$scope.showShortcuts = false;
+				parentViewContainer.removeEventListener(callbackKeyDownFunc, function(e) {console.log(e, 'keydown event listener removed')});
+
+			}
+		}
+
+		function initKeyboardFunctionOnce(key, code, cb_pressed) {
+			console.log('initializing', key, code);
+			var defaultOnRelease = function(e) {
+				console.log(key, e.keyCode, 'released');
+				$timeout(function() {
+					document.removeEventListener('keyup', cb_pressed);
+					document.removeEventListener('keydown', defaultOnRelease);
+				}, 2500);
+			}
+			KeyboardService.initOptionPressedAndReleasedFunction(cb_pressed, defaultOnRelease, code, null, true, 100);
+		}
+
+		function findStageByName(stage_name) {
+			if (!$scope.imports.stages || !$scope.imports.stages.length) {
+				console.log('stages from amazon not yet loaded.. trying again in 2seconds')
+				$timeout(function() {
+					initStageDropdown();
+				}, 2000)
+				return;
+			}
+			for (var i = 0; i < $scope.imports.stages.length; i++) {
+				var stageIndex = $scope.imports.stages[i];
+				if (stageIndex.stageName === stage_name) {
+					return stageIndex;
+				}
+			}
+		}
+
+		function initStageDropdown() {
+			var lastActiveStageName = $localstorage.getObject('last_stage_active');
+			if (lastActiveStageName && lastActiveStageName.length) {
+				LoadingService.showAmbig('Loading..' + lastActiveStageName, 2500);
+				var lastUsedStage = findStageByName(lastActiveStageName);
+				if (lastUsedStage) {
+					var stageOptions = [lastActiveStageName, 'save', 'save and import', 'save and clear'];
+					var stageLabel = 'Active Stage'
+					$scope.stageDropdown = {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:true, size:'small'};
+					importPageDom(lastUsedStage);
+					return;
+				}
+
+			} else {
+				var stageOptions = ['none', 'import stage', 'create new stage'];
+				var stageLabel = "Current Stage"
+				$scope.stageDropdown = {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:false, size:'small'};
+				return {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:false, size:'small'};
+			}
+
+			// if (lastActiveStage)
+			// var stageInactiveOptions = ['import stage', 'init stage', 'clear stage'];
+			//if init stage, ask for name right away
+		}
+
+		function onStageDropdownClick(option, index) {
+				if ($scope.stageDropdown.stageActive) {
+					switch (index) {
+						case 1:
+							$scope.saveStageHtml();
+							$scope.stageDropdown.selectedIndex = 0;
+							break
+						case 2:
+							$scope.saveStageHtml();
+							$timeout(function() {
+								$scope.layout.index = 1;
+								$scope.importLayoutIndex = 3;
+								$scope.stageDropdown.selectedIndex = 0;
+							}, 1500);
+							break;
+						case 3:
+							$scope.saveStageHtml();
+							$timeout(function() {
+								$scope.stage = null;
+								$scope.resetStageDom();
+								$localstorage.setObject('last_stage_active', null);
+								$scope.stageDropdown.selectedIndex = 0;
+								var stageOptions = ['none', 'import stage', 'create new stage'];
+								var stageLabel = "Current Stage"
+								$scope.stageDropdown = {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:false, size:'small'};
+							}, 1500);
+							break;
+					}
+				} else {
+					switch (index) {
+						case 1:
+							$scope.layout.index = 1;
+							$scope.importLayoutIndex = 3;
+							$scope.stageDropdown.selectedIndex = 0;
+							return;
+						case 2:
+							$scope.layout.index = 1;
+							$scope.importLayoutIndex = 3;
+							$scope.stageDropdown.selectedIndex = 0;
+							return;
+					}
+				}
+			}
 
 		function saveDropdownOnClick(option, index) {
 			if (index === 1) {
@@ -83,7 +284,8 @@ angular.module('uguru.util.controllers')
 			$scope.stage.selectComponentMode = true;
 			$scope.stage.selectComponentModeTimeState = time_state;
 			$scope.stage.selectComponentModeAction = action;
-			var allDraggableElems = document.querySelectorAll('[draggable]');
+			var stageContainer = document.querySelector('#stage-container');
+			var allDraggableElems = stageContainer.querySelectorAll('[draggable]');
 			$scope.stage.components = [];
 			for (var i = 0; i < allDraggableElems.length; i++) {
 				$scope.stage.components.push({selector: '[draggable-clone-' + i + ']'});
@@ -93,6 +295,7 @@ angular.module('uguru.util.controllers')
 				$timeout(function() {
 					for (var i = 0; i < allDraggableElems.length; i++) {
 						var indexElem = allDraggableElems[i];
+						$scope.stage.components[i]._class = indexElem.getAttribute('class');
 						indexElem.setAttribute('draggable-' + i, null);
 						var clonedNode = indexElem.cloneNode(true);
 						clonedNode.removeAttribute('draggable');
@@ -101,7 +304,30 @@ angular.module('uguru.util.controllers')
 
 						var allContainers = document.querySelectorAll('.cloned-animatable-elem-container')
 						var indexContainer = allContainers[i];
-						indexContainer.appendChild(clonedNode);
+						var allShapes = ['path', 'line', 'polygon', 'polyline', 'g', 'rect', 'ellipse', 'circle', 'tspan', 'text'];
+						if (allShapes.indexOf(clonedNode.nodeName) > -1) {
+							var parentSVG = findParentSVG(indexElem);
+							var clonedParentSVG = parentSVG.cloneNode(true);
+							clonedParentSVG.innerHTML = "";
+							clonedParentSVG.appendChild(clonedNode);
+							clonedParentSVG.className += ' absolute';
+							clonedParentSVG.style.minWidth = "100px";
+							clonedParentSVG.style.minHeight = "100px";
+							clonedParentSVG.style.maxWidth = "200px";
+							clonedParentSVG.style.maxHeight = "200px";
+							indexContainer.appendChild(clonedParentSVG);
+							secondClonedParent = clonedParentSVG.cloneNode(true)
+							indexContainer.appendChild(secondClonedParent);
+						} else {
+							clonedNode.className += ' absolute';
+							clonedNode.style.minWidth = "100px";
+							clonedNode.style.minHeight = "100px";
+							clonedNode.style.maxWidth = "200px";
+							clonedNode.style.maxHeight = "200px";
+							indexContainer.appendChild(clonedNode);
+							secondClonedNode = clonedNode.cloneNode(true)
+							indexContainer.appendChild(secondClonedNode);
+						}
 					}
 				})
 			})
@@ -306,50 +532,84 @@ angular.module('uguru.util.controllers')
 			return div;
 		}
 
+		$scope.selectComponentElement = function(component, $index, $event) {
+			if (!$scope.asideTabIndex) {
+				$scope.onTSActionComponentSelected(component.selector)
+			} else {
+				$scope.addAnimatableElement(component);
+
+			}
+		}
+
+		$scope.addAnimatableElement = function(component) {
+			if (!$scope.stage.anim_elements) {
+				$scope.stage.anim_elements = [{selector: '#stage-elem', type:$scope.actor.nodeName}];
+			}
+			var stageContainer = document.querySelector('#stage-container');
+			var numDraggable = stageContainer.querySelectorAll('[draggable]').length;
+			if (component.orig_elem) {
+				component.orig_elem.setAttribute("draggable", null);
+				component.orig_elem.setAttribute("draggable-" + numDraggable, null);
+				component.selector = "[draggable-" + numDraggable + ']';
+				$timeout(function() {
+					$compile(component.orig_elem)($scope);
+					$scope.$apply();
+					component.orig_elem = null;
+				})
+			}
+			$scope.stage.anim_elements.push(component);
+			$timeout(function() {
+				renderAsideAnimatableElems();
+				$scope.$apply();
+			}, 100)
+		}
+
+		$scope.swapFocusedAnimatedElem = function(anim_elem) {
+			$scope.actor.id = null;
+			$scope.actor = null;
+			// $scope.actor.setAttribute(anim_elem.replace('[','').replace(']', ''), null);
+			// $scope.actor.setAttribute('draggable', null);
+			var newStageElem = document.querySelector(anim_elem.selector);
+			$scope.setAnimatableElement({target:newStageElem});
+			$timeout(function() {
+				updateStageElemCloneAside();
+            	renderAsideAnimatableElems();
+			})
+
+		}
+
 		$scope.setAnimatableElement = function($event) {
 
 
 
 			var elem = $event.target;
 
-			if (['polgyon', 'rect', 'circle', 'path', 'text'].indexOf(elem.nodeName) > -1) {
-				var elem = elem.parentNode;
-				if (['polgyon', 'rect', 'circle', 'path', 'text'].indexOf(elem.nodeName) > -1) {
-					var elem = elem.parentNode;
-					if (['polgyon', 'rect', 'circle', 'path', 'text'].indexOf(elem.nodeName) > -1) {
-						var elem = elem.parentNode;
-					}
-				}
-			}
 			var allCurrentStageElems = document.querySelectorAll('#stage-elem');
-			console.log('clearing all that are stage elems');
 			for (var i = 0; i < allCurrentStageElems.length; i++) {
 				var indexCurrentStageElem = allCurrentStageElems[i];
 				console.log('removing id stage-elem for elem', indexCurrentStageElem);
 				indexCurrentStageElem.id = null;
 			}
 
-			elem.id = $scope.pageDom.animElemSelector;
+			elem.id = $scope.pageDom.animElemSelector || '#stage-elem';
 			$scope.actor = elem;
-			console.log('this was called');
 			LoadingService.showMsg('updating...', 1000, function() {
 				LoadingService.showSuccess('Complete!', 1000);
 			})
 			var stageElem = document.querySelector('#stage-container');
-			console.log(elem);
-			elem.style.stroke = 'white';
-			if (elem.nodeName === 'svg') {
-				var allInnerElements = elem.querySelectorAll('polgyon, rect, circle, path, text');
-				for (var i = 0; i < allInnerElements.length; i++) {
-					var indexElem = allInnerElements[i];
-					if (indexElem.nodeName === 'text') {
-						indexElem.style.fill = 'white';
-					} else {
-						indexElem.style.stroke = 'white';
-					}
+			// elem.style.stroke = 'white';
+			// if (elem.nodeName === 'svg') {
+			// 	var allInnerElements = elem.querySelectorAll('polgyon, rect, circle, path, text');
+			// 	for (var i = 0; i < allInnerElements.length; i++) {
+			// 		var indexElem = allInnerElements[i];
+			// 		if (indexElem.nodeName === 'text') {
+			// 			indexElem.style.fill = 'white';
+			// 		} else {
+			// 			indexElem.style.stroke = 'white';
+			// 		}
 
-				}
-			}
+			// 	}
+			// }
 			$compile(stageElem)($scope);
 			elem.classList.add('animated', 'pulse');
 			$timeout(function() {
@@ -357,7 +617,7 @@ angular.module('uguru.util.controllers')
 			}, 1000)
 		}
 
-		$scope.importPageDom = function(stage_template) {
+		function importPageDom(stage_template) {
 
 			$scope.stage = stage_template;
 			for (var i = 0; i < $scope.stage.time_states.length; i++) {
@@ -372,12 +632,18 @@ angular.module('uguru.util.controllers')
 						var js_anim_obj = importAnimationFromRawCssText(cssText, animName);
 						var final_obj = initAnimationFromAnimObj(js_anim_obj);
 						indexAction.animation = final_obj;
-						console.log(indexAction.animation.obj.name, indexAction.animation.obj)
 					}
 				}
 			}
-			$scope.updatePageDom(stage_template.stageName, stage_template.stageHtml, stage_template.stageCSS, stage_template.animElemSelector.replace('#', ''));
+			$localstorage.setObject('last_stage_active', $scope.stage.stageName);
+			if (!$scope.stageDropdown.stageActive) {
+				$timeout(function() {
+					// initStageDropdown();
+				})
+			}
+			$scope.updatePageDom(stage_template.stageName, stage_template.stageHtml, stage_template.stageCss, stage_template.animElemSelector.replace('#', ''));
 		}
+		$scope.importPageDom = importPageDom;
 
 		function findAnimationByName(name, animation_arr) {
 			for (var i = 0; i < animation_arr.length; i++) {
@@ -387,25 +653,102 @@ angular.module('uguru.util.controllers')
 				}
 			}
 		}
+		function updateStageElemCloneAside(stage_elem) {
+			var stageElem = stage_elem || document.querySelector('#stage-elem');
+			if (!stageElem) {
+				var stageContainer = document.querySelector('#stage-container');
+				stageElem = stageContainer.firstChild;
+			}
+			var clonedNode = stageElem.cloneNode(true);
+			var asideElementContainer = document.querySelector('#stage-elem-clone-container')
+
+			if (asideElementContainer) {
+				asideElementContainer.innerHTML = '';
+				var allShapes = ['path', 'line', 'polygon', 'polyline', 'g', 'rect', 'ellipse', 'circle', 'tspan', 'text'];
+				if (allShapes.indexOf(clonedNode.nodeName) > -1) {
+					var parentSVG = findParentSVG(stageElem);
+					var clonedParentSVG = parentSVG.cloneNode(true);
+					clonedParentSVG.innerHTML = "";
+					clonedParentSVG.appendChild(clonedNode);
+					clonedParentSVG.id = 'stage-elem-clone';
+					clonedParentSVG.className += ' absolute';
+					clonedParentSVG.style.minWidth = "150px";
+					clonedParentSVG.style.minHeight = "150px";
+					clonedParentSVG.style.maxWidth = "200px";
+					clonedParentSVG.style.maxHeight = "200px";
+					asideElementContainer.appendChild(clonedParentSVG);
+				}
+				else {
+					clonedNode.id = 'stage-elem-clone';
+					clonedNode.style.minWidth = "150px";
+					clonedNode.style.minHeight = "150px";
+					clonedNode.className += ' absolute';
+					clonedNode.style.maxWidth = "200px";
+					clonedNode.style.maxHeight = "200px";
+					asideElementContainer.appendChild(clonedNode);
+				}
+			}
+			$timeout(function() {
+				$scope.$apply();
+			})
+		}
 
 		$scope.updatePageDom = function(stage_name, stage_html, stage_css, anim_selector) {
 			$scope.pageDom.stageHtml = stage_html || $scope.pageDom.stageHtml;
-			$scope.pageDom.stageCSS = stage_css || $scope.pageDom.stageCSS;
+			$scope.pageDom.stageCss = stage_css || $scope.pageDom.stageCss;
 			$scope.pageDom.stageName = stage_name || $scope.pageDom.stageName;
 			$scope.pageDom.animElemSelector = anim_selector || $scope.pageDom.animElemSelector;
 
-			LoadingService.showAmbig('Updating..', 1000, function() {
-				LoadingService.showSuccess('Saved!', 1500);
-				$scope.layout.index = 0;
-			});
-
+			LoadingService.showAmbig(null, 1000);
 			if ($scope.pageDom.stageHtml && $scope.pageDom.stageHtml.length) {
-				var stageElem = document.querySelector('#stage-container');
-				stageElem.innerHTML = $scope.pageDom.stageHtml;
-				$compile(stageElem)($scope);
-				$timeout(function() {
-					$scope.$apply();
-				})
+				var stageContainer = document.querySelector('#stage-container');
+				stageContainer.innerHTML = $scope.pageDom.stageHtml;
+				if (stageContainer.firstChild) {
+					var stageElem = document.querySelector('#stage-elem');
+					if (stageElem) {
+						$scope.actor = stageElem;
+						stageElem.setAttribute("draggable", true);
+						updateStageElemCloneAside();
+					} else {
+						if (stageContainer && stageContainer.firstChild) {
+							$scope.actor = stageContainer.firstChild;
+							if (stageContainer.firstChild.setAttribute) {
+								stageContainer.firstChild.setAttribute("draggable", true);
+								updateStageElemCloneAside();
+							}
+						} else {
+							$timeout(function() {
+								$scope.updatePageDom(stage_name, stage_html, stage_css, anim_selector);
+							}, 1000)
+						}
+					}
+					if (stageContainer.children && stageContainer.children.length === 1) {
+						var firstChild = stageContainer.children[0];
+						var firstChildDimensions = firstChild.getBoundingClientRect();
+						console.log(firstChild);
+						if (!firstChildDimensions.height || !firstChildDimensions.width) {
+							firstChild.className += ' absolute';
+							firstChild.style.height = "75%";
+							firstChild.style.width = "75%";
+							firstChild.style.right = "12.5%";
+							firstChild.style.top = "12.5%";
+						}
+					}
+				}
+				$compile(stageContainer)($scope);
+				$scope.asideTabIndex = 0;
+				// var clonedNode = stageElem.cloneNode(true);
+				// clonedNode.id = 'stage-elem-clone';
+				// clonedNode.style.minWidth = "200px";
+				// clonedNode.style.minHeight = "200px";
+				// var asideElementContainer = document.querySelector('#stage-elem-clone-container')
+				// if (asideElementContainer) {
+				// 	asideElementContainer.innerHTML = '';
+				// 	asideElementContainer.appendChild(clonedNode);
+				// }
+				// $timeout(function() {
+				// 	$scope.$apply();
+				// })
 			}
 
 			if ($scope.pageDom.animElemSelector && $scope.pageDom.animElemSelector.length && $scope.pageDom.animElemSelector !== $scope.actor.id) {
@@ -423,7 +766,7 @@ angular.module('uguru.util.controllers')
 				}
 				var style = document.createElement("style");
 				style.setAttribute('id', 'stage-css');
-				style.innerHTML = $scope.pageDom.stageCss;
+				style.innerHTML = $scope.stage.stageCss;
 				document.getElementsByTagName("head")[0].appendChild(style);
 				$compile(stageElem)($scope);
 			} else {
@@ -457,13 +800,16 @@ angular.module('uguru.util.controllers')
 
 
 		$scope.setActiveKeyFrame = function(value) {
+
 			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX', 'rotate3DAngle': 'rotate'};
 			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'deg', 'skewY': 'deg', 'rotate3DZ':'deg', 'rotate3DY': 'deg', 'rotate3DX': 'deg', 'rotate3DAngle': 'deg'};
 
 			var oldValue = $scope.animation.selected_index;
 
 			var newValue = Math.floor(parseInt(value) * (100/defaults.KF_INTERVALS));
+
 			var newPercentValue = getNthSortedKeyText($scope.animation.obj, newValue);
+			console.log(newPercentValue);
 			$scope.animation.selected_kf_index = value;
 			$scope.animation.selected_index = newValue;
 			$scope.animation.selected_percent = newPercentValue + '%';
@@ -476,7 +822,7 @@ angular.module('uguru.util.controllers')
 			var cssToChange;
 			if (true) {
 				var transformProperties = Object.keys(propertyDictCssMap);
-				var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
+				var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'transformOrigin', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 				var cssToChange = {transform: {}, etc: {}};
 				for (var i = 0; i < currentPropertiesModified.length - 1; i++) {
 					var indexPropertyName = currentPropertiesModified[i]
@@ -484,7 +830,11 @@ angular.module('uguru.util.controllers')
 					for (var j = 0; j < newValue - 1; j++) {
 						console.log('checking t=', j, 'for traces of', indexPropertyName);
 						var previousIndexPercentValue = getNthSortedKeyText($scope.animation.obj, j);
+						if (!previousIndexPercentValue) {
+							continue;
+						}
 						var previousIndexProperty = $scope.animation.properties[previousIndexPercentValue + '%'];
+						console.log(previousIndexProperty)
 						var previousPropertyModifiedKeys = Object.keys(previousIndexProperty.modified);
 						if (previousPropertyModifiedKeys.indexOf(indexPropertyName) > -1) {
 							if (indexPropertyName in propertyDictCssMap) {
@@ -709,8 +1059,8 @@ angular.module('uguru.util.controllers')
 				$scope.animation.flex_selected_index = 0;
 
 
-
-				elem.style[browserPrefix + "AnimationName"] = $scope.animation.attr.name;
+				$scope.animation.obj.name = $scope.animation.obj.name + '-edit';
+				elem.style[browserPrefix + "AnimationName"] = $scope.animation.obj.name;
 
 
 
@@ -839,6 +1189,7 @@ angular.module('uguru.util.controllers')
 						case "translateZ":
 							csstext += 'translateZ(' + dance_obj.translateZ  + 'px' + ') '
 							break;
+
 						case "scale3DX":
 							csstext += 'scaleX(' + dance_obj.scale3DX  + ') '
 							break
@@ -973,11 +1324,11 @@ angular.module('uguru.util.controllers')
 		            			var indexCssRule = ss[i].cssRules[j];
 		            			var rawCSSText = indexCssRule.cssText;
 		            			var animationName = indexCssRule.name;
-		            			console.log('processing', animationName);
+		            			// console.log('processing', animationName);
 		            			var js_anim_obj = importAnimationFromRawCssText(rawCSSText, animationName);
 		            			var final_obj = initAnimationFromAnimObj(js_anim_obj);
 		            			$scope.saveAnimationClass(final_obj, styleSheetName);
-
+		            			console.log(final_obj);
 		      //       			var js_anim_obj = importAnimationFromRawCssText(indexCssRule.css_text, name);
 
 
@@ -1009,20 +1360,20 @@ angular.module('uguru.util.controllers')
 			return anim
 		}
 
-		function initAnimationFromAnimObj(anim_obj) {
-
+		function initAnimationFromAnimObj(anim_obj, options) {
+			options = options || {};
 			var properties = initDictWithXProperties(anim_obj);
 			var attr = {
-				name: anim_obj.name,
+				name: options.name || anim_obj.name,
 				play_state: "running",
-				delay: '0s',
+				delay: options.delay || '0s',
 				delayVal: 0,
-				direction: "normal",
-				iteration_count: 1,
-				timing_function: "ease",
-				duration: defaults.DURATION + 's',
+				direction: options.direction || "normal",
+				iteration_count: options.iteration_count || 1,
+				timing_function: options.timing_function || "ease",
+				duration: options.duration || defaults.DURATION + 's',
 				durationVal: defaults.DURATION,
-				fill_mode: "forwards",
+				fill_mode: options.fill_mode ||  "forwards",
 				kf_intervals: defaults.KF_INTERVALS
 			}
 			return {obj: anim_obj, selected_keyframe:properties['0%'], selected_kf_index:0, selected_percent:'0%', selected_index: 0, flex_selected_index:0, properties: properties, kf_count: defaults.KF_COUNT, attr:attr};
@@ -1090,18 +1441,21 @@ angular.module('uguru.util.controllers')
 		}
 
 		function getNthSortedKeyText(anim, index) {
+				console.log(anim, index);
 				var keyTexts = [];
 				for (var i = 0; i < anim.cssRules.length; i++) {
 					var cssIndexKFRule = anim.cssRules.item(i);
+					console.log(cssIndexKFRule)
 					if (cssIndexKFRule) {
 						var keyText = cssIndexKFRule.keyText;
-						keyTexts.push(parseFloat(keyText.replace('%')));
+						keyTexts.push(parseFloat(keyText.replace('%', '')));
 					}
 				}
 				keyTexts.sort(function(a, b) {
 					return b - a;
-				});
-				return keyTexts.reverse()[index]
+				}).reverse();
+				// console.log(keyTexts.slice(), index, keyTexts.reverse(), keyTexts.reverse())
+				return keyTexts[keyTexts.indexOf(index)];
 				// anim.cssRules.item(index)
 			}
 
@@ -1435,6 +1789,7 @@ angular.module('uguru.util.controllers')
 			}
 			var defaultValue = getDefaultValue(property);
 			editKeyframeAtX($scope.animation, percent_value, property, defaultValue);
+
 			editKeyframeAtX($scope.animation, percent_value, property, null);
 			kf[property] = defaultValue;
 
@@ -1452,11 +1807,10 @@ angular.module('uguru.util.controllers')
 
 			var percentage = keyframe_percent + '%'
 			anim.obj.deleteRule(percentage);
+			console.log('properties', anim.properties, keyframe_percent);
 			transformObj = anim.properties[percentage];
 			transformObj.edited = true;
 			transformObj[property] = value;
-
-
 
 
 
@@ -1479,13 +1833,14 @@ angular.module('uguru.util.controllers')
 			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX', 'rotate3DAngle': 'rotate'};
 			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'deg', 'skewY': 'deg', 'rotate3DZ':'deg', 'rotate3DY': 'deg', 'rotate3DX': 'deg', 'rotate3DAngle': 'deg'};
 			var transformProperties = Object.keys(propertyDictCssMap);
-			var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
+			var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'transformOrigin', 'transformOrigin', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 			var cssToChange = {transform: {}, etc: {}};
 			var newPropertiesToModify = Object.keys($scope.animation.selected_keyframe.modified);
 
 			for(var i = 0; i < newPropertiesToModify.length; i++) {
 				var indexPropertyName = newPropertiesToModify[i];
 
+				console.log(indexPropertyName);
 				var propertyValue = $scope.animation.selected_keyframe[indexPropertyName]
 
 				if (indexPropertyName in propertyDictCssMap) {
@@ -1575,6 +1930,25 @@ angular.module('uguru.util.controllers')
 		function transformPropertiesObj(actor) {
 			var transformObj = function()
 			{
+				this.propertyMappings = {
+					'scaleX': 'scale3DX',
+					'scaleY': 'scale3DY',
+					'scaleZ': 'scale3DZ',
+					'rotateX': 'rotate3DX',
+					'rotateY': 'rotate3DY',
+					'rotateZ': 'rotate3DZ',
+					'rotate': 'rotate3DAngle',
+					'background-color': 'backgroundColor',
+					'fill-opacity': 'fillOpacity',
+					'transform-style': 'transformStyle',
+					'stroke-dasharray': 'strokeDashArray',
+					'stroke-dashoffset': 'strokeDashOffset',
+					'stroke-opacity': 'strokeOpacity',
+					'stroke-width': 'strokeWidth',
+					'transform-perspective': 'transformPerspective',
+					'animation-timing-function': 'animationTimingFunction',
+					'-webkit-animation-timing-function': 'animationTimingFunction'
+				}
 				this.transformPerspective = 0;
 				this.translateX = 0;
 				this.translateY = 0;
@@ -1591,6 +1965,8 @@ angular.module('uguru.util.controllers')
 				this.originX = 50;
 				this.originY = 50;
 				this.originZ = 50;
+				this.visibility = "initial";
+				this.animationTimingFunction = "ease";
 				this.opacity = 1;
 				this.edited = false;
 				this.modified = {};
@@ -1661,6 +2037,9 @@ angular.module('uguru.util.controllers')
 				this.translateX = 0;
 				this.translateY = 0;
 				this.translateZ = 0;
+				this.transformOriginX = '50%';
+				this.transformOriginY = '50%';
+				this.transformOriginZ = 0;
 				this.scale3DX = 1;
 				this.scale3DY = 1;
 				this.scale3DZ = 1;
@@ -1825,23 +2204,188 @@ angular.module('uguru.util.controllers')
 			}
 		}
 
+		function hardCodeStageDimensions() {
+			$timeout(function() {
+				var stageContainer = document.querySelector('#stage-container');
+				var stageDimensions = stageContainer.getBoundingClientRect();
+				console.log(stageDimensions);
+				var height = stageDimensions.height;
+				var width = stageDimensions.width;
+				stageContainer.style.height = height + 'px;'
+				stageContainer.style.width = width + 'px;'
+				console.log(stageContainer);
+			}, 3000)
+
+		}
+
+		function convertDecomposeToDistinctProps(js_obj) {
+			resultTransformObj = new transformPropertiesObj();
+			resultTransformObj.skewX = js_obj.skew[0];
+			resultTransformObj.skewY = js_obj.skew[1];
+			resultTransformObj.scale3DX = js_obj.scale[0]; //m11
+			resultTransformObj.scale3DY = js_obj.scale[1]; //m22
+			resultTransformObj.scale3DZ = js_obj.scale[2]; //m33
+			resultTransformObj.translateX = js_obj.translate[0]; //m21
+			resultTransformObj.translateY = js_obj.translate[1]; //
+			resultTransformObj.translateZ = js_obj.translate[2];
+			resultTransformObj.rotate3DX = js_obj.rotate[0];
+			resultTransformObj.rotate3DY = js_obj.rotate[1];
+			resultTransformObj.rotate3DZ = js_obj.rotate[2];
+
+			if (resultTransformObj.skewX) {
+				resultTransformObj.modified['skewX'] = true;
+			}
+			if (resultTransformObj.skewY) {
+				resultTransformObj.modified['skewY'] = true;
+			}
+			if (resultTransformObj.scale3DX) {
+				resultTransformObj.modified['scale3DX'] = true;
+			}
+			if (resultTransformObj.scale3DY) {
+				resultTransformObj.modified['scale3DY'] = true;
+			}
+			if (resultTransformObj.scale3DZ) {
+				resultTransformObj.modified['scale3DZ'] = true;
+			}
+			if (resultTransformObj.translateX) {
+				resultTransformObj.modified['translateX'] = true;
+			}
+			if (resultTransformObj.translateY) {
+				resultTransformObj.modified['translateY'] = true;
+			}
+			if (resultTransformObj.translateZ) {
+				resultTransformObj.modified['translateZ'] = true;
+			}
+			if (resultTransformObj.translateZ) {
+				resultTransformObj.modified['translateZ'] = true;
+			}
+
+			return resultTransformObj;
+		}
+
+
+		function convertMatrixIntoTransformProperties(js_obj) {
+			console.log('processing', js_obj.cssRules.length, 'items');
+			for (var i = 0; i < js_obj.cssRules.length; i++) {
+				var indexRule = js_obj.cssRules[i];
+				var matrixTransform = indexRule.style.transform || indexRule.style.WebkitTransform || indexRule.style.MozTransform || indexRule.style.msTransform || indexRule.style.OTransform;
+				if (matrixTransform) {
+					dMatrix = dynamics.initMatrixFromTransform(matrixTransform)
+					// var originalMatrix = new WebKitCSSMatrix(matrixTransform);
+					// // console.log(matrixTransform, '--->', decomposedMatrix.format(), '\n');
+					// var transformDict = convertDecomposeToDistinctProps(decomposedMatrix);
+
+				}
+			}
+		}
+
+		function getDMatrixString(d_matrix, units) {
+			var result = "";
+			var defaults = {"scaleX": 1, "scaleY": 1, "scaleZ": 1};
+			var count =0;
+			if (d_matrix.skew[0]) {
+				result += "skewX(" + parseFloat(d_matrix.skew[0], 10) + 'deg) '
+				count++;
+			}
+			if (d_matrix.skew[1]) {
+				result += "skewY(" + parseFloat(d_matrix.skew[1], 10) + 'deg) ';
+				count++;
+			}
+			if (d_matrix.rotate[0]) {
+				result += "rotateX(" + parseFloat(d_matrix.rotate[0], 10) + 'rad) ';
+				count++;
+			}
+			if (d_matrix.rotate[1]) {
+				result += "rotateY(" + parseFloat(d_matrix.rotate[1], 10) + "rad) ";
+				count++;
+			}
+			if (d_matrix.rotate[2]) {
+				result += "rotateZ(" + parseFloat(d_matrix.rotate[2], 10) + "rad) ";
+				count++;
+			}
+			if (d_matrix.translate[0]) {
+				result += "translateX(" + parseFloat(d_matrix.translate[0], 10) + "%) ";
+				count++;
+			}
+			if (d_matrix.translate[1]) {
+				result += "translateY(" + parseFloat(d_matrix.translate[1], 10) + "%) ";
+				count++;
+			}
+			if (d_matrix.translate[2]) {
+				result += "translateZ(" + parseFloat(d_matrix.translate[2], 10) + "%) ";
+				count++;
+			}
+			if (d_matrix.scale[0] && d_matrix.scale[0] !== defaults['scaleX']) {
+				result += "scaleX(" + parseFloat(d_matrix.scale[0], 10) + ") ";
+				count++;
+			}
+			if (d_matrix.scale[1] && d_matrix.scale[1] !== defaults['scaleY']) {
+				result += "scaleY(" + parseFloat(d_matrix.scale[1], 10) + ") ";
+				count++;
+			}
+			if (d_matrix.scale[2] &&  d_matrix.scale[2] !== defaults['scaleZ']) {
+				result += "scaleZ(" + parseFloat(d_matrix.scale[1], 10) + ") ";
+				count++;
+			}
+			if (count) {
+				result = "transform:" + result + ";" + browserPrefix + "Transform:" + result;
+				return result
+			}
+		}
+
+
+
+		function updateDropdown(uguru_anim_obj) {
+
+			$scope.animationDropdown = {options:[uguru_anim_obj.obj.name, '+'], selectedIndex: 0, label:'Selected Animation', size:'small'};
+			var elem = document.querySelector('#animation-name-dropdown');
+			uguru_anim_obj.selected_keyframe = uguru_anim_obj.obj.cssRules.item(0);
+			uguru_anim_obj.selected_kf_index = 0;
+			uguru_anim_obj.selected_percent = uguru_anim_obj.selected_keyframe.keyText;
+			uguru_anim_obj.selected_index = 0;
+			uguru_anim_obj.num_keyframes = uguru_anim_obj.obj.cssRules.length;
+			$compile(elem)($scope);
+			$scope.asideTabIndex = 1;
+
+			$timeout(function() {
+				$scope.$apply()
+				LoadingService.showAmbig('Playing in 3', 300, function() {
+					LoadingService.showAmbig('Playing in 2', 300, function() {
+						LoadingService.showAmbig('Playing in 1', 300, function() {
+							$timeout(function() {
+								$scope.player.play();
+							}, 1250)
+						})
+					})
+				});
+			}, 1000);
+		}
 
 		function initView() {
 			browserPrefix = getBrowserPrefix();
-			// $scope.importFromCSSText()
+			var bounceJS = "@-webkit-keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 2.8% { -webkit-transform: matrix3d(0.128, -0.992, 0, 0, 0.992, 0.128, 0, 0, 0, 0, 1, -0.015, 0, 0, 0, 1); transform: matrix3d(0.128, -0.992, 0, 0, 0.992, 0.128, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 5.61% { -webkit-transform: matrix3d(-0.713, 0.701, 0, 0, -0.701, -0.713, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-0.713, 0.701, 0, 0, -0.701, -0.713, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 8.41% { -webkit-transform: matrix3d(0.183, -0.983, 0, 0, 0.983, 0.183, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.183, -0.983, 0, 0, 0.983, 0.183, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 11.11% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 16.62% { -webkit-transform: matrix3d(0.7, -0.714, 0, 0, 0.714, 0.7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.7, -0.714, 0, 0, 0.714, 0.7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 33.33% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 38.84% { -webkit-transform: matrix3d(0.999, -0.032, 0, 0, 0.032, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.999, -0.032, 0, 0, 0.032, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 55.66% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 61.06% { -webkit-transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 77.88% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 83.28% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }"
+			bounceJS += "@keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 2.8% { -webkit-transform: matrix3d(0.128, -0.992, 0, 0, 0.992, 0.128, 0, 0, 0, 0, 1, -0.015, 0, 0, 0, 1); transform: matrix3d(0.128, -0.992, 0, 0, 0.992, 0.128, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 5.61% { -webkit-transform: matrix3d(-0.713, 0.701, 0, 0, -0.701, -0.713, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-0.713, 0.701, 0, 0, -0.701, -0.713, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 8.41% { -webkit-transform: matrix3d(0.183, -0.983, 0, 0, 0.983, 0.183, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.183, -0.983, 0, 0, 0.983, 0.183, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 11.11% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 16.62% { -webkit-transform: matrix3d(0.7, -0.714, 0, 0, 0.714, 0.7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.7, -0.714, 0, 0, 0.714, 0.7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 33.33% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 38.84% { -webkit-transform: matrix3d(0.999, -0.032, 0, 0, 0.032, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.999, -0.032, 0, 0, 0.032, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 55.66% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 61.06% { -webkit-transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 77.88% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 83.28% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }";
+			var animationName = 'bounce-js-complex'
+			$scope.animation = importAndProcessAnimationCSSTextByKF(bounceJS, animationName, updateDropdown);
+
+			// $scope.animation = matrix3DKeyframesToDecomposedKF(bounceJS, 'bounce-js', updateDropdown);
+			// importAndProcessAnimationCSSTextByKF(bounceJS, 'bounce-js');
+
+
 
 			//turn off for now
 			false && loadAllS3Files();
 			importAnimations();
 			importStageHtml();
+			initShortCuts();
+			hardCodeStageDimensions();
+
 			$scope.defaults = getDefaults();
 			applyDefaultProperties($scope.defaults);
 			$scope.actor = document.querySelector('#stage-elem');
 			initAnimationListener($scope.actor);
 
-			$scope.animation = initAnimation('sample-animation-2', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
-			$scope.animationDropdown = {options:[$scope.animation.attr.name, '+'], selectedIndex: 0, label:'temp-animation', size:'small'};
-
+			// $scope.animation = initAnimation('sample-animation-2', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
 			// $scope.resetStageDom();
 			// $scope.addSVGPlaceholder('circle');
 			// $scope.addSVGPlaceholder('square');
@@ -1928,18 +2472,18 @@ angular.module('uguru.util.controllers')
 			}
 		}
 
-		$scope.saveStageHtml = function() {
+		$scope.saveStageHtml = function(ignore_loader) {
 
 			console.log($scope.imports);
-			if ($scope.stage && $scope.stage.time_states) {
+			if ($scope.stage && $scope.stage.stageName) {
 				$scope.stage.stageHtml = document.querySelector('#stage-container').innerHTML;
 				var stageIndex = checkIfStageAlreadyExists($scope.stage, $scope.imports.stages)
 
 				if (stageIndex < 0) {
-					LoadingService.showMsg('Adding ' + $scope.stage.stageName + ' stage to server', 2500);
+					!ignore_loader && LoadingService.showMsg('Adding ' + $scope.stage.stageName + ' stage to server', 2500);
 					$scope.imports.stages.push($scope.stage);
 				} else {
-					LoadingService.showMsg('Updating ' + $scope.stage.stageName + ' animation to server', 2500);
+					!ignore_loader &&  LoadingService.showMsg('Updating ' + $scope.stage.stageName + ' animation to server', 2500);
 					var removedElem = $scope.imports.stages.splice(stageIndex, 1);
 					console.log('removed', removedElem && removedElem.stageName);
 					$scope.imports.stages.push($scope.stage);
@@ -1968,24 +2512,109 @@ angular.module('uguru.util.controllers')
 		}
 
 		function processAnimations(animation_arr) {
+
 			for (var i = 0; i < animation_arr.length; i++) {
 				var indexAnimation = animation_arr[i];
 				if (indexAnimation.owner === 'asif') {
 					indexAnimation.owner = 'samir';
 				}
+
+
 			}
+
 			return animation_arr
+		}
+		var tempStage = {};
+		$scope.importCodepenTemplate = function(url, name) {
+			tempState = {};
+			if (!url || !name) {
+				LoadingService.showMsg('Please add a name to the template so we can save it!', 2000);
+				return;
+			}
+
+
+			$timeout(function() {
+				FileService.getCodepenAssets('html', url + '.html', htmlCallback);
+			})
+			$timeout(function() {
+				FileService.getCodepenAssets('css', url + '.css', cssCallback);
+			})
+
+			$timeout(function() {
+				LoadingService.hide();
+				tempStage.name = name;
+				$scope.stage = initNewStage(tempStage.name, tempStage.html, tempStage.css);
+
+
+				$scope.updatePageDom($scope.stage.stageName, $scope.stage.stageHtml, $scope.stage.stageCss);
+				var stageOptions = [tempStage.name, 'save', 'save and import', 'save and clear'];
+				var stageLabel = 'Active Stage'
+				$scope.stageDropdown = {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:true, size:'small'};
+				// $scope.saveStageHtml(true);
+
+			}, 3000);
+			LoadingService.showAmbig('Importing...', 2500);
+			function cssCallback(resp) {
+				tempStage.css = resp;
+			}
+			function htmlCallback(resp) {
+				tempStage.html = resp;
+			}
 		}
 
 		function saveToMasterS3(filename, url, obj) {
 			console.log('about to save to master with url', url + filename, obj);
-			FileService.postS3JsonFile(JSON.stringify(obj), null, url + filename, function(name, resp) {console.log('resp', resp)});
+			FileService.postS3JsonFile(JSON.stringify(obj), null, url + filename, function(name, resp) {});
 		}
 
 		function importAnimations() {
 			$scope.imports = $localstorage.getObject('imports');
 			var animation_url = 'https://s3.amazonaws.com/uguru-admin/master/animations.json';
 			FileService.getS3JsonFile(null, animation_url, function(name, resp) {$scope.imports.animations = processAnimations(resp);});
+		}
+
+		function defaultStates() {
+			var preAppStates = {
+
+				'templates/splash.html':'SplashController',
+				'templates/elements/layouts/powerups.html': 'PowerupController',
+				'templates/maps.html': 'GMapController',
+				'templates/splash/swiper/splash.hiw.container.html': 'HowItWorksController',
+				'templates/splash/swiper/splash.account.container.html': 'SignupController',
+				'templates/splash/swiper/splash.demographics.container.html': 'DemographicController',
+				'templates/splash/swiper/splash.courses.container.html': 'CoursesController',
+				'templates/splash/swiper/splash.access.container.html': 'AccessController',
+				'templates/splash/layout/university.search.html': 'UniversitySearchController',
+				'templates/splash/layout/splash.sidebar.html': 'SidebarController',
+			}
+			allTemplates = Object.keys(preAppStates);
+			for (var i = 0; i < allTemplates.length; i++) {
+				var html = '<div ng-include="img_base + ' + "'" + allTemplates[i] + "'" + '" ng-controller="' + preAppStates[allTemplates[i]] + '"> </div>'
+				preAppStates[allTemplates[i]] = {controller: preAppStates[allTemplates[i]], owner: 'samir', url: allTemplates[i] + "", html:html};
+			}
+			preAppStates[allTemplates[0]].name = 'Splash';
+			preAppStates[allTemplates[1]].name = 'Splash Powerups';
+			preAppStates[allTemplates[2]].name = 'Splash Maps';
+			preAppStates[allTemplates[3]].name = 'Splash Hiw';
+			preAppStates[allTemplates[4]].name = 'Splash Account';
+			preAppStates[allTemplates[5]].name = 'Splash Demographics';
+			preAppStates[allTemplates[6]].name = 'Splash Courses';
+			preAppStates[allTemplates[7]].name = 'Splash Access';
+			preAppStates[allTemplates[8]].name = 'Splash Search University';
+			preAppStates[allTemplates[9]].name = 'Splash Sidebar';
+			for (var i = 0; i < allTemplates.length; i++) {
+				var template = preAppStates[allTemplates[i]];
+				$scope.imports.stages.push(initNewStage(template.name, template.html, ''));
+			}
+			// $scope.saveStageHtml();
+		}
+
+		function processStages(stages) {
+			for (var i = 0; i < stages.length; i++) {
+				var indexStage = stages[i];
+				indexStage.owner = 'samir';
+			}
+
 		}
 
 		function importStageHtml() {
@@ -1995,7 +2624,7 @@ angular.module('uguru.util.controllers')
 				$localstorage.setObject('imports', $scope.imports);
 			}
 			var animation_url = 'https://s3.amazonaws.com/uguru-admin/master/stages.json';
-			FileService.getS3JsonFile(null, animation_url, function(name, resp) {console.log('import stage resp', resp); $scope.imports.stages = resp;});
+			FileService.getS3JsonFile(null, animation_url, function(name, resp) { $scope.imports.stages = resp; processStages($scope.imports.stages);});
 		}
 
 
@@ -2003,6 +2632,8 @@ angular.module('uguru.util.controllers')
 
 		injectStyleSheet();
 
+		//start core functions
+		//core #1
 		function importAnimationFromRawCssText(css_text, name) {
 			var style = document.createElement("style");
 			style.setAttribute('id', name);
@@ -2022,77 +2653,369 @@ angular.module('uguru.util.controllers')
 						var indexKeyFrame = cssRulesToClone.item(j);
 						newAnim.appendRule(indexKeyFrame.cssText, j);
 					}
-					// console.log(animToClone, Object.keys(cssRulesToClone));
 				}
+			}
+			if (name) {
+				newAnim.name = name;
 			}
 			return newAnim;
 		}
 
+		//core 2
+		function importAndProcessAnimationCSSTextByKF(css_text, name, cb) {
+			var jsAnimCssObj = importAnimationFromRawCssText(css_text, name);
+			var uguruAnimObj = initAnimationFromAnimObj(jsAnimCssObj, {name: jsAnimCssObj.name});
+
+			var all_properties = Object.keys(uguruAnimObj);
+			var transformPropertyVariants = ['transform', 'WebkitTransform', 'MozTransform',  'msTransform' , 'OTransform'];
+			var mod_arr = [];
+			var multiKFStyle = {};
+			console.log('\n\n\n\n\nKeyframes before\n-----\n\n', css_text);
+			for (var i = 0; i < all_properties.length; i++) {
+				var propertyKey = all_properties[i];
+				for (var j = 0; j < uguruAnimObj.obj.cssRules.length; j++) {
+					var indexRule = uguruAnimObj.obj.cssRules.item(j);
+					var keyText = indexRule.keyText;
+					var cssText = indexRule.cssText;
+					var processedCSSText = "";
+					multiKFStyle[keyText] = indexRule.style;
+					//case: keytext
+					for (var i = 0; i < indexRule.style.length; i++)  {
+						var indexStyleProperty = indexRule.style.item(i);
+						var dMatrix;
+						if (transformPropertyVariants.indexOf(indexStyleProperty) > -1) {
+							var transformString = indexRule.style[indexStyleProperty];
+							var matrixTransform = transformString;
+							if (indexStyleProperty.indexOf('matrix3d') === -1) {
+								var m = new WebKitCSSMatrix(matrixTransform);
+								matrixTransform = "matrix3d(" + [m.m11, m.m12, m.m13, m.m14, m.m21, m.m22, m.m23, m.m24, m.m31, m.m32, m.m33, m.m34, m.m41, m.m42, m.m43, m.m44].join(", ") + ")";
+							}
+
+							dMatrix = dynamics.initMatrixFromTransform(matrixTransform);
+							var decomposedCSSText = getDMatrixString(dMatrix);
+							if (decomposedCSSText) {
+								processedCSSText += decomposedCSSText;
+							}
+							// console.log(indexStyleProperty, indexRule.style[indexStyleProperty], );
+						} else {
+							processedCSSText += ' ' + (indexStyleProperty + ":" + indexRule.style[indexStyleProperty] + ";");
+						}
+					}
+
+					mod_arr.push({key: keyText, css: processedCSSText, d_matrix: dMatrix});
+					uguruAnimObj.obj.deleteRule(keyText);
+				}
+			}
+			mod_arr.sort(function(val_a, val_b) {
+				if (val_a.key.split('%,').length > 1) {
+					return 1000
+				}
+				val_a_int = parseInt(val_a.key.replace('%'))
+				val_b_int = parseInt(val_b.key.replace('%'))
+				return val_b_int - val_a_int;
+			}).reverse();
+			for (var i = 0; i < mod_arr.length; i++) {
+				uguruAnimObj.obj.appendRule(mod_arr[i].key + " {" + mod_arr[i].css + " }", i);
+			}
+			var styleKeys = Object.keys(multiKFStyle);
+			for (var i = 0; i < styleKeys.length; i++) {
+				var indexKFStyle = styleKeys[i];
+				var indexKFValue = multiKFStyle[indexKFStyle];
+				var numPercentages = indexKFStyle.split('%,');
+				if (numPercentages.length > 1) {
+					var parsedPercentages = indexKFStyle.split(',');
+					for (var j = 0; j < parsedPercentages.length; j++) {
+						var indexPercent = parsedPercentages[j].trim();
+						var intOfIndexPercent = parseInt(indexPercent.replace('%'));
+						var kfIndex = findKFByPercentage(uguruAnimObj.obj.cssRules, intOfIndexPercent);
+						var kf = uguruAnimObj.obj.cssRules.item(kfIndex);
+						if (kf) {
+							var resultAddOnCSS = "";
+							for (var k = 0; k < kf.style.length; k++) {
+								var indexStyle = kf.style[k];
+								var indexValue = kf.style[indexStyle];
+								resultAddOnCSS += indexStyle + ":" +  indexValue + '; ';
+								if (indexStyle.indexOf('animation') > -1) {
+									console.log(browserPrefix)
+									resultAddOnCSS += ('-' +browserPrefix + '-' + indexStyle + ":" +  indexValue + '; ');
+								}
+							}
+
+							for (var k = 0; k < indexKFValue.length; k++) {
+								var indexStyle = indexKFValue[k];
+								var indexValue = indexKFValue[indexStyle];
+								resultAddOnCSS += indexStyle + ":" +  indexValue + '; ';
+								if (indexStyle.indexOf('animation') > -1) {
+									resultAddOnCSS += ('-' +browserPrefix + '-' + indexStyle + ":" +  indexValue + '; ');
+								}
+							}
+							uguruAnimObj.obj.deleteRule(indexPercent);
+							uguruAnimObj.obj.appendRule(indexPercent + " { " + resultAddOnCSS  + " }"  ,kfIndex);
+						} else {
+							console.log('error!');
+						}
+					}
+
+					var originalKF = uguruAnimObj.obj.cssRules.item(i);
+					var originalKFKeyText = originalKF.keyText;
+					uguruAnimObj.obj.deleteRule(originalKFKeyText);
+				}
+
+			}
+
+			function findKFByPercentage(css_rules, percent_val) {
+				var percentValStr = percent_val + '%';
+				for (var i = 0; i < css_rules.length; i++) {
+					var indexCSSRule = css_rules.item(i);
+					if (indexCSSRule && indexCSSRule.keyText === percentValStr) {
+						return i;
+					}
+				}
+			}
+
+			refreshTransformPropertyObjFromAnim(uguruAnimObj.obj);
+			console.log('\n\n\n\n\nKeyframes after\n-----\n\n', uguruAnimObj.obj.cssText);
+			cb && cb(uguruAnimObj);
+			return uguruAnimObj;
+
+		}
+
+		function refreshTransformPropertyObjFromAnim(anim) {
+			anim.properties = {}
+			for (var i = 0; i < anim.cssRules.length; i++) {
+				var indexKFRule = anim.cssRules.item(i);
+				var keyText = indexKFRule.keyText;
+				var transformKFObj = initTransformObjFromKF(indexKFRule);
+				anim.properties[keyText] = transformKFObj;
+			}
+		}
+
+		function initTransformObjFromKF(kf) {
+			var transformObj = new transformPropertiesObj();
+			for (var i = 0; i < kf.style.length; i++) {
+				var indexStyle = kf.style[i];
+				var indexValue = kf.style[indexStyle];
+				if (indexStyle.indexOf('transform') > -1) {
+					var separateTransformValues = indexValue.split(' ');
+					for (var j = 0; j < separateTransformValues.length; j++) {
+						var indexTransformPropSplit = separateTransformValues[j].replace(')', '').split('(');
+						var transformPropertyName = indexTransformPropSplit[0];
+						var transformPropertyValue = indexTransformPropSplit[1];
+						if (!(transformPropertyName in transformObj)) {
+							var mappedIndexStyle = transformObj.propertyMappings[transformPropertyName];
+							transformObj[mappedIndexStyle] = transformPropertyValue;
+							transformObj['modified'][mappedIndexStyle] = transformPropertyValue;
+							if (!mappedIndexStyle) {
+								console.log('could not find', transformPropertyName, 'in transform obj');
+							}
+						} else {
+							transformObj[indexStyle] = indexValue;
+							transformObj['modified'][indexStyle] = indexValue;
+						}
+					}
+				} else {
+					if (!(indexStyle in transformObj)) {
+						var mappedIndexStyle = transformObj.propertyMappings[indexStyle];
+						transformObj[mappedIndexStyle] = indexValue;
+						transformObj['modified'][mappedIndexStyle] = indexValue;
+						if (!mappedIndexStyle) {
+							console.log('could not find', indexStyle, 'in transform obj');
+						}
+					} else {
+						transformObj[indexStyle] = indexValue;
+						transformObj['modified'][indexStyle] = indexValue;
+					}
+				}
+			}
+			return transformObj;
+		}
+
+		function matrix3DKeyframesToDecomposedKF(css_text, name, cb) {
+			var jsAnimCssObj = importAnimationFromRawCssText(css_text, name);
+			var uguruAnimObj = initAnimationFromAnimObj(jsAnimCssObj, {name: jsAnimCssObj.name});
+			// var decomposedUguruAnimObj =
+			var decomposedUguruAnimObj = decomposeMatrix3DKeyFrameArr(uguruAnimObj);
+			cb && cb(decomposedUguruAnimObj);
+			return uguruAnimObj;
+
+
+			function decomposeMatrix3DKeyFrameArr(uguru_anim_obj) {
+				var all_properties = Object.keys(uguru_anim_obj);
+				var mod_arr = [];
+				for (var i = 0; i < all_properties.length; i++) {
+					var propertyKey = all_properties[i];
+					for (var j = 0; j < uguru_anim_obj.obj.cssRules.length; j++) {
+						var indexRule = uguru_anim_obj.obj.cssRules.item(j);
+						var keyText = indexRule.keyText;
+						if (indexRule.keyText === propertyKey) {
+							var matrixTransform = indexRule.style.transform || indexRule.style.WebkitTransform || indexRule.style.MozTransform || indexRule.style.msTransform || indexRule.style.OTransform;
+							if (matrixTransform) {
+								dMatrix = dynamics.initMatrixFromTransform(matrixTransform);
+								var decomposedCSSText = getDMatrixString(dMatrix);
+								uguru_anim_obj.obj.deleteRule(keyText);
+								mod_arr.push({key: keyText, css: decomposedCSSText});
+							}
+						}
+					}
+				}
+				for (var i = 0; i < mod_arr.length; i++) {
+					uguru_anim_obj.obj.appendRule(mod_arr[i].key + " {" + mod_arr[i].css + " }", 0);
+				}
+				return uguru_anim_obj;
+			}
+
+		}
+
+
+		$scope.asideTabIndex = 2;
+		$scope.importLayoutIndex = 3;
+		$scope.showChildrenOfParentElemOnClick = function() {
+			$scope.stage.selectComponentMode = true;
+			var allShapes = ['path', 'line', 'polygon', 'polyline', 'g', 'rect', 'ellipse', 'circle', 'tspan', 'text'];
+			allChildActorElems = $scope.actor.querySelectorAll('*');
+			$scope.stage.components = [];
+			for (var i = 0; i < allChildActorElems.length; i++) {
+				$scope.stage.components.push({selector: '[draggable-clone-' + i + ']'});
+			}
+			$timeout(function() {
+				var allContainers = document.querySelectorAll('.cloned-animatable-elem-container')
+				for (var i = 0; i < allChildActorElems.length; i++) {
+					var indexElem = allChildActorElems[i];
+					var clonedNode = indexElem.cloneNode(true);
+					// clonedNode.setAttribute('draggable-clone', null);
+					// clonedNode.setAttribute('draggable-clone-' + i, null);
+					var indexContainer = allContainers[i];
+					$scope.stage.components[i].type = indexElem.nodeName;
+					$scope.stage.components[i].orig_elem = indexElem;
+					$scope.stage.components[i]._class = indexElem.getAttribute('class');
+					if (allShapes.indexOf(clonedNode.nodeName) > - 1) {
+						var parentSVG = findParentSVG(indexElem);
+						var clonedParentSVG = parentSVG.cloneNode(true);
+						clonedParentSVG.innerHTML = "";
+						clonedParentSVG.style.minWidth = '100px';
+						clonedParentSVG.style.minHeight = '100px';
+						clonedParentSVG.className += " absolute flex-wrap-center full-xy"
+						clonedParentSVG.appendChild(clonedNode);
+						indexContainer.appendChild(clonedParentSVG);
+						secondClonedParent = clonedParentSVG.cloneNode(true);
+						indexContainer.appendChild(secondClonedParent);
+					} else {
+						clonedNode.style.minWidth = '100px';
+						clonedNode.style.minHeight = '100px';
+						clonedNode.className += " absolute flex-wrap-center full-xy"
+						indexContainer.appendChild(clonedNode);
+						secondClonedNode = clonedNode.cloneNode(true);
+						indexContainer.appendChild(secondClonedNode);
+
+					}
+				}
+			}, 100)
+
+			$timeout(function() {
+				$scope.$apply();
+			})
+		}
+
+		function findParentSVG(elem) {
+			return (elem.nodeName === 'svg' && elem) || findParentSVG(elem.parentNode);
+		}
+
+		$scope.asideTabIndexwatcher = $scope.$watch('asideTabIndex', function(new_val, old_val) {
+			switch (new_val) {
+
+            case 2:
+              //init map
+             	updateStageElemCloneAside();
+             	renderAsideAnimatableElems();
+
+
+         }
+		});
+
+		function renderAsideAnimatableElems() {
+			if (!$scope.stage) {
+				return;
+			}
+			if (!$scope.stage.anim_elements) {
+				$scope.stage.anim_elements = [];
+			}
+			var allShapes = ['path', 'line', 'polygon', 'polyline', 'g', 'rect', 'ellipse', 'circle', 'tspan', 'text'];
+			var allAnimElemItemContainers = document.querySelectorAll('.aside-anim-element-item');
+			for (var i = 0; i < $scope.stage.anim_elements.length; i++) {
+				var indexAnimElem = $scope.stage.anim_elements[i];
+				if(indexAnimElem.selector) {
+					console.log('searching for...', indexAnimElem.selector);
+					var stageContainer = document.querySelector('#stage-container');
+					var dragAttribute = indexAnimElem.selector.replace('[', '').replace('', ']') + "";
+					var elem = stageContainer.querySelector(indexAnimElem.selector)
+					if (elem) {
+						var clonedElem = elem.cloneNode(true);
+						clonedElem.removeAttribute('draggable');
+						clonedElem.removeAttribute(dragAttribute);
+						clonedElem.style.maxHeight = "50px;"
+						clonedElem.style.maxWidth = "50px;"
+						clonedElem.style.minHeight = "50px;"
+						clonedElem.style.minWidth = "50px;"
+						clonedElem.className += ""
+						allAnimElemItemContainers[i].innerHTML = "";
+						if (allShapes.indexOf(clonedElem.nodeName) > -1) {
+							var parentSVG = findParentSVG(elem);
+							var clonedParentSVG = parentSVG.cloneNode(true);
+							clonedParentSVG.innerHTML = "";
+							clonedParentSVG.appendChild(clonedElem);
+							allAnimElemItemContainers[i].appendChild(clonedParentSVG);
+						} else {
+							allAnimElemItemContainers[i].appendChild(clonedElem);
+						}
 
 
 
-		$scope.asideTabIndex = 0;
-		$scope.importLayoutIndex = 0;
-		$scope.importFromCSSText = function(css_text, name, class_text) {
-			// var css_text = "@keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); } 2.92% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -135.218, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -135.218, 0, 0, 1); } 3.37% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -114.871, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -114.871, 0, 0, 1); } 3.47% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -110.596, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -110.596, 0, 0, 1); } 4.58% { -webkit-transform: matrix3d(2.061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -68.65, 0, 0, 1); transform: matrix3d(2.061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -68.65, 0, 0, 1); } 5.69% { -webkit-transform: matrix3d(2.321, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -36.551, 0, 0, 1); transform: matrix3d(2.321, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -36.551, 0, 0, 1); } 5.76% { -webkit-transform: matrix3d(2.32, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -34.768, 0, 0, 1); transform: matrix3d(2.32, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -34.768, 0, 0, 1); } 7.41% { -webkit-transform: matrix3d(1.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -3.804, 0, 0, 1); transform: matrix3d(1.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -3.804, 0, 0, 1); } 7.51% { -webkit-transform: matrix3d(1.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2.454, 0, 0, 1); transform: matrix3d(1.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2.454, 0, 0, 1); } 7.88% { -webkit-transform: matrix3d(1.771, 0, 0, 0, 0, 1.062, 0, 0, 0, 0, 1, 0, 2.008, 0, 0, 1); transform: matrix3d(1.771, 0, 0, 0, 0, 1.062, 0, 0, 0, 0, 1, 0, 2.008, 0, 0, 1); } 8.68% { -webkit-transform: matrix3d(1.408, 0, 0, 0, 0, 1.181, 0, 0, 0, 0, 1, 0, 9.646, 0, 0, 1); transform: matrix3d(1.408, 0, 0, 0, 0, 1.181, 0, 0, 0, 0, 1, 0, 9.646, 0, 0, 1); } 10.03% { -webkit-transform: matrix3d(0.982, 0, 0, 0, 0, 1.333, 0, 0, 0, 0, 1, 0, 16.853, 0, 0, 1); transform: matrix3d(0.982, 0, 0, 0, 0, 1.333, 0, 0, 0, 0, 1, 0, 16.853, 0, 0, 1); } 10.85% { -webkit-transform: matrix3d(0.822, 0, 0, 0, 0, 1.398, 0, 0, 0, 0, 1, 0, 18.613, 0, 0, 1); transform: matrix3d(0.822, 0, 0, 0, 0, 1.398, 0, 0, 0, 0, 1, 0, 18.613, 0, 0, 1); } 11.53% { -webkit-transform: matrix3d(0.732, 0, 0, 0, 0, 1.439, 0, 0, 0, 0, 1, 0, 18.992, 0, 0, 1); transform: matrix3d(0.732, 0, 0, 0, 0, 1.439, 0, 0, 0, 0, 1, 0, 18.992, 0, 0, 1); } 12.22% { -webkit-transform: matrix3d(0.672, 0, 0, 0, 0, 1.469, 0, 0, 0, 0, 1, 0, 18.618, 0, 0, 1); transform: matrix3d(0.672, 0, 0, 0, 0, 1.469, 0, 0, 0, 0, 1, 0, 18.618, 0, 0, 1); } 14.18% { -webkit-transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 15.054, 0, 0, 1); transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 15.054, 0, 0, 1); } 14.37% { -webkit-transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 14.604, 0, 0, 1); transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 14.604, 0, 0, 1); } 19.23% { -webkit-transform: matrix3d(0.737, 0, 0, 0, 0, 1.371, 0, 0, 0, 0, 1, 0, 3.855, 0, 0, 1); transform: matrix3d(0.737, 0, 0, 0, 0, 1.371, 0, 0, 0, 0, 1, 0, 3.855, 0, 0, 1); } 20.01% { -webkit-transform: matrix3d(0.763, 0, 0, 0, 0, 1.338, 0, 0, 0, 0, 1, 0, 2.724, 0, 0, 1); transform: matrix3d(0.763, 0, 0, 0, 0, 1.338, 0, 0, 0, 0, 1, 0, 2.724, 0, 0, 1); } 23.05% { -webkit-transform: matrix3d(0.856, 0, 0, 0, 0, 1.211, 0, 0, 0, 0, 1, 0, 0.036, 0, 0, 1); transform: matrix3d(0.856, 0, 0, 0, 0, 1.211, 0, 0, 0, 0, 1, 0, 0.036, 0, 0, 1); } 25.75% { -webkit-transform: matrix3d(0.923, 0, 0, 0, 0, 1.114, 0, 0, 0, 0, 1, 0, -0.709, 0, 0, 1); transform: matrix3d(0.923, 0, 0, 0, 0, 1.114, 0, 0, 0, 0, 1, 0, -0.709, 0, 0, 1); } 26.94% { -webkit-transform: matrix3d(0.947, 0, 0, 0, 0, 1.078, 0, 0, 0, 0, 1, 0, -0.76, 0, 0, 1); transform: matrix3d(0.947, 0, 0, 0, 0, 1.078, 0, 0, 0, 0, 1, 0, -0.76, 0, 0, 1); } 31.58% { -webkit-transform: matrix3d(1.009, 0, 0, 0, 0, 0.987, 0, 0, 0, 0, 1, 0, -0.406, 0, 0, 1); transform: matrix3d(1.009, 0, 0, 0, 0, 0.987, 0, 0, 0, 0, 1, 0, -0.406, 0, 0, 1); } 31.73% { -webkit-transform: matrix3d(1.01, 0, 0, 0, 0, 0.986, 0, 0, 0, 0, 1, 0, -0.392, 0, 0, 1); transform: matrix3d(1.01, 0, 0, 0, 0, 0.986, 0, 0, 0, 0, 1, 0, -0.392, 0, 0, 1); } 37.32% { -webkit-transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.03, 0, 0, 1); transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.03, 0, 0, 1); } 38.15% { -webkit-transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.008, 0, 0, 1); transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.008, 0, 0, 1); } 42.35% { -webkit-transform: matrix3d(1.022, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0.03, 0, 0, 1); transform: matrix3d(1.022, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0.03, 0, 0, 1); } 48.9% { -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, 0.009, 0, 0, 1); transform: matrix3d(1.007, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, 0.009, 0, 0, 1); } 57.77% { -webkit-transform: matrix3d(0.998, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); transform: matrix3d(0.998, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); } 60.47% { -webkit-transform: matrix3d(0.998, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); transform: matrix3d(0.998, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); } 69.36% { -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.999, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 83.61% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } ";
-			var js_anim_obj = importAnimationFromRawCssText(css_text, name);
-			var final_obj = initAnimationFromAnimObj(js_anim_obj);
-			$scope.animationDict.importClassText = class_text;
-			$scope.animationDict.importTextarea = css_text;
-			$scope.animationDict.importInput = name;
-			$scope.animationDropdown.options[0] = name;
-			$scope.animation = final_obj;
-			return final_obj;
+
+
+					}
+				}
+
+			}
 		}
 
 
 
+		$scope.importFromCSSText = function(css_text, name, class_text) {
+
+			// var css_text = "@keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); } 2.92% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -135.218, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -135.218, 0, 0, 1); } 3.37% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -114.871, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -114.871, 0, 0, 1); } 3.47% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -110.596, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -110.596, 0, 0, 1); } 4.58% { -webkit-transform: matrix3d(2.061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -68.65, 0, 0, 1); transform: matrix3d(2.061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -68.65, 0, 0, 1); } 5.69% { -webkit-transform: matrix3d(2.321, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -36.551, 0, 0, 1); transform: matrix3d(2.321, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -36.551, 0, 0, 1); } 5.76% { -webkit-transform: matrix3d(2.32, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -34.768, 0, 0, 1); transform: matrix3d(2.32, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -34.768, 0, 0, 1); } 7.41% { -webkit-transform: matrix3d(1.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -3.804, 0, 0, 1); transform: matrix3d(1.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -3.804, 0, 0, 1); } 7.51% { -webkit-transform: matrix3d(1.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2.454, 0, 0, 1); transform: matrix3d(1.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2.454, 0, 0, 1); } 7.88% { -webkit-transform: matrix3d(1.771, 0, 0, 0, 0, 1.062, 0, 0, 0, 0, 1, 0, 2.008, 0, 0, 1); transform: matrix3d(1.771, 0, 0, 0, 0, 1.062, 0, 0, 0, 0, 1, 0, 2.008, 0, 0, 1); } 8.68% { -webkit-transform: matrix3d(1.408, 0, 0, 0, 0, 1.181, 0, 0, 0, 0, 1, 0, 9.646, 0, 0, 1); transform: matrix3d(1.408, 0, 0, 0, 0, 1.181, 0, 0, 0, 0, 1, 0, 9.646, 0, 0, 1); } 10.03% { -webkit-transform: matrix3d(0.982, 0, 0, 0, 0, 1.333, 0, 0, 0, 0, 1, 0, 16.853, 0, 0, 1); transform: matrix3d(0.982, 0, 0, 0, 0, 1.333, 0, 0, 0, 0, 1, 0, 16.853, 0, 0, 1); } 10.85% { -webkit-transform: matrix3d(0.822, 0, 0, 0, 0, 1.398, 0, 0, 0, 0, 1, 0, 18.613, 0, 0, 1); transform: matrix3d(0.822, 0, 0, 0, 0, 1.398, 0, 0, 0, 0, 1, 0, 18.613, 0, 0, 1); } 11.53% { -webkit-transform: matrix3d(0.732, 0, 0, 0, 0, 1.439, 0, 0, 0, 0, 1, 0, 18.992, 0, 0, 1); transform: matrix3d(0.732, 0, 0, 0, 0, 1.439, 0, 0, 0, 0, 1, 0, 18.992, 0, 0, 1); } 12.22% { -webkit-transform: matrix3d(0.672, 0, 0, 0, 0, 1.469, 0, 0, 0, 0, 1, 0, 18.618, 0, 0, 1); transform: matrix3d(0.672, 0, 0, 0, 0, 1.469, 0, 0, 0, 0, 1, 0, 18.618, 0, 0, 1); } 14.18% { -webkit-transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 15.054, 0, 0, 1); transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 15.054, 0, 0, 1); } 14.37% { -webkit-transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 14.604, 0, 0, 1); transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 14.604, 0, 0, 1); } 19.23% { -webkit-transform: matrix3d(0.737, 0, 0, 0, 0, 1.371, 0, 0, 0, 0, 1, 0, 3.855, 0, 0, 1); transform: matrix3d(0.737, 0, 0, 0, 0, 1.371, 0, 0, 0, 0, 1, 0, 3.855, 0, 0, 1); } 20.01% { -webkit-transform: matrix3d(0.763, 0, 0, 0, 0, 1.338, 0, 0, 0, 0, 1, 0, 2.724, 0, 0, 1); transform: matrix3d(0.763, 0, 0, 0, 0, 1.338, 0, 0, 0, 0, 1, 0, 2.724, 0, 0, 1); } 23.05% { -webkit-transform: matrix3d(0.856, 0, 0, 0, 0, 1.211, 0, 0, 0, 0, 1, 0, 0.036, 0, 0, 1); transform: matrix3d(0.856, 0, 0, 0, 0, 1.211, 0, 0, 0, 0, 1, 0, 0.036, 0, 0, 1); } 25.75% { -webkit-transform: matrix3d(0.923, 0, 0, 0, 0, 1.114, 0, 0, 0, 0, 1, 0, -0.709, 0, 0, 1); transform: matrix3d(0.923, 0, 0, 0, 0, 1.114, 0, 0, 0, 0, 1, 0, -0.709, 0, 0, 1); } 26.94% { -webkit-transform: matrix3d(0.947, 0, 0, 0, 0, 1.078, 0, 0, 0, 0, 1, 0, -0.76, 0, 0, 1); transform: matrix3d(0.947, 0, 0, 0, 0, 1.078, 0, 0, 0, 0, 1, 0, -0.76, 0, 0, 1); } 31.58% { -webkit-transform: matrix3d(1.009, 0, 0, 0, 0, 0.987, 0, 0, 0, 0, 1, 0, -0.406, 0, 0, 1); transform: matrix3d(1.009, 0, 0, 0, 0, 0.987, 0, 0, 0, 0, 1, 0, -0.406, 0, 0, 1); } 31.73% { -webkit-transform: matrix3d(1.01, 0, 0, 0, 0, 0.986, 0, 0, 0, 0, 1, 0, -0.392, 0, 0, 1); transform: matrix3d(1.01, 0, 0, 0, 0, 0.986, 0, 0, 0, 0, 1, 0, -0.392, 0, 0, 1); } 37.32% { -webkit-transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.03, 0, 0, 1); transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.03, 0, 0, 1); } 38.15% { -webkit-transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.008, 0, 0, 1); transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.008, 0, 0, 1); } 42.35% { -webkit-transform: matrix3d(1.022, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0.03, 0, 0, 1); transform: matrix3d(1.022, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0.03, 0, 0, 1); } 48.9% { -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, 0.009, 0, 0, 1); transform: matrix3d(1.007, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, 0.009, 0, 0, 1); } 57.77% { -webkit-transform: matrix3d(0.998, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); transform: matrix3d(0.998, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); } 60.47% { -webkit-transform: matrix3d(0.998, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); transform: matrix3d(0.998, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); } 69.36% { -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.999, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 83.61% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } ";
+			// var js_anim_obj = importAnimationFromRawCssText(css_text, name);
+
+			// var final_obj = initAnimationFromAnimObj(js_anim_obj);
+			$scope.animation = importAndProcessAnimationCSSTextByKF(css_text, name, updateDropdown);
+
+			$scope.animationDict.importClassText = class_text;
+			$scope.animationDict.importTextarea = css_text;
+			$scope.animationDict.importInput = name;
+
+			$scope.layout.index = 0;
+			tadaToolElement("#animation-name-dropdown");
+			return $scope.animation;
+		}
+
+
+		 function tadaToolElement(selector) {
+			var focusedElement = document.querySelector(selector);
+			focusedElement.classList.add('animated', 'tada');
+			$timeout(function() {
+				focusedElement.classList.add('animated', 'tada');
+			}, 1000)
+		}
+
 		$timeout(function() {
 
-			$timeout(function() {
-				// angular.element(document.querySelector('#import-button')).triggerHandler('click');
-
-
-				// $scope.animation = $scope.importFromCSSText($scope.animationDict.importTextarea, $scope.animationDict.importInput);
-				// importAnimationFromRawCssText(initAnimationFromAnimObj, css_text);
-				// var arr = getAllKeyFrameAnimations();
-				// for (var i = 0; i < arr.length ; i++) {
-				// 	console.log(arr[i].name);
-				// }
-				// var tempAnim = arr[0]
-				// $scope.importFromCSSText(tempAnim.cssText, tempAnim.name);
-				// console.log(arr.length);
-				// var randomKeyFrameAnimation = arr[0];
-				// randomKeyFrameAnimation.name = "samir"
-
-				// var style = document.createElement("style");
-				// style.setAttribute('id', 'testtesttest');
-
-				// style.innerHTML = randomKeyFrameAnimation.cssText + '\n\n' + arr[1].cssText + '\n\n' + arr[2].cssText;
-				// document.getElementsByTagName("head")[0].appendChild(style);
-				// for (var i = 0; i < document.styleSheets.length; i++) {
-				// 	var indexStyleSheet = document.styleSheets[i];
-				// 	if (indexStyleSheet.ownerNode && indexStyleSheet.ownerNode.id === "testtesttest") {
-				// 		console.log(indexStyleSheet)
-				// 		var animToClone = indexStyleSheet.cssRules[0];
-				// 		var lastSheet = document.styleSheets[document.styleSheets.length - 1];
-				// 		var indexOfRuleInSheet = lastSheet.insertRule("@-" + browserPrefix + "-keyframes " + animToClone.name + " { } ");
-				// 		var newAnim = lastSheet.cssRules[indexOfRuleInSheet];
-				// 		var cssRulesToClone = animToClone.cssRules;
-				// 		for (var j = 0;j < cssRulesToClone.length; j++) {
-				// 			var indexKeyFrame = cssRulesToClone.item(j);
-				// 			newAnim.appendRule(indexKeyFrame.cssText, j);
-				// 		}
-				// 		console.log(newAnim);
-				// 		// console.log(animToClone, Object.keys(cssRulesToClone));
-
-				// 	}
-				// }
-
-			});
 			initAll();
+			$timeout(function() {
+				// exportExternalCSSKeyFrameFiles(['animation'])
+				// angular.element(document.querySelector('#import-button')).triggerHandler('click');
+				// $scope.importCodepenTemplate('http://codepen.io/teamuguru/pen/29ce58caa079980bb9375afa30efcb57');
+			}, 5000)
 
-		}, 2000)
+		}, 500)
 
 	}
 

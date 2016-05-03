@@ -1,9 +1,9 @@
 <ion-view class='uguru-view demographic-view full-xy' ion-scroll='false'>
 	<!--  ng-controller='IntroController' cache-view='!LOCAL' -->
 	<!-- welcome container -->
-	<div id="powerup-gpa-welcome-container" class="fixed top-0 left-0 full-xy z-index--1000 opacity-0" class-on-activate="fadeIn:anim, z-index-1000:keep, null:inject#powerup-gpa-welcome|activate" class-on-activate-delay="1500" ng-include="img_base + 'templates/dev/gpa/welcome.gpa.html'"></div>
+	<div id="powerup-gpa-welcome-container" class="fixed top-0 left-0 full-xy z-index--1000 opacity-0" class-on-activate="fadeIn:anim, z-index-1000:keep, null:inject#powerup-gpa-welcome|activate" class-on-activate-delay="2000" ng-include="img_base + 'templates/dev/gpa/welcome.gpa.html'"></div>
 	
-	<section id="powerup-gpa-demographic" class="onboarding bg-white powerup-demographic" class-on-activate="null:inject#powerup-gpa-demographic .powerup-back|activate, null:inject#powerup-gpa-demographic .tour-guru|activate, null:inject#powerup-gpa-demographic h1|activate, null:inject#powerup-gpa-demographic .demo-grid li|activate">
+	<section id="powerup-gpa-demographic" class="onboarding bg-white powerup-demographic" class-on-activate="null:inject#powerup-gpa-demographic .powerup-back|activate, null:inject#powerup-gpa-demographic .tour-guru|activate, null:inject#powerup-gpa-demographic h1|activate, null:inject#powerup-gpa-demographic .demo-grid li|activate" class-on-clear="fadeOut:animOut" class-on-clear-delay="3000">
 		<a class="powerup-back absolute top-0 left-0 flex-center p15xy semibold txt-20 opacity-0" class-on-activate="u-bounceIn-subtle:anim" class-on-activate-delay="3000">
 			<span>
 				<svg viewBox="0 0 100 100">
@@ -12,8 +12,8 @@
 			</span>
 			<span>Back</span>
 		</a>
-		<div class="demo-header" class="flex-center-wrap text-center">
-			<div class="tour-guru p30y relative flex-center opacity-0" class-on-activate="on-enter:anim, active:keep, null:inject#powerup-gpa-demographic .tour-guru .relative|activate">
+		<div class="demo-header full-x flex-center-wrap txt-center">
+			<div class="tour-guru p30y relative flex-center opacity-0" class-on-activate="on-enter:anim, active:keep, null:inject#powerup-gpa-welcome .tour-guru|activate, null:inject#powerup-gpa-demographic .tour-guru .relative|activate">
 				<div class="null" class-on-activate="translate" class-on-activate-delay="1500" translate-on-class="translate" translate-to-elem="#powerup-gpa-welcome-guru">
 					<svg viewBox="0 0 150 250" class="relative z-index-10 opacity-0" class-on-activate="u-slideInDown:anim" class-on-activate-delay="1500">
 					    <g fill-rule="evenodd" fill="none">
@@ -75,7 +75,7 @@
 			</ul> -->
 			<ul class="list list-item-half relative">
 				<li class="demo-hs opacity-0" class-on-activate="u-bounceInUp-subtle:anim" class-on-activate-delay="250">
-					<a class-on-click="active, null:inject#powerup-gpa-demographic .demo-grid|clear, null:inject#powerup-gpa-demographic h1|clear, null:inject#powerup-gpa-demographic .tour-guru .coach-goes g|clear, null:inject#powerup-gpa-demographic .tour-guru div|activate, null:inject#powerup-gpa-welcome-container|activate">
+					<a class-on-click="active, null:inject#powerup-gpa-demographic|clear, null:inject#powerup-gpa-demographic .demo-grid|clear, null:inject#powerup-gpa-demographic h1|clear, null:inject#powerup-gpa-demographic .tour-guru .coach-goes g|clear, null:inject#powerup-gpa-demographic .tour-guru div|activate, null:inject#powerup-gpa-welcome-container|activate">
 						<!-- translate-on-click translate-to-elem="#powerup-demo-click-pos" class-on-click="demographic-z-index-1000:unique" -->
 						<svg viewBox="0 0 100 100">
 							<rect fill="none" x="0" y="0" width="100" height="100"></rect>
@@ -91,7 +91,7 @@
 					</a>
 				</li>
 				<li class="demo-college opacity-0" class-on-activate="u-bounceInUp-subtle:anim" class-on-activate-delay="500">
-					<a class-on-click="active, null:inject#powerup-gpa-demographic .demo-grid|clear, null:inject#powerup-gpa-demographic h1|clear, null:inject#powerup-gpa-demographic .tour-guru .coach-goes g|clear, null:inject#powerup-gpa-demographic .tour-guru div|activate, null:inject#powerup-gpa-welcome-container|activate">
+					<a class-on-click="active, null:inject#powerup-gpa-demographic|clear, null:inject#powerup-gpa-demographic .demo-grid|clear, null:inject#powerup-gpa-demographic h1|clear, null:inject#powerup-gpa-demographic .tour-guru .coach-goes g|clear, null:inject#powerup-gpa-demographic .tour-guru div|activate, null:inject#powerup-gpa-welcome-container|activate">
 						<svg viewBox="0 0 100 100">
 							<rect fill="none" x="0" y="0" width="100" height="100"></rect>
 						</svg>
@@ -106,7 +106,7 @@
 					</a>
 				</li>
 				<li class="demo-alum opacity-0" class-on-activate="u-bounceInUp-subtle:anim" class-on-activate-delay="750">
-					<a class-on-click="active, null:inject#powerup-gpa-demographic .demo-grid|clear, null:inject#powerup-gpa-demographic h1|clear, null:inject#powerup-gpa-demographic .tour-guru .coach-goes g|clear, null:inject#powerup-gpa-demographic .tour-guru div|activate, null:inject#powerup-gpa-welcome-container|activate">
+					<a class-on-click="active, null:inject#powerup-gpa-demographic|clear, null:inject#powerup-gpa-demographic .demo-grid|clear, null:inject#powerup-gpa-demographic h1|clear, null:inject#powerup-gpa-demographic .tour-guru .coach-goes g|clear, null:inject#powerup-gpa-demographic .tour-guru div|activate, null:inject#powerup-gpa-welcome-container|activate">
 						<svg viewBox="0 0 100 100">
 							<rect fill="none" x="0" y="0" width="100" height="100"></rect>
 						</svg>
@@ -121,7 +121,7 @@
 					</a>
 				</li>
 				<li class="demo-parent opacity-0" class-on-activate="u-bounceInUp-subtle:anim" class-on-activate-delay="1000">
-					<a class-on-click="active, null:inject#powerup-gpa-demographic .demo-grid|clear, null:inject#powerup-gpa-demographic h1|clear, null:inject#powerup-gpa-demographic .tour-guru .coach-goes g|clear, null:inject#powerup-gpa-demographic .tour-guru div|activate, null:inject#powerup-gpa-welcome-container|activate">
+					<a class-on-click="active, null:inject#powerup-gpa-demographic|clear, null:inject#powerup-gpa-demographic .demo-grid|clear, null:inject#powerup-gpa-demographic h1|clear, null:inject#powerup-gpa-demographic .tour-guru .coach-goes g|clear, null:inject#powerup-gpa-demographic .tour-guru div|activate, null:inject#powerup-gpa-welcome-container|activate">
 						<svg viewBox="0 0 100 100">
 							<rect fill="none" x="0" y="0" width="100" height="100"></rect>
 						</svg>
