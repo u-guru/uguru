@@ -8,6 +8,13 @@
 }
 
 /* ---------- KEYFRAMES */
+#keyframe-pointer {
+  width: 5px;
+  height: 36px;
+  top: -21px;
+  margin-left: 5px;
+}
+
 #stage-container {
   position: relative !important;
 }
