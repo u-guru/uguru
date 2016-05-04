@@ -279,9 +279,10 @@ function GPAController($scope, ModalService, GPAService, $localstorage,
 	// * Helper Functions  #
 	// ********************#
 
-	var initDefaultValue = function(force=false)
+	var initDefaultValue = function(force)
 	{
-
+		if (force === undefined)
+			force = false
 		if (!$scope.user.defaultCourseUnits || force){
 			$scope.user.defaultCourseUnits = 4;
 			console.log("Set default units to :",$scope.user.defaultCourseUnits)

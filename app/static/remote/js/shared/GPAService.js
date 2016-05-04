@@ -1,5 +1,4 @@
-angular
-.module('sharedServices')
+angular.module('sharedServices')
 .factory("GPAService", [
   GPAService
   ]);
@@ -63,9 +62,9 @@ function GPAService() {
     return courses
 
   }
-  function init(userCourses,isCutOffGrade = false) {
+  function init(userCourses) {
     console.log("User : ",userCourses)
-    console.log("isCutOffGrade : ",isCutOffGrade)
+    // console.log("isCutOffGrade : ",isCutOffGrade)
 
     semesterNames = []
 
