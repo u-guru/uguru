@@ -839,7 +839,7 @@ angular.module('uguru.util.controllers')
 		$scope.setActiveKeyFrame = function(value) {
 
 			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX', 'rotate3DAngle': 'rotate'};
-			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'deg', 'skewY': 'deg', 'rotate3DZ':'deg', 'rotate3DY': 'deg', 'rotate3DX': 'deg', 'rotate3DAngle': 'deg'};
+			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'deg', 'skewY': 'deg', 'rotate3DZ':'rad', 'rotate3DY': 'rad', 'rotate3DX': 'rad', 'rotate3DAngle': 'rad'};
 
 			var oldValue = $scope.animation.selected_index;
 
@@ -932,10 +932,12 @@ angular.module('uguru.util.controllers')
 				var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 				var cssToChange = {transform: [], etc: {}};
 				var newPropertiesToModify = Object.keys($scope.animation.selected_keyframe.modified);
-
+				console.log(newPropertiesToModify);
 				for(var i = 0; i < newPropertiesToModify.length; i++) {
 					var indexPropertyName = newPropertiesToModify[i];
-
+					if (indexPropertyName.indexOf('transform') > -1) {
+						continue;
+					}
 					var propertyValue = $scope.animation.selected_keyframe[indexPropertyName]
 
 					if (indexPropertyName in propertyDictCssMap) {
@@ -1248,13 +1250,13 @@ angular.module('uguru.util.controllers')
 							csstext += 'skewX(' + dance_obj.skewY   + 'deg) '
 							break;
 						case "rotate3DX":
-							csstext += 'rotateX(' + dance_obj.rotate3DX  + 'deg) '
+							csstext += 'rotateX(' + dance_obj.rotate3DX  + 'rad) '
 							break;
 						case "rotate3DY":
-							csstext += 'rotateY(' + dance_obj.rotate3DY  + 'deg) '
+							csstext += 'rotateY(' + dance_obj.rotate3DY  + 'rad) '
 							break;
 						case "rotate3DZ":
-							csstext += 'rotateZ(' + dance_obj.rotate3DZ  + 'deg) '
+							csstext += 'rotateZ(' + dance_obj.rotate3DZ  + 'rad) '
 							break;
 						case "rotate3DAngle":
 							csstext += 'rotate3d(' +(dance_obj.rotate3DX || 0) + ", "+ (dance_obj.rotate3DY||0)+", "+(dance_obj.rotate3DZ ||0)+", "+dance_obj.rotate3DAngle+"deg) "
@@ -1866,6 +1868,7 @@ angular.module('uguru.util.controllers')
 				var css_text = transformObjToCssText(transformObj, property);
 				console.log(css_text);
 				anim.obj.appendRule(percentage + '{' +  css_text + '}', keyframe_percent);
+				console.log(anim.obj.cssText);
 			} else {
 				var css_text = transformObjToCssText(transformObj, property);
 				var css_text = " ";
@@ -1878,7 +1881,7 @@ angular.module('uguru.util.controllers')
 			// $scope.animation.obj.appendRule('0% {transform: translate(10px, 10px);}', 1);
 			// $scope.animation.obj.appendRule('0% {transform: translate(10px, 10px);}', 1);
 			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX', 'rotate3DAngle': 'rotate'};
-			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'deg', 'skewY': 'deg', 'rotate3DZ':'deg', 'rotate3DY': 'deg', 'rotate3DX': 'deg', 'rotate3DAngle': 'deg'};
+			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'deg', 'skewY': 'deg', 'rotate3DZ':'rad', 'rotate3DY': 'rad', 'rotate3DX': 'rad', 'rotate3DAngle': 'rad'};
 			var transformProperties = Object.keys(propertyDictCssMap);
 			var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'transformOrigin', 'transformOrigin', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 			var cssToChange = {transform: {}, etc: {}};
@@ -1887,7 +1890,9 @@ angular.module('uguru.util.controllers')
 			for(var i = 0; i < newPropertiesToModify.length; i++) {
 				var indexPropertyName = newPropertiesToModify[i];
 
-				console.log(indexPropertyName);
+				if (indexPropertyName.indexOf('transform') > -1) {
+					continue;
+				}
 				var propertyValue = $scope.animation.selected_keyframe[indexPropertyName]
 
 				if (indexPropertyName in propertyDictCssMap) {
@@ -2877,8 +2882,8 @@ angular.module('uguru.util.controllers')
 						var transformPropertyValue = indexTransformPropSplit[1];
 						if (!(transformPropertyName in transformObj)) {
 							var mappedIndexStyle = transformObj.propertyMappings[transformPropertyName];
-							transformObj[mappedIndexStyle] = transformPropertyValue;
-							transformObj['modified'][mappedIndexStyle] = transformPropertyValue;
+							transformObj[mappedIndexStyle] = transformPropertyValue.replace('rad', '');
+							transformObj['modified'][mappedIndexStyle] = transformPropertyValue.replace('rad', '');
 							if (!mappedIndexStyle) {
 								console.log('could not find', transformPropertyName, 'in transform obj');
 							}
