@@ -101,46 +101,43 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="bg-campus-50p full-xy ugrid-2 p15-grid flex-stretch relative" ng-if='importLayoutIndex === 2'>
-                        <div class='flex-wrap-center flex-stretch full-xy absolute full-xy top-0 left-0' ng-init="goToEditPageDom()">
-                            <a class='bg-charcoal absolute top-0 left-0 flex-center svg-48-36 svg-white svg-stroke-6 z-index-1000' ng-click='resetStageDom();' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                    <div class="bg-campus-50p full-xy relative" ng-if='importLayoutIndex === 2'>
+                        <div class='full-xy' ng-init="goToEditPageDom()">
                             <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
-                            <div>
-                                <h1 class='txt-7'> HTML Importer</h1>
-                            </div>
-                            <div class="full-xy ugrid-2 p15-grid relative" style='height:75%;'>
-                                <div class="flex-wrap-center full-x flex-stretch" style='height:75%; width:50% !important;'>
-                                    <h1> HTML Text</h1>
-                                    <textarea  id='import-textarea' class='block full-xy radius-2 txt-1 p10y-p15x' placeholder="importable css to cut and post goes here" ng-model="pageDom.stageHtml"></textarea>
+                            <div class="full-xy ugrid-2 flex-start p15-grid relative">
+                                <div>
+                                    <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>Stage Name</h1>
+                                    <input class='flex-center-vertical full-x p15x radius-2 txt-18 height-48' style='padding-top: 0; padding-bottom: 0;' ng-model='pageDom.stageName' placeholder="" />
                                 </div>
-                                <div class='flex-wrap-center flex-stretch' style='width:50% !important; '>
-                                    <div class='full-x'>
-                                        <h1> Stage Name </h1>
-                                        <input class='full-x p20xy' ng-model='pageDom.
-                                        stageName'/>
-                                    </div>
-                                    <div class='full-x'>
-                                        <h1> Element to Animate </h1>
-                                        <input class='full-x p20xy' ng-model='pageDom.
-                                        animElemSelector'/>
-                                    </div>
-                                    <div style='height:75%' class='full-x flex-wrap-center flex-stretch'>
-                                        <h1 class='full-x' style='max-height:10%;'> Extra css </h1>
-                                        <textarea placeholder=".sample-css \n{\n display: block; \n}\n" class='full-x p10xy txt-4' style='height:90%;' ng-model='pageDom.stageCss'> </textarea>
-                                    </div>
+                                <div>
+                                    <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>Element to Animate</h1>
+                                    <input class='flex-center-vertical full-x p15x radius-2 txt-18 height-48' style='padding-top: 0; padding-bottom: 0;' ng-model='pageDom.animElemSelector' placeholder="" />
+                                </div>
+                                <div style="height: calc(100% - 79px - 101px);">
+                                    <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>HTML</h1>
+                                    <textarea id='import-textarea' class='block full-x radius-2 txt-18 p10y-p15x' style="height: calc(100% - 38px);" placeholder="" ng-model="pageDom.stageHtml"></textarea>
+                                </div>
+                                <div style="height: calc(100% - 79px - 101px);">
+                                    <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>CSS</h1>
+                                    <textarea placeholder=".sample-css { display: block; }" class='block full-x radius-2 txt-18 p10y-p15x' style="height: calc(100% - 38px);"  ng-model='pageDom.stageCss'> </textarea>
+                                </div>
+                                <div>
+                                    <button class='bg-moxie radius-2' ng-click='updatePageDom(pageDom.stageHtml, pageDom.animElemSelector)'>Update</button>
+                                </div>
+                                <div>
+                                    <button class='bg-crimson radius-2' ng-click='resetStageDom();'>Reset Stage</button>
                                 </div>
                             </div>
-                            <button class='full-x absolute bottom-0 left-0' ng-click='updatePageDom(pageDom.stageHtml, pageDom.animElemSelector)'> Update </button>
                         </div>
                     </div>
                     <div class="bg-campus-50p full-xy overflow-auto" ng-init="animationHTMLTemplateSearchText" ng-if='importLayoutIndex === 3'>
                         <div class="ugrid-2 p15-grid">
                             <div class="flex-wrap">
-                                <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>1. Import from Codepen</h1>
+                                <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>Import from Codepen</h1>
                                 <input id="import-codepen-input" class='flex-center-vertical full-x p15x radius-2 txt-18 height-48' style='padding-top: 0; padding-bottom: 0;' ng-model="importCodepenUrl" placeholder="http://codepen.io/teamuguru/pen/d75c38eadaa88ef1972842c4e85c9f0d.html" type='search'/>
                             </div>
                             <div class="flex-wrap">
-                                <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>2. Set stage name</h1>
+                                <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>Set stage name</h1>
                                 <input class='flex-center-vertical p15x radius-2-left txt-18 height-48 width-75p' style='padding-top: 0; padding-bottom: 0;' ng-model="importStageName" placeholder="stage name"/>
                                 <div class="width-25p">
                                     <button id="import-codepen-button" class='height-48 bg-moxie radius-2-right' ng-click='importCodepenTemplate(importCodepenUrl, importStageName)'> Import </button>
