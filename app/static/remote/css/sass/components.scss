@@ -1885,6 +1885,9 @@ fieldset {
 	width: 100%;
 	max-width: 400px;
 	min-height: 30px;
+	&.full-x {
+		max-width: none;
+	}
 	* {
 		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 		@include placeholder {

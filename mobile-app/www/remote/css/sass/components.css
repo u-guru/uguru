@@ -2414,6 +2414,10 @@ fieldset {
   min-height: 30px;
 }
 
+fieldset.full-x {
+  max-width: none;
+}
+
 fieldset * {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
