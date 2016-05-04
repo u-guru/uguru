@@ -25,7 +25,7 @@
 					<h2 ng-if="overall.semesterArr.length">{{slogan()}}</h2>
 				</div>
 				<nav id="semester-slider" class="tab-bar slide">
-					<div class="opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="2500" ng-init="start = 0; isMax=false;currentIndex = -1; emptyCounts= 0">
+					<div class="opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="2500" ng-init="start = 0; isMax=false; currentIndex = -1; emptyCounts= 0" ng-if="overall.semesterArr.length">
 						<a name='arrowL' class="nav" ng-if='start != 0' ng-click='preList(4)' >
 							<svg viewBox="0 0 100 100">
 								<path d="M68,86 L32,50 L68,14"></path>
@@ -48,7 +48,7 @@
 			</div>
 			<div id="home-courses">
 				<div id="home-add" ng-if="!overall.semesterArr.length">
-					<button>
+					<button thr-click="openModal('course');verifyInputs();">
 						<svg viewBox="0 0 100 100">
 						    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 						</svg>
