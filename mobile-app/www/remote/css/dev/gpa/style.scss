@@ -17,14 +17,33 @@
 				background: $gpa!important;
 			}
 			#top-logo {
-		    	width: calc(100% - 212px + 64px)!important;
+		    	width: calc(100% - 212px + 64px - 15px)!important;
 			}
+		}
+		#top-settings {
+			margin-left: 15px;
 		}
 		#top-menu-links {
 			background: mix($gpa, white, 80%);
 			ul {
 				li {
 					position: relative;
+					a {
+						span {
+							width: 100%;
+						}
+						&.active {
+							svg {
+								circle {
+									stroke: $gpa;
+									fill: $gpa;
+								}
+								path {
+									stroke: white;
+								}
+							}
+						}
+					}
 					input {
 						@include flex;
 						@include flex-center;
@@ -35,10 +54,15 @@
 					    height: 36px;
 						border-radius: 2px;
 						font-size: 20px;
+						font-weight: 600;
 						text-align: center;
 						&::-webkit-inner-spin-button, &::-webkit-outer-spin-button { 
  							@include appearance;
   							margin: 0;
+						}
+						&.long {
+							width: 72px;
+							font-size: 18px;
 						}
 					}
 					a {
@@ -296,9 +320,19 @@
 		background: white;
 		color: $gpa;
 		font-weight: 900;
-		text-transform: uppercase;
+		text-transform: lowercase;
+		border-radius: 2px;
+		&:hover, &:focus {
+			background: $gpa;
+			color: white;
+		}
+		&:active {
+			background: rgba(white, .5);
+			color: white;
+		}
 	}
 	.onboarding-search-container {
+		background: mix($gpa, white, 70%);
 		ul {
 			@include flex;
 			@include flex-wrap;
@@ -311,10 +345,26 @@
 			li {
 				padding: 7.5px;
 				width: 50%;
+				.course-card {
+					h2 {
+						color: $gpa;
+					}
+					h1 {
+						color: lighten($slate, 15%);
+					}
+					.course-card-hover, .course-card-border {
+						background: $gpa;
+					}
+				}
 			}
 		}
 	}
 	.onboarding-search {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding: 0 15px;
 		&::before {
 			display: none;
 		}
@@ -376,9 +426,19 @@
 			font-size: 24px;
 			font-weight: 600;
 		}
-		input:checked + label {
-			background: rgba(white,.5);
-			color: white;
+		input {
+			&:hover, &:focus {
+				+ label {
+					background: rgba(white,.5);
+					color: white;
+				}
+			}
+			&:checked {
+				+ label {
+					background: $gpa;
+					color: white;
+				}
+			}
 		}
 	}
 }
@@ -386,28 +446,29 @@
 	padding: 0 15px;
 	li {
 		@include flex;
-		height: 64px;
+		@include flex-center-vertical;
+		@include prefix(justify-content, space-between, webkit);
 		width: 100%;
 		padding: 15px;
 		margin-bottom: 15px;
 		background: rgba(lighten($slate, 15%),.75);
 		border-radius: 2px;
-		> * {
-			width: 50%;
-		}
 		h1 {
+			font-size: 28px;
 			font-weight: 600;
-			line-height: 34px;
-			text-transform: uppercase;
+			text-transform: lowercase;
 		}
 		input {
-			background: transparent;
+			background: white;
+			border-radius: 2px;
+			padding: 10px 15px;
 			font-size: 24px;
 			font-weight: 900;
-			text-align: right;
-			color: white;
+			text-align: center;
+			width: 128px;
+			color: lighten($slate, 15%);
 			@include placeholder {
-				color: rgba(white,.5);
+				color: rgba(lighten($slate, 15%),.5);
 			}
 			&::-webkit-inner-spin-button, &::-webkit-outer-spin-button { 
 				@include appearance;

@@ -23,7 +23,11 @@
 }
 
 #gpa-home #top-bar div:nth-child(2) #top-logo {
-  width: calc(100% - 212px + 64px) !important;
+  width: calc(100% - 212px + 64px - 15px) !important;
+}
+
+#gpa-home #top-bar #top-settings {
+  margin-left: 15px;
 }
 
 #gpa-home #top-bar #top-menu-links {
@@ -32,6 +36,19 @@
 
 #gpa-home #top-bar #top-menu-links ul li {
   position: relative;
+}
+
+#gpa-home #top-bar #top-menu-links ul li a span {
+  width: 100%;
+}
+
+#gpa-home #top-bar #top-menu-links ul li a.active svg circle {
+  stroke: #40acb8;
+  fill: #40acb8;
+}
+
+#gpa-home #top-bar #top-menu-links ul li a.active svg path {
+  stroke: white;
 }
 
 #gpa-home #top-bar #top-menu-links ul li input {
@@ -57,6 +74,7 @@
   height: 36px;
   border-radius: 2px;
   font-size: 20px;
+  font-weight: 600;
   text-align: center;
 }
 
@@ -65,6 +83,11 @@
   -moz-appearance: none;
   appearance: none;
   margin: 0;
+}
+
+#gpa-home #top-bar #top-menu-links ul li input.long {
+  width: 72px;
+  font-size: 18px;
 }
 
 #gpa-home #top-bar #top-menu-links ul li a:hover, #gpa-home #top-bar #top-menu-links ul li a:active, #gpa-home #top-bar #top-menu-links ul li a:focus {
@@ -459,7 +482,22 @@
   background: white;
   color: #40acb8;
   font-weight: 900;
-  text-transform: uppercase;
+  text-transform: lowercase;
+  border-radius: 2px;
+}
+
+.add-modal button:hover, .add-modal button:focus {
+  background: #40acb8;
+  color: white;
+}
+
+.add-modal button:active {
+  background: rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+.add-modal .onboarding-search-container {
+  background: #79c5cd;
 }
 
 .add-modal .onboarding-search-container ul {
@@ -486,6 +524,26 @@
 .add-modal .onboarding-search-container ul li {
   padding: 7.5px;
   width: 50%;
+}
+
+.add-modal .onboarding-search-container ul li .course-card h2 {
+  color: #40acb8;
+}
+
+.add-modal .onboarding-search-container ul li .course-card h1 {
+  color: #637074;
+}
+
+.add-modal .onboarding-search-container ul li .course-card .course-card-hover, .add-modal .onboarding-search-container ul li .course-card .course-card-border {
+  background: #40acb8;
+}
+
+.add-modal .onboarding-search {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 15px;
 }
 
 .add-modal .onboarding-search::before {
@@ -572,8 +630,13 @@
   font-weight: 600;
 }
 
-#grade-options li input:checked + label {
+#grade-options li input:hover + label, #grade-options li input:focus + label {
   background: rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+#grade-options li input:checked + label {
+  background: #40acb8;
   color: white;
 }
 
@@ -589,7 +652,12 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
-  height: 64px;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
   width: 100%;
   padding: 15px;
   margin-bottom: 15px;
@@ -597,38 +665,37 @@
   border-radius: 2px;
 }
 
-.course-input-form li > * {
-  width: 50%;
-}
-
 .course-input-form li h1 {
+  font-size: 28px;
   font-weight: 600;
-  line-height: 34px;
-  text-transform: uppercase;
+  text-transform: lowercase;
 }
 
 .course-input-form li input {
-  background: transparent;
+  background: white;
+  border-radius: 2px;
+  padding: 10px 15px;
   font-size: 24px;
   font-weight: 900;
-  text-align: right;
-  color: white;
+  text-align: center;
+  width: 128px;
+  color: #637074;
 }
 
 .course-input-form li input::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(99, 112, 116, 0.5);
 }
 
 .course-input-form li input:-moz-placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(99, 112, 116, 0.5);
 }
 
 .course-input-form li input::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(99, 112, 116, 0.5);
 }
 
 .course-input-form li input:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(99, 112, 116, 0.5);
 }
 
 .course-input-form li input::-webkit-inner-spin-button, .course-input-form li input::-webkit-outer-spin-button {
