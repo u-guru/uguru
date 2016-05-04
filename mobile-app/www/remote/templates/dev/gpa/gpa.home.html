@@ -26,7 +26,7 @@
 				</div>
 				<nav id="semester-slider" class="tab-bar slide">
 					<div class="opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="2500" ng-init="start = 0; isMax=false; currentIndex = -1; emptyCounts= 0" ng-if="overall.semesterArr.length">
-						<a name='arrowL' class="nav" ng-if='start != 0' ng-click='preList(4)' >
+						<a name='arrowL' class="nav semester-slider-nav" ng-if='start != 0' ng-click='preList(4)' >
 							<svg viewBox="0 0 100 100">
 								<path d="M68,86 L32,50 L68,14"></path>
 							</svg>
@@ -37,7 +37,7 @@
 						<a ng-click="getSemester($index+start)" class-on-click="semester-slider-active:unique" ng-repeat='semester in overall.semesterArr  | limitTo:4:start track by $index'>
 							<span>{{semester.semester}}<br/>{{semester.year}}</span>
 						</a>
-						<a name='arrowR' class="nav" ng-if='overall.semesterArr.length > 4 && overall.semesterArr.length && !isMax' ng-click='nextList(4)'>
+						<a name='arrowR' class="nav semester-slider-nav" ng-if='overall.semesterArr.length > 4 && overall.semesterArr.length && !isMax' ng-click='nextList(4)'>
 							<svg class="nav" viewBox="0 0 100 100">
 								<path d="M32,86 L68,50 L32,14"></path>
 							</svg>
