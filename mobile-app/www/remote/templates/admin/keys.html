@@ -122,7 +122,7 @@
                                     <textarea placeholder=".sample-css { display: block; }" class='block full-x radius-2 txt-18 p10y-p15x' style="height: calc(100% - 38px);"  ng-model='pageDom.stageCss'> </textarea>
                                 </div>
                                 <div>
-                                    <button class='bg-moxie radius-2' ng-click='updatePageDom(pageDom.stageHtml, pageDom.animElemSelector)'>Update</button>
+                                    <button class='bg-moxie radius-2' ng-click='updatePageDom(pageDom.stageName, pageDom.stageHtml, pageDom.stageCss, pageDom.animElemSelector)'>Update</button>
                                 </div>
                                 <div>
                                     <button class='bg-crimson radius-2' ng-click='resetStageDom();'>Reset Stage</button>
@@ -575,7 +575,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="flex-center-vertical-space-between bg-slate" style="margin-top: -15px;">
                 <div class='flex-center-vertical height-36 width-128 relative'>
                     <h2 ng-show='!player.status' class="opacity-50 weight-900 txt-36 absolute top-0 left-0 m15left">{{animation.selected_percent}}</h2>
@@ -618,7 +618,7 @@
                     </li>
                 </ul>
             </div>
-            
+
             <div class="anim-timeline" ng-if="false">
             	<ul class="anim-label">
             		<li>t</li>
