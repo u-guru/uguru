@@ -9,6 +9,12 @@
 }
 
 /* ---------- KEYFRAMES */
+#keyframe-pointer {
+	width: 5px;
+	height: 36px;
+	top: -21px;
+	margin-left: 5px;
+}
 #stage-container {
 	position: relative!important;
 	.fixed {
@@ -2751,13 +2757,6 @@
 	}
 
 	// content sections
-	.tab-container {
-		width: 100%;
-		.tab-bar {
-			margin: 0 auto!important;
-			background: transparent!important;
-		}
-	}
 	.admin-small-header {
 		@include flex;
 		@include flex-center;

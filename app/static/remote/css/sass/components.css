@@ -11656,6 +11656,15 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
 }
 
 /* ---------- TAB BARS */
+.tab-container {
+  width: 100%;
+}
+
+.tab-container .tab-bar {
+  margin: 0 auto !important;
+  background: transparent !important;
+}
+
 .tab-bar {
   background: #2B3234;
 }
@@ -18208,7 +18217,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
 
 @media screen and (min-height: 900px) {
   .projector-slide {
-    max-width: 1200px;
+    max-width: 1080px;
     max-height: 720px;
   }
 }
