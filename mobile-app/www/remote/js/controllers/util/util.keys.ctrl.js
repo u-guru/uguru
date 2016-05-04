@@ -830,6 +830,7 @@ angular.module('uguru.util.controllers')
 				} else {
 					var desiredPercentage =  animPropertyPercentages[currentKFIndex - 1];
 				}
+
 				$scope.setActiveKeyFrame(desiredPercentage);
 			}
 		}
@@ -842,7 +843,7 @@ angular.module('uguru.util.controllers')
 			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'rad', 'skewY': 'rad', 'rotate3DZ':'rad', 'rotate3DY': 'rad', 'rotate3DX': 'rad', 'rotate3DAngle': 'rad'};
 
 			var oldValue = $scope.animation.selected_index;
-
+			console.log($scope.animation.properties);
 			var newPercentValue = value;
 			$scope.animation.selected_kf_index = value;
 			$scope.animation.selected_index = value;
@@ -1887,9 +1888,7 @@ angular.module('uguru.util.controllers')
 			for(var i = 0; i < newPropertiesToModify.length; i++) {
 				var indexPropertyName = newPropertiesToModify[i];
 
-				if (indexPropertyName.indexOf('transform') > -1) {
-					continue;
-				}
+
 				var propertyValue = $scope.animation.selected_keyframe[indexPropertyName]
 
 				if (indexPropertyName in propertyDictCssMap) {
@@ -2872,7 +2871,7 @@ angular.module('uguru.util.controllers')
 			for (var i = 0; i < kf.style.length; i++) {
 				var indexStyle = kf.style[i];
 				var indexValue = kf.style[indexStyle];
-				if (indexStyle.indexOf('transform:') > -1) {
+				if (indexStyle.indexOf('transform') > -1) {
 					var separateTransformValues = indexValue.split(' ');
 					for (var j = 0; j < separateTransformValues.length; j++) {
 						var indexTransformPropSplit = separateTransformValues[j].replace(')', '').split('(');
@@ -2881,8 +2880,8 @@ angular.module('uguru.util.controllers')
 						var transformPropertyValue = indexTransformPropSplit[1];
 						if (!(transformPropertyName in transformObj)) {
 							var mappedIndexStyle = transformObj.propertyMappings[transformPropertyName];
-							transformObj[mappedIndexStyle] = transformPropertyValue.replace('rad', '').replace('%', '');
-							transformObj['modified'][mappedIndexStyle] = transformPropertyValue.replace('rad', '').replace('%', '');
+							transformObj[mappedIndexStyle] = transformPropertyValue;
+							transformObj['modified'][mappedIndexStyle] = transformPropertyValue;
 							if (!mappedIndexStyle) {
 								console.log('could not find', transformPropertyName, 'in transform obj');
 							}
