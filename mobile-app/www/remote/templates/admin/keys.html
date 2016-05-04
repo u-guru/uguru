@@ -610,8 +610,8 @@
                 <ul class="flex-space-between full-x relative">
                     <li class='flex-center-vertical' style="height: 45px;">
                         <div class="relative full-y">
-                            <h2 ng-show='!player.status' class="opacity-50 weight-900 txt-36 absolute bottom-0 left-0">{{animation.selected_percent}}</h2>
-                            <h2 ng-show='player.status' class="weight-900 txt-azure txt-36 absolute bottom-0 left-0">{{timer.time}}s</h2>
+                            <h2 ng-show='!player.status' style='margin-bottom:35px;' class="opacity-50 weight-900 txt-36 absolute bottom-0 left-0">{{animation.selected_percent}}</h2>
+                            <h2 ng-show='player.status' style='margin-bottom:35px;' class="weight-900 txt-azure txt-36 absolute bottom-0 left-0">{{timer.time}}s</h2>
                         </div>
                     </li>
                     <li class="flex-center-vertical">
@@ -627,8 +627,11 @@
                     </li>
                 </ul>
                 <div class="range-container small full-x">
-                    <div>
-                        <input ng-mouseup="setActiveKeyFrame(animation.selected_kf_index)"  class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animation.attr.kf_intervals}}" list="numbers"  ng-model="animation.selected_kf_index"> </input>
+                    <div id='keyframe-bar-container' class='relative p10xy' ng-mouseup="setActiveKeyFrameFromPointer($event)">
+                        <div style='left:{{animation.selected_percent}}' draggable draggable-x-only draggable-ignore-style class='absolute bg-white' id='keyframe-pointer'>&nbsp;</div>
+                        <div id='keyframe-bar' class='high-z-index bg-azure full-x top-0' style='height:10px;'>
+                        </div>
+                        <!-- <input ng-mouseup="setActiveKeyFrame(animation.selected_kf_index)"  class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animation.attr.kf_intervals}}" list="numbers"  ng-model="animation.selected_kf_index"> </input> -->
                         <span>{{animation.kf_count}}%</span>
                     </div>
                     <progress class="white-round full-x" max="{{animation.attr.durationVal}}" value="{{timer.time}}"></progress>
@@ -799,7 +802,7 @@
             <div class="overflow-auto no-scrollbar absolute left-0 full-x" style="height: calc(100% - 128px); top:64px;" ng-hide='asideTabIndex !== 1'>
                 <ul class="p15-grid">
                     <li class="flex-center-vertical-wrap-space-between">
-                        <h2 class="txt-18 semibold m15right">translateX &nbsp;&nbsp;
+                        <h2 class="txt-18 semibold m15right">translateX {{animation.selected_keyframe.translateX}} &nbsp;&nbsp;
                             <a ng-click='clearProperty(animation.selected_keyframe, "translateX")'>
                             <i class='icon ion-trash-a'></i></a>
                         </h2>

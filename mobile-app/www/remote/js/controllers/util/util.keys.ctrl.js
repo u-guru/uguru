@@ -70,12 +70,25 @@ angular.module('uguru.util.controllers')
 				description:'Adds new time state',
 				keyCode: 78,
 				func: function() { $scope.root.triggers.runSequence(['click:#add-time-state-button:0']) }
+			},
+			{
+				letter: 'left-arrow',
+				description: 'shifts keyframe one to the left (if possible)',
+				keyCode: 188,
+				func: toggleSelectedKFToLeft
+			},
+			{
+				letter: 'right-arrow',
+				description: 'shifts keyframe one to the right (if possible)',
+				keyCode: 190,
+				func: toggleSelectedKFToRight
 			}
 		]
 
 		$scope.player = initAnimationPlayer();
 		$scope.timer = initAnimationTimer()
 		$scope.defaults = {};
+		$scope.keyframeBar = {pointerVal: 0};
 		$scope.animationDict = {importTextarea:'', importInput: ''};
 		$scope.imports = {animations: [], stages:[]};
 		$scope.layout = {index: 0};
@@ -784,7 +797,7 @@ angular.module('uguru.util.controllers')
 
 		$scope.updateNumIntervals = function(num_intervals) {
 			defaults.KF_INTERVALS = num_intervals;
-			$scope.setActiveKeyFrame(0);
+			$scope.setActiveKeyFrame(0 + '%');
 		}
 
 		function setAnimationDirectionFunc(option, index) {
@@ -799,6 +812,30 @@ angular.module('uguru.util.controllers')
 		}
 
 
+		function toggleSelectedKFToRight() {
+			var animPropertyPercentages = Object.keys($scope.animation.properties);
+			var currentKFIndex = animPropertyPercentages.indexOf($scope.animation.selected_percent);
+			if (currentKFIndex > -1 && currentKFIndex < animPropertyPercentages.length) {
+				var desiredPercentage =  animPropertyPercentages[currentKFIndex + 1];
+				$scope.setActiveKeyFrame(desiredPercentage);
+			}
+		}
+
+		function toggleSelectedKFToLeft() {
+			var animPropertyPercentages = Object.keys($scope.animation.properties);
+			var currentKFIndex = animPropertyPercentages.indexOf($scope.animation.selected_percent);
+			if (currentKFIndex > -1 && currentKFIndex < animPropertyPercentages.length) {
+				if (currentKFIndex === 0) {
+					var desiredPercentage = animPropertyPercentages[0];
+				} else {
+					var desiredPercentage =  animPropertyPercentages[currentKFIndex - 1];
+				}
+				$scope.setActiveKeyFrame(desiredPercentage);
+			}
+		}
+
+
+
 		$scope.setActiveKeyFrame = function(value) {
 
 			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX', 'rotate3DAngle': 'rotate'};
@@ -806,14 +843,19 @@ angular.module('uguru.util.controllers')
 
 			var oldValue = $scope.animation.selected_index;
 
-			var newValue = Math.floor(parseInt(value) * (100/defaults.KF_INTERVALS));
-
-			var newPercentValue = getNthSortedKeyText($scope.animation.obj, newValue);
-			console.log(newPercentValue);
+			var newPercentValue = value;
 			$scope.animation.selected_kf_index = value;
-			$scope.animation.selected_index = newValue;
-			$scope.animation.selected_percent = newPercentValue + '%';
-			$scope.animation.flex_selected_index = newValue;
+			$scope.animation.selected_index = value;
+			$scope.animation.selected_percent = value;
+			$scope.animation.flex_selected_index = value;
+			var newValue = value;
+			$scope.animation.selected_keyframe = $scope.animation.properties[value];
+
+			var propertiesSorted = Object.keys($scope.animation.properties).sort(function(a, b) {
+				return parseFloat(b.replace('%', '')) - parseFloat(a.replace('%', ''))
+			}).reverse();
+			var valueIndex = propertiesSorted.indexOf(value);
+
 
 			//going backwards
 			//for each property, check the last one it was edited, apply it to that
@@ -826,15 +868,15 @@ angular.module('uguru.util.controllers')
 				var cssToChange = {transform: {}, etc: {}};
 				for (var i = 0; i < currentPropertiesModified.length - 1; i++) {
 					var indexPropertyName = currentPropertiesModified[i]
-					console.log('traversing all keyframes from t=0 to t=', newValue - 1, 'to search for the last ', indexPropertyName, 'edit, if it exists');
-					for (var j = 0; j < newValue - 1; j++) {
+					console.log('traversing all keyframes from t=0 to t=', valueIndex - 1, 'to search for the last ', indexPropertyName, 'edit, if it exists');
+					for (var j = 0; j < valueIndex - 1; j++) {
 						console.log('checking t=', j, 'for traces of', indexPropertyName);
-						var previousIndexPercentValue = getNthSortedKeyText($scope.animation.obj, j);
+						var previousIndexPercentValue = propertiesSorted[j];
 						if (!previousIndexPercentValue) {
 							continue;
 						}
-						var previousIndexProperty = $scope.animation.properties[previousIndexPercentValue + '%'];
-						console.log(previousIndexProperty)
+						var previousIndexProperty = $scope.animation.properties[previousIndexPercentValue];
+
 						var previousPropertyModifiedKeys = Object.keys(previousIndexProperty.modified);
 						if (previousPropertyModifiedKeys.indexOf(indexPropertyName) > -1) {
 							if (indexPropertyName in propertyDictCssMap) {
@@ -879,8 +921,8 @@ angular.module('uguru.util.controllers')
 			//for each property, check the last one it was edited, apply it to that
 
 			//clear all values;
-			var percentValue = getNthSortedKeyText($scope.animation.obj, newValue);
-			var proposedKeyframe = $scope.animation.properties[percentValue + '%'];
+			// var percentValue = getNthSortedKeyText($scope.animation.obj, newValue);
+			var proposedKeyframe = $scope.animation.properties[value];
 			$scope.animation.selected_keyframe = proposedKeyframe;
 
 
@@ -1442,15 +1484,20 @@ angular.module('uguru.util.controllers')
 
 		function getNthSortedKeyText(anim, index) {
 				console.log(anim, index);
+				var position;
 				var keyTexts = [];
 				for (var i = 0; i < anim.cssRules.length; i++) {
 					var cssIndexKFRule = anim.cssRules.item(i);
-					console.log(cssIndexKFRule)
+
 					if (cssIndexKFRule) {
+						if (index === cssIndexKFRule.keyText) {
+							position = i;
+						}
 						var keyText = cssIndexKFRule.keyText;
 						keyTexts.push(parseFloat(keyText.replace('%', '')));
 					}
 				}
+				console.log(position, 'is the nth selected keyframe');
 				keyTexts.sort(function(a, b) {
 					return b - a;
 				}).reverse();
@@ -1643,10 +1690,9 @@ angular.module('uguru.util.controllers')
 
 
 
-			var desiredIndex = getNthSortedKeyText($scope.animation.obj, $scope.animation.selected_index);
-			console.log('about to apply property change', value, property, desiredIndex);
+			var desiredIndex = $scope.animation.selected_percent;
+			console.log('about to apply property change', property, 'to', value, 'in kf', desiredIndex);
 			editKeyframeAtX($scope.animation, desiredIndex, property, value);
-			console.log($scope.animation.obj.cssText);
 			// }, 500)
 			// var cssRuleAtKeyFrameX = findCSSRuleByIndex($scope.animation.obj, value);
 			// var transformObjAtX = $scope.animation.selected_keyframe;
@@ -1797,15 +1843,15 @@ angular.module('uguru.util.controllers')
 
 
 			$timeout(function() {
-				$scope.setActiveKeyFrame($scope.animation.selected_index)
+				$scope.setActiveKeyFrame($scope.animation.selected_percent)
 				$scope.$apply();
 			}, 500);
 		}
 
 
 		function editKeyframeAtX(anim, keyframe_percent, property, value, clear_css_text) {
-
-			var percentage = keyframe_percent + '%'
+			console.log(keyframe_percent, property, value)
+			var percentage = keyframe_percent;
 			anim.obj.deleteRule(percentage);
 			console.log('properties', anim.properties, keyframe_percent);
 			transformObj = anim.properties[percentage];
@@ -1818,6 +1864,7 @@ angular.module('uguru.util.controllers')
 
 			if (!clear_css_text) {
 				var css_text = transformObjToCssText(transformObj, property);
+				console.log(css_text);
 				anim.obj.appendRule(percentage + '{' +  css_text + '}', keyframe_percent);
 			} else {
 				var css_text = transformObjToCssText(transformObj, property);
@@ -2093,7 +2140,7 @@ angular.module('uguru.util.controllers')
 					// var keyPercent = getNthSortedKeyText($scope.animation.obj, 0);
 					$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
 					$scope.animation.selected_index = Object.keys($scope.animation.properties).indexOf($scope.animation.selected_percent);
-					$scope.setActiveKeyFrame($scope.animation.selected_index)
+					$scope.setActiveKeyFrame($scope.animation.selected_percent)
 					console.log($scope.animation.selected_index);
 
 					// $scope.animation.selected_percent = keyPercent + '%';
@@ -2106,7 +2153,7 @@ angular.module('uguru.util.controllers')
 					// var keyPercent = getNthSortedKeyText($scope.animation.obj, 0);
 					$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
 					$scope.animation.selected_index = Object.keys($scope.animation.properties).indexOf($scope.animation.selected_percent);
-					$scope.setActiveKeyFrame($scope.animation.selected_index)
+					$scope.setActiveKeyFrame($scope.animation.selected_percent);
 					// $scope.setActiveKeyFrame($scope.animation.selected_index)
 					// $scope.animation.selected_keyframe = $scope.animation.properties[keyPercent + '%'];
 					// $scope.animation.selected_percent = keyPercent + '%';
@@ -2344,16 +2391,17 @@ angular.module('uguru.util.controllers')
 			uguru_anim_obj.selected_percent = uguru_anim_obj.selected_keyframe.keyText;
 			uguru_anim_obj.selected_index = 0;
 			uguru_anim_obj.num_keyframes = uguru_anim_obj.obj.cssRules.length;
+			// $scope.setActiveKeyFrame
 			$compile(elem)($scope);
 			$scope.asideTabIndex = 1;
-
+			$scope.actor = document.querySelector('#stage-elem');
 			$timeout(function() {
 				$scope.$apply()
 				LoadingService.showAmbig('Playing in 3', 300, function() {
 					LoadingService.showAmbig('Playing in 2', 300, function() {
 						LoadingService.showAmbig('Playing in 1', 300, function() {
 							$timeout(function() {
-								$scope.player.play();
+								// $scope.player.play();
 							}, 1250)
 						})
 					})
@@ -2363,11 +2411,15 @@ angular.module('uguru.util.controllers')
 
 		function initView() {
 			browserPrefix = getBrowserPrefix();
-			var bounceJS = "@-webkit-keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 2.8% { -webkit-transform: matrix3d(0.128, -0.992, 0, 0, 0.992, 0.128, 0, 0, 0, 0, 1, -0.015, 0, 0, 0, 1); transform: matrix3d(0.128, -0.992, 0, 0, 0.992, 0.128, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 5.61% { -webkit-transform: matrix3d(-0.713, 0.701, 0, 0, -0.701, -0.713, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-0.713, 0.701, 0, 0, -0.701, -0.713, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 8.41% { -webkit-transform: matrix3d(0.183, -0.983, 0, 0, 0.983, 0.183, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.183, -0.983, 0, 0, 0.983, 0.183, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 11.11% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 16.62% { -webkit-transform: matrix3d(0.7, -0.714, 0, 0, 0.714, 0.7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.7, -0.714, 0, 0, 0.714, 0.7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 33.33% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 38.84% { -webkit-transform: matrix3d(0.999, -0.032, 0, 0, 0.032, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.999, -0.032, 0, 0, 0.032, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 55.66% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 61.06% { -webkit-transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 77.88% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 83.28% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }"
-			bounceJS += "@keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 2.8% { -webkit-transform: matrix3d(0.128, -0.992, 0, 0, 0.992, 0.128, 0, 0, 0, 0, 1, -0.015, 0, 0, 0, 1); transform: matrix3d(0.128, -0.992, 0, 0, 0.992, 0.128, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 5.61% { -webkit-transform: matrix3d(-0.713, 0.701, 0, 0, -0.701, -0.713, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-0.713, 0.701, 0, 0, -0.701, -0.713, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 8.41% { -webkit-transform: matrix3d(0.183, -0.983, 0, 0, 0.983, 0.183, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.183, -0.983, 0, 0, 0.983, 0.183, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 11.11% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 16.62% { -webkit-transform: matrix3d(0.7, -0.714, 0, 0, 0.714, 0.7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.7, -0.714, 0, 0, 0.714, 0.7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 33.33% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 38.84% { -webkit-transform: matrix3d(0.999, -0.032, 0, 0, 0.032, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.999, -0.032, 0, 0, 0.032, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 55.66% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 61.06% { -webkit-transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 77.88% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 83.28% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }";
+			var bounceJS = "@-webkit-keyframes animation {   0% { -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }  4.3% { -webkit-transform: matrix3d(0.355, 0.372, 0, 0, -0.372, 0.355, 0, 0, 0, 0, 1, 0, -36.109, 34.526, 0, 1); transform: matrix3d(0.355, 0.372, 0, 0, -0.372, 0.355, 0, 0, 0, 0, 1, 0, -36.109, 34.526, 0, 1); }  8.61% { -webkit-transform: matrix3d(0.167, 0.863, 0, 0, -0.863, 0.167, 0, 0, 0, 0, 1, 0, -20.948, 4.044, 0, 1); transform: matrix3d(0.167, 0.863, 0, 0, -0.863, 0.167, 0, 0, 0, 0, 1, 0, -20.948, 4.044, 0, 1); }  12.91% { -webkit-transform: matrix3d(-0.086, 1.049, 0, 0, -1.049, -0.086, 0, 0, 0, 0, 1, 0, 10.965, 0.902, 0, 1); transform: matrix3d(-0.086, 1.049, 0, 0, -1.049, -0.086, 0, 0, 0, 0, 1, 0, 10.965, 0.902, 0, 1); }  17.22% { -webkit-transform: matrix3d(-0.16, 1.082, 0, 0, -1.082, -0.16, 0, 0, 0, 0, 1, 0, 20.19, 2.981, 0, 1); transform: matrix3d(-0.16, 1.082, 0, 0, -1.082, -0.16, 0, 0, 0, 0, 1, 0, 20.19, 2.981, 0, 1); }  28.33% { -webkit-transform: matrix3d(-0.033, 1.02, 0, 0, -1.02, -0.033, 0, 0, 0, 0, 1, 0, 4.208, 0.136, 0, 1); transform: matrix3d(-0.033, 1.02, 0, 0, -1.02, -0.033, 0, 0, 0, 0, 1, 0, 4.208, 0.136, 0, 1); }  39.44% { -webkit-transform: matrix3d(0.01, 0.994, 0, 0, -0.994, 0.01, 0, 0, 0, 0, 1, 0, -1.238, 0.012, 0, 1); transform: matrix3d(0.01, 0.994, 0, 0, -0.994, 0.01, 0, 0, 0, 0, 1, 0, -1.238, 0.012, 0, 1); }  61.66% { -webkit-transform: matrix3d(-0.001, 1, 0, 0, -1, -0.001, 0, 0, 0, 0, 1, 0, 0.083, 0, 0, 1); transform: matrix3d(-0.001, 1, 0, 0, -1, -0.001, 0, 0, 0, 0, 1, 0, 0.083, 0, 0, 1); }  83.98% { -webkit-transform: matrix3d(0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, -0.006, 0, 0, 1); transform: matrix3d(0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, -0.006, 0, 0, 1); }  100% { -webkit-transform: matrix3d(0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }"
+			bounceJS += "@keyframes animation {   0% { -webkit-transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }  4.3% { -webkit-transform: matrix3d(0.355, 0.372, 0, 0, -0.372, 0.355, 0, 0, 0, 0, 1, 0, -36.109, 34.526, 0, 1); transform: matrix3d(0.355, 0.372, 0, 0, -0.372, 0.355, 0, 0, 0, 0, 1, 0, -36.109, 34.526, 0, 1); }  8.61% { -webkit-transform: matrix3d(0.167, 0.863, 0, 0, -0.863, 0.167, 0, 0, 0, 0, 1, 0, -20.948, 4.044, 0, 1); transform: matrix3d(0.167, 0.863, 0, 0, -0.863, 0.167, 0, 0, 0, 0, 1, 0, -20.948, 4.044, 0, 1); }  12.91% { -webkit-transform: matrix3d(-0.086, 1.049, 0, 0, -1.049, -0.086, 0, 0, 0, 0, 1, 0, 10.965, 0.902, 0, 1); transform: matrix3d(-0.086, 1.049, 0, 0, -1.049, -0.086, 0, 0, 0, 0, 1, 0, 10.965, 0.902, 0, 1); }  17.22% { -webkit-transform: matrix3d(-0.16, 1.082, 0, 0, -1.082, -0.16, 0, 0, 0, 0, 1, 0, 20.19, 2.981, 0, 1); transform: matrix3d(-0.16, 1.082, 0, 0, -1.082, -0.16, 0, 0, 0, 0, 1, 0, 20.19, 2.981, 0, 1); }  28.33% { -webkit-transform: matrix3d(-0.033, 1.02, 0, 0, -1.02, -0.033, 0, 0, 0, 0, 1, 0, 4.208, 0.136, 0, 1); transform: matrix3d(-0.033, 1.02, 0, 0, -1.02, -0.033, 0, 0, 0, 0, 1, 0, 4.208, 0.136, 0, 1); }  39.44% { -webkit-transform: matrix3d(0.01, 0.994, 0, 0, -0.994, 0.01, 0, 0, 0, 0, 1, 0, -1.238, 0.012, 0, 1); transform: matrix3d(0.01, 0.994, 0, 0, -0.994, 0.01, 0, 0, 0, 0, 1, 0, -1.238, 0.012, 0, 1); }  61.66% { -webkit-transform: matrix3d(-0.001, 1, 0, 0, -1, -0.001, 0, 0, 0, 0, 1, 0, 0.083, 0, 0, 1); transform: matrix3d(-0.001, 1, 0, 0, -1, -0.001, 0, 0, 0, 0, 1, 0, 0.083, 0, 0, 1); }  83.98% { -webkit-transform: matrix3d(0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, -0.006, 0, 0, 1); transform: matrix3d(0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, -0.006, 0, 0, 1); }  100% { -webkit-transform: matrix3d(0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }";
 			var animationName = 'bounce-js-complex'
 			$scope.animation = importAndProcessAnimationCSSTextByKF(bounceJS, animationName, updateDropdown);
-
+			console.log($scope.animation.properties);
+			var tempKeyFrame = $scope.animation.obj.cssRules.item(2);
+			console.log('setting to ', tempKeyFrame.keyText)
+			$scope.setActiveKeyFrame(tempKeyFrame.keyText);
+			console.log($scope.animation.selected_keyframe);
 			// $scope.animation = matrix3DKeyframesToDecomposedKF(bounceJS, 'bounce-js', updateDropdown);
 			// importAndProcessAnimationCSSTextByKF(bounceJS, 'bounce-js');
 
@@ -2396,6 +2448,28 @@ angular.module('uguru.util.controllers')
 			// editKeyframeAtX($scope.animation, 0, 'translateX', 10)
 
 
+		}
+
+		$scope.setActiveKeyFrameFromPointer = function($event) {
+			var kfBarContainerElem = document.querySelector('#keyframe-bar')
+			var barLeftPx = kfBarContainerElem.getBoundingClientRect().left;
+			var totalBarWidth = kfBarContainerElem.getBoundingClientRect().width;
+			var percentFromBeginning = Math.abs($event.offsetX)/(totalBarWidth*1.0) * 100
+			var propertyKeys = Object.keys($scope.animation.properties);
+			var min = 101;
+			var closedIndex = -1;
+			for (var i = 0; i < propertyKeys.length; i++) {
+				var indexKey = parseFloat(propertyKeys[i].replace('%'));
+				var dx = Math.abs(indexKey - percentFromBeginning);
+				if (dx < min) {
+					min = dx;
+					closedIndex = i;
+				}
+			}
+			$scope.setActiveKeyFrame(propertyKeys[closedIndex]);
+
+			// console.log(kfBarContainerElemWidth, kfBarContainerElemLeft);
+			// console.log($event);
 		}
 		$scope.renderAnimationCSSText = function(animation) {
 			$scope.layout.index = 2;
@@ -2773,7 +2847,7 @@ angular.module('uguru.util.controllers')
 				}
 			}
 
-			refreshTransformPropertyObjFromAnim(uguruAnimObj.obj);
+			refreshTransformPropertyObjFromAnim(uguruAnimObj);
 			console.log('\n\n\n\n\nKeyframes after\n-----\n\n', uguruAnimObj.obj.cssText);
 			cb && cb(uguruAnimObj);
 			return uguruAnimObj;
@@ -2782,8 +2856,8 @@ angular.module('uguru.util.controllers')
 
 		function refreshTransformPropertyObjFromAnim(anim) {
 			anim.properties = {}
-			for (var i = 0; i < anim.cssRules.length; i++) {
-				var indexKFRule = anim.cssRules.item(i);
+			for (var i = 0; i < anim.obj.cssRules.length; i++) {
+				var indexKFRule = anim.obj.cssRules.item(i);
 				var keyText = indexKFRule.keyText;
 				var transformKFObj = initTransformObjFromKF(indexKFRule);
 				anim.properties[keyText] = transformKFObj;
