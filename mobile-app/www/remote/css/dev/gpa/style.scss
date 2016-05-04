@@ -56,6 +56,10 @@
 						font-size: 20px;
 						font-weight: 600;
 						text-align: center;
+						color: lighten($slate, 15%);
+						@include placeholder {
+							color: rgba(lighten($slate, 15%), 0.5);
+						}
 						&::-webkit-inner-spin-button, &::-webkit-outer-spin-button { 
  							@include appearance;
   							margin: 0;
@@ -104,43 +108,145 @@
 		h2 {
 			font-weight: 600;
 		}
-		#semester-slider {
+		#semester-slider.tab-bar {
 			display: none;
 			background: lighten($slate, 15%);
 			width: 100%;
-			ul {
-				@include flex;
-				@include flex-center;
-				max-width: 1200px;
-				margin: 0 auto;
-				li {
-					a {
-						@include flex;
-						@include flex-center;
-						width: 128px;
-						height: 90px;
-						color: rgba(white,.5);
-						font-size: 20px;
-						font-weight: 600;
-						line-height: 1.2;
-						text-transform: uppercase;
-						&:not(.nav) {
-							border-top: 5px solid transparent;
-							border-bottom: 5px solid transparent;
+			height: 90px;
+			a {
+				height: 90px;
+				font-size: 20px;
+				line-height: 1.2;
+				&:not(.semester-slider-active) {
+					@include opacity(0.5);
+					&:hover, &:focus {
+						@include opacity(1);
+					}
+				}
+				&:nth-child(1) {
+					&.semester-slider-active, &.active {
+						~ hr {
+							@include translate-x(0);
+							border-color: white;
 						}
-						svg {
-							@include svg-stroke(rgba(white,.5), 7);
-							width: 50px;
+					}
+				}
+				&:nth-child(2) {
+					&.semester-slider-active, &.active {
+						~ hr {
+							@include translate-x(165px);
+							border-color: white;
 						}
-						&:hover, &:active, &:focus, &.active {
-							color: white;
-							border-bottom-color: white;
-							svg {
-								stroke: white;
-							}
+					}
+				}
+				&:nth-child(3) {
+					&.semester-slider-active, &.active {
+						~ hr {
+							@include translate-x(330px);
+							border-color: white;
 						}
-						&.active {
-							font-weight: 900;
+					}
+				}
+				&:nth-child(4) {
+					&.semester-slider-active, &.active {
+						~ hr {
+							@include translate-x(495px);
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(5) {
+					&.semester-slider-active, &.active {
+						~ hr {
+							@include translate-x(660px);
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(6) {
+					&.semester-slider-active, &.active {
+						~ hr {
+							@include translate-x(825px);
+							border-color: white;
+						}
+					}
+				}
+
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(0);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(165px);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(330px);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(495px);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(5) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(660px);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
+						}
+					}
+				}
+				&:nth-child(6) {
+					&:hover, &:focus {
+						~ hr {
+							@include translate-x(825px);
+							border-color: rgba(white, .7);
+						}
+					}
+					&:active {
+						~ hr {
+							border-color: white;
 						}
 					}
 				}
@@ -197,7 +303,7 @@
 		.semester-list {
 			@include flex;
 			@include flex-wrap;
-			@include flex-center;
+			@include prefix(justify-content, center, webkit);
 			width: 100%;
 			max-width: 1030px;
 			margin: 0 auto;
@@ -210,13 +316,9 @@
 	}
 }
 .semester-item {
-	&.small {
-		> div {
-			@include flex-center-vertical;
-		}
-	}
 	> div {
 		@include flex;
+		@include flex-center-vertical;
 		@include prefix(justify-content, space-between, webkit);
 		padding: 15px;
 		background: rgba(lighten($slate, 15%), .75);
@@ -273,6 +375,22 @@
 			}
 		}
 	}
+	&.semester-overall-item {
+		> div {
+			background: white;
+			color: $gpa;
+			.semester-item-course {
+				h3 {
+					color: mix(white, $gpa, 30%);
+				}
+			}
+			.semester-item-grade {
+				background: $gpa;
+				color: white;
+				width: 88px;
+			}
+		}
+	}
 }
 @media screen and (min-width:768px) and (min-height:575px) {
 	#home-container {
@@ -280,13 +398,17 @@
 		#home-gpa {
 			height: 50%;
 			> div {
+				@include flex;
+				@include flex-center;
+				@include flex-wrap;
 				height: calc(100% - 90px);
 			}
 			.gpa {
+				width: 100%;
 				font-size: 160px!important;
 			}
 			#semester-slider {
-				display: block;
+				@include flex;
 			}
 		}
 		#home-courses {
