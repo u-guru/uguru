@@ -8,6 +8,13 @@
 }
 
 /* ---------- KEYFRAMES */
+#keyframe-pointer {
+  width: 5px;
+  height: 36px;
+  top: -21px;
+  margin-left: 5px;
+}
+
 #stage-container {
   position: relative !important;
 }
@@ -3988,15 +3995,6 @@
 #admin .admin-user-stories ul li a h1 {
   font-size: 16px;
   font-weight: 600;
-}
-
-#admin .tab-container {
-  width: 100%;
-}
-
-#admin .tab-container .tab-bar {
-  margin: 0 auto !important;
-  background: transparent !important;
 }
 
 #admin .admin-small-header {

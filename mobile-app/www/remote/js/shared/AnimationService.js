@@ -610,7 +610,7 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
         properties[key] = createInterpolable(el[key]);
       }
     }
-    return properties;
+    return pxProperties;
   };
 
   createInterpolable = function(value) {
