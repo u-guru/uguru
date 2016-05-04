@@ -1879,7 +1879,7 @@ angular.module('uguru.util.controllers')
 			// $scope.animation.obj.appendRule('0% {transform: translate(10px, 10px);}', 1);
 			// $scope.animation.obj.appendRule('0% {transform: translate(10px, 10px);}', 1);
 			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX', 'rotate3DAngle': 'rotate'};
-			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'rad', 'skewY': 'rad', 'rotate3DZ':'rad', 'rotate3DY': 'rad', 'rotate3DX': 'rad', 'rotate3DAngle': 'rad'};
+			var propertyDictCssUnit = {'translateX': '', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'rad', 'skewY': 'rad', 'rotate3DZ':'rad', 'rotate3DY': 'rad', 'rotate3DX': 'rad', 'rotate3DAngle': 'rad'};
 			var transformProperties = Object.keys(propertyDictCssMap);
 			var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'transformOrigin', 'transformOrigin', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 			var cssToChange = {transform: {}, etc: {}};
@@ -1912,6 +1912,7 @@ angular.module('uguru.util.controllers')
 					var indexTransformValue = cssToChange.transform[indexTransformProperty];
 					transformCSStoChange += indexTransformProperty  + indexTransformValue;
 				}
+				console.log(transformCSStoChange);
 				$scope.actor.style['transform'] = transformCSStoChange;
 				$scope.actor.style[browserPrefix + '-transform'] = transformCSStoChange;
 			}
@@ -1986,6 +1987,11 @@ angular.module('uguru.util.controllers')
 					'rotateY': 'rotate3DY',
 					'rotateZ': 'rotate3DZ',
 					'rotate': 'rotate3DAngle',
+					'translateX': 'translateX',
+					'translateY': 'translateY',
+					'translateZ': 'translateZ',
+					'skewX': 'skewX',
+					'skewY': 'skewY',
 					'background-color': 'backgroundColor',
 					'fill-opacity': 'fillOpacity',
 					'transform-style': 'transformStyle',
@@ -2880,14 +2886,14 @@ angular.module('uguru.util.controllers')
 						var transformPropertyValue = indexTransformPropSplit[1];
 						if (!(transformPropertyName in transformObj)) {
 							var mappedIndexStyle = transformObj.propertyMappings[transformPropertyName];
-							transformObj[mappedIndexStyle] = transformPropertyValue;
-							transformObj['modified'][mappedIndexStyle] = transformPropertyValue;
+							transformObj[mappedIndexStyle] = transformPropertyValue.replace('%', '').replace('rad', '');
+							transformObj['modified'][mappedIndexStyle] = transformPropertyValue.replace('%', '').replace('rad', '');
 							if (!mappedIndexStyle) {
 								console.log('could not find', transformPropertyName, 'in transform obj');
 							}
 						} else {
-							transformObj[indexStyle] = indexValue;
-							transformObj['modified'][indexStyle] = indexValue;
+							transformObj[transformPropertyName] = transformPropertyValue.replace('%', '').replace('rad', '');
+							transformObj['modified'][transformPropertyName] = transformPropertyValue.replace('%', '').replace('rad', '');
 						}
 					}
 				} else {
@@ -2899,11 +2905,12 @@ angular.module('uguru.util.controllers')
 							console.log('could not find', indexStyle, 'in transform obj');
 						}
 					} else {
-						transformObj[indexStyle] = indexValue;
-						transformObj['modified'][indexStyle] = indexValue;
+						transformObj[transformPropertyName] = transformPropertyValue;
+						transformObj['modified'][transformPropertyName] = transformPropertyValue;
 					}
 				}
 			}
+			console.log(transformObj);
 			return transformObj;
 		}
 
