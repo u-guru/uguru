@@ -9372,6 +9372,13 @@ a.category-tile {
 
 /* ---------- TAB BARS */
 // tab bar
+.tab-container {
+	width: 100%;
+	.tab-bar {
+		margin: 0 auto!important;
+		background: transparent!important;
+	}
+}
 .tab-bar {
 	background: $charcoal;
 	ul {
