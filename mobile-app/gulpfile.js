@@ -368,7 +368,7 @@ gulp.task('scripts', function() {
     .pipe(plugins.if(!build, plugins.changed(dest)));
 
   // return streamqueue({ objectMode: true }, scriptStream, templateStream)
-  return streamqueue({ objectMode: true }, scriptStream, templateStream)
+  return streamqueue({ objectMode: true }, scriptStream)
     .pipe(plugins.if(build, plugins.ngAnnotate()))
     .pipe(plugins.if(build, plugins.concat('app.js')))
     .pipe(plugins.if(build, plugins.uglify()))
