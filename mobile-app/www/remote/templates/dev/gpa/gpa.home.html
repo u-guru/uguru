@@ -1,6 +1,6 @@
 <ion-view class='uguru-view home-view'>
 	<section id='gpa-home' class="desktop-mode desktop-home">
-		<nav class='main-nav' ng-include="img_base + BASE + 'templates/dev/gpa/desktop.nav.html'" ng-if='desktopMode'></nav>
+		<nav class='main-nav' ng-include="img_base + BASE + 'templates/dev/gpa/desktop.nav.html'"></nav>
 		<header class="mobile-only">
             <div class="header-nav">
     			<a class="header-nav-back" ng-click='toggleLeftSideMenu()'>
@@ -47,8 +47,7 @@
 				</nav>
 			</div>
 			<div id="home-courses">
-				<div id="home-add" ng-if="false">
-					<!-- ng-if="!overall.semesterArr.length" -->
+				<div id="home-add" ng-if="!overall.semesterArr.length">
 					<button>
 						<svg viewBox="0 0 100 100">
 						    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
