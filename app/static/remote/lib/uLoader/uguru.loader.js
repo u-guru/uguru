@@ -229,7 +229,7 @@ var pageLoad= function() {
 	var bodyLoadTime = calcTimeSinceInit();
 	className = document.querySelector('body #uguru-view').className.replace('hide','')
 	document.querySelector('body #uguru-view').className = className
-	console.log('Bodyssss dom load complete, load time:', bodyLoadTime, 'seconds');
+	console.log('Body dom load complete, load time:', bodyLoadTime, 'seconds');
 
 }
 var calcTimeSinceInit = function() {
