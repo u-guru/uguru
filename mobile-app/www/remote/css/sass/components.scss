@@ -14670,6 +14670,32 @@ a.category-tile {
 		font-weight: 600;
 		font-size: 14px;
 	}
+	&.active {
+		.marker-normal {
+			.marker-normal-window {
+				.side {
+					@include prefix(transition-delay, 150ms, webkit moz ms o);
+					stroke-dashoffset: 278;
+				}
+			}
+			.marker-normal-content {
+				@include opacity(0);
+			}
+		}
+		.marker-expanded {
+			z-index: 2;
+			.marker-expanded-window {
+				.sides {
+					@include prefix(transition-delay, 350ms, webkit moz ms o);
+					stroke-dashoffset: 0;
+				}
+			}
+			.marker-expanded-content {
+				@include prefix(transition-delay, 650ms, webkit moz ms o);
+				@include opacity(1);
+			}
+		}
+	}
 }
 
 // projector slide
