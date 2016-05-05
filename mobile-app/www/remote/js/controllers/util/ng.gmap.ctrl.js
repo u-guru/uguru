@@ -335,7 +335,9 @@ angular.module('uguru.util.controllers')
 
             case 3: //generating custom elements & compile
               var generateCallback = timeStateCallback(4, 'generating' + g.university.place_results.length + ' place markers');
-              generateUniversityPlaceOverlayMarkers(g.university.map, g.university.place_results, '#map-parent-wrapper .ui-gmap-wrapper', generateCallback);
+              $timeout(function() {
+                generateUniversityPlaceOverlayMarkers(g.university.map, g.university.place_results, '#map-parent-wrapper .ui-gmap-wrapper', generateCallback);
+              }, 2000)
             case 4:
 
               var generatingMarkers = timeStateCallback(5, 'TODO: generating ' + g.university.place_results.length + ' markers');
@@ -418,6 +420,7 @@ angular.module('uguru.util.controllers')
           }
           for (var i = 0; i < places_arr.length; i++) {
             var indexPlace = places_arr[i];
+
             if (indexPlace && indexPlace.coords && indexPlace.coords.x && indexPlace.coords.y) {
               var div = document.createElement('div');
               var categoryBgCssText = 'background-color:' + hexColorLookupDict[map.category.hex_color] + ';background' + hexColorLookupDict[map.category.hex_color];
@@ -429,7 +432,7 @@ angular.module('uguru.util.controllers')
               parentContainerElem.appendChild(div);
             }
           }
-          callback && callback();
+          //
         }
 
 
@@ -449,7 +452,7 @@ angular.module('uguru.util.controllers')
           if (university.og_map  && (!university.place_results || !university.place_results.length)) {
           $timeout(function() {
             $scope.$apply(function() {
-              GUtilService.getPlaceListByCoords(g, g.university.og_map, {latitude: university.latitude, longitude: university.longitude}, updateMarkersOnUniversitySpecificMap(callback), options);
+              GUtilService.getPlaceListByCoords(g, university.og_map, {latitude: university.latitude, longitude: university.longitude}, updateMarkersOnUniversitySpecificMap(callback), options);
               })
             })
           }
@@ -478,7 +481,6 @@ angular.module('uguru.util.controllers')
           initUniversityMapOverlay(university);
           google.maps.event.addListenerOnce(university.og_map, 'tilesloaded', function() {
               addXYCoordsToPlaces(university.og_map_overlay, places_arr, callback);
-              console.log(places_arr);
           });
         });
 
@@ -486,6 +488,8 @@ angular.module('uguru.util.controllers')
         constrainMapBoundsByWindow(university, places_arr);
         //step 3
         //filter places by
+        callback && callback();
+        generateUniversityPlaceOverlayMarkers(g.university.map, g.university.place_results, '#map-parent-wrapper .ui-gmap-wrapper');
       }
 
       initWatcher();

@@ -1,13 +1,7 @@
 <div class='bg-charcoal splash-hero-map limited-opacity full-xy flex-wrap-center opacity-50' id='map-parent-wrapper' ng-controller='GMapController as g'>
     <div class='ui-gmap-wrapper full-xy relative zoom-{{g.university.map.zoom}} bg-slate ng-class:{"invisible":!g.mapHasRendered}'>
         <ui-gmap-google-map  id='{{g.university.map.domId}}' class='scene-1 full-xy absolute top-0 left-0' center="g.university.map.coords" events="g.university.map.events"  refresh='map.refresh' control="g.university.map.control" options="g.university.map.options" pan="g.university.map.pan" zoom="g.university.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
-            <ui-gmap-marker coords="g.university.map.marker.coords" idKey="g.university.map.marker.id || g.university.id" options="g.university.map.marker.options" icon="g.university.map.marker.icon">
-            </ui-gmap-marker>
         </ui-gmap-google-map>
-        <div class='absolute width-25 height-25 p20xy bg-charcoal bottom-0 left-0'>
-            <div class='splash-hero-markers'>
-                <map-marker></map-marker>
-            </div>
-        </div>
     </div>
+
 </div>
