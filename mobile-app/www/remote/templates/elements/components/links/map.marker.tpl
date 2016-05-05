@@ -1,5 +1,5 @@
-<div class="university-place-marker bg-academic">
-    <div class="marker-normal">
+<div class="university-place-marker bg-academic splash-hero-marker" ng-class="{'visible': marker.state === 2}">
+    <div class="marker-normal" ng-class="{'move': marker.state >= 1}">
         <svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
             <g fill="none" stroke-width="4" stroke="#666C6F" stroke-linecap="round" stroke-linejoin="round">
                 <path class="side" d="M92,176 L122,146 L171.991129,146 C177.518876,146 182,141.532461 182,136.002779 L182,11.9972208 C182,6.47590822 177.527924,2 172.009493,2 L142,2"></path>

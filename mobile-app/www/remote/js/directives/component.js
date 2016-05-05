@@ -612,7 +612,45 @@ directive('draggable', function($document) {
         return {
             templateUrl: BASE + 'templates/elements/components/links/map.marker.tpl',
             restrict: 'E',
-            replace: true
+            replace: true,
+            scope: {
+                guru: '=guru',
+                place: '=place',
+            },
+            link: function(scope, element, attr) {
+                scope.marker = {
+                    state:2
+                }
+                if (!scope.size) {
+                    scope.size = 'small';
+                }
+                if (attr.type && attr.type.toLowerCase() === 'color') {
+                    scope.type = 'color';
+                } else {
+                    scope.type = '';
+                }
+                scope.click = function(option, index) {
+
+                    scope.dropdown.selectedIndex = index;
+
+                    $timeout(function() {
+                        scope.$apply();
+                    })
+
+                    if (scope.dropdown.onOptionClick) {
+                        scope.dropdown.onOptionClick(option, index);
+                    }
+
+                    scope.toggle();
+
+                }
+                scope.toggle = function() {
+                    scope.dropdown.active = !scope.dropdown.active;
+                    if (scope.dropdown.onToggle) {
+                        scope.dropdown.onToggle(scope.dropdown.active);
+                    }
+                }
+            }
         }
     })
     .directive('badge', function() {
@@ -706,6 +744,11 @@ directive('draggable', function($document) {
             templateUrl: BASE + 'templates/elements/components/inputs/toggle.tpl',
             restrict: 'E',
             replace: true
+        }
+    })
+    .directive('atv-card', function () {
+        return {
+            templateUrl: BASE + 'templates/elements/components/cards/atv.tpl'
         }
     })
     .directive('inputsGallery', function() {
