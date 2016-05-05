@@ -225,12 +225,26 @@ firstTimeLoadingAnimationContent += '<div class="pageload-overlay"  data-opening
 
 var TIMEOUT_UNTIL_END_OF_LOADER = (false && 1000) || 7000;
 
+var pageLoad= function() {
+	var bodyLoadTime = calcTimeSinceInit();
+	className = document.querySelector('body #uguru-view').className.replace('hide','')
+	document.querySelector('body #uguru-view').className = className
+	console.log('Bodyssss dom load complete, load time:', bodyLoadTime, 'seconds');
 
+}
+var calcTimeSinceInit = function() {
+  if (start_dom_time) {
+      var current_time = (new Date()).getTime();
+      var time_ms = current_time - start_dom_time;
+      var time_s = (time_ms / 1000.0).toPrecision(3)
+      var loadTime = time_s;
+      return loadTime
+  }
+}
 
 bodyLoadingDiv.innerHTML = firstTimeLoadingAnimationContent;
 
 loader = new SVGLoader( document.querySelector('#body-loading-div .pageload-overlay'), { speedIn : 300, easingIn : mina.easeinout } );
-
 loader.show();
 setTimeout(function() {
     bodyLoadingDiv.style.visibility = "hidden";
@@ -238,9 +252,15 @@ setTimeout(function() {
     loader.hide();
     loader.isHide = true
     // console.log(loader)
-    console.log("class :",document.querySelector('body #uguru-view').className)
-    className = document.querySelector('body #uguru-view').className.replace('hide','')
-    document.querySelector('body #uguru-view').className = className;
-
+    // setTimeout(function(){
+    	// console.log("CLOSE")
+    	// window.onload = function()
+    	// {
+    	// 	console.log("class :",document.querySelector('body #uguru-view').className)
+    	// 	className = document.querySelector('body #uguru-view').className.replace('hide','')
+    	// 	document.querySelector('body #uguru-view').className = className;
+    	// }
+    	
+    // },500)
 }, TIMEOUT_UNTIL_END_OF_LOADER)
 
