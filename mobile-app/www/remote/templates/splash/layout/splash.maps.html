@@ -4,4 +4,9 @@
         </ui-gmap-google-map>
     </div>
 
+    <pennant class='high-z-index fixed bottom-0 left-0 m20xy' ng-class="{'gab-anim': !g.remote.value}" anim-in="bounceInDown" anim-in-delay="2000" university="g.university" active="!g.remote.value"> </pennant>
+    <div class='absolute full-xy flex-wrap-center high-z-index top-0 left-0 bg-charcoal' ng-init="place={name:'philz coffee', distance:'4'} ;state = 0; guru={message:{body:'Im free right now and can header over with practice finals', greeting: 'yoooo'}, name: 'Gabrielle', last_active_time:'10 minuetes ago'}">
+        <map-marker guru="guru" place="place"  state="state"> </map-marker>
+    </div>
+
 </div>

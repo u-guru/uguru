@@ -444,12 +444,15 @@ directive('draggable', function($document) {
                 scope.$watch('active', function(isActive) {
                     if (isActive) {
                         scope.animIn = attr.animIn;
-                        scope.animInDelay = attr.animInDelay;
+                        scope.animInDelay = parseInt(attr.animInDelay) || 0;
                         scope.pennantText = scope.university.school_tiny_name || scope.university.short_name ||  scope.university.name;
                         scope.pennantFill = scope.university.school_color_dark;
                         scope.pennantFillLight = scope.university.school_color_light;
-                        AnimationService.animateIn(element[0], scope.animIn, scope.animInDelay);
-                        $compile(element[0])(scope);
+                        $timeout(function() {
+                            AnimationService.animateIn(element[0], scope.animIn, scope.animInDelay);
+                            $compile(element[0])(scope);
+                        }, scope.animInDelay)
+
                     } else {
                         scope.animOut = attr.animOut;
                         scope.animOutDelay = attr.animOutDelay;
