@@ -741,10 +741,10 @@ angular.module('uguru.util.controllers')
 						console.log(firstChild);
 						if (!firstChildDimensions.height || !firstChildDimensions.width) {
 							firstChild.className += ' absolute';
-							firstChild.style.height = "75%";
-							firstChild.style.width = "75%";
-							firstChild.style.right = "12.5%";
-							firstChild.style.top = "12.5%";
+							firstChild.style.height = "100%";
+							firstChild.style.width = "100%";
+							firstChild.style.left = "0";
+							firstChild.style.top = "0";
 						}
 					}
 				}
