@@ -152,7 +152,7 @@ if ( typeof define === 'function' && define.amd ) {
         this.closingStepsTotal = closingStepsStr ? this.closingSteps.length : 0;
 
         this.isAnimating = false;
-
+        this.isHide = false
         if( !this.options.speedOut ) {
             this.options.speedOut = this.options.speedIn;
         }
@@ -236,5 +236,11 @@ setTimeout(function() {
     bodyLoadingDiv.style.visibility = "hidden";
     document.querySelector('#body-loading-div svg.transition').style.visibility = "visible";
     loader.hide();
+    loader.isHide = true
+    // console.log(loader)
+    console.log("class :",document.querySelector('body #uguru-view').className)
+    className = document.querySelector('body #uguru-view').className.replace('hide','')
+    document.querySelector('body #uguru-view').className = className;
+
 }, TIMEOUT_UNTIL_END_OF_LOADER)
 
