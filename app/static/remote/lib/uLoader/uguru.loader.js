@@ -263,13 +263,16 @@ magic.href = '/static/remote/css/sass/magic.css';
 utility.href = '/static/remote/css/sass/utility.css';   
 app_version.href = '/static/remote/css/app_version.css';     
 
-loader.show();
+// loader.show();
 // head.appendChild(animate)
 
 // head.appendChild(animation)
 head.appendChild(magic)
 head.appendChild(utility)
 head.appendChild(app_version)
+
+loader.show();
+
 // console.log("head",head)
 setTimeout(function() {
     bodyLoadingDiv.style.visibility = "hidden";
