@@ -1,7 +1,7 @@
 <div class="university-place-marker bg-academic splash-hero-marker" ng-class="{'active': state === 2}" ng-click="onMarkerClick()">
-    <div class="marker-normal" ng-class="{'move': state === 1, 'opacity-0': state === 2}">
+    <div class="marker-normal" ng-class="{'move': state === 1, 'hidden': state === 2}">
         <svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
-            <g fill="none" stroke-width="4" stroke="#666C6F" stroke-linecap="round" stroke-linejoin="round">
+            <g fill="none" stroke-width="4" stroke="#b4b8ba" stroke-linecap="round" stroke-linejoin="round">
                 <path class="side" d="M92,176 L122,146 L171.991129,146 C177.518876,146 182,141.532461 182,136.002779 L182,11.9972208 C182,6.47590822 177.527924,2 172.009493,2 L142,2"></path>
                 <path class="side" d="M92,176 L62,146 L12.0088711,146 C6.48112423,146 2,141.532461 2,136.002779 L2,11.9972208 C2,6.47590822 6.47207592,2 11.9905068,2 L42,2"></path>
                 <path class="open" d="M12,2 L92,2"></path>
@@ -22,7 +22,7 @@
     </div>
     <div class="marker-expanded">
         <svg class="marker-expanded-window" width="262px" height="267px" viewBox="0 0 524 534">
-             <g fill="none" stroke-width="4" stroke="#666C6F" stroke-linecap="round" stroke-linejoin="round">
+             <g fill="none" stroke-width="4" stroke="#b4b8ba" stroke-linecap="round" stroke-linejoin="round">
                   <path class="sides" d="M262,532 L232,502 L22.0086422,502 C10.9581743,502 2,493.042549 2,481.993992 L2,22.006008 C2,10.9569949 10.9569966,2 21.9941986,2 L182,2"></path>
                   <path class="sides" d="M262,532 L292,502 L501.991358,502 C513.041826,502 522,493.042549 522,481.993992 L522,22.006008 C522,10.9569949 513.043003,2 502.005801,2 L342,2"></path>
              </g>

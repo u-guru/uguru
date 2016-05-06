@@ -674,11 +674,11 @@ directive('draggable', function($document) {
                         }
                         scope.state = 2;
                     } else if (scope.state === 2) {
-                        scope.state = 0;
-                        $timeout(function() {
-                            scope.state = 1;
-                            scope.$apply();
-                        }, 1000);
+                        scope.state = 1;
+                        // $timeout(function() {
+                        //     scope.state = 1;
+                        //     scope.$apply();
+                        // }, 1000);
 
                     } else {
                         if (element.attr('class').indexOf('marker-state-transitioning') === -1) {
