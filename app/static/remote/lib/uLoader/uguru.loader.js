@@ -244,7 +244,7 @@ var calcTimeSinceInit = function() {
 
 bodyLoadingDiv.innerHTML = firstTimeLoadingAnimationContent;
 var URL_BASE = '';
-if (window.location.href.indexOf(':5000') > -1)  {
+if (window.location.href.indexOf(':5000') > -1 || window.location.href.indexOf('uguru-rest-test') > -1 || window.location.href.indexOf('staging') > -1)  {
     URL_BASE = '/static/'
     TIMEOUT_UNTIL_END_OF_LOADER = 7000;
 }

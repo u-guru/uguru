@@ -2438,12 +2438,13 @@ angular.module('uguru.util.controllers')
 			var lastAnimation = $localstorage.getObject('last_animation');
 
 			if (lastAnimation && !lastAnimation.length && !lastAnimation.cssText) {
-				console.log('no animation', lastAnimation);
+				$scope.animation = initAnimation('base-animation', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
 			} else {
 				$scope.animation = $scope.importFromCSSText(lastAnimation.cssText, lastAnimation.name, lastAnimation.classText)
-				$scope.animationDropdown.options[0] = $scope.animation.name;
-				$scope.animationDropdown.options.push('Save');
 			}
+			$scope.animationDropdown.options[0] = $scope.animation.obj.name;
+			console.log($scope.animation.obj);
+			$scope.animationDropdown.options.push('Save');
 			return;
 		}
 
@@ -2504,7 +2505,7 @@ angular.module('uguru.util.controllers')
 			$scope.actor = document.querySelector('#stage-elem');
 			initAnimationListener($scope.actor);
 
-			// $scope.animation = initAnimation('sample-animation-2', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
+
 			// $scope.resetStageDom();
 			// $scope.addSVGPlaceholder('circle');
 			// $scope.addSVGPlaceholder('square');
