@@ -13,15 +13,20 @@ angular.module('uguru.util.controllers')
   'ContentService',
   function($scope, $state, $stateParams, University, uiGmapIsReady, $timeout, $compile, GUtilService, ContentService){
 
-      $scope.time_state = {value: 0, text: 'blank', watcher:null, description: ''};
-      $scope.universities = University.getTargetted();
-      $scope.selectedUniversity = $scope.universities[0];
+    var g = this;
+    g.map = {};
+    g.mapHasRendered;
+    g.remote = {value: 0, text: 'blank', watcher:null, description: ''};
+    g.universities = University.getTargetted();
+    g.university = g.universities[0];
 
-      function initUniversityMapOverlay(university) {
-        university.og_map_overlay = new google.maps.OverlayView();
-        university.og_map_overlay.draw = function() {};
-        university.og_map_overlay.setMap(university.og_map);
-      }
+    g.category = ($scope.categories && $scope.categories[0]) || {name: 'Academic', hex_color: 'academic', id:5, splashData: ContentService.splashCategoryOptions['Academic']};
+
+    function initUniversityMapOverlay(university) {
+      university.og_map_overlay = new google.maps.OverlayView();
+      university.og_map_overlay.draw = function() {};
+      university.og_map_overlay.setMap(university.og_map);
+    }
 
       function initializeDynamicSelectedUniversityMap(university, category, callback) {
           university.map = {
@@ -37,9 +42,9 @@ angular.module('uguru.util.controllers')
             refresh: false,
             events: {tilesloaded: function(map) {
               university.og_map = map;
-              $scope.selectedUniversity.og_map = map;
-              $scope.mapHasRendered = true;
-              initUniversityMapOverlay($scope.selectedUniversity);
+              g.university.og_map = map;
+              g.mapHasRendered = true;
+              initUniversityMapOverlay(g.university);
 
 
               function calcMarkerCoords(map) {
@@ -50,12 +55,14 @@ angular.module('uguru.util.controllers')
                   var dy = mapBounds.lng() - mapCenter.lng();
                   var newMarkerLat = mapBounds.lat() - (dx/6);
                   var newMarkerLng = mapBounds.lng() - (dy/6); //purposely dx so its a square
+
                   return {latitude: newMarkerLat, longitude: newMarkerLng};
                 }
               }
               $timeout(function() {
                 $scope.$apply(function() {
                   university.map.marker = generateSelectedUniversityMapMarkerObj(university, calcMarkerCoords(map));
+                  console.log(university.map.marker);
                   university.mapRendered = true;
                   university.map.markers = [];
                 })
@@ -252,7 +259,6 @@ angular.module('uguru.util.controllers')
 
     }
 
-    $scope.selectedCategory = ($scope.categories && $scope.categories[0]) || {name: 'Academic', hex_color: 'academic', id:5, splashData: ContentService.splashCategoryOptions['Academic']};
 
     var generateUniversityImgDataURI = function(obj) {
         var baseSVGURL = "<svg style='height:25px; width:25px;' viewBox='0 0 73 91' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z' id='Rectangle-1' fill='" + obj.school_color_dark + "'></path><path d='M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z' id='flag' opacity='0.9' fill='" + obj.school_color_dark +"'></path><path d='M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z' id='border' fill='#40484B'></path><text fill='#FFFFFF' font-family='Source Sans Pro' font-size='12.7286934' font-weight='bold'><tspan x='10' y='32' fill='#FFFFFF'>" + obj.tiny_name + "</tspan></text></svg>"
@@ -310,61 +316,79 @@ angular.module('uguru.util.controllers')
       // $scope.$on('$ionicView.loaded', function() {
 
       // });
-      renderUniversityPlacesMap($scope.selectedUniversity);
 
-      function renderUniversityPlacesMap(university) {
-
-        //state
-        //in university map w/ styles --> invisible mode
-        var initCallback = timeStateCallback(1, 'initializing university...');
-        initializeDynamicSelectedUniversityMap(university, $scope.selectedCategory, initCallback);
-
-        //get places
-        $scope.time_state.watcher = $scope.$watch('time_state.value', function(newValue, oldValue) {
+      function initWatcher() {
+        console.log('initializing watcher');
+        g.remote.watcher = $scope.$watch('g.remote.value', function(newValue, oldValue) {
           switch (newValue) {
-
             case 1: //api call
+
               var placesCallback = timeStateCallback(2, 'getting places...');
-              getUniversityPlaces($scope.selectedUniversity, placesCallback);
+              console.log(newValue, 'complete. Getting places..', g.university, placesCallback);
+              getUniversityPlaces(g.university, placesCallback);
               break;
 
             case 2: //filtering
-              var filteringPlaces = timeStateCallback(3, 'filtering ' + university.place_results.length + ' results');
-              filterUniversityPlaces($scope.selectedUniversity.place_results, $scope.selectedUniversity, $scope.desktopMode, filteringPlaces);
+              var filteringPlaces = timeStateCallback(3, 'filtering ' + g.university.place_results.length + ' results');
+              filterUniversityPlaces(g.university.place_results, g.university, $scope.desktopMode, filteringPlaces);
               break;
 
             case 3: //generating custom elements & compile
-              var generateCallback = timeStateCallback(4, 'generating' + university.place_results.length + ' place markers');
-              generateUniversityPlaceOverlayMarkers(university.map, $scope.selectedUniversity.place_results, '#map-parent-wrapper .ui-gmap-wrapper', generateCallback);
+              var generateCallback = timeStateCallback(4, 'generating' + g.university.place_results.length + ' place markers');
+              $timeout(function() {
+                generateUniversityPlaceOverlayMarkers(g.university.map, g.university.place_results, '#map-parent-wrapper .ui-gmap-wrapper', generateCallback);
+              }, 2000)
             case 4:
 
-              var generatingMarkers = timeStateCallback(5, 'TODO: generating ' + university.place_results.length + ' markers');
+              var generatingMarkers = timeStateCallback(5, 'TODO: generating ' + g.university.place_results.length + ' markers');
               $timeout(function(){
                 generatingMarkers();
               }, 3000);
 
             case 5:
-              var transitionMarkersInvisible = timeStateCallback(6, 'TODO: transitioning markers for ' + university.place_results + ' markers');
+              var transitionMarkersInvisible = timeStateCallback(6, 'TODO: transitioning markers for ' + g.university.place_results + ' markers');
 
             default:
               break;
           }
         })
+      }
 
-        function extendMapBoundsForPlaces(map, places) {
-          var bound = new google.maps.LatLngBounds();
-          for(var i = 0; i < places.length; i++) {
-            var indexPlace = places[i];
-            var indexLatLng = new google.maps.LatLng(indexPlace.geometry.location.lat(), indexPlace.geometry.location.lng());
-            bound.extend(indexLatLng);
-          }
-          map.fitBounds(bound);
+      function renderUniversityPlacesMap(university) {
+        //state
+        //in university map w/ styles --> invisible mode
+        var initCallback = timeStateCallback(1, 'initializing university...');
+        initializeDynamicSelectedUniversityMap(university, g.university, initCallback);
+
+        //get places
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function checkFilterCountAndRequest(places_arr) {
+          return;
         }
 
+        function getSplashMarkers() {
+          return;
+        }
 
+        //state
+      }
 
-
-        function addXYCoordsToPlaces(g_overlay, places_arr, callback) {
+      function addXYCoordsToPlaces(g_overlay, places_arr, callback) {
           for (var i = 0; i < places_arr.length; i++) {
             var indexPlace = places_arr[i];
             var indexLatLng = new google.maps.LatLng(indexPlace.geometry.location.lat(), indexPlace.geometry.location.lng());
@@ -377,25 +401,18 @@ angular.module('uguru.util.controllers')
           callback && callback();
         }
 
-        function filterUniversityPlaces(places_arr, university, desktop_mode, callback) {
+      function extendMapBoundsForPlaces(map, places) {
+          var bound = new google.maps.LatLngBounds();
+          for(var i = 0; i < places.length; i++) {
+            var indexPlace = places[i];
+            var indexLatLng = new google.maps.LatLng(indexPlace.geometry.location.lat(), indexPlace.geometry.location.lng());
+            bound.extend(indexLatLng);
+          }
 
-          extendMapBoundsForPlaces(university.og_map, places_arr);
-
-          google.maps.event.addListenerOnce(university.og_map, 'bounds_changed', function () {
-            initUniversityMapOverlay(university);
-            google.maps.event.addListenerOnce(university.og_map, 'tilesloaded', function() {
-                addXYCoordsToPlaces(university.og_map_overlay, places_arr, callback);
-            });
-          });
-
-          //step 2
-          constrainMapBoundsByWindow(university, places_arr);
-          //step 3
-          //filter places by
+          map.fitBounds(bound);
         }
 
-
-        function generateUniversityPlaceOverlayMarkers(map, places_arr, parent_elem_selector, callback) {
+      function generateUniversityPlaceOverlayMarkers(map, places_arr, parent_elem_selector, callback) {
           var parentContainerElem = document.querySelector(parent_elem_selector);
           var hexColorLookupDict = {'academic': '#e6389b'};
           if (!parentContainerElem) {
@@ -403,6 +420,7 @@ angular.module('uguru.util.controllers')
           }
           for (var i = 0; i < places_arr.length; i++) {
             var indexPlace = places_arr[i];
+
             if (indexPlace && indexPlace.coords && indexPlace.coords.x && indexPlace.coords.y) {
               var div = document.createElement('div');
               var categoryBgCssText = 'background-color:' + hexColorLookupDict[map.category.hex_color] + ';background' + hexColorLookupDict[map.category.hex_color];
@@ -414,25 +432,18 @@ angular.module('uguru.util.controllers')
               parentContainerElem.appendChild(div);
             }
           }
-          callback && callback();
+          //
         }
 
 
-        function constrainMapBoundsByWindow(university, places_arr) {
+
+      function constrainMapBoundsByWindow(university, places_arr) {
           var mapElem = document.getElementById(university.map.domId);
           var mapElemRect = mapElem.getBoundingClientRect();
         }
 
-        function checkFilterCountAndRequest(places_arr) {
-          return;
-        }
+      function getUniversityPlaces(university, callback) {
 
-        function getSplashMarkers() {
-          return;
-        }
-
-        //state
-        function getUniversityPlaces(university, callback) {
           var options = {
             types: ['library', 'food', 'cafe', 'bus-stop', 'grocery'],
             radius:500
@@ -441,26 +452,50 @@ angular.module('uguru.util.controllers')
           if (university.og_map  && (!university.place_results || !university.place_results.length)) {
           $timeout(function() {
             $scope.$apply(function() {
-              GUtilService.getPlaceListByCoords($scope, university.og_map, {latitude: university.latitude, longitude: university.longitude}, updateMarkersOnUniversitySpecificMap(callback), options);
+              GUtilService.getPlaceListByCoords(g, university.og_map, {latitude: university.latitude, longitude: university.longitude}, updateMarkersOnUniversitySpecificMap(callback), options);
               })
             })
           }
         }
 
-        function timeStateCallback(num, description) {
-          return function() {
-            $timeout(function() {
-              $scope.$apply(function() {
-                $scope.time_state.value = num;
-                $scope.time_state.description = description || '';
-                if (description.indexOf('TODO') > -1) {
-                  $scope.time_state.watcher();
-                }
-              })
+      function timeStateCallback(num, description) {
+        return function() {
+          $timeout(function() {
+            $scope.$apply(function() {
+              g.remote.value = num;
+              g.remote.description = description || '';
+              console.log(g.remote.value);
+              if (description.indexOf('TODO') > -1) {
+                g.remote.watcher();
+              }
             })
-          }
+          })
         }
       }
+
+      function filterUniversityPlaces(places_arr, university, desktop_mode, callback) {
+
+        extendMapBoundsForPlaces(university.og_map, places_arr);
+
+        google.maps.event.addListenerOnce(university.og_map, 'bounds_changed', function () {
+          initUniversityMapOverlay(university);
+          google.maps.event.addListenerOnce(university.og_map, 'tilesloaded', function() {
+              addXYCoordsToPlaces(university.og_map_overlay, places_arr, callback);
+          });
+        });
+
+        //step 2
+        constrainMapBoundsByWindow(university, places_arr);
+        //step 3
+        //filter places by
+        callback && callback();
+        generateUniversityPlaceOverlayMarkers(g.university.map, g.university.place_results, '#map-parent-wrapper .ui-gmap-wrapper');
+      }
+
+      initWatcher();
+      $timeout(function() {
+        renderUniversityPlacesMap(g.university);
+      }, 1000)
 
       // uiGmapIsReady.promise()                     // this gets all (ready) map instances - defaults to 1 for the first map
       // .then(function(instances) {                 // instances is an array object
