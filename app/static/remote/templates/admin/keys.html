@@ -507,6 +507,48 @@
                     </div>
                 </div>
             </div>
+            <div class="flex-center-vertical-space-between bg-slate" style="margin-top: -15px;">
+                <div class='flex-center-vertical height-36 width-128 absolute' style='bottom:17.5%;'>
+                    <h2 ng-show='!player.status' class="opacity-50 weight-900 txt-36 absolute top-0 left-0 m15left">{{animation.selected_percent}}</h2>
+                    <h2 ng-show='player.status' class="weight-900 txt-azure txt-36 absolute top-0 left-0 m15left">{{timer.time}}s</h2>
+                </div>
+                <ul class='p15-grid flex-center txt-center'>
+                    <li>
+                        <div class='txt-1 txt-center full-x semibold'># Intervals</div>
+                        <input class="radius-2 flex-center p05xy txt-center height-32" size="20" ng-model='animation.attr.kf_intervals' ng-blur="updateNumIntervals(animation.attr.kf_intervals)" placeholder="animation name" type='text' />
+                    </li>
+                    <li>
+                        <div class='txt-1 txt-center full-x semibold'>Duration</div>
+                        <div class="flex-center-vertical">
+                            <input class="radius-2-left txt-center p05xy height-32" size="4" ng-model="animation.attr.durationVal" ng-change="animDurationChange(animation.attr.durationVal)" placeholder="0"/>
+                            <span class="bg-campus flex-center txt-16 p05xy radius-2-right height-32">s</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='txt-1 txt-center full-x semibold'>Timing Function</div>
+                        <dropdown class="height-32" ng-model="animationTimingFunc" selected-index="0"> </dropdown>
+                    </li>
+                    <li>
+                        <div class='txt-1 txt-center full-x semibold'>Delay</div>
+                        <div class="flex-center-vertical">
+                            <input ng-change="animation.attr.delay = animation.attr.delayVal + 's'" class="radius-2-left flex-center p05xy txt-center" size="4" style="height: 32px;" ng-model='animation.attr.delayVal' type='' placeholder=""/>
+                            <span class="bg-campus flex-center txt-16 p05xy radius-2-right height-32">s</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='txt-1 txt-center full-x semibold'>Count</div>
+                        <input class="radius-2 flex-center p05xy txt-center height-32" size="4" ng-model='animation.attr.iteration_count' type='' placeholder=""/>
+                    </li>
+                    <li>
+                        <div class='txt-1 txt-center full-x semibold'>Direction</div>
+                        <dropdown class="height-32" ng-model="animationDirectionOptions" selected-index="0"> </dropdown>
+                    </li>
+                    <li>
+                        <div class='txt-1 txt-center full-x semibold'>Fill Mode</div>
+                        <dropdown class="height-32" ng-model="animationFillMode" selected-index="0"> </dropdown>
+                    </li>
+                </ul>
+            </div>
             <div class='search-animation-mode relative bg-charcoal' ng-if='stage.searchAnimationMode' class='bg-slate' style="height: calc(100% - 83px - 68px - 82px); width: 100%; overflow: hidden;">
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='cancelTimeStateActionAnimationClassInputFocused()' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                 <div>
@@ -576,48 +618,7 @@
                 </div>
             </div>
 
-            <div class="flex-center-vertical-space-between bg-slate" style="margin-top: -15px;">
-                <div class='flex-center-vertical height-36 width-128 absolute' style='bottom:17.5%;'>
-                    <h2 ng-show='!player.status' class="opacity-50 weight-900 txt-36 absolute top-0 left-0 m15left">{{animation.selected_percent}}</h2>
-                    <h2 ng-show='player.status' class="weight-900 txt-azure txt-36 absolute top-0 left-0 m15left">{{timer.time}}s</h2>
-                </div>
-                <ul class='p15-grid flex-center txt-center'>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'># Intervals</div>
-                        <input class="radius-2 flex-center p05xy txt-center height-32" size="20" ng-model='animation.attr.kf_intervals' ng-blur="updateNumIntervals(animation.attr.kf_intervals)" placeholder="animation name" type='text' />
-                    </li>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'>Duration</div>
-                        <div class="flex-center-vertical">
-                            <input class="radius-2-left txt-center p05xy height-32" size="4" ng-model="animation.attr.durationVal" ng-change="animDurationChange(animation.attr.durationVal)" placeholder="0"/>
-                            <span class="bg-campus flex-center txt-16 p05xy radius-2-right height-32">s</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'>Timing Function</div>
-                        <dropdown class="height-32" ng-model="animationTimingFunc" selected-index="0"> </dropdown>
-                    </li>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'>Delay</div>
-                        <div class="flex-center-vertical">
-                            <input ng-change="animation.attr.delay = animation.attr.delayVal + 's'" class="radius-2-left flex-center p05xy txt-center" size="4" style="height: 32px;" ng-model='animation.attr.delayVal' type='' placeholder=""/>
-                            <span class="bg-campus flex-center txt-16 p05xy radius-2-right height-32">s</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'>Count</div>
-                        <input class="radius-2 flex-center p05xy txt-center height-32" size="4" ng-model='animation.attr.iteration_count' type='' placeholder=""/>
-                    </li>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'>Direction</div>
-                        <dropdown class="height-32" ng-model="animationDirectionOptions" selected-index="0"> </dropdown>
-                    </li>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'>Fill Mode</div>
-                        <dropdown class="height-32" ng-model="animationFillMode" selected-index="0"> </dropdown>
-                    </li>
-                </ul>
-            </div>
+
 
             <div class="anim-timeline" ng-if="false">
             	<ul class="anim-label">

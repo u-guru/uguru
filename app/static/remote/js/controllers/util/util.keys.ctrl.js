@@ -408,6 +408,9 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.initStageTimeState = function() {
+			if (!$scope.stage.time_states) {
+				$scope.stage.time_states = [];
+			}
 			for (var i = 0; i < $scope.stage.time_states.length; i++) {
 				var indexTimeState = $scope.stage.time_states[i];
 				if (!indexTimeState.time) {
@@ -415,7 +418,7 @@ angular.module('uguru.util.controllers')
 					return;
 				}
 			}
-			$scope.stage.time_states.push({description:null, time:10000, editMode:true, actions:[]});
+			$scope.stage.time_states.push({description:null, time:1000, editMode:true, actions:[]});
 			$timeout(function() {
 				$scope.$apply();
 				var allActionInputs = document.querySelectorAll('input.time-input');
@@ -770,7 +773,7 @@ angular.module('uguru.util.controllers')
 					}
 				}
 				$compile(stageContainer)($scope);
-				$scope.asideTabIndex = 0;
+				$scope.asideTabIndex = 1;
 				if ($scope.pageDom.stageName && $scope.pageDom.stageName.length && $scope.pageDom.stageHtml && $scope.pageDom.stageHtml.length) {
 					$localstorage.setObject('last_stage', $scope.pageDom);
 					$scope.stageDropdown.options[0] = $scope.pageDom.stageName
@@ -1743,6 +1746,7 @@ angular.module('uguru.util.controllers')
 			var desiredIndex = $scope.animation.selected_percent;
 			console.log('about to apply property change', property, 'to', value, 'in kf', desiredIndex);
 			editKeyframeAtX($scope.animation, desiredIndex, property, value);
+			console.log($scope.animation.obj.cssText);
 			// }, 500)
 			// var cssRuleAtKeyFrameX = findCSSRuleByIndex($scope.animation.obj, value);
 			// var transformObjAtX = $scope.animation.selected_keyframe;
@@ -1916,7 +1920,7 @@ angular.module('uguru.util.controllers')
 				var css_text = transformObjToCssText(transformObj, property);
 				console.log(css_text);
 				anim.obj.appendRule(percentage + '{' +  css_text + '}', keyframe_percent);
-				console.log(anim.obj.cssText);
+
 			} else {
 				var css_text = transformObjToCssText(transformObj, property);
 				var css_text = " ";
@@ -1929,7 +1933,7 @@ angular.module('uguru.util.controllers')
 			// $scope.animation.obj.appendRule('0% {transform: translate(10px, 10px);}', 1);
 			// $scope.animation.obj.appendRule('0% {transform: translate(10px, 10px);}', 1);
 			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX', 'rotate3DAngle': 'rotate'};
-			var propertyDictCssUnit = {'translateX': '', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'rad', 'skewY': 'rad', 'rotate3DZ':'rad', 'rotate3DY': 'rad', 'rotate3DX': 'rad', 'rotate3DAngle': 'rad'};
+			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'rad', 'skewY': 'rad', 'rotate3DZ':'rad', 'rotate3DY': 'rad', 'rotate3DX': 'rad', 'rotate3DAngle': 'rad'};
 			var transformProperties = Object.keys(propertyDictCssMap);
 			var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'transformOrigin', 'transformOrigin', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 			var cssToChange = {transform: {}, etc: {}};
