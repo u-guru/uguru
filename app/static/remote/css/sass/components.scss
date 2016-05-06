@@ -14490,18 +14490,18 @@ a.category-tile {
 		position: relative;
 		.marker-normal-window {
 			.open {
-				@include prefix(transition, stroke-dashoffset 150ms ease-in-out, webkit moz ms o);
+				@include prefix(transition, #{stroke-dashoffset 150ms ease-in-out, opacity 150ms ease-in-out 150ms}, webkit moz ms o);
 				stroke-dasharray: 80, 80;
 				stroke-dashoffset: 0;
 			}
 			.side {
-				@include prefix(transition, stroke-dashoffset 200ms ease-in-out, webkit moz ms o);
+				@include prefix(transition, stroke-dashoffset 200ms ease-in-out 650ms, webkit moz ms o);
 				stroke-dasharray: 278, 278;
 				stroke-dashoffset: 0;
 			}
 		}
 		.marker-normal-content {
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			@include prefix(transition, all 150ms ease-in-out 350ms, webkit moz ms o);
 			@include flex;
 			@include flex-wrap;
 			position: absolute;
@@ -14510,7 +14510,7 @@ a.category-tile {
 			width: calc(100% - 4px);
 			height: calc(100% - 26px);
 			svg {
-				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+				@include prefix(transition, all 150ms ease-in-out 350ms, webkit moz ms o);
 				@include svg-stroke(white, 3);
 				position: absolute;
 				top: 50%;
@@ -14522,8 +14522,8 @@ a.category-tile {
 				height: 48px;
 			}
 			.marker-guru {
-				@include opacity(0);
-				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+				// @include opacity(0);
+				@include prefix(transition, all 150ms ease-in-out 350ms, webkit moz ms o);
 				@include round;
 				@include flex;
 				@include flex-center-vertical;
@@ -14563,6 +14563,14 @@ a.category-tile {
 				}
 			}
 		}
+		&.hidden {
+			.marker-normal-window {
+				.open {
+					stroke-dashoffset: 80;
+					opacity: 0;
+				}
+			}
+		}
 	}
 	.marker-expanded {
 		position: absolute;
@@ -14572,19 +14580,22 @@ a.category-tile {
 		margin-left: -131px;
 		.marker-expanded-window {
 			.sides {
-				@include prefix(transition, stroke-dashoffset 300ms ease-in-out, webkit moz ms o);
+				@include prefix(transition, stroke-dashoffset 300ms ease-in-out 150ms, webkit moz ms o);
 				stroke-dasharray: 936, 936;
 				stroke-dashoffset: 936;
 			}
 		}
 		.marker-expanded-content {
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			@include prefix(transition, all 150ms ease-in-out 350ms, webkit moz ms o);
 			@include opacity(0);
 			position: absolute;
 			top: 2px;
 			left: 2px;
 			width: calc(100% - 4px);
 			height: calc(100% - 26px);
+			// &.active {
+			// 	@include opacity-important(1);
+			// }
 			.marker-expanded-icon {
 				svg {
 					@include svg-stroke(white, 1.5);
@@ -14671,24 +14682,36 @@ a.category-tile {
 		.marker-normal {
 			.marker-normal-window {
 				.side {
-					@include prefix(transition-delay, 150ms, webkit moz ms o);
+					@include prefix(transition, stroke-dashoffset 200ms ease-in-out 150ms, webkit moz ms o);
 					stroke-dashoffset: 278;
 				}
 			}
 			.marker-normal-content {
 				@include opacity(0);
+				@include prefix(transition, all 150ms ease-in-out 0ms, webkit moz ms o);
+				svg, .marker-guru {
+					@include prefix(transition, all 150ms ease-in-out 0ms, webkit moz ms o);
+				}
+			}
+			&.move {
+				.marker-normal-content {
+					@include prefix(transition, all 150ms ease-in-out 0ms, webkit moz ms o);
+					svg, .marker-guru {
+						@include prefix(transition, all 150ms ease-in-out 0ms, webkit moz ms o);
+					}
+				}
 			}
 		}
 		.marker-expanded {
 			z-index: 2;
 			.marker-expanded-window {
 				.sides {
-					@include prefix(transition-delay, 350ms, webkit moz ms o);
+					@include prefix(transition, stroke-dashoffset 300ms ease-in-out 350ms, webkit moz ms o);
 					stroke-dashoffset: 0;
 				}
 			}
 			.marker-expanded-content {
-				@include prefix(transition-delay, 650ms, webkit moz ms o);
+				@include prefix(transition, all 150ms ease-in-out 650ms, webkit moz ms o);
 				@include opacity(1);
 			}
 		}
