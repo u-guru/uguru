@@ -356,6 +356,7 @@
     <script type="text/javascript" src="remote/js/shared/RequestService.js"></script>
     <script type="text/javascript" src="remote/js/shared/MessageService.js"></script>
     <script type="text/javascript" src="remote/js/shared/G-UtilService.js"></script>
+    <script type="text/javascript" src="remote/js/shared/GuruService.js"></script>
     <script type="text/javascript" src="remote/js/shared/G-MapService.js"></script>
     <script type="text/javascript" src="remote/js/shared/SideMenuService.js"></script>
     <script type="text/javascript" src="remote/js/shared/DevToolService.js"></script>
@@ -495,14 +496,14 @@
     </script>
  -->
   </head>
-  <body ng-app="uguru" animation="slide-left-right-ios7">
+  <body ng-app="uguru" animation="slide-left-right-ios7" onload="pageLoad()">
     <script type="text/javascript" src="remote/lib/uLoader/uguru.loader.js">
     </script>
     <!-- <h3>In App Google Maps Plugin</h3>
    <div style="width:100%;height:400px" id="map_canvas"></div>
    <button id="button">Full Screen</button> -->
 
-    <ui-view>
+    <ui-view id="uguru-view" class="hide">
 
     </ui-view>
     <script>

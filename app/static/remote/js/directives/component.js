@@ -428,22 +428,46 @@ directive('draggable', function($document) {
             }
         }
     })
-    .directive("pennant", function() {
+    .directive("pennant", ["$timeout", "$compile", 'AnimationService', function($timeout, $compile, AnimationService) {
         return {
             templateUrl: BASE + 'templates/elements/components/info/pennant.tpl',
             scope: {
-                animation: '=animation',
-                pennantFill: '=mainFill',
-                pennantText: '=text',
-                textColor: '=textColor'
+                animIn: '=animIn',
+                animInDelay: '=animInDelay',
+                university: '=university',
+                active: '=active'
             },
             restrict: 'E',
             replace: true,
             link: function(scope, element, attr) {
-                return;
+
+                scope.$watch('active', function(isActive) {
+                    if (isActive) {
+                        scope.animIn = attr.animIn;
+                        scope.animInDelay = parseInt(attr.animInDelay) || 0;
+                        scope.pennantText = scope.university.school_tiny_name || scope.university.short_name ||  scope.university.name;
+                        scope.pennantFill = scope.university.school_color_dark;
+                        scope.pennantFillLight = scope.university.school_color_light;
+                        $timeout(function() {
+                            AnimationService.animateIn(element[0], scope.animIn, scope.animInDelay);
+                            $compile(element[0])(scope);
+                        }, scope.animInDelay)
+
+                    } else {
+                        scope.animOut = attr.animOut;
+                        scope.animOutDelay = attr.animOutDelay;
+                        if (scope.animOut) {
+
+                            AnimationService.animateOut(element[0], scope.animOut, scope.animOutDelay);
+                        } else {
+                            element.css({'opacity':0});
+                        }
+                    }
+                })
+
             }
         };
-    })
+    }])
     .directive("colorPicker", function() {
         return {
             templateUrl: BASE + 'templates/elements/components/inputs/pickers/color.tpl',
@@ -608,13 +632,67 @@ directive('draggable', function($document) {
             templateUrl: BASE + 'templates/elements/components/cards/user.id.tpl'
         }
     })
-    .directive('mapMarker', function() {
+    .directive('mapMarker', ['$timeout', function($timeout) {
         return {
             templateUrl: BASE + 'templates/elements/components/links/map.marker.tpl',
             restrict: 'E',
-            replace: true
+            replace: true,
+            scope: {
+                mGuru: '=guru',
+                mPlace: '=place',
+                state: '=state'
+            },
+            link: function(scope, element, attr) {
+                if (!('state' in scope)) {
+                    scope.state = 2;
+                }
+                scope.$watch('state', function(state_index) {
+                    scope.state = parseInt(state_index);
+                    $timeout(function() {
+                        scope.$apply();
+                    })
+                });
+                scope.$watch(function() {
+                    return element.attr('class');
+                }, function(classlist) {
+                    if (classlist.indexOf('deactivate-marker') > - 1) {
+                        element.attr('class').classList.remove('deactivate-marker');
+                        scope.state = 1;
+                        $timeout(function() {
+                            scope.$apply();
+                        })
+                    }
+                });
+                scope.onMarkerClick = function() {
+                    var allMarkers = element[0].parentNode.querySelectorAll('map-marker');
+                    if (scope.state === 1) {
+                        for (var i = 0; i < allMarkers.length; i++) {
+                            var indexMarker = allMarkers[i];
+                            if (indexMarker !== element[0]) {
+                                indexMarker.classList.add('deactivate-marker');
+                            }
+                        }
+                        scope.state = 2;
+                    } else if (scope.state === 2) {
+                        scope.state = 0;
+                        $timeout(function() {
+                            scope.state = 1;
+                            scope.$apply();
+                        }, 1000);
+
+                    } else {
+                        if (element.attr('class').indexOf('marker-state-transitioning') === -1) {
+                            scope.state = 1;
+                        }
+                    }
+                    $timeout(function() {
+                        scope.$apply();
+                    })
+
+                }
+            }
         }
-    })
+    }])
     .directive('badge', function() {
         return {
             templateUrl: BASE + 'templates/elements/components/info/badge.tpl',
@@ -706,6 +784,11 @@ directive('draggable', function($document) {
             templateUrl: BASE + 'templates/elements/components/inputs/toggle.tpl',
             restrict: 'E',
             replace: true
+        }
+    })
+    .directive('atv-card', function () {
+        return {
+            templateUrl: BASE + 'templates/elements/components/cards/atv.tpl'
         }
     })
     .directive('inputsGallery', function() {

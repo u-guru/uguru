@@ -201,7 +201,11 @@ gulp.task('styles', function() {
     cssStream11, cssStream12, cssStream13, cssStream14, cssStream15, cssStream16, cssStream17, cssStream18,
     cssStream19, cssStream20, cssStream21, cssStream22, cssStream23, cssStream24, cssStream25, cssStream26, cssStream27, cssStream28).pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
-    .pipe(minifyCSS())
+    .pipe(minifyCSS({debug: true}, function(details) {
+            console.log("DEBUG")
+            console.log(details.name + ': ' + details.stats.originalSize);
+            console.log(details.name + ': ' + details.stats.minifiedSize);
+    }))
     .pipe(plugins.if(build, plugins.rev()))
     .pipe(gulp.dest(path.join(targetDir, 'styles')))
     .on('error', errorHandler);

@@ -32,7 +32,7 @@ function GUtilService($timeout) {
               scope.requestForm.location = {latitude: results[0].geometry.location.lat(), longitude:results[0].geometry.location.lng()};
             }
           }
-        } 
+        }
       })
   }
 
@@ -63,20 +63,20 @@ function GUtilService($timeout) {
         if (results.length) {
 
           $timeout(function() {
-            scope.selectedUniversity.place_results = [];
+            scope.university.place_results = [];
             for (var i = 0; i < results.length; i++) {
               var resultPlace = results[i];
               if (!resultPlace.photos || !resultPlace.photos.length) {
                 continue;
               }
 
-              resultPlace.svg_path = getMapIconPathOnly(resultPlace.types[0], scope.selectedUniversity.school_color_dark, '#FFFFFF', 5);
+              resultPlace.svg_path = getMapIconPathOnly(resultPlace.types[0], scope.university.school_color_dark, '#FFFFFF', 5);
               resultPlace.photo_url = resultPlace.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
-              scope.selectedUniversity.place_results.push(resultPlace);
+              scope.university.place_results.push(resultPlace);
             }
             if (callback) {
 
-              callback(scope.selectedUniversity, scope.selectedCategory);
+              callback(scope.university, scope.category);
             }
           });
         }
@@ -100,7 +100,7 @@ function GUtilService($timeout) {
             //get cross street
             // TODO: http://stackoverflow.com/questions/10676790/getting-an-intersection-with-google-places-geocoding-api
            }
-      } 
+      }
     }
 
   }

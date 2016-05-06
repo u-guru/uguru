@@ -52,10 +52,10 @@
                 </ul>
                 <ul class='p15-grid flex-center-vertical txt-center'>
                     <li>
-                        <dropdown class='height-32' ng-model="stageDropdown"> </dropdown>
+                        <dropdown ng-if='stageDropdown.toggleActive' id='stage-dropdown' class='height-32' ng-model="stageDropdown"> </dropdown>
                     </li>
-                    <li ng-if='animationDropdown'>
-                        <dropdown id='animation-name-dropdown' class="height-32" ng-model="animationDropdown"> </dropdown>
+                    <li>
+                        <dropdown ng-if='animationDropdown.toggleActive' id='animation-name-dropdown' class="height-32" ng-model="animationDropdown"> </dropdown>
                     </li>
                     <!-- <li>
                         <a ng-click='clearAllAnimations()' class="weight-900">Clear All</a>
