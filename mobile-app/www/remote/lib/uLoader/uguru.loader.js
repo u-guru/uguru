@@ -245,7 +245,32 @@ var calcTimeSinceInit = function() {
 bodyLoadingDiv.innerHTML = firstTimeLoadingAnimationContent;
 
 loader = new SVGLoader( document.querySelector('#body-loading-div .pageload-overlay'), { speedIn : 300, easingIn : mina.easeinout } );
+var head = document.querySelector('head')
+var app_version = document.createElement('link');
+var animate = document.createElement('link');
+var animation = document.createElement('link');
+var magic = document.createElement('link');
+var utility = document.createElement('link')
+app_version.rel = 'stylesheet'; 
+animate.rel = 'stylesheet'
+animation.rel = 'stylesheet'
+magic.rel = 'stylesheet'
+utility.rel = 'stylesheet'
+
+animate.href = '/static/remote/css/sass/animate.css';   
+animation.href = '/static/remote/css/sass/animation.css';   
+magic.href = '/static/remote/css/sass/magic.css';   
+utility.href = '/static/remote/css/sass/utility.css';   
+app_version.href = '/static/remote/css/app_version.css';     
+
 loader.show();
+// head.appendChild(animate)
+
+// head.appendChild(animation)
+head.appendChild(magic)
+head.appendChild(utility)
+head.appendChild(app_version)
+// console.log("head",head)
 setTimeout(function() {
     bodyLoadingDiv.style.visibility = "hidden";
     document.querySelector('#body-loading-div svg.transition').style.visibility = "visible";
