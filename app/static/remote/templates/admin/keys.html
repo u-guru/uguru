@@ -563,12 +563,12 @@
                     </li>
                 </ul> -->
                 <div class="range-container small full-x">
-                    <div id='keyframe-bar-container' class='relative p10xy' ng-mouseup="setActiveKeyFrameFromPointer($event)">
+                    <div id='keyframe-bar-container' class='relative p10xy'>
                         <span>0%</span>
                         <div class="relative">
-                            <div style='left:{{animation.selected_percent}}' draggable draggable-x-only draggable-ignore-style class='absolute bg-white round' id='keyframe-pointer'>&nbsp;</div>
-                            <div id='keyframe-bar' class='round high-z-index bg-white-25p full-x top-0 height-10'></div>
-                            <!-- <input ng-mouseup="setActiveKeyFrame(animation.selected_kf_index)"  class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animation.attr.kf_intervals}}" list="numbers"  ng-model="animation.selected_kf_index"/> -->
+                          <!--   <div style='left:{{animation.selected_percent}}' draggable draggable-x-only draggable-ignore-style class='absolute bg-white round' id='keyframe-pointer'>&nbsp;</div>
+                            <div id='keyframe-bar' class='round high-z-index bg-white-25p full-x top-0 height-10'></div> -->
+                            <input ng-mouseup="setActiveKeyFrame(animation.selected_kf_index)"  class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animation.attr.kf_intervals}}" list="numbers"  ng-model="animation.selected_kf_index"/>
                             <progress class="white-round full-x" max="{{animation.attr.durationVal}}" value="{{timer.time}}"></progress>
                         </div>
                         <span>{{animation.kf_count}}%</span>
@@ -577,14 +577,14 @@
             </div>
 
             <div class="flex-center-vertical-space-between bg-slate" style="margin-top: -15px;">
-                <div class='flex-center-vertical height-36 width-128 relative'>
+                <div class='flex-center-vertical height-36 width-128 absolute' style='bottom:17.5%;'>
                     <h2 ng-show='!player.status' class="opacity-50 weight-900 txt-36 absolute top-0 left-0 m15left">{{animation.selected_percent}}</h2>
                     <h2 ng-show='player.status' class="weight-900 txt-azure txt-36 absolute top-0 left-0 m15left">{{timer.time}}s</h2>
                 </div>
                 <ul class='p15-grid flex-center txt-center'>
                     <li>
-                        <div class='txt-1 txt-center full-x semibold'>Name</div>
-                        <input class="radius-2 flex-center p05xy txt-center height-32" size="20" ng-model='animation.attr.name' ng-blur="updateAnimationName(animation)" placeholder="animation name" type='text' />
+                        <div class='txt-1 txt-center full-x semibold'># Intervals</div>
+                        <input class="radius-2 flex-center p05xy txt-center height-32" size="20" ng-model='animation.attr.kf_intervals' ng-blur="updateNumIntervals(animation.attr.kf_intervals)" placeholder="animation name" type='text' />
                     </li>
                     <li>
                         <div class='txt-1 txt-center full-x semibold'>Duration</div>
