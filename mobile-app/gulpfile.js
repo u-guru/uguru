@@ -228,37 +228,38 @@ gulp.task('scripts', function() {
   // (remember to change appName var to desired module name)
   var templateStream = gulp
       .src([
-        'templates/root.html',
-        'templates/access.html',
-        'templates/university.html',
-        'templates/university.container.html',
-        'templates/majors.container.html',
-        'templates/guru.courses.container.html',
-        'templates/signup.html',
-        'templates/guru.remote.html',
-        'templates/guru.languages.container.html',
-        'templates/guru.experiences.container.html',
-        'templates/payments.html',
-        'templates/student.guru-book.html',
-        'templates/student.settings.html',
-        'templates/student.settings.html',
-        'templates/add-course.modal.html',
-        'templates/add-university.modal.html',
-        'templates/university.modal.html',
-        'templates/signup.modal.html',
-        // 'templates/become-guru.modal.html',
-        'templates/offline.html',
-        'templates/*html',
-        'templates/dev/*html',
-        'templates/**/*html',
-        'templates/**/**/*html',
-        'templates/**/**/**/*html',
+        'templates/**/*',
+        // 'templates/root.html',
+        // 'templates/access.html',
+        // 'templates/university.html',
+        // 'templates/university.container.html',
+        // 'templates/majors.container.html',
+        // 'templates/guru.courses.container.html',
+        // 'templates/signup.html',
+        // 'templates/guru.remote.html',
+        // 'templates/guru.languages.container.html',
+        // 'templates/guru.experiences.container.html',
+        // 'templates/payments.html',
+        // 'templates/student.guru-book.html',
+        // 'templates/student.settings.html',
+        // 'templates/student.settings.html',
+        // 'templates/add-course.modal.html',
+        // 'templates/add-university.modal.html',
+        // 'templates/university.modal.html',
+        // 'templates/signup.modal.html',
+        // // 'templates/become-guru.modal.html',
+        // 'templates/offline.html',
+        // 'templates/*html',
+        // 'templates/dev/*html',
+        // 'templates/**/*html',
+        // 'templates/**/**/*html',
+        // 'templates/**/**/**/*html',
         // 'templates/guru/*html',
         // 'templates/components/modals/*html',
         // 'templates/components/details/*html',
         // 'templates/components/inputs/*html'
-      ], { cwd: 'www/remote' })
-
+      ], { cwd: 'dest/' })
+    .pipe(debug())
     .pipe(plugins.angularTemplatecache('templates.js', {
       root: '/static/remote/templates/',
       module: 'uguru',
@@ -434,41 +435,49 @@ gulp.task('jsHint', function(done) {
 
 // copy templates
 gulp.task('templates', function() {
-  return gulp.src([
-        'templates/**/*.html',
-        'templates/**/**/*.html',
-        'templates/**/**/**/*.html',
-        'templates/svg/**/*.html',
-        'templates/student.home.html',
-        'templates/student.home.body.html',
-        'templates/student.guru-book.html',
-        'templates/student.settings.html',
-        'templates/student.settings.html',
-        'templates/components/modals/add-course.modal.html',
-        'templates/components/modals/add-university.modal.html',
-        'templates/components/modals/university.modal.html',
-        // 'templates/components/modals/signup.modal.html',
-        'templates/components/modals/become-guru.modal.html',
-        'templates/util/offline.html',
-        'templates/*html',
-        'templates/dev/*html',
-        'templates/elements/*',
-        'templates/elements/**/**',
-        'templates/elements/**/**/**',
-        'templates/elements/**/**/**/**',
-        'templates/elements/**/**/**/**/**',
-        'templates/guru/*html',
-        'templates/components/modals/*html',
-        'templates/components/details/*html',
-        'templates/components/inputs/*html',
-        'templates/components/**/**/**.html',
-        'templates/splash/*.html',
-        'templates/splash/**/*.html',
-        'templates/splash/**/**/**.html',
-
-      ], { cwd: 'www/remote' })
+  gulp.src([
+      'templates/**/*png',
+       ], { cwd: 'www/remote' })
     .pipe(gulp.dest(path.join(targetDir, 'templates')))
 
+
+  return gulp.src([
+        'templates/**/*html',
+        'templates/**/*tpl',
+        'templates/**/*svg',
+        // 'templates/**/**/*.html',
+        // 'templates/**/**/**/*.html',
+        // 'templates/svg/**/*.html',
+        // 'templates/student.home.html',
+        // 'templates/student.home.body.html',
+        // 'templates/student.guru-book.html',
+        // 'templates/student.settings.html',
+        // 'templates/student.settings.html',
+        // 'templates/components/modals/add-course.modal.html',
+        // 'templates/components/modals/add-university.modal.html',
+        // 'templates/components/modals/university.modal.html',
+        // // 'templates/components/modals/signup.modal.html',
+        // 'templates/components/modals/become-guru.modal.html',
+        // 'templates/util/offline.html',
+        // 'templates/*html',
+        // 'templates/dev/*html',
+        // 'templates/elements/*',
+        // 'templates/elements/assets/*',
+        // // 'templates/elements/**/**/**',
+        // // 'templates/elements/**/**/**/**',
+        // // 'templates/elements/**/**/**/**/**'
+        // 'templates/guru/*html',
+        // 'templates/components/modals/*html',
+        // 'templates/components/details/*html',
+        // 'templates/components/inputs/*html',
+        // 'templates/components/**/**/**.html',
+        // 'templates/splash/*.html',
+        // 'templates/splash/**/*.html',
+        // 'templates/splash/**/**/**.html',
+
+      ], { cwd: 'www/remote' })
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest(path.join(targetDir, 'templates')))
     .on('error', errorHandler);
 });
 
@@ -528,8 +537,8 @@ gulp.task('default', function(done) {
       'templates',
       'styles',
       'jsHint',
-      'scripts'
     ],
+    'scripts',
     // 'index',
     build ? 'noop' : 'watchers',
     build ? 'noop' : 'serve',
