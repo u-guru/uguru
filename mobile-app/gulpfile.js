@@ -24,6 +24,8 @@ var karma = require('karma').server;
 var preprocess = require('gulp-preprocess');
 var replace = require('gulp-replace-task');
 var fs = require('fs');
+var htmlmin = require('gulp-htmlmin');
+
 /**
  * Parse arguments
  */
@@ -263,6 +265,14 @@ gulp.task('scripts', function() {
       htmlmin: build && minifyConfig
     }));
 
+    streamqueue({ objectMode: true }, templateStream)
+        .pipe(plugins.if(build, plugins.ngAnnotate()))
+        .pipe(plugins.if(build, plugins.uglify()))
+        .pipe(plugins.if(build, plugins.rev()))
+        .pipe(plugins.if(build, plugins.concat('templates.js')))
+        .pipe(gulp.dest(dest))
+
+        .on('error', errorHandler);
   var scriptStream = gulp
 
     .src([
@@ -374,10 +384,9 @@ gulp.task('scripts', function() {
   // return streamqueue({ objectMode: true }, scriptStream, templateStream)
   return streamqueue({ objectMode: true }, scriptStream)
     .pipe(plugins.if(build, plugins.ngAnnotate()))
-    .pipe(plugins.if(build, plugins.concat('app.js')))
     .pipe(plugins.if(build, plugins.uglify()))
     .pipe(plugins.if(build, plugins.rev()))
-
+    .pipe(plugins.if(build, plugins.concat('app.js')))
     .pipe(gulp.dest(dest))
 
     .on('error', errorHandler);
