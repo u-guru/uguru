@@ -227,9 +227,21 @@ var TIMEOUT_UNTIL_END_OF_LOADER = 2500;
 
 var pageLoad= function() {
 	var bodyLoadTime = calcTimeSinceInit();
-	className = document.querySelector('body #uguru-view').className.replace('hide','')
-	document.querySelector('body #uguru-view').className = className
-	console.log('Body dom load complete, load time:', bodyLoadTime, 'seconds');
+  console.log('Body dom load complete, load time:', bodyLoadTime, 'seconds');
+  if (bodyLoadTime > 7)
+  {
+    className = document.querySelector('body #uguru-view').className.replace('hide','')
+    document.querySelector('body #uguru-view').className = className
+  }
+  else
+  {
+    var timeout = 7000- bodyLoadTime *1000
+    setTimeout(function() {
+        className = document.querySelector('body #uguru-view').className.replace('hide','')
+        document.querySelector('body #uguru-view').className = className
+    }, timeout);
+  }
+
 
 }
 var calcTimeSinceInit = function() {
@@ -271,8 +283,8 @@ setTimeout(function() {
     head.appendChild(magic);
     head.appendChild(utility);
     head.appendChild(app_version);
-    head.appendChild(animate);
-    head.appendChild(animation);
+    // head.appendChild(animate);
+    // head.appendChild(animation);
 }, 500);
 
 

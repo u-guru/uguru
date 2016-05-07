@@ -259,7 +259,7 @@ gulp.task('scripts', function() {
         // 'templates/components/details/*html',
         // 'templates/components/inputs/*html'
       ], { cwd: 'dest/' })
-    .pipe(debug())
+    // .pipe(debug())
     .pipe(plugins.angularTemplatecache('templates.js', {
       root: '/static/remote/templates/',
       module: 'uguru',
@@ -277,7 +277,7 @@ gulp.task('scripts', function() {
   var scriptStream = gulp
 
     .src([
-      'templates.js',
+      // 'templates.js',
       "lib/google/webfont.js",
       'lib/uguru/detect.mobile.js',
       'lib/uguru/preload.analytics.js',
