@@ -285,7 +285,7 @@ setTimeout(function() {
     head.appendChild(app_version);
     // head.appendChild(animate);
     // head.appendChild(animation);
-}, 1);
+}, 500);
 
 
 loader.show();
