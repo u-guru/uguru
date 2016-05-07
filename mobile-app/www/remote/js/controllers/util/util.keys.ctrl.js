@@ -15,13 +15,13 @@ angular.module('uguru.util.controllers')
 	'$compile',
 	'AnimationService',
 	function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService, LoadingService, KeyboardService, $compile, AnimationService) {
-
 		var defaults = {
 			KF_COUNT: 100,
 			DURATION: 1,
 			KF_INTERVALS:5,
 			SHAPE_DICT: getShapeDict()
 		}
+
 		//@gabrielle
 		var ctrlShortcuts = [
 
@@ -71,29 +71,30 @@ angular.module('uguru.util.controllers')
 				keyCode: 78,
 				func: function() { $scope.root.triggers.runSequence(['click:#add-time-state-button:0']) }
 			},
-			{
-				letter: 'left-arrow',
-				description: 'shifts keyframe one to the left (if possible)',
-				keyCode: 188,
-				func: toggleSelectedKFToLeft
-			},
-			{
-				letter: 'right-arrow',
-				description: 'shifts keyframe one to the right (if possible)',
-				keyCode: 190,
-				func: toggleSelectedKFToRight
-			}
+			// {
+			// 	letter: 'left-arrow',
+			// 	description: 'shifts keyframe one to the left (if possible)',
+			// 	keyCode: 188,
+			// 	func: toggleSelectedKFToLeft
+			// },
+			// {
+			// 	letter: 'right-arrow',
+			// 	description: 'shifts keyframe one to the right (if possible)',
+			// 	keyCode: 190,
+			// 	func: toggleSelectedKFToRight
+			// }
 		]
 
 		$scope.player = initAnimationPlayer();
 		$scope.timer = initAnimationTimer()
 		$scope.defaults = {};
+		$scope.animationDropdown = {toggleActive:true, options:['No animation selected', 'Import Animation'], selectedIndex: 0, label:'Selected Animation', size:'small', onOptionClick:function(option, index) {if (index === 1) {$scope.layout.index = 1; $scope.importLayoutIndex = 1; } else if (index === 2) { ($scope.saveAnimationClass($scope.animation))} $timeout(function() {$scope.animationDropdown.selectedIndex = 0}, 500)}}
+		$scope.stageDropdown = {toggleActive: true,options:['No stage selected', 'Import Stage'], selectedIndex: 0, label:'Selected Stage', size:'small', onOptionClick: onStageDropdownSelected};
 		$scope.keyframeBar = {pointerVal: 0};
 		$scope.animationDict = {importTextarea:'', importInput: ''};
 		$scope.imports = {animations: [], stages:[]};
 		$scope.layout = {index: 0};
 		$scope.shapesDropdown = {options: Object.keys(defaults.SHAPE_DICT), label: "Inject Shape", size: "normal", selectedIndex:0, onOptionClick: addSVGPlaceholder}
-		$scope.stageDropdown = initStageDropdown()
 		$scope.animationDirectionOptions = {options: ["normal", "reverse", "alternate", "alternate-reverse"], selectedIndex: 0, size: "small", onOptionClick: setAnimationDirectionFunc};
 		$scope.animationTimingFunc = {options: ["ease", "ease-in", "ease-out", "ease-in-out", "linear", "set-start", "step-end", "cubic"], selectedIndex: 0, size: "small", onOptionClick: setAnimationTimeFunc};
 		$scope.animationFillMode = {options: ["forwards","none", "backwards", "both"], selectedIndex: 0, size:'small', onOptionClick:setAnimationFillMode};
@@ -108,6 +109,25 @@ angular.module('uguru.util.controllers')
 				stageCss: '',
 				time_states: [{time: 1000, actions:[]}]
 			}
+		}
+
+		function onStageDropdownSelected(option, index) {
+			if (index === 1) {
+				$scope.layout.index = 1;
+				$scope.importLayoutIndex = 2;
+			} else
+			if (index === 2) {
+				$scope.saveStageHtml($scope.animation);
+			} else
+			if (index === 3) {
+				clearStageTemplate($scope.stage);
+			}
+
+			$timeout(
+				function()
+				{
+					$scope.stageDropdown.selectedIndex = 0
+				}, 500)
 		}
 
 		function initNewStage(stage_name, html, css, anim_selector) {
@@ -188,9 +208,9 @@ angular.module('uguru.util.controllers')
 		function findStageByName(stage_name) {
 			if (!$scope.imports.stages || !$scope.imports.stages.length) {
 				console.log('stages from amazon not yet loaded.. trying again in 2seconds')
-				$timeout(function() {
-					initStageDropdown();
-				}, 2000)
+				// $timeout(function() {
+				// 	initStageDropdown();
+				// }, 2000)
 				return;
 			}
 			for (var i = 0; i < $scope.imports.stages.length; i++) {
@@ -204,20 +224,19 @@ angular.module('uguru.util.controllers')
 		function initStageDropdown() {
 			var lastActiveStageName = $localstorage.getObject('last_stage_active');
 			if (lastActiveStageName && lastActiveStageName.length) {
-				LoadingService.showAmbig('Loading..' + lastActiveStageName, 2500);
-				var lastUsedStage = findStageByName(lastActiveStageName);
-				if (lastUsedStage) {
-					var stageOptions = [lastActiveStageName, 'save', 'save and import', 'save and clear'];
-					var stageLabel = 'Active Stage'
-					$scope.stageDropdown = {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:true, size:'small'};
-					importPageDom(lastUsedStage);
-					return;
-				}
+				// var lastUsedStage = findStageByName(lastActiveStageName);
+				// if (lastUsedStage) {
+				// 	var stageOptions = [lastActiveStageName, 'save', 'save and import', 'save and clear'];
+				// 	var stageLabel = 'Active Stage'
+				// 	$scope.stageDropdown = {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:true, size:'small'};
+				// 	importPageDom(lastUsedStage);
+				// 	return;
+				// }
 
 			} else {
 				var stageOptions = ['none', 'import stage', 'create new stage'];
 				var stageLabel = "Current Stage"
-				$scope.stageDropdown = {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:false, size:'small'};
+				// $scope.stageDropdown = {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:false, size:'small'};
 				return {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:false, size:'small'};
 			}
 
@@ -247,10 +266,6 @@ angular.module('uguru.util.controllers')
 								$scope.stage = null;
 								$scope.resetStageDom();
 								$localstorage.setObject('last_stage_active', null);
-								$scope.stageDropdown.selectedIndex = 0;
-								var stageOptions = ['none', 'import stage', 'create new stage'];
-								var stageLabel = "Current Stage"
-								$scope.stageDropdown = {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:false, size:'small'};
 							}, 1500);
 							break;
 					}
@@ -393,6 +408,9 @@ angular.module('uguru.util.controllers')
 		}
 
 		$scope.initStageTimeState = function() {
+			if (!$scope.stage.time_states) {
+				$scope.stage.time_states = [];
+			}
 			for (var i = 0; i < $scope.stage.time_states.length; i++) {
 				var indexTimeState = $scope.stage.time_states[i];
 				if (!indexTimeState.time) {
@@ -400,7 +418,7 @@ angular.module('uguru.util.controllers')
 					return;
 				}
 			}
-			$scope.stage.time_states.push({description:null, time:10000, editMode:true, actions:[]});
+			$scope.stage.time_states.push({description:null, time:1000, editMode:true, actions:[]});
 			$timeout(function() {
 				$scope.$apply();
 				var allActionInputs = document.querySelectorAll('input.time-input');
@@ -524,6 +542,10 @@ angular.module('uguru.util.controllers')
 		$scope.resetStageDom = function() {
 			var resetHtml = '<span class="initiator"> Html Successfully Reset! <br> Add some svg placeholder elements ! </span>'
 			$scope.pageDom.stageHtml = resetHtml;
+			$scope.pageDom.stageName = null;
+			$scope.pageDom.stageCss = null;
+			$scope.pageDom.animElemSelector = null;
+			$scope.stageDropdown.options[0] = 'No stage selected';
 
 			LoadingService.showMsg('Resetting', 3000, function() {
 				LoadingService.showSuccess('Success!', 2000);
@@ -633,6 +655,10 @@ angular.module('uguru.util.controllers')
 		function importPageDom(stage_template) {
 
 			$scope.stage = stage_template;
+			$scope.stageDropdown.options[0] = stage_template.stageName;
+			if (!$scope.stage.time_states || !$scope.stage.time_states.length) {
+				$scope.stage.time_states = [];
+			}
 			for (var i = 0; i < $scope.stage.time_states.length; i++) {
 				var indexTimeState = $scope.stage.time_states[i];
 				for (var j = 0; j < indexTimeState.actions.length; j++) {
@@ -642,18 +668,13 @@ angular.module('uguru.util.controllers')
 						var cssText = animationObj.cssText;
 						var animName = animationObj.name;
 						var animClassText = animationObj.classText;
-						var js_anim_obj = importAnimationFromRawCssText(cssText, animName);
-						var final_obj = initAnimationFromAnimObj(js_anim_obj);
-						indexAction.animation = final_obj;
+
+						indexAction.animation = importAndProcessAnimationCSSTextByKF(cssText, animName);
 					}
 				}
 			}
 			$localstorage.setObject('last_stage_active', $scope.stage.stageName);
-			if (!$scope.stageDropdown.stageActive) {
-				$timeout(function() {
-					// initStageDropdown();
-				})
-			}
+
 			$scope.updatePageDom(stage_template.stageName, stage_template.stageHtml, stage_template.stageCss, stage_template.animElemSelector.replace('#', ''));
 		}
 		$scope.importPageDom = importPageDom;
@@ -714,6 +735,9 @@ angular.module('uguru.util.controllers')
 
 			LoadingService.showAmbig(null, 1000);
 			if ($scope.pageDom.stageHtml && $scope.pageDom.stageHtml.length) {
+				if (!$scope.stage) {
+					$scope.stage = $scope.pageDom;
+				}
 				var stageContainer = document.querySelector('#stage-container');
 				stageContainer.innerHTML = $scope.pageDom.stageHtml;
 				if (stageContainer.firstChild) {
@@ -749,7 +773,15 @@ angular.module('uguru.util.controllers')
 					}
 				}
 				$compile(stageContainer)($scope);
-				$scope.asideTabIndex = 0;
+				$scope.asideTabIndex = 1;
+				if ($scope.pageDom.stageName && $scope.pageDom.stageName.length && $scope.pageDom.stageHtml && $scope.pageDom.stageHtml.length) {
+					$localstorage.setObject('last_stage', $scope.pageDom);
+					$scope.stageDropdown.options[0] = $scope.pageDom.stageName
+					if ($scope.stageDropdown.options.length <= 2 && $scope.pageDom.stageName && $scope.pageDom.stageName.length) {
+						$scope.stageDropdown.options.push('Save');
+						$scope.stageDropdown.options.push('Clear');
+					}
+				}
 				// var clonedNode = stageElem.cloneNode(true);
 				// clonedNode.id = 'stage-elem-clone';
 				// clonedNode.style.minWidth = "200px";
@@ -798,6 +830,7 @@ angular.module('uguru.util.controllers')
 		$scope.updateNumIntervals = function(num_intervals) {
 			defaults.KF_INTERVALS = num_intervals;
 			$scope.setActiveKeyFrame(0 + '%');
+			$scope.asideTabIndex = 1;
 		}
 
 		function setAnimationDirectionFunc(option, index) {
@@ -816,8 +849,22 @@ angular.module('uguru.util.controllers')
 			var animPropertyPercentages = Object.keys($scope.animation.properties);
 			var currentKFIndex = animPropertyPercentages.indexOf($scope.animation.selected_percent);
 			if (currentKFIndex > -1 && currentKFIndex < animPropertyPercentages.length) {
-				var desiredPercentage =  animPropertyPercentages[currentKFIndex + 1];
+				if ($scope.animation.attr.kf_intervals) {
+						var intervalLength = $scope.animation.selected_kf_index + parseInt(100.0/$scope.animation.attr.kf_intervals);
+						if (intervalLength <= 100) {
+							console.log($scope.animation.selected_kf_index)
+							$scope.animation.selected_kf_index += intervalLength;
+							console.log($scope.animation.selected_kf_index)
+							intervalLength += '%';
+							console.log('attempting to switch to', intervalLength);
+							var desiredPercentage = intervalLength;
+						}
+				} else {
+						var desiredPercentage =  animPropertyPercentages[currentKFIndex + 1];
+				}
+
 				$scope.setActiveKeyFrame(desiredPercentage);
+				$scope.asideTabIndex = 1;
 			}
 		}
 
@@ -828,9 +875,18 @@ angular.module('uguru.util.controllers')
 				if (currentKFIndex === 0) {
 					var desiredPercentage = animPropertyPercentages[0];
 				} else {
-					var desiredPercentage =  animPropertyPercentages[currentKFIndex - 1];
-				}
 
+					if ($scope.animation.attr.kf_intervals) {
+						var intervalLength = $scope.animation.selected_kf_index - parseInt(100.0 / $scope.animation.attr.kf_intervals);
+						if (intervalLength >= 0) {
+							$scope.animation.selected_kf_index -= intervalLength;
+							var desiredPercentage = intervalLength + '%';
+						}
+					} else {
+						var desiredPercentage =  animPropertyPercentages[currentKFIndex - 1];
+					}
+				}
+				$scope.asideTabIndex = 1;
 				$scope.setActiveKeyFrame(desiredPercentage);
 			}
 		}
@@ -838,20 +894,20 @@ angular.module('uguru.util.controllers')
 
 
 		$scope.setActiveKeyFrame = function(value) {
-
+			var intervalLength = parseInt(100/$scope.animation.attr.kf_intervals);
 			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX', 'rotate3DAngle': 'rotate'};
 			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'rad', 'skewY': 'rad', 'rotate3DZ':'rad', 'rotate3DY': 'rad', 'rotate3DX': 'rad', 'rotate3DAngle': 'rad'};
 
 			var oldValue = $scope.animation.selected_index;
 			console.log($scope.animation.properties);
 			var newPercentValue = value;
-			$scope.animation.selected_kf_index = value;
-			$scope.animation.selected_index = value;
-			$scope.animation.selected_percent = value;
+			$scope.animation.selected_kf_index = parseInt(value);
+			$scope.animation.selected_index = value * intervalLength;
+			$scope.animation.selected_percent = (value * intervalLength) + '%';
 			$scope.animation.flex_selected_index = value;
 			var newValue = value;
-			$scope.animation.selected_keyframe = $scope.animation.properties[value];
-
+			$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
+			console.log($scope.animation)
 			var propertiesSorted = Object.keys($scope.animation.properties).sort(function(a, b) {
 				return parseFloat(b.replace('%', '')) - parseFloat(a.replace('%', ''))
 			}).reverse();
@@ -923,10 +979,10 @@ angular.module('uguru.util.controllers')
 
 			//clear all values;
 			// var percentValue = getNthSortedKeyText($scope.animation.obj, newValue);
-			var proposedKeyframe = $scope.animation.properties[value];
+			var proposedKeyframe = $scope.animation.properties[(value * intervalLength) + '%'];
 			$scope.animation.selected_keyframe = proposedKeyframe;
 
-
+			$scope.asideTabIndex = 1;
 
 			if (true) {
 				var transformProperties = Object.keys(propertyDictCssMap);
@@ -959,15 +1015,12 @@ angular.module('uguru.util.controllers')
 					var nonTransformProperties = Object.keys(cssToChange.etc);
 					for (var i = 0 ; i < nonTransformProperties.length; i++) {
 						var indexProperty = nonTransformProperties[i];
-						console.log(indexProperty);
 						var indexValue = cssToChange.etc[indexProperty];
-						console.log('setting', indexProperty, 'to', indexValue);
 						$scope.actor.style[indexProperty] = indexValue;
 					}
 				}
 
 			}
-			console.log($scope.animation.obj.cssText);
 
 			$timeout(function() {
 				$scope.$apply();
@@ -1370,6 +1423,7 @@ angular.module('uguru.util.controllers')
 		            			var js_anim_obj = importAnimationFromRawCssText(rawCSSText, animationName);
 		            			var final_obj = initAnimationFromAnimObj(js_anim_obj);
 		            			$scope.saveAnimationClass(final_obj, styleSheetName);
+
 		            			console.log(final_obj);
 		      //       			var js_anim_obj = importAnimationFromRawCssText(indexCssRule.css_text, name);
 
@@ -1379,7 +1433,6 @@ angular.module('uguru.util.controllers')
 		        	}
 		    	}
 		    }
-		    console.log($scope.imports.animations.length);
 		    $timeout(function() {
 		    	$scope.$apply()
 		    })
@@ -1693,6 +1746,7 @@ angular.module('uguru.util.controllers')
 			var desiredIndex = $scope.animation.selected_percent;
 			console.log('about to apply property change', property, 'to', value, 'in kf', desiredIndex);
 			editKeyframeAtX($scope.animation, desiredIndex, property, value);
+			console.log($scope.animation.obj.cssText);
 			// }, 500)
 			// var cssRuleAtKeyFrameX = findCSSRuleByIndex($scope.animation.obj, value);
 			// var transformObjAtX = $scope.animation.selected_keyframe;
@@ -1866,7 +1920,7 @@ angular.module('uguru.util.controllers')
 				var css_text = transformObjToCssText(transformObj, property);
 				console.log(css_text);
 				anim.obj.appendRule(percentage + '{' +  css_text + '}', keyframe_percent);
-				console.log(anim.obj.cssText);
+
 			} else {
 				var css_text = transformObjToCssText(transformObj, property);
 				var css_text = " ";
@@ -1879,7 +1933,7 @@ angular.module('uguru.util.controllers')
 			// $scope.animation.obj.appendRule('0% {transform: translate(10px, 10px);}', 1);
 			// $scope.animation.obj.appendRule('0% {transform: translate(10px, 10px);}', 1);
 			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX', 'rotate3DAngle': 'rotate'};
-			var propertyDictCssUnit = {'translateX': '', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'rad', 'skewY': 'rad', 'rotate3DZ':'rad', 'rotate3DY': 'rad', 'rotate3DX': 'rad', 'rotate3DAngle': 'rad'};
+			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'rad', 'skewY': 'rad', 'rotate3DZ':'rad', 'rotate3DY': 'rad', 'rotate3DX': 'rad', 'rotate3DAngle': 'rad'};
 			var transformProperties = Object.keys(propertyDictCssMap);
 			var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'transformOrigin', 'transformOrigin', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 			var cssToChange = {transform: {}, etc: {}};
@@ -2391,39 +2445,69 @@ angular.module('uguru.util.controllers')
 
 		function updateDropdown(uguru_anim_obj) {
 
-			$scope.animationDropdown = {options:[uguru_anim_obj.obj.name, '+'], selectedIndex: 0, label:'Selected Animation', size:'small'};
-			var elem = document.querySelector('#animation-name-dropdown');
+
+			// var elem = document.querySelector('#animation-name-dropdown');
 			uguru_anim_obj.selected_keyframe = uguru_anim_obj.obj.cssRules.item(0);
 			uguru_anim_obj.selected_kf_index = 0;
 			uguru_anim_obj.selected_percent = uguru_anim_obj.selected_keyframe.keyText;
 			uguru_anim_obj.selected_index = 0;
 			uguru_anim_obj.num_keyframes = uguru_anim_obj.obj.cssRules.length;
 			// $scope.setActiveKeyFrame
-			$compile(elem)($scope);
+			// $compile(elem)($scope);
 			$scope.asideTabIndex = 1;
 			$scope.actor = document.querySelector('#stage-elem');
+		}
+
+
+		function importLastAnimation() {
+			var lastAnimation = $localstorage.getObject('last_animation');
+
+			if (lastAnimation && !lastAnimation.length && !lastAnimation.cssText) {
+
+				$scope.animation = initAnimation('base-animation', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
+				console.log($scope.animation);
+			} else {
+				$scope.animation = $scope.importFromCSSText(lastAnimation.cssText, lastAnimation.name, lastAnimation.classText)
+			}
+			$scope.animationDropdown.options[0] = $scope.animation.obj.name;
+			$scope.animationDropdown.options.push('Save');
+			return;
+		}
+
+		function clearStageTemplate() {
+			$scope.stageDropdown.options = $scope.stageDropdown.options.slice(0, $scope.stageDropdown.options.length - 2);
+			$scope.saveStageHtml(true, true);
+			$localstorage.removeObject('last_stage');
 			$timeout(function() {
-				$scope.$apply()
-				LoadingService.showAmbig('Playing in 3', 300, function() {
-					LoadingService.showAmbig('Playing in 2', 300, function() {
-						LoadingService.showAmbig('Playing in 1', 300, function() {
-							$timeout(function() {
-								// $scope.player.play();
-							}, 1250)
-						})
-					})
-				});
-			}, 1000);
+				$scope.resetStageDom();
+				$localstorage.removeObject('last_stage');
+				$scope.stageDropdown = {toggleActive: true,options:['No stage selected', 'Import Stage'], selectedIndex: 0, label:'Selected Stage', size:'small', onOptionClick: onStageDropdownSelected};
+			}, 1500)
+		}
+
+
+		function importLastStage() {
+			var lastStage = $localstorage.getObject('last_stage');
+
+			if (lastStage  && !lastStage.length && !lastStage.stageHtml) {
+				console.log('no stage', lastStage);
+			} else {
+				console.log('found last stage from before', lastStage);
+				$timeout(function() {
+					$scope.updatePageDom(lastStage.stageName, lastStage.stageHtml, lastStage.stageCss, lastStage.animElemSelector.replace('#', ''));
+				})
+			}
+			return;
 		}
 
 		function initView() {
 			browserPrefix = getBrowserPrefix();
 
 
-				var bounceJS = "@-webkit-keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); }0.22% { -webkit-transform: matrix3d(3.676, 0.337, 0, 0, -1.316, 0.942, 0, 0, 0, 0, 1, 0, -237.02, 0, 0, 1); transform: matrix3d(3.676, 0.337, 0, 0, -1.316, 0.942, 0, 0, 0, 0, 1, 0, -237.02, 0, 0, 1); }0.43% { -webkit-transform: matrix3d(3.527, 0.633, 0, 0, -2.881, 0.774, 0, 0, 0, 0, 1, 0, -182.798, 0, 0, 1); transform: matrix3d(3.527, 0.633, 0, 0, -2.881, 0.774, 0, 0, 0, 0, 1, 0, -182.798, 0, 0, 1); }0.68% { -webkit-transform: matrix3d(1.816, 0.892, 0, 0, -3.592, 0.451, 0, 0, 0, 0, 1, 0, -125.912, 0, 0, 1); transform: matrix3d(1.816, 0.892, 0, 0, -3.592, 0.451, 0, 0, 0, 0, 1, 0, -125.912, 0, 0, 1); }0.72% { -webkit-transform: matrix3d(1.578, 0.915, 0, 0, -3.577, 0.404, 0, 0, 0, 0, 1, 0, -119.441, 0, 0, 1); transform: matrix3d(1.578, 0.915, 0, 0, -3.577, 0.404, 0, 0, 0, 0, 1, 0, -119.441, 0, 0, 1); }0.95% { -webkit-transform: matrix3d(0.183, 0.998, 0, 0, -3.034, 0.06, 0, 0, 0, 0, 1, 0, -79.596, 0, 0, 1); transform: matrix3d(0.183, 0.998, 0, 0, -3.034, 0.06, 0, 0, 0, 0, 1, 0, -79.596, 0, 0, 1); }1.35% { -webkit-transform: matrix3d(-0.843, 0.886, 0, 0, -1.613, -0.463, 0, 0, 0, 0, 1, 0, -31.647, 0, 0, 1); transform: matrix3d(-0.843, 0.886, 0, 0, -1.613, -0.463, 0, 0, 0, 0, 1, 0, -31.647, 0, 0, 1); }1.43% { -webkit-transform: matrix3d(-0.904, 0.835, 0, 0, -1.373, -0.55, 0, 0, 0, 0, 1, 0, -24.472, 0, 0, 1); transform: matrix3d(-0.904, 0.835, 0, 0, -1.373, -0.55, 0, 0, 0, 0, 1, 0, -24.472, 0, 0, 1); }1.47% { -webkit-transform: matrix3d(-0.92, 0.813, 0, 0, -1.285, -0.582, 0, 0, 0, 0, 1, 0, -21.84, 0, 0, 1); transform: matrix3d(-0.92, 0.813, 0, 0, -1.285, -0.582, 0, 0, 0, 0, 1, 0, -21.84, 0, 0, 1); }1.99% { -webkit-transform: matrix3d(-0.942, 0.412, 0, 0, -0.426, -0.911, 0, 0, 0, 0, 1, 0, 4.825, 0, 0, 1); transform: matrix3d(-0.942, 0.412, 0, 0, -0.426, -0.911, 0, 0, 0, 0, 1, 0, 4.825, 0, 0, 1); }2.02% { -webkit-transform: matrix3d(-0.941, 0.393, 0, 0, -0.402, -0.92, 0, 0, 0, 0, 1, 0, 5.53, 0, 0, 1); transform: matrix3d(-0.941, 0.393, 0, 0, -0.402, -0.92, 0, 0, 0, 0, 1, 0, 5.53, 0, 0, 1); }2.15% { -webkit-transform: matrix3d(-0.938, 0.294, 0, 0, -0.288, -0.956, 0, 0, 0, 0, 1, 0, 8.637, 0, 0, 1); transform: matrix3d(-0.938, 0.294, 0, 0, -0.288, -0.956, 0, 0, 0, 0, 1, 0, 8.637, 0, 0, 1); }2.51% { -webkit-transform: matrix3d(-0.945, 0.061, 0, 0, -0.058, -0.998, 0, 0, 0, 0, 1, 0, 12.662, 0, 0, 1); transform: matrix3d(-0.945, 0.061, 0, 0, -0.058, -0.998, 0, 0, 0, 0, 1, 0, 12.662, 0, 0, 1); }2.55% { -webkit-transform: matrix3d(-0.946, 0.038, 0, 0, -0.036, -0.999, 0, 0, 0, 0, 1, 0, 12.819, 0, 0, 1); transform: matrix3d(-0.946, 0.038, 0, 0, -0.036, -0.999, 0, 0, 0, 0, 1, 0, 12.819, 0, 0, 1); }2.69% { -webkit-transform: matrix3d(-0.95, -0.032, 0, 0, 0.031, -0.999, 0, 0, 0, 0, 1, 0, 13.007, 0, 0, 1); transform: matrix3d(-0.95, -0.032, 0, 0, 0.031, -0.999, 0, 0, 0, 0, 1, 0, 13.007, 0, 0, 1); }2.87% { -webkit-transform: matrix3d(-0.954, -0.116, 0, 0, 0.112, -0.993, 0, 0, 0, 0, 1, 0, 12.639, 0, 0, 1); transform: matrix3d(-0.954, -0.116, 0, 0, 0.112, -0.993, 0, 0, 0, 0, 1, 0, 12.639, 0, 0, 1); }3.85% { -webkit-transform: matrix3d(-0.926, -0.372, 0, 0, 0.371, -0.928, 0, 0, 0, 0, 1, 0, 6.116, 0, 0, 1); transform: matrix3d(-0.926, -0.372, 0, 0, 0.371, -0.928, 0, 0, 0, 0, 1, 0, 6.116, 0, 0, 1); }4.54% { -webkit-transform: matrix3d(-0.908, -0.421, 0, 0, 0.422, -0.907, 0, 0, 0, 0, 1, 0, 2.352, 0, 0, 1); transform: matrix3d(-0.908, -0.421, 0, 0, 0.422, -0.907, 0, 0, 0, 0, 1, 0, 2.352, 0, 0, 1); }4.6% { -webkit-transform: matrix3d(-0.907, -0.422, 0, 0, 0.423, -0.906, 0, 0, 0, 0, 1, 0, 2.121, 0, 0, 1); transform: matrix3d(-0.907, -0.422, 0, 0, 0.423, -0.906, 0, 0, 0, 0, 1, 0, 2.121, 0, 0, 1); }4.72% { -webkit-transform: matrix3d(-0.907, -0.423, 0, 0, 0.424, -0.906, 0, 0, 0, 0, 1, 0, 1.672, 0, 0, 1); transform: matrix3d(-0.907, -0.423, 0, 0, 0.424, -0.906, 0, 0, 0, 0, 1, 0, 1.672, 0, 0, 1); }5.11% { -webkit-transform: matrix3d(-0.91, -0.416, 0, 0, 0.416, -0.91, 0, 0, 0, 0, 1, 0, 0.651, 0, 0, 1); transform: matrix3d(-0.91, -0.416, 0, 0, 0.416, -0.91, 0, 0, 0, 0, 1, 0, 0.651, 0, 0, 1); }6.39% { -webkit-transform: matrix3d(-0.952, -0.305, 0, 0, 0.305, -0.952, 0, 0, 0, 0, 1, 0, -0.311, 0, 0, 1); transform: matrix3d(-0.952, -0.305, 0, 0, 0.305, -0.952, 0, 0, 0, 0, 1, 0, -0.311, 0, 0, 1); }6.57% { -webkit-transform: matrix3d(-0.959, -0.282, 0, 0, 0.282, -0.959, 0, 0, 0, 0, 1, 0, -0.302, 0, 0, 1); transform: matrix3d(-0.959, -0.282, 0, 0, 0.282, -0.959, 0, 0, 0, 0, 1, 0, -0.302, 0, 0, 1); }6.61% { -webkit-transform: matrix3d(-0.961, -0.277, 0, 0, 0.277, -0.961, 0, 0, 0, 0, 1, 0, -0.299, 0, 0, 1); transform: matrix3d(-0.961, -0.277, 0, 0, 0.277, -0.961, 0, 0, 0, 0, 1, 0, -0.299, 0, 0, 1); }6.68% { -webkit-transform: matrix3d(-0.963, -0.268, 0, 0, 0.268, -0.963, 0, 0, 0, 0, 1, 0, -0.291, 0, 0, 1); transform: matrix3d(-0.963, -0.268, 0, 0, 0.268, -0.963, 0, 0, 0, 0, 1, 0, -0.291, 0, 0, 1); }8.06% { -webkit-transform: matrix3d(-0.996, -0.084, 0, 0, 0.084, -0.996, 0, 0, 0, 0, 1, 0, -0.076, 0, 0, 1); transform: matrix3d(-0.996, -0.084, 0, 0, 0.084, -0.996, 0, 0, 0, 0, 1, 0, -0.076, 0, 0, 1); }8.33% { -webkit-transform: matrix3d(-0.999, -0.051, 0, 0, 0.051, -0.999, 0, 0, 0, 0, 1, 0, -0.048, 0, 0, 1); transform: matrix3d(-0.999, -0.051, 0, 0, 0.051, -0.999, 0, 0, 0, 0, 1, 0, -0.048, 0, 0, 1); }9.51% { -webkit-transform: matrix3d(-0.998, 0.055, 0, 0, -0.055, -0.998, 0, 0, 0, 0, 1, 0, 0.004, 0, 0, 1); transform: matrix3d(-0.998, 0.055, 0, 0, -0.055, -0.998, 0, 0, 0, 0, 1, 0, 0.004, 0, 0, 1); }10.09% { -webkit-transform: matrix3d(-0.997, 0.084, 0, 0, -0.084, -0.997, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); transform: matrix3d(-0.997, 0.084, 0, 0, -0.084, -0.997, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); }10.28% { -webkit-transform: matrix3d(-0.996, 0.089, 0, 0, -0.089, -0.996, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); transform: matrix3d(-0.996, 0.089, 0, 0, -0.089, -0.996, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); }10.96% { -webkit-transform: matrix3d(-0.995, 0.098, 0, 0, -0.098, -0.995, 0, 0, 0, 0, 1, 0, 0.005, 0, 0, 1); transform: matrix3d(-0.995, 0.098, 0, 0, -0.098, -0.995, 0, 0, 0, 0, 1, 0, 0.005, 0, 0, 1); }13.8% { -webkit-transform: matrix3d(-1, 0.025, 0, 0, -0.025, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.025, 0, 0, -0.025, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }14% { -webkit-transform: matrix3d(-1, 0.019, 0, 0, -0.019, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.019, 0, 0, -0.019, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }16.57% { -webkit-transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }16.67% { -webkit-transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }16.87% { -webkit-transform: matrix3d(-1, -0.024, 0, 0, 0.013, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.024, 0, 0, 0.013, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }20.92% { -webkit-transform: matrix3d(-1, 0.002, 0, 0, -0.323, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.002, 0, 0, -0.323, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }22.77% { -webkit-transform: matrix3d(-1, 0.006, 0, 0, -0.432, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.006, 0, 0, -0.432, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }23.09% { -webkit-transform: matrix3d(-1, 0.006, 0, 0, -0.444, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.006, 0, 0, -0.444, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }25.18% { -webkit-transform: matrix3d(-1, 0.002, 0, 0, -0.474, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.002, 0, 0, -0.474, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }27.68% { -webkit-transform: matrix3d(-1, -0.001, 0, 0, -0.438, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.001, 0, 0, -0.438, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }28.63% { -webkit-transform: matrix3d(-1, -0.001, 0, 0, -0.417, -1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.001, 0, 0, -0.417, -1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }30.1% { -webkit-transform: matrix3d(-1, -0.001, 0, 0, -0.385, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.001, 0, 0, -0.385, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }32.52% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.35, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.35, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }34.53% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }34.93% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }40.44% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.361, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.361, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }44.78% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.37, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.37, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }46.3% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.369, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.369, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }50% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.365, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.365, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }54.62% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.363, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.363, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }64.38% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }74.22% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }84.07% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }93.83% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }100% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }";
-				bounceJS += "@keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); }0.22% { -webkit-transform: matrix3d(3.676, 0.337, 0, 0, -1.316, 0.942, 0, 0, 0, 0, 1, 0, -237.02, 0, 0, 1); transform: matrix3d(3.676, 0.337, 0, 0, -1.316, 0.942, 0, 0, 0, 0, 1, 0, -237.02, 0, 0, 1); }0.43% { -webkit-transform: matrix3d(3.527, 0.633, 0, 0, -2.881, 0.774, 0, 0, 0, 0, 1, 0, -182.798, 0, 0, 1); transform: matrix3d(3.527, 0.633, 0, 0, -2.881, 0.774, 0, 0, 0, 0, 1, 0, -182.798, 0, 0, 1); }0.68% { -webkit-transform: matrix3d(1.816, 0.892, 0, 0, -3.592, 0.451, 0, 0, 0, 0, 1, 0, -125.912, 0, 0, 1); transform: matrix3d(1.816, 0.892, 0, 0, -3.592, 0.451, 0, 0, 0, 0, 1, 0, -125.912, 0, 0, 1); }0.72% { -webkit-transform: matrix3d(1.578, 0.915, 0, 0, -3.577, 0.404, 0, 0, 0, 0, 1, 0, -119.441, 0, 0, 1); transform: matrix3d(1.578, 0.915, 0, 0, -3.577, 0.404, 0, 0, 0, 0, 1, 0, -119.441, 0, 0, 1); }0.95% { -webkit-transform: matrix3d(0.183, 0.998, 0, 0, -3.034, 0.06, 0, 0, 0, 0, 1, 0, -79.596, 0, 0, 1); transform: matrix3d(0.183, 0.998, 0, 0, -3.034, 0.06, 0, 0, 0, 0, 1, 0, -79.596, 0, 0, 1); }1.35% { -webkit-transform: matrix3d(-0.843, 0.886, 0, 0, -1.613, -0.463, 0, 0, 0, 0, 1, 0, -31.647, 0, 0, 1); transform: matrix3d(-0.843, 0.886, 0, 0, -1.613, -0.463, 0, 0, 0, 0, 1, 0, -31.647, 0, 0, 1); }1.43% { -webkit-transform: matrix3d(-0.904, 0.835, 0, 0, -1.373, -0.55, 0, 0, 0, 0, 1, 0, -24.472, 0, 0, 1); transform: matrix3d(-0.904, 0.835, 0, 0, -1.373, -0.55, 0, 0, 0, 0, 1, 0, -24.472, 0, 0, 1); }1.47% { -webkit-transform: matrix3d(-0.92, 0.813, 0, 0, -1.285, -0.582, 0, 0, 0, 0, 1, 0, -21.84, 0, 0, 1); transform: matrix3d(-0.92, 0.813, 0, 0, -1.285, -0.582, 0, 0, 0, 0, 1, 0, -21.84, 0, 0, 1); }1.99% { -webkit-transform: matrix3d(-0.942, 0.412, 0, 0, -0.426, -0.911, 0, 0, 0, 0, 1, 0, 4.825, 0, 0, 1); transform: matrix3d(-0.942, 0.412, 0, 0, -0.426, -0.911, 0, 0, 0, 0, 1, 0, 4.825, 0, 0, 1); }2.02% { -webkit-transform: matrix3d(-0.941, 0.393, 0, 0, -0.402, -0.92, 0, 0, 0, 0, 1, 0, 5.53, 0, 0, 1); transform: matrix3d(-0.941, 0.393, 0, 0, -0.402, -0.92, 0, 0, 0, 0, 1, 0, 5.53, 0, 0, 1); }2.15% { -webkit-transform: matrix3d(-0.938, 0.294, 0, 0, -0.288, -0.956, 0, 0, 0, 0, 1, 0, 8.637, 0, 0, 1); transform: matrix3d(-0.938, 0.294, 0, 0, -0.288, -0.956, 0, 0, 0, 0, 1, 0, 8.637, 0, 0, 1); }2.51% { -webkit-transform: matrix3d(-0.945, 0.061, 0, 0, -0.058, -0.998, 0, 0, 0, 0, 1, 0, 12.662, 0, 0, 1); transform: matrix3d(-0.945, 0.061, 0, 0, -0.058, -0.998, 0, 0, 0, 0, 1, 0, 12.662, 0, 0, 1); }2.55% { -webkit-transform: matrix3d(-0.946, 0.038, 0, 0, -0.036, -0.999, 0, 0, 0, 0, 1, 0, 12.819, 0, 0, 1); transform: matrix3d(-0.946, 0.038, 0, 0, -0.036, -0.999, 0, 0, 0, 0, 1, 0, 12.819, 0, 0, 1); }2.69% { -webkit-transform: matrix3d(-0.95, -0.032, 0, 0, 0.031, -0.999, 0, 0, 0, 0, 1, 0, 13.007, 0, 0, 1); transform: matrix3d(-0.95, -0.032, 0, 0, 0.031, -0.999, 0, 0, 0, 0, 1, 0, 13.007, 0, 0, 1); }2.87% { -webkit-transform: matrix3d(-0.954, -0.116, 0, 0, 0.112, -0.993, 0, 0, 0, 0, 1, 0, 12.639, 0, 0, 1); transform: matrix3d(-0.954, -0.116, 0, 0, 0.112, -0.993, 0, 0, 0, 0, 1, 0, 12.639, 0, 0, 1); }3.85% { -webkit-transform: matrix3d(-0.926, -0.372, 0, 0, 0.371, -0.928, 0, 0, 0, 0, 1, 0, 6.116, 0, 0, 1); transform: matrix3d(-0.926, -0.372, 0, 0, 0.371, -0.928, 0, 0, 0, 0, 1, 0, 6.116, 0, 0, 1); }4.54% { -webkit-transform: matrix3d(-0.908, -0.421, 0, 0, 0.422, -0.907, 0, 0, 0, 0, 1, 0, 2.352, 0, 0, 1); transform: matrix3d(-0.908, -0.421, 0, 0, 0.422, -0.907, 0, 0, 0, 0, 1, 0, 2.352, 0, 0, 1); }4.6% { -webkit-transform: matrix3d(-0.907, -0.422, 0, 0, 0.423, -0.906, 0, 0, 0, 0, 1, 0, 2.121, 0, 0, 1); transform: matrix3d(-0.907, -0.422, 0, 0, 0.423, -0.906, 0, 0, 0, 0, 1, 0, 2.121, 0, 0, 1); }4.72% { -webkit-transform: matrix3d(-0.907, -0.423, 0, 0, 0.424, -0.906, 0, 0, 0, 0, 1, 0, 1.672, 0, 0, 1); transform: matrix3d(-0.907, -0.423, 0, 0, 0.424, -0.906, 0, 0, 0, 0, 1, 0, 1.672, 0, 0, 1); }5.11% { -webkit-transform: matrix3d(-0.91, -0.416, 0, 0, 0.416, -0.91, 0, 0, 0, 0, 1, 0, 0.651, 0, 0, 1); transform: matrix3d(-0.91, -0.416, 0, 0, 0.416, -0.91, 0, 0, 0, 0, 1, 0, 0.651, 0, 0, 1); }6.39% { -webkit-transform: matrix3d(-0.952, -0.305, 0, 0, 0.305, -0.952, 0, 0, 0, 0, 1, 0, -0.311, 0, 0, 1); transform: matrix3d(-0.952, -0.305, 0, 0, 0.305, -0.952, 0, 0, 0, 0, 1, 0, -0.311, 0, 0, 1); }6.57% { -webkit-transform: matrix3d(-0.959, -0.282, 0, 0, 0.282, -0.959, 0, 0, 0, 0, 1, 0, -0.302, 0, 0, 1); transform: matrix3d(-0.959, -0.282, 0, 0, 0.282, -0.959, 0, 0, 0, 0, 1, 0, -0.302, 0, 0, 1); }6.61% { -webkit-transform: matrix3d(-0.961, -0.277, 0, 0, 0.277, -0.961, 0, 0, 0, 0, 1, 0, -0.299, 0, 0, 1); transform: matrix3d(-0.961, -0.277, 0, 0, 0.277, -0.961, 0, 0, 0, 0, 1, 0, -0.299, 0, 0, 1); }6.68% { -webkit-transform: matrix3d(-0.963, -0.268, 0, 0, 0.268, -0.963, 0, 0, 0, 0, 1, 0, -0.291, 0, 0, 1); transform: matrix3d(-0.963, -0.268, 0, 0, 0.268, -0.963, 0, 0, 0, 0, 1, 0, -0.291, 0, 0, 1); }8.06% { -webkit-transform: matrix3d(-0.996, -0.084, 0, 0, 0.084, -0.996, 0, 0, 0, 0, 1, 0, -0.076, 0, 0, 1); transform: matrix3d(-0.996, -0.084, 0, 0, 0.084, -0.996, 0, 0, 0, 0, 1, 0, -0.076, 0, 0, 1); }8.33% { -webkit-transform: matrix3d(-0.999, -0.051, 0, 0, 0.051, -0.999, 0, 0, 0, 0, 1, 0, -0.048, 0, 0, 1); transform: matrix3d(-0.999, -0.051, 0, 0, 0.051, -0.999, 0, 0, 0, 0, 1, 0, -0.048, 0, 0, 1); }9.51% { -webkit-transform: matrix3d(-0.998, 0.055, 0, 0, -0.055, -0.998, 0, 0, 0, 0, 1, 0, 0.004, 0, 0, 1); transform: matrix3d(-0.998, 0.055, 0, 0, -0.055, -0.998, 0, 0, 0, 0, 1, 0, 0.004, 0, 0, 1); }10.09% { -webkit-transform: matrix3d(-0.997, 0.084, 0, 0, -0.084, -0.997, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); transform: matrix3d(-0.997, 0.084, 0, 0, -0.084, -0.997, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); }10.28% { -webkit-transform: matrix3d(-0.996, 0.089, 0, 0, -0.089, -0.996, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); transform: matrix3d(-0.996, 0.089, 0, 0, -0.089, -0.996, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); }10.96% { -webkit-transform: matrix3d(-0.995, 0.098, 0, 0, -0.098, -0.995, 0, 0, 0, 0, 1, 0, 0.005, 0, 0, 1); transform: matrix3d(-0.995, 0.098, 0, 0, -0.098, -0.995, 0, 0, 0, 0, 1, 0, 0.005, 0, 0, 1); }13.8% { -webkit-transform: matrix3d(-1, 0.025, 0, 0, -0.025, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.025, 0, 0, -0.025, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }14% { -webkit-transform: matrix3d(-1, 0.019, 0, 0, -0.019, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.019, 0, 0, -0.019, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }16.57% { -webkit-transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }16.67% { -webkit-transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }16.87% { -webkit-transform: matrix3d(-1, -0.024, 0, 0, 0.013, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.024, 0, 0, 0.013, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }20.92% { -webkit-transform: matrix3d(-1, 0.002, 0, 0, -0.323, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.002, 0, 0, -0.323, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }22.77% { -webkit-transform: matrix3d(-1, 0.006, 0, 0, -0.432, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.006, 0, 0, -0.432, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }23.09% { -webkit-transform: matrix3d(-1, 0.006, 0, 0, -0.444, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.006, 0, 0, -0.444, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }25.18% { -webkit-transform: matrix3d(-1, 0.002, 0, 0, -0.474, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.002, 0, 0, -0.474, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }27.68% { -webkit-transform: matrix3d(-1, -0.001, 0, 0, -0.438, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.001, 0, 0, -0.438, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }28.63% { -webkit-transform: matrix3d(-1, -0.001, 0, 0, -0.417, -1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.001, 0, 0, -0.417, -1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }30.1% { -webkit-transform: matrix3d(-1, -0.001, 0, 0, -0.385, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.001, 0, 0, -0.385, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }32.52% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.35, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.35, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }34.53% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }34.93% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }40.44% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.361, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.361, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }44.78% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.37, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.37, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }46.3% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.369, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.369, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }50% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.365, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.365, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }54.62% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.363, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.363, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }64.38% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }74.22% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }84.07% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }93.83% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }100% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }";
-				var animationName = 'bounce-js-complex';
-				$scope.animation = importAndProcessAnimationCSSTextByKF(bounceJS, animationName, updateDropdown);
+				// var bounceJS = "@-webkit-keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); }0.22% { -webkit-transform: matrix3d(3.676, 0.337, 0, 0, -1.316, 0.942, 0, 0, 0, 0, 1, 0, -237.02, 0, 0, 1); transform: matrix3d(3.676, 0.337, 0, 0, -1.316, 0.942, 0, 0, 0, 0, 1, 0, -237.02, 0, 0, 1); }0.43% { -webkit-transform: matrix3d(3.527, 0.633, 0, 0, -2.881, 0.774, 0, 0, 0, 0, 1, 0, -182.798, 0, 0, 1); transform: matrix3d(3.527, 0.633, 0, 0, -2.881, 0.774, 0, 0, 0, 0, 1, 0, -182.798, 0, 0, 1); }0.68% { -webkit-transform: matrix3d(1.816, 0.892, 0, 0, -3.592, 0.451, 0, 0, 0, 0, 1, 0, -125.912, 0, 0, 1); transform: matrix3d(1.816, 0.892, 0, 0, -3.592, 0.451, 0, 0, 0, 0, 1, 0, -125.912, 0, 0, 1); }0.72% { -webkit-transform: matrix3d(1.578, 0.915, 0, 0, -3.577, 0.404, 0, 0, 0, 0, 1, 0, -119.441, 0, 0, 1); transform: matrix3d(1.578, 0.915, 0, 0, -3.577, 0.404, 0, 0, 0, 0, 1, 0, -119.441, 0, 0, 1); }0.95% { -webkit-transform: matrix3d(0.183, 0.998, 0, 0, -3.034, 0.06, 0, 0, 0, 0, 1, 0, -79.596, 0, 0, 1); transform: matrix3d(0.183, 0.998, 0, 0, -3.034, 0.06, 0, 0, 0, 0, 1, 0, -79.596, 0, 0, 1); }1.35% { -webkit-transform: matrix3d(-0.843, 0.886, 0, 0, -1.613, -0.463, 0, 0, 0, 0, 1, 0, -31.647, 0, 0, 1); transform: matrix3d(-0.843, 0.886, 0, 0, -1.613, -0.463, 0, 0, 0, 0, 1, 0, -31.647, 0, 0, 1); }1.43% { -webkit-transform: matrix3d(-0.904, 0.835, 0, 0, -1.373, -0.55, 0, 0, 0, 0, 1, 0, -24.472, 0, 0, 1); transform: matrix3d(-0.904, 0.835, 0, 0, -1.373, -0.55, 0, 0, 0, 0, 1, 0, -24.472, 0, 0, 1); }1.47% { -webkit-transform: matrix3d(-0.92, 0.813, 0, 0, -1.285, -0.582, 0, 0, 0, 0, 1, 0, -21.84, 0, 0, 1); transform: matrix3d(-0.92, 0.813, 0, 0, -1.285, -0.582, 0, 0, 0, 0, 1, 0, -21.84, 0, 0, 1); }1.99% { -webkit-transform: matrix3d(-0.942, 0.412, 0, 0, -0.426, -0.911, 0, 0, 0, 0, 1, 0, 4.825, 0, 0, 1); transform: matrix3d(-0.942, 0.412, 0, 0, -0.426, -0.911, 0, 0, 0, 0, 1, 0, 4.825, 0, 0, 1); }2.02% { -webkit-transform: matrix3d(-0.941, 0.393, 0, 0, -0.402, -0.92, 0, 0, 0, 0, 1, 0, 5.53, 0, 0, 1); transform: matrix3d(-0.941, 0.393, 0, 0, -0.402, -0.92, 0, 0, 0, 0, 1, 0, 5.53, 0, 0, 1); }2.15% { -webkit-transform: matrix3d(-0.938, 0.294, 0, 0, -0.288, -0.956, 0, 0, 0, 0, 1, 0, 8.637, 0, 0, 1); transform: matrix3d(-0.938, 0.294, 0, 0, -0.288, -0.956, 0, 0, 0, 0, 1, 0, 8.637, 0, 0, 1); }2.51% { -webkit-transform: matrix3d(-0.945, 0.061, 0, 0, -0.058, -0.998, 0, 0, 0, 0, 1, 0, 12.662, 0, 0, 1); transform: matrix3d(-0.945, 0.061, 0, 0, -0.058, -0.998, 0, 0, 0, 0, 1, 0, 12.662, 0, 0, 1); }2.55% { -webkit-transform: matrix3d(-0.946, 0.038, 0, 0, -0.036, -0.999, 0, 0, 0, 0, 1, 0, 12.819, 0, 0, 1); transform: matrix3d(-0.946, 0.038, 0, 0, -0.036, -0.999, 0, 0, 0, 0, 1, 0, 12.819, 0, 0, 1); }2.69% { -webkit-transform: matrix3d(-0.95, -0.032, 0, 0, 0.031, -0.999, 0, 0, 0, 0, 1, 0, 13.007, 0, 0, 1); transform: matrix3d(-0.95, -0.032, 0, 0, 0.031, -0.999, 0, 0, 0, 0, 1, 0, 13.007, 0, 0, 1); }2.87% { -webkit-transform: matrix3d(-0.954, -0.116, 0, 0, 0.112, -0.993, 0, 0, 0, 0, 1, 0, 12.639, 0, 0, 1); transform: matrix3d(-0.954, -0.116, 0, 0, 0.112, -0.993, 0, 0, 0, 0, 1, 0, 12.639, 0, 0, 1); }3.85% { -webkit-transform: matrix3d(-0.926, -0.372, 0, 0, 0.371, -0.928, 0, 0, 0, 0, 1, 0, 6.116, 0, 0, 1); transform: matrix3d(-0.926, -0.372, 0, 0, 0.371, -0.928, 0, 0, 0, 0, 1, 0, 6.116, 0, 0, 1); }4.54% { -webkit-transform: matrix3d(-0.908, -0.421, 0, 0, 0.422, -0.907, 0, 0, 0, 0, 1, 0, 2.352, 0, 0, 1); transform: matrix3d(-0.908, -0.421, 0, 0, 0.422, -0.907, 0, 0, 0, 0, 1, 0, 2.352, 0, 0, 1); }4.6% { -webkit-transform: matrix3d(-0.907, -0.422, 0, 0, 0.423, -0.906, 0, 0, 0, 0, 1, 0, 2.121, 0, 0, 1); transform: matrix3d(-0.907, -0.422, 0, 0, 0.423, -0.906, 0, 0, 0, 0, 1, 0, 2.121, 0, 0, 1); }4.72% { -webkit-transform: matrix3d(-0.907, -0.423, 0, 0, 0.424, -0.906, 0, 0, 0, 0, 1, 0, 1.672, 0, 0, 1); transform: matrix3d(-0.907, -0.423, 0, 0, 0.424, -0.906, 0, 0, 0, 0, 1, 0, 1.672, 0, 0, 1); }5.11% { -webkit-transform: matrix3d(-0.91, -0.416, 0, 0, 0.416, -0.91, 0, 0, 0, 0, 1, 0, 0.651, 0, 0, 1); transform: matrix3d(-0.91, -0.416, 0, 0, 0.416, -0.91, 0, 0, 0, 0, 1, 0, 0.651, 0, 0, 1); }6.39% { -webkit-transform: matrix3d(-0.952, -0.305, 0, 0, 0.305, -0.952, 0, 0, 0, 0, 1, 0, -0.311, 0, 0, 1); transform: matrix3d(-0.952, -0.305, 0, 0, 0.305, -0.952, 0, 0, 0, 0, 1, 0, -0.311, 0, 0, 1); }6.57% { -webkit-transform: matrix3d(-0.959, -0.282, 0, 0, 0.282, -0.959, 0, 0, 0, 0, 1, 0, -0.302, 0, 0, 1); transform: matrix3d(-0.959, -0.282, 0, 0, 0.282, -0.959, 0, 0, 0, 0, 1, 0, -0.302, 0, 0, 1); }6.61% { -webkit-transform: matrix3d(-0.961, -0.277, 0, 0, 0.277, -0.961, 0, 0, 0, 0, 1, 0, -0.299, 0, 0, 1); transform: matrix3d(-0.961, -0.277, 0, 0, 0.277, -0.961, 0, 0, 0, 0, 1, 0, -0.299, 0, 0, 1); }6.68% { -webkit-transform: matrix3d(-0.963, -0.268, 0, 0, 0.268, -0.963, 0, 0, 0, 0, 1, 0, -0.291, 0, 0, 1); transform: matrix3d(-0.963, -0.268, 0, 0, 0.268, -0.963, 0, 0, 0, 0, 1, 0, -0.291, 0, 0, 1); }8.06% { -webkit-transform: matrix3d(-0.996, -0.084, 0, 0, 0.084, -0.996, 0, 0, 0, 0, 1, 0, -0.076, 0, 0, 1); transform: matrix3d(-0.996, -0.084, 0, 0, 0.084, -0.996, 0, 0, 0, 0, 1, 0, -0.076, 0, 0, 1); }8.33% { -webkit-transform: matrix3d(-0.999, -0.051, 0, 0, 0.051, -0.999, 0, 0, 0, 0, 1, 0, -0.048, 0, 0, 1); transform: matrix3d(-0.999, -0.051, 0, 0, 0.051, -0.999, 0, 0, 0, 0, 1, 0, -0.048, 0, 0, 1); }9.51% { -webkit-transform: matrix3d(-0.998, 0.055, 0, 0, -0.055, -0.998, 0, 0, 0, 0, 1, 0, 0.004, 0, 0, 1); transform: matrix3d(-0.998, 0.055, 0, 0, -0.055, -0.998, 0, 0, 0, 0, 1, 0, 0.004, 0, 0, 1); }10.09% { -webkit-transform: matrix3d(-0.997, 0.084, 0, 0, -0.084, -0.997, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); transform: matrix3d(-0.997, 0.084, 0, 0, -0.084, -0.997, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); }10.28% { -webkit-transform: matrix3d(-0.996, 0.089, 0, 0, -0.089, -0.996, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); transform: matrix3d(-0.996, 0.089, 0, 0, -0.089, -0.996, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); }10.96% { -webkit-transform: matrix3d(-0.995, 0.098, 0, 0, -0.098, -0.995, 0, 0, 0, 0, 1, 0, 0.005, 0, 0, 1); transform: matrix3d(-0.995, 0.098, 0, 0, -0.098, -0.995, 0, 0, 0, 0, 1, 0, 0.005, 0, 0, 1); }13.8% { -webkit-transform: matrix3d(-1, 0.025, 0, 0, -0.025, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.025, 0, 0, -0.025, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }14% { -webkit-transform: matrix3d(-1, 0.019, 0, 0, -0.019, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.019, 0, 0, -0.019, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }16.57% { -webkit-transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }16.67% { -webkit-transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }16.87% { -webkit-transform: matrix3d(-1, -0.024, 0, 0, 0.013, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.024, 0, 0, 0.013, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }20.92% { -webkit-transform: matrix3d(-1, 0.002, 0, 0, -0.323, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.002, 0, 0, -0.323, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }22.77% { -webkit-transform: matrix3d(-1, 0.006, 0, 0, -0.432, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.006, 0, 0, -0.432, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }23.09% { -webkit-transform: matrix3d(-1, 0.006, 0, 0, -0.444, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.006, 0, 0, -0.444, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }25.18% { -webkit-transform: matrix3d(-1, 0.002, 0, 0, -0.474, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.002, 0, 0, -0.474, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }27.68% { -webkit-transform: matrix3d(-1, -0.001, 0, 0, -0.438, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.001, 0, 0, -0.438, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }28.63% { -webkit-transform: matrix3d(-1, -0.001, 0, 0, -0.417, -1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.001, 0, 0, -0.417, -1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }30.1% { -webkit-transform: matrix3d(-1, -0.001, 0, 0, -0.385, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.001, 0, 0, -0.385, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }32.52% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.35, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.35, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }34.53% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }34.93% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }40.44% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.361, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.361, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }44.78% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.37, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.37, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }46.3% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.369, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.369, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }50% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.365, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.365, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }54.62% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.363, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.363, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }64.38% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }74.22% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }84.07% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }93.83% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }100% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }";
+				// bounceJS += "@keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); }0.22% { -webkit-transform: matrix3d(3.676, 0.337, 0, 0, -1.316, 0.942, 0, 0, 0, 0, 1, 0, -237.02, 0, 0, 1); transform: matrix3d(3.676, 0.337, 0, 0, -1.316, 0.942, 0, 0, 0, 0, 1, 0, -237.02, 0, 0, 1); }0.43% { -webkit-transform: matrix3d(3.527, 0.633, 0, 0, -2.881, 0.774, 0, 0, 0, 0, 1, 0, -182.798, 0, 0, 1); transform: matrix3d(3.527, 0.633, 0, 0, -2.881, 0.774, 0, 0, 0, 0, 1, 0, -182.798, 0, 0, 1); }0.68% { -webkit-transform: matrix3d(1.816, 0.892, 0, 0, -3.592, 0.451, 0, 0, 0, 0, 1, 0, -125.912, 0, 0, 1); transform: matrix3d(1.816, 0.892, 0, 0, -3.592, 0.451, 0, 0, 0, 0, 1, 0, -125.912, 0, 0, 1); }0.72% { -webkit-transform: matrix3d(1.578, 0.915, 0, 0, -3.577, 0.404, 0, 0, 0, 0, 1, 0, -119.441, 0, 0, 1); transform: matrix3d(1.578, 0.915, 0, 0, -3.577, 0.404, 0, 0, 0, 0, 1, 0, -119.441, 0, 0, 1); }0.95% { -webkit-transform: matrix3d(0.183, 0.998, 0, 0, -3.034, 0.06, 0, 0, 0, 0, 1, 0, -79.596, 0, 0, 1); transform: matrix3d(0.183, 0.998, 0, 0, -3.034, 0.06, 0, 0, 0, 0, 1, 0, -79.596, 0, 0, 1); }1.35% { -webkit-transform: matrix3d(-0.843, 0.886, 0, 0, -1.613, -0.463, 0, 0, 0, 0, 1, 0, -31.647, 0, 0, 1); transform: matrix3d(-0.843, 0.886, 0, 0, -1.613, -0.463, 0, 0, 0, 0, 1, 0, -31.647, 0, 0, 1); }1.43% { -webkit-transform: matrix3d(-0.904, 0.835, 0, 0, -1.373, -0.55, 0, 0, 0, 0, 1, 0, -24.472, 0, 0, 1); transform: matrix3d(-0.904, 0.835, 0, 0, -1.373, -0.55, 0, 0, 0, 0, 1, 0, -24.472, 0, 0, 1); }1.47% { -webkit-transform: matrix3d(-0.92, 0.813, 0, 0, -1.285, -0.582, 0, 0, 0, 0, 1, 0, -21.84, 0, 0, 1); transform: matrix3d(-0.92, 0.813, 0, 0, -1.285, -0.582, 0, 0, 0, 0, 1, 0, -21.84, 0, 0, 1); }1.99% { -webkit-transform: matrix3d(-0.942, 0.412, 0, 0, -0.426, -0.911, 0, 0, 0, 0, 1, 0, 4.825, 0, 0, 1); transform: matrix3d(-0.942, 0.412, 0, 0, -0.426, -0.911, 0, 0, 0, 0, 1, 0, 4.825, 0, 0, 1); }2.02% { -webkit-transform: matrix3d(-0.941, 0.393, 0, 0, -0.402, -0.92, 0, 0, 0, 0, 1, 0, 5.53, 0, 0, 1); transform: matrix3d(-0.941, 0.393, 0, 0, -0.402, -0.92, 0, 0, 0, 0, 1, 0, 5.53, 0, 0, 1); }2.15% { -webkit-transform: matrix3d(-0.938, 0.294, 0, 0, -0.288, -0.956, 0, 0, 0, 0, 1, 0, 8.637, 0, 0, 1); transform: matrix3d(-0.938, 0.294, 0, 0, -0.288, -0.956, 0, 0, 0, 0, 1, 0, 8.637, 0, 0, 1); }2.51% { -webkit-transform: matrix3d(-0.945, 0.061, 0, 0, -0.058, -0.998, 0, 0, 0, 0, 1, 0, 12.662, 0, 0, 1); transform: matrix3d(-0.945, 0.061, 0, 0, -0.058, -0.998, 0, 0, 0, 0, 1, 0, 12.662, 0, 0, 1); }2.55% { -webkit-transform: matrix3d(-0.946, 0.038, 0, 0, -0.036, -0.999, 0, 0, 0, 0, 1, 0, 12.819, 0, 0, 1); transform: matrix3d(-0.946, 0.038, 0, 0, -0.036, -0.999, 0, 0, 0, 0, 1, 0, 12.819, 0, 0, 1); }2.69% { -webkit-transform: matrix3d(-0.95, -0.032, 0, 0, 0.031, -0.999, 0, 0, 0, 0, 1, 0, 13.007, 0, 0, 1); transform: matrix3d(-0.95, -0.032, 0, 0, 0.031, -0.999, 0, 0, 0, 0, 1, 0, 13.007, 0, 0, 1); }2.87% { -webkit-transform: matrix3d(-0.954, -0.116, 0, 0, 0.112, -0.993, 0, 0, 0, 0, 1, 0, 12.639, 0, 0, 1); transform: matrix3d(-0.954, -0.116, 0, 0, 0.112, -0.993, 0, 0, 0, 0, 1, 0, 12.639, 0, 0, 1); }3.85% { -webkit-transform: matrix3d(-0.926, -0.372, 0, 0, 0.371, -0.928, 0, 0, 0, 0, 1, 0, 6.116, 0, 0, 1); transform: matrix3d(-0.926, -0.372, 0, 0, 0.371, -0.928, 0, 0, 0, 0, 1, 0, 6.116, 0, 0, 1); }4.54% { -webkit-transform: matrix3d(-0.908, -0.421, 0, 0, 0.422, -0.907, 0, 0, 0, 0, 1, 0, 2.352, 0, 0, 1); transform: matrix3d(-0.908, -0.421, 0, 0, 0.422, -0.907, 0, 0, 0, 0, 1, 0, 2.352, 0, 0, 1); }4.6% { -webkit-transform: matrix3d(-0.907, -0.422, 0, 0, 0.423, -0.906, 0, 0, 0, 0, 1, 0, 2.121, 0, 0, 1); transform: matrix3d(-0.907, -0.422, 0, 0, 0.423, -0.906, 0, 0, 0, 0, 1, 0, 2.121, 0, 0, 1); }4.72% { -webkit-transform: matrix3d(-0.907, -0.423, 0, 0, 0.424, -0.906, 0, 0, 0, 0, 1, 0, 1.672, 0, 0, 1); transform: matrix3d(-0.907, -0.423, 0, 0, 0.424, -0.906, 0, 0, 0, 0, 1, 0, 1.672, 0, 0, 1); }5.11% { -webkit-transform: matrix3d(-0.91, -0.416, 0, 0, 0.416, -0.91, 0, 0, 0, 0, 1, 0, 0.651, 0, 0, 1); transform: matrix3d(-0.91, -0.416, 0, 0, 0.416, -0.91, 0, 0, 0, 0, 1, 0, 0.651, 0, 0, 1); }6.39% { -webkit-transform: matrix3d(-0.952, -0.305, 0, 0, 0.305, -0.952, 0, 0, 0, 0, 1, 0, -0.311, 0, 0, 1); transform: matrix3d(-0.952, -0.305, 0, 0, 0.305, -0.952, 0, 0, 0, 0, 1, 0, -0.311, 0, 0, 1); }6.57% { -webkit-transform: matrix3d(-0.959, -0.282, 0, 0, 0.282, -0.959, 0, 0, 0, 0, 1, 0, -0.302, 0, 0, 1); transform: matrix3d(-0.959, -0.282, 0, 0, 0.282, -0.959, 0, 0, 0, 0, 1, 0, -0.302, 0, 0, 1); }6.61% { -webkit-transform: matrix3d(-0.961, -0.277, 0, 0, 0.277, -0.961, 0, 0, 0, 0, 1, 0, -0.299, 0, 0, 1); transform: matrix3d(-0.961, -0.277, 0, 0, 0.277, -0.961, 0, 0, 0, 0, 1, 0, -0.299, 0, 0, 1); }6.68% { -webkit-transform: matrix3d(-0.963, -0.268, 0, 0, 0.268, -0.963, 0, 0, 0, 0, 1, 0, -0.291, 0, 0, 1); transform: matrix3d(-0.963, -0.268, 0, 0, 0.268, -0.963, 0, 0, 0, 0, 1, 0, -0.291, 0, 0, 1); }8.06% { -webkit-transform: matrix3d(-0.996, -0.084, 0, 0, 0.084, -0.996, 0, 0, 0, 0, 1, 0, -0.076, 0, 0, 1); transform: matrix3d(-0.996, -0.084, 0, 0, 0.084, -0.996, 0, 0, 0, 0, 1, 0, -0.076, 0, 0, 1); }8.33% { -webkit-transform: matrix3d(-0.999, -0.051, 0, 0, 0.051, -0.999, 0, 0, 0, 0, 1, 0, -0.048, 0, 0, 1); transform: matrix3d(-0.999, -0.051, 0, 0, 0.051, -0.999, 0, 0, 0, 0, 1, 0, -0.048, 0, 0, 1); }9.51% { -webkit-transform: matrix3d(-0.998, 0.055, 0, 0, -0.055, -0.998, 0, 0, 0, 0, 1, 0, 0.004, 0, 0, 1); transform: matrix3d(-0.998, 0.055, 0, 0, -0.055, -0.998, 0, 0, 0, 0, 1, 0, 0.004, 0, 0, 1); }10.09% { -webkit-transform: matrix3d(-0.997, 0.084, 0, 0, -0.084, -0.997, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); transform: matrix3d(-0.997, 0.084, 0, 0, -0.084, -0.997, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); }10.28% { -webkit-transform: matrix3d(-0.996, 0.089, 0, 0, -0.089, -0.996, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); transform: matrix3d(-0.996, 0.089, 0, 0, -0.089, -0.996, 0, 0, 0, 0, 1, 0, 0.007, 0, 0, 1); }10.96% { -webkit-transform: matrix3d(-0.995, 0.098, 0, 0, -0.098, -0.995, 0, 0, 0, 0, 1, 0, 0.005, 0, 0, 1); transform: matrix3d(-0.995, 0.098, 0, 0, -0.098, -0.995, 0, 0, 0, 0, 1, 0, 0.005, 0, 0, 1); }13.8% { -webkit-transform: matrix3d(-1, 0.025, 0, 0, -0.025, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.025, 0, 0, -0.025, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }14% { -webkit-transform: matrix3d(-1, 0.019, 0, 0, -0.019, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.019, 0, 0, -0.019, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }16.57% { -webkit-transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }16.67% { -webkit-transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.023, 0, 0, 0.023, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }16.87% { -webkit-transform: matrix3d(-1, -0.024, 0, 0, 0.013, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.024, 0, 0, 0.013, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }20.92% { -webkit-transform: matrix3d(-1, 0.002, 0, 0, -0.323, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.002, 0, 0, -0.323, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }22.77% { -webkit-transform: matrix3d(-1, 0.006, 0, 0, -0.432, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.006, 0, 0, -0.432, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }23.09% { -webkit-transform: matrix3d(-1, 0.006, 0, 0, -0.444, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.006, 0, 0, -0.444, -0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }25.18% { -webkit-transform: matrix3d(-1, 0.002, 0, 0, -0.474, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0.002, 0, 0, -0.474, -0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }27.68% { -webkit-transform: matrix3d(-1, -0.001, 0, 0, -0.438, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.001, 0, 0, -0.438, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }28.63% { -webkit-transform: matrix3d(-1, -0.001, 0, 0, -0.417, -1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.001, 0, 0, -0.417, -1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }30.1% { -webkit-transform: matrix3d(-1, -0.001, 0, 0, -0.385, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, -0.001, 0, 0, -0.385, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }32.52% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.35, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.35, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }34.53% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }34.93% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.34, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }40.44% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.361, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.361, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }44.78% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.37, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.37, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }46.3% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.369, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.369, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }50% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.365, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.365, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }54.62% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.363, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.363, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }64.38% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }74.22% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }84.07% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }93.83% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }100% { -webkit-transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(-1, 0, 0, 0, -0.364, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }";
+				// var animationName = 'bounce-js-complex';
+				// $scope.animation = importAndProcessAnimationCSSTextByKF(bounceJS, animationName, updateDropdown);
 
 			// console.log($scope.animation.properties);
 			// var tempKeyFrame = $scope.animation.obj.cssRules.item(2);
@@ -2447,7 +2531,7 @@ angular.module('uguru.util.controllers')
 			$scope.actor = document.querySelector('#stage-elem');
 			initAnimationListener($scope.actor);
 
-			// $scope.animation = initAnimation('sample-animation-2', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
+
 			// $scope.resetStageDom();
 			// $scope.addSVGPlaceholder('circle');
 			// $scope.addSVGPlaceholder('square');
@@ -2542,6 +2626,7 @@ angular.module('uguru.util.controllers')
 					saveToMasterS3('animations.json', animation_url, $scope.imports.animations);
 				})
 
+				$localstorage.setObject('last_animation', $scope.animation);
 				return payloadDict;
 			}
 
@@ -2555,10 +2640,8 @@ angular.module('uguru.util.controllers')
 				return -1;
 			}
 		}
+		$scope.saveStageHtml = function(ignore_loader, is_clear) {
 
-		$scope.saveStageHtml = function(ignore_loader) {
-
-			console.log($scope.imports);
 			if ($scope.stage && $scope.stage.stageName) {
 				$scope.stage.stageHtml = document.querySelector('#stage-container').innerHTML;
 				var stageIndex = checkIfStageAlreadyExists($scope.stage, $scope.imports.stages)
@@ -2581,7 +2664,9 @@ angular.module('uguru.util.controllers')
 				var animation_url = 'https://s3.amazonaws.com/uguru-admin/master/';
 				saveToMasterS3('stages.json', animation_url, $scope.imports.stages);
 			})
-
+			if (!is_clear && $scope.stage && $scope.stageDropdown.options.length > 2) {
+				$localstorage.setObject('last_stage', $scope.stage);
+			}
 			return $scope.stage;
 
 			function checkIfStageAlreadyExists(obj, arr_obj) {
@@ -2593,6 +2678,7 @@ angular.module('uguru.util.controllers')
 				}
 				return -1;
 			}
+			$scope.layout.index = 0;
 		}
 
 		function processAnimations(animation_arr) {
@@ -2629,15 +2715,14 @@ angular.module('uguru.util.controllers')
 				tempStage.name = name;
 				$scope.stage = initNewStage(tempStage.name, tempStage.html, tempStage.css);
 
-
+				$scope.pageDom.stageName = $scope.stage.stageName;
+				$scope.pageDom.stageCss = $scope.stage.stageCss;
+				$scope.pageDom.stageHtml = $scope.stage.stageHtml;
 				$scope.updatePageDom($scope.stage.stageName, $scope.stage.stageHtml, $scope.stage.stageCss);
-				var stageOptions = [tempStage.name, 'save', 'save and import', 'save and clear'];
-				var stageLabel = 'Active Stage'
-				$scope.stageDropdown = {options: stageOptions, selectedIndex:0, label: stageLabel, onOptionClick:onStageDropdownClick, stageActive:true, size:'small'};
-				// $scope.saveStageHtml(true);
+
+				$scope.saveStageHtml();
 
 			}, 3000);
-			LoadingService.showAmbig('Importing...', 2500);
 			function cssCallback(resp) {
 				tempStage.css = resp;
 			}
@@ -2646,9 +2731,9 @@ angular.module('uguru.util.controllers')
 			}
 		}
 
-		function saveToMasterS3(filename, url, obj) {
+		function saveToMasterS3(filename, url, obj, cb) {
 			console.log('about to save to master with url', url + filename, obj);
-			FileService.postS3JsonFile(JSON.stringify(obj), null, url + filename, function(name, resp) {});
+			FileService.postS3JsonFile(JSON.stringify(obj), null, url + filename, function(name, resp) { cb && cb()});
 		}
 
 		function importAnimations() {
@@ -2698,10 +2783,11 @@ angular.module('uguru.util.controllers')
 				var indexStage = stages[i];
 				indexStage.owner = 'samir';
 			}
-
+			return stages;
 		}
 
 		function importStageHtml() {
+
 			$scope.imports = $localstorage.getObject('imports');
 			if (!$scope.imports.stages) {
 				$scope.imports.stages = [];
@@ -3071,13 +3157,14 @@ angular.module('uguru.util.controllers')
 			// var js_anim_obj = importAnimationFromRawCssText(css_text, name);
 
 			// var final_obj = initAnimationFromAnimObj(js_anim_obj);
-			console.log(css_text, name);
+
 			$scope.animation = importAndProcessAnimationCSSTextByKF(css_text, name, updateDropdown);
 
 			$scope.animationDict.importClassText = class_text;
 			$scope.animationDict.importTextarea = css_text;
 			$scope.animationDict.importInput = name;
 
+			$localstorage.setObject('last_animation',$scope.animation);
 			$scope.layout.index = 0;
 			tadaToolElement("#animation-name-dropdown");
 			return $scope.animation;
@@ -3091,15 +3178,20 @@ angular.module('uguru.util.controllers')
 				focusedElement.classList.add('animated', 'tada');
 			}, 1000)
 		}
+		$timeout(function() {
+			importLastAnimation();
+
+			importLastStage();
+		}, 3000);
 
 		$timeout(function() {
 
 			initAll();
-			$timeout(function() {
-				// exportExternalCSSKeyFrameFiles(['animation'])
-				// angular.element(document.querySelector('#import-button')).triggerHandler('click');
-				// $scope.importCodepenTemplate('http://codepen.io/teamuguru/pen/29ce58caa079980bb9375afa30efcb57');
-			}, 5000)
+			// $timeout(function() {
+			// 	// exportExternalCSSKeyFrameFiles(['animation'])
+			// 	// angular.element(document.querySelector('#import-button')).triggerHandler('click');
+			// 	// $scope.importCodepenTemplate('http://codepen.io/teamuguru/pen/29ce58caa079980bb9375afa30efcb57');
+			// }, 5000)
 
 		}, 500)
 

@@ -256,7 +256,12 @@ function FileService(LoadingService, Restangular, DevToolService) {
             var resp = xhr.responseText;
             cb && cb(resp);
         }
-        xhr.open( 'GET',"https://crossorigin.me/" +  url, true );;
+        var protocol = window.location.protocol;
+        var crossOriginUrl = 'http://crossorigin.me/';
+        if (protocol.indexOf('https') > -1) {
+            crossOriginUrl = 'https://crossorigin.me/';
+        }
+        xhr.open( 'GET',crossOriginUrl +  url, true );;
         xhr.send();
     }
     function getS3JsonFile(first_name, url, cb) {

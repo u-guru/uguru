@@ -14522,7 +14522,7 @@ a.category-tile {
 				height: 48px;
 			}
 			.marker-guru {
-				@include opacity(0);
+				// @include opacity(0);
 				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 				@include round;
 				@include flex;
@@ -14585,6 +14585,9 @@ a.category-tile {
 			left: 2px;
 			width: calc(100% - 4px);
 			height: calc(100% - 26px);
+			// &.active {
+			// 	@include opacity-important(1);
+			// }
 			.marker-expanded-icon {
 				svg {
 					@include svg-stroke(white, 1.5);
