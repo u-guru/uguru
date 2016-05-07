@@ -1919,7 +1919,8 @@ angular.module('uguru.util.controllers')
 				kf_obj.confirmed = true;
 			} else if (!skip_confirm && !kf_obj.confirmed) {
 				kf_obj.confirmed = true;
-				return;
+			} else {
+				kf_obj.confirmed = false;
 			}
 			if (kf_obj.confirmed) {
 				kf_obj.confirmed = false;
@@ -2655,7 +2656,7 @@ angular.module('uguru.util.controllers')
 				document.execCommand('copy')
 			}, 1000)
 			function generateClassText(anim) {
-				 return "." + anim.obj.name + "\n{\n   " + ' animation:  ' + anim.obj.name + '  ' + anim.attr.duration  + '  ' + anim.attr.timing_function + ' ' + anim.attr.delay + ' ' + anim.attr.iteration_count + ' ' + anim.attr.direction + ';\n    ' + browserPrefix + '-' + 'animation:  ' + anim.obj.name + ' ' + anim.attr.duration  + ' ' + anim.attr.timing_function + ' ' + anim.attr.delay + ' ' + anim.attr.iteration_count + ' ' + anim.attr.direction + ';\n}\n\n'
+				 return "." + anim.obj.name + "\n{\n   " + ' animation:  ' + anim.obj.name + ' ' + anim.attr.duration  + ' ' + anim.attr.timing_function + ' ' + anim.attr.delay + ' ' + anim.attr.iteration_count + ' ' + anim.attr.direction + ';\n    ' + browserPrefix + '-' + 'animation:  ' + anim.obj.name + ' ' + anim.attr.duration  + ' ' + anim.attr.timing_function + ' ' + anim.attr.delay + ' ' + anim.attr.iteration_count + ' ' + anim.attr.direction + ';\n}\n\n'
 			}
 		}
 
@@ -2921,8 +2922,11 @@ angular.module('uguru.util.controllers')
 						var indexStyleProperty = indexRule.style.item(i);
 						var dMatrix;
 						if (transformPropertyVariants.indexOf(indexStyleProperty) > -1) {
+
 							var transformString = indexRule.style[indexStyleProperty];
+							console.log(transformString);
 							var matrixTransform = transformString;
+
 							if (indexStyleProperty.indexOf('matrix3d') === -1) {
 								var m = new WebKitCSSMatrix(matrixTransform);
 								matrixTransform = "matrix3d(" + [m.m11, m.m12, m.m13, m.m14, m.m21, m.m22, m.m23, m.m24, m.m31, m.m32, m.m33, m.m34, m.m41, m.m42, m.m43, m.m44].join(", ") + ")";
@@ -3032,8 +3036,9 @@ angular.module('uguru.util.controllers')
 			for (var i = 0; i < kf.style.length; i++) {
 				var indexStyle = kf.style[i];
 				var indexValue = kf.style[indexStyle];
-				if (indexStyle.indexOf('transform') > -1) {
+				if (indexStyle.indexOf('transform:') > -1) {
 					var separateTransformValues = indexValue.split(' ');
+					console.log(indexStyle, separateTransformValues);
 					for (var j = 0; j < separateTransformValues.length; j++) {
 						var indexTransformPropSplit = separateTransformValues[j].replace(')', '').split('(');
 						var transformPropertyName = indexTransformPropSplit[0];
