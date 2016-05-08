@@ -501,14 +501,18 @@ angular.module('uguru.util.controllers')
       $scope.loader = new SVGLoader( document.querySelector('#map-parent-wrapper .pageload-overlay'), { speedIn : 300, easingIn : mina.easeinout } );
       $scope.loader.show();
 
+
+      $scope.hideLoader = function() {
+        document.querySelector('#cerise-bg-test').style.visibility = "hidden";
+        document.querySelector('#map-parent-wrapper .pageload-overlay svg.transition').style.visibility = "visible";
+        $scope.loader.hide();
+      }
+
       $timeout(function() {
         // renderUniversityPlacesMap(g.university);
 
 
         $timeout(function() {
-          document.querySelector('#cerise-bg-test').style.visibility = "hidden";
-          document.querySelector('#map-parent-wrapper .pageload-overlay svg.transition').style.visibility = "visible";
-
           // loader.isHide = true;
         }, 1000)
 
