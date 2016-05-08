@@ -15,7 +15,10 @@
     </div>
     <main class='lyt-30-70-sidebar relative full-y'>
         <section class="relative">
-            <div id="keys-toolbar" class="flex-center-vertical-space-between bg-campus">
+            <div id="keys-toolbar" class="flex-center-vertical-space-between bg-campus relative">
+                <div class='absolute animated bounceInDown full-xy bg-charcoal weight-900 flex-wrap-center text-center' style='z-index:100000 !important' ng-if='showStatusMsg'>
+                    <h1 style='font-size:36px'> {{showStatusMsg}} </h1>
+                </div>
                 <ul class='p15-grid flex-center-vertical txt-center'>
                     <li ng-if='player.status'>
                         <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.pause()' ng-include="img_base + BASE + 'templates/svg/main/pause.html'">Pause</a>
@@ -54,9 +57,6 @@
                     <li>
                         <dropdown ng-if='stageDropdown.toggleActive' id='stage-dropdown' class='height-32' ng-model="stageDropdown"> </dropdown>
                     </li>
-                    <li>
-                        <dropdown ng-if='animationDropdown.toggleActive' id='animation-name-dropdown' class="height-32" ng-model="animationDropdown"> </dropdown>
-                    </li>
                     <!-- <li>
                         <a ng-click='clearAllAnimations()' class="weight-900">Clear All</a>
                     </li> -->
@@ -83,8 +83,8 @@
                     </div>
                     <div class="bg-campus-50p full-xy overflow-auto" ng-init="animationImportSearchText" ng-if='importLayoutIndex === 1'>
                         <div class="p15top-p15x">
-                            <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>Import an Animation Class</h1>
-                            <input class='flex-center-vertical full-x p15x radius-2 txt-18 height-48' style='padding-top: 0; padding-bottom: 0;' ng-model='animationImportSearchText' placeholder="search predefined animation" type='search'/>
+                            <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'><span class='weight-900'>Option 1: </span> Import an Animation Class</h1>
+                            <input id='import-animation-input' class='flex-center-vertical full-x p15x radius-2 txt-18 height-48' style='padding-top: 0; padding-bottom: 0;' ng-model='animationImportSearchText' placeholder="search predefined animation" type='search'/>
                         </div>
                         <div>
                             <ul class='flex-wrap full-x p15-grid'>
@@ -99,6 +99,12 @@
                                     </a>
                                 </li>
                             </ul>
+                        </div>
+                        <div class='p20x' style='margin-top:10%;'>
+                            <h1  class='full-x txt-28 txt-white semibold lowercase m05bottom'>OR <span class='weight-900'>Option 2: </span> Import by Pasting CSS KeyFrame Text</h1>
+                            <button class='bg-shamrock width-50' ng-click='switchLayoutTabToImportAnimation()'>
+                                Paste an animation from somewhere else!
+                            </button>
                         </div>
                     </div>
                     <div class="bg-campus-50p full-xy relative" ng-if='importLayoutIndex === 2'>
@@ -274,13 +280,13 @@
                             <li class="flex-center-vertical-wrap-space-between">
                                 <h2 class="txt-18 semibold m15right">rotateX</h2>
                                 <div class="flex-center-vertical">
-                                    <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DX, 'rotate3DX')" ng-model="animation.selected_keyframe.rotate3DX" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="1" placeholder="0"/>
-                                    <span class="bg-campus block txt-16 p05xy radius-2-right">rad&nbsp;&dtrif;</span>
+                                    <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DXdeg, 'rotate3DXdeg')" ng-model="animation.selected_keyframe.rotate3DXdeg" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="1" placeholder="0"/>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-right">deg&nbsp;&dtrif;</span>
                                 </div>
                                 <div class="range-container small full-x m10top">
                                     <div>
                                         <span>-180</span>
-                                        <input class="range-slider" type="range" size="2" min="-180" max="180" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DX, 'rotate3DX')" ng-model="animation.selected_keyframe.rotate3DX"/>
+                                        <input class="range-slider" type="range" size="2" min="-180" max="180" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DXdeg, 'rotate3DXdeg')" ng-model="animation.selected_keyframe.rotate3DXdeg"/>
                                         <span>180</span>
                                     </div>
                                 </div>
@@ -288,13 +294,13 @@
                             <li class="flex-center-vertical-wrap-space-between">
                                 <h2 class="txt-18 semibold m15right">rotateY</h2>
                                 <div class="flex-center-vertical">
-                                    <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DY, 'rotate3DY')" class="radius-2-left txt-center p05xy" ng-model="animation.selected_keyframe.rotate3DY" size="4" style="height: 30px;" type="" step="1" placeholder="0"/>
-                                    <span class="bg-campus block txt-16 p05xy radius-2-right">rad&nbsp;&dtrif;</span>
+                                    <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DYdeg, 'rotate3DYdeg')" class="radius-2-left txt-center p05xy" ng-model="animation.selected_keyframe.rotate3DYdeg" size="4" style="height: 30px;" type="" step="1" placeholder="0"/>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-right">deg&nbsp;&dtrif;</span>
                                 </div>
                                 <div class="range-container small full-x m10top">
                                     <div>
                                         <span>-180</span>
-                                        <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DY, 'rotate3DY')" ng-model="animation.selected_keyframe.rotate3DY" class="range-slider" type="range" size="2" min="-180" max="180" list="numbers"/>
+                                        <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DYdeg, 'rotate3DYdeg')" ng-model="animation.selected_keyframe.rotate3DYdeg" class="range-slider" type="range" size="2" min="-180" max="180" list="numbers"/>
                                         <span>180</span>
                                     </div>
                                 </div>
@@ -302,13 +308,13 @@
                             <li class="flex-center-vertical-wrap-space-between">
                                 <h2 class="txt-18 semibold m15right">rotateZ</h2>
                                 <div class="flex-center-vertical">
-                                    <input class="radius-2-left txt-center p05xy" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DZ, 'rotate3DZ')" size="4" style="height: 30px;" type="" step="1" placeholder="0" ng-model="animation.selected_keyframe.rotate3DZ"/>
-                                    <span class="bg-campus block txt-16 p05xy radius-2-right">rad&nbsp;&dtrif;</span>
+                                    <input class="radius-2-left txt-center p05xy" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DZdeg, 'rotate3DZdeg')" size="4" style="height: 30px;" type="" step="1" placeholder="0" ng-model="animation.selected_keyframe.rotate3DZdeg"/>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-right">deg&nbsp;&dtrif;</span>
                                 </div>
                                 <div class="range-container small full-x m10top">
                                     <div>
                                         <span>-180</span>
-                                        <input class="range-slider" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DZ, 'rotate3DZ')" ng-model="animation.selected_keyframe.rotate3DZ" type="range" size="2" min="-180" max="180" list="numbers"/>
+                                        <input class="range-slider" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DZdeg, 'rotate3DZdeg')" ng-model="animation.selected_keyframe.rotate3DZdeg" type="range" size="2" min="-180" max="180" list="numbers"/>
                                         <span>180</span>
                                     </div>
                                 </div>
@@ -316,13 +322,13 @@
                             <li class="flex-center-vertical-wrap-space-between">
                                 <h2 class="txt-18 semibold m15right">skewX</h2>
                                 <div class="flex-center-vertical">
-                                    <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="1" placeholder="0" ng-model="animation.selected_keyframe.skewX" ng-change="applyPropertyChange(animation.selected_keyframe.skewX, 'skewX')"/>
-                                    <span class="bg-campus block txt-16 p05xy radius-2-right">rad&nbsp;&dtrif;</span>
+                                    <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="1" placeholder="0" ng-model="animation.selected_keyframe.skewXdeg" ng-change="applyPropertyChange(animation.selected_keyframe.skewXdeg, 'skewXdeg')"/>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-right">deg&nbsp;&dtrif;</span>
                                 </div>
                                 <div class="range-container small full-x m10top">
                                     <div>
                                         <span>-90</span>
-                                        <input class="range-slider" type="range" size="2" min="-90" max="90" list="numbers" ng-model="animation.selected_keyframe.skewX" ng-change="applyPropertyChange(animation.selected_keyframe.skewX, 'skewX')"/>
+                                        <input class="range-slider" type="range" size="2" min="-90" max="90" list="numbers" ng-model="animation.selected_keyframe.skewXdeg" ng-change="applyPropertyChange(animation.selected_keyframe.skewXdeg, 'skewXdeg')"/>
                                         <span>90</span>
                                     </div>
                                 </div>
@@ -330,13 +336,13 @@
                             <li class="flex-center-vertical-wrap-space-between">
                                 <h2 class="txt-18 semibold m15right">skewY</h2>
                                 <div class="flex-center-vertical">
-                                    <input ng-model="animation.selected_keyframe.skewY" ng-change="applyPropertyChange(animation.selected_keyframe.skewY, 'skewY')" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="1" placeholder="0"/>
-                                    <span class="bg-campus block txt-16 p05xy radius-2-right">rad&nbsp;&dtrif;</span>
+                                    <input ng-model="animation.selected_keyframe.skewYdeg" ng-change="applyPropertyChange(animation.selected_keyframe.skewYdeg, 'skewYdeg')" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="1" placeholder="0"/>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-right">deg&nbsp;&dtrif;</span>
                                 </div>
                                 <div class="range-container small full-x m10top">
                                     <div>
                                         <span>-90</span>
-                                        <input class="range-slider" type="range" size="2" min="-90" max="90" list="numbers" ng-model="animation.selected_keyframe.skewY" ng-change="applyPropertyChange(animation.selected_keyframe.skewY, 'skewY')"/>
+                                        <input class="range-slider" type="range" size="2" min="-90" max="90" list="numbers" ng-model="animation.selected_keyframe.skewYdeg" ng-change="applyPropertyChange(animation.selected_keyframe.skewYdeg, 'skewYdeg')"/>
                                         <span>90</span>
                                     </div>
                                 </div>
@@ -507,6 +513,48 @@
                     </div>
                 </div>
             </div>
+            <div class="flex-center-vertical-space-between bg-slate" style="margin-top: -15px;">
+                <div class='flex-center-vertical height-36 width-128 absolute' style='bottom:17.5%;'>
+                    <h2 ng-show='!player.status' class="opacity-50 weight-900 txt-36 absolute top-0 left-0 m15left">{{animation.selected_percent}}</h2>
+                    <h2 ng-show='player.status' class="weight-900 txt-azure txt-36 absolute top-0 left-0 m15left">{{timer.time}}s</h2>
+                </div>
+                <ul class='p15-grid flex-center txt-center'>
+                    <li>
+                        <div class='txt-1 txt-center full-x semibold'># Intervals</div>
+                        <input class="radius-2 flex-center p05xy txt-center height-32" size="20" id='kf-intervals-input' ng-model='animation.attr.kf_intervals' ng-blur="updateNumIntervals(animation.attr.kf_intervals)" placeholder="animation name" type='text' />
+                    </li>
+                    <li>
+                        <div class='txt-1 txt-center full-x semibold'>Duration</div>
+                        <div class="flex-center-vertical">
+                            <input class="radius-2-left txt-center p05xy height-32" size="4" ng-model="animation.attr.durationVal" ng-change="animDurationChange(animation.attr.durationVal)" placeholder="0"/>
+                            <span class="bg-campus flex-center txt-16 p05xy radius-2-right height-32">s</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='txt-1 txt-center full-x semibold'>Timing Function</div>
+                        <dropdown class="height-32" ng-model="animationTimingFunc" selected-index="0"> </dropdown>
+                    </li>
+                    <li>
+                        <div class='txt-1 txt-center full-x semibold'>Delay</div>
+                        <div class="flex-center-vertical">
+                            <input ng-change="animation.attr.delay = animation.attr.delayVal + 's'" class="radius-2-left flex-center p05xy txt-center" size="4" style="height: 32px;" ng-model='animation.attr.delayVal' type='' placeholder=""/>
+                            <span class="bg-campus flex-center txt-16 p05xy radius-2-right height-32">s</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='txt-1 txt-center full-x semibold'>Count</div>
+                        <input class="radius-2 flex-center p05xy txt-center height-32" size="4" ng-model='animation.attr.iteration_count' type='' placeholder=""/>
+                    </li>
+                    <li>
+                        <div class='txt-1 txt-center full-x semibold'>Direction</div>
+                        <dropdown class="height-32" ng-model="animationDirectionOptions" selected-index="0"> </dropdown>
+                    </li>
+                    <li>
+                        <div class='txt-1 txt-center full-x semibold'>Fill Mode</div>
+                        <dropdown class="height-32" ng-model="animationFillMode" selected-index="0"> </dropdown>
+                    </li>
+                </ul>
+            </div>
             <div class='search-animation-mode relative bg-charcoal' ng-if='stage.searchAnimationMode' class='bg-slate' style="height: calc(100% - 83px - 68px - 82px); width: 100%; overflow: hidden;">
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='cancelTimeStateActionAnimationClassInputFocused()' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                 <div>
@@ -566,12 +614,12 @@
                     </li>
                 </ul> -->
                 <div class="range-container small full-x">
-                    <div id='keyframe-bar-container' class='relative p10xy' ng-mouseup="setActiveKeyFrameFromPointer($event)">
+                    <div id='keyframe-bar-container' class='relative p10xy'>
                         <span>0%</span>
                         <div class="relative">
-                            <div style='left:{{animation.selected_percent}}' draggable draggable-x-only draggable-ignore-style class='absolute bg-white round' id='keyframe-pointer'>&nbsp;</div>
-                            <div id='keyframe-bar' class='round high-z-index bg-white-25p full-x top-0 height-10'></div>
-                            <!-- <input ng-mouseup="setActiveKeyFrame(animation.selected_kf_index)"  class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animation.attr.kf_intervals}}" list="numbers"  ng-model="animation.selected_kf_index"/> -->
+                          <!--   <div style='left:{{animation.selected_percent}}' draggable draggable-x-only draggable-ignore-style class='absolute bg-white round' id='keyframe-pointer'>&nbsp;</div>
+                            <div id='keyframe-bar' class='round high-z-index bg-white-25p full-x top-0 height-10'></div> -->
+                            <input ng-mouseup="setActiveKeyFrame(animation.selected_kf_index)"  class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animation.attr.kf_intervals}}" list="numbers"  ng-model="animation.selected_kf_index"/>
                             <progress class="white-round full-x" max="{{animation.attr.durationVal}}" value="{{timer.time}}"></progress>
                         </div>
                         <span>{{animation.kf_count}}%</span>
@@ -579,48 +627,7 @@
                 </div>
             </div>
 
-            <div class="flex-center-vertical-space-between bg-slate" style="margin-top: -15px;">
-                <div class='flex-center-vertical height-36 width-128 relative'>
-                    <h2 ng-show='!player.status' class="opacity-50 weight-900 txt-36 absolute top-0 left-0 m15left">{{animation.selected_percent}}</h2>
-                    <h2 ng-show='player.status' class="weight-900 txt-azure txt-36 absolute top-0 left-0 m15left">{{timer.time}}s</h2>
-                </div>
-                <ul class='p15-grid flex-center txt-center'>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'>Name</div>
-                        <input class="radius-2 flex-center p05xy txt-center height-32" size="20" ng-model='animation.attr.name' ng-blur="updateAnimationName(animation)" placeholder="animation name" type='text' />
-                    </li>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'>Duration</div>
-                        <div class="flex-center-vertical">
-                            <input class="radius-2-left txt-center p05xy height-32" size="4" ng-model="animation.attr.durationVal" ng-change="animDurationChange(animation.attr.durationVal)" placeholder="0"/>
-                            <span class="bg-campus flex-center txt-16 p05xy radius-2-right height-32">s</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'>Timing Function</div>
-                        <dropdown class="height-32" ng-model="animationTimingFunc" selected-index="0"> </dropdown>
-                    </li>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'>Delay</div>
-                        <div class="flex-center-vertical">
-                            <input ng-change="animation.attr.delay = animation.attr.delayVal + 's'" class="radius-2-left flex-center p05xy txt-center" size="4" style="height: 32px;" ng-model='animation.attr.delayVal' type='' placeholder=""/>
-                            <span class="bg-campus flex-center txt-16 p05xy radius-2-right height-32">s</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'>Count</div>
-                        <input class="radius-2 flex-center p05xy txt-center height-32" size="4" ng-model='animation.attr.iteration_count' type='' placeholder=""/>
-                    </li>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'>Direction</div>
-                        <dropdown class="height-32" ng-model="animationDirectionOptions" selected-index="0"> </dropdown>
-                    </li>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'>Fill Mode</div>
-                        <dropdown class="height-32" ng-model="animationFillMode" selected-index="0"> </dropdown>
-                    </li>
-                </ul>
-            </div>
+
 
             <div class="anim-timeline" ng-if="false">
             	<ul class="anim-label">
@@ -685,14 +692,14 @@
             	</div>
             </div>
         </section>
-        <aside class='bg-charcoal relative'>
+        <aside class='bg-charcoal relative high-z-index'>
             <div class="full-x tab-container bg-robin">
-                <tabs id="keys-aside-menu" class='full-xy' options="['Stage', 'Keyframes', 'Elements']" index="asideTabIndex"> </tabs>
+                <tabs id="keys-aside-menu" class='full-xy' options="['Stage', 'Elements', 'Animate']" index="asideTabIndex"> </tabs>
             </div>
-            <div class="relative" style="height: calc(100% - 60px); padding-bottom: 64px;" ng-hide='asideTabIndex !== 2'>
+            <div class="relative" style="height: calc(100% - 60px); padding-bottom: 64px;" ng-hide='asideTabIndex !== 1'>
                 <div class="full-y overflow-auto no-scrollbar">
                     <h1 class='p15xy txt-20 weight-700 uppercase full-x txt-white txt-center'>Selected Animated Components</h1>
-                    <div class='flex-wrap-center relative full-x bg-white-25p p15xy preview-container' id='stage-elem-clone-container'></div>
+                    <div class='flex-wrap-center relative full-x bg-white-25p p15xy preview-container stage-elem-clone-container'></div>
                     <ul class="p15-grid">
                         <li ng-repeat='anim_element in stage.anim_elements track by $index'>
                             <div class="flex full-x">
@@ -784,18 +791,69 @@
                     <button id="play-stage-button" ng-click='playStageTimeStates()' class='flex-start text-center'>Play</button>
                 </div>
             </div>
-            <div class="full-x absolute" style="height: calc(100% - 60px);" ng-hide='asideTabIndex !== 1'>
+            <div class="full-x absolute" style="height: calc(100% - 60px);" ng-hide='asideTabIndex !== 2'>
+                <div style='height:125px !important;' class='bg-azure-20p flex-wrap-center relative full-x p15xy preview-container ugrid-2'>
+                    <div class='full-y stage-elem-clone-container'>
+                    </div>
+                    <div class='flex-wrap-center flex-stretch' style='max-height:125px;'>
+                        <h1 class='upper-case weight-600 txt-1 p05y full-x uppercase'> <span class='opacity-50'> Animated Component:</span>
+                            <span class='upper-case weight-600 txt-1 p05y full-x text-center uppercase opacity-3'> {{actor.id || actor.className}} </span>
+                        </h1>
+
+                        <div ng-click='showStatusMsgForXSec("Coming soon")' class='full-x ugrid-4 p05y opacity-50'>
+                            <a ng-click='goIntoSelectMode()'>
+                                <div>
+                                    <i class='txt-5 ion-edit icon' > </i>
+                                </div>
+                                <div class='txt-1'>  </div>
+                            </a>
+                            <a ng-click='goIntoSelectMode()'>
+                                <i class='txt-5 ion-mouse icon' > </i>
+                                <div class='txt-1'>  </div>
+                            </a>
+                            <a ng-click='goIntoSelectMode()'>
+                                <i class='txt-5 ion-trash-a icon' > </i>
+                            </a>
+                            <a ng-click='goIntoSelectMode()'>
+                                <i class='txt-5 ion-location icon' > </i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <ul class="flex-space-between p15-grid bg-campus-50p">
-                    <li class="flex-center-vertical" style="width: calc(100% - 51px);">
-                        <h2 class="txt-18 semibold block p15right">Name</h2>
-                        <input class="radius-2 flex-center p05xy txt-center height-36" style="width: calc(100% - 21px);" ng-model='animation.attr.name' ng-blur="updateAnimationName(animation)" placeholder="animation name" type='text' />
+                    <li class='flex-wrap-center' ng-if='animation.edit' style='width:100%'>
+                        <div class='flex-wrap-center' style='width:70%'>
+                            <h2 class="txt-18 semibold block">Name</h2>
+                            <input class="radius-2 flex-center p05xy txt-center height-36" ng-model='animation.attr.name' ng-blur="updateAnimationName(animation)" placeholder="animation name" type='text' />
+                        </div>
+                        <div class='flex-wrap-center bg-shamrock weight-600' style='width:15%;'>
+                            <a ng-click='updateAnimationName(animation)'>
+                                Save
+                            </a>
+                        </div>
+                        <div class='flex-wrap-center bg-auburn weight-600' ng-click='animation.edit = false;' style='width:15%'>
+                            <a ng-click='editAnimationName = false;'>
+                                Cancel
+                            </a>
+                        </div>
                     </li>
-                    <li class="flex-center">
-                        <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8" ng-click='layout.index = 1' ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
+                    <li class="flex-wrap-center relative" style="width: calc(100% - 80px);" ng-if="!animation.edit">
+                        <div class='full-x txt-1 opacity p05y'>
+                            You are currently editing
+                        </div>
+                        <div class='full-x txt-5 uppercase weight-600'>
+                            {{animation.attr.name}}
+                        </div>
+                    </li>
+                    <li class="flex-center" ng-if='!animation.edit'>
+                        <a style='margin-right:10px;'  id='import-button' class="bg bg-slate radius-2 mright05 svg-white flex-center svg-36-24 svg-stroke-8" ng-click='saveAnimationClass(animation)' ng-include="img_base + BASE + 'templates/svg/main/save.html'">Save</a>
+                        <a  id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8" ng-click='animation.edit = true;' ng-include="img_base + BASE + 'templates/svg/main/edit.html'" style='margin-right:10px;'>Edit</a>
+                        <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8" ng-click='goToEditAnimationClass()' ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
                         <a id='export-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8 m15left" ng-click='renderAnimationCSSText(animation)'  ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
                     </li>
                 </ul>
                 <div class="overflow-auto no-scrollbar" style="height: calc(100% - 66px);">
+
                     <ul class="full-x ugrid-2">
                         <li class="height-36">
                             <button ng-click="applyCurrentKFtoAnother(animation.flex_selected_index)" class='height-36 txt-18 bg-moxie'>clone @ T = {{animation.flex_selected_index}}</button>
@@ -968,32 +1026,32 @@
                         <li class="ugrid-2">
                             <div class="flex-center-vertical-wrap-space-between width-50p" style="padding-right: 7.5px;">
                                 <h2 class="txt-18 semibold m15right">skewX&nbsp;&nbsp;
-                                    <a ng-click='clearProperty(animation.selected_keyframe, "skewX")'>
+                                    <a ng-click='clearProperty(animation.selected_keyframe, "skewXdeg")'>
                                     <i class='icon ion-trash-a'></i></a></h2>
                                 <div class="flex-center-vertical">
-                                    <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="1" placeholder="0" ng-model="animation.selected_keyframe.skewX" ng-change="applyPropertyChange(animation.selected_keyframe.skewX, 'skewX')"/>
-                                    <span class="bg-campus block txt-16 p05xy radius-2-right">rad&nbsp;&dtrif;</span>
+                                    <input class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="1" placeholder="0" ng-model="animation.selected_keyframe.skewXdeg" ng-change="applyPropertyChange(animation.selected_keyframe.skewXdeg, 'skewXdeg')"/>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-right">deg&nbsp;&dtrif;</span>
                                 </div>
                                 <div class="range-container small full-x m10top">
                                     <div>
                                         <span>-90</span>
-                                        <input class="range-slider" type="range" size="2" min="-90" max="90" list="numbers" ng-model="animation.selected_keyframe.skewX" ng-change="applyPropertyChange(animation.selected_keyframe.skewX, 'skewX')"/>
+                                        <input class="range-slider" type="range" size="2" min="-90" max="90" list="numbers" ng-model="animation.selected_keyframe.skewXdeg" ng-change="applyPropertyChange(animation.selected_keyframe.skewXdeg, 'skewXdeg')"/>
                                         <span>90</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex-center-vertical-wrap-space-between width-50p" style="padding-left: 7.5px;">
                                 <h2 class="txt-18 semibold m15right">skewY&nbsp;&nbsp;
-                                    <a ng-click='clearProperty(animation.selected_keyframe, "skewY")'>
+                                    <a ng-click='clearProperty(animation.selected_keyframe, "skewYdeg")'>
                                     <i class='icon ion-trash-a'></i></a></h2>
                                 <div class="flex-center-vertical">
-                                    <input ng-model="animation.selected_keyframe.skewY" ng-change="applyPropertyChange(animation.selected_keyframe.skewY, 'skewY')" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="1" placeholder="0"/>
-                                    <span class="bg-campus block txt-16 p05xy radius-2-right">rad&nbsp;&dtrif;</span>
+                                    <input ng-model="animation.selected_keyframe.skewYdeg" ng-change="applyPropertyChange(animation.selected_keyframe.skewYdeg, 'skewYdeg')" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="1" placeholder="0"/>
+                                    <span class="bg-campus block txt-16 p05xy radius-2-right">deg&nbsp;&dtrif;</span>
                                 </div>
                                 <div class="range-container small full-x m10top">
                                     <div>
                                         <span>-90</span>
-                                        <input class="range-slider" type="range" size="2" min="-90" max="90" list="numbers" ng-model="animation.selected_keyframe.skewY" ng-change="applyPropertyChange(animation.selected_keyframe.skewY, 'skewY')"/>
+                                        <input class="range-slider" type="range" size="2" min="-90" max="90" list="numbers" ng-model="animation.selected_keyframe.skewYdeg" ng-change="applyPropertyChange(animation.selected_keyframe.skewYdeg, 'skewYdeg')"/>
                                         <span>90</span>
                                     </div>
                                 </div>

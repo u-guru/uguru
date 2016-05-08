@@ -243,9 +243,45 @@ var calcTimeSinceInit = function() {
 }
 
 bodyLoadingDiv.innerHTML = firstTimeLoadingAnimationContent;
-
+var URL_BASE = '';
+if (window.location.href.indexOf(':5000') > -1 || window.location.href.indexOf('uguru-rest-test') > -1 || window.location.href.indexOf('staging') > -1)  {
+    URL_BASE = '/static/'
+    TIMEOUT_UNTIL_END_OF_LOADER = 7000;
+}
 loader = new SVGLoader( document.querySelector('#body-loading-div .pageload-overlay'), { speedIn : 300, easingIn : mina.easeinout } );
+setTimeout(function() {
+    var head = document.querySelector('head')
+    var app_version = document.createElement('link');
+    var animate = document.createElement('link');
+    var animation = document.createElement('link');
+    var magic = document.createElement('link');
+    var utility = document.createElement('link')
+    app_version.rel = 'stylesheet';
+    animate.rel = 'stylesheet'
+    animation.rel = 'stylesheet'
+    magic.rel = 'stylesheet'
+    utility.rel = 'stylesheet'
+
+    animate.href = URL_BASE + 'remote/css/sass/animate.css';
+    animation.href = URL_BASE + 'remote/css/sass/animation.css';
+    magic.href = URL_BASE + 'remote/css/sass/magic.css';
+    utility.href = URL_BASE + 'remote/css/sass/utility.css';
+    app_version.href = URL_BASE + 'remote/css/app_version.css';
+    app_version.setAttribute('async', 'async');
+    head.appendChild(magic);
+    head.appendChild(utility);
+    head.appendChild(app_version);
+    head.appendChild(animate);
+    head.appendChild(animation);
+}, 500);
+
+
 loader.show();
+// head.appendChild(animate)
+
+// head.appendChild(animation)
+
+// console.log("head",head)
 setTimeout(function() {
     bodyLoadingDiv.style.visibility = "hidden";
     document.querySelector('#body-loading-div svg.transition').style.visibility = "visible";
@@ -260,7 +296,7 @@ setTimeout(function() {
     	// 	className = document.querySelector('body #uguru-view').className.replace('hide','')
     	// 	document.querySelector('body #uguru-view').className = className;
     	// }
-    	
+
     // },500)
 }, TIMEOUT_UNTIL_END_OF_LOADER)
 
