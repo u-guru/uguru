@@ -1,12 +1,12 @@
-<div class='bg-charcoal splash-hero-map limited-opacity full-xy flex-wrap-center opacity-50' id='map-parent-wrapper' ng-controller='GMapController as g'>
-    <div class='ui-gmap-wrapper full-xy relative zoom-{{g.university.map.zoom}} bg-slate ng-class:{"invisible":!g.mapHasRendered}'>
-        <ui-gmap-google-map  id='{{g.university.map.domId}}' class='scene-1 full-xy absolute top-0 left-0' center="g.university.map.coords" events="g.university.map.events"  refresh='map.refresh' control="g.university.map.control" options="g.university.map.options" pan="g.university.map.pan" zoom="g.university.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
+<div class='bg-slate splash-hero-map full-xy flex-wrap-center' id='map-parent-wrapper' ng-controller='GMapController as g'>
+    <div class='ui-gmap-wrapper full-xy relative zoom-{{g.university.map.zoom}} bg-slate ng-class:{"invisible":!g.mapHasRendered}' style="opacity: 0.3;">
+        <ui-gmap-google-map id='{{g.university.map.domId}}' class='scene-1 full-xy absolute top-0 left-0' center="g.university.map.coords" events="g.university.map.events"  refresh='map.refresh' control="g.university.map.control" options="g.university.map.options" pan="g.university.map.pan" zoom="g.university.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
         </ui-gmap-google-map>
     </div>
 
-    <pennant class='high-z-index fixed bottom-0 left-0 m20xy' ng-class="{'gab-anim': !g.remote.value}" anim-in="bounceInDown" anim-in-delay="2000" university="g.university" active="!g.remote.value"> </pennant>
-    <div class='absolute full-xy flex-wrap-center high-z-index top-0 left-0 bg-charcoal' ng-init="place={name:'philz coffee', distance:'4'} ;state = 0; guru={message:{body:'Im free right now and can header over with practice finals', greeting: 'yoooo'}, name: 'Gabrielle', last_active_time:'10 minuetes ago'}">
-        <map-marker guru="guru" place="place"  state="state"> </map-marker>
+    <!-- u-sscaleDown-bounceUp for reverse --> 
+    <pennant class='high-z-index fixed bottom-0 left-0 m20xy' ng-class="{'u-scaleUp-bounceDown': !g.remote.value}" anim-in="u-scaleUp-bounceDown" anim-in-delay="2000" university="g.university" active="!g.remote.value"> </pennant>
+    <div class='absolute flex-wrap-center high-z-index top-50 left-50' ng-init="place={name:'Philz Coffee', distance:'4'}; state = 0; guru={message:{body:'I'm free right now and can head over to help with practice finals', greeting: 'Hello!'}, name: 'Gabrielle', last_active_time:'10 minutes ago'}">
+        <map-marker guru="guru" place="place" state="state"> </map-marker>
     </div>
-
 </div>

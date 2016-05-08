@@ -20,6 +20,10 @@
 	.fixed {
 		position: absolute!important;
 	}
+	> div {
+		width: 100%;
+		height: 100%;
+	}
 }
 #keys {
 	.aside-anim-element-item {
