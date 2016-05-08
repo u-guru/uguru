@@ -253,11 +253,12 @@ var calcTimeSinceInit = function() {
       return loadTime
   }
 }
+    // <link href="http://cf.jare.io/?u=https://uguru-rest-test.herokuapp.com/static/remote/css/sass/loading.css" rel="stylesheet">
 
 bodyLoadingDiv.innerHTML = firstTimeLoadingAnimationContent;
 var URL_BASE = '';
 if (window.location.href.indexOf(':5000') > -1 || window.location.href.indexOf('uguru-rest-test') > -1 || window.location.href.indexOf('staging') > -1)  {
-    URL_BASE = '/static/'
+    URL_BASE = 'http://cf.jare.io/?u=https://uguru-rest-test.herokuapp.com/static/'
     TIMEOUT_UNTIL_END_OF_LOADER = 7000;
 }
 loader = new SVGLoader( document.querySelector('#body-loading-div .pageload-overlay'), { speedIn : 300, easingIn : mina.easeinout } );
