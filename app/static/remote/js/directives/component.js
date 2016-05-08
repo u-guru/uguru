@@ -432,19 +432,16 @@ directive('draggable', function($document) {
         return {
             templateUrl: BASE + 'templates/elements/components/info/pennant.tpl',
             scope: {
-                animIn: '=animIn',
-                animInDelay: '=animInDelay',
                 university: '=university',
                 active: '=active'
             },
             restrict: 'E',
             replace: true,
             link: function(scope, element, attr) {
-
+                scope.animIn = attr.animIn;
+                scope.animInDelay = parseInt(attr.animInDelay) || 0;
                 scope.$watch('active', function(isActive) {
                     if (isActive) {
-                        scope.animIn = attr.animIn;
-                        scope.animInDelay = parseInt(attr.animInDelay) || 0;
                         scope.pennantText = scope.university.school_tiny_name || scope.university.short_name ||  scope.university.name;
                         scope.pennantFill = scope.university.school_color_dark;
                         scope.pennantFillLight = scope.university.school_color_light;
