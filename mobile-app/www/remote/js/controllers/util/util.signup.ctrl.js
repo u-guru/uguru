@@ -1402,12 +1402,18 @@ angular.module('uguru.util.controllers')
             $scope.signupModal.remove();
           }
 
+          if ($scope.user.is_admin) {
+              AnimationService.flip('^.keys');
+              return;
+          }
+
           // case -- it is not login from guru-home
           // case 1 - desktop mode
           // if user is a guru
           if ($scope.user.is_a_guru) {
 
             // $state.go('^.guru')
+
             if($scope.desktopMode) {
               AnimationService.flip('^.guru-home');
             } else {

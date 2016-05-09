@@ -148,6 +148,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/splash/signup',
         templateUrl: BASE + 'templates/splash/layout/splash.signup.html'
   }).
+  state('root.splash-demographics', {
+        url: '/splash/demographics',
+        templateUrl: BASE + 'templates/splash/layout/splash.demographics.html'
+  }).
 
   //start essay
   // state('root.essay-student-university', {

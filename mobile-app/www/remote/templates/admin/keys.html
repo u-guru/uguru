@@ -20,6 +20,7 @@
                     <h1 style='font-size:36px'> {{showStatusMsg}} </h1>
                 </div>
                 <ul class='p15-grid flex-center-vertical txt-center'>
+                    <user-icon ng-if='adminUser && adminUser.profile_url' size="medium" url="adminUser.profile_url"> </user-icon>
                     <li ng-if='player.status'>
                         <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.pause()' ng-include="img_base + BASE + 'templates/svg/main/pause.html'">Pause</a>
                     </li>
@@ -33,7 +34,7 @@
                         <a id='settings-button' class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.toggleSettings()' ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
                     </li> -->
                     <li>
-                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='clearAllFrames()'><i class='icon ion-trash-a txt-36'></i></a>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='clearCache()'><i class='icon ion-trash-a txt-36'></i></a>
                     </li>
                     <li>
                         <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-48-36 svg-stroke-6" ng-click='layout.index = 1' ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
@@ -837,11 +838,11 @@
                             </a>
                         </div>
                     </li>
-                    <li class="flex-wrap-center relative" style="width: calc(100% - 80px);" ng-if="!animation.edit">
+                    <li class="flex-wrap-center relative overflow-hidden" style="width: calc(100% - 80px);" ng-if="!animation.edit">
                         <div class='full-x txt-1 opacity p05y'>
                             You are currently editing
                         </div>
-                        <div class='full-x txt-5 uppercase weight-600'>
+                        <div class='full-x txt-4 uppercase weight-600'>
                             {{animation.attr.name}}
                         </div>
                     </li>
@@ -850,6 +851,7 @@
                         <a  id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8" ng-click='animation.edit = true;' ng-include="img_base + BASE + 'templates/svg/main/edit.html'" style='margin-right:10px;'>Edit</a>
                         <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8" ng-click='goToEditAnimationClass()' ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
                         <a id='export-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8 m15left" ng-click='renderAnimationCSSText(animation)'  ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
+                        <a id='export-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8 m15left" ng-click='renderAnimationCSSText(animation)'><i class='icon ion-trash-a txt-36'></i></a>
                     </li>
                 </ul>
                 <div class="overflow-auto no-scrollbar" style="height: calc(100% - 66px);">
