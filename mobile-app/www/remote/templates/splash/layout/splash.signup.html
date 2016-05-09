@@ -131,46 +131,17 @@
                 <div class="splash-login-inside full-x">
                     <div class="input-field">
                         <input type="email" placeholder="what's your email?" ng-model='signupForm.email' autocomplete="off"/>
-                        <a>
-                            <svg class="clear" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="36"></circle>
-                                <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                            </svg>
-                        </a>
-                        <a>
-                            <svg class="verified" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="36"></circle>
-                                <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
-                            </svg>
-                        </a>
-                        <a>
-                            <svg class="error" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="36"></circle>
-                                <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                            </svg>
+                        <a ng-click='signupForm.email = "";' class="side-icon hide ng-class:{'show':signupForm.email && signupForm.email.length}">
+                            <i class='icon ion-close-circled'> </i>
                         </a>
                     </div>
                     <div class="input-field">
                         <input type="password" ng-model="signupForm.password" ng-keyup="$event.keyCode == 13 && loginUser()" placeholder="enter secure password"/>
-                        <a>
-                            <svg class="clear" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="36"></circle>
-                                <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                            </svg>
-                        </a>
-                        <a>
-                            <svg class="verified" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="36"></circle>
-                                <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
-                            </svg>
-                        </a>
-                        <a>
-                            <svg class="error" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="36"></circle>
-                                <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                            </svg>
+                        <a ng-click='signupForm.password = "";' class="side-icon hide ng-class:{'show':signupForm.password && signupForm.password.length}">
+                            <i class='icon ion-close-circled'> </i>
                         </a>
                     </div>
+
                     <ul class="splash-signup-buttons full-x">
                         <li class="login"><button ng-click='loginUser()'>Login</button></li>
                         <li><button ng-click='connectWithFacebook()'>Login with<br/>Facebook</button></li>
