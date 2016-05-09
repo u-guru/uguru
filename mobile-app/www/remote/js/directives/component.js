@@ -192,6 +192,8 @@ directive('draggable', function($document) {
             replace: true,
             restrict: 'E',
             link: function(scope, element, attr) {
+                scope.size =  scope.size || attr.size || 'small';
+                scope.url =  scope.url || attr.url || 'https://uguru.me/static/remote/img/avatar.svg';
                 if (scope.size && scope.size === 'small') {
                     scope.size = '32'
                 } else if (scope.size && scope.size === 'medium') {

@@ -15,6 +15,18 @@ angular.module('uguru.util.controllers')
 	'$compile',
 	'AnimationService',
 	function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService, LoadingService, KeyboardService, $compile, AnimationService) {
+		(!$scope.user || !$scope.user.id) && $state.go('^.desktop-login');
+
+
+		$scope.$on('$ionicView.enter', function() {
+			$scope.adminUser = {name: '', profile_url:''};
+			first_name = $scope.user.name.split(' ')[0].toLowerCase();
+			profile_url = $scope.user.profile_url;
+			$scope.adminUser.name = first_name;
+			$scope.adminUser.profile_url = profile_url;
+
+		})
+
 		var defaults = {
 			KF_COUNT: 100,
 			DURATION: 1,
@@ -376,6 +388,12 @@ angular.module('uguru.util.controllers')
 		$scope.onTSActionComponentSelected = function(selector, $event) {
 			$scope.stage.selectComponentModeAction.selector = selector;
 			$scope.cancelTimeStateActionComponentInputFocused();
+		}
+
+		$scope.clearCache = function() {
+			window.sessionStorage.clear();
+	        window.localStorage.clear();
+	        window.location.reload(true);
 		}
 
 		$scope.onTSActionAnimationClassSelected = function(animation) {
