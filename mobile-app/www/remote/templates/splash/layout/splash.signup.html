@@ -131,14 +131,20 @@
                 <div class="splash-login-inside full-x">
                     <div class="input-field">
                         <input type="email" placeholder="what's your email?" ng-model='signupForm.email' autocomplete="off"/>
-                        <a ng-click='signupForm.email = "";' class="side-icon hide ng-class:{'show':signupForm.email && signupForm.email.length}">
-                            <i class='icon ion-close-circled'> </i>
+                        <a ng-if='signupForm.email' class="active" ng-click='signupForm.email = "";'>
+                            <svg class="clear" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="36"></circle>
+                                <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                            </svg>
                         </a>
                     </div>
                     <div class="input-field">
                         <input type="password" ng-model="signupForm.password" ng-keyup="$event.keyCode == 13 && loginUser()" placeholder="enter secure password"/>
-                        <a ng-click='signupForm.password = "";' class="side-icon hide ng-class:{'show':signupForm.password && signupForm.password.length}">
-                            <i class='icon ion-close-circled'> </i>
+                        <a ng-if='signupForm.password' class="active" ng-click='signupForm.password = "";'>
+                            <svg class="clear" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="36"></circle>
+                                <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                            </svg>
                         </a>
                     </div>
 
