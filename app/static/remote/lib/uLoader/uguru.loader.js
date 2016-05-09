@@ -260,7 +260,7 @@ bodyLoadingDiv.innerHTML = firstTimeLoadingAnimationContent;
 var URL_BASE = '';
 if (window.location.href.indexOf(':5000') > -1 || window.location.href.indexOf('uguru-rest-test') > -1 || window.location.href.indexOf('staging') > -1)  {
 	// if (window.location.href.indexOf('uguru-rest-test') > -1)
-	//     URL_BASE = 'http://cf.jare.io/?u=https://uguru-rest-test.herokuapp.com/static/'
+	//     URL_BASE = 'http://cf.jare.io/?u=https://uguru-rest-test.herokuapp.com/'
 	// else
 	//     URL_BASE =''
 	TIMEOUT_UNTIL_END_OF_LOADER = 7000;
@@ -279,11 +279,11 @@ setTimeout(function() {
     magic.rel = 'stylesheet'
     utility.rel = 'stylesheet'
 
-    animate.href = URL_BASE + 'remote/css/sass/animate.css';
-    animation.href = URL_BASE + 'remote/css/sass/animation.css';
-    magic.href = URL_BASE + 'remote/css/sass/magic.css';
-    utility.href = URL_BASE + 'remote/css/sass/utility.css';
-    app_version.href = URL_BASE + 'remote/css/app_version.css';
+    animate.href = URL_BASE + 'static/remote/css/sass/animate.css';
+    animation.href = URL_BASE + 'static/remote/css/sass/animation.css';
+    magic.href = URL_BASE + 'static/remote/css/sass/magic.css';
+    utility.href = URL_BASE + 'static/remote/css/sass/utility.css';
+    app_version.href = URL_BASE + 'static/remote/css/app_version.css';
     app_version.setAttribute('async', 'async');
     head.appendChild(magic);
     head.appendChild(utility);
