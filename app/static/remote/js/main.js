@@ -72,24 +72,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
 
-  // $provide.decorator("$exceptionHandler", function($delegate, $injector) {
-
-  //   return function(exception, cause) {
-
-  //     Github = $injector.get("Github");
-
-  //     Github.exceptionToGHIssue(exception, cause);
-
-  //     $delegate(exception, cause);
-
-  //   };
-
-  // });
 
 
 
-  //ASK-NICK: what does this mean?
-  //NICK-SAYS: it means use native style animations whenever we rely on ionic animations. (ios styles for ios, android for android)
   $ionicConfigProvider.views.transition('platform');
 
   $ionicConfigProvider.tabs.position("bottom");
@@ -97,12 +82,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   $ionicConfigProvider.views.forwardCache(false);
   $ionicConfigProvider.scrolling.jsScrolling(false);
 
-  // $compileProvider.imgSrcSanitizationWhitelist('Captu  redImagesCache/');
-
-  //Set up restangular provider
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
-  // RestangularProvider.setBaseUrl('http://10.193.138.226:5000/api/v1');
-  //Client-side router
 
   $stateProvider
   .state('root', {
@@ -110,13 +90,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         abstract: true,
         templateUrl: BASE + 'templates/root.html',
         controller: 'RootController'
-  }).
-
-
-  state('root.inappmap', {
-        url: '/inappmap',
-        templateUrl: BASE + 'templates/inappmap.html',
-        controller: 'InAppMapController'
   }).
   state('root.keys', {
         url: '/keys',
@@ -170,6 +143,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.splash-hiw', {
         url: '/splash/hiw',
         templateUrl: BASE + 'templates/splash/swiper/splash.hiw.container.html'
+  }).
+  state('root.splash-signup', {
+        url: '/splash/signup',
+        templateUrl: BASE + 'templates/splash/layout/splash.signup.html'
   }).
 
   //start essay

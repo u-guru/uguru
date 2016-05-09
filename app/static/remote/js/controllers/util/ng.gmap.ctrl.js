@@ -442,6 +442,9 @@ angular.module('uguru.util.controllers')
           var mapElemRect = mapElem.getBoundingClientRect();
         }
 
+
+
+
       function getUniversityPlaces(university, callback) {
 
           var options = {
@@ -492,18 +495,30 @@ angular.module('uguru.util.controllers')
         generateUniversityPlaceOverlayMarkers(g.university.map, g.university.place_results, '#map-parent-wrapper .ui-gmap-wrapper');
       }
 
-      initWatcher();
-      $timeout(function() {
-        renderUniversityPlacesMap(g.university);
-      }, 1000)
 
-      // uiGmapIsReady.promise()                     // this gets all (ready) map instances - defaults to 1 for the first map
-      // .then(function(instances) {                 // instances is an array object
-      //     var maps = instances[0].map;            // if only 1 map it's found at index 0 of array
-      //     google.maps.event.addListenerOnce(maps[0], 'idle', function(){
-      //     $scope.mapHasRendered = true;
-      //     });
-      // });
+      initWatcher();
+
+      // $scope.loader = new SVGLoader( document.querySelector('#map-parent-wrapper .pageload-overlay'), { speedIn : 300, easingIn : mina.easeinout } );
+      // $scope.loader.show();
+
+
+      $scope.hideLoader = function() {
+        document.querySelector('#cerise-bg-test').style.visibility = "hidden";
+        document.querySelector('#map-parent-wrapper .pageload-overlay svg.transition').style.visibility = "visible";
+        $scope.loader.hide();
+      }
+
+      $timeout(function() {
+        // renderUniversityPlacesMap(g.university);
+
+        $scope.showPageLoader = true;
+
+        $timeout(function() {
+          // loader.isHide = true;
+        }, 1000)
+
+      },3000)
+
 
 
 
