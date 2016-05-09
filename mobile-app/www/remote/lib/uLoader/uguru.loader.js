@@ -237,7 +237,7 @@ var pageLoad= function() {
   {
     var timeout = 7000- bodyLoadTime *1000
     setTimeout(function() {
-        console.log("WAIT NIGGA")
+        console.log("WAIT :", timeout/1000)
         className = document.querySelector('body #uguru-view').className.replace('hide','')
         document.querySelector('body #uguru-view').className = className
     }, timeout);
