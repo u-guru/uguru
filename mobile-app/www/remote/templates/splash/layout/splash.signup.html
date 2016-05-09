@@ -25,9 +25,9 @@
                 </svg>
             </div>
             <!--Signup mode-->
-            <div  class="splash-content absolute full-xy flex-wrap-center left-0 top-0  splash-signup-content ng-class:{'active':!page.account.loginMode && !page.account.forgotPassword}">
+            <div  class="splash-content absolute full-xy flex-wrap-center left-0 top-0  splash-signup-content ng-class:{'active':!page.account.loginMode && !page.account.forgotPassword}" ng-if="!page.account.loginMode && !page.account.forgotPassword" >
 
-                <button id='signup-mode-login-btn' class-on-activate="tada:anim" class="btn-splash-login btn-ghost-white" ng-click='page.account.loginMode = true'>Login</button>
+                <button id='signup-mode-login-btn' class-on-activate="tada:anim" class="btn-splash-login btn-ghost-white" ng-click='switchToLogin()'>Login</button>
                 <div class="splash-signup-inside full-x">
                     <div class="school-id-card">
                         <svg viewBox="0 0 240 160">
@@ -126,7 +126,7 @@
                 </div>
             </div>
             <!-- Login Mode -->
-            <div class="splash-content absolute flex-wrap-center top-0 left-0 full-xy splash-login-content ng-class:{'active':page.account.loginMode && !page.account.forgotPassword}">
+            <div class="splash-content absolute flex-wrap-center top-0 left-0 full-xy splash-login-content ng-class:{'active':page.account.loginMode && !page.account.forgotPassword}" ng-if="page.account.loginMode && !page.account.forgotPassword">
                 <button class="btn-splash-login btn-ghost-white" ng-click='switchToSignup()'>Signup</button>
                 <div class="splash-login-inside full-x">
                     <div class="input-field">
@@ -156,7 +156,7 @@
                 </div>
             </div>
             <!-- Forgot password mode -->
-            <div class="splash-content splash-forgot-pw-content splash-login-content ng-class:{'active':page.account.forgotPassword}">
+            <div class="splash-content splash-forgot-pw-content splash-login-content ng-class:{'active':page.account.forgotPassword}" ng-if="page.account.forgotPassword" >
                 <button class="btn-splash-login btn-ghost-white" style='left:15px; right:none;'ng-click='switchToSignup()'>Signup</button>
                 <button class="btn-splash-login btn-ghost-white" ng-click='switchToLogin()'>Login</button>
                 <div class="splash-login-inside">
