@@ -175,6 +175,39 @@ angular.module('uguru.util.controllers')
         })
       }, 1000)
     }
+    $scope.reset = function(field_name,form)
+    {
+      if (field_name === 'name' && !form.full_name)
+      {
+        form.activateErrorName = false;
+        form.validateName = false;
+        if (!form.email){
+          form.activateEmail = false
+        }
+        if (!form.password){
+          form.activatePassword = false
+        }
+        $scope.user.name = form.full_name;
+      }
+      else if (field_name === 'email' && !form.email)
+      {
+        form.activateErrorEmail = false;
+        form.validateEmail = false;
+
+        if (!form.password){
+          form.activatePassword = false
+        }
+        $scope.user.email = form.email;
+
+      }
+      else if (field_name === 'password' && !form.password)
+      {
+        form.activateErrorPassword = false;
+        form.validatePassword = false;
+        $scope.user.password = form.password;
+
+      }
+    }
     $scope.updateUserIdCard = function(field_name, val, form) {
 
       if (field_name === 'name' && val && val.length) {
@@ -200,11 +233,12 @@ angular.module('uguru.util.controllers')
           })
         }
       }
-      if (field_name === 'email' && val && val.length) {
+      if (field_name === 'email'&& val && val.length) {
         var error_msg = validateEmail(val);
         if (error_msg.validated) {
           $timeout(function(){
             $scope.$apply(function() {
+              console.log("check",val)
               $scope.user.email = val;
               form.validateEmail = true;
               form.activateErrorEmail = false;
