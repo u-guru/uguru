@@ -235,7 +235,6 @@ angular.module('uguru.util.controllers')
       }
       if (field_name === 'email'&& (val || !isValid)) {
         var error_msg = validateEmail(val);
-        console.log(error_msg)
         if (error_msg.validated) {
           $timeout(function(){
             $scope.$apply(function() {
@@ -369,7 +368,7 @@ angular.module('uguru.util.controllers')
     $scope.map;
     $scope.page = {account: {}, progress: {}, scroll: {}, waypoints: {}, sidebar:{}, dropdowns: {}, modals: {}, swipers: {cachedBefore: [], cachedAfter:[], cached:[], galleryIndex:0}, map:{}};
     $scope.page.dropdowns = {closeAll: closeAllDropdowns, category: {show: true, active:false, toggle:toggleCategoryDropdown}, university: {show: true, active: false, toggle: toggleUniversityDropdown}};
-    $scope.page.account = {loginMode:true, forgotPassword:false, toggle: function(){$scope.page.account.loginMode = !$scope.page.account.loginMode}};
+    $scope.page.account = {loginMode:false, forgotPassword:false, toggle: function(){$scope.page.account.loginMode = !$scope.page.account.loginMode}};
     $scope.page.faq_arr = ContentService.faq;
     //@gabrielle note, scroll preferences
 

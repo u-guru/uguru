@@ -50,7 +50,7 @@
                     <div class="splash-signup-form">
                         <form name="name" class="input-field active">
                             <input type="text" placeholder="what's your name?" ng-focus="onSignupFormFocus('name', signupForm.name, signupForm)" ng-blur="updateUserIdCard('name', signupForm.full_name, signupForm)" ng-model='signupForm.full_name' autocomplete="off" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && updateUserIdCard('name', signupForm.full_name, signupForm)" ng-change="reset('name',signupForm)"/>
-                            <small class='form-error absolute txt-shamrock weight-400' ng-if='signupForm.focusedInput === "name" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}
+                            <small class='form-error absolute txt-shamrock weight-400'  ng-if='signupForm.focusedInput === "name" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}
                             </small>
 
                             <a ng-if='!signupForm.activateErrorName && signupForm.full_name' class="active" ng-mousedown='signupForm.full_name = "";'>
@@ -72,7 +72,7 @@
                                 </svg>
                             </a>
                         </form>
-                        <form name="email" class="input-field" ng-class="{ 'active' : signupForm.activateEmail}"  style='margin-top:100px;'>
+                        <form name="email" class="input-field" ng-class="{ 'active' : signupForm.activateEmail}" ng-if='signupForm.activateEmail'style='margin-top:100px;'>
                             <input type="email" ng-focus="onSignupFormFocus('email', signupForm.email, signupForm)" ng-blur="updateUserIdCard('email', signupForm.email, signupForm,email.$valid)" placeholder="what's your email?" ng-model='signupForm.email' autocomplete="off" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && updateUserIdCard('email', signupForm.email, signupForm,email.$valid)" ng-change="reset('email',signupForm,email.$valid)" 
                             />
                             <small class='form-error absolute txt-shamrock weight-400' ng-if='signupForm.focusedInput === "email" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}</small>
@@ -96,7 +96,7 @@
                                 </svg>
                             </a>
                         </form>
-                        <form name="password" class="input-field" ng-class="{'active': signupForm.activatePassword}" style='margin-top:200px;'>
+                        <form name="password" class="input-field" ng-class="{'active': signupForm.activatePassword}" ng-if='signupForm.activatePassword' style='margin-top:200px;'>
                             <input type="password" ng-blur="updateUserIdCard('password', signupForm.password, signupForm)"  ng-focus="onSignupFormFocus('password', signupForm.password, signupForm)" placeholder="enter a password" autocomplete="off" ng-keyup="(($event.keyCode == 13 || $event.keyCode == 9) && signupOnEnter()) || (signupForm.password.length > 5 && updateUserIdCard('password', signupForm.password, signupForm))" ng-model='signupForm.password' ng-change="reset('password',signupForm)"/>
                             <small class='form-error absolute txt-shamrock weight-400' ng-if='signupForm.focusedInput === "password" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}</small>
                             <a class='active' ng-if='!signupForm.activateErrorPassword && signupForm.password' ng-click='signupForm.password = "";'>
