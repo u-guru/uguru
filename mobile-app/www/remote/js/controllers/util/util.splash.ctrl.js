@@ -176,6 +176,7 @@ angular.module('uguru.util.controllers')
       }, 1000)
     }
     $scope.updateUserIdCard = function(field_name, val, form) {
+
       if (field_name === 'name' && val && val.length) {
         $scope.updateFormCapitalization(val, 'full_name', form)
         var error_msg = validateFullName(val)
@@ -245,11 +246,13 @@ angular.module('uguru.util.controllers')
       function validateFullName(name) {
         var splitName = name.split(' ');
         var errorResults = {};
+
         if (splitName.length < 2) {
           errorResults.error_msg = "Please enter your full name";
           errorResults.validated = false;
           return errorResults;
         }
+
         for (var i = 0; i < splitName.length; i++) {
           var indexWord = splitName[i];
           if (indexWord.length < 2) {
