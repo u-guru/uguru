@@ -58,14 +58,14 @@
                     <li>
                         <dropdown ng-if='stageDropdown.toggleActive' id='stage-dropdown' class='height-32' ng-model="stageDropdown"> </dropdown>
                     </li>
-                    <!-- <li>
-                        <a ng-click='clearAllAnimations()' class="weight-900">Clear All</a>
-                    </li> -->
+                    <li>
+                        <dropdown id='stage-dropdown' class='height-32' ng-model="animationDropdown"> </dropdown>
+                    </li>
                 </ul>
             </div>
             <div class='bg-slate flex-wrap-center relative' style="height: calc(100% - 83px - 68px - 82px)" ng-if='layout.index === 1'>
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
-                <tabs class='full-x' options='["Animation", "Class", "HTML", "External"]' index="importLayoutIndex"> </tabs>
+                <tabs id='import-tab-bar' class='full-x' options='["Animation", "Class", "HTML", "External"]' index="importLayoutIndex"> </tabs>
                 <div class='full-x tabs-options' style='height:calc(100% - 60px)'>
                     <!-- change to full-xy and remove style once tabs are removed -->
                     <div class="bg-campus-50p full-xy ugrid-2 p15-grid" ng-if='importLayoutIndex === 0'>
@@ -90,7 +90,7 @@
                         <div>
                             <ul class='flex-wrap full-x p15-grid'>
                                 <li ng-repeat='animation in imports.animations | filter: animationImportSearchText:name | limitTo: 16 track by $index'>
-                                    <a class="flex" ng-click="importFromCSSText(animation.cssText, animation.name, animation.classText)">
+                                    <a ng-mouseup="animationSneakPreview.show = false;" on-hold="animationSneakPreview.show = true; animationSneakPreview.content = animation.cssText" class="flex" ng-click="importFromCSSText(animation.cssText, animation.name, animation.classText)">
                                         <span class='bg-robin radius-2-left flex-center-vertical p10x txt-1 uppercase weight-700 height-36'>
                                             {{animation.owner}}
                                         </span>
@@ -100,6 +100,10 @@
                                     </a>
                                 </li>
                             </ul>
+                        </div>
+                        <div class="flex-wrap-center full-x" style='height: calc(50% - 101px);' ng-show="animationSneakPreview.show">
+                            <textarea id='import-textarea' class='block full-x radius-2-top txt-18 p10y-p15x' style="height: calc(100% - 64px);" placeholder="importable css to cut and post goes here" ng-model="animationSneakPreview.content"></textarea>
+                            <button disabled ng-disabled="true">Release mouse to hide sneak preview</button>
                         </div>
                         <div class='p20x' style='margin-top:10%;'>
                             <h1  class='full-x txt-28 txt-white semibold lowercase m05bottom'>OR <span class='weight-900'>Option 2: </span> Import by Pasting CSS KeyFrame Text</h1>
@@ -801,22 +805,30 @@
                             <span class='upper-case weight-600 txt-1 p05y full-x text-center uppercase opacity-3'> {{actor.id || actor.className}} </span>
                         </h1>
 
-                        <div ng-click='showStatusMsgForXSec("Coming soon")' class='full-x ugrid-4 p05y opacity-50'>
-                            <a ng-click='goIntoSelectMode()'>
+                        <div class='full-x ugrid-5 p05y'>
+                            <a ng-click='goIntoSelectMode()' class='opacity-50'>
                                 <div>
                                     <i class='txt-5 ion-edit icon' > </i>
                                 </div>
                                 <div class='txt-1'>  </div>
                             </a>
-                            <a ng-click='goIntoSelectMode()'>
+                            <!-- <a ng-click='goIntoSelectMode()'> -->
+                            <a ng-click='showStatusMsgForXSec("Coming soon")' class='opacity-50'>
                                 <i class='txt-5 ion-mouse icon' > </i>
                                 <div class='txt-1'>  </div>
                             </a>
                             <a ng-click='goIntoSelectMode()'>
-                                <i class='txt-5 ion-trash-a icon' > </i>
+                                <i class='txt-5 ion-trash-a icon opacity-50' > </i>
+                                <div class='txt-1'>  </div>
                             </a>
-                            <a ng-click='goIntoSelectMode()'>
+                            <a ng-click='goIntoSelectMode()' class='opacity-50'>
                                 <i class='txt-5 ion-location icon' > </i>
+                                <div class='txt-1'>  </div>
+                            </a>
+                            <a ng-click='toggleStageElemDraggable()' style='margin-left:-10px;' ng-class="{
+                            'opacity-50': !stageElemDefaults.draggable}">
+                                <i class='txt-5 ion-arrow-move icon' > </i>
+                                <div class='txt-1'>  </div>
                             </a>
                         </div>
                     </div>

@@ -51,38 +51,62 @@ angular.module('uguru.util.controllers')
 				letter: 'i',
 				description:'Opens import window',
 				keyCode: 73,
-				func: function() { $scope.root.triggers.runSequence(['click:#import-button:0']) }
+				func: function() { $scope.root.triggers.runSequence(['click:#import-button:0'], 100) }
 			},
 			{
 				letter: 'd',
 				description:'Imports codepen and opens child selector',
 				keyCode: 68,
-				func: function() { $scope.root.triggers.runSequence(['click:#import-codepen-button:0', 'click:#select-child-button:50']) }
+				func: function() { $scope.root.triggers.runSequence(['click:#import-codepen-button:0', 'click:#select-child-button:50'], 100) }
 			},
 			{
 				letter: 'e',
 				description:'Opens export window',
 				keyCode: 69,
-				func: function() { $scope.root.triggers.runSequence(['click:#export-button:0']) }
+				func: function() { $scope.root.triggers.runSequence(['click:#export-button:0'], 100) }
 			},
 			{
 				letter: 'space',
 				description:'Plays stage',
 				keyCode: 32,
-				func: function() { $scope.root.triggers.runSequence(['click:#play-stage-button:0']) }
+				func: function() { $scope.root.triggers.runSequence(['click:#play-stage-button:0'], 100) }
 			},
 			{
 				letter: 'p',
 				description:'Plays keyframes',
 				keyCode: 80,
-				func: function() { $scope.root.triggers.runSequence(['click:#play-keyframes-button:0']) }
+				func: function() { $scope.root.triggers.runSequence(['click:#play-keyframes-button:0'], 100) }
 			},
 			{
 				letter: 'n',
 				description:'Adds new time state',
 				keyCode: 78,
-				func: function() { $scope.root.triggers.runSequence(['click:#add-time-state-button:0']) }
+				func: function() { $scope.root.triggers.runSequence(['click:#add-time-state-button:0'], 100) }
 			},
+			{
+				letter: '1',
+				description:'switches tab on import focus',
+				keyCode: 49,
+				func: function() { $scope.root.triggers.runSequence(['click:#import-tab-bar a:nth-child(1)'], 100) }
+			},
+			{
+				letter: '2',
+				description:'switches tab on import focus',
+				keyCode: 50,
+				func: function() { $scope.root.triggers.runSequence(['click:#import-tab-bar a:nth-child(2)'], 100) }
+			},
+			{
+				letter: '3',
+				description:'switches tab on import focus',
+				keyCode: 51,
+				func: function() { $scope.root.triggers.runSequence(['click:#import-tab-bar a:nth-child(3)'], 100) }
+			},
+			{
+				letter: '4',
+				description:'switches tab on import focus',
+				keyCode: 52,
+				func: function() { $scope.root.triggers.runSequence(['click:#import-tab-bar a:nth-child(4)'], 100) }
+			}
 			// {
 			// 	letter: 'left-arrow',
 			// 	description: 'shifts keyframe one to the left (if possible)',
@@ -100,8 +124,8 @@ angular.module('uguru.util.controllers')
 		$scope.player = initAnimationPlayer();
 		$scope.timer = initAnimationTimer()
 		$scope.defaults = {};
-		$scope.animationDropdown = {toggleActive:true, options:['No animation selected', 'Import Animation'], selectedIndex: 0, label:'Selected Animation', size:'small', onOptionClick:function(option, index) {if (index === 1) {$scope.layout.index = 1; $scope.importLayoutIndex = 1; } else if (index === 2) { ($scope.saveAnimationClass($scope.animation))} $timeout(function() {$scope.animationDropdown.selectedIndex = 0}, 500)}}
-		$scope.stageDropdown = {toggleActive: true,options:['No stage selected', 'Import Stage'], selectedIndex: 0, label:'Selected Stage', size:'small', onOptionClick: onStageDropdownSelected};
+		$scope.animationDropdown = {toggleActive:true, options:['No animation selected', 'Import Animation'], selectedIndex: 0, label:'Current Animation', size:'small', onOptionClick:function(option, index) {if (index === 1) {$scope.layout.index = 1; $scope.importLayoutIndex = 1; } else if (index === 2) { ($scope.saveAnimationClass($scope.animation))} $timeout(function() {$scope.animationDropdown.selectedIndex = 0}, 500)}}
+		$scope.stageDropdown = {toggleActive: true,options:['No stage selected', 'Import Stage'], selectedIndex: 0, label:'Current Stage', size:'small', onOptionClick: onStageDropdownSelected};
 		$scope.keyframeBar = {pointerVal: 0};
 		$scope.animationDict = {importTextarea:'', importInput: ''};
 		$scope.imports = {animations: [], stages:[]};
@@ -109,7 +133,7 @@ angular.module('uguru.util.controllers')
 		$scope.shapesDropdown = {options: Object.keys(defaults.SHAPE_DICT), label: "Inject Shape", size: "normal", selectedIndex:0, onOptionClick: addSVGPlaceholder}
 		$scope.animationDirectionOptions = {options: ["normal", "reverse", "alternate", "alternate-reverse"], selectedIndex: 0, size: "small", onOptionClick: setAnimationDirectionFunc};
 		$scope.animationTimingFunc = {options: ["ease", "ease-in", "ease-out", "ease-in-out", "linear", "set-start", "step-end", "cubic"], selectedIndex: 0, size: "small", onOptionClick: setAnimationTimeFunc};
-		$scope.animationFillMode = {options: ["forwards","none", "backwards", "both"], selectedIndex: 0, size:'small', onOptionClick:setAnimationFillMode};
+		$scope.animationFillMode = {options: ["none", "forwards", "backwards", "both"], selectedIndex: 0, size:'small', onOptionClick:setAnimationFillMode};
 		// $scope.stage = $scope.imports.stages[0];
 
 		function getHIWStage() {
@@ -159,10 +183,15 @@ angular.module('uguru.util.controllers')
 		var parentViewContainer = document.querySelector('#keys');
 		var cmdPressed;
 		var ctrlPressed;
-		function saveAll(e) {console.log('ctrl', e.keyCode, 'pressed');$scope.saveStageHtml();  $scope.saveAnimationClass($scope.animation, $scope.user.name.split(' ')[0].toLowerCase())};
-		function toggleTabForward(e) {console.log('right-arrow', e.keyCode, 'pressed'); $scope.asideTabIndex = Math.abs(($scope.asideTabIndex + 1) % 3)};
+		function saveAll(e) {
+			// console.log('ctrl', e.keyCode, 'pressed');
+			$scope.saveStageHtml();  $scope.saveAnimationClass($scope.animation, $scope.user.name.split(' ')[0].toLowerCase())};
+		function toggleTabForward(e) {
+			// console.log('right-arrow', e.keyCode, 'pressed');
+			$scope.asideTabIndex = Math.abs(($scope.asideTabIndex + 1) % 3)};
 
 		$scope.asideTabIndex = 2;
+		$scope.animationSneakPreview = {show: false, content: ''};
 		$scope.keyShortcuts = {
 				ctrl: ctrlShortcuts
 		}
@@ -1198,7 +1227,7 @@ angular.module('uguru.util.controllers')
 				$scope.animation.flex_selected_index = 0;
 
 
-				$scope.animation.obj.name = $scope.animation.obj.name + '-edit';
+				$scope.animation.obj.name = $scope.animation.obj.name;
 				elem.style[browserPrefix + "AnimationName"] = $scope.animation.obj.name;
 
 
@@ -1316,7 +1345,7 @@ angular.module('uguru.util.controllers')
 			for (var i = 0; i < modifiedPropertyKeys.length; i++) {
 
 				var indexProperty = modifiedPropertyKeys[i];
-				var transformProperties = ["translateX", "translateY", "translateZ", "scale3DX", "scale3DY", "scale3DZ", "rotate3DAngle", "rotate3DX", "rotate3DY", "rotate3DZ", "skewX", "skewY"]
+				var transformProperties = ["translateX", "translateY", "translateZ", "scale3DX", "scale3DY", "scale3DZ", "rotate3DAngle", "rotate3DX", "rotate3DY", "rotate3DZ", "skewX",  "rotate", "skewY"]
 				if (transformProperties.indexOf(indexProperty) > -1) {
 					switch(indexProperty) {
 						case "translateX":
@@ -1348,6 +1377,9 @@ angular.module('uguru.util.controllers')
 							break;
 						case "rotate3DY":
 							csstext += 'rotateY(' + dance_obj.rotate3DY  + 'rad) '
+							break;
+						case "rotate":
+							csstext += 'rotateZ(' + dance_obj.rotate  + 'rad) '
 							break;
 						case "rotate3DZ":
 							csstext += 'rotateZ(' + dance_obj.rotate3DZ  + 'rad) '
@@ -1549,7 +1581,7 @@ angular.module('uguru.util.controllers')
 				timing_function: "ease",
 				duration: duration,
 				durationVal: parseInt(duration.replace('s')),
-				fill_mode: "forwards",
+				fill_mode: "none",
 				kf_intervals: defaults.KF_INTERVALS
 			}
 			return {obj: anim, selected_keyframe:properties['0%'], selected_kf_index:0, selected_percent:'0%', selected_index: 0, flex_selected_index:0, properties: properties, kf_count: num_keyframes, attr:attr};
@@ -2012,8 +2044,8 @@ angular.module('uguru.util.controllers')
 			// $scope.actor.style['transform'] = css_text;
 			// $scope.animation.obj.appendRule('0% {transform: translate(10px, 10px);}', 1);
 			// $scope.animation.obj.appendRule('0% {transform: translate(10px, 10px);}', 1);
-			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX', 'rotate3DAngle': 'rotate'};
-			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'rad', 'skewY': 'rad', 'rotate3DZ':'rad', 'rotate3DY': 'rad', 'rotate3DX': 'rad', 'rotate3DAngle': 'rad'};
+			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'rotate':'rotateZ', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX'};
+			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'rad', 'skewY': 'rad', 'rotate': 'rad', 'rotate3DZ':'rad', 'rotate3DY': 'rad', 'rotate3DX': 'rad', 'rotate3DAngle': 'rad'};
 			var transformProperties = Object.keys(propertyDictCssMap);
 			var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'transformOrigin', 'transformOrigin', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 			var cssToChange = {transform: {}, etc: {}};
@@ -2120,7 +2152,7 @@ angular.module('uguru.util.controllers')
 					'rotateX': 'rotate3DX',
 					'rotateY': 'rotate3DY',
 					'rotateZ': 'rotate3DZ',
-					'rotate': 'rotate3DAngle',
+					'rotate': 'rotate3DZ',
 					'translateX': 'translateX',
 					'translateY': 'translateY',
 					'translateZ': 'translateZ',
@@ -2572,7 +2604,7 @@ angular.module('uguru.util.controllers')
 			$timeout(function() {
 				$scope.resetStageDom();
 				$localstorage.removeObject('last_stage');
-				$scope.stageDropdown = {toggleActive: true,options:['No stage selected', 'Import Stage'], selectedIndex: 0, label:'Selected Stage', size:'small', onOptionClick: onStageDropdownSelected};
+				$scope.stageDropdown = {toggleActive: true,options:['No stage selected', 'Import Stage'], selectedIndex: 0, label:'Current Stage', size:'small', onOptionClick: onStageDropdownSelected};
 			}, 1500)
 		}
 
@@ -2658,6 +2690,35 @@ angular.module('uguru.util.controllers')
 			// console.log(kfBarContainerElemWidth, kfBarContainerElemLeft);
 			// console.log($event);
 		}
+
+
+		$scope.stageElemDefaults = {
+			draggable:true
+		}
+
+		$scope.toggleStageElemDraggable = function() {
+			var elem = document.querySelector('#stage-container [draggable]');
+			if (elem && elem.id && elem.hasAttribute('draggable')) {
+				console.log($scope.actor, 'has attribute');
+					elem.removeAttribute('draggable');
+					elem.setAttribute('no-draggable', '');
+					$compile(elem)($scope);
+					$timeout(function() {
+						$scope.$apply();
+					})
+			}
+			else {
+				var elem = document.querySelector('#stage-container [no-draggable]');
+				elem.removeAttribute('no-draggable');
+				elem.setAttribute('draggable', '');
+				$compile(elem)($scope);
+					$timeout(function() {
+						$scope.$apply();
+					})
+			}
+			$scope.stageElemDefaults.draggable = !$scope.stageElemDefaults.draggable;
+		}
+
 		$scope.renderAnimationCSSText = function(animation) {
 			$scope.layout.index = 2;
 
@@ -2936,6 +2997,7 @@ angular.module('uguru.util.controllers')
 			// console.log('\n\n\n\n\nKeyframes before\n-----\n\n', css_text);
 			for (var i = 0; i < all_properties.length; i++) {
 				var propertyKey = all_properties[i];
+				console.log(css_text);
 				for (var j = 0; j < uguruAnimObj.obj.cssRules.length; j++) {
 					var indexRule = uguruAnimObj.obj.cssRules.item(j);
 					var keyText = indexRule.keyText;
@@ -2943,22 +3005,25 @@ angular.module('uguru.util.controllers')
 					var processedCSSText = "";
 					multiKFStyle[keyText] = indexRule.style;
 					//case: keytext
+					console.log(multiKFStyle);
 					for (var i = 0; i < indexRule.style.length; i++)  {
 						var indexStyleProperty = indexRule.style.item(i);
 						var dMatrix;
 						if (transformPropertyVariants.indexOf(indexStyleProperty) > -1) {
 
 							var transformString = indexRule.style[indexStyleProperty];
-							console.log(transformString);
+							console.log(indexStyleProperty, transformString);
 							var matrixTransform = transformString;
 
-							if (indexStyleProperty.indexOf('matrix3d') === -1) {
-								var m = new WebKitCSSMatrix(matrixTransform);
+							// if (indexStyleProperty.indexOf('matrix') > -1) {
+								var m = new WebKitCSSMatrix(matrixTransform.replace('%', 'px'));
 								matrixTransform = "matrix3d(" + [m.m11, m.m12, m.m13, m.m14, m.m21, m.m22, m.m23, m.m24, m.m31, m.m32, m.m33, m.m34, m.m41, m.m42, m.m43, m.m44].join(", ") + ")";
-							}
+								dMatrix = dynamics.initMatrixFromTransform(matrixTransform);
+								var decomposedCSSText = getDMatrixString(dMatrix);
+							// } else {
+							// 	var decomposedCSSText = matrixTransform;
+							// }
 
-							dMatrix = dynamics.initMatrixFromTransform(matrixTransform);
-							var decomposedCSSText = getDMatrixString(dMatrix);
 							if (decomposedCSSText) {
 								processedCSSText += decomposedCSSText;
 							}
@@ -3047,11 +3112,13 @@ angular.module('uguru.util.controllers')
 		}
 
 		function refreshTransformPropertyObjFromAnim(anim) {
+			console.log(anim.properties)
 			anim.properties = {}
 			for (var i = 0; i < anim.obj.cssRules.length; i++) {
 				var indexKFRule = anim.obj.cssRules.item(i);
 				var keyText = indexKFRule.keyText;
 				var transformKFObj = initTransformObjFromKF(indexKFRule);
+				console.log(transformKFObj, indexKFRule);
 				anim.properties[keyText] = transformKFObj;
 			}
 		}
@@ -3061,7 +3128,7 @@ angular.module('uguru.util.controllers')
 			for (var i = 0; i < kf.style.length; i++) {
 				var indexStyle = kf.style[i];
 				var indexValue = kf.style[indexStyle];
-				if (indexStyle.indexOf('transform:') > -1) {
+				if (indexStyle.indexOf('transform') > -1 && indexStyle.indexOf('transform-origin') === -1) {
 					var separateTransformValues = indexValue.split(' ');
 					console.log(indexStyle, separateTransformValues);
 					for (var j = 0; j < separateTransformValues.length; j++) {
@@ -3071,11 +3138,19 @@ angular.module('uguru.util.controllers')
 						if (!(transformPropertyName in transformObj)) {
 							var mappedIndexStyle = transformObj.propertyMappings[transformPropertyName];
 							transformObj[mappedIndexStyle] = transformPropertyValue.replace('%', '').replace('rad', '');
+							console.log('checking for', transformPropertyName, mappedIndexStyle);
+							if (['skewX', 'skewY', 'rotateX', 'rotateY', 'rotateZ'].indexOf(mappedIndexStyle) > -1) {
+								transformObj[mappedIndexStyle + 'deg'] = $scope.rad2degree(parseFloat(transformPropertyValue.replace('%', '').replace('rad', '')));
+							}
 							transformObj['modified'][mappedIndexStyle] = transformPropertyValue.replace('%', '').replace('rad', '');
 							if (!mappedIndexStyle) {
 								console.log('could not find', transformPropertyName, 'in transform obj');
 							}
 						} else {
+							console.log('checking for', transformPropertyName);
+							if (['skewX', 'skewY', 'rotateX', 'rotateY', 'rotateZ'].indexOf(transformPropertyName) > -1) {
+								transformObj[transformPropertyName + 'deg'] = parseInt($scope.rad2degree(parseFloat(transformPropertyValue.replace('%', '').replace('rad', ''))));
+							}
 							transformObj[transformPropertyName] = transformPropertyValue.replace('%', '').replace('rad', '');
 							transformObj['modified'][transformPropertyName] = transformPropertyValue.replace('%', '').replace('rad', '');
 						}
