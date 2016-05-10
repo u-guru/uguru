@@ -23,6 +23,7 @@ angular.module('uguru.components', [])
 }).
 directive('draggable', function($document) {
   return function(scope, element, attr) {
+
     var startX = 0, startY = 0, x = 0, y = 0;
     element.css({
          cursor: 'pointer'
@@ -39,6 +40,9 @@ directive('draggable', function($document) {
         }
     }
     element.on('mousedown', function(event) {
+        if ('noDraggable' in attr) {
+            return;
+        }
       // Prevent default dragging of selected content
       event.preventDefault();
       startX = event.screenX - x;
@@ -50,7 +54,9 @@ directive('draggable', function($document) {
     });
 
     function mousemove(event) {
-
+        if ('noDraggable' in attr) {
+            return;
+        }
       x = event.screenX - startX;
 
       if (!('draggableXOnly' in attr)) {
@@ -65,6 +71,9 @@ directive('draggable', function($document) {
     }
 
     function mouseup() {
+        if ('noDraggable' in attr) {
+            return;
+        }
       $document.off('mousemove', mousemove);
       $document.off('mouseup', mouseup);
     }

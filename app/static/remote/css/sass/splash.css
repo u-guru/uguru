@@ -3860,155 +3860,6 @@
               .splash-landing > section#splash-projector .projector-content
               .splash-landing > section#splash-projector .projector-content#splash-access .splash-access-content .splash-access-code:focus + div .splash-access-bubble path {
                 fill: #637074; }
-        .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content {
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-flex-direction: row;
-          flex-direction: row;
-          -webkit-align-items: center;
-          align-items: center;
-          -webkit-align-content: center;
-          align-content: center;
-          -webkit-justify-content: center;
-          justify-content: center;
-          position: relative;
-          padding: 15px;
-          height: 100%; }
-          .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -moz-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            -o-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            -ms-box-orient: horizontal;
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -moz-flex;
-            display: -webkit-flex;
-            display: flex;
-            -ms-flex-flow: row wrap;
-            -webkit-flex-flow: row wrap;
-            flex-flow: row wrap;
-            -webkit-flex-direction: row;
-            flex-direction: row;
-            -webkit-align-items: center;
-            align-items: center;
-            -webkit-align-content: center;
-            align-content: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            margin-top: 60px;
-            padding: 7.5px;
-            width: 100%; }
-            .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul:not(.active) {
-              filter: alpha(opacity=0);
-              opacity: 0;
-              z-index: -10; }
-            .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li {
-              padding: 7.5px; }
-              .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a {
-                border-radius: 1000px;
-                -ms-box-orient: horizontal;
-                display: -webkit-box;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: -moz-flex;
-                display: -webkit-flex;
-                display: flex;
-                -webkit-flex-direction: row;
-                flex-direction: row;
-                -webkit-align-items: center;
-                align-items: center;
-                -webkit-align-content: center;
-                align-content: center;
-                -webkit-justify-content: center;
-                justify-content: center;
-                text-align: center;
-                width: 100px;
-                height: 100px;
-                border: 2px solid white;
-                font-size: 18px; }
-                .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman {
-                  background: rgba(80, 165, 221, 0.5); }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:focus {
-                    background: #50A5DD; }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-freshman:active {
-                    background: #6f7d82; }
-                .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore {
-                  background: rgba(86, 169, 207, 0.5); }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:focus {
-                    background: #56a9cf; }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sophomore:active {
-                    background: #6f7d82; }
-                .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr {
-                  background: rgba(93, 172, 193, 0.5); }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:focus {
-                    background: #5dacc1; }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-jr:active {
-                    background: #6f7d82; }
-                .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr {
-                  background: rgba(99, 176, 179, 0.5); }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:focus {
-                    background: #63b0b3; }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-sr:active {
-                    background: #6f7d82; }
-                .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad {
-                  background: rgba(105, 179, 165, 0.5); }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:focus {
-                    background: #69B3A5; }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-postgrad:active {
-                    background: #6f7d82; }
-                .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college {
-                  background: rgba(231, 75, 164, 0.5); }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:focus {
-                    background: #e74ba4; }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-college:active {
-                    background: #6f7d82; }
-                .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum {
-                  background: rgba(132, 127, 228, 0.5); }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:focus {
-                    background: #847fe4; }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-alum:active {
-                    background: #6f7d82; }
-                .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs {
-                  background: rgba(230, 129, 78, 0.5); }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:focus {
-                    background: #e6814e; }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-hs:active {
-                    background: #6f7d82; }
-                .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent {
-                  background: rgba(43, 179, 184, 0.5); }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:focus {
-                    background: #2bb3b8; }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-parent:active {
-                    background: #6f7d82; }
-                .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other {
-                  background: rgba(99, 112, 116, 0.5); }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:hover, .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:focus {
-                    background: #637074; }
-                  .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a.demo-other:active {
-                    background: #6f7d82; }
-          @media screen and (min-width: 768px) {
-            .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul {
-              max-width: 80%; }
-              .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li {
-                padding: 15px; }
-                .splash-landing > section#splash-projector .projector-content#splash-demographic .splash-demographic-content ul li a {
-                  width: 150px;
-                  height: 150px;
-                  font-size: 24px; } }
         .splash-landing > section#splash-projector .projector-content#splash-courses {
           -ms-box-orient: horizontal;
           display: -webkit-box;
@@ -7083,5 +6934,155 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
         left: 30px; }
         #splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field small.form-error {
           margin-top: -10px; } }
+
+#splash-demographic .splash-demographic-content {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  padding: 15px;
+  height: 100%; }
+  #splash-demographic .splash-demographic-content ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin-top: 60px;
+    padding: 7.5px;
+    width: 100%; }
+    #splash-demographic .splash-demographic-content ul:not(.active) {
+      filter: alpha(opacity=0);
+      opacity: 0;
+      z-index: -10; }
+    #splash-demographic .splash-demographic-content ul li {
+      padding: 7.5px; }
+      #splash-demographic .splash-demographic-content ul li a {
+        border-radius: 1000px;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        text-align: center;
+        width: 100px;
+        height: 100px;
+        border: 2px solid white;
+        font-size: 18px; }
+        #splash-demographic .splash-demographic-content ul li a.demo-freshman {
+          background: rgba(80, 165, 221, 0.5); }
+          #splash-demographic .splash-demographic-content ul li a.demo-freshman:hover, #splash-demographic .splash-demographic-content ul li a.demo-freshman:focus {
+            background: #50A5DD; }
+          #splash-demographic .splash-demographic-content ul li a.demo-freshman:active {
+            background: #6f7d82; }
+        #splash-demographic .splash-demographic-content ul li a.demo-sophomore {
+          background: rgba(86, 169, 207, 0.5); }
+          #splash-demographic .splash-demographic-content ul li a.demo-sophomore:hover, #splash-demographic .splash-demographic-content ul li a.demo-sophomore:focus {
+            background: #56a9cf; }
+          #splash-demographic .splash-demographic-content ul li a.demo-sophomore:active {
+            background: #6f7d82; }
+        #splash-demographic .splash-demographic-content ul li a.demo-jr {
+          background: rgba(93, 172, 193, 0.5); }
+          #splash-demographic .splash-demographic-content ul li a.demo-jr:hover, #splash-demographic .splash-demographic-content ul li a.demo-jr:focus {
+            background: #5dacc1; }
+          #splash-demographic .splash-demographic-content ul li a.demo-jr:active {
+            background: #6f7d82; }
+        #splash-demographic .splash-demographic-content ul li a.demo-sr {
+          background: rgba(99, 176, 179, 0.5); }
+          #splash-demographic .splash-demographic-content ul li a.demo-sr:hover, #splash-demographic .splash-demographic-content ul li a.demo-sr:focus {
+            background: #63b0b3; }
+          #splash-demographic .splash-demographic-content ul li a.demo-sr:active {
+            background: #6f7d82; }
+        #splash-demographic .splash-demographic-content ul li a.demo-postgrad {
+          background: rgba(105, 179, 165, 0.5); }
+          #splash-demographic .splash-demographic-content ul li a.demo-postgrad:hover, #splash-demographic .splash-demographic-content ul li a.demo-postgrad:focus {
+            background: #69B3A5; }
+          #splash-demographic .splash-demographic-content ul li a.demo-postgrad:active {
+            background: #6f7d82; }
+        #splash-demographic .splash-demographic-content ul li a.demo-college {
+          background: rgba(231, 75, 164, 0.5); }
+          #splash-demographic .splash-demographic-content ul li a.demo-college:hover, #splash-demographic .splash-demographic-content ul li a.demo-college:focus {
+            background: #e74ba4; }
+          #splash-demographic .splash-demographic-content ul li a.demo-college:active {
+            background: #6f7d82; }
+        #splash-demographic .splash-demographic-content ul li a.demo-alum {
+          background: rgba(132, 127, 228, 0.5); }
+          #splash-demographic .splash-demographic-content ul li a.demo-alum:hover, #splash-demographic .splash-demographic-content ul li a.demo-alum:focus {
+            background: #847fe4; }
+          #splash-demographic .splash-demographic-content ul li a.demo-alum:active {
+            background: #6f7d82; }
+        #splash-demographic .splash-demographic-content ul li a.demo-hs {
+          background: rgba(230, 129, 78, 0.5); }
+          #splash-demographic .splash-demographic-content ul li a.demo-hs:hover, #splash-demographic .splash-demographic-content ul li a.demo-hs:focus {
+            background: #e6814e; }
+          #splash-demographic .splash-demographic-content ul li a.demo-hs:active {
+            background: #6f7d82; }
+        #splash-demographic .splash-demographic-content ul li a.demo-parent {
+          background: rgba(43, 179, 184, 0.5); }
+          #splash-demographic .splash-demographic-content ul li a.demo-parent:hover, #splash-demographic .splash-demographic-content ul li a.demo-parent:focus {
+            background: #2bb3b8; }
+          #splash-demographic .splash-demographic-content ul li a.demo-parent:active {
+            background: #6f7d82; }
+        #splash-demographic .splash-demographic-content ul li a.demo-other {
+          background: rgba(99, 112, 116, 0.5); }
+          #splash-demographic .splash-demographic-content ul li a.demo-other:hover, #splash-demographic .splash-demographic-content ul li a.demo-other:focus {
+            background: #637074; }
+          #splash-demographic .splash-demographic-content ul li a.demo-other:active {
+            background: #6f7d82; }
+  @media screen and (min-width: 768px) {
+    #splash-demographic .splash-demographic-content ul {
+      max-width: 80%; }
+      #splash-demographic .splash-demographic-content ul li {
+        padding: 15px; }
+        #splash-demographic .splash-demographic-content ul li a {
+          width: 150px;
+          height: 150px;
+          font-size: 24px; } }
 
 /*# sourceMappingURL=splash.css.map */

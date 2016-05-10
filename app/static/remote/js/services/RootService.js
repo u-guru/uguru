@@ -223,7 +223,7 @@ angular.module('uguru.root.services', [])
         }
     }
 
-    this.triggers = {runSequence: function(arr_triggers) {
+    this.triggers = {runSequence: function(arr_triggers, time_delay) {
     $timeout(function() {
         var currentDelay = 0;
         var supportedTriggers = ['click'];
@@ -235,7 +235,7 @@ angular.module('uguru.root.services', [])
             var indexSelector = indexTriggerSplit[1];
             var indexDelay = indexTriggerSplit[2];
             currentDelay += parseInt(indexDelay);
-            runAndDetectTrigger(indexTriggerSplit[0], indexTriggerSplit[1], indexTriggerSplit[2], currentDelay);
+            runAndDetectTrigger(indexTriggerSplit[0], indexTriggerSplit[1], indexTriggerSplit[2], currentDelay || 0);
           } else {
             console.log('TRIGGER ERROR:INSUFFICIENT ARGS FOR ARG:', indexTriggerString);
             return;
@@ -244,7 +244,7 @@ angular.module('uguru.root.services', [])
 
 
 
-    }, 3000);
+    }, time_delay || 2000);
     }
     }
 
