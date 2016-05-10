@@ -498,8 +498,8 @@ angular.module('uguru.util.controllers')
 
       initWatcher();
 
-      $scope.loader = new SVGLoader( document.querySelector('#map-parent-wrapper .pageload-overlay'), { speedIn : 300, easingIn : mina.easeinout } );
-      $scope.loader.show();
+      // $scope.loader = new SVGLoader( document.querySelector('#map-parent-wrapper .pageload-overlay'), { speedIn : 300, easingIn : mina.easeinout } );
+      // $scope.loader.show();
 
 
       $scope.hideLoader = function() {
@@ -511,6 +511,7 @@ angular.module('uguru.util.controllers')
       $timeout(function() {
         // renderUniversityPlacesMap(g.university);
 
+        $scope.showPageLoader = true;
 
         $timeout(function() {
           // loader.isHide = true;

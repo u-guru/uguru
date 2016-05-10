@@ -38,6 +38,33 @@ angular.module('uguru.directives')
       }
     };
 })
+.directive('page-transition', function () {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+
+      var loader = new SVGLoader( element[0], { speedIn : attr.pageTransitionDelay || 300, easingIn : mina.easeinout } );
+      loader.show();
+
+      element[0].className += ' pageload-overlay';
+      element[0].setAttribute('data-opening', 'M -18 -26.90625 L -18 86.90625 L 98 86.90625 L 98 -26.90625 L -18 -26.90625 Z M 40 29.96875 C 40.01804 29.96875 40.03125 29.98196 40.03125 30 C 40.03125 30.01804 40.01804 30.03125 40 30.03125 C 39.98196 30.03125 39.96875 30.01804 39.96875 30 C 39.96875 29.98196 39.98196 29.96875 40 29.96875 Z');
+
+      var div = document.createElement('div');
+      div.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="transition" style="position:fixed;background-color:transparent; visibility:hidden;" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="xMidYMid slice"><path d="M -18 -26.90625 L -18 86.90625 L 98 86.90625 L 98 -26.90625 L -18 -26.90625 Z M 40 -25.6875 C 70.750092 -25.6875 95.6875 -0.7500919 95.6875 30 C 95.6875 60.750092 70.750092 85.6875 40 85.6875 C 9.2499078 85.6875 -15.6875 60.750092 -15.6875 30 C -15.6875 -0.7500919 9.2499078 -25.6875 40 -25.6875 Z"/></svg>'
+      element[0].appendChild(div);
+
+
+      scope.$watch(function() {
+          return element.attr('class');
+        }, function(new_class) {
+          if (element[0].className.indexOf('activate')) {
+            element[0].classList.remove('activate');
+            element[0].querySelector('svg.transition').style.visibility = "visible";
+          }
+      })
+    }
+  }
+})
 .directive('preBg', function () {
     return {
         restrict: 'A',
