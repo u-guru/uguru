@@ -622,12 +622,22 @@
                     <div id='keyframe-bar-container' class='relative p10xy'>
                         <span>0%</span>
                         <div class="relative">
+                            <span ng-if='showKFBarPercentage.show' style='left:{{animation.selected_percent}} !important;margin-top:-5%; width:5%; margin-left:-25px; top:-20%;' class='bg-azure-50p absolute p10xy txt-1 weight-700 txt-white'>{{animation.selected_percent}}</span>
+                            <div class='absolute p20bottom top-0 left-0' style='margin-top:-10%;'>
+                                <a ng-click='toggleLeftKFPlayBar()'>
+                                    <i class='icon ion-chevron-left txt-5'> </i>
+                                </a>
+                                &nbsp;&nbsp;
+                                <a ng-click='toggleRightKFPlayBar()'>
+                                    <i class='icon ion-chevron-right txt-5'> </i>
+                                </a>
+                            </div>
                           <!--   <div style='left:{{animation.selected_percent}}' draggable draggable-x-only draggable-ignore-style class='absolute bg-white round' id='keyframe-pointer'>&nbsp;</div>
                             <div id='keyframe-bar' class='round high-z-index bg-white-25p full-x top-0 height-10'></div> -->
-                            <input ng-mouseup="setActiveKeyFrame(animation.selected_kf_index)"  class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animation.attr.kf_intervals}}" list="numbers"  ng-model="animation.selected_kf_index"/>
+                            <input ng-mousedown="showKFBarPercentage.show = true;" ng-mouseup="setClosestActiveKeyFrame(animation.selected_kf_index)" id='playbar-range-input'  class="bg-transparent range-slider" type="range" size="2" min="0" max="{{animation.attr.kf_intervals}}" list="numbers"  ng-model="animation.selected_kf_index"/>
                             <progress class="white-round full-x" max="{{animation.attr.durationVal}}" value="{{timer.time}}"></progress>
                         </div>
-                        <span>{{animation.kf_count}}%</span>
+                        <span>100%</span>
                     </div>
                 </div>
             </div>

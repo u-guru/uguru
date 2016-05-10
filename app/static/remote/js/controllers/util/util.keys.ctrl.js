@@ -30,7 +30,7 @@ angular.module('uguru.util.controllers')
 		var defaults = {
 			KF_COUNT: 100,
 			DURATION: 1,
-			KF_INTERVALS:5,
+			KF_INTERVALS:100,
 			SHAPE_DICT: getShapeDict()
 		}
 
@@ -192,6 +192,7 @@ angular.module('uguru.util.controllers')
 
 		$scope.asideTabIndex = 2;
 		$scope.animationSneakPreview = {show: false, content: ''};
+		$scope.showKFBarPercentage = {show: false};
 		$scope.keyShortcuts = {
 				ctrl: ctrlShortcuts
 		}
@@ -911,30 +912,24 @@ angular.module('uguru.util.controllers')
 				option = "cubic-bezier(0.1, 0.7, 1.0, 0.1)";
 			}
 			$scope.animation.attr.timing_function = option;
+
 		}
 
 
 		function toggleSelectedKFToRight() {
 			var animPropertyPercentages = Object.keys($scope.animation.properties);
 			var currentKFIndex = animPropertyPercentages.indexOf($scope.animation.selected_percent);
-			if (currentKFIndex > -1 && currentKFIndex < animPropertyPercentages.length) {
-				if ($scope.animation.attr.kf_intervals) {
-						var intervalLength = $scope.animation.selected_kf_index + parseInt(100.0/$scope.animation.attr.kf_intervals);
-						if (intervalLength <= 100) {
-							console.log($scope.animation.selected_kf_index)
-							$scope.animation.selected_kf_index += intervalLength;
-							console.log($scope.animation.selected_kf_index)
-							intervalLength += '%';
-							console.log('attempting to switch to', intervalLength);
-							var desiredPercentage = intervalLength;
-						}
-				} else {
-						var desiredPercentage =  animPropertyPercentages[currentKFIndex + 1];
-				}
-
-				$scope.setActiveKeyFrame(desiredPercentage);
+			if (currentKFIndex > -1) {
+				var desiredPercentage =  animPropertyPercentages[(currentKFIndex + 1) % animPropertyPercentages.length];
+				var percentValue = desiredPercentage.replace('%', '');
+				console.log('current percent', desiredPercentage);
+				$scope.setActiveKeyFrame(percentValue, currentKFIndex);
 				$scope.asideTabIndex = 2;
 			}
+			$scope.showKFBarPercentage.show = true;
+			$timeout(function() {
+				$scope.showKFBarPercentage.show = false;
+			}, 5000)
 		}
 
 		function toggleSelectedKFToLeft() {
@@ -942,37 +937,59 @@ angular.module('uguru.util.controllers')
 			var currentKFIndex = animPropertyPercentages.indexOf($scope.animation.selected_percent);
 			if (currentKFIndex > -1 && currentKFIndex < animPropertyPercentages.length) {
 				if (currentKFIndex === 0) {
-					var desiredPercentage = animPropertyPercentages[0];
+					var desiredPercentage = animPropertyPercentages[animPropertyPercentages.length - 1];
 				} else {
 
-					if ($scope.animation.attr.kf_intervals) {
-						var intervalLength = $scope.animation.selected_kf_index - parseInt(100.0 / $scope.animation.attr.kf_intervals);
-						if (intervalLength >= 0) {
-							$scope.animation.selected_kf_index -= intervalLength;
-							var desiredPercentage = intervalLength + '%';
-						}
-					} else {
-						var desiredPercentage =  animPropertyPercentages[currentKFIndex - 1];
-					}
+
+					var desiredPercentage =  animPropertyPercentages[currentKFIndex - 1];
 				}
+				var percentValue = desiredPercentage.replace('%', '');
+				$scope.setActiveKeyFrame(percentValue, currentKFIndex);
 				$scope.asideTabIndex = 2;
-				$scope.setActiveKeyFrame(desiredPercentage);
 			}
+			$scope.showKFBarPercentage.show = true;
+			$timeout(function() {
+				$scope.showKFBarPercentage.show = false;
+			}, 5000)
+		}
+		$scope.toggleLeftKFPlayBar = toggleSelectedKFToLeft
+		$scope.toggleRightKFPlayBar = toggleSelectedKFToRight;
+
+		$scope.setClosestActiveKeyFrame = function(new_index) {
+			var animationPercentages = Object.keys($scope.animation.properties);
+			animationPercentages.sort(function(val_a, val_b) {return parseFloat(val_b.replace('%', '')) - parseFloat(val_a.replace('%', ''))}).reverse();
+			console.log(new_index, animationPercentages);
+			var dMin = 101;
+			var resultIndex = 0;
+			for (var i = 0 ; i < animationPercentages.length; i++) {
+				var indexPercentage = parseFloat(animationPercentages[i].replace('%', ''));
+				var dX = Math.abs(new_index - indexPercentage);
+				if (dX <= dMin) {
+					dMin = dX;
+					resultIndex = i;
+				}
+			}
+			var closestPercentage = animationPercentages[resultIndex];
+			$scope.animation.selected_kf_index = parseFloat(closestPercentage.replace('%', ''));
+			$scope.setActiveKeyFrame(closestPercentage.replace('%', ''), resultIndex);
 		}
 
 
-
-		$scope.setActiveKeyFrame = function(value) {
+		$scope.setActiveKeyFrame = function(value, index_value) {
+			if (!index_value) {
+				index_value = Object.keys($scope.animation.properties).indexOf(value + '%');
+			}
 			var intervalLength = parseInt(100/$scope.animation.attr.kf_intervals);
 			var propertyDictCssMap = {'translateX': 'translateX', 'translateY': 'translateY', 'translateZ': 'translateZ', 'scale3DX': 'scaleX', 'scale3DY': 'scaleY', 'skewX':'skewX', 'skewY': 'skewY', 'rotate3DZ':'rotateZ', 'rotate3DY': 'rotateY', 'rotate3DX': 'rotateX', 'rotate3DAngle': 'rotate'};
 			var propertyDictCssUnit = {'translateX': '%', 'translateY': '%', 'translateZ': 'px', 'scale3DX': '', 'scale3DY': '', 'skewX':'rad', 'skewY': 'rad', 'rotate3DZ':'rad', 'rotate3DY': 'rad', 'rotate3DX': 'rad', 'rotate3DAngle': 'rad'};
 
+
+
 			var oldValue = $scope.animation.selected_index;
-			console.log($scope.animation.properties);
 			var newPercentValue = value;
 			$scope.animation.selected_kf_index = parseInt(value);
-			$scope.animation.selected_index = value * intervalLength;
-			$scope.animation.selected_percent = (value * intervalLength) + '%';
+			$scope.animation.selected_index = index_value;
+			$scope.animation.selected_percent = value + '%';
 			$scope.animation.flex_selected_index = value;
 			var newValue = value;
 			$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
@@ -1048,7 +1065,7 @@ angular.module('uguru.util.controllers')
 
 			//clear all values;
 			// var percentValue = getNthSortedKeyText($scope.animation.obj, newValue);
-			var proposedKeyframe = $scope.animation.properties[(value * intervalLength) + '%'];
+			var proposedKeyframe = $scope.animation.properties[(value) + '%'];
 			$scope.animation.selected_keyframe = proposedKeyframe;
 
 
@@ -1644,42 +1661,63 @@ angular.module('uguru.util.controllers')
 			}
 
 
-		function reconstructAnimationFromProperties(attr, properties, kf_count) {
+		function reconstructAnimationFromProperties(attr, properties, kf_count, callback) {
 			var lastSheet = document.styleSheets[document.styleSheets.length - 1];
 			var indexOfRuleInSheet = lastSheet.insertRule("@-" + browserPrefix + "-keyframes " + attr.name + " { } ");
 			var anim = lastSheet.cssRules[indexOfRuleInSheet];
-			initKFWithXInterval(anim, kf_count);
-			var attr = {
-				name: attr.name,
-				play_state: attr.play_state,
-				delay: attr.delay + 's',
-				delayVal: attr.delay,
-				direction: attr.direction,
-				iteration_count: attr.iteration_count,
-				timing_function: attr.timing_function,
-				duration: attr.duration,
-				durationVal: parseInt(attr.duration.replace('s')),
-				fill_mode: attr.fill_mode,
-				kf_intervals: defaults.KF_INTERVALS
-			}
+			// initKFWithXInterval(anim, kf_count);
+			$timeout(function() {
+				var propertyKeys = Object.keys(properties);
+				for (var j = 0; j < propertyKeys.length; j++) {
+					var propertyPercent = parseFloat(propertyKeys[j].replace('%', ''));
+					console.log('adding', propertyPercent);
+					// appendRule(percentage + '{' + css_text +  '}', keyframe_percent);
+					anim.appendRule(propertyKeys[j] + ' {}', j)
+				}
 
-			var propertyKeys = Object.keys(properties);
-			var animation = {obj: anim,  properties: properties, kf_count: kf_count, attr:attr, kf_intervals: defaults.KF_INTERVALS};
-			for (var i = 0; i < propertyKeys.length; i++) {
-				var indexPropertyKeyPercent = propertyKeys[i];
-				var modifiedDict = properties[indexPropertyKeyPercent].modified;
-				var modifiedDictKeys = Object.keys(modifiedDict);
+				var attributes = {
+					name: attr.name,
+					play_state: attr.play_state,
+					delay: attr.delay + 's',
+					delayVal: attr.delay,
+					direction: attr.direction,
+					iteration_count: attr.iteration_count,
+					timing_function: attr.timing_function,
+					duration: attr.duration,
+					durationVal: parseInt(attr.duration.replace('s')),
+					fill_mode: attr.fill_mode,
+					kf_intervals: defaults.KF_INTERVALS
+				}
 
-				if (modifiedDictKeys.length) {
-					for (var j = 0; j < modifiedDictKeys.length; j++) {
-						var indexModifiedKey = modifiedDictKeys[j];
-						var indexModifiedValue = modifiedDict[indexModifiedKey];
-						editKeyframeAtX(animation, indexPropertyKeyPercent.replace('%',''), indexModifiedKey, indexModifiedValue);
+				var propertyKeys = Object.keys(properties);
+
+
+				$scope.animation = {obj: anim, selected_index:0, flex_selected_index:0, selected_kf_index:0,   properties: properties, kf_count: kf_count, attr:attributes, kf_intervals: defaults.KF_INTERVALS};
+
+				$scope.animation.selected_percent = propertyKeys[0];
+				$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent]
+				console.log($scope.animation);
+				for (var i = 0; i < propertyKeys.length; i++) {
+					var indexPropertyKeyPercent = propertyKeys[i];
+					var modifiedDict = properties[indexPropertyKeyPercent].modified;
+					var modifiedDictKeys = Object.keys(modifiedDict);
+
+					if (modifiedDictKeys.length) {
+						for (var j = 0; j < modifiedDictKeys.length; j++) {
+							var indexModifiedKey = modifiedDictKeys[j];
+							var indexModifiedValue = modifiedDict[indexModifiedKey];
+							editKeyframeAtX($scope.animation, indexPropertyKeyPercent.replace('%',''), indexModifiedKey, indexModifiedValue);
+						}
 					}
 				}
-			}
+				// $scope.animation = animation;
+				callback && callback();
+				console.log($scope.animation);
+			})
 
-			return animation
+
+
+			return;
 		}
 
 		function addKFRule(anim, percentage, property_dict, browserPrefix, index) {
@@ -1841,9 +1879,9 @@ angular.module('uguru.util.controllers')
 
 
 			var desiredIndex = $scope.animation.selected_percent;
-			// console.log('about to apply property change', property, 'to', value, 'in kf', desiredIndex);
+			console.log('about to apply property change', property, 'to', value, 'in kf', desiredIndex);
 
-			editKeyframeAtX($scope.animation, desiredIndex, property, value);
+			editKeyframeAtX($scope.animation, desiredIndex.replace('%', ''), property, value);
 
 			$timeout(function() {
 				console.log($scope.animation.selected_keyframe);
@@ -2013,9 +2051,9 @@ angular.module('uguru.util.controllers')
 			// console.log(keyframe_percent);
 			// console.log(keyframe_percent, property, value)
 			var percentage = keyframe_percent;
-			anim.obj.deleteRule(percentage);
+			anim.obj.deleteRule(percentage + '%');
 			// console.log('properties', anim.properties, keyframe_percent);
-			transformObj = anim.properties[percentage];
+			transformObj = anim.properties[percentage + '%'];
 			transformObj.edited = true;
 			transformObj[property] = value;
 
@@ -2025,13 +2063,13 @@ angular.module('uguru.util.controllers')
 
 			if (!clear_css_text) {
 				var css_text = transformObjToCssText(transformObj, property);
-				console.log(css_text);
-				anim.obj.appendRule(percentage + '{' +  css_text + '}', keyframe_percent);
+				console.log('transforming...', css_text, percentage);
+				anim.obj.appendRule(percentage + '% ' + '{' +  css_text + '}', keyframe_percent);
 
 			} else {
 				var css_text = transformObjToCssText(transformObj, property);
 				var css_text = " ";
-				anim.obj.appendRule(percentage + '{' + css_text +  '}', keyframe_percent);
+				anim.obj.appendRule(percentage + '% ' + '{' + css_text +  '}', keyframe_percent);
 			}
 
 			// css_text = css_text.replace('transform:', '').replace(';', '');
@@ -2044,13 +2082,13 @@ angular.module('uguru.util.controllers')
 			var transformProperties = Object.keys(propertyDictCssMap);
 			var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'transformOrigin', 'transformOrigin', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 			var cssToChange = {transform: {}, etc: {}};
-			var newPropertiesToModify = Object.keys($scope.animation.selected_keyframe.modified);
+			var newPropertiesToModify = Object.keys(anim.selected_keyframe.modified);
 
 			for(var i = 0; i < newPropertiesToModify.length; i++) {
 				var indexPropertyName = newPropertiesToModify[i];
 
 
-				var propertyValue = $scope.animation.selected_keyframe[indexPropertyName]
+				var propertyValue = anim.selected_keyframe[indexPropertyName]
 
 				if (indexPropertyName in propertyDictCssMap) {
 					var cssVar = propertyDictCssMap[indexPropertyName];
@@ -2073,7 +2111,6 @@ angular.module('uguru.util.controllers')
 					var indexTransformValue = cssToChange.transform[indexTransformProperty];
 					transformCSStoChange += indexTransformProperty  + indexTransformValue;
 				}
-				console.log(transformCSStoChange);
 				$scope.actor.style['transform'] = transformCSStoChange;
 				$scope.actor.style[browserPrefix + '-transform'] = transformCSStoChange;
 			}
@@ -2576,23 +2613,40 @@ angular.module('uguru.util.controllers')
 			$scope.actor = document.querySelector('#stage-elem');
 		}
 
-
 		function importLastAnimation() {
 			var lastAnimation = $localstorage.getObject('last_animation');
-
-			if (lastAnimation && !lastAnimation.length && !lastAnimation.cssText) {
+			console.log(lastAnimation);
+			lastAnimation.attr.name.replace('-edit-edit', '-edit');
+			// if (lastAnimation && (!lastAnimation.attr || !lastAnimation.attr.name || !lastAnimation.attr.name.length)) {
 
 				$scope.animation = initAnimation('base-animation', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
-				console.log($scope.animation);
-			} else {
-				$scope.animation = $scope.importFromCSSText(lastAnimation.cssText, lastAnimation.name, lastAnimation.classText)
-			}
-			if ($scope.animation.obj.name.indexOf('-edit') > -1) {
-				$scope.animation.obj.name = $scope.animation.obj.name + '-edit';
-				$scope.animation.attr.name = $scope.animation.obj.name + '-edit';
-			}
-			$scope.animationDropdown.options[0] = $scope.animation.obj.name;
-			$scope.animationDropdown.options.push('Save');
+				if ($scope.animation.obj.name.indexOf('-edit') === -1) {
+					$scope.animation.obj.name = $scope.animation.obj.name + '-edit';
+					$scope.animation.attr.name = $scope.animation.obj.name + '-edit';
+				}
+				$scope.animationDropdown.options[0] = $scope.animation.obj.name;
+				$scope.animationDropdown.options.push('Save');
+				if ($scope.stage && $scope.stage.stageName) {
+					$scope.updatePageDom($scope.stage.stageName, $scope.stage.stageHtml, $scope.stage.stageCss);
+				}
+			// } else {
+
+			// 	var callback = function() {
+			// 		// if ($scope.animation.obj.name.indexOf('-edit') === -1) {
+			// 		// 	$scope.animation.obj.name = $scope.animation.obj.name + '-edit';
+			// 		// 	$scope.animation.attr.name = $scope.animation.obj.name + '-edit';
+			// 		// }
+			// 		$scope.animationDropdown.options[0] = $scope.animation.obj.name;
+			// 		$scope.animationDropdown.options.push('Save');
+			// 		if ($scope.stage && $scope.stage.stageName) {
+			// 			$scope.updatePageDom($scope.stage.stageName, $scope.stage.stageHtml, $scope.stage.stageCss);
+			// 		}
+			// 	}
+			// 	$timeout(function() {
+			// 		$scope.animation = reconstructAnimationFromProperties(lastAnimation.attr, lastAnimation.properties, lastAnimation.kf_count, callback);
+			// 	}, 2500)
+			// }
+
 			return;
 		}
 
@@ -2668,6 +2722,8 @@ angular.module('uguru.util.controllers')
 
 
 		}
+
+
 
 		$scope.setActiveKeyFrameFromPointer = function($event) {
 			var kfBarContainerElem = document.querySelector('#keyframe-bar')
@@ -2749,6 +2805,7 @@ angular.module('uguru.util.controllers')
 		$scope.editAnimationName = false;
 		$scope.exports = {animations: []};
 		$scope.saveAnimationClass = function(animation, owner) {
+			console.log('rendering', animation);
 			if (!animation.exportable_kf) {
 				$scope.renderAnimationCSSText(animation);
 			}
@@ -2954,8 +3011,10 @@ angular.module('uguru.util.controllers')
 
 
 		var browserPrefix;
+		$timeout(function() {
+			injectStyleSheet();
+		})
 
-		injectStyleSheet();
 
 		//start core functions
 		//core #1
@@ -3148,7 +3207,7 @@ angular.module('uguru.util.controllers')
 				var indexStyle = kf.style[i];
 				var indexValue = kf.style[indexStyle];
 				if (indexStyle.indexOf('transform') > -1 && indexStyle.indexOf('transform-origin') === -1) {
-					var separateTransformValues = indexValue.split(' ');
+					var separateTransformValues = indexValue.replace(', ', ',').split(' ');
 					console.log(indexStyle, separateTransformValues);
 					for (var j = 0; j < separateTransformValues.length; j++) {
 						var indexTransformPropSplit = separateTransformValues[j].replace(')', '').split('(');
@@ -3156,6 +3215,7 @@ angular.module('uguru.util.controllers')
 						var transformPropertyValue = indexTransformPropSplit[1];
 						if (!(transformPropertyName in transformObj)) {
 							var mappedIndexStyle = transformObj.propertyMappings[transformPropertyName];
+							console.log(mappedIndexStyle, transformPropertyValue);
 							transformObj[mappedIndexStyle] = transformPropertyValue.replace('%', '').replace('rad', '');
 							console.log('checking for', transformPropertyName, mappedIndexStyle);
 							if (['skewX', 'skewY', 'rotateX', 'rotateY', 'rotateZ'].indexOf(mappedIndexStyle) > -1) {
@@ -3348,8 +3408,13 @@ angular.module('uguru.util.controllers')
 			// var js_anim_obj = importAnimationFromRawCssText(css_text, name);
 
 			// var final_obj = initAnimationFromAnimObj(js_anim_obj);
+			$scope.animationDropdown.options[0] = name;
 			$scope.showStatusMsgForXSec('Importing ' + name + ' ....', 2500);
 			$scope.animation = importAndProcessAnimationCSSTextByKF(css_text, name);
+			if ($scope.animation.attr.name.indexOf('-edit') === -1 || $scope.animation.obj.name.indexOf('-edit') > -1)   {
+				$scope.animation.attr.name += '-edit';
+				$scope.animation.obj.name += '-edit';
+			}
 
 			$scope.animationDict.importClassText = class_text;
 			$scope.animationDict.importTextarea = css_text;
@@ -3378,7 +3443,6 @@ angular.module('uguru.util.controllers')
 		}
 		$timeout(function() {
 			importLastAnimation();
-
 			importLastStage();
 		}, 3000);
 
