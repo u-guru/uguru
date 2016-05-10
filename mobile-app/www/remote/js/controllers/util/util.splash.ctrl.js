@@ -175,7 +175,7 @@ angular.module('uguru.util.controllers')
         })
       }, 1000)
     }
-    $scope.reset = function(field_name,form)
+    $scope.reset = function(field_name,form,isValid)
     {
       if (field_name === 'name' && !form.full_name)
       {
@@ -189,7 +189,7 @@ angular.module('uguru.util.controllers')
         }
         $scope.user.name = form.full_name;
       }
-      else if (field_name === 'email' && !form.email)
+      else if (field_name === 'email' && (!form.email && isValid))
       {
         form.activateErrorEmail = false;
         form.validateEmail = false;
@@ -208,7 +208,7 @@ angular.module('uguru.util.controllers')
 
       }
     }
-    $scope.updateUserIdCard = function(field_name, val, form) {
+    $scope.updateUserIdCard = function(field_name, val, form,isValid) {
 
       if (field_name === 'name' && val && val.length) {
         $scope.updateFormCapitalization(val, 'full_name', form)
@@ -233,12 +233,12 @@ angular.module('uguru.util.controllers')
           })
         }
       }
-      if (field_name === 'email'&& val && val.length) {
+      if (field_name === 'email'&& (val || !isValid)) {
         var error_msg = validateEmail(val);
+        console.log(error_msg)
         if (error_msg.validated) {
           $timeout(function(){
             $scope.$apply(function() {
-              console.log("check",val)
               $scope.user.email = val;
               form.validateEmail = true;
               form.activateErrorEmail = false;
@@ -305,7 +305,13 @@ angular.module('uguru.util.controllers')
         if(re.test(email)) {
           errorResults.validated = true;
           return errorResults
-        } else {
+        } 
+        else if(!email){
+          errorResults.validated = false;
+          errorResults.error_msg = 'Invalid email format';
+          return errorResults
+        }
+        else {
           errorResults.validated = false;
           errorResults.error_msg = 'Please enter a valid school .edu email';
           return errorResults

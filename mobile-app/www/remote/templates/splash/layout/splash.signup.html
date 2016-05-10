@@ -73,8 +73,8 @@
                             </a>
                         </form>
                         <form name="email" class="input-field" ng-class="{ 'active' : signupForm.activateEmail}"  style='margin-top:100px;'>
-                            <input type="email" ng-focus="onSignupFormFocus('email', signupForm.email, signupForm)" ng-blur="updateUserIdCard('email', signupForm.email, signupForm)" placeholder="what's your email?" ng-model='signupForm.email' autocomplete="off" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && updateUserIdCard('email', signupForm.email, signupForm)" ng-change="reset('email',signupForm)" 
-                            ngMaxlength='-1'/>
+                            <input type="email" ng-focus="onSignupFormFocus('email', signupForm.email, signupForm)" ng-blur="updateUserIdCard('email', signupForm.email, signupForm,email.$valid)" placeholder="what's your email?" ng-model='signupForm.email' autocomplete="off" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && updateUserIdCard('email', signupForm.email, signupForm,email.$valid)" ng-change="reset('email',signupForm,email.$valid)" 
+                            />
                             <small class='form-error absolute txt-shamrock weight-400' ng-if='signupForm.focusedInput === "email" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}</small>
                             <!-- <a ng-if='!signupForm.activateErrorEmail && signupForm.email ' class="active" ng-mousedown='signupForm.email = "";'> -->
                             <a ng-if='!signupForm.activateErrorEmail  && signupForm.email || !email.$valid' class="active" ng-mousedown='signupForm.email = "";'>
@@ -89,7 +89,7 @@
                                     <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
                                 </svg>
                             </a>
-                            <a ng-if='signupForm.activateErrorEmail && signupForm.email' class='active' ng-mousedown='signupForm.email = "";signupForm.activateErrorEmail = false'>
+                            <a ng-if='signupForm.activateErrorEmail && (!email.$valid || signupForm.email )' class='active' ng-mousedown='signupForm.email = ""; signupForm.activateErrorEmail = false'>
                                 <svg class="error" viewBox="0 0 100 100">
                                     <circle cx="50" cy="50" r="36"></circle>
                                     <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
