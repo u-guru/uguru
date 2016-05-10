@@ -237,7 +237,7 @@ var pageLoad= function() {
   {
     var timeout = 7000- bodyLoadTime *1000
     setTimeout(function() {
-        console.log("WAIT NIGGA")
+        console.log("WAIT :", timeout)
         className = document.querySelector('body #uguru-view').className.replace('hide','')
         document.querySelector('body #uguru-view').className = className
     }, timeout);
@@ -257,8 +257,9 @@ var calcTimeSinceInit = function() {
     // <link href="http://cf.jare.io/?u=https://uguru-rest-test.herokuapp.com/static/remote/css/sass/loading.css" rel="stylesheet">
 
 bodyLoadingDiv.innerHTML = firstTimeLoadingAnimationContent;
-var URL_BASE = 'static/';
+var URL_BASE = '';
 if (window.location.href.indexOf(':5000') > -1 || window.location.href.indexOf('uguru-rest-test') > -1 || window.location.href.indexOf('staging') > -1)  {
+	URL_BASE='static/'
 	// if (window.location.href.indexOf('uguru-rest-test') > -1)
 	//     URL_BASE = 'http://cf.jare.io/?u=https://uguru-rest-test.herokuapp.com/'
 	// else
