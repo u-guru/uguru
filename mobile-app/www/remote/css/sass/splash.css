@@ -8094,9 +8094,25 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
 }
 
 .splash-projector-guru {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   position: absolute;
-  left: 50%;
+  left: 0 !important;
   top: 0;
+  width: 100% !important;
 }
 
 @media screen and (max-width: 320px) {
@@ -9263,6 +9279,7 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   height: 100px;
   border: 2px solid white;
   font-size: 16px !important;
+  padding: 15px;
 }
 
 #splash-demographic .splash-demographic-content ul li a.demo-freshman {
@@ -9393,7 +9410,6 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   width: 200px;
   height: 200px;
   font-size: 24px !important;
-  padding: 15px;
 }
 
 #splash-demographic .splash-demographic-content .info-demographic-button {
