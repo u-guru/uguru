@@ -2048,7 +2048,7 @@ angular.module('uguru.util.controllers')
 
 
 			$timeout(function() {
-				$scope.setActiveKeyFrame($scope.animation.selected_percent.replace('%', ''))
+				$scope.setActiveKeyFrame($scope.animation.selected_percent)
 				$scope.$apply();
 			}, 500);
 		}
@@ -2646,10 +2646,10 @@ angular.module('uguru.util.controllers')
 				// reconstructAnimationFromProperties(serverAnimation.attr, serverAnimation.properties, serverAnimation.kf_count);
 
 				var callback = function() {
-					// if ($scope.animation.obj.name.indexOf('-edit') === -1) {
-					// 	$scope.animation.obj.name = $scope.animation.obj.name + '-edit';
-					// 	$scope.animation.attr.name = $scope.animation.obj.name + '-edit';
-					// }
+					if ($scope.animation.obj.name.indexOf('-edit') === -1) {
+						$scope.animation.obj.name = $scope.animation.obj.name + '-edit';
+						$scope.animation.attr.name = $scope.animation.obj.name + '-edit';
+					}
 					$scope.animationDropdown.options[0] = $scope.animation.obj.name;
 					$scope.animationDropdown.options.push('Save');
 					if ($scope.stage && $scope.stage.stageName) {
@@ -2685,6 +2685,7 @@ angular.module('uguru.util.controllers')
 			} else {
 				console.log('found last stage from before', lastStage);
 				$timeout(function() {
+					$scope.stage = lastStage;
 					$scope.updatePageDom(lastStage.stageName, lastStage.stageHtml, lastStage.stageCss, lastStage.animElemSelector.replace('#', ''));
 				})
 			}
