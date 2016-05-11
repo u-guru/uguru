@@ -212,6 +212,7 @@ function FileService(LoadingService, Restangular, DevToolService) {
                             scope.$apply();
                         }
                     }
+                    console.log(scope.requestForm)
                 }
             });
             dropzoneElem.on("success", function(file, server_response) {
