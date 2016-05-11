@@ -986,6 +986,29 @@ button {
 			}
 		}
 	}
+	&.bg-fb {
+		background: $facebook;
+		&:hover, &:focus {
+			background: mix($facebook, white);
+			color: mix($facebook, $slate);
+		}
+		&:active {
+			background: mix($facebook, $slate);
+			color: white;
+		}
+		&.reverse {
+			background: white;
+			color: $facebook;
+			&:hover, &:focus {
+				background: mix($facebook, white);
+				color: mix($facebook, $slate);
+			}
+			&:active {
+				background: mix($facebook, $slate);
+				color: white;
+			}
+		}
+	}
 }
 button.disabled {
 	@include opacity(.7);
@@ -1291,6 +1314,20 @@ button.disabled {
 			border-color: mix($cerise, white);
 			background: mix($cerise, white);
 			color: mix($cerise, $slate);
+		}
+	}
+	&[class*="btn-ghost-fb"] {
+		color: $facebook;
+		border-color: $facebook;
+		&:hover, &:focus {
+			border-color: $facebook;
+			background: $facebook;
+			color: white;
+		}
+		&:active {
+			border-color: mix($facebook, white);
+			background: mix($facebook, white);
+			color: mix($facebook, $slate);
 		}
 	}
 }

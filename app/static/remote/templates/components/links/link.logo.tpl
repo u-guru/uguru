@@ -1,0 +1,1 @@
+<a class="link-logo" ng-include="img_base + BASE + 'templates/svg/logo-subtitle.html'"></a>
