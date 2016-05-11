@@ -901,6 +901,20 @@
                     </div>
                     <ul id="keyframe-css-list" class="p15-grid">
                         <li class="flex-center-vertical-wrap-space-between">
+                                <h2 class="txt-18 semibold m15right">transform-origin</h2>
+                                <div class="flex-center-vertical">
+                                    <span class="bg-campus block txt-16 p05xy radius-2-left">x</span>
+                                    <input class="radius-2-right txt-center p05xy" size="6" ng-model="animation.selected_keyframe.transformOriginX" ng-blur="applyPropertyChange(animation.selected_keyframe.transformOriginX, 'transformOriginX')" style="height: 30px;" ng-keyup="$event && $event.keycode === 13 && applyPropertyChange(animation.selected_keyframe.transformOriginX , 'transformOriginX')" placeholder="center"/>
+                                    <!-- <span class="bg-campus block txt-16 p05xy radius-2-right">{{defaults.units.transformOriginY.default}}&nbsp;&dtrif;</span> -->
+                                    <span class="bg-campus block txt-16 p05xy radius-2-left m15left">y</span>
+                                    <input class="radius-2-right txt-center p05xy" ng-model='animation.selected_keyframe.transformOriginY' ng-blur="applyPropertyChange(animation.selected_keyframe.transformOriginY, 'transformOriginY')" ng-keyup="$event && $event.keyCode === 13 && applyPropertyChange(animation.selected_keyframe.transformOriginY , 'transformOriginY')" size="6" style="height: 30px;" placeholder="center"/>
+                                    <!-- <span class="bg-campus block txt-16 p05xy radius-2-right">{{defaults.units.transformOriginY.default}}&nbsp;&dtrif;</span> -->
+                                    <span class="bg-campus block txt-16 p05xy radius-2-left m15left">z</span>
+                                    <input ng-keyup="$event && $event.keyCode === 13 && applyPropertyChange(animation.selected_keyframe.transformOriginZ , 'transformOriginZ')" class="radius-2-right txt-center p05xy" ng-blur="applyPropertyChange(animation.selected_keyframe.transformOriginZ , 'transformOriginZ')" ng-model='animation.selected_keyframe.transformOriginZ' size="6" style="height: 30px;" placeholder="center"/>
+                                    <!-- <span class="bg-campus block txt-16 p05xy radius-2-right">{{defaults.units.transformOriginZ.default}}&nbsp;&dtrif;</span> -->
+                                </div>
+                            </li>
+                        <li class="flex-center-vertical-wrap-space-between">
                             <h2 class="txt-18 semibold m15right">translateX &nbsp;&nbsp;
                                 <a ng-click='clearProperty(animation.selected_keyframe, "translateX")'>
                                 <i class='icon ion-trash-a'></i></a>

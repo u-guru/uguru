@@ -1406,12 +1406,15 @@ angular.module('uguru.util.controllers')
 				csstext = "transform: " + csstext + ';'
 			}
 
-			var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color']
+			var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'transformOriginX', 'transformOrigin', 'transformOriginY', 'transformOriginZ', 'strokeDashArray', 'strokeOpacity', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color']
 			for (var i = 0; i < modifiedPropertyKeys.length; i++) {
 				var indexProperty = modifiedPropertyKeys[i];
 				// var indexProperty = nonTransformProperties[i];
 				if (nonTransformProperties.indexOf(indexProperty) > -1) {
-
+					if (['transformOriginX', 'transformOriginY', 'transformOriginZ'].indexOf(indexProperty) > -1) {
+						csstext += ('transform-origin:' + (dance_obj.transformOriginX || '50%') + ' ' + (dance_obj.transformOriginY || '50%') + ' ' + (dance_obj.transformOriginZ || '0px') + ';');
+						csstext += ('-' + browserPrefix + '-transform-origin:') + (dance_obj.transformOriginX || '50%') + ' ' + (dance_obj.transformOriginY || '50%') + ' ' + (dance_obj.transformOriginZ || '0px') + ';';
+					}
 					if (indexProperty === 'opacity' && typeof(dance_obj.opacity) === "number") {
 						csstext += ('opacity:' + dance_obj.opacity + ';')
 					}
@@ -1863,6 +1866,10 @@ angular.module('uguru.util.controllers')
 			deg2radProperties = ['skewXdeg', 'skewYdeg', 'rotate3DXdeg', 'rotate3DYdeg', 'rotate3DZdeg'];
 
 
+			if (property.indexOf('transformOrigin') > -1) {
+				$scope.showStatusMsgForXSec('updating ' + property + ' to ' + value);
+			}
+
 			if (deg2radProperties.indexOf(property) > -1) {
 				radians = value * (Math.PI/180);
 				$scope.animation.selected_keyframe[property] = value;
@@ -2193,6 +2200,7 @@ angular.module('uguru.util.controllers')
 					'skewY': 'skewY',
 					'background-color': 'backgroundColor',
 					'fill-opacity': 'fillOpacity',
+					'transform-origin': 'transformOrigin',
 					'transform-style': 'transformStyle',
 					'stroke-dasharray': 'strokeDashArray',
 					'stroke-dashoffset': 'strokeDashOffset',
@@ -2203,6 +2211,10 @@ angular.module('uguru.util.controllers')
 					'-webkit-animation-timing-function': 'animationTimingFunction'
 				}
 				this.transformPerspective = 0;
+				this.transformOrigin = "50% 50% 0px";
+				this.transformOriginX = "50%";
+				this.transformOriginY = "50%";
+				this.transformOriginZ = "0px";
 				this.translateX = 0;
 				this.translateY = 0;
 				this.translateZ = 0;
@@ -2901,19 +2913,19 @@ angular.module('uguru.util.controllers')
 					indexAnimation.owner = 'samir';
 				}
 			}
-			for (var i = 0; i < animation_arr.length; i++) {
+			// for (var i = 0; i < animation_arr.length; i++) {
 
-				importAnimation(animation_arr[i], i * 50)
-			}
+			// 	importAnimation(animation_arr[i], i * 50)
+			// }
 
-			function importAnimation(animation, delay) {
-				$timeout(function() {
-					var lastAnimation = animation;
-					$scope.importFromCSSText(animation.cssText, animation.name);
+			// function importAnimation(animation, delay) {
+			// 	$timeout(function() {
+			// 		var lastAnimation = animation;
+			// 		$scope.importFromCSSText(animation.cssText, animation.name);
 
-					// reconstructAnimationFromProperties(lastAnimation.attr, lastAnimation.properties, lastAnimation.kf_count);
-				}, delay || 0)
-			}
+			// 		// reconstructAnimationFromProperties(lastAnimation.attr, lastAnimation.properties, lastAnimation.kf_count);
+			// 	}, delay || 0)
+			// }
 
 			return animation_arr
 		}
