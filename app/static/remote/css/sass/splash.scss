@@ -1629,16 +1629,10 @@
 		form {
 			position: relative;
 			width: 100%;
-			.input-field {
+			fieldset {
 				width: 100%;
 				max-width: 800px;
 				margin: 0 auto;
-				.prefix {
-					top: 9px;
-				}
-				input {
-					padding-right: 48px;
-				}
 				.desktop-input-close-icon {
 					margin: 0!important;
 				}
@@ -1654,13 +1648,6 @@
 					font-size: 36px;
 					font-weight: 600;
 					text-transform: none!important;
-				}
-			}
-			form {
-				.input-field {
-					label:not(.active) {
-						top: 0;
-					}
 				}
 			}
 		}
@@ -3276,366 +3263,6 @@
 					padding-top: 0;
 					padding-bottom: 0;
 					height: 54px;
-				}
-				.splash-projector-guru {
-					@include center-x;
-					top: 0;
-					.splash-logo-guru {
-						@include prefix(transform, rotate(-7deg), webkit moz ms o);
-						@include prefix(trasnform-origin, center, webkit moz ms o);
-					}
-					.coach {
-						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						position: absolute;
-						top: -50px;
-						right: -95px;
-						&:not(.active) {
-							@include opacity(0);
-						}
-					}
-				}
-				&#splash-school {
-					.splash-university-selected {
-						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						position: absolute;
-						top: 0;
-						left: 0;
-						height: 100%;
-						width: 100%;
-						background: rgba($slate, .95);
-						&.active {
-							z-index: 10;
-						}
-						&:not(.active) {
-							@include opacity(0);
-							z-index: -10;
-						}
-					}
-					.splash-university-content {
-						@include flex;
-						@include flex-center;
-						height: 100%;
-						padding: 70px 15px 15px;
-						.coach-edit-school {
-							position: absolute;
-							bottom: 15px;
-							left: 50%;
-							margin-left: -82px;
-						}
-						.school-id-card {
-							position: relative;
-							.school-id-link {
-								@include opacity(0);
-								@include flex;
-								@include flex-center;
-								position: absolute;
-								z-index: 10;
-								top: 0;
-								left: 0;
-								width: 100%;
-								height: 100%;
-								border-radius: 10px;
-								background: rgba($shamrock, .95);
-								font-size: 24px;
-								font-weight: 600;
-								&:hover, &:focus {
-									@include opacity(1);
-								}
-							}
-						}
-						@media screen and (min-width: 414px) {
-							.school-id-card {
-								@include scale(1.2);
-							}
-						}
-						@media screen and (min-width: 768px) {
-							.school-id-card {
-								@include scale(1.5);
-							}
-						}
-					}
-				}
-				&
-				&#splash-access {
-					overflow: visible!important;
-					padding: 0!important;
-					.guru {
-						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						&:not(.active) {
-							@include opacity(0);
-						}
-					}
-					.user-icon {
-						@include center-xy;
-						border-width: 2px;
-						width: 110px;
-						height: 110px;
-					}
-					.splash-access-content {
-						@include flex;
-						@include flex-wrap;
-						@include flex-center;
-						padding: 200px 15px 15px;
-						.splash-access-inside {
-							position: relative;
-							width: 100%;
-							max-width: 652px;
-							@media screen and (min-width: 768px) {
-								height: 119px;
-							}
-						}
-						.splash-access-code {
-							@include flex;
-							@include flex-center;
-							position: relative;
-							z-index: 10;
-							background: none;
-							border: 0;
-							width: 100%;
-							max-width: 347px;
-							height: 64px;
-							margin: 0 auto;
-							font-size: 28px;
-							text-align: center;
-							line-height: 1.2;
-							padding-top: 5px;
-							color: white;
-							font-weight: 300;
-							@media screen and (min-width: 768px) {
-								max-width: 652px;
-								height: 119px;
-								font-size: 48px;
-								padding-top: 0;
-								padding-bottom: 10px;
-							}
-							@include placeholder {
-								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-							}
-							+ div {
-								position: absolute;
-								top: 0;
-								left: 0;
-								width: 100%;
-								.splash-access-bubble {
-									&.mobile {
-										display: block;
-										max-width: 347px;
-										margin: 0 auto;
-									}
-									&.desktop {
-										display: none;
-										max-width: 100%;
-									}
-									path {
-										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-									}
-								}
-								@media screen and (min-width: 768px) {
-									.splash-access-bubble {
-										&.mobile {
-											display: none;
-										}
-										&.desktop {
-											display: block;
-										}
-									}
-								}
-								button {
-									display: block;
-									margin: 15px auto;
-								}
-								.btn-access-activate {
-									background: $shamrock;
-									&:hover, &:focus {
-										background: white;
-										color: $shamrock;
-									}
-								}
-								.btn-access-skip {
-									background: lighten($slate, 15%);
-									&:hover, &:focus {
-										background: white;
-										color: $shamrock;
-									}
-								}
-							}
-							&:focus {
-								@include placeholder {
-									color: white;
-								}
-								+ div {
-									.splash-access-bubble {
-										path {
-											fill: lighten($slate, 15%);
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				&#splash-courses {
-					@include flex;
-					@include flex-wrap;
-					@include prefix(align-content, flex-start, webkit);
-					@include prefix(justify-content, center, webkit);
-					overflow: visible!important;
-					padding: 0!important;
-					.splash-logo-guru {
-						position: absolute;
-						bottom: -30px;
-						left: -30px;
-						display: block;
-					}
-					.backpack {
-						position: absolute;
-						bottom: -15px;
-						right: -15px;
-						display: block;
-						width: 100px;
-						height: 100px;
-					}
-					form {
-						@include prefix(align-self, flex-start, webkit);
-						width: 100%;
-						padding: 0 15px;
-					}
-					.input-field {
-						width: 100%;
-						margin: 0 auto;
-						input {
-							margin-bottom: 0;
-						}
-					}
-					@media screen and (min-width: 768px) {
-						.input-field {
-							margin: 15px auto 0;
-							label:not(.active) {
-								top: 0;
-							}
-							.prefix {
-								top: 9px;
-							}
-						}
-					}
-					ul {
-						@include listless;
-						@include flex;
-						@include flex-wrap;
-						padding: 7.5px;
-						width: 100%;
-						max-width: 750px;
-						li {
-							padding: 7.5px;
-						}
-					}
-					.course-search {
-						@include prefix(align-self, flex-start, webkit);
-						@include flex-center;
-						li {
-							width: calc(100% / 3);
-							max-width: 250px;
-							a {
-								@include flex;
-								@include flex-wrap;
-								height: 50px;
-								border: 2px solid white;
-								border-radius: 2px;
-								text-align: center;
-								@media screen and (min-width: 768px) {
-									height: 100px;
-								}
-								div {
-									width: 100%;
-									height: 100%;
-									.course-name {
-										display: block;
-										margin: 15px auto 5px;
-										font-size: 14px;
-										font-weight: 600;
-										text-transform: uppercase;
-										&:only-child {
-											@include flex;
-											@include flex-center;
-											margin: 0!important;
-											width: 100%;
-											height: 100%;
-											border-bottom-width: 5px;
-											border-bottom-style: solid;
-										}
-									}
-									.course-title {
-										display: block;
-										margin: 0 auto;
-										padding: 0 15px 15px;
-										overflow: hidden;
-										height: calc(100% - 36px);
-										border-bottom-width: 5px;
-										border-bottom-style: solid;
-										font-size: 18px;
-										&:only-child {
-											@include flex;
-											@include flex-center;
-											height: 100%;
-											padding: 0;
-											@media screen and (min-width: 768px) {
-												font-size: 24px;
-											}
-											span {
-												height: auto!important;
-											}
-										}
-										span {
-											display: block;
-											height: 44px;
-											overflow: hidden;
-										}
-									}
-								}
-								&:hover, &:focus {
-									background: white;
-									color: $slate;
-								}
-							}
-						}
-					}
-					.course-selected {
-						@include prefix(align-self, flex-end, webkit);
-						li {
-							a {
-								@include flex;
-								border: 2px solid white;
-								border-radius: 2px;
-								> span {
-									@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-									@include flex;
-									@include flex-center;
-									padding: 5px 8px 5px 10px;
-									border-bottom-width: 5px;
-									border-bottom-style: solid;
-									font-size: 18px;
-									svg {
-										@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-										@include prefix(transform, rotate(45deg), webkit moz ms o);
-										@include svg-stroke(white, 9);
-										display: block;
-										width: 18px;
-										height: 18px;
-										margin-left: 5px;
-									}
-								}
-								&:hover, &:active {
-									background: white;
-									> span {
-										color: $slate;
-										svg {
-											stroke: $slate;
-										}
-									}
-								}
-							}
-						}
-					}
 				}
 			}
 			@media screen and (max-width: 320px) {
@@ -6052,71 +5679,452 @@
 }
 
 
-
-
-#splash-signup {
-		padding: 0!important;
-		overflow: visible!important;
-		.btn-login-fb {
-			background: $facebook;
-			&:hover, &:focus {
-				background: white;
-				color: $facebook;
-			}
+.splash-projector-guru {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	.splash-logo-guru {
+		@include prefix(transform, rotate(-7deg), webkit moz ms o);
+		@include prefix(trasnform-origin, center, webkit moz ms o);
+	}
+	.coach {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		position: absolute;
+		top: -40px;
+		margin-left: -15px;
+		&:not(.active) {
+			@include opacity(0);
 		}
-		.btn-login-login {
-			background: $shamrock;
-			&:hover, &:focus {
-				background: white;
-			}
+	}
+}
+#splash-school {
+	.splash-university-selected {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background: rgba($slate, .95);
+		&.active {
+			z-index: 10;
 		}
-		.btn-forgot-pw {
-			background: lighten($slate, 15%);
-			&:hover, &:focus {
-				background: white;
-			}
+		&:not(.active) {
+			@include opacity(0);
+			z-index: -10;
 		}
-		.splash-content {
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+	}
+	.splash-university-content {
+		@include flex;
+		@include flex-center;
+		height: 100%;
+		padding: 70px 15px 15px;
+		.coach-edit-school {
 			position: absolute;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			padding: 0;
-			&:not(.active) {
+			bottom: 15px;
+			left: 50%;
+			margin-left: -82px;
+		}
+		.school-id-card {
+			position: relative;
+			.school-id-link {
 				@include opacity(0);
-				z-index: -10;
-			}
-			.btn-splash-login {
-				@include opacity(.5);
+				@include flex;
+				@include flex-center;
 				position: absolute;
-				top: 15px;
-				right: 15px;
+				z-index: 10;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border-radius: 10px;
+				background: rgba($shamrock, .95);
+				font-size: 24px;
+				font-weight: 600;
 				&:hover, &:focus {
 					@include opacity(1);
 				}
 			}
-			.input-field {
+		}
+		@media screen and (min-width: 414px) {
+			.school-id-card {
+				@include scale(1.2);
+			}
+		}
+		@media screen and (min-width: 768px) {
+			.school-id-card {
+				@include scale(1.5);
+			}
+		}
+	}
+}
+#splash-access {
+	overflow: visible!important;
+	padding: 0!important;
+	.guru {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		&:not(.active) {
+			@include opacity(0);
+		}
+	}
+	.user-icon {
+		@include center-xy;
+		border-width: 2px;
+		width: 110px;
+		height: 110px;
+	}
+	.splash-access-content {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		padding: 200px 15px 15px;
+		.splash-access-inside {
+			position: relative;
+			width: 100%;
+			max-width: 652px;
+			@media screen and (min-width: 768px) {
+				height: 119px;
+			}
+		}
+		.splash-access-code {
+			@include flex;
+			@include flex-center;
+			position: relative;
+			z-index: 10;
+			background: none;
+			border: 0;
+			width: 100%;
+			max-width: 347px;
+			height: 64px;
+			margin: 0 auto;
+			font-size: 28px;
+			text-align: center;
+			line-height: 1.2;
+			padding-top: 5px;
+			color: white;
+			font-weight: 300;
+			@media screen and (min-width: 768px) {
+				max-width: 652px;
+				height: 119px;
+				font-size: 48px;
+				padding-top: 0;
+				padding-bottom: 10px;
+			}
+			@include placeholder {
+				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			}
+			+ div {
+				position: absolute;
+				top: 0;
+				left: 0;
 				width: 100%;
-				input {
-					color: white;
-					height: 36px;
+				.splash-access-bubble {
+					&.mobile {
+						display: block;
+						max-width: 347px;
+						margin: 0 auto;
+					}
+					&.desktop {
+						display: none;
+						max-width: 100%;
+					}
+					path {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+					}
 				}
-				a {
-					&:not(.active) {
-						svg {
-							@include opacity(0);
+				@media screen and (min-width: 768px) {
+					.splash-access-bubble {
+						&.mobile {
+							display: none;
+						}
+						&.desktop {
+							display: block;
 						}
 					}
 				}
+				button {
+					display: block;
+					margin: 15px auto;
+				}
+				.btn-access-activate {
+					background: $shamrock;
+					&:hover, &:focus {
+						background: white;
+						color: $shamrock;
+					}
+				}
+				.btn-access-skip {
+					background: lighten($slate, 15%);
+					&:hover, &:focus {
+						background: white;
+						color: $shamrock;
+					}
+				}
+			}
+			&:focus {
+				@include placeholder {
+					color: white;
+				}
+				+ div {
+					.splash-access-bubble {
+						path {
+							fill: lighten($slate, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#splash-courses {
+	@include flex;
+	@include flex-wrap;
+	@include prefix(align-content, flex-start, webkit);
+	@include prefix(justify-content, center, webkit);
+	overflow: visible!important;
+	padding: 0!important;
+	.splash-logo-guru {
+		position: absolute;
+		bottom: -30px;
+		left: -30px;
+		display: block;
+	}
+	.backpack {
+		position: absolute;
+		bottom: -15px;
+		right: -15px;
+		display: block;
+		width: 100px;
+		height: 100px;
+	}
+	form {
+		@include prefix(align-self, flex-start, webkit);
+		width: 100%;
+		padding: 0 15px;
+	}
+	ul {
+		@include listless;
+		@include flex;
+		@include flex-wrap;
+		padding: 7.5px;
+		width: 100%;
+		max-width: 750px;
+		li {
+			padding: 7.5px;
+		}
+	}
+	.course-search {
+		@include prefix(align-self, flex-start, webkit);
+		@include flex-center;
+		li {
+			width: calc(100% / 3);
+			max-width: 250px;
+			a {
+				@include flex;
+				@include flex-wrap;
+				height: 50px;
+				border: 2px solid white;
+				border-radius: 2px;
+				text-align: center;
+				@media screen and (min-width: 768px) {
+					height: 100px;
+				}
+				div {
+					width: 100%;
+					height: 100%;
+					.course-name {
+						display: block;
+						margin: 15px auto 5px;
+						font-size: 14px;
+						font-weight: 600;
+						text-transform: uppercase;
+						&:only-child {
+							@include flex;
+							@include flex-center;
+							margin: 0!important;
+							width: 100%;
+							height: 100%;
+							border-bottom-width: 5px;
+							border-bottom-style: solid;
+						}
+					}
+					.course-title {
+						display: block;
+						margin: 0 auto;
+						padding: 0 15px 15px;
+						overflow: hidden;
+						height: calc(100% - 36px);
+						border-bottom-width: 5px;
+						border-bottom-style: solid;
+						font-size: 18px;
+						&:only-child {
+							@include flex;
+							@include flex-center;
+							height: 100%;
+							padding: 0;
+							@media screen and (min-width: 768px) {
+								font-size: 24px;
+							}
+							span {
+								height: auto!important;
+							}
+						}
+						span {
+							display: block;
+							height: 44px;
+							overflow: hidden;
+						}
+					}
+				}
+				&:hover, &:focus {
+					background: white;
+					color: $slate;
+				}
+			}
+		}
+	}
+	.course-selected {
+		@include prefix(align-self, flex-end, webkit);
+		li {
+			a {
+				@include flex;
+				border: 2px solid white;
+				border-radius: 2px;
+				> span {
+					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+					@include flex;
+					@include flex-center;
+					padding: 5px 8px 5px 10px;
+					border-bottom-width: 5px;
+					border-bottom-style: solid;
+					font-size: 18px;
+					svg {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						@include prefix(transform, rotate(45deg), webkit moz ms o);
+						@include svg-stroke(white, 9);
+						display: block;
+						width: 18px;
+						height: 18px;
+						margin-left: 5px;
+					}
+				}
+				&:hover, &:active {
+					background: white;
+					> span {
+						color: $slate;
+						svg {
+							stroke: $slate;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#splash-signup {
+	padding: 0!important;
+	overflow: visible!important;
+	.btn-login-fb {
+		background: $facebook;
+		&:hover, &:focus {
+			background: white;
+			color: $facebook;
+		}
+	}
+	.btn-login-login {
+		background: $shamrock;
+		&:hover, &:focus {
+			background: white;
+		}
+	}
+	.btn-forgot-pw {
+		background: lighten($slate, 15%);
+		&:hover, &:focus {
+			background: white;
+		}
+	}
+	.splash-desktop-buttons {
+		display: none;
+		.btn-ghost-shamrock {
+			color: white;
+			border-color: $shamrock;
+			background: $shamrock;
+			&:hover, &:focus {
+				border-color: mix($shamrock, $slate);
+				background: mix($shamrock, $slate);
+				color: white;
+			}
+			&:active {
+				border-color: mix($shamrock, white);
+				background: mix($shamrock, white);
+				color: mix($shamrock, $slate);
+			}
+		}
+		.btn-ghost-fb {
+			color: white;
+			border-color: $facebook;
+			background: $facebook;
+			&:hover, &:focus {
+				border-color: mix($facebook, $slate);
+				background: mix($facebook, $slate);
+				color: white;
+			}
+			&:active {
+				border-color: mix($facebook, white);
+				background: mix($facebook, white);
+				color: mix($facebook, $slate);
+			}
+		}
+		.btn-ghost-slate {
+			color: white;
+			background: lighten($slate, 15%);
+			border-color: lighten($slate, 15%);
+			&:hover, &:focus {
+				border-color: $slate;
+				background: $slate;
+				color: white;
+			}
+			&:active {
+				border-color: mix($slate, white);
+				background: mix($slate, white);
+				color: $slate;
+			}
+		}
+	}
+	.splash-content {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		&:not(.active) {
+			@include opacity(0);
+			z-index: -10;
+		}
+		.btn-splash-login {
+			@include opacity(.5);
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			&:hover, &:focus {
+				@include opacity(1);
+			}
+		}
+		fieldset {
+			a {
+				display: block;
+				position: absolute;
+				z-index: 100;
+				right: 0;
+				top: 50%;
+				margin-top: -12px;
 				svg {
 					@include svg-stroke(white, 5);
 					display: block;
-					position: absolute;
-					right: 0;
-					top: 0;
-					width: 30px;
-					height: 30px;
+					width: 24px;
+					height: 24px;
 					&.clear {
 						@include prefix(transform, rotate(45deg), webkit moz ms o);
 					}
@@ -6133,168 +6141,181 @@
 					}
 				}
 			}
+			@media screen and (min-width: 768px) {
+				a {
+					margin-top: -15px;
+					svg {
+						width: 30px;
+						height: 30px;
+					}
+				}
+			}
+		}
+	}
+	.splash-login-content {
+		.splash-desktop-buttons{
+			@include flex;
+			@include flex-center;
+			@include flex-wrap;
+			margin: 22.5px auto 0;
+			max-width: 500px;
+			button {
+				margin: 7.5px;
+			}
+		}
+	}
+	.splash-signup-content {
+		.splash-signup-inside {
+			@include flex;
+			@include flex-center-vertical;
+			width: 100%;
+			margin-top: -90px;
+			> div:first-child {
+				width: 240px;
+			}
+			.splash-signup-form {
+				position: relative;
+				@include flex;
+				@include flex-wrap;
+				@include flex-center-vertical;
+				width: 100%;
+				height: auto!important;
+				fieldset {
+					width: calc(100% - 30px)!important;
+					left: auto!important;
+					&:not(.active) {
+						@include opacity(0);
+						z-index: -10;
+					}
+					.form-error {
+						margin-top: -25px; //to be close to the input form
+						background: $crimson;
+					    color: white!important;
+					    padding: 3px 5px;
+					    border-radius: 2px;
+					    margin-top: -25px;
+						font-size: 14px;
+					}
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 768px) {
+		.btn-ghost-white {
+			padding-left: 20px;
+			padding-right: 20px;
+			white-space: nowrap;
+		}
+		.btn-splash-login {
+			display: none;
+		}
+		.btn-login-fb {
+			display: none;
+		}
+		.splash-projector-guru {
+			@include flex-important;
+		}
+		.splash-signup-buttons, .splash-signup-buttons-mobile {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			@include flex;
+			@include flex-wrap;
+			@include prefix(transition, all 500ms ease-in-out, webkit moz ms o);
+			li {
+				width: 50%;
+				button {
+					font-size: 16px!important;
+					font-weight: 600;
+					line-height: 1.2;
+					height: 50px;
+				}
+			}
 		}
 		.splash-login-content {
-			.login-buttons {
-				@include flex;
-				@include flex-center;
-				@include flex-wrap;
-				margin: 22.5px auto 0;
-				max-width: 500px;
-				button {
-					margin: 7.5px;
+			.splash-login-inside {
+			    padding: 0 15px;
+				fieldset {
+					&:not(:first-child) {
+						margin-top: 15px;
+					}
 				}
+			}
+			.splash-desktop-buttons {
+				display: none;
 			}
 		}
 		.splash-signup-content {
 			.splash-signup-inside {
-				@include flex;
-				.splash-signup-form {
-					position: relative;
-					@include flex;
-					@include flex-center-vertical;
-					width: 100%;
-					height: 51px;
-					.input-field {
-						@include center-y;
-						left: 15px;
-						width: calc(100% - 30px);
-						&:not(.active) {
-							@include opacity(0);
-							z-index: -10;
-						}
-						small.form-error {
-							margin-top: -10px; //to be close to the input form
-						}
-					}
-				}
-				button {
-					// @include center-x;
-					bottom: 15px;
-					&.btn-login-login {
-						margin-right:10px;
-					}
-					&.btn-login-fb {
-						margin-left:10px;
-					}
-				}
-			}
-		}
-		@media screen and (max-width: 768px) {
-			.btn-ghost-white {
-				padding-left: 20px;
-				padding-right: 20px;
-				white-space: nowrap;
-			}
-			.btn-splash-login {
-				display: none;
-			}
-			.btn-login-fb {
-				display: none;
-			}
-			.splash-projector-guru {
-				display: none;
-			}
-			.splash-signup-buttons {
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				width: 100%;
-				@include flex;
+				@include flex-center;
 				@include flex-wrap;
-				li {
-					width: 50%;
-					button {
-						font-size: 16px!important;
-						font-weight: 600;
-						line-height: 1.2;
-						height: 50px;
-					}
-					&:nth-child(1) {
-						button {
-							background: lighten(mix($slate, $shamrock), 15%);
-						}
-					}
-					&.login:nth-child(1) {
-						button {
-							background: $moxie;
-						}
-					}
-					&:nth-child(2) {
-						button {
-							background: $facebook;
-						}
-					}
-					&:nth-child(3) {
-						button {
-							background: lighten(mix($slate, $shamrock), 15%);
-						}
-					}
-					&:nth-child(4) {
-						button {
-							background: lighten($slate, 15%);
-						}
-					}
-				}
-			}
-			.splash-login-content {
-				.input-field {
-				    padding: 0 15px;
-				}
-				.login-buttons {
-					display: none;
-				}
-			}
-			.splash-signup-content {
-				.splash-signup-inside {
-					@include flex-center;
-					@include flex-wrap;
-					padding-top: 15px;
-					.splash-signup-form {
-						width: 100%;
-					}
-				}
-			}
-		}
-		@media screen and (min-width: 768px) {
-			.splash-content {
-				padding: 150px 30px 15px;
-			}
-			.splash-signup-buttons {
-				display: none;
-			}
-			.input-field {
-				input {
-					height: 64px!important;
-					font-size: 48px;
-					font-weight: 300;
-				}
-				svg {
-					@include svg-stroke(white, 4);
-					top: 5px;
-					width: 50px;
-					height: 50px;
-				}
-				small.form-error {
-					margin-top: -10px; //to be close to the input form
-				}
-			}
-			.splash-signup-content {
-				.splash-signup-inside {
-					.splash-signup-form {
-						width: calc(100% - 240px);
-						height: 160px;
-						.input-field {
-							left: 30px;
-							small.form-error {
-								margin-top: -10px; //to be close to the input form
-							}
+				padding-top: 15px;
+				.splash-signup-form {
+					width: 100%;
+					margin-top: 15px;
+					fieldset {
+						margin-left: 15px!important;
+						&:not(:first-child) {
+							margin-top: 15px;
 						}
 					}
 				}
 			}
 		}
 	}
+	@media screen and (min-width: 768px) {
+		.splash-desktop-buttons {
+			@include flex;
+		}
+		.splash-content {
+			padding: 150px 30px 15px;
+		}
+		.splash-signup-buttons, .splash-signup-buttons-mobile {
+			display: none;
+		}
+		fieldset {
+			svg {
+				@include svg-stroke(white, 4);
+				top: 5px;
+				width: 50px;
+				height: 50px;
+			}
+			.form-error {
+				margin-top: -25px; //to be close to the input form
+				background: $crimson;
+			    color: white!important;
+			    padding: 3px 5px;
+			    border-radius: 2px;
+			    margin-top: -25px;
+				font-size: 14px;
+			}
+		}
+		.splash-login-content {
+			.splash-login-inside {
+				fieldset {
+					&:not(:first-child) {
+						margin-top: 25px;
+					}
+				}
+			}
+		}
+		.splash-signup-content {
+			.splash-signup-inside {
+				.splash-signup-form {
+					width: calc(100% - 240px);
+					height: auto!important;
+					fieldset {
+						margin-left: 30px;
+						&:not(:first-child) {
+							margin-top: 25px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 
 
 
@@ -6328,7 +6349,7 @@
 					width: 100px;
 					height: 100px;
 					border: 2px solid white;
-					font-size: 18px;
+					font-size: 16px!important;
 					&.demo-freshman {
 						background: rgba($lake, .5);
 						&:hover, &:focus {
@@ -6421,16 +6442,41 @@
 					}
 				}
 			}
+			&.demo-3 {
+				margin-top: 0!important;
+				li {
+					a {
+						width: 200px;
+						height: 200px;
+						font-size: 24px!important;
+						padding: 15px;
+					}
+				}
+			}
+		}
+		.info-demographic-button {
+			padding-bottom: 15px;
 		}
 		@media screen and (min-width: 768px) {
 			ul {
-				max-width: 80%;
+				max-width: 100%!important;
 				li {
 					padding: 15px;
 					a {
 						width: 150px;
 						height: 150px;
-						font-size: 24px;
+						font-size: 20px!important;
+					}
+				}
+				&.demo-3 {
+					margin-top: 0!important;
+					li {
+						a {
+							width: 200px;
+							height: 200px;
+							padding: 15px;
+							font-size: 24px!important;
+						}
 					}
 				}
 			}

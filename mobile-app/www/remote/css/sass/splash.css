@@ -2365,21 +2365,13 @@
   width: 100%;
 }
 
-.splash-landing > section form .input-field {
+.splash-landing > section form fieldset {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
 }
 
-.splash-landing > section form .input-field .prefix {
-  top: 9px;
-}
-
-.splash-landing > section form .input-field input {
-  padding-right: 48px;
-}
-
-.splash-landing > section form .input-field .desktop-input-close-icon {
+.splash-landing > section form fieldset .desktop-input-close-icon {
   margin: 0 !important;
 }
 
@@ -2394,9 +2386,6 @@
     font-size: 36px;
     font-weight: 600;
     text-transform: none !important;
-  }
-  .splash-landing > section form .input-field label:not(.active) {
-    top: 0;
   }
 }
 
@@ -8107,11 +8096,6 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
 .splash-projector-guru {
   position: absolute;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
   top: 0;
 }
 
@@ -8514,27 +8498,6 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   padding: 0 15px;
 }
 
-#splash-courses .input-field {
-  width: 100%;
-  margin: 0 auto;
-}
-
-#splash-courses .input-field input {
-  margin-bottom: 0;
-}
-
-@media screen and (min-width: 768px) {
-  #splash-courses .input-field {
-    margin: 15px auto 0;
-  }
-  #splash-courses .input-field label:not(.active) {
-    top: 0;
-  }
-  #splash-courses .input-field .prefix {
-    top: 9px;
-  }
-}
-
 #splash-courses ul {
   list-style: none;
   margin: 0;
@@ -8795,6 +8758,64 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   background: white;
 }
 
+#splash-signup .splash-desktop-buttons {
+  display: none;
+}
+
+#splash-signup .splash-desktop-buttons .btn-ghost-shamrock {
+  color: white;
+  border-color: #69B3A5;
+  background: #69B3A5;
+}
+
+#splash-signup .splash-desktop-buttons .btn-ghost-shamrock:hover, #splash-signup .splash-desktop-buttons .btn-ghost-shamrock:focus {
+  border-color: #557e78;
+  background: #557e78;
+  color: white;
+}
+
+#splash-signup .splash-desktop-buttons .btn-ghost-shamrock:active {
+  border-color: #b4d9d2;
+  background: #b4d9d2;
+  color: #557e78;
+}
+
+#splash-signup .splash-desktop-buttons .btn-ghost-fb {
+  color: white;
+  border-color: #3b5998;
+  background: #3b5998;
+}
+
+#splash-signup .splash-desktop-buttons .btn-ghost-fb:hover, #splash-signup .splash-desktop-buttons .btn-ghost-fb:focus {
+  border-color: #3e5172;
+  background: #3e5172;
+  color: white;
+}
+
+#splash-signup .splash-desktop-buttons .btn-ghost-fb:active {
+  border-color: #9daccc;
+  background: #9daccc;
+  color: #3e5172;
+}
+
+#splash-signup .splash-desktop-buttons .btn-ghost-slate {
+  color: white;
+  background: #637074;
+  border-color: #637074;
+}
+
+#splash-signup .splash-desktop-buttons .btn-ghost-slate:hover, #splash-signup .splash-desktop-buttons .btn-ghost-slate:focus {
+  border-color: #40484B;
+  background: #40484B;
+  color: white;
+}
+
+#splash-signup .splash-desktop-buttons .btn-ghost-slate:active {
+  border-color: #a0a4a5;
+  background: #a0a4a5;
+  color: #40484B;
+}
+
 #splash-signup .splash-content {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;
@@ -8827,35 +8848,27 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   opacity: 1;
 }
 
-#splash-signup .splash-content .input-field {
-  width: 100%;
+#splash-signup .splash-content fieldset a {
+  display: block;
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  top: 50%;
+  margin-top: -12px;
 }
 
-#splash-signup .splash-content .input-field input {
-  color: white;
-  height: 36px;
-}
-
-#splash-signup .splash-content .input-field a:not(.active) svg {
-  filter: alpha(opacity=0);
-  opacity: 0;
-}
-
-#splash-signup .splash-content .input-field svg {
+#splash-signup .splash-content fieldset a svg {
   fill: none;
   stroke: white;
   stroke-width: 5px;
   stroke-linecap: round;
   stroke-linejoin: round;
   display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
 }
 
-#splash-signup .splash-content .input-field svg.clear {
+#splash-signup .splash-content fieldset a svg.clear {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -8863,11 +8876,11 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   transform: rotate(45deg);
 }
 
-#splash-signup .splash-content .input-field svg.verified circle {
+#splash-signup .splash-content fieldset a svg.verified circle {
   fill: #43cb9d;
 }
 
-#splash-signup .splash-content .input-field svg.error {
+#splash-signup .splash-content fieldset a svg.error {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -8875,11 +8888,21 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   transform: rotate(45deg);
 }
 
-#splash-signup .splash-content .input-field svg.error circle {
+#splash-signup .splash-content fieldset a svg.error circle {
   fill: #d3242c;
 }
 
-#splash-signup .splash-login-content .login-buttons {
+@media screen and (min-width: 768px) {
+  #splash-signup .splash-content fieldset a {
+    margin-top: -15px;
+  }
+  #splash-signup .splash-content fieldset a svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+#splash-signup .splash-login-content .splash-desktop-buttons {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -8902,22 +8925,11 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   max-width: 500px;
 }
 
-#splash-signup .splash-login-content .login-buttons button {
+#splash-signup .splash-login-content .splash-desktop-buttons button {
   margin: 7.5px;
 }
 
 #splash-signup .splash-signup-content .splash-signup-inside {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-}
-
-#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
-  position: relative;
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -8930,41 +8942,52 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   -webkit-align-items: center;
   align-items: center;
   width: 100%;
-  height: 51px;
+  margin-top: -90px;
 }
 
-#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  left: 15px;
-  width: calc(100% - 30px);
+#splash-signup .splash-signup-content .splash-signup-inside > div:first-child {
+  width: 240px;
 }
 
-#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field:not(.active) {
+#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
+  position: relative;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 100%;
+  height: auto !important;
+}
+
+#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form fieldset {
+  width: calc(100% - 30px) !important;
+  left: auto !important;
+}
+
+#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form fieldset:not(.active) {
   filter: alpha(opacity=0);
   opacity: 0;
   z-index: -10;
 }
 
-#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field small.form-error {
-  margin-top: -10px;
-}
-
-#splash-signup .splash-signup-content .splash-signup-inside button {
-  bottom: 15px;
-}
-
-#splash-signup .splash-signup-content .splash-signup-inside button.btn-login-login {
-  margin-right: 10px;
-}
-
-#splash-signup .splash-signup-content .splash-signup-inside button.btn-login-fb {
-  margin-left: 10px;
+#splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form fieldset .form-error {
+  margin-top: -25px;
+  background: #d3242c;
+  color: white !important;
+  padding: 3px 5px;
+  border-radius: 2px;
+  margin-top: -25px;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 768px) {
@@ -8980,9 +9003,15 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
     display: none;
   }
   #splash-signup .splash-projector-guru {
-    display: none;
+    -ms-box-orient: horizontal !important;
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
+    display: -moz-flex !important;
+    display: -webkit-flex !important;
+    display: flex !important;
   }
-  #splash-signup .splash-signup-buttons {
+  #splash-signup .splash-signup-buttons, #splash-signup .splash-signup-buttons-mobile {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -8997,35 +9026,28 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
   }
-  #splash-signup .splash-signup-buttons li {
+  #splash-signup .splash-signup-buttons li, #splash-signup .splash-signup-buttons-mobile li {
     width: 50%;
   }
-  #splash-signup .splash-signup-buttons li button {
+  #splash-signup .splash-signup-buttons li button, #splash-signup .splash-signup-buttons-mobile li button {
     font-size: 16px !important;
     font-weight: 600;
     line-height: 1.2;
     height: 50px;
   }
-  #splash-signup .splash-signup-buttons li:nth-child(1) button {
-    background: #7aa59f;
-  }
-  #splash-signup .splash-signup-buttons li.login:nth-child(1) button {
-    background: #43cb9d;
-  }
-  #splash-signup .splash-signup-buttons li:nth-child(2) button {
-    background: #3b5998;
-  }
-  #splash-signup .splash-signup-buttons li:nth-child(3) button {
-    background: #7aa59f;
-  }
-  #splash-signup .splash-signup-buttons li:nth-child(4) button {
-    background: #637074;
-  }
-  #splash-signup .splash-login-content .input-field {
+  #splash-signup .splash-login-content .splash-login-inside {
     padding: 0 15px;
   }
-  #splash-signup .splash-login-content .login-buttons {
+  #splash-signup .splash-login-content .splash-login-inside fieldset:not(:first-child) {
+    margin-top: 15px;
+  }
+  #splash-signup .splash-login-content .splash-desktop-buttons {
     display: none;
   }
   #splash-signup .splash-signup-content .splash-signup-inside {
@@ -9044,22 +9066,33 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   }
   #splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
     width: 100%;
+    margin-top: 15px;
+  }
+  #splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form fieldset {
+    margin-left: 15px !important;
+  }
+  #splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form fieldset:not(:first-child) {
+    margin-top: 15px;
   }
 }
 
 @media screen and (min-width: 768px) {
+  #splash-signup .splash-desktop-buttons {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+  }
   #splash-signup .splash-content {
     padding: 150px 30px 15px;
   }
-  #splash-signup .splash-signup-buttons {
+  #splash-signup .splash-signup-buttons, #splash-signup .splash-signup-buttons-mobile {
     display: none;
   }
-  #splash-signup .input-field input {
-    height: 64px !important;
-    font-size: 48px;
-    font-weight: 300;
-  }
-  #splash-signup .input-field svg {
+  #splash-signup fieldset svg {
     fill: none;
     stroke: white;
     stroke-width: 4px;
@@ -9069,18 +9102,27 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
     width: 50px;
     height: 50px;
   }
-  #splash-signup .input-field small.form-error {
-    margin-top: -10px;
+  #splash-signup fieldset .form-error {
+    margin-top: -25px;
+    background: #d3242c;
+    color: white !important;
+    padding: 3px 5px;
+    border-radius: 2px;
+    margin-top: -25px;
+    font-size: 14px;
+  }
+  #splash-signup .splash-login-content .splash-login-inside fieldset:not(:first-child) {
+    margin-top: 25px;
   }
   #splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
     width: calc(100% - 240px);
-    height: 160px;
+    height: auto !important;
   }
-  #splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field {
-    left: 30px;
+  #splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form fieldset {
+    margin-left: 30px;
   }
-  #splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form .input-field small.form-error {
-    margin-top: -10px;
+  #splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form fieldset:not(:first-child) {
+    margin-top: 25px;
   }
 }
 

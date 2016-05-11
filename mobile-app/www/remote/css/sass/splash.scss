@@ -1629,16 +1629,10 @@
 		form {
 			position: relative;
 			width: 100%;
-			.input-field {
+			fieldset {
 				width: 100%;
 				max-width: 800px;
 				margin: 0 auto;
-				.prefix {
-					top: 9px;
-				}
-				input {
-					padding-right: 48px;
-				}
 				.desktop-input-close-icon {
 					margin: 0!important;
 				}
@@ -1654,13 +1648,6 @@
 					font-size: 36px;
 					font-weight: 600;
 					text-transform: none!important;
-				}
-			}
-			form {
-				.input-field {
-					label:not(.active) {
-						top: 0;
-					}
 				}
 			}
 		}
@@ -5693,7 +5680,8 @@
 
 
 .splash-projector-guru {
-	@include center-x;
+	position: absolute;
+	left: 50%;
 	top: 0;
 	.splash-logo-guru {
 		@include prefix(transform, rotate(-7deg), webkit moz ms o);
@@ -5914,24 +5902,6 @@
 		width: 100%;
 		padding: 0 15px;
 	}
-	.input-field {
-		width: 100%;
-		margin: 0 auto;
-		input {
-			margin-bottom: 0;
-		}
-	}
-	@media screen and (min-width: 768px) {
-		.input-field {
-			margin: 15px auto 0;
-			label:not(.active) {
-				top: 0;
-			}
-			.prefix {
-				top: 9px;
-			}
-		}
-	}
 	ul {
 		@include listless;
 		@include flex;
@@ -6074,6 +6044,54 @@
 			background: white;
 		}
 	}
+	.splash-desktop-buttons {
+		display: none;
+		.btn-ghost-shamrock {
+			color: white;
+			border-color: $shamrock;
+			background: $shamrock;
+			&:hover, &:focus {
+				border-color: mix($shamrock, $slate);
+				background: mix($shamrock, $slate);
+				color: white;
+			}
+			&:active {
+				border-color: mix($shamrock, white);
+				background: mix($shamrock, white);
+				color: mix($shamrock, $slate);
+			}
+		}
+		.btn-ghost-fb {
+			color: white;
+			border-color: $facebook;
+			background: $facebook;
+			&:hover, &:focus {
+				border-color: mix($facebook, $slate);
+				background: mix($facebook, $slate);
+				color: white;
+			}
+			&:active {
+				border-color: mix($facebook, white);
+				background: mix($facebook, white);
+				color: mix($facebook, $slate);
+			}
+		}
+		.btn-ghost-slate {
+			color: white;
+			background: lighten($slate, 15%);
+			border-color: lighten($slate, 15%);
+			&:hover, &:focus {
+				border-color: $slate;
+				background: $slate;
+				color: white;
+			}
+			&:active {
+				border-color: mix($slate, white);
+				background: mix($slate, white);
+				color: $slate;
+			}
+		}
+	}
 	.splash-content {
 		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 		position: absolute;
@@ -6094,46 +6112,48 @@
 				@include opacity(1);
 			}
 		}
-		.input-field {
-			width: 100%;
-			input {
-				color: white;
-				height: 36px;
-			}
+		fieldset {
 			a {
-				&:not(.active) {
-					svg {
-						@include opacity(0);
-					}
-				}
-			}
-			svg {
-				@include svg-stroke(white, 5);
 				display: block;
 				position: absolute;
+				z-index: 100;
 				right: 0;
-				top: 0;
-				width: 30px;
-				height: 30px;
-				&.clear {
-					@include prefix(transform, rotate(45deg), webkit moz ms o);
-				}
-				&.verified {
-					circle {
-						fill: $moxie;
+				top: 50%;
+				margin-top: -12px;
+				svg {
+					@include svg-stroke(white, 5);
+					display: block;
+					width: 24px;
+					height: 24px;
+					&.clear {
+						@include prefix(transform, rotate(45deg), webkit moz ms o);
+					}
+					&.verified {
+						circle {
+							fill: $moxie;
+						}
+					}
+					&.error {
+						@include prefix(transform, rotate(45deg), webkit moz ms o);
+						circle {
+							fill: $crimson;
+						}
 					}
 				}
-				&.error {
-					@include prefix(transform, rotate(45deg), webkit moz ms o);
-					circle {
-						fill: $crimson;
+			}
+			@media screen and (min-width: 768px) {
+				a {
+					margin-top: -15px;
+					svg {
+						width: 30px;
+						height: 30px;
 					}
 				}
 			}
 		}
 	}
 	.splash-login-content {
-		.login-buttons {
+		.splash-desktop-buttons{
 			@include flex;
 			@include flex-center;
 			@include flex-wrap;
@@ -6147,33 +6167,35 @@
 	.splash-signup-content {
 		.splash-signup-inside {
 			@include flex;
+			@include flex-center-vertical;
+			width: 100%;
+			margin-top: -90px;
+			> div:first-child {
+				width: 240px;
+			}
 			.splash-signup-form {
 				position: relative;
 				@include flex;
+				@include flex-wrap;
 				@include flex-center-vertical;
 				width: 100%;
-				height: 51px;
-				.input-field {
-					@include center-y;
-					left: 15px;
-					width: calc(100% - 30px);
+				height: auto!important;
+				fieldset {
+					width: calc(100% - 30px)!important;
+					left: auto!important;
 					&:not(.active) {
 						@include opacity(0);
 						z-index: -10;
 					}
-					small.form-error {
-						margin-top: -10px; //to be close to the input form
+					.form-error {
+						margin-top: -25px; //to be close to the input form
+						background: $crimson;
+					    color: white!important;
+					    padding: 3px 5px;
+					    border-radius: 2px;
+					    margin-top: -25px;
+						font-size: 14px;
 					}
-				}
-			}
-			button {
-				// @include center-x;
-				bottom: 15px;
-				&.btn-login-login {
-					margin-right:10px;
-				}
-				&.btn-login-fb {
-					margin-left:10px;
 				}
 			}
 		}
@@ -6191,15 +6213,16 @@
 			display: none;
 		}
 		.splash-projector-guru {
-			display: none;
+			@include flex-important;
 		}
-		.splash-signup-buttons {
+		.splash-signup-buttons, .splash-signup-buttons-mobile {
 			position: absolute;
 			bottom: 0;
 			left: 0;
 			width: 100%;
 			@include flex;
 			@include flex-wrap;
+			@include prefix(transition, all 500ms ease-in-out, webkit moz ms o);
 			li {
 				width: 50%;
 				button {
@@ -6208,38 +6231,18 @@
 					line-height: 1.2;
 					height: 50px;
 				}
-				&:nth-child(1) {
-					button {
-						background: lighten(mix($slate, $shamrock), 15%);
-					}
-				}
-				&.login:nth-child(1) {
-					button {
-						background: $moxie;
-					}
-				}
-				&:nth-child(2) {
-					button {
-						background: $facebook;
-					}
-				}
-				&:nth-child(3) {
-					button {
-						background: lighten(mix($slate, $shamrock), 15%);
-					}
-				}
-				&:nth-child(4) {
-					button {
-						background: lighten($slate, 15%);
-					}
-				}
 			}
 		}
 		.splash-login-content {
-			.input-field {
+			.splash-login-inside {
 			    padding: 0 15px;
+				fieldset {
+					&:not(:first-child) {
+						margin-top: 15px;
+					}
+				}
 			}
-			.login-buttons {
+			.splash-desktop-buttons {
 				display: none;
 			}
 		}
@@ -6250,42 +6253,62 @@
 				padding-top: 15px;
 				.splash-signup-form {
 					width: 100%;
+					margin-top: 15px;
+					fieldset {
+						margin-left: 15px!important;
+						&:not(:first-child) {
+							margin-top: 15px;
+						}
+					}
 				}
 			}
 		}
 	}
 	@media screen and (min-width: 768px) {
+		.splash-desktop-buttons {
+			@include flex;
+		}
 		.splash-content {
 			padding: 150px 30px 15px;
 		}
-		.splash-signup-buttons {
+		.splash-signup-buttons, .splash-signup-buttons-mobile {
 			display: none;
 		}
-		.input-field {
-			input {
-				height: 64px!important;
-				font-size: 48px;
-				font-weight: 300;
-			}
+		fieldset {
 			svg {
 				@include svg-stroke(white, 4);
 				top: 5px;
 				width: 50px;
 				height: 50px;
 			}
-			small.form-error {
-				margin-top: -10px; //to be close to the input form
+			.form-error {
+				margin-top: -25px; //to be close to the input form
+				background: $crimson;
+			    color: white!important;
+			    padding: 3px 5px;
+			    border-radius: 2px;
+			    margin-top: -25px;
+				font-size: 14px;
+			}
+		}
+		.splash-login-content {
+			.splash-login-inside {
+				fieldset {
+					&:not(:first-child) {
+						margin-top: 25px;
+					}
+				}
 			}
 		}
 		.splash-signup-content {
 			.splash-signup-inside {
 				.splash-signup-form {
 					width: calc(100% - 240px);
-					height: 160px;
-					.input-field {
-						left: 30px;
-						small.form-error {
-							margin-top: -10px; //to be close to the input form
+					height: auto!important;
+					fieldset {
+						margin-left: 30px;
+						&:not(:first-child) {
+							margin-top: 25px;
 						}
 					}
 				}
