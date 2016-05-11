@@ -8094,9 +8094,35 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
 }
 
 .splash-projector-guru {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   position: absolute;
-  left: 50%;
+  left: 0 !important;
   top: 0;
+  width: 100% !important;
+}
+
+@media screen and (max-width: 320px) {
+  .splash-projector-guru {
+    -webkit-transform: scale(0.75) translateY(-60%);
+    -moz-transform: scale(0.75) translateY(-60%);
+    -ms-transform: scale(0.75) translateY(-60%);
+    -o-transform: scale(0.75) translateY(-60%);
+    transform: scale(0.75) translateY(-60%);
+  }
 }
 
 .splash-projector-guru .splash-logo-guru {
@@ -8798,22 +8824,40 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   color: #3e5172;
 }
 
-#splash-signup .splash-desktop-buttons .btn-ghost-slate {
+#splash-signup .splash-desktop-buttons .btn-ghost-campus {
   color: white;
-  background: #637074;
-  border-color: #637074;
+  background: #8A9EA3;
+  border-color: #8A9EA3;
 }
 
-#splash-signup .splash-desktop-buttons .btn-ghost-slate:hover, #splash-signup .splash-desktop-buttons .btn-ghost-slate:focus {
-  border-color: #40484B;
-  background: #40484B;
+#splash-signup .splash-desktop-buttons .btn-ghost-campus:hover, #splash-signup .splash-desktop-buttons .btn-ghost-campus:focus {
+  border-color: #657377;
+  background: #657377;
   color: white;
 }
 
-#splash-signup .splash-desktop-buttons .btn-ghost-slate:active {
-  border-color: #a0a4a5;
-  background: #a0a4a5;
-  color: #40484B;
+#splash-signup .splash-desktop-buttons .btn-ghost-campus:active {
+  border-color: #c5cfd1;
+  background: #c5cfd1;
+  color: #657377;
+}
+
+#splash-signup .splash-desktop-buttons .btn-ghost-moxie {
+  color: white;
+  background: #43cb9d;
+  border-color: #43cb9d;
+}
+
+#splash-signup .splash-desktop-buttons .btn-ghost-moxie:hover, #splash-signup .splash-desktop-buttons .btn-ghost-moxie:focus {
+  border-color: #428a74;
+  background: #428a74;
+  color: white;
+}
+
+#splash-signup .splash-desktop-buttons .btn-ghost-moxie:active {
+  border-color: #a1e5ce;
+  background: #a1e5ce;
+  color: #428a74;
 }
 
 #splash-signup .splash-content {
@@ -8824,6 +8868,7 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   transition: all 150ms ease-in-out;
   position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   padding: 0;
@@ -8927,6 +8972,28 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
 
 #splash-signup .splash-login-content .splash-desktop-buttons button {
   margin: 7.5px;
+}
+
+#splash-signup .splash-forgot-pw-content {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+#splash-signup .splash-forgot-pw-content .splash-login-inside {
+  width: 100%;
 }
 
 #splash-signup .splash-signup-content .splash-signup-inside {
@@ -9051,18 +9118,16 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
     display: none;
   }
   #splash-signup .splash-signup-content .splash-signup-inside {
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
+    -webkit-align-items: flex-end !important;
+    align-items: flex-end !important;
+    -webkit-align-content: flex-end !important;
+    align-content: flex-end !important;
     -ms-flex-flow: row wrap;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
-    padding-top: 15px;
+    padding-top: 0 !important;
+    height: 100%;
+    padding-bottom: 30px;
   }
   #splash-signup .splash-signup-content .splash-signup-inside .splash-signup-form {
     width: 100%;
@@ -9214,6 +9279,7 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   height: 100px;
   border: 2px solid white;
   font-size: 16px !important;
+  padding: 15px;
 }
 
 #splash-demographic .splash-demographic-content ul li a.demo-freshman {
@@ -9344,7 +9410,6 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   width: 200px;
   height: 200px;
   font-size: 24px !important;
-  padding: 15px;
 }
 
 #splash-demographic .splash-demographic-content .info-demographic-button {
