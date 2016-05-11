@@ -191,11 +191,34 @@ angular.module('uguru.util.controllers')
 			$scope.asideTabIndex = Math.abs(($scope.asideTabIndex + 1) % 3)};
 
 		$scope.asideTabIndex = 2;
+
+		$scope.intervals = {arr: [], enabled: false, count: 5, onChange: onChangeIntervalState};
 		$scope.animationSneakPreview = {show: false, content: ''};
 		$scope.showKFBarPercentage = {show: false};
 		$scope.keyShortcuts = {
 				ctrl: ctrlShortcuts
 		}
+
+		function onChangeIntervalState(count) {
+			$timeout(function() {
+				if ($scope.intervals.enabled) {
+					$scope.intervals.arr = newArrSize($scope.intervals.count);
+				}
+			})
+		}
+		function newArrSize(num) {
+			var resultArr = [];
+			for (var i = 0; i <= num; i++) {
+				var indexValue = i * 1.0 * (100.0/num);
+				resultArr.push({
+					left: parseFloat(indexValue, 2),
+					value: indexValue,
+					onClick: $scope.setClosestActiveKeyFrame
+				})
+			}
+			return resultArr;
+		}
+
 		function initShortCuts() {
 			KeyboardService.initOptionPressedAndReleasedFunction(on_pressed_cmd, on_released_cmd, 91, 'metaKey', null, 1000);
 			KeyboardService.initOptionPressedAndReleasedFunction(on_pressed_ctrl, on_released_ctrl, 17, 'ctrlKey', null,  100);

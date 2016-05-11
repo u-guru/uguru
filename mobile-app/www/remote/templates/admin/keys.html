@@ -524,9 +524,21 @@
                     <h2 ng-show='player.status' class="weight-900 txt-azure txt-36 absolute top-0 left-0 m15left">{{timer.time}}s</h2>
                 </div>
                 <ul class='p15-grid flex-center txt-center'>
-                    <li>
-                        <div class='txt-1 txt-center full-x semibold'># Intervals</div>
-                        <input class="radius-2 flex-center p05xy txt-center height-32" size="20" id='kf-intervals-input' ng-model='animation.attr.kf_intervals' ng-blur="updateNumIntervals(animation.attr.kf_intervals)" placeholder="animation name" type='text' />
+                    <li ng-if='!intervals.enabled' ng-click='intervals.onChange(intervals.count, false)' style='width:125px;'>
+
+                        <div class='txt-1 txt-center full-x semibold'>Intervals OFF</div>
+                        <checkbox value="intervals.enabled"> </checkbox>
+                    </li>
+                    <li ng-if='intervals.enabled' class='relative flex-wrap-center flex-wrap' style='width:125px;'>
+                        <div class='text-center txt-1 full-x semibold'> Total Intervals </div>
+                        <div class='intervals-container full-x p05xy ugrid-2'>
+                            <span class='width-50'>
+                                <input class="radius-2 flex-center p05xy txt-center height-32" style='width:100% !important;' size="20" id='kf-intervals-input' ng-model='intervals.count' ng-keyup="$event && $event.keyCode === 13 && intervals.onChange(intervals.count)" ng-blur="intervals.onChange(intervals.count, false)" placeholder="animation name" type='text' />
+                            </span>
+                            <span>
+                                <checkbox on-change="intervals.onChange" value="intervals.enabled"> </checkbox>
+                            </span>
+                        </div>
                     </li>
                     <li>
                         <div class='txt-1 txt-center full-x semibold'>Duration</div>
@@ -622,6 +634,10 @@
                     <div id='keyframe-bar-container' class='relative p10xy'>
                         <span>0%</span>
                         <div class="relative">
+                            <div class='absolute full-x bg-transparent animated lightSpeedIn opacity-0' ng-if='intervals.enabled && intervals.arr && intervals.arr.length' style='margin-left:1px;'>
+                                <a ng-click='interval.onClick(interval.value)' class='bg-cerise absolute' ng-repeat="interval in intervals.arr" style='width:3px; height:35px; bottom:-2px; left:{{interval.left}}% !important' />
+                                </a>
+                            </div>
                             <span ng-if='showKFBarPercentage.show' style='left:{{animation.selected_percent}} !important;margin-top:-5%; width:5%; margin-left:-25px; top:-20%;' class='bg-azure-50p absolute p10xy txt-1 weight-700 txt-white'>{{animation.selected_percent}}</span>
                             <div class='absolute p20bottom top-0 left-0' style='margin-top:-10%;'>
                                 <a ng-click='toggleLeftKFPlayBar()'>

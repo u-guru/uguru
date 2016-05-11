@@ -246,18 +246,19 @@ directive('draggable', function($document) {
         return {
             templateUrl: BASE + 'templates/elements/components/inputs/checkbox.tpl',
             scope: {
-                onPropChange: '=onPropChange',
+                onChecked: '=onChange',
                 label: '=label',
                 value: '=value',
                 checked: "=checked"
             },
             restrict: 'E',
             link: function(scope, element, attr) {
+                scope.label = scope.label || attr.label;
 
-                if (!scope.label || !scope.label.length) {
-                    scope.label = 'Checkbox Label'
+                scope.onValueChanged = function(value) {
+                    scope.onChecked && scope.onChecked(value);
                 }
-                scope.checked = scope.checked || false;
+                // scope.value = scope.value || attr.value;
                 // if (scope.onPropChange) {
                 //   // scope.onPropChange(scope, )
                 // }
