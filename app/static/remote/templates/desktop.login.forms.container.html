@@ -29,7 +29,7 @@
     					<i class='icon ion-close-circled'> </i>
     				</a>
                 </fieldset>
-                <fieldset class="relative full-x ng-class:{'hide':root.vars.forgotPassword} m15y" style="max-width: 100%!important;">
+                <fieldset class="relative full-x m15y ng-class:{'hide':root.vars.forgotPassword} " style="max-width: 100%!important;">
                 	<input class="input-border light" type="password" placeholder="Password" autocomplete="off" ng-keyup="$event.keyCode == 13 && signupOnEnter()" ng-model='signupForm.password' id="password"/>
                 	<label></label>
                     <a ng-show="root.vars.loginMode && signupForm.password.length" ng-click='signupForm.password = "";' class="desktop-input-close-icon side-icon">
