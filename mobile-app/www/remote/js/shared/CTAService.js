@@ -83,6 +83,17 @@ function CTAService($timeout) {
 
     var modalElemId = boxElem && boxSelector.replace('.', '#').replace('box', 'modal');
     var modalElem = document.querySelector(modalElemId);
+
+
+
+    if(modalElemId =='#cta-modal-student-request'){
+        console.log('parentElem',parentElem)
+        console.log('boxElem',boxElem)
+        console.log('modalElemId',modalElemId)
+        console.log('modalElem',modalElem)
+
+    }
+
     //if both dont exist dont do anything
     if (!(parentElem && boxElem && modalElem)) {
       return false;

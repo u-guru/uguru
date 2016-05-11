@@ -110,8 +110,14 @@ angular.module('uguru.student.controllers', [])
 
         $scope.$on('$ionicView.afterEnter', function() {
             if ($scope.desktopMode) {
-                initAllCTAS();
+                $timeout(function() {
+                    console.log("initAllCTAS")
+                    initAllCTAS();
+                },1)
             }
+
+
+
         })
 
         function initAllCTAS() {
@@ -120,8 +126,8 @@ angular.module('uguru.student.controllers', [])
             var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-request-courses', '#cta-box-student-request','#cta-box-created-requests', '#cta-box-billing', '#cta-box-messages', '#cta-box-shop'];
             var cbOptions = {'#cta-box-student-request': triggerRequestFormCTA, '#cta-box-created-requests': initRequestDetailsCTA};
             CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
-            // $timeout(function() {
-            //     $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
+            $timeout(function() {
+                $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
             //     $scope.requestForm.category = $scope.categories[0];
             //     $scope.requestForm.subcategory = $scope.requestForm.category.subcategories[0];
             //     $scope.requestForm.description.content = 'sample test';
@@ -130,7 +136,7 @@ angular.module('uguru.student.controllers', [])
             //     $scope.requestForm.address = 'sample address';
             //     $scope.requestForm.price.selected = 45;
             //     $scope.requestForm.payment_card = $scope.user.payment_cards[0];
-            // }, 500);
+            }, 500);
             //request form
             //student files
             //messages + empty state
@@ -178,6 +184,7 @@ angular.module('uguru.student.controllers', [])
                 $ionicSlideBoxDelegate.slide(index, time);
             }
             $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
+           
             // $timeout(function() {
             //     $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
             //     $scope.requestForm.category = $scope.categories[0];

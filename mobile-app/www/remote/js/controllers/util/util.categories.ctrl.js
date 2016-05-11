@@ -23,7 +23,6 @@ angular.module('uguru.util.controllers')
     Category, Utilities, LoadingService) {
 
 
-
     if (!img_base || !img_base.length) {
       $scope.categories_img_base = 'remote/';
     } else {

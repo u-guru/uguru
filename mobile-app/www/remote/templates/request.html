@@ -4,7 +4,7 @@
 		<!-- <tabs class="txt-white" tabs="['1','2','3','4','5','6']" index="1"/> -->
 		
 		<nav class="request-nav arrow-bar tab-bar slide">
-			{{requestForm.nav}}
+			{{requestForm.nav}} 
 			<div>
 				<a ng-click='requestForm.nav.switchTo(0)' ng-class='{active:!requestForm.nav.index}'><span>1</span></a>
 				<a ng-click='requestForm.nav.switchTo(1)' ng-class='{active:requestForm.nav.index === 1}'><span>2</span></a>
@@ -54,7 +54,7 @@
 	</header> -->
 	<main class='relative'>
 		<ion-slide-box id='request-form-slide-box' class='full-xy' ng-init="disableSwipe()" show-pager='false' can-swipe-back='false' delegate-handle="request-form" on-slide-changed="slideHasChanged($index)">
-			<ion-slide class="full-y" ng-include="img_base + BASE + 'templates/request.slide.six.html'"></ion-slide>
+			<!-- <ion-slide class="full-y" ng-include="img_base + BASE + 'templates/request.slide.six.html'"></ion-slide> -->
 			<ion-slide class="full-y" ng-include="img_base + BASE + 'templates/request.slide.one.html'"></ion-slide>
 			<ion-slide class="full-y" ng-include="img_base + BASE + 'templates/request.slide.two.html'"></ion-slide>
 			<ion-slide class="full-y" ng-include="img_base + BASE + 'templates/request.slide.three.html'"></ion-slide>
