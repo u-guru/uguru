@@ -115,7 +115,7 @@
                                     <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
                                 </svg>
                             </a>
-                            <a ng-if='signupForm.activateErrorPassword && signupForm.password' class='active' ng-mousedown='signupForm.password = ""'>
+                            <a ng-if='signupForm.activateErrorPassword && signupForm.password' class='active' ng-mousedown='signupForm.password = ""; signupForm.activateErrorPassword = false'>
                                 <svg class="error" viewBox="0 0 100 100">
                                     <circle cx="50" cy="50" r="36"></circle>
                                     <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
@@ -197,28 +197,18 @@
                 <button class="btn-splash-login btn-ghost-white" style='left:15px; right:none;'ng-click='switchToSignup()'>Signup</button>
                 <button class="btn-splash-login btn-ghost-white" ng-click='switchToLogin()'>Login</button>
                 <div class="splash-login-inside">
+                <form name='forgetForm'>
                     <fieldset class="large full-x">
-                        <input class="input-border light" type="email" placeholder="what's your email?" ng-model='signupForm.email' autocomplete="off"/>
+                        <input name='email'class="input-border light" type="email" placeholder="what's your email?" ng-model='signupForm.email' autocomplete="off"/>
                         <label></label>
-                        <a>
+                        <a ng-if='signupForm.email || !forgetForm.email.$valid' class="active" ng-click='signupForm.email = "";'>
                             <svg class="clear" viewBox="0 0 100 100">
                                 <circle cx="50" cy="50" r="36"></circle>
                                 <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
                             </svg>
                         </a>
-                        <a>
-                            <svg class="verified" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="36"></circle>
-                                <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
-                            </svg>
-                        </a>
-                        <a>
-                            <svg class="error" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="36"></circle>
-                                <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                            </svg>
-                        </a>
                     </fieldset>
+                </form>
                     <ul class="splash-signup-buttons-mobile">
                         <li><button ng-click='attemptToResetPassword()' class="bg-moxie">Submit</button></li>
                         <li><button ng-click='switchToLogin()' class="bg-campus">Cancel</button></li>
