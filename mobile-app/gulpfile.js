@@ -374,13 +374,11 @@ gulp.task('scripts', function() {
   // return streamqueue({ objectMode: true }, scriptStream, templateStream)
   return streamqueue({ objectMode: true }, scriptStream)
     .pipe(plugins.if(build, plugins.ngAnnotate()))
-    .pipe(plugins.if(build, plugins.concat('app.js')))
-    .pipe(plugins.if(build, plugins.uglify()))
-    .pipe(plugins.if(build, plugins.rev()))
+    .pipe(plugins.if(build, plugins.concat('app.js'))).pipe(gulp.dest(dest)).on('error', errorHandler);
+    // .pipe(plugins.if(build, plugins.uglify()))
+    // .pipe(plugins.if(build, plugins.rev()))
 
-    .pipe(gulp.dest(dest))
 
-    .on('error', errorHandler);
 });
 
 
